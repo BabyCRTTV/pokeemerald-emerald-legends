@@ -1,16 +1,21 @@
+# Upstream pokeemerald-expansion documentation workflow.
+#
+# Pokémon Emerald: Legends publishes its project website directly from
+# master:/docs via GitHub Pages. Automatic mdBook deployment is disabled here
+# because GitHub Pages supports one publishing source at a time and this
+# workflow conflicts with the Legends site deployment.
+#
+# Keep the workflow available for an explicit manual documentation build if
+# upstream documentation needs to be checked later.
+
 name: Docs
+
 on:
-  push:
-    branches:
-      - master
+  workflow_dispatch:
 
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
-      pages: write
-      id-token: write
     steps:
       - uses: actions/checkout@v4
         with:
@@ -26,23 +31,3 @@ jobs:
         run: |
           cd docs
           mdbook build
-      - name: Check if Pages is enabled
-        uses: octokit/request-action@v2.x
-        id: check_pages
-        continue-on-error: true
-        with:
-          route: GET /repos/{repo}/pages
-          repo: ${{ github.repository }}
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - name: Setup Pages
-        uses: actions/configure-pages@v4
-        if: steps.check_pages.outcome == 'success'
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: 'docs/book'
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
-        if: steps.check_pages.outcome == 'success'
