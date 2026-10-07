@@ -4127,6 +4127,7 @@ static void CursorCb_FieldMove(u8 taskId)
     const struct MapHeader *mapHeader;
 
     PlaySE(SE_SELECT);
+    gFieldEffectArguments[7] = FieldMove_IsBadgeUtility(fieldMove);
     if (gFieldMoveInfo[fieldMove].fieldMoveFunc == NULL)
         return;
 
