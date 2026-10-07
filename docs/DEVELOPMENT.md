@@ -15,7 +15,7 @@ upstream -> rh-hideout/pokeemerald-expansion
 
 - `master` - current playable development line
 - `feature/<name>` - larger gameplay features when isolation is useful
-- tags/releases - milestone snapshots such as `v0.1.0`
+- tags/releases - milestone snapshots using the current `VERSION` value
 
 Small, well-contained changes may be committed directly to `master` during early development, but each commit should describe one logical change whenever practical.
 
@@ -35,11 +35,15 @@ Do not commit generated ROMs, copyrighted ROM data, save files containing person
 
 ## Versioning
 
-Development begins at `0.1.0-dev`.
+The authoritative project version lives in the root `VERSION` file.
 
-Milestone releases use semantic-style project versions:
+Current baseline: `0.0.1`.
 
-- `0.1.0-dev` - active development
-- `0.1.0` - first completed milestone
-- `0.1.1` - fixes to the milestone
-- `0.2.0` - next feature milestone
+During active pre-1.0 development, each meaningful shipped change increments the development revision:
+
+- `0.0.1` - current baseline
+- `0.0.2` - next meaningful change
+- `0.0.3` - following change
+- a fourth segment such as `0.0.3.1` may be used for a very small follow-up build when that is clearer than consuming the next normal revision
+
+Every version bump must be paired with a matching `CHANGELOG.md` entry and mirrored in player-facing version text. See [VERSIONING.md](VERSIONING.md).
