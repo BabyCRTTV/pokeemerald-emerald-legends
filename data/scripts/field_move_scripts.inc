@@ -4,11 +4,8 @@ EventScript_CutTree::
 	checkfieldmove FIELD_MOVE_CUT, TRUE
 	goto_if_eq VAR_RESULT, PARTY_SIZE, EventScript_CheckTreeCantCut
 	setfieldeffectargument 0, VAR_RESULT
-	bufferpartymonnick STR_VAR_1, VAR_RESULT
-	buffermovename STR_VAR_2, MOVE_CUT
 	msgbox Text_WantToCut, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, NO, EventScript_CancelCut
-	msgbox Text_MonUsedFieldMove, MSGBOX_DEFAULT
 	closemessage
 EventScript_CutTreeCommon:
 	isfollowerfieldmoveuser VAR_0x8004
@@ -66,11 +63,8 @@ EventScript_RockSmash::
 	checkfieldmove FIELD_MOVE_ROCK_SMASH, TRUE
 	goto_if_eq VAR_RESULT, PARTY_SIZE, EventScript_CantSmashRock
 	setfieldeffectargument 0, VAR_RESULT
-	bufferpartymonnick STR_VAR_1, VAR_RESULT
-	buffermovename STR_VAR_2, MOVE_ROCK_SMASH
 	msgbox Text_WantToSmash, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, NO, EventScript_CancelSmash
-	msgbox Text_MonUsedFieldMove, MSGBOX_DEFAULT
 	closemessage
 EventScript_RockSmashCommon:
 	@ check if follower should use the field move
@@ -218,8 +212,8 @@ Text_WantToSmash:
 	.string "Would you like to use ROCK SMASH?$"
 
 Text_CantSmash:
-	.string "It's a rugged rock, but a POKéMON\n"
-	.string "may be able to smash it.$"
+	.string "It's a rugged rock.\n"
+	.string "It can't be broken yet.$"
 
 EventScript_StrengthBoulder::
 	lockall
@@ -264,18 +258,16 @@ EventScript_CancelStrength::
 	end
 
 Text_WantToStrength:
-	.string "It's a big boulder, but a POKéMON\n"
-	.string "may be able to push it aside.\p"
+	.string "It's a big boulder.\p"
 	.string "Would you like to use STRENGTH?$"
 
 Text_MonUsedStrength:
-	.string "{STR_VAR_1} used STRENGTH!\p"
-	.string "{STR_VAR_1}'s STRENGTH made it\n"
-	.string "possible to move boulders around!$"
+	.string "STRENGTH made it possible to move\n"
+	.string "boulders around.$"
 
 Text_CantStrength:
-	.string "It's a big boulder, but a POKéMON\n"
-	.string "may be able to push it aside.$"
+	.string "It's a big boulder.\n"
+	.string "It won't budge yet.$"
 
 Text_StrengthActivated:
 	.string "STRENGTH made it possible to move\n"
@@ -285,11 +277,9 @@ EventScript_UseWaterfall::
 	lockall
 	checkfieldmove FIELD_MOVE_WATERFALL
 	goto_if_eq VAR_RESULT, PARTY_SIZE, EventScript_CantWaterfall
-	bufferpartymonnick STR_VAR_1, VAR_RESULT
 	setfieldeffectargument 0, VAR_RESULT
 	msgbox Text_WantToWaterfall, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, NO, EventScript_EndWaterfall
-	msgbox Text_MonUsedWaterfall, MSGBOX_DEFAULT
 	hidefollowernpc
 	dofieldeffect FLDEFF_USE_WATERFALL
 	callnative FollowerNPC_WarpSetEnd
@@ -321,12 +311,10 @@ EventScript_UseDive::
 	checkfieldmove FIELD_MOVE_DIVE
 	goto_if_eq VAR_RESULT, PARTY_SIZE, EventScript_CantDive
 	copyvar 0x8004 VAR_RESULT
-	bufferpartymonnick STR_VAR_1, VAR_RESULT
 	setfieldeffectargument 0, VAR_RESULT
 	setfieldeffectargument 1, 1
 	msgbox Text_WantToDive, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, NO, EventScript_EndDive
-	msgbox Text_MonUsedDive, MSGBOX_DEFAULT
 	hidefollowernpc
 	setfieldeffectargument 0, VAR_0x8004
 	setfieldeffectargument 1, 1
@@ -347,12 +335,10 @@ EventScript_UseDiveUnderwater::
 	lockall
 	checkfieldmove FIELD_MOVE_DIVE
 	goto_if_eq VAR_RESULT, PARTY_SIZE, EventScript_CantSurface
-	bufferpartymonnick STR_VAR_1, VAR_RESULT
 	setfieldeffectargument 0, VAR_RESULT
 	setfieldeffectargument 1, 1
 	msgbox Text_WantToSurface, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, NO, EventScript_NoSurface
-	msgbox Text_MonUsedDive, MSGBOX_DEFAULT
 	hidefollowernpc
 	dofieldeffect FLDEFF_USE_DIVE
 	goto EventScript_EndSurface
@@ -400,8 +386,8 @@ EventScript_UseCutGrass::
 	goto EventScript_CutGrassCommon
 
 Text_CantDive:
-	.string "The sea is deep here. A POKéMON\n"
-	.string "may be able to go underwater.$"
+	.string "The sea is deep here.\n"
+	.string "You can't DIVE here yet.$"
 
 Text_WantToDive:
 	.string "The sea is deep here.\n"
@@ -412,7 +398,7 @@ Text_MonUsedDive:
 
 Text_CantSurface:
 	.string "Light is filtering down from above.\n"
-	.string "A POKéMON may be able to surface.$"
+	.string "You can't surface here yet.$"
 
 Text_WantToSurface:
 	.string "Light is filtering down from above.\n"
