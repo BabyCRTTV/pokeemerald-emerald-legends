@@ -21,6 +21,8 @@ jobs:
           test -f docs/index.html
           test -f docs/changelog.html
           test -f docs/VERSIONING.md
+          test -f include/legends_settings.h
+          test -f src/legends_settings.c
 
           VERSION_NUMBER="$(tr -d '\r\n' < VERSION)"
 
@@ -46,3 +48,10 @@ jobs:
           test "$(grep -Fc "<h2>v$VERSION_NUMBER " docs/changelog.html)" -eq 2
           grep -Fq 'href="changelog.html#release"' docs/index.html
           grep -Fq 'href="changelog.html#debug"' docs/index.html
+
+          grep -Fq '#define I_EXP_SHARE_FLAG        FLAG_LEGENDS_EXP_SHARE' include/config/item.h
+          grep -Fq '#define FLAG_LEGENDS_EXP_SHARE' include/constants/flags.h
+          grep -Fq 'COMPOUND_STRING("EXP SHARE")' src/option_menu.c
+          grep -Fq 'LegendsInitNewGameSettings();' src/new_game.c
+          grep -Fq 'LegendsEnsureSettingsInitialized();' src/overworld.c
+

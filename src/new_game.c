@@ -13,6 +13,7 @@
 #include "match_call.h"
 #include "lilycove_lady.h"
 #include "load_save.h"
+#include "legends_settings.h"
 #include "pokeblock.h"
 #include "dewford_trend.h"
 #include "berry.h"
@@ -184,6 +185,7 @@ void NewGameInitData(void)
     PlayTimeCounter_Reset();
     ClearPokedexFlags();
     InitEventData();
+    LegendsInitNewGameSettings();
     ClearTVShowData();
     ResetGabbyAndTy();
     ClearSecretBases();

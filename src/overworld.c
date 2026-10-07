@@ -36,6 +36,7 @@
 #include "link.h"
 #include "link_rfu.h"
 #include "load_save.h"
+#include "legends_settings.h"
 #include "main.h"
 #include "malloc.h"
 #include "m4a.h"
@@ -2119,6 +2120,7 @@ void CB2_ContinueSavedGame(void)
     FieldClearVBlankHBlankCallbacks();
     StopMapMusic();
     ResetSafariZoneFlag_();
+    LegendsEnsureSettingsInitialized();
     if (gSaveFileStatus == SAVE_STATUS_ERROR)
         ResetWinStreaks();
 

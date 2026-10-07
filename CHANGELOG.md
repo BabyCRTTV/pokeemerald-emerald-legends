@@ -4,6 +4,19 @@ All notable Pokémon Emerald: Legends project changes are documented here.
 
 For build-specific player views, see [CHANGELOG-RELEASE.md](CHANGELOG-RELEASE.md) and [CHANGELOG-DEBUG.md](CHANGELOG-DEBUG.md). The canonical history below records the project as a whole.
 
+## [0.0.5] - 2026-10-07
+
+### Added
+- Added Gen 6-style party-wide EXP Share from the start of the game.
+- Added an `EXP SHARE` ON/OFF setting to the normal Options menu.
+- Added a one-time settings migration so saves created before 0.0.5 start with the new EXP Share enabled.
+
+### Changed
+- When EXP Share is ON, battle participants receive full EXP while eligible non-participating party Pokémon receive the Gen 6-style half share.
+- The system reuses pokeemerald-expansion's native EXP pipeline, preserving existing Lucky Egg, traded-Pokémon, scaled EXP, catch EXP, and level-cap handling.
+- The Options menu layout was tightened vertically by one tile row so the additional setting fits without reducing normal row spacing.
+- Lucky Egg behavior remains unchanged and is tracked separately from EXP Share tuning.
+
 ## [0.0.4.2] - 2026-10-07
 
 ### Fixed

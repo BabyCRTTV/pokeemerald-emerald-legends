@@ -2,6 +2,18 @@
 
 This is the player-facing history for the recommended **Release** build. Shared Legends changes are repeated here so this file stands on its own; Release-only behavior is called out separately.
 
+## [0.0.5] - 2026-10-07
+
+### Shared changes
+- Added default-on Gen 6-style party EXP Share from the beginning of the game.
+- Added an `EXP SHARE` ON/OFF setting to Options.
+- Added one-time migration for pre-0.0.5 saves so the new setting starts enabled.
+- Reused the expansion-native EXP pipeline so existing multipliers and level-cap behavior remain intact.
+
+### Release-specific
+- No Release-only gameplay divergence in this version.
+- Release includes the full EXP Share setting with developer/debug entry points disabled.
+
 ## [0.0.4.2] - 2026-10-07
 
 ### Shared changes
