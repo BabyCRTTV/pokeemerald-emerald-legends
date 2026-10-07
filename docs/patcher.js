@@ -2,8 +2,8 @@
   "use strict";
 
   const EXPECTED_SHA1 = "f3ae088181bf583e55daf962a92bb46f4f1d07b7";
-  const PATCH_URL = "downloads/Pokemon-Emerald-Legends-v0.1.bps";
-  const OUTPUT_NAME = "Pokemon-Emerald-Legends-v0.1.gba";
+  const PATCH_URL = "downloads/Pokemon-Emerald-Legends-v0.0.1.bps";
+  const OUTPUT_NAME = "Pokemon-Emerald-Legends-v0.0.1.gba";
 
   const input = document.getElementById("rom-file");
   const button = document.getElementById("patch-button");
@@ -38,7 +38,7 @@
       }
 
       sourceBytes = new Uint8Array(buffer);
-      setStatus("Clean ROM verified. Ready to build Emerald: Legends v0.1.", "ok");
+      setStatus("Clean ROM verified. Ready to build Emerald: Legends v0.0.1.", "ok");
       button.disabled = false;
     } catch (err) {
       setStatus(err.message || String(err), "error");
@@ -50,10 +50,10 @@
 
     button.disabled = true;
     try {
-      setStatus("Downloading the v0.1 BPS patch…", "busy");
+      setStatus("Downloading the v0.0.1 BPS patch…", "busy");
       const response = await fetch(PATCH_URL, { cache: "no-store" });
       if (!response.ok) {
-        throw new Error("The v0.1 patch is still being built. Please try again shortly.");
+        throw new Error("The v0.0.1 patch is still being built. Please try again shortly.");
       }
 
       const patchBytes = new Uint8Array(await response.arrayBuffer());
@@ -71,7 +71,7 @@
       anchor.remove();
       setTimeout(() => URL.revokeObjectURL(url), 1000);
 
-      setStatus("Done. Your Emerald: Legends v0.1 .gba has been created locally.", "ok");
+      setStatus("Done. Your Emerald: Legends v0.0.1 .gba has been created locally.", "ok");
     } catch (err) {
       setStatus(err.message || String(err), "error");
     } finally {
