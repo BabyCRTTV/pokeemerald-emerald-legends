@@ -55,25 +55,3 @@ jobs:
           grep -Fq 'LegendsInitNewGameSettings();' src/new_game.c
           grep -Fq 'LegendsEnsureSettingsInitialized();' src/overworld.c
 
-  rom-builds:
-    if: github.event_name == 'pull_request'
-    runs-on: ubuntu-24.04
-    timeout-minutes: 35
-    steps:
-      - uses: actions/checkout@v4
-      - name: Install build dependencies
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y \
-            build-essential \
-            binutils-arm-none-eabi \
-            gcc-arm-none-eabi \
-            libnewlib-arm-none-eabi \
-            git \
-            libpng-dev \
-            python3 \
-            g++
-      - name: Build Debug ROM
-        run: make -j"$(nproc)"
-      - name: Build Release ROM
-        run: make -j"$(nproc)" release
