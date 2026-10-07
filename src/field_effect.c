@@ -2083,7 +2083,8 @@ static bool8 WaterfallFieldEffect_ShowMon(struct Task *task, struct ObjectEvent 
     {
         ObjectEventClearHeldMovementIfFinished(objectEvent);
         gFieldEffectArguments[0] = task->tMonId;
-        FieldEffectStart(FLDEFF_FIELD_MOVE_SHOW_MON_INIT);
+        if (!gFieldEffectArguments[7])
+            FieldEffectStart(FLDEFF_FIELD_MOVE_SHOW_MON_INIT);
         task->tState++;
     }
     return FALSE;
@@ -2122,6 +2123,7 @@ static bool8 WaterfallFieldEffect_ContinueRideOrEnd(struct Task *task, struct Ob
     gPlayerAvatar.preventStep = FALSE;
     DestroyTask(FindTaskIdByFunc(Task_UseWaterfall));
     FieldEffectActiveListRemove(FLDEFF_USE_WATERFALL);
+    gFieldEffectArguments[7] = FALSE;
     return FALSE;
 }
 
@@ -2154,7 +2156,8 @@ static bool8 DiveFieldEffect_ShowMon(struct Task *task)
 {
     LockPlayerFieldControls();
     gFieldEffectArguments[0] = task->data[15];
-    FieldEffectStart(FLDEFF_FIELD_MOVE_SHOW_MON_INIT);
+    if (!gFieldEffectArguments[7])
+        FieldEffectStart(FLDEFF_FIELD_MOVE_SHOW_MON_INIT);
     task->data[0]++;
     return FALSE;
 }
@@ -2168,6 +2171,7 @@ static bool8 DiveFieldEffect_TryWarp(struct Task *task)
     if (!FieldEffectActiveListContains(FLDEFF_FIELD_MOVE_SHOW_MON))
     {
         TryDoDiveWarp(&mapPosition, gObjectEvents[gPlayerAvatar.objectEventId].currentMetatileBehavior);
+        gFieldEffectArguments[7] = FALSE;
         DestroyTask(FindTaskIdByFunc(Task_UseDive));
         FieldEffectActiveListRemove(FLDEFF_USE_DIVE);
     }
@@ -3389,7 +3393,8 @@ static void SurfFieldEffect_ShowMon(struct Task *task)
     if (ObjectEventCheckHeldMovementStatus(objectEvent))
     {
         gFieldEffectArguments[0] = task->tMonId | SHOW_MON_CRY_NO_DUCKING;
-        FieldEffectStart(FLDEFF_FIELD_MOVE_SHOW_MON_INIT);
+        if (!gFieldEffectArguments[7])
+            FieldEffectStart(FLDEFF_FIELD_MOVE_SHOW_MON_INIT);
         task->tState++;
     }
 }
@@ -3428,6 +3433,7 @@ static void SurfFieldEffect_End(struct Task *task)
         UnfreezeObjectEvents();
         UnlockPlayerFieldControls();
         FieldEffectActiveListRemove(FLDEFF_USE_SURF);
+        gFieldEffectArguments[7] = FALSE;
         DestroyTask(FindTaskIdByFunc(Task_SurfFieldEffect));
     }
 }
@@ -3564,7 +3570,7 @@ static void FlyOutFieldEffect_ShowMon(struct Task *task)
     {
         task->tState++;
         gFieldEffectArguments[0] = task->tMonId;
-        if (!gSkipShowMonAnim)
+        if (!gSkipShowMonAnim && !gFieldEffectArguments[7])
             FieldEffectStart(FLDEFF_FIELD_MOVE_SHOW_MON_INIT);
     }
 }
@@ -3814,7 +3820,8 @@ static void StartFlyBirdReturnToBall(u8 spriteId)
 u8 FldEff_FlyIn(void)
 {
     CreateTask(Task_FlyIn, 254);
-    gSkipShowMonAnim = FALSE; // Clears this variable so flying via the party menu keeps the show mon animation
+    gSkipShowMonAnim = FALSE;
+    gFieldEffectArguments[7] = FALSE; // Legends badge utilities do not show an arbitrary party Pokémon
     return 0;
 }
 
