@@ -672,6 +672,10 @@
 #define FLAG_LEGENDS_EXP_SHARE                       FLAG_UNUSED_0x264
 #define FLAG_LEGENDS_SETTINGS_INITIALIZED            FLAG_UNUSED_0x265
 #define FLAG_LEGENDS_CHAMPION_RARE_CANDY_REWARD     FLAG_UNUSED_0x266
+// Persistent DexNav flags; IDs are kept distinct from other Legends state.
+#define FLAG_LEGENDS_DEXNAV_UNLOCKED                 FLAG_UNUSED_0x267
+#define FLAG_LEGENDS_DEXNAV_SEARCHING                FLAG_UNUSED_0x268
+#define FLAG_LEGENDS_DEXNAV_DETECTOR_MODE            FLAG_UNUSED_0x269
 #define FLAG_UNUSED_0x267  0x267 // Unused Flag
 #define FLAG_UNUSED_0x268  0x268 // Unused Flag
 #define FLAG_UNUSED_0x269  0x269 // Unused Flag
