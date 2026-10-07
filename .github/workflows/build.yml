@@ -1,11 +1,10 @@
 name: CI
 
+# Upstream multi-game compatibility workflow.
+# Emerald: Legends uses build-release-patch.yml for automatic Emerald builds.
+# Keep this available manually when checking compatibility with other bases.
 on:
-  push:
-    branches:
-      - master
-      - upcoming
-  pull_request:
+  workflow_dispatch:
 
 env:
   GAME_REVISION: 0
