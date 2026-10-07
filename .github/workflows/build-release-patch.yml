@@ -1,0 +1,104 @@
+name: Build release patch
+
+on:
+  push:
+    branches: [ master ]
+    paths:
+      - '.github/workflows/build-release-patch.yml'
+      - 'VERSION'
+      - 'src/**'
+      - 'include/**'
+      - 'data/**'
+      - 'graphics/**'
+      - 'sound/**'
+      - 'maps/**'
+      - 'scripts/**'
+      - 'Makefile'
+      - 'make_tools.mk'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: legends-release-patch
+  cancel-in-progress: true
+
+jobs:
+  build-patch:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+
+    steps:
+      - name: Checkout Emerald Legends
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Install build dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y \
+            build-essential \
+            binutils-arm-none-eabi \
+            gcc-arm-none-eabi \
+            libnewlib-arm-none-eabi \
+            git \
+            libpng-dev \
+            python3 \
+            g++
+
+      - name: Build Emerald Legends
+        run: make -j2
+
+      - name: Build matching vanilla Pokémon Emerald
+        run: |
+          git clone --depth 1 https://github.com/pret/pokeemerald.git /tmp/pokeemerald-vanilla
+          git clone --depth 1 https://github.com/pret/agbcc.git /tmp/agbcc
+          cd /tmp/agbcc
+          ./build.sh
+          ./install.sh /tmp/pokeemerald-vanilla
+          make -C /tmp/pokeemerald-vanilla -j2
+
+      - name: Verify vanilla ROM identity
+        run: |
+          echo "f3ae088181bf583e55daf962a92bb46f4f1d07b7  /tmp/pokeemerald-vanilla/pokeemerald.gba" | sha1sum -c -
+
+      - name: Build Floating IPS
+        run: |
+          git clone --depth 1 https://github.com/bates64/flips.git /tmp/flips
+          cd /tmp/flips
+          chmod +x make-linux.sh
+          ./make-linux.sh
+
+      - name: Create and verify BPS patch
+        run: |
+          mkdir -p docs/downloads
+          /tmp/flips/flips --create --bps \
+            /tmp/pokeemerald-vanilla/pokeemerald.gba \
+            pokeemerald.gba \
+            docs/downloads/Pokemon-Emerald-Legends-v0.1.bps
+
+          /tmp/flips/flips --apply \
+            docs/downloads/Pokemon-Emerald-Legends-v0.1.bps \
+            /tmp/pokeemerald-vanilla/pokeemerald.gba \
+            /tmp/emerald-legends-verified.gba
+
+          cmp /tmp/emerald-legends-verified.gba pokeemerald.gba
+          sha256sum docs/downloads/Pokemon-Emerald-Legends-v0.1.bps > docs/downloads/SHA256SUMS.txt
+          sha256sum pokeemerald.gba >> docs/downloads/SHA256SUMS.txt
+
+      - name: Commit patch to site
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/downloads/Pokemon-Emerald-Legends-v0.1.bps docs/downloads/SHA256SUMS.txt
+
+          if git diff --cached --quiet; then
+            echo "Release patch is already current."
+            exit 0
+          fi
+
+          git commit -m "Release: refresh Emerald Legends v0.1 BPS patch [skip ci]"
+          git push
