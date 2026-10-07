@@ -2300,6 +2300,32 @@ bool8 ScrCmd_checkfieldmove(struct ScriptContext *ctx)
     Script_RequestEffects(SCREFF_V1);
 
     gSpecialVar_Result = PARTY_SIZE;
+
+    // Legends treats Emerald's eight HM actions as badge-earned field utilities.
+    // They no longer require a party Pokémon to know the corresponding move.
+    // We still provide a valid non-Egg party slot to the existing field-effect
+    // animation code so map scripting and follower behavior remain compatible.
+    if (FieldMove_IsBadgeUtility(fieldMove))
+    {
+        if (!IsFieldMoveUnlocked(fieldMove))
+            return FALSE;
+
+        for (u32 i = 0; i < PARTY_SIZE; i++)
+        {
+            enum Species species = GetMonData(&gParties[B_TRAINER_PLAYER][i], MON_DATA_SPECIES);
+            if (!species)
+                break;
+
+            if (!GetMonData(&gParties[B_TRAINER_PLAYER][i], MON_DATA_IS_EGG))
+            {
+                gSpecialVar_Result = i;
+                gSpecialVar_0x8004 = species;
+                break;
+            }
+        }
+        return FALSE;
+    }
+
     if (doUnlockedCheck && !IsFieldMoveUnlocked(fieldMove))
         return FALSE;
 
