@@ -110,6 +110,7 @@ enum {
     MENU_CATALOG_MOWER,
     MENU_CHANGE_FORM,
     MENU_CHANGE_ABILITY,
+    MENU_FIELD_UTILS,
     MENU_FIELD_MOVES
 };
 
@@ -185,7 +186,7 @@ struct PartyMenuInternal
     u32 spriteIdCancelPokeball:7;
     u32 messageId:14;
     u8 windowId[3];
-    u8 actions[8];
+    u8 actions[9];
     u8 numActions;
     // In vanilla Emerald, only the first 0xB0 hwords (0x160 bytes) are actually used.
     // However, a full 0x100 hwords (0x200 bytes) are allocated.
@@ -474,6 +475,7 @@ static void CursorCb_Trade1(u8);
 static void CursorCb_Trade2(u8);
 static void CursorCb_Toss(u8);
 static void CursorCb_FieldMove(u8);
+static void CursorCb_FieldUtilities(u8);
 static void CursorCb_CatalogBulb(u8);
 static void CursorCb_CatalogOven(u8);
 static void CursorCb_CatalogWashing(u8);
@@ -509,6 +511,7 @@ static const u8 sText_askText[] = _("Would you like to change {STR_VAR_1}'s\nabi
 static const u8 sText_doneText[] = _("{STR_VAR_1}'s ability became\n{STR_VAR_2}!{PAUSE_UNTIL_PRESS}");
 static const u8 sText_BasePointsResetToZero[] = _("{STR_VAR_1}'s base points\nwere all reset to zero!{PAUSE_UNTIL_PRESS}");
 static const u8 sText_CannotSendMonToBoxHM[] = _("Cannot send that mon to the box,\nbecause it knows a HM move.{PAUSE_UNTIL_PRESS}");
+static const u8 sText_FieldUtilities[] = _("Choose a field action.");
 static const u8 sText_CannotSendMonToBoxPartner[] = _("Cannot send a mon that doesn't\nbelong to you to the box.{PAUSE_UNTIL_PRESS}");
 
 // static const data
@@ -2954,12 +2957,13 @@ static void SetPartyMonFieldSelectionActions(struct Pokemon *mons, u8 slotId)
     sPartyMenuInternal->numActions = 0;
     AppendToList(sPartyMenuInternal->actions, &sPartyMenuInternal->numActions, MENU_SUMMARY);
 
-    // Add field moves to action list
+    // Learned non-HM field moves remain tied to the selected Pokémon.
+    // Legends' eight HM utilities live behind one global FIELD entry instead.
     for (i = 0; i < MAX_MON_MOVES; i++)
     {
         for (j = 0; j != FIELD_MOVES_COUNT; j++)
         {
-            if (!FieldMove_IsVisible(j))
+            if (!FieldMove_IsVisible(j) || FieldMove_IsBadgeUtility(j))
                 continue;
 
             if (GetMonData(&mons[slotId], i + MON_DATA_MOVE1) == FieldMove_GetMoveId(j))
@@ -2967,6 +2971,16 @@ static void SetPartyMonFieldSelectionActions(struct Pokemon *mons, u8 slotId)
                 AppendToList(sPartyMenuInternal->actions, &sPartyMenuInternal->numActions, j + MENU_FIELD_MOVES);
                 break;
             }
+        }
+    }
+
+    // Expose one compact global entry as soon as the first badge utility is earned.
+    for (j = FIELD_MOVE_CUT; j <= FIELD_MOVE_WATERFALL; j++)
+    {
+        if (IsFieldMoveUnlocked(j))
+        {
+            AppendToList(sPartyMenuInternal->actions, &sPartyMenuInternal->numActions, MENU_FIELD_UTILS);
+            break;
         }
     }
 
@@ -4083,6 +4097,28 @@ static void Task_HandleSpinTradeYesNoInput(u8 taskId)
         Task_ReturnToChooseMonAfterText(taskId);
         break;
     }
+}
+
+static void CursorCb_FieldUtilities(u8 taskId)
+{
+    u8 fieldMove;
+
+    PlaySE(SE_SELECT);
+    PartyMenuRemoveWindow(&sPartyMenuInternal->windowId[0]);
+    PartyMenuRemoveWindow(&sPartyMenuInternal->windowId[1]);
+
+    sPartyMenuInternal->numActions = 0;
+    for (fieldMove = FIELD_MOVE_CUT; fieldMove <= FIELD_MOVE_WATERFALL; fieldMove++)
+    {
+        if (IsFieldMoveUnlocked(fieldMove))
+            AppendToList(sPartyMenuInternal->actions, &sPartyMenuInternal->numActions, fieldMove + MENU_FIELD_MOVES);
+    }
+    AppendToList(sPartyMenuInternal->actions, &sPartyMenuInternal->numActions, MENU_CANCEL1);
+
+    DisplaySelectionWindow(SELECTWINDOW_ACTIONS);
+    DisplayPartyMenuMessage(sText_FieldUtilities, TRUE);
+    gTasks[taskId].data[0] = 0xFF;
+    gTasks[taskId].func = Task_HandleSelectionMenuInput;
 }
 
 static void CursorCb_FieldMove(u8 taskId)
