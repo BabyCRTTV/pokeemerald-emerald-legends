@@ -8,6 +8,7 @@ EventScript_CutTree::
 	goto_if_eq VAR_RESULT, NO, EventScript_CancelCut
 	closemessage
 EventScript_CutTreeCommon:
+	setfieldeffectargument 7, TRUE
 	isfollowerfieldmoveuser VAR_0x8004
 	setfieldeffectargument 3, VAR_0x8004 @ skip pose if so
 	dofieldeffect FLDEFF_USE_CUT_ON_TREE
@@ -67,6 +68,7 @@ EventScript_RockSmash::
 	goto_if_eq VAR_RESULT, NO, EventScript_CancelSmash
 	closemessage
 EventScript_RockSmashCommon:
+	setfieldeffectargument 7, TRUE
 	@ check if follower should use the field move
 	isfollowerfieldmoveuser VAR_0x8004
 	setfieldeffectargument 3, VAR_0x8004 @ skip pose if so
@@ -224,6 +226,7 @@ EventScript_StrengthBoulder::
 	msgbox Text_WantToStrength, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, NO, EventScript_CancelStrength
 	closemessage
+	setfieldeffectargument 7, TRUE
 	dofieldeffect FLDEFF_USE_STRENGTH
 	waitstate
 	goto EventScript_ActivateStrength
@@ -231,6 +234,7 @@ EventScript_StrengthBoulder::
 
 EventScript_UseStrength::
 	lockall
+	setfieldeffectargument 7, TRUE
 	dofieldeffect FLDEFF_USE_STRENGTH
 	waitstate
 	goto EventScript_ActivateStrength
@@ -281,6 +285,7 @@ EventScript_UseWaterfall::
 	msgbox Text_WantToWaterfall, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, NO, EventScript_EndWaterfall
 	hidefollowernpc
+	setfieldeffectargument 7, TRUE
 	dofieldeffect FLDEFF_USE_WATERFALL
 	callnative FollowerNPC_WarpSetEnd
 	goto EventScript_EndWaterfall
@@ -316,6 +321,7 @@ EventScript_UseDive::
 	msgbox Text_WantToDive, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, NO, EventScript_EndDive
 	hidefollowernpc
+	setfieldeffectargument 7, TRUE
 	setfieldeffectargument 0, VAR_0x8004
 	setfieldeffectargument 1, 1
 	dofieldeffect FLDEFF_USE_DIVE
@@ -340,6 +346,7 @@ EventScript_UseDiveUnderwater::
 	msgbox Text_WantToSurface, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, NO, EventScript_NoSurface
 	hidefollowernpc
+	setfieldeffectargument 7, TRUE
 	dofieldeffect FLDEFF_USE_DIVE
 	goto EventScript_EndSurface
 	end
