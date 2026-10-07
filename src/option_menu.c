@@ -3,6 +3,7 @@
 #include "bg.h"
 #include "gpu_regs.h"
 #include "international_string_util.h"
+#include "legends_settings.h"
 #include "main.h"
 #include "menu.h"
 #include "palette.h"
@@ -23,12 +24,14 @@
 #define tSound data[4]
 #define tButtonMode data[5]
 #define tWindowFrameType data[6]
+#define tExpShare data[7]
 
 enum
 {
     MENUITEM_TEXTSPEED,
     MENUITEM_BATTLESCENE,
     MENUITEM_BATTLESTYLE,
+    MENUITEM_EXPSHARE,
     MENUITEM_SOUND,
     MENUITEM_BUTTONMODE,
     MENUITEM_FRAMETYPE,
@@ -42,12 +45,16 @@ enum
     WIN_OPTIONS
 };
 
-#define YPOS_TEXTSPEED    (MENUITEM_TEXTSPEED * 16)
-#define YPOS_BATTLESCENE  (MENUITEM_BATTLESCENE * 16)
-#define YPOS_BATTLESTYLE  (MENUITEM_BATTLESTYLE * 16)
-#define YPOS_SOUND        (MENUITEM_SOUND * 16)
-#define YPOS_BUTTONMODE   (MENUITEM_BUTTONMODE * 16)
-#define YPOS_FRAMETYPE    (MENUITEM_FRAMETYPE * 16)
+#define OPTION_ROW_HEIGHT 16
+#define OPTION_WINDOW_Y   32
+
+#define YPOS_TEXTSPEED    (MENUITEM_TEXTSPEED * OPTION_ROW_HEIGHT)
+#define YPOS_BATTLESCENE  (MENUITEM_BATTLESCENE * OPTION_ROW_HEIGHT)
+#define YPOS_BATTLESTYLE  (MENUITEM_BATTLESTYLE * OPTION_ROW_HEIGHT)
+#define YPOS_EXPSHARE     (MENUITEM_EXPSHARE * OPTION_ROW_HEIGHT)
+#define YPOS_SOUND        (MENUITEM_SOUND * OPTION_ROW_HEIGHT)
+#define YPOS_BUTTONMODE   (MENUITEM_BUTTONMODE * OPTION_ROW_HEIGHT)
+#define YPOS_FRAMETYPE    (MENUITEM_FRAMETYPE * OPTION_ROW_HEIGHT)
 
 static void Task_OptionMenuFadeIn(u8 taskId);
 static void Task_OptionMenuProcessInput(u8 taskId);
@@ -60,6 +67,8 @@ static u8 BattleScene_ProcessInput(u8 selection);
 static void BattleScene_DrawChoices(u8 selection);
 static u8 BattleStyle_ProcessInput(u8 selection);
 static void BattleStyle_DrawChoices(u8 selection);
+static u8 ExpShare_ProcessInput(u8 selection);
+static void ExpShare_DrawChoices(u8 selection);
 static u8 Sound_ProcessInput(u8 selection);
 static void Sound_DrawChoices(u8 selection);
 static u8 FrameType_ProcessInput(u8 selection);
@@ -74,9 +83,9 @@ EWRAM_DATA static bool8 sArrowPressed = FALSE;
 
 static const u8 gText_Option[]             = _("OPTION");
 #ifdef RELEASE
-static const u8 gText_LegendsVersion[]      = _("LEGENDS v0.0.4.2");
+static const u8 gText_LegendsVersion[]      = _("LEGENDS v0.0.5");
 #else
-static const u8 gText_LegendsVersion[]      = _("LEGENDS v0.0.4.2-D");
+static const u8 gText_LegendsVersion[]      = _("LEGENDS v0.0.5-D");
 #endif
 static const u8 gText_TextSpeedSlow[]      = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}SLOW");
 static const u8 gText_TextSpeedMid[]       = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}MID");
@@ -85,6 +94,8 @@ static const u8 gText_BattleSceneOn[]      = _("{COLOR GREEN}{SHADOW LIGHT_GREEN
 static const u8 gText_BattleSceneOff[]     = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}OFF");
 static const u8 gText_BattleStyleShift[]   = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}SHIFT");
 static const u8 gText_BattleStyleSet[]     = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}SET");
+static const u8 gText_ExpShareOn[]          = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}ON");
+static const u8 gText_ExpShareOff[]         = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}OFF");
 static const u8 gText_SoundMono[]          = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}MONO");
 static const u8 gText_SoundStereo[]        = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}STEREO");
 static const u8 gText_FrameType[]          = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}TYPE");
@@ -102,6 +113,7 @@ static const u8 *const sOptionMenuItemsNames[MENUITEM_COUNT] =
     [MENUITEM_TEXTSPEED]   = COMPOUND_STRING("TEXT SPEED"),
     [MENUITEM_BATTLESCENE] = COMPOUND_STRING("BATTLE SCENE"),
     [MENUITEM_BATTLESTYLE] = COMPOUND_STRING("BATTLE STYLE"),
+    [MENUITEM_EXPSHARE]     = COMPOUND_STRING("EXP SHARE"),
     [MENUITEM_SOUND]       = COMPOUND_STRING("SOUND"),
     [MENUITEM_BUTTONMODE]  = COMPOUND_STRING("BUTTON MODE"),
     [MENUITEM_FRAMETYPE]   = COMPOUND_STRING("FRAME"),
@@ -115,16 +127,16 @@ static const struct WindowTemplate sOptionMenuWinTemplates[] =
         .tilemapLeft = 2,
         .tilemapTop = 1,
         .width = 26,
-        .height = 2,
+        .height = 1,
         .paletteNum = 1,
         .baseBlock = 2
     },
     [WIN_OPTIONS] = {
         .bg = 0,
         .tilemapLeft = 2,
-        .tilemapTop = 5,
+        .tilemapTop = 4,
         .width = 26,
-        .height = 14,
+        .height = 15,
         .paletteNum = 1,
         .baseBlock = 0x36
     },
@@ -255,10 +267,12 @@ void CB2_InitOptionMenu(void)
         gTasks[taskId].tSound = gSaveBlock2Ptr->optionsSound;
         gTasks[taskId].tButtonMode = gSaveBlock2Ptr->optionsButtonMode;
         gTasks[taskId].tWindowFrameType = gSaveBlock2Ptr->optionsWindowFrameType;
+        gTasks[taskId].tExpShare = LegendsIsExpShareEnabled();
 
         TextSpeed_DrawChoices(gTasks[taskId].tTextSpeed);
         BattleScene_DrawChoices(gTasks[taskId].tBattleSceneOff);
         BattleStyle_DrawChoices(gTasks[taskId].tBattleStyle);
+        ExpShare_DrawChoices(gTasks[taskId].tExpShare);
         Sound_DrawChoices(gTasks[taskId].tSound);
         ButtonMode_DrawChoices(gTasks[taskId].tButtonMode);
         FrameType_DrawChoices(gTasks[taskId].tWindowFrameType);
@@ -336,6 +350,13 @@ static void Task_OptionMenuProcessInput(u8 taskId)
             if (previousOption != gTasks[taskId].tBattleStyle)
                 BattleStyle_DrawChoices(gTasks[taskId].tBattleStyle);
             break;
+        case MENUITEM_EXPSHARE:
+            previousOption = gTasks[taskId].tExpShare;
+            gTasks[taskId].tExpShare = ExpShare_ProcessInput(gTasks[taskId].tExpShare);
+
+            if (previousOption != gTasks[taskId].tExpShare)
+                ExpShare_DrawChoices(gTasks[taskId].tExpShare);
+            break;
         case MENUITEM_SOUND:
             previousOption = gTasks[taskId].tSound;
             gTasks[taskId].tSound = Sound_ProcessInput(gTasks[taskId].tSound);
@@ -377,6 +398,7 @@ static void Task_OptionMenuSave(u8 taskId)
     gSaveBlock2Ptr->optionsSound = gTasks[taskId].tSound;
     gSaveBlock2Ptr->optionsButtonMode = gTasks[taskId].tButtonMode;
     gSaveBlock2Ptr->optionsWindowFrameType = gTasks[taskId].tWindowFrameType;
+    LegendsSetExpShareEnabled(gTasks[taskId].tExpShare);
 
     BeginNormalPaletteFade(PALETTES_ALL, 0, 0, 16, RGB_BLACK);
     gTasks[taskId].func = Task_OptionMenuFadeOut;
@@ -395,7 +417,8 @@ static void Task_OptionMenuFadeOut(u8 taskId)
 static void HighlightOptionMenuItem(u8 index)
 {
     SetGpuReg(REG_OFFSET_WIN0H, WIN_RANGE(16, DISPLAY_WIDTH - 16));
-    SetGpuReg(REG_OFFSET_WIN0V, WIN_RANGE(index * 16 + 40, index * 16 + 56));
+    SetGpuReg(REG_OFFSET_WIN0V, WIN_RANGE(index * OPTION_ROW_HEIGHT + OPTION_WINDOW_Y,
+                                          index * OPTION_ROW_HEIGHT + OPTION_WINDOW_Y + OPTION_ROW_HEIGHT));
 }
 
 static void DrawOptionMenuChoice(const u8 *text, u8 x, u8 y, u8 style)
@@ -506,6 +529,29 @@ static void BattleStyle_DrawChoices(u8 selection)
 
     DrawOptionMenuChoice(gText_BattleStyleShift, 104, YPOS_BATTLESTYLE, styles[0]);
     DrawOptionMenuChoice(gText_BattleStyleSet, GetStringRightAlignXOffset(FONT_NORMAL, gText_BattleStyleSet, 198), YPOS_BATTLESTYLE, styles[1]);
+}
+
+static u8 ExpShare_ProcessInput(u8 selection)
+{
+    if (JOY_NEW(DPAD_LEFT | DPAD_RIGHT))
+    {
+        selection ^= 1;
+        sArrowPressed = TRUE;
+    }
+
+    return selection;
+}
+
+static void ExpShare_DrawChoices(u8 selection)
+{
+    u8 styles[2];
+
+    styles[0] = 0;
+    styles[1] = 0;
+    styles[selection] = 1;
+
+    DrawOptionMenuChoice(gText_ExpShareOn, 104, YPOS_EXPSHARE, styles[0]);
+    DrawOptionMenuChoice(gText_ExpShareOff, GetStringRightAlignXOffset(FONT_NORMAL, gText_ExpShareOff, 198), YPOS_EXPSHARE, styles[1]);
 }
 
 static u8 Sound_ProcessInput(u8 selection)
@@ -652,7 +698,7 @@ static void DrawOptionMenuTexts(void)
 
     FillWindowPixelBuffer(WIN_OPTIONS, PIXEL_FILL(1));
     for (i = 0; i < MENUITEM_COUNT; i++)
-        AddTextPrinterParameterized(WIN_OPTIONS, FONT_NORMAL, sOptionMenuItemsNames[i], 8, (i * 16) + 1, TEXT_SKIP_DRAW, NULL);
+        AddTextPrinterParameterized(WIN_OPTIONS, FONT_NORMAL, sOptionMenuItemsNames[i], 8, (i * OPTION_ROW_HEIGHT) + 1, TEXT_SKIP_DRAW, NULL);
     CopyWindowToVram(WIN_OPTIONS, COPYWIN_FULL);
 }
 
@@ -672,18 +718,18 @@ static void DrawBgWindowFrames(void)
     FillBgTilemapBufferRect(1, TILE_TOP_CORNER_L,  1,  0,  1,  1,  7);
     FillBgTilemapBufferRect(1, TILE_TOP_EDGE,      2,  0, 27,  1,  7);
     FillBgTilemapBufferRect(1, TILE_TOP_CORNER_R, 28,  0,  1,  1,  7);
-    FillBgTilemapBufferRect(1, TILE_LEFT_EDGE,     1,  1,  1,  2,  7);
-    FillBgTilemapBufferRect(1, TILE_RIGHT_EDGE,   28,  1,  1,  2,  7);
-    FillBgTilemapBufferRect(1, TILE_BOT_CORNER_L,  1,  3,  1,  1,  7);
-    FillBgTilemapBufferRect(1, TILE_BOT_EDGE,      2,  3, 27,  1,  7);
-    FillBgTilemapBufferRect(1, TILE_BOT_CORNER_R, 28,  3,  1,  1,  7);
+    FillBgTilemapBufferRect(1, TILE_LEFT_EDGE,     1,  1,  1,  1,  7);
+    FillBgTilemapBufferRect(1, TILE_RIGHT_EDGE,   28,  1,  1,  1,  7);
+    FillBgTilemapBufferRect(1, TILE_BOT_CORNER_L,  1,  2,  1,  1,  7);
+    FillBgTilemapBufferRect(1, TILE_BOT_EDGE,      2,  2, 27,  1,  7);
+    FillBgTilemapBufferRect(1, TILE_BOT_CORNER_R, 28,  2,  1,  1,  7);
 
     // Draw options list window frame
-    FillBgTilemapBufferRect(1, TILE_TOP_CORNER_L,  1,  4,  1,  1,  7);
-    FillBgTilemapBufferRect(1, TILE_TOP_EDGE,      2,  4, 26,  1,  7);
-    FillBgTilemapBufferRect(1, TILE_TOP_CORNER_R, 28,  4,  1,  1,  7);
-    FillBgTilemapBufferRect(1, TILE_LEFT_EDGE,     1,  5,  1, 18,  7);
-    FillBgTilemapBufferRect(1, TILE_RIGHT_EDGE,   28,  5,  1, 18,  7);
+    FillBgTilemapBufferRect(1, TILE_TOP_CORNER_L,  1,  3,  1,  1,  7);
+    FillBgTilemapBufferRect(1, TILE_TOP_EDGE,      2,  3, 26,  1,  7);
+    FillBgTilemapBufferRect(1, TILE_TOP_CORNER_R, 28,  3,  1,  1,  7);
+    FillBgTilemapBufferRect(1, TILE_LEFT_EDGE,     1,  4,  1, 15,  7);
+    FillBgTilemapBufferRect(1, TILE_RIGHT_EDGE,   28,  4,  1, 15,  7);
     FillBgTilemapBufferRect(1, TILE_BOT_CORNER_L,  1, 19,  1,  1,  7);
     FillBgTilemapBufferRect(1, TILE_BOT_EDGE,      2, 19, 26,  1,  7);
     FillBgTilemapBufferRect(1, TILE_BOT_CORNER_R, 28, 19,  1,  1,  7);
