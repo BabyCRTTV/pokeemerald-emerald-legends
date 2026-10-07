@@ -24,6 +24,7 @@ Goal: establish a stable `pokeemerald-expansion` project and implement the first
 - [ ] Seasonal encounter hooks
 
 ### Quality and maintenance
+- [x] Add paged General / Legends Options framework for future settings
 - [ ] Centralize Legends-specific configuration flags
 - [ ] Maintain feature documentation alongside code
 - [ ] Add test save / regression checklist

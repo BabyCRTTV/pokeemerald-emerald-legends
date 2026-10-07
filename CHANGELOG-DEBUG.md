@@ -2,6 +2,17 @@
 
 This is the developer-facing history for the **Debug** build. Shared Legends changes are repeated here so this file stands on its own; Debug-only behavior is called out separately.
 
+## [0.0.8] - 2026-10-07
+
+### Shared changes
+- Reworked Options into two pages: General and Legends.
+- Use L/R in Options to switch pages; the current page is shown in the header.
+- Moved EXP SHARE to the Legends page to reserve clean space for future Legends-specific settings.
+- Restored the original safe Options window dimensions, fixing corrupted/repeating frame graphics and the clipped CANCEL row.
+
+### Debug-specific
+- No Debug-only gameplay divergence in this version; existing developer tools remain available.
+
 ## [0.0.7] - 2026-10-07
 
 ### Shared changes

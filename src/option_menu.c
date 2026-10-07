@@ -25,6 +25,7 @@
 #define tButtonMode data[5]
 #define tWindowFrameType data[6]
 #define tExpShare data[7]
+#define tMenuPage data[8]
 
 enum
 {
@@ -41,20 +42,20 @@ enum
 
 enum
 {
+    OPTION_PAGE_GENERAL,
+    OPTION_PAGE_LEGENDS,
+    OPTION_PAGE_COUNT,
+};
+
+enum
+{
     WIN_HEADER,
     WIN_OPTIONS
 };
 
-#define OPTION_ROW_HEIGHT 16
-#define OPTION_WINDOW_Y   32
-
-#define YPOS_TEXTSPEED    (MENUITEM_TEXTSPEED * OPTION_ROW_HEIGHT)
-#define YPOS_BATTLESCENE  (MENUITEM_BATTLESCENE * OPTION_ROW_HEIGHT)
-#define YPOS_BATTLESTYLE  (MENUITEM_BATTLESTYLE * OPTION_ROW_HEIGHT)
-#define YPOS_EXPSHARE     (MENUITEM_EXPSHARE * OPTION_ROW_HEIGHT)
-#define YPOS_SOUND        (MENUITEM_SOUND * OPTION_ROW_HEIGHT)
-#define YPOS_BUTTONMODE   (MENUITEM_BUTTONMODE * OPTION_ROW_HEIGHT)
-#define YPOS_FRAMETYPE    (MENUITEM_FRAMETYPE * OPTION_ROW_HEIGHT)
+#define OPTION_ROW_HEIGHT     16
+#define OPTION_WINDOW_Y       40
+#define OPTION_PAGE_MAX_ITEMS 7
 
 static void Task_OptionMenuFadeIn(u8 taskId);
 static void Task_OptionMenuProcessInput(u8 taskId);
@@ -62,30 +63,32 @@ static void Task_OptionMenuSave(u8 taskId);
 static void Task_OptionMenuFadeOut(u8 taskId);
 static void HighlightOptionMenuItem(u8 selection);
 static u8 TextSpeed_ProcessInput(u8 selection);
-static void TextSpeed_DrawChoices(u8 selection);
+static void TextSpeed_DrawChoices(u8 selection, u8 y);
 static u8 BattleScene_ProcessInput(u8 selection);
-static void BattleScene_DrawChoices(u8 selection);
+static void BattleScene_DrawChoices(u8 selection, u8 y);
 static u8 BattleStyle_ProcessInput(u8 selection);
-static void BattleStyle_DrawChoices(u8 selection);
+static void BattleStyle_DrawChoices(u8 selection, u8 y);
 static u8 ExpShare_ProcessInput(u8 selection);
-static void ExpShare_DrawChoices(u8 selection);
+static void ExpShare_DrawChoices(u8 selection, u8 y);
 static u8 Sound_ProcessInput(u8 selection);
-static void Sound_DrawChoices(u8 selection);
+static void Sound_DrawChoices(u8 selection, u8 y);
 static u8 FrameType_ProcessInput(u8 selection);
-static void FrameType_DrawChoices(u8 selection);
+static void FrameType_DrawChoices(u8 selection, u8 y);
 static u8 ButtonMode_ProcessInput(u8 selection);
-static void ButtonMode_DrawChoices(u8 selection);
-static void DrawHeaderText(void);
-static void DrawOptionMenuTexts(void);
+static void ButtonMode_DrawChoices(u8 selection, u8 y);
+static void DrawHeaderText(u8 page);
+static void DrawOptionMenuPage(u8 taskId);
+static void ChangeOptionMenuPage(u8 taskId, s8 direction);
+static u8 GetOptionMenuItem(u8 taskId);
 static void DrawBgWindowFrames(void);
 
 EWRAM_DATA static bool8 sArrowPressed = FALSE;
 
-static const u8 gText_Option[]             = _("OPTION");
+static const u8 gText_PageHint[]           = _("L/R");
 #ifdef RELEASE
-static const u8 gText_LegendsVersion[]      = _("LEGENDS v0.0.7");
+static const u8 gText_LegendsVersion[]      = _("LEGENDS v0.0.8");
 #else
-static const u8 gText_LegendsVersion[]      = _("LEGENDS v0.0.7-D");
+static const u8 gText_LegendsVersion[]      = _("LEGENDS v0.0.8-D");
 #endif
 static const u8 gText_TextSpeedSlow[]      = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}SLOW");
 static const u8 gText_TextSpeedMid[]       = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}MID");
@@ -113,11 +116,42 @@ static const u8 *const sOptionMenuItemsNames[MENUITEM_COUNT] =
     [MENUITEM_TEXTSPEED]   = COMPOUND_STRING("TEXT SPEED"),
     [MENUITEM_BATTLESCENE] = COMPOUND_STRING("BATTLE SCENE"),
     [MENUITEM_BATTLESTYLE] = COMPOUND_STRING("BATTLE STYLE"),
-    [MENUITEM_EXPSHARE]     = COMPOUND_STRING("EXP SHARE"),
+    [MENUITEM_EXPSHARE]    = COMPOUND_STRING("EXP SHARE"),
     [MENUITEM_SOUND]       = COMPOUND_STRING("SOUND"),
     [MENUITEM_BUTTONMODE]  = COMPOUND_STRING("BUTTON MODE"),
     [MENUITEM_FRAMETYPE]   = COMPOUND_STRING("FRAME"),
     [MENUITEM_CANCEL]      = COMPOUND_STRING("CANCEL"),
+};
+
+static const u8 *const sOptionMenuPageTitles[OPTION_PAGE_COUNT] =
+{
+    [OPTION_PAGE_GENERAL] = COMPOUND_STRING("GENERAL 1/2"),
+    [OPTION_PAGE_LEGENDS] = COMPOUND_STRING("LEGENDS 2/2"),
+};
+
+static const u8 sOptionMenuPageItems[OPTION_PAGE_COUNT][OPTION_PAGE_MAX_ITEMS] =
+{
+    [OPTION_PAGE_GENERAL] =
+    {
+        MENUITEM_TEXTSPEED,
+        MENUITEM_BATTLESCENE,
+        MENUITEM_BATTLESTYLE,
+        MENUITEM_SOUND,
+        MENUITEM_BUTTONMODE,
+        MENUITEM_FRAMETYPE,
+        MENUITEM_CANCEL,
+    },
+    [OPTION_PAGE_LEGENDS] =
+    {
+        MENUITEM_EXPSHARE,
+        MENUITEM_CANCEL,
+    },
+};
+
+static const u8 sOptionMenuPageItemCounts[OPTION_PAGE_COUNT] =
+{
+    [OPTION_PAGE_GENERAL] = 7,
+    [OPTION_PAGE_LEGENDS] = 2,
 };
 
 static const struct WindowTemplate sOptionMenuWinTemplates[] =
@@ -127,16 +161,16 @@ static const struct WindowTemplate sOptionMenuWinTemplates[] =
         .tilemapLeft = 2,
         .tilemapTop = 1,
         .width = 26,
-        .height = 1,
+        .height = 2,
         .paletteNum = 1,
         .baseBlock = 2
     },
     [WIN_OPTIONS] = {
         .bg = 0,
         .tilemapLeft = 2,
-        .tilemapTop = 4,
+        .tilemapTop = 5,
         .width = 26,
-        .height = 15,
+        .height = 14,
         .paletteNum = 1,
         .baseBlock = 0x36
     },
@@ -242,7 +276,7 @@ void CB2_InitOptionMenu(void)
         break;
     case 6:
         PutWindowTilemap(WIN_HEADER);
-        DrawHeaderText();
+        DrawHeaderText(OPTION_PAGE_GENERAL);
         gMain.state++;
         break;
     case 7:
@@ -250,7 +284,6 @@ void CB2_InitOptionMenu(void)
         break;
     case 8:
         PutWindowTilemap(WIN_OPTIONS);
-        DrawOptionMenuTexts();
         gMain.state++;
     case 9:
         DrawBgWindowFrames();
@@ -261,6 +294,7 @@ void CB2_InitOptionMenu(void)
         u8 taskId = CreateTask(Task_OptionMenuFadeIn, 0);
 
         gTasks[taskId].tMenuSelection = 0;
+        gTasks[taskId].tMenuPage = OPTION_PAGE_GENERAL;
         gTasks[taskId].tTextSpeed = gSaveBlock2Ptr->optionsTextSpeed;
         gTasks[taskId].tBattleSceneOff = gSaveBlock2Ptr->optionsBattleSceneOff;
         gTasks[taskId].tBattleStyle = gSaveBlock2Ptr->optionsBattleStyle;
@@ -269,16 +303,8 @@ void CB2_InitOptionMenu(void)
         gTasks[taskId].tWindowFrameType = gSaveBlock2Ptr->optionsWindowFrameType;
         gTasks[taskId].tExpShare = LegendsIsExpShareEnabled() ? 0 : 1;
 
-        TextSpeed_DrawChoices(gTasks[taskId].tTextSpeed);
-        BattleScene_DrawChoices(gTasks[taskId].tBattleSceneOff);
-        BattleStyle_DrawChoices(gTasks[taskId].tBattleStyle);
-        ExpShare_DrawChoices(gTasks[taskId].tExpShare);
-        Sound_DrawChoices(gTasks[taskId].tSound);
-        ButtonMode_DrawChoices(gTasks[taskId].tButtonMode);
-        FrameType_DrawChoices(gTasks[taskId].tWindowFrameType);
+        DrawOptionMenuPage(taskId);
         HighlightOptionMenuItem(gTasks[taskId].tMenuSelection);
-
-        CopyWindowToVram(WIN_OPTIONS, COPYWIN_FULL);
         gMain.state++;
         break;
     }
@@ -298,9 +324,22 @@ static void Task_OptionMenuFadeIn(u8 taskId)
 
 static void Task_OptionMenuProcessInput(u8 taskId)
 {
-    if (JOY_NEW(A_BUTTON))
+    u8 itemId;
+    u8 itemCount;
+    u8 y;
+
+    // Handle page navigation before A/B so L still changes pages when Button Mode is L=A.
+    if (JOY_NEW(L_BUTTON))
     {
-        if (gTasks[taskId].tMenuSelection == MENUITEM_CANCEL)
+        ChangeOptionMenuPage(taskId, -1);
+    }
+    else if (JOY_NEW(R_BUTTON))
+    {
+        ChangeOptionMenuPage(taskId, 1);
+    }
+    else if (JOY_NEW(A_BUTTON))
+    {
+        if (GetOptionMenuItem(taskId) == MENUITEM_CANCEL)
             gTasks[taskId].func = Task_OptionMenuSave;
     }
     else if (JOY_NEW(B_BUTTON))
@@ -309,15 +348,17 @@ static void Task_OptionMenuProcessInput(u8 taskId)
     }
     else if (JOY_NEW(DPAD_UP))
     {
+        itemCount = sOptionMenuPageItemCounts[gTasks[taskId].tMenuPage];
         if (gTasks[taskId].tMenuSelection > 0)
             gTasks[taskId].tMenuSelection--;
         else
-            gTasks[taskId].tMenuSelection = MENUITEM_CANCEL;
+            gTasks[taskId].tMenuSelection = itemCount - 1;
         HighlightOptionMenuItem(gTasks[taskId].tMenuSelection);
     }
     else if (JOY_NEW(DPAD_DOWN))
     {
-        if (gTasks[taskId].tMenuSelection < MENUITEM_CANCEL)
+        itemCount = sOptionMenuPageItemCounts[gTasks[taskId].tMenuPage];
+        if (gTasks[taskId].tMenuSelection < itemCount - 1)
             gTasks[taskId].tMenuSelection++;
         else
             gTasks[taskId].tMenuSelection = 0;
@@ -327,56 +368,59 @@ static void Task_OptionMenuProcessInput(u8 taskId)
     {
         u8 previousOption;
 
-        switch (gTasks[taskId].tMenuSelection)
+        itemId = GetOptionMenuItem(taskId);
+        y = gTasks[taskId].tMenuSelection * OPTION_ROW_HEIGHT;
+
+        switch (itemId)
         {
         case MENUITEM_TEXTSPEED:
             previousOption = gTasks[taskId].tTextSpeed;
             gTasks[taskId].tTextSpeed = TextSpeed_ProcessInput(gTasks[taskId].tTextSpeed);
 
             if (previousOption != gTasks[taskId].tTextSpeed)
-                TextSpeed_DrawChoices(gTasks[taskId].tTextSpeed);
+                TextSpeed_DrawChoices(gTasks[taskId].tTextSpeed, y);
             break;
         case MENUITEM_BATTLESCENE:
             previousOption = gTasks[taskId].tBattleSceneOff;
             gTasks[taskId].tBattleSceneOff = BattleScene_ProcessInput(gTasks[taskId].tBattleSceneOff);
 
             if (previousOption != gTasks[taskId].tBattleSceneOff)
-                BattleScene_DrawChoices(gTasks[taskId].tBattleSceneOff);
+                BattleScene_DrawChoices(gTasks[taskId].tBattleSceneOff, y);
             break;
         case MENUITEM_BATTLESTYLE:
             previousOption = gTasks[taskId].tBattleStyle;
             gTasks[taskId].tBattleStyle = BattleStyle_ProcessInput(gTasks[taskId].tBattleStyle);
 
             if (previousOption != gTasks[taskId].tBattleStyle)
-                BattleStyle_DrawChoices(gTasks[taskId].tBattleStyle);
+                BattleStyle_DrawChoices(gTasks[taskId].tBattleStyle, y);
             break;
         case MENUITEM_EXPSHARE:
             previousOption = gTasks[taskId].tExpShare;
             gTasks[taskId].tExpShare = ExpShare_ProcessInput(gTasks[taskId].tExpShare);
 
             if (previousOption != gTasks[taskId].tExpShare)
-                ExpShare_DrawChoices(gTasks[taskId].tExpShare);
+                ExpShare_DrawChoices(gTasks[taskId].tExpShare, y);
             break;
         case MENUITEM_SOUND:
             previousOption = gTasks[taskId].tSound;
             gTasks[taskId].tSound = Sound_ProcessInput(gTasks[taskId].tSound);
 
             if (previousOption != gTasks[taskId].tSound)
-                Sound_DrawChoices(gTasks[taskId].tSound);
+                Sound_DrawChoices(gTasks[taskId].tSound, y);
             break;
         case MENUITEM_BUTTONMODE:
             previousOption = gTasks[taskId].tButtonMode;
             gTasks[taskId].tButtonMode = ButtonMode_ProcessInput(gTasks[taskId].tButtonMode);
 
             if (previousOption != gTasks[taskId].tButtonMode)
-                ButtonMode_DrawChoices(gTasks[taskId].tButtonMode);
+                ButtonMode_DrawChoices(gTasks[taskId].tButtonMode, y);
             break;
         case MENUITEM_FRAMETYPE:
             previousOption = gTasks[taskId].tWindowFrameType;
             gTasks[taskId].tWindowFrameType = FrameType_ProcessInput(gTasks[taskId].tWindowFrameType);
 
             if (previousOption != gTasks[taskId].tWindowFrameType)
-                FrameType_DrawChoices(gTasks[taskId].tWindowFrameType);
+                FrameType_DrawChoices(gTasks[taskId].tWindowFrameType, y);
             break;
         default:
             return;
@@ -462,7 +506,7 @@ static u8 TextSpeed_ProcessInput(u8 selection)
     return selection;
 }
 
-static void TextSpeed_DrawChoices(u8 selection)
+static void TextSpeed_DrawChoices(u8 selection, u8 y)
 {
     u8 styles[3];
     s32 widthSlow, widthMid, widthFast, xMid;
@@ -472,7 +516,7 @@ static void TextSpeed_DrawChoices(u8 selection)
     styles[2] = 0;
     styles[selection] = 1;
 
-    DrawOptionMenuChoice(gText_TextSpeedSlow, 104, YPOS_TEXTSPEED, styles[0]);
+    DrawOptionMenuChoice(gText_TextSpeedSlow, 104, y, styles[0]);
 
     widthSlow = GetStringWidth(FONT_NORMAL, gText_TextSpeedSlow, 0);
     widthMid = GetStringWidth(FONT_NORMAL, gText_TextSpeedMid, 0);
@@ -480,9 +524,9 @@ static void TextSpeed_DrawChoices(u8 selection)
 
     widthMid -= 94;
     xMid = (widthSlow - widthMid - widthFast) / 2 + 104;
-    DrawOptionMenuChoice(gText_TextSpeedMid, xMid, YPOS_TEXTSPEED, styles[1]);
+    DrawOptionMenuChoice(gText_TextSpeedMid, xMid, y, styles[1]);
 
-    DrawOptionMenuChoice(gText_TextSpeedFast, GetStringRightAlignXOffset(FONT_NORMAL, gText_TextSpeedFast, 198), YPOS_TEXTSPEED, styles[2]);
+    DrawOptionMenuChoice(gText_TextSpeedFast, GetStringRightAlignXOffset(FONT_NORMAL, gText_TextSpeedFast, 198), y, styles[2]);
 }
 
 static u8 BattleScene_ProcessInput(u8 selection)
@@ -496,7 +540,7 @@ static u8 BattleScene_ProcessInput(u8 selection)
     return selection;
 }
 
-static void BattleScene_DrawChoices(u8 selection)
+static void BattleScene_DrawChoices(u8 selection, u8 y)
 {
     u8 styles[2];
 
@@ -504,8 +548,8 @@ static void BattleScene_DrawChoices(u8 selection)
     styles[1] = 0;
     styles[selection] = 1;
 
-    DrawOptionMenuChoice(gText_BattleSceneOn, 104, YPOS_BATTLESCENE, styles[0]);
-    DrawOptionMenuChoice(gText_BattleSceneOff, GetStringRightAlignXOffset(FONT_NORMAL, gText_BattleSceneOff, 198), YPOS_BATTLESCENE, styles[1]);
+    DrawOptionMenuChoice(gText_BattleSceneOn, 104, y, styles[0]);
+    DrawOptionMenuChoice(gText_BattleSceneOff, GetStringRightAlignXOffset(FONT_NORMAL, gText_BattleSceneOff, 198), y, styles[1]);
 }
 
 static u8 BattleStyle_ProcessInput(u8 selection)
@@ -519,7 +563,7 @@ static u8 BattleStyle_ProcessInput(u8 selection)
     return selection;
 }
 
-static void BattleStyle_DrawChoices(u8 selection)
+static void BattleStyle_DrawChoices(u8 selection, u8 y)
 {
     u8 styles[2];
 
@@ -527,8 +571,8 @@ static void BattleStyle_DrawChoices(u8 selection)
     styles[1] = 0;
     styles[selection] = 1;
 
-    DrawOptionMenuChoice(gText_BattleStyleShift, 104, YPOS_BATTLESTYLE, styles[0]);
-    DrawOptionMenuChoice(gText_BattleStyleSet, GetStringRightAlignXOffset(FONT_NORMAL, gText_BattleStyleSet, 198), YPOS_BATTLESTYLE, styles[1]);
+    DrawOptionMenuChoice(gText_BattleStyleShift, 104, y, styles[0]);
+    DrawOptionMenuChoice(gText_BattleStyleSet, GetStringRightAlignXOffset(FONT_NORMAL, gText_BattleStyleSet, 198), y, styles[1]);
 }
 
 static u8 ExpShare_ProcessInput(u8 selection)
@@ -542,7 +586,7 @@ static u8 ExpShare_ProcessInput(u8 selection)
     return selection;
 }
 
-static void ExpShare_DrawChoices(u8 selection)
+static void ExpShare_DrawChoices(u8 selection, u8 y)
 {
     u8 styles[2];
 
@@ -550,8 +594,8 @@ static void ExpShare_DrawChoices(u8 selection)
     styles[1] = 0;
     styles[selection] = 1;
 
-    DrawOptionMenuChoice(gText_LegendsExpShareOn, 104, YPOS_EXPSHARE, styles[0]);
-    DrawOptionMenuChoice(gText_LegendsExpShareOff, GetStringRightAlignXOffset(FONT_NORMAL, gText_LegendsExpShareOff, 198), YPOS_EXPSHARE, styles[1]);
+    DrawOptionMenuChoice(gText_LegendsExpShareOn, 104, y, styles[0]);
+    DrawOptionMenuChoice(gText_LegendsExpShareOff, GetStringRightAlignXOffset(FONT_NORMAL, gText_LegendsExpShareOff, 198), y, styles[1]);
 }
 
 static u8 Sound_ProcessInput(u8 selection)
@@ -566,7 +610,7 @@ static u8 Sound_ProcessInput(u8 selection)
     return selection;
 }
 
-static void Sound_DrawChoices(u8 selection)
+static void Sound_DrawChoices(u8 selection, u8 y)
 {
     u8 styles[2];
 
@@ -574,8 +618,8 @@ static void Sound_DrawChoices(u8 selection)
     styles[1] = 0;
     styles[selection] = 1;
 
-    DrawOptionMenuChoice(gText_SoundMono, 104, YPOS_SOUND, styles[0]);
-    DrawOptionMenuChoice(gText_SoundStereo, GetStringRightAlignXOffset(FONT_NORMAL, gText_SoundStereo, 198), YPOS_SOUND, styles[1]);
+    DrawOptionMenuChoice(gText_SoundMono, 104, y, styles[0]);
+    DrawOptionMenuChoice(gText_SoundStereo, GetStringRightAlignXOffset(FONT_NORMAL, gText_SoundStereo, 198), y, styles[1]);
 }
 
 static u8 FrameType_ProcessInput(u8 selection)
@@ -605,7 +649,7 @@ static u8 FrameType_ProcessInput(u8 selection)
     return selection;
 }
 
-static void FrameType_DrawChoices(u8 selection)
+static void FrameType_DrawChoices(u8 selection, u8 y)
 {
     u8 text[16] = {EOS};
     u8 n = selection + 1;
@@ -632,8 +676,8 @@ static void FrameType_DrawChoices(u8 selection)
 
     text[i] = EOS;
 
-    DrawOptionMenuChoice(gText_FrameType, 104, YPOS_FRAMETYPE, 0);
-    DrawOptionMenuChoice(text, 128, YPOS_FRAMETYPE, 1);
+    DrawOptionMenuChoice(gText_FrameType, 104, y, 0);
+    DrawOptionMenuChoice(text, 128, y, 1);
 }
 
 static u8 ButtonMode_ProcessInput(u8 selection)
@@ -659,7 +703,7 @@ static u8 ButtonMode_ProcessInput(u8 selection)
     return selection;
 }
 
-static void ButtonMode_DrawChoices(u8 selection)
+static void ButtonMode_DrawChoices(u8 selection, u8 y)
 {
     s32 widthNormal, widthLR, widthLA, xLR;
     u8 styles[3];
@@ -669,7 +713,7 @@ static void ButtonMode_DrawChoices(u8 selection)
     styles[2] = 0;
     styles[selection] = 1;
 
-    DrawOptionMenuChoice(gText_ButtonTypeNormal, 104, YPOS_BUTTONMODE, styles[0]);
+    DrawOptionMenuChoice(gText_ButtonTypeNormal, 104, y, styles[0]);
 
     widthNormal = GetStringWidth(FONT_NORMAL, gText_ButtonTypeNormal, 0);
     widthLR = GetStringWidth(FONT_NORMAL, gText_ButtonTypeLR, 0);
@@ -677,28 +721,85 @@ static void ButtonMode_DrawChoices(u8 selection)
 
     widthLR -= 94;
     xLR = (widthNormal - widthLR - widthLA) / 2 + 104;
-    DrawOptionMenuChoice(gText_ButtonTypeLR, xLR, YPOS_BUTTONMODE, styles[1]);
+    DrawOptionMenuChoice(gText_ButtonTypeLR, xLR, y, styles[1]);
 
-    DrawOptionMenuChoice(gText_ButtonTypeLEqualsA, GetStringRightAlignXOffset(FONT_NORMAL, gText_ButtonTypeLEqualsA, 198), YPOS_BUTTONMODE, styles[2]);
+    DrawOptionMenuChoice(gText_ButtonTypeLEqualsA, GetStringRightAlignXOffset(FONT_NORMAL, gText_ButtonTypeLEqualsA, 198), y, styles[2]);
 }
 
-static void DrawHeaderText(void)
+static u8 GetOptionMenuItem(u8 taskId)
+{
+    return sOptionMenuPageItems[gTasks[taskId].tMenuPage][gTasks[taskId].tMenuSelection];
+}
+
+static void ChangeOptionMenuPage(u8 taskId, s8 direction)
+{
+    s16 page = gTasks[taskId].tMenuPage + direction;
+
+    if (page < 0)
+        page = OPTION_PAGE_COUNT - 1;
+    else if (page >= OPTION_PAGE_COUNT)
+        page = 0;
+
+    gTasks[taskId].tMenuPage = page;
+    gTasks[taskId].tMenuSelection = 0;
+
+    DrawHeaderText(gTasks[taskId].tMenuPage);
+    DrawOptionMenuPage(taskId);
+    HighlightOptionMenuItem(gTasks[taskId].tMenuSelection);
+}
+
+static void DrawHeaderText(u8 page)
 {
     FillWindowPixelBuffer(WIN_HEADER, PIXEL_FILL(1));
-    AddTextPrinterParameterized(WIN_HEADER, FONT_NORMAL, gText_Option, 8, 1, TEXT_SKIP_DRAW, NULL);
+    AddTextPrinterParameterized(WIN_HEADER, FONT_NORMAL, sOptionMenuPageTitles[page], 8, 1, TEXT_SKIP_DRAW, NULL);
+    AddTextPrinterParameterized(WIN_HEADER, FONT_NORMAL, gText_PageHint, 88, 1, TEXT_SKIP_DRAW, NULL);
     AddTextPrinterParameterized(WIN_HEADER, FONT_NORMAL, gText_LegendsVersion,
                                 GetStringRightAlignXOffset(FONT_NORMAL, gText_LegendsVersion, 200),
                                 1, TEXT_SKIP_DRAW, NULL);
     CopyWindowToVram(WIN_HEADER, COPYWIN_FULL);
 }
 
-static void DrawOptionMenuTexts(void)
+static void DrawOptionMenuPage(u8 taskId)
 {
-    u8 i;
+    u8 row;
+    u8 itemId;
+    u8 page = gTasks[taskId].tMenuPage;
+    u8 itemCount = sOptionMenuPageItemCounts[page];
 
     FillWindowPixelBuffer(WIN_OPTIONS, PIXEL_FILL(1));
-    for (i = 0; i < MENUITEM_COUNT; i++)
-        AddTextPrinterParameterized(WIN_OPTIONS, FONT_NORMAL, sOptionMenuItemsNames[i], 8, (i * OPTION_ROW_HEIGHT) + 1, TEXT_SKIP_DRAW, NULL);
+
+    for (row = 0; row < itemCount; row++)
+    {
+        itemId = sOptionMenuPageItems[page][row];
+        AddTextPrinterParameterized(WIN_OPTIONS, FONT_NORMAL, sOptionMenuItemsNames[itemId],
+                                    8, (row * OPTION_ROW_HEIGHT) + 1, TEXT_SKIP_DRAW, NULL);
+
+        switch (itemId)
+        {
+        case MENUITEM_TEXTSPEED:
+            TextSpeed_DrawChoices(gTasks[taskId].tTextSpeed, row * OPTION_ROW_HEIGHT);
+            break;
+        case MENUITEM_BATTLESCENE:
+            BattleScene_DrawChoices(gTasks[taskId].tBattleSceneOff, row * OPTION_ROW_HEIGHT);
+            break;
+        case MENUITEM_BATTLESTYLE:
+            BattleStyle_DrawChoices(gTasks[taskId].tBattleStyle, row * OPTION_ROW_HEIGHT);
+            break;
+        case MENUITEM_EXPSHARE:
+            ExpShare_DrawChoices(gTasks[taskId].tExpShare, row * OPTION_ROW_HEIGHT);
+            break;
+        case MENUITEM_SOUND:
+            Sound_DrawChoices(gTasks[taskId].tSound, row * OPTION_ROW_HEIGHT);
+            break;
+        case MENUITEM_BUTTONMODE:
+            ButtonMode_DrawChoices(gTasks[taskId].tButtonMode, row * OPTION_ROW_HEIGHT);
+            break;
+        case MENUITEM_FRAMETYPE:
+            FrameType_DrawChoices(gTasks[taskId].tWindowFrameType, row * OPTION_ROW_HEIGHT);
+            break;
+        }
+    }
+
     CopyWindowToVram(WIN_OPTIONS, COPYWIN_FULL);
 }
 
@@ -718,18 +819,18 @@ static void DrawBgWindowFrames(void)
     FillBgTilemapBufferRect(1, TILE_TOP_CORNER_L,  1,  0,  1,  1,  7);
     FillBgTilemapBufferRect(1, TILE_TOP_EDGE,      2,  0, 27,  1,  7);
     FillBgTilemapBufferRect(1, TILE_TOP_CORNER_R, 28,  0,  1,  1,  7);
-    FillBgTilemapBufferRect(1, TILE_LEFT_EDGE,     1,  1,  1,  1,  7);
-    FillBgTilemapBufferRect(1, TILE_RIGHT_EDGE,   28,  1,  1,  1,  7);
-    FillBgTilemapBufferRect(1, TILE_BOT_CORNER_L,  1,  2,  1,  1,  7);
-    FillBgTilemapBufferRect(1, TILE_BOT_EDGE,      2,  2, 27,  1,  7);
-    FillBgTilemapBufferRect(1, TILE_BOT_CORNER_R, 28,  2,  1,  1,  7);
+    FillBgTilemapBufferRect(1, TILE_LEFT_EDGE,     1,  1,  1,  2,  7);
+    FillBgTilemapBufferRect(1, TILE_RIGHT_EDGE,   28,  1,  1,  2,  7);
+    FillBgTilemapBufferRect(1, TILE_BOT_CORNER_L,  1,  3,  1,  1,  7);
+    FillBgTilemapBufferRect(1, TILE_BOT_EDGE,      2,  3, 27,  1,  7);
+    FillBgTilemapBufferRect(1, TILE_BOT_CORNER_R, 28,  3,  1,  1,  7);
 
     // Draw options list window frame
-    FillBgTilemapBufferRect(1, TILE_TOP_CORNER_L,  1,  3,  1,  1,  7);
-    FillBgTilemapBufferRect(1, TILE_TOP_EDGE,      2,  3, 26,  1,  7);
-    FillBgTilemapBufferRect(1, TILE_TOP_CORNER_R, 28,  3,  1,  1,  7);
-    FillBgTilemapBufferRect(1, TILE_LEFT_EDGE,     1,  4,  1, 15,  7);
-    FillBgTilemapBufferRect(1, TILE_RIGHT_EDGE,   28,  4,  1, 15,  7);
+    FillBgTilemapBufferRect(1, TILE_TOP_CORNER_L,  1,  4,  1,  1,  7);
+    FillBgTilemapBufferRect(1, TILE_TOP_EDGE,      2,  4, 26,  1,  7);
+    FillBgTilemapBufferRect(1, TILE_TOP_CORNER_R, 28,  4,  1,  1,  7);
+    FillBgTilemapBufferRect(1, TILE_LEFT_EDGE,     1,  5,  1, 14,  7);
+    FillBgTilemapBufferRect(1, TILE_RIGHT_EDGE,   28,  5,  1, 14,  7);
     FillBgTilemapBufferRect(1, TILE_BOT_CORNER_L,  1, 19,  1,  1,  7);
     FillBgTilemapBufferRect(1, TILE_BOT_EDGE,      2, 19, 26,  1,  7);
     FillBgTilemapBufferRect(1, TILE_BOT_CORNER_R, 28, 19,  1,  1,  7);
