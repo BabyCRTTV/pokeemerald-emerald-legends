@@ -73,32 +73,42 @@ jobs:
 
       - name: Create and verify BPS patch
         run: |
+          VERSION="$(tr -d '\r\n' < VERSION)"
+          PATCH="docs/downloads/Pokemon-Emerald-Legends-v${VERSION}.bps"
+
           mkdir -p docs/downloads
           /tmp/flips/flips --create --bps \
             /tmp/pokeemerald-vanilla/pokeemerald.gba \
             pokeemerald.gba \
-            docs/downloads/Pokemon-Emerald-Legends-v0.1.bps
+            "$PATCH"
 
           /tmp/flips/flips --apply \
-            docs/downloads/Pokemon-Emerald-Legends-v0.1.bps \
+            "$PATCH" \
             /tmp/pokeemerald-vanilla/pokeemerald.gba \
             /tmp/emerald-legends-verified.gba
 
           cmp /tmp/emerald-legends-verified.gba pokeemerald.gba
-          sha256sum docs/downloads/Pokemon-Emerald-Legends-v0.1.bps > docs/downloads/SHA256SUMS.txt
+          sha256sum "$PATCH" > docs/downloads/SHA256SUMS.txt
           sha256sum pokeemerald.gba >> docs/downloads/SHA256SUMS.txt
 
       - name: Commit patch to site
         run: |
+          VERSION="$(tr -d '\r\n' < VERSION)"
+          PATCH="docs/downloads/Pokemon-Emerald-Legends-v${VERSION}.bps"
+
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add -f docs/downloads/Pokemon-Emerald-Legends-v0.1.bps docs/downloads/SHA256SUMS.txt
+
+          # Keep only the active development patch in the site download slot.
+          find docs/downloads -maxdepth 1 -type f -name 'Pokemon-Emerald-Legends-v*.bps' ! -name "Pokemon-Emerald-Legends-v${VERSION}.bps" -delete
+          git add -f docs/downloads/*.bps docs/downloads/SHA256SUMS.txt
+          git add -u docs/downloads
 
           if git diff --cached --quiet; then
             echo "Release patch is already current."
             exit 0
           fi
 
-          git commit -m "Release: refresh Emerald Legends v0.1 BPS patch [skip ci]"
+          git commit -m "Release: refresh Emerald Legends v${VERSION} BPS patch [skip ci]"
           git pull --rebase origin master
           git push
