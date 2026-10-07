@@ -13,7 +13,7 @@ Goal: establish a stable `pokeemerald-expansion` project and implement the first
 - [x] Add automated build and BPS verification
 
 ### Gameplay systems
-- [ ] EXP Share / Lucky Egg behavior changes
+- [x] Gen 6-style party EXP Share with Options toggle\n- [ ] Lucky Egg behavior review / tuning
 - [x] Overworld HM / field move system
 - [x] Field move animation and usability rules
 - [ ] Seasonal framework prototype
