@@ -2,6 +2,16 @@
 
 This is the developer-facing history for the **Debug** build. Shared Legends changes are repeated here so this file stands on its own; Debug-only behavior is called out separately.
 
+## [0.0.6] - 2026-10-07
+
+### Shared changes
+- Mr. Stone now gives a Lucky Egg after the Steven Letter delivery instead of the redundant held Exp. Share.
+- His reward dialogue now explains the Lucky Egg's EXP bonus.
+- Lucky Egg's native multiplier behavior is unchanged; only the Rustboro reward source changed.
+
+### Debug-specific
+- No Debug-only gameplay divergence in this version; existing developer tools remain available.
+
 ## [0.0.5] - 2026-10-07
 
 ### Shared changes
