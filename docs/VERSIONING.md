@@ -17,7 +17,7 @@ All player-facing locations should match it, including:
 
 ## Pre-1.0 cadence
 
-The current version is `0.0.4.2`.
+The current version is `0.0.5`.
 
 Each meaningful shipped change normally advances the final development revision by one:
 
@@ -26,7 +26,7 @@ Each meaningful shipped change normally advances the final development revision 
 - `0.0.3`
 - `0.0.4`
 - `0.0.4.1`
-- `0.0.4.2`
+- `0.0.4.2`\n- `0.0.5`
 
 A fourth segment such as `0.0.3.1` may be used for a very small follow-up build or correction when that communicates the relationship more clearly than advancing the normal revision.
 
