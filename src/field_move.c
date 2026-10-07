@@ -9,6 +9,13 @@
 #include "constants/moves.h"
 #include "constants/party_menu.h"
 
+bool32 FieldMove_IsBadgeUtility(enum FieldMove fieldMove)
+{
+    // The eight Emerald HMs become badge-earned overworld utilities in Legends.
+    // Other field moves (Dig, Teleport, Sweet Scent, etc.) remain move-dependent.
+    return fieldMove >= FIELD_MOVE_CUT && fieldMove <= FIELD_MOVE_WATERFALL;
+}
+
 static bool32 IsAlwaysFalse(enum FieldMove fieldMove)
 {
     return FALSE;
