@@ -71,7 +71,7 @@ jobs:
           grep -Fq 'tExpShare = LegendsIsExpShareEnabled() ? 0 : 1;' src/option_menu.c
           grep -Fq 'LegendsSetExpShareEnabled(gTasks[taskId].tExpShare == 0);' src/option_menu.c
           grep -Fq 'LegendsInitNewGameSettings();' src/new_game.c
-          grep -Fq 'LegendsEnsureSettingsInitialized();' src/overworld.c
+          grep -Fq 'LegendsRestoreUnlocksOnContinue();' src/overworld.c
 
           grep -Fq 'OPTION_PAGE_GENERAL' src/option_menu.c
           grep -Fq 'OPTION_PAGE_LEGENDS' src/option_menu.c
