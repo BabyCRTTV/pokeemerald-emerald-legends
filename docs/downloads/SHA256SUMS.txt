@@ -1,2 +1,4 @@
-664d676271f613026a2ff3e89b6f4c42a08d221b493708ddbd36fb76eb50e188  docs/downloads/Pokemon-Emerald-Legends-v0.0.1.bps
-55db7a84ba0a1901c2afe7f65acf8dca52222f14cdebc870dae5538b58add3ba  pokeemerald.gba
+d5f6a1e9fbd45023b30203778fb23c61412ad3d57cdba74bb4d1850559fca095  docs/downloads/Pokemon-Emerald-Legends-v0.0.2.bps
+62cbd36c4d62ac37dd7d48c386094da14789500d958e434b15cdf585fcb59c8b  docs/downloads/Pokemon-Emerald-Legends-v0.0.2-debug.bps
+584f94fca143e87655dac329c9497e1fb8e2a02d3dc2deb41be451bba7434d62  pokeemerald-release.gba
+9f4ff00bf6d5065487c10776617d0c7ff2e9cadec0a18e72881fb9a3fdfe1245  pokeemerald.gba
