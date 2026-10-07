@@ -17,7 +17,7 @@ All player-facing locations should match it, including:
 
 ## Pre-1.0 cadence
 
-The current baseline is `0.0.1`.
+The current version is `0.0.2`.
 
 Each meaningful shipped change normally advances the final development revision by one:
 
@@ -30,6 +30,15 @@ A fourth segment such as `0.0.3.1` may be used for a very small follow-up build 
 
 Larger milestone numbering can be introduced later as the project approaches a stable 1.0 release.
 
+## Build variants
+
+A project version can publish two variants without consuming separate version numbers:
+
+- **Release** - recommended player build. Built with the expansion's release configuration so developer/debug entry points are disabled.
+- **Debug** - developer/testing build from the same source revision. It retains the expansion's debug menus, Pokémon sprite visualizer, and title-screen Quickstart.
+
+The Debug filename receives a `-debug` suffix, and its in-game Options version receives a `-D` suffix. Gameplay/content changes remain synchronized between the two variants.
+
 ## Changelog rule
 
 Every version bump must update `CHANGELOG.md` in the same development change.
@@ -38,4 +47,4 @@ A changelog entry should describe player-visible changes first, followed by nota
 
 ## Release rule
 
-Public BPS patches are generated from the current `VERSION` value. The automated release workflow verifies that applying the patch to the supported clean Emerald base reproduces the compiled Legends ROM byte-for-byte before publishing it to the site.
+Both public BPS patches are generated from the current `VERSION` value. The automated release workflow independently applies each patch to the supported clean Emerald base and verifies that it reproduces its corresponding compiled Legends ROM byte-for-byte before publishing it to the site.

@@ -193,3 +193,20 @@ footer p { max-width: 520px; }
 @media (max-width: 760px) {
   .patcher-panel { grid-template-columns: 1fr; padding: 26px; }
 }
+
+.download-stack {
+  display: grid;
+  gap: 16px;
+}
+.download-box.debug {
+  border-style: dashed;
+  background: #07140f;
+}
+.download-box.debug .download-status {
+  color: var(--lime);
+}
+.build-note {
+  margin-top: 12px;
+  font-size: 11px;
+  color: #749886;
+}

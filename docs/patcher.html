@@ -4,8 +4,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="theme-color" content="#173b2d">
-  <title>Patch Pokémon Emerald: Legends</title>
-  <meta name="description" content="Create your Pokémon Emerald: Legends v0.0.1 ROM locally in your browser.">
+  <title>Patch Pokémon Emerald: Legends v0.0.2</title>
+  <meta name="description" content="Create your Pokémon Emerald: Legends v0.0.2 ROM locally in your browser.">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -13,14 +13,14 @@
     <header class="titlebar">
       <div class="lights" aria-hidden="true"><span></span><span></span><span></span></div>
       <div class="title">EMERALD: LEGENDS // PATCHER</div>
-      <div class="version">v0.0.1</div>
+      <div class="version" id="build-version">v0.0.2</div>
     </header>
 
     <section class="panel patcher-panel">
       <div>
-        <p class="eyebrow">Local browser patcher</p>
+        <p class="eyebrow"><span id="build-label">Release</span> browser patcher</p>
         <h1 class="patcher-title">Build your copy.</h1>
-        <p class="download-copy">Choose your own clean U.S./Europe Pokémon Emerald ROM. The patch is applied entirely inside your browser and your ROM is never uploaded anywhere.</p>
+        <p class="download-copy" id="build-description">Recommended for normal play. Developer/debug entry points are disabled while all Pokémon Emerald: Legends gameplay and content changes remain intact.</p>
 
         <div class="patcher-requirements">
           <strong>Expected clean ROM</strong>
@@ -34,7 +34,7 @@
         <input id="rom-file" type="file" accept=".gba,application/octet-stream">
 
         <button id="patch-button" class="button primary patch-action" disabled>
-          2. Create Emerald: Legends v0.0.1
+          2. Create Emerald: Legends v0.0.2 Release
         </button>
 
         <div id="patch-status" class="patch-status" role="status">
@@ -47,12 +47,12 @@
 
     <section class="panel patcher-info">
       <p><strong>Privacy:</strong> patching happens locally on your device. The selected ROM is read by your browser only.</p>
-      <p><strong>Release format:</strong> the project site distributes a BPS patch, not a complete commercial game ROM.</p>
+      <p><strong>Release format:</strong> the project site distributes BPS patches, not complete commercial game ROMs.</p>
     </section>
 
     <footer>
       <p>Unofficial, non-commercial fan project. Pokémon and related properties belong to their respective rights holders.</p>
-      <p>Pokémon Emerald: Legends v0.0.1</p>
+      <p id="build-footer">Pokémon Emerald: Legends v0.0.2 Release</p>
     </footer>
   </main>
   <script src="patcher.js"></script>

@@ -2,12 +2,30 @@
   "use strict";
 
   const EXPECTED_SHA1 = "f3ae088181bf583e55daf962a92bb46f4f1d07b7";
-  const PATCH_URL = "downloads/Pokemon-Emerald-Legends-v0.0.1.bps";
-  const OUTPUT_NAME = "Pokemon-Emerald-Legends-v0.0.1.gba";
+  const VERSION = "0.0.2";
+  const params = new URLSearchParams(window.location.search);
+  const IS_DEBUG = params.get("build") === "debug";
+  const BUILD_LABEL = IS_DEBUG ? "Debug" : "Release";
+  const BUILD_SUFFIX = IS_DEBUG ? "-debug" : "";
+  const PATCH_URL = `downloads/Pokemon-Emerald-Legends-v${VERSION}${BUILD_SUFFIX}.bps`;
+  const OUTPUT_NAME = `Pokemon-Emerald-Legends-v${VERSION}${BUILD_SUFFIX}.gba`;
 
   const input = document.getElementById("rom-file");
   const button = document.getElementById("patch-button");
   const status = document.getElementById("patch-status");
+  const buildVersion = document.getElementById("build-version");
+  const buildLabel = document.getElementById("build-label");
+  const buildDescription = document.getElementById("build-description");
+  const buildFooter = document.getElementById("build-footer");
+
+  document.title = `Patch Pokémon Emerald: Legends v${VERSION} ${BUILD_LABEL}`;
+  buildVersion.textContent = `v${VERSION}${IS_DEBUG ? " DEBUG" : ""}`;
+  buildLabel.textContent = BUILD_LABEL;
+  buildDescription.textContent = IS_DEBUG
+    ? "Developer build with the same game content as Release, plus the expansion debug menus, sprite visualizer, and title-screen Quickstart."
+    : "Recommended for normal play. Developer/debug entry points are disabled while all Pokémon Emerald: Legends gameplay and content changes remain intact.";
+  buildFooter.textContent = `Pokémon Emerald: Legends v${VERSION} ${BUILD_LABEL}`;
+  button.textContent = `2. Create Emerald: Legends v${VERSION} ${BUILD_LABEL}`;
 
   let sourceBytes = null;
 
@@ -38,7 +56,7 @@
       }
 
       sourceBytes = new Uint8Array(buffer);
-      setStatus("Clean ROM verified. Ready to build Emerald: Legends v0.0.1.", "ok");
+      setStatus(`Clean ROM verified. Ready to build Emerald: Legends v${VERSION} ${BUILD_LABEL}.`, "ok");
       button.disabled = false;
     } catch (err) {
       setStatus(err.message || String(err), "error");
@@ -50,10 +68,10 @@
 
     button.disabled = true;
     try {
-      setStatus("Downloading the v0.0.1 BPS patch…", "busy");
+      setStatus(`Downloading the v${VERSION} ${BUILD_LABEL} BPS patch…`, "busy");
       const response = await fetch(PATCH_URL, { cache: "no-store" });
       if (!response.ok) {
-        throw new Error("The v0.0.1 patch is still being built. Please try again shortly.");
+        throw new Error(`The v${VERSION} ${BUILD_LABEL} patch is still being built. Please try again shortly.`);
       }
 
       const patchBytes = new Uint8Array(await response.arrayBuffer());
@@ -71,7 +89,7 @@
       anchor.remove();
       setTimeout(() => URL.revokeObjectURL(url), 1000);
 
-      setStatus("Done. Your Emerald: Legends v0.0.1 .gba has been created locally.", "ok");
+      setStatus(`Done. Your Emerald: Legends v${VERSION} ${BUILD_LABEL} .gba has been created locally.`, "ok");
     } catch (err) {
       setStatus(err.message || String(err), "error");
     } finally {

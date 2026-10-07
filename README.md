@@ -1,21 +1,24 @@
 # Pokémon Emerald: Legends
 
-**Version:** 0.0.1  
+**Version:** 0.0.2  
 **Base:** [pokeemerald-expansion](https://github.com/rh-hideout/pokeemerald-expansion)
 
 Pokémon Emerald: Legends is an unofficial, non-commercial Pokémon Emerald ROM-hack project built on the open-source `pokeemerald-expansion` decompilation/expansion base.
 
 The project is intended to preserve the feel and structure of Pokémon Emerald while layering in modern quality-of-life improvements, configurable mechanics, expanded systems, and new features developed incrementally.
 
-## Try the current v0.0.1 build
+## Try the current v0.0.2 build
 
-The project site includes a browser-based patcher:
+The project site provides two builds from the same source:
 
-- **Project site:** https://babycrttv.github.io/pokeemerald-emerald-legends/
-- **Browser patcher:** https://babycrttv.github.io/pokeemerald-emerald-legends/patcher.html
-- **BPS patch:** https://babycrttv.github.io/pokeemerald-emerald-legends/downloads/Pokemon-Emerald-Legends-v0.0.1.bps
+- **Release (recommended):** https://babycrttv.github.io/pokeemerald-emerald-legends/patcher.html
+- **Debug / developer:** https://babycrttv.github.io/pokeemerald-emerald-legends/patcher.html?build=debug
+- **Release BPS:** https://babycrttv.github.io/pokeemerald-emerald-legends/downloads/Pokemon-Emerald-Legends-v0.0.2.bps
+- **Debug BPS:** https://babycrttv.github.io/pokeemerald-emerald-legends/downloads/Pokemon-Emerald-Legends-v0.0.2-debug.bps
 
-The browser patcher verifies a clean U.S./Europe Pokémon Emerald ROM (SHA-1 `f3ae088181bf583e55daf962a92bb46f4f1d07b7`) and creates `Pokemon-Emerald-Legends-v0.0.1.gba` locally in the browser. The source ROM is never uploaded.
+The Release and Debug builds contain the same Legends gameplay/content changes. Release disables developer entry points for a cleaner casual-player build. Debug retains the expansion's overworld/battle/sprite debug tools and title-screen Quickstart.
+
+The browser patcher verifies a clean U.S./Europe Pokémon Emerald ROM (SHA-1 `f3ae088181bf583e55daf962a92bb46f4f1d07b7`) and creates the selected `.gba` locally. The source ROM is never uploaded.
 
 ## Development philosophy
 
@@ -40,7 +43,10 @@ See [ROADMAP.md](ROADMAP.md) and the documentation in [`docs/features`](docs/fea
 
 ## Building
 
-This repository is a fork of `rh-hideout/pokeemerald-expansion`. Follow the current upstream installation and build instructions in [INSTALL.md](INSTALL.md), then build with the normal expansion toolchain.
+This repository is a fork of `rh-hideout/pokeemerald-expansion`. Follow the current upstream installation and build instructions in [INSTALL.md](INSTALL.md).
+
+- `make release` produces the normal player build with release-disabled developer features removed.
+- `make` produces the development/debug-capable build used for the public Debug variant.
 
 Generated ROMs and other copyrighted binary material must not be committed to this repository.
 

@@ -25,6 +25,9 @@ jobs:
           grep -Fq "## [$VERSION_NUMBER]" CHANGELOG.md
           grep -Fq "**Version:** $VERSION_NUMBER" README.md
           grep -Fq "LEGENDS v$VERSION_NUMBER" src/option_menu.c
+          grep -Fq "LEGENDS v$VERSION_NUMBER-D" src/option_menu.c
           grep -Fq "v$VERSION_NUMBER" docs/index.html
           grep -Fq "v$VERSION_NUMBER" docs/patcher.html
-          grep -Fq "Pokemon-Emerald-Legends-v$VERSION_NUMBER.bps" docs/patcher.js
+          grep -Fq "Pokemon-Emerald-Legends-v${VERSION_NUMBER}" docs/patcher.js
+          grep -Fq 'BUILD_SUFFIX = IS_DEBUG ? "-debug" : ""' docs/patcher.js
+          grep -Fq "patcher.html?build=debug" docs/index.html
