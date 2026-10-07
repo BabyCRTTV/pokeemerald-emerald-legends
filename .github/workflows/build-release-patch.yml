@@ -100,4 +100,5 @@ jobs:
           fi
 
           git commit -m "Release: refresh Emerald Legends v0.1 BPS patch [skip ci]"
+          git pull --rebase origin master
           git push
