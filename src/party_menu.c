@@ -4108,12 +4108,16 @@ static void CursorCb_FieldMove(u8 taskId)
     PlaySE(SE_SELECT);
     gFieldEffectArguments[7] = FieldMove_IsBadgeUtility(fieldMove);
     if (gFieldMoveInfo[fieldMove].fieldMoveFunc == NULL)
+    {
+        gFieldEffectArguments[7] = FALSE;
         return;
+    }
 
     PartyMenuRemoveWindow(&sPartyMenuInternal->windowId[0]);
     PartyMenuRemoveWindow(&sPartyMenuInternal->windowId[1]);
     if (MenuHelpers_IsLinkActive() == TRUE || InUnionRoom() == TRUE)
     {
+        gFieldEffectArguments[7] = FALSE;
         DisplayPartyMenuStdMessage(PARTY_MSG_CANT_USE_HERE);
         gTasks[taskId].func = Task_CancelAfterAorBPress;
         return;
@@ -4121,6 +4125,7 @@ static void CursorCb_FieldMove(u8 taskId)
 
     if (!IsFieldMoveUnlocked(fieldMove))
     {
+        gFieldEffectArguments[7] = FALSE;
         DisplayPartyMenuMessage(FieldMove_GetLockedMessage(fieldMove), TRUE);
         gTasks[taskId].func = Task_ReturnToChooseMonAfterText;
     }
@@ -4159,6 +4164,7 @@ static void CursorCb_FieldMove(u8 taskId)
     // Cant use Field Move
     else
     {
+        gFieldEffectArguments[7] = FALSE;
         switch (fieldMove)
         {
         case FIELD_MOVE_SURF:
@@ -4333,6 +4339,7 @@ bool32 SetUpFieldMove_Fly(void)
 
 void CB2_ReturnToPartyMenuFromFlyMap(void)
 {
+    gFieldEffectArguments[7] = FALSE;
     InitPartyMenu(PARTY_MENU_TYPE_FIELD, PARTY_LAYOUT_SINGLE, PARTY_ACTION_CHOOSE_MON, TRUE, PARTY_MSG_CHOOSE_MON, Task_HandleChooseMonInput, CB2_ReturnToFieldWithOpenMenu);
 }
 
