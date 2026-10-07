@@ -1,24 +1,26 @@
 # Pokémon Emerald: Legends
 
-**Version:** 0.0.8  
+**Version:** 0.0.8.1  
 **Base:** [pokeemerald-expansion](https://github.com/rh-hideout/pokeemerald-expansion)
 
 Pokémon Emerald: Legends is an unofficial, non-commercial Pokémon Emerald ROM-hack project built on the open-source `pokeemerald-expansion` decompilation/expansion base.
 
 The project is intended to preserve the feel and structure of Pokémon Emerald while layering in modern quality-of-life improvements, configurable mechanics, expanded systems, and new features developed incrementally.
 
-## Try the current v0.0.8 build
+## Try the current v0.0.8.1 build
 
 The project site provides two builds from the same source:
 
 - **Release (recommended):** https://babycrttv.github.io/pokeemerald-emerald-legends/patcher.html
 - **Debug / developer:** https://babycrttv.github.io/pokeemerald-emerald-legends/patcher.html?build=debug
-- **Release BPS:** https://babycrttv.github.io/pokeemerald-emerald-legends/downloads/Pokemon-Emerald-Legends-v0.0.8.bps
-- **Debug BPS:** https://babycrttv.github.io/pokeemerald-emerald-legends/downloads/Pokemon-Emerald-Legends-v0.0.8-debug.bps
+- **Release BPS:** https://babycrttv.github.io/pokeemerald-emerald-legends/downloads/Pokemon-Emerald-Legends-v0.0.8.1.bps
+- **Debug BPS:** https://babycrttv.github.io/pokeemerald-emerald-legends/downloads/Pokemon-Emerald-Legends-v0.0.8.1-debug.bps
 
 The Release and Debug builds contain the same Legends gameplay/content changes. Release disables developer entry points for a cleaner casual-player build. Debug retains the expansion's overworld/battle/sprite debug tools and title-screen Quickstart.
 
 **EXP Share:** Gen 6-style party EXP is available from the start and defaults to ON. Battle participants receive full EXP while eligible non-participating party members receive the modern half share. It can be switched ON or OFF at any time from the Legends page in Options.
+
+**Maintenance QA (0.0.8.1):** Browser patching now ignores stale ROM validation and download operations; automated BPS decoding tests have been added. Gameplay mechanics are unchanged from 0.0.8.
 
 **Paged Options:** Options now has General and Legends pages. Use L/R to switch pages. The original Emerald window dimensions are preserved so future Legends settings can be added without squeezing or corrupting the menu.
 
@@ -79,6 +81,7 @@ The existing upstream license, credits, and notices remain part of this fork.
 - [Website changelog](https://babycrttv.github.io/pokeemerald-emerald-legends/changelog.html)
 - [Versioning policy](docs/VERSIONING.md)
 - [Development guide](docs/DEVELOPMENT.md)
+- [QA and regression checklist](docs/QA.md)
 - [Legal / distribution notes](docs/LEGAL.md)
 - [EXP system design](docs/features/exp-system.md)
 - [Paged Options menu](docs/features/options-menu.md)

@@ -11,6 +11,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: Exercise browser patcher regression tests
+        run: node --test test/legends-patcher.test.cjs
       - name: Verify Legends project metadata
         run: |
           test -f VERSION
@@ -22,6 +24,8 @@ jobs:
           test -f docs/changelog.html
           test -f docs/VERSIONING.md
           test -f docs/features/options-menu.md
+          test -f docs/QA.md
+          test -f test/legends-patcher.test.cjs
           test -f include/legends_settings.h
           test -f src/legends_settings.c
 
@@ -64,6 +68,7 @@ jobs:
           grep -Fq 'COMPOUND_STRING("LEGENDS 2/2")' src/option_menu.c
           grep -Fq 'JOY_NEW(L_BUTTON)' src/option_menu.c
           grep -Fq 'JOY_NEW(R_BUTTON)' src/option_menu.c
+          grep -Fq 'hintRight + 4 <= versionStart' src/option_menu.c
           grep -Fq '#define OPTION_WINDOW_Y       40' src/option_menu.c
           grep -Fq '.tilemapTop = 5' src/option_menu.c
           grep -Fq '.height = 14' src/option_menu.c
