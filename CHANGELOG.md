@@ -4,6 +4,14 @@ All notable Pokémon Emerald: Legends project changes are documented here.
 
 For build-specific player views, see [CHANGELOG-RELEASE.md](CHANGELOG-RELEASE.md) and [CHANGELOG-DEBUG.md](CHANGELOG-DEBUG.md). The canonical history below records the project as a whole.
 
+## [0.0.6] - 2026-10-07
+
+### Changed
+- Replaced Mr. Stone's post-Steven-Letter Rustboro reward from the now-redundant held Exp. Share to a Lucky Egg.
+- Updated Mr. Stone's reward explanation to describe the Lucky Egg's held-item EXP bonus.
+- Preserved the expansion-native Lucky Egg multiplier behavior; this release changes acquisition, not the multiplier formula.
+- Retained Emerald's existing `FLAG_RECEIVED_EXP_SHARE` as the one-time Devon reward completion state for save compatibility.
+
 ## [0.0.5] - 2026-10-07
 
 ### Added
