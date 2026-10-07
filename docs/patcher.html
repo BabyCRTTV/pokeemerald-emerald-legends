@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#173b2d">
+  <title>Patch Pokémon Emerald: Legends</title>
+  <meta name="description" content="Create your Pokémon Emerald: Legends v0.1 ROM locally in your browser.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="shell">
+    <header class="titlebar">
+      <div class="lights" aria-hidden="true"><span></span><span></span><span></span></div>
+      <div class="title">EMERALD: LEGENDS // PATCHER</div>
+      <div class="version">v0.1</div>
+    </header>
+
+    <section class="panel patcher-panel">
+      <div>
+        <p class="eyebrow">Local browser patcher</p>
+        <h1 class="patcher-title">Build your copy.</h1>
+        <p class="download-copy">Choose your own clean U.S./Europe Pokémon Emerald ROM. The patch is applied entirely inside your browser and your ROM is never uploaded anywhere.</p>
+
+        <div class="patcher-requirements">
+          <strong>Expected clean ROM</strong>
+          <code>SHA-1: f3ae088181bf583e55daf962a92bb46f4f1d07b7</code>
+          <span>Pokémon Emerald Version (USA, Europe)</span>
+        </div>
+      </div>
+
+      <div class="patcher-box">
+        <label for="rom-file">1. Choose clean Emerald ROM</label>
+        <input id="rom-file" type="file" accept=".gba,application/octet-stream">
+
+        <button id="patch-button" class="button primary patch-action" disabled>
+          2. Create Emerald: Legends v0.1
+        </button>
+
+        <div id="patch-status" class="patch-status" role="status">
+          Waiting for a ROM file.
+        </div>
+
+        <a class="text-link patch-back" href="index.html">← Back to project site</a>
+      </div>
+    </section>
+
+    <section class="panel patcher-info">
+      <p><strong>Privacy:</strong> patching happens locally on your device. The selected ROM is read by your browser only.</p>
+      <p><strong>Release format:</strong> the project site distributes a BPS patch, not a complete commercial game ROM.</p>
+    </section>
+
+    <footer>
+      <p>Unofficial, non-commercial fan project. Pokémon and related properties belong to their respective rights holders.</p>
+      <p>Pokémon Emerald: Legends v0.1</p>
+    </footer>
+  </main>
+  <script src="patcher.js"></script>
+</body>
+</html>
