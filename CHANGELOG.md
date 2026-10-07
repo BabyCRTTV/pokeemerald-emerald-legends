@@ -4,6 +4,22 @@ All notable Pokémon Emerald: Legends project changes are documented here.
 
 For build-specific player views, see [CHANGELOG-RELEASE.md](CHANGELOG-RELEASE.md) and [CHANGELOG-DEBUG.md](CHANGELOG-DEBUG.md). The canonical history below records the project as a whole.
 
+## [0.0.8] - 2026-10-07
+
+### Added
+- Added a reusable paged Options framework with separate **General** and **Legends** pages.
+- Added L/R shoulder-button page switching with the active page shown in the Options header.
+- Moved the Legends EXP Share toggle onto the Legends page, leaving room for additional project-specific settings later.
+
+### Fixed
+- Restored the Options menu's safe upstream window dimensions so its text tile buffer ends before the window-frame graphics begin.
+- Fixed the corrupted/repeating Options window borders seen in mGBA and Pizza Boy after the 0.0.5 single-page layout expansion.
+- Restored full visibility of the CANCEL row instead of allowing it to clip below the Options window.
+
+### Changed
+- The General page now contains Text Speed, Battle Scene, Battle Style, Sound, Button Mode, Frame, and Cancel.
+- Each page uses the original 16-pixel row spacing; new Legends settings can be added by extending the page table rather than enlarging the window.
+
 ## [0.0.7] - 2026-10-07
 
 ### Added
