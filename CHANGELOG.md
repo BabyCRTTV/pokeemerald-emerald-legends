@@ -1,6 +1,20 @@
 # Changelog
 
-All notable Pokémon Emerald: Legends project changes will be documented here.
+All notable Pokémon Emerald: Legends project changes are documented here.
+
+For build-specific player views, see [CHANGELOG-RELEASE.md](CHANGELOG-RELEASE.md) and [CHANGELOG-DEBUG.md](CHANGELOG-DEBUG.md). The canonical history below records the project as a whole.
+
+## [0.0.3] - 2026-10-07
+
+### Added
+- Added separate, permanently maintained Release and Debug changelog files alongside the canonical project changelog.
+- Added a dedicated website changelog page with one-click Release and Debug tabs.
+- Added variant-aware changelog validation so every version must appear in the canonical, Release, and Debug histories.
+
+### Changed
+- Advanced both build variants to version 0.0.3.
+- Added a compact Changelog link to the main project site instead of placing long update histories on the landing page.
+- Clarified project documentation so the normal player build is consistently called Release, reserving “vanilla” for the untouched Pokémon Emerald base ROM.
 
 ## [0.0.2] - 2026-10-07
 

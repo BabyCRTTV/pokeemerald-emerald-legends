@@ -16,13 +16,18 @@ jobs:
           test -f VERSION
           test -f ROADMAP.md
           test -f CHANGELOG.md
+          test -f CHANGELOG-RELEASE.md
+          test -f CHANGELOG-DEBUG.md
           test -f docs/index.html
+          test -f docs/changelog.html
           test -f docs/VERSIONING.md
 
           VERSION_NUMBER="$(tr -d '\r\n' < VERSION)"
 
           echo "$VERSION_NUMBER" | grep -Eq '^[0-9]+\.[0-9]+\.[0-9]+(\.[0-9]+)?$'
           grep -Fq "## [$VERSION_NUMBER]" CHANGELOG.md
+          grep -Fq "## [$VERSION_NUMBER]" CHANGELOG-RELEASE.md
+          grep -Fq "## [$VERSION_NUMBER]" CHANGELOG-DEBUG.md
           grep -Fq "**Version:** $VERSION_NUMBER" README.md
           grep -Fq "LEGENDS v$VERSION_NUMBER" src/option_menu.c
           grep -Fq "LEGENDS v$VERSION_NUMBER-D" src/option_menu.c
@@ -31,3 +36,7 @@ jobs:
           grep -Fq "const VERSION = \"$VERSION_NUMBER\";" docs/patcher.js
           grep -Fq 'BUILD_SUFFIX = IS_DEBUG ? "-debug" : ""' docs/patcher.js
           grep -Fq "patcher.html?build=debug" docs/index.html
+          grep -Fq "changelog.html" docs/index.html
+          grep -Fq 'data-tab-target="release"' docs/changelog.html
+          grep -Fq 'data-tab-target="debug"' docs/changelog.html
+          grep -Fq "v$VERSION_NUMBER" docs/changelog.html

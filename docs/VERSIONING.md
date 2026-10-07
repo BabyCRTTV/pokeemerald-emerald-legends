@@ -17,12 +17,12 @@ All player-facing locations should match it, including:
 
 ## Pre-1.0 cadence
 
-The current version is `0.0.2`.
+The current version is `0.0.3`.
 
 Each meaningful shipped change normally advances the final development revision by one:
 
 - `0.0.1`
-- `0.0.2`
+- `0.0.3`
 - `0.0.3`
 - `0.0.4`
 
@@ -41,7 +41,13 @@ The Debug filename receives a `-debug` suffix, and its in-game Options version r
 
 ## Changelog rule
 
-Every version bump must update `CHANGELOG.md` in the same development change.
+Every version bump must update all three changelog records in the same development change:
+
+- `CHANGELOG.md` - canonical full project history
+- `CHANGELOG-RELEASE.md` - player-facing Release history
+- `CHANGELOG-DEBUG.md` - developer-facing Debug history
+
+The website changelog mirrors the Release and Debug views behind separate tabs. Shared changes appear in both variant logs; build-specific differences are called out explicitly. If a version has no variant-specific divergence, that should be stated rather than omitted.
 
 A changelog entry should describe player-visible changes first, followed by notable technical, site, tooling, or maintenance changes when relevant.
 

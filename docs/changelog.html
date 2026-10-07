@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#173b2d">
+  <title>Changelog - Pokémon Emerald: Legends</title>
+  <meta name="description" content="Release and Debug changelogs for Pokémon Emerald: Legends v0.0.3.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="shell">
+    <header class="titlebar">
+      <div class="lights" aria-hidden="true"><span></span><span></span><span></span></div>
+      <div class="title">EMERALD: LEGENDS // CHANGELOG</div>
+      <div class="version">v0.0.3</div>
+    </header>
+
+    <section class="panel changelog-shell">
+      <p class="eyebrow">Build history</p>
+      <h1 class="patcher-title">What changed?</h1>
+      <p class="changelog-intro">Release and Debug share the same Legends gameplay and content unless noted otherwise. Use the tabs to see the history for the build you actually play or test.</p>
+
+      <div class="changelog-tabs" role="tablist" aria-label="Build changelog">
+        <button class="tab-button" type="button" role="tab" aria-selected="true" aria-controls="release-changelog" id="release-tab" data-tab-target="release">Release</button>
+        <button class="tab-button" type="button" role="tab" aria-selected="false" aria-controls="debug-changelog" id="debug-tab" data-tab-target="debug">Debug</button>
+      </div>
+
+      <section class="changelog-view" id="release-changelog" role="tabpanel" aria-labelledby="release-tab" data-tab-panel="release">
+        <div class="change-entry">
+          <h2>v0.0.3 <span class="change-date">October 7, 2026</span></h2>
+          <h3>Shared</h3>
+          <ul>
+            <li>Added separate Release and Debug changelog histories.</li>
+            <li>Added this tabbed changelog page and stronger version consistency checks.</li>
+          </ul>
+          <h3>Release-specific</h3>
+          <div class="variant-note">No Release-only gameplay/content divergence in 0.0.3. Release remains the recommended player build with developer tools disabled.</div>
+        </div>
+
+        <div class="change-entry">
+          <h2>v0.0.2 <span class="change-date">October 7, 2026</span></h2>
+          <h3>Shared</h3>
+          <ul>
+            <li>Split public distribution into Release and Debug variants from the same source.</li>
+            <li>Added browser patcher support and verified BPS output for both variants.</li>
+          </ul>
+          <h3>Release-specific</h3>
+          <ul>
+            <li>Uses the expansion release configuration.</li>
+            <li>Disables overworld/battle debug menus, sprite visualizer, and title-screen Quickstart.</li>
+          </ul>
+        </div>
+
+        <div class="change-entry">
+          <h2>v0.0.1 <span class="change-date">October 7, 2026</span></h2>
+          <ul>
+            <li>Added the LEGENDS title-screen subtitle and in-game version label.</li>
+            <li>Established the project site, browser patcher, reproducible build pipeline, roadmap, and initial feature design docs.</li>
+            <li>Release/Debug variants had not yet been formally separated.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="changelog-view" id="debug-changelog" role="tabpanel" aria-labelledby="debug-tab" data-tab-panel="debug" hidden>
+        <div class="change-entry">
+          <h2>v0.0.3 <span class="change-date">October 7, 2026</span></h2>
+          <h3>Shared</h3>
+          <ul>
+            <li>Added separate Release and Debug changelog histories.</li>
+            <li>Added this tabbed changelog page and stronger version consistency checks.</li>
+          </ul>
+          <h3>Debug-specific</h3>
+          <div class="variant-note">No new Debug-only gameplay behavior in 0.0.3. Debug continues to match Release content while retaining developer tools.</div>
+        </div>
+
+        <div class="change-entry">
+          <h2>v0.0.2 <span class="change-date">October 7, 2026</span></h2>
+          <h3>Shared</h3>
+          <ul>
+            <li>Split public distribution into Release and Debug variants from the same source.</li>
+            <li>Added browser patcher support and verified BPS output for both variants.</li>
+          </ul>
+          <h3>Debug-specific</h3>
+          <ul>
+            <li>First formally published Debug variant.</li>
+            <li>Retains overworld and battle debug menus, the Pokémon sprite visualizer, and title-screen Quickstart.</li>
+            <li>Uses a <code>-D</code> in-game version suffix.</li>
+          </ul>
+        </div>
+
+        <div class="change-entry">
+          <h2>v0.0.1 <span class="change-date">October 7, 2026</span></h2>
+          <ul>
+            <li>Added the LEGENDS title-screen subtitle and in-game version label.</li>
+            <li>Established the project site, browser patcher, reproducible build pipeline, roadmap, and initial feature design docs.</li>
+            <li>The development build contained expansion debug conveniences before the public Debug variant was formally named.</li>
+          </ul>
+        </div>
+      </section>
+
+      <div class="changelog-links">
+        Full repository records:
+        <a href="https://github.com/BabyCRTTV/pokeemerald-emerald-legends/blob/master/CHANGELOG-RELEASE.md">Release Markdown</a>
+        ·
+        <a href="https://github.com/BabyCRTTV/pokeemerald-emerald-legends/blob/master/CHANGELOG-DEBUG.md">Debug Markdown</a>
+        ·
+        <a href="https://github.com/BabyCRTTV/pokeemerald-emerald-legends/blob/master/CHANGELOG.md">Full project history</a>
+      </div>
+
+      <a class="text-link patch-back" href="index.html">← Back to project site</a>
+    </section>
+
+    <footer>
+      <p>Unofficial, non-commercial fan project. Pokémon and related properties belong to their respective rights holders.</p>
+      <p>Pokémon Emerald: Legends v0.0.3</p>
+    </footer>
+  </main>
+
+  <script>
+    (() => {
+      const tabs = Array.from(document.querySelectorAll("[data-tab-target]"));
+      const panels = Array.from(document.querySelectorAll("[data-tab-panel]"));
+
+      function selectTab(name) {
+        tabs.forEach(tab => tab.setAttribute("aria-selected", String(tab.dataset.tabTarget === name)));
+        panels.forEach(panel => { panel.hidden = panel.dataset.tabPanel !== name; });
+        if (history.replaceState) history.replaceState(null, "", "#" + name);
+      }
+
+      tabs.forEach(tab => tab.addEventListener("click", () => selectTab(tab.dataset.tabTarget)));
+      const initial = location.hash === "#debug" ? "debug" : "release";
+      selectTab(initial);
+    })();
+  </script>
+</body>
+</html>
