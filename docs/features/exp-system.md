@@ -1,6 +1,6 @@
 # EXP System
 
-**Status:** Implemented in 0.0.5
+**Status:** Implemented in 0.0.5; Rustboro reward integration updated in 0.0.6
 
 ## Goal
 
@@ -32,7 +32,15 @@ The setting is saved when leaving the Options menu. The Options screen was tight
 
 ## Lucky Egg
 
-Lucky Egg remains distinct from the global EXP Share and is **unchanged in 0.0.5**. Its multiplier continues to be handled by the expansion's normal experience multiplier path. Any Legends-specific Lucky Egg tuning will be treated as a separate future change.
+Lucky Egg remains distinct from the global EXP Share. Its multiplier continues to be handled by the expansion's normal experience multiplier path.
+
+### 0.0.6 Rustboro reward
+
+After the player delivers Mr. Stone's Letter to Steven and returns to Devon Corp. in Rustboro, Mr. Stone now gives a **Lucky Egg** instead of the original held Exp. Share. The global EXP Share introduced in 0.0.5 made the original reward redundant.
+
+This changes Lucky Egg acquisition only. Its native 1.5× held-item EXP multiplier is unchanged. Emerald's existing `FLAG_RECEIVED_EXP_SHARE` is deliberately retained as the one-time Devon reward completion flag so existing save/event state remains compatible.
+
+Any further Legends-specific Lucky Egg tuning will be treated as a separate future change.
 
 ## Implementation checklist
 
