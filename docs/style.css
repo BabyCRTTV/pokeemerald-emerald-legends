@@ -84,3 +84,41 @@ footer p { max-width: 520px; }
   .roadmap { grid-template-columns: 1fr; padding: 26px; }
   footer { flex-direction: column; gap: 0; }
 }
+
+
+.downloads {
+  display: grid;
+  grid-template-columns: .9fr 1.1fr;
+  gap: 34px;
+  padding: 34px;
+  margin: 18px 0;
+}
+.download-copy { color: var(--muted); max-width: 640px; }
+.download-box {
+  padding: 22px;
+  border: 1px solid var(--line);
+  background: #081913;
+}
+.download-status {
+  margin-bottom: 10px;
+  color: var(--emerald);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .13em;
+}
+.download-box strong { display: block; font-size: 20px; }
+.download-box p { color: var(--muted); }
+.button.disabled {
+  opacity: .5;
+  pointer-events: none;
+  cursor: default;
+}
+.text-link {
+  display: inline-block;
+  margin-left: 14px;
+  font-size: 12px;
+}
+@media (max-width: 760px) {
+  .downloads { grid-template-columns: 1fr; padding: 26px; }
+  .text-link { display: block; margin: 14px 0 0; }
+}
