@@ -7,6 +7,8 @@ All notable Pokémon Emerald: Legends project changes will be documented here.
 ### Added
 - Added `LEGENDS v0.1` identification to the in-game Options menu header.
 - Added a release/download section to the project website in preparation for patch distributions.
+- Added an in-browser BPS patcher that verifies a clean Emerald ROM and creates the playable `.gba` locally without uploading the source ROM.
+- Added a reproducible CI workflow that builds and verifies the v0.1 BPS patch from decompiled source.
 - Established Pokémon Emerald: Legends project identity.
 - Adopted `pokeemerald-expansion` as the upstream base.
 - Added project roadmap and development documentation.
