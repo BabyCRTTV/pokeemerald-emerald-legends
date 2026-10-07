@@ -42,4 +42,4 @@ Lucky Egg remains distinct from the global EXP Share and is **unchanged in 0.0.5
 - [x] Migrate existing pre-0.0.5 saves to the new default once.
 - [x] Add an EXP SHARE ON/OFF setting to Options.
 - [x] Preserve native Lucky Egg, traded Pokémon, scaled EXP, catch EXP, and level-cap handling.
-- [ ] Complete Release and Debug build verification for 0.0.5.
+- [x] Complete Release and Debug build verification for 0.0.5.
