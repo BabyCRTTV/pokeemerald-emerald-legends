@@ -69,8 +69,7 @@ jobs:
         run: |
           git clone --depth 1 https://github.com/bates64/flips.git /tmp/flips
           cd /tmp/flips
-          chmod +x make-linux.sh
-          ./make-linux.sh
+          TARGET=cli make -j"$(nproc)"
 
       - name: Create and verify BPS patch
         run: |
