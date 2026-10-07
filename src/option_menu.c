@@ -94,8 +94,8 @@ static const u8 gText_BattleSceneOn[]      = _("{COLOR GREEN}{SHADOW LIGHT_GREEN
 static const u8 gText_BattleSceneOff[]     = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}OFF");
 static const u8 gText_BattleStyleShift[]   = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}SHIFT");
 static const u8 gText_BattleStyleSet[]     = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}SET");
-static const u8 gText_ExpShareOn[]          = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}ON");
-static const u8 gText_ExpShareOff[]         = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}OFF");
+static const u8 gText_LegendsExpShareOn[]          = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}ON");
+static const u8 gText_LegendsExpShareOff[]         = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}OFF");
 static const u8 gText_SoundMono[]          = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}MONO");
 static const u8 gText_SoundStereo[]        = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}STEREO");
 static const u8 gText_FrameType[]          = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}TYPE");
@@ -550,8 +550,8 @@ static void ExpShare_DrawChoices(u8 selection)
     styles[1] = 0;
     styles[selection] = 1;
 
-    DrawOptionMenuChoice(gText_ExpShareOn, 104, YPOS_EXPSHARE, styles[0]);
-    DrawOptionMenuChoice(gText_ExpShareOff, GetStringRightAlignXOffset(FONT_NORMAL, gText_ExpShareOff, 198), YPOS_EXPSHARE, styles[1]);
+    DrawOptionMenuChoice(gText_LegendsExpShareOn, 104, YPOS_EXPSHARE, styles[0]);
+    DrawOptionMenuChoice(gText_LegendsExpShareOff, GetStringRightAlignXOffset(FONT_NORMAL, gText_LegendsExpShareOff, 198), YPOS_EXPSHARE, styles[1]);
 }
 
 static u8 Sound_ProcessInput(u8 selection)
