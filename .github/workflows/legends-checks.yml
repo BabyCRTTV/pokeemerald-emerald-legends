@@ -52,6 +52,8 @@ jobs:
           grep -Fq '#define I_EXP_SHARE_FLAG        FLAG_LEGENDS_EXP_SHARE' include/config/item.h
           grep -Fq '#define FLAG_LEGENDS_EXP_SHARE' include/constants/flags.h
           grep -Fq 'COMPOUND_STRING("EXP SHARE")' src/option_menu.c
+          grep -Fq 'tExpShare = LegendsIsExpShareEnabled() ? 0 : 1;' src/option_menu.c
+          grep -Fq 'LegendsSetExpShareEnabled(gTasks[taskId].tExpShare == 0);' src/option_menu.c
           grep -Fq 'LegendsInitNewGameSettings();' src/new_game.c
           grep -Fq 'LegendsEnsureSettingsInitialized();' src/overworld.c
 
