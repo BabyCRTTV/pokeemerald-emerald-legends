@@ -7,6 +7,16 @@ Pokémon Emerald: Legends is an unofficial, non-commercial Pokémon Emerald ROM-
 
 The project is intended to preserve the feel and structure of Pokémon Emerald while layering in modern quality-of-life improvements, configurable mechanics, expanded systems, and new features developed incrementally.
 
+## Try the current v0.1 build
+
+The project site includes a browser-based patcher:
+
+- **Project site:** https://babycrttv.github.io/pokeemerald-emerald-legends/
+- **Browser patcher:** https://babycrttv.github.io/pokeemerald-emerald-legends/patcher.html
+- **BPS patch:** https://babycrttv.github.io/pokeemerald-emerald-legends/downloads/Pokemon-Emerald-Legends-v0.1.bps
+
+The browser patcher verifies a clean U.S./Europe Pokémon Emerald ROM (SHA-1 `f3ae088181bf583e55daf962a92bb46f4f1d07b7`) and creates `Pokemon-Emerald-Legends-v0.1.gba` locally in the browser. The source ROM is never uploaded.
+
 ## Development philosophy
 
 - Preserve the recognizable Emerald adventure as the foundation.
