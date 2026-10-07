@@ -328,7 +328,16 @@ static void Task_OptionMenuProcessInput(u8 taskId)
     u8 itemCount;
     u8 y;
 
-    if (JOY_NEW(A_BUTTON))
+    // Handle page navigation before A/B so L still changes pages when Button Mode is L=A.
+    if (JOY_NEW(L_BUTTON))
+    {
+        ChangeOptionMenuPage(taskId, -1);
+    }
+    else if (JOY_NEW(R_BUTTON))
+    {
+        ChangeOptionMenuPage(taskId, 1);
+    }
+    else if (JOY_NEW(A_BUTTON))
     {
         if (GetOptionMenuItem(taskId) == MENUITEM_CANCEL)
             gTasks[taskId].func = Task_OptionMenuSave;
@@ -336,14 +345,6 @@ static void Task_OptionMenuProcessInput(u8 taskId)
     else if (JOY_NEW(B_BUTTON))
     {
         gTasks[taskId].func = Task_OptionMenuSave;
-    }
-    else if (JOY_NEW(L_BUTTON))
-    {
-        ChangeOptionMenuPage(taskId, -1);
-    }
-    else if (JOY_NEW(R_BUTTON))
-    {
-        ChangeOptionMenuPage(taskId, 1);
     }
     else if (JOY_NEW(DPAD_UP))
     {
