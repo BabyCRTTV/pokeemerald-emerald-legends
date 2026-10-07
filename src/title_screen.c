@@ -29,6 +29,7 @@ enum {
     TAG_VERSION = 1000,
     TAG_PRESS_START_COPYRIGHT,
     TAG_LOGO_SHINE,
+    TAG_LEGENDS_SUBTITLE,
 };
 
 #define VERSION_BANNER_RIGHT_TILEOFFSET 64
@@ -36,6 +37,8 @@ enum {
 #define VERSION_BANNER_RIGHT_X 162
 #define VERSION_BANNER_Y 2
 #define VERSION_BANNER_Y_GOAL 66
+#define LEGENDS_BANNER_Y 27
+#define LEGENDS_BANNER_Y_GOAL 91
 #define START_BANNER_X 128
 
 #define CLEAR_SAVE_BUTTON_COMBO (B_BUTTON | SELECT_BUTTON | DPAD_UP)
@@ -58,6 +61,7 @@ static void SpriteCB_VersionBannerLeft(struct Sprite *sprite);
 static void SpriteCB_VersionBannerRight(struct Sprite *sprite);
 static void SpriteCB_PressStartCopyrightBanner(struct Sprite *sprite);
 static void SpriteCB_PokemonLogoShine(struct Sprite *sprite);
+static void SpriteCB_LegendsSubtitle(struct Sprite *sprite);
 
 // const rom data
 static const u16 sUnusedUnknownPal[] = INCGFX_U16("graphics/title_screen/unused.pal", ".gbapal");
@@ -190,6 +194,112 @@ static const struct CompressedSpriteSheet sSpriteSheet_EmeraldVersion[] =
         .tag = TAG_VERSION
     },
     {},
+};
+
+
+/*
+ * Pokémon Emerald: Legends subtitle.
+ *
+ * Kept as raw 4bpp sprite data so the title treatment is self-contained and
+ * does not replace or alter the original Pokémon Emerald logo artwork.
+ * Palette index 0 is transparent.
+ */
+static const u32 sTitleScreenLegendsGfx[] =
+{
+    0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000,
+    0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000,
+    0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000,
+    0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000,
+    0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000,
+    0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000,
+    0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000,
+    0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000,
+    0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000,
+    0x00000000, 0x00000000, 0x00000000, 0x00011100, 0x00013100, 0x00013100, 0x00013100, 0x00014100,
+    0x00000000, 0x00000000, 0x00000000, 0x11111111, 0x11333331, 0x31111131, 0x31111131, 0x41144441,
+    0x00000000, 0x00000000, 0x00000000, 0x11111111, 0x33313333, 0x11311111, 0x11311111, 0x44414441,
+    0x00000000, 0x00000000, 0x00000000, 0x11011111, 0x31113133, 0x31133111, 0x31133111, 0x41414114,
+    0x00000000, 0x00000000, 0x00000000, 0x10111111, 0x11133331, 0x31311131, 0x31312131, 0x11410141,
+    0x00000000, 0x00000000, 0x00000000, 0x00011111, 0x00013333, 0x00011111, 0x00021111, 0x00011444,
+    0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000,
+    0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000,
+    0x00014100, 0x11114100, 0x44444100, 0x11111100, 0x22220000, 0x00000000, 0x00000000, 0x00000000,
+    0x41111141, 0x41111141, 0x11444441, 0x11111111, 0x02222202, 0x00000000, 0x00000000, 0x00000000,
+    0x11414111, 0x11414111, 0x44411444, 0x11111111, 0x22002220, 0x00000000, 0x00000000, 0x00000000,
+    0x44114111, 0x44114111, 0x41114144, 0x11011111, 0x00020222, 0x00000000, 0x00000000, 0x00000000,
+    0x11410141, 0x11411141, 0x41144441, 0x11111111, 0x00222202, 0x00000000, 0x00000000, 0x00000000,
+    0x00014111, 0x00014111, 0x00011444, 0x00021111, 0x00002222, 0x00000000, 0x00000000, 0x00000000,
+    0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000,
+    0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000,
+    0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000,
+    0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000,
+    0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000,
+    0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000,
+    0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000,
+    0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000,
+    0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000,
+};
+
+static const u16 sTitleScreenLegendsPal[] =
+{
+    RGB(0, 0, 0),
+    RGB(2, 7, 5),
+    RGB(2, 13, 8),
+    RGB(26, 31, 28),
+    RGB(8, 27, 17),
+    RGB(0, 0, 0), RGB(0, 0, 0), RGB(0, 0, 0),
+    RGB(0, 0, 0), RGB(0, 0, 0), RGB(0, 0, 0), RGB(0, 0, 0),
+    RGB(0, 0, 0), RGB(0, 0, 0), RGB(0, 0, 0), RGB(0, 0, 0),
+};
+
+static const struct OamData sLegendsSubtitleOamData =
+{
+    .y = DISPLAY_HEIGHT,
+    .affineMode = ST_OAM_AFFINE_OFF,
+    .objMode = ST_OAM_OBJ_NORMAL,
+    .mosaic = FALSE,
+    .bpp = ST_OAM_4BPP,
+    .shape = SPRITE_SHAPE(64x32),
+    .x = 0,
+    .matrixNum = 0,
+    .size = SPRITE_SIZE(64x32),
+    .tileNum = 0,
+    .priority = 0,
+    .paletteNum = 0,
+    .affineParam = 0,
+};
+
+static const union AnimCmd sLegendsSubtitleAnimSequence[] =
+{
+    ANIMCMD_FRAME(0, 30),
+    ANIMCMD_END,
+};
+
+static const union AnimCmd *const sLegendsSubtitleAnimTable[] =
+{
+    sLegendsSubtitleAnimSequence,
+};
+
+static const struct SpriteTemplate sLegendsSubtitleSpriteTemplate =
+{
+    .tileTag = TAG_LEGENDS_SUBTITLE,
+    .paletteTag = TAG_LEGENDS_SUBTITLE,
+    .oam = &sLegendsSubtitleOamData,
+    .anims = sLegendsSubtitleAnimTable,
+    .callback = SpriteCB_LegendsSubtitle,
+};
+
+static const struct SpriteSheet sSpriteSheet_LegendsSubtitle =
+{
+    .data = sTitleScreenLegendsGfx,
+    .size = sizeof(sTitleScreenLegendsGfx),
+    .tag = TAG_LEGENDS_SUBTITLE,
+};
+
+static const struct SpritePalette sSpritePalette_LegendsSubtitle =
+{
+    .data = sTitleScreenLegendsPal,
+    .tag = TAG_LEGENDS_SUBTITLE,
 };
 
 static const struct OamData sOamData_CopyrightBanner =
@@ -399,6 +509,18 @@ static void SpriteCB_VersionBannerRight(struct Sprite *sprite)
 // Sprite data for SpriteCB_PressStartCopyrightBanner
 #define sAnimate data[0]
 #define sTimer   data[1]
+
+static void SpriteCB_LegendsSubtitle(struct Sprite *sprite)
+{
+    if (gTasks[sprite->data[0]].tSkipToNext)
+    {
+        sprite->y = LEGENDS_BANNER_Y_GOAL;
+    }
+    else if (sprite->y != LEGENDS_BANNER_Y_GOAL)
+    {
+        sprite->y++;
+    }
+}
 
 static void SpriteCB_PressStartCopyrightBanner(struct Sprite *sprite)
 {
@@ -612,8 +734,10 @@ void CB2_InitTitleScreen(void)
         LoadCompressedSpriteSheet(&sSpriteSheet_EmeraldVersion[0]);
         LoadCompressedSpriteSheet(&sSpriteSheet_PressStart[0]);
         LoadCompressedSpriteSheet(&sPokemonLogoShineSpriteSheet[0]);
+        LoadSpriteSheet(&sSpriteSheet_LegendsSubtitle);
         LoadPalette(gTitleScreenEmeraldVersionPal, OBJ_PLTT_ID(0), PLTT_SIZE_4BPP);
         LoadSpritePalette(&sSpritePalette_PressStart[0]);
+        LoadSpritePalette(&sSpritePalette_LegendsSubtitle);
         gMain.state = 2;
         break;
     case 2:
@@ -718,6 +842,10 @@ static void Task_TitleScreenPhase1(u8 taskId)
         // Create right side of version banner
         spriteId = CreateSprite(&sVersionBannerRightSpriteTemplate, VERSION_BANNER_RIGHT_X, VERSION_BANNER_Y, 0);
         gSprites[spriteId].sParentTaskId = taskId;
+
+        // Add the Legends subtitle beneath the untouched Emerald banner.
+        spriteId = CreateSprite(&sLegendsSubtitleSpriteTemplate, DISPLAY_WIDTH / 2, LEGENDS_BANNER_Y, 0);
+        gSprites[spriteId].data[0] = taskId;
 
         gTasks[taskId].tCounter = 144;
         gTasks[taskId].func = Task_TitleScreenPhase2;
