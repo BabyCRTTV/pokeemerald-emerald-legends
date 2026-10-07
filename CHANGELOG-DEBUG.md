@@ -2,6 +2,17 @@
 
 This is the developer-facing history for the **Debug** build. Shared Legends changes are repeated here so this file stands on its own; Debug-only behavior is called out separately.
 
+## [0.0.7] - 2026-10-07
+
+### Shared changes
+- Professor Birch now enables the National Pokédex during the initial Pokédex handoff.
+- Birch's post-Elite Four National Dex upgrade reward is now 25 Rare Candies.
+- If the Bag cannot hold all 25, the reward is sent to the PC; if neither has room, Birch keeps the reward pending for a later conversation.
+- Existing postgame saves can claim the new Rare Candy reward once without disrupting later Johto starter progression.
+
+### Debug-specific
+- No Debug-only gameplay divergence in this version; existing developer tools remain available
+
 ## [0.0.6] - 2026-10-07
 
 ### Shared changes

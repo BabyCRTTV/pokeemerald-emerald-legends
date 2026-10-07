@@ -4,6 +4,17 @@ All notable Pokémon Emerald: Legends project changes are documented here.
 
 For build-specific player views, see [CHANGELOG-RELEASE.md](CHANGELOG-RELEASE.md) and [CHANGELOG-DEBUG.md](CHANGELOG-DEBUG.md). The canonical history below records the project as a whole.
 
+## [0.0.7] - 2026-10-07
+
+### Added
+- Professor Birch's initial Pokédex handoff now enables National Mode immediately.
+- Birch now gives 25 Rare Candies after the player becomes Champion, replacing the old post-Elite Four National Dex upgrade reward.
+
+### Changed
+- The Champion reward first tries the Bag and falls back to the PC if the Bag cannot hold all 25 Rare Candies.
+- Added a one-time reward flag so existing postgame saves that already passed the old National Dex scene can still claim the 25 Rare Candies from Birch.
+- Preserved the existing postgame state progression, including the later Hoenn Pokédex completion / Johto starter reward.
+
 ## [0.0.6] - 2026-10-07
 
 ### Changed

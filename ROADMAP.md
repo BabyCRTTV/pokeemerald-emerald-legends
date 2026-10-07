@@ -15,6 +15,8 @@ Goal: establish a stable `pokeemerald-expansion` project and implement the first
 ### Gameplay systems
 - [x] Gen 6-style party EXP Share with Options toggle
 - [x] Replace Rustboro's redundant held Exp. Share reward with Lucky Egg
+- [x] Unlock National Pokédex at Professor Birch's initial Pokédex handoff
+- [x] Replace the post-Elite Four National Dex upgrade reward with 25 Rare Candies
 - [ ] Lucky Egg behavior review / tuning
 - [x] Overworld HM / field move system
 - [x] Field move animation and usability rules
