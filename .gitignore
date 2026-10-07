@@ -72,3 +72,6 @@ __pycache__
 *.ips
 *.ups
 *.bps
+
+# Allow verified public release patches
+!docs/downloads/*.bps
