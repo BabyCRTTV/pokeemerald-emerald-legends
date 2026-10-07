@@ -4,6 +4,18 @@ All notable Pokémon Emerald: Legends project changes are documented here.
 
 For build-specific player views, see [CHANGELOG-RELEASE.md](CHANGELOG-RELEASE.md) and [CHANGELOG-DEBUG.md](CHANGELOG-DEBUG.md). The canonical history below records the project as a whole.
 
+## [0.0.8.1] - 2026-10-07
+
+### Fixed
+- Browser patcher now ignores stale checksum results when the selected ROM changes during verification.
+- Cancels in-flight local patching when the selected ROM changes, avoiding accidental output from an older selection.
+
+### Quality and maintenance
+- Reviewed the Options, EXP Share settings, HM field utilities, Birch Champion reward, and Rustboro Lucky Egg paths at source level.
+- Added automated BPS decoder tests for copy behavior, integrity checks, and rapid ROM selection changes.
+- Documented verified automated coverage and remaining manual emulator scenarios in docs/QA.md.
+- No gameplay or content changes from v0.0.8; Release and Debug retain identical Legends mechanics.
+
 ## [0.0.8] - 2026-10-07
 
 ### Added

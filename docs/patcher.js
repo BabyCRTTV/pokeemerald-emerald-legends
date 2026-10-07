@@ -2,7 +2,7 @@
   "use strict";
 
   const EXPECTED_SHA1 = "f3ae088181bf583e55daf962a92bb46f4f1d07b7";
-  const VERSION = "0.0.8";
+  const VERSION = "0.0.8.1";
   const params = new URLSearchParams(window.location.search);
   const IS_DEBUG = params.get("build") === "debug";
   const BUILD_LABEL = IS_DEBUG ? "Debug" : "Release";
@@ -28,8 +28,11 @@
   button.textContent = `2. Create Emerald: Legends v${VERSION} ${BUILD_LABEL}`;
 
   let sourceBytes = null;
+  // Ignore results from a ROM selection that has since been replaced.
+  let romSelectionRevision = 0;
 
   input.addEventListener("change", async () => {
+    const revision = ++romSelectionRevision;
     button.disabled = true;
     sourceBytes = null;
 
@@ -55,17 +58,21 @@
         );
       }
 
+      if (revision !== romSelectionRevision) return;
       sourceBytes = new Uint8Array(buffer);
       setStatus(`Clean ROM verified. Ready to build Emerald: Legends v${VERSION} ${BUILD_LABEL}.`, "ok");
       button.disabled = false;
     } catch (err) {
-      setStatus(err.message || String(err), "error");
+      if (revision === romSelectionRevision)
+        setStatus(err.message || String(err), "error");
     }
   });
 
   button.addEventListener("click", async () => {
     if (!sourceBytes) return;
 
+    const sourceForPatch = sourceBytes;
+    const revision = romSelectionRevision;
     button.disabled = true;
     try {
       setStatus(`Downloading the v${VERSION} ${BUILD_LABEL} BPS patch…`, "busy");
@@ -75,8 +82,10 @@
       }
 
       const patchBytes = new Uint8Array(await response.arrayBuffer());
+      if (revision !== romSelectionRevision) return;
       setStatus("Applying patch locally…", "busy");
-      const output = applyBps(sourceBytes, patchBytes);
+      const output = applyBps(sourceForPatch, patchBytes);
+      if (revision !== romSelectionRevision) return;
 
       setStatus("Verifying and preparing download…", "busy");
       const blob = new Blob([output], { type: "application/octet-stream" });
@@ -91,7 +100,8 @@
 
       setStatus(`Done. Your Emerald: Legends v${VERSION} ${BUILD_LABEL} .gba has been created locally.`, "ok");
     } catch (err) {
-      setStatus(err.message || String(err), "error");
+      if (revision === romSelectionRevision)
+        setStatus(err.message || String(err), "error");
     } finally {
       button.disabled = !sourceBytes;
     }

@@ -2,6 +2,16 @@
 
 This is the player-facing history for the recommended **Release** build. Shared Legends changes are repeated here so this file stands on its own; Release-only behavior is called out separately.
 
+## [0.0.8.1] - 2026-10-07
+
+### Shared changes
+- Fixed browser patcher handling of rapid ROM changes, discarding obsolete validation and download results.
+- Added automated BPS parser/checksum tests and a manual emulator regression checklist.
+- Core Legends gameplay and content remain unchanged from 0.0.8.
+
+### Release-specific
+- No Release-only gameplay divergence; developer tools remain disabled.
+
 ## [0.0.8] - 2026-10-07
 
 ### Shared changes

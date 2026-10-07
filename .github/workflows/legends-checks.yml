@@ -11,6 +11,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: Exercise browser patcher regression tests
+        run: node --test test/legends-patcher.test.cjs
       - name: Verify Legends project metadata
         run: |
           test -f VERSION
@@ -22,6 +24,8 @@ jobs:
           test -f docs/changelog.html
           test -f docs/VERSIONING.md
           test -f docs/features/options-menu.md
+          test -f docs/QA.md
+          test -f test/legends-patcher.test.cjs
           test -f include/legends_settings.h
           test -f src/legends_settings.c
 
