@@ -46,7 +46,8 @@ During active pre-1.0 development, each meaningful shipped change increments the
 - `0.0.3` - separate variant changelogs
 - `0.0.4` - badge-earned HM field utilities
 - `0.0.4.1` - changelog-label and release-metadata maintenance
-- `0.0.4.2` - changelog split housekeeping and stronger consistency checks\n- `0.0.5` - default-on Gen 6-style party EXP Share with Options toggle
+- `0.0.4.2` - changelog split housekeeping and stronger consistency checks
+- `0.0.5` - default-on Gen 6-style party EXP Share with Options toggle
 - a fourth segment such as `0.0.3.1` may be used for a very small follow-up build when that is clearer than consuming the next normal revision
 
 Every version bump must update the canonical, Release, and Debug changelogs and be mirrored in player-facing version text. See [VERSIONING.md](VERSIONING.md).

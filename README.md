@@ -18,7 +18,9 @@ The project site provides two builds from the same source:
 
 The Release and Debug builds contain the same Legends gameplay/content changes. Release disables developer entry points for a cleaner casual-player build. Debug retains the expansion's overworld/battle/sprite debug tools and title-screen Quickstart.
 
-**EXP Share:** Gen 6-style party EXP is available from the start and defaults to ON. Battle participants receive full EXP while eligible non-participating party members receive the modern half share. It can be switched ON or OFF at any time from Options.\n\n**Badge-earned field moves:** Cut, Flash, Rock Smash, Strength, Surf, Fly, Dive, and Waterfall no longer require an HM moveslot for overworld use. Emerald's original badge progression and map restrictions remain in place.
+**EXP Share:** Gen 6-style party EXP is available from the start and defaults to ON. Battle participants receive full EXP while eligible non-participating party members receive the modern half share. It can be switched ON or OFF at any time from Options.
+
+**Badge-earned field moves:** Cut, Flash, Rock Smash, Strength, Surf, Fly, Dive, and Waterfall no longer require an HM moveslot for overworld use. Emerald's original badge progression and map restrictions remain in place.
 
 The browser patcher verifies a clean U.S./Europe Pokémon Emerald ROM (SHA-1 `f3ae088181bf583e55daf962a92bb46f4f1d07b7`) and creates the selected `.gba` locally. The source ROM is never uploaded.
 
