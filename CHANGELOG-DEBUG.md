@@ -2,6 +2,16 @@
 
 This is the developer-facing history for the **Debug** build. Shared Legends changes are repeated here so this file stands on its own; Debug-only behavior is called out separately.
 
+## [0.0.4.2] - 2026-10-07
+
+### Shared changes
+- Corrected homepage wording so the field-move feature is accurately attributed to 0.0.4.
+- Added a direct Debug changelog link beside the Debug download.
+- Tightened changelog/version consistency checks.
+
+### Debug-specific
+- No Debug-only gameplay or content changes in this micro-build; existing developer tools remain available.
+
 ## [0.0.4.1] - 2026-10-07
 
 ### Shared changes

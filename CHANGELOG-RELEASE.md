@@ -2,6 +2,16 @@
 
 This is the player-facing history for the recommended **Release** build. Shared Legends changes are repeated here so this file stands on its own; Release-only behavior is called out separately.
 
+## [0.0.4.2] - 2026-10-07
+
+### Shared changes
+- Corrected homepage wording so the field-move feature is accurately attributed to 0.0.4.
+- Added a direct Release changelog link beside the Release download.
+- Tightened changelog/version consistency checks.
+
+### Release-specific
+- No Release-only gameplay or content changes in this micro-build.
+
 ## [0.0.4.1] - 2026-10-07
 
 ### Shared changes
