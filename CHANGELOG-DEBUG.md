@@ -2,6 +2,15 @@
 
 This is the developer-facing history for the **Debug** build. Shared Legends changes are repeated here so this file stands on its own; Debug-only behavior is called out separately.
 
+## [0.0.4.1] - 2026-10-07
+
+### Shared changes
+- Corrected mislabeled 0.0.3 headings on the website changelog.
+- Synchronized current version labels and download targets to 0.0.4.1.
+
+### Debug-specific
+- No Debug-only gameplay or content changes in this micro-build; existing developer tools remain available.
+
 ## [0.0.4] - 2026-10-07
 
 ### Shared changes

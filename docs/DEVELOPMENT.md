@@ -37,7 +37,7 @@ Do not commit generated ROMs, copyrighted ROM data, save files containing person
 
 The authoritative project version lives in the root `VERSION` file.
 
-Current version: `0.0.4`.
+Current version: `0.0.4.1`.
 
 During active pre-1.0 development, each meaningful shipped change increments the development revision:
 
@@ -45,6 +45,7 @@ During active pre-1.0 development, each meaningful shipped change increments the
 - `0.0.2` - Release/Debug distribution split
 - `0.0.3` - separate variant changelogs
 - `0.0.4` - badge-earned HM field utilities
+- `0.0.4.1` - changelog-label and release-metadata maintenance
 - a fourth segment such as `0.0.3.1` may be used for a very small follow-up build when that is clearer than consuming the next normal revision
 
 Every version bump must update the canonical, Release, and Debug changelogs and be mirrored in player-facing version text. See [VERSIONING.md](VERSIONING.md).

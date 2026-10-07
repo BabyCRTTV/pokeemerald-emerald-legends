@@ -4,6 +4,15 @@ All notable Pokémon Emerald: Legends project changes are documented here.
 
 For build-specific player views, see [CHANGELOG-RELEASE.md](CHANGELOG-RELEASE.md) and [CHANGELOG-DEBUG.md](CHANGELOG-DEBUG.md). The canonical history below records the project as a whole.
 
+## [0.0.4.1] - 2026-10-07
+
+### Fixed
+- Corrected the website changelog so the historical 0.0.3 entries are labeled 0.0.3 instead of 0.0.4.
+- Synchronized the current version display across the site, browser patcher, README, and both build variants.
+
+### Changed
+- Published this documentation/maintenance correction as micro-build 0.0.4.1 without gameplay or content divergence between Release and Debug.
+
 ## [0.0.4] - 2026-10-07
 
 ### Added

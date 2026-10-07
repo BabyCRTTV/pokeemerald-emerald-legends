@@ -2,6 +2,15 @@
 
 This is the player-facing history for the recommended **Release** build. Shared Legends changes are repeated here so this file stands on its own; Release-only behavior is called out separately.
 
+## [0.0.4.1] - 2026-10-07
+
+### Shared changes
+- Corrected mislabeled 0.0.3 headings on the website changelog.
+- Synchronized current version labels and download targets to 0.0.4.1.
+
+### Release-specific
+- No Release-only gameplay or content changes in this micro-build.
+
 ## [0.0.4] - 2026-10-07
 
 ### Shared changes
