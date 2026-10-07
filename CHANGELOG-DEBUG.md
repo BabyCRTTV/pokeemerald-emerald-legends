@@ -2,6 +2,18 @@
 
 This is the developer-facing history for the **Debug** build. Shared Legends changes are repeated here so this file stands on its own; Debug-only behavior is called out separately.
 
+## [0.0.5] - 2026-10-07
+
+### Shared changes
+- Added default-on Gen 6-style party EXP Share from the beginning of the game.
+- Added an `EXP SHARE` ON/OFF setting to Options.
+- Added one-time migration for pre-0.0.5 saves so the new setting starts enabled.
+- Reused the expansion-native EXP pipeline so existing multipliers and level-cap behavior remain intact.
+
+### Debug-specific
+- No Debug-only gameplay divergence in this version.
+- Debug includes the same EXP Share behavior while retaining the existing developer menus, sprite visualizer, and Quickstart tools.
+
 ## [0.0.4.2] - 2026-10-07
 
 ### Shared changes
