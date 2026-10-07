@@ -192,48 +192,6 @@ LittlerootTown_ProfessorBirchsLab_EventScript_ChampionRareCandyNoRoom::
 	msgbox LittlerootTown_ProfessorBirchsLab_Text_ChampionRewardNoRoom, MSGBOX_DEFAULT
 	return
 
-LittlerootTown_ProfessorBirchsLab_EventScript_MayUpgradeComment::
-	msgbox LittlerootTown_ProfessorBirchsLab_Text_MayUpgradeSoCool, MSGBOX_DEFAULT
-	closemessage
-	return
-
-LittlerootTown_ProfessorBirchsLab_EventScript_BrendanUpgradeComment::
-	msgbox LittlerootTown_ProfessorBirchsLab_Text_BrendanYouCanThankMe, MSGBOX_DEFAULT
-	closemessage
-	return
-
-LittlerootTown_ProfessorBirchsLab_Movement_BirchRetrievePokedexes:
-	walk_left
-	walk_in_place_faster_down
-	delay_16
-	delay_16
-	walk_right
-	walk_in_place_faster_down
-	delay_16
-	delay_16
-	walk_right
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	walk_right
-	walk_right
-	walk_right
-	walk_in_place_faster_up
-	step_end
-
-LittlerootTown_ProfessorBirchsLab_Movement_BirchReturnPokedex:
-	walk_left
-	walk_left
-	walk_left
-	walk_up
-	walk_up
-	walk_up
-	walk_up
-	walk_left
-	walk_in_place_faster_down
-	step_end
-
 LittlerootTown_ProfessorBirchsLab_EventScript_ChooseJohtoStarter::
 	lockall
 	applymovement LOCALID_PLAYER, LittlerootTown_ProfessorBirchsLab_Movement_PlayerEnterLabForJohtoStarter
