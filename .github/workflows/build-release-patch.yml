@@ -50,7 +50,7 @@ jobs:
             g++
 
       - name: Build Emerald Legends
-        run: make -j2
+        run: make -j"$(nproc)"
 
       - name: Build matching vanilla Pokémon Emerald
         run: |
@@ -59,7 +59,7 @@ jobs:
           cd /tmp/agbcc
           ./build.sh
           ./install.sh /tmp/pokeemerald-vanilla
-          make -C /tmp/pokeemerald-vanilla -j2
+          make -C /tmp/pokeemerald-vanilla -j"$(nproc)"
 
       - name: Verify vanilla ROM identity
         run: |
