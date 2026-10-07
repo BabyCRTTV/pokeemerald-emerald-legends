@@ -5,6 +5,7 @@ All notable Pokémon Emerald: Legends project changes will be documented here.
 ## [0.1.0-dev] - Initial development
 
 ### Added
+- Added a centered `LEGENDS` subtitle to the Emerald title screen while preserving the original Pokémon Emerald logo artwork.
 - Added `LEGENDS v0.1` identification to the in-game Options menu header.
 - Added a release/download section to the project website in preparation for patch distributions.
 - Added an in-browser BPS patcher that verifies a clean Emerald ROM and creates the playable `.gba` locally without uploading the source ROM.
