@@ -22,3 +22,12 @@ Baseline: v0.0.8. Maintenance checks added in v0.0.8.1.
 - [ ] Patch Release and Debug on Android and desktop using a clean Emerald ROM; try switching files midway and rejecting wrong ROMs.
 
 CI passing does not establish emulator gameplay correctness. Record emulator version, save state and observed outcome before checking a manual item off.
+
+## v0.0.9 manual regressions (not yet verified)
+
+- [ ] New game: Exp. Share is a Key Item immediately and USE changes Legends Options.
+- [ ] Existing save with EXP SHARE OFF: receive item on continue without altering setting; no duplicate Key Items on reload.
+- [ ] Before Birch's Pokédex: DexNav is hidden from Start menu.
+- [ ] After Birch's Pokédex: DexNav appears and searches wild encounter slots.
+- [ ] Existing save with Pokédex: DexNav appears immediately upon continue, detector mode works.
+- [ ] Battle Pyramid temporary Bag is not modified by missing-item restoration.

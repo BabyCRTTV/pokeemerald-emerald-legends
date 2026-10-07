@@ -4,6 +4,21 @@ All notable Pokémon Emerald: Legends project changes are documented here.
 
 For build-specific player views, see [CHANGELOG-RELEASE.md](CHANGELOG-RELEASE.md) and [CHANGELOG-DEBUG.md](CHANGELOG-DEBUG.md). The canonical history below records the project as a whole.
 
+## [0.0.9] - 2026-10-07
+
+### Added
+- Enabled expansion DexNav using dedicated persistent search flags and variables. It appears in the Start menu after Birch's first Pokédex gift, including detector mode.
+- Existing saves that already received the Pokédex automatically unlock DexNav when continued.
+- Added the Gen 6-style physical Exp. Share to Key Items in new games; existing saves receive one if missing.
+
+### Fixed
+- Using the Exp. Share Key Item and changing Legends Options now affect the same persistent ON/OFF flag.
+- Existing-save item restoration avoids the temporary Battle Pyramid bag; if the Key Items pocket is full it retries on a future ordinary continue.
+
+### Quality
+- Expanded repository checks to verify DexNav configuration and Exp. Share item/unlock migration.
+- Release and Debug retain identical gameplay changes and separate changelogs.
+
 ## [0.0.8.1] - 2026-10-07
 
 ### Fixed

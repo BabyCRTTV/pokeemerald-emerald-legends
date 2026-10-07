@@ -1,12 +1,12 @@
 # Pokédex and Champion Reward
 
-**Status:** Implemented in 0.0.7.
+**Status:** National Dex in 0.0.7; DexNav unlock in 0.0.9.
 
 Pokémon Emerald: Legends unlocks the National Pokédex during Professor Birch's initial Pokédex handoff instead of waiting until after the Elite Four.
 
 ## Initial Pokédex handoff
 
-When Birch gives the player the Pokédex after the Route 103 rival battle, Legends now enables National Mode immediately. The normal Pokédex acquisition flags and tutorial progression remain intact.
+When Birch gives the player the Pokédex after the Route 103 rival battle, Legends now enables National Mode immediately. The normal Pokédex acquisition flags and tutorial progression remain intact. DexNav and hidden Pokémon detector mode now unlock in the Start menu alongside this gift, with dedicated persistent flags/variables. Existing saves with a Pokédex automatically unlock DexNav when continued.
 
 ## Post-Champion reward
 

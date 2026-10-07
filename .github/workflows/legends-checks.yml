@@ -55,6 +55,17 @@ jobs:
           grep -Fq 'href="changelog.html#debug"' docs/index.html
 
           grep -Fq '#define I_EXP_SHARE_FLAG        FLAG_LEGENDS_EXP_SHARE' include/config/item.h
+          grep -Fq '#define I_EXP_SHARE_ITEM        GEN_6' include/config/item.h
+          grep -Fq '#define DEXNAV_ENABLED                TRUE' include/config/dexnav.h
+          grep -Fq 'FLAG_LEGENDS_DEXNAV_UNLOCKED' include/config/dexnav.h
+          grep -Fq 'FLAG_LEGENDS_DEXNAV_SEARCHING' include/config/dexnav.h
+          grep -Fq 'VAR_LEGENDS_DEXNAV_SPECIES' include/config/dexnav.h
+          grep -Fq 'VAR_LEGENDS_DEXNAV_STEP_COUNTER' include/config/dexnav.h
+          grep -Fq 'LegendsEnsureExpShareKeyItem();' src/new_game.c
+          grep -Fq 'LegendsRestoreUnlocksOnContinue();' src/overworld.c
+          grep -Fq 'AddBagItem(ITEM_EXP_SHARE, 1);' src/legends_settings.c
+          grep -Fq 'CurrentBattlePyramidLocation() == PYRAMID_LOCATION_NONE' src/legends_settings.c
+          grep -Fq 'setflag FLAG_LEGENDS_DEXNAV_UNLOCKED' data/maps/LittlerootTown_ProfessorBirchsLab/scripts.inc
           grep -Fq '#define FLAG_LEGENDS_EXP_SHARE' include/constants/flags.h
           grep -Fq 'COMPOUND_STRING("EXP SHARE")' src/option_menu.c
           grep -Fq 'tExpShare = LegendsIsExpShareEnabled() ? 0 : 1;' src/option_menu.c
