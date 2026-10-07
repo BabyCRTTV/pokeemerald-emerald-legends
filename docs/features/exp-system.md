@@ -11,7 +11,7 @@ Modernize experience distribution while preserving player control over party-wid
 Pokémon Emerald: Legends uses the expansion's native Gen 6-style EXP Share path rather than maintaining a separate EXP calculation.
 
 - EXP Share is available immediately and defaults to **ON**.
-- A new **EXP SHARE** option in the normal Options menu switches the global effect ON or OFF.
+- A new **EXP SHARE** option switches the global effect ON or OFF. As of 0.0.8 it lives on the dedicated **Legends** Options page.
 - When ON, Pokémon that participated in the battle receive the normal full EXP reward.
 - Eligible non-participating party Pokémon receive the Gen 6-style half share.
 - Eggs do not receive EXP.
@@ -28,7 +28,7 @@ Existing saves created before 0.0.5 receive a one-time settings migration on con
 
 ## Options menu
 
-The setting is saved when leaving the Options menu. The Options screen was tightened vertically by one tile row so the additional EXP SHARE row fits while retaining the original 16-pixel spacing between settings.
+The setting is saved when leaving the Options menu. Version 0.0.8 replaced the temporary single-page layout with General and Legends pages. EXP SHARE now lives on the Legends page, selected with L/R, while the menu uses Emerald's original safe window dimensions and 16-pixel row spacing.
 
 ## Lucky Egg
 
