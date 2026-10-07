@@ -66,3 +66,9 @@ tools/aif2pcm/aif2pcm
 *.smolTM
 __pycache__
 .map_version
+
+# Pokémon Emerald: Legends local/release artifacts
+*.sav
+*.ips
+*.ups
+*.bps
