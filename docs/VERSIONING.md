@@ -17,12 +17,12 @@ All player-facing locations should match it, including:
 
 ## Pre-1.0 cadence
 
-The current version is `0.0.3`.
+The current version is `0.0.4`.
 
 Each meaningful shipped change normally advances the final development revision by one:
 
 - `0.0.1`
-- `0.0.3`
+- `0.0.2`
 - `0.0.3`
 - `0.0.4`
 
