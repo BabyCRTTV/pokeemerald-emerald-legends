@@ -1,21 +1,21 @@
 # Pokémon Emerald: Legends
 
-**Version:** 0.1.0-dev  
+**Version:** 0.0.1  
 **Base:** [pokeemerald-expansion](https://github.com/rh-hideout/pokeemerald-expansion)
 
 Pokémon Emerald: Legends is an unofficial, non-commercial Pokémon Emerald ROM-hack project built on the open-source `pokeemerald-expansion` decompilation/expansion base.
 
 The project is intended to preserve the feel and structure of Pokémon Emerald while layering in modern quality-of-life improvements, configurable mechanics, expanded systems, and new features developed incrementally.
 
-## Try the current v0.1 build
+## Try the current v0.0.1 build
 
 The project site includes a browser-based patcher:
 
 - **Project site:** https://babycrttv.github.io/pokeemerald-emerald-legends/
 - **Browser patcher:** https://babycrttv.github.io/pokeemerald-emerald-legends/patcher.html
-- **BPS patch:** https://babycrttv.github.io/pokeemerald-emerald-legends/downloads/Pokemon-Emerald-Legends-v0.1.bps
+- **BPS patch:** https://babycrttv.github.io/pokeemerald-emerald-legends/downloads/Pokemon-Emerald-Legends-v0.0.1.bps
 
-The browser patcher verifies a clean U.S./Europe Pokémon Emerald ROM (SHA-1 `f3ae088181bf583e55daf962a92bb46f4f1d07b7`) and creates `Pokemon-Emerald-Legends-v0.1.gba` locally in the browser. The source ROM is never uploaded.
+The browser patcher verifies a clean U.S./Europe Pokémon Emerald ROM (SHA-1 `f3ae088181bf583e55daf962a92bb46f4f1d07b7`) and creates `Pokemon-Emerald-Legends-v0.0.1.gba` locally in the browser. The source ROM is never uploaded.
 
 ## Development philosophy
 
@@ -25,7 +25,7 @@ The browser patcher verifies a clean U.S./Europe Pokémon Emerald ROM (SHA-1 `f3
 - Keep custom mechanics documented and isolated so upstream updates remain manageable.
 - Never commit or distribute a commercial Pokémon ROM.
 
-## Initial v0.1 focus
+## Initial 0.0.x focus
 
 The first development milestone establishes the project structure and prepares the first custom systems:
 
@@ -58,6 +58,7 @@ The existing upstream license, credits, and notices remain part of this fork.
 
 - [Roadmap](ROADMAP.md)
 - [Changelog](CHANGELOG.md)
+- [Versioning policy](docs/VERSIONING.md)
 - [Development guide](docs/DEVELOPMENT.md)
 - [Legal / distribution notes](docs/LEGAL.md)
 - [EXP system design](docs/features/exp-system.md)
