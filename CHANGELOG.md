@@ -5,6 +5,8 @@ All notable Pokémon Emerald: Legends project changes will be documented here.
 ## [0.1.0-dev] - Initial development
 
 ### Added
+- Added `LEGENDS v0.1` identification to the in-game Options menu header.
+- Added a release/download section to the project website in preparation for patch distributions.
 - Established Pokémon Emerald: Legends project identity.
 - Adopted `pokeemerald-expansion` as the upstream base.
 - Added project roadmap and development documentation.
