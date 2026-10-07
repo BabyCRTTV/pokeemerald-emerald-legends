@@ -5,9 +5,9 @@ LittlerootTown_ProfessorBirchsLab_MapScripts::
 	.byte 0
 
 	@ State descriptions for VAR_DEX_UPGRADE_JOHTO_STARTER_STATE
-	@ 1: Beat Elite Four, Dex upgrade ready
-	@ 2: Received National Dex
-	@ 3: Left lab after receiving National Dex
+	@ 1: Beat Elite Four, Champion reward ready
+	@ 2: Completed the post-Champion Birch event
+	@ 3: Left lab after the post-Champion Birch event
 	@ 4: Entered lab after catching all Hoenn mons
 	@ 5: Birch told player to choose Johto starter
 	@ 6: Chose Johto starter
@@ -98,7 +98,7 @@ LittlerootTown_ProfessorBirchsLab_EventScript_SetObjectPosForJohtoStarters::
 LittlerootTown_ProfessorBirchsLab_OnFrame:
 	map_script_2 VAR_BIRCH_LAB_STATE, 2, LittlerootTown_ProfessorBirchsLab_EventScript_GiveStarterEvent
 	map_script_2 VAR_BIRCH_LAB_STATE, 4, LittlerootTown_ProfessorBirchsLab_EventScript_GivePokedexEvent
-	map_script_2 VAR_DEX_UPGRADE_JOHTO_STARTER_STATE, 1, LittlerootTown_ProfessorBirchsLab_EventScript_UpgradeToNationalDex
+	map_script_2 VAR_DEX_UPGRADE_JOHTO_STARTER_STATE, 1, LittlerootTown_ProfessorBirchsLab_EventScript_ChampionRareCandyReward
 	map_script_2 VAR_DEX_UPGRADE_JOHTO_STARTER_STATE, 4, LittlerootTown_ProfessorBirchsLab_EventScript_ChooseJohtoStarter
 	.2byte 0
 
@@ -158,43 +158,11 @@ LittlerootTown_ProfessorBirchsLab_Movement_PlayerEnterLabForPokedex:
 	walk_up
 	step_end
 
-LittlerootTown_ProfessorBirchsLab_EventScript_UpgradeToNationalDex::
+LittlerootTown_ProfessorBirchsLab_EventScript_ChampionRareCandyReward::
 	lockall
 	delay 30
-	msgbox LittlerootTown_ProfessorBirchsLab_Text_OtherRegionsUpgradeToNational, MSGBOX_DEFAULT
-	closemessage
-	applymovement LOCALID_BIRCHS_LAB_BIRCH, LittlerootTown_ProfessorBirchsLab_Movement_BirchRetrievePokedexes
-	waitmovement 0
-	delay 20
-	playse SE_CLICK
-	delay 10
-	playse SE_CLICK
-	delay 10
-	playse SE_CLICK
-	delay 10
-	playse SE_CLICK
-	delay 20
-	applymovement LOCALID_BIRCHS_LAB_RIVAL, Common_Movement_WalkInPlaceFasterRight
-	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
-	waitmovement 0
-	checkplayergender
-	call_if_eq VAR_RESULT, MALE, LittlerootTown_ProfessorBirchsLab_EventScript_MayUpgradeComment
-	call_if_eq VAR_RESULT, FEMALE, LittlerootTown_ProfessorBirchsLab_EventScript_BrendanUpgradeComment
-	playse SE_PC_ON
-	waitse
-	delay 20
-	applymovement LOCALID_BIRCHS_LAB_BIRCH, LittlerootTown_ProfessorBirchsLab_Movement_BirchReturnPokedex
-	waitmovement 0
-	applymovement LOCALID_BIRCHS_LAB_RIVAL, Common_Movement_WalkInPlaceFasterUp
-	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterUp
-	waitmovement 0
-	msgbox LittlerootTown_ProfessorBirchsLab_Text_OkayAllDone, MSGBOX_DEFAULT
-	playfanfare MUS_OBTAIN_ITEM
-	message LittlerootTown_ProfessorBirchsLab_Text_PokedexUpgradedToNational
-	waitmessage
-	waitfanfare
-	setflag FLAG_SYS_NATIONAL_DEX
-	special EnableNationalPokedex
+	msgbox LittlerootTown_ProfessorBirchsLab_Text_ChampionRewardIntro, MSGBOX_DEFAULT
+	call LittlerootTown_ProfessorBirchsLab_EventScript_TryGiveChampionRareCandies
 	msgbox LittlerootTown_ProfessorBirchsLab_Text_GrassyPatchWaiting2, MSGBOX_DEFAULT
 	closemessage
 	setflag FLAG_HIDE_LITTLEROOT_TOWN_BIRCH
@@ -205,47 +173,24 @@ LittlerootTown_ProfessorBirchsLab_EventScript_UpgradeToNationalDex::
 	releaseall
 	end
 
-LittlerootTown_ProfessorBirchsLab_EventScript_MayUpgradeComment::
-	msgbox LittlerootTown_ProfessorBirchsLab_Text_MayUpgradeSoCool, MSGBOX_DEFAULT
-	closemessage
+LittlerootTown_ProfessorBirchsLab_EventScript_TryGiveChampionRareCandies::
+	checkitemspace ITEM_RARE_CANDY, 25
+	goto_if_eq VAR_RESULT, FALSE, LittlerootTown_ProfessorBirchsLab_EventScript_StoreChampionRareCandiesInPC
+	giveitem ITEM_RARE_CANDY, 25
+	goto_if_eq VAR_RESULT, FALSE, LittlerootTown_ProfessorBirchsLab_EventScript_StoreChampionRareCandiesInPC
+	setflag FLAG_LEGENDS_CHAMPION_RARE_CANDY_REWARD
 	return
 
-LittlerootTown_ProfessorBirchsLab_EventScript_BrendanUpgradeComment::
-	msgbox LittlerootTown_ProfessorBirchsLab_Text_BrendanYouCanThankMe, MSGBOX_DEFAULT
-	closemessage
+LittlerootTown_ProfessorBirchsLab_EventScript_StoreChampionRareCandiesInPC::
+	addpcitem ITEM_RARE_CANDY, 25
+	goto_if_eq VAR_RESULT, FALSE, LittlerootTown_ProfessorBirchsLab_EventScript_ChampionRareCandyNoRoom
+	setflag FLAG_LEGENDS_CHAMPION_RARE_CANDY_REWARD
+	msgbox LittlerootTown_ProfessorBirchsLab_Text_ChampionRewardStoredInPC, MSGBOX_DEFAULT
 	return
 
-LittlerootTown_ProfessorBirchsLab_Movement_BirchRetrievePokedexes:
-	walk_left
-	walk_in_place_faster_down
-	delay_16
-	delay_16
-	walk_right
-	walk_in_place_faster_down
-	delay_16
-	delay_16
-	walk_right
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	walk_right
-	walk_right
-	walk_right
-	walk_in_place_faster_up
-	step_end
-
-LittlerootTown_ProfessorBirchsLab_Movement_BirchReturnPokedex:
-	walk_left
-	walk_left
-	walk_left
-	walk_up
-	walk_up
-	walk_up
-	walk_up
-	walk_left
-	walk_in_place_faster_down
-	step_end
+LittlerootTown_ProfessorBirchsLab_EventScript_ChampionRareCandyNoRoom::
+	msgbox LittlerootTown_ProfessorBirchsLab_Text_ChampionRewardNoRoom, MSGBOX_DEFAULT
+	return
 
 LittlerootTown_ProfessorBirchsLab_EventScript_ChooseJohtoStarter::
 	lockall
@@ -463,11 +408,23 @@ LittlerootTown_ProfessorBirchsLab_EventScript_ReceivedJohtoStarter::
 LittlerootTown_ProfessorBirchsLab_EventScript_Birch::
 	lock
 	faceplayer
-	goto_if_eq VAR_DEX_UPGRADE_JOHTO_STARTER_STATE, 5, LittlerootTown_ProfessorBirchsLab_EventScript_CanHaveAnyOneOfRarePokemon
-	goto_if_eq VAR_DEX_UPGRADE_JOHTO_STARTER_STATE, 2, LittlerootTown_ProfessorBirchsLab_EventScript_GrassyPatchWaiting
+	goto_if_ge VAR_DEX_UPGRADE_JOHTO_STARTER_STATE, 2, LittlerootTown_ProfessorBirchsLab_EventScript_BirchPostChampion
 	goto_if_unset FLAG_HAS_MATCH_CALL, LittlerootTown_ProfessorBirchsLab_EventScript_TryRatePokedexOrRegister
 	goto_if_unset FLAG_ENABLE_PROF_BIRCH_MATCH_CALL, EventScript_RegisterProfBirch
 	goto LittlerootTown_ProfessorBirchsLab_EventScript_TryRatePokedexOrRegister
+	end
+
+LittlerootTown_ProfessorBirchsLab_EventScript_BirchPostChampion::
+	goto_if_unset FLAG_LEGENDS_CHAMPION_RARE_CANDY_REWARD, LittlerootTown_ProfessorBirchsLab_EventScript_BirchGivePendingChampionReward
+	goto_if_eq VAR_DEX_UPGRADE_JOHTO_STARTER_STATE, 5, LittlerootTown_ProfessorBirchsLab_EventScript_CanHaveAnyOneOfRarePokemon
+	goto_if_eq VAR_DEX_UPGRADE_JOHTO_STARTER_STATE, 2, LittlerootTown_ProfessorBirchsLab_EventScript_GrassyPatchWaiting
+	goto LittlerootTown_ProfessorBirchsLab_EventScript_TryRatePokedexOrRegister
+	end
+
+LittlerootTown_ProfessorBirchsLab_EventScript_BirchGivePendingChampionReward::
+	msgbox LittlerootTown_ProfessorBirchsLab_Text_ChampionRewardReminder, MSGBOX_DEFAULT
+	call LittlerootTown_ProfessorBirchsLab_EventScript_TryGiveChampionRareCandies
+	release
 	end
 
 LittlerootTown_ProfessorBirchsLab_EventScript_CanHaveAnyOneOfRarePokemon::
@@ -545,6 +502,8 @@ LittlerootTown_ProfessorBirchsLab_EventScript_ReceivePokedex::
 	waitfanfare
 	setflag FLAG_SYS_POKEDEX_GET
 	special SetUnlockedPokedexFlags
+	setflag FLAG_SYS_NATIONAL_DEX
+	special EnableNationalPokedex
 	setflag FLAG_RECEIVED_POKEDEX_FROM_BIRCH
 	setvar VAR_CABLE_CLUB_TUTORIAL_STATE, 1
 	return
@@ -740,12 +699,15 @@ LittlerootTown_ProfessorBirchsLab_Text_HeardYouBeatRivalTakePokedex:
 	.string "this POKéDEX.$"
 
 LittlerootTown_ProfessorBirchsLab_Text_ReceivedPokedex:
-	.string "{PLAYER} received the POKéDEX!$"
+	.string "{PLAYER} received the NATIONAL POKéDEX!$"
 
 LittlerootTown_ProfessorBirchsLab_Text_ExplainPokedex:
 	.string "PROF. BIRCH: The POKéDEX is a high-tech\n"
 	.string "tool that automatically makes a record\l"
 	.string "of any POKéMON you meet or catch.\p"
+	.string "I've already set yours to NATIONAL\n"
+	.string "Mode, so it can record POKéMON from\l"
+	.string "far beyond HOENN.\p"
 	.string "My kid, {RIVAL}, goes everywhere\n"
 	.string "with it.\p"
 	.string "Whenever my kid catches a rare POKéMON\n"
@@ -815,43 +777,31 @@ LittlerootTown_ProfessorBirchsLab_Text_CrammedWithBooksOnPokemon:
 LittlerootTown_ProfessorBirchsLab_Text_BookTooHardToRead:
 	.string "It's a book that's too hard to read.$"
 
-LittlerootTown_ProfessorBirchsLab_Text_OtherRegionsUpgradeToNational:
-	.string "PROF. BIRCH: Now…\p"
-	.string "{PLAYER}{KUN} and {RIVAL}, I've had the two\n"
-	.string "of you help me study POKéMON.\p"
-	.string "Thanks to your help, new facts\n"
-	.string "are coming to light.\p"
-	.string "It appears that in the HOENN region,\n"
-	.string "there are also POKéMON from other\l"
-	.string "regions.\p"
-	.string "It goes to show how rich and varied\n"
-	.string "the natural environments of HOENN\l"
-	.string "happen to be.\p"
-	.string "That's why I think it's necessary for\n"
-	.string "me to upgrade your POKéDEX to\l"
-	.string "the NATIONAL Mode.\p"
-	.string "Here, let me see your POKéDEX units.$"
+LittlerootTown_ProfessorBirchsLab_Text_ChampionRewardIntro:
+	.string "PROF. BIRCH: {PLAYER}{KUN}!\n"
+	.string "Congratulations on becoming\l"
+	.string "the CHAMPION!\p"
+	.string "Your journey is far from over,\n"
+	.string "so I have a reward to help with\l"
+	.string "the training still ahead.\p"
+	.string "Put these RARE CANDIES to good use!$"
 
-LittlerootTown_ProfessorBirchsLab_Text_MayUpgradeSoCool:
-	.string "MAY: Eheheh!\p"
-	.string "It's so cool that even my POKéDEX\n"
-	.string "is getting updated!\p"
-	.string "It's because you went out and caught\n"
-	.string "so many POKéMON, {PLAYER}{KUN}!$"
+LittlerootTown_ProfessorBirchsLab_Text_ChampionRewardStoredInPC:
+	.string "PROF. BIRCH: Your BAG didn't have\n"
+	.string "enough room, so I sent all 25\l"
+	.string "RARE CANDIES to your PC.$"
 
-LittlerootTown_ProfessorBirchsLab_Text_BrendanYouCanThankMe:
-	.string "BRENDAN: I went out all over HOENN\n"
-	.string "and checked out POKéMON.\p"
-	.string "You can thank me for getting\n"
-	.string "the NATIONAL Mode POKéDEX.\p"
-	.string "Yep, you're lucky, {PLAYER}!$"
+LittlerootTown_ProfessorBirchsLab_Text_ChampionRewardNoRoom:
+	.string "PROF. BIRCH: Hmm… Your BAG and PC\n"
+	.string "are both full.\p"
+	.string "Make some room, then talk to me\n"
+	.string "again for your 25 RARE CANDIES.$"
 
-LittlerootTown_ProfessorBirchsLab_Text_OkayAllDone:
-	.string "PROF. BIRCH: Okay, all done!$"
-
-LittlerootTown_ProfessorBirchsLab_Text_PokedexUpgradedToNational:
-	.string "{PLAYER}'s POKéDEX was upgraded\n"
-	.string "to the NATIONAL Mode!$"
+LittlerootTown_ProfessorBirchsLab_Text_ChampionRewardReminder:
+	.string "PROF. BIRCH: {PLAYER}{KUN}!\n"
+	.string "I still owe you your CHAMPION reward.\p"
+	.string "Let's get those 25 RARE CANDIES\n"
+	.string "to you.$"
 
 LittlerootTown_ProfessorBirchsLab_Text_GrassyPatchWaiting2:
 	.string "PROF. BIRCH: But listen.\n"

@@ -666,11 +666,12 @@
 
 #define FLAG_UNUSED_0x264  0x264 // Unused Flag
 #define FLAG_UNUSED_0x265  0x265 // Unused Flag
-
-// Pokémon Emerald: Legends persistent settings.
-#define FLAG_LEGENDS_EXP_SHARE            FLAG_UNUSED_0x264
-#define FLAG_LEGENDS_SETTINGS_INITIALIZED FLAG_UNUSED_0x265
 #define FLAG_UNUSED_0x266  0x266 // Unused Flag
+
+// Pokémon Emerald: Legends persistent settings and one-time rewards.
+#define FLAG_LEGENDS_EXP_SHARE                       FLAG_UNUSED_0x264
+#define FLAG_LEGENDS_SETTINGS_INITIALIZED            FLAG_UNUSED_0x265
+#define FLAG_LEGENDS_CHAMPION_RARE_CANDY_REWARD     FLAG_UNUSED_0x266
 #define FLAG_UNUSED_0x267  0x267 // Unused Flag
 #define FLAG_UNUSED_0x268  0x268 // Unused Flag
 #define FLAG_UNUSED_0x269  0x269 // Unused Flag

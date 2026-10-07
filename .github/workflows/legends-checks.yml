@@ -62,3 +62,11 @@ jobs:
           grep -Fq 'RustboroCity_DevonCorp_3F_Text_ExplainLuckyEgg' data/maps/RustboroCity_DevonCorp_3F/scripts.inc
           ! grep -Fq 'giveitem ITEM_EXP_SHARE' data/maps/RustboroCity_DevonCorp_3F/scripts.inc
 
+
+          grep -Fq '#define FLAG_LEGENDS_CHAMPION_RARE_CANDY_REWARD' include/constants/flags.h
+          grep -Fq 'setflag FLAG_SYS_NATIONAL_DEX' data/maps/LittlerootTown_ProfessorBirchsLab/scripts.inc
+          grep -Fq 'special EnableNationalPokedex' data/maps/LittlerootTown_ProfessorBirchsLab/scripts.inc
+          grep -Fq 'giveitem ITEM_RARE_CANDY, 25' data/maps/LittlerootTown_ProfessorBirchsLab/scripts.inc
+          grep -Fq 'addpcitem ITEM_RARE_CANDY, 25' data/maps/LittlerootTown_ProfessorBirchsLab/scripts.inc
+          grep -Fq 'FLAG_LEGENDS_CHAMPION_RARE_CANDY_REWARD' data/maps/LittlerootTown_ProfessorBirchsLab/scripts.inc
+          ! grep -Fq 'LittlerootTown_ProfessorBirchsLab_EventScript_UpgradeToNationalDex' data/maps/LittlerootTown_ProfessorBirchsLab/scripts.inc
