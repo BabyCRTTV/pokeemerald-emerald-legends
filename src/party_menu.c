@@ -110,6 +110,7 @@ enum {
     MENU_CATALOG_MOWER,
     MENU_CHANGE_FORM,
     MENU_CHANGE_ABILITY,
+    MENU_FIELD_UTILS,
     MENU_FIELD_MOVES
 };
 
@@ -185,7 +186,7 @@ struct PartyMenuInternal
     u32 spriteIdCancelPokeball:7;
     u32 messageId:14;
     u8 windowId[3];
-    u8 actions[8];
+    u8 actions[9];
     u8 numActions;
     // In vanilla Emerald, only the first 0xB0 hwords (0x160 bytes) are actually used.
     // However, a full 0x100 hwords (0x200 bytes) are allocated.
@@ -300,7 +301,7 @@ static void HandleChooseMonSelection(u8, s8 *);
 static u16 PartyMenuButtonHandler(s8 *);
 static s8 *GetCurrentPartySlotPtr(void);
 static bool8 IsSelectedMonNotEgg(u8 *);
-static bool8 DoesSelectedMonKnowHM(u8 *);
+
 static void PartyMenuRemoveWindow(u8 *);
 static void CB2_SetUpExitToBattleScreen(void);
 static void Task_ClosePartyMenuAfterText(u8);
@@ -474,6 +475,7 @@ static void CursorCb_Trade1(u8);
 static void CursorCb_Trade2(u8);
 static void CursorCb_Toss(u8);
 static void CursorCb_FieldMove(u8);
+static void CursorCb_FieldUtilities(u8);
 static void CursorCb_CatalogBulb(u8);
 static void CursorCb_CatalogOven(u8);
 static void CursorCb_CatalogWashing(u8);
@@ -508,7 +510,7 @@ static u8 IndividualToCombinedPartyId(u8 index, enum BattlerId battler);
 static const u8 sText_askText[] = _("Would you like to change {STR_VAR_1}'s\nability to {STR_VAR_2}?");
 static const u8 sText_doneText[] = _("{STR_VAR_1}'s ability became\n{STR_VAR_2}!{PAUSE_UNTIL_PRESS}");
 static const u8 sText_BasePointsResetToZero[] = _("{STR_VAR_1}'s base points\nwere all reset to zero!{PAUSE_UNTIL_PRESS}");
-static const u8 sText_CannotSendMonToBoxHM[] = _("Cannot send that mon to the box,\nbecause it knows a HM move.{PAUSE_UNTIL_PRESS}");
+static const u8 sText_FieldUtilities[] = _("Choose a field action.");
 static const u8 sText_CannotSendMonToBoxPartner[] = _("Cannot send a mon that doesn't\nbelong to you to the box.{PAUSE_UNTIL_PRESS}");
 
 // static const data
@@ -1618,13 +1620,6 @@ static void HandleChooseMonSelection(u8 taskId, s8 *slotPtr)
                 ScheduleBgCopyTilemapToVram(2);
                 gTasks[taskId].func = Task_ReturnToChooseMonAfterText;
             }
-            else if (DoesSelectedMonKnowHM((u8 *)slotPtr))
-            {
-                PlaySE(SE_FAILURE);
-                DisplayPartyMenuMessage(sText_CannotSendMonToBoxHM, FALSE);
-                ScheduleBgCopyTilemapToVram(2);
-                gTasks[taskId].func = Task_ReturnToChooseMonAfterText;
-            }
             else
             {
                 PlaySE(SE_SELECT);
@@ -1651,19 +1646,6 @@ static bool8 IsSelectedMonNotEgg(u8 *slotPtr)
         return FALSE;
     }
     return TRUE;
-}
-
-static bool8 DoesSelectedMonKnowHM(u8 *slotPtr)
-{
-    if (B_CATCH_SWAP_CHECK_HMS == FALSE)
-        return FALSE;
-
-    for (u32 i = 0; i < MAX_MON_MOVES; i++)
-    {
-        if (IsMoveHM(GetMonData(&gParties[B_TRAINER_PLAYER][*slotPtr], MON_DATA_MOVE1 + i)))
-            return TRUE;
-    }
-    return FALSE;
 }
 
 static void HandleChooseMonCancel(u8 taskId, s8 *slotPtr)
@@ -2954,12 +2936,13 @@ static void SetPartyMonFieldSelectionActions(struct Pokemon *mons, u8 slotId)
     sPartyMenuInternal->numActions = 0;
     AppendToList(sPartyMenuInternal->actions, &sPartyMenuInternal->numActions, MENU_SUMMARY);
 
-    // Add field moves to action list
+    // Learned non-HM field moves remain tied to the selected Pokémon.
+    // Legends' eight HM utilities live behind one global FIELD entry instead.
     for (i = 0; i < MAX_MON_MOVES; i++)
     {
         for (j = 0; j != FIELD_MOVES_COUNT; j++)
         {
-            if (!FieldMove_IsVisible(j))
+            if (!FieldMove_IsVisible(j) || FieldMove_IsBadgeUtility(j))
                 continue;
 
             if (GetMonData(&mons[slotId], i + MON_DATA_MOVE1) == FieldMove_GetMoveId(j))
@@ -2967,6 +2950,16 @@ static void SetPartyMonFieldSelectionActions(struct Pokemon *mons, u8 slotId)
                 AppendToList(sPartyMenuInternal->actions, &sPartyMenuInternal->numActions, j + MENU_FIELD_MOVES);
                 break;
             }
+        }
+    }
+
+    // Expose one compact global entry as soon as the first badge utility is earned.
+    for (j = FIELD_MOVE_CUT; j <= FIELD_MOVE_WATERFALL; j++)
+    {
+        if (IsFieldMoveUnlocked(j))
+        {
+            AppendToList(sPartyMenuInternal->actions, &sPartyMenuInternal->numActions, MENU_FIELD_UTILS);
+            break;
         }
     }
 
@@ -4085,19 +4078,46 @@ static void Task_HandleSpinTradeYesNoInput(u8 taskId)
     }
 }
 
+static void CursorCb_FieldUtilities(u8 taskId)
+{
+    u8 fieldMove;
+
+    PlaySE(SE_SELECT);
+    PartyMenuRemoveWindow(&sPartyMenuInternal->windowId[0]);
+    PartyMenuRemoveWindow(&sPartyMenuInternal->windowId[1]);
+
+    sPartyMenuInternal->numActions = 0;
+    for (fieldMove = FIELD_MOVE_CUT; fieldMove <= FIELD_MOVE_WATERFALL; fieldMove++)
+    {
+        if (IsFieldMoveUnlocked(fieldMove))
+            AppendToList(sPartyMenuInternal->actions, &sPartyMenuInternal->numActions, fieldMove + MENU_FIELD_MOVES);
+    }
+    AppendToList(sPartyMenuInternal->actions, &sPartyMenuInternal->numActions, MENU_CANCEL1);
+
+    DisplaySelectionWindow(SELECTWINDOW_ACTIONS);
+    DisplayPartyMenuMessage(sText_FieldUtilities, TRUE);
+    gTasks[taskId].data[0] = 0xFF;
+    gTasks[taskId].func = Task_HandleSelectionMenuInput;
+}
+
 static void CursorCb_FieldMove(u8 taskId)
 {
     u8 fieldMove = sPartyMenuInternal->actions[Menu_GetCursorPos()] - MENU_FIELD_MOVES;
     const struct MapHeader *mapHeader;
 
     PlaySE(SE_SELECT);
+    gFieldEffectArguments[7] = FieldMove_IsBadgeUtility(fieldMove);
     if (gFieldMoveInfo[fieldMove].fieldMoveFunc == NULL)
+    {
+        gFieldEffectArguments[7] = FALSE;
         return;
+    }
 
     PartyMenuRemoveWindow(&sPartyMenuInternal->windowId[0]);
     PartyMenuRemoveWindow(&sPartyMenuInternal->windowId[1]);
     if (MenuHelpers_IsLinkActive() == TRUE || InUnionRoom() == TRUE)
     {
+        gFieldEffectArguments[7] = FALSE;
         DisplayPartyMenuStdMessage(PARTY_MSG_CANT_USE_HERE);
         gTasks[taskId].func = Task_CancelAfterAorBPress;
         return;
@@ -4105,6 +4125,7 @@ static void CursorCb_FieldMove(u8 taskId)
 
     if (!IsFieldMoveUnlocked(fieldMove))
     {
+        gFieldEffectArguments[7] = FALSE;
         DisplayPartyMenuMessage(FieldMove_GetLockedMessage(fieldMove), TRUE);
         gTasks[taskId].func = Task_ReturnToChooseMonAfterText;
     }
@@ -4143,6 +4164,7 @@ static void CursorCb_FieldMove(u8 taskId)
     // Cant use Field Move
     else
     {
+        gFieldEffectArguments[7] = FALSE;
         switch (fieldMove)
         {
         case FIELD_MOVE_SURF:
@@ -4287,7 +4309,7 @@ bool32 SetUpFieldMove_Surf(void)
     if (!CheckFollowerNPCFlag(FOLLOWER_NPC_FLAG_CAN_SURF))
         return FALSE;
 
-    if (PartyHasMonWithSurf() == TRUE && IsPlayerFacingSurfableFishableWater() == TRUE)
+    if (IsPlayerFacingSurfableFishableWater() == TRUE)
     {
         gFieldCallback2 = FieldCallback_PrepareFadeInFromMenu;
         gPostMenuFieldCallback = FieldCallback_Surf;
@@ -4317,6 +4339,7 @@ bool32 SetUpFieldMove_Fly(void)
 
 void CB2_ReturnToPartyMenuFromFlyMap(void)
 {
+    gFieldEffectArguments[7] = FALSE;
     InitPartyMenu(PARTY_MENU_TYPE_FIELD, PARTY_LAYOUT_SINGLE, PARTY_ACTION_CHOOSE_MON, TRUE, PARTY_MSG_CHOOSE_MON, Task_HandleChooseMonInput, CB2_ReturnToFieldWithOpenMenu);
 }
 

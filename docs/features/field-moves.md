@@ -1,85 +1,84 @@
 # Overworld Field Moves
 
-**Status:** Expansion audit complete / implementation design in progress
+**Status:** Implemented in v0.0.4 / gameplay regression testing ongoing
 
 ## Goal
 
-Allow required field actions such as Cut, Rock Smash, Strength, Surf, Waterfall, Dive, and Fly to function without forcing the player to keep the corresponding HM move on a party member solely for overworld progression.
+Allow Emerald's required HM field actions to work without forcing a Pokémon to dedicate a moveslot to Cut, Flash, Rock Smash, Strength, Surf, Fly, Dive, or Waterfall.
 
-## What pokeemerald-expansion already provides
+Legends treats those eight actions as progression utilities earned through the same Gym Badge sequence used by Pokémon Emerald.
 
-The current expansion base already centralizes field-move metadata in `src/field_move.c` and `include/field_move.h`.
+## Progression
 
-Each field move has:
+The original Emerald badge order remains intact:
 
-- a setup function
-- an unlock type
-- a move ID
-- a failure/message ID
-- optional arguments such as the required badge
+- Cut - Stone Badge
+- Flash - Knuckle Badge
+- Rock Smash - Dynamo Badge
+- Strength - Heat Badge
+- Surf - Balance Badge
+- Fly - Feather Badge
+- Dive - Mind Badge
+- Waterfall - Rain Badge
 
-Emerald's normal badge gates are already represented cleanly through `BADGE_UNLOCK`, so Legends does **not** need to recreate the badge/progression system.
+Possessing or teaching the corresponding HM is no longer required for overworld use. The HM moves themselves remain normal teachable battle moves.
 
-The expansion also has dedicated setup/callback functions for Cut, Flash, Rock Smash, Strength, Surf, Fly, Dive, Waterfall, and the additional supported field moves.
+## How it works
 
-## What the expansion does not currently do
+The expansion's existing field-move metadata, setup functions, terrain checks, and badge gates remain the foundation.
 
-The party menu still builds its field-move actions by scanning the selected Pokémon's four learned moves. A field move is only offered when that Pokémon actually knows the corresponding move.
+Legends adds a shared distinction between:
 
-Surf also explicitly checks `PartyHasMonWithSurf()`.
+- **badge utilities** - Emerald's eight HM progression actions, unlocked by badge
+- **Pokémon field moves** - Dig, Teleport, Sweet Scent, Secret Power, healing moves, and expansion-specific optional field moves, which still require the Pokémon to know the move
 
-This means the current expansion base does **not** natively provide the exact Legends behavior we want: using an unlocked overworld HM action without teaching the HM to a party member.
+Map scripts that call `checkfieldmove` recognize badge utilities without scanning the party for the HM. A safe non-Egg party slot is still supplied internally where legacy field-effect code expects one, but that Pokémon is not treated as the source of the ability.
 
-## Legends implementation direction
+## Player access
 
-The cleanest approach is to preserve the expansion's existing field-move setup functions and badge checks, while separating **field-action eligibility** from **whether a party Pokémon knows the move**.
+Progression actions are primarily contextual:
 
-The intended architecture is:
+- interact with a cuttable tree to use Cut
+- interact with a breakable rock to use Rock Smash
+- interact with a Strength boulder to activate Strength
+- interact with surfable water to use Surf
+- use Dive and Waterfall at their existing map/terrain triggers
 
-1. Keep the existing expansion field-move definitions and badge gates.
-2. Add a Legends helper that determines whether a field action is available.
-3. Allow map interactions / field-action UI to call the existing setup functions without requiring a learned HM move.
-4. Preserve all existing terrain checks and follower restrictions.
-5. Provide a safe animation source when no Pokémon is assigned to the field move.
-6. Keep the system configurable so vanilla learned-move behavior can still be restored if desired.
+The party action menu also exposes one compact **FIELD** entry once the first utility is unlocked. FIELD lists the currently unlocked badge utilities and provides manual access to actions such as Flash and Fly without requiring a learned HM.
 
-## Animation question
+Individual HM names are no longer injected into each Pokémon's normal action list.
 
-Expansion's current field effects often use the selected party slot to obtain a Pokémon species for the field-move presentation. If Legends invokes the action without a learned move, there is no naturally selected HM user.
+## Presentation
 
-For v0.1 we should deliberately choose one fallback policy rather than silently using an arbitrary Pokémon. Candidate policies are:
+The old “{Pokémon} used HM” messages have been removed from Legends' HM interactions.
 
-- use the first compatible non-Egg party Pokémon
-- use the lead non-Egg Pokémon
-- use a short player/tool-only animation with no Pokémon portrait
-- suppress the Pokémon portion of the animation where appropriate
+Badge utility effects preserve the familiar player pose, environmental effects, Surf/Fly movement, follower handling, and puzzle hooks, but suppress the generic Pokémon portrait/banner that would otherwise imply an arbitrary party member knew the move.
 
-The final choice should be shared across Cut, Rock Smash, Strength, Surf, Waterfall, and Dive wherever practical, with Fly handled separately because it opens the region map.
+Non-HM field moves keep their normal Pokémon presentation.
 
-## Intended behavior
+## Compatibility and story rules
 
-- Preserve badge/progression requirements where Emerald expects them.
-- Prefer native expansion field-move hooks rather than duplicating map logic.
-- A Pokémon should not need to sacrifice a moveslot merely to provide overworld utility.
-- Retain an appropriate field animation or short presentation so actions do not feel instantaneous or unfinished.
-- Keep link/Union Room restrictions and map-specific restrictions intact.
+Legends deliberately keeps the expansion's existing restrictions where they matter:
 
-## Questions to resolve during implementation
+- badge requirements
+- valid terrain and map types
+- Surf/Fly follower restrictions
+- link and Union Room restrictions
+- Regirock/Registeel field-move puzzle hooks
+- Strength's per-map activation flag
+- Dive/Waterfall warp and direction checks
 
-- Whether possession of the HM item remains required.
-- Whether a compatible Pokémon must still be present in the party.
-- Which Pokémon, if any, should be shown during the field animation when no party member knows the move.
-- Whether Fly should use the same abstraction as obstacle-clearing field moves.
-- How Teleport, Dig, Flash, Sweet Scent, and other non-HM field actions should interact with the system.
+The goal is to remove moveslot tax, not bypass Emerald's progression or map logic.
 
-## v0.1 implementation checklist
+## v0.0.4 implementation checklist
 
-- [x] Audit current `pokeemerald-expansion` field-move structure.
-- [x] Confirm learned moves are still required by the stock party-menu flow.
-- [x] Confirm badge unlock logic can be reused.
-- [ ] Choose progression and compatibility rules.
-- [ ] Implement shared Legends field-action eligibility helper.
-- [ ] Preserve map scripts and badge gates.
-- [ ] Implement animation fallback behavior.
-- [ ] Add interaction hooks for required HM obstacles/actions.
-- [ ] Regression-test every required Emerald HM progression point.
+- [x] Reuse Emerald's existing badge unlock metadata.
+- [x] Separate HM field eligibility from learned moves.
+- [x] Remove the hard-coded learned-Surf checks.
+- [x] Add contextual badge-only HM interaction support.
+- [x] Add the global FIELD utility submenu.
+- [x] Remove Pokémon-specific HM-use text.
+- [x] Suppress arbitrary Pokémon field-move banners for badge utilities.
+- [x] Preserve Regi puzzle and follower hooks.
+- [x] Remove the obsolete HM-based party-boxing restriction.
+- [ ] Complete in-emulator regression passes at every required Emerald HM progression point.

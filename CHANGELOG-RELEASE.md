@@ -2,6 +2,19 @@
 
 This is the player-facing history for the recommended **Release** build. Shared Legends changes are repeated here so this file stands on its own; Release-only behavior is called out separately.
 
+## [0.0.4] - 2026-10-07
+
+### Shared changes
+- Cut, Flash, Rock Smash, Strength, Surf, Fly, Dive, and Waterfall are now badge-earned overworld utilities and no longer require a Pokémon to know the HM.
+- Added a compact `FIELD` submenu for manually invoking unlocked utilities.
+- Preserved Emerald's original badge order, map restrictions, follower restrictions, and Regi puzzle hooks.
+- Removed Pokémon-specific HM-use text and suppressed arbitrary Pokémon field-move banners.
+- Kept non-HM field moves such as Dig, Teleport, and Sweet Scent move-dependent.
+
+### Release-specific
+- No Release-only gameplay divergence in this version.
+- Release contains the full badge-field-move system with developer/debug entry points still disabled.
+
 ## [0.0.3] - 2026-10-07
 
 ### Shared changes

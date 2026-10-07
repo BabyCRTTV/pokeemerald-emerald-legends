@@ -15,6 +15,20 @@ on:
       - 'scripts/**'
       - 'Makefile'
       - 'make_tools.mk'
+  pull_request:
+    branches: [ master ]
+    paths:
+      - '.github/workflows/build-release-patch.yml'
+      - 'VERSION'
+      - 'src/**'
+      - 'include/**'
+      - 'data/**'
+      - 'graphics/**'
+      - 'sound/**'
+      - 'maps/**'
+      - 'scripts/**'
+      - 'Makefile'
+      - 'make_tools.mk'
   workflow_dispatch:
 
 permissions:
@@ -109,6 +123,7 @@ jobs:
           sha256sum pokeemerald-release.gba pokeemerald.gba >> docs/downloads/SHA256SUMS.txt
 
       - name: Commit patches to site
+        if: github.event_name != 'pull_request'
         run: |
           VERSION="$(tr -d '\r\n' < VERSION)"
           RELEASE_PATCH="Pokemon-Emerald-Legends-v${VERSION}.bps"

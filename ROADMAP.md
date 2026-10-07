@@ -14,8 +14,8 @@ Goal: establish a stable `pokeemerald-expansion` project and implement the first
 
 ### Gameplay systems
 - [ ] EXP Share / Lucky Egg behavior changes
-- [ ] Overworld HM / field move system
-- [ ] Field move animation and usability rules
+- [x] Overworld HM / field move system
+- [x] Field move animation and usability rules
 - [ ] Seasonal framework prototype
 - [ ] Seasonal encounter hooks
 

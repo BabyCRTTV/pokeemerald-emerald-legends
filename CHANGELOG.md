@@ -4,6 +4,21 @@ All notable Pokémon Emerald: Legends project changes are documented here.
 
 For build-specific player views, see [CHANGELOG-RELEASE.md](CHANGELOG-RELEASE.md) and [CHANGELOG-DEBUG.md](CHANGELOG-DEBUG.md). The canonical history below records the project as a whole.
 
+## [0.0.4] - 2026-10-07
+
+### Added
+- Added a global `FIELD` utility submenu to the party action menu for badge-unlocked Emerald field moves.
+- Added pull-request verification for both Release and Debug ROM builds before major gameplay changes can merge.
+
+### Changed
+- Cut, Flash, Rock Smash, Strength, Surf, Fly, Dive, and Waterfall are now unlocked for overworld use by Emerald's original badge progression rather than by a Pokémon knowing the corresponding HM move.
+- Preserved the original Stone, Knuckle, Dynamo, Heat, Balance, Feather, Mind, and Rain Badge progression for the eight field utilities.
+- Preserved terrain, map, follower, link, and story-puzzle restrictions while removing the HM moveslot requirement.
+- Contextual interactions such as Cut trees, breakable rocks, Strength boulders, Surf water, Dive spots, and Waterfalls now work after the appropriate badge without an HM user.
+- Field-move prompts and success text no longer identify a Pokémon as the HM user.
+- Badge utility effects suppress the old arbitrary Pokémon portrait/banner while retaining player and environment animations.
+- Learned non-HM field moves such as Dig, Teleport, Sweet Scent, and similar utilities remain tied to the Pokémon that knows them.
+
 ## [0.0.3] - 2026-10-07
 
 ### Added
