@@ -1,53 +1,61 @@
-# About `pokeemerald-expansion`
+# Pokémon Emerald: Legends
 
-![Gif that shows debugging functionality that is unique to pokeemerald-expansion such as rerolling Trainer ID, Cheat Start, PC from Debug Menu, Debug PC Fill, Pokémon Sprite Visualizer, Debug Warp to Map, and Battle Debug Menu](https://github.com/user-attachments/assets/cf9dfbee-4c6b-4bca-8e0a-07f116ef891c) ![Gif that shows overworld functionality that is unique to pokeemerald-expansion such as indoor running, BW2 style map popups, overworld followers, DNA Splicers, Gen 1 style fishing, OW Item descriptions, Quick Run from Battle, Use Last Ball, Wild Double Battles, and Catch from EXP](https://github.com/user-attachments/assets/383af243-0904-4d41-bced-721492fbc48e) ![Gif that shows off a number of modern Pokémon battle mechanics happening in the pokeemerald-expansion engine: 2 vs 1 battles, modern Pokémon, items, moves, abilities, fully customizable opponents and partners, Trainer Slides, and generational gimmicks](https://github.com/user-attachments/assets/50c576bc-415e-4d66-a38f-ad712f3316be)
+**Version:** 0.1.0-dev  
+**Base:** [pokeemerald-expansion](https://github.com/rh-hideout/pokeemerald-expansion)
 
-<!-- If you want to re-record or change these gifs, here are some notes that I used: https://files.catbox.moe/05001g.md -->
+Pokémon Emerald: Legends is an unofficial, non-commercial Pokémon Emerald ROM-hack project built on the open-source `pokeemerald-expansion` decompilation/expansion base.
 
-**`pokeemerald-expansion`** is a GBA ROM hack base that equips developers with a comprehensive toolkit for creating Pokémon ROM hacks. **`pokeemerald-expansion`** is built on top of [pret's `pokeemerald`](https://github.com/pret/pokeemerald) decompilation project. **It is not a playable Pokémon game on its own.**
+The project is intended to preserve the feel and structure of Pokémon Emerald while layering in modern quality-of-life improvements, configurable mechanics, expanded systems, and new features developed incrementally.
 
-# [Features](FEATURES.md)
+## Development philosophy
 
-**`pokeemerald-expansion`** offers hundreds of features from various [core series Pokémon games](https://bulbapedia.bulbagarden.net/wiki/Core_series), along with popular quality-of-life enhancements designed to streamline development and improve the player experience. A full list of those features can be found in [`FEATURES.md`](FEATURES.md).
+- Preserve the recognizable Emerald adventure as the foundation.
+- Prefer configurable features over hard-coded behavior where practical.
+- Reuse `pokeemerald-expansion` systems before introducing duplicate implementations.
+- Keep custom mechanics documented and isolated so upstream updates remain manageable.
+- Never commit or distribute a commercial Pokémon ROM.
 
-# [Credits](CREDITS.md)
+## Initial v0.1 focus
 
- [![](https://img.shields.io/github/all-contributors/rh-hideout/pokeemerald-expansion/upcoming)](CREDITS.md)
+The first development milestone establishes the project structure and prepares the first custom systems:
 
-If you use **`pokeemerald-expansion`**, please credit **RHH (Rom Hacking Hideout)**. Optionally, include the version number for clarity.
+- EXP system adjustments
+- Overworld field moves / HM quality-of-life system
+- Seasonal world and encounter framework
+- Project configuration documentation
+- Reproducible build workflow
+- GitHub Pages project site
 
-```
-Based off RHH's pokeemerald-expansion 1.17.1 https://github.com/rh-hideout/pokeemerald-expansion/
-```
+See [ROADMAP.md](ROADMAP.md) and the documentation in [`docs/features`](docs/features).
 
-Please consider [crediting all contributors](CREDITS.md) involved in the project!
+## Building
 
-# Choosing `pokeemerald` or **`pokeemerald-expansion`**
+This repository is a fork of `rh-hideout/pokeemerald-expansion`. Follow the current upstream installation and build instructions in [INSTALL.md](INSTALL.md), then build with the normal expansion toolchain.
 
-- **`pokeemerald-expansion`** supports multiplayer functionality with other games built on **`pokeemerald-expansion`**. It is not compatible with official Pokémon games.
-- If compatibility with official games is important, use [`pokeemerald`](https://github.com/pret/pokeemerald). Otherwise, we recommend using **`pokeemerald-expansion`**.
-- **`pokeemerald-expansion`** incorporates regular updates from `pokeemerald`, including bug fixes and documentation improvements.
+Generated ROMs and other copyrighted binary material must not be committed to this repository.
 
-# [Getting Started](INSTALL.md)
+## Upstream
 
-❗❗ **Important**: Do not use GitHub's "Download Zip" option as it will not include commit history. This is necessary if you want to update or merge other feature branches.
+Pokémon Emerald: Legends is built on the work of the `pokeemerald-expansion` community.
 
-If you're new to git and GitHub, [Team Aqua's Asset Repo](https://github.com/Pawkkie/Team-Aquas-Asset-Repo/) has a [guide to forking and cloning the repository](https://github.com/Pawkkie/Team-Aquas-Asset-Repo/wiki/The-Basics-of-GitHub). Then you can follow one of the following guides:
+- Upstream project: https://github.com/rh-hideout/pokeemerald-expansion
+- Upstream documentation: https://rh-hideout.github.io/pokeemerald-expansion/
+- Existing upstream credits: [CREDITS.md](CREDITS.md)
 
-## 📥 [Installing **`pokeemerald-expansion`**](INSTALL.md)
-## 🏗️ [Building **`pokeemerald-expansion`**](INSTALL.md#Building-pokeemerald-expansion)
-## 🚚 [Migrating from **`pokeemerald`**](INSTALL.md#Migrating-from-pokeemerald)
-## 🚀 [Updating **`pokeemerald-expansion`**](INSTALL.md#Updating-pokeemerald-expansion)
+The existing upstream license, credits, and notices remain part of this fork.
 
-# [Documentation](https://rh-hideout.github.io/pokeemerald-expansion/)
+## Project documentation
 
-For detailed documentation, visit the [pokeemerald-expansion documentation page](https://rh-hideout.github.io/pokeemerald-expansion/).
+- [Roadmap](ROADMAP.md)
+- [Changelog](CHANGELOG.md)
+- [Development guide](docs/DEVELOPMENT.md)
+- [Legal / distribution notes](docs/LEGAL.md)
+- [EXP system design](docs/features/exp-system.md)
+- [Overworld field moves](docs/features/field-moves.md)
+- [Seasonal system](docs/features/seasons.md)
 
-# [Contributions](CONTRIBUTING.md)
-If you are looking to [report a bug](CONTRIBUTING.md#Bug-Report), [open a pull request](CONTRIBUTING.md#Pull-Requests), or [request a feature](CONTRIBUTING.md#Feature-Request), our [`CONTRIBUTING.md`](CONTRIBUTING.md) has guides for each.
+## Legal
 
-# [Community](https://discord.gg/6CzjAG6GZk)
+This is an unofficial fan project and is not affiliated with, endorsed by, or sponsored by Nintendo, Creatures, GAME FREAK, The Pokémon Company, or other rights holders. Pokémon and related properties belong to their respective owners.
 
-[![](https://dcbadge.limes.pink/api/server/6CzjAG6GZk)](https://discord.gg/6CzjAG6GZk)
-
-Our community uses the [ROM Hacking Hideout (RHH) Discord server](https://discord.gg/6CzjAG6GZk) to communicate and organize. Most of our discussions take place there, and we welcome anybody to join us!
+No commercial Pokémon ROM is included in this repository.
