@@ -13,7 +13,7 @@ The menu currently has two pages:
 - **General 1/2** - Text Speed, Battle Scene, Battle Style, Sound, Button Mode, Frame, and Cancel.
 - **Legends 2/2** - project-specific settings, beginning with EXP Share, plus Cancel.
 
-Press **L** or **R** while the Options menu is open to switch pages. The active page and an L/R hint are shown in the header. Page navigation is handled before A/B input so L still switches pages when Button Mode is set to L=A. D-pad Left/Right continues to change the selected setting normally, and B still saves/exits as before.
+Press **L** or **R** while the Options menu is open to switch pages. The active page is shown in the header. The L/R hint appears when enough horizontal space remains beside the current version label, avoiding text collisions as version numbers grow. Page navigation is handled before A/B input so L still switches pages when Button Mode is set to L=A. D-pad Left/Right continues to change the selected setting normally, and B still saves/exits as before.
 
 ## Layout safety
 

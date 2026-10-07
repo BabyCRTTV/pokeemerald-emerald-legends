@@ -6,6 +6,7 @@ This is the player-facing history for the recommended **Release** build. Shared 
 
 ### Shared changes
 - Fixed browser patcher handling of rapid ROM changes, discarding obsolete validation and download results.
+- Ensured version text cannot overlap the Options header's L/R hint.
 - Added automated BPS parser/checksum tests and a manual emulator regression checklist.
 - Core Legends gameplay and content remain unchanged from 0.0.8.
 

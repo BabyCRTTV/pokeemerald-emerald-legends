@@ -68,6 +68,7 @@ jobs:
           grep -Fq 'COMPOUND_STRING("LEGENDS 2/2")' src/option_menu.c
           grep -Fq 'JOY_NEW(L_BUTTON)' src/option_menu.c
           grep -Fq 'JOY_NEW(R_BUTTON)' src/option_menu.c
+          grep -Fq 'hintRight + 4 <= versionStart' src/option_menu.c
           grep -Fq '#define OPTION_WINDOW_Y       40' src/option_menu.c
           grep -Fq '.tilemapTop = 5' src/option_menu.c
           grep -Fq '.height = 14' src/option_menu.c

@@ -750,12 +750,19 @@ static void ChangeOptionMenuPage(u8 taskId, s8 direction)
 
 static void DrawHeaderText(u8 page)
 {
+    s32 versionStart = GetStringRightAlignXOffset(FONT_NORMAL, gText_LegendsVersion, 200);
+    s32 pageRight = 8 + GetStringWidth(FONT_NORMAL, sOptionMenuPageTitles[page], 0);
+    s32 hintRight = 88 + GetStringWidth(FONT_NORMAL, gText_PageHint, 0);
+
     FillWindowPixelBuffer(WIN_HEADER, PIXEL_FILL(1));
     AddTextPrinterParameterized(WIN_HEADER, FONT_NORMAL, sOptionMenuPageTitles[page], 8, 1, TEXT_SKIP_DRAW, NULL);
-    AddTextPrinterParameterized(WIN_HEADER, FONT_NORMAL, gText_PageHint, 88, 1, TEXT_SKIP_DRAW, NULL);
+
+    // Longer version labels (especially Debug) must not overlap the L/R hint.
+    if (pageRight + 4 <= 88 && hintRight + 4 <= versionStart)
+        AddTextPrinterParameterized(WIN_HEADER, FONT_NORMAL, gText_PageHint, 88, 1, TEXT_SKIP_DRAW, NULL);
+
     AddTextPrinterParameterized(WIN_HEADER, FONT_NORMAL, gText_LegendsVersion,
-                                GetStringRightAlignXOffset(FONT_NORMAL, gText_LegendsVersion, 200),
-                                1, TEXT_SKIP_DRAW, NULL);
+                                versionStart, 1, TEXT_SKIP_DRAW, NULL);
     CopyWindowToVram(WIN_HEADER, COPYWIN_FULL);
 }
 

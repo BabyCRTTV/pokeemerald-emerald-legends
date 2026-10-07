@@ -9,6 +9,7 @@ For build-specific player views, see [CHANGELOG-RELEASE.md](CHANGELOG-RELEASE.md
 ### Fixed
 - Browser patcher now ignores stale checksum results when the selected ROM changes during verification.
 - Cancels in-flight local patching when the selected ROM changes, avoiding accidental output from an older selection.
+- Prevents longer version text from overlapping the Options page-navigation hint.
 
 ### Quality and maintenance
 - Reviewed the Options, EXP Share settings, HM field utilities, Birch Champion reward, and Rustboro Lucky Egg paths at source level.

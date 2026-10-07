@@ -21,6 +21,7 @@ function harness() {
   const ctx = {
     document: { title: '', getElementById(id) { return nodes[id]; } },
     URLSearchParams,
+    window: { location: { search: '' } },
     crypto: { subtle: { async digest() { return Uint8Array.from(sha).buffer; } } },
     fetch: async () => { throw new Error('Unexpected fetch'); },
     URL: { createObjectURL() { return 'blob:test'; }, revokeObjectURL() {} },
