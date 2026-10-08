@@ -186,6 +186,7 @@ const u8 gBackAnimNames[][23 + 1] =
     [BACK_ANIM_SHAKE_FLASH_YELLOW]      = _("SHAKE FLASH YELLOW"),
     [BACK_ANIM_SHAKE_GLOW_RED]          = _("SHAKE GLOW RED"),
     [BACK_ANIM_SHAKE_GLOW_GREEN]        = _("SHAKE GLOW GREEN"),
+    [BACK_ANIM_LEGENDS_DA_BUG]          = _("DA BUG SWAY"),
     [BACK_ANIM_SHAKE_GLOW_BLUE]         = _("SHAKE GLOW BLUE"),
 };
 const u8 gFrontAnimNames[][34] =
@@ -343,6 +344,7 @@ const u8 gFrontAnimNames[][34] =
     [ANIM_SHAKE_GLOW_BLUE_SLOW]              = _("SHAKE GLOW BLUE SLOW"),
     [ANIM_SHAKE_GLOW_BLACK_SLOW]             = _("SHAKE GLOW BLACK SLOW"),
     [ANIM_SHAKE_GLOW_WHITE_SLOW]             = _("SHAKE GLOW WHITE SLOW"),
+    [ANIM_LEGENDS_DA_BUG_SWAY]               = _("DA BUG SWAY AND EYE GLIMMER"),
     [ANIM_SHAKE_GLOW_PURPLE_SLOW]            = _("SHAKE GLOW PURPLE SLOW"),
 };
 
@@ -1407,7 +1409,7 @@ static void UpdateSubmenuOneOptionValue(u8 taskId, bool8 increment)
     case 0:
         if (increment)
         {
-            if (data->animIdBack >= BACK_ANIM_SHAKE_GLOW_BLUE)
+            if (data->animIdBack >= BACK_ANIM_LEGENDS_DA_BUG)
                 data->animIdBack = 1;
             else
                 data->animIdBack += 1;
@@ -1415,7 +1417,7 @@ static void UpdateSubmenuOneOptionValue(u8 taskId, bool8 increment)
         else
         {
             if (data->animIdBack <= 1)
-                data->animIdBack = BACK_ANIM_SHAKE_GLOW_BLUE;
+                data->animIdBack = BACK_ANIM_LEGENDS_DA_BUG;
             else
                 data->animIdBack -= 1;
         }
@@ -1427,7 +1429,7 @@ static void UpdateSubmenuOneOptionValue(u8 taskId, bool8 increment)
         else
         {
             if (data->animIdFront == ANIM_V_SQUISH_AND_BOUNCE)
-                data->animIdFront = ANIM_SHAKE_GLOW_PURPLE_SLOW;
+                data->animIdFront = ANIM_LEGENDS_DA_BUG_SWAY;
             else
                 data->animIdFront -= 1;
         }

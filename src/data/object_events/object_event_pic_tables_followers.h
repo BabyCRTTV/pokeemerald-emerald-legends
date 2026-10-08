@@ -6730,3 +6730,7 @@ static const struct SpriteFrameImage sPicTable_Pecharunt[] = {
 #endif //P_FAMILY_PECHARUNT
 
 #endif //OW_POKEMON_OBJECT_EVENTS
+
+static const struct SpriteFrameImage sPicTable_DaBug[] = {
+    overworld_ascending_frames(gObjectEventPic_DaBug, 4, 4),
+};

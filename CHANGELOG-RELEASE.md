@@ -2,6 +2,22 @@
 
 This is the player-facing history for the recommended **Release** build. Shared Legends changes are repeated here so this file stands on its own; Release-only behavior is called out separately.
 
+## [0.0.20] - 2026-10-08
+
+### Added
+- Added Da Bug, the original single-stage Bug/Grass Leafhopper Pokémon: 0.3 m, 1.2 kg, with the approved green leaf-wing design, red eyes and amber-wing/teal-eye shiny.
+- Native front/back battle art, PC icon, footprint and walking follower sprites; a gentle swaying front animation with localized red eye glimmers and a short, original two-note chirp.
+- One level-5 Da Bug is placed in Box 1 on New Game, with Tackle, Leer, Mean Look and Absorb. Existing saves receive it in their first free PC box slot on continue. Full storage retries on a later continue without overwriting Pokémon.
+- This gift alone has exactly a 1-in-10 shiny roll, independent of Options/Charm. A permanent receipt flag prevents replacement or rerolls after withdrawal, release or later continues. No wild encounters or Random starter inclusion.
+- A relevant level-up progression introduces Bug Bite, Leech Seed, Mega Drain, Struggle Bug, Protect, Giga Drain, Agility, Leech Life, Synthesis, Energy Ball and Bug Buzz. No evolution.
+- Preserved the approved Pokédex entry verbatim: “It sways in the breeze to mimic a fallen leaf. If its disguise fails, it flashes its red eyes and springs away.”
+
+### Compatibility and validation
+- Added custom species/National Dex entries without renumbering existing Pokémon. Dex save bitfields remain 129 bytes; the gift uses an unused permanent flag rather than enlarging save blocks.
+- Added actual-module regressions for every shiny outcome, both ordinary shiny states, level/moves, duplicate prevention, occupied/full storage, retry and Pokédex registration; asset/cry/dex integration checks.
+- Documented species data, learnset, gift migration and emulator QA in docs/features/da-bug.md.
+- Release and Debug share these changes with no variant-specific differences. Developer tools remain disabled in Release and enabled in Debug.
+
 ## [0.0.19] - 2026-10-08
 
 ### Added

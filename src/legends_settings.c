@@ -1,4 +1,5 @@
 #include "global.h"
+#include "legends_da_bug.h"
 #include "legends_settings.h"
 #include "legends_starters.h"
 #include "legends_seasons.h"
@@ -84,6 +85,7 @@ void LegendsEnsureExpShareKeyItem(void)
 
 void LegendsRestoreUnlocksOnContinue(void)
 {
+    LegendsEnsureDaBugGift();
     LegendsEnsureSettingsInitialized();
 
     // Existing saves that already own a Pokédex should receive DexNav.

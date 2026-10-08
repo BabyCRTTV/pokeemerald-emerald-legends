@@ -52,6 +52,7 @@ struct YellowFlashData
     u8 time;
 };
 
+static void Anim_LegendsDaBugSway(struct Sprite *sprite);
 static void Anim_VerticalSquishBounce(struct Sprite *sprite);
 static void Anim_CircularStretchTwice(struct Sprite *sprite);
 static void Anim_HorizontalVibrate(struct Sprite *sprite);
@@ -395,6 +396,7 @@ static void (*const sMonAnimFunctions[])(struct Sprite *sprite) =
     [ANIM_SHAKE_GLOW_BLUE_SLOW]              = Anim_ShakeGlowBlue_Slow,
     [ANIM_SHAKE_GLOW_BLACK_SLOW]             = Anim_ShakeGlowBlack_Slow,
     [ANIM_SHAKE_GLOW_WHITE_SLOW]             = Anim_ShakeGlowWhite_Slow,
+    [ANIM_LEGENDS_DA_BUG_SWAY]               = Anim_LegendsDaBugSway,
     [ANIM_SHAKE_GLOW_PURPLE_SLOW]            = Anim_ShakeGlowPurple_Slow
 };
 
@@ -403,6 +405,7 @@ static void (*const sMonAnimFunctions[])(struct Sprite *sprite) =
 // BACK_ANIM_NONE is skipped below. GetSpeciesBackAnimSet subtracts 1 from the back anim id
 static const u8 sBackAnimationIds[] =
 {
+    [(BACK_ANIM_LEGENDS_DA_BUG - 1) * 3]      = ANIM_LEGENDS_DA_BUG_SWAY, ANIM_LEGENDS_DA_BUG_SWAY, ANIM_LEGENDS_DA_BUG_SWAY,
     [(BACK_ANIM_H_VIBRATE - 1) * 3]               = ANIM_H_VIBRATE_FASTEST, ANIM_H_VIBRATE_FAST, ANIM_H_VIBRATE,
     [(BACK_ANIM_H_SLIDE - 1) * 3]                 = ANIM_H_SLIDE_FAST, ANIM_H_SLIDE, ANIM_H_SLIDE_SLOW,
     [(BACK_ANIM_H_SPRING - 1) * 3]                = ANIM_H_SPRING_FAST, ANIM_H_SPRING, ANIM_H_SPRING_SLOW,
@@ -5206,4 +5209,26 @@ static void WaitAnimEnd(struct Sprite *sprite)
 {
     if (sprite->animEnded)
         sprite->callback = SpriteCallbackDummy;
+}
+
+// Da Bug's player-side send-out: sway like a leaf, glimmer only the eye.
+// Palette indices 12/13 are reserved eye colors in its normal/shiny art.
+static void Anim_LegendsDaBugSway(struct Sprite *sprite)
+{
+    u16 eyePalette = OBJ_PLTT_ID(sprite->oam.paletteNum) + 12;
+    s16 frame = sprite->data[2]++;
+    s16 glimmer;
+
+    if (frame >= 48)
+    {
+        BlendPalette(eyePalette, 2, 0, RGB_RED);
+        sprite->x2 = 0;
+        sprite->callback = WaitAnimEnd;
+        return;
+    }
+
+    sprite->x2 = Sin(frame * 256 / 48, 3);
+    glimmer = frame >= 12 && frame < 36 ? Sin((frame - 12) * 128 / 24, 16) : 0;
+    BlendPalette(eyePalette, 2, glimmer, RGB_RED);
+    sprite->callback = Anim_LegendsDaBugSway;
 }

@@ -1,4 +1,5 @@
 #include "global.h"
+#include "legends_da_bug.h"
 #include "legends_appearance.h"
 #include "clock.h"
 #include "new_game.h"
@@ -204,6 +205,7 @@ void NewGameInitData(void)
     gPartiesCount[B_TRAINER_PLAYER] = 0;
     ZeroPlayerPartyMons();
     ResetPokemonStorageSystem();
+    LegendsEnsureDaBugGift();
     DeactivateAllRoamers();
     gSaveBlock1Ptr->registeredItem = ITEM_NONE;
     ClearBag();

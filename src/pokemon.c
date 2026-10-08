@@ -484,6 +484,7 @@ const struct NatureInfo gNaturesInfo[NUM_NATURES] =
 
 #include "data/pokemon/teachable_learnsets.h"
 #include "data/pokemon/egg_moves.h"
+#include "data/pokemon/legends_learnsets.h"
 #include "data/pokemon/form_species_tables.h"
 #include "data/pokemon/form_change_tables.h"
 #include "data/pokemon/form_change_table_pointers.h"

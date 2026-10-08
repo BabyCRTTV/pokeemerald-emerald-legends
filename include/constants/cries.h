@@ -2555,6 +2555,7 @@ enum PokemonCry
 #if P_FAMILY_PECHARUNT
     CRY_PECHARUNT,
 #endif //P_FAMILY_PECHARUNT
+    CRY_DA_BUG,
     CRY_COUNT,
 };
 

@@ -1,6 +1,6 @@
 # Pokémon Emerald: Legends
 
-**Version:** 0.0.19<br>
+**Version:** 0.0.20<br>
 **Base:** [pokeemerald-expansion](https://github.com/rh-hideout/pokeemerald-expansion)
 
 Pokémon Emerald: Legends is an unofficial, non-commercial Pokémon Emerald ROM-hack project built on the open-source `pokeemerald-expansion` decompilation/expansion base.
@@ -9,14 +9,14 @@ The project is intended to preserve the feel and structure of Pokémon Emerald w
 
 The New Game / Continue / Options menu uses a soft lavender backdrop as of v0.0.13.1.
 
-## Try the current v0.0.19 build
+## Try the current v0.0.20 build
 
 The project site provides two builds from the same source:
 
 - **Release (recommended):** https://babycrttv.github.io/pokeemerald-emerald-legends/patcher.html
 - **Debug / developer:** https://babycrttv.github.io/pokeemerald-emerald-legends/patcher.html?build=debug
-- **Release BPS:** https://babycrttv.github.io/pokeemerald-emerald-legends/downloads/Pokemon-Emerald-Legends-v0.0.19.bps
-- **Debug BPS:** https://babycrttv.github.io/pokeemerald-emerald-legends/downloads/Pokemon-Emerald-Legends-v0.0.19-debug.bps
+- **Release BPS:** https://babycrttv.github.io/pokeemerald-emerald-legends/downloads/Pokemon-Emerald-Legends-v0.0.20.bps
+- **Debug BPS:** https://babycrttv.github.io/pokeemerald-emerald-legends/downloads/Pokemon-Emerald-Legends-v0.0.20-debug.bps
 
 The Release and Debug builds contain the same Legends gameplay/content changes. Release disables developer entry points for a cleaner casual-player build. Debug retains the expansion's overworld/battle/sprite debug tools and title-screen Quickstart.
 
@@ -35,6 +35,8 @@ The Release and Debug builds contain the same Legends gameplay/content changes. 
 **Maintenance QA (0.0.8.1):** Browser patching now ignores stale ROM validation and download operations; automated BPS decoding tests have been added. Gameplay mechanics are unchanged from 0.0.8.
 
 **STARTERS (v0.0.19):** Adventure Options offers Gen 1–9, Special (Happiny/Wattrel/Mankey), and Random (three distinct unevolved Pokémon that can evolve). The rescue screen follows your setting; your rival uses the generation counter or Zorua/Zoroark for Special/Random. Choose before opening the rescue bag; later edits apply to your next New Game. See [starter documentation](docs/features/starters.md).
+
+**DA BUG (v0.0.20):** A single-stage Bug/Grass leafhopper awaits in your PC at level 5, with Tackle, Leer, Mean Look and Absorb. This one-time gift has its own 1-in-10 shiny roll; no wild encounters are added. Existing saves receive it in the first free box slot on continue. See [Da Bug documentation](docs/features/da-bug.md).
 
 **Paged Options:** Options now has General, Legends and Adventure pages. Select NEXT PAGE and press A to switch pages, or use L/R. The visible A: NEXT / B: SAVE hint explains navigation; B saves and exits from any row. The original Emerald window dimensions are preserved so future Legends settings can be added without squeezing or corrupting the menu.
 

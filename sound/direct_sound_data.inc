@@ -8738,6 +8738,11 @@ Cry_Pecharunt::
 	.incbin "sound/direct_sound_samples/cries/pecharunt.bin"
 .endif
 .endif @ P_FAMILY_PECHARUNT
+	.align 2
+Cry_DaBug::
+.if TESTING == FALSE
+	.incbin "sound/direct_sound_samples/cries/da_bug.bin"
+.endif
 .endif @ P_CRIES_ENABLED
 
 .if TESTING == TRUE

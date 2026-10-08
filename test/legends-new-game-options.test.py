@@ -32,6 +32,7 @@ bool32 FlagGet(u16 n) {return flags[n];}
 void FlagSet(u16 n) {flags[n] = TRUE;}
 void FlagClear(u16 n) {flags[n] = FALSE;}
 bool32 CheckBagHasItem(u16 i, u16 n) {(void)i; (void)n; return TRUE;}
+void LegendsEnsureDaBugGift(void) {} // Gift behavior has its own actual-module harness.
 bool32 AddBagItem(u16 i, u16 n) {(void)i; (void)n; return TRUE;}
 u8 CurrentBattlePyramidLocation(void) {return 0;}
 void newSave(void)

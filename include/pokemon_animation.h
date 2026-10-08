@@ -30,6 +30,7 @@ enum BackAnim
     BACK_ANIM_SHAKE_GLOW_RED,
     BACK_ANIM_SHAKE_GLOW_GREEN,
     BACK_ANIM_SHAKE_GLOW_BLUE,
+    BACK_ANIM_LEGENDS_DA_BUG,
 };
 
 // Pokémon animation function ids (for front and back)
@@ -190,6 +191,7 @@ enum AnimFunctionIDs
     ANIM_SHAKE_GLOW_BLACK_SLOW,
     ANIM_SHAKE_GLOW_WHITE_SLOW,
     ANIM_SHAKE_GLOW_PURPLE_SLOW,
+    ANIM_LEGENDS_DA_BUG_SWAY,
     ANIM_COUNT,
 };
 
