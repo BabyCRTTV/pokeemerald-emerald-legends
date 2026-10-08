@@ -134,3 +134,6 @@ with tempfile.TemporaryDirectory() as d:
  subprocess.run(['cc','-std=c99','-Wall','-Werror',str(p/'anim.c'),'-o',str(p/'anim')],check=True)
  subprocess.run([str(p/'anim')],check=True)
 print('Da Bug player send-out sway: eye-only blend, palette restoration and completion passed')
+
+new_game=(root/"src/new_game.c").read_text().split("void NewGameInitData(void)")[1]
+assert new_game.index("ResetPokemonStorageSystem();") < new_game.index("WarpToTruck();") < new_game.index("LegendsEnsureDaBugGift();")
