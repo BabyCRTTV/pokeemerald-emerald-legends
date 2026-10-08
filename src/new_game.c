@@ -186,6 +186,7 @@ void NewGameInitData(void)
     ClearPokedexFlags();
     InitEventData();
     LegendsInitNewGameSettings();
+    LegendsApplyTitleOptionsToNewGame();
     ClearTVShowData();
     ResetGabbyAndTy();
     ClearSecretBases();

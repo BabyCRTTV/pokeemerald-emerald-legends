@@ -55,3 +55,15 @@ Manual emulator checks (not yet verified; not replaced by host tests):
 - Compare Mt. Chimney, Jagged Pass, Routes 111/112/113, Lavaridge and Fallarbor across seasons; check ash collection, desert coordinate weather and hot springs.
 - Check winter snow and autumn fog transitions, Surf, battle return, save/continue and indoor exits; NPC/player/UI palettes must keep their original colors.
 - Check Groudon/Kyogre conflict and postgame Terra/Marine Cave drought/downpour; these must override seasonal ambient weather.
+
+## New Game Options (0.0.12.1)
+
+Automated: `python3 test/legends-new-game-options.test.py` compiles the actual Legends settings and seasons modules and verifies staged title choices through save resets, active-season initialization with the bedroom clock unset, replacement of staged choices, one-shot consumption, fresh-title clearing and standard defaults. Source integration checks require restoration after native resets and before the opening warp.
+
+Manual emulator checks (not yet verified):
+
+- With no save, select 7H PLAY and Winter, EXP SHARE OFF and 1/1226 in title Options. Start New Game; confirm the first Littleroot exterior has winter colors, the Options choices persist, and playtime begins at zero.
+- Before setting the bedroom clock, change gameplay season in Options; enter/exit a building and confirm the chosen environment. Finish the clock event and confirm it does not change the season mode or selection.
+- Repeat with Spring, Summer and Autumn; check RTC mode remains calendar-controlled and disabled SET SEASON still shows CALENDAR.
+- With an existing save, edit title Options then choose New Game; confirm chosen settings carry over while story/Pokédex progress does not. Choose Continue instead and confirm normal saved-game behavior.
+- Soft reset or return to a fresh title entry after staging, then start New Game without visiting Options; confirm standard defaults. Reopen title Options twice and confirm the latest selections take precedence.

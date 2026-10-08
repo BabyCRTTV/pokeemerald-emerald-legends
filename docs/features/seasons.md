@@ -1,6 +1,6 @@
 # Seasonal System
 
-**Status:** Implemented in 0.0.11; refined in 0.0.12. Release and Debug share identical seasonal mechanics.
+**Status:** Implemented in 0.0.11; refined in 0.0.12; new-game initialization fixed in 0.0.12.1. Release and Debug share identical seasonal mechanics.
 
 ## Modes and time
 
@@ -9,6 +9,10 @@ On the Legends Options page, use Left/Right on SEASONS to choose REAL TIME (defa
 Real time uses the expansion's native RTC calendar directly, independent of the bedroom clock's offset. Northern Hemisphere calendar seasons are March-May Spring, June-August Summer, September-November Autumn and December-February Winter. Enable your emulator's RTC. RTC errors or invalid months fall back to the saved gameplay cycle. A valid but frozen emulator clock cannot be detected automatically; choose 7H PLAY if needed.
 
 7H PLAY follows Spring → Summer → Autumn → Winter, repeating every 28 hours, with exactly seven gameplay hours per season. It counts active time recorded by Emerald, including menus and battles, not time while closed. Older saves initialize from recorded hours/minutes/seconds (a 40-hour save starts in Summer). The clock accumulates in both modes, so changing modes does not reset progress. Manually changing SET SEASON does reset its timer. Existing 0.0.11 cycle seconds normalize modulo the shorter 28-hour cycle without losing sub-second progress. Permanent event vars store cycle seconds and sub-second frames; time continues beyond the native 999:59:59 display cap. Ordinary saves persist progress; emulator save states restore their own earlier progress.
+
+## New Game and title-screen Options
+
+As of 0.0.12.1, returning from title-screen Options stages the chosen Legends settings outside the SaveBlocks. New Game clears its normal save data, applies those staged settings once, and commits the starting season before loading the truck/opening maps. Gameplay mode starts a fresh seven-hour timer for the selected season and does not require the bedroom clock to be set. Real-time mode still uses the RTC calendar. A fresh title entry clears staging; starting New Game without visiting title-screen Options uses normal defaults. Continue and in-game Options keep their existing save behavior.
 
 ## Environment
 
