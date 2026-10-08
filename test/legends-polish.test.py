@@ -10,6 +10,7 @@ def function(path,signature):
 colors=function('src/legends_seasons.c','u16 LegendsSeasonVegetationColor(u16 color, u8 season)')+'\n'+function('src/legends_seasons.c','void LegendsApplyGrassPalette(u8 slot, const u16 *source)')
 grass='\n'.join(l for l in (root/'src/legends_grass.c').read_text().splitlines() if not l.startswith('#include'))
 printer=function('src/text.c','void RunTextPrinters(void)')
+clear=function('src/main_menu.c','static void NewGameBirchSpeech_ClearWindow(u8 windowId)')
 pre=r'''
 #include <stdint.h>
 #include <assert.h>
@@ -37,6 +38,12 @@ enum {RENDER_PRINT,RENDER_UPDATE,RENDER_FINISH,WINDOW_TEXT_PRINTER,SPRITE_TEXT_P
 union TextColor {u32 asU32;};
 struct TextPrinterTemplate {int type,windowId;union TextColor color;};
 struct TextPrinter {int active,isInUse;struct TextPrinterTemplate printerTemplate;void (*callback)(struct TextPrinterTemplate*,u32);struct TextPrinter *nextPrinter;};
+#define FONT_NORMAL 1
+#define FONTATTR_COLOR_BACKGROUND 0
+#define PIXEL_FILL(n) ((n) | ((n) << 4))
+static u8 pixels[216*32];
+u8 GetFontAttribute(u8 font,u8 attr){return 1;}
+void FillWindowPixelBuffer(u8 window,u8 color){memset(pixels,color,sizeof(pixels));}
 static struct TextPrinter *sFirstTextPrinter;static int gDisableTextPrinters,instant;static union TextColor glyph;static int rendered;
 bool32 IsPlayerTextSpeedInstant(void){return instant;}
 u32 GetPlayerTextSpeedModifier(void){return 1;}
@@ -48,6 +55,8 @@ void FreeFinishedTextPrinters(void){}
 '''
 main=r'''
 int main(void){
+    memset(pixels,99,sizeof(pixels));NewGameBirchSpeech_ClearWindow(0);
+    for(int i=0;i<sizeof(pixels);i++)assert(pixels[i]==0x11);
     const u16 native[16]={RGB(14,23,29),RGB(22,31,16),RGB(16,24,12),RGB(7,17,6),RGB(9,11,1),RGB(6,8,0),RGB(12,21,29),RGB(12,21,24),RGB(17,25,30),RGB(18,28,31),RGB(18,16,12),RGB(22,21,18),RGB(20,26,24),RGB(14,24,20),RGB(8,22,16),RGB(3,20,13)};
     for(season=0;season<4;season++){
         for(int i=0;i<512;i++)gPlttBufferUnfaded[i]=123;
@@ -75,11 +84,11 @@ int main(void){
     struct TextPrinter first={1,1,{WINDOW_TEXT_PRINTER,0,{11}},0,&second};
     sFirstTextPrinter=&first;glyph.asU32=99;RunTextPrinters();assert(rendered==2&&!first.active&&!second.active);
     first.active=second.active=1;instant=1;glyph.asU32=99;RunTextPrinters();assert(rendered==4);
-    puts("Seasonal grass isolation, snow scuff/reset/bounds and active-printer glyph colors passed.");
+    puts("Seasonal grass isolation, snow scuff/reset/bounds and active-printer glyph colors and full dialogue clearing passed.");
 }
 '''
 with tempfile.TemporaryDirectory() as d:
- p=Path(d)/'polish.c';p.write_text(pre+colors+grass+printer+main)
+ p=Path(d)/'polish.c';p.write_text(pre+colors+grass+printer+clear+main)
  subprocess.run(['cc','-std=gnu11','-Wall','-Werror=implicit-function-declaration',str(p),'-o',d+'/polish'],check=True)
  subprocess.run([d+'/polish'],check=True)
 # The naming screen must route through the appearance-aware object factory.

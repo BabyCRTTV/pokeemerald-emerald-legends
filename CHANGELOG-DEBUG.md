@@ -6,7 +6,7 @@ This is the developer-facing history for the **Debug** build. Shared Legends cha
 
 ### Fixed
 - The player naming-screen icon now uses the selected outfit and skin tone.
-- Active text printers restore their own glyph colors, preventing menu text from corrupting animated dialogue glyphs and arrows.
+- Clear the entire intro text window so longer appearance prompts leave no stray letters/arrows. Active text printers restore their own glyph colors after menu text.
 - Grass rustle/jump/short/long/shaking animations use a separate seasonal vegetation palette; water, ash, NPCs and player palettes retain their own colors.
 - Refined custom front/back outfit panels across all four battle animation poses, kept bags distinct from shirts, protected held Poké Balls and corrected May’s colored mouth detail.
 
