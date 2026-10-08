@@ -60,7 +60,7 @@ int main(void){
         for(int i=0;i<320;i++)assert(gPlttBufferUnfaded[i]==123);
         for(int i=336;i<512;i++)assert(gPlttBufferUnfaded[i]==123);
     }
-    seasonal=0;memcpy(gPlttBufferUnfaded+320,native,sizeof(native));LegendsApplyGrassPalette(4,native);assert(!memcmp(gPlttBufferUnfaded+320,native,sizeof(native)));
+    seasonal=0;LegendsApplyGrassPalette(4,native);assert(!memcmp(gPlttBufferUnfaded+320,native,sizeof(native)));
     LegendsApplyGrassPalette(255,native);seasonal=1;season=LEGENDS_WINTER;
     LegendsResetSnowGrass();assert(!LegendsSnowGrassCleared(7,7));LegendsStepSnowGrass(7,7);assert(LegendsSnowGrassCleared(7,7)&&draws==1&&tile==13);
     LegendsStepSnowGrass(7,7);assert(draws==1);assert(!LegendsSnowGrassCleared(8,7));

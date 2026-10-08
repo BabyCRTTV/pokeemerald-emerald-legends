@@ -193,14 +193,16 @@ void LegendsApplySeasonPalette(u16 offset, u16 count)
 void LegendsApplyGrassPalette(u8 slot, const u16 *source)
 {
     u32 i;
-    u8 season;
-    if (slot >= 16 || !LegendsMapHasSeasons())
+    bool32 seasonal = LegendsMapHasSeasons();
+    u8 season = seasonal ? LegendsGetActiveSeason() : LEGENDS_SPRING;
+    if (slot >= 16)
         return;
-    season = LegendsGetActiveSeason();
     for (i = 1; i < 16; i++)
     {
         u32 offset = (16 + slot) * 16 + i;
-        gPlttBufferUnfaded[offset] = LegendsSeasonVegetationColor(source[i], season);
+        // LoadSpritePalette caches an existing tag. Always start from native art,
+        // including connected transitions from a seasonal map to an excluded one.
+        gPlttBufferUnfaded[offset] = seasonal ? LegendsSeasonVegetationColor(source[i], season) : source[i];
     }
 }
 
