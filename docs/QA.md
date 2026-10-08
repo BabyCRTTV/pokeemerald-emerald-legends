@@ -13,7 +13,7 @@ Baseline: v0.0.8. Maintenance checks added in v0.0.8.1.
 ## Manual emulator regression checklist (not yet verified)
 
 - [ ] Start new Release and Debug saves and confirm only Debug exposes developer utilities.
-- [ ] Open Options; switch General/Legends using L/R with normal controls and L=A mode, modify settings, save/reload, inspect borders and CANCEL.
+- [ ] Open Options; switch General/Legends using NEXT PAGE + A and L/R with normal controls and L=A mode; confirm the A: NEXT / B: SAVE hint, modify settings across pages, B save/reload, and inspect borders.
 - [ ] Continue an older save and confirm EXP Share initializes only once. Toggle OFF, save/reload, and confirm it stays OFF.
 - [ ] Battle with participants, benched Pokémon, fainted Pokémon and Eggs with EXP Share ON/OFF and Lucky Egg; check resulting EXP.
 - [ ] Use each of the eight badge-earned HM utilities without taught HMs, preserving terrain, story, follower and Regi-puzzle gates.

@@ -10,10 +10,10 @@ Keep Pokémon Emerald: Legends settings expandable without compressing the origi
 
 The menu currently has two pages:
 
-- **General 1/2** - Text Speed, Battle Scene, Battle Style, Sound, Button Mode, Frame, and Cancel.
-- **Legends 2/2** - project-specific settings, beginning with EXP Share, plus Cancel.
+- **General 1/2** - Text Speed, Battle Scene, Battle Style, Sound, Button Mode, Frame, and Next Page.
+- **Legends 2/2** - EXP Share, Follower, Shiny Rate, Seasons, Current, Set Season, and Next Page.
 
-Press **L** or **R** while the Options menu is open to switch pages. The active page is shown in the header. The L/R hint appears when enough horizontal space remains beside the current version label, avoiding text collisions as version numbers grow. Page navigation is handled before A/B input so L still switches pages when Button Mode is set to L=A. D-pad Left/Right continues to change the selected setting normally, and B still saves/exits as before.
+Select **NEXT PAGE** and press **A** to cycle to the other page. The bottom row always shows **A: NEXT  B: SAVE**, independently of the version label. Press **B** from any row to save all settings from both pages and exit. **L/R** remain shortcuts for switching pages; navigation is handled before A/B so L still works with Button Mode set to L=A. D-pad Left/Right continues to edit settings. The header identifies the page and build version.
 
 ## Layout safety
 
@@ -33,7 +33,7 @@ When adding a setting:
 
 1. Add the menu item identifier and label.
 2. Place it in the appropriate page table.
-3. Keep each page at seven rows or fewer, including Cancel.
+3. Keep each page at seven rows or fewer, including Next Page.
 4. Add its draw/input handling without changing the safe window dimensions.
 5. Update this document and the changelog when the setting ships.
 
@@ -56,3 +56,7 @@ Legends settings selected in title-screen Options now carry into New Game: EXP S
 ## v0.0.13 followers
 
 Legends 2/2 now has seven rows: EXP SHARE, FOLLOWER, SHINY RATE, SEASONS, CURRENT, SET SEASON and CANCEL. FOLLOWER uses Left/Right to toggle ON/OFF and defaults to ON. Leaving Options stores the choice and the native field reload applies it. It persists with ordinary game saves and participates in the title-screen New Game settings bridge. Both pages are now at the seven-row limit; future settings need a new page instead of a larger window.
+
+## v0.0.18 visible page navigation
+
+NEXT PAGE replaces the historical CANCEL row on both pages. Its A-button action uses the same page-switch function as L/R, preserving pending settings across pages and selecting the first row on arrival. B remains the save/exit action from any row. The permanent control hint uses the small native font within the seventh row; the header no longer tries to fit an optional L/R hint between the page title and version. Window sizes, tile allocation and save layout remain unchanged.

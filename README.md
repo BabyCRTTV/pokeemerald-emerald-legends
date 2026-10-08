@@ -1,6 +1,6 @@
 # Pokémon Emerald: Legends
 
-**Version:** 0.0.17<br>
+**Version:** 0.0.18<br>
 **Base:** [pokeemerald-expansion](https://github.com/rh-hideout/pokeemerald-expansion)
 
 Pokémon Emerald: Legends is an unofficial, non-commercial Pokémon Emerald ROM-hack project built on the open-source `pokeemerald-expansion` decompilation/expansion base.
@@ -9,14 +9,14 @@ The project is intended to preserve the feel and structure of Pokémon Emerald w
 
 The New Game / Continue / Options menu uses a soft lavender backdrop as of v0.0.13.1.
 
-## Try the current v0.0.17 build
+## Try the current v0.0.18 build
 
 The project site provides two builds from the same source:
 
 - **Release (recommended):** https://babycrttv.github.io/pokeemerald-emerald-legends/patcher.html
 - **Debug / developer:** https://babycrttv.github.io/pokeemerald-emerald-legends/patcher.html?build=debug
-- **Release BPS:** https://babycrttv.github.io/pokeemerald-emerald-legends/downloads/Pokemon-Emerald-Legends-v0.0.17.bps
-- **Debug BPS:** https://babycrttv.github.io/pokeemerald-emerald-legends/downloads/Pokemon-Emerald-Legends-v0.0.17-debug.bps
+- **Release BPS:** https://babycrttv.github.io/pokeemerald-emerald-legends/downloads/Pokemon-Emerald-Legends-v0.0.18.bps
+- **Debug BPS:** https://babycrttv.github.io/pokeemerald-emerald-legends/downloads/Pokemon-Emerald-Legends-v0.0.18-debug.bps
 
 The Release and Debug builds contain the same Legends gameplay/content changes. Release disables developer entry points for a cleaner casual-player build. Debug retains the expansion's overworld/battle/sprite debug tools and title-screen Quickstart.
 
@@ -30,11 +30,11 @@ The Release and Debug builds contain the same Legends gameplay/content changes. 
 
 **SEASONS:** Title-screen Legends choices now carry into New Game, including the chosen gameplay season, EXP Share and shiny rate. Legends Options offers REAL TIME (default; Northern Hemisphere calendar months) or 7H PLAY (seven recorded gameplay hours per season). CURRENT shows the active environment; SET SEASON lets gameplay-mode players choose Spring, Summer, Autumn or Winter and restart that season's timer. Changes apply on a faded map transition, such as entering or leaving a building, or on save reload. Seasonal foliage and weather preserve volcanic areas and special/story effects. See [season documentation](docs/features/seasons.md).
 
-**SHINY RATE (v0.0.10):** Use L/R to select the Legends Options page, then Left/Right on SHINY RATE to choose 1/8192 (default), 1/5680, or 1/1226. The chosen base rate is stored in an unused permanent save variable; it affects newly generated wild Pokémon, including fishing and DexNav. Shiny Charm, chain-fishing and DexNav bonus rolls still apply. Gift Pokémon, eggs, scripted encounters and already-owned Pokémon use their previous logic.
+**SHINY RATE (v0.0.10):** Use NEXT PAGE + A (or L/R) to select the Legends Options page, then Left/Right on SHINY RATE to choose 1/8192 (default), 1/5680, or 1/1226. The chosen base rate is stored in an unused permanent save variable; it affects newly generated wild Pokémon, including fishing and DexNav. Shiny Charm, chain-fishing and DexNav bonus rolls still apply. Gift Pokémon, eggs, scripted encounters and already-owned Pokémon use their previous logic.
 
 **Maintenance QA (0.0.8.1):** Browser patching now ignores stale ROM validation and download operations; automated BPS decoding tests have been added. Gameplay mechanics are unchanged from 0.0.8.
 
-**Paged Options:** Options now has General and Legends pages. Use L/R to switch pages. The original Emerald window dimensions are preserved so future Legends settings can be added without squeezing or corrupting the menu.
+**Paged Options:** Options now has General and Legends pages. Select NEXT PAGE and press A to switch pages, or use L/R. The visible A: NEXT / B: SAVE hint explains navigation; B saves and exits from any row. The original Emerald window dimensions are preserved so future Legends settings can be added without squeezing or corrupting the menu.
 
 **Rustboro reward:** After delivering Mr. Stone's Letter to Steven, the Devon Corp. reward is now a Lucky Egg instead of the redundant held Exp. Share.
 

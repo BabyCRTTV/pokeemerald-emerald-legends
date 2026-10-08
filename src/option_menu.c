@@ -49,7 +49,7 @@ enum
     MENUITEM_SOUND,
     MENUITEM_BUTTONMODE,
     MENUITEM_FRAMETYPE,
-    MENUITEM_CANCEL,
+    MENUITEM_NEXTPAGE,
     MENUITEM_COUNT,
 };
 
@@ -104,11 +104,11 @@ static void DrawBgWindowFrames(void);
 
 EWRAM_DATA static bool8 sArrowPressed = FALSE;
 
-static const u8 gText_PageHint[]           = _("L/R");
+static const u8 gText_PageControls[]       = _("A: NEXT  B: SAVE");
 #ifdef RELEASE
-static const u8 gText_LegendsVersion[]      = _("LEGENDS v0.0.17");
+static const u8 gText_LegendsVersion[]      = _("LEGENDS v0.0.18");
 #else
-static const u8 gText_LegendsVersion[]      = _("LEGENDS v0.0.17-D");
+static const u8 gText_LegendsVersion[]      = _("LEGENDS v0.0.18-D");
 #endif
 static const u8 gText_TextSpeedSlow[]      = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}SLOW");
 static const u8 gText_TextSpeedMid[]       = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}MID");
@@ -148,7 +148,7 @@ static const u8 *const sOptionMenuItemsNames[MENUITEM_COUNT] =
     [MENUITEM_SOUND]       = COMPOUND_STRING("SOUND"),
     [MENUITEM_BUTTONMODE]  = COMPOUND_STRING("BUTTON MODE"),
     [MENUITEM_FRAMETYPE]   = COMPOUND_STRING("FRAME"),
-    [MENUITEM_CANCEL]      = COMPOUND_STRING("CANCEL"),
+    [MENUITEM_NEXTPAGE]    = COMPOUND_STRING("NEXT PAGE"),
 };
 
 static const u8 *const sOptionMenuPageTitles[OPTION_PAGE_COUNT] =
@@ -167,7 +167,7 @@ static const u8 sOptionMenuPageItems[OPTION_PAGE_COUNT][OPTION_PAGE_MAX_ITEMS] =
         MENUITEM_SOUND,
         MENUITEM_BUTTONMODE,
         MENUITEM_FRAMETYPE,
-        MENUITEM_CANCEL,
+        MENUITEM_NEXTPAGE,
     },
     [OPTION_PAGE_LEGENDS] =
     {
@@ -177,7 +177,7 @@ static const u8 sOptionMenuPageItems[OPTION_PAGE_COUNT][OPTION_PAGE_MAX_ITEMS] =
         MENUITEM_SEASONMODE,
         MENUITEM_SEASON,
         MENUITEM_SETSEASON,
-        MENUITEM_CANCEL,
+        MENUITEM_NEXTPAGE,
     },
 };
 
@@ -377,8 +377,8 @@ static void Task_OptionMenuProcessInput(u8 taskId)
     }
     else if (JOY_NEW(A_BUTTON))
     {
-        if (GetOptionMenuItem(taskId) == MENUITEM_CANCEL)
-            gTasks[taskId].func = Task_OptionMenuSave;
+        if (GetOptionMenuItem(taskId) == MENUITEM_NEXTPAGE)
+            ChangeOptionMenuPage(taskId, 1);
     }
     else if (JOY_NEW(B_BUTTON))
     {
@@ -928,15 +928,9 @@ static void ChangeOptionMenuPage(u8 taskId, s8 direction)
 static void DrawHeaderText(u8 page)
 {
     s32 versionStart = GetStringRightAlignXOffset(FONT_NORMAL, gText_LegendsVersion, 200);
-    s32 pageRight = 8 + GetStringWidth(FONT_NORMAL, sOptionMenuPageTitles[page], 0);
-    s32 hintRight = 88 + GetStringWidth(FONT_NORMAL, gText_PageHint, 0);
 
     FillWindowPixelBuffer(WIN_HEADER, PIXEL_FILL(1));
     AddTextPrinterParameterized(WIN_HEADER, FONT_NORMAL, sOptionMenuPageTitles[page], 8, 1, TEXT_SKIP_DRAW, NULL);
-
-    // Longer version labels (especially Debug) must not overlap the L/R hint.
-    if (pageRight + 4 <= 88 && hintRight + 4 <= versionStart)
-        AddTextPrinterParameterized(WIN_HEADER, FONT_NORMAL, gText_PageHint, 88, 1, TEXT_SKIP_DRAW, NULL);
 
     AddTextPrinterParameterized(WIN_HEADER, FONT_NORMAL, gText_LegendsVersion,
                                 versionStart, 1, TEXT_SKIP_DRAW, NULL);
@@ -960,6 +954,10 @@ static void DrawOptionMenuPage(u8 taskId)
 
         switch (itemId)
         {
+        case MENUITEM_NEXTPAGE:
+            AddTextPrinterParameterized(WIN_OPTIONS, FONT_SMALL, gText_PageControls,
+                                        104, row * OPTION_ROW_HEIGHT + 2, TEXT_SKIP_DRAW, NULL);
+            break;
         case MENUITEM_TEXTSPEED:
             TextSpeed_DrawChoices(gTasks[taskId].tTextSpeed, row * OPTION_ROW_HEIGHT);
             break;

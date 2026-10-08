@@ -2,6 +2,17 @@
 
 This is the player-facing history for the recommended **Release** build. Shared Legends changes are repeated here so this file stands on its own; Release-only behavior is called out separately.
 
+## [0.0.18] - 2026-10-08
+
+### Changed
+- Replaced the bottom CANCEL row on both Options pages with NEXT PAGE. Press A there to cycle pages; L/R remain page shortcuts.
+- Added a permanent A: NEXT / B: SAVE hint on the bottom row, independent of the version label. B saves all settings and exits from any row.
+- Kept the original seven-row windows and VRAM allocation. Page changes preserve pending settings, and L/R retains priority with L=A controls.
+- Release and Debug share these changes with no variant-specific differences. Developer tools remain disabled in Release and enabled in Debug.
+
+### Validation
+- Added an actual-function navigation regression covering A/L/R paging, pending settings, row wrap and B save/exit on every row in both pages.
+
 ## [0.0.17] - 2026-10-08
 
 ### Changed
