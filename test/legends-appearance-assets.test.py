@@ -27,6 +27,7 @@ for gender, name in enumerate(("brendan", "may")):
                     min((g for g in groups if len(g) > 30), key=lambda g: min(y for x, y in g))) if groups else set()
             for outfit in (1, 2, 3):
                 result = art.outfit_frame(frame, gender, outfit, kind, pose, state=path.stem)
+                assert art.outfit_frame(frame, gender, 0, kind, pose) == frame, "Default Emerald art must stay exact"
                 assert all(frame[y][x] == result[y][x] for x, y in face), (path, pose, "face")
                 assert all((v == 0) == (result[y][x] == 0) for y, row in enumerate(frame) for x, v in enumerate(row))
                 if kind != "overworld":
@@ -36,6 +37,10 @@ for gender, name in enumerate(("brendan", "may")):
                     assert all(result[y][x] in (0,1,2,3,4,15) for x,y in hands - art.ball_pixels(gender,kind,pose) if (x,y) not in face), (path,pose,"bare hands")
                 if kind == "front" and gender == 1:
                     assert all(result[y][x] == frame[y][x] for y in range(25) for x in range(23,36)), "May mouth/face detail"
+                if kind == "overworld" and path.stem == "field_move" and face:
+                    left=min(x for x,y in face);bottom=max(y for x,y in face)
+                    assert all(result[y][x] == v for y,row in enumerate(frame) for x,v in enumerate(row)
+                               if x < left-2 and y <= bottom and v in (9,12,13,14)), (path,pose,"field-move ball")
                 raw = art.pack(result)
                 assert len(raw) == width * len(frame) // 2
                 compressed = art.literal_lz(raw)

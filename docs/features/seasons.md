@@ -31,3 +31,18 @@ The clock determines a pending season, while saved active-season and weather-day
 `src/legends_seasons.c` and `include/legends_seasons.h` own the rules. Integration points are native playtime, map palette loading, day/night palette rebuilding, weather requests, save continue and paged Options. Vars 0x40F7-0x40FE were unused and are now reserved. No SaveBlock layout change is required. Seasonal encounters and story events remain future work.
 
 Run `python3 test/legends-seasons.test.py` for host C regression checks. See [QA](../QA.md) for manual emulator scenarios. Native builds and patch verification do not replace visual playtesting.
+
+## Grass effects and winter scuffs (v0.0.16)
+
+Grass rustle, jump, short/long and shaking effects use a dedicated sprite palette
+with the same vegetation color conversion as map palettes. Each load starts from
+the native palette, including cached tags and connected transitions to excluded
+ash/desert maps. Water and ash keep their own palette.
+
+On standard General-tileset tall grass in winter, movement clears the snowy tuft
+visually, inspired by native ash grass. The renderer substitutes ordinary ground
+art without changing the map-grid entry: grass encounters, collision, elevation
+and field-move checks remain intact. A 1280-byte per-map bitset tracks scuffed
+cells; full map initialization clears it. It is never written to the save.
+Tree-edge and long grass retain native artwork. `legends_grass.c` owns tracking;
+`field_effect_helpers.c`, `field_camera.c` and `fieldmap.c` supply the hooks.

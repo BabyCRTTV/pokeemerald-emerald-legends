@@ -76,7 +76,7 @@ def outfit_frame(pixels, gender, outfit, kind="overworld", pose=0, state="walkin
                 if outfit==2 and gender==0 and face_bottom+5<=y<=face_bottom+6 and abs(x-center)<=4 and v in (5,6,7,8):
                     result[y][x]=2 if v in (5,6) else 3
                 # Tiny hands beside the torso, avoiding feet, hair and red balls.
-                if 3<abs(x-center)<=6 and face_bottom+1<=y<=face_bottom+4 and v in ((5,6,9,10,11,12,13,14) if state != "field_move" else (5,6,9,10,11,14)):
+                if 3<abs(x-center)<=6 and face_bottom+1<=y<=face_bottom+4 and v in (5,6,9,10,11,12,13,14):
                     result[y][x]=1 if v in (9,14) else (2 if v in (5,10,12) else 3)
         if outfit==1:
             for group in groups:
