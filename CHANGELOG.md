@@ -4,6 +4,18 @@ All notable Pokémon Emerald: Legends project changes are documented here.
 
 For build-specific player views, see [CHANGELOG-RELEASE.md](CHANGELOG-RELEASE.md) and [CHANGELOG-DEBUG.md](CHANGELOG-DEBUG.md). The canonical history below records the project as a whole.
 
+## [0.0.14] - 2026-10-08
+
+### Added
+- Added a bottom-left Start-menu panel using Emerald’s native border, small text and pixel clock/weather icons.
+- Shows the local RTC clock in 12-hour format, live weather and the active season. Refreshes once per second and redraws only when values change; unavailable RTC displays --:--.
+- Indoors/caves show a shelter icon; underwater shows a water icon. Opening the menu does not advance the active season or change weather.
+- Handles save/retire dialogs, submenu transitions, returning to the menu and allocation failure without leaking a window.
+
+### Validation
+- Added host C regressions for panel lifecycle, time rollover, invalid RTC, weather categories, season display and tile/pixel bounds. Both native ROM builds and BPS round-trip verification run in Actions; emulator visual QA remains separate.
+- Release and Debug share the panel; no variant-specific gameplay differences.
+
 ## [0.0.13.1] - 2026-10-08
 
 ### Changed
