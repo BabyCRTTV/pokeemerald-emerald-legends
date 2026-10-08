@@ -4,6 +4,19 @@ All notable Pokémon Emerald: Legends project changes are documented here.
 
 For build-specific player views, see [CHANGELOG-RELEASE.md](CHANGELOG-RELEASE.md) and [CHANGELOG-DEBUG.md](CHANGELOG-DEBUG.md). The canonical history below records the project as a whole.
 
+## [0.0.10] - 2026-10-07
+
+### Added
+- Added a persistent SHINY RATE setting to the Legends Options page (Left/Right: 1/8192, 1/5680, 1/1226; default 1/8192).
+- Selected odds govern the base per-roll shiny chance for newly generated wild Pokémon, including fishing and DexNav encounters.
+- Kept bonus rolls from Shiny Charm, chain fishing and DexNav; eggs, gifts, special/scripted Pokémon and previously caught Pokémon are unchanged.
+- Used an existing unused permanent event variable, so earlier saves retain 1/8192 and a new choice survives save/load.
+
+### Technical
+- Used unbiased 16-bit rejection sampling so the three selected base probabilities are mathematically exact before modifier rerolls.
+- Reused the existing paged Options UI without increasing window tile usage or the seven-row General page.
+- Added static project checks for the new save variable and wild-only shiny calculation; emulator playtesting remains separate.
+
 ## [0.0.9] - 2026-10-07
 
 ### Added

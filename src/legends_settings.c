@@ -6,6 +6,7 @@
 #include "constants/items.h"
 #include "constants/battle_frontier.h"
 #include "constants/flags.h"
+#include "constants/vars.h"
 
 void LegendsInitNewGameSettings(void)
 {
@@ -58,4 +59,36 @@ void LegendsSetExpShareEnabled(bool32 enabled)
         FlagClear(FLAG_LEGENDS_EXP_SHARE);
 
     FlagSet(FLAG_LEGENDS_SETTINGS_INITIALIZED);
+}
+
+u8 LegendsGetShinyRateSetting(void)
+{
+    u16 setting = VarGet(VAR_LEGENDS_SHINY_RATE);
+
+    if (setting >= LEGENDS_SHINY_RATE_COUNT)
+        return LEGENDS_SHINY_RATE_8192;
+
+    return setting;
+}
+
+void LegendsSetShinyRateSetting(u8 setting)
+{
+    if (setting >= LEGENDS_SHINY_RATE_COUNT)
+        setting = LEGENDS_SHINY_RATE_8192;
+
+    VarSet(VAR_LEGENDS_SHINY_RATE, setting);
+}
+
+u16 LegendsGetWildShinyRateDenominator(void)
+{
+    switch (LegendsGetShinyRateSetting())
+    {
+    case LEGENDS_SHINY_RATE_5680:
+        return 5680;
+    case LEGENDS_SHINY_RATE_1226:
+        return 1226;
+    case LEGENDS_SHINY_RATE_8192:
+    default:
+        return 8192;
+    }
 }

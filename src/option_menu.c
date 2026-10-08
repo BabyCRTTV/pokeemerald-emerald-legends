@@ -26,6 +26,7 @@
 #define tWindowFrameType data[6]
 #define tExpShare data[7]
 #define tMenuPage data[8]
+#define tShinyRate data[9]
 
 enum
 {
@@ -33,6 +34,7 @@ enum
     MENUITEM_BATTLESCENE,
     MENUITEM_BATTLESTYLE,
     MENUITEM_EXPSHARE,
+    MENUITEM_SHINYRATE,
     MENUITEM_SOUND,
     MENUITEM_BUTTONMODE,
     MENUITEM_FRAMETYPE,
@@ -70,6 +72,8 @@ static u8 BattleStyle_ProcessInput(u8 selection);
 static void BattleStyle_DrawChoices(u8 selection, u8 y);
 static u8 ExpShare_ProcessInput(u8 selection);
 static void ExpShare_DrawChoices(u8 selection, u8 y);
+static u8 ShinyRate_ProcessInput(u8 selection);
+static void ShinyRate_DrawChoices(u8 selection, u8 y);
 static u8 Sound_ProcessInput(u8 selection);
 static void Sound_DrawChoices(u8 selection, u8 y);
 static u8 FrameType_ProcessInput(u8 selection);
@@ -86,9 +90,9 @@ EWRAM_DATA static bool8 sArrowPressed = FALSE;
 
 static const u8 gText_PageHint[]           = _("L/R");
 #ifdef RELEASE
-static const u8 gText_LegendsVersion[]      = _("LEGENDS v0.0.9");
+static const u8 gText_LegendsVersion[]      = _("LEGENDS v0.0.10");
 #else
-static const u8 gText_LegendsVersion[]      = _("LEGENDS v0.0.9-D");
+static const u8 gText_LegendsVersion[]      = _("LEGENDS v0.0.10-D");
 #endif
 static const u8 gText_TextSpeedSlow[]      = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}SLOW");
 static const u8 gText_TextSpeedMid[]       = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}MID");
@@ -99,6 +103,9 @@ static const u8 gText_BattleStyleShift[]   = _("{COLOR GREEN}{SHADOW LIGHT_GREEN
 static const u8 gText_BattleStyleSet[]     = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}SET");
 static const u8 gText_LegendsExpShareOn[]          = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}ON");
 static const u8 gText_LegendsExpShareOff[]         = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}OFF");
+static const u8 gText_LegendsShiny8192[]           = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}1/8192");
+static const u8 gText_LegendsShiny5680[]           = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}1/5680");
+static const u8 gText_LegendsShiny1226[]           = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}1/1226");
 static const u8 gText_SoundMono[]          = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}MONO");
 static const u8 gText_SoundStereo[]        = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}STEREO");
 static const u8 gText_FrameType[]          = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}TYPE");
@@ -117,6 +124,7 @@ static const u8 *const sOptionMenuItemsNames[MENUITEM_COUNT] =
     [MENUITEM_BATTLESCENE] = COMPOUND_STRING("BATTLE SCENE"),
     [MENUITEM_BATTLESTYLE] = COMPOUND_STRING("BATTLE STYLE"),
     [MENUITEM_EXPSHARE]    = COMPOUND_STRING("EXP SHARE"),
+    [MENUITEM_SHINYRATE]   = COMPOUND_STRING("SHINY RATE"),
     [MENUITEM_SOUND]       = COMPOUND_STRING("SOUND"),
     [MENUITEM_BUTTONMODE]  = COMPOUND_STRING("BUTTON MODE"),
     [MENUITEM_FRAMETYPE]   = COMPOUND_STRING("FRAME"),
@@ -144,6 +152,7 @@ static const u8 sOptionMenuPageItems[OPTION_PAGE_COUNT][OPTION_PAGE_MAX_ITEMS] =
     [OPTION_PAGE_LEGENDS] =
     {
         MENUITEM_EXPSHARE,
+        MENUITEM_SHINYRATE,
         MENUITEM_CANCEL,
     },
 };
@@ -151,7 +160,7 @@ static const u8 sOptionMenuPageItems[OPTION_PAGE_COUNT][OPTION_PAGE_MAX_ITEMS] =
 static const u8 sOptionMenuPageItemCounts[OPTION_PAGE_COUNT] =
 {
     [OPTION_PAGE_GENERAL] = 7,
-    [OPTION_PAGE_LEGENDS] = 2,
+    [OPTION_PAGE_LEGENDS] = 3,
 };
 
 static const struct WindowTemplate sOptionMenuWinTemplates[] =
@@ -302,6 +311,7 @@ void CB2_InitOptionMenu(void)
         gTasks[taskId].tButtonMode = gSaveBlock2Ptr->optionsButtonMode;
         gTasks[taskId].tWindowFrameType = gSaveBlock2Ptr->optionsWindowFrameType;
         gTasks[taskId].tExpShare = LegendsIsExpShareEnabled() ? 0 : 1;
+        gTasks[taskId].tShinyRate = LegendsGetShinyRateSetting();
 
         DrawOptionMenuPage(taskId);
         HighlightOptionMenuItem(gTasks[taskId].tMenuSelection);
@@ -401,6 +411,13 @@ static void Task_OptionMenuProcessInput(u8 taskId)
             if (previousOption != gTasks[taskId].tExpShare)
                 ExpShare_DrawChoices(gTasks[taskId].tExpShare, y);
             break;
+        case MENUITEM_SHINYRATE:
+            previousOption = gTasks[taskId].tShinyRate;
+            gTasks[taskId].tShinyRate = ShinyRate_ProcessInput(gTasks[taskId].tShinyRate);
+
+            if (previousOption != gTasks[taskId].tShinyRate)
+                ShinyRate_DrawChoices(gTasks[taskId].tShinyRate, y);
+            break;
         case MENUITEM_SOUND:
             previousOption = gTasks[taskId].tSound;
             gTasks[taskId].tSound = Sound_ProcessInput(gTasks[taskId].tSound);
@@ -443,6 +460,7 @@ static void Task_OptionMenuSave(u8 taskId)
     gSaveBlock2Ptr->optionsButtonMode = gTasks[taskId].tButtonMode;
     gSaveBlock2Ptr->optionsWindowFrameType = gTasks[taskId].tWindowFrameType;
     LegendsSetExpShareEnabled(gTasks[taskId].tExpShare == 0);
+    LegendsSetShinyRateSetting(gTasks[taskId].tShinyRate);
 
     BeginNormalPaletteFade(PALETTES_ALL, 0, 0, 16, RGB_BLACK);
     gTasks[taskId].func = Task_OptionMenuFadeOut;
@@ -596,6 +614,44 @@ static void ExpShare_DrawChoices(u8 selection, u8 y)
 
     DrawOptionMenuChoice(gText_LegendsExpShareOn, 104, y, styles[0]);
     DrawOptionMenuChoice(gText_LegendsExpShareOff, GetStringRightAlignXOffset(FONT_NORMAL, gText_LegendsExpShareOff, 198), y, styles[1]);
+}
+
+static u8 ShinyRate_ProcessInput(u8 selection)
+{
+    if (JOY_NEW(DPAD_RIGHT))
+    {
+        selection = (selection + 1) % LEGENDS_SHINY_RATE_COUNT;
+        sArrowPressed = TRUE;
+    }
+    else if (JOY_NEW(DPAD_LEFT))
+    {
+        selection = (selection + LEGENDS_SHINY_RATE_COUNT - 1) % LEGENDS_SHINY_RATE_COUNT;
+        sArrowPressed = TRUE;
+    }
+
+    return selection;
+}
+
+static void ShinyRate_DrawChoices(u8 selection, u8 y)
+{
+    const u8 *text;
+
+    switch (selection)
+    {
+    case LEGENDS_SHINY_RATE_5680:
+        text = gText_LegendsShiny5680;
+        break;
+    case LEGENDS_SHINY_RATE_1226:
+        text = gText_LegendsShiny1226;
+        break;
+    case LEGENDS_SHINY_RATE_8192:
+    default:
+        text = gText_LegendsShiny8192;
+        break;
+    }
+
+    // Render only the selected value; keep the original window dimensions.
+    DrawOptionMenuChoice(text, 130, y, 1);
 }
 
 static u8 Sound_ProcessInput(u8 selection)
@@ -794,6 +850,9 @@ static void DrawOptionMenuPage(u8 taskId)
             break;
         case MENUITEM_EXPSHARE:
             ExpShare_DrawChoices(gTasks[taskId].tExpShare, row * OPTION_ROW_HEIGHT);
+            break;
+        case MENUITEM_SHINYRATE:
+            ShinyRate_DrawChoices(gTasks[taskId].tShinyRate, row * OPTION_ROW_HEIGHT);
             break;
         case MENUITEM_SOUND:
             Sound_DrawChoices(gTasks[taskId].tSound, row * OPTION_ROW_HEIGHT);

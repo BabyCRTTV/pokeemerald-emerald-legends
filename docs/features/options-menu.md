@@ -36,3 +36,9 @@ When adding a setting:
 3. Keep each page at seven rows or fewer, including Cancel.
 4. Add its draw/input handling without changing the safe window dimensions.
 5. Update this document and the changelog when the setting ships.
+
+## v0.0.10 SHINY RATE
+
+Legends 2/2 now has EXP SHARE, SHINY RATE and CANCEL. Use Left/Right to cycle 1/8192 (default), 1/5680, and 1/1226. The value is saved when leaving Options. Older saves default to 1/8192 using a zero-initialized unused permanent var, without changing existing save-block layouts.
+
+The new setting affects newly generated ordinary wild, fishing, surfing and DexNav encounters only. Shiny Charm, chain fishing and DexNav search bonuses add rolls. Gifts, eggs and scripted Pokémon remain governed by the base expansion rules.

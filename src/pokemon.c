@@ -16,6 +16,7 @@
 #include "daycare.h"
 #include "dexnav.h"
 #include "event_data.h"
+#include "legends_settings.h"
 #include "event_object_movement.h"
 #include "evolution_scene.h"
 #include "field_player_avatar.h"
@@ -866,6 +867,29 @@ void CreateMonWithIVs(struct Pokemon *mon, enum Species species, u8 level, u32 p
     CalculateMonStats(mon);
 }
 
+// Set only around CreateWildMon's creation of the actual wild Pokémon.
+static bool8 sLegendsGeneratingWildMon = FALSE;
+
+void SetWildShinyGenerationContext(bool32 enabled)
+{
+    sLegendsGeneratingWildMon = enabled;
+}
+
+// Sampling a multiple of N from 16-bit RNG eliminates modulo bias.
+// Thus without bonus rolls each encounter succeeds exactly once in N rolls.
+static bool32 RollLegendsWildShiny(u16 denominator)
+{
+    u32 limit = (0x10000u / denominator) * denominator;
+    u16 roll;
+
+    do
+    {
+        roll = Random();
+    } while (roll >= limit);
+
+    return roll % denominator == 0;
+}
+
 bool32 ComputePlayerShinyOdds(u32 personality, u32 value)
 {
     if (FlagGet(P_FLAG_FORCE_NO_SHINY))
@@ -892,6 +916,20 @@ bool32 ComputePlayerShinyOdds(u32 personality, u32 value)
 
     if (gDexNavSpecies)
         totalRerolls += CalculateDexNavShinyRolls();
+
+    if (sLegendsGeneratingWildMon)
+    {
+        u16 denominator = LegendsGetWildShinyRateDenominator();
+
+        // Existing Shiny Charm, chain-fishing and DexNav bonuses add rolls.
+        do
+        {
+            if (RollLegendsWildShiny(denominator))
+                return TRUE;
+        } while (totalRerolls-- > 0);
+
+        return FALSE;
+    }
 
     while (GET_SHINY_VALUE(value, personality) >= SHINY_ODDS && totalRerolls > 0)
     {
