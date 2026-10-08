@@ -16,7 +16,8 @@ This is the developer-facing history for the **Debug** build. Shared Legends cha
 - Added custom species/National Dex entries without renumbering existing Pokémon. Dex save bitfields remain 129 bytes; the gift uses an unused permanent flag rather than enlarging save blocks.
 - Added actual-module regressions for every shiny outcome, both ordinary shiny states, level/moves, duplicate prevention, occupied/full storage, retry and Pokédex registration; asset/cry/dex integration checks.
 - Documented species data, learnset, gift migration and emulator QA in docs/features/da-bug.md.
-- Release and Debug share these changes with no variant-specific differences. Developer tools remain disabled in Release and enabled in Debug.
+- Release and Debug share the gameplay changes. Debug’s sprite visualizer adds a labeled Da Bug sway/eye-glimmer animation; developer tools remain disabled in Release.
+- Both variants compiled successfully; both BPS patches passed byte-for-byte reapplication verification against the independently built, SHA-1-verified clean Emerald reference.
 
 ## [0.0.19] - 2026-10-08
 
