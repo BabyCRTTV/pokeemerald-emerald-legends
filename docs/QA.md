@@ -41,3 +41,15 @@ CI passing does not establish emulator gameplay correctness. Record emulator ver
 - [ ] Check Shiny Charm, chain-fishing and DexNav bonuses remain additive to the selected base odds.
 - [ ] Verify already caught Pokémon, eggs, gifts and scripted Pokémon do not have shininess unexpectedly altered.
 - [ ] Validate the normal Release build and Debug build against clean base ROMs on mGBA and Pizza Boy.
+
+## Seasons (0.0.11)
+
+Automated: `python3 test/legends-seasons.test.py` compiles the actual season module with engine mocks and verifies all twelve calendar months, 28-hour boundaries, complete cycle rollover, persisted sub-second progress, older-save migration, 999-hour continuation, invalid RTC fallback, regional exclusions, unchanged special weather, deterministic snow frequency, ocean snow exclusion, full RGB555 bounds, protected palette slots, and fade/script refresh deferral. Both native variants and BPS reapplication are verified by the release workflow.
+
+Manual emulator checks (not replaced by host tests):
+- With RTC enabled, visit Littleroot, Route 104, Fortree, Route 119 and Lilycove in March, July, October and January; inspect foliage, contrast, water and buildings during day and night.
+- Switch REAL TIME / 28H PLAY in Legends Options; confirm CURRENT previews without saving the mode until leaving Options, and mode persists after an ordinary save/reload.
+- At 27:59:59, 55:59:59, 83:59:59 and 111:59:59 gameplay-cycle time, cross the next second while standing outdoors, in a menu, in battle and indoors. Confirm the next safe field update changes season without broken fades or weather sprites.
+- Compare Mt. Chimney, Jagged Pass, Routes 111/112/113, Lavaridge and Fallarbor across seasons; check ash collection, desert coordinate weather and hot springs.
+- Check winter snow and autumn fog transitions, route connections, Surf, battle return, save/continue and indoor exits; NPC/player/UI palettes must keep their original colors.
+- Check Groudon/Kyogre conflict and postgame Terra/Marine Cave drought/downpour; these must override seasonal ambient weather.

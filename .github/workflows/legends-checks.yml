@@ -13,6 +13,8 @@ jobs:
       - uses: actions/checkout@v4
       - name: Exercise browser patcher regression tests
         run: node --test test/legends-patcher.test.cjs
+      - name: Exercise seasonal engine regression tests
+        run: python3 test/legends-seasons.test.py
       - name: Verify Legends project metadata
         run: |
           test -f VERSION

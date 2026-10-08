@@ -37,7 +37,7 @@ Do not commit generated ROMs, copyrighted ROM data, save files containing person
 
 The authoritative project version lives in the root `VERSION` file.
 
-Current version: `0.0.10`.
+Current version: `0.0.11`.
 
 During active pre-1.0 development, each meaningful shipped change increments the development revision:
 
@@ -61,3 +61,5 @@ Every version bump must update the canonical, Release, and Debug changelogs and 
 ## Quality checks
 
 Run node --test test/legends-patcher.test.cjs for BPS decoding and ROM-selection race coverage. CI verifies both variant builds and patch byte-for-byte round trips. The QA checklist (docs/QA.md) distinguishes automated validation from emulator scenarios that still need hands-on testing.
+
+- `0.0.11` - real-time / 28-hour seasons, outdoor foliage and region-aware weather

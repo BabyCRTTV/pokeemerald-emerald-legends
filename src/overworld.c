@@ -37,6 +37,7 @@
 #include "link_rfu.h"
 #include "load_save.h"
 #include "legends_settings.h"
+#include "legends_seasons.h"
 #include "main.h"
 #include "malloc.h"
 #include "m4a.h"
@@ -904,7 +905,9 @@ void LoadMapFromCameraTransition(u8 mapGroup, u8 mapNum)
     CopySecondaryTilesetToVramUsingHeap(gMapHeader.mapLayout);
     LoadSecondaryTilesetPalette(gMapHeader.mapLayout, TRUE); // skip copying to Faded, gamma shift will take care of it
 
-    ApplyWeatherColorMapToPals(GetNumPalsInPrimary(gMapHeader.mapLayout), NUM_PALS_TOTAL - GetNumPalsInPrimary(gMapHeader.mapLayout)); // palettes [6,12]
+    // Rebuild primary foliage too when crossing between seasonal and volcanic maps.
+    UpdateAltBgPalettes(PALETTES_MAP);
+    ApplyWeatherColorMapToPals(0, NUM_PALS_TOTAL);
 
     InitSecondaryTilesetAnimation();
     UpdateLocationHistoryForRoamer();
@@ -1797,26 +1800,25 @@ void UpdateAltBgPalettes(u16 palettes)
 {
     const struct Tileset *primary = gMapHeader.mapLayout->primaryTileset;
     const struct Tileset *secondary = gMapHeader.mapLayout->secondaryTileset;
-    u32 i = 1;
+    u32 i;
+    u32 primaryCount = GetNumPalsInPrimary(gMapHeader.mapLayout);
     if (!MapHasNaturalLight(gMapHeader.mapType))
         return;
-    palettes &= ~((1 << GetNumPalsInPrimary(gMapHeader.mapLayout)) - 1) | primary->swapPalettes;
-    palettes &= ((1 << GetNumPalsInPrimary(gMapHeader.mapLayout)) - 1) | (secondary->swapPalettes << GetNumPalsInPrimary(gMapHeader.mapLayout));
-    palettes &= PALETTES_MAP ^ (1 << 0); // don't blend palette 0, [13,15]
-    palettes >>= 1; // start at palette 1
-    if (!palettes)
-        return;
-    while (palettes)
+    palettes &= PALETTES_MAP ^ (1 << 0);
+    for (i = 1; i < NUM_PALS_TOTAL; i++)
     {
-        if (palettes & 1)
-        {
-            if (i < GetNumPalsInPrimary(gMapHeader.mapLayout))
-                AvgPaletteWeighted(&((u16 *)primary->palettes)[i * 16], &((u16 *)primary->palettes)[((i + 9) % 16) * 16], gPlttBufferUnfaded + i * 16, gTimeBlend.altWeight);
-            else
-                AvgPaletteWeighted(&((u16 *)secondary->palettes)[i * 16], &((u16 *)secondary->palettes)[((i + 9) % 16) * 16], gPlttBufferUnfaded + i * 16, gTimeBlend.altWeight);
-        }
-        i++;
-        palettes >>= 1;
+        const struct Tileset *tileset = i < primaryCount ? primary : secondary;
+        const u16 *source;
+        u32 swapIndex = i < primaryCount ? i : i - primaryCount;
+        if (!(palettes & (1 << i)))
+            continue;
+        source = tileset->palettes[i];
+        if (tileset->swapPalettes & (1 << swapIndex))
+            AvgPaletteWeighted((u16 *)source, (u16 *)tileset->palettes[(i + 9) % 16],
+                               gPlttBufferUnfaded + i * 16, gTimeBlend.altWeight);
+        else
+            CpuCopy16(source, gPlttBufferUnfaded + i * 16, PLTT_SIZE_4BPP);
+        LegendsApplySeasonPalette(i * 16, 16);
     }
 }
 
@@ -1875,6 +1877,7 @@ static void OverworldBasic(void)
             ApplyWeatherColorMapIfIdle(gWeatherPtr->colorMapIndex);
         }
     }
+    LegendsRefreshSeasons();
     UpdateOverworldWildEncounter();
 }
 
@@ -2125,6 +2128,7 @@ void CB2_ContinueSavedGame(void)
         ResetWinStreaks();
 
     LoadSaveblockMapHeader();
+    LegendsRestoreSeasonWeather();
     ClearDiveAndHoleWarps();
     trainerHillMapId = GetCurrentTrainerHillMapId();
     if (gMapHeader.mapLayoutId == LAYOUT_BATTLE_FRONTIER_BATTLE_PYRAMID_FLOOR)

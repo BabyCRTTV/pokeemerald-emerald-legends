@@ -1,5 +1,6 @@
 #include "global.h"
 #include "play_time.h"
+#include "legends_seasons.h"
 #include "fake_rtc.h"
 #include "field_player_avatar.h"
 
@@ -32,7 +33,11 @@ void PlayTimeCounter_Start(void)
 
 void PlayTimeCounter_Update(void)
 {
-    if (sPlayTimeCounterState != RUNNING)
+    if (sPlayTimeCounterState == STOPPED)
+        return;
+
+    LegendsSeasonTick();
+    if (sPlayTimeCounterState == MAXED_OUT)
         return;
 
     gSaveBlock2Ptr->playTimeVBlanks++;

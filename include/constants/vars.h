@@ -281,6 +281,14 @@
 #define VAR_UNUSED_0x40FE                                0x40FE // Unused Var
 #define VAR_UNUSED_0x40FF                                0x40FF // Unused Var
 
+// Legends seasons: reuse permanent vars without changing any save block.
+#define VAR_LEGENDS_SEASON_MODE         VAR_UNUSED_0x40F7
+#define VAR_LEGENDS_SEASON_SECONDS_LO   VAR_UNUSED_0x40F8
+#define VAR_LEGENDS_SEASON_SECONDS_HI   VAR_UNUSED_0x40F9
+#define VAR_LEGENDS_SEASON_CLOCK_INIT   VAR_UNUSED_0x40FA
+#define VAR_LEGENDS_BASE_WEATHER        VAR_UNUSED_0x40FB
+#define VAR_LEGENDS_SEASON_FRAMES       VAR_UNUSED_0x40FC
+
 #define VARS_END                                         0x40FF
 #define VARS_COUNT                                       (VARS_END - VARS_START + 1)
 

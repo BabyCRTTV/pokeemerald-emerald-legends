@@ -4,6 +4,20 @@ All notable Pokémon Emerald: Legends project changes are documented here.
 
 For build-specific player views, see [CHANGELOG-RELEASE.md](CHANGELOG-RELEASE.md) and [CHANGELOG-DEBUG.md](CHANGELOG-DEBUG.md). The canonical history below records the project as a whole.
 
+## [0.0.11] - 2026-10-08
+
+### Added
+- Added REAL TIME / 28H PLAY seasonal modes to Legends Options, plus a CURRENT season preview.
+- Real time follows Northern Hemisphere calendar seasons using the native RTC; the gameplay mode cycles Spring, Summer, Autumn and Winter every 28 saved gameplay hours.
+- Added seasonal outdoor vegetation colors and region-aware ambient rain, fog, thunderstorms and winter snowfall using native weather effects.
+- Preserved Mt. Chimney, Jagged Pass, Fiery Path, Lavaridge, Fallarbor, Routes 112/113, and Route 111's desert corridor; oceans and mild island towns do not receive seasonal snowfall.
+- Preserved indoor/underground/underwater maps, special weather, and Groudon/Kyogre story effects.
+- Reused unused permanent save variables, migrated older saves from recorded playtime, and kept seasonal time running beyond the native 999-hour playtime display limit.
+- Refreshed seasons safely on return to the field and during outdoor play, composing foliage palettes with existing day/night and weather processing.
+
+### Technical
+- Added host C regression coverage for calendar/timing boundaries, save migration, weather exclusions, palette bounds and safe refresh; emulator visual/play testing remains separate.
+
 ## [0.0.10] - 2026-10-07
 
 ### Added
