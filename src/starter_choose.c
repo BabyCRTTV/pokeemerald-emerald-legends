@@ -6,6 +6,7 @@
 #include "gpu_regs.h"
 #include "international_string_util.h"
 #include "main.h"
+#include "legends_starters.h"
 #include "menu.h"
 #include "palette.h"
 #include "pokedex.h"
@@ -349,7 +350,9 @@ static const struct SpriteTemplate sSpriteTemplate_StarterCircle =
 // .text
 u16 GetStarterPokemon(u16 chosenStarterId)
 {
-    if (chosenStarterId > STARTER_MON_COUNT)
+    if (!IS_FRLG)
+        return LegendsGetStarterPokemon(chosenStarterId);
+    if (chosenStarterId >= STARTER_MON_COUNT)
         chosenStarterId = 0;
     return sStarterMon[chosenStarterId];
 }
@@ -374,6 +377,9 @@ void CB2_ChooseStarter(void)
 {
     u8 taskId;
     u8 spriteId;
+
+    if (!IS_FRLG)
+        LegendsPrepareStarters();
 
     SetVBlankCallback(NULL);
 

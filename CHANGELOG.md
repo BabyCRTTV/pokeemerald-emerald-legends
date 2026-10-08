@@ -4,6 +4,21 @@ All notable Pokémon Emerald: Legends project changes are documented here.
 
 For build-specific player views, see [CHANGELOG-RELEASE.md](CHANGELOG-RELEASE.md) and [CHANGELOG-DEBUG.md](CHANGELOG-DEBUG.md). The canonical history below records the project as a whole.
 
+## [0.0.19] - 2026-10-08
+
+### Added
+- Added Lavender for both genders: a lavender/plum outfit with cream scarf details, bare hands, matching overworld poses, intro/naming previews, battle front/back art and Trainer Card.
+- Added Adventure 3/3 Options with STARTERS: Gen 1–9, Special (Happiny/Wattrel/Mankey), and Random. Gen 3 remains the default; title Options carry into New Game.
+- Random selects three distinct, enabled, unevolved canonical Pokédex species with evolutions, including babies. The lineup rolls once at the rescue bag and remains saved/stable.
+- Generation rivals use their corresponding counter starter and native level evolutions. Special/Random rivals use Unovan Zorua, evolving to Zoroark at level 30. Both genders and all 30 native starter-dependent teams are covered.
+
+### Compatibility and validation
+- Lock the rescue lineup separately from future-game preferences. Existing saves retain Gen 3 rival lineage; default Gen 3 preserves exact Emerald teams. No save-block or Options-window enlargement.
+- Keep starter levels, Stunky rescue, other rival team members and progression scripts. The Petalburg type tutorial now uses general examples rather than calling a Hoenn species your own starter.
+- Added actual-module starter/rival tests using native evolution metadata; checked stable Random selection and all 30 teams in 11 modes. Extended title staging and three-page navigation tests.
+- Appearance checks cover all 50 gender/skin/outfit combinations and 736 custom poses.
+- Release and Debug share these changes with no variant-specific differences. Developer tools remain disabled in Release and enabled in Debug.
+
 ## [0.0.18] - 2026-10-08
 
 ### Changed

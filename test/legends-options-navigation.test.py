@@ -32,6 +32,9 @@ typedef int16_t s16;
 #define B_BUTTON 8
 #define DPAD_UP 16
 #define DPAD_DOWN 32
+#define DPAD_RIGHT 64
+#define DPAD_LEFT 128
+#define LEGENDS_STARTERS_COUNT 11
 #define LEGENDS_SEASONS_PLAYTIME 1
 #define COPYWIN_GFX 0
 #define JOY_NEW(keys) (pressed & (keys))
@@ -52,11 +55,13 @@ for name in ['TextSpeed','BattleScene','BattleStyle','OnOff','ShinyRate','Season
     stub += f'static u8 {name}_ProcessInput(u8 value) {{ return value; }}\n'
 for name in ['TextSpeed','BattleScene','BattleStyle','OnOff','ShinyRate','SeasonMode','Sound','ButtonMode','FrameType']:
     stub += f'static void {name}_DrawChoices(u8 value, u8 y) {{ (void)value; (void)y; }}\n'
+stub += function('static u8 StarterSetting_ProcessInput(u8 selection)') + '\n'
+stub += 'static void StarterSetting_DrawChoice(u8 v,u8 y) { (void)v; (void)y; }\n'
 stub += 'static void SetSeason_DrawChoice(u8 mode, u8 season, u8 y) { (void)mode; (void)season; (void)y; }\n'
 tests = r'''
 int main(void)
 {
-    for (unsigned i = 1; i < 14; i++) gTasks[0].data[i] = i;
+    for (unsigned i = 1; i < 15; i++) gTasks[0].data[i] = i;
     gTasks[0].tMenuPage = OPTION_PAGE_GENERAL;
     gTasks[0].tMenuSelection = 6;
     pressed = A_BUTTON;
@@ -64,15 +69,16 @@ int main(void)
     assert(gTasks[0].tMenuPage == OPTION_PAGE_LEGENDS);
     assert(gTasks[0].tMenuSelection == 0 && gTasks[0].func == NULL);
     assert(headers == 1 && pages == 1 && highlights == 1);
-    for (unsigned i = 1; i < 14; i++) if (i != 8) assert(gTasks[0].data[i] == (s16)i);
+    for (unsigned i = 1; i < 15; i++) if (i != 8) assert(gTasks[0].data[i] == (s16)i);
     gTasks[0].tMenuSelection = 6;
     Task_OptionMenuProcessInput(0);
-    assert(gTasks[0].tMenuPage == OPTION_PAGE_GENERAL && gTasks[0].tMenuSelection == 0);
+    assert(gTasks[0].tMenuPage == OPTION_PAGE_ADVENTURE && gTasks[0].tMenuSelection == 0);
+    gTasks[0].tMenuPage = OPTION_PAGE_GENERAL;
     Task_OptionMenuProcessInput(0); // A on a setting does not switch or exit.
     assert(gTasks[0].tMenuPage == OPTION_PAGE_GENERAL && gTasks[0].func == NULL);
     pressed = L_BUTTON | A_BUTTON; // L=A mapping must still navigate.
     Task_OptionMenuProcessInput(0);
-    assert(gTasks[0].tMenuPage == OPTION_PAGE_LEGENDS && gTasks[0].func == NULL);
+    assert(gTasks[0].tMenuPage == OPTION_PAGE_ADVENTURE && gTasks[0].func == NULL);
     pressed = R_BUTTON;
     Task_OptionMenuProcessInput(0);
     assert(gTasks[0].tMenuPage == OPTION_PAGE_GENERAL);
@@ -94,6 +100,11 @@ int main(void)
             assert(gTasks[0].func == Task_OptionMenuSave);
         }
     }
+    gTasks[0].tMenuPage = OPTION_PAGE_ADVENTURE;
+    gTasks[0].tMenuSelection = 0;
+    gTasks[0].tStarterSetting = 0;
+    for(unsigned i=1;i<=LEGENDS_STARTERS_COUNT;i++){pressed=DPAD_RIGHT;Task_OptionMenuProcessInput(0);assert(gTasks[0].tStarterSetting == (s16)(i % LEGENDS_STARTERS_COUNT));}
+    pressed=DPAD_LEFT;Task_OptionMenuProcessInput(0);assert(gTasks[0].tStarterSetting==LEGENDS_STARTERS_COUNT-1);
     puts("Options A/L/R paging, pending settings, row wrap and B save/exit passed.");
 }
 '''

@@ -1,5 +1,6 @@
 #include "global.h"
 #include "legends_settings.h"
+#include "legends_starters.h"
 #include "legends_seasons.h"
 #include "event_data.h"
 #include "item.h"
@@ -17,6 +18,7 @@ struct LegendsTitleOptions
     bool8 expShareEnabled;
     bool8 followersEnabled;
     u8 shinyRate;
+    u8 starterSetting;
     u8 seasonMode;
     u8 playtimeSeason;
 };
@@ -32,6 +34,7 @@ void LegendsStageTitleOptions(void)
 {
     sTitleOptions.expShareEnabled = LegendsIsExpShareEnabled();
     sTitleOptions.followersEnabled = LegendsAreFollowersEnabled();
+    sTitleOptions.starterSetting = LegendsGetStarterSetting();
     sTitleOptions.shinyRate = LegendsGetShinyRateSetting();
     sTitleOptions.seasonMode = LegendsGetSeasonMode();
     sTitleOptions.playtimeSeason = LegendsGetSeasonForMode(LEGENDS_SEASONS_PLAYTIME);
@@ -45,6 +48,7 @@ void LegendsApplyTitleOptionsToNewGame(void)
         LegendsSetExpShareEnabled(sTitleOptions.expShareEnabled);
         LegendsSetFollowersEnabled(sTitleOptions.followersEnabled);
         LegendsSetShinyRateSetting(sTitleOptions.shinyRate);
+        LegendsSetStarterSetting(sTitleOptions.starterSetting);
         LegendsSetSeasonMode(sTitleOptions.seasonMode);
         LegendsSetPlaytimeSeason(sTitleOptions.playtimeSeason);
         LegendsClearTitleOptions();

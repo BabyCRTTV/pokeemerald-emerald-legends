@@ -19,8 +19,13 @@ bool32 CheckBagHasItem(u16, u16);
 bool32 AddBagItem(u16, u16);
 u8 CurrentBattlePyramidLocation(void);
 #endif''')
+starter_source = (ROOT / 'src/legends_starters.c').read_text()
+def starter_function(name):
+    start = starter_source.index(name + '\n{')
+    return starter_source[start:starter_source.index('\n}', start) + 2]
 harness = values['HARNESS'].split('int main(void)')[0] + r'''
 #include "legends_settings.h"
+#include "legends_starters.h"
 #include "constants/flags.h"
 u8 flags[4096];
 bool32 FlagGet(u16 n) {return flags[n];}
@@ -41,6 +46,7 @@ int main(void)
 {
     month = 10;
     LegendsClearTitleOptions();
+    LegendsSetStarterSetting(LEGENDS_STARTERS_SPECIAL);
     LegendsSetExpShareEnabled(FALSE);
     LegendsSetFollowersEnabled(FALSE);
     LegendsSetShinyRateSetting(LEGENDS_SHINY_RATE_1226);
@@ -48,6 +54,7 @@ int main(void)
     LegendsSetPlaytimeSeason(LEGENDS_WINTER);
     LegendsStageTitleOptions();
     newSave();
+    assert(LegendsGetStarterSetting() == LEGENDS_STARTERS_SPECIAL);
     assert(!LegendsIsExpShareEnabled());
     assert(!LegendsAreFollowersEnabled());
     assert(LegendsGetWildShinyRateDenominator() == 1226);
@@ -97,6 +104,7 @@ int main(void)
     puts("Title choices survive save reset, initialize before the bedroom clock, replace previous edits, consume once and clear on fresh title entry.");
 }
 '''
+harness = harness.replace('void newSave(void)', starter_function('u8 LegendsGetStarterSetting(void)') + '\n' + starter_function('void LegendsSetStarterSetting(u8 setting)') + '\nvoid newSave(void)')
 # Assert the actual lifecycle hooks used by the native game, not just the mocks.
 new_game = (ROOT / 'src/new_game.c').read_text()
 start = new_game.index('void NewGameInitData(void)')
@@ -110,6 +118,7 @@ assert 'LegendsStageTitleOptions();' in main_menu.split('void CB2_ReinitMainMenu
 with tempfile.TemporaryDirectory() as directory:
     tmp = Path(directory)
     (tmp / 'global.h').write_text(common)
+    (tmp / 'legends_starters.h').write_text((ROOT / 'include/legends_starters.h').read_text())
     for name in ['event_data.h', 'field_weather.h', 'overworld.h', 'palette.h', 'rtc.h', 'item.h', 'battle_pyramid.h']:
         (tmp / name).write_text('#include "global.h"\n')
     (tmp / 'constants').mkdir()

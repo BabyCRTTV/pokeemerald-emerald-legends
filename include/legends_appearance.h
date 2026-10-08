@@ -5,7 +5,7 @@
 #include "constants/trainers.h"
 
 #define LEGENDS_SKIN_TONE_COUNT 5
-#define LEGENDS_OUTFIT_COUNT 4
+#define LEGENDS_OUTFIT_COUNT 5
 #define LEGENDS_APPEARANCE_STATES 9
 
 extern u16 gLegendsOverworldPalettes[2][16];

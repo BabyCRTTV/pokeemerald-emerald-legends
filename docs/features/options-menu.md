@@ -8,12 +8,13 @@ Keep Pokémon Emerald: Legends settings expandable without compressing the origi
 
 ## Pages
 
-The menu currently has two pages:
+The menu currently has three pages:
 
-- **General 1/2** - Text Speed, Battle Scene, Battle Style, Sound, Button Mode, Frame, and Next Page.
-- **Legends 2/2** - EXP Share, Follower, Shiny Rate, Seasons, Current, Set Season, and Next Page.
+- **General 1/3** - Text Speed, Battle Scene, Battle Style, Sound, Button Mode, Frame, and Next Page.
+- **Legends 2/3** - EXP Share, Follower, Shiny Rate, Seasons, Current, Set Season, and Next Page.
+- **Adventure 3/3** - Starters, a New Game applicability reminder, and Next Page.
 
-Select **NEXT PAGE** and press **A** to cycle to the other page. The bottom row always shows **A: NEXT  B: SAVE**, independently of the version label. Press **B** from any row to save all settings from both pages and exit. **L/R** remain shortcuts for switching pages; navigation is handled before A/B so L still works with Button Mode set to L=A. D-pad Left/Right continues to edit settings. The header identifies the page and build version.
+Select **NEXT PAGE** and press **A** to cycle to the next page. The bottom row always shows **A: NEXT  B: SAVE**, independently of the version label. Press **B** from any row to save all settings from both pages and exit. **L/R** remain shortcuts for switching pages; navigation is handled before A/B so L still works with Button Mode set to L=A. D-pad Left/Right continues to edit settings. The header identifies the page and build version.
 
 ## Layout safety
 
@@ -60,3 +61,7 @@ Legends 2/2 now has seven rows: EXP SHARE, FOLLOWER, SHINY RATE, SEASONS, CURREN
 ## v0.0.18 visible page navigation
 
 NEXT PAGE replaces the historical CANCEL row on both pages. Its A-button action uses the same page-switch function as L/R, preserving pending settings across pages and selecting the first row on arrival. B remains the save/exit action from any row. The permanent control hint uses the small native font within the seventh row; the header no longer tries to fit an optional L/R hint between the page title and version. Window sizes, tile allocation and save layout remain unchanged.
+
+## v0.0.19 starters
+
+Adventure 3/3 adds STARTERS: GEN 1 through GEN 9, SPECIAL and RANDOM. Left/Right cycles choices; Gen 3 is the default. Title-screen selections carry into New Game. Changes before opening the rescue bag affect that rescue; after the trio locks, edits apply to a future New Game. See [starter and rival rules](starters.md). This third page preserves all existing settings and the original window allocation.

@@ -13,7 +13,7 @@ Baseline: v0.0.8. Maintenance checks added in v0.0.8.1.
 ## Manual emulator regression checklist (not yet verified)
 
 - [ ] Start new Release and Debug saves and confirm only Debug exposes developer utilities.
-- [ ] Open Options; switch General/Legends using NEXT PAGE + A and L/R with normal controls and L=A mode; confirm the A: NEXT / B: SAVE hint, modify settings across pages, B save/reload, and inspect borders.
+- [ ] Open Options; switch General/Legends/Adventure using NEXT PAGE + A and L/R with normal controls and L=A mode; confirm the A: NEXT / B: SAVE hint, modify settings across pages, B save/reload, and inspect borders.
 - [ ] Continue an older save and confirm EXP Share initializes only once. Toggle OFF, save/reload, and confirm it stays OFF.
 - [ ] Battle with participants, benched Pokémon, fainted Pokémon and Eggs with EXP Share ON/OFF and Lucky Egg; check resulting EXP.
 - [ ] Use each of the eight badge-earned HM utilities without taught HMs, preserving terrain, story, follower and Regi-puzzle gates.
@@ -94,3 +94,7 @@ Follow the [player appearance emulator checklist](features/player-appearance.md#
 - Browse appearance while dialogue prints at slow/normal speed; check glyphs, shadows and arrows.
 - Test grass rustle and jumps in every season with a follower and simultaneous water ripple/reflection. Check excluded ash routes remain native.
 - In winter, cross standard grass; confirm tufts clear, encounters still occur, scrolling keeps scuffs, and a full map reload restores them. Test tree-edge/long grass remains intact.
+
+- [ ] Test Lavender with all five skin tones, both genders and the four battle back poses; inspect the scarf, hands and naming icon.
+- [ ] Test each of the 11 STARTERS modes before the rescue bag, verify all three balls, and confirm the rival counter or Zorua. Inspect Zoroark at Route 119 and Lilycove.
+- [ ] Verify Random has no duplicate/evolved choices, stays stable while declining confirmation, and persists after save/reload. Change the preference after rescue and verify the existing rival stays fixed.

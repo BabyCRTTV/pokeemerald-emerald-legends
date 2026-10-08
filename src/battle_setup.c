@@ -1,6 +1,7 @@
 #include "global.h"
 #include "data.h"
 #include "main.h"
+#include "legends_starters.h"
 #include "battle.h"
 #include "battle_frontier.h"
 #include "battle_pike.h"
@@ -2252,7 +2253,9 @@ void CreateNPCTrainerPartyFromTrainer(struct Pokemon *party, const struct Traine
     for (i = 0; i < monsCount; i++)
     {
         u32 monIndex = monIndices[i];
-        GenerateMonFromTrainerMon(&party[i], &trainer->party[monIndex], trainerGen);
+        struct TrainerMon mon = trainer->party[monIndex];
+        LegendsCustomizeRivalMon(trainer, &mon);
+        GenerateMonFromTrainerMon(&party[i], &mon, trainerGen);
     }
     Free(trainerGen);
 }

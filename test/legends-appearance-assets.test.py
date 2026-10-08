@@ -25,7 +25,7 @@ for gender, name in enumerate(("brendan", "may")):
             groups = art.skin_components(frame)
             face = (max(groups, key=len) if kind == "overworld" else
                     min((g for g in groups if len(g) > 30), key=lambda g: min(y for x, y in g))) if groups else set()
-            for outfit in (1, 2, 3):
+            for outfit in (1, 2, 3, 4):
                 result = art.outfit_frame(frame, gender, outfit, kind, pose, state=path.stem)
                 assert art.outfit_frame(frame, gender, 0, kind, pose) == frame, "Default Emerald art must stay exact"
                 assert all(frame[y][x] == result[y][x] for x, y in face), (path, pose, "face")

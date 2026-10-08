@@ -15,6 +15,8 @@ jobs:
         run: node --test test/legends-patcher.test.cjs
       - name: Exercise seasonal engine regression tests
         run: python3 test/legends-seasons.test.py
+      - name: Exercise starter and rival regression tests
+        run: python3 test/legends-starters.test.py
       - name: Exercise Options navigation regression tests
         run: python3 test/legends-options-navigation.test.py
       - name: Exercise Options text regression tests
@@ -108,8 +110,8 @@ jobs:
 
           grep -Fq 'OPTION_PAGE_GENERAL' src/option_menu.c
           grep -Fq 'OPTION_PAGE_LEGENDS' src/option_menu.c
-          grep -Fq 'COMPOUND_STRING("GENERAL 1/2")' src/option_menu.c
-          grep -Fq 'COMPOUND_STRING("LEGENDS 2/2")' src/option_menu.c
+          grep -Fq 'COMPOUND_STRING("GENERAL 1/3")' src/option_menu.c
+          grep -Fq 'COMPOUND_STRING("LEGENDS 2/3")' src/option_menu.c
           grep -Fq 'JOY_NEW(L_BUTTON)' src/option_menu.c
           grep -Fq 'JOY_NEW(R_BUTTON)' src/option_menu.c
           grep -Fq 'COMPOUND_STRING("NEXT PAGE")' src/option_menu.c

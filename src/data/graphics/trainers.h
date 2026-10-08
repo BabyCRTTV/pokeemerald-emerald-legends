@@ -1244,6 +1244,10 @@ const struct TrainerPicInfo gTrainerPicInfo[TRAINER_PIC_COUNT] =
         .frontPic = TRAINER_FRONT_PIC(gLegendsBrendanYellowFront, gLegendsTrainerPalettes[0]),
         .backPic = TRAINER_BACK_PIC(4, gLegendsBrendanYellowBack, gLegendsTrainerPalettes[0], sBackAnims_Hoenn),
     },
+    [TRAINER_PIC_LEGENDS_BRENDAN_LAVENDER] = {
+        .frontPic = TRAINER_FRONT_PIC(gLegendsBrendanLavenderFront, gLegendsTrainerPalettes[0]),
+        .backPic = TRAINER_BACK_PIC(4, gLegendsBrendanLavenderBack, gLegendsTrainerPalettes[0], sBackAnims_Hoenn),
+    },
     [TRAINER_PIC_LEGENDS_MAY_EMERALD] = {
         .frontPic = TRAINER_FRONT_PIC(gTrainerFrontPic_May, gLegendsTrainerPalettes[1]),
         .backPic = TRAINER_BACK_PIC(4, gTrainerBackPic_May, gLegendsTrainerPalettes[1], sBackAnims_Hoenn),
@@ -1259,5 +1263,9 @@ const struct TrainerPicInfo gTrainerPicInfo[TRAINER_PIC_COUNT] =
     [TRAINER_PIC_LEGENDS_MAY_YELLOW] = {
         .frontPic = TRAINER_FRONT_PIC(gLegendsMayYellowFront, gLegendsTrainerPalettes[1]),
         .backPic = TRAINER_BACK_PIC(4, gLegendsMayYellowBack, gLegendsTrainerPalettes[1], sBackAnims_Hoenn),
+    },
+    [TRAINER_PIC_LEGENDS_MAY_LAVENDER] = {
+        .frontPic = TRAINER_FRONT_PIC(gLegendsMayLavenderFront, gLegendsTrainerPalettes[1]),
+        .backPic = TRAINER_BACK_PIC(4, gLegendsMayLavenderBack, gLegendsTrainerPalettes[1], sBackAnims_Hoenn),
     },
 };

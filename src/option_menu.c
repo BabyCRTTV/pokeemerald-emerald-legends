@@ -4,6 +4,7 @@
 #include "gpu_regs.h"
 #include "international_string_util.h"
 #include "legends_settings.h"
+#include "legends_starters.h"
 #include "legends_seasons.h"
 #include "main.h"
 #include "menu.h"
@@ -34,6 +35,7 @@
 #define tSelectedSeason data[11]
 #define tSeasonEdited data[12]
 #define tFollowers data[13]
+#define tStarterSetting data[14]
 
 enum
 {
@@ -49,6 +51,8 @@ enum
     MENUITEM_SOUND,
     MENUITEM_BUTTONMODE,
     MENUITEM_FRAMETYPE,
+    MENUITEM_STARTERS,
+    MENUITEM_STARTERINFO,
     MENUITEM_NEXTPAGE,
     MENUITEM_COUNT,
 };
@@ -57,6 +61,7 @@ enum
 {
     OPTION_PAGE_GENERAL,
     OPTION_PAGE_LEGENDS,
+    OPTION_PAGE_ADVENTURE,
     OPTION_PAGE_COUNT,
 };
 
@@ -101,14 +106,16 @@ static void DrawOptionMenuPage(u8 taskId);
 static void ChangeOptionMenuPage(u8 taskId, s8 direction);
 static u8 GetOptionMenuItem(u8 taskId);
 static void DrawBgWindowFrames(void);
+static u8 StarterSetting_ProcessInput(u8 selection);
+static void StarterSetting_DrawChoice(u8 selection, u8 y);
 
 EWRAM_DATA static bool8 sArrowPressed = FALSE;
 
 static const u8 gText_PageControls[]       = _("A: NEXT  B: SAVE");
 #ifdef RELEASE
-static const u8 gText_LegendsVersion[]      = _("LEGENDS v0.0.18");
+static const u8 gText_LegendsVersion[]      = _("LEGENDS v0.0.19");
 #else
-static const u8 gText_LegendsVersion[]      = _("LEGENDS v0.0.18-D");
+static const u8 gText_LegendsVersion[]      = _("LEGENDS v0.0.19-D");
 #endif
 static const u8 gText_TextSpeedSlow[]      = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}SLOW");
 static const u8 gText_TextSpeedMid[]       = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}MID");
@@ -130,6 +137,21 @@ static const u8 gText_ButtonTypeNormal[]   = _("{COLOR GREEN}{SHADOW LIGHT_GREEN
 static const u8 gText_ButtonTypeLR[]       = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}LR");
 static const u8 gText_ButtonTypeLEqualsA[] = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}L=A");
 
+static const u8 *const sStarterSettingNames[LEGENDS_STARTERS_COUNT] =
+{
+    COMPOUND_STRING("{COLOR GREEN}{SHADOW LIGHT_GREEN}GEN 1"),
+    COMPOUND_STRING("{COLOR GREEN}{SHADOW LIGHT_GREEN}GEN 2"),
+    COMPOUND_STRING("{COLOR GREEN}{SHADOW LIGHT_GREEN}GEN 3"),
+    COMPOUND_STRING("{COLOR GREEN}{SHADOW LIGHT_GREEN}GEN 4"),
+    COMPOUND_STRING("{COLOR GREEN}{SHADOW LIGHT_GREEN}GEN 5"),
+    COMPOUND_STRING("{COLOR GREEN}{SHADOW LIGHT_GREEN}GEN 6"),
+    COMPOUND_STRING("{COLOR GREEN}{SHADOW LIGHT_GREEN}GEN 7"),
+    COMPOUND_STRING("{COLOR GREEN}{SHADOW LIGHT_GREEN}GEN 8"),
+    COMPOUND_STRING("{COLOR GREEN}{SHADOW LIGHT_GREEN}GEN 9"),
+    COMPOUND_STRING("{COLOR GREEN}{SHADOW LIGHT_GREEN}SPECIAL"),
+    COMPOUND_STRING("{COLOR GREEN}{SHADOW LIGHT_GREEN}RANDOM"),
+};
+
 static const u16 sOptionMenuText_Pal[] = INCGFX_U16("graphics/interface/option_menu_text.pal", ".gbapal");
 // note: this is only used in the Japanese release
 static const u8 sEqualSignGfx[] = INCGFX_U8("graphics/interface/option_menu_equals_sign.png", ".4bpp");
@@ -148,13 +170,16 @@ static const u8 *const sOptionMenuItemsNames[MENUITEM_COUNT] =
     [MENUITEM_SOUND]       = COMPOUND_STRING("SOUND"),
     [MENUITEM_BUTTONMODE]  = COMPOUND_STRING("BUTTON MODE"),
     [MENUITEM_FRAMETYPE]   = COMPOUND_STRING("FRAME"),
+    [MENUITEM_STARTERS]    = COMPOUND_STRING("STARTERS"),
+    [MENUITEM_STARTERINFO] = COMPOUND_STRING("APPLIES TO"),
     [MENUITEM_NEXTPAGE]    = COMPOUND_STRING("NEXT PAGE"),
 };
 
 static const u8 *const sOptionMenuPageTitles[OPTION_PAGE_COUNT] =
 {
-    [OPTION_PAGE_GENERAL] = COMPOUND_STRING("GENERAL 1/2"),
-    [OPTION_PAGE_LEGENDS] = COMPOUND_STRING("LEGENDS 2/2"),
+    [OPTION_PAGE_GENERAL] = COMPOUND_STRING("GENERAL 1/3"),
+    [OPTION_PAGE_LEGENDS] = COMPOUND_STRING("LEGENDS 2/3"),
+    [OPTION_PAGE_ADVENTURE] = COMPOUND_STRING("ADVENTURE 3/3"),
 };
 
 static const u8 sOptionMenuPageItems[OPTION_PAGE_COUNT][OPTION_PAGE_MAX_ITEMS] =
@@ -179,12 +204,14 @@ static const u8 sOptionMenuPageItems[OPTION_PAGE_COUNT][OPTION_PAGE_MAX_ITEMS] =
         MENUITEM_SETSEASON,
         MENUITEM_NEXTPAGE,
     },
+    [OPTION_PAGE_ADVENTURE] = {MENUITEM_STARTERS, MENUITEM_STARTERINFO, MENUITEM_NEXTPAGE},
 };
 
 static const u8 sOptionMenuPageItemCounts[OPTION_PAGE_COUNT] =
 {
     [OPTION_PAGE_GENERAL] = 7,
     [OPTION_PAGE_LEGENDS] = 7,
+    [OPTION_PAGE_ADVENTURE] = 3,
 };
 
 static const struct WindowTemplate sOptionMenuWinTemplates[] =
@@ -340,6 +367,7 @@ void CB2_InitOptionMenu(void)
         gTasks[taskId].tSeasonMode = LegendsGetSeasonMode();
         gTasks[taskId].tSelectedSeason = LegendsGetSeasonForMode(LEGENDS_SEASONS_PLAYTIME);
         gTasks[taskId].tSeasonEdited = FALSE;
+        gTasks[taskId].tStarterSetting = LegendsGetStarterSetting();
 
         DrawOptionMenuPage(taskId);
         HighlightOptionMenuItem(gTasks[taskId].tMenuSelection);
@@ -411,6 +439,12 @@ static void Task_OptionMenuProcessInput(u8 taskId)
 
         switch (itemId)
         {
+        case MENUITEM_STARTERS:
+            previousOption = gTasks[taskId].tStarterSetting;
+            gTasks[taskId].tStarterSetting = StarterSetting_ProcessInput(previousOption);
+            if (previousOption != gTasks[taskId].tStarterSetting)
+                StarterSetting_DrawChoice(gTasks[taskId].tStarterSetting, y);
+            break;
         case MENUITEM_TEXTSPEED:
             previousOption = gTasks[taskId].tTextSpeed;
             gTasks[taskId].tTextSpeed = TextSpeed_ProcessInput(gTasks[taskId].tTextSpeed);
@@ -517,6 +551,7 @@ static void Task_OptionMenuSave(u8 taskId)
     LegendsSetExpShareEnabled(gTasks[taskId].tExpShare == 0);
     LegendsSetFollowersEnabled(gTasks[taskId].tFollowers == 0);
     LegendsSetShinyRateSetting(gTasks[taskId].tShinyRate);
+    LegendsSetStarterSetting(gTasks[taskId].tStarterSetting);
     LegendsSetSeasonMode(gTasks[taskId].tSeasonMode);
     if (gTasks[taskId].tSeasonEdited)
         LegendsSetPlaytimeSeason(gTasks[taskId].tSelectedSeason);
@@ -561,6 +596,27 @@ static void DrawOptionMenuChoice(const u8 *text, u8 x, u8 y, u8 style)
 
     dst[i] = EOS;
     AddTextPrinterParameterized(WIN_OPTIONS, FONT_NORMAL, dst, x, y + 1, TEXT_SKIP_DRAW, NULL);
+}
+
+static u8 StarterSetting_ProcessInput(u8 selection)
+{
+    if (JOY_NEW(DPAD_RIGHT))
+    {
+        selection = (selection + 1) % LEGENDS_STARTERS_COUNT;
+        sArrowPressed = TRUE;
+    }
+    else if (JOY_NEW(DPAD_LEFT))
+    {
+        selection = (selection + LEGENDS_STARTERS_COUNT - 1) % LEGENDS_STARTERS_COUNT;
+        sArrowPressed = TRUE;
+    }
+    return selection;
+}
+
+static void StarterSetting_DrawChoice(u8 selection, u8 y)
+{
+    FillWindowPixelRect(WIN_OPTIONS, PIXEL_FILL(1), 104, y, 104, OPTION_ROW_HEIGHT);
+    DrawOptionMenuChoice(sStarterSettingNames[selection], 104, y, 1);
 }
 
 static u8 TextSpeed_ProcessInput(u8 selection)
@@ -954,6 +1010,12 @@ static void DrawOptionMenuPage(u8 taskId)
 
         switch (itemId)
         {
+        case MENUITEM_STARTERS:
+            StarterSetting_DrawChoice(gTasks[taskId].tStarterSetting, row * OPTION_ROW_HEIGHT);
+            break;
+        case MENUITEM_STARTERINFO:
+            DrawOptionMenuChoice(COMPOUND_STRING("NEW GAME"), 104, row * OPTION_ROW_HEIGHT, 0);
+            break;
         case MENUITEM_NEXTPAGE:
             AddTextPrinterParameterized(WIN_OPTIONS, FONT_SMALL, gText_PageControls,
                                         104, row * OPTION_ROW_HEIGHT + 2, TEXT_SKIP_DRAW, NULL);

@@ -449,6 +449,7 @@ static const struct MenuAction sOutfitChoices[] =
     {COMPOUND_STRING("TRAIL"), {NULL}},
     {COMPOUND_STRING("SPORT"), {NULL}},
     {COMPOUND_STRING("YELLOW"), {NULL}},
+    {COMPOUND_STRING("LAVENDER"), {NULL}},
 };
 EWRAM_DATA static u8 sAppearancePreviewHandle = 0;
 EWRAM_DATA static bool8 sAppearanceChoosingOutfit = FALSE;

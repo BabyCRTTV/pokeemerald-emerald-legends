@@ -3,9 +3,9 @@
 Introduced in v0.0.15, shared by Release and Debug.
 
 After choosing Boy or Girl in Birch's introduction, choose **Fair, Light, Medium,
-Brown or Deep**, then **Emerald, Trail, Sport or Yellow**. Both genders have four designs:
+Brown or Deep**, then **Emerald, Trail, Sport, Yellow or Lavender**. Both genders have five designs:
 the original Emerald clothing, a trail jacket with trousers, and a striped sport
-top with shorts, and a yellow top. Custom designs use bare hands; Emerald retains its original gloves. A bordered 64px trainer preview sits at the bottom right above
+top with shorts, a yellow top, and a lavender top with plum shading and a cream scarf. Custom designs use bare hands; Emerald retains its original gloves. A bordered 64px trainer preview sits at the bottom right above
 the dialogue and updates when the cursor moves. A confirms; B returns to the
 previous choice. Naming follows outfit confirmation.
 
@@ -24,7 +24,7 @@ synchronized; remote Trainer Cards and native link-player scenes keep native art
 ## Implementation
 
 `VAR_LEGENDS_APPEARANCE` uses the previously unused permanent variable `0x404E`:
-zero means legacy appearance; values 1–20 encode `1 + skin + 5 * outfit`.
+zero means legacy appearance; values 1–25 encode `1 + skin + 5 * outfit`.
 Invalid values fall back to legacy. No save-block layout or link protocol changes.
 
 `legends_appearance.c` stages intro choices separately from saved variables so
@@ -40,7 +40,7 @@ The native graphics count and dynamic template IDs remain unchanged so old saved
 map templates keep their meaning. Graphics/state checks normalize these
 IDs to native IDs. Cloned graphics info retains native dimensions, animation,
 tracks and OAM; clothing swaps only the frame images and palette tag. Original
-NPC graphics and trainer IDs remain untouched. Eight local trainer IDs select
+NPC graphics and trainer IDs remain untouched. Ten local trainer IDs select
 front pictures and all four native back-animation frames.
 
 The intro reuses the native choice window and trainer sprites. The popup uses
@@ -56,9 +56,9 @@ Dive frames. Generated 4bpp C headers and the frame manifest are checked in; ROM
 builds do not require Pillow. To regenerate, install Pillow 11.3.0, then run
 `python3 tools/legends/build_appearance.py`.
 
-Host regressions compile the actual settings/graphics modules and check all 40
+Host regressions compile the actual settings/graphics modules and check all 50
 combinations, save staging, legacy defaults, all avatar states and NPC isolation.
-Asset regressions check all 552 edited poses for reproducibility, native facial
+Asset regressions check all 736 edited poses for reproducibility, native facial
 pixels, held-ball colors outside the torso, transparency and LZ77 roundtrip.
 The Legends workflow must also compile both variants and verify both BPS patches.
 

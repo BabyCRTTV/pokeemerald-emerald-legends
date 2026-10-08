@@ -15,8 +15,9 @@ static const u16 sSkinPalettes[5][3] = {
     {0x29D5,0x1950,0x10CB},
     {0x1D2E,0x10CA,0x0866},
 };
-static const u16 sOutfitPalettes[3][2] = {
+static const u16 sOutfitPalettes[4][2] = {
     {0x3AB7,0x25F1},
     {0x6ECC,0x55E6},
     {0x0BDF,0x0235}, // Warm yellow with ochre shadows.
+    {0x7A58,0x6171}, // Soft lavender and plum shadows; cream scarf uses slot 9.
 };

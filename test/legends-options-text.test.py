@@ -6,7 +6,7 @@ import tempfile
 root = Path(__file__).resolve().parents[1]
 source = (root / 'src/option_menu.c').read_text()
 start = source.index('static void DrawOptionMenuChoice(')
-end = source.index('\nstatic u8 TextSpeed_ProcessInput', start)
+end = source.index('\n}', start) + 2
 function = source[start:end]
 stub = r'''
 #include <stdint.h>
