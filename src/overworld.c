@@ -1814,7 +1814,7 @@ void UpdateAltBgPalettes(u16 palettes)
             continue;
         source = tileset->palettes[i];
         if (tileset->swapPalettes & (1 << swapIndex))
-            AvgPaletteWeighted(source, tileset->palettes[(i + 9) % 16],
+            AvgPaletteWeighted((u16 *)source, (u16 *)tileset->palettes[(i + 9) % 16],
                                gPlttBufferUnfaded + i * 16, gTimeBlend.altWeight);
         else
             CpuCopy16(source, gPlttBufferUnfaded + i * 16, PLTT_SIZE_4BPP);
