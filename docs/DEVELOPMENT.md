@@ -37,7 +37,7 @@ Do not commit generated ROMs, copyrighted ROM data, save files containing person
 
 The authoritative project version lives in the root `VERSION` file.
 
-Current version: `0.0.13`.
+Current version: `0.0.13.1`.
 
 During active pre-1.0 development, each meaningful shipped change increments the development revision:
 
@@ -62,6 +62,7 @@ Every version bump must update the canonical, Release, and Debug changelogs and 
 
 Run node --test test/legends-patcher.test.cjs for BPS decoding and ROM-selection race coverage. CI verifies both variant builds and patch byte-for-byte round trips. The QA checklist (docs/QA.md) distinguishes automated validation from emulator scenarios that still need hands-on testing.
 
+- `0.0.13.1` - soft lavender main menu backdrop
 - `0.0.13` - native overworld Pokémon followers with saved Options toggle
 - `0.0.12.1` - preserve title-screen Legends settings through New Game initialization
 - `0.0.12` - seven-hour seasons, faded map transitions, manual gameplay season selection and Options text fixes

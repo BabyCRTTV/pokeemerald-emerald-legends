@@ -2,6 +2,14 @@
 
 This is the player-facing history for the recommended **Release** build. Shared Legends changes are repeated here so this file stands on its own; Release-only behavior is called out separately.
 
+## [0.0.13.1] - 2026-10-08
+
+### Shared changes
+- Changed the New Game / Continue / Options main menu backdrop to a soft light lavender, preserving the existing menu cards, text, borders and fades.
+
+### Release-specific
+- No Release-only visual/gameplay divergence; developer tools remain disabled.
+
 ## [0.0.13] - 2026-10-08
 
 ### Shared changes

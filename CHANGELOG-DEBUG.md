@@ -2,6 +2,14 @@
 
 This is the developer-facing history for the **Debug** build. Shared Legends changes are repeated here so this file stands on its own; Debug-only behavior is called out separately.
 
+## [0.0.13.1] - 2026-10-08
+
+### Shared changes
+- Changed the New Game / Continue / Options main menu backdrop to a soft light lavender, preserving the existing menu cards, text, borders and fades.
+
+### Debug-specific
+- No Debug-only visual/gameplay divergence; existing developer tools remain available.
+
 ## [0.0.13] - 2026-10-08
 
 ### Shared changes
