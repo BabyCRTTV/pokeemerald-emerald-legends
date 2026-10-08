@@ -2,6 +2,13 @@
 
 This is the developer-facing history for the **Debug** build. Shared Legends changes are repeated here so this file stands on its own; Debug-only behavior is called out separately.
 
+## [0.0.17] - 2026-10-08
+
+### Changed
+- Stunky replaces Zigzagoon in the opening Route 101 professor rescue, both in the level-2 battle and as the Pokémon chasing the professor. Uses the expansion’s native Stunky overworld sprites and palette.
+- The rescue movement, starter choices and story progression are unchanged; existing saves remain compatible.
+- Release and Debug share this change with no variant-specific differences. Developer tools remain disabled in Release and enabled in Debug.
+
 ## [0.0.16] - 2026-10-08
 
 ### Fixed

@@ -4,6 +4,13 @@ All notable Pokémon Emerald: Legends project changes are documented here.
 
 For build-specific player views, see [CHANGELOG-RELEASE.md](CHANGELOG-RELEASE.md) and [CHANGELOG-DEBUG.md](CHANGELOG-DEBUG.md). The canonical history below records the project as a whole.
 
+## [0.0.17] - 2026-10-08
+
+### Changed
+- Stunky replaces Zigzagoon in the opening Route 101 professor rescue, both in the level-2 battle and as the Pokémon chasing the professor. Uses the expansion’s native Stunky overworld sprites and palette.
+- The rescue movement, starter choices and story progression are unchanged; existing saves remain compatible.
+- Release and Debug share this change with no variant-specific differences. Developer tools remain disabled in Release and enabled in Debug.
+
 ## [0.0.16] - 2026-10-08
 
 ### Fixed
