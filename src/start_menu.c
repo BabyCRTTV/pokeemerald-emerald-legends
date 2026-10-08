@@ -1,4 +1,5 @@
 #include "global.h"
+#include "legends_start_menu.h"
 #include "config/save.h"
 #include "battle_pike.h"
 #include "battle_pyramid.h"
@@ -467,6 +468,7 @@ static void ShowPyramidFloorWindow(void)
 
 static void RemoveExtraStartMenuWindows(void)
 {
+    LegendsHideStartMenuPanel();
     if (GetSafariZoneFlag())
     {
         ClearStdWindowAndFrameToTransparent(sSafariBallsWindowId, FALSE);
@@ -531,6 +533,7 @@ static bool32 InitStartMenuStep(void)
         sInitStartMenuData[0]++;
         break;
     case 3:
+        LegendsShowStartMenuPanel();
         if (GetSafariZoneFlag())
             ShowSafariBallsWindow();
         if (CurrentBattlePyramidLocation() != PYRAMID_LOCATION_NONE)
@@ -596,6 +599,7 @@ void Task_ShowStartMenu(u8 taskId)
 {
     struct Task *task = &gTasks[taskId];
 
+    LegendsUpdateStartMenuPanel();
     switch (task->data[0])
     {
     case 0:
@@ -758,6 +762,7 @@ static bool8 StartMenuPlayerNameCallback(void)
 
 static bool8 StartMenuSaveCallback(void)
 {
+    LegendsHideStartMenuPanel();
     if (CurrentBattlePyramidLocation() != PYRAMID_LOCATION_NONE)
         RemoveExtraStartMenuWindows();
 
@@ -825,6 +830,7 @@ static bool8 StartMenuLinkModePlayerNameCallback(void)
     if (!gPaletteFade.active)
     {
         PlayRainStoppingSoundEffect();
+        LegendsHideStartMenuPanel();
         CleanupOverworldWindowsAndTilemaps();
         ShowTrainerCardInLink(gLocalLinkPlayerId, CB2_ReturnToFieldWithOpenMenu);
 
@@ -836,6 +842,7 @@ static bool8 StartMenuLinkModePlayerNameCallback(void)
 
 static bool8 StartMenuBattlePyramidRetireCallback(void)
 {
+    LegendsHideStartMenuPanel();
     gMenuCallback = BattlePyramidRetireStartCallback; // Confirm retire
 
     return FALSE;
@@ -1480,6 +1487,7 @@ void SaveForBattleTowerLink(void)
 
 static void HideStartMenuWindow(void)
 {
+    LegendsHideStartMenuPanel();
     ClearStdWindowAndFrame(GetStartMenuWindowId(), TRUE);
     RemoveStartMenuWindow();
     ScriptUnfreezeObjectEvents();
@@ -1500,6 +1508,7 @@ void AppendToList(u8 *list, u8 *pos, u8 newEntry)
 
 static bool8 StartMenuDexNavCallback(void)
 {
+    LegendsHideStartMenuPanel();
     CreateTask(Task_OpenDexNavFromStartMenu, 0);
     return TRUE;
 }
