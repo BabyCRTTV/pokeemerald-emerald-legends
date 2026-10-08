@@ -2,6 +2,17 @@
 
 This is the developer-facing history for the **Debug** build. Shared Legends changes are repeated here so this file stands on its own; Debug-only behavior is called out separately.
 
+## [0.0.9] - 2026-10-07
+
+### Shared changes
+- Enabled DexNav at Birch's first Pokédex gift and on existing saves that already have the Pokédex.
+- Added the physical Gen 6-style Exp. Share Key Item at new-game start and restored it for eligible existing saves.
+- The Exp. Share item and Legends Options share the same persistent ON/OFF flag.
+- Rustboro's Lucky Egg and the Champion Rare Candy reward are unchanged.
+
+### Debug-specific
+- No Debug-only gameplay divergence; developer tools remain available.
+
 ## [0.0.8.1] - 2026-10-07
 
 ### Shared changes

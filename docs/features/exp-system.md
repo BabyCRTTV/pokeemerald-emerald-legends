@@ -1,6 +1,6 @@
 # EXP System
 
-**Status:** Implemented in 0.0.5; Rustboro reward integration updated in 0.0.6
+**Status:** Implemented in 0.0.5; Rustboro reward in 0.0.6; physical Key Item added in 0.0.9
 
 ## Goal
 
@@ -25,6 +25,10 @@ The global behavior is backed by `I_EXP_SHARE_FLAG`, assigned to the Legends-spe
 New games enable the Legends EXP Share flag immediately after event data is initialized.
 
 Existing saves created before 0.0.5 receive a one-time settings migration on continue: EXP Share is enabled and a separate initialization flag is set. After that migration, the player's ON/OFF choice is preserved normally and is not overwritten on later loads.
+
+## Physical Exp. Share Key Item (v0.0.9)
+
+The expansion's `I_EXP_SHARE_ITEM` setting is `GEN_6`: the Exp. Share is a Key Item. The initial Bag gets one and the global EXP Share flag remains ON by default. Continuing an older save attempts to backfill it without changing the saved ON/OFF choice; the temporary Battle Pyramid inventory is excluded. An item-space failure retries on a later ordinary continue. The Key Item and Options toggle both operate the same saved `FLAG_LEGENDS_EXP_SHARE`. The Rustboro reward continues to be a Lucky Egg.
 
 ## Options menu
 
