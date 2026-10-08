@@ -1,3 +1,5 @@
+#include "legends_appearance.h"
+#include "../legends/trainer_outfits.h"
 #include "constants/trainers.h"
 #include "data.h"
 
@@ -1225,5 +1227,29 @@ const struct TrainerPicInfo gTrainerPicInfo[TRAINER_PIC_COUNT] =
     [TRAINER_PIC_PAINTER_FRLG] =
     {
         .frontPic = TRAINER_FRONT_PIC(gTrainerFrontPic_PainterFrlg, gTrainerPalette_PainterFrlg),
+    },
+    [TRAINER_PIC_LEGENDS_BRENDAN_EMERALD] = {
+        .frontPic = TRAINER_FRONT_PIC(gTrainerFrontPic_Brendan, gLegendsTrainerPalettes[0]),
+        .backPic = TRAINER_BACK_PIC(4, gTrainerBackPic_Brendan, gLegendsTrainerPalettes[0], sBackAnims_Hoenn),
+    },
+    [TRAINER_PIC_LEGENDS_BRENDAN_TRAIL] = {
+        .frontPic = TRAINER_FRONT_PIC(gLegendsBrendanTrailFront, gLegendsTrainerPalettes[0]),
+        .backPic = TRAINER_BACK_PIC(4, gLegendsBrendanTrailBack, gLegendsTrainerPalettes[0], sBackAnims_Hoenn),
+    },
+    [TRAINER_PIC_LEGENDS_BRENDAN_SPORT] = {
+        .frontPic = TRAINER_FRONT_PIC(gLegendsBrendanSportFront, gLegendsTrainerPalettes[0]),
+        .backPic = TRAINER_BACK_PIC(4, gLegendsBrendanSportBack, gLegendsTrainerPalettes[0], sBackAnims_Hoenn),
+    },
+    [TRAINER_PIC_LEGENDS_MAY_EMERALD] = {
+        .frontPic = TRAINER_FRONT_PIC(gTrainerFrontPic_May, gLegendsTrainerPalettes[1]),
+        .backPic = TRAINER_BACK_PIC(4, gTrainerBackPic_May, gLegendsTrainerPalettes[1], sBackAnims_Hoenn),
+    },
+    [TRAINER_PIC_LEGENDS_MAY_TRAIL] = {
+        .frontPic = TRAINER_FRONT_PIC(gLegendsMayTrailFront, gLegendsTrainerPalettes[1]),
+        .backPic = TRAINER_BACK_PIC(4, gLegendsMayTrailBack, gLegendsTrainerPalettes[1], sBackAnims_Hoenn),
+    },
+    [TRAINER_PIC_LEGENDS_MAY_SPORT] = {
+        .frontPic = TRAINER_FRONT_PIC(gLegendsMaySportFront, gLegendsTrainerPalettes[1]),
+        .backPic = TRAINER_BACK_PIC(4, gLegendsMaySportBack, gLegendsTrainerPalettes[1], sBackAnims_Hoenn),
     },
 };
