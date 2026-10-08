@@ -288,6 +288,8 @@
 #define VAR_LEGENDS_SEASON_CLOCK_INIT   VAR_UNUSED_0x40FA
 #define VAR_LEGENDS_BASE_WEATHER        VAR_UNUSED_0x40FB
 #define VAR_LEGENDS_SEASON_FRAMES       VAR_UNUSED_0x40FC
+#define VAR_LEGENDS_ACTIVE_SEASON       VAR_UNUSED_0x40FD
+#define VAR_LEGENDS_SEASON_WEATHER_DAY  VAR_UNUSED_0x40FE
 
 #define VARS_END                                         0x40FF
 #define VARS_COUNT                                       (VARS_END - VARS_START + 1)

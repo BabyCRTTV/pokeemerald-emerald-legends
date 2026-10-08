@@ -42,14 +42,16 @@ CI passing does not establish emulator gameplay correctness. Record emulator ver
 - [ ] Verify already caught Pokémon, eggs, gifts and scripted Pokémon do not have shininess unexpectedly altered.
 - [ ] Validate the normal Release build and Debug build against clean base ROMs on mGBA and Pizza Boy.
 
-## Seasons (0.0.11)
+## Seasons (0.0.12)
 
-Automated: `python3 test/legends-seasons.test.py` compiles the actual season module with engine mocks and verifies all twelve calendar months, 28-hour boundaries, complete cycle rollover, persisted sub-second progress, older-save migration, 999-hour continuation, invalid RTC fallback, regional exclusions, unchanged special weather, deterministic snow frequency, ocean snow exclusion, full RGB555 bounds, protected palette slots, and fade/script refresh deferral. Both native variants and BPS reapplication are verified by the release workflow.
+Automated: `python3 test/legends-seasons.test.py` compiles the actual season module with engine mocks and verifies all twelve calendar months, seven-hour boundaries, full-cycle rollover, persisted sub-second progress, older-save migration and 0.0.11 cycle normalization, 999-hour continuation, invalid RTC fallback, regional exclusions, unchanged special weather, deterministic snow frequency, ocean snow exclusion, RGB555 bounds, protected palette slots, deferred active-season/weather snapshots and manual selection. `python3 test/legends-options-text.test.py` exercises the actual native choice renderer against plain text and encoded color prefixes. Native builds and BPS reapplication are checked by the release workflow.
 
-Manual emulator checks (not replaced by host tests):
+Manual emulator checks (not yet verified; not replaced by host tests):
+
 - With RTC enabled, visit Littleroot, Route 104, Fortree, Route 119 and Lilycove in March, July, October and January; inspect foliage, contrast, water and buildings during day and night.
-- Switch REAL TIME / 28H PLAY in Legends Options; confirm CURRENT previews without saving the mode until leaving Options, and mode persists after an ordinary save/reload.
-- At 27:59:59, 55:59:59, 83:59:59 and 111:59:59 gameplay-cycle time, cross the next second while standing outdoors, in a menu, in battle and indoors. Confirm the next safe field update changes season without broken fades or weather sprites.
+- Switch REAL TIME / 7H PLAY in Legends Options. Verify readable labels, no leftover characters when replacing a longer label, and intact window borders. CURRENT should show the active environment; SET SEASON should display CALENDAR and ignore Left/Right in real time.
+- In gameplay mode, cycle SET SEASON through all four seasons, leave Options, enter/exit a building, and confirm the selected environment. Save/reload and confirm the setting and restarted seven-hour timer persist.
+- At 6:59:59, 13:59:59, 20:59:59 and 27:59:59 gameplay-cycle time, cross the next second outdoors, in a menu, in battle and indoors. Confirm the old environment remains until a faded warp or save reload. Check seamless route crossing and native day/night updates do not apply the pending season early.
 - Compare Mt. Chimney, Jagged Pass, Routes 111/112/113, Lavaridge and Fallarbor across seasons; check ash collection, desert coordinate weather and hot springs.
-- Check winter snow and autumn fog transitions, route connections, Surf, battle return, save/continue and indoor exits; NPC/player/UI palettes must keep their original colors.
+- Check winter snow and autumn fog transitions, Surf, battle return, save/continue and indoor exits; NPC/player/UI palettes must keep their original colors.
 - Check Groudon/Kyogre conflict and postgame Terra/Marine Cave drought/downpour; these must override seasonal ambient weather.

@@ -935,6 +935,7 @@ static void LoadMapFromWarp(bool32 a1)
     bool8 isOutdoors;
     bool8 isIndoors;
 
+    LegendsCommitSeasonTransition();
     LoadCurrentMapData();
     if (!(sObjectEventLoadFlag & SKIP_OBJECT_EVENT_LOAD))
     {
@@ -1877,7 +1878,6 @@ static void OverworldBasic(void)
             ApplyWeatherColorMapIfIdle(gWeatherPtr->colorMapIndex);
         }
     }
-    LegendsRefreshSeasons();
     UpdateOverworldWildEncounter();
 }
 
@@ -2128,6 +2128,7 @@ void CB2_ContinueSavedGame(void)
         ResetWinStreaks();
 
     LoadSaveblockMapHeader();
+    LegendsCommitSeasonTransition();
     LegendsRestoreSeasonWeather();
     ClearDiveAndHoleWarps();
     trainerHillMapId = GetCurrentTrainerHillMapId();

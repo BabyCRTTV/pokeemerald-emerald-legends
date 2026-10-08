@@ -4,6 +4,22 @@ import subprocess
 import tempfile
 
 ROOT = Path(__file__).resolve().parents[1]
+
+# Guard engine integration: commit only on full faded loads, not route seams.
+overworld = (ROOT / 'src/overworld.c').read_text()
+def body(signature):
+    start = overworld.index(signature + '\n{')
+    opening = overworld.index('{', start)
+    depth = 1
+    end = opening + 1
+    while depth:
+        depth += (overworld[end] == '{') - (overworld[end] == '}')
+        end += 1
+    return overworld[opening:end]
+assert 'LegendsCommitSeasonTransition();' in body('static void LoadMapFromWarp(bool32 a1)')
+assert 'LegendsCommitSeasonTransition();' in body('void CB2_ContinueSavedGame(void)')
+assert 'LegendsCommitSeasonTransition' not in body('void LoadMapFromCameraTransition(u8 mapGroup, u8 mapNum)')
+assert 'LegendsRefreshSeasons' not in overworld
 COMMON = r'''
 #ifndef TEST_GLOBAL_H
 #define TEST_GLOBAL_H
@@ -91,15 +107,19 @@ int main(void)
     for (u32 i = 0; i < 4; i++) {
         setSeconds(i * LEGENDS_SEASON_SECONDS);
         assert(LegendsGetSeason() == i);
+        LegendsCommitSeasonTransition();
         setSeconds((i + 1) * LEGENDS_SEASON_SECONDS - 1);
         for (u32 frame = 0; frame < 59; frame++) LegendsSeasonTick();
         assert(LegendsGetSeason() == i);
         LegendsSeasonTick(); assert(LegendsGetSeason() == (i + 1) % 4);
+        assert(LegendsGetActiveSeason() == i); // no mid-field palette jump
+        LegendsCommitSeasonTransition();
+        assert(LegendsGetActiveSeason() == (i + 1) % 4);
     }
     // Migrate recorded playtime, then continue past the native 999-hour cap.
     memset(vars, 0, sizeof(vars)); save.playTimeHours = 999; save.playTimeMinutes = 59; save.playTimeSeconds = 59;
     LegendsSetSeasonMode(1);
-    assert(LegendsGetSeason() == (999 / 28) % 4);
+    assert(LegendsGetSeason() == (999 / 7) % 4);
     setSeconds(LEGENDS_SEASON_SECONDS - 1);
     VarSet(VAR_LEGENDS_SEASON_FRAMES, 59); LegendsSeasonTick();
     assert(LegendsGetSeason() == LEGENDS_SUMMER);
@@ -129,6 +149,7 @@ int main(void)
     month = 1;
     u32 snowDays = 0;
     for (day = 1; day <= 100; day++) {
+        LegendsCommitSeasonTransition();
         u8 w = LegendsSeasonWeather(WEATHER_SUNNY);
         assert(w == LegendsSeasonWeather(WEATHER_SUNNY));
         snowDays += w == WEATHER_SNOW;
@@ -141,6 +162,7 @@ int main(void)
     const u16 green = RGB(7, 22, 6), blue = RGB(8, 15, 28), gray = RGB(15, 15, 15);
     for (u32 season = 0; season < 4; season++) {
         setSeconds(season * LEGENDS_SEASON_SECONDS);
+        LegendsCommitSeasonTransition();
         for (u32 i = 0; i < 512; i++) gPlttBufferUnfaded[i] = green;
         gPlttBufferUnfaded[33] = blue; gPlttBufferUnfaded[34] = gray;
         LegendsApplySeasonPalette(0, 512);
@@ -153,13 +175,33 @@ int main(void)
     for (u32 color = 0; color < 32768; color++) {gPlttBufferUnfaded[35] = color; LegendsApplySeasonPalette(35, 1); assert(gPlttBufferUnfaded[35] < 32768);}
     VarSet(VAR_LEGENDS_BASE_WEATHER, 0x100 + WEATHER_ABNORMAL);
     LegendsRestoreSeasonWeather(); assert(savedWeather == WEATHER_ABNORMAL);
-    // Refresh waits until palette fades/scripts/weather transitions finish.
-    gPaletteFade.active = 1;
-    for (u32 i = 0; i < 60; i++) LegendsRefreshSeasons(); assert(reloads == 0);
-    gPaletteFade.active = 0; scriptActive = 1; LegendsRefreshSeasons(); assert(reloads == 0);
-    scriptActive = 0; weather.palProcessingState = WEATHER_PAL_STATE_IDLE;
-    LegendsRefreshSeasons(); assert(reloads == 1);
-    puts("Season calendar, timing, migration, exclusions, weather, RGB555 and refresh checks passed.");
+    // Pending changes must preserve both palette and ambient weather snapshots.
+    LegendsSetSeasonMode(1); setSeconds(0); LegendsCommitSeasonTransition();
+    u8 oldWeather = LegendsSeasonWeather(WEATHER_SUNNY);
+    u16 oldDay = VarGet(VAR_LEGENDS_SEASON_WEATHER_DAY);
+    setSeconds(LEGENDS_SEASON_SECONDS);
+    assert(LegendsGetActiveSeason() == LEGENDS_SPRING);
+    assert(VarGet(VAR_LEGENDS_SEASON_WEATHER_DAY) == oldDay);
+    assert(LegendsSeasonWeather(WEATHER_SUNNY) == oldWeather);
+    LegendsCommitSeasonTransition(); assert(LegendsGetActiveSeason() == LEGENDS_SUMMER);
+    // A prior 112-hour cycle normalizes losslessly to the new 28-hour cycle.
+    setSeconds(91 * 3600 + 123);
+    assert(LegendsGetSeason() == LEGENDS_SUMMER);
+    // Manual selection starts a fresh seven-hour timer and waits for a warp.
+    LegendsSetPlaytimeSeason(LEGENDS_WINTER);
+    assert(LegendsGetSeason() == LEGENDS_WINTER);
+    assert(LegendsGetActiveSeason() == LEGENDS_SUMMER);
+    assert(VarGet(VAR_LEGENDS_SEASON_FRAMES) == 0);
+    assert((VarGet(VAR_LEGENDS_SEASON_SECONDS_LO) | ((u32)VarGet(VAR_LEGENDS_SEASON_SECONDS_HI) << 16)) == 3 * LEGENDS_SEASON_SECONDS);
+    LegendsCommitSeasonTransition(); assert(LegendsGetActiveSeason() == LEGENDS_WINTER);
+    // Snapshot survives ordinary save/reload; real-time ignores manual edits.
+    LegendsSetSeasonMode(0); month = 3;
+    u16 savedLow = VarGet(VAR_LEGENDS_SEASON_SECONDS_LO);
+    LegendsSetPlaytimeSeason(LEGENDS_SUMMER);
+    assert(VarGet(VAR_LEGENDS_SEASON_SECONDS_LO) == savedLow);
+    assert(LegendsGetActiveSeason() == LEGENDS_WINTER);
+    LegendsCommitSeasonTransition(); assert(LegendsGetActiveSeason() == LEGENDS_SPRING);
+    puts("Season calendar, timing, migration, exclusions, weather, RGB555, deferred transitions and manual selection checks passed.");
 }
 '''
 

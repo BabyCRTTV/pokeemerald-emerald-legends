@@ -15,6 +15,8 @@ jobs:
         run: node --test test/legends-patcher.test.cjs
       - name: Exercise seasonal engine regression tests
         run: python3 test/legends-seasons.test.py
+      - name: Exercise Options text regression tests
+        run: python3 test/legends-options-text.test.py
       - name: Verify Legends project metadata
         run: |
           test -f VERSION

@@ -42,3 +42,9 @@ When adding a setting:
 Legends 2/2 now has EXP SHARE, SHINY RATE and CANCEL. Use Left/Right to cycle 1/8192 (default), 1/5680, and 1/1226. The value is saved when leaving Options. Older saves default to 1/8192 using a zero-initialized unused permanent var, without changing existing save-block layouts.
 
 The new setting affects newly generated ordinary wild, fishing, surfing and DexNav encounters only. Shiny Charm, chain fishing and DexNav search bonuses add rolls. Gifts, eggs and scripted Pokémon remain governed by the base expansion rules.
+
+## v0.0.12 seasons
+
+Legends 2/2 has six rows: EXP SHARE, SHINY RATE, SEASONS, CURRENT, SET SEASON and CANCEL. SEASONS offers REAL TIME / 7H PLAY. CURRENT shows the environment currently in use. SET SEASON is editable with Left/Right only in gameplay mode; real time displays CALENDAR. Leaving Options stores edits, while the next faded map load applies the environment.
+
+Choice strings use the native COLOR/SHADOW prefix. The renderer checks for this prefix before recoloring, preventing ordinary letters from becoming control values. Single seasonal values clear their previous text before redraw. Keep labels within the existing 15-byte choice limit, including control codes.
