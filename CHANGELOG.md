@@ -4,6 +4,20 @@ All notable Pokémon Emerald: Legends project changes are documented here.
 
 For build-specific player views, see [CHANGELOG-RELEASE.md](CHANGELOG-RELEASE.md) and [CHANGELOG-DEBUG.md](CHANGELOG-DEBUG.md). The canonical history below records the project as a whole.
 
+## [0.0.13] - 2026-10-08
+
+### Added
+- Enabled the expansion’s native overworld Pokémon follower system with a saved FOLLOWER ON/OFF setting on Legends Options (default ON for new and existing saves).
+- The first conscious non-egg Pokémon in party order follows the player, using native walking, Poké Ball, graphics and interaction behavior. Reorder the party to change the follower.
+- Reused native hiding rules for travel/forced movement, oversized indoor sprites, temporary script hiding and NPC companions; missing overworld graphics keep the configured native substitute fallback.
+- Leaving Options applies the follower choice through the normal faded field reload. The selection persists across save/reload and title-screen New Game setup.
+- Used an unused permanent disable flag without changing the SaveBlock layout; kept both Options pages within seven rows and the existing VRAM allocation.
+
+### Validation
+- Added host C regressions for native party selection, follower spawn/removal, script/NPC hiding, indoor limits and full object slots. Extended saved-setting and title-screen New Game regressions for the follower toggle. Emulator visual/playtesting remains separate.
+- Updated the roadmap’s gameplay-season timing to the current seven-hour cycle.
+- No variant-specific gameplay changes; Release disables developer tools and Debug retains them.
+
 ## [0.0.12.1] - 2026-10-08
 
 ### Fixed

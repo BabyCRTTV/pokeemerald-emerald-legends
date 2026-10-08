@@ -33,6 +33,7 @@
 #define tSeasonMode data[10]
 #define tSelectedSeason data[11]
 #define tSeasonEdited data[12]
+#define tFollowers data[13]
 
 enum
 {
@@ -40,6 +41,7 @@ enum
     MENUITEM_BATTLESCENE,
     MENUITEM_BATTLESTYLE,
     MENUITEM_EXPSHARE,
+    MENUITEM_FOLLOWERS,
     MENUITEM_SHINYRATE,
     MENUITEM_SEASONMODE,
     MENUITEM_SEASON,
@@ -79,8 +81,8 @@ static u8 BattleScene_ProcessInput(u8 selection);
 static void BattleScene_DrawChoices(u8 selection, u8 y);
 static u8 BattleStyle_ProcessInput(u8 selection);
 static void BattleStyle_DrawChoices(u8 selection, u8 y);
-static u8 ExpShare_ProcessInput(u8 selection);
-static void ExpShare_DrawChoices(u8 selection, u8 y);
+static u8 OnOff_ProcessInput(u8 selection);
+static void OnOff_DrawChoices(u8 selection, u8 y);
 static u8 ShinyRate_ProcessInput(u8 selection);
 static void ShinyRate_DrawChoices(u8 selection, u8 y);
 static u8 SeasonMode_ProcessInput(u8 selection);
@@ -104,9 +106,9 @@ EWRAM_DATA static bool8 sArrowPressed = FALSE;
 
 static const u8 gText_PageHint[]           = _("L/R");
 #ifdef RELEASE
-static const u8 gText_LegendsVersion[]      = _("LEGENDS v0.0.12.1");
+static const u8 gText_LegendsVersion[]      = _("LEGENDS v0.0.13");
 #else
-static const u8 gText_LegendsVersion[]      = _("LEGENDS v0.0.12.1-D");
+static const u8 gText_LegendsVersion[]      = _("LEGENDS v0.0.13-D");
 #endif
 static const u8 gText_TextSpeedSlow[]      = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}SLOW");
 static const u8 gText_TextSpeedMid[]       = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}MID");
@@ -115,8 +117,8 @@ static const u8 gText_BattleSceneOn[]      = _("{COLOR GREEN}{SHADOW LIGHT_GREEN
 static const u8 gText_BattleSceneOff[]     = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}OFF");
 static const u8 gText_BattleStyleShift[]   = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}SHIFT");
 static const u8 gText_BattleStyleSet[]     = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}SET");
-static const u8 gText_LegendsExpShareOn[]          = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}ON");
-static const u8 gText_LegendsExpShareOff[]         = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}OFF");
+static const u8 gText_LegendsToggleOn[]          = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}ON");
+static const u8 gText_LegendsToggleOff[]         = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}OFF");
 static const u8 gText_LegendsShiny8192[]           = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}1/8192");
 static const u8 gText_LegendsShiny5680[]           = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}1/5680");
 static const u8 gText_LegendsShiny1226[]           = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}1/1226");
@@ -138,6 +140,7 @@ static const u8 *const sOptionMenuItemsNames[MENUITEM_COUNT] =
     [MENUITEM_BATTLESCENE] = COMPOUND_STRING("BATTLE SCENE"),
     [MENUITEM_BATTLESTYLE] = COMPOUND_STRING("BATTLE STYLE"),
     [MENUITEM_EXPSHARE]    = COMPOUND_STRING("EXP SHARE"),
+    [MENUITEM_FOLLOWERS]   = COMPOUND_STRING("FOLLOWER"),
     [MENUITEM_SHINYRATE]   = COMPOUND_STRING("SHINY RATE"),
     [MENUITEM_SEASONMODE]  = COMPOUND_STRING("SEASONS"),
     [MENUITEM_SEASON]      = COMPOUND_STRING("CURRENT"),
@@ -169,6 +172,7 @@ static const u8 sOptionMenuPageItems[OPTION_PAGE_COUNT][OPTION_PAGE_MAX_ITEMS] =
     [OPTION_PAGE_LEGENDS] =
     {
         MENUITEM_EXPSHARE,
+        MENUITEM_FOLLOWERS,
         MENUITEM_SHINYRATE,
         MENUITEM_SEASONMODE,
         MENUITEM_SEASON,
@@ -180,7 +184,7 @@ static const u8 sOptionMenuPageItems[OPTION_PAGE_COUNT][OPTION_PAGE_MAX_ITEMS] =
 static const u8 sOptionMenuPageItemCounts[OPTION_PAGE_COUNT] =
 {
     [OPTION_PAGE_GENERAL] = 7,
-    [OPTION_PAGE_LEGENDS] = 6,
+    [OPTION_PAGE_LEGENDS] = 7,
 };
 
 static const struct WindowTemplate sOptionMenuWinTemplates[] =
@@ -331,6 +335,7 @@ void CB2_InitOptionMenu(void)
         gTasks[taskId].tButtonMode = gSaveBlock2Ptr->optionsButtonMode;
         gTasks[taskId].tWindowFrameType = gSaveBlock2Ptr->optionsWindowFrameType;
         gTasks[taskId].tExpShare = LegendsIsExpShareEnabled() ? 0 : 1;
+        gTasks[taskId].tFollowers = LegendsAreFollowersEnabled() ? 0 : 1;
         gTasks[taskId].tShinyRate = LegendsGetShinyRateSetting();
         gTasks[taskId].tSeasonMode = LegendsGetSeasonMode();
         gTasks[taskId].tSelectedSeason = LegendsGetSeasonForMode(LEGENDS_SEASONS_PLAYTIME);
@@ -429,10 +434,10 @@ static void Task_OptionMenuProcessInput(u8 taskId)
             break;
         case MENUITEM_EXPSHARE:
             previousOption = gTasks[taskId].tExpShare;
-            gTasks[taskId].tExpShare = ExpShare_ProcessInput(gTasks[taskId].tExpShare);
+            gTasks[taskId].tExpShare = OnOff_ProcessInput(gTasks[taskId].tExpShare);
 
             if (previousOption != gTasks[taskId].tExpShare)
-                ExpShare_DrawChoices(gTasks[taskId].tExpShare, y);
+                OnOff_DrawChoices(gTasks[taskId].tExpShare, y);
             break;
         case MENUITEM_SHINYRATE:
             previousOption = gTasks[taskId].tShinyRate;
@@ -440,6 +445,12 @@ static void Task_OptionMenuProcessInput(u8 taskId)
 
             if (previousOption != gTasks[taskId].tShinyRate)
                 ShinyRate_DrawChoices(gTasks[taskId].tShinyRate, y);
+            break;
+        case MENUITEM_FOLLOWERS:
+            previousOption = gTasks[taskId].tFollowers;
+            gTasks[taskId].tFollowers = OnOff_ProcessInput(previousOption);
+            if (previousOption != gTasks[taskId].tFollowers)
+                OnOff_DrawChoices(gTasks[taskId].tFollowers, y);
             break;
         case MENUITEM_SEASONMODE:
             previousOption = gTasks[taskId].tSeasonMode;
@@ -504,6 +515,7 @@ static void Task_OptionMenuSave(u8 taskId)
     gSaveBlock2Ptr->optionsButtonMode = gTasks[taskId].tButtonMode;
     gSaveBlock2Ptr->optionsWindowFrameType = gTasks[taskId].tWindowFrameType;
     LegendsSetExpShareEnabled(gTasks[taskId].tExpShare == 0);
+    LegendsSetFollowersEnabled(gTasks[taskId].tFollowers == 0);
     LegendsSetShinyRateSetting(gTasks[taskId].tShinyRate);
     LegendsSetSeasonMode(gTasks[taskId].tSeasonMode);
     if (gTasks[taskId].tSeasonEdited)
@@ -643,7 +655,7 @@ static void BattleStyle_DrawChoices(u8 selection, u8 y)
     DrawOptionMenuChoice(gText_BattleStyleSet, GetStringRightAlignXOffset(FONT_NORMAL, gText_BattleStyleSet, 198), y, styles[1]);
 }
 
-static u8 ExpShare_ProcessInput(u8 selection)
+static u8 OnOff_ProcessInput(u8 selection)
 {
     if (JOY_NEW(DPAD_LEFT | DPAD_RIGHT))
     {
@@ -654,7 +666,7 @@ static u8 ExpShare_ProcessInput(u8 selection)
     return selection;
 }
 
-static void ExpShare_DrawChoices(u8 selection, u8 y)
+static void OnOff_DrawChoices(u8 selection, u8 y)
 {
     u8 styles[2];
 
@@ -662,8 +674,8 @@ static void ExpShare_DrawChoices(u8 selection, u8 y)
     styles[1] = 0;
     styles[selection] = 1;
 
-    DrawOptionMenuChoice(gText_LegendsExpShareOn, 104, y, styles[0]);
-    DrawOptionMenuChoice(gText_LegendsExpShareOff, GetStringRightAlignXOffset(FONT_NORMAL, gText_LegendsExpShareOff, 198), y, styles[1]);
+    DrawOptionMenuChoice(gText_LegendsToggleOn, 104, y, styles[0]);
+    DrawOptionMenuChoice(gText_LegendsToggleOff, GetStringRightAlignXOffset(FONT_NORMAL, gText_LegendsToggleOff, 198), y, styles[1]);
 }
 
 static u8 ShinyRate_ProcessInput(u8 selection)
@@ -958,7 +970,10 @@ static void DrawOptionMenuPage(u8 taskId)
             BattleStyle_DrawChoices(gTasks[taskId].tBattleStyle, row * OPTION_ROW_HEIGHT);
             break;
         case MENUITEM_EXPSHARE:
-            ExpShare_DrawChoices(gTasks[taskId].tExpShare, row * OPTION_ROW_HEIGHT);
+            OnOff_DrawChoices(gTasks[taskId].tExpShare, row * OPTION_ROW_HEIGHT);
+            break;
+        case MENUITEM_FOLLOWERS:
+            OnOff_DrawChoices(gTasks[taskId].tFollowers, row * OPTION_ROW_HEIGHT);
             break;
         case MENUITEM_SHINYRATE:
             ShinyRate_DrawChoices(gTasks[taskId].tShinyRate, row * OPTION_ROW_HEIGHT);

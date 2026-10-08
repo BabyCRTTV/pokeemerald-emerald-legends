@@ -15,6 +15,7 @@ struct LegendsTitleOptions
 {
     bool8 valid;
     bool8 expShareEnabled;
+    bool8 followersEnabled;
     u8 shinyRate;
     u8 seasonMode;
     u8 playtimeSeason;
@@ -30,6 +31,7 @@ void LegendsClearTitleOptions(void)
 void LegendsStageTitleOptions(void)
 {
     sTitleOptions.expShareEnabled = LegendsIsExpShareEnabled();
+    sTitleOptions.followersEnabled = LegendsAreFollowersEnabled();
     sTitleOptions.shinyRate = LegendsGetShinyRateSetting();
     sTitleOptions.seasonMode = LegendsGetSeasonMode();
     sTitleOptions.playtimeSeason = LegendsGetSeasonForMode(LEGENDS_SEASONS_PLAYTIME);
@@ -41,6 +43,7 @@ void LegendsApplyTitleOptionsToNewGame(void)
     if (sTitleOptions.valid)
     {
         LegendsSetExpShareEnabled(sTitleOptions.expShareEnabled);
+        LegendsSetFollowersEnabled(sTitleOptions.followersEnabled);
         LegendsSetShinyRateSetting(sTitleOptions.shinyRate);
         LegendsSetSeasonMode(sTitleOptions.seasonMode);
         LegendsSetPlaytimeSeason(sTitleOptions.playtimeSeason);
@@ -101,6 +104,21 @@ void LegendsSetExpShareEnabled(bool32 enabled)
         FlagClear(FLAG_LEGENDS_EXP_SHARE);
 
     FlagSet(FLAG_LEGENDS_SETTINGS_INITIALIZED);
+}
+
+// Inverted flag gives older and new saves ON without a save migration/reset.
+bool32 LegendsAreFollowersEnabled(void)
+{
+    return !FlagGet(FLAG_LEGENDS_FOLLOWERS_DISABLED);
+}
+
+void LegendsSetFollowersEnabled(bool32 enabled)
+{
+    if (enabled)
+        FlagClear(FLAG_LEGENDS_FOLLOWERS_DISABLED);
+    else
+        FlagSet(FLAG_LEGENDS_FOLLOWERS_DISABLED);
+    // The native field reload updates/removes the follower on leaving Options.
 }
 
 u8 LegendsGetShinyRateSetting(void)

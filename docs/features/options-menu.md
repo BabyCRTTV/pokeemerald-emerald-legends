@@ -52,3 +52,7 @@ Choice strings use the native COLOR/SHADOW prefix. The renderer checks for this 
 ## v0.0.12.1 title-screen choices
 
 Legends settings selected in title-screen Options now carry into New Game: EXP Share, shiny rate, season mode and the selected gameplay season. The new save receives a fresh seven-hour timer and applies the season before its opening maps. Only explicitly staged title choices cross the new-save reset; story flags and playtime do not. Staging clears after use and on a fresh title entry, while Continue and in-game Options retain their native behavior.
+
+## v0.0.13 followers
+
+Legends 2/2 now has seven rows: EXP SHARE, FOLLOWER, SHINY RATE, SEASONS, CURRENT, SET SEASON and CANCEL. FOLLOWER uses Left/Right to toggle ON/OFF and defaults to ON. Leaving Options stores the choice and the native field reload applies it. It persists with ordinary game saves and participates in the title-screen New Game settings bridge. Both pages are now at the seven-row limit; future settings need a new page instead of a larger window.

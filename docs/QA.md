@@ -67,3 +67,18 @@ Manual emulator checks (not yet verified):
 - Repeat with Spring, Summer and Autumn; check RTC mode remains calendar-controlled and disabled SET SEASON still shows CALENDAR.
 - With an existing save, edit title Options then choose New Game; confirm chosen settings carry over while story/Pokédex progress does not. Choose Continue instead and confirm normal saved-game behavior.
 - Soft reset or return to a fresh title entry after staging, then start New Game without visiting Options; confirm standard defaults. Reopen title Options twice and confirm the latest selections take precedence.
+
+## Followers (0.0.13)
+
+Automated: `python3 test/legends-followers.test.py` compiles the actual native party selection, follower-info and spawn/update functions against engine mocks using the Legends follower configuration. It covers empty/all-fainted parties, skipped eggs, party changes, OFF/ON removal/re-enable, temporary script hiding, NPC companions, oversized indoor sprites, missing graphics and full object-event slots. New-game setting regressions cover default ON, persistent OFF through continue initialization and title-screen OFF through save reset.
+
+Manual emulator checks (not yet verified):
+
+- Start new Release/Debug games and continue an older save; FOLLOWER defaults ON, no follower appears before receiving a starter, and the starter emerges and follows afterward.
+- Toggle FOLLOWER OFF and ON outdoors; confirm the faded Options return removes/restores it. Save/reload OFF and confirm it remains OFF. Select OFF in title Options and start New Game; confirm it carries over.
+- Reorder party Pokémon, faint the lead, place eggs ahead of a conscious Pokémon, heal, deposit/withdraw/evolve/trade Pokémon and return from battles. Confirm the native eligible follower and sprite are refreshed.
+- Walk/run, cross route edges, enter/exit buildings, use stairs/doors/elevators/escalators, jump ledges and traverse bridges. Inspect collision, ordering, shadows and sprite palettes on mGBA and Pizza Boy.
+- Test both bicycles, Surf, Dive, Fly, Waterfall, currents and each badge-earned HM utility; followers must not block travel or alter progression checks.
+- Test opening scenes, Wally’s tutorial, rival/team/legendary cutscenes, Groudon/Kyogre weather and scripted NPC companions. Confirm native temporary hiding/restoration and no cutscene softlocks.
+- Talk to the follower; inspect native dialogue/emotes, shiny/female forms, large Pokémon indoors and the Substitute fallback where sprites are missing. Repeat under all seasons/day-night lighting.
+- Visit crowded maps and Battle Frontier/Pyramid/Safari/secret-base areas; verify object-event capacity and return-from-menu behavior without duplicate followers.
