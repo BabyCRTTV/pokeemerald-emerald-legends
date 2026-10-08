@@ -31,3 +31,13 @@ CI passing does not establish emulator gameplay correctness. Record emulator ver
 - [ ] After Birch's Pokédex: DexNav appears and searches wild encounter slots.
 - [ ] Existing save with Pokédex: DexNav appears immediately upon continue, detector mode works.
 - [ ] Battle Pyramid temporary Bag is not modified by missing-item restoration.
+
+## v0.0.10 manual shiny rate regression checks (not yet verified)
+
+- [ ] Existing v0.0.9 save opens Legends 2/2 with SHINY RATE 1/8192 by default.
+- [ ] Cycle Left/Right through all 1/8192, 1/5680 and 1/1226; no clipped text or broken border.
+- [ ] Save after selecting 1/5680, restart the ROM and confirm it persists; switch to 1/1226 and repeat.
+- [ ] Generate multiple wild encounters in grass, surf, fishing and DexNav with each rate, verifying shiny rolls use the stored setting.
+- [ ] Check Shiny Charm, chain-fishing and DexNav bonuses remain additive to the selected base odds.
+- [ ] Verify already caught Pokémon, eggs, gifts and scripted Pokémon do not have shininess unexpectedly altered.
+- [ ] Validate the normal Release build and Debug build against clean base ROMs on mGBA and Pizza Boy.

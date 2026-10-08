@@ -37,7 +37,7 @@ Do not commit generated ROMs, copyrighted ROM data, save files containing person
 
 The authoritative project version lives in the root `VERSION` file.
 
-Current version: `0.0.9`.
+Current version: `0.0.10`.
 
 During active pre-1.0 development, each meaningful shipped change increments the development revision:
 
@@ -53,6 +53,7 @@ During active pre-1.0 development, each meaningful shipped change increments the
 - `0.0.8` - paged General / Legends Options framework and window-frame corruption fix
 - `0.0.8.1` - browser patcher safety and regression testing
 - `0.0.9` - physical Exp. Share Key Item and early DexNav unlock
+- `0.0.10` - configurable wild shiny encounter rate in Legends Options
 - a fourth segment such as `0.0.3.1` may be used for a very small follow-up build when that is clearer than consuming the next normal revision
 
 Every version bump must update the canonical, Release, and Debug changelogs and be mirrored in player-facing version text. See [VERSIONING.md](VERSIONING.md).

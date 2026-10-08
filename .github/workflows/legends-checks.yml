@@ -25,6 +25,7 @@ jobs:
           test -f docs/VERSIONING.md
           test -f docs/features/options-menu.md
           test -f docs/QA.md
+          test -f docs/features/shiny-rate.md
           test -f test/legends-patcher.test.cjs
           test -f include/legends_settings.h
           test -f src/legends_settings.c
@@ -68,6 +69,18 @@ jobs:
           grep -Fq 'setflag FLAG_LEGENDS_DEXNAV_UNLOCKED' data/maps/LittlerootTown_ProfessorBirchsLab/scripts.inc
           grep -Fq '#define FLAG_LEGENDS_EXP_SHARE' include/constants/flags.h
           grep -Fq 'COMPOUND_STRING("EXP SHARE")' src/option_menu.c
+          grep -Fq 'COMPOUND_STRING("SHINY RATE")' src/option_menu.c
+          grep -Fq 'MENUITEM_SHINYRATE' src/option_menu.c
+          grep -Fq 'tShinyRate = LegendsGetShinyRateSetting();' src/option_menu.c
+          grep -Fq 'LegendsSetShinyRateSetting(gTasks[taskId].tShinyRate);' src/option_menu.c
+          grep -Fq 'VAR_LEGENDS_SHINY_RATE' include/constants/vars.h
+          grep -Fq 'return 8192;' src/legends_settings.c
+          grep -Fq 'return 5680;' src/legends_settings.c
+          grep -Fq 'return 1226;' src/legends_settings.c
+          grep -Fq 'SetWildShinyGenerationContext(TRUE);' src/wild_encounter.c
+          grep -Fq 'SetWildShinyGenerationContext(FALSE);' src/wild_encounter.c
+          grep -Fq 'RollLegendsWildShiny(denominator)' src/pokemon.c
+          grep -Fq '(0x10000u / denominator) * denominator' src/pokemon.c
           grep -Fq 'tExpShare = LegendsIsExpShareEnabled() ? 0 : 1;' src/option_menu.c
           grep -Fq 'LegendsSetExpShareEnabled(gTasks[taskId].tExpShare == 0);' src/option_menu.c
           grep -Fq 'LegendsInitNewGameSettings();' src/new_game.c

@@ -2,6 +2,17 @@
 
 This is the player-facing history for the recommended **Release** build. Shared Legends changes are repeated here so this file stands on its own; Release-only behavior is called out separately.
 
+## [0.0.10] - 2026-10-07
+
+### Shared changes
+- Added a persistent SHINY RATE setting to the Legends Options page (Left/Right: 1/8192, 1/5680, 1/1226; default 1/8192).
+- Selected odds govern the base per-roll shiny chance for newly generated wild Pokémon, including fishing and DexNav encounters.
+- Kept bonus rolls from Shiny Charm, chain fishing and DexNav; eggs, gifts, special/scripted Pokémon and previously caught Pokémon are unchanged.
+- Used an existing unused permanent event variable, so earlier saves retain 1/8192 and a new choice survives save/load.
+
+### Release-specific
+- No Release-only gameplay divergence; developer tools remain disabled.
+
 ## [0.0.9] - 2026-10-07
 
 ### Shared changes
