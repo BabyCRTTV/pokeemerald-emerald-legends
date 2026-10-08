@@ -1,6 +1,6 @@
 # Pokémon Emerald: Legends
 
-**Version:** 0.0.15  
+**Version:** 0.0.16<br>
 **Base:** [pokeemerald-expansion](https://github.com/rh-hideout/pokeemerald-expansion)
 
 Pokémon Emerald: Legends is an unofficial, non-commercial Pokémon Emerald ROM-hack project built on the open-source `pokeemerald-expansion` decompilation/expansion base.
@@ -9,18 +9,18 @@ The project is intended to preserve the feel and structure of Pokémon Emerald w
 
 The New Game / Continue / Options menu uses a soft lavender backdrop as of v0.0.13.1.
 
-## Try the current v0.0.15 build
+## Try the current v0.0.16 build
 
 The project site provides two builds from the same source:
 
 - **Release (recommended):** https://babycrttv.github.io/pokeemerald-emerald-legends/patcher.html
 - **Debug / developer:** https://babycrttv.github.io/pokeemerald-emerald-legends/patcher.html?build=debug
-- **Release BPS:** https://babycrttv.github.io/pokeemerald-emerald-legends/downloads/Pokemon-Emerald-Legends-v0.0.15.bps
-- **Debug BPS:** https://babycrttv.github.io/pokeemerald-emerald-legends/downloads/Pokemon-Emerald-Legends-v0.0.15-debug.bps
+- **Release BPS:** https://babycrttv.github.io/pokeemerald-emerald-legends/downloads/Pokemon-Emerald-Legends-v0.0.16.bps
+- **Debug BPS:** https://babycrttv.github.io/pokeemerald-emerald-legends/downloads/Pokemon-Emerald-Legends-v0.0.16-debug.bps
 
 The Release and Debug builds contain the same Legends gameplay/content changes. Release disables developer entry points for a cleaner casual-player build. Debug retains the expansion's overworld/battle/sprite debug tools and title-screen Quickstart.
 
-**PLAYER APPEARANCE (v0.0.15):** After choosing gender in Birch’s introduction, choose one of five skin tones and one of three outfits: Emerald, Trail (jacket/trousers), or Sport (striped shirt/shorts). The bottom-right preview updates as you browse. Choices save with your game and apply to overworld poses, local battle portraits and your Trainer Card. Existing saves retain the original appearance. See [appearance documentation](docs/features/player-appearance.md).
+**PLAYER APPEARANCE (v0.0.16):** After choosing gender in Birch’s introduction, choose one of five skin tones and one of four outfits: Emerald, Trail (jacket/trousers), Sport (striped shirt/shorts), or Yellow. The bottom-right preview updates as you browse. Custom outfits use bare hands; the default Emerald outfit retains its gloves. Choices save with your game and apply to overworld poses, local battle portraits and your Trainer Card. Existing saves retain the original appearance. See [appearance documentation](docs/features/player-appearance.md).
 
 **EXP Share:** The physical Gen 6-style Exp. Share is now a Key Item given at new-game start and restored on existing saves. The Key Item and Legends Options control the same ON/OFF setting, defaulting to ON. Participants earn full EXP and eligible benched Pokémon earn the modern half share when enabled.
 

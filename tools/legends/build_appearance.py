@@ -24,7 +24,35 @@ def skin_components(pixels):
         groups.append(group)
     return groups
 
-def outfit_frame(pixels, gender, outfit, kind="overworld", pose=0):
+# Rectangles are pose-local, inclusive, and deliberately exclude held Poké Balls.
+# Keep outlines; replace glove/cuff interiors with the existing three skin slots.
+HAND_RECTS = {
+    (0,"front"): [[(15,33,20,38),(42,31,46,34)]],
+    (1,"front"): [[(9,30,15,34),(39,35,45,38)]],
+    (0,"back"): [
+        [(0,36,12,56)], [(0,24,17,40)], [(43,21,63,37)], [],
+    ],
+    (1,"back"): [
+        [(0,39,14,56),(43,43,50,52)],
+        [(0,25,17,43),(46,54,56,63)],
+        [(41,25,58,37),(5,50,15,63)], [],
+    ],
+}
+
+BALL_RECTS = {
+    (0,"front",0): [(10,36,14,42),(45,26,50,30)],
+    (1,"front",0): [(9,26,14,29)],
+    (0,"back",0): [(44,51,54,58)],
+}
+
+def ball_pixels(gender,kind,pose):
+    return {(x,y) for x0,y0,x1,y1 in BALL_RECTS.get((gender,kind,pose),[]) for y in range(y0,y1+1) for x in range(x0,x1+1)}
+
+def hand_pixels(gender,kind,pose):
+    rects = HAND_RECTS[(gender,kind)][pose]
+    return {(x,y) for x0,y0,x1,y1 in rects for y in range(y0,y1+1) for x in range(x0,x1+1)}
+
+def outfit_frame(pixels, gender, outfit, kind="overworld", pose=0, state="walking"):
     result = [row[:] for row in pixels]
     if outfit == 0:
         return result
@@ -36,66 +64,73 @@ def outfit_frame(pixels, gender, outfit, kind="overworld", pose=0):
         face = max(groups,key=len)
         face_bottom = max(y for x,y in face)
         center = sum(x for x,y in face)/len(face)
-        # Separate jacket/jersey material from gloves and hair.
         for y in range(face_bottom+1,h):
             for x in range(w):
-                v = pixels[y][x]
-                if abs(x-center) <= 3 and y <= face_bottom+5 and v in (12,13):
-                    result[y][x] = 10 if v == 12 else 11
-                if outfit == 1 and abs(x-center) <= 3 and face_bottom+3 <= y <= face_bottom+5 and v in (5,6):
-                    result[y][x] = 10 if v == 5 else 11
-                if outfit == 2 and y == face_bottom+3 and abs(x-center)<=3 and result[y][x] in (10,11):
-                    result[y][x] = 9
-                if outfit == 2 and gender == 0 and face_bottom+5 <= y <= face_bottom+6 and abs(x-center)<=4 and v in (5,6,7,8):
-                    result[y][x] = 2 if v in (5,6) else 3
-        if outfit == 1:
+                v=pixels[y][x]
+                if abs(x-center)<=3 and y<=face_bottom+5 and v in (12,13):
+                    result[y][x]=10 if v==12 else 11
+                if outfit==1 and abs(x-center)<=3 and face_bottom+3<=y<=face_bottom+5 and v in (5,6):
+                    result[y][x]=10 if v==5 else 11
+                if outfit==2 and y==face_bottom+3 and abs(x-center)<=3 and result[y][x] in (10,11):
+                    result[y][x]=9
+                if outfit==2 and gender==0 and face_bottom+5<=y<=face_bottom+6 and abs(x-center)<=4 and v in (5,6,7,8):
+                    result[y][x]=2 if v in (5,6) else 3
+                # Tiny hands beside the torso, avoiding feet, hair and red balls.
+                if 3<abs(x-center)<=6 and face_bottom+1<=y<=face_bottom+4 and v in ((5,6,9,10,11,12,13,14) if state != "field_move" else (5,6,9,10,11,14)):
+                    result[y][x]=1 if v in (9,14) else (2 if v in (5,10,12) else 3)
+        if outfit==1:
             for group in groups:
-                if group == face: continue
+                if group==face:continue
                 for x,y in group:
-                    # Cover bare legs with trail trousers; leave feet intact.
-                    if y >= face_bottom+5 and abs(x-center)<=4:
-                        result[y][x] = 5 if pixels[y][x]==1 else 6
-                    # Jacket shoulders, preserving gloved hands.
-                    elif face_bottom < y <= face_bottom+2:
-                        result[y][x] = 10 if pixels[y][x]==1 else 11
+                    if y>=face_bottom+5 and abs(x-center)<=4:
+                        result[y][x]=5 if pixels[y][x]==1 else 6
+                    elif face_bottom<y<=face_bottom+2:
+                        result[y][x]=10 if pixels[y][x]==1 else 11
     else:
-        # Native 64px trainer poses: jacket/jersey panels stay below the head.
-        face = min((c for c in groups if len(c)>30),key=lambda c:min(y for x,y in c))
-        face_bottom = max(y for x,y in face)
-        if kind == "front":
-            body_top,body_bottom = (23,39) if gender==0 else (22,37)
-        else:
-            body_top,body_bottom = (38,63)
-        for y in range(body_top,body_bottom+1):
+        face=min((c for c in groups if len(c)>30),key=lambda c:min(y for x,y in c))
+        face_bottom=max(y for x,y in face)
+        face_left=min(x for x,y in face)
+        hands=hand_pixels(gender,kind,pose)
+        balls=ball_pixels(gender,kind,pose)
+        # May's mouth/chin includes red pixels: start below the entire head.
+        top,bottom=((25,39) if gender==1 else (24,39)) if kind=="front" else (38,63)
+        shirt_top = min((y for y in range(top,bottom+1) for x in range(w) if pixels[y][x] in (12,13) and y > face_bottom+1), default=top)
+        stripe = (shirt_top+8 if kind=="back" else top+6)
+        for y in range(top,bottom+1):
             for x in range(w):
-                v = pixels[y][x]
-                if (x,y) in face or (gender==1 and v in (7,8)):
+                v=pixels[y][x]
+                if (x,y) in face or (x,y) in hands or (x,y) in balls or (gender==1 and v in (7,8)):
                     continue
-                clothing = v in (10,11) or (v in (12,13) and 24 <= x <= 42)
-                if clothing or (kind=="back" and 20 < x < 50 and y>face_bottom+3 and v in (5,6,7,8)):
-                    result[y][x] = 10 if v in (5,7,10,12) else 11
-                if outfit == 2 and y in (body_top+6,body_top+7) and result[y][x] in (10,11):
-                    result[y][x] = 9
-        if outfit == 1:
+                if kind=="back" and y<=face_bottom+1 and x>=face_left-10 and v in (5,6,7,8):
+                    continue # dark hair, headband and outlines beside the face
+                if v in (12,13) and (kind=="back" or 23<=x<=37):
+                    result[y][x]=10 if v==12 else 11
+                elif gender==0 and v in (5,6,7,8) and ((kind=="back" and x>=14) or (kind=="front" and 20<=x<=42)):
+                    result[y][x]=10 if v in (5,7) else 11
+                elif v in (10,11):
+                    # Backpack/sling stays navy, separate from the shirt/jacket.
+                    result[y][x]=5 if v==10 else 6
+                if outfit==2 and y in (stripe,stripe+1) and result[y][x] in (10,11):
+                    result[y][x]=9
+        if outfit==1:
             for group in groups:
-                if group == face or len(group)<6:
-                    continue
+                if group==face or len(group)<6:continue
                 low=min(y for x,y in group)
                 if kind=="front" and gender==1 and low>=39:
-                    for x,y in group:
-                        result[y][x]=5 if pixels[y][x]==1 else 6
+                    for x,y in group:result[y][x]=5 if pixels[y][x]==1 else 6
                 elif low>=(24 if kind=="front" else 36):
-                    left=min(x for x,y in group);right=max(x for x,y in group)
-                    mid=(left+right)/2
+                    mid=(min(x for x,y in group)+max(x for x,y in group))/2
                     for x,y in group:
-                        # The half nearest the torso is a sleeve; distal hands remain skin.
-                        if (mid<32 and x>=mid) or (mid>=32 and x<=mid):
+                        if (x,y) not in hands and (x,y) not in balls and ((mid<32 and x>=mid) or (mid>=32 and x<=mid)):
                             result[y][x]=10 if pixels[y][x]==1 else 11
-        elif kind=="front" and gender==0:
+        elif outfit==2 and kind=="front" and gender==0:
             for y in range(46,55):
                 for x in range(16,43):
-                    if pixels[y][x] in (5,6,7,8):
-                        result[y][x]=2 if pixels[y][x] in (5,6) else 3
+                    if pixels[y][x] in (5,6,7,8):result[y][x]=2 if pixels[y][x] in (5,6) else 3
+        for x,y in hands - balls:
+            v=pixels[y][x]
+            if (x,y) not in face and v not in (0,1,2,3,4,15):
+                result[y][x]=1 if v in (9,14) else (2 if v in (5,7,10,12) else 3)
     assert all((pixels[y][x]==0)==(result[y][x]==0) for y in range(h) for x in range(w))
     return result
 
@@ -133,12 +168,12 @@ def build():
     trainer=["// Generated by tools/legends/build_appearance.py.\n"]
     gallery=[];counts={}
     for g,gender in enumerate(("Brendan","May")):
-        for outfit,label in ((1,"Trail"),(2,"Sport")):
+        for outfit,label in ((1,"Trail"),(2,"Sport"),(3,"Yellow")):
             for state,file in zip(STATES,FILES):
                 width=16 if state=="Normal" else 32
                 sources=frames(ROOT/f"graphics/object_events/pics/people/{gender.lower()}/{file}.png",width,32)
                 if state=="Normal":sources+=frames(ROOT/f"graphics/object_events/pics/people/{gender.lower()}/running.png",16,32)
-                modified=[outfit_frame(f,g,outfit) for f in sources]
+                modified=[outfit_frame(f,g,outfit,pose=i,state=file) for i,f in enumerate(sources)]
                 raw=b"".join(pack(f) for f in modified)
                 name=f"sLegends{gender}{label}{state}"
                 ow.append(c_bytes(name,raw))
@@ -158,10 +193,10 @@ def build():
                 trainer.append(c_bytes(name,literal_lz(raw) if kind=="Front" else raw,kind=="Front"))
                 counts[name]={"frames":len(sources),"bytes":len(raw)}
                 if kind=="Front":gallery.append((g,outfit,modified[0],Image.open(ROOT/f"graphics/trainers/{directory}/{gender.lower()}.png").getpalette()))
-    ow.append("static const struct SpriteFrameImage *const sLegendsOutfitImages[2][2][8] = {\n")
+    ow.append("static const struct SpriteFrameImage *const sLegendsOutfitImages[2][3][8] = {\n")
     for gender in ("Brendan","May"):
         ow.append("    {\n")
-        for label in ("Trail","Sport"):
+        for label in ("Trail","Sport","Yellow"):
             ow.append("        {"+",".join(f"sLegends{gender}{label}{state}Images" for state in STATES)+"},\n")
         ow.append("    },\n")
     ow.append("};\n")

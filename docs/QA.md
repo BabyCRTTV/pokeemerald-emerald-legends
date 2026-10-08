@@ -86,3 +86,11 @@ Manual emulator checks (not yet verified):
 ## Player appearance (v0.0.15)
 
 Follow the [player appearance emulator checklist](features/player-appearance.md#emulator-qa) for intro navigation, saved appearance, every movement pose and local battle scenes. Automated appearance and asset tests run in Legends project checks.
+
+## v0.0.16 polish
+
+- Check naming-screen icons for all four outfits and five skin tones, both genders.
+- Inspect all battle throw frames: cohesive garment panels, unaltered Poké Balls, bare hands on custom outfits and no blue mouth pixel on May.
+- Browse appearance while dialogue prints at slow/normal speed; check glyphs, shadows and arrows.
+- Test grass rustle and jumps in every season with a follower and simultaneous water ripple/reflection. Check excluded ash routes remain native.
+- In winter, cross standard grass; confirm tufts clear, encounters still occur, scrolling keeps scuffs, and a full map reload restores them. Test tree-edge/long grass remains intact.

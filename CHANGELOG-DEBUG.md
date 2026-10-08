@@ -2,6 +2,23 @@
 
 This is the developer-facing history for the **Debug** build. Shared Legends changes are repeated here so this file stands on its own; Debug-only behavior is called out separately.
 
+## [0.0.16] - 2026-10-08
+
+### Fixed
+- The player naming-screen icon now uses the selected outfit and skin tone.
+- Active text printers restore their own glyph colors, preventing menu text from corrupting animated dialogue glyphs and arrows.
+- Grass rustle/jump/short/long/shaking animations use a separate seasonal vegetation palette; water, ash, NPCs and player palettes retain their own colors.
+- Refined custom front/back outfit panels across all four battle animation poses, kept bags distinct from shirts, protected held Poké Balls and corrected May’s colored mouth detail.
+
+### Added
+- Added a fourth, yellow outfit for both genders. All custom outfits use bare hands; the default Emerald outfit retains its original gloves.
+- Walking through standard winter grass clears the snow-covered tuft until a full map reload, inspired by ash grass. This is a temporary visual change: encounters, collision and terrain behavior are preserved. Tree-edge, long-grass and volcanic-ash tiles retain native terrain rendering.
+
+### Validation
+- Expanded actual-module appearance checks to all 40 combinations and asset coverage to all 552 custom poses.
+- Added regressions for printer color isolation, seasonal grass palettes and snow clearing/reset/bounds.
+- Release and Debug share these changes; developer tools remain disabled in Release and enabled in Debug.
+
 ## [0.0.15] - 2026-10-08
 
 ### Added

@@ -1,4 +1,5 @@
 #include "global.h"
+#include "legends_grass.h"
 #include "legends_seasons.h"
 #include "battle_pyramid.h"
 #include "bg.h"
@@ -165,6 +166,7 @@ void InitTrainerHillMap(void)
 static void InitMapLayoutData(const struct MapHeader *mapHeader)
 {
     const struct MapLayout *mapLayout = mapHeader->mapLayout;
+    LegendsResetSnowGrass();
     CpuFastFill16(MAPGRID_UNDEFINED, sBackupMapData, sizeof(sBackupMapData));
 
     gBackupMapLayout.map = sBackupMapData;

@@ -31,6 +31,8 @@ const u8 *LegendsGetSeasonName(u8 season);
 void LegendsSeasonTick(void);
 bool32 LegendsMapHasSeasons(void);
 void LegendsApplySeasonPalette(u16 offset, u16 count);
+u16 LegendsSeasonVegetationColor(u16 color, u8 season);
+void LegendsApplyGrassPalette(u8 slot, const u16 *source);
 u8 LegendsSeasonWeather(u8 weather);
 void LegendsRestoreSeasonWeather(void);
 

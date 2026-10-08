@@ -11,6 +11,7 @@
 #include "pokemon.h"
 #include "field_specials.h"
 #include "field_player_avatar.h"
+#include "legends_appearance.h"
 #include "event_object_movement.h"
 #include "event_data.h"
 #include "constants/songs.h"
@@ -1401,11 +1402,11 @@ static void NamingScreen_NoIcon(void)
 
 static void NamingScreen_CreatePlayerIcon(void)
 {
-    u16 rivalGfxId;
+    u16 playerGfxId;
     u8 spriteId;
 
-    rivalGfxId = GetRivalAvatarGraphicsIdByStateIdAndGender(PLAYER_AVATAR_STATE_NORMAL, (enum Gender)sNamingScreen->monSpecies);
-    spriteId = CreateObjectGraphicsSprite(rivalGfxId, SpriteCallbackDummy, 56, 37, 0);
+    playerGfxId = LegendsGetPlayerGraphicsId(PLAYER_AVATAR_STATE_NORMAL, (enum Gender)sNamingScreen->monSpecies);
+    spriteId = CreateObjectGraphicsSprite(playerGfxId, SpriteCallbackDummy, 56, 37, 0);
     gSprites[spriteId].oam.priority = 3;
     StartSpriteAnim(&gSprites[spriteId], ANIM_STD_GO_SOUTH);
 }

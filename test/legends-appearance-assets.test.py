@@ -25,13 +25,17 @@ for gender, name in enumerate(("brendan", "may")):
             groups = art.skin_components(frame)
             face = (max(groups, key=len) if kind == "overworld" else
                     min((g for g in groups if len(g) > 30), key=lambda g: min(y for x, y in g))) if groups else set()
-            for outfit in (1, 2):
-                result = art.outfit_frame(frame, gender, outfit, kind, pose)
+            for outfit in (1, 2, 3):
+                result = art.outfit_frame(frame, gender, outfit, kind, pose, state=path.stem)
                 assert all(frame[y][x] == result[y][x] for x, y in face), (path, pose, "face")
                 assert all((v == 0) == (result[y][x] == 0) for y, row in enumerate(frame) for x, v in enumerate(row))
                 if kind != "overworld":
-                    assert all(result[y][x] == v for y, row in enumerate(frame) for x, v in enumerate(row)
-                               if v in (12, 13) and not 24 <= x <= 42), (path, pose, "held ball/glove")
+                    assert all(result[y][x] == frame[y][x] for x,y in art.ball_pixels(gender,kind,pose)), (path,pose,"held ball")
+                if kind != "overworld":
+                    hands = art.hand_pixels(gender, kind, pose)
+                    assert all(result[y][x] in (0,1,2,3,4,15) for x,y in hands - art.ball_pixels(gender,kind,pose) if (x,y) not in face), (path,pose,"bare hands")
+                if kind == "front" and gender == 1:
+                    assert all(result[y][x] == frame[y][x] for y in range(25) for x in range(23,36)), "May mouth/face detail"
                 raw = art.pack(result)
                 assert len(raw) == width * len(frame) // 2
                 compressed = art.literal_lz(raw)

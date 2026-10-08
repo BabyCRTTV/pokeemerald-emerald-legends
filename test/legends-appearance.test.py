@@ -36,7 +36,7 @@ enum TrainerPicID {TRAINER_PIC_LEGENDS_BRENDAN_EMERALD=200};
 #define TRUE 1
 #define FALSE 0
 #define LEGENDS_SKIN_TONE_COUNT 5
-#define LEGENDS_OUTFIT_COUNT 3
+#define LEGENDS_OUTFIT_COUNT 4
 #define VAR_LEGENDS_APPEARANCE 0
 static u16 value;
 u16 VarGet(u16 id){return value;}
@@ -50,7 +50,7 @@ value=0;LegendsClearAppearanceSelection();LegendsUpdateAppearancePalettes();
 assert(LegendsGetSkinTone()==0&&LegendsGetOutfit()==0);
 assert(!memcmp(gLegendsOverworldPalettes,sBaseOverworldPalettes,sizeof(gLegendsOverworldPalettes)));
 assert(!memcmp(gLegendsTrainerPalettes,sBaseTrainerPalettes,sizeof(gLegendsTrainerPalettes)));
-for(int outfit=0;outfit<3;outfit++)for(int skin=0;skin<5;skin++){
+for(int outfit=0;outfit<4;outfit++)for(int skin=0;skin<5;skin++){
     value=0;LegendsBeginAppearanceSelection();LegendsSetAppearanceSelection(skin,outfit);
     assert(LegendsGetSkinTone()==skin&&LegendsGetOutfit()==outfit);
     assert(value==0);
@@ -59,7 +59,7 @@ for(int outfit=0;outfit<3;outfit++)for(int skin=0;skin<5;skin++){
     assert(value==1+skin+5*outfit&&!sSelection.valid);
     LegendsUpdateAppearancePalettes();
     for(int g=0;g<2;g++){
-        assert(LegendsGetPlayerTrainerPic(g)==200+g*3+outfit);
+        assert(LegendsGetPlayerTrainerPic(g)==200+g*4+outfit);
         struct SpriteFrameImage nativeImage={0};
         struct ObjectEventGraphicsInfo native={99,512,&nativeImage};
         for(int state=0;state<9;state++){
@@ -98,7 +98,7 @@ assert(!memcmp(gLegendsTrainerPalettes,sBaseTrainerPalettes,sizeof(gLegendsTrain
 LegendsSetAppearanceSelection(255,255);assert(LegendsGetSkinTone()==0&&LegendsGetOutfit()==0);
 LegendsApplyAppearanceToNewGame();assert(value==1);
 LegendsApplyAppearanceToNewGame();assert(value==0); // Pending selection is consumed once.
-puts("All 30 gender/skin/outfit appearances, save handoff, legacy defaults and palette isolation passed.");
+puts("All 40 gender/skin/outfit appearances, save handoff, legacy defaults and palette isolation passed.");
 }
 '''
 with tempfile.TemporaryDirectory() as d:
