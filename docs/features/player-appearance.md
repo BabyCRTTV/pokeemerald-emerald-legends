@@ -35,7 +35,9 @@ art; only skin slots 1–3 and outfit accent slots 10–11 change. Other slots k
 their native colors. Palette caches rebuild when the appearance changes.
 
 `legends_appearance_graphics.c` supplies eighteen player-only graphics IDs
-(two genders × nine native avatar states). Graphics/state checks normalize these
+(two genders × nine native avatar states) in the reserved `0x0F00–0x0F11` range.
+The native graphics count and dynamic template IDs remain unchanged so old saved
+map templates keep their meaning. Graphics/state checks normalize these
 IDs to native IDs. Cloned graphics info retains native dimensions, animation,
 tracks and OAM; clothing swaps only the frame images and palette tag. Original
 NPC graphics and trainer IDs remain untouched. Six local trainer IDs select

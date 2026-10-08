@@ -2,6 +2,11 @@
 from pathlib import Path
 import subprocess,tempfile
 root=Path(__file__).resolve().parents[1]
+# Saved object templates retain native dynamic IDs across updates.
+constants=(root/"include/constants/event_objects.h").read_text()
+native_enum=constants.split("NUM_OBJ_EVENT_GFX,")[0]
+assert "OBJ_EVENT_GFX_LEGENDS_PLAYER_START" not in native_enum
+assert "#define OBJ_EVENT_GFX_LEGENDS_PLAYER_START 0x0F00" in constants
 source=(root/"src/legends_appearance.c").read_text()
 source="\n".join(l for l in source.splitlines() if not l.startswith("#include"))
 source=(root/"src/data/legends/appearance_palettes.h").read_text()+"\n"+source
