@@ -1,4 +1,6 @@
 #include "global.h"
+#include "constants/metatile_labels.h"
+#include "legends_grass.h"
 #include "berry.h"
 #include "bike.h"
 #include "field_camera.h"
@@ -239,7 +241,11 @@ static void DrawMetatileAt(const struct MapLayout *mapLayout, u16 offset, int x,
         metatiles = mapLayout->secondaryTileset->metatiles;
         metatileId -= GetNumMetatilesInPrimary(mapLayout);
     }
-    DrawMetatile(MapGridGetMetatileLayerTypeAt(x, y), metatiles + metatileId * NUM_TILES_PER_METATILE, offset);
+    // Substitute artwork only; the map grid retains tall-grass behavior.
+    if (LegendsSnowGrassCleared(x, y))
+        DrawMetatile(MapGridGetMetatileLayerTypeAt(x, y), mapLayout->primaryTileset->metatiles + METATILE_General_Grass * NUM_TILES_PER_METATILE, offset);
+    else
+        DrawMetatile(MapGridGetMetatileLayerTypeAt(x, y), metatiles + metatileId * NUM_TILES_PER_METATILE, offset);
 }
 
 static void DrawMetatile(s32 metatileLayerType, const u16 *tiles, u16 offset)

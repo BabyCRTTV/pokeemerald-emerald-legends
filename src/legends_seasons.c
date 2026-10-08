@@ -155,6 +155,29 @@ bool32 LegendsMapHasSeasons(void)
         && gMapHeader.weather != WEATHER_SANDSTORM;
 }
 
+u16 LegendsSeasonVegetationColor(u16 color, u8 season)
+{
+    u32 r = color & 31, g = (color >> 5) & 31, b = (color >> 10) & 31;
+    if (g < r + 3 || g < b + 2 || g < 7)
+        return color;
+    switch (season)
+    {
+    case LEGENDS_SPRING:
+        r = (r * 7 + 18) / 8; g = (g * 7 + 31) / 8; b = (b * 7 + 12) / 8;
+        break;
+    case LEGENDS_SUMMER:
+        r = r * 7 / 8; g = g * 15 / 16; b = b * 7 / 8;
+        break;
+    case LEGENDS_AUTUMN:
+        r = (g * 7 + 31) / 8; b = (b + g) / 4; g = g * 3 / 4;
+        break;
+    case LEGENDS_WINTER:
+        r = (g * 3 + 31 * 2) / 5; b = (g * 3 + 31 * 2) / 5; g = (g * 3 + 30 * 2) / 5;
+        break;
+    }
+    return RGB(r, g, b);
+}
+
 void LegendsApplySeasonPalette(u16 offset, u16 count)
 {
     u32 i;
@@ -163,37 +186,23 @@ void LegendsApplySeasonPalette(u16 offset, u16 count)
         return;
     season = LegendsGetActiveSeason();
     for (i = offset; i < offset + count && i < 13 * 16; i++)
+        if (i >= 16 && (i & 15) != 0)
+            gPlttBufferUnfaded[i] = LegendsSeasonVegetationColor(gPlttBufferUnfaded[i], season);
+}
+
+void LegendsApplyGrassPalette(u8 slot, const u16 *source)
+{
+    u32 i;
+    bool32 seasonal = LegendsMapHasSeasons();
+    u8 season = seasonal ? LegendsGetActiveSeason() : LEGENDS_SPRING;
+    if (slot >= 16)
+        return;
+    for (i = 1; i < 16; i++)
     {
-        u16 color = gPlttBufferUnfaded[i];
-        u32 r = color & 31, g = (color >> 5) & 31, b = (color >> 10) & 31;
-        // Only vegetation greens, excluding transparent colors, blue water,
-        // buildings and UI. Start from original tileset colors on every refresh.
-        if (i < 16 || (i & 15) == 0 || g < r + 3 || g < b + 2 || g < 7)
-            continue;
-        switch (season)
-        {
-        case LEGENDS_SPRING:
-            r = (r * 7 + 18) / 8;
-            g = (g * 7 + 31) / 8;
-            b = (b * 7 + 12) / 8;
-            break;
-        case LEGENDS_SUMMER:
-            r = r * 7 / 8;
-            g = g * 15 / 16;
-            b = b * 7 / 8;
-            break;
-        case LEGENDS_AUTUMN:
-            r = (g * 7 + 31) / 8;
-            b = (b + g) / 4;
-            g = g * 3 / 4;
-            break;
-        case LEGENDS_WINTER:
-            r = (g * 3 + 31 * 2) / 5;
-            b = (g * 3 + 31 * 2) / 5;
-            g = (g * 3 + 30 * 2) / 5;
-            break;
-        }
-        gPlttBufferUnfaded[i] = RGB(r, g, b);
+        u32 offset = (16 + slot) * 16 + i;
+        // LoadSpritePalette caches an existing tag. Always start from native art,
+        // including connected transitions from a seasonal map to an excluded one.
+        gPlttBufferUnfaded[offset] = seasonal ? LegendsSeasonVegetationColor(source[i], season) : source[i];
     }
 }
 

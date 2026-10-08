@@ -550,6 +550,9 @@ void RunTextPrinters(void)
             {
                 for (u32 repeat = 0; repeat < textRepeats || isInstantText; repeat++)
                 {
+                    // Immediate menu text and callbacks can change the shared glyph
+                    // lookup table between frames. Each printer owns its colors.
+                    GenerateFontHalfRowLookupTable(currentPrinter->printerTemplate.color);
                     u32 renderState = RenderFont(currentPrinter);
                     switch (renderState)
                     {

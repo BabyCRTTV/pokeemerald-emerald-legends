@@ -1,4 +1,5 @@
 #include "global.h"
+#include "legends_grass.h"
 #include "event_object_movement.h"
 #include "field_camera.h"
 #include "field_effect.h"
@@ -436,6 +437,7 @@ u32 FldEff_TallGrass(void)
     u8 spriteId;
     s16 x = gFieldEffectArguments[0];
     s16 y = gFieldEffectArguments[1];
+    LegendsStepSnowGrass(x, y);
     SetSpritePosToOffsetMapCoords(&x, &y, 8, 8);
     spriteId = CreateSpriteAtEndUnchecked(gFieldEffectObjectTemplatePointers[FLDEFFOBJ_TALL_GRASS], x, y, 0);
     if (spriteId != MAX_SPRITES)
