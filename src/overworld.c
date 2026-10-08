@@ -905,7 +905,9 @@ void LoadMapFromCameraTransition(u8 mapGroup, u8 mapNum)
     CopySecondaryTilesetToVramUsingHeap(gMapHeader.mapLayout);
     LoadSecondaryTilesetPalette(gMapHeader.mapLayout, TRUE); // skip copying to Faded, gamma shift will take care of it
 
-    ApplyWeatherColorMapToPals(GetNumPalsInPrimary(gMapHeader.mapLayout), NUM_PALS_TOTAL - GetNumPalsInPrimary(gMapHeader.mapLayout)); // palettes [6,12]
+    // Rebuild primary foliage too when crossing between seasonal and volcanic maps.
+    UpdateAltBgPalettes(PALETTES_MAP);
+    ApplyWeatherColorMapToPals(0, NUM_PALS_TOTAL);
 
     InitSecondaryTilesetAnimation();
     UpdateLocationHistoryForRoamer();
