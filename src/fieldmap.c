@@ -1,4 +1,5 @@
 #include "global.h"
+#include "legends_seasons.h"
 #include "battle_pyramid.h"
 #include "bg.h"
 #include "fieldmap.h"
@@ -1004,6 +1005,9 @@ static void LoadTilesetPalette(struct Tileset const *tileset, u16 destOffset, u1
             LoadPalette((const u16 *)tileset->palettes, destOffset, size);
             ApplyGlobalTintToPaletteEntries(destOffset, size >> 1);
         }
+        LegendsApplySeasonPalette(destOffset, size / 2);
+        if (!skipFaded)
+            CpuCopy16(&gPlttBufferUnfaded[destOffset], &gPlttBufferFaded[destOffset], size);
     }
 }
 

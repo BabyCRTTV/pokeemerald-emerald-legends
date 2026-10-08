@@ -1,0 +1,236 @@
+#include "global.h"
+#include "legends_seasons.h"
+#include "event_data.h"
+#include "field_weather.h"
+#include "fieldmap.h"
+#include "overworld.h"
+#include "palette.h"
+#include "rtc.h"
+#include "script.h"
+#include "constants/field_weather.h"
+#include "constants/map_types.h"
+#include "constants/region_map_sections.h"
+#include "constants/weather.h"
+#include "constants/rgb.h"
+
+// All state lives in unused permanent vars: saves retain their existing layout.
+static u32 GetCycleSeconds(void)
+{
+    u32 seconds;
+    if (VarGet(VAR_LEGENDS_SEASON_CLOCK_INIT) != 1)
+    {
+        seconds = (gSaveBlock2Ptr->playTimeHours * 3600u
+                 + gSaveBlock2Ptr->playTimeMinutes * 60u
+                 + gSaveBlock2Ptr->playTimeSeconds) % LEGENDS_SEASON_CYCLE_SECONDS;
+        VarSet(VAR_LEGENDS_SEASON_SECONDS_LO, seconds);
+        VarSet(VAR_LEGENDS_SEASON_SECONDS_HI, seconds >> 16);
+        VarSet(VAR_LEGENDS_SEASON_FRAMES, gSaveBlock2Ptr->playTimeVBlanks % 60);
+        VarSet(VAR_LEGENDS_SEASON_CLOCK_INIT, 1);
+    }
+    seconds = VarGet(VAR_LEGENDS_SEASON_SECONDS_LO)
+            | ((u32)VarGet(VAR_LEGENDS_SEASON_SECONDS_HI) << 16);
+    return seconds % LEGENDS_SEASON_CYCLE_SECONDS;
+}
+
+u8 LegendsGetSeasonMode(void)
+{
+    return VarGet(VAR_LEGENDS_SEASON_MODE) == LEGENDS_SEASONS_PLAYTIME
+         ? LEGENDS_SEASONS_PLAYTIME : LEGENDS_SEASONS_RTC;
+}
+
+void LegendsSetSeasonMode(u8 mode)
+{
+    GetCycleSeconds();
+    VarSet(VAR_LEGENDS_SEASON_MODE, mode < LEGENDS_SEASON_MODE_COUNT ? mode : LEGENDS_SEASONS_RTC);
+}
+
+u8 LegendsGetSeasonForMode(u8 mode)
+{
+    struct SiiRtcInfo rtc;
+    u32 month;
+    if (mode == LEGENDS_SEASONS_PLAYTIME)
+        return GetCycleSeconds() / LEGENDS_SEASON_SECONDS;
+
+    // Use the RTC's calendar, not the bedroom clock's local-time offset.
+    RtcGetInfo(&rtc);
+    month = ConvertBcdToBinary(rtc.month);
+    if (RtcGetErrorStatus() & (RTC_ERR_FLAG_MASK | RTC_INIT_ERROR) || month < 1 || month > 12)
+        return GetCycleSeconds() / LEGENDS_SEASON_SECONDS;
+    if (month >= 3 && month <= 5)
+        return LEGENDS_SPRING;
+    if (month >= 6 && month <= 8)
+        return LEGENDS_SUMMER;
+    if (month >= 9 && month <= 11)
+        return LEGENDS_AUTUMN;
+    return LEGENDS_WINTER;
+}
+
+u8 LegendsGetSeason(void)
+{
+    return LegendsGetSeasonForMode(LegendsGetSeasonMode());
+}
+
+const u8 *LegendsGetSeasonName(u8 season)
+{
+    static const u8 *const names[] =
+    {
+        COMPOUND_STRING("SPRING"), COMPOUND_STRING("SUMMER"),
+        COMPOUND_STRING("AUTUMN"), COMPOUND_STRING("WINTER"),
+    };
+    return names[season < LEGENDS_SEASON_COUNT ? season : LEGENDS_SPRING];
+}
+
+void LegendsSeasonTick(void)
+{
+    u32 seconds = GetCycleSeconds();
+    u16 frames = VarGet(VAR_LEGENDS_SEASON_FRAMES) + 1;
+    if (frames >= 60)
+    {
+        frames = 0;
+        seconds = (seconds + 1) % LEGENDS_SEASON_CYCLE_SECONDS;
+        VarSet(VAR_LEGENDS_SEASON_SECONDS_LO, seconds);
+        VarSet(VAR_LEGENDS_SEASON_SECONDS_HI, seconds >> 16);
+    }
+    VarSet(VAR_LEGENDS_SEASON_FRAMES, frames);
+}
+
+bool32 LegendsMapHasSeasons(void)
+{
+    if (gMapHeader.mapType != MAP_TYPE_TOWN && gMapHeader.mapType != MAP_TYPE_CITY
+     && gMapHeader.mapType != MAP_TYPE_ROUTE && gMapHeader.mapType != MAP_TYPE_OCEAN_ROUTE)
+        return FALSE;
+    // Preserve the volcanic belt, ash fields, hot springs and desert ecosystem.
+    switch (gMapHeader.regionMapSectionId)
+    {
+    case MAPSEC_MT_CHIMNEY:
+    case MAPSEC_JAGGED_PASS:
+    case MAPSEC_FIERY_PATH:
+    case MAPSEC_LAVARIDGE_TOWN:
+    case MAPSEC_FALLARBOR_TOWN:
+    case MAPSEC_ROUTE_111:
+    case MAPSEC_ROUTE_112:
+    case MAPSEC_ROUTE_113:
+        return FALSE;
+    }
+    return gMapHeader.weather != WEATHER_VOLCANIC_ASH
+        && gMapHeader.weather != WEATHER_SANDSTORM;
+}
+
+void LegendsApplySeasonPalette(u16 offset, u16 count)
+{
+    u32 i;
+    u8 season;
+    if (!LegendsMapHasSeasons())
+        return;
+    season = LegendsGetSeason();
+    for (i = offset; i < offset + count && i < 13 * 16; i++)
+    {
+        u16 color = gPlttBufferUnfaded[i];
+        u32 r = color & 31, g = (color >> 5) & 31, b = (color >> 10) & 31;
+        // Only vegetation greens, excluding transparent colors, blue water,
+        // buildings and UI. Start from original tileset colors on every refresh.
+        if (i < 16 || (i & 15) == 0 || g < r + 3 || g < b + 2 || g < 7)
+            continue;
+        switch (season)
+        {
+        case LEGENDS_SPRING:
+            r = (r * 7 + 18) / 8;
+            g = (g * 7 + 31) / 8;
+            b = (b * 7 + 12) / 8;
+            break;
+        case LEGENDS_SUMMER:
+            r = r * 7 / 8;
+            g = g * 15 / 16;
+            b = b * 7 / 8;
+            break;
+        case LEGENDS_AUTUMN:
+            r = (g * 7 + 31) / 8;
+            b = (b + g) / 4;
+            g = g * 3 / 4;
+            break;
+        case LEGENDS_WINTER:
+            r = (g * 3 + 31 * 2) / 5;
+            b = (g * 3 + 31 * 2) / 5;
+            g = (g * 3 + 30 * 2) / 5;
+            break;
+        }
+        gPlttBufferUnfaded[i] = RGB(r, g, b);
+    }
+}
+
+u8 LegendsSeasonWeather(u8 weather)
+{
+    u8 season;
+    u32 day, roll;
+    struct SiiRtcInfo rtc;
+    if (!LegendsMapHasSeasons())
+        return weather;
+    // Only ordinary ambient weather participates. Scripts retain drought,
+    // downpours, story conflict, ash, sand, underwater and special effects.
+    if (weather != WEATHER_SUNNY && weather != WEATHER_SUNNY_CLOUDS
+     && weather != WEATHER_RAIN && weather != WEATHER_RAIN_THUNDERSTORM)
+        return weather;
+    season = LegendsGetSeason();
+    if (LegendsGetSeasonMode() == LEGENDS_SEASONS_RTC && !(RtcGetErrorStatus() & (RTC_ERR_FLAG_MASK | RTC_INIT_ERROR)))
+    {
+        RtcGetInfo(&rtc);
+        day = RtcGetDayCount(&rtc);
+    }
+    else
+        day = GetCycleSeconds() / (7 * 3600);
+    // Stable per area/day (or seven gameplay hours), without consuming battle RNG.
+    roll = (day * 37 + gMapHeader.regionMapSectionId * 17) % 10;
+    if (gMapHeader.mapType == MAP_TYPE_OCEAN_ROUTE)
+        return roll < (season == LEGENDS_SUMMER ? 1 : 3) ? WEATHER_RAIN : WEATHER_SUNNY_CLOUDS;
+    // Southern islands remain mild; the mainland gets intermittent winter snow.
+    if (season == LEGENDS_WINTER && gMapHeader.regionMapSectionId != MAPSEC_DEWFORD_TOWN
+     && gMapHeader.regionMapSectionId != MAPSEC_PACIFIDLOG_TOWN
+     && gMapHeader.regionMapSectionId != MAPSEC_SOOTOPOLIS_CITY)
+        return roll < 6 ? WEATHER_SNOW : WEATHER_SUNNY_CLOUDS;
+    if (season == LEGENDS_AUTUMN && roll < 2)
+        return WEATHER_FOG_HORIZONTAL;
+    if (season == LEGENDS_SPRING && roll < 4)
+        return WEATHER_RAIN;
+    if (season == LEGENDS_SUMMER && roll == 0)
+        return WEATHER_RAIN_THUNDERSTORM;
+    // Rainforest routes keep their characteristic rainfall outside winter.
+    return weather;
+}
+
+void LegendsRestoreSeasonWeather(void)
+{
+    u16 original = VarGet(VAR_LEGENDS_BASE_WEATHER);
+    u8 weather = original >= 0x100 && original < 0x100 + WEATHER_COUNT
+               ? original - 0x100 : gMapHeader.weather;
+    // Older saves have no original-weather var; retain active story effects.
+    if (original == 0 && (GetSavedWeather() == WEATHER_ABNORMAL
+                      || GetSavedWeather() == WEATHER_DROUGHT
+                      || GetSavedWeather() == WEATHER_DOWNPOUR))
+        weather = GetSavedWeather();
+    SetSavedWeather(weather);
+}
+
+void LegendsRefreshSeasons(void)
+{
+    static u16 frames;
+    static u8 previousSeason = LEGENDS_SEASON_COUNT;
+    static u32 previousWeatherPeriod = (u32)-1;
+    u8 season;
+    u32 period;
+    if (++frames < 60 || gPaletteFade.active || ScriptContext_IsEnabled()
+     || gWeatherPtr->palProcessingState != WEATHER_PAL_STATE_IDLE)
+        return;
+    frames = 0;
+    season = LegendsGetSeason();
+    period = LegendsGetSeasonMode() == LEGENDS_SEASONS_PLAYTIME
+           ? GetCycleSeconds() / (7 * 3600) : RtcGetLocalDayCount();
+    if (season != previousSeason || period != previousWeatherPeriod)
+    {
+        previousSeason = season;
+        previousWeatherPeriod = period;
+        LoadMapTilesetPalettes(gMapHeader.mapLayout);
+        LegendsRestoreSeasonWeather();
+        DoCurrentWeather();
+        ApplyWeatherColorMapIfIdle(gWeatherPtr->colorMapIndex);
+    }
+}

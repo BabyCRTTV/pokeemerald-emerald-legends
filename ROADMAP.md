@@ -20,7 +20,8 @@ Goal: establish a stable `pokeemerald-expansion` project and implement the first
 - [ ] Lucky Egg behavior review / tuning
 - [x] Overworld HM / field move system
 - [x] Field move animation and usability rules
-- [ ] Seasonal framework prototype
+- [x] Seasonal framework: native RTC calendar / 28 saved gameplay hours
+- [x] Seasonal outdoor foliage and ambient weather
 - [ ] Seasonal encounter hooks
 
 ### Quality and maintenance

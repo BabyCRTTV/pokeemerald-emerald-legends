@@ -1,4 +1,6 @@
 #include "global.h"
+#include "legends_seasons.h"
+#include "event_data.h"
 #include "battle_anim.h"
 #include "event_object_movement.h"
 #include "fieldmap.h"
@@ -2515,7 +2517,8 @@ static u8 GetDynamicWeather(void);
 void SetSavedWeather(enum OverworldWeather weather)
 {
     u8 oldWeather = gSaveBlock1Ptr->weather;
-    gSaveBlock1Ptr->weather = TranslateWeatherNum(weather);
+    VarSet(VAR_LEGENDS_BASE_WEATHER, 0x100 + weather);
+    gSaveBlock1Ptr->weather = LegendsSeasonWeather(TranslateWeatherNum(weather));
     UpdateRainCounter(gSaveBlock1Ptr->weather, oldWeather);
 }
 
@@ -2526,9 +2529,7 @@ u8 GetSavedWeather(void)
 
 void SetSavedWeatherFromCurrMapHeader(void)
 {
-    enum OverworldWeather oldWeather = gSaveBlock1Ptr->weather;
-    gSaveBlock1Ptr->weather = TranslateWeatherNum(gMapHeader.weather);
-    UpdateRainCounter(gSaveBlock1Ptr->weather, oldWeather);
+    SetSavedWeather(gMapHeader.weather);
 }
 
 void SetWeather(enum OverworldWeather weather)
