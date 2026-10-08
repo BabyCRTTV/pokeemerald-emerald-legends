@@ -33,6 +33,12 @@ Base stats: HP 65 / Attack 70 / Defense 75 / Special Attack 80 / Special Defense
 | 44 | Energy Ball |
 | 48 | Bug Buzz |
 
+## Sprite refinements (v0.0.21)
+
+Game-test feedback led to smaller art without enlarging or changing native frame formats. The follower’s 32x32 frames now contain a half-size silhouette (up to 14x14 pixels), centered horizontally with its feet on the original ground baseline. The two PC/party icon frames contain approximately 20x16-pixel silhouettes, with margins comparable to native small Pokémon. The large front preview is 48x40 inside its 64x64 frames; both animation frames use the same pixel mapping, preserving the eye-only glimmer. Palette indices and normal/shiny colors remain unchanged.
+
+The battle back artwork retains its design and dimensions; `backPicYOffset` increases from 8 to 16, moving it 8 pixels down through the native coordinate resolver. The sway/glimmer callback changes only relative X and eye colors, so it preserves this lower Y position. Existing saves need no migration or new gift.
+
 ## Native implementation
 
 `src/legends_da_bug.c` handles the gift only; metadata and learnsets live in the separate Legends species/learnset headers. Custom species ID 1573 and National Dex 1026 append after existing species/dex entries. Existing species IDs are unchanged. Adding entry 1026 leaves the rounded dex bitfields at 129 bytes, preserving the SaveBlock layout.
@@ -43,6 +49,6 @@ The original cry is two soft rising chirps, 0.34 seconds of unsigned 8-bit mono 
 
 ## Validation and emulator QA
 
-`test/legends-da-bug.test.py` compiles the actual gift module against storage/RNG fixtures, exercises all ten roll outcomes with ordinary shiny on and off, duplicate guard, full-box retry, moves/level and dex registration. It also checks asset dimensions, eye-only frame changes, shared red glimmer, PCM bounds, exact dex text, unchanged dex bitfield size and no wild placement.
+`test/legends-da-bug.test.py` compiles the actual gift module against storage/RNG fixtures, exercises all ten roll outcomes with ordinary shiny on and off, duplicate guard, full-box retry, moves/level and dex registration. It also checks visible follower/icon bounds and padding, asset dimensions, eye-only frame changes, shared red glimmer, PCM bounds, exact dex text, unchanged dex bitfield size and no wild placement.
 
 Before judging presentation, test in an emulator: new save Box 1 and all four move PP; v0.0.19 save migration without replacement; full boxes followed by space/save/continue; withdraw/save/reload with no duplicates; normal/shiny Summary, storage icon, follower facing/walking/reflection, battle rear and Pokédex front sway/glimmer; play the cry and inspect all four dex lines. Automated compilation/patch verification does not replace this visual/audio gameplay QA.

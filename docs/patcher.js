@@ -2,7 +2,7 @@
   "use strict";
 
   const EXPECTED_SHA1 = "f3ae088181bf583e55daf962a92bb46f4f1d07b7";
-  const VERSION = "0.0.20";
+  const VERSION = "0.0.21";
   const params = new URLSearchParams(window.location.search);
   const IS_DEBUG = params.get("build") === "debug";
   const BUILD_LABEL = IS_DEBUG ? "Debug" : "Release";

@@ -77,6 +77,16 @@ assets=root/'graphics/pokemon/da_bug'
 for file,size in [('anim_front.png',(64,128)),('back.png',(64,64)),('overworld.png',(192,32)),('icon.png',(32,64)),('footprint.png',(16,16))]:
  im=Image.open(assets/file);assert im.mode=='P' and im.size==size
  assert max(im.getdata())<(2 if file=='footprint.png' else 16)
+# Native menu/follower frames must retain padding instead of filling the slot.
+for name,count in [('overworld.png',6),('icon.png',2)]:
+ im=Image.open(assets/name)
+ for i in range(count):
+  frame=im.crop((i*32,0,(i+1)*32,32)) if count==6 else im.crop((0,i*32,32,(i+1)*32))
+  left,top,right,bottom=frame.getbbox()
+  if count==6:
+   assert right-left<=14 and bottom-top<=14 and 8<=left<right<=24 and bottom in (31,32)
+  else:
+   assert right-left<=22 and bottom-top<=18 and left>=4 and right<=28 and top>=8 and bottom<=30
 front=Image.open(assets/'anim_front.png');changed=[]
 for y in range(64):
  for x in range(64):

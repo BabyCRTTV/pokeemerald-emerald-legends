@@ -2,6 +2,16 @@
 
 This is the developer-facing history for the **Debug** build. Shared Legends changes are repeated here so this file stands on its own; Debug-only behavior is called out separately.
 
+## [0.0.21] - 2026-10-08
+
+### Changed
+- Halved Da Bug’s follower art inside its existing 32x32 frames, keeping it centered and grounded; visible silhouettes now fit within 14x14 pixels.
+- Reduced its shared PC/party icon to roughly 20x16 pixels, comparable to native small Pokémon icons, with padding around every frame.
+- Reduced the front sprite used by the large PC/Pokédex preview from 60x48 to 48x40 pixels; preserved the normal/shiny colors and eye-only glimmer frames.
+- Lowered Da Bug’s battle back sprite by 8 pixels using its native species Y offset.
+- Updated sprite bounds checks and art documentation. The existing PC gift, save compatibility, moves, cry and shiny roll are unchanged.
+- Release and Debug share these adjustments with no variant-specific differences; developer tools remain disabled in Release and enabled in Debug.
+
 ## [0.0.20] - 2026-10-08
 
 ### Added
