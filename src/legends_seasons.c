@@ -213,8 +213,9 @@ void LegendsRestoreSeasonWeather(void)
 void LegendsRefreshSeasons(void)
 {
     static u16 frames;
-    static u8 previousSeason = LEGENDS_SEASON_COUNT;
-    static u32 previousWeatherPeriod = (u32)-1;
+    static u8 previousSeason;
+    static u32 previousWeatherPeriod;
+    static bool32 initialized;
     u8 season;
     u32 period;
     if (++frames < 60 || gPaletteFade.active || ScriptContext_IsEnabled()
@@ -224,8 +225,9 @@ void LegendsRefreshSeasons(void)
     season = LegendsGetSeason();
     period = LegendsGetSeasonMode() == LEGENDS_SEASONS_PLAYTIME
            ? GetCycleSeconds() / (7 * 3600) : RtcGetLocalDayCount();
-    if (season != previousSeason || period != previousWeatherPeriod)
+    if (!initialized || season != previousSeason || period != previousWeatherPeriod)
     {
+        initialized = TRUE;
         previousSeason = season;
         previousWeatherPeriod = period;
         LoadMapTilesetPalettes(gMapHeader.mapLayout);
