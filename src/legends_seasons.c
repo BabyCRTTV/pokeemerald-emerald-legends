@@ -2,12 +2,9 @@
 #include "legends_seasons.h"
 #include "event_data.h"
 #include "field_weather.h"
-#include "fieldmap.h"
 #include "overworld.h"
 #include "palette.h"
 #include "rtc.h"
-#include "script.h"
-#include "constants/field_weather.h"
 #include "constants/map_types.h"
 #include "constants/region_map_sections.h"
 #include "constants/weather.h"
@@ -44,6 +41,19 @@ void LegendsSetSeasonMode(u8 mode)
     VarSet(VAR_LEGENDS_SEASON_MODE, mode < LEGENDS_SEASON_MODE_COUNT ? mode : LEGENDS_SEASONS_RTC);
 }
 
+void LegendsSetPlaytimeSeason(u8 season)
+{
+    u32 seconds;
+    if (LegendsGetSeasonMode() != LEGENDS_SEASONS_PLAYTIME || season >= LEGENDS_SEASON_COUNT)
+        return;
+    seconds = season * LEGENDS_SEASON_SECONDS;
+    VarSet(VAR_LEGENDS_SEASON_SECONDS_LO, seconds);
+    VarSet(VAR_LEGENDS_SEASON_SECONDS_HI, seconds >> 16);
+    VarSet(VAR_LEGENDS_SEASON_FRAMES, 0);
+    VarSet(VAR_LEGENDS_SEASON_CLOCK_INIT, 1);
+    // Keep the visible season until the next fully faded map load.
+}
+
 u8 LegendsGetSeasonForMode(u8 mode)
 {
     struct SiiRtcInfo rtc;
@@ -68,6 +78,35 @@ u8 LegendsGetSeasonForMode(u8 mode)
 u8 LegendsGetSeason(void)
 {
     return LegendsGetSeasonForMode(LegendsGetSeasonMode());
+}
+
+// Commit only while loading a fully faded map (never a seamless route edge).
+// Both foliage and ambient weather use this saved snapshot until the next warp.
+void LegendsCommitSeasonTransition(void)
+{
+    struct SiiRtcInfo rtc;
+    u32 day = GetCycleSeconds() / LEGENDS_SEASON_SECONDS;
+    if (LegendsGetSeasonMode() == LEGENDS_SEASONS_RTC
+     && !(RtcGetErrorStatus() & (RTC_ERR_FLAG_MASK | RTC_INIT_ERROR)))
+    {
+        RtcGetInfo(&rtc);
+        if (ConvertBcdToBinary(rtc.month) >= 1 && ConvertBcdToBinary(rtc.month) <= 12)
+            day = RtcGetDayCount(&rtc);
+    }
+    VarSet(VAR_LEGENDS_ACTIVE_SEASON, LegendsGetSeason() + 1);
+    VarSet(VAR_LEGENDS_SEASON_WEATHER_DAY, day);
+}
+
+u8 LegendsGetActiveSeason(void)
+{
+    u16 season = VarGet(VAR_LEGENDS_ACTIVE_SEASON);
+    if (season < 1 || season > LEGENDS_SEASON_COUNT)
+    {
+        // New games and pre-0.0.12 saves initialize at their first field load.
+        LegendsCommitSeasonTransition();
+        season = VarGet(VAR_LEGENDS_ACTIVE_SEASON);
+    }
+    return season - 1;
 }
 
 const u8 *LegendsGetSeasonName(u8 season)
@@ -122,7 +161,7 @@ void LegendsApplySeasonPalette(u16 offset, u16 count)
     u8 season;
     if (!LegendsMapHasSeasons())
         return;
-    season = LegendsGetSeason();
+    season = LegendsGetActiveSeason();
     for (i = offset; i < offset + count && i < 13 * 16; i++)
     {
         u16 color = gPlttBufferUnfaded[i];
@@ -162,7 +201,6 @@ u8 LegendsSeasonWeather(u8 weather)
 {
     u8 season;
     u32 day, roll;
-    struct SiiRtcInfo rtc;
     if (!LegendsMapHasSeasons())
         return weather;
     // Only ordinary ambient weather participates. Scripts retain drought,
@@ -170,15 +208,9 @@ u8 LegendsSeasonWeather(u8 weather)
     if (weather != WEATHER_SUNNY && weather != WEATHER_SUNNY_CLOUDS
      && weather != WEATHER_RAIN && weather != WEATHER_RAIN_THUNDERSTORM)
         return weather;
-    season = LegendsGetSeason();
-    if (LegendsGetSeasonMode() == LEGENDS_SEASONS_RTC && !(RtcGetErrorStatus() & (RTC_ERR_FLAG_MASK | RTC_INIT_ERROR)))
-    {
-        RtcGetInfo(&rtc);
-        day = RtcGetDayCount(&rtc);
-    }
-    else
-        day = GetCycleSeconds() / (7 * 3600);
-    // Stable per area/day (or seven gameplay hours), without consuming battle RNG.
+    season = LegendsGetActiveSeason();
+    day = VarGet(VAR_LEGENDS_SEASON_WEATHER_DAY);
+    // Stable until a faded warp, without consuming battle RNG.
     roll = (day * 37 + gMapHeader.regionMapSectionId * 17) % 10;
     if (gMapHeader.mapType == MAP_TYPE_OCEAN_ROUTE)
         return roll < (season == LEGENDS_SUMMER ? 1 : 3) ? WEATHER_RAIN : WEATHER_SUNNY_CLOUDS;
@@ -210,29 +242,3 @@ void LegendsRestoreSeasonWeather(void)
     SetSavedWeather(weather);
 }
 
-void LegendsRefreshSeasons(void)
-{
-    static u16 frames;
-    static u8 previousSeason;
-    static u32 previousWeatherPeriod;
-    static bool32 initialized;
-    u8 season;
-    u32 period;
-    if (++frames < 60 || gPaletteFade.active || ScriptContext_IsEnabled()
-     || gWeatherPtr->palProcessingState != WEATHER_PAL_STATE_IDLE)
-        return;
-    frames = 0;
-    season = LegendsGetSeason();
-    period = LegendsGetSeasonMode() == LEGENDS_SEASONS_PLAYTIME
-           ? GetCycleSeconds() / (7 * 3600) : RtcGetLocalDayCount();
-    if (!initialized || season != previousSeason || period != previousWeatherPeriod)
-    {
-        initialized = TRUE;
-        previousSeason = season;
-        previousWeatherPeriod = period;
-        LoadMapTilesetPalettes(gMapHeader.mapLayout);
-        LegendsRestoreSeasonWeather();
-        DoCurrentWeather();
-        ApplyWeatherColorMapIfIdle(gWeatherPtr->colorMapIndex);
-    }
-}

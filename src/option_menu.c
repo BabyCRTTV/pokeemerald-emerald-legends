@@ -11,6 +11,8 @@
 #include "scanline_effect.h"
 #include "sprite.h"
 #include "strings.h"
+#include "string_util.h"
+#include "constants/characters.h"
 #include "task.h"
 #include "text.h"
 #include "text_window.h"
@@ -29,6 +31,8 @@
 #define tMenuPage data[8]
 #define tShinyRate data[9]
 #define tSeasonMode data[10]
+#define tSelectedSeason data[11]
+#define tSeasonEdited data[12]
 
 enum
 {
@@ -39,6 +43,7 @@ enum
     MENUITEM_SHINYRATE,
     MENUITEM_SEASONMODE,
     MENUITEM_SEASON,
+    MENUITEM_SETSEASON,
     MENUITEM_SOUND,
     MENUITEM_BUTTONMODE,
     MENUITEM_FRAMETYPE,
@@ -80,7 +85,9 @@ static u8 ShinyRate_ProcessInput(u8 selection);
 static void ShinyRate_DrawChoices(u8 selection, u8 y);
 static u8 SeasonMode_ProcessInput(u8 selection);
 static void SeasonMode_DrawChoices(u8 selection, u8 y);
-static void Season_DrawChoice(u8 mode, u8 y);
+static void Season_DrawChoice(u8 y);
+static void SetSeason_DrawChoice(u8 mode, u8 season, u8 y);
+static u8 SetSeason_ProcessInput(u8 selection);
 static u8 Sound_ProcessInput(u8 selection);
 static void Sound_DrawChoices(u8 selection, u8 y);
 static u8 FrameType_ProcessInput(u8 selection);
@@ -97,9 +104,9 @@ EWRAM_DATA static bool8 sArrowPressed = FALSE;
 
 static const u8 gText_PageHint[]           = _("L/R");
 #ifdef RELEASE
-static const u8 gText_LegendsVersion[]      = _("LEGENDS v0.0.11");
+static const u8 gText_LegendsVersion[]      = _("LEGENDS v0.0.12");
 #else
-static const u8 gText_LegendsVersion[]      = _("LEGENDS v0.0.11-D");
+static const u8 gText_LegendsVersion[]      = _("LEGENDS v0.0.12-D");
 #endif
 static const u8 gText_TextSpeedSlow[]      = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}SLOW");
 static const u8 gText_TextSpeedMid[]       = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}MID");
@@ -134,6 +141,7 @@ static const u8 *const sOptionMenuItemsNames[MENUITEM_COUNT] =
     [MENUITEM_SHINYRATE]   = COMPOUND_STRING("SHINY RATE"),
     [MENUITEM_SEASONMODE]  = COMPOUND_STRING("SEASONS"),
     [MENUITEM_SEASON]      = COMPOUND_STRING("CURRENT"),
+    [MENUITEM_SETSEASON]  = COMPOUND_STRING("SET SEASON"),
     [MENUITEM_SOUND]       = COMPOUND_STRING("SOUND"),
     [MENUITEM_BUTTONMODE]  = COMPOUND_STRING("BUTTON MODE"),
     [MENUITEM_FRAMETYPE]   = COMPOUND_STRING("FRAME"),
@@ -164,6 +172,7 @@ static const u8 sOptionMenuPageItems[OPTION_PAGE_COUNT][OPTION_PAGE_MAX_ITEMS] =
         MENUITEM_SHINYRATE,
         MENUITEM_SEASONMODE,
         MENUITEM_SEASON,
+        MENUITEM_SETSEASON,
         MENUITEM_CANCEL,
     },
 };
@@ -171,7 +180,7 @@ static const u8 sOptionMenuPageItems[OPTION_PAGE_COUNT][OPTION_PAGE_MAX_ITEMS] =
 static const u8 sOptionMenuPageItemCounts[OPTION_PAGE_COUNT] =
 {
     [OPTION_PAGE_GENERAL] = 7,
-    [OPTION_PAGE_LEGENDS] = 5,
+    [OPTION_PAGE_LEGENDS] = 6,
 };
 
 static const struct WindowTemplate sOptionMenuWinTemplates[] =
@@ -324,6 +333,8 @@ void CB2_InitOptionMenu(void)
         gTasks[taskId].tExpShare = LegendsIsExpShareEnabled() ? 0 : 1;
         gTasks[taskId].tShinyRate = LegendsGetShinyRateSetting();
         gTasks[taskId].tSeasonMode = LegendsGetSeasonMode();
+        gTasks[taskId].tSelectedSeason = LegendsGetSeasonForMode(LEGENDS_SEASONS_PLAYTIME);
+        gTasks[taskId].tSeasonEdited = FALSE;
 
         DrawOptionMenuPage(taskId);
         HighlightOptionMenuItem(gTasks[taskId].tMenuSelection);
@@ -436,7 +447,19 @@ static void Task_OptionMenuProcessInput(u8 taskId)
             if (previousOption != gTasks[taskId].tSeasonMode)
             {
                 SeasonMode_DrawChoices(gTasks[taskId].tSeasonMode, y);
-                Season_DrawChoice(gTasks[taskId].tSeasonMode, y + OPTION_ROW_HEIGHT);
+                SetSeason_DrawChoice(gTasks[taskId].tSeasonMode, gTasks[taskId].tSelectedSeason, y + 2 * OPTION_ROW_HEIGHT);
+            }
+            break;
+        case MENUITEM_SETSEASON:
+            if (gTasks[taskId].tSeasonMode == LEGENDS_SEASONS_PLAYTIME)
+            {
+                previousOption = gTasks[taskId].tSelectedSeason;
+                gTasks[taskId].tSelectedSeason = SetSeason_ProcessInput(previousOption);
+                if (previousOption != gTasks[taskId].tSelectedSeason)
+                {
+                    gTasks[taskId].tSeasonEdited = TRUE;
+                    SetSeason_DrawChoice(gTasks[taskId].tSeasonMode, gTasks[taskId].tSelectedSeason, y);
+                }
             }
             break;
         case MENUITEM_SOUND:
@@ -483,6 +506,8 @@ static void Task_OptionMenuSave(u8 taskId)
     LegendsSetExpShareEnabled(gTasks[taskId].tExpShare == 0);
     LegendsSetShinyRateSetting(gTasks[taskId].tShinyRate);
     LegendsSetSeasonMode(gTasks[taskId].tSeasonMode);
+    if (gTasks[taskId].tSeasonEdited)
+        LegendsSetPlaytimeSeason(gTasks[taskId].tSelectedSeason);
 
     BeginNormalPaletteFade(PALETTES_ALL, 0, 0, 16, RGB_BLACK);
     gTasks[taskId].func = Task_OptionMenuFadeOut;
@@ -513,7 +538,10 @@ static void DrawOptionMenuChoice(const u8 *text, u8 x, u8 y, u8 style)
     for (i = 0; *text != EOS && i < ARRAY_COUNT(dst) - 1; i++)
         dst[i] = *(text++);
 
-    if (style != 0)
+    // Only recolor the standard COLOR/SHADOW prefix, never ordinary letters.
+    if (style != 0 && i >= 6
+     && dst[0] == EXT_CTRL_CODE_BEGIN && dst[1] == EXT_CTRL_CODE_COLOR
+     && dst[3] == EXT_CTRL_CODE_BEGIN && dst[4] == EXT_CTRL_CODE_SHADOW)
     {
         dst[2] = TEXT_COLOR_RED;
         dst[5] = TEXT_COLOR_LIGHT_RED;
@@ -689,13 +717,50 @@ static u8 SeasonMode_ProcessInput(u8 selection)
 static void SeasonMode_DrawChoices(u8 selection, u8 y)
 {
     const u8 *text = selection == LEGENDS_SEASONS_PLAYTIME
-                  ? COMPOUND_STRING("28H PLAY") : COMPOUND_STRING("REAL TIME");
+                  ? COMPOUND_STRING("{COLOR GREEN}{SHADOW LIGHT_GREEN}7H PLAY")
+                  : COMPOUND_STRING("{COLOR GREEN}{SHADOW LIGHT_GREEN}REAL TIME");
+    FillWindowPixelRect(WIN_OPTIONS, PIXEL_FILL(1), 104, y, 96, OPTION_ROW_HEIGHT);
     DrawOptionMenuChoice(text, 120, y, 1);
 }
 
-static void Season_DrawChoice(u8 mode, u8 y)
+static void DrawSeasonName(u8 season, u8 y, bool32 editable)
 {
-    DrawOptionMenuChoice(LegendsGetSeasonName(LegendsGetSeasonForMode(mode)), 130, y, 1);
+    u8 text[24];
+    StringCopy(text, COMPOUND_STRING("{COLOR GREEN}{SHADOW LIGHT_GREEN}"));
+    StringAppend(text, LegendsGetSeasonName(season));
+    FillWindowPixelRect(WIN_OPTIONS, PIXEL_FILL(1), 104, y, 96, OPTION_ROW_HEIGHT);
+    DrawOptionMenuChoice(text, 130, y, editable);
+}
+
+static void Season_DrawChoice(u8 y)
+{
+    DrawSeasonName(LegendsGetActiveSeason(), y, FALSE);
+}
+
+static u8 SetSeason_ProcessInput(u8 selection)
+{
+    if (JOY_NEW(DPAD_RIGHT))
+    {
+        selection = (selection + 1) % LEGENDS_SEASON_COUNT;
+        sArrowPressed = TRUE;
+    }
+    else if (JOY_NEW(DPAD_LEFT))
+    {
+        selection = (selection + LEGENDS_SEASON_COUNT - 1) % LEGENDS_SEASON_COUNT;
+        sArrowPressed = TRUE;
+    }
+    return selection;
+}
+
+static void SetSeason_DrawChoice(u8 mode, u8 season, u8 y)
+{
+    if (mode == LEGENDS_SEASONS_RTC)
+    {
+        FillWindowPixelRect(WIN_OPTIONS, PIXEL_FILL(1), 104, y, 96, OPTION_ROW_HEIGHT);
+        DrawOptionMenuChoice(COMPOUND_STRING("{COLOR LIGHT_GRAY}{SHADOW DARK_GRAY}CALENDAR"), 120, y, 0);
+    }
+    else
+        DrawSeasonName(season, y, TRUE);
 }
 
 static u8 Sound_ProcessInput(u8 selection)
@@ -902,7 +967,10 @@ static void DrawOptionMenuPage(u8 taskId)
             SeasonMode_DrawChoices(gTasks[taskId].tSeasonMode, row * OPTION_ROW_HEIGHT);
             break;
         case MENUITEM_SEASON:
-            Season_DrawChoice(gTasks[taskId].tSeasonMode, row * OPTION_ROW_HEIGHT);
+            Season_DrawChoice(row * OPTION_ROW_HEIGHT);
+            break;
+        case MENUITEM_SETSEASON:
+            SetSeason_DrawChoice(gTasks[taskId].tSeasonMode, gTasks[taskId].tSelectedSeason, row * OPTION_ROW_HEIGHT);
             break;
         case MENUITEM_SOUND:
             Sound_DrawChoices(gTasks[taskId].tSound, row * OPTION_ROW_HEIGHT);
