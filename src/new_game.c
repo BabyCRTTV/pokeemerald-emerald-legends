@@ -1,4 +1,5 @@
 #include "global.h"
+#include "legends_appearance.h"
 #include "clock.h"
 #include "new_game.h"
 #include "random.h"
@@ -185,6 +186,7 @@ void NewGameInitData(void)
     PlayTimeCounter_Reset();
     ClearPokedexFlags();
     InitEventData();
+    LegendsApplyAppearanceToNewGame();
     LegendsInitNewGameSettings();
     LegendsApplyTitleOptionsToNewGame();
     ClearTVShowData();

@@ -1,4 +1,5 @@
 #include "global.h"
+#include "legends_appearance.h"
 #include "battle.h"
 #include "battle_anim.h"
 #include "battle_controllers.h"
@@ -276,7 +277,7 @@ void SafariBufferExecCompleted(enum BattlerId battler)
 
 static void SafariHandleDrawTrainerPic(enum BattlerId battler)
 {
-    enum TrainerPicID trainerPicId = GetPlayerTrainerPic(gSaveBlock2Ptr->playerGender, GAME_VERSION);
+    enum TrainerPicID trainerPicId = LegendsGetPlayerTrainerPic(gSaveBlock2Ptr->playerGender);
 
     BtlController_HandleDrawTrainerPic(battler, trainerPicId, FALSE,
                                        80, 80 + 4 * (8 - GetTrainerBackPicCoords(trainerPicId)->size),

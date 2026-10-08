@@ -1,4 +1,5 @@
 #include "global.h"
+#include "legends_appearance.h"
 #include "trainer_pokemon_sprites.h"
 #include "bg.h"
 #include "constants/rgb.h"
@@ -217,6 +218,9 @@ static void DrawMainMenuWindowBorder(const struct WindowTemplate *, u16);
 static void Task_HighlightSelectedMainMenuItem(u8);
 static void Task_NewGameBirchSpeech_WaitToShowGenderMenu(u8);
 static void Task_NewGameBirchSpeech_ChooseGender(u8);
+static void Task_NewGameBirchSpeech_ShowAppearance(u8);
+static void Task_NewGameBirchSpeech_ChooseAppearance(u8);
+static void NewGameBirchSpeech_RefreshAppearance(u8);
 static void NewGameBirchSpeech_ShowGenderMenu(void);
 static s8 NewGameBirchSpeech_ProcessGenderMenuInput(void);
 static void NewGameBirchSpeech_ClearGenderWindow(u8, u8);
@@ -424,6 +428,33 @@ static const struct WindowTemplate sNewGameBirchSpeechTextWindows[] =
     DUMMY_WIN_TEMPLATE
 };
 
+
+// Reuse the native preset-name choice window; the preview owns a separate tile range.
+static const struct WindowTemplate sAppearancePreviewWindow =
+{
+    .bg = 0, .tilemapLeft = 20, .tilemapTop = 5,
+    .width = 8, .height = 8, .paletteNum = 15, .baseBlock = 0x110,
+};
+static const struct MenuAction sSkinToneChoices[] =
+{
+    {COMPOUND_STRING("FAIR"), {NULL}},
+    {COMPOUND_STRING("LIGHT"), {NULL}},
+    {COMPOUND_STRING("MEDIUM"), {NULL}},
+    {COMPOUND_STRING("BROWN"), {NULL}},
+    {COMPOUND_STRING("DEEP"), {NULL}},
+};
+static const struct MenuAction sOutfitChoices[] =
+{
+    {COMPOUND_STRING("EMERALD"), {NULL}},
+    {COMPOUND_STRING("TRAIL"), {NULL}},
+    {COMPOUND_STRING("SPORT"), {NULL}},
+};
+EWRAM_DATA static u8 sAppearancePreviewHandle = 0;
+EWRAM_DATA static bool8 sAppearanceChoosingOutfit = FALSE;
+EWRAM_DATA static u8 sAppearanceLastChoice = 0;
+// Kept alive until VBlank consumes the requested sprite copies.
+EWRAM_DATA static u8 sIntroAppearanceGfx[2][TRAINER_PIC_SIZE] = {0};
+
 static const u16 sMainMenuBgPal[] = INCGFX_U16("graphics/interface/main_menu_bg.pal", ".gbapal");
 static const u16 sMainMenuTextPal[] = INCGFX_U16("graphics/interface/main_menu_text.pal", ".gbapal");
 
@@ -568,6 +599,7 @@ static void VBlankCB_MainMenu(void)
 void CB2_InitMainMenu(void)
 {
     LegendsClearTitleOptions();
+    LegendsClearAppearanceSelection();
     InitMainMenu(FALSE);
 }
 
@@ -1299,6 +1331,9 @@ static void HighlightSelectedMainMenuItem(enum PartyMenuType menuType, u8 select
 
 static void Task_NewGameBirchSpeech_Init(u8 taskId)
 {
+    LegendsBeginAppearanceSelection();
+    sAppearancePreviewHandle = 0;
+    sAppearanceChoosingOutfit = FALSE;
     SetGpuReg(REG_OFFSET_DISPCNT, 0);
     SetGpuReg(REG_OFFSET_DISPCNT, DISPCNT_OBJ_ON | DISPCNT_OBJ_1D_MAP);
     InitBgFromTemplate(&sBirchBgTemplate);
@@ -1541,18 +1576,20 @@ static void Task_NewGameBirchSpeech_ChooseGender(u8 taskId)
     switch (gender)
     {
     case MALE:
-        PlaySE(SE_SELECT);
-        gSaveBlock2Ptr->playerGender = gender;
-        NewGameBirchSpeech_ClearGenderWindow(1, 1);
-        gTasks[taskId].func = Task_NewGameBirchSpeech_WhatsYourName;
-        break;
     case FEMALE:
         PlaySE(SE_SELECT);
         gSaveBlock2Ptr->playerGender = gender;
-        NewGameBirchSpeech_ClearGenderWindow(1, 1);
-        gTasks[taskId].func = Task_NewGameBirchSpeech_WhatsYourName;
-        break;
-    default: //repeat task if nothing is selected
+        gTasks[taskId].tPlayerGender = gender;
+        gSprites[gTasks[taskId].tPlayerSpriteId].invisible = TRUE;
+        gTasks[taskId].tPlayerSpriteId = gender == MALE
+            ? gTasks[taskId].tBrendanSpriteId : gTasks[taskId].tMaySpriteId;
+        gSprites[gTasks[taskId].tPlayerSpriteId].invisible = FALSE;
+        gSprites[gTasks[taskId].tPlayerSpriteId].oam.objMode = ST_OAM_OBJ_NORMAL;
+        NewGameBirchSpeech_ClearGenderWindow(1, TRUE);
+        sAppearanceChoosingOutfit = FALSE;
+        gTasks[taskId].func = Task_NewGameBirchSpeech_ShowAppearance;
+        return;
+    default:
         break;
     }
     gender2 = Menu_GetCursorPos();
@@ -1604,6 +1641,121 @@ static void Task_NewGameBirchSpeech_SlideInNewGenderSprite(u8 taskId)
         {
             gSprites[spriteId].oam.objMode = ST_OAM_OBJ_NORMAL;
             gTasks[taskId].func = Task_NewGameBirchSpeech_ChooseGender;
+        }
+    }
+}
+
+
+static void NewGameBirchSpeech_RefreshAppearance(u8 taskId)
+{
+    u8 gender;
+    for (gender = 0; gender < 2; gender++)
+    {
+        u8 spriteId = gender == MALE ? gTasks[taskId].tBrendanSpriteId : gTasks[taskId].tMaySpriteId;
+        enum TrainerPicID pic = LegendsGetPlayerTrainerPic(gender);
+        if (spriteId == SPRITE_NONE)
+            continue;
+        DecompressDataWithHeaderWram(GetTrainerFrontPicData(pic), sIntroAppearanceGfx[gender]);
+        RequestSpriteCopy(sIntroAppearanceGfx[gender],
+            (void *)(OBJ_VRAM0 + gSprites[spriteId].oam.tileNum * TILE_SIZE_4BPP), TRAINER_PIC_SIZE);
+        LoadPalette(gLegendsTrainerPalettes[gender], OBJ_PLTT_ID(gSprites[spriteId].oam.paletteNum), PLTT_SIZE_4BPP);
+    }
+}
+
+static void NewGameBirchSpeech_HideAppearancePreview(u8 taskId)
+{
+    if (sAppearancePreviewHandle != 0)
+    {
+        NewGameBirchSpeech_ClearGenderWindow(sAppearancePreviewHandle - 1, TRUE);
+        RemoveWindow(sAppearancePreviewHandle - 1);
+        sAppearancePreviewHandle = 0;
+    }
+    gSprites[gTasks[taskId].tPlayerSpriteId].x = 180;
+    gSprites[gTasks[taskId].tPlayerSpriteId].y = 60;
+}
+
+static void Task_NewGameBirchSpeech_ShowAppearance(u8 taskId)
+{
+    u32 windowId;
+    const struct MenuAction *choices = sAppearanceChoosingOutfit ? sOutfitChoices : sSkinToneChoices;
+    u8 count = sAppearanceChoosingOutfit ? LEGENDS_OUTFIT_COUNT : LEGENDS_SKIN_TONE_COUNT;
+    u8 cursor = sAppearanceChoosingOutfit ? LegendsGetOutfit() : LegendsGetSkinTone();
+
+    NewGameBirchSpeech_ClearWindow(0);
+    StringCopy(gStringVar4, sAppearanceChoosingOutfit
+        ? COMPOUND_STRING("Which outfit suits you?\nChoose a style for your journey.")
+        : COMPOUND_STRING("Let's find your look.\nChoose your skin tone."));
+    AddTextPrinterForMessage(TRUE);
+    DrawMainMenuWindowBorder(&sNewGameBirchSpeechTextWindows[2], 0xF3);
+    FillWindowPixelBuffer(2, PIXEL_FILL(1));
+    PrintMenuTable(2, count, choices);
+    InitMenuInUpperLeftCornerNormal(2, count, cursor);
+    PutWindowTilemap(2);
+    CopyWindowToVram(2, COPYWIN_FULL);
+
+    if (sAppearancePreviewHandle == 0)
+    {
+        windowId = AddWindow(&sAppearancePreviewWindow);
+        if (windowId != WINDOW_NONE)
+        {
+            sAppearancePreviewHandle = windowId + 1;
+            DrawMainMenuWindowBorder(&sAppearancePreviewWindow, 0xF3);
+            FillWindowPixelBuffer(windowId, PIXEL_FILL(1));
+            PutWindowTilemap(windowId);
+            CopyWindowToVram(windowId, COPYWIN_FULL);
+        }
+    }
+    gSprites[gTasks[taskId].tPlayerSpriteId].x = 192;
+    gSprites[gTasks[taskId].tPlayerSpriteId].y = 72;
+    NewGameBirchSpeech_RefreshAppearance(taskId);
+    sAppearanceLastChoice = cursor;
+    gTasks[taskId].func = Task_NewGameBirchSpeech_ChooseAppearance;
+}
+
+static void Task_NewGameBirchSpeech_ChooseAppearance(u8 taskId)
+{
+    s8 input;
+    u8 cursor;
+    if (RunTextPrintersAndIsPrinter0Active())
+        return;
+    input = Menu_ProcessInputNoWrap();
+    cursor = Menu_GetCursorPos();
+    if (cursor != sAppearanceLastChoice)
+    {
+        LegendsSetAppearanceSelection(
+            sAppearanceChoosingOutfit ? LegendsGetSkinTone() : cursor,
+            sAppearanceChoosingOutfit ? cursor : LegendsGetOutfit());
+        NewGameBirchSpeech_RefreshAppearance(taskId);
+        sAppearanceLastChoice = cursor;
+    }
+    if (input >= 0)
+    {
+        PlaySE(SE_SELECT);
+        NewGameBirchSpeech_ClearGenderWindow(2, TRUE);
+        if (!sAppearanceChoosingOutfit)
+        {
+            sAppearanceChoosingOutfit = TRUE;
+            gTasks[taskId].func = Task_NewGameBirchSpeech_ShowAppearance;
+        }
+        else
+        {
+            NewGameBirchSpeech_HideAppearancePreview(taskId);
+            gTasks[taskId].func = Task_NewGameBirchSpeech_WhatsYourName;
+        }
+    }
+    else if (input == MENU_B_PRESSED)
+    {
+        PlaySE(SE_SELECT);
+        NewGameBirchSpeech_ClearGenderWindow(2, TRUE);
+        if (sAppearanceChoosingOutfit)
+        {
+            sAppearanceChoosingOutfit = FALSE;
+            gTasks[taskId].func = Task_NewGameBirchSpeech_ShowAppearance;
+        }
+        else
+        {
+            NewGameBirchSpeech_HideAppearancePreview(taskId);
+            gTasks[taskId].func = Task_NewGameBirchSpeech_BoyOrGirl;
         }
     }
 }
@@ -1929,12 +2081,12 @@ static void AddBirchSpeechObjects(u8 taskId)
     gSprites[lotadSpriteId].oam.priority = 0;
     gSprites[lotadSpriteId].invisible = TRUE;
     gTasks[taskId].tLotadSpriteId = lotadSpriteId;
-    brendanSpriteId = CreateTrainerSprite(FacilityClassToPicIndex(FACILITY_CLASS_BRENDAN), 120, 60, 0, NULL);
+    brendanSpriteId = CreateTrainerSprite(LegendsGetPlayerTrainerPic(MALE), 120, 60, 0, NULL);
     gSprites[brendanSpriteId].callback = SpriteCB_Null;
     gSprites[brendanSpriteId].invisible = TRUE;
     gSprites[brendanSpriteId].oam.priority = 0;
     gTasks[taskId].tBrendanSpriteId = brendanSpriteId;
-    maySpriteId = CreateTrainerSprite(FacilityClassToPicIndex(FACILITY_CLASS_MAY), 120, 60, 0, NULL);
+    maySpriteId = CreateTrainerSprite(LegendsGetPlayerTrainerPic(FEMALE), 120, 60, 0, NULL);
     gSprites[maySpriteId].callback = SpriteCB_Null;
     gSprites[maySpriteId].invisible = TRUE;
     gSprites[maySpriteId].oam.priority = 0;

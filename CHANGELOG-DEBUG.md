@@ -2,6 +2,21 @@
 
 This is the developer-facing history for the **Debug** build. Shared Legends changes are repeated here so this file stands on its own; Debug-only behavior is called out separately.
 
+## [0.0.15] - 2026-10-08
+
+### Added
+- Added skin tone and outfit selection immediately after gender in Birch’s New Game introduction.
+- Five realistic skin tones (Fair, Light, Medium, Brown, Deep) and three clothing designs per gender: Emerald, Trail (jacket/trousers), Sport (striped shirt/shorts).
+- Added a live 64px sprite preview in a bordered popup at the bottom right, above the dialogue box. B returns to the previous choice.
+- Saved appearance applies to walking/running, bikes, Surf, field moves, fishing/watering, local battle front/back poses, Safari scenes and the local Trainer Card; Dive retains the native diving-suit silhouette.
+- Existing saves and Debug Quickstart keep the original Emerald appearance. Player colors and graphics use separate IDs/palettes so NPCs and rivals retain their native appearance.
+- Documented appearance data, native pose reuse, asset authoring and emulator QA. Remote/link appearance synchronization is not added.
+
+### Validation
+- Added exhaustive actual-module host regressions for all 30 gender/skin/outfit combinations, intro-to-save handoff, legacy saves, graphics states and NPC isolation.
+- Added generated-art reproducibility, face/held-ball protection, silhouette and LZ77 roundtrip checks across all 368 custom outfit poses.
+- No Debug-only gameplay differences; developer tools remain enabled.
+
 ## [0.0.14.1] - 2026-10-08
 
 ### Changed

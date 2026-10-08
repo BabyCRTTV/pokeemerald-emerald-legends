@@ -1,4 +1,5 @@
 #include "global.h"
+#include "legends_appearance.h"
 #include "malloc.h"
 #include "battle_anim.h"
 #include "battle_pyramid.h"
@@ -496,6 +497,10 @@ const u8 gInitialMovementTypeFacingDirections[NUM_MOVEMENT_TYPES] = {
 #include "data/object_events/object_event_graphics_info_followers.h"
 
 static const struct SpritePalette sObjectEventSpritePalettes[] = {
+    {gLegendsOverworldPalettes[0], OBJ_EVENT_PAL_TAG_LEGENDS_PLAYER_MALE},
+    {gLegendsOverworldPalettes[1], OBJ_EVENT_PAL_TAG_LEGENDS_PLAYER_FEMALE},
+    {gLegendsUnderwaterPalettes[0], OBJ_EVENT_PAL_TAG_LEGENDS_UNDERWATER_MALE},
+    {gLegendsUnderwaterPalettes[1], OBJ_EVENT_PAL_TAG_LEGENDS_UNDERWATER_FEMALE},
     {gObjectEventPal_Npc1,                  OBJ_EVENT_PAL_TAG_NPC_1},
     {gObjectEventPal_Npc2,                  OBJ_EVENT_PAL_TAG_NPC_2},
     {gObjectEventPal_Npc3,                  OBJ_EVENT_PAL_TAG_NPC_3},
@@ -611,6 +616,7 @@ static const u16 sReflectionPaletteTags_PlayerUnderwater[] = {
     OBJ_EVENT_PAL_TAG_PLAYER_UNDERWATER,
     OBJ_EVENT_PAL_TAG_PLAYER_UNDERWATER,
 };
+
 
 static const struct PairedPalettes sPlayerReflectionPaletteSets[] = {
     {OBJ_EVENT_PAL_TAG_BRENDAN,           sReflectionPaletteTags_Brendan},
@@ -3198,8 +3204,12 @@ static void SetBerryTreeGraphics(struct ObjectEvent *objectEvent, struct Sprite 
 
 const struct ObjectEventGraphicsInfo *GetObjectEventGraphicsInfo(u16 graphicsId)
 {
+    u16 appearanceGraphicsId;
     if (graphicsId >= OBJ_EVENT_GFX_VARS && graphicsId <= OBJ_EVENT_GFX_VAR_F)
         graphicsId = VarGetObjectEventGraphicsId(graphicsId - OBJ_EVENT_GFX_VARS);
+
+    appearanceGraphicsId = graphicsId;
+    graphicsId = LegendsGetBasePlayerGraphicsId(graphicsId);
 
     if (graphicsId == OBJ_EVENT_GFX_BARD)
         return gMauvilleOldManGraphicsInfoPointers[GetCurrentMauvilleOldMan()];
@@ -3210,7 +3220,7 @@ const struct ObjectEventGraphicsInfo *GetObjectEventGraphicsInfo(u16 graphicsId)
     if (graphicsId >= NUM_OBJ_EVENT_GFX)
         graphicsId = OBJ_EVENT_GFX_NINJA_BOY;
 
-    return gObjectEventGraphicsInfoPointers[graphicsId];
+    return LegendsGetPlayerGraphicsInfo(appearanceGraphicsId, gObjectEventGraphicsInfoPointers[graphicsId]);
 }
 
 static void SetObjectEventDynamicGraphicsId(struct ObjectEvent *objectEvent)
@@ -3311,18 +3321,8 @@ u8 LoadObjectEventPaletteCopy(u16 originalTag, u16 copyTag)
 
 u8 LoadPlayerObjectEventPalette(enum Gender gender)
 {
-    u16 paletteTag;
-    switch (gender)
-    {
-    default:
-    case MALE:
-        paletteTag = OBJ_EVENT_PAL_TAG_BRENDAN;
-        break;
-    case FEMALE:
-        paletteTag = OBJ_EVENT_PAL_TAG_MAY;
-        break;
-    }
-    return LoadObjectEventPalette(paletteTag);
+    LegendsUpdateAppearancePalettes();
+    return LoadObjectEventPalette(OBJ_EVENT_PAL_TAG_LEGENDS_PLAYER_MALE + (gender == FEMALE));
 }
 
 static void UNUSED LoadObjectEventPaletteSet(u16 *paletteTags)

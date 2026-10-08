@@ -82,3 +82,7 @@ Manual emulator checks (not yet verified):
 - Test opening scenes, Wally’s tutorial, rival/team/legendary cutscenes, Groudon/Kyogre weather and scripted NPC companions. Confirm native temporary hiding/restoration and no cutscene softlocks.
 - Talk to the follower; inspect native dialogue/emotes, shiny/female forms, large Pokémon indoors and the Substitute fallback where sprites are missing. Repeat under all seasons/day-night lighting.
 - Visit crowded maps and Battle Frontier/Pyramid/Safari/secret-base areas; verify object-event capacity and return-from-menu behavior without duplicate followers.
+
+## Player appearance (v0.0.15)
+
+Follow the [player appearance emulator checklist](features/player-appearance.md#emulator-qa) for intro navigation, saved appearance, every movement pose and local battle scenes. Automated appearance and asset tests run in Legends project checks.

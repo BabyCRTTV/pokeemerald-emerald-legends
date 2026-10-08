@@ -23,6 +23,12 @@ jobs:
         run: python3 test/legends-followers.test.py
       - name: Exercise pause panel regression tests
         run: python3 test/legends-start-menu.test.py
+      - name: Exercise player appearance regression tests
+        run: python3 test/legends-appearance.test.py
+      - name: Verify player appearance art
+        run: |
+          python3 -m pip install Pillow==11.3.0
+          python3 test/legends-appearance-assets.test.py
       - name: Verify Legends project metadata
         run: |
           test -f VERSION

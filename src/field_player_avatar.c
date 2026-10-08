@@ -1,4 +1,5 @@
 #include "global.h"
+#include "legends_appearance.h"
 #include "main.h"
 #include "bike.h"
 #include "event_data.h"
@@ -1563,14 +1564,14 @@ void StopPlayerAvatar(void)
 u16 GetRivalAvatarGraphicsIdByStateIdAndGender(u8 state, enum Gender gender)
 {
     if (IS_FRLG)
-        return GetPlayerAvatarGraphicsIdByStateIdAndGender(state, gender);
+        return sPlayerAvatarGfxIds[state][gender];
     else
         return sRivalAvatarGfxIds[state][gender];
 }
 
 u16 GetPlayerAvatarGraphicsIdByStateIdAndGender(u8 state, enum Gender gender)
 {
-    return sPlayerAvatarGfxIds[state][gender];
+    return LegendsGetPlayerGraphicsId(state, gender);
 }
 
 u16 GetFRLGAvatarGraphicsIdByGender(enum Gender gender)
@@ -1590,6 +1591,7 @@ u16 GetPlayerAvatarGraphicsIdByStateId(u8 state)
 
 enum Gender GetPlayerAvatarGenderByGraphicsId(u16 gfxId)
 {
+    gfxId = LegendsGetBasePlayerGraphicsId(gfxId);
     switch (gfxId)
     {
     case OBJ_EVENT_GFX_MAY_NORMAL:
@@ -1667,6 +1669,7 @@ void SetPlayerAvatarStateMask(u8 flags)
 static u8 GetPlayerAvatarStateTransitionByGraphicsId(u16 graphicsId, u8 gender)
 {
     u8 i;
+    graphicsId = LegendsGetBasePlayerGraphicsId(graphicsId);
 
     for (i = 0; i < ARRAY_COUNT(sPlayerAvatarGfxToStateFlag[0]); i++)
     {
@@ -1684,7 +1687,7 @@ u16 GetPlayerAvatarGraphicsIdByCurrentState(void)
     for (i = 0; i < ARRAY_COUNT(sPlayerAvatarGfxToStateFlag[0]); i++)
     {
         if (sPlayerAvatarGfxToStateFlag[gPlayerAvatar.gender][i].playerFlag & flags)
-            return sPlayerAvatarGfxToStateFlag[gPlayerAvatar.gender][i].graphicsId;
+            return LegendsGetPlayerGraphicsId(i, gPlayerAvatar.gender);
     }
     return 0;
 }

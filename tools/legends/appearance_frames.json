@@ -1,0 +1,86 @@
+{
+  "Brendan": {
+    "Normal": {
+      "info": "const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_BrendanNormal = {\n    .tileTag = TAG_NONE,\n    .paletteTag = OBJ_EVENT_PAL_TAG_BRENDAN,\n    .reflectionPaletteTag = OBJ_EVENT_PAL_TAG_BRIDGE_REFLECTION,\n    .size = 512,\n    .width = 16,\n    .height = 32,\n    .paletteSlot = PALSLOT_PLAYER,\n    .shadowSize = SHADOW_SIZE_M,\n    .inanimate = FALSE,\n    .compressed = FALSE,\n    .tracks = TRACKS_FOOT,\n    .oam = &gObjectEventBaseOam_16x32,\n    .subspriteTables = sOamTables_16x32,\n    .anims = sAnimTable_BrendanMayNormal,\n    .images = sPicTable_BrendanNormal,\n};",
+      "pic": "sPicTable_BrendanNormal",
+      "table": "static const struct SpriteFrameImage sPicTable_BrendanNormal[] = {\n    overworld_ascending_frames(gObjectEventPic_BrendanNormalRunning, 2, 4),\n};"
+    },
+    "MachBike": {
+      "info": "const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_BrendanMachBike = {\n    .tileTag = TAG_NONE,\n    .paletteTag = OBJ_EVENT_PAL_TAG_BRENDAN,\n    .reflectionPaletteTag = OBJ_EVENT_PAL_TAG_BRIDGE_REFLECTION,\n    .size = 512,\n    .width = 32,\n    .height = 32,\n    .paletteSlot = PALSLOT_PLAYER,\n    .shadowSize = SHADOW_SIZE_M,\n    .inanimate = FALSE,\n    .compressed = FALSE,\n    .tracks = TRACKS_BIKE_TIRE,\n    .oam = &gObjectEventBaseOam_32x32,\n    .subspriteTables = sOamTables_32x32,\n    .anims = sAnimTable_Standard,\n    .images = sPicTable_BrendanMachBike,\n};",
+      "pic": "sPicTable_BrendanMachBike",
+      "table": "static const struct SpriteFrameImage sPicTable_BrendanMachBike[] = {\n    overworld_ascending_frames(gObjectEventPic_BrendanMachBike, 4, 4),\n};"
+    },
+    "AcroBike": {
+      "info": "const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_BrendanAcroBike = {\n    .tileTag = TAG_NONE,\n    .paletteTag = OBJ_EVENT_PAL_TAG_BRENDAN,\n    .reflectionPaletteTag = OBJ_EVENT_PAL_TAG_BRIDGE_REFLECTION,\n    .size = 512,\n    .width = 32,\n    .height = 32,\n    .paletteSlot = PALSLOT_PLAYER,\n    .shadowSize = SHADOW_SIZE_M,\n    .inanimate = FALSE,\n    .compressed = FALSE,\n    .tracks = TRACKS_BIKE_TIRE,\n    .oam = &gObjectEventBaseOam_32x32,\n    .subspriteTables = sOamTables_32x32,\n    .anims = sAnimTable_AcroBike,\n    .images = sPicTable_BrendanAcroBike,\n};",
+      "pic": "sPicTable_BrendanAcroBike",
+      "table": "static const struct SpriteFrameImage sPicTable_BrendanAcroBike[] = {\n    overworld_ascending_frames(gObjectEventPic_BrendanAcroBike, 4, 4),\n};"
+    },
+    "Surfing": {
+      "info": "const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_BrendanSurfing = {\n    .tileTag = TAG_NONE,\n    .paletteTag = OBJ_EVENT_PAL_TAG_BRENDAN,\n    .reflectionPaletteTag = OBJ_EVENT_PAL_TAG_NONE,\n    .size = 512,\n    .width = 32,\n    .height = 32,\n    .paletteSlot = PALSLOT_PLAYER,\n    .shadowSize = SHADOW_SIZE_M,\n    .inanimate = FALSE,\n    .compressed = FALSE,\n    .tracks = TRACKS_FOOT,\n    .oam = &gObjectEventBaseOam_32x32,\n    .subspriteTables = sOamTables_32x32,\n    .anims = sAnimTable_Surfing,\n    .images = sPicTable_BrendanSurfing,\n};",
+      "pic": "sPicTable_BrendanSurfing",
+      "table": "static const struct SpriteFrameImage sPicTable_BrendanSurfing[] = {\n    overworld_frame(gObjectEventPic_BrendanSurfing, 4, 4, 0),\n    overworld_frame(gObjectEventPic_BrendanSurfing, 4, 4, 2),\n    overworld_frame(gObjectEventPic_BrendanSurfing, 4, 4, 4),\n    overworld_frame(gObjectEventPic_BrendanSurfing, 4, 4, 0),\n    overworld_frame(gObjectEventPic_BrendanSurfing, 4, 4, 0),\n    overworld_frame(gObjectEventPic_BrendanSurfing, 4, 4, 2),\n    overworld_frame(gObjectEventPic_BrendanSurfing, 4, 4, 2),\n    overworld_frame(gObjectEventPic_BrendanSurfing, 4, 4, 4),\n    overworld_frame(gObjectEventPic_BrendanSurfing, 4, 4, 4),\n    overworld_frame(gObjectEventPic_BrendanSurfing, 4, 4, 1),\n    overworld_frame(gObjectEventPic_BrendanSurfing, 4, 4, 3),\n    overworld_frame(gObjectEventPic_BrendanSurfing, 4, 4, 5),\n};"
+    },
+    "Underwater": {
+      "info": "const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_BrendanUnderwater = {\n    .tileTag = TAG_NONE,\n    .paletteTag = OBJ_EVENT_PAL_TAG_PLAYER_UNDERWATER,\n    .reflectionPaletteTag = OBJ_EVENT_PAL_TAG_NONE,\n    .size = 512,\n    .width = 32,\n    .height = 32,\n    .paletteSlot = PALSLOT_PLAYER,\n    .shadowSize = SHADOW_SIZE_M,\n    .inanimate = FALSE,\n    .compressed = FALSE,\n    .tracks = TRACKS_FOOT,\n    .oam = &gObjectEventBaseOam_32x32,\n    .subspriteTables = sOamTables_32x32,\n    .anims = sAnimTable_Standard,\n    .images = sPicTable_BrendanUnderwater,\n};",
+      "pic": "sPicTable_BrendanUnderwater",
+      "table": "static const struct SpriteFrameImage sPicTable_BrendanUnderwater[] = {\n    overworld_frame(gObjectEventPic_BrendanUnderwater, 4, 4, 0),\n    overworld_frame(gObjectEventPic_BrendanUnderwater, 4, 4, 1),\n    overworld_frame(gObjectEventPic_BrendanUnderwater, 4, 4, 2),\n    overworld_frame(gObjectEventPic_BrendanUnderwater, 4, 4, 0),\n    overworld_frame(gObjectEventPic_BrendanUnderwater, 4, 4, 0),\n    overworld_frame(gObjectEventPic_BrendanUnderwater, 4, 4, 1),\n    overworld_frame(gObjectEventPic_BrendanUnderwater, 4, 4, 1),\n    overworld_frame(gObjectEventPic_BrendanUnderwater, 4, 4, 2),\n    overworld_frame(gObjectEventPic_BrendanUnderwater, 4, 4, 2),\n};"
+    },
+    "FieldMove": {
+      "info": "const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_BrendanFieldMove = {\n    .tileTag = TAG_NONE,\n    .paletteTag = OBJ_EVENT_PAL_TAG_BRENDAN,\n    .reflectionPaletteTag = OBJ_EVENT_PAL_TAG_BRIDGE_REFLECTION,\n    .size = 512,\n    .width = 32,\n    .height = 32,\n    .paletteSlot = PALSLOT_PLAYER,\n    .shadowSize = SHADOW_SIZE_M,\n    .inanimate = FALSE,\n    .compressed = FALSE,\n    .tracks = TRACKS_FOOT,\n    .oam = &gObjectEventBaseOam_32x32,\n    .subspriteTables = sOamTables_32x32,\n    .anims = sAnimTable_FieldMove,\n    .images = sPicTable_BrendanFieldMove,\n};",
+      "pic": "sPicTable_BrendanFieldMove",
+      "table": "static const struct SpriteFrameImage sPicTable_BrendanFieldMove[] = {\n    overworld_ascending_frames(gObjectEventPic_BrendanFieldMove, 4, 4),\n};"
+    },
+    "Fishing": {
+      "info": "const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_BrendanFishing = {\n    .tileTag = TAG_NONE,\n    .paletteTag = OBJ_EVENT_PAL_TAG_BRENDAN,\n    .reflectionPaletteTag = OBJ_EVENT_PAL_TAG_BRIDGE_REFLECTION,\n    .size = 512,\n    .width = 32,\n    .height = 32,\n    .paletteSlot = PALSLOT_PLAYER,\n    .shadowSize = SHADOW_SIZE_M,\n    .inanimate = FALSE,\n    .compressed = FALSE,\n    .tracks = TRACKS_FOOT,\n    .oam = &gObjectEventBaseOam_32x32,\n    .subspriteTables = sOamTables_32x32,\n    .anims = sAnimTable_Fishing,\n    .images = sPicTable_BrendanFishing,\n};",
+      "pic": "sPicTable_BrendanFishing",
+      "table": "static const struct SpriteFrameImage sPicTable_BrendanFishing[] = {\n    overworld_ascending_frames(gObjectEventPic_BrendanFishing, 4, 4),\n};"
+    },
+    "Watering": {
+      "info": "const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_BrendanWatering = {\n    .tileTag = TAG_NONE,\n    .paletteTag = OBJ_EVENT_PAL_TAG_BRENDAN,\n    .reflectionPaletteTag = OBJ_EVENT_PAL_TAG_BRIDGE_REFLECTION,\n    .size = 512,\n    .width = 32,\n    .height = 32,\n    .paletteSlot = PALSLOT_PLAYER,\n    .shadowSize = SHADOW_SIZE_M,\n    .inanimate = FALSE,\n    .compressed = FALSE,\n    .tracks = TRACKS_FOOT,\n    .oam = &gObjectEventBaseOam_32x32,\n    .subspriteTables = sOamTables_32x32,\n    .anims = sAnimTable_Standard,\n    .images = sPicTable_BrendanWatering,\n};",
+      "pic": "sPicTable_BrendanWatering",
+      "table": "static const struct SpriteFrameImage sPicTable_BrendanWatering[] = {\n    overworld_frame(gObjectEventPic_BrendanWatering, 4, 4, 0),\n    overworld_frame(gObjectEventPic_BrendanWatering, 4, 4, 2),\n    overworld_frame(gObjectEventPic_BrendanWatering, 4, 4, 4),\n    overworld_frame(gObjectEventPic_BrendanWatering, 4, 4, 1),\n    overworld_frame(gObjectEventPic_BrendanWatering, 4, 4, 1),\n    overworld_frame(gObjectEventPic_BrendanWatering, 4, 4, 3),\n    overworld_frame(gObjectEventPic_BrendanWatering, 4, 4, 3),\n    overworld_frame(gObjectEventPic_BrendanWatering, 4, 4, 5),\n    overworld_frame(gObjectEventPic_BrendanWatering, 4, 4, 5),\n};"
+    }
+  },
+  "May": {
+    "Normal": {
+      "info": "const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_MayNormal = {\n    .tileTag = TAG_NONE,\n    .paletteTag = OBJ_EVENT_PAL_TAG_MAY,\n    .reflectionPaletteTag = OBJ_EVENT_PAL_TAG_BRIDGE_REFLECTION,\n    .size = 512,\n    .width = 16,\n    .height = 32,\n    .paletteSlot = PALSLOT_PLAYER,\n    .shadowSize = SHADOW_SIZE_M,\n    .inanimate = FALSE,\n    .compressed = FALSE,\n    .tracks = TRACKS_FOOT,\n    .oam = &gObjectEventBaseOam_16x32,\n    .subspriteTables = sOamTables_16x32,\n    .anims = sAnimTable_BrendanMayNormal,\n    .images = sPicTable_MayNormal,\n};",
+      "pic": "sPicTable_MayNormal",
+      "table": "static const struct SpriteFrameImage sPicTable_MayNormal[] = {\n    overworld_ascending_frames(gObjectEventPic_MayNormalRunning, 2, 4),\n};"
+    },
+    "MachBike": {
+      "info": "const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_MayMachBike = {\n    .tileTag = TAG_NONE,\n    .paletteTag = OBJ_EVENT_PAL_TAG_MAY,\n    .reflectionPaletteTag = OBJ_EVENT_PAL_TAG_BRIDGE_REFLECTION,\n    .size = 512,\n    .width = 32,\n    .height = 32,\n    .paletteSlot = PALSLOT_PLAYER,\n    .shadowSize = SHADOW_SIZE_M,\n    .inanimate = FALSE,\n    .compressed = FALSE,\n    .tracks = TRACKS_BIKE_TIRE,\n    .oam = &gObjectEventBaseOam_32x32,\n    .subspriteTables = sOamTables_32x32,\n    .anims = sAnimTable_Standard,\n    .images = sPicTable_MayMachBike,\n};",
+      "pic": "sPicTable_MayMachBike",
+      "table": "static const struct SpriteFrameImage sPicTable_MayMachBike[] = {\n    overworld_ascending_frames(gObjectEventPic_MayMachBike, 4, 4),\n};"
+    },
+    "AcroBike": {
+      "info": "const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_MayAcroBike = {\n    .tileTag = TAG_NONE,\n    .paletteTag = OBJ_EVENT_PAL_TAG_MAY,\n    .reflectionPaletteTag = OBJ_EVENT_PAL_TAG_BRIDGE_REFLECTION,\n    .size = 512,\n    .width = 32,\n    .height = 32,\n    .paletteSlot = PALSLOT_PLAYER,\n    .shadowSize = SHADOW_SIZE_M,\n    .inanimate = FALSE,\n    .compressed = FALSE,\n    .tracks = TRACKS_BIKE_TIRE,\n    .oam = &gObjectEventBaseOam_32x32,\n    .subspriteTables = sOamTables_32x32,\n    .anims = sAnimTable_AcroBike,\n    .images = sPicTable_MayAcroBike,\n};",
+      "pic": "sPicTable_MayAcroBike",
+      "table": "static const struct SpriteFrameImage sPicTable_MayAcroBike[] = {\n    overworld_ascending_frames(gObjectEventPic_MayAcroBike, 4, 4),\n};"
+    },
+    "Surfing": {
+      "info": "const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_MaySurfing = {\n    .tileTag = TAG_NONE,\n    .paletteTag = OBJ_EVENT_PAL_TAG_MAY,\n    .reflectionPaletteTag = OBJ_EVENT_PAL_TAG_NONE,\n    .size = 512,\n    .width = 32,\n    .height = 32,\n    .paletteSlot = PALSLOT_PLAYER,\n    .shadowSize = SHADOW_SIZE_M,\n    .inanimate = FALSE,\n    .compressed = FALSE,\n    .tracks = TRACKS_FOOT,\n    .oam = &gObjectEventBaseOam_32x32,\n    .subspriteTables = sOamTables_32x32,\n    .anims = sAnimTable_Surfing,\n    .images = sPicTable_MaySurfing,\n};",
+      "pic": "sPicTable_MaySurfing",
+      "table": "static const struct SpriteFrameImage sPicTable_MaySurfing[] = {\n    overworld_frame(gObjectEventPic_MaySurfing, 4, 4, 0),\n    overworld_frame(gObjectEventPic_MaySurfing, 4, 4, 2),\n    overworld_frame(gObjectEventPic_MaySurfing, 4, 4, 4),\n    overworld_frame(gObjectEventPic_MaySurfing, 4, 4, 0),\n    overworld_frame(gObjectEventPic_MaySurfing, 4, 4, 0),\n    overworld_frame(gObjectEventPic_MaySurfing, 4, 4, 2),\n    overworld_frame(gObjectEventPic_MaySurfing, 4, 4, 2),\n    overworld_frame(gObjectEventPic_MaySurfing, 4, 4, 4),\n    overworld_frame(gObjectEventPic_MaySurfing, 4, 4, 4),\n    overworld_frame(gObjectEventPic_MaySurfing, 4, 4, 1),\n    overworld_frame(gObjectEventPic_MaySurfing, 4, 4, 3),\n    overworld_frame(gObjectEventPic_MaySurfing, 4, 4, 5),\n};"
+    },
+    "Underwater": {
+      "info": "const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_MayUnderwater = {\n    .tileTag = TAG_NONE,\n    .paletteTag = OBJ_EVENT_PAL_TAG_PLAYER_UNDERWATER,\n    .reflectionPaletteTag = OBJ_EVENT_PAL_TAG_NONE,\n    .size = 512,\n    .width = 32,\n    .height = 32,\n    .paletteSlot = PALSLOT_NPC_SPECIAL,\n    .shadowSize = SHADOW_SIZE_M,\n    .inanimate = FALSE,\n    .compressed = FALSE,\n    .tracks = TRACKS_FOOT,\n    .oam = &gObjectEventBaseOam_32x32,\n    .subspriteTables = sOamTables_32x32,\n    .anims = sAnimTable_Standard,\n    .images = sPicTable_MayUnderwater,\n};",
+      "pic": "sPicTable_MayUnderwater",
+      "table": "static const struct SpriteFrameImage sPicTable_MayUnderwater[] = {\n    overworld_frame(gObjectEventPic_MayUnderwater, 4, 4, 0),\n    overworld_frame(gObjectEventPic_MayUnderwater, 4, 4, 1),\n    overworld_frame(gObjectEventPic_MayUnderwater, 4, 4, 2),\n    overworld_frame(gObjectEventPic_MayUnderwater, 4, 4, 0),\n    overworld_frame(gObjectEventPic_MayUnderwater, 4, 4, 0),\n    overworld_frame(gObjectEventPic_MayUnderwater, 4, 4, 1),\n    overworld_frame(gObjectEventPic_MayUnderwater, 4, 4, 1),\n    overworld_frame(gObjectEventPic_MayUnderwater, 4, 4, 2),\n    overworld_frame(gObjectEventPic_MayUnderwater, 4, 4, 2),\n};"
+    },
+    "FieldMove": {
+      "info": "const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_MayFieldMove = {\n    .tileTag = TAG_NONE,\n    .paletteTag = OBJ_EVENT_PAL_TAG_MAY,\n    .reflectionPaletteTag = OBJ_EVENT_PAL_TAG_BRIDGE_REFLECTION,\n    .size = 512,\n    .width = 32,\n    .height = 32,\n    .paletteSlot = PALSLOT_PLAYER,\n    .shadowSize = SHADOW_SIZE_M,\n    .inanimate = FALSE,\n    .compressed = FALSE,\n    .tracks = TRACKS_FOOT,\n    .oam = &gObjectEventBaseOam_32x32,\n    .subspriteTables = sOamTables_32x32,\n    .anims = sAnimTable_FieldMove,\n    .images = sPicTable_MayFieldMove,\n};",
+      "pic": "sPicTable_MayFieldMove",
+      "table": "static const struct SpriteFrameImage sPicTable_MayFieldMove[] = {\n    overworld_ascending_frames(gObjectEventPic_MayFieldMove, 4, 4),\n};"
+    },
+    "Fishing": {
+      "info": "const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_MayFishing = {\n    .tileTag = TAG_NONE,\n    .paletteTag = OBJ_EVENT_PAL_TAG_MAY,\n    .reflectionPaletteTag = OBJ_EVENT_PAL_TAG_BRIDGE_REFLECTION,\n    .size = 512,\n    .width = 32,\n    .height = 32,\n    .paletteSlot = PALSLOT_PLAYER,\n    .shadowSize = SHADOW_SIZE_M,\n    .inanimate = FALSE,\n    .compressed = FALSE,\n    .tracks = TRACKS_FOOT,\n    .oam = &gObjectEventBaseOam_32x32,\n    .subspriteTables = sOamTables_32x32,\n    .anims = sAnimTable_Fishing,\n    .images = sPicTable_MayFishing,\n};",
+      "pic": "sPicTable_MayFishing",
+      "table": "static const struct SpriteFrameImage sPicTable_MayFishing[] = {\n    overworld_ascending_frames(gObjectEventPic_MayFishing, 4, 4),\n};"
+    },
+    "Watering": {
+      "info": "const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_MayWatering = {\n    .tileTag = TAG_NONE,\n    .paletteTag = OBJ_EVENT_PAL_TAG_MAY,\n    .reflectionPaletteTag = OBJ_EVENT_PAL_TAG_BRIDGE_REFLECTION,\n    .size = 512,\n    .width = 32,\n    .height = 32,\n    .paletteSlot = PALSLOT_PLAYER,\n    .shadowSize = SHADOW_SIZE_M,\n    .inanimate = FALSE,\n    .compressed = FALSE,\n    .tracks = TRACKS_FOOT,\n    .oam = &gObjectEventBaseOam_32x32,\n    .subspriteTables = sOamTables_32x32,\n    .anims = sAnimTable_Standard,\n    .images = sPicTable_MayWatering,\n};",
+      "pic": "sPicTable_MayWatering",
+      "table": "static const struct SpriteFrameImage sPicTable_MayWatering[] = {\n    overworld_frame(gObjectEventPic_MayWatering, 4, 4, 0),\n    overworld_frame(gObjectEventPic_MayWatering, 4, 4, 2),\n    overworld_frame(gObjectEventPic_MayWatering, 4, 4, 4),\n    overworld_frame(gObjectEventPic_MayWatering, 4, 4, 1),\n    overworld_frame(gObjectEventPic_MayWatering, 4, 4, 1),\n    overworld_frame(gObjectEventPic_MayWatering, 4, 4, 3),\n    overworld_frame(gObjectEventPic_MayWatering, 4, 4, 3),\n    overworld_frame(gObjectEventPic_MayWatering, 4, 4, 5),\n    overworld_frame(gObjectEventPic_MayWatering, 4, 4, 5),\n};"
+    }
+  }
+}

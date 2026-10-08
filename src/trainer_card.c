@@ -1,4 +1,5 @@
 #include "global.h"
+#include "legends_appearance.h"
 #include "scanline_effect.h"
 #include "palette.h"
 #include "task.h"
@@ -1906,7 +1907,7 @@ static void CreateTrainerCardTrainerPic(void)
     }
     else
     {
-        CreateTrainerCardTrainerPicSprite(FacilityClassToPicIndex(sTrainerPicFacilityClass[sData->cardType][sData->trainerCard.gender]),
+        CreateTrainerCardTrainerPicSprite(sData->isLink ? FacilityClassToPicIndex(sTrainerPicFacilityClass[sData->cardType][sData->trainerCard.gender]) : LegendsGetPlayerTrainerPic(sData->trainerCard.gender),
                     TRUE,
                     sTrainerPicOffset[sData->isHoenn][sData->trainerCard.gender][0],
                     sTrainerPicOffset[sData->isHoenn][sData->trainerCard.gender][1],
