@@ -2,6 +2,18 @@
 
 This is the developer-facing history for the **Debug** build. Shared Legends changes are repeated here so this file stands on its own; Debug-only behavior is called out separately.
 
+## [0.0.13] - 2026-10-08
+
+### Shared changes
+- Enabled the expansion’s native overworld Pokémon follower system with a saved FOLLOWER ON/OFF setting on Legends Options (default ON for new and existing saves).
+- The first conscious non-egg Pokémon in party order follows the player, using native walking, Poké Ball, graphics and interaction behavior. Reorder the party to change the follower.
+- Reused native hiding rules for travel/forced movement, oversized indoor sprites, temporary script hiding and NPC companions; missing overworld graphics keep the configured native substitute fallback.
+- Leaving Options applies the follower choice through the normal faded field reload. The selection persists across save/reload and title-screen New Game setup.
+- Used an unused permanent disable flag without changing the SaveBlock layout; kept both Options pages within seven rows and the existing VRAM allocation.
+
+### Debug-specific
+- No Debug-only gameplay divergence; existing developer tools remain available.
+
 ## [0.0.12.1] - 2026-10-08
 
 ### Shared changes

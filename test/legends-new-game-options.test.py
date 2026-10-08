@@ -42,12 +42,14 @@ int main(void)
     month = 10;
     LegendsClearTitleOptions();
     LegendsSetExpShareEnabled(FALSE);
+    LegendsSetFollowersEnabled(FALSE);
     LegendsSetShinyRateSetting(LEGENDS_SHINY_RATE_1226);
     LegendsSetSeasonMode(LEGENDS_SEASONS_PLAYTIME);
     LegendsSetPlaytimeSeason(LEGENDS_WINTER);
     LegendsStageTitleOptions();
     newSave();
     assert(!LegendsIsExpShareEnabled());
+    assert(!LegendsAreFollowersEnabled());
     assert(LegendsGetWildShinyRateDenominator() == 1226);
     assert(LegendsGetSeasonMode() == LEGENDS_SEASONS_PLAYTIME);
     assert(LegendsGetActiveSeason() == LEGENDS_WINTER);
@@ -60,9 +62,16 @@ int main(void)
     // Selection is consumed once; subsequent new saves use normal defaults.
     newSave();
     assert(LegendsIsExpShareEnabled());
+    assert(LegendsAreFollowersEnabled());
     assert(LegendsGetWildShinyRateDenominator() == 8192);
     assert(LegendsGetSeasonMode() == LEGENDS_SEASONS_RTC);
     assert(LegendsGetActiveSeason() == LEGENDS_AUTUMN);
+    // Existing saves default ON; OFF survives field/continue initialization.
+    LegendsSetFollowersEnabled(FALSE);
+    LegendsRestoreUnlocksOnContinue();
+    assert(!LegendsAreFollowersEnabled());
+    LegendsSetFollowersEnabled(TRUE);
+    assert(LegendsAreFollowersEnabled());
     // Reopening title Options replaces the complete staged choice.
     LegendsSetSeasonMode(LEGENDS_SEASONS_PLAYTIME);
     LegendsSetPlaytimeSeason(LEGENDS_SUMMER);
@@ -82,6 +91,7 @@ int main(void)
     LegendsClearTitleOptions();
     newSave();
     assert(LegendsIsExpShareEnabled());
+    assert(LegendsAreFollowersEnabled());
     assert(LegendsGetWildShinyRateDenominator() == 8192);
     assert(LegendsGetSeasonMode() == LEGENDS_SEASONS_RTC);
     puts("Title choices survive save reset, initialize before the bedroom clock, replace previous edits, consume once and clear on fresh title entry.");
@@ -106,7 +116,7 @@ with tempfile.TemporaryDirectory() as directory:
     names = ['MT_CHIMNEY', 'JAGGED_PASS', 'FIERY_PATH', 'LAVARIDGE_TOWN', 'FALLARBOR_TOWN', 'ROUTE_111', 'ROUTE_112', 'ROUTE_113', 'DEWFORD_TOWN', 'PACIFIDLOG_TOWN', 'SOOTOPOLIS_CITY', 'TEST_ROUTE']
     (tmp / 'constants/region_map_sections.h').write_text('\n'.join(f'#define MAPSEC_{name} {i}' for i, name in enumerate(names)))
     (tmp / 'constants/items.h').write_text('#define ITEM_EXP_SHARE 1\n')
-    flag_names = ['LEGENDS_EXP_SHARE', 'LEGENDS_SETTINGS_INITIALIZED', 'SYS_POKEDEX_GET', 'LEGENDS_DEXNAV_UNLOCKED', 'LEGENDS_DEXNAV_DETECTOR_MODE', 'STORING_ITEMS_IN_PYRAMID_BAG', 'SYS_CLOCK_SET']
+    flag_names = ['LEGENDS_EXP_SHARE', 'LEGENDS_SETTINGS_INITIALIZED', 'SYS_POKEDEX_GET', 'LEGENDS_DEXNAV_UNLOCKED', 'LEGENDS_DEXNAV_DETECTOR_MODE', 'STORING_ITEMS_IN_PYRAMID_BAG', 'SYS_CLOCK_SET', 'LEGENDS_FOLLOWERS_DISABLED']
     (tmp / 'constants/flags.h').write_text('\n'.join(f'#define FLAG_{name} {i}' for i, name in enumerate(flag_names)))
     (tmp / 'constants/battle_frontier.h').write_text('#define PYRAMID_LOCATION_NONE 0\n')
     (tmp / 'harness.c').write_text(harness)
