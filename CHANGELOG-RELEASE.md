@@ -2,6 +2,17 @@
 
 This is the player-facing history for the recommended **Release** build. Shared Legends changes are repeated here so this file stands on its own; Release-only behavior is called out separately.
 
+## [0.0.12.1] - 2026-10-08
+
+### Shared changes
+- Preserved title-screen Legends Options choices when starting New Game: season mode, selected gameplay season, EXP Share and shiny rate now survive the new save reset.
+- Initialized the active season before the opening maps load; 7H PLAY and manual season selection work independently of the bedroom clock event.
+- New saves start with a fresh seven-hour timer for the selected gameplay season; previous save progress and story flags are not carried over.
+- Cleared temporary title choices after applying them and on fresh title entry, preserving standard defaults when New Game is started without title-screen Options.
+
+### Release-specific
+- No Release-only gameplay divergence; developer tools remain disabled.
+
 ## [0.0.12] - 2026-10-08
 
 ### Shared changes

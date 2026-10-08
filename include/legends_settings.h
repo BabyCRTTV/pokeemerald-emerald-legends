@@ -2,6 +2,9 @@
 #define GUARD_LEGENDS_SETTINGS_H
 
 void LegendsInitNewGameSettings(void);
+void LegendsClearTitleOptions(void);
+void LegendsStageTitleOptions(void);
+void LegendsApplyTitleOptionsToNewGame(void);
 void LegendsEnsureSettingsInitialized(void);
 void LegendsEnsureExpShareKeyItem(void);
 void LegendsRestoreUnlocksOnContinue(void);

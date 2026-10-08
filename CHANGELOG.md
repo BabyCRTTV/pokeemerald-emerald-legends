@@ -4,6 +4,18 @@ All notable Pokémon Emerald: Legends project changes are documented here.
 
 For build-specific player views, see [CHANGELOG-RELEASE.md](CHANGELOG-RELEASE.md) and [CHANGELOG-DEBUG.md](CHANGELOG-DEBUG.md). The canonical history below records the project as a whole.
 
+## [0.0.12.1] - 2026-10-08
+
+### Fixed
+- Preserved title-screen Legends Options choices when starting New Game: season mode, selected gameplay season, EXP Share and shiny rate now survive the new save reset.
+- Initialized the active season before the opening maps load; 7H PLAY and manual season selection work independently of the bedroom clock event.
+- New saves start with a fresh seven-hour timer for the selected gameplay season; previous save progress and story flags are not carried over.
+- Cleared temporary title choices after applying them and on fresh title entry, preserving standard defaults when New Game is started without title-screen Options.
+
+### Validation
+- Added host C regressions for title choices across save reset, pre-clock season initialization, replacement/consumption of staged choices, default new saves and native lifecycle hook ordering. Emulator visual/playtesting remains separate.
+- No variant-specific gameplay changes; Release disables developer tools and Debug retains them.
+
 ## [0.0.12] - 2026-10-08
 
 ### Changed

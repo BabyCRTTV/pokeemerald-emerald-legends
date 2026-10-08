@@ -14,6 +14,7 @@
 #include "link.h"
 #include "main.h"
 #include "main_menu.h"
+#include "legends_settings.h"
 #include "menu.h"
 #include "list_menu.h"
 #include "mystery_event_menu.h"
@@ -566,11 +567,13 @@ static void VBlankCB_MainMenu(void)
 
 void CB2_InitMainMenu(void)
 {
+    LegendsClearTitleOptions();
     InitMainMenu(FALSE);
 }
 
 void CB2_ReinitMainMenu(void)
 {
+    LegendsStageTitleOptions();
     InitMainMenu(TRUE);
 }
 

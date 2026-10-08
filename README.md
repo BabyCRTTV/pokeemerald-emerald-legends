@@ -1,20 +1,20 @@
 # Pokémon Emerald: Legends
 
-**Version:** 0.0.12  
+**Version:** 0.0.12.1  
 **Base:** [pokeemerald-expansion](https://github.com/rh-hideout/pokeemerald-expansion)
 
 Pokémon Emerald: Legends is an unofficial, non-commercial Pokémon Emerald ROM-hack project built on the open-source `pokeemerald-expansion` decompilation/expansion base.
 
 The project is intended to preserve the feel and structure of Pokémon Emerald while layering in modern quality-of-life improvements, configurable mechanics, expanded systems, and new features developed incrementally.
 
-## Try the current v0.0.12 build
+## Try the current v0.0.12.1 build
 
 The project site provides two builds from the same source:
 
 - **Release (recommended):** https://babycrttv.github.io/pokeemerald-emerald-legends/patcher.html
 - **Debug / developer:** https://babycrttv.github.io/pokeemerald-emerald-legends/patcher.html?build=debug
-- **Release BPS:** https://babycrttv.github.io/pokeemerald-emerald-legends/downloads/Pokemon-Emerald-Legends-v0.0.12.bps
-- **Debug BPS:** https://babycrttv.github.io/pokeemerald-emerald-legends/downloads/Pokemon-Emerald-Legends-v0.0.12-debug.bps
+- **Release BPS:** https://babycrttv.github.io/pokeemerald-emerald-legends/downloads/Pokemon-Emerald-Legends-v0.0.12.1.bps
+- **Debug BPS:** https://babycrttv.github.io/pokeemerald-emerald-legends/downloads/Pokemon-Emerald-Legends-v0.0.12.1-debug.bps
 
 The Release and Debug builds contain the same Legends gameplay/content changes. Release disables developer entry points for a cleaner casual-player build. Debug retains the expansion's overworld/battle/sprite debug tools and title-screen Quickstart.
 
@@ -22,7 +22,7 @@ The Release and Debug builds contain the same Legends gameplay/content changes. 
 
 **DexNav:** Unlocked with Birch's first Pokédex gift, including detector mode. DexNav appears in the Start menu, and older saves with a Pokédex receive it automatically on continue.
 
-**SEASONS (v0.0.12):** Legends Options offers REAL TIME (default; Northern Hemisphere calendar months) or 7H PLAY (seven recorded gameplay hours per season). CURRENT shows the active environment; SET SEASON lets gameplay-mode players choose Spring, Summer, Autumn or Winter and restart that season's timer. Changes apply on a faded map transition, such as entering or leaving a building, or on save reload. Seasonal foliage and weather preserve volcanic areas and special/story effects. See [season documentation](docs/features/seasons.md).
+**SEASONS (v0.0.12.1):** Title-screen Legends choices now carry into New Game, including the chosen gameplay season, EXP Share and shiny rate. Legends Options offers REAL TIME (default; Northern Hemisphere calendar months) or 7H PLAY (seven recorded gameplay hours per season). CURRENT shows the active environment; SET SEASON lets gameplay-mode players choose Spring, Summer, Autumn or Winter and restart that season's timer. Changes apply on a faded map transition, such as entering or leaving a building, or on save reload. Seasonal foliage and weather preserve volcanic areas and special/story effects. See [season documentation](docs/features/seasons.md).
 
 **SHINY RATE (v0.0.10):** Use L/R to select the Legends Options page, then Left/Right on SHINY RATE to choose 1/8192 (default), 1/5680, or 1/1226. The chosen base rate is stored in an unused permanent save variable; it affects newly generated wild Pokémon, including fishing and DexNav. Shiny Charm, chain-fishing and DexNav bonus rolls still apply. Gift Pokémon, eggs, scripted encounters and already-owned Pokémon use their previous logic.
 

@@ -48,3 +48,7 @@ The new setting affects newly generated ordinary wild, fishing, surfing and DexN
 Legends 2/2 has six rows: EXP SHARE, SHINY RATE, SEASONS, CURRENT, SET SEASON and CANCEL. SEASONS offers REAL TIME / 7H PLAY. CURRENT shows the environment currently in use. SET SEASON is editable with Left/Right only in gameplay mode; real time displays CALENDAR. Leaving Options stores edits, while the next faded map load applies the environment.
 
 Choice strings use the native COLOR/SHADOW prefix. The renderer checks for this prefix before recoloring, preventing ordinary letters from becoming control values. Single seasonal values clear their previous text before redraw. Keep labels within the existing 15-byte choice limit, including control codes.
+
+## v0.0.12.1 title-screen choices
+
+Legends settings selected in title-screen Options now carry into New Game: EXP Share, shiny rate, season mode and the selected gameplay season. The new save receives a fresh seven-hour timer and applies the season before its opening maps. Only explicitly staged title choices cross the new-save reset; story flags and playtime do not. Staging clears after use and on a fresh title entry, while Continue and in-game Options retain their native behavior.

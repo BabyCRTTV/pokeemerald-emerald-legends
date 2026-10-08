@@ -1,5 +1,6 @@
 #include "global.h"
 #include "legends_settings.h"
+#include "legends_seasons.h"
 #include "event_data.h"
 #include "item.h"
 #include "battle_pyramid.h"
@@ -7,6 +8,47 @@
 #include "constants/battle_frontier.h"
 #include "constants/flags.h"
 #include "constants/vars.h"
+
+// Title-screen choices must survive the new save's flags/vars reset. Keep this
+// outside the SaveBlocks, consume it once, and clear it on a fresh title entry.
+struct LegendsTitleOptions
+{
+    bool8 valid;
+    bool8 expShareEnabled;
+    u8 shinyRate;
+    u8 seasonMode;
+    u8 playtimeSeason;
+};
+
+EWRAM_DATA static struct LegendsTitleOptions sTitleOptions = {0};
+
+void LegendsClearTitleOptions(void)
+{
+    sTitleOptions.valid = FALSE;
+}
+
+void LegendsStageTitleOptions(void)
+{
+    sTitleOptions.expShareEnabled = LegendsIsExpShareEnabled();
+    sTitleOptions.shinyRate = LegendsGetShinyRateSetting();
+    sTitleOptions.seasonMode = LegendsGetSeasonMode();
+    sTitleOptions.playtimeSeason = LegendsGetSeasonForMode(LEGENDS_SEASONS_PLAYTIME);
+    sTitleOptions.valid = TRUE;
+}
+
+void LegendsApplyTitleOptionsToNewGame(void)
+{
+    if (sTitleOptions.valid)
+    {
+        LegendsSetExpShareEnabled(sTitleOptions.expShareEnabled);
+        LegendsSetShinyRateSetting(sTitleOptions.shinyRate);
+        LegendsSetSeasonMode(sTitleOptions.seasonMode);
+        LegendsSetPlaytimeSeason(sTitleOptions.playtimeSeason);
+        LegendsClearTitleOptions();
+    }
+    // Initialize the visible environment before the truck/first outdoor load.
+    LegendsCommitSeasonTransition();
+}
 
 void LegendsInitNewGameSettings(void)
 {
