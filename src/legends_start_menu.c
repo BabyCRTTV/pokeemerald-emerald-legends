@@ -22,10 +22,10 @@ enum PanelIcon
     ICON_SNOW, ICON_FOG, ICON_ASH, ICON_SAND, ICON_WATER, ICON_INDOOR,
 };
 
-// Twelve-pixel silhouettes use the native text palette; no sprite/palette slots.
+// Twelve-pixel icons reuse native text colors; no sprite/palette slots.
 static const u16 sIcons[][12] =
 {
-    [ICON_CLOCK]   = {0x1F8,0x306,0x402,0x891,0x891,0x891,0x8F1,0x801,0x402,0x306,0x1F8,0},
+    [ICON_CLOCK]   = {0x1F8,0x306,0x402,0x841,0x841,0x841,0x879,0x801,0x402,0x306,0x1F8,0},
     [ICON_SUN]     = {0x090,0x492,0x000,0x1F8,0x204,0xA05,0x204,0x1F8,0,0x492,0x090,0},
     [ICON_CLOUD]   = {0,0,0x0F0,0x108,0x3CC,0x402,0x801,0x801,0x7FE,0,0,0},
     [ICON_RAIN]    = {0x0F0,0x108,0x3CC,0x402,0x801,0x7FE,0,0x222,0x444,0,0x222,0x444},
@@ -41,6 +41,8 @@ static const u16 sIcons[][12] =
 // Zero means absent, avoiding a nonzero mutable initializer in the ROM build.
 EWRAM_DATA static u8 sWindowHandle = 0;
 EWRAM_DATA static u8 sRefreshFrames = 0;
+EWRAM_DATA static u8 sAnimationFrames = 0;
+EWRAM_DATA static u8 sAnimationPhase = 0;
 EWRAM_DATA static u8 sLastHour = 0;
 EWRAM_DATA static u8 sLastMinute = 0;
 EWRAM_DATA static u8 sLastIcon = 0;
@@ -76,13 +78,71 @@ static u8 GetWeatherIcon(void)
     }
 }
 
+// Native palette indices: white 1, dark/light gray 2/3, warm gold 5,
+// blue/light blue 8/9. Keep the palette itself intact for other menu windows.
+static u8 GetIconColor(u8 icon, u8 row)
+{
+    switch (icon)
+    {
+    case ICON_SUN: return 5;
+    case ICON_RAIN: return row < 6 ? 3 : 8;
+    case ICON_THUNDER: return row < 6 ? 3 : 5;
+    case ICON_SNOW: return 9;
+    case ICON_FOG: return 3;
+    case ICON_SAND: return 5;
+    case ICON_WATER: return 8;
+    case ICON_CLOUD: return 3;
+    default: return 2;
+    }
+}
+
 static void DrawIcon(u8 windowId, u8 icon, u8 y)
 {
-    u32 row, column;
+    u32 row, column, sourceRow;
+    u16 bits;
+    u8 color;
     for (row = 0; row < 12; row++)
+    {
+        sourceRow = row;
+        // Rain/ash descend, fog/sand drift, and the sun's rays shimmer.
+        if (sAnimationPhase && icon == ICON_RAIN && row >= 7)
+            sourceRow = row == 7 ? 11 : row - 1;
+        if (sAnimationPhase && icon == ICON_ASH)
+            sourceRow = row == 0 ? 11 : row - 1;
+        bits = sIcons[icon][sourceRow];
+        if (sAnimationPhase && (icon == ICON_FOG || icon == ICON_SAND || icon == ICON_SNOW))
+            bits = ((bits << 1) | (bits >> 11)) & 0xFFF;
+        if (sAnimationPhase && icon == ICON_SUN && (row < 3 || row > 8))
+            bits = ((bits << 1) | (bits >> 11)) & 0xFFF;
+        color = GetIconColor(icon, row);
+        if (sAnimationPhase && icon == ICON_THUNDER && row >= 6)
+            color = 3; // Dim the bolt rather than flashing the whole panel.
+        if (sAnimationPhase && (icon == ICON_SNOW || icon == ICON_WATER))
+            color = 9;
+        if (icon == ICON_SUN && row >= 4 && row <= 6)
+            bits |= 0x1F8; // Filled sun, with a soft native gold tone.
         for (column = 0; column < 12; column++)
-            if (sIcons[icon][row] & (1 << (11 - column)))
-                FillWindowPixelRect(windowId, PIXEL_FILL(2), 4 + column, y + row, 1, 1);
+            if (bits & (1 << (11 - column)))
+                FillWindowPixelRect(windowId, PIXEL_FILL(color), 4 + column, y + row, 1, 1);
+    }
+}
+
+static void AnimateWeatherIcon(void)
+{
+    u8 windowId;
+    if (!sHasSnapshot)
+        return;
+    if (++sAnimationFrames < 30)
+        return;
+    sAnimationFrames = 0;
+    sAnimationPhase ^= 1;
+    // Sheltered locations have a static icon. No RTC reads for animation.
+    if (sLastIcon == ICON_INDOOR || sLastIcon == ICON_CLOUD)
+        return;
+    windowId = sWindowHandle - 1;
+    FillWindowPixelRect(windowId, PIXEL_FILL(1), 4, 18, 12, 12);
+    DrawIcon(windowId, sLastIcon, 18);
+    CopyWindowToVram(windowId, COPYWIN_GFX);
 }
 
 void LegendsUpdateStartMenuPanel(void)
@@ -93,6 +153,7 @@ void LegendsUpdateStartMenuPanel(void)
 
     if (sWindowHandle == 0)
         return;
+    AnimateWeatherIcon();
     if (sRefreshFrames != 0)
     {
         sRefreshFrames--;
@@ -145,6 +206,8 @@ void LegendsShowStartMenuPanel(void)
     sWindowHandle = windowId + 1;
     sRefreshFrames = 0;
     sHasSnapshot = FALSE;
+    sAnimationFrames = 0;
+    sAnimationPhase = 0;
     PutWindowTilemap(windowId);
     DrawStdWindowFrame(windowId, FALSE);
     LegendsUpdateStartMenuPanel();

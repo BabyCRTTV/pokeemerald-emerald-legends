@@ -31,6 +31,7 @@ struct {int hours,minutes;} gLocalTime;
 static int error,weather,season,adds,removes,copies,rtcReads,pixels,fail;
 static const struct WindowTemplate *template;
 static char texts[2][32];
+static u8 pixelBuffer[32][96];
 u16 RtcGetErrorStatus(void){return error;}
 void RtcCalcLocalTime(void){rtcReads++;}
 u8 GetCurrentWeather(void){return weather;}
@@ -43,8 +44,8 @@ void PutWindowTilemap(u32 w){assert(w==4);}
 void DrawStdWindowFrame(u8 w,int c){assert(w==4);}
 void ClearStdWindowAndFrameToTransparent(u8 w,int c){assert(w==4&&c);}
 void CopyWindowToVram(u32 w,u32 m){assert(w==4);copies++;}
-void FillWindowPixelBuffer(u32 w,u8 v){pixels=0;}
-void FillWindowPixelRect(u32 w,u8 v,u16 x,u16 y,u16 a,u16 b){assert(x<96&&y<32);pixels++;}
+void FillWindowPixelBuffer(u32 w,u8 v){pixels=0;memset(pixelBuffer,v&15,sizeof(pixelBuffer));}
+void FillWindowPixelRect(u32 w,u8 v,u16 x,u16 y,u16 a,u16 b){assert(x+a<=96&&y+b<=32);for(int j=y;j<y+b;j++)for(int i=x;i<x+a;i++)pixelBuffer[j][i]=v&15;pixels++;}
 void AddTextPrinterParameterized(u8 w,u8 f,const u8 *t,u16 x,u16 y,int speed,void *cb){snprintf(texts[y==0?0:1],32,"%s",t);}
 '''
 main = r'''
@@ -56,7 +57,7 @@ assert(template->tilemapLeft==1&&template->tilemapTop==14);
 assert(template->baseBlock+template->width*template->height<=0x107);
 int c=copies,r=rtcReads;
 for(int i=0;i<60;i++) LegendsUpdateStartMenuPanel();
-assert(copies==c&&rtcReads==r+1);
+assert(copies==c+2&&rtcReads==r+1);
 gLocalTime.hours=12;gLocalTime.minutes=0;weather=WEATHER_RAIN;season=3;
 for(int i=0;i<60;i++) LegendsUpdateStartMenuPanel();
 assert(!strcmp(texts[0],"12:00 PM")&&!strcmp(texts[1],"WINTER")&&sLastIcon==ICON_RAIN);
@@ -76,7 +77,24 @@ c=copies;LegendsUpdateStartMenuPanel();assert(copies==c);
 fail=1;LegendsShowStartMenuPanel();assert(!sWindowHandle);
 fail=0;error=0;LegendsShowStartMenuPanel();assert(sWindowHandle==5);
 LegendsHideStartMenuPanel();assert(removes==2);
-puts("Pause panel lifecycle, clock, weather, season and tile bounds passed.");
+// Check every icon and animation phase stays within the icon bounds and
+// paints native colors. Clock hands must be an L, not parallel U strokes.
+assert(sIcons[ICON_CLOCK][3]==0x841&&sIcons[ICON_CLOCK][6]==0x879);
+for(int icon=0;icon<=ICON_INDOOR;icon++){
+    u8 frames[2][32][96];
+    for(int phase=0;phase<2;phase++){
+        sAnimationPhase=phase;
+        FillWindowPixelBuffer(4,PIXEL_FILL(1));DrawIcon(4,icon,18);
+        for(int y=0;y<32;y++)for(int x=0;x<96;x++)
+            if(x<4||x>=16||y<18||y>=30)assert(pixelBuffer[y][x]==1);
+        memcpy(frames[phase],pixelBuffer,sizeof(pixelBuffer));
+    }
+    if(icon!=ICON_CLOCK&&icon!=ICON_CLOUD&&icon!=ICON_INDOOR)
+        assert(memcmp(frames[0],frames[1],sizeof(pixelBuffer))!=0);
+}
+assert(GetIconColor(ICON_SUN,5)==5&&GetIconColor(ICON_RAIN,9)==8);
+assert(GetIconColor(ICON_SNOW,4)==9&&GetIconColor(ICON_SAND,4)==5);
+puts("Pause panel lifecycle, clock, colored animation and tile/pixel bounds passed.");
 }
 '''
 with tempfile.TemporaryDirectory() as d:

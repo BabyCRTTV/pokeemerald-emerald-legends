@@ -4,6 +4,18 @@ All notable Pokémon Emerald: Legends project changes are documented here.
 
 For build-specific player views, see [CHANGELOG-RELEASE.md](CHANGELOG-RELEASE.md) and [CHANGELOG-DEBUG.md](CHANGELOG-DEBUG.md). The canonical history below records the project as a whole.
 
+## [0.0.14.1] - 2026-10-08
+
+### Changed
+- Colored the pause-panel weather icons using Emerald’s existing text palette: warm sunshine/sand, blue rain/water and pale blue snow.
+- Added gentle two-frame weather animation twice per second: sun shimmer, falling rain/ash, drifting snow/fog/sand, a softly dimming lightning bolt and water shimmer. Indoor and cloud icons stay still.
+- Redrew the clock hands as a clear L shape, removing the previous U-like appearance.
+- Animation updates only the weather icon pixels, reads no RTC data and uses no additional sprite or palette slots. Menu closure retains the existing cleanup.
+
+### Validation
+- Extended the actual-module host C regressions for both animation frames, native colors, pixel bounds and RTC read limits.
+- Release and Debug share the visual changes; no variant-specific gameplay differences.
+
 ## [0.0.14] - 2026-10-08
 
 ### Added
