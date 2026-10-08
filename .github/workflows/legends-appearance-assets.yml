@@ -1,0 +1,27 @@
+name: Legends appearance asset audit
+on:
+  push:
+    branches: [ legends/player-appearance ]
+    paths: [ .github/workflows/legends-appearance-assets.yml ]
+jobs:
+  inspect:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Export native player sprite sources for appearance development
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import base64, json
+          paths = []
+          for directory in ("brendan", "may"):
+              paths += sorted(Path("graphics/object_events/pics/people", directory).glob("*.png"))
+          paths += sorted(Path("graphics/trainers").rglob("*brendan*.png"))
+          paths += sorted(Path("graphics/trainers").rglob("*may*.png"))
+          # Include directories named for the trainer.
+          for path in Path("graphics/trainers").rglob("*.png"):
+              if any(name in path.parts for name in ("brendan", "may")):
+                  paths.append(path)
+          for path in sorted(set(paths)):
+              print("LEGENDS_ASSET " + json.dumps({"path":str(path),"base64":base64.b64encode(path.read_bytes()).decode()}))
+          PY
