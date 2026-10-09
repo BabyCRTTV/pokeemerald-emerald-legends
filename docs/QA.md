@@ -99,6 +99,6 @@ Follow the [player appearance emulator checklist](features/player-appearance.md#
 - [ ] Test each of the 11 STARTERS modes before the rescue bag, verify all three balls, and confirm the rival counter or Zorua. Inspect Zoroark at Route 119 and Lilycove.
 - [ ] Verify Random has no duplicate/evolved choices, stays stable while declining confirmation, and persists after save/reload. Change the preference after rescue and verify the existing rival stays fixed.
 
-## Kanto arrival (v0.0.26)
+## Kanto arrival (v0.0.26.1)
 
 Automated script/warp/heal-point checks: `python3 test/legends-kanto.test.py`. Follow the [Kanto feature checklist](features/kanto.md#emulator-checklist) and [Debug tutorial](kanto-guide.html). Emulator checklist items are pending unless explicitly recorded as verified.

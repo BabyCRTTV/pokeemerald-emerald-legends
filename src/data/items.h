@@ -14343,9 +14343,9 @@ const struct ItemInfo gItemsInfo[] =
         .name = ITEM_NAME("Invite Ticket"),
         .price = 0,
         .description = COMPOUND_STRING(
-            "A LEAGUE invitation.\n"
-            "Valid for return trips\n"
-            "between HOENN and KANTO."),
+            "A ferry pass for\n"
+            "HOENN and KANTO.\n"
+            "Valid both ways."),
         .importance = 1,
         .pocket = POCKET_KEY_ITEMS,
         .type = ITEM_USE_BAG_MENU,

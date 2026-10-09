@@ -154,6 +154,12 @@ class KantoTests(unittest.TestCase):
                                 capture_output=True, cwd=ROOT, check=True).stdout
         for symbol in ("Woman1Frlg", "CooltrainerM", "SailorFrlg", "SSAnne"):
             self.assertIn("= &gObjectEventGraphicsInfo_" + symbol, result)
+        registered = set(re.findall(r'\[(OBJ_EVENT_GFX_\w+)\]\s*=', result))
+        for path in (ROOT / 'data/maps').glob('LegendsKanto_*/map.json'):
+            for obj in json.loads(path.read_text())['object_events']:
+                graphics = obj['graphics_id']
+                if not graphics.startswith('OBJ_EVENT_GFX_SPECIES('):
+                    self.assertIn(graphics, registered, path.parent.name)
 
     def test_spectator_stands_on_walkable_land(self):
         d = json.loads((ROOT / "data/maps/LegendsKanto_VermilionCity/map.json").read_text())
@@ -167,6 +173,50 @@ class KantoTests(unittest.TestCase):
         attrs = (ROOT / f"data/tilesets/{path}/metatile_attributes.bin").read_bytes()
         behavior = struct.unpack_from("<I", attrs, offset * 4)[0] & 511
         self.assertNotIn(behavior, (16, 18, 21), "Spectator must not stand in water")
+
+    def test_residents_and_walk_routes_clear_furniture_and_doors(self):
+        layouts = {d['id']: d for d in json.loads((ROOT / 'data/layouts/layouts.json').read_text())['layouts']}
+        names = ('FanClub', 'VermilionCity', 'Mart', 'PokemonCenter_1F')
+        service = {'LegendsKanto_EventScript_Nurse', 'LegendsKanto_EventScript_Clerk'}
+        for name in names:
+            d = json.loads((ROOT / f'data/maps/LegendsKanto_{name}/map.json').read_text())
+            l = layouts[d['layout']]
+            blocks = (ROOT / l['blockdata_filepath']).read_bytes()
+            for o in d['object_events']:
+                if o['script'] in service:
+                    continue
+                positions = [(o['x'], o['y'])]
+                if o['movement_type'] == 'MOVEMENT_TYPE_WANDER_UP_AND_DOWN':
+                    positions += [(o['x'], o['y'] + dy) for dy in (-1, 1)]
+                if o['movement_type'] == 'MOVEMENT_TYPE_WANDER_LEFT_AND_RIGHT':
+                    positions += [(o['x'] + dx, o['y']) for dx in (-1, 1)]
+                for x, y in positions:
+                    block = struct.unpack_from('<H', blocks, 2 * (y * l['width'] + x))[0]
+                    self.assertEqual((block >> 10) & 3, 0, (name, o['script'], x, y))
+                    self.assertIn(block >> 12, (0, o['elevation']), (name, o['script'], 'layer'))
+                    self.assertNotIn((x, y), [(w['x'], w['y']) for w in d['warp_events']])
+        city = json.loads((ROOT / 'data/maps/LegendsKanto_VermilionCity/map.json').read_text())
+        machop = next(o for o in city['object_events'] if o['script'].endswith('_Machop'))
+        self.assertEqual(machop['graphics_id'], 'OBJ_EVENT_GFX_SPECIES(MACHOP)')
+        harbor = json.loads((ROOT / 'data/maps/LilycoveCity_Harbor/map.json').read_text())
+        sailor = next(o for o in harbor['object_events'] if o['script'].endswith('_OutboundFerry'))
+        lady = next(o for o in harbor['object_events'] if o.get('local_id') == 'LOCALID_LILYCOVE_HARBOR_ATTENDANT')
+        self.assertLessEqual(abs(sailor['x'] - lady['x']) + abs(sailor['y'] - lady['y']), 2)
+
+    def test_invite_ticket_fits_native_bag_description(self):
+        # Measure actual encoded glyph widths, rather than assuming equal-width letters.
+        fonts = (ROOT / 'src/fonts.c').read_text()
+        glyphs = re.search(r'gFontNormalLatinGlyphWidths\[\] = \{(.*?)\};', fonts, re.S)[1]
+        widths = [int(n) for n in re.findall(r'\d+', glyphs)]
+        encoding = {char: int(code, 16) for char, code in re.findall(r"^'(.)'\s*=\s*([0-9A-F]{2})$", (ROOT / 'charmap.txt').read_text(), re.M)}
+        items = (ROOT / 'src/data/items.h').read_text().split('[ITEM_INVITE_TICKET] =', 1)[1].split('.importance', 1)[0]
+        description = items.split('.description = COMPOUND_STRING(', 1)[1]
+        lines = [line.replace('\\n', '') for line in re.findall(r'"([^\"]*)"', description)]
+        self.assertEqual(len(lines), 3)
+        menu = (ROOT / 'src/item_menu.c').read_text()
+        width = int(re.search(r'\[WIN_DESCRIPTION\] = \{.*?\.width = (\d+)', menu, re.S)[1]) * 8
+        for line in lines:
+            self.assertLessEqual(sum(widths[encoding[c]] for c in line), width - 3, line)
 
 
 if __name__ == "__main__":
