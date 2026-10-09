@@ -4,6 +4,19 @@ All notable Pokémon Emerald: Legends project changes are documented here.
 
 For build-specific player views, see [CHANGELOG-RELEASE.md](CHANGELOG-RELEASE.md) and [CHANGELOG-DEBUG.md](CHANGELOG-DEBUG.md). The canonical history below records the project as a whole.
 
+## [0.0.23] - 2026-10-08
+
+### Added
+- A wooden wardrobe in each Littleroot bedroom, usable only in the player’s own home. Browse all five outfits, five additional scarf colors (Crimson, Ocean, Emerald, Lavender, Cream) or no added scarf, and an optional navy jacket with short sleeves.
+- A dedicated native wardrobe screen with a live trainer portrait, Apply and Cancel. Scarf and jacket selections combine independently with every outfit; skin tone is retained.
+- A placeable 1x2 WARDROBE ornament sold for ₽3,000 at Route 104’s Pretty Petal Flower Shop. Uses the native decoration inventory, placement/removal and save system; customization is available only in your own secret base.
+- Matching accessory art for both genders across walking/running, bikes, Surf, field moves, fishing/watering, battle front/back throw frames and the local Trainer Card. The diving suit remains covered; rivals/NPCs and remote link art remain native.
+
+### Compatibility and validation
+- Accessory choices use unused var 0x40A1 without changing save layouts. Legacy saves retain native skin colors when editing clothes; new games start with no added accessories.
+- Added pose-aligned native 4bpp asset generation, separate scarf coloring, safe cabinet tile reuse, actual UI access/navigation/apply/cancel tests, and all-combination appearance/asset regressions.
+- Documented wardrobe controls, shopping/placement, save migration and emulator QA. Release and Debug share these changes with no variant-specific differences; developer tools remain disabled in Release and enabled in Debug.
+
 ## [0.0.22] - 2026-10-08
 
 ### Added

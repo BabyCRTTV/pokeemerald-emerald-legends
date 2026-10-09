@@ -1080,4 +1080,10 @@
 #define METATILE_RSMossdeepGym_Switch_Down           0x239
 #define METATILE_RSMossdeepGym_Switch_Up             0x238
 
+
+#define METATILE_SecretBase_LegendsWardrobe_Top 0x344
+#define METATILE_SecretBase_LegendsWardrobe_Bottom 0x345
+#define METATILE_BrendansMaysHouse_LegendsWardrobe_Top 0x2C4
+#define METATILE_BrendansMaysHouse_LegendsWardrobe_Bottom 0x2C5
+
 #endif // GUARD_METATILE_LABELS_H

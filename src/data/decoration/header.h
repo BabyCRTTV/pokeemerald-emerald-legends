@@ -1908,4 +1908,15 @@ const struct Decoration gDecorations[] =
         .tiles = DecorGfx_REGISTEEL_DOLL,
         .icon = {gDecorIcon_RegisteelDoll, gDecorIconPalette_RegisteelDoll},
     }
+    [DECOR_LEGENDS_WARDROBE] = {
+        .id = DECOR_LEGENDS_WARDROBE,
+        .name = _("WARDROBE"),
+        .permission = DECORPERM_SOLID_FLOOR,
+        .shape = DECORSHAPE_1x2,
+        .category = DECORCAT_ORNAMENT,
+        .price = 3000,
+        .description = COMPOUND_STRING("A wooden wardrobe.\nChange outfits and\naccessories here."),
+        .tiles = DecorGfx_LEGENDS_WARDROBE,
+        .icon = {NULL, NULL},
+    },
 };

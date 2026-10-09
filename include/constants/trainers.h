@@ -187,6 +187,7 @@ enum __attribute__((packed)) TrainerPicID
     TRAINER_PIC_LEGENDS_MAY_SPORT,
     TRAINER_PIC_LEGENDS_MAY_YELLOW,
     TRAINER_PIC_LEGENDS_MAY_LAVENDER,
+#include "constants/legends_accessory_trainers.inc"
     TRAINER_PIC_COUNT,
 };
 

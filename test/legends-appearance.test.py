@@ -16,6 +16,7 @@ import re
 base_ids=list(dict.fromkeys(re.findall(r"OBJ_EVENT_GFX_(?:BRENDAN|MAY)_\w+",graphics)))
 graphics_constants="\n".join(f"#define {name} {i+100}" for i,name in enumerate(base_ids))
 source += '\n'+graphics_constants+r'''
+#define INCBIN_U8(path) {0}
 #define ALIGNED(x) __attribute__((aligned(x)))
 #define LEGENDS_APPEARANCE_STATES 9
 #define OBJ_EVENT_GFX_LEGENDS_PLAYER_START 1000
@@ -23,7 +24,7 @@ source += '\n'+graphics_constants+r'''
 #define OBJ_EVENT_PAL_TAG_LEGENDS_UNDERWATER_MALE 2002
 struct SpriteFrameImage {const u8 *data;u16 size;};
 struct ObjectEventGraphicsInfo {u16 paletteTag;u16 size;const struct SpriteFrameImage *images;};
-'''+(root/"src/data/legends/overworld_outfits.h").read_text()+'\n'+graphics
+'''+(root/"src/data/legends/overworld_outfits.h").read_text()+"\n"+(root/"src/data/legends/overworld_accessories.h").read_text()+'\n'+graphics
 pre=r'''
 #include <assert.h>
 #include <stdint.h>
@@ -37,10 +38,13 @@ enum TrainerPicID {TRAINER_PIC_LEGENDS_BRENDAN_EMERALD=200};
 #define FALSE 0
 #define LEGENDS_SKIN_TONE_COUNT 5
 #define LEGENDS_OUTFIT_COUNT 5
+#define LEGENDS_SCARF_COUNT 6
+#define VAR_LEGENDS_ACCESSORIES 1
+#define TRAINER_PIC_LEGENDS_ACCESSORY_0 210
 #define VAR_LEGENDS_APPEARANCE 0
-static u16 value;
-u16 VarGet(u16 id){return value;}
-void VarSet(u16 id,u16 v){value=v;}
+static u16 value,accessories;
+u16 VarGet(u16 id){return id==1?accessories:value;}
+void VarSet(u16 id,u16 v){if(id==1)accessories=v;else value=v;}
 void LegendsClearAppearanceSelection(void);
 void LegendsUpdateAppearancePalettes(void);
 '''
@@ -98,6 +102,30 @@ assert(!memcmp(gLegendsTrainerPalettes,sBaseTrainerPalettes,sizeof(gLegendsTrain
 LegendsSetAppearanceSelection(255,255);assert(LegendsGetSkinTone()==0&&LegendsGetOutfit()==0);
 LegendsApplyAppearanceToNewGame();assert(value==1);
 LegendsApplyAppearanceToNewGame();assert(value==0); // Pending selection is consumed once.
+// Every outfit/scarf/jacket combination applies atomically and keeps skin.
+for(int o=0;o<5;o++)for(int scarf=0;scarf<6;scarf++)for(int j=0;j<2;j++){
+ value=14;accessories=0;LegendsClearAppearanceSelection();LegendsBeginWardrobeSelection();
+ LegendsSetAppearanceSelection(LegendsGetSkinTone(),o);LegendsSetAccessorySelection(scarf,j);
+ assert(value==14&&accessories==0);assert(LegendsGetSkinTone()==3);
+ LegendsApplyWardrobeSelection();assert(value==1+3+5*o&&accessories==scarf+6*j);
+ for(int g=0;g<2;g++){
+  int style=(scarf!=0)|j<<1;
+  assert(LegendsGetPlayerTrainerPic(g)==(style?210+((style-1)*2+g)*5+o:200+g*5+o));
+  struct SpriteFrameImage nativeImage={0};struct ObjectEventGraphicsInfo native={99,512,&nativeImage};
+  for(int state=0;state<9;state++){
+   const struct ObjectEventGraphicsInfo *info=LegendsGetPlayerGraphicsInfo(1000+g*9+state,&native);
+   if(style&&state!=4)assert(info->images==sLegendsAccessoryImages[style-1][g][o][state==8?5:state]);
+  }
+ }
+ LegendsBeginWardrobeSelection();LegendsSetAccessorySelection(5,1);LegendsSetAppearanceSelection(3,4);LegendsClearAppearanceSelection();
+ assert(value==1+3+5*o&&accessories==scarf+6*j); // cancel does not write
+}
+value=0;accessories=0;LegendsClearAppearanceSelection();LegendsBeginWardrobeSelection();
+LegendsSetAppearanceSelection(0,2);LegendsSetAccessorySelection(1,1);LegendsApplyWardrobeSelection();
+assert(value==28);LegendsUpdateAppearancePalettes();
+assert(gLegendsTrainerPalettes[0][1]==sBaseTrainerPalettes[0][1]);
+accessories=65535;LegendsClearAppearanceSelection();assert(LegendsGetAccessoryStyle()==0);
+LegendsBeginAppearanceSelection();assert(LegendsGetAccessoryStyle()==0);LegendsApplyAppearanceToNewGame();assert(accessories==0);
 puts("All 50 gender/skin/outfit appearances, save handoff, legacy defaults and palette isolation passed.");
 }
 '''

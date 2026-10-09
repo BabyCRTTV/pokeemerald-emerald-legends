@@ -1,0 +1,4712 @@
+{
+  "sLegendsBrendanEmeraldAccessory1Normal": {
+    "frames": 18,
+    "bytes": 4608,
+    "image_indices": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17
+    ]
+  },
+  "sLegendsBrendanEmeraldAccessory1MachBike": {
+    "frames": 9,
+    "bytes": 4608,
+    "image_indices": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+    ]
+  },
+  "sLegendsBrendanEmeraldAccessory1AcroBike": {
+    "frames": 27,
+    "bytes": 13824,
+    "image_indices": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26
+    ]
+  },
+  "sLegendsBrendanEmeraldAccessory1Surfing": {
+    "frames": 6,
+    "bytes": 3072,
+    "image_indices": [
+      0,
+      2,
+      4,
+      0,
+      0,
+      2,
+      2,
+      4,
+      4,
+      1,
+      3,
+      5
+    ]
+  },
+  "sLegendsBrendanEmeraldAccessory1Underwater": {
+    "frames": 4,
+    "bytes": 2048,
+    "image_indices": [
+      0,
+      1,
+      2,
+      0,
+      0,
+      1,
+      1,
+      2,
+      2
+    ]
+  },
+  "sLegendsBrendanEmeraldAccessory1FieldMove": {
+    "frames": 5,
+    "bytes": 2560,
+    "image_indices": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ]
+  },
+  "sLegendsBrendanEmeraldAccessory1Fishing": {
+    "frames": 12,
+    "bytes": 6144,
+    "image_indices": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+    ]
+  },
+  "sLegendsBrendanEmeraldAccessory1Watering": {
+    "frames": 6,
+    "bytes": 3072,
+    "image_indices": [
+      0,
+      2,
+      4,
+      1,
+      1,
+      3,
+      3,
+      5,
+      5
+    ]
+  },
+  "gLegendsBrendanEmeraldAccessory1Front": {
+    "frames": 1,
+    "bytes": 2048
+  },
+  "gLegendsBrendanEmeraldAccessory1Back": {
+    "frames": 4,
+    "bytes": 8192
+  },
+  "sLegendsBrendanTrailAccessory1Normal": {
+    "frames": 18,
+    "bytes": 4608,
+    "image_indices": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17
+    ]
+  },
+  "sLegendsBrendanTrailAccessory1MachBike": {
+    "frames": 9,
+    "bytes": 4608,
+    "image_indices": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+    ]
+  },
+  "sLegendsBrendanTrailAccessory1AcroBike": {
+    "frames": 27,
+    "bytes": 13824,
+    "image_indices": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26
+    ]
+  },
+  "sLegendsBrendanTrailAccessory1Surfing": {
+    "frames": 6,
+    "bytes": 3072,
+    "image_indices": [
+      0,
+      2,
+      4,
+      0,
+      0,
+      2,
+      2,
+      4,
+      4,
+      1,
+      3,
+      5
+    ]
+  },
+  "sLegendsBrendanTrailAccessory1Underwater": {
+    "frames": 4,
+    "bytes": 2048,
+    "image_indices": [
+      0,
+      1,
+      2,
+      0,
+      0,
+      1,
+      1,
+      2,
+      2
+    ]
+  },
+  "sLegendsBrendanTrailAccessory1FieldMove": {
+    "frames": 5,
+    "bytes": 2560,
+    "image_indices": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ]
+  },
+  "sLegendsBrendanTrailAccessory1Fishing": {
+    "frames": 12,
+    "bytes": 6144,
+    "image_indices": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+    ]
+  },
+  "sLegendsBrendanTrailAccessory1Watering": {
+    "frames": 6,
+    "bytes": 3072,
+    "image_indices": [
+      0,
+      2,
+      4,
+      1,
+      1,
+      3,
+      3,
+      5,
+      5
+    ]
+  },
+  "gLegendsBrendanTrailAccessory1Front": {
+    "frames": 1,
+    "bytes": 2048
+  },
+  "gLegendsBrendanTrailAccessory1Back": {
+    "frames": 4,
+    "bytes": 8192
+  },
+  "sLegendsBrendanSportAccessory1Normal": {
+    "frames": 18,
+    "bytes": 4608,
+    "image_indices": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17
+    ]
+  },
+  "sLegendsBrendanSportAccessory1MachBike": {
+    "frames": 9,
+    "bytes": 4608,
+    "image_indices": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+    ]
+  },
+  "sLegendsBrendanSportAccessory1AcroBike": {
+    "frames": 27,
+    "bytes": 13824,
+    "image_indices": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26
+    ]
+  },
+  "sLegendsBrendanSportAccessory1Surfing": {
+    "frames": 6,
+    "bytes": 3072,
+    "image_indices": [
+      0,
+      2,
+      4,
+      0,
+      0,
+      2,
+      2,
+      4,
+      4,
+      1,
+      3,
+      5
+    ]
+  },
+  "sLegendsBrendanSportAccessory1Underwater": {
+    "frames": 4,
+    "bytes": 2048,
+    "image_indices": [
+      0,
+      1,
+      2,
+      0,
+      0,
+      1,
+      1,
+      2,
+      2
+    ]
+  },
+  "sLegendsBrendanSportAccessory1FieldMove": {
+    "frames": 5,
+    "bytes": 2560,
+    "image_indices": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ]
+  },
+  "sLegendsBrendanSportAccessory1Fishing": {
+    "frames": 12,
+    "bytes": 6144,
+    "image_indices": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+    ]
+  },
+  "sLegendsBrendanSportAccessory1Watering": {
+    "frames": 6,
+    "bytes": 3072,
+    "image_indices": [
+      0,
+      2,
+      4,
+      1,
+      1,
+      3,
+      3,
+      5,
+      5
+    ]
+  },
+  "gLegendsBrendanSportAccessory1Front": {
+    "frames": 1,
+    "bytes": 2048
+  },
+  "gLegendsBrendanSportAccessory1Back": {
+    "frames": 4,
+    "bytes": 8192
+  },
+  "sLegendsBrendanYellowAccessory1Normal": {
+    "frames": 18,
+    "bytes": 4608,
+    "image_indices": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17
+    ]
+  },
+  "sLegendsBrendanYellowAccessory1MachBike": {
+    "frames": 9,
+    "bytes": 4608,
+    "image_indices": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+    ]
+  },
+  "sLegendsBrendanYellowAccessory1AcroBike": {
+    "frames": 27,
+    "bytes": 13824,
+    "image_indices": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26
+    ]
+  },
+  "sLegendsBrendanYellowAccessory1Surfing": {
+    "frames": 6,
+    "bytes": 3072,
+    "image_indices": [
+      0,
+      2,
+      4,
+      0,
+      0,
+      2,
+      2,
+      4,
+      4,
+      1,
+      3,
+      5
+    ]
+  },
+  "sLegendsBrendanYellowAccessory1Underwater": {
+    "frames": 4,
+    "bytes": 2048,
+    "image_indices": [
+      0,
+      1,
+      2,
+      0,
+      0,
+      1,
+      1,
+      2,
+      2
+    ]
+  },
+  "sLegendsBrendanYellowAccessory1FieldMove": {
+    "frames": 5,
+    "bytes": 2560,
+    "image_indices": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ]
+  },
+  "sLegendsBrendanYellowAccessory1Fishing": {
+    "frames": 12,
+    "bytes": 6144,
+    "image_indices": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+    ]
+  },
+  "sLegendsBrendanYellowAccessory1Watering": {
+    "frames": 6,
+    "bytes": 3072,
+    "image_indices": [
+      0,
+      2,
+      4,
+      1,
+      1,
+      3,
+      3,
+      5,
+      5
+    ]
+  },
+  "gLegendsBrendanYellowAccessory1Front": {
+    "frames": 1,
+    "bytes": 2048
+  },
+  "gLegendsBrendanYellowAccessory1Back": {
+    "frames": 4,
+    "bytes": 8192
+  },
+  "sLegendsBrendanLavenderAccessory1Normal": {
+    "frames": 18,
+    "bytes": 4608,
+    "image_indices": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17
+    ]
+  },
+  "sLegendsBrendanLavenderAccessory1MachBike": {
+    "frames": 9,
+    "bytes": 4608,
+    "image_indices": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+    ]
+  },
+  "sLegendsBrendanLavenderAccessory1AcroBike": {
+    "frames": 27,
+    "bytes": 13824,
+    "image_indices": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26
+    ]
+  },
+  "sLegendsBrendanLavenderAccessory1Surfing": {
+    "frames": 6,
+    "bytes": 3072,
+    "image_indices": [
+      0,
+      2,
+      4,
+      0,
+      0,
+      2,
+      2,
+      4,
+      4,
+      1,
+      3,
+      5
+    ]
+  },
+  "sLegendsBrendanLavenderAccessory1Underwater": {
+    "frames": 4,
+    "bytes": 2048,
+    "image_indices": [
+      0,
+      1,
+      2,
+      0,
+      0,
+      1,
+      1,
+      2,
+      2
+    ]
+  },
+  "sLegendsBrendanLavenderAccessory1FieldMove": {
+    "frames": 5,
+    "bytes": 2560,
+    "image_indices": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ]
+  },
+  "sLegendsBrendanLavenderAccessory1Fishing": {
+    "frames": 12,
+    "bytes": 6144,
+    "image_indices": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+    ]
+  },
+  "sLegendsBrendanLavenderAccessory1Watering": {
+    "frames": 6,
+    "bytes": 3072,
+    "image_indices": [
+      0,
+      2,
+      4,
+      1,
+      1,
+      3,
+      3,
+      5,
+      5
+    ]
+  },
+  "gLegendsBrendanLavenderAccessory1Front": {
+    "frames": 1,
+    "bytes": 2048
+  },
+  "gLegendsBrendanLavenderAccessory1Back": {
+    "frames": 4,
+    "bytes": 8192
+  },
+  "sLegendsMayEmeraldAccessory1Normal": {
+    "frames": 18,
+    "bytes": 4608,
+    "image_indices": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17
+    ]
+  },
+  "sLegendsMayEmeraldAccessory1MachBike": {
+    "frames": 9,
+    "bytes": 4608,
+    "image_indices": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+    ]
+  },
+  "sLegendsMayEmeraldAccessory1AcroBike": {
+    "frames": 27,
+    "bytes": 13824,
+    "image_indices": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26
+    ]
+  },
+  "sLegendsMayEmeraldAccessory1Surfing": {
+    "frames": 6,
+    "bytes": 3072,
+    "image_indices": [
+      0,
+      2,
+      4,
+      0,
+      0,
+      2,
+      2,
+      4,
+      4,
+      1,
+      3,
+      5
+    ]
+  },
+  "sLegendsMayEmeraldAccessory1Underwater": {
+    "frames": 4,
+    "bytes": 2048,
+    "image_indices": [
+      0,
+      1,
+      2,
+      0,
+      0,
+      1,
+      1,
+      2,
+      2
+    ]
+  },
+  "sLegendsMayEmeraldAccessory1FieldMove": {
+    "frames": 5,
+    "bytes": 2560,
+    "image_indices": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ]
+  },
+  "sLegendsMayEmeraldAccessory1Fishing": {
+    "frames": 12,
+    "bytes": 6144,
+    "image_indices": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+    ]
+  },
+  "sLegendsMayEmeraldAccessory1Watering": {
+    "frames": 6,
+    "bytes": 3072,
+    "image_indices": [
+      0,
+      2,
+      4,
+      1,
+      1,
+      3,
+      3,
+      5,
+      5
+    ]
+  },
+  "gLegendsMayEmeraldAccessory1Front": {
+    "frames": 1,
+    "bytes": 2048
+  },
+  "gLegendsMayEmeraldAccessory1Back": {
+    "frames": 4,
+    "bytes": 8192
+  },
+  "sLegendsMayTrailAccessory1Normal": {
+    "frames": 18,
+    "bytes": 4608,
+    "image_indices": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17
+    ]
+  },
+  "sLegendsMayTrailAccessory1MachBike": {
+    "frames": 9,
+    "bytes": 4608,
+    "image_indices": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+    ]
+  },
+  "sLegendsMayTrailAccessory1AcroBike": {
+    "frames": 27,
+    "bytes": 13824,
+    "image_indices": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26
+    ]
+  },
+  "sLegendsMayTrailAccessory1Surfing": {
+    "frames": 6,
+    "bytes": 3072,
+    "image_indices": [
+      0,
+      2,
+      4,
+      0,
+      0,
+      2,
+      2,
+      4,
+      4,
+      1,
+      3,
+      5
+    ]
+  },
+  "sLegendsMayTrailAccessory1Underwater": {
+    "frames": 4,
+    "bytes": 2048,
+    "image_indices": [
+      0,
+      1,
+      2,
+      0,
+      0,
+      1,
+      1,
+      2,
+      2
+    ]
+  },
+  "sLegendsMayTrailAccessory1FieldMove": {
+    "frames": 5,
+    "bytes": 2560,
+    "image_indices": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ]
+  },
+  "sLegendsMayTrailAccessory1Fishing": {
+    "frames": 12,
+    "bytes": 6144,
+    "image_indices": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+    ]
+  },
+  "sLegendsMayTrailAccessory1Watering": {
+    "frames": 6,
+    "bytes": 3072,
+    "image_indices": [
+      0,
+      2,
+      4,
+      1,
+      1,
+      3,
+      3,
+      5,
+      5
+    ]
+  },
+  "gLegendsMayTrailAccessory1Front": {
+    "frames": 1,
+    "bytes": 2048
+  },
+  "gLegendsMayTrailAccessory1Back": {
+    "frames": 4,
+    "bytes": 8192
+  },
+  "sLegendsMaySportAccessory1Normal": {
+    "frames": 18,
+    "bytes": 4608,
+    "image_indices": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17
+    ]
+  },
+  "sLegendsMaySportAccessory1MachBike": {
+    "frames": 9,
+    "bytes": 4608,
+    "image_indices": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+    ]
+  },
+  "sLegendsMaySportAccessory1AcroBike": {
+    "frames": 27,
+    "bytes": 13824,
+    "image_indices": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26
+    ]
+  },
+  "sLegendsMaySportAccessory1Surfing": {
+    "frames": 6,
+    "bytes": 3072,
+    "image_indices": [
+      0,
+      2,
+      4,
+      0,
+      0,
+      2,
+      2,
+      4,
+      4,
+      1,
+      3,
+      5
+    ]
+  },
+  "sLegendsMaySportAccessory1Underwater": {
+    "frames": 4,
+    "bytes": 2048,
+    "image_indices": [
+      0,
+      1,
+      2,
+      0,
+      0,
+      1,
+      1,
+      2,
+      2
+    ]
+  },
+  "sLegendsMaySportAccessory1FieldMove": {
+    "frames": 5,
+    "bytes": 2560,
+    "image_indices": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ]
+  },
+  "sLegendsMaySportAccessory1Fishing": {
+    "frames": 12,
+    "bytes": 6144,
+    "image_indices": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+    ]
+  },
+  "sLegendsMaySportAccessory1Watering": {
+    "frames": 6,
+    "bytes": 3072,
+    "image_indices": [
+      0,
+      2,
+      4,
+      1,
+      1,
+      3,
+      3,
+      5,
+      5
+    ]
+  },
+  "gLegendsMaySportAccessory1Front": {
+    "frames": 1,
+    "bytes": 2048
+  },
+  "gLegendsMaySportAccessory1Back": {
+    "frames": 4,
+    "bytes": 8192
+  },
+  "sLegendsMayYellowAccessory1Normal": {
+    "frames": 18,
+    "bytes": 4608,
+    "image_indices": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17
+    ]
+  },
+  "sLegendsMayYellowAccessory1MachBike": {
+    "frames": 9,
+    "bytes": 4608,
+    "image_indices": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+    ]
+  },
+  "sLegendsMayYellowAccessory1AcroBike": {
+    "frames": 27,
+    "bytes": 13824,
+    "image_indices": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26
+    ]
+  },
+  "sLegendsMayYellowAccessory1Surfing": {
+    "frames": 6,
+    "bytes": 3072,
+    "image_indices": [
+      0,
+      2,
+      4,
+      0,
+      0,
+      2,
+      2,
+      4,
+      4,
+      1,
+      3,
+      5
+    ]
+  },
+  "sLegendsMayYellowAccessory1Underwater": {
+    "frames": 4,
+    "bytes": 2048,
+    "image_indices": [
+      0,
+      1,
+      2,
+      0,
+      0,
+      1,
+      1,
+      2,
+      2
+    ]
+  },
+  "sLegendsMayYellowAccessory1FieldMove": {
+    "frames": 5,
+    "bytes": 2560,
+    "image_indices": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ]
+  },
+  "sLegendsMayYellowAccessory1Fishing": {
+    "frames": 12,
+    "bytes": 6144,
+    "image_indices": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+    ]
+  },
+  "sLegendsMayYellowAccessory1Watering": {
+    "frames": 6,
+    "bytes": 3072,
+    "image_indices": [
+      0,
+      2,
+      4,
+      1,
+      1,
+      3,
+      3,
+      5,
+      5
+    ]
+  },
+  "gLegendsMayYellowAccessory1Front": {
+    "frames": 1,
+    "bytes": 2048
+  },
+  "gLegendsMayYellowAccessory1Back": {
+    "frames": 4,
+    "bytes": 8192
+  },
+  "sLegendsMayLavenderAccessory1Normal": {
+    "frames": 18,
+    "bytes": 4608,
+    "image_indices": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17
+    ]
+  },
+  "sLegendsMayLavenderAccessory1MachBike": {
+    "frames": 9,
+    "bytes": 4608,
+    "image_indices": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+    ]
+  },
+  "sLegendsMayLavenderAccessory1AcroBike": {
+    "frames": 27,
+    "bytes": 13824,
+    "image_indices": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26
+    ]
+  },
+  "sLegendsMayLavenderAccessory1Surfing": {
+    "frames": 6,
+    "bytes": 3072,
+    "image_indices": [
+      0,
+      2,
+      4,
+      0,
+      0,
+      2,
+      2,
+      4,
+      4,
+      1,
+      3,
+      5
+    ]
+  },
+  "sLegendsMayLavenderAccessory1Underwater": {
+    "frames": 4,
+    "bytes": 2048,
+    "image_indices": [
+      0,
+      1,
+      2,
+      0,
+      0,
+      1,
+      1,
+      2,
+      2
+    ]
+  },
+  "sLegendsMayLavenderAccessory1FieldMove": {
+    "frames": 5,
+    "bytes": 2560,
+    "image_indices": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ]
+  },
+  "sLegendsMayLavenderAccessory1Fishing": {
+    "frames": 12,
+    "bytes": 6144,
+    "image_indices": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+    ]
+  },
+  "sLegendsMayLavenderAccessory1Watering": {
+    "frames": 6,
+    "bytes": 3072,
+    "image_indices": [
+      0,
+      2,
+      4,
+      1,
+      1,
+      3,
+      3,
+      5,
+      5
+    ]
+  },
+  "gLegendsMayLavenderAccessory1Front": {
+    "frames": 1,
+    "bytes": 2048
+  },
+  "gLegendsMayLavenderAccessory1Back": {
+    "frames": 4,
+    "bytes": 8192
+  },
+  "sLegendsBrendanEmeraldAccessory2Normal": {
+    "frames": 18,
+    "bytes": 4608,
+    "image_indices": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17
+    ]
+  },
+  "sLegendsBrendanEmeraldAccessory2MachBike": {
+    "frames": 9,
+    "bytes": 4608,
+    "image_indices": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+    ]
+  },
+  "sLegendsBrendanEmeraldAccessory2AcroBike": {
+    "frames": 27,
+    "bytes": 13824,
+    "image_indices": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26
+    ]
+  },
+  "sLegendsBrendanEmeraldAccessory2Surfing": {
+    "frames": 6,
+    "bytes": 3072,
+    "image_indices": [
+      0,
+      2,
+      4,
+      0,
+      0,
+      2,
+      2,
+      4,
+      4,
+      1,
+      3,
+      5
+    ]
+  },
+  "sLegendsBrendanEmeraldAccessory2Underwater": {
+    "frames": 4,
+    "bytes": 2048,
+    "image_indices": [
+      0,
+      1,
+      2,
+      0,
+      0,
+      1,
+      1,
+      2,
+      2
+    ]
+  },
+  "sLegendsBrendanEmeraldAccessory2FieldMove": {
+    "frames": 5,
+    "bytes": 2560,
+    "image_indices": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ]
+  },
+  "sLegendsBrendanEmeraldAccessory2Fishing": {
+    "frames": 12,
+    "bytes": 6144,
+    "image_indices": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+    ]
+  },
+  "sLegendsBrendanEmeraldAccessory2Watering": {
+    "frames": 6,
+    "bytes": 3072,
+    "image_indices": [
+      0,
+      2,
+      4,
+      1,
+      1,
+      3,
+      3,
+      5,
+      5
+    ]
+  },
+  "gLegendsBrendanEmeraldAccessory2Front": {
+    "frames": 1,
+    "bytes": 2048
+  },
+  "gLegendsBrendanEmeraldAccessory2Back": {
+    "frames": 4,
+    "bytes": 8192
+  },
+  "sLegendsBrendanTrailAccessory2Normal": {
+    "frames": 18,
+    "bytes": 4608,
+    "image_indices": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17
+    ]
+  },
+  "sLegendsBrendanTrailAccessory2MachBike": {
+    "frames": 9,
+    "bytes": 4608,
+    "image_indices": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+    ]
+  },
+  "sLegendsBrendanTrailAccessory2AcroBike": {
+    "frames": 27,
+    "bytes": 13824,
+    "image_indices": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26
+    ]
+  },
+  "sLegendsBrendanTrailAccessory2Surfing": {
+    "frames": 6,
+    "bytes": 3072,
+    "image_indices": [
+      0,
+      2,
+      4,
+      0,
+      0,
+      2,
+      2,
+      4,
+      4,
+      1,
+      3,
+      5
+    ]
+  },
+  "sLegendsBrendanTrailAccessory2Underwater": {
+    "frames": 4,
+    "bytes": 2048,
+    "image_indices": [
+      0,
+      1,
+      2,
+      0,
+      0,
+      1,
+      1,
+      2,
+      2
+    ]
+  },
+  "sLegendsBrendanTrailAccessory2FieldMove": {
+    "frames": 5,
+    "bytes": 2560,
+    "image_indices": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ]
+  },
+  "sLegendsBrendanTrailAccessory2Fishing": {
+    "frames": 12,
+    "bytes": 6144,
+    "image_indices": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+    ]
+  },
+  "sLegendsBrendanTrailAccessory2Watering": {
+    "frames": 6,
+    "bytes": 3072,
+    "image_indices": [
+      0,
+      2,
+      4,
+      1,
+      1,
+      3,
+      3,
+      5,
+      5
+    ]
+  },
+  "gLegendsBrendanTrailAccessory2Front": {
+    "frames": 1,
+    "bytes": 2048
+  },
+  "gLegendsBrendanTrailAccessory2Back": {
+    "frames": 4,
+    "bytes": 8192
+  },
+  "sLegendsBrendanSportAccessory2Normal": {
+    "frames": 18,
+    "bytes": 4608,
+    "image_indices": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17
+    ]
+  },
+  "sLegendsBrendanSportAccessory2MachBike": {
+    "frames": 9,
+    "bytes": 4608,
+    "image_indices": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+    ]
+  },
+  "sLegendsBrendanSportAccessory2AcroBike": {
+    "frames": 27,
+    "bytes": 13824,
+    "image_indices": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26
+    ]
+  },
+  "sLegendsBrendanSportAccessory2Surfing": {
+    "frames": 6,
+    "bytes": 3072,
+    "image_indices": [
+      0,
+      2,
+      4,
+      0,
+      0,
+      2,
+      2,
+      4,
+      4,
+      1,
+      3,
+      5
+    ]
+  },
+  "sLegendsBrendanSportAccessory2Underwater": {
+    "frames": 4,
+    "bytes": 2048,
+    "image_indices": [
+      0,
+      1,
+      2,
+      0,
+      0,
+      1,
+      1,
+      2,
+      2
+    ]
+  },
+  "sLegendsBrendanSportAccessory2FieldMove": {
+    "frames": 5,
+    "bytes": 2560,
+    "image_indices": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ]
+  },
+  "sLegendsBrendanSportAccessory2Fishing": {
+    "frames": 12,
+    "bytes": 6144,
+    "image_indices": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+    ]
+  },
+  "sLegendsBrendanSportAccessory2Watering": {
+    "frames": 6,
+    "bytes": 3072,
+    "image_indices": [
+      0,
+      2,
+      4,
+      1,
+      1,
+      3,
+      3,
+      5,
+      5
+    ]
+  },
+  "gLegendsBrendanSportAccessory2Front": {
+    "frames": 1,
+    "bytes": 2048
+  },
+  "gLegendsBrendanSportAccessory2Back": {
+    "frames": 4,
+    "bytes": 8192
+  },
+  "sLegendsBrendanYellowAccessory2Normal": {
+    "frames": 18,
+    "bytes": 4608,
+    "image_indices": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17
+    ]
+  },
+  "sLegendsBrendanYellowAccessory2MachBike": {
+    "frames": 9,
+    "bytes": 4608,
+    "image_indices": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+    ]
+  },
+  "sLegendsBrendanYellowAccessory2AcroBike": {
+    "frames": 27,
+    "bytes": 13824,
+    "image_indices": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26
+    ]
+  },
+  "sLegendsBrendanYellowAccessory2Surfing": {
+    "frames": 6,
+    "bytes": 3072,
+    "image_indices": [
+      0,
+      2,
+      4,
+      0,
+      0,
+      2,
+      2,
+      4,
+      4,
+      1,
+      3,
+      5
+    ]
+  },
+  "sLegendsBrendanYellowAccessory2Underwater": {
+    "frames": 4,
+    "bytes": 2048,
+    "image_indices": [
+      0,
+      1,
+      2,
+      0,
+      0,
+      1,
+      1,
+      2,
+      2
+    ]
+  },
+  "sLegendsBrendanYellowAccessory2FieldMove": {
+    "frames": 5,
+    "bytes": 2560,
+    "image_indices": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ]
+  },
+  "sLegendsBrendanYellowAccessory2Fishing": {
+    "frames": 12,
+    "bytes": 6144,
+    "image_indices": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+    ]
+  },
+  "sLegendsBrendanYellowAccessory2Watering": {
+    "frames": 6,
+    "bytes": 3072,
+    "image_indices": [
+      0,
+      2,
+      4,
+      1,
+      1,
+      3,
+      3,
+      5,
+      5
+    ]
+  },
+  "gLegendsBrendanYellowAccessory2Front": {
+    "frames": 1,
+    "bytes": 2048
+  },
+  "gLegendsBrendanYellowAccessory2Back": {
+    "frames": 4,
+    "bytes": 8192
+  },
+  "sLegendsBrendanLavenderAccessory2Normal": {
+    "frames": 18,
+    "bytes": 4608,
+    "image_indices": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17
+    ]
+  },
+  "sLegendsBrendanLavenderAccessory2MachBike": {
+    "frames": 9,
+    "bytes": 4608,
+    "image_indices": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+    ]
+  },
+  "sLegendsBrendanLavenderAccessory2AcroBike": {
+    "frames": 27,
+    "bytes": 13824,
+    "image_indices": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26
+    ]
+  },
+  "sLegendsBrendanLavenderAccessory2Surfing": {
+    "frames": 6,
+    "bytes": 3072,
+    "image_indices": [
+      0,
+      2,
+      4,
+      0,
+      0,
+      2,
+      2,
+      4,
+      4,
+      1,
+      3,
+      5
+    ]
+  },
+  "sLegendsBrendanLavenderAccessory2Underwater": {
+    "frames": 4,
+    "bytes": 2048,
+    "image_indices": [
+      0,
+      1,
+      2,
+      0,
+      0,
+      1,
+      1,
+      2,
+      2
+    ]
+  },
+  "sLegendsBrendanLavenderAccessory2FieldMove": {
+    "frames": 5,
+    "bytes": 2560,
+    "image_indices": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ]
+  },
+  "sLegendsBrendanLavenderAccessory2Fishing": {
+    "frames": 12,
+    "bytes": 6144,
+    "image_indices": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+    ]
+  },
+  "sLegendsBrendanLavenderAccessory2Watering": {
+    "frames": 6,
+    "bytes": 3072,
+    "image_indices": [
+      0,
+      2,
+      4,
+      1,
+      1,
+      3,
+      3,
+      5,
+      5
+    ]
+  },
+  "gLegendsBrendanLavenderAccessory2Front": {
+    "frames": 1,
+    "bytes": 2048
+  },
+  "gLegendsBrendanLavenderAccessory2Back": {
+    "frames": 4,
+    "bytes": 8192
+  },
+  "sLegendsMayEmeraldAccessory2Normal": {
+    "frames": 18,
+    "bytes": 4608,
+    "image_indices": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17
+    ]
+  },
+  "sLegendsMayEmeraldAccessory2MachBike": {
+    "frames": 9,
+    "bytes": 4608,
+    "image_indices": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+    ]
+  },
+  "sLegendsMayEmeraldAccessory2AcroBike": {
+    "frames": 27,
+    "bytes": 13824,
+    "image_indices": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26
+    ]
+  },
+  "sLegendsMayEmeraldAccessory2Surfing": {
+    "frames": 6,
+    "bytes": 3072,
+    "image_indices": [
+      0,
+      2,
+      4,
+      0,
+      0,
+      2,
+      2,
+      4,
+      4,
+      1,
+      3,
+      5
+    ]
+  },
+  "sLegendsMayEmeraldAccessory2Underwater": {
+    "frames": 4,
+    "bytes": 2048,
+    "image_indices": [
+      0,
+      1,
+      2,
+      0,
+      0,
+      1,
+      1,
+      2,
+      2
+    ]
+  },
+  "sLegendsMayEmeraldAccessory2FieldMove": {
+    "frames": 5,
+    "bytes": 2560,
+    "image_indices": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ]
+  },
+  "sLegendsMayEmeraldAccessory2Fishing": {
+    "frames": 12,
+    "bytes": 6144,
+    "image_indices": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+    ]
+  },
+  "sLegendsMayEmeraldAccessory2Watering": {
+    "frames": 6,
+    "bytes": 3072,
+    "image_indices": [
+      0,
+      2,
+      4,
+      1,
+      1,
+      3,
+      3,
+      5,
+      5
+    ]
+  },
+  "gLegendsMayEmeraldAccessory2Front": {
+    "frames": 1,
+    "bytes": 2048
+  },
+  "gLegendsMayEmeraldAccessory2Back": {
+    "frames": 4,
+    "bytes": 8192
+  },
+  "sLegendsMayTrailAccessory2Normal": {
+    "frames": 18,
+    "bytes": 4608,
+    "image_indices": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17
+    ]
+  },
+  "sLegendsMayTrailAccessory2MachBike": {
+    "frames": 9,
+    "bytes": 4608,
+    "image_indices": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+    ]
+  },
+  "sLegendsMayTrailAccessory2AcroBike": {
+    "frames": 27,
+    "bytes": 13824,
+    "image_indices": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26
+    ]
+  },
+  "sLegendsMayTrailAccessory2Surfing": {
+    "frames": 6,
+    "bytes": 3072,
+    "image_indices": [
+      0,
+      2,
+      4,
+      0,
+      0,
+      2,
+      2,
+      4,
+      4,
+      1,
+      3,
+      5
+    ]
+  },
+  "sLegendsMayTrailAccessory2Underwater": {
+    "frames": 4,
+    "bytes": 2048,
+    "image_indices": [
+      0,
+      1,
+      2,
+      0,
+      0,
+      1,
+      1,
+      2,
+      2
+    ]
+  },
+  "sLegendsMayTrailAccessory2FieldMove": {
+    "frames": 5,
+    "bytes": 2560,
+    "image_indices": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ]
+  },
+  "sLegendsMayTrailAccessory2Fishing": {
+    "frames": 12,
+    "bytes": 6144,
+    "image_indices": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+    ]
+  },
+  "sLegendsMayTrailAccessory2Watering": {
+    "frames": 6,
+    "bytes": 3072,
+    "image_indices": [
+      0,
+      2,
+      4,
+      1,
+      1,
+      3,
+      3,
+      5,
+      5
+    ]
+  },
+  "gLegendsMayTrailAccessory2Front": {
+    "frames": 1,
+    "bytes": 2048
+  },
+  "gLegendsMayTrailAccessory2Back": {
+    "frames": 4,
+    "bytes": 8192
+  },
+  "sLegendsMaySportAccessory2Normal": {
+    "frames": 18,
+    "bytes": 4608,
+    "image_indices": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17
+    ]
+  },
+  "sLegendsMaySportAccessory2MachBike": {
+    "frames": 9,
+    "bytes": 4608,
+    "image_indices": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+    ]
+  },
+  "sLegendsMaySportAccessory2AcroBike": {
+    "frames": 27,
+    "bytes": 13824,
+    "image_indices": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26
+    ]
+  },
+  "sLegendsMaySportAccessory2Surfing": {
+    "frames": 6,
+    "bytes": 3072,
+    "image_indices": [
+      0,
+      2,
+      4,
+      0,
+      0,
+      2,
+      2,
+      4,
+      4,
+      1,
+      3,
+      5
+    ]
+  },
+  "sLegendsMaySportAccessory2Underwater": {
+    "frames": 4,
+    "bytes": 2048,
+    "image_indices": [
+      0,
+      1,
+      2,
+      0,
+      0,
+      1,
+      1,
+      2,
+      2
+    ]
+  },
+  "sLegendsMaySportAccessory2FieldMove": {
+    "frames": 5,
+    "bytes": 2560,
+    "image_indices": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ]
+  },
+  "sLegendsMaySportAccessory2Fishing": {
+    "frames": 12,
+    "bytes": 6144,
+    "image_indices": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+    ]
+  },
+  "sLegendsMaySportAccessory2Watering": {
+    "frames": 6,
+    "bytes": 3072,
+    "image_indices": [
+      0,
+      2,
+      4,
+      1,
+      1,
+      3,
+      3,
+      5,
+      5
+    ]
+  },
+  "gLegendsMaySportAccessory2Front": {
+    "frames": 1,
+    "bytes": 2048
+  },
+  "gLegendsMaySportAccessory2Back": {
+    "frames": 4,
+    "bytes": 8192
+  },
+  "sLegendsMayYellowAccessory2Normal": {
+    "frames": 18,
+    "bytes": 4608,
+    "image_indices": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17
+    ]
+  },
+  "sLegendsMayYellowAccessory2MachBike": {
+    "frames": 9,
+    "bytes": 4608,
+    "image_indices": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+    ]
+  },
+  "sLegendsMayYellowAccessory2AcroBike": {
+    "frames": 27,
+    "bytes": 13824,
+    "image_indices": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26
+    ]
+  },
+  "sLegendsMayYellowAccessory2Surfing": {
+    "frames": 6,
+    "bytes": 3072,
+    "image_indices": [
+      0,
+      2,
+      4,
+      0,
+      0,
+      2,
+      2,
+      4,
+      4,
+      1,
+      3,
+      5
+    ]
+  },
+  "sLegendsMayYellowAccessory2Underwater": {
+    "frames": 4,
+    "bytes": 2048,
+    "image_indices": [
+      0,
+      1,
+      2,
+      0,
+      0,
+      1,
+      1,
+      2,
+      2
+    ]
+  },
+  "sLegendsMayYellowAccessory2FieldMove": {
+    "frames": 5,
+    "bytes": 2560,
+    "image_indices": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ]
+  },
+  "sLegendsMayYellowAccessory2Fishing": {
+    "frames": 12,
+    "bytes": 6144,
+    "image_indices": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+    ]
+  },
+  "sLegendsMayYellowAccessory2Watering": {
+    "frames": 6,
+    "bytes": 3072,
+    "image_indices": [
+      0,
+      2,
+      4,
+      1,
+      1,
+      3,
+      3,
+      5,
+      5
+    ]
+  },
+  "gLegendsMayYellowAccessory2Front": {
+    "frames": 1,
+    "bytes": 2048
+  },
+  "gLegendsMayYellowAccessory2Back": {
+    "frames": 4,
+    "bytes": 8192
+  },
+  "sLegendsMayLavenderAccessory2Normal": {
+    "frames": 18,
+    "bytes": 4608,
+    "image_indices": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17
+    ]
+  },
+  "sLegendsMayLavenderAccessory2MachBike": {
+    "frames": 9,
+    "bytes": 4608,
+    "image_indices": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+    ]
+  },
+  "sLegendsMayLavenderAccessory2AcroBike": {
+    "frames": 27,
+    "bytes": 13824,
+    "image_indices": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26
+    ]
+  },
+  "sLegendsMayLavenderAccessory2Surfing": {
+    "frames": 6,
+    "bytes": 3072,
+    "image_indices": [
+      0,
+      2,
+      4,
+      0,
+      0,
+      2,
+      2,
+      4,
+      4,
+      1,
+      3,
+      5
+    ]
+  },
+  "sLegendsMayLavenderAccessory2Underwater": {
+    "frames": 4,
+    "bytes": 2048,
+    "image_indices": [
+      0,
+      1,
+      2,
+      0,
+      0,
+      1,
+      1,
+      2,
+      2
+    ]
+  },
+  "sLegendsMayLavenderAccessory2FieldMove": {
+    "frames": 5,
+    "bytes": 2560,
+    "image_indices": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ]
+  },
+  "sLegendsMayLavenderAccessory2Fishing": {
+    "frames": 12,
+    "bytes": 6144,
+    "image_indices": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+    ]
+  },
+  "sLegendsMayLavenderAccessory2Watering": {
+    "frames": 6,
+    "bytes": 3072,
+    "image_indices": [
+      0,
+      2,
+      4,
+      1,
+      1,
+      3,
+      3,
+      5,
+      5
+    ]
+  },
+  "gLegendsMayLavenderAccessory2Front": {
+    "frames": 1,
+    "bytes": 2048
+  },
+  "gLegendsMayLavenderAccessory2Back": {
+    "frames": 4,
+    "bytes": 8192
+  },
+  "sLegendsBrendanEmeraldAccessory3Normal": {
+    "frames": 18,
+    "bytes": 4608,
+    "image_indices": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17
+    ]
+  },
+  "sLegendsBrendanEmeraldAccessory3MachBike": {
+    "frames": 9,
+    "bytes": 4608,
+    "image_indices": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+    ]
+  },
+  "sLegendsBrendanEmeraldAccessory3AcroBike": {
+    "frames": 27,
+    "bytes": 13824,
+    "image_indices": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26
+    ]
+  },
+  "sLegendsBrendanEmeraldAccessory3Surfing": {
+    "frames": 6,
+    "bytes": 3072,
+    "image_indices": [
+      0,
+      2,
+      4,
+      0,
+      0,
+      2,
+      2,
+      4,
+      4,
+      1,
+      3,
+      5
+    ]
+  },
+  "sLegendsBrendanEmeraldAccessory3Underwater": {
+    "frames": 4,
+    "bytes": 2048,
+    "image_indices": [
+      0,
+      1,
+      2,
+      0,
+      0,
+      1,
+      1,
+      2,
+      2
+    ]
+  },
+  "sLegendsBrendanEmeraldAccessory3FieldMove": {
+    "frames": 5,
+    "bytes": 2560,
+    "image_indices": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ]
+  },
+  "sLegendsBrendanEmeraldAccessory3Fishing": {
+    "frames": 12,
+    "bytes": 6144,
+    "image_indices": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+    ]
+  },
+  "sLegendsBrendanEmeraldAccessory3Watering": {
+    "frames": 6,
+    "bytes": 3072,
+    "image_indices": [
+      0,
+      2,
+      4,
+      1,
+      1,
+      3,
+      3,
+      5,
+      5
+    ]
+  },
+  "gLegendsBrendanEmeraldAccessory3Front": {
+    "frames": 1,
+    "bytes": 2048
+  },
+  "gLegendsBrendanEmeraldAccessory3Back": {
+    "frames": 4,
+    "bytes": 8192
+  },
+  "sLegendsBrendanTrailAccessory3Normal": {
+    "frames": 18,
+    "bytes": 4608,
+    "image_indices": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17
+    ]
+  },
+  "sLegendsBrendanTrailAccessory3MachBike": {
+    "frames": 9,
+    "bytes": 4608,
+    "image_indices": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+    ]
+  },
+  "sLegendsBrendanTrailAccessory3AcroBike": {
+    "frames": 27,
+    "bytes": 13824,
+    "image_indices": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26
+    ]
+  },
+  "sLegendsBrendanTrailAccessory3Surfing": {
+    "frames": 6,
+    "bytes": 3072,
+    "image_indices": [
+      0,
+      2,
+      4,
+      0,
+      0,
+      2,
+      2,
+      4,
+      4,
+      1,
+      3,
+      5
+    ]
+  },
+  "sLegendsBrendanTrailAccessory3Underwater": {
+    "frames": 4,
+    "bytes": 2048,
+    "image_indices": [
+      0,
+      1,
+      2,
+      0,
+      0,
+      1,
+      1,
+      2,
+      2
+    ]
+  },
+  "sLegendsBrendanTrailAccessory3FieldMove": {
+    "frames": 5,
+    "bytes": 2560,
+    "image_indices": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ]
+  },
+  "sLegendsBrendanTrailAccessory3Fishing": {
+    "frames": 12,
+    "bytes": 6144,
+    "image_indices": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+    ]
+  },
+  "sLegendsBrendanTrailAccessory3Watering": {
+    "frames": 6,
+    "bytes": 3072,
+    "image_indices": [
+      0,
+      2,
+      4,
+      1,
+      1,
+      3,
+      3,
+      5,
+      5
+    ]
+  },
+  "gLegendsBrendanTrailAccessory3Front": {
+    "frames": 1,
+    "bytes": 2048
+  },
+  "gLegendsBrendanTrailAccessory3Back": {
+    "frames": 4,
+    "bytes": 8192
+  },
+  "sLegendsBrendanSportAccessory3Normal": {
+    "frames": 18,
+    "bytes": 4608,
+    "image_indices": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17
+    ]
+  },
+  "sLegendsBrendanSportAccessory3MachBike": {
+    "frames": 9,
+    "bytes": 4608,
+    "image_indices": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+    ]
+  },
+  "sLegendsBrendanSportAccessory3AcroBike": {
+    "frames": 27,
+    "bytes": 13824,
+    "image_indices": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26
+    ]
+  },
+  "sLegendsBrendanSportAccessory3Surfing": {
+    "frames": 6,
+    "bytes": 3072,
+    "image_indices": [
+      0,
+      2,
+      4,
+      0,
+      0,
+      2,
+      2,
+      4,
+      4,
+      1,
+      3,
+      5
+    ]
+  },
+  "sLegendsBrendanSportAccessory3Underwater": {
+    "frames": 4,
+    "bytes": 2048,
+    "image_indices": [
+      0,
+      1,
+      2,
+      0,
+      0,
+      1,
+      1,
+      2,
+      2
+    ]
+  },
+  "sLegendsBrendanSportAccessory3FieldMove": {
+    "frames": 5,
+    "bytes": 2560,
+    "image_indices": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ]
+  },
+  "sLegendsBrendanSportAccessory3Fishing": {
+    "frames": 12,
+    "bytes": 6144,
+    "image_indices": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+    ]
+  },
+  "sLegendsBrendanSportAccessory3Watering": {
+    "frames": 6,
+    "bytes": 3072,
+    "image_indices": [
+      0,
+      2,
+      4,
+      1,
+      1,
+      3,
+      3,
+      5,
+      5
+    ]
+  },
+  "gLegendsBrendanSportAccessory3Front": {
+    "frames": 1,
+    "bytes": 2048
+  },
+  "gLegendsBrendanSportAccessory3Back": {
+    "frames": 4,
+    "bytes": 8192
+  },
+  "sLegendsBrendanYellowAccessory3Normal": {
+    "frames": 18,
+    "bytes": 4608,
+    "image_indices": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17
+    ]
+  },
+  "sLegendsBrendanYellowAccessory3MachBike": {
+    "frames": 9,
+    "bytes": 4608,
+    "image_indices": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+    ]
+  },
+  "sLegendsBrendanYellowAccessory3AcroBike": {
+    "frames": 27,
+    "bytes": 13824,
+    "image_indices": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26
+    ]
+  },
+  "sLegendsBrendanYellowAccessory3Surfing": {
+    "frames": 6,
+    "bytes": 3072,
+    "image_indices": [
+      0,
+      2,
+      4,
+      0,
+      0,
+      2,
+      2,
+      4,
+      4,
+      1,
+      3,
+      5
+    ]
+  },
+  "sLegendsBrendanYellowAccessory3Underwater": {
+    "frames": 4,
+    "bytes": 2048,
+    "image_indices": [
+      0,
+      1,
+      2,
+      0,
+      0,
+      1,
+      1,
+      2,
+      2
+    ]
+  },
+  "sLegendsBrendanYellowAccessory3FieldMove": {
+    "frames": 5,
+    "bytes": 2560,
+    "image_indices": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ]
+  },
+  "sLegendsBrendanYellowAccessory3Fishing": {
+    "frames": 12,
+    "bytes": 6144,
+    "image_indices": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+    ]
+  },
+  "sLegendsBrendanYellowAccessory3Watering": {
+    "frames": 6,
+    "bytes": 3072,
+    "image_indices": [
+      0,
+      2,
+      4,
+      1,
+      1,
+      3,
+      3,
+      5,
+      5
+    ]
+  },
+  "gLegendsBrendanYellowAccessory3Front": {
+    "frames": 1,
+    "bytes": 2048
+  },
+  "gLegendsBrendanYellowAccessory3Back": {
+    "frames": 4,
+    "bytes": 8192
+  },
+  "sLegendsBrendanLavenderAccessory3Normal": {
+    "frames": 18,
+    "bytes": 4608,
+    "image_indices": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17
+    ]
+  },
+  "sLegendsBrendanLavenderAccessory3MachBike": {
+    "frames": 9,
+    "bytes": 4608,
+    "image_indices": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+    ]
+  },
+  "sLegendsBrendanLavenderAccessory3AcroBike": {
+    "frames": 27,
+    "bytes": 13824,
+    "image_indices": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26
+    ]
+  },
+  "sLegendsBrendanLavenderAccessory3Surfing": {
+    "frames": 6,
+    "bytes": 3072,
+    "image_indices": [
+      0,
+      2,
+      4,
+      0,
+      0,
+      2,
+      2,
+      4,
+      4,
+      1,
+      3,
+      5
+    ]
+  },
+  "sLegendsBrendanLavenderAccessory3Underwater": {
+    "frames": 4,
+    "bytes": 2048,
+    "image_indices": [
+      0,
+      1,
+      2,
+      0,
+      0,
+      1,
+      1,
+      2,
+      2
+    ]
+  },
+  "sLegendsBrendanLavenderAccessory3FieldMove": {
+    "frames": 5,
+    "bytes": 2560,
+    "image_indices": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ]
+  },
+  "sLegendsBrendanLavenderAccessory3Fishing": {
+    "frames": 12,
+    "bytes": 6144,
+    "image_indices": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+    ]
+  },
+  "sLegendsBrendanLavenderAccessory3Watering": {
+    "frames": 6,
+    "bytes": 3072,
+    "image_indices": [
+      0,
+      2,
+      4,
+      1,
+      1,
+      3,
+      3,
+      5,
+      5
+    ]
+  },
+  "gLegendsBrendanLavenderAccessory3Front": {
+    "frames": 1,
+    "bytes": 2048
+  },
+  "gLegendsBrendanLavenderAccessory3Back": {
+    "frames": 4,
+    "bytes": 8192
+  },
+  "sLegendsMayEmeraldAccessory3Normal": {
+    "frames": 18,
+    "bytes": 4608,
+    "image_indices": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17
+    ]
+  },
+  "sLegendsMayEmeraldAccessory3MachBike": {
+    "frames": 9,
+    "bytes": 4608,
+    "image_indices": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+    ]
+  },
+  "sLegendsMayEmeraldAccessory3AcroBike": {
+    "frames": 27,
+    "bytes": 13824,
+    "image_indices": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26
+    ]
+  },
+  "sLegendsMayEmeraldAccessory3Surfing": {
+    "frames": 6,
+    "bytes": 3072,
+    "image_indices": [
+      0,
+      2,
+      4,
+      0,
+      0,
+      2,
+      2,
+      4,
+      4,
+      1,
+      3,
+      5
+    ]
+  },
+  "sLegendsMayEmeraldAccessory3Underwater": {
+    "frames": 4,
+    "bytes": 2048,
+    "image_indices": [
+      0,
+      1,
+      2,
+      0,
+      0,
+      1,
+      1,
+      2,
+      2
+    ]
+  },
+  "sLegendsMayEmeraldAccessory3FieldMove": {
+    "frames": 5,
+    "bytes": 2560,
+    "image_indices": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ]
+  },
+  "sLegendsMayEmeraldAccessory3Fishing": {
+    "frames": 12,
+    "bytes": 6144,
+    "image_indices": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+    ]
+  },
+  "sLegendsMayEmeraldAccessory3Watering": {
+    "frames": 6,
+    "bytes": 3072,
+    "image_indices": [
+      0,
+      2,
+      4,
+      1,
+      1,
+      3,
+      3,
+      5,
+      5
+    ]
+  },
+  "gLegendsMayEmeraldAccessory3Front": {
+    "frames": 1,
+    "bytes": 2048
+  },
+  "gLegendsMayEmeraldAccessory3Back": {
+    "frames": 4,
+    "bytes": 8192
+  },
+  "sLegendsMayTrailAccessory3Normal": {
+    "frames": 18,
+    "bytes": 4608,
+    "image_indices": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17
+    ]
+  },
+  "sLegendsMayTrailAccessory3MachBike": {
+    "frames": 9,
+    "bytes": 4608,
+    "image_indices": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+    ]
+  },
+  "sLegendsMayTrailAccessory3AcroBike": {
+    "frames": 27,
+    "bytes": 13824,
+    "image_indices": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26
+    ]
+  },
+  "sLegendsMayTrailAccessory3Surfing": {
+    "frames": 6,
+    "bytes": 3072,
+    "image_indices": [
+      0,
+      2,
+      4,
+      0,
+      0,
+      2,
+      2,
+      4,
+      4,
+      1,
+      3,
+      5
+    ]
+  },
+  "sLegendsMayTrailAccessory3Underwater": {
+    "frames": 4,
+    "bytes": 2048,
+    "image_indices": [
+      0,
+      1,
+      2,
+      0,
+      0,
+      1,
+      1,
+      2,
+      2
+    ]
+  },
+  "sLegendsMayTrailAccessory3FieldMove": {
+    "frames": 5,
+    "bytes": 2560,
+    "image_indices": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ]
+  },
+  "sLegendsMayTrailAccessory3Fishing": {
+    "frames": 12,
+    "bytes": 6144,
+    "image_indices": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+    ]
+  },
+  "sLegendsMayTrailAccessory3Watering": {
+    "frames": 6,
+    "bytes": 3072,
+    "image_indices": [
+      0,
+      2,
+      4,
+      1,
+      1,
+      3,
+      3,
+      5,
+      5
+    ]
+  },
+  "gLegendsMayTrailAccessory3Front": {
+    "frames": 1,
+    "bytes": 2048
+  },
+  "gLegendsMayTrailAccessory3Back": {
+    "frames": 4,
+    "bytes": 8192
+  },
+  "sLegendsMaySportAccessory3Normal": {
+    "frames": 18,
+    "bytes": 4608,
+    "image_indices": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17
+    ]
+  },
+  "sLegendsMaySportAccessory3MachBike": {
+    "frames": 9,
+    "bytes": 4608,
+    "image_indices": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+    ]
+  },
+  "sLegendsMaySportAccessory3AcroBike": {
+    "frames": 27,
+    "bytes": 13824,
+    "image_indices": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26
+    ]
+  },
+  "sLegendsMaySportAccessory3Surfing": {
+    "frames": 6,
+    "bytes": 3072,
+    "image_indices": [
+      0,
+      2,
+      4,
+      0,
+      0,
+      2,
+      2,
+      4,
+      4,
+      1,
+      3,
+      5
+    ]
+  },
+  "sLegendsMaySportAccessory3Underwater": {
+    "frames": 4,
+    "bytes": 2048,
+    "image_indices": [
+      0,
+      1,
+      2,
+      0,
+      0,
+      1,
+      1,
+      2,
+      2
+    ]
+  },
+  "sLegendsMaySportAccessory3FieldMove": {
+    "frames": 5,
+    "bytes": 2560,
+    "image_indices": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ]
+  },
+  "sLegendsMaySportAccessory3Fishing": {
+    "frames": 12,
+    "bytes": 6144,
+    "image_indices": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+    ]
+  },
+  "sLegendsMaySportAccessory3Watering": {
+    "frames": 6,
+    "bytes": 3072,
+    "image_indices": [
+      0,
+      2,
+      4,
+      1,
+      1,
+      3,
+      3,
+      5,
+      5
+    ]
+  },
+  "gLegendsMaySportAccessory3Front": {
+    "frames": 1,
+    "bytes": 2048
+  },
+  "gLegendsMaySportAccessory3Back": {
+    "frames": 4,
+    "bytes": 8192
+  },
+  "sLegendsMayYellowAccessory3Normal": {
+    "frames": 18,
+    "bytes": 4608,
+    "image_indices": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17
+    ]
+  },
+  "sLegendsMayYellowAccessory3MachBike": {
+    "frames": 9,
+    "bytes": 4608,
+    "image_indices": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+    ]
+  },
+  "sLegendsMayYellowAccessory3AcroBike": {
+    "frames": 27,
+    "bytes": 13824,
+    "image_indices": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26
+    ]
+  },
+  "sLegendsMayYellowAccessory3Surfing": {
+    "frames": 6,
+    "bytes": 3072,
+    "image_indices": [
+      0,
+      2,
+      4,
+      0,
+      0,
+      2,
+      2,
+      4,
+      4,
+      1,
+      3,
+      5
+    ]
+  },
+  "sLegendsMayYellowAccessory3Underwater": {
+    "frames": 4,
+    "bytes": 2048,
+    "image_indices": [
+      0,
+      1,
+      2,
+      0,
+      0,
+      1,
+      1,
+      2,
+      2
+    ]
+  },
+  "sLegendsMayYellowAccessory3FieldMove": {
+    "frames": 5,
+    "bytes": 2560,
+    "image_indices": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ]
+  },
+  "sLegendsMayYellowAccessory3Fishing": {
+    "frames": 12,
+    "bytes": 6144,
+    "image_indices": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+    ]
+  },
+  "sLegendsMayYellowAccessory3Watering": {
+    "frames": 6,
+    "bytes": 3072,
+    "image_indices": [
+      0,
+      2,
+      4,
+      1,
+      1,
+      3,
+      3,
+      5,
+      5
+    ]
+  },
+  "gLegendsMayYellowAccessory3Front": {
+    "frames": 1,
+    "bytes": 2048
+  },
+  "gLegendsMayYellowAccessory3Back": {
+    "frames": 4,
+    "bytes": 8192
+  },
+  "sLegendsMayLavenderAccessory3Normal": {
+    "frames": 18,
+    "bytes": 4608,
+    "image_indices": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17
+    ]
+  },
+  "sLegendsMayLavenderAccessory3MachBike": {
+    "frames": 9,
+    "bytes": 4608,
+    "image_indices": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+    ]
+  },
+  "sLegendsMayLavenderAccessory3AcroBike": {
+    "frames": 27,
+    "bytes": 13824,
+    "image_indices": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26
+    ]
+  },
+  "sLegendsMayLavenderAccessory3Surfing": {
+    "frames": 6,
+    "bytes": 3072,
+    "image_indices": [
+      0,
+      2,
+      4,
+      0,
+      0,
+      2,
+      2,
+      4,
+      4,
+      1,
+      3,
+      5
+    ]
+  },
+  "sLegendsMayLavenderAccessory3Underwater": {
+    "frames": 4,
+    "bytes": 2048,
+    "image_indices": [
+      0,
+      1,
+      2,
+      0,
+      0,
+      1,
+      1,
+      2,
+      2
+    ]
+  },
+  "sLegendsMayLavenderAccessory3FieldMove": {
+    "frames": 5,
+    "bytes": 2560,
+    "image_indices": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ]
+  },
+  "sLegendsMayLavenderAccessory3Fishing": {
+    "frames": 12,
+    "bytes": 6144,
+    "image_indices": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+    ]
+  },
+  "sLegendsMayLavenderAccessory3Watering": {
+    "frames": 6,
+    "bytes": 3072,
+    "image_indices": [
+      0,
+      2,
+      4,
+      1,
+      1,
+      3,
+      3,
+      5,
+      5
+    ]
+  },
+  "gLegendsMayLavenderAccessory3Front": {
+    "frames": 1,
+    "bytes": 2048
+  },
+  "gLegendsMayLavenderAccessory3Back": {
+    "frames": 4,
+    "bytes": 8192
+  }
+}

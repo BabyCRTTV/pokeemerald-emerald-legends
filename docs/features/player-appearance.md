@@ -16,8 +16,8 @@ native covered silhouette. Hair and facial pixels are retained; NPCs and rivals
 use their original assets. Native pond/ice filters generate reflections from the
 selected player palette; high bridges retain their dark-blue reflection rule.
 
-Existing saves retain their exact original Emerald appearance. This version adds
-choices at New Game only; it does not add an appearance editor for existing saves.
+Existing saves retain their original Emerald appearance. Since v0.0.23, the
+[wardrobe](wardrobe.md) edits outfits and accessories at home or in your own secret base, retaining skin tone.
 Debug Quickstart uses the original appearance. Link/remote appearance is not
 synchronized; remote Trainer Cards and native link-player scenes keep native art.
 
@@ -25,7 +25,8 @@ synchronized; remote Trainer Cards and native link-player scenes keep native art
 
 `VAR_LEGENDS_APPEARANCE` uses the previously unused permanent variable `0x404E`:
 zero means legacy appearance; values 1–25 encode `1 + skin + 5 * outfit`.
-Invalid values fall back to legacy. No save-block layout or link protocol changes.
+Codes 26–30 retain native skin with a selected outfit for wardrobe edits on legacy saves.
+Accessory var 0x40A1 stores scarf/jacket settings. Invalid values fall back to legacy. No save-block layout or link protocol changes.
 
 `legends_appearance.c` stages intro choices separately from saved variables so
 they survive `InitEventData`, then consumes them once during New Game. A fresh

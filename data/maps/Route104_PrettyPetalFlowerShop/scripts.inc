@@ -51,6 +51,7 @@ Route104_PrettyPetalFlowerShop_EventScript_SellDecorations::
 
 	.align 2
 Route104_PrettyPetalFlowerShop_Pokemart_Plants:
+	.2byte DECOR_LEGENDS_WARDROBE
 	.2byte DECOR_RED_PLANT
 	.2byte DECOR_TROPICAL_PLANT
 	.2byte DECOR_PRETTY_FLOWERS

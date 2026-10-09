@@ -1,4 +1,5 @@
 #include "global.h"
+#include "legends_wardrobe.h"
 #include "battle_setup.h"
 #include "bike.h"
 #include "coord_event_weather.h"
@@ -478,6 +479,9 @@ static const u8 *GetInteractedBackgroundEventScript(struct MapPosition *position
 static const u8 *GetInteractedMetatileScript(struct MapPosition *position, u8 metatileBehavior, enum Direction direction)
 {
     s8 elevation;
+    extern const u8 LegendsWardrobe_EventScript_Base[];
+    if (CurMapIsSecretBase() && LegendsIsWardrobeMetatile(MapGridGetMetatileIdAt(position->x, position->y)))
+        return LegendsWardrobe_EventScript_Base;
 
     if (MetatileBehavior_IsPlayerFacingTVScreen(metatileBehavior, direction) == TRUE)
     {

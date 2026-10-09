@@ -299,3 +299,36 @@ PlayersHouse_2F_Text_ItsAGameCube:
 	.string "It's a Nintendo GameCube.\p"
 	.string "A Game Boy Advance is connected to\n"
 	.string "serve as the Controller.$"
+
+LegendsWardrobe_EventScript_Home::
+    lockall
+    specialvar VAR_RESULT, LegendsCanUseWardrobe
+    goto_if_eq VAR_RESULT, FALSE, LegendsWardrobe_EventScript_NotYours
+    msgbox LegendsWardrobe_Text_Home, MSGBOX_YESNO
+    goto_if_eq VAR_RESULT, NO, LegendsWardrobe_EventScript_End
+    closemessage
+    special LegendsOpenWardrobe
+    releaseall
+    end
+
+LegendsWardrobe_EventScript_Base::
+    lockall
+    specialvar VAR_RESULT, LegendsCanUseWardrobe
+    goto_if_eq VAR_RESULT, FALSE, LegendsWardrobe_EventScript_NotYours
+    closemessage
+    special LegendsOpenWardrobe
+    releaseall
+    end
+
+LegendsWardrobe_EventScript_NotYours:
+    msgbox LegendsWardrobe_Text_NotYours, MSGBOX_DEFAULT
+LegendsWardrobe_EventScript_End:
+    releaseall
+    end
+
+LegendsWardrobe_Text_Home:
+    .string "Change your outfit or accessories?\p"
+    .string "The PRETTY PETAL flower shop sells\n"
+    .string "wardrobes for SECRET BASES, too!$"
+LegendsWardrobe_Text_NotYours:
+    .string "This wardrobe belongs to someone else.$"

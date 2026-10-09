@@ -1,5 +1,6 @@
 #include "legends_appearance.h"
 #include "../legends/trainer_outfits.h"
+#include "../legends/trainer_accessories.h"
 #include "constants/trainers.h"
 #include "data.h"
 
@@ -1268,4 +1269,5 @@ const struct TrainerPicInfo gTrainerPicInfo[TRAINER_PIC_COUNT] =
         .frontPic = TRAINER_FRONT_PIC(gLegendsMayLavenderFront, gLegendsTrainerPalettes[1]),
         .backPic = TRAINER_BACK_PIC(4, gLegendsMayLavenderBack, gLegendsTrainerPalettes[1], sBackAnims_Hoenn),
     },
+#include "../legends/accessory_trainers.inc"
 };

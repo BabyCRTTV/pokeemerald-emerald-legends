@@ -6,6 +6,7 @@
 
 #define LEGENDS_SKIN_TONE_COUNT 5
 #define LEGENDS_OUTFIT_COUNT 5
+#define LEGENDS_SCARF_COUNT 6
 #define LEGENDS_APPEARANCE_STATES 9
 
 extern u16 gLegendsOverworldPalettes[2][16];
@@ -16,6 +17,12 @@ void LegendsBeginAppearanceSelection(void);
 void LegendsClearAppearanceSelection(void);
 void LegendsSetAppearanceSelection(u8 skin, u8 outfit);
 void LegendsApplyAppearanceToNewGame(void);
+void LegendsBeginWardrobeSelection(void);
+void LegendsSetAccessorySelection(u8 scarf, bool8 jacket);
+void LegendsApplyWardrobeSelection(void);
+u8 LegendsGetScarf(void);
+bool8 LegendsGetJacket(void);
+u8 LegendsGetAccessoryStyle(void);
 u8 LegendsGetSkinTone(void);
 u8 LegendsGetOutfit(void);
 void LegendsUpdateAppearancePalettes(void);

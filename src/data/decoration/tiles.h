@@ -641,3 +641,5 @@ const u16 DecorGfx_REGICE_DOLL[] = {
 const u16 DecorGfx_REGISTEEL_DOLL[] = {
     OBJ_EVENT_GFX_BIG_REGISTEEL_DOLL
 };
+
+const u16 DecorGfx_LEGENDS_WARDROBE[] = {DECOR_TILE(LegendsWardrobe_Top), DECOR_TILE(LegendsWardrobe_Bottom)};
