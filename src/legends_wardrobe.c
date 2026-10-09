@@ -31,7 +31,8 @@ static const struct WindowTemplate sWindows[] = {
 };
 static const u8 *const sOutfits[] = {COMPOUND_STRING("EMERALD"),COMPOUND_STRING("TRAIL"),COMPOUND_STRING("SPORT"),COMPOUND_STRING("YELLOW"),COMPOUND_STRING("LAVENDER")};
 static const u8 *const sScarves[] = {COMPOUND_STRING("NONE"),COMPOUND_STRING("CRIMSON"),COMPOUND_STRING("OCEAN"),COMPOUND_STRING("EMERALD"),COMPOUND_STRING("LAVENDER"),COMPOUND_STRING("CREAM")};
-static const u8 *const sRows[] = {COMPOUND_STRING("OUTFIT"),COMPOUND_STRING("SCARF"),COMPOUND_STRING("JACKET"),COMPOUND_STRING("APPLY"),COMPOUND_STRING("CANCEL")};
+static const u8 *const sCostumes[] = {COMPOUND_STRING("NONE"),COMPOUND_STRING("TEAM MAGMA"),COMPOUND_STRING("TEAM AQUA")};
+static const u8 *const sRows[] = {COMPOUND_STRING("OUTFIT"),COMPOUND_STRING("COSTUMES"),COMPOUND_STRING("SCARF"),COMPOUND_STRING("JACKET"),COMPOUND_STRING("APPLY"),COMPOUND_STRING("CANCEL")};
 static void Task_Input(u8 taskId);
 static void CB2_InitWardrobe(void);
 
@@ -58,14 +59,15 @@ static void Draw(u8 taskId)
 {
     u8 i, row=gTasks[taskId].data[0];
     FillWindowPixelBuffer(1,PIXEL_FILL(1));
-    for (i=0;i<5;i++)
+    for (i=0;i<6;i++)
     {
-        Print(1,sRows[i],12,i*16);
-        if (i==0) Print(1,sOutfits[LegendsGetOutfit()],58,i*16);
-        if (i==1) Print(1,sScarves[LegendsGetScarf()],58,i*16);
-        if (i==2) Print(1,LegendsGetJacket()?COMPOUND_STRING("NAVY"):COMPOUND_STRING("NONE"),58,i*16);
+        Print(1,sRows[i],12,i*14);
+        if (i==0) Print(1,sOutfits[LegendsGetOutfit()],58,i*14);
+        if (i==1) Print(1,sCostumes[LegendsGetCostume()],58,i*14);
+        if (i==2) Print(1,LegendsGetCostume()?COMPOUND_STRING("FIXED"):sScarves[LegendsGetScarf()],58,i*14);
+        if (i==3) Print(1,LegendsGetCostume()?COMPOUND_STRING("FIXED"):LegendsGetJacket()?COMPOUND_STRING("NAVY"):COMPOUND_STRING("NONE"),58,i*14);
     }
-    Print(1,COMPOUND_STRING(">"),0,row*16);
+    Print(1,COMPOUND_STRING(">"),0,row*14);
     CopyWindowToVram(1,COPYWIN_FULL);
     // Native Trainer Card drawing owns and frees its temporary graphics buffer.
     FillWindowPixelBuffer(2,PIXEL_FILL(0));
@@ -88,23 +90,24 @@ static void Task_Input(u8 taskId)
 {
     u8 row=gTasks[taskId].data[0];
     if (gPaletteFade.active) return;
-    if (JOY_NEW(B_BUTTON) || (JOY_NEW(A_BUTTON) && row>=3))
+    if (JOY_NEW(B_BUTTON) || (JOY_NEW(A_BUTTON) && row>=4))
     {
-        if (JOY_NEW(A_BUTTON) && row==3) LegendsApplyWardrobeSelection();
+        if (JOY_NEW(A_BUTTON) && row==4) LegendsApplyWardrobeSelection();
         else LegendsClearAppearanceSelection();
         BeginNormalPaletteFade(PALETTES_ALL,0,0,16,RGB_BLACK);
         gTasks[taskId].func=Task_Return;
         return;
     }
-    if (JOY_NEW(DPAD_UP)) gTasks[taskId].data[0]=(row+4)%5;
-    else if (JOY_NEW(DPAD_DOWN)) gTasks[taskId].data[0]=(row+1)%5;
-    else if (row<3 && (JOY_NEW(DPAD_LEFT|DPAD_RIGHT|A_BUTTON)))
+    if (JOY_NEW(DPAD_UP)) gTasks[taskId].data[0]=(row+5)%6;
+    else if (JOY_NEW(DPAD_DOWN)) gTasks[taskId].data[0]=(row+1)%6;
+    else if (row<4 && (JOY_NEW(DPAD_LEFT|DPAD_RIGHT|A_BUTTON)))
     {
-        u8 count=row==0?LEGENDS_OUTFIT_COUNT:row==1?LEGENDS_SCARF_COUNT:2;
-        u8 value=row==0?LegendsGetOutfit():row==1?LegendsGetScarf():LegendsGetJacket();
+        u8 count=row==0?LEGENDS_OUTFIT_COUNT:row==1?LEGENDS_COSTUME_COUNT:row==2?LEGENDS_SCARF_COUNT:2;
+        u8 value=row==0?LegendsGetOutfit():row==1?LegendsGetCostume():row==2?LegendsGetScarf():LegendsGetJacket();
         value=(value+(JOY_NEW(DPAD_LEFT)?count-1:1))%count;
-        if (row==0) LegendsSetAppearanceSelection(LegendsGetSkinTone(),value);
-        else LegendsSetAccessorySelection(row==1?value:LegendsGetScarf(),row==2?value:LegendsGetJacket());
+        if (row==0) {LegendsSetCostumeSelection(0);LegendsSetAppearanceSelection(LegendsGetSkinTone(),value);}
+        else if (row==1) LegendsSetCostumeSelection(value);
+        else if (!LegendsGetCostume()) LegendsSetAccessorySelection(row==2?value:LegendsGetScarf(),row==3?value:LegendsGetJacket());
     }
     else return;
     Draw(taskId);

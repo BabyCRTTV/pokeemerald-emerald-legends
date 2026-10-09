@@ -4,6 +4,21 @@ All notable Pokémon Emerald: Legends project changes are documented here.
 
 For build-specific player views, see [CHANGELOG-RELEASE.md](CHANGELOG-RELEASE.md) and [CHANGELOG-DEBUG.md](CHANGELOG-DEBUG.md). The canonical history below records the project as a whole.
 
+## [0.0.25] - 2026-10-09
+
+### Added
+- A COSTUMES wardrobe category with NONE, TEAM MAGMA and TEAM AQUA for both genders. Uses the exact native grunt walking sprites and front portraits, including Magma hoods, Aqua bandanas, uniform details and team symbols.
+- Matching compiled costume action poses for running, bikes, Surf, field moves, fishing/watering, plus all four native battle throw frames and the local Trainer Card. Costume art is independent from NPC grunt graphics; the covered Dive suit stays native.
+- Saved costume selection in unused var 0x40A8. The selected skin tone is retained; normal outfit/scarf/jacket choices remain stored when a costume is worn. Accessory rows show FIXED for complete uniforms. Selecting a normal outfit exits costume mode; NONE restores stored clothes.
+
+### Fixed
+- Male Sport shorts now retain fabric above the knees with two light hem stripes; overworld shorts also have a light hem instead of a large skin-colored trouser section.
+
+### Compatibility and validation
+- No save-layout changes or existing appearance/decoration/species ID renumbering. New Game resets costumes; invalid saved values safely use NONE. Apply/Cancel stage costumes alongside clothes.
+- Added native-asset fidelity, action frame dimensions, skin/held-object protection, costume save/palette/graphics selection and wardrobe navigation regressions.
+- Release and Debug share these changes with no variant-specific differences; developer tools remain Debug-only.
+
 ## [0.0.24] - 2026-10-08
 
 ### Updated

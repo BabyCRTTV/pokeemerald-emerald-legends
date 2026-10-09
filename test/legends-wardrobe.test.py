@@ -46,6 +46,7 @@ typedef uint8_t u8;typedef uint16_t u16;typedef int bool8;
 #define METATILE_SecretBase_LegendsWardrobe_Bottom 0x345
 #define LEGENDS_OUTFIT_COUNT 5
 #define LEGENDS_SCARF_COUNT 6
+#define LEGENDS_COSTUME_COUNT 3
 #define A_BUTTON 1
 #define B_BUTTON 2
 #define DPAD_LEFT 4
@@ -60,7 +61,7 @@ struct {u8 active;}gPaletteFade;
 struct {struct {u8 mapGroup,mapNum;}location;}save1,*gSaveBlock1Ptr=&save1;
 struct {u8 playerGender;}save2,*gSaveBlock2Ptr=&save2;
 const u16 gStandardMenuPalette[16]={0};
-static int keys,base,baseIndex,outfit,scarf,jacket,pending,applies,cancels,freed,returns,resumes,pics,initFail,fieldCleanup;
+static int keys,base,baseIndex,outfit,scarf,jacket,costume,pending,applies,cancels,freed,returns,resumes,pics,initFail,fieldCleanup;
 u16 VarGet(int v){return baseIndex;}
 int CurMapIsSecretBase(void){return base;}
 void LegendsBeginWardrobeSelection(void){pending=1;}
@@ -68,6 +69,8 @@ void LegendsClearAppearanceSelection(void){cancels++;pending=0;}
 void LegendsApplyWardrobeSelection(void){applies++;pending=0;}
 u8 LegendsGetSkinTone(void){return 2;}
 u8 LegendsGetOutfit(void){return outfit;}
+u8 LegendsGetCostume(void){return costume;}
+void LegendsSetCostumeSelection(u8 c){costume=c;}
 u8 LegendsGetScarf(void){return scarf;}
 bool8 LegendsGetJacket(void){return jacket;}
 void LegendsSetAppearanceSelection(u8 s,u8 o){assert(s==2);outfit=o;}
@@ -109,6 +112,9 @@ int main(void){
  LegendsOpenWardrobe();assert(pending&&gTasks[0].func==Task_Enter);Task_Enter(0);CB2_InitWardrobe();
  assert(pics==1&&fieldCleanup==1&&gTasks[0].func==Task_Input);
  keys=DPAD_LEFT;Task_Input(0);assert(outfit==4);keys=DPAD_RIGHT;Task_Input(0);assert(outfit==0);
+ keys=DPAD_DOWN;Task_Input(0);keys=DPAD_LEFT;Task_Input(0);assert(costume==2);
+ keys=DPAD_DOWN;Task_Input(0);keys=DPAD_LEFT;Task_Input(0);assert(scarf==0);
+ keys=DPAD_UP;Task_Input(0);keys=DPAD_RIGHT;Task_Input(0);assert(costume==0);
  keys=DPAD_DOWN;Task_Input(0);keys=DPAD_LEFT;Task_Input(0);assert(scarf==5);
  keys=DPAD_DOWN;Task_Input(0);keys=A_BUTTON;Task_Input(0);assert(jacket==1);
  keys=DPAD_DOWN;Task_Input(0);keys=A_BUTTON;Task_Input(0);assert(applies==1&&!pending&&gTasks[0].func==Task_Return);

@@ -134,7 +134,7 @@ def build():
     header=ROOT/'include/constants/trainers.h';text=header.read_text()
     marker='    // Generated accessory IDs; keep inline for the script preprocessor.'
     if marker in text:
-        start=text.index(marker);end=text.index('    TRAINER_PIC_COUNT,',start)
+        start=text.index(marker);end=text.index('    TRAINER_PIC_LEGENDS_COSTUME_0,',start) if '    TRAINER_PIC_LEGENDS_COSTUME_0,' in text else text.index('    TRAINER_PIC_COUNT,',start)
         text=text[:start]+marker+'\n'+''.join(ids)+text[end:]
     else:
         text=text.replace('    TRAINER_PIC_COUNT,',marker+'\n'+''.join(ids)+'    TRAINER_PIC_COUNT,')

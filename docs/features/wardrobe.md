@@ -1,14 +1,15 @@
 # Wardrobe customization
 
-Introduced in v0.0.23, refined in v0.0.24; shared by Release and Debug.
+Introduced in v0.0.23, refined in v0.0.24, costumes added in v0.0.25; shared by Release and Debug.
 
 A small clothes box using Emerald’s native moving-box artwork stands directly beneath the bed in your Littleroot bedroom. Face it from an adjacent tile and press A. Your rival’s wardrobe remains private. Interaction opens customization directly.
 
-Use Up/Down to select OUTFIT, SCARF, JACKET, APPLY or CANCEL. Left/Right cycles a setting; A also cycles the selected setting. The native trainer portrait updates immediately. APPLY keeps all pending changes; CANCEL or B discards them. Closing restores the field through the native map reload, so player graphics and reflections rebuild together. Your skin tone is retained.
+Use Up/Down to select OUTFIT, COSTUMES, SCARF, JACKET, APPLY or CANCEL. Left/Right cycles a setting; A also cycles the selected setting. The native trainer portrait updates immediately. APPLY keeps all pending changes; CANCEL or B discards them. Closing restores the field through the native map reload, so player graphics and reflections rebuild together. Your skin tone is retained.
 
 | Setting | Choices |
 | --- | --- |
 | Outfit | Emerald, Trail, Sport, Yellow, Lavender |
+| Costumes | None, Team Magma, Team Aqua |
 | Added scarf | None, Crimson, Ocean, Emerald, Lavender, Cream |
 | Jacket | None, Navy |
 
@@ -37,3 +38,13 @@ To regenerate, install Pillow 11.3.0, run both authoring scripts, then the appea
 - Check walking/running, bikes, Surf/Dive, fishing, watering, field moves and reflections; all battle throw frames, Safari/Frontier and the local Trainer Card.
 - Buy the ornament with normal/full storage and insufficient funds. Place/remove/reposition it in tree, shrub and all cave bases; check collision, save/continue and own/friend base access.
 - Confirm NPC/rival and native remote-link art are unchanged. Inspect menu borders/text/portrait after returning to the field. Compiled builds and host tests do not replace visual playtesting.
+
+## Complete costumes (v0.0.25)
+
+COSTUMES chooses the native male/female Team Magma or Team Aqua grunt uniform. Walking and wardrobe/Trainer Card portraits use the exact original grunt pixel assets, with the selected skin ramp applied. Running uses the matching native walking motions at player speed. Bikes, Surf and field-action sheets adapt those uniforms to native player frame dimensions, while back battle art keeps all four player throwing motions under the matching hood or bandana. Diving remains in the covered native suit.
+
+SCARF and JACKET display FIXED while a costume is active to preserve the full uniform. Their saved choices are kept. Choose NONE to restore them, or change OUTFIT to switch back to normal clothes. Apply saves; Cancel/B discards costume edits too. Var 0x40A8 stores 0/1/2 without changing SaveBlock sizes; invalid values use None and New Game resets the var. Existing NPCs/rivals and link protocol are unchanged.
+
+`build_costumes.py` compiles independent 4bpp packs, frame tables and palettes. Its native uniform/front fidelity and frame/face/held-object checks run in project CI. Male Sport shorts now have explicit cloth hem stripes rather than recoloring entire trouser sections into skin.
+
+Emulator QA: test every costume for each gender/tone, all directions and action states, mirrors/reflections, all battle throws and Trainer Cards; save/reset/continue, costume/normal switching, accessories restored from costume mode, Cancel and new-game reset. Host tests/build verification do not replace visual playtesting.
