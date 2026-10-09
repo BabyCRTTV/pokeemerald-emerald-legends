@@ -9,7 +9,7 @@ This is the developer-facing history for the **Debug** build. Shared Legends cha
 - Vermilion City and its permanently docked passenger ship, with original Kanto outdoor art/music, a modest one-time welcome from Fan Club members, new clean dialogue, three homes, a Fan Club, a fully functioning Pokémon Center/link floor and a postgame-stocked Mart.
 - An optional Cooltrainer ALEX battle on the waterfront with six Kanto Pokémon at levels 60–64. Players can decline and return later; victory is saved using native trainer flags. Travel never requires winning.
 - A dedicated Kanto heal/blackout destination and return-to-Hoenn respawn handling. Existing Hoenn transport/event-island scripts remain separate.
-- A player/Debug tutorial with exact map, item and flag IDs, repeat-visit and battle reset instructions, and a manual emulator checklist.
+- A player/Debug tutorial with exact map, item and flag IDs, repeat-visit and battle reset instructions, and a manual emulator checklist. Expanded for beginner playtesters with emulator button explanations, a worked number-selector example, a complete ferry walkthrough, troubleshooting and bug-report guidance; advanced shortcuts are separate.
 
 ### Scope and compatibility
 - This is the Vermilion arrival chapter, not the complete Kanto region. Roads to Routes 6/11 are visibly closed for storm repairs, and Lt. Surge is away assisting the crews. Later chapters can open these paths without transplanting FireRed's new-game story.
