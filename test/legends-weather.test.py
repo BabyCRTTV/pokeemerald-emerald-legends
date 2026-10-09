@@ -78,6 +78,27 @@ int main(void){
  for(unsigned i=0;i<sizeof(indoors)/sizeof(*indoors);i++){gMapHeader.mapType=indoors[i];assert(LegendsChooseAmbientWeather(WEATHER_SUNNY)==WEATHER_SUNNY);}
  gMapHeader.mapType=MAP_TYPE_ROUTE;
  for(int w=0;w<WEATHER_COUNT;w++)if(w!=WEATHER_SUNNY&&w!=WEATHER_SUNNY_CLOUDS&&w!=WEATHER_RAIN&&w!=WEATHER_RAIN_THUNDERSTORM)assert(LegendsChooseAmbientWeather(w)==w);
+ // Every forecast roll in every configured climate/time/season is cloud-free.
+ // Native SUNNY_CLOUDS requests remain valid inputs for old saves/map triggers.
+ int ordinary[]={MAPSEC_LITTLEROOT_TOWN,MAPSEC_OLDALE_TOWN,MAPSEC_PETALBURG_CITY,MAPSEC_RUSTBORO_CITY,MAPSEC_MAUVILLE_CITY,MAPSEC_VERDANTURF_TOWN,MAPSEC_DEWFORD_TOWN,MAPSEC_SLATEPORT_CITY,MAPSEC_ROUTE_119,MAPSEC_ROUTE_120,MAPSEC_ROUTE_114,MAPSEC_PETALBURG_WOODS};
+ int requests[]={WEATHER_SUNNY,WEATHER_SUNNY_CLOUDS,WEATHER_RAIN,WEATHER_RAIN_THUNDERSTORM};
+ for(unsigned area=0;area<sizeof(ordinary)/sizeof(*ordinary);area++)
+  for(season=0;season<4;season++)for(tod=TIME_MORNING;tod<=TIME_NIGHT;tod++)
+   for(unsigned req=0;req<sizeof(requests)/sizeof(*requests);req++)for(outcome=0;outcome<100;outcome++){
+    gMapHeader.regionMapSectionId=ordinary[area];
+    assert(LegendsChooseAmbientWeather(requests[req])!=WEATHER_SUNNY_CLOUDS);
+   }
+ // Keep native cloud reflections on protected maps (e.g. Faraway Island).
+ gMapHeader.regionMapSectionId=MAPSEC_FARAWAY_ISLAND;
+ assert(LegendsChooseAmbientWeather(WEATHER_SUNNY_CLOUDS)==WEATHER_SUNNY_CLOUDS);
+ gMapHeader.regionMapSectionId=MAPSEC_ROUTE_101;season=LEGENDS_SPRING;tod=TIME_DAY;
+ assert(countWeather(WEATHER_SUNNY)==68); // former 18% cloud share is now clear
+ // An active cloud forecast from an older save transitions through native cleanup.
+ outcome=99;vars[1]=0x100+WEATHER_SUNNY_CLOUDS;
+ state.currWeather=state.nextWeather=WEATHER_SUNNY_CLOUDS;poll();
+ assert(savedCalls==1&&nextCalls==1&&state.nextWeather==WEATHER_SUNNY);
+ state.currWeather=state.nextWeather;poll();assert(savedCalls==2&&nextCalls==1);
+ savedCalls=nextCalls=0;
  // A changing forecast goes through native saved/next-weather services only.
  season=LEGENDS_SPRING;outcome=10;vars[1]=0x100+WEATHER_SUNNY;
  state.currWeather=state.nextWeather=WEATHER_SUNNY;poll();
@@ -90,7 +111,7 @@ int main(void){
  vars[1]=0x100+WEATHER_SUNNY;state.currWeather=state.nextWeather=WEATHER_ABNORMAL;poll();assert(savedCalls==2);
  state.currWeather=state.nextWeather=WEATHER_SUNNY;vars[1]=0;poll();assert(savedCalls==2);
  vars[1]=0x100+WEATHER_ROUTE119_CYCLE;poll();assert(savedCalls==3&&vars[1]==0x100+WEATHER_ROUTE119_CYCLE);
- puts("Dynamic weather: climate probabilities, native exclusions, clock migration, safe transitions passed");
+ puts("Dynamic weather: climate probabilities, native exclusions, clock migration, cloud-free forecasts and old-save cleanup passed");
 }
 '''
 with tempfile.TemporaryDirectory() as d:

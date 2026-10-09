@@ -92,7 +92,7 @@ u8 LegendsChooseAmbientWeather(u8 weather)
     localState = LocalRandomSeed(Crc32B((const u8 *)pieces, sizeof(pieces)));
     roll = LocalRandom32(&localState) % 100;
 
-    // Percent weights, with clear/cloudy as the remainder. Hoenn stays mild:
+    // Percent weights, with clear weather as the remainder. Hoenn stays mild:
     // lowlands and tropical coasts never receive random snow.
     rain = season == LEGENDS_SPRING ? 30 : season == LEGENDS_SUMMER ? 18 : 25;
     thunder = season == LEGENDS_SUMMER ? 5 : season == LEGENDS_SPRING ? 2 : 1;
@@ -124,9 +124,11 @@ u8 LegendsChooseAmbientWeather(u8 weather)
     if (roll < thunder) return WEATHER_RAIN_THUNDERSTORM;
     roll -= thunder;
     if (roll < rain) return WEATHER_RAIN;
+    // SUNNY_CLOUDS places sprites at fixed Route 120 reflection coordinates.
+    // Ordinary towns/routes have different tile priorities, exposing those
+    // sprites through elevated terrain. Never choose it for ambient forecasts.
     // Woods retain canopy shade (their explicit shade request stays native).
-    return climate == CLIMATE_WOODS ? WEATHER_SHADE
-         : roll - rain < 18 ? WEATHER_SUNNY_CLOUDS : WEATHER_SUNNY;
+    return climate == CLIMATE_WOODS ? WEATHER_SHADE : WEATHER_SUNNY;
 }
 
 EWRAM_DATA static u8 sPollFrames = 0;

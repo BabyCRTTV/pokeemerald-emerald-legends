@@ -4,6 +4,16 @@ All notable Pokémon Emerald: Legends project changes are documented here.
 
 For build-specific player views, see [CHANGELOG-RELEASE.md](CHANGELOG-RELEASE.md) and [CHANGELOG-DEBUG.md](CHANGELOG-DEBUG.md). The canonical history below records the project as a whole.
 
+## [0.0.25.1] - 2026-10-09
+
+### Fixed
+- Removed SUNNY CLOUDS from dynamic regional forecasts. Emerald's cloud sprites use fixed Route 120 reflection coordinates and could show through elevated tiles/doorways on unrelated maps. Former cloudy forecast periods now use clear weather, with rain/thunder/fog/snow weights and timing unchanged.
+- Existing saved cloud forecasts resolve through the native map-load or weather-transition cleanup; no new save or clock reset is required. Native effects on protected maps remain intact.
+
+### Compatibility and validation
+- Exhausted all forecast rolls across seasons, times, configured climate profiles and ordinary weather inputs; checked old-cloud cleanup and native protected-map behavior.
+- Release and Debug share this fix with no variant-specific differences; developer tools remain Debug-only. No save-layout changes.
+
 ## [0.0.25] - 2026-10-09
 
 ### Added
