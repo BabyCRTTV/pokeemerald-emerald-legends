@@ -29,7 +29,7 @@
     },
     {
       "type": "object",
-      "graphics_id": "OBJ_EVENT_GFX_OLD_MAN_1",
+      "graphics_id": "OBJ_EVENT_GFX_OLD_MAN",
       "x": 17,
       "y": 9,
       "elevation": 3,
@@ -43,7 +43,7 @@
     },
     {
       "type": "object",
-      "graphics_id": "OBJ_EVENT_GFX_OLD_MAN_2",
+      "graphics_id": "OBJ_EVENT_GFX_EXPERT_M",
       "x": 36,
       "y": 10,
       "elevation": 3,

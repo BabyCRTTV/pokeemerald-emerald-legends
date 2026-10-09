@@ -154,6 +154,12 @@ class KantoTests(unittest.TestCase):
                                 capture_output=True, cwd=ROOT, check=True).stdout
         for symbol in ("Woman1Frlg", "CooltrainerM", "SailorFrlg", "SSAnne"):
             self.assertIn("= &gObjectEventGraphicsInfo_" + symbol, result)
+        registered = set(re.findall(r'\[(OBJ_EVENT_GFX_\w+)\]\s*=', result))
+        for path in (ROOT / 'data/maps').glob('LegendsKanto_*/map.json'):
+            for obj in json.loads(path.read_text())['object_events']:
+                graphics = obj['graphics_id']
+                if not graphics.startswith('OBJ_EVENT_GFX_SPECIES('):
+                    self.assertIn(graphics, registered, path.parent.name)
 
     def test_spectator_stands_on_walkable_land(self):
         d = json.loads((ROOT / "data/maps/LegendsKanto_VermilionCity/map.json").read_text())
