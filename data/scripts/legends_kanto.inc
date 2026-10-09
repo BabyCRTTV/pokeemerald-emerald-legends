@@ -86,6 +86,10 @@ LegendsKanto_EventScript_FirstWelcome::
 	lockall
 	applymovement OBJ_EVENT_ID_PLAYER, LegendsKanto_Movement_FaceUp
 	waitmovement 0
+	applymovement LOCALID_LEGENDS_KANTO_HOST, LegendsKanto_Movement_FaceDown
+	waitmovement 0
+	applymovement LOCALID_LEGENDS_KANTO_FAN, LegendsKanto_Movement_FaceDown
+	waitmovement 0
 	msgbox LegendsKanto_Text_FirstWelcome, MSGBOX_DEFAULT
 	msgbox LegendsKanto_Text_FirstFan, MSGBOX_DEFAULT
 	msgbox LegendsKanto_Text_FirstDirections, MSGBOX_DEFAULT
@@ -96,6 +100,10 @@ LegendsKanto_EventScript_WelcomeDone::
 
 LegendsKanto_Movement_FaceUp:
 	face_up
+	step_end
+
+LegendsKanto_Movement_FaceDown:
+	face_down
 	step_end
 
 LegendsKanto_EventScript_WelcomeHost::

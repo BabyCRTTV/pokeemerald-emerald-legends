@@ -2,7 +2,7 @@
 
 Implemented in v0.0.26 in both Release and Debug. This first chapter opens **Vermilion City**, rather than restarting FireRed's adventure. The rest of Kanto and a possible later Johto expansion remain future work.
 
-After becoming Hoenn Champion, speak to the gentleman in **Lilycove Harbor**. Kanto's Pokémon League has invited the new Champion to visit. He gives you an **Invite Ticket**. Speak to the sailor near the entrance to sail to Vermilion Port. The native attendant still handles Emerald's original destinations.
+After becoming Hoenn Champion, speak to the gentleman in **Lilycove Harbor**. Kanto's Pokémon League has invited the new Champion to visit. He gives you an **Invite Ticket**. Speak to the sailor beside the main ferry attendant to sail to Vermilion Port. The native attendant still handles Emerald's original destinations.
 
 Two Fan Club members give you a small welcome on your first arrival. Explore the three homes, Fan Club, Mart and Pokémon Center. The Center heals, provides PC access and has the native link-service floor. Its heal point also handles blackouts. The Mart stocks Ultra Balls, Hyper/Max Potions, Full Restores, Revives, Full Heals, Escape Ropes and Max Repels.
 
@@ -12,7 +12,7 @@ The sailor aboard the Vermilion gangway offers passage back to Lilycove. Keep yo
 
 ## Beginner playtest walkthrough
 
-This walkthrough is for **v0.0.26 Debug**. You do not need programming knowledge. “Debug” is the testing edition; its special menu can move you to an area and prepare a test save.
+This walkthrough is for **v0.0.26.1 Debug**. You do not need programming knowledge. “Debug” is the testing edition; its special menu can move you to an area and prepare a test save.
 
 ### 1. Open the Debug edition
 
@@ -70,7 +70,7 @@ You should now be inside Lilycove Harbor, near its exit. If you make a mistake, 
 
 Walk up from the exit and find the **gentleman near the entrance**. Stand next to him, face him and press A. Tap A to read each page of dialogue. He should congratulate the Champion and give you an **Invite Ticket**.
 
-Next, speak to the **sailor near the entrance, just below the gentleman**. Use this sailor for Kanto travel; the original harbor attendant still offers Emerald's other destinations.
+Next, speak to the **sailor beside the main ferry attendant**. Use this sailor for Kanto travel; the original harbor attendant still offers Emerald's other destinations.
 
 When asked to sail to Vermilion, choose **NO** with Up/Down and press A. You should stay in Lilycove. Talk to the sailor again, choose **YES**, and finish his dialogue. The game should fade and take you to Vermilion Port.
 
@@ -106,7 +106,7 @@ Use **START → Save**, restart the game and choose **Continue**. Check that you
 
 ### What to send with a bug report
 
-Include **Legends version and build (for example, v0.0.26 Debug), emulator name/version, fresh or existing save, the steps you took, what you expected, and what happened**. A screenshot of a visual problem helps. Say whether you used a direct warp or sailed normally.
+Include **Legends version and build (for example, v0.0.26.1 Debug), emulator name/version, fresh or existing save, the steps you took, what you expected, and what happened**. A screenshot of a visual problem helps. Say whether you used a direct warp or sailed normally.
 
 The Release edition has the same Kanto content. An existing Champion save can test the normal invitation and ferry without using any Debug tools.
 

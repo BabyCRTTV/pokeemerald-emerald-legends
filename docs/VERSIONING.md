@@ -17,7 +17,7 @@ All player-facing locations should match it, including:
 
 ## Pre-1.0 cadence
 
-The current version is `0.0.13.1`.
+The current version is `0.0.26.1`; the root `VERSION` file remains authoritative.
 
 Each meaningful shipped change normally advances the final development revision by one:
 

@@ -2,6 +2,18 @@
 
 This is the player-facing history for the recommended **Release** build. Shared Legends changes are repeated here so this file stands on its own; Release-only behavior is called out separately.
 
+## [0.0.26.1] - 2026-10-09
+
+### Fixed and polished
+- Vermilion's construction-site Machop now uses the expansion's native species overworld graphics, fixing its invisible legacy FRLG-only sprite.
+- Fan Club visitors stand on the floor beside the sofas; the Gym attendant stands outside the doorway instead of overlapping its artwork.
+- Invite Ticket text fits Emerald's Bag description window and clearly explains return travel.
+- Residents look around, with small bounded walking routes for selected town/facility visitors. Nurse, shop and link-service attendants retain their required facing; the docked ship remains stationary. Welcome actors face the arriving Champion during their scene.
+- Lilycove's Kanto sailor now waits beside the main ferry attendant. The shareable beginner guide describes the new boarding location.
+
+### Compatibility
+- Release and Debug share all fixes with no variant-specific gameplay differences; developer tools remain Debug-only. Existing tickets, saves, map IDs, welcome progress and trainer victories are retained.
+
 ## [0.0.26] - 2026-10-09
 
 ### Added
