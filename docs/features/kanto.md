@@ -38,6 +38,8 @@ For direct area inspection, use the following **Utilities → Warp to map warp**
 
 **Replay the welcome:** **Flags & Vars… → Set Flag XYZ… → 621** (`0x26D`, `FLAG_LEGENDS_KANTO_WELCOMED`). This menu toggles the selected flag when A is pressed. If TRUE, press A once to make it FALSE; if already FALSE, leave it alone. Exit and re-enter Vermilion Port.
 
+**Check victory dialogue quickly:** During move selection in a Debug battle, press **SELECT** to open the native battle Debug menu. Scroll to **Instant Win** and press A. Finish the dialogue, then speak to ALEX again. This checks the victory event and trainer flag; it does not test battle balance. Use a separate attempt with a weak party to check the loss/blackout flow.
+
 **Reset ALEX's victory:** use the same menu with **2135** (`0x857`, `TRAINER_FLAGS_START + TRAINER_LEGENDS_KANTO_ALEX`). Make it FALSE, then speak to him again. This resets only that optional trainer, not the rest of the game.
 
 ## Implementation
@@ -52,7 +54,9 @@ For direct area inspection, use the following **Utilities → Warp to map warp**
 
 ## Recorded validation (v0.0.26)
 
-Debug was exercised in headless **mGBA 0.10.3** using the compiled ROM, rendered frames and normal controller inputs. Confirmed: R + START and documented warp selectors; Game clear toggle; invitation item award; outbound crossing and three-part first welcome; declined return and successful return to Lilycove; walking through the harbor/city boundary; Center door entry/exit, nurse interaction/healing, link-floor stair round trip; optional trainer battle startup with six opponents; deliberate loss and recovery at Vermilion's Center; normal in-game save, reset and Continue in Vermilion. A following Bulbasaur was present during city, Center and battle tests. Visual testing caught and corrected FRLG-only sprite registrations; event testing caught and corrected native trainer comparison semantics.
+Debug was exercised in headless **mGBA 0.10.3** using the compiled ROM, rendered frames and normal controller inputs. Confirmed: R + START and documented warp selectors; Game clear toggle; invitation item award; outbound crossing and three-part first welcome; declined return and successful return to Lilycove; walking through the harbor/city boundary; Center door entry/exit, nurse interaction/healing, link-floor stair round trip; optional trainer battle startup with six opponents; deliberate loss and recovery at Vermilion's Center; normal in-game save, reset and Continue in Vermilion. A following Bulbasaur was present during city, Center and battle tests. Further checks confirmed all six open building entrances (Center, Mart, Fan Club and three homes), Mart inventory and an Ultra Ball purchase, normal Save/reset/Continue in the port, and ALEX's post-victory/repeat dialogue through the native Debug menu's Instant Win option. The victory shortcut verifies scripting, not battle balance. Visual testing caught and corrected FRLG-only sprite registrations; event testing caught and corrected native trainer comparison semantics.
+
+Release also loaded the same ordinary save, showed the regular Start menu instead of Debug under R + START, and completed Vermilion → Lilycove → Vermilion with the retained ticket and no repeated welcome.
 
 Automated checks cover additional ticket/progression and trainer-victory branches. The broader checklist below remains for full manual coverage, especially Pizza Boy, existing Champion saves, victory balance, every interior, both genders/costumes and native Hoenn destinations. Do not interpret this record as complete emulator coverage.
 
