@@ -148,8 +148,8 @@ class KantoTests(unittest.TestCase):
     def test_native_graphics_are_registered_in_emerald(self):
         # Source assets can exist while their runtime pointers are FRLG-only.
         import subprocess
-        flags = ["-DMODERN=1", "-DTESTING=0", "-DEMERALD", "-std=gnu17", "-iquote", "include", "-iquote", "src"]
-        script = "#include \"global.h\"\n#include \"data/object_events/object_event_graphics_info_pointers.h\"\n"
+        flags = ["-DIS_FRLG=0", "-iquote", "src"]
+        script = "#include \"data/object_events/object_event_graphics_info_pointers.h\"\n"
         result = subprocess.run(["gcc", "-E", "-P", "-x", "c", *flags, "-"], input=script, text=True,
                                 capture_output=True, cwd=ROOT, check=True).stdout
         for symbol in ("Woman1Frlg", "CooltrainerM", "SailorFrlg", "SSAnne"):
