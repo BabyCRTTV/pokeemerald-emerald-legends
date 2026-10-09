@@ -60,7 +60,7 @@ struct {u8 active;}gPaletteFade;
 struct {struct {u8 mapGroup,mapNum;}location;}save1,*gSaveBlock1Ptr=&save1;
 struct {u8 playerGender;}save2,*gSaveBlock2Ptr=&save2;
 const u16 gStandardMenuPalette[16]={0};
-static int keys,base,baseIndex,outfit,scarf,jacket,pending,applies,cancels,freed,returns,resumes,pics,initFail;
+static int keys,base,baseIndex,outfit,scarf,jacket,pending,applies,cancels,freed,returns,resumes,pics,initFail,fieldCleanup;
 u16 VarGet(int v){return baseIndex;}
 int CurMapIsSecretBase(void){return base;}
 void LegendsBeginWardrobeSelection(void){pending=1;}
@@ -81,6 +81,7 @@ void RunTasks(void){}void AnimateSprites(void){}void BuildOamBuffer(void){}void 
 void LoadOam(void){}void ProcessSpriteCopyRequests(void){}void TransferPlttBuffer(void){}
 void SetVBlankCallback(void(*f)(void)){}
 void FreeAllWindowBuffers(void){freed++;}
+void CleanupOverworldWindowsAndTilemaps(void){fieldCleanup++;}
 void DestroyTask(int t){}
 void CB2_ReturnToFieldContinueScriptPlayMapMusic(void){returns++;}
 void SetMainCallback2(void(*cb)(void)){if(cb==CB2_ReturnToFieldContinueScriptPlayMapMusic)returns++;}
@@ -106,7 +107,7 @@ int main(void){
  assert(LegendsIsWardrobeMetatile(0x344)&&LegendsIsWardrobeMetatile(0x345)&&!LegendsIsWardrobeMetatile(0x2f4));
  LegendsOpenWardrobe();assert(resumes==1&&!pending);baseIndex=0;
  LegendsOpenWardrobe();assert(pending&&gTasks[0].func==Task_Enter);Task_Enter(0);CB2_InitWardrobe();
- assert(pics==1&&gTasks[0].func==Task_Input);
+ assert(pics==1&&fieldCleanup==1&&gTasks[0].func==Task_Input);
  keys=DPAD_LEFT;Task_Input(0);assert(outfit==4);keys=DPAD_RIGHT;Task_Input(0);assert(outfit==0);
  keys=DPAD_DOWN;Task_Input(0);keys=DPAD_LEFT;Task_Input(0);assert(scarf==5);
  keys=DPAD_DOWN;Task_Input(0);keys=A_BUTTON;Task_Input(0);assert(jacket==1);

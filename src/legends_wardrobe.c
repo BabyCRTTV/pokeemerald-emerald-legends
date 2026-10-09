@@ -146,6 +146,7 @@ static void CB2_InitWardrobe(void)
 static void Task_Enter(u8 taskId)
 {
     if (gPaletteFade.active) return;
+    CleanupOverworldWindowsAndTilemaps();
     DestroyTask(taskId);SetMainCallback2(CB2_InitWardrobe);
 }
 
