@@ -1355,6 +1355,31 @@ static const struct SpriteFrameImage sPicTable_ApricornTree[] = {
     overworld_frame(gObjectEventPic_ApricornTree, 2, 2, 0),
 };
 
+// Shared native assets used by the Legends Kanto chapter.
+static const struct SpriteFrameImage sPicTable_Woman1Frlg[] = {
+    overworld_ascending_frames(gObjectEventPic_Woman1Frlg, 2, 4),
+};
+
+static const struct SpriteFrameImage sPicTable_CooltrainerM[] = {
+    overworld_ascending_frames(gObjectEventPic_CooltrainerM, 2, 4),
+};
+
+static const struct SpriteFrameImage sPicTable_SailorFrlg[] = {
+    overworld_ascending_frames(gObjectEventPic_SailorFrlg, 2, 4),
+};
+
+static const struct SpriteFrameImage sPicTable_SSAnne[] = {
+    overworld_frame(gObjectEventPic_SSAnne, 8, 16, 0),
+    overworld_frame(gObjectEventPic_SSAnne, 8, 16, 0),
+    overworld_frame(gObjectEventPic_SSAnne, 8, 16, 0),
+    overworld_frame(gObjectEventPic_SSAnne, 8, 16, 0),
+    overworld_frame(gObjectEventPic_SSAnne, 8, 16, 0),
+    overworld_frame(gObjectEventPic_SSAnne, 8, 16, 0),
+    overworld_frame(gObjectEventPic_SSAnne, 8, 16, 0),
+    overworld_frame(gObjectEventPic_SSAnne, 8, 16, 0),
+    overworld_frame(gObjectEventPic_SSAnne, 8, 16, 0),
+};
+
 #if IS_FRLG
 
 static const struct SpriteFrameImage sPicTable_RedNormal[] = {
@@ -1497,9 +1522,6 @@ static const struct SpriteFrameImage sPicTable_YoungsterFrlg[] = {
     overworld_ascending_frames(gObjectEventPic_YoungsterFrlg, 2, 4),
 };
 
-static const struct SpriteFrameImage sPicTable_Woman1Frlg[] = {
-    overworld_ascending_frames(gObjectEventPic_Woman1Frlg, 2, 4),
-};
 
 static const struct SpriteFrameImage sPicTable_Woman3Frlg[] = {
     overworld_ascending_frames(gObjectEventPic_Woman3Frlg, 2, 4),
@@ -1582,9 +1604,6 @@ static const struct SpriteFrameImage sPicTable_PicnickerFrlg[] = {
     overworld_ascending_frames(gObjectEventPic_PicnickerFrlg, 2, 4),
 };
 
-static const struct SpriteFrameImage sPicTable_CooltrainerM[] = {
-    overworld_ascending_frames(gObjectEventPic_CooltrainerM, 2, 4),
-};
 
 static const struct SpriteFrameImage sPicTable_CooltrainerF[] = {
     overworld_ascending_frames(gObjectEventPic_CooltrainerF, 2, 4),
@@ -1634,9 +1653,6 @@ static const struct SpriteFrameImage sPicTable_GentlemanFrlg[] = {
     overworld_ascending_frames(gObjectEventPic_GentlemanFrlg, 2, 4),
 };
 
-static const struct SpriteFrameImage sPicTable_SailorFrlg[] = {
-    overworld_ascending_frames(gObjectEventPic_SailorFrlg, 2, 4),
-};
 
 static const struct SpriteFrameImage sPicTable_Captain[] = {
     overworld_ascending_frames(gObjectEventPic_Captain, 2, 4),
@@ -2001,17 +2017,6 @@ static const struct SpriteFrameImage sPicTable_Seagallop[] = {
     overworld_frame(gObjectEventPic_Seagallop, 4, 16, 0),
 };
 
-static const struct SpriteFrameImage sPicTable_SSAnne[] = {
-    overworld_frame(gObjectEventPic_SSAnne, 8, 16, 0),
-    overworld_frame(gObjectEventPic_SSAnne, 8, 16, 0),
-    overworld_frame(gObjectEventPic_SSAnne, 8, 16, 0),
-    overworld_frame(gObjectEventPic_SSAnne, 8, 16, 0),
-    overworld_frame(gObjectEventPic_SSAnne, 8, 16, 0),
-    overworld_frame(gObjectEventPic_SSAnne, 8, 16, 0),
-    overworld_frame(gObjectEventPic_SSAnne, 8, 16, 0),
-    overworld_frame(gObjectEventPic_SSAnne, 8, 16, 0),
-    overworld_frame(gObjectEventPic_SSAnne, 8, 16, 0),
-};
 
 static const struct SpriteFrameImage sPicTable_Snorlax[] = {
     overworld_frame(gObjectEventPic_SnorlaxOld, 4, 4, 0),

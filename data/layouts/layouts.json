@@ -9323,6 +9323,34 @@
       "border_filepath": "data/layouts/OneIsland_KindleRoad_EmberSpa_Frlg/border.bin",
       "blockdata_filepath": "data/layouts/OneIsland_KindleRoad_EmberSpa_Frlg/map.bin",
       "layout_version": "frlg"
+    },
+    {
+      "id": "LAYOUT_LEGENDS_KANTO_VERMILION_CITY",
+      "name": "LegendsKanto_VermilionCity_Layout",
+      "width": 48,
+      "height": 40,
+      "border_width": 2,
+      "border_height": 2,
+      "primary_tileset": "gTileset_LegendsKantoGeneral_Frlg",
+      "secondary_tileset": "gTileset_LegendsKantoVermilionCity",
+      "border_filepath": "data/layouts/LegendsKanto_VermilionCity/border.bin",
+      "blockdata_filepath": "data/layouts/LegendsKanto_VermilionCity/map.bin",
+      "layout_version": "emerald",
+      "tileset_format": "frlg"
+    },
+    {
+      "id": "LAYOUT_LEGENDS_KANTO_HARBOR",
+      "name": "LegendsKanto_Harbor_Layout",
+      "width": 70,
+      "height": 32,
+      "border_width": 2,
+      "border_height": 2,
+      "primary_tileset": "gTileset_LegendsKantoGeneral_Frlg",
+      "secondary_tileset": "gTileset_LegendsKantoVermilionCity",
+      "border_filepath": "data/layouts/LegendsKanto_Harbor/border.bin",
+      "blockdata_filepath": "data/layouts/LegendsKanto_Harbor/map.bin",
+      "layout_version": "emerald",
+      "tileset_format": "frlg"
     }
   ]
 }

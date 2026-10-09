@@ -14338,6 +14338,22 @@ const struct ItemInfo gItemsInfo[] =
 
 // Story Key Items
 
+    [ITEM_INVITE_TICKET] =
+    {
+        .name = ITEM_NAME("Invite Ticket"),
+        .price = 0,
+        .description = COMPOUND_STRING(
+            "A LEAGUE invitation.\n"
+            "Valid for return trips\n"
+            "between HOENN and KANTO."),
+        .importance = 1,
+        .pocket = POCKET_KEY_ITEMS,
+        .type = ITEM_USE_BAG_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .iconPic = gItemIcon_SSTicket,
+        .iconPalette = gItemIconPalette_SSTicket,
+    },
+
     [ITEM_SS_TICKET] =
     {
         .name = ITEM_NAME("S.S. Ticket"),

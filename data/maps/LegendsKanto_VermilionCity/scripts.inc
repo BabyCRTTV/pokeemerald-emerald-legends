@@ -1,0 +1,7 @@
+LegendsKanto_VermilionCity_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, LegendsKanto_City_OnTransition
+	.byte 0
+
+LegendsKanto_City_OnTransition:
+	setrespawn HEAL_LOCATION_LEGENDS_KANTO_VERMILION
+	end

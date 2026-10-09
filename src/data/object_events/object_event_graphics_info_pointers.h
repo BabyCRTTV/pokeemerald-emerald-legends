@@ -645,6 +645,11 @@ const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM
     [OBJ_EVENT_GFX_OW_MON] =                   &gObjectEventGraphicsInfo_Follower,
     [OBJ_EVENT_GFX_LIGHT_SPRITE] =             &gObjectEventGraphicsInfo_BallLight,
     [OBJ_EVENT_GFX_APRICORN_TREE] =            &gObjectEventGraphicsInfo_ApricornTree,
+    // Legends reuses these native Kanto graphics in Emerald.
+    [OBJ_EVENT_GFX_WOMAN_1_FRLG]             = &gObjectEventGraphicsInfo_Woman1Frlg,
+    [OBJ_EVENT_GFX_COOLTRAINER_M]            = &gObjectEventGraphicsInfo_CooltrainerM,
+    [OBJ_EVENT_GFX_SAILOR_FRLG]              = &gObjectEventGraphicsInfo_SailorFrlg,
+    [OBJ_EVENT_GFX_SS_ANNE]                  = &gObjectEventGraphicsInfo_SSAnne,
 #if IS_FRLG
     [OBJ_EVENT_GFX_RED_NORMAL] =               &gObjectEventGraphicsInfo_RedNormal,
     [OBJ_EVENT_GFX_RED_BIKE] =                 &gObjectEventGraphicsInfo_RedBike,
@@ -666,7 +671,6 @@ const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM
     [OBJ_EVENT_GFX_BOY]                      = &gObjectEventGraphicsInfo_Boy,
     [OBJ_EVENT_GFX_BUG_CATCHER_FRLG]         = &gObjectEventGraphicsInfo_BugCatcherFrlg,
     [OBJ_EVENT_GFX_LASS_FRLG]                = &gObjectEventGraphicsInfo_LassFrlg,
-    [OBJ_EVENT_GFX_WOMAN_1_FRLG]             = &gObjectEventGraphicsInfo_Woman1Frlg,
     [OBJ_EVENT_GFX_CRUSH_GIRL]               = &gObjectEventGraphicsInfo_CrushGirl,
     [OBJ_EVENT_GFX_MAN]                      = &gObjectEventGraphicsInfo_Man,
     [OBJ_EVENT_GFX_ROCKER]                   = &gObjectEventGraphicsInfo_Rocker,
@@ -684,7 +688,6 @@ const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM
     [OBJ_EVENT_GFX_TUBER_M_LAND]             = &gObjectEventGraphicsInfo_TuberMLand,
     [OBJ_EVENT_GFX_CAMPER_FRLG]              = &gObjectEventGraphicsInfo_CamperFrlg,
     [OBJ_EVENT_GFX_PICNICKER_FRLG]           = &gObjectEventGraphicsInfo_PicnickerFrlg,
-    [OBJ_EVENT_GFX_COOLTRAINER_M]            = &gObjectEventGraphicsInfo_CooltrainerM,
     [OBJ_EVENT_GFX_COOLTRAINER_F]            = &gObjectEventGraphicsInfo_CooltrainerF,
     [OBJ_EVENT_GFX_SWIMMER_M_WATER]          = &gObjectEventGraphicsInfo_SwimmerMWater,
     [OBJ_EVENT_GFX_SWIMMER_F_WATER]          = &gObjectEventGraphicsInfo_SwimmerFWater,
@@ -705,7 +708,6 @@ const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM
     [OBJ_EVENT_GFX_CHEF]                     = &gObjectEventGraphicsInfo_Chef,
     [OBJ_EVENT_GFX_POLICEMAN]                = &gObjectEventGraphicsInfo_Policeman,
     [OBJ_EVENT_GFX_GENTLEMAN_FRLG]           = &gObjectEventGraphicsInfo_GentlemanFrlg,
-    [OBJ_EVENT_GFX_SAILOR_FRLG]              = &gObjectEventGraphicsInfo_SailorFrlg,
     [OBJ_EVENT_GFX_CAPTAIN]                  = &gObjectEventGraphicsInfo_Captain,
     [OBJ_EVENT_GFX_NURSE_FRLG]               = &gObjectEventGraphicsInfo_NurseFrlg,
     [OBJ_EVENT_GFX_CABLE_CLUB_RECEPTIONIST]  = &gObjectEventGraphicsInfo_CableClubReceptionist,
@@ -789,7 +791,6 @@ const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM
     [OBJ_EVENT_GFX_DEOXYS_D]                 = &gObjectEventGraphicsInfo_DeoxysD,
     [OBJ_EVENT_GFX_DEOXYS_A]                 = &gObjectEventGraphicsInfo_DeoxysA,
     [OBJ_EVENT_GFX_DEOXYS_N]                 = &gObjectEventGraphicsInfo_DeoxysN,
-    [OBJ_EVENT_GFX_SS_ANNE]                  = &gObjectEventGraphicsInfo_SSAnne,
 #endif // IS_FRLG
 };
 

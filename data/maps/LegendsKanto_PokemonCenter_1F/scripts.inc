@@ -1,0 +1,8 @@
+LegendsKanto_PokemonCenter_1F_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, LegendsKanto_Center_OnTransition
+	map_script MAP_SCRIPT_ON_RESUME, CableClub_OnResume
+	.byte 0
+
+LegendsKanto_Center_OnTransition:
+	setrespawn HEAL_LOCATION_LEGENDS_KANTO_VERMILION
+	end

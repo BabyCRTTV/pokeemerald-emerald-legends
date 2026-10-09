@@ -2,6 +2,21 @@
 
 This is the developer-facing history for the **Debug** build. Shared Legends changes are repeated here so this file stands on its own; Debug-only behavior is called out separately.
 
+## [0.0.26] - 2026-10-09
+
+### Added
+- The first Kanto postgame chapter: Hoenn's Champion receives a League Invite Ticket from a representative at Lilycove Harbor. The nearby sailor offers permanent two-way passage to Vermilion Port; the ticket is retained and required on every crossing.
+- Vermilion City and its permanently docked passenger ship, with original Kanto outdoor art/music, a modest one-time welcome from Fan Club members, new clean dialogue, three homes, a Fan Club, a fully functioning Pokémon Center/link floor and a postgame-stocked Mart.
+- An optional Cooltrainer ALEX battle on the waterfront with six Kanto Pokémon at levels 60–64. Players can decline and return later; victory is saved using native trainer flags. Travel never requires winning.
+- A dedicated Kanto heal/blackout destination and return-to-Hoenn respawn handling. Existing Hoenn transport/event-island scripts remain separate.
+- A player/Debug tutorial with exact map, item and flag IDs, repeat-visit and battle reset instructions, and a manual emulator checklist.
+
+### Scope and compatibility
+- This is the Vermilion arrival chapter, not the complete Kanto region. Roads to Routes 6/11 are visibly closed for storm repairs, and Lt. Surge is away assisting the crews. Later chapters can open these paths without transplanting FireRed's new-game story.
+- Reuses the expansion's native FRLG tile/palette counts, attribute packing, water animations and selected door animations. Mapjson now separates build selection (`layout_version`) from optional `tileset_format`; existing layouts retain their previous behavior.
+- Appended map/layout/item/heal/trainer IDs; no SaveBlock enlargement or renumbering of existing IDs. Existing Champion saves can obtain the invitation immediately.
+- Release and Debug share all new content with no variant-specific gameplay differences. Developer tools and title Quickstart remain Debug-only.
+
 ## [0.0.25.1] - 2026-10-09
 
 ### Fixed

@@ -1,0 +1,104 @@
+{
+  "id": "MAP_LEGENDS_KANTO_HARBOR",
+  "name": "LegendsKanto_Harbor",
+  "region": "REGION_HOENN",
+  "region_map_section": "MAPSEC_VERMILION_CITY",
+  "requires_flash": false,
+  "weather": "WEATHER_NONE",
+  "map_type": "MAP_TYPE_INDOOR",
+  "allow_cycling": false,
+  "allow_escaping": false,
+  "allow_running": true,
+  "show_map_name": false,
+  "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+  "connections": null,
+  "object_events": [
+    {
+      "type": "object",
+      "graphics_id": "OBJ_EVENT_GFX_SS_ANNE",
+      "x": 30,
+      "y": 16,
+      "elevation": 1,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "0x0",
+      "flag": "0",
+      "local_id": "LOCALID_LEGENDS_KANTO_SHIP"
+    },
+    {
+      "type": "object",
+      "graphics_id": "OBJ_EVENT_GFX_GENTLEMAN",
+      "x": 31,
+      "y": 8,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "LegendsKanto_EventScript_WelcomeHost",
+      "flag": "0",
+      "local_id": "LOCALID_LEGENDS_KANTO_HOST"
+    },
+    {
+      "type": "object",
+      "graphics_id": "OBJ_EVENT_GFX_GIRL_1",
+      "x": 33,
+      "y": 8,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "LegendsKanto_EventScript_WelcomeFan",
+      "flag": "0",
+      "local_id": "LOCALID_LEGENDS_KANTO_FAN"
+    },
+    {
+      "type": "object",
+      "graphics_id": "OBJ_EVENT_GFX_SAILOR_FRLG",
+      "x": 32,
+      "y": 13,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_UP",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "LegendsKanto_EventScript_ReturnFerry",
+      "flag": "0",
+      "local_id": "LOCALID_LEGENDS_KANTO_CAPTAIN"
+    }
+  ],
+  "warp_events": [
+    {
+      "x": 31,
+      "y": 5,
+      "elevation": 0,
+      "dest_map": "MAP_LEGENDS_KANTO_VERMILION_CITY",
+      "dest_warp_id": "0"
+    },
+    {
+      "x": 32,
+      "y": 5,
+      "elevation": 3,
+      "dest_map": "MAP_LEGENDS_KANTO_VERMILION_CITY",
+      "dest_warp_id": "1"
+    },
+    {
+      "x": 33,
+      "y": 5,
+      "elevation": 0,
+      "dest_map": "MAP_LEGENDS_KANTO_VERMILION_CITY",
+      "dest_warp_id": "2"
+    }
+  ],
+  "coord_events": [],
+  "bg_events": [],
+  "layout": "LAYOUT_LEGENDS_KANTO_HARBOR",
+  "music": "MUS_RG_SS_ANNE"
+}

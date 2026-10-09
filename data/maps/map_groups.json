@@ -74,7 +74,8 @@
     "gMapGroup_IndoorFiveIslandRoute_Frlg",
     "gMapGroup_IndoorTwoIslandRoute_Frlg",
     "gMapGroup_IndoorSixIslandRoute_Frlg",
-    "gMapGroup_IndoorSevenIslandRoute_Frlg"
+    "gMapGroup_IndoorSevenIslandRoute_Frlg",
+    "gMapGroup_LegendsKanto"
   ],
   "gMapGroup_TownsAndRoutes": [
     "PetalburgCity",
@@ -1160,5 +1161,16 @@
   ],
   "gMapGroup_IndoorSevenIslandRoute_Frlg": [
     "SevenIsland_SevaultCanyon_House_Frlg"
+  ],
+  "gMapGroup_LegendsKanto": [
+    "LegendsKanto_VermilionCity",
+    "LegendsKanto_Harbor",
+    "LegendsKanto_PokemonCenter_1F",
+    "LegendsKanto_PokemonCenter_2F",
+    "LegendsKanto_Mart",
+    "LegendsKanto_FanClub",
+    "LegendsKanto_House1",
+    "LegendsKanto_House2",
+    "LegendsKanto_House3"
   ]
 }
