@@ -47,5 +47,12 @@ for p,count in [(secondary,326),(root/'data/tilesets/secondary/brendans_mays_hou
  assert len((p/'metatile_attributes.bin').read_bytes())==count*2
 paths=[primary/'tiles.png',secondary/'metatiles.bin',secondary/'metatile_attributes.bin']
 paths += [root/'data/tilesets/secondary/brendans_mays_house'/f for f in ['tiles.png','metatiles.bin','metatile_attributes.bin']]
-before=[p.read_bytes() for p in paths];furniture.build();assert before==[p.read_bytes() for p in paths]
+def furniture_contents(path):
+ if path.suffix=='.png':
+  im=Image.open(path)
+  # PNG container compression can differ between Pillow/zlib versions;
+  # the exact indexed pixels/palette are the native 4bpp source of truth.
+  return im.size,im.tobytes(),tuple(im.getpalette())
+ return path.read_bytes()
+before=[furniture_contents(p) for p in paths];furniture.build();assert before==[furniture_contents(p) for p in paths]
 print(f'{pose_count} accessory poses: faces/hands/balls, geometry, 300 binary blocks and cabinet reuse/reproducibility passed')
