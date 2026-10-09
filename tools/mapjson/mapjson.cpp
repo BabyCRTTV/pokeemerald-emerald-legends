@@ -794,6 +794,12 @@ string generate_layout_headers_text(Json layouts_data) {
          || (version == "firered" && layout_version != "frlg"))
             continue;
         string layoutName = json_to_string(layout, "name");
+        // Build selection and on-cartridge tileset format are independent.
+        // Legends imports selected Kanto layouts into the Emerald build.
+        string tileset_format = json_to_string(layout, "tileset_format", true);
+        bool is_frlg = tileset_format.empty() ? layout_version == "frlg" : tileset_format == "frlg";
+        if (!tileset_format.empty() && tileset_format != "emerald" && tileset_format != "frlg")
+            FATAL_ERROR("Unknown tileset_format '%s' for layout '%s'\n", tileset_format.c_str(), layoutName.c_str());
         string border_label = layoutName + "_Border";
         string blockdata_label = layoutName + "_Blockdata";
         text << border_label << "::\n"
@@ -808,12 +814,12 @@ string generate_layout_headers_text(Json layouts_data) {
              << "\t.4byte " << blockdata_label << "\n"
              << "\t.4byte " << json_to_string(layout, "primary_tileset") << "\n"
              << "\t.4byte " << json_to_string(layout, "secondary_tileset") << "\n";
-        if (layout_version == "frlg")
+        if (is_frlg)
             text << "\t.byte TRUE\n";
         else
             text << "\t.byte FALSE\n";
 
-        if (layout_version == "frlg")
+        if (is_frlg)
         {
             text << "\t.byte " << json_to_string(layout, "border_width") << "\n"
                  << "\t.byte " << json_to_string(layout, "border_height") << "\n"

@@ -25,6 +25,13 @@ Goal: establish a stable `pokeemerald-expansion` project and implement the first
 - [x] Native overworld Pokémon followers with saved Options toggle
 - [ ] Seasonal encounter hooks
 
+### Kanto postgame
+- [x] Champion invitation and permanent Lilycove–Vermilion ferry
+- [x] Vermilion arrival, residents, facilities and optional spectator challenge
+- [ ] Route 6 / Route 11 and onward travel
+- [ ] Kanto Gym progression and League chapter
+- [ ] Research Johto assets and geography after Kanto is established
+
 ### Quality and maintenance
 - [x] Add paged General / Legends Options framework for future settings
 - [ ] Centralize Legends-specific configuration flags

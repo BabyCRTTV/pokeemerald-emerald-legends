@@ -16877,3 +16877,73 @@ Double Battle: No
 Kyogre
 Level: 5
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+/* Optional Champion visitor battle at Vermilion Harbor. No travel progression gate. */
+=== TRAINER_LEGENDS_KANTO_ALEX ===
+Name: ALEX
+Class: Cooltrainer
+Pic: Cooltrainer M
+Gender: Male
+Music: Intense
+Double Battle: No
+AI: Basic Trainer
+
+Raichu @ Sitrus Berry
+Level: 60
+Ability: Static
+Nature: Timid
+EVs: 64 HP / 80 SpA / 80 Spe
+- Thunderbolt
+- Grass Knot
+- Thunder Wave
+- Light Screen
+
+Arcanine @ Sitrus Berry
+Level: 61
+Ability: Intimidate
+Nature: Adamant
+EVs: 64 HP / 80 Atk / 80 Spe
+- Flare Blitz
+- Extreme Speed
+- Crunch
+- Will-O-Wisp
+
+Exeggutor @ Lum Berry
+Level: 61
+Ability: Chlorophyll
+Nature: Modest
+EVs: 80 HP / 80 SpA / 64 Def
+- Psychic
+- Giga Drain
+- Sleep Powder
+- Reflect
+
+Nidoking @ Soft Sand
+Level: 62
+Ability: Poison Point
+Nature: Adamant
+EVs: 64 HP / 80 Atk / 80 Spe
+- Earthquake
+- Poison Jab
+- Rock Slide
+- Megahorn
+
+Lapras @ Sitrus Berry
+Level: 62
+Ability: Water Absorb
+Nature: Modest
+EVs: 80 HP / 80 SpA / 64 SpD
+- Surf
+- Ice Beam
+- Thunderbolt
+- Sing
+
+Dragonite @ Lum Berry
+Level: 64
+Ability: Inner Focus
+Nature: Adamant
+EVs: 64 HP / 80 Atk / 80 Spe
+- Dragon Claw
+- Fire Punch
+- Dragon Dance
+- Extreme Speed

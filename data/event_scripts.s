@@ -1738,3 +1738,16 @@ EventScript_PalletTown_PlayersHouse_2F_TurnOnPC::
 	.include "data/scripts/battle_frontier.inc"
 	.include "data/scripts/apricorn_tree.inc"
 	.include "data/scripts/wild_encounter.inc"
+
+.if !IS_FRLG
+	.include "data/scripts/legends_kanto.inc"
+	.include "data/maps/LegendsKanto_VermilionCity/scripts.inc"
+	.include "data/maps/LegendsKanto_Harbor/scripts.inc"
+	.include "data/maps/LegendsKanto_PokemonCenter_1F/scripts.inc"
+	.include "data/maps/LegendsKanto_PokemonCenter_2F/scripts.inc"
+	.include "data/maps/LegendsKanto_Mart/scripts.inc"
+	.include "data/maps/LegendsKanto_FanClub/scripts.inc"
+	.include "data/maps/LegendsKanto_House1/scripts.inc"
+	.include "data/maps/LegendsKanto_House2/scripts.inc"
+	.include "data/maps/LegendsKanto_House3/scripts.inc"
+.endif

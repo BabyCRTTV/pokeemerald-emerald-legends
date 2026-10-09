@@ -349,9 +349,53 @@ static const u8 sDoorAnimPalettes_TrainerTowerRoofElevator[] = {11, 11, 2, 2, 2,
 
 #endif // IS_FRLG
 
+// Selected Kanto door animations are also used by the Emerald postgame maps.
+#if !IS_FRLG
+static const u8 sLegendsKantoDoorTiles[] = INCGFX_U8("graphics/door_anims/general_frlg.png", ".4bpp");
+static const u8 sLegendsKantoSingleDoorTiles[] = INCGFX_U8("graphics/door_anims/sliding_single.png", ".4bpp");
+static const u8 sLegendsKantoDoubleDoorTiles[] = INCGFX_U8("graphics/door_anims/sliding_double.png", ".4bpp");
+static const u8 sLegendsKantoVermilionDoorTiles[] = INCGFX_U8("graphics/door_anims/vermilion.png", ".4bpp");
+static const u8 sLegendsKantoDoorPalettes[] = {2, 2, 2, 2, 2, 2, 2, 2};
+static const u8 sLegendsKantoSlidingPalettes[] = {3, 3, 3, 3, 3, 3, 3, 3};
+static const u8 sLegendsKantoVermilionPalettes[] = {9, 9, 9, 9, 9, 9, 9, 9};
+#endif
+
 static const struct DoorGraphics sDoorAnimGraphicsTable[] =
 {
 #if !IS_FRLG
+    {
+        .metatileNum = METATILE_GeneralFrlg_Door,
+        .tileset = &gTileset_LegendsKantoGeneral_Frlg,
+        .sound = DOOR_SOUND_NORMAL,
+        .size = DOOR_SIZE_1x1,
+        .tiles = sLegendsKantoDoorTiles,
+        .palettes = sLegendsKantoDoorPalettes
+    },
+    {
+        .metatileNum = METATILE_GeneralFrlg_SlidingSingleDoor,
+        .tileset = &gTileset_LegendsKantoGeneral_Frlg,
+        .sound = DOOR_SOUND_SLIDING,
+        .size = DOOR_SIZE_1x1,
+        .tiles = sLegendsKantoSingleDoorTiles,
+        .palettes = sLegendsKantoSlidingPalettes
+    },
+    {
+        .metatileNum = METATILE_GeneralFrlg_SlidingDoubleDoor,
+        .tileset = &gTileset_LegendsKantoGeneral_Frlg,
+        .sound = DOOR_SOUND_SLIDING,
+        .size = DOOR_SIZE_1x1,
+        .tiles = sLegendsKantoDoubleDoorTiles,
+        .palettes = sLegendsKantoSlidingPalettes
+    },
+    {
+        .metatileNum = METATILE_VermilionCity_Door,
+        .tileset = &gTileset_LegendsKantoVermilionCity,
+        .sound = DOOR_SOUND_NORMAL,
+        .size = DOOR_SIZE_1x1,
+        .tiles = sLegendsKantoVermilionDoorTiles,
+        .palettes = sLegendsKantoVermilionPalettes
+    },
+
     {
         .metatileNum = METATILE_General_Door,
         .tileset = &gTileset_General,

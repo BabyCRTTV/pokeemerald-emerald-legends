@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#173b2d">
+  <title>Kanto and Debug guide - Pokémon Emerald: Legends</title>
+  <link rel="stylesheet" href="style.css">
+  <style>.guide {padding:24px} .guide h2 {margin-top:32px} .guide li {margin:12px 0} .guide table {width:100%;border-collapse:collapse} .guide th,.guide td {padding:9px 5px;text-align:left;border-bottom:1px solid #41654e} .guide code {color:#bbe48f} .guide .table-wrap {overflow-x:auto}</style>
+</head>
+<body><main class="shell">
+  <header class="titlebar"><div class="lights" aria-hidden="true"><span></span><span></span><span></span></div><div class="title">EMERALD: LEGENDS // KANTO</div><div class="version">v0.0.26</div></header>
+  <article class="panel guide">
+    <p class="eyebrow">The Champion's first visit</p>
+    <h1>Across the sea to Vermilion</h1>
+    <p>Become Hoenn Champion, then speak to the gentleman at <strong>Lilycove Harbor</strong>. Kanto's Pokémon League has sent an invitation. Your <strong>Invite Ticket</strong> lets the nearby sailor take you to Vermilion Port and back, whenever you wish. Keep it: each crossing requires the ticket, and it is never consumed.</p>
+    <p>Two Fan Club members welcome you on your first arrival. Vermilion has three homes, a Fan Club, a working Pokémon Center and a Mart stocked for postgame travel. Cooltrainer <strong>ALEX</strong> waits on the city waterfront with six Kanto Pokémon at <strong>Lv. 60–64</strong>. His challenge is optional; you can decline, heal and return later.</p>
+    <p>To go home, return to the port and speak to the sailor at the end of the gangway. The ship remains available. This chapter opens Vermilion; storm repairs close Routes 6 and 11, and Lt. Surge is away helping the crews. Onward travel and the Gym are planned for later chapters.</p>
+    <h2>Test with the Debug menu</h2>
+    <p>Use the <a href="patcher.html?build=debug">Debug build</a>. In the overworld, <strong>hold R and press START</strong>. Numeric selectors use <strong>Left/Right to choose a digit</strong>, <strong>Up/Down to change it</strong>, <strong>A to confirm</strong> and <strong>B to go back</strong>. All IDs here are decimal. Use a separate testing save; Game clear alone does not complete all Emerald story events.</p>
+    <ol>
+      <li>On an existing Champion save, leave Game clear enabled. On a new test save, choose <strong>Flags &amp; Vars… → Toggle Game clear</strong> to enable it. Debug's title-screen <strong>SELECT</strong> starts native Quickstart. <strong>Give X… → Pokémon (Basic)</strong> can prepare a team around Lv. 60–65.</li>
+      <li>Choose <strong>Utilities… → Warp to map warp…</strong> and enter <strong>13 → 10 → 0</strong>. Walk up into Lilycove Harbor and talk to the gentleman, then the sailor near the entrance. This tests the real ticket and travel progression.</li>
+      <li>If a fresh Debug setup has the native ship hidden, use <strong>Flags &amp; Vars… → Set Flag XYZ… → 861</strong>. If it shows TRUE, press A once to make it FALSE, then leave and re-enter the harbor. This is Emerald's native Lilycove ship-visibility flag.</li>
+      <li>Decline a sailing, then accept. Confirm the first welcome plays and the ticket remains in Key Items. Walk north into Vermilion; visit its Center, Mart, homes and Fan Club.</li>
+      <li>Talk to ALEX on the city waterfront. Decline first, then prepare/heal and accept. Inspect victory dialogue and later conversations. On a separate attempt, lose and confirm recovery at Vermilion's Center.</li>
+      <li>Go south to the port and talk to the sailor at the end of the gangway. Decline, then accept passage home. Sail from Lilycove again: the welcome should not repeat. Save/reload in both regions and repeat the journey.</li>
+    </ol>
+    <h2>Direct area warps</h2>
+    <p>For quick inspection, enter these values under <strong>Utilities… → Warp to map warp…</strong>. Direct warps bypass boarding; prepare the ticket and Game clear first for ferry testing.</p>
+    <div class="table-wrap"><table><thead><tr><th>Location</th><th>Group</th><th>Map</th><th>Warp</th></tr></thead><tbody>
+      <tr><td>Lilycove Harbor</td><td>13</td><td>10</td><td>0</td></tr>
+      <tr><td>Vermilion waterfront</td><td>75</td><td>0</td><td>0</td></tr>
+      <tr><td>Vermilion Port entrance</td><td>75</td><td>1</td><td>1</td></tr>
+      <tr><td>Pokémon Center, ground floor</td><td>75</td><td>2</td><td>0</td></tr>
+      <tr><td>Pokémon Center, link floor</td><td>75</td><td>3</td><td>0</td></tr>
+      <tr><td>Mart</td><td>75</td><td>4</td><td>0</td></tr>
+      <tr><td>Fan Club</td><td>75</td><td>5</td><td>0</td></tr>
+      <tr><td>Houses 1 / 2 / 3</td><td>75</td><td>6 / 7 / 8</td><td>0</td></tr>
+    </tbody></table></div>
+    <h2>Repeat specific tests</h2>
+    <p><strong>Give a ticket:</strong> <strong>Give X… → Give item XYZ… → Item 874 → Quantity 1</strong>. Use the normal gentleman's invitation when checking progression.</p>
+    <p><strong>Replay the welcome:</strong> <strong>Flags &amp; Vars… → Set Flag XYZ… → 621</strong> (<code>0x26D</code>). If TRUE, press A once to make it FALSE. Leave and re-enter Vermilion Port.</p>
+    <p><strong>Reset ALEX's victory:</strong> use the same menu with <strong>2135</strong> (<code>0x857</code>). Make it FALSE and speak to him again. Other trainer victories remain intact.</p>
+    <p>The flag selector toggles on A; if the target flag already reads FALSE, leave it alone.</p>
+    <p><a href="https://github.com/BabyCRTTV/pokeemerald-emerald-legends/blob/master/docs/features/kanto.md">Implementation notes and full emulator checklist</a> · <a href="changelog.html">Changelog</a> · <a href="index.html">Downloads and project home</a></p>
+  </article>
+  <footer><p>Pokémon Emerald: Legends · Release and Debug share the same Kanto chapter.</p></footer>
+</main></body></html>
