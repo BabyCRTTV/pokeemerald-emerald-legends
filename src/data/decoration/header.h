@@ -1907,7 +1907,7 @@ const struct Decoration gDecorations[] =
             "or a desk."),
         .tiles = DecorGfx_REGISTEEL_DOLL,
         .icon = {gDecorIcon_RegisteelDoll, gDecorIconPalette_RegisteelDoll},
-    }
+    },
     [DECOR_LEGENDS_WARDROBE] = {
         .id = DECOR_LEGENDS_WARDROBE,
         .name = _("WARDROBE"),
