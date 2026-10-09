@@ -94,5 +94,13 @@ def build():
     trainer.insert(1,f'const u8 ALIGNED(4) gLegendsAccessoryTrainerData[{len(trainer_data)}] = INCBIN_U8("graphics/legends/accessories/trainers.bin");\n')
     for path,data in [('src/data/legends/overworld_accessories.h',ow),('src/data/legends/trainer_accessories.h',trainer),('src/data/legends/accessory_trainers.inc',entries),('include/constants/legends_accessory_trainers.inc',ids)]:
         (ROOT/path).write_text(''.join(data))
+    header=ROOT/'include/constants/trainers.h';text=header.read_text()
+    marker='    // Generated accessory IDs; keep inline for the script preprocessor.'
+    if marker in text:
+        start=text.index(marker);end=text.index('    TRAINER_PIC_COUNT,',start)
+        text=text[:start]+marker+'\n'+''.join(ids)+text[end:]
+    else:
+        text=text.replace('    TRAINER_PIC_COUNT,',marker+'\n'+''.join(ids)+'    TRAINER_PIC_COUNT,')
+    header.write_text(text)
     (ROOT/'tools/legends/accessory_asset_manifest.json').write_text(json.dumps(manifest,indent=2)+'\n')
 if __name__=='__main__':build()

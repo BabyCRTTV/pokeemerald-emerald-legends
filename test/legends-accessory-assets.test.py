@@ -7,6 +7,11 @@ import build_accessories as art
 import build_wardrobe_furniture as furniture
 files=[root/p for p in ['src/data/legends/overworld_accessories.h','src/data/legends/trainer_accessories.h','src/data/legends/accessory_trainers.inc','include/constants/legends_accessory_trainers.inc','graphics/legends/accessories/overworld.bin','graphics/legends/accessories/trainers.bin','tools/legends/accessory_asset_manifest.json']]
 before=[p.read_bytes() for p in files];art.build();assert before==[p.read_bytes() for p in files]
+# Native script preprocessing cannot cross include boundaries inside an enum.
+trainer_header=(root/'include/constants/trainers.h').read_text()
+trainer_enum=trainer_header.split('TRAINER_PIC_COUNT,')[0]
+assert '#include "constants/legends_accessory_trainers.inc"' not in trainer_enum
+assert trainer_enum.count('TRAINER_PIC_LEGENDS_ACCESSORY_')==30
 count=0
 for g,name in enumerate(('brendan','may')):
  cases=[('overworld',root/f'graphics/object_events/pics/people/{name}/{file}.png',16 if i==0 else 32) for i,file in enumerate(art.FILES)]
