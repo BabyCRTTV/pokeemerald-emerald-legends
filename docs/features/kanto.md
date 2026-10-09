@@ -12,7 +12,7 @@ The sailor aboard the Vermilion gangway offers passage back to Lilycove. Keep yo
 
 ## Debug testing tutorial
 
-Use the **Debug** patch. In the overworld, **hold R and press START**. On numeric selectors, **Left/Right selects the digit**, **Up/Down changes it**, **A confirms**, and **B backs out**. The IDs below are **decimal** and apply to v0.0.26. Use a separate testing save: changing Game clear sets only a flag, not all completed Emerald story events.
+Use the **Debug** patch. Once you have control in the overworld (finish the opening truck/Mom scene on a new save), **hold R and press START**. On numeric selectors, **Left/Right selects the digit**, **Up/Down changes it**, **A confirms**, and **B backs out**. The IDs below are **decimal** and apply to v0.0.26. Use a separate testing save: changing Game clear sets only a flag, not all completed Emerald story events.
 
 1. On a Champion save, leave Game clear alone. On a new testing save, open **Flags & Vars… → Toggle Game clear** and enable it. If starting from the title in Debug, **SELECT** activates native Quickstart. For battle testing, **Give X… → Pokémon (Basic)** can provide a suitable team around levels 60–65.
 2. Choose **Utilities… → Warp to map warp…**. Enter **Group 13 → Map 10 → Warp 0** for Lilycove Harbor. Walk up from the exit and speak to the gentleman, then the sailor near the entrance. This tests the actual invitation and boarding flow, rather than bypassing it.
@@ -43,11 +43,18 @@ For direct area inspection, use the following **Utilities → Warp to map warp**
 ## Implementation
 
 - Modular events: `data/scripts/legends_kanto.inc`; dedicated maps in appended **group 75**. Existing Hoenn and FRLG map IDs are unchanged. Map `region` is the build filter, so the imported maps use `REGION_HOENN` for Emerald inclusion; `region_map_section: MAPSEC_VERMILION_CITY` supplies the actual Kanto name/map geography.
+- The four native FRLG object graphics used here (town woman, sailor, Cooltrainer and S.S. Anne), their palettes and picture tables are explicitly shared with Emerald. Upstream keeps the remaining FRLG-only objects gated.
 - Two appended outdoor layouts reuse the original FRLG tiles/metatiles/palettes. Upstream FRLG attributes already use Emerald behavior semantics. `tileset_format: frlg` activates the engine's existing 640-primary tile/metatile counts, seven primary palettes, 32-bit attributes and explicit border dimensions while `layout_version: emerald` selects the build. Legacy layouts are unchanged. Selected door animations are registered against the new tileset pointers. Native FRLG water animations remain intact.
 - Interior maps reuse compatible Emerald layouts, nurse animation, shops, PCs and link services. They do not run FireRed's early-game gifts, S.S. Anne departure, original trainer teams or story flags.
 - Item 874, trainer 855 and the final heal location are appended. The welcome uses previously unused flag `0x26D`. Existing SaveBlock sizes, item IDs, map/layout IDs and trainer-flag allocation remain unchanged.
 - Native S.S. Tidal route state and event-ticket handling are untouched. Ferry events use independent fades/ship sound and explicit safe arrival coordinates; the return restores the Lilycove heal point.
 - `python3 test/legends-kanto.test.py` exercises actual script branching for invitation/ticket gates, declined journeys, retained-ticket round trips, welcome persistence and optional battle victory. It audits warp bounds/destinations, map sizes, spectator land placement and the blackout nurse destination. These checks do not replace emulator playtesting.
+
+## Recorded validation (v0.0.26)
+
+Debug was exercised in headless **mGBA 0.10.3** using the compiled ROM, rendered frames and normal controller inputs. Confirmed: R + START and documented warp selectors; Game clear toggle; invitation item award; outbound crossing and three-part first welcome; declined return and successful return to Lilycove; walking through the harbor/city boundary; Center door entry/exit, nurse interaction/healing, link-floor stair round trip; optional trainer battle startup with six opponents; deliberate loss and recovery at Vermilion's Center; normal in-game save, reset and Continue in Vermilion. A following Bulbasaur was present during city, Center and battle tests. Visual testing caught and corrected FRLG-only sprite registrations; event testing caught and corrected native trainer comparison semantics.
+
+Automated checks cover additional ticket/progression and trainer-victory branches. The broader checklist below remains for full manual coverage, especially Pizza Boy, existing Champion saves, victory balance, every interior, both genders/costumes and native Hoenn destinations. Do not interpret this record as complete emulator coverage.
 
 ## Emulator checklist
 

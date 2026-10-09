@@ -28,6 +28,7 @@ class Events:
         self.battles = 0
         self.messages = []
         self.respawn = None
+        self.comparison = 0
 
     def value(self, token):
         return {"TRUE": 1, "FALSE": 0, "YES": 1, "NO": 0}.get(token, self.vars.get(token, token))
@@ -44,6 +45,9 @@ class Events:
             if op in ("goto_if_set", "goto_if_unset"):
                 match = args[0] in self.flags
                 if match == (op == "goto_if_set"):
+                    pc = LABELS[args[1]]
+            elif op == "goto_if":
+                if self.comparison == self.value(args[0]):
                     pc = LABELS[args[1]]
             elif op == "goto_if_eq":
                 if self.value(args[0]) == self.value(args[1]):
@@ -69,7 +73,7 @@ class Events:
             elif op == "setrespawn":
                 self.respawn = args[0]
             elif op == "checktrainerflag":
-                self.vars["VAR_RESULT"] = int(args[0] in self.flags)
+                self.comparison = int(args[0] in self.flags)
             elif op == "trainerbattle_single":
                 self.battles += 1
                 self.flags.add(args[0])
@@ -101,11 +105,14 @@ class KantoTests(unittest.TestCase):
     def test_declining_does_not_travel_or_start_battle(self):
         for event in ("OutboundFerry", "ReturnFerry"):
             self.assertIsNone(Events(True, True, answer=False).run(event).warp)
-        e = Events(answer=False).run("Alex")
+        e = Events(answer=False)
+        e.vars["VAR_RESULT"] = 1  # Stale item/menu result must not imply trainer victory.
+        e.run("Alex")
         self.assertEqual(e.battles, 0)
         e.answer = True
         e.run("Alex")
         self.assertEqual(e.battles, 1)
+        e.vars["VAR_RESULT"] = 0
         e.run("Alex")
         self.assertEqual(e.battles, 1)
 
@@ -137,6 +144,16 @@ class KantoTests(unittest.TestCase):
         self.assertIsNone(city["connections"])
         self.assertNotIn("FLAG_HIDE_SS_ANNE", json.dumps(new))
         self.assertNotIn("VAR_SS_TIDAL_STATE", SOURCE)
+
+    def test_native_graphics_are_registered_in_emerald(self):
+        # Source assets can exist while their runtime pointers are FRLG-only.
+        import subprocess
+        flags = ["-DMODERN=1", "-DTESTING=0", "-DEMERALD", "-std=gnu17", "-iquote", "include", "-iquote", "src"]
+        script = "#include \"global.h\"\n#include \"data/object_events/object_event_graphics_info_pointers.h\"\n"
+        result = subprocess.run(["gcc", "-E", "-P", "-x", "c", *flags, "-"], input=script, text=True,
+                                capture_output=True, cwd=ROOT, check=True).stdout
+        for symbol in ("Woman1Frlg", "CooltrainerM", "SailorFrlg", "SSAnne"):
+            self.assertIn("= &gObjectEventGraphicsInfo_" + symbol, result)
 
     def test_spectator_stands_on_walkable_land(self):
         d = json.loads((ROOT / "data/maps/LegendsKanto_VermilionCity/map.json").read_text())

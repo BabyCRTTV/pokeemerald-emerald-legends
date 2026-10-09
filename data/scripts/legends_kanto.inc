@@ -110,7 +110,7 @@ LegendsKanto_EventScript_Alex::
 	lock
 	faceplayer
 	checktrainerflag TRAINER_LEGENDS_KANTO_ALEX
-	goto_if_eq VAR_RESULT, TRUE, LegendsKanto_EventScript_AlexBeaten
+	goto_if TRUE, LegendsKanto_EventScript_AlexBeaten
 	msgbox LegendsKanto_Text_AlexOffer, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, NO, LegendsKanto_EventScript_AlexDeclined
 	trainerbattle_single TRAINER_LEGENDS_KANTO_ALEX, LegendsKanto_Text_AlexIntro, LegendsKanto_Text_AlexDefeat
