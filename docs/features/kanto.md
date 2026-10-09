@@ -98,6 +98,7 @@ Use **START → Save**, restart the game and choose **Continue**. Check that you
 
 ### If something gets stuck
 
+- **You updated the ROM but NPCs still appear in their old positions:** load your normal in-game save rather than an old emulator save state, then leave and re-enter the current map once. Emerald saves a snapshot of local NPCs; entering the map again refreshes their graphics, positions and movement from the new ROM. You do not need to start a new adventure.
 - **The invitation is refused:** check that Game clear is ON, then speak to the gentleman again.
 - **The sailor says you need a ticket:** obtain it from the gentleman; check the Bag's Key Items pocket.
 - **The number rises by 10 instead of 1:** press Left until the indicator shows +1.
