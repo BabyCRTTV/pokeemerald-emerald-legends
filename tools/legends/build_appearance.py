@@ -73,8 +73,10 @@ def outfit_frame(pixels, gender, outfit, kind="overworld", pose=0, state="walkin
                     result[y][x]=10 if v==5 else 11
                 if outfit==2 and y==face_bottom+3 and abs(x-center)<=3 and result[y][x] in (10,11):
                     result[y][x]=9
-                if outfit==2 and gender==0 and face_bottom+5<=y<=face_bottom+6 and abs(x-center)<=4 and v in (5,6,7,8):
+                if outfit==2 and gender==0 and y==face_bottom+6 and abs(x-center)<=4 and v in (5,6,7,8):
                     result[y][x]=2 if v in (5,6) else 3
+                if outfit==2 and gender==0 and y==face_bottom+5 and abs(x-center)<=4 and v in (5,6,7,8):
+                    result[y][x]=9
                 # Tiny hands beside the torso, avoiding feet, hair and red balls.
                 if 3<abs(x-center)<=6 and face_bottom+1<=y<=face_bottom+4 and v in (5,6,9,10,11,12,13,14):
                     result[y][x]=1 if v in (9,14) else (2 if v in (5,10,12) else 3)
@@ -124,7 +126,13 @@ def outfit_frame(pixels, gender, outfit, kind="overworld", pose=0, state="walkin
                         if (x,y) not in hands and (x,y) not in balls and ((mid<32 and x>=mid) or (mid>=32 and x<=mid)):
                             result[y][x]=10 if pixels[y][x]==1 else 11
         elif outfit==2 and kind=="front" and gender==0:
-            for y in range(46,55):
+            # Athletic shorts: fabric ends above the exposed knees rather than
+            # turning the entire trouser leg into skin. Two light hem stripes.
+            for y in range(42,47):
+                for x in range(16,43):
+                    if pixels[y][x] in (5,6,7,8):
+                        result[y][x]=9 if y in (44,46) else (5 if pixels[y][x] in (5,7) else 6)
+            for y in range(48,55):
                 for x in range(16,43):
                     if pixels[y][x] in (5,6,7,8):result[y][x]=2 if pixels[y][x] in (5,6) else 3
         for x,y in hands - balls:

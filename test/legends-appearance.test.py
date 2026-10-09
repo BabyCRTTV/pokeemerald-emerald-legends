@@ -9,7 +9,7 @@ assert "OBJ_EVENT_GFX_LEGENDS_PLAYER_START" not in native_enum
 assert "#define OBJ_EVENT_GFX_LEGENDS_PLAYER_START 0x0F00" in constants
 source=(root/"src/legends_appearance.c").read_text()
 source="\n".join(l for l in source.splitlines() if not l.startswith("#include"))
-source=(root/"src/data/legends/appearance_palettes.h").read_text()+"\n"+source
+source=(root/"src/data/legends/appearance_palettes.h").read_text()+"\n"+(root/"src/data/legends/costume_palettes.h").read_text()+"\n"+source
 graphics=(root/"src/legends_appearance_graphics.c").read_text()
 graphics="\n".join(l for l in graphics.splitlines() if not l.startswith("#include"))
 import re
@@ -24,7 +24,7 @@ source += '\n'+graphics_constants+r'''
 #define OBJ_EVENT_PAL_TAG_LEGENDS_UNDERWATER_MALE 2002
 struct SpriteFrameImage {const u8 *data;u16 size;};
 struct ObjectEventGraphicsInfo {u16 paletteTag;u16 size;const struct SpriteFrameImage *images;};
-'''+(root/"src/data/legends/overworld_outfits.h").read_text()+"\n"+(root/"src/data/legends/overworld_accessories.h").read_text()+'\n'+graphics
+'''+(root/"src/data/legends/overworld_outfits.h").read_text()+"\n"+(root/"src/data/legends/overworld_accessories.h").read_text()+"\n"+(root/"src/data/legends/overworld_costumes.h").read_text()+'\n'+graphics
 pre=r'''
 #include <assert.h>
 #include <stdint.h>
@@ -39,17 +39,39 @@ enum TrainerPicID {TRAINER_PIC_LEGENDS_BRENDAN_EMERALD=200};
 #define LEGENDS_SKIN_TONE_COUNT 5
 #define LEGENDS_OUTFIT_COUNT 5
 #define LEGENDS_SCARF_COUNT 6
+#define LEGENDS_COSTUME_COUNT 3
+#define VAR_LEGENDS_COSTUME 2
+#define TRAINER_PIC_LEGENDS_COSTUME_0 250
 #define VAR_LEGENDS_ACCESSORIES 1
 #define TRAINER_PIC_LEGENDS_ACCESSORY_0 210
 #define VAR_LEGENDS_APPEARANCE 0
-static u16 value,accessories;
-u16 VarGet(u16 id){return id==1?accessories:value;}
-void VarSet(u16 id,u16 v){if(id==1)accessories=v;else value=v;}
+static u16 value,accessories,costume;
+u16 VarGet(u16 id){return id==2?costume:id==1?accessories:value;}
+void VarSet(u16 id,u16 v){if(id==2)costume=v;else if(id==1)accessories=v;else value=v;}
 void LegendsClearAppearanceSelection(void);
 void LegendsUpdateAppearancePalettes(void);
 '''
 main=r'''
 int main(void){
+for(int c=1;c<3;c++){
+ value=1+3+5*2;accessories=11;costume=0;LegendsClearAppearanceSelection();
+ LegendsBeginWardrobeSelection();LegendsSetCostumeSelection(c);assert(LegendsGetCostume()==c&&costume==0);
+ for(int g=0;g<2;g++){
+  assert(LegendsGetPlayerTrainerPic(g)==250+(c-1)*2+g);
+  assert(gLegendsTrainerPalettes[g][1]==sSkinPalettes[3][0]);
+  assert(gLegendsTrainerPalettes[g][12]==sLegendsCostumeTrainerPalettes[c-1][g][12]);
+  struct SpriteFrameImage nativeImage={0};struct ObjectEventGraphicsInfo native={99,512,&nativeImage};
+  for(int st=0;st<9;st++){
+   const struct ObjectEventGraphicsInfo *info=LegendsGetPlayerGraphicsInfo(LegendsGetPlayerGraphicsId(st,g),&native);
+   if(st!=4)assert(info->images==sLegendsCostumeImages[c-1][g][st==8?5:st]);
+  }
+ }
+ LegendsClearAppearanceSelection();assert(costume==0);
+ LegendsBeginWardrobeSelection();LegendsSetCostumeSelection(c);LegendsApplyWardrobeSelection();assert(costume==c&&accessories==11&&value==14);
+ LegendsBeginAppearanceSelection();LegendsApplyAppearanceToNewGame();assert(costume==0);
+}
+costume=65535;LegendsClearAppearanceSelection();assert(LegendsGetCostume()==0);costume=0;
+
 value=0;LegendsClearAppearanceSelection();LegendsUpdateAppearancePalettes();
 assert(LegendsGetSkinTone()==0&&LegendsGetOutfit()==0);
 assert(!memcmp(gLegendsOverworldPalettes,sBaseOverworldPalettes,sizeof(gLegendsOverworldPalettes)));

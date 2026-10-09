@@ -1,0 +1,4 @@
+    [TRAINER_PIC_LEGENDS_COSTUME_0] = {.frontPic=TRAINER_FRONT_PIC(gLegendsCostume00Front, gLegendsTrainerPalettes[0]), .backPic=TRAINER_BACK_PIC(4, gLegendsCostume00Back, gLegendsTrainerPalettes[0], sBackAnims_Hoenn)},
+    [TRAINER_PIC_LEGENDS_COSTUME_1] = {.frontPic=TRAINER_FRONT_PIC(gLegendsCostume01Front, gLegendsTrainerPalettes[1]), .backPic=TRAINER_BACK_PIC(4, gLegendsCostume01Back, gLegendsTrainerPalettes[1], sBackAnims_Hoenn)},
+    [TRAINER_PIC_LEGENDS_COSTUME_2] = {.frontPic=TRAINER_FRONT_PIC(gLegendsCostume10Front, gLegendsTrainerPalettes[0]), .backPic=TRAINER_BACK_PIC(4, gLegendsCostume10Back, gLegendsTrainerPalettes[0], sBackAnims_Hoenn)},
+    [TRAINER_PIC_LEGENDS_COSTUME_3] = {.frontPic=TRAINER_FRONT_PIC(gLegendsCostume11Front, gLegendsTrainerPalettes[1]), .backPic=TRAINER_BACK_PIC(4, gLegendsCostume11Back, gLegendsTrainerPalettes[1], sBackAnims_Hoenn)},

@@ -10,6 +10,7 @@ struct AppearanceSelection
     u8 skin;
     u8 outfit;
     u8 scarf;
+    u8 costume;
     bool8 jacket;
     bool8 legacySkin;
 };
@@ -21,6 +22,7 @@ EWRAM_DATA u16 gLegendsTrainerPalettes[2][16] = {0};
 EWRAM_DATA u16 gLegendsUnderwaterPalettes[2][16] = {0};
 
 #include "data/legends/appearance_palettes.h"
+#include "data/legends/costume_palettes.h"
 
 static u16 GetAppearanceCode(void)
 {
@@ -55,6 +57,7 @@ void LegendsBeginAppearanceSelection(void)
     sSelection.skin = 0;
     sSelection.outfit = 0;
     sSelection.scarf = 0;
+    sSelection.costume = 0;
     sSelection.jacket = FALSE;
     sSelection.legacySkin = FALSE;
     sPaletteStamp = 0;
@@ -73,7 +76,20 @@ void LegendsApplyAppearanceToNewGame(void)
     u16 code = sSelection.valid ? GetAppearanceCode() : 0;
     VarSet(VAR_LEGENDS_APPEARANCE, code);
     VarSet(VAR_LEGENDS_ACCESSORIES, 0);
+    VarSet(VAR_LEGENDS_COSTUME, 0);
     LegendsClearAppearanceSelection();
+}
+
+u8 LegendsGetCostume(void)
+{
+    u16 costume = sSelection.valid ? sSelection.costume : VarGet(VAR_LEGENDS_COSTUME);
+    return costume < LEGENDS_COSTUME_COUNT ? costume : 0;
+}
+
+void LegendsSetCostumeSelection(u8 costume)
+{
+    sSelection.costume = costume < LEGENDS_COSTUME_COUNT ? costume : 0;
+    sPaletteStamp = 0;
 }
 
 static u8 GetAccessoryCode(void)
@@ -90,12 +106,13 @@ u8 LegendsGetAccessoryStyle(void) { return (LegendsGetScarf() != 0) | (LegendsGe
 void LegendsBeginWardrobeSelection(void)
 {
     u8 skin = LegendsGetSkinTone(), outfit = LegendsGetOutfit();
-    u8 scarf = LegendsGetScarf();
+    u8 scarf = LegendsGetScarf(), costume = LegendsGetCostume();
     bool8 jacket = LegendsGetJacket();
     sSelection.legacySkin = GetAppearanceCode() == 0 || GetAppearanceCode() > 25;
     sSelection.skin = skin;
     sSelection.outfit = outfit;
     sSelection.scarf = scarf;
+    sSelection.costume = costume;
     sSelection.jacket = jacket;
     sSelection.valid = TRUE;
     sPaletteStamp = 0;
@@ -112,13 +129,14 @@ void LegendsApplyWardrobeSelection(void)
 {
     VarSet(VAR_LEGENDS_APPEARANCE, GetAppearanceCode());
     VarSet(VAR_LEGENDS_ACCESSORIES, GetAccessoryCode());
+    VarSet(VAR_LEGENDS_COSTUME, LegendsGetCostume());
     LegendsClearAppearanceSelection();
 }
 
 void LegendsUpdateAppearancePalettes(void)
 {
     u16 code = GetAppearanceCode();
-    u16 stamp = code + 1 + 31 * GetAccessoryCode();
+    u16 stamp = code + 1 + 31 * GetAccessoryCode() + 372 * LegendsGetCostume();
     u32 gender, i;
     u8 skin = LegendsGetSkinTone();
     u8 outfit = LegendsGetOutfit();
@@ -129,8 +147,8 @@ void LegendsUpdateAppearancePalettes(void)
     {
         for (i = 0; i < 16; i++)
         {
-            gLegendsOverworldPalettes[gender][i] = sBaseOverworldPalettes[gender][i];
-            gLegendsTrainerPalettes[gender][i] = sBaseTrainerPalettes[gender][i];
+            gLegendsOverworldPalettes[gender][i] = LegendsGetCostume() ? sLegendsCostumeOverworldPalettes[LegendsGetCostume()-1][gender][i] : sBaseOverworldPalettes[gender][i];
+            gLegendsTrainerPalettes[gender][i] = LegendsGetCostume() ? sLegendsCostumeTrainerPalettes[LegendsGetCostume()-1][gender][i] : sBaseTrainerPalettes[gender][i];
             gLegendsUnderwaterPalettes[gender][i] = sBaseUnderwaterPalette[i];
         }
         if (code != 0 && code <= 25)
@@ -140,7 +158,7 @@ void LegendsUpdateAppearancePalettes(void)
                 gLegendsTrainerPalettes[gender][i + 1] = sSkinPalettes[skin][i];
                 gLegendsUnderwaterPalettes[gender][i + 1] = sSkinPalettes[skin][i];
             }
-        if (outfit != 0)
+        if (outfit != 0 && !LegendsGetCostume())
             for (i = 0; i < 2; i++)
             {
                 // Only the dedicated clothing/accent colors; hair stays intact.
@@ -148,7 +166,7 @@ void LegendsUpdateAppearancePalettes(void)
                 gLegendsTrainerPalettes[gender][10 + i] = sOutfitPalettes[outfit - 1][i];
                 gLegendsUnderwaterPalettes[gender][10 + i] = sOutfitPalettes[outfit - 1][i];
             }
-        if (LegendsGetScarf())
+        if (LegendsGetScarf() && !LegendsGetCostume())
         {
             // Accessories alone reserve highlight 14; Poké Balls keep red 12/13.
             static const u16 colors[] = {0, 0x2118, 0x6EAC, 0x2EAA, 0x7A58, 0x679F};
@@ -161,6 +179,8 @@ void LegendsUpdateAppearancePalettes(void)
 enum TrainerPicID LegendsGetPlayerTrainerPic(enum Gender gender)
 {
     LegendsUpdateAppearancePalettes();
+    if (LegendsGetCostume())
+        return TRAINER_PIC_LEGENDS_COSTUME_0 + (LegendsGetCostume()-1)*2 + (gender == FEMALE);
     if (LegendsGetAccessoryStyle())
         return TRAINER_PIC_LEGENDS_ACCESSORY_0
              + ((LegendsGetAccessoryStyle() - 1) * 2 + (gender == FEMALE)) * LEGENDS_OUTFIT_COUNT + LegendsGetOutfit();
