@@ -1,4 +1,5 @@
 #include "global.h"
+#include "legends_weather.h"
 #include "constants/songs.h"
 #include "constants/weather.h"
 #include "constants/rgb.h"
@@ -290,6 +291,7 @@ static void Task_WeatherInit(u8 taskId)
 
 static void Task_WeatherMain(u8 taskId)
 {
+    LegendsWeatherTick();
     if (gWeatherPtr->currWeather != gWeatherPtr->nextWeather)
     {
         if (!sWeatherFuncs[gWeatherPtr->currWeather].finish()

@@ -8,6 +8,7 @@
 #include "window.h"
 #include "constants/map_types.h"
 #include "constants/weather.h"
+#include "constants/rtc.h"
 
 // This gap sits below the map-name popup and above the save/counter tiles.
 static const struct WindowTemplate sPanelTemplate =
@@ -19,12 +20,13 @@ static const struct WindowTemplate sPanelTemplate =
 enum PanelIcon
 {
     ICON_CLOCK, ICON_SUN, ICON_CLOUD, ICON_RAIN, ICON_THUNDER,
-    ICON_SNOW, ICON_FOG, ICON_ASH, ICON_SAND, ICON_WATER, ICON_INDOOR,
+    ICON_SNOW, ICON_FOG, ICON_ASH, ICON_SAND, ICON_WATER, ICON_INDOOR, ICON_MOON,
 };
 
 // Twelve-pixel icons reuse native text colors; no sprite/palette slots.
 static const u16 sIcons[][12] =
 {
+    [ICON_MOON]    = {0x0E0,0x1C2,0x380,0x700,0x700,0x700,0x700,0x380,0x1C0,0x0F0,0x07C,0},
     [ICON_CLOCK]   = {0x1F8,0x306,0x402,0x841,0x841,0x841,0x879,0x801,0x402,0x306,0x1F8,0},
     [ICON_SUN]     = {0x090,0x492,0x000,0x1F8,0x204,0xA05,0x204,0x1F8,0,0x492,0x090,0},
     [ICON_CLOUD]   = {0,0,0x0F0,0x108,0x3CC,0x402,0x801,0x801,0x7FE,0,0,0},
@@ -74,7 +76,8 @@ static u8 GetWeatherIcon(void)
     case WEATHER_UNDERWATER:
     case WEATHER_UNDERWATER_BUBBLES: return ICON_WATER;
     case WEATHER_ABNORMAL: return ICON_THUNDER;
-    default: return ICON_SUN;
+    case WEATHER_DROUGHT: return ICON_SUN;
+    default: return GetTimeOfDay() == TIME_NIGHT ? ICON_MOON : ICON_SUN;
     }
 }
 
@@ -85,6 +88,7 @@ static u8 GetIconColor(u8 icon, u8 row)
     switch (icon)
     {
     case ICON_SUN: return 5;
+    case ICON_MOON: return 9;
     case ICON_RAIN: return row < 6 ? 3 : 8;
     case ICON_THUNDER: return row < 6 ? 3 : 5;
     case ICON_SNOW: return 9;
@@ -114,6 +118,8 @@ static void DrawIcon(u8 windowId, u8 icon, u8 y)
             bits = ((bits << 1) | (bits >> 11)) & 0xFFF;
         if (sAnimationPhase && icon == ICON_SUN && (row < 3 || row > 8))
             bits = ((bits << 1) | (bits >> 11)) & 0xFFF;
+        if (sAnimationPhase && icon == ICON_MOON && row == 1)
+            bits ^= 0x005; // A tiny star twinkle beside the crescent.
         color = GetIconColor(icon, row);
         if (sAnimationPhase && icon == ICON_THUNDER && row >= 6)
             color = 3; // Dim the bolt rather than flashing the whole panel.

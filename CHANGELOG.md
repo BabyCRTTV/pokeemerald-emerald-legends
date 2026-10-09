@@ -4,6 +4,20 @@ All notable Pokémon Emerald: Legends project changes are documented here.
 
 For build-specific player views, see [CHANGELOG-RELEASE.md](CHANGELOG-RELEASE.md) and [CHANGELOG-DEBUG.md](CHANGELOG-DEBUG.md). The canonical history below records the project as a whole.
 
+## [0.0.22] - 2026-10-08
+
+### Added
+- Regional dynamic forecasts in most ordinary Hoenn towns and routes: rain, clouds and occasional thunderstorms; wetter conditions around Fortree and Routes 119–121.
+- Fog in rainforest/upland areas, more likely in autumn and during native morning/night hours; winter flurries on non-volcanic upland Routes 114–116. Tropical coasts and lowlands never receive random snow.
+- A saved 20-minute playtime forecast period, with smooth native transitions while outdoors. Local seeded randomness avoids consuming battle RNG or rerolling every time a building is entered.
+- A moon and subtle star twinkle for clear nights in the pause weather indicator, using the existing game day/night clock. Drought retains its sun indicator.
+
+### Compatibility and validation
+- Preserved indoor, cave, underwater, desert, volcanic, special-map and scripted story weather; weather transitions wait for dialogue, fades and existing effects to finish.
+- Existing saves initialize the weather timer from recorded playtime. One unused var and flag are reserved without changing save layouts.
+- Documented climates, forecast weights and emulator QA; added actual-module checks for probabilities, exclusions, timer migration/rollover and transition guards.
+- Release and Debug share all weather changes with no variant-specific differences; developer tools remain disabled in Release and enabled in Debug.
+
 ## [0.0.21] - 2026-10-08
 
 ### Changed

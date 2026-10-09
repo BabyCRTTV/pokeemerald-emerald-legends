@@ -1,4 +1,5 @@
 #include "global.h"
+#include "legends_weather.h"
 #include "legends_seasons.h"
 #include "event_data.h"
 #include "field_weather.h"
@@ -81,7 +82,8 @@ u8 LegendsGetSeason(void)
 }
 
 // Commit only while loading a fully faded map (never a seamless route edge).
-// Both foliage and ambient weather use this saved snapshot until the next warp.
+// Foliage uses this saved snapshot until the next warp. Ambient forecasts
+// use the separate playtime weather clock and the active season.
 void LegendsCommitSeasonTransition(void)
 {
     struct SiiRtcInfo rtc;
@@ -126,6 +128,7 @@ void LegendsSeasonTick(void)
     if (frames >= 60)
     {
         frames = 0;
+        LegendsAdvanceWeatherClock();
         seconds = (seconds + 1) % LEGENDS_SEASON_CYCLE_SECONDS;
         VarSet(VAR_LEGENDS_SEASON_SECONDS_LO, seconds);
         VarSet(VAR_LEGENDS_SEASON_SECONDS_HI, seconds >> 16);
@@ -208,34 +211,7 @@ void LegendsApplyGrassPalette(u8 slot, const u16 *source)
 
 u8 LegendsSeasonWeather(u8 weather)
 {
-    u8 season;
-    u32 day, roll;
-    if (!LegendsMapHasSeasons())
-        return weather;
-    // Only ordinary ambient weather participates. Scripts retain drought,
-    // downpours, story conflict, ash, sand, underwater and special effects.
-    if (weather != WEATHER_SUNNY && weather != WEATHER_SUNNY_CLOUDS
-     && weather != WEATHER_RAIN && weather != WEATHER_RAIN_THUNDERSTORM)
-        return weather;
-    season = LegendsGetActiveSeason();
-    day = VarGet(VAR_LEGENDS_SEASON_WEATHER_DAY);
-    // Stable until a faded warp, without consuming battle RNG.
-    roll = (day * 37 + gMapHeader.regionMapSectionId * 17) % 10;
-    if (gMapHeader.mapType == MAP_TYPE_OCEAN_ROUTE)
-        return roll < (season == LEGENDS_SUMMER ? 1 : 3) ? WEATHER_RAIN : WEATHER_SUNNY_CLOUDS;
-    // Southern islands remain mild; the mainland gets intermittent winter snow.
-    if (season == LEGENDS_WINTER && gMapHeader.regionMapSectionId != MAPSEC_DEWFORD_TOWN
-     && gMapHeader.regionMapSectionId != MAPSEC_PACIFIDLOG_TOWN
-     && gMapHeader.regionMapSectionId != MAPSEC_SOOTOPOLIS_CITY)
-        return roll < 6 ? WEATHER_SNOW : WEATHER_SUNNY_CLOUDS;
-    if (season == LEGENDS_AUTUMN && roll < 2)
-        return WEATHER_FOG_HORIZONTAL;
-    if (season == LEGENDS_SPRING && roll < 4)
-        return WEATHER_RAIN;
-    if (season == LEGENDS_SUMMER && roll == 0)
-        return WEATHER_RAIN_THUNDERSTORM;
-    // Rainforest routes keep their characteristic rainfall outside winter.
-    return weather;
+    return LegendsChooseAmbientWeather(weather);
 }
 
 void LegendsRestoreSeasonWeather(void)

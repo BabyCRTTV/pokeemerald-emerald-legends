@@ -15,6 +15,8 @@ jobs:
         run: node --test test/legends-patcher.test.cjs
       - name: Exercise seasonal engine regression tests
         run: python3 test/legends-seasons.test.py
+      - name: Exercise dynamic weather regression tests
+        run: python3 test/legends-weather.test.py
       - name: Exercise starter and rival regression tests
         run: python3 test/legends-starters.test.py
       - name: Exercise Options navigation regression tests

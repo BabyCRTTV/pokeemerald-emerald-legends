@@ -28,6 +28,9 @@ preamble += r'''
 struct WindowTemplate {u8 bg,tilemapLeft,tilemapTop,width,height,paletteNum;u16 baseBlock;};
 struct {u8 mapType;} gMapHeader;
 struct {int hours,minutes;} gLocalTime;
+enum {TIME_MORNING,TIME_DAY,TIME_EVENING,TIME_NIGHT};
+static int timeOfDay=TIME_DAY;
+int GetTimeOfDay(void){return timeOfDay;}
 static int error,weather,season,adds,removes,copies,rtcReads,pixels,fail;
 static const struct WindowTemplate *template;
 static char texts[2][32];
@@ -51,7 +54,9 @@ void AddTextPrinterParameterized(u8 w,u8 f,const u8 *t,u16 x,u16 y,int speed,voi
 main = r'''
 int main(void){
 gMapHeader.mapType=MAP_TYPE_ROUTE;gLocalTime.hours=0;gLocalTime.minutes=5;
+timeOfDay=TIME_NIGHT;
 LegendsShowStartMenuPanel();
+assert(sLastIcon==ICON_MOON);
 assert(adds==1&&pixels>0&&!strcmp(texts[0],"12:05 AM")&&!strcmp(texts[1],"SPRING"));
 assert(template->tilemapLeft==1&&template->tilemapTop==14);
 assert(template->baseBlock+template->width*template->height<=0x107);
@@ -63,6 +68,11 @@ for(int i=0;i<60;i++) LegendsUpdateStartMenuPanel();
 assert(!strcmp(texts[0],"12:00 PM")&&!strcmp(texts[1],"WINTER")&&sLastIcon==ICON_RAIN);
 error=1;for(int i=0;i<60;i++) LegendsUpdateStartMenuPanel();assert(!strcmp(texts[0],"--:--"));
 assert(GetWeatherIcon()==ICON_RAIN);
+weather=WEATHER_SUNNY;timeOfDay=TIME_NIGHT;assert(GetWeatherIcon()==ICON_MOON);
+timeOfDay=TIME_DAY;assert(GetWeatherIcon()==ICON_SUN);
+weather=WEATHER_SUNNY_CLOUDS;assert(GetWeatherIcon()==ICON_CLOUD);
+ weather=WEATHER_DROUGHT;timeOfDay=TIME_NIGHT;assert(GetWeatherIcon()==ICON_SUN);
+weather=WEATHER_RAIN;
 gMapHeader.mapType=MAP_TYPE_INDOOR;assert(GetWeatherIcon()==ICON_INDOOR);
 gMapHeader.mapType=MAP_TYPE_UNDERWATER;assert(GetWeatherIcon()==ICON_WATER);
 gMapHeader.mapType=MAP_TYPE_ROUTE;
@@ -80,7 +90,7 @@ LegendsHideStartMenuPanel();assert(removes==2);
 // Check every icon and animation phase stays within the icon bounds and
 // paints native colors. Clock hands must be an L, not parallel U strokes.
 assert(sIcons[ICON_CLOCK][3]==0x841&&sIcons[ICON_CLOCK][6]==0x879);
-for(int icon=0;icon<=ICON_INDOOR;icon++){
+for(int icon=0;icon<=ICON_MOON;icon++){
     u8 frames[2][32][96];
     for(int phase=0;phase<2;phase++){
         sAnimationPhase=phase;

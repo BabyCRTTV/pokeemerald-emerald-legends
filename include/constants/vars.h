@@ -285,7 +285,7 @@
 #define VAR_UNUSED_0x40FC                                0x40FC // Unused Var
 #define VAR_UNUSED_0x40FD                                0x40FD // Unused Var
 #define VAR_UNUSED_0x40FE                                0x40FE // Unused Var
-#define VAR_UNUSED_0x40FF                                0x40FF // Unused Var
+#define VAR_UNUSED_0x40FF                                0x40FF // Reserved for dynamic weather clock
 
 // Legends seasons: reuse permanent vars without changing any save block.
 #define VAR_LEGENDS_SEASON_MODE         VAR_UNUSED_0x40F7
@@ -296,6 +296,7 @@
 #define VAR_LEGENDS_SEASON_FRAMES       VAR_UNUSED_0x40FC
 #define VAR_LEGENDS_ACTIVE_SEASON       VAR_UNUSED_0x40FD
 #define VAR_LEGENDS_SEASON_WEATHER_DAY  VAR_UNUSED_0x40FE
+#define VAR_LEGENDS_WEATHER_SECONDS     VAR_UNUSED_0x40FF
 
 #define VARS_END                                         0x40FF
 #define VARS_COUNT                                       (VARS_END - VARS_START + 1)
