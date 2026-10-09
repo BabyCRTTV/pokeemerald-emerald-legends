@@ -121,8 +121,9 @@ static void CB2_InitWardrobe(void)
     InitBgsFromTemplates(0,&sBackground,1);
     ChangeBgX(0,0,BG_COORD_SET);ChangeBgY(0,0,BG_COORD_SET);
     ResetPaletteFade();ScanlineEffect_Stop();ResetTasks();ResetSpriteData();
-    if (!InitWindows(sWindows))
+    if (!InitWindowsUnchecked(sWindows))
     {
+        FreeAllWindowBuffers();
         LegendsClearAppearanceSelection();
         SetMainCallback2(CB2_ReturnToFieldContinueScriptPlayMapMusic);
         return;

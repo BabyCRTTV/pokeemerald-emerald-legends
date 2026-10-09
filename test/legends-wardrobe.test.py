@@ -90,7 +90,7 @@ void InitBgsFromTemplates(int a,const struct BgTemplate*t,int n){assert(n==1);}
 void ChangeBgX(int a,int b,int c){}void ChangeBgY(int a,int b,int c){}
 void ResetPaletteFade(void){}void ScanlineEffect_Stop(void){}
 void ResetTasks(void){memset(gTasks,0,sizeof(gTasks));}void ResetSpriteData(void){}
-int InitWindows(const struct WindowTemplate *w){assert(w[3].bg==255);return !initFail;}
+int InitWindowsUnchecked(const struct WindowTemplate *w){assert(w[3].bg==255);return !initFail;}
 void DeactivateAllTextPrinters(void){}void LoadPalette(const u16*p,int off,int n){}
 void LoadUserWindowBorderGfx(int win,int tile,int pal){assert(tile==STD_WINDOW_BASE_TILE_NUM&&pal==14*16);}
 void PutWindowTilemap(int w){}void DrawStdWindowFrame(int w,int v){}void ShowBg(int b){}
