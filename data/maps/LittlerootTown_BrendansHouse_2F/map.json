@@ -276,14 +276,6 @@
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
       "script": "LegendsWardrobe_EventScript_Home"
-    },
-    {
-      "type": "sign",
-      "x": 1,
-      "y": 7,
-      "elevation": 0,
-      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-      "script": "LegendsWardrobe_EventScript_Home"
     }
   ]
 }

@@ -26,7 +26,11 @@ for g,name in enumerate(('brendan','may')):
     for style in (1,2,3):
      result=art.accessory_frame(frame,g,outfit,style,kind,pose,path.stem)
      assert all(result[y][x]==frame[y][x] for x,y in face),(path,pose,'face')
-     assert all((v==0)==(result[y][x]==0) for y,row in enumerate(frame) for x,v in enumerate(row))
+     assert all(v==0 or result[y][x]!=0 for y,row in enumerate(frame) for x,v in enumerate(row))
+     # Layer additions occupy transparent canvas only, within native bounds.
+     additions=[result[y][x] for y,row in enumerate(frame) for x,v in enumerate(row) if v==0 and result[y][x]!=0]
+     assert all(v in (6,14,15) for v in additions)
+     if kind=='front':assert additions,(path,style,'real clothing silhouette')
      if kind!='overworld':
       for x,y in art.ball_pixels(g,kind,pose)|art.hand_pixels(g,kind,pose):
        assert result[y][x]==(9 if base[y][x]==14 else base[y][x]),(path,pose,'hands/ball')

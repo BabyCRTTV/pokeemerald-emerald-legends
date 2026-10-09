@@ -1,6 +1,6 @@
 """Compile pose-aligned scarf/jacket layers into the established 4bpp avatar assets.
 
-No silhouette, face, hand, animation ordering or held-object changes. Color slot
+Pose-local clothing silhouettes preserve faces, hands and held objects. Color slot
 14 is reserved for scarves; native white highlights consolidate into near-white 9.
 """
 from pathlib import Path
@@ -50,7 +50,44 @@ def accessory_frame(native,gender,outfit,style,kind='overworld',pose=0,state='wa
         for x,y in body:
             if y<=collar+(0 if kind=='overworld' else 1) or (cx<=x<=cx+(0 if kind=='overworld' else 1) and y<collar+depth):
                 result[y][x]=14
-    assert all((native[y][x]==0)==(result[y][x]==0) for y in range(h) for x in range(w))
+    # Separate pose-local accessory layer: a scarf knot and loose end, and
+    # jacket shoulder/hem pixels. These add clothing geometry, not just color.
+    protected=face|hands|balls
+    layer={}
+    if style&2:
+        for y in range(collar+1,min(h,collar+(4 if kind=='overworld' else 13))):
+            xs=[x for x,by in body if by==y]
+            if not xs:continue
+            for edge,side in ((min(xs),-1),(max(xs),1)):
+                for step in range(1,4):
+                    x=edge+side*step
+                    if not 0<=x<w:break
+                    if (x,y) in protected:break
+                    if native[y][x]==0:
+                        layer[x,y]=6
+                        break
+        # A horizontal hem gives the jacket a distinct lower edge.
+        hem=max(y for x,y in body)
+        for x,y in body:
+            if y==hem and abs(x-cx)>1:result[y][x]=6
+    if style&1:
+        # Tail trails away from the face, with a folded dark edge.
+        xs=[x for x,y in body if y<=collar+1]
+        side=1 if kind=='front' else (-1 if cx>=w//2 else 1)
+        edge=min(xs) if side<0 else max(xs)
+        length=4 if kind=='overworld' else 9
+        for dy in range(length):
+            y=collar+dy;x=edge+side*(1+dy//3)
+            for step in range(5):
+                if not 0<=x<w or y>=h or (x,y) in protected:break
+                if native[y][x]==0:break
+                x+=side
+            for dx,color in ((0,14),(side,15)):
+                q=(x+dx,y)
+                if 0<=q[0]<w and y<h and q not in protected and native[y][q[0]]==0:
+                    layer[q]=color
+    for (x,y),color in layer.items():result[y][x]=color
+    assert all(native[y][x]==0 or result[y][x]!=0 for y in range(h) for x in range(w))
     return result
 
 def build():

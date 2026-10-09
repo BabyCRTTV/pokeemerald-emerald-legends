@@ -125,7 +125,9 @@ with tempfile.TemporaryDirectory() as d:
 # Native category, shop availability and pair placement without layout/ID changes.
 for house,x in [('Brendans',1),('Mays',7)]:
  name='LittlerootTown_'+house+'House_2F';data=(root/'data/layouts'/name/'map.bin').read_bytes();assert len(data)==9*8*2
- for y,t in [(6,0x2c4),(7,0x2c5)]:assert struct.unpack_from('<H',data,(y*9+x)*2)[0]==t|0xc00
+ for y,t in [(6,0x2c4)]:assert struct.unpack_from('<H',data,(y*9+x)*2)[0]==t|0xc00
  events=json.loads((root/'data/maps'/name/'map.json').read_text())['bg_events']
- assert sum(e['script']=='LegendsWardrobe_EventScript_Home' for e in events)==2
+ assert sum(e['script']=='LegendsWardrobe_EventScript_Home' for e in events)==1
 assert '.2byte DECOR_LEGENDS_WARDROBE' in (root/'data/maps/Route104_PrettyPetalFlowerShop/scripts.inc').read_text()
+
+assert 'LegendsWardrobe_Text_Home' not in (root/'data/maps/LittlerootTown_BrendansHouse_2F/scripts.inc').read_text()

@@ -2,6 +2,18 @@
 
 This is the developer-facing history for the **Debug** build. Shared Legends changes are repeated here so this file stands on its own; Debug-only behavior is called out separately.
 
+## [0.0.24] - 2026-10-08
+
+### Updated
+- Integrated the two upstream expansion updates through commit 7b95be15: held-item restoration after wild battles/captures, and missing/corrected overworld sprites and palettes for Pokémon forms. Retained Legends gameplay, follower controls, custom species, appearance and weather systems.
+- Replaced the tall custom wardrobe with Emerald’s native closed storage-box artwork beneath each bedroom’s bed. The secret-base WARDROBE now occupies one tile; its existing decoration ID and purchase/inventory state are retained.
+- Interacting with your wardrobe now opens customization directly. Removed the repeated shop advertisement and Yes/No prompt.
+- Compiled pose-local scarf tails and jacket outlines/hem layers for both genders, including overworld states, battle portraits/throws and Trainer Cards. Faces, hands, held objects and native frame sizes are preserved.
+
+### Compatibility and validation
+- No save-layout or accessory encoding changes. Added focused tests of upstream held-item restoration, captured items, bag routing, berries and partner slots; retained all Legends regressions and layered-asset validation.
+- Release and Debug share all changes with no variant-specific differences; native developer tools remain Debug-only.
+
 ## [0.0.23] - 2026-10-08
 
 ### Added
