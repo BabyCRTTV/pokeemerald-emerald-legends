@@ -7,13 +7,15 @@ root=Path(__file__).resolve().parents[1]
 rtc_source=(root/'src/rtc.c').read_text()
 start=rtc_source.index('void RtcGetInfo(struct SiiRtcInfo *rtc)')
 rtc_get_info=rtc_source[start:rtc_source.index('\n}',start)+2]
+def rtc_function(signature):
+ start=rtc_source.index(signature);return rtc_source[start:rtc_source.index('\n}',start)+2]
 source='\n'.join(l for l in (root/'src/legends_clock.c').read_text().splitlines() if not l.startswith('#include'))
 pre=r'''
 #include <assert.h>
 #include <stdint.h>
 #include <stdio.h>
 #include <string.h>
-typedef uint8_t u8;typedef uint16_t u16;typedef uint32_t u32;typedef int bool8;
+typedef int32_t s32;typedef uint8_t u8;typedef uint16_t u16;typedef uint32_t u32;typedef int bool8;
 #define TRUE 1
 #define FALSE 0
 #define RTC_ERR_FLAG_MASK 0xFF0
@@ -25,10 +27,14 @@ typedef uint8_t u8;typedef uint16_t u16;typedef uint32_t u32;typedef int bool8;
 #define VAR_LEGENDS_CLOCK_MODE 4
 #define VAR_LEGENDS_MANUAL_OFFSET 5
 #define VAR_LEGENDS_MANUAL_RTC_READY 6
+#define VAR_LEGENDS_CLOCK_DAY_ORIGIN 7
+#define HOURS_PER_DAY 24
+#define MINUTES_PER_HOUR 60
+#define SECONDS_PER_MINUTE 60
 struct Time {int days,hours,minutes,seconds;}gLocalTime;
 struct SiiRtcInfo {u8 year,month,day,hour,minute,second;};
-struct {u16 playTimeHours;u8 playTimeMinutes,playTimeSeconds;struct Time localTimeOffset;}save,*gSaveBlock2Ptr=&save;
-static u16 vars[7],error;static struct SiiRtcInfo device={26,10,10,13,41,59};
+struct {u16 playTimeHours;u8 playTimeMinutes,playTimeSeconds,playTimeVBlanks;struct Time localTimeOffset;}save,*gSaveBlock2Ptr=&save;
+static u16 vars[8],error;static struct SiiRtcInfo device={26,10,10,13,41,59};
 static int polls;
 u16 VarGet(int id){return vars[id];}void VarSet(int id,u16 v){vars[id]=v;}
 u16 RtcGetErrorStatus(void){return error;}
@@ -41,20 +47,16 @@ __RTC_GET_INFO__
 u32 ConvertBcdToBinary(u8 v){return v;}
 int IsLeapYear(int y){return y%4==0;}
 const int sNumDaysInMonths[]={31,28,31,30,31,30,31,31,30,31,30,31};
-void RtcCalcTimeDifference(struct SiiRtcInfo*r,struct Time*out,struct Time*offset){
- int seconds=r->hour*3600+r->minute*60+r->second-offset->hours*3600-offset->minutes*60-offset->seconds;
- seconds=(seconds+86400)%86400;out->days=9000-offset->days;out->hours=seconds/3600;out->minutes=seconds/60%60;out->seconds=seconds%60;
-}
-void RtcCalcLocalTimeOffset(int days,int h,int m,int sec){
- int seconds=device.hour*3600+device.minute*60+device.second-h*3600-m*60-sec;
- save.localTimeOffset.days=9000-days;
- save.localTimeOffset.hours=seconds/3600;save.localTimeOffset.minutes=seconds/60%60;save.localTimeOffset.seconds=seconds%60;
-}
+static struct SiiRtcInfo sRtc;
+u16 RtcGetDayCount(struct SiiRtcInfo*r){return 9000+r->day-10;}
+void FakeRtc_ManuallySetTime(int d,int h,int m,int s){}
+__RTC_DIFFERENCE__
+__RTC_OFFSET__
 u8 gStringVar1[32];
 void RtcCalcLocalTime(void);
 void FormatDecimalTimeWithoutSeconds(u8*d,int h,int m,int fmt){sprintf((char*)d,"%02d:%02d",h,m);}
 '''
-pre=pre.replace('__RTC_GET_INFO__',rtc_get_info)
+pre=pre.replace('__RTC_GET_INFO__',rtc_get_info).replace('__RTC_DIFFERENCE__',rtc_function('void RtcCalcTimeDifference(')).replace('__RTC_OFFSET__',rtc_function('void RtcCalcLocalTimeOffset('))
 post=r'''
 void RtcCalcLocalTime(void){LegendsClockCalcLocalTime();}
 int main(void){
@@ -67,9 +69,9 @@ int main(void){
  LegendsClockCalcLocalTime();assert(gLocalTime.hours==13&&gLocalTime.minutes==41&&gLocalTime.seconds==59&&gLocalTime.days==0);
  // Device time advances without any played-frame ticks (as when in a menu).
  device.minute=42;device.second=0;LegendsClockCalcLocalTime();assert(gLocalTime.minutes==42&&polls==2);
- LegendsClockSetManual(18,30);LegendsClockCalcLocalTime();assert(gLocalTime.hours==18&&gLocalTime.minutes==30);
+ LegendsClockSetManual(18,30);LegendsClockCalcLocalTime();assert(gLocalTime.hours==18&&gLocalTime.minutes==30&&gLocalTime.days==0);assert(save.localTimeOffset.days==8999);
  device.minute=43;LegendsClockCalcLocalTime();assert(gLocalTime.minutes==31);
- LegendsClockUseRealTime();assert(gLocalTime.hours==13&&gLocalTime.minutes==43);
+ LegendsClockUseRealTime();assert(gLocalTime.hours==13&&gLocalTime.minutes==43&&gLocalTime.days==0);
  error=1;LegendsClockCalcLocalTime();assert(gLocalTime.hours==9&&!gLocalTime.minutes);
  for(int i=0;i<60;i++){LegendsClockTick();}LegendsClockCalcLocalTime();assert(gLocalTime.seconds==1);
  StoreSeconds(3600*7);LegendsClockCalcLocalTime();assert(gLocalTime.hours==16);
@@ -87,6 +89,14 @@ int main(void){
 
  error=1;save.playTimeHours=999;StoreSeconds(999*3600);for(int i=0;i<3600;i++){LegendsClockTick();}assert(PlayedSeconds()==999*3600+60);
  LegendsClockBufferTime();assert(strlen((char*)gStringVar1)>0);
+ // Real/manual switches keep a stable day origin despite hour borrowing.
+ device.day=11;device.hour=0;device.minute=0;device.second=0;error=0;
+ LegendsClockCalcLocalTime();assert(gLocalTime.days==1);
+ LegendsClockSetManual(18,0);LegendsClockUseRealTime();assert(gLocalTime.days==1&&gLocalTime.hours==0);
+ // A clock first initialized without RTC anchors to its played-day count.
+ memset(vars,0,sizeof(vars));memset(&save,0,sizeof(save));save.playTimeHours=30;error=1;
+ LegendsClockCalcLocalTime();assert(gLocalTime.days==1&&gLocalTime.hours==15);
+ error=0;LegendsClockCalcLocalTime();assert(gLocalTime.days==1&&gLocalTime.hours==0);
  puts("Device priority, live polling, manual clocks, invalid RTC, persisted fallback and 999-hour cap passed");
 }
 '''

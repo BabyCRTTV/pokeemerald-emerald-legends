@@ -83,6 +83,7 @@
 #define VAR_REGICE_STEPS_3                               0x403D
 #define VAR_ALTERING_CAVE_WILD_SET                       0x403E
 // Legends uses these verified-unreferenced native state slots; old saves are zero.
+#define VAR_LEGENDS_CLOCK_DAY_ORIGIN  VAR_PACIFIDLOG_TOWN_STATE
 #define VAR_LEGENDS_SHOES             VAR_DEWFORD_TOWN_STATE
 #define VAR_LEGENDS_CARD_COLOR        VAR_VERDANTURF_TOWN_STATE
 #define VAR_LEGENDS_CLOCK_SECONDS_LO  VAR_ROUTE102_STATE

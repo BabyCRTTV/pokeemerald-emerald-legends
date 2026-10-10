@@ -4,6 +4,12 @@ All notable Pokémon Emerald: Legends project changes are documented here.
 
 For build-specific player views, see [CHANGELOG-RELEASE.md](CHANGELOG-RELEASE.md) and [CHANGELOG-DEBUG.md](CHANGELOG-DEBUG.md). The canonical history below records the project as a whole.
 
+## [0.0.31.1] - 2026-10-10
+
+- Keep a stable calendar origin when switching between real and manual bedroom clocks, preventing native hour borrowing from shifting the day count. Preserve existing clock counters and legacy calendar timestamps.
+- Test actual native RTC subtraction across midnight, mode changes and restored RTC support.
+- Shared in Release and Debug; no variant-specific differences.
+
 ## [0.0.31] - 2026-10-10
 
 ### Added

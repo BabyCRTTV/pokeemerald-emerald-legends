@@ -5,7 +5,8 @@
 #include "string_util.h"
 #include "constants/vars.h"
 
-#define CLOCK_INIT 0xC131
+#define CLOCK_INIT 0xC132
+#define CLOCK_DATE_PENDING 0xFFFF
 #define SECONDS_PER_DAY 86400
 
 static u32 PlayedSeconds(void)
@@ -21,11 +22,17 @@ static void StoreSeconds(u32 seconds)
 
 static void EnsureClock(void)
 {
-    if (VarGet(VAR_LEGENDS_CLOCK_INIT) == CLOCK_INIT)
+    u16 previous = VarGet(VAR_LEGENDS_CLOCK_INIT);
+    if (previous == CLOCK_INIT)
         return;
-    StoreSeconds((u32)gSaveBlock2Ptr->playTimeHours * 3600
-        + gSaveBlock2Ptr->playTimeMinutes * 60 + gSaveBlock2Ptr->playTimeSeconds);
-    VarSet(VAR_LEGENDS_CLOCK_FRAMES, 0);
+    // Retain the pre-release counter if this save already has it.
+    if (previous != 0xC131)
+    {
+        StoreSeconds((u32)gSaveBlock2Ptr->playTimeHours * 3600
+            + gSaveBlock2Ptr->playTimeMinutes * 60 + gSaveBlock2Ptr->playTimeSeconds);
+        VarSet(VAR_LEGENDS_CLOCK_FRAMES, gSaveBlock2Ptr->playTimeVBlanks < 60 ? gSaveBlock2Ptr->playTimeVBlanks : 0);
+    }
+    VarSet(VAR_LEGENDS_CLOCK_DAY_ORIGIN, CLOCK_DATE_PENDING);
     VarSet(VAR_LEGENDS_CLOCK_INIT, CLOCK_INIT);
 }
 
@@ -57,16 +64,36 @@ static bool8 ReadDeviceClock(struct SiiRtcInfo *rtc)
         && ConvertBcdToBinary(rtc->minute) < 60 && ConvertBcdToBinary(rtc->second) < 60;
 }
 
+static u16 GetDayOrigin(struct SiiRtcInfo *rtc)
+{
+    u16 origin = VarGet(VAR_LEGENDS_CLOCK_DAY_ORIGIN);
+    if (origin == CLOCK_DATE_PENDING)
+    {
+        struct Time *offset = &gSaveBlock2Ptr->localTimeOffset;
+        u16 date = RtcGetDayCount(rtc);
+        if (offset->days || offset->hours || offset->minutes || offset->seconds)
+        {
+            struct Time legacy;
+            // Include native hour/day borrowing when migrating an old clock.
+            RtcCalcTimeDifference(rtc, &legacy, offset);
+            origin = date - legacy.days;
+        }
+        else
+            origin = date - (PlayedSeconds() + 9 * 3600) / SECONDS_PER_DAY;
+        VarSet(VAR_LEGENDS_CLOCK_DAY_ORIGIN, origin);
+    }
+    return origin;
+}
+
 void LegendsClockCalcLocalTime(void)
 {
     struct SiiRtcInfo rtc;
     struct Time zero = {0};
-    // Keep the native date origin for existing berry/daily timestamps.
-    zero.days = gSaveBlock2Ptr->localTimeOffset.days;
     u32 seconds;
     EnsureClock();
     if (ReadDeviceClock(&rtc))
     {
+        zero.days = GetDayOrigin(&rtc);
         if (VarGet(VAR_LEGENDS_CLOCK_MODE) == 1 && !VarGet(VAR_LEGENDS_MANUAL_RTC_READY))
         {
             u32 manual = (PlayedSeconds() + 9 * 3600 + VarGet(VAR_LEGENDS_MANUAL_OFFSET) * 60) % SECONDS_PER_DAY;
@@ -101,7 +128,7 @@ void LegendsClockSetManual(u8 hour, u8 minute)
     if (ReadDeviceClock(&rtc))
     {
         struct Time dayOrigin = {0};
-        dayOrigin.days = gSaveBlock2Ptr->localTimeOffset.days;
+        dayOrigin.days = GetDayOrigin(&rtc);
         RtcCalcTimeDifference(&rtc, &gLocalTime, &dayOrigin);
         RtcCalcLocalTimeOffset(gLocalTime.days, hour, minute, 0);
         VarSet(VAR_LEGENDS_MANUAL_RTC_READY, 1);

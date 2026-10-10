@@ -10,7 +10,7 @@ If RTC initialization fails or its date/time fields are invalid, the final-prior
 
 The pause panel polls once every 60 emulated frames and redraws when the displayed minute changes. It does not stop the clock. A fully paused emulator cannot render new digits until resumed; fast-forward affects fallback playtime, whereas real mode follows RTC.
 
-Existing berry/daily timestamps retain their native date origin when real mode ignores the old hour/minute offset. A manual clock first configured without RTC is translated into a native offset when RTC becomes available.
+As of v0.0.31.1, existing berry/daily timestamps retain a separately saved native date origin when real mode ignores the old hour/minute offset. Native hour borrowing cannot shift that origin when switching modes. A manual clock first configured without RTC is translated into a native offset when RTC becomes available.
 
 The Adventure Log’s played-day count remains based on distinct dates played, not the bedroom’s manual hour. Seasonal/calendar systems continue to use their established RTC/date rules. No new save layout is introduced: clock state occupies previously unreferenced route-state variables.
 
