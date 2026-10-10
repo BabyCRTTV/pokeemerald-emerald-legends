@@ -106,3 +106,17 @@ Published BPS SHA-256 values:
 0dad8b3dc8d7156b06f5d3efb733437df49c5e0eb03dab3e50e478a95cf40674  docs/downloads/Pokemon-Emerald-Legends-v0.0.28.bps
 a3ce95842074d1af265011fb5fc2ad80b1ef7b8fd6e5ef69ea95c9c2b001fe18  docs/downloads/Pokemon-Emerald-Legends-v0.0.28-debug.bps
 ```
+
+## Recorded v0.0.28.1 validation — 2026-10-10
+
+- Game-source revision `e6b83bb2b818b0d2938c79c0b4b7eb530c0e442b` adds the opening survey journal and optional collected-clue review. No new save fields, trainer IDs or encounter state.
+- [Master project checks](https://github.com/BabyCRTTV/pokeemerald-emerald-legends/actions/runs/38036243603) and [master build/patch verification](https://github.com/BabyCRTTV/pokeemerald-emerald-legends/actions/runs/38036243622) completed successfully. Debug and Release compiled; the independent vanilla reference passed the supported SHA-1; both BPS patches reconstructed their corresponding compiled ROMs byte-for-byte.
+- Focused event checks cover all four opening record combinations, YES/NO clue review, repeated visits, already-filed reports, and declined/lost challenges. Native-font measurement puts the widest dialogue line at 163 pixels within the 208-pixel text area; the Debug version label is 102 pixels and does not overlap the Options page title.
+- Manual emulator review of the new dialogue and the earlier chapter's traversal/battle checklist remains outstanding. Automated script execution and text-width measurement do not establish emulator playtesting.
+
+Published BPS SHA-256 values:
+
+```text
+83e6310c32f4a97fe24f0563066f81f8a762492f45f54c0ad2f54fcb41e8bca4  docs/downloads/Pokemon-Emerald-Legends-v0.0.28.1.bps
+155ed610b4f87149e8c48cfec6e312b16a4e4c1c4c381bc22dee83ed4c29ab38  docs/downloads/Pokemon-Emerald-Legends-v0.0.28.1-debug.bps
+```
