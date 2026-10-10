@@ -1,0 +1,63 @@
+name: Check Legends Wiki
+
+on:
+  push:
+    branches: [master]
+    paths:
+      - 'docs/wiki/**'
+      - '.github/workflows/wiki-checks.yml'
+  pull_request:
+    branches: [master]
+    paths:
+      - 'docs/wiki/**'
+      - '.github/workflows/wiki-checks.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    steps:
+      - name: Checkout wiki
+        uses: actions/checkout@v4
+      - name: Check browser JavaScript
+        run: |
+          node --check docs/wiki/wiki.js
+          node --check docs/wiki/dex.js
+      - name: Validate wiki and encounter snapshot
+        run: |
+          python3 - <<'PY'
+          import json,re
+          from pathlib import Path
+          base=Path('docs/wiki')
+          wiki=json.loads((base/'articles.json').read_text())
+          data=json.loads((base/'dex-data.json').read_text())
+          ids=[a['id'] for a in wiki['articles']]
+          assert len(ids)==len(set(ids))
+          assert all(re.fullmatch(r'[a-z0-9-]+',x) for x in ids)
+          for a in wiki['articles']:
+              for target in re.findall(r'\[\[([a-z0-9-]+)\|',a['content']):
+                  assert target in ids, (a['id'],target)
+          assert len(data['species'])>=1000, "incomplete national Pokédex"
+          species={p['id'] for p in data['species']}
+          assert len(species)==len(data['species'])
+          assert len({p['num'] for p in data['species'] if p['num']})==len(data['species'])
+          maps=data['maps']
+          assert len(maps)>100 and len({m['id'] for m in maps})==len(maps)
+          count=0
+          for loc in maps:
+              assert loc['region'] in ('Hoenn','Kanto')
+              assert loc['id'].startswith('MAP_LEGENDS_KANTO_') if loc['region']=='Kanto' else loc['id'].startswith('MAP_') and 'FRLG' not in loc['id']
+              for method in loc['methods']:
+                  assert method['id'] in ('land','surf','rock','old_rod','good_rod','super_rod')
+                  entries=method['entries']
+                  assert entries and sum(entry['rate'] for entry in entries)==100, (loc['id'],method['id'])
+                  assert all(entry['id'] in species and 1<=entry['min']<=entry['max']<=100 and 0<entry['rate']<=100 for entry in entries)
+                  count+=1
+          assert (base/'dex.html').is_file() and (base/'dex.css').is_file()
+          assert 'dex.html' in (base/'index.html').read_text()
+          print(f"Verified {len(wiki['articles'])} wiki articles, {len(data['species'])} species, {len(maps)} maps, {count} weighted encounter tables")
+          PY

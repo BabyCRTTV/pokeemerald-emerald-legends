@@ -1,5 +1,6 @@
 :root{color-scheme:light;--bg:#f7f4fd;--surface:#fff;--pale:#eee5fb;--border:#e0d5f0;--accent:#7150a7;--ink:#302645;--muted:#756b87;--deep:#4e3873;--shadow:0 12px 40px rgba(65,42,92,.07)}
 *{box-sizing:border-box}
+[hidden]{display:none!important}
 body{font:15px/1.55 system-ui,-apple-system,"Segoe UI",sans-serif;margin:0;background:var(--bg);color:var(--ink);-webkit-font-smoothing:antialiased}
 button,input,select{font:inherit}button{cursor:pointer}button:disabled{cursor:default;opacity:.5}a{color:var(--deep)}a:hover{text-decoration-thickness:2px}
 :focus-visible{outline:3px solid #9c7ddc;outline-offset:3px}
