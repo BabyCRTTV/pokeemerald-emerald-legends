@@ -6,6 +6,7 @@
 #include "overworld.h"
 #include "palette.h"
 #include "rtc.h"
+#include "tilesets.h"
 #include "constants/map_types.h"
 #include "constants/region_map_sections.h"
 #include "constants/weather.h"
@@ -158,6 +159,13 @@ bool32 LegendsMapHasSeasons(void)
         && gMapHeader.weather != WEATHER_SANDSTORM;
 }
 
+bool32 LegendsMapHasSeasonalPaletteZero(void)
+{
+    // FRLG grass/trees live in slot zero; Hoenn reserves it from this treatment.
+    return LegendsMapHasSeasons() && gMapHeader.mapLayout != NULL
+        && gMapHeader.mapLayout->primaryTileset == &gTileset_LegendsKantoGeneral_Frlg;
+}
+
 u16 LegendsSeasonVegetationColor(u16 color, u8 season)
 {
     u32 r = color & 31, g = (color >> 5) & 31, b = (color >> 10) & 31;
@@ -185,11 +193,12 @@ void LegendsApplySeasonPalette(u16 offset, u16 count)
 {
     u32 i;
     u8 season;
+    u16 first = LegendsMapHasSeasonalPaletteZero() ? 0 : 16;
     if (!LegendsMapHasSeasons())
         return;
     season = LegendsGetActiveSeason();
     for (i = offset; i < offset + count && i < 13 * 16; i++)
-        if (i >= 16 && (i & 15) != 0)
+        if (i >= first && (i & 15) != 0)
             gPlttBufferUnfaded[i] = LegendsSeasonVegetationColor(gPlttBufferUnfaded[i], season);
 }
 

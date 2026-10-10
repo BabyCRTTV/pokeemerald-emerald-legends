@@ -12,6 +12,7 @@
 #include "gpu_regs.h"
 #include "graphics.h"
 #include "link.h"
+#include "legends_battle_seasons.h"
 #include "main.h"
 #include "menu.h"
 #include "overworld.h"
@@ -878,7 +879,7 @@ static void LoadBattleEnvironmentGfx(u16 environment)
     // Copy to bg3
     DecompressDataWithHeaderVram(gBattleEnvironmentInfo[environment].background.tileset, (void *)(BG_CHAR_ADDR(2)));
     DecompressDataWithHeaderVram(gBattleEnvironmentInfo[environment].background.tilemap, (void *)(BG_SCREEN_ADDR(26)));
-    LoadPalette(gBattleEnvironmentInfo[environment].palette, BG_PLTT_ID(2), 3 * PLTT_SIZE_4BPP);
+    LegendsLoadBattleSeasonPalette(environment, gBattleEnvironmentInfo[environment].palette);
 }
 
 // Loads the entry associated with the battle environment.
@@ -1344,7 +1345,10 @@ bool8 LoadChosenBattleElement(u8 caseId)
         DecompressDataWithHeaderVram(gBattleEnvironmentInfo[GetBattleEnvironmentOverride()].background.tilemap, (void *)(BG_SCREEN_ADDR(26)));
         break;
     case 5:
-        LoadPalette(gBattleEnvironmentInfo[GetBattleEnvironmentOverride()].palette, BG_PLTT_ID(2), 3 * PLTT_SIZE_4BPP);
+        {
+            u16 environment = GetBattleEnvironmentOverride();
+            LegendsLoadBattleSeasonPalette(environment, gBattleEnvironmentInfo[environment].palette);
+        }
         break;
     case 6:
         LoadBattleMenuWindowGfx();

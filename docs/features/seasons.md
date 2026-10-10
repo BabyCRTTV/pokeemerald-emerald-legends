@@ -1,6 +1,6 @@
 # Seasonal System
 
-**Status:** Implemented in 0.0.11; refined in 0.0.12; new-game initialization fixed in 0.0.12.1. Release and Debug share identical seasonal mechanics.
+**Status:** Implemented in 0.0.11; refined in 0.0.12; new-game initialization fixed in 0.0.12.1; Kanto foliage and seasonal battle backgrounds fixed in 0.0.30. Release and Debug share identical seasonal mechanics.
 
 ## Modes and time
 
@@ -46,3 +46,13 @@ and field-move checks remain intact. A 1280-byte per-map bitset tracks scuffed
 cells; full map initialization clears it. It is never written to the save.
 Tree-edge and long grass retain native artwork. `legends_grass.c` owns tracking;
 `field_effect_helpers.c`, `field_camera.c` and `fieldmap.c` supply the hooks.
+
+## Kanto foliage and battle backgrounds (v0.0.30)
+
+FRLG's imported Kanto General tileset puts grass and tree colors in palette slot zero. This tileset now receives seasonal conversion there, excluding transparent entry zero; Hoenn retains its protected slot-zero behavior. Native day/night rebuilds reload the original Kanto palette and then apply the active season, so time changes cannot restore green foliage or accumulate tints. Blue water colors keep their original values. Interiors still have no seasonal foliage treatment.
+
+Both Hoenn and Kanto battles use the same visible active-season snapshot as the overworld. Grass, long grass and ordinary outdoor plain backgrounds receive spring/summer greens, autumn amber and winter frost. The entry grass shares these colors. Both normal battle initialization and staged palette loads/background restores start from the original art each time; no tint stacking. Pokemon, trainers, healthboxes and battle text palettes remain separate.
+
+Water, pond, underwater, cave, sand, rock/mountain and all other special environment art remains native. Indoor maps, the protected volcanic/desert belt, facilities, linked/recorded battles and special legendary battles are excluded. Native environment IDs and Nature Power/Secret Power/Camouflage effects are unchanged; seasonal appearance is cosmetic. Terrain move animation backgrounds remain native and restore the seasonal main background when they end.
+
+`src/legends_battle_seasons.c` owns the narrow battle-palette policy. `test/legends-season-scenes.test.py` compiles the actual loader, native LoadPalette, seasonal color conversion and overworld palette rebuild with real battle/Kanto colors. It verifies all seasons, exclusions, protected slots, fresh reloads, Kanto grass/tree conversion and unchanged blue water. A native-tile battle preview was visually inspected. Emulator checks: compare grass/long-grass/plain encounters in both regions across all seasons; trigger a move that replaces/restores the background; enter a cave, Surf, challenge a Gym, and return to ordinary grass; verify Kanto foliage before/after a day/night update. These visual emulator checks remain outstanding.

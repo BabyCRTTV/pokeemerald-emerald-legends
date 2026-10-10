@@ -23,3 +23,19 @@ Implementation: `src/legends_weather.c`, native weather task and the existing se
 Validation: `python3 test/legends-weather.test.py` compiles the actual module and exhausts forecast rolls, checking all seasons, regional exclusions, dawn/night fog weighting, timer migration/rollover and transition guards. Pause-panel tests cover moon/day/effect selection and both animation frames. Emulator QA: explore ordinary towns, Fortree, Routes 114–116 and ocean routes across seasons; wait across a forecast boundary; enter/exit buildings and save/continue; check battle weather, native story weather, desert/ash, and moon appearance around the native night boundary.
 
 Cloud regression QA: revisit Oldale and other towns with elevated door tiles; confirm no moving cloud/reflection sprites appear through the ground. Test a pre-0.0.25.1 cloudy save on Continue and after a normal map reload, and retain native cloud reflections on protected maps such as Faraway Island.
+
+## Kanto forecasts (v0.0.30)
+
+Kanto reuses the saved 20-minute playtime forecast periods, local seeded RNG and native transitions. Returning to a region in the same period/season preserves its deterministic forecast. No global encounter/battle RNG is consumed and no new save fields are added. All current outdoor Kanto towns/routes are covered, with native section IDs registered for future Routes 1–25 and cities. Each section still has its own forecast seed.
+
+Weights below are percentages in Spring / Summer / Autumn / Winter order. Clear weather fills the remainder:
+
+| Climate | Rain | Thunderstorm | Fog | Snow |
+| --- | --- | --- | --- | --- |
+| Inland | 30 / 20 / 25 / 12 | 2 / 5 / 1 / 0 | 5 / 0 / 8 / 6 | 0 / 0 / 0 / 15 |
+| Coast | 28 / 22 / 30 / 18 | 2 / 6 / 2 / 0 | 3 / 0 / 5 / 5 | 0 / 0 / 0 / 0 |
+| Upland | 25 / 18 / 25 / 8 | 2 / 4 / 1 / 0 | 8 / 4 / 12 / 10 | 0 / 0 / 0 / 30 |
+
+Morning/night add 5 percentage points of fog. Pallet, Vermilion, Fuchsia, Cinnabar and Routes 11–15/19–21 use coast. Routes 3/4/9/10/22/23 and Indigo Plateau use upland. Remaining configured cities/routes use inland; ocean-type routes default to coast. Caves, buildings, Power Plant, Viridian Forest's native canopy and other special sections remain native. Forecast hooks do not construct any future maps or encounters. Scripted special weather still takes priority. Hoenn's existing weights remain unchanged.
+
+Validation adds exact Kanto seasonal weights, all 25 route IDs, indoor/special exclusions and live transition guards to the actual-module weather test. Manual emulator checks: visit Vermilion, Lavender, Fuchsia and Routes 6/11–19 in each season, wait across a forecast boundary, enter/leave a Center, save/Continue and verify native battle weather.

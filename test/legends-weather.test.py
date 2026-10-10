@@ -68,7 +68,31 @@ int main(void){
   gMapHeader.regionMapSectionId=MAPSEC_ROUTE_124;gMapHeader.mapType=MAP_TYPE_OCEAN_ROUTE;
   assert(countWeather(WEATHER_SNOW)==0);gMapHeader.mapType=MAP_TYPE_ROUTE;
  }
- int protected[]={MAPSEC_ROUTE_111,MAPSEC_ROUTE_112,MAPSEC_ROUTE_113,MAPSEC_MT_CHIMNEY,MAPSEC_JAGGED_PASS,MAPSEC_FIERY_PATH,MAPSEC_LAVARIDGE_TOWN,MAPSEC_FALLARBOR_TOWN,MAPSEC_MT_PYRE,MAPSEC_BATTLE_FRONTIER};
+
+ // Kanto forecasts: verify exact seasonal weights, coast snow exclusion and fog.
+ const int areas[]={MAPSEC_CELADON_CITY,MAPSEC_VERMILION_CITY,MAPSEC_ROUTE_10};
+ const int weights[3][4][4]={
+  {{30,2,5,0},{20,5,0,0},{25,1,8,0},{12,0,6,15}},
+  {{28,2,3,0},{22,6,0,0},{30,2,5,0},{18,0,5,0}},
+  {{25,2,8,0},{18,4,4,0},{25,1,12,0},{8,0,10,30}}};
+ for(int a=0;a<3;a++)for(season=0;season<4;season++){
+  gMapHeader.regionMapSectionId=areas[a];tod=TIME_DAY;
+  assert(countWeather(WEATHER_RAIN)==weights[a][season][0]);
+  assert(countWeather(WEATHER_RAIN_THUNDERSTORM)==weights[a][season][1]);
+  assert(countWeather(WEATHER_FOG_HORIZONTAL)==weights[a][season][2]);
+  assert(countWeather(WEATHER_SNOW)==weights[a][season][3]);
+  for(tod=TIME_MORNING;tod<=TIME_NIGHT;tod++)
+   assert(countWeather(WEATHER_FOG_HORIZONTAL)==weights[a][season][2]+((tod==TIME_MORNING||tod==TIME_NIGHT)?5:0));
+  tod=TIME_DAY;gMapHeader.mapType=MAP_TYPE_INDOOR;outcome=0;
+  assert(LegendsChooseAmbientWeather(WEATHER_SUNNY)==WEATHER_SUNNY);
+  gMapHeader.mapType=MAP_TYPE_ROUTE;
+ }
+ // Cover every Kanto route and every current outdoor map, including future IDs.
+ for(int r=MAPSEC_ROUTE_1;r<=MAPSEC_ROUTE_25;r++){
+  gMapHeader.regionMapSectionId=r;season=LEGENDS_SUMMER;outcome=0;
+  assert(countWeather(WEATHER_RAIN_THUNDERSTORM)>0);
+ }
+ int protected[]={MAPSEC_ROUTE_111,MAPSEC_ROUTE_112,MAPSEC_ROUTE_113,MAPSEC_MT_CHIMNEY,MAPSEC_JAGGED_PASS,MAPSEC_FIERY_PATH,MAPSEC_LAVARIDGE_TOWN,MAPSEC_FALLARBOR_TOWN,MAPSEC_MT_PYRE,MAPSEC_BATTLE_FRONTIER,MAPSEC_MT_MOON,MAPSEC_SEAFOAM_ISLANDS,MAPSEC_KANTO_VICTORY_ROAD,MAPSEC_VIRIDIAN_FOREST,MAPSEC_POWER_PLANT};
  for(unsigned i=0;i<sizeof(protected)/sizeof(*protected);i++){
   gMapHeader.regionMapSectionId=protected[i];outcome=0;
   assert(LegendsChooseAmbientWeather(WEATHER_SUNNY)==WEATHER_SUNNY);
@@ -80,7 +104,7 @@ int main(void){
  for(int w=0;w<WEATHER_COUNT;w++)if(w!=WEATHER_SUNNY&&w!=WEATHER_SUNNY_CLOUDS&&w!=WEATHER_RAIN&&w!=WEATHER_RAIN_THUNDERSTORM)assert(LegendsChooseAmbientWeather(w)==w);
  // Every forecast roll in every configured climate/time/season is cloud-free.
  // Native SUNNY_CLOUDS requests remain valid inputs for old saves/map triggers.
- int ordinary[]={MAPSEC_LITTLEROOT_TOWN,MAPSEC_OLDALE_TOWN,MAPSEC_PETALBURG_CITY,MAPSEC_RUSTBORO_CITY,MAPSEC_MAUVILLE_CITY,MAPSEC_VERDANTURF_TOWN,MAPSEC_DEWFORD_TOWN,MAPSEC_SLATEPORT_CITY,MAPSEC_ROUTE_119,MAPSEC_ROUTE_120,MAPSEC_ROUTE_114,MAPSEC_PETALBURG_WOODS};
+ int ordinary[]={MAPSEC_LITTLEROOT_TOWN,MAPSEC_OLDALE_TOWN,MAPSEC_PETALBURG_CITY,MAPSEC_RUSTBORO_CITY,MAPSEC_MAUVILLE_CITY,MAPSEC_VERDANTURF_TOWN,MAPSEC_DEWFORD_TOWN,MAPSEC_SLATEPORT_CITY,MAPSEC_ROUTE_119,MAPSEC_ROUTE_120,MAPSEC_ROUTE_114,MAPSEC_PETALBURG_WOODS,MAPSEC_VERMILION_CITY,MAPSEC_FUCHSIA_CITY,MAPSEC_LAVENDER_TOWN,MAPSEC_CELADON_CITY,MAPSEC_SAFFRON_CITY,MAPSEC_ROUTE_6,MAPSEC_ROUTE_10,MAPSEC_ROUTE_19};
  int requests[]={WEATHER_SUNNY,WEATHER_SUNNY_CLOUDS,WEATHER_RAIN,WEATHER_RAIN_THUNDERSTORM};
  for(unsigned area=0;area<sizeof(ordinary)/sizeof(*ordinary);area++)
   for(season=0;season<4;season++)for(tod=TIME_MORNING;tod<=TIME_NIGHT;tod++)
@@ -111,6 +135,14 @@ int main(void){
  vars[1]=0x100+WEATHER_SUNNY;state.currWeather=state.nextWeather=WEATHER_ABNORMAL;poll();assert(savedCalls==2);
  state.currWeather=state.nextWeather=WEATHER_SUNNY;vars[1]=0;poll();assert(savedCalls==2);
  vars[1]=0x100+WEATHER_ROUTE119_CYCLE;poll();assert(savedCalls==3&&vars[1]==0x100+WEATHER_ROUTE119_CYCLE);
+ // Kanto walking transitions use the same native guards and keep the baseline.
+ gMapHeader.regionMapSectionId=MAPSEC_VERMILION_CITY;season=LEGENDS_SUMMER;
+ state.currWeather=state.nextWeather=WEATHER_SUNNY;vars[1]=0x100+WEATHER_SUNNY;
+ savedCalls=nextCalls=0;outcome=0;poll();
+ assert(savedCalls==1&&nextCalls==1&&state.nextWeather==WEATHER_RAIN_THUNDERSTORM);
+ script=1;poll();script=0;assert(savedCalls==1);
+ state.currWeather=state.nextWeather;gMapHeader.mapType=MAP_TYPE_INDOOR;poll();
+ assert(savedCalls==1);gMapHeader.mapType=MAP_TYPE_ROUTE;
  puts("Dynamic weather: climate probabilities, native exclusions, clock migration, cloud-free forecasts and old-save cleanup passed");
 }
 '''
