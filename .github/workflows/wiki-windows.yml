@@ -93,6 +93,9 @@ jobs:
           git add docs/wiki/windows-version.json
           if (git diff --cached --quiet) { exit 0 }
           git commit -m 'Wiki: publish Windows installer version manifest [skip ci]'
+          # npm version updates tracked package.json only for the ephemeral build.
+          # Restore it before rebasing our manifest commit onto concurrent site updates.
+          git restore windows/wiki/package.json
           git pull --rebase origin master
           if ($LASTEXITCODE -ne 0) { throw 'Version manifest rebase failed' }
           git push
