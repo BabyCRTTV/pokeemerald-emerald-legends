@@ -6,6 +6,8 @@ on:
     branches: [master]
     paths:
       - 'android/wiki/**'
+      - 'docs/wiki/**'
+      - 'tools/build_wiki_icons.py'
       - '.github/workflows/wiki-apk.yml'
 
 permissions:
@@ -65,19 +67,74 @@ jobs:
           print(f"Validated {len(ids)} articles and their internal references")
           PY
 
-      - name: Compile signed installable Android APK
-        run: gradle --project-dir android/wiki :app:assembleDebug --no-daemon
-
-      - name: Check installable APK
+      - name: Generate Happiny launcher icon
         run: |
-          APK=android/wiki/app/build/outputs/apk/debug/app-debug.apk
+          python3 -m pip install --quiet Pillow
+          python3 tools/build_wiki_icons.py
+          python3 - <<'PY'
+          from PIL import Image
+          a=Image.open('android/wiki/app/src/main/res/drawable/wiki_icon.png').convert('RGBA')
+          assert a.size==(512,512) and a.getpixel((0,0))[3]==0
+          print('Validated transparent single-frame Happiny icon')
+          PY
+
+      - name: Choose next Android wiki app version
+        run: |
+          python3 - <<'PY'
+          import json,os
+          from pathlib import Path
+          p=Path('docs/wiki/android-version.json')
+          last=json.loads(p.read_text())['versionCode'] if p.exists() else 1
+          code=int(last)+1
+          with open(os.environ['GITHUB_ENV'],'a') as env:
+              print(f'WIKI_VERSION_CODE={code}',file=env)
+              print(f'WIKI_VERSION_NAME=1.0.{code}',file=env)
+          print('New Android companion version',code)
+          PY
+
+      - name: Configure private Android signing
+        env:
+          WIKI_KEYSTORE_B64: ${{ secrets.WIKI_ANDROID_KEYSTORE_BASE64 }}
+          WIKI_ANDROID_STORE_PASSWORD: ${{ secrets.WIKI_ANDROID_STORE_PASSWORD }}
+          WIKI_ANDROID_KEY_ALIAS: ${{ secrets.WIKI_ANDROID_KEY_ALIAS }}
+          WIKI_ANDROID_KEY_PASSWORD: ${{ secrets.WIKI_ANDROID_KEY_PASSWORD }}
+        run: |
+          if [ -n "$WIKI_KEYSTORE_B64" ] && [ -n "$WIKI_ANDROID_STORE_PASSWORD" ] && [ -n "$WIKI_ANDROID_KEY_ALIAS" ] && [ -n "$WIKI_ANDROID_KEY_PASSWORD" ]; then
+            echo "$WIKI_KEYSTORE_B64" | base64 --decode > android/wiki/keystore-private.jks
+            echo "WIKI_KEYSTORE_PATH=$(pwd)/android/wiki/keystore-private.jks" >> "$GITHUB_ENV"
+            echo "WIKI_SIGNING=persistent-release" >> "$GITHUB_ENV"
+          else
+            echo "WIKI_SIGNING=ephemeral-debug" >> "$GITHUB_ENV"
+            echo "::warning::Missing persistent signing secrets; Android may require an uninstall for a differently signed build."
+          fi
+
+      - name: Build wiki APK
+        env:
+          WIKI_ANDROID_STORE_PASSWORD: ${{ secrets.WIKI_ANDROID_STORE_PASSWORD }}
+          WIKI_ANDROID_KEY_ALIAS: ${{ secrets.WIKI_ANDROID_KEY_ALIAS }}
+          WIKI_ANDROID_KEY_PASSWORD: ${{ secrets.WIKI_ANDROID_KEY_PASSWORD }}
+        run: |
+          if [ "$WIKI_SIGNING" = "persistent-release" ]; then
+            TARGET=assembleRelease
+          else
+            TARGET=assembleDebug
+          fi
+          gradle --project-dir android/wiki ":app:$TARGET" --no-daemon -PwikiVersionCode="$WIKI_VERSION_CODE" -PwikiVersionName="$WIKI_VERSION_NAME"
+
+      - name: Verify signature and privacy permissions
+        run: |
+          if [ "$WIKI_SIGNING" = "persistent-release" ]; then
+            APK=android/wiki/app/build/outputs/apk/release/app-release.apk
+          else
+            APK=android/wiki/app/build/outputs/apk/debug/app-debug.apk
+          fi
+          echo "APK_PATH=$APK" >> "$GITHUB_ENV"
           test -s "$APK"
           "$ANDROID_HOME/build-tools/35.0.0/apksigner" verify --verbose "$APK"
           "$ANDROID_HOME/build-tools/35.0.0/aapt" dump badging "$APK" | head -n 8
           "$ANDROID_HOME/build-tools/35.0.0/aapt" dump permissions "$APK" > /tmp/wiki-permissions.txt
-          cat /tmp/wiki-permissions.txt
-          if grep -E "uses-permission: name=" /tmp/wiki-permissions.txt | grep -v "android.permission.INTERNET"; then
-            echo "::error::Unexpected Android permission requested"
+          if grep "uses-permission: name=" /tmp/wiki-permissions.txt | grep -v "android.permission.INTERNET"; then
+            echo "::error::Unexpected Android permissions"
             exit 1
           fi
           sha256sum "$APK"
@@ -86,20 +143,34 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: emerald-legends-wiki-apk
-          path: android/wiki/app/build/outputs/apk/debug/app-debug.apk
+          path: ${{ env.APK_PATH }}
 
       - name: Publish standalone APK to project website
         if: github.event_name != 'pull_request'
         run: |
           mkdir -p docs/downloads
-          cp android/wiki/app/build/outputs/apk/debug/app-debug.apk docs/downloads/Emerald-Legends-Wiki.apk
+          cp "$APK_PATH" docs/downloads/Emerald-Legends-Wiki.apk
+          python3 - <<'PY'
+          import hashlib,json,os
+          from pathlib import Path
+          apk=Path('docs/downloads/Emerald-Legends-Wiki.apk')
+          manifest={
+              'available':True,'platform':'android',
+              'version':os.environ['WIKI_VERSION_NAME'],
+              'versionCode':int(os.environ['WIKI_VERSION_CODE']),
+              'url':'https://babycrttv.github.io/pokeemerald-emerald-legends/downloads/Emerald-Legends-Wiki.apk',
+              'signing':os.environ['WIKI_SIGNING'],
+              'sha256':hashlib.sha256(apk.read_bytes()).hexdigest()}
+          Path('docs/wiki/android-version.json').write_text(json.dumps(manifest,indent=2)+'\n')
+          print('Publishing APK version',manifest['version'])
+          PY
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add -f docs/downloads/Emerald-Legends-Wiki.apk
+          git add -f docs/downloads/Emerald-Legends-Wiki.apk docs/wiki/android-version.json
           if git diff --cached --quiet; then
             echo "Wiki APK unchanged."
             exit 0
           fi
-          git commit -m "Wiki: publish Android companion APK [skip ci]"
+          git commit -m "Wiki: publish Android wiki app and update manifest [skip ci]"
           git pull --rebase origin master
           git push
