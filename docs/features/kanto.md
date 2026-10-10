@@ -8,6 +8,10 @@ Version **0.0.27** adds an intentionally empty eastern/southern Kanto foundation
 
 **Validation limits:** automated geometry, reciprocal connections, event gates, source fidelity and encounter exclusion are checked. A green build and BPS round-trip verification establish compilation and patch integrity; emulator traversal of every new map and Pizza Boy testing remain necessary. This revision does not claim those playtests.
 
+## Recorded foundation validation (v0.0.27)
+
+[PR build/verification run](https://github.com/BabyCRTTV/pokeemerald-emerald-legends/actions/runs/38011963384) completed successfully for revision `e089ae2`: Debug and Release compilation, independently built clean Emerald SHA-1 verification, and both BPS reapplications with byte-for-byte ROM comparisons. All Legends Python suites and all five browser patcher tests pass. Four foundation checks cover native layout dimensions/borders and allowed boundary edits, explicit event-script registration, absence of new objects/encounters, connected reciprocal map/warp graph, Champion/ticket gating, unrestricted return travel and clear water arrivals outside trigger lanes. Native mapjson generated the map groups, layouts and imported headers/events. Static renders of Lavender, Fuchsia and Route 19 were inspected; the unfinished western sea exit now uses native rocks rather than an ocean fence. These renders do not exercise the game engine. Emulator traversal, new-map save/reload checks and Pizza Boy testing remain outstanding.
+
 ## Original arrival chapter
 
 Implemented in v0.0.26 in both Release and Debug. This first chapter opens **Vermilion City**, rather than restarting FireRed's adventure. The rest of Kanto and a possible later Johto expansion remain future work.
