@@ -25,3 +25,15 @@ The articles summarize documented mechanics, and distinguish current Kanto gamep
 ## Accessibility and privacy
 
 No account or tracking is present. The interface uses system fonts, keyboard navigation, semantic heading levels, focus indications, readable contrast, and responsive layouts. APK permission is internet access only. Device-file access and JavaScript-to-native bridges are not enabled in the Android WebView.
+
+## Interactive route encounters and National Pokédex
+
+The independent `dex.html` guide uses `dex-data.json`: a manually reviewed snapshot of the active Legends wild encounters and National Pokédex species metadata. It provides mobile-friendly route cards, encounter methods, source sprites, combined per-method slot weights, level ranges, type/stats where parsed, and searchable Pokémon profile locations.
+
+**Correct probability interpretation:** the displayed rate is the species' *relative share of encounters for the selected method*, **not** the chance of finding it per step. The `encounter_rate` engine values are separate. Old/Good/Super Rod tables are evaluated independently.
+
+`dex-data.json` was built directly from `src/data/wild_encounters.json`, `include/constants/pokedex.h`, and `src/data/pokemon/species_info/*_families.h`. Only active Emerald encounter tables and the explicitly imported Legends Kanto tables are indexed. The old upstream FireRed/LeafGreen encounter tables for routes that aren't playable in Legends are excluded. Altering Cave's extra special rotation sets are not all presented as simultaneously active.
+
+No game update automatically rebuilds this snapshot. On an owner-requested wiki update, regenerate and verify against the new source game revision, check aliases and new scripted encounters, and only then advance the wiki's documentation revision. The game version in `VERSION` is never changed by the wiki.
+
+Sprites load from the project's own public GitHub source art at the snapshot commit (HTTPS), and the UI uses graceful fallbacks if an image is missing. There is no requirement to download additional ROM content.

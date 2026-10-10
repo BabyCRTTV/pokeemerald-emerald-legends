@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#efe8fb">
+<meta name="description" content="Search the Pokémon Emerald: Legends Pokédex and route-by-route wild encounter locations, sprites, levels, and spawn percentages.">
+<title>Pokédex & Wild Encounters · Emerald: Legends Wiki</title>
+<link rel="stylesheet" href="dex.css">
+</head><body>
+<header class="topbar"><div class="top-inner">
+<a href="./" class="site-mark" aria-label="Return to wiki"><span class="brand-icon" aria-hidden="true">✦</span><span>EMERALD: LEGENDS <small>WIKI</small></span></a>
+<nav aria-label="Wiki navigation"><a href="./">Wiki home</a><a href="../index.html">Game site</a></nav>
+</div></header>
+<div class="shell">
+  <section class="hero">
+    <div class="hero-badge"><span class="pokedot" aria-hidden="true">◉</span> THE LEGENDS FIELD GUIDE</div>
+    <h1>Pokédex <span>&amp;</span> Encounters</h1>
+    <p>A field guide for every curious trainer. Discover which Pokémon live on each route, their levels and encounter chances — straight from Emerald: Legends.</p>
+    <div class="hero-meta"><span id="version-meta">Based on Legends encounter tables</span><span>Updated on request</span></div>
+  </section>
+  <section class="tools" aria-label="Browse controls">
+    <div class="view-tabs" role="tablist" aria-label="Browse by">
+      <button id="tab-routes" role="tab" aria-selected="true" aria-controls="results" class="selected" data-view="routes"><span aria-hidden="true">⌁</span> Wild encounters</button>
+      <button id="tab-species" role="tab" aria-selected="false" aria-controls="results" data-view="species"><span aria-hidden="true">◈</span> National Pokédex</button>
+    </div>
+    <div class="search-wrap">
+      <span class="search-icon" aria-hidden="true">⌕</span>
+      <input id="search" type="search" autocomplete="off" spellcheck="false" placeholder="Search a route or Pokémon…" aria-label="Search a route or Pokémon">
+      <button type="button" id="clear-search" aria-label="Clear search" hidden>✕</button>
+    </div>
+    <div class="filters">
+      <fieldset id="region-filters" class="chips" aria-label="Region">
+        <legend>Region</legend>
+        <button type="button" data-region="all" class="active" aria-pressed="true">All regions</button>
+        <button type="button" data-region="Hoenn" aria-pressed="false">Hoenn</button>
+        <button type="button" data-region="Kanto" aria-pressed="false">Kanto</button>
+      </fieldset>
+      <label class="method-box" id="method-box">Encounter type
+        <select id="method" aria-label="Encounter type">
+          <option value="all">All methods</option>
+          <option value="land">Land / grass</option>
+          <option value="surf">Surf</option>
+          <option value="rock">Rock Smash</option>
+          <option value="old_rod">Old Rod</option>
+          <option value="good_rod">Good Rod</option>
+          <option value="super_rod">Super Rod</option>
+        </select>
+      </label>
+      <label class="method-box" id="availability-box" hidden>Wild encounter status
+        <select id="availability" aria-label="Wild encounter availability">
+          <option value="all">All Pokémon</option>
+          <option value="wild">Documented wild</option>
+          <option value="unknown">No listed wild location</option>
+        </select>
+      </label>
+      <label class="method-box" id="type-box" hidden>Pokémon type
+        <select id="type" aria-label="Pokémon type"><option value="all">Any type</option></select>
+      </label>
+    </div>
+  </section>
+  <section class="results-toolbar" aria-live="polite"><div><h2 id="results-heading">Wild encounters</h2><p id="results-count">Loading locations…</p></div><button class="info-button" id="about-rates" type="button">ⓘ How rates work</button></section>
+  <main id="results" aria-label="Pokédex results" aria-live="polite"><div class="loading">Preparing your field guide…</div></main>
+  <div class="load-holder"><button type="button" id="more" class="more" hidden>Show more</button></div>
+  <p class="data-note">This guide reflects manually reviewed static encounter tables. Gift Pokémon, scripted events, dynamic overrides and unobtainable locations are not necessarily included. <a href="README.md">Source notes</a></p>
+  <footer>Pokémon Emerald: Legends is an unofficial fan project. © Pokémon belongs to its respective rights holders. <a href="./">Back to the wiki</a></footer>
+</div>
+<nav class="mobile-nav" aria-label="Quick navigation"><button type="button" data-mobileview="routes" class="active">⌁ <span>Routes</span></button><button type="button" data-mobileview="species">◈ <span>Pokédex</span></button><a href="./">✦ <span>Wiki</span></a></nav>
+<dialog id="detail" aria-label="Pokémon details"><div class="dialog-body"><div id="detail-content"></div><button id="close-detail" type="button" class="close-detail" aria-label="Close Pokémon details">✕</button></div></dialog>
+<dialog id="help" aria-label="Understanding encounter percentages"><div class="help-dialog"><h2>Understanding encounter rates</h2><p><strong>Spawn %</strong> is a Pokémon's share of encounters for that particular method after an encounter happens. It is <em>not</em> a chance per step.</p><p>Land, Surf, Rock Smash, Old Rod, Good Rod and Super Rod have separate weighted tables. Where the same species appears in several slots, the percentage is combined and the minimum/maximum levels are displayed.</p><p>These are static tables. Story conditions, temporary overrides and other special encounters may behave differently. The original FireRed encounter tables for unopened locations are excluded.</p><button id="close-help" class="more" type="button">Got it</button></div></dialog>
+<script src="dex.js" defer></script>
+</body></html>
