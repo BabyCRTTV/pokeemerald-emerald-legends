@@ -284,15 +284,9 @@ LegendsKanto_ROUTE8_Trainer::
 	trainerbattle_single TRAINER_LEGENDS_KANTO_ROUTE8, LegendsKanto_Text_RouteIntro, LegendsKanto_Text_RouteDefeat
 	goto LegendsKanto_RouteTrainer_After
 
-LegendsKanto_ROUTE16_Trainer::
-	lock
-	faceplayer
-	checktrainerflag TRAINER_LEGENDS_KANTO_ROUTE16
-	goto_if TRUE, LegendsKanto_RouteTrainer_After
-	msgbox LegendsKanto_Text_RouteOffer, MSGBOX_YESNO
-	goto_if_eq VAR_RESULT, NO, LegendsKanto_RouteTrainer_Decline
-	trainerbattle_single TRAINER_LEGENDS_KANTO_ROUTE16, LegendsKanto_Text_RouteIntro, LegendsKanto_Text_RouteDefeat
-	goto LegendsKanto_RouteTrainer_After
+LegendsKanto_ROUTE16_Birdwatcher::
+	msgbox LegendsKanto_Text_Birdwatcher, MSGBOX_NPC
+	end
 
 LegendsKanto_ROUTE17_Trainer::
 	lock
@@ -304,15 +298,9 @@ LegendsKanto_ROUTE17_Trainer::
 	trainerbattle_single TRAINER_LEGENDS_KANTO_ROUTE17, LegendsKanto_Text_RouteIntro, LegendsKanto_Text_RouteDefeat
 	goto LegendsKanto_RouteTrainer_After
 
-LegendsKanto_ROUTE18_Trainer::
-	lock
-	faceplayer
-	checktrainerflag TRAINER_LEGENDS_KANTO_ROUTE18
-	goto_if TRUE, LegendsKanto_RouteTrainer_After
-	msgbox LegendsKanto_Text_RouteOffer, MSGBOX_YESNO
-	goto_if_eq VAR_RESULT, NO, LegendsKanto_RouteTrainer_Decline
-	trainerbattle_single TRAINER_LEGENDS_KANTO_ROUTE18, LegendsKanto_Text_RouteIntro, LegendsKanto_Text_RouteDefeat
-	goto LegendsKanto_RouteTrainer_After
+LegendsKanto_ROUTE18_Birdwatcher::
+	msgbox LegendsKanto_Text_Birdwatcher, MSGBOX_NPC
+	end
 
 LegendsKanto_RouteTrainer_After::
 	msgbox LegendsKanto_Text_RouteAfter, MSGBOX_DEFAULT
@@ -330,3 +318,9 @@ LegendsKanto_Text_RouteDefeat:
 LegendsKanto_Text_RouteAfter:
 	.string "Pick the GYM team that suits\n"
 	.string "you. Both choices count.$"
+
+LegendsKanto_Text_Birdwatcher:
+	.string "A bright wing crossed these\n"
+	.string "hills. It was gone in a flash.\p"
+	.string "KOGA has heard the reports.\n"
+	.string "Could it be a migrating bird?$"

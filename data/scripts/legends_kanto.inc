@@ -514,7 +514,7 @@ LegendsKanto_Text_RoadSign:
 	.string "ROUTE 11 - East\n"
 	.string "ROUTE 6 - North$"
 
-@ Foundation maps deliberately have no NPCs, gifts, trainers or encounters.
+@ Transition shared by the original foundation and later populated chapters.
 LegendsKanto_Foundation_OnTransition::
 	setrespawn HEAL_LOCATION_LEGENDS_KANTO_VERMILION
 	end

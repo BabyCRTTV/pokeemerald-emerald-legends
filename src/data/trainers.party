@@ -17006,7 +17006,7 @@ Pic: Leader Lt Surge Frlg
 Gender: Male
 Music: Intense
 Double Battle: No
-AI: Check Bad Move / Try To Faint / Check Viability / Setup First Turn
+AI: Check Bad Move / Try To Faint / Check Viability
 
 Electrode @ Sitrus Berry
 Level: 72
@@ -17124,7 +17124,7 @@ Pic: Leader Koga Frlg
 Gender: Male
 Music: Intense
 Double Battle: No
-AI: Check Bad Move / Try To Faint / Check Viability / Setup First Turn
+AI: Check Bad Move / Try To Faint / Check Viability
 
 Weezing @ Sitrus Berry
 Level: 76
@@ -17303,45 +17303,6 @@ EVs: 40 HP / 40 Atk / 40 SpA / 40 Spe
 - Will-O-Wisp
 - Nasty Plot
 
-=== TRAINER_LEGENDS_KANTO_ROUTE16 ===
-Name: REED
-Class: Cooltrainer
-Pic: Cooltrainer M
-Gender: Male
-Music: Intense
-Double Battle: No
-AI: Check Bad Move / Try To Faint / Check Viability
-
-Fearow @ Sitrus Berry
-Level: 56
-Ability: Keen Eye
-Nature: Jolly
-EVs: 40 HP / 40 Atk / 40 SpA / 40 Spe
-- Drill Peck
-- Drill Run
-- U-turn
-- Roost
-
-Dodrio @ Sitrus Berry
-Level: 57
-Ability: Early Bird
-Nature: Jolly
-EVs: 40 HP / 40 Atk / 40 SpA / 40 Spe
-- Drill Peck
-- Tri Attack
-- Jump Kick
-- Quick Attack
-
-Snorlax @ Sitrus Berry
-Level: 58
-Ability: Thick Fat
-Nature: Careful
-EVs: 40 HP / 40 Atk / 40 SpA / 40 Spe
-- Body Slam
-- Crunch
-- Rest
-- Sleep Talk
-
 === TRAINER_LEGENDS_KANTO_ROUTE17 ===
 Name: AXEL
 Class: Cooltrainer
@@ -17380,42 +17341,3 @@ EVs: 40 HP / 40 Atk / 40 SpA / 40 Spe
 - Rock Slide
 - Bullet Punch
 - Knock Off
-
-=== TRAINER_LEGENDS_KANTO_ROUTE18 ===
-Name: FINN
-Class: Cooltrainer
-Pic: Cooltrainer M
-Gender: Male
-Music: Intense
-Double Battle: No
-AI: Check Bad Move / Try To Faint / Check Viability
-
-Pidgeot @ Sitrus Berry
-Level: 58
-Ability: Keen Eye
-Nature: Timid
-EVs: 40 HP / 40 Atk / 40 SpA / 40 Spe
-- Air Slash
-- Roost
-- Heat Wave
-- Quick Attack
-
-Fearow @ Sitrus Berry
-Level: 59
-Ability: Keen Eye
-Nature: Jolly
-EVs: 40 HP / 40 Atk / 40 SpA / 40 Spe
-- Drill Peck
-- Drill Run
-- U-turn
-- Roost
-
-Dodrio @ Sitrus Berry
-Level: 60
-Ability: Early Bird
-Nature: Jolly
-EVs: 40 HP / 40 Atk / 40 SpA / 40 Spe
-- Drill Peck
-- Tri Attack
-- Jump Kick
-- Quick Attack

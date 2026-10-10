@@ -61,6 +61,12 @@ class ChallengeTests(unittest.TestCase):
    for c in d['coord_events']:self.assertFalse(block(c['x'],c['y'])&0xC00)
    self.assertEqual(d['object_events'][0]['graphics_id'],'OBJ_EVENT_GFX_LT_SURGE' if gym=='Surge' else 'OBJ_EVENT_GFX_KOGA')
    for o in d['object_events']:self.assertFalse(block(o['x'],o['y'])&0xC00,(name,o))
+ def test_trainer_ids_fit_existing_save_flag_space(self):
+  constants=(R/'include/constants/opponents.h').read_text();ids=dict(re.findall(r'#define (TRAINER_LEGENDS_KANTO_\w+)\s+(\d+)',constants))
+  source=(R/'src/data/trainers.party').read_text();names=re.findall(r'^=== (TRAINER_LEGENDS_KANTO_\w+) ===',source,re.M)
+  self.assertEqual(len(names),9);self.assertEqual(len({ids[n] for n in names}),9)
+  self.assertTrue(all(int(ids[n])<864 for n in names));self.assertIn('#define MAX_TRAINERS_COUNT_EMERALD 864',constants)
+  self.assertNotIn(' / Setup First Turn',source.split('/* Legends visiting-Gym teams:')[1])
  def test_gym_raw_graphics_visible_to_emerald(self):
   active=subprocess.check_output(['cpp','-P','-DIS_FRLG=0',str(R/'src/data/object_events/object_event_graphics.h')],text=True)
   for name in ('LtSurge','Koga','GymGuy'):self.assertIn('const u16 gObjectEventPic_'+name+'[]',active)

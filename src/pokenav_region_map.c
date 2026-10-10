@@ -848,6 +848,7 @@ static u32 LoopedTask_SwitchRegion(s32 taskState)
         }
         UpdateMapSecInfoWindow(gfx);
         UpdateRegionMapHelpBarText();
+        LoadLeftHeaderGfxForIndex(POKENAV_GFX_MAP_MENU_ZOOMED_OUT);
         UpdateRegionMapRightHeaderTiles(POKENAV_GFX_MAP_MENU_ZOOMED_OUT);
         return LT_INC_AND_PAUSE;
     case 4:

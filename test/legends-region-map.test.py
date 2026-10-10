@@ -67,6 +67,7 @@ static void CreateRegionMapPlayerIcon(int a,int b){playerIcons++;}
 static void TrySetPlayerIconBlink(void){}
 static void UpdateMapSecInfoWindow(struct Pokenav_RegionMapGfx *g){}
 static void UpdateRegionMapHelpBarText(void){}
+static void LoadLeftHeaderGfxForIndex(int x){}
 static void UpdateRegionMapRightHeaderTiles(int x){}
 static bool IsDma3ManagerBusyWithBgCopy_(struct Pokenav_RegionMapGfx *g){return bgBusy;}
 static bool WaitForHelpBar(void){return false;}

@@ -8,7 +8,7 @@ Visit Oak's field aide in Vermilion Fan Club. The aide introduces the Wing Surve
 
 Complete Lt. Surge and Koga's visiting challenges in either order. Surge reports unusual readings near the Power Plant; Koga reports cold winds at Seafoam and a third bird sighting. Return to the aide to complete the first report and hear the tentative Mew lead. The aide explicitly identifies the next expedition as future development content. There are no new legendary battles in this version.
 
-The new road loop is Vermilion → Route 6 → Saffron → Route 7 → Celadon → Routes 16–18 → Fuchsia → Routes 15–11 via Lavender → Vermilion, with Route 8 connecting Lavender and Saffron. Walking and normal Emerald bikes work on the western road; the old FRLG forced Cycling Road state is not imported. Wild species distributions reuse the upstream FireRed tables with postgame levels (47–54), on Routes 6–8 and 11–19. Six optional trainers occupy Routes 6–8 and 16–18. Native Cut obstacles retain ordinary Emerald progression.
+The new road loop is Vermilion → Route 6 → Saffron → Route 7 → Celadon → Routes 16–18 → Fuchsia → Routes 15–11 via Lavender → Vermilion, with Route 8 connecting Lavender and Saffron. Walking and normal Emerald bikes work on the western road; the old FRLG forced Cycling Road state is not imported. Wild species distributions reuse the upstream FireRed tables with postgame levels (47–54), on Routes 6–8 and 11–19. Four optional trainers occupy Routes 6–8 and 17; birdwatchers on Routes 16/18 provide survey clues. Native Cut obstacles retain ordinary Emerald progression.
 
 Lavender, Fuchsia, Saffron and Celadon Centers have nurses. Their upper floors and unused city interiors retain the existing development closures. The remaining Gyms and unbuilt northern/western regions are not implied to be complete.
 
@@ -68,12 +68,13 @@ Finish with a concise acknowledgement from Oak, Birch and the League. Preserve o
 ## Implementation and saves
 
 - `data/scripts/legends_kanto_challenge.inc`: self-contained Gym and survey scripts, included explicitly for Emerald from `data/event_scripts.s`.
-- `src/data/trainers.party`: distinct Standard/Champion parties and six optional route trainers; uses the expansion's party parser and native Leader artwork.
+- `src/data/trainers.party`: distinct Standard/Champion parties and four optional route trainers; uses the expansion's party parser and native Leader artwork.
 - `data/legends_kanto_chapter1.json`: the 18 appended native-map imports and two active Gyms. The old foundation manifest remains a record of the earlier 30 imports.
+- Trainer IDs 856–863 use the eight remaining native Emerald trainer-flag slots. `MAX_TRAINERS_COUNT_EMERALD` remains 864, so the system-flag addresses and save layout do not move. Later chapters must plan a separate trainer-flag allocation strategy before adding more battles; do not simply grow MAX and shift existing saved system flags.
 - Gym completion bits `0x26E–0x275`: reserved once per named Leader, separate from all Hoenn badge and native FRLG states. Only Surge/Koga are set now.
 - Survey started/report bits `0x276/0x277`. Reports check both Gym completion flags, so doing a Gym before meeting the aide still works.
 - Saved choice vars `0x40B8`/`0x40BB`: 0 unset, 1 Standard, 2 Champion. Old saves default to unset. `VAR_TEMP_0` prevents the entrance trigger from repeating during that map visit; every doorway lane is covered. No SaveBlock resizing.
-- PokeNav `displayRegion`: transient map-screen state. SELECT toggles Hoenn/Kanto after `FLAG_SYS_GAME_CLEAR`, including from zoomed views. Fade, native zoom reset and graphics reload run as a looped task. Cursor lookup follows the displayed map; player marker and Fly only apply to the actual region. Fly/wall/Pokedex screens initialize independently. Browsing the full Kanto map does not assert that every location is implemented.
+- PokeNav `displayRegion`: transient map-screen state. SELECT toggles Hoenn/Kanto after `FLAG_SYS_GAME_CLEAR`, including from zoomed views. The existing banner frame is retained, with the region name rendered by the native font. Fade, native zoom reset and graphics reload run as a looped task. Cursor lookup follows the displayed map; player marker and Fly only apply to the actual region. Fly/wall/Pokedex screens initialize independently. Browsing the full Kanto map does not assert that every location is implemented.
 - Connections back into Saffron point at the real Legends city with its proper offsets, replacing the FRLG dummy connection map. Gate warp slots are preserved; old Legends map IDs are append-only.
 
 ## Validation and manual playtest
