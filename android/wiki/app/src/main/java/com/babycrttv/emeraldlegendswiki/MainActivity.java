@@ -26,7 +26,7 @@ import android.widget.Toast;
  * This app only reads the curated public wiki over HTTPS.
  */
 public final class MainActivity extends Activity {
-    private static final String HOME = "https://babycrttv.github.io/pokeemerald-emerald-legends/wiki/";
+    private static final String HOME = "https://babycrttv.github.io/pokeemerald-emerald-legends/wiki/dex.html";
     private static final String TRUSTED_HOST = "babycrttv.github.io";
     private static final String UPDATE_MANIFEST = "https://babycrttv.github.io/pokeemerald-emerald-legends/wiki/android-version.json";
     private static final String TRUSTED_PATH = "/pokeemerald-emerald-legends/wiki/";

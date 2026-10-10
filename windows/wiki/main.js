@@ -3,7 +3,7 @@ const {app, BrowserWindow, shell, dialog, Menu} = require("electron");
 const path = require("node:path");
 const {URL} = require("node:url");
 
-const HOME = "https://babycrttv.github.io/pokeemerald-emerald-legends/wiki/";
+const HOME = "https://babycrttv.github.io/pokeemerald-emerald-legends/wiki/dex.html";
 const HOME_ORIGIN = "https://babycrttv.github.io";
 const WIKI_PREFIX = "/pokeemerald-emerald-legends/wiki/";
 let mainWindow = null;

@@ -77,10 +77,10 @@
  .top .top-inner{flex-wrap:nowrap}.top .navlinks .secondary-nav{display:none}
  .hero{padding:24px}.hero h1{font-size:clamp(28px,4.5vw,38px);margin:8px 0 10px}
  .hero p{font-size:14px;line-height:1.6;margin-bottom:14px}
- .mobile-nav{grid-template-columns:repeat(3,minmax(0,1fr));--quick-nav-height:66px}
+ .mobile-nav{grid-template-columns:repeat(2,minmax(0,1fr));--quick-nav-height:66px}
  .mobile-nav a{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:50px;gap:1px;color:#7c6993;text-decoration:none;font-size:20px;border-radius:13px}
  .mobile-nav a span{font-size:12px;font-weight:800}
- html.legends-wiki-android .wiki-mobile-nav{grid-template-columns:repeat(3,minmax(0,1fr));--quick-nav-height:66px}
+ html.legends-wiki-android .wiki-mobile-nav{grid-template-columns:repeat(2,minmax(0,1fr));--quick-nav-height:66px}
  .wiki-mobile-nav a{background:none;border-color:transparent;color:#7c6993}
  .wiki-mobile-nav a[aria-current]{background:#eee5fb;border-color:#dfcdf3;color:#5d418a}
 }
@@ -90,7 +90,7 @@
  .topic-cards{gap:10px}.topic-count{margin-top:9px}.searchrow{margin-top:16px}
  .hero{padding:20px}.hero h1{font-size:30px}.hero-badge{font-size:10px;letter-spacing:1px}.hero p{font-size:13px}
 }
-@media(hover:none) and (pointer:coarse){.mobile-nav{grid-template-columns:repeat(3,minmax(0,1fr))}html.legends-wiki-android .wiki-mobile-nav{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(hover:none) and (pointer:coarse){.mobile-nav{grid-template-columns:repeat(2,minmax(0,1fr))}html.legends-wiki-android .wiki-mobile-nav{grid-template-columns:repeat(2,minmax(0,1fr))}}
 
 .cry-sprite{border:0;background:transparent;padding:0;flex:none;cursor:pointer;border-radius:12px;min-width:48px;min-height:48px;display:grid;place-items:center;color:inherit}
 .cry-sprite:hover,.cry-sprite.playing{background:#eee5fb;outline:2px solid #b69ad9;outline-offset:1px}
@@ -101,9 +101,21 @@
 /* Programmatic article focus supports screen readers without framing the entire page. */
 #content:focus{outline:none}
 @media(max-width:640px){
- .top .navlinks .dex-link{display:none}
  .top .brand{font-size:clamp(12px,3.2vw,14px)}
 }
 @media(min-width:620px) and (max-width:1100px){
  .cards{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+
+/* The top shortcut switches between the player guide and LegendsDex. */
+.wiki-brand-compact,.switch-short{display:none}
+.top .navlinks .dex-link{display:inline-flex}
+.topbar .dex-tools .guide-link{display:inline-flex;background:#694795;color:#fff;border-color:#694795;white-space:nowrap}
+@media(max-width:640px){
+ .wiki-brand-full,.switch-full{display:none}.wiki-brand-compact,.switch-short{display:inline}
+ .top .brand{font-size:12px}.top .navlinks .dex-link{font-size:11px;padding:6px 8px}
+ .topbar .dex-brand-full{display:none}.topbar .dex-brand-compact{display:inline;font-size:12px}
+ .topbar .site-mark .brand-icon{display:none}
+ .topbar .dex-tools>.guide-link:first-child{display:inline-flex}
+ .topbar .dex-tools .guide-link{font-size:12px;padding:7px 9px}
 }
