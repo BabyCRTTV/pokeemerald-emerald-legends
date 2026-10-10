@@ -1,0 +1,1 @@
+"use strict";document.getElementById("header-search")?.addEventListener("click",()=>{const target=document.getElementById("search");if(target){target.focus();target.scrollIntoView({block:"center",behavior:"smooth"});}});

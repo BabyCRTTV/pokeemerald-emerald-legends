@@ -18,10 +18,20 @@ button,input{font:inherit}.top{background:rgba(251,249,255,.98);border-bottom:1p
 footer{max-width:1380px;margin:auto;padding:0 22px 32px;font-size:12px;color:var(--muted)}:focus-visible{outline:3px solid var(--focus);outline-offset:3px}
 #menu{display:none}@media(max-width:1150px){.layout{grid-template-columns:235px minmax(0,1fr)}.right{display:none}}@media(max-width:750px){.top-inner{padding:9px 14px;gap:7px}.brand{font-size:14px}.mark{width:32px;height:32px;font-size:18px}.navlinks{width:100%;gap:1px;margin:0}.navlinks a,.navlinks button{padding:6px 9px;font-size:12px}#menu{display:block}.layout{display:block;padding:15px 12px 40px}.sidebar{position:fixed;z-index:12;top:118px;bottom:0;left:0;transform:translateX(-105%);transition:transform .2s;width:min(300px,85vw);height:auto;box-shadow:8px 0 25px #3a295744}.sidebar.open{transform:translateX(0)}.welcome{padding:24px 19px}.cards{grid-template-columns:1fr}.article{padding:23px 19px}.article table{font-size:12px}.welcome h1{font-size:29px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{transition:none!important}}
+
+/* Compact, touch-friendly app actions. Search is the rightmost header action. */
+.navlinks{flex-wrap:nowrap;gap:5px}.navlinks .update-wiki,.navlinks .dex-link,.navlinks .header-search{border-radius:11px;min-height:44px;display:inline-flex;align-items:center;justify-content:center;gap:6px;white-space:nowrap;font-weight:750;font-size:13px;padding:7px 12px;text-decoration:none}
+.navlinks .update-wiki{border:1px solid #d2bde7;color:#614284;background:#f1e9fb}.navlinks .dex-link{background:#644486;color:white;border:1px solid #644486}.navlinks .header-search{width:44px;padding:8px;border:1px solid #dfd2ed;color:#513872;background:white;flex-shrink:0}
+.navlinks .update-wiki:hover,.navlinks .header-search:hover{background:#e7d9f7}.navlinks .dex-link:hover{background:#513576}
+.update-dialog{border:0;border-radius:19px;max-width:min(440px,calc(100vw - 28px));width:100%;padding:0;background:#fff;box-shadow:0 24px 80px #2c175a60;color:var(--ink)}
+.update-dialog::backdrop{background:#26183c99}.update-inner{padding:24px}.update-inner h2{margin:0 0 12px;font-size:22px;line-height:1.25}.update-inner p{font-size:14px;color:var(--muted)}.update-actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:19px}.update-actions button,.update-actions a{border-radius:11px;border:1px solid #ccbaeb;padding:11px 14px;font-weight:750;font-size:13px;text-decoration:none;min-height:44px;background:#f3edfc;color:#573d78;cursor:pointer;display:inline-flex;align-items:center}.update-actions a.primary,.update-actions button.primary{background:#5d4087;color:white;border-color:#5d4087}
+@media(max-width:1100px){.navlinks .secondary-nav{display:none}}
+@media(max-width:750px){.top-inner{flex-wrap:nowrap;gap:6px;min-height:60px;padding:8px 10px}.brand{min-width:0;font-size:12px;white-space:nowrap}.mark{display:none}.navlinks{margin-left:auto;width:auto;gap:3px;flex-wrap:nowrap}.navlinks .update-wiki,.navlinks .dex-link{font-size:11px;padding:6px 7px;min-height:40px}.navlinks .header-search{width:39px;min-height:40px}.navlinks #menu{display:none}.layout{padding-top:14px}.sidebar{display:none}.navlinks .update-wiki span{display:none}}
+@media(max-width:390px){.brand{font-size:10px}.navlinks .update-wiki,.navlinks .dex-link{font-size:10px;padding:5px}.navlinks .header-search{width:36px}}
 </style></head><body>
 <header class="top"><div class="top-inner">
 <a class="brand" href="./" aria-label="Emerald Legends Wiki home"><span class="mark" aria-hidden="true">✦</span><span>EMERALD: LEGENDS <span style="color:#9d84c3">/ WIKI</span></span></a>
-<div class="navlinks"><button type="button" id="menu" aria-expanded="false" aria-controls="sidebar">☰ Articles</button><a href="dex.html" style="background:#e9defa;color:#59407e">◈ Pokédex &amp; Encounters</a><a href="../index.html">Game site</a><a href="../changelog.html">Changelog</a><a href="https://github.com/BabyCRTTV/pokeemerald-emerald-legends">GitHub</a><a class="apk" href="../downloads/Emerald-Legends-Wiki.apk" download>↓ Android APK</a></div>
+<div class="navlinks"><button type="button" id="menu" aria-expanded="false" aria-controls="sidebar">☰ Articles</button><a class="secondary-nav" href="../index.html">Game site</a><a class="secondary-nav" href="../changelog.html">Changelog</a><a class="secondary-nav" href="https://github.com/BabyCRTTV/pokeemerald-emerald-legends">GitHub</a><button type="button" id="update-wiki" class="update-wiki" aria-haspopup="dialog" title="Check for the latest wiki app"><span aria-hidden="true">↻</span> Update Wiki</button><a class="dex-link" href="dex.html">◈ LegendsDex</a><button type="button" id="header-search" class="header-search" aria-label="Search wiki articles" title="Search"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/></svg></button></div>
 </div></header>
 <div class="layout">
 <nav class="sidebar" id="sidebar" aria-label="Wiki articles"></nav>
@@ -29,5 +39,7 @@ footer{max-width:1380px;margin:auto;padding:0 22px 32px;font-size:12px;color:var
 <aside class="right" id="outline" aria-label="On this page"></aside>
 </div>
 <footer>Community-focused documentation for an unofficial non-commercial fan project. No account or login required. Wiki articles update only when the project owner requests a revision.</footer>
+<dialog id="wiki-update-dialog" class="update-dialog" aria-labelledby="update-heading"><div class="update-inner"><h2 id="update-heading">Update Wiki</h2><p id="update-status" role="status" aria-live="polite">Choose your platform to check the latest application version.</p><div id="update-actions" class="update-actions"></div></div></dialog>
+<script src="wiki-updates.js" defer></script>
 <script src="wiki.js" defer></script>
 </body></html>
