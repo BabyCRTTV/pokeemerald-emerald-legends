@@ -75,8 +75,8 @@ static void Draw(u8 taskId)
     }
     // The card's full label gets its own row; its color is shown below.
     Print(1,COMPOUND_STRING(">"),0,(row-top)*14);
-    if (top) Print(1,COMPOUND_STRING("^"),112,0);
-    if (top+6<ARRAY_COUNT(sRows)) Print(1,COMPOUND_STRING("v"),112,70);
+    if (top) Print(1,COMPOUND_STRING("{UP_ARROW}"),112,0);
+    if (top+6<ARRAY_COUNT(sRows)) Print(1,COMPOUND_STRING("{DOWN_ARROW}"),112,70);
     CopyWindowToVram(1,COPYWIN_FULL);
     // Native Trainer Card drawing owns and frees its temporary graphics buffer.
     FillWindowPixelBuffer(2,PIXEL_FILL(0));

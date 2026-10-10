@@ -152,3 +152,7 @@ for house,x in [('Brendans',1),('Mays',7)]:
 assert '.2byte DECOR_LEGENDS_WARDROBE' in (root/'data/maps/Route104_PrettyPetalFlowerShop/scripts.inc').read_text()
 
 assert 'LegendsWardrobe_Text_Home' not in (root/'data/maps/LittlerootTown_BrendansHouse_2F/scripts.inc').read_text()
+
+# Scroll indicators must use native encoded glyphs; ASCII caret is unsupported.
+assert 'COMPOUND_STRING("{UP_ARROW}")' in source and 'COMPOUND_STRING("{DOWN_ARROW}")' in source
+assert 'COMPOUND_STRING("^")' not in source
