@@ -11,3 +11,7 @@ Implementation lives in `src/legends_start_menu.c`, with show/update/hide hooks 
 Save and retire dialogs hide the panel before presenting confirmation text. Submenus, DexNav, link Trainer Card and menu closure release it; returning to the menu recreates it. Window allocation failure leaves the normal menu usable.
 
 Regression: `python3 test/legends-start-menu.test.py` compiles the actual module against engine mocks. Emulator QA should cover indoor/outdoor weather, minute rollover, both animation frames/colors, all four seasons, Safari/Pyramid counters, Debug/DexNav, Save cancel/success, and returning from each submenu.
+
+## Clock sources (v0.0.31)
+
+The panel continues polling while the pause menu is open. REAL TIME is the default; MANUAL is chosen only at the bedroom clock. If no valid RTC is available, 9 AM plus saved played time is used. See [clock.md](clock.md) for source priority and compatibility.

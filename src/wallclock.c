@@ -1,4 +1,5 @@
 #include "global.h"
+#include "legends_clock.h"
 #include "bg.h"
 #include "clock.h"
 #include "decompress.h"
@@ -680,6 +681,7 @@ void CB2_StartWallClock(void)
     u8 taskId;
     u8 spriteId;
 
+    RtcCalcLocalTime();
     LoadWallClockGraphics();
     DecompressDataWithHeaderVram(gWallClockStart_Tilemap, (u16 *)BG_SCREEN_ADDR(7));
 
@@ -852,7 +854,7 @@ static void Task_SetClock_HandleConfirmInput(u8 taskId)
 
 static void Task_SetClock_Confirmed(u8 taskId)
 {
-    RtcInitLocalTimeOffset(gTasks[taskId].tHours, gTasks[taskId].tMinutes);
+    LegendsClockSetManual(gTasks[taskId].tHours, gTasks[taskId].tMinutes);
     BeginNormalPaletteFade(PALETTES_ALL, 0, 0, 16, RGB_BLACK);
     gTasks[taskId].func = Task_SetClock_Exit;
 }

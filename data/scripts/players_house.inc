@@ -54,8 +54,8 @@ LittlerootTown_MaysHouse_2F_EventScript_WallClock::
 
 PlayersHouse_2F_EventScript_WallClock::
 	goto_if_set FLAG_SET_WALL_CLOCK, PlayersHouse_2F_EventScript_CheckWallClock
-	msgbox PlayersHouse_2F_Text_ClockIsStopped, MSGBOX_DEFAULT
-	call PlayersHouse_2F_EventScript_SetWallClock
+	call PlayersHouse_2F_EventScript_ChooseClockMode
+	goto_if_eq VAR_RESULT, 0, PlayersHouse_2F_EventScript_ClockCancelled
 	delay 30
 	setvar VAR_LITTLEROOT_INTRO_STATE, 6
 	setflag FLAG_SET_WALL_CLOCK
@@ -97,10 +97,48 @@ PlayersHouse_2F_EventScript_MomComesUpstairsFemale::
 
 PlayersHouse_2F_EventScript_CheckWallClock::
 	incrementgamestat GAME_STAT_CHECKED_CLOCK
-	fadescreen FADE_TO_BLACK
-	special Special_ViewWallClock
+	call PlayersHouse_2F_EventScript_ChooseClockMode
 	releaseall
 	end
+
+PlayersHouse_2F_EventScript_ClockCancelled::
+    releaseall
+    end
+
+PlayersHouse_2F_EventScript_ChooseClockMode::
+    special LegendsClockBufferTime
+    msgbox PlayersHouse_2F_Text_ClockMode, MSGBOX_DEFAULT
+    multichoice 0, 0, MULTI_LEGENDS_CLOCK_MODE, FALSE
+    goto_if_eq VAR_RESULT, 0, PlayersHouse_2F_EventScript_ConfirmRealTime
+    goto_if_eq VAR_RESULT, 1, PlayersHouse_2F_EventScript_ManualTime
+    setvar VAR_RESULT, 0
+    return
+
+PlayersHouse_2F_EventScript_ConfirmRealTime::
+    msgbox PlayersHouse_2F_Text_ConfirmRealTime, MSGBOX_YESNO
+    goto_if_eq VAR_RESULT, NO, PlayersHouse_2F_EventScript_ClockChoiceCancelled
+    special LegendsClockUseRealTime
+    setvar VAR_RESULT, 1
+    return
+
+PlayersHouse_2F_EventScript_ClockChoiceCancelled::
+    setvar VAR_RESULT, 0
+    return
+
+PlayersHouse_2F_EventScript_ManualTime::
+    call PlayersHouse_2F_EventScript_SetWallClock
+    setvar VAR_RESULT, 1
+    return
+
+PlayersHouse_2F_Text_ClockMode:
+    .string "The clock shows {STR_VAR_1}.\p"
+    .string "Use REAL TIME, or set a MANUAL time?\n"
+    .string "You can change this here anytime.$"
+
+PlayersHouse_2F_Text_ConfirmRealTime:
+    .string "Follow the device's real time?\p"
+    .string "If its clock is unavailable, time starts\n"
+    .string "at 9 AM and advances as you play.$"
 
 PlayersHouse_2F_EventScript_SetWallClock::
 	fadescreen FADE_TO_BLACK

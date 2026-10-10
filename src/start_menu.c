@@ -678,6 +678,36 @@ static void MoveStartMenuCursor(s8 delta)
     CopyWindowToVram(GetStartMenuWindowId(), COPYWIN_FULL);
 }
 
+static u8 sDexNavHelpWindow;
+static bool8 HandleDexNavHelp(void)
+{
+    if (JOY_NEW(A_BUTTON | B_BUTTON | START_BUTTON))
+    {
+        ClearStdWindowAndFrameToTransparent(sDexNavHelpWindow, TRUE);
+        RemoveWindow(sDexNavHelpWindow);
+        gMenuCallback = HandleStartMenuInput;
+    }
+    return FALSE;
+}
+
+static void ShowDexNavHelp(void)
+{
+    static const struct WindowTemplate window = {
+        .bg = 0, .tilemapLeft = 1, .tilemapTop = 1, .width = 12,
+        .height = 9, .paletteNum = 15, .baseBlock = 0x250,
+    };
+    sDexNavHelpWindow = AddWindow(&window);
+    if (sDexNavHelpWindow == WINDOW_NONE)
+        return;
+    FillWindowPixelBuffer(sDexNavHelpWindow, PIXEL_FILL(1));
+    DrawStdWindowFrame(sDexNavHelpWindow, FALSE);
+    AddTextPrinterParameterized(sDexNavHelpWindow, FONT_SMALL,
+        COMPOUND_STRING("DEXNAV works only\nin areas where wild\nPOKéMON are found.\nMove near grass,\nwater, or cave areas.\nA/B: CLOSE"), 2, 0, TEXT_SKIP_DRAW, NULL);
+    PutWindowTilemap(sDexNavHelpWindow);
+    CopyWindowToVram(sDexNavHelpWindow, COPYWIN_FULL);
+    gMenuCallback = HandleDexNavHelp;
+}
+
 static bool8 HandleStartMenuInput(void)
 {
     if (JOY_NEW(DPAD_UP))
@@ -701,8 +731,11 @@ static bool8 HandleStartMenuInput(void)
                 return FALSE;
         }
         if (sCurrentStartMenuActions[sStartMenuCursorPos] == MENU_ACTION_DEXNAV
-          && MapHasNoEncounterData())
+          && !DexNavHasNearbyEncounterArea())
+        {
+            ShowDexNavHelp();
             return FALSE;
+        }
 
         gMenuCallback = sStartMenuItems[sCurrentStartMenuActions[sStartMenuCursorPos]].func.u8_void;
 

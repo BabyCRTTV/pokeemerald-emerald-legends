@@ -1,5 +1,6 @@
 #ifndef GUARD_DATA_H
 #define GUARD_DATA_H
+#include "legends_appearance.h"
 
 #include "constants/moves.h"
 #include "constants/trainers.h"
@@ -386,7 +387,7 @@ static inline enum TrainerPicID SanitizeBackTrainerPic(enum TrainerPicID trainer
 
 static inline const u32 *GetTrainerFrontPicData(enum TrainerPicID trainerPic)
 {
-    return gTrainerPicInfo[SanitizeFrontTrainerPic(trainerPic)].frontPic->imageData;
+    return LegendsFootwearFrontPic(trainerPic, gTrainerPicInfo[SanitizeFrontTrainerPic(trainerPic)].frontPic->imageData);
 }
 
 static inline const u16 *GetTrainerFrontPicPalette(enum TrainerPicID trainerPic)

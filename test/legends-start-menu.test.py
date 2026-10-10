@@ -42,7 +42,7 @@ u16 LegendsAdventureDays(void){return playedDays;}
 u8 *StringCopy(u8 *d,const u8 *s){strcpy((char*)d,(const char*)s);return d;}
 u8 *ConvertIntToDecimalStringN(u8 *d,int n,int mode,int size){sprintf((char*)d,"%d",n);return d;}
 u16 RtcGetErrorStatus(void){return error;}
-void RtcCalcLocalTime(void){rtcReads++;}
+void RtcCalcLocalTime(void){rtcReads++;if(error){gLocalTime.hours=9;gLocalTime.minutes=0;}}
 u8 GetCurrentWeather(void){return weather;}
 u8 LegendsGetActiveSeason(void){return season;}
 const u8 *LegendsGetSeasonName(u8 s){return (const u8 *[]){"SPRING","SUMMER","AUTUMN","WINTER"}[s];}
@@ -74,7 +74,7 @@ playedDays=2;gLocalTime.hours=12;gLocalTime.minutes=0;weather=WEATHER_RAIN;seaso
 for(int i=0;i<60;i++) LegendsUpdateStartMenuPanel();
 assert(!strcmp(texts[0],"DAY 2"));
 assert(!strcmp(texts[1],"12:00 PM")&&!strcmp(texts[2],"WINTER")&&sLastIcon==ICON_RAIN);
-error=1;for(int i=0;i<60;i++) LegendsUpdateStartMenuPanel();assert(!strcmp(texts[1],"--:--"));
+error=1;for(int i=0;i<60;i++) LegendsUpdateStartMenuPanel();assert(!strcmp(texts[1],"09:00 AM"));
 assert(GetWeatherIcon()==ICON_RAIN);
 weather=WEATHER_SUNNY;timeOfDay=TIME_NIGHT;assert(GetWeatherIcon()==ICON_MOON);
 timeOfDay=TIME_DAY;assert(GetWeatherIcon()==ICON_SUN);

@@ -4,7 +4,7 @@ Introduced in v0.0.23, refined in v0.0.24, costumes added in v0.0.25; shared by 
 
 A small clothes box using Emerald’s native moving-box artwork stands directly beneath the bed in your Littleroot bedroom. Face it from an adjacent tile and press A. Your rival’s wardrobe remains private. Interaction opens customization directly.
 
-Use Up/Down to select OUTFIT, COSTUMES, SCARF, JACKET, APPLY or CANCEL. Left/Right cycles a setting; A also cycles the selected setting. The native trainer portrait updates immediately. APPLY keeps all pending changes; CANCEL or B discards them. Closing restores the field through the native map reload, so player graphics and reflections rebuild together. Your skin tone is retained.
+Use Up/Down to scroll through OUTFIT, COSTUMES, SCARF, JACKET, SHOES, TRAINER CARD, APPLY and CANCEL. Six rows are visible at once; the cursor wraps and follows the viewport. Left/Right cycles a setting; A also cycles the selected setting. The native trainer portrait updates immediately. APPLY keeps all pending changes; CANCEL or B discards them. Closing restores the field through the native map reload, so player graphics and reflections rebuild together. Your skin tone is retained.
 
 | Setting | Choices |
 | --- | --- |
@@ -12,6 +12,8 @@ Use Up/Down to select OUTFIT, COSTUMES, SCARF, JACKET, APPLY or CANCEL. Left/Rig
 | Costumes | None, Team Magma, Team Aqua |
 | Added scarf | None, Crimson, Ocean, Emerald, Lavender, Cream |
 | Jacket | None, Navy |
+| Shoes | Original, Red, Blue, Green, White, Purple, Light-brown boots, Black boots |
+| Trainer Card | Original, Emerald, Ocean, Crimson, Lavender, Gold, Rose, Slate |
 
 Scarf and jacket settings combine independently with all five outfits, both genders and the five existing skin tones. The Lavender outfit’s original cream neck trim remains part of that design when no added accessory is chosen; added scarves override its collar. The navy jacket has short sleeves and a visible center seam. Original Emerald gloves remain; custom outfits keep bare hands.
 
@@ -48,3 +50,13 @@ SCARF and JACKET display FIXED while a costume is active to preserve the full un
 `build_costumes.py` compiles independent 4bpp packs, frame tables and palettes. Its native uniform/front fidelity and frame/face/held-object checks run in project CI. Male Sport shorts now have explicit cloth hem stripes rather than recoloring entire trouser sections into skin.
 
 Emulator QA: test every costume for each gender/tone, all directions and action states, mirrors/reflections, all battle throws and Trainer Cards; save/reset/continue, costume/normal switching, accessories restored from costume mode, Cancel and new-game reset. Host tests/build verification do not replace visual playtesting.
+
+## Footwear and card colors (v0.0.31)
+
+Boots use taller cuffed shafts and shaped toes/soles, rather than the shoe silhouette with a brown/black tint. Shoes preserve native rounded toes. The live trainer portrait previews both genders and all ordinary outfits; footwear follows native movement poses. Boots/shoes stay hidden under the native Surf/diving presentation where feet are covered. Throw portraits keep their normal crop, with palette shadow remapping to prevent footwear colors leaking into hair or clothing. Team costumes retain fixed native footwear; switch back to an outfit to customize shoes.
+
+Trainer Card colors show a small live swatch below the portrait. They recolor the local card’s paper/frame accents without changing text, badges or achievement stars. Link cards remain native. APPLY saves shoes/card colors alongside the existing choices; B/CANCEL discards pending edits. Old saves default to Original.
+
+Authoring uses `tools/legends/build_footwear.py`; generated masks live in `graphics/legends/footwear/masks.bin`. The runtime compositor caches native frames without expanding the 16-color player palettes; two shadow shades map to their nearest existing colors before dedicated footwear colors are applied. Skin and red Poké Balls retain separate palette slots. Actual-C checks exercise all native pose tables and protected pixels.
+
+The overworld compositor uses one 13.5 KiB bank sized by the generated native pose metadata. Only the local player uses custom overworld graphics; NPC/link art remains separate. This covers the largest 27-frame Acro Bike sequence within the GBA RAM budget.

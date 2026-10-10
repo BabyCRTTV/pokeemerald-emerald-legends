@@ -1133,6 +1133,12 @@ struct MultichoiceListStruct
     u8 count;
 };
 
+static const struct MenuAction sLegendsClockModes[] = {
+    {COMPOUND_STRING("REAL TIME")},
+    {COMPOUND_STRING("MANUAL")},
+    {COMPOUND_STRING("CANCEL")},
+};
+
 static const struct MultichoiceListStruct sMultichoiceLists[] =
 {
     [MULTI_BRINEY_ON_DEWFORD]          = MULTICHOICE(MultichoiceList_BrineyOnDewford),
@@ -1267,6 +1273,7 @@ static const struct MultichoiceListStruct sMultichoiceLists[] =
     [MULTI_GAME_CORNER_TMPRIZES]           = MULTICHOICE(sMultichoiceList_GameCornerTMPrizes),
     [MULTI_GAME_CORNER_BATTLE_ITEM_PRIZES] = MULTICHOICE(sMultichoiceList_GameCornerBattleItemPrizes),
     [MULTI_DEPT_STORE_ELEVATOR]            = MULTICHOICE(sMultichoiceList_DeptStoreElevator),
+    [MULTI_LEGENDS_CLOCK_MODE] = MULTICHOICE(sLegendsClockModes),
     [MULTI_GAME_CORNER_COIN_PURCHASE_COUNTER] = MULTICHOICE(sMultichoiceList_GameCornerCoinPurchaseCounter),
     [MULTI_LINKED_DIRECT_UNION]         = MULTICHOICE(sMultichoiceList_LinkedDirectUnion),
     [MULTI_CELADON_VENDING_MACHINE]           = MULTICHOICE(sMultichoiceList_CeladonVendingMachine),

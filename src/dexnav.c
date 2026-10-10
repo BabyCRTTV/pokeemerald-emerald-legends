@@ -572,6 +572,28 @@ static void DexNavProximityUpdate(void)
 }
 
 //Pick a specific tile based on environment
+bool8 DexNavHasNearbyEncounterArea(void)
+{
+    u32 header = GetCurrentMapWildMonHeaderId();
+    s16 x, y;
+    bool8 land, water;
+    if (header == HEADER_NONE)
+        return FALSE;
+    land = gWildMonHeaders[header].encounterTypes[GetTimeOfDayForEncounters(header, WILD_AREA_LAND)].landMonsInfo != NULL;
+    water = gWildMonHeaders[header].encounterTypes[GetTimeOfDayForEncounters(header, WILD_AREA_WATER)].waterMonsInfo != NULL;
+    // Same map-grid coordinates and scan rectangle as the native search.
+    for (y = gSaveBlock1Ptr->pos.y; y < gSaveBlock1Ptr->pos.y + SCANSIZE_Y; y++)
+        for (x = gSaveBlock1Ptr->pos.x; x < gSaveBlock1Ptr->pos.x + SCANSIZE_X; x++)
+        {
+            u8 behavior = MapGridGetMetatileBehaviorAt(x, y);
+            if (!MapGridGetCollisionAt(x, y)
+             && ((land && MetatileBehavior_IsLandWildEncounter(behavior))
+              || (water && MetatileBehavior_IsSurfableWaterOrUnderwater(behavior))))
+                return TRUE;
+        }
+    return FALSE;
+}
+
 static bool8 DexNavPickTile(enum EncounterType environment, u8 areaX, u8 areaY, bool8 smallScan)
 {
     // area of map to cover starting from camera position {-7, -7}
@@ -1057,26 +1079,7 @@ bool32 OnStep_DexNavSearch(void)
         }
     }
 
-    if (sDexNavSearchDataPtr->proximity <= CREEPING_PROXIMITY && !gPlayerAvatar.creeping && frameCount > 60)
-    { //should be creeping but player walks normally
-        if (sDexNavSearchDataPtr->hiddenSearch)
-        {
-            EndDexNavSearch();
-            return FALSE;
-        }
-        else
-        {
-            EndDexNavSearchSetupScript(EventScript_MovedTooFast);
-            return TRUE;
-        }
-    }
-
-    if (sDexNavSearchDataPtr->proximity <= SNEAKING_PROXIMITY && TestPlayerAvatarFlags(PLAYER_AVATAR_FLAG_DASH | PLAYER_AVATAR_FLAG_BIKE))
-    { // running/biking too close
-        //always do event script, even if player hasn't revealed a hidden mon. It's assumed they would be creeping towards it
-        EndDexNavSearchSetupScript(EventScript_MovedTooFast);
-        return TRUE;
-    }
+    // Legends: approaching at any movement speed does not scare the Pokémon.
 
     if (frameCount > DEXNAV_TIMEOUT * 60)
     { // player took too long

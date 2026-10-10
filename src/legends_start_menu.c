@@ -171,7 +171,7 @@ void LegendsUpdateStartMenuPanel(void)
         return;
     }
     sRefreshFrames = 59;
-    clockValid = !(RtcGetErrorStatus() & (RTC_ERR_FLAG_MASK | RTC_INIT_ERROR));
+    clockValid = TRUE; // Effective clock includes the final-priority played-time fallback.
     hour = minute = 0;
     if (clockValid)
     {

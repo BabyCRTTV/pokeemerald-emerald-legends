@@ -69,6 +69,7 @@ enum EncounterType
 #define DEXNAV_MASK_SPECIES         0x3FFF  // First 14 bits
 #define DEXNAV_MASK_ENVIRONMENT     0xC000  // Last two bit
 
+bool8 DexNavHasNearbyEncounterArea(void);
 void EndDexNavSearch(void);
 void Task_OpenDexNavFromStartMenu(u8 taskId);
 bool32 TryStartDexNavSearch(void);

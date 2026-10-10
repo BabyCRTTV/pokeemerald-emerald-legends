@@ -4,6 +4,26 @@ All notable Pokémon Emerald: Legends project changes are documented here.
 
 For build-specific player views, see [CHANGELOG-RELEASE.md](CHANGELOG-RELEASE.md) and [CHANGELOG-DEBUG.md](CHANGELOG-DEBUG.md). The canonical history below records the project as a whole.
 
+## [0.0.31] - 2026-10-10
+
+### Added
+- Scrolling wardrobe categories with SHOES and TRAINER CARD. Footwear adds red, blue, green, white and purple shoes plus light-brown and black boots; Original remains available. Boots have separate tall shafts, cuffs, toes and soles in the live portrait and pose-local overworld overlays.
+- Seven custom Trainer Card colors: Emerald, Ocean, Crimson, Lavender, Gold, Rose and Slate, plus Original. A small live color swatch appears below the wardrobe portrait. Star counts, badges and link cards retain native behavior.
+- A dismissible top-left DexNav instruction window when there is no nearby wild-encounter terrain with matching map encounters.
+- REAL TIME (default) and MANUAL clock choices at the bedroom clock, available on the first visit and later visits. Real time follows the emulator/device RTC without the old introductory offset. If a valid RTC is unavailable, the clock starts at 9 AM plus saved accumulated playtime; fallback continues past the native 999-hour timer cap.
+
+### Changed and fixed
+- DexNav Pokémon no longer flee when approached by walking, running or cycling; search timeout increases from 15 to 45 seconds. Cancellation, out-of-range signal loss and battle initiation retain native behavior.
+- The pause clock continues polling once per second and redraws on minute rollover, including the fallback clock. Opening the pause menu does not stop the underlying RTC or playtime clock.
+- The introductory bedroom clock confirms the current time instead of resetting it. Manual adjustment is confined to the bedroom clock in normal gameplay. Invalid RTC months and out-of-range hours/minutes/seconds are rejected safely.
+
+### Compatibility and validation
+- Existing saves keep their original footwear/card color until changed; outfits, skin tones, scarves and jackets remain supported. Native Team Magma/Aqua costumes keep fixed footwear, as they do fixed accessories. No save layout or link-protocol changes; settings use verified-unreferenced native variable slots.
+- Actual-C host checks cover wardrobe scrolling/wrap/apply/cancel, cosmetic save defaults, native footwear poses and palette protection, card colors, nearby DexNav terrain, RTC/manual/fallback priority, minute rollover and saved fallback ticking. Native-art footwear contact sheet reviewed. Full Debug/Release compilation and byte-for-byte BPS verification run in GitHub Actions; manual emulator playtesting remains outstanding.
+
+### Build variants
+- All gameplay, clock, wardrobe and interface changes are shared by Release and Debug; there are no variant-specific differences in this version. Native developer conveniences remain Debug-only.
+
 ## [0.0.30] - 2026-10-10
 
 ### Added

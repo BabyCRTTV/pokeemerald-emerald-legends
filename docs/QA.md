@@ -102,3 +102,11 @@ Follow the [player appearance emulator checklist](features/player-appearance.md#
 ## Kanto arrival (v0.0.26.1)
 
 Automated script/warp/heal-point checks: `python3 test/legends-kanto.test.py`. Follow the [Kanto feature checklist](features/kanto.md#emulator-checklist) and [Debug tutorial](kanto-guide.html). Emulator checklist items are pending unless explicitly recorded as verified.
+
+## v0.0.31 wardrobe, DexNav and clocks
+
+- Scroll all eight wardrobe sections; wrap in both directions and confirm APPLY/CANCEL stay reachable. Preview every shoe/boot on both genders and all outfits; verify boots have cuffs/shafts and shaped toes. Save/reload, reopen, cancel an edit and check existing saves keep Original. Costumes should show fixed shoes.
+- Check all seven custom Trainer Card colors and Original. Stars/badges/text stay readable; swatch follows pending choices, B cancels, linked cards remain native.
+- Select DexNav on a non-encounter map, away from grass and near grass/cave/water. Help must fit entirely top-left, dismiss cleanly, and never overlap the pause clock/menu. Walk/run/bike into a target without flight; compare 45-second timeout and out-of-range cancellation.
+- Leave pause open through a device minute rollover. First bedroom visit confirms device time; cancel and retry without progressing the Mom event. Later visits can switch real/manual. RTC-disabled mode begins at 9 AM plus played time, continues in menus and persists across save/reload. Restore RTC support and confirm real mode takes precedence.
+- Automated actual-C tests and native-art previews supplement full compilation/verified BPS generation. Manual emulator testing is not claimed by the automated build.
