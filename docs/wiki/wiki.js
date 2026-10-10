@@ -5,23 +5,43 @@
  const categories=["Start here","Core gameplay","World & time","Customization","Exploration","Kanto postgame","Reference"];
  const escape=s=>String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
  let pages=[],byId=new Map();
+ const walkthroughStops=[
+  {label:'New Game',page:'walkthrough-littleroot',section:'before-choosing-new-game',hint:'Settings and starter choices'},
+  {label:'Littleroot',page:'walkthrough-littleroot',section:'arriving-in-littleroot',hint:'Settle in and rescue the Professor'},
+  {label:'Oldale',page:'walkthrough-littleroot',section:'oldale-and-the-first-rival-battle',hint:'Heal and meet your rival'},
+  {label:'Petalburg',page:'walkthrough-petalburg',section:'meet-norman-and-help-wally',hint:'Meet Norman and help Wally'},
+  {label:'Petalburg Woods',page:'walkthrough-petalburg',section:'route-104-and-the-woods',hint:'Cross the forest and help Devon'},
+  {label:'Rustboro',page:'walkthrough-rustboro',section:'prepare-in-rustboro',hint:'Prepare for your first badge'},
+  {label:'Rusturf Tunnel',page:'walkthrough-rustboro',section:'rescue-peeko-in-rusturf-tunnel',hint:'Rescue Peeko and recover the goods'},
+  {label:'Devon Corporation',page:'walkthrough-rustboro',section:'devon-corporation-and-your-delivery-jobs',hint:'Collect your delivery jobs'},
+  {label:'Boat to Dewford',page:'walkthrough-rustboro',section:'reach-the-boat-for-dewford',hint:"Return to Mr. Briney's cottage"}
+ ];
+ function readingWalkthrough(active){document.documentElement.classList.toggle('reading-walkthrough',active);}
+ function walkthroughNavigation(id){
+   const options=walkthroughStops.map(stop=>'<option value="'+stop.page+'#section-'+stop.section+'">'+escape(stop.label)+'</option>').join('');
+   const cards=id==='walkthrough'?'<div class="walkthrough-stops">'+walkthroughStops.map((stop,i)=>'<a href="?page='+stop.page+'#section-'+stop.section+'" data-page="'+stop.page+'" data-section="section-'+stop.section+'"><span class="stop-number" aria-hidden="true">'+(i+1)+'</span><span><strong>'+escape(stop.label)+'</strong><small>'+escape(stop.hint)+'</small></span></a>').join('')+'</div>':'';
+   return '<nav class="walkthrough-navigation" aria-label="Walkthrough locations"><div class="walkthrough-nav-heading"><label for="walkthrough-town">Jump to a town or stop</label>'+(id!=='walkthrough'?'<a href="?page=walkthrough" data-page="walkthrough">All walkthrough stops</a>':'')+'</div><select id="walkthrough-town"><option value="">Choose your current location…</option>'+options+'</select>'+cards+'</nav>';
+ }
+ function focusSection(section){const target=section&&document.getElementById(section);if(!target)return;target.tabIndex=-1;target.focus({preventScroll:true});target.scrollIntoView({block:'start',behavior:'instant'});}
+
  const descriptions={"Start here":"Start the walkthrough, install the game, and prepare your save.","Core gameplay":"Starters, experience, shiny odds, and battle essentials.","World & time":"Understand seasons, weather, and the game clock.","Customization":"Outfits, shoes, costumes, and your Trainer Card.","Exploration":"DexNav, field moves, followers, and travel tools.","Kanto postgame":"Plan your journey through Kanto and its gym challenge.","Reference":"Answers, troubleshooting, and project information."};
- function setLocation(params,push){
+ function setLocation(params,push,section=""){
    if(!push)return;
    const url=new URL(location.href);url.search='';url.hash='';
    for(const [key,value] of Object.entries(params))url.searchParams.set(key,value);
+   if(section)url.hash=section;
    if(url.href!==location.href)history.pushState({},'',url);
  }
  function focusContent(){root.focus({preventScroll:true});window.scrollTo({top:0,behavior:'instant'});}
  function articleCards(selected){return '<div class="cards">'+selected.map(p=>'<a class="card" href="?page='+p.id+'" data-page="'+p.id+'"><strong>'+escape(p.title)+'</strong><p>'+escape(p.summary)+'</p></a>').join('')+'</div>';}
  function category(cat,push=true){
    if(cat!=='all'&&!categories.includes(cat)){home(push);return;}
-   setLocation({category:cat},push);side(cat);outline.innerHTML='';
+   readingWalkthrough(false);setLocation({category:cat},push);side(cat);outline.innerHTML='';
    const selected=cat==='all'?pages:pages.filter(p=>p.category===cat);
    root.innerHTML='<section class="article"><div class="crumbs"><a href="./" data-home>Wiki home</a> › Browse</div><h1>'+escape(cat==='all'?'All articles':cat)+'</h1><p class="lede">'+escape(descriptions[cat]||'Browse the complete wiki article index.')+'</p>'+articleCards(selected)+'</section>';
    document.title=(cat==='all'?'All articles':cat)+' · Emerald: Legends Wiki';menuClose();focusContent();
  }
- function readLocation(){const params=new URLSearchParams(location.search);if(params.has('page'))navigate(params.get('page'),false);else if(params.has('category'))category(params.get('category'),false);else home(false);}
+ function readLocation(){const params=new URLSearchParams(location.search);if(params.has('page'))navigate(params.get('page'),false,location.hash.slice(1));else if(params.has('category'))category(params.get('category'),false);else home(false);}
  function inline(s){
    s=escape(s);
    s=s.replace(/\[\[([a-z0-9-]+)\|([^\]]+)\]\]/g,(_,id,label)=>byId.has(id)?'<a href="?page='+id+'" data-page="'+id+'">'+label+'</a>':label);
@@ -55,19 +75,21 @@
    nav.innerHTML='<a href="./" data-home>Wiki home</a><div class="sidetitle">Topics</div>'+categories.map(cat=>'<a class="'+(cat===current?'current':'')+'" href="?category='+encodeURIComponent(cat)+'" data-category="'+escape(cat)+'">'+escape(cat)+'</a>').join('')+'<a href="?category=all" data-category="all">All articles</a>';
    if(byId.has(active))nav.innerHTML+='<div class="sidetitle">In this section</div>'+pages.filter(p=>p.category===current).map(p=>'<a class="'+(p.id===active?'current':'')+'" href="?page='+p.id+'" data-page="'+p.id+'">'+escape(p.title)+'</a>').join('');
  }
- function navigate(id,push=true){
+ function navigate(id,push=true,section=""){
    if(!byId.has(id)){home(push);return;}
    const p=byId.get(id),r=render(p.content);
-   setLocation({page:id},push);
+   const walkthrough=id==='walkthrough'||id.startsWith('walkthrough-');readingWalkthrough(walkthrough);
+   setLocation({page:id},push,section);
    side(id);
-   root.innerHTML='<article class="article"><div class="crumbs"><button id="home" type="button">Wiki home</button> › '+'<a href="?category='+encodeURIComponent(p.category)+'" data-category="'+escape(p.category)+'">'+escape(p.category)+'</a></div><h1>'+escape(p.title)+'</h1><p class="lede">'+escape(p.summary)+'</p><div class="articlebody">'+r.html+'</div><div class="articlefooter"><button class="action" id="back" type="button">← '+escape(p.category)+'</button><button class="action" id="share" type="button">Copy article link</button></div></article>';
+   root.innerHTML='<article class="article"><div class="crumbs"><button id="home" type="button">Wiki home</button> › '+'<a href="?category='+encodeURIComponent(p.category)+'" data-category="'+escape(p.category)+'">'+escape(p.category)+'</a></div><h1>'+escape(p.title)+'</h1><p class="lede">'+escape(p.summary)+'</p>'+(walkthrough?walkthroughNavigation(id):'')+'<div class="articlebody">'+r.html+'</div><div class="articlefooter"><button class="action" id="back" type="button">← '+escape(p.category)+'</button><button class="action" id="share" type="button">Copy article link</button></div></article>';
    outline.innerHTML='<strong>On this page</strong>'+r.heads.filter(h=>h.id).map(h=>'<a href="#'+h.id+'">'+escape(h.label)+'</a>').join('');
-   document.title=p.title+' · Emerald: Legends Wiki';menuClose();focusContent();
+   document.title=p.title+' · Emerald: Legends Wiki';menuClose();focusContent();focusSection(section);
+   const towns=document.getElementById('walkthrough-town');if(towns){if(section)towns.value=id+'#'+section;towns.onchange=()=>{if(!towns.value)return;const [page,anchor]=towns.value.split('#');navigate(page,true,anchor);};}
    document.getElementById('home').onclick=()=>home();document.getElementById('back').onclick=()=>category(p.category);
    document.getElementById('share').onclick=async()=>{try{await navigator.clipboard.writeText(location.href);document.getElementById('share').textContent='Link copied!';}catch{document.getElementById('share').textContent='Copy the URL from your browser';}};
  }
  function home(push=true){
-   setLocation({},push);side('');
+   readingWalkthrough(false);setLocation({},push);side('');
    outline.innerHTML='<strong>Wiki guide</strong><p>Choose an article or search for a feature. Everything is open to read.</p>';
    root.innerHTML='<section class="welcome"><p class="eyebrow">Unofficial player encyclopedia</p><h1>Your Legends guide.</h1><p>Choose a topic below, or jump straight to Pokémon and wild encounters.</p><div class="dex-shortcuts" aria-label="LegendsDex shortcuts"><a href="dex.html?view=routes">⌁ Routes <small>Wild encounter guide</small></a><a href="dex.html?view=species">◈ Pokédex <small>Browse Pokémon</small></a></div><p class="walkthrough-shortcut"><a href="?page=walkthrough" data-page="walkthrough" class="action">Walkthrough <span aria-hidden="true">→</span></a><small>New Game to the Stone Badge and the boat to Dewford</small></p><label class="searchrow"><span aria-hidden="true">⌕</span><input id="search" type="search" placeholder="Search articles, features, and places…" aria-label="Search wiki" autocomplete="off"><span class="small">/</span></label><p class="results-note" id="resultsnote">Browse '+pages.length+' articles across seven sections.</p></section><div id="cards"></div>';
    const input=document.getElementById('search');input.addEventListener('input',()=>cards(input.value));cards('');document.title='Emerald: Legends Wiki';menuClose();focusContent();
@@ -87,7 +109,7 @@
  menu.addEventListener('click',()=>{const open=nav.classList.toggle('open');menu.setAttribute('aria-expanded',String(open));});
  const headerSearch=document.getElementById('header-search');
  if(headerSearch)headerSearch.addEventListener('click',()=>{home();document.getElementById('search')?.focus();});
- document.addEventListener('click',e=>{const cat=e.target.closest('[data-category]'),homeLink=e.target.closest('[data-home]');if(cat){e.preventDefault();category(cat.dataset.category);return;}if(homeLink){e.preventDefault();home();return;}const item=e.target.closest('[data-page]');if(item){e.preventDefault();navigate(item.dataset.page);}});
+ document.addEventListener('click',e=>{const cat=e.target.closest('[data-category]'),homeLink=e.target.closest('[data-home]');if(cat){e.preventDefault();category(cat.dataset.category);return;}if(homeLink){e.preventDefault();home();return;}const item=e.target.closest('[data-page]');if(item){e.preventDefault();navigate(item.dataset.page,true,item.dataset.section||"");}});
  document.addEventListener('keydown',e=>{if(e.key==='Escape')menuClose();if((e.key==='/'||(e.ctrlKey&&e.key.toLowerCase()==='k'))&&!/input|textarea/i.test(document.activeElement?.tagName)){e.preventDefault();home();document.getElementById('search').focus();}});
  window.addEventListener('popstate',readLocation);
  fetch('articles.json',{cache:'no-store'}).then(r=>{if(!r.ok)throw new Error('Network response');return r.json();}).then(data=>{

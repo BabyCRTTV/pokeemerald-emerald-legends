@@ -1,0 +1,6 @@
+Pokémon Emerald shiny encounter sound (SE_SHINY = 102 / 0x0066).
+Source: https://sounds.spriters-resource.com/game_boy_advance/pokemonemerald/asset/397734/
+Sound dump submitted by iteachvader; original audio by Game Freak / Nintendo / The Pokémon Company.
+Bundled file: emerald_0066.wav, renamed shiny-encounter.wav.
+Identification checked against include/constants/songs.h and sound/song_table.inc.
+Wiki preview only; game audio and files are unchanged.
