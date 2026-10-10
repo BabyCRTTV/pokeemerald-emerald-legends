@@ -9,6 +9,9 @@
 .top .brand{min-width:0}
 .top .navlinks{flex-shrink:0}
 .top .navlinks .update-wiki{white-space:nowrap}
+/* The legacy small-screen CSS hides every span inside this button. Restore the visible label. */
+.top .navlinks .update-wiki .install-full{display:inline}
+.top .navlinks .update-wiki .install-short{display:none}
 .dex-shortcuts{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
 .dex-shortcuts a{flex:1 1 160px;min-height:54px;display:flex;justify-content:center;align-items:center;gap:9px;text-decoration:none;text-align:center;padding:10px 14px;border-radius:12px;border:1px solid #d9c4f0;background:#eee5fa;color:#593e7d;font-weight:800}
 .dex-shortcuts a small{font-size:11px;font-weight:600;color:#88749c}
@@ -36,6 +39,8 @@
   .topbar .dex-tools #header-search{width:42px;padding:7px}
   .install-full{display:none}
   .install-short{display:inline}
+  .top .navlinks .update-wiki .install-full{display:none}
+  .top .navlinks .update-wiki .install-short{display:inline}
   .hero h1{font-size:clamp(29px,7.2vw,39px);letter-spacing:-1px;text-wrap:balance}
   .shell{padding-inline:clamp(11px,3vw,18px)}
   .dex-shortcuts a{min-height:50px;flex-basis:140px;padding:8px 10px;font-size:13px}
