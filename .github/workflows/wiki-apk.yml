@@ -74,6 +74,12 @@ jobs:
           test -s "$APK"
           "$ANDROID_HOME/build-tools/35.0.0/apksigner" verify --verbose "$APK"
           "$ANDROID_HOME/build-tools/35.0.0/aapt" dump badging "$APK" | head -n 8
+          "$ANDROID_HOME/build-tools/35.0.0/aapt" dump permissions "$APK" > /tmp/wiki-permissions.txt
+          cat /tmp/wiki-permissions.txt
+          if grep -E "uses-permission: name=" /tmp/wiki-permissions.txt | grep -v "android.permission.INTERNET"; then
+            echo "::error::Unexpected Android permission requested"
+            exit 1
+          fi
           sha256sum "$APK"
 
       - name: Upload build artifact
