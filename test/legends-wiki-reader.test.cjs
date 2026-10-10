@@ -3,13 +3,13 @@ const vm=require('node:vm'),fs=require('node:fs'),assert=require('node:assert/st
 const base=__dirname+'/../docs/wiki/';
 class Node {
  constructor(){this.listeners={};this.dataset={};this.value='';this.innerHTML='';this.textContent='';this.hidden=false;this.classList={add(){},remove(){},toggle(){}};}
- addEventListener(name,f){const previous=this.listeners[name];this.listeners[name]=previous?(...args)=>{previous(...args);f(...args);}:f;} setAttribute(){} focus(){} showModal(){this.open=true;} close(){this.open=false;this.listeners.close?.();}
+ addEventListener(name,f){const previous=this.listeners[name];this.listeners[name]=previous?(...args)=>{previous(...args);f(...args);}:f;} getBoundingClientRect(){return {top:0};} setAttribute(){} focus(){} showModal(){this.open=true;} close(){this.open=false;this.listeners.close?.();}
 }
 function boot(file,data,url='https://example.test/wiki/'){
  const nodes=new Map(),listeners={},windowListeners={},stack=[url];let index=0;
  const get=id=>{if(!nodes.has(id))nodes.set(id,new Node());return nodes.get(id);};
  let location=new URL(url);
- const ctx={URL,URLSearchParams,Map,Set,console,HTMLImageElement:class{},navigator:{userAgent:'LegendsWikiAndroid/5'},document:{documentElement:get('html'),title:'',hidden:false,activeElement:null,getElementById:get,querySelector:s=>get(s.replace(/^#/,'')),querySelectorAll:()=>[],addEventListener:(n,f)=>listeners[n]=f},window:{scrollTo(){},addEventListener:(n,f)=>windowListeners[n]=f},LegendsSprites:{markup:()=>'<span class="thumb"></span>',hydrate(){}},fetch:async()=>({ok:true,json:async()=>data})};
+ const ctx={URL,URLSearchParams,Map,Set,console,HTMLImageElement:class{},navigator:{userAgent:'LegendsWikiAndroid/5'},document:{documentElement:get('html'),title:'',hidden:false,activeElement:null,getElementById:get,querySelector:s=>get(s.replace(/^#/,'')),querySelectorAll:()=>[],addEventListener:(n,f)=>listeners[n]=f},window:{scrollY:0,scrollTo(){},matchMedia:()=>({matches:false}),addEventListener:(n,f)=>windowListeners[n]=f},LegendsSprites:{markup:()=>'<span class="thumb"></span>',hydrate(){},preload:async()=>{}},fetch:async()=>({ok:true,json:async()=>data})};
  Object.defineProperty(ctx,'location',{get:()=>location});
  ctx.history={pushState(a,b,u){location=new URL(u,location);stack.splice(++index);stack.push(location.href);},replaceState(a,b,u){location=new URL(u,location);stack[index]=location.href;}};
  const sounds=[];
@@ -33,9 +33,13 @@ const settle=()=>new Promise(r=>setImmediate(r));
  w.click('category','all');assert.equal((w.get('content').innerHTML.match(/data-page=/g)||[]).length,articles.articles.length);
  const deep=boot('wiki.js',articles,'https://example.test/wiki/?category=Kanto%20postgame');await settle();assert.match(deep.get('content').innerHTML,/<h1>Kanto postgame/);
  const data=JSON.parse(fs.readFileSync(base+'dex-data.json'));
+ const atlas={window:{}};vm.runInNewContext(fs.readFileSync(base+'dex-sprite-atlas.js','utf8'),atlas);
+ assert.equal(atlas.window.LegendsSpriteAtlas.sourceCommit,data.sourceCommit);
+ for(const p of data.species)assert(atlas.window.LegendsSpriteAtlas.icons[p.sprite],p.id+' missing from preloaded atlas');
  const d=boot('dex.js',data);await settle();assert.equal(d.sounds.length,0,'audio must not preload all cries');
  assert.match(d.get('results').innerHTML,/data-cry=/);assert.match(d.get('results').innerHTML,/class="pokemon-link"/);
  const species=boot('dex.js',data,'https://example.test/wiki/dex.html?view=species');await settle();assert.match(species.get('results').innerHTML,/<div class="dex-card">/);assert.match(species.get('results').innerHTML,/<button type="button" class="pokemon-link" data-species="BULBASAUR"/);
+ assert.equal((species.get('results').innerHTML.match(/class="dex-card"/g)||[]).length,data.species.length);assert(species.get('more').hidden);
  d.click('cry','BULBASAUR');await settle();assert(d.sounds[0].url.endsWith('/cries/bulbasaur.wav'));assert(d.sounds[0].played);assert(!d.get('detail').open);
  d.click('cry','DA_BUG');await settle();assert(d.sounds[0].paused);assert(d.sounds[1].url.endsWith('/cries/da_bug.wav'));
  d.click('species','BULBASAUR');assert(d.get('detail').open);assert.match(d.get('detail-content').innerHTML,/Play Bulbasaur cry/);
