@@ -6,31 +6,31 @@
  let pages=[],byId=new Map();
  function inline(s){
    s=escape(s);
-   s=s.replace(/\\[\\[([a-z0-9-]+)\\|([^\\]]+)\\]\\]/g,(_,id,label)=>byId.has(id)?'<a href="?page='+id+'" data-page="'+id+'">'+label+'</a>':label);
-   s=s.replace(/\\[([^\\]]+)\\]\\(([^)]+)\\)/g,(_,label,url)=>{
-     const safe=/^(https?:\\/\\/|\\.{1,2}\\/|#|\\/)/.test(url);
+   s=s.replace(/\[\[([a-z0-9-]+)\|([^\]]+)\]\]/g,(_,id,label)=>byId.has(id)?'<a href="?page='+id+'" data-page="'+id+'">'+label+'</a>':label);
+   s=s.replace(/\[([^\]]+)\]\(([^)]+)\)/g,(_,label,url)=>{
+     const safe=/^(https?:\/\/|\.{1,2}\/|#|\/)/.test(url);
      return safe?'<a href="'+escape(url)+'"'+(/^https?:/.test(url)?' target="_blank" rel="noopener noreferrer"':'')+'>'+label+'</a>':label;
    });
-   s=s.replace(/\\*\\*([^*]+)\\*\\*/g,'<strong>$1</strong>').replace(/\\x60([^\\x60]+)\\x60/g,'<code>$1</code>');
+   s=s.replace(/\*\*([^*]+)\*\*/g,'<strong>$1</strong>').replace(/\x60([^\x60]+)\x60/g,'<code>$1</code>');
    return s;
  }
  function render(md) {
-   const lines=md.trim().split(/\\r?\\n/),out=[],heads=[];
+   const lines=md.trim().split(/\r?\n/),out=[],heads=[];
    let list=null,para=[],table=[];
    const flushP=()=>{if(para.length){out.push('<p>'+inline(para.join(' '))+'</p>');para=[];}};
    const flushL=()=>{if(list){out.push('</'+list+'>');list=null;}};
    const flushT=()=>{if(table.length){out.push('<div class="scroll-table"><table><thead><tr>'+table[0].map(c=>'<th>'+inline(c)+'</th>').join('')+'</tr></thead><tbody>'+table.slice(1).map(r=>'<tr>'+r.map(c=>'<td>'+inline(c)+'</td>').join('')+'</tr>').join('')+'</tbody></table></div>');table=[];}};
    for(let i=0;i<lines.length;i++){
      let l=lines[i].trim();if(!l){flushP();flushL();flushT();continue;}
-     if(/^\\|/.test(l)){flushP();flushL();if(/^\\|\\s*:?-{3,}/.test(l))continue;table.push(l.replace(/^\\||\\|$/g,'').split('|').map(c=>c.trim()));continue;}
+     if(/^\|/.test(l)){flushP();flushL();if(/^\|\s*:?-{3,}/.test(l))continue;table.push(l.replace(/^\||\|$/g,'').split('|').map(c=>c.trim()));continue;}
      flushT();
-     const h=l.match(/^(#{2,3})\\s+(.+)$/);
-     if(h){flushP();flushL();let id="section-"+h[2].toLowerCase().replace(/[^a-z0-9 ]/g,'').trim().replace(/\\s+/g,'-');heads.push({id,label:h[2]});out.push('<h'+h[1].length+' id="'+id+'">'+inline(h[2])+'</h'+h[1].length+'>');continue;}
-     const li=l.match(/^([-*]|\\d+\\.)\\s+(.+)$/);
-     if(li){flushP();let next=/\\d/.test(li[1][0])?'ol':'ul';if(list!==next){flushL();out.push('<'+next+'>');list=next;}out.push('<li>'+inline(li[2])+'</li>');continue;}
+     const h=l.match(/^(#{2,3})\s+(.+)$/);
+     if(h){flushP();flushL();let id="section-"+h[2].toLowerCase().replace(/[^a-z0-9 ]/g,'').trim().replace(/\s+/g,'-');heads.push({id,label:h[2]});out.push('<h'+h[1].length+' id="'+id+'">'+inline(h[2])+'</h'+h[1].length+'>');continue;}
+     const li=l.match(/^([-*]|\d+\.)\s+(.+)$/);
+     if(li){flushP();let next=/\d/.test(li[1][0])?'ol':'ul';if(list!==next){flushL();out.push('<'+next+'>');list=next;}out.push('<li>'+inline(li[2])+'</li>');continue;}
      flushL();para.push(l);
    }
-   flushP();flushL();flushT();return {html:out.join('\\n'),heads};
+   flushP();flushL();flushT();return {html:out.join('\n'),heads};
  }
  function side(active){
    nav.innerHTML=categories.map(cat=>'<div class="sidetitle">'+escape(cat)+'</div>'+pages.filter(p=>p.category===cat).map(p=>'<a class="'+(p.id===active?'current':'')+'" href="?page='+p.id+'" data-page="'+p.id+'">'+escape(p.title)+'</a>').join('')).join('');
