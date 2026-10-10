@@ -49,6 +49,27 @@ const assert=require('node:assert/strict'),fs=require('node:fs');
   await page.waitForFunction(()=>!document.querySelector('#return-to-search').classList.contains('is-visible'));
   assert(await page.locator('#return-to-search').isDisabled());
   assert(await page.evaluate(()=>scrollY>100),'return arrow uses search, not page top');
+  // Quick direction changes during the departure/cooldown cannot reactivate the control.
+  if(width===412){
+    await page.waitForFunction(()=>Number(getComputedStyle(document.querySelector('.rotom-companion')).opacity)>.95);
+    await page.screenshot({path:'wiki-preview/rotom-flight.png',fullPage:false});
+    await page.evaluate(()=>scrollTo({top:1600,behavior:'instant'}));
+    assert(await page.locator('#return-to-search').isDisabled(),'cooldown blocks rapid reappearance');
+    await page.waitForFunction(()=>!document.querySelector('#return-to-search').classList.contains('is-flying'));
+    assert(await page.locator('#return-to-search').isDisabled(),'brief cooldown remains after flight');
+    await page.waitForFunction(()=>!document.querySelector('#return-to-search').disabled);
+    // Manually reaching the search anchor also departs, without requiring a click.
+    await page.evaluate(()=>scrollTo({top:0,behavior:'instant'}));
+    await page.waitForFunction(()=>document.querySelector('#return-to-search').classList.contains('is-flying'));
+    await page.waitForFunction(()=>!document.querySelector('#return-to-search').classList.contains('is-flying'));
+    await page.emulateMedia({reducedMotion:'reduce'});
+    await page.evaluate(()=>scrollTo({top:1600,behavior:'instant'}));
+    await page.waitForFunction(()=>!document.querySelector('#return-to-search').disabled);
+    await page.locator('#return-to-search').click();
+    await page.waitForFunction(()=>document.querySelector('#return-to-search').disabled);
+    assert(!await page.locator('#return-to-search').evaluate(e=>e.classList.contains('is-flying')),'reduced motion skips flight');
+    await page.emulateMedia({reducedMotion:'no-preference'});
+  }
   await page.locator('#search').fill('Bulbasaur');
   assert.equal(await page.locator('.dex-card').count(),1);await noOverflow();
   const reply=page.waitForResponse(r=>r.url().endsWith('/cries/bulbasaur.wav'));
