@@ -6,9 +6,7 @@
   const results=$("#results"), more=$("#more"), search=$("#search"), modal=$("#detail");
   const METHODS=["land","surf","rock","old_rod","good_rod","super_rod"];
   function sprite(p,size="small"){
-    const icon=p.sprite && /^[a-z0-9_]+$/.test(p.sprite) ? p.sprite : p.id.toLowerCase();
-    const url="https://raw.githubusercontent.com/BabyCRTTV/pokeemerald-emerald-legends/"+data.sourceCommit+"/graphics/pokemon/"+icon+"/icon.png";
-    return '<span class="thumb"><span class="missing-icon" aria-hidden="true">✦</span><img alt="" loading="lazy" decoding="async" src="'+esc(url)+'"></span>';
+    return LegendsSprites.markup(p,size);
   }
   function prettyLevel(a,b){return a===b?"Lv. "+a:"Lv. "+a+"–"+b}
   function chips(p){return '<div class="types">'+(p.types||[]).map(x=>'<span class="type type--'+x.toLowerCase()+'">'+esc(x.toLowerCase())+'</span>').join("")+'</div>'}
@@ -66,6 +64,7 @@
     if(total===0){
       results.innerHTML='<div class="empty"><strong>No matches found</strong><p>Try another Pokémon, region, or encounter method.</p></div>';
     }else results.innerHTML=subset.map(x=>view==="routes"?routeCard(x):dexCard(x)).join("");
+    LegendsSprites.hydrate(results,data.sourceCommit);
     more.hidden=shown>=total;
     more.textContent="Show more "+(view==="routes"?"locations":"Pokémon")+" ("+Math.max(0,total-shown)+" remaining)";
   }
@@ -83,6 +82,7 @@
       '<h3>Base stats</h3><div class="stat-table">'+["HP","Attack","Defense","Sp. Atk","Sp. Def","Speed"].map((name,i)=>'<span>'+name+'</span><div class="stat-track"><i style="width:'+Math.max(1,Math.min(100,p.stats[i]/2.55))+'%"></i></div><span>'+p.stats[i]+'</span>').join("")+'</div>':"";
     const links=selected.length?selected.map(loc=>'<div class="location-row"><div><strong>'+esc(loc.map)+'</strong><small>'+esc(loc.region)+' · '+esc(loc.label)+' · '+prettyLevel(loc.min,loc.max)+'</small></div><span class="rate">'+loc.rate+'%<small>SPAWN</small></span></div>').join(""):'<p>No standard wild encounter is listed in the currently indexed and accessible route tables. It might be obtainable through other methods, or not yet obtainable. This does not establish that the Pokémon is unavailable everywhere.</p>';
     $("#detail-content").innerHTML='<div class="detail-top">'+sprite(p,"large")+'<div><span class="detail-meta">'+(p.num?"NATIONAL #"+String(p.num).padStart(4,"0"):"SPECIAL FORM")+'</span><h2>'+esc(p.name)+'</h2><p style="margin:0;font-size:12px;color:#837399">'+esc(p.category||"Pokémon")+' Pokémon</p>'+chips(p)+'</div></div><div class="detail-content">'+stats+'<h3>Where to find '+esc(p.name)+'</h3><p style="font-size:12px;color:#7c708b;margin-top:0">Wild encounter tables only. Rates are conditional on the chosen method.</p>'+links+'</div>';
+    LegendsSprites.hydrate($("#detail-content"),data.sourceCommit);
     if(!modal.open)modal.showModal();$("#close-detail").focus();
     if(share){const url=new URL(location.href);url.searchParams.set("pokemon",id.toLowerCase());history.replaceState(null,"",url);}
   }
