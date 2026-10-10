@@ -74,11 +74,35 @@
     updateReturnArrow();
   }
   const searchAnchor=$("#search-anchor"), returnArrow=$("#return-to-search");
-  function updateReturnArrow(){
-    const visible=searchAnchor.getBoundingClientRect().top < -8;
+  const flightDuration=1100, flightCooldown=1000;
+  let arrowActive=false, flying=false, cooldownUntil=0, flightTimer=null, revealTimer=null;
+  function setArrowVisible(visible){
+    arrowActive=visible;
     returnArrow.classList.toggle("is-visible",visible);
     returnArrow.disabled=!visible;
     returnArrow.setAttribute("aria-hidden",String(!visible));
+  }
+  function flyAway(){
+    setArrowVisible(false);
+    cooldownUntil=Date.now()+flightDuration+flightCooldown;
+    const reduce=window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if(!reduce){
+      flying=true;returnArrow.classList.add("is-flying");
+      flightTimer=setTimeout(()=>{
+        flying=false;returnArrow.classList.remove("is-flying");flightTimer=null;
+        updateReturnArrow();
+      },flightDuration);
+    }
+    clearTimeout(revealTimer);
+    revealTimer=setTimeout(()=>{revealTimer=null;updateReturnArrow();},flightDuration+flightCooldown);
+  }
+  function updateReturnArrow(){
+    const anchorTop=searchAnchor.getBoundingClientRect().top;
+    // A little hysteresis prevents tiny movements around the anchor from retriggering.
+    const below=anchorTop < (arrowActive?-8:-40);
+    if(!below && arrowActive && !flying){flyAway();return;}
+    if(flying || Date.now()<cooldownUntil){setArrowVisible(false);return;}
+    setArrowVisible(below);
   }
   window.addEventListener("scroll",updateReturnArrow,{passive:true});
   window.addEventListener("resize",updateReturnArrow);

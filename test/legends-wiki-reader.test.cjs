@@ -9,7 +9,7 @@ function boot(file,data,url='https://example.test/wiki/'){
  const nodes=new Map(),listeners={},windowListeners={},stack=[url];let index=0;
  const get=id=>{if(!nodes.has(id))nodes.set(id,new Node());return nodes.get(id);};
  let location=new URL(url);
- const ctx={URL,URLSearchParams,Map,Set,console,HTMLImageElement:class{},navigator:{userAgent:'LegendsWikiAndroid/5'},document:{documentElement:get('html'),title:'',hidden:false,activeElement:null,getElementById:get,querySelector:s=>get(s.replace(/^#/,'')),querySelectorAll:()=>[],addEventListener:(n,f)=>listeners[n]=f},window:{scrollY:0,scrollTo(){},matchMedia:()=>({matches:false}),addEventListener:(n,f)=>windowListeners[n]=f},LegendsSprites:{markup:()=>'<span class="thumb"></span>',hydrate(){},preload:async()=>{}},fetch:async()=>({ok:true,json:async()=>data})};
+ const ctx={URL,URLSearchParams,Map,Set,console,setTimeout,clearTimeout,HTMLImageElement:class{},navigator:{userAgent:'LegendsWikiAndroid/5'},document:{documentElement:get('html'),title:'',hidden:false,activeElement:null,getElementById:get,querySelector:s=>get(s.replace(/^#/,'')),querySelectorAll:()=>[],addEventListener:(n,f)=>listeners[n]=f},window:{scrollY:0,scrollTo(){},matchMedia:()=>({matches:false}),addEventListener:(n,f)=>windowListeners[n]=f},LegendsSprites:{markup:()=>'<span class="thumb"></span>',hydrate(){},preload:async()=>{}},fetch:async()=>({ok:true,json:async()=>data})};
  Object.defineProperty(ctx,'location',{get:()=>location});
  ctx.history={pushState(a,b,u){location=new URL(u,location);stack.splice(++index);stack.push(location.href);},replaceState(a,b,u){location=new URL(u,location);stack[index]=location.href;}};
  const sounds=[];
