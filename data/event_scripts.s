@@ -1782,3 +1782,25 @@ EventScript_PalletTown_PlayersHouse_2F_TurnOnPC::
 	.include "data/maps/LegendsKanto_Route19/scripts.inc"
 
 .endif
+
+.if !IS_FRLG
+	.include "data/scripts/legends_kanto_challenge.inc"
+	.include "data/maps/LegendsKanto_CeladonCity/scripts.inc"
+	.include "data/maps/LegendsKanto_SaffronCity/scripts.inc"
+	.include "data/maps/LegendsKanto_Route8_WestEntrance/scripts.inc"
+	.include "data/maps/LegendsKanto_Route16/scripts.inc"
+	.include "data/maps/LegendsKanto_Route16_NorthEntrance_1F/scripts.inc"
+	.include "data/maps/LegendsKanto_Route6/scripts.inc"
+	.include "data/maps/LegendsKanto_Route6_NorthEntrance/scripts.inc"
+	.include "data/maps/LegendsKanto_CeladonCity_PokemonCenter_1F/scripts.inc"
+	.include "data/maps/LegendsKanto_Route17/scripts.inc"
+	.include "data/maps/LegendsKanto_VermilionCity_Gym/scripts.inc"
+	.include "data/maps/LegendsKanto_Route7_EastEntrance/scripts.inc"
+	.include "data/maps/LegendsKanto_Route16_NorthEntrance_2F/scripts.inc"
+	.include "data/maps/LegendsKanto_Route18_EastEntrance_2F/scripts.inc"
+	.include "data/maps/LegendsKanto_Route18/scripts.inc"
+	.include "data/maps/LegendsKanto_Route7/scripts.inc"
+	.include "data/maps/LegendsKanto_Route8/scripts.inc"
+	.include "data/maps/LegendsKanto_SaffronCity_PokemonCenter_1F/scripts.inc"
+	.include "data/maps/LegendsKanto_Route18_EastEntrance_1F/scripts.inc"
+.endif

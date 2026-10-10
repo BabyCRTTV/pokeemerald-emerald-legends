@@ -4,6 +4,25 @@ All notable Pokémon Emerald: Legends project changes are documented here.
 
 For build-specific player views, see [CHANGELOG-RELEASE.md](CHANGELOG-RELEASE.md) and [CHANGELOG-DEBUG.md](CHANGELOG-DEBUG.md). The canonical history below records the project as a whole.
 
+## [0.0.28] - 2026-10-10
+
+### Added
+- Postgame PokeNav map browsing: SELECT switches between Hoenn and Kanto after becoming Champion, from full or zoomed views. Native region graphics and cursor sections reload together; browsing cannot change location, show a false player marker, or enable cross-region Fly.
+- Kanto road loop: Routes 6–8 and 16–18, Saffron and Celadon, five connecting gate ground floors and two gate upstairs maps, two city Centers and Vermilion Gym (18 new maps). Existing map IDs remain stable. Unbuilt destinations remain sealed and labeled.
+- Native Kanto wild distributions on Routes 6–8, 11–19 (excluding unopened Route 10), adjusted to Lv. 47–54; six optional, one-time route trainers at Lv. 53–60. Routes 16–18 support walking and ordinary Emerald bikes; no forced FRLG Cycling Road state.
+- Working nurses in Lavender, Fuchsia, Saffron and Celadon Centers, using Emerald's existing healing routine.
+- First two visiting Gym challenges: Lt. Surge (Standard Lv. 52–56 / Champion Lv. 72–76) and Koga (Standard Lv. 56–60 / Champion Lv. 76–80). A guide stops entrants and explains the per-Gym choice. Talk to the guide to change it before winning. Standard has four Pokemon; Champion has six with stronger training. Player levels are never rescaled.
+- Each Leader can be defeated only once per save: either difficulty permanently completes both. Losses allow retry/reselection; declining the Leader's confirmation leaves the challenge available. Dedicated Kanto records do not change Hoenn badges. Surge's visiting arena opens its native electrical barrier; Koga retains the native invisible-wall layout.
+- Original WING SURVEY opening: Oak's field aide at Vermilion Fan Club follows up Hoenn's resolved weather crisis, gathers Surge and Koga's reports in either order, and introduces the three birds and a possible Mew lead. This build ends after the first report; legendary encounters and the other six Gyms are future chapters.
+- Detailed staged postgame design and implementation/save-state documentation in `docs/features/kanto-postgame.md`, with the eight-Leader plan, habitat expeditions, story beats, and a manual playtest checklist.
+
+### Validation
+- Script-path tests cover both difficulties, the shared permanent victory, loss/retry, decline, independent Gym records and either-order survey reporting. Map geometry, route encounters, trainer teams, native graphics, and map-switch task checks are included in project CI.
+- Release completion requires the existing Debug/Release compile, independent vanilla SHA-1, and BPS reapplication/byte comparison workflow. Manual emulator traversal and battle balance remain playtest work; static layout inspection is not emulator validation.
+
+### Build variants
+- Shared gameplay, maps, story and map browsing are identical in Release and Debug. No variant-specific feature differences; Debug retains the expansion's development conveniences.
+
 ## [0.0.27] - 2026-10-09
 
 ### Added

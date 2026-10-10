@@ -79,4 +79,10 @@ extern const struct Tileset gTileset_LegendsKantoPokemonCenterFrlg;
 extern const struct Tileset gTileset_LegendsKantoSafariZoneBuilding;
 #endif
 
+
+#if !IS_FRLG
+extern const struct Tileset gTileset_LegendsKantoSaffronCity;
+extern const struct Tileset gTileset_LegendsKantoVermilionGym;
+extern const struct Tileset gTileset_LegendsKantoCeladonCity;
+#endif
 #endif //GUARD_tilesets_H

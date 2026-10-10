@@ -36577,6 +36577,1194 @@
               }
             ]
           }
+        },
+        {
+          "map": "MAP_LEGENDS_KANTO_ROUTE6",
+          "base_label": "gLegendsKantoRoute6",
+          "land_mons": {
+            "encounter_rate": 21,
+            "mons": [
+              {
+                "min_level": 47,
+                "max_level": 50,
+                "species": "SPECIES_MEOWTH"
+              },
+              {
+                "min_level": 48,
+                "max_level": 51,
+                "species": "SPECIES_PIDGEY"
+              },
+              {
+                "min_level": 49,
+                "max_level": 52,
+                "species": "SPECIES_ODDISH"
+              },
+              {
+                "min_level": 47,
+                "max_level": 50,
+                "species": "SPECIES_MEOWTH"
+              },
+              {
+                "min_level": 48,
+                "max_level": 51,
+                "species": "SPECIES_ODDISH"
+              },
+              {
+                "min_level": 49,
+                "max_level": 52,
+                "species": "SPECIES_PIDGEY"
+              },
+              {
+                "min_level": 47,
+                "max_level": 50,
+                "species": "SPECIES_ODDISH"
+              },
+              {
+                "min_level": 48,
+                "max_level": 51,
+                "species": "SPECIES_PIDGEY"
+              },
+              {
+                "min_level": 49,
+                "max_level": 52,
+                "species": "SPECIES_PIDGEY"
+              },
+              {
+                "min_level": 47,
+                "max_level": 50,
+                "species": "SPECIES_MEOWTH"
+              },
+              {
+                "min_level": 48,
+                "max_level": 51,
+                "species": "SPECIES_PIDGEY"
+              },
+              {
+                "min_level": 49,
+                "max_level": 52,
+                "species": "SPECIES_MEOWTH"
+              }
+            ]
+          },
+          "water_mons": {
+            "encounter_rate": 2,
+            "mons": [
+              {
+                "min_level": 47,
+                "max_level": 50,
+                "species": "SPECIES_PSYDUCK"
+              },
+              {
+                "min_level": 48,
+                "max_level": 51,
+                "species": "SPECIES_PSYDUCK"
+              },
+              {
+                "min_level": 49,
+                "max_level": 52,
+                "species": "SPECIES_PSYDUCK"
+              },
+              {
+                "min_level": 47,
+                "max_level": 50,
+                "species": "SPECIES_PSYDUCK"
+              },
+              {
+                "min_level": 48,
+                "max_level": 51,
+                "species": "SPECIES_PSYDUCK"
+              }
+            ]
+          },
+          "fishing_mons": {
+            "encounter_rate": 20,
+            "mons": [
+              {
+                "min_level": 47,
+                "max_level": 50,
+                "species": "SPECIES_MAGIKARP"
+              },
+              {
+                "min_level": 48,
+                "max_level": 51,
+                "species": "SPECIES_MAGIKARP"
+              },
+              {
+                "min_level": 49,
+                "max_level": 52,
+                "species": "SPECIES_POLIWAG"
+              },
+              {
+                "min_level": 47,
+                "max_level": 50,
+                "species": "SPECIES_MAGIKARP"
+              },
+              {
+                "min_level": 48,
+                "max_level": 51,
+                "species": "SPECIES_GOLDEEN"
+              },
+              {
+                "min_level": 49,
+                "max_level": 52,
+                "species": "SPECIES_POLIWAG"
+              },
+              {
+                "min_level": 47,
+                "max_level": 50,
+                "species": "SPECIES_POLIWHIRL"
+              },
+              {
+                "min_level": 48,
+                "max_level": 51,
+                "species": "SPECIES_GYARADOS"
+              },
+              {
+                "min_level": 49,
+                "max_level": 52,
+                "species": "SPECIES_PSYDUCK"
+              },
+              {
+                "min_level": 47,
+                "max_level": 50,
+                "species": "SPECIES_PSYDUCK"
+              }
+            ]
+          }
+        },
+        {
+          "map": "MAP_LEGENDS_KANTO_ROUTE7",
+          "base_label": "gLegendsKantoRoute7",
+          "land_mons": {
+            "encounter_rate": 21,
+            "mons": [
+              {
+                "min_level": 47,
+                "max_level": 50,
+                "species": "SPECIES_PIDGEY"
+              },
+              {
+                "min_level": 48,
+                "max_level": 51,
+                "species": "SPECIES_MEOWTH"
+              },
+              {
+                "min_level": 49,
+                "max_level": 52,
+                "species": "SPECIES_ODDISH"
+              },
+              {
+                "min_level": 47,
+                "max_level": 50,
+                "species": "SPECIES_MEOWTH"
+              },
+              {
+                "min_level": 48,
+                "max_level": 51,
+                "species": "SPECIES_PIDGEY"
+              },
+              {
+                "min_level": 49,
+                "max_level": 52,
+                "species": "SPECIES_ODDISH"
+              },
+              {
+                "min_level": 47,
+                "max_level": 50,
+                "species": "SPECIES_GROWLITHE"
+              },
+              {
+                "min_level": 48,
+                "max_level": 51,
+                "species": "SPECIES_GROWLITHE"
+              },
+              {
+                "min_level": 49,
+                "max_level": 52,
+                "species": "SPECIES_MEOWTH"
+              },
+              {
+                "min_level": 47,
+                "max_level": 50,
+                "species": "SPECIES_MEOWTH"
+              },
+              {
+                "min_level": 48,
+                "max_level": 51,
+                "species": "SPECIES_MEOWTH"
+              },
+              {
+                "min_level": 49,
+                "max_level": 52,
+                "species": "SPECIES_MEOWTH"
+              }
+            ]
+          }
+        },
+        {
+          "map": "MAP_LEGENDS_KANTO_ROUTE8",
+          "base_label": "gLegendsKantoRoute8",
+          "land_mons": {
+            "encounter_rate": 21,
+            "mons": [
+              {
+                "min_level": 47,
+                "max_level": 50,
+                "species": "SPECIES_PIDGEY"
+              },
+              {
+                "min_level": 48,
+                "max_level": 51,
+                "species": "SPECIES_MEOWTH"
+              },
+              {
+                "min_level": 49,
+                "max_level": 52,
+                "species": "SPECIES_GROWLITHE"
+              },
+              {
+                "min_level": 47,
+                "max_level": 50,
+                "species": "SPECIES_PIDGEY"
+              },
+              {
+                "min_level": 48,
+                "max_level": 51,
+                "species": "SPECIES_MEOWTH"
+              },
+              {
+                "min_level": 49,
+                "max_level": 52,
+                "species": "SPECIES_EKANS"
+              },
+              {
+                "min_level": 47,
+                "max_level": 50,
+                "species": "SPECIES_GROWLITHE"
+              },
+              {
+                "min_level": 48,
+                "max_level": 51,
+                "species": "SPECIES_EKANS"
+              },
+              {
+                "min_level": 49,
+                "max_level": 52,
+                "species": "SPECIES_EKANS"
+              },
+              {
+                "min_level": 47,
+                "max_level": 50,
+                "species": "SPECIES_GROWLITHE"
+              },
+              {
+                "min_level": 48,
+                "max_level": 51,
+                "species": "SPECIES_EKANS"
+              },
+              {
+                "min_level": 49,
+                "max_level": 52,
+                "species": "SPECIES_GROWLITHE"
+              }
+            ]
+          }
+        },
+        {
+          "map": "MAP_LEGENDS_KANTO_ROUTE11",
+          "base_label": "gLegendsKantoRoute11",
+          "land_mons": {
+            "encounter_rate": 21,
+            "mons": [
+              {
+                "min_level": 48,
+                "max_level": 51,
+                "species": "SPECIES_EKANS"
+              },
+              {
+                "min_level": 49,
+                "max_level": 52,
+                "species": "SPECIES_SPEAROW"
+              },
+              {
+                "min_level": 50,
+                "max_level": 53,
+                "species": "SPECIES_EKANS"
+              },
+              {
+                "min_level": 48,
+                "max_level": 51,
+                "species": "SPECIES_SPEAROW"
+              },
+              {
+                "min_level": 49,
+                "max_level": 52,
+                "species": "SPECIES_DROWZEE"
+              },
+              {
+                "min_level": 50,
+                "max_level": 53,
+                "species": "SPECIES_DROWZEE"
+              },
+              {
+                "min_level": 48,
+                "max_level": 51,
+                "species": "SPECIES_EKANS"
+              },
+              {
+                "min_level": 49,
+                "max_level": 52,
+                "species": "SPECIES_SPEAROW"
+              },
+              {
+                "min_level": 50,
+                "max_level": 53,
+                "species": "SPECIES_EKANS"
+              },
+              {
+                "min_level": 48,
+                "max_level": 51,
+                "species": "SPECIES_DROWZEE"
+              },
+              {
+                "min_level": 49,
+                "max_level": 52,
+                "species": "SPECIES_EKANS"
+              },
+              {
+                "min_level": 50,
+                "max_level": 53,
+                "species": "SPECIES_DROWZEE"
+              }
+            ]
+          },
+          "water_mons": {
+            "encounter_rate": 2,
+            "mons": [
+              {
+                "min_level": 48,
+                "max_level": 51,
+                "species": "SPECIES_TENTACOOL"
+              },
+              {
+                "min_level": 49,
+                "max_level": 52,
+                "species": "SPECIES_TENTACOOL"
+              },
+              {
+                "min_level": 50,
+                "max_level": 53,
+                "species": "SPECIES_TENTACOOL"
+              },
+              {
+                "min_level": 48,
+                "max_level": 51,
+                "species": "SPECIES_TENTACOOL"
+              },
+              {
+                "min_level": 49,
+                "max_level": 52,
+                "species": "SPECIES_TENTACOOL"
+              }
+            ]
+          },
+          "fishing_mons": {
+            "encounter_rate": 20,
+            "mons": [
+              {
+                "min_level": 48,
+                "max_level": 51,
+                "species": "SPECIES_MAGIKARP"
+              },
+              {
+                "min_level": 49,
+                "max_level": 52,
+                "species": "SPECIES_MAGIKARP"
+              },
+              {
+                "min_level": 50,
+                "max_level": 53,
+                "species": "SPECIES_HORSEA"
+              },
+              {
+                "min_level": 48,
+                "max_level": 51,
+                "species": "SPECIES_MAGIKARP"
+              },
+              {
+                "min_level": 49,
+                "max_level": 52,
+                "species": "SPECIES_KRABBY"
+              },
+              {
+                "min_level": 50,
+                "max_level": 53,
+                "species": "SPECIES_HORSEA"
+              },
+              {
+                "min_level": 48,
+                "max_level": 51,
+                "species": "SPECIES_HORSEA"
+              },
+              {
+                "min_level": 49,
+                "max_level": 52,
+                "species": "SPECIES_GYARADOS"
+              },
+              {
+                "min_level": 50,
+                "max_level": 53,
+                "species": "SPECIES_HORSEA"
+              },
+              {
+                "min_level": 48,
+                "max_level": 51,
+                "species": "SPECIES_PSYDUCK"
+              }
+            ]
+          }
+        },
+        {
+          "map": "MAP_LEGENDS_KANTO_ROUTE12",
+          "base_label": "gLegendsKantoRoute12",
+          "land_mons": {
+            "encounter_rate": 21,
+            "mons": [
+              {
+                "min_level": 48,
+                "max_level": 51,
+                "species": "SPECIES_ODDISH"
+              },
+              {
+                "min_level": 49,
+                "max_level": 52,
+                "species": "SPECIES_VENONAT"
+              },
+              {
+                "min_level": 50,
+                "max_level": 53,
+                "species": "SPECIES_ODDISH"
+              },
+              {
+                "min_level": 48,
+                "max_level": 51,
+                "species": "SPECIES_PIDGEY"
+              },
+              {
+                "min_level": 49,
+                "max_level": 52,
+                "species": "SPECIES_PIDGEY"
+              },
+              {
+                "min_level": 50,
+                "max_level": 53,
+                "species": "SPECIES_VENONAT"
+              },
+              {
+                "min_level": 48,
+                "max_level": 51,
+                "species": "SPECIES_ODDISH"
+              },
+              {
+                "min_level": 49,
+                "max_level": 52,
+                "species": "SPECIES_PIDGEY"
+              },
+              {
+                "min_level": 50,
+                "max_level": 53,
+                "species": "SPECIES_PIDGEY"
+              },
+              {
+                "min_level": 48,
+                "max_level": 51,
+                "species": "SPECIES_GLOOM"
+              },
+              {
+                "min_level": 49,
+                "max_level": 52,
+                "species": "SPECIES_PIDGEY"
+              },
+              {
+                "min_level": 50,
+                "max_level": 53,
+                "species": "SPECIES_GLOOM"
+              }
+            ]
+          },
+          "water_mons": {
+            "encounter_rate": 2,
+            "mons": [
+              {
+                "min_level": 48,
+                "max_level": 51,
+                "species": "SPECIES_TENTACOOL"
+              },
+              {
+                "min_level": 49,
+                "max_level": 52,
+                "species": "SPECIES_TENTACOOL"
+              },
+              {
+                "min_level": 50,
+                "max_level": 53,
+                "species": "SPECIES_TENTACOOL"
+              },
+              {
+                "min_level": 48,
+                "max_level": 51,
+                "species": "SPECIES_TENTACOOL"
+              },
+              {
+                "min_level": 49,
+                "max_level": 52,
+                "species": "SPECIES_TENTACOOL"
+              }
+            ]
+          },
+          "fishing_mons": {
+            "encounter_rate": 60,
+            "mons": [
+              {
+                "min_level": 48,
+                "max_level": 51,
+                "species": "SPECIES_MAGIKARP"
+              },
+              {
+                "min_level": 49,
+                "max_level": 52,
+                "species": "SPECIES_MAGIKARP"
+              },
+              {
+                "min_level": 50,
+                "max_level": 53,
+                "species": "SPECIES_HORSEA"
+              },
+              {
+                "min_level": 48,
+                "max_level": 51,
+                "species": "SPECIES_MAGIKARP"
+              },
+              {
+                "min_level": 49,
+                "max_level": 52,
+                "species": "SPECIES_KRABBY"
+              },
+              {
+                "min_level": 50,
+                "max_level": 53,
+                "species": "SPECIES_HORSEA"
+              },
+              {
+                "min_level": 48,
+                "max_level": 51,
+                "species": "SPECIES_HORSEA"
+              },
+              {
+                "min_level": 49,
+                "max_level": 52,
+                "species": "SPECIES_GYARADOS"
+              },
+              {
+                "min_level": 50,
+                "max_level": 53,
+                "species": "SPECIES_HORSEA"
+              },
+              {
+                "min_level": 48,
+                "max_level": 51,
+                "species": "SPECIES_PSYDUCK"
+              }
+            ]
+          }
+        },
+        {
+          "map": "MAP_LEGENDS_KANTO_ROUTE13",
+          "base_label": "gLegendsKantoRoute13",
+          "land_mons": {
+            "encounter_rate": 21,
+            "mons": [
+              {
+                "min_level": 48,
+                "max_level": 51,
+                "species": "SPECIES_ODDISH"
+              },
+              {
+                "min_level": 49,
+                "max_level": 52,
+                "species": "SPECIES_VENONAT"
+              },
+              {
+                "min_level": 50,
+                "max_level": 53,
+                "species": "SPECIES_ODDISH"
+              },
+              {
+                "min_level": 48,
+                "max_level": 51,
+                "species": "SPECIES_PIDGEY"
+              },
+              {
+                "min_level": 49,
+                "max_level": 52,
+                "species": "SPECIES_PIDGEY"
+              },
+              {
+                "min_level": 50,
+                "max_level": 53,
+                "species": "SPECIES_VENONAT"
+              },
+              {
+                "min_level": 48,
+                "max_level": 51,
+                "species": "SPECIES_ODDISH"
+              },
+              {
+                "min_level": 49,
+                "max_level": 52,
+                "species": "SPECIES_DITTO"
+              },
+              {
+                "min_level": 50,
+                "max_level": 53,
+                "species": "SPECIES_PIDGEOTTO"
+              },
+              {
+                "min_level": 48,
+                "max_level": 51,
+                "species": "SPECIES_GLOOM"
+              },
+              {
+                "min_level": 49,
+                "max_level": 52,
+                "species": "SPECIES_PIDGEOTTO"
+              },
+              {
+                "min_level": 50,
+                "max_level": 53,
+                "species": "SPECIES_GLOOM"
+              }
+            ]
+          },
+          "water_mons": {
+            "encounter_rate": 2,
+            "mons": [
+              {
+                "min_level": 48,
+                "max_level": 51,
+                "species": "SPECIES_TENTACOOL"
+              },
+              {
+                "min_level": 49,
+                "max_level": 52,
+                "species": "SPECIES_TENTACOOL"
+              },
+              {
+                "min_level": 50,
+                "max_level": 53,
+                "species": "SPECIES_TENTACOOL"
+              },
+              {
+                "min_level": 48,
+                "max_level": 51,
+                "species": "SPECIES_TENTACOOL"
+              },
+              {
+                "min_level": 49,
+                "max_level": 52,
+                "species": "SPECIES_TENTACOOL"
+              }
+            ]
+          },
+          "fishing_mons": {
+            "encounter_rate": 20,
+            "mons": [
+              {
+                "min_level": 48,
+                "max_level": 51,
+                "species": "SPECIES_MAGIKARP"
+              },
+              {
+                "min_level": 49,
+                "max_level": 52,
+                "species": "SPECIES_MAGIKARP"
+              },
+              {
+                "min_level": 50,
+                "max_level": 53,
+                "species": "SPECIES_HORSEA"
+              },
+              {
+                "min_level": 48,
+                "max_level": 51,
+                "species": "SPECIES_MAGIKARP"
+              },
+              {
+                "min_level": 49,
+                "max_level": 52,
+                "species": "SPECIES_KRABBY"
+              },
+              {
+                "min_level": 50,
+                "max_level": 53,
+                "species": "SPECIES_HORSEA"
+              },
+              {
+                "min_level": 48,
+                "max_level": 51,
+                "species": "SPECIES_HORSEA"
+              },
+              {
+                "min_level": 49,
+                "max_level": 52,
+                "species": "SPECIES_GYARADOS"
+              },
+              {
+                "min_level": 50,
+                "max_level": 53,
+                "species": "SPECIES_HORSEA"
+              },
+              {
+                "min_level": 48,
+                "max_level": 51,
+                "species": "SPECIES_PSYDUCK"
+              }
+            ]
+          }
+        },
+        {
+          "map": "MAP_LEGENDS_KANTO_ROUTE14",
+          "base_label": "gLegendsKantoRoute14",
+          "land_mons": {
+            "encounter_rate": 21,
+            "mons": [
+              {
+                "min_level": 48,
+                "max_level": 51,
+                "species": "SPECIES_ODDISH"
+              },
+              {
+                "min_level": 49,
+                "max_level": 52,
+                "species": "SPECIES_VENONAT"
+              },
+              {
+                "min_level": 50,
+                "max_level": 53,
+                "species": "SPECIES_ODDISH"
+              },
+              {
+                "min_level": 48,
+                "max_level": 51,
+                "species": "SPECIES_DITTO"
+              },
+              {
+                "min_level": 49,
+                "max_level": 52,
+                "species": "SPECIES_PIDGEY"
+              },
+              {
+                "min_level": 50,
+                "max_level": 53,
+                "species": "SPECIES_VENONAT"
+              },
+              {
+                "min_level": 48,
+                "max_level": 51,
+                "species": "SPECIES_ODDISH"
+              },
+              {
+                "min_level": 49,
+                "max_level": 52,
+                "species": "SPECIES_GLOOM"
+              },
+              {
+                "min_level": 50,
+                "max_level": 53,
+                "species": "SPECIES_DITTO"
+              },
+              {
+                "min_level": 48,
+                "max_level": 51,
+                "species": "SPECIES_PIDGEOTTO"
+              },
+              {
+                "min_level": 49,
+                "max_level": 52,
+                "species": "SPECIES_DITTO"
+              },
+              {
+                "min_level": 50,
+                "max_level": 53,
+                "species": "SPECIES_PIDGEOTTO"
+              }
+            ]
+          }
+        },
+        {
+          "map": "MAP_LEGENDS_KANTO_ROUTE15",
+          "base_label": "gLegendsKantoRoute15",
+          "land_mons": {
+            "encounter_rate": 21,
+            "mons": [
+              {
+                "min_level": 49,
+                "max_level": 52,
+                "species": "SPECIES_ODDISH"
+              },
+              {
+                "min_level": 50,
+                "max_level": 53,
+                "species": "SPECIES_VENONAT"
+              },
+              {
+                "min_level": 51,
+                "max_level": 54,
+                "species": "SPECIES_ODDISH"
+              },
+              {
+                "min_level": 49,
+                "max_level": 52,
+                "species": "SPECIES_PIDGEY"
+              },
+              {
+                "min_level": 50,
+                "max_level": 53,
+                "species": "SPECIES_PIDGEY"
+              },
+              {
+                "min_level": 51,
+                "max_level": 54,
+                "species": "SPECIES_VENONAT"
+              },
+              {
+                "min_level": 49,
+                "max_level": 52,
+                "species": "SPECIES_ODDISH"
+              },
+              {
+                "min_level": 50,
+                "max_level": 53,
+                "species": "SPECIES_DITTO"
+              },
+              {
+                "min_level": 51,
+                "max_level": 54,
+                "species": "SPECIES_PIDGEOTTO"
+              },
+              {
+                "min_level": 49,
+                "max_level": 52,
+                "species": "SPECIES_GLOOM"
+              },
+              {
+                "min_level": 50,
+                "max_level": 53,
+                "species": "SPECIES_PIDGEOTTO"
+              },
+              {
+                "min_level": 51,
+                "max_level": 54,
+                "species": "SPECIES_GLOOM"
+              }
+            ]
+          }
+        },
+        {
+          "map": "MAP_LEGENDS_KANTO_ROUTE16",
+          "base_label": "gLegendsKantoRoute16",
+          "land_mons": {
+            "encounter_rate": 21,
+            "mons": [
+              {
+                "min_level": 49,
+                "max_level": 52,
+                "species": "SPECIES_SPEAROW"
+              },
+              {
+                "min_level": 50,
+                "max_level": 53,
+                "species": "SPECIES_DODUO"
+              },
+              {
+                "min_level": 51,
+                "max_level": 54,
+                "species": "SPECIES_RATTATA"
+              },
+              {
+                "min_level": 49,
+                "max_level": 52,
+                "species": "SPECIES_RATTATA"
+              },
+              {
+                "min_level": 50,
+                "max_level": 53,
+                "species": "SPECIES_SPEAROW"
+              },
+              {
+                "min_level": 51,
+                "max_level": 54,
+                "species": "SPECIES_DODUO"
+              },
+              {
+                "min_level": 49,
+                "max_level": 52,
+                "species": "SPECIES_RATTATA"
+              },
+              {
+                "min_level": 50,
+                "max_level": 53,
+                "species": "SPECIES_DODUO"
+              },
+              {
+                "min_level": 51,
+                "max_level": 54,
+                "species": "SPECIES_RATTATA"
+              },
+              {
+                "min_level": 49,
+                "max_level": 52,
+                "species": "SPECIES_RATICATE"
+              },
+              {
+                "min_level": 50,
+                "max_level": 53,
+                "species": "SPECIES_RATTATA"
+              },
+              {
+                "min_level": 51,
+                "max_level": 54,
+                "species": "SPECIES_RATICATE"
+              }
+            ]
+          }
+        },
+        {
+          "map": "MAP_LEGENDS_KANTO_ROUTE17",
+          "base_label": "gLegendsKantoRoute17",
+          "land_mons": {
+            "encounter_rate": 21,
+            "mons": [
+              {
+                "min_level": 49,
+                "max_level": 52,
+                "species": "SPECIES_SPEAROW"
+              },
+              {
+                "min_level": 50,
+                "max_level": 53,
+                "species": "SPECIES_DODUO"
+              },
+              {
+                "min_level": 51,
+                "max_level": 54,
+                "species": "SPECIES_SPEAROW"
+              },
+              {
+                "min_level": 49,
+                "max_level": 52,
+                "species": "SPECIES_DODUO"
+              },
+              {
+                "min_level": 50,
+                "max_level": 53,
+                "species": "SPECIES_RATICATE"
+              },
+              {
+                "min_level": 51,
+                "max_level": 54,
+                "species": "SPECIES_RATICATE"
+              },
+              {
+                "min_level": 49,
+                "max_level": 52,
+                "species": "SPECIES_DODUO"
+              },
+              {
+                "min_level": 50,
+                "max_level": 53,
+                "species": "SPECIES_RATICATE"
+              },
+              {
+                "min_level": 51,
+                "max_level": 54,
+                "species": "SPECIES_RATTATA"
+              },
+              {
+                "min_level": 49,
+                "max_level": 52,
+                "species": "SPECIES_FEAROW"
+              },
+              {
+                "min_level": 50,
+                "max_level": 53,
+                "species": "SPECIES_RATTATA"
+              },
+              {
+                "min_level": 51,
+                "max_level": 54,
+                "species": "SPECIES_FEAROW"
+              }
+            ]
+          }
+        },
+        {
+          "map": "MAP_LEGENDS_KANTO_ROUTE18",
+          "base_label": "gLegendsKantoRoute18",
+          "land_mons": {
+            "encounter_rate": 21,
+            "mons": [
+              {
+                "min_level": 49,
+                "max_level": 52,
+                "species": "SPECIES_SPEAROW"
+              },
+              {
+                "min_level": 50,
+                "max_level": 53,
+                "species": "SPECIES_DODUO"
+              },
+              {
+                "min_level": 51,
+                "max_level": 54,
+                "species": "SPECIES_SPEAROW"
+              },
+              {
+                "min_level": 49,
+                "max_level": 52,
+                "species": "SPECIES_DODUO"
+              },
+              {
+                "min_level": 50,
+                "max_level": 53,
+                "species": "SPECIES_RATICATE"
+              },
+              {
+                "min_level": 51,
+                "max_level": 54,
+                "species": "SPECIES_FEAROW"
+              },
+              {
+                "min_level": 49,
+                "max_level": 52,
+                "species": "SPECIES_DODUO"
+              },
+              {
+                "min_level": 50,
+                "max_level": 53,
+                "species": "SPECIES_RATICATE"
+              },
+              {
+                "min_level": 51,
+                "max_level": 54,
+                "species": "SPECIES_RATTATA"
+              },
+              {
+                "min_level": 49,
+                "max_level": 52,
+                "species": "SPECIES_FEAROW"
+              },
+              {
+                "min_level": 50,
+                "max_level": 53,
+                "species": "SPECIES_RATTATA"
+              },
+              {
+                "min_level": 51,
+                "max_level": 54,
+                "species": "SPECIES_FEAROW"
+              }
+            ]
+          }
+        },
+        {
+          "map": "MAP_LEGENDS_KANTO_ROUTE19",
+          "base_label": "gLegendsKantoRoute19",
+          "water_mons": {
+            "encounter_rate": 2,
+            "mons": [
+              {
+                "min_level": 49,
+                "max_level": 52,
+                "species": "SPECIES_TENTACOOL"
+              },
+              {
+                "min_level": 50,
+                "max_level": 53,
+                "species": "SPECIES_TENTACOOL"
+              },
+              {
+                "min_level": 51,
+                "max_level": 54,
+                "species": "SPECIES_TENTACOOL"
+              },
+              {
+                "min_level": 49,
+                "max_level": 52,
+                "species": "SPECIES_TENTACOOL"
+              },
+              {
+                "min_level": 50,
+                "max_level": 53,
+                "species": "SPECIES_TENTACOOL"
+              }
+            ]
+          },
+          "fishing_mons": {
+            "encounter_rate": 20,
+            "mons": [
+              {
+                "min_level": 49,
+                "max_level": 52,
+                "species": "SPECIES_MAGIKARP"
+              },
+              {
+                "min_level": 50,
+                "max_level": 53,
+                "species": "SPECIES_MAGIKARP"
+              },
+              {
+                "min_level": 51,
+                "max_level": 54,
+                "species": "SPECIES_HORSEA"
+              },
+              {
+                "min_level": 49,
+                "max_level": 52,
+                "species": "SPECIES_MAGIKARP"
+              },
+              {
+                "min_level": 50,
+                "max_level": 53,
+                "species": "SPECIES_KRABBY"
+              },
+              {
+                "min_level": 51,
+                "max_level": 54,
+                "species": "SPECIES_HORSEA"
+              },
+              {
+                "min_level": 49,
+                "max_level": 52,
+                "species": "SPECIES_HORSEA"
+              },
+              {
+                "min_level": 50,
+                "max_level": 53,
+                "species": "SPECIES_GYARADOS"
+              },
+              {
+                "min_level": 51,
+                "max_level": 54,
+                "species": "SPECIES_SEADRA"
+              },
+              {
+                "min_level": 49,
+                "max_level": 52,
+                "species": "SPECIES_PSYDUCK"
+              }
+            ]
+          }
         }
       ]
     },

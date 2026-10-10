@@ -16,6 +16,11 @@
       "map": "MAP_LEGENDS_KANTO_ROUTE11",
       "offset": 10,
       "direction": "right"
+    },
+    {
+      "map": "MAP_LEGENDS_KANTO_ROUTE6",
+      "offset": 12,
+      "direction": "up"
     }
   ],
   "object_events": [
@@ -117,20 +122,6 @@
       "trainer_sight_or_berry_tree_id": "0",
       "script": "LegendsKanto_EventScript_RoadCrew",
       "flag": "0"
-    },
-    {
-      "type": "object",
-      "graphics_id": "OBJ_EVENT_GFX_MAN_1",
-      "x": 14,
-      "y": 26,
-      "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
-      "movement_range_x": 0,
-      "movement_range_y": 0,
-      "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "LegendsKanto_EventScript_GymClosed",
-      "flag": "0"
     }
   ],
   "warp_events": [
@@ -196,6 +187,13 @@
       "elevation": 0,
       "dest_map": "MAP_LEGENDS_KANTO_HOUSE3",
       "dest_warp_id": "0"
+    },
+    {
+      "x": 14,
+      "y": 25,
+      "elevation": 0,
+      "dest_map": "MAP_LEGENDS_KANTO_VERMILION_CITY_GYM",
+      "dest_warp_id": "1"
     }
   ],
   "coord_events": [],

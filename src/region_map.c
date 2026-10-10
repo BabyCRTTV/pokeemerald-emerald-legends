@@ -709,6 +709,7 @@ void InitRegionMapData(struct RegionMap *regionMap, const struct BgTemplate *tem
 {
     sRegionMap = regionMap;
     sRegionMap->initStep = 0;
+    sRegionMap->displayRegion = GetRegionMapType(gMapHeader.regionMapSectionId);
     sRegionMap->zoomed = zoomed;
     sRegionMap->inputCallback = zoomed == TRUE ? ProcessRegionMapInput_Zoomed : ProcessRegionMapInput_Full;
     if (template != NULL)
@@ -730,6 +731,7 @@ void InitRegionMapData(struct RegionMap *regionMap, const struct BgTemplate *tem
 void ShowRegionMapForPokedexAreaScreen(struct RegionMap *regionMap)
 {
     sRegionMap = regionMap;
+    sRegionMap->displayRegion = GetRegionMapType(gMapHeader.regionMapSectionId);
     InitMapBasedOnPlayerLocation();
     sRegionMap->playerIconSpritePosX = sRegionMap->cursorPosX;
     sRegionMap->playerIconSpritePosY = sRegionMap->cursorPosY;
@@ -741,14 +743,14 @@ bool8 LoadRegionMapGfx(void)
     switch (sRegionMap->initStep)
     {
     case 0:
-        regionMapType = GetRegionMapType(gMapHeader.regionMapSectionId);
+        regionMapType = sRegionMap->displayRegion;
         if (sRegionMap->bgManaged)
             DecompressAndCopyTileDataToVram(sRegionMap->bgNum, gRegionMapInfos[regionMapType].regionMapGfx, 0, 0, 0);
         else
             DecompressDataWithHeaderVram(gRegionMapInfos[regionMapType].regionMapGfx, (u16 *)BG_CHAR_ADDR(2));
         break;
     case 1:
-        regionMapType = GetRegionMapType(gMapHeader.regionMapSectionId);
+        regionMapType = sRegionMap->displayRegion;
         if (sRegionMap->bgManaged)
         {
             if (!FreeTempTileDataBuffersIfPossible())
@@ -760,7 +762,7 @@ bool8 LoadRegionMapGfx(void)
         }
         break;
     case 2:
-        regionMapType = GetRegionMapType(gMapHeader.regionMapSectionId);
+        regionMapType = sRegionMap->displayRegion;
         if (!FreeTempTileDataBuffersIfPossible())
             LoadPalette(gRegionMapInfos[regionMapType].regionMapPalette, BG_PLTT_ID(7), 3 * PLTT_SIZE_4BPP);
         break;
@@ -772,6 +774,12 @@ bool8 LoadRegionMapGfx(void)
         break;
     case 5:
         InitMapBasedOnPlayerLocation();
+        if (!RegionMap_IsViewingCurrentRegion())
+        {
+            sRegionMap->mapSecId = sRegionMap->displayRegion == REGION_MAP_KANTO ? MAPSEC_VERMILION_CITY : MAPSEC_LITTLEROOT_TOWN;
+            sRegionMap->cursorPosX = gRegionMapEntries[sRegionMap->mapSecId].x + MAPCURSOR_X_MIN;
+            sRegionMap->cursorPosY = gRegionMapEntries[sRegionMap->mapSecId].y + MAPCURSOR_Y_MIN;
+        }
         sRegionMap->playerIconSpritePosX = sRegionMap->cursorPosX;
         sRegionMap->playerIconSpritePosY = sRegionMap->cursorPosY;
         sRegionMap->mapSecId = CorrectSpecialMapSecId_Internal(sRegionMap->mapSecId);
@@ -882,6 +890,10 @@ static u8 ProcessRegionMapInput_Full(void)
     {
         input = MAP_INPUT_R_BUTTON;
     }
+    else if (JOY_NEW(SELECT_BUTTON))
+    {
+        input = MAP_INPUT_SELECT_BUTTON;
+    }
     if (input == MAP_INPUT_MOVE_START)
     {
         sRegionMap->cursorMovementFrameCounter = 4;
@@ -964,6 +976,10 @@ static u8 ProcessRegionMapInput_Zoomed(void)
     else if (JOY_NEW(R_BUTTON))
     {
         input = MAP_INPUT_R_BUTTON;
+    }
+    else if (JOY_NEW(SELECT_BUTTON))
+    {
+        input = MAP_INPUT_SELECT_BUTTON;
     }
     if (input == MAP_INPUT_MOVE_START)
     {
@@ -1192,24 +1208,13 @@ static mapsec_u16_t GetMapSecIdAt(u16 x, u16 y)
     y -= MAPCURSOR_Y_MIN;
     x -= MAPCURSOR_X_MIN;
 
-    switch (GetCurrentRegion())
+    switch (sRegionMap->displayRegion)
     {
-    case REGION_KANTO:
-        switch (GetKantoSubregion(gMapHeader.regionMapSectionId))
-        {
-        case KANTO_SUBREGION_SEVII123:
-                return sRegionMapSections_Sevii123[y][x];
-        case KANTO_SUBREGION_SEVII45:
-                return sRegionMapSections_Sevii45[y][x];
-        case KANTO_SUBREGION_SEVII67:
-                return sRegionMapSections_Sevii67[y][x];
-        case KANTO_SUBREGION_KANTO:
-        default:
-                return sRegionMapSections_Kanto[y][x];
-        }
-    case REGION_HOENN:
-    default:
-            return sRegionMap_MapSectionLayout[y][x];
+    case REGION_MAP_KANTO: return sRegionMapSections_Kanto[y][x];
+    case REGION_MAP_SEVII123: return sRegionMapSections_Sevii123[y][x];
+    case REGION_MAP_SEVII45: return sRegionMapSections_Sevii45[y][x];
+    case REGION_MAP_SEVII67: return sRegionMapSections_Sevii67[y][x];
+    default: return sRegionMap_MapSectionLayout[y][x];
     }
 }
 
@@ -2527,4 +2532,16 @@ void SetFlyDestination(struct RegionMap* regionMap)
         SetWarpDestinationToHealLocation(flyDestination);
     else
         SetWarpDestinationToMapWarp(sMapHealLocations[regionMap->mapSecId][0], sMapHealLocations[regionMap->mapSecId][1], WARP_ID_NONE);
+}
+
+// Only the PokeNav browsing task uses this override. Fly and wall maps initialize
+// independently from the player's actual location, as does the Pokedex map.
+void RegionMap_SetDisplayRegion(enum RegionMapType region)
+{
+    sRegionMap->displayRegion = region;
+}
+
+bool32 RegionMap_IsViewingCurrentRegion(void)
+{
+    return sRegionMap->displayRegion == GetRegionMapType(gMapHeader.regionMapSectionId);
 }
