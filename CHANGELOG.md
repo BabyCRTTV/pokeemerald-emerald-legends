@@ -4,6 +4,22 @@ All notable Pokémon Emerald: Legends project changes are documented here.
 
 For build-specific player views, see [CHANGELOG-RELEASE.md](CHANGELOG-RELEASE.md) and [CHANGELOG-DEBUG.md](CHANGELOG-DEBUG.md). The canonical history below records the project as a whole.
 
+## [0.0.29] - 2026-10-10
+
+### Added
+- ADVENTURE LOG in the pause menu: a cozy cream-and-lavender notebook with older/newer pages, All/Day/Story filters, played-day browsing, dates, locations, story notes, cumulative play time and one recent caught Pokemon with its level per entry.
+- Automatically records key Hoenn milestones and the existing Kanto/Wing Survey story. Future Kanto victory records use the same modular registry. Captures and repeated save checkpoints refresh a field note between milestones; the latest 32 notes are retained.
+- DAY counter above the clock/weather/season rows: counts dates actually played, including across sessions and midnight; skipped dates add nothing. Four hours on one date plus three on a later date remain seven play hours and two played days. Invalid RTC pauses counting; backward clock changes do not duplicate days.
+- Scrollable pause menu with directional hints, retaining existing actions without extending beyond the screen. The notebook closes back to the pause menu; Continue has no forced replay scene.
+
+### Compatibility and validation
+- Existing saves begin a new Day 1 notebook with their known progress; historical dates/catches are not invented. Original SaveBlock1/2 and prior SaveBlock3 fields/IDs retain their offsets. The checked, versioned extension fits the native partial-save sector boundary; a bad extension resets only the log.
+- Actual-C host checks cover persistence/migration, played dates, story hooks, catches, retention, filters, notebook lifecycle/font/pixel bounds, menu scrolling and the expanded clock panel. Native-font static preview inspected; manual emulator testing remains outstanding.
+- Debug/Release compilation and verified BPS publishing use the established release workflow.
+
+### Build variants
+- Shared Adventure Log, day counter and gameplay in Release and Debug. No variant-specific gameplay differences; Debug retains developer conveniences.
+
 ## [0.0.28.1] - 2026-10-10
 
 ### Added

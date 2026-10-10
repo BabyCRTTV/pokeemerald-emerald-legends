@@ -31,6 +31,12 @@ jobs:
         run: python3 test/legends-upstream-items.test.py
       - name: Exercise pause panel regression tests
         run: python3 test/legends-start-menu.test.py
+      - name: Exercise Adventure Log persistence, days and milestones
+        run: python3 test/legends-adventure.test.py
+      - name: Exercise Adventure Log notebook and filters
+        run: python3 test/legends-adventure-ui.test.py
+      - name: Exercise scrolling pause menu
+        run: python3 test/legends-adventure-menu.test.py
       - name: Exercise player appearance regression tests
         run: python3 test/legends-appearance.test.py
       - name: Exercise visual polish regression tests

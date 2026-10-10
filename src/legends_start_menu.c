@@ -1,4 +1,6 @@
 #include "global.h"
+#include "legends_adventure.h"
+#include "string_util.h"
 #include "event_data.h"
 #include "field_weather.h"
 #include "legends_seasons.h"
@@ -13,8 +15,8 @@
 // This gap sits below the map-name popup and above the save/counter tiles.
 static const struct WindowTemplate sPanelTemplate =
 {
-    .bg = 0, .tilemapLeft = 1, .tilemapTop = 14,
-    .width = 12, .height = 4, .paletteNum = 15, .baseBlock = 0xC0,
+    .bg = 0, .tilemapLeft = 1, .tilemapTop = 12,
+    .width = 12, .height = 6, .paletteNum = 15, .baseBlock = 0xB8,
 };
 
 enum PanelIcon
@@ -49,6 +51,7 @@ EWRAM_DATA static u8 sLastHour = 0;
 EWRAM_DATA static u8 sLastMinute = 0;
 EWRAM_DATA static u8 sLastIcon = 0;
 EWRAM_DATA static u8 sLastSeason = 0;
+EWRAM_DATA static u16 sLastDay = 0;
 EWRAM_DATA static bool8 sLastClockValid = FALSE;
 EWRAM_DATA static bool8 sHasSnapshot = FALSE;
 
@@ -146,14 +149,16 @@ static void AnimateWeatherIcon(void)
     if (sLastIcon == ICON_INDOOR || sLastIcon == ICON_CLOUD)
         return;
     windowId = sWindowHandle - 1;
-    FillWindowPixelRect(windowId, PIXEL_FILL(1), 4, 18, 12, 12);
-    DrawIcon(windowId, sLastIcon, 18);
+    FillWindowPixelRect(windowId, PIXEL_FILL(1), 4, 34, 12, 12);
+    DrawIcon(windowId, sLastIcon, 34);
     CopyWindowToVram(windowId, COPYWIN_GFX);
 }
 
 void LegendsUpdateStartMenuPanel(void)
 {
     u8 timeText[24];
+    u8 dayText[20];
+    u16 day;
     u8 hour, minute, icon, season, windowId;
     bool8 clockValid;
 
@@ -175,12 +180,15 @@ void LegendsUpdateStartMenuPanel(void)
         minute = gLocalTime.minutes;
         clockValid = hour < 24 && minute < 60;
     }
+    LegendsAdventureUpdateDay();
+    day = LegendsAdventureDays();
     icon = GetWeatherIcon();
     // Observe the displayed environment; opening the menu must not commit a season.
     season = LegendsGetActiveSeason();
     if (sHasSnapshot && hour == sLastHour && minute == sLastMinute
-     && icon == sLastIcon && season == sLastSeason && clockValid == sLastClockValid)
+     && icon == sLastIcon && season == sLastSeason && clockValid == sLastClockValid && day == sLastDay)
         return;
+    sLastDay = day;
     sLastHour = hour;
     sLastMinute = minute;
     sLastIcon = icon;
@@ -190,14 +198,17 @@ void LegendsUpdateStartMenuPanel(void)
 
     windowId = sWindowHandle - 1;
     FillWindowPixelBuffer(windowId, PIXEL_FILL(1));
-    DrawIcon(windowId, ICON_CLOCK, 2);
-    DrawIcon(windowId, icon, 18);
+    StringCopy(dayText, COMPOUND_STRING("DAY "));
+    ConvertIntToDecimalStringN(dayText + 4, day, STR_CONV_MODE_LEFT_ALIGN, 5);
+    AddTextPrinterParameterized(windowId, FONT_SMALL, dayText, 4, 0, TEXT_SKIP_DRAW, NULL);
+    DrawIcon(windowId, ICON_CLOCK, 18);
+    DrawIcon(windowId, icon, 34);
     if (clockValid)
         FormatDecimalTimeWithoutSeconds(timeText, hour, minute, FALSE);
     AddTextPrinterParameterized(windowId, FONT_SMALL,
-        clockValid ? timeText : COMPOUND_STRING("--:--"), 23, 0, TEXT_SKIP_DRAW, NULL);
+        clockValid ? timeText : COMPOUND_STRING("--:--"), 23, 16, TEXT_SKIP_DRAW, NULL);
     AddTextPrinterParameterized(windowId, FONT_SMALL,
-        LegendsGetSeasonName(season), 23, 16, TEXT_SKIP_DRAW, NULL);
+        LegendsGetSeasonName(season), 23, 32, TEXT_SKIP_DRAW, NULL);
     CopyWindowToVram(windowId, COPYWIN_GFX);
 }
 
