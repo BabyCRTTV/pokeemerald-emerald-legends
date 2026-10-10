@@ -6,16 +6,17 @@
   const results=$("#results"), more=$("#more"), search=$("#search"), modal=$("#detail");
   const METHODS=["land","surf","rock","old_rod","good_rod","super_rod"];
   function sprite(p,size="small"){
-    return LegendsSprites.markup(p,size);
+    const image=LegendsSprites.markup(p,size);
+    return '<button type="button" class="cry-sprite" data-cry="'+esc(p.id)+'" aria-label="Play '+esc(p.name)+' cry" title="Play '+esc(p.name)+' cry">'+image+'</button>';
   }
   function prettyLevel(a,b){return a===b?"Lv. "+a:"Lv. "+a+"–"+b}
   function chips(p){return '<div class="types">'+(p.types||[]).map(x=>'<span class="type type--'+x.toLowerCase()+'">'+esc(x.toLowerCase())+'</span>').join("")+'</div>'}
   function speciesListRows(){
     let visible=data.species.filter(p=>{
       let hitsQuery=!query||p.name.toLowerCase().includes(query)||String(p.num??"").padStart(4,"0").includes(query)||p.id.toLowerCase().replaceAll("_"," ").includes(query);
-      let matched=(pokemonMap.get(p.id)||[]).filter(loc=>(region==="all"||loc.region===region)&&(method==="all"||method===loc.method));
+      let matched=(pokemonMap.get(p.id)||[]).filter(loc=>region==="all"||loc.region===region);
       let hasAny=(pokemonMap.get(p.id)||[]).length>0;
-      return hitsQuery&& (type==="all"||p.types.includes(type)) && (availability==="all"||(availability==="wild"&&matched.length>0)||(availability==="unknown"&&!hasAny)) && (region==="all"||matched.length>0||availability==="unknown") && (method==="all"||matched.length>0||availability==="unknown");
+      return hitsQuery&& (type==="all"||p.types.includes(type)) && (availability==="all"||(availability==="wild"&&matched.length>0)||(availability==="unknown"&&!hasAny)) && (region==="all"||matched.length>0||availability==="unknown");
     });
     return visible;
   }
@@ -33,7 +34,7 @@
   }
   function encounterCard(e){
     const p=bySpecies.get(e.id);if(!p)return "";
-    return '<button type="button" class="encounter" data-species="'+esc(e.id)+'" aria-label="'+esc(p.name+' '+prettyLevel(e.min,e.max)+' '+e.rate+' percent encounter share')+'">'+sprite(p)+'<span class="species-copy"><strong>'+esc(p.name)+'</strong><span class="enc-meta">'+prettyLevel(e.min,e.max)+'</span></span><span class="rate">'+e.rate+'%<small>SPAWN</small></span></button>';
+    return '<div class="encounter">'+sprite(p)+'<button type="button" class="pokemon-link" data-species="'+esc(e.id)+'" aria-label="'+esc(p.name+' '+prettyLevel(e.min,e.max)+' '+e.rate+' percent encounter share')+'"><span class="species-copy"><strong>'+esc(p.name)+'</strong><span class="enc-meta">'+prettyLevel(e.min,e.max)+'</span></span><span class="rate">'+e.rate+'%<small>SPAWN</small></span></button></div>';
   }
   function routeCard(map){
     let count=new Set(map.methods.flatMap(m=>m.entries.map(e=>e.id))).size;
@@ -42,7 +43,7 @@
   }
   function dexCard(p){
     const n=(pokemonMap.get(p.id)||[]).length;
-    return '<button type="button" class="dex-card" data-species="'+esc(p.id)+'">'+sprite(p)+'<span><span class="dex-num">'+(p.num?"#"+String(p.num).padStart(4,"0"):"Special form")+'</span><strong>'+esc(p.name)+'</strong><span class="dex-sub">'+(n?n+" wild location"+(n===1?"":"s"):"No listed wild location")+'</span>'+chips(p)+'</span></button>';
+    return '<div class="dex-card">'+sprite(p)+'<button type="button" class="pokemon-link" data-species="'+esc(p.id)+'"><span><span class="dex-num">'+(p.num?"#"+String(p.num).padStart(4,"0"):"Special form")+'</span><strong>'+esc(p.name)+'</strong><span class="dex-sub">'+(n?n+" wild location"+(n===1?"":"s"):"No listed wild location")+'</span>'+chips(p)+'</span></button></div>';
   }
   function updateControls(){
     document.querySelectorAll("[data-view]").forEach(b=>{let active=b.dataset.view===view;b.classList.toggle("selected",active);b.setAttribute("aria-selected",String(active))});
@@ -76,7 +77,7 @@
     const p=bySpecies.get(id);if(!p)return;
     const linked=(pokemonMap.get(id)||[]).filter(loc=>(region==="all"||loc.region===region));
     const all=pokemonMap.get(id)||[];
-    let selected=linked.length?linked:all;
+    let selected=[...(linked.length?linked:all)];
     selected.sort((a,b)=>a.region.localeCompare(b.region)||a.map.localeCompare(b.map));
     const stats=p.stats?.length===6&&p.stats.every(x=>Number.isFinite(x))?
       '<h3>Base stats</h3><div class="stat-table">'+["HP","Attack","Defense","Sp. Atk","Sp. Def","Speed"].map((name,i)=>'<span>'+name+'</span><div class="stat-track"><i style="width:'+Math.max(1,Math.min(100,p.stats[i]/2.55))+'%"></i></div><span>'+p.stats[i]+'</span>').join("")+'</div>':"";
@@ -101,7 +102,21 @@
     $("#version-meta").textContent="Game v"+data.gameVersion+" · "+data.maps.length+" locations";
   }
   document.addEventListener("error",event=>{if(event.target instanceof HTMLImageElement && event.target.closest(".thumb")){event.target.closest(".thumb").classList.add("fallback-only")}},true);
-  document.addEventListener("click",event=>{const s=event.target.closest("[data-species]");if(s)openPokemon(s.dataset.species);});
+  let cryAudio=null,cryToken=0;
+  function stopCry(){cryToken++;if(cryAudio){cryAudio.pause();cryAudio=null;}document.querySelectorAll('.cry-sprite.playing').forEach(b=>b.classList.remove('playing'));}
+  async function playCry(id,button){
+    if(!bySpecies.has(id))return;
+    stopCry();const token=cryToken;
+    const stem=id.toLowerCase()+(window.LegendsCryForms[id]?'_'+window.LegendsCryForms[id]:'');
+    const audio=new Audio('https://raw.githubusercontent.com/BabyCRTTV/pokeemerald-emerald-legends/'+data.sourceCommit+'/sound/direct_sound_samples/cries/'+stem+'.wav');cryAudio=audio;audio.preload='none';
+    button.classList.add('playing');$('#cry-status').textContent='';
+    audio.addEventListener('ended',()=>{if(token===cryToken)stopCry();},{once:true});
+    try{await audio.play();if(token===cryToken)$('#cry-status').textContent='Playing '+bySpecies.get(id).name+'’s cry.';}
+    catch{if(token===cryToken){stopCry();$('#cry-status').textContent='Could not play this cry. Check your connection and tap the sprite to try again.';}}
+  }
+  document.addEventListener('visibilitychange',()=>{if(document.hidden)stopCry();});
+  modal.addEventListener('close',stopCry);
+  document.addEventListener("click",event=>{const cry=event.target.closest('[data-cry]');if(cry){playCry(cry.dataset.cry,cry);return;}const s=event.target.closest("[data-species]");if(s)openPokemon(s.dataset.species);});
   document.querySelectorAll("[data-view]").forEach(b=>b.addEventListener("click",()=>changeView(b.dataset.view)));
   document.querySelectorAll("[data-mobileview]").forEach(b=>b.addEventListener("click",()=>changeView(b.dataset.mobileview)));
   document.querySelectorAll("[data-region]").forEach(b=>b.addEventListener("click",()=>{region=b.dataset.region;shown=0;render()}));

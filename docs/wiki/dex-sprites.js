@@ -18,7 +18,7 @@ window.LegendsSprites = (() => {
   function markup(p, size="small") {
     const id = /^[a-z0-9_]+$/.test(p.sprite || "") ? p.sprite : p.id.toLowerCase();
     return '<span class="thumb'+(size==="large"?" thumb-large":"")+'">'+
-      '<span class="missing-icon" aria-hidden="true">✦</span>'+
+      '<span class="missing-icon" aria-hidden="true">◉</span>'+
       '<img alt="" data-icon="'+id+'" decoding="async"></span>';
   }
 

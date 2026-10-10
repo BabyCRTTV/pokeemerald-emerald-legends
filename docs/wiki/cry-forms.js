@@ -1,0 +1,2 @@
+/* Default-form cry aliases verified against the game source. */
+window.LegendsCryForms = {"EISCUE": "ice", "ENAMORUS": "incarnate", "GIMMIGHOUL": "chest", "HOOPA": "confined", "INDEEDEE": "m", "LANDORUS": "incarnate", "LYCANROC": "midday", "MAUSHOLD": "four", "MORPEKO": "full_belly", "OINKOLOGNE": "m", "ORICORIO": "baile", "PALAFIN": "hero", "SHAYMIN": "land", "TATSUGIRI": "curly", "THUNDURUS": "incarnate", "TORNADUS": "incarnate", "TOXTRICITY": "amped", "URSHIFU": "single_strike", "WISHIWASHI": "solo", "ZACIAN": "hero", "ZAMAZENTA": "hero", "ZYGARDE": "50"};
