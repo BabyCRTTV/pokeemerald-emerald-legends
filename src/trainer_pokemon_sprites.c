@@ -1,4 +1,5 @@
 #include "global.h"
+#include "legends_appearance.h"
 #include "sprite.h"
 #include "window.h"
 #include "malloc.h"
@@ -367,4 +368,5 @@ void CopyTrainerBackspriteFramesToDest(enum TrainerPicID trainerPicId, u8 *dest)
     // y_offset is repurposed to indicates how many frames does the trainer pic have.
     u32 size = (frame->size * GetTrainerBackPicCoords(trainerPicId)->y_offset);
     CpuSmartCopy16(frame->data, dest, size);
+    LegendsFootwearBackPic(trainerPicId, dest, size);
 }

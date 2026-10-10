@@ -59,5 +59,6 @@ const struct ObjectEventGraphicsInfo *LegendsGetPlayerGraphicsInfo(u16 graphicsI
         info->images = sLegendsAccessoryImages[LegendsGetAccessoryStyle() - 1][gender][outfit][state == 8 ? 5 : state];
     else if (outfit && (!LegendsGetCostume() || state != 4))
         info->images = sLegendsOutfitImages[gender][outfit - 1][state == 8 ? 5 : state];
+    info->images = LegendsFootwearImages(info->images, gender, state == 8 ? 5 : state);
     return info;
 }

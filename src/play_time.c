@@ -1,4 +1,5 @@
 #include "global.h"
+#include "legends_clock.h"
 #include "legends_adventure.h"
 #include "play_time.h"
 #include "legends_seasons.h"
@@ -37,6 +38,7 @@ void PlayTimeCounter_Update(void)
     if (sPlayTimeCounterState == STOPPED)
         return;
 
+    LegendsClockTick();
     LegendsSeasonTick();
     LegendsAdventureTick();
     if (sPlayTimeCounterState == MAXED_OUT)

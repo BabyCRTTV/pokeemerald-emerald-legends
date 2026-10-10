@@ -1,4 +1,5 @@
 #include "global.h"
+#include "legends_clock.h"
 #include "battle_pike.h"
 #include "battle_pyramid.h"
 #include "datetime.h"
@@ -197,7 +198,7 @@ u16 RtcCheckInfo(struct SiiRtcInfo *rtc)
 
     value = ConvertBcdToBinary(rtc->day);
 
-    if (value == 0xFF)
+    if (value == 0xFF || value == 0)
         errorFlags |= RTC_ERR_INVALID_DAY;
 
     if (month == MONTH_FEB)
@@ -205,7 +206,7 @@ u16 RtcCheckInfo(struct SiiRtcInfo *rtc)
         if (value > IsLeapYear(year) + sNumDaysInMonths[month - 1])
             errorFlags |= RTC_ERR_INVALID_DAY;
     }
-    else
+    else if (month >= MONTH_JAN && month <= MONTH_COUNT)
     {
         if (value > sNumDaysInMonths[month - 1])
             errorFlags |= RTC_ERR_INVALID_DAY;
@@ -213,17 +214,17 @@ u16 RtcCheckInfo(struct SiiRtcInfo *rtc)
 
     value = ConvertBcdToBinary(rtc->hour);
 
-    if (value > HOURS_PER_DAY)
+    if (value >= HOURS_PER_DAY)
         errorFlags |= RTC_ERR_INVALID_HOUR;
 
     value = ConvertBcdToBinary(rtc->minute);
 
-    if (value > MINUTES_PER_HOUR)
+    if (value >= MINUTES_PER_HOUR)
         errorFlags |= RTC_ERR_INVALID_MINUTE;
 
     value = ConvertBcdToBinary(rtc->second);
 
-    if (value > SECONDS_PER_MINUTE)
+    if (value >= SECONDS_PER_MINUTE)
         errorFlags |= RTC_ERR_INVALID_SECOND;
 
     return errorFlags;
@@ -316,8 +317,8 @@ void RtcCalcTimeDifference(struct SiiRtcInfo *rtc, struct Time *result, struct T
 
 void RtcCalcLocalTime(void)
 {
-    RtcGetInfo(&sRtc);
-    RtcCalcTimeDifference(&sRtc, &gLocalTime, &gSaveBlock2Ptr->localTimeOffset);
+    RtcGetInfo(&sRtc); // Native calendar accessors also consume this snapshot.
+    LegendsClockCalcLocalTime();
 }
 
 bool8 IsBetweenHours(s32 hours, s32 begin, s32 end)

@@ -11,6 +11,8 @@ struct AppearanceSelection
     u8 outfit;
     u8 scarf;
     u8 costume;
+    u8 shoes;
+    u8 cardColor;
     bool8 jacket;
     bool8 legacySkin;
 };
@@ -58,6 +60,8 @@ void LegendsBeginAppearanceSelection(void)
     sSelection.outfit = 0;
     sSelection.scarf = 0;
     sSelection.costume = 0;
+    sSelection.shoes = 0;
+    sSelection.cardColor = 0;
     sSelection.jacket = FALSE;
     sSelection.legacySkin = FALSE;
     sPaletteStamp = 0;
@@ -77,6 +81,8 @@ void LegendsApplyAppearanceToNewGame(void)
     VarSet(VAR_LEGENDS_APPEARANCE, code);
     VarSet(VAR_LEGENDS_ACCESSORIES, 0);
     VarSet(VAR_LEGENDS_COSTUME, 0);
+    VarSet(VAR_LEGENDS_SHOES, 0);
+    VarSet(VAR_LEGENDS_CARD_COLOR, 0);
     LegendsClearAppearanceSelection();
 }
 
@@ -107,12 +113,15 @@ void LegendsBeginWardrobeSelection(void)
 {
     u8 skin = LegendsGetSkinTone(), outfit = LegendsGetOutfit();
     u8 scarf = LegendsGetScarf(), costume = LegendsGetCostume();
+    u8 shoes = LegendsGetShoes(), card = LegendsGetCardColor();
     bool8 jacket = LegendsGetJacket();
     sSelection.legacySkin = GetAppearanceCode() == 0 || GetAppearanceCode() > 25;
     sSelection.skin = skin;
     sSelection.outfit = outfit;
     sSelection.scarf = scarf;
     sSelection.costume = costume;
+    sSelection.shoes = shoes;
+    sSelection.cardColor = card;
     sSelection.jacket = jacket;
     sSelection.valid = TRUE;
     sPaletteStamp = 0;
@@ -130,13 +139,15 @@ void LegendsApplyWardrobeSelection(void)
     VarSet(VAR_LEGENDS_APPEARANCE, GetAppearanceCode());
     VarSet(VAR_LEGENDS_ACCESSORIES, GetAccessoryCode());
     VarSet(VAR_LEGENDS_COSTUME, LegendsGetCostume());
+    VarSet(VAR_LEGENDS_SHOES, LegendsGetShoes());
+    VarSet(VAR_LEGENDS_CARD_COLOR, LegendsGetCardColor());
     LegendsClearAppearanceSelection();
 }
 
 void LegendsUpdateAppearancePalettes(void)
 {
     u16 code = GetAppearanceCode();
-    u16 stamp = code + 1 + 31 * GetAccessoryCode() + 372 * LegendsGetCostume();
+    u16 stamp = code + 1 + 31 * GetAccessoryCode() + 372 * LegendsGetCostume() + 1116 * LegendsGetShoes();
     u32 gender, i;
     u8 skin = LegendsGetSkinTone();
     u8 outfit = LegendsGetOutfit();
@@ -173,6 +184,12 @@ void LegendsUpdateAppearancePalettes(void)
             gLegendsOverworldPalettes[gender][14] = colors[LegendsGetScarf()];
             gLegendsTrainerPalettes[gender][14] = colors[LegendsGetScarf()];
         }
+        if (LegendsGetShoes() && !LegendsGetCostume())
+        {
+            LegendsPrepareFootwearPalette(gLegendsOverworldPalettes[gender], gender, 0);
+            LegendsPrepareFootwearPalette(gLegendsTrainerPalettes[gender], gender, 1);
+            LegendsPrepareFootwearPalette(gLegendsUnderwaterPalettes[gender], gender, 2);
+        }
     }
 }
 
@@ -186,4 +203,24 @@ enum TrainerPicID LegendsGetPlayerTrainerPic(enum Gender gender)
              + ((LegendsGetAccessoryStyle() - 1) * 2 + (gender == FEMALE)) * LEGENDS_OUTFIT_COUNT + LegendsGetOutfit();
     return TRAINER_PIC_LEGENDS_BRENDAN_EMERALD
          + (gender == FEMALE ? LEGENDS_OUTFIT_COUNT : 0) + LegendsGetOutfit();
+}
+
+u8 LegendsGetShoes(void)
+{
+    u16 value = sSelection.valid ? sSelection.shoes : VarGet(VAR_LEGENDS_SHOES);
+    return value < LEGENDS_SHOE_COUNT ? value : 0;
+}
+u8 LegendsGetCardColor(void)
+{
+    u16 value = sSelection.valid ? sSelection.cardColor : VarGet(VAR_LEGENDS_CARD_COLOR);
+    return value < LEGENDS_CARD_COLOR_COUNT ? value : 0;
+}
+void LegendsSetShoeSelection(u8 value)
+{
+    sSelection.shoes = value < LEGENDS_SHOE_COUNT ? value : 0;
+    sPaletteStamp = 0;
+}
+void LegendsSetCardColorSelection(u8 value)
+{
+    sSelection.cardColor = value < LEGENDS_CARD_COLOR_COUNT ? value : 0;
 }

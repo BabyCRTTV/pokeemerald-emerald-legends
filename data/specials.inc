@@ -640,3 +640,5 @@ gSpecials::
 	def_special CheckAddCoins
 	def_special LegendsCanUseWardrobe
 	def_special LegendsOpenWardrobe, waitstate=1
+	def_special LegendsClockBufferTime
+	def_special LegendsClockUseRealTime

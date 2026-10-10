@@ -1457,6 +1457,8 @@ static u8 SetCardBgsAndPals(void)
             if (sData->trainerCard.gender != MALE)
                 LoadPalette(sKantoTrainerCardFemaleBg_Pal, BG_PLTT_ID(1), PLTT_SIZE_4BPP);
         }
+        if (!sData->isLink)
+            LegendsApplyCardColor();
         LoadPalette(sTrainerCardStar_Pal, BG_PLTT_ID(4), PLTT_SIZE_4BPP);
         break;
     case 3:

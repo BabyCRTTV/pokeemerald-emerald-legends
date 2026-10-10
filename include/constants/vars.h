@@ -82,6 +82,17 @@
 #define VAR_REGICE_STEPS_2                               0x403C
 #define VAR_REGICE_STEPS_3                               0x403D
 #define VAR_ALTERING_CAVE_WILD_SET                       0x403E
+// Legends uses these verified-unreferenced native state slots; old saves are zero.
+#define VAR_LEGENDS_SHOES             VAR_DEWFORD_TOWN_STATE
+#define VAR_LEGENDS_CARD_COLOR        VAR_VERDANTURF_TOWN_STATE
+#define VAR_LEGENDS_CLOCK_SECONDS_LO  VAR_ROUTE102_STATE
+#define VAR_LEGENDS_CLOCK_SECONDS_HI  VAR_ROUTE103_STATE
+#define VAR_LEGENDS_CLOCK_INIT        VAR_ROUTE105_STATE
+#define VAR_LEGENDS_CLOCK_FRAMES      VAR_ROUTE106_STATE
+#define VAR_LEGENDS_CLOCK_MODE        VAR_ROUTE107_STATE
+#define VAR_LEGENDS_MANUAL_OFFSET     VAR_ROUTE108_STATE
+#define VAR_LEGENDS_MANUAL_RTC_READY  VAR_ROUTE109_STATE
+
 #define VAR_DISTRIBUTE_EON_TICKET                        0x403F // This var is read and written, but is always zero. The only way to obtain the Eon Ticket in Emerald is via Record Mixing
 #define VAR_DAYS                                         0x4040
 #define VAR_FANCLUB_FAN_COUNTER                          0x4041
