@@ -43,7 +43,7 @@
   }
   function dexCard(p){
     const n=(pokemonMap.get(p.id)||[]).length;
-    return '<button type="button" class="dex-card" data-species="'+esc(p.id)+'">'+sprite(p)+'<span><span class="dex-num">'+(p.num?"#"+String(p.num).padStart(4,"0"):"Special form")+'</span><strong>'+esc(p.name)+'</strong><span class="dex-sub">'+(n?n+" wild location"+(n===1?"":"s"):"No listed wild location")+'</span>'+chips(p)+'</span></button></div>';
+    return '<div class="dex-card">'+sprite(p)+'<button type="button" class="pokemon-link" data-species="'+esc(p.id)+'"><span><span class="dex-num">'+(p.num?"#"+String(p.num).padStart(4,"0"):"Special form")+'</span><strong>'+esc(p.name)+'</strong><span class="dex-sub">'+(n?n+" wild location"+(n===1?"":"s"):"No listed wild location")+'</span>'+chips(p)+'</span></button></div>';
   }
   function updateControls(){
     document.querySelectorAll("[data-view]").forEach(b=>{let active=b.dataset.view===view;b.classList.toggle("selected",active);b.setAttribute("aria-selected",String(active))});

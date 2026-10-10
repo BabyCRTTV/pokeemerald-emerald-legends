@@ -35,6 +35,7 @@ const settle=()=>new Promise(r=>setImmediate(r));
  const data=JSON.parse(fs.readFileSync(base+'dex-data.json'));
  const d=boot('dex.js',data);await settle();assert.equal(d.sounds.length,0,'audio must not preload all cries');
  assert.match(d.get('results').innerHTML,/data-cry=/);assert.match(d.get('results').innerHTML,/class="pokemon-link"/);
+ const species=boot('dex.js',data,'https://example.test/wiki/dex.html?view=species');await settle();assert.match(species.get('results').innerHTML,/<div class="dex-card">/);assert.match(species.get('results').innerHTML,/<button type="button" class="pokemon-link" data-species="BULBASAUR"/);
  d.click('cry','BULBASAUR');await settle();assert(d.sounds[0].url.endsWith('/cries/bulbasaur.wav'));assert(d.sounds[0].played);assert(!d.get('detail').open);
  d.click('cry','DA_BUG');await settle();assert(d.sounds[0].paused);assert(d.sounds[1].url.endsWith('/cries/da_bug.wav'));
  d.click('species','BULBASAUR');assert(d.get('detail').open);assert.match(d.get('detail-content').innerHTML,/Play Bulbasaur cry/);
