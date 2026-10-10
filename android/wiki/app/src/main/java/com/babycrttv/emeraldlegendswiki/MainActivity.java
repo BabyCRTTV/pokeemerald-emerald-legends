@@ -32,6 +32,7 @@ public final class MainActivity extends Activity {
     private WebView browser;
     private FrameLayout browserContainer;
     private LinearLayout offlinePanel;
+    private boolean mainFrameFailed = false;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -151,6 +152,12 @@ public final class MainActivity extends Activity {
 
         browser.setWebViewClient(new WebViewClient() {
             @Override
+            public void onPageStarted(WebView view, String url, android.graphics.Bitmap favicon) {
+                mainFrameFailed = false;
+                hideOffline();
+            }
+
+            @Override
             public boolean shouldOverrideUrlLoading(WebView view, WebResourceRequest request) {
                 Uri uri = request.getUrl();
                 if (isWikiUri(uri)) return false;
@@ -161,12 +168,12 @@ public final class MainActivity extends Activity {
 
             @Override
             public void onReceivedError(WebView view, WebResourceRequest request, WebResourceError error) {
-                if (request.isForMainFrame()) showOffline();
+                if (request.isForMainFrame()) { mainFrameFailed = true; showOffline(); }
             }
 
             @Override
             public void onPageFinished(WebView view, String url) {
-                if (isWikiUri(Uri.parse(url)) && view.getProgress() == 100) {
+                if (!mainFrameFailed && isWikiUri(Uri.parse(url)) && view.getProgress() == 100) {
                     // The site's own article JSON handler displays offline guidance if its fetch fails.
                     hideOffline();
                 }
