@@ -1,4 +1,4 @@
-@ Legends Kanto: two independent gym records and the opening Wing Survey.
+@ Legends Kanto: independent gym records and the Wing Survey journal.
 
 LegendsKanto_Surge_Entry::
 	lockall
@@ -191,18 +191,42 @@ LegendsKanto_Survey_Aide::
 	msgbox LegendsKanto_Text_SurveyIntro, MSGBOX_DEFAULT
 	setflag FLAG_LEGENDS_KANTO_SURVEY_STARTED
 LegendsKanto_Survey_CheckProgress::
-	goto_if_unset FLAG_LEGENDS_KANTO_SURGE_WON, LegendsKanto_Survey_Reminder
-	goto_if_unset FLAG_LEGENDS_KANTO_KOGA_WON, LegendsKanto_Survey_Reminder
+	goto_if_unset FLAG_LEGENDS_KANTO_SURGE_WON, LegendsKanto_Survey_NoSurge
+	goto_if_unset FLAG_LEGENDS_KANTO_KOGA_WON, LegendsKanto_Survey_OnlySurge
 	goto_if_set FLAG_LEGENDS_KANTO_SURVEY_REPORT, LegendsKanto_Survey_Later
 	msgbox LegendsKanto_Text_SurveyReport, MSGBOX_DEFAULT
 	setflag FLAG_LEGENDS_KANTO_SURVEY_REPORT
 LegendsKanto_Survey_Later::
+	msgbox LegendsKanto_Text_JournalComplete, MSGBOX_DEFAULT
+	msgbox LegendsKanto_Text_ReviewRecords, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, NO, LegendsKanto_Survey_Next
+	msgbox LegendsKanto_Surge_Text_Clue, MSGBOX_DEFAULT
+	msgbox LegendsKanto_Koga_Text_Clue, MSGBOX_DEFAULT
+	msgbox LegendsKanto_Text_JournalEvidence, MSGBOX_DEFAULT
+LegendsKanto_Survey_Next::
 	msgbox LegendsKanto_Text_SurveyNext, MSGBOX_DEFAULT
 	releaseall
 	end
 
-LegendsKanto_Survey_Reminder::
+LegendsKanto_Survey_NoSurge::
+	goto_if_set FLAG_LEGENDS_KANTO_KOGA_WON, LegendsKanto_Survey_OnlyKoga
 	msgbox LegendsKanto_Text_SurveyReminder, MSGBOX_DEFAULT
+	releaseall
+	end
+
+LegendsKanto_Survey_OnlySurge::
+	msgbox LegendsKanto_Text_JournalOnlySurge, MSGBOX_DEFAULT
+	msgbox LegendsKanto_Text_ReviewRecords, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, NO, LegendsKanto_Challenge_Decline
+	msgbox LegendsKanto_Surge_Text_Clue, MSGBOX_DEFAULT
+	releaseall
+	end
+
+LegendsKanto_Survey_OnlyKoga::
+	msgbox LegendsKanto_Text_JournalOnlyKoga, MSGBOX_DEFAULT
+	msgbox LegendsKanto_Text_ReviewRecords, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, NO, LegendsKanto_Challenge_Decline
+	msgbox LegendsKanto_Koga_Text_Clue, MSGBOX_DEFAULT
 	releaseall
 	end
 
@@ -223,12 +247,50 @@ LegendsKanto_Text_SurveyIntro:
 	.string "Either victory earns trust.$"
 
 LegendsKanto_Text_SurveyReminder:
-	.string "Speak to LT. SURGE here and\n"
-	.string "KOGA in FUCHSIA CITY.\p"
-	.string "Complete their challenges\n"
-	.string "in whichever mode you prefer.\p"
-	.string "Then bring both reports here.\n"
-	.string "They can be done in any order.$"
+	.string "WING SURVEY: 0 of 2 records.\n"
+	.string "No GYM reports collected yet.\p"
+	.string "LT. SURGE: VERMILION GYM.\n"
+	.string "KOGA: FUCHSIA GYM.\p"
+	.string "Win their challenges in\n"
+	.string "either mode, in any order.\p"
+	.string "Return here to check progress\n"
+	.string "and review collected clues.$"
+
+LegendsKanto_Text_JournalOnlySurge:
+	.string "WING SURVEY: 1 of 2 records.\n"
+	.string "LT. SURGE: Report collected.\p"
+	.string "KOGA: Report still needed.\n"
+	.string "Visit his GYM in FUCHSIA.\p"
+	.string "Win in either mode, then\n"
+	.string "bring his observations here.$"
+
+LegendsKanto_Text_JournalOnlyKoga:
+	.string "WING SURVEY: 1 of 2 records.\n"
+	.string "KOGA: Report collected.\p"
+	.string "LT. SURGE: Report needed.\n"
+	.string "Visit his GYM in VERMILION.\p"
+	.string "Win in either mode, then\n"
+	.string "bring his observations here.$"
+
+LegendsKanto_Text_JournalComplete:
+	.string "WING SURVEY: 2 of 2 records.\n"
+	.string "LT. SURGE and KOGA: Filed.\p"
+	.string "The first report is complete.\n"
+	.string "Their GYMS remain completed.$"
+
+LegendsKanto_Text_ReviewRecords:
+	.string "Review the observations\n"
+	.string "you've collected so far?$"
+
+LegendsKanto_Text_JournalEvidence:
+	.string "FIELD AIDE: These are clues,\n"
+	.string "not confirmed identifications.\p"
+	.string "BIRCH and OAK are comparing\n"
+	.string "the weather and habitat notes.\p"
+	.string "The mimic cry and pink hair\n"
+	.string "may belong to another visitor.\p"
+	.string "MEW is only a possibility.\n"
+	.string "We need direct observations.$"
 
 LegendsKanto_Text_SurveyReport:
 	.string "FIELD AIDE: Lightning near\n"

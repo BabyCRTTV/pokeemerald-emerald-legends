@@ -47,11 +47,42 @@ class ChallengeTests(unittest.TestCase):
    e.lose=False;e.run(pre+'_Entry',[0]);e.run(pre+'_Leader',[1]);self.assertTrue(e.battles[-1].endswith('STANDARD'))
  def test_report_in_either_order_and_only_once(self):
   for order in [('Surge','Koga'),('Koga','Surge')]:
-   e=Events();e.run('LegendsKanto_Survey_Aide');self.assertIn('FLAG_LEGENDS_KANTO_SURVEY_STARTED',e.flags)
+   e=Events();e.run('LegendsKanto_Survey_Aide',[0]);self.assertIn('FLAG_LEGENDS_KANTO_SURVEY_STARTED',e.flags)
    for gym in order:
-    e.run('LegendsKanto_'+gym+'_Entry',[0]);e.run('LegendsKanto_'+gym+'_Leader',[1]);e.run('LegendsKanto_Survey_Aide')
+    e.run('LegendsKanto_'+gym+'_Entry',[0]);e.run('LegendsKanto_'+gym+'_Leader',[1]);e.run('LegendsKanto_Survey_Aide',[0])
    self.assertIn('FLAG_LEGENDS_KANTO_SURVEY_REPORT',e.flags)
-   e.run('LegendsKanto_Survey_Aide');self.assertEqual(e.messages.count('LegendsKanto_Text_SurveyReport'),1)
+   e.run('LegendsKanto_Survey_Aide',[0]);self.assertEqual(e.messages.count('LegendsKanto_Text_SurveyReport'),1)
+ def test_journal_all_progress_states_and_review_choices(self):
+  for surge in (False,True):
+   for koga in (False,True):
+    for review in (0,1):
+     e=Events()
+     if surge:e.flags.add('FLAG_LEGENDS_KANTO_SURGE_WON')
+     if koga:e.flags.add('FLAG_LEGENDS_KANTO_KOGA_WON')
+     before=e.flags.copy();e.run('LegendsKanto_Survey_Aide',[review])
+     expected=('LegendsKanto_Text_JournalComplete' if surge and koga else
+               'LegendsKanto_Text_JournalOnlySurge' if surge else
+               'LegendsKanto_Text_JournalOnlyKoga' if koga else
+               'LegendsKanto_Text_SurveyReminder')
+     self.assertIn(expected,e.messages)
+     self.assertEqual('LegendsKanto_Surge_Text_Clue' in e.messages,bool(review and surge))
+     self.assertEqual('LegendsKanto_Koga_Text_Clue' in e.messages,bool(review and koga))
+     self.assertEqual('LegendsKanto_Text_JournalEvidence' in e.messages,bool(review and surge and koga))
+     self.assertEqual('FLAG_LEGENDS_KANTO_SURVEY_REPORT' in e.flags,bool(surge and koga))
+     self.assertTrue(before<=e.flags);self.assertEqual(e.battles,[])
+     # A return visit (including old saves already holding the report) is read-only.
+     flags=e.flags.copy();e.messages=[];e.run('LegendsKanto_Survey_Aide',[review])
+     self.assertEqual(e.flags,flags);self.assertIn(expected,e.messages)
+     self.assertNotIn('LegendsKanto_Text_SurveyIntro',e.messages)
+     self.assertNotIn('LegendsKanto_Text_SurveyReport',e.messages)
+ def test_journal_does_not_record_a_declined_or_lost_challenge(self):
+  for gym in ('Surge','Koga'):
+   for lose in (False,True):
+    e=Events();e.run('LegendsKanto_'+gym+'_Entry',[1]);e.lose=lose
+    e.run('LegendsKanto_'+gym+'_Leader',[1 if lose else 0])
+    e.run('LegendsKanto_Survey_Aide')
+    self.assertIn('LegendsKanto_Text_SurveyReminder',e.messages)
+    self.assertNotIn('FLAG_LEGENDS_KANTO_SURVEY_REPORT',e.flags)
  def test_gym_entrance_coverage_and_npc_positions(self):
   layouts={l['id']:l for l in json.loads((R/'data/layouts/layouts.json').read_text())['layouts']}
   for name,gym in [('VermilionCity_Gym','Surge'),('FuchsiaCity_Gym','Koga')]:

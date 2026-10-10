@@ -1,12 +1,14 @@
 # Kanto postgame — Wing Survey
 
-## Playable in v0.0.28
+## Playable in v0.0.28.1
 
 Become Hoenn Champion, get the Invite Ticket in Lilycove Harbor, and use the existing Kanto ferry or northern Route 124 Surf passage. Both passages retain the established return routes and Emerald field-move requirements.
 
 Visit Oak's field aide in Vermilion Fan Club. The aide introduces the Wing Survey: investigate reports of lightning, frost and fiery wings, comparing Kanto's observations with Birch's records of Hoenn's resolved weather crisis. This is an investigation, not proof that the Hoenn crisis caused the sightings. No new evil team replaces Emerald's story.
 
 Complete Lt. Surge and Koga's visiting challenges in either order. Surge reports unusual readings near the Power Plant; Koga reports cold winds at Seafoam and a third bird sighting. Return to the aide to complete the first report and hear the tentative Mew lead. The aide explicitly identifies the next expedition as future development content. There are no new legendary battles in this version.
+
+The aide now keeps an opening-chapter journal: 0/2, 1/2 or 2/2 Leader records, directions to the missing Leader, and optional review of collected observations. Review never repeats a battle or files the first report twice. It uses the existing victory and survey flags, including on saves from v0.0.28; no journal item or new save state is required. These two records cover the opening report, not the eventual eight-Gym circuit. Bird and Mew identifications remain tentative.
 
 The new road loop is Vermilion → Route 6 → Saffron → Route 7 → Celadon → Routes 16–18 → Fuchsia → Routes 15–11 via Lavender → Vermilion, with Route 8 connecting Lavender and Saffron. Walking and normal Emerald bikes work on the western road; the old FRLG forced Cycling Road state is not imported. Wild species distributions reuse the upstream FireRed tables with postgame levels (47–54), on Routes 6–8 and 11–19. Four optional trainers occupy Routes 6–8 and 17; birdwatchers on Routes 16/18 provide survey clues. Native Cut obstacles retain ordinary Emerald progression.
 

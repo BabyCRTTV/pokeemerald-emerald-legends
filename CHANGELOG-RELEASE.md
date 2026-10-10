@@ -2,6 +2,17 @@
 
 This is the player-facing history for the recommended **Release** build. Shared Legends changes are repeated here so this file stands on its own; Release-only behavior is called out separately.
 
+## [0.0.28.1] - 2026-10-10
+
+### Added
+- Wing Survey journal at Oak's field aide in Vermilion Fan Club: shows 0/2, 1/2 or 2/2 opening records, names the missing Leader and their city, and offers optional review of only the clues already collected.
+- Completed reports remain reviewable; the aide distinguishes tentative bird/Mew evidence from confirmed sightings. First introductions and report filing still occur only once, including on existing saves.
+
+### Compatibility and validation
+- Reuses the existing Gym victory and survey flags; no new save fields, trainer slots, rewards or encounter changes. Declined/lost battles never count as records.
+- Event-path checks cover all four progress states, reviewing/declining clues, repeat visits, existing report flags and loss/decline behavior. Debug/Release compile and verified BPS publishing use the established workflow.
+- Shared content in Release and Debug; no variant-specific gameplay differences. Debug retains developer conveniences.
+
 ## [0.0.28] - 2026-10-10
 
 ### Added

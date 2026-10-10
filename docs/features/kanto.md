@@ -1,4 +1,4 @@
-# Current chapter (v0.0.28)
+# Current chapter (v0.0.28.1)
 
 The original arrival and map foundation below remain historical documentation. Routes 6–8 and 16–18, Saffron and Celadon are now connected; two visiting Gyms, route encounters and the Wing Survey opening are playable. See [Kanto postgame](kanto-postgame.md) for the authoritative current scope, permanent victory rules and planned chapters.
 
