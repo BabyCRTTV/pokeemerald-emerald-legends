@@ -1,9 +1,9 @@
 {
   "available": true,
   "platform": "android",
-  "version": "1.0.4",
-  "versionCode": 4,
+  "version": "1.0.5",
+  "versionCode": 5,
   "url": "https://babycrttv.github.io/pokeemerald-emerald-legends/downloads/Emerald-Legends-Wiki.apk",
   "signing": "ephemeral-debug",
-  "sha256": "947a5a5f3ff4aef5811ba5d61ef12627f9c5bcb680d012063500200a2d724642"
+  "sha256": "8c730d7f06964dee3a331bf63cadfd7c01bc384adc3682711c077c0ed2c9959b"
 }
