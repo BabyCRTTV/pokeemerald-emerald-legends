@@ -1,23 +1,48 @@
 {
-  "name":"legends-wiki",
-  "productName":"Legends Wiki",
-  "version":"1.0.0",
-  "description":"Pokémon Emerald: Legends Wiki desktop companion",
-  "private":true,
-  "main":"main.js",
-  "license":"UNLICENSED",
-  "scripts":{"build:windows":"electron-builder --win nsis --x64 --publish never"},
-  "devDependencies":{"electron":"34.5.8","electron-builder":"26.0.12"},
-  "build":{
-    "appId":"com.babycrttv.emeraldlegendswiki",
-    "productName":"Legends Wiki",
-    "asar":true,
-    "directories":{"output":"dist"},
-    "files":["main.js","package.json"],
-    "win":{"icon":"assets/happiny.ico","target":["nsis"],"artifactName":"Legends-Wiki-Setup.exe"},
-    "nsis":{"oneClick":false,"perMachine":false,"allowElevation":true,
-      "allowToChangeInstallationDirectory":true,"createDesktopShortcut":true,
-      "createStartMenuShortcut":true,"shortcutName":"Legends Wiki","runAfterFinish":true,
-      "deleteAppDataOnUninstall":false,"artifactName":"Legends-Wiki-Setup.exe"}
+  "name": "legends-wiki",
+  "productName": "Legends Wiki",
+  "version": "1.0.0",
+  "description": "Pokémon Emerald: Legends Wiki desktop companion",
+  "private": true,
+  "main": "main.js",
+  "license": "UNLICENSED",
+  "scripts": {
+    "build:windows": "electron-builder --win nsis --x64 --publish never"
+  },
+  "devDependencies": {
+    "electron": "34.5.8",
+    "electron-builder": "26.0.12"
+  },
+  "build": {
+    "appId": "com.babycrttv.emeraldlegendswiki",
+    "productName": "Legends Wiki",
+    "asar": true,
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "main.js",
+      "package.json",
+      "assets/**"
+    ],
+    "win": {
+      "icon": "assets/happiny.ico",
+      "target": [
+        "nsis"
+      ],
+      "artifactName": "Legends-Wiki-Setup.exe"
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "allowElevation": true,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "Legends Wiki",
+      "runAfterFinish": true,
+      "deleteAppDataOnUninstall": false,
+      "artifactName": "Legends-Wiki-Setup.exe"
+    }
   }
 }

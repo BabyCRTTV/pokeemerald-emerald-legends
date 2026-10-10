@@ -16,7 +16,7 @@
   const link=(url,label)=>{
     const a=document.createElement("a");
     a.href=url;a.className="primary";a.textContent=label;
-    a.rel="noopener noreferrer";a.target="_blank";return a;
+    a.rel="noopener noreferrer";a.target=detected?"_self":"_blank";return a;
   };
   const action=(label,fn)=>{
     const b=document.createElement("button");b.type="button";b.textContent=label;
@@ -31,6 +31,7 @@
   async function check(platform){
     status.textContent="Checking the latest "+(platform==="android"?"Android":"Windows")+" Wiki release…";
     actions.replaceChildren();
+    document.getElementById("update-warning")?.remove();
     try{
       const url=BASE+"wiki/"+(platform==="android"?"android-version.json":"windows-version.json");
       const response=await fetch(url+"?check="+Date.now(),{cache:"no-store"});
@@ -53,7 +54,7 @@
           " Installation requires your approval.";
         actions.append(link(release.url,installed===null?"Install / download latest":"Download update"));
         if(platform==="android"&&release.signing==="ephemeral-debug"){
-          const note=document.createElement("p");
+          const note=document.createElement("p");note.id="update-warning";
           note.textContent="Important: this APK uses a temporary debug signing key. Android may require uninstalling an older build before installing this one. Preserve any important app settings.";
           actions.after(note);
         }
@@ -63,6 +64,7 @@
   }
   function choose(){
     status.textContent="Choose your device to check the latest Wiki installer.";
+    document.getElementById("update-warning")?.remove();
     actions.replaceChildren(action("Android",()=>check("android")),action("Windows",()=>check("windows")),action("Close",()=>dialog.close()));
   }
   button.addEventListener("click",()=>{

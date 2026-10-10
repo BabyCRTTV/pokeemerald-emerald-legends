@@ -7,6 +7,8 @@ This is a **manually maintained snapshot**, not a live mirror of the game's late
 - Site: `https://babycrttv.github.io/pokeemerald-emerald-legends/wiki/`
 - Deep link: `/wiki/?page=kanto-gyms`
 - Android companion: `../downloads/Emerald-Legends-Wiki.apk`, built by the separate wiki Android workflow.
+- Windows installer: `https://github.com/BabyCRTTV/pokeemerald-emerald-legends/releases/download/wiki-desktop/Legends-Wiki-Setup.exe`, published as an independent public installer release.
+- App update manifests: `android-version.json` and `windows-version.json`. The header's **Update Wiki** control compares the installed companion app version where available and informs users when already up to date.
 
 The wiki is static HTML, CSS, JavaScript and JSON, runs without a login or backend, and uses no external CDNs or trackers. Readers can search the current article snapshot locally in their browsers. The companion Android app loads this same live site instead of embedding a permanently stale copy.
 
@@ -16,7 +18,7 @@ The wiki is static HTML, CSS, JavaScript and JSON, runs without a login or backe
 2. Edit only affected articles in `docs/wiki/articles.json`, **including previously written articles** whose facts have changed. Remove obsolete statements, distinguish shipped vs planned, and preserve article IDs when possible.
 3. Change `wikiRevision` / `reviewedAgainstGameVersion` below as part of an owner-requested content refresh, independently of the game release.
 4. Validate JSON parsing, article IDs, links, mobile behavior, search, and rendering; deploy Pages.
-5. A content-only wiki update never requires rebuilding the Android APK. A change to native Android UI/security behavior does.
+5. Every owner-requested wiki revision triggers **new Android APK and Windows installer builds**. Their independent workflows version and publish the packages and their platform manifests after validation; the articles themselves are immediately readable online.
 
 ## Wiki scope
 
@@ -37,3 +39,11 @@ The independent `dex.html` guide uses `dex-data.json`: a manually reviewed snaps
 No game update automatically rebuilds this snapshot. On an owner-requested wiki update, regenerate and verify against the new source game revision, check aliases and new scripted encounters, and only then advance the wiki's documentation revision. The game version in `VERSION` is never changed by the wiki.
 
 Sprites load from the project's own public GitHub source art at the snapshot commit (HTTPS), and the UI uses graceful fallbacks if an image is missing. There is no requirement to download additional ROM content.
+
+## Update and app-icon conventions
+
+- The website shows **Update Wiki**, **LegendsDex** and a right-aligned search button instead of multiple install banners. The version checker uses a published manifest; ordinary browsers cannot reliably detect installed native applications.
+- Each Android and Windows companion advertises its installed version to the wiki site. The app prompts users to download newer installers only when a greater published version is found. Installations remain user-approved.
+- A transparent single-frame **Happiny** source sprite is used as the launcher and installer icon for both platforms. This does not alter the sprites shown *within* the LegendsDex.
+- Android release signing requires private GitHub Actions secrets for seamless install-over-install behavior; without them the builder uses a temporary debug signature, and Android may require uninstalling the previous version. See `android/wiki/README.md`.
+- Windows installers are built with the same stable NSIS application ID, optional desktop shortcut and launch-after-install choice. They are not code-signed yet; Windows SmartScreen may warn.
