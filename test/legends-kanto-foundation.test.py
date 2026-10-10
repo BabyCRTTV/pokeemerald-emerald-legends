@@ -13,6 +13,7 @@ class FoundationTests(unittest.TestCase):
   for item in MANIFEST:
    d=MAPS[item['id']];l=LAYOUTS[d['layout']];s=json.loads((R/('data/maps/'+item['source']+'/map.json')).read_text());sl=LAYOUTS[s['layout']]
    self.assertEqual(d['object_events'],[]);self.assertNotIn(item['id'],encounters)
+   self.assertIn('data/maps/'+item['name']+'/scripts.inc',(R/'data/event_scripts.s').read_text())
    self.assertEqual((l['width'],l['height']),(sl['width'],sl['height']))
    self.assertEqual((R/l['border_filepath']).read_bytes(),(R/sl['border_filepath']).read_bytes())
    a=(R/l['blockdata_filepath']).read_bytes();b=(R/sl['blockdata_filepath']).read_bytes();self.assertEqual(len(a),len(b))

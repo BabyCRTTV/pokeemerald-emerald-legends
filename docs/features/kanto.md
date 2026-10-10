@@ -22,7 +22,7 @@ The sailor aboard the Vermilion gangway offers passage back to Lilycove. Keep yo
 
 ## Beginner playtest walkthrough
 
-This walkthrough is for **v0.0.26.1 Debug**. You do not need programming knowledge. “Debug” is the testing edition; its special menu can move you to an area and prepare a test save.
+This walkthrough is for **v0.0.27 Debug**. You do not need programming knowledge. “Debug” is the testing edition; its special menu can move you to an area and prepare a test save.
 
 ### 1. Open the Debug edition
 
@@ -117,7 +117,7 @@ Use **START → Save**, restart the game and choose **Continue**. Check that you
 
 ### What to send with a bug report
 
-Include **Legends version and build (for example, v0.0.26.1 Debug), emulator name/version, fresh or existing save, the steps you took, what you expected, and what happened**. A screenshot of a visual problem helps. Say whether you used a direct warp or sailed normally.
+Include **Legends version and build (for example, v0.0.27 Debug), emulator name/version, fresh or existing save, the steps you took, what you expected, and what happened**. A screenshot of a visual problem helps. Say whether you used a direct warp or sailed normally.
 
 The Release edition has the same Kanto content. An existing Champion save can test the normal invitation and ferry without using any Debug tools.
 
