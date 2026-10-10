@@ -144,7 +144,7 @@ void RtcGetInfo(struct SiiRtcInfo *rtc)
 {
     if (OW_USE_FAKE_RTC)
         FakeRtc_GetRawInfo(rtc);
-    else if (sErrorStatus & RTC_ERR_FLAG_MASK)
+    else if (sErrorStatus & (RTC_ERR_FLAG_MASK | RTC_INIT_ERROR))
         *rtc = sRtcDummy;
     else
         RtcGetRawInfo(rtc);

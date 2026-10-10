@@ -5,7 +5,7 @@ shafts, raised cuffs and separate toe/sole geometry. No ROM is needed.
 """
 import json,re
 from pathlib import Path
-from build_appearance import ROOT,STATES,FILES,frames,pack
+from build_appearance import ROOT,STATES,FILES,frames,pack,skin_components
 
 def front_mask(gender,boots):
     m=[[0]*64 for _ in range(64)]
@@ -42,14 +42,36 @@ def front_mask(gender,boots):
 
 def world_mask(p,boots,state):
     h,w=len(p),len(p[0]);m=[[0]*w for _ in range(h)]
-    if state in ('Surfing','Underwater'):return m
-    bottom=max((y for y in range(h) for x in range(w) if p[y][x]),default=0)
-    # Red/green shoe accents are isolated in the lowest native foot band.
-    seeds=[(x,y) for y in range(max(0,bottom-3),bottom+1) for x in range(w) if p[y][x] in (10,11,12,13)]
-    for x,y in seeds:
-        for yy in range(max(0,y-(3 if boots else 0)),min(h,y+2)):
-            for xx in range(max(0,x-1),min(w,x+2)):
-                if p[yy][xx]:m[yy][xx]=3 if p[yy][xx] in (4,15) else 2 if xx>x else 1
+    if state=='Underwater':return m
+    skin=skin_components(p)
+    if not skin:return m
+    face=max(skin,key=len);face_bottom=max(y for x,y in face)
+    center=sum(x for x,y in face)/len(face)
+    remaining={(x,y) for y in range(h) for x in range(w) if p[y][x] in (10,11,12,13)}
+    candidates=[]
+    while remaining:
+        seed=remaining.pop();group={seed};queue=[seed]
+        while queue:
+            x,y=queue.pop()
+            for point in ((x-1,y),(x+1,y),(x,y-1),(x,y+1)):
+                if point in remaining:
+                    remaining.remove(point);group.add(point);queue.append(point)
+        # Small isolated shoe accents below the face, not gloves, clothing,
+        # headbands or a fishing float. Keep the lowest accent on each leg.
+        if len(group)<=10 and min(y for x,y in group)>=face_bottom+4 and all(abs(x-center)<=8 for x,y in group):
+            candidates.append(group)
+    if not candidates:return m
+    lowest=max(max(y for x,y in group) for group in candidates)
+    for side in range(2):
+        groups=[group for group in candidates if max(y for x,y in group)>=lowest-2
+                and (sum(x for x,y in group)/len(group)>=center)==bool(side)]
+        if not groups:continue
+        group=max(groups,key=lambda group:max(y for x,y in group))
+        left=min(x for x,y in group)-1;right=max(x for x,y in group)+1
+        top=min(y for x,y in group)-(2 if boots else 0);bottom=max(y for x,y in group)+1
+        for y in range(max(0,top),min(h,bottom+1)):
+            for x in range(max(0,left),min(w,right+1)):
+                if p[y][x]:m[y][x]=3 if p[y][x] in (4,15) else 2 if x==right else 1
     return m
 
 def build():

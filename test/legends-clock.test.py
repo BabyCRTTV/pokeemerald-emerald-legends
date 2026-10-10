@@ -4,6 +4,9 @@ invalid RTC, saved fallback ticks, pause-menu polling and the native timer cap.
 from pathlib import Path
 import subprocess,tempfile,os
 root=Path(__file__).resolve().parents[1]
+rtc_source=(root/'src/rtc.c').read_text()
+start=rtc_source.index('void RtcGetInfo(struct SiiRtcInfo *rtc)')
+rtc_get_info=rtc_source[start:rtc_source.index('\n}',start)+2]
 source='\n'.join(l for l in (root/'src/legends_clock.c').read_text().splitlines() if not l.startswith('#include'))
 pre=r'''
 #include <assert.h>
@@ -29,7 +32,12 @@ static u16 vars[7],error;static struct SiiRtcInfo device={26,10,10,13,41,59};
 static int polls;
 u16 VarGet(int id){return vars[id];}void VarSet(int id,u16 v){vars[id]=v;}
 u16 RtcGetErrorStatus(void){return error;}
-void RtcGetInfo(struct SiiRtcInfo*r){*r=device;polls++;}
+#define OW_USE_FAKE_RTC 0
+#define sErrorStatus error
+static const struct SiiRtcInfo sRtcDummy={0,1,1,0,0,0};
+void RtcGetRawInfo(struct SiiRtcInfo*r){*r=device;polls++;}
+void FakeRtc_GetRawInfo(struct SiiRtcInfo*r){*r=device;}
+__RTC_GET_INFO__
 u32 ConvertBcdToBinary(u8 v){return v;}
 int IsLeapYear(int y){return y%4==0;}
 const int sNumDaysInMonths[]={31,28,31,30,31,30,31,31,30,31,30,31};
@@ -46,9 +54,15 @@ u8 gStringVar1[32];
 void RtcCalcLocalTime(void);
 void FormatDecimalTimeWithoutSeconds(u8*d,int h,int m,int fmt){sprintf((char*)d,"%02d:%02d",h,m);}
 '''
+pre=pre.replace('__RTC_GET_INFO__',rtc_get_info)
 post=r'''
 void RtcCalcLocalTime(void){LegendsClockCalcLocalTime();}
 int main(void){
+ struct SiiRtcInfo snapshot;
+ error=RTC_INIT_ERROR;RtcGetInfo(&snapshot);assert(!polls&&snapshot.month==1&&snapshot.day==1);
+ error=RTC_ERR_FLAG_MASK;RtcGetInfo(&snapshot);assert(!polls&&snapshot.month==1);
+ error=0;
+
  save.localTimeOffset.days=9000;save.localTimeOffset.hours=7;save.localTimeOffset.minutes=12;save.localTimeOffset.seconds=59;
  LegendsClockCalcLocalTime();assert(gLocalTime.hours==13&&gLocalTime.minutes==41&&gLocalTime.seconds==59&&gLocalTime.days==0);
  // Device time advances without any played-frame ticks (as when in a menu).

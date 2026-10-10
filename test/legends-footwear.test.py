@@ -57,6 +57,7 @@ static void CheckPixels(const u8*result,const u8*original,const u8*mask,int size
 int main(int argc,char**argv){
  assert(sizeof(sWorldPixels)<=16*1024); // Keep within the GBA RAM budget.
  FILE*gallery=argc>1?fopen(argv[1],"wb"):NULL;
+ FILE*world=argc>2?fopen(argv[2],"wb"):NULL;
  for(int s=0;s<8;s++){
   shoes=s;
   for(int g=0;g<2;g++){
@@ -65,6 +66,7 @@ int main(int argc,char**argv){
    if(s)for(int kind=0;kind<3;kind++)LegendsPrepareFootwearPalette(pal[kind],g,kind);
    for(int st=0;st<8;st++){
     const struct SpriteFrameImage *src=nativeWorld[g][st],*images=LegendsFootwearImages(src,g,st);
+    if(world){u8 header[4]={s,g,st,st==0?16:32};fwrite(header,1,4,world);fwrite(images[0].data,1,images[0].size,world);fwrite(pal[st==4?2:0],2,16,world);}
     if(!s){assert(images==src);continue;}
     assert(images==LegendsFootwearImages(src,g,st));
     int offset=0;
@@ -92,13 +94,14 @@ int main(int argc,char**argv){
   for(int i=0;i<48;i++)if(i!=2&&i!=9&&i!=10&&i!=11&&i!=12&&i!=28&&i!=29)assert(cardPal[i]==i);
  }
  if(gallery)fclose(gallery);
+ if(world)fclose(world);
  puts("Native footwear poses, color/geometry masks, caches, costume isolation, ball/skin protection and card palette passed");
 }
 '''
 with tempfile.TemporaryDirectory() as d:
  p=Path(d);(p/'footwear.c').write_text(pre+header+assets+palettes+source+main)
  subprocess.run(['cc','-std=gnu17','-Werror=implicit-function-declaration','-fsanitize=address,undefined',str(p/'footwear.c'),'-o',str(p/'footwear')],check=True)
- subprocess.run([str(p/'footwear'),str(p/'gallery.bin')],check=True,env={**os.environ,'ASAN_OPTIONS':'detect_leaks=0'})
+ subprocess.run([str(p/'footwear'),str(p/'gallery.bin'),str(p/'world.bin')],check=True,env={**os.environ,'ASAN_OPTIONS':'detect_leaks=0'})
  if len(sys.argv)>2 and sys.argv[1]=='--preview':
   data=(p/'gallery.bin').read_bytes();sheet=Image.new('RGB',(8*128,2*128),(175,159,218))
   for s in range(8):
@@ -114,3 +117,20 @@ with tempfile.TemporaryDirectory() as d:
          if c:rgb=pal[c];im.putpixel((tx+x+dx,ty+y),((rgb&31)*8,(rgb>>5&31)*8,(rgb>>10&31)*8))
     sheet.paste(im.resize((128,128),Image.Resampling.NEAREST),(s*128,g*128))
   sheet.save(sys.argv[2])
+
+  # First pose of each native movement state, rendered from actual runtime data.
+  data=(p/'world.bin').read_bytes();pos=0;world=Image.new('RGB',(8*64,8*64),(175,159,218))
+  while pos<len(data):
+   shoe,gender,state,width=data[pos:pos+4];pos+=4;size=width*16
+   raw=data[pos:pos+size];pos+=size;pal=struct.unpack_from('<16H',data,pos);pos+=32
+   if shoe not in (0,1,6,7):continue
+   im=Image.new('RGB',(32,32),(175,159,218));i=0
+   for ty in range(0,32,8):
+    for tx in range(0,width,8):
+     for y in range(8):
+      for x in range(0,8,2):
+       v=raw[i];i+=1
+       for dx,c in enumerate((v&15,v>>4)):
+        if c:rgb=pal[c];im.putpixel((tx+x+dx+(8 if width==16 else 0),ty+y),((rgb&31)*8,(rgb>>5&31)*8,(rgb>>10&31)*8))
+   col=gender*4+(0,1,6,7).index(shoe);world.paste(im.resize((64,64),Image.Resampling.NEAREST),(col*64,state*64))
+  world.save(str(Path(sys.argv[2]).with_name('footwear-world-preview.png')))
