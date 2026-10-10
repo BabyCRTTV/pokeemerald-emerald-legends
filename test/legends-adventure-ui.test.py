@@ -61,7 +61,7 @@ void SetGpuReg(int reg,int value){} void ResetBgsAndClearDma3BusyFlags(int value
 void InitBgsFromTemplates(int a,const struct BgTemplate *t,int count){}
 void ChangeBgX(int a,int b,int c){} void ChangeBgY(int a,int b,int c){}
 void ResetTasks(void){} void ResetSpriteData(void){} void ResetPaletteFade(void){} void ScanlineEffect_Stop(void){}
-bool32 InitWindows(const struct WindowTemplate *t){assert(t->width*8==240&&t->height*8==160);assert(t->baseBlock+t->width*t->height<1024);return !failedInit;}
+bool32 InitWindowsUnchecked(const struct WindowTemplate *t){assert(t->width*8==240&&t->height*8==160);assert(t->baseBlock+t->width*t->height<1024);return !failedInit;}
 void DeactivateAllTextPrinters(void){} void LoadPalette(const u16 *p,int offset,int bytes){assert(offset==240&&bytes==32);}
 void PutWindowTilemap(int window){} void ShowBg(int bg){} void CopyWindowToVram(int w,int flags){}
 void BeginNormalPaletteFade(u32 a,int b,int c,int d,int e){}
@@ -106,7 +106,7 @@ key(L_BUTTON);key(A_BUTTON);assert(sPage==0);
 key(B_BUTTON);assert(gTasks[0].func==Task_Close);gPaletteFade.active=1;Task_Close(0);assert(freed==0);gPaletteFade.active=0;Task_Close(0);assert(freed==1&&currentCallback==CB2_ReturnToFieldWithOpenMenu);
 // Empty day/story filters and allocation failure always return safely.
 reset();sFilter=ADV_FILTER_STORY;sPage=0;DrawPage();assert(strstr(ops[2].text,"No notes"));
-failedInit=1;gMain.state=0;CB2_OpenAdventureLog();assert(currentCallback==CB2_ReturnToFieldWithOpenMenu);
+failedInit=1;gMain.state=0;CB2_OpenAdventureLog();assert(freed==2&&currentCallback==CB2_ReturnToFieldWithOpenMenu);
 return 0;
 }
 '''

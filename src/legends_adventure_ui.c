@@ -1,6 +1,7 @@
 #include "global.h"
 #include "legends_adventure.h"
 #include "main.h"
+#include "menu.h"
 #include "bg.h"
 #include "dma3.h"
 #include "gpu_regs.h"
@@ -266,8 +267,9 @@ void CB2_OpenAdventureLog(void)
         ResetSpriteData();
         ResetPaletteFade();
         ScanlineEffect_Stop();
-        if (!InitWindows(sWindows))
+        if (!InitWindowsUnchecked(sWindows))
         {
+            FreeAllWindowBuffers();
             SetMainCallback2(CB2_ReturnToFieldWithOpenMenu);
             return;
         }
