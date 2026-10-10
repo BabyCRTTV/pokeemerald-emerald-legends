@@ -1,0 +1,104 @@
+name: Build Legends Wiki Windows Installer
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [master]
+    paths:
+      - 'docs/wiki/**'
+      - 'windows/wiki/**'
+      - 'tools/build_wiki_icons.py'
+      - '.github/workflows/wiki-windows.yml'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: legends-wiki-windows-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build-windows:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: windows-latest
+    timeout-minutes: 35
+    steps:
+      - name: Checkout sources
+        uses: actions/checkout@v4
+      - name: Prepare Node 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Generate transparent Happiny icon
+        shell: pwsh
+        run: |
+          python -m pip install --quiet Pillow
+          python tools/build_wiki_icons.py
+          if (!(Test-Path windows/wiki/assets/happiny.ico)) { throw 'Happiny icon missing' }
+      - name: Choose Windows wiki app version
+        shell: pwsh
+        run: |
+          $file='docs/wiki/windows-version.json'
+          $build=0
+          if (Test-Path $file) {
+            $previous=Get-Content $file -Raw | ConvertFrom-Json
+            $parts=$previous.version.Split('.')
+            $build=[int]$parts[-1]+1
+          }
+          $version="1.0.$build"
+          "WIKI_WIN_VERSION=$version" >> $env:GITHUB_ENV
+          Write-Host "Windows wiki version $version"
+      - name: Install desktop dependencies
+        working-directory: windows/wiki
+        run: npm install --no-audit --no-fund
+      - name: Build installable NSIS setup
+        shell: pwsh
+        working-directory: windows/wiki
+        env:
+          CSC_IDENTITY_AUTO_DISCOVERY: 'false'
+        run: |
+          npm version "$env:WIKI_WIN_VERSION" --no-git-tag-version
+          npx electron-builder --win nsis --x64 --publish never
+          if (!(Test-Path dist/Legends-Wiki-Setup.exe)) { throw 'Installer missing' }
+          Get-FileHash dist/Legends-Wiki-Setup.exe -Algorithm SHA256
+      - name: Upload public installer to independent wiki-desktop release
+        shell: pwsh
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          $installer='windows/wiki/dist/Legends-Wiki-Setup.exe'
+          if (!(Test-Path $installer)) { throw 'Missing setup file' }
+          gh release view wiki-desktop --repo "$env:GITHUB_REPOSITORY" *> $null
+          if ($LASTEXITCODE -eq 0) {
+            gh release upload wiki-desktop $installer --clobber --repo "$env:GITHUB_REPOSITORY"
+          } else {
+            gh release create wiki-desktop $installer --title 'Legends Wiki - Windows installer' --notes 'Separate desktop Wiki and LegendsDex companion. Not a game ROM release.' --prerelease --latest=false --repo "$env:GITHUB_REPOSITORY"
+          }
+          if ($LASTEXITCODE -ne 0) { throw 'Installer release failed' }
+      - name: Publish Windows version manifest
+        shell: pwsh
+        run: |
+          $setup='windows/wiki/dist/Legends-Wiki-Setup.exe'
+          $hash=(Get-FileHash $setup -Algorithm SHA256).Hash.ToLowerInvariant()
+          $manifest=[ordered]@{
+            available=$true
+            platform='windows'
+            version=$env:WIKI_WIN_VERSION
+            url='https://github.com/BabyCRTTV/pokeemerald-emerald-legends/releases/download/wiki-desktop/Legends-Wiki-Setup.exe'
+            sha256=$hash
+          }
+          $manifest | ConvertTo-Json -Depth 4 | Set-Content docs/wiki/windows-version.json -Encoding utf8
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add docs/wiki/windows-version.json
+          if (git diff --cached --quiet) { exit 0 }
+          git commit -m 'Wiki: publish Windows installer version manifest [skip ci]'
+          git pull --rebase origin master
+          if ($LASTEXITCODE -ne 0) { throw 'Version manifest rebase failed' }
+          git push
+          if ($LASTEXITCODE -ne 0) { throw 'Version manifest publish failed' }
+      - name: Save setup build artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: legends-wiki-windows-installer
+          path: windows/wiki/dist/Legends-Wiki-Setup.exe
