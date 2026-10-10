@@ -112,7 +112,7 @@
 .dex-card .thumb{--sprite-size:64px}.detail-top .thumb{--sprite-size:118px}
 #results{overflow-anchor:none}
 #search-anchor:focus{outline:none}
-.return-to-search{position:fixed;right:24px;bottom:18px;z-index:21;width:56px;height:56px;display:grid;place-items:center;padding:0;border:0;border-radius:0;background:transparent;opacity:0;visibility:hidden;pointer-events:none;transition:opacity .2s ease,visibility 0s linear .2s}
+.return-to-search{position:fixed;right:24px;bottom:18px;z-index:21;width:56px;height:56px;display:grid;grid-template-columns:56px;grid-template-rows:56px;place-items:center;padding:0;border:0;border-radius:0;background:transparent;opacity:0;visibility:hidden;pointer-events:none;transition:opacity .2s ease,visibility 0s linear .2s}
 .return-to-search:disabled{opacity:0}
 .return-to-search.is-visible{opacity:1;visibility:visible;pointer-events:auto;transition:opacity .2s ease}
 @media(max-width:1100px),(hover:none) and (pointer:coarse){.return-to-search{right:clamp(16px,4vw,40px);bottom:calc(var(--quick-nav-height) + 8px + env(safe-area-inset-bottom,0px))}}
@@ -136,7 +136,7 @@
 
 /* The pointer becomes Rotom before departing; the control stays inactive during flight. */
 .return-to-search .rotom-arrow,.return-to-search .rotom-companion{grid-area:1 / 1}
-.rotom-companion{display:block;width:56px;height:56px;opacity:0;transform:scale(.35) rotate(-15deg);filter:drop-shadow(0 3px 4px #49326b30)}
+.rotom-companion{display:block;width:64px;height:66px;object-fit:contain;opacity:0;transform:scale(.35) rotate(-15deg);filter:drop-shadow(0 3px 4px #49326b30)}
 .return-to-search.is-flying{opacity:1;visibility:visible;pointer-events:none;transition:none;animation:rotom-depart 1.1s ease-in forwards}
 .is-flying .rotom-arrow{animation:rotom-morph-arrow .28s ease-out forwards}
 .is-flying .rotom-companion{animation:rotom-morph-face .28s ease-out forwards}

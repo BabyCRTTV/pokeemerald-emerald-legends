@@ -51,7 +51,7 @@ const assert=require('node:assert/strict'),fs=require('node:fs');
   assert(await page.evaluate(()=>scrollY>100),'return arrow uses search, not page top');
   // Quick direction changes during the departure/cooldown cannot reactivate the control.
   if(width===412){
-    await page.waitForFunction(()=>Number(getComputedStyle(document.querySelector('.rotom-companion')).opacity)>.95);
+    await page.waitForFunction(()=>{const rotom=document.querySelector('.rotom-companion');return Number(getComputedStyle(rotom).opacity)>.95&&rotom.complete&&rotom.naturalWidth>0;});
     await page.screenshot({path:'wiki-preview/rotom-flight.png',fullPage:false});
     await page.evaluate(()=>scrollTo({top:1600,behavior:'instant'}));
     assert(await page.locator('#return-to-search').isDisabled(),'cooldown blocks rapid reappearance');
@@ -82,6 +82,7 @@ const assert=require('node:assert/strict'),fs=require('node:fs');
   await page.locator('.dex-card [data-species="POOCHYENA"]').click();
   assert.equal(await page.locator('#detail').evaluate(e=>e.scrollTop),0,'profile opens at the top');
   assert(await page.locator('#toggle-entry').isVisible());
+  await page.waitForFunction(()=>{const hint=document.querySelector('.rotom-tip img');return hint.complete&&hint.naturalWidth>0;});
   assert(await page.locator('#pokedex-entry').isHidden());
   await page.locator('#toggle-entry').click();
   assert(await page.locator('#pokedex-entry').isVisible());
