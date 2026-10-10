@@ -3,7 +3,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <application
         android:label="Legends Wiki"
-        android:icon="@drawable/wiki_icon"
+        android:icon="@drawable/happiny_icon"
         android:supportsRtl="true"
         android:allowBackup="false"
         android:usesCleartextTraffic="false"

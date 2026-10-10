@@ -73,7 +73,7 @@ jobs:
           python3 tools/build_wiki_icons.py
           python3 - <<'PY'
           from PIL import Image
-          a=Image.open('android/wiki/app/src/main/res/drawable/wiki_icon.png').convert('RGBA')
+          a=Image.open('android/wiki/app/src/main/res/drawable/happiny_icon.png').convert('RGBA')
           assert a.size==(512,512) and a.getpixel((0,0))[3]==0
           print('Validated transparent single-frame Happiny icon')
           PY

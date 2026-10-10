@@ -11,7 +11,7 @@ from PIL import Image
 
 ROOT=Path(__file__).resolve().parents[1]
 SOURCE=ROOT/"graphics/pokemon/happiny/icon.png"
-ANDROID=ROOT/"android/wiki/app/src/main/res/drawable/wiki_icon.png"
+ANDROID=ROOT/"android/wiki/app/src/main/res/drawable/happiny_icon.png"
 WINDOWS=ROOT/"windows/wiki/assets/happiny.ico"
 
 sheet=Image.open(SOURCE).convert("RGBA")
