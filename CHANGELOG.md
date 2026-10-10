@@ -4,6 +4,18 @@ All notable Pokémon Emerald: Legends project changes are documented here.
 
 For build-specific player views, see [CHANGELOG-RELEASE.md](CHANGELOG-RELEASE.md) and [CHANGELOG-DEBUG.md](CHANGELOG-DEBUG.md). The canonical history below records the project as a whole.
 
+## [0.0.27] - 2026-10-09
+
+### Added
+- Unpopulated Kanto foundation: FireRed-native Routes 11–15, Lavender Town, Fuchsia City and Route 19, with 22 empty gate/town interiors. Geography, dimensions, route offsets and tileset assets come from the expansion's native FireRed data.
+- Opened Vermilion's eastern road. Walk the connected Route 11–15 loop between Vermilion, Lavender and Fuchsia, then reach Route 19.
+- Two-way Surf passage: northern Route 124 (x20–24, y1) to southern Route 19; return from Route 19 (x10–16, y56). Outbound travel requires Champion status and the retained Invite Ticket. Native Surf/badge requirements still apply. A fade separates incompatible regional tileset formats; the permanent ferry remains available.
+
+### Scope and compatibility
+- New maps contain no NPCs, trainers, item gifts, wild encounters or FireRed story scripts. Centers and Marts in these new areas are empty shells; Vermilion services remain available. Tower, Safari Zone, Diglett's Cave and roads beyond this foundation remain closed.
+- Appended map/layout IDs; no save-layout changes or existing IDs renumbered. Regional blackout handling retains Vermilion in Kanto and restores Lilycove on Surf return.
+- Release and Debug share these additions with no variant-specific gameplay differences; developer tools remain Debug-only.
+
 ## [0.0.26.1] - 2026-10-09
 
 ### Fixed and polished

@@ -1,4 +1,14 @@
-# Kanto: the Champion's arrival
+# Kanto: arrival and regional foundation
+
+Version **0.0.27** adds an intentionally empty eastern/southern Kanto foundation to the existing Vermilion arrival chapter. Walk east from Vermilion through Routes 11, 12, 13, 14 and 15 to Lavender and Fuchsia, then south to Route 19. The new towns, routes and 22 gate/town interiors use native FireRed layout dimensions, blockdata, border data and tileset art. No new NPCs, trainers, gifts, wild encounters or FireRed story events are imported. The new Centers/Marts are empty shells; return to Vermilion for healing and supplies.
+
+**Surf connection:** on Route 124, Surf north through the water lane at **x20–24, y1** and accept the crossing to Route 19. Champion status and the retained Invite Ticket are required outbound. At Route 19's south end, cross **x10–16, y56** to return; no ticket gate can strand a traveler on the Kanto side. Arrival tiles are water, separated from the triggers to prevent immediate return loops. Native Surf and badge checks remain intact. The short fade reloads each region's tilesets instead of displaying incompatible Hoenn/FRLG borders. The two-way Lilycove ferry remains available.
+
+**Boundaries:** Route 6, Routes 8/10/18/20, Pokémon Tower, Safari Zone and Diglett's Cave remain outside this revision. Unsupported entrances are solid and display a development notice. Unimplemented route edges are sealed. Appended map/layout IDs preserve the existing save structure and the original group-75 maps. See `data/legends_kanto_foundation.json` for the exact map/source manifest. Imported maps set Vermilion's heal destination; Surf return restores Lilycove's destination.
+
+**Validation limits:** automated geometry, reciprocal connections, event gates, source fidelity and encounter exclusion are checked. A green build and BPS round-trip verification establish compilation and patch integrity; emulator traversal of every new map and Pizza Boy testing remain necessary. This revision does not claim those playtests.
+
+## Original arrival chapter
 
 Implemented in v0.0.26 in both Release and Debug. This first chapter opens **Vermilion City**, rather than restarting FireRed's adventure. The rest of Kanto and a possible later Johto expansion remain future work.
 
@@ -8,7 +18,7 @@ Two Fan Club members give you a small welcome on your first arrival. Explore the
 
 Cooltrainer **ALEX**, on the city waterfront, offers an optional six-Pokémon battle. His Kanto team is Raichu (60), Arcanine (61), Exeggutor (61), Nidoking (62), Lapras (62) and Dragonite (64). He explains the challenge before asking permission. Declining leaves the battle available; winning records native trainer victory. Losing uses the native blackout and healing flow. Neither fighting nor winning is required for travel.
 
-The sailor aboard the Vermilion gangway offers passage back to Lilycove. Keep your ticket: it is required on every crossing and is never consumed. The ship remains available; there is no S.S. Anne departure event. Returning to Hoenn restores Lilycove as your blackout destination. Roads to Routes 6 and 11 have visible repair barriers, and Lt. Surge is away helping the crews. These are future chapter boundaries, with no countdown or unlock quest in this version.
+The sailor aboard the Vermilion gangway offers passage back to Lilycove. Keep your ticket: it is required on every crossing and is never consumed. The ship remains available; there is no S.S. Anne departure event. Returning to Hoenn restores Lilycove as your blackout destination. The road to Route 6 has visible repair barriers, and Lt. Surge is away helping the crews. These are future chapter boundaries, with no countdown or unlock quest in this version.
 
 ## Beginner playtest walkthrough
 
@@ -78,7 +88,7 @@ Read the first-arrival welcome with A. When it finishes, open **START → Bag �
 
 ### 6. Explore, then try the optional battle
 
-Visit the Pokémon Center, Mart, Fan Club and three open homes. Check that you can enter and leave, talk to people and heal your party. The Gym and roads beyond Vermilion are closed in this first chapter.
+Visit the Pokémon Center, Mart, Fan Club and three open homes. Check that you can enter and leave, talk to people and heal your party. The Gym and northern road remain closed; the eastern road opens into the new foundation.
 
 Find **Cooltrainer ALEX on the city waterfront**. Talk to him and choose NO first: declining should let you keep exploring. His six Pokémon are **Lv. 60–64**, so heal and bring a suitable team before accepting.
 
