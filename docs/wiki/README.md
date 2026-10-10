@@ -59,3 +59,8 @@ Home now presents seven topic sections; each section leads to its article list, 
 LegendsDex sprites are separate accessible audio buttons. Tapping a sprite plays the source game cry; the adjacent name/details button opens the profile. Only one cry plays at a time; leaving the page or closing the profile stops audio. Playback failures announce retry guidance. `tools/build_wiki_cries.py` verifies the 1,026 documented species' WAV files and generates default-form aliases. Audio loads only on tap from the project's own GitHub source at the same pinned snapshot commit as the sprites, including Da Bug; no third-party audio service is used.
 
 The Android activity preserves its current page and filters while the window changes size, including folding/unfolding. The native application still loads the live reader, so existing installations receive these page improvements on reopening.
+
+
+LegendsDex renders all matching Pokémon and routes at once. Bottom-tab switches preserve the current scroll offset. A fading, accessible up-arrow returns to the search field rather than the hero/header; reduced-motion settings disable animation. These behaviors are shared by browser, Android and Windows readers.
+
+`tools/build_wiki_sprite_atlas.py` generates one lossless transparent sprite atlas and index from the manually pinned `dex-data.json.sourceCommit`. All 1,026 sprites preload and decode before results appear; scrolling does not fetch additional images or Pokémon. Regenerate the atlas only when the owner requests a data snapshot revision. Cries remain tap-to-load.

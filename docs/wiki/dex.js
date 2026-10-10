@@ -2,7 +2,7 @@
 (() => {
   const $ = (s,scope=document)=>scope.querySelector(s);
   const esc = text => String(text??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
-  let data=null, bySpecies=new Map(), view="routes", region="all", method="all", availability="all", type="all", shown=0, query="", pokemonMap=new Map();
+  let data=null, bySpecies=new Map(), view="routes", region="all", method="all", availability="all", type="all", query="", pokemonMap=new Map();
   const results=$("#results"), more=$("#more"), search=$("#search"), modal=$("#detail");
   const METHODS=["land","surf","rock","old_rod","good_rod","super_rod"];
   function sprite(p,size="small"){
@@ -57,22 +57,38 @@
     if(!data)return;
     updateControls();
     let collection=view==="routes"?filteredRoutes():speciesListRows(),total=collection.length;
-    let size=view==="routes"?8:48;if(shown===0)shown=size;
-    let subset=collection.slice(0,shown);
+
     $("#results-heading").textContent=view==="routes"?"Wild encounters":"National Pokédex";
     $("#results-count").textContent=view==="routes"?total+" locations with matching encounters":total+" Pokémon matching your filters";
     results.className=view==="routes"?"":"dex-grid";
     if(total===0){
       results.innerHTML='<div class="empty"><strong>No matches found</strong><p>Try another Pokémon, region, or encounter method.</p></div>';
-    }else results.innerHTML=subset.map(x=>view==="routes"?routeCard(x):dexCard(x)).join("");
+    }else results.innerHTML=collection.map(x=>view==="routes"?routeCard(x):dexCard(x)).join("");
     LegendsSprites.hydrate(results,data.sourceCommit);
-    more.hidden=shown>=total;
-    more.textContent="Show more "+(view==="routes"?"locations":"Pokémon")+" ("+Math.max(0,total-shown)+" remaining)";
+    more.hidden=true;
   }
   function changeView(next){
-    if(next!==view){view=next;shown=0;query="";search.value="";const url=new URL(location.href);url.searchParams.set("view",next);url.searchParams.delete("pokemon");history.replaceState(null,"",url);document.title=(view==="routes"?"Wild encounters":"National Pokédex")+" · Emerald: Legends Wiki";render();}
-    window.scrollTo({top:0,behavior:"smooth"});
+    const position=window.scrollY;
+    if(next!==view){view=next;query="";search.value="";const url=new URL(location.href);url.searchParams.set("view",next);url.searchParams.delete("pokemon");history.replaceState(null,"",url);document.title=(view==="routes"?"Wild encounters":"National Pokédex")+" · Emerald: Legends Wiki";render();}
+    window.scrollTo({top:position,behavior:"instant"});
+    updateReturnArrow();
   }
+  const searchAnchor=$("#search-anchor"), returnArrow=$("#return-to-search");
+  function updateReturnArrow(){
+    const visible=searchAnchor.getBoundingClientRect().top < -8;
+    returnArrow.classList.toggle("is-visible",visible);
+    returnArrow.disabled=!visible;
+    returnArrow.setAttribute("aria-hidden",String(!visible));
+  }
+  window.addEventListener("scroll",updateReturnArrow,{passive:true});
+  window.addEventListener("resize",updateReturnArrow);
+  returnArrow.addEventListener("click",()=>{
+    const top=Math.max(0,window.scrollY+searchAnchor.getBoundingClientRect().top-12);
+    const reduce=window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    window.scrollTo({top,behavior:reduce?"instant":"smooth"});
+    searchAnchor.focus({preventScroll:true});
+  });
+  updateReturnArrow();
   function openPokemon(id,share=true){
     const p=bySpecies.get(id);if(!p)return;
     const linked=(pokemonMap.get(id)||[]).filter(loc=>(region==="all"||loc.region===region));
@@ -119,27 +135,27 @@
   document.addEventListener("click",event=>{const cry=event.target.closest('[data-cry]');if(cry){playCry(cry.dataset.cry,cry);return;}const s=event.target.closest("[data-species]");if(s)openPokemon(s.dataset.species);});
   document.querySelectorAll("[data-view]").forEach(b=>b.addEventListener("click",()=>changeView(b.dataset.view)));
   document.querySelectorAll("[data-mobileview]").forEach(b=>b.addEventListener("click",()=>changeView(b.dataset.mobileview)));
-  document.querySelectorAll("[data-region]").forEach(b=>b.addEventListener("click",()=>{region=b.dataset.region;shown=0;render()}));
-  search.addEventListener("input",()=>{query=search.value.trim().toLowerCase();shown=0;render()});
-  $("#clear-search").addEventListener("click",()=>{search.value="";query="";shown=0;render();search.focus()});
-  $("#method").addEventListener("change",e=>{method=e.target.value;shown=0;render()});
-  $("#availability").addEventListener("change",e=>{availability=e.target.value;shown=0;render()});
-  $("#type").addEventListener("change",e=>{type=e.target.value;shown=0;render()});
-  more.addEventListener("click",()=>{shown+=(view==="routes"?8:48);render()});
+  document.querySelectorAll("[data-region]").forEach(b=>b.addEventListener("click",()=>{region=b.dataset.region;render()}));
+  search.addEventListener("input",()=>{query=search.value.trim().toLowerCase();render()});
+  $("#clear-search").addEventListener("click",()=>{search.value="";query="";render();search.focus()});
+  $("#method").addEventListener("change",e=>{method=e.target.value;render()});
+  $("#availability").addEventListener("change",e=>{availability=e.target.value;render()});
+  $("#type").addEventListener("change",e=>{type=e.target.value;render()});
   $("#about-rates").addEventListener("click",()=>$("#help").showModal());
   $("#close-help").addEventListener("click",()=>$("#help").close());
   $("#close-detail").addEventListener("click",closePokemon);
   modal.addEventListener("click",e=>{if(e.target===modal)closePokemon()});
   modal.addEventListener("close",()=>{let u=new URL(location.href);if(u.searchParams.has("pokemon")){u.searchParams.delete("pokemon");history.replaceState(null,"",u);}});
   $("#help").addEventListener("click",e=>{if(e.target===$("#help"))$("#help").close()});
-  fetch("dex-data.json",{cache:"no-store"}).then(r=>{if(!r.ok)throw Error("HTTP "+r.status);return r.json()}).then(json=>{
+  fetch("dex-data.json",{cache:"no-store"}).then(r=>{if(!r.ok)throw Error("HTTP "+r.status);return r.json()}).then(async json=>{
     if(!Array.isArray(json.maps)||!Array.isArray(json.species)||json.maps.length===0)throw Error("Invalid Pokédex data");
     data=json;generateMapIndex();
+    await LegendsSprites.preload(data.sourceCommit);
     const link=new URL(location.href),pokemon=link.searchParams.get("pokemon")?.toUpperCase(),map=link.searchParams.get("map");
     if(link.searchParams.get("view")==="species")view="species";
     if(link.searchParams.get("view")==="routes")view="routes";
-    if(map){query="";region="all";method="all";const ix=data.maps.findIndex(m=>m.id===map);shown=ix>=0?Math.max(ix+1,8):8;}
-    if(pokemon&&bySpecies.has(pokemon)){view="species";shown=48;}
+    if(map){query="";region="all";method="all";}
+    if(pokemon&&bySpecies.has(pokemon))view="species";
     render();
     if(pokemon&&bySpecies.has(pokemon))openPokemon(pokemon,false);
   }).catch(err=>{
