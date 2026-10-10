@@ -355,9 +355,9 @@ LegendsKanto_EventScript_RoadCrew::
 	end
 
 LegendsKanto_Text_RoadCrew:
-	.string "A storm damaged the roads\n"
-	.string "out of town. We're making sure\l"
-	.string "they are safe before reopening.\p"
+	.string "A storm damaged the road\n"
+	.string "north of town. We're checking\l"
+	.string "it is safe before reopening.\p"
 	.string "LT. SURGE is helping the crews.\n"
 	.string "The ferry is still running!$"
 
@@ -518,8 +518,64 @@ LegendsKanto_EventScript_RoadSign::
 	end
 
 LegendsKanto_Text_RoadSign:
-	.string "ROAD REPAIR NOTICE\p"
-	.string "The roads to ROUTE 6 and\n"
-	.string "ROUTE 11 are closed.\p"
-	.string "Please use the harbor for\n"
-	.string "travel beyond VERMILION CITY.$"
+	.string "ROUTE 11 - East of here\n"
+	.string "ROUTE 6 remains closed.$"
+
+@ Foundation maps deliberately have no NPCs, gifts, trainers or encounters.
+LegendsKanto_Foundation_OnTransition::
+	setrespawn HEAL_LOCATION_LEGENDS_KANTO_VERMILION
+	end
+
+LegendsKanto_EventScript_SurfOutbound::
+	lockall
+	goto_if_unset FLAG_SYS_GAME_CLEAR, LegendsKanto_EventScript_SurfLocked
+	checkitem ITEM_INVITE_TICKET
+	goto_if_eq VAR_RESULT, FALSE, LegendsKanto_EventScript_SurfLocked
+	msgbox LegendsKanto_Text_SurfOutbound, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, NO, LegendsKanto_EventScript_DeclineFerry
+	closemessage
+	fadescreen FADE_TO_BLACK
+	setrespawn HEAL_LOCATION_LEGENDS_KANTO_VERMILION
+	warp MAP_LEGENDS_KANTO_ROUTE19, 12, 53
+	waitstate
+	releaseall
+	end
+
+LegendsKanto_EventScript_SurfReturn::
+	lockall
+	msgbox LegendsKanto_Text_SurfReturn, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, NO, LegendsKanto_EventScript_DeclineFerry
+	closemessage
+	fadescreen FADE_TO_BLACK
+	setrespawn HEAL_LOCATION_LILYCOVE_CITY
+	warp MAP_ROUTE124, 20, 4
+	waitstate
+	releaseall
+	end
+
+LegendsKanto_EventScript_SurfLocked::
+	msgbox LegendsKanto_Text_SurfLocked, MSGBOX_DEFAULT
+	releaseall
+	end
+
+LegendsKanto_Text_SurfOutbound:
+	.string "The northern passage leads\n"
+	.string "to KANTO's ROUTE 19.\p"
+	.string "Follow the passage?$"
+
+LegendsKanto_Text_SurfReturn:
+	.string "The southern passage leads\n"
+	.string "to HOENN's ROUTE 124.\p"
+	.string "Follow the passage?$"
+
+LegendsKanto_Text_SurfLocked:
+	.string "The distant passage is open\n"
+	.string "to invited LEAGUE CHAMPIONS.$"
+
+LegendsKanto_EventScript_FoundationClosed::
+	msgbox LegendsKanto_Text_FoundationClosed, MSGBOX_SIGN
+	end
+
+LegendsKanto_Text_FoundationClosed:
+	.string "This area is not available\n"
+	.string "in this development build.$"

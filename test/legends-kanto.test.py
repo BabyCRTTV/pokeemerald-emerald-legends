@@ -128,7 +128,7 @@ class KantoTests(unittest.TestCase):
         maps = {d["id"]: d for p in (ROOT / "data/maps").glob("*/map.json") if (d := json.loads(p.read_text()))}
         layouts = {d["id"]: d for d in json.loads((ROOT / "data/layouts/layouts.json").read_text())["layouts"]}
         new = [d for d in maps.values() if d["name"].startswith("LegendsKanto_")]
-        self.assertEqual(len(new), 9)
+        self.assertGreaterEqual(len(new), 9)
         for d in new:
             layout = layouts[d["layout"]]
             self.assertEqual((ROOT / layout["blockdata_filepath"]).stat().st_size, layout["width"] * layout["height"] * 2)
@@ -141,7 +141,7 @@ class KantoTests(unittest.TestCase):
         self.assertEqual(heal["respawn_map"], "MAP_LEGENDS_KANTO_POKEMON_CENTER_1F")
         self.assertIn(heal["respawn_npc"], [o.get("local_id") for o in maps[heal["respawn_map"]]["object_events"]])
         city = maps["MAP_LEGENDS_KANTO_VERMILION_CITY"]
-        self.assertIsNone(city["connections"])
+        self.assertEqual(city["connections"][0]["map"], "MAP_LEGENDS_KANTO_ROUTE11")
         self.assertNotIn("FLAG_HIDE_SS_ANNE", json.dumps(new))
         self.assertNotIn("VAR_SS_TIDAL_STATE", SOURCE)
 

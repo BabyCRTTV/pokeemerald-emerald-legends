@@ -1,0 +1,185 @@
+{
+  "maps": [
+    {
+      "source": "LavenderTown_Mart_Frlg",
+      "name": "LegendsKanto_LavenderTown_Mart",
+      "id": "MAP_LEGENDS_KANTO_LAVENDER_TOWN_MART",
+      "layout": "LAYOUT_LEGENDS_KANTO_MART_FRLG"
+    },
+    {
+      "source": "FuchsiaCity_House2_Frlg",
+      "name": "LegendsKanto_FuchsiaCity_House2",
+      "id": "MAP_LEGENDS_KANTO_FUCHSIA_CITY_HOUSE2",
+      "layout": "LAYOUT_LEGENDS_KANTO_FUCHSIA_CITY_HOUSE2"
+    },
+    {
+      "source": "LavenderTown_PokemonCenter_2F_Frlg",
+      "name": "LegendsKanto_LavenderTown_PokemonCenter_2F",
+      "id": "MAP_LEGENDS_KANTO_LAVENDER_TOWN_POKEMON_CENTER_2F",
+      "layout": "LAYOUT_LEGENDS_KANTO_POKEMON_CENTER_1F_FRLG"
+    },
+    {
+      "source": "FuchsiaCity_Gym_Frlg",
+      "name": "LegendsKanto_FuchsiaCity_Gym",
+      "id": "MAP_LEGENDS_KANTO_FUCHSIA_CITY_GYM",
+      "layout": "LAYOUT_LEGENDS_KANTO_FUCHSIA_CITY_GYM"
+    },
+    {
+      "source": "FuchsiaCity_Mart_Frlg",
+      "name": "LegendsKanto_FuchsiaCity_Mart",
+      "id": "MAP_LEGENDS_KANTO_FUCHSIA_CITY_MART",
+      "layout": "LAYOUT_LEGENDS_KANTO_MART_FRLG"
+    },
+    {
+      "source": "FuchsiaCity_SafariZone_Office_Frlg",
+      "name": "LegendsKanto_FuchsiaCity_SafariZone_Office",
+      "id": "MAP_LEGENDS_KANTO_FUCHSIA_CITY_SAFARI_ZONE_OFFICE",
+      "layout": "LAYOUT_LEGENDS_KANTO_FUCHSIA_CITY_SAFARI_ZONE_OFFICE"
+    },
+    {
+      "source": "Route12_NorthEntrance_2F_Frlg",
+      "name": "LegendsKanto_Route12_NorthEntrance_2F",
+      "id": "MAP_LEGENDS_KANTO_ROUTE12_NORTH_ENTRANCE_2F",
+      "layout": "LAYOUT_LEGENDS_KANTO_ENTRANCE_2F"
+    },
+    {
+      "source": "LavenderTown_PokemonCenter_1F_Frlg",
+      "name": "LegendsKanto_LavenderTown_PokemonCenter_1F",
+      "id": "MAP_LEGENDS_KANTO_LAVENDER_TOWN_POKEMON_CENTER_1F",
+      "layout": "LAYOUT_LEGENDS_KANTO_POKEMON_CENTER_1F_FRLG"
+    },
+    {
+      "source": "Route11_Frlg",
+      "name": "LegendsKanto_Route11",
+      "id": "MAP_LEGENDS_KANTO_ROUTE11",
+      "layout": "LAYOUT_LEGENDS_KANTO_ROUTE11"
+    },
+    {
+      "source": "Route12_FishingHouse_Frlg",
+      "name": "LegendsKanto_Route12_FishingHouse",
+      "id": "MAP_LEGENDS_KANTO_ROUTE12_FISHING_HOUSE",
+      "layout": "LAYOUT_LEGENDS_KANTO_HOUSE4_FRLG"
+    },
+    {
+      "source": "FuchsiaCity_PokemonCenter_2F_Frlg",
+      "name": "LegendsKanto_FuchsiaCity_PokemonCenter_2F",
+      "id": "MAP_LEGENDS_KANTO_FUCHSIA_CITY_POKEMON_CENTER_2F",
+      "layout": "LAYOUT_LEGENDS_KANTO_POKEMON_CENTER_2F_FRLG"
+    },
+    {
+      "source": "Route15_WestEntrance_1F_Frlg",
+      "name": "LegendsKanto_Route15_WestEntrance_1F",
+      "id": "MAP_LEGENDS_KANTO_ROUTE15_WEST_ENTRANCE_1F",
+      "layout": "LAYOUT_LEGENDS_KANTO_ENTRANCE_1F"
+    },
+    {
+      "source": "FuchsiaCity_House1_Frlg",
+      "name": "LegendsKanto_FuchsiaCity_House1",
+      "id": "MAP_LEGENDS_KANTO_FUCHSIA_CITY_HOUSE1",
+      "layout": "LAYOUT_LEGENDS_KANTO_HOUSE1_FRLG"
+    },
+    {
+      "source": "FuchsiaCity_Frlg",
+      "name": "LegendsKanto_FuchsiaCity",
+      "id": "MAP_LEGENDS_KANTO_FUCHSIA_CITY",
+      "layout": "LAYOUT_LEGENDS_KANTO_FUCHSIA_CITY"
+    },
+    {
+      "source": "FuchsiaCity_House3_Frlg",
+      "name": "LegendsKanto_FuchsiaCity_House3",
+      "id": "MAP_LEGENDS_KANTO_FUCHSIA_CITY_HOUSE3",
+      "layout": "LAYOUT_LEGENDS_KANTO_HOUSE1_FRLG"
+    },
+    {
+      "source": "FuchsiaCity_WardensHouse_Frlg",
+      "name": "LegendsKanto_FuchsiaCity_WardensHouse",
+      "id": "MAP_LEGENDS_KANTO_FUCHSIA_CITY_WARDENS_HOUSE",
+      "layout": "LAYOUT_LEGENDS_KANTO_FUCHSIA_CITY_WARDENS_HOUSE"
+    },
+    {
+      "source": "LavenderTown_House1_Frlg",
+      "name": "LegendsKanto_LavenderTown_House1",
+      "id": "MAP_LEGENDS_KANTO_LAVENDER_TOWN_HOUSE1",
+      "layout": "LAYOUT_LEGENDS_KANTO_HOUSE5_FRLG"
+    },
+    {
+      "source": "LavenderTown_House2_Frlg",
+      "name": "LegendsKanto_LavenderTown_House2",
+      "id": "MAP_LEGENDS_KANTO_LAVENDER_TOWN_HOUSE2",
+      "layout": "LAYOUT_LEGENDS_KANTO_HOUSE5_FRLG"
+    },
+    {
+      "source": "Route12_Frlg",
+      "name": "LegendsKanto_Route12",
+      "id": "MAP_LEGENDS_KANTO_ROUTE12",
+      "layout": "LAYOUT_LEGENDS_KANTO_ROUTE12"
+    },
+    {
+      "source": "FuchsiaCity_PokemonCenter_1F_Frlg",
+      "name": "LegendsKanto_FuchsiaCity_PokemonCenter_1F",
+      "id": "MAP_LEGENDS_KANTO_FUCHSIA_CITY_POKEMON_CENTER_1F",
+      "layout": "LAYOUT_LEGENDS_KANTO_POKEMON_CENTER_1F_FRLG"
+    },
+    {
+      "source": "Route11_EastEntrance_2F_Frlg",
+      "name": "LegendsKanto_Route11_EastEntrance_2F",
+      "id": "MAP_LEGENDS_KANTO_ROUTE11_EAST_ENTRANCE_2F",
+      "layout": "LAYOUT_LEGENDS_KANTO_ENTRANCE_2F"
+    },
+    {
+      "source": "Route11_EastEntrance_1F_Frlg",
+      "name": "LegendsKanto_Route11_EastEntrance_1F",
+      "id": "MAP_LEGENDS_KANTO_ROUTE11_EAST_ENTRANCE_1F",
+      "layout": "LAYOUT_LEGENDS_KANTO_ENTRANCE_1F"
+    },
+    {
+      "source": "LavenderTown_Frlg",
+      "name": "LegendsKanto_LavenderTown",
+      "id": "MAP_LEGENDS_KANTO_LAVENDER_TOWN",
+      "layout": "LAYOUT_LEGENDS_KANTO_LAVENDER_TOWN"
+    },
+    {
+      "source": "Route12_NorthEntrance_1F_Frlg",
+      "name": "LegendsKanto_Route12_NorthEntrance_1F",
+      "id": "MAP_LEGENDS_KANTO_ROUTE12_NORTH_ENTRANCE_1F",
+      "layout": "LAYOUT_LEGENDS_KANTO_ROUTE12_NORTH_ENTRANCE_1F"
+    },
+    {
+      "source": "Route15_WestEntrance_2F_Frlg",
+      "name": "LegendsKanto_Route15_WestEntrance_2F",
+      "id": "MAP_LEGENDS_KANTO_ROUTE15_WEST_ENTRANCE_2F",
+      "layout": "LAYOUT_LEGENDS_KANTO_ENTRANCE_2F"
+    },
+    {
+      "source": "Route15_Frlg",
+      "name": "LegendsKanto_Route15",
+      "id": "MAP_LEGENDS_KANTO_ROUTE15",
+      "layout": "LAYOUT_LEGENDS_KANTO_ROUTE15"
+    },
+    {
+      "source": "LavenderTown_VolunteerPokemonHouse_Frlg",
+      "name": "LegendsKanto_LavenderTown_VolunteerPokemonHouse",
+      "id": "MAP_LEGENDS_KANTO_LAVENDER_TOWN_VOLUNTEER_POKEMON_HOUSE",
+      "layout": "LAYOUT_LEGENDS_KANTO_LAVENDER_TOWN_VOLUNTEER_POKEMON_HOUSE"
+    },
+    {
+      "source": "Route14_Frlg",
+      "name": "LegendsKanto_Route14",
+      "id": "MAP_LEGENDS_KANTO_ROUTE14",
+      "layout": "LAYOUT_LEGENDS_KANTO_ROUTE14"
+    },
+    {
+      "source": "Route13_Frlg",
+      "name": "LegendsKanto_Route13",
+      "id": "MAP_LEGENDS_KANTO_ROUTE13",
+      "layout": "LAYOUT_LEGENDS_KANTO_ROUTE13"
+    },
+    {
+      "source": "Route19_Frlg",
+      "name": "LegendsKanto_Route19",
+      "id": "MAP_LEGENDS_KANTO_ROUTE19",
+      "layout": "LAYOUT_LEGENDS_KANTO_ROUTE19"
+    }
+  ],
+  "scope": "Unpopulated eastern/southern Kanto foundation; no encounters or story events."
+}

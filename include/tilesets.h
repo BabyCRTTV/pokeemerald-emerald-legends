@@ -64,4 +64,19 @@ extern const struct Tileset gTileset_TrainerTower;
 extern const struct Tileset gTileset_LegendsKantoGeneral_Frlg;
 extern const struct Tileset gTileset_LegendsKantoVermilionCity;
 
+
+#if !IS_FRLG
+extern const struct Tileset gTileset_LegendsKantoBuildingFrlg;
+extern const struct Tileset gTileset_LegendsKantoFanClubDaycare;
+extern const struct Tileset gTileset_LegendsKantoFuchsiaCity;
+extern const struct Tileset gTileset_LegendsKantoFuchsiaGym;
+extern const struct Tileset gTileset_LegendsKantoGenericBuilding1;
+extern const struct Tileset gTileset_LegendsKantoGenericBuilding2;
+extern const struct Tileset gTileset_LegendsKantoLavenderTown;
+extern const struct Tileset gTileset_LegendsKantoMart;
+extern const struct Tileset gTileset_LegendsKantoMuseum;
+extern const struct Tileset gTileset_LegendsKantoPokemonCenterFrlg;
+extern const struct Tileset gTileset_LegendsKantoSafariZoneBuilding;
+#endif
+
 #endif //GUARD_tilesets_H

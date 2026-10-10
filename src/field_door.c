@@ -360,9 +360,32 @@ static const u8 sLegendsKantoSlidingPalettes[] = {3, 3, 3, 3, 3, 3, 3, 3};
 static const u8 sLegendsKantoVermilionPalettes[] = {9, 9, 9, 9, 9, 9, 9, 9};
 #endif
 
+#if !IS_FRLG
+static const u8 sDoorAnimTiles_Lavender_Legends[] = INCGFX_U8("graphics/door_anims/lavender.png", ".4bpp");
+static const u8 sDoorAnimPalettes_Lavender_Legends[] = {9, 9, 9, 9, 9, 9, 9, 9};
+static const u8 sDoorAnimTiles_Fuchsia_Legends[] = INCGFX_U8("graphics/door_anims/fuchsia.png", ".4bpp");
+static const u8 sDoorAnimPalettes_Fuchsia_Legends[] = {8, 8, 8, 8, 8, 8, 8, 8};
+#endif
+
 static const struct DoorGraphics sDoorAnimGraphicsTable[] =
 {
 #if !IS_FRLG
+    {
+        .metatileNum = METATILE_FuchsiaCity_Door,
+        .tileset = &gTileset_LegendsKantoFuchsiaCity,
+        .sound = DOOR_SOUND_NORMAL,
+        .size = DOOR_SIZE_1x1,
+        .tiles = sDoorAnimTiles_Fuchsia_Legends,
+        .palettes = sDoorAnimPalettes_Fuchsia_Legends
+    },
+    {
+        .metatileNum = METATILE_LavenderTown_Door,
+        .tileset = &gTileset_LegendsKantoLavenderTown,
+        .sound = DOOR_SOUND_NORMAL,
+        .size = DOOR_SIZE_1x1,
+        .tiles = sDoorAnimTiles_Lavender_Legends,
+        .palettes = sDoorAnimPalettes_Lavender_Legends
+    },
     {
         .metatileNum = METATILE_GeneralFrlg_Door,
         .tileset = &gTileset_LegendsKantoGeneral_Frlg,

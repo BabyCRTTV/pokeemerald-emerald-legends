@@ -1,0 +1,61 @@
+{
+  "id": "MAP_LEGENDS_KANTO_LAVENDER_TOWN_POKEMON_CENTER_2F",
+  "name": "LegendsKanto_LavenderTown_PokemonCenter_2F",
+  "layout": "LAYOUT_LEGENDS_KANTO_POKEMON_CENTER_1F_FRLG",
+  "music": "MUS_RG_POKE_CENTER",
+  "region": "REGION_HOENN",
+  "region_map_section": "MAPSEC_LAVENDER_TOWN",
+  "requires_flash": false,
+  "weather": "WEATHER_NONE",
+  "map_type": "MAP_TYPE_INDOOR",
+  "allow_cycling": false,
+  "allow_escaping": false,
+  "allow_running": false,
+  "show_map_name": false,
+  "floor_number": 0,
+  "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+  "connections": null,
+  "object_events": [],
+  "warp_events": [
+    {
+      "x": 1,
+      "y": 6,
+      "elevation": 4,
+      "dest_map": "MAP_LEGENDS_KANTO_LAVENDER_TOWN_POKEMON_CENTER_1F",
+      "dest_warp_id": "3"
+    },
+    {
+      "x": 5,
+      "y": 1,
+      "elevation": 0,
+      "dest_map": "MAP_LEGENDS_KANTO_LAVENDER_TOWN_POKEMON_CENTER_2F",
+      "dest_warp_id": "1"
+    },
+    {
+      "x": 9,
+      "y": 1,
+      "elevation": 0,
+      "dest_map": "MAP_LEGENDS_KANTO_LAVENDER_TOWN_POKEMON_CENTER_2F",
+      "dest_warp_id": "2"
+    }
+  ],
+  "coord_events": [],
+  "bg_events": [
+    {
+      "type": "sign",
+      "x": 5,
+      "y": 1,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "LegendsKanto_EventScript_FoundationClosed"
+    },
+    {
+      "type": "sign",
+      "x": 9,
+      "y": 1,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "LegendsKanto_EventScript_FoundationClosed"
+    }
+  ]
+}

@@ -1,0 +1,3 @@
+LegendsKanto_Route15_WestEntrance_2F_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, LegendsKanto_Foundation_OnTransition
+	.byte 0

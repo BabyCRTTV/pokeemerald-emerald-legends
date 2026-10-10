@@ -207,7 +207,53 @@
       "dest_warp_id": "0"
     }
   ],
-  "coord_events": [],
+  "coord_events": [
+    {
+      "type": "trigger",
+      "x": 20,
+      "y": 1,
+      "elevation": 1,
+      "var": "VAR_TEMP_F",
+      "var_value": "0",
+      "script": "LegendsKanto_EventScript_SurfOutbound"
+    },
+    {
+      "type": "trigger",
+      "x": 21,
+      "y": 1,
+      "elevation": 1,
+      "var": "VAR_TEMP_F",
+      "var_value": "0",
+      "script": "LegendsKanto_EventScript_SurfOutbound"
+    },
+    {
+      "type": "trigger",
+      "x": 22,
+      "y": 1,
+      "elevation": 1,
+      "var": "VAR_TEMP_F",
+      "var_value": "0",
+      "script": "LegendsKanto_EventScript_SurfOutbound"
+    },
+    {
+      "type": "trigger",
+      "x": 23,
+      "y": 1,
+      "elevation": 1,
+      "var": "VAR_TEMP_F",
+      "var_value": "0",
+      "script": "LegendsKanto_EventScript_SurfOutbound"
+    },
+    {
+      "type": "trigger",
+      "x": 24,
+      "y": 1,
+      "elevation": 1,
+      "var": "VAR_TEMP_F",
+      "var_value": "0",
+      "script": "LegendsKanto_EventScript_SurfOutbound"
+    }
+  ],
   "bg_events": [
     {
       "type": "sign",

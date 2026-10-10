@@ -1,0 +1,92 @@
+{
+  "id": "MAP_LEGENDS_KANTO_ROUTE19",
+  "name": "LegendsKanto_Route19",
+  "layout": "LAYOUT_LEGENDS_KANTO_ROUTE19",
+  "music": "MUS_RG_ROUTE3",
+  "region": "REGION_HOENN",
+  "region_map_section": "MAPSEC_ROUTE_19",
+  "requires_flash": false,
+  "weather": "WEATHER_SUNNY",
+  "map_type": "MAP_TYPE_ROUTE",
+  "allow_cycling": true,
+  "allow_escaping": false,
+  "allow_running": true,
+  "show_map_name": true,
+  "floor_number": 0,
+  "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+  "connections": [
+    {
+      "map": "MAP_LEGENDS_KANTO_FUCHSIA_CITY",
+      "offset": -12,
+      "direction": "up"
+    }
+  ],
+  "object_events": [],
+  "warp_events": [],
+  "coord_events": [
+    {
+      "type": "trigger",
+      "x": 10,
+      "y": 56,
+      "elevation": 1,
+      "var": "VAR_TEMP_F",
+      "var_value": "0",
+      "script": "LegendsKanto_EventScript_SurfReturn"
+    },
+    {
+      "type": "trigger",
+      "x": 11,
+      "y": 56,
+      "elevation": 1,
+      "var": "VAR_TEMP_F",
+      "var_value": "0",
+      "script": "LegendsKanto_EventScript_SurfReturn"
+    },
+    {
+      "type": "trigger",
+      "x": 12,
+      "y": 56,
+      "elevation": 1,
+      "var": "VAR_TEMP_F",
+      "var_value": "0",
+      "script": "LegendsKanto_EventScript_SurfReturn"
+    },
+    {
+      "type": "trigger",
+      "x": 13,
+      "y": 56,
+      "elevation": 1,
+      "var": "VAR_TEMP_F",
+      "var_value": "0",
+      "script": "LegendsKanto_EventScript_SurfReturn"
+    },
+    {
+      "type": "trigger",
+      "x": 14,
+      "y": 56,
+      "elevation": 1,
+      "var": "VAR_TEMP_F",
+      "var_value": "0",
+      "script": "LegendsKanto_EventScript_SurfReturn"
+    },
+    {
+      "type": "trigger",
+      "x": 15,
+      "y": 56,
+      "elevation": 1,
+      "var": "VAR_TEMP_F",
+      "var_value": "0",
+      "script": "LegendsKanto_EventScript_SurfReturn"
+    },
+    {
+      "type": "trigger",
+      "x": 16,
+      "y": 56,
+      "elevation": 1,
+      "var": "VAR_TEMP_F",
+      "var_value": "0",
+      "script": "LegendsKanto_EventScript_SurfReturn"
+    }
+  ],
+  "bg_events": []
+}
