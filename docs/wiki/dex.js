@@ -152,6 +152,7 @@
       shinyToggle.setAttribute("aria-pressed",String(shiny));
       shinyToggle.setAttribute("aria-label",(shiny?"Show normal ":"Show shiny ")+$("#toggle-entry").textContent);
       art.classList.toggle("is-shiny",shiny);
+      if(shiny)playShinySound();else stopCry();
       clearTimeout(shinyBurstTimer);
       thumb.querySelector(".shiny-sparkles")?.remove();
       if(shiny&&!window.matchMedia("(prefers-reduced-motion: reduce)").matches){
@@ -183,6 +184,13 @@
   document.addEventListener("error",event=>{if(event.target instanceof HTMLImageElement && event.target.closest(".thumb")){event.target.closest(".thumb").classList.add("fallback-only")}},true);
   let cryAudio=null,cryToken=0;
   function stopCry(){cryToken++;if(cryAudio){cryAudio.pause();cryAudio=null;}document.querySelectorAll('.cry-sprite.playing').forEach(b=>b.classList.remove('playing'));}
+  async function playShinySound(){
+    stopCry();const token=cryToken;
+    const audio=new Audio('shiny-encounter.wav');cryAudio=audio;audio.volume=.65;
+    audio.addEventListener('ended',()=>{if(token===cryToken)stopCry();},{once:true});
+    try{await audio.play();if(token===cryToken)$('#cry-status').textContent='Shiny encounter!';}
+    catch{if(token===cryToken){stopCry();$('#cry-status').textContent='Could not play the shiny sound. Tap Shiny off and on to try again.';}}
+  }
   async function playCry(id,button){
     if(!bySpecies.has(id))return;
     stopCry();const token=cryToken;

@@ -146,3 +146,22 @@
 @media(prefers-reduced-motion:reduce){.return-to-search.is-flying,.is-flying .rotom-arrow,.is-flying .rotom-companion{animation:none}}
 
 .walkthrough-shortcut{margin:14px 0 18px}.walkthrough-shortcut a{display:inline-block;font-weight:800;color:#fff;background:#694795;border:1px solid #694795;border-radius:12px;padding:9px 16px;text-decoration:none}.walkthrough-shortcut a:hover{background:#543579}.walkthrough-shortcut small{display:block;margin-top:3px;font-size:12px;color:#686079}
+
+/* Walkthrough reading and location shortcuts across browser and native wrappers. */
+.welcome .walkthrough-shortcut{margin:22px 0 26px;text-align:center}
+.walkthrough-shortcut a{min-height:44px;padding:11px 24px}
+.walkthrough-shortcut small{margin:9px auto 0;max-width:38ch;line-height:1.5}
+html.reading-walkthrough .wiki-mobile-nav{display:none!important}
+html.reading-walkthrough body{padding-bottom:24px}
+.walkthrough-navigation{padding:18px;margin:22px 0 28px;border:1px solid #dfd2ee;border-radius:15px;background:#faf6ff}
+.walkthrough-nav-heading{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:10px}
+.walkthrough-nav-heading label{font-weight:800;color:#563b82}
+.walkthrough-nav-heading a{font-size:13px;font-weight:700}
+.walkthrough-navigation select{width:100%;min-height:46px;padding:10px 12px;border:1px solid #cbb6e1;border-radius:10px;background:#fff;color:#392b4e;font:inherit;max-width:100%}
+.walkthrough-stops{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:14px}
+.walkthrough-stops a{display:flex;align-items:center;gap:10px;padding:13px;border:1px solid #e2d7ef;border-radius:11px;background:#fff;text-decoration:none;color:#51377e;min-width:0}
+.walkthrough-stops a:hover{background:#eee5fb;border-color:#b99ad9}
+.walkthrough-stops strong{display:block;font-size:14px}.walkthrough-stops small{display:block;margin-top:3px;line-height:1.4;color:#78658d;font-size:12px}
+.stop-number{display:grid;place-items:center;flex:none;width:26px;height:26px;border-radius:50%;background:#eee5fb;font-size:12px;font-weight:800}
+.reading-walkthrough .articlebody h2,.reading-walkthrough .articlebody h3{scroll-margin-top:95px}
+@media(max-width:580px){.walkthrough-navigation{padding:14px}.walkthrough-stops{grid-template-columns:1fr}.walkthrough-stops a{padding:11px 12px}.walkthrough-nav-heading label{font-size:14px}}
