@@ -63,5 +63,5 @@ dialog{border:0;padding:0;border-radius:19px;max-width:min(630px,calc(100vw - 26
 .portrait-ready .sprite-art.is-shiny{background-image:url("dex-portraits-shiny.webp")}
 .shiny-sparkles{position:absolute;inset:0;pointer-events:none}
 .shiny-sparkles i{position:absolute;left:50%;top:50%;width:16px;height:16px;margin:-8px;color:#ffe36f;text-shadow:0 0 3px #9f6a18;font-size:22px;font-style:normal;line-height:16px;opacity:0;animation:shiny-encounter .85s ease-out forwards;animation-delay:calc(var(--spark) * 18ms);transform:rotate(calc(var(--spark) * 45deg)) translateY(-25px)}
-@keyframes shiny-encounter{0%{opacity:0;transform:rotate(calc(var(--spark) * 45deg)) translateY(-18px) scale(.2)}25%{opacity:1}65%{opacity:1}100%{opacity:0;transform:rotate(calc(var(--spark) * 45deg + 65deg)) translateY(-60px) scale(.2)}}
+@keyframes shiny-encounter{0%{opacity:0;transform:rotate(calc(var(--spark) * 45deg)) translateY(-18px) scale(.2)}25%{opacity:1;transform:rotate(calc(var(--spark) * 45deg)) translateY(-38px) scale(1)}65%{opacity:1;transform:rotate(calc(var(--spark) * 45deg + 35deg)) translateY(-52px) scale(.9)}100%{opacity:0;transform:rotate(calc(var(--spark) * 45deg + 65deg)) translateY(-60px) scale(.2)}}
 @media(prefers-reduced-motion:reduce){.shiny-toggle:after,.shiny-sparkles i{animation:none}.shiny-toggle:after{display:none}}
