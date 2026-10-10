@@ -34,6 +34,8 @@ const settle=()=>new Promise(r=>setImmediate(r));
  w.click('category','all');assert.equal((w.get('content').innerHTML.match(/data-page=/g)||[]).length,articles.articles.length);
  const deep=boot('wiki.js',articles,'https://example.test/wiki/?category=Kanto%20postgame');await settle();assert.match(deep.get('content').innerHTML,/<h1>Kanto postgame/);
  const data=JSON.parse(fs.readFileSync(base+'dex-data.json'));
+ const portraits=JSON.parse(fs.readFileSync(base+'dex-portrait-sources.json'));assert.equal(portraits.sourceCommit,data.sourceCommit);assert.equal(portraits.count,data.species.length);
+ for(const [name,hash] of Object.entries(portraits.files))assert.equal(require('node:crypto').createHash('sha256').update(fs.readFileSync(base+name)).digest('hex'),hash,'portrait file integrity');
  const atlas={window:{}};vm.runInNewContext(fs.readFileSync(base+'dex-sprite-atlas.js','utf8'),atlas);
  assert.equal(atlas.window.LegendsSpriteAtlas.sourceCommit,data.sourceCommit);
  for(const p of data.species)assert(atlas.window.LegendsSpriteAtlas.icons[p.sprite],p.id+' missing from preloaded atlas');
