@@ -53,6 +53,26 @@ jobs:
           echo "ANDROID_HOME=$SDK_ROOT" >> "$GITHUB_ENV"
           "$SDKMANAGER" --sdk_root="$SDK_ROOT" "platforms;android-35" "build-tools;35.0.0"
 
+      - name: Verify published APK update identity
+        run: |
+          "$ANDROID_HOME/build-tools/35.0.0/apksigner" verify --verbose --print-certs docs/downloads/Emerald-Legends-Wiki.apk > /tmp/published-wiki-certificate.txt
+          "$ANDROID_HOME/build-tools/35.0.0/aapt" dump badging docs/downloads/Emerald-Legends-Wiki.apk > /tmp/published-wiki-badging.txt
+          python3 - <<'PY'
+          import hashlib,json,re
+          from pathlib import Path
+          manifest=json.loads(Path('docs/wiki/android-version.json').read_text())
+          apk=Path('docs/downloads/Emerald-Legends-Wiki.apk')
+          assert hashlib.sha256(apk.read_bytes()).hexdigest()==manifest['sha256']
+          certificate=Path('/tmp/published-wiki-certificate.txt').read_text()
+          fingerprint=re.search(r'Signer #1 certificate SHA-256 digest: ([0-9a-f]+)',certificate).group(1)
+          assert fingerprint==manifest['certificateSha256']
+          badging=Path('/tmp/published-wiki-badging.txt').read_text()
+          assert "name='com.babycrttv.emeraldlegendswiki'" in badging
+          assert "versionCode='"+str(manifest['versionCode'])+"'" in badging
+          assert "versionName='"+manifest['version']+"'" in badging
+          print('Published APK signature, package, version and checksum verified')
+          PY
+
       - name: Configure Gradle
         uses: gradle/actions/setup-gradle@v4
         with:
