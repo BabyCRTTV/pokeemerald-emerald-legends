@@ -30,6 +30,7 @@ jobs:
       - name: Check browser JavaScript
         run: |
           node --check docs/wiki/wiki.js
+          node --check docs/wiki/walkthrough-maps.js
           node --check docs/wiki/dex.js
           node --check docs/wiki/dex-sprites.js
           node --check docs/wiki/cry-forms.js

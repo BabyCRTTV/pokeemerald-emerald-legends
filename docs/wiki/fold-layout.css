@@ -165,3 +165,20 @@ html.reading-walkthrough body{padding-bottom:24px}
 .stop-number{display:grid;place-items:center;flex:none;width:26px;height:26px;border-radius:50%;background:#eee5fb;font-size:12px;font-weight:800}
 .reading-walkthrough .articlebody h2,.reading-walkthrough .articlebody h3{scroll-margin-top:95px}
 @media(max-width:580px){.walkthrough-navigation{padding:14px}.walkthrough-stops{grid-template-columns:1fr}.walkthrough-stops a{padding:11px 12px}.walkthrough-nav-heading label{font-size:14px}}
+
+/* Inline walkthrough field guides: original region map and the shared encounter snapshot. */
+.walkthrough-field-guide{padding:17px;margin:24px 0 28px;border:1px solid #d9c9ec;border-radius:15px;background:#faf7ff}
+.walkthrough-map{margin:0}.walkthrough-map figcaption{font-size:14px;line-height:1.5;font-weight:800;color:#563b82;margin-bottom:10px}
+.walkthrough-map svg{display:block;width:100%;max-width:448px;height:auto;image-rendering:pixelated;border:1px solid #d4c4e7;border-radius:8px;background:#9ccde4;margin:auto}
+.walkthrough-map-highlight{fill:#ffdf5680;stroke:#69399b;stroke-width:1.1}
+.article .walkthrough-map-key{font-size:12px;line-height:1.5;color:#655273;margin:9px 0}.walkthrough-map-key>span{display:inline-block;width:10px;height:10px;background:#ffdf56;border:1px solid #69399b;margin-right:3px}
+.article .walkthrough-field-note{font-size:13px;line-height:1.6;margin:12px 0}.article .walkthrough-encounter-note{font-size:12px;color:#78658c;line-height:1.5;margin:14px 0}
+.walkthrough-route{border:1px solid #e1d5ee;border-radius:12px;overflow:hidden;margin-top:12px;background:#fff}
+.walkthrough-route-heading{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;padding:12px;background:#eee5fa;color:#563b82;font-size:14px}.walkthrough-route-heading a{font-size:12px;font-weight:700}
+.walkthrough-method{padding:12px}.walkthrough-method>strong{font-size:12px;color:#78658c}
+.article .walkthrough-method ul{padding:0;margin:8px 0 0;list-style:none;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.article .walkthrough-method li{margin:0;display:flex;align-items:center;justify-content:space-between;gap:5px;padding:7px 9px;border:1px solid #eee7f6;border-radius:9px;min-width:0}
+.walkthrough-method li a{display:flex;align-items:center;gap:8px;min-width:0;text-decoration:none}.walkthrough-method li strong{font-size:13px;overflow-wrap:anywhere;display:block}.walkthrough-method li small{display:block;font-size:11px;color:#837399}.walkthrough-rate{font-size:12px;font-weight:800;color:#69448e;flex:none}
+.walkthrough-pokemon-icon{display:block;flex:none;width:40px;height:40px;background-image:url('dex-sprite-atlas.webp');background-size:1280px 1320px;background-position:calc(var(--icon-x) * 40px) calc(var(--icon-y) * 40px);image-rendering:pixelated}
+.walkthrough-later{border-top:1px solid #eee7f6}.walkthrough-later summary{padding:12px;font-size:12px;color:#69448e;font-weight:800;cursor:pointer}.article .walkthrough-later>p{padding:0 12px;font-size:12px;color:#78658c}
+@media(max-width:580px){.walkthrough-field-guide{padding:12px}.article .walkthrough-method ul{grid-template-columns:1fr}.walkthrough-map figcaption{font-size:13px}}
