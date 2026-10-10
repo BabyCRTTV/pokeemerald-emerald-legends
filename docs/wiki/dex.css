@@ -43,7 +43,7 @@ dialog{border:0;padding:0;border-radius:19px;max-width:min(630px,calc(100vw - 26
 
 .profile-name{border:0;padding:0;background:transparent;color:inherit;font:inherit;text-align:left;cursor:pointer}
 .rotom-tip{display:flex;align-items:center;gap:6px;margin:10px 0 0;color:#79628b;font-size:11px;line-height:1.4}
-.rotom-tip svg{width:28px;height:28px;flex:none}
+.rotom-tip img{width:32px;height:32px;object-fit:contain;flex:none}
 .pokedex-entry{margin:0 0 24px;padding:14px;border:1px solid #ded0ed;border-radius:12px;background:#faf6ff;color:var(--ink);line-height:1.6}
 .pokedex-entry p{margin:6px 0 0;font-size:14px}
 .encounter-maps{margin-top:28px}.encounter-maps>p{font-size:12px;color:var(--muted)}
