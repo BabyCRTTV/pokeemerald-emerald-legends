@@ -43,8 +43,11 @@ typedef u32 bool32;
 struct SiiRtcInfo {u8 year, month, day;};
 struct SaveBlock2 {u16 playTimeHours; u8 playTimeMinutes, playTimeSeconds, playTimeVBlanks;};
 extern struct SaveBlock2 *gSaveBlock2Ptr;
-struct MapHeader {u8 mapType; u16 regionMapSectionId; u8 weather; void *mapLayout;};
+struct Tileset {u8 unused;};
+struct MapLayout {const struct Tileset *primaryTileset;};
+struct MapHeader {u8 mapType; u16 regionMapSectionId; u8 weather; const struct MapLayout *mapLayout;};
 extern struct MapHeader gMapHeader;
+extern const struct Tileset gTileset_LegendsKantoGeneral_Frlg;
 struct Weather {u8 palProcessingState; s8 colorMapIndex;};
 extern struct Weather *gWeatherPtr;
 struct PaletteFade {u8 active;};
@@ -77,6 +80,7 @@ void LegendsAdvanceWeatherClock(void) {}
 struct SaveBlock2 save;
 struct SaveBlock2 *gSaveBlock2Ptr = &save;
 struct MapHeader gMapHeader;
+const struct Tileset gTileset_LegendsKantoGeneral_Frlg = {0};
 struct Weather weather;
 struct Weather *gWeatherPtr = &weather;
 struct PaletteFade gPaletteFade;
@@ -173,6 +177,23 @@ int main(void)
         assert(gPlttBufferUnfaded[13*16] == green && gPlttBufferUnfaded[256] == green);
         assert(gPlttBufferUnfaded[35] != green && gPlttBufferUnfaded[35] < 0x8000);
     }
+    // Kanto keeps its foliage in slot zero; Hoenn's protected slot stays native.
+    const struct MapLayout kantoLayout = {&gTileset_LegendsKantoGeneral_Frlg};
+    gMapHeader.mapLayout = &kantoLayout;
+    assert(LegendsMapHasSeasonalPaletteZero());
+    for (u32 season = 0; season < 4; season++) {
+        setSeconds(season * LEGENDS_SEASON_SECONDS); LegendsCommitSeasonTransition();
+        for (u32 i = 0; i < 512; i++) gPlttBufferUnfaded[i] = green;
+        gPlttBufferUnfaded[2] = blue; gPlttBufferUnfaded[3] = gray;
+        LegendsApplySeasonPalette(0, 512);
+        assert(gPlttBufferUnfaded[0] == green && gPlttBufferUnfaded[16] == green);
+        assert(gPlttBufferUnfaded[1] == LegendsSeasonVegetationColor(green, season));
+        assert(gPlttBufferUnfaded[2] == blue && gPlttBufferUnfaded[3] == gray);
+        assert(gPlttBufferUnfaded[13*16] == green && gPlttBufferUnfaded[256] == green);
+    }
+    gMapHeader.mapType = MAP_TYPE_INDOOR;
+    assert(!LegendsMapHasSeasonalPaletteZero());
+    gMapHeader.mapType = MAP_TYPE_ROUTE;gMapHeader.mapLayout = NULL;
     // Full RGB555 domain always stays in range.
     for (u32 color = 0; color < 32768; color++) {gPlttBufferUnfaded[35] = color; LegendsApplySeasonPalette(35, 1); assert(gPlttBufferUnfaded[35] < 32768);}
     VarSet(VAR_LEGENDS_BASE_WEATHER, 0x100 + WEATHER_ABNORMAL);

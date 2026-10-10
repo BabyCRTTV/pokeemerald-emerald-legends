@@ -1806,8 +1806,10 @@ void UpdateAltBgPalettes(u16 palettes)
     u32 primaryCount = GetNumPalsInPrimary(gMapHeader.mapLayout);
     if (!MapHasNaturalLight(gMapHeader.mapType))
         return;
-    palettes &= PALETTES_MAP ^ (1 << 0);
-    for (i = 1; i < NUM_PALS_TOTAL; i++)
+    palettes &= PALETTES_MAP;
+    if (!LegendsMapHasSeasonalPaletteZero())
+        palettes &= ~(1 << 0);
+    for (i = 0; i < NUM_PALS_TOTAL; i++)
     {
         const struct Tileset *tileset = i < primaryCount ? primary : secondary;
         const u16 *source;

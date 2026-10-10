@@ -4,6 +4,22 @@ All notable Pokémon Emerald: Legends project changes are documented here.
 
 For build-specific player views, see [CHANGELOG-RELEASE.md](CHANGELOG-RELEASE.md) and [CHANGELOG-DEBUG.md](CHANGELOG-DEBUG.md). The canonical history below records the project as a whole.
 
+## [0.0.30] - 2026-10-10
+
+### Added
+- Dynamic Kanto outdoor weather using the existing 20-minute playtime forecast clock and native rain, storm, fog and snow transitions. Inland, coast and upland profiles vary by active season; morning/night have more fog. Coastal Kanto never receives random snow.
+
+### Fixed
+- Hoenn and Kanto grass, long-grass and ordinary outdoor plain battle backgrounds now follow the visible overworld season, including intro foliage and background restoration after move animations. Autumn uses amber foliage and winter uses frosted tones.
+- Kanto overworld grass and trees now receive seasonal colors in their native FRLG palette slot zero. Day/night rebuilds retain the seasonal treatment; Hoenn's slot zero, transparent colors, blue water, character and UI palettes remain protected.
+
+### Compatibility and validation
+- Reuses existing saved season/weather state and native battle environments; no save layout, battle terrain, move effects or progression changes. Caves, water, sand, special backgrounds, facilities, linked/recorded and legendary battles retain native art. Explicit story weather and indoor maps remain protected.
+- Actual-C checks cover all seasonal forecast weights, Kanto route coverage, weather transition guards, battle palette loading/reloading, special exclusions and Kanto slot-zero/day-night rebuilding. Native-art battle preview inspected; manual emulator testing remains outstanding. Debug/Release builds and verified BPS publishing use the established workflow.
+
+### Build variants
+- Shared weather, foliage and battle-scene changes in Release and Debug. No variant-specific gameplay differences; Debug retains developer conveniences.
+
 ## [0.0.29] - 2026-10-10
 
 ### Added

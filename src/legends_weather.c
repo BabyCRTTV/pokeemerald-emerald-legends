@@ -15,9 +15,19 @@
 #include "constants/vars.h"
 #include "constants/weather.h"
 
-// Climate is separate from the foliage exclusions. Use explicit Hoenn areas;
+// Climate is separate from the foliage exclusions. Use explicit regional areas;
 // caves, event islands, Frontier facilities and unconfigured regions stay native.
-enum Climate { CLIMATE_PROTECTED, CLIMATE_LOWLAND, CLIMATE_COAST, CLIMATE_WET, CLIMATE_UPLAND, CLIMATE_WOODS };
+enum Climate { CLIMATE_PROTECTED, CLIMATE_LOWLAND, CLIMATE_COAST, CLIMATE_WET, CLIMATE_UPLAND, CLIMATE_WOODS,
+    CLIMATE_KANTO_INLAND, CLIMATE_KANTO_COAST, CLIMATE_KANTO_UPLAND };
+
+struct ForecastWeights { u8 rain, thunder, fog, snow; };
+// Spring, summer, autumn, winter. Clear weather fills each row's remainder.
+static const struct ForecastWeights sKantoForecasts[][LEGENDS_SEASON_COUNT] =
+{
+    {{30, 2, 5, 0}, {20, 5, 0, 0}, {25, 1, 8, 0}, {12, 0, 6, 15}},
+    {{28, 2, 3, 0}, {22, 6, 0, 0}, {30, 2, 5, 0}, {18, 0, 5, 0}},
+    {{25, 2, 8, 0}, {18, 4, 4, 0}, {25, 1, 12, 0}, {8, 0, 10, 30}},
+};
 
 static u8 GetClimate(void)
 {
@@ -27,6 +37,19 @@ static u8 GetClimate(void)
         return CLIMATE_PROTECTED;
     switch (section)
     {
+    case MAPSEC_PALLET_TOWN: case MAPSEC_VERMILION_CITY:
+    case MAPSEC_FUCHSIA_CITY: case MAPSEC_CINNABAR_ISLAND:
+    case MAPSEC_ROUTE_11: case MAPSEC_ROUTE_12: case MAPSEC_ROUTE_13:
+    case MAPSEC_ROUTE_14: case MAPSEC_ROUTE_15:
+    case MAPSEC_ROUTE_19: case MAPSEC_ROUTE_20: case MAPSEC_ROUTE_21:
+        return CLIMATE_KANTO_COAST;
+    case MAPSEC_ROUTE_3: case MAPSEC_ROUTE_4: case MAPSEC_ROUTE_9:
+    case MAPSEC_ROUTE_10: case MAPSEC_ROUTE_22: case MAPSEC_ROUTE_23:
+    case MAPSEC_INDIGO_PLATEAU:
+        return CLIMATE_KANTO_UPLAND;
+    case MAPSEC_VIRIDIAN_CITY: case MAPSEC_PEWTER_CITY: case MAPSEC_CERULEAN_CITY:
+    case MAPSEC_LAVENDER_TOWN: case MAPSEC_CELADON_CITY: case MAPSEC_SAFFRON_CITY:
+        return CLIMATE_KANTO_INLAND;
     case MAPSEC_MT_CHIMNEY: case MAPSEC_JAGGED_PASS: case MAPSEC_FIERY_PATH:
     case MAPSEC_LAVARIDGE_TOWN: case MAPSEC_FALLARBOR_TOWN:
     case MAPSEC_ROUTE_111: case MAPSEC_ROUTE_112: case MAPSEC_ROUTE_113:
@@ -45,6 +68,8 @@ static u8 GetClimate(void)
     case MAPSEC_RUSTBORO_CITY: case MAPSEC_MAUVILLE_CITY: case MAPSEC_VERDANTURF_TOWN:
         return CLIMATE_LOWLAND;
     default:
+        if (section >= MAPSEC_ROUTE_1 && section <= MAPSEC_ROUTE_25)
+            return gMapHeader.mapType == MAP_TYPE_OCEAN_ROUTE ? CLIMATE_KANTO_COAST : CLIMATE_KANTO_INLAND;
         if (section >= MAPSEC_ROUTE_101 && section <= MAPSEC_ROUTE_134)
             return gMapHeader.mapType == MAP_TYPE_OCEAN_ROUTE ? CLIMATE_COAST : CLIMATE_LOWLAND;
         return CLIMATE_PROTECTED;
@@ -111,11 +136,21 @@ u8 LegendsChooseAmbientWeather(u8 weather)
             thunder = 0;
         }
     }
+    else if (climate >= CLIMATE_KANTO_INLAND)
+    {
+        const struct ForecastWeights *weights = &sKantoForecasts[climate - CLIMATE_KANTO_INLAND][season];
+        rain = weights->rain;
+        thunder = weights->thunder;
+        fog = weights->fog;
+        snow = weights->snow;
+    }
     timeOfDay = GetTimeOfDay();
     if (timeOfDay == TIME_MORNING || timeOfDay == TIME_NIGHT)
     {
         if (climate == CLIMATE_WET || climate == CLIMATE_UPLAND)
             fog += 8;
+        else if (climate >= CLIMATE_KANTO_INLAND)
+            fog += 5;
     }
     if (roll < snow) return WEATHER_SNOW;
     roll -= snow;
