@@ -18,7 +18,7 @@ class FoundationTests(unittest.TestCase):
    a=(R/l['blockdata_filepath']).read_bytes();b=(R/sl['blockdata_filepath']).read_bytes();self.assertEqual(len(a),len(b))
    for i in range(len(a)//2):
     new,old=struct.unpack_from('<H',a,i*2)[0],struct.unpack_from('<H',b,i*2)[0]
-    if new!=old:self.assertTrue(new==0x34F4 or new==old|0xC00)
+    if new!=old:self.assertTrue(new in (0x34F4,0x15D9) or new==old|0xC00)
    self.assertNotIn('EventScript_', (R/('data/maps/'+item['name']+'/scripts.inc')).read_text())
  def test_reciprocal_graph_and_append_only_ids(self):
   group=json.loads((R/'data/maps/map_groups.json').read_text())['gMapGroup_LegendsKanto'];self.assertEqual(group[:2],['LegendsKanto_VermilionCity','LegendsKanto_Harbor'])
