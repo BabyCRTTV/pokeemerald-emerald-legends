@@ -89,3 +89,18 @@ Static native layout renders were inspected for the two Gym rooms, Route 7 and t
 4. Check Surge's barrier opens every load and Koga's maze leads to his original position. Battle teams need human balance testing; listed levels and script-path tests alone do not establish difficulty quality.
 5. Start the survey before and after one/both victories. Complete them in both orders. Verify the report occurs once and the development endpoint is clearly stated.
 6. Confirm existing ferry and Surf travel, invitation retention, respawn and return travel still work. Keep all commercial base ROMs and compiled ROMs private; publish only verified BPS patches/checksums.
+
+## Recorded v0.0.28 validation — 2026-10-10
+
+- Merged [PR #22](https://github.com/BabyCRTTV/pokeemerald-emerald-legends/pull/22); game-source merge revision `5ba144564a257916d219ea1edc2cdd9c96a240d7`.
+- [Master build and patch verification](https://github.com/BabyCRTTV/pokeemerald-emerald-legends/actions/runs/38015949961) completed successfully: Debug and Release compile, independently built vanilla Emerald with SHA-1 `f3ae088181bf583e55daf962a92bb46f4f1d07b7`, both BPS reapplications and both byte-for-byte comparisons. Only verified BPS files/checksums were published by the workflow.
+- [Master project checks](https://github.com/BabyCRTTV/pokeemerald-emerald-legends/actions/runs/38015949962) completed successfully. Local native mapjson generation and trainer parsing also passed. The native font widths of both region names fit the banner's text area.
+- New Centers heal the party; Kanto map transitions retain the established Vermilion respawn base. New city Fly/blackout destinations are not registered in this chapter.
+- Manual emulator traversal, healing animations, map-screen visual review and battle balance testing remain outstanding. Automated builds, script mocks and static renders do not establish those results.
+
+Published BPS SHA-256 values:
+
+```text
+0dad8b3dc8d7156b06f5d3efb733437df49c5e0eb03dab3e50e478a95cf40674  docs/downloads/Pokemon-Emerald-Legends-v0.0.28.bps
+a3ce95842074d1af265011fb5fc2ad80b1ef7b8fd6e5ef69ea95c9c2b001fe18  docs/downloads/Pokemon-Emerald-Legends-v0.0.28-debug.bps
+```
