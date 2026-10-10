@@ -7,12 +7,14 @@ on:
       - 'docs/wiki/**'
       - '.github/workflows/wiki-checks.yml'
       - 'test/legends-wiki-reader.test.cjs'
+      - 'test/legends-wiki-browser.test.cjs'
   pull_request:
     branches: [master]
     paths:
       - 'docs/wiki/**'
       - '.github/workflows/wiki-checks.yml'
       - 'test/legends-wiki-reader.test.cjs'
+      - 'test/legends-wiki-browser.test.cjs'
   workflow_dispatch:
 
 permissions:
@@ -69,3 +71,18 @@ jobs:
           assert 'dex.html' in (base/'index.html').read_text()
           print(f"Verified {len(wiki['articles'])} wiki articles, {len(data['species'])} species, {len(maps)} maps, {count} weighted encounter tables")
           PY
+
+      - name: Install browser test runtime
+        run: |
+          npm install --prefix "$RUNNER_TEMP/wiki-browser" --no-save playwright
+          node "$RUNNER_TEMP/wiki-browser/node_modules/playwright/cli.js" install --with-deps chromium
+      - name: Check folded, unfolded and desktop reader layouts
+        run: |
+          python3 -m http.server 8765 --directory docs > /tmp/wiki-server.log 2>&1 &
+          WIKI_PLAYWRIGHT="$RUNNER_TEMP/wiki-browser/node_modules/playwright" node test/legends-wiki-browser.test.cjs
+      - name: Save reader screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: wiki-reader-previews
+          path: wiki-preview/
