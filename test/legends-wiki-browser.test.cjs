@@ -33,6 +33,8 @@ const assert=require('node:assert/strict'),fs=require('node:fs');
   if(width===412){await page.setViewportSize({width:690,height:800});assert.equal(await page.locator('#type').inputValue(),'FIRE');await noOverflow();}
   await page.goto('http://127.0.0.1:8765/wiki/dex.html?view=routes');await page.locator('.route-card').first().waitFor();await noOverflow();
   await page.screenshot({path:`wiki-preview/routes-${width}.png`,fullPage:false});
+  await page.locator('#method').selectOption('surf');await page.locator('[data-view="species"]').click();await page.locator('#type').selectOption('all');
+  assert((await page.locator('#results-count').innerText()).startsWith('1026 '),'hidden route method must not filter the National Dex');
   assert.equal(await page.locator('.hero').evaluate(e=>getComputedStyle(e,'::before').content),'none');
   assert.deepEqual(errors,[]);await context.close();
  }

@@ -14,9 +14,9 @@
   function speciesListRows(){
     let visible=data.species.filter(p=>{
       let hitsQuery=!query||p.name.toLowerCase().includes(query)||String(p.num??"").padStart(4,"0").includes(query)||p.id.toLowerCase().replaceAll("_"," ").includes(query);
-      let matched=(pokemonMap.get(p.id)||[]).filter(loc=>(region==="all"||loc.region===region)&&(method==="all"||method===loc.method));
+      let matched=(pokemonMap.get(p.id)||[]).filter(loc=>region==="all"||loc.region===region);
       let hasAny=(pokemonMap.get(p.id)||[]).length>0;
-      return hitsQuery&& (type==="all"||p.types.includes(type)) && (availability==="all"||(availability==="wild"&&matched.length>0)||(availability==="unknown"&&!hasAny)) && (region==="all"||matched.length>0||availability==="unknown") && (method==="all"||matched.length>0||availability==="unknown");
+      return hitsQuery&& (type==="all"||p.types.includes(type)) && (availability==="all"||(availability==="wild"&&matched.length>0)||(availability==="unknown"&&!hasAny)) && (region==="all"||matched.length>0||availability==="unknown");
     });
     return visible;
   }
