@@ -1,6 +1,7 @@
 package com.babycrttv.emeraldlegendswiki;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.graphics.Color;
@@ -20,6 +21,11 @@ import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import org.json.JSONObject;
 
 /**
  * Minimal site companion, not a game launcher or a ROM patcher.
@@ -28,6 +34,7 @@ import android.widget.Toast;
 public final class MainActivity extends Activity {
     private static final String HOME = "https://babycrttv.github.io/pokeemerald-emerald-legends/wiki/";
     private static final String TRUSTED_HOST = "babycrttv.github.io";
+    private static final String UPDATE_MANIFEST = "https://babycrttv.github.io/pokeemerald-emerald-legends/wiki/android-version.json";
     private static final String TRUSTED_PATH = "/pokeemerald-emerald-legends/wiki/";
     private WebView browser;
     private FrameLayout browserContainer;
@@ -86,11 +93,14 @@ public final class MainActivity extends Activity {
         brand.setGravity(Gravity.CENTER_VERTICAL);
 
         Button home = makeButton("⌂ Home", "Open wiki home");
-        Button reload = makeButton("↻ Refresh", "Reload current article");
+        Button reload = makeButton("↻", "Reload current article");
+        Button update = makeButton("↑ Update", "Check for an updated wiki app");
         home.setOnClickListener(v -> { hideOffline(); browser.loadUrl(HOME); });
         reload.setOnClickListener(v -> { hideOffline(); browser.reload(); });
+        update.setOnClickListener(v -> checkForUpdates());
         top.addView(home, new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, dp(52)));
         top.addView(reload, new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, dp(52)));
+        top.addView(update, new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, dp(52)));
         layout.addView(top);
 
         browserContainer = new FrameLayout(this);
@@ -137,9 +147,72 @@ public final class MainActivity extends Activity {
         }
     }
 
+    private long installedVersionCode() {
+        try {
+            android.content.pm.PackageInfo info = getPackageManager().getPackageInfo(getPackageName(), 0);
+            return Build.VERSION.SDK_INT >= 28 ? info.getLongVersionCode() : info.versionCode;
+        } catch (Exception ignored) {
+            return 1;
+        }
+    }
+
+    private void checkForUpdates() {
+        Toast.makeText(this, "Checking for wiki updates…", Toast.LENGTH_SHORT).show();
+        new Thread(() -> {
+            HttpURLConnection connection = null;
+            try {
+                URL manifest = new URL(UPDATE_MANIFEST + "?t=" + System.currentTimeMillis());
+                connection = (HttpURLConnection)manifest.openConnection();
+                connection.setConnectTimeout(8000);
+                connection.setReadTimeout(8000);
+                connection.setUseCaches(false);
+                if (connection.getResponseCode() != 200)
+                    throw new IllegalStateException("Update service unavailable");
+                StringBuilder body = new StringBuilder();
+                try (BufferedReader br = new BufferedReader(
+                        new InputStreamReader(connection.getInputStream(), "UTF-8"))) {
+                    String line;
+                    while ((line = br.readLine()) != null) body.append(line);
+                }
+                JSONObject release = new JSONObject(body.toString());
+                final long latest = release.getLong("versionCode");
+                final String version = release.getString("version");
+                final String link = release.getString("url");
+                final boolean temporarySignature =
+                    "ephemeral-debug".equals(release.optString("signing"));
+                runOnUiThread(() -> {
+                    if (latest <= installedVersionCode()) {
+                        new AlertDialog.Builder(this).setTitle("Wiki is up to date")
+                                .setMessage("You're using the latest Legends Wiki app (" + version + "). No update is needed.")
+                                .setPositiveButton("OK", null).show();
+                    } else {
+                        String warning = temporarySignature
+                            ? "\n\nNote: This APK uses a temporary signing key. Android may require uninstalling an older build before installation."
+                            : "";
+                        new AlertDialog.Builder(this).setTitle("Wiki update available")
+                                .setMessage("Latest version: " + version +
+                                        "\nYour installed build: " + installedVersionCode() +
+                                        "\n\nDownload the newest APK? Android will ask you to approve installation." + warning)
+                                .setNegativeButton("Later", null)
+                                .setPositiveButton("Download", (d,w) -> openExternal(Uri.parse(link)))
+                                .show();
+                    }
+                });
+            } catch (Exception error) {
+                runOnUiThread(() -> new AlertDialog.Builder(this)
+                        .setTitle("Can't check for updates")
+                        .setMessage("Check your connection and try again. No changes were installed.")
+                        .setPositiveButton("OK", null).show());
+            } finally {
+                if (connection != null) connection.disconnect();
+            }
+        }).start();
+    }
+
     private void setupBrowser() {
         WebSettings settings = browser.getSettings();
         settings.setJavaScriptEnabled(true);
+        settings.setUserAgentString(settings.getUserAgentString() + " LegendsWikiAndroid/" + installedVersionCode());
         settings.setDomStorageEnabled(true);
         settings.setAllowFileAccess(false);
         settings.setAllowContentAccess(false);
