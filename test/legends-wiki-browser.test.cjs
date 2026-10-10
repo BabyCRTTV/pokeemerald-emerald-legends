@@ -110,6 +110,13 @@ const assert=require('node:assert/strict'),fs=require('node:fs');
   await page.locator('#method').selectOption('surf');await page.locator('[data-view="species"]').click();await page.locator('#type').selectOption('all');
   assert((await page.locator('#results-count').innerText()).startsWith('1026 '),'hidden route method must not filter the National Dex');
   assert.equal(await page.locator('.hero').evaluate(e=>getComputedStyle(e,'::before').content),'none');
+  if(width===412){
+    await page.goto('http://127.0.0.1:8765/wiki/dex.html?pokemon=rattata');
+    await page.locator('#detail').waitFor();
+    assert.equal(await page.locator('#detail').evaluate(e=>e.scrollTop),0,'deep-linked profile opens at the top');
+    assert((await page.locator('.encounter-map figcaption').allTextContents()).includes('Kanto'));
+    assert.equal(await page.locator('#detail').evaluate(e=>e.scrollWidth<=e.clientWidth+1),true,'profile must not overflow horizontally');
+  }
   assert.deepEqual(errors,[]);await context.close();
  }
  await browser.close();console.log('PASS: browser navigation, search, cries, profile controls, types and overflow at 360/412/690/768/1280px, plus live fold-size change');
