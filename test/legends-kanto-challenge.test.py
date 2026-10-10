@@ -1,5 +1,5 @@
 """Exercise actual challenge event branches, persistence and playable geometry."""
-import json,re,struct,unittest
+import json,re,struct,unittest,subprocess
 from pathlib import Path
 R=Path(__file__).resolve().parents[1]
 source=(R/'data/scripts/legends_kanto_challenge.inc').read_text();labels={};commands=[]
@@ -61,6 +61,9 @@ class ChallengeTests(unittest.TestCase):
    for c in d['coord_events']:self.assertFalse(block(c['x'],c['y'])&0xC00)
    self.assertEqual(d['object_events'][0]['graphics_id'],'OBJ_EVENT_GFX_LT_SURGE' if gym=='Surge' else 'OBJ_EVENT_GFX_KOGA')
    for o in d['object_events']:self.assertFalse(block(o['x'],o['y'])&0xC00,(name,o))
+ def test_gym_raw_graphics_visible_to_emerald(self):
+  active=subprocess.check_output(['cpp','-P','-DIS_FRLG=0',str(R/'src/data/object_events/object_event_graphics.h')],text=True)
+  for name in ('LtSurge','Koga','GymGuy'):self.assertIn('const u16 gObjectEventPic_'+name+'[]',active)
  def test_unique_layouts_and_emerald_script_includes(self):
   layouts=json.loads((R/'data/layouts/layouts.json').read_text())['layouts'];self.assertEqual(len(layouts),len({l['id'] for l in layouts}))
   includes=(R/'data/event_scripts.s').read_text()
