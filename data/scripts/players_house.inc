@@ -43,12 +43,16 @@ PlayersHouse_1F_EventScript_MomGoSeeRoom::
 LittlerootTown_BrendansHouse_2F_EventScript_WallClock::
 	lockall
 	setvar VAR_0x8004, MALE
+	checkplayergender
+	goto_if_eq VAR_RESULT, FEMALE, PlayersHouse_2F_EventScript_ViewNeighborClock
 	goto PlayersHouse_2F_EventScript_WallClock
 	end
 
 LittlerootTown_MaysHouse_2F_EventScript_WallClock::
 	lockall
 	setvar VAR_0x8004, FEMALE
+	checkplayergender
+	goto_if_eq VAR_RESULT, MALE, PlayersHouse_2F_EventScript_ViewNeighborClock
 	goto PlayersHouse_2F_EventScript_WallClock
 	end
 
@@ -94,6 +98,13 @@ PlayersHouse_2F_EventScript_MomComesUpstairsFemale::
 	applymovement VAR_0x8008, PlayersHouse_2F_Movement_MomExitsFemale
 	waitmovement 0
 	return
+
+PlayersHouse_2F_EventScript_ViewNeighborClock::
+    incrementgamestat GAME_STAT_CHECKED_CLOCK
+    fadescreen FADE_TO_BLACK
+    special Special_ViewWallClock
+    releaseall
+    end
 
 PlayersHouse_2F_EventScript_CheckWallClock::
 	incrementgamestat GAME_STAT_CHECKED_CLOCK

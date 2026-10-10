@@ -13,7 +13,7 @@ This is the player-facing history for the recommended **Release** build. Shared 
 ### Changed and fixed
 - DexNav Pokémon no longer flee when approached by walking, running or cycling; search timeout increases from 15 to 45 seconds. Cancellation, out-of-range signal loss and battle initiation retain native behavior.
 - The pause clock continues polling once per second and redraws on minute rollover, including the fallback clock. Opening the pause menu does not stop the underlying RTC or playtime clock.
-- The introductory bedroom clock confirms the current time instead of resetting it. Manual adjustment is confined to the bedroom clock in normal gameplay. Invalid RTC months and out-of-range hours/minutes/seconds are rejected safely.
+- The introductory bedroom clock confirms the current time instead of resetting it. Manual adjustment is confined to your own bedroom clock in normal gameplay; the rival’s clock remains view-only. Invalid RTC months and out-of-range hours/minutes/seconds are rejected safely.
 
 ### Compatibility and validation
 - Existing saves keep their original footwear/card color until changed; outfits, skin tones, scarves and jackets remain supported. Native Team Magma/Aqua costumes keep fixed footwear, as they do fixed accessories. No save layout or link-protocol changes; settings use verified-unreferenced native variable slots.

@@ -102,3 +102,28 @@ rtc=(root/'src/rtc.c').read_text()
 assert 'RtcGetInfo(&sRtc); // Native calendar accessors' in rtc and 'LegendsClockCalcLocalTime();' in rtc
 assert 'LegendsClockTick();' in (root/'src/play_time.c').read_text().split('if (sPlayTimeCounterState == MAXED_OUT)')[0]
 assert 'LegendsUpdateStartMenuPanel();' in (root/'src/start_menu.c').read_text()
+
+# Execute the actual room-entry branches for both genders and old/new saves.
+labels={};current=None
+for line in scripts.splitlines():
+ line=line.strip()
+ if line.endswith('::'):
+  current=line[:-2];labels[current]=[]
+ elif current and line and not line.startswith('.'):labels[current].append(line)
+def room_action(entry,gender,clock_set):
+ values={'MALE':0,'FEMALE':1,'VAR_RESULT':gender};label=entry;pc=0
+ for _ in range(50):
+  line=labels[label][pc];pc+=1;op,_,args=line.partition(' ')
+  parts=[v.strip() for v in args.split(',')]
+  if op=='checkplayergender':values['VAR_RESULT']=gender
+  elif op=='setvar':values[parts[0]]=values[parts[1]]
+  elif op=='goto':label=args;pc=0
+  elif op=='goto_if_eq' and values[parts[0]]==values[parts[1]]:label=parts[2];pc=0
+  elif op=='goto_if_set' and clock_set:label=parts[1];pc=0
+  elif op=='call' and args=='PlayersHouse_2F_EventScript_ChooseClockMode':return 'choose'
+  elif op=='special' and args=='Special_ViewWallClock':return 'view'
+ raise AssertionError('Room clock did not reach a terminal action')
+for gender in (0,1):
+ for owner,name in enumerate(('Brendans','Mays')):
+  for clock_set in (False,True):
+   assert room_action(f'LittlerootTown_{name}House_2F_EventScript_WallClock',gender,clock_set)==('choose' if owner==gender else 'view')
