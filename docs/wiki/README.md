@@ -51,3 +51,11 @@ Sprites load from the project's own public GitHub source art at the snapshot com
 ## Foldable and tablet display support
 
 The companion pages use `fold-layout.css` after the original lavender styles. Navigation persists in folded and unfolded states. The Android wiki home presents direct Routes and Pokédex access, which links into the selected LegendsDex view. CSS uses viewport width and near-square aspect-ratio media queries; Android WebView uses the responsive viewport without forcing portrait orientation. No ROM files are modified.
+
+## Reader polish and sprite audio (10 Oct 2026)
+
+Home now presents seven topic sections; each section leads to its article list, with breadcrumbs back to the topic and home. Search still covers every article. Topic and article URLs support browser and Android Back/Forward navigation. The companion's bottom navigation links Guides, Routes and Pokédex.
+
+LegendsDex sprites are separate accessible audio buttons. Tapping a sprite plays the source game cry; the adjacent name/details button opens the profile. Only one cry plays at a time; leaving the page or closing the profile stops audio. Playback failures announce retry guidance. `tools/build_wiki_cries.py` verifies the 1,026 documented species' WAV files and generates default-form aliases. Audio loads only on tap from the project's own GitHub source at the same pinned snapshot commit as the sprites, including Da Bug; no third-party audio service is used.
+
+The Android activity preserves its current page and filters while the window changes size, including folding/unfolding. The native application still loads the live reader, so existing installations receive these page improvements on reopening.

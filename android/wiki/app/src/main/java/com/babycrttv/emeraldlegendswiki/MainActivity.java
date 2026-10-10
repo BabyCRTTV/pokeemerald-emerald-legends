@@ -47,7 +47,7 @@ public final class MainActivity extends Activity {
         if (savedInstanceState == null) {
             browser.loadUrl(HOME);
         } else {
-            browser.restoreState(savedInstanceState);
+            if (browser.restoreState(savedInstanceState) == null) browser.loadUrl(HOME);
         }
     }
 

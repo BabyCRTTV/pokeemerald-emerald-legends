@@ -6,11 +6,13 @@ on:
     paths:
       - 'docs/wiki/**'
       - '.github/workflows/wiki-checks.yml'
+      - 'test/legends-wiki-reader.test.cjs'
   pull_request:
     branches: [master]
     paths:
       - 'docs/wiki/**'
       - '.github/workflows/wiki-checks.yml'
+      - 'test/legends-wiki-reader.test.cjs'
   workflow_dispatch:
 
 permissions:
@@ -28,6 +30,11 @@ jobs:
           node --check docs/wiki/wiki.js
           node --check docs/wiki/dex.js
           node --check docs/wiki/dex-sprites.js
+          node --check docs/wiki/cry-forms.js
+          python3 tools/build_wiki_cries.py
+          git diff --exit-code docs/wiki/cry-forms.js
+      - name: Check reader navigation and sprite audio
+        run: node test/legends-wiki-reader.test.cjs
       - name: Validate wiki and encounter snapshot
         run: |
           python3 - <<'PY'

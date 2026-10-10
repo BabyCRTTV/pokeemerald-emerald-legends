@@ -1,0 +1,44 @@
+// Reader navigation and lazy sprite-audio regression checks without a browser dependency.
+const vm=require('node:vm'),fs=require('node:fs'),assert=require('node:assert/strict');
+const base=__dirname+'/../docs/wiki/';
+class Node {
+ constructor(){this.listeners={};this.dataset={};this.value='';this.innerHTML='';this.textContent='';this.hidden=false;this.classList={add(){},remove(){},toggle(){}};}
+ addEventListener(name,f){const previous=this.listeners[name];this.listeners[name]=previous?(...args)=>{previous(...args);f(...args);}:f;} setAttribute(){} focus(){} showModal(){this.open=true;} close(){this.open=false;this.listeners.close?.();}
+}
+function boot(file,data,url='https://example.test/wiki/'){
+ const nodes=new Map(),listeners={},windowListeners={},stack=[url];let index=0;
+ const get=id=>{if(!nodes.has(id))nodes.set(id,new Node());return nodes.get(id);};
+ let location=new URL(url);
+ const ctx={URL,URLSearchParams,Map,Set,console,HTMLImageElement:class{},navigator:{userAgent:'LegendsWikiAndroid/5'},document:{documentElement:get('html'),title:'',hidden:false,activeElement:null,getElementById:get,querySelector:s=>get(s.replace(/^#/,'')),querySelectorAll:()=>[],addEventListener:(n,f)=>listeners[n]=f},window:{scrollTo(){},addEventListener:(n,f)=>windowListeners[n]=f},LegendsSprites:{markup:()=>'<span class="thumb"></span>',hydrate(){}},fetch:async()=>({ok:true,json:async()=>data})};
+ Object.defineProperty(ctx,'location',{get:()=>location});
+ ctx.history={pushState(a,b,u){location=new URL(u,location);stack.splice(++index);stack.push(location.href);},replaceState(a,b,u){location=new URL(u,location);stack[index]=location.href;}};
+ const sounds=[];
+ ctx.Audio=class {constructor(url){this.url=url;this.events={};sounds.push(this);}pause(){this.paused=true;}addEventListener(n,f){this.events[n]=f;}play(){this.played=true;return this.fail?Promise.reject(Error()):Promise.resolve();}};
+ vm.runInNewContext(fs.readFileSync(base+'cry-forms.js','utf8'),ctx);
+ vm.runInNewContext(fs.readFileSync(base+file,'utf8'),ctx);
+ const click=(kind,value)=>{const target=get('clicked');target.dataset={[kind]:value};listeners.click({target:{closest:s=>s==='[data-'+kind+']'?target:null},preventDefault(){}});};
+ return {ctx,get,click,sounds,back(){location=new URL(stack[--index]);windowListeners.popstate();},listeners};
+}
+const settle=()=>new Promise(r=>setImmediate(r));
+(async()=>{
+ const articles=JSON.parse(fs.readFileSync(base+'articles.json'));
+ const w=boot('wiki.js',articles);await settle();
+ assert.equal((w.get('cards').innerHTML.match(/data-category=/g)||[]).length,8);
+ assert(!w.get('cards').innerHTML.includes('data-page='),'home must not dump every article');
+ w.click('category','Customization');assert.match(w.ctx.location.search,/category=Customization/);assert.match(w.get('content').innerHTML,/Trainer Card customization/);
+ w.click('page','wardrobe');assert.match(w.ctx.location.search,/page=wardrobe/);
+ w.back();assert.match(w.get('content').innerHTML,/<h1>Customization<\/h1>/);
+ w.back();assert.match(w.get('content').innerHTML,/Your Legends guide/);
+ w.get('search').value='boots';w.get('search').listeners.input();assert.match(w.get('cards').innerHTML,/wardrobe/);
+ w.click('category','all');assert.equal((w.get('content').innerHTML.match(/data-page=/g)||[]).length,articles.articles.length);
+ const deep=boot('wiki.js',articles,'https://example.test/wiki/?category=Kanto%20postgame');await settle();assert.match(deep.get('content').innerHTML,/<h1>Kanto postgame/);
+ const data=JSON.parse(fs.readFileSync(base+'dex-data.json'));
+ const d=boot('dex.js',data);await settle();assert.equal(d.sounds.length,0,'audio must not preload all cries');
+ assert.match(d.get('results').innerHTML,/data-cry=/);assert.match(d.get('results').innerHTML,/class="pokemon-link"/);
+ d.click('cry','BULBASAUR');await settle();assert(d.sounds[0].url.endsWith('/cries/bulbasaur.wav'));assert(d.sounds[0].played);assert(!d.get('detail').open);
+ d.click('cry','DA_BUG');await settle();assert(d.sounds[0].paused);assert(d.sounds[1].url.endsWith('/cries/da_bug.wav'));
+ d.click('species','BULBASAUR');assert(d.get('detail').open);assert.match(d.get('detail-content').innerHTML,/Play Bulbasaur cry/);
+ d.get('detail').close();assert(d.sounds[1].paused);
+ d.ctx.document.hidden=true;d.listeners.visibilitychange();
+ console.log('PASS: topic home, category/article deep links, Back navigation, full index, search, lazy cries, exclusive playback, sprite/detail separation, dialog audio cleanup');
+})().catch(e=>{console.error(e);process.exit(1);});
