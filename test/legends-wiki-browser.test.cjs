@@ -96,7 +96,7 @@ const assert=require('node:assert/strict'),fs=require('node:fs');
   assert.equal(await page.locator('#toggle-shiny').getAttribute('aria-pressed'),'true');
   assert(await page.locator('.detail-top .sprite-art').evaluate(e=>e.classList.contains('is-shiny')));
   assert.equal(await page.locator('.shiny-sparkles i').count(),8);
-  if(width===412)await page.screenshot({path:'wiki-preview/shiny-sparkles.png',fullPage:false});
+  if(width===412){await page.waitForTimeout(220);await page.screenshot({path:'wiki-preview/shiny-sparkles.png',fullPage:false});}
   await page.locator('#toggle-shiny').click();assert.equal(await page.locator('.shiny-sparkles').count(),0,'toggling back cancels sparkles');
   assert.equal(await page.locator('#toggle-shiny').getAttribute('aria-pressed'),'false');
   await page.emulateMedia({reducedMotion:'reduce'});await page.locator('#toggle-shiny').click();
