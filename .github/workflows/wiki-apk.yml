@@ -34,7 +34,16 @@ jobs:
       # Ubuntu GitHub runners already ship Android command-line SDK tools.
       # Avoid setup-android's obsolete sdkmanager 'tools' package installation.
       - name: Install Android build tools
-        run: sdkmanager "platforms;android-35" "build-tools;35.0.0"
+        run: |
+          SDK_ROOT="${ANDROID_HOME:-${ANDROID_SDK_ROOT:-/usr/local/lib/android/sdk}}"
+          SDKMANAGER="$(find "$SDK_ROOT/cmdline-tools" -name sdkmanager -type f | sort -V | tail -n 1)"
+          if [ -z "$SDKMANAGER" ] || [ ! -x "$SDKMANAGER" ]; then
+            echo "::error::Could not find sdkmanager in $SDK_ROOT/cmdline-tools"
+            find "$SDK_ROOT" -maxdepth 3 -type f -name sdkmanager || true
+            exit 1
+          fi
+          echo "ANDROID_HOME=$SDK_ROOT" >> "$GITHUB_ENV"
+          "$SDKMANAGER" --sdk_root="$SDK_ROOT" "platforms;android-35" "build-tools;35.0.0"
 
       - name: Configure Gradle
         uses: gradle/actions/setup-gradle@v4
