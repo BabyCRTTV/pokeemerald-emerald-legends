@@ -15,6 +15,7 @@ function boot(file,data,url='https://example.test/wiki/'){
  const sounds=[];
  ctx.Audio=class {constructor(url){this.url=url;this.events={};sounds.push(this);}pause(){this.paused=true;}addEventListener(n,f){this.events[n]=f;}play(){this.played=true;return this.fail?Promise.reject(Error()):Promise.resolve();}};
  vm.runInNewContext(fs.readFileSync(base+'cry-forms.js','utf8'),ctx);
+ vm.runInNewContext(fs.readFileSync(base+'dex-profiles.js','utf8'),ctx);
  vm.runInNewContext(fs.readFileSync(base+file,'utf8'),ctx);
  const click=(kind,value)=>{const target=get('clicked');target.dataset={[kind]:value};listeners.click({target:{closest:s=>s==='[data-'+kind+']'?target:null},preventDefault(){}});};
  return {ctx,get,click,sounds,back(){location=new URL(stack[--index]);windowListeners.popstate();},listeners};
@@ -36,6 +37,11 @@ const settle=()=>new Promise(r=>setImmediate(r));
  const atlas={window:{}};vm.runInNewContext(fs.readFileSync(base+'dex-sprite-atlas.js','utf8'),atlas);
  assert.equal(atlas.window.LegendsSpriteAtlas.sourceCommit,data.sourceCommit);
  for(const p of data.species)assert(atlas.window.LegendsSpriteAtlas.icons[p.sprite],p.id+' missing from preloaded atlas');
+ const profiles={window:{}};vm.runInNewContext(fs.readFileSync(base+'dex-profiles.js','utf8'),profiles);
+ assert.equal(profiles.window.LegendsProfiles.sourceCommit,data.sourceCommit);
+ for(const p of data.species)assert(profiles.window.LegendsProfiles.entries[p.id],p.id+' missing entry');
+ for(const m of data.maps){const loc=profiles.window.LegendsProfiles.locations[m.id];assert.equal(loc.region,m.region);assert(loc.cells.length,m.id+' missing map marker');for(const [x,y] of loc.cells)assert(x>=0&&x<224&&y>=0&&y<120);}
+ assert.deepEqual(JSON.parse(JSON.stringify(profiles.window.LegendsProfiles.locations.MAP_ROUTE101.cells)),[[32,80]]);
  const d=boot('dex.js',data);await settle();assert.equal(d.sounds.length,0,'audio must not preload all cries');
  assert.match(d.get('results').innerHTML,/data-cry=/);assert.match(d.get('results').innerHTML,/class="pokemon-link"/);
  const species=boot('dex.js',data,'https://example.test/wiki/dex.html?view=species');await settle();assert.match(species.get('results').innerHTML,/<div class="dex-card">/);assert.match(species.get('results').innerHTML,/<button type="button" class="pokemon-link" data-species="BULBASAUR"/);
