@@ -8,6 +8,14 @@ const assert=require('node:assert/strict'),fs=require('node:fs');
   const page=await context.newPage(),errors=[];page.on('pageerror',e=>errors.push(e.message));
   await page.goto('http://127.0.0.1:8765/wiki/');await page.locator('.topic-cards').waitFor();
   assert.equal(await page.locator('.topic-cards .card').count(),7);
+  assert(await page.getByRole('link',{name:'Open LegendsDex',exact:true}).isVisible());
+  assert.equal(await page.locator('.wiki-mobile-nav a').count(),2);
+  await page.getByRole('link',{name:'Open LegendsDex',exact:true}).click();
+  await page.locator('.route-card').first().waitFor();
+  assert(await page.getByRole('link',{name:'Back to guide',exact:true}).isVisible());
+  assert.equal(await page.locator('.mobile-nav button').count(),2);
+  assert.equal(await page.locator('.mobile-nav a').count(),0);
+  await page.getByRole('link',{name:'Back to guide',exact:true}).click();await page.locator('.topic-cards').waitFor();
   async function noOverflow(){assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),'horizontal overflow at '+width);}
   await noOverflow();await page.screenshot({path:`wiki-preview/home-${width}.png`,fullPage:true});
   await page.locator('.topic-cards [data-category="Customization"]').click();

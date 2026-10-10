@@ -54,7 +54,7 @@ The companion pages use `fold-layout.css` after the original lavender styles. Na
 
 ## Reader polish and sprite audio (10 Oct 2026)
 
-Home now presents seven topic sections; each section leads to its article list, with breadcrumbs back to the topic and home. Search still covers every article. Topic and article URLs support browser and Android Back/Forward navigation. The companion's bottom navigation links Guides, Routes and Pokédex.
+Home now presents seven topic sections; each section leads to its article list, with breadcrumbs back to the topic and home. Search still covers every article. Topic and article URLs support browser and Android Back/Forward navigation. LegendsDex's bottom navigation contains only Routes and Pokédex. The visible header shortcut opens LegendsDex from the wiki and changes to Back to guide inside LegendsDex. Native companions open LegendsDex first.
 
 LegendsDex sprites are separate accessible audio buttons. Tapping a sprite plays the source game cry; the adjacent name/details button opens the profile. Only one cry plays at a time; leaving the page or closing the profile stops audio. Playback failures announce retry guidance. `tools/build_wiki_cries.py` verifies the 1,026 documented species' WAV files and generates default-form aliases. Audio loads only on tap from the project's own GitHub source at the same pinned snapshot commit as the sprites, including Da Bug; no third-party audio service is used.
 
