@@ -1,4 +1,5 @@
 #include "global.h"
+#include "legends_adventure.h"
 #include "overworld.h"
 #include "battle_pyramid.h"
 #include "battle_setup.h"
@@ -2128,6 +2129,7 @@ void CB2_ContinueSavedGame(void)
         ResetWinStreaks();
 
     LoadSaveblockMapHeader();
+    LegendsAdventureInit(FALSE);
     LegendsCommitSeasonTransition();
     LegendsRestoreSeasonWeather();
     ClearDiveAndHoleWarps();

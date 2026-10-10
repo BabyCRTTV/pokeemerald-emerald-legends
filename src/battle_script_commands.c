@@ -1,4 +1,5 @@
 #include "global.h"
+#include "legends_adventure.h"
 #include "battle.h"
 #include "battle_hold_effects.h"
 #include "battle_message.h"
@@ -8401,6 +8402,7 @@ static void Cmd_givecaughtmon(void)
         if (emptySlot != PARTY_SIZE)
             gBattleStruct->partyState[B_SIDE_PLAYER][emptySlot].changedSpecies = GetBattlerPartyState(GetCatchingBattler())->changedSpecies;
 
+        LegendsAdventureCatch(GetMonData(caughtMon, MON_DATA_SPECIES), GetMonData(caughtMon, MON_DATA_LEVEL));
         gBattleResults.caughtMonSpecies = GetMonData(caughtMon, MON_DATA_SPECIES);
         GetMonData(caughtMon, MON_DATA_NICKNAME, gBattleResults.caughtMonNick);
         gBattleResults.caughtMonBall = GetMonData(caughtMon, MON_DATA_POKEBALL);

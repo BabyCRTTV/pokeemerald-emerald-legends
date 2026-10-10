@@ -1,4 +1,5 @@
 #include "global.h"
+#include "legends_adventure.h"
 #include "play_time.h"
 #include "legends_seasons.h"
 #include "fake_rtc.h"
@@ -37,6 +38,7 @@ void PlayTimeCounter_Update(void)
         return;
 
     LegendsSeasonTick();
+    LegendsAdventureTick();
     if (sPlayTimeCounterState == MAXED_OUT)
         return;
 

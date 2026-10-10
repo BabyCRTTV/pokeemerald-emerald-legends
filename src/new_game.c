@@ -1,4 +1,5 @@
 #include "global.h"
+#include "legends_adventure.h"
 #include "legends_da_bug.h"
 #include "legends_appearance.h"
 #include "clock.h"
@@ -243,6 +244,7 @@ void NewGameInitData(void)
     ResetItemFlags();
     ResetDexNav();
     ClearFollowerNPCData();
+    LegendsAdventureInit(TRUE);
 }
 
 static void ResetMiniGamesRecords(void)

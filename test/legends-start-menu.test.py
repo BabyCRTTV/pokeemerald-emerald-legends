@@ -16,6 +16,7 @@ typedef uint8_t u8; typedef uint16_t u16; typedef uint32_t u32; typedef int bool
 #define PIXEL_FILL(x) ((x)|((x)<<4))
 #define FONT_SMALL 0
 #define TEXT_SKIP_DRAW 0
+#define STR_CONV_MODE_LEFT_ALIGN 0
 #define COPYWIN_GFX 2
 #define COPYWIN_FULL 3
 #define COMPOUND_STRING(x) ((const u8 *)(x))
@@ -33,8 +34,13 @@ static int timeOfDay=TIME_DAY;
 int GetTimeOfDay(void){return timeOfDay;}
 static int error,weather,season,adds,removes,copies,rtcReads,pixels,fail;
 static const struct WindowTemplate *template;
-static char texts[2][32];
-static u8 pixelBuffer[32][96];
+static char texts[3][32];
+static u8 pixelBuffer[48][96];
+static u16 playedDays=1;
+void LegendsAdventureUpdateDay(void){}
+u16 LegendsAdventureDays(void){return playedDays;}
+u8 *StringCopy(u8 *d,const u8 *s){strcpy((char*)d,(const char*)s);return d;}
+u8 *ConvertIntToDecimalStringN(u8 *d,int n,int mode,int size){sprintf((char*)d,"%d",n);return d;}
 u16 RtcGetErrorStatus(void){return error;}
 void RtcCalcLocalTime(void){rtcReads++;}
 u8 GetCurrentWeather(void){return weather;}
@@ -48,8 +54,8 @@ void DrawStdWindowFrame(u8 w,int c){assert(w==4);}
 void ClearStdWindowAndFrameToTransparent(u8 w,int c){assert(w==4&&c);}
 void CopyWindowToVram(u32 w,u32 m){assert(w==4);copies++;}
 void FillWindowPixelBuffer(u32 w,u8 v){pixels=0;memset(pixelBuffer,v&15,sizeof(pixelBuffer));}
-void FillWindowPixelRect(u32 w,u8 v,u16 x,u16 y,u16 a,u16 b){assert(x+a<=96&&y+b<=32);for(int j=y;j<y+b;j++)for(int i=x;i<x+a;i++)pixelBuffer[j][i]=v&15;pixels++;}
-void AddTextPrinterParameterized(u8 w,u8 f,const u8 *t,u16 x,u16 y,int speed,void *cb){snprintf(texts[y==0?0:1],32,"%s",t);}
+void FillWindowPixelRect(u32 w,u8 v,u16 x,u16 y,u16 a,u16 b){assert(x+a<=96&&y+b<=48);for(int j=y;j<y+b;j++)for(int i=x;i<x+a;i++)pixelBuffer[j][i]=v&15;pixels++;}
+void AddTextPrinterParameterized(u8 w,u8 f,const u8 *t,u16 x,u16 y,int speed,void *cb){snprintf(texts[y/16],32,"%s",t);}
 '''
 main = r'''
 int main(void){
@@ -57,16 +63,18 @@ gMapHeader.mapType=MAP_TYPE_ROUTE;gLocalTime.hours=0;gLocalTime.minutes=5;
 timeOfDay=TIME_NIGHT;
 LegendsShowStartMenuPanel();
 assert(sLastIcon==ICON_MOON);
-assert(adds==1&&pixels>0&&!strcmp(texts[0],"12:05 AM")&&!strcmp(texts[1],"SPRING"));
-assert(template->tilemapLeft==1&&template->tilemapTop==14);
+assert(adds==1&&pixels>0&&!strcmp(texts[1],"12:05 AM")&&!strcmp(texts[2],"SPRING"));
+assert(!strcmp(texts[0],"DAY 1"));
+assert(template->tilemapLeft==1&&template->tilemapTop==12);
 assert(template->baseBlock+template->width*template->height<=0x107);
 int c=copies,r=rtcReads;
 for(int i=0;i<60;i++) LegendsUpdateStartMenuPanel();
 assert(copies==c+2&&rtcReads==r+1);
-gLocalTime.hours=12;gLocalTime.minutes=0;weather=WEATHER_RAIN;season=3;
+playedDays=2;gLocalTime.hours=12;gLocalTime.minutes=0;weather=WEATHER_RAIN;season=3;
 for(int i=0;i<60;i++) LegendsUpdateStartMenuPanel();
-assert(!strcmp(texts[0],"12:00 PM")&&!strcmp(texts[1],"WINTER")&&sLastIcon==ICON_RAIN);
-error=1;for(int i=0;i<60;i++) LegendsUpdateStartMenuPanel();assert(!strcmp(texts[0],"--:--"));
+assert(!strcmp(texts[0],"DAY 2"));
+assert(!strcmp(texts[1],"12:00 PM")&&!strcmp(texts[2],"WINTER")&&sLastIcon==ICON_RAIN);
+error=1;for(int i=0;i<60;i++) LegendsUpdateStartMenuPanel();assert(!strcmp(texts[1],"--:--"));
 assert(GetWeatherIcon()==ICON_RAIN);
 weather=WEATHER_SUNNY;timeOfDay=TIME_NIGHT;assert(GetWeatherIcon()==ICON_MOON);
 timeOfDay=TIME_DAY;assert(GetWeatherIcon()==ICON_SUN);
@@ -91,12 +99,12 @@ LegendsHideStartMenuPanel();assert(removes==2);
 // paints native colors. Clock hands must be an L, not parallel U strokes.
 assert(sIcons[ICON_CLOCK][3]==0x841&&sIcons[ICON_CLOCK][6]==0x879);
 for(int icon=0;icon<=ICON_MOON;icon++){
-    u8 frames[2][32][96];
+    u8 frames[2][48][96];
     for(int phase=0;phase<2;phase++){
         sAnimationPhase=phase;
-        FillWindowPixelBuffer(4,PIXEL_FILL(1));DrawIcon(4,icon,18);
-        for(int y=0;y<32;y++)for(int x=0;x<96;x++)
-            if(x<4||x>=16||y<18||y>=30)assert(pixelBuffer[y][x]==1);
+        FillWindowPixelBuffer(4,PIXEL_FILL(1));DrawIcon(4,icon,34);
+        for(int y=0;y<48;y++)for(int x=0;x<96;x++)
+            if(x<4||x>=16||y<34||y>=46)assert(pixelBuffer[y][x]==1);
         memcpy(frames[phase],pixelBuffer,sizeof(pixelBuffer));
     }
     if(icon!=ICON_CLOCK&&icon!=ICON_CLOUD&&icon!=ICON_INDOOR)

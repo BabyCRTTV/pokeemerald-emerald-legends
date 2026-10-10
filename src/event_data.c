@@ -1,4 +1,5 @@
 #include "global.h"
+#include "legends_adventure.h"
 #include "event_data.h"
 #include "pokedex.h"
 
@@ -222,7 +223,12 @@ u8 FlagSet(u16 id)
 {
     u8 *ptr = GetFlagPointer(id);
     if (ptr)
+    {
+        bool32 wasSet = (*ptr & (1 << (id & 7))) != 0;
         *ptr |= 1 << (id & 7);
+        if (!wasSet)
+            LegendsAdventureFlagSet(id);
+    }
     return 0;
 }
 
@@ -238,7 +244,12 @@ u8 FlagClear(u16 id)
 {
     u8 *ptr = GetFlagPointer(id);
     if (ptr)
+    {
+        bool32 wasSet = (*ptr & (1 << (id & 7))) != 0;
         *ptr &= ~(1 << (id & 7));
+        if (wasSet)
+            LegendsAdventureFlagClear(id);
+    }
     return 0;
 }
 
