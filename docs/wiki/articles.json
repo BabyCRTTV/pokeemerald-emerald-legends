@@ -1,0 +1,182 @@
+{
+  "wikiRevision": "1.0.0",
+  "reviewedAgainstGameVersion": "0.0.31.1",
+  "lastManualReview": "2026-10-10",
+  "articles": [
+    {
+      "id": "welcome",
+      "title": "Welcome to Emerald: Legends",
+      "category": "Start here",
+      "summary": "A guide to the project, its identity, and what is currently playable.",
+      "content": "## What is Pokémon Emerald: Legends?\nPokémon Emerald: Legends is an unofficial, non-commercial ROM hack built on rh-hideout's pokeemerald-expansion. It keeps Emerald's Hoenn story at its core, adding optional quality-of-life features, trainer customization, seasons, and an expanding Champion-era Kanto journey.\n\nThis wiki is a **player-focused snapshot**, reviewed when the project owner requests an update. It is not automatically rewritten each time the ROM receives a release.\n\n## New here?\n- [[install|Install and patch the game]] with a legally obtained, clean compatible Emerald ROM.\n- [[builds|Choose Release or Debug]].\n- [[options|Explore the three Options pages]] before starting a new save.\n- [[kanto|Discover Kanto]] after becoming Champion.\n\n## Current playable scope\nHoenn retains its recognizable main adventure. Kanto has a playable southeastern and central route network, two visiting Gym challenges, an introductory Wing Survey, and a permanent ferry from Lilycove. The remainder of the Kanto Gym circuit and the planned legendary encounters **are not yet playable**.\n\n## Finding information\nUse the search field, browse sections on the left, or select any linked article. Each article has its own shareable URL. This site does not require accounts, registration, or login."
+    },
+    {
+      "id": "install",
+      "title": "Installation and browser patching",
+      "category": "Start here",
+      "summary": "Get the playable game onto an emulator without uploading your original ROM.",
+      "content": "## What you need\n- A legally obtained clean **Pokémon Emerald (US/Europe)** ROM that matches SHA-1 \\`f3ae088181bf583e55daf962a92bb46f4f1d07b7\\`.\n- A modern emulator capable of running Game Boy Advance games.\n- The project’s [[builds|Release or Debug]] BPS patch, or the built-in browser patcher.\n\n## Recommended: local browser patcher\n1. Visit [the official browser patcher](../patcher.html).\n2. Select **Release** for normal gameplay, or Debug only if you need developer controls.\n3. Select your own clean Emerald ROM from your device.\n4. The patcher validates the original and creates your patched \\`.gba\\` **in your browser**.\n5. Save that new file and open it with a GBA emulator.\n\n**Privacy:** the original ROM stays on your device. It is not uploaded to the project site.\n\n## Alternative: BPS patch\nDownload the matching BPS file from [the official downloads page](../index.html#downloads) and apply it locally using a reputable BPS patcher against the same clean ROM.\n\n## Saves and updates\nKeep a backup of your emulator save file before switching game builds. Release and Debug carry the same gameplay content, but Debug includes extra testing commands that can change progress. Test major changes on a backup.\n\n## Troubleshooting\nA ROM checksum mismatch usually means the wrong game, region, revision, or a previously patched ROM. Do not rename a file to make it appear compatible. Start with the specified clean original."
+    },
+    {
+      "id": "builds",
+      "title": "Release and Debug builds",
+      "category": "Start here",
+      "summary": "What the two downloadable variants actually change.",
+      "content": "## Release — recommended\nRelease is intended for ordinary players. It contains every shipped Legends gameplay and content addition without developer-only shortcuts.\n\n## Debug — for testing\nDebug contains the same gameplay and story but keeps tools available in the expansion, such as overworld and battle debug menus, Pokémon sprite inspection, and title-screen Quickstart where supported.\n\n## Which should I use?\n- Choose **Release** for your primary adventure.\n- Choose **Debug** for checking encounters, maps, graphics, and reporting reproducible bugs.\n\nThese are two builds from one source revision. **Release is not vanilla Emerald**: vanilla Emerald means the untouched commercial original.\n\nFind both options on the [main downloads page](../index.html#downloads). Public downloads are BPS patches, not redistributed commercial ROMs."
+    },
+    {
+      "id": "options",
+      "title": "Options menu and saved preferences",
+      "category": "Core gameplay",
+      "summary": "A quick reference for the game’s configurable mechanics.",
+      "content": "## Navigating the pages\nThe Options menu has **General**, **Legends**, and **Adventure** pages. Choose NEXT PAGE and press A, or press L/R, to switch pages. Use Left/Right to change most values; B saves and exits. The menu also displays the Legends version.\n\n## Notable settings\n- **EXP SHARE:** toggle the physical Key Item's party-wide experience effect.\n- **FOLLOWER:** show or hide your lead eligible Pokémon behind you.\n- **SHINY RATE:** choose 1/8192, 1/5680, or 1/1226 for ordinary wild generation.\n- **SEASONS:** use real-calendar seasons or a seven-hour gameplay cycle.\n- **SET SEASON:** available during the seven-hour gameplay mode.\n- **STARTERS:** choose generations 1–9, Special, or Random for a **new game**.\n\n## Before you start\nTitle-screen preferences can carry into New Game. Once you open the rescue bag on Route 101, the starter lineup and corresponding rival lineage are locked for that save. Changing STARTERS later does not rewrite an existing team.\n\nMore detailed guides: [[exp|EXP Share]], [[starters|Starters]], [[shiny|Shiny odds]], [[seasons|Seasons]], and [[followers|Followers]]."
+    },
+    {
+      "id": "exp",
+      "title": "EXP Share and Lucky Egg",
+      "category": "Core gameplay",
+      "summary": "How modernized party experience works and what Rustboro rewards.",
+      "content": "## Party-wide experience\nLegends uses the expansion's Gen 6-style EXP Share. It is a **Key Item**, supplied at the start of a new game and restored to qualifying older saves.\n\nWhen switched **ON**:\n- Battle participants receive their normal full EXP.\n- Eligible non-participating party Pokémon receive a half share.\n- Eggs receive no EXP.\n\nWhen **OFF**, other party members do not receive the global share. The Key Item and the Legends Options setting change the same saved preference.\n\n## Lucky Egg\nLucky Egg remains a separate held item with its normal EXP multiplier handling. When you deliver Mr. Stone's Letter to Steven and later report back to Devon Corporation in Rustboro, the reward is now a **Lucky Egg**, not an additional held Exp. Share.\n\nOther EXP systems such as traded bonuses and scaled experience still use the expansion's native battle processing."
+    },
+    {
+      "id": "field",
+      "title": "Field moves without HM moveslots",
+      "category": "Core gameplay",
+      "summary": "Keep Emerald’s badge gates while freeing up moveslots.",
+      "content": "## The core rule\nYou can use Emerald's eight required field utilities once you have the appropriate badge, **without teaching the HM to a party Pokémon**. Badges, valid terrain and story restrictions still matter.\n\n| Utility | Required badge |\n| --- | --- |\n| Cut | Stone |\n| Flash | Knuckle |\n| Rock Smash | Dynamo |\n| Strength | Heat |\n| Surf | Balance |\n| Fly | Feather |\n| Dive | Mind |\n| Waterfall | Rain |\n\n## Using them\nInteract with the familiar trees, rocks, boulders, shorelines, waterfalls and dive spots. The Pokémon party menu also gains a compact **FIELD** entry after you unlock a utility, which provides actions such as Flash and Fly.\n\nDig, Teleport, Sweet Scent, Secret Power and other Pokémon-specific field moves still follow the normal learned-move rules. HM attacks still exist as moves you can teach for battling."
+    },
+    {
+      "id": "starters",
+      "title": "Starter Pokémon and rival teams",
+      "category": "Core gameplay",
+      "summary": "All starter modes, including special and random trios.",
+      "content": "## Choose your set\nUnder Adventure Options, STARTERS defaults to GEN 3.\n\n| Setting | Starter trio |\n| --- | --- |\n| GEN 1 | Bulbasaur / Charmander / Squirtle |\n| GEN 2 | Chikorita / Cyndaquil / Totodile |\n| GEN 3 | Treecko / Torchic / Mudkip |\n| GEN 4 | Turtwig / Chimchar / Piplup |\n| GEN 5 | Snivy / Tepig / Oshawott |\n| GEN 6 | Chespin / Fennekin / Froakie |\n| GEN 7 | Rowlet / Litten / Popplio |\n| GEN 8 | Grookey / Scorbunny / Sobble |\n| GEN 9 | Sprigatito / Fuecoco / Quaxly |\n| SPECIAL | Happiny / Wattrel / Mankey |\n| RANDOM | Three distinct eligible unevolved Pokémon |\n\n## How rivals work\nGeneration sets select the rival's counter from the chosen generation. Special and Random use **Zorua**, evolving into Zoroark at level 30. The Random trio is rolled once when the Route 101 bag first opens; merely moving the selection cursor or declining does not reroll it.\n\nThe selected trio is fixed for the current save once the bag opens. Existing saves keep their established party and Gen 3 rival lineage."
+    },
+    {
+      "id": "shiny",
+      "title": "Shiny rates and special cases",
+      "category": "Core gameplay",
+      "summary": "Understand the selectable base odds and their limits.",
+      "content": "## Three wild rates\nFrom Legends Options, select **1/8192** (default), **1/5680**, or **1/1226**. This setting affects newly generated ordinary wild Pokémon, including grass, water, fishing and DexNav searches.\n\nAdditional eligible shiny rolls from Shiny Charm, chain fishing and DexNav may improve actual encounter odds beyond the selected base value.\n\n## Important exclusions\nChanging the option does **not** retroactively change your party or PC. Eggs, gifts, trainer Pokémon, scripted and roaming encounters use their own existing logic unless a feature specifically states otherwise.\n\nThe one-time [[da-bug|Da Bug PC gift]] has an independent **1-in-10** shiny roll. That exception is not a global shiny-odds change."
+    },
+    {
+      "id": "pokedex",
+      "title": "National Pokédex and Champion reward",
+      "category": "Core gameplay",
+      "summary": "Earlier National Mode and a more useful postgame reward.",
+      "content": "## National Mode early\nProfessor Birch enables National Pokédex Mode at the first ordinary Pokédex handoff. You do not need to finish the Elite Four to unlock it.\n\n## After becoming Champion\nThe original National Dex upgrade event is repurposed. Birch instead awards **25 Rare Candies**. If your Bag is full, the reward follows the project's fallback storage/deferred-delivery handling.\n\nThese changes retain the core Emerald story progression while allowing expanded species access earlier."
+    },
+    {
+      "id": "followers",
+      "title": "Overworld Pokémon followers",
+      "category": "Core gameplay",
+      "summary": "Choose whether your lead Pokémon accompanies you.",
+      "content": "## Who follows?\nWith FOLLOWER set to ON (the default), the first conscious non-Egg Pokémon in your party follows you. Reorder your team to change the follower. No Pokémon appears before receiving a starter, when your whole party is fainted, or when only Eggs are present.\n\n## Player control\nUse Legends Options to switch FOLLOWER ON or OFF. Save to keep the preference. Title-screen choices carry into New Game.\n\n## When a follower disappears\nCertain cutscenes, forced movement, cramped interiors, travel states and maps with no free object slot temporarily hide followers. This is normal behavior rather than a reset of your selected preference. The game reuses pokeemerald-expansion's native follower graphics and movement systems."
+    },
+    {
+      "id": "seasons",
+      "title": "Seasons and foliage",
+      "category": "World & time",
+      "summary": "How spring, summer, autumn, and winter are selected.",
+      "content": "## Two season modes\n**REAL TIME** (default) follows the RTC calendar's Northern Hemisphere seasons: March–May spring; June–August summer; September–November autumn; December–February winter.\n\n**7H PLAY** advances Spring → Summer → Autumn → Winter, seven recorded game hours each. Four seasons repeat every 28 gameplay hours. Time in menus and battles counts; time with the game closed does not.\n\n## Controlling a season\nChoose SEASONS on Legends Options. In 7H PLAY mode, **SET SEASON** lets you restart the selected season's timer. The change appears after a faded map reload or save reload, not instantly while standing outdoors.\n\n## Visual changes\nVegetation changes from spring and summer greens to autumn amber and winter frost. Regional weather patterns vary by season; Kanto grass and trees and ordinary outdoor grass battle backgrounds follow seasonal colors. Special locations, protected graphics, water, and story-driven weather are preserved.\n\nIf your emulator's RTC is unavailable, real-calendar mode falls back to the saved gameplay cycle. See [[clock|Clocks]] and [[weather|Dynamic weather]]."
+    },
+    {
+      "id": "weather",
+      "title": "Dynamic weather",
+      "category": "World & time",
+      "summary": "Regional forecasts, special-weather protections, and seasons.",
+      "content": "## Ordinary outdoor forecasts\nLegends brings changing weather to suitable outdoor areas of Hoenn and Kanto. The forecast advances in recorded gameplay time and varies by region, time of day and season.\n\nDepending on the location, you may see rain, occasional storms, fog, or winter upland snow. Inland, coastal and highland areas do not share identical forecasts. Coastal Kanto does not randomly snow.\n\n## Story weather stays intact\nSpecial effects such as Emerald's Groudon/Kyogre crisis, region-specific event weather and indoor environments retain their scripted behavior.\n\nThe older generic SUNNY CLOUDS pattern was deliberately removed because the native effect could appear through map geometry elsewhere. A clear forecast may be substituted instead."
+    },
+    {
+      "id": "clock",
+      "title": "Bedroom clock and pause display",
+      "category": "World & time",
+      "summary": "Understand real time, manual time, and the fallback clock.",
+      "content": "## Your bedroom clock\nAt the first bedroom clock event and on later visits, choose:\n- **REAL TIME** (default): the emulator/device RTC when available.\n- **MANUAL**: set the analog bedroom clock yourself.\n\nThe rival's bedroom clock is for viewing only. The first visit confirms the selected clock instead of adding the old introductory offset.\n\n## Without emulator RTC\nThe clock falls back to **9:00 AM plus recorded playtime**. It persists across ordinary saves and continues beyond the native 999-hour display limit. Re-enabling a valid RTC returns REAL TIME to the device clock.\n\n## Start-menu display\nThe pause panel shows a live clock, season and weather. It updates on minute changes while the emulator is running, including while the pause menu is open. A fully paused emulator cannot update the display until resumed.\n\nThe Adventure Log's played-day counter tracks actual distinct play dates and does not count skipped dates. See [[journal|Adventure Log]]."
+    },
+    {
+      "id": "appearance",
+      "title": "Trainer appearance at New Game",
+      "category": "Customization",
+      "summary": "Five skin tones and five outfits, with live previews.",
+      "content": "## Character creation\nAfter choosing a trainer gender during Professor Birch's introduction, select one of five skin tones and one of five outfits. A live sprite preview appears alongside the selection.\n\n| Outfit | Description |\n| --- | --- |\n| Emerald | Original Emerald-style look |\n| Trail | Jacket and trousers |\n| Sport | Striped shirt and shorts |\n| Yellow | Yellow-colored style |\n| Lavender | Lavender design with a cream neck detail |\n\nSelections apply across normal overworld movement, local trainer presentation and your Trainer Card.\n\n## Changing your style later\nVisit the [[wardrobe|wardrobe]] in your Littleroot bedroom or buy a placeable wardrobe for your secret base. Existing saves retain their original look until you make a new selection.\n\nMagma and Aqua are full costumes rather than ordinary recolored shirts. Dive keeps the native covered suit."
+    },
+    {
+      "id": "wardrobe",
+      "title": "Wardrobe, costumes, and footwear",
+      "category": "Customization",
+      "summary": "The full outfit editor: shoes, boots, scarves, jackets, and costumes.",
+      "content": "## Finding the wardrobe\nA small storage box sits directly beneath your bed in Littleroot Town. Face it from an adjacent tile and press A to open your wardrobe. You can also purchase a placeable wardrobe decoration for ₽3,000 from Pretty Petal Flower Shop on Route 104 and place it in your own secret base.\n\n## Navigating\nUp/Down scroll the categories (six visible at once). Left/Right changes the highlighted option. Select **APPLY** to save or **CANCEL** / B to discard. Preview updates before you commit.\n\n| Category | Available choices |\n| --- | --- |\n| OUTFIT | Emerald, Trail, Sport, Yellow, Lavender |\n| COSTUMES | None, Team Magma, Team Aqua |\n| SCARF | None, Crimson, Ocean, Emerald, Lavender, Cream |\n| JACKET | None, Navy |\n| SHOES | Original, Red, Blue, Green, White, Purple, Light-brown boots, Black boots |\n| TRAINER CARD | Original, Emerald, Ocean, Crimson, Lavender, Gold, Rose, Slate |\n\nThe tall-shaft boots are visually distinct from the shoes in their preview and applicable overworld poses. Magma and Aqua use their own complete grunt uniforms, with their fixed costume accessories and footwear. Your previous appearance remains stored when you take a costume off.\n\n[[trainer-card|Trainer Card colors]] have a separate explanation."
+    },
+    {
+      "id": "trainer-card",
+      "title": "Trainer Card customization",
+      "category": "Customization",
+      "summary": "Eight card backgrounds, including the original.",
+      "content": "## Choose your card\nIn the bedroom or secret-base [[wardrobe|wardrobe]], scroll to TRAINER CARD and select Original, Emerald, Ocean, Crimson, Lavender, Gold, Rose, or Slate. A small live color swatch accompanies the wardrobe preview.\n\nChoose APPLY to commit the new design. CANCEL or B preserves the previous card color.\n\n## What stays the same?\nYour badge display, Trainer Card stars and card information follow the existing game rules. The styling applies to your own local Trainer Card without altering remote link-card data."
+    },
+    {
+      "id": "dexnav",
+      "title": "DexNav",
+      "category": "Exploration",
+      "summary": "Finding encounters, forgiving approaches, and terrain guidance.",
+      "content": "## Unlock\nDexNav becomes available with Professor Birch's first Pokédex gift. Players returning from older saves with a Pokédex gain it automatically when they continue.\n\n## Searching\nSelect DexNav from the Start menu. Nearby wild-encounter terrain and actual encounter tables must be present. When there is no valid search area, a small upper-left guide explains where DexNav works; dismiss it with A, B or START.\n\n## Approaching a target\nSearching a Pokémon does **not** fail merely because you walk, run or cycle toward it. The target times out after **45 seconds**, rather than the earlier 15-second limit. Going out of signal range, manually cancelling, leaving the map, or letting the timer expire can still end a search. Reach the target to enter the normal battle.\n\n[[shiny|Selectable shiny rates]] also apply to eligible newly generated DexNav encounters."
+    },
+    {
+      "id": "journal",
+      "title": "Adventure Log and played days",
+      "category": "Exploration",
+      "summary": "A notebook of milestones, catches, and dates actually played.",
+      "content": "## Open the notebook\nChoose **ADVENTURE LOG** from the Start menu. It resembles a cream-and-lavender field notebook and stores up to **32 recent entries** including story milestones, locations, and one recent captured Pokémon with its level where available.\n\n## Controls\n- **Left/Right or L/R:** flip older/newer pages.\n- **SELECT:** change All, Day, and Story filters.\n- **Up/Down:** browse available played days in Day mode.\n- **A:** return to the newest page in the active filter.\n- **B or START:** close the notebook back to the pause menu.\n\n## DAY counter\nThe pause menu's DAY counter measures **distinct dates actually played**, not the number of days since the cartridge began. If you play on Monday and Thursday, the skipped intervening dates do not add days. Your accumulated play hours continue normally.\n\nExisting saves start a new journal at Day 1; the game does not invent a complete past travel history."
+    },
+    {
+      "id": "da-bug",
+      "title": "Da Bug",
+      "category": "Exploration",
+      "summary": "The special Leafhopper Pokémon and its one-time PC gift.",
+      "content": "## A special Pokémon\nDa Bug is a single-stage **Bug/Grass** Leafhopper Pokémon, 0.3 m tall and 1.2 kg. Its leaf-like wings help it blend into vegetation.\n\n## One-time gift\nEach new save receives one **level 5** Da Bug in Pokémon Storage. Older saves receive one in the first available PC box slot when continued. Full boxes defer the delivery until space is available; existing Pokémon are never overwritten.\n\nIts starting moves are **Tackle, Leer, Mean Look and Absorb**. The special gift has its own independent **1/10 shiny chance**, regardless of your [[shiny|wild shiny rate]] setting.\n\n## Progression\nDa Bug does not evolve. It learns moves including Bug Bite, Leech Seed, Mega Drain, Giga Drain, Leech Life, Synthesis, Energy Ball and Bug Buzz as it levels. It is excluded from the Random starter pool because that pool requires an available evolution.\n\nThe gift is not a new wild encounter distribution."
+    },
+    {
+      "id": "kanto",
+      "title": "Kanto postgame overview",
+      "category": "Kanto postgame",
+      "summary": "Where you can travel today and where construction continues.",
+      "content": "## Reaching Kanto\nFirst become Hoenn Champion. Visit **Lilycove Harbor**, speak with the League representative for the retained **Invite Ticket**, then speak to the sailor beside the normal ferry attendant. The service connects Lilycove to **Vermilion City** in both directions.\n\nAfter arriving, you can also Surf between northern Hoenn Route 124 and southern Kanto Route 19 when you meet the required ticket, Champion, Surf and badge conditions. The ferry remains available.\n\n## Currently accessible areas\nThe present southeastern and central route network includes Vermilion, Lavender, Fuchsia, Saffron, Celadon, Routes 6–8 and 11–19 (Route 10 is not open). A number of native FireRed-looking gates and interiors remain sealed or only partially developed. Routes 16–18 support walking or normal Emerald bikes.\n\nKanto outdoor wild encounters on developed routes draw from native Kanto species with postgame levels, generally **47–54**. Some optional trainers and birdwatchers are present.\n\n## Getting oriented\nFrom the postgame PokéNav map, press **SELECT** to change the displayed region between Hoenn and Kanto. This is map *browsing*: it does not teleport you or permit cross-region Fly.\n\nSee [[kanto-gyms|Visiting Gym challenges]] and [[survey|Wing Survey]]. The full eight-Gym circuit, all northern and western routes, and new bird/Mew encounters are **not** shipped yet."
+    },
+    {
+      "id": "kanto-gyms",
+      "title": "Kanto visiting Gym challenges",
+      "category": "Kanto postgame",
+      "summary": "Standard or Champion difficulty with one victory per Leader.",
+      "content": "## Two challenges are playable\n**Lt. Surge** in Vermilion City and **Koga** in Fuchsia City are currently playable. A guide stops you when entering the Gym and explains its one-time difficulty choice.\n\n| Leader | Standard | Champion |\n| --- | --- | --- |\n| Lt. Surge | 4 Pokémon, levels 52–56 | 6 Pokémon, levels 72–76 |\n| Koga | 4 Pokémon, levels 56–60 | 6 Pokémon, levels 76–80 |\n\nChoosing Champion does not scale your Pokémon. You can change the choice by talking to the guide before winning; declining a Leader's battle also preserves the challenge.\n\n## One victory each\n**Defeat each Leader only once per save**, regardless of whether you chose Standard or Champion. Losing allows another attempt or a different difficulty. Both difficulty choices advance the same story records.\n\nThese are Kanto visiting challenges. They do not change your eight original Hoenn badges or their field-use rules.\n\n## Coming later\nBrock, Misty, Erika, Sabrina, Blaine and the Viridian Leader are planned, **not playable yet**. Proposed future levels are design targets, not promises of current encounters."
+    },
+    {
+      "id": "survey",
+      "title": "Wing Survey and legendary bird storyline",
+      "category": "Kanto postgame",
+      "summary": "The opening chapter of Oak's investigation and its future direction.",
+      "content": "## The opening report\nSpeak to **Professor Oak's field aide** in Vermilion's Pokémon Fan Club. The aide is investigating unusual sightings following Hoenn's resolved weather crisis. Information about Zapdos, Articuno, Moltres and a possible Mew trail remains tentative.\n\nComplete the [[kanto-gyms|Lt. Surge and Koga]] challenges in either order. The aide's journal shows **0/2, 1/2 or 2/2** opening Gym records and can summarize observations you've already obtained. The aide points you toward the missing Leader if necessary.\n\nSurge reports unusual electrical readings near the Power Plant. Koga reports unusual Seafoam winds and additional bird sightings. Once both records exist, the aide accepts the opening report.\n\n## What is not playable yet\nThe **Power Plant/Zapdos**, **Seafoam/Articuno**, **Mt. Ember/Moltres**, and **Faraway Island/Mew** expedition chapters are planned story ideas—not encounters newly implemented by this Kanto chapter. The later six Kanto Gyms and survey conclusion remain future development.\n\n## Story approach\nThe planned continuation connects Oak and Birch's investigations to Emerald's already-resolved story without replacing Team Magma/Aqua or making the birds villains. Capturing a legendary is not intended to be the only way to document a habitat, but final encounter rules are not yet implemented."
+    },
+    {
+      "id": "status",
+      "title": "Implemented and planned content",
+      "category": "Reference",
+      "summary": "A clear line between shipped systems and future ideas.",
+      "content": "## Implemented now\n- Emerald's core Hoenn adventure with modern EXP Share and badge-earned HM field utilities.\n- National Pokédex early and Champion Rare Candies.\n- Starter selections, wild shiny rate control, following Pokémon.\n- Seasons, dynamic regional weather, clocks and the Adventure Log.\n- Appearance, full grunt costumes, footwear, Trainer Card colors and the wardrobe.\n- DexNav approach improvements and Da Bug gift.\n- Kanto travel and map browsing, central/southern route network, two visiting Gyms and the opening Wing Survey.\n\n## Planned / incomplete\n- The other **six Kanto Gym Leaders**, Kanto League continuation and full north/west map network.\n- The legendary bird habitat expeditions and final Mew episode.\n- Some Kanto interiors and routes are sealed or unpopulated.\n- Further encounter/season hooks and balancing.\n- Formal emulator playtest coverage of many newer systems.\n\n## Be precise when reporting issues\nA passing code check or verified patch means it compiled and produced the expected bytes; it does **not** prove every animation or scene has been manually tested on an emulator. See [[support|Troubleshooting and bug reports]]."
+    },
+    {
+      "id": "support",
+      "title": "Troubleshooting and bug reports",
+      "category": "Reference",
+      "summary": "Save-safe testing and where to report an issue.",
+      "content": "## Common questions\n**The patcher rejects my ROM.** Confirm the original, unmodified Pokémon Emerald U.S./Europe image has SHA-1 \\`f3ae088181bf583e55daf962a92bb46f4f1d07b7\\`. A different revision, previously patched file, or wrong region will fail validation.\n\n**My clock is not advancing in real time.** Enable RTC support in the emulator; if it is unsupported, try manual bedroom time or the gameplay fallback. See [[clock|Clocks]].\n\n**DexNav says to find encounter terrain.** Move closer to an area with valid wild-encounter data. See [[dexnav|DexNav]].\n\n**I cannot access a planned Kanto location.** Some roads and buildings are intentionally closed while development continues. See [[status|Current scope]].\n\n## Report a reproducible bug\nOpen a GitHub issue in the [project issue tracker](https://github.com/BabyCRTTV/pokeemerald-emerald-legends/issues) and include:\n- Your Legends version and Release or Debug variant.\n- Emulator name/version and operating system.\n- New or existing save, and any cheats/debug actions.\n- Exact steps, expected result, actual result and screenshots if useful.\n\nKeep backups of saves before using developer options or switching builds."
+    },
+    {
+      "id": "about",
+      "title": "Wiki policy, credits, and legal notes",
+      "category": "Reference",
+      "summary": "How this wiki is maintained and what it does not distribute.",
+      "content": "## Update policy\nThis wiki is a manually maintained documentation snapshot. A new game release **does not automatically modify these articles**. When the project owner requests a wiki update, articles can be revised to reflect new content and correct older descriptions. The wiki's own revision is independent of the ROM version.\n\n## Companion Android app\nThe official wiki Android companion displays this same live GitHub Pages wiki. The app's pages update when the website is intentionally edited and the device has internet access. It does not download, patch, emulate, or contain the game ROM. The companion needs only internet access; no login, account, files, camera, contacts, or location permission is required. A fresh connection is needed for articles that are not already cached.\n\n## Legal\nPokémon Emerald: Legends is an unofficial, non-commercial fan project, not endorsed by Nintendo, GAME FREAK, Creatures, or The Pokémon Company. Trademarks and characters belong to their owners. The public project supplies source and verified BPS patches, **not** a commercial Pokémon Emerald ROM.\n\n## Technical sources\nThe [source repository](https://github.com/BabyCRTTV/pokeemerald-emerald-legends), its [feature documentation](https://github.com/BabyCRTTV/pokeemerald-emerald-legends/tree/master/docs/features), and [release history](../changelog.html) provide implementation-level detail. This wiki is curated for players rather than mirroring every engineering document."
+    }
+  ]
+}

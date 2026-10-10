@@ -96,6 +96,10 @@ Pokémon Emerald: Legends is built on the work of the `pokeemerald-expansion` co
 
 The existing upstream license, credits, and notices remain part of this fork.
 
+## Player Wiki
+
+The [free Pokémon Emerald: Legends Wiki](https://babycrttv.github.io/pokeemerald-emerald-legends/wiki/) is a searchable, no-login, lavender-themed player encyclopedia. It documents game systems, customization, and the currently playable Kanto postgame. Wiki content is refreshed **only when specifically requested**, not on every ROM release. The companion [Android wiki APK](https://babycrttv.github.io/pokeemerald-emerald-legends/downloads/Emerald-Legends-Wiki.apk) loads that same site and receives its intentionally published article updates without needing a new APK.
+
 ## Project documentation
 
 - [Roadmap](ROADMAP.md)
