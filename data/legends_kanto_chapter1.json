@@ -1,0 +1,116 @@
+{
+  "maps": [
+    {
+      "source": "CeladonCity_Frlg",
+      "name": "LegendsKanto_CeladonCity",
+      "id": "MAP_LEGENDS_KANTO_CELADON_CITY",
+      "layout": "LAYOUT_LEGENDS_KANTO_CELADON_CITY"
+    },
+    {
+      "source": "SaffronCity_Frlg",
+      "name": "LegendsKanto_SaffronCity",
+      "id": "MAP_LEGENDS_KANTO_SAFFRON_CITY",
+      "layout": "LAYOUT_LEGENDS_KANTO_SAFFRON_CITY"
+    },
+    {
+      "source": "Route8_WestEntrance_Frlg",
+      "name": "LegendsKanto_Route8_WestEntrance",
+      "id": "MAP_LEGENDS_KANTO_ROUTE8_WEST_ENTRANCE",
+      "layout": "LAYOUT_LEGENDS_KANTO_ROUTE8_WEST_ENTRANCE"
+    },
+    {
+      "source": "Route16_Frlg",
+      "name": "LegendsKanto_Route16",
+      "id": "MAP_LEGENDS_KANTO_ROUTE16",
+      "layout": "LAYOUT_LEGENDS_KANTO_ROUTE16"
+    },
+    {
+      "source": "Route16_NorthEntrance_1F_Frlg",
+      "name": "LegendsKanto_Route16_NorthEntrance_1F",
+      "id": "MAP_LEGENDS_KANTO_ROUTE16_NORTH_ENTRANCE_1F",
+      "layout": "LAYOUT_LEGENDS_KANTO_ROUTE16_NORTH_ENTRANCE_1F"
+    },
+    {
+      "source": "Route6_Frlg",
+      "name": "LegendsKanto_Route6",
+      "id": "MAP_LEGENDS_KANTO_ROUTE6",
+      "layout": "LAYOUT_LEGENDS_KANTO_ROUTE6"
+    },
+    {
+      "source": "Route6_NorthEntrance_Frlg",
+      "name": "LegendsKanto_Route6_NorthEntrance",
+      "id": "MAP_LEGENDS_KANTO_ROUTE6_NORTH_ENTRANCE",
+      "layout": "LAYOUT_LEGENDS_KANTO_ROUTE6_NORTH_ENTRANCE"
+    },
+    {
+      "source": "CeladonCity_PokemonCenter_1F_Frlg",
+      "name": "LegendsKanto_CeladonCity_PokemonCenter_1F",
+      "id": "MAP_LEGENDS_KANTO_CELADON_CITY_POKEMON_CENTER_1F",
+      "layout": "LAYOUT_LEGENDS_KANTO_CELADON_CITY_POKEMON_CENTER_1F"
+    },
+    {
+      "source": "Route17_Frlg",
+      "name": "LegendsKanto_Route17",
+      "id": "MAP_LEGENDS_KANTO_ROUTE17",
+      "layout": "LAYOUT_LEGENDS_KANTO_ROUTE17"
+    },
+    {
+      "source": "VermilionCity_Gym_Frlg",
+      "name": "LegendsKanto_VermilionCity_Gym",
+      "id": "MAP_LEGENDS_KANTO_VERMILION_CITY_GYM",
+      "layout": "LAYOUT_LEGENDS_KANTO_VERMILION_CITY_GYM"
+    },
+    {
+      "source": "Route7_EastEntrance_Frlg",
+      "name": "LegendsKanto_Route7_EastEntrance",
+      "id": "MAP_LEGENDS_KANTO_ROUTE7_EAST_ENTRANCE",
+      "layout": "LAYOUT_LEGENDS_KANTO_ROUTE7_EAST_ENTRANCE"
+    },
+    {
+      "source": "Route16_NorthEntrance_2F_Frlg",
+      "name": "LegendsKanto_Route16_NorthEntrance_2F",
+      "id": "MAP_LEGENDS_KANTO_ROUTE16_NORTH_ENTRANCE_2F",
+      "layout": "LAYOUT_LEGENDS_KANTO_ROUTE16_NORTH_ENTRANCE_2F"
+    },
+    {
+      "source": "Route18_EastEntrance_2F_Frlg",
+      "name": "LegendsKanto_Route18_EastEntrance_2F",
+      "id": "MAP_LEGENDS_KANTO_ROUTE18_EAST_ENTRANCE_2F",
+      "layout": "LAYOUT_LEGENDS_KANTO_ROUTE18_EAST_ENTRANCE_2F"
+    },
+    {
+      "source": "Route18_Frlg",
+      "name": "LegendsKanto_Route18",
+      "id": "MAP_LEGENDS_KANTO_ROUTE18",
+      "layout": "LAYOUT_LEGENDS_KANTO_ROUTE18"
+    },
+    {
+      "source": "Route7_Frlg",
+      "name": "LegendsKanto_Route7",
+      "id": "MAP_LEGENDS_KANTO_ROUTE7",
+      "layout": "LAYOUT_LEGENDS_KANTO_ROUTE7"
+    },
+    {
+      "source": "Route8_Frlg",
+      "name": "LegendsKanto_Route8",
+      "id": "MAP_LEGENDS_KANTO_ROUTE8",
+      "layout": "LAYOUT_LEGENDS_KANTO_ROUTE8"
+    },
+    {
+      "source": "SaffronCity_PokemonCenter_1F_Frlg",
+      "name": "LegendsKanto_SaffronCity_PokemonCenter_1F",
+      "id": "MAP_LEGENDS_KANTO_SAFFRON_CITY_POKEMON_CENTER_1F",
+      "layout": "LAYOUT_LEGENDS_KANTO_SAFFRON_CITY_POKEMON_CENTER_1F"
+    },
+    {
+      "source": "Route18_EastEntrance_1F_Frlg",
+      "name": "LegendsKanto_Route18_EastEntrance_1F",
+      "id": "MAP_LEGENDS_KANTO_ROUTE18_EAST_ENTRANCE_1F",
+      "layout": "LAYOUT_LEGENDS_KANTO_ROUTE18_EAST_ENTRANCE_1F"
+    }
+  ],
+  "active_gyms": [
+    "LegendsKanto_VermilionCity_Gym",
+    "LegendsKanto_FuchsiaCity_Gym"
+  ]
+}

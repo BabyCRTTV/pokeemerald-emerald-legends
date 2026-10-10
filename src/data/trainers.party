@@ -16947,3 +16947,397 @@ EVs: 64 HP / 80 Atk / 80 Spe
 - Fire Punch
 - Dragon Dance
 - Extreme Speed
+
+/* Legends visiting-Gym teams: difficulty is per Gym, never party scaling. */
+
+=== TRAINER_LEGENDS_KANTO_SURGE_STANDARD ===
+Name: LT. SURGE
+Class: Leader Frlg
+Pic: Leader Lt Surge Frlg
+Gender: Male
+Music: Intense
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Electrode @ Sitrus Berry
+Level: 52
+Ability: Static
+Nature: Timid
+EVs: 40 HP / 40 Atk / 40 SpA / 40 Spe
+- Thunderbolt
+- Volt Switch
+- Light Screen
+- Reflect
+
+Magneton @ Sitrus Berry
+Level: 53
+Ability: Sturdy
+Nature: Modest
+EVs: 40 HP / 40 Atk / 40 SpA / 40 Spe
+- Thunderbolt
+- Flash Cannon
+- Thunder Wave
+- Tri Attack
+
+Electabuzz @ Sitrus Berry
+Level: 54
+Ability: Static
+Nature: Modest
+EVs: 40 HP / 40 Atk / 40 SpA / 40 Spe
+- Thunderbolt
+- Psychic
+- Focus Blast
+- Thunder Wave
+
+Raichu @ Sitrus Berry
+Level: 56
+Ability: Static
+Nature: Timid
+EVs: 40 HP / 40 Atk / 40 SpA / 40 Spe
+- Thunderbolt
+- Grass Knot
+- Surf
+- Nasty Plot
+
+=== TRAINER_LEGENDS_KANTO_SURGE_CHAMPION ===
+Name: LT. SURGE
+Class: Leader Frlg
+Pic: Leader Lt Surge Frlg
+Gender: Male
+Music: Intense
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Electrode @ Sitrus Berry
+Level: 72
+Ability: Static
+Nature: Timid
+EVs: 80 HP / 128 Atk / 128 SpA / 128 Spe
+- Thunderbolt
+- Volt Switch
+- Light Screen
+- Reflect
+
+Magnezone @ Sitrus Berry
+Level: 74
+Ability: Sturdy
+Nature: Modest
+EVs: 80 HP / 128 Atk / 128 SpA / 128 Spe
+- Thunderbolt
+- Flash Cannon
+- Volt Switch
+- Body Press
+
+Magneton @ Sitrus Berry
+Level: 73
+Ability: Sturdy
+Nature: Modest
+EVs: 80 HP / 128 Atk / 128 SpA / 128 Spe
+- Thunderbolt
+- Flash Cannon
+- Thunder Wave
+- Tri Attack
+
+Jolteon @ Sitrus Berry
+Level: 74
+Ability: Volt Absorb
+Nature: Timid
+EVs: 80 HP / 128 Atk / 128 SpA / 128 Spe
+- Thunderbolt
+- Shadow Ball
+- Volt Switch
+- Calm Mind
+
+Electabuzz @ Sitrus Berry
+Level: 74
+Ability: Static
+Nature: Modest
+EVs: 80 HP / 128 Atk / 128 SpA / 128 Spe
+- Thunderbolt
+- Psychic
+- Focus Blast
+- Thunder Wave
+
+Raichu @ Sitrus Berry
+Level: 76
+Ability: Static
+Nature: Timid
+EVs: 80 HP / 128 Atk / 128 SpA / 128 Spe
+- Thunderbolt
+- Grass Knot
+- Surf
+- Nasty Plot
+
+=== TRAINER_LEGENDS_KANTO_KOGA_STANDARD ===
+Name: KOGA
+Class: Leader Frlg
+Pic: Leader Koga Frlg
+Gender: Male
+Music: Intense
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Weezing @ Sitrus Berry
+Level: 56
+Ability: Levitate
+Nature: Bold
+EVs: 40 HP / 40 Atk / 40 SpA / 40 Spe
+- Sludge Bomb
+- Flamethrower
+- Will-O-Wisp
+- Haze
+
+Venomoth @ Sitrus Berry
+Level: 57
+Ability: Tinted Lens
+Nature: Timid
+EVs: 40 HP / 40 Atk / 40 SpA / 40 Spe
+- Bug Buzz
+- Psychic
+- Sleep Powder
+- Quiver Dance
+
+Muk @ Sitrus Berry
+Level: 58
+Ability: Sticky Hold
+Nature: Careful
+EVs: 40 HP / 40 Atk / 40 SpA / 40 Spe
+- Poison Jab
+- Knock Off
+- Shadow Sneak
+- Curse
+
+Crobat @ Sitrus Berry
+Level: 60
+Ability: Inner Focus
+Nature: Jolly
+EVs: 40 HP / 40 Atk / 40 SpA / 40 Spe
+- Cross Poison
+- Brave Bird
+- U-turn
+- Roost
+
+=== TRAINER_LEGENDS_KANTO_KOGA_CHAMPION ===
+Name: KOGA
+Class: Leader Frlg
+Pic: Leader Koga Frlg
+Gender: Male
+Music: Intense
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Weezing @ Sitrus Berry
+Level: 76
+Ability: Levitate
+Nature: Bold
+EVs: 80 HP / 128 Atk / 128 SpA / 128 Spe
+- Sludge Bomb
+- Flamethrower
+- Will-O-Wisp
+- Haze
+
+Tentacruel @ Sitrus Berry
+Level: 78
+Ability: Liquid Ooze
+Nature: Timid
+EVs: 80 HP / 128 Atk / 128 SpA / 128 Spe
+- Surf
+- Sludge Bomb
+- Ice Beam
+- Toxic Spikes
+
+Venomoth @ Sitrus Berry
+Level: 77
+Ability: Tinted Lens
+Nature: Timid
+EVs: 80 HP / 128 Atk / 128 SpA / 128 Spe
+- Bug Buzz
+- Psychic
+- Sleep Powder
+- Quiver Dance
+
+Nidoking @ Sitrus Berry
+Level: 79
+Ability: Sheer Force
+Nature: Modest
+EVs: 80 HP / 128 Atk / 128 SpA / 128 Spe
+- Earth Power
+- Sludge Wave
+- Ice Beam
+- Flamethrower
+
+Muk @ Sitrus Berry
+Level: 78
+Ability: Sticky Hold
+Nature: Careful
+EVs: 80 HP / 128 Atk / 128 SpA / 128 Spe
+- Poison Jab
+- Knock Off
+- Shadow Sneak
+- Curse
+
+Crobat @ Sitrus Berry
+Level: 80
+Ability: Inner Focus
+Nature: Jolly
+EVs: 80 HP / 128 Atk / 128 SpA / 128 Spe
+- Cross Poison
+- Brave Bird
+- U-turn
+- Roost
+
+=== TRAINER_LEGENDS_KANTO_ROUTE6 ===
+Name: EVAN
+Class: Cooltrainer
+Pic: Cooltrainer M
+Gender: Male
+Music: Intense
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Pidgeot @ Sitrus Berry
+Level: 53
+Ability: Keen Eye
+Nature: Timid
+EVs: 40 HP / 40 Atk / 40 SpA / 40 Spe
+- Air Slash
+- Roost
+- Heat Wave
+- Quick Attack
+
+Butterfree @ Sitrus Berry
+Level: 54
+Ability: Compound Eyes
+Nature: Modest
+EVs: 40 HP / 40 Atk / 40 SpA / 40 Spe
+- Bug Buzz
+- Psychic
+- Sleep Powder
+- Giga Drain
+
+Arcanine @ Sitrus Berry
+Level: 55
+Ability: Intimidate
+Nature: Modest
+EVs: 40 HP / 40 Atk / 40 SpA / 40 Spe
+- Flamethrower
+- Extreme Speed
+- Crunch
+- Will-O-Wisp
+
+=== TRAINER_LEGENDS_KANTO_ROUTE7 ===
+Name: ROWAN
+Class: Cooltrainer
+Pic: Cooltrainer M
+Gender: Male
+Music: Intense
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Persian @ Sitrus Berry
+Level: 54
+Ability: Technician
+Nature: Jolly
+EVs: 40 HP / 40 Atk / 40 SpA / 40 Spe
+- Fake Out
+- Slash
+- Bite
+- U-turn
+
+Victreebel @ Sitrus Berry
+Level: 55
+Ability: Chlorophyll
+Nature: Adamant
+EVs: 40 HP / 40 Atk / 40 SpA / 40 Spe
+- Leaf Blade
+- Poison Jab
+- Sleep Powder
+- Sucker Punch
+
+Ninetales @ Sitrus Berry
+Level: 56
+Ability: Flash Fire
+Nature: Timid
+EVs: 40 HP / 40 Atk / 40 SpA / 40 Spe
+- Flamethrower
+- Extrasensory
+- Will-O-Wisp
+- Nasty Plot
+
+=== TRAINER_LEGENDS_KANTO_ROUTE8 ===
+Name: PERRY
+Class: Cooltrainer
+Pic: Cooltrainer M
+Gender: Male
+Music: Intense
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Kadabra @ Sitrus Berry
+Level: 55
+Ability: Synchronize
+Nature: Timid
+EVs: 40 HP / 40 Atk / 40 SpA / 40 Spe
+- Psychic
+- Shadow Ball
+- Recover
+- Reflect
+
+Haunter @ Sitrus Berry
+Level: 56
+Ability: Levitate
+Nature: Timid
+EVs: 40 HP / 40 Atk / 40 SpA / 40 Spe
+- Shadow Ball
+- Sludge Bomb
+- Hypnosis
+- Dark Pulse
+
+Ninetales @ Sitrus Berry
+Level: 56
+Ability: Flash Fire
+Nature: Timid
+EVs: 40 HP / 40 Atk / 40 SpA / 40 Spe
+- Flamethrower
+- Extrasensory
+- Will-O-Wisp
+- Nasty Plot
+
+=== TRAINER_LEGENDS_KANTO_ROUTE17 ===
+Name: AXEL
+Class: Cooltrainer
+Pic: Cooltrainer M
+Gender: Male
+Music: Intense
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Weezing @ Sitrus Berry
+Level: 57
+Ability: Levitate
+Nature: Bold
+EVs: 40 HP / 40 Atk / 40 SpA / 40 Spe
+- Sludge Bomb
+- Flamethrower
+- Will-O-Wisp
+- Haze
+
+Muk @ Sitrus Berry
+Level: 58
+Ability: Sticky Hold
+Nature: Careful
+EVs: 40 HP / 40 Atk / 40 SpA / 40 Spe
+- Poison Jab
+- Knock Off
+- Shadow Sneak
+- Curse
+
+Machamp @ Sitrus Berry
+Level: 59
+Ability: Guts
+Nature: Adamant
+EVs: 40 HP / 40 Atk / 40 SpA / 40 Spe
+- Cross Chop
+- Rock Slide
+- Bullet Punch
+- Knock Off

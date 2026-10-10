@@ -866,7 +866,18 @@
 
 #define TRAINER_LEGENDS_KANTO_ALEX                  855
 
-#define TRAINERS_COUNT_EMERALD     856
+
+// Legends uses the remaining native slots; MAX and system-flag offsets stay stable.
+#define TRAINER_LEGENDS_KANTO_SURGE_STANDARD         856
+#define TRAINER_LEGENDS_KANTO_SURGE_CHAMPION         857
+#define TRAINER_LEGENDS_KANTO_KOGA_STANDARD          858
+#define TRAINER_LEGENDS_KANTO_KOGA_CHAMPION          859
+#define TRAINER_LEGENDS_KANTO_ROUTE6                 860
+#define TRAINER_LEGENDS_KANTO_ROUTE7                 861
+#define TRAINER_LEGENDS_KANTO_ROUTE8                 862
+#define TRAINER_LEGENDS_KANTO_ROUTE17                863
+
+#define TRAINERS_COUNT_EMERALD     864
 #define MAX_TRAINERS_COUNT_EMERALD 864
 
 #if IS_FRLG

@@ -316,9 +316,10 @@ LegendsKanto_EventScript_TownWoman::
 	end
 
 LegendsKanto_Text_TownWoman:
-	.string "We heard HOENN has a new\n"
-	.string "CHAMPION. So that was you!\p"
-	.string "Welcome to VERMILION CITY!$"
+	.string "The LEAGUE has new challenges\n"
+	.string "for visiting CHAMPIONS.\p"
+	.string "OAK's aide is gathering\n"
+	.string "reports at the FAN CLUB.$"
 
 LegendsKanto_EventScript_OldMan::
 	msgbox LegendsKanto_Text_OldMan, MSGBOX_NPC
@@ -355,22 +356,16 @@ LegendsKanto_EventScript_RoadCrew::
 	end
 
 LegendsKanto_Text_RoadCrew:
-	.string "A storm damaged the road\n"
-	.string "north of town. We're checking\l"
-	.string "it is safe before reopening.\p"
-	.string "LT. SURGE is helping the crews.\n"
-	.string "The ferry is still running!$"
+	.string "The north road is open!\n"
+	.string "SAFFRON CITY lies ahead.$"
 
 LegendsKanto_EventScript_GymClosed::
 	msgbox LegendsKanto_Text_GymClosed, MSGBOX_NPC
 	end
 
 LegendsKanto_Text_GymClosed:
-	.string "Sorry, the GYM is closed today.\p"
-	.string "LT. SURGE is out helping with\n"
-	.string "repairs on the roads.\p"
-	.string "He asked us to look after\n"
-	.string "any TRAINERS who came to visit.$"
+	.string "LT. SURGE is accepting\n"
+	.string "visiting CHAMPIONS inside.$"
 
 LegendsKanto_EventScript_CenterVisitor::
 	msgbox LegendsKanto_Text_CenterVisitor, MSGBOX_NPC
@@ -499,10 +494,8 @@ LegendsKanto_EventScript_GymSign::
 	end
 
 LegendsKanto_Text_GymSign:
-	.string "VERMILION CITY POKéMON GYM\n"
-	.string "LEADER: LT. SURGE\p"
-	.string "The Lightning American\n"
-	.string "Currently away on road repairs.$"
+	.string "VERMILION GYM - LT. SURGE\n"
+	.string "Choose your challenge inside.$"
 
 LegendsKanto_EventScript_HarborSign::
 	msgbox LegendsKanto_Text_HarborSign, MSGBOX_SIGN
@@ -518,10 +511,10 @@ LegendsKanto_EventScript_RoadSign::
 	end
 
 LegendsKanto_Text_RoadSign:
-	.string "ROUTE 11 - East of here\n"
-	.string "ROUTE 6 remains closed.$"
+	.string "ROUTE 11 - East\n"
+	.string "ROUTE 6 - North$"
 
-@ Foundation maps deliberately have no NPCs, gifts, trainers or encounters.
+@ Transition shared by the original foundation and later populated chapters.
 LegendsKanto_Foundation_OnTransition::
 	setrespawn HEAL_LOCATION_LEGENDS_KANTO_VERMILION
 	end

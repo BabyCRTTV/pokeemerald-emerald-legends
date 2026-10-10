@@ -12,6 +12,7 @@
 #include "gpu_regs.h"
 #include "menu.h"
 #include "dma3.h"
+#include "region_map.h"
 
 struct Pokenav_MainMenu
 {
@@ -87,6 +88,10 @@ static const struct WindowTemplate sHelpBarWindowTemplate[] =
 
 static const u8 *const sHelpBarTexts[HELPBAR_COUNT] =
 {
+    [HELPBAR_MAP_REGIONS_IN] = COMPOUND_STRING("{A_BUTTON}FULL {B_BUTTON}BACK SELECT:REGION"),
+    [HELPBAR_MAP_REGIONS_IN_FLY] = COMPOUND_STRING("{A_BUTTON}FULL {B_BUTTON}BACK {R_BUTTON}FLY SEL:MAP"),
+    [HELPBAR_MAP_REGIONS] = COMPOUND_STRING("{A_BUTTON}ZOOM {B_BUTTON}BACK SELECT:REGION"),
+    [HELPBAR_MAP_REGIONS_FLY] = COMPOUND_STRING("{A_BUTTON}ZOOM {B_BUTTON}BACK {R_BUTTON}FLY SEL:MAP"),
     [HELPBAR_NONE]                  = COMPOUND_STRING("{CLEAR 0x80}"),
     [HELPBAR_MAP_ZOOMED_OUT]        = COMPOUND_STRING("{A_BUTTON}ZOOM {B_BUTTON}CANCEL"),
     [HELPBAR_MAP_ZOOMED_IN]         = COMPOUND_STRING("{A_BUTTON}FULL {B_BUTTON}CANCEL"),
@@ -663,6 +668,33 @@ void UpdateRegionMapRightHeaderTiles(u32 menuGfxId)
         menu->leftHeaderSprites[1]->oam.tileNum = GetSpriteTileStartByTag(2) + 64;
 }
 
+// Render just the region name within the existing green banner. The temporary
+// window is never put on a BG tilemap or copied to BG VRAM.
+static void DrawLegendsRegionMapHeader(u8 *buffer)
+{
+    static const struct WindowTemplate template =
+    {
+        .bg = 0, .tilemapLeft = 0, .tilemapTop = 0,
+        .width = 8, .height = 4, .paletteNum = 0, .baseBlock = 0,
+    };
+    static const u8 colors[] = {8, 1, 2}; // Existing banner green, white, shadow.
+    struct RegionMap *map = GetSubstructPtr(POKENAV_SUBSTRUCT_REGION_MAP);
+    u8 windowId;
+    u8 *tiles;
+    if (map == NULL)
+        return;
+    windowId = AddWindow(&template);
+    if (windowId == WINDOW_NONE)
+        return;
+    tiles = (u8 *)GetWindowAttribute(windowId, WINDOW_TILE_DATA);
+    CpuCopy16(buffer, tiles, 0x400);
+    FillWindowPixelRect(windowId, PIXEL_FILL(8), 2, 3, 52, 15);
+    AddTextPrinterParameterized3(windowId, FONT_SMALL_NARROW, 2, 3, colors, TEXT_SKIP_DRAW,
+        map->displayRegion == REGION_MAP_KANTO ? COMPOUND_STRING("KANTO MAP") : COMPOUND_STRING("HOENN MAP"));
+    CpuCopy16(tiles, buffer, 0x400);
+    RemoveWindow(windowId);
+}
+
 static void LoadLeftHeaderGfxForMenu(u32 menuGfxId)
 {
     struct Pokenav_MainMenu *menu;
@@ -676,6 +708,8 @@ static void LoadLeftHeaderGfxForMenu(u32 menuGfxId)
     size = GetDecompressedDataSize(sMenuLeftHeaderSpriteSheets[menuGfxId].data);
     LoadPalette(&gPokenavLeftHeader_Pal[tag * 16], OBJ_PLTT_ID(IndexOfSpritePaletteTag(1)), PLTT_SIZE_4BPP);
     DecompressDataWithHeaderWram(sMenuLeftHeaderSpriteSheets[menuGfxId].data, menu->leftHeaderMenuBuffer);
+    if (menuGfxId == POKENAV_GFX_MAP_MENU_ZOOMED_OUT || menuGfxId == POKENAV_GFX_MAP_MENU_ZOOMED_IN)
+        DrawLegendsRegionMapHeader(menu->leftHeaderMenuBuffer);
     RequestDma3Copy(menu->leftHeaderMenuBuffer, (void *)OBJ_VRAM0 + (GetSpriteTileStartByTag(2) * 32), size, 1);
     menu->leftHeaderSprites[1]->oam.tileNum = GetSpriteTileStartByTag(2) + sMenuLeftHeaderSpriteSheets[menuGfxId].size;
 

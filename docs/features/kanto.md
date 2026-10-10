@@ -1,3 +1,7 @@
+# Current chapter (v0.0.28)
+
+The original arrival and map foundation below remain historical documentation. Routes 6–8 and 16–18, Saffron and Celadon are now connected; two visiting Gyms, route encounters and the Wing Survey opening are playable. See [Kanto postgame](kanto-postgame.md) for the authoritative current scope, permanent victory rules and planned chapters.
+
 # Kanto: arrival and regional foundation
 
 Version **0.0.27** adds an intentionally empty eastern/southern Kanto foundation to the existing Vermilion arrival chapter. Walk east from Vermilion through Routes 11, 12, 13, 14 and 15 to Lavender and Fuchsia, then south to Route 19. The new towns, routes and 22 gate/town interiors use native FireRed layout dimensions, blockdata, border data and tileset art. No new NPCs, trainers, gifts, wild encounters or FireRed story events are imported. The new Centers/Marts are empty shells; return to Vermilion for healing and supplies.

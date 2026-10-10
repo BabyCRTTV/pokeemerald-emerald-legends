@@ -686,16 +686,16 @@
 #define FLAG_LEGENDS_WEATHER_CLOCK_INITIALIZED       FLAG_UNUSED_0x26C
 #define FLAG_UNUSED_0x26C  0x26C // Reserved for dynamic weather clock
 #define FLAG_LEGENDS_KANTO_WELCOMED                  0x26D // Vermilion arrival scene
-#define FLAG_UNUSED_0x26E  0x26E // Unused Flag
-#define FLAG_UNUSED_0x26F  0x26F // Unused Flag
-#define FLAG_UNUSED_0x270  0x270 // Unused Flag
-#define FLAG_UNUSED_0x271  0x271 // Unused Flag
-#define FLAG_UNUSED_0x272  0x272 // Unused Flag
-#define FLAG_UNUSED_0x273  0x273 // Unused Flag
-#define FLAG_UNUSED_0x274  0x274 // Unused Flag
-#define FLAG_UNUSED_0x275  0x275 // Unused Flag
-#define FLAG_UNUSED_0x276  0x276 // Unused Flag
-#define FLAG_UNUSED_0x277  0x277 // Unused Flag
+#define FLAG_LEGENDS_KANTO_SURGE_WON  0x26E // One victory across both difficulty teams
+#define FLAG_LEGENDS_KANTO_KOGA_WON  0x26F // One victory across both difficulty teams
+#define FLAG_LEGENDS_KANTO_BROCK_WON  0x270 // One victory across both difficulty teams
+#define FLAG_LEGENDS_KANTO_MISTY_WON  0x271 // One victory across both difficulty teams
+#define FLAG_LEGENDS_KANTO_ERIKA_WON  0x272 // One victory across both difficulty teams
+#define FLAG_LEGENDS_KANTO_SABRINA_WON  0x273 // One victory across both difficulty teams
+#define FLAG_LEGENDS_KANTO_BLAINE_WON  0x274 // One victory across both difficulty teams
+#define FLAG_LEGENDS_KANTO_VIRIDIAN_WON  0x275 // One victory across both difficulty teams
+#define FLAG_LEGENDS_KANTO_SURVEY_STARTED 0x276
+#define FLAG_LEGENDS_KANTO_SURVEY_REPORT 0x277
 #define FLAG_UNUSED_0x278  0x278 // Unused Flag
 #define FLAG_UNUSED_0x279  0x279 // Unused Flag
 #define FLAG_UNUSED_0x27A  0x27A // Unused Flag

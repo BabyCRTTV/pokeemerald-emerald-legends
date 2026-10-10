@@ -29,6 +29,8 @@ struct Pokenav_RegionMapMenu
 {
     u8 unused[12];
     bool32 zoomDisabled;
+    enum RegionMapType displayRegion;
+    bool32 switchingFromZoom;
     u32 (*callback)(struct Pokenav_RegionMapMenu *);
 };
 
@@ -77,6 +79,7 @@ static u32 LoopedTask_RegionMapZoomOut(s32);
 static u32 LoopedTask_RegionMapZoomIn(s32);
 static u32 LoopedTask_ExitRegionMap(s32);
 static u32 LoopedTask_TreatAsPokeNavFlyMap(s32);
+static u32 LoopedTask_SwitchRegion(s32);
 
 extern const u16 gRegionMapCityZoomTiles_Pal[];
 extern const u32 gRegionMapCityZoomText_Gfx[];
@@ -125,6 +128,7 @@ static const LoopedTask sRegionMapLoopTaskFuncs[] =
     [POKENAV_MAP_FUNC_ZOOM_IN]      = LoopedTask_RegionMapZoomIn,
     [POKENAV_MAP_FUNC_EXIT]         = LoopedTask_ExitRegionMap,
     [POKENAV_MAP_FUNC_FLY]          = LoopedTask_TreatAsPokeNavFlyMap,
+    [POKENAV_MAP_FUNC_SWITCH_REGION] = LoopedTask_SwitchRegion,
 };
 
 static const struct CompressedSpriteSheet sCityZoomTextSpriteSheet[1] =
@@ -182,6 +186,7 @@ u32 PokenavCallback_Init_RegionMap(void)
     if (!AllocSubstruct(POKENAV_SUBSTRUCT_REGION_MAP, sizeof(struct RegionMap)))
         return FALSE;
 
+    state->displayRegion = GetRegionMapType(gMapHeader.regionMapSectionId);
     state->zoomDisabled = IsEventIslandMapSecId(gMapHeader.regionMapSectionId);
     if (!state->zoomDisabled)
         state->callback = HandleRegionMapInput;
@@ -219,8 +224,13 @@ static u32 HandleRegionMapInput(struct Pokenav_RegionMapMenu *state)
     case MAP_INPUT_B_BUTTON:
         state->callback = GetExitRegionMapMenuId;
         return POKENAV_MAP_FUNC_EXIT;
+    case MAP_INPUT_SELECT_BUTTON:
+        // Region browsing is unlocked with the postgame invitation.
+        if (FlagGet(FLAG_SYS_GAME_CLEAR))
+            return POKENAV_MAP_FUNC_SWITCH_REGION;
+        break;
     case MAP_INPUT_R_BUTTON:
-        if (regionMap->mapSecType == MAPSECTYPE_CITY_CANFLY && FlagGet(OW_FLAG_POKE_RIDER)
+        if (RegionMap_IsViewingCurrentRegion() && regionMap->mapSecType == MAPSECTYPE_CITY_CANFLY && FlagGet(OW_FLAG_POKE_RIDER)
         && Overworld_MapTypeAllowsTeleportAndFly(gMapHeader.mapType) == TRUE)
             return POKENAV_MAP_FUNC_FLY;
     }
@@ -772,7 +782,16 @@ void UpdateRegionMapHelpBarText(void)
 {
     struct RegionMap* regionMap = GetSubstructPtr(POKENAV_SUBSTRUCT_REGION_MAP);
 
-    if (regionMap->mapSecType == MAPSECTYPE_CITY_CANFLY && FlagGet(OW_FLAG_POKE_RIDER)
+    if (FlagGet(FLAG_SYS_GAME_CLEAR))
+    {
+        bool32 canFly = RegionMap_IsViewingCurrentRegion() && regionMap->mapSecType == MAPSECTYPE_CITY_CANFLY
+            && FlagGet(OW_FLAG_POKE_RIDER) && Overworld_MapTypeAllowsTeleportAndFly(gMapHeader.mapType);
+        if (IsRegionMapZoomed())
+            PrintHelpBarText(canFly ? HELPBAR_MAP_REGIONS_IN_FLY : HELPBAR_MAP_REGIONS_IN);
+        else
+            PrintHelpBarText(canFly ? HELPBAR_MAP_REGIONS_FLY : HELPBAR_MAP_REGIONS);
+    }
+    else if (RegionMap_IsViewingCurrentRegion() && regionMap->mapSecType == MAPSECTYPE_CITY_CANFLY && FlagGet(OW_FLAG_POKE_RIDER)
         && Overworld_MapTypeAllowsTeleportAndFly(gMapHeader.mapType) == TRUE)
     {
         if (IsRegionMapZoomed())
@@ -787,4 +806,60 @@ void UpdateRegionMapHelpBarText(void)
         else
             PrintHelpBarText(HELPBAR_MAP_ZOOMED_OUT);
     }
+}
+
+static u32 LoopedTask_SwitchRegion(s32 taskState)
+{
+    struct Pokenav_RegionMapMenu *menu = GetSubstructPtr(POKENAV_SUBSTRUCT_REGION_MAP_STATE);
+    struct Pokenav_RegionMapGfx *gfx = GetSubstructPtr(POKENAV_SUBSTRUCT_REGION_MAP_ZOOM);
+    struct RegionMap *map = GetSubstructPtr(POKENAV_SUBSTRUCT_REGION_MAP);
+    switch (taskState)
+    {
+    case 0:
+        PlaySE(SE_SELECT);
+        PokenavFadeScreen(POKENAV_FADE_TO_BLACK);
+        return LT_INC_AND_PAUSE;
+    case 1:
+        if (IsPaletteFadeActive())
+            return LT_PAUSE;
+        menu->switchingFromZoom = IsRegionMapZoomed();
+        if (menu->switchingFromZoom)
+        {
+            ChangeBgYForZoom(FALSE);
+            SetRegionMapDataForZoom();
+        }
+        return LT_INC_AND_PAUSE;
+    case 2:
+        if (menu->switchingFromZoom && (UpdateRegionMapZoom() || IsChangeBgYForZoomActive()))
+            return LT_PAUSE;
+        FreeRegionMapIconResources();
+        menu->displayRegion = menu->displayRegion == REGION_MAP_HOENN ? REGION_MAP_KANTO : REGION_MAP_HOENN;
+        InitRegionMapData(map, &sRegionMapBgTemplates[1], FALSE);
+        RegionMap_SetDisplayRegion(menu->displayRegion);
+        return LT_INC_AND_PAUSE;
+    case 3:
+        if (LoadRegionMapGfx())
+            return LT_PAUSE;
+        CreateRegionMapCursor(5, 10);
+        if (RegionMap_IsViewingCurrentRegion())
+        {
+            CreateRegionMapPlayerIcon(4, 9);
+            TrySetPlayerIconBlink();
+        }
+        UpdateMapSecInfoWindow(gfx);
+        UpdateRegionMapHelpBarText();
+        LoadLeftHeaderGfxForIndex(POKENAV_GFX_MAP_MENU_ZOOMED_OUT);
+        UpdateRegionMapRightHeaderTiles(POKENAV_GFX_MAP_MENU_ZOOMED_OUT);
+        return LT_INC_AND_PAUSE;
+    case 4:
+        if (IsDma3ManagerBusyWithBgCopy_(gfx) || WaitForHelpBar())
+            return LT_PAUSE;
+        PokenavFadeScreen(POKENAV_FADE_FROM_BLACK);
+        return LT_INC_AND_PAUSE;
+    case 5:
+        if (IsPaletteFadeActive())
+            return LT_PAUSE;
+        break;
+    }
+    return LT_FINISH;
 }

@@ -367,8 +367,36 @@ static const u8 sDoorAnimTiles_Fuchsia_Legends[] = INCGFX_U8("graphics/door_anim
 static const u8 sDoorAnimPalettes_Fuchsia_Legends[] = {8, 8, 8, 8, 8, 8, 8, 8};
 #endif
 
+static const u8 sDoorAnimTiles_Saffron_LegendsKanto[] = INCGFX_U8("graphics/door_anims/saffron.png", ".4bpp");
+static const u8 sDoorAnimPalettes_Saffron_LegendsKanto[] = {8, 8, 8, 8, 8, 8, 8, 8};
+
+static const u8 sDoorAnimTiles_DeptStore_LegendsKanto[] = INCGFX_U8("graphics/door_anims/dept_store.png", ".4bpp");
+static const u8 sDoorAnimPalettes_DeptStore_LegendsKanto[] = {3, 3, 3, 3, 3, 3, 3, 3};
+
 static const struct DoorGraphics sDoorAnimGraphicsTable[] =
 {
+#if !IS_FRLG
+    {
+        .metatileNum = METATILE_CeladonCity_DeptStoreDoor,
+        .tileset = &gTileset_LegendsKantoCeladonCity,
+        .sound = DOOR_SOUND_SLIDING,
+        .size = DOOR_SIZE_1x1,
+        .tiles = sDoorAnimTiles_DeptStore_LegendsKanto,
+        .palettes = sDoorAnimPalettes_DeptStore_LegendsKanto
+    },
+#endif
+
+#if !IS_FRLG
+    {
+        .metatileNum = METATILE_SaffronCity_Door,
+        .tileset = &gTileset_LegendsKantoSaffronCity,
+        .sound = DOOR_SOUND_NORMAL,
+        .size = DOOR_SIZE_1x1,
+        .tiles = sDoorAnimTiles_Saffron_LegendsKanto,
+        .palettes = sDoorAnimPalettes_Saffron_LegendsKanto
+    },
+#endif
+
 #if !IS_FRLG
     {
         .metatileNum = METATILE_FuchsiaCity_Door,
