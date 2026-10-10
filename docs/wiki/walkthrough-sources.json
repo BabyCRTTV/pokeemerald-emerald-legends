@@ -1,0 +1,45 @@
+{
+  "gameVersion": "0.0.31.1",
+  "reviewedCommit": "4ed1be408018b50961c905859391208d2758b9e9",
+  "policy": "Manual guide review only; no automatic game-release sync; encounter snapshot unchanged.",
+  "chapters": {
+    "walkthrough-littleroot": [
+      "src/main_menu.c",
+      "src/legends_starters.c",
+      "src/battle_controllers.c",
+      "src/new_game.c",
+      "src/legends_settings.c",
+      "src/legends_da_bug.c",
+      "data/scripts/players_house.inc",
+      "data/maps/LittlerootTown/scripts.inc",
+      "data/maps/LittlerootTown_BrendansHouse_2F/scripts.inc",
+      "data/maps/LittlerootTown_MaysHouse_2F/scripts.inc",
+      "data/maps/Route101/scripts.inc",
+      "data/maps/Route103/scripts.inc",
+      "data/maps/OldaleTown/scripts.inc",
+      "data/maps/LittlerootTown_ProfessorBirchsLab/scripts.inc"
+    ],
+    "walkthrough-petalburg": [
+      "data/maps/Route102/scripts.inc",
+      "data/maps/PetalburgCity/scripts.inc",
+      "data/maps/PetalburgCity_Gym/scripts.inc",
+      "data/maps/Route104/scripts.inc",
+      "data/maps/PetalburgWoods/scripts.inc",
+      "data/maps/Route104_PrettyPetalFlowerShop/scripts.inc",
+      "src/data/trainers.party",
+      "docs/wiki/dex-data.json"
+    ],
+    "walkthrough-rustboro": [
+      "data/maps/RustboroCity/scripts.inc",
+      "data/maps/RustboroCity_Gym/scripts.inc",
+      "data/maps/RustboroCity_CuttersHouse/scripts.inc",
+      "data/maps/Route116/scripts.inc",
+      "data/maps/RusturfTunnel/scripts.inc",
+      "data/maps/RustboroCity_DevonCorp_3F/scripts.inc",
+      "data/maps/Route104_MrBrineysHouse/scripts.inc",
+      "src/data/trainers.party",
+      "src/field_move.c",
+      "docs/wiki/dex-data.json"
+    ]
+  }
+}

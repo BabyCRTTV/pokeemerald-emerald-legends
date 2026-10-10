@@ -144,3 +144,5 @@
 @keyframes rotom-morph-face{to{opacity:1;transform:scale(1) rotate(0)}}
 @keyframes rotom-depart{0%,25%{transform:translate(0,0)}40%{transform:translate(-8px,-12px) rotate(-8deg)}70%{opacity:1;transform:translate(72px,-80px) rotate(12deg)}100%{opacity:0;transform:translate(200px,-210px) rotate(22deg) scale(.65)}}
 @media(prefers-reduced-motion:reduce){.return-to-search.is-flying,.is-flying .rotom-arrow,.is-flying .rotom-companion{animation:none}}
+
+.walkthrough-shortcut{margin:14px 0 18px}.walkthrough-shortcut a{display:inline-block;font-weight:800;color:#fff;background:#694795;border:1px solid #694795;border-radius:12px;padding:9px 16px;text-decoration:none}.walkthrough-shortcut a:hover{background:#543579}.walkthrough-shortcut small{display:block;margin-top:3px;font-size:12px;color:#686079}

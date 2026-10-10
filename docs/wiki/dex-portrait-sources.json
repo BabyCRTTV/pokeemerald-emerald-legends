@@ -1,0 +1,11 @@
+{
+  "sourceCommit": "041bd89abd1fde1b5c9f13c8900647651384e0a6",
+  "count": 1026,
+  "columns": 32,
+  "rows": 33,
+  "tileSize": 64,
+  "files": {
+    "dex-portraits.webp": "92d2181e180322871275b84875c3e208aacb3bb372a0e3413398ac3e3e947944",
+    "dex-portraits-shiny.webp": "76fac52969fd012667bf5ce7db953671d35465272ff3a768206f631e6d0b9e2d"
+  }
+}
