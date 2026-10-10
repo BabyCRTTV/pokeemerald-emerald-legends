@@ -53,6 +53,26 @@ jobs:
           echo "ANDROID_HOME=$SDK_ROOT" >> "$GITHUB_ENV"
           "$SDKMANAGER" --sdk_root="$SDK_ROOT" "platforms;android-35" "build-tools;35.0.0"
 
+      - name: Verify published APK update identity
+        run: |
+          "$ANDROID_HOME/build-tools/35.0.0/apksigner" verify --verbose --print-certs docs/downloads/Emerald-Legends-Wiki.apk > /tmp/published-wiki-certificate.txt
+          "$ANDROID_HOME/build-tools/35.0.0/aapt" dump badging docs/downloads/Emerald-Legends-Wiki.apk > /tmp/published-wiki-badging.txt
+          python3 - <<'PY'
+          import hashlib,json,re
+          from pathlib import Path
+          manifest=json.loads(Path('docs/wiki/android-version.json').read_text())
+          apk=Path('docs/downloads/Emerald-Legends-Wiki.apk')
+          assert hashlib.sha256(apk.read_bytes()).hexdigest()==manifest['sha256']
+          certificate=Path('/tmp/published-wiki-certificate.txt').read_text()
+          fingerprint=re.search(r'Signer #1 certificate SHA-256 digest: ([0-9a-f]+)',certificate).group(1)
+          assert fingerprint==manifest['certificateSha256']
+          badging=Path('/tmp/published-wiki-badging.txt').read_text()
+          assert "name='com.babycrttv.emeraldlegendswiki'" in badging
+          assert "versionCode='"+str(manifest['versionCode'])+"'" in badging
+          assert "versionName='"+manifest['version']+"'" in badging
+          print('Published APK signature, package, version and checksum verified')
+          PY
+
       - name: Configure Gradle
         uses: gradle/actions/setup-gradle@v4
         with:
@@ -111,7 +131,7 @@ jobs:
             echo "WIKI_SIGNING=persistent-release" >> "$GITHUB_ENV"
           else
             echo "WIKI_SIGNING=ephemeral-debug" >> "$GITHUB_ENV"
-            echo "::warning::Missing persistent signing secrets; Android may require an uninstall for a differently signed build."
+            echo "::notice::No permanent signing secrets: building a test artifact only. The published APK will remain unchanged."
           fi
 
       - name: Build wiki APK
@@ -143,6 +163,18 @@ jobs:
             echo "::error::Unexpected Android permissions"
             exit 1
           fi
+          "$ANDROID_HOME/build-tools/35.0.0/apksigner" verify --print-certs "$APK" > /tmp/wiki-certificate.txt
+          python3 - <<'PY'
+          import json,os,re
+          from pathlib import Path
+          text=Path('/tmp/wiki-certificate.txt').read_text()
+          fingerprint=re.search(r'Signer #1 certificate SHA-256 digest: ([0-9a-f]+)',text).group(1)
+          with open(os.environ['GITHUB_ENV'],'a') as env:
+              print('WIKI_CERTIFICATE_SHA256='+fingerprint,file=env)
+          expected=json.loads(Path('docs/wiki/android-version.json').read_text()).get('certificateSha256')
+          if os.environ['WIKI_SIGNING']=='persistent-release' and expected:
+              assert fingerprint==expected, 'Signing certificate changed: refusing incompatible APK publication'
+          PY
           sha256sum "$APK"
 
       - name: Upload build artifact
@@ -152,7 +184,7 @@ jobs:
           path: ${{ env.APK_PATH }}
 
       - name: Publish standalone APK to project website
-        if: github.event_name != 'pull_request'
+        if: github.event_name != 'pull_request' && env.WIKI_SIGNING == 'persistent-release'
         run: |
           mkdir -p docs/downloads
           cp "$APK_PATH" docs/downloads/Emerald-Legends-Wiki.apk
@@ -166,6 +198,7 @@ jobs:
               'versionCode':int(os.environ['WIKI_VERSION_CODE']),
               'url':'https://babycrttv.github.io/pokeemerald-emerald-legends/downloads/Emerald-Legends-Wiki.apk',
               'signing':os.environ['WIKI_SIGNING'],
+              'certificateSha256':os.environ['WIKI_CERTIFICATE_SHA256'],
               'sha256':hashlib.sha256(apk.read_bytes()).hexdigest()}
           Path('docs/wiki/android-version.json').write_text(json.dumps(manifest,indent=2)+'\n')
           print('Publishing APK version',manifest['version'])
