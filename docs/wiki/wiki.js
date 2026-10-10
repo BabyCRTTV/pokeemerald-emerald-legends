@@ -1,6 +1,7 @@
 "use strict";
 (() => {
  const root=document.getElementById("content"),nav=document.getElementById("sidebar"),outline=document.getElementById("outline"),menu=document.getElementById("menu");
+ if(/LegendsWikiAndroid\/\d+/.test(navigator.userAgent))document.documentElement.classList.add("legends-wiki-android");
  const categories=["Start here","Core gameplay","World & time","Customization","Exploration","Kanto postgame","Reference"];
  const escape=s=>String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
  let pages=[],byId=new Map();
@@ -49,7 +50,7 @@
  function home(){
    history.replaceState({},'','./');side('');
    outline.innerHTML='<strong>Wiki guide</strong><p>Choose an article or search for a feature. Everything is open to read.</p>';
-   root.innerHTML='<section class="welcome"><p class="eyebrow">Unofficial player encyclopedia</p><h1>Welcome to the Legends Wiki.</h1><p>Guides for the growing world of Pokémon Emerald: Legends. Find clear answers about core mechanics, trainer customization, seasons, and the playable Kanto postgame.</p><label class="searchrow"><span aria-hidden="true">⌕</span><input id="search" type="search" placeholder="Search articles, features, and places…" aria-label="Search wiki" autocomplete="off"><span class="small">/</span></label><p class="results-note" id="resultsnote">Browse '+pages.length+' articles across seven sections.</p></section><div id="cards"></div>';
+   root.innerHTML='<section class="welcome"><p class="eyebrow">Unofficial player encyclopedia</p><h1>Welcome to the Legends Wiki.</h1><p>Guides for the growing world of Pokémon Emerald: Legends. Find clear answers about core mechanics, trainer customization, seasons, and the playable Kanto postgame.</p><div class="dex-shortcuts" aria-label="LegendsDex shortcuts"><a href="dex.html?view=routes">⌁ Routes <small>Wild encounter guide</small></a><a href="dex.html?view=species">◈ Pokédex <small>Browse Pokémon</small></a></div><label class="searchrow"><span aria-hidden="true">⌕</span><input id="search" type="search" placeholder="Search articles, features, and places…" aria-label="Search wiki" autocomplete="off"><span class="small">/</span></label><p class="results-note" id="resultsnote">Browse '+pages.length+' articles across seven sections.</p></section><div id="cards"></div>';
    const input=document.getElementById('search');input.addEventListener('input',()=>cards(input.value));cards('');document.title='Emerald: Legends Wiki';menuClose();
  }
  function cards(q){

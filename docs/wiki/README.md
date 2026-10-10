@@ -47,3 +47,7 @@ Sprites load from the project's own public GitHub source art at the snapshot com
 - A transparent single-frame **Happiny** source sprite is used as the launcher and installer icon for both platforms. This does not alter the sprites shown *within* the LegendsDex.
 - Android release signing requires private GitHub Actions secrets for seamless install-over-install behavior; without them the builder uses a temporary debug signature, and Android may require uninstalling the previous version. See `android/wiki/README.md`.
 - Windows installers are built with the same stable NSIS application ID, optional desktop shortcut and launch-after-install choice. They are not code-signed yet; Windows SmartScreen may warn.
+
+## Foldable and tablet display support
+
+The companion pages use `fold-layout.css` after the original lavender styles. Navigation persists in folded and unfolded states. The Android wiki home presents direct Routes and Pokédex access, which links into the selected LegendsDex view. CSS uses viewport width and near-square aspect-ratio media queries; Android WebView uses the responsive viewport without forcing portrait orientation. No ROM files are modified.

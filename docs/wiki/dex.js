@@ -69,7 +69,7 @@
     more.textContent="Show more "+(view==="routes"?"locations":"Pokémon")+" ("+Math.max(0,total-shown)+" remaining)";
   }
   function changeView(next){
-    if(next!==view){view=next;shown=0;query="";search.value="";document.title=(view==="routes"?"Wild encounters":"National Pokédex")+" · Emerald: Legends Wiki";render();}
+    if(next!==view){view=next;shown=0;query="";search.value="";const url=new URL(location.href);url.searchParams.set("view",next);url.searchParams.delete("pokemon");history.replaceState(null,"",url);document.title=(view==="routes"?"Wild encounters":"National Pokédex")+" · Emerald: Legends Wiki";render();}
     window.scrollTo({top:0,behavior:"smooth"});
   }
   function openPokemon(id,share=true){
@@ -121,6 +121,8 @@
     if(!Array.isArray(json.maps)||!Array.isArray(json.species)||json.maps.length===0)throw Error("Invalid Pokédex data");
     data=json;generateMapIndex();
     const link=new URL(location.href),pokemon=link.searchParams.get("pokemon")?.toUpperCase(),map=link.searchParams.get("map");
+    if(link.searchParams.get("view")==="species")view="species";
+    if(link.searchParams.get("view")==="routes")view="routes";
     if(map){query="";region="all";method="all";const ix=data.maps.findIndex(m=>m.id===map);shown=ix>=0?Math.max(ix+1,8):8;}
     if(pokemon&&bySpecies.has(pokemon)){view="species";shown=48;}
     render();

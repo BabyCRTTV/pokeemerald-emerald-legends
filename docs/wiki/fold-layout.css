@@ -1,0 +1,65 @@
+/* Foldable layout corrections. Original lavender theme remains in each page's base CSS. */
+:root{--quick-nav-height:76px}
+.dex-brand-compact,.install-short{display:none}
+.topbar .top-inner{gap:clamp(8px,2vw,18px)}
+.topbar .site-mark{min-width:0;flex-shrink:1;white-space:nowrap}
+.topbar .dex-tools{display:flex;align-items:center;gap:clamp(6px,1vw,12px);flex-shrink:0}
+.topbar .dex-tools button{white-space:nowrap;flex-shrink:0}
+.topbar .dex-tools #header-search{flex:0 0 auto}
+.top .brand{min-width:0}
+.top .navlinks{flex-shrink:0}
+.top .navlinks .update-wiki{white-space:nowrap}
+.dex-shortcuts{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.dex-shortcuts a{flex:1 1 160px;min-height:54px;display:flex;justify-content:center;align-items:center;gap:9px;text-decoration:none;text-align:center;padding:10px 14px;border-radius:12px;border:1px solid #d9c4f0;background:#eee5fa;color:#593e7d;font-weight:800}
+.dex-shortcuts a small{font-size:11px;font-weight:600;color:#88749c}
+.dex-shortcuts a:hover{background:#e4d4f7}
+.wiki-mobile-nav{display:none}
+/* Use the available viewport, not device names. Unfolded phones often cross 580px. */
+@media (max-width:1100px), (hover:none) and (pointer:coarse){
+  .mobile-nav{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));position:fixed;z-index:20;bottom:0;left:0;right:0;width:100%;height:calc(var(--quick-nav-height) + env(safe-area-inset-bottom,0px));padding:6px clamp(12px,4vw,40px) calc(7px + env(safe-area-inset-bottom,0px));gap:clamp(8px,3vw,20px);align-items:center;background:rgba(255,252,255,.98);border-top:1px solid #dfd2ee;box-shadow:0 -5px 22px #3f2c6220;backdrop-filter:blur(10px)}
+  .mobile-nav button{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;min-height:55px;min-width:0;font-size:20px;padding:5px 10px;border-radius:13px;background:transparent;border:1px solid transparent;color:#7c6993}
+  .mobile-nav button.active{background:#eee5fb;color:#5d418a;border-color:#dcc9f1}
+  .mobile-nav button span{font-size:12px;font-weight:800}
+  .shell{padding-bottom:calc(107px + env(safe-area-inset-bottom,0px))}
+  html.legends-wiki-android .wiki-mobile-nav{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));position:fixed;z-index:20;bottom:0;left:0;right:0;width:100%;min-height:calc(var(--quick-nav-height) + env(safe-area-inset-bottom,0px));gap:clamp(8px,3vw,20px);padding:6px clamp(12px,4vw,40px) calc(7px + env(safe-area-inset-bottom,0px));background:rgba(255,252,255,.98);border-top:1px solid #dfd2ee;box-shadow:0 -5px 22px #3f2c6220;backdrop-filter:blur(10px)}
+  .wiki-mobile-nav a{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:55px;gap:1px;font-size:19px;font-weight:800;text-decoration:none;background:#eee5fb;color:#5d418a;border:1px solid #dfcdf3;border-radius:13px}
+  .wiki-mobile-nav a span{font-size:12px}
+  html.legends-wiki-android body{padding-bottom:calc(104px + env(safe-area-inset-bottom,0px))}
+}
+@media(max-width:640px){
+  .topbar{height:auto;min-height:56px}
+  .topbar .top-inner{height:auto;min-height:56px;padding:7px 12px;display:flex;align-items:center;justify-content:space-between;flex-wrap:nowrap}
+  .topbar .dex-tools{display:flex!important;gap:6px;margin-left:auto;min-width:0}
+  .topbar .site-mark{font-size:12px;gap:6px}
+  .topbar .site-mark .brand-icon{width:30px;height:30px;flex-shrink:0}
+  .topbar .dex-tools button{min-height:41px;padding:7px 9px;font-size:12px}
+  .topbar .dex-tools #header-search{width:42px;padding:7px}
+  .install-full{display:none}
+  .install-short{display:inline}
+  .hero h1{font-size:clamp(29px,7.2vw,39px);letter-spacing:-1px;text-wrap:balance}
+  .shell{padding-inline:clamp(11px,3vw,18px)}
+  .dex-shortcuts a{min-height:50px;flex-basis:140px;padding:8px 10px;font-size:13px}
+  .dex-shortcuts a small{display:none}
+  .top .brand{font-size:clamp(10px,2.7vw,13px)}
+  .top .navlinks .update-wiki{font-size:11px;min-height:42px;padding:6px 8px}
+}
+@media(max-width:400px){
+  .topbar .dex-brand-full{display:none}
+  .topbar .dex-brand-compact{display:inline;font-size:12px;white-space:nowrap}
+  .topbar .site-mark .brand-icon{display:none}
+}
+@media (min-width:620px) and (max-width:1100px) and (max-aspect-ratio:6/5){
+  .topbar .top-inner{padding-inline:clamp(16px,3vw,30px)}
+  .topbar .site-mark{font-size:clamp(13px,1.75vw,17px)}
+  .shell{padding-top:clamp(16px,2.8vw,26px);padding-inline:clamp(18px,3vw,30px)}
+  .hero{padding:clamp(22px,3vw,30px)}
+  .hero h1{font-size:clamp(29px,4.3vw,41px);line-height:1.13}
+  .hero p{max-width:56ch;font-size:clamp(13px,1.7vw,16px);line-height:1.6}
+  .tools{padding:clamp(13px,2vw,19px)}
+  .enc-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .top .top-inner{flex-wrap:nowrap}
+}
+.hero,.tools,.route-card,.encounter,.dex-card,.results-toolbar{min-width:0}
+.encounter strong,.dex-card strong{overflow-wrap:anywhere}
+@media(max-width:350px){.topbar .dex-brand-compact{font-size:10px}.topbar .dex-tools button{font-size:11px;padding:6px}}
+@media(prefers-reduced-motion:reduce){.mobile-nav,.wiki-mobile-nav{backdrop-filter:none}}

@@ -38,8 +38,8 @@ public final class MainActivity extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getWindow().setStatusBarColor(Color.rgb(231, 242, 232));
-        getWindow().setNavigationBarColor(Color.rgb(231, 242, 232));
+        getWindow().setStatusBarColor(Color.rgb(244, 237, 251));
+        getWindow().setNavigationBarColor(Color.rgb(244, 237, 251));
         getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
                 | View.SYSTEM_UI_FLAG_LIGHT_NAVIGATION_BAR);
         buildInterface();
@@ -69,7 +69,7 @@ public final class MainActivity extends Activity {
     private void buildInterface() {
         LinearLayout layout = new LinearLayout(this);
         layout.setOrientation(LinearLayout.VERTICAL);
-        layout.setBackgroundColor(Color.rgb(246, 250, 245));
+        layout.setBackgroundColor(Color.rgb(248, 245, 255));
 
         browserContainer = new FrameLayout(this);
         browser = new WebView(this);
@@ -79,12 +79,12 @@ public final class MainActivity extends Activity {
         offlinePanel.setOrientation(LinearLayout.VERTICAL);
         offlinePanel.setGravity(Gravity.CENTER);
         offlinePanel.setPadding(dp(28), dp(24), dp(28), dp(24));
-        offlinePanel.setBackgroundColor(Color.rgb(246, 250, 245));
+        offlinePanel.setBackgroundColor(Color.rgb(248, 245, 255));
         TextView notice = new TextView(this);
         notice.setText("No connection to the Legends Wiki\n\nYour articles are hosted online and updated only when the project owner publishes a wiki revision. Connect to the internet and try again.");
         notice.setTextSize(17);
         notice.setGravity(Gravity.CENTER);
-        notice.setTextColor(Color.rgb(39, 75, 55));
+        notice.setTextColor(Color.rgb(69, 52, 94));
         offlinePanel.addView(notice);
         Button retry = makeButton("Try again", "Retry loading the wiki");
         retry.setOnClickListener(v -> { hideOffline(); browser.loadUrl(HOME); });
@@ -129,6 +129,8 @@ public final class MainActivity extends Activity {
         settings.setJavaScriptEnabled(true);
         settings.setUserAgentString(settings.getUserAgentString() + " LegendsWikiAndroid/" + installedVersionCode());
         settings.setDomStorageEnabled(true);
+        settings.setUseWideViewPort(true);
+        settings.setLoadWithOverviewMode(false);
         settings.setAllowFileAccess(false);
         settings.setAllowContentAccess(false);
         settings.setJavaScriptCanOpenWindowsAutomatically(false);
