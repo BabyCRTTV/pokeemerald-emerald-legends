@@ -27,6 +27,7 @@ jobs:
         run: |
           node --check docs/wiki/wiki.js
           node --check docs/wiki/dex.js
+          node --check docs/wiki/dex-sprites.js
       - name: Validate wiki and encounter snapshot
         run: |
           python3 - <<'PY'

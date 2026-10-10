@@ -9,7 +9,8 @@ window.LegendsSprites = (() => {
     ? new IntersectionObserver(entries => {
         for (const entry of entries) if (entry.isIntersecting) {
           observer.unobserve(entry.target);
-          load(entry.target);
+          const img=entry.target.querySelector("img[data-icon]");
+          if (img) load(img);
         }
       }, {rootMargin:"180px"})
     : null;
@@ -116,7 +117,7 @@ window.LegendsSprites = (() => {
   function hydrate(scope,commit) {
     scope.querySelectorAll("img[data-icon]").forEach(img=>{
       img.dataset.sourceCommit=commit;
-      if (observer) observer.observe(img);
+      if (observer) observer.observe(img.closest(".thumb"));
       else load(img);
     });
   }
