@@ -55,6 +55,7 @@ static void CheckPixels(const u8*result,const u8*original,const u8*mask,int size
  }
 }
 int main(int argc,char**argv){
+ assert(sizeof(sWorldPixels)<=16*1024); // Keep within the GBA RAM budget.
  FILE*gallery=argc>1?fopen(argv[1],"wb"):NULL;
  for(int s=0;s<8;s++){
   shoes=s;

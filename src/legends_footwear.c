@@ -7,13 +7,15 @@
 
 #include "data/legends/footwear_masks.h"
 
-// Two stable banks: the local player can only display one movement state per
-// gender at once. No heap allocation or extra palette slots on the overworld.
-EWRAM_DATA static u8 sWorldPixels[2][32 * 512] = {0};
-EWRAM_DATA static struct SpriteFrameImage sWorldImages[2][32] = {0};
-EWRAM_DATA static const struct SpriteFrameImage *sWorldSource[2] = {0};
-EWRAM_DATA static u8 sWorldState[2] = {0};
-EWRAM_DATA static u8 sWorldBoots[2] = {0};
+// One stable bank: only the local player uses custom overworld art, and only
+// one movement state is visible at a time. Native/link NPC graphics are separate.
+// The generated capacity fits the largest native pose table without heap use.
+EWRAM_DATA static u8 sWorldPixels[LEGENDS_FOOTWEAR_CACHE_BYTES] = {0};
+EWRAM_DATA static struct SpriteFrameImage sWorldImages[LEGENDS_FOOTWEAR_CACHE_FRAMES] = {0};
+EWRAM_DATA static const struct SpriteFrameImage *sWorldSource = NULL;
+EWRAM_DATA static u8 sWorldState = 0;
+EWRAM_DATA static u8 sWorldBoots = 0;
+EWRAM_DATA static u8 sWorldGender = 0;
 EWRAM_DATA static u8 sRemap[2][3][2] = {0};
 EWRAM_DATA static u32 sFrontPic[2][577] = {0};
 EWRAM_DATA static const u32 *sFrontSource[2] = {0};
@@ -59,7 +61,7 @@ void LegendsPrepareFootwearPalette(u16 *palette, u8 gender, u8 kind)
     palette[6] = sShoeColors[LegendsGetShoes() - 1][0];
     palette[7] = sShoeColors[LegendsGetShoes() - 1][1];
     // Palette reset means pointer-identical art may need a different remap.
-    sWorldSource[gender] = NULL;
+    sWorldSource = NULL;
     sFrontSource[gender] = NULL;
 }
 
@@ -89,24 +91,25 @@ const struct SpriteFrameImage *LegendsFootwearImages(const struct SpriteFrameIma
     u8 boots = LegendsGetShoes() >= 6;
     if (!LegendsGetShoes() || LegendsGetCostume())
         return images;
-    if (sWorldSource[gender] == images && sWorldState[gender] == state && sWorldBoots[gender] == boots)
-        return sWorldImages[gender];
+    if (sWorldSource == images && sWorldGender == gender && sWorldState == state && sWorldBoots == boots)
+        return sWorldImages;
     for (i = 0; i < sFootwearFrameCount[gender][state]; i++)
     {
         u32 size = images[i].size;
         // All native player frames are uncompressed, 16x32 or 32x32.
-        if (size > 512 || offset + size > sizeof(sWorldPixels[gender]))
+        if (size > 512 || offset + size > sizeof(sWorldPixels))
             return images;
-        sWorldImages[gender][i].data = sWorldPixels[gender] + offset;
-        sWorldImages[gender][i].size = size;
-        Compose(sWorldPixels[gender] + offset, images[i].data,
+        sWorldImages[i].data = sWorldPixels + offset;
+        sWorldImages[i].size = size;
+        Compose(sWorldPixels + offset, images[i].data,
             sFootwearMasks[gender][state][boots] + offset, size, gender, state == 4 ? 2 : 0);
         offset += size;
     }
-    sWorldSource[gender] = images;
-    sWorldState[gender] = state;
-    sWorldBoots[gender] = boots;
-    return sWorldImages[gender];
+    sWorldSource = images;
+    sWorldGender = gender;
+    sWorldState = state;
+    sWorldBoots = boots;
+    return sWorldImages;
 }
 
 static u8 PicGender(enum TrainerPicID pic)

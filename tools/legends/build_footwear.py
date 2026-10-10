@@ -74,6 +74,8 @@ def build():
             off=len(data);data.extend(pack(front_mask(g,boot)))
             header.append(f'#define sFootwearFront{g}{boot} (sFootwearMaskData + {off})\n')
     header.insert(1,f'static const u8 ALIGNED(4) sFootwearMaskData[] = INCBIN_U8("graphics/legends/footwear/masks.bin");\n')
+    capacity=max(counts[g][st]*(256 if st==0 else 512) for g in range(2) for st in range(8))
+    header.append(f'#define LEGENDS_FOOTWEAR_CACHE_BYTES {capacity}\n#define LEGENDS_FOOTWEAR_CACHE_FRAMES {max(max(x) for x in counts)}\n')
     header.append('static const u8 sFootwearFrameCount[2][8] = {'+','.join('{'+','.join(map(str,x))+'}' for x in counts)+'};\n')
     header.append('static const u8 *const sFootwearMasks[2][8][2] = {\n')
     for g in range(2):header.append('    {'+','.join('{'+','.join(tables[g,s,b] for b in range(2))+'}' for s in range(8))+'},\n')

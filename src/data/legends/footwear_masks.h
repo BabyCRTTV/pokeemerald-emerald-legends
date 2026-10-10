@@ -36,6 +36,8 @@ static const u8 ALIGNED(4) sFootwearMaskData[] = INCBIN_U8("graphics/legends/foo
 #define sFootwearFront01 (sFootwearMaskData + 190464)
 #define sFootwearFront10 (sFootwearMaskData + 192512)
 #define sFootwearFront11 (sFootwearMaskData + 194560)
+#define LEGENDS_FOOTWEAR_CACHE_BYTES 13824
+#define LEGENDS_FOOTWEAR_CACHE_FRAMES 27
 static const u8 sFootwearFrameCount[2][8] = {{18,9,27,12,9,5,12,9},{18,9,27,12,9,5,12,9}};
 static const u8 *const sFootwearMasks[2][8][2] = {
     {{sFootwearMask000,sFootwearMask001},{sFootwearMask010,sFootwearMask011},{sFootwearMask020,sFootwearMask021},{sFootwearMask030,sFootwearMask031},{sFootwearMask040,sFootwearMask041},{sFootwearMask050,sFootwearMask051},{sFootwearMask060,sFootwearMask061},{sFootwearMask070,sFootwearMask071}},

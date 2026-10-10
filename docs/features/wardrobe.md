@@ -58,3 +58,5 @@ Boots use taller cuffed shafts and shaped toes/soles, rather than the shoe silho
 Trainer Card colors show a small live swatch below the portrait. They recolor the local card’s paper/frame accents without changing text, badges or achievement stars. Link cards remain native. APPLY saves shoes/card colors alongside the existing choices; B/CANCEL discards pending edits. Old saves default to Original.
 
 Authoring uses `tools/legends/build_footwear.py`; generated masks live in `graphics/legends/footwear/masks.bin`. The runtime compositor caches native frames without expanding the 16-color player palettes; two shadow shades map to their nearest existing colors before dedicated footwear colors are applied. Skin and red Poké Balls retain separate palette slots. Actual-C checks exercise all native pose tables and protected pixels.
+
+The overworld compositor uses one 13.5 KiB bank sized by the generated native pose metadata. Only the local player uses custom overworld graphics; NPC/link art remains separate. This covers the largest 27-frame Acro Bike sequence within the GBA RAM budget.
