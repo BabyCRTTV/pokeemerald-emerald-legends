@@ -95,7 +95,8 @@
       if(!pokemonMap.has(e.id))pokemonMap.set(e.id,[]);
       pokemonMap.get(e.id).push({map:m.name,region:m.region,method:method.id,label:method.label,min:e.min,max:e.max,rate:e.rate,mapId:m.id});
     }
-    const types=[...new Set(data.species.flatMap(x=>x.types))].sort();
+    const validTypes=new Set(["NORMAL","FIRE","WATER","GRASS","ELECTRIC","ICE","FIGHTING","POISON","GROUND","FLYING","PSYCHIC","BUG","ROCK","GHOST","DRAGON","DARK","STEEL","FAIRY"]);
+    const types=[...new Set(data.species.flatMap(x=>x.types||[]))].filter(x=>validTypes.has(x)).sort();
     $("#type").innerHTML='<option value="all">Any type</option>'+types.map(x=>'<option value="'+esc(x)+'">'+esc(x[0]+x.slice(1).toLowerCase())+'</option>').join("");
     $("#version-meta").textContent="Game v"+data.gameVersion+" · "+data.maps.length+" locations";
   }

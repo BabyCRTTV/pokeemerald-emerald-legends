@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#eee5fb">
+<meta name="theme-color" content="#e6f1e7">
 <meta name="description" content="The open, searchable Pokémon Emerald: Legends player wiki. Mechanics, guides, customization, and Kanto postgame.">
 <title>Emerald: Legends Wiki</title>
 <style>
@@ -28,10 +28,10 @@ footer{max-width:1380px;margin:auto;padding:0 22px 32px;font-size:12px;color:var
 @media(max-width:1100px){.navlinks .secondary-nav{display:none}}
 @media(max-width:750px){.top-inner{flex-wrap:nowrap;gap:6px;min-height:60px;padding:8px 10px}.brand{min-width:0;font-size:12px;white-space:nowrap}.mark{display:none}.navlinks{margin-left:auto;width:auto;gap:3px;flex-wrap:nowrap}.navlinks .update-wiki,.navlinks .dex-link{font-size:11px;padding:6px 7px;min-height:40px}.navlinks .header-search{width:39px;min-height:40px}.navlinks #menu{display:none}.layout{padding-top:14px}.sidebar{display:none}.navlinks .update-wiki span{display:none}}
 @media(max-width:390px){.brand{font-size:10px}.navlinks .update-wiki,.navlinks .dex-link{font-size:10px;padding:5px}.navlinks .header-search{width:36px}}
-</style></head><body>
+</style><link rel="stylesheet" href="theme.css"></head><body>
 <header class="top"><div class="top-inner">
 <a class="brand" href="./" aria-label="Emerald Legends Wiki home"><span class="mark" aria-hidden="true">✦</span><span>EMERALD: LEGENDS <span style="color:#9d84c3">/ WIKI</span></span></a>
-<div class="navlinks"><button type="button" id="menu" aria-expanded="false" aria-controls="sidebar">☰ Articles</button><a class="secondary-nav" href="../index.html">Game site</a><a class="secondary-nav" href="../changelog.html">Changelog</a><a class="secondary-nav" href="https://github.com/BabyCRTTV/pokeemerald-emerald-legends">GitHub</a><button type="button" id="update-wiki" class="update-wiki" aria-haspopup="dialog" title="Check for the latest wiki app"><span aria-hidden="true">↻</span> Update Wiki</button><a class="dex-link" href="dex.html">◈ LegendsDex</a><button type="button" id="header-search" class="header-search" aria-label="Search wiki articles" title="Search"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/></svg></button></div>
+<div class="navlinks"><button type="button" id="menu" aria-expanded="false" aria-controls="sidebar">☰ Articles</button><a class="secondary-nav" href="../index.html">Game site</a><a class="secondary-nav" href="../changelog.html">Changelog</a><a class="secondary-nav" href="https://github.com/BabyCRTTV/pokeemerald-emerald-legends">GitHub</a><button type="button" id="update-wiki" class="update-wiki" aria-haspopup="dialog" title="Install the Android or Windows Wiki app, or check for updates"><span aria-hidden="true">↓</span> Install / Update</button><a class="dex-link" href="dex.html">◈ LegendsDex</a><button type="button" id="header-search" class="header-search" aria-label="Search wiki articles" title="Search"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/></svg></button></div>
 </div></header>
 <div class="layout">
 <nav class="sidebar" id="sidebar" aria-label="Wiki articles"></nav>
@@ -39,7 +39,7 @@ footer{max-width:1380px;margin:auto;padding:0 22px 32px;font-size:12px;color:var
 <aside class="right" id="outline" aria-label="On this page"></aside>
 </div>
 <footer>Community-focused documentation for an unofficial non-commercial fan project. No account or login required. Wiki articles update only when the project owner requests a revision.</footer>
-<dialog id="wiki-update-dialog" class="update-dialog" aria-labelledby="update-heading"><div class="update-inner"><h2 id="update-heading">Update Wiki</h2><p id="update-status" role="status" aria-live="polite">Choose your platform to check the latest application version.</p><div id="update-actions" class="update-actions"></div></div></dialog>
+<dialog id="wiki-update-dialog" class="update-dialog" aria-labelledby="update-heading"><div class="update-inner"><h2 id="update-heading">Get the Legends Wiki app</h2><p id="update-status" role="status" aria-live="polite">Choose an app to install or check for an update.</p><div id="update-actions" class="update-actions"></div><p id="update-warning" class="update-warning" hidden></p></div></dialog>
 <script src="wiki-updates.js" defer></script>
 <script src="wiki.js" defer></script>
 </body></html>

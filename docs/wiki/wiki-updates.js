@@ -2,74 +2,105 @@
 (() => {
   const button=document.getElementById("update-wiki");
   const dialog=document.getElementById("wiki-update-dialog");
+  const heading=document.getElementById("update-heading");
   const status=document.getElementById("update-status");
   const actions=document.getElementById("update-actions");
-  if(!button||!dialog||!status||!actions)return;
-  const BASE="https://babycrttv.github.io/pokeemerald-emerald-legends/";
-  const detected=(()=>{
-    const android=navigator.userAgent.match(/LegendsWikiAndroid\/(\d+)/);
-    if(android)return {platform:"android",version:Number(android[1])};
-    const windows=navigator.userAgent.match(/LegendsWikiWindows\/([\d.]+)/);
-    if(windows)return {platform:"windows",version:windows[1]};
-    return null;
-  })();
-  const link=(url,label)=>{
-    const a=document.createElement("a");
-    a.href=url;a.className="primary";a.textContent=label;
-    a.rel="noopener noreferrer";a.target=detected?"_self":"_blank";return a;
-  };
-  const action=(label,fn)=>{
-    const b=document.createElement("button");b.type="button";b.textContent=label;
-    b.addEventListener("click",fn);return b;
-  };
-  const cmp=(left,right)=>{
-    const a=String(left).split(".").map(Number),b=String(right).split(".").map(Number);
-    for(let i=0;i<Math.max(a.length,b.length);i++){
-      const n=(a[i]||0)-(b[i]||0);if(n)return Math.sign(n);
-    }return 0;
-  };
-  async function check(platform){
-    status.textContent="Checking the latest "+(platform==="android"?"Android":"Windows")+" Wiki release…";
+  const warning=document.getElementById("update-warning");
+  if(!button||!dialog||!heading||!status||!actions||!warning)return;
+
+  const BASE="https://babycrttv.github.io/pokeemerald-emerald-legends/wiki/";
+  const ua=navigator.userAgent||"";
+  const android=ua.match(/LegendsWikiAndroid\/(\d+)/);
+  const windows=ua.match(/LegendsWikiWindows\/([\d.]+)/);
+  const installed=android?{platform:"android",version:Number(android[1])}:
+                  windows?{platform:"windows",version:windows[1]}:null;
+  const labels={android:"Android APK",windows:"Windows installer"};
+  let requestSequence=0;
+
+  function clear() {
+    requestSequence++;
     actions.replaceChildren();
-    document.getElementById("update-warning")?.remove();
-    try{
-      const url=BASE+"wiki/"+(platform==="android"?"android-version.json":"windows-version.json");
-      const response=await fetch(url+"?check="+Date.now(),{cache:"no-store"});
-      if(!response.ok)throw new Error("Release information unavailable");
+    warning.hidden=true;
+    warning.textContent="";
+  }
+  function makeButton(label,handler,kind="secondary"){
+    const b=document.createElement("button");
+    b.type="button";b.textContent=label;b.className=kind;
+    b.addEventListener("click",handler);return b;
+  }
+  function downloadLink(url,label) {
+    const a=document.createElement("a");
+    // The published app manifests are the only sources of download locations.
+    const destination=new URL(url,location.href);
+    if(destination.protocol!=="https:")throw new Error("Invalid installer address");
+    a.href=destination.href;a.textContent=label;a.className="primary";
+    a.rel="noopener noreferrer";
+    // Companion apps open the download in the system browser.
+    a.target=installed?"_self":"_blank";
+    return a;
+  }
+  function compareVersions(a,b){
+    const left=String(a).split(".").map(Number),right=String(b).split(".").map(Number);
+    for(let i=0;i<Math.max(left.length,right.length);i++){
+      const difference=(left[i]||0)-(right[i]||0);
+      if(difference)return Math.sign(difference);
+    }
+    return 0;
+  }
+  function choose() {
+    clear();
+    heading.textContent="Install Legends Wiki";
+    status.textContent="Choose your device. Already installed? We'll check whether there's a newer version before offering a download.";
+    actions.append(
+      makeButton("↓ Android APK",()=>check("android"),"primary"),
+      makeButton("↓ Windows EXE",()=>check("windows"),"primary"),
+      makeButton("Close",()=>dialog.close())
+    );
+  }
+  async function check(platform) {
+    clear();
+    const sequence=requestSequence;
+    heading.textContent=labels[platform];
+    status.textContent="Checking the latest "+labels[platform]+"…";
+    try {
+      const response=await fetch(BASE+platform+"-version.json?check="+Date.now(),{cache:"no-store"});
+      if(!response.ok)throw new Error("Latest version information is unavailable");
       const release=await response.json();
       if(!release.available||!release.version||!release.url)
-        throw new Error("The installer has not been published yet");
-      const installed=detected?.platform===platform?detected.version:null;
-      const current=platform==="android" ? release.versionCode : release.version;
-      const upToDate=installed!==null&&(platform==="android"
-        ? Number(installed)>=Number(current)
-        : cmp(installed,current)>=0);
-      if(upToDate){
-        status.textContent="You're on the most current "+(platform==="android"?"Android":"Windows")+
-          " Wiki app version ("+release.version+"). No update is needed.";
-      }else{
-        status.textContent=(installed===null
-          ? "Latest "+(platform==="android"?"Android":"Windows")+" Wiki app: "+release.version+". This browser cannot determine whether the app is installed."
-          : "An update is available: "+release.version+". Your installed version is "+(platform==="android"?"build "+installed:installed)+".")+
-          " Installation requires your approval.";
-        actions.append(link(release.url,installed===null?"Install / download latest":"Download update"));
+        throw new Error("The installer isn't available yet");
+      if(sequence!==requestSequence||!dialog.open)return;
+      const currentInstall=installed?.platform===platform?installed.version:null;
+      const upToDate=currentInstall!==null&&(platform==="android"
+        ? Number(currentInstall)>=Number(release.versionCode)
+        : compareVersions(currentInstall,release.version)>=0);
+      if(upToDate) {
+        heading.textContent="You're up to date";
+        status.textContent="Legends Wiki "+release.version+" is already installed. No update is needed.";
+      } else {
+        heading.textContent=currentInstall===null?"Install Legends Wiki":"Update available";
+        status.textContent=currentInstall===null
+          ?"Latest "+labels[platform]+": version "+release.version+". Download the installer to get the companion app. No login is required."
+          :"Version "+release.version+" is available. Installed version: "+
+           (platform==="android"?"build "+currentInstall:currentInstall)+".";
+        actions.append(downloadLink(release.url,currentInstall===null?"↓ Download "+labels[platform]:"↓ Download update"));
         if(platform==="android"&&release.signing==="ephemeral-debug"){
-          const note=document.createElement("p");note.id="update-warning";
-          note.textContent="Important: this APK uses a temporary debug signing key. Android may require uninstalling an older build before installing this one. Preserve any important app settings.";
-          actions.after(note);
+          warning.textContent="Android note: this APK uses a temporary signing certificate. If Android rejects installation over an older copy, you may need to uninstall the old app first.";
+          warning.hidden=false;
+        } else if(platform==="windows"){
+          warning.textContent="Windows may show an unknown-publisher warning because the installer isn't code-signed yet.";
+          warning.hidden=false;
         }
       }
-    }catch(e){status.textContent="Could not verify the latest installer: "+e.message+". Please try again later.";}
-    actions.append(action("Back",choose));
-  }
-  function choose(){
-    status.textContent="Choose your device to check the latest Wiki installer.";
-    document.getElementById("update-warning")?.remove();
-    actions.replaceChildren(action("Android",()=>check("android")),action("Windows",()=>check("windows")),action("Close",()=>dialog.close()));
+    } catch(error) {
+      if(sequence!==requestSequence)return;
+      status.textContent="Couldn't check the download: "+error.message+". Please try again.";
+    }
+    actions.append(makeButton("Other devices",choose),makeButton("Close",()=>dialog.close()));
   }
   button.addEventListener("click",()=>{
     if(!dialog.open)dialog.showModal();
-    if(detected)check(detected.platform);else choose();
+    if(installed)check(installed.platform);else choose();
   });
-  dialog.addEventListener("click",e=>{if(e.target===dialog)dialog.close();});
+  dialog.addEventListener("close",clear);
+  dialog.addEventListener("click",event=>{if(event.target===dialog)dialog.close()});
 })();

@@ -1479,7 +1479,7 @@
       "name": "Magnemite",
       "types": [
         "ELECTRIC",
-        "MAGNEMITE_FAMILY_TYPE2"
+        "STEEL"
       ],
       "category": "Magnet",
       "stats": [
@@ -1498,7 +1498,7 @@
       "name": "Magneton",
       "types": [
         "ELECTRIC",
-        "MAGNEMITE_FAMILY_TYPE2"
+        "STEEL"
       ],
       "category": "Magnet",
       "stats": [
@@ -3205,7 +3205,7 @@
       "num": 175,
       "name": "Togepi",
       "types": [
-        "TOGEPI_FAMILY_TYPE1"
+        "FAIRY"
       ],
       "category": "Spike Ball",
       "stats": [
@@ -3223,7 +3223,7 @@
       "num": 176,
       "name": "Togetic",
       "types": [
-        "TOGEPI_FAMILY_TYPE1",
+        "FAIRY",
         "FLYING"
       ],
       "category": "Happiness",
@@ -5141,7 +5141,7 @@
       "name": "Ralts",
       "types": [
         "PSYCHIC",
-        "RALTS_FAMILY_TYPE2"
+        "FAIRY"
       ],
       "category": "Feeling",
       "stats": [
@@ -5160,7 +5160,7 @@
       "name": "Kirlia",
       "types": [
         "PSYCHIC",
-        "RALTS_FAMILY_TYPE2"
+        "FAIRY"
       ],
       "category": "Emotion",
       "stats": [
@@ -5179,7 +5179,7 @@
       "name": "Gardevoir",
       "types": [
         "PSYCHIC",
-        "RALTS_FAMILY_TYPE2"
+        "FAIRY"
       ],
       "category": "Embrace",
       "stats": [
@@ -8541,7 +8541,7 @@
       "num": 468,
       "name": "Togekiss",
       "types": [
-        "TOGEPI_FAMILY_TYPE1",
+        "FAIRY",
         "FLYING"
       ],
       "category": "Jubilee",
@@ -9944,7 +9944,7 @@
       "name": "Cottonee",
       "types": [
         "GRASS",
-        "COTTONEE_FAMILY_TYPE2"
+        "FAIRY"
       ],
       "category": "Cotton Puff",
       "stats": [
@@ -9963,7 +9963,7 @@
       "name": "Whimsicott",
       "types": [
         "GRASS",
-        "COTTONEE_FAMILY_TYPE2"
+        "FAIRY"
       ],
       "category": "Windveiled",
       "stats": [
@@ -27014,5 +27014,6 @@
         }
       ]
     }
-  ]
+  ],
+  "typeResolutionNote": "Source family-type macros resolved with P_UPDATED_TYPES=GEN_LATEST (Magnemite Steel, Togepi/Ralts/Cottonee Fairy)."
 }

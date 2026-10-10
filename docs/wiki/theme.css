@@ -1,0 +1,108 @@
+/* Emerald: Legends Wiki · forest-and-sage design with lavender action controls.
+   Shared by the wiki and LegendsDex. No game assets or Pokémon sprites changed. */
+:root {
+  --bg:#f5f9f3;
+  --card:#ffffff;
+  --surface:#ffffff;
+  --pale:#e8f2e5;
+  --border:#d3e2d1;
+  --ink:#263d30;
+  --muted:#617769;
+  --accent:#416e50;
+  --dark:#27583a;
+  --deep:#27583a;
+  --focus:#9677d1;
+  --shadow:0 12px 34px rgba(35,84,47,.075);
+  --lavender:#74549e;
+  --lavender-light:#eee5fb;
+}
+html{background:var(--bg)}
+body{background:var(--bg);color:var(--ink)}
+a{color:var(--dark)}
+.top,.topbar{background:#fafff9;border-bottom:1px solid var(--border);box-shadow:0 2px 14px rgba(42,91,55,.055)}
+.brand,.site-mark{color:var(--dark)}
+.brand .mark,.site-mark .brand-icon{background:#e5f3df;border-color:#cadfcb;color:#316c49}
+.brand span[style],.site-mark small{color:#76977e!important}
+.hero,.welcome{background:radial-gradient(circle at 88% 12%,#cce5c9,transparent 49%),linear-gradient(130deg,#e2f3df 0%,#f9fcf7 77%)!important;border-color:#d1e4cd;box-shadow:var(--shadow)}
+.hero:before{color:#538a5f;opacity:.11}
+.hero-badge,.eyebrow,.hero h1 span,.section-head,.results-toolbar h2,.welcome h1,.article h1,.article h2,.article h3{color:#315e3f}
+.hero p,.welcome p,.hero-meta span,.results-toolbar p{color:#5e7565}
+.hero-meta span,.region-tag{background:#fafff8;border-color:#c8ddc7;color:#376046}
+.sidebar,.tools,.route-card,.card,.article,.dex-card,.searchrow{border-color:var(--border);box-shadow:var(--shadow)}
+.sidebar a{color:#56705f}.sidebar a.current,.sidebar a:hover{background:#e9f3e5;color:#275339;box-shadow:inset 3px 0 #518864}
+.sidetitle,.kind,.card .kind{color:#567d61}
+.card:hover,.dex-card:hover{border-color:#a7c9a7;background:#fbfefa}
+.route-head{background:linear-gradient(105deg,#e2f0dd,#f7fcf5);border-color:#d8e7d3}
+.route-name,.species-copy strong,.dex-card strong{color:#2b6341}
+.route-sub,.method-heading small,.enc-meta,.dex-num,.dex-sub{color:#66816d}
+.method-heading{color:#416a4b}.method-heading span,.rate{background:#e8f2e5;border-color:#cbdfca;color:#386347}
+.method-section+.method-section,.location-row{border-color:#e3eee0}
+.encounter{background:#fcfefb;border-color:#e0ecdf}
+.encounter:hover{background:#f0f8ec;border-color:#b9d6b7}
+.rate small{color:#5b8065}
+.thumb{background:transparent}
+.tools,.search-wrap,.searchrow{background:#fff}
+.search-wrap{border-color:#bfd6bf}
+.search-wrap:focus-within,.searchrow:focus-within{outline-color:#c9b7ec;border-color:#8e74b5}
+.search-icon{color:#598064}
+.chips legend,.method-box{color:#4c7559}
+.method-box select{background:#f4faf1;border-color:#c9ddc9;color:#345741}
+.detail-top{background:linear-gradient(120deg,#dff0dc,#fcfefa)}
+.detail-meta,.location-row small,.stat-table span,.detail-content p{color:#5c7862}
+.stat-track{background:#e5efe2}
+.stat-track i{background:linear-gradient(90deg,#a7d0a3,#447c54)}
+.detail-content h3{color:#315e3f}
+.detail-top .thumb{background:transparent;border:0}
+.type,.type--normal,.type--fire,.type--water,.type--grass,.type--electric,.type--poison,.type--bug,.type--psychic,.type--ice,.type--dark,.type--dragon,.type--ground,.type--fairy,.type--fighting,.type--flying,.type--rock,.type--steel,.type--ghost{background:#e8f1e7;color:#426d50}
+.article code{background:#eaf4e7}
+.article th{background:#e6f1e3;color:#2e603f}
+.article th,.article td{border-color:#dce9d9}
+.article blockquote{background:#f0f7ed;border-left-color:#88b28b}
+.article .lede{border-color:#dce9d9}
+.mobile-nav{background:#fcfefb;border-color:#caddca;box-shadow:0 -5px 20px rgba(32,79,40,.12)}
+.mobile-nav .active{color:#74549e}
+.data-note,footer{color:#617568;border-color:#d7e6d3}
+.update-dialog{background:#fff;border:1px solid #d6e4d4;color:var(--ink);box-shadow:0 25px 75px rgba(20,59,28,.27)}
+.update-dialog::backdrop{background:rgba(22,48,31,.56)}
+.update-inner h2{color:#2b5a3b}
+.update-inner p{color:#607367}
+.update-warning{font-size:12px!important;line-height:1.6;background:#f2f8ee;border:1px solid #d7e6d1;border-radius:10px;padding:11px 13px;margin:15px 0 0!important}
+.update-warning[hidden]{display:none!important}
+/* Buttons and tappable actions are the only distinctly lavender elements. */
+button,.navlinks .update-wiki,.navlinks .dex-link,.navlinks .header-search,
+.topbar .dex-tools button,.topbar .dex-tools a.legendsdex,
+.navlinks #menu,.chips button,.view-tabs button,.action,.more,
+.update-actions button,.update-actions a,.mobile-nav button{
+  color:#583d7d;
+  border-color:#d8c8ed;
+  background:#eee6fa;
+}
+button:hover,.navlinks .update-wiki:hover,.navlinks .header-search:hover,
+.chips button:hover,.action:hover,.more:hover,.update-actions button:hover{
+  background:#e4d7f5;
+}
+.navlinks .dex-link,.topbar .dex-tools a.legendsdex,
+.update-actions a.primary,.update-actions button.primary,.chips button.active,.more,
+.view-tabs button.selected{
+  background:#725099!important;color:#fff!important;border-color:#725099!important;
+}
+.view-tabs{background:#edf5e9}
+.view-tabs button:not(.selected){background:#ece4f8;color:#634584}
+.view-tabs button.selected{box-shadow:0 4px 14px rgba(88,56,126,.17)}
+.chips button.active{box-shadow:0 3px 11px rgba(94,62,139,.13)}
+.navlinks .update-wiki{background:#eee5fa;color:#553977}
+.navlinks .header-search{background:#f4eefb;color:#563c76}
+.navlinks .dex-link{background:#74549e;color:#fff}
+.update-actions a,.update-actions button{background:#eee6fa;color:#583d7d;border-color:#d8c8ed}
+.update-actions a.primary,.update-actions button.primary{background:#74549e;color:#fff}
+.info-button{background:#eae2f8;color:#583e7c;border-color:#d6c7eb}
+.encounter,.dex-card{background:#fcfefb;color:var(--ink);border-color:#dae9d6}
+.encounter:hover,.dex-card:hover{background:#f0f8ed;border-color:#abd1aa}
+.close-detail{background:#eee5fb;color:#634287}
+.search-wrap button{background:transparent;color:#6a4a94}
+@media(max-width:580px){
+  .topbar{background:#fafff9}
+  .mobile-nav{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .hero{border-color:#cae2c5}
+  dialog{background:#fff}
+}
