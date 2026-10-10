@@ -113,6 +113,17 @@
     searchAnchor.focus({preventScroll:true});
   });
   updateReturnArrow();
+  function encounterMaps(locations,p){
+    const profiles=window.LegendsProfiles;
+    if(!locations.length||!profiles)return "";
+    return '<section class="encounter-maps"><h3>Encounter map</h3><p>Highlighted areas have listed wild encounters. Cave and interior markers show their region-map area.</p>'+Object.entries(profiles.regions).map(([name,regionMap])=>{
+      const local=[...new Map(locations.filter(loc=>loc.region===name).map(loc=>[loc.mapId,loc])).values()];
+      if(!local.length)return "";
+      const cells=new Map();
+      for(const loc of local)for(const cell of profiles.locations[loc.mapId]?.cells||[])cells.set(cell.join(','),cell);
+      return '<figure class="encounter-map"><figcaption>'+esc(name)+'</figcaption><svg viewBox="0 0 224 120" role="img" aria-label="'+esc(name+' encounter map for '+p.name)+'"><title>'+esc(local.map(loc=>loc.map).join(', '))+'</title><image href="'+esc(regionMap.image)+'" width="224" height="120"/>'+[...cells.values()].map(([x,y])=>'<rect class="map-highlight" x="'+x+'" y="'+y+'" width="8" height="8"/>').join('')+'</svg><ul class="map-route-list">'+local.map(loc=>'<li>'+esc(loc.map)+'</li>').join('')+'</ul></figure>';
+    }).join('')+'</section>';
+  }
   function openPokemon(id,share=true){
     const p=bySpecies.get(id);if(!p)return;
     const linked=(pokemonMap.get(id)||[]).filter(loc=>(region==="all"||loc.region===region));
@@ -122,11 +133,19 @@
     const stats=p.stats?.length===6&&p.stats.every(x=>Number.isFinite(x))?
       '<h3>Base stats</h3><div class="stat-table">'+["HP","Attack","Defense","Sp. Atk","Sp. Def","Speed"].map((name,i)=>'<span>'+name+'</span><div class="stat-track"><i style="width:'+Math.max(1,Math.min(100,p.stats[i]/2.55))+'%"></i></div><span>'+p.stats[i]+'</span>').join("")+'</div>':"";
     const links=selected.length?selected.map(loc=>'<div class="location-row"><div><strong>'+esc(loc.map)+'</strong><small>'+esc(loc.region)+' · '+esc(loc.label)+' · '+prettyLevel(loc.min,loc.max)+'</small></div><span class="rate">'+loc.rate+'%<small>SPAWN</small></span></div>').join(""):'<p>No standard wild encounter is listed in the currently indexed and accessible route tables. It might be obtainable through other methods, or not yet obtainable. This does not establish that the Pokémon is unavailable everywhere.</p>';
-    $("#detail-content").innerHTML='<div class="detail-top">'+sprite(p,"large")+'<div><span class="detail-meta">'+(p.num?"NATIONAL #"+String(p.num).padStart(4,"0"):"SPECIAL FORM")+'</span><h2>'+esc(p.name)+'</h2><p style="margin:0;font-size:12px;color:#837399">'+esc(p.category||"Pokémon")+' Pokémon</p>'+chips(p)+'</div></div><div class="detail-content">'+stats+'<h3>Where to find '+esc(p.name)+'</h3><p style="font-size:12px;color:#7c708b;margin-top:0">Wild encounter tables only. Rates are conditional on the chosen method.</p>'+links+'</div>';
+    $("#detail-content").innerHTML='<div class="detail-top">'+sprite(p,"large")+'<div><span class="detail-meta">'+(p.num?"NATIONAL #"+String(p.num).padStart(4,"0"):"SPECIAL FORM")+'</span><h2><button type="button" class="profile-name" id="toggle-entry" aria-expanded="false" aria-controls="pokedex-entry">'+esc(p.name)+'</button></h2><p style="margin:0;font-size:12px;color:#837399">'+esc(p.category||"Pokémon")+' Pokémon</p>'+chips(p)+'<p class="rotom-tip"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M12 13 3 4 5 15 10 18M20 13 29 4 27 15 22 18" fill="none" stroke="#75bdaa" stroke-width="3"/><path d="m16 3 9 17-9 9-9-9z" fill="#ef873e" stroke="#9a542d"/><path d="m12 17 3 2m5-2-3 2m-3 4h4" stroke="white" stroke-width="2"/></svg><span>Tap '+esc(p.name)+'’s name for its Pokédex entry!</span></p><section id="pokedex-entry" class="pokedex-entry" hidden><strong>Pokédex entry</strong><p>'+esc(window.LegendsProfiles?.entries[id]||'No Pokédex entry is recorded in this snapshot.')+'</p></section></div></div><div class="detail-content">'+stats+'<h3>Where to find '+esc(p.name)+'</h3><p style="font-size:12px;color:#7c708b;margin-top:0">Wild encounter tables only. Rates are conditional on the chosen method.</p>'+links+encounterMaps(selected,p)+'</div>';
     LegendsSprites.hydrate($("#detail-content"),data.sourceCommit);
-    if(!modal.open)modal.showModal();$("#close-detail").focus();
+    if(!modal.open)modal.showModal();
+    $("#close-detail").focus({preventScroll:true});
+    modal.scrollTop=0;
+    $(".dialog-body").scrollTop=0;
     if(share){const url=new URL(location.href);url.searchParams.set("pokemon",id.toLowerCase());history.replaceState(null,"",url);}
   }
+  $("#detail-content").addEventListener("click",event=>{
+    const toggle=event.target.closest("#toggle-entry");if(!toggle)return;
+    const entry=$("#pokedex-entry");entry.hidden=!entry.hidden;
+    toggle.setAttribute("aria-expanded",String(!entry.hidden));
+  });
   function closePokemon(){
     modal.close();if(new URL(location.href).searchParams.has("pokemon")){let url=new URL(location.href);url.searchParams.delete("pokemon");history.replaceState(null,"",url);}
   }
