@@ -1081,7 +1081,7 @@
     "walkthrough": [],
     "walkthrough-littleroot": [
       {
-        "section": "section-your-goal",
+        "section": "chapter-overview",
         "places": [
           "littleroot",
           "route101",
@@ -1153,7 +1153,7 @@
     ],
     "walkthrough-petalburg": [
       {
-        "section": "section-your-goal",
+        "section": "chapter-overview",
         "places": [
           "route102",
           "petalburg",
@@ -1235,7 +1235,7 @@
     ],
     "walkthrough-rustboro": [
       {
-        "section": "section-your-goal",
+        "section": "chapter-overview",
         "places": [
           "rustboro",
           "route116",
@@ -1319,7 +1319,7 @@
     ],
     "walkthrough-dewford": [
       {
-        "section": "section-your-goal",
+        "section": "chapter-overview",
         "places": [
           "MAP_DEWFORD_TOWN",
           "MAP_ROUTE106",
@@ -1405,7 +1405,7 @@
     ],
     "walkthrough-slateport": [
       {
-        "section": "section-your-goal",
+        "section": "chapter-overview",
         "places": [
           "MAP_SLATEPORT_CITY",
           "MAP_ROUTE110",
@@ -1477,7 +1477,7 @@
     ],
     "walkthrough-mauville": [
       {
-        "section": "section-your-goal",
+        "section": "chapter-overview",
         "places": [
           "MAPSEC_MAUVILLE_CITY",
           "MAP_ROUTE111"
@@ -1553,7 +1553,7 @@
     ],
     "walkthrough-meteor-falls": [
       {
-        "section": "section-your-goal",
+        "section": "chapter-overview",
         "places": [
           "MAP_ROUTE112",
           "MAPSEC_FALLARBOR_TOWN",
@@ -1649,7 +1649,7 @@
     ],
     "walkthrough-lavaridge": [
       {
-        "section": "section-your-goal",
+        "section": "chapter-overview",
         "places": [
           "MAPSEC_LAVARIDGE_TOWN",
           "MAP_ROUTE111",
@@ -1726,7 +1726,7 @@
     ],
     "walkthrough-norman": [
       {
-        "section": "section-your-goal",
+        "section": "chapter-overview",
         "places": [
           "MAP_PETALBURG_CITY",
           "MAPSEC_MAUVILLE_CITY",
@@ -1828,7 +1828,7 @@
     ],
     "walkthrough-fortree": [
       {
-        "section": "section-your-goal",
+        "section": "chapter-overview",
         "places": [
           "MAP_ROUTE119",
           "MAPSEC_FORTREE_CITY",
@@ -1927,7 +1927,7 @@
     ],
     "walkthrough-lilycove": [
       {
-        "section": "section-your-goal",
+        "section": "chapter-overview",
         "places": [
           "MAP_LILYCOVE_CITY",
           "MAP_MT_PYRE_SUMMIT",
@@ -2055,7 +2055,7 @@
     ],
     "walkthrough-mossdeep": [
       {
-        "section": "section-your-goal",
+        "section": "chapter-overview",
         "places": [
           "MAP_ROUTE124",
           "MAP_MOSSDEEP_CITY"
@@ -2164,7 +2164,7 @@
     ],
     "walkthrough-sootopolis": [
       {
-        "section": "section-your-goal",
+        "section": "chapter-overview",
         "places": [
           "MAP_ROUTE128",
           "MAP_SOOTOPOLIS_CITY",
@@ -2281,7 +2281,7 @@
     ],
     "walkthrough-league": [
       {
-        "section": "section-your-goal",
+        "section": "chapter-overview",
         "places": [
           "MAP_EVER_GRANDE_CITY",
           "MAP_VICTORY_ROAD_1F"
@@ -2501,6 +2501,728 @@
           "width": 8,
           "height": 16
         }
+      ],
+      "routes": [
+        {
+          "id": "MAP_ROUTE101",
+          "name": "Route 101",
+          "cells": [
+            [
+              32,
+              80
+            ]
+          ]
+        },
+        {
+          "id": "MAP_ROUTE102",
+          "name": "Route 102",
+          "cells": [
+            [
+              16,
+              72
+            ],
+            [
+              24,
+              72
+            ]
+          ]
+        },
+        {
+          "id": "MAP_ROUTE103",
+          "name": "Route 103",
+          "cells": [
+            [
+              32,
+              64
+            ],
+            [
+              40,
+              64
+            ],
+            [
+              48,
+              64
+            ],
+            [
+              56,
+              64
+            ]
+          ]
+        },
+        {
+          "id": "MAP_ROUTE104",
+          "name": "Route 104",
+          "cells": [
+            [
+              0,
+              56
+            ],
+            [
+              0,
+              64
+            ],
+            [
+              0,
+              72
+            ]
+          ]
+        },
+        {
+          "id": "MAP_ROUTE105",
+          "name": "Route 105",
+          "cells": [
+            [
+              0,
+              80
+            ],
+            [
+              0,
+              88
+            ],
+            [
+              0,
+              96
+            ]
+          ]
+        },
+        {
+          "id": "MAP_ROUTE106",
+          "name": "Route 106",
+          "cells": [
+            [
+              0,
+              104
+            ],
+            [
+              8,
+              104
+            ],
+            [
+              16,
+              104
+            ]
+          ]
+        },
+        {
+          "id": "MAP_ROUTE107",
+          "name": "Route 107",
+          "cells": [
+            [
+              24,
+              112
+            ],
+            [
+              32,
+              112
+            ],
+            [
+              40,
+              112
+            ]
+          ]
+        },
+        {
+          "id": "MAP_ROUTE108",
+          "name": "Route 108",
+          "cells": [
+            [
+              48,
+              112
+            ],
+            [
+              56,
+              112
+            ]
+          ]
+        },
+        {
+          "id": "MAP_ROUTE109",
+          "name": "Route 109",
+          "cells": [
+            [
+              64,
+              96
+            ],
+            [
+              64,
+              104
+            ],
+            [
+              64,
+              112
+            ]
+          ]
+        },
+        {
+          "id": "MAP_ROUTE110",
+          "name": "Route 110",
+          "cells": [
+            [
+              64,
+              56
+            ],
+            [
+              64,
+              64
+            ],
+            [
+              64,
+              72
+            ]
+          ]
+        },
+        {
+          "id": "MAP_ROUTE111",
+          "name": "Route 111",
+          "cells": [
+            [
+              64,
+              0
+            ],
+            [
+              64,
+              8
+            ],
+            [
+              64,
+              16
+            ],
+            [
+              64,
+              24
+            ],
+            [
+              64,
+              32
+            ],
+            [
+              64,
+              40
+            ]
+          ]
+        },
+        {
+          "id": "MAP_ROUTE112",
+          "name": "Route 112",
+          "cells": [
+            [
+              48,
+              24
+            ],
+            [
+              56,
+              24
+            ]
+          ]
+        },
+        {
+          "id": "MAP_ROUTE113",
+          "name": "Route 113",
+          "cells": [
+            [
+              32,
+              0
+            ],
+            [
+              40,
+              0
+            ],
+            [
+              48,
+              0
+            ],
+            [
+              56,
+              0
+            ]
+          ]
+        },
+        {
+          "id": "MAP_ROUTE114",
+          "name": "Route 114",
+          "cells": [
+            [
+              8,
+              0
+            ],
+            [
+              16,
+              0
+            ],
+            [
+              8,
+              8
+            ],
+            [
+              8,
+              16
+            ]
+          ]
+        },
+        {
+          "id": "MAP_ROUTE115",
+          "name": "Route 115",
+          "cells": [
+            [
+              0,
+              16
+            ],
+            [
+              0,
+              24
+            ],
+            [
+              0,
+              32
+            ]
+          ]
+        },
+        {
+          "id": "MAP_ROUTE116",
+          "name": "Route 116",
+          "cells": [
+            [
+              8,
+              40
+            ],
+            [
+              16,
+              40
+            ],
+            [
+              24,
+              40
+            ],
+            [
+              32,
+              40
+            ]
+          ]
+        },
+        {
+          "id": "MAP_ROUTE117",
+          "name": "Route 117",
+          "cells": [
+            [
+              40,
+              48
+            ],
+            [
+              48,
+              48
+            ],
+            [
+              56,
+              48
+            ]
+          ]
+        },
+        {
+          "id": "MAP_ROUTE118",
+          "name": "Route 118",
+          "cells": [
+            [
+              80,
+              48
+            ],
+            [
+              88,
+              48
+            ]
+          ]
+        },
+        {
+          "id": "MAP_ROUTE119",
+          "name": "Route 119",
+          "cells": [
+            [
+              88,
+              0
+            ],
+            [
+              88,
+              8
+            ],
+            [
+              88,
+              16
+            ],
+            [
+              88,
+              24
+            ],
+            [
+              88,
+              32
+            ],
+            [
+              88,
+              40
+            ]
+          ]
+        },
+        {
+          "id": "MAP_ROUTE120",
+          "name": "Route 120",
+          "cells": [
+            [
+              104,
+              0
+            ],
+            [
+              104,
+              8
+            ],
+            [
+              104,
+              16
+            ],
+            [
+              104,
+              24
+            ]
+          ]
+        },
+        {
+          "id": "MAP_ROUTE121",
+          "name": "Route 121",
+          "cells": [
+            [
+              112,
+              24
+            ],
+            [
+              120,
+              24
+            ],
+            [
+              128,
+              24
+            ],
+            [
+              136,
+              24
+            ]
+          ]
+        },
+        {
+          "id": "MAP_ROUTE122",
+          "name": "Route 122",
+          "cells": [
+            [
+              128,
+              32
+            ],
+            [
+              128,
+              40
+            ]
+          ]
+        },
+        {
+          "id": "MAP_ROUTE123",
+          "name": "Route 123",
+          "cells": [
+            [
+              96,
+              48
+            ],
+            [
+              104,
+              48
+            ],
+            [
+              112,
+              48
+            ],
+            [
+              120,
+              48
+            ],
+            [
+              128,
+              48
+            ]
+          ]
+        },
+        {
+          "id": "MAP_ROUTE124",
+          "name": "Route 124",
+          "cells": [
+            [
+              160,
+              24
+            ],
+            [
+              168,
+              24
+            ],
+            [
+              176,
+              24
+            ],
+            [
+              184,
+              24
+            ],
+            [
+              160,
+              32
+            ],
+            [
+              168,
+              32
+            ],
+            [
+              176,
+              32
+            ],
+            [
+              184,
+              32
+            ],
+            [
+              160,
+              40
+            ],
+            [
+              168,
+              40
+            ],
+            [
+              176,
+              40
+            ],
+            [
+              184,
+              40
+            ]
+          ]
+        },
+        {
+          "id": "MAP_ROUTE125",
+          "name": "Route 125",
+          "cells": [
+            [
+              192,
+              24
+            ],
+            [
+              200,
+              24
+            ],
+            [
+              192,
+              32
+            ],
+            [
+              200,
+              32
+            ]
+          ]
+        },
+        {
+          "id": "MAP_ROUTE126",
+          "name": "Route 126",
+          "cells": [
+            [
+              160,
+              48
+            ],
+            [
+              168,
+              48
+            ],
+            [
+              176,
+              48
+            ],
+            [
+              160,
+              56
+            ],
+            [
+              176,
+              56
+            ],
+            [
+              160,
+              64
+            ],
+            [
+              168,
+              64
+            ],
+            [
+              176,
+              64
+            ]
+          ]
+        },
+        {
+          "id": "MAP_ROUTE127",
+          "name": "Route 127",
+          "cells": [
+            [
+              184,
+              48
+            ],
+            [
+              192,
+              48
+            ],
+            [
+              200,
+              48
+            ],
+            [
+              184,
+              56
+            ],
+            [
+              192,
+              56
+            ],
+            [
+              200,
+              56
+            ],
+            [
+              184,
+              64
+            ],
+            [
+              192,
+              64
+            ],
+            [
+              200,
+              64
+            ]
+          ]
+        },
+        {
+          "id": "MAP_ROUTE128",
+          "name": "Route 128",
+          "cells": [
+            [
+              184,
+              72
+            ],
+            [
+              192,
+              72
+            ],
+            [
+              200,
+              72
+            ],
+            [
+              208,
+              72
+            ]
+          ]
+        },
+        {
+          "id": "MAP_ROUTE129",
+          "name": "Route 129",
+          "cells": [
+            [
+              192,
+              80
+            ],
+            [
+              200,
+              80
+            ]
+          ]
+        },
+        {
+          "id": "MAP_ROUTE130",
+          "name": "Route 130",
+          "cells": [
+            [
+              168,
+              80
+            ],
+            [
+              176,
+              80
+            ],
+            [
+              184,
+              80
+            ]
+          ]
+        },
+        {
+          "id": "MAP_ROUTE131",
+          "name": "Route 131",
+          "cells": [
+            [
+              144,
+              80
+            ],
+            [
+              152,
+              80
+            ],
+            [
+              160,
+              80
+            ]
+          ]
+        },
+        {
+          "id": "MAP_ROUTE132",
+          "name": "Route 132",
+          "cells": [
+            [
+              120,
+              80
+            ],
+            [
+              128,
+              80
+            ]
+          ]
+        },
+        {
+          "id": "MAP_ROUTE133",
+          "name": "Route 133",
+          "cells": [
+            [
+              96,
+              80
+            ],
+            [
+              104,
+              80
+            ],
+            [
+              112,
+              80
+            ]
+          ]
+        },
+        {
+          "id": "MAP_ROUTE134",
+          "name": "Route 134",
+          "cells": [
+            [
+              72,
+              80
+            ],
+            [
+              80,
+              80
+            ],
+            [
+              88,
+              80
+            ]
+          ]
+        }
       ]
     },
     "Kanto": {
@@ -2582,6 +3304,228 @@
           "y": 24,
           "width": 8,
           "height": 8
+        }
+      ],
+      "routes": [
+        {
+          "id": "MAP_LEGENDS_KANTO_ROUTE6",
+          "name": "Route 6",
+          "cells": [
+            [
+              112,
+              56
+            ],
+            [
+              112,
+              64
+            ]
+          ]
+        },
+        {
+          "id": "MAP_LEGENDS_KANTO_ROUTE7",
+          "name": "Route 7",
+          "cells": [
+            [
+              96,
+              48
+            ],
+            [
+              104,
+              48
+            ]
+          ]
+        },
+        {
+          "id": "MAP_LEGENDS_KANTO_ROUTE8",
+          "name": "Route 8",
+          "cells": [
+            [
+              120,
+              48
+            ],
+            [
+              128,
+              48
+            ],
+            [
+              136,
+              48
+            ]
+          ]
+        },
+        {
+          "id": "MAP_LEGENDS_KANTO_ROUTE11",
+          "name": "Route 11",
+          "cells": [
+            [
+              120,
+              72
+            ],
+            [
+              128,
+              72
+            ],
+            [
+              136,
+              72
+            ]
+          ]
+        },
+        {
+          "id": "MAP_LEGENDS_KANTO_ROUTE12",
+          "name": "Route 12",
+          "cells": [
+            [
+              144,
+              56
+            ],
+            [
+              144,
+              64
+            ],
+            [
+              144,
+              72
+            ],
+            [
+              144,
+              80
+            ],
+            [
+              144,
+              88
+            ]
+          ]
+        },
+        {
+          "id": "MAP_LEGENDS_KANTO_ROUTE13",
+          "name": "Route 13",
+          "cells": [
+            [
+              128,
+              88
+            ],
+            [
+              136,
+              88
+            ]
+          ]
+        },
+        {
+          "id": "MAP_LEGENDS_KANTO_ROUTE14",
+          "name": "Route 14",
+          "cells": [
+            [
+              120,
+              88
+            ],
+            [
+              120,
+              96
+            ]
+          ]
+        },
+        {
+          "id": "MAP_LEGENDS_KANTO_ROUTE15",
+          "name": "Route 15",
+          "cells": [
+            [
+              104,
+              96
+            ],
+            [
+              112,
+              96
+            ]
+          ]
+        },
+        {
+          "id": "MAP_LEGENDS_KANTO_ROUTE16",
+          "name": "Route 16",
+          "cells": [
+            [
+              56,
+              48
+            ],
+            [
+              64,
+              48
+            ],
+            [
+              72,
+              48
+            ],
+            [
+              80,
+              48
+            ]
+          ]
+        },
+        {
+          "id": "MAP_LEGENDS_KANTO_ROUTE17",
+          "name": "Route 17",
+          "cells": [
+            [
+              56,
+              56
+            ],
+            [
+              56,
+              64
+            ],
+            [
+              56,
+              72
+            ],
+            [
+              56,
+              80
+            ],
+            [
+              56,
+              88
+            ]
+          ]
+        },
+        {
+          "id": "MAP_LEGENDS_KANTO_ROUTE18",
+          "name": "Route 18",
+          "cells": [
+            [
+              56,
+              96
+            ],
+            [
+              64,
+              96
+            ],
+            [
+              72,
+              96
+            ],
+            [
+              80,
+              96
+            ],
+            [
+              88,
+              96
+            ]
+          ]
+        },
+        {
+          "id": "MAP_LEGENDS_KANTO_ROUTE19",
+          "name": "Route 19",
+          "cells": [
+            [
+              96,
+              104
+            ],
+            [
+              96,
+              112
+            ]
+          ]
         }
       ]
     }
