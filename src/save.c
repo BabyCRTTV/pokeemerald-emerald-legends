@@ -23,6 +23,7 @@ static u8 HandleWriteSector(u16, const struct SaveSectorLocation *);
 static u8 HandleReplaceSector(u16, const struct SaveSectorLocation *);
 static void CopyToSaveBlock3(u32, struct SaveSector *);
 static void CopyFromSaveBlock3(u32, struct SaveSector *);
+static void WriteSaveBlock3Tail(void);
 
 // Divide save blocks into individual chunks to be written to flash sectors
 
@@ -79,8 +80,12 @@ struct
 // These will produce an error if a save struct is larger than the space
 // alloted for it in the flash.
 STATIC_ASSERT(sizeof(struct SaveBlock3) <= SAVE_BLOCK_3_CHUNK_SIZE * NUM_SECTORS_PER_SLOT, SaveBlock3FreeSpace);
-// Keep the whole journal inside the five sectors written by native partial saves.
-STATIC_ASSERT(sizeof(struct SaveBlock3) <= SAVE_BLOCK_3_CHUNK_SIZE * 5, AdventurePartialSaveFits);
+// Keep the journal in the original five partial-save chunks; append discovery
+// bits at the old SaveBlock3 end, with the remaining chunks handled separately.
+#if OW_SHOW_ITEM_DESCRIPTIONS == OW_ITEM_DESCRIPTIONS_FIRST_TIME
+STATIC_ASSERT(offsetof(struct SaveBlock3, itemFlags) == 0x21C, ItemHistoryAppendOnly);
+#endif
+STATIC_ASSERT(offsetof(struct SaveBlock3, adventure) + sizeof(struct LegendsAdventureSave) <= SAVE_BLOCK_3_CHUNK_SIZE * 5, AdventurePartialSaveFits);
 STATIC_ASSERT(sizeof(struct SaveBlock2) <= SECTOR_DATA_SIZE, SaveBlock2FreeSpace);
 STATIC_ASSERT(sizeof(struct SaveBlock1) <= SECTOR_DATA_SIZE * (SECTOR_ID_SAVEBLOCK1_END - SECTOR_ID_SAVEBLOCK1_START + 1), SaveBlock1FreeSpace);
 STATIC_ASSERT(sizeof(struct PokemonStorage) <= SECTOR_DATA_SIZE * (SECTOR_ID_PKMN_STORAGE_END - SECTOR_ID_PKMN_STORAGE_START + 1), PokemonStorageFreeSpace);
@@ -759,6 +764,8 @@ u8 HandleSavingData(u8 saveType)
             HandleReplaceSector(i, gRamSaveSectorLocations);
         for (i = SECTOR_ID_SAVEBLOCK2; i <= SECTOR_ID_SAVEBLOCK1_END; i++)
             WriteSectorSignatureByte_NoOffset(i, gRamSaveSectorLocations);
+        if (!gDamagedSaveSectors)
+            WriteSaveBlock3Tail();
         break;
     case SAVE_OVERWRITE_DIFFERENT_FILE:
         // Erase Hall of Fame
@@ -871,6 +878,8 @@ bool8 WriteSaveBlock1Sector(void)
         // Does write 1 byte of the next sector's signature field, but as these
         // are the same for all valid sectors it doesn't matter.
         WriteSectorSignatureByte(sectorId, gRamSaveSectorLocations);
+        if (!gDamagedSaveSectors)
+            WriteSaveBlock3Tail();
         finished = TRUE;
     }
 
@@ -1088,4 +1097,38 @@ static void CopyFromSaveBlock3(u32 sectorId, struct SaveSector *sector)
 {
     u32 size = SaveBlock3Size(sectorId);
     memcpy(sector->saveBlock3Chunk, (u8 *)&gSaveblock3 + (sectorId * SAVE_BLOCK_3_CHUNK_SIZE), size);
+}
+
+// Partial saves intentionally keep the PC's previously saved contents. Persist
+// any appended SaveBlock3 chunks without replacing that PC payload with RAM.
+// Reuse the native sector buffer/flash verification; no extra sector-sized RAM.
+static void WriteSaveBlock3Tail(void)
+{
+    u16 id;
+
+    for (id = SECTOR_ID_PKMN_STORAGE_START;
+         id * SAVE_BLOCK_3_CHUNK_SIZE < sizeof(gSaveblock3); id++)
+    {
+        u16 sector = (id + gLastWrittenSector) % NUM_SECTORS_PER_SLOT
+                   + NUM_SECTORS_PER_SLOT * (gSaveCounter % NUM_SAVE_SLOTS);
+        u32 size = SaveBlock3Size(id);
+
+        ReadFlashSector(sector, gReadWriteSector);
+        if (gReadWriteSector->id != id
+         || gReadWriteSector->signature != SECTOR_SIGNATURE
+         || gReadWriteSector->checksum != CalculateChecksum(gReadWriteSector->data, gRamSaveSectorLocations[id].size))
+        {
+            SetDamagedSectorBits(ENABLE, sector);
+            return;
+        }
+
+        // Skip unchanged chunks to avoid unnecessary flash writes.
+        if (memcmp(gReadWriteSector->saveBlock3Chunk,
+                   (u8 *)&gSaveblock3 + id * SAVE_BLOCK_3_CHUNK_SIZE, size) == 0)
+            continue;
+
+        CopyFromSaveBlock3(id, gReadWriteSector);
+        if (TryWriteSector(sector, gReadWriteSector->data) == SAVE_STATUS_ERROR)
+            return;
+    }
 }

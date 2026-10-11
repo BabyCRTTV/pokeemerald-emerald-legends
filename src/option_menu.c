@@ -113,14 +113,16 @@ EWRAM_DATA static bool8 sArrowPressed = FALSE;
 
 static const u8 gText_PageControls[]       = _("A: NEXT  B: SAVE");
 #ifdef RELEASE
-static const u8 gText_LegendsVersion[]      = _("LEGENDS v0.0.35");
+static const u8 gText_LegendsVersion[]      = _("LEGENDS v0.0.36");
 #else
-static const u8 gText_LegendsVersion[]      = _("LEGENDS v0.0.35-D");
+static const u8 gText_LegendsVersion[]      = _("LEGENDS v0.0.36-D");
 #endif
 static const u8 gText_TextSpeedSlow[]      = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}SLOW");
 static const u8 gText_TextSpeedMid[]       = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}MID");
 static const u8 gText_TextSpeedFast[]      = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}FAST");
 static const u8 gText_TextSpeedInstant[]   = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}INSTANT");
+static const u8 gText_TextSpeedLeftArrow[] = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}{LEFT_ARROW}");
+static const u8 gText_TextSpeedRightArrow[] = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}{RIGHT_ARROW}");
 static const u8 gText_BattleSceneOn[]      = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}ON");
 static const u8 gText_BattleSceneOff[]     = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}OFF");
 static const u8 gText_BattleStyleShift[]   = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}SHIFT");
@@ -651,6 +653,8 @@ static void TextSpeed_DrawChoices(u8 selection, u8 y)
     // Show one value, as with the Legends settings, within the native window.
     FillWindowPixelRect(WIN_OPTIONS, PIXEL_FILL(1), 104, y, 96, OPTION_ROW_HEIGHT);
     DrawOptionMenuChoice(choices[selection], 130, y, 1);
+    AddTextPrinterParameterized(WIN_OPTIONS, FONT_SMALL, gText_TextSpeedLeftArrow, 112, y + 2, TEXT_SKIP_DRAW, NULL);
+    AddTextPrinterParameterized(WIN_OPTIONS, FONT_SMALL, gText_TextSpeedRightArrow, 188, y + 2, TEXT_SKIP_DRAW, NULL);
 }
 
 static u8 BattleScene_ProcessInput(u8 selection)

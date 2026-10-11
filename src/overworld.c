@@ -3697,7 +3697,10 @@ static void SpriteCB_LinkPlayer(struct Sprite *sprite)
 bool8 GetSetItemObtained(enum Item item, enum ItemObtainFlags caseId)
 {
 #if OW_SHOW_ITEM_DESCRIPTIONS == OW_ITEM_DESCRIPTIONS_FIRST_TIME
-    u8 index = item / 8;
+    if (item == ITEM_NONE || item >= ITEMS_COUNT)
+        return FALSE;
+
+    u16 index = item / 8;
     u8 bit = item % 8;
     u8 mask = 1 << bit;
     switch (caseId)

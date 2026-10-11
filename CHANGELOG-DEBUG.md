@@ -2,6 +2,13 @@
 
 This is the developer-facing history for the **Debug** build. Shared Legends changes are repeated here so this file stands on its own; Debug-only behavior is called out separately.
 
+## [0.0.36] - 2026-10-11
+
+- Enable the expansion's native first-time obtained-item descriptions for supported gifts, field pickups, hidden items and harvest scripts. The top window explains the item while the normal receipt dialogue and icon remain native; subsequent receipts retain the small icon without repeating the description.
+- Append item-history bits after the existing Adventure Log in reserved SaveBlock3 sector space. Preserve all previous save-field offsets and saved PC contents, including native partial/link saves; validate sector identity/checksum and reuse the existing verified flash writer. Existing profiles begin tracking discoveries after this upgrade; historical receipts cannot be reconstructed.
+- Add compact Left/Right arrows around the selected Text Speed value, including INSTANT, within the existing Options window.
+- Shared in Release and Debug; no variant-specific differences. Wiki files/workflows are unchanged. Host checks cover every item ID, invalid IDs, legacy profiles and all 28 save-slot/rotation layouts, partial-save PC preservation and flash failures. mGBA 0.10.2 verifies all four text-speed labels/arrows, native first/repeat Potion receipts, two-line Escape Rope and TM descriptions, dismissal, full save/load and both partial-save paths. Controlled native reward-script entry was used. EWRAM grows by 112 bytes; the existing sector buffer is reused. Native builds and verified BPS publication use the established workflow.
+
 ## [0.0.35] - 2026-10-11
 
 - Add five understated native window frames: TYPE 21 Leaf, TYPE 22 Ocean, TYPE 23 Lavender Stitch, TYPE 24 Amber Circuit and TYPE 25 Poké Ball. Select them in General Options → FRAME; the native live preview and Left/Right wrap now cover 25 types.
