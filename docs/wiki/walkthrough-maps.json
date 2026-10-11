@@ -1,0 +1,447 @@
+{
+  "sourceCommit": "041bd89abd1fde1b5c9f13c8900647651384e0a6",
+  "image": "map-hoenn.png",
+  "places": {
+    "littleroot": {
+      "name": "Littleroot",
+      "mapId": null,
+      "cells": [
+        [
+          32,
+          88
+        ]
+      ]
+    },
+    "oldale": {
+      "name": "Oldale",
+      "mapId": null,
+      "cells": [
+        [
+          32,
+          72
+        ]
+      ]
+    },
+    "petalburg": {
+      "name": "Petalburg",
+      "mapId": null,
+      "cells": [
+        [
+          8,
+          72
+        ]
+      ]
+    },
+    "rustboro": {
+      "name": "Rustboro",
+      "mapId": null,
+      "cells": [
+        [
+          0,
+          40
+        ],
+        [
+          0,
+          48
+        ]
+      ]
+    },
+    "dewford": {
+      "name": "Dewford",
+      "mapId": null,
+      "cells": [
+        [
+          16,
+          112
+        ]
+      ]
+    },
+    "route101": {
+      "name": "Route 101",
+      "mapId": "MAP_ROUTE101",
+      "cells": [
+        [
+          32,
+          80
+        ]
+      ]
+    },
+    "route102": {
+      "name": "Route 102",
+      "mapId": "MAP_ROUTE102",
+      "cells": [
+        [
+          16,
+          72
+        ],
+        [
+          24,
+          72
+        ]
+      ]
+    },
+    "route103": {
+      "name": "Route 103",
+      "mapId": "MAP_ROUTE103",
+      "cells": [
+        [
+          32,
+          64
+        ],
+        [
+          40,
+          64
+        ],
+        [
+          48,
+          64
+        ],
+        [
+          56,
+          64
+        ]
+      ]
+    },
+    "route104": {
+      "name": "Route 104",
+      "mapId": "MAP_ROUTE104",
+      "cells": [
+        [
+          0,
+          56
+        ],
+        [
+          0,
+          64
+        ],
+        [
+          0,
+          72
+        ]
+      ]
+    },
+    "route116": {
+      "name": "Route 116",
+      "mapId": "MAP_ROUTE116",
+      "cells": [
+        [
+          8,
+          40
+        ],
+        [
+          16,
+          40
+        ],
+        [
+          24,
+          40
+        ],
+        [
+          32,
+          40
+        ]
+      ]
+    },
+    "woods": {
+      "name": "Petalburg Woods",
+      "mapId": "MAP_PETALBURG_WOODS",
+      "cells": [
+        [
+          0,
+          64
+        ]
+      ]
+    },
+    "tunnel": {
+      "name": "Rusturf Tunnel",
+      "mapId": "MAP_RUSTURF_TUNNEL",
+      "cells": [
+        [
+          16,
+          40
+        ]
+      ]
+    },
+    "route104-south": {
+      "name": "Southern Route 104",
+      "mapId": "MAP_ROUTE104",
+      "cells": [
+        [
+          0,
+          72
+        ]
+      ]
+    },
+    "route104-north": {
+      "name": "Northern Route 104",
+      "mapId": "MAP_ROUTE104",
+      "cells": [
+        [
+          0,
+          56
+        ]
+      ]
+    }
+  },
+  "chapters": {
+    "walkthrough": [
+      {
+        "section": "section-your-first-adventure",
+        "places": [
+          "littleroot",
+          "route101",
+          "oldale",
+          "route103",
+          "route102",
+          "petalburg",
+          "route104",
+          "woods",
+          "rustboro",
+          "route116",
+          "tunnel",
+          "dewford"
+        ],
+        "encounters": [],
+        "note": "Your opening journey runs from Littleroot to the boat for Dewford. Follow the chapters for route-by-route encounters."
+      }
+    ],
+    "walkthrough-littleroot": [
+      {
+        "section": "section-your-goal",
+        "places": [
+          "littleroot",
+          "route101",
+          "oldale",
+          "route103"
+        ],
+        "encounters": [],
+        "note": "Begin in Littleroot, meet your rival north of Oldale, then return to the laboratory."
+      },
+      {
+        "section": "section-arriving-in-littleroot",
+        "places": [
+          "littleroot"
+        ],
+        "encounters": [],
+        "note": ""
+      },
+      {
+        "section": "section-rescue-on-route-101",
+        "places": [
+          "littleroot",
+          "route101"
+        ],
+        "encounters": [
+          "route101"
+        ],
+        "note": "These are ordinary wild encounters. The story rescue uses Stunky separately. You receive Poké Balls after the rival battle and return to the lab."
+      },
+      {
+        "section": "section-oldale-and-the-first-rival-battle",
+        "places": [
+          "oldale",
+          "route103"
+        ],
+        "encounters": [
+          "route103"
+        ],
+        "note": "Head north from Oldale. At this point, wild battles are for training; return to the lab after beating your rival to unlock catching."
+      },
+      {
+        "section": "section-national-pokdex-pok-balls-and-running-shoes",
+        "places": [
+          "littleroot",
+          "route101",
+          "oldale"
+        ],
+        "encounters": [
+          "route101"
+        ],
+        "note": "Once you have the Poké Balls, you can catch these partners on your way back to Oldale."
+      },
+      {
+        "section": "section-a-gift-already-waiting-in-storage",
+        "places": [
+          "oldale"
+        ],
+        "encounters": [],
+        "note": "Use a Pokémon Center PC to withdraw Da Bug. It is a gift, not a wild encounter."
+      },
+      {
+        "section": "section-ready-for-chapter-2",
+        "places": [
+          "oldale",
+          "route102"
+        ],
+        "encounters": [],
+        "note": "Your next route is west of Oldale."
+      }
+    ],
+    "walkthrough-petalburg": [
+      {
+        "section": "section-your-goal",
+        "places": [
+          "route102",
+          "petalburg",
+          "route104",
+          "woods",
+          "rustboro"
+        ],
+        "encounters": [],
+        "note": ""
+      },
+      {
+        "section": "section-from-oldale-to-route-102",
+        "places": [
+          "oldale",
+          "route102",
+          "petalburg"
+        ],
+        "encounters": [
+          "route102"
+        ],
+        "note": "Walk west from Oldale. Grass encounters are available now; water encounters need later tools."
+      },
+      {
+        "section": "section-make-use-of-legends-early-tools",
+        "places": [
+          "route102"
+        ],
+        "encounters": [],
+        "note": "Try DexNav in Route 102’s grass after receiving it at the laboratory."
+      },
+      {
+        "section": "section-meet-norman-and-help-wally",
+        "places": [
+          "petalburg",
+          "route104-south"
+        ],
+        "encounters": [],
+        "note": "After the catching tutorial, leave Petalburg to the west."
+      },
+      {
+        "section": "section-route-104-and-the-woods",
+        "places": [
+          "route104-south",
+          "woods"
+        ],
+        "encounters": [
+          "route104",
+          "woods"
+        ],
+        "note": "Travel north from the coastal cottage into the woods. Route 104’s indexed encounter table is shared across its northern and southern stretches."
+      },
+      {
+        "section": "section-the-first-team-aqua-encounter",
+        "places": [
+          "woods"
+        ],
+        "encounters": [],
+        "note": "The Aqua grunt is a trainer battle along the forest path. Wild encounters for the woods are shown in the preceding section."
+      },
+      {
+        "section": "section-northern-route-104",
+        "places": [
+          "route104-north",
+          "rustboro"
+        ],
+        "encounters": [
+          "route104"
+        ],
+        "note": "Follow the bridge and road north into Rustboro. These use the same Route 104 encounter table shown before the woods."
+      },
+      {
+        "section": "section-ready-for-chapter-3",
+        "places": [
+          "rustboro"
+        ],
+        "encounters": [],
+        "note": ""
+      }
+    ],
+    "walkthrough-rustboro": [
+      {
+        "section": "section-your-goal",
+        "places": [
+          "rustboro",
+          "route116",
+          "tunnel",
+          "route104-south",
+          "dewford"
+        ],
+        "encounters": [],
+        "note": ""
+      },
+      {
+        "section": "section-prepare-in-rustboro",
+        "places": [
+          "rustboro"
+        ],
+        "encounters": [],
+        "note": ""
+      },
+      {
+        "section": "section-roxanne-and-the-stone-badge",
+        "places": [
+          "rustboro"
+        ],
+        "encounters": [],
+        "note": "Roxanne’s team is a Gym trainer battle, not a wild encounter table."
+      },
+      {
+        "section": "section-follow-the-devon-theft",
+        "places": [
+          "rustboro",
+          "route116",
+          "tunnel"
+        ],
+        "encounters": [
+          "route116"
+        ],
+        "note": "Go east from Rustboro to reach the tunnel entrance."
+      },
+      {
+        "section": "section-rescue-peeko-in-rusturf-tunnel",
+        "places": [
+          "tunnel"
+        ],
+        "encounters": [
+          "tunnel"
+        ],
+        "note": "This is the Rustboro-side entrance. The blocked tunnel crossing is not required for Peeko’s rescue."
+      },
+      {
+        "section": "section-devon-corporation-and-your-delivery-jobs",
+        "places": [
+          "rustboro"
+        ],
+        "encounters": [],
+        "note": "Return west along Route 116 to the Devon employee in Rustboro."
+      },
+      {
+        "section": "section-reach-the-boat-for-dewford",
+        "places": [
+          "rustboro",
+          "route104-north",
+          "woods",
+          "route104-south",
+          "dewford"
+        ],
+        "encounters": [
+          "route104",
+          "woods"
+        ],
+        "note": "Return south through the woods to Mr. Briney’s coastal cottage. Dewford is the boat destination; this section does not describe a walkable path over the sea."
+      },
+      {
+        "section": "section-endofchapter-checklist",
+        "places": [
+          "route104-south",
+          "dewford"
+        ],
+        "encounters": [],
+        "note": ""
+      }
+    ]
+  }
+}

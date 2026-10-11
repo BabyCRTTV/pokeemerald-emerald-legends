@@ -16,7 +16,7 @@
   {label:'Devon Corporation',page:'walkthrough-rustboro',section:'devon-corporation-and-your-delivery-jobs',hint:'Collect your delivery jobs'},
   {label:'Boat to Dewford',page:'walkthrough-rustboro',section:'reach-the-boat-for-dewford',hint:"Return to Mr. Briney's cottage"}
  ];
- function readingWalkthrough(active){document.documentElement.classList.toggle('reading-walkthrough',active);}
+ function readingWalkthrough(active){document.documentElement.classList.toggle('reading-walkthrough',active);root.dataset.walkthroughPage='';}
  function walkthroughNavigation(id){
    const options=walkthroughStops.map(stop=>'<option value="'+stop.page+'#section-'+stop.section+'">'+escape(stop.label)+'</option>').join('');
    const cards=id==='walkthrough'?'<div class="walkthrough-stops">'+walkthroughStops.map((stop,i)=>'<a href="?page='+stop.page+'#section-'+stop.section+'" data-page="'+stop.page+'" data-section="section-'+stop.section+'"><span class="stop-number" aria-hidden="true">'+(i+1)+'</span><span><strong>'+escape(stop.label)+'</strong><small>'+escape(stop.hint)+'</small></span></a>').join('')+'</div>':'';
@@ -84,6 +84,7 @@
    root.innerHTML='<article class="article"><div class="crumbs"><button id="home" type="button">Wiki home</button> › '+'<a href="?category='+encodeURIComponent(p.category)+'" data-category="'+escape(p.category)+'">'+escape(p.category)+'</a></div><h1>'+escape(p.title)+'</h1><p class="lede">'+escape(p.summary)+'</p>'+(walkthrough?walkthroughNavigation(id):'')+'<div class="articlebody">'+r.html+'</div><div class="articlefooter"><button class="action" id="back" type="button">← '+escape(p.category)+'</button><button class="action" id="share" type="button">Copy article link</button></div></article>';
    outline.innerHTML='<strong>On this page</strong>'+r.heads.filter(h=>h.id).map(h=>'<a href="#'+h.id+'">'+escape(h.label)+'</a>').join('');
    document.title=p.title+' · Emerald: Legends Wiki';menuClose();focusContent();focusSection(section);
+   if(walkthrough){root.dataset.walkthroughPage=id;window.LegendsWalkthroughMaps?.decorate(root,id);}
    const towns=document.getElementById('walkthrough-town');if(towns){if(section)towns.value=id+'#'+section;towns.onchange=()=>{if(!towns.value)return;const [page,anchor]=towns.value.split('#');navigate(page,true,anchor);};}
    document.getElementById('home').onclick=()=>home();document.getElementById('back').onclick=()=>category(p.category);
    document.getElementById('share').onclick=async()=>{try{await navigator.clipboard.writeText(location.href);document.getElementById('share').textContent='Link copied!';}catch{document.getElementById('share').textContent='Copy the URL from your browser';}};

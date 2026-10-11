@@ -34,6 +34,13 @@ const settle=()=>new Promise(r=>setImmediate(r));
  w.click('category','all');assert.equal((w.get('content').innerHTML.match(/data-page=/g)||[]).length,articles.articles.length);
  const deep=boot('wiki.js',articles,'https://example.test/wiki/?category=Kanto%20postgame');await settle();assert.match(deep.get('content').innerHTML,/<h1>Kanto postgame/);
  const data=JSON.parse(fs.readFileSync(base+'dex-data.json'));
+ const maps=JSON.parse(fs.readFileSync(base+'walkthrough-maps.json'));assert.equal(maps.sourceCommit,data.sourceCommit);
+ for(const [page,blocks] of Object.entries(maps.chapters)){
+  const content=articles.articles.find(p=>p.id===page).content;
+  const headings=new Set([...content.matchAll(/^#{2,3} (.+)$/gm)].map(m=>'section-'+m[1].toLowerCase().replace(/[^a-z0-9 ]/g,'').trim().replace(/\s+/g,'-')));
+  for(const block of blocks){assert(headings.has(block.section),block.section);for(const id of block.places){assert(maps.places[id]);for(const [x,y] of maps.places[id].cells)assert(x>=0&&x<224&&y>=0&&y<120);}for(const id of block.encounters)assert(data.maps.some(m=>m.id===maps.places[id].mapId));}
+ }
+
  const portraits=JSON.parse(fs.readFileSync(base+'dex-portrait-sources.json'));assert.equal(portraits.sourceCommit,data.sourceCommit);assert.equal(portraits.count,data.species.length);
  for(const [name,hash] of Object.entries(portraits.files))assert.equal(require('node:crypto').createHash('sha256').update(fs.readFileSync(base+name)).digest('hex'),hash,'portrait file integrity');
  const atlas={window:{}};vm.runInNewContext(fs.readFileSync(base+'dex-sprite-atlas.js','utf8'),atlas);
