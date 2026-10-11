@@ -223,11 +223,11 @@ LegendsKanto_Chapter2_Echo::
 	goto_if_eq VAR_RESULT, NO, LegendsKanto_Challenge_Decline
 	msgbox LegendsKanto_Text_EchoListen, MSGBOX_DEFAULT
 	closemessage
-	playcry SPECIES_PIDGEY, CRY_MODE_NORMAL
-	waitcry
+	playmoncry SPECIES_PIDGEY, CRY_MODE_NORMAL
+	waitmoncry
 	delay 30
-	playcry SPECIES_PIKACHU, CRY_MODE_NORMAL
-	waitcry
+	playmoncry SPECIES_PIKACHU, CRY_MODE_NORMAL
+	waitmoncry
 	msgbox LegendsKanto_Text_EchoScene, MSGBOX_DEFAULT
 	setflag FLAG_LEGENDS_KANTO_SURVEY_ECHO
 LegendsKanto_Chapter2_EchoDone::

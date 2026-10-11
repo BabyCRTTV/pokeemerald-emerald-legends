@@ -4,6 +4,14 @@ from pathlib import Path
 R=Path(__file__).resolve().parents[1]
 spec=importlib.util.spec_from_file_location('chapter',R/'test/legends-kanto-challenge.test.py');chapter=importlib.util.module_from_spec(spec);spec.loader.exec_module(chapter)
 class ChapterTwo(unittest.TestCase):
+ def test_chapter_commands_are_native_event_macros(self):
+  macros=set()
+  for p in (R/'asm/macros').glob('*.inc'):
+   macros.update(re.findall(r'\.macro\s+(\w+)',p.read_text()))
+  for line in (R/'data/scripts/legends_kanto_chapter2.inc').read_text().splitlines():
+   if line.startswith('\t') and not line.lstrip().startswith(('.', '@')):
+    self.assertIn(line.split()[0],macros,line)
+
  def test_fieldwork_gates_decline_revisit_and_either_order(self):
   for site,gym in [('Leaves','ERIKA'),('Echo','SABRINA')]:
    flag='FLAG_LEGENDS_KANTO_SURVEY_'+site.upper()

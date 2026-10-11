@@ -29,7 +29,7 @@ class Events:
    elif op=='trainerbattle_single':
     self.battles.append(a[0])
     if self.lose:return self # Engine blackouts abort this script on defeat.
-   elif op not in ('lockall','releaseall','faceplayer','playcry','waitcry','delay','closemessage','playfanfare','waitfanfare'):raise AssertionError(op)
+   elif op not in ('lockall','releaseall','faceplayer','playmoncry','waitmoncry','delay','closemessage','playfanfare','waitfanfare'):raise AssertionError(op)
   raise AssertionError('Script did not terminate')
 class ChallengeTests(unittest.TestCase):
  def test_both_modes_share_one_permanent_victory(self):
