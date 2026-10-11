@@ -45,6 +45,7 @@ u8 LegendsGetJacketStyle(void);
 u8 LegendsGetHair(void);
 void LegendsSetHairSelection(u8 hair);
 void LegendsPaintStyle(u8 *data, u8 width, u8 height, u8 gender, bool8 isBack, u8 hair, u8 coat);
+void LegendsPolishBoots(u8 *data, u8 width, u8 height);
 u8 LegendsGetAccessoryStyle(void);
 u8 LegendsGetSkinTone(void);
 u8 LegendsGetOutfit(void);
