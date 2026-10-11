@@ -57,6 +57,7 @@ const struct Tileset gTileset_LegendsKantoGeneral_Frlg={kanto,0};
 static const struct Tileset other={kanto,0};
 static const struct MapLayout kantoLayout={&gTileset_LegendsKantoGeneral_Frlg,&other};
 '''
+preamble += '#define gBattleEnvironmentPalette_TallGrass native[0]\n'
 source = function('src/palette.c','void LoadPalette(const void *src, u32 offset, u32 size)')
 for sig in ['bool32 LegendsMapHasSeasons(void)','bool32 LegendsMapHasSeasonalPaletteZero(void)','u16 LegendsSeasonVegetationColor(u16 color, u8 season)','void LegendsApplySeasonPalette(u16 offset, u16 count)']:
     source += '\n'+function('src/legends_seasons.c',sig)
@@ -73,7 +74,9 @@ int main(int argc,char **argv){
  for(int e=0;e<3;e++)for(season=0;season<4;season++){
   fresh();LegendsLoadBattleSeasonPalette(eligible[e],native[e]);int changed=0;
   for(int i=0;i<48;i++){
-   u16 expected=i%16?LegendsSeasonVegetationColor(native[e][i],season):native[e][i];
+   u16 base=native[e][i];
+   if(e==2 && i<32 && (i%16==1 || i%16>=11))base=native[0][i];
+   u16 expected=i%16?LegendsSeasonVegetationColor(base,season):base;
    assert(gPlttBufferUnfaded[32+i]==expected&&gPlttBufferFaded[32+i]==expected);changed+=expected!=native[e][i];
   }
   assert(changed>0);for(int i=0;i<512;i++)if(i<32||i>=80)assert(gPlttBufferUnfaded[i]==0x4210&&gPlttBufferFaded[i]==0x4210);
@@ -82,6 +85,22 @@ int main(int argc,char **argv){
   if(preview)fwrite(before,2,48,preview);
  }
  if(preview)fclose(preview);
+ // Ordinary wild, scripted first battle and trainers get the same line/sky ramp
+ // for each active season and every native map weather. Sand/ash stay native.
+ for(int weather=0;weather<WEATHER_COUNT;weather++)for(season=0;season<4;season++){
+  gMapHeader.weather=weather;
+  for(int type=0;type<3;type++){
+   gBattleTypeFlags=type==0?0:type==1?BATTLE_TYPE_FIRST_BATTLE:BATTLE_TYPE_TRAINER;
+   fresh();LegendsLoadBattleSeasonPalette(BATTLE_ENVIRONMENT_PLAIN,native[2]);
+   u16 plain[48];memcpy(plain,gPlttBufferUnfaded+32,96);
+   LegendsLoadBattleSeasonPalette(BATTLE_ENVIRONMENT_GRASS,native[0]);
+   for(int i=0;i<32;i++)if(i%16==1||i%16>=11){
+    if(weather==WEATHER_SANDSTORM||weather==WEATHER_VOLCANIC_ASH)assert(plain[i]==native[2][i]);
+    else assert(plain[i]==gPlttBufferUnfaded[32+i]);
+   }
+  }
+ }
+ gMapHeader.weather=WEATHER_SUNNY;gBattleTypeFlags=0;
  // The eligible background list is intentionally narrow; all special art stays native.
  for(int e=0;e<BATTLE_ENVIRONMENT_COUNT;e++)if(e!=eligible[0]&&e!=eligible[1]&&e!=eligible[2])unchanged(e);
  const u32 flags[]={BATTLE_TYPE_LINK,BATTLE_TYPE_RECORDED,BATTLE_TYPE_RECORDED_LINK,BATTLE_TYPE_FRONTIER,BATTLE_TYPE_EREADER_TRAINER,BATTLE_TYPE_TRAINER_HILL,BATTLE_TYPE_LEGENDARY};
