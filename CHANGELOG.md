@@ -4,6 +4,14 @@ All notable Pokémon Emerald: Legends project changes are documented here.
 
 For build-specific player views, see [CHANGELOG-RELEASE.md](CHANGELOG-RELEASE.md) and [CHANGELOG-DEBUG.md](CHANGELOG-DEBUG.md). The canonical history below records the project as a whole.
 
+## [0.0.38] - 2026-10-11
+
+- Replace v0.0.37's procedural head/coat painter with authored, pose-specific sparse pixel art. Ten hairstyle choices retain their saved IDs, with smaller shaded crowns, partings, curls, sideburns and tied tails. Resolve each native animation pose at authoring time instead of guessing the face/torso coordinates on the GBA.
+- Redraw Navy and Winter outerwear with shoulder/sleeve contours, front fastening and coat hems. Winter has thick turned shearling lapels; the female coat has a fitted waist and flared hem. Scarves remain in front of coats, and native backpack/hand/held-ball details remain protected.
+- Refine leather boot cuffs, tapered shafts, shaded toes and continuous soles in the pose masks. Remove the shared-color boot finishing scan. Move footwear's shadow slot from 7 to clothing slot 11 so May's native hair/eye shade is retained. Restore exact white for eyes moved into slot 9 by scarf/jacket templates; Navy shading avoids footwear slots.
+- Store sparse art in ROM and reuse the existing pose and portrait buffers; no extra animation bank or saved-data changes. Preserve native underwater suits, team uniforms, selection/apply/cancel controls and old hairstyle/accessory codes.
+- Shared by Release and Debug; no variant-specific differences. Actual-C checks cover 212 native animation-table poses, all hairstyle/coat combinations, face/hand/ball protection, ROM-mask reproducibility, palette isolation and integrated footwear cache rebuilds under address/undefined-behavior sanitizers. Authoring renders reviewed; full emulator traversal remains a follow-up visual playtest. Both compiled variants and BPS byte-for-byte verification use the established release workflow.
+
 ## [0.0.37] - 2026-10-11
 
 - Expand the trainer wardrobe to include 11 hairstyle choices (the untouched original hat and 10 distinct pixel-silhouette styles: crop, side part, spikes, side sweep, tousled, pixie, bob, curls, ponytail and twin tails). Birch's introductory customization now progresses skin tone -> hairstyle -> outfit with a compact Left/Right hair selector and immediate trainer preview. Wardrobe HAIR is scrollable and supports Apply/Cancel.

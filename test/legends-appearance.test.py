@@ -173,6 +173,10 @@ for(int o=0;o<5;o++)for(int scarf=0;scarf<6;scarf++)for(int j=0;j<2;j++){
  LegendsApplyWardrobeSelection();assert(value==1+3+5*o&&accessories==scarf+6*j);
  for(int g=0;g<2;g++){
   int style=(scarf!=0)|j<<1;
+  LegendsUpdateAppearancePalettes();
+  assert(gLegendsTrainerPalettes[g][7]==sBaseTrainerPalettes[g][7]);
+  assert(gLegendsOverworldPalettes[g][7]==sBaseOverworldPalettes[g][7]);
+  if(style){assert(gLegendsTrainerPalettes[g][9]==0x7FFF);assert(gLegendsOverworldPalettes[g][9]==0x7FFF);}
   assert(LegendsGetPlayerTrainerPic(g)==(style?210+((style-1)*2+g)*5+o:200+g*5+o));
   struct SpriteFrameImage nativeImage={0};struct ObjectEventGraphicsInfo native={99,512,&nativeImage};
   for(int state=0;state<9;state++){

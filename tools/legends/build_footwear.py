@@ -21,7 +21,7 @@ def front_mask(gender,boots):
                     if value:m[y][x]=3 if value in (4,15) else 2 if value in (6,8,11,13) else 1
             continue
         shaft_top=48 if gender==0 else 47
-        shaft_left=left+1;shaft_right=right-1
+        shaft_left=left+2;shaft_right=right-2
         for y in range(shaft_top,bottom):
             l=shaft_left if y<top else left
             rr=shaft_right if y<top else right
@@ -30,7 +30,21 @@ def front_mask(gender,boots):
                     if native[y][x]:m[y][x]=3 if native[y][x] in (4,15) else 2 if x>=rr-1 else 1
                 else:
                     m[y][x]=3 if x in (l,rr) else 2 if x>=rr-1 else 1
+        # Rolled top, tapered ankle, beveled toe and continuous sole.
+        # The shading is authored in the boot mask, never found by scanning
+        # shared sprite colors (which could catch trousers or backpack pixels).
         for x in range(left+1,right):m[bottom][x]=3
+        for y in range(shaft_top,min(shaft_top+2,bottom)):
+            for x in range(shaft_left,shaft_right+1):
+                if native[y][x]:m[y][x]=3 if y==shaft_top else 2
+        for y in range(top,bottom):
+            m[y][left]=0;m[y][right]=0
+            # Narrow highlight down the leather shaft; shaded vamp at the toe.
+            if y>=top+1:
+                for x in range(left+2,right-1):
+                    if m[y][x] in (1,2):m[y][x]=2 if x>=right-3 else 1
+        m[top][left]=0;m[top][right]=0
+        m[bottom-1][left]=3;m[bottom-1][right]=3
         if boots:
             for x in range(shaft_left,shaft_right+1):
                 if native[shaft_top][x]:m[shaft_top][x]=3
@@ -68,10 +82,14 @@ def world_mask(p,boots,state):
         if not groups:continue
         group=max(groups,key=lambda group:max(y for x,y in group))
         left=min(x for x,y in group)-1;right=max(x for x,y in group)+1
-        top=min(y for x,y in group)-(2 if boots else 0);bottom=max(y for x,y in group)+1
+        top=min(y for x,y in group)-(3 if boots else 0);bottom=max(y for x,y in group)+1
         for y in range(max(0,top),min(h,bottom+1)):
             for x in range(max(0,left),min(w,right+1)):
                 if p[y][x]:m[y][x]=3 if p[y][x] in (4,15) else 2 if x==right else 1
+        if boots:
+            for x in range(max(0,left),min(w,right+1)):
+                if 0<=top<h and m[top][x]:m[top][x]=3
+                if 0<=bottom<h and m[bottom][x]:m[bottom][x]=3
     return m
 
 def build():

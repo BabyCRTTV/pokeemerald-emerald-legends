@@ -1,113 +1,68 @@
-"""Compile the real runtime hair/coat compositor and check face isolation."""
+"""Run the real sparse compositor on every native pose; protect actual faces.
+Reproduce masks, check every ROM edit bound, exercise scarf order and defaults.
+"""
+import sys,re,struct,subprocess,tempfile,ctypes,json
 from pathlib import Path
-import subprocess,tempfile
-root=Path(__file__).resolve().parents[1]
-source='\n'.join(x for x in (root/'src/legends_style_layers.c').read_text().splitlines() if not x.startswith('#include'))
-fixture=r'''
-#include <assert.h>
+root=Path(__file__).resolve().parents[1];sys.path.insert(0,str(root/'tools/legends'))
+import build_style_layers as art
+from build_appearance import frames,pack,STATES,FILES
+assets=[root/'graphics/legends/styles/edits.bin',root/'src/data/legends/style_layers.h']
+before=[p.read_bytes() for p in assets];art.build();assert before==[p.read_bytes() for p in assets]
+header=assets[1].read_text();edits=struct.unpack('<'+'H'*(len(before[0])//2),before[0])
+header=re.sub(r'static const u16 sStylePixels\[\] = INCBIN_U16\([^;]+;', 'static const u16 sStylePixels[]={'+','.join(map(str,edits))+'};',header)
+source='\n'.join(l for l in (root/'src/legends_style_layers.c').read_text().splitlines() if not l.startswith('#include'))
+pre='''
 #include <stdint.h>
-#include <stdio.h>
-#include <string.h>
-typedef uint8_t u8;typedef uint16_t u16;typedef uint32_t u32;typedef int bool8;
+typedef uint8_t u8;typedef uint16_t u16;typedef uint32_t u32;typedef uint8_t bool8;
+#define LEGENDS_HAIR_COUNT 11
+#define LEGENDS_JACKET_COUNT 3
 #define TRUE 1
 #define FALSE 0
-u8 LegendsGetScarf(void){return 0;}
-''' + source + r'''
-static void Setup(u8 *p,u8 w,u8 h)
-{
- int x,y,face=h==64?20:12;
- memset(p,0,w*h/2);
- for(y=face-8;y<face;y++)for(x=w/2-(h==64?10:5);x<=w/2+(h==64?10:5);x++)Put(p,w,x,y,4);
- for(y=face;y<face+6;y++)for(x=w/2-3;x<=w/2+3;x++)Put(p,w,x,y,1);
- Put(p,w,w/2-2,face+2,7);Put(p,w,w/2+2,face+2,7);
- for(y=face+(h==64?14:7);y<(h==64?49:h-5);y++)
-  for(x=w/2-(h==64?8:3);x<=w/2+(h==64?8:3);x++)Put(p,w,x,y,10);
-}
-int main(void)
-{
- int w,h,gender,style,x,y;
- // Independent rolled-cuff and heel finishing uses only shoe color indices.
- u8 boots[2048]={0};
- for(y=47;y<63;y++)for(x=20;x<=27;x++)Put(boots,64,x,y,6);
- Put(boots,64,23,42,1); // forehead/skin outside the footwear region.
- LegendsPolishBoots(boots,64,64);
- assert(Pixel(boots,64,22,47)==15 && Pixel(boots,64,22,48)==6);
- assert(Pixel(boots,64,22,62)==15 && Pixel(boots,64,23,42)==1);
- for(w=16;w<=64;w*=2) {
-  h=w==64?64:32;
-  if(w==32)continue; // 32x32 is exercised by the field pose assets.
-  for(gender=0;gender<2;gender++){
-   u8 originals[2048],tmp[2048];
-   u32 signatures[11]={0};
-   Setup(originals,w,h);
-   for(style=0;style<=10;style++){
-    memcpy(tmp,originals,w*h/2);
-    LegendsPaintStyle(tmp,w,h,gender,FALSE,style,0);
-    for(y=0;y<h;y++)for(x=0;x<w;x++){
-     u8 before=Pixel(originals,w,x,y),after=Pixel(tmp,w,x,y);
-     if(before==1||before==2||before==3)assert(after==before);
-     if(y==(h==64?22:14)&&before==7)assert(after==before);
-     signatures[style]=signatures[style]*16777619u+(after+1)*(x+1)+(y+1);
-    }
-    if(!style)assert(!memcmp(tmp,originals,w*h/2));
-   }
-   for(style=0;style<=10;style++)for(int other=style+1;other<=10;other++)
-    assert(signatures[style]!=signatures[other] && "each hairstyle needs its own silhouette");
-   for(style=0;style<=2;style++){
-    memcpy(tmp,originals,w*h/2);
-    LegendsPaintStyle(tmp,w,h,gender,FALSE,0,style);
-    if(style!=2)assert(!memcmp(tmp,originals,w*h/2));
-    else {
-     assert(memcmp(tmp,originals,w*h/2));
-     for(y=0;y<h;y++)for(x=0;x<w;x++){
-       u8 before=Pixel(originals,w,x,y),after=Pixel(tmp,w,x,y);
-       if(before<=3||before==12||before==13||before==15)
-         assert(after==before && "coat cannot alter face, ball or outlines");
-     }
-    }
-   }
-  }
- }
- puts("Eleven hair silhouettes, eight face/eye protections, native default, protected winter coats passed");
-}
-''';
+u8 scarf;
+u8 LegendsGetScarf(void){return scarf;}
+'''
+def unpack(raw,w,h):
+ return [[(raw[((y//8)*(w//8)+x//8)*32+(y%8)*4+(x%8)//2]>>((x%2)*4))&15 for x in range(w)] for y in range(h)]
+mapping=json.loads((root/'tools/legends/appearance_frames.json').read_text())
 with tempfile.TemporaryDirectory() as d:
- p=Path(d)/'style.c';p.write_text(fixture)
- subprocess.run(['cc','-std=gnu17','-Wall','-Wextra','-Werror','-fsanitize=address,undefined',str(p),'-o',str(Path(d)/'style')],check=True)
- subprocess.run([str(Path(d)/'style')],check=True)
- # Render the actual 16x32/32x32 native field motions and all trainer
- # front/back poses through the same compiled C routine, not a Python rewrite.
- import ctypes,sys
- sys.path.insert(0,str(root/'tools/legends'))
- from build_appearance import frames,pack,STATES,FILES
- lib=Path(d)/'style.so'
- subprocess.run(['cc','-std=gnu17','-O2','-fPIC','-shared',str(p),'-o',str(lib)],check=True)
- painter=ctypes.CDLL(str(lib)).LegendsPaintStyle
- painter.argtypes=[ctypes.POINTER(ctypes.c_ubyte),ctypes.c_ubyte,ctypes.c_ubyte,ctypes.c_ubyte,ctypes.c_int,ctypes.c_ubyte,ctypes.c_ubyte]
+ path=Path(d)/'style.c';path.write_text(pre+header+source)
+ lib=Path(d)/'style.so';subprocess.run(['cc','-Wall','-Wextra','-Werror','-shared','-fPIC',str(path),'-o',str(lib)],check=True)
+ api=ctypes.CDLL(str(lib));painter=api.LegendsPaintStylePose
+ painter.argtypes=[ctypes.POINTER(ctypes.c_uint8)]+[ctypes.c_uint8]*7
  poses=0
- for gender,name in enumerate(('brendan','may')):
-  cases=[(root/f'graphics/object_events/pics/people/{name}/{f}.png',16 if i==0 else 32,32,0) for i,f in enumerate(FILES)]
-  cases += [(root/f'graphics/object_events/pics/people/{name}/running.png',16,32,0)]
-  cases += [(root/f'graphics/trainers/{kind}_pics/{name}.png',64,64,int(kind=='back')) for kind in ('front','back')]
-  for asset,w,h,back in cases:
-   for frame in frames(asset,w,h):
-    native=pack(frame);distinct=set()
-    for hair in range(11):
-     buf=(ctypes.c_ubyte*len(native)).from_buffer_copy(native)
-     painter(buf,w,h,gender,back,hair,0)
-     result=bytes(buf);distinct.add(result)
-     if hair==0:assert result==native,(asset,'original appearance')
-     for a,b in zip(native,result):
-      for shift in (0,4):
-       v=(a>>shift)&15
-       if v in (1,2,3,12,13):assert (b>>shift)&15==v,(asset,hair,'skin/ball damage')
-    assert len(distinct)>=5,(asset,'hairstyles not visually distinct',len(distinct))
-    for coat in (0,2):
-     buf=(ctypes.c_ubyte*len(native)).from_buffer_copy(native)
-     painter(buf,w,h,gender,back,0,coat)
-     for a,b in zip(native,bytes(buf)):
-      for shift in (0,4):
-       v=(a>>shift)&15
-       if v in (1,2,3,12,13,15):assert (b>>shift)&15==v,(asset,'coat touches protected index')
-    poses+=1
- print(f'{poses} native player poses: 11 hairstyle shapes, winter coats, protected skin/balls and 4bpp dimensions passed')
+ for g,name in enumerate(('Brendan','May')):
+  cases=[]
+  for state,file in enumerate(FILES):
+   w=16 if state==0 else 32;p=root/f'graphics/object_events/pics/people/{name.lower()}/{file}.png';src=frames(p,w,32)
+   if state==0:src+=frames(p.with_name('running.png'),16,32)
+   table=mapping[name][STATES[state]]['table'];idx=list(range(len(src))) if 'overworld_ascending_frames' in table else [int(v) for v in re.findall(r'overworld_frame\([^,]+,\s*\d+,\s*\d+,\s*(\d+)\)',table)]
+   cases.extend((src[i],w,0,state,slot,i) for slot,i in enumerate(idx))
+  cases.extend((f,64,kind,0,i,i) for kind,folder in ((1,'front'),(2,'back')) for i,f in enumerate(frames(root/f'graphics/trainers/{folder}_pics/{name.lower()}.png',64,64)))
+  for p,w,kind,state,slot,native_index in cases:
+   h=len(p);native=pack(p);signatures=set()
+   groups=art.skin_components(p)
+   face=(max(groups,key=len) if kind==0 else min((s for s in groups if len(s)>30),key=lambda s:min(y for x,y in s))) if groups else set()
+   protected=set(face)
+   if kind:protected |= {(x,y) for x,y in art.hand_pixels(g,'front' if kind==1 else 'back',native_index) if p[y][x] not in (4,7,8)}|art.ball_pixels(g,'front' if kind==1 else 'back',native_index)
+   for hair in range(11):
+    for coat in range(3):
+     buf=(ctypes.c_uint8*len(native)).from_buffer_copy(native)
+     painter(buf,w,g,kind,state,slot,hair,coat)
+     raw=bytes(buf);out=unpack(raw,w,h)
+     if not hair and not coat or kind==0 and state==4:assert raw==native
+     for x,y in protected:assert out[y][x]==p[y][x],(name,kind,state,slot,hair,coat,'face/hand/ball',x,y)
+     if coat==0:signatures.add(raw)
+     # Same custom hair under both coats: accessories cannot repaint its crown.
+     if hair and not (kind==0 and state==4):
+      plain=(ctypes.c_uint8*len(native)).from_buffer_copy(native);painter(plain,w,g,kind,state,slot,hair,0)
+      crown=unpack(bytes(plain),w,h)
+      for y in range(h):
+       for x in range(w):
+        if crown[y][x]!=p[y][x] and crown[y][x] in (4,8):assert out[y][x]==crown[y][x]
+   if kind==1:assert len(signatures)==11,(name,'distinct portraits')
+   if (state!=4 or kind) and groups:assert len(signatures)>=5,(name,kind,state,slot,'distinct hairstyles')
+   poses+=1
+ # Invalid settings and diving are safely ignored.
+ for g,kind,state,pose,hair,coat in ((2,0,0,0,1,2),(0,0,8,0,1,2),(0,0,4,0,1,2),(0,2,0,4,1,2),(0,1,0,0,11,2),(0,1,0,0,1,3)):
+  buf=(ctypes.c_uint8*2048)();painter(buf,64,g,kind,state,pose,hair,coat);assert bytes(buf)==bytes(2048)
+print(f'{poses} native table poses: reproducible sparse art, 11 portraits, face/hand/ball isolation, coat/hair order and diving defaults passed')

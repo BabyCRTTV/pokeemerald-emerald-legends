@@ -39,9 +39,9 @@ def accessory_frame(native,gender,outfit,style,kind='overworld',pose=0,state='wa
             for y in range(collar,min(h,collar+9)):
                 for x in range(w):
                     if native[y][x] in (1,2,3) and (x,y) not in face|hands|balls and any(abs(x-bx)+abs(y-by)<=2 for bx,by in body):
-                        result[y][x]=5 if native[y][x]==1 else 6
+                        result[y][x]=5 if native[y][x]==1 else 8
         for x,y in body:
-            result[y][x]=5 if p[y][x] in (9,10,12) else 6
+            result[y][x]=5 if p[y][x] in (9,10,12) else 8
         # Subtle open-jacket center seam keeps the outfit visible underneath.
         for x,y in body:
             if x==cx and y>collar+2:result[y][x]=p[y][x]
@@ -64,12 +64,12 @@ def accessory_frame(native,gender,outfit,style,kind='overworld',pose=0,state='wa
                     if not 0<=x<w:break
                     if (x,y) in protected:break
                     if native[y][x]==0:
-                        layer[x,y]=6
+                        layer[x,y]=8
                         break
         # A horizontal hem gives the jacket a distinct lower edge.
         hem=max(y for x,y in body)
         for x,y in body:
-            if y==hem and abs(x-cx)>1:result[y][x]=6
+            if y==hem and abs(x-cx)>1:result[y][x]=8
     if style&1:
         # Tail trails away from the face, with a folded dark edge.
         xs=[x for x,y in body if y<=collar+1]
