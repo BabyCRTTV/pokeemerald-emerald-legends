@@ -184,6 +184,13 @@ void LegendsUpdateAppearancePalettes(void)
                 gLegendsTrainerPalettes[gender][10 + i] = sOutfitPalettes[outfit - 1][i];
                 gLegendsUnderwaterPalettes[gender][10 + i] = sOutfitPalettes[outfit - 1][i];
             }
+        if (LegendsGetAccessoryStyle() && !LegendsGetCostume())
+        {
+            // Templates reserve scarf slot 14 by moving native white to 9.
+            // This applies to jacket-only templates too: retain exact eye white.
+            gLegendsOverworldPalettes[gender][9] = 0x7FFF;
+            gLegendsTrainerPalettes[gender][9] = 0x7FFF;
+        }
         if (LegendsGetScarf() && !LegendsGetCostume())
         {
             // Accessories alone reserve highlight 14; Poké Balls keep red 12/13.

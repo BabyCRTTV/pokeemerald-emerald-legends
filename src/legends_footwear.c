@@ -47,7 +47,7 @@ static u32 ColorDistance(u16 a, u16 b)
 
 void LegendsPrepareFootwearPalette(u16 *palette, u8 gender, u8 kind)
 {
-    static const u8 candidates[] = {4,5,8,9,10,11,15};
+    static const u8 candidates[] = {4,5,7,8,9,10,15};
     u32 slot, i;
     // Underwater artwork uses no footwear mask. Do not recolor suit/head shadows.
     if (kind == 2)
@@ -57,18 +57,19 @@ void LegendsPrepareFootwearPalette(u16 *palette, u8 gender, u8 kind)
         u32 best = 0xFFFFFFFF;
         for (i = 0; i < ARRAY_COUNT(candidates); i++)
         {
-            u32 distance = ColorDistance(palette[6 + slot], palette[candidates[i]]);
+            u32 distance = ColorDistance(palette[slot ? 11 : 6], palette[candidates[i]]);
             if (distance < best)
             {
                 best = distance;
                 sRemap[gender][kind][slot] = candidates[i];
             }
         }
-        // Free two shadow shades, keeping skin, hair highlights, clothing,
+        // Reserve blue/cloth shadows 6 and 11, retaining May's hair/eye
+        // shade 7. Keep skin, hair highlights, clothing,
         // scarf and red Poké Balls separate from footwear colors.
     }
     palette[6] = sShoeColors[LegendsGetShoes() - 1][0];
-    palette[7] = sShoeColors[LegendsGetShoes() - 1][1];
+    palette[11] = sShoeColors[LegendsGetShoes() - 1][1];
     // Palette reset means pointer-identical art may need a different remap.
     sWorldSource = NULL;
     sFrontSource[gender] = NULL;
@@ -84,10 +85,10 @@ static void Compose(u8 *dest, const u8 *src, const u8 *mask, u32 size, u8 gender
         {
             u8 pixel = (src[i] >> shift) & 15;
             u8 overlay = mask == NULL ? 0 : (mask[i] >> shift) & 15;
-            if (footwear && (pixel == 6 || pixel == 7))
-                pixel = sRemap[gender][kind][pixel - 6];
+            if (footwear && (pixel == 6 || pixel == 11))
+                pixel = sRemap[gender][kind][pixel == 6 ? 0 : 1];
             if (overlay)
-                pixel = overlay == 3 ? 15 : overlay == 1 ? 6 : 7;
+                pixel = overlay == 3 ? 15 : overlay == 1 ? 6 : 11;
             output |= pixel << shift;
         }
         dest[i] = output;
@@ -103,7 +104,7 @@ const struct SpriteFrameImage *LegendsFootwearImages(const struct SpriteFrameIma
     u8 coat = LegendsGetJacketStyle();
     // The native diving suit, including its head covering and original
     // palette, is intentionally unaffected by wardrobe layers.
-    if (LegendsGetCostume() || state == 4 || (!shoes && !hair && coat != 2))
+    if (LegendsGetCostume() || state == 4 || (!shoes && !hair && !coat))
         return images;
     if (sWorldSource == images && sWorldGender == gender && sWorldState == state
         && sWorldBoots == boots && sWorldShoes == shoes
@@ -121,9 +122,7 @@ const struct SpriteFrameImage *LegendsFootwearImages(const struct SpriteFrameIma
         Compose(sWorldPixels + offset, images[i].data,
             shoes ? sFootwearMasks[gender][state][boots] + offset : NULL,
             size, gender, 0, shoes != 0);
-        if (shoes >= 6)
-            LegendsPolishBoots(sWorldPixels + offset, width, 32);
-        LegendsPaintStyle(sWorldPixels + offset, width, 32, gender, FALSE, hair, coat);
+        LegendsPaintStylePose(sWorldPixels + offset, width, gender, 0, state, i, hair, coat);
         offset += size;
     }
     sWorldSource = images;
@@ -151,7 +150,7 @@ const u32 *LegendsFootwearFrontPic(enum TrainerPicID pic, const u32 *data)
     u8 boots = shoes >= 6, hair = LegendsGetHair(), coat = LegendsGetJacketStyle();
     u8 *out;
     u32 i, pos;
-    if (gender > 1 || LegendsGetCostume() || (!shoes && !hair && coat != 2))
+    if (gender > 1 || LegendsGetCostume() || (!shoes && !hair && !coat))
         return data;
     LegendsUpdateAppearancePalettes();
     if (sFrontSource[gender] == data && sFrontBoots[gender] == boots
@@ -162,9 +161,7 @@ const u32 *LegendsFootwearFrontPic(enum TrainerPicID pic, const u32 *data)
     if (shoes)
         Compose(sFrontPixels, sFrontPixels, sFootwearFrontMasks[gender][boots],
                 2048, gender, 1, TRUE);
-    if (shoes >= 6)
-        LegendsPolishBoots(sFrontPixels, 64, 64);
-    LegendsPaintStyle(sFrontPixels, 64, 64, gender, FALSE, hair, coat);
+    LegendsPaintStylePose(sFrontPixels, 64, gender, 1, 0, 0, hair, coat);
     // Native literal LZ stream: existing portrait / Trainer Card consumers.
     sFrontPic[gender][0] = 0x00080010;
     out = (u8 *)sFrontPic[gender];
@@ -188,14 +185,14 @@ void LegendsFootwearBackPic(enum TrainerPicID pic, u8 *data, u32 size)
     u8 gender = PicGender(pic);
     u8 shoes = LegendsGetShoes(), hair = LegendsGetHair(), coat = LegendsGetJacketStyle();
     u32 i;
-    if (gender > 1 || LegendsGetCostume() || (!shoes && !hair && coat != 2))
+    if (gender > 1 || LegendsGetCostume() || (!shoes && !hair && !coat))
         return;
     LegendsUpdateAppearancePalettes();
     for (i = 0; i + 2048 <= size; i += 2048)
     {
         if (shoes) // Native back pictures omit the feet, but share shadow slots.
             Compose(data + i, data + i, NULL, 2048, gender, 1, TRUE);
-        LegendsPaintStyle(data + i, 64, 64, gender, TRUE, hair, coat);
+        LegendsPaintStylePose(data + i, 64, gender, 2, 0, i / 2048, hair, coat);
     }
 }
 

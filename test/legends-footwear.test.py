@@ -31,13 +31,18 @@ enum TrainerPicID {TRAINER_PIC_LEGENDS_BRENDAN_EMERALD=200,TRAINER_PIC_LEGENDS_A
 static u8 shoes,costume,card,hair,coat;
 u8 LegendsGetShoes(void){return shoes;}u8 LegendsGetCostume(void){return costume;}u8 LegendsGetCardColor(void){return card;}
 u8 LegendsGetHair(void){return hair;}u8 LegendsGetJacketStyle(void){return coat;}
-void LegendsPaintStyle(u8 *p,u8 w,u8 h,u8 g,int b,u8 s,u8 c){(void)p;(void)w;(void)h;(void)g;(void)b;(void)s;(void)c;}
-void LegendsPolishBoots(u8*p,u8 w,u8 h){(void)p;(void)w;(void)h;}
+u8 LegendsGetScarf(void){return 0;}
+#define LEGENDS_HAIR_COUNT 11
+#define LEGENDS_JACKET_COUNT 3
 void LegendsUpdateAppearancePalettes(void){}
 void DecompressDataWithHeaderWram(const u32*s,void*d){memcpy(d,s,2048);}
 static u16 cardPal[48];
 void LoadPalette(const u16*p,int offset,int size){assert(size==2);cardPal[offset]=*p;}
 '''
+style_header=(root/'src/data/legends/style_layers.h').read_text()
+style_edits=struct.unpack('<'+'H'*((root/'graphics/legends/styles/edits.bin').stat().st_size//2),(root/'graphics/legends/styles/edits.bin').read_bytes())
+style_header=re.sub(r'static const u16 sStylePixels\[\] = INCBIN_U16\([^;]+;', 'static const u16 sStylePixels[]={'+','.join(map(str,style_edits))+'};',style_header)
+style_source='\n'.join(l for l in (root/'src/legends_style_layers.c').read_text().splitlines() if not l.startswith('#include'))
 assets='';mapping=json.loads((root/'tools/legends/appearance_frames.json').read_text());worldTables=[]
 for g,name in enumerate(('brendan','may')):
  assets+=array(f'front{g}',pack(frames(root/f'graphics/trainers/front_pics/{name}.png',64,64)[0]))
@@ -56,7 +61,7 @@ static void CheckPixels(const u8*result,const u8*original,const u8*mask,int size
  for(int i=0;i<size;i++)for(int shift=0;shift<8;shift+=4){
   int src=(original[i]>>shift)&15,m=(mask[i]>>shift)&15,out=(result[i]>>shift)&15;
   if(!m&&(src<=3||src==12||src==13))assert(out==src);
-  if(m)assert(out==(m==3?15:m==1?6:7));
+  if(m)assert(out==(m==3?15:m==1?6:11));
  }
 }
 int main(int argc,char**argv){
@@ -70,6 +75,8 @@ int main(int argc,char**argv){
    memcpy(pal[0],sBaseOverworldPalettes[g],32);memcpy(pal[1],sBaseTrainerPalettes[g],32);memcpy(pal[2],sBaseUnderwaterPalette,32);
    if(s)for(int kind=0;kind<3;kind++)LegendsPrepareFootwearPalette(pal[kind],g,kind);
    assert(!memcmp(pal[2],sBaseUnderwaterPalette,sizeof(sBaseUnderwaterPalette)));
+   assert(pal[0][7]==sBaseOverworldPalettes[g][7]);
+   assert(pal[1][7]==sBaseTrainerPalettes[g][7]);
    for(int st=0;st<8;st++){
     const struct SpriteFrameImage *src=nativeWorld[g][st],*images=LegendsFootwearImages(src,g,st);
     if(world){u8 header[4]={s,g,st,st==0?16:32};fwrite(header,1,4,world);fwrite(images[0].data,1,images[0].size,world);fwrite(pal[st==4?2:0],2,16,world);}
@@ -89,12 +96,29 @@ int main(int argc,char**argv){
     for(int i=0;i<2048;i+=8){assert(compressed[pos++]==0);memcpy(output+i,compressed+pos,8);pos+=8;}
     CheckPixels(output,nativeFront[g],sFootwearFrontMasks[g][s>=6],2048);
     u8 back[2048];memcpy(back,nativeFront[g],2048);LegendsFootwearBackPic(200+5*g,back,2048);
-    for(int i=0;i<2048;i++)for(int shift=0;shift<8;shift+=4){int v=back[i]>>shift&15;assert(v!=6&&v!=7);}
+    for(int i=0;i<2048;i++)for(int shift=0;shift<8;shift+=4){int v=back[i]>>shift&15;assert(v!=6&&v!=11);}
    }
    if(gallery){fwrite(output,1,2048,gallery);fwrite(pal[1],2,16,gallery);}
    costume=1;assert(LegendsFootwearFrontPic(200+5*g,(const u32*)nativeFront[g])==(const u32*)nativeFront[g]);assert(LegendsFootwearImages(nativeWorld[g][0],g,0)==nativeWorld[g][0]);costume=0;
   }
  }
+ // Actual integrated art/cache path, not a stub: selected hair survives
+ // shoe colors, and reselecting settings rebuilds pointer-identical inputs.
+ for(int g=0;g<2;g++)for(int st=0;st<8;st++)for(int h=1;h<11;h++)for(int c=0;c<3;c++){
+  hair=h;coat=c;shoes=0;
+  const struct SpriteFrameImage *src=nativeWorld[g][st];
+  const struct SpriteFrameImage *art=LegendsFootwearImages(src,g,st);
+  u8 baseline[512];memcpy(baseline,art[0].data,src[0].size);
+  shoes=7;u16 pal[16];memcpy(pal,sBaseOverworldPalettes[g],32);LegendsPrepareFootwearPalette(pal,g,0);
+  art=LegendsFootwearImages(src,g,st);
+  if(st==4){assert(art==src);continue;}
+  for(int i=0;i<src[0].size;i++)for(int shift=0;shift<8;shift+=4){
+   int v=baseline[i]>>shift&15,m=sFootwearMasks[g][st][1][i]>>shift&15;
+   if(!m&&(v==4||v==7||v==8))assert((art[0].data[i]>>shift&15)==v);
+  }
+  shoes=0;art=LegendsFootwearImages(src,g,st);assert(!memcmp(baseline,art[0].data,src[0].size));
+ }
+ hair=coat=shoes=0;
  for(int c=0;c<8;c++){
   card=c;for(int i=0;i<48;i++)cardPal[i]=i;LegendsApplyCardColor();
   for(int i=0;i<48;i++)if(i!=2&&i!=9&&i!=10&&i!=11&&i!=12&&i!=28&&i!=29)assert(cardPal[i]==i);
@@ -105,7 +129,7 @@ int main(int argc,char**argv){
 }
 '''
 with tempfile.TemporaryDirectory() as d:
- p=Path(d);(p/'footwear.c').write_text(pre+header+assets+palettes+source+main)
+ p=Path(d);(p/'footwear.c').write_text(pre+header+style_header+style_source+assets+palettes+source+main)
  subprocess.run(['cc','-std=gnu17','-Werror=implicit-function-declaration','-fsanitize=address,undefined',str(p/'footwear.c'),'-o',str(p/'footwear')],check=True)
  subprocess.run([str(p/'footwear'),str(p/'gallery.bin'),str(p/'world.bin')],check=True,env={**os.environ,'ASAN_OPTIONS':'detect_leaks=0'})
  if len(sys.argv)>2 and sys.argv[1]=='--preview':

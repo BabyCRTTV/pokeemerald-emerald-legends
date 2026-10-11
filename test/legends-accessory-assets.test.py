@@ -29,7 +29,7 @@ for g,name in enumerate(('brendan','may')):
      assert all(v==0 or result[y][x]!=0 for y,row in enumerate(frame) for x,v in enumerate(row))
      # Layer additions occupy transparent canvas only, within native bounds.
      additions=[result[y][x] for y,row in enumerate(frame) for x,v in enumerate(row) if v==0 and result[y][x]!=0]
-     assert all(v in (6,14,15) for v in additions)
+     assert all(v in (8,14,15) for v in additions)
      if kind=='front':assert additions,(path,style,'real clothing silhouette')
      if kind!='overworld':
       for x,y in art.ball_pixels(g,kind,pose)|art.hand_pixels(g,kind,pose):
