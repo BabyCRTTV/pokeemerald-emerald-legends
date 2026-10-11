@@ -2,6 +2,7 @@
 #include "legends_appearance.h"
 #include "scanline_effect.h"
 #include "palette.h"
+#include "util.h"
 #include "task.h"
 #include "main.h"
 #include "window.h"
