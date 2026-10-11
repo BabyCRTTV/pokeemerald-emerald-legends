@@ -17341,3 +17341,241 @@ EVs: 40 HP / 40 Atk / 40 SpA / 40 Spe
 - Rock Slide
 - Bullet Punch
 - Knock Off
+
+/* Borrowed Voice: dedicated Gym flags preserve native save addresses. */
+
+=== TRAINER_LEGENDS_KANTO_ERIKA_STANDARD ===
+Name: ERIKA
+Class: Leader Frlg
+Pic: Leader Erika Frlg
+Gender: Female
+Music: Intense
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Tangela @ Sitrus Berry
+Level: 54
+Ability: Chlorophyll
+Nature: Bold
+EVs: 40 HP / 40 Def / 40 SpA / 40 Spe
+- Giga Drain
+- Ancient Power
+- Stun Spore
+- Ingrain
+
+Victreebel @ Sitrus Berry
+Level: 55
+Ability: Chlorophyll
+Nature: Modest
+EVs: 40 HP / 40 Def / 40 SpA / 40 Spe
+- Giga Drain
+- Sludge Bomb
+- Sleep Powder
+- Synthesis
+
+Vileplume @ Sitrus Berry
+Level: 56
+Ability: Chlorophyll
+Nature: Modest
+EVs: 40 HP / 40 Def / 40 SpA / 40 Spe
+- Petal Dance
+- Sludge Bomb
+- Moonblast
+- Aromatherapy
+
+Bellossom @ Sitrus Berry
+Level: 58
+Ability: Chlorophyll
+Nature: Modest
+EVs: 40 HP / 40 Def / 40 SpA / 40 Spe
+- Giga Drain
+- Moonblast
+- Quiver Dance
+- Synthesis
+
+=== TRAINER_LEGENDS_KANTO_ERIKA_CHAMPION ===
+Name: ERIKA
+Class: Leader Frlg
+Pic: Leader Erika Frlg
+Gender: Female
+Music: Intense
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Jumpluff @ Sitrus Berry
+Level: 74
+Ability: Chlorophyll
+Nature: Jolly
+EVs: 128 HP / 128 Atk / 252 Spe
+- Sleep Powder
+- U-turn
+- Seed Bomb
+- Sunny Day
+
+Tangrowth @ Sitrus Berry
+Level: 75
+Ability: Regenerator
+Nature: Bold
+EVs: 252 HP / 128 Def / 128 SpD
+- Giga Drain
+- Knock Off
+- Leech Seed
+- Ancient Power
+
+Victreebel @ Sitrus Berry
+Level: 76
+Ability: Chlorophyll
+Nature: Modest
+EVs: 128 HP / 252 SpA / 128 Spe
+- Solar Beam
+- Sludge Bomb
+- Weather Ball
+- Growth
+
+Exeggutor @ Sitrus Berry
+Level: 76
+Ability: Chlorophyll
+Nature: Modest
+EVs: 128 HP / 252 SpA / 128 Spe
+- Psychic
+- Giga Drain
+- Sleep Powder
+- Synthesis
+
+Vileplume @ Sitrus Berry
+Level: 77
+Ability: Chlorophyll
+Nature: Bold
+EVs: 252 HP / 128 Def / 128 SpD
+- Giga Drain
+- Sludge Bomb
+- Moonblast
+- Strength Sap
+
+Bellossom @ Sitrus Berry
+Level: 78
+Ability: Chlorophyll
+Nature: Modest
+EVs: 128 HP / 252 SpA / 128 Spe
+- Giga Drain
+- Moonblast
+- Quiver Dance
+- Synthesis
+
+=== TRAINER_LEGENDS_KANTO_SABRINA_STANDARD ===
+Name: SABRINA
+Class: Leader Frlg
+Pic: Leader Sabrina Frlg
+Gender: Female
+Music: Intense
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Mr. Mime @ Sitrus Berry
+Level: 58
+Ability: Soundproof
+Nature: Timid
+EVs: 40 HP / 40 Def / 40 SpA / 40 Spe
+- Psychic
+- Dazzling Gleam
+- Reflect
+- Light Screen
+
+Hypno @ Sitrus Berry
+Level: 59
+Ability: Insomnia
+Nature: Calm
+EVs: 40 HP / 40 Def / 40 SpA / 40 Spe
+- Psychic
+- Shadow Ball
+- Thunder Wave
+- Focus Blast
+
+Slowbro @ Sitrus Berry
+Level: 60
+Ability: Own Tempo
+Nature: Bold
+EVs: 40 HP / 40 Def / 40 SpA / 40 Spe
+- Surf
+- Psychic
+- Slack Off
+- Ice Beam
+
+Alakazam @ Sitrus Berry
+Level: 62
+Ability: Synchronize
+Nature: Timid
+EVs: 40 HP / 40 Def / 40 SpA / 40 Spe
+- Psychic
+- Shadow Ball
+- Focus Blast
+- Recover
+
+=== TRAINER_LEGENDS_KANTO_SABRINA_CHAMPION ===
+Name: SABRINA
+Class: Leader Frlg
+Pic: Leader Sabrina Frlg
+Gender: Female
+Music: Intense
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Mr. Mime @ Sitrus Berry
+Level: 78
+Ability: Filter
+Nature: Timid
+EVs: 128 HP / 252 SpA / 128 Spe
+- Psychic
+- Dazzling Gleam
+- Reflect
+- Light Screen
+
+Espeon @ Sitrus Berry
+Level: 79
+Ability: Magic Bounce
+Nature: Timid
+EVs: 128 HP / 252 SpA / 128 Spe
+- Psychic
+- Dazzling Gleam
+- Shadow Ball
+- Calm Mind
+
+Slowbro @ Sitrus Berry
+Level: 79
+Ability: Regenerator
+Nature: Bold
+EVs: 252 HP / 128 Def / 128 SpD
+- Surf
+- Psychic
+- Slack Off
+- Ice Beam
+
+Jynx @ Sitrus Berry
+Level: 80
+Ability: Dry Skin
+Nature: Timid
+EVs: 128 HP / 252 SpA / 128 Spe
+- Ice Beam
+- Psychic
+- Lovely Kiss
+- Nasty Plot
+
+Gardevoir @ Sitrus Berry
+Level: 81
+Ability: Trace
+Nature: Modest
+EVs: 128 HP / 252 SpA / 128 Spe
+- Psychic
+- Moonblast
+- Thunderbolt
+- Calm Mind
+
+Alakazam @ Sitrus Berry
+Level: 82
+Ability: Magic Guard
+Nature: Timid
+EVs: 128 HP / 252 SpA / 128 Spe
+- Psychic
+- Shadow Ball
+- Focus Blast
+- Recover

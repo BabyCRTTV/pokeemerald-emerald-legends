@@ -2,6 +2,7 @@
 #include "legends_appearance.h"
 #include "scanline_effect.h"
 #include "palette.h"
+#include "util.h"
 #include "task.h"
 #include "main.h"
 #include "window.h"
@@ -61,6 +62,8 @@ struct TrainerCardData
     bool8 unused_F;
     bool8 hasTrades;
     u8 badgeCount[NUM_BADGES];
+    u8 kantoBadges[NUM_BADGES];
+    bool8 showKantoBadges;
     u8 easyChatProfile[TRAINER_CARD_PROFILE_LENGTH][13];
     u8 textPlayersCard[70];
     u8 textHofTime[70];
@@ -109,6 +112,7 @@ static void CreateTrainerCardTrainerPic(void);
 static void DrawCardScreenBackground(u16 *);
 static void DrawCardFrontOrBack(u16 *);
 static void DrawStarsAndBadgesOnCard(void);
+static void PrintLegendsBadgeRegion(void);
 static void PrintTimeOnCard(void);
 static void FlipTrainerCard(void);
 static bool8 IsCardFlipTaskActive(void);
@@ -411,6 +415,7 @@ static void Task_TrainerCard(u8 taskId)
         break;
     case 6:
         DrawStarsAndBadgesOnCard();
+        DrawTrainerCardWindow(WIN_CARD_TEXT);
         sData->mainState++;
         break;
     // Fade in
@@ -444,7 +449,14 @@ static void Task_TrainerCard(u8 taskId)
             DrawTrainerCardWindow(WIN_CARD_TEXT);
             sData->timeColonNeedDraw = FALSE;
         }
-        if (JOY_NEW(A_BUTTON))
+        if (!IS_FRLG && !sData->isLink && JOY_NEW(L_BUTTON | R_BUTTON | DPAD_LEFT | DPAD_RIGHT | SELECT_BUTTON))
+        {
+            sData->showKantoBadges ^= 1;
+            DrawStarsAndBadgesOnCard();
+            DrawTrainerCardWindow(WIN_CARD_TEXT);
+            PlaySE(SE_SELECT);
+        }
+        else if (JOY_NEW(A_BUTTON))
         {
             FlipTrainerCard();
             PlaySE(SE_RG_CARD_FLIP);
@@ -838,6 +850,21 @@ static void SetDataFromTrainerCard(void)
     sData->unused_F = FALSE;
     sData->hasTrades = FALSE;
     memset(sData->badgeCount, 0, sizeof(sData->badgeCount));
+    memset(sData->kantoBadges, 0, sizeof(sData->kantoBadges));
+    sData->showKantoBadges = FALSE;
+#if !IS_FRLG
+    if (!sData->isLink)
+    {
+        static const u16 flags[NUM_BADGES] = {
+            FLAG_LEGENDS_KANTO_BROCK_WON, FLAG_LEGENDS_KANTO_MISTY_WON,
+            FLAG_LEGENDS_KANTO_SURGE_WON, FLAG_LEGENDS_KANTO_ERIKA_WON,
+            FLAG_LEGENDS_KANTO_KOGA_WON, FLAG_LEGENDS_KANTO_SABRINA_WON,
+            FLAG_LEGENDS_KANTO_BLAINE_WON, FLAG_LEGENDS_KANTO_VIRIDIAN_WON,
+        };
+        for (i = 0; i < NUM_BADGES; i++)
+            sData->kantoBadges[i] = FlagGet(flags[i]);
+    }
+#endif
     if (sData->trainerCard.hasPokedex)
         sData->hasPokedex++;
 
@@ -1525,10 +1552,24 @@ static void DrawStarsAndBadgesOnCard(void)
     {
         x = 4;
         y = IS_FRLG ? 16 : 15;
+        FillBgTilemapBufferRect_Palette0(3, 0, x, y, 24, 2);
+        if (sData->showKantoBadges)
+        {
+            LoadPalette(sKantoTrainerCardBadges_Pal, BG_PLTT_ID(3), PLTT_SIZE_4BPP);
+            LoadPalette(sKantoTrainerCardBadges_Pal, BG_PLTT_ID(6), PLTT_SIZE_4BPP);
+            BlendPalette(BG_PLTT_ID(6), 16, 12, RGB(16, 16, 16));
+        }
+        else
+            LoadPalette(IS_FRLG ? sKantoTrainerCardBadges_Pal : sHoennTrainerCardBadges_Pal, BG_PLTT_ID(3), PLTT_SIZE_4BPP);
+        // Reuse the original 1 KiB badge buffer and VRAM range for both regions.
+        DecompressDataWithHeaderWram(sData->showKantoBadges || IS_FRLG ? sKantoTrainerCardBadges_Gfx : sHoennTrainerCardBadges_Gfx, sData->badgeTiles);
+        LoadBgTiles(3, sData->badgeTiles, sizeof(sData->badgeTiles), 0);
+        PrintLegendsBadgeRegion();
         for (i = 0; i < NUM_BADGES; i++, tileNum += 2, x += 3)
         {
-            if (sData->badgeCount[i])
+            if (sData->showKantoBadges || sData->badgeCount[i])
             {
+                palNum = sData->showKantoBadges && !sData->kantoBadges[i] ? 6 : 3;
                 FillBgTilemapBufferRect(3, tileNum, x, y, 1, 1, palNum);
                 FillBgTilemapBufferRect(3, tileNum + 1, x + 1, y, 1, 1, palNum);
                 FillBgTilemapBufferRect(3, tileNum + 16, x, y + 1, 1, 1, palNum);
@@ -1537,6 +1578,17 @@ static void DrawStarsAndBadgesOnCard(void)
         }
     }
     CopyBgTilemapBufferToVram(3);
+}
+
+static void PrintLegendsBadgeRegion(void)
+{
+    if (IS_FRLG || sData->isLink)
+        return;
+    FillWindowPixelRect(WIN_CARD_TEXT, PIXEL_FILL(0), 16, 101, 208, 12);
+    AddTextPrinterParameterized3(WIN_CARD_TEXT, FONT_SMALL, 16, 101,
+        sTrainerCardTextColors, TEXT_SKIP_DRAW,
+        sData->showKantoBadges ? COMPOUND_STRING("KANTO BADGES   L/R: REGION")
+                               : COMPOUND_STRING("HOENN BADGES   L/R: REGION"));
 }
 
 static void DrawCardBackStats(void)

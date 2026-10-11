@@ -481,6 +481,11 @@ const u16 gObjectEventPic_LtSurge[] = INCGFX_U16("graphics/object_events/pics/pe
 const u16 gObjectEventPic_Koga[] = INCGFX_U16("graphics/object_events/pics/people/koga.png", ".4bpp", "-mwidth 2 -mheight 4");
 const u16 gObjectEventPic_GymGuy[] = INCGFX_U16("graphics/object_events/pics/people/gym_guy.png", ".4bpp", "-mwidth 2 -mheight 4");
 
+const u16 gObjectEventPic_Sabrina[] = INCGFX_U16("graphics/object_events/pics/people/sabrina.png", ".4bpp", "-mwidth 2 -mheight 4");
+const u16 gObjectEventPic_Erika[] = INCGFX_U16("graphics/object_events/pics/people/erika.png", ".4bpp", "-mwidth 2 -mheight 4");
+
+const u16 gObjectEventPic_CuttableTreeFrlg[] = INCGFX_U16("graphics/object_events/pics/misc/cuttable_tree_frlg.png", ".4bpp", "-mwidth 2 -mheight 2");
+
 #if IS_FRLG
 
 const u16 gObjectEventPic_RedNormal[] = INCGFX_U16("graphics/object_events/pics/people/red/red_normal.png", ".4bpp", "-mwidth 2 -mheight 4");
@@ -510,10 +515,8 @@ const u16 gObjectEventPic_Pokedex[] = INCGFX_U16("graphics/object_events/pics/mi
 const u16 gObjectEventPic_TownMap[] = INCGFX_U16("graphics/object_events/pics/misc/town_map.png", ".4bpp", "-mwidth 2 -mheight 2");
 const u16 gObjectEventPic_Giovanni[] = INCGFX_U16("graphics/object_events/pics/people/giovanni.png", ".4bpp", "-mwidth 2 -mheight 4");
 const u16 gObjectEventPic_Blaine[] = INCGFX_U16("graphics/object_events/pics/people/blaine.png", ".4bpp", "-mwidth 2 -mheight 4");
-const u16 gObjectEventPic_Sabrina[] = INCGFX_U16("graphics/object_events/pics/people/sabrina.png", ".4bpp", "-mwidth 2 -mheight 4");
 const u16 gObjectEventPic_Daisy[] = INCGFX_U16("graphics/object_events/pics/people/daisy.png", ".4bpp", "-mwidth 2 -mheight 4");
 const u16 gObjectEventPic_Lorelei[] = INCGFX_U16("graphics/object_events/pics/people/lorelei.png", ".4bpp", "-mwidth 2 -mheight 4");
-const u16 gObjectEventPic_Erika[] = INCGFX_U16("graphics/object_events/pics/people/erika.png", ".4bpp", "-mwidth 2 -mheight 4");
 
 const u16 gObjectEventPic_Brock[] = INCGFX_U16("graphics/object_events/pics/people/brock.png", ".4bpp", "-mwidth 2 -mheight 4");
 
@@ -581,7 +584,6 @@ const u16 gObjectEventPic_GBAKid[] = INCGFX_U16("graphics/object_events/pics/peo
 const u16 gObjectEventPic_MomFrlg[] = INCGFX_U16("graphics/object_events/pics/people/mom_frlg.png", ".4bpp", "-mwidth 2 -mheight 4");
 const u16 gObjectEventPic_Policeman[] = INCGFX_U16("graphics/object_events/pics/people/policeman.png", ".4bpp", "-mwidth 2 -mheight 4");
 
-const u16 gObjectEventPic_CuttableTreeFrlg[] = INCGFX_U16("graphics/object_events/pics/misc/cuttable_tree_frlg.png", ".4bpp", "-mwidth 2 -mheight 2");
 const u32 gObjectEventPic_BreakableRockFrlg[] = INCGFX_U32("graphics/object_events/pics/misc/breakable_rock_frlg.png", ".4bpp", "-mwidth 2 -mheight 2");
 const u16 gObjectEventPic_PushableBoulderFrlg[] = INCGFX_U16("graphics/object_events/pics/misc/pushable_boulder_frlg.png", ".4bpp");
 const u32 gObjectEventPic_FossilFrlg[] = INCGFX_U32("graphics/object_events/pics/misc/fossil_frlg.png", ".4bpp");

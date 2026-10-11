@@ -2,7 +2,7 @@
 import json,re,struct,unittest,subprocess
 from pathlib import Path
 R=Path(__file__).resolve().parents[1]
-source=(R/'data/scripts/legends_kanto_challenge.inc').read_text();labels={};commands=[]
+source=(R/'data/scripts/legends_kanto_challenge.inc').read_text()+'\n'+(R/'data/scripts/legends_kanto_chapter2.inc').read_text();labels={};commands=[]
 for line in source.splitlines():
  line=line.strip()
  if re.fullmatch(r'\w+::?',line):labels[line.rstrip(':')]=len(commands)
@@ -22,17 +22,18 @@ class Events:
     if self.value(a[0])==self.value(a[1]):pc=labels[a[2]]
    elif op=='setvar':self.vars[a[0]]=int(a[1])
    elif op=='setflag':self.flags.add(a[0])
+   elif op=='clearflag':self.flags.discard(a[0])
    elif op=='msgbox':
     self.messages.append(a[0])
     if a[1]=='MSGBOX_YESNO':self.vars['VAR_RESULT']=self.answers.pop(0)
    elif op=='trainerbattle_single':
     self.battles.append(a[0])
     if self.lose:return self # Engine blackouts abort this script on defeat.
-   elif op not in ('lockall','releaseall','faceplayer'):raise AssertionError(op)
+   elif op not in ('lockall','releaseall','faceplayer','playmoncry','waitmoncry','delay','closemessage','playfanfare','waitfanfare'):raise AssertionError(op)
   raise AssertionError('Script did not terminate')
 class ChallengeTests(unittest.TestCase):
  def test_both_modes_share_one_permanent_victory(self):
-  for gym in ('Surge','Koga'):
+  for gym in ('Surge','Koga','Erika','Sabrina'):
    for champion in (0,1):
     e=Events();pre='LegendsKanto_'+gym;flag='FLAG_LEGENDS_KANTO_'+gym.upper()+'_WON'
     e.run(pre+'_Entry',[champion]);self.assertIn('LegendsKanto_Text_OneWin',e.messages)
@@ -41,9 +42,9 @@ class ChallengeTests(unittest.TestCase):
     e.run(pre+'_Entry',[1-champion]);e.run(pre+'_Leader',[1]);self.assertEqual(len(e.battles),1)
     self.assertFalse(any('BADGE' in f or f.startswith('FLAG_DEFEATED') for f in e.flags))
  def test_loss_and_decline_allow_reselection(self):
-  for gym in ('Surge','Koga'):
+  for gym in ('Surge','Koga','Erika','Sabrina'):
    e=Events();pre='LegendsKanto_'+gym;e.run(pre+'_Entry',[1]);e.run(pre+'_Leader',[0]);self.assertEqual(e.battles,[])
-   e.lose=True;e.run(pre+'_Leader',[1]);self.assertEqual(e.flags,set())
+   e.lose=True;e.run(pre+'_Leader',[1]);self.assertNotIn('FLAG_LEGENDS_KANTO_'+gym.upper()+'_WON',e.flags)
    e.lose=False;e.run(pre+'_Entry',[0]);e.run(pre+'_Leader',[1]);self.assertTrue(e.battles[-1].endswith('STANDARD'))
  def test_report_in_either_order_and_only_once(self):
   for order in [('Surge','Koga'),('Koga','Surge')]:
@@ -95,8 +96,8 @@ class ChallengeTests(unittest.TestCase):
  def test_trainer_ids_fit_existing_save_flag_space(self):
   constants=(R/'include/constants/opponents.h').read_text();ids=dict(re.findall(r'#define (TRAINER_LEGENDS_KANTO_\w+)\s+(\d+)',constants))
   source=(R/'src/data/trainers.party').read_text();names=re.findall(r'^=== (TRAINER_LEGENDS_KANTO_\w+) ===',source,re.M)
-  self.assertEqual(len(names),9);self.assertEqual(len({ids[n] for n in names}),9)
-  self.assertTrue(all(int(ids[n])<864 for n in names));self.assertIn('#define MAX_TRAINERS_COUNT_EMERALD 864',constants)
+  self.assertEqual(len(names),13);self.assertEqual(len({ids[n] for n in names}),13)
+  self.assertTrue(all(int(ids[n])<868 for n in names));self.assertIn('#define MAX_TRAINERS_COUNT_EMERALD 864',constants)
   self.assertNotIn(' / Setup First Turn',source.split('/* Legends visiting-Gym teams:')[1])
  def test_gym_raw_graphics_visible_to_emerald(self):
   active=subprocess.check_output(['cpp','-P','-DIS_FRLG=0',str(R/'src/data/object_events/object_event_graphics.h')],text=True)

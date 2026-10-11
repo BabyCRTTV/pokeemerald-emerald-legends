@@ -67,6 +67,10 @@ jobs:
         run: python3 test/legends-kanto-foundation.test.py
       - name: Kanto challenge progression
         run: python3 test/legends-kanto-challenge.test.py
+      - name: Kanto Borrowed Voice progression and Trainer Card badges
+        run: |
+          python3 test/legends-kanto-chapter2.test.py
+          python3 test/legends-trainer-card-badges.test.py
       - name: Region map browsing
         run: python3 test/legends-region-map.test.py
       - name: Verify Legends project metadata

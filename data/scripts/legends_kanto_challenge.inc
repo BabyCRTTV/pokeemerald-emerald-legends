@@ -39,6 +39,8 @@ LegendsKanto_Surge_BattleChampion::
 
 LegendsKanto_Surge_Won::
 	setflag FLAG_LEGENDS_KANTO_SURGE_WON
+	playfanfare MUS_OBTAIN_BADGE
+	waitfanfare
 	msgbox LegendsKanto_Text_VictoryRecorded, MSGBOX_DEFAULT
 LegendsKanto_Surge_AfterWin::
 	msgbox LegendsKanto_Surge_Text_Clue, MSGBOX_DEFAULT
@@ -114,6 +116,8 @@ LegendsKanto_Koga_BattleChampion::
 
 LegendsKanto_Koga_Won::
 	setflag FLAG_LEGENDS_KANTO_KOGA_WON
+	playfanfare MUS_OBTAIN_BADGE
+	waitfanfare
 	msgbox LegendsKanto_Text_VictoryRecorded, MSGBOX_DEFAULT
 LegendsKanto_Koga_AfterWin::
 	msgbox LegendsKanto_Koga_Text_Clue, MSGBOX_DEFAULT
@@ -177,7 +181,7 @@ LegendsKanto_Text_GymCompleted:
 	.string "be challenged on this save.$"
 
 LegendsKanto_Text_VictoryRecorded:
-	.string "KANTO GYM victory recorded!\n"
+	.string "KANTO BADGE earned!\n"
 	.string "Both modes are now complete.$"
 
 LegendsKanto_Challenge_Decline::
@@ -204,9 +208,7 @@ LegendsKanto_Survey_Later::
 	msgbox LegendsKanto_Koga_Text_Clue, MSGBOX_DEFAULT
 	msgbox LegendsKanto_Text_JournalEvidence, MSGBOX_DEFAULT
 LegendsKanto_Survey_Next::
-	msgbox LegendsKanto_Text_SurveyNext, MSGBOX_DEFAULT
-	releaseall
-	end
+	goto LegendsKanto_Chapter2_Journal
 
 LegendsKanto_Survey_NoSurge::
 	goto_if_set FLAG_LEGENDS_KANTO_KOGA_WON, LegendsKanto_Survey_OnlyKoga

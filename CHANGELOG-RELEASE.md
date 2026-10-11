@@ -2,6 +2,21 @@
 
 This is the player-facing history for the recommended **Release** build. Shared Legends changes are repeated here so this file stands on its own; Release-only behavior is called out separately.
 
+## [0.0.32] - 2026-10-11
+
+### Added
+- Celadon and Saffron visiting Gyms, retaining native FireRed garden/Cut and teleport-room geometry. Erika offers Standard Lv. 54–58 / Champion Lv. 74–78; Sabrina offers Standard Lv. 58–62 / Champion Lv. 78–82. Standard teams have four Pokemon and Champion teams have six. The entrance guide explains that winning either mode permanently completes that Gym; losses and declined battles allow retry/reselection.
+- WING SURVEY chapter two, **The Borrowed Voice**. After filing Surge/Koga's opening report, win Erika/Sabrina's challenges in either order and examine leaves with Route 16's birdwatcher and listen to copied calls with Route 8's researcher. Oak's aide lists missing tasks, files the field report once, and distinguishes a migrating bright bird from an unidentified smaller imitator. The Power Plant expedition and bird/Mew battles remain future chapters.
+- Trainer Card supports eight Hoenn and eight Kanto badge slots in separate collections. On the local card front, Left/Right, L/R or SELECT switches the badge strip; unearned Kanto badges are dimmed. Existing Surge/Koga victories display immediately. Kanto victories play the native badge fanfare; Hoenn field permissions, card stars and linked-card format are unchanged.
+
+### Compatibility and visual checks
+- Separate trainer-table capacity from native saved trainer-flag capacity. New Erika/Sabrina teams resolve to their existing dedicated Gym victory bits. Preserve MAX_TRAINERS_COUNT_EMERALD=864, system-flag addresses, old trainer IDs and SaveBlock layouts; move transient partner IDs above the enlarged trainer table and update Debug/slide indexing and route Debug trainer toggles through the same safe flag mapping.
+- Restore native Cut trees on Celadon's Gym approach. Reopen only the two Gym doors; retain append-only map IDs and every Saffron teleport slot. Enable native Erika/Sabrina/tree sprite data, frame tables and graphics pointers for Emerald. Place residents/researchers on ground beside paths; guides/staff look around without walking into maze lanes.
+- Event checks cover both modes, one-win locks, loss/decline/retry, site prerequisites, either-order fieldwork, journal missing tasks and repeated visits. Actual-C tests check trainer-flag addresses and 1,024 badge-rendering combinations, palettes, tile bounds and linked-card isolation. Native map/sprite renders and dialogue font widths reviewed. Manual emulator traversal, card flips and team balance remain playtest work; full Debug/Release builds and BPS byte comparisons run in the established workflow.
+
+### Build variants
+- Shared gameplay, maps, story and Trainer Card behavior in Release and Debug; no variant-specific gameplay differences. Debug retains native developer conveniences and the corrected partner-trainer selector.
+
 ## [0.0.31.1] - 2026-10-10
 
 - Keep a stable calendar origin when switching between real and manual bedroom clocks, preventing native hour borrowing from shifting the day count. Preserve existing clock counters and legacy calendar timestamps.

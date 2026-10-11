@@ -1,12 +1,28 @@
 # Kanto postgame — Wing Survey
 
-## Playable in v0.0.28.1
+## Current chapter — v0.0.32: The Borrowed Voice
+
+Four visiting Gyms are playable: Surge, Koga, Erika and Sabrina. Celadon's native garden/Cut layout and Saffron's native teleport network are now connected to their proper city doors. Staff explain how to reach each Leader; city residents point to the Gyms and nearby field sites.
+
+After the opening report described below, win Erika and Sabrina in either mode and either order. Examine intact leaves with the Route 16 birdwatcher west of Celadon and listen to two copied calls with the Route 8 researcher east of Saffron. Each site requires the opening report and its related Leader victory. Declining is safe; completed sites can be reviewed without replaying their sounds or changing progress. Oak's aide lists missing tasks and files the second report once. The findings distinguish a migrating bright bird from a smaller imitator; neither the source of the cries nor Mew is confirmed. This chapter ends before the northern Power Plant expedition. Four other Gyms and legendary battles remain future content.
+
+Kanto badge records now appear on the local Trainer Card. Left/Right, L/R or SELECT swaps the eight-slot strip between Hoenn and Kanto; unearned Kanto badges are dimmed. Old Surge/Koga victories display automatically, in canonical Kanto order. Hoenn badge/field flags, star counts and the public link-card structure are unchanged. The display reuses its original 1 KiB graphics buffer and VRAM range instead of keeping a second bitmap in RAM. [Badge display details](trainer-card-badges.md).
+
+### Compatibility in this chapter
+
+- Two maps appended after the existing 50 Legends maps; original map numbers and Saffron's teleport warp slots stay stable. Layouts reuse native binaries with explicit FRLG palette/metatile packing. Only two previously sealed city doors reopen. Native Celadon Cut trees use Emerald's field-action script.
+- New trainer table IDs 864–867 use `LegendsTrainerFlag` to resolve both Erika teams to `FLAG_LEGENDS_KANTO_ERIKA_WON` and both Sabrina teams to `FLAG_LEGENDS_KANTO_SABRINA_WON`. `TRAINERS_COUNT_EMERALD` is 868; **MAX_TRAINERS_COUNT_EMERALD remains 864**, keeping system flags at 0x860 and preserving native saves. Native IDs below 864 resolve exactly as before. Partner IDs move above the table; partner state is transient, not a save-layout change. Debug indexing and trainer-slide bounds follow the new base; Debug trainer toggles use the same saved-flag resolver.
+- Seven previously unreferenced bits 0x278–0x27E hold field report/site records and each new Gym's chosen/mode state. No saved structs are resized. Original native and Legends progression remains independently addressed.
+- Native Erika/Sabrina/Cut-tree graphics, frame tables, graphics structs and pointer entries are made available in Emerald. Explicit lookup tests prevent a compiled-but-missing NPC sprite.
+- Event tests cover one victory across difficulties, declines, blackouts, reselection, field prerequisites, every missing-task combination, repeated reporting and either-order site completion. Actual-C checks cover the flag resolver and 1,024 badge-draw combinations. Native map/sprite renders and dialogue widths are reviewed. Full ROM builds and BPS byte comparisons are required before publishing. Manual emulator traversal, card-flip review and battle balance remain outstanding.
+
+## Opening chapter — introduced in v0.0.28.1
 
 Become Hoenn Champion, get the Invite Ticket in Lilycove Harbor, and use the existing Kanto ferry or northern Route 124 Surf passage. Both passages retain the established return routes and Emerald field-move requirements.
 
 Visit Oak's field aide in Vermilion Fan Club. The aide introduces the Wing Survey: investigate reports of lightning, frost and fiery wings, comparing Kanto's observations with Birch's records of Hoenn's resolved weather crisis. This is an investigation, not proof that the Hoenn crisis caused the sightings. No new evil team replaces Emerald's story.
 
-Complete Lt. Surge and Koga's visiting challenges in either order. Surge reports unusual readings near the Power Plant; Koga reports cold winds at Seafoam and a third bird sighting. Return to the aide to complete the first report and hear the tentative Mew lead. The aide explicitly identifies the next expedition as future development content. There are no new legendary battles in this version.
+Complete Lt. Surge and Koga's visiting challenges in either order. Surge reports unusual readings near the Power Plant; Koga reports cold winds at Seafoam and a third bird sighting. Return to the aide to complete the first report and hear the tentative Mew lead. The first report led into future development when this opening shipped. The current Borrowed Voice chapter continues from it; legendary battles remain future content.
 
 The aide now keeps an opening-chapter journal: 0/2, 1/2 or 2/2 Leader records, directions to the missing Leader, and optional review of collected observations. Review never repeats a battle or files the first report twice. It uses the existing victory and survey flags, including on saves from v0.0.28; no journal item or new save state is required. These two records cover the opening report, not the eventual eight-Gym circuit. Bird and Mew identifications remain tentative.
 
@@ -24,8 +40,8 @@ An entrance guide explains the choice at each entry before the Leader fight. YES
 | Koga | Playable, Fuchsia | 4 Pokemon, 56–60 | 6 Pokemon, 76–80 | `FLAG_LEGENDS_KANTO_KOGA_WON` |
 | Brock | Planned, Pewter | Target 50–54 | Target 70–74 | Reserved independent flag |
 | Misty | Planned, Cerulean | Target 52–56 | Target 72–76 | Reserved independent flag |
-| Erika | Planned, Celadon | Target 54–58 | Target 74–78 | Reserved independent flag |
-| Sabrina | Planned, Saffron | Target 58–62 | Target 78–82 | Reserved independent flag |
+| Erika | Playable, Celadon | 4 Pokemon, 54–58 | 6 Pokemon, 74–78 | `FLAG_LEGENDS_KANTO_ERIKA_WON` |
+| Sabrina | Playable, Saffron | 4 Pokemon, 58–62 | 6 Pokemon, 78–82 | `FLAG_LEGENDS_KANTO_SABRINA_WON` |
 | Blaine | Planned, Cinnabar | Target 60–64 | Target 80–84 | Reserved independent flag |
 | Viridian Leader | Planned; Blue as acting Leader | Target 62–66 | Target 82–86 | Reserved independent flag |
 
@@ -41,9 +57,9 @@ Surge's electrical barrier is opened by an on-load script for this visiting chal
 
 Oak's aide asks for observations, not capture trophies. Introduce the survey at the Fan Club, where local Pokemon enthusiasts naturally share sightings. Surge and Koga demonstrate that both difficulty choices count equally and that the player's Hoenn experience matters. First report: three habitats, tentative bird identifications, an unexplained mimic cry and a tiny pink hair. The final detail is a clue rather than proof of Mew.
 
-### 2. The Kanto circuit — next playable expansion
+### 2. The Kanto circuit — Celadon/Saffron implemented; north still planned
 
-Populate Celadon and Saffron beyond their Centers, implement Erika/Sabrina using the same per-Gym contract, and extend northern routes toward Cerulean/Pewter for Misty/Brock. Trainers, habitat encounters, services and travel signs should arrive with each road, rather than adding more empty territory indefinitely.
+Erika/Sabrina and their field observations are implemented in v0.0.32 using the per-Gym contract. Further city services and northern routes toward Cerulean/Pewter for Misty/Brock remain planned. Trainers, habitat encounters, services and travel signs should arrive with each road, rather than adding more empty territory indefinitely.
 
 Each Leader offers a distinct observation: Misty notes changes in currents, Brock checks rockfalls without attributing every disturbance to a legend, Erika finds stressed vegetation near roosts, Sabrina senses an unfamiliar but curious presence. Birch and Oak compare measurements; their conclusions remain tentative until the player surveys the sites. Use established characters and brief local conversations, rather than a new named rival or villain cast.
 
@@ -67,13 +83,13 @@ Birch and an old maritime record connect the visitor to **Faraway Island**, reta
 
 Finish with a concise acknowledgement from Oak, Birch and the League. Preserve ordinary Emerald exploration, Battle Frontier and other postgame content. Any new final reward must be one-time and recover gracefully from a full Bag, using the existing project reward conventions.
 
-## Implementation and saves
+## Opening-chapter implementation and saves (v0.0.28.1)
 
 - `data/scripts/legends_kanto_challenge.inc`: self-contained Gym and survey scripts, included explicitly for Emerald from `data/event_scripts.s`.
 - `src/data/trainers.party`: distinct Standard/Champion parties and four optional route trainers; uses the expansion's party parser and native Leader artwork.
 - `data/legends_kanto_chapter1.json`: the 18 appended native-map imports and two active Gyms. The old foundation manifest remains a record of the earlier 30 imports.
 - Trainer IDs 856–863 use the eight remaining native Emerald trainer-flag slots. `MAX_TRAINERS_COUNT_EMERALD` remains 864, so the system-flag addresses and save layout do not move. Later chapters must plan a separate trainer-flag allocation strategy before adding more battles; do not simply grow MAX and shift existing saved system flags.
-- Gym completion bits `0x26E–0x275`: reserved once per named Leader, separate from all Hoenn badge and native FRLG states. Only Surge/Koga are set now.
+- Gym completion bits `0x26E–0x275`: reserved once per named Leader, separate from all Hoenn badge and native FRLG states. Only Surge/Koga were set by this opening; Erika/Sabrina are added in v0.0.32.
 - Survey started/report bits `0x276/0x277`. Reports check both Gym completion flags, so doing a Gym before meeting the aide still works.
 - Saved choice vars `0x40B8`/`0x40BB`: 0 unset, 1 Standard, 2 Champion. Old saves default to unset. `VAR_TEMP_0` prevents the entrance trigger from repeating during that map visit; every doorway lane is covered. No SaveBlock resizing.
 - PokeNav `displayRegion`: transient map-screen state. SELECT toggles Hoenn/Kanto after `FLAG_SYS_GAME_CLEAR`, including from zoomed views. The existing banner frame is retained, with the region name rendered by the native font. Fade, native zoom reset and graphics reload run as a looped task. Cursor lookup follows the displayed map; player marker and Fly only apply to the actual region. Fly/wall/Pokedex screens initialize independently. Browsing the full Kanto map does not assert that every location is implemented.
