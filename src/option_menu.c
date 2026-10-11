@@ -113,13 +113,14 @@ EWRAM_DATA static bool8 sArrowPressed = FALSE;
 
 static const u8 gText_PageControls[]       = _("A: NEXT  B: SAVE");
 #ifdef RELEASE
-static const u8 gText_LegendsVersion[]      = _("LEGENDS v0.0.33");
+static const u8 gText_LegendsVersion[]      = _("LEGENDS v0.0.34");
 #else
-static const u8 gText_LegendsVersion[]      = _("LEGENDS v0.0.33-D");
+static const u8 gText_LegendsVersion[]      = _("LEGENDS v0.0.34-D");
 #endif
 static const u8 gText_TextSpeedSlow[]      = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}SLOW");
 static const u8 gText_TextSpeedMid[]       = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}MID");
 static const u8 gText_TextSpeedFast[]      = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}FAST");
+static const u8 gText_TextSpeedInstant[]   = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}INSTANT");
 static const u8 gText_BattleSceneOn[]      = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}ON");
 static const u8 gText_BattleSceneOff[]     = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}OFF");
 static const u8 gText_BattleStyleShift[]   = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}SHIFT");
@@ -623,20 +624,12 @@ static u8 TextSpeed_ProcessInput(u8 selection)
 {
     if (JOY_NEW(DPAD_RIGHT))
     {
-        if (selection <= 1)
-            selection++;
-        else
-            selection = 0;
-
+        selection = (selection + 1) % (OPTIONS_TEXT_SPEED_INSTANT + 1);
         sArrowPressed = TRUE;
     }
-    if (JOY_NEW(DPAD_LEFT))
+    else if (JOY_NEW(DPAD_LEFT))
     {
-        if (selection != 0)
-            selection--;
-        else
-            selection = 2;
-
+        selection = (selection + OPTIONS_TEXT_SPEED_INSTANT) % (OPTIONS_TEXT_SPEED_INSTANT + 1);
         sArrowPressed = TRUE;
     }
     return selection;
@@ -644,25 +637,20 @@ static u8 TextSpeed_ProcessInput(u8 selection)
 
 static void TextSpeed_DrawChoices(u8 selection, u8 y)
 {
-    u8 styles[3];
-    s32 widthSlow, widthMid, widthFast, xMid;
+    static const u8 *const choices[] =
+    {
+        [OPTIONS_TEXT_SPEED_SLOW] = gText_TextSpeedSlow,
+        [OPTIONS_TEXT_SPEED_MID] = gText_TextSpeedMid,
+        [OPTIONS_TEXT_SPEED_FAST] = gText_TextSpeedFast,
+        [OPTIONS_TEXT_SPEED_INSTANT] = gText_TextSpeedInstant,
+    };
 
-    styles[0] = 0;
-    styles[1] = 0;
-    styles[2] = 0;
-    styles[selection] = 1;
+    if (selection >= ARRAY_COUNT(choices))
+        selection = OPTIONS_TEXT_SPEED_FAST;
 
-    DrawOptionMenuChoice(gText_TextSpeedSlow, 104, y, styles[0]);
-
-    widthSlow = GetStringWidth(FONT_NORMAL, gText_TextSpeedSlow, 0);
-    widthMid = GetStringWidth(FONT_NORMAL, gText_TextSpeedMid, 0);
-    widthFast = GetStringWidth(FONT_NORMAL, gText_TextSpeedFast, 0);
-
-    widthMid -= 94;
-    xMid = (widthSlow - widthMid - widthFast) / 2 + 104;
-    DrawOptionMenuChoice(gText_TextSpeedMid, xMid, y, styles[1]);
-
-    DrawOptionMenuChoice(gText_TextSpeedFast, GetStringRightAlignXOffset(FONT_NORMAL, gText_TextSpeedFast, 198), y, styles[2]);
+    // Show one value, as with the Legends settings, within the native window.
+    FillWindowPixelRect(WIN_OPTIONS, PIXEL_FILL(1), 104, y, 96, OPTION_ROW_HEIGHT);
+    DrawOptionMenuChoice(choices[selection], 130, y, 1);
 }
 
 static u8 BattleScene_ProcessInput(u8 selection)

@@ -34,6 +34,7 @@ typedef int16_t s16;
 #define DPAD_DOWN 32
 #define DPAD_RIGHT 64
 #define DPAD_LEFT 128
+#define OPTIONS_TEXT_SPEED_INSTANT 3
 #define LEGENDS_STARTERS_COUNT 11
 #define LEGENDS_SEASONS_PLAYTIME 1
 #define COPYWIN_GFX 0
@@ -51,10 +52,11 @@ static void CopyWindowToVram(u8 w, u8 mode) { (void)w; (void)mode; }
 static u8 GetOptionMenuItem(u8 taskId);
 static void ChangeOptionMenuPage(u8 taskId, s8 direction);
 '''
-for name in ['TextSpeed','BattleScene','BattleStyle','OnOff','ShinyRate','SeasonMode','SetSeason','Sound','ButtonMode','FrameType']:
+for name in ['BattleScene','BattleStyle','OnOff','ShinyRate','SeasonMode','SetSeason','Sound','ButtonMode','FrameType']:
     stub += f'static u8 {name}_ProcessInput(u8 value) {{ return value; }}\n'
 for name in ['TextSpeed','BattleScene','BattleStyle','OnOff','ShinyRate','SeasonMode','Sound','ButtonMode','FrameType']:
     stub += f'static void {name}_DrawChoices(u8 value, u8 y) {{ (void)value; (void)y; }}\n'
+stub += function('static u8 TextSpeed_ProcessInput(u8 selection)') + '\n'
 stub += function('static u8 StarterSetting_ProcessInput(u8 selection)') + '\n'
 stub += 'static void StarterSetting_DrawChoice(u8 v,u8 y) { (void)v; (void)y; }\n'
 stub += 'static void SetSeason_DrawChoice(u8 mode, u8 season, u8 y) { (void)mode; (void)season; (void)y; }\n'
@@ -105,6 +107,21 @@ int main(void)
     gTasks[0].tStarterSetting = 0;
     for(unsigned i=1;i<=LEGENDS_STARTERS_COUNT;i++){pressed=DPAD_RIGHT;Task_OptionMenuProcessInput(0);assert(gTasks[0].tStarterSetting == (s16)(i % LEGENDS_STARTERS_COUNT));}
     pressed=DPAD_LEFT;Task_OptionMenuProcessInput(0);assert(gTasks[0].tStarterSetting==LEGENDS_STARTERS_COUNT-1);
+    gTasks[0].tMenuPage = OPTION_PAGE_GENERAL;
+    gTasks[0].tMenuSelection = 0;
+    gTasks[0].tTextSpeed = 0;
+    for (unsigned i = 1; i <= 4; i++)
+    {
+        pressed = DPAD_RIGHT;
+        Task_OptionMenuProcessInput(0);
+        assert(gTasks[0].tTextSpeed == (s16)(i % 4));
+    }
+    for (unsigned i = 1; i <= 4; i++)
+    {
+        pressed = DPAD_LEFT;
+        Task_OptionMenuProcessInput(0);
+        assert(gTasks[0].tTextSpeed == (s16)((4 - i) % 4));
+    }
     puts("Options A/L/R paging, pending settings, row wrap and B save/exit passed.");
 }
 '''

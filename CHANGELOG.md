@@ -4,6 +4,12 @@ All notable Pokémon Emerald: Legends project changes are documented here.
 
 For build-specific player views, see [CHANGELOG-RELEASE.md](CHANGELOG-RELEASE.md) and [CHANGELOG-DEBUG.md](CHANGELOG-DEBUG.md). The canonical history below records the project as a whole.
 
+## [0.0.34] - 2026-10-11
+
+- Add **INSTANT** to General Options → Text Speed, alongside Slow, Mid and Fast. Reuse pokeemerald-expansion's existing instant renderer; text appears immediately while page confirmations, scripted pauses and choices retain their native behavior.
+- Display the selected speed alone and clear its previous label before redraw, keeping the existing safe Options window dimensions. Left/Right cycles all four speeds; B saves as usual. Existing saves retain their chosen speed and the New Game default remains Mid; no save-layout changes.
+- Shared feature in Release and Debug; no variant-specific differences. Wiki files and wiki workflows are unchanged. Options navigation/redraw regressions cover all four speeds; mGBA 0.10.2 checks the selected label, saving back to the field, immediate text, a page waiting without input, and A advancing to the next page.
+
 ## [0.0.33] - 2026-10-11
 
 - Add Wing Survey chapter three, **The Quiet Current**: north from Lavender through native Rock Tunnel to Route 10's Center and the Surf approach to the Power Plant. Isolate two unused electrical feeds in either order, observe Zapdos, then file Oak's aide's report. Zapdos can optionally be challenged at native FireRed level 50; observation alone advances the story. Capture persists, while fainting or fleeing allows a later visit to retry. Seafoam is the next lead; no new Gyms, Articuno, Moltres or Mew battles in this version.
