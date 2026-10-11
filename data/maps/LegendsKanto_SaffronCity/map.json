@@ -31,7 +31,22 @@
       "direction": "right"
     }
   ],
-  "object_events": [],
+  "object_events": [
+    {
+      "type": "object",
+      "graphics_id": "OBJ_EVENT_GFX_MAN_1",
+      "x": 45,
+      "y": 15,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
+      "movement_range_x": 1,
+      "movement_range_y": 1,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "LegendsKanto_Chapter2_SaffronLocal",
+      "flag": "0"
+    }
+  ],
   "warp_events": [
     {
       "x": 33,
@@ -58,8 +73,8 @@
       "x": 46,
       "y": 12,
       "elevation": 0,
-      "dest_map": "MAP_LEGENDS_KANTO_SAFFRON_CITY",
-      "dest_warp_id": "3"
+      "dest_map": "MAP_LEGENDS_KANTO_SAFFRON_CITY_GYM",
+      "dest_warp_id": "1"
     },
     {
       "x": 27,
@@ -160,14 +175,6 @@
     {
       "type": "sign",
       "x": 40,
-      "y": 12,
-      "elevation": 0,
-      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-      "script": "LegendsKanto_EventScript_FoundationClosed"
-    },
-    {
-      "type": "sign",
-      "x": 46,
       "y": 12,
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",

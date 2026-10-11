@@ -2241,7 +2241,7 @@ static void ParseObjectEventScript(const u8 *script)
     sDebugMenuListData->data[0] = TRAINER_BATTLE_PARAM.opponentA;
     sDebugMenuListData->data[2] = TRAINER_BATTLE_PARAM.opponentB;
     if (gPartnerTrainerId)
-        sDebugMenuListData->data[4] = gPartnerTrainerId - MAX_TRAINERS_COUNT;
+        sDebugMenuListData->data[4] = gPartnerTrainerId - TRAINER_PARTNER(PARTNER_NONE);
     InitTrainerBattleParameter();
     gPartnerTrainerId = 0;
 }

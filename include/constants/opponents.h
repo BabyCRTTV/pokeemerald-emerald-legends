@@ -877,7 +877,12 @@
 #define TRAINER_LEGENDS_KANTO_ROUTE8                 862
 #define TRAINER_LEGENDS_KANTO_ROUTE17                863
 
-#define TRAINERS_COUNT_EMERALD     864
+// Additional teams use dedicated Legends victory flags, never native trainer bits.
+#define TRAINER_LEGENDS_KANTO_ERIKA_STANDARD         864
+#define TRAINER_LEGENDS_KANTO_ERIKA_CHAMPION         865
+#define TRAINER_LEGENDS_KANTO_SABRINA_STANDARD       866
+#define TRAINER_LEGENDS_KANTO_SABRINA_CHAMPION       867
+#define TRAINERS_COUNT_EMERALD     868
 #define MAX_TRAINERS_COUNT_EMERALD 864
 
 #if IS_FRLG
@@ -887,6 +892,7 @@
 #define TRAINERS_COUNT                      TRAINERS_COUNT_EMERALD
 #define MAX_TRAINERS_COUNT                  MAX_TRAINERS_COUNT_EMERALD
 #endif
-#define TRAINER_PARTNER(partner)           (MAX_TRAINERS_COUNT + partner)
+#define TRAINER_PARTNER_BASE              ((TRAINERS_COUNT > MAX_TRAINERS_COUNT) ? TRAINERS_COUNT : MAX_TRAINERS_COUNT)
+#define TRAINER_PARTNER(partner)           (TRAINER_PARTNER_BASE + partner)
 
 #endif  // GUARD_CONSTANTS_OPPONENTS_H

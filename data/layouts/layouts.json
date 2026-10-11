@@ -9911,6 +9911,34 @@
       "blockdata_filepath": "data/layouts/LegendsKanto_Route18_EastEntrance_1F/map.bin",
       "layout_version": "emerald",
       "tileset_format": "frlg"
+    },
+    {
+      "id": "LAYOUT_LEGENDS_KANTO_CELADON_CITY_GYM",
+      "name": "LegendsKanto_CeladonCity_Gym_Layout",
+      "width": 13,
+      "height": 20,
+      "border_width": 2,
+      "border_height": 2,
+      "primary_tileset": "gTileset_LegendsKantoBuildingFrlg",
+      "secondary_tileset": "gTileset_LegendsKantoCeladonGym",
+      "border_filepath": "data/layouts/CeladonCity_Gym_Frlg/border.bin",
+      "blockdata_filepath": "data/layouts/CeladonCity_Gym_Frlg/map.bin",
+      "layout_version": "emerald",
+      "tileset_format": "frlg"
+    },
+    {
+      "id": "LAYOUT_LEGENDS_KANTO_SAFFRON_CITY_GYM",
+      "name": "LegendsKanto_SaffronCity_Gym_Layout",
+      "width": 29,
+      "height": 25,
+      "border_width": 2,
+      "border_height": 2,
+      "primary_tileset": "gTileset_LegendsKantoBuildingFrlg",
+      "secondary_tileset": "gTileset_LegendsKantoSaffronGym",
+      "border_filepath": "data/layouts/SaffronCity_Gym_Frlg/border.bin",
+      "blockdata_filepath": "data/layouts/SaffronCity_Gym_Frlg/map.bin",
+      "layout_version": "emerald",
+      "tileset_format": "frlg"
     }
   ]
 }

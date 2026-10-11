@@ -58,6 +58,7 @@
 #include "constants/items.h"
 #include "constants/songs.h"
 #include "constants/trainers.h"
+#include "legends_trainer_flags.h"
 #include "constants/trainer_hill.h"
 #include "constants/weather.h"
 
@@ -1057,14 +1058,15 @@ static void TryUpdateGymLeaderRematchFromTrainer(void)
         UpdateGymLeaderRematch();
 }
 
+
 static u16 GetTrainerAFlag(void)
 {
-    return TRAINER_FLAGS_START + TRAINER_BATTLE_PARAM.opponentA;
+    return LegendsTrainerFlag(TRAINER_BATTLE_PARAM.opponentA);
 }
 
 static u16 GetTrainerBFlag(void)
 {
-    return TRAINER_FLAGS_START + TRAINER_BATTLE_PARAM.opponentB;
+    return LegendsTrainerFlag(TRAINER_BATTLE_PARAM.opponentB);
 }
 
 static bool32 IsPlayerDefeated(u32 battleOutcome)
@@ -1374,7 +1376,7 @@ void ConfigureApproachingFacilityTrainerBattle(struct ApproachingTrainer *approa
 bool32 GetTrainerFlagFromScriptPointer(const u8 *data)
 {
     TrainerBattleParameter *temp = (TrainerBattleParameter*)(data + TRAINERBATTLE_OPCODE_OFFSET);
-    return FlagGet(TRAINER_FLAGS_START + temp->params.opponentA);
+    return LegendsTrainerFlag(temp->params.opponentA) != 0 && FlagGet(LegendsTrainerFlag(temp->params.opponentA));
 }
 
 bool32 GetRematchFromScriptPointer(const u8 *data)
@@ -1412,34 +1414,38 @@ bool8 GetTrainerFlag(void)
     else if (InTrainerHill())
         return GetHillTrainerFlag(gSelectedObjectEvent);
     else
-        return FlagGet(GetTrainerAFlag());
+        return GetTrainerAFlag() != 0 && FlagGet(GetTrainerAFlag());
 }
 
 static void SetBattledTrainersFlags(void)
 {
-    if (TRAINER_BATTLE_PARAM.opponentB != 0)
+    if (TRAINER_BATTLE_PARAM.opponentB != 0 && GetTrainerBFlag() != 0)
         FlagSet(GetTrainerBFlag());
-    FlagSet(GetTrainerAFlag());
+    if (GetTrainerAFlag() != 0)
+        FlagSet(GetTrainerAFlag());
 }
 
 static void UNUSED SetBattledTrainerFlag(void)
 {
-    FlagSet(GetTrainerAFlag());
+    if (GetTrainerAFlag() != 0)
+        FlagSet(GetTrainerAFlag());
 }
 
 bool8 HasTrainerBeenFought(u16 trainerId)
 {
-    return FlagGet(TRAINER_FLAGS_START + trainerId);
+    return LegendsTrainerFlag(trainerId) != 0 && FlagGet(LegendsTrainerFlag(trainerId));
 }
 
 void SetTrainerFlag(u16 trainerId)
 {
-    FlagSet(TRAINER_FLAGS_START + trainerId);
+    if (LegendsTrainerFlag(trainerId) != 0)
+        FlagSet(LegendsTrainerFlag(trainerId));
 }
 
 void ClearTrainerFlag(u16 trainerId)
 {
-    FlagClear(TRAINER_FLAGS_START + trainerId);
+    if (LegendsTrainerFlag(trainerId) != 0)
+        FlagClear(LegendsTrainerFlag(trainerId));
 }
 
 void BattleSetup_StartTrainerBattle(void)

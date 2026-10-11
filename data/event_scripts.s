@@ -1785,6 +1785,9 @@ EventScript_PalletTown_PlayersHouse_2F_TurnOnPC::
 
 .if !IS_FRLG
 	.include "data/scripts/legends_kanto_challenge.inc"
+	.include "data/scripts/legends_kanto_chapter2.inc"
+	.include "data/maps/LegendsKanto_CeladonCity_Gym/scripts.inc"
+	.include "data/maps/LegendsKanto_SaffronCity_Gym/scripts.inc"
 	.include "data/maps/LegendsKanto_CeladonCity/scripts.inc"
 	.include "data/maps/LegendsKanto_SaffronCity/scripts.inc"
 	.include "data/maps/LegendsKanto_Route8_WestEntrance/scripts.inc"

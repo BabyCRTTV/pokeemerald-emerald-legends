@@ -28,8 +28,10 @@ Goal: establish a stable `pokeemerald-expansion` project and implement the first
 ### Kanto postgame
 - [x] Champion invitation and permanent Lilycove–Vermilion ferry
 - [x] Vermilion arrival, residents, facilities and optional spectator challenge
-- [ ] Route 6 / Route 11 and onward travel
-- [ ] Kanto Gym progression and League chapter
+- [x] Routes 6–8 / 11–19 road loop, regional map browsing and Surf passage
+- [x] First four visiting Gyms, two Wing Survey reports and regional Trainer Card badges
+- [ ] Remaining four Gyms, northern/western Kanto and bird habitat expeditions
+- [ ] Bird encounters and Faraway Island Mew conclusion
 - [ ] Research Johto assets and geography after Kanto is established
 
 ### Quality and maintenance
