@@ -75,3 +75,39 @@ with tempfile.TemporaryDirectory() as d:
  p=Path(d)/'style.c';p.write_text(fixture)
  subprocess.run(['cc','-std=gnu17','-Wall','-Wextra','-Werror','-fsanitize=address,undefined',str(p),'-o',str(Path(d)/'style')],check=True)
  subprocess.run([str(Path(d)/'style')],check=True)
+ # Render the actual 16x32/32x32 native field motions and all trainer
+ # front/back poses through the same compiled C routine, not a Python rewrite.
+ import ctypes,sys
+ sys.path.insert(0,str(root/'tools/legends'))
+ from build_appearance import frames,pack,STATES,FILES
+ lib=Path(d)/'style.so'
+ subprocess.run(['cc','-std=gnu17','-O2','-fPIC','-shared',str(p),'-o',str(lib)],check=True)
+ painter=ctypes.CDLL(str(lib)).LegendsPaintStyle
+ painter.argtypes=[ctypes.POINTER(ctypes.c_ubyte),ctypes.c_ubyte,ctypes.c_ubyte,ctypes.c_ubyte,ctypes.c_int,ctypes.c_ubyte,ctypes.c_ubyte]
+ poses=0
+ for gender,name in enumerate(('brendan','may')):
+  cases=[(root/f'graphics/object_events/pics/people/{name}/{f}.png',16 if i==0 else 32,32,0) for i,f in enumerate(FILES)]
+  cases += [(root/f'graphics/object_events/pics/people/{name}/running.png',16,32,0)]
+  cases += [(root/f'graphics/trainers/{kind}_pics/{name}.png',64,64,int(kind=='back')) for kind in ('front','back')]
+  for asset,w,h,back in cases:
+   for frame in frames(asset,w,h):
+    native=pack(frame);distinct=set()
+    for hair in range(11):
+     buf=(ctypes.c_ubyte*len(native)).from_buffer_copy(native)
+     painter(buf,w,h,gender,back,hair,0)
+     result=bytes(buf);distinct.add(result)
+     if hair==0:assert result==native,(asset,'original appearance')
+     for a,b in zip(native,result):
+      for shift in (0,4):
+       v=(a>>shift)&15
+       if v in (1,2,3,12,13):assert (b>>shift)&15==v,(asset,hair,'skin/ball damage')
+    assert len(distinct)>=5,(asset,'hairstyles not visually distinct',len(distinct))
+    for coat in (0,2):
+     buf=(ctypes.c_ubyte*len(native)).from_buffer_copy(native)
+     painter(buf,w,h,gender,back,0,coat)
+     for a,b in zip(native,bytes(buf)):
+      for shift in (0,4):
+       v=(a>>shift)&15
+       if v in (1,2,3,12,13,15):assert (b>>shift)&15==v,(asset,'coat touches protected index')
+    poses+=1
+ print(f'{poses} native player poses: 11 hairstyle shapes, winter coats, protected skin/balls and 4bpp dimensions passed')
