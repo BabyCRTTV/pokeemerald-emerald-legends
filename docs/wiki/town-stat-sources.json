@@ -1,0 +1,758 @@
+{
+  "sourceCommit": "f8b828f77d7c88955cf19ebaeb3898a48c6fa1b6",
+  "policy": "Manual review only; game and encounter data unchanged.",
+  "populationDefinition": "Human NPC placements in the exterior and connected town interiors, including conditional story appearances. Excludes Pokemon, props, and unnamed dynamic multiplayer/test objects; not a unique-person census.",
+  "buildingDefinition": "Distinct indoor destinations entered directly from the town exterior; multiple doors and floors count once. Excludes caves, outdoor warps and inaccessible facades.",
+  "referencePolicy": "Settlements without a Legends exterior use explicitly labeled FireRed map reference counts from the same source commit.",
+  "towns": {
+    "Littleroot Town": {
+      "region": "Hoenn",
+      "basis": "Legends snapshot",
+      "buildingCount": 3,
+      "maps": [
+        "MAP_LITTLEROOT_TOWN",
+        "MAP_LITTLEROOT_TOWN_BRENDANS_HOUSE_1F",
+        "MAP_LITTLEROOT_TOWN_BRENDANS_HOUSE_2F",
+        "MAP_LITTLEROOT_TOWN_MAYS_HOUSE_1F",
+        "MAP_LITTLEROOT_TOWN_MAYS_HOUSE_2F",
+        "MAP_LITTLEROOT_TOWN_PROFESSOR_BIRCHS_LAB"
+      ],
+      "npcPlacements": {
+        "MAP_LITTLEROOT_TOWN": 6,
+        "MAP_LITTLEROOT_TOWN_BRENDANS_HOUSE_1F": 5,
+        "MAP_LITTLEROOT_TOWN_BRENDANS_HOUSE_2F": 2,
+        "MAP_LITTLEROOT_TOWN_MAYS_HOUSE_1F": 5,
+        "MAP_LITTLEROOT_TOWN_MAYS_HOUSE_2F": 2,
+        "MAP_LITTLEROOT_TOWN_PROFESSOR_BIRCHS_LAB": 3
+      }
+    },
+    "Oldale Town": {
+      "region": "Hoenn",
+      "basis": "Legends snapshot",
+      "buildingCount": 4,
+      "maps": [
+        "MAP_OLDALE_TOWN",
+        "MAP_OLDALE_TOWN_HOUSE1",
+        "MAP_OLDALE_TOWN_HOUSE2",
+        "MAP_OLDALE_TOWN_MART",
+        "MAP_OLDALE_TOWN_POKEMON_CENTER_1F",
+        "MAP_OLDALE_TOWN_POKEMON_CENTER_2F"
+      ],
+      "npcPlacements": {
+        "MAP_OLDALE_TOWN": 4,
+        "MAP_OLDALE_TOWN_HOUSE1": 1,
+        "MAP_OLDALE_TOWN_HOUSE2": 2,
+        "MAP_OLDALE_TOWN_MART": 3,
+        "MAP_OLDALE_TOWN_POKEMON_CENTER_1F": 4,
+        "MAP_OLDALE_TOWN_POKEMON_CENTER_2F": 4
+      }
+    },
+    "Dewford Town": {
+      "region": "Hoenn",
+      "basis": "Legends snapshot",
+      "buildingCount": 5,
+      "maps": [
+        "MAP_DEWFORD_TOWN",
+        "MAP_DEWFORD_TOWN_GYM",
+        "MAP_DEWFORD_TOWN_HALL",
+        "MAP_DEWFORD_TOWN_HOUSE1",
+        "MAP_DEWFORD_TOWN_HOUSE2",
+        "MAP_DEWFORD_TOWN_POKEMON_CENTER_1F",
+        "MAP_DEWFORD_TOWN_POKEMON_CENTER_2F"
+      ],
+      "npcPlacements": {
+        "MAP_DEWFORD_TOWN": 4,
+        "MAP_DEWFORD_TOWN_GYM": 8,
+        "MAP_DEWFORD_TOWN_HALL": 9,
+        "MAP_DEWFORD_TOWN_HOUSE1": 2,
+        "MAP_DEWFORD_TOWN_HOUSE2": 2,
+        "MAP_DEWFORD_TOWN_POKEMON_CENTER_1F": 3,
+        "MAP_DEWFORD_TOWN_POKEMON_CENTER_2F": 4
+      }
+    },
+    "Lavaridge Town": {
+      "region": "Hoenn",
+      "basis": "Legends snapshot",
+      "buildingCount": 5,
+      "maps": [
+        "MAP_LAVARIDGE_TOWN",
+        "MAP_LAVARIDGE_TOWN_GYM_1F",
+        "MAP_LAVARIDGE_TOWN_GYM_B1F",
+        "MAP_LAVARIDGE_TOWN_HERB_SHOP",
+        "MAP_LAVARIDGE_TOWN_HOUSE",
+        "MAP_LAVARIDGE_TOWN_MART",
+        "MAP_LAVARIDGE_TOWN_POKEMON_CENTER_1F",
+        "MAP_LAVARIDGE_TOWN_POKEMON_CENTER_2F"
+      ],
+      "npcPlacements": {
+        "MAP_LAVARIDGE_TOWN": 9,
+        "MAP_LAVARIDGE_TOWN_GYM_1F": 6,
+        "MAP_LAVARIDGE_TOWN_GYM_B1F": 4,
+        "MAP_LAVARIDGE_TOWN_HERB_SHOP": 3,
+        "MAP_LAVARIDGE_TOWN_HOUSE": 2,
+        "MAP_LAVARIDGE_TOWN_MART": 3,
+        "MAP_LAVARIDGE_TOWN_POKEMON_CENTER_1F": 4,
+        "MAP_LAVARIDGE_TOWN_POKEMON_CENTER_2F": 4
+      }
+    },
+    "Fallarbor Town": {
+      "region": "Hoenn",
+      "basis": "Legends snapshot",
+      "buildingCount": 5,
+      "maps": [
+        "MAP_FALLARBOR_TOWN",
+        "MAP_FALLARBOR_TOWN_BATTLE_TENT_LOBBY",
+        "MAP_FALLARBOR_TOWN_COZMOS_HOUSE",
+        "MAP_FALLARBOR_TOWN_MART",
+        "MAP_FALLARBOR_TOWN_MOVE_RELEARNERS_HOUSE",
+        "MAP_FALLARBOR_TOWN_POKEMON_CENTER_1F",
+        "MAP_FALLARBOR_TOWN_POKEMON_CENTER_2F"
+      ],
+      "npcPlacements": {
+        "MAP_FALLARBOR_TOWN": 3,
+        "MAP_FALLARBOR_TOWN_BATTLE_TENT_LOBBY": 5,
+        "MAP_FALLARBOR_TOWN_COZMOS_HOUSE": 2,
+        "MAP_FALLARBOR_TOWN_MART": 4,
+        "MAP_FALLARBOR_TOWN_MOVE_RELEARNERS_HOUSE": 1,
+        "MAP_FALLARBOR_TOWN_POKEMON_CENTER_1F": 4,
+        "MAP_FALLARBOR_TOWN_POKEMON_CENTER_2F": 4
+      }
+    },
+    "Verdanturf Town": {
+      "region": "Hoenn",
+      "basis": "Legends snapshot",
+      "buildingCount": 6,
+      "maps": [
+        "MAP_VERDANTURF_TOWN",
+        "MAP_VERDANTURF_TOWN_BATTLE_TENT_LOBBY",
+        "MAP_VERDANTURF_TOWN_FRIENDSHIP_RATERS_HOUSE",
+        "MAP_VERDANTURF_TOWN_HOUSE",
+        "MAP_VERDANTURF_TOWN_MART",
+        "MAP_VERDANTURF_TOWN_POKEMON_CENTER_1F",
+        "MAP_VERDANTURF_TOWN_POKEMON_CENTER_2F",
+        "MAP_VERDANTURF_TOWN_WANDAS_HOUSE"
+      ],
+      "npcPlacements": {
+        "MAP_VERDANTURF_TOWN": 4,
+        "MAP_VERDANTURF_TOWN_BATTLE_TENT_LOBBY": 6,
+        "MAP_VERDANTURF_TOWN_FRIENDSHIP_RATERS_HOUSE": 1,
+        "MAP_VERDANTURF_TOWN_HOUSE": 2,
+        "MAP_VERDANTURF_TOWN_MART": 4,
+        "MAP_VERDANTURF_TOWN_POKEMON_CENTER_1F": 4,
+        "MAP_VERDANTURF_TOWN_POKEMON_CENTER_2F": 4,
+        "MAP_VERDANTURF_TOWN_WANDAS_HOUSE": 5
+      }
+    },
+    "Pacifidlog Town": {
+      "region": "Hoenn",
+      "basis": "Legends snapshot",
+      "buildingCount": 6,
+      "maps": [
+        "MAP_PACIFIDLOG_TOWN",
+        "MAP_PACIFIDLOG_TOWN_HOUSE1",
+        "MAP_PACIFIDLOG_TOWN_HOUSE2",
+        "MAP_PACIFIDLOG_TOWN_HOUSE3",
+        "MAP_PACIFIDLOG_TOWN_HOUSE4",
+        "MAP_PACIFIDLOG_TOWN_HOUSE5",
+        "MAP_PACIFIDLOG_TOWN_POKEMON_CENTER_1F",
+        "MAP_PACIFIDLOG_TOWN_POKEMON_CENTER_2F"
+      ],
+      "npcPlacements": {
+        "MAP_PACIFIDLOG_TOWN": 3,
+        "MAP_PACIFIDLOG_TOWN_HOUSE1": 2,
+        "MAP_PACIFIDLOG_TOWN_HOUSE2": 1,
+        "MAP_PACIFIDLOG_TOWN_HOUSE3": 2,
+        "MAP_PACIFIDLOG_TOWN_HOUSE4": 3,
+        "MAP_PACIFIDLOG_TOWN_HOUSE5": 2,
+        "MAP_PACIFIDLOG_TOWN_POKEMON_CENTER_1F": 5,
+        "MAP_PACIFIDLOG_TOWN_POKEMON_CENTER_2F": 4
+      }
+    },
+    "Petalburg City": {
+      "region": "Hoenn",
+      "basis": "Legends snapshot",
+      "buildingCount": 6,
+      "maps": [
+        "MAP_PETALBURG_CITY",
+        "MAP_PETALBURG_CITY_GYM",
+        "MAP_PETALBURG_CITY_HOUSE1",
+        "MAP_PETALBURG_CITY_HOUSE2",
+        "MAP_PETALBURG_CITY_MART",
+        "MAP_PETALBURG_CITY_POKEMON_CENTER_1F",
+        "MAP_PETALBURG_CITY_POKEMON_CENTER_2F",
+        "MAP_PETALBURG_CITY_WALLYS_HOUSE"
+      ],
+      "npcPlacements": {
+        "MAP_PETALBURG_CITY": 7,
+        "MAP_PETALBURG_CITY_GYM": 11,
+        "MAP_PETALBURG_CITY_HOUSE1": 2,
+        "MAP_PETALBURG_CITY_HOUSE2": 2,
+        "MAP_PETALBURG_CITY_MART": 4,
+        "MAP_PETALBURG_CITY_POKEMON_CENTER_1F": 5,
+        "MAP_PETALBURG_CITY_POKEMON_CENTER_2F": 4,
+        "MAP_PETALBURG_CITY_WALLYS_HOUSE": 2
+      }
+    },
+    "Slateport City": {
+      "region": "Hoenn",
+      "basis": "Legends snapshot",
+      "buildingCount": 9,
+      "maps": [
+        "MAP_SLATEPORT_CITY",
+        "MAP_SLATEPORT_CITY_BATTLE_TENT_LOBBY",
+        "MAP_SLATEPORT_CITY_HARBOR",
+        "MAP_SLATEPORT_CITY_HOUSE",
+        "MAP_SLATEPORT_CITY_MART",
+        "MAP_SLATEPORT_CITY_NAME_RATERS_HOUSE",
+        "MAP_SLATEPORT_CITY_OCEANIC_MUSEUM_1F",
+        "MAP_SLATEPORT_CITY_OCEANIC_MUSEUM_2F",
+        "MAP_SLATEPORT_CITY_POKEMON_CENTER_1F",
+        "MAP_SLATEPORT_CITY_POKEMON_CENTER_2F",
+        "MAP_SLATEPORT_CITY_POKEMON_FAN_CLUB",
+        "MAP_SLATEPORT_CITY_STERNS_SHIPYARD_1F",
+        "MAP_SLATEPORT_CITY_STERNS_SHIPYARD_2F"
+      ],
+      "npcPlacements": {
+        "MAP_SLATEPORT_CITY": 35,
+        "MAP_SLATEPORT_CITY_BATTLE_TENT_LOBBY": 5,
+        "MAP_SLATEPORT_CITY_HARBOR": 6,
+        "MAP_SLATEPORT_CITY_HOUSE": 2,
+        "MAP_SLATEPORT_CITY_MART": 3,
+        "MAP_SLATEPORT_CITY_NAME_RATERS_HOUSE": 1,
+        "MAP_SLATEPORT_CITY_OCEANIC_MUSEUM_1F": 14,
+        "MAP_SLATEPORT_CITY_OCEANIC_MUSEUM_2F": 7,
+        "MAP_SLATEPORT_CITY_POKEMON_CENTER_1F": 3,
+        "MAP_SLATEPORT_CITY_POKEMON_CENTER_2F": 4,
+        "MAP_SLATEPORT_CITY_POKEMON_FAN_CLUB": 6,
+        "MAP_SLATEPORT_CITY_STERNS_SHIPYARD_1F": 4,
+        "MAP_SLATEPORT_CITY_STERNS_SHIPYARD_2F": 3
+      }
+    },
+    "Mauville City": {
+      "region": "Hoenn",
+      "basis": "Legends snapshot",
+      "buildingCount": 7,
+      "maps": [
+        "MAP_MAUVILLE_CITY",
+        "MAP_MAUVILLE_CITY_BIKE_SHOP",
+        "MAP_MAUVILLE_CITY_GAME_CORNER",
+        "MAP_MAUVILLE_CITY_GYM",
+        "MAP_MAUVILLE_CITY_HOUSE1",
+        "MAP_MAUVILLE_CITY_HOUSE2",
+        "MAP_MAUVILLE_CITY_MART",
+        "MAP_MAUVILLE_CITY_POKEMON_CENTER_1F",
+        "MAP_MAUVILLE_CITY_POKEMON_CENTER_2F"
+      ],
+      "npcPlacements": {
+        "MAP_MAUVILLE_CITY": 10,
+        "MAP_MAUVILLE_CITY_BIKE_SHOP": 2,
+        "MAP_MAUVILLE_CITY_GAME_CORNER": 12,
+        "MAP_MAUVILLE_CITY_GYM": 7,
+        "MAP_MAUVILLE_CITY_HOUSE1": 1,
+        "MAP_MAUVILLE_CITY_HOUSE2": 1,
+        "MAP_MAUVILLE_CITY_MART": 3,
+        "MAP_MAUVILLE_CITY_POKEMON_CENTER_1F": 5,
+        "MAP_MAUVILLE_CITY_POKEMON_CENTER_2F": 5
+      }
+    },
+    "Rustboro City": {
+      "region": "Hoenn",
+      "basis": "Legends snapshot",
+      "buildingCount": 11,
+      "maps": [
+        "MAP_RUSTBORO_CITY",
+        "MAP_RUSTBORO_CITY_CUTTERS_HOUSE",
+        "MAP_RUSTBORO_CITY_DEVON_CORP_1F",
+        "MAP_RUSTBORO_CITY_DEVON_CORP_2F",
+        "MAP_RUSTBORO_CITY_DEVON_CORP_3F",
+        "MAP_RUSTBORO_CITY_FLAT1_1F",
+        "MAP_RUSTBORO_CITY_FLAT1_2F",
+        "MAP_RUSTBORO_CITY_FLAT2_1F",
+        "MAP_RUSTBORO_CITY_FLAT2_2F",
+        "MAP_RUSTBORO_CITY_FLAT2_3F",
+        "MAP_RUSTBORO_CITY_GYM",
+        "MAP_RUSTBORO_CITY_HOUSE1",
+        "MAP_RUSTBORO_CITY_HOUSE2",
+        "MAP_RUSTBORO_CITY_HOUSE3",
+        "MAP_RUSTBORO_CITY_MART",
+        "MAP_RUSTBORO_CITY_POKEMON_CENTER_1F",
+        "MAP_RUSTBORO_CITY_POKEMON_CENTER_2F",
+        "MAP_RUSTBORO_CITY_POKEMON_SCHOOL"
+      ],
+      "npcPlacements": {
+        "MAP_RUSTBORO_CITY": 15,
+        "MAP_RUSTBORO_CITY_CUTTERS_HOUSE": 2,
+        "MAP_RUSTBORO_CITY_DEVON_CORP_1F": 3,
+        "MAP_RUSTBORO_CITY_DEVON_CORP_2F": 6,
+        "MAP_RUSTBORO_CITY_DEVON_CORP_3F": 3,
+        "MAP_RUSTBORO_CITY_FLAT1_1F": 2,
+        "MAP_RUSTBORO_CITY_FLAT1_2F": 3,
+        "MAP_RUSTBORO_CITY_FLAT2_1F": 1,
+        "MAP_RUSTBORO_CITY_FLAT2_2F": 2,
+        "MAP_RUSTBORO_CITY_FLAT2_3F": 2,
+        "MAP_RUSTBORO_CITY_GYM": 5,
+        "MAP_RUSTBORO_CITY_HOUSE1": 2,
+        "MAP_RUSTBORO_CITY_HOUSE2": 2,
+        "MAP_RUSTBORO_CITY_HOUSE3": 2,
+        "MAP_RUSTBORO_CITY_MART": 4,
+        "MAP_RUSTBORO_CITY_POKEMON_CENTER_1F": 4,
+        "MAP_RUSTBORO_CITY_POKEMON_CENTER_2F": 4,
+        "MAP_RUSTBORO_CITY_POKEMON_SCHOOL": 7
+      }
+    },
+    "Fortree City": {
+      "region": "Hoenn",
+      "basis": "Legends snapshot",
+      "buildingCount": 9,
+      "maps": [
+        "MAP_FORTREE_CITY",
+        "MAP_FORTREE_CITY_DECORATION_SHOP",
+        "MAP_FORTREE_CITY_GYM",
+        "MAP_FORTREE_CITY_HOUSE1",
+        "MAP_FORTREE_CITY_HOUSE2",
+        "MAP_FORTREE_CITY_HOUSE3",
+        "MAP_FORTREE_CITY_HOUSE4",
+        "MAP_FORTREE_CITY_HOUSE5",
+        "MAP_FORTREE_CITY_MART",
+        "MAP_FORTREE_CITY_POKEMON_CENTER_1F",
+        "MAP_FORTREE_CITY_POKEMON_CENTER_2F"
+      ],
+      "npcPlacements": {
+        "MAP_FORTREE_CITY": 6,
+        "MAP_FORTREE_CITY_DECORATION_SHOP": 4,
+        "MAP_FORTREE_CITY_GYM": 8,
+        "MAP_FORTREE_CITY_HOUSE1": 2,
+        "MAP_FORTREE_CITY_HOUSE2": 2,
+        "MAP_FORTREE_CITY_HOUSE3": 2,
+        "MAP_FORTREE_CITY_HOUSE4": 2,
+        "MAP_FORTREE_CITY_HOUSE5": 2,
+        "MAP_FORTREE_CITY_MART": 4,
+        "MAP_FORTREE_CITY_POKEMON_CENTER_1F": 4,
+        "MAP_FORTREE_CITY_POKEMON_CENTER_2F": 4
+      }
+    },
+    "Lilycove City": {
+      "region": "Hoenn",
+      "basis": "Legends snapshot",
+      "buildingCount": 12,
+      "maps": [
+        "MAP_LILYCOVE_CITY",
+        "MAP_LILYCOVE_CITY_CONTEST_HALL",
+        "MAP_LILYCOVE_CITY_CONTEST_LOBBY",
+        "MAP_LILYCOVE_CITY_COVE_LILY_MOTEL_1F",
+        "MAP_LILYCOVE_CITY_COVE_LILY_MOTEL_2F",
+        "MAP_LILYCOVE_CITY_DEPARTMENT_STORE_1F",
+        "MAP_LILYCOVE_CITY_DEPARTMENT_STORE_2F",
+        "MAP_LILYCOVE_CITY_DEPARTMENT_STORE_3F",
+        "MAP_LILYCOVE_CITY_DEPARTMENT_STORE_4F",
+        "MAP_LILYCOVE_CITY_DEPARTMENT_STORE_5F",
+        "MAP_LILYCOVE_CITY_DEPARTMENT_STORE_ELEVATOR",
+        "MAP_LILYCOVE_CITY_DEPARTMENT_STORE_ROOFTOP",
+        "MAP_LILYCOVE_CITY_HARBOR",
+        "MAP_LILYCOVE_CITY_HOUSE1",
+        "MAP_LILYCOVE_CITY_HOUSE2",
+        "MAP_LILYCOVE_CITY_HOUSE3",
+        "MAP_LILYCOVE_CITY_HOUSE4",
+        "MAP_LILYCOVE_CITY_LILYCOVE_MUSEUM_1F",
+        "MAP_LILYCOVE_CITY_LILYCOVE_MUSEUM_2F",
+        "MAP_LILYCOVE_CITY_MOVE_DELETERS_HOUSE",
+        "MAP_LILYCOVE_CITY_POKEMON_CENTER_1F",
+        "MAP_LILYCOVE_CITY_POKEMON_CENTER_2F",
+        "MAP_LILYCOVE_CITY_POKEMON_TRAINER_FAN_CLUB"
+      ],
+      "npcPlacements": {
+        "MAP_LILYCOVE_CITY": 21,
+        "MAP_LILYCOVE_CITY_CONTEST_HALL": 32,
+        "MAP_LILYCOVE_CITY_CONTEST_LOBBY": 25,
+        "MAP_LILYCOVE_CITY_COVE_LILY_MOTEL_1F": 1,
+        "MAP_LILYCOVE_CITY_COVE_LILY_MOTEL_2F": 7,
+        "MAP_LILYCOVE_CITY_DEPARTMENT_STORE_1F": 5,
+        "MAP_LILYCOVE_CITY_DEPARTMENT_STORE_2F": 5,
+        "MAP_LILYCOVE_CITY_DEPARTMENT_STORE_3F": 5,
+        "MAP_LILYCOVE_CITY_DEPARTMENT_STORE_4F": 5,
+        "MAP_LILYCOVE_CITY_DEPARTMENT_STORE_5F": 7,
+        "MAP_LILYCOVE_CITY_DEPARTMENT_STORE_ELEVATOR": 1,
+        "MAP_LILYCOVE_CITY_DEPARTMENT_STORE_ROOFTOP": 4,
+        "MAP_LILYCOVE_CITY_HARBOR": 5,
+        "MAP_LILYCOVE_CITY_HOUSE1": 1,
+        "MAP_LILYCOVE_CITY_HOUSE2": 1,
+        "MAP_LILYCOVE_CITY_HOUSE3": 6,
+        "MAP_LILYCOVE_CITY_HOUSE4": 2,
+        "MAP_LILYCOVE_CITY_LILYCOVE_MUSEUM_1F": 10,
+        "MAP_LILYCOVE_CITY_LILYCOVE_MUSEUM_2F": 4,
+        "MAP_LILYCOVE_CITY_MOVE_DELETERS_HOUSE": 1,
+        "MAP_LILYCOVE_CITY_POKEMON_CENTER_1F": 4,
+        "MAP_LILYCOVE_CITY_POKEMON_CENTER_2F": 4,
+        "MAP_LILYCOVE_CITY_POKEMON_TRAINER_FAN_CLUB": 9
+      }
+    },
+    "Mossdeep City": {
+      "region": "Hoenn",
+      "basis": "Legends snapshot",
+      "buildingCount": 10,
+      "maps": [
+        "MAP_MOSSDEEP_CITY",
+        "MAP_MOSSDEEP_CITY_GAME_CORNER_1F",
+        "MAP_MOSSDEEP_CITY_GAME_CORNER_B1F",
+        "MAP_MOSSDEEP_CITY_GYM",
+        "MAP_MOSSDEEP_CITY_HOUSE1",
+        "MAP_MOSSDEEP_CITY_HOUSE2",
+        "MAP_MOSSDEEP_CITY_HOUSE3",
+        "MAP_MOSSDEEP_CITY_HOUSE4",
+        "MAP_MOSSDEEP_CITY_MART",
+        "MAP_MOSSDEEP_CITY_POKEMON_CENTER_1F",
+        "MAP_MOSSDEEP_CITY_POKEMON_CENTER_2F",
+        "MAP_MOSSDEEP_CITY_SPACE_CENTER_1F",
+        "MAP_MOSSDEEP_CITY_SPACE_CENTER_2F",
+        "MAP_MOSSDEEP_CITY_STEVENS_HOUSE"
+      ],
+      "npcPlacements": {
+        "MAP_MOSSDEEP_CITY": 16,
+        "MAP_MOSSDEEP_CITY_GAME_CORNER_1F": 2,
+        "MAP_MOSSDEEP_CITY_GAME_CORNER_B1F": 0,
+        "MAP_MOSSDEEP_CITY_GYM": 15,
+        "MAP_MOSSDEEP_CITY_HOUSE1": 2,
+        "MAP_MOSSDEEP_CITY_HOUSE2": 2,
+        "MAP_MOSSDEEP_CITY_HOUSE3": 1,
+        "MAP_MOSSDEEP_CITY_HOUSE4": 2,
+        "MAP_MOSSDEEP_CITY_MART": 4,
+        "MAP_MOSSDEEP_CITY_POKEMON_CENTER_1F": 3,
+        "MAP_MOSSDEEP_CITY_POKEMON_CENTER_2F": 5,
+        "MAP_MOSSDEEP_CITY_SPACE_CENTER_1F": 11,
+        "MAP_MOSSDEEP_CITY_SPACE_CENTER_2F": 9,
+        "MAP_MOSSDEEP_CITY_STEVENS_HOUSE": 2
+      }
+    },
+    "Sootopolis City": {
+      "region": "Hoenn",
+      "basis": "Legends snapshot",
+      "buildingCount": 12,
+      "maps": [
+        "MAP_SOOTOPOLIS_CITY",
+        "MAP_SOOTOPOLIS_CITY_GYM_1F",
+        "MAP_SOOTOPOLIS_CITY_GYM_B1F",
+        "MAP_SOOTOPOLIS_CITY_HOUSE1",
+        "MAP_SOOTOPOLIS_CITY_HOUSE2",
+        "MAP_SOOTOPOLIS_CITY_HOUSE3",
+        "MAP_SOOTOPOLIS_CITY_HOUSE4",
+        "MAP_SOOTOPOLIS_CITY_HOUSE5",
+        "MAP_SOOTOPOLIS_CITY_HOUSE6",
+        "MAP_SOOTOPOLIS_CITY_HOUSE7",
+        "MAP_SOOTOPOLIS_CITY_LOTAD_AND_SEEDOT_HOUSE",
+        "MAP_SOOTOPOLIS_CITY_MART",
+        "MAP_SOOTOPOLIS_CITY_MYSTERY_EVENTS_HOUSE_1F",
+        "MAP_SOOTOPOLIS_CITY_MYSTERY_EVENTS_HOUSE_B1F",
+        "MAP_SOOTOPOLIS_CITY_POKEMON_CENTER_1F",
+        "MAP_SOOTOPOLIS_CITY_POKEMON_CENTER_2F"
+      ],
+      "npcPlacements": {
+        "MAP_SOOTOPOLIS_CITY": 15,
+        "MAP_SOOTOPOLIS_CITY_GYM_1F": 2,
+        "MAP_SOOTOPOLIS_CITY_GYM_B1F": 10,
+        "MAP_SOOTOPOLIS_CITY_HOUSE1": 1,
+        "MAP_SOOTOPOLIS_CITY_HOUSE2": 1,
+        "MAP_SOOTOPOLIS_CITY_HOUSE3": 2,
+        "MAP_SOOTOPOLIS_CITY_HOUSE4": 2,
+        "MAP_SOOTOPOLIS_CITY_HOUSE5": 2,
+        "MAP_SOOTOPOLIS_CITY_HOUSE6": 1,
+        "MAP_SOOTOPOLIS_CITY_HOUSE7": 2,
+        "MAP_SOOTOPOLIS_CITY_LOTAD_AND_SEEDOT_HOUSE": 2,
+        "MAP_SOOTOPOLIS_CITY_MART": 3,
+        "MAP_SOOTOPOLIS_CITY_MYSTERY_EVENTS_HOUSE_1F": 1,
+        "MAP_SOOTOPOLIS_CITY_MYSTERY_EVENTS_HOUSE_B1F": 0,
+        "MAP_SOOTOPOLIS_CITY_POKEMON_CENTER_1F": 4,
+        "MAP_SOOTOPOLIS_CITY_POKEMON_CENTER_2F": 4
+      }
+    },
+    "Ever Grande City": {
+      "region": "Hoenn",
+      "basis": "Legends snapshot",
+      "buildingCount": 2,
+      "maps": [
+        "MAP_EVER_GRANDE_CITY",
+        "MAP_EVER_GRANDE_CITY_CHAMPIONS_ROOM",
+        "MAP_EVER_GRANDE_CITY_DRAKES_ROOM",
+        "MAP_EVER_GRANDE_CITY_GLACIAS_ROOM",
+        "MAP_EVER_GRANDE_CITY_HALL1",
+        "MAP_EVER_GRANDE_CITY_HALL2",
+        "MAP_EVER_GRANDE_CITY_HALL3",
+        "MAP_EVER_GRANDE_CITY_HALL4",
+        "MAP_EVER_GRANDE_CITY_HALL5",
+        "MAP_EVER_GRANDE_CITY_HALL_OF_FAME",
+        "MAP_EVER_GRANDE_CITY_PHOEBES_ROOM",
+        "MAP_EVER_GRANDE_CITY_POKEMON_CENTER_1F",
+        "MAP_EVER_GRANDE_CITY_POKEMON_CENTER_2F",
+        "MAP_EVER_GRANDE_CITY_POKEMON_LEAGUE_1F",
+        "MAP_EVER_GRANDE_CITY_POKEMON_LEAGUE_2F",
+        "MAP_EVER_GRANDE_CITY_SIDNEYS_ROOM"
+      ],
+      "npcPlacements": {
+        "MAP_EVER_GRANDE_CITY": 0,
+        "MAP_EVER_GRANDE_CITY_CHAMPIONS_ROOM": 3,
+        "MAP_EVER_GRANDE_CITY_DRAKES_ROOM": 1,
+        "MAP_EVER_GRANDE_CITY_GLACIAS_ROOM": 1,
+        "MAP_EVER_GRANDE_CITY_HALL1": 0,
+        "MAP_EVER_GRANDE_CITY_HALL2": 0,
+        "MAP_EVER_GRANDE_CITY_HALL3": 0,
+        "MAP_EVER_GRANDE_CITY_HALL4": 0,
+        "MAP_EVER_GRANDE_CITY_HALL5": 0,
+        "MAP_EVER_GRANDE_CITY_HALL_OF_FAME": 1,
+        "MAP_EVER_GRANDE_CITY_PHOEBES_ROOM": 1,
+        "MAP_EVER_GRANDE_CITY_POKEMON_CENTER_1F": 4,
+        "MAP_EVER_GRANDE_CITY_POKEMON_CENTER_2F": 4,
+        "MAP_EVER_GRANDE_CITY_POKEMON_LEAGUE_1F": 4,
+        "MAP_EVER_GRANDE_CITY_POKEMON_LEAGUE_2F": 4,
+        "MAP_EVER_GRANDE_CITY_SIDNEYS_ROOM": 1
+      }
+    },
+    "Pallet Town": {
+      "region": "Kanto",
+      "basis": "FireRed reference",
+      "buildingCount": 3,
+      "maps": [
+        "MAP_PALLET_TOWN",
+        "MAP_PALLET_TOWN_PLAYERS_HOUSE_1F",
+        "MAP_PALLET_TOWN_PLAYERS_HOUSE_2F",
+        "MAP_PALLET_TOWN_PROFESSOR_OAKS_LAB",
+        "MAP_PALLET_TOWN_RIVALS_HOUSE"
+      ],
+      "npcPlacements": {
+        "MAP_PALLET_TOWN": 3,
+        "MAP_PALLET_TOWN_PLAYERS_HOUSE_1F": 1,
+        "MAP_PALLET_TOWN_PLAYERS_HOUSE_2F": 0,
+        "MAP_PALLET_TOWN_PROFESSOR_OAKS_LAB": 5,
+        "MAP_PALLET_TOWN_RIVALS_HOUSE": 1
+      }
+    },
+    "Viridian City": {
+      "region": "Kanto",
+      "basis": "FireRed reference",
+      "buildingCount": 5,
+      "maps": [
+        "MAP_VIRIDIAN_CITY",
+        "MAP_VIRIDIAN_CITY_GYM",
+        "MAP_VIRIDIAN_CITY_HOUSE",
+        "MAP_VIRIDIAN_CITY_MART",
+        "MAP_VIRIDIAN_CITY_POKEMON_CENTER_1F",
+        "MAP_VIRIDIAN_CITY_POKEMON_CENTER_2F",
+        "MAP_VIRIDIAN_CITY_SCHOOL"
+      ],
+      "npcPlacements": {
+        "MAP_VIRIDIAN_CITY": 6,
+        "MAP_VIRIDIAN_CITY_GYM": 10,
+        "MAP_VIRIDIAN_CITY_HOUSE": 2,
+        "MAP_VIRIDIAN_CITY_MART": 3,
+        "MAP_VIRIDIAN_CITY_POKEMON_CENTER_1F": 4,
+        "MAP_VIRIDIAN_CITY_POKEMON_CENTER_2F": 4,
+        "MAP_VIRIDIAN_CITY_SCHOOL": 2
+      }
+    },
+    "Pewter City": {
+      "region": "Kanto",
+      "basis": "FireRed reference",
+      "buildingCount": 6,
+      "maps": [
+        "MAP_PEWTER_CITY",
+        "MAP_PEWTER_CITY_GYM",
+        "MAP_PEWTER_CITY_HOUSE1",
+        "MAP_PEWTER_CITY_HOUSE2",
+        "MAP_PEWTER_CITY_MART",
+        "MAP_PEWTER_CITY_MUSEUM_1F",
+        "MAP_PEWTER_CITY_MUSEUM_2F",
+        "MAP_PEWTER_CITY_POKEMON_CENTER_1F",
+        "MAP_PEWTER_CITY_POKEMON_CENTER_2F"
+      ],
+      "npcPlacements": {
+        "MAP_PEWTER_CITY": 6,
+        "MAP_PEWTER_CITY_GYM": 3,
+        "MAP_PEWTER_CITY_HOUSE1": 2,
+        "MAP_PEWTER_CITY_HOUSE2": 2,
+        "MAP_PEWTER_CITY_MART": 3,
+        "MAP_PEWTER_CITY_MUSEUM_1F": 5,
+        "MAP_PEWTER_CITY_MUSEUM_2F": 5,
+        "MAP_PEWTER_CITY_POKEMON_CENTER_1F": 6,
+        "MAP_PEWTER_CITY_POKEMON_CENTER_2F": 4
+      }
+    },
+    "Cerulean City": {
+      "region": "Kanto",
+      "basis": "FireRed reference",
+      "buildingCount": 9,
+      "maps": [
+        "MAP_CERULEAN_CITY",
+        "MAP_CERULEAN_CITY_BIKE_SHOP",
+        "MAP_CERULEAN_CITY_GYM",
+        "MAP_CERULEAN_CITY_HOUSE1",
+        "MAP_CERULEAN_CITY_HOUSE2",
+        "MAP_CERULEAN_CITY_HOUSE3",
+        "MAP_CERULEAN_CITY_HOUSE4",
+        "MAP_CERULEAN_CITY_HOUSE5",
+        "MAP_CERULEAN_CITY_MART",
+        "MAP_CERULEAN_CITY_POKEMON_CENTER_1F",
+        "MAP_CERULEAN_CITY_POKEMON_CENTER_2F"
+      ],
+      "npcPlacements": {
+        "MAP_CERULEAN_CITY": 9,
+        "MAP_CERULEAN_CITY_BIKE_SHOP": 3,
+        "MAP_CERULEAN_CITY_GYM": 4,
+        "MAP_CERULEAN_CITY_HOUSE1": 1,
+        "MAP_CERULEAN_CITY_HOUSE2": 2,
+        "MAP_CERULEAN_CITY_HOUSE3": 2,
+        "MAP_CERULEAN_CITY_HOUSE4": 1,
+        "MAP_CERULEAN_CITY_HOUSE5": 1,
+        "MAP_CERULEAN_CITY_MART": 3,
+        "MAP_CERULEAN_CITY_POKEMON_CENTER_1F": 5,
+        "MAP_CERULEAN_CITY_POKEMON_CENTER_2F": 4
+      }
+    },
+    "Vermilion City": {
+      "region": "Kanto",
+      "basis": "Legends snapshot",
+      "buildingCount": 8,
+      "maps": [
+        "MAP_LEGENDS_KANTO_VERMILION_CITY",
+        "MAP_LEGENDS_KANTO_FAN_CLUB",
+        "MAP_LEGENDS_KANTO_HARBOR",
+        "MAP_LEGENDS_KANTO_HOUSE1",
+        "MAP_LEGENDS_KANTO_HOUSE2",
+        "MAP_LEGENDS_KANTO_HOUSE3",
+        "MAP_LEGENDS_KANTO_MART",
+        "MAP_LEGENDS_KANTO_POKEMON_CENTER_1F",
+        "MAP_LEGENDS_KANTO_POKEMON_CENTER_2F",
+        "MAP_LEGENDS_KANTO_VERMILION_CITY_GYM"
+      ],
+      "npcPlacements": {
+        "MAP_LEGENDS_KANTO_VERMILION_CITY": 6,
+        "MAP_LEGENDS_KANTO_FAN_CLUB": 3,
+        "MAP_LEGENDS_KANTO_HARBOR": 3,
+        "MAP_LEGENDS_KANTO_HOUSE1": 1,
+        "MAP_LEGENDS_KANTO_HOUSE2": 1,
+        "MAP_LEGENDS_KANTO_HOUSE3": 1,
+        "MAP_LEGENDS_KANTO_MART": 3,
+        "MAP_LEGENDS_KANTO_POKEMON_CENTER_1F": 3,
+        "MAP_LEGENDS_KANTO_POKEMON_CENTER_2F": 4,
+        "MAP_LEGENDS_KANTO_VERMILION_CITY_GYM": 2
+      }
+    },
+    "Lavender Town": {
+      "region": "Kanto",
+      "basis": "Legends snapshot",
+      "buildingCount": 5,
+      "maps": [
+        "MAP_LEGENDS_KANTO_LAVENDER_TOWN",
+        "MAP_LEGENDS_KANTO_LAVENDER_TOWN_HOUSE1",
+        "MAP_LEGENDS_KANTO_LAVENDER_TOWN_HOUSE2",
+        "MAP_LEGENDS_KANTO_LAVENDER_TOWN_MART",
+        "MAP_LEGENDS_KANTO_LAVENDER_TOWN_POKEMON_CENTER_1F",
+        "MAP_LEGENDS_KANTO_LAVENDER_TOWN_POKEMON_CENTER_2F",
+        "MAP_LEGENDS_KANTO_LAVENDER_TOWN_VOLUNTEER_POKEMON_HOUSE"
+      ],
+      "npcPlacements": {
+        "MAP_LEGENDS_KANTO_LAVENDER_TOWN": 0,
+        "MAP_LEGENDS_KANTO_LAVENDER_TOWN_HOUSE1": 0,
+        "MAP_LEGENDS_KANTO_LAVENDER_TOWN_HOUSE2": 0,
+        "MAP_LEGENDS_KANTO_LAVENDER_TOWN_MART": 0,
+        "MAP_LEGENDS_KANTO_LAVENDER_TOWN_POKEMON_CENTER_1F": 1,
+        "MAP_LEGENDS_KANTO_LAVENDER_TOWN_POKEMON_CENTER_2F": 0,
+        "MAP_LEGENDS_KANTO_LAVENDER_TOWN_VOLUNTEER_POKEMON_HOUSE": 0
+      }
+    },
+    "Celadon City": {
+      "region": "Kanto",
+      "basis": "Legends snapshot",
+      "buildingCount": 1,
+      "maps": [
+        "MAP_LEGENDS_KANTO_CELADON_CITY",
+        "MAP_LEGENDS_KANTO_CELADON_CITY_POKEMON_CENTER_1F"
+      ],
+      "npcPlacements": {
+        "MAP_LEGENDS_KANTO_CELADON_CITY": 0,
+        "MAP_LEGENDS_KANTO_CELADON_CITY_POKEMON_CENTER_1F": 1
+      }
+    },
+    "Fuchsia City": {
+      "region": "Kanto",
+      "basis": "Legends snapshot",
+      "buildingCount": 8,
+      "maps": [
+        "MAP_LEGENDS_KANTO_FUCHSIA_CITY",
+        "MAP_LEGENDS_KANTO_FUCHSIA_CITY_GYM",
+        "MAP_LEGENDS_KANTO_FUCHSIA_CITY_HOUSE1",
+        "MAP_LEGENDS_KANTO_FUCHSIA_CITY_HOUSE2",
+        "MAP_LEGENDS_KANTO_FUCHSIA_CITY_HOUSE3",
+        "MAP_LEGENDS_KANTO_FUCHSIA_CITY_MART",
+        "MAP_LEGENDS_KANTO_FUCHSIA_CITY_POKEMON_CENTER_1F",
+        "MAP_LEGENDS_KANTO_FUCHSIA_CITY_POKEMON_CENTER_2F",
+        "MAP_LEGENDS_KANTO_FUCHSIA_CITY_SAFARI_ZONE_OFFICE",
+        "MAP_LEGENDS_KANTO_FUCHSIA_CITY_WARDENS_HOUSE"
+      ],
+      "npcPlacements": {
+        "MAP_LEGENDS_KANTO_FUCHSIA_CITY": 0,
+        "MAP_LEGENDS_KANTO_FUCHSIA_CITY_GYM": 2,
+        "MAP_LEGENDS_KANTO_FUCHSIA_CITY_HOUSE1": 0,
+        "MAP_LEGENDS_KANTO_FUCHSIA_CITY_HOUSE2": 0,
+        "MAP_LEGENDS_KANTO_FUCHSIA_CITY_HOUSE3": 0,
+        "MAP_LEGENDS_KANTO_FUCHSIA_CITY_MART": 0,
+        "MAP_LEGENDS_KANTO_FUCHSIA_CITY_POKEMON_CENTER_1F": 1,
+        "MAP_LEGENDS_KANTO_FUCHSIA_CITY_POKEMON_CENTER_2F": 0,
+        "MAP_LEGENDS_KANTO_FUCHSIA_CITY_SAFARI_ZONE_OFFICE": 0,
+        "MAP_LEGENDS_KANTO_FUCHSIA_CITY_WARDENS_HOUSE": 0
+      }
+    },
+    "Cinnabar Island": {
+      "region": "Kanto",
+      "basis": "FireRed reference",
+      "buildingCount": 4,
+      "maps": [
+        "MAP_CINNABAR_ISLAND",
+        "MAP_CINNABAR_ISLAND_GYM",
+        "MAP_CINNABAR_ISLAND_MART",
+        "MAP_CINNABAR_ISLAND_POKEMON_CENTER_1F",
+        "MAP_CINNABAR_ISLAND_POKEMON_CENTER_2F",
+        "MAP_CINNABAR_ISLAND_POKEMON_LAB_ENTRANCE",
+        "MAP_CINNABAR_ISLAND_POKEMON_LAB_EXPERIMENT_ROOM",
+        "MAP_CINNABAR_ISLAND_POKEMON_LAB_LOUNGE",
+        "MAP_CINNABAR_ISLAND_POKEMON_LAB_RESEARCH_ROOM"
+      ],
+      "npcPlacements": {
+        "MAP_CINNABAR_ISLAND": 3,
+        "MAP_CINNABAR_ISLAND_GYM": 9,
+        "MAP_CINNABAR_ISLAND_MART": 3,
+        "MAP_CINNABAR_ISLAND_POKEMON_CENTER_1F": 5,
+        "MAP_CINNABAR_ISLAND_POKEMON_CENTER_2F": 4,
+        "MAP_CINNABAR_ISLAND_POKEMON_LAB_ENTRANCE": 1,
+        "MAP_CINNABAR_ISLAND_POKEMON_LAB_EXPERIMENT_ROOM": 2,
+        "MAP_CINNABAR_ISLAND_POKEMON_LAB_LOUNGE": 3,
+        "MAP_CINNABAR_ISLAND_POKEMON_LAB_RESEARCH_ROOM": 2
+      }
+    },
+    "Saffron City": {
+      "region": "Kanto",
+      "basis": "Legends snapshot",
+      "buildingCount": 1,
+      "maps": [
+        "MAP_LEGENDS_KANTO_SAFFRON_CITY",
+        "MAP_LEGENDS_KANTO_SAFFRON_CITY_POKEMON_CENTER_1F"
+      ],
+      "npcPlacements": {
+        "MAP_LEGENDS_KANTO_SAFFRON_CITY": 0,
+        "MAP_LEGENDS_KANTO_SAFFRON_CITY_POKEMON_CENTER_1F": 1
+      }
+    },
+    "Indigo Plateau": {
+      "region": "Kanto",
+      "basis": "FireRed reference",
+      "buildingCount": 1,
+      "maps": [
+        "MAP_INDIGO_PLATEAU_EXTERIOR",
+        "MAP_INDIGO_PLATEAU_POKEMON_CENTER_1F",
+        "MAP_INDIGO_PLATEAU_POKEMON_CENTER_2F"
+      ],
+      "npcPlacements": {
+        "MAP_INDIGO_PLATEAU_EXTERIOR": 2,
+        "MAP_INDIGO_PLATEAU_POKEMON_CENTER_1F": 6,
+        "MAP_INDIGO_PLATEAU_POKEMON_CENTER_2F": 4
+      }
+    }
+  }
+}

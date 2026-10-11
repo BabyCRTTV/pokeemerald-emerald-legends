@@ -29,7 +29,7 @@ const settle=()=>new Promise(r=>setImmediate(r));
  w.click('category','Customization');assert.match(w.ctx.location.search,/category=Customization/);assert.match(w.get('content').innerHTML,/Trainer Card customization/);
  w.click('page','wardrobe');assert.match(w.ctx.location.search,/page=wardrobe/);
  w.back();assert.match(w.get('content').innerHTML,/<h1>Customization<\/h1>/);
- w.back();assert.match(w.get('content').innerHTML,/Your Legends guide/);
+ w.back();assert.match(w.get('content').innerHTML,/alt="Pokémon Emerald: Legends"/);
  w.get('search').value='boots';w.get('search').listeners.input();assert.match(w.get('cards').innerHTML,/wardrobe/);
  w.click('category','all');assert.equal((w.get('content').innerHTML.match(/data-page=/g)||[]).length,articles.articles.length);
  const chapters=articles.articles.filter(p=>Number.isInteger(p.chapter)).sort((a,b)=>a.chapter-b.chapter);
@@ -40,6 +40,8 @@ const settle=()=>new Promise(r=>setImmediate(r));
  const deep=boot('wiki.js',articles,'https://example.test/wiki/?category=Kanto%20postgame');await settle();assert.match(deep.get('content').innerHTML,/<h1>Kanto postgame/);
  const data=JSON.parse(fs.readFileSync(base+'dex-data.json'));
  const maps=JSON.parse(fs.readFileSync(base+'walkthrough-maps.json'));assert.equal(maps.sourceCommit,data.sourceCommit);
+ const stats=JSON.parse(fs.readFileSync(base+'town-stat-sources.json'));assert.equal(stats.sourceCommit,maps.townStatsSourceCommit);
+ for(const region of Object.values(maps.regions))for(const town of region.towns){const source=stats.towns[town.name];assert.equal(town.population,Object.values(source.npcPlacements).reduce((a,b)=>a+b,0));assert.equal(town.buildings,source.buildingCount);assert(town.population>=0&&town.buildings>=0);}
  for(const [page,blocks] of Object.entries(maps.chapters)){
   const content=articles.articles.find(p=>p.id===page).content;
   const headings=new Set([...content.matchAll(/^#{2,3} (.+)$/gm)].map(m=>'section-'+m[1].toLowerCase().replace(/[^a-z0-9 ]/g,'').trim().replace(/\s+/g,'-')));

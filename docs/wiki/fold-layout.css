@@ -203,3 +203,10 @@ html.reading-walkthrough body{padding-bottom:24px}
 
 /* Map guidance stays compact, with route help immediately below the map. */
 .article .map-help-tip{display:flex;align-items:center;gap:6px;font-size:11px;line-height:1.4;color:#826597;margin:8px 0}.map-help-tip>span{flex:none}.route-card{scroll-margin-top:95px}
+
+.map-town-stats{display:block;margin-top:4px;color:#654790;font-size:12px;line-height:1.5}.map-town-basis{display:block;margin-top:3px;color:#867298;font-size:10px;line-height:1.4}.map-route-tip [hidden]{display:none!important}
+
+/* Center the title-screen artwork without enlarging the welcome panel. */
+.welcome .wiki-game-logo{margin:0 auto 24px;line-height:0;width:min(100%,340px)}
+.wiki-game-logo img{display:block;width:100%;height:auto;image-rendering:pixelated}
+@media(max-width:750px){.welcome .wiki-game-logo{width:min(100%,290px);margin-bottom:22px}}
