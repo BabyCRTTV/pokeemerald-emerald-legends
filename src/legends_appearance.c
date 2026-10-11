@@ -188,7 +188,7 @@ void LegendsUpdateAppearancePalettes(void)
         {
             LegendsPrepareFootwearPalette(gLegendsOverworldPalettes[gender], gender, 0);
             LegendsPrepareFootwearPalette(gLegendsTrainerPalettes[gender], gender, 1);
-            LegendsPrepareFootwearPalette(gLegendsUnderwaterPalettes[gender], gender, 2);
+            // The diving suit has no visible footwear: keep its native colors.
         }
     }
 }
