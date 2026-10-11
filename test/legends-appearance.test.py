@@ -70,9 +70,11 @@ for(int s=0;s<8;s++)for(int c=0;c<8;c++){
  assert(shoes==s&&card==c);LegendsBeginAppearanceSelection();LegendsApplyAppearanceToNewGame();assert(!shoes&&!card);
 }
 shoes=card=65535;LegendsClearAppearanceSelection();assert(!LegendsGetShoes()&&!LegendsGetCardColor());shoes=card=0;
-// Equipped footwear must not alter the sealed native diving palette.
-value=1;shoes=7;accessories=costume=0;LegendsClearAppearanceSelection();LegendsUpdateAppearancePalettes();
-for(int g=0;g<2;g++)assert(!memcmp(gLegendsUnderwaterPalettes[g],sBaseUnderwaterPalette,sizeof(sBaseUnderwaterPalette)));
+// Footwear must not change underwater colors for the *same chosen skin tone*.
+value=1;shoes=0;accessories=costume=0;LegendsClearAppearanceSelection();LegendsUpdateAppearancePalettes();
+u16 nativeDiving[2][16];memcpy(nativeDiving,gLegendsUnderwaterPalettes,sizeof(nativeDiving));
+shoes=7;LegendsClearAppearanceSelection();LegendsUpdateAppearancePalettes();
+assert(!memcmp(gLegendsUnderwaterPalettes,nativeDiving,sizeof(nativeDiving)));
 shoes=0;LegendsClearAppearanceSelection();
 
 for(int c=1;c<3;c++){
