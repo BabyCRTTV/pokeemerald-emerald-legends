@@ -69,6 +69,21 @@ assert(TRAINERS_COUNT == 868 && TRAINER_PARTNER(PARTNER_STEVEN)==869);
 assert(LegendsTrainerFlag(TRAINER_PARTNER(PARTNER_STEVEN))==0);
 assert(LegendsTrainerFlag(65535)==0);
 }'''
+  debug=(R/'src/debug.c').read_text()
+  toggle='static void DebugToggleTrainerFlag'+debug.split('static void DebugToggleTrainerFlag',1)[1].split('\n}\n',1)[0]+'\n}\n'
+  stubs="""static int bits[0x900];
+static int HasTrainerBeenFought(u16 id) {return bits[LegendsTrainerFlag(id)];}
+static void SetTrainerFlag(u16 id) {u16 f=LegendsTrainerFlag(id);if(f)bits[f]=1;}
+static void ClearTrainerFlag(u16 id) {u16 f=LegendsTrainerFlag(id);if(f)bits[f]=0;}
+"""
+  program=program.replace('int main(void) {',stubs+toggle+'int main(void) {')
+  program=program.replace('assert(MAX_TRAINERS_COUNT',"""for(int id=0;id<868;id++) {
+ DebugToggleTrainerFlag(id);assert(bits[LegendsTrainerFlag(id)]==1);
+ for(int f=0x860;f<0x900;f++)assert(bits[f]==0);
+ DebugToggleTrainerFlag(id);assert(bits[LegendsTrainerFlag(id)]==0);
+}
+assert(MAX_TRAINERS_COUNT""")
+  self.assertNotRegex(debug,r'TRAINER_FLAGS_START\s*\+')
   with tempfile.TemporaryDirectory() as tmp:
    p=Path(tmp);(p/'t.c').write_text(program);subprocess.run(['gcc','-I'+str(R/'include'),str(p/'t.c'),'-o',str(p/'t')],check=True);subprocess.run([str(p/'t')],check=True)
   # Every native trainer flag access in battle setup must use the resolver.
