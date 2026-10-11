@@ -26,6 +26,13 @@ static void Setup(u8 *p,u8 w,u8 h)
 int main(void)
 {
  int w,h,gender,style,x,y;
+ // Independent rolled-cuff and heel finishing uses only shoe color indices.
+ u8 boots[2048]={0};
+ for(y=47;y<63;y++)for(x=20;x<=27;x++)Put(boots,64,x,y,6);
+ Put(boots,64,23,42,1); // forehead/skin outside the footwear region.
+ LegendsPolishBoots(boots,64,64);
+ assert(Pixel(boots,64,22,47)==15 && Pixel(boots,64,22,48)==6);
+ assert(Pixel(boots,64,22,62)==15 && Pixel(boots,64,23,42)==1);
  for(w=16;w<=64;w*=2) {
   h=w==64?64:32;
   if(w==32)continue; // 32x32 is exercised by the field pose assets.
