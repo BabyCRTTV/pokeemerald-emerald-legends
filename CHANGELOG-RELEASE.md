@@ -2,6 +2,12 @@
 
 This is the player-facing history for the recommended **Release** build. Shared Legends changes are repeated here so this file stands on its own; Release-only behavior is called out separately.
 
+## [0.0.35] - 2026-10-11
+
+- Add five understated native window frames: TYPE 21 Leaf, TYPE 22 Ocean, TYPE 23 Lavender Stitch, TYPE 24 Amber Circuit and TYPE 25 Poké Ball. Select them in General Options → FRAME; the native live preview and Left/Right wrap now cover 25 types.
+- Append indexed nine-tile art and palettes to the existing frame table. Preserve the original 20 frame IDs, white text interiors, native text palette slots, window dimensions and tile allocation. The existing five-bit saved selection holds all 25 types without a save-layout change.
+- Same frames in Release and Debug; no variant-specific differences. Wiki files/workflows and fixed native dialogue/battle graphics are unchanged. Add repeatable pixel-art generation and asset/selection checks for palette, tile and save limits. mGBA 0.10.2 checks all five live Options previews, TYPE 1↔25 wrap, saved TYPE 25 after field reload, and its native Yes/No menu plus dismissal. Controlled map entry was used; RAM usage is unchanged.
+
 ## [0.0.34] - 2026-10-11
 
 - Add **INSTANT** to General Options → Text Speed, alongside Slow, Mid and Fast. Reuse pokeemerald-expansion's existing instant renderer; text appears immediately while page confirmations, scripted pauses and choices retain their native behavior.

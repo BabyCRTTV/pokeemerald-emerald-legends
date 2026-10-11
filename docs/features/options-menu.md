@@ -73,3 +73,21 @@ General → TEXT SPEED cycles SLOW / MID / FAST / INSTANT with Left/Right; B sav
 INSTANT exposes the expansion's existing `OPTIONS_TEXT_SPEED_INSTANT` through the native saved `optionsTextSpeed` field and `RunTextPrinters` implementation. It immediately reveals dialogue, while native page confirmations, scripted pauses and choices still apply. No renderer fork, new save data or save migration is needed. Existing selections and the Mid default remain unchanged. Native title-screen Options also preserve this setting into New Game. Shared by Release and Debug.
 
 Validation: actual-C Options regressions exercise both-direction wrap through all four speeds, selected-label rendering, clearing INSTANT before a shorter value, and invalid-value fallback. mGBA 0.10.2 verifies the native Options screen and saved speed after field reload, plus immediate field dialogue and a page break that waits for A. The private dialogue fixture uses controlled map entry; the renderer itself is unchanged.
+
+## v0.0.35 Window frames
+
+General → FRAME now cycles TYPE 1–25. Types 1–20 retain their native artwork and saved IDs. The five new choices are:
+
+| Type | Design | Detail |
+| --- | --- | --- |
+| 21 | Leaf | Muted green trim and corner leaves |
+| 22 | Ocean | Blue trim with a repeating wave |
+| 23 | Lavender Stitch | Soft purple trim and light stitching |
+| 24 | Amber Circuit | Warm amber traces with small corner nodes |
+| 25 | Poké Ball | Neutral rose trim and small corner Poké Balls |
+
+The native Options live preview and standard windows use these frames. Emerald's fixed field dialogue, signs and battle graphics keep their native behavior. Assets are appended to `sWindowFrames`; each is a 24×24 indexed PNG containing nine eight-pixel tiles (288 bytes in 4bpp), with a 16-color palette. Native transparency, text colors and the white middle tile are preserved. The existing five-bit saved selection fits 25 types, so no save migration or window/VRAM expansion is needed.
+
+Regenerate the pixel art with `python3 scripts/generate_legends_frames.py` (Pillow). `test/legends-window-frames.test.py` checks hardware/color limits, registration, and the actual Options input function across all 25 types in both directions. Shared by Release and Debug.
+
+mGBA 0.10.2 checks all five live Options previews, TYPE 1↔25 wrap, saved TYPE 25 after field reload, and its native Yes/No menu plus dismissal. Controlled map entry was used; RAM usage is unchanged.
