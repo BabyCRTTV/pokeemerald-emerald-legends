@@ -1806,4 +1806,10 @@ EventScript_PalletTown_PlayersHouse_2F_TurnOnPC::
 	.include "data/maps/LegendsKanto_Route8/scripts.inc"
 	.include "data/maps/LegendsKanto_SaffronCity_PokemonCenter_1F/scripts.inc"
 	.include "data/maps/LegendsKanto_Route18_EastEntrance_1F/scripts.inc"
+	.include "data/scripts/legends_kanto_chapter3.inc"
+	.include "data/maps/LegendsKanto_Route10/scripts.inc"
+	.include "data/maps/LegendsKanto_RockTunnel_1F/scripts.inc"
+	.include "data/maps/LegendsKanto_RockTunnel_B1F/scripts.inc"
+	.include "data/maps/LegendsKanto_PowerPlant/scripts.inc"
+	.include "data/maps/LegendsKanto_Route10_PokemonCenter_1F/scripts.inc"
 .endif

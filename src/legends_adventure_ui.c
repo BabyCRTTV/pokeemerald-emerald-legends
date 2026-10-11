@@ -68,6 +68,9 @@ static const u8 *const sNotes[ADV_EVENT_COUNT] =
     [ADV_BLAINE] = COMPOUND_STRING("Completed BLAINE's challenge.\nAnother KANTO record collected."),
     [ADV_VIRIDIAN] = COMPOUND_STRING("Completed the VIRIDIAN challenge.\nAnother KANTO record collected."),
     [ADV_SURVEY_REPORT] = COMPOUND_STRING("Filed the first WING SURVEY report.\nThe birds and MEW remain leads."),
+    [ADV_SURVEY_FIELD_REPORT] = COMPOUND_STRING("Filed the Borrowed Voice report.\nA smaller visitor copied the calls."),
+    [ADV_ZAPDOS_SEEN] = COMPOUND_STRING("Observed ZAPDOS in its roost.\nThe old feeds were made safe."),
+    [ADV_SURVEY_POWER_REPORT] = COMPOUND_STRING("Filed the POWER PLANT survey.\nNext lead: the cold SEAFOAM current."),
 };
 static const u8 *const sFilters[] =
 {

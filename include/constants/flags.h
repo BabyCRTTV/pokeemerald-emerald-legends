@@ -710,11 +710,11 @@
 #define FLAG_UNUSED_0x27C  0x27C // Unused Flag
 #define FLAG_UNUSED_0x27D  0x27D // Unused Flag
 #define FLAG_UNUSED_0x27E  0x27E // Unused Flag
-#define FLAG_UNUSED_0x27F  0x27F // Unused Flag
-#define FLAG_UNUSED_0x280  0x280 // Unused Flag
-#define FLAG_UNUSED_0x281  0x281 // Unused Flag
-#define FLAG_UNUSED_0x282  0x282 // Unused Flag
-#define FLAG_UNUSED_0x283  0x283 // Unused Flag
+#define FLAG_LEGENDS_KANTO_WEST_RELAY 0x27F // Wing Survey Power Plant chapter
+#define FLAG_LEGENDS_KANTO_EAST_RELAY 0x280 // Wing Survey Power Plant chapter
+#define FLAG_LEGENDS_KANTO_ZAPDOS_SEEN 0x281 // Wing Survey Power Plant chapter
+#define FLAG_LEGENDS_KANTO_ZAPDOS_CAUGHT 0x282 // Wing Survey Power Plant chapter
+#define FLAG_LEGENDS_KANTO_SURVEY_POWER_REPORT 0x283 // Wing Survey Power Plant chapter
 #define FLAG_UNUSED_0x284  0x284 // Unused Flag
 #define FLAG_UNUSED_0x285  0x285 // Unused Flag
 #define FLAG_UNUSED_0x286  0x286 // Unused Flag

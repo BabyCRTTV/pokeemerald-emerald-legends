@@ -9939,6 +9939,62 @@
       "blockdata_filepath": "data/layouts/SaffronCity_Gym_Frlg/map.bin",
       "layout_version": "emerald",
       "tileset_format": "frlg"
+    },
+    {
+      "id": "LAYOUT_LEGENDS_KANTO_ROUTE10",
+      "name": "LegendsKanto_Route10_Layout",
+      "width": 24,
+      "height": 80,
+      "border_width": 2,
+      "border_height": 2,
+      "primary_tileset": "gTileset_LegendsKantoGeneral_Frlg",
+      "secondary_tileset": "gTileset_LegendsKantoLavenderTown",
+      "border_filepath": "data/layouts/Route10_Frlg/border.bin",
+      "blockdata_filepath": "data/layouts/LegendsKanto_Route10/map.bin",
+      "layout_version": "emerald",
+      "tileset_format": "frlg"
+    },
+    {
+      "id": "LAYOUT_LEGENDS_KANTO_ROCK_TUNNEL_1F",
+      "name": "LegendsKanto_RockTunnel_1F_Layout",
+      "width": 48,
+      "height": 40,
+      "border_width": 2,
+      "border_height": 2,
+      "primary_tileset": "gTileset_LegendsKantoGeneral_Frlg",
+      "secondary_tileset": "gTileset_LegendsKantoRockTunnel",
+      "border_filepath": "data/layouts/RockTunnel_1F_Frlg/border.bin",
+      "blockdata_filepath": "data/layouts/RockTunnel_1F_Frlg/map.bin",
+      "layout_version": "emerald",
+      "tileset_format": "frlg"
+    },
+    {
+      "id": "LAYOUT_LEGENDS_KANTO_ROCK_TUNNEL_B1F",
+      "name": "LegendsKanto_RockTunnel_B1F_Layout",
+      "width": 48,
+      "height": 40,
+      "border_width": 2,
+      "border_height": 2,
+      "primary_tileset": "gTileset_LegendsKantoGeneral_Frlg",
+      "secondary_tileset": "gTileset_LegendsKantoRockTunnel",
+      "border_filepath": "data/layouts/RockTunnel_B1F_Frlg/border.bin",
+      "blockdata_filepath": "data/layouts/RockTunnel_B1F_Frlg/map.bin",
+      "layout_version": "emerald",
+      "tileset_format": "frlg"
+    },
+    {
+      "id": "LAYOUT_LEGENDS_KANTO_POWER_PLANT",
+      "name": "LegendsKanto_PowerPlant_Layout",
+      "width": 49,
+      "height": 40,
+      "border_width": 2,
+      "border_height": 2,
+      "primary_tileset": "gTileset_LegendsKantoBuildingFrlg",
+      "secondary_tileset": "gTileset_LegendsKantoPowerPlant",
+      "border_filepath": "data/layouts/PowerPlant_Frlg/border.bin",
+      "blockdata_filepath": "data/layouts/PowerPlant_Frlg/map.bin",
+      "layout_version": "emerald",
+      "tileset_format": "frlg"
     }
   ]
 }

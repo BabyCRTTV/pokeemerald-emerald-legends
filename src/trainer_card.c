@@ -1584,11 +1584,14 @@ static void PrintLegendsBadgeRegion(void)
 {
     if (IS_FRLG || sData->isLink)
         return;
-    FillWindowPixelRect(WIN_CARD_TEXT, PIXEL_FILL(0), 16, 101, 208, 12);
-    AddTextPrinterParameterized3(WIN_CARD_TEXT, FONT_SMALL, 16, 101,
-        sTrainerCardTextColors, TEXT_SKIP_DRAW,
-        sData->showKantoBadges ? COMPOUND_STRING("KANTO BADGES   L/R: REGION")
-                               : COMPOUND_STRING("HOENN BADGES   L/R: REGION"));
+    // Share the badge heading line: stats finish above it, badge icons start below it.
+    // The native BADGES heading occupies the left side, so align navigation right.
+    const u8 *label = sData->showKantoBadges ? COMPOUND_STRING("L/R: KANTO")
+                                          : COMPOUND_STRING("L/R: HOENN");
+    FillWindowPixelRect(WIN_CARD_TEXT, PIXEL_FILL(0), 88, 100, 120, 12);
+    AddTextPrinterParameterized3(WIN_CARD_TEXT, FONT_SMALL,
+        GetStringRightAlignXOffset(FONT_SMALL, label, 208), 100,
+        sTrainerCardTextColors, TEXT_SKIP_DRAW, label);
 }
 
 static void DrawCardBackStats(void)

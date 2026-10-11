@@ -189,7 +189,7 @@ LegendsKanto_Chapter2_Finish::
 	msgbox LegendsKanto_Text_Chapter2Report, MSGBOX_DEFAULT
 	setflag FLAG_LEGENDS_KANTO_SURVEY_FIELD_REPORT
 LegendsKanto_Chapter2_Filed::
-	msgbox LegendsKanto_Text_Chapter2Next, MSGBOX_DEFAULT
+	goto LegendsKanto_Chapter3_Journal
 LegendsKanto_Chapter2_Return::
 	releaseall
 	end

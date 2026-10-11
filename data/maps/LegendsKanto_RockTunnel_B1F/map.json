@@ -1,0 +1,66 @@
+{
+  "id": "MAP_LEGENDS_KANTO_ROCK_TUNNEL_B1F",
+  "name": "LegendsKanto_RockTunnel_B1F",
+  "layout": "LAYOUT_LEGENDS_KANTO_ROCK_TUNNEL_B1F",
+  "music": "MUS_RG_MT_MOON",
+  "region": "REGION_HOENN",
+  "region_map_section": "MAPSEC_ROCK_TUNNEL",
+  "requires_flash": true,
+  "weather": "WEATHER_NONE",
+  "map_type": "MAP_TYPE_UNDERGROUND",
+  "allow_cycling": true,
+  "allow_escaping": true,
+  "allow_running": true,
+  "show_map_name": true,
+  "floor_number": 0,
+  "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+  "connections": null,
+  "object_events": [
+    {
+      "type": "object",
+      "graphics_id": "OBJ_EVENT_GFX_HIKER",
+      "x": 25,
+      "y": 12,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "LegendsKanto_Chapter3_CaveGuide",
+      "flag": "0"
+    }
+  ],
+  "warp_events": [
+    {
+      "x": 38,
+      "y": 28,
+      "elevation": 3,
+      "dest_map": "MAP_LEGENDS_KANTO_ROCK_TUNNEL_1F",
+      "dest_warp_id": "1"
+    },
+    {
+      "x": 33,
+      "y": 3,
+      "elevation": 3,
+      "dest_map": "MAP_LEGENDS_KANTO_ROCK_TUNNEL_1F",
+      "dest_warp_id": "2"
+    },
+    {
+      "x": 27,
+      "y": 12,
+      "elevation": 3,
+      "dest_map": "MAP_LEGENDS_KANTO_ROCK_TUNNEL_1F",
+      "dest_warp_id": "3"
+    },
+    {
+      "x": 2,
+      "y": 3,
+      "elevation": 3,
+      "dest_map": "MAP_LEGENDS_KANTO_ROCK_TUNNEL_1F",
+      "dest_warp_id": "4"
+    }
+  ],
+  "coord_events": [],
+  "bg_events": []
+}

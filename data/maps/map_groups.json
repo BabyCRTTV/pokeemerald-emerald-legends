@@ -1221,6 +1221,11 @@
     "LegendsKanto_SaffronCity_PokemonCenter_1F",
     "LegendsKanto_Route18_EastEntrance_1F",
     "LegendsKanto_CeladonCity_Gym",
-    "LegendsKanto_SaffronCity_Gym"
+    "LegendsKanto_SaffronCity_Gym",
+    "LegendsKanto_Route10",
+    "LegendsKanto_RockTunnel_1F",
+    "LegendsKanto_RockTunnel_B1F",
+    "LegendsKanto_PowerPlant",
+    "LegendsKanto_Route10_PokemonCenter_1F"
   ]
 }

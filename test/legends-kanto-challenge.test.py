@@ -2,11 +2,11 @@
 import json,re,struct,unittest,subprocess
 from pathlib import Path
 R=Path(__file__).resolve().parents[1]
-source=(R/'data/scripts/legends_kanto_challenge.inc').read_text()+'\n'+(R/'data/scripts/legends_kanto_chapter2.inc').read_text();labels={};commands=[]
+source=(R/'data/scripts/legends_kanto_challenge.inc').read_text()+'\n'+(R/'data/scripts/legends_kanto_chapter2.inc').read_text()+'\n'+(R/'data/scripts/legends_kanto_chapter3.inc').read_text();labels={};commands=[]
 for line in source.splitlines():
  line=line.strip()
  if re.fullmatch(r'\w+::?',line):labels[line.rstrip(':')]=len(commands)
- elif line and not line.startswith(('@','.')):commands.append(line)
+ elif line and not line.startswith(('@','.','#')):commands.append(line)
 class Events:
  def __init__(self):self.flags=set();self.vars={};self.answers=[];self.battles=[];self.messages=[];self.lose=False
  def value(self,x):return {'YES':1,'NO':0,'TRUE':1}.get(x,self.vars.get(x,int(x) if x.isdigit() else x))
@@ -109,10 +109,11 @@ class ChallengeTests(unittest.TestCase):
    self.assertIn('data/maps/'+entry['name']+'/scripts.inc',includes)
  def test_encounters_and_teams(self):
   groups=json.loads((R/'src/data/wild_encounters.json').read_text())['wild_encounter_groups'];entries=[e for g in groups for e in g['encounters'] if e.get('map','').startswith('MAP_LEGENDS_KANTO_ROUTE')]
-  self.assertEqual(len(entries),12)
+  self.assertEqual(len(entries),13)
   for e in entries:
    for field in ('land_mons','water_mons','fishing_mons'):
-    for m in e.get(field,{}).get('mons',[]):self.assertTrue(46<=m['min_level']<=m['max_level']<=54)
+    base=next(x for g in groups for x in g['encounters'] if x.get('map')==e['map'].replace('MAP_LEGENDS_KANTO_','MAP_') and 'FireRed' in x['base_label'])
+    self.assertEqual([(m['min_level'],m['max_level']) for m in e.get(field,{}).get('mons',[])],[(m['min_level'],m['max_level']) for m in base.get(field,{}).get('mons',[])])
   parties=(R/'src/data/trainers.party').read_text()
   for gym in ('SURGE','KOGA'):
    for mode,count in [('STANDARD',4),('CHAMPION',6)]:
