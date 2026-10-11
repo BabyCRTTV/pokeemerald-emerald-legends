@@ -44,9 +44,9 @@ const assert=require('node:assert/strict'),fs=require('node:fs');
   assert.equal(await page.locator('.region-map-explorer .walkthrough-map-highlight').count(),0);
   await page.getByRole('button',{name:'Route 101 encounters',exact:true}).click();
   await page.waitForFunction(()=>document.querySelector('.map-route-tip').classList.contains('is-visible'));
-  assert.equal(await page.locator('.map-route-link').getAttribute('href'),'dex.html?map=MAP_ROUTE101');
+  assert.equal(await page.locator('.map-route-link').getAttribute('href'),'dex.html?view=routes&map=MAP_ROUTE101#route-MAP_ROUTE101');
   await page.getByRole('button',{name:'Route 102 encounters',exact:true}).click();
-  assert.equal(await page.locator('.map-route-link').getAttribute('href'),'dex.html?map=MAP_ROUTE102');
+  assert.equal(await page.locator('.map-route-link').getAttribute('href'),'dex.html?view=routes&map=MAP_ROUTE102#route-MAP_ROUTE102');
   await page.getByRole('button',{name:'Littleroot Town',exact:true}).click();
   assert(await page.locator('.map-route-tip').evaluate(e=>!e.classList.contains('is-visible')));
   await page.getByRole('button',{name:'Route 101 encounters',exact:true}).click();
@@ -102,6 +102,21 @@ const assert=require('node:assert/strict'),fs=require('node:fs');
    }
    await page.locator('.chapter-sequence .chapter-step').first().click();
    await page.getByRole('heading',{name:/Chapter 13:/}).waitFor();
+  }
+  if(width===412){
+   await page.goto('http://127.0.0.1:8765/wiki/?page=walkthrough');
+   await page.getByRole('button',{name:'Route 103 encounters',exact:true}).waitFor();
+   await page.getByRole('button',{name:'Route 103 encounters',exact:true}).click();
+   await page.locator('.map-route-link').click();
+   await page.locator('#route-MAP_ROUTE103').waitFor();
+   assert.equal(await page.locator('[data-region="Hoenn"]').getAttribute('aria-pressed'),'true');
+   assert(await page.locator('#route-MAP_ROUTE103').evaluate(e=>{const r=e.getBoundingClientRect();return r.top>=50&&r.top<innerHeight/2;}),'route hint jumps to its encounter card');
+   await noOverflow();await page.screenshot({path:'wiki-preview/route-link-destination.png'});
+   await page.goto('http://127.0.0.1:8765/wiki/dex.html?map=MAP_LEGENDS_KANTO_ROUTE8');
+   await page.locator('#route-MAP_LEGENDS_KANTO_ROUTE8').waitFor();
+   assert.equal(await page.locator('[data-region="Kanto"]').getAttribute('aria-pressed'),'true');
+   assert(await page.locator('#route-MAP_LEGENDS_KANTO_ROUTE8').evaluate(e=>{const r=e.getBoundingClientRect();return r.top>=50&&r.top<innerHeight/2;}),'Kanto links jump to the right regional route');
+   await page.goto('http://127.0.0.1:8765/wiki/?page=walkthrough-littleroot');await page.locator('#home').waitFor();
   }
   await page.locator('#home').click();await page.locator('.topic-cards').waitFor();if(width<1100)assert(await page.locator('.wiki-mobile-nav').isVisible(),'leaving walkthrough restores bottom navigation');
   await page.locator('.topic-cards [data-category="Customization"]').click();

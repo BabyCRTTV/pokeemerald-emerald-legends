@@ -38,7 +38,7 @@
   }
   function routeCard(map){
     let count=new Set(map.methods.flatMap(m=>m.entries.map(e=>e.id))).size;
-    return '<section class="route-card"><div class="route-head"><div><div class="route-name">'+esc(map.name)+'</div><div class="route-sub">'+count+' Pokémon · '+map.methods.length+' encounter '+(map.methods.length===1?"method":"methods")+'</div></div><span class="region-tag">'+esc(map.region)+'</span></div>'
+    return '<section class="route-card" id="route-'+esc(map.id)+'" data-map="'+esc(map.id)+'" tabindex="-1"><div class="route-head"><div><div class="route-name">'+esc(map.name)+'</div><div class="route-sub">'+count+' Pokémon · '+map.methods.length+' encounter '+(map.methods.length===1?"method":"methods")+'</div></div><span class="region-tag">'+esc(map.region)+'</span></div>'
      +map.methods.map(m=>'<div class="method-section"><div class="method-heading"><span>'+esc(m.label)+'</span>'+m.entries.length+' species <small>· Relative encounter share</small></div><div class="enc-grid">'+m.entries.map(encounterCard).join('')+'</div></div>').join('')+'</section>';
   }
   function dexCard(p){
@@ -225,9 +225,11 @@
     const link=new URL(location.href),pokemon=link.searchParams.get("pokemon")?.toUpperCase(),map=link.searchParams.get("map");
     if(link.searchParams.get("view")==="species")view="species";
     if(link.searchParams.get("view")==="routes")view="routes";
-    if(map){query="";region="all";method="all";}
+    const destination=map&&data.maps.find(m=>m.id===map);
+    if(destination){view="routes";query="";search.value="";region=destination.region;method="all";}
     if(pokemon&&bySpecies.has(pokemon))view="species";
     render();
+    if(destination&&view==="routes"){const target=document.getElementById("route-"+destination.id);target?.focus({preventScroll:true});target?.scrollIntoView({block:"start",behavior:"instant"});updateReturnArrow();}
     if(pokemon&&bySpecies.has(pokemon))openPokemon(pokemon,false);
   }).catch(err=>{
     results.innerHTML='<div class="empty"><strong>Could not load the field guide</strong><p>Connect to the internet and refresh to load the current documented encounters. No account is needed.</p><button class="more" type="button" onclick="location.reload()">Try again</button></div>';
