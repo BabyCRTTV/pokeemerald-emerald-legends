@@ -32,6 +32,7 @@ static u8 shoes,costume,card,hair,coat;
 u8 LegendsGetShoes(void){return shoes;}u8 LegendsGetCostume(void){return costume;}u8 LegendsGetCardColor(void){return card;}
 u8 LegendsGetHair(void){return hair;}u8 LegendsGetJacketStyle(void){return coat;}
 void LegendsPaintStyle(u8 *p,u8 w,u8 h,u8 g,int b,u8 s,u8 c){(void)p;(void)w;(void)h;(void)g;(void)b;(void)s;(void)c;}
+void LegendsPolishBoots(u8*p,u8 w,u8 h){(void)p;(void)w;(void)h;}
 void LegendsUpdateAppearancePalettes(void){}
 void DecompressDataWithHeaderWram(const u32*s,void*d){memcpy(d,s,2048);}
 static u16 cardPal[48];
