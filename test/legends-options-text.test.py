@@ -27,11 +27,21 @@ typedef uint16_t u16;
 #define TEXT_COLOR_LIGHT_RED 5
 #define WIN_OPTIONS 1
 #define FONT_NORMAL 1
+#define FONT_SMALL 0
+static unsigned arrowCalls;
 #define TEXT_SKIP_DRAW 255
 u8 captured[32];
 void AddTextPrinterParameterized(u8 w, u8 f, const u8 *text, u8 x, u8 y, u8 speed, void *cb)
 {
-    (void)w; (void)f; (void)x; (void)y; (void)speed; (void)cb;
+    (void)w; (void)cb;
+    if (f == FONT_SMALL)
+    {
+        assert(x == (arrowCalls % 2 ? 188 : 112) && y == 2 && speed == TEXT_SKIP_DRAW);
+        assert(text[6] == (arrowCalls % 2 ? 0x7C : 0x7B));
+        arrowCalls++;
+        return;
+    }
+    (void)x; (void)y; (void)speed;
     unsigned i = 0;
     do {captured[i] = text[i];} while (text[i++] != EOS);
 }
@@ -44,6 +54,8 @@ stub += r'''
 #define OPTION_ROW_HEIGHT 16
 #define PIXEL_FILL(x) (x)
 static unsigned clears;
+static const u8 gText_TextSpeedLeftArrow[] = {252,1,6,252,3,7,0x7B,EOS};
+static const u8 gText_TextSpeedRightArrow[] = {252,1,6,252,3,7,0x7C,EOS};
 static const u8 gText_TextSpeedSlow[] = {252,1,6,252,3,7,'S','L','O','W',EOS};
 static const u8 gText_TextSpeedMid[] = {252,1,6,252,3,7,'M','I','D',EOS};
 static const u8 gText_TextSpeedFast[] = {252,1,6,252,3,7,'F','A','S','T',EOS};
@@ -84,7 +96,7 @@ int main(void)
     TextSpeed_DrawChoices(0, 0); // INSTANT -> SLOW clears trailing letters.
     TextSpeed_DrawChoices(7, 0); // Invalid saved values safely display FAST.
     assert(memcmp(captured + 6, "FAST", 4) == 0);
-    assert(clears == 6);
+    assert(clears == 6 && arrowCalls == 12);
     puts("Options plain text and encoded color-prefix regressions passed.");
 }
 '''

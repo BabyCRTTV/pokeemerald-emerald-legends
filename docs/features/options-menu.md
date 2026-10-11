@@ -91,3 +91,9 @@ The native Options live preview and standard windows use these frames. Emerald's
 Regenerate the pixel art with `python3 scripts/generate_legends_frames.py` (Pillow). `test/legends-window-frames.test.py` checks hardware/color limits, registration, and the actual Options input function across all 25 types in both directions. Shared by Release and Debug.
 
 mGBA 0.10.2 checks all five live Options previews, TYPE 1↔25 wrap, saved TYPE 25 after field reload, and its native Yes/No menu plus dismissal. Controlled map entry was used; RAM usage is unchanged.
+
+## v0.0.36 Text-speed arrows
+
+Small green Left/Right arrows bracket the selected TEXT SPEED value at window x=112 and x=188. The native small font and existing choice-area clearing keep SLOW / MID / FAST / INSTANT readable without enlarging the window. Navigation and saving remain native.
+
+mGBA 0.10.2 checks all four labels with the arrows, then B saves back to the field.
