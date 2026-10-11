@@ -169,6 +169,7 @@ const assert=require('node:assert/strict'),fs=require('node:fs');
   assert(await page.locator('#more').isHidden(),'no incremental loading');
   await page.evaluate(()=>scrollTo({top:0,behavior:'instant'}));
   await page.waitForFunction(()=>!document.querySelector('#return-to-search').classList.contains('is-visible'));
+  await page.locator('#return-to-search').waitFor({state:'hidden'});
   assert(!await page.locator('#return-to-search').isVisible(),'arrow hides above the search anchor');
   await page.evaluate(()=>scrollTo({top:1600,behavior:'instant'}));
   await page.waitForFunction(()=>document.querySelector('#return-to-search').classList.contains('is-visible'));
