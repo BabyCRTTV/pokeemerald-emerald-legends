@@ -18,7 +18,9 @@ pre=r'''
 #include <stdint.h>
 #include <stdio.h>
 #include <string.h>
-typedef uint8_t u8;typedef uint16_t u16;typedef uint32_t u32;typedef int32_t s32;
+typedef uint8_t u8;typedef uint16_t u16;typedef uint32_t u32;typedef int32_t s32;typedef int bool8;
+#define TRUE 1
+#define FALSE 0
 #define EWRAM_DATA
 #define ALIGNED(x)
 #define ARRAY_COUNT(x) (sizeof(x)/sizeof((x)[0]))
