@@ -8,6 +8,12 @@ The technician directs you to the west terminal (first room north of the entranc
 
 All 16 populated Kanto maps now use their matching native FireRed slot levels in every encounter method. Species and rates are retained. Gyms remain optional Standard/Champion visiting challenges. New map IDs and Adventure Log event IDs are appended; five unused flags track the two feeds, observation, capture and report. Existing SaveBlock sizes and system-flag addresses remain unchanged. Wiki changes are outside the ROM build inputs.
 
+### v0.0.33 validation
+
+Local Debug compilation and all 30 Legends project suites pass, plus browser patcher regressions. New event checks execute survey gates, both console orders, decline/revisit, observation without battle, one-time reports, capture versus faint/flee/loss, and the native catch-return callback. All 16 populated maps' encounter slot levels are compared against the FireRed variant, rather than LeafGreen's alternate slots. Geometry checks cover floor placement, terminal adjacency and warp indices; the full Kanto connection graph is reciprocal and reachable. All new dialogue lines fit the native font width.
+
+mGBA 0.10.2 visual review used controlled native entry into the new maps and normal controller inputs: Power Plant entrance, both console approaches, native Zapdos sprite/roost, Route 10 Center/closed western exit, both cave floors, and Route 10 in all four seasons. The west terminal's acceptance and saved flag were checked through its real overworld interaction. Trainer Card was viewed with Money/Pokedex/Time present, switched Hoenn/Kanto, flipped to the back and returned to the front: the compact right-aligned label stays beside BADGES and clears stats, icons and border. Cave darkness retains native Flash behavior. This targeted review is not a complete Champion-save story walkthrough or a manually played capture/blackout test; those remain useful follow-up playtests. The established Actions workflow performs full Debug/Release compilation and independent-base/BPS byte verification before publication.
+
 ## Earlier chapter — v0.0.32: The Borrowed Voice
 
 Four visiting Gyms are playable: Surge, Koga, Erika and Sabrina. Celadon's native garden/Cut layout and Saffron's native teleport network are now connected to their proper city doors. Staff explain how to reach each Leader; city residents point to the Gyms and nearby field sites.
