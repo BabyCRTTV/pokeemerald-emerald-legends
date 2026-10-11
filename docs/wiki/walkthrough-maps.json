@@ -181,30 +181,904 @@
           56
         ]
       ]
+    },
+    "MAP_DEWFORD_TOWN": {
+      "name": "Dewford Town",
+      "mapId": "MAP_DEWFORD_TOWN",
+      "cells": [
+        [
+          16,
+          112
+        ]
+      ]
+    },
+    "MAP_ROUTE106": {
+      "name": "Route 106",
+      "mapId": "MAP_ROUTE106",
+      "cells": [
+        [
+          0,
+          104
+        ],
+        [
+          8,
+          104
+        ],
+        [
+          16,
+          104
+        ]
+      ]
+    },
+    "MAP_GRANITE_CAVE_1F": {
+      "name": "Granite Cave 1F",
+      "mapId": "MAP_GRANITE_CAVE_1F",
+      "cells": [
+        [
+          8,
+          104
+        ]
+      ]
+    },
+    "MAP_GRANITE_CAVE_B1F": {
+      "name": "Granite Cave B1F",
+      "mapId": "MAP_GRANITE_CAVE_B1F",
+      "cells": [
+        [
+          8,
+          104
+        ]
+      ]
+    },
+    "MAP_GRANITE_CAVE_B2F": {
+      "name": "Granite Cave B2F",
+      "mapId": "MAP_GRANITE_CAVE_B2F",
+      "cells": [
+        [
+          8,
+          104
+        ]
+      ]
+    },
+    "MAPSEC_RUSTBORO_CITY": {
+      "name": "Rustboro City",
+      "mapId": null,
+      "cells": [
+        [
+          0,
+          40
+        ],
+        [
+          0,
+          48
+        ]
+      ]
+    },
+    "MAP_ROUTE109": {
+      "name": "Route 109",
+      "mapId": "MAP_ROUTE109",
+      "cells": [
+        [
+          64,
+          96
+        ],
+        [
+          64,
+          104
+        ],
+        [
+          64,
+          112
+        ]
+      ]
+    },
+    "MAP_SLATEPORT_CITY": {
+      "name": "Slateport City",
+      "mapId": "MAP_SLATEPORT_CITY",
+      "cells": [
+        [
+          64,
+          80
+        ],
+        [
+          64,
+          88
+        ]
+      ]
+    },
+    "MAP_ROUTE110": {
+      "name": "Route 110",
+      "mapId": "MAP_ROUTE110",
+      "cells": [
+        [
+          64,
+          56
+        ],
+        [
+          64,
+          64
+        ],
+        [
+          64,
+          72
+        ]
+      ]
+    },
+    "MAPSEC_MAUVILLE_CITY": {
+      "name": "Mauville City",
+      "mapId": null,
+      "cells": [
+        [
+          64,
+          48
+        ],
+        [
+          72,
+          48
+        ]
+      ]
+    },
+    "MAP_ROUTE117": {
+      "name": "Route 117",
+      "mapId": "MAP_ROUTE117",
+      "cells": [
+        [
+          40,
+          48
+        ],
+        [
+          48,
+          48
+        ],
+        [
+          56,
+          48
+        ]
+      ]
+    },
+    "MAP_ROUTE111": {
+      "name": "Route 111",
+      "mapId": "MAP_ROUTE111",
+      "cells": [
+        [
+          64,
+          0
+        ],
+        [
+          64,
+          8
+        ],
+        [
+          64,
+          16
+        ],
+        [
+          64,
+          24
+        ],
+        [
+          64,
+          32
+        ],
+        [
+          64,
+          40
+        ]
+      ]
+    },
+    "MAP_ROUTE118": {
+      "name": "Route 118",
+      "mapId": "MAP_ROUTE118",
+      "cells": [
+        [
+          80,
+          48
+        ],
+        [
+          88,
+          48
+        ]
+      ]
+    },
+    "MAP_ROUTE112": {
+      "name": "Route 112",
+      "mapId": "MAP_ROUTE112",
+      "cells": [
+        [
+          48,
+          24
+        ],
+        [
+          56,
+          24
+        ]
+      ]
+    },
+    "MAPSEC_FALLARBOR_TOWN": {
+      "name": "Fallarbor Town",
+      "mapId": null,
+      "cells": [
+        [
+          24,
+          0
+        ]
+      ]
+    },
+    "MAP_METEOR_FALLS_1F_1R": {
+      "name": "Meteor Falls 1F 1r",
+      "mapId": "MAP_METEOR_FALLS_1F_1R",
+      "cells": [
+        [
+          0,
+          24
+        ]
+      ]
+    },
+    "MAPSEC_MT_CHIMNEY": {
+      "name": "Mt. Chimney",
+      "mapId": null,
+      "cells": [
+        [
+          48,
+          16
+        ]
+      ]
+    },
+    "MAP_FIERY_PATH": {
+      "name": "Fiery Path",
+      "mapId": "MAP_FIERY_PATH",
+      "cells": [
+        [
+          48,
+          24
+        ]
+      ]
+    },
+    "MAP_ROUTE113": {
+      "name": "Route 113",
+      "mapId": "MAP_ROUTE113",
+      "cells": [
+        [
+          32,
+          0
+        ],
+        [
+          40,
+          0
+        ],
+        [
+          48,
+          0
+        ],
+        [
+          56,
+          0
+        ]
+      ]
+    },
+    "MAP_ROUTE114": {
+      "name": "Route 114",
+      "mapId": "MAP_ROUTE114",
+      "cells": [
+        [
+          8,
+          0
+        ],
+        [
+          16,
+          0
+        ],
+        [
+          8,
+          8
+        ],
+        [
+          8,
+          16
+        ]
+      ]
+    },
+    "MAP_JAGGED_PASS": {
+      "name": "Jagged Pass",
+      "mapId": "MAP_JAGGED_PASS",
+      "cells": [
+        [
+          48,
+          24
+        ]
+      ]
+    },
+    "MAPSEC_LAVARIDGE_TOWN": {
+      "name": "Lavaridge Town",
+      "mapId": null,
+      "cells": [
+        [
+          40,
+          24
+        ]
+      ]
+    },
+    "MAP_PETALBURG_CITY": {
+      "name": "Petalburg City",
+      "mapId": "MAP_PETALBURG_CITY",
+      "cells": [
+        [
+          8,
+          72
+        ]
+      ]
+    },
+    "MAP_MIRAGE_TOWER_1F": {
+      "name": "Mirage Tower 1F",
+      "mapId": "MAP_MIRAGE_TOWER_1F",
+      "cells": [
+        [
+          64,
+          16
+        ]
+      ]
+    },
+    "MAPSEC_VERDANTURF_TOWN": {
+      "name": "Verdanturf Town",
+      "mapId": null,
+      "cells": [
+        [
+          32,
+          48
+        ]
+      ]
+    },
+    "MAP_RUSTURF_TUNNEL": {
+      "name": "Rusturf Tunnel",
+      "mapId": "MAP_RUSTURF_TUNNEL",
+      "cells": [
+        [
+          16,
+          40
+        ]
+      ]
+    },
+    "MAP_NEW_MAUVILLE_ENTRANCE": {
+      "name": "New Mauville Entrance",
+      "mapId": "MAP_NEW_MAUVILLE_ENTRANCE",
+      "cells": [
+        [
+          64,
+          56
+        ]
+      ]
+    },
+    "MAP_NEW_MAUVILLE_INSIDE": {
+      "name": "New Mauville Inside",
+      "mapId": "MAP_NEW_MAUVILLE_INSIDE",
+      "cells": [
+        [
+          64,
+          56
+        ]
+      ]
+    },
+    "MAP_ROUTE119": {
+      "name": "Route 119",
+      "mapId": "MAP_ROUTE119",
+      "cells": [
+        [
+          88,
+          0
+        ],
+        [
+          88,
+          8
+        ],
+        [
+          88,
+          16
+        ],
+        [
+          88,
+          24
+        ],
+        [
+          88,
+          32
+        ],
+        [
+          88,
+          40
+        ]
+      ]
+    },
+    "MAPSEC_FORTREE_CITY": {
+      "name": "Fortree City",
+      "mapId": null,
+      "cells": [
+        [
+          96,
+          0
+        ]
+      ]
+    },
+    "MAP_ROUTE120": {
+      "name": "Route 120",
+      "mapId": "MAP_ROUTE120",
+      "cells": [
+        [
+          104,
+          0
+        ],
+        [
+          104,
+          8
+        ],
+        [
+          104,
+          16
+        ],
+        [
+          104,
+          24
+        ]
+      ]
+    },
+    "MAP_LILYCOVE_CITY": {
+      "name": "Lilycove City",
+      "mapId": "MAP_LILYCOVE_CITY",
+      "cells": [
+        [
+          144,
+          24
+        ],
+        [
+          152,
+          24
+        ]
+      ]
+    },
+    "MAP_MT_PYRE_SUMMIT": {
+      "name": "Mt. Pyre Summit",
+      "mapId": "MAP_MT_PYRE_SUMMIT",
+      "cells": [
+        [
+          128,
+          32
+        ]
+      ]
+    },
+    "MAP_ROUTE121": {
+      "name": "Route 121",
+      "mapId": "MAP_ROUTE121",
+      "cells": [
+        [
+          112,
+          24
+        ],
+        [
+          120,
+          24
+        ],
+        [
+          128,
+          24
+        ],
+        [
+          136,
+          24
+        ]
+      ]
+    },
+    "MAP_ROUTE122": {
+      "name": "Route 122",
+      "mapId": "MAP_ROUTE122",
+      "cells": [
+        [
+          128,
+          32
+        ],
+        [
+          128,
+          40
+        ]
+      ]
+    },
+    "MAP_MT_PYRE_EXTERIOR": {
+      "name": "Mt. Pyre Exterior",
+      "mapId": "MAP_MT_PYRE_EXTERIOR",
+      "cells": [
+        [
+          128,
+          32
+        ]
+      ]
+    },
+    "MAP_MAGMA_HIDEOUT_1F": {
+      "name": "Magma Hideout 1F",
+      "mapId": "MAP_MAGMA_HIDEOUT_1F",
+      "cells": [
+        [
+          48,
+          24
+        ]
+      ]
+    },
+    "MAP_MAGMA_HIDEOUT_4F": {
+      "name": "Magma Hideout 4F",
+      "mapId": "MAP_MAGMA_HIDEOUT_4F",
+      "cells": [
+        [
+          48,
+          24
+        ]
+      ]
+    },
+    "MAP_ROUTE124": {
+      "name": "Route 124",
+      "mapId": "MAP_ROUTE124",
+      "cells": [
+        [
+          160,
+          24
+        ],
+        [
+          168,
+          24
+        ],
+        [
+          176,
+          24
+        ],
+        [
+          184,
+          24
+        ],
+        [
+          160,
+          32
+        ],
+        [
+          168,
+          32
+        ],
+        [
+          176,
+          32
+        ],
+        [
+          184,
+          32
+        ],
+        [
+          160,
+          40
+        ],
+        [
+          168,
+          40
+        ],
+        [
+          176,
+          40
+        ],
+        [
+          184,
+          40
+        ]
+      ]
+    },
+    "MAP_MOSSDEEP_CITY": {
+      "name": "Mossdeep City",
+      "mapId": "MAP_MOSSDEEP_CITY",
+      "cells": [
+        [
+          192,
+          40
+        ],
+        [
+          200,
+          40
+        ]
+      ]
+    },
+    "MAP_ROUTE125": {
+      "name": "Route 125",
+      "mapId": "MAP_ROUTE125",
+      "cells": [
+        [
+          192,
+          24
+        ],
+        [
+          200,
+          24
+        ],
+        [
+          192,
+          32
+        ],
+        [
+          200,
+          32
+        ]
+      ]
+    },
+    "MAP_ROUTE127": {
+      "name": "Route 127",
+      "mapId": "MAP_ROUTE127",
+      "cells": [
+        [
+          184,
+          48
+        ],
+        [
+          192,
+          48
+        ],
+        [
+          200,
+          48
+        ],
+        [
+          184,
+          56
+        ],
+        [
+          192,
+          56
+        ],
+        [
+          200,
+          56
+        ],
+        [
+          184,
+          64
+        ],
+        [
+          192,
+          64
+        ],
+        [
+          200,
+          64
+        ]
+      ]
+    },
+    "MAP_ROUTE128": {
+      "name": "Route 128",
+      "mapId": "MAP_ROUTE128",
+      "cells": [
+        [
+          184,
+          72
+        ],
+        [
+          192,
+          72
+        ],
+        [
+          200,
+          72
+        ],
+        [
+          208,
+          72
+        ]
+      ]
+    },
+    "MAP_SOOTOPOLIS_CITY": {
+      "name": "Sootopolis City",
+      "mapId": "MAP_SOOTOPOLIS_CITY",
+      "cells": [
+        [
+          168,
+          56
+        ]
+      ]
+    },
+    "MAP_SKY_PILLAR_1F": {
+      "name": "Sky Pillar 1F",
+      "mapId": "MAP_SKY_PILLAR_1F",
+      "cells": [
+        [
+          152,
+          80
+        ]
+      ]
+    },
+    "MAP_SEAFLOOR_CAVERN_ENTRANCE": {
+      "name": "Seafloor Cavern Entrance",
+      "mapId": "MAP_SEAFLOOR_CAVERN_ENTRANCE",
+      "cells": [
+        [
+          192,
+          72
+        ]
+      ]
+    },
+    "MAP_SEAFLOOR_CAVERN_ROOM1": {
+      "name": "Seafloor Cavern Room1",
+      "mapId": "MAP_SEAFLOOR_CAVERN_ROOM1",
+      "cells": [
+        [
+          192,
+          72
+        ]
+      ]
+    },
+    "MAP_SEAFLOOR_CAVERN_ROOM8": {
+      "name": "Seafloor Cavern Room8",
+      "mapId": "MAP_SEAFLOOR_CAVERN_ROOM8",
+      "cells": [
+        [
+          192,
+          72
+        ]
+      ]
+    },
+    "MAP_ROUTE126": {
+      "name": "Route 126",
+      "mapId": "MAP_ROUTE126",
+      "cells": [
+        [
+          160,
+          48
+        ],
+        [
+          168,
+          48
+        ],
+        [
+          176,
+          48
+        ],
+        [
+          160,
+          56
+        ],
+        [
+          176,
+          56
+        ],
+        [
+          160,
+          64
+        ],
+        [
+          168,
+          64
+        ],
+        [
+          176,
+          64
+        ]
+      ]
+    },
+    "MAP_UNDERWATER_ROUTE126": {
+      "name": "Underwater Route 126",
+      "mapId": "MAP_UNDERWATER_ROUTE126",
+      "cells": [
+        [
+          160,
+          48
+        ],
+        [
+          168,
+          48
+        ],
+        [
+          176,
+          48
+        ],
+        [
+          160,
+          56
+        ],
+        [
+          168,
+          56
+        ],
+        [
+          176,
+          56
+        ],
+        [
+          160,
+          64
+        ],
+        [
+          168,
+          64
+        ],
+        [
+          176,
+          64
+        ]
+      ]
+    },
+    "MAP_CAVE_OF_ORIGIN_ENTRANCE": {
+      "name": "Cave Of Origin Entrance",
+      "mapId": "MAP_CAVE_OF_ORIGIN_ENTRANCE",
+      "cells": [
+        [
+          168,
+          56
+        ]
+      ]
+    },
+    "MAP_PACIFIDLOG_TOWN": {
+      "name": "Pacifidlog Town",
+      "mapId": "MAP_PACIFIDLOG_TOWN",
+      "cells": [
+        [
+          136,
+          80
+        ]
+      ]
+    },
+    "MAP_ROUTE131": {
+      "name": "Route 131",
+      "mapId": "MAP_ROUTE131",
+      "cells": [
+        [
+          144,
+          80
+        ],
+        [
+          152,
+          80
+        ],
+        [
+          160,
+          80
+        ]
+      ]
+    },
+    "MAP_EVER_GRANDE_CITY": {
+      "name": "Ever Grande City",
+      "mapId": "MAP_EVER_GRANDE_CITY",
+      "cells": [
+        [
+          216,
+          64
+        ],
+        [
+          216,
+          72
+        ]
+      ]
+    },
+    "MAP_VICTORY_ROAD_1F": {
+      "name": "Victory Road 1F",
+      "mapId": "MAP_VICTORY_ROAD_1F",
+      "cells": [
+        [
+          216,
+          72
+        ]
+      ]
+    },
+    "MAP_VICTORY_ROAD_B1F": {
+      "name": "Victory Road B1F",
+      "mapId": "MAP_VICTORY_ROAD_B1F",
+      "cells": [
+        [
+          216,
+          72
+        ]
+      ]
+    },
+    "MAP_VICTORY_ROAD_B2F": {
+      "name": "Victory Road B2F",
+      "mapId": "MAP_VICTORY_ROAD_B2F",
+      "cells": [
+        [
+          216,
+          72
+        ]
+      ]
     }
   },
   "chapters": {
-    "walkthrough": [
-      {
-        "section": "section-your-first-adventure",
-        "places": [
-          "littleroot",
-          "route101",
-          "oldale",
-          "route103",
-          "route102",
-          "petalburg",
-          "route104",
-          "woods",
-          "rustboro",
-          "route116",
-          "tunnel",
-          "dewford"
-        ],
-        "encounters": [],
-        "note": "Your opening journey runs from Littleroot to the boat for Dewford. Follow the chapters for route-by-route encounters."
-      }
-    ],
+    "walkthrough": [],
     "walkthrough-littleroot": [
       {
         "section": "section-your-goal",
@@ -442,6 +1316,1274 @@
         "encounters": [],
         "note": ""
       }
+    ],
+    "walkthrough-dewford": [
+      {
+        "section": "section-your-goal",
+        "places": [
+          "MAP_DEWFORD_TOWN",
+          "MAP_ROUTE106",
+          "MAP_GRANITE_CAVE_1F"
+        ],
+        "encounters": [],
+        "availableMethods": [
+          "land",
+          "old_rod"
+        ],
+        "note": ""
+      },
+      {
+        "section": "section-arrive-in-dewford",
+        "places": [
+          "MAP_DEWFORD_TOWN",
+          "MAP_ROUTE106"
+        ],
+        "encounters": [
+          "MAP_DEWFORD_TOWN",
+          "MAP_ROUTE106"
+        ],
+        "availableMethods": [
+          "land",
+          "old_rod"
+        ],
+        "note": ""
+      },
+      {
+        "section": "section-brawly-and-the-knuckle-badge",
+        "places": [
+          "MAP_DEWFORD_TOWN"
+        ],
+        "encounters": [],
+        "availableMethods": [
+          "land",
+          "old_rod"
+        ],
+        "note": ""
+      },
+      {
+        "section": "section-granite-cave-and-the-letter",
+        "places": [
+          "MAP_GRANITE_CAVE_1F"
+        ],
+        "encounters": [
+          "MAP_GRANITE_CAVE_1F",
+          "MAP_GRANITE_CAVE_B1F",
+          "MAP_GRANITE_CAVE_B2F"
+        ],
+        "availableMethods": [
+          "land",
+          "old_rod"
+        ],
+        "note": "Cave floors share one regional marker, but have separate wild tables."
+      },
+      {
+        "section": "section-optional-return-to-devon",
+        "places": [
+          "MAPSEC_RUSTBORO_CITY"
+        ],
+        "encounters": [],
+        "availableMethods": [
+          "land",
+          "old_rod"
+        ],
+        "note": ""
+      },
+      {
+        "section": "section-ready-for-slateport",
+        "places": [
+          "MAP_DEWFORD_TOWN",
+          "MAP_ROUTE109",
+          "MAP_SLATEPORT_CITY"
+        ],
+        "encounters": [],
+        "availableMethods": [
+          "land",
+          "old_rod"
+        ],
+        "note": ""
+      }
+    ],
+    "walkthrough-slateport": [
+      {
+        "section": "section-your-goal",
+        "places": [
+          "MAP_SLATEPORT_CITY",
+          "MAP_ROUTE110",
+          "MAPSEC_MAUVILLE_CITY"
+        ],
+        "encounters": [],
+        "availableMethods": [
+          "land",
+          "old_rod"
+        ],
+        "note": ""
+      },
+      {
+        "section": "section-route-109-and-slateport",
+        "places": [
+          "MAP_ROUTE109",
+          "MAP_SLATEPORT_CITY"
+        ],
+        "encounters": [
+          "MAP_ROUTE109"
+        ],
+        "availableMethods": [
+          "land",
+          "old_rod"
+        ],
+        "note": ""
+      },
+      {
+        "section": "section-find-captain-stern",
+        "places": [
+          "MAP_SLATEPORT_CITY"
+        ],
+        "encounters": [],
+        "availableMethods": [
+          "land",
+          "old_rod"
+        ],
+        "note": ""
+      },
+      {
+        "section": "section-route-110-and-your-rival",
+        "places": [
+          "MAP_ROUTE110"
+        ],
+        "encounters": [
+          "MAP_ROUTE110"
+        ],
+        "availableMethods": [
+          "land",
+          "old_rod"
+        ],
+        "note": ""
+      },
+      {
+        "section": "section-first-steps-in-mauville",
+        "places": [
+          "MAPSEC_MAUVILLE_CITY",
+          "MAP_ROUTE117"
+        ],
+        "encounters": [
+          "MAP_ROUTE117"
+        ],
+        "availableMethods": [
+          "land",
+          "old_rod"
+        ],
+        "note": ""
+      }
+    ],
+    "walkthrough-mauville": [
+      {
+        "section": "section-your-goal",
+        "places": [
+          "MAPSEC_MAUVILLE_CITY",
+          "MAP_ROUTE111"
+        ],
+        "encounters": [],
+        "availableMethods": [
+          "land",
+          "rock",
+          "old_rod"
+        ],
+        "note": ""
+      },
+      {
+        "section": "section-explore-mauville",
+        "places": [
+          "MAPSEC_MAUVILLE_CITY",
+          "MAP_ROUTE117",
+          "MAP_ROUTE118"
+        ],
+        "encounters": [
+          "MAP_ROUTE117",
+          "MAP_ROUTE118"
+        ],
+        "availableMethods": [
+          "land",
+          "rock",
+          "old_rod"
+        ],
+        "note": "Before Surf, only the western bank of Route 118 is reachable."
+      },
+      {
+        "section": "section-wally-outside-the-gym",
+        "places": [
+          "MAPSEC_MAUVILLE_CITY"
+        ],
+        "encounters": [],
+        "availableMethods": [
+          "land",
+          "rock",
+          "old_rod"
+        ],
+        "note": ""
+      },
+      {
+        "section": "section-wattson-and-the-dynamo-badge",
+        "places": [
+          "MAPSEC_MAUVILLE_CITY"
+        ],
+        "encounters": [],
+        "availableMethods": [
+          "land",
+          "rock",
+          "old_rod"
+        ],
+        "note": ""
+      },
+      {
+        "section": "section-head-north-onto-route-111",
+        "places": [
+          "MAP_ROUTE111",
+          "MAP_ROUTE112"
+        ],
+        "encounters": [
+          "MAP_ROUTE112"
+        ],
+        "availableMethods": [
+          "land",
+          "rock",
+          "old_rod"
+        ],
+        "note": "Route 111’s desert requires Go-Goggles; its desert catches are not available yet."
+      }
+    ],
+    "walkthrough-meteor-falls": [
+      {
+        "section": "section-your-goal",
+        "places": [
+          "MAP_ROUTE112",
+          "MAPSEC_FALLARBOR_TOWN",
+          "MAP_METEOR_FALLS_1F_1R",
+          "MAPSEC_MT_CHIMNEY"
+        ],
+        "encounters": [],
+        "availableMethods": [
+          "land",
+          "rock",
+          "old_rod"
+        ],
+        "note": ""
+      },
+      {
+        "section": "section-fiery-path-to-route-113",
+        "places": [
+          "MAP_ROUTE112",
+          "MAP_FIERY_PATH",
+          "MAP_ROUTE113"
+        ],
+        "encounters": [
+          "MAP_FIERY_PATH",
+          "MAP_ROUTE113"
+        ],
+        "availableMethods": [
+          "land",
+          "rock",
+          "old_rod"
+        ],
+        "note": ""
+      },
+      {
+        "section": "section-fallarbor-and-route-114",
+        "places": [
+          "MAPSEC_FALLARBOR_TOWN",
+          "MAP_ROUTE114"
+        ],
+        "encounters": [
+          "MAP_ROUTE114"
+        ],
+        "availableMethods": [
+          "land",
+          "rock",
+          "old_rod"
+        ],
+        "note": ""
+      },
+      {
+        "section": "section-the-meteorite-theft",
+        "places": [
+          "MAP_METEOR_FALLS_1F_1R"
+        ],
+        "encounters": [
+          "MAP_METEOR_FALLS_1F_1R"
+        ],
+        "availableMethods": [
+          "land",
+          "rock",
+          "old_rod"
+        ],
+        "note": "Deep Waterfall passages are later areas, not part of the first story visit."
+      },
+      {
+        "section": "section-mt-chimney",
+        "places": [
+          "MAPSEC_MT_CHIMNEY"
+        ],
+        "encounters": [],
+        "availableMethods": [
+          "land",
+          "rock",
+          "old_rod"
+        ],
+        "note": ""
+      },
+      {
+        "section": "section-jagged-pass-to-lavaridge",
+        "places": [
+          "MAP_JAGGED_PASS",
+          "MAPSEC_LAVARIDGE_TOWN"
+        ],
+        "encounters": [
+          "MAP_JAGGED_PASS"
+        ],
+        "availableMethods": [
+          "land",
+          "rock",
+          "old_rod"
+        ],
+        "note": ""
+      }
+    ],
+    "walkthrough-lavaridge": [
+      {
+        "section": "section-your-goal",
+        "places": [
+          "MAPSEC_LAVARIDGE_TOWN",
+          "MAP_ROUTE111",
+          "MAP_PETALBURG_CITY"
+        ],
+        "encounters": [],
+        "availableMethods": [
+          "land",
+          "rock",
+          "old_rod"
+        ],
+        "note": ""
+      },
+      {
+        "section": "section-prepare-in-lavaridge",
+        "places": [
+          "MAPSEC_LAVARIDGE_TOWN"
+        ],
+        "encounters": [],
+        "availableMethods": [
+          "land",
+          "rock",
+          "old_rod"
+        ],
+        "note": ""
+      },
+      {
+        "section": "section-flannery-and-the-heat-badge",
+        "places": [
+          "MAPSEC_LAVARIDGE_TOWN"
+        ],
+        "encounters": [],
+        "availableMethods": [
+          "land",
+          "rock",
+          "old_rod"
+        ],
+        "note": ""
+      },
+      {
+        "section": "section-gogoggles-and-the-desert",
+        "places": [
+          "MAP_ROUTE111",
+          "MAP_MIRAGE_TOWER_1F"
+        ],
+        "encounters": [
+          "MAP_ROUTE111",
+          "MAP_MIRAGE_TOWER_1F"
+        ],
+        "availableMethods": [
+          "land",
+          "rock",
+          "old_rod"
+        ],
+        "note": ""
+      },
+      {
+        "section": "section-return-to-petalburg",
+        "places": [
+          "MAPSEC_MAUVILLE_CITY",
+          "MAPSEC_VERDANTURF_TOWN",
+          "MAP_RUSTURF_TUNNEL",
+          "MAPSEC_RUSTBORO_CITY",
+          "MAP_PETALBURG_CITY"
+        ],
+        "encounters": [],
+        "availableMethods": [
+          "land",
+          "rock",
+          "old_rod"
+        ],
+        "note": ""
+      }
+    ],
+    "walkthrough-norman": [
+      {
+        "section": "section-your-goal",
+        "places": [
+          "MAP_PETALBURG_CITY",
+          "MAPSEC_MAUVILLE_CITY",
+          "MAP_ROUTE118"
+        ],
+        "encounters": [],
+        "availableMethods": [
+          "land",
+          "rock",
+          "surf",
+          "old_rod",
+          "good_rod"
+        ],
+        "note": ""
+      },
+      {
+        "section": "section-petalburg-gym",
+        "places": [
+          "MAP_PETALBURG_CITY"
+        ],
+        "encounters": [],
+        "availableMethods": [
+          "land",
+          "rock",
+          "surf",
+          "old_rod",
+          "good_rod"
+        ],
+        "note": ""
+      },
+      {
+        "section": "section-balance-badge-and-surf",
+        "places": [
+          "MAP_PETALBURG_CITY"
+        ],
+        "encounters": [
+          "MAP_PETALBURG_CITY"
+        ],
+        "availableMethods": [
+          "land",
+          "rock",
+          "surf",
+          "old_rod",
+          "good_rod"
+        ],
+        "note": "Surf is available after the Balance Badge. The Good Rod is collected on Route 118 during this chapter."
+      },
+      {
+        "section": "section-what-surf-opens",
+        "places": [
+          "MAP_NEW_MAUVILLE_ENTRANCE",
+          "MAP_NEW_MAUVILLE_INSIDE"
+        ],
+        "encounters": [
+          "MAP_NEW_MAUVILLE_INSIDE"
+        ],
+        "availableMethods": [
+          "land",
+          "rock",
+          "surf",
+          "old_rod",
+          "good_rod"
+        ],
+        "note": "New Mauville is an optional side quest; complete Wattson’s request and key conversation before visiting."
+      },
+      {
+        "section": "section-cross-route-118",
+        "places": [
+          "MAP_ROUTE118",
+          "MAP_ROUTE119"
+        ],
+        "encounters": [
+          "MAP_ROUTE118"
+        ],
+        "availableMethods": [
+          "land",
+          "rock",
+          "surf",
+          "old_rod",
+          "good_rod"
+        ],
+        "note": ""
+      },
+      {
+        "section": "section-ready-for-the-weather-institute",
+        "places": [
+          "MAP_ROUTE119"
+        ],
+        "encounters": [],
+        "availableMethods": [
+          "land",
+          "rock",
+          "surf",
+          "old_rod",
+          "good_rod"
+        ],
+        "note": ""
+      }
+    ],
+    "walkthrough-fortree": [
+      {
+        "section": "section-your-goal",
+        "places": [
+          "MAP_ROUTE119",
+          "MAPSEC_FORTREE_CITY",
+          "MAP_ROUTE120"
+        ],
+        "encounters": [],
+        "availableMethods": [
+          "land",
+          "rock",
+          "surf",
+          "old_rod",
+          "good_rod"
+        ],
+        "note": ""
+      },
+      {
+        "section": "section-up-route-119",
+        "places": [
+          "MAP_ROUTE119"
+        ],
+        "encounters": [
+          "MAP_ROUTE119"
+        ],
+        "availableMethods": [
+          "land",
+          "rock",
+          "surf",
+          "old_rod",
+          "good_rod"
+        ],
+        "note": ""
+      },
+      {
+        "section": "section-rescue-the-weather-institute",
+        "places": [
+          "MAP_ROUTE119"
+        ],
+        "encounters": [],
+        "availableMethods": [
+          "land",
+          "rock",
+          "surf",
+          "old_rod",
+          "good_rod"
+        ],
+        "note": "The institute is on Route 119. Castform is a gift, separate from wild catches."
+      },
+      {
+        "section": "section-rival-battle-and-fortree",
+        "places": [
+          "MAP_ROUTE119",
+          "MAPSEC_FORTREE_CITY"
+        ],
+        "encounters": [],
+        "availableMethods": [
+          "land",
+          "rock",
+          "surf",
+          "old_rod",
+          "good_rod"
+        ],
+        "note": ""
+      },
+      {
+        "section": "section-steven-and-the-devon-scope",
+        "places": [
+          "MAP_ROUTE120"
+        ],
+        "encounters": [
+          "MAP_ROUTE120"
+        ],
+        "availableMethods": [
+          "land",
+          "rock",
+          "surf",
+          "old_rod",
+          "good_rod"
+        ],
+        "note": ""
+      },
+      {
+        "section": "section-winona-and-the-feather-badge",
+        "places": [
+          "MAPSEC_FORTREE_CITY"
+        ],
+        "encounters": [],
+        "availableMethods": [
+          "land",
+          "rock",
+          "surf",
+          "old_rod",
+          "good_rod"
+        ],
+        "note": ""
+      }
+    ],
+    "walkthrough-lilycove": [
+      {
+        "section": "section-your-goal",
+        "places": [
+          "MAP_LILYCOVE_CITY",
+          "MAP_MT_PYRE_SUMMIT",
+          "MAP_JAGGED_PASS",
+          "MAP_SLATEPORT_CITY"
+        ],
+        "encounters": [],
+        "availableMethods": [
+          "land",
+          "rock",
+          "surf",
+          "old_rod",
+          "good_rod"
+        ],
+        "note": ""
+      },
+      {
+        "section": "section-routes-120-and-121-to-lilycove",
+        "places": [
+          "MAP_ROUTE120",
+          "MAP_ROUTE121",
+          "MAP_LILYCOVE_CITY"
+        ],
+        "encounters": [
+          "MAP_ROUTE120",
+          "MAP_ROUTE121"
+        ],
+        "availableMethods": [
+          "land",
+          "rock",
+          "surf",
+          "old_rod",
+          "good_rod"
+        ],
+        "note": ""
+      },
+      {
+        "section": "section-mt-pyre-and-the-magma-emblem",
+        "places": [
+          "MAP_ROUTE122",
+          "MAP_MT_PYRE_EXTERIOR",
+          "MAP_MT_PYRE_SUMMIT"
+        ],
+        "encounters": [
+          "MAP_ROUTE122",
+          "MAP_MT_PYRE_EXTERIOR",
+          "MAP_MT_PYRE_SUMMIT"
+        ],
+        "availableMethods": [
+          "land",
+          "rock",
+          "surf",
+          "old_rod",
+          "good_rod"
+        ],
+        "note": ""
+      },
+      {
+        "section": "section-magma-hideout-beneath-jagged-pass",
+        "places": [
+          "MAP_JAGGED_PASS",
+          "MAP_MAGMA_HIDEOUT_1F"
+        ],
+        "encounters": [
+          "MAP_MAGMA_HIDEOUT_1F",
+          "MAP_MAGMA_HIDEOUT_4F"
+        ],
+        "availableMethods": [
+          "land",
+          "rock",
+          "surf",
+          "old_rod",
+          "good_rod"
+        ],
+        "note": "The hideout marker shows its region-map area. The listed floors use separate encounter tables."
+      },
+      {
+        "section": "section-slateports-submarine-theft",
+        "places": [
+          "MAP_SLATEPORT_CITY"
+        ],
+        "encounters": [],
+        "availableMethods": [
+          "land",
+          "rock",
+          "surf",
+          "old_rod",
+          "good_rod"
+        ],
+        "note": ""
+      },
+      {
+        "section": "section-aqua-hideout-in-lilycove",
+        "places": [
+          "MAP_LILYCOVE_CITY"
+        ],
+        "encounters": [],
+        "availableMethods": [
+          "land",
+          "rock",
+          "surf",
+          "old_rod",
+          "good_rod"
+        ],
+        "note": "The northeast hideout is in Lilycove’s region-map area. Scripted item-ball encounters are not ordinary wild tables."
+      },
+      {
+        "section": "section-ready-for-mossdeep",
+        "places": [
+          "MAP_ROUTE124",
+          "MAP_MOSSDEEP_CITY"
+        ],
+        "encounters": [
+          "MAP_ROUTE124"
+        ],
+        "availableMethods": [
+          "land",
+          "rock",
+          "surf",
+          "old_rod",
+          "good_rod"
+        ],
+        "note": ""
+      }
+    ],
+    "walkthrough-mossdeep": [
+      {
+        "section": "section-your-goal",
+        "places": [
+          "MAP_ROUTE124",
+          "MAP_MOSSDEEP_CITY"
+        ],
+        "encounters": [],
+        "availableMethods": [
+          "land",
+          "rock",
+          "surf",
+          "old_rod",
+          "good_rod",
+          "super_rod"
+        ],
+        "note": ""
+      },
+      {
+        "section": "section-route-124-to-mossdeep",
+        "places": [
+          "MAP_ROUTE124",
+          "MAP_MOSSDEEP_CITY",
+          "MAP_ROUTE125"
+        ],
+        "encounters": [
+          "MAP_ROUTE124",
+          "MAP_MOSSDEEP_CITY"
+        ],
+        "availableMethods": [
+          "land",
+          "rock",
+          "surf",
+          "old_rod",
+          "good_rod",
+          "super_rod"
+        ],
+        "note": "Super Rod methods become available after you collect the rod in Mossdeep."
+      },
+      {
+        "section": "section-prepare-two-reliable-battlers",
+        "places": [
+          "MAP_MOSSDEEP_CITY"
+        ],
+        "encounters": [],
+        "availableMethods": [
+          "land",
+          "rock",
+          "surf",
+          "old_rod",
+          "good_rod",
+          "super_rod"
+        ],
+        "note": ""
+      },
+      {
+        "section": "section-tate-and-liza",
+        "places": [
+          "MAP_MOSSDEEP_CITY"
+        ],
+        "encounters": [],
+        "availableMethods": [
+          "land",
+          "rock",
+          "surf",
+          "old_rod",
+          "good_rod",
+          "super_rod"
+        ],
+        "note": ""
+      },
+      {
+        "section": "section-the-space-center-crisis",
+        "places": [
+          "MAP_MOSSDEEP_CITY"
+        ],
+        "encounters": [],
+        "availableMethods": [
+          "land",
+          "rock",
+          "surf",
+          "old_rod",
+          "good_rod",
+          "super_rod"
+        ],
+        "note": ""
+      },
+      {
+        "section": "section-stevens-house-and-dive",
+        "places": [
+          "MAP_MOSSDEEP_CITY",
+          "MAP_ROUTE127",
+          "MAP_ROUTE128"
+        ],
+        "encounters": [
+          "MAP_ROUTE127",
+          "MAP_ROUTE128"
+        ],
+        "availableMethods": [
+          "land",
+          "rock",
+          "surf",
+          "old_rod",
+          "good_rod",
+          "super_rod"
+        ],
+        "note": ""
+      }
+    ],
+    "walkthrough-sootopolis": [
+      {
+        "section": "section-your-goal",
+        "places": [
+          "MAP_ROUTE128",
+          "MAP_SOOTOPOLIS_CITY",
+          "MAP_SKY_PILLAR_1F"
+        ],
+        "encounters": [],
+        "availableMethods": [
+          "land",
+          "rock",
+          "surf",
+          "old_rod",
+          "good_rod",
+          "super_rod"
+        ],
+        "note": ""
+      },
+      {
+        "section": "section-route-128-and-seafloor-cavern",
+        "places": [
+          "MAP_ROUTE128",
+          "MAP_SEAFLOOR_CAVERN_ENTRANCE"
+        ],
+        "encounters": [
+          "MAP_ROUTE128",
+          "MAP_SEAFLOOR_CAVERN_ROOM1",
+          "MAP_SEAFLOOR_CAVERN_ROOM8"
+        ],
+        "availableMethods": [
+          "land",
+          "rock",
+          "surf",
+          "old_rod",
+          "good_rod",
+          "super_rod"
+        ],
+        "note": "Underwater access leads into the cavern. Regional markers show the named cave area, not an exact indoor puzzle path."
+      },
+      {
+        "section": "section-enter-sootopolis",
+        "places": [
+          "MAP_ROUTE126",
+          "MAP_UNDERWATER_ROUTE126",
+          "MAP_SOOTOPOLIS_CITY",
+          "MAP_CAVE_OF_ORIGIN_ENTRANCE"
+        ],
+        "encounters": [
+          "MAP_ROUTE126",
+          "MAP_UNDERWATER_ROUTE126"
+        ],
+        "availableMethods": [
+          "land",
+          "rock",
+          "surf",
+          "old_rod",
+          "good_rod",
+          "super_rod"
+        ],
+        "note": ""
+      },
+      {
+        "section": "section-sky-pillar",
+        "places": [
+          "MAP_PACIFIDLOG_TOWN",
+          "MAP_ROUTE131",
+          "MAP_SKY_PILLAR_1F"
+        ],
+        "encounters": [
+          "MAP_ROUTE131",
+          "MAP_SKY_PILLAR_1F"
+        ],
+        "availableMethods": [
+          "land",
+          "rock",
+          "surf",
+          "old_rod",
+          "good_rod",
+          "super_rod"
+        ],
+        "note": ""
+      },
+      {
+        "section": "section-juan-and-the-rain-badge",
+        "places": [
+          "MAP_SOOTOPOLIS_CITY"
+        ],
+        "encounters": [],
+        "availableMethods": [
+          "land",
+          "rock",
+          "surf",
+          "old_rod",
+          "good_rod",
+          "super_rod"
+        ],
+        "note": ""
+      },
+      {
+        "section": "section-waterfall-and-the-league-route",
+        "places": [
+          "MAP_SOOTOPOLIS_CITY",
+          "MAP_EVER_GRANDE_CITY"
+        ],
+        "encounters": [],
+        "availableMethods": [
+          "land",
+          "rock",
+          "surf",
+          "old_rod",
+          "good_rod",
+          "super_rod"
+        ],
+        "note": ""
+      }
+    ],
+    "walkthrough-league": [
+      {
+        "section": "section-your-goal",
+        "places": [
+          "MAP_EVER_GRANDE_CITY",
+          "MAP_VICTORY_ROAD_1F"
+        ],
+        "encounters": [],
+        "availableMethods": [
+          "land",
+          "rock",
+          "surf",
+          "old_rod",
+          "good_rod",
+          "super_rod"
+        ],
+        "note": ""
+      },
+      {
+        "section": "section-prepare-for-ever-grande",
+        "places": [
+          "MAP_ROUTE128",
+          "MAP_EVER_GRANDE_CITY"
+        ],
+        "encounters": [],
+        "availableMethods": [
+          "land",
+          "rock",
+          "surf",
+          "old_rod",
+          "good_rod",
+          "super_rod"
+        ],
+        "note": ""
+      },
+      {
+        "section": "section-ever-grande-and-victory-road",
+        "places": [
+          "MAP_EVER_GRANDE_CITY",
+          "MAP_VICTORY_ROAD_1F"
+        ],
+        "encounters": [
+          "MAP_VICTORY_ROAD_1F",
+          "MAP_VICTORY_ROAD_B1F",
+          "MAP_VICTORY_ROAD_B2F"
+        ],
+        "availableMethods": [
+          "land",
+          "rock",
+          "surf",
+          "old_rod",
+          "good_rod",
+          "super_rod"
+        ],
+        "note": ""
+      },
+      {
+        "section": "section-the-league-checkpoint",
+        "places": [
+          "MAP_EVER_GRANDE_CITY"
+        ],
+        "encounters": [],
+        "availableMethods": [
+          "land",
+          "rock",
+          "surf",
+          "old_rod",
+          "good_rod",
+          "super_rod"
+        ],
+        "note": ""
+      },
+      {
+        "section": "section-the-elite-four",
+        "places": [
+          "MAP_EVER_GRANDE_CITY"
+        ],
+        "encounters": [],
+        "availableMethods": [
+          "land",
+          "rock",
+          "surf",
+          "old_rod",
+          "good_rod",
+          "super_rod"
+        ],
+        "note": ""
+      },
+      {
+        "section": "section-champion-wallace",
+        "places": [
+          "MAP_EVER_GRANDE_CITY"
+        ],
+        "encounters": [],
+        "availableMethods": [
+          "land",
+          "rock",
+          "surf",
+          "old_rod",
+          "good_rod",
+          "super_rod"
+        ],
+        "note": ""
+      }
     ]
+  },
+  "regions": {
+    "Hoenn": {
+      "image": "map-hoenn.png",
+      "towns": [
+        {
+          "name": "Littleroot Town",
+          "x": 32,
+          "y": 88,
+          "width": 8,
+          "height": 8
+        },
+        {
+          "name": "Oldale Town",
+          "x": 32,
+          "y": 72,
+          "width": 8,
+          "height": 8
+        },
+        {
+          "name": "Dewford Town",
+          "x": 16,
+          "y": 112,
+          "width": 8,
+          "height": 8
+        },
+        {
+          "name": "Lavaridge Town",
+          "x": 40,
+          "y": 24,
+          "width": 8,
+          "height": 8
+        },
+        {
+          "name": "Fallarbor Town",
+          "x": 24,
+          "y": 0,
+          "width": 8,
+          "height": 8
+        },
+        {
+          "name": "Verdanturf Town",
+          "x": 32,
+          "y": 48,
+          "width": 8,
+          "height": 8
+        },
+        {
+          "name": "Pacifidlog Town",
+          "x": 136,
+          "y": 80,
+          "width": 8,
+          "height": 8
+        },
+        {
+          "name": "Petalburg City",
+          "x": 8,
+          "y": 72,
+          "width": 8,
+          "height": 8
+        },
+        {
+          "name": "Slateport City",
+          "x": 64,
+          "y": 80,
+          "width": 8,
+          "height": 16
+        },
+        {
+          "name": "Mauville City",
+          "x": 64,
+          "y": 48,
+          "width": 16,
+          "height": 8
+        },
+        {
+          "name": "Rustboro City",
+          "x": 0,
+          "y": 40,
+          "width": 8,
+          "height": 16
+        },
+        {
+          "name": "Fortree City",
+          "x": 96,
+          "y": 0,
+          "width": 8,
+          "height": 8
+        },
+        {
+          "name": "Lilycove City",
+          "x": 144,
+          "y": 24,
+          "width": 16,
+          "height": 8
+        },
+        {
+          "name": "Mossdeep City",
+          "x": 192,
+          "y": 40,
+          "width": 16,
+          "height": 8
+        },
+        {
+          "name": "Sootopolis City",
+          "x": 168,
+          "y": 56,
+          "width": 8,
+          "height": 8
+        },
+        {
+          "name": "Ever Grande City",
+          "x": 216,
+          "y": 64,
+          "width": 8,
+          "height": 16
+        }
+      ]
+    },
+    "Kanto": {
+      "image": "map-kanto.png",
+      "towns": [
+        {
+          "name": "Pallet Town",
+          "x": 32,
+          "y": 88,
+          "width": 8,
+          "height": 8
+        },
+        {
+          "name": "Viridian City",
+          "x": 32,
+          "y": 64,
+          "width": 8,
+          "height": 8
+        },
+        {
+          "name": "Pewter City",
+          "x": 32,
+          "y": 32,
+          "width": 8,
+          "height": 8
+        },
+        {
+          "name": "Cerulean City",
+          "x": 112,
+          "y": 24,
+          "width": 8,
+          "height": 8
+        },
+        {
+          "name": "Vermilion City",
+          "x": 112,
+          "y": 72,
+          "width": 8,
+          "height": 8
+        },
+        {
+          "name": "Lavender Town",
+          "x": 144,
+          "y": 48,
+          "width": 8,
+          "height": 8
+        },
+        {
+          "name": "Celadon City",
+          "x": 88,
+          "y": 48,
+          "width": 8,
+          "height": 8
+        },
+        {
+          "name": "Fuchsia City",
+          "x": 96,
+          "y": 96,
+          "width": 8,
+          "height": 8
+        },
+        {
+          "name": "Cinnabar Island",
+          "x": 32,
+          "y": 112,
+          "width": 8,
+          "height": 8
+        },
+        {
+          "name": "Saffron City",
+          "x": 112,
+          "y": 48,
+          "width": 8,
+          "height": 8
+        },
+        {
+          "name": "Indigo Plateau",
+          "x": 16,
+          "y": 24,
+          "width": 8,
+          "height": 8
+        }
+      ]
+    }
   }
 }
