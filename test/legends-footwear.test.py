@@ -18,7 +18,9 @@ pre=r'''
 #include <stdint.h>
 #include <stdio.h>
 #include <string.h>
-typedef uint8_t u8;typedef uint16_t u16;typedef uint32_t u32;typedef int32_t s32;
+typedef uint8_t u8;typedef uint16_t u16;typedef uint32_t u32;typedef int32_t s32;typedef int bool8;
+#define TRUE 1
+#define FALSE 0
 #define EWRAM_DATA
 #define ALIGNED(x)
 #define ARRAY_COUNT(x) (sizeof(x)/sizeof((x)[0]))
@@ -26,8 +28,11 @@ typedef uint8_t u8;typedef uint16_t u16;typedef uint32_t u32;typedef int32_t s32
 #define LEGENDS_OUTFIT_COUNT 5
 struct SpriteFrameImage {const u8 *data;u16 size;};
 enum TrainerPicID {TRAINER_PIC_LEGENDS_BRENDAN_EMERALD=200,TRAINER_PIC_LEGENDS_ACCESSORY_0=210,TRAINER_PIC_LEGENDS_COSTUME_0=240};
-static u8 shoes,costume,card;
+static u8 shoes,costume,card,hair,coat;
 u8 LegendsGetShoes(void){return shoes;}u8 LegendsGetCostume(void){return costume;}u8 LegendsGetCardColor(void){return card;}
+u8 LegendsGetHair(void){return hair;}u8 LegendsGetJacketStyle(void){return coat;}
+void LegendsPaintStyle(u8 *p,u8 w,u8 h,u8 g,int b,u8 s,u8 c){(void)p;(void)w;(void)h;(void)g;(void)b;(void)s;(void)c;}
+void LegendsPolishBoots(u8*p,u8 w,u8 h){(void)p;(void)w;(void)h;}
 void LegendsUpdateAppearancePalettes(void){}
 void DecompressDataWithHeaderWram(const u32*s,void*d){memcpy(d,s,2048);}
 static u16 cardPal[48];

@@ -44,6 +44,9 @@ enum TrainerPicID {TRAINER_PIC_LEGENDS_BRENDAN_EMERALD=200};
 #define LEGENDS_COSTUME_COUNT 3
 #define LEGENDS_SHOE_COUNT 8
 #define LEGENDS_CARD_COLOR_COUNT 8
+#define LEGENDS_HAIR_COUNT 11
+#define LEGENDS_JACKET_COUNT 3
+#define VAR_LEGENDS_HAIR 5
 #define VAR_LEGENDS_SHOES 3
 #define VAR_LEGENDS_CARD_COLOR 4
 #define VAR_LEGENDS_COSTUME 2
@@ -51,16 +54,30 @@ enum TrainerPicID {TRAINER_PIC_LEGENDS_BRENDAN_EMERALD=200};
 #define VAR_LEGENDS_ACCESSORIES 1
 #define TRAINER_PIC_LEGENDS_ACCESSORY_0 210
 #define VAR_LEGENDS_APPEARANCE 0
-static u16 value,accessories,costume,shoes,card;
-u16 VarGet(u16 id){return id==4?card:id==3?shoes:id==2?costume:id==1?accessories:value;}
-void VarSet(u16 id,u16 v){if(id==4)card=v;else if(id==3)shoes=v;else if(id==2)costume=v;else if(id==1)accessories=v;else value=v;}
-u8 LegendsGetShoes(void);u8 LegendsGetCardColor(void);
+static u16 value,accessories,costume,shoes,card,hair;
+u16 VarGet(u16 id){return id==5?hair:id==4?card:id==3?shoes:id==2?costume:id==1?accessories:value;}
+void VarSet(u16 id,u16 v){if(id==5)hair=v;else if(id==4)card=v;else if(id==3)shoes=v;else if(id==2)costume=v;else if(id==1)accessories=v;else value=v;}
+u8 LegendsGetShoes(void);u8 LegendsGetCardColor(void);u8 LegendsGetHair(void);
 void LegendsPrepareFootwearPalette(u16*p,u8 g,u8 k){}
 void LegendsClearAppearanceSelection(void);
 void LegendsUpdateAppearancePalettes(void);
 '''
 main=r'''
 int main(void){
+// Eleven hair choices, legacy-zero defaults and staged cancel/apply semantics.
+for(int h=0;h<11;h++){
+ hair=0;LegendsClearAppearanceSelection();LegendsBeginWardrobeSelection();LegendsSetHairSelection(h);
+ assert(LegendsGetHair()==h&&hair==0);
+ LegendsClearAppearanceSelection();assert(LegendsGetHair()==0);
+ LegendsBeginWardrobeSelection();LegendsSetHairSelection(h);LegendsApplyWardrobeSelection();assert(hair==h);
+ LegendsBeginAppearanceSelection();LegendsApplyAppearanceToNewGame();assert(hair==0);
+}
+hair=65535;LegendsClearAppearanceSelection();assert(LegendsGetHair()==0);hair=0;
+for(int j=0;j<3;j++){
+ accessories=0;LegendsClearAppearanceSelection();LegendsBeginWardrobeSelection();LegendsSetAccessorySelection(3,j);
+ assert(LegendsGetJacketStyle()==j&&LegendsGetScarf()==3&&accessories==0);
+ LegendsApplyWardrobeSelection();assert(accessories==j*6+3);
+}accessories=0;LegendsClearAppearanceSelection();
 for(int s=0;s<8;s++)for(int c=0;c<8;c++){
  shoes=0;card=0;LegendsClearAppearanceSelection();LegendsBeginWardrobeSelection();
  LegendsSetShoeSelection(s);LegendsSetCardColorSelection(c);

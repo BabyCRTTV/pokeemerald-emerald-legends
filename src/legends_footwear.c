@@ -16,10 +16,16 @@ EWRAM_DATA static const struct SpriteFrameImage *sWorldSource = NULL;
 EWRAM_DATA static u8 sWorldState = 0;
 EWRAM_DATA static u8 sWorldBoots = 0;
 EWRAM_DATA static u8 sWorldGender = 0;
+EWRAM_DATA static u8 sWorldHair = 0;
+EWRAM_DATA static u8 sWorldCoat = 0;
+EWRAM_DATA static u8 sWorldShoes = 0;
 EWRAM_DATA static u8 sRemap[2][3][2] = {0};
 EWRAM_DATA static u32 sFrontPic[2][577] = {0};
 EWRAM_DATA static const u32 *sFrontSource[2] = {0};
 EWRAM_DATA static u8 sFrontBoots[2] = {0};
+EWRAM_DATA static u8 sFrontShoes[2] = {0};
+EWRAM_DATA static u8 sFrontHair[2] = {0};
+EWRAM_DATA static u8 sFrontCoat[2] = {0};
 EWRAM_DATA static u8 sFrontPixels[2048] = {0};
 
 static const u16 sShoeColors[7][2] = {
@@ -68,7 +74,7 @@ void LegendsPrepareFootwearPalette(u16 *palette, u8 gender, u8 kind)
     sFrontSource[gender] = NULL;
 }
 
-static void Compose(u8 *dest, const u8 *src, const u8 *mask, u32 size, u8 gender, u8 kind)
+static void Compose(u8 *dest, const u8 *src, const u8 *mask, u32 size, u8 gender, u8 kind, bool8 footwear)
 {
     u32 i, shift;
     for (i = 0; i < size; i++)
@@ -78,7 +84,7 @@ static void Compose(u8 *dest, const u8 *src, const u8 *mask, u32 size, u8 gender
         {
             u8 pixel = (src[i] >> shift) & 15;
             u8 overlay = mask == NULL ? 0 : (mask[i] >> shift) & 15;
-            if (pixel == 6 || pixel == 7)
+            if (footwear && (pixel == 6 || pixel == 7))
                 pixel = sRemap[gender][kind][pixel - 6];
             if (overlay)
                 pixel = overlay == 3 ? 15 : overlay == 1 ? 6 : 7;
@@ -91,27 +97,42 @@ static void Compose(u8 *dest, const u8 *src, const u8 *mask, u32 size, u8 gender
 const struct SpriteFrameImage *LegendsFootwearImages(const struct SpriteFrameImage *images, u8 gender, u8 state)
 {
     u32 i, offset = 0;
-    u8 boots = LegendsGetShoes() >= 6;
-    if (!LegendsGetShoes() || LegendsGetCostume() || state == 4)
-        return images; // Diving sprites remain byte-for-byte native.
-    if (sWorldSource == images && sWorldGender == gender && sWorldState == state && sWorldBoots == boots)
+    u8 shoes = LegendsGetShoes();
+    u8 boots = shoes >= 6;
+    u8 hair = LegendsGetHair();
+    u8 coat = LegendsGetJacketStyle();
+    // The native diving suit, including its head covering and original
+    // palette, is intentionally unaffected by wardrobe layers.
+    if (LegendsGetCostume() || state == 4 || (!shoes && !hair && coat != 2))
+        return images;
+    if (sWorldSource == images && sWorldGender == gender && sWorldState == state
+        && sWorldBoots == boots && sWorldShoes == shoes
+        && sWorldHair == hair && sWorldCoat == coat)
         return sWorldImages;
     for (i = 0; i < sFootwearFrameCount[gender][state]; i++)
     {
         u32 size = images[i].size;
-        // All native player frames are uncompressed, 16x32 or 32x32.
+        u8 width = state == 0 ? 16 : 32;
+        // Reuse the original 13.5 KiB bank: no extra animation-frame heap.
         if (size > 512 || offset + size > sizeof(sWorldPixels))
             return images;
         sWorldImages[i].data = sWorldPixels + offset;
         sWorldImages[i].size = size;
         Compose(sWorldPixels + offset, images[i].data,
-            sFootwearMasks[gender][state][boots] + offset, size, gender, state == 4 ? 2 : 0);
+            shoes ? sFootwearMasks[gender][state][boots] + offset : NULL,
+            size, gender, 0, shoes != 0);
+        if (shoes >= 6)
+            LegendsPolishBoots(sWorldPixels + offset, width, 32);
+        LegendsPaintStyle(sWorldPixels + offset, width, 32, gender, FALSE, hair, coat);
         offset += size;
     }
     sWorldSource = images;
     sWorldGender = gender;
     sWorldState = state;
     sWorldBoots = boots;
+    sWorldShoes = shoes;
+    sWorldHair = hair;
+    sWorldCoat = coat;
     return sWorldImages;
 }
 
@@ -126,17 +147,25 @@ static u8 PicGender(enum TrainerPicID pic)
 
 const u32 *LegendsFootwearFrontPic(enum TrainerPicID pic, const u32 *data)
 {
-    u8 gender = PicGender(pic), boots = LegendsGetShoes() >= 6;
+    u8 gender = PicGender(pic), shoes = LegendsGetShoes();
+    u8 boots = shoes >= 6, hair = LegendsGetHair(), coat = LegendsGetJacketStyle();
     u8 *out;
     u32 i, pos;
-    if (gender > 1 || !LegendsGetShoes() || LegendsGetCostume())
+    if (gender > 1 || LegendsGetCostume() || (!shoes && !hair && coat != 2))
         return data;
     LegendsUpdateAppearancePalettes();
-    if (sFrontSource[gender] == data && sFrontBoots[gender] == boots)
+    if (sFrontSource[gender] == data && sFrontBoots[gender] == boots
+        && sFrontShoes[gender] == shoes && sFrontHair[gender] == hair
+        && sFrontCoat[gender] == coat)
         return sFrontPic[gender];
     DecompressDataWithHeaderWram(data, sFrontPixels);
-    Compose(sFrontPixels, sFrontPixels, sFootwearFrontMasks[gender][boots], 2048, gender, 1);
-    // Native literal LZ stream: all existing front-pic consumers keep working.
+    if (shoes)
+        Compose(sFrontPixels, sFrontPixels, sFootwearFrontMasks[gender][boots],
+                2048, gender, 1, TRUE);
+    if (shoes >= 6)
+        LegendsPolishBoots(sFrontPixels, 64, 64);
+    LegendsPaintStyle(sFrontPixels, 64, 64, gender, FALSE, hair, coat);
+    // Native literal LZ stream: existing portrait / Trainer Card consumers.
     sFrontPic[gender][0] = 0x00080010;
     out = (u8 *)sFrontPic[gender];
     pos = 4;
@@ -148,17 +177,26 @@ const u32 *LegendsFootwearFrontPic(enum TrainerPicID pic, const u32 *data)
     }
     sFrontSource[gender] = data;
     sFrontBoots[gender] = boots;
+    sFrontShoes[gender] = shoes;
+    sFrontHair[gender] = hair;
+    sFrontCoat[gender] = coat;
     return sFrontPic[gender];
 }
 
 void LegendsFootwearBackPic(enum TrainerPicID pic, u8 *data, u32 size)
 {
     u8 gender = PicGender(pic);
-    if (gender > 1 || !LegendsGetShoes() || LegendsGetCostume())
+    u8 shoes = LegendsGetShoes(), hair = LegendsGetHair(), coat = LegendsGetJacketStyle();
+    u32 i;
+    if (gender > 1 || LegendsGetCostume() || (!shoes && !hair && coat != 2))
         return;
     LegendsUpdateAppearancePalettes();
-    // Feet are outside the native throwing portraits; remap shared shadows only.
-    Compose(data, data, NULL, size, gender, 1);
+    for (i = 0; i + 2048 <= size; i += 2048)
+    {
+        if (shoes) // Native back pictures omit the feet, but share shadow slots.
+            Compose(data + i, data + i, NULL, 2048, gender, 1, TRUE);
+        LegendsPaintStyle(data + i, 64, 64, gender, TRUE, hair, coat);
+    }
 }
 
 static u16 Tint(u16 color, u8 light)

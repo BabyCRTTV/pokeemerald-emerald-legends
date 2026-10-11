@@ -55,6 +55,8 @@ jobs:
           python3 test/legends-appearance-assets.test.py
       - name: Verify native window frame assets and selection
         run: python3 test/legends-window-frames.test.py
+      - name: Verify native hair / coat 4bpp layer geometry
+        run: python3 test/legends-style-layers.test.py
       - name: Verify footwear compositor and protected sprite colors
         run: python3 test/legends-footwear.test.py
       - name: Exercise wardrobe navigation and access

@@ -64,3 +64,13 @@ The overworld compositor uses one 13.5 KiB bank sized by the generated native po
 ## Underwater color preservation (v0.0.36.1)
 
 Choosing colored shoes or boots no longer remaps native diving-suit palette indices or modifies underwater sprite frames. Diving shoes are not visible, so the existing unmodified art is used. This focused compatibility fix is not the full requested wardrobe redesign; dry-land palette sharing, improved boot/coating silhouettes, a gender-tailored shearling winter coat, and ten working hairstyles need further artwork and playtests.
+
+## Hairstyles and winter outerwear (v0.0.37)
+
+The opening customization now goes from gender to skin tone, then hairstyle, then outfit. The hairstyle step uses Left/Right for a live one-row portrait preview rather than squeezing all eleven choices into a five-row window. The original Emerald hat is still available, plus Crop, Side Part, Spikes, Side Sweep, Tousled, Pixie, Bob, Curls, Ponytail and Twin Tails. The wardrobe HAIR row lets existing characters change the same choice without restarting. Team Magma and Aqua grunt costumes retain the native hood/bandana, leaving the underlying hairstyle saved for ordinary outfits.
+
+The JACKET row now offers None, Navy and Winter. Winter adds an ivory shearling collar over dark tailored panels with small buttons; the female silhouette narrows at the waist. Existing scarves, outfits and card/footwear settings are preserved. Old accessory values 0-11 remain valid; winter codes occupy 12-17 using the same existing wardrobe variable. Existing saves default to original hair through the verified-unreferenced native Mauville state var; New Game resets it to zero. No saved structure size or link protocol changes.
+
+`src/legends_style_layers.c` paints discrete 4bpp silhouette masks over pose-correct local player frames and the trainer front/back portraits. It does not allocate additional large frame buffers or alter shared hair/eye palette colors to differentiate the ten shapes. Native head skin and eye pixels are kept below the crown edit boundary, and coat overlays preserve skin, Poké Ball and outline indices. The 13.5 KiB frame cache in `src/legends_footwear.c` is reused. Diving art remains unchanged regardless of the chosen hairstyle, jacket or footwear. This does not replace the need for visual emulator QA: manually inspect hair/hat removal, side and back facing, both bikes, fishing, field moves, throw animations and winter collars on all five skin tones.
+
+Light-brown and black boot art also receives extra rolled-cuff outlines and continuous sole pixels after the existing native footwear masks are applied, without changing the shared 4bpp palette.
