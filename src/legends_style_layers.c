@@ -23,20 +23,27 @@ static int Magnitude(int a) { return a < 0 ? -a : a; }
 // Additional strands below the crown only occupy transparent side pixels.
 static bool8 HairAt(u8 style, int dx, int dy, int radius, int height)
 {
-    int adx = Magnitude(dx), edge = radius - (height - dy) / 5;
+    int adx = Magnitude(dx), edge;
     if (dy < 0 || dy >= height) return FALSE;
+    // Rounded crown: 7px at the apex, widening into the temples.
+    edge = 3 + dy * 2;
+    if (edge > radius) edge = radius;
+    if (dy >= height - 3) edge -= (dy - (height - 3)) / 2;
     switch (style)
     {
-    case 1: return adx <= edge && dy >= (adx * 2) / 5; // cropped round
-    case 2: return dx >= -radius && dx <= edge + 1 && dy >= (dx < 0 ? 3 : 0); // side part
-    case 3: return adx <= radius && (dy >= 3 || (dx % 3 == 0 && dy >= 0)); // spiked
-    case 4: return dx >= -edge - 1 && dx <= edge && dy >= (dx > 0 ? 2 : 0); // swept fringe
-    case 5: return adx <= edge && dy >= ((dx + radius) % 4 == 0 ? 0 : 2); // tousled
-    case 6: return adx <= radius - 2 && dy >= adx / 2 + 1; // short pixie
-    case 7: return adx <= radius && dy >= adx / 4; // bob crown
-    case 8: return adx <= radius && (dy >= 3 || (adx % 4 < 2 && dy >= 1)); // curls
-    case 9: return adx <= edge && dy >= (dx < 0 ? 1 : 3); // swept pony
-    case 10:return adx <= edge && dy >= (adx / 5); // twin tails
+    case 1: return adx <= edge && dy >= adx / 4; // crop
+    case 2: return dx >= -edge - 1 && dx <= edge && dy >= (dx < -1 ? 3 : 0)
+                && !(dx == -2 && dy < 4); // side part
+    case 3: return (adx <= edge && dy >= 2)
+                || (dy <= 3 && adx <= radius && dx % 5 >= 0 && dx % 5 <= 1); // spikes
+    case 4: return dx >= -edge - 2 && dx <= (edge > 2 ? edge - 2 : 1)
+                && dy >= (dx > 3 ? 3 : 0); // side sweep
+    case 5: return adx <= edge && dy >= ((dx + radius) % 5 <= 1 ? 0 : 2); // tousled
+    case 6: return adx <= (edge > 2 ? edge - 2 : 1) && dy >= adx / 3; // pixie
+    case 7: return adx <= edge && dy >= adx / 5; // bob
+    case 8: return adx <= edge && (dy >= 3 || (adx % 4 <= 1 && dy >= 1)); // curls
+    case 9: return dx >= -edge && dx <= edge && dy >= (dx < 0 ? 1 : 3); // pony
+    case 10:return adx <= edge && dy >= adx / 5; // twin tails
     default:return FALSE;
     }
 }
@@ -91,8 +98,8 @@ void LegendsPaintStyle(u8 *bits, u8 width, u8 height, u8 gender, bool8 isBack, u
                 if (HairAt(hairstyle, dx, dy, radius, headHeight))
                 {
                     // 4 and 8 are stable dark hair shades; 5 adds fine highlights.
-                    color = (dx == -radius + 2 || (dy == 3 && (dx + radius) % 5 == 0)) ? 5
-                          : (Magnitude(dx) >= radius - 1 || dy <= 1 ? 8 : 4);
+                    color = (dy == 5 && dx % 8 == 0) ? 5
+                          : (Magnitude(dx) >= radius - 2 || dy <= 1 ? 8 : 4);
                     Put(bits, width, x, y, color);
                 }
                 else if (Magnitude(dx) <= radius && y >= headTop - 1)
@@ -142,14 +149,16 @@ void LegendsPaintStyle(u8 *bits, u8 width, u8 height, u8 gender, bool8 isBack, u
                 if (old == 0 && Magnitude(dx) > torsoRadius) continue;
                 if (old == 0 || old == 1 || old == 2 || old == 3 || old == 12 || old == 13 || old == 15)
                     continue;
-                // Keep the explicit scarf-color slot intact if selected.
-                if (old == 14) continue;
-                if (length < (height == 64 ? 4 : 2) && Magnitude(dx) < extent - 1)
+                // Native light highlights may be recolored into shearling, but
+                // an explicitly selected scarf retains its own reserved slot.
+                if (old == 14 && LegendsGetScarf()) continue;
+                if (length < (height == 64 ? 6 : 3) && Magnitude(dx) < extent - 1
+                    && (Magnitude(dx) > 2 || length < 2))
                     Put(bits,width,x,y,9);
                 else if (dx == 0 && length % 5 == 0)
-                    Put(bits,width,x,y,9); // buttons
+                    Put(bits,width,x,y,9); // bright coat buttons
                 else
-                    Put(bits,width,x,y,(Magnitude(dx) >= extent - 1 || dx > 0) ? 8 : 5);
+                    Put(bits,width,x,y,(Magnitude(dx) >= extent - 1 || dx > 0) ? 8 : 4);
             }
         }
     }
