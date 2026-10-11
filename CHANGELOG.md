@@ -8,6 +8,7 @@ For build-specific player views, see [CHANGELOG-RELEASE.md](CHANGELOG-RELEASE.md
 
 - Fix bright horizontal stripes and the cyan top ramp in seasonal outdoor plain battle backgrounds, including scripted Stunky and ordinary trainer encounters. Normalize only their shared stripe/sky palette indices to native tall-grass colors before seasonal tinting; preserve plain platforms, battle terrain mechanics, sprites, UI and special/indoor backgrounds.
 - Exercise all four seasons, all 20 native weather IDs and wild/scripted-first/trainer flags, including repeated palette restoration and sand/ash exclusions. Shared fix in Release and Debug; no variant-specific differences or save-layout changes.
+- mGBA 0.10.2 rendered 240 native battle scenes across four seasons, twenty map-weather inputs and Poochyena/first-battle Stunky/May configurations. Eligible stripe/sky palette slots match; ash and sand retain native backgrounds, including dynamic weather resolving to sandstorm. Controlled native battle entry was used; this is not a full story walkthrough.
 
 ## [0.0.32] - 2026-10-11
 
