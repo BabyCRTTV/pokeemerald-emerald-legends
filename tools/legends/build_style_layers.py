@@ -9,38 +9,6 @@ import json,re,struct
 from PIL import Image,ImageDraw
 from build_appearance import ROOT,STATES,FILES,frames,skin_components,hand_pixels,ball_pixels
 
-# Deliberately drawn small silhouettes, with coherent crowns, parting and tufts.
-# Geometry is normalized to a 16x14 head, then drawn at each native pose's size.
-SHAPES=[
- [(2,5),(3,2),(6,1),(11,1),(14,3),(15,6),(14,9),(2,9)],
- [(1,6),(2,3),(6,1),(12,1),(15,4),(15,8),(11,9),(9,5),(5,8),(1,9)],
- [(1,8),(2,4),(4,5),(5,0),(8,3),(10,0),(12,4),(14,2),(15,8),(13,10),(2,10)],
- [(1,7),(2,3),(6,1),(12,1),(15,4),(14,7),(10,8),(5,10),(1,10)],
- [(1,7),(0,5),(3,4),(3,1),(6,2),(9,0),(11,2),(14,2),(14,5),(16,6),(14,10),(3,10)],
- [(2,7),(3,4),(6,2),(11,2),(14,4),(14,8),(11,9),(8,6),(5,9),(2,9)],
- [(1,11),(1,5),(3,2),(7,1),(11,1),(14,3),(15,6),(15,12),(12,13),(10,9),(4,9),(3,13)],
- [(1,10),(0,7),(1,5),(1,3),(4,2),(6,0),(9,1),(12,0),(14,3),(16,5),(15,8),(16,11),(13,13),(11,10),(4,10),(3,13)],
- [(2,8),(2,4),(5,1),(11,1),(14,3),(15,7),(13,10),(10,8),(5,8),(3,10)],
- [(2,9),(1,5),(4,2),(7,1),(11,1),(14,3),(15,7),(13,10),(10,8),(5,8),(3,10)],
-]
-
-
-# Separate female contours: softer cropped layers, longer asymmetric fringes,
-# feathered spikes, rounded bob/curls and higher/longer tied styles. Choice IDs
-# and broad names stay shared; actual silhouettes are deliberately independent.
-FEMALE_SHAPES=[
- [(2,9),(1,5),(3,2),(6,1),(11,1),(14,3),(15,7),(13,10),(11,8),(8,9),(5,10)],
- [(1,10),(1,5),(4,2),(8,0),(12,1),(15,4),(15,10),(12,12),(10,8),(6,6),(4,11)],
- [(0,7),(3,4),(2,1),(6,2),(8,0),(10,2),(13,1),(12,4),(16,6),(14,10),(11,12),(9,8),(4,10)],
- [(0,8),(2,4),(6,1),(10,0),(14,2),(15,5),(13,8),(9,11),(5,12),(2,10)],
- [(0,10),(1,6),(3,5),(2,3),(5,1),(8,2),(11,0),(14,3),(16,7),(14,10),(15,12),(11,13),(8,9),(4,12)],
- [(1,8),(3,3),(7,1),(12,2),(14,5),(13,9),(11,11),(8,7),(5,10),(3,11)],
- [(0,12),(0,5),(3,2),(7,0),(12,1),(15,4),(16,10),(15,14),(12,16),(10,10),(5,10),(4,15),(2,16)],
- [(0,13),(1,10),(0,7),(2,5),(1,3),(4,1),(6,2),(8,0),(10,1),(13,0),(15,3),(16,6),(15,9),(17,11),(15,14),(12,16),(10,11),(5,11),(3,16),(1,15)],
- [(1,9),(1,4),(4,1),(9,0),(13,1),(15,4),(15,9),(12,11),(10,8),(5,9),(3,11)],
- [(1,10),(0,6),(3,2),(7,0),(11,1),(14,3),(15,7),(14,10),(11,12),(8,8),(4,11)],
-]
-
 def head(p,gender,kind,pose,state=''):
     groups=skin_components(p);h,w=len(p),len(p[0])
     if kind!='overworld':
@@ -51,7 +19,7 @@ def head(p,gender,kind,pose,state=''):
         top=min(y for x,y in face);bottom=max(y for x,y in face)
         if kind=='front':
             return face,(19 if gender==0 else 13,7,38 if gender==0 else 39,27 if gender else 23), (28 if gender==0 else 27,8,20 if gender==0 else 18,11),0
-        return face,(max(0,left-25),max(0,top-22),min(w-1,right+15),min(h-1,bottom+5)), ((left+right)//2-9,top-21,28,23),2
+        return face,(max(0,left-25),max(0,top-22),min(w-1,right+15),min(h-1,bottom+5)), ((left+right)//2-10,top-14,26,16),2
     # Native tables: front, back, left, plus the matching motion poses.
     direction=(0 if pose%3==0 else 2 if pose%3==1 else 1) if w==16 else None
     face=max(groups,key=len) if groups else set()
@@ -102,42 +70,36 @@ def hair_edits(p,g,kind,pose,style,state=''):
     for y in range(t,b+1):
         for x in range(l,r+1):
             if (x,y) not in protected and p[y][x] not in (1,2,3,12,13):out[y][x]=0
-    mask=Image.new('L',(18,20));d=ImageDraw.Draw(mask)
-    shape=(FEMALE_SHAPES if g else SHAPES)[style-1]
-    d.polygon(shape,fill=4,outline=8)
-    # Hand-drawn light cluster follows the crown; a dark curved part grounds
-    # it in the native Gen 3 lighting instead of a flat horizontal slab.
-    d.line([(3,6),(4,3),(7,2),(11,2)],fill=4,width=2)
-    d.line([(5,7),(6,5),(7,4)],fill=8)
-    d.line([(11,5),(12,7),(12,9)],fill=8)
-    if style in (2,4):d.line([(9,2),(8,4),(7,6)],fill=8)
-    if style==8:
-        for x,y in ((3,4),(7,2),(12,3),(14,6),(2,8)):d.arc((x-1,y-1,x+2,y+2),20,290,fill=8)
-    if style in (9,10):
-        sides=(14,) if style==9 else (0,14)
-        for x in sides:
-            tie=4 if g and style==9 else 7 if g else 9
-            end=18 if g else 14
-            d.polygon([(x,tie),(x+2,tie),(x+3,tie+3),(x+2,end-3),(x+1,end),(x-1,end-1),(x,tie+5)],fill=4,outline=8)
-            d.point((x+1,tie+1),fill=9)
-    if g:
-        d.line([(4,4),(6,3),(10,3)],fill=7,width=1)
-    # Back crowns have no fringe; side views expose a tapered temple.
-    if direction==2:
-        panel=([(1,5),(15,5),(16,11),(14,16),(10,18),(6,18),(2,16),(0,12)] if g
-               else [(2,6),(14,6),(15,11),(12,16),(7,17),(3,15),(1,11)])
-        d.polygon(panel,fill=4)
-        d.line(panel[1:]+panel[:1],fill=8)
-        # The open upper edge joins the crown, avoiding a hat-like dark band.
-        d.line([panel[0],panel[1]],fill=4)
-        d.line([(4,7),(5,11),(6,14)],fill=8)
-        d.line([(11,7),(12,10),(11,14)],fill=8)
-        if g:d.line([(4,6),(4,9),(5,11)],fill=7)
-    elif direction==1:
-        d.polygon([(0,7),(3,7),(3,12),(0,12)],fill=0)
-    scale=hw/16
-    mh=round(20*ht/12);mw=round(18*scale)
-    mask=mask.resize((mw,mh),Image.Resampling.NEAREST)
+    from hair_pixels import portrait, overworld
+    rows = overworld(style, g) if kind == 'overworld' else portrait(style, g)
+    mask = Image.new('L', (len(rows[0]), max(20, len(rows))))
+    for yy, row in enumerate(rows):
+        for xx, char in enumerate(row):
+            mask.putpixel((xx, yy), {'.':0, '#':8, '+':4, 'H':7 if g else 4}[char])
+    if direction == 2:
+        # The back is a connected hair mass; retain the authored crown/tufts.
+        d=ImageDraw.Draw(mask)
+        length=16 if style in (7,8,9,10) else 12
+        if kind == 'overworld':
+            length = 10 if style in (7,8,9,10) else 8
+            d.polygon([(2,3),(9,3),(10,length-2),(8,length),(4,length),(2,length-2)],fill=4)
+            d.line([(9,4),(9,length-2),(7,length),(4,length),(2,length-2)],fill=8)
+            if g:d.line([(4,3),(4,5),(5,6)],fill=7)
+        else:
+            d.polygon([(3,5),(14,5),(15,length-3),(13,length),(6,length),(3,length-2)],fill=4)
+            d.polygon([(13,6),(15,length-3),(13,length),(6,length),(9,length-2),(12,length-5)],fill=8)
+            if g:d.line([(5,6),(5,9),(6,11)],fill=7,width=2)
+    elif direction == 1:
+        # Near temple falls behind the ear; the fringe points forward.
+        d=ImageDraw.Draw(mask)
+        d.rectangle((0,8,3,19),fill=0)
+    if kind == 'front':
+        # Native portrait grid, 18px wide: never stretch small overworld art.
+        cx,cy,hw = (29,9,18) if g == 0 else (28,9,18)
+    elif kind != 'overworld':
+        mw=round(18*hw/16)
+        mh=round(20*ht/12)
+        mask=mask.resize((mw,mh),Image.Resampling.NEAREST)
     ox=cx-hw//2;oy=cy
     for y in range(mask.height):
         for x in range(mask.width):
@@ -146,14 +108,8 @@ def hair_edits(p,g,kind,pose,style,state=''):
             if p[py][px] in (1,2,3,12,13):continue
             # Hair stops at the collar unless a long style has side strands.
             if py>b and style not in (7,8,9,10):continue
-            if py>b and p[py][px]!=0:continue
+            if py>b and p[py][px] in (1,2,3,12,13,15):continue
             out[py][px]=v
-    if kind=='front':
-        # Tapered sideburns join the crown to the ears without covering eyes.
-        fl,fr=min(x for x,y in face),max(x for x,y in face)
-        for x in (fl-2,fr+1):
-            for y in range(cy+ht-3,min(cy+ht+3,h)):
-                if 0<=x<w and (x,y) not in protected and p[y][x] not in (1,2,3,12,13):out[y][x]=8
     return out
 
 def coat_edits(p,g,kind,pose,coat):
@@ -212,6 +168,25 @@ def coat_edits(p,g,kind,pose,coat):
                 if x==cx:v=8
                 if x==cx+1 and y in (32,37,42):v=9
                 out[y][x]=v
+    if kind in ('front','back'):
+        # Carry sleeves to the glove/cuff boundary. The old torso-width pass
+        # missed outstretched arms, making the winter coat look sleeveless.
+        for y in range(top, h if kind == 'back' else 37):
+            for x in range(w):
+                if (x,y) in protected or p[y][x] not in (1,2,3):
+                    continue
+                if kind == 'front' and not (x < 24 or x > 35):
+                    continue
+                out[y][x] = 5 if p[y][x] == 1 else 8
+        if kind == 'front':
+            # Continuous lower hem plus a lit opening seam; keep the shorter
+            # Navy jacket distinct from Winter's longer fitted silhouette.
+            hem = 43 if coat == 2 and g else 44 if coat == 2 else 38
+            for x in range(22 if g else 24, 36 if g else 38):
+                if (x,hem) not in protected and out[hem][x] in (5,8):
+                    out[hem][x] = 8
+            for y in range(31,hem):
+                if out[y][cx-1] == 5:out[y][cx-1] = 9 if y in (32,37,42) else 5
     if coat==2:
         # Thick turned shearling lapels and a scalloped neckline. This is
         # authored outside the original shirt boundary so the coat reads as

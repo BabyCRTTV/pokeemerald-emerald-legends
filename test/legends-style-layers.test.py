@@ -5,14 +5,11 @@ import sys,re,struct,subprocess,tempfile,ctypes,json
 from pathlib import Path
 root=Path(__file__).resolve().parents[1];sys.path.insert(0,str(root/'tools/legends'))
 import build_style_layers as art
-assert all(m!=f for m,f in zip(art.SHAPES,art.FEMALE_SHAPES)), 'ten independent contours per gender'
-from PIL import Image,ImageDraw
-for male,female in zip(art.SHAPES,art.FEMALE_SHAPES):
- masks=[]
- for contour in (male,female):
-  im=Image.new('1',(18,20));ImageDraw.Draw(im).polygon(contour,fill=1)
-  masks.append(im.resize((12,10),Image.Resampling.NEAREST).tobytes())
- assert masks[0]!=masks[1], 'gender contours must differ at overworld scale'
+from hair_pixels import MALE, FEMALE, WORLD_MALE, WORLD_FEMALE
+assert len(MALE) == len(FEMALE) == len(WORLD_MALE) == len(WORLD_FEMALE) == 10
+assert all(m != f for m,f in zip(MALE,FEMALE))
+assert all(m != f for m,f in zip(WORLD_MALE,WORLD_FEMALE))
+assert len({tuple(r) for r in WORLD_MALE}) == len({tuple(r) for r in WORLD_FEMALE}) == 10
 from build_appearance import frames,pack,STATES,FILES
 walking=frames(root/'graphics/object_events/pics/people/brendan/walking.png',16,32)[0]
 assert art.hair_edits(walking,0,'overworld',0,1)[10][10]==0, 'clear native hat tip above new crown'

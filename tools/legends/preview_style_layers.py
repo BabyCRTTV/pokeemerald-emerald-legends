@@ -23,7 +23,7 @@ for g,n in enumerate(('brendan','may')):
    scale=2 if w==64 else 4;rgb=rgb.resize((w*scale,h*scale),Image.Resampling.NEAREST)
    xx=hair*180+20;yy=(g*2+row)*210+35
    canvas.paste(rgb,(xx,yy));d.text((xx,yy-20),f'{n} {hair}',fill=(20,20,20))
-canvas.save(root/'docs/qa/wardrobe-v0.0.38.png')
+canvas.save(root/'docs/qa/wardrobe-v0.0.39.png')
 
 from pathlib import Path
 import sys
@@ -48,4 +48,4 @@ for g,n in enumerate(('brendan','may')):
     if coat[y][x]==0:rgb.putpixel((x,y),(225,218,233))
   xx=(k%8)*165+10;yy=g*440+(k//8)*220+30
   c.paste(rgb.resize((w*3,h*3),Image.Resampling.NEAREST),(xx,yy));d.text((xx,yy-20),f'{n} {file} {i}',fill='black')
-c.save(root/'docs/qa/wardrobe-actions-v0.0.38.png')
+c.save(root/'docs/qa/wardrobe-actions-v0.0.39.png')

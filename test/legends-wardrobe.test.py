@@ -59,6 +59,7 @@ typedef uint8_t u8;typedef uint16_t u16;typedef int bool8;
 #define DPAD_UP 16
 #define DPAD_DOWN 32
 #define JOY_NEW(x) (keys&(x))
+#define JOY_REPEAT(x) (keys&(x))
 struct BgTemplate {u8 bg,charBaseIndex,mapBaseIndex,priority;};
 struct WindowTemplate {u8 bg,tilemapLeft,tilemapTop,width,height,paletteNum;u16 baseBlock;};
 struct Task{void(*func)(u8);int data[16];}gTasks[16];
@@ -129,7 +130,16 @@ int main(void){
  keys=DPAD_DOWN;Task_Input(0);keys=DPAD_LEFT;Task_Input(0);assert(costume==2);
  keys=DPAD_DOWN;Task_Input(0);keys=DPAD_LEFT;Task_Input(0);assert(hair==0);
  keys=DPAD_UP;Task_Input(0);keys=DPAD_RIGHT;Task_Input(0);assert(costume==0);
- keys=DPAD_DOWN;Task_Input(0);keys=DPAD_LEFT;Task_Input(0);assert(hair==10);
+ keys=DPAD_DOWN;Task_Input(0);keys=DPAD_LEFT;Task_Input(0);assert(hair==0);
+ keys=A_BUTTON;Task_Input(0);assert(gTasks[0].data[2]);
+ keys=DPAD_DOWN;for(int i=0;i<10;i++)Task_Input(0);assert(hair==10&&gTasks[0].data[3]==5);
+ Task_Input(0);assert(hair==10);keys=DPAD_RIGHT;Task_Input(0);assert(hair==10);
+ keys=B_BUTTON;Task_Input(0);assert(hair==0&&!gTasks[0].data[2]&&pending);
+ keys=A_BUTTON;Task_Input(0);keys=DPAD_DOWN;for(int i=0;i<10;i++)Task_Input(0);
+ keys=A_BUTTON;Task_Input(0);assert(hair==10&&!gTasks[0].data[2]&&pending);
+ keys=A_BUTTON;Task_Input(0);assert(gTasks[0].data[3]==5);
+ keys=DPAD_UP;for(int i=0;i<10;i++)Task_Input(0);assert(hair==0&&gTasks[0].data[3]==0);
+ Task_Input(0);assert(hair==0);keys=B_BUTTON;Task_Input(0);assert(hair==10);
  keys=DPAD_DOWN;Task_Input(0);keys=DPAD_LEFT;Task_Input(0);assert(scarf==5);
  keys=DPAD_DOWN;Task_Input(0);keys=A_BUTTON;Task_Input(0);assert(jacket==1);
  keys=A_BUTTON;Task_Input(0);assert(jacket==2);

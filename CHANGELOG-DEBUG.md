@@ -2,6 +2,14 @@
 
 This is the developer-facing history for the **Debug** build. Shared Legends changes are repeated here so this file stands on its own; Debug-only behavior is called out separately.
 
+## [0.0.39] - 2026-10-11
+
+- Replace the intro's single Left/Right hairstyle row with a five-row Up/Down scrolling list, scroll indicators and live preview. Widen the existing choice window within its allocated tiles so long names and arrows do not overlap. A selects; B returns to skin tone; revisiting restores the chosen hairstyle.
+- Open a six-row vertical hairstyle list with A on the wardrobe HAIR row. A keeps the previewed selection for APPLY; B restores the hairstyle from before opening that list. Sideways input no longer changes hair. Team costumes remain fixed.
+- Replace stretched polygon hair crowns and dark decorative strokes with explicit native-grid pixel clusters for each gender, with separate portrait and overworld patterns. Reduce oversized battle-back hair, refine fringes and tied silhouettes, and retain all ten custom hairstyle IDs plus Original.
+- Extend Navy/Winter sleeves along exposed arms and refine coat hems while preserving hands, faces, Poké Balls, scarf layering and the existing footwear colors. No palette or save-layout changes; existing selections remain valid.
+- Shared by Release and Debug; no variant-specific differences. Actual-C regressions cover intro/wardrobe scrolling, preview/apply/cancel, all 212 native sprite poses, palette isolation and footwear caches. Authoring renders are recorded separately from emulator QA; both builds and byte-for-byte BPS verification use the established release workflow.
+
 ## [0.0.38.1] - 2026-10-11
 
 - Give each of the ten hairstyles separate male and female pixel contours, with distinct fringes, crown shapes, bob/curl lengths and higher/longer female tied styles. Retain the original Emerald hat and all saved hairstyle IDs.
