@@ -60,3 +60,7 @@ Trainer Card colors show a small live swatch below the portrait. They recolor th
 Authoring uses `tools/legends/build_footwear.py`; generated masks live in `graphics/legends/footwear/masks.bin`. The runtime compositor caches native frames without expanding the 16-color player palettes; two shadow shades map to their nearest existing colors before dedicated footwear colors are applied. Skin and red Poké Balls retain separate palette slots. Actual-C checks exercise all native pose tables and protected pixels.
 
 The overworld compositor uses one 13.5 KiB bank sized by the generated native pose metadata. Only the local player uses custom overworld graphics; NPC/link art remains separate. This covers the largest 27-frame Acro Bike sequence within the GBA RAM budget.
+
+## Underwater color preservation (v0.0.36.1)
+
+Choosing colored shoes or boots no longer remaps native diving-suit palette indices or modifies underwater sprite frames. Diving shoes are not visible, so the existing unmodified art is used. This focused compatibility fix is not the full requested wardrobe redesign; dry-land palette sharing, improved boot/coating silhouettes, a gender-tailored shearling winter coat, and ten working hairstyles need further artwork and playtests.

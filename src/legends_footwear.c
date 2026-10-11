@@ -43,6 +43,9 @@ void LegendsPrepareFootwearPalette(u16 *palette, u8 gender, u8 kind)
 {
     static const u8 candidates[] = {4,5,8,9,10,11,15};
     u32 slot, i;
+    // Underwater artwork uses no footwear mask. Do not recolor suit/head shadows.
+    if (kind == 2)
+        return;
     for (slot = 0; slot < 2; slot++)
     {
         u32 best = 0xFFFFFFFF;
@@ -89,8 +92,8 @@ const struct SpriteFrameImage *LegendsFootwearImages(const struct SpriteFrameIma
 {
     u32 i, offset = 0;
     u8 boots = LegendsGetShoes() >= 6;
-    if (!LegendsGetShoes() || LegendsGetCostume())
-        return images;
+    if (!LegendsGetShoes() || LegendsGetCostume() || state == 4)
+        return images; // Diving sprites remain byte-for-byte native.
     if (sWorldSource == images && sWorldGender == gender && sWorldState == state && sWorldBoots == boots)
         return sWorldImages;
     for (i = 0; i < sFootwearFrameCount[gender][state]; i++)

@@ -64,10 +64,11 @@ int main(int argc,char**argv){
    u16 pal[3][16];
    memcpy(pal[0],sBaseOverworldPalettes[g],32);memcpy(pal[1],sBaseTrainerPalettes[g],32);memcpy(pal[2],sBaseUnderwaterPalette,32);
    if(s)for(int kind=0;kind<3;kind++)LegendsPrepareFootwearPalette(pal[kind],g,kind);
+   assert(!memcmp(pal[2],sBaseUnderwaterPalette,sizeof(sBaseUnderwaterPalette)));
    for(int st=0;st<8;st++){
     const struct SpriteFrameImage *src=nativeWorld[g][st],*images=LegendsFootwearImages(src,g,st);
     if(world){u8 header[4]={s,g,st,st==0?16:32};fwrite(header,1,4,world);fwrite(images[0].data,1,images[0].size,world);fwrite(pal[st==4?2:0],2,16,world);}
-    if(!s){assert(images==src);continue;}
+    if(!s||st==4){assert(images==src);continue;}
     assert(images==LegendsFootwearImages(src,g,st));
     int offset=0;
     for(int f=0;f<sFootwearFrameCount[g][st];f++){
