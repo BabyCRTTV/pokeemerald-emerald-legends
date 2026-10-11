@@ -4,6 +4,14 @@ All notable Pokémon Emerald: Legends project changes are documented here.
 
 For build-specific player views, see [CHANGELOG-RELEASE.md](CHANGELOG-RELEASE.md) and [CHANGELOG-DEBUG.md](CHANGELOG-DEBUG.md). The canonical history below records the project as a whole.
 
+## [0.0.33] - 2026-10-11
+
+- Add Wing Survey chapter three, **The Quiet Current**: north from Lavender through native Rock Tunnel to Route 10's Center and the Surf approach to the Power Plant. Isolate two unused electrical feeds in either order, observe Zapdos, then file Oak's aide's report. Zapdos can optionally be challenged at native FireRed level 50; observation alone advances the story. Capture persists, while fainting or fleeing allows a later visit to retry. Seafoam is the next lead; no new Gyms, Articuno, Moltres or Mew battles in this version.
+- Restore every populated Kanto area's wild encounter slot levels to its original FireRed table, including land, Surf, fishing and Rock Smash. Preserve species distributions and encounter rates; visiting Gym challenge teams retain their chosen difficulty.
+- Move the Trainer Card's compact L/R badge-region hint below the badge strip, clear of the Time stat. Add survey milestones to the Adventure Log using append-only event IDs.
+- Preserve SaveBlock sizes, existing map/trainer IDs and saved system-flag addresses. Allocate five previously unused flags for the new survey and optional capture. Wiki files and wiki workflows are unchanged.
+- Same gameplay and fixes in Release and Debug; no variant-specific differences. Developer conveniences remain Debug-only. Automated checks exercise progression gates, either-order console work, observation without battle, capture/retry outcomes, native wild levels, map warps and badge-footer bounds. Full builds and verified BPS publication use the established workflow.
+
 ## [0.0.32.1] - 2026-10-11
 
 - Fix bright horizontal stripes and the cyan top ramp in seasonal outdoor plain battle backgrounds, including scripted Stunky and ordinary trainer encounters. Normalize only their shared stripe/sky palette indices to native tall-grass colors before seasonal tinting; preserve plain platforms, battle terrain mechanics, sprites, UI and special/indoor backgrounds.

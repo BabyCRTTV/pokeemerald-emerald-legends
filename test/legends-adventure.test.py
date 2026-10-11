@@ -78,7 +78,7 @@ assert(LegendsAdventureAdjacentDay(4,TRUE)==3&&LegendsAdventureAdjacentDay(1,FAL
 date=110;LegendsAdventureUpdateDay();assert(LegendsAdventureGet(0)->species==0);
 // Every shipped/future Kanto flag can use the same modular registry.
 for(u32 i=0;i<ARRAY_COUNT(sMilestones);i++)LegendsAdventureFlagSet(sMilestones[i].flag);
-assert(LegendsAdventureGet(0)->event==ADV_SURVEY_REPORT);
+assert(LegendsAdventureGet(0)->event==ADV_SURVEY_POWER_REPORT);
 for(int i=0;i<80;i++){block2.playTimeMinutes=i%60;LegendsAdventureRecord(ADV_BADGE1);}
 assert(LegendsAdventureCount(ADV_FILTER_ALL,0)==32&&LegendsAdventureGet(32)==NULL);
 struct LegendsAdventureSave saved=block3.adventure;

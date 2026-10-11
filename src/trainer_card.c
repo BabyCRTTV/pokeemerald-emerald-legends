@@ -1584,11 +1584,12 @@ static void PrintLegendsBadgeRegion(void)
 {
     if (IS_FRLG || sData->isLink)
         return;
-    FillWindowPixelRect(WIN_CARD_TEXT, PIXEL_FILL(0), 16, 101, 208, 12);
-    AddTextPrinterParameterized3(WIN_CARD_TEXT, FONT_SMALL, 16, 101,
+    // Window starts at screen y=8. Badges end at y=136; use the footer below them.
+    FillWindowPixelRect(WIN_CARD_TEXT, PIXEL_FILL(0), 16, 130, 208, 12);
+    AddTextPrinterParameterized3(WIN_CARD_TEXT, FONT_SMALL, 36, 130,
         sTrainerCardTextColors, TEXT_SKIP_DRAW,
-        sData->showKantoBadges ? COMPOUND_STRING("KANTO BADGES   L/R: REGION")
-                               : COMPOUND_STRING("HOENN BADGES   L/R: REGION"));
+        sData->showKantoBadges ? COMPOUND_STRING("L/R: KANTO BADGES")
+                               : COMPOUND_STRING("L/R: HOENN BADGES"));
 }
 
 static void DrawCardBackStats(void)

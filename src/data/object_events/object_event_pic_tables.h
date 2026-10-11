@@ -1437,6 +1437,18 @@ static const struct SpriteFrameImage sPicTable_CuttableTreeFrlg[] = {
     overworld_frame(gObjectEventPic_CuttableTreeFrlg, 2, 2, 3),
 };
 
+static const struct SpriteFrameImage sPicTable_Zapdos[] = {
+    overworld_frame(gObjectEventPic_ZapdosOld, 4, 4, 0),
+    overworld_frame(gObjectEventPic_ZapdosOld, 4, 4, 0),
+    overworld_frame(gObjectEventPic_ZapdosOld, 4, 4, 0),
+    overworld_frame(gObjectEventPic_ZapdosOld, 4, 4, 0),
+    overworld_frame(gObjectEventPic_ZapdosOld, 4, 4, 0),
+    overworld_frame(gObjectEventPic_ZapdosOld, 4, 4, 0),
+    overworld_frame(gObjectEventPic_ZapdosOld, 4, 4, 0),
+    overworld_frame(gObjectEventPic_ZapdosOld, 4, 4, 0),
+    overworld_frame(gObjectEventPic_ZapdosOld, 4, 4, 0),
+};
+
 #if IS_FRLG
 
 static const struct SpriteFrameImage sPicTable_RedNormal[] = {
@@ -2256,17 +2268,6 @@ static const struct SpriteFrameImage sPicTable_Lapras[] = {
     overworld_frame(gObjectEventPic_LaprasOld, 2, 2, 2),
 };
 
-static const struct SpriteFrameImage sPicTable_Zapdos[] = {
-    overworld_frame(gObjectEventPic_ZapdosOld, 4, 4, 0),
-    overworld_frame(gObjectEventPic_ZapdosOld, 4, 4, 0),
-    overworld_frame(gObjectEventPic_ZapdosOld, 4, 4, 0),
-    overworld_frame(gObjectEventPic_ZapdosOld, 4, 4, 0),
-    overworld_frame(gObjectEventPic_ZapdosOld, 4, 4, 0),
-    overworld_frame(gObjectEventPic_ZapdosOld, 4, 4, 0),
-    overworld_frame(gObjectEventPic_ZapdosOld, 4, 4, 0),
-    overworld_frame(gObjectEventPic_ZapdosOld, 4, 4, 0),
-    overworld_frame(gObjectEventPic_ZapdosOld, 4, 4, 0),
-};
 
 static const struct SpriteFrameImage sPicTable_Moltres[] = {
     overworld_frame(gObjectEventPic_MoltresOld, 4, 4, 0),

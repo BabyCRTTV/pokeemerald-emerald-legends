@@ -38,8 +38,8 @@ void FillBgTilemapBufferRect_Palette0(int bg,int tile,int x,int y,int w,int h){a
 void LoadPalette(const void *p,int offset,int size){assert((offset==48||offset==96)&&size==32);}
 void BlendPalette(int offset,int size,int coeff,int color){assert(offset==96&&size==16&&coeff==12);}
 void CopyBgTilemapBufferToVram(int bg){assert(bg==3);}
-void FillWindowPixelRect(int win,int color,int x,int y,int w,int h){assert(win==1&&x+w<=224&&y+h<=144);}
-void AddTextPrinterParameterized3(int win,int font,int x,int y,const u8*c,int speed,const u8*text){labelCount++;assert(strstr((const char*)text,sData->showKantoBadges?"KANTO":"HOENN"));}
+void FillWindowPixelRect(int win,int color,int x,int y,int w,int h){assert(win==1&&x+w<=224&&y>=128&&y+h<=144);}
+void AddTextPrinterParameterized3(int win,int font,int x,int y,const u8*c,int speed,const u8*text){labelCount++;assert(y>=128 && y+12<=144);assert(strstr((const char*)text,sData->showKantoBadges?"KANTO":"HOENN"));}
 void DecompressDataWithHeaderWram(const void *from,void *to){}
 void LoadBgTiles(int bg,const void *data,int size,int offset){assert(bg==3&&size==1024&&offset==0);}
 static void PrintLegendsBadgeRegion(void);
@@ -68,6 +68,6 @@ int main(void){
   self.assertIn('!sData->isLink && JOY_NEW(L_BUTTON | R_BUTTON | DPAD_LEFT | DPAD_RIGHT | SELECT_BUTTON)',source)
   chars={c:int(v,16) for c,v in re.findall(r"^'(.)'\s*=\s*([0-9A-F]{2})\s*$",(R/'charmap.txt').read_text(),re.M)}
   widths=list(map(int,re.findall(r'\d+', (R/'src/fonts.c').read_text().split('gFontSmallLatinGlyphWidths[] = {')[1].split('};')[0])))
-  for text in ['HOENN BADGES   L/R: REGION','KANTO BADGES   L/R: REGION']:
+  for text in ['L/R: HOENN BADGES','L/R: KANTO BADGES']:
    self.assertLessEqual(sum(widths[chars[c]] for c in text),208)
 if __name__=='__main__':unittest.main()

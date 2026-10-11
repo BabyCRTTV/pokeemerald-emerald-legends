@@ -1,0 +1,34 @@
+{
+  "maps": [
+    {
+      "source": "Route10_Frlg",
+      "name": "LegendsKanto_Route10",
+      "id": "MAP_LEGENDS_KANTO_ROUTE10",
+      "layout": "LAYOUT_LEGENDS_KANTO_ROUTE10"
+    },
+    {
+      "source": "RockTunnel_1F_Frlg",
+      "name": "LegendsKanto_RockTunnel_1F",
+      "id": "MAP_LEGENDS_KANTO_ROCK_TUNNEL_1F",
+      "layout": "LAYOUT_LEGENDS_KANTO_ROCK_TUNNEL_1F"
+    },
+    {
+      "source": "RockTunnel_B1F_Frlg",
+      "name": "LegendsKanto_RockTunnel_B1F",
+      "id": "MAP_LEGENDS_KANTO_ROCK_TUNNEL_B1F",
+      "layout": "LAYOUT_LEGENDS_KANTO_ROCK_TUNNEL_B1F"
+    },
+    {
+      "source": "PowerPlant_Frlg",
+      "name": "LegendsKanto_PowerPlant",
+      "id": "MAP_LEGENDS_KANTO_POWER_PLANT",
+      "layout": "LAYOUT_LEGENDS_KANTO_POWER_PLANT"
+    },
+    {
+      "source": "Route10_PokemonCenter_1F_Frlg",
+      "name": "LegendsKanto_Route10_PokemonCenter_1F",
+      "id": "MAP_LEGENDS_KANTO_ROUTE10_POKEMON_CENTER_1F",
+      "layout": "LAYOUT_LEGENDS_KANTO_POKEMON_CENTER_1F_FRLG"
+    }
+  ]
+}

@@ -27,7 +27,7 @@ class FoundationTests(unittest.TestCase):
  def test_reciprocal_graph_and_append_only_ids(self):
   group=json.loads((R/'data/maps/map_groups.json').read_text())['gMapGroup_LegendsKanto'];self.assertEqual(group[:2],['LegendsKanto_VermilionCity','LegendsKanto_Harbor'])
   opposite={'left':'right','right':'left','up':'down','down':'up'}
-  allowed={i['id'] for i in MANIFEST+CHAPTER}|{'MAP_LEGENDS_KANTO_VERMILION_CITY'}
+  allowed={i['id'] for i in MANIFEST+CHAPTER+json.loads((R/'data/legends_kanto_chapter3.json').read_text())['maps']}|{'MAP_LEGENDS_KANTO_VERMILION_CITY'}
   visited=set();queue=['MAP_LEGENDS_KANTO_VERMILION_CITY']
   while queue:
    id=queue.pop()

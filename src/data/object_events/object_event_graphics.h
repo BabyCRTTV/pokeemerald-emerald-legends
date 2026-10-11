@@ -486,6 +486,8 @@ const u16 gObjectEventPic_Erika[] = INCGFX_U16("graphics/object_events/pics/peop
 
 const u16 gObjectEventPic_CuttableTreeFrlg[] = INCGFX_U16("graphics/object_events/pics/misc/cuttable_tree_frlg.png", ".4bpp", "-mwidth 2 -mheight 2");
 
+const u16 gObjectEventPic_ZapdosOld[] = INCGFX_U16("graphics/object_events/pics/pokemon_old/zapdos.png", ".4bpp");
+
 #if IS_FRLG
 
 const u16 gObjectEventPic_RedNormal[] = INCGFX_U16("graphics/object_events/pics/people/red/red_normal.png", ".4bpp", "-mwidth 2 -mheight 4");
@@ -602,7 +604,6 @@ const u16 gObjectEventPic_Seagallop[] = INCGFX_U16("graphics/object_events/pics/
 const u16 gObjectEventPic_SurfBlob[] = INCGFX_U16("graphics/object_events/pics/misc/surf_blob.png", ".4bpp", "-mwidth 4 -mheight 4");
 
 const u16 gObjectEventPic_LaprasOld[] = INCGFX_U16("graphics/object_events/pics/pokemon_old/lapras.png", ".4bpp", "-mwidth 2 -mheight 2");
-const u16 gObjectEventPic_ZapdosOld[] = INCGFX_U16("graphics/object_events/pics/pokemon_old/zapdos.png", ".4bpp");
 const u16 gObjectEventPic_MoltresOld[] = INCGFX_U16("graphics/object_events/pics/pokemon_old/moltres.png", ".4bpp");
 const u16 gObjectEventPic_ArticunoOld[] = INCGFX_U16("graphics/object_events/pics/pokemon_old/articuno.png", ".4bpp");
 const u16 gObjectEventPic_MewtwoOld[] = INCGFX_U16("graphics/object_events/pics/pokemon_old/mewtwo.png", ".4bpp");
