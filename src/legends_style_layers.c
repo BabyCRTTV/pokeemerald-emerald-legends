@@ -17,6 +17,35 @@ static void Put(u8 *bits, u8 width, int x, int y, u8 value)
 }
 static int Magnitude(int a) { return a < 0 ? -a : a; }
 
+// Finish the existing independent boot masks with a dark rolled cuff and
+// continuous sole. Only shoe-color pixels (6/7 after palette remapping) are
+// touched; skin, hair, suit and Poké Ball indices never enter this pass.
+void LegendsPolishBoots(u8 *bits, u8 width, u8 height)
+{
+    int x, y, top = height, bottom = 0;
+    for (y = height - (height == 64 ? 18 : 10); y < height; y++)
+        for (x = 0; x < width; x++)
+        {
+            u8 color = Pixel(bits,width,x,y);
+            if (color == 6 || color == 7)
+            {
+                if (y < top) top = y;
+                if (y > bottom) bottom = y;
+            }
+        }
+    if (top >= height || bottom <= top + 1)
+        return;
+    for (x = 0; x < width; x++)
+    {
+        if (Pixel(bits,width,x,top) == 6 || Pixel(bits,width,x,top) == 7)
+            Put(bits,width,x,top,15);
+        if (Pixel(bits,width,x,top+1) == 6 || Pixel(bits,width,x,top+1) == 7)
+            Put(bits,width,x,top+1,6);
+        if (Pixel(bits,width,x,bottom) == 6 || Pixel(bits,width,x,bottom) == 7)
+            Put(bits,width,x,bottom,15);
+    }
+}
+
 // Ten different head silhouettes (plus untouched original). The hair occupies
 // the hat/crown region above the first native facial pixels. Eye, face,
 // eyebrow, skin and held-object pixels below that boundary remain untouched.
