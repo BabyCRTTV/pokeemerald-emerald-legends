@@ -1,6 +1,6 @@
 {
   "gameVersion": "0.0.31.1",
-  "reviewedCommit": "4ed1be408018b50961c905859391208d2758b9e9",
+  "reviewedCommit": "f8b828f77d7c88955cf19ebaeb3898a48c6fa1b6",
   "policy": "Manual guide review only; no automatic game-release sync; encounter snapshot unchanged.",
   "chapters": {
     "walkthrough-littleroot": [
@@ -39,6 +39,107 @@
       "data/maps/Route104_MrBrineysHouse/scripts.inc",
       "src/data/trainers.party",
       "src/field_move.c",
+      "docs/wiki/dex-data.json"
+    ],
+    "walkthrough-dewford": [
+      "data/maps/DewfordTown/scripts.inc",
+      "data/maps/DewfordTown_Gym/scripts.inc",
+      "data/maps/GraniteCave_1F/scripts.inc",
+      "data/maps/GraniteCave_StevensRoom/scripts.inc",
+      "docs/features/field-moves.md",
+      "docs/wiki/dex-data.json"
+    ],
+    "walkthrough-slateport": [
+      "data/maps/Route109/scripts.inc",
+      "data/maps/SlateportCity_SternsShipyard_1F/scripts.inc",
+      "data/maps/SlateportCity_OceanicMuseum_1F/scripts.inc",
+      "data/maps/SlateportCity_OceanicMuseum_2F/scripts.inc",
+      "data/maps/Route110/scripts.inc",
+      "docs/features/field-moves.md",
+      "docs/wiki/dex-data.json"
+    ],
+    "walkthrough-mauville": [
+      "data/maps/MauvilleCity/scripts.inc",
+      "data/maps/MauvilleCity_Gym/scripts.inc",
+      "data/maps/MauvilleCity_BikeShop/scripts.inc",
+      "data/maps/MauvilleCity_House1/scripts.inc",
+      "data/maps/Route111/scripts.inc",
+      "docs/features/field-moves.md",
+      "docs/wiki/dex-data.json"
+    ],
+    "walkthrough-meteor-falls": [
+      "data/maps/Route112/scripts.inc",
+      "data/maps/FieryPath/scripts.inc",
+      "data/maps/FallarborTown/scripts.inc",
+      "data/maps/MeteorFalls_1F_1R/scripts.inc",
+      "data/maps/MtChimney/scripts.inc",
+      "data/maps/JaggedPass/scripts.inc",
+      "docs/features/field-moves.md",
+      "docs/wiki/dex-data.json"
+    ],
+    "walkthrough-lavaridge": [
+      "data/maps/LavaridgeTown/scripts.inc",
+      "data/maps/LavaridgeTown_Gym_1F/scripts.inc",
+      "data/maps/Route111/scripts.inc",
+      "data/maps/MirageTower_1F/scripts.inc",
+      "data/maps/RusturfTunnel/scripts.inc",
+      "docs/features/field-moves.md",
+      "docs/wiki/dex-data.json"
+    ],
+    "walkthrough-norman": [
+      "data/maps/PetalburgCity_Gym/scripts.inc",
+      "data/maps/PetalburgCity_WallysHouse/scripts.inc",
+      "data/maps/Route118/scripts.inc",
+      "data/maps/MauvilleCity/scripts.inc",
+      "docs/features/field-moves.md",
+      "docs/wiki/dex-data.json"
+    ],
+    "walkthrough-fortree": [
+      "data/maps/Route119/scripts.inc",
+      "data/maps/Route119_WeatherInstitute_2F/scripts.inc",
+      "data/maps/FortreeCity/scripts.inc",
+      "data/maps/Route120/scripts.inc",
+      "data/maps/FortreeCity_Gym/scripts.inc",
+      "docs/features/field-moves.md",
+      "docs/wiki/dex-data.json"
+    ],
+    "walkthrough-lilycove": [
+      "data/maps/LilycoveCity/scripts.inc",
+      "data/maps/MtPyre_Summit/scripts.inc",
+      "data/maps/JaggedPass/scripts.inc",
+      "data/maps/MagmaHideout_4F/scripts.inc",
+      "data/maps/SlateportCity_Harbor/scripts.inc",
+      "data/maps/AquaHideout_B1F/scripts.inc",
+      "docs/features/field-moves.md",
+      "docs/wiki/dex-data.json"
+    ],
+    "walkthrough-mossdeep": [
+      "data/maps/MossdeepCity/scripts.inc",
+      "data/maps/MossdeepCity_Gym/scripts.inc",
+      "data/maps/MossdeepCity_SpaceCenter_2F/scripts.inc",
+      "data/maps/MossdeepCity_StevensHouse/scripts.inc",
+      "data/maps/MossdeepCity_House3/scripts.inc",
+      "docs/features/field-moves.md",
+      "docs/wiki/dex-data.json"
+    ],
+    "walkthrough-sootopolis": [
+      "data/maps/SeafloorCavern_Room9/scripts.inc",
+      "data/maps/SootopolisCity/scripts.inc",
+      "data/maps/CaveOfOrigin_B1F/scripts.inc",
+      "data/maps/SkyPillar_Top/scripts.inc",
+      "data/maps/SootopolisCity_Gym_1F/scripts.inc",
+      "docs/features/field-moves.md",
+      "docs/wiki/dex-data.json"
+    ],
+    "walkthrough-league": [
+      "data/maps/VictoryRoad_1F/scripts.inc",
+      "data/maps/EverGrandeCity_PokemonLeague_1F/scripts.inc",
+      "data/maps/EverGrandeCity_SidneysRoom/scripts.inc",
+      "data/maps/EverGrandeCity_PhoebesRoom/scripts.inc",
+      "data/maps/EverGrandeCity_GlaciasRoom/scripts.inc",
+      "data/maps/EverGrandeCity_DrakesRoom/scripts.inc",
+      "data/maps/EverGrandeCity_ChampionsRoom/scripts.inc",
+      "docs/features/field-moves.md",
       "docs/wiki/dex-data.json"
     ]
   }

@@ -21,8 +21,23 @@ const assert=require('node:assert/strict'),fs=require('node:fs');
   await page.getByRole('link',{name:'Walkthrough',exact:false}).first().click();
   await page.getByRole('heading',{name:'Game walkthrough: start your adventure',exact:true}).waitFor();await noOverflow();
   assert(await page.locator('.wiki-mobile-nav').isHidden(),'walkthrough hides encounter navigation');
-  assert.equal(await page.locator('.walkthrough-stops a').count(),9);
-  await page.locator('.walkthrough-map svg').waitFor();
+  assert.equal(await page.locator('.walkthrough-stops a').count(),14);
+  assert.equal(await page.locator('.chapter-group').count(),2);
+  assert.equal(await page.locator('.chapter-group').first().locator('a').count(),10);
+  assert.equal(await page.locator('.chapter-group').last().locator('a').count(),4);
+  await page.locator('#next-chapter-group').click();
+  await page.waitForFunction(()=>document.querySelector('#chapter-group-label').textContent==='Chapters 11–14 of 14');
+  assert(await page.locator('#next-chapter-group').isDisabled());
+  await page.locator('#previous-chapter-group').click();
+  await page.waitForFunction(()=>document.querySelector('#chapter-group-label').textContent==='Chapters 1–10 of 14');
+  await page.locator('.region-map-explorer svg').waitFor();
+  assert.equal(await page.locator('.region-map-explorer .walkthrough-map-highlight').count(),0);
+  await page.getByRole('button',{name:'Littleroot Town',exact:true}).click();
+  assert((await page.locator('.map-town-name').innerText()).includes('Littleroot'));
+  await page.locator('[data-region-map="Kanto"]').click();
+  await page.getByRole('button',{name:'Pallet Town',exact:true}).focus();await page.keyboard.press('Enter');
+  assert((await page.locator('.map-town-name').innerText()).includes('Pallet'));
+  await page.locator('[data-region-map="Hoenn"]').click();await noOverflow();
   if(width===412)await page.screenshot({path:'wiki-preview/walkthrough-stops.png',fullPage:false});
   await page.locator('#walkthrough-town').selectOption('walkthrough-rustboro#section-prepare-in-rustboro');
   await page.getByRole('heading',{name:'Prepare in Rustboro',exact:true}).waitFor();
@@ -47,6 +62,21 @@ const assert=require('node:assert/strict'),fs=require('node:fs');
   await page.locator('[data-route="MAP_ROUTE103"] summary').click();
   assert((await page.locator('.articlebody').innerText()).includes('level 2 Stunky'));await noOverflow();
   if(width===412)await page.screenshot({path:'wiki-preview/walkthrough-chapter.png',fullPage:false});
+  assert.equal(await page.locator('.chapter-sequence .chapter-step').count(),1);
+  if(width===412){
+   await page.goto('http://127.0.0.1:8765/wiki/?page=walkthrough-rustboro');
+   await page.locator('.chapter-sequence').waitFor();
+   const next=['dewford','slateport','mauville','meteor-falls','lavaridge','norman','fortree','lilycove','mossdeep','sootopolis','league'];
+   for(const [i,slug] of next.entries()){
+    await page.locator('.chapter-sequence .chapter-step').last().click();
+    await page.waitForFunction(id=>new URLSearchParams(location.search).get('page')===id,'walkthrough-'+slug);
+    await page.locator('.walkthrough-field-guide').first().waitFor();await noOverflow();
+    assert((await page.locator('h1').innerText()).startsWith('Chapter '+(i+4)+':'));
+    assert.equal(await page.locator('.chapter-sequence .chapter-step').count(),i===10?1:2);
+   }
+   await page.locator('.chapter-sequence .chapter-step').first().click();
+   await page.getByRole('heading',{name:/Chapter 13:/}).waitFor();
+  }
   await page.locator('#home').click();await page.locator('.topic-cards').waitFor();if(width<1100)assert(await page.locator('.wiki-mobile-nav').isVisible(),'leaving walkthrough restores bottom navigation');
   await page.locator('.topic-cards [data-category="Customization"]').click();
   await page.getByRole('heading',{name:'Customization',exact:true}).waitFor();
