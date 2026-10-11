@@ -121,6 +121,8 @@ const struct SpriteFrameImage *LegendsFootwearImages(const struct SpriteFrameIma
         Compose(sWorldPixels + offset, images[i].data,
             shoes ? sFootwearMasks[gender][state][boots] + offset : NULL,
             size, gender, 0, shoes != 0);
+        if (shoes >= 6)
+            LegendsPolishBoots(sWorldPixels + offset, width, 32);
         LegendsPaintStyle(sWorldPixels + offset, width, 32, gender, FALSE, hair, coat);
         offset += size;
     }
@@ -160,6 +162,8 @@ const u32 *LegendsFootwearFrontPic(enum TrainerPicID pic, const u32 *data)
     if (shoes)
         Compose(sFrontPixels, sFrontPixels, sFootwearFrontMasks[gender][boots],
                 2048, gender, 1, TRUE);
+    if (shoes >= 6)
+        LegendsPolishBoots(sFrontPixels, 64, 64);
     LegendsPaintStyle(sFrontPixels, 64, 64, gender, FALSE, hair, coat);
     // Native literal LZ stream: existing portrait / Trainer Card consumers.
     sFrontPic[gender][0] = 0x00080010;
