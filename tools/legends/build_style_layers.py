@@ -84,7 +84,7 @@ def head(p,gender,kind,pose,state=''):
     if direction==1:cx+=2
     hw=12
     ht=8 if direction!=2 else 10
-    return face,(max(0,cx-(10 if w==32 else 8)),max(0,cy-2),min(w-1,cx+(10 if w==32 else 8)),bottom), (cx,cy,hw,ht),direction
+    return face,(max(0,cx-(10 if w==32 else 8)),max(0,min(cy-2,upper) if w==16 else cy-2),min(w-1,cx+(10 if w==32 else 8)),bottom), (cx,cy,hw,ht),direction
 
 def hair_edits(p,g,kind,pose,style,state=''):
     face,box,anchor,direction=head(p,g,kind,pose,state)

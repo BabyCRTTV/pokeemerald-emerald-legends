@@ -5,7 +5,7 @@ This is the developer-facing history for the **Debug** build. Shared Legends cha
 ## [0.0.38.1] - 2026-10-11
 
 - Give each of the ten hairstyles separate male and female pixel contours, with distinct fringes, crown shapes, bob/curl lengths and higher/longer female tied styles. Retain the original Emerald hat and all saved hairstyle IDs.
-- Regenerate all 212 pose masks and review both genders in authoring renders and the native mGBA wardrobe UI. Sparse-compositor and footwear/cache checks pass; full field traversal and save/load remain follow-up playtests.
+- Clear the native hat tip above replacement walking crowns. Regenerate all 212 pose masks and review both genders in authoring renders and the native mGBA wardrobe UI. Sparse-compositor and footwear/cache checks pass; full field traversal and save/load remain follow-up playtests.
 - Shared by Release and Debug; no variant-specific differences. Both variants and verified BPS patches use the established release workflow.
 
 ## [0.0.38] - 2026-10-11

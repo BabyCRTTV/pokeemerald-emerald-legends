@@ -14,6 +14,8 @@ for male,female in zip(art.SHAPES,art.FEMALE_SHAPES):
   masks.append(im.resize((12,10),Image.Resampling.NEAREST).tobytes())
  assert masks[0]!=masks[1], 'gender contours must differ at overworld scale'
 from build_appearance import frames,pack,STATES,FILES
+walking=frames(root/'graphics/object_events/pics/people/brendan/walking.png',16,32)[0]
+assert art.hair_edits(walking,0,'overworld',0,1)[10][10]==0, 'clear native hat tip above new crown'
 assets=[root/'graphics/legends/styles/edits.bin',root/'src/data/legends/style_layers.h']
 before=[p.read_bytes() for p in assets];art.build();assert before==[p.read_bytes() for p in assets]
 header=assets[1].read_text();edits=struct.unpack('<'+'H'*(len(before[0])//2),before[0])
