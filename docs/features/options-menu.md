@@ -65,3 +65,11 @@ NEXT PAGE replaces the historical CANCEL row on both pages. Its A-button action 
 ## v0.0.19 starters
 
 Adventure 3/3 adds STARTERS: GEN 1 through GEN 9, SPECIAL and RANDOM. Left/Right cycles choices; Gen 3 is the default. Title-screen selections carry into New Game. Changes before opening the rescue bag affect that rescue; after the trio locks, edits apply to a future New Game. See [starter and rival rules](starters.md). This third page preserves all existing settings and the original window allocation.
+
+## v0.0.34 Instant text
+
+General → TEXT SPEED cycles SLOW / MID / FAST / INSTANT with Left/Right; B saves and exits. Only the selected value is displayed, clearing the previous label inside the original window.
+
+INSTANT exposes the expansion's existing `OPTIONS_TEXT_SPEED_INSTANT` through the native saved `optionsTextSpeed` field and `RunTextPrinters` implementation. It immediately reveals dialogue, while native page confirmations, scripted pauses and choices still apply. No renderer fork, new save data or save migration is needed. Existing selections and the Mid default remain unchanged. Native title-screen Options also preserve this setting into New Game. Shared by Release and Debug.
+
+Validation: actual-C Options regressions exercise both-direction wrap through all four speeds, selected-label rendering, clearing INSTANT before a shorter value, and invalid-value fallback. mGBA 0.10.2 verifies the native Options screen and saved speed after field reload, plus immediate field dialogue and a page break that waits for A. The private dialogue fixture uses controlled map entry; the renderer itself is unchanged.
