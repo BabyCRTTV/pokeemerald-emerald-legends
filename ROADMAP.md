@@ -29,9 +29,11 @@ Goal: establish a stable `pokeemerald-expansion` project and implement the first
 - [x] Champion invitation and permanent Lilycove–Vermilion ferry
 - [x] Vermilion arrival, residents, facilities and optional spectator challenge
 - [x] Routes 6–8 / 11–19 road loop, regional map browsing and Surf passage
-- [x] First four visiting Gyms, two Wing Survey reports and regional Trainer Card badges
-- [ ] Remaining four Gyms, northern/western Kanto and bird habitat expeditions
-- [ ] Bird encounters and Faraway Island Mew conclusion
+- [x] First four visiting Gyms, three Wing Survey reports and regional Trainer Card badges
+- [x] Route 10, Rock Tunnel and Power Plant: Quiet Current survey and optional Lv. 50 Zapdos
+- [x] Native FireRed wild encounter levels and unobstructed Trainer Card region navigation
+- [ ] Remaining four Gyms, further northern/western Kanto and Seafoam/Cinnabar expeditions
+- [ ] Articuno/Moltres encounters and Faraway Island Mew conclusion
 - [ ] Research Johto assets and geography after Kanto is established
 
 ### Quality and maintenance

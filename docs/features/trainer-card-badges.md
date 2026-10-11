@@ -1,6 +1,6 @@
-# Regional Trainer Card badges — v0.0.32
+# Regional Trainer Card badges — introduced v0.0.32, polished v0.0.33
 
-The local Trainer Card contains two eight-slot collections: Hoenn and Kanto. On the front, press Left/Right, L/R or SELECT to switch the existing badge strip. A small region label explains the controls. A still flips to the card's normal back; B closes it. Unearned Kanto badges use dimmed native Kanto artwork, while earned badges show full color.
+The local Trainer Card contains two eight-slot collections: Hoenn and Kanto. On the front, press Left/Right, L/R or SELECT to switch the existing badge strip. A compact L/R: HOENN or L/R: KANTO label is right-aligned beside the native BADGES heading, clear of statistics, badge icons and the card border. A still flips to the card's normal back; B closes it. Unearned Kanto badges use dimmed native Kanto artwork, while earned badges show full color.
 
 Kanto order is Boulder, Cascade, Thunder, Rainbow, Soul, Marsh, Volcano, Earth. Each slot reads its dedicated permanent Leader victory flag. Current content supports Surge, Erika, Koga and Sabrina; other slots remain unearned until their Gyms are implemented. Existing Surge/Koga wins appear without revisiting their Leaders. Either difficulty earns the same badge, and the other team cannot then be fought.
 
@@ -8,4 +8,4 @@ This is an additional League record display. It does not grant Hoenn HM permissi
 
 The display reuses its original 1 KiB decompression buffer and 32 badge tiles in VRAM when switching regions. Only eight transient badge-state bytes and the selector byte are added to its allocated screen state. Palette 3 holds earned badge colors; palette 6 holds dimmed Kanto colors. Card colors, trainer portrait, star palette and front/back statistics keep their existing regions.
 
-`test/legends-trainer-card-badges.test.py` runs the actual drawing functions across all 256 earned combinations, both regions and linked/local cards (1,024 cases). It checks tile bounds, four tiles per displayed badge, palette choices, label bounds and native font widths. `test/legends-kanto-chapter2.test.py` compiles the actual trainer flag resolver and checks save address/partner separation. Full builds verify integration. Manual emulator review of card switching/flips remains a separate playtest item.
+`test/legends-trainer-card-badges.test.py` runs the actual drawing functions across all 256 earned combinations, both regions and linked/local cards (1,024 cases). It checks tile bounds, four tiles per displayed badge, palette choices, label bounds and native font widths. `test/legends-kanto-chapter2.test.py` compiles the actual trainer flag resolver and checks save address/partner separation. Full builds verify integration. mGBA 0.10.2 review in v0.0.33 checks Hoenn/Kanto switching and front/back/front with Money, Pokedex and Time visible. Linked layouts stay isolated by the actual-C checks.
