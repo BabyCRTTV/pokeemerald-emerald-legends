@@ -4,6 +4,12 @@ All notable Pokémon Emerald: Legends project changes are documented here.
 
 For build-specific player views, see [CHANGELOG-RELEASE.md](CHANGELOG-RELEASE.md) and [CHANGELOG-DEBUG.md](CHANGELOG-DEBUG.md). The canonical history below records the project as a whole.
 
+## [0.0.36.1] - 2026-10-11
+
+- Wardrobe footwear compatibility: preserve the native underwater suit sprites and palette byte-for-byte when any shoes or boots are selected. The diving state has no visible footwear; its unnecessary shadow remapping could tint other suit/head details.
+- The dry-land footwear, scarves, jackets and trainer portraits remain unchanged. The larger requested sprite/art redesign, shearling coats and ten hairstyles still require their own animation and visual QA; they are not included in this fix.
+- Shared in Release and Debug; no variant-specific differences. Strengthen actual-C regression coverage for underwater palette and native sprite identity. No changes to saves, Kanto progression or the wiki.
+
 ## [0.0.36] - 2026-10-11
 
 - Enable the expansion's native first-time obtained-item descriptions for supported gifts, field pickups, hidden items and harvest scripts. The top window explains the item while the normal receipt dialogue and icon remain native; subsequent receipts retain the small icon without repeating the description.
