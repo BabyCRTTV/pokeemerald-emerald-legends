@@ -170,11 +170,6 @@ def coat_edits(p,g,kind,pose,coat):
             elif x==cx and kind!='back':out[y][x]=8 # front fastening
             elif kind=='front' and x==cx+1 and rel in (6,11,16):out[y][x]=9
             else:out[y][x]=8 if edge or x>cx+2 else 5
-        # Pose-local shoulder and long hem silhouettes, in transparent margins.
-        if kind=='front' and 3<=rel<(18 if coat==2 else 10):
-            for x in (cx-extent-1,cx+extent+1):
-                if 0<=x<w and p[y][x]==0 and (x,y) not in protected:
-                    out[y][x]=8
     if kind=='front':
         # Authored sleeve/torso contours follow the native asymmetric stance.
         # A filled garment (rather than repainting shirt pixels) covers the
