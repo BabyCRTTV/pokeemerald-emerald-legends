@@ -13,12 +13,13 @@ struct AppearanceSelection
     u8 costume;
     u8 shoes;
     u8 cardColor;
-    bool8 jacket;
+    u8 hair;
+    u8 jacket;
     bool8 legacySkin;
 };
 
 EWRAM_DATA static struct AppearanceSelection sSelection = {0};
-EWRAM_DATA static u16 sPaletteStamp = 0;
+EWRAM_DATA static u32 sPaletteStamp = 0;
 EWRAM_DATA u16 gLegendsOverworldPalettes[2][16] = {0};
 EWRAM_DATA u16 gLegendsTrainerPalettes[2][16] = {0};
 EWRAM_DATA u16 gLegendsUnderwaterPalettes[2][16] = {0};
@@ -62,7 +63,8 @@ void LegendsBeginAppearanceSelection(void)
     sSelection.costume = 0;
     sSelection.shoes = 0;
     sSelection.cardColor = 0;
-    sSelection.jacket = FALSE;
+    sSelection.hair = 0;
+    sSelection.jacket = 0;
     sSelection.legacySkin = FALSE;
     sPaletteStamp = 0;
 }
@@ -83,6 +85,7 @@ void LegendsApplyAppearanceToNewGame(void)
     VarSet(VAR_LEGENDS_COSTUME, 0);
     VarSet(VAR_LEGENDS_SHOES, 0);
     VarSet(VAR_LEGENDS_CARD_COLOR, 0);
+    VarSet(VAR_LEGENDS_HAIR, sSelection.valid ? sSelection.hair : 0);
     LegendsClearAppearanceSelection();
 }
 
@@ -102,11 +105,12 @@ static u8 GetAccessoryCode(void)
 {
     u16 code = sSelection.valid ? sSelection.scarf + LEGENDS_SCARF_COUNT * sSelection.jacket
                               : VarGet(VAR_LEGENDS_ACCESSORIES);
-    return code < 2 * LEGENDS_SCARF_COUNT ? code : 0;
+    return code < LEGENDS_JACKET_COUNT * LEGENDS_SCARF_COUNT ? code : 0;
 }
 
 u8 LegendsGetScarf(void) { return GetAccessoryCode() % LEGENDS_SCARF_COUNT; }
-bool8 LegendsGetJacket(void) { return GetAccessoryCode() >= LEGENDS_SCARF_COUNT; }
+u8 LegendsGetJacketStyle(void) { return GetAccessoryCode() / LEGENDS_SCARF_COUNT; }
+bool8 LegendsGetJacket(void) { return LegendsGetJacketStyle() != 0; }
 u8 LegendsGetAccessoryStyle(void) { return (LegendsGetScarf() != 0) | (LegendsGetJacket() << 1); }
 
 void LegendsBeginWardrobeSelection(void)
@@ -114,7 +118,7 @@ void LegendsBeginWardrobeSelection(void)
     u8 skin = LegendsGetSkinTone(), outfit = LegendsGetOutfit();
     u8 scarf = LegendsGetScarf(), costume = LegendsGetCostume();
     u8 shoes = LegendsGetShoes(), card = LegendsGetCardColor();
-    bool8 jacket = LegendsGetJacket();
+    u8 jacket = LegendsGetJacketStyle(), hair = LegendsGetHair();
     sSelection.legacySkin = GetAppearanceCode() == 0 || GetAppearanceCode() > 25;
     sSelection.skin = skin;
     sSelection.outfit = outfit;
@@ -122,15 +126,16 @@ void LegendsBeginWardrobeSelection(void)
     sSelection.costume = costume;
     sSelection.shoes = shoes;
     sSelection.cardColor = card;
+    sSelection.hair = hair;
     sSelection.jacket = jacket;
     sSelection.valid = TRUE;
     sPaletteStamp = 0;
 }
 
-void LegendsSetAccessorySelection(u8 scarf, bool8 jacket)
+void LegendsSetAccessorySelection(u8 scarf, u8 jacket)
 {
     sSelection.scarf = scarf < LEGENDS_SCARF_COUNT ? scarf : 0;
-    sSelection.jacket = !!jacket;
+    sSelection.jacket = jacket < LEGENDS_JACKET_COUNT ? jacket : 0;
     sPaletteStamp = 0;
 }
 
@@ -141,13 +146,15 @@ void LegendsApplyWardrobeSelection(void)
     VarSet(VAR_LEGENDS_COSTUME, LegendsGetCostume());
     VarSet(VAR_LEGENDS_SHOES, LegendsGetShoes());
     VarSet(VAR_LEGENDS_CARD_COLOR, LegendsGetCardColor());
+    VarSet(VAR_LEGENDS_HAIR, LegendsGetHair());
     LegendsClearAppearanceSelection();
 }
 
 void LegendsUpdateAppearancePalettes(void)
 {
     u16 code = GetAppearanceCode();
-    u16 stamp = code + 1 + 31 * GetAccessoryCode() + 372 * LegendsGetCostume() + 1116 * LegendsGetShoes();
+    u32 stamp = code + 1 + 31 * GetAccessoryCode() + 558 * LegendsGetCostume()
+              + 1674 * LegendsGetShoes() + 13392 * LegendsGetHair();
     u32 gender, i;
     u8 skin = LegendsGetSkinTone();
     u8 outfit = LegendsGetOutfit();
@@ -223,4 +230,17 @@ void LegendsSetShoeSelection(u8 value)
 void LegendsSetCardColorSelection(u8 value)
 {
     sSelection.cardColor = value < LEGENDS_CARD_COLOR_COUNT ? value : 0;
+}
+
+// Zero is the unmodified Emerald hat; the remaining ten values are custom
+// hair silhouettes. Saved in an otherwise unused native state variable.
+u8 LegendsGetHair(void)
+{
+    u16 value = sSelection.valid ? sSelection.hair : VarGet(VAR_LEGENDS_HAIR);
+    return value < LEGENDS_HAIR_COUNT ? value : 0;
+}
+void LegendsSetHairSelection(u8 hair)
+{
+    sSelection.hair = hair < LEGENDS_HAIR_COUNT ? hair : 0;
+    sPaletteStamp = 0;
 }

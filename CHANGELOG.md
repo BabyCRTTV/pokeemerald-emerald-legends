@@ -4,6 +4,14 @@ All notable Pokémon Emerald: Legends project changes are documented here.
 
 For build-specific player views, see [CHANGELOG-RELEASE.md](CHANGELOG-RELEASE.md) and [CHANGELOG-DEBUG.md](CHANGELOG-DEBUG.md). The canonical history below records the project as a whole.
 
+## [0.0.37] - 2026-10-11
+
+- Expand the trainer wardrobe to include 11 hairstyle choices (the untouched original hat and 10 distinct pixel-silhouette styles: crop, side part, spikes, side sweep, tousled, pixie, bob, curls, ponytail and twin tails). Birch's introductory customization now progresses skin tone -> hairstyle -> outfit with a compact Left/Right hair selector and immediate trainer preview. Wardrobe HAIR is scrollable and supports Apply/Cancel.
+- Add a WINTER jacket with an ivory shearling collar, overlaid coat panels, decorative buttons and narrower female tailoring, alongside NONE and the existing NAVY jacket. The 6 scarf colors remain selectable and Team Magma/Aqua uniforms remain fixed.
+- Paint haircut and winter-clothing differences into the existing local 4bpp player pose / trainer portrait cache without allocating a second overworld frame bank. Preserve native face skin and eye pixels, hands and red ball indices. Original hair and outerwear remain the default; hairstyles and coats apply to the native player, not NPCs or linked remote cards.
+- Preserve old wardrobe accessory codes 0-11 and allocate 12-17 for winter coats. Save the hairstyle in the unused Mauville state var, with zero retaining original graphics; no SaveBlock or link-protocol changes. v0.0.36.1's diving palette/pixel preservation remains included.
+- Shared in Release and Debug; no variant-specific content changes. Regression tests cover hair silhouette independence, palette/eye protections, staged selections and winter coat behavior. Pixel-art appearance still warrants hands-on emulator review across every pose.
+
 ## [0.0.36.1] - 2026-10-11
 
 - Wardrobe footwear compatibility: preserve the native underwater suit sprites and palette byte-for-byte when any shoes or boots are selected. The diving state has no visible footwear; its unnecessary shadow remapping could tint other suit/head details.

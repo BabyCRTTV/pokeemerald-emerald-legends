@@ -35,7 +35,9 @@ static const u8 *const sScarves[] = {COMPOUND_STRING("NONE"),COMPOUND_STRING("CR
 static const u8 *const sCostumes[] = {COMPOUND_STRING("NONE"),COMPOUND_STRING("TEAM MAGMA"),COMPOUND_STRING("TEAM AQUA")};
 static const u8 *const sShoes[] = {COMPOUND_STRING("ORIGINAL"),COMPOUND_STRING("RED"),COMPOUND_STRING("BLUE"),COMPOUND_STRING("GREEN"),COMPOUND_STRING("WHITE"),COMPOUND_STRING("PURPLE"),COMPOUND_STRING("BROWN BOOTS"),COMPOUND_STRING("BLACK BOOTS")};
 static const u8 *const sCardColors[] = {COMPOUND_STRING("ORIGINAL"),COMPOUND_STRING("EMERALD"),COMPOUND_STRING("OCEAN"),COMPOUND_STRING("CRIMSON"),COMPOUND_STRING("LAVENDER"),COMPOUND_STRING("GOLD"),COMPOUND_STRING("ROSE"),COMPOUND_STRING("SLATE")};
-static const u8 *const sRows[] = {COMPOUND_STRING("OUTFIT"),COMPOUND_STRING("COSTUMES"),COMPOUND_STRING("SCARF"),COMPOUND_STRING("JACKET"),COMPOUND_STRING("SHOES"),COMPOUND_STRING("TRAINER CARD"),COMPOUND_STRING("APPLY"),COMPOUND_STRING("CANCEL")};
+static const u8 *const sHair[] = {COMPOUND_STRING("ORIGINAL"),COMPOUND_STRING("CROP"),COMPOUND_STRING("SIDE PART"),COMPOUND_STRING("SPIKES"),COMPOUND_STRING("SIDE SWEEP"),COMPOUND_STRING("TOUSLED"),COMPOUND_STRING("PIXIE"),COMPOUND_STRING("BOB"),COMPOUND_STRING("CURLS"),COMPOUND_STRING("PONYTAIL"),COMPOUND_STRING("TWIN TAILS")};
+static const u8 *const sCoats[] = {COMPOUND_STRING("NONE"),COMPOUND_STRING("NAVY"),COMPOUND_STRING("WINTER")};
+static const u8 *const sRows[] = {COMPOUND_STRING("OUTFIT"),COMPOUND_STRING("COSTUMES"),COMPOUND_STRING("HAIR"),COMPOUND_STRING("SCARF"),COMPOUND_STRING("JACKET"),COMPOUND_STRING("SHOES"),COMPOUND_STRING("TRAINER CARD"),COMPOUND_STRING("APPLY"),COMPOUND_STRING("CANCEL")};
 static void Task_Input(u8 taskId);
 static void CB2_InitWardrobe(void);
 
@@ -69,9 +71,10 @@ static void Draw(u8 taskId)
         Print(1,sRows[item],12,i*14);
         if (item==0) Print(1,sOutfits[LegendsGetOutfit()],58,i*14);
         if (item==1) Print(1,sCostumes[LegendsGetCostume()],58,i*14);
-        if (item==2) Print(1,LegendsGetCostume()?COMPOUND_STRING("FIXED"):sScarves[LegendsGetScarf()],58,i*14);
-        if (item==3) Print(1,LegendsGetCostume()?COMPOUND_STRING("FIXED"):LegendsGetJacket()?COMPOUND_STRING("NAVY"):COMPOUND_STRING("NONE"),58,i*14);
-        if (item==4) Print(1,LegendsGetCostume()?COMPOUND_STRING("FIXED"):sShoes[LegendsGetShoes()],58,i*14);
+        if (item==2) Print(1,LegendsGetCostume()?COMPOUND_STRING("FIXED"):sHair[LegendsGetHair()],58,i*14);
+        if (item==3) Print(1,LegendsGetCostume()?COMPOUND_STRING("FIXED"):sScarves[LegendsGetScarf()],58,i*14);
+        if (item==4) Print(1,LegendsGetCostume()?COMPOUND_STRING("FIXED"):sCoats[LegendsGetJacketStyle()],58,i*14);
+        if (item==5) Print(1,LegendsGetCostume()?COMPOUND_STRING("FIXED"):sShoes[LegendsGetShoes()],58,i*14);
     }
     // The card's full label gets its own row; its color is shown below.
     Print(1,COMPOUND_STRING(">"),0,(row-top)*14);
@@ -105,26 +108,31 @@ static void Task_Input(u8 taskId)
 {
     u8 row=gTasks[taskId].data[0];
     if (gPaletteFade.active) return;
-    if (JOY_NEW(B_BUTTON) || (JOY_NEW(A_BUTTON) && row>=6))
+    if (JOY_NEW(B_BUTTON) || (JOY_NEW(A_BUTTON) && row>=7))
     {
-        if (JOY_NEW(A_BUTTON) && row==6) LegendsApplyWardrobeSelection();
+        if (JOY_NEW(A_BUTTON) && row==7) LegendsApplyWardrobeSelection();
         else LegendsClearAppearanceSelection();
         BeginNormalPaletteFade(PALETTES_ALL,0,0,16,RGB_BLACK);
         gTasks[taskId].func=Task_Return;
         return;
     }
-    if (JOY_NEW(DPAD_UP)) gTasks[taskId].data[0]=(row+7)%8;
-    else if (JOY_NEW(DPAD_DOWN)) gTasks[taskId].data[0]=(row+1)%8;
-    else if (row<6 && (JOY_NEW(DPAD_LEFT|DPAD_RIGHT|A_BUTTON)))
+    if (JOY_NEW(DPAD_UP)) gTasks[taskId].data[0]=(row+8)%9;
+    else if (JOY_NEW(DPAD_DOWN)) gTasks[taskId].data[0]=(row+1)%9;
+    else if (row<7 && (JOY_NEW(DPAD_LEFT|DPAD_RIGHT|A_BUTTON)))
     {
-        u8 count=row==0?LEGENDS_OUTFIT_COUNT:row==1?LEGENDS_COSTUME_COUNT:row==2?LEGENDS_SCARF_COUNT:row==3?2:row==4?LEGENDS_SHOE_COUNT:LEGENDS_CARD_COLOR_COUNT;
-        u8 value=row==0?LegendsGetOutfit():row==1?LegendsGetCostume():row==2?LegendsGetScarf():row==3?LegendsGetJacket():row==4?LegendsGetShoes():LegendsGetCardColor();
+        u8 count = row==0?LEGENDS_OUTFIT_COUNT:row==1?LEGENDS_COSTUME_COUNT:row==2?LEGENDS_HAIR_COUNT:row==3?LEGENDS_SCARF_COUNT:row==4?LEGENDS_JACKET_COUNT:row==5?LEGENDS_SHOE_COUNT:LEGENDS_CARD_COLOR_COUNT;
+        u8 value = row==0?LegendsGetOutfit():row==1?LegendsGetCostume():row==2?LegendsGetHair():row==3?LegendsGetScarf():row==4?LegendsGetJacketStyle():row==5?LegendsGetShoes():LegendsGetCardColor();
         value=(value+(JOY_NEW(DPAD_LEFT)?count-1:1))%count;
         if (row==0) {LegendsSetCostumeSelection(0);LegendsSetAppearanceSelection(LegendsGetSkinTone(),value);}
         else if (row==1) LegendsSetCostumeSelection(value);
-        else if (row==5) LegendsSetCardColorSelection(value);
-        else if (row==4 && !LegendsGetCostume()) LegendsSetShoeSelection(value);
-        else if (row<4 && !LegendsGetCostume()) LegendsSetAccessorySelection(row==2?value:LegendsGetScarf(),row==3?value:LegendsGetJacket());
+        else if (row==6) LegendsSetCardColorSelection(value);
+        else if (!LegendsGetCostume())
+        {
+            if (row==2) LegendsSetHairSelection(value);
+            else if (row==5) LegendsSetShoeSelection(value);
+            else if (row==3 || row==4)
+                LegendsSetAccessorySelection(row==3?value:LegendsGetScarf(),row==4?value:LegendsGetJacketStyle());
+        }
     }
     else return;
     row=gTasks[taskId].data[0];
