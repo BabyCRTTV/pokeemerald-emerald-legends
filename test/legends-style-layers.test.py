@@ -11,6 +11,7 @@ fixture=r'''
 typedef uint8_t u8;typedef uint16_t u16;typedef uint32_t u32;typedef int bool8;
 #define TRUE 1
 #define FALSE 0
+u8 LegendsGetScarf(void){return 0;}
 ''' + source + r'''
 static void Setup(u8 *p,u8 w,u8 h)
 {
