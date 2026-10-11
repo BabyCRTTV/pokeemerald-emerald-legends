@@ -1081,7 +1081,7 @@
     "walkthrough": [],
     "walkthrough-littleroot": [
       {
-        "section": "section-your-goal",
+        "section": "chapter-overview",
         "places": [
           "littleroot",
           "route101",
@@ -1153,7 +1153,7 @@
     ],
     "walkthrough-petalburg": [
       {
-        "section": "section-your-goal",
+        "section": "chapter-overview",
         "places": [
           "route102",
           "petalburg",
@@ -1235,7 +1235,7 @@
     ],
     "walkthrough-rustboro": [
       {
-        "section": "section-your-goal",
+        "section": "chapter-overview",
         "places": [
           "rustboro",
           "route116",
@@ -1319,7 +1319,7 @@
     ],
     "walkthrough-dewford": [
       {
-        "section": "section-your-goal",
+        "section": "chapter-overview",
         "places": [
           "MAP_DEWFORD_TOWN",
           "MAP_ROUTE106",
@@ -1405,7 +1405,7 @@
     ],
     "walkthrough-slateport": [
       {
-        "section": "section-your-goal",
+        "section": "chapter-overview",
         "places": [
           "MAP_SLATEPORT_CITY",
           "MAP_ROUTE110",
@@ -1477,7 +1477,7 @@
     ],
     "walkthrough-mauville": [
       {
-        "section": "section-your-goal",
+        "section": "chapter-overview",
         "places": [
           "MAPSEC_MAUVILLE_CITY",
           "MAP_ROUTE111"
@@ -1553,7 +1553,7 @@
     ],
     "walkthrough-meteor-falls": [
       {
-        "section": "section-your-goal",
+        "section": "chapter-overview",
         "places": [
           "MAP_ROUTE112",
           "MAPSEC_FALLARBOR_TOWN",
@@ -1649,7 +1649,7 @@
     ],
     "walkthrough-lavaridge": [
       {
-        "section": "section-your-goal",
+        "section": "chapter-overview",
         "places": [
           "MAPSEC_LAVARIDGE_TOWN",
           "MAP_ROUTE111",
@@ -1726,7 +1726,7 @@
     ],
     "walkthrough-norman": [
       {
-        "section": "section-your-goal",
+        "section": "chapter-overview",
         "places": [
           "MAP_PETALBURG_CITY",
           "MAPSEC_MAUVILLE_CITY",
@@ -1828,7 +1828,7 @@
     ],
     "walkthrough-fortree": [
       {
-        "section": "section-your-goal",
+        "section": "chapter-overview",
         "places": [
           "MAP_ROUTE119",
           "MAPSEC_FORTREE_CITY",
@@ -1927,7 +1927,7 @@
     ],
     "walkthrough-lilycove": [
       {
-        "section": "section-your-goal",
+        "section": "chapter-overview",
         "places": [
           "MAP_LILYCOVE_CITY",
           "MAP_MT_PYRE_SUMMIT",
@@ -2055,7 +2055,7 @@
     ],
     "walkthrough-mossdeep": [
       {
-        "section": "section-your-goal",
+        "section": "chapter-overview",
         "places": [
           "MAP_ROUTE124",
           "MAP_MOSSDEEP_CITY"
@@ -2164,7 +2164,7 @@
     ],
     "walkthrough-sootopolis": [
       {
-        "section": "section-your-goal",
+        "section": "chapter-overview",
         "places": [
           "MAP_ROUTE128",
           "MAP_SOOTOPOLIS_CITY",
@@ -2281,7 +2281,7 @@
     ],
     "walkthrough-league": [
       {
-        "section": "section-your-goal",
+        "section": "chapter-overview",
         "places": [
           "MAP_EVER_GRANDE_CITY",
           "MAP_VICTORY_ROAD_1F"
