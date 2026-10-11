@@ -4,6 +4,11 @@ All notable Pokémon Emerald: Legends project changes are documented here.
 
 For build-specific player views, see [CHANGELOG-RELEASE.md](CHANGELOG-RELEASE.md) and [CHANGELOG-DEBUG.md](CHANGELOG-DEBUG.md). The canonical history below records the project as a whole.
 
+## [0.0.32.1] - 2026-10-11
+
+- Fix bright horizontal stripes and the cyan top ramp in seasonal outdoor plain battle backgrounds, including scripted Stunky and ordinary trainer encounters. Normalize only their shared stripe/sky palette indices to native tall-grass colors before seasonal tinting; preserve plain platforms, battle terrain mechanics, sprites, UI and special/indoor backgrounds.
+- Exercise all four seasons, all 20 native weather IDs and wild/scripted-first/trainer flags, including repeated palette restoration and sand/ash exclusions. Shared fix in Release and Debug; no variant-specific differences or save-layout changes.
+
 ## [0.0.32] - 2026-10-11
 
 ### Added

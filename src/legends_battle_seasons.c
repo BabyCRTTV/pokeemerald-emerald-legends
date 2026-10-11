@@ -1,5 +1,6 @@
 #include "global.h"
 #include "battle.h"
+#include "graphics.h"
 #include "legends_battle_seasons.h"
 #include "legends_seasons.h"
 #include "palette.h"
@@ -22,6 +23,19 @@ void LegendsLoadBattleSeasonPalette(u16 environment, const u16 *source)
     // Start from the native palette on every load/animation restore. Reuse the
     // visible overworld season; a pending calendar change cannot split the scene.
     memcpy(colors, source, sizeof(colors));
+    if (environment == BATTLE_ENVIRONMENT_PLAIN)
+    {
+        // Plain and tall grass share the stripe/sky indices in both battler
+        // banks. Plain's nearly-white stripe and blue ramp bypass vegetation
+        // tinting. Use the grass ramp before tinting, retaining plain platforms
+        // and terrain mechanics, and leaving indoor/special palettes native.
+        for (i = 0; i < 2; i++)
+        {
+            u32 bank = i * 16;
+            colors[bank + 1] = gBattleEnvironmentPalette_TallGrass[bank + 1];
+            memcpy(&colors[bank + 11], &gBattleEnvironmentPalette_TallGrass[bank + 11], 5 * sizeof(u16));
+        }
+    }
     season = LegendsGetActiveSeason();
     for (i = 0; i < ARRAY_COUNT(colors); i++)
         if ((i & 15) != 0)
