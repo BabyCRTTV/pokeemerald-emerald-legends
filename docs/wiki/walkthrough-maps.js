@@ -3,19 +3,19 @@
 window.LegendsWalkthroughMaps=(()=>{
  let pending,renderToken=0;
  const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
- function load(){return pending||(pending=Promise.all(['walkthrough-maps.json','dex-data.json'].map(url=>fetch(url+'?layout=2',{cache:'no-store'}).then(r=>{if(!r.ok)throw Error('Map data unavailable');return r.json();}))).catch(e=>{pending=null;throw e;}));}
+ function load(){return pending||(pending=Promise.all(['walkthrough-maps.json','dex-data.json'].map(url=>fetch(url+'?layout=3',{cache:'no-store'}).then(r=>{if(!r.ok)throw Error('Map data unavailable');return r.json();}))).catch(e=>{pending=null;throw e;}));}
  function regionExplorer(root,guide){
   const host=root.querySelector('#section-your-first-adventure');if(!host)return;
   if(!guide.regions?.Hoenn?.towns||!guide.regions?.Kanto?.towns)throw Error('Region maps need refreshed data');
   const panel=document.createElement('section');panel.className='region-map-explorer';panel.setAttribute('aria-label','Explore the region maps');
-  panel.innerHTML='<div class="region-map-tabs"><button type="button" data-region-map="Hoenn" aria-pressed="true">Hoenn</button><button type="button" data-region-map="Kanto" aria-pressed="false">Kanto</button></div><div class="region-map-canvas"></div><aside class="map-route-tip" aria-label="RotomDex route hint" aria-hidden="true" inert><img src="rotom-dex.png" width="40" height="40" alt="RotomDex"><div><span class="map-route-title"></span><a class="map-route-link">See encounters in LegendsDex →</a></div><button type="button" class="map-route-close" aria-label="Dismiss RotomDex route hint">×</button></aside><p class="map-help-tip" role="note"><span aria-hidden="true">ⓘ</span> Tap a town for its name or a route for encounters.</p><label class="map-town-picker">Find a town <select aria-label="Choose a town on the map"></select></label><output class="map-town-name" aria-live="polite">Tap a town to see its name.</output>';
+  panel.innerHTML='<div class="region-map-tabs"><button type="button" data-region-map="Hoenn" aria-pressed="true">Hoenn</button><button type="button" data-region-map="Kanto" aria-pressed="false">Kanto</button></div><div class="region-map-canvas"></div><aside class="map-route-tip" aria-label="RotomDex map hint" aria-hidden="true" inert><img src="rotom-dex.png" width="40" height="40" alt="RotomDex"><div><span class="map-route-title"></span><span class="map-town-stats" hidden></span><small class="map-town-basis" hidden></small><a class="map-route-link">See encounters in LegendsDex →</a></div><button type="button" class="map-route-close" aria-label="Dismiss RotomDex map hint">×</button></aside><p class="map-help-tip" role="note"><span aria-hidden="true">ⓘ</span> Tap towns for details or routes for encounters.</p><label class="map-town-picker">Find a town <select aria-label="Choose a town on the map"></select></label><output class="map-town-name" aria-live="polite">Tap a town to see its name.</output>';
   let next=host.nextElementSibling;while(next&&!/^H[23]$/.test(next.tagName))next=next.nextElementSibling;if(next)next.before(panel);else host.parentElement.append(panel);
   let region='Hoenn';const canvas=panel.querySelector('.region-map-canvas'),picker=panel.querySelector('select'),name=panel.querySelector('output');
-  const tip=panel.querySelector('.map-route-tip'),tipTitle=panel.querySelector('.map-route-title'),tipLink=panel.querySelector('.map-route-link');
-  let showTimer,quietUntil=0,selectedRoute=null,flight;
+  const tip=panel.querySelector('.map-route-tip'),tipTitle=panel.querySelector('.map-route-title'),tipLink=panel.querySelector('.map-route-link'),stats=panel.querySelector('.map-town-stats'),basis=panel.querySelector('.map-town-basis');
+  let showTimer,quietUntil=0,selection=null,flight,dismissedByUser=false;
   const reduced=()=>matchMedia('(prefers-reduced-motion: reduce)').matches;
   function dismiss(fly=false){
-   clearTimeout(showTimer);selectedRoute=null;quietUntil=Date.now()+1200;
+   clearTimeout(showTimer);selection=null;quietUntil=Date.now()+1200;
    flight?.remove();flight=null;
    if(fly&&tip.classList.contains('is-visible')&&!reduced()){
     const box=tip.querySelector('img').getBoundingClientRect(),layer=document.createElement('div');layer.className='map-rotom-flight-layer';
@@ -24,17 +24,29 @@ window.LegendsWalkthroughMaps=(()=>{
    if(tip.contains(document.activeElement))canvas.querySelector('[data-town]')?.focus({preventScroll:true});
    tip.classList.remove('is-visible');tip.setAttribute('aria-hidden','true');tip.setAttribute('inert','');
   }
-  function showRoute(i){
-   const route=guide.regions[region].routes[Number(i)];if(!route)return;selectedRoute=route;
-   const reveal=()=>{if(!selectedRoute||!panel.isConnected)return;tipTitle.textContent=selectedRoute.name+' · '+region;tipLink.href='dex.html?view=routes&map='+encodeURIComponent(selectedRoute.id)+'#route-'+encodeURIComponent(selectedRoute.id);tip.classList.add('is-visible');tip.setAttribute('aria-hidden','false');tip.removeAttribute('inert');};
+  function showSelection(item,kind){
+   selection={item,kind,region};dismissedByUser=false;
+   const reveal=()=>{
+    if(!selection||!panel.isConnected)return;const {item,kind,region}=selection;
+    tipTitle.textContent=item.name+' · '+region;tipLink.hidden=kind!=='route';stats.hidden=basis.hidden=kind!=='town';
+    if(kind==='route')tipLink.href='dex.html?view=routes&map='+encodeURIComponent(item.id)+'#route-'+encodeURIComponent(item.id);
+    else{stats.textContent='Population: '+item.population+' NPCs · Buildings: '+item.buildings;basis.textContent='Human NPC placements · Enterable buildings'+(item.statsBasis==='FireRed reference'?' · FireRed reference':'');}
+    tip.classList.add('is-visible');tip.setAttribute('aria-hidden','false');tip.removeAttribute('inert');
+   };
    clearTimeout(showTimer);const delay=quietUntil-Date.now();if(delay>0)showTimer=setTimeout(reveal,delay);else reveal();
   }
-  panel.querySelector('.map-route-close').addEventListener('click',()=>dismiss());
-  const choose=i=>{const town=guide.regions[region].towns[Number(i)];if(!town)return;dismiss(true);picker.value=String(i);name.textContent=town.name+' · '+region;};
-  function draw(selected){if(selected!==region)dismiss();region=selected;const map=guide.regions[region];
+  const showRoute=i=>{const route=guide.regions[region].routes[Number(i)];if(route)showSelection(route,'route');};
+  panel.querySelector('.map-route-close').addEventListener('click',()=>{dismiss();dismissedByUser=true;});
+  const choose=(i,show=true)=>{
+   const town=guide.regions[region].towns[Number(i)];if(!town)return;
+   if(selection?.kind==='route')dismiss(true);
+   picker.value=String(i);name.textContent=town.name+' · '+region;
+   if(show)showSelection(town,'town');
+  };
+  function draw(selected){if(selected!==region){dismiss();quietUntil=0;}region=selected;const map=guide.regions[region];
    panel.querySelectorAll('[data-region-map]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.regionMap===region)));
    canvas.innerHTML='<svg width="224" height="120" viewBox="0 0 224 120" role="group" aria-label="'+region+' town map"><image href="'+esc(map.image)+'" width="224" height="120"/>'+(map.routes||[]).map((route,i)=>'<g role="button" tabindex="0" data-map-route="'+i+'" aria-label="'+esc(route.name)+' encounters" class="map-route-hit"><title>'+esc(route.name)+'</title>'+route.cells.map(([x,y])=>'<rect x="'+x+'" y="'+y+'" width="8" height="8"/>').join('')+'</g>').join('')+map.towns.map((t,i)=>'<rect class="map-town-hit" x="'+Math.max(0,t.x-2)+'" y="'+Math.max(0,t.y-2)+'" width="'+Math.min(224-Math.max(0,t.x-2),t.width+4)+'" height="'+Math.min(120-Math.max(0,t.y-2),t.height+4)+'" role="button" tabindex="0" data-town="'+i+'" aria-label="'+esc(t.name)+'"><title>'+esc(t.name)+'</title></rect>').join('')+'</svg>';
-   picker.innerHTML='<option value="">Choose a town…</option>'+map.towns.map((t,i)=>'<option value="'+i+'">'+esc(t.name)+'</option>').join('');name.textContent='Tap a town to see its name.';
+   picker.innerHTML='<option value="">Choose a town…</option>'+map.towns.map((t,i)=>'<option value="'+i+'">'+esc(t.name)+'</option>').join('');name.textContent='Tap a town to see its name.';choose(0,!dismissedByUser);
   }
   panel.addEventListener('click',e=>{const tab=e.target.closest('[data-region-map]'),town=e.target.closest('[data-town]'),route=e.target.closest('[data-map-route]');if(route)showRoute(route.dataset.mapRoute);else if(tab)draw(tab.dataset.regionMap);else if(town)choose(town.dataset.town);});
   panel.addEventListener('keydown',e=>{const town=e.target.closest('[data-town]'),route=e.target.closest('[data-map-route]');if((town||route)&&(e.key==='Enter'||e.key===' ')){e.preventDefault();if(route)showRoute(route.dataset.mapRoute);else choose(town.dataset.town);}});

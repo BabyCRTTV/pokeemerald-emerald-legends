@@ -2394,112 +2394,160 @@
           "x": 32,
           "y": 88,
           "width": 8,
-          "height": 8
+          "height": 8,
+          "population": 23,
+          "buildings": 3,
+          "statsBasis": "Legends snapshot"
         },
         {
           "name": "Oldale Town",
           "x": 32,
           "y": 72,
           "width": 8,
-          "height": 8
+          "height": 8,
+          "population": 18,
+          "buildings": 4,
+          "statsBasis": "Legends snapshot"
         },
         {
           "name": "Dewford Town",
           "x": 16,
           "y": 112,
           "width": 8,
-          "height": 8
+          "height": 8,
+          "population": 32,
+          "buildings": 5,
+          "statsBasis": "Legends snapshot"
         },
         {
           "name": "Lavaridge Town",
           "x": 40,
           "y": 24,
           "width": 8,
-          "height": 8
+          "height": 8,
+          "population": 35,
+          "buildings": 5,
+          "statsBasis": "Legends snapshot"
         },
         {
           "name": "Fallarbor Town",
           "x": 24,
           "y": 0,
           "width": 8,
-          "height": 8
+          "height": 8,
+          "population": 23,
+          "buildings": 5,
+          "statsBasis": "Legends snapshot"
         },
         {
           "name": "Verdanturf Town",
           "x": 32,
           "y": 48,
           "width": 8,
-          "height": 8
+          "height": 8,
+          "population": 30,
+          "buildings": 6,
+          "statsBasis": "Legends snapshot"
         },
         {
           "name": "Pacifidlog Town",
           "x": 136,
           "y": 80,
           "width": 8,
-          "height": 8
+          "height": 8,
+          "population": 22,
+          "buildings": 6,
+          "statsBasis": "Legends snapshot"
         },
         {
           "name": "Petalburg City",
           "x": 8,
           "y": 72,
           "width": 8,
-          "height": 8
+          "height": 8,
+          "population": 37,
+          "buildings": 6,
+          "statsBasis": "Legends snapshot"
         },
         {
           "name": "Slateport City",
           "x": 64,
           "y": 80,
           "width": 8,
-          "height": 16
+          "height": 16,
+          "population": 93,
+          "buildings": 9,
+          "statsBasis": "Legends snapshot"
         },
         {
           "name": "Mauville City",
           "x": 64,
           "y": 48,
           "width": 16,
-          "height": 8
+          "height": 8,
+          "population": 46,
+          "buildings": 7,
+          "statsBasis": "Legends snapshot"
         },
         {
           "name": "Rustboro City",
           "x": 0,
           "y": 40,
           "width": 8,
-          "height": 16
+          "height": 16,
+          "population": 69,
+          "buildings": 11,
+          "statsBasis": "Legends snapshot"
         },
         {
           "name": "Fortree City",
           "x": 96,
           "y": 0,
           "width": 8,
-          "height": 8
+          "height": 8,
+          "population": 40,
+          "buildings": 9,
+          "statsBasis": "Legends snapshot"
         },
         {
           "name": "Lilycove City",
           "x": 144,
           "y": 24,
           "width": 16,
-          "height": 8
+          "height": 8,
+          "population": 165,
+          "buildings": 12,
+          "statsBasis": "Legends snapshot"
         },
         {
           "name": "Mossdeep City",
           "x": 192,
           "y": 40,
           "width": 16,
-          "height": 8
+          "height": 8,
+          "population": 74,
+          "buildings": 10,
+          "statsBasis": "Legends snapshot"
         },
         {
           "name": "Sootopolis City",
           "x": 168,
           "y": 56,
           "width": 8,
-          "height": 8
+          "height": 8,
+          "population": 52,
+          "buildings": 12,
+          "statsBasis": "Legends snapshot"
         },
         {
           "name": "Ever Grande City",
           "x": 216,
           "y": 64,
           "width": 8,
-          "height": 16
+          "height": 16,
+          "population": 24,
+          "buildings": 2,
+          "statsBasis": "Legends snapshot"
         }
       ],
       "routes": [
@@ -3233,77 +3281,110 @@
           "x": 32,
           "y": 88,
           "width": 8,
-          "height": 8
+          "height": 8,
+          "population": 10,
+          "buildings": 3,
+          "statsBasis": "FireRed reference"
         },
         {
           "name": "Viridian City",
           "x": 32,
           "y": 64,
           "width": 8,
-          "height": 8
+          "height": 8,
+          "population": 31,
+          "buildings": 5,
+          "statsBasis": "FireRed reference"
         },
         {
           "name": "Pewter City",
           "x": 32,
           "y": 32,
           "width": 8,
-          "height": 8
+          "height": 8,
+          "population": 36,
+          "buildings": 6,
+          "statsBasis": "FireRed reference"
         },
         {
           "name": "Cerulean City",
           "x": 112,
           "y": 24,
           "width": 8,
-          "height": 8
+          "height": 8,
+          "population": 35,
+          "buildings": 9,
+          "statsBasis": "FireRed reference"
         },
         {
           "name": "Vermilion City",
           "x": 112,
           "y": 72,
           "width": 8,
-          "height": 8
+          "height": 8,
+          "population": 27,
+          "buildings": 8,
+          "statsBasis": "Legends snapshot"
         },
         {
           "name": "Lavender Town",
           "x": 144,
           "y": 48,
           "width": 8,
-          "height": 8
+          "height": 8,
+          "population": 1,
+          "buildings": 5,
+          "statsBasis": "Legends snapshot"
         },
         {
           "name": "Celadon City",
           "x": 88,
           "y": 48,
           "width": 8,
-          "height": 8
+          "height": 8,
+          "population": 1,
+          "buildings": 1,
+          "statsBasis": "Legends snapshot"
         },
         {
           "name": "Fuchsia City",
           "x": 96,
           "y": 96,
           "width": 8,
-          "height": 8
+          "height": 8,
+          "population": 3,
+          "buildings": 8,
+          "statsBasis": "Legends snapshot"
         },
         {
           "name": "Cinnabar Island",
           "x": 32,
           "y": 112,
           "width": 8,
-          "height": 8
+          "height": 8,
+          "population": 32,
+          "buildings": 4,
+          "statsBasis": "FireRed reference"
         },
         {
           "name": "Saffron City",
           "x": 112,
           "y": 48,
           "width": 8,
-          "height": 8
+          "height": 8,
+          "population": 1,
+          "buildings": 1,
+          "statsBasis": "Legends snapshot"
         },
         {
           "name": "Indigo Plateau",
           "x": 16,
           "y": 24,
           "width": 8,
-          "height": 8
+          "height": 8,
+          "population": 12,
+          "buildings": 1,
+          "statsBasis": "FireRed reference"
         }
       ],
       "routes": [
@@ -3529,5 +3610,6 @@
         }
       ]
     }
-  }
+  },
+  "townStatsSourceCommit": "f8b828f77d7c88955cf19ebaeb3898a48c6fa1b6"
 }
