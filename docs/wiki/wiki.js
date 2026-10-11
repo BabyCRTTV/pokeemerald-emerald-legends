@@ -25,7 +25,16 @@
   {label:'Lilycove / Mt. Pyre',page:'walkthrough-lilycove',section:'routes-120-and-121-to-lilycove',hint:'The stolen orbs and hideouts'},
   {label:'Mossdeep',page:'walkthrough-mossdeep',section:'route-124-to-mossdeep',hint:'Mind Badge and Dive'},
   {label:'Sootopolis / Sky Pillar',page:'walkthrough-sootopolis',section:'enter-sootopolis',hint:'Rayquaza and Rain Badge'},
-  {label:'Ever Grande / League',page:'walkthrough-league',section:'ever-grande-and-victory-road',hint:'Victory Road and Wallace'}
+  {label:'Ever Grande / League',page:'walkthrough-league',section:'ever-grande-and-victory-road',hint:'Victory Road and Wallace'},
+  {label:'Lilycove — Kanto ferry',page:'walkthrough-kanto-arrival',section:'collect-your-invitation',hint:'Invite Ticket and first trip'},
+  {label:'Vermilion — arrival',page:'walkthrough-kanto-arrival',section:'arrive-in-vermilion',hint:'Settle in and meet Oak’s aide'},
+  {label:'Vermilion — Gym',page:'walkthrough-kanto-survey',section:'lt-surge-in-vermilion',hint:'Surge’s visiting challenge'},
+  {label:'Fuchsia — Gym',page:'walkthrough-kanto-survey',section:'koga-in-fuchsia',hint:'Koga and the opening report'},
+  {label:'Celadon — Gym',page:'walkthrough-kanto-voice',section:'route-7-and-celadon-gym',hint:'Erika’s visiting challenge'},
+  {label:'Route 16 — leaf survey',page:'walkthrough-kanto-voice',section:'route-16-leaf-observation',hint:'Birdwatcher’s field scene'},
+  {label:'Saffron — Gym',page:'walkthrough-kanto-voice',section:'sabrina-and-the-teleport-pads',hint:'Sabrina’s visiting challenge'},
+  {label:'Route 8 — call survey',page:'walkthrough-kanto-voice',section:'route-8-call-observation',hint:'Listen with the researcher'},
+  {label:'Vermilion — field report',page:'walkthrough-kanto-voice',section:'file-the-borrowed-voice-report',hint:'Finish The Borrowed Voice'}
  ];
  function readingWalkthrough(active){document.documentElement.classList.toggle('reading-walkthrough',active);root.dataset.walkthroughPage='';}
  function walkthroughNavigation(id){
@@ -120,7 +129,7 @@
  function home(push=true){
    readingWalkthrough(false);setLocation({},push);side('');
    outline.innerHTML='<strong>Wiki guide</strong><p>Choose an article or search for a feature. Everything is open to read.</p>';
-   root.innerHTML='<section class="welcome"><h1 class="wiki-game-logo"><img src="legends-logo.svg" width="166" height="93" alt="Pokémon Emerald: Legends"></h1><p>Choose a topic below, or jump straight to Pokémon and wild encounters.</p><div class="dex-shortcuts" aria-label="LegendsDex shortcuts"><a href="dex.html?view=routes">⌁ Routes <small>Wild encounter guide</small></a><a href="dex.html?view=species">◈ Pokédex <small>Browse Pokémon</small></a></div><p class="walkthrough-shortcut"><a href="?page=walkthrough" data-page="walkthrough" class="action">Walkthrough <span aria-hidden="true">→</span></a><small>Fourteen chapters from New Game to the Hoenn League</small></p><label class="searchrow"><span aria-hidden="true">⌕</span><input id="search" type="search" placeholder="Search articles, features, and places…" aria-label="Search wiki" autocomplete="off"><span class="small">/</span></label><p class="results-note" id="resultsnote">Browse '+pages.length+' articles across seven sections.</p></section><div id="cards"></div>';
+   root.innerHTML='<section class="welcome"><h1 class="wiki-game-logo"><img src="legends-logo.svg" width="166" height="93" alt="Pokémon Emerald: Legends"></h1><p>Choose a topic below, or jump straight to Pokémon and wild encounters.</p><div class="dex-shortcuts" aria-label="LegendsDex shortcuts"><a href="dex.html?view=routes">⌁ Routes <small>Wild encounter guide</small></a><a href="dex.html?view=species">◈ Pokédex <small>Browse Pokémon</small></a></div><p class="walkthrough-shortcut"><a href="?page=walkthrough" data-page="walkthrough" class="action">Walkthrough <span aria-hidden="true">→</span></a><small>Seventeen chapters from New Game to Kanto’s Wing Survey</small></p><label class="searchrow"><span aria-hidden="true">⌕</span><input id="search" type="search" placeholder="Search articles, features, and places…" aria-label="Search wiki" autocomplete="off"><span class="small">/</span></label><p class="results-note" id="resultsnote">Browse '+pages.length+' articles across seven sections.</p></section><div id="cards"></div>';
    const input=document.getElementById('search');input.addEventListener('input',()=>cards(input.value));cards('');document.title='Emerald: Legends Wiki';menuClose();focusContent();
  }
  function cards(q){

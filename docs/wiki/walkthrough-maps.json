@@ -1075,6 +1075,276 @@
           72
         ]
       ]
+    },
+    "MAP_LEGENDS_KANTO_VERMILION_CITY": {
+      "name": "Vermilion City",
+      "mapId": "MAP_LEGENDS_KANTO_VERMILION_CITY",
+      "cells": [
+        [
+          112,
+          72
+        ]
+      ]
+    },
+    "MAP_LEGENDS_KANTO_LAVENDER_TOWN": {
+      "name": "Lavender Town",
+      "mapId": "MAP_LEGENDS_KANTO_LAVENDER_TOWN",
+      "cells": [
+        [
+          144,
+          48
+        ]
+      ]
+    },
+    "MAP_LEGENDS_KANTO_CELADON_CITY": {
+      "name": "Celadon City",
+      "mapId": "MAP_LEGENDS_KANTO_CELADON_CITY",
+      "cells": [
+        [
+          88,
+          48
+        ]
+      ]
+    },
+    "MAP_LEGENDS_KANTO_FUCHSIA_CITY": {
+      "name": "Fuchsia City",
+      "mapId": "MAP_LEGENDS_KANTO_FUCHSIA_CITY",
+      "cells": [
+        [
+          96,
+          96
+        ]
+      ]
+    },
+    "MAP_LEGENDS_KANTO_SAFFRON_CITY": {
+      "name": "Saffron City",
+      "mapId": "MAP_LEGENDS_KANTO_SAFFRON_CITY",
+      "cells": [
+        [
+          112,
+          48
+        ]
+      ]
+    },
+    "MAP_LEGENDS_KANTO_ROUTE6": {
+      "name": "Route 6",
+      "mapId": "MAP_LEGENDS_KANTO_ROUTE6",
+      "cells": [
+        [
+          112,
+          56
+        ],
+        [
+          112,
+          64
+        ]
+      ]
+    },
+    "MAP_LEGENDS_KANTO_ROUTE7": {
+      "name": "Route 7",
+      "mapId": "MAP_LEGENDS_KANTO_ROUTE7",
+      "cells": [
+        [
+          96,
+          48
+        ],
+        [
+          104,
+          48
+        ]
+      ]
+    },
+    "MAP_LEGENDS_KANTO_ROUTE8": {
+      "name": "Route 8",
+      "mapId": "MAP_LEGENDS_KANTO_ROUTE8",
+      "cells": [
+        [
+          120,
+          48
+        ],
+        [
+          128,
+          48
+        ],
+        [
+          136,
+          48
+        ]
+      ]
+    },
+    "MAP_LEGENDS_KANTO_ROUTE11": {
+      "name": "Route 11",
+      "mapId": "MAP_LEGENDS_KANTO_ROUTE11",
+      "cells": [
+        [
+          120,
+          72
+        ],
+        [
+          128,
+          72
+        ],
+        [
+          136,
+          72
+        ]
+      ]
+    },
+    "MAP_LEGENDS_KANTO_ROUTE12": {
+      "name": "Route 12",
+      "mapId": "MAP_LEGENDS_KANTO_ROUTE12",
+      "cells": [
+        [
+          144,
+          56
+        ],
+        [
+          144,
+          64
+        ],
+        [
+          144,
+          72
+        ],
+        [
+          144,
+          80
+        ],
+        [
+          144,
+          88
+        ]
+      ]
+    },
+    "MAP_LEGENDS_KANTO_ROUTE13": {
+      "name": "Route 13",
+      "mapId": "MAP_LEGENDS_KANTO_ROUTE13",
+      "cells": [
+        [
+          128,
+          88
+        ],
+        [
+          136,
+          88
+        ]
+      ]
+    },
+    "MAP_LEGENDS_KANTO_ROUTE14": {
+      "name": "Route 14",
+      "mapId": "MAP_LEGENDS_KANTO_ROUTE14",
+      "cells": [
+        [
+          120,
+          88
+        ],
+        [
+          120,
+          96
+        ]
+      ]
+    },
+    "MAP_LEGENDS_KANTO_ROUTE15": {
+      "name": "Route 15",
+      "mapId": "MAP_LEGENDS_KANTO_ROUTE15",
+      "cells": [
+        [
+          104,
+          96
+        ],
+        [
+          112,
+          96
+        ]
+      ]
+    },
+    "MAP_LEGENDS_KANTO_ROUTE16": {
+      "name": "Route 16",
+      "mapId": "MAP_LEGENDS_KANTO_ROUTE16",
+      "cells": [
+        [
+          56,
+          48
+        ],
+        [
+          64,
+          48
+        ],
+        [
+          72,
+          48
+        ],
+        [
+          80,
+          48
+        ]
+      ]
+    },
+    "MAP_LEGENDS_KANTO_ROUTE17": {
+      "name": "Route 17",
+      "mapId": "MAP_LEGENDS_KANTO_ROUTE17",
+      "cells": [
+        [
+          56,
+          56
+        ],
+        [
+          56,
+          64
+        ],
+        [
+          56,
+          72
+        ],
+        [
+          56,
+          80
+        ],
+        [
+          56,
+          88
+        ]
+      ]
+    },
+    "MAP_LEGENDS_KANTO_ROUTE18": {
+      "name": "Route 18",
+      "mapId": "MAP_LEGENDS_KANTO_ROUTE18",
+      "cells": [
+        [
+          56,
+          96
+        ],
+        [
+          64,
+          96
+        ],
+        [
+          72,
+          96
+        ],
+        [
+          80,
+          96
+        ],
+        [
+          88,
+          96
+        ]
+      ]
+    },
+    "MAP_LEGENDS_KANTO_ROUTE19": {
+      "name": "Route 19",
+      "mapId": "MAP_LEGENDS_KANTO_ROUTE19",
+      "cells": [
+        [
+          96,
+          104
+        ],
+        [
+          96,
+          112
+        ]
+      ]
     }
   },
   "chapters": {
@@ -2383,6 +2653,370 @@
         ],
         "note": ""
       }
+    ],
+    "walkthrough-kanto-arrival": [
+      {
+        "section": "chapter-overview",
+        "places": [
+          "MAP_LEGENDS_KANTO_VERMILION_CITY"
+        ],
+        "encounters": [],
+        "availableMethods": [
+          "land",
+          "rock",
+          "surf",
+          "old_rod",
+          "good_rod",
+          "super_rod"
+        ],
+        "region": "Kanto",
+        "note": ""
+      },
+      {
+        "section": "section-collect-your-invitation",
+        "places": [
+          "MAP_LILYCOVE_CITY"
+        ],
+        "encounters": [],
+        "availableMethods": [
+          "land",
+          "rock",
+          "surf",
+          "old_rod",
+          "good_rod",
+          "super_rod"
+        ],
+        "region": "Hoenn",
+        "note": ""
+      },
+      {
+        "section": "section-arrive-in-vermilion",
+        "places": [
+          "MAP_LEGENDS_KANTO_VERMILION_CITY"
+        ],
+        "encounters": [],
+        "availableMethods": [
+          "land",
+          "rock",
+          "surf",
+          "old_rod",
+          "good_rod",
+          "super_rod"
+        ],
+        "region": "Kanto",
+        "note": ""
+      },
+      {
+        "section": "section-meet-oaks-field-aide",
+        "places": [
+          "MAP_LEGENDS_KANTO_VERMILION_CITY"
+        ],
+        "encounters": [],
+        "availableMethods": [
+          "land",
+          "rock",
+          "surf",
+          "old_rod",
+          "good_rod",
+          "super_rod"
+        ],
+        "region": "Kanto",
+        "note": ""
+      },
+      {
+        "section": "section-explore-without-losing-your-place",
+        "places": [
+          "MAP_LEGENDS_KANTO_VERMILION_CITY",
+          "MAP_LEGENDS_KANTO_SAFFRON_CITY",
+          "MAP_LEGENDS_KANTO_ROUTE6"
+        ],
+        "encounters": [
+          "MAP_LEGENDS_KANTO_ROUTE6"
+        ],
+        "availableMethods": [
+          "land",
+          "rock",
+          "surf",
+          "old_rod",
+          "good_rod",
+          "super_rod"
+        ],
+        "region": "Kanto",
+        "note": ""
+      },
+      {
+        "section": "section-optional-sea-passage",
+        "places": [
+          "MAP_LEGENDS_KANTO_ROUTE19"
+        ],
+        "encounters": [
+          "MAP_LEGENDS_KANTO_ROUTE19"
+        ],
+        "availableMethods": [
+          "land",
+          "rock",
+          "surf",
+          "old_rod",
+          "good_rod",
+          "super_rod"
+        ],
+        "region": "Kanto",
+        "note": ""
+      }
+    ],
+    "walkthrough-kanto-survey": [
+      {
+        "section": "chapter-overview",
+        "places": [
+          "MAP_LEGENDS_KANTO_VERMILION_CITY",
+          "MAP_LEGENDS_KANTO_FUCHSIA_CITY"
+        ],
+        "encounters": [],
+        "availableMethods": [
+          "land",
+          "rock",
+          "surf",
+          "old_rod",
+          "good_rod",
+          "super_rod"
+        ],
+        "region": "Kanto",
+        "note": ""
+      },
+      {
+        "section": "section-lt-surge-in-vermilion",
+        "places": [
+          "MAP_LEGENDS_KANTO_VERMILION_CITY"
+        ],
+        "encounters": [],
+        "availableMethods": [
+          "land",
+          "rock",
+          "surf",
+          "old_rod",
+          "good_rod",
+          "super_rod"
+        ],
+        "region": "Kanto",
+        "note": ""
+      },
+      {
+        "section": "section-routes-11-and-12",
+        "places": [
+          "MAP_LEGENDS_KANTO_ROUTE11",
+          "MAP_LEGENDS_KANTO_ROUTE12"
+        ],
+        "encounters": [
+          "MAP_LEGENDS_KANTO_ROUTE11",
+          "MAP_LEGENDS_KANTO_ROUTE12"
+        ],
+        "availableMethods": [
+          "land",
+          "rock",
+          "surf",
+          "old_rod",
+          "good_rod",
+          "super_rod"
+        ],
+        "region": "Kanto",
+        "note": ""
+      },
+      {
+        "section": "section-routes-13-to-15",
+        "places": [
+          "MAP_LEGENDS_KANTO_FUCHSIA_CITY",
+          "MAP_LEGENDS_KANTO_ROUTE13",
+          "MAP_LEGENDS_KANTO_ROUTE14",
+          "MAP_LEGENDS_KANTO_ROUTE15"
+        ],
+        "encounters": [
+          "MAP_LEGENDS_KANTO_ROUTE13",
+          "MAP_LEGENDS_KANTO_ROUTE14",
+          "MAP_LEGENDS_KANTO_ROUTE15"
+        ],
+        "availableMethods": [
+          "land",
+          "rock",
+          "surf",
+          "old_rod",
+          "good_rod",
+          "super_rod"
+        ],
+        "region": "Kanto",
+        "note": ""
+      },
+      {
+        "section": "section-koga-in-fuchsia",
+        "places": [
+          "MAP_LEGENDS_KANTO_FUCHSIA_CITY"
+        ],
+        "encounters": [],
+        "availableMethods": [
+          "land",
+          "rock",
+          "surf",
+          "old_rod",
+          "good_rod",
+          "super_rod"
+        ],
+        "region": "Kanto",
+        "note": ""
+      },
+      {
+        "section": "section-return-and-file-the-opening-report",
+        "places": [
+          "MAP_LEGENDS_KANTO_VERMILION_CITY"
+        ],
+        "encounters": [],
+        "availableMethods": [
+          "land",
+          "rock",
+          "surf",
+          "old_rod",
+          "good_rod",
+          "super_rod"
+        ],
+        "region": "Kanto",
+        "note": ""
+      }
+    ],
+    "walkthrough-kanto-voice": [
+      {
+        "section": "chapter-overview",
+        "places": [
+          "MAP_LEGENDS_KANTO_CELADON_CITY",
+          "MAP_LEGENDS_KANTO_SAFFRON_CITY",
+          "MAP_LEGENDS_KANTO_ROUTE16",
+          "MAP_LEGENDS_KANTO_ROUTE8"
+        ],
+        "encounters": [],
+        "availableMethods": [
+          "land",
+          "rock",
+          "surf",
+          "old_rod",
+          "good_rod",
+          "super_rod"
+        ],
+        "region": "Kanto",
+        "note": ""
+      },
+      {
+        "section": "section-route-6-to-saffron",
+        "places": [
+          "MAP_LEGENDS_KANTO_SAFFRON_CITY",
+          "MAP_LEGENDS_KANTO_ROUTE6"
+        ],
+        "encounters": [
+          "MAP_LEGENDS_KANTO_ROUTE6"
+        ],
+        "availableMethods": [
+          "land",
+          "rock",
+          "surf",
+          "old_rod",
+          "good_rod",
+          "super_rod"
+        ],
+        "region": "Kanto",
+        "note": ""
+      },
+      {
+        "section": "section-route-7-and-celadon-gym",
+        "places": [
+          "MAP_LEGENDS_KANTO_CELADON_CITY",
+          "MAP_LEGENDS_KANTO_ROUTE7"
+        ],
+        "encounters": [
+          "MAP_LEGENDS_KANTO_ROUTE7"
+        ],
+        "availableMethods": [
+          "land",
+          "rock",
+          "surf",
+          "old_rod",
+          "good_rod",
+          "super_rod"
+        ],
+        "region": "Kanto",
+        "note": ""
+      },
+      {
+        "section": "section-route-16-leaf-observation",
+        "places": [
+          "MAP_LEGENDS_KANTO_ROUTE16",
+          "MAP_LEGENDS_KANTO_ROUTE17",
+          "MAP_LEGENDS_KANTO_ROUTE18"
+        ],
+        "encounters": [
+          "MAP_LEGENDS_KANTO_ROUTE16",
+          "MAP_LEGENDS_KANTO_ROUTE17",
+          "MAP_LEGENDS_KANTO_ROUTE18"
+        ],
+        "availableMethods": [
+          "land",
+          "rock",
+          "surf",
+          "old_rod",
+          "good_rod",
+          "super_rod"
+        ],
+        "region": "Kanto",
+        "note": ""
+      },
+      {
+        "section": "section-sabrina-and-the-teleport-pads",
+        "places": [
+          "MAP_LEGENDS_KANTO_SAFFRON_CITY"
+        ],
+        "encounters": [],
+        "availableMethods": [
+          "land",
+          "rock",
+          "surf",
+          "old_rod",
+          "good_rod",
+          "super_rod"
+        ],
+        "region": "Kanto",
+        "note": ""
+      },
+      {
+        "section": "section-route-8-call-observation",
+        "places": [
+          "MAP_LEGENDS_KANTO_ROUTE8"
+        ],
+        "encounters": [
+          "MAP_LEGENDS_KANTO_ROUTE8"
+        ],
+        "availableMethods": [
+          "land",
+          "rock",
+          "surf",
+          "old_rod",
+          "good_rod",
+          "super_rod"
+        ],
+        "region": "Kanto",
+        "note": ""
+      },
+      {
+        "section": "section-file-the-borrowed-voice-report",
+        "places": [
+          "MAP_LEGENDS_KANTO_VERMILION_CITY"
+        ],
+        "encounters": [],
+        "availableMethods": [
+          "land",
+          "rock",
+          "surf",
+          "old_rod",
+          "good_rod",
+          "super_rod"
+        ],
+        "region": "Kanto",
+        "note": ""
+      }
     ]
   },
   "regions": {
@@ -3342,8 +3976,8 @@
           "y": 48,
           "width": 8,
           "height": 8,
-          "population": 1,
-          "buildings": 1,
+          "population": 5,
+          "buildings": 2,
           "statsBasis": "Legends snapshot"
         },
         {
@@ -3372,8 +4006,8 @@
           "y": 48,
           "width": 8,
           "height": 8,
-          "population": 1,
-          "buildings": 1,
+          "population": 5,
+          "buildings": 2,
           "statsBasis": "Legends snapshot"
         },
         {
@@ -3611,5 +4245,12 @@
       ]
     }
   },
-  "townStatsSourceCommit": "f8b828f77d7c88955cf19ebaeb3898a48c6fa1b6"
+  "townStatsSourceCommit": "f8b828f77d7c88955cf19ebaeb3898a48c6fa1b6",
+  "postgameReview": {
+    "scope": "Kanto postgame chapters and overview articles",
+    "gameVersion": "0.0.32.1",
+    "sourceCommit": "8a7981e4adee7d9bce9442f8863bba34078d36aa",
+    "date": "2026-10-11",
+    "encounterSnapshotChanged": false
+  }
 }

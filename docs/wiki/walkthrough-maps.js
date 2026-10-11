@@ -3,7 +3,7 @@
 window.LegendsWalkthroughMaps=(()=>{
  let pending,renderToken=0;
  const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
- function load(){return pending||(pending=Promise.all(['walkthrough-maps.json','dex-data.json'].map(url=>fetch(url+'?layout=3',{cache:'no-store'}).then(r=>{if(!r.ok)throw Error('Map data unavailable');return r.json();}))).catch(e=>{pending=null;throw e;}));}
+ function load(){return pending||(pending=Promise.all(['walkthrough-maps.json','dex-data.json'].map(url=>fetch(url+'?layout=4',{cache:'no-store'}).then(r=>{if(!r.ok)throw Error('Map data unavailable');return r.json();}))).catch(e=>{pending=null;throw e;}));}
  function regionExplorer(root,guide){
   const host=root.querySelector('#section-your-first-adventure');if(!host)return;
   if(!guide.regions?.Hoenn?.towns||!guide.regions?.Kanto?.towns)throw Error('Region maps need refreshed data');
@@ -75,8 +75,8 @@ window.LegendsWalkthroughMaps=(()=>{
    for(const block of guide.chapters[page]||[]){
     const heading=block.section==='chapter-overview'?root.querySelector('.chapter-intro-tip'):root.querySelector('#'+block.section);if(!heading)continue;
     const places=block.places.map(id=>guide.places[id]),cells=new Map();for(const p of places)for(const c of p.cells)cells.set(c.join(','),c);
-    const label=places.map(p=>p.name).join(', ');
-    const figure='<figure class="walkthrough-map"><figcaption>Where you are: '+esc(label)+'</figcaption><svg viewBox="0 0 224 120" role="img" aria-label="Hoenn map highlighting '+esc(label)+'"><title>'+esc(label)+'</title><image href="'+esc(guide.image)+'" width="224" height="120"/>'+[...cells.values()].map(([x,y])=>'<rect class="walkthrough-map-highlight" x="'+x+'" y="'+y+'" width="8" height="8"/>').join('')+'</svg><p class="walkthrough-map-key"><span aria-hidden="true"></span> Highlighted: '+esc(label)+'</p></figure>';
+    const label=places.map(p=>p.name).join(', '),region=block.region||'Hoenn',image=guide.regions[region]?.image||guide.image;
+    const figure='<figure class="walkthrough-map"><figcaption>Where you are: '+esc(label)+'</figcaption><svg viewBox="0 0 224 120" role="img" aria-label="'+esc(region)+' map highlighting '+esc(label)+'"><title>'+esc(label)+'</title><image href="'+esc(image)+'" width="224" height="120"/>'+[...cells.values()].map(([x,y])=>'<rect class="walkthrough-map-highlight" x="'+x+'" y="'+y+'" width="8" height="8"/>').join('')+'</svg><p class="walkthrough-map-key"><span aria-hidden="true"></span> Highlighted: '+esc(label)+'</p></figure>';
     const encounters=block.encounters.map(id=>encounterList(guide.places[id],maps,species,block.availableMethods)).join('');
     const html='<aside class="walkthrough-field-guide" data-walkthrough-section="'+esc(block.section)+'" aria-label="Map and encounters for '+esc(heading.textContent)+'">'+figure+(block.note?'<p class="walkthrough-field-note">'+esc(block.note)+'</p>':'')+(encounters?'<p class="walkthrough-encounter-note">Standard wild encounters. Percentages are the share within each method, not the chance per step. Tap a Pokémon for its LegendsDex details.</p>'+encounters:'')+'</aside>';
     // Place the field guide after this section's instructions, before the next heading.
