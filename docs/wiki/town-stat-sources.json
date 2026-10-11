@@ -660,15 +660,18 @@
     "Celadon City": {
       "region": "Kanto",
       "basis": "Legends snapshot",
-      "buildingCount": 1,
+      "buildingCount": 2,
       "maps": [
         "MAP_LEGENDS_KANTO_CELADON_CITY",
+        "MAP_LEGENDS_KANTO_CELADON_CITY_GYM",
         "MAP_LEGENDS_KANTO_CELADON_CITY_POKEMON_CENTER_1F"
       ],
       "npcPlacements": {
-        "MAP_LEGENDS_KANTO_CELADON_CITY": 0,
+        "MAP_LEGENDS_KANTO_CELADON_CITY": 1,
+        "MAP_LEGENDS_KANTO_CELADON_CITY_GYM": 3,
         "MAP_LEGENDS_KANTO_CELADON_CITY_POKEMON_CENTER_1F": 1
-      }
+      },
+      "sourceCommit": "8a7981e4adee7d9bce9442f8863bba34078d36aa"
     },
     "Fuchsia City": {
       "region": "Kanto",
@@ -729,15 +732,18 @@
     "Saffron City": {
       "region": "Kanto",
       "basis": "Legends snapshot",
-      "buildingCount": 1,
+      "buildingCount": 2,
       "maps": [
         "MAP_LEGENDS_KANTO_SAFFRON_CITY",
+        "MAP_LEGENDS_KANTO_SAFFRON_CITY_GYM",
         "MAP_LEGENDS_KANTO_SAFFRON_CITY_POKEMON_CENTER_1F"
       ],
       "npcPlacements": {
-        "MAP_LEGENDS_KANTO_SAFFRON_CITY": 0,
+        "MAP_LEGENDS_KANTO_SAFFRON_CITY": 1,
+        "MAP_LEGENDS_KANTO_SAFFRON_CITY_GYM": 3,
         "MAP_LEGENDS_KANTO_SAFFRON_CITY_POKEMON_CENTER_1F": 1
-      }
+      },
+      "sourceCommit": "8a7981e4adee7d9bce9442f8863bba34078d36aa"
     },
     "Indigo Plateau": {
       "region": "Kanto",
@@ -754,5 +760,13 @@
         "MAP_INDIGO_PLATEAU_POKEMON_CENTER_2F": 4
       }
     }
+  },
+  "latestManualReview": {
+    "date": "2026-10-11",
+    "towns": [
+      "Celadon City",
+      "Saffron City"
+    ],
+    "sourceCommit": "8a7981e4adee7d9bce9442f8863bba34078d36aa"
   }
 }
