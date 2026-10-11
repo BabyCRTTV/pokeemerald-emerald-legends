@@ -24,6 +24,23 @@ SHAPES=[
  [(2,9),(1,5),(4,2),(7,1),(11,1),(14,3),(15,7),(13,10),(10,8),(5,8),(3,10)],
 ]
 
+
+# Separate female contours: softer cropped layers, longer asymmetric fringes,
+# feathered spikes, rounded bob/curls and higher/longer tied styles. Choice IDs
+# and broad names stay shared; actual silhouettes are deliberately independent.
+FEMALE_SHAPES=[
+ [(2,9),(1,5),(3,2),(6,1),(11,1),(14,3),(15,7),(13,10),(11,8),(8,9),(5,10)],
+ [(1,10),(1,5),(4,2),(8,0),(12,1),(15,4),(15,10),(12,12),(10,8),(6,6),(4,11)],
+ [(0,7),(3,4),(2,1),(6,2),(8,0),(10,2),(13,1),(12,4),(16,6),(14,10),(11,12),(9,8),(4,10)],
+ [(0,8),(2,4),(6,1),(10,0),(14,2),(15,5),(13,8),(9,11),(5,12),(2,10)],
+ [(0,10),(1,6),(3,5),(2,3),(5,1),(8,2),(11,0),(14,3),(16,7),(14,10),(15,12),(11,13),(8,9),(4,12)],
+ [(1,8),(3,3),(7,1),(12,2),(14,5),(13,9),(11,11),(8,7),(5,10),(3,11)],
+ [(0,12),(0,5),(3,2),(7,0),(12,1),(15,4),(16,10),(15,14),(12,16),(10,10),(5,10),(4,15),(2,16)],
+ [(0,13),(1,10),(0,7),(2,5),(1,3),(4,1),(6,2),(8,0),(10,1),(13,0),(15,3),(16,6),(15,9),(17,11),(15,14),(12,16),(10,11),(5,11),(3,16),(1,15)],
+ [(1,9),(1,4),(4,1),(9,0),(13,1),(15,4),(15,9),(12,11),(10,8),(5,9),(3,11)],
+ [(1,10),(0,6),(3,2),(7,0),(11,1),(14,3),(15,7),(14,10),(11,12),(8,8),(4,11)],
+]
+
 def head(p,gender,kind,pose,state=''):
     groups=skin_components(p);h,w=len(p),len(p[0])
     if kind!='overworld':
@@ -86,7 +103,7 @@ def hair_edits(p,g,kind,pose,style,state=''):
         for x in range(l,r+1):
             if (x,y) not in protected and p[y][x] not in (1,2,3,12,13):out[y][x]=0
     mask=Image.new('L',(18,20));d=ImageDraw.Draw(mask)
-    shape=SHAPES[style-1]
+    shape=(FEMALE_SHAPES if g else SHAPES)[style-1]
     d.polygon(shape,fill=4,outline=8)
     # Hand-drawn light cluster follows the crown; a dark curved part grounds
     # it in the native Gen 3 lighting instead of a flat horizontal slab.
@@ -99,14 +116,20 @@ def hair_edits(p,g,kind,pose,style,state=''):
     if style in (9,10):
         sides=(14,) if style==9 else (0,14)
         for x in sides:
-            d.polygon([(x,7),(x+2,7),(x+3,10),(x+2,15),(x+1,18),(x-1,17),(x,12)],fill=4,outline=8)
-            d.point((x+1,8),fill=9)
+            tie=4 if g and style==9 else 7 if g else 9
+            end=18 if g else 14
+            d.polygon([(x,tie),(x+2,tie),(x+3,tie+3),(x+2,end-3),(x+1,end),(x-1,end-1),(x,tie+5)],fill=4,outline=8)
+            d.point((x+1,tie+1),fill=9)
     if g:
         d.line([(4,4),(6,3),(10,3)],fill=7,width=1)
     # Back crowns have no fringe; side views expose a tapered temple.
     if direction==2:
-        d.polygon([(2,6),(14,6),(15,11),(12,16),(7,17),(3,15),(1,11)],fill=4)
-        d.line([(2,6),(1,11),(3,15),(7,17),(12,16),(15,11),(14,6)],fill=8)
+        panel=([(1,5),(15,5),(16,11),(14,16),(10,18),(6,18),(2,16),(0,12)] if g
+               else [(2,6),(14,6),(15,11),(12,16),(7,17),(3,15),(1,11)])
+        d.polygon(panel,fill=4)
+        d.line(panel[1:]+panel[:1],fill=8)
+        # The open upper edge joins the crown, avoiding a hat-like dark band.
+        d.line([panel[0],panel[1]],fill=4)
         d.line([(4,7),(5,11),(6,14)],fill=8)
         d.line([(11,7),(12,10),(11,14)],fill=8)
         if g:d.line([(4,6),(4,9),(5,11)],fill=7)

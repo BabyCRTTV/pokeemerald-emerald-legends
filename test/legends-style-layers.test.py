@@ -5,6 +5,14 @@ import sys,re,struct,subprocess,tempfile,ctypes,json
 from pathlib import Path
 root=Path(__file__).resolve().parents[1];sys.path.insert(0,str(root/'tools/legends'))
 import build_style_layers as art
+assert all(m!=f for m,f in zip(art.SHAPES,art.FEMALE_SHAPES)), 'ten independent contours per gender'
+from PIL import Image,ImageDraw
+for male,female in zip(art.SHAPES,art.FEMALE_SHAPES):
+ masks=[]
+ for contour in (male,female):
+  im=Image.new('1',(18,20));ImageDraw.Draw(im).polygon(contour,fill=1)
+  masks.append(im.resize((12,10),Image.Resampling.NEAREST).tobytes())
+ assert masks[0]!=masks[1], 'gender contours must differ at overworld scale'
 from build_appearance import frames,pack,STATES,FILES
 assets=[root/'graphics/legends/styles/edits.bin',root/'src/data/legends/style_layers.h']
 before=[p.read_bytes() for p in assets];art.build();assert before==[p.read_bytes() for p in assets]
