@@ -113,9 +113,9 @@ EWRAM_DATA static bool8 sArrowPressed = FALSE;
 
 static const u8 gText_PageControls[]       = _("A: NEXT  B: SAVE");
 #ifdef RELEASE
-static const u8 gText_LegendsVersion[]      = _("LEGENDS v0.0.43");
+static const u8 gText_LegendsVersion[]      = _("LEGENDS v0.0.43.1");
 #else
-static const u8 gText_LegendsVersion[]      = _("LEGENDS v0.0.43-D");
+static const u8 gText_LegendsVersion[]      = _("LEGENDS v0.0.43.1-D");
 #endif
 static const u8 gText_TextSpeedSlow[]      = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}SLOW");
 static const u8 gText_TextSpeedMid[]       = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}MID");
@@ -652,7 +652,8 @@ static void TextSpeed_DrawChoices(u8 selection, u8 y)
 
     // Show one value, as with the Legends settings, within the native window.
     FillWindowPixelRect(WIN_OPTIONS, PIXEL_FILL(1), 104, y, 96, OPTION_ROW_HEIGHT);
-    DrawOptionMenuChoice(choices[selection], 130, y, 1);
+    // Center each value in the gap between the fixed arrow glyphs.
+    DrawOptionMenuChoice(choices[selection], 120 + GetStringCenterAlignXOffset(FONT_NORMAL, choices[selection], 68), y, 1);
     AddTextPrinterParameterized(WIN_OPTIONS, FONT_SMALL, gText_TextSpeedLeftArrow, 112, y + 2, TEXT_SKIP_DRAW, NULL);
     AddTextPrinterParameterized(WIN_OPTIONS, FONT_SMALL, gText_TextSpeedRightArrow, 188, y + 2, TEXT_SKIP_DRAW, NULL);
 }

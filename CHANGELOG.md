@@ -4,6 +4,11 @@ All notable Pokémon Emerald: Legends project changes are documented here.
 
 For build-specific player views, see [CHANGELOG-RELEASE.md](CHANGELOG-RELEASE.md) and [CHANGELOG-DEBUG.md](CHANGELOG-DEBUG.md). The canonical history below records the project as a whole.
 
+## [0.0.43.1] - 2026-10-12
+
+- Center every Text Speed value (SLOW, MID, FAST and INSTANT) between its Options-menu arrows using the native font-width helper.
+- Shared by Release and Debug; no variant-specific differences.
+
 ## [0.0.43] - 2026-10-12
 
 - Add a second pause-menu page with QUEST LOG, ACHIEVEMENTS, ADVENTURE LOG and EXIT. Left/Right switches pages; small directional arrows show the extra page. Keep linked-room menus and native activity controls available.
