@@ -71,6 +71,16 @@ static const u8 *const sNotes[ADV_EVENT_COUNT] =
     [ADV_SURVEY_FIELD_REPORT] = COMPOUND_STRING("Filed the Borrowed Voice report.\nA smaller visitor copied the calls."),
     [ADV_ZAPDOS_SEEN] = COMPOUND_STRING("Observed ZAPDOS in its roost.\nThe old feeds were made safe."),
     [ADV_SURVEY_POWER_REPORT] = COMPOUND_STRING("Filed the POWER PLANT survey.\nNext lead: the cold SEAFOAM current."),
+    [ADV_ARTICUNO_SEEN] = COMPOUND_STRING("Observed ARTICUNO above calm water.\nThe SEAFOAM channels are safe."),
+    [ADV_SEAFOAM_REPORT] = COMPOUND_STRING("Filed the Stillwater Wings report.\nHOENN sent a weather warning."),
+    [ADV_WEATHER_STARTED] = COMPOUND_STRING("Began the Sleeping Continent survey.\nTwo field readings point underground."),
+    [ADV_REGIGIGAS_AWAKENED] = COMPOUND_STRING("Awakened the buried REGIGIGAS.\nThree regulators answered its roar."),
+    [ADV_REGIGIGAS_CALMED] = COMPOUND_STRING("Calmed the CONTINENTAL VAULT.\nHOENN's abnormal pressure settled."),
+    [ADV_WEATHER_REPORT] = COMPOUND_STRING("Filed the central-HOENN findings.\nThe KANTO survey can continue."),
+    [ADV_NORTH_REPORT] = COMPOUND_STRING("Filed the Stone and Tide report.\nThe warm feather leads to MT. EMBER."),
+    [ADV_MOLTRES_SEEN] = COMPOUND_STRING("Observed MOLTRES above MT. EMBER.\nA smaller shadow copied its cry."),
+    [ADV_EMBER_REPORT] = COMPOUND_STRING("Filed the Ember's Passage report.\nThe elusive visitor remains a lead."),
+
 };
 static const u8 *const sFilters[] =
 {

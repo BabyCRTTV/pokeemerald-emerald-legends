@@ -145,6 +145,7 @@ bool32 LegendsMapHasSeasons(void)
     // Preserve the volcanic belt, ash fields, hot springs and desert ecosystem.
     switch (gMapHeader.regionMapSectionId)
     {
+    case MAPSEC_MT_EMBER:
     case MAPSEC_MT_CHIMNEY:
     case MAPSEC_JAGGED_PASS:
     case MAPSEC_FIERY_PATH:

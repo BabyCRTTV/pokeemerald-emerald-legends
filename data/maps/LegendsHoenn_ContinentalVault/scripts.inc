@@ -1,0 +1,4 @@
+LegendsHoenn_ContinentalVault_MapScripts::
+	map_script MAP_SCRIPT_ON_LOAD, LegendsHoenn_Vault_OnLoad
+	map_script MAP_SCRIPT_ON_RESUME, LegendsHoenn_Vault_OnResume
+	.byte 0

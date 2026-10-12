@@ -118,6 +118,19 @@
       "trainer_sight_or_berry_tree_id": "ITEM_FIRE_STONE",
       "script": "Common_EventScript_FindItem",
       "flag": "FLAG_ITEM_FIERY_PATH_FIRE_STONE"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_STEVEN",
+      "x": 27,
+      "y": 34,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "LegendsHoenn_Steven",
+      "flag": "FLAG_LEGENDS_STORY_HIDE_STEVEN"
     }
   ],
   "warp_events": [
@@ -134,8 +147,24 @@
       "elevation": 3,
       "dest_map": "MAP_ROUTE112",
       "dest_warp_id": "5"
+    },
+    {
+      "x": 27,
+      "y": 35,
+      "elevation": 3,
+      "dest_map": "MAP_LEGENDS_HOENN_CONTINENTAL_VAULT",
+      "dest_warp_id": "0"
     }
   ],
   "coord_events": [],
-  "bg_events": []
+  "bg_events": [
+    {
+      "type": "sign",
+      "x": 28,
+      "y": 35,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "LegendsHoenn_FaultEntrance"
+    }
+  ]
 }

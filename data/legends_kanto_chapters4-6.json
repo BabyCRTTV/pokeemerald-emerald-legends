@@ -1,0 +1,184 @@
+{
+  "maps": [
+    {
+      "source": "Route20_Frlg",
+      "name": "LegendsKanto_Route20",
+      "id": "MAP_LEGENDS_KANTO_ROUTE20",
+      "layout": "LAYOUT_LEGENDS_KANTO_ROUTE20"
+    },
+    {
+      "source": "SeafoamIslands_1F_Frlg",
+      "name": "LegendsKanto_SeafoamIslands_1F",
+      "id": "MAP_LEGENDS_KANTO_SEAFOAM_ISLANDS_1F",
+      "layout": "LAYOUT_LEGENDS_KANTO_SEAFOAM_ISLANDS_1F"
+    },
+    {
+      "source": "SeafoamIslands_B1F_Frlg",
+      "name": "LegendsKanto_SeafoamIslands_B1F",
+      "id": "MAP_LEGENDS_KANTO_SEAFOAM_ISLANDS_B1F",
+      "layout": "LAYOUT_LEGENDS_KANTO_SEAFOAM_ISLANDS_B1F"
+    },
+    {
+      "source": "SeafoamIslands_B2F_Frlg",
+      "name": "LegendsKanto_SeafoamIslands_B2F",
+      "id": "MAP_LEGENDS_KANTO_SEAFOAM_ISLANDS_B2F",
+      "layout": "LAYOUT_LEGENDS_KANTO_SEAFOAM_ISLANDS_B2F"
+    },
+    {
+      "source": "SeafoamIslands_B3F_Frlg",
+      "name": "LegendsKanto_SeafoamIslands_B3F",
+      "id": "MAP_LEGENDS_KANTO_SEAFOAM_ISLANDS_B3F",
+      "layout": "LAYOUT_LEGENDS_KANTO_SEAFOAM_ISLANDS_B3F"
+    },
+    {
+      "source": "SeafoamIslands_B4F_Frlg",
+      "name": "LegendsKanto_SeafoamIslands_B4F",
+      "id": "MAP_LEGENDS_KANTO_SEAFOAM_ISLANDS_B4F",
+      "layout": "LAYOUT_LEGENDS_KANTO_SEAFOAM_ISLANDS_B4F"
+    },
+    {
+      "source": "Route9_Frlg",
+      "name": "LegendsKanto_Route9",
+      "id": "MAP_LEGENDS_KANTO_ROUTE9",
+      "layout": "LAYOUT_LEGENDS_KANTO_ROUTE9"
+    },
+    {
+      "source": "CeruleanCity_Frlg",
+      "name": "LegendsKanto_CeruleanCity",
+      "id": "MAP_LEGENDS_KANTO_CERULEAN_CITY",
+      "layout": "LAYOUT_LEGENDS_KANTO_CERULEAN_CITY"
+    },
+    {
+      "source": "CeruleanCity_Gym_Frlg",
+      "name": "LegendsKanto_CeruleanCity_Gym",
+      "id": "MAP_LEGENDS_KANTO_CERULEAN_CITY_GYM",
+      "layout": "LAYOUT_LEGENDS_KANTO_CERULEAN_CITY_GYM"
+    },
+    {
+      "source": "CeruleanCity_PokemonCenter_1F_Frlg",
+      "name": "LegendsKanto_CeruleanCity_PokemonCenter_1F",
+      "id": "MAP_LEGENDS_KANTO_CERULEAN_CITY_POKEMON_CENTER_1F",
+      "layout": "LAYOUT_LEGENDS_KANTO_POKEMON_CENTER_1F_FRLG"
+    },
+    {
+      "source": "CeruleanCity_Mart_Frlg",
+      "name": "LegendsKanto_CeruleanCity_Mart",
+      "id": "MAP_LEGENDS_KANTO_CERULEAN_CITY_MART",
+      "layout": "LAYOUT_LEGENDS_KANTO_MART_FRLG"
+    },
+    {
+      "source": "Route4_Frlg",
+      "name": "LegendsKanto_Route4",
+      "id": "MAP_LEGENDS_KANTO_ROUTE4",
+      "layout": "LAYOUT_LEGENDS_KANTO_ROUTE4"
+    },
+    {
+      "source": "Route4_PokemonCenter_1F_Frlg",
+      "name": "LegendsKanto_Route4_PokemonCenter_1F",
+      "id": "MAP_LEGENDS_KANTO_ROUTE4_POKEMON_CENTER_1F",
+      "layout": "LAYOUT_LEGENDS_KANTO_POKEMON_CENTER_1F_FRLG"
+    },
+    {
+      "source": "MtMoon_1F_Frlg",
+      "name": "LegendsKanto_MtMoon_1F",
+      "id": "MAP_LEGENDS_KANTO_MT_MOON_1F",
+      "layout": "LAYOUT_LEGENDS_KANTO_MT_MOON_1F"
+    },
+    {
+      "source": "MtMoon_B1F_Frlg",
+      "name": "LegendsKanto_MtMoon_B1F",
+      "id": "MAP_LEGENDS_KANTO_MT_MOON_B1F",
+      "layout": "LAYOUT_LEGENDS_KANTO_MT_MOON_B1F"
+    },
+    {
+      "source": "MtMoon_B2F_Frlg",
+      "name": "LegendsKanto_MtMoon_B2F",
+      "id": "MAP_LEGENDS_KANTO_MT_MOON_B2F",
+      "layout": "LAYOUT_LEGENDS_KANTO_MT_MOON_B2F"
+    },
+    {
+      "source": "Route3_Frlg",
+      "name": "LegendsKanto_Route3",
+      "id": "MAP_LEGENDS_KANTO_ROUTE3",
+      "layout": "LAYOUT_LEGENDS_KANTO_ROUTE3"
+    },
+    {
+      "source": "PewterCity_Frlg",
+      "name": "LegendsKanto_PewterCity",
+      "id": "MAP_LEGENDS_KANTO_PEWTER_CITY",
+      "layout": "LAYOUT_LEGENDS_KANTO_PEWTER_CITY"
+    },
+    {
+      "source": "PewterCity_Gym_Frlg",
+      "name": "LegendsKanto_PewterCity_Gym",
+      "id": "MAP_LEGENDS_KANTO_PEWTER_CITY_GYM",
+      "layout": "LAYOUT_LEGENDS_KANTO_PEWTER_CITY_GYM"
+    },
+    {
+      "source": "PewterCity_PokemonCenter_1F_Frlg",
+      "name": "LegendsKanto_PewterCity_PokemonCenter_1F",
+      "id": "MAP_LEGENDS_KANTO_PEWTER_CITY_POKEMON_CENTER_1F",
+      "layout": "LAYOUT_LEGENDS_KANTO_POKEMON_CENTER_1F_FRLG"
+    },
+    {
+      "source": "PewterCity_Mart_Frlg",
+      "name": "LegendsKanto_PewterCity_Mart",
+      "id": "MAP_LEGENDS_KANTO_PEWTER_CITY_MART",
+      "layout": "LAYOUT_LEGENDS_KANTO_MART_FRLG"
+    },
+    {
+      "source": "CinnabarIsland_Frlg",
+      "name": "LegendsKanto_CinnabarIsland",
+      "id": "MAP_LEGENDS_KANTO_CINNABAR_ISLAND",
+      "layout": "LAYOUT_LEGENDS_KANTO_CINNABAR_ISLAND"
+    },
+    {
+      "source": "CinnabarIsland_Gym_Frlg",
+      "name": "LegendsKanto_CinnabarIsland_Gym",
+      "id": "MAP_LEGENDS_KANTO_CINNABAR_ISLAND_GYM",
+      "layout": "LAYOUT_LEGENDS_KANTO_CINNABAR_ISLAND_GYM"
+    },
+    {
+      "source": "CinnabarIsland_PokemonCenter_1F_Frlg",
+      "name": "LegendsKanto_CinnabarIsland_PokemonCenter_1F",
+      "id": "MAP_LEGENDS_KANTO_CINNABAR_ISLAND_POKEMON_CENTER_1F",
+      "layout": "LAYOUT_LEGENDS_KANTO_POKEMON_CENTER_1F_FRLG"
+    },
+    {
+      "source": "CinnabarIsland_Mart_Frlg",
+      "name": "LegendsKanto_CinnabarIsland_Mart",
+      "id": "MAP_LEGENDS_KANTO_CINNABAR_ISLAND_MART",
+      "layout": "LAYOUT_LEGENDS_KANTO_MART_FRLG"
+    },
+    {
+      "source": "MtEmber_Exterior_Frlg",
+      "name": "LegendsKanto_MtEmber_Exterior",
+      "id": "MAP_LEGENDS_KANTO_MT_EMBER_EXTERIOR",
+      "layout": "LAYOUT_LEGENDS_KANTO_MT_EMBER_EXTERIOR"
+    },
+    {
+      "source": "MtEmber_SummitPath_1F_Frlg",
+      "name": "LegendsKanto_MtEmber_SummitPath_1F",
+      "id": "MAP_LEGENDS_KANTO_MT_EMBER_SUMMIT_PATH_1F",
+      "layout": "LAYOUT_LEGENDS_KANTO_MT_EMBER_SUMMIT_PATH_1F"
+    },
+    {
+      "source": "MtEmber_SummitPath_2F_Frlg",
+      "name": "LegendsKanto_MtEmber_SummitPath_2F",
+      "id": "MAP_LEGENDS_KANTO_MT_EMBER_SUMMIT_PATH_2F",
+      "layout": "LAYOUT_LEGENDS_KANTO_MT_EMBER_SUMMIT_PATH_2F"
+    },
+    {
+      "source": "MtEmber_SummitPath_3F_Frlg",
+      "name": "LegendsKanto_MtEmber_SummitPath_3F",
+      "id": "MAP_LEGENDS_KANTO_MT_EMBER_SUMMIT_PATH_3F",
+      "layout": "LAYOUT_LEGENDS_KANTO_MT_EMBER_SUMMIT_PATH_3F"
+    },
+    {
+      "source": "MtEmber_Summit_Frlg",
+      "name": "LegendsKanto_MtEmber_Summit",
+      "id": "MAP_LEGENDS_KANTO_MT_EMBER_SUMMIT",
+      "layout": "LAYOUT_LEGENDS_KANTO_MT_EMBER_SUMMIT"
+    }
+  ]
+}

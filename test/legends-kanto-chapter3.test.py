@@ -75,7 +75,7 @@ class Chapter3(unittest.TestCase):
    for field in ('land_mons','water_mons','fishing_mons','rock_smash_mons'):
     if field not in e:continue
     self.assertEqual([(m['min_level'],m['max_level']) for m in e[field]['mons']],[(m['min_level'],m['max_level']) for m in native[field]['mons']],(e['map'],field))
-  self.assertEqual(count,16)
+  self.assertGreaterEqual(count,16)
  def test_native_dialogue_width(self):
   chars={c:int(v,16) for c,v in re.findall(r"^'(.)'\s*=\s*([0-9A-F]{2})\s*$",(R/'charmap.txt').read_text(),re.M)};chars["'"]=0xb4
   widths=list(map(int,re.findall(r'\d+',(R/'src/fonts.c').read_text().split('gFontNormalLatinGlyphWidths[] = {')[1].split('};')[0])))

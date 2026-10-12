@@ -191,6 +191,7 @@ LegendsKanto_Challenge_Decline::
 LegendsKanto_Survey_Aide::
 	lockall
 	faceplayer
+	goto_if_set FLAG_LEGENDS_KANTO_SURVEY_POWER_REPORT, LegendsStory_Journal
 	goto_if_set FLAG_LEGENDS_KANTO_SURVEY_STARTED, LegendsKanto_Survey_CheckProgress
 	msgbox LegendsKanto_Text_SurveyIntro, MSGBOX_DEFAULT
 	setflag FLAG_LEGENDS_KANTO_SURVEY_STARTED

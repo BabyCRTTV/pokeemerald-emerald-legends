@@ -19,6 +19,11 @@
       "map": "MAP_LEGENDS_KANTO_FUCHSIA_CITY",
       "offset": -12,
       "direction": "up"
+    },
+    {
+      "map": "MAP_LEGENDS_KANTO_ROUTE20",
+      "offset": 40,
+      "direction": "left"
     }
   ],
   "object_events": [],

@@ -1,4 +1,5 @@
 #include "global.h"
+#include "legends_story.h"
 #include "legends_wardrobe.h"
 #include "battle_setup.h"
 #include "bike.h"
@@ -1410,6 +1411,15 @@ void HandleBoulderFallThroughHole(struct ObjectEvent * object)
     if (MapGridGetMetatileBehaviorAt(object->currentCoords.x, object->currentCoords.y) == MB_MT_PYRE_HOLE)
     {
         PlaySE(SE_FALL);
+        // A Seafoam shaft transfers one boulder between independent floors.
+        // Persist the source's removal as well as revealing its lower copy.
+        if (LegendsIsSeafoamMap())
+        {
+            u16 sourceFlag = GetObjectEventTemplateByLocalIdAndMap(object->localId,
+                gSaveBlock1Ptr->location.mapNum, gSaveBlock1Ptr->location.mapGroup)->flagId;
+            if (sourceFlag != 0)
+                FlagSet(sourceFlag);
+        }
         RemoveObjectEventByLocalIdAndMap(object->localId, gSaveBlock1Ptr->location.mapNum, gSaveBlock1Ptr->location.mapGroup);
         FlagClear(GetBoulderRevealFlagByLocalIdAndMap(object->localId, gSaveBlock1Ptr->location.mapNum, gSaveBlock1Ptr->location.mapGroup));
     }

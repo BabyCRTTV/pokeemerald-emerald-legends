@@ -661,6 +661,11 @@ const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM
     [OBJ_EVENT_GFX_CUTTABLE_TREE_FRLG]       = &gObjectEventGraphicsInfo_CuttableTreeFrlg,
     [OBJ_EVENT_GFX_ZAPDOS]                   = &gObjectEventGraphicsInfo_Zapdos,
 
+#if !IS_FRLG
+    [OBJ_EVENT_GFX_BROCK] = &gObjectEventGraphicsInfo_Brock,
+    [OBJ_EVENT_GFX_MISTY] = &gObjectEventGraphicsInfo_Misty,
+    [OBJ_EVENT_GFX_BLAINE] = &gObjectEventGraphicsInfo_Blaine,
+#endif
 #if IS_FRLG
     [OBJ_EVENT_GFX_RED_NORMAL] =               &gObjectEventGraphicsInfo_RedNormal,
     [OBJ_EVENT_GFX_RED_BIKE] =                 &gObjectEventGraphicsInfo_RedBike,

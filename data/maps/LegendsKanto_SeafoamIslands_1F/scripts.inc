@@ -1,0 +1,7 @@
+LegendsKanto_SeafoamIslands_1F_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, LegendsKanto_SeafoamIslands_1F_Transition
+	.byte 0
+LegendsKanto_SeafoamIslands_1F_Transition::
+	call LegendsSeafoam_Init
+	setrespawn HEAL_LOCATION_LEGENDS_KANTO_VERMILION
+	end
