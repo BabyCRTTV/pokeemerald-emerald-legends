@@ -1,6 +1,20 @@
 # Kanto postgame — Wing Survey
 
-## Current chapter — v0.0.33: The Quiet Current
+## Current chapters — v0.0.41
+
+**4. Stillwater Wings.** After filing the Power Plant report, Surf south from Fuchsia and west onto Route 20. The sheltering sailor stands by Seafoam's eastern cave. Follow the native Strength shafts from 1F down to B3F, and shift B3F's southern boulders into its two holes. Both native currents must stop before surveying Articuno's western B4F island. Observation records the survey; the optional encounter is Lv. 50. Return to Oak's aide once to file the Seafoam report and receive the Hoenn weather call.
+
+**Intermission — The Sleeping Continent.** Return by the existing Vermilion ferry to Lilycove. Speak to the additional field scientist upstairs in the Route 119 Weather Institute. Obtain the river reading just south of the Institute and the ground reading at Route 111's northern desert approach, in either order. Meet Steven and examine the marked east wall beside Fiery Path's southern doorway to enter the Continental Vault. Restore its stone, frost and metal regulators in any order. The chamber opens for an awakening scene and Lv. 70 Regigigas encounter with its normal Slow Start and native Regi battle music. Win or capture it to calm the fault; flee/loss leaves the investigation unfinished and permits reentry retry. If first defeated, it can still be captured later. File the one-time report with the Institute scientist, then return to the Kanto aide. Ordinary Hoenn seasons/forecasts resume when the fault is calmed. The story treats this as a local aftereffect of the resolved crisis and does not undo Rayquaza's victory or blame Kanto's birds.
+
+**5. Stone and Tide.** Walk west from Route 10 through Route 9 to Cerulean. Complete Misty's visiting challenge and compare the river reading with the northwest researcher. West along Route 4, the eastern Mt. Moon guide provides an explicit return trail around the native one-way ledges; Route 3 then leads to Pewter. Complete Brock's challenge and compare old rockfalls with the researcher by Mt. Moon's western entrance. Both Gyms and both field sites can be done in either order. The aide files one northern report and points toward Cinnabar.
+
+**6. Ember's Passage.** Surf west along Route 20 to Cinnabar. Complete Blaine's visiting challenge. After the northern report, the eastern-shore sailor offers a Mt. Ember expedition. The boat lands at the native southern approach; a sailor remains there for the return to Cinnabar. Ascend the western summit-path caves, retain normal Strength/Rock Smash requirements, and survey Moltres on the summit. Its optional encounter is Lv. 50. Return to the aide to file the third habitat report. The Ruby tunnels and other Sevii areas remain visibly closed. This expedition does not implement or advertise a complete Sevii region/map browser.
+
+Misty/Brock/Blaine use the established one-victory Gym contract. Standard teams contain four Pokemon at 52–56 / 50–54 / 60–64 respectively; Champion teams contain six at 72–76 / 70–74 / 80–84. Either mode advances the story equally. Seven Kanto records are available; Viridian's acting Leader and the final Mew/Faraway Island voyage remain future content. The mimic observations continue that mystery without spawning a duplicate Mew.
+
+All three chapters and the intermission share one source in Release/Debug. Thirty native imports, a separate Hoenn vault group and three current/vault layouts append after existing IDs. Saved state uses previously unreferenced flags 0x284–0x2AF and variable 0x4077; no saved structures are resized. Trainer table IDs 868–873 resolve to already reserved Gym records; the saved native capacity remains 864. Adventure event IDs are appended. Native FireRed levels/rates/species are copied only for the new habitat maps. Wiki work remains a separately requested content update.
+
+## Earlier chapter — v0.0.33: The Quiet Current
 
 After the Borrowed Voice report, go north from Lavender, through both native Rock Tunnel floors to Route 10's northern Pokemon Center. Flash and Surf retain Emerald's ordinary badge and field-move requirements. Surf south along the eastern river to the Power Plant. Route 9's unfinished exit is visibly closed with native cliff tiles.
 
@@ -52,11 +66,11 @@ An entrance guide explains the choice at each entry before the Leader fight. YES
 | --- | --- | --- | --- | --- |
 | Lt. Surge | Playable, Vermilion | 4 Pokemon, 52–56 | 6 Pokemon, 72–76 | `FLAG_LEGENDS_KANTO_SURGE_WON` |
 | Koga | Playable, Fuchsia | 4 Pokemon, 56–60 | 6 Pokemon, 76–80 | `FLAG_LEGENDS_KANTO_KOGA_WON` |
-| Brock | Planned, Pewter | Target 50–54 | Target 70–74 | Reserved independent flag |
-| Misty | Planned, Cerulean | Target 52–56 | Target 72–76 | Reserved independent flag |
+| Brock | Playable, Pewter | 4 Pokemon, 50–54 | 6 Pokemon, 70–74 | `FLAG_LEGENDS_KANTO_BROCK_WON` |
+| Misty | Playable, Cerulean | 4 Pokemon, 52–56 | 6 Pokemon, 72–76 | `FLAG_LEGENDS_KANTO_MISTY_WON` |
 | Erika | Playable, Celadon | 4 Pokemon, 54–58 | 6 Pokemon, 74–78 | `FLAG_LEGENDS_KANTO_ERIKA_WON` |
 | Sabrina | Playable, Saffron | 4 Pokemon, 58–62 | 6 Pokemon, 78–82 | `FLAG_LEGENDS_KANTO_SABRINA_WON` |
-| Blaine | Planned, Cinnabar | Target 60–64 | Target 80–84 | Reserved independent flag |
+| Blaine | Playable, Cinnabar | 4 Pokemon, 60–64 | 6 Pokemon, 80–84 | `FLAG_LEGENDS_KANTO_BLAINE_WON` |
 | Viridian Leader | Planned; Blue as acting Leader | Target 62–66 | Target 82–86 | Reserved independent flag |
 
 Targets for unimplemented teams are design notes, not shipped balance promises. Blue's proposed acting role avoids reversing the original Rocket/Giovanni outcome; establish it with dialogue when Viridian is implemented. Kanto's chronology is this hack's original continuation, not a claim that game and anime timelines are identical.

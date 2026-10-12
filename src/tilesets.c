@@ -7,3 +7,4 @@
 #include "data/tilesets/headers.h"
 
 #include "data/tilesets/legends_kanto.h"
+#include "data/tilesets/legends_story.h"

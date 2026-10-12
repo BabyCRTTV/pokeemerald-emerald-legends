@@ -1,0 +1,4 @@
+LegendsKanto_MtEmber_Summit_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, LegendsKanto_Foundation_OnTransition
+	map_script MAP_SCRIPT_ON_RESUME, LegendsStory_Moltres_OnResume
+	.byte 0

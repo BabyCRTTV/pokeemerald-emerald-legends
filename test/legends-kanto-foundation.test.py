@@ -11,7 +11,7 @@ MANIFEST=json.loads((R/'data/legends_kanto_foundation.json').read_text())['maps'
 class FoundationTests(unittest.TestCase):
  def test_population_and_native_fidelity(self):
   self.assertEqual(len(MANIFEST),30)
-  encounters='\n'.join(p.read_text() for p in (R/'src/data').glob('*wild*json'))
+  encounters={e.get('map') for g in json.loads((R/'src/data/wild_encounters.json').read_text())['wild_encounter_groups'] for e in g['encounters']}
   for item in MANIFEST:
    d=MAPS[item['id']];l=LAYOUTS[d['layout']];s=json.loads((R/('data/maps/'+item['source']+'/map.json')).read_text());sl=LAYOUTS[s['layout']]
    if item['name'] not in ACTIVATED:self.assertEqual(d['object_events'],[])
@@ -27,12 +27,15 @@ class FoundationTests(unittest.TestCase):
  def test_reciprocal_graph_and_append_only_ids(self):
   group=json.loads((R/'data/maps/map_groups.json').read_text())['gMapGroup_LegendsKanto'];self.assertEqual(group[:2],['LegendsKanto_VermilionCity','LegendsKanto_Harbor'])
   opposite={'left':'right','right':'left','up':'down','down':'up'}
-  allowed={i['id'] for i in MANIFEST+CHAPTER+json.loads((R/'data/legends_kanto_chapter3.json').read_text())['maps']}|{'MAP_LEGENDS_KANTO_VERMILION_CITY'}
+  allowed={i['id'] for i in MANIFEST+CHAPTER+json.loads((R/'data/legends_kanto_chapter3.json').read_text())['maps']+json.loads((R/'data/legends_kanto_chapters4-6.json').read_text())['maps']}|{'MAP_LEGENDS_KANTO_VERMILION_CITY'}
   visited=set();queue=['MAP_LEGENDS_KANTO_VERMILION_CITY']
   while queue:
    id=queue.pop()
    if id in visited:continue
    visited.add(id);d=MAPS[id]
+   if id=='MAP_LEGENDS_KANTO_CINNABAR_ISLAND':
+    self.assertIn('warp MAP_LEGENDS_KANTO_MT_EMBER_EXTERIOR, 28, 47',(R/'data/scripts/legends_kanto_chapter6.inc').read_text())
+    queue.append('MAP_LEGENDS_KANTO_MT_EMBER_EXTERIOR')
    for c in d['connections'] or []:
     self.assertIn(c['map'],allowed)
     self.assertIn({'map':id,'offset':-c['offset'],'direction':opposite[c['direction']]},MAPS[c['map']]['connections'])

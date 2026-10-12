@@ -1,4 +1,5 @@
 #include "global.h"
+#include "legends_story.h"
 #include "legends_weather.h"
 #include "legends_seasons.h"
 #include "event_data.h"
@@ -103,6 +104,9 @@ void LegendsAdvanceWeatherClock(void)
 
 u8 LegendsChooseAmbientWeather(u8 weather)
 {
+    u8 storyWeather = LegendsStoryWeather(weather);
+    if (storyWeather != WEATHER_COUNT)
+        return storyWeather;
     u8 climate = GetClimate();
     u8 season, timeOfDay, rain, thunder, fog = 0, snow = 0;
     u32 roll;

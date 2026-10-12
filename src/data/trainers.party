@@ -17579,3 +17579,359 @@ EVs: 128 HP / 252 SpA / 128 Spe
 - Shadow Ball
 - Focus Blast
 - Recover
+
+/* Wing Survey chapters 5-6: saved victory bits remain independent. */
+
+=== TRAINER_LEGENDS_KANTO_BROCK_STANDARD ===
+Name: BROCK
+Class: Leader Frlg
+Pic: Leader Brock Frlg
+Gender: Male
+Music: Intense
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Onix @ Sitrus Berry
+Level: 50
+Ability: Sturdy
+Nature: Impish
+EVs: 40 HP / 40 Def / 40 SpA / 40 Spe
+- Rock Slide
+- Earthquake
+- Stealth Rock
+- Dragon Tail
+
+Golem @ Sitrus Berry
+Level: 51
+Ability: Sturdy
+Nature: Adamant
+EVs: 40 HP / 40 Def / 40 SpA / 40 Spe
+- Rock Slide
+- Earthquake
+- Body Press
+- Heavy Slam
+
+Omastar @ Sitrus Berry
+Level: 53
+Ability: Shell Armor
+Nature: Modest
+EVs: 40 HP / 40 Def / 40 SpA / 40 Spe
+- Surf
+- Ice Beam
+- Ancient Power
+- Shell Smash
+
+Aerodactyl @ Sitrus Berry
+Level: 54
+Ability: Pressure
+Nature: Jolly
+EVs: 40 HP / 40 Def / 40 SpA / 40 Spe
+- Rock Slide
+- Earthquake
+- Aerial Ace
+- Roost
+
+=== TRAINER_LEGENDS_KANTO_BROCK_CHAMPION ===
+Name: BROCK
+Class: Leader Frlg
+Pic: Leader Brock Frlg
+Gender: Male
+Music: Intense
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Gigalith @ Sitrus Berry
+Level: 70
+Ability: Sand Stream
+Nature: Careful
+EVs: 128 HP / 252 Atk / 128 Spe
+- Rock Slide
+- Earthquake
+- Stealth Rock
+- Body Press
+
+Steelix @ Sitrus Berry
+Level: 71
+Ability: Sturdy
+Nature: Impish
+EVs: 128 HP / 252 Atk / 128 Spe
+- Heavy Slam
+- Earthquake
+- Body Press
+- Crunch
+
+Kabutops @ Sitrus Berry
+Level: 72
+Ability: Battle Armor
+Nature: Adamant
+EVs: 128 HP / 252 Atk / 128 Spe
+- Liquidation
+- Rock Slide
+- Aqua Jet
+- Swords Dance
+
+Rhyperior @ Sitrus Berry
+Level: 72
+Ability: Solid Rock
+Nature: Adamant
+EVs: 128 HP / 252 Atk / 128 Spe
+- Rock Slide
+- Earthquake
+- Ice Punch
+- Megahorn
+
+Tyranitar @ Sitrus Berry
+Level: 73
+Ability: Sand Stream
+Nature: Adamant
+EVs: 128 HP / 252 Atk / 128 Spe
+- Rock Slide
+- Crunch
+- Earthquake
+- Dragon Dance
+
+Aerodactyl @ Sitrus Berry
+Level: 74
+Ability: Pressure
+Nature: Jolly
+EVs: 128 HP / 252 Atk / 128 Spe
+- Rock Slide
+- Earthquake
+- Aerial Ace
+- Roost
+
+=== TRAINER_LEGENDS_KANTO_MISTY_STANDARD ===
+Name: MISTY
+Class: Leader Frlg
+Pic: Leader Misty Frlg
+Gender: Female
+Music: Intense
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Golduck @ Sitrus Berry
+Level: 52
+Ability: Cloud Nine
+Nature: Modest
+EVs: 40 HP / 40 Def / 40 SpA / 40 Spe
+- Surf
+- Ice Beam
+- Psychic
+- Calm Mind
+
+Quagsire @ Sitrus Berry
+Level: 53
+Ability: Unaware
+Nature: Relaxed
+EVs: 40 HP / 40 Def / 40 SpA / 40 Spe
+- Earthquake
+- Surf
+- Recover
+- Toxic
+
+Lapras @ Sitrus Berry
+Level: 55
+Ability: Water Absorb
+Nature: Modest
+EVs: 40 HP / 40 Def / 40 SpA / 40 Spe
+- Surf
+- Ice Beam
+- Thunderbolt
+- Sing
+
+Starmie @ Sitrus Berry
+Level: 56
+Ability: Natural Cure
+Nature: Timid
+EVs: 40 HP / 40 Def / 40 SpA / 40 Spe
+- Surf
+- Psychic
+- Ice Beam
+- Recover
+
+=== TRAINER_LEGENDS_KANTO_MISTY_CHAMPION ===
+Name: MISTY
+Class: Leader Frlg
+Pic: Leader Misty Frlg
+Gender: Female
+Music: Intense
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Politoed @ Sitrus Berry
+Level: 72
+Ability: Drizzle
+Nature: Calm
+EVs: 128 HP / 252 SpA / 128 Spe
+- Surf
+- Ice Beam
+- Encore
+- Protect
+
+Kingdra @ Sitrus Berry
+Level: 73
+Ability: Swift Swim
+Nature: Modest
+EVs: 128 HP / 252 SpA / 128 Spe
+- Surf
+- Dragon Pulse
+- Ice Beam
+- Rain Dance
+
+Gyarados @ Sitrus Berry
+Level: 74
+Ability: Intimidate
+Nature: Jolly
+EVs: 128 HP / 252 Atk / 128 Spe
+- Waterfall
+- Crunch
+- Earthquake
+- Dragon Dance
+
+Milotic @ Sitrus Berry
+Level: 74
+Ability: Marvel Scale
+Nature: Bold
+EVs: 128 HP / 252 Atk / 128 Spe
+- Surf
+- Ice Beam
+- Recover
+- Haze
+
+Lapras @ Sitrus Berry
+Level: 75
+Ability: Water Absorb
+Nature: Modest
+EVs: 128 HP / 252 SpA / 128 Spe
+- Surf
+- Ice Beam
+- Thunderbolt
+- Sing
+
+Starmie @ Sitrus Berry
+Level: 76
+Ability: Natural Cure
+Nature: Timid
+EVs: 128 HP / 252 SpA / 128 Spe
+- Surf
+- Psychic
+- Ice Beam
+- Recover
+
+=== TRAINER_LEGENDS_KANTO_BLAINE_STANDARD ===
+Name: BLAINE
+Class: Leader Frlg
+Pic: Leader Blaine Frlg
+Gender: Male
+Music: Intense
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Ninetales @ Sitrus Berry
+Level: 60
+Ability: Flash Fire
+Nature: Timid
+EVs: 40 HP / 40 Def / 40 SpA / 40 Spe
+- Flamethrower
+- Energy Ball
+- Will-O-Wisp
+- Nasty Plot
+
+Magmar @ Sitrus Berry
+Level: 61
+Ability: Flame Body
+Nature: Modest
+EVs: 40 HP / 40 Def / 40 SpA / 40 Spe
+- Flamethrower
+- Thunderbolt
+- Psychic
+- Confuse Ray
+
+Rapidash @ Sitrus Berry
+Level: 63
+Ability: Flash Fire
+Nature: Jolly
+EVs: 40 HP / 40 Def / 40 SpA / 40 Spe
+- Flare Blitz
+- Wild Charge
+- Drill Run
+- Morning Sun
+
+Arcanine @ Sitrus Berry
+Level: 64
+Ability: Intimidate
+Nature: Adamant
+EVs: 40 HP / 40 Def / 40 SpA / 40 Spe
+- Flare Blitz
+- Extreme Speed
+- Wild Charge
+- Morning Sun
+
+=== TRAINER_LEGENDS_KANTO_BLAINE_CHAMPION ===
+Name: BLAINE
+Class: Leader Frlg
+Pic: Leader Blaine Frlg
+Gender: Male
+Music: Intense
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Torkoal @ Sitrus Berry
+Level: 80
+Ability: Drought
+Nature: Relaxed
+EVs: 128 HP / 252 Atk / 128 Spe
+- Flamethrower
+- Earth Power
+- Body Press
+- Stealth Rock
+
+Charizard @ Sitrus Berry
+Level: 81
+Ability: Blaze
+Nature: Timid
+EVs: 128 HP / 252 SpA / 128 Spe
+- Flamethrower
+- Air Slash
+- Solar Beam
+- Roost
+
+Rotom-Heat @ Sitrus Berry
+Level: 82
+Ability: Levitate
+Nature: Timid
+EVs: 128 HP / 252 SpA / 128 Spe
+- Overheat
+- Thunderbolt
+- Volt Switch
+- Will-O-Wisp
+
+Volcarona @ Sitrus Berry
+Level: 82
+Ability: Flame Body
+Nature: Modest
+EVs: 128 HP / 252 SpA / 128 Spe
+- Flamethrower
+- Bug Buzz
+- Giga Drain
+- Quiver Dance
+
+Magmortar @ Sitrus Berry
+Level: 83
+Ability: Flame Body
+Nature: Modest
+EVs: 128 HP / 252 SpA / 128 Spe
+- Flamethrower
+- Thunderbolt
+- Focus Blast
+- Psychic
+
+Arcanine @ Sitrus Berry
+Level: 84
+Ability: Intimidate
+Nature: Adamant
+EVs: 128 HP / 252 Atk / 128 Spe
+- Flare Blitz
+- Extreme Speed
+- Wild Charge
+- Morning Sun

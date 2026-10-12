@@ -4,6 +4,16 @@ All notable Pokémon Emerald: Legends project changes are documented here.
 
 For build-specific player views, see [CHANGELOG-RELEASE.md](CHANGELOG-RELEASE.md) and [CHANGELOG-DEBUG.md](CHANGELOG-DEBUG.md). The canonical history below records the project as a whole.
 
+## [0.0.41] - 2026-10-12
+
+- Add Wing Survey chapters four through six: **Stillwater Wings** (Seafoam/Articuno), **Stone and Tide** (Cerulean/Pewter readings and visiting Misty/Brock challenges), and **Ember's Passage** (Blaine's Cinnabar record and a returnable Mt. Ember/Moltres expedition). Native FireRed habitat layouts and wild levels are retained; bird observation advances without capture. Articuno and Moltres are optional Lv. 50 encounters with reentry retries when uncaught.
+- Add the central-Hoenn intermission **The Sleeping Continent** after the Seafoam report. Investigate the Weather Institute's field readings in either order, enter the fault beside Fiery Path's southern doorway, restore three buried regulators, and face Lv. 70 Regigigas with native Slow Start and Regi battle music. Victory or capture settles the anomaly; flee/loss permits retry, and a defeated titan remains available for later capture. The Institute report returns the player to the Kanto survey.
+- Add thirty native Kanto/Sevii map imports and a Hoenn vault with append-only map/layout IDs, active Centers/Marts, clear development closures, reciprocal roads, an explicit Route 4 return trail around native one-way ledges, and a permanent expedition return boat. The rest of Sevii, Viridian's challenge and the final Mew voyage remain future content.
+- Give Misty, Brock and Blaine separate Standard/Champion teams with one permanent victory per Leader across both difficulties. Keep native trainer-save capacity at 864 and map the six appended trainer IDs to existing dedicated Gym records; preserve all Hoenn badge/progression flags.
+- Port Seafoam's native Strength/boulder/current puzzle to independently allocated Emerald flags and a separate saved current-entry variable. Persist both the upper-floor removal and lower-floor reveal when a boulder falls. Retain native field-move requirements and all existing maps/records/save-structure offsets.
+- Add Adventure Log milestones and a current journal path for all new reports. Hoenn's temporary storm/fog override is limited to Routes 119/120 during the intermission; protected weather, sandstorms, indoor maps and the original Rayquaza resolution remain native. Normal forecasts resume when Regigigas is calmed.
+- Shared by Release and Debug; no variant-specific gameplay differences. Regression checks execute observation/capture/retry, report and travel gates, both Gym modes, both field-reading orders, all regulator orders, native dialogue widths, warp geometry, flag allocation, and actual-C weather/Seafoam boundaries. Emulator review and limits are recorded in `docs/qa/story-v0.0.41.md`. Both builds and verified BPS publication use the established workflow. Wiki updates remain manual.
+
 ## [0.0.40] - 2026-10-12
 
 - Repair incomplete skull/nape coverage on all ten custom hairstyles across the 212 native animation-table poses, including facing away, cycling, field actions and throw portraits. Separate touching cheek/forearm pixels in raised-arm poses.

@@ -1,4 +1,5 @@
 #include "global.h"
+#include "legends_story.h"
 #include "legends_adventure.h"
 #include "overworld.h"
 #include "battle_pyramid.h"
@@ -1051,7 +1052,10 @@ bool8 MetatileBehavior_IsSurfableInSeafoamIslands(u16 metatileBehavior)
 {
     if (MetatileBehavior_IsSurfableWaterOrUnderwater(metatileBehavior) != TRUE)
         return FALSE;
-    if ((gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(MAP_SEAFOAM_ISLANDS_B3F)
+    if ((LegendsIsSeafoamMap()
+          && (gSaveBlock1Ptr->location.mapNum == MAP_NUM(MAP_LEGENDS_KANTO_SEAFOAM_ISLANDS_B3F)
+           || gSaveBlock1Ptr->location.mapNum == MAP_NUM(MAP_LEGENDS_KANTO_SEAFOAM_ISLANDS_B4F)))
+     || (gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(MAP_SEAFOAM_ISLANDS_B3F)
           && gSaveBlock1Ptr->location.mapNum == MAP_NUM(MAP_SEAFOAM_ISLANDS_B3F))
      || (gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(MAP_SEAFOAM_ISLANDS_B4F)
           && gSaveBlock1Ptr->location.mapNum == MAP_NUM(MAP_SEAFOAM_ISLANDS_B4F)))

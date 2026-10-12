@@ -1,0 +1,97 @@
+
+
+LegendsKanto_SeafoamIslands_B3F_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, LegendsSeafoam_B3F_OnTransition
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, LegendsSeafoam_B3F_OnFrame
+	.byte 0
+
+LegendsSeafoam_B3F_OnTransition::
+	call LegendsSeafoam_Init
+	setrespawn HEAL_LOCATION_LEGENDS_KANTO_VERMILION
+	call_if_unset FLAG_LEGENDS_STORY_SEAFOAM_B3F_CURRENT, LegendsSeafoam_B3F_EventScript_CheckStoppedCurrent
+	call_if_set FLAG_LEGENDS_STORY_SEAFOAM_B3F_CURRENT, LegendsSeafoam_B3F_EventScript_SetNoCurrentLayout
+	end
+
+LegendsSeafoam_B3F_EventScript_CheckStoppedCurrent::
+	setvar VAR_TEMP_2, 0
+	call_if_unset FLAG_LEGENDS_STORY_SEAFOAM_B3F_BOULDER_1, LegendsSeafoam_B3F_EventScript_AddBoulderPresent
+	call_if_unset FLAG_LEGENDS_STORY_SEAFOAM_B3F_BOULDER_2, LegendsSeafoam_B3F_EventScript_AddBoulderPresent
+	call_if_eq VAR_TEMP_2, 2, LegendsSeafoam_B3F_EventScript_StoppedCurrent
+	return
+
+LegendsSeafoam_B3F_EventScript_StoppedCurrent::
+	setflag FLAG_LEGENDS_STORY_SEAFOAM_B3F_CURRENT
+	return
+
+LegendsSeafoam_B3F_EventScript_SetNoCurrentLayout::
+	setmaplayoutindex LAYOUT_LEGENDS_KANTO_SEAFOAM_ISLANDS_B3F_CURRENT_STOPPED
+	return
+
+LegendsSeafoam_B3F_OnFrame::
+	map_script_2 VAR_TEMP_1, 1, LegendsSeafoam_B3F_EventScript_EnterByFalling
+	.2byte 0
+
+LegendsSeafoam_B3F_EventScript_EnterByFalling::
+	lockall
+	setvar VAR_TEMP_2, 0
+	call_if_unset FLAG_LEGENDS_STORY_SEAFOAM_B3F_BOULDER_1, LegendsSeafoam_B3F_EventScript_AddBoulderPresent
+	call_if_unset FLAG_LEGENDS_STORY_SEAFOAM_B3F_BOULDER_2, LegendsSeafoam_B3F_EventScript_AddBoulderPresent
+	goto_if_eq VAR_TEMP_2, 2, LegendsSeafoam_B3F_EventScript_CurrentBlocked
+	getplayerxy VAR_0x8008, VAR_0x8009
+	call_if_lt VAR_0x8008, 24, LegendsSeafoam_B3F_EventScript_RideCurrentFar
+	call_if_ge VAR_0x8008, 24, LegendsSeafoam_B3F_EventScript_RideCurrentClose
+	setvar VAR_LEGENDS_SEAFOAM_ENTRY, 1
+	warp MAP_LEGENDS_KANTO_SEAFOAM_ISLANDS_B4F, 27, 21
+	waitstate
+	releaseall
+	end
+
+LegendsSeafoam_B3F_EventScript_AddBoulderPresent::
+	addvar VAR_TEMP_2, 1
+	return
+
+LegendsSeafoam_B3F_EventScript_RideCurrentFar::
+	applymovement LOCALID_PLAYER, LegendsSeafoam_B3F_Movement_RideCurrentFar
+	waitmovement 0
+	return
+
+LegendsSeafoam_B3F_EventScript_RideCurrentClose::
+	applymovement LOCALID_PLAYER, LegendsSeafoam_B3F_Movement_RideCurrentClose
+	waitmovement 0
+	return
+
+LegendsSeafoam_B3F_EventScript_CurrentBlocked::
+	setvar VAR_TEMP_1, 0
+	releaseall
+	end
+
+LegendsSeafoam_B3F_Movement_RideCurrentFar::
+	walk_fast_down
+	walk_fast_down
+	walk_fast_down
+	walk_fast_down
+	walk_fast_right
+	walk_fast_right
+	walk_fast_right
+	walk_fast_down
+	walk_fast_down
+	walk_fast_down
+	walk_fast_down
+	walk_fast_down
+	walk_fast_down
+	step_end
+
+LegendsSeafoam_B3F_Movement_RideCurrentClose::
+	walk_fast_down
+	walk_fast_down
+	walk_fast_down
+	walk_fast_down
+	walk_fast_right
+	walk_fast_right
+	walk_fast_down
+	walk_fast_down
+	walk_fast_down
+	walk_fast_down
+	walk_fast_down
+	walk_fast_down
+	step_end

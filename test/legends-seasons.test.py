@@ -140,7 +140,7 @@ int main(void)
     gMapHeader.mapType = MAP_TYPE_ROUTE; gMapHeader.weather = WEATHER_SUNNY;
     gMapHeader.regionMapSectionId = MAPSEC_TEST_ROUTE;
     assert(LegendsMapHasSeasons());
-    const u16 excluded[] = {MAPSEC_MT_CHIMNEY, MAPSEC_JAGGED_PASS, MAPSEC_FIERY_PATH, MAPSEC_LAVARIDGE_TOWN, MAPSEC_FALLARBOR_TOWN, MAPSEC_ROUTE_111, MAPSEC_ROUTE_112, MAPSEC_ROUTE_113};
+    const u16 excluded[] = {MAPSEC_MT_EMBER, MAPSEC_MT_CHIMNEY, MAPSEC_JAGGED_PASS, MAPSEC_FIERY_PATH, MAPSEC_LAVARIDGE_TOWN, MAPSEC_FALLARBOR_TOWN, MAPSEC_ROUTE_111, MAPSEC_ROUTE_112, MAPSEC_ROUTE_113};
     for (u32 i = 0; i < sizeof(excluded)/sizeof(*excluded); i++) {
         gMapHeader.regionMapSectionId = excluded[i]; assert(!LegendsMapHasSeasons());
         assert(LegendsSeasonWeather(WEATHER_SUNNY) == WEATHER_SUNNY);
@@ -234,7 +234,7 @@ with tempfile.TemporaryDirectory() as directory:
     for header in ['event_data.h', 'field_weather.h', 'fieldmap.h', 'overworld.h', 'palette.h', 'rtc.h', 'script.h']:
         (tmp / header).write_text('#include "global.h"\n')
     (tmp / 'constants').mkdir()
-    names = ['MT_CHIMNEY', 'JAGGED_PASS', 'FIERY_PATH', 'LAVARIDGE_TOWN', 'FALLARBOR_TOWN', 'ROUTE_111', 'ROUTE_112', 'ROUTE_113', 'DEWFORD_TOWN', 'PACIFIDLOG_TOWN', 'SOOTOPOLIS_CITY', 'TEST_ROUTE']
+    names = ['MT_EMBER', 'MT_CHIMNEY', 'JAGGED_PASS', 'FIERY_PATH', 'LAVARIDGE_TOWN', 'FALLARBOR_TOWN', 'ROUTE_111', 'ROUTE_112', 'ROUTE_113', 'DEWFORD_TOWN', 'PACIFIDLOG_TOWN', 'SOOTOPOLIS_CITY', 'TEST_ROUTE']
     (tmp / 'constants/region_map_sections.h').write_text('\n'.join(f'#define MAPSEC_{name} {i}' for i, name in enumerate(names)))
     (tmp / 'harness.c').write_text(HARNESS)
     subprocess.run(['cc', '-std=c99', '-Wall', '-Wextra', '-Werror', '-Wno-misleading-indentation', '-I', str(tmp), '-I', str(ROOT / 'include'), str(ROOT / 'src/legends_seasons.c'), str(tmp / 'harness.c'), '-o', str(tmp / 'check')], check=True)

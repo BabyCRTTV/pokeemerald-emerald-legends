@@ -42,6 +42,7 @@ u8 GetSavedWeather(void){return save1.weather;}
 void SetSavedWeather(u8 w){savedCalls++;vars[1]=0x100+w;if(w==WEATHER_ROUTE119_CYCLE||w==WEATHER_ROUTE123_CYCLE)w=WEATHER_RAIN;save1.weather=LegendsChooseAmbientWeather(w);}
 void SetNextWeather(u8 w){nextCalls++;state.nextWeather=w;}
 '''
+preamble += '\nu8 LegendsStoryWeather(u8 weather){return WEATHER_COUNT;}\n'
 main = r'''
 static void poll(void){for(int i=0;i<60;i++)LegendsWeatherTick();}
 static int countWeather(int wanted){int n=0;for(outcome=0;outcome<100;outcome++)n+=LegendsChooseAmbientWeather(WEATHER_SUNNY)==wanted;return n;}

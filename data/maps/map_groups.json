@@ -75,7 +75,8 @@
     "gMapGroup_IndoorTwoIslandRoute_Frlg",
     "gMapGroup_IndoorSixIslandRoute_Frlg",
     "gMapGroup_IndoorSevenIslandRoute_Frlg",
-    "gMapGroup_LegendsKanto"
+    "gMapGroup_LegendsKanto",
+    "gMapGroup_LegendsHoenn"
   ],
   "gMapGroup_TownsAndRoutes": [
     "PetalburgCity",
@@ -1226,6 +1227,39 @@
     "LegendsKanto_RockTunnel_1F",
     "LegendsKanto_RockTunnel_B1F",
     "LegendsKanto_PowerPlant",
-    "LegendsKanto_Route10_PokemonCenter_1F"
+    "LegendsKanto_Route10_PokemonCenter_1F",
+    "LegendsKanto_Route20",
+    "LegendsKanto_SeafoamIslands_1F",
+    "LegendsKanto_SeafoamIslands_B1F",
+    "LegendsKanto_SeafoamIslands_B2F",
+    "LegendsKanto_SeafoamIslands_B3F",
+    "LegendsKanto_SeafoamIslands_B4F",
+    "LegendsKanto_Route9",
+    "LegendsKanto_CeruleanCity",
+    "LegendsKanto_CeruleanCity_Gym",
+    "LegendsKanto_CeruleanCity_PokemonCenter_1F",
+    "LegendsKanto_CeruleanCity_Mart",
+    "LegendsKanto_Route4",
+    "LegendsKanto_Route4_PokemonCenter_1F",
+    "LegendsKanto_MtMoon_1F",
+    "LegendsKanto_MtMoon_B1F",
+    "LegendsKanto_MtMoon_B2F",
+    "LegendsKanto_Route3",
+    "LegendsKanto_PewterCity",
+    "LegendsKanto_PewterCity_Gym",
+    "LegendsKanto_PewterCity_PokemonCenter_1F",
+    "LegendsKanto_PewterCity_Mart",
+    "LegendsKanto_CinnabarIsland",
+    "LegendsKanto_CinnabarIsland_Gym",
+    "LegendsKanto_CinnabarIsland_PokemonCenter_1F",
+    "LegendsKanto_CinnabarIsland_Mart",
+    "LegendsKanto_MtEmber_Exterior",
+    "LegendsKanto_MtEmber_SummitPath_1F",
+    "LegendsKanto_MtEmber_SummitPath_2F",
+    "LegendsKanto_MtEmber_SummitPath_3F",
+    "LegendsKanto_MtEmber_Summit"
+  ],
+  "gMapGroup_LegendsHoenn": [
+    "LegendsHoenn_ContinentalVault"
   ]
 }

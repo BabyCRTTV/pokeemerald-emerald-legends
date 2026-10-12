@@ -81,6 +81,8 @@ jobs:
           python3 test/legends-trainer-card-badges.test.py
       - name: Kanto Quiet Current and native wild levels
         run: python3 test/legends-kanto-chapter3.test.py
+      - name: Three expeditions and the Hoenn weather intermission
+        run: python3 test/legends-story-expeditions.test.py
       - name: Region map browsing
         run: python3 test/legends-region-map.test.py
       - name: Verify Legends project metadata

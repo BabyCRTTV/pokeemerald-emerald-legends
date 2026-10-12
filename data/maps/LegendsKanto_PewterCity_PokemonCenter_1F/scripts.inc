@@ -1,0 +1,3 @@
+LegendsKanto_PewterCity_PokemonCenter_1F_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, LegendsKanto_Center_OnTransition
+	.byte 0
