@@ -81,6 +81,14 @@ static const u8 *const sNotes[ADV_EVENT_COUNT] =
     [ADV_MOLTRES_SEEN] = COMPOUND_STRING("Observed MOLTRES above MT. EMBER.\nA smaller shadow copied its cry."),
     [ADV_EMBER_REPORT] = COMPOUND_STRING("Filed the Ember's Passage report.\nThe elusive visitor remains a lead."),
 
+    [ADV_EIGHT_RECORDS] = COMPOUND_STRING("Completed the eight visiting records.\nOAK awaits the full habitat survey."),
+    [ADV_OAK_ANALYSIS] = COMPOUND_STRING("OAK identified the elusive visitor.\nAn old sea map points toward MEW."),
+    [ADV_FARAWAY_SURVEY] = COMPOUND_STRING("Reached the recorded island shore.\nMEW plays in its deep forest."),
+    [ADV_MEW_OBSERVED] = COMPOUND_STRING("Recorded the elusive visitor: MEW.\nCapture was not required."),
+    [ADV_SURVEY_COMPLETE] = COMPOUND_STRING("Completed OAK's WING SURVEY.\nTwo regions shared their discoveries."),
+    [ADV_SURVEY_REWARD] = COMPOUND_STRING("Received the survey's MASTER BALL.\nA one-time gift from OAK."),
+    [ADV_HOENN_EPILOGUE] = COMPOUND_STRING("BIRCH's final letter reached HOENN.\nThe research journey continues."),
+
 };
 static const u8 *const sFilters[] =
 {

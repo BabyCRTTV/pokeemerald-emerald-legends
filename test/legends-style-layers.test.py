@@ -13,6 +13,17 @@ assert len({tuple(r) for r in WORLD_MALE}) == len({tuple(r) for r in WORLD_FEMAL
 from build_appearance import frames,pack,STATES,FILES
 walking=frames(root/'graphics/object_events/pics/people/brendan/walking.png',16,32)[0]
 assert art.hair_edits(walking,0,'overworld',0,1)[10][10]==0, 'clear native hat tip above new crown'
+# The reported glitch changed facing on alternate steps. Check against the
+# actual native animation commands, not a second copy of the authoring table.
+anims=(root/'src/data/object_events/object_event_anims.h').read_text()
+for name,direction in (('South',0),('North',2),('West',1),('East',1)):
+ for motion in ('Go','GoFast','GoFaster','GoFastest','Run'):
+  body=re.search(r'sAnim_'+motion+name+r'\[\]\s*=\s*\{(.*?)\};',anims,re.S)[1]
+  for frame in map(int,re.findall(r'ANIMCMD_FRAME\((\d+)',body)):
+   assert art.WORLD_DIRECTIONS['walking'][frame]==direction,(motion,name,frame)
+   if motion!='Run':assert art.WORLD_DIRECTIONS['mach_bike'][frame]==direction
+for state in ('surfing','watering'):
+ assert [art.WORLD_DIRECTIONS[state][i] for i in (0,2,4)]==[0,2,1]
 assets=[root/'graphics/legends/styles/edits.bin',root/'src/data/legends/style_layers.h']
 before=[p.read_bytes() for p in assets];art.build();assert before==[p.read_bytes() for p in assets]
 header=assets[1].read_text();edits=struct.unpack('<'+'H'*(len(before[0])//2),before[0])

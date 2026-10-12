@@ -1487,6 +1487,16 @@ static const struct SpriteFrameImage sPicTable_Blaine[] = {
 };
 #endif
 
+#if !IS_FRLG
+static const struct SpriteFrameImage sPicTable_ProfOak[] = {
+    overworld_ascending_frames(gObjectEventPic_ProfOak, 2, 4),
+};
+
+static const struct SpriteFrameImage sPicTable_Blue[] = {
+    overworld_ascending_frames(gObjectEventPic_Blue, 2, 4),
+};
+#endif
+
 #if IS_FRLG
 
 static const struct SpriteFrameImage sPicTable_RedNormal[] = {

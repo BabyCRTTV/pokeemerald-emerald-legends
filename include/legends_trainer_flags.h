@@ -8,6 +8,9 @@ static inline u16 LegendsTrainerFlag(u16 trainerId)
 #if !IS_FRLG
     switch (trainerId)
     {
+    case TRAINER_LEGENDS_KANTO_BLUE_STANDARD:
+    case TRAINER_LEGENDS_KANTO_BLUE_CHAMPION:
+        return FLAG_LEGENDS_KANTO_VIRIDIAN_WON;
     case TRAINER_LEGENDS_KANTO_BROCK_STANDARD:
     case TRAINER_LEGENDS_KANTO_BROCK_CHAMPION:
         return FLAG_LEGENDS_KANTO_BROCK_WON;

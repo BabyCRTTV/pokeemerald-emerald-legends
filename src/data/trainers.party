@@ -17935,3 +17935,110 @@ EVs: 128 HP / 252 Atk / 128 Spe
 - Extreme Speed
 - Wild Charge
 - Morning Sun
+
+=== TRAINER_LEGENDS_KANTO_BLUE_STANDARD ===
+Name: BLUE
+Class: Leader Frlg
+Pic: Champion Rival Frlg
+Gender: Male
+Music: Intense
+AI: Basic Trainer
+
+Pidgeot
+Level: 64
+Ability: Keen Eye
+IVs: 16 HP / 16 Atk / 16 Def / 16 SpA / 16 SpD / 16 Spe
+- Air Slash
+- Roost
+- U-turn
+- Quick Attack
+
+Alakazam
+Level: 65
+Ability: Synchronize
+IVs: 16 HP / 16 Atk / 16 Def / 16 SpA / 16 SpD / 16 Spe
+- Psychic
+- Shadow Ball
+- Recover
+- Focus Blast
+
+Arcanine
+Level: 66
+Ability: Intimidate
+IVs: 16 HP / 16 Atk / 16 Def / 16 SpA / 16 SpD / 16 Spe
+- Flamethrower
+- Extreme Speed
+- Crunch
+- Will-O-Wisp
+
+Blastoise
+Level: 68
+Ability: Torrent
+IVs: 16 HP / 16 Atk / 16 Def / 16 SpA / 16 SpD / 16 Spe
+- Surf
+- Ice Beam
+- Dark Pulse
+- Protect
+
+
+=== TRAINER_LEGENDS_KANTO_BLUE_CHAMPION ===
+Name: BLUE
+Class: Leader Frlg
+Pic: Champion Rival Frlg
+Gender: Male
+Music: Intense
+AI: Basic Trainer
+
+Pidgeot @ Leftovers
+Level: 84
+Ability: Keen Eye
+EVs: 128 HP / 128 Atk / 128 SpA / 128 Spe
+- Hurricane
+- Roost
+- U-turn
+- Heat Wave
+
+Alakazam @ Leftovers
+Level: 85
+Ability: Magic Guard
+EVs: 128 HP / 128 Atk / 128 SpA / 128 Spe
+- Psychic
+- Shadow Ball
+- Focus Blast
+- Recover
+
+Arcanine @ Leftovers
+Level: 86
+Ability: Intimidate
+EVs: 128 HP / 128 Atk / 128 SpA / 128 Spe
+- Flare Blitz
+- Extreme Speed
+- Crunch
+- Will-O-Wisp
+
+Exeggutor @ Leftovers
+Level: 86
+Ability: Chlorophyll
+EVs: 128 HP / 128 Atk / 128 SpA / 128 Spe
+- Giga Drain
+- Psychic
+- Sleep Powder
+- Leech Seed
+
+Rhyperior @ Leftovers
+Level: 87
+Ability: Solid Rock
+EVs: 128 HP / 128 Atk / 128 SpA / 128 Spe
+- Earthquake
+- Stone Edge
+- Megahorn
+- Stealth Rock
+
+Blastoise @ Leftovers
+Level: 88
+Ability: Torrent
+EVs: 128 HP / 128 Atk / 128 SpA / 128 Spe
+- Surf
+- Ice Beam
+- Dark Pulse
+- Protect

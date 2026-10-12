@@ -642,3 +642,4 @@ gSpecials::
 	def_special LegendsOpenWardrobe, waitstate=1
 	def_special LegendsClockBufferTime
 	def_special LegendsClockUseRealTime
+	def_special LegendsRevealSurveyMew

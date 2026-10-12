@@ -67,6 +67,7 @@ typedef uint16_t u16;
 #define FLAG_LEGENDS_KANTO_BROCK_WON 0x270
 #define FLAG_LEGENDS_KANTO_MISTY_WON 0x271
 #define FLAG_LEGENDS_KANTO_BLAINE_WON 0x274
+#define FLAG_LEGENDS_KANTO_VIRIDIAN_WON 0x275
 #define FLAG_LEGENDS_KANTO_ERIKA_WON 0x272
 #define FLAG_LEGENDS_KANTO_SABRINA_WON 0x273
 #include "legends_trainer_flags.h"
@@ -76,8 +77,10 @@ assert(TRAINER_FLAGS_START + MAX_TRAINERS_COUNT == 0x860);
 for (int i=0;i<864;i++) assert(LegendsTrainerFlag(i)==0x500+i);
 assert(LegendsTrainerFlag(864)==0x272 && LegendsTrainerFlag(865)==0x272);
 assert(LegendsTrainerFlag(866)==0x273 && LegendsTrainerFlag(867)==0x273);
-assert(TRAINERS_COUNT == 874 && TRAINER_PARTNER(PARTNER_STEVEN)==875);
+assert(TRAINERS_COUNT == 876 && TRAINER_PARTNER(PARTNER_STEVEN)==877);
 assert(LegendsTrainerFlag(TRAINER_PARTNER(PARTNER_STEVEN))==0);
+assert(LegendsTrainerFlag(TRAINER_LEGENDS_KANTO_BLUE_STANDARD)==0x275);
+assert(LegendsTrainerFlag(TRAINER_LEGENDS_KANTO_BLUE_CHAMPION)==0x275);
 assert(LegendsTrainerFlag(65535)==0);
 }'''
   debug=(R/'src/debug.c').read_text()
@@ -88,7 +91,7 @@ static void SetTrainerFlag(u16 id) {u16 f=LegendsTrainerFlag(id);if(f)bits[f]=1;
 static void ClearTrainerFlag(u16 id) {u16 f=LegendsTrainerFlag(id);if(f)bits[f]=0;}
 """
   program=program.replace('int main(void) {',stubs+toggle+'int main(void) {')
-  program=program.replace('assert(MAX_TRAINERS_COUNT',"""for(int id=0;id<874;id++) {
+  program=program.replace('assert(MAX_TRAINERS_COUNT',"""for(int id=0;id<876;id++) {
  DebugToggleTrainerFlag(id);assert(bits[LegendsTrainerFlag(id)]==1);
  for(int f=0x860;f<0x900;f++)assert(bits[f]==0);
  DebugToggleTrainerFlag(id);assert(bits[LegendsTrainerFlag(id)]==0);

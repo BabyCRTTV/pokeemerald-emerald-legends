@@ -11,7 +11,7 @@ const u16 gTilesetPalettes_LegendsStoryCinnabarIsland[][16] =
     INCGFX_U16("data/tilesets/secondary/cinnabar_island_frlg/palettes/04.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/cinnabar_island_frlg/palettes/05.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/cinnabar_island_frlg/palettes/06.pal", ".gbapal"),
-    INCGFX_U16("data/tilesets/secondary/cinnabar_island_frlg/palettes/07.pal", ".gbapal"),
+    INCGFX_U16("data/tilesets/legends_lights/general_frlg.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/cinnabar_island_frlg/palettes/08.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/cinnabar_island_frlg/palettes/09.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/cinnabar_island_frlg/palettes/10.pal", ".gbapal"),
@@ -85,7 +85,7 @@ const u16 gTilesetPalettes_LegendsStoryCeruleanCity[][16] =
     INCGFX_U16("data/tilesets/secondary/cerulean_city_frlg/palettes/04.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/cerulean_city_frlg/palettes/05.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/cerulean_city_frlg/palettes/06.pal", ".gbapal"),
-    INCGFX_U16("data/tilesets/secondary/cerulean_city_frlg/palettes/07.pal", ".gbapal"),
+    INCGFX_U16("data/tilesets/legends_lights/general_frlg.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/cerulean_city_frlg/palettes/08.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/cerulean_city_frlg/palettes/09.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/cerulean_city_frlg/palettes/10.pal", ".gbapal"),
@@ -196,7 +196,7 @@ const u16 gTilesetPalettes_LegendsStoryPewterCity[][16] =
     INCGFX_U16("data/tilesets/secondary/pewter_city_frlg/palettes/04.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/pewter_city_frlg/palettes/05.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/pewter_city_frlg/palettes/06.pal", ".gbapal"),
-    INCGFX_U16("data/tilesets/secondary/pewter_city_frlg/palettes/07.pal", ".gbapal"),
+    INCGFX_U16("data/tilesets/legends_lights/general_frlg.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/pewter_city_frlg/palettes/08.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/pewter_city_frlg/palettes/09.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/pewter_city_frlg/palettes/10.pal", ".gbapal"),
@@ -307,7 +307,7 @@ const u16 gTilesetPalettes_LegendsStorySeviiIslands123[][16] =
     INCGFX_U16("data/tilesets/secondary/sevii_islands_123_frlg/palettes/04.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/sevii_islands_123_frlg/palettes/05.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/sevii_islands_123_frlg/palettes/06.pal", ".gbapal"),
-    INCGFX_U16("data/tilesets/secondary/sevii_islands_123_frlg/palettes/07.pal", ".gbapal"),
+    INCGFX_U16("data/tilesets/legends_lights/general_frlg.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/sevii_islands_123_frlg/palettes/08.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/sevii_islands_123_frlg/palettes/09.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/sevii_islands_123_frlg/palettes/10.pal", ".gbapal"),
@@ -367,6 +367,191 @@ const struct Tileset gTileset_LegendsKantoMtEmber =
     .palettes = gTilesetPalettes_LegendsStoryMtEmber,
     .metatiles = gMetatiles_LegendsStoryMtEmber,
     .metatileAttributes = gMetatileAttributes_LegendsStoryMtEmber,
+    .callback = NULL,
+};
+
+const u32 gTilesetTiles_LegendsStoryViridianCity[] = INCGFX_U32("data/tilesets/secondary/viridian_city_frlg/tiles.png", ".4bpp.fastSmol");
+
+const u16 gTilesetPalettes_LegendsStoryViridianCity[][16] =
+{
+    INCGFX_U16("data/tilesets/secondary/viridian_city_frlg/palettes/00.pal", ".gbapal"),
+    INCGFX_U16("data/tilesets/secondary/viridian_city_frlg/palettes/01.pal", ".gbapal"),
+    INCGFX_U16("data/tilesets/secondary/viridian_city_frlg/palettes/02.pal", ".gbapal"),
+    INCGFX_U16("data/tilesets/secondary/viridian_city_frlg/palettes/03.pal", ".gbapal"),
+    INCGFX_U16("data/tilesets/secondary/viridian_city_frlg/palettes/04.pal", ".gbapal"),
+    INCGFX_U16("data/tilesets/secondary/viridian_city_frlg/palettes/05.pal", ".gbapal"),
+    INCGFX_U16("data/tilesets/secondary/viridian_city_frlg/palettes/06.pal", ".gbapal"),
+    INCGFX_U16("data/tilesets/legends_lights/general_frlg.pal", ".gbapal"),
+    INCGFX_U16("data/tilesets/secondary/viridian_city_frlg/palettes/08.pal", ".gbapal"),
+    INCGFX_U16("data/tilesets/secondary/viridian_city_frlg/palettes/09.pal", ".gbapal"),
+    INCGFX_U16("data/tilesets/secondary/viridian_city_frlg/palettes/10.pal", ".gbapal"),
+    INCGFX_U16("data/tilesets/secondary/viridian_city_frlg/palettes/11.pal", ".gbapal"),
+    INCGFX_U16("data/tilesets/secondary/viridian_city_frlg/palettes/12.pal", ".gbapal"),
+    INCGFX_U16("data/tilesets/secondary/viridian_city_frlg/palettes/13.pal", ".gbapal"),
+    INCGFX_U16("data/tilesets/secondary/viridian_city_frlg/palettes/14.pal", ".gbapal"),
+    INCGFX_U16("data/tilesets/secondary/viridian_city_frlg/palettes/15.pal", ".gbapal"),
+};
+
+const u16 gMetatiles_LegendsStoryViridianCity[] = INCBIN_U16("data/tilesets/secondary/viridian_city_frlg/metatiles.bin");
+
+const u16 gMetatileAttributes_LegendsStoryViridianCity[] = INCBIN_U16("data/tilesets/secondary/viridian_city_frlg/metatile_attributes.bin");
+
+const struct Tileset gTileset_LegendsKantoViridianCity =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_LegendsStoryViridianCity,
+    .palettes = gTilesetPalettes_LegendsStoryViridianCity,
+    .metatiles = gMetatiles_LegendsStoryViridianCity,
+    .metatileAttributes = gMetatileAttributes_LegendsStoryViridianCity,
+    .callback = NULL,
+};
+
+const u32 gTilesetTiles_LegendsStoryViridianForest[] = INCGFX_U32("data/tilesets/secondary/viridian_forest_frlg/tiles.png", ".4bpp.fastSmol");
+
+const u16 gTilesetPalettes_LegendsStoryViridianForest[][16] =
+{
+    INCGFX_U16("data/tilesets/secondary/viridian_forest_frlg/palettes/00.pal", ".gbapal"),
+    INCGFX_U16("data/tilesets/secondary/viridian_forest_frlg/palettes/01.pal", ".gbapal"),
+    INCGFX_U16("data/tilesets/secondary/viridian_forest_frlg/palettes/02.pal", ".gbapal"),
+    INCGFX_U16("data/tilesets/secondary/viridian_forest_frlg/palettes/03.pal", ".gbapal"),
+    INCGFX_U16("data/tilesets/secondary/viridian_forest_frlg/palettes/04.pal", ".gbapal"),
+    INCGFX_U16("data/tilesets/secondary/viridian_forest_frlg/palettes/05.pal", ".gbapal"),
+    INCGFX_U16("data/tilesets/secondary/viridian_forest_frlg/palettes/06.pal", ".gbapal"),
+    INCGFX_U16("data/tilesets/legends_lights/general_frlg.pal", ".gbapal"),
+    INCGFX_U16("data/tilesets/secondary/viridian_forest_frlg/palettes/08.pal", ".gbapal"),
+    INCGFX_U16("data/tilesets/secondary/viridian_forest_frlg/palettes/09.pal", ".gbapal"),
+    INCGFX_U16("data/tilesets/secondary/viridian_forest_frlg/palettes/10.pal", ".gbapal"),
+    INCGFX_U16("data/tilesets/secondary/viridian_forest_frlg/palettes/11.pal", ".gbapal"),
+    INCGFX_U16("data/tilesets/secondary/viridian_forest_frlg/palettes/12.pal", ".gbapal"),
+    INCGFX_U16("data/tilesets/secondary/viridian_forest_frlg/palettes/13.pal", ".gbapal"),
+    INCGFX_U16("data/tilesets/secondary/viridian_forest_frlg/palettes/14.pal", ".gbapal"),
+    INCGFX_U16("data/tilesets/secondary/viridian_forest_frlg/palettes/15.pal", ".gbapal"),
+};
+
+const u16 gMetatiles_LegendsStoryViridianForest[] = INCBIN_U16("data/tilesets/secondary/viridian_forest_frlg/metatiles.bin");
+
+const u16 gMetatileAttributes_LegendsStoryViridianForest[] = INCBIN_U16("data/tilesets/secondary/viridian_forest_frlg/metatile_attributes.bin");
+
+const struct Tileset gTileset_LegendsKantoViridianForest =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_LegendsStoryViridianForest,
+    .palettes = gTilesetPalettes_LegendsStoryViridianForest,
+    .metatiles = gMetatiles_LegendsStoryViridianForest,
+    .metatileAttributes = gMetatileAttributes_LegendsStoryViridianForest,
+    .callback = NULL,
+};
+
+const u32 gTilesetTiles_LegendsStoryViridianGym[] = INCGFX_U32("data/tilesets/secondary/viridian_gym_frlg/tiles.png", ".4bpp.fastSmol");
+
+const u16 gTilesetPalettes_LegendsStoryViridianGym[][16] =
+{
+    INCGFX_U16("data/tilesets/secondary/viridian_gym_frlg/palettes/00.pal", ".gbapal"),
+    INCGFX_U16("data/tilesets/secondary/viridian_gym_frlg/palettes/01.pal", ".gbapal"),
+    INCGFX_U16("data/tilesets/secondary/viridian_gym_frlg/palettes/02.pal", ".gbapal"),
+    INCGFX_U16("data/tilesets/secondary/viridian_gym_frlg/palettes/03.pal", ".gbapal"),
+    INCGFX_U16("data/tilesets/secondary/viridian_gym_frlg/palettes/04.pal", ".gbapal"),
+    INCGFX_U16("data/tilesets/secondary/viridian_gym_frlg/palettes/05.pal", ".gbapal"),
+    INCGFX_U16("data/tilesets/secondary/viridian_gym_frlg/palettes/06.pal", ".gbapal"),
+    INCGFX_U16("data/tilesets/secondary/viridian_gym_frlg/palettes/07.pal", ".gbapal"),
+    INCGFX_U16("data/tilesets/secondary/viridian_gym_frlg/palettes/08.pal", ".gbapal"),
+    INCGFX_U16("data/tilesets/secondary/viridian_gym_frlg/palettes/09.pal", ".gbapal"),
+    INCGFX_U16("data/tilesets/secondary/viridian_gym_frlg/palettes/10.pal", ".gbapal"),
+    INCGFX_U16("data/tilesets/secondary/viridian_gym_frlg/palettes/11.pal", ".gbapal"),
+    INCGFX_U16("data/tilesets/secondary/viridian_gym_frlg/palettes/12.pal", ".gbapal"),
+    INCGFX_U16("data/tilesets/secondary/viridian_gym_frlg/palettes/13.pal", ".gbapal"),
+    INCGFX_U16("data/tilesets/secondary/viridian_gym_frlg/palettes/14.pal", ".gbapal"),
+    INCGFX_U16("data/tilesets/secondary/viridian_gym_frlg/palettes/15.pal", ".gbapal"),
+};
+
+const u16 gMetatiles_LegendsStoryViridianGym[] = INCBIN_U16("data/tilesets/secondary/viridian_gym_frlg/metatiles.bin");
+
+const u16 gMetatileAttributes_LegendsStoryViridianGym[] = INCBIN_U16("data/tilesets/secondary/viridian_gym_frlg/metatile_attributes.bin");
+
+const struct Tileset gTileset_LegendsKantoViridianGym =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_LegendsStoryViridianGym,
+    .palettes = gTilesetPalettes_LegendsStoryViridianGym,
+    .metatiles = gMetatiles_LegendsStoryViridianGym,
+    .metatileAttributes = gMetatileAttributes_LegendsStoryViridianGym,
+    .callback = NULL,
+};
+
+const u32 gTilesetTiles_LegendsStoryPalletTown[] = INCGFX_U32("data/tilesets/secondary/pallet_town_frlg/tiles.png", ".4bpp.fastSmol");
+
+const u16 gTilesetPalettes_LegendsStoryPalletTown[][16] =
+{
+    INCGFX_U16("data/tilesets/secondary/pallet_town_frlg/palettes/00.pal", ".gbapal"),
+    INCGFX_U16("data/tilesets/secondary/pallet_town_frlg/palettes/01.pal", ".gbapal"),
+    INCGFX_U16("data/tilesets/secondary/pallet_town_frlg/palettes/02.pal", ".gbapal"),
+    INCGFX_U16("data/tilesets/secondary/pallet_town_frlg/palettes/03.pal", ".gbapal"),
+    INCGFX_U16("data/tilesets/secondary/pallet_town_frlg/palettes/04.pal", ".gbapal"),
+    INCGFX_U16("data/tilesets/secondary/pallet_town_frlg/palettes/05.pal", ".gbapal"),
+    INCGFX_U16("data/tilesets/secondary/pallet_town_frlg/palettes/06.pal", ".gbapal"),
+    INCGFX_U16("data/tilesets/legends_lights/general_frlg.pal", ".gbapal"),
+    INCGFX_U16("data/tilesets/legends_lights/pallet_glass_08.pal", ".gbapal"),
+    INCGFX_U16("data/tilesets/legends_lights/pallet_glass_09.pal", ".gbapal"),
+    INCGFX_U16("data/tilesets/secondary/pallet_town_frlg/palettes/10.pal", ".gbapal"),
+    INCGFX_U16("data/tilesets/secondary/pallet_town_frlg/palettes/11.pal", ".gbapal"),
+    INCGFX_U16("data/tilesets/secondary/pallet_town_frlg/palettes/12.pal", ".gbapal"),
+    INCGFX_U16("data/tilesets/secondary/pallet_town_frlg/palettes/13.pal", ".gbapal"),
+    INCGFX_U16("data/tilesets/secondary/pallet_town_frlg/palettes/14.pal", ".gbapal"),
+    INCGFX_U16("data/tilesets/secondary/pallet_town_frlg/palettes/15.pal", ".gbapal"),
+};
+
+const u16 gMetatiles_LegendsStoryPalletTown[] = INCBIN_U16("data/tilesets/secondary/pallet_town_frlg/metatiles.bin");
+
+const u16 gMetatileAttributes_LegendsStoryPalletTown[] = INCBIN_U16("data/tilesets/secondary/pallet_town_frlg/metatile_attributes.bin");
+
+const struct Tileset gTileset_LegendsKantoPalletTown =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_LegendsStoryPalletTown,
+    .palettes = gTilesetPalettes_LegendsStoryPalletTown,
+    .metatiles = gMetatiles_LegendsStoryPalletTown,
+    .metatileAttributes = gMetatileAttributes_LegendsStoryPalletTown,
+    .callback = NULL,
+};
+
+const u32 gTilesetTiles_LegendsStoryLab_Frlg[] = INCGFX_U32("data/tilesets/secondary/lab_frlg/tiles.png", ".4bpp.fastSmol");
+
+const u16 gTilesetPalettes_LegendsStoryLab_Frlg[][16] =
+{
+    INCGFX_U16("data/tilesets/secondary/lab_frlg/palettes/00.pal", ".gbapal"),
+    INCGFX_U16("data/tilesets/secondary/lab_frlg/palettes/01.pal", ".gbapal"),
+    INCGFX_U16("data/tilesets/secondary/lab_frlg/palettes/02.pal", ".gbapal"),
+    INCGFX_U16("data/tilesets/secondary/lab_frlg/palettes/03.pal", ".gbapal"),
+    INCGFX_U16("data/tilesets/secondary/lab_frlg/palettes/04.pal", ".gbapal"),
+    INCGFX_U16("data/tilesets/secondary/lab_frlg/palettes/05.pal", ".gbapal"),
+    INCGFX_U16("data/tilesets/secondary/lab_frlg/palettes/06.pal", ".gbapal"),
+    INCGFX_U16("data/tilesets/secondary/lab_frlg/palettes/07.pal", ".gbapal"),
+    INCGFX_U16("data/tilesets/secondary/lab_frlg/palettes/08.pal", ".gbapal"),
+    INCGFX_U16("data/tilesets/secondary/lab_frlg/palettes/09.pal", ".gbapal"),
+    INCGFX_U16("data/tilesets/secondary/lab_frlg/palettes/10.pal", ".gbapal"),
+    INCGFX_U16("data/tilesets/secondary/lab_frlg/palettes/11.pal", ".gbapal"),
+    INCGFX_U16("data/tilesets/secondary/lab_frlg/palettes/12.pal", ".gbapal"),
+    INCGFX_U16("data/tilesets/secondary/lab_frlg/palettes/13.pal", ".gbapal"),
+    INCGFX_U16("data/tilesets/secondary/lab_frlg/palettes/14.pal", ".gbapal"),
+    INCGFX_U16("data/tilesets/secondary/lab_frlg/palettes/15.pal", ".gbapal"),
+};
+
+const u16 gMetatiles_LegendsStoryLab_Frlg[] = INCBIN_U16("data/tilesets/secondary/lab_frlg/metatiles.bin");
+
+const u16 gMetatileAttributes_LegendsStoryLab_Frlg[] = INCBIN_U16("data/tilesets/secondary/lab_frlg/metatile_attributes.bin");
+
+const struct Tileset gTileset_LegendsKantoLab_Frlg =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_LegendsStoryLab_Frlg,
+    .palettes = gTilesetPalettes_LegendsStoryLab_Frlg,
+    .metatiles = gMetatiles_LegendsStoryLab_Frlg,
+    .metatileAttributes = gMetatileAttributes_LegendsStoryLab_Frlg,
     .callback = NULL,
 };
 

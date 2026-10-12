@@ -96,8 +96,8 @@ class ChallengeTests(unittest.TestCase):
  def test_trainer_ids_fit_existing_save_flag_space(self):
   constants=(R/'include/constants/opponents.h').read_text();ids=dict(re.findall(r'#define (TRAINER_LEGENDS_KANTO_\w+)\s+(\d+)',constants))
   source=(R/'src/data/trainers.party').read_text();names=re.findall(r'^=== (TRAINER_LEGENDS_KANTO_\w+) ===',source,re.M)
-  self.assertEqual(len(names),19);self.assertEqual(len({ids[n] for n in names}),19)
-  self.assertTrue(all(int(ids[n])<874 for n in names));self.assertIn('#define MAX_TRAINERS_COUNT_EMERALD 864',constants)
+  self.assertEqual(len(names),21);self.assertEqual(len({ids[n] for n in names}),21)
+  self.assertTrue(all(int(ids[n])<876 for n in names));self.assertIn('#define MAX_TRAINERS_COUNT_EMERALD 864',constants)
   self.assertNotIn(' / Setup First Turn',source.split('/* Legends visiting-Gym teams:')[1])
  def test_gym_raw_graphics_visible_to_emerald(self):
   active=subprocess.check_output(['cpp','-P','-DIS_FRLG=0',str(R/'src/data/object_events/object_event_graphics.h')],text=True)

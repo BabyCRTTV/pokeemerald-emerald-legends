@@ -83,6 +83,10 @@ jobs:
         run: python3 test/legends-kanto-chapter3.test.py
       - name: Three expeditions and the Hoenn weather intermission
         run: python3 test/legends-story-expeditions.test.py
+      - name: Wing Survey finale and native Mew outcomes
+        run: python3 test/legends-kanto-finale.test.py
+      - name: Isolated outdoor night lights and native DNS blending
+        run: python3 test/legends-night-lights.test.py
       - name: Region map browsing
         run: python3 test/legends-region-map.test.py
       - name: Verify Legends project metadata

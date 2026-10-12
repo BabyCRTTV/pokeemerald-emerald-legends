@@ -36,7 +36,7 @@ def declaration(text, symbol):
         raise ValueError(symbol)
     return text[m.start():text.index(';', m.end()) + 1]
 
-def main():
+def main(sources=SOURCES, manifest_path='data/legends_kanto_chapters4-6.json', include_anchor='\t.include "data/scripts/legends_kanto_chapter3.inc"'):
     groups = read('data/maps/map_groups.json')
     layout_doc = read('data/layouts/layouts.json')
     layouts = {l['id']:l for l in layout_doc['layouts']}
@@ -44,7 +44,7 @@ def main():
             if (d := json.loads(p.read_text()))}
     imported = {m['id'].replace('MAP_LEGENDS_KANTO_', 'MAP_', 1):m['id']
                 for m in maps.values() if m['id'].startswith('MAP_LEGENDS_KANTO_')}
-    native = {n: read(f'data/maps/{n}_Frlg/map.json') for n in SOURCES}
+    native = {n: read(f'data/maps/{n}_Frlg/map.json') for n in sources}
     imported.update({d['id']:d['id'].replace('MAP_', 'MAP_LEGENDS_KANTO_', 1)
                      for d in native.values()})
     headers = (ROOT/'src/data/tilesets/headers.h').read_text()
@@ -115,10 +115,10 @@ def main():
     out.write_text(art+'#endif\n')
     write('data/maps/map_groups.json',groups)
     write('data/layouts/layouts.json',layout_doc)
-    write('data/legends_kanto_chapters4-6.json',{'maps':manifest})
+    write(manifest_path,{'maps':manifest})
     events = ROOT/'data/event_scripts.s'
     text = events.read_text()
-    anchor = '\t.include "data/scripts/legends_kanto_chapter3.inc"'
+    anchor = include_anchor
     additions = '\n'.join('\t.include "data/maps/'+m['name']+'/scripts.inc"' for m in manifest)
     if additions not in text:
         text = text.replace(anchor,anchor+'\n'+additions)

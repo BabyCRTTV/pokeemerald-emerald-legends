@@ -6,7 +6,7 @@ const u16 gMetatileAttributes_SecretBaseSecondary[] = INCBIN_U16("data/tilesets/
 
 #if !IS_FRLG
 
-const u16 gMetatiles_General[] = INCBIN_U16("data/tilesets/primary/general/metatiles.bin");
+const u16 gMetatiles_General[] = INCBIN_U16("data/tilesets/legends_lights/general_metatiles.bin");
 const u16 gMetatileAttributes_General[] = INCBIN_U16("data/tilesets/primary/general/metatile_attributes.bin");
 
 const u16 gMetatiles_Petalburg[] = INCBIN_U16("data/tilesets/secondary/petalburg/metatiles.bin");
@@ -48,10 +48,10 @@ const u16 gMetatileAttributes_Pacifidlog[] = INCBIN_U16("data/tilesets/secondary
 const u16 gMetatiles_Sootopolis[] = INCBIN_U16("data/tilesets/secondary/sootopolis/metatiles.bin");
 const u16 gMetatileAttributes_Sootopolis[] = INCBIN_U16("data/tilesets/secondary/sootopolis/metatile_attributes.bin");
 
-const u16 gMetatiles_BattleFrontierOutsideWest[] = INCBIN_U16("data/tilesets/secondary/battle_frontier_outside_west/metatiles.bin");
+const u16 gMetatiles_BattleFrontierOutsideWest[] = INCBIN_U16("data/tilesets/legends_lights/battle_frontier_outside_west_metatiles.bin");
 const u16 gMetatileAttributes_BattleFrontierOutsideWest[] = INCBIN_U16("data/tilesets/secondary/battle_frontier_outside_west/metatile_attributes.bin");
 
-const u16 gMetatiles_BattleFrontierOutsideEast[] = INCBIN_U16("data/tilesets/secondary/battle_frontier_outside_east/metatiles.bin");
+const u16 gMetatiles_BattleFrontierOutsideEast[] = INCBIN_U16("data/tilesets/legends_lights/battle_frontier_outside_east_metatiles.bin");
 const u16 gMetatileAttributes_BattleFrontierOutsideEast[] = INCBIN_U16("data/tilesets/secondary/battle_frontier_outside_east/metatile_attributes.bin");
 
 const u16 gMetatiles_InsideBuilding[] = INCBIN_U16("data/tilesets/primary/building/metatiles.bin");
@@ -218,7 +218,7 @@ const u16 gMetatileAttributes_Building_Frlg[] = INCBIN_U16("data/tilesets/primar
 const u16 gMetatiles_GenericBuilding1[] = INCBIN_U16("data/tilesets/secondary/generic_building_1_frlg/metatiles.bin");
 const u16 gMetatileAttributes_GenericBuilding1[] = INCBIN_U16("data/tilesets/secondary/generic_building_1_frlg/metatile_attributes.bin");
 
-const u16 gMetatiles_General_Frlg[] = INCBIN_U16("data/tilesets/primary/general_frlg/metatiles.bin");
+const u16 gMetatiles_General_Frlg[] = INCBIN_U16("data/tilesets/legends_lights/general_frlg_metatiles.bin");
 const u16 gMetatileAttributes_General_Frlg[] = INCBIN_U16("data/tilesets/primary/general_frlg/metatile_attributes.bin");
 
 const u16 gMetatiles_PalletTown[] = INCBIN_U16("data/tilesets/secondary/pallet_town_frlg/metatiles.bin");

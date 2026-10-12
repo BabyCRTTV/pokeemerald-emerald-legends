@@ -412,7 +412,10 @@ void SetMewAboveGrass(void)
 void DestroyMewEmergingGrassSprite(void)
 {
     if (sGrassSpriteId != MAX_SPRITES)
+    {
         DestroySprite(&gSprites[sGrassSpriteId]);
+        sGrassSpriteId = MAX_SPRITES;
+    }
 }
 
 static bool8 ShouldMewMoveNorth(struct ObjectEvent *mew, u8 index)
@@ -462,4 +465,26 @@ static bool8 ShouldMewMoveWest(struct ObjectEvent *mew, u8 index)
 static u8 GetRandomMewDirectionCandidate(u8 numDirections)
 {
     return sMewDirectionCandidates[VarGet(VAR_FARAWAY_ISLAND_STEP_COUNTER) % numDirections];
+}
+
+// The survey conversation can end without the native battle/float movement.
+// Keep the found Mew fully above long grass while that conversation runs.
+void LegendsRevealSurveyMew(void)
+{
+    u8 objectId;
+    struct ObjectEvent *mew;
+    struct Sprite *sprite;
+    if (FlagGet(FLAG_CAUGHT_MEW)
+     || TryGetObjectEventIdByLocalIdAndMap(LOCALID_FARAWAY_ISLAND_MEW,
+            gSaveBlock1Ptr->location.mapNum, gSaveBlock1Ptr->location.mapGroup, &objectId)
+     || objectId >= OBJECT_EVENTS_COUNT)
+        return;
+    mew = &gObjectEvents[objectId];
+    sprite = &gSprites[mew->spriteId];
+    mew->invisible = FALSE;
+    mew->fixedPriority = TRUE;
+    sprite->oam.priority = 1;
+    sprite->subpriority = 1;
+    sprite->subspriteMode = SUBSPRITES_IGNORE_PRIORITY;
+    sprite->subspriteTableNum = 0;
 }

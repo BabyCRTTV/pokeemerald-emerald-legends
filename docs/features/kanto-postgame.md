@@ -1,6 +1,18 @@
 # Kanto postgame — Wing Survey
 
-## Current chapters — v0.0.41
+## Current finale — v0.0.42
+
+**7. The Last Record.** File the Mt. Ember report with Oak's aide. From Pewter, travel south through Route 2 and Viridian Forest to Viridian City. Blue serves as its acting visiting Leader. Standard has four Pokemon at Lv. 64–68; Champion has six at Lv. 84–88. Either grants the same permanent eighth record. The Gym retains its native spinner-floor puzzle. Route 22's League approach and unrelated building interiors remain closed.
+
+**8. A Familiar Shadow.** Collect all eight visiting Gym records and complete the bird/Hoenn reports. Travel south along Route 1 to Pallet Town, or Surf north from Cinnabar through Route 21. Meet Oak in his original lab. He compares the copied cries, pink hair, quiet habitats and Birch's ground readings with an old maritime account. Oak issues an Old Sea Map and enables the original Lilycove voyage. An existing map is recognized; a full Bag delays the gift safely. If that map was previously received and stored, retrieve it instead of receiving a duplicate. The lab assistant heals your party.
+
+**9. Beyond the Horizon.** At Lilycove's original S.S. Tidal counter, choose Faraway Island while carrying the Old Sea Map. Follow the western shore trail into the native forest and locate the single overworld Mew in the deep grass. Listening records the final observation; the native Lv. 30 encounter is optional. Fainting/fleeing permits forest-reentry retry during this survey. Capturing Mew permanently removes its object. If an older save already caught it, the weathered shore sign or sailor gives an alternate scene with no second spawn. Visit the island, then return to Oak for the final report and one Master Ball. A full Bag uses the PC; if both are full, clear space and talk again. The additional Weather Institute scientist shares Birch's closing letter after the report.
+
+The nine-chapter survey is complete. Seasons, ordinary travel, native Hoenn postgame and Battle Frontier remain available. Ten formerly unused flags (`0x2B0–0x2B9`) and two trainer IDs are appended without moving SaveBlock structures, system flags, old map/layout IDs or the saved trainer capacity of 864. Seven Adventure Log event IDs are appended. [Verification evidence and limits](../qa/finale-v0.0.42.md).
+
+Nighttime town scenery now includes illuminated standard house windows and Center/Mart signs in Hoenn and Kanto. Native day/night blending controls dusk/dawn; dedicated tile/palette copies preserve daytime colors and keep roofs/ground from glowing. Custom hairstyles use the correct native walking, running, bike and field-action directions on every pose.
+
+## Earlier expeditions — v0.0.41
 
 **4. Stillwater Wings.** After filing the Power Plant report, Surf south from Fuchsia and west onto Route 20. The sheltering sailor stands by Seafoam's eastern cave. Follow the native Strength shafts from 1F down to B3F, and shift B3F's southern boulders into its two holes. Both native currents must stop before surveying Articuno's western B4F island. Observation records the survey; the optional encounter is Lv. 50. Return to Oak's aide once to file the Seafoam report and receive the Hoenn weather call.
 
@@ -71,7 +83,7 @@ An entrance guide explains the choice at each entry before the Leader fight. YES
 | Erika | Playable, Celadon | 4 Pokemon, 54–58 | 6 Pokemon, 74–78 | `FLAG_LEGENDS_KANTO_ERIKA_WON` |
 | Sabrina | Playable, Saffron | 4 Pokemon, 58–62 | 6 Pokemon, 78–82 | `FLAG_LEGENDS_KANTO_SABRINA_WON` |
 | Blaine | Playable, Cinnabar | 4 Pokemon, 60–64 | 6 Pokemon, 80–84 | `FLAG_LEGENDS_KANTO_BLAINE_WON` |
-| Viridian Leader | Planned; Blue as acting Leader | Target 62–66 | Target 82–86 | Reserved independent flag |
+| Blue | Playable, Viridian | 4 Pokemon, 64–68 | 6 Pokemon, 84–88 | `FLAG_LEGENDS_KANTO_VIRIDIAN_WON` |
 
 Targets for unimplemented teams are design notes, not shipped balance promises. Blue's proposed acting role avoids reversing the original Rocket/Giovanni outcome; establish it with dialogue when Viridian is implemented. Kanto's chronology is this hack's original continuation, not a claim that game and anime timelines are identical.
 

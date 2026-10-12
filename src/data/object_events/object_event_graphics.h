@@ -496,6 +496,13 @@ const u16 gObjectEventPic_Misty[] = INCGFX_U16("graphics/object_events/pics/peop
 const u16 gObjectEventPic_Blaine[] = INCGFX_U16("graphics/object_events/pics/people/blaine.png", ".4bpp", "-mwidth 2 -mheight 4");
 #endif
 
+#if !IS_FRLG
+const u16 gObjectEventPal_NpcWhite[] = INCGFX_U16("graphics/object_events/palettes/npc_white.pal", ".gbapal");
+const u16 gObjectEventPic_ProfOak[] = INCGFX_U16("graphics/object_events/pics/people/prof_oak.png", ".4bpp", "-mwidth 2 -mheight 4");
+
+const u16 gObjectEventPic_Blue[] = INCGFX_U16("graphics/object_events/pics/people/blue.png", ".4bpp", "-mwidth 2 -mheight 4");
+#endif
+
 #if IS_FRLG
 
 const u16 gObjectEventPic_RedNormal[] = INCGFX_U16("graphics/object_events/pics/people/red/red_normal.png", ".4bpp", "-mwidth 2 -mheight 4");
