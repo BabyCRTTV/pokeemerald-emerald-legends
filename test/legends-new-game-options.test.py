@@ -123,7 +123,7 @@ with tempfile.TemporaryDirectory() as directory:
     for name in ['event_data.h', 'field_weather.h', 'overworld.h', 'palette.h', 'rtc.h', 'item.h', 'battle_pyramid.h']:
         (tmp / name).write_text('#include "global.h"\n')
     (tmp / 'constants').mkdir()
-    names = ['MT_CHIMNEY', 'JAGGED_PASS', 'FIERY_PATH', 'LAVARIDGE_TOWN', 'FALLARBOR_TOWN', 'ROUTE_111', 'ROUTE_112', 'ROUTE_113', 'DEWFORD_TOWN', 'PACIFIDLOG_TOWN', 'SOOTOPOLIS_CITY', 'TEST_ROUTE']
+    names = ['MT_EMBER', 'MT_CHIMNEY', 'JAGGED_PASS', 'FIERY_PATH', 'LAVARIDGE_TOWN', 'FALLARBOR_TOWN', 'ROUTE_111', 'ROUTE_112', 'ROUTE_113', 'DEWFORD_TOWN', 'PACIFIDLOG_TOWN', 'SOOTOPOLIS_CITY', 'TEST_ROUTE']
     (tmp / 'constants/region_map_sections.h').write_text('\n'.join(f'#define MAPSEC_{name} {i}' for i, name in enumerate(names)))
     (tmp / 'constants/items.h').write_text('#define ITEM_EXP_SHARE 1\n')
     flag_names = ['LEGENDS_EXP_SHARE', 'LEGENDS_SETTINGS_INITIALIZED', 'SYS_POKEDEX_GET', 'LEGENDS_DEXNAV_UNLOCKED', 'LEGENDS_DEXNAV_DETECTOR_MODE', 'STORING_ITEMS_IN_PYRAMID_BAG', 'SYS_CLOCK_SET', 'LEGENDS_FOLLOWERS_DISABLED']
