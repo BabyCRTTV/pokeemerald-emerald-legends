@@ -19,6 +19,11 @@
       "map": "MAP_LEGENDS_KANTO_ROUTE3",
       "offset": 10,
       "direction": "right"
+    },
+    {
+      "map": "MAP_LEGENDS_KANTO_ROUTE2",
+      "offset": 12,
+      "direction": "down"
     }
   ],
   "object_events": [

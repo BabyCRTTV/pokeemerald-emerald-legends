@@ -5,7 +5,7 @@ R=Path(__file__).resolve().parents[1]
 FILES=['legends_kanto_challenge.inc','legends_kanto_chapter2.inc','legends_kanto_chapter3.inc',
        'legends_story_common.inc','legends_seafoam.inc','legends_kanto_chapter4.inc',
        'legends_hoenn_intermission.inc','legends_kanto_chapter5.inc',
-       'legends_kanto_new_gyms.inc','legends_kanto_chapter6.inc']
+       'legends_kanto_new_gyms.inc','legends_kanto_chapter6.inc','legends_kanto_finale.inc']
 source='\n'.join((R/'data/scripts'/f).read_text() for f in FILES)
 source+='\n'+'\n'.join((R/'data/maps'/('LegendsKanto_SeafoamIslands_'+f)/'scripts.inc').read_text() for f in ['1F','B1F','B2F','B3F','B4F'])
 labels={};commands=[]
@@ -14,9 +14,11 @@ for line in source.splitlines():
  if re.fullmatch(r'\w+::?',line):
   name=line.rstrip(':');assert name not in labels,name;labels[name]=len(commands)
  elif line and not line.startswith(('@','.','#')):commands.append(line)
+if 'Common_EventScript_NopReturn' not in labels:
+ labels['Common_EventScript_NopReturn']=len(commands);commands.append('return')
 F='FLAG_LEGENDS_STORY_'
 class Events:
- def __init__(self):self.flags=set();self.vars={};self.messages=[];self.battles=[];self.warps=[];self.outcome='B_OUTCOME_CAUGHT';self.lose=False;self.removed=[]
+ def __init__(self):self.flags=set();self.vars={};self.messages=[];self.battles=[];self.warps=[];self.outcome='B_OUTCOME_CAUGHT';self.lose=False;self.removed=[];self.items={};self.pcitems={};self.bag_full=False;self.pc_full=False;self.respawn=None
  def val(self,x):return {'YES':1,'NO':0,'TRUE':1,'FALSE':0}.get(x,self.vars.get(x,int(x) if x.isdigit() else x))
  def run(self,label,answers=()):
   answers=list(answers);pc=labels[label];stack=[]
@@ -48,17 +50,23 @@ class Events:
    elif op=='msgbox':
     self.messages.append(a[0])
     if a[1]=='MSGBOX_YESNO':self.vars['VAR_RESULT']=answers.pop(0)
-   elif op=='setwildbattle':self.battles.append(tuple(a))
+   elif op=='checkitem':self.vars['VAR_RESULT']=int(self.items.get(a[0],0)>=int(a[1] if len(a)>1 else 1))
+   elif op in ['giveitem','addpcitem']:
+    full=self.bag_full if op=='giveitem' else self.pc_full;items=self.items if op=='giveitem' else self.pcitems
+    self.vars['VAR_RESULT']=int(not full)
+    if not full:items[a[0]]=items.get(a[0],0)+int(a[1])
+   elif op=='setrespawn':self.respawn=a[0]
+   elif op in ['setwildbattle','seteventmon']:self.battles.append(tuple(a))
    elif op=='trainerbattle_single':
     self.battles.append(a[0])
     if self.lose:return self
    elif op=='specialvar':assert a[1]=='GetBattleOutcome';self.vars[a[0]]=self.outcome
    elif op=='special':
     if a[0] in ['StartRegiBattle','BattleSetup_StartLegendaryBattle'] and self.lose:return self
-    assert a[0] in ['StartRegiBattle','BattleSetup_StartLegendaryBattle','ShakeScreen','DrawWholeMapView','ForcePlayerToStartSurfing','SeafoamIslandsB4F_CurrentDumpsPlayerOnLand'],a
+    assert a[0] in ['StartRegiBattle','BattleSetup_StartLegendaryBattle','ShakeScreen','DrawWholeMapView','ForcePlayerToStartSurfing','SeafoamIslandsB4F_CurrentDumpsPlayerOnLand','HealPlayerParty','SetMewAboveGrass','DestroyMewEmergingGrassSprite','LegendsRevealSurveyMew'],a
    elif op=='warp':self.warps.append(a)
    elif op=='removeobject':self.removed.append(a[0])
-   elif op not in ['lockall','releaseall','faceplayer','playmoncry','waitmoncry','closemessage','waitse','playse','delay','fadescreen','waitstate','setmetatile','playfanfare','waitfanfare','setrespawn','setmaplayoutindex','turnobject','applymovement','waitmovement']:
+   elif op not in ['lock','release','lockall','releaseall','faceplayer','playmoncry','waitmoncry','closemessage','waitse','playse','delay','fadescreen','waitstate','setmetatile','playfanfare','waitfanfare','setrespawn','setmaplayoutindex','turnobject','applymovement','waitmovement']:
     raise AssertionError(op)
   raise AssertionError('Script did not terminate: '+label)
 class Story(unittest.TestCase):
@@ -146,7 +154,7 @@ class Story(unittest.TestCase):
  def test_maps_native_art_warp_indices_and_npc_floors(self):
   maps={d['id']:d for p in (R/'data/maps').glob('*/map.json') if (d:=json.loads(p.read_text()))}
   layouts={l['id']:l for l in json.loads((R/'data/layouts/layouts.json').read_text())['layouts']}
-  for m in json.loads((R/'data/legends_kanto_chapters4-6.json').read_text())['maps']:
+  for m in json.loads((R/'data/legends_kanto_chapters4-6.json').read_text())['maps']+json.loads((R/'data/legends_kanto_finale.json').read_text())['maps']:
    d=maps[m['id']];native=maps[json.loads((R/'data/maps'/m['source']/'map.json').read_text())['id']];l=layouts[d['layout']];b=(R/l['blockdata_filepath']).read_bytes()
    self.assertEqual(len(b),2*l['width']*l['height'])
    for w in d['warp_events']:self.assertLess(int(w['dest_warp_id']),len(maps[w['dest_map']]['warp_events']))

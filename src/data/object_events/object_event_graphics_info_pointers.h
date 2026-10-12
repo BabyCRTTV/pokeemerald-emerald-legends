@@ -662,6 +662,8 @@ const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM
     [OBJ_EVENT_GFX_ZAPDOS]                   = &gObjectEventGraphicsInfo_Zapdos,
 
 #if !IS_FRLG
+    [OBJ_EVENT_GFX_PROF_OAK] = &gObjectEventGraphicsInfo_ProfOak,
+    [OBJ_EVENT_GFX_BLUE] = &gObjectEventGraphicsInfo_Blue,
     [OBJ_EVENT_GFX_BROCK] = &gObjectEventGraphicsInfo_Brock,
     [OBJ_EVENT_GFX_MISTY] = &gObjectEventGraphicsInfo_Misty,
     [OBJ_EVENT_GFX_BLAINE] = &gObjectEventGraphicsInfo_Blaine,

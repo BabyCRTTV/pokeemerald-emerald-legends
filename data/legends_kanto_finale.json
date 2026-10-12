@@ -1,0 +1,82 @@
+{
+  "maps": [
+    {
+      "source": "Route2_Frlg",
+      "name": "LegendsKanto_Route2",
+      "id": "MAP_LEGENDS_KANTO_ROUTE2",
+      "layout": "LAYOUT_LEGENDS_KANTO_ROUTE2"
+    },
+    {
+      "source": "Route2_ViridianForest_NorthEntrance_Frlg",
+      "name": "LegendsKanto_Route2_ViridianForest_NorthEntrance",
+      "id": "MAP_LEGENDS_KANTO_ROUTE2_VIRIDIAN_FOREST_NORTH_ENTRANCE",
+      "layout": "LAYOUT_LEGENDS_KANTO_ROUTE2_ENTRANCE"
+    },
+    {
+      "source": "Route2_ViridianForest_SouthEntrance_Frlg",
+      "name": "LegendsKanto_Route2_ViridianForest_SouthEntrance",
+      "id": "MAP_LEGENDS_KANTO_ROUTE2_VIRIDIAN_FOREST_SOUTH_ENTRANCE",
+      "layout": "LAYOUT_LEGENDS_KANTO_ROUTE2_ENTRANCE"
+    },
+    {
+      "source": "ViridianForest_Frlg",
+      "name": "LegendsKanto_ViridianForest",
+      "id": "MAP_LEGENDS_KANTO_VIRIDIAN_FOREST",
+      "layout": "LAYOUT_LEGENDS_KANTO_VIRIDIAN_FOREST"
+    },
+    {
+      "source": "ViridianCity_Frlg",
+      "name": "LegendsKanto_ViridianCity",
+      "id": "MAP_LEGENDS_KANTO_VIRIDIAN_CITY",
+      "layout": "LAYOUT_LEGENDS_KANTO_VIRIDIAN_CITY"
+    },
+    {
+      "source": "ViridianCity_Gym_Frlg",
+      "name": "LegendsKanto_ViridianCity_Gym",
+      "id": "MAP_LEGENDS_KANTO_VIRIDIAN_CITY_GYM",
+      "layout": "LAYOUT_LEGENDS_KANTO_VIRIDIAN_CITY_GYM"
+    },
+    {
+      "source": "ViridianCity_PokemonCenter_1F_Frlg",
+      "name": "LegendsKanto_ViridianCity_PokemonCenter_1F",
+      "id": "MAP_LEGENDS_KANTO_VIRIDIAN_CITY_POKEMON_CENTER_1F",
+      "layout": "LAYOUT_LEGENDS_KANTO_POKEMON_CENTER_1F_FRLG"
+    },
+    {
+      "source": "ViridianCity_Mart_Frlg",
+      "name": "LegendsKanto_ViridianCity_Mart",
+      "id": "MAP_LEGENDS_KANTO_VIRIDIAN_CITY_MART",
+      "layout": "LAYOUT_LEGENDS_KANTO_MART_FRLG"
+    },
+    {
+      "source": "Route1_Frlg",
+      "name": "LegendsKanto_Route1",
+      "id": "MAP_LEGENDS_KANTO_ROUTE1",
+      "layout": "LAYOUT_LEGENDS_KANTO_ROUTE1"
+    },
+    {
+      "source": "PalletTown_Frlg",
+      "name": "LegendsKanto_PalletTown",
+      "id": "MAP_LEGENDS_KANTO_PALLET_TOWN",
+      "layout": "LAYOUT_LEGENDS_KANTO_PALLET_TOWN"
+    },
+    {
+      "source": "PalletTown_ProfessorOaksLab_Frlg",
+      "name": "LegendsKanto_PalletTown_ProfessorOaksLab",
+      "id": "MAP_LEGENDS_KANTO_PALLET_TOWN_PROFESSOR_OAKS_LAB",
+      "layout": "LAYOUT_LEGENDS_KANTO_PALLET_TOWN_PROFESSOR_OAKS_LAB"
+    },
+    {
+      "source": "Route21_North_Frlg",
+      "name": "LegendsKanto_Route21_North",
+      "id": "MAP_LEGENDS_KANTO_ROUTE21_NORTH",
+      "layout": "LAYOUT_LEGENDS_KANTO_ROUTE21_NORTH"
+    },
+    {
+      "source": "Route21_South_Frlg",
+      "name": "LegendsKanto_Route21_South",
+      "id": "MAP_LEGENDS_KANTO_ROUTE21_SOUTH",
+      "layout": "LAYOUT_LEGENDS_KANTO_ROUTE21_SOUTH"
+    }
+  ]
+}

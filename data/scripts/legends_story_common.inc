@@ -10,7 +10,8 @@ LegendsStory_Journal::
 	goto_if_unset FLAG_LEGENDS_STORY_SEAFOAM_REPORT, LegendsStory_Chapter4_Journal
 	goto_if_unset FLAG_LEGENDS_STORY_WEATHER_REPORT, LegendsHoenn_Journal
 	goto_if_unset FLAG_LEGENDS_STORY_NORTH_REPORT, LegendsStory_Chapter5_Journal
-	goto LegendsStory_Chapter6_Journal
+	goto_if_unset FLAG_LEGENDS_STORY_EMBER_REPORT, LegendsStory_Chapter6_Journal
+	goto LegendsFinal_Journal
 LegendsStory_Text_Locked:
 	.string "Finish the previous WING SURVEY\n"
 	.string "report first. OAK's aide keeps your\p"

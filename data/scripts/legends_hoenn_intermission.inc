@@ -24,6 +24,7 @@ LegendsHoenn_FileReport::
 	msgbox LegendsHoenn_Text_Report, MSGBOX_DEFAULT
 	setflag FLAG_LEGENDS_STORY_WEATHER_REPORT
 LegendsHoenn_AfterReport::
+	goto_if_set FLAG_LEGENDS_FINAL_REPORT, LegendsFinal_HoennEpilogue
 	msgbox LegendsHoenn_Text_After, MSGBOX_DEFAULT
 	releaseall
 	end

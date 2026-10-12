@@ -428,6 +428,10 @@ generated: $(AUTO_GEN_TARGETS)
 %.1bpp:     %.png  ; $(GFX) $< $@
 %.4bpp:     %.png  ; $(GFX) $< $@
 %.8bpp:     %.png  ; $(GFX) $< $@
+# gbagfx reads sibling .pla files for emissive DNS colors. Track those
+# markers explicitly so changing only a light mask rebuilds both ROMs.
+$(foreach marker,$(wildcard data/tilesets/legends_lights/*.pla),$(eval $(ASSETS_DIR_NAME)/$(marker:.pla=.pal.gbapal): $(marker)))
+
 %.gbapal:   %.pal  ; $(GFX) $< $@
 %.gbapal:   %.png  ; $(GFX) $< $@
 %.lz:       %      ; $(GFX) $< $@

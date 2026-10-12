@@ -29,10 +29,12 @@ FarawayIsland_Interior_OnResume:
 FarawayIsland_Interior_EventScript_TryRemoveMew::
 	specialvar VAR_RESULT, GetBattleOutcome
 	goto_if_ne VAR_RESULT, B_OUTCOME_CAUGHT, Common_EventScript_NopReturn
+	setflag FLAG_CAUGHT_MEW
 	removeobject VAR_LAST_TALKED
 	return
 
 FarawayIsland_Interior_OnTransition:
+	call LegendsFinal_MewReentry
 	setvar VAR_FARAWAY_ISLAND_STEP_COUNTER, 0
 	setvar VAR_TEMP_1, 1
 	call_if_unset FLAG_CAUGHT_MEW, FarawayIsland_Interior_EventScript_TryShowMew
@@ -117,6 +119,12 @@ FarawayIsland_Interior_EventScript_Mew::
 	waitmovement 0
 	setvar VAR_0x8004, 0
 	special SetMewAboveGrass
+	goto_if_unset FLAG_LEGENDS_FINAL_VOYAGE_READY, FarawayIsland_Interior_EventScript_MewBattle
+	special DestroyMewEmergingGrassSprite
+	special LegendsRevealSurveyMew
+	call LegendsFinal_MewObserve
+	goto_if_eq VAR_RESULT, NO, FarawayIsland_Interior_EventScript_MewObserveOnly
+FarawayIsland_Interior_EventScript_MewBattle::
 	message FarawayIsland_Interior_Text_Mew
 	waitse
 	playmoncry SPECIES_MEW, CRY_MODE_ENCOUNTER
@@ -184,3 +192,11 @@ FarawayIsland_Interior_EventScript_HideMewWhenGrassCut::
 
 FarawayIsland_Interior_Text_TheFeelingOfBeingWatchedFaded:
 	.string "The feeling of being watched faded…$"
+
+FarawayIsland_Interior_EventScript_MewObserveOnly::
+	closemessage
+	special DestroyMewEmergingGrassSprite
+	setvar VAR_0x8004, 1
+	special SetMewAboveGrass
+	release
+	end

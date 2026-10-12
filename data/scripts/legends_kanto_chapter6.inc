@@ -98,13 +98,12 @@ LegendsStory_Text_EmberReport:
 	.string "remain ahead.$"
 
 LegendsStory_Text_Endpoint:
-	.string "These three expeditions are complete.\n"
-	.string "The next WING SURVEY chapter will\p"
-	.string "follow the elusive visitor.\p"
-	.string "VIRIDIAN's challenge and the final MEW\n"
-	.string "voyage are not open yet. You may\p"
-	.string "explore, revisit uncaught legends, or\n"
-	.string "return to HOENN.$"
+	.string "The three bird expeditions are\n"
+	.string "complete. BLUE now handles the final\p"
+	.string "visiting GYM record in VIRIDIAN.\p"
+	.string "Follow ROUTE 2 south from PEWTER\n"
+	.string "through VIRIDIAN FOREST. OAK awaits\p"
+	.string "all eight records in his PALLET lab.$"
 
 LegendsStory_Moltres::
 	lockall

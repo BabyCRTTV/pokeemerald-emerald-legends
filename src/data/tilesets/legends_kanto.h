@@ -1,7 +1,7 @@
 // Reuse upstream Kanto assets with native FRLG tile/palette counts and attribute packing.
 #if !IS_FRLG
 
-const u32 gTilesetTiles_LegendsKantoGeneral_Frlg[] = INCGFX_U32("data/tilesets/primary/general_frlg/tiles.png", ".4bpp.smol");
+const u32 gTilesetTiles_LegendsKantoGeneral_Frlg[] = INCGFX_U32("data/tilesets/legends_lights/general_frlg_tiles.png", ".4bpp.smol");
 
 const u16 ALIGNED(4) gTilesetPalettes_LegendsKantoGeneral_Frlg[][16] =
 {
@@ -23,7 +23,7 @@ const u16 ALIGNED(4) gTilesetPalettes_LegendsKantoGeneral_Frlg[][16] =
     INCGFX_U16("data/tilesets/primary/general_frlg/palettes/15.pal", ".gbapal"),
 };
 
-const u16 gMetatiles_LegendsKantoGeneral_Frlg[] = INCBIN_U16("data/tilesets/primary/general_frlg/metatiles.bin");
+const u16 gMetatiles_LegendsKantoGeneral_Frlg[] = INCBIN_U16("data/tilesets/legends_lights/general_frlg_metatiles.bin");
 
 const u16 gMetatileAttributes_LegendsKantoGeneral_Frlg[] = INCBIN_U16("data/tilesets/primary/general_frlg/metatile_attributes.bin");
 
@@ -49,7 +49,7 @@ const u16 gTilesetPalettes_LegendsKantoVermilionCity[][16] =
     INCGFX_U16("data/tilesets/secondary/vermilion_city_frlg/palettes/04.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/vermilion_city_frlg/palettes/05.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/vermilion_city_frlg/palettes/06.pal", ".gbapal"),
-    INCGFX_U16("data/tilesets/secondary/vermilion_city_frlg/palettes/07.pal", ".gbapal"),
+    INCGFX_U16("data/tilesets/legends_lights/general_frlg.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/vermilion_city_frlg/palettes/08.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/vermilion_city_frlg/palettes/09.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/vermilion_city_frlg/palettes/10.pal", ".gbapal"),
@@ -160,7 +160,7 @@ const u16 gTilesetPalettes_LegendsKantoFuchsiaCity[][16] =
     INCGFX_U16("data/tilesets/secondary/fuchsia_city_frlg/palettes/04.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/fuchsia_city_frlg/palettes/05.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/fuchsia_city_frlg/palettes/06.pal", ".gbapal"),
-    INCGFX_U16("data/tilesets/secondary/fuchsia_city_frlg/palettes/07.pal", ".gbapal"),
+    INCGFX_U16("data/tilesets/legends_lights/general_frlg.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/fuchsia_city_frlg/palettes/08.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/fuchsia_city_frlg/palettes/09.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/fuchsia_city_frlg/palettes/10.pal", ".gbapal"),
@@ -308,7 +308,7 @@ const u16 gTilesetPalettes_LegendsKantoLavenderTown[][16] =
     INCGFX_U16("data/tilesets/secondary/lavender_town_frlg/palettes/04.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/lavender_town_frlg/palettes/05.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/lavender_town_frlg/palettes/06.pal", ".gbapal"),
-    INCGFX_U16("data/tilesets/secondary/lavender_town_frlg/palettes/07.pal", ".gbapal"),
+    INCGFX_U16("data/tilesets/legends_lights/general_frlg.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/lavender_town_frlg/palettes/08.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/lavender_town_frlg/palettes/09.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/lavender_town_frlg/palettes/10.pal", ".gbapal"),
@@ -493,7 +493,7 @@ const u16 gTilesetPalettes_LegendsKantoSaffronCity[][16] =
     INCGFX_U16("data/tilesets/secondary/saffron_city_frlg/palettes/04.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/saffron_city_frlg/palettes/05.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/saffron_city_frlg/palettes/06.pal", ".gbapal"),
-    INCGFX_U16("data/tilesets/secondary/saffron_city_frlg/palettes/07.pal", ".gbapal"),
+    INCGFX_U16("data/tilesets/legends_lights/general_frlg.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/saffron_city_frlg/palettes/08.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/saffron_city_frlg/palettes/09.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/saffron_city_frlg/palettes/10.pal", ".gbapal"),
@@ -567,7 +567,7 @@ const u16 gTilesetPalettes_LegendsKantoCeladonCity[][16] =
     INCGFX_U16("data/tilesets/secondary/celadon_city_frlg/palettes/04.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/celadon_city_frlg/palettes/05.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/celadon_city_frlg/palettes/06.pal", ".gbapal"),
-    INCGFX_U16("data/tilesets/secondary/celadon_city_frlg/palettes/07.pal", ".gbapal"),
+    INCGFX_U16("data/tilesets/legends_lights/general_frlg.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/celadon_city_frlg/palettes/08.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/celadon_city_frlg/palettes/09.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/celadon_city_frlg/palettes/10.pal", ".gbapal"),

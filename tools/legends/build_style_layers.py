@@ -16,6 +16,20 @@ BACK_FACE_RECTS = (
     ((28,30,42,42),(34,30,49,43),(22,32,38,49),(29,29,44,42)),
 )
 
+# Directions of SOURCE-sheet poses, before native pic-table indirection.
+# Walking/running/bikes group the two step frames by facing direction.
+# They do not alternate down/up/left on every frame.
+WORLD_DIRECTIONS = {
+    'walking': (0,2,1,0,0,2,2,1,1) * 2,
+    'running': (0,2,1,0,0,2,2,1,1),
+    'mach_bike': (0,2,1,0,0,2,2,1,1),
+    'acro_bike': (0,2,1,0,0,2,2,1,1,0,0,0,0,2,2,2,2,1,1,1,1,0,0,1,1,1,1),
+    'surfing': (0,0,2,2,1,1),
+    'watering': (0,0,2,2,1,1),
+    'fishing': (1,1,1,1,2,2,2,2,0,0,0,0),
+    'field_move': (0,0,1,1,1),
+}
+
 def head(p,gender,kind,pose,state=''):
     groups=skin_components(p);h,w=len(p),len(p[0])
     if kind!='overworld':
@@ -31,7 +45,7 @@ def head(p,gender,kind,pose,state=''):
             return face,(19 if gender==0 else 13,7,38 if gender==0 else 39,27 if gender else 23), (28 if gender==0 else 27,8,20 if gender==0 else 18,11),0
         return face,(max(0,left-25),max(0,top-22),min(w-1,right+15),min(h-1,bottom)), ((left+right)//2-10,top-14,26,16),2
     # Native tables: front, back, left, plus the matching motion poses.
-    direction=(0 if pose%3==0 else 2 if pose%3==1 else 1) if w==16 else None
+    direction=WORLD_DIRECTIONS[state][pose] if state in WORLD_DIRECTIONS else None
     face=max(groups,key=len) if groups else set()
     if not face:return set(),(0,0,0,0),(0,0,0,0),0
     top=min(y for x,y in face);bottom=max(y for x,y in face)
@@ -55,9 +69,8 @@ def head(p,gender,kind,pose,state=''):
         face=set().union(*(s for s in groups if all(fl-4<=x<=fr+4 and ft-3<=y<=fb+1 for x,y in s)))
         top=min(y for x,y in face);bottom=max(y for x,y in face)
         cx=round(sum(x for x,y in face)/len(face));cy=top-6
-        direction=2 if top>=21 and max(x for x,y in face)-min(x for x,y in face)<=4 else 1 if max(x for x,y in face)-min(x for x,y in face)<6 else 0
-        if state in ('mach_bike','acro_bike','surfing','watering'):
-            direction=0 if pose%3==0 else 2 if pose%3==1 else 1
+        if direction is None:
+            direction=2 if top>=21 and max(x for x,y in face)-min(x for x,y in face)<=4 else 1 if max(x for x,y in face)-min(x for x,y in face)<6 else 0
         if direction==2:cy=upper
     if direction==1:cx+=2
     hw=12

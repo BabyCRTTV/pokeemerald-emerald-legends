@@ -1257,7 +1257,20 @@
     "LegendsKanto_MtEmber_SummitPath_1F",
     "LegendsKanto_MtEmber_SummitPath_2F",
     "LegendsKanto_MtEmber_SummitPath_3F",
-    "LegendsKanto_MtEmber_Summit"
+    "LegendsKanto_MtEmber_Summit",
+    "LegendsKanto_Route2",
+    "LegendsKanto_Route2_ViridianForest_NorthEntrance",
+    "LegendsKanto_Route2_ViridianForest_SouthEntrance",
+    "LegendsKanto_ViridianForest",
+    "LegendsKanto_ViridianCity",
+    "LegendsKanto_ViridianCity_Gym",
+    "LegendsKanto_ViridianCity_PokemonCenter_1F",
+    "LegendsKanto_ViridianCity_Mart",
+    "LegendsKanto_Route1",
+    "LegendsKanto_PalletTown",
+    "LegendsKanto_PalletTown_ProfessorOaksLab",
+    "LegendsKanto_Route21_North",
+    "LegendsKanto_Route21_South"
   ],
   "gMapGroup_LegendsHoenn": [
     "LegendsHoenn_ContinentalVault"

@@ -4,6 +4,17 @@ All notable Pokémon Emerald: Legends project changes are documented here.
 
 For build-specific player views, see [CHANGELOG-RELEASE.md](CHANGELOG-RELEASE.md) and [CHANGELOG-DEBUG.md](CHANGELOG-DEBUG.md). The canonical history below records the project as a whole.
 
+## [0.0.42] - 2026-10-12
+
+- Continue the Wing Survey with **The Last Record**, **A Familiar Shadow**, and **Beyond the Horizon**. Open the native western Kanto circuit through Route 2/Viridian Forest, Viridian City, Route 1, Pallet/Oak's lab, and the Route 21 Surf connection from Cinnabar.
+- BLUE serves as Viridian's visiting acting Leader. Standard uses four Pokemon at Lv. 64-68; Champion uses six at Lv. 84-88. Either grants the same permanent eighth record. Native trainer-save capacity and all existing map/layout IDs remain unchanged.
+- OAK compares the birds' habitats and the Hoenn investigation with an old voyage record. After the full survey and eight Gyms, grant one OLD SEA MAP and unlock the original Lilycove/Faraway Island ferry. Reuse the existing map/item/ship flags; existing maps are recognized and a full Bag delays issuance safely.
+- Preserve Emerald's single overworld MEW and native deep-grass puzzle/Lv. 30 encounter. Observation completes the story without capture; on the survey, fainting/fleeing allows forest-reentry retry. Existing MEW captures receive an alternate weathered-sign/sailor scene without another spawn. Native capture state is retained permanently.
+- Add OAK's final report, a one-time MASTER BALL (Bag, then PC fallback, with retry if both are full), a healing assistant, Adventure Log milestones and BIRCH's closing letter at the Weather Institute. All original Hoenn postgame and return travel remain available.
+- Enable native day/night lighting for standard Hoenn and Kanto house windows and illuminated Center/Mart signs. Dedicated tile/palette copies keep daytime RGB and unlit roofs, walls, ground and water unchanged; lights fade smoothly with dusk/dawn.
+- Fix custom hairstyle walking/running direction jumps. Match every step, bike and field-action hair mask to its actual native source-sheet direction; keep native faces and selected colors/accessories intact.
+- Shared by Release/Debug. Verify event gates, all eight records, mode/decline/loss/retry, map connections/closures, old-map/full-inventory cases, MEW observation/capture/reentry/legacy profiles and reward idempotency. Native build and BPS verification use the established workflow. Targeted emulator evidence and limits: `docs/qa/finale-v0.0.42.md`. Wiki updates remain manual.
+
 ## [0.0.41] - 2026-10-12
 
 - Add Wing Survey chapters four through six: **Stillwater Wings** (Seafoam/Articuno), **Stone and Tide** (Cerulean/Pewter readings and visiting Misty/Brock challenges), and **Ember's Passage** (Blaine's Cinnabar record and a returnable Mt. Ember/Moltres expedition). Native FireRed habitat layouts and wild levels are retained; bird observation advances without capture. Articuno and Moltres are optional Lv. 50 encounters with reentry retries when uncaught.
