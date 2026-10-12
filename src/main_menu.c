@@ -420,7 +420,7 @@ static const struct WindowTemplate sNewGameBirchSpeechTextWindows[] =
         .bg = 0,
         .tilemapLeft = 3,
         .tilemapTop = 2,
-        .width = 9,
+        .width = 11,
         .height = 10,
         .paletteNum = 15,
         .baseBlock = 0x85
@@ -468,6 +468,8 @@ static const struct MenuAction sHairChoices[] =
 EWRAM_DATA static u8 sAppearancePreviewHandle = 0;
 EWRAM_DATA static u8 sAppearanceStage = 0; // skin, hairstyle, outfit
 EWRAM_DATA static u8 sAppearanceLastChoice = 0;
+EWRAM_DATA static u8 sAppearanceHairTop = 0;
+#define INTRO_HAIR_VISIBLE 5
 // Kept alive until VBlank consumes the requested sprite copies.
 EWRAM_DATA static u8 sIntroAppearanceGfx[2][TRAINER_PIC_SIZE] = {0};
 
@@ -1690,6 +1692,25 @@ static void NewGameBirchSpeech_HideAppearancePreview(u8 taskId)
     gSprites[gTasks[taskId].tPlayerSpriteId].y = 60;
 }
 
+static void NewGameBirchSpeech_DrawHairList(void)
+{
+    u8 hair = LegendsGetHair();
+    if (hair < sAppearanceHairTop)
+        sAppearanceHairTop = hair;
+    if (hair >= sAppearanceHairTop + INTRO_HAIR_VISIBLE)
+        sAppearanceHairTop = hair - INTRO_HAIR_VISIBLE + 1;
+    FillWindowPixelBuffer(2, PIXEL_FILL(1));
+    PrintMenuTable(2, INTRO_HAIR_VISIBLE, &sHairChoices[sAppearanceHairTop]);
+    InitMenuInUpperLeftCornerNormal(2, INTRO_HAIR_VISIBLE, hair - sAppearanceHairTop);
+    // Labels and arrows occupy separate columns in the 88px choice window.
+    if (sAppearanceHairTop)
+        AddTextPrinterParameterized(2, FONT_SMALL, COMPOUND_STRING("{UP_ARROW}"), 80, 0, TEXT_SKIP_DRAW, NULL);
+    if (sAppearanceHairTop + INTRO_HAIR_VISIBLE < LEGENDS_HAIR_COUNT)
+        AddTextPrinterParameterized(2, FONT_SMALL, COMPOUND_STRING("{DOWN_ARROW}"), 80, 64, TEXT_SKIP_DRAW, NULL);
+    PutWindowTilemap(2);
+    CopyWindowToVram(2, COPYWIN_FULL);
+}
+
 static void Task_NewGameBirchSpeech_ShowAppearance(u8 taskId)
 {
     u32 windowId;
@@ -1702,13 +1723,21 @@ static void Task_NewGameBirchSpeech_ShowAppearance(u8 taskId)
     StringCopy(gStringVar4, sAppearanceStage == 2
         ? COMPOUND_STRING("Which outfit suits you?\nChoose a style for your journey.")
         : sAppearanceStage == 1
-        ? COMPOUND_STRING("Choose your hairstyle.\nLEFT/RIGHT: CHANGE  A: SELECT")
+        ? COMPOUND_STRING("Choose your hairstyle.\nUP/DOWN: SCROLL  A: SELECT")
         : COMPOUND_STRING("Let's find your look.\nChoose your skin tone."));
     AddTextPrinterForMessage(TRUE);
     DrawMainMenuWindowBorder(&sNewGameBirchSpeechTextWindows[2], 0xF3);
     FillWindowPixelBuffer(2, PIXEL_FILL(1));
-    PrintMenuTable(2, count, choices);
-    InitMenuInUpperLeftCornerNormal(2, count, cursor);
+    if (sAppearanceStage == 1)
+    {
+        sAppearanceHairTop = 0;
+        NewGameBirchSpeech_DrawHairList();
+    }
+    else
+    {
+        PrintMenuTable(2, count, choices);
+        InitMenuInUpperLeftCornerNormal(2, count, cursor);
+    }
     PutWindowTilemap(2);
     CopyWindowToVram(2, COPYWIN_FULL);
 
@@ -1737,22 +1766,28 @@ static void Task_NewGameBirchSpeech_ChooseAppearance(u8 taskId)
     u8 cursor;
     if (RunTextPrintersAndIsPrinter0Active())
         return;
-    // A single animated selection row avoids clipping the native 5-item
-    // Birch list when showing eleven hairstyle choices.
-    if (sAppearanceStage == 1 && JOY_NEW(DPAD_LEFT | DPAD_RIGHT))
+    if (sAppearanceStage == 1)
     {
-        u8 hair = (LegendsGetHair() + (JOY_NEW(DPAD_LEFT) ? LEGENDS_HAIR_COUNT - 1 : 1)) % LEGENDS_HAIR_COUNT;
-        LegendsSetHairSelection(hair);
-        FillWindowPixelBuffer(2, PIXEL_FILL(1));
-        PrintMenuTable(2, 1, &sHairChoices[hair]);
-        InitMenuInUpperLeftCornerNormal(2, 1, 0);
-        PutWindowTilemap(2);
-        CopyWindowToVram(2, COPYWIN_FULL);
-        NewGameBirchSpeech_RefreshAppearance(taskId);
-        return;
+        u8 hair = LegendsGetHair();
+        if (JOY_REPEAT(DPAD_UP) && hair > 0)
+            hair--;
+        else if (JOY_REPEAT(DPAD_DOWN) && hair + 1 < LEGENDS_HAIR_COUNT)
+            hair++;
+        if (hair != LegendsGetHair())
+        {
+            PlaySE(SE_SELECT);
+            LegendsSetHairSelection(hair);
+            NewGameBirchSpeech_DrawHairList();
+            NewGameBirchSpeech_RefreshAppearance(taskId);
+        }
+        input = JOY_NEW(A_BUTTON) ? hair : JOY_NEW(B_BUTTON) ? MENU_B_PRESSED : MENU_NOTHING_CHOSEN;
+        cursor = hair;
     }
-    input = Menu_ProcessInputNoWrap();
-    cursor = Menu_GetCursorPos();
+    else
+    {
+        input = Menu_ProcessInputNoWrap();
+        cursor = Menu_GetCursorPos();
+    }
     if (sAppearanceStage != 1 && cursor != sAppearanceLastChoice)
     {
         LegendsSetAppearanceSelection(

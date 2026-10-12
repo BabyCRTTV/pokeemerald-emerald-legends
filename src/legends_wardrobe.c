@@ -65,21 +65,39 @@ static void Draw(u8 taskId)
     u8 i, row=gTasks[taskId].data[0], top=gTasks[taskId].data[1];
     u16 swatch = LegendsCardSwatch();
     FillWindowPixelBuffer(1,PIXEL_FILL(1));
-    for (i=0;i<6;i++)
+    FillWindowPixelBuffer(0,PIXEL_FILL(1));
+    if (gTasks[taskId].data[2])
     {
-        u8 item = top + i;
-        Print(1,sRows[item],12,i*14);
-        if (item==0) Print(1,sOutfits[LegendsGetOutfit()],58,i*14);
-        if (item==1) Print(1,sCostumes[LegendsGetCostume()],58,i*14);
-        if (item==2) Print(1,LegendsGetCostume()?COMPOUND_STRING("FIXED"):sHair[LegendsGetHair()],58,i*14);
-        if (item==3) Print(1,LegendsGetCostume()?COMPOUND_STRING("FIXED"):sScarves[LegendsGetScarf()],58,i*14);
-        if (item==4) Print(1,LegendsGetCostume()?COMPOUND_STRING("FIXED"):sCoats[LegendsGetJacketStyle()],58,i*14);
-        if (item==5) Print(1,LegendsGetCostume()?COMPOUND_STRING("FIXED"):sShoes[LegendsGetShoes()],58,i*14);
+        u8 hair=LegendsGetHair();
+        top=gTasks[taskId].data[3];
+        Print(0,COMPOUND_STRING("HAIRSTYLE                    A: SELECT"),0,0);
+        Print(0,COMPOUND_STRING("UP/DOWN: SCROLL  B: BACK"),0,12);
+        for (i=0;i<6;i++) Print(1,sHair[top+i],12,i*14);
+        Print(1,COMPOUND_STRING(">"),0,(hair-top)*14);
+        if (top) Print(1,COMPOUND_STRING("{UP_ARROW}"),112,0);
+        if (top+6<LEGENDS_HAIR_COUNT) Print(1,COMPOUND_STRING("{DOWN_ARROW}"),112,70);
     }
-    // The card's full label gets its own row; its color is shown below.
-    Print(1,COMPOUND_STRING(">"),0,(row-top)*14);
-    if (top) Print(1,COMPOUND_STRING("{UP_ARROW}"),112,0);
-    if (top+6<ARRAY_COUNT(sRows)) Print(1,COMPOUND_STRING("{DOWN_ARROW}"),112,70);
+    else
+    {
+        Print(0,COMPOUND_STRING("WARDROBE                     B: CANCEL"),0,0);
+        Print(0,row==2 ? COMPOUND_STRING("A: OPEN HAIRSTYLES") : COMPOUND_STRING("UP/DOWN: SELECT  LEFT/RIGHT: CHANGE"),0,12);
+        for (i=0;i<6;i++)
+        {
+            u8 item = top + i;
+            Print(1,sRows[item],12,i*14);
+            if (item==0) Print(1,sOutfits[LegendsGetOutfit()],58,i*14);
+            if (item==1) Print(1,sCostumes[LegendsGetCostume()],58,i*14);
+            if (item==2) Print(1,LegendsGetCostume()?COMPOUND_STRING("FIXED"):sHair[LegendsGetHair()],58,i*14);
+            if (item==3) Print(1,LegendsGetCostume()?COMPOUND_STRING("FIXED"):sScarves[LegendsGetScarf()],58,i*14);
+            if (item==4) Print(1,LegendsGetCostume()?COMPOUND_STRING("FIXED"):sCoats[LegendsGetJacketStyle()],58,i*14);
+            if (item==5) Print(1,LegendsGetCostume()?COMPOUND_STRING("FIXED"):sShoes[LegendsGetShoes()],58,i*14);
+        }
+        // The card's full label gets its own row; its color is shown below.
+        Print(1,COMPOUND_STRING(">"),0,(row-top)*14);
+        if (top) Print(1,COMPOUND_STRING("{UP_ARROW}"),112,0);
+        if (top+6<ARRAY_COUNT(sRows)) Print(1,COMPOUND_STRING("{DOWN_ARROW}"),112,70);
+    }
+    CopyWindowToVram(0,COPYWIN_FULL);
     CopyWindowToVram(1,COPYWIN_FULL);
     // Native Trainer Card drawing owns and frees its temporary graphics buffer.
     FillWindowPixelBuffer(2,PIXEL_FILL(0));
@@ -108,6 +126,35 @@ static void Task_Input(u8 taskId)
 {
     u8 row=gTasks[taskId].data[0];
     if (gPaletteFade.active) return;
+    if (gTasks[taskId].data[2])
+    {
+        u8 hair=LegendsGetHair();
+        if (JOY_NEW(A_BUTTON|B_BUTTON))
+        {
+            if (JOY_NEW(B_BUTTON)) LegendsSetHairSelection(gTasks[taskId].data[4]);
+            gTasks[taskId].data[2]=0;
+        }
+        else
+        {
+            if (JOY_REPEAT(DPAD_UP) && hair>0) hair--;
+            else if (JOY_REPEAT(DPAD_DOWN) && hair+1<LEGENDS_HAIR_COUNT) hair++;
+            else return;
+            LegendsSetHairSelection(hair);
+            if (hair<gTasks[taskId].data[3]) gTasks[taskId].data[3]=hair;
+            if (hair>=gTasks[taskId].data[3]+6) gTasks[taskId].data[3]=hair-5;
+        }
+        Draw(taskId);
+        return;
+    }
+    if (row==2 && JOY_NEW(A_BUTTON) && !LegendsGetCostume())
+    {
+        u8 hair=LegendsGetHair();
+        gTasks[taskId].data[2]=1;
+        gTasks[taskId].data[3]=hair>5?hair-5:0;
+        gTasks[taskId].data[4]=hair;
+        Draw(taskId);
+        return;
+    }
     if (JOY_NEW(B_BUTTON) || (JOY_NEW(A_BUTTON) && row>=7))
     {
         if (JOY_NEW(A_BUTTON) && row==7) LegendsApplyWardrobeSelection();
@@ -118,7 +165,7 @@ static void Task_Input(u8 taskId)
     }
     if (JOY_NEW(DPAD_UP)) gTasks[taskId].data[0]=(row+8)%9;
     else if (JOY_NEW(DPAD_DOWN)) gTasks[taskId].data[0]=(row+1)%9;
-    else if (row<7 && (JOY_NEW(DPAD_LEFT|DPAD_RIGHT|A_BUTTON)))
+    else if (row<7 && row!=2 && (JOY_NEW(DPAD_LEFT|DPAD_RIGHT|A_BUTTON)))
     {
         u8 count = row==0?LEGENDS_OUTFIT_COUNT:row==1?LEGENDS_COSTUME_COUNT:row==2?LEGENDS_HAIR_COUNT:row==3?LEGENDS_SCARF_COUNT:row==4?LEGENDS_JACKET_COUNT:row==5?LEGENDS_SHOE_COUNT:LEGENDS_CARD_COLOR_COUNT;
         u8 value = row==0?LegendsGetOutfit():row==1?LegendsGetCostume():row==2?LegendsGetHair():row==3?LegendsGetScarf():row==4?LegendsGetJacketStyle():row==5?LegendsGetShoes():LegendsGetCardColor();

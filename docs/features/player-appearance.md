@@ -3,7 +3,7 @@
 Introduced in v0.0.15, shared by Release and Debug.
 
 After choosing Boy or Girl in Birch's introduction, choose **Fair, Light, Medium,
-Brown or Deep**, then **Emerald, Trail, Sport, Yellow or Lavender**. Both genders have five designs:
+Brown or Deep**, then a hairstyle from the Up/Down scrolling list, then **Emerald, Trail, Sport, Yellow or Lavender**. Both genders have five designs:
 the original Emerald clothing, a trail jacket with trousers, and a striped sport
 top with shorts, a yellow top, and a lavender top with plum shading and a cream scarf. Custom designs use bare hands; Emerald retains its original gloves. A bordered 64px trainer preview sits at the bottom right above
 the dialogue and updates when the cursor moves. A confirms; B returns to the

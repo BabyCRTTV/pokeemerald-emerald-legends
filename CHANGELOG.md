@@ -4,6 +4,14 @@ All notable Pokémon Emerald: Legends project changes are documented here.
 
 For build-specific player views, see [CHANGELOG-RELEASE.md](CHANGELOG-RELEASE.md) and [CHANGELOG-DEBUG.md](CHANGELOG-DEBUG.md). The canonical history below records the project as a whole.
 
+## [0.0.39] - 2026-10-11
+
+- Replace the intro's single Left/Right hairstyle row with a five-row Up/Down scrolling list, scroll indicators and live preview. Widen the existing choice window within its allocated tiles so long names and arrows do not overlap. A selects; B returns to skin tone; revisiting restores the chosen hairstyle.
+- Open a six-row vertical hairstyle list with A on the wardrobe HAIR row. A keeps the previewed selection for APPLY; B restores the hairstyle from before opening that list. Sideways input no longer changes hair. Team costumes remain fixed.
+- Redraw all ten custom hairstyles from the supplied Brendan/May reference direction: connected shaded locks, rounded crowns, readable cropped/parted/swept fringes, spikes, fuller bobs/curls and tied silhouettes. Author separate male/female portrait and overworld grids, retain Original and all saved hairstyle IDs, and anchor back portraits to each native throw pose.
+- Give custom male hair a warm highlight in slot 7, moving the original blue clothing shade to stable slot 5 before footwear overlays. Preserve native eye/face indices and colors, female hair shades, native underwater palettes and fixed costumes. Scarf, coat and footwear changes cannot tint the hair. Extend Navy/Winter sleeves and refine hems; no save-layout changes.
+- Shared by Release and Debug; no variant-specific differences. Actual-C regressions cover intro/wardrobe scrolling, preview/apply/cancel, all 212 native sprite poses, exact eye-border pixels, 900 hair/scarf/coat/skin palette combinations and footwear caches. mGBA 0.10.2 reviews both genders, all eleven intro choices, A/B re-entry, wardrobe scrolling and Winter/brown-boot previews; rendered head RGB stays byte-identical across tested scarf colors. Evidence and playtest limits: `docs/qa/appearance-v0.0.39.md`. Both builds and byte-for-byte BPS verification use the established release workflow.
+
 ## [0.0.38.1] - 2026-10-11
 
 - Give each of the ten hairstyles separate male and female pixel contours, with distinct fringes, crown shapes, bob/curl lengths and higher/longer female tied styles. Retain the original Emerald hat and all saved hairstyle IDs.

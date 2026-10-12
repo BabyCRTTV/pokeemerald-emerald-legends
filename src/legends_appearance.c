@@ -184,6 +184,14 @@ void LegendsUpdateAppearancePalettes(void)
                 gLegendsTrainerPalettes[gender][10 + i] = sOutfitPalettes[outfit - 1][i];
                 gLegendsUnderwaterPalettes[gender][10 + i] = sOutfitPalettes[outfit - 1][i];
             }
+        if (LegendsGetHair() && !LegendsGetCostume() && gender == MALE)
+        {
+            // Custom hair has a warm highlight. The compositor first moves
+            // Brendan's native clothing shade 7 to stable blue slot 5.
+            // His eyes use native 5/9/14/15 and keep their exact colors.
+            gLegendsOverworldPalettes[gender][7] = 22 | (13 << 5) | (8 << 10);
+            gLegendsTrainerPalettes[gender][7] = 22 | (15 << 5) | (10 << 10);
+        }
         if (LegendsGetAccessoryStyle() && !LegendsGetCostume())
         {
             // Templates reserve scarf slot 14 by moving native white to 9.

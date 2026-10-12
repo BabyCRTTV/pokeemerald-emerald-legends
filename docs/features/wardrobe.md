@@ -84,3 +84,11 @@ Native mGBA 0.10.2 review uses controlled wardrobe callback entry. Both genders,
 ### Gender-specific hairstyles (v0.0.38.1)
 
 All ten custom choices use separate male and female contours. Female cuts have their own layered fringes, rounded bob/curl silhouettes and higher, longer tied hair; male cuts retain independent cropped and angular contours. Names and saved IDs are shared, while their actual artwork differs. The existing v0.0.38 QA filenames now show this follow-up artwork.
+
+### Vertical hairstyle lists and native-grid art (v0.0.39)
+
+The intro now displays five choices at once. Use Up/Down to scroll, A to select and B to return to skin tone. In the wardrobe, highlight HAIR and press A to open a six-row list. A stages that choice for APPLY; B restores the hairstyle selected before opening the list. The original hats and ten hairstyle IDs remain unchanged.
+
+`tools/legends/hair_pixels.py` contains separate male/female portrait and overworld pixel clusters. Front and overworld patterns are placed without scaling; back portraits use their own corrected head proportions. Coats now cover exposed arms through the protected hand boundaries. Custom male hair reserves native slot 7 for a warm highlight. The compositor moves the old male blue clothing shade to stable slot 5 before footwear overlays, while the native eye slots, female colors and underwater palette remain intact. The supplied Brendan/May sprite-generation sheets guide the clustered highlights, fringes and rounded silhouettes. Authoring sheets: `docs/qa/wardrobe-v0.0.39.png` and `docs/qa/wardrobe-actions-v0.0.39.png`. These are source-art renders, not emulator captures.
+
+Native mGBA review for this version is recorded in `docs/qa/appearance-v0.0.39.md`, with both gender previews and scrolling menus.

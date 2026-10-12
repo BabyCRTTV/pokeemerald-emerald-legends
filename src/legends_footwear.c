@@ -85,6 +85,11 @@ static void Compose(u8 *dest, const u8 *src, const u8 *mask, u32 size, u8 gender
         {
             u8 pixel = (src[i] >> shift) & 15;
             u8 overlay = mask == NULL ? 0 : (mask[i] >> shift) & 15;
+            // Slot 7 is a warm custom-hair highlight for Brendan. Move the
+            // old shirt/trouser shade before shoes and hair are painted so
+            // footwear masks cannot be overwritten by the palette reservation.
+            if (gender == MALE && LegendsGetHair() && pixel == 7)
+                pixel = 5;
             if (footwear && (pixel == 6 || pixel == 11))
                 pixel = sRemap[gender][kind][pixel == 6 ? 0 : 1];
             if (overlay)
@@ -158,9 +163,9 @@ const u32 *LegendsFootwearFrontPic(enum TrainerPicID pic, const u32 *data)
         && sFrontCoat[gender] == coat)
         return sFrontPic[gender];
     DecompressDataWithHeaderWram(data, sFrontPixels);
-    if (shoes)
+    if (shoes || (gender == MALE && hair))
         Compose(sFrontPixels, sFrontPixels, sFootwearFrontMasks[gender][boots],
-                2048, gender, 1, TRUE);
+                2048, gender, 1, shoes != 0);
     LegendsPaintStylePose(sFrontPixels, 64, gender, 1, 0, 0, hair, coat);
     // Native literal LZ stream: existing portrait / Trainer Card consumers.
     sFrontPic[gender][0] = 0x00080010;
@@ -190,8 +195,8 @@ void LegendsFootwearBackPic(enum TrainerPicID pic, u8 *data, u32 size)
     LegendsUpdateAppearancePalettes();
     for (i = 0; i + 2048 <= size; i += 2048)
     {
-        if (shoes) // Native back pictures omit the feet, but share shadow slots.
-            Compose(data + i, data + i, NULL, 2048, gender, 1, TRUE);
+        if (shoes || (gender == MALE && hair)) // Back pictures share shadow slots.
+            Compose(data + i, data + i, NULL, 2048, gender, 1, shoes != 0);
         LegendsPaintStylePose(data + i, 64, gender, 2, 0, i / 2048, hair, coat);
     }
 }
