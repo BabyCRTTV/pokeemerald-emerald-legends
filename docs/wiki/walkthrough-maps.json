@@ -1,5 +1,5 @@
 {
-  "sourceCommit": "041bd89abd1fde1b5c9f13c8900647651384e0a6",
+  "sourceCommit": "d19f13ca089dcf6ea165ce1595b04a65a637238a",
   "image": "map-hoenn.png",
   "places": {
     "littleroot": {
@@ -1343,6 +1343,50 @@
         [
           96,
           112
+        ]
+      ]
+    },
+    "MAP_LEGENDS_KANTO_ROUTE10": {
+      "name": "Route 10",
+      "mapId": "MAP_LEGENDS_KANTO_ROUTE10",
+      "cells": [
+        [
+          144,
+          32
+        ],
+        [
+          144,
+          40
+        ]
+      ]
+    },
+    "MAP_LEGENDS_KANTO_ROCK_TUNNEL_1F": {
+      "name": "Rock Tunnel 1F",
+      "mapId": "MAP_LEGENDS_KANTO_ROCK_TUNNEL_1F",
+      "cells": [
+        [
+          144,
+          40
+        ]
+      ]
+    },
+    "MAP_LEGENDS_KANTO_ROCK_TUNNEL_B1F": {
+      "name": "Rock Tunnel B1F",
+      "mapId": "MAP_LEGENDS_KANTO_ROCK_TUNNEL_B1F",
+      "cells": [
+        [
+          144,
+          40
+        ]
+      ]
+    },
+    "MAP_LEGENDS_KANTO_POWER_PLANT": {
+      "name": "Power Plant",
+      "mapId": "MAP_LEGENDS_KANTO_POWER_PLANT",
+      "cells": [
+        [
+          144,
+          32
         ]
       ]
     }
@@ -3017,6 +3061,140 @@
         "region": "Kanto",
         "note": ""
       }
+    ],
+    "walkthrough-kanto-current": [
+      {
+        "section": "chapter-overview",
+        "places": [
+          "MAP_LEGENDS_KANTO_ROUTE10",
+          "MAP_LEGENDS_KANTO_ROCK_TUNNEL_1F",
+          "MAP_LEGENDS_KANTO_ROCK_TUNNEL_B1F",
+          "MAP_LEGENDS_KANTO_POWER_PLANT"
+        ],
+        "encounters": [],
+        "availableMethods": [
+          "land",
+          "rock",
+          "surf",
+          "old_rod",
+          "good_rod",
+          "super_rod"
+        ],
+        "region": "Kanto",
+        "note": ""
+      },
+      {
+        "section": "section-start-the-northern-survey",
+        "places": [
+          "MAP_LEGENDS_KANTO_VERMILION_CITY"
+        ],
+        "encounters": [],
+        "availableMethods": [
+          "land",
+          "rock",
+          "surf",
+          "old_rod",
+          "good_rod",
+          "super_rod"
+        ],
+        "region": "Kanto",
+        "note": ""
+      },
+      {
+        "section": "section-lavender-to-rock-tunnel",
+        "places": [
+          "MAP_LEGENDS_KANTO_LAVENDER_TOWN",
+          "MAP_LEGENDS_KANTO_ROUTE10",
+          "MAP_LEGENDS_KANTO_ROCK_TUNNEL_1F",
+          "MAP_LEGENDS_KANTO_ROCK_TUNNEL_B1F"
+        ],
+        "encounters": [
+          "MAP_LEGENDS_KANTO_ROCK_TUNNEL_1F",
+          "MAP_LEGENDS_KANTO_ROCK_TUNNEL_B1F"
+        ],
+        "availableMethods": [
+          "land",
+          "rock",
+          "surf",
+          "old_rod",
+          "good_rod",
+          "super_rod"
+        ],
+        "region": "Kanto",
+        "note": ""
+      },
+      {
+        "section": "section-route-10-and-the-river",
+        "places": [
+          "MAP_LEGENDS_KANTO_ROUTE10"
+        ],
+        "encounters": [
+          "MAP_LEGENDS_KANTO_ROUTE10"
+        ],
+        "availableMethods": [
+          "land",
+          "rock",
+          "surf",
+          "old_rod",
+          "good_rod",
+          "super_rod"
+        ],
+        "region": "Kanto",
+        "note": ""
+      },
+      {
+        "section": "section-make-both-unused-feeds-safe",
+        "places": [
+          "MAP_LEGENDS_KANTO_POWER_PLANT"
+        ],
+        "encounters": [
+          "MAP_LEGENDS_KANTO_POWER_PLANT"
+        ],
+        "availableMethods": [
+          "land",
+          "rock",
+          "surf",
+          "old_rod",
+          "good_rod",
+          "super_rod"
+        ],
+        "region": "Kanto",
+        "note": ""
+      },
+      {
+        "section": "section-observe-zapdos-at-the-roost",
+        "places": [
+          "MAP_LEGENDS_KANTO_POWER_PLANT"
+        ],
+        "encounters": [],
+        "availableMethods": [
+          "land",
+          "rock",
+          "surf",
+          "old_rod",
+          "good_rod",
+          "super_rod"
+        ],
+        "region": "Kanto",
+        "note": "Zapdos is a scripted level 50 encounter. Its observation, not a capture, completes this task."
+      },
+      {
+        "section": "section-return-and-file-the-quiet-current",
+        "places": [
+          "MAP_LEGENDS_KANTO_VERMILION_CITY"
+        ],
+        "encounters": [],
+        "availableMethods": [
+          "land",
+          "rock",
+          "surf",
+          "old_rod",
+          "good_rod",
+          "super_rod"
+        ],
+        "region": "Kanto",
+        "note": ""
+      }
     ]
   },
   "regions": {
@@ -3966,7 +4144,7 @@
           "y": 48,
           "width": 8,
           "height": 8,
-          "population": 1,
+          "population": 3,
           "buildings": 5,
           "statsBasis": "Legends snapshot"
         },
@@ -4241,16 +4419,28 @@
               112
             ]
           ]
+        },
+        {
+          "id": "MAP_LEGENDS_KANTO_ROUTE10",
+          "name": "Route 10",
+          "cells": [
+            [
+              144,
+              32
+            ],
+            [
+              144,
+              40
+            ]
+          ]
         }
       ]
     }
   },
   "townStatsSourceCommit": "f8b828f77d7c88955cf19ebaeb3898a48c6fa1b6",
   "postgameReview": {
-    "scope": "Kanto postgame chapters and overview articles",
-    "gameVersion": "0.0.32.1",
-    "sourceCommit": "8a7981e4adee7d9bce9442f8863bba34078d36aa",
-    "date": "2026-10-11",
-    "encounterSnapshotChanged": false
+    "date": "2026-10-12",
+    "gameVersion": "0.0.40",
+    "sourceCommit": "d19f13ca089dcf6ea165ce1595b04a65a637238a"
   }
 }

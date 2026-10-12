@@ -648,14 +648,15 @@
         "MAP_LEGENDS_KANTO_LAVENDER_TOWN_VOLUNTEER_POKEMON_HOUSE"
       ],
       "npcPlacements": {
-        "MAP_LEGENDS_KANTO_LAVENDER_TOWN": 0,
+        "MAP_LEGENDS_KANTO_LAVENDER_TOWN": 2,
         "MAP_LEGENDS_KANTO_LAVENDER_TOWN_HOUSE1": 0,
         "MAP_LEGENDS_KANTO_LAVENDER_TOWN_HOUSE2": 0,
         "MAP_LEGENDS_KANTO_LAVENDER_TOWN_MART": 0,
         "MAP_LEGENDS_KANTO_LAVENDER_TOWN_POKEMON_CENTER_1F": 1,
         "MAP_LEGENDS_KANTO_LAVENDER_TOWN_POKEMON_CENTER_2F": 0,
         "MAP_LEGENDS_KANTO_LAVENDER_TOWN_VOLUNTEER_POKEMON_HOUSE": 0
-      }
+      },
+      "sourceCommit": "d19f13ca089dcf6ea165ce1595b04a65a637238a"
     },
     "Celadon City": {
       "region": "Kanto",
@@ -762,11 +763,10 @@
     }
   },
   "latestManualReview": {
-    "date": "2026-10-11",
+    "date": "2026-10-12",
     "towns": [
-      "Celadon City",
-      "Saffron City"
+      "Lavender Town"
     ],
-    "sourceCommit": "8a7981e4adee7d9bce9442f8863bba34078d36aa"
+    "sourceCommit": "d19f13ca089dcf6ea165ce1595b04a65a637238a"
   }
 }

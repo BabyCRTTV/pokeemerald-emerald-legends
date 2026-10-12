@@ -3,7 +3,7 @@
 window.LegendsWalkthroughMaps=(()=>{
  let pending,renderToken=0;
  const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
- function load(){return pending||(pending=Promise.all(['walkthrough-maps.json','dex-data.json'].map(url=>fetch(url+'?layout=4',{cache:'no-store'}).then(r=>{if(!r.ok)throw Error('Map data unavailable');return r.json();}))).catch(e=>{pending=null;throw e;}));}
+ function load(){return pending||(pending=Promise.all(['walkthrough-maps.json','dex-data.json'].map(url=>fetch(url+'?layout=5',{cache:'no-store'}).then(r=>{if(!r.ok)throw Error('Map data unavailable');return r.json();}))).catch(e=>{pending=null;throw e;}));}
  function regionExplorer(root,guide){
   const host=root.querySelector('#section-your-first-adventure');if(!host)return;
   if(!guide.regions?.Hoenn?.towns||!guide.regions?.Kanto?.towns)throw Error('Region maps need refreshed data');

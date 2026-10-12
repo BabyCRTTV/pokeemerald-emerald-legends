@@ -29,15 +29,15 @@ const assert=require('node:assert/strict'),fs=require('node:fs');
   else await page.getByRole('link',{name:'Walkthrough',exact:false}).first().click();
   await page.getByRole('heading',{name:'Game walkthrough: start your adventure',exact:true}).waitFor();await noOverflow();
   assert(await page.locator('.wiki-mobile-nav').isHidden(),'walkthrough hides encounter navigation');
-  assert.equal(await page.locator('.walkthrough-stops a').count(),17);
+  assert.equal(await page.locator('.walkthrough-stops a').count(),18);
   assert.equal(await page.locator('.chapter-group').count(),2);
   assert.equal(await page.locator('.chapter-group').first().locator('a').count(),10);
-  assert.equal(await page.locator('.chapter-group').last().locator('a').count(),7);
+  assert.equal(await page.locator('.chapter-group').last().locator('a').count(),8);
   await page.locator('#next-chapter-group').click();
-  await page.waitForFunction(()=>document.querySelector('#chapter-group-label').textContent==='Chapters 11–17 of 17');
+  await page.waitForFunction(()=>document.querySelector('#chapter-group-label').textContent==='Chapters 11–18 of 18');
   assert(await page.locator('#next-chapter-group').isDisabled());
   await page.locator('#previous-chapter-group').click();
-  await page.waitForFunction(()=>document.querySelector('#chapter-group-label').textContent==='Chapters 1–10 of 17');
+  await page.waitForFunction(()=>document.querySelector('#chapter-group-label').textContent==='Chapters 1–10 of 18');
   await page.waitForFunction(()=>document.querySelector('#chapter-groups').scrollLeft<2);
   if(width===412){await page.locator('.chapter-browser').scrollIntoViewIfNeeded();await page.screenshot({path:'wiki-preview/compact-chapters.png'});}
   await page.locator('.region-map-explorer svg').waitFor();
@@ -131,13 +131,22 @@ const assert=require('node:assert/strict'),fs=require('node:fs');
   await page.locator('.chapter-step').last().click();
   await page.getByRole('heading',{name:/Chapter 17:/}).waitFor();
   await page.locator('[data-walkthrough-section="section-route-8-call-observation"] .walkthrough-route').waitFor();
-  assert.equal(await page.locator('.chapter-step').count(),1);
+  assert.equal(await page.locator('.chapter-step').count(),2);
   assert.equal(await page.locator('.walkthrough-map image').first().getAttribute('href'),'map-kanto.png');
   assert.equal(await page.locator('[data-walkthrough-section="section-route-8-call-observation"] a').first().getAttribute('href'),'dex.html?map=MAP_LEGENDS_KANTO_ROUTE8');
   await page.locator('#walkthrough-town').selectOption('walkthrough-kanto-voice#section-sabrina-and-the-teleport-pads');
   await page.waitForFunction(()=>location.hash==='#section-sabrina-and-the-teleport-pads');
   await noOverflow();
   if(width===412){await page.locator('#section-sabrina-and-the-teleport-pads').scrollIntoViewIfNeeded();await page.screenshot({path:'wiki-preview/kanto-sabrina-walkthrough.png'});}
+  await page.locator('.chapter-step').last().click();
+  await page.getByRole('heading',{name:/Chapter 18:/}).waitFor();
+  await page.locator('[data-route="MAP_LEGENDS_KANTO_POWER_PLANT"]').waitFor();
+  assert.equal(await page.locator('.chapter-step').count(),1);
+  assert.equal(await page.locator('.walkthrough-map image').first().getAttribute('href'),'map-kanto.png');
+  assert.equal(await page.locator('[data-walkthrough-section="section-lavender-to-rock-tunnel"] .walkthrough-route').count(),2);
+  assert((await page.locator('.articlebody').innerText()).includes('Catching or fighting Zapdos is optional'));
+  await noOverflow();
+  if(width===412){await page.locator('[data-walkthrough-section="section-make-both-unused-feeds-safe"]').screenshot({path:'wiki-preview/power-plant-current.png'});}
   if(width===412){
    await page.goto('http://127.0.0.1:8765/wiki/?page=walkthrough');
    await page.getByRole('button',{name:'Route 103 encounters',exact:true}).waitFor();
