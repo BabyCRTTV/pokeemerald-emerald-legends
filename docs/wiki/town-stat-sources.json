@@ -549,60 +549,38 @@
     },
     "Pewter City": {
       "region": "Kanto",
-      "basis": "FireRed reference",
-      "buildingCount": 6,
+      "basis": "Legends snapshot",
+      "sourceCommit": "b08a71b89faee7e7b6f818d3c65650ae777fb5a4",
+      "buildingCount": 3,
       "maps": [
-        "MAP_PEWTER_CITY",
-        "MAP_PEWTER_CITY_GYM",
-        "MAP_PEWTER_CITY_HOUSE1",
-        "MAP_PEWTER_CITY_HOUSE2",
-        "MAP_PEWTER_CITY_MART",
-        "MAP_PEWTER_CITY_MUSEUM_1F",
-        "MAP_PEWTER_CITY_MUSEUM_2F",
-        "MAP_PEWTER_CITY_POKEMON_CENTER_1F",
-        "MAP_PEWTER_CITY_POKEMON_CENTER_2F"
+        "MAP_LEGENDS_KANTO_PEWTER_CITY",
+        "MAP_LEGENDS_KANTO_PEWTER_CITY_GYM",
+        "MAP_LEGENDS_KANTO_PEWTER_CITY_MART",
+        "MAP_LEGENDS_KANTO_PEWTER_CITY_POKEMON_CENTER_1F"
       ],
       "npcPlacements": {
-        "MAP_PEWTER_CITY": 6,
-        "MAP_PEWTER_CITY_GYM": 3,
-        "MAP_PEWTER_CITY_HOUSE1": 2,
-        "MAP_PEWTER_CITY_HOUSE2": 2,
-        "MAP_PEWTER_CITY_MART": 3,
-        "MAP_PEWTER_CITY_MUSEUM_1F": 5,
-        "MAP_PEWTER_CITY_MUSEUM_2F": 5,
-        "MAP_PEWTER_CITY_POKEMON_CENTER_1F": 6,
-        "MAP_PEWTER_CITY_POKEMON_CENTER_2F": 4
+        "MAP_LEGENDS_KANTO_PEWTER_CITY": 1,
+        "MAP_LEGENDS_KANTO_PEWTER_CITY_GYM": 2,
+        "MAP_LEGENDS_KANTO_PEWTER_CITY_MART": 1,
+        "MAP_LEGENDS_KANTO_PEWTER_CITY_POKEMON_CENTER_1F": 1
       }
     },
     "Cerulean City": {
       "region": "Kanto",
-      "basis": "FireRed reference",
-      "buildingCount": 9,
+      "basis": "Legends snapshot",
+      "sourceCommit": "b08a71b89faee7e7b6f818d3c65650ae777fb5a4",
+      "buildingCount": 3,
       "maps": [
-        "MAP_CERULEAN_CITY",
-        "MAP_CERULEAN_CITY_BIKE_SHOP",
-        "MAP_CERULEAN_CITY_GYM",
-        "MAP_CERULEAN_CITY_HOUSE1",
-        "MAP_CERULEAN_CITY_HOUSE2",
-        "MAP_CERULEAN_CITY_HOUSE3",
-        "MAP_CERULEAN_CITY_HOUSE4",
-        "MAP_CERULEAN_CITY_HOUSE5",
-        "MAP_CERULEAN_CITY_MART",
-        "MAP_CERULEAN_CITY_POKEMON_CENTER_1F",
-        "MAP_CERULEAN_CITY_POKEMON_CENTER_2F"
+        "MAP_LEGENDS_KANTO_CERULEAN_CITY",
+        "MAP_LEGENDS_KANTO_CERULEAN_CITY_GYM",
+        "MAP_LEGENDS_KANTO_CERULEAN_CITY_MART",
+        "MAP_LEGENDS_KANTO_CERULEAN_CITY_POKEMON_CENTER_1F"
       ],
       "npcPlacements": {
-        "MAP_CERULEAN_CITY": 9,
-        "MAP_CERULEAN_CITY_BIKE_SHOP": 3,
-        "MAP_CERULEAN_CITY_GYM": 4,
-        "MAP_CERULEAN_CITY_HOUSE1": 1,
-        "MAP_CERULEAN_CITY_HOUSE2": 2,
-        "MAP_CERULEAN_CITY_HOUSE3": 2,
-        "MAP_CERULEAN_CITY_HOUSE4": 1,
-        "MAP_CERULEAN_CITY_HOUSE5": 1,
-        "MAP_CERULEAN_CITY_MART": 3,
-        "MAP_CERULEAN_CITY_POKEMON_CENTER_1F": 5,
-        "MAP_CERULEAN_CITY_POKEMON_CENTER_2F": 4
+        "MAP_LEGENDS_KANTO_CERULEAN_CITY": 2,
+        "MAP_LEGENDS_KANTO_CERULEAN_CITY_GYM": 2,
+        "MAP_LEGENDS_KANTO_CERULEAN_CITY_MART": 1,
+        "MAP_LEGENDS_KANTO_CERULEAN_CITY_POKEMON_CENTER_1F": 1
       }
     },
     "Vermilion City": {
@@ -705,29 +683,20 @@
     },
     "Cinnabar Island": {
       "region": "Kanto",
-      "basis": "FireRed reference",
-      "buildingCount": 4,
+      "basis": "Legends snapshot",
+      "sourceCommit": "b08a71b89faee7e7b6f818d3c65650ae777fb5a4",
+      "buildingCount": 3,
       "maps": [
-        "MAP_CINNABAR_ISLAND",
-        "MAP_CINNABAR_ISLAND_GYM",
-        "MAP_CINNABAR_ISLAND_MART",
-        "MAP_CINNABAR_ISLAND_POKEMON_CENTER_1F",
-        "MAP_CINNABAR_ISLAND_POKEMON_CENTER_2F",
-        "MAP_CINNABAR_ISLAND_POKEMON_LAB_ENTRANCE",
-        "MAP_CINNABAR_ISLAND_POKEMON_LAB_EXPERIMENT_ROOM",
-        "MAP_CINNABAR_ISLAND_POKEMON_LAB_LOUNGE",
-        "MAP_CINNABAR_ISLAND_POKEMON_LAB_RESEARCH_ROOM"
+        "MAP_LEGENDS_KANTO_CINNABAR_ISLAND",
+        "MAP_LEGENDS_KANTO_CINNABAR_ISLAND_GYM",
+        "MAP_LEGENDS_KANTO_CINNABAR_ISLAND_MART",
+        "MAP_LEGENDS_KANTO_CINNABAR_ISLAND_POKEMON_CENTER_1F"
       ],
       "npcPlacements": {
-        "MAP_CINNABAR_ISLAND": 3,
-        "MAP_CINNABAR_ISLAND_GYM": 9,
-        "MAP_CINNABAR_ISLAND_MART": 3,
-        "MAP_CINNABAR_ISLAND_POKEMON_CENTER_1F": 5,
-        "MAP_CINNABAR_ISLAND_POKEMON_CENTER_2F": 4,
-        "MAP_CINNABAR_ISLAND_POKEMON_LAB_ENTRANCE": 1,
-        "MAP_CINNABAR_ISLAND_POKEMON_LAB_EXPERIMENT_ROOM": 2,
-        "MAP_CINNABAR_ISLAND_POKEMON_LAB_LOUNGE": 3,
-        "MAP_CINNABAR_ISLAND_POKEMON_LAB_RESEARCH_ROOM": 2
+        "MAP_LEGENDS_KANTO_CINNABAR_ISLAND": 2,
+        "MAP_LEGENDS_KANTO_CINNABAR_ISLAND_GYM": 2,
+        "MAP_LEGENDS_KANTO_CINNABAR_ISLAND_MART": 1,
+        "MAP_LEGENDS_KANTO_CINNABAR_ISLAND_POKEMON_CENTER_1F": 1
       }
     },
     "Saffron City": {
@@ -765,8 +734,10 @@
   "latestManualReview": {
     "date": "2026-10-12",
     "towns": [
-      "Lavender Town"
+      "Cerulean City",
+      "Pewter City",
+      "Cinnabar Island"
     ],
-    "sourceCommit": "d19f13ca089dcf6ea165ce1595b04a65a637238a"
+    "sourceCommit": "b08a71b89faee7e7b6f818d3c65650ae777fb5a4"
   }
 }

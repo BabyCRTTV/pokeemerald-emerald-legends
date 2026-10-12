@@ -29,15 +29,20 @@ const assert=require('node:assert/strict'),fs=require('node:fs');
   else await page.getByRole('link',{name:'Walkthrough',exact:false}).first().click();
   await page.getByRole('heading',{name:'Game walkthrough: start your adventure',exact:true}).waitFor();await noOverflow();
   assert(await page.locator('.wiki-mobile-nav').isHidden(),'walkthrough hides encounter navigation');
-  assert.equal(await page.locator('.walkthrough-stops a').count(),18);
-  assert.equal(await page.locator('.chapter-group').count(),2);
+  assert.equal(await page.locator('.walkthrough-stops a').count(),22);
+  assert.equal(await page.locator('.chapter-group').count(),3);
   assert.equal(await page.locator('.chapter-group').first().locator('a').count(),10);
-  assert.equal(await page.locator('.chapter-group').last().locator('a').count(),8);
+  assert.equal(await page.locator('.chapter-group').last().locator('a').count(),2);
   await page.locator('#next-chapter-group').click();
-  await page.waitForFunction(()=>document.querySelector('#chapter-group-label').textContent==='Chapters 11–18 of 18');
+  await page.waitForFunction(()=>document.querySelector('#chapter-group-label').textContent==='Chapters 11–20 of 22');
+  assert(!await page.locator('#next-chapter-group').isDisabled());
+  await page.locator('#next-chapter-group').click();
+  await page.waitForFunction(()=>document.querySelector('#chapter-group-label').textContent==='Chapters 21–22 of 22');
   assert(await page.locator('#next-chapter-group').isDisabled());
   await page.locator('#previous-chapter-group').click();
-  await page.waitForFunction(()=>document.querySelector('#chapter-group-label').textContent==='Chapters 1–10 of 18');
+  await page.waitForFunction(()=>document.querySelector('#chapter-group-label').textContent==='Chapters 11–20 of 22');
+  await page.locator('#previous-chapter-group').click();
+  await page.waitForFunction(()=>document.querySelector('#chapter-group-label').textContent==='Chapters 1–10 of 22');
   await page.waitForFunction(()=>document.querySelector('#chapter-groups').scrollLeft<2);
   if(width===412){await page.locator('.chapter-browser').scrollIntoViewIfNeeded();await page.screenshot({path:'wiki-preview/compact-chapters.png'});}
   await page.locator('.region-map-explorer svg').waitFor();
@@ -141,12 +146,27 @@ const assert=require('node:assert/strict'),fs=require('node:fs');
   await page.locator('.chapter-step').last().click();
   await page.getByRole('heading',{name:/Chapter 18:/}).waitFor();
   await page.locator('[data-route="MAP_LEGENDS_KANTO_POWER_PLANT"]').waitFor();
-  assert.equal(await page.locator('.chapter-step').count(),1);
+  assert.equal(await page.locator('.chapter-step').count(),2);
   assert.equal(await page.locator('.walkthrough-map image').first().getAttribute('href'),'map-kanto.png');
   assert.equal(await page.locator('[data-walkthrough-section="section-lavender-to-rock-tunnel"] .walkthrough-route').count(),2);
   assert((await page.locator('.articlebody').innerText()).includes('Catching or fighting Zapdos is optional'));
   await noOverflow();
   if(width===412){await page.locator('[data-walkthrough-section="section-make-both-unused-feeds-safe"]').screenshot({path:'wiki-preview/power-plant-current.png'});}
+  for(const [n,slug,markerMap,regionImage] of [[19,'stillwater','MAP_LEGENDS_KANTO_SEAFOAM_ISLANDS_B4F','map-kanto.png'],[20,'sleeping-continent','MAP_FIERY_PATH','map-hoenn.png'],[21,'stone-tide','MAP_LEGENDS_KANTO_MT_MOON_B2F','map-kanto.png'],[22,'ember-passage','MAP_LEGENDS_KANTO_MT_EMBER_SUMMIT_PATH_3F','map-kanto.png']]){
+   await page.locator('.chapter-step').last().click();
+   await page.getByRole('heading',{name:new RegExp('Chapter '+n+':')}).waitFor();
+   await page.locator('[data-route="'+markerMap+'"]').waitFor();
+   assert.equal(await page.locator('.walkthrough-map image').first().getAttribute('href'),regionImage);
+   assert.equal(await page.locator('.chapter-step').count(),n===22?1:2);
+   await noOverflow();
+  }
+  assert.equal(await page.locator('[data-walkthrough-section="section-climb-mt-ember"] image').getAttribute('href'),'map-sevii.png');
+  if(width===412)await page.locator('[data-walkthrough-section="section-climb-mt-ember"]').screenshot({path:'wiki-preview/mt-ember-expedition.png'});
+  await page.goto('http://127.0.0.1:8765/wiki/dex.html?view=species&pokemon=PONYTA');
+  await page.locator('.encounter-map').first().waitFor();
+  assert((await page.locator('.encounter-map figcaption').allTextContents()).includes('Sevii'));
+  assert(await page.locator('.encounter-map image[href="map-sevii.png"]').count());
+  await noOverflow();
   if(width===412){
    await page.goto('http://127.0.0.1:8765/wiki/?page=walkthrough');
    await page.getByRole('button',{name:'Route 103 encounters',exact:true}).waitFor();
