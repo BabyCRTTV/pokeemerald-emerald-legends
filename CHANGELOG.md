@@ -4,6 +4,15 @@ All notable Pokémon Emerald: Legends project changes are documented here.
 
 For build-specific player views, see [CHANGELOG-RELEASE.md](CHANGELOG-RELEASE.md) and [CHANGELOG-DEBUG.md](CHANGELOG-DEBUG.md). The canonical history below records the project as a whole.
 
+## [0.0.44] - 2026-10-12
+
+- Import the ten supplied female battle hairstyles into fixed-outfit, four-frame Emerald battle sprites: Pixie, Side Part, Soft Layers, Side Sweep, Wavy Bob, Short Bob, Long Bob, Curls, Ponytail and Twin Braids. Use the matching saved hairstyle and hair color when entering a battle; wardrobe changes take effect on the next battle.
+- Give battle art an independent palette with five dedicated skin-tone ramps. Preserve hair, red uniform, gloves and outlines when skin tone changes. Keep all eight existing in-game hair-color choices, including Dark Brown.
+- Use a fixed battle uniform instead of layering wardrobe outfits, coats, scarves, footwear, leggings or costumes onto battle backs. Overworld customization and front/wardrobe portraits continue normally. Male and Original-hair female battles use native Emerald art with the selected skin tone until corresponding prepared sheets are available.
+- Fit the supplied frames to native 64x64 bounds and Emerald's idle/wind-up/release sequence. Keep the game's moving Ball animation instead of embedding the detached illustration Ball in the trainer bitmap.
+- Remove the approved three leftover shoulder cells from May's custom front portraits, including geometry added by legacy jacket assets. Preserve the connected collar and sleeve.
+- Shared by Release and Debug; no variant-specific gameplay differences. Prepared-sprite pipeline and validation: `docs/features/battle-appearance.md`.
+
 ## [0.0.43.1] - 2026-10-12
 
 - Center every Text Speed value (SLOW, MID, FAST and INSTANT) between its Options-menu arrows using the native font-width helper.
