@@ -29,6 +29,13 @@ typedef uint16_t u16;
 #define FONT_NORMAL 1
 #define FONT_SMALL 0
 static unsigned arrowCalls;
+int GetStringCenterAlignXOffset(int fontId, const u8 *text, int width)
+{
+    assert(fontId == FONT_NORMAL && width == 68);
+    unsigned letters = 0;
+    while (text[6 + letters] != EOS) letters++;
+    return (width - letters * 8) / 2;
+}
 #define TEXT_SKIP_DRAW 255
 u8 captured[32];
 void AddTextPrinterParameterized(u8 w, u8 f, const u8 *text, u8 x, u8 y, u8 speed, void *cb)
