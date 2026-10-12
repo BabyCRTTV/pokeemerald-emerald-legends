@@ -19,7 +19,7 @@ def head(p,gender,kind,pose,state=''):
         top=min(y for x,y in face);bottom=max(y for x,y in face)
         if kind=='front':
             return face,(19 if gender==0 else 13,7,38 if gender==0 else 39,27 if gender else 23), (28 if gender==0 else 27,8,20 if gender==0 else 18,11),0
-        return face,(max(0,left-25),max(0,top-22),min(w-1,right+15),min(h-1,bottom+5)), ((left+right)//2-10,top-14,26,16),2
+        return face,(max(0,left-25),max(0,top-22),min(w-1,right+15),min(h-1,bottom)), ((left+right)//2-10,top-14,26,16),2
     # Native tables: front, back, left, plus the matching motion poses.
     direction=(0 if pose%3==0 else 2 if pose%3==1 else 1) if w==16 else None
     face=max(groups,key=len) if groups else set()
@@ -65,41 +65,57 @@ def hair_edits(p,g,kind,pose,style,state=''):
     if face:
         fl,fr=min(x for x,y in face),max(x for x,y in face)
         ft,fb=min(y for x,y in face),max(y for x,y in face)
-        protected |= {(x,y) for y in range(ft,fb+1) for x in range(fl,fr+1) if p[y][x] in (1,2,3,4,5,7,8,9,12,13,14,15)}
+        protected |= {(x,y) for y in range(ft,fb+1) for x in range(fl,fr+1) if p[y][x] in (1,2,3,4,5,6,7,8,9,12,13,14,15)}
     l,t,r,b=box
     for y in range(t,b+1):
         for x in range(l,r+1):
-            if (x,y) not in protected and p[y][x] not in (1,2,3,12,13):out[y][x]=0
+            if (x,y) not in protected and p[y][x] not in (1,2,3,12,13):
+                # Keep the native nape behind the ear in back portraits;
+                # removing it would detach the hair from the face/neck.
+                if kind=='back' and face and y>=min(yy for xx,yy in face)-4 and p[y][x] in (4,7,8,15):
+                    continue
+                out[y][x]=0
     from hair_pixels import portrait, overworld
     rows = overworld(style, g) if kind == 'overworld' else portrait(style, g)
-    mask = Image.new('L', (len(rows[0]), max(20, len(rows))))
+    mask = Image.new('L', (len(rows[0]), max(24 if kind=='back' else 20, len(rows))))
     for yy, row in enumerate(rows):
         for xx, char in enumerate(row):
-            mask.putpixel((xx, yy), {'.':0, '#':8, '+':4, 'H':7 if g else 4}[char])
+            mask.putpixel((xx, yy), {'.':0, '#':8, '+':4, 'H':7}[char])
     if direction == 2:
-        # The back is a connected hair mass; retain the authored crown/tufts.
-        d=ImageDraw.Draw(mask)
-        length=16 if style in (7,8,9,10) else 12
-        if kind == 'overworld':
-            length = 10 if style in (7,8,9,10) else 8
-            d.polygon([(2,3),(9,3),(10,length-2),(8,length),(4,length),(2,length-2)],fill=4)
-            d.line([(9,4),(9,length-2),(7,length),(4,length),(2,length-2)],fill=8)
-            if g:d.line([(4,3),(4,5),(5,6)],fill=7)
-        else:
-            d.polygon([(3,5),(14,5),(15,length-3),(13,length),(6,length),(3,length-2)],fill=4)
-            d.polygon([(13,6),(15,length-3),(13,length),(6,length),(9,length-2),(12,length-5)],fill=8)
-            if g:d.line([(5,6),(5,9),(6,11)],fill=7,width=2)
+        # Back-facing locks use the same outer contour, with a connected
+        # shaded crown instead of the front fringe's gaps.
+        width=len(rows[0])
+        length=(14 if g else 12) if kind=='overworld' else (22 if g else 20)
+        if style in (1,2,3,4,5,6):length-=2
+        center=(width-1)//2
+        for yy in range(3,length):
+            radius=width//2-2
+            if yy>length//2:
+                radius=max(2,radius-(yy-length//2+1)//2)
+            left,right=center-radius,center+radius
+            for xx in range(left,right+1):
+                v=8 if xx in (left,right) or (yy>=length-3 and xx>center+1) else 4
+                # A broad curved light cluster breaks into tapered locks,
+                # following the supplied back-facing reference lighting.
+                offset=1 if yy<length//3 else 2
+                if 3<=yy<length-4 and left+offset<=xx<=left+offset+(3 if kind!='overworld' else 2):v=7
+                if yy in (length//2,length//2+2) and xx==left+offset:v=4
+                mask.putpixel((xx,yy),v)
     elif direction == 1:
-        # Near temple falls behind the ear; the fringe points forward.
+        # The side fringe points toward the face. The far-side temple lies
+        # behind the ear; native eye and nose pixels remain protected below.
         d=ImageDraw.Draw(mask)
-        d.rectangle((0,8,3,19),fill=0)
+        d.rectangle((0,9,2,19),fill=0)
     if kind == 'front':
-        # Native portrait grid, 18px wide: never stretch small overworld art.
-        cx,cy,hw = (29,9,18) if g == 0 else (28,9,18)
-    elif kind != 'overworld':
-        mw=round(18*hw/16)
-        mh=round(20*ht/12)
-        mask=mask.resize((mw,mh),Image.Resampling.NEAREST)
+        hw=len(rows[0]);cx,cy=(29,7) if g==0 else (28,7)
+    elif kind=='overworld':
+        hw=len(rows[0])
+        if direction!=2:cy-=2
+    else:
+        # Each back-animation frame has a different face anchor. Scale the
+        # larger portrait grid to its own crown, never the tiny field sprite.
+        scale=hw/len(rows[0])
+        mask=mask.resize((hw,round(mask.height*scale)),Image.Resampling.NEAREST)
     ox=cx-hw//2;oy=cy
     for y in range(mask.height):
         for x in range(mask.width):

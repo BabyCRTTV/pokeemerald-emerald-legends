@@ -187,6 +187,26 @@ for(int o=0;o<5;o++)for(int scarf=0;scarf<6;scarf++)for(int j=0;j<2;j++){
  LegendsBeginWardrobeSelection();LegendsSetAccessorySelection(5,1);LegendsSetAppearanceSelection(3,4);LegendsClearAppearanceSelection();
  assert(value==1+3+5*o&&accessories==scarf+6*j); // cancel does not write
 }
+
+// Custom-hair highlights are independent of every scarf/coat/skin combination.
+for(int h=1;h<11;h++)for(int sc=0;sc<6;sc++)for(int j=0;j<3;j++)for(int tone=0;tone<5;tone++){
+ value=1+tone;accessories=sc+6*j;hair=h;costume=0;
+ LegendsClearAppearanceSelection();LegendsUpdateAppearancePalettes();
+ assert(gLegendsTrainerPalettes[0][7]==(22|(15<<5)|(10<<10)));
+ assert(gLegendsOverworldPalettes[0][7]==(22|(13<<5)|(8<<10)));
+ assert(gLegendsTrainerPalettes[1][7]==sBaseTrainerPalettes[1][7]);
+ for(int g=0;g<2;g++){
+  for(int k=1;k<=3;k++)assert(gLegendsTrainerPalettes[g][k]==sSkinPalettes[tone][k-1]);
+  for(int k=5;k<=8;k++)if(k!=7){
+   assert(gLegendsTrainerPalettes[g][k]==sBaseTrainerPalettes[g][k]);
+   assert(gLegendsOverworldPalettes[g][k]==sBaseOverworldPalettes[g][k]);
+  }
+  assert(gLegendsTrainerPalettes[g][15]==sBaseTrainerPalettes[g][15]);
+  assert(gLegendsUnderwaterPalettes[g][7]==sBaseUnderwaterPalette[7]);
+ }
+}
+hair=0;accessories=0;LegendsClearAppearanceSelection();LegendsUpdateAppearancePalettes();
+assert(gLegendsTrainerPalettes[0][7]==sBaseTrainerPalettes[0][7]);
 value=0;accessories=0;LegendsClearAppearanceSelection();LegendsBeginWardrobeSelection();
 LegendsSetAppearanceSelection(0,2);LegendsSetAccessorySelection(1,1);LegendsApplyWardrobeSelection();
 assert(value==28);LegendsUpdateAppearancePalettes();

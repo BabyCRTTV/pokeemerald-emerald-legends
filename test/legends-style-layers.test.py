@@ -50,6 +50,10 @@ with tempfile.TemporaryDirectory() as d:
    groups=art.skin_components(p)
    face=(max(groups,key=len) if kind==0 else min((s for s in groups if len(s)>30),key=lambda s:min(y for x,y in s))) if groups else set()
    protected=set(face)
+   if face:
+    left,right=min(x for x,y in face),max(x for x,y in face)
+    top,bottom=min(y for x,y in face),max(y for x,y in face)
+    protected |= {(x,y) for y in range(top,bottom+1) for x in range(left,right+1) if p[y][x] in (5,8,9,14,15)}
    if kind:protected |= {(x,y) for x,y in art.hand_pixels(g,'front' if kind==1 else 'back',native_index) if p[y][x] not in (4,7,8)}|art.ball_pixels(g,'front' if kind==1 else 'back',native_index)
    for hair in range(11):
     for coat in range(3):
