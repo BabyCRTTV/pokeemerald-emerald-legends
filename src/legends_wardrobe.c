@@ -35,10 +35,16 @@ static const u8 *const sScarves[] = {COMPOUND_STRING("NONE"),COMPOUND_STRING("CR
 static const u8 *const sCostumes[] = {COMPOUND_STRING("NONE"),COMPOUND_STRING("TEAM MAGMA"),COMPOUND_STRING("TEAM AQUA")};
 static const u8 *const sShoes[] = {COMPOUND_STRING("ORIGINAL"),COMPOUND_STRING("RED"),COMPOUND_STRING("BLUE"),COMPOUND_STRING("GREEN"),COMPOUND_STRING("WHITE"),COMPOUND_STRING("PURPLE"),COMPOUND_STRING("BROWN BOOTS"),COMPOUND_STRING("BLACK BOOTS")};
 static const u8 *const sCardColors[] = {COMPOUND_STRING("ORIGINAL"),COMPOUND_STRING("EMERALD"),COMPOUND_STRING("OCEAN"),COMPOUND_STRING("CRIMSON"),COMPOUND_STRING("LAVENDER"),COMPOUND_STRING("GOLD"),COMPOUND_STRING("ROSE"),COMPOUND_STRING("SLATE")};
+static const u8 *const sLeggings[] = {COMPOUND_STRING("NONE"),COMPOUND_STRING("GREY"),COMPOUND_STRING("BLACK")};
 static const u8 *const sCoats[] = {COMPOUND_STRING("NONE"),COMPOUND_STRING("NAVY"),COMPOUND_STRING("WINTER")};
-enum {ROW_OUTFIT,ROW_COSTUMES,ROW_HAIR,ROW_HAIR_COLOR,ROW_SCARF,ROW_JACKET,ROW_SHOES,ROW_CARD,ROW_APPLY,ROW_CANCEL,ROW_COUNT};
-static const u8 *const sRows[] = {COMPOUND_STRING("OUTFIT"),COMPOUND_STRING("COSTUMES"),COMPOUND_STRING("HAIRSTYLE"),COMPOUND_STRING("HAIR COLOR"),COMPOUND_STRING("SCARF"),COMPOUND_STRING("JACKET"),COMPOUND_STRING("SHOES"),COMPOUND_STRING("TRAINER CARD"),COMPOUND_STRING("APPLY"),COMPOUND_STRING("CANCEL")};
+enum {ROW_OUTFIT,ROW_COSTUMES,ROW_HAIR,ROW_HAIR_COLOR,ROW_SCARF,ROW_JACKET,ROW_LEGGINGS,ROW_SHOES,ROW_CARD,ROW_APPLY,ROW_CANCEL,ROW_COUNT};
+static const u8 *const sRows[] = {COMPOUND_STRING("OUTFIT"),COMPOUND_STRING("COSTUMES"),COMPOUND_STRING("HAIRSTYLE"),COMPOUND_STRING("HAIR COLOR"),COMPOUND_STRING("SCARF"),COMPOUND_STRING("JACKET"),COMPOUND_STRING("LEGGINGS"),COMPOUND_STRING("SHOES"),COMPOUND_STRING("TRAINER CARD"),COMPOUND_STRING("APPLY"),COMPOUND_STRING("CANCEL")};
 #define WARDROBE_VISIBLE 6
+static u8 WardrobeDisplayCount(void) { return ROW_COUNT - (gSaveBlock2Ptr->playerGender != FEMALE); }
+static u8 WardrobeDisplayRow(u8 index)
+{
+    return gSaveBlock2Ptr->playerGender != FEMALE && index >= ROW_LEGGINGS ? index + 1 : index;
+}
 static u8 RowValue(u8 row)
 {
     switch(row) {
@@ -48,6 +54,7 @@ static u8 RowValue(u8 row)
     case ROW_HAIR_COLOR:return LegendsGetHairColor();
     case ROW_SCARF:return LegendsGetScarf();
     case ROW_JACKET:return LegendsGetJacketStyle();
+    case ROW_LEGGINGS:return LegendsGetLeggings();
     case ROW_SHOES:return LegendsGetShoes();
     case ROW_CARD:return LegendsGetCardColor();
     default:return 0;
@@ -55,7 +62,8 @@ static u8 RowValue(u8 row)
 }
 static u8 RowCount(u8 row)
 {
-    static const u8 counts[] = {LEGENDS_OUTFIT_COUNT,LEGENDS_COSTUME_COUNT,LEGENDS_HAIR_COUNT,LEGENDS_HAIR_COLOR_COUNT,LEGENDS_SCARF_COUNT,LEGENDS_JACKET_COUNT,LEGENDS_SHOE_COUNT,LEGENDS_CARD_COLOR_COUNT};
+    static const u8 counts[] = {LEGENDS_OUTFIT_COUNT,LEGENDS_COSTUME_COUNT,LEGENDS_HAIR_COUNT,LEGENDS_HAIR_COLOR_COUNT,LEGENDS_SCARF_COUNT,LEGENDS_JACKET_COUNT,LEGENDS_LEGGINGS_COUNT,LEGENDS_SHOE_COUNT,LEGENDS_CARD_COLOR_COUNT};
+    if (row == ROW_LEGGINGS && gSaveBlock2Ptr->playerGender != FEMALE) return 0;
     return row<ROW_APPLY?counts[row]:0;
 }
 static void SetRowValue(u8 row,u8 value)
@@ -67,6 +75,7 @@ static void SetRowValue(u8 row,u8 value)
     case ROW_HAIR_COLOR:LegendsSetHairColorSelection(value);break;
     case ROW_SCARF:LegendsSetAccessorySelection(value,LegendsGetJacketStyle());break;
     case ROW_JACKET:LegendsSetAccessorySelection(LegendsGetScarf(),value);break;
+    case ROW_LEGGINGS:LegendsSetLeggingsSelection(value);break;
     case ROW_SHOES:LegendsSetShoeSelection(value);break;
     case ROW_CARD:LegendsSetCardColorSelection(value);break;
     }
@@ -81,6 +90,7 @@ static const u8 *RowText(u8 row)
     case ROW_HAIR_COLOR:return LegendsGetHairColorName(LegendsGetHairColor());
     case ROW_SCARF:return sScarves[LegendsGetScarf()];
     case ROW_JACKET:return sCoats[LegendsGetJacketStyle()];
+    case ROW_LEGGINGS:return sLeggings[LegendsGetLeggings()];
     case ROW_SHOES:return sShoes[LegendsGetShoes()];
     default:return NULL;
     }
@@ -109,7 +119,7 @@ static void Print(u8 w,const u8 *text,u8 x,u8 y)
 
 static void Draw(u8 taskId)
 {
-    u8 i, row=gTasks[taskId].data[0], top=gTasks[taskId].data[1];
+    u8 i, row=WardrobeDisplayRow(gTasks[taskId].data[0]), top=gTasks[taskId].data[1];
     u16 swatch = LegendsCardSwatch();
     FillWindowPixelBuffer(1,PIXEL_FILL(1));
     FillWindowPixelBuffer(0,PIXEL_FILL(1));
@@ -131,16 +141,16 @@ static void Draw(u8 taskId)
         Print(0,(row==ROW_HAIR||row==ROW_HAIR_COLOR)
             ? (LegendsGetCostume()?COMPOUND_STRING("HAIR FIXED BY COSTUME"):COMPOUND_STRING("A: OPEN LIST  LEFT/RIGHT: OPEN"))
             :COMPOUND_STRING("UP/DOWN: ROW  A/LEFT/RIGHT: CHANGE"),0,12);
-        for (i=0;i<WARDROBE_VISIBLE;i++)
+        for (i=0;i<WARDROBE_VISIBLE && top+i<WardrobeDisplayCount();i++)
         {
-            u8 item=top+i;
+            u8 item=WardrobeDisplayRow(top+i);
             const u8 *value=RowText(item);
             Print(1,sRows[item],12,i*14);
             if(value)Print(1,value,62,i*14);
         }
-        Print(1,COMPOUND_STRING(">"),0,(row-top)*14);
+        Print(1,COMPOUND_STRING(">"),0,(gTasks[taskId].data[0]-top)*14);
         if(top)Print(1,COMPOUND_STRING("{UP_ARROW}"),120,0);
-        if(top+WARDROBE_VISIBLE<ROW_COUNT)Print(1,COMPOUND_STRING("{DOWN_ARROW}"),120,70);
+        if(top+WARDROBE_VISIBLE<WardrobeDisplayCount())Print(1,COMPOUND_STRING("{DOWN_ARROW}"),120,70);
     }
     CopyWindowToVram(0,COPYWIN_FULL);
     CopyWindowToVram(1,COPYWIN_FULL);
@@ -169,7 +179,7 @@ static void Task_Return(u8 taskId)
 
 static void Task_Input(u8 taskId)
 {
-    u8 row=gTasks[taskId].data[0];
+    u8 row=WardrobeDisplayRow(gTasks[taskId].data[0]);
     if (gPaletteFade.active) return;
     if (gTasks[taskId].data[2])
     {
@@ -208,8 +218,8 @@ static void Task_Input(u8 taskId)
         gTasks[taskId].func=Task_Return;
         return;
     }
-    if (JOY_REPEAT(DPAD_UP))gTasks[taskId].data[0]=(row+ROW_COUNT-1)%ROW_COUNT;
-    else if (JOY_REPEAT(DPAD_DOWN))gTasks[taskId].data[0]=(row+1)%ROW_COUNT;
+    if (JOY_REPEAT(DPAD_UP))gTasks[taskId].data[0]=(gTasks[taskId].data[0]+WardrobeDisplayCount()-1)%WardrobeDisplayCount();
+    else if (JOY_REPEAT(DPAD_DOWN))gTasks[taskId].data[0]=(gTasks[taskId].data[0]+1)%WardrobeDisplayCount();
     else if (row<ROW_APPLY && JOY_NEW(DPAD_LEFT|DPAD_RIGHT|A_BUTTON))
     {
         if (row==ROW_COSTUMES||row==ROW_OUTFIT||row==ROW_CARD||!LegendsGetCostume())

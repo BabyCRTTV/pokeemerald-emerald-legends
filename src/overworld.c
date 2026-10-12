@@ -1,6 +1,7 @@
 #include "global.h"
 #include "legends_story.h"
 #include "legends_adventure.h"
+#include "legends_journal.h"
 #include "overworld.h"
 #include "battle_pyramid.h"
 #include "battle_setup.h"
@@ -525,7 +526,10 @@ u32 GetGameStat(u8 index)
 void SetGameStat(u8 index, u32 value)
 {
     if (index < NUM_USED_GAME_STATS)
+    {
         gSaveBlock1Ptr->gameStats[index] = value ^ gSaveBlock2Ptr->encryptionKey;
+        LegendsJournalStatSet(index, value);
+    }
 }
 
 void ApplyNewEncryptionKeyToGameStats(u32 newKey)
@@ -2136,6 +2140,7 @@ void CB2_ContinueSavedGame(void)
 
     LoadSaveblockMapHeader();
     LegendsAdventureInit(FALSE);
+    LegendsJournalInit(FALSE);
     LegendsCommitSeasonTransition();
     LegendsRestoreSeasonWeather();
     ClearDiveAndHoleWarps();

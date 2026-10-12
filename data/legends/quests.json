@@ -1,0 +1,541 @@
+[
+  {
+    "title": "A New Beginning",
+    "side": 0,
+    "start": 0,
+    "steps": [
+      {
+        "text": "Rescue BIRCH on ROUTE 101",
+        "flag": "FLAG_SYS_POKEMON_GET"
+      },
+      {
+        "text": "Receive your POKEDEX",
+        "flag": "FLAG_SYS_POKEDEX_GET"
+      }
+    ]
+  },
+  {
+    "title": "Stone Badge",
+    "side": 0,
+    "start": "FLAG_SYS_POKEDEX_GET",
+    "steps": [
+      {
+        "text": "Defeat ROXANNE in RUSTBORO",
+        "flag": "FLAG_BADGE01_GET"
+      }
+    ]
+  },
+  {
+    "title": "Knuckle Badge",
+    "side": 0,
+    "start": "FLAG_BADGE01_GET",
+    "steps": [
+      {
+        "text": "Defeat BRAWLY in DEWFORD",
+        "flag": "FLAG_BADGE02_GET"
+      }
+    ]
+  },
+  {
+    "title": "Dynamo Badge",
+    "side": 0,
+    "start": "FLAG_BADGE02_GET",
+    "steps": [
+      {
+        "text": "Defeat WATTSON in MAUVILLE",
+        "flag": "FLAG_BADGE03_GET"
+      }
+    ]
+  },
+  {
+    "title": "Heat Badge",
+    "side": 0,
+    "start": "FLAG_BADGE03_GET",
+    "steps": [
+      {
+        "text": "Defeat FLANNERY in LAVARIDGE",
+        "flag": "FLAG_BADGE04_GET"
+      }
+    ]
+  },
+  {
+    "title": "Balance Badge",
+    "side": 0,
+    "start": "FLAG_BADGE04_GET",
+    "steps": [
+      {
+        "text": "Defeat NORMAN in PETALBURG",
+        "flag": "FLAG_BADGE05_GET"
+      }
+    ]
+  },
+  {
+    "title": "Feather Badge",
+    "side": 0,
+    "start": "FLAG_BADGE05_GET",
+    "steps": [
+      {
+        "text": "Defeat WINONA in FORTREE",
+        "flag": "FLAG_BADGE06_GET"
+      }
+    ]
+  },
+  {
+    "title": "Mind Badge",
+    "side": 0,
+    "start": "FLAG_BADGE06_GET",
+    "steps": [
+      {
+        "text": "Defeat TATE and LIZA in MOSSDEEP",
+        "flag": "FLAG_BADGE07_GET"
+      }
+    ]
+  },
+  {
+    "title": "Rain Badge",
+    "side": 0,
+    "start": "FLAG_BADGE07_GET",
+    "steps": [
+      {
+        "text": "Defeat JUAN in SOOTOPOLIS",
+        "flag": "FLAG_BADGE08_GET"
+      }
+    ]
+  },
+  {
+    "title": "The Devon Delivery",
+    "side": 0,
+    "start": "FLAG_DEVON_GOODS_STOLEN",
+    "steps": [
+      {
+        "text": "Recover the stolen DEVON GOODS",
+        "flag": "FLAG_RECOVERED_DEVON_GOODS"
+      },
+      {
+        "text": "Return the GOODS to DEVON",
+        "flag": "FLAG_RETURNED_DEVON_GOODS"
+      },
+      {
+        "text": "Deliver the letter to STEVEN",
+        "flag": "FLAG_DELIVERED_STEVEN_LETTER"
+      },
+      {
+        "text": "Deliver the GOODS in SLATEPORT",
+        "flag": "FLAG_DELIVERED_DEVON_GOODS"
+      }
+    ]
+  },
+  {
+    "title": "Trouble on the Mountain",
+    "side": 0,
+    "start": "FLAG_BADGE03_GET",
+    "steps": [
+      {
+        "text": "Meet ARCHIE at METEOR FALLS",
+        "flag": "FLAG_MET_ARCHIE_METEOR_FALLS"
+      },
+      {
+        "text": "Recover the METEORITE",
+        "flag": "FLAG_RECEIVED_METEORITE"
+      },
+      {
+        "text": "Earn the HEAT BADGE",
+        "flag": "FLAG_BADGE04_GET"
+      }
+    ]
+  },
+  {
+    "title": "Across Hoenn",
+    "side": 0,
+    "start": "FLAG_BADGE05_GET",
+    "steps": [
+      {
+        "text": "Help the WEATHER INSTITUTE",
+        "flag": "FLAG_RECEIVED_CASTFORM"
+      },
+      {
+        "text": "Receive STEVEN's DEVON SCOPE",
+        "flag": "FLAG_RECEIVED_DEVON_SCOPE"
+      },
+      {
+        "text": "Earn the FEATHER BADGE",
+        "flag": "FLAG_BADGE06_GET"
+      }
+    ]
+  },
+  {
+    "title": "The Weather Crisis",
+    "side": 0,
+    "start": "FLAG_BADGE06_GET",
+    "steps": [
+      {
+        "text": "Find MAGMA's awakened GROUDON",
+        "flag": "FLAG_GROUDON_AWAKENED_MAGMA_HIDEOUT"
+      },
+      {
+        "text": "Follow AQUA's stolen submarine",
+        "flag": "FLAG_TEAM_AQUA_ESCAPED_IN_SUBMARINE"
+      },
+      {
+        "text": "Help STEVEN at the SPACE CENTER",
+        "flag": "FLAG_DEFEATED_MAGMA_SPACE_CENTER"
+      },
+      {
+        "text": "Earn the RAIN BADGE",
+        "flag": "FLAG_BADGE08_GET"
+      }
+    ]
+  },
+  {
+    "title": "The Pokemon League",
+    "side": 0,
+    "start": "FLAG_BADGE08_GET",
+    "steps": [
+      {
+        "text": "Defeat WALLY at VICTORY ROAD",
+        "flag": "FLAG_DEFEATED_WALLY_VICTORY_ROAD"
+      },
+      {
+        "text": "Become HOENN's CHAMPION",
+        "flag": "FLAG_SYS_GAME_CLEAR"
+      }
+    ]
+  },
+  {
+    "title": "A Welcome Across the Sea",
+    "side": 0,
+    "start": "FLAG_SYS_GAME_CLEAR",
+    "steps": [
+      {
+        "text": "Take the ferry to VERMILION",
+        "flag": "FLAG_LEGENDS_KANTO_WELCOMED"
+      },
+      {
+        "text": "Begin OAK's WING SURVEY",
+        "flag": "FLAG_LEGENDS_KANTO_SURVEY_STARTED"
+      }
+    ]
+  },
+  {
+    "title": "Wings over Kanto",
+    "side": 0,
+    "start": "FLAG_LEGENDS_KANTO_SURVEY_STARTED",
+    "steps": [
+      {
+        "text": "Win LT. SURGE's visiting challenge",
+        "flag": "FLAG_LEGENDS_KANTO_SURGE_WON"
+      },
+      {
+        "text": "Win KOGA's visiting challenge",
+        "flag": "FLAG_LEGENDS_KANTO_KOGA_WON"
+      },
+      {
+        "text": "File the first survey report",
+        "flag": "FLAG_LEGENDS_KANTO_SURVEY_REPORT"
+      }
+    ]
+  },
+  {
+    "title": "The Borrowed Voice",
+    "side": 0,
+    "start": "FLAG_LEGENDS_KANTO_SURVEY_REPORT",
+    "steps": [
+      {
+        "text": "Record the forest leaves",
+        "flag": "FLAG_LEGENDS_KANTO_SURVEY_LEAVES"
+      },
+      {
+        "text": "Record the borrowed echo",
+        "flag": "FLAG_LEGENDS_KANTO_SURVEY_ECHO"
+      },
+      {
+        "text": "File the field survey report",
+        "flag": "FLAG_LEGENDS_KANTO_SURVEY_FIELD_REPORT"
+      }
+    ]
+  },
+  {
+    "title": "The Quiet Current",
+    "side": 0,
+    "start": "FLAG_LEGENDS_KANTO_SURVEY_FIELD_REPORT",
+    "steps": [
+      {
+        "text": "Restore the west relay",
+        "flag": "FLAG_LEGENDS_KANTO_WEST_RELAY"
+      },
+      {
+        "text": "Restore the east relay",
+        "flag": "FLAG_LEGENDS_KANTO_EAST_RELAY"
+      },
+      {
+        "text": "Observe ZAPDOS at its roost",
+        "flag": "FLAG_LEGENDS_KANTO_ZAPDOS_SEEN"
+      },
+      {
+        "text": "File the POWER PLANT report",
+        "flag": "FLAG_LEGENDS_KANTO_SURVEY_POWER_REPORT"
+      }
+    ]
+  },
+  {
+    "title": "Stillwater Wings",
+    "side": 0,
+    "start": "FLAG_LEGENDS_KANTO_SURVEY_POWER_REPORT",
+    "steps": [
+      {
+        "text": "Calm SEAFOAM's deep current",
+        "flag": "FLAG_LEGENDS_STORY_SEAFOAM_B4F_CURRENT"
+      },
+      {
+        "text": "Observe ARTICUNO",
+        "flag": "FLAG_LEGENDS_STORY_ARTICUNO_SEEN"
+      },
+      {
+        "text": "File the SEAFOAM report",
+        "flag": "FLAG_LEGENDS_STORY_SEAFOAM_REPORT"
+      }
+    ]
+  },
+  {
+    "title": "The Sleeping Continent",
+    "side": 0,
+    "start": "FLAG_LEGENDS_STORY_WEATHER_STARTED",
+    "steps": [
+      {
+        "text": "Take the rain reading",
+        "flag": "FLAG_LEGENDS_STORY_WEATHER_RAIN_READING"
+      },
+      {
+        "text": "Take the heat reading",
+        "flag": "FLAG_LEGENDS_STORY_WEATHER_HEAT_READING"
+      },
+      {
+        "text": "Calm the CONTINENTAL VAULT",
+        "flag": "FLAG_LEGENDS_STORY_REGIGIGAS_CALMED"
+      },
+      {
+        "text": "Report at the WEATHER INSTITUTE",
+        "flag": "FLAG_LEGENDS_STORY_WEATHER_REPORT"
+      }
+    ]
+  },
+  {
+    "title": "The Three Regulators",
+    "side": 0,
+    "start": "FLAG_LEGENDS_STORY_WEATHER_HEAT_READING",
+    "steps": [
+      {
+        "text": "Restore the rock regulator",
+        "flag": "FLAG_LEGENDS_STORY_VAULT_ROCK"
+      },
+      {
+        "text": "Restore the ice regulator",
+        "flag": "FLAG_LEGENDS_STORY_VAULT_ICE"
+      },
+      {
+        "text": "Restore the steel regulator",
+        "flag": "FLAG_LEGENDS_STORY_VAULT_STEEL"
+      },
+      {
+        "text": "Awaken REGIGIGAS",
+        "flag": "FLAG_LEGENDS_STORY_REGIGIGAS_AWAKENED"
+      }
+    ]
+  },
+  {
+    "title": "Stone and Tide",
+    "side": 0,
+    "start": "FLAG_LEGENDS_STORY_WEATHER_REPORT",
+    "steps": [
+      {
+        "text": "Record the water reading",
+        "flag": "FLAG_LEGENDS_STORY_NORTH_WATER"
+      },
+      {
+        "text": "Record the stone reading",
+        "flag": "FLAG_LEGENDS_STORY_NORTH_STONE"
+      },
+      {
+        "text": "File the northern report",
+        "flag": "FLAG_LEGENDS_STORY_NORTH_REPORT"
+      }
+    ]
+  },
+  {
+    "title": "Ember's Passage",
+    "side": 0,
+    "start": "FLAG_LEGENDS_STORY_NORTH_REPORT",
+    "steps": [
+      {
+        "text": "Win BLAINE's visiting challenge",
+        "flag": "FLAG_LEGENDS_KANTO_BLAINE_WON"
+      },
+      {
+        "text": "Observe MOLTRES at MT. EMBER",
+        "flag": "FLAG_LEGENDS_STORY_MOLTRES_SEEN"
+      },
+      {
+        "text": "File the MT. EMBER report",
+        "flag": "FLAG_LEGENDS_STORY_EMBER_REPORT"
+      }
+    ]
+  },
+  {
+    "title": "The Last Record",
+    "side": 0,
+    "start": "FLAG_LEGENDS_STORY_EMBER_REPORT",
+    "steps": [
+      {
+        "text": "Win the VIRIDIAN challenge",
+        "flag": "FLAG_LEGENDS_KANTO_VIRIDIAN_WON"
+      },
+      {
+        "text": "Complete all eight visiting records",
+        "flag": "FLAG_LEGENDS_FINAL_EIGHT_RECORDS"
+      },
+      {
+        "text": "Speak to OAK in PALLET TOWN",
+        "flag": "FLAG_LEGENDS_FINAL_OAK_ANALYSIS"
+      }
+    ]
+  },
+  {
+    "title": "A Familiar Shadow",
+    "side": 0,
+    "start": "FLAG_LEGENDS_FINAL_OAK_ANALYSIS",
+    "steps": [
+      {
+        "text": "Receive the island voyage lead",
+        "flag": "FLAG_LEGENDS_FINAL_VOYAGE_READY"
+      },
+      {
+        "text": "Visit FARAWAY ISLAND",
+        "flag": "FLAG_LEGENDS_FINAL_ISLAND_VISITED"
+      },
+      {
+        "text": "Observe MEW in the deep forest",
+        "flag": "FLAG_LEGENDS_FINAL_MEW_OBSERVED"
+      }
+    ]
+  },
+  {
+    "title": "Beyond the Horizon",
+    "side": 0,
+    "start": "FLAG_LEGENDS_FINAL_MEW_OBSERVED",
+    "steps": [
+      {
+        "text": "Give OAK the final survey report",
+        "flag": "FLAG_LEGENDS_FINAL_REPORT"
+      },
+      {
+        "text": "Receive OAK's one-time reward",
+        "flag": "FLAG_LEGENDS_FINAL_REWARD"
+      },
+      {
+        "text": "Read BIRCH's letter in HOENN",
+        "flag": "FLAG_LEGENDS_FINAL_HOENN_EPILOGUE"
+      }
+    ]
+  },
+  {
+    "title": "The Visiting Leaders",
+    "side": 1,
+    "start": "FLAG_LEGENDS_KANTO_SURVEY_STARTED",
+    "steps": [
+      {
+        "text": "Win ERIKA's visiting challenge",
+        "flag": "FLAG_LEGENDS_KANTO_ERIKA_WON"
+      },
+      {
+        "text": "Win SABRINA's visiting challenge",
+        "flag": "FLAG_LEGENDS_KANTO_SABRINA_WON"
+      },
+      {
+        "text": "Win MISTY's visiting challenge",
+        "flag": "FLAG_LEGENDS_KANTO_MISTY_WON"
+      },
+      {
+        "text": "Win BROCK's visiting challenge",
+        "flag": "FLAG_LEGENDS_KANTO_BROCK_WON"
+      }
+    ]
+  },
+  {
+    "title": "Riding in Style",
+    "side": 1,
+    "start": "FLAG_SYS_POKEDEX_GET",
+    "steps": [
+      {
+        "text": "Receive a bicycle from RYDEL",
+        "flag": "FLAG_RECEIVED_BIKE"
+      }
+    ]
+  },
+  {
+    "title": "A Secret Place",
+    "side": 1,
+    "start": "FLAG_BADGE03_GET",
+    "steps": [
+      {
+        "text": "Receive SECRET POWER",
+        "flag": "FLAG_RECEIVED_SECRET_POWER"
+      },
+      {
+        "text": "Enable the secret base registry",
+        "flag": "FLAG_SECRET_BASE_REGISTRY_ENABLED"
+      }
+    ]
+  },
+  {
+    "title": "A Sunken Discovery",
+    "side": 1,
+    "start": "FLAG_RECEIVED_HM_DIVE",
+    "steps": [
+      {
+        "text": "Exchange the SCANNER with STERN",
+        "flag": "FLAG_EXCHANGED_SCANNER"
+      }
+    ]
+  },
+  {
+    "title": "The Ancient Doors",
+    "side": 1,
+    "start": "FLAG_BADGE08_GET",
+    "steps": [
+      {
+        "text": "Unseal the three REGI doors",
+        "flag": "FLAG_REGI_DOORS_OPENED"
+      }
+    ]
+  },
+  {
+    "title": "Birds of a Feather",
+    "side": 1,
+    "start": "FLAG_LEGENDS_KANTO_SURVEY_STARTED",
+    "steps": [
+      {
+        "text": "Catch ZAPDOS",
+        "flag": "FLAG_LEGENDS_KANTO_ZAPDOS_CAUGHT"
+      },
+      {
+        "text": "Catch ARTICUNO",
+        "flag": "FLAG_LEGENDS_STORY_ARTICUNO_CAUGHT"
+      },
+      {
+        "text": "Catch MOLTRES",
+        "flag": "FLAG_LEGENDS_STORY_MOLTRES_CAUGHT"
+      }
+    ]
+  },
+  {
+    "title": "The Sleeping Titan",
+    "side": 1,
+    "start": "FLAG_LEGENDS_STORY_REGIGIGAS_CALMED",
+    "steps": [
+      {
+        "text": "Catch REGIGIGAS in the vault",
+        "flag": "FLAG_LEGENDS_STORY_REGIGIGAS_CAUGHT"
+      }
+    ]
+  }
+]

@@ -16,6 +16,7 @@ struct SpriteFrameImage;
 #define LEGENDS_JACKET_COUNT 3
 #define LEGENDS_HAIR_COUNT 11
 #define LEGENDS_HAIR_COLOR_COUNT 8
+#define LEGENDS_LEGGINGS_COUNT 3
 
 extern u16 gLegendsOverworldPalettes[2][16];
 extern u16 gLegendsTrainerPalettes[2][16];
@@ -26,6 +27,8 @@ void LegendsClearAppearanceSelection(void);
 void LegendsSetAppearanceSelection(u8 skin, u8 outfit);
 void LegendsApplyAppearanceToNewGame(void);
 u8 LegendsGetShoes(void);
+u8 LegendsGetLeggings(void);
+void LegendsSetLeggingsSelection(u8 leggings);
 u8 LegendsGetCardColor(void);
 void LegendsSetShoeSelection(u8 shoes);
 void LegendsSetCardColorSelection(u8 color);
@@ -33,6 +36,7 @@ void LegendsPrepareFootwearPalette(u16 *palette, u8 gender, u8 kind);
 const struct SpriteFrameImage *LegendsFootwearImages(const struct SpriteFrameImage *images, u8 gender, u8 state);
 const u32 *LegendsFootwearFrontPic(enum TrainerPicID pic, const u32 *data);
 void LegendsFootwearBackPic(enum TrainerPicID pic, u8 *data, u32 size);
+const struct SpriteFrameImage *LegendsFootwearBackImages(enum TrainerPicID pic, const struct SpriteFrameImage *images, u8 frameCount);
 void LegendsApplyCardColor(void);
 u16 LegendsCardSwatch(void);
 void LegendsBeginWardrobeSelection(void);

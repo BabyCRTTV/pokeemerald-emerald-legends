@@ -49,6 +49,8 @@ enum TrainerPicID {TRAINER_PIC_LEGENDS_BRENDAN_EMERALD=200};
 #define RGB(r,g,b) ((r)|((g)<<5)|((b)<<10))
 #define COMPOUND_STRING(x) ((const u8 *)(x))
 #define LEGENDS_JACKET_COUNT 3
+#define LEGENDS_LEGGINGS_COUNT 3
+#define VAR_LEGENDS_LEGGINGS 6
 #define VAR_LEGENDS_HAIR 5
 #define VAR_LEGENDS_SHOES 3
 #define VAR_LEGENDS_CARD_COLOR 4
@@ -57,9 +59,10 @@ enum TrainerPicID {TRAINER_PIC_LEGENDS_BRENDAN_EMERALD=200};
 #define VAR_LEGENDS_ACCESSORIES 1
 #define TRAINER_PIC_LEGENDS_ACCESSORY_0 210
 #define VAR_LEGENDS_APPEARANCE 0
-static u16 value,accessories,costume,shoes,card,hair;
-u16 VarGet(u16 id){return id==5?hair:id==4?card:id==3?shoes:id==2?costume:id==1?accessories:value;}
-void VarSet(u16 id,u16 v){if(id==5)hair=v;else if(id==4)card=v;else if(id==3)shoes=v;else if(id==2)costume=v;else if(id==1)accessories=v;else value=v;}
+static u16 value,accessories,costume,shoes,card,hair,leggings;
+u16 VarGet(u16 id){return id==6?leggings:id==5?hair:id==4?card:id==3?shoes:id==2?costume:id==1?accessories:value;}
+void VarSet(u16 id,u16 v){if(id==6)leggings=v;else if(id==5)hair=v;else if(id==4)card=v;else if(id==3)shoes=v;else if(id==2)costume=v;else if(id==1)accessories=v;else value=v;}
+u8 LegendsGetLeggings(void);
 u8 LegendsGetShoes(void);u8 LegendsGetCardColor(void);u8 LegendsGetHair(void);u8 LegendsGetHairColor(void);
 void LegendsPrepareFootwearPalette(u16*p,u8 g,u8 k){}
 void LegendsClearAppearanceSelection(void);

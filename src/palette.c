@@ -969,7 +969,16 @@ void TimeMixPalettes(u32 palettes, u16 *src, u16 *dst, struct BlendSettings *ble
 
                 if (srcColor >> 15)
                 {
-                    if (altBlendColor)
+                    if (altBlendColor == 0x8000)
+                    {
+                        // Dedicated window/sign palettes carry their own
+                        // day/night colors. Keep their authored emission;
+                        // ordinary light palettes retain the native mixer.
+                        r2 = r;
+                        g2 = g;
+                        b2 = b;
+                    }
+                    else if (altBlendColor)
                     {
                         // Use alternate blend color
                         r2 = r + (((altR - r) * (s32)coeff1) >> 5);

@@ -33,6 +33,10 @@ jobs:
         run: python3 test/legends-upstream-items.test.py
       - name: Exercise first-item history and compatible save sectors
         run: python3 test/legends-item-descriptions.test.py
+      - name: Exercise quest progression and achievement claims
+        run: python3 test/legends-journal.test.py
+      - name: Exercise lossless expanded storage codec
+        run: ASAN_OPTIONS=detect_leaks=0 python3 test/legends-storage-codec.test.py
       - name: Exercise pause panel regression tests
         run: python3 test/legends-start-menu.test.py
       - name: Exercise Adventure Log persistence, days and milestones

@@ -18,6 +18,7 @@ struct AppearanceSelection
     u8 jacket;
     bool8 legacySkin;
     u8 hairColor;
+    u8 leggings;
 };
 
 EWRAM_DATA static struct AppearanceSelection sSelection = {0};
@@ -60,6 +61,7 @@ void LegendsBeginAppearanceSelection(void)
 {
     sSelection.valid = TRUE;
     sSelection.skin = 0;
+    sSelection.leggings = 0;
     sSelection.outfit = 0;
     sSelection.scarf = 0;
     sSelection.costume = 0;
@@ -89,6 +91,7 @@ void LegendsApplyAppearanceToNewGame(void)
     VarSet(VAR_LEGENDS_SHOES, 0);
     VarSet(VAR_LEGENDS_CARD_COLOR, 0);
     VarSet(VAR_LEGENDS_HAIR, sSelection.valid ? sSelection.hair + LEGENDS_HAIR_COUNT * sSelection.hairColor : 0);
+    VarSet(VAR_LEGENDS_LEGGINGS, 0);
     LegendsClearAppearanceSelection();
 }
 
@@ -131,6 +134,7 @@ void LegendsBeginWardrobeSelection(void)
     sSelection.cardColor = card;
     sSelection.hair = hair;
     sSelection.hairColor = hairColor;
+    sSelection.leggings = LegendsGetLeggings();
     sSelection.jacket = jacket;
     sSelection.valid = TRUE;
     sPaletteStamp = 0;
@@ -151,6 +155,7 @@ void LegendsApplyWardrobeSelection(void)
     VarSet(VAR_LEGENDS_SHOES, LegendsGetShoes());
     VarSet(VAR_LEGENDS_CARD_COLOR, LegendsGetCardColor());
     VarSet(VAR_LEGENDS_HAIR, LegendsGetHair() + LEGENDS_HAIR_COUNT * LegendsGetHairColor());
+    VarSet(VAR_LEGENDS_LEGGINGS, LegendsGetLeggings());
     LegendsClearAppearanceSelection();
 }
 
@@ -159,7 +164,7 @@ void LegendsUpdateAppearancePalettes(void)
     u16 code = GetAppearanceCode();
     u32 stamp = code + 1 + 31 * GetAccessoryCode() + 558 * LegendsGetCostume()
               + 1674 * LegendsGetShoes() + 13392 * LegendsGetHair()
-              + 147312 * LegendsGetHairColor();
+              + 147312 * LegendsGetHairColor() + 1178496 * LegendsGetLeggings();
     u32 gender, i;
     u8 skin = LegendsGetSkinTone();
     u8 outfit = LegendsGetOutfit();
@@ -252,6 +257,17 @@ u8 LegendsGetShoes(void)
 {
     u16 value = sSelection.valid ? sSelection.shoes : VarGet(VAR_LEGENDS_SHOES);
     return value < LEGENDS_SHOE_COUNT ? value : 0;
+}
+
+u8 LegendsGetLeggings(void)
+{
+    u16 value = sSelection.valid ? sSelection.leggings : VarGet(VAR_LEGENDS_LEGGINGS);
+    return value < LEGENDS_LEGGINGS_COUNT ? value : 0;
+}
+
+void LegendsSetLeggingsSelection(u8 leggings)
+{
+    sSelection.leggings = leggings < LEGENDS_LEGGINGS_COUNT ? leggings : 0;
 }
 u8 LegendsGetCardColor(void)
 {

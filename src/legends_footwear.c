@@ -7,8 +7,8 @@
 
 #include "data/legends/footwear_masks.h"
 
-// One stable bank: only the local player uses custom overworld art, and only
-// one movement state is visible at a time. Native/link NPC graphics are separate.
+// One stable bank: the local player's overworld art and battle back poses
+// are never visible together. Native/link NPC graphics are separate.
 // The generated capacity fits the largest native pose table without heap use.
 EWRAM_DATA static u8 sWorldPixels[LEGENDS_FOOTWEAR_CACHE_BYTES] = {0};
 EWRAM_DATA static struct SpriteFrameImage sWorldImages[LEGENDS_FOOTWEAR_CACHE_FRAMES] = {0};
@@ -20,6 +20,7 @@ EWRAM_DATA static u8 sWorldHair = 0;
 EWRAM_DATA static u8 sWorldHairColor = 0;
 EWRAM_DATA static u8 sWorldCoat = 0;
 EWRAM_DATA static u8 sWorldShoes = 0;
+EWRAM_DATA static u8 sWorldLeggings = 0;
 EWRAM_DATA static u8 sRemap[2][3][2] = {0};
 EWRAM_DATA static u32 sFrontPic[2][577] = {0};
 EWRAM_DATA static const u32 *sFrontSource[2] = {0};
@@ -28,6 +29,7 @@ EWRAM_DATA static u8 sFrontShoes[2] = {0};
 EWRAM_DATA static u8 sFrontHair[2] = {0};
 EWRAM_DATA static u8 sFrontHairColor[2] = {0};
 EWRAM_DATA static u8 sFrontCoat[2] = {0};
+EWRAM_DATA static u8 sFrontLeggings[2] = {0};
 EWRAM_DATA static u8 sFrontPixels[2048] = {0};
 
 static const u16 sShoeColors[7][2] = {
@@ -112,24 +114,27 @@ const struct SpriteFrameImage *LegendsFootwearImages(const struct SpriteFrameIma
     u8 boots = shoes >= 6;
     u8 hair = LegendsGetHair(), hairColor = LegendsGetHairColor();
     u8 coat = LegendsGetJacketStyle();
+    u8 leggings = gender == FEMALE ? LegendsGetLeggings() : 0;
     // The native diving suit, including its head covering and original
     // palette, is intentionally unaffected by wardrobe layers.
-    if (LegendsGetCostume() || state == 4 || (!shoes && !hair && !hairColor && !coat))
+    if (LegendsGetCostume() || state == 4 || (!shoes && !hair && !hairColor && !coat && !leggings))
         return images;
     if (sWorldSource == images && sWorldGender == gender && sWorldState == state
         && sWorldBoots == boots && sWorldShoes == shoes
-        && sWorldHair == hair && sWorldHairColor == hairColor && sWorldCoat == coat)
+        && sWorldHair == hair && sWorldHairColor == hairColor && sWorldCoat == coat && sWorldLeggings == leggings)
         return sWorldImages;
     for (i = 0; i < sFootwearFrameCount[gender][state]; i++)
     {
-        u32 size = images[i].size;
+        u32 size = images[0].relativeFrames ? images[0].size : images[i].size;
+        const u8 *source = images[0].relativeFrames ? images[0].data + i * size : images[i].data;
         u8 width = state == 0 ? 16 : 32;
         // Reuse the original 13.5 KiB bank: no extra animation-frame heap.
         if (size > 512 || offset + size > sizeof(sWorldPixels))
             return images;
         sWorldImages[i].data = sWorldPixels + offset;
         sWorldImages[i].size = size;
-        Compose(sWorldPixels + offset, images[i].data,
+        sWorldImages[i].relativeFrames = FALSE;
+        Compose(sWorldPixels + offset, source,
             shoes ? sFootwearMasks[gender][state][boots] + offset : NULL,
             size, gender, 0, shoes != 0);
         LegendsPaintStylePose(sWorldPixels + offset, width, gender, 0, state, i, hair, coat);
@@ -143,6 +148,7 @@ const struct SpriteFrameImage *LegendsFootwearImages(const struct SpriteFrameIma
     sWorldHair = hair;
     sWorldHairColor = hairColor;
     sWorldCoat = coat;
+    sWorldLeggings = leggings;
     return sWorldImages;
 }
 
@@ -159,14 +165,15 @@ const u32 *LegendsFootwearFrontPic(enum TrainerPicID pic, const u32 *data)
 {
     u8 gender = PicGender(pic), shoes = LegendsGetShoes();
     u8 boots = shoes >= 6, hair = LegendsGetHair(), hairColor = LegendsGetHairColor(), coat = LegendsGetJacketStyle();
+    u8 leggings = gender == FEMALE ? LegendsGetLeggings() : 0;
     u8 *out;
     u32 i, pos;
-    if (gender > 1 || LegendsGetCostume() || (!shoes && !hair && !hairColor && !coat))
+    if (gender > 1 || LegendsGetCostume() || (!shoes && !hair && !hairColor && !coat && !leggings))
         return data;
     LegendsUpdateAppearancePalettes();
     if (sFrontSource[gender] == data && sFrontBoots[gender] == boots
         && sFrontShoes[gender] == shoes && sFrontHair[gender] == hair && sFrontHairColor[gender] == hairColor
-        && sFrontCoat[gender] == coat)
+        && sFrontCoat[gender] == coat && sFrontLeggings[gender] == leggings)
         return sFrontPic[gender];
     DecompressDataWithHeaderWram(data, sFrontPixels);
     if (shoes || (gender == MALE && (hair || hairColor)))
@@ -189,6 +196,7 @@ const u32 *LegendsFootwearFrontPic(enum TrainerPicID pic, const u32 *data)
     sFrontHair[gender] = hair;
     sFrontHairColor[gender] = hairColor;
     sFrontCoat[gender] = coat;
+    sFrontLeggings[gender] = leggings;
     return sFrontPic[gender];
 }
 
@@ -206,6 +214,30 @@ void LegendsFootwearBackPic(enum TrainerPicID pic, u8 *data, u32 size)
             Compose(data + i, data + i, NULL, 2048, gender, 1, shoes != 0);
         LegendsPaintStylePose(data + i, 64, gender, 2, 0, i / 2048, hair, coat);
     }
+}
+
+const struct SpriteFrameImage *LegendsFootwearBackImages(enum TrainerPicID pic, const struct SpriteFrameImage *images, u8 frameCount)
+{
+    u32 i, size = images[0].size;
+    u8 gender = PicGender(pic);
+    if (gender > 1 || LegendsGetCostume()
+        || (!LegendsGetShoes() && !LegendsGetHair() && !LegendsGetHairColor() && !LegendsGetJacketStyle())
+        || size != 2048 || frameCount != 4)
+        return images;
+    // Native battle intros upload SpriteFrameImages directly, bypassing the
+    // portrait copy helper. Compose all four throws into the existing bank.
+    // Invalidate its field cache before reusing it; field reentry rebuilds it.
+    sWorldSource = NULL;
+    for (i = 0; i < frameCount; i++)
+    {
+        const u8 *source = images[0].relativeFrames ? images[0].data + i * size : images[i].data;
+        CpuSmartCopy16(source, sWorldPixels + i * size, size);
+        sWorldImages[i].data = sWorldPixels + i * size;
+        sWorldImages[i].size = size;
+        sWorldImages[i].relativeFrames = FALSE;
+    }
+    LegendsFootwearBackPic(pic, sWorldPixels, frameCount * size);
+    return sWorldImages;
 }
 
 static u16 Tint(u16 color, u8 light)
