@@ -15,6 +15,7 @@ struct SpriteFrameImage;
 #define LEGENDS_CARD_COLOR_COUNT 8
 #define LEGENDS_JACKET_COUNT 3
 #define LEGENDS_HAIR_COUNT 11
+#define LEGENDS_HAIR_COLOR_COUNT 8
 
 extern u16 gLegendsOverworldPalettes[2][16];
 extern u16 gLegendsTrainerPalettes[2][16];
@@ -44,6 +45,10 @@ bool8 LegendsGetJacket(void);
 u8 LegendsGetJacketStyle(void);
 u8 LegendsGetHair(void);
 void LegendsSetHairSelection(u8 hair);
+u8 LegendsGetHairColor(void);
+void LegendsSetHairColorSelection(u8 color);
+const u8 *LegendsGetHairName(enum Gender gender, u8 hair);
+const u8 *LegendsGetHairColorName(u8 color);
 void LegendsPaintStylePose(u8 *data, u8 width, u8 gender, u8 kind, u8 state, u8 pose, u8 hair, u8 coat);
 u8 LegendsGetAccessoryStyle(void);
 u8 LegendsGetSkinTone(void);

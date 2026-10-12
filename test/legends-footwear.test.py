@@ -29,8 +29,9 @@ typedef uint8_t u8;typedef uint16_t u16;typedef uint32_t u32;typedef int32_t s32
 #define LEGENDS_OUTFIT_COUNT 5
 struct SpriteFrameImage {const u8 *data;u16 size;};
 enum TrainerPicID {TRAINER_PIC_LEGENDS_BRENDAN_EMERALD=200,TRAINER_PIC_LEGENDS_ACCESSORY_0=210,TRAINER_PIC_LEGENDS_COSTUME_0=240};
-static u8 shoes,costume,card,hair,coat;
+static u8 shoes,costume,card,hair,coat,color;
 u8 LegendsGetShoes(void){return shoes;}u8 LegendsGetCostume(void){return costume;}u8 LegendsGetCardColor(void){return card;}
+u8 LegendsGetHairColor(void){return color;}
 u8 LegendsGetHair(void){return hair;}u8 LegendsGetJacketStyle(void){return coat;}
 u8 LegendsGetScarf(void){return 0;}
 #define LEGENDS_HAIR_COUNT 11
@@ -120,6 +121,27 @@ int main(int argc,char**argv){
   shoes=0;art=LegendsFootwearImages(src,g,st);assert(!memcmp(baseline,art[0].data,src[0].size));
  }
 
+ // Color-only Original and custom cuts must use the live cache path. Color
+ // reservations cannot let shoe choices paint hair or overwrite skin/props.
+ for(int g=0;g<2;g++)for(int st=0;st<8;st++)for(int h=0;h<11;h++){
+  hair=h;coat=shoes=0;color=1;
+  const struct SpriteFrameImage *src=nativeWorld[g][st];
+  const struct SpriteFrameImage *art=LegendsFootwearImages(src,g,st);
+  u8 baseline[512];memcpy(baseline,art[0].data,src[0].size);
+  if(st==4){assert(art==src);continue;}
+  assert(art!=src);
+  for(int c=1;c<8;c++){
+   color=c;shoes=7;u16 pal[16];memcpy(pal,sBaseOverworldPalettes[g],32);LegendsPrepareFootwearPalette(pal,g,0);
+   assert(sRemap[g][0][0]!=4&&sRemap[g][0][0]!=7&&sRemap[g][0][1]!=4&&sRemap[g][0][1]!=7);
+   art=LegendsFootwearImages(src,g,st);
+   for(int i=0;i<src[0].size;i++)for(int shift=0;shift<8;shift+=4){
+    int v=baseline[i]>>shift&15,m=sFootwearMasks[g][st][1][i]>>shift&15;
+    if(!m&&(v==4||v==7||v<=3||v==12||v==13))assert((art[0].data[i]>>shift&15)==v);
+   }
+   shoes=0;art=LegendsFootwearImages(src,g,st);assert(!memcmp(baseline,art[0].data,src[0].size));
+  }
+ }
+ color=0;
  // Reserve native male shade 7 *before* footwear overlays. A shoe pixel
  // must never be replaced by the warm highlight reservation.
  u8 nativeShade=0x77, painted=0, bootMask=0x11;

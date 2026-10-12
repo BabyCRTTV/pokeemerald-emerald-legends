@@ -51,6 +51,7 @@ typedef uint8_t u8;typedef uint16_t u16;typedef int bool8;
 #define LEGENDS_SHOE_COUNT 8
 #define LEGENDS_CARD_COLOR_COUNT 8
 #define LEGENDS_HAIR_COUNT 11
+#define LEGENDS_HAIR_COLOR_COUNT 8
 #define LEGENDS_JACKET_COUNT 3
 #define A_BUTTON 1
 #define B_BUTTON 2
@@ -67,7 +68,7 @@ struct {u8 active;}gPaletteFade;
 struct {struct {u8 mapGroup,mapNum;}location;}save1,*gSaveBlock1Ptr=&save1;
 struct {u8 playerGender;}save2,*gSaveBlock2Ptr=&save2;
 const u16 gStandardMenuPalette[16]={0};
-static int keys,base,baseIndex,outfit,scarf,jacket,costume,shoes,card,hair,pending,applies,cancels,freed,returns,resumes,pics,initFail,fieldCleanup;
+static int keys,base,baseIndex,outfit,scarf,jacket,costume,shoes,card,hair,color,pending,applies,cancels,freed,returns,resumes,pics,initFail,fieldCleanup;
 u16 VarGet(int v){return baseIndex;}
 int CurMapIsSecretBase(void){return base;}
 void LegendsBeginWardrobeSelection(void){pending=1;}
@@ -87,6 +88,10 @@ bool8 LegendsGetJacket(void){return jacket!=0;}
 u8 LegendsGetJacketStyle(void){return jacket;}
 u8 LegendsGetHair(void){return hair;}
 void LegendsSetHairSelection(u8 h){hair=h;}
+u8 LegendsGetHairColor(void){return color;}
+void LegendsSetHairColorSelection(u8 c){assert(c<8);color=c;}
+const u8 *LegendsGetHairName(int g,u8 h){assert(g==save2.playerGender&&h<11);return (const u8 *)"STYLE";}
+const u8 *LegendsGetHairColorName(u8 c){assert(c<8);return (const u8 *)"COLOR";}
 void LegendsSetAppearanceSelection(u8 s,u8 o){assert(s==2);outfit=o;}
 void LegendsSetAccessorySelection(u8 s,u8 j){scarf=s;jacket=j;}
 u16 LegendsGetPlayerTrainerPic(int g){return 200+g;}
@@ -130,8 +135,7 @@ int main(void){
  keys=DPAD_DOWN;Task_Input(0);keys=DPAD_LEFT;Task_Input(0);assert(costume==2);
  keys=DPAD_DOWN;Task_Input(0);keys=DPAD_LEFT;Task_Input(0);assert(hair==0);
  keys=DPAD_UP;Task_Input(0);keys=DPAD_RIGHT;Task_Input(0);assert(costume==0);
- keys=DPAD_DOWN;Task_Input(0);keys=DPAD_LEFT;Task_Input(0);assert(hair==0);
- keys=A_BUTTON;Task_Input(0);assert(gTasks[0].data[2]);
+ keys=DPAD_DOWN;Task_Input(0);keys=DPAD_LEFT;Task_Input(0);assert(hair==0&&gTasks[0].data[2]);
  keys=DPAD_DOWN;for(int i=0;i<10;i++)Task_Input(0);assert(hair==10&&gTasks[0].data[3]==5);
  Task_Input(0);assert(hair==10);keys=DPAD_RIGHT;Task_Input(0);assert(hair==10);
  keys=B_BUTTON;Task_Input(0);assert(hair==0&&!gTasks[0].data[2]&&pending);
@@ -140,15 +144,21 @@ int main(void){
  keys=A_BUTTON;Task_Input(0);assert(gTasks[0].data[3]==5);
  keys=DPAD_UP;for(int i=0;i<10;i++)Task_Input(0);assert(hair==0&&gTasks[0].data[3]==0);
  Task_Input(0);assert(hair==0);keys=B_BUTTON;Task_Input(0);assert(hair==10);
+ keys=DPAD_DOWN;Task_Input(0);assert(gTasks[0].data[0]==ROW_HAIR_COLOR);
+ keys=DPAD_RIGHT;Task_Input(0);assert(gTasks[0].data[2]);
+ keys=DPAD_DOWN;for(int i=0;i<7;i++)Task_Input(0);assert(color==7&&gTasks[0].data[3]==2);
+ Task_Input(0);assert(color==7);keys=DPAD_LEFT;Task_Input(0);assert(color==7);
+ keys=B_BUTTON;Task_Input(0);assert(color==0&&!gTasks[0].data[2]);
+ keys=A_BUTTON;Task_Input(0);keys=DPAD_DOWN;Task_Input(0);keys=A_BUTTON;Task_Input(0);assert(color==1&&pending);
  keys=DPAD_DOWN;Task_Input(0);keys=DPAD_LEFT;Task_Input(0);assert(scarf==5);
  keys=DPAD_DOWN;Task_Input(0);keys=A_BUTTON;Task_Input(0);assert(jacket==1);
  keys=A_BUTTON;Task_Input(0);assert(jacket==2);
  keys=DPAD_DOWN;Task_Input(0);keys=DPAD_LEFT;Task_Input(0);assert(shoes==7);
  keys=DPAD_DOWN;Task_Input(0);keys=DPAD_LEFT;Task_Input(0);assert(card==7);
- keys=DPAD_DOWN;Task_Input(0);assert(gTasks[0].data[0]==7&&gTasks[0].data[1]==2);
- keys=DPAD_DOWN;Task_Input(0);assert(gTasks[0].data[0]==8&&gTasks[0].data[1]==3);
+ keys=DPAD_DOWN;Task_Input(0);assert(gTasks[0].data[0]==ROW_APPLY&&gTasks[0].data[1]==3);
+ keys=DPAD_DOWN;Task_Input(0);assert(gTasks[0].data[0]==ROW_CANCEL&&gTasks[0].data[1]==4);
  keys=DPAD_DOWN;Task_Input(0);assert(!gTasks[0].data[0]&&!gTasks[0].data[1]);
- keys=DPAD_UP;Task_Input(0);assert(gTasks[0].data[0]==8&&gTasks[0].data[1]==3);
+ keys=DPAD_UP;Task_Input(0);assert(gTasks[0].data[0]==ROW_CANCEL&&gTasks[0].data[1]==4);
  keys=DPAD_UP;Task_Input(0);keys=A_BUTTON;Task_Input(0);assert(applies==1&&!pending&&gTasks[0].func==Task_Return);
  gPaletteFade.active=1;Task_Return(0);assert(!freed);gPaletteFade.active=0;Task_Return(0);assert(freed==1&&returns==1);
  LegendsOpenWardrobe();CB2_InitWardrobe();keys=B_BUTTON;Task_Input(0);assert(applies==1&&cancels==1&&!pending);

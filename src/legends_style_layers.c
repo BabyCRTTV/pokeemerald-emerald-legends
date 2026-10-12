@@ -4,7 +4,7 @@
 
 // Art is authored against each original pose, then stored as sparse pixel
 // edits in ROM. No face detection or geometric drawing occurs on the GBA.
-static void ApplyEdits(u8 *bits, u8 width, const struct StyleEdits *layer, bool8 coat)
+static void ApplyEdits(u8 *bits, u8 width, const struct StyleEdits *layer, u8 mode)
 {
     u32 i;
     for (i = 0; i < layer->count; i++)
@@ -14,8 +14,10 @@ static void ApplyEdits(u8 *bits, u8 width, const struct StyleEdits *layer, bool8
         u32 index = ((y >> 3) * (width >> 3) + (x >> 3)) * 32 + (y & 7) * 4 + (x & 7) / 2;
         u8 shift = (x & 1) * 4;
         // A scarf is always in front of the coat, including its loose end.
-        if (coat && LegendsGetScarf() && ((bits[index] >> shift) & 15) == 14)
+        if (mode == 1 && LegendsGetScarf() && ((bits[index] >> shift) & 15) == 14)
             continue;
+        if (mode == 2 && ((bits[index] >> shift) & 15) != 4 && ((bits[index] >> shift) & 15) != 7)
+            continue; // Never overwrite a shoe, scarf or painted coat.
         bits[index] = (bits[index] & ~(15 << shift)) | ((edit & 15) << shift);
     }
 }
@@ -37,8 +39,12 @@ void LegendsPaintStylePose(u8 *bits, u8 width, u8 gender, u8 kind, u8 state, u8 
         layers = sStyleBack[gender][pose];
     else
         return;
+    if (LegendsGetHairColor())
+        ApplyEdits(bits, width, &layers[13], 2);
     if (coat)
         ApplyEdits(bits, width, &layers[9 + coat], TRUE);
     if (hair)
         ApplyEdits(bits, width, &layers[hair - 1], FALSE);
+    else if (LegendsGetHairColor())
+        ApplyEdits(bits, width, &layers[12], FALSE);
 }

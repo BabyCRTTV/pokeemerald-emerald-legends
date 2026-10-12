@@ -599,6 +599,45 @@ WORLD_FEMALE = [rows(s,16) for s in (
 ''',
 )]
 
+# Gender-specific replacements preserve saved IDs while changing the cut.
+MALE[5]=rows("""
+         ##
+       ##HH#
+    ###HHHH+##
+   #++HHHHHH++#
+  #++HHHH++HH++#
+  #+HHH+++HH+++#
+  #++++HHH+++++##
+   #+++HH++++###
+   #+++++#####
+    #++###...##
+    ###.......#
+""",20)
+WORLD_MALE[5]=rows("""
+      ##
+    ##HH#
+  ##HHHH+#
+ #+HHHH+++#
+ #HH++HH++#
+  #+++HH++##
+   #++++###
+   #+###..#
+    #.....#
+""",14)
+# A compact tied bun, rather than long ponytail/twin tails, for the male list.
+MALE[8]=[r[:] for r in MALE[1]]
+for y,part in enumerate(('###','H+#','++#','###'),5):
+    row=list(MALE[8][y]);row[16:19]=part;MALE[8][y]=''.join(row)
+WORLD_MALE[8]=[r[:] for r in WORLD_MALE[1]]
+for y,part in enumerate(('##','H#','+#','##'),3):
+    row=list(WORLD_MALE[8][y]);row[11:13]=part;WORLD_MALE[8][y]=''.join(row)
+MALE[9]=[r[:] for r in MALE[3]]
+WORLD_MALE[9]=[r[:] for r in WORLD_MALE[3]]
+# Close dark temples distinguish the undercut from the longer swept fringe.
+for bank in (MALE,WORLD_MALE):
+    for y in range(6,min(len(bank[9]),10)):
+        row=list(bank[9][y]);row[2:4]='##';bank[9][y]=''.join(row)
+
 def portrait(style, gender):
     return (FEMALE if gender else MALE)[style-1]
 

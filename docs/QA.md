@@ -110,3 +110,7 @@ Automated script/warp/heal-point checks: `python3 test/legends-kanto.test.py`. F
 - Select DexNav on a non-encounter map, away from grass and near grass/cave/water. Help must fit entirely top-left, dismiss cleanly, and never overlap the pause clock/menu. Walk/run/bike into a target without flight; compare 45-second timeout and out-of-range cancellation.
 - Leave pause open through a device minute rollover. First bedroom visit confirms device time; cancel and retry without progressing the Mom event. Later visits can switch real/manual. RTC-disabled mode begins at 9 AM plus played time, continues in menus and persists across save/reload. Restore RTC support and confirm real mode takes precedence.
 - Automated actual-C tests and native-art previews supplement full compilation/verified BPS generation. Manual emulator testing is not claimed by the automated build.
+
+## Appearance follow-up, v0.0.40
+
+[Recorded native mGBA review](qa/appearance-v0.0.40.md): both genders, every intro hairstyle/color, all eleven hairstyles in four field directions, actual home-box entry, wardrobe Apply and native Save/reset/Continue. Host checks also cover all 212 native poses, skull/nape and long-sleeve coverage, packed hair/color compatibility and protected palettes. Bike/field-action and throw art has structural/authoring coverage; a complete gameplay traversal of those scenes remains part of the broader checklist.

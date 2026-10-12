@@ -1,21 +1,22 @@
 """Authoring contact sheets; these are explicitly not emulator captures."""
 from PIL import Image, ImageDraw
-from build_style_layers import ROOT, frames, coat_edits, hair_edits
+from build_style_layers import ROOT, frames, coat_edits, hair_edits, original_hair
 BG=(225,218,233)
 
-def render(path,g,kind,pose,hair,coat,state=''):
+def render(path,g,kind,pose,hair,coat,state='',color=0):
     w=64 if kind!='overworld' else 16 if state=='walking' else 32
     h=64 if kind!='overworld' else 32
     im=Image.open(path);native=frames(path,w,h)[pose]
     garment=coat_edits(native,g,kind,pose,coat) if coat else native
-    hairart=hair_edits(native,g,kind,pose,hair,state) if hair else native
+    hairart,points=hair_edits(native,g,kind,pose,hair,state,True) if hair else (native,original_hair(native,g,kind,pose,state))
     out=[[5 if g==0 and hair and v==7 else v for v in row] for row in garment]
     if hair:
         for y in range(h):
             for x in range(w):
-                if hairart[y][x]!=native[y][x]:out[y][x]=hairart[y][x]
+                if hairart[y][x]!=native[y][x] or (x,y) in points:out[y][x]=hairart[y][x]
     pal=im.getpalette()[:]
     if g==0 and hair:pal[21:24]=[181,106 if kind=='overworld' else 123,66 if kind=='overworld' else 82]
+    if coat:pal[30:33]=[33,90,57] if coat==2 else [33,57,106]
     a=Image.new('P',(w,h));a.putpalette(pal);a.putdata([v for row in out for v in row]);rgb=a.convert('RGB')
     for y in range(h):
         for x in range(w):
@@ -32,7 +33,7 @@ for g,n in enumerate(('brendan','may')):
             xx=hair*180+20;yy=(g*2+row)*210+35
             canvas.paste(rgb.resize((rgb.width*scale,rgb.height*scale),Image.Resampling.NEAREST),(xx,yy))
             d.text((xx,yy-20),f'{n} {hair}',fill='black')
-canvas.save(ROOT/'docs/qa/wardrobe-v0.0.39.png')
+canvas.save(ROOT/'docs/qa/wardrobe-v0.0.40.png')
 
 canvas=Image.new('RGB',(1320,900),BG);d=ImageDraw.Draw(canvas)
 for g,n in enumerate(('brendan','may')):
@@ -45,4 +46,4 @@ for g,n in enumerate(('brendan','may')):
         xx=(k%8)*165+10;yy=g*440+(k//8)*220+30
         canvas.paste(rgb.resize((rgb.width*3,rgb.height*3),Image.Resampling.NEAREST),(xx,yy))
         d.text((xx,yy-20),f'{n} {file} {i}',fill='black')
-canvas.save(ROOT/'docs/qa/wardrobe-actions-v0.0.39.png')
+canvas.save(ROOT/'docs/qa/wardrobe-actions-v0.0.40.png')
