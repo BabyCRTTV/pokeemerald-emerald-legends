@@ -1,7 +1,7 @@
 {
-  "wikiDexRevision": "1.0.0",
-  "gameVersion": "0.0.31.1",
-  "sourceCommit": "041bd89abd1fde1b5c9f13c8900647651384e0a6",
+  "wikiDexRevision": "1.1.0",
+  "gameVersion": "0.0.40",
+  "sourceCommit": "d19f13ca089dcf6ea165ce1595b04a65a637238a",
   "source": "src/data/wild_encounters.json and src/data/pokemon/species_info/gen_*_families.h",
   "methodNote": "Percentages are conditional slot shares after the selected encounter method succeeds, not chances per step. Fishing uses per-rod slot groups. Special scripts, gifts, time/season overrides, rare encounters and other nonstandard spawn sources may not be represented.",
   "coverageNote": "Only active Emerald-style gWildMonHeaders records and Legends-specific Kanto tables are included. Unmodified unused FRLG tables and alternating-cave nondefault sets are excluded.",
@@ -26173,20 +26173,20 @@
           "entries": [
             {
               "id": "PIDGEY",
-              "min": 48,
-              "max": 52,
+              "min": 13,
+              "max": 16,
               "rate": 40
             },
             {
               "id": "MEOWTH",
-              "min": 47,
-              "max": 52,
+              "min": 10,
+              "max": 16,
               "rate": 35
             },
             {
               "id": "ODDISH",
-              "min": 47,
-              "max": 52,
+              "min": 13,
+              "max": 16,
               "rate": 25
             }
           ]
@@ -26198,8 +26198,8 @@
           "entries": [
             {
               "id": "PSYDUCK",
-              "min": 47,
-              "max": 52,
+              "min": 20,
+              "max": 40,
               "rate": 100
             }
           ]
@@ -26211,8 +26211,8 @@
           "entries": [
             {
               "id": "MAGIKARP",
-              "min": 47,
-              "max": 51,
+              "min": 5,
+              "max": 5,
               "rate": 100
             }
           ]
@@ -26224,20 +26224,20 @@
           "entries": [
             {
               "id": "POLIWAG",
-              "min": 49,
-              "max": 52,
+              "min": 5,
+              "max": 15,
               "rate": 60
             },
             {
               "id": "GOLDEEN",
-              "min": 48,
-              "max": 51,
+              "min": 5,
+              "max": 15,
               "rate": 20
             },
             {
               "id": "MAGIKARP",
-              "min": 47,
-              "max": 50,
+              "min": 5,
+              "max": 15,
               "rate": 20
             }
           ]
@@ -26249,26 +26249,26 @@
           "entries": [
             {
               "id": "POLIWAG",
-              "min": 49,
-              "max": 52,
+              "min": 15,
+              "max": 25,
               "rate": 40
             },
             {
               "id": "POLIWHIRL",
-              "min": 47,
-              "max": 50,
+              "min": 20,
+              "max": 30,
               "rate": 40
             },
             {
               "id": "GYARADOS",
-              "min": 48,
-              "max": 51,
+              "min": 15,
+              "max": 25,
               "rate": 15
             },
             {
               "id": "PSYDUCK",
-              "min": 47,
-              "max": 52,
+              "min": 15,
+              "max": 35,
               "rate": 5
             }
           ]
@@ -26287,26 +26287,26 @@
           "entries": [
             {
               "id": "MEOWTH",
-              "min": 47,
-              "max": 52,
+              "min": 17,
+              "max": 20,
               "rate": 40
             },
             {
               "id": "PIDGEY",
-              "min": 47,
-              "max": 51,
+              "min": 19,
+              "max": 22,
               "rate": 30
             },
             {
               "id": "ODDISH",
-              "min": 49,
-              "max": 52,
+              "min": 19,
+              "max": 22,
               "rate": 20
             },
             {
               "id": "GROWLITHE",
-              "min": 47,
-              "max": 51,
+              "min": 18,
+              "max": 20,
               "rate": 10
             }
           ]
@@ -26325,26 +26325,26 @@
           "entries": [
             {
               "id": "MEOWTH",
-              "min": 48,
-              "max": 51,
+              "min": 18,
+              "max": 20,
               "rate": 30
             },
             {
               "id": "PIDGEY",
-              "min": 47,
-              "max": 50,
+              "min": 18,
+              "max": 20,
               "rate": 30
             },
             {
               "id": "EKANS",
-              "min": 48,
-              "max": 52,
+              "min": 17,
+              "max": 19,
               "rate": 20
             },
             {
               "id": "GROWLITHE",
-              "min": 47,
-              "max": 52,
+              "min": 15,
+              "max": 18,
               "rate": 20
             }
           ]
@@ -26363,20 +26363,20 @@
           "entries": [
             {
               "id": "EKANS",
-              "min": 48,
-              "max": 53,
+              "min": 12,
+              "max": 15,
               "rate": 40
             },
             {
               "id": "SPEAROW",
-              "min": 48,
-              "max": 52,
+              "min": 13,
+              "max": 17,
               "rate": 35
             },
             {
               "id": "DROWZEE",
-              "min": 48,
-              "max": 53,
+              "min": 11,
+              "max": 15,
               "rate": 25
             }
           ]
@@ -26388,8 +26388,8 @@
           "entries": [
             {
               "id": "TENTACOOL",
-              "min": 48,
-              "max": 53,
+              "min": 5,
+              "max": 40,
               "rate": 100
             }
           ]
@@ -26401,8 +26401,8 @@
           "entries": [
             {
               "id": "MAGIKARP",
-              "min": 48,
-              "max": 52,
+              "min": 5,
+              "max": 5,
               "rate": 100
             }
           ]
@@ -26414,20 +26414,20 @@
           "entries": [
             {
               "id": "HORSEA",
-              "min": 50,
-              "max": 53,
+              "min": 5,
+              "max": 15,
               "rate": 60
             },
             {
               "id": "KRABBY",
-              "min": 49,
-              "max": 52,
+              "min": 5,
+              "max": 15,
               "rate": 20
             },
             {
               "id": "MAGIKARP",
-              "min": 48,
-              "max": 51,
+              "min": 5,
+              "max": 15,
               "rate": 20
             }
           ]
@@ -26439,20 +26439,20 @@
           "entries": [
             {
               "id": "HORSEA",
-              "min": 48,
-              "max": 53,
+              "min": 15,
+              "max": 35,
               "rate": 84
             },
             {
               "id": "GYARADOS",
-              "min": 49,
-              "max": 52,
+              "min": 15,
+              "max": 25,
               "rate": 15
             },
             {
               "id": "PSYDUCK",
-              "min": 48,
-              "max": 51,
+              "min": 25,
+              "max": 35,
               "rate": 1
             }
           ]
@@ -26471,26 +26471,26 @@
           "entries": [
             {
               "id": "ODDISH",
-              "min": 48,
-              "max": 53,
+              "min": 22,
+              "max": 26,
               "rate": 35
             },
             {
               "id": "PIDGEY",
-              "min": 48,
-              "max": 53,
+              "min": 23,
+              "max": 27,
               "rate": 30
             },
             {
               "id": "VENONAT",
-              "min": 49,
-              "max": 53,
+              "min": 24,
+              "max": 26,
               "rate": 30
             },
             {
               "id": "GLOOM",
-              "min": 48,
-              "max": 53,
+              "min": 28,
+              "max": 30,
               "rate": 5
             }
           ]
@@ -26502,8 +26502,8 @@
           "entries": [
             {
               "id": "TENTACOOL",
-              "min": 48,
-              "max": 53,
+              "min": 5,
+              "max": 40,
               "rate": 100
             }
           ]
@@ -26515,8 +26515,8 @@
           "entries": [
             {
               "id": "MAGIKARP",
-              "min": 48,
-              "max": 52,
+              "min": 5,
+              "max": 5,
               "rate": 100
             }
           ]
@@ -26528,20 +26528,20 @@
           "entries": [
             {
               "id": "HORSEA",
-              "min": 50,
-              "max": 53,
+              "min": 5,
+              "max": 15,
               "rate": 60
             },
             {
               "id": "KRABBY",
-              "min": 49,
-              "max": 52,
+              "min": 5,
+              "max": 15,
               "rate": 20
             },
             {
               "id": "MAGIKARP",
-              "min": 48,
-              "max": 51,
+              "min": 5,
+              "max": 15,
               "rate": 20
             }
           ]
@@ -26553,20 +26553,20 @@
           "entries": [
             {
               "id": "HORSEA",
-              "min": 48,
-              "max": 53,
+              "min": 15,
+              "max": 35,
               "rate": 84
             },
             {
               "id": "GYARADOS",
-              "min": 49,
-              "max": 52,
+              "min": 15,
+              "max": 25,
               "rate": 15
             },
             {
               "id": "PSYDUCK",
-              "min": 48,
-              "max": 51,
+              "min": 25,
+              "max": 35,
               "rate": 1
             }
           ]
@@ -26585,38 +26585,38 @@
           "entries": [
             {
               "id": "ODDISH",
-              "min": 48,
-              "max": 53,
+              "min": 22,
+              "max": 26,
               "rate": 35
             },
             {
               "id": "VENONAT",
-              "min": 49,
-              "max": 53,
+              "min": 24,
+              "max": 26,
               "rate": 30
             },
             {
               "id": "PIDGEY",
-              "min": 48,
-              "max": 52,
+              "min": 25,
+              "max": 27,
               "rate": 20
             },
             {
               "id": "DITTO",
-              "min": 49,
-              "max": 52,
+              "min": 25,
+              "max": 25,
               "rate": 5
             },
             {
               "id": "GLOOM",
-              "min": 48,
-              "max": 53,
+              "min": 28,
+              "max": 30,
               "rate": 5
             },
             {
               "id": "PIDGEOTTO",
-              "min": 49,
-              "max": 53,
+              "min": 29,
+              "max": 29,
               "rate": 5
             }
           ]
@@ -26628,8 +26628,8 @@
           "entries": [
             {
               "id": "TENTACOOL",
-              "min": 48,
-              "max": 53,
+              "min": 5,
+              "max": 40,
               "rate": 100
             }
           ]
@@ -26641,8 +26641,8 @@
           "entries": [
             {
               "id": "MAGIKARP",
-              "min": 48,
-              "max": 52,
+              "min": 5,
+              "max": 5,
               "rate": 100
             }
           ]
@@ -26654,20 +26654,20 @@
           "entries": [
             {
               "id": "HORSEA",
-              "min": 50,
-              "max": 53,
+              "min": 5,
+              "max": 15,
               "rate": 60
             },
             {
               "id": "KRABBY",
-              "min": 49,
-              "max": 52,
+              "min": 5,
+              "max": 15,
               "rate": 20
             },
             {
               "id": "MAGIKARP",
-              "min": 48,
-              "max": 51,
+              "min": 5,
+              "max": 15,
               "rate": 20
             }
           ]
@@ -26679,20 +26679,20 @@
           "entries": [
             {
               "id": "HORSEA",
-              "min": 48,
-              "max": 53,
+              "min": 15,
+              "max": 35,
               "rate": 84
             },
             {
               "id": "GYARADOS",
-              "min": 49,
-              "max": 52,
+              "min": 15,
+              "max": 25,
               "rate": 15
             },
             {
               "id": "PSYDUCK",
-              "min": 48,
-              "max": 51,
+              "min": 25,
+              "max": 35,
               "rate": 1
             }
           ]
@@ -26711,38 +26711,38 @@
           "entries": [
             {
               "id": "ODDISH",
-              "min": 48,
-              "max": 53,
+              "min": 22,
+              "max": 26,
               "rate": 35
             },
             {
               "id": "VENONAT",
-              "min": 49,
-              "max": 53,
+              "min": 24,
+              "max": 26,
               "rate": 30
             },
             {
               "id": "DITTO",
-              "min": 48,
-              "max": 53,
+              "min": 23,
+              "max": 23,
               "rate": 15
             },
             {
               "id": "PIDGEY",
-              "min": 49,
-              "max": 52,
+              "min": 27,
+              "max": 27,
               "rate": 10
             },
             {
               "id": "GLOOM",
-              "min": 49,
-              "max": 52,
+              "min": 30,
+              "max": 30,
               "rate": 5
             },
             {
               "id": "PIDGEOTTO",
-              "min": 48,
-              "max": 53,
+              "min": 29,
+              "max": 29,
               "rate": 5
             }
           ]
@@ -26761,38 +26761,38 @@
           "entries": [
             {
               "id": "ODDISH",
-              "min": 49,
-              "max": 54,
+              "min": 22,
+              "max": 26,
               "rate": 35
             },
             {
               "id": "VENONAT",
-              "min": 50,
-              "max": 54,
+              "min": 24,
+              "max": 26,
               "rate": 30
             },
             {
               "id": "PIDGEY",
-              "min": 49,
-              "max": 53,
+              "min": 25,
+              "max": 27,
               "rate": 20
             },
             {
               "id": "DITTO",
-              "min": 50,
-              "max": 53,
+              "min": 25,
+              "max": 25,
               "rate": 5
             },
             {
               "id": "GLOOM",
-              "min": 49,
-              "max": 54,
+              "min": 28,
+              "max": 30,
               "rate": 5
             },
             {
               "id": "PIDGEOTTO",
-              "min": 50,
-              "max": 54,
+              "min": 29,
+              "max": 29,
               "rate": 5
             }
           ]
@@ -26811,26 +26811,26 @@
           "entries": [
             {
               "id": "DODUO",
-              "min": 50,
-              "max": 54,
+              "min": 18,
+              "max": 22,
               "rate": 35
             },
             {
               "id": "RATTATA",
-              "min": 49,
-              "max": 54,
+              "min": 18,
+              "max": 22,
               "rate": 30
             },
             {
               "id": "SPEAROW",
-              "min": 49,
-              "max": 53,
+              "min": 20,
+              "max": 22,
               "rate": 30
             },
             {
               "id": "RATICATE",
-              "min": 49,
-              "max": 54,
+              "min": 23,
+              "max": 25,
               "rate": 5
             }
           ]
@@ -26849,32 +26849,32 @@
           "entries": [
             {
               "id": "DODUO",
-              "min": 49,
-              "max": 53,
+              "min": 24,
+              "max": 28,
               "rate": 35
             },
             {
               "id": "SPEAROW",
-              "min": 49,
-              "max": 54,
+              "min": 20,
+              "max": 22,
               "rate": 30
             },
             {
               "id": "RATICATE",
-              "min": 50,
-              "max": 54,
+              "min": 25,
+              "max": 29,
               "rate": 25
             },
             {
               "id": "FEAROW",
-              "min": 49,
-              "max": 54,
+              "min": 25,
+              "max": 27,
               "rate": 5
             },
             {
               "id": "RATTATA",
-              "min": 50,
-              "max": 54,
+              "min": 22,
+              "max": 22,
               "rate": 5
             }
           ]
@@ -26893,32 +26893,32 @@
           "entries": [
             {
               "id": "DODUO",
-              "min": 49,
-              "max": 53,
+              "min": 24,
+              "max": 28,
               "rate": 35
             },
             {
               "id": "SPEAROW",
-              "min": 49,
-              "max": 54,
+              "min": 20,
+              "max": 22,
               "rate": 30
             },
             {
               "id": "FEAROW",
-              "min": 49,
-              "max": 54,
+              "min": 25,
+              "max": 29,
               "rate": 15
             },
             {
               "id": "RATICATE",
-              "min": 50,
-              "max": 53,
+              "min": 25,
+              "max": 29,
               "rate": 15
             },
             {
               "id": "RATTATA",
-              "min": 50,
-              "max": 54,
+              "min": 22,
+              "max": 22,
               "rate": 5
             }
           ]
@@ -26937,8 +26937,8 @@
           "entries": [
             {
               "id": "TENTACOOL",
-              "min": 49,
-              "max": 54,
+              "min": 5,
+              "max": 40,
               "rate": 100
             }
           ]
@@ -26950,8 +26950,8 @@
           "entries": [
             {
               "id": "MAGIKARP",
-              "min": 49,
-              "max": 53,
+              "min": 5,
+              "max": 5,
               "rate": 100
             }
           ]
@@ -26963,20 +26963,20 @@
           "entries": [
             {
               "id": "HORSEA",
-              "min": 51,
-              "max": 54,
+              "min": 5,
+              "max": 15,
               "rate": 60
             },
             {
               "id": "KRABBY",
-              "min": 50,
-              "max": 53,
+              "min": 5,
+              "max": 15,
               "rate": 20
             },
             {
               "id": "MAGIKARP",
-              "min": 49,
-              "max": 52,
+              "min": 5,
+              "max": 15,
               "rate": 20
             }
           ]
@@ -26988,32 +26988,292 @@
           "entries": [
             {
               "id": "HORSEA",
-              "min": 49,
-              "max": 54,
+              "min": 15,
+              "max": 25,
               "rate": 80
             },
             {
               "id": "GYARADOS",
-              "min": 50,
-              "max": 53,
+              "min": 15,
+              "max": 25,
               "rate": 15
             },
             {
               "id": "SEADRA",
-              "min": 51,
-              "max": 54,
+              "min": 25,
+              "max": 35,
               "rate": 4
             },
             {
               "id": "PSYDUCK",
-              "min": 49,
-              "max": 52,
+              "min": 25,
+              "max": 35,
               "rate": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "MAP_LEGENDS_KANTO_ROUTE10",
+      "name": "Route 10",
+      "region": "Kanto",
+      "methods": [
+        {
+          "id": "land",
+          "label": "Land",
+          "encounterRate": 21,
+          "entries": [
+            {
+              "id": "VOLTORB",
+              "min": 14,
+              "max": 17,
+              "rate": 40
+            },
+            {
+              "id": "SPEAROW",
+              "min": 13,
+              "max": 17,
+              "rate": 35
+            },
+            {
+              "id": "EKANS",
+              "min": 11,
+              "max": 17,
+              "rate": 25
+            }
+          ]
+        },
+        {
+          "id": "surf",
+          "label": "Surf",
+          "encounterRate": 2,
+          "entries": [
+            {
+              "id": "TENTACOOL",
+              "min": 5,
+              "max": 40,
+              "rate": 100
+            }
+          ]
+        },
+        {
+          "id": "old_rod",
+          "label": "Old Rod",
+          "encounterRate": 20,
+          "entries": [
+            {
+              "id": "MAGIKARP",
+              "min": 5,
+              "max": 5,
+              "rate": 100
+            }
+          ]
+        },
+        {
+          "id": "good_rod",
+          "label": "Good Rod",
+          "encounterRate": 20,
+          "entries": [
+            {
+              "id": "HORSEA",
+              "min": 5,
+              "max": 15,
+              "rate": 60
+            },
+            {
+              "id": "KRABBY",
+              "min": 5,
+              "max": 15,
+              "rate": 20
+            },
+            {
+              "id": "MAGIKARP",
+              "min": 5,
+              "max": 15,
+              "rate": 20
+            }
+          ]
+        },
+        {
+          "id": "super_rod",
+          "label": "Super Rod",
+          "encounterRate": 20,
+          "entries": [
+            {
+              "id": "HORSEA",
+              "min": 15,
+              "max": 35,
+              "rate": 84
+            },
+            {
+              "id": "GYARADOS",
+              "min": 15,
+              "max": 25,
+              "rate": 15
+            },
+            {
+              "id": "PSYDUCK",
+              "min": 25,
+              "max": 35,
+              "rate": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "MAP_LEGENDS_KANTO_ROCK_TUNNEL_1F",
+      "name": "Rock Tunnel 1F",
+      "region": "Kanto",
+      "methods": [
+        {
+          "id": "land",
+          "label": "Land",
+          "encounterRate": 7,
+          "entries": [
+            {
+              "id": "GEODUDE",
+              "min": 15,
+              "max": 17,
+              "rate": 35
+            },
+            {
+              "id": "ZUBAT",
+              "min": 15,
+              "max": 16,
+              "rate": 30
+            },
+            {
+              "id": "MACHOP",
+              "min": 16,
+              "max": 17,
+              "rate": 15
+            },
+            {
+              "id": "MANKEY",
+              "min": 16,
+              "max": 17,
+              "rate": 15
+            },
+            {
+              "id": "ONIX",
+              "min": 13,
+              "max": 15,
+              "rate": 5
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "MAP_LEGENDS_KANTO_ROCK_TUNNEL_B1F",
+      "name": "Rock Tunnel B1F",
+      "region": "Kanto",
+      "methods": [
+        {
+          "id": "land",
+          "label": "Land",
+          "encounterRate": 7,
+          "entries": [
+            {
+              "id": "GEODUDE",
+              "min": 15,
+              "max": 17,
+              "rate": 35
+            },
+            {
+              "id": "ZUBAT",
+              "min": 15,
+              "max": 16,
+              "rate": 30
+            },
+            {
+              "id": "MANKEY",
+              "min": 16,
+              "max": 17,
+              "rate": 15
+            },
+            {
+              "id": "MACHOP",
+              "min": 17,
+              "max": 17,
+              "rate": 10
+            },
+            {
+              "id": "ONIX",
+              "min": 13,
+              "max": 17,
+              "rate": 10
+            }
+          ]
+        },
+        {
+          "id": "rock",
+          "label": "Rock Smash",
+          "encounterRate": 50,
+          "entries": [
+            {
+              "id": "GEODUDE",
+              "min": 5,
+              "max": 30,
+              "rate": 95
+            },
+            {
+              "id": "GRAVELER",
+              "min": 25,
+              "max": 40,
+              "rate": 5
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "MAP_LEGENDS_KANTO_POWER_PLANT",
+      "name": "Power Plant",
+      "region": "Kanto",
+      "methods": [
+        {
+          "id": "land",
+          "label": "Land",
+          "encounterRate": 7,
+          "entries": [
+            {
+              "id": "MAGNEMITE",
+              "min": 22,
+              "max": 25,
+              "rate": 30
+            },
+            {
+              "id": "VOLTORB",
+              "min": 22,
+              "max": 25,
+              "rate": 30
+            },
+            {
+              "id": "PIKACHU",
+              "min": 22,
+              "max": 26,
+              "rate": 25
+            },
+            {
+              "id": "MAGNETON",
+              "min": 31,
+              "max": 34,
+              "rate": 10
+            },
+            {
+              "id": "ELECTABUZZ",
+              "min": 32,
+              "max": 35,
+              "rate": 5
             }
           ]
         }
       ]
     }
   ],
-  "typeResolutionNote": "Source family-type macros resolved with P_UPDATED_TYPES=GEN_LATEST (Magnemite Steel, Togepi/Ralts/Cottonee Fairy)."
+  "typeResolutionNote": "Source family-type macros resolved with P_UPDATED_TYPES=GEN_LATEST (Magnemite Steel, Togepi/Ralts/Cottonee Fairy).",
+  "lastManualReview": "2026-10-12"
 }

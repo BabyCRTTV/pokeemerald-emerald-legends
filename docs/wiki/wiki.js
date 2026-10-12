@@ -34,7 +34,11 @@
   {label:'Route 16 — leaf survey',page:'walkthrough-kanto-voice',section:'route-16-leaf-observation',hint:'Birdwatcher’s field scene'},
   {label:'Saffron — Gym',page:'walkthrough-kanto-voice',section:'sabrina-and-the-teleport-pads',hint:'Sabrina’s visiting challenge'},
   {label:'Route 8 — call survey',page:'walkthrough-kanto-voice',section:'route-8-call-observation',hint:'Listen with the researcher'},
-  {label:'Vermilion — field report',page:'walkthrough-kanto-voice',section:'file-the-borrowed-voice-report',hint:'Finish The Borrowed Voice'}
+  {label:'Vermilion — field report',page:'walkthrough-kanto-voice',section:'file-the-borrowed-voice-report',hint:'Finish The Borrowed Voice'},
+  {label:'Lavender / Rock Tunnel',page:'walkthrough-kanto-current',section:'lavender-to-rock-tunnel',hint:'The northern survey road'},
+  {label:'Route 10 / Power Plant',page:'walkthrough-kanto-current',section:'route-10-and-the-river',hint:'Center and Surf approach'},
+  {label:'Power Plant — feeds',page:'walkthrough-kanto-current',section:'make-both-unused-feeds-safe',hint:'Isolate both terminals'},
+  {label:'Power Plant — Zapdos',page:'walkthrough-kanto-current',section:'observe-zapdos-at-the-roost',hint:'Observation and optional battle'}
  ];
  function readingWalkthrough(active){document.documentElement.classList.toggle('reading-walkthrough',active);root.dataset.walkthroughPage='';}
  function walkthroughNavigation(id){
@@ -129,7 +133,7 @@
  function home(push=true){
    readingWalkthrough(false);setLocation({},push);side('');
    outline.innerHTML='<strong>Wiki guide</strong><p>Choose an article or search for a feature. Everything is open to read.</p>';
-   root.innerHTML='<section class="welcome"><h1 class="wiki-game-logo"><img src="legends-logo.svg" width="166" height="93" alt="Pokémon Emerald: Legends"></h1><p>Choose a topic below, or jump straight to Pokémon and wild encounters.</p><div class="dex-shortcuts" aria-label="LegendsDex shortcuts"><a href="dex.html?view=routes">⌁ Routes <small>Wild encounter guide</small></a><a href="dex.html?view=species">◈ Pokédex <small>Browse Pokémon</small></a></div><p class="walkthrough-shortcut"><a href="?page=walkthrough" data-page="walkthrough" class="action">Walkthrough <span aria-hidden="true">→</span></a><small>Seventeen chapters from New Game to Kanto’s Wing Survey</small></p><label class="searchrow"><span aria-hidden="true">⌕</span><input id="search" type="search" placeholder="Search articles, features, and places…" aria-label="Search wiki" autocomplete="off"><span class="small">/</span></label><p class="results-note" id="resultsnote">Browse '+pages.length+' articles across seven sections.</p></section><div id="cards"></div>';
+   root.innerHTML='<section class="welcome"><h1 class="wiki-game-logo"><img src="legends-logo.svg" width="166" height="93" alt="Pokémon Emerald: Legends"></h1><p>Choose a topic below, or jump straight to Pokémon and wild encounters.</p><div class="dex-shortcuts" aria-label="LegendsDex shortcuts"><a href="dex.html?view=routes">⌁ Routes <small>Wild encounter guide</small></a><a href="dex.html?view=species">◈ Pokédex <small>Browse Pokémon</small></a></div><p class="walkthrough-shortcut"><a href="?page=walkthrough" data-page="walkthrough" class="action">Walkthrough <span aria-hidden="true">→</span></a><small>Eighteen chapters from New Game to Kanto’s Wing Survey</small></p><label class="searchrow"><span aria-hidden="true">⌕</span><input id="search" type="search" placeholder="Search articles, features, and places…" aria-label="Search wiki" autocomplete="off"><span class="small">/</span></label><p class="results-note" id="resultsnote">Browse '+pages.length+' articles across seven sections.</p></section><div id="cards"></div>';
    const input=document.getElementById('search');input.addEventListener('input',()=>cards(input.value));cards('');document.title='Emerald: Legends Wiki';menuClose();focusContent();
  }
  function cards(q){
