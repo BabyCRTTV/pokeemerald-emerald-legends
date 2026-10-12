@@ -329,10 +329,10 @@ extern const struct ContestCategory gContestCategoryInfo[CONTEST_CATEGORIES_COUN
 #define eContestAI (*gContestResources->aiData)
 #define eContestExcitement (*gContestResources->excitement)
 #define eContestGfxState (gContestResources->gfxState)
-#define eUnzippedContestAudience_Gfx (gHeap + 0x18000)
-#define eContestAudienceFrame2_Gfx (gHeap + 0x19000)
-#define eContestDebugMode (gHeap[0x1a000])
-#define eContestTempSave (*(struct ContestTempSave *)(gHeap + 0x1a004))
+#define eUnzippedContestAudience_Gfx (gHeap + (HEAP_SIZE - 0x4500))
+#define eContestAudienceFrame2_Gfx (gHeap + (HEAP_SIZE - 0x3500))
+#define eContestDebugMode (gHeap[(HEAP_SIZE - 0x2500)])
+#define eContestTempSave (*(struct ContestTempSave *)(gHeap + (HEAP_SIZE - 0x24FC)))
 
 extern struct ContestPokemon gContestMons[CONTESTANT_COUNT];
 extern s16 gContestMonRound1Points[CONTESTANT_COUNT];

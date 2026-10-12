@@ -41,7 +41,7 @@ struct MemBlock
     u8 data[0];
 };
 
-#define HEAP_SIZE 0x1C500
+#define HEAP_SIZE 0x18000 // Expanded PC is resident; keep room for native menu/battle allocations.
 extern u8 gHeap[HEAP_SIZE];
 
 #if TESTING || !defined(NDEBUG)

@@ -16,6 +16,8 @@ static void ApplyEdits(u8 *bits, u8 width, const struct StyleEdits *layer, u8 mo
         // A scarf is always in front of the coat, including its loose end.
         if (mode == 1 && LegendsGetScarf() && ((bits[index] >> shift) & 15) == 14)
             continue;
+        if (mode == 3 && ((bits[index] >> shift) & 15) != 1 && ((bits[index] >> shift) & 15) != 2 && ((bits[index] >> shift) & 15) != 3)
+            continue; // Footwear and outerwear already painted above these cells.
         if (mode == 2 && ((bits[index] >> shift) & 15) != 4 && ((bits[index] >> shift) & 15) != 7)
             continue; // Never overwrite a shoe, scarf or painted coat.
         bits[index] = (bits[index] & ~(15 << shift)) | ((edit & 15) << shift);
@@ -39,6 +41,8 @@ void LegendsPaintStylePose(u8 *bits, u8 width, u8 gender, u8 kind, u8 state, u8 
         layers = sStyleBack[gender][pose];
     else
         return;
+    if (gender == FEMALE && LegendsGetLeggings())
+        ApplyEdits(bits, width, &layers[13 + LegendsGetLeggings()], 3);
     if (LegendsGetHairColor())
         ApplyEdits(bits, width, &layers[13], 2);
     if (coat)

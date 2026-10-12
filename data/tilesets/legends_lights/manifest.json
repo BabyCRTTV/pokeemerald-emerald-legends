@@ -1,83 +1,117 @@
 {
   "families": {
     "general": {
+      "alternate": 5,
       "cells": [
         {
-          "cell": 0,
-          "metatile": 19,
+          "cell": 6,
+          "kind": "window",
+          "metatile": 11,
+          "overlay": true,
+          "source_cell": 2,
           "source_palette": 5,
-          "source_tile": 182,
+          "source_tile": 166,
           "tile": 1
         },
         {
-          "cell": 1,
-          "metatile": 19,
+          "cell": 7,
+          "kind": "window",
+          "metatile": 11,
+          "overlay": true,
+          "source_cell": 3,
           "source_palette": 5,
-          "source_tile": 182,
+          "source_tile": 166,
           "tile": 1
         },
         {
-          "cell": 0,
-          "metatile": 33,
-          "source_palette": 1,
-          "source_tile": 214,
+          "cell": 4,
+          "kind": "window",
+          "metatile": 19,
+          "overlay": true,
+          "source_cell": 0,
+          "source_palette": 5,
+          "source_tile": 182,
           "tile": 15
         },
         {
-          "cell": 1,
+          "cell": 5,
+          "kind": "window",
+          "metatile": 19,
+          "overlay": true,
+          "source_cell": 1,
+          "source_palette": 5,
+          "source_tile": 182,
+          "tile": 15
+        },
+        {
+          "cell": 4,
+          "kind": "window",
           "metatile": 33,
+          "overlay": true,
+          "source_cell": 0,
           "source_palette": 1,
-          "source_tile": 215,
+          "source_tile": 214,
           "tile": 26
         },
         {
-          "cell": 1,
-          "metatile": 66,
+          "cell": 5,
+          "kind": "window",
+          "metatile": 33,
+          "overlay": true,
+          "source_cell": 1,
           "source_palette": 1,
-          "source_tile": 329,
+          "source_tile": 215,
           "tile": 31
         },
         {
-          "cell": 0,
-          "metatile": 67,
+          "cell": 5,
+          "kind": "sign",
+          "metatile": 66,
+          "overlay": true,
+          "source_cell": 1,
           "source_palette": 1,
-          "source_tile": 330,
+          "source_tile": 329,
           "tile": 39
         },
         {
-          "cell": 1,
-          "metatile": 98,
+          "cell": 4,
+          "kind": "sign",
+          "metatile": 67,
+          "overlay": true,
+          "source_cell": 0,
           "source_palette": 1,
-          "source_tile": 327,
+          "source_tile": 330,
           "tile": 42
         },
         {
-          "cell": 0,
+          "cell": 5,
+          "kind": "sign",
+          "metatile": 98,
+          "overlay": true,
+          "source_cell": 1,
+          "source_palette": 1,
+          "source_tile": 327,
+          "tile": 55
+        },
+        {
+          "cell": 4,
+          "kind": "sign",
           "metatile": 99,
+          "overlay": true,
+          "source_cell": 0,
           "source_palette": 1,
           "source_tile": 328,
-          "tile": 55
+          "tile": 58
         }
       ],
       "colors": [
         {
-          "light": false,
-          "rgb": [
-            205,
-            156,
-            82
-          ]
-        },
-        {
-          "light": false,
-          "rgb": [
-            65,
-            74,
-            106
-          ]
-        },
-        {
           "light": true,
+          "night": [
+            255,
+            232,
+            152
+          ],
           "rgb": [
             189,
             205,
@@ -86,6 +120,11 @@
         },
         {
           "light": true,
+          "night": [
+            255,
+            232,
+            152
+          ],
           "rgb": [
             156,
             180,
@@ -93,31 +132,12 @@
           ]
         },
         {
-          "light": false,
-          "rgb": [
-            213,
-            180,
-            106
-          ]
-        },
-        {
-          "light": false,
-          "rgb": [
-            222,
-            106,
-            98
-          ]
-        },
-        {
-          "light": false,
-          "rgb": [
-            98,
-            98,
-            123
-          ]
-        },
-        {
           "light": true,
+          "night": [
+            255,
+            232,
+            152
+          ],
           "rgb": [
             98,
             172,
@@ -126,6 +146,11 @@
         },
         {
           "light": true,
+          "night": [
+            255,
+            232,
+            152
+          ],
           "rgb": [
             115,
             189,
@@ -133,15 +158,12 @@
           ]
         },
         {
-          "light": false,
-          "rgb": [
-            205,
-            65,
-            82
-          ]
-        },
-        {
-          "light": false,
+          "light": true,
+          "night": [
+            255,
+            146,
+            172
+          ],
           "rgb": [
             255,
             255,
@@ -149,15 +171,25 @@
           ]
         },
         {
-          "light": false,
+          "light": true,
+          "night": [
+            255,
+            103,
+            125
+          ],
           "rgb": [
-            189,
-            205,
-            230
+            222,
+            106,
+            98
           ]
         },
         {
           "light": true,
+          "night": [
+            255,
+            121,
+            141
+          ],
           "rgb": [
             255,
             189,
@@ -165,7 +197,12 @@
           ]
         },
         {
-          "light": false,
+          "light": true,
+          "night": [
+            255,
+            146,
+            172
+          ],
           "rgb": [
             222,
             230,
@@ -174,6 +211,11 @@
         },
         {
           "light": true,
+          "night": [
+            255,
+            94,
+            118
+          ],
           "rgb": [
             205,
             65,
@@ -184,150 +226,214 @@
       "palette": 12
     },
     "general_frlg": {
+      "alternate": 0,
       "cells": [
         {
           "cell": 5,
+          "kind": "sign",
           "metatile": 96,
+          "overlay": false,
+          "source_cell": 5,
           "source_palette": 2,
           "source_tile": 211,
           "tile": 1
         },
         {
           "cell": 4,
+          "kind": "sign",
           "metatile": 97,
+          "overlay": false,
+          "source_cell": 4,
           "source_palette": 2,
           "source_tile": 227,
           "tile": 35
         },
         {
-          "cell": 0,
+          "cell": 4,
+          "kind": "window",
           "metatile": 32,
+          "overlay": true,
+          "source_cell": 0,
           "source_palette": 3,
           "source_tile": 248,
           "tile": 61
         },
         {
-          "cell": 1,
+          "cell": 5,
+          "kind": "window",
           "metatile": 32,
+          "overlay": true,
+          "source_cell": 1,
           "source_palette": 3,
           "source_tile": 249,
           "tile": 188
         },
         {
-          "cell": 0,
+          "cell": 4,
+          "kind": "window",
           "metatile": 33,
+          "overlay": true,
+          "source_cell": 0,
           "source_palette": 3,
           "source_tile": 248,
           "tile": 61
         },
         {
           "cell": 4,
+          "kind": "window",
           "metatile": 79,
+          "overlay": false,
+          "source_cell": 4,
           "source_palette": 3,
           "source_tile": 287,
           "tile": 254
         },
         {
           "cell": 5,
+          "kind": "window",
           "metatile": 79,
+          "overlay": false,
+          "source_cell": 5,
           "source_palette": 3,
           "source_tile": 287,
           "tile": 254
         },
         {
           "cell": 4,
+          "kind": "window",
           "metatile": 87,
+          "overlay": false,
+          "source_cell": 4,
           "source_palette": 3,
           "source_tile": 287,
           "tile": 254
         },
         {
           "cell": 5,
+          "kind": "window",
           "metatile": 87,
+          "overlay": false,
+          "source_cell": 5,
           "source_palette": 3,
           "source_tile": 287,
           "tile": 254
         },
         {
           "cell": 4,
+          "kind": "window",
           "metatile": 411,
+          "overlay": false,
+          "source_cell": 4,
           "source_palette": 3,
           "source_tile": 287,
           "tile": 254
         },
         {
           "cell": 5,
+          "kind": "window",
           "metatile": 411,
+          "overlay": false,
+          "source_cell": 5,
           "source_palette": 3,
           "source_tile": 287,
           "tile": 254
         },
         {
           "cell": 4,
+          "kind": "window",
           "metatile": 412,
+          "overlay": false,
+          "source_cell": 4,
           "source_palette": 3,
           "source_tile": 287,
           "tile": 254
         },
         {
           "cell": 5,
+          "kind": "window",
           "metatile": 412,
+          "overlay": false,
+          "source_cell": 5,
           "source_palette": 3,
           "source_tile": 287,
           "tile": 254
         },
         {
-          "cell": 2,
+          "cell": 6,
+          "kind": "window",
           "metatile": 384,
+          "overlay": true,
+          "source_cell": 2,
           "source_palette": 3,
           "source_tile": 248,
           "tile": 61
         },
         {
-          "cell": 3,
+          "cell": 7,
+          "kind": "window",
           "metatile": 384,
+          "overlay": true,
+          "source_cell": 3,
           "source_palette": 3,
           "source_tile": 249,
           "tile": 188
         },
         {
-          "cell": 2,
+          "cell": 6,
+          "kind": "window",
           "metatile": 385,
+          "overlay": true,
+          "source_cell": 2,
           "source_palette": 3,
           "source_tile": 248,
           "tile": 61
         },
         {
-          "cell": 3,
+          "cell": 7,
+          "kind": "window",
           "metatile": 385,
+          "overlay": true,
+          "source_cell": 3,
           "source_palette": 3,
           "source_tile": 248,
           "tile": 61
         },
         {
-          "cell": 2,
+          "cell": 6,
+          "kind": "window",
           "metatile": 386,
+          "overlay": true,
+          "source_cell": 2,
           "source_palette": 3,
           "source_tile": 249,
           "tile": 188
         },
         {
-          "cell": 3,
+          "cell": 7,
+          "kind": "window",
           "metatile": 386,
+          "overlay": true,
+          "source_cell": 3,
           "source_palette": 3,
           "source_tile": 248,
           "tile": 61
         },
         {
-          "cell": 2,
+          "cell": 6,
+          "kind": "window",
           "metatile": 395,
+          "overlay": true,
+          "source_cell": 2,
           "source_palette": 3,
           "source_tile": 248,
           "tile": 61
         },
         {
-          "cell": 3,
+          "cell": 7,
+          "kind": "window",
           "metatile": 396,
+          "overlay": true,
+          "source_cell": 3,
           "source_palette": 3,
           "source_tile": 248,
           "tile": 61
@@ -335,7 +441,12 @@
       ],
       "colors": [
         {
-          "light": false,
+          "light": true,
+          "night": [
+            255,
+            146,
+            172
+          ],
           "rgb": [
             172,
             189,
@@ -343,7 +454,12 @@
           ]
         },
         {
-          "light": false,
+          "light": true,
+          "night": [
+            255,
+            146,
+            172
+          ],
           "rgb": [
             246,
             246,
@@ -352,6 +468,11 @@
         },
         {
           "light": true,
+          "night": [
+            255,
+            112,
+            133
+          ],
           "rgb": [
             238,
             148,
@@ -360,6 +481,11 @@
         },
         {
           "light": true,
+          "night": [
+            255,
+            103,
+            125
+          ],
           "rgb": [
             222,
             106,
@@ -367,7 +493,12 @@
           ]
         },
         {
-          "light": false,
+          "light": true,
+          "night": [
+            255,
+            146,
+            172
+          ],
           "rgb": [
             205,
             222,
@@ -376,6 +507,11 @@
         },
         {
           "light": true,
+          "night": [
+            255,
+            98,
+            121
+          ],
           "rgb": [
             205,
             82,
@@ -384,6 +520,11 @@
         },
         {
           "light": true,
+          "night": [
+            255,
+            87,
+            112
+          ],
           "rgb": [
             172,
             32,
@@ -391,23 +532,12 @@
           ]
         },
         {
-          "light": false,
-          "rgb": [
-            148,
-            164,
-            180
-          ]
-        },
-        {
-          "light": false,
-          "rgb": [
-            65,
-            74,
-            106
-          ]
-        },
-        {
           "light": true,
+          "night": [
+            255,
+            232,
+            152
+          ],
           "rgb": [
             98,
             164,
@@ -416,6 +546,11 @@
         },
         {
           "light": true,
+          "night": [
+            255,
+            232,
+            152
+          ],
           "rgb": [
             156,
             213,
@@ -424,10 +559,38 @@
         },
         {
           "light": false,
+          "night": null,
+          "rgb": [
+            148,
+            164,
+            180
+          ]
+        },
+        {
+          "light": false,
+          "night": null,
+          "rgb": [
+            65,
+            74,
+            106
+          ]
+        },
+        {
+          "light": false,
+          "night": null,
           "rgb": [
             205,
             180,
             106
+          ]
+        },
+        {
+          "light": false,
+          "night": null,
+          "rgb": [
+            246,
+            246,
+            255
           ]
         }
       ],
@@ -442,6 +605,7 @@
         10
       ],
       "native": "data/tilesets/secondary/pallet_town_frlg/palettes/08.pal",
+      "night": "data/tilesets/legends_lights/pallet_glass_08_night.pal",
       "palette": "data/tilesets/legends_lights/pallet_glass_08.pal"
     },
     {
@@ -451,62 +615,183 @@
         10
       ],
       "native": "data/tilesets/secondary/pallet_town_frlg/palettes/09.pal",
+      "night": "data/tilesets/legends_lights/pallet_glass_09_night.pal",
       "palette": "data/tilesets/legends_lights/pallet_glass_09.pal"
     }
   ],
   "header_edits": {
     "src/data/tilesets/graphics.h": [
       {
+        "literal": 69,
+        "native": "data/tilesets/secondary/petalburg/tiles.png"
+      },
+      {
+        "literal": 72,
+        "native": "data/tilesets/secondary/petalburg/palettes/00.pal"
+      },
+      {
+        "literal": 82,
+        "native": "data/tilesets/secondary/petalburg/palettes/05.pal"
+      },
+      {
+        "literal": 86,
+        "native": "data/tilesets/secondary/petalburg/palettes/07.pal"
+      },
+      {
         "literal": 96,
         "native": "data/tilesets/secondary/petalburg/palettes/12.pal"
+      },
+      {
+        "literal": 104,
+        "native": "data/tilesets/secondary/rustboro/tiles.png"
+      },
+      {
+        "literal": 117,
+        "native": "data/tilesets/secondary/rustboro/palettes/05.pal"
+      },
+      {
+        "literal": 119,
+        "native": "data/tilesets/secondary/rustboro/palettes/06.pal"
       },
       {
         "literal": 131,
         "native": "data/tilesets/secondary/rustboro/palettes/12.pal"
       },
       {
+        "literal": 137,
+        "native": "data/tilesets/secondary/rustboro/palettes/15.pal"
+      },
+      {
+        "literal": 152,
+        "native": "data/tilesets/secondary/dewford/palettes/05.pal"
+      },
+      {
         "literal": 166,
         "native": "data/tilesets/secondary/dewford/palettes/12.pal"
+      },
+      {
+        "literal": 187,
+        "native": "data/tilesets/secondary/slateport/palettes/05.pal"
       },
       {
         "literal": 201,
         "native": "data/tilesets/secondary/slateport/palettes/12.pal"
       },
       {
+        "literal": 222,
+        "native": "data/tilesets/secondary/mauville/palettes/05.pal"
+      },
+      {
         "literal": 236,
         "native": "data/tilesets/secondary/mauville/palettes/12.pal"
+      },
+      {
+        "literal": 257,
+        "native": "data/tilesets/secondary/lavaridge/palettes/05.pal"
       },
       {
         "literal": 271,
         "native": "data/tilesets/secondary/lavaridge/palettes/12.pal"
       },
       {
+        "literal": 279,
+        "native": "data/tilesets/secondary/fallarbor/tiles.png"
+      },
+      {
+        "literal": 291,
+        "native": "data/tilesets/secondary/fallarbor/palettes/05.pal"
+      },
+      {
         "literal": 305,
         "native": "data/tilesets/secondary/fallarbor/palettes/12.pal"
+      },
+      {
+        "literal": 313,
+        "native": "data/tilesets/secondary/fortree/tiles.png"
+      },
+      {
+        "literal": 326,
+        "native": "data/tilesets/secondary/fortree/palettes/05.pal"
+      },
+      {
+        "literal": 328,
+        "native": "data/tilesets/secondary/fortree/palettes/06.pal"
       },
       {
         "literal": 340,
         "native": "data/tilesets/secondary/fortree/palettes/12.pal"
       },
       {
+        "literal": 346,
+        "native": "data/tilesets/secondary/fortree/palettes/15.pal"
+      },
+      {
+        "literal": 348,
+        "native": "data/tilesets/secondary/lilycove/tiles.png"
+      },
+      {
+        "literal": 360,
+        "native": "data/tilesets/secondary/lilycove/palettes/05.pal"
+      },
+      {
+        "literal": 362,
+        "native": "data/tilesets/secondary/lilycove/palettes/06.pal"
+      },
+      {
         "literal": 374,
         "native": "data/tilesets/secondary/lilycove/palettes/12.pal"
+      },
+      {
+        "literal": 380,
+        "native": "data/tilesets/secondary/lilycove/palettes/15.pal"
+      },
+      {
+        "literal": 394,
+        "native": "data/tilesets/secondary/mossdeep/palettes/05.pal"
       },
       {
         "literal": 408,
         "native": "data/tilesets/secondary/mossdeep/palettes/12.pal"
       },
       {
+        "literal": 416,
+        "native": "data/tilesets/secondary/ever_grande/tiles.png"
+      },
+      {
+        "literal": 428,
+        "native": "data/tilesets/secondary/ever_grande/palettes/05.pal"
+      },
+      {
+        "literal": 430,
+        "native": "data/tilesets/secondary/ever_grande/palettes/06.pal"
+      },
+      {
         "literal": 442,
         "native": "data/tilesets/secondary/ever_grande/palettes/12.pal"
+      },
+      {
+        "literal": 448,
+        "native": "data/tilesets/secondary/ever_grande/palettes/15.pal"
+      },
+      {
+        "literal": 463,
+        "native": "data/tilesets/secondary/pacifidlog/palettes/05.pal"
       },
       {
         "literal": 477,
         "native": "data/tilesets/secondary/pacifidlog/palettes/12.pal"
       },
       {
+        "literal": 498,
+        "native": "data/tilesets/secondary/sootopolis/palettes/05.pal"
+      },
+      {
         "literal": 512,
         "native": "data/tilesets/secondary/sootopolis/palettes/12.pal"
+      },
+      {
+        "literal": 533,
+        "native": "data/tilesets/secondary/battle_frontier_outside_west/palettes/05.pal"
       },
       {
         "literal": 537,
@@ -517,6 +802,10 @@
         "native": "data/tilesets/secondary/battle_frontier_outside_west/palettes/12.pal"
       },
       {
+        "literal": 568,
+        "native": "data/tilesets/secondary/battle_frontier_outside_east/palettes/05.pal"
+      },
+      {
         "literal": 570,
         "native": "data/tilesets/secondary/battle_frontier_outside_east/palettes/06.pal"
       },
@@ -525,12 +814,32 @@
         "native": "data/tilesets/secondary/battle_frontier_outside_east/palettes/12.pal"
       },
       {
+        "literal": 708,
+        "native": "data/tilesets/secondary/cave/palettes/05.pal"
+      },
+      {
         "literal": 722,
         "native": "data/tilesets/secondary/cave/palettes/12.pal"
       },
       {
+        "literal": 1059,
+        "native": "data/tilesets/secondary/facility/palettes/05.pal"
+      },
+      {
         "literal": 1073,
         "native": "data/tilesets/secondary/facility/palettes/12.pal"
+      },
+      {
+        "literal": 2646,
+        "native": "data/tilesets/secondary/pallet_town_frlg/palettes/00.pal"
+      },
+      {
+        "literal": 2648,
+        "native": "data/tilesets/secondary/pallet_town_frlg/palettes/01.pal"
+      },
+      {
+        "literal": 2650,
+        "native": "data/tilesets/secondary/pallet_town_frlg/palettes/02.pal"
       },
       {
         "literal": 2660,
@@ -545,60 +854,120 @@
         "native": "data/tilesets/secondary/pallet_town_frlg/palettes/09.pal"
       },
       {
+        "literal": 2680,
+        "native": "data/tilesets/secondary/viridian_city_frlg/palettes/00.pal"
+      },
+      {
         "literal": 2694,
         "native": "data/tilesets/secondary/viridian_city_frlg/palettes/07.pal"
+      },
+      {
+        "literal": 2714,
+        "native": "data/tilesets/secondary/pewter_city_frlg/palettes/00.pal"
       },
       {
         "literal": 2728,
         "native": "data/tilesets/secondary/pewter_city_frlg/palettes/07.pal"
       },
       {
+        "literal": 2748,
+        "native": "data/tilesets/secondary/cerulean_city_frlg/palettes/00.pal"
+      },
+      {
         "literal": 2762,
         "native": "data/tilesets/secondary/cerulean_city_frlg/palettes/07.pal"
+      },
+      {
+        "literal": 2782,
+        "native": "data/tilesets/secondary/lavender_town_frlg/palettes/00.pal"
       },
       {
         "literal": 2796,
         "native": "data/tilesets/secondary/lavender_town_frlg/palettes/07.pal"
       },
       {
+        "literal": 2816,
+        "native": "data/tilesets/secondary/vermilion_city_frlg/palettes/00.pal"
+      },
+      {
         "literal": 2830,
         "native": "data/tilesets/secondary/vermilion_city_frlg/palettes/07.pal"
+      },
+      {
+        "literal": 2850,
+        "native": "data/tilesets/secondary/celadon_city_frlg/palettes/00.pal"
       },
       {
         "literal": 2864,
         "native": "data/tilesets/secondary/celadon_city_frlg/palettes/07.pal"
       },
       {
+        "literal": 2884,
+        "native": "data/tilesets/secondary/fuchsia_city_frlg/palettes/00.pal"
+      },
+      {
         "literal": 2898,
         "native": "data/tilesets/secondary/fuchsia_city_frlg/palettes/07.pal"
+      },
+      {
+        "literal": 2918,
+        "native": "data/tilesets/secondary/cinnabar_island_frlg/palettes/00.pal"
       },
       {
         "literal": 2932,
         "native": "data/tilesets/secondary/cinnabar_island_frlg/palettes/07.pal"
       },
       {
+        "literal": 2952,
+        "native": "data/tilesets/secondary/indigo_plateau_frlg/palettes/00.pal"
+      },
+      {
         "literal": 2966,
         "native": "data/tilesets/secondary/indigo_plateau_frlg/palettes/07.pal"
+      },
+      {
+        "literal": 2986,
+        "native": "data/tilesets/secondary/saffron_city_frlg/palettes/00.pal"
       },
       {
         "literal": 3000,
         "native": "data/tilesets/secondary/saffron_city_frlg/palettes/07.pal"
       },
       {
+        "literal": 3667,
+        "native": "data/tilesets/secondary/viridian_forest_frlg/palettes/00.pal"
+      },
+      {
         "literal": 3681,
         "native": "data/tilesets/secondary/viridian_forest_frlg/palettes/07.pal"
+      },
+      {
+        "literal": 4347,
+        "native": "data/tilesets/secondary/berry_forest_frlg/palettes/00.pal"
       },
       {
         "literal": 4361,
         "native": "data/tilesets/secondary/berry_forest_frlg/palettes/07.pal"
       },
       {
+        "literal": 4449,
+        "native": "data/tilesets/secondary/sevii_islands_123_frlg/palettes/00.pal"
+      },
+      {
         "literal": 4463,
         "native": "data/tilesets/secondary/sevii_islands_123_frlg/palettes/07.pal"
       },
       {
+        "literal": 4483,
+        "native": "data/tilesets/secondary/sevii_islands_45_frlg/palettes/00.pal"
+      },
+      {
         "literal": 4497,
         "native": "data/tilesets/secondary/sevii_islands_45_frlg/palettes/07.pal"
+      },
+      {
+        "literal": 4517,
+        "native": "data/tilesets/secondary/sevii_islands_67_frlg/palettes/00.pal"
       },
       {
         "literal": 4531,
@@ -609,30 +978,88 @@
         "native": "data/tilesets/primary/general_frlg/tiles.png"
       }
     ],
+    "src/data/tilesets/legends_kanto.h": [
+      {
+        "literal": 38,
+        "native": "data/tilesets/secondary/vermilion_city_frlg/palettes/00.pal"
+      },
+      {
+        "literal": 146,
+        "native": "data/tilesets/secondary/fuchsia_city_frlg/palettes/00.pal"
+      },
+      {
+        "literal": 290,
+        "native": "data/tilesets/secondary/lavender_town_frlg/palettes/00.pal"
+      },
+      {
+        "literal": 470,
+        "native": "data/tilesets/secondary/saffron_city_frlg/palettes/00.pal"
+      },
+      {
+        "literal": 542,
+        "native": "data/tilesets/secondary/celadon_city_frlg/palettes/00.pal"
+      }
+    ],
     "src/data/tilesets/legends_story.h": [
+      {
+        "literal": 2,
+        "native": "data/tilesets/secondary/cinnabar_island_frlg/palettes/00.pal"
+      },
       {
         "literal": 16,
         "native": "data/tilesets/secondary/cinnabar_island_frlg/palettes/07.pal"
+      },
+      {
+        "literal": 74,
+        "native": "data/tilesets/secondary/cerulean_city_frlg/palettes/00.pal"
       },
       {
         "literal": 88,
         "native": "data/tilesets/secondary/cerulean_city_frlg/palettes/07.pal"
       },
       {
+        "literal": 182,
+        "native": "data/tilesets/secondary/pewter_city_frlg/palettes/00.pal"
+      },
+      {
         "literal": 196,
         "native": "data/tilesets/secondary/pewter_city_frlg/palettes/07.pal"
+      },
+      {
+        "literal": 290,
+        "native": "data/tilesets/secondary/sevii_islands_123_frlg/palettes/00.pal"
       },
       {
         "literal": 304,
         "native": "data/tilesets/secondary/sevii_islands_123_frlg/palettes/07.pal"
       },
       {
+        "literal": 362,
+        "native": "data/tilesets/secondary/viridian_city_frlg/palettes/00.pal"
+      },
+      {
         "literal": 376,
         "native": "data/tilesets/secondary/viridian_city_frlg/palettes/07.pal"
       },
       {
+        "literal": 398,
+        "native": "data/tilesets/secondary/viridian_forest_frlg/palettes/00.pal"
+      },
+      {
         "literal": 412,
         "native": "data/tilesets/secondary/viridian_forest_frlg/palettes/07.pal"
+      },
+      {
+        "literal": 470,
+        "native": "data/tilesets/secondary/pallet_town_frlg/palettes/00.pal"
+      },
+      {
+        "literal": 472,
+        "native": "data/tilesets/secondary/pallet_town_frlg/palettes/01.pal"
+      },
+      {
+        "literal": 474,
+        "native": "data/tilesets/secondary/pallet_town_frlg/palettes/02.pal"
       },
       {
         "literal": 484,
@@ -651,6 +1078,30 @@
       {
         "literal": 4,
         "native": "data/tilesets/primary/general/metatiles.bin"
+      },
+      {
+        "literal": 6,
+        "native": "data/tilesets/secondary/petalburg/metatiles.bin"
+      },
+      {
+        "literal": 8,
+        "native": "data/tilesets/secondary/rustboro/metatiles.bin"
+      },
+      {
+        "literal": 18,
+        "native": "data/tilesets/secondary/fallarbor/metatiles.bin"
+      },
+      {
+        "literal": 20,
+        "native": "data/tilesets/secondary/fortree/metatiles.bin"
+      },
+      {
+        "literal": 22,
+        "native": "data/tilesets/secondary/lilycove/metatiles.bin"
+      },
+      {
+        "literal": 26,
+        "native": "data/tilesets/secondary/ever_grande/metatiles.bin"
       },
       {
         "literal": 32,
@@ -725,270 +1176,1439 @@
     "data/tilesets/primary/general_frlg/metatiles.bin": "data/tilesets/legends_lights/general_frlg_metatiles.bin",
     "data/tilesets/primary/general_frlg/tiles.png": "data/tilesets/legends_lights/general_frlg_tiles.png",
     "data/tilesets/secondary/battle_frontier_outside_east/metatiles.bin": "data/tilesets/legends_lights/battle_frontier_outside_east_metatiles.bin",
+    "data/tilesets/secondary/battle_frontier_outside_east/palettes/05.pal": "data/tilesets/legends_lights/battle_frontier_outside_east_night.pal",
     "data/tilesets/secondary/battle_frontier_outside_east/palettes/06.pal": "data/tilesets/secondary/battle_frontier_outside_east/palettes/12.pal",
-    "data/tilesets/secondary/battle_frontier_outside_east/palettes/12.pal": "data/tilesets/legends_lights/general.pal",
+    "data/tilesets/secondary/battle_frontier_outside_east/palettes/12.pal": "data/tilesets/legends_lights/battle_frontier_outside_east_day.pal",
     "data/tilesets/secondary/battle_frontier_outside_west/metatiles.bin": "data/tilesets/legends_lights/battle_frontier_outside_west_metatiles.bin",
+    "data/tilesets/secondary/battle_frontier_outside_west/palettes/05.pal": "data/tilesets/legends_lights/battle_frontier_outside_west_night.pal",
     "data/tilesets/secondary/battle_frontier_outside_west/palettes/07.pal": "data/tilesets/secondary/battle_frontier_outside_west/palettes/12.pal",
-    "data/tilesets/secondary/battle_frontier_outside_west/palettes/12.pal": "data/tilesets/legends_lights/general.pal",
-    "data/tilesets/secondary/berry_forest_frlg/palettes/07.pal": "data/tilesets/legends_lights/general_frlg.pal",
-    "data/tilesets/secondary/cave/palettes/12.pal": "data/tilesets/legends_lights/general.pal",
-    "data/tilesets/secondary/celadon_city_frlg/palettes/07.pal": "data/tilesets/legends_lights/general_frlg.pal",
-    "data/tilesets/secondary/cerulean_city_frlg/palettes/07.pal": "data/tilesets/legends_lights/general_frlg.pal",
-    "data/tilesets/secondary/cinnabar_island_frlg/palettes/07.pal": "data/tilesets/legends_lights/general_frlg.pal",
-    "data/tilesets/secondary/dewford/palettes/12.pal": "data/tilesets/legends_lights/general.pal",
-    "data/tilesets/secondary/ever_grande/palettes/12.pal": "data/tilesets/legends_lights/general.pal",
-    "data/tilesets/secondary/facility/palettes/12.pal": "data/tilesets/legends_lights/general.pal",
-    "data/tilesets/secondary/fallarbor/palettes/12.pal": "data/tilesets/legends_lights/general.pal",
-    "data/tilesets/secondary/fortree/palettes/12.pal": "data/tilesets/legends_lights/general.pal",
-    "data/tilesets/secondary/fuchsia_city_frlg/palettes/07.pal": "data/tilesets/legends_lights/general_frlg.pal",
-    "data/tilesets/secondary/indigo_plateau_frlg/palettes/07.pal": "data/tilesets/legends_lights/general_frlg.pal",
-    "data/tilesets/secondary/lavaridge/palettes/12.pal": "data/tilesets/legends_lights/general.pal",
-    "data/tilesets/secondary/lavender_town_frlg/palettes/07.pal": "data/tilesets/legends_lights/general_frlg.pal",
-    "data/tilesets/secondary/lilycove/palettes/12.pal": "data/tilesets/legends_lights/general.pal",
-    "data/tilesets/secondary/mauville/palettes/12.pal": "data/tilesets/legends_lights/general.pal",
-    "data/tilesets/secondary/mossdeep/palettes/12.pal": "data/tilesets/legends_lights/general.pal",
-    "data/tilesets/secondary/pacifidlog/palettes/12.pal": "data/tilesets/legends_lights/general.pal",
-    "data/tilesets/secondary/pallet_town_frlg/palettes/07.pal": "data/tilesets/legends_lights/general_frlg.pal",
+    "data/tilesets/secondary/battle_frontier_outside_west/palettes/12.pal": "data/tilesets/legends_lights/battle_frontier_outside_west_day.pal",
+    "data/tilesets/secondary/berry_forest_frlg/palettes/00.pal": "data/tilesets/legends_lights/berry_forest_frlg_night.pal",
+    "data/tilesets/secondary/berry_forest_frlg/palettes/07.pal": "data/tilesets/legends_lights/berry_forest_frlg_day.pal",
+    "data/tilesets/secondary/cave/palettes/05.pal": "data/tilesets/legends_lights/cave_night.pal",
+    "data/tilesets/secondary/cave/palettes/12.pal": "data/tilesets/legends_lights/cave_day.pal",
+    "data/tilesets/secondary/celadon_city_frlg/palettes/00.pal": "data/tilesets/legends_lights/celadon_city_frlg_night.pal",
+    "data/tilesets/secondary/celadon_city_frlg/palettes/07.pal": "data/tilesets/legends_lights/celadon_city_frlg_day.pal",
+    "data/tilesets/secondary/cerulean_city_frlg/palettes/00.pal": "data/tilesets/legends_lights/cerulean_city_frlg_night.pal",
+    "data/tilesets/secondary/cerulean_city_frlg/palettes/07.pal": "data/tilesets/legends_lights/cerulean_city_frlg_day.pal",
+    "data/tilesets/secondary/cinnabar_island_frlg/palettes/00.pal": "data/tilesets/legends_lights/cinnabar_island_frlg_night.pal",
+    "data/tilesets/secondary/cinnabar_island_frlg/palettes/07.pal": "data/tilesets/legends_lights/cinnabar_island_frlg_day.pal",
+    "data/tilesets/secondary/dewford/palettes/05.pal": "data/tilesets/legends_lights/dewford_night.pal",
+    "data/tilesets/secondary/dewford/palettes/12.pal": "data/tilesets/legends_lights/dewford_day.pal",
+    "data/tilesets/secondary/ever_grande/metatiles.bin": "data/tilesets/legends_lights/ever_grande_metatiles.bin",
+    "data/tilesets/secondary/ever_grande/palettes/05.pal": "data/tilesets/legends_lights/ever_grande_night.pal",
+    "data/tilesets/secondary/ever_grande/palettes/06.pal": "data/tilesets/legends_lights/ever_grande_windows_day.pal",
+    "data/tilesets/secondary/ever_grande/palettes/12.pal": "data/tilesets/legends_lights/ever_grande_day.pal",
+    "data/tilesets/secondary/ever_grande/palettes/15.pal": "data/tilesets/legends_lights/ever_grande_windows_night.pal",
+    "data/tilesets/secondary/ever_grande/tiles.png": "data/tilesets/legends_lights/ever_grande_tiles.png",
+    "data/tilesets/secondary/facility/palettes/05.pal": "data/tilesets/legends_lights/facility_night.pal",
+    "data/tilesets/secondary/facility/palettes/12.pal": "data/tilesets/legends_lights/facility_day.pal",
+    "data/tilesets/secondary/fallarbor/metatiles.bin": "data/tilesets/legends_lights/fallarbor_metatiles.bin",
+    "data/tilesets/secondary/fallarbor/palettes/05.pal": "data/tilesets/legends_lights/fallarbor_night.pal",
+    "data/tilesets/secondary/fallarbor/palettes/12.pal": "data/tilesets/legends_lights/fallarbor_day.pal",
+    "data/tilesets/secondary/fallarbor/tiles.png": "data/tilesets/legends_lights/fallarbor_tiles.png",
+    "data/tilesets/secondary/fortree/metatiles.bin": "data/tilesets/legends_lights/fortree_metatiles.bin",
+    "data/tilesets/secondary/fortree/palettes/05.pal": "data/tilesets/legends_lights/fortree_night.pal",
+    "data/tilesets/secondary/fortree/palettes/06.pal": "data/tilesets/legends_lights/fortree_windows_day.pal",
+    "data/tilesets/secondary/fortree/palettes/12.pal": "data/tilesets/legends_lights/fortree_day.pal",
+    "data/tilesets/secondary/fortree/palettes/15.pal": "data/tilesets/legends_lights/fortree_windows_night.pal",
+    "data/tilesets/secondary/fortree/tiles.png": "data/tilesets/legends_lights/fortree_tiles.png",
+    "data/tilesets/secondary/fuchsia_city_frlg/palettes/00.pal": "data/tilesets/legends_lights/fuchsia_city_frlg_night.pal",
+    "data/tilesets/secondary/fuchsia_city_frlg/palettes/07.pal": "data/tilesets/legends_lights/fuchsia_city_frlg_day.pal",
+    "data/tilesets/secondary/indigo_plateau_frlg/palettes/00.pal": "data/tilesets/legends_lights/indigo_plateau_frlg_night.pal",
+    "data/tilesets/secondary/indigo_plateau_frlg/palettes/07.pal": "data/tilesets/legends_lights/indigo_plateau_frlg_day.pal",
+    "data/tilesets/secondary/lavaridge/palettes/05.pal": "data/tilesets/legends_lights/lavaridge_night.pal",
+    "data/tilesets/secondary/lavaridge/palettes/12.pal": "data/tilesets/legends_lights/lavaridge_day.pal",
+    "data/tilesets/secondary/lavender_town_frlg/palettes/00.pal": "data/tilesets/legends_lights/lavender_town_frlg_night.pal",
+    "data/tilesets/secondary/lavender_town_frlg/palettes/07.pal": "data/tilesets/legends_lights/lavender_town_frlg_day.pal",
+    "data/tilesets/secondary/lilycove/metatiles.bin": "data/tilesets/legends_lights/lilycove_metatiles.bin",
+    "data/tilesets/secondary/lilycove/palettes/05.pal": "data/tilesets/legends_lights/lilycove_night.pal",
+    "data/tilesets/secondary/lilycove/palettes/06.pal": "data/tilesets/legends_lights/lilycove_windows_day.pal",
+    "data/tilesets/secondary/lilycove/palettes/12.pal": "data/tilesets/legends_lights/lilycove_day.pal",
+    "data/tilesets/secondary/lilycove/palettes/15.pal": "data/tilesets/legends_lights/lilycove_windows_night.pal",
+    "data/tilesets/secondary/lilycove/tiles.png": "data/tilesets/legends_lights/lilycove_tiles.png",
+    "data/tilesets/secondary/mauville/palettes/05.pal": "data/tilesets/legends_lights/mauville_night.pal",
+    "data/tilesets/secondary/mauville/palettes/12.pal": "data/tilesets/legends_lights/mauville_day.pal",
+    "data/tilesets/secondary/mossdeep/palettes/05.pal": "data/tilesets/legends_lights/mossdeep_night.pal",
+    "data/tilesets/secondary/mossdeep/palettes/12.pal": "data/tilesets/legends_lights/mossdeep_day.pal",
+    "data/tilesets/secondary/pacifidlog/palettes/05.pal": "data/tilesets/legends_lights/pacifidlog_night.pal",
+    "data/tilesets/secondary/pacifidlog/palettes/12.pal": "data/tilesets/legends_lights/pacifidlog_day.pal",
+    "data/tilesets/secondary/pallet_town_frlg/palettes/00.pal": "data/tilesets/legends_lights/pallet_town_frlg_night.pal",
+    "data/tilesets/secondary/pallet_town_frlg/palettes/01.pal": "data/tilesets/legends_lights/pallet_glass_08_night.pal",
+    "data/tilesets/secondary/pallet_town_frlg/palettes/02.pal": "data/tilesets/legends_lights/pallet_glass_09_night.pal",
+    "data/tilesets/secondary/pallet_town_frlg/palettes/07.pal": "data/tilesets/legends_lights/pallet_town_frlg_day.pal",
     "data/tilesets/secondary/pallet_town_frlg/palettes/08.pal": "data/tilesets/legends_lights/pallet_glass_08.pal",
     "data/tilesets/secondary/pallet_town_frlg/palettes/09.pal": "data/tilesets/legends_lights/pallet_glass_09.pal",
-    "data/tilesets/secondary/petalburg/palettes/12.pal": "data/tilesets/legends_lights/general.pal",
-    "data/tilesets/secondary/pewter_city_frlg/palettes/07.pal": "data/tilesets/legends_lights/general_frlg.pal",
-    "data/tilesets/secondary/rustboro/palettes/12.pal": "data/tilesets/legends_lights/general.pal",
-    "data/tilesets/secondary/saffron_city_frlg/palettes/07.pal": "data/tilesets/legends_lights/general_frlg.pal",
-    "data/tilesets/secondary/sevii_islands_123_frlg/palettes/07.pal": "data/tilesets/legends_lights/general_frlg.pal",
-    "data/tilesets/secondary/sevii_islands_45_frlg/palettes/07.pal": "data/tilesets/legends_lights/general_frlg.pal",
-    "data/tilesets/secondary/sevii_islands_67_frlg/palettes/07.pal": "data/tilesets/legends_lights/general_frlg.pal",
-    "data/tilesets/secondary/slateport/palettes/12.pal": "data/tilesets/legends_lights/general.pal",
-    "data/tilesets/secondary/sootopolis/palettes/12.pal": "data/tilesets/legends_lights/general.pal",
-    "data/tilesets/secondary/vermilion_city_frlg/palettes/07.pal": "data/tilesets/legends_lights/general_frlg.pal",
-    "data/tilesets/secondary/viridian_city_frlg/palettes/07.pal": "data/tilesets/legends_lights/general_frlg.pal",
-    "data/tilesets/secondary/viridian_forest_frlg/palettes/07.pal": "data/tilesets/legends_lights/general_frlg.pal"
+    "data/tilesets/secondary/petalburg/metatiles.bin": "data/tilesets/legends_lights/petalburg_metatiles.bin",
+    "data/tilesets/secondary/petalburg/palettes/00.pal": "data/tilesets/legends_lights/petalburg_windows_night.pal",
+    "data/tilesets/secondary/petalburg/palettes/05.pal": "data/tilesets/legends_lights/petalburg_night.pal",
+    "data/tilesets/secondary/petalburg/palettes/07.pal": "data/tilesets/legends_lights/petalburg_windows_day.pal",
+    "data/tilesets/secondary/petalburg/palettes/12.pal": "data/tilesets/legends_lights/petalburg_day.pal",
+    "data/tilesets/secondary/petalburg/tiles.png": "data/tilesets/legends_lights/petalburg_tiles.png",
+    "data/tilesets/secondary/pewter_city_frlg/palettes/00.pal": "data/tilesets/legends_lights/pewter_city_frlg_night.pal",
+    "data/tilesets/secondary/pewter_city_frlg/palettes/07.pal": "data/tilesets/legends_lights/pewter_city_frlg_day.pal",
+    "data/tilesets/secondary/rustboro/metatiles.bin": "data/tilesets/legends_lights/rustboro_metatiles.bin",
+    "data/tilesets/secondary/rustboro/palettes/05.pal": "data/tilesets/legends_lights/rustboro_night.pal",
+    "data/tilesets/secondary/rustboro/palettes/06.pal": "data/tilesets/legends_lights/rustboro_windows_day.pal",
+    "data/tilesets/secondary/rustboro/palettes/12.pal": "data/tilesets/legends_lights/rustboro_day.pal",
+    "data/tilesets/secondary/rustboro/palettes/15.pal": "data/tilesets/legends_lights/rustboro_windows_night.pal",
+    "data/tilesets/secondary/rustboro/tiles.png": "data/tilesets/legends_lights/rustboro_tiles.png",
+    "data/tilesets/secondary/saffron_city_frlg/palettes/00.pal": "data/tilesets/legends_lights/saffron_city_frlg_night.pal",
+    "data/tilesets/secondary/saffron_city_frlg/palettes/07.pal": "data/tilesets/legends_lights/saffron_city_frlg_day.pal",
+    "data/tilesets/secondary/sevii_islands_123_frlg/palettes/00.pal": "data/tilesets/legends_lights/sevii_islands_123_frlg_night.pal",
+    "data/tilesets/secondary/sevii_islands_123_frlg/palettes/07.pal": "data/tilesets/legends_lights/sevii_islands_123_frlg_day.pal",
+    "data/tilesets/secondary/sevii_islands_45_frlg/palettes/00.pal": "data/tilesets/legends_lights/sevii_islands_45_frlg_night.pal",
+    "data/tilesets/secondary/sevii_islands_45_frlg/palettes/07.pal": "data/tilesets/legends_lights/sevii_islands_45_frlg_day.pal",
+    "data/tilesets/secondary/sevii_islands_67_frlg/palettes/00.pal": "data/tilesets/legends_lights/sevii_islands_67_frlg_night.pal",
+    "data/tilesets/secondary/sevii_islands_67_frlg/palettes/07.pal": "data/tilesets/legends_lights/sevii_islands_67_frlg_day.pal",
+    "data/tilesets/secondary/slateport/palettes/05.pal": "data/tilesets/legends_lights/slateport_night.pal",
+    "data/tilesets/secondary/slateport/palettes/12.pal": "data/tilesets/legends_lights/slateport_day.pal",
+    "data/tilesets/secondary/sootopolis/palettes/05.pal": "data/tilesets/legends_lights/sootopolis_night.pal",
+    "data/tilesets/secondary/sootopolis/palettes/12.pal": "data/tilesets/legends_lights/sootopolis_day.pal",
+    "data/tilesets/secondary/vermilion_city_frlg/palettes/00.pal": "data/tilesets/legends_lights/vermilion_city_frlg_night.pal",
+    "data/tilesets/secondary/vermilion_city_frlg/palettes/07.pal": "data/tilesets/legends_lights/vermilion_city_frlg_day.pal",
+    "data/tilesets/secondary/viridian_city_frlg/palettes/00.pal": "data/tilesets/legends_lights/viridian_city_frlg_night.pal",
+    "data/tilesets/secondary/viridian_city_frlg/palettes/07.pal": "data/tilesets/legends_lights/viridian_city_frlg_day.pal",
+    "data/tilesets/secondary/viridian_forest_frlg/palettes/00.pal": "data/tilesets/legends_lights/viridian_forest_frlg_night.pal",
+    "data/tilesets/secondary/viridian_forest_frlg/palettes/07.pal": "data/tilesets/legends_lights/viridian_forest_frlg_day.pal"
   },
   "secondary": [
     {
+      "alternate": 5,
+      "cells": [],
+      "day": "data/tilesets/legends_lights/battle_frontier_outside_east_day.pal",
+      "extra_alternate": 15,
+      "extra_palette": 6,
       "family": "general",
       "metatiles": "data/tilesets/secondary/battle_frontier_outside_east/metatiles.bin",
-      "relocated_palette": 6
+      "night": "data/tilesets/legends_lights/battle_frontier_outside_east_night.pal",
+      "palette": 12,
+      "relocated_palette": 6,
+      "symbol": "gTileset_BattleFrontierOutsideEast",
+      "tiles": "data/tilesets/secondary/battle_frontier_outside_east/tiles.png"
     },
     {
+      "alternate": 5,
+      "cells": [],
+      "day": "data/tilesets/legends_lights/battle_frontier_outside_west_day.pal",
+      "extra_alternate": 0,
+      "extra_palette": 7,
       "family": "general",
       "metatiles": "data/tilesets/secondary/battle_frontier_outside_west/metatiles.bin",
-      "relocated_palette": 7
+      "night": "data/tilesets/legends_lights/battle_frontier_outside_west_night.pal",
+      "palette": 12,
+      "relocated_palette": 7,
+      "symbol": "gTileset_BattleFrontierOutsideWest",
+      "tiles": "data/tilesets/secondary/battle_frontier_outside_west/tiles.png"
     },
     {
+      "alternate": 5,
+      "cells": [],
+      "day": "data/tilesets/legends_lights/cave_day.pal",
+      "extra_alternate": 5,
+      "extra_palette": 12,
       "family": "general",
       "metatiles": "data/tilesets/secondary/cave/metatiles.bin",
-      "relocated_palette": null
+      "night": "data/tilesets/legends_lights/cave_night.pal",
+      "palette": 12,
+      "relocated_palette": null,
+      "symbol": "gTileset_Cave",
+      "tiles": "data/tilesets/secondary/cave/tiles.png"
     },
     {
+      "alternate": 5,
+      "cells": [],
+      "day": "data/tilesets/legends_lights/dewford_day.pal",
+      "extra_alternate": 15,
+      "extra_palette": 6,
       "family": "general",
       "metatiles": "data/tilesets/secondary/dewford/metatiles.bin",
-      "relocated_palette": null
+      "night": "data/tilesets/legends_lights/dewford_night.pal",
+      "palette": 12,
+      "relocated_palette": null,
+      "symbol": "gTileset_Dewford",
+      "tiles": "data/tilesets/secondary/dewford/tiles.png"
     },
     {
+      "alternate": 5,
+      "cells": [
+        {
+          "cell": 5,
+          "metatile": 513,
+          "overlay": false,
+          "source_cell": 5,
+          "source_palette": 8,
+          "source_tile": 772,
+          "tile": 513
+        },
+        {
+          "cell": 7,
+          "metatile": 513,
+          "overlay": false,
+          "source_cell": 7,
+          "source_palette": 8,
+          "source_tile": 788,
+          "tile": 514
+        },
+        {
+          "cell": 4,
+          "metatile": 514,
+          "overlay": false,
+          "source_cell": 4,
+          "source_palette": 8,
+          "source_tile": 773,
+          "tile": 523
+        },
+        {
+          "cell": 5,
+          "metatile": 514,
+          "overlay": false,
+          "source_cell": 5,
+          "source_palette": 8,
+          "source_tile": 772,
+          "tile": 513
+        },
+        {
+          "cell": 6,
+          "metatile": 514,
+          "overlay": false,
+          "source_cell": 6,
+          "source_palette": 8,
+          "source_tile": 789,
+          "tile": 524
+        },
+        {
+          "cell": 7,
+          "metatile": 514,
+          "overlay": false,
+          "source_cell": 7,
+          "source_palette": 8,
+          "source_tile": 788,
+          "tile": 514
+        }
+      ],
+      "day": "data/tilesets/legends_lights/ever_grande_day.pal",
+      "extra_alternate": 15,
+      "extra_palette": 6,
       "family": "general",
       "metatiles": "data/tilesets/secondary/ever_grande/metatiles.bin",
-      "relocated_palette": null
+      "night": "data/tilesets/legends_lights/ever_grande_night.pal",
+      "palette": 12,
+      "relocated_palette": null,
+      "symbol": "gTileset_EverGrande",
+      "tiles": "data/tilesets/secondary/ever_grande/tiles.png"
     },
     {
+      "alternate": 5,
+      "cells": [],
+      "day": "data/tilesets/legends_lights/facility_day.pal",
+      "extra_alternate": 5,
+      "extra_palette": 12,
       "family": "general",
       "metatiles": "data/tilesets/secondary/facility/metatiles.bin",
-      "relocated_palette": null
+      "night": "data/tilesets/legends_lights/facility_night.pal",
+      "palette": 12,
+      "relocated_palette": null,
+      "symbol": "gTileset_Facility",
+      "tiles": "data/tilesets/secondary/facility/tiles.png"
     },
     {
+      "alternate": 5,
+      "cells": [
+        {
+          "cell": 4,
+          "metatile": 678,
+          "overlay": true,
+          "source_cell": 0,
+          "source_palette": 7,
+          "source_tile": 700,
+          "tile": 512
+        },
+        {
+          "cell": 5,
+          "metatile": 678,
+          "overlay": true,
+          "source_cell": 1,
+          "source_palette": 7,
+          "source_tile": 700,
+          "tile": 512
+        },
+        {
+          "cell": 6,
+          "metatile": 767,
+          "overlay": true,
+          "source_cell": 2,
+          "source_palette": 7,
+          "source_tile": 684,
+          "tile": 522
+        },
+        {
+          "cell": 7,
+          "metatile": 767,
+          "overlay": true,
+          "source_cell": 3,
+          "source_palette": 7,
+          "source_tile": 684,
+          "tile": 522
+        },
+        {
+          "cell": 4,
+          "metatile": 775,
+          "overlay": true,
+          "source_cell": 0,
+          "source_palette": 7,
+          "source_tile": 700,
+          "tile": 512
+        },
+        {
+          "cell": 5,
+          "metatile": 775,
+          "overlay": true,
+          "source_cell": 1,
+          "source_palette": 7,
+          "source_tile": 700,
+          "tile": 512
+        }
+      ],
+      "day": "data/tilesets/legends_lights/fallarbor_day.pal",
+      "extra_alternate": 5,
+      "extra_palette": 12,
       "family": "general",
       "metatiles": "data/tilesets/secondary/fallarbor/metatiles.bin",
-      "relocated_palette": null
+      "night": "data/tilesets/legends_lights/fallarbor_night.pal",
+      "palette": 12,
+      "relocated_palette": null,
+      "symbol": "gTileset_Fallarbor",
+      "tiles": "data/tilesets/secondary/fallarbor/tiles.png"
     },
     {
+      "alternate": 5,
+      "cells": [
+        {
+          "cell": 7,
+          "metatile": 696,
+          "overlay": false,
+          "source_cell": 7,
+          "source_palette": 8,
+          "source_tile": 907,
+          "tile": 512
+        },
+        {
+          "cell": 6,
+          "metatile": 697,
+          "overlay": false,
+          "source_cell": 6,
+          "source_palette": 8,
+          "source_tile": 908,
+          "tile": 513
+        },
+        {
+          "cell": 6,
+          "metatile": 698,
+          "overlay": false,
+          "source_cell": 6,
+          "source_palette": 8,
+          "source_tile": 907,
+          "tile": 512
+        },
+        {
+          "cell": 7,
+          "metatile": 698,
+          "overlay": false,
+          "source_cell": 7,
+          "source_palette": 8,
+          "source_tile": 908,
+          "tile": 513
+        }
+      ],
+      "day": "data/tilesets/legends_lights/fortree_day.pal",
+      "extra_alternate": 15,
+      "extra_palette": 6,
       "family": "general",
       "metatiles": "data/tilesets/secondary/fortree/metatiles.bin",
-      "relocated_palette": null
+      "night": "data/tilesets/legends_lights/fortree_night.pal",
+      "palette": 12,
+      "relocated_palette": null,
+      "symbol": "gTileset_Fortree",
+      "tiles": "data/tilesets/secondary/fortree/tiles.png"
     },
     {
+      "alternate": 5,
+      "cells": [],
+      "day": "data/tilesets/legends_lights/lavaridge_day.pal",
+      "extra_alternate": 5,
+      "extra_palette": 12,
       "family": "general",
       "metatiles": "data/tilesets/secondary/lavaridge/metatiles.bin",
-      "relocated_palette": null
+      "night": "data/tilesets/legends_lights/lavaridge_night.pal",
+      "palette": 12,
+      "relocated_palette": null,
+      "symbol": "gTileset_Lavaridge",
+      "tiles": "data/tilesets/secondary/lavaridge/tiles.png"
     },
     {
+      "alternate": 5,
+      "cells": [
+        {
+          "cell": 4,
+          "metatile": 525,
+          "overlay": true,
+          "source_cell": 0,
+          "source_palette": 8,
+          "source_tile": 665,
+          "tile": 512
+        },
+        {
+          "cell": 5,
+          "metatile": 525,
+          "overlay": true,
+          "source_cell": 1,
+          "source_palette": 8,
+          "source_tile": 665,
+          "tile": 512
+        },
+        {
+          "cell": 6,
+          "metatile": 525,
+          "overlay": true,
+          "source_cell": 2,
+          "source_palette": 8,
+          "source_tile": 681,
+          "tile": 515
+        },
+        {
+          "cell": 7,
+          "metatile": 525,
+          "overlay": true,
+          "source_cell": 3,
+          "source_palette": 8,
+          "source_tile": 681,
+          "tile": 515
+        },
+        {
+          "cell": 4,
+          "metatile": 527,
+          "overlay": true,
+          "source_cell": 0,
+          "source_palette": 8,
+          "source_tile": 665,
+          "tile": 512
+        },
+        {
+          "cell": 6,
+          "metatile": 527,
+          "overlay": true,
+          "source_cell": 2,
+          "source_palette": 8,
+          "source_tile": 681,
+          "tile": 515
+        },
+        {
+          "cell": 4,
+          "metatile": 529,
+          "overlay": true,
+          "source_cell": 0,
+          "source_palette": 8,
+          "source_tile": 637,
+          "tile": 516
+        },
+        {
+          "cell": 1,
+          "metatile": 529,
+          "overlay": false,
+          "source_cell": 1,
+          "source_palette": 8,
+          "source_tile": 639,
+          "tile": 517
+        },
+        {
+          "cell": 6,
+          "metatile": 529,
+          "overlay": true,
+          "source_cell": 2,
+          "source_palette": 8,
+          "source_tile": 653,
+          "tile": 518
+        },
+        {
+          "cell": 5,
+          "metatile": 529,
+          "overlay": false,
+          "source_cell": 5,
+          "source_palette": 8,
+          "source_tile": 639,
+          "tile": 517
+        },
+        {
+          "cell": 0,
+          "metatile": 532,
+          "overlay": false,
+          "source_cell": 0,
+          "source_palette": 8,
+          "source_tile": 639,
+          "tile": 517
+        },
+        {
+          "cell": 5,
+          "metatile": 532,
+          "overlay": true,
+          "source_cell": 1,
+          "source_palette": 8,
+          "source_tile": 637,
+          "tile": 516
+        },
+        {
+          "cell": 7,
+          "metatile": 532,
+          "overlay": true,
+          "source_cell": 3,
+          "source_palette": 8,
+          "source_tile": 653,
+          "tile": 518
+        },
+        {
+          "cell": 4,
+          "metatile": 532,
+          "overlay": false,
+          "source_cell": 4,
+          "source_palette": 8,
+          "source_tile": 639,
+          "tile": 517
+        },
+        {
+          "cell": 4,
+          "metatile": 533,
+          "overlay": true,
+          "source_cell": 0,
+          "source_palette": 8,
+          "source_tile": 637,
+          "tile": 516
+        },
+        {
+          "cell": 5,
+          "metatile": 533,
+          "overlay": true,
+          "source_cell": 1,
+          "source_palette": 8,
+          "source_tile": 637,
+          "tile": 516
+        },
+        {
+          "cell": 6,
+          "metatile": 533,
+          "overlay": true,
+          "source_cell": 2,
+          "source_palette": 8,
+          "source_tile": 653,
+          "tile": 518
+        },
+        {
+          "cell": 7,
+          "metatile": 533,
+          "overlay": true,
+          "source_cell": 3,
+          "source_palette": 8,
+          "source_tile": 653,
+          "tile": 518
+        },
+        {
+          "cell": 4,
+          "metatile": 534,
+          "overlay": true,
+          "source_cell": 0,
+          "source_palette": 8,
+          "source_tile": 637,
+          "tile": 516
+        },
+        {
+          "cell": 5,
+          "metatile": 534,
+          "overlay": true,
+          "source_cell": 1,
+          "source_palette": 8,
+          "source_tile": 636,
+          "tile": 519
+        },
+        {
+          "cell": 6,
+          "metatile": 534,
+          "overlay": true,
+          "source_cell": 2,
+          "source_palette": 8,
+          "source_tile": 653,
+          "tile": 518
+        },
+        {
+          "cell": 7,
+          "metatile": 534,
+          "overlay": true,
+          "source_cell": 3,
+          "source_palette": 8,
+          "source_tile": 652,
+          "tile": 520
+        },
+        {
+          "cell": 4,
+          "metatile": 535,
+          "overlay": true,
+          "source_cell": 0,
+          "source_palette": 8,
+          "source_tile": 636,
+          "tile": 519
+        },
+        {
+          "cell": 5,
+          "metatile": 535,
+          "overlay": true,
+          "source_cell": 1,
+          "source_palette": 8,
+          "source_tile": 637,
+          "tile": 516
+        },
+        {
+          "cell": 6,
+          "metatile": 535,
+          "overlay": true,
+          "source_cell": 2,
+          "source_palette": 8,
+          "source_tile": 652,
+          "tile": 520
+        },
+        {
+          "cell": 7,
+          "metatile": 535,
+          "overlay": true,
+          "source_cell": 3,
+          "source_palette": 8,
+          "source_tile": 653,
+          "tile": 518
+        },
+        {
+          "cell": 5,
+          "metatile": 549,
+          "overlay": true,
+          "source_cell": 1,
+          "source_palette": 8,
+          "source_tile": 665,
+          "tile": 512
+        },
+        {
+          "cell": 7,
+          "metatile": 549,
+          "overlay": true,
+          "source_cell": 3,
+          "source_palette": 8,
+          "source_tile": 681,
+          "tile": 515
+        }
+      ],
+      "day": "data/tilesets/legends_lights/lilycove_day.pal",
+      "extra_alternate": 15,
+      "extra_palette": 6,
       "family": "general",
       "metatiles": "data/tilesets/secondary/lilycove/metatiles.bin",
-      "relocated_palette": null
+      "night": "data/tilesets/legends_lights/lilycove_night.pal",
+      "palette": 12,
+      "relocated_palette": null,
+      "symbol": "gTileset_Lilycove",
+      "tiles": "data/tilesets/secondary/lilycove/tiles.png"
     },
     {
+      "alternate": 5,
+      "cells": [],
+      "day": "data/tilesets/legends_lights/mauville_day.pal",
+      "extra_alternate": 5,
+      "extra_palette": 12,
       "family": "general",
       "metatiles": "data/tilesets/secondary/mauville/metatiles.bin",
-      "relocated_palette": null
+      "night": "data/tilesets/legends_lights/mauville_night.pal",
+      "palette": 12,
+      "relocated_palette": null,
+      "symbol": "gTileset_Mauville",
+      "tiles": "data/tilesets/secondary/mauville/tiles.png"
     },
     {
+      "alternate": 5,
+      "cells": [],
+      "day": "data/tilesets/legends_lights/mossdeep_day.pal",
+      "extra_alternate": 15,
+      "extra_palette": 6,
       "family": "general",
       "metatiles": "data/tilesets/secondary/mossdeep/metatiles.bin",
-      "relocated_palette": null
+      "night": "data/tilesets/legends_lights/mossdeep_night.pal",
+      "palette": 12,
+      "relocated_palette": null,
+      "symbol": "gTileset_Mossdeep",
+      "tiles": "data/tilesets/secondary/mossdeep/tiles.png"
     },
     {
+      "alternate": 5,
+      "cells": [],
+      "day": "data/tilesets/legends_lights/pacifidlog_day.pal",
+      "extra_alternate": 4,
+      "extra_palette": 11,
       "family": "general",
       "metatiles": "data/tilesets/secondary/pacifidlog/metatiles.bin",
-      "relocated_palette": null
+      "night": "data/tilesets/legends_lights/pacifidlog_night.pal",
+      "palette": 12,
+      "relocated_palette": null,
+      "symbol": "gTileset_Pacifidlog",
+      "tiles": "data/tilesets/secondary/pacifidlog/tiles.png"
     },
     {
+      "alternate": 5,
+      "cells": [
+        {
+          "cell": 4,
+          "metatile": 535,
+          "overlay": true,
+          "source_cell": 0,
+          "source_palette": 8,
+          "source_tile": 662,
+          "tile": 512
+        },
+        {
+          "cell": 5,
+          "metatile": 535,
+          "overlay": true,
+          "source_cell": 1,
+          "source_palette": 8,
+          "source_tile": 662,
+          "tile": 512
+        },
+        {
+          "cell": 4,
+          "metatile": 570,
+          "overlay": true,
+          "source_cell": 0,
+          "source_palette": 6,
+          "source_tile": 659,
+          "tile": 513
+        },
+        {
+          "cell": 5,
+          "metatile": 570,
+          "overlay": true,
+          "source_cell": 1,
+          "source_palette": 6,
+          "source_tile": 659,
+          "tile": 513
+        },
+        {
+          "cell": 1,
+          "metatile": 618,
+          "overlay": false,
+          "source_cell": 1,
+          "source_palette": 6,
+          "source_tile": 659,
+          "tile": 527
+        },
+        {
+          "cell": 5,
+          "metatile": 618,
+          "overlay": false,
+          "source_cell": 5,
+          "source_palette": 6,
+          "source_tile": 659,
+          "tile": 527
+        },
+        {
+          "cell": 6,
+          "metatile": 637,
+          "overlay": false,
+          "source_cell": 6,
+          "source_palette": 9,
+          "source_tile": 648,
+          "tile": 528
+        },
+        {
+          "cell": 7,
+          "metatile": 637,
+          "overlay": false,
+          "source_cell": 7,
+          "source_palette": 9,
+          "source_tile": 649,
+          "tile": 529
+        },
+        {
+          "cell": 4,
+          "metatile": 647,
+          "overlay": true,
+          "source_cell": 0,
+          "source_palette": 9,
+          "source_tile": 640,
+          "tile": 543
+        },
+        {
+          "cell": 5,
+          "metatile": 647,
+          "overlay": true,
+          "source_cell": 1,
+          "source_palette": 9,
+          "source_tile": 641,
+          "tile": 544
+        },
+        {
+          "cell": 4,
+          "metatile": 655,
+          "overlay": true,
+          "source_cell": 0,
+          "source_palette": 9,
+          "source_tile": 664,
+          "tile": 545
+        },
+        {
+          "cell": 5,
+          "metatile": 655,
+          "overlay": true,
+          "source_cell": 1,
+          "source_palette": 9,
+          "source_tile": 665,
+          "tile": 559
+        }
+      ],
+      "day": "data/tilesets/legends_lights/petalburg_day.pal",
+      "extra_alternate": 0,
+      "extra_palette": 7,
       "family": "general",
       "metatiles": "data/tilesets/secondary/petalburg/metatiles.bin",
-      "relocated_palette": null
+      "night": "data/tilesets/legends_lights/petalburg_night.pal",
+      "palette": 12,
+      "relocated_palette": null,
+      "symbol": "gTileset_Petalburg",
+      "tiles": "data/tilesets/secondary/petalburg/tiles.png"
     },
     {
+      "alternate": 5,
+      "cells": [
+        {
+          "cell": 6,
+          "metatile": 578,
+          "overlay": true,
+          "source_cell": 2,
+          "source_palette": 10,
+          "source_tile": 597,
+          "tile": 512
+        },
+        {
+          "cell": 7,
+          "metatile": 578,
+          "overlay": true,
+          "source_cell": 3,
+          "source_palette": 10,
+          "source_tile": 598,
+          "tile": 513
+        },
+        {
+          "cell": 6,
+          "metatile": 604,
+          "overlay": true,
+          "source_cell": 2,
+          "source_palette": 8,
+          "source_tile": 713,
+          "tile": 526
+        },
+        {
+          "cell": 5,
+          "metatile": 608,
+          "overlay": true,
+          "source_cell": 1,
+          "source_palette": 8,
+          "source_tile": 729,
+          "tile": 527
+        },
+        {
+          "cell": 4,
+          "metatile": 612,
+          "overlay": true,
+          "source_cell": 0,
+          "source_palette": 8,
+          "source_tile": 729,
+          "tile": 527
+        },
+        {
+          "cell": 4,
+          "metatile": 613,
+          "overlay": true,
+          "source_cell": 0,
+          "source_palette": 8,
+          "source_tile": 729,
+          "tile": 527
+        },
+        {
+          "cell": 7,
+          "metatile": 632,
+          "overlay": true,
+          "source_cell": 3,
+          "source_palette": 9,
+          "source_tile": 685,
+          "tile": 528
+        },
+        {
+          "cell": 6,
+          "metatile": 632,
+          "overlay": false,
+          "source_cell": 6,
+          "source_palette": 9,
+          "source_tile": 684,
+          "tile": 529
+        },
+        {
+          "cell": 6,
+          "metatile": 633,
+          "overlay": true,
+          "source_cell": 2,
+          "source_palette": 9,
+          "source_tile": 685,
+          "tile": 528
+        },
+        {
+          "cell": 7,
+          "metatile": 633,
+          "overlay": true,
+          "source_cell": 3,
+          "source_palette": 9,
+          "source_tile": 685,
+          "tile": 528
+        },
+        {
+          "cell": 2,
+          "metatile": 634,
+          "overlay": false,
+          "source_cell": 2,
+          "source_palette": 9,
+          "source_tile": 685,
+          "tile": 542
+        },
+        {
+          "cell": 3,
+          "metatile": 634,
+          "overlay": false,
+          "source_cell": 3,
+          "source_palette": 9,
+          "source_tile": 685,
+          "tile": 542
+        },
+        {
+          "cell": 6,
+          "metatile": 634,
+          "overlay": false,
+          "source_cell": 6,
+          "source_palette": 9,
+          "source_tile": 685,
+          "tile": 542
+        },
+        {
+          "cell": 7,
+          "metatile": 634,
+          "overlay": false,
+          "source_cell": 7,
+          "source_palette": 9,
+          "source_tile": 685,
+          "tile": 542
+        },
+        {
+          "cell": 6,
+          "metatile": 635,
+          "overlay": true,
+          "source_cell": 2,
+          "source_palette": 9,
+          "source_tile": 685,
+          "tile": 528
+        },
+        {
+          "cell": 7,
+          "metatile": 635,
+          "overlay": true,
+          "source_cell": 3,
+          "source_palette": 9,
+          "source_tile": 685,
+          "tile": 528
+        }
+      ],
+      "day": "data/tilesets/legends_lights/rustboro_day.pal",
+      "extra_alternate": 15,
+      "extra_palette": 6,
       "family": "general",
       "metatiles": "data/tilesets/secondary/rustboro/metatiles.bin",
-      "relocated_palette": null
+      "night": "data/tilesets/legends_lights/rustboro_night.pal",
+      "palette": 12,
+      "relocated_palette": null,
+      "symbol": "gTileset_Rustboro",
+      "tiles": "data/tilesets/secondary/rustboro/tiles.png"
     },
     {
+      "alternate": 5,
+      "cells": [],
+      "day": "data/tilesets/legends_lights/slateport_day.pal",
+      "extra_alternate": 5,
+      "extra_palette": 12,
       "family": "general",
       "metatiles": "data/tilesets/secondary/slateport/metatiles.bin",
-      "relocated_palette": null
+      "night": "data/tilesets/legends_lights/slateport_night.pal",
+      "palette": 12,
+      "relocated_palette": null,
+      "symbol": "gTileset_Slateport",
+      "tiles": "data/tilesets/secondary/slateport/tiles.png"
     },
     {
+      "alternate": 5,
+      "cells": [],
+      "day": "data/tilesets/legends_lights/sootopolis_day.pal",
+      "extra_alternate": 4,
+      "extra_palette": 11,
       "family": "general",
       "metatiles": "data/tilesets/secondary/sootopolis/metatiles.bin",
-      "relocated_palette": null
+      "night": "data/tilesets/legends_lights/sootopolis_night.pal",
+      "palette": 12,
+      "relocated_palette": null,
+      "symbol": "gTileset_Sootopolis",
+      "tiles": "data/tilesets/secondary/sootopolis/tiles.png"
     },
     {
+      "alternate": 0,
+      "cells": [],
+      "day": "data/tilesets/legends_lights/berry_forest_frlg_day.pal",
+      "extra_alternate": 3,
+      "extra_palette": 10,
       "family": "general_frlg",
       "metatiles": "data/tilesets/secondary/berry_forest_frlg/metatiles.bin",
-      "relocated_palette": null
+      "night": "data/tilesets/legends_lights/berry_forest_frlg_night.pal",
+      "palette": 7,
+      "relocated_palette": null,
+      "symbol": "gTileset_BerryForest",
+      "tiles": "data/tilesets/secondary/berry_forest_frlg/tiles.png"
     },
     {
+      "alternate": 0,
+      "cells": [],
+      "day": "data/tilesets/legends_lights/celadon_city_frlg_day.pal",
+      "extra_alternate": 0,
+      "extra_palette": 7,
       "family": "general_frlg",
       "metatiles": "data/tilesets/secondary/celadon_city_frlg/metatiles.bin",
-      "relocated_palette": null
+      "night": "data/tilesets/legends_lights/celadon_city_frlg_night.pal",
+      "palette": 7,
+      "relocated_palette": null,
+      "symbol": "gTileset_CeladonCity",
+      "tiles": "data/tilesets/secondary/celadon_city_frlg/tiles.png"
     },
     {
+      "alternate": 0,
+      "cells": [],
+      "day": "data/tilesets/legends_lights/cerulean_city_frlg_day.pal",
+      "extra_alternate": 0,
+      "extra_palette": 7,
       "family": "general_frlg",
       "metatiles": "data/tilesets/secondary/cerulean_city_frlg/metatiles.bin",
-      "relocated_palette": null
+      "night": "data/tilesets/legends_lights/cerulean_city_frlg_night.pal",
+      "palette": 7,
+      "relocated_palette": null,
+      "symbol": "gTileset_CeruleanCity",
+      "tiles": "data/tilesets/secondary/cerulean_city_frlg/tiles.png"
     },
     {
+      "alternate": 0,
+      "cells": [],
+      "day": "data/tilesets/legends_lights/cinnabar_island_frlg_day.pal",
+      "extra_alternate": 3,
+      "extra_palette": 10,
       "family": "general_frlg",
       "metatiles": "data/tilesets/secondary/cinnabar_island_frlg/metatiles.bin",
-      "relocated_palette": null
+      "night": "data/tilesets/legends_lights/cinnabar_island_frlg_night.pal",
+      "palette": 7,
+      "relocated_palette": null,
+      "symbol": "gTileset_CinnabarIsland",
+      "tiles": "data/tilesets/secondary/cinnabar_island_frlg/tiles.png"
     },
     {
+      "alternate": 0,
+      "cells": [],
+      "day": "data/tilesets/legends_lights/fuchsia_city_frlg_day.pal",
+      "extra_alternate": 0,
+      "extra_palette": 7,
       "family": "general_frlg",
       "metatiles": "data/tilesets/secondary/fuchsia_city_frlg/metatiles.bin",
-      "relocated_palette": null
+      "night": "data/tilesets/legends_lights/fuchsia_city_frlg_night.pal",
+      "palette": 7,
+      "relocated_palette": null,
+      "symbol": "gTileset_FuchsiaCity",
+      "tiles": "data/tilesets/secondary/fuchsia_city_frlg/tiles.png"
     },
     {
+      "alternate": 0,
+      "cells": [],
+      "day": "data/tilesets/legends_lights/indigo_plateau_frlg_day.pal",
+      "extra_alternate": 1,
+      "extra_palette": 8,
       "family": "general_frlg",
       "metatiles": "data/tilesets/secondary/indigo_plateau_frlg/metatiles.bin",
-      "relocated_palette": null
+      "night": "data/tilesets/legends_lights/indigo_plateau_frlg_night.pal",
+      "palette": 7,
+      "relocated_palette": null,
+      "symbol": "gTileset_IndigoPlateau",
+      "tiles": "data/tilesets/secondary/indigo_plateau_frlg/tiles.png"
     },
     {
+      "alternate": 0,
+      "cells": [],
+      "day": "data/tilesets/legends_lights/lavender_town_frlg_day.pal",
+      "extra_alternate": 0,
+      "extra_palette": 7,
       "family": "general_frlg",
       "metatiles": "data/tilesets/secondary/lavender_town_frlg/metatiles.bin",
-      "relocated_palette": null
+      "night": "data/tilesets/legends_lights/lavender_town_frlg_night.pal",
+      "palette": 7,
+      "relocated_palette": null,
+      "symbol": "gTileset_LavenderTown",
+      "tiles": "data/tilesets/secondary/lavender_town_frlg/tiles.png"
     },
     {
+      "alternate": 0,
+      "cells": [],
+      "day": "data/tilesets/legends_lights/celadon_city_frlg_day.pal",
+      "extra_alternate": 0,
+      "extra_palette": 7,
       "family": "general_frlg",
       "metatiles": "data/tilesets/secondary/celadon_city_frlg/metatiles.bin",
-      "relocated_palette": null
+      "night": "data/tilesets/legends_lights/celadon_city_frlg_night.pal",
+      "palette": 7,
+      "relocated_palette": null,
+      "symbol": "gTileset_LegendsKantoCeladonCity",
+      "tiles": "data/tilesets/secondary/celadon_city_frlg/tiles.png"
     },
     {
-      "family": "general_frlg",
-      "metatiles": "data/tilesets/secondary/fuchsia_city_frlg/metatiles.bin",
-      "relocated_palette": null
-    },
-    {
-      "family": "general_frlg",
-      "metatiles": "data/tilesets/secondary/lavender_town_frlg/metatiles.bin",
-      "relocated_palette": null
-    },
-    {
-      "family": "general_frlg",
-      "metatiles": "data/tilesets/secondary/saffron_city_frlg/metatiles.bin",
-      "relocated_palette": null
-    },
-    {
-      "family": "general_frlg",
-      "metatiles": "data/tilesets/secondary/vermilion_city_frlg/metatiles.bin",
-      "relocated_palette": null
-    },
-    {
+      "alternate": 0,
+      "cells": [],
+      "day": "data/tilesets/legends_lights/cerulean_city_frlg_day.pal",
+      "extra_alternate": 0,
+      "extra_palette": 7,
       "family": "general_frlg",
       "metatiles": "data/tilesets/secondary/cerulean_city_frlg/metatiles.bin",
-      "relocated_palette": null
+      "night": "data/tilesets/legends_lights/cerulean_city_frlg_night.pal",
+      "palette": 7,
+      "relocated_palette": null,
+      "symbol": "gTileset_LegendsKantoCeruleanCity",
+      "tiles": "data/tilesets/secondary/cerulean_city_frlg/tiles.png"
     },
     {
+      "alternate": 0,
+      "cells": [],
+      "day": "data/tilesets/legends_lights/cinnabar_island_frlg_day.pal",
+      "extra_alternate": 3,
+      "extra_palette": 10,
       "family": "general_frlg",
       "metatiles": "data/tilesets/secondary/cinnabar_island_frlg/metatiles.bin",
-      "relocated_palette": null
+      "night": "data/tilesets/legends_lights/cinnabar_island_frlg_night.pal",
+      "palette": 7,
+      "relocated_palette": null,
+      "symbol": "gTileset_LegendsKantoCinnabarIsland",
+      "tiles": "data/tilesets/secondary/cinnabar_island_frlg/tiles.png"
     },
     {
+      "alternate": 0,
+      "cells": [],
+      "day": "data/tilesets/legends_lights/fuchsia_city_frlg_day.pal",
+      "extra_alternate": 0,
+      "extra_palette": 7,
+      "family": "general_frlg",
+      "metatiles": "data/tilesets/secondary/fuchsia_city_frlg/metatiles.bin",
+      "night": "data/tilesets/legends_lights/fuchsia_city_frlg_night.pal",
+      "palette": 7,
+      "relocated_palette": null,
+      "symbol": "gTileset_LegendsKantoFuchsiaCity",
+      "tiles": "data/tilesets/secondary/fuchsia_city_frlg/tiles.png"
+    },
+    {
+      "alternate": 0,
+      "cells": [],
+      "day": "data/tilesets/legends_lights/lavender_town_frlg_day.pal",
+      "extra_alternate": 0,
+      "extra_palette": 7,
+      "family": "general_frlg",
+      "metatiles": "data/tilesets/secondary/lavender_town_frlg/metatiles.bin",
+      "night": "data/tilesets/legends_lights/lavender_town_frlg_night.pal",
+      "palette": 7,
+      "relocated_palette": null,
+      "symbol": "gTileset_LegendsKantoLavenderTown",
+      "tiles": "data/tilesets/secondary/lavender_town_frlg/tiles.png"
+    },
+    {
+      "alternate": 0,
+      "cells": [],
+      "day": "data/tilesets/legends_lights/pallet_town_frlg_day.pal",
+      "extra_alternate": 0,
+      "extra_palette": 7,
       "family": "general_frlg",
       "metatiles": "data/tilesets/secondary/pallet_town_frlg/metatiles.bin",
-      "relocated_palette": null
+      "night": "data/tilesets/legends_lights/pallet_town_frlg_night.pal",
+      "palette": 7,
+      "relocated_palette": null,
+      "symbol": "gTileset_LegendsKantoPalletTown",
+      "tiles": "data/tilesets/secondary/pallet_town_frlg/tiles.png"
     },
     {
+      "alternate": 0,
+      "cells": [],
+      "day": "data/tilesets/legends_lights/pewter_city_frlg_day.pal",
+      "extra_alternate": 5,
+      "extra_palette": 12,
       "family": "general_frlg",
       "metatiles": "data/tilesets/secondary/pewter_city_frlg/metatiles.bin",
-      "relocated_palette": null
+      "night": "data/tilesets/legends_lights/pewter_city_frlg_night.pal",
+      "palette": 7,
+      "relocated_palette": null,
+      "symbol": "gTileset_LegendsKantoPewterCity",
+      "tiles": "data/tilesets/secondary/pewter_city_frlg/tiles.png"
     },
     {
-      "family": "general_frlg",
-      "metatiles": "data/tilesets/secondary/sevii_islands_123_frlg/metatiles.bin",
-      "relocated_palette": null
-    },
-    {
-      "family": "general_frlg",
-      "metatiles": "data/tilesets/secondary/viridian_city_frlg/metatiles.bin",
-      "relocated_palette": null
-    },
-    {
-      "family": "general_frlg",
-      "metatiles": "data/tilesets/secondary/viridian_forest_frlg/metatiles.bin",
-      "relocated_palette": null
-    },
-    {
-      "family": "general_frlg",
-      "metatiles": "data/tilesets/secondary/pallet_town_frlg/metatiles.bin",
-      "relocated_palette": null
-    },
-    {
-      "family": "general_frlg",
-      "metatiles": "data/tilesets/secondary/pewter_city_frlg/metatiles.bin",
-      "relocated_palette": null
-    },
-    {
+      "alternate": 0,
+      "cells": [],
+      "day": "data/tilesets/legends_lights/saffron_city_frlg_day.pal",
+      "extra_alternate": 0,
+      "extra_palette": 7,
       "family": "general_frlg",
       "metatiles": "data/tilesets/secondary/saffron_city_frlg/metatiles.bin",
-      "relocated_palette": null
+      "night": "data/tilesets/legends_lights/saffron_city_frlg_night.pal",
+      "palette": 7,
+      "relocated_palette": null,
+      "symbol": "gTileset_LegendsKantoSaffronCity",
+      "tiles": "data/tilesets/secondary/saffron_city_frlg/tiles.png"
     },
     {
+      "alternate": 0,
+      "cells": [],
+      "day": "data/tilesets/legends_lights/sevii_islands_123_frlg_day.pal",
+      "extra_alternate": 0,
+      "extra_palette": 7,
       "family": "general_frlg",
       "metatiles": "data/tilesets/secondary/sevii_islands_123_frlg/metatiles.bin",
-      "relocated_palette": null
+      "night": "data/tilesets/legends_lights/sevii_islands_123_frlg_night.pal",
+      "palette": 7,
+      "relocated_palette": null,
+      "symbol": "gTileset_LegendsKantoSeviiIslands123",
+      "tiles": "data/tilesets/secondary/sevii_islands_123_frlg/tiles.png"
     },
     {
-      "family": "general_frlg",
-      "metatiles": "data/tilesets/secondary/sevii_islands_45_frlg/metatiles.bin",
-      "relocated_palette": null
-    },
-    {
-      "family": "general_frlg",
-      "metatiles": "data/tilesets/secondary/sevii_islands_67_frlg/metatiles.bin",
-      "relocated_palette": null
-    },
-    {
+      "alternate": 0,
+      "cells": [],
+      "day": "data/tilesets/legends_lights/vermilion_city_frlg_day.pal",
+      "extra_alternate": 4,
+      "extra_palette": 11,
       "family": "general_frlg",
       "metatiles": "data/tilesets/secondary/vermilion_city_frlg/metatiles.bin",
-      "relocated_palette": null
+      "night": "data/tilesets/legends_lights/vermilion_city_frlg_night.pal",
+      "palette": 7,
+      "relocated_palette": null,
+      "symbol": "gTileset_LegendsKantoVermilionCity",
+      "tiles": "data/tilesets/secondary/vermilion_city_frlg/tiles.png"
     },
     {
+      "alternate": 0,
+      "cells": [],
+      "day": "data/tilesets/legends_lights/viridian_city_frlg_day.pal",
+      "extra_alternate": 0,
+      "extra_palette": 7,
       "family": "general_frlg",
       "metatiles": "data/tilesets/secondary/viridian_city_frlg/metatiles.bin",
-      "relocated_palette": null
+      "night": "data/tilesets/legends_lights/viridian_city_frlg_night.pal",
+      "palette": 7,
+      "relocated_palette": null,
+      "symbol": "gTileset_LegendsKantoViridianCity",
+      "tiles": "data/tilesets/secondary/viridian_city_frlg/tiles.png"
     },
     {
+      "alternate": 0,
+      "cells": [],
+      "day": "data/tilesets/legends_lights/viridian_forest_frlg_day.pal",
+      "extra_alternate": 3,
+      "extra_palette": 10,
       "family": "general_frlg",
       "metatiles": "data/tilesets/secondary/viridian_forest_frlg/metatiles.bin",
-      "relocated_palette": null
+      "night": "data/tilesets/legends_lights/viridian_forest_frlg_night.pal",
+      "palette": 7,
+      "relocated_palette": null,
+      "symbol": "gTileset_LegendsKantoViridianForest",
+      "tiles": "data/tilesets/secondary/viridian_forest_frlg/tiles.png"
+    },
+    {
+      "alternate": 0,
+      "cells": [],
+      "day": "data/tilesets/legends_lights/pallet_town_frlg_day.pal",
+      "extra_alternate": 0,
+      "extra_palette": 7,
+      "family": "general_frlg",
+      "metatiles": "data/tilesets/secondary/pallet_town_frlg/metatiles.bin",
+      "night": "data/tilesets/legends_lights/pallet_town_frlg_night.pal",
+      "palette": 7,
+      "relocated_palette": null,
+      "symbol": "gTileset_PalletTown",
+      "tiles": "data/tilesets/secondary/pallet_town_frlg/tiles.png"
+    },
+    {
+      "alternate": 0,
+      "cells": [],
+      "day": "data/tilesets/legends_lights/pewter_city_frlg_day.pal",
+      "extra_alternate": 5,
+      "extra_palette": 12,
+      "family": "general_frlg",
+      "metatiles": "data/tilesets/secondary/pewter_city_frlg/metatiles.bin",
+      "night": "data/tilesets/legends_lights/pewter_city_frlg_night.pal",
+      "palette": 7,
+      "relocated_palette": null,
+      "symbol": "gTileset_PewterCity",
+      "tiles": "data/tilesets/secondary/pewter_city_frlg/tiles.png"
+    },
+    {
+      "alternate": 0,
+      "cells": [],
+      "day": "data/tilesets/legends_lights/saffron_city_frlg_day.pal",
+      "extra_alternate": 0,
+      "extra_palette": 7,
+      "family": "general_frlg",
+      "metatiles": "data/tilesets/secondary/saffron_city_frlg/metatiles.bin",
+      "night": "data/tilesets/legends_lights/saffron_city_frlg_night.pal",
+      "palette": 7,
+      "relocated_palette": null,
+      "symbol": "gTileset_SaffronCity",
+      "tiles": "data/tilesets/secondary/saffron_city_frlg/tiles.png"
+    },
+    {
+      "alternate": 0,
+      "cells": [],
+      "day": "data/tilesets/legends_lights/sevii_islands_123_frlg_day.pal",
+      "extra_alternate": 0,
+      "extra_palette": 7,
+      "family": "general_frlg",
+      "metatiles": "data/tilesets/secondary/sevii_islands_123_frlg/metatiles.bin",
+      "night": "data/tilesets/legends_lights/sevii_islands_123_frlg_night.pal",
+      "palette": 7,
+      "relocated_palette": null,
+      "symbol": "gTileset_SeviiIslands123",
+      "tiles": "data/tilesets/secondary/sevii_islands_123_frlg/tiles.png"
+    },
+    {
+      "alternate": 0,
+      "cells": [],
+      "day": "data/tilesets/legends_lights/sevii_islands_45_frlg_day.pal",
+      "extra_alternate": 5,
+      "extra_palette": 12,
+      "family": "general_frlg",
+      "metatiles": "data/tilesets/secondary/sevii_islands_45_frlg/metatiles.bin",
+      "night": "data/tilesets/legends_lights/sevii_islands_45_frlg_night.pal",
+      "palette": 7,
+      "relocated_palette": null,
+      "symbol": "gTileset_SeviiIslands45",
+      "tiles": "data/tilesets/secondary/sevii_islands_45_frlg/tiles.png"
+    },
+    {
+      "alternate": 0,
+      "cells": [],
+      "day": "data/tilesets/legends_lights/sevii_islands_67_frlg_day.pal",
+      "extra_alternate": 4,
+      "extra_palette": 11,
+      "family": "general_frlg",
+      "metatiles": "data/tilesets/secondary/sevii_islands_67_frlg/metatiles.bin",
+      "night": "data/tilesets/legends_lights/sevii_islands_67_frlg_night.pal",
+      "palette": 7,
+      "relocated_palette": null,
+      "symbol": "gTileset_SeviiIslands67",
+      "tiles": "data/tilesets/secondary/sevii_islands_67_frlg/tiles.png"
+    },
+    {
+      "alternate": 0,
+      "cells": [],
+      "day": "data/tilesets/legends_lights/vermilion_city_frlg_day.pal",
+      "extra_alternate": 4,
+      "extra_palette": 11,
+      "family": "general_frlg",
+      "metatiles": "data/tilesets/secondary/vermilion_city_frlg/metatiles.bin",
+      "night": "data/tilesets/legends_lights/vermilion_city_frlg_night.pal",
+      "palette": 7,
+      "relocated_palette": null,
+      "symbol": "gTileset_VermilionCity",
+      "tiles": "data/tilesets/secondary/vermilion_city_frlg/tiles.png"
+    },
+    {
+      "alternate": 0,
+      "cells": [],
+      "day": "data/tilesets/legends_lights/viridian_city_frlg_day.pal",
+      "extra_alternate": 0,
+      "extra_palette": 7,
+      "family": "general_frlg",
+      "metatiles": "data/tilesets/secondary/viridian_city_frlg/metatiles.bin",
+      "night": "data/tilesets/legends_lights/viridian_city_frlg_night.pal",
+      "palette": 7,
+      "relocated_palette": null,
+      "symbol": "gTileset_ViridianCity",
+      "tiles": "data/tilesets/secondary/viridian_city_frlg/tiles.png"
+    },
+    {
+      "alternate": 0,
+      "cells": [],
+      "day": "data/tilesets/legends_lights/viridian_forest_frlg_day.pal",
+      "extra_alternate": 3,
+      "extra_palette": 10,
+      "family": "general_frlg",
+      "metatiles": "data/tilesets/secondary/viridian_forest_frlg/metatiles.bin",
+      "night": "data/tilesets/legends_lights/viridian_forest_frlg_night.pal",
+      "palette": 7,
+      "relocated_palette": null,
+      "symbol": "gTileset_ViridianForest",
+      "tiles": "data/tilesets/secondary/viridian_forest_frlg/tiles.png"
     }
-  ]
+  ],
+  "swap_bodies": {
+    "src/data/tilesets/headers.h": {
+      "gTileset_BattleFrontierOutsideEast": "\n    .isCompressed = TRUE,\n    .isSecondary = TRUE,\n    .tiles = gTilesetTiles_BattleFrontierOutsideEast,\n    .palettes = gTilesetPalettes_BattleFrontierOutsideEast,\n    .metatiles = gMetatiles_BattleFrontierOutsideEast,\n    .metatileAttributes = gMetatileAttributes_BattleFrontierOutsideEast,\n    .callback = InitTilesetAnim_BattleFrontierOutsideEast,\n",
+      "gTileset_BattleFrontierOutsideWest": "\n    .isCompressed = TRUE,\n    .isSecondary = TRUE,\n    .tiles = gTilesetTiles_BattleFrontierOutsideWest,\n    .palettes = gTilesetPalettes_BattleFrontierOutsideWest,\n    .metatiles = gMetatiles_BattleFrontierOutsideWest,\n    .metatileAttributes = gMetatileAttributes_BattleFrontierOutsideWest,\n    .callback = InitTilesetAnim_BattleFrontierOutsideWest,\n",
+      "gTileset_BerryForest": "\n    .isCompressed = TRUE,\n    .isSecondary = TRUE,\n    .tiles = gTilesetTiles_BerryForest,\n    .palettes = gTilesetPalettes_BerryForest,\n    .metatiles = gMetatiles_BerryForest,\n    .metatileAttributes = gMetatileAttributes_BerryForest,\n    .callback = NULL,\n",
+      "gTileset_Cave": "\n    .isCompressed = TRUE,\n    .isSecondary = TRUE,\n    .tiles = gTilesetTiles_Cave,\n    .palettes = gTilesetPalettes_Cave,\n    .metatiles = gMetatiles_Cave,\n    .metatileAttributes = gMetatileAttributes_Cave,\n    .callback = InitTilesetAnim_Cave,\n",
+      "gTileset_CeladonCity": "\n    .isCompressed = TRUE,\n    .isSecondary = TRUE,\n    .tiles = gTilesetTiles_CeladonCity,\n    .palettes = gTilesetPalettes_CeladonCity,\n    .metatiles = gMetatiles_CeladonCity,\n    .metatileAttributes = gMetatileAttributes_CeladonCity,\n    .callback = InitTilesetAnim_CeladonCity,\n",
+      "gTileset_CeruleanCity": "\n    .isCompressed = TRUE,\n    .isSecondary = TRUE,\n    .tiles = gTilesetTiles_CeruleanCity,\n    .palettes = gTilesetPalettes_CeruleanCity,\n    .metatiles = gMetatiles_CeruleanCity,\n    .metatileAttributes = gMetatileAttributes_CeruleanCity,\n    .callback = NULL,\n",
+      "gTileset_CinnabarIsland": "\n    .isCompressed = TRUE,\n    .isSecondary = TRUE,\n    .tiles = gTilesetTiles_CinnabarIsland,\n    .palettes = gTilesetPalettes_CinnabarIsland,\n    .metatiles = gMetatiles_CinnabarIsland,\n    .metatileAttributes = gMetatileAttributes_CinnabarIsland,\n    .callback = NULL,\n",
+      "gTileset_Dewford": "\n    .isCompressed = TRUE,\n    .isSecondary = TRUE,\n    .tiles = gTilesetTiles_Dewford,\n    .palettes = gTilesetPalettes_Dewford,\n    .metatiles = gMetatiles_Dewford,\n    .metatileAttributes = gMetatileAttributes_Dewford,\n    .callback = InitTilesetAnim_Dewford,\n",
+      "gTileset_EverGrande": "\n    .isCompressed = TRUE,\n    .isSecondary = TRUE,\n    .tiles = gTilesetTiles_EverGrande,\n    .palettes = gTilesetPalettes_EverGrande,\n    .metatiles = gMetatiles_EverGrande,\n    .metatileAttributes = gMetatileAttributes_EverGrande,\n    .callback = InitTilesetAnim_EverGrande,\n",
+      "gTileset_Facility": "\n    .isCompressed = TRUE,\n    .isSecondary = TRUE,\n    .tiles = gTilesetTiles_Facility,\n    .palettes = gTilesetPalettes_Facility,\n    .metatiles = gMetatiles_Facility,\n    .metatileAttributes = gMetatileAttributes_Facility,\n    .callback = NULL,\n",
+      "gTileset_Fallarbor": "\n    .isCompressed = TRUE,\n    .isSecondary = TRUE,\n    .tiles = gTilesetTiles_Fallarbor,\n    .palettes = gTilesetPalettes_Fallarbor,\n    .metatiles = gMetatiles_Fallarbor,\n    .metatileAttributes = gMetatileAttributes_Fallarbor,\n    .callback = InitTilesetAnim_Fallarbor,\n",
+      "gTileset_Fortree": "\n    .isCompressed = TRUE,\n    .isSecondary = TRUE,\n    .tiles = gTilesetTiles_Fortree,\n    .palettes = gTilesetPalettes_Fortree,\n    .metatiles = gMetatiles_Fortree,\n    .metatileAttributes = gMetatileAttributes_Fortree,\n    .callback = InitTilesetAnim_Fortree,\n",
+      "gTileset_FuchsiaCity": "\n    .isCompressed = TRUE,\n    .isSecondary = TRUE,\n    .tiles = gTilesetTiles_FuchsiaCity,\n    .palettes = gTilesetPalettes_FuchsiaCity,\n    .metatiles = gMetatiles_FuchsiaCity,\n    .metatileAttributes = gMetatileAttributes_FuchsiaCity,\n    .callback = NULL,\n",
+      "gTileset_IndigoPlateau": "\n    .isCompressed = TRUE,\n    .isSecondary = TRUE,\n    .tiles = gTilesetTiles_IndigoPlateau,\n    .palettes = gTilesetPalettes_IndigoPlateau,\n    .metatiles = gMetatiles_IndigoPlateau,\n    .metatileAttributes = gMetatileAttributes_IndigoPlateau,\n    .callback = NULL,\n",
+      "gTileset_Lavaridge": "\n    .isCompressed = TRUE,\n    .isSecondary = TRUE,\n    .tiles = gTilesetTiles_Lavaridge,\n    .palettes = gTilesetPalettes_Lavaridge,\n    .metatiles = gMetatiles_Lavaridge,\n    .metatileAttributes = gMetatileAttributes_Lavaridge,\n    .callback = InitTilesetAnim_Lavaridge,\n",
+      "gTileset_LavenderTown": "\n    .isCompressed = TRUE,\n    .isSecondary = TRUE,\n    .tiles = gTilesetTiles_LavenderTown,\n    .palettes = gTilesetPalettes_LavenderTown,\n    .metatiles = gMetatiles_LavenderTown,\n    .metatileAttributes = gMetatileAttributes_LavenderTown,\n    .callback = NULL,\n",
+      "gTileset_Lilycove": "\n    .isCompressed = TRUE,\n    .isSecondary = TRUE,\n    .tiles = gTilesetTiles_Lilycove,\n    .palettes = gTilesetPalettes_Lilycove,\n    .metatiles = gMetatiles_Lilycove,\n    .metatileAttributes = gMetatileAttributes_Lilycove,\n    .callback = InitTilesetAnim_Lilycove,\n",
+      "gTileset_Mauville": "\n    .isCompressed = TRUE,\n    .isSecondary = TRUE,\n    .tiles = gTilesetTiles_Mauville,\n    .palettes = gTilesetPalettes_Mauville,\n    .metatiles = gMetatiles_Mauville,\n    .metatileAttributes = gMetatileAttributes_Mauville,\n    .callback = InitTilesetAnim_Mauville,\n",
+      "gTileset_Mossdeep": "\n    .isCompressed = TRUE,\n    .isSecondary = TRUE,\n    .tiles = gTilesetTiles_Mossdeep,\n    .palettes = gTilesetPalettes_Mossdeep,\n    .metatiles = gMetatiles_Mossdeep,\n    .metatileAttributes = gMetatileAttributes_Mossdeep,\n    .callback = InitTilesetAnim_Mossdeep,\n",
+      "gTileset_Pacifidlog": "\n    .isCompressed = TRUE,\n    .isSecondary = TRUE,\n    .tiles = gTilesetTiles_Pacifidlog,\n    .palettes = gTilesetPalettes_Pacifidlog,\n    .metatiles = gMetatiles_Pacifidlog,\n    .metatileAttributes = gMetatileAttributes_Pacifidlog,\n    .callback = InitTilesetAnim_Pacifidlog,\n",
+      "gTileset_PalletTown": "\n    .isCompressed = TRUE,\n    .isSecondary = TRUE,\n    .tiles = gTilesetTiles_PalletTown,\n    .palettes = gTilesetPalettes_PalletTown,\n    .metatiles = gMetatiles_PalletTown,\n    .metatileAttributes = gMetatileAttributes_PalletTown,\n    .callback = NULL,\n",
+      "gTileset_Petalburg": "\n    .isCompressed = TRUE,\n    .isSecondary = TRUE,\n    .tiles = gTilesetTiles_Petalburg,\n    .palettes = gTilesetPalettes_Petalburg,\n    .metatiles = gMetatiles_Petalburg,\n    .metatileAttributes = gMetatileAttributes_Petalburg,\n    .callback = InitTilesetAnim_Petalburg,\n",
+      "gTileset_PewterCity": "\n    .isCompressed = TRUE,\n    .isSecondary = TRUE,\n    .tiles = gTilesetTiles_PewterCity,\n    .palettes = gTilesetPalettes_PewterCity,\n    .metatiles = gMetatiles_PewterCity,\n    .metatileAttributes = gMetatileAttributes_PewterCity,\n    .callback = NULL,\n",
+      "gTileset_Rustboro": "\n    .isCompressed = TRUE,\n    .isSecondary = TRUE,\n    .tiles = gTilesetTiles_Rustboro,\n    .palettes = gTilesetPalettes_Rustboro,\n    .metatiles = gMetatiles_Rustboro,\n    .metatileAttributes = gMetatileAttributes_Rustboro,\n    .callback = InitTilesetAnim_Rustboro,\n",
+      "gTileset_SaffronCity": "\n    .isCompressed = TRUE,\n    .isSecondary = TRUE,\n    .tiles = gTilesetTiles_SaffronCity,\n    .palettes = gTilesetPalettes_SaffronCity,\n    .metatiles = gMetatiles_SaffronCity,\n    .metatileAttributes = gMetatileAttributes_SaffronCity,\n    .callback = NULL,\n",
+      "gTileset_SeviiIslands123": "\n    .isCompressed = TRUE,\n    .isSecondary = TRUE,\n    .tiles = gTilesetTiles_SeviiIslands123,\n    .palettes = gTilesetPalettes_SeviiIslands123,\n    .metatiles = gMetatiles_SeviiIslands123,\n    .metatileAttributes = gMetatileAttributes_SeviiIslands123,\n    .callback = NULL,\n",
+      "gTileset_SeviiIslands45": "\n    .isCompressed = TRUE,\n    .isSecondary = TRUE,\n    .tiles = gTilesetTiles_SeviiIslands45,\n    .palettes = gTilesetPalettes_SeviiIslands45,\n    .metatiles = gMetatiles_SeviiIslands45,\n    .metatileAttributes = gMetatileAttributes_SeviiIslands45,\n    .callback = NULL,\n",
+      "gTileset_SeviiIslands67": "\n    .isCompressed = TRUE,\n    .isSecondary = TRUE,\n    .tiles = gTilesetTiles_SeviiIslands67,\n    .palettes = gTilesetPalettes_SeviiIslands67,\n    .metatiles = gMetatiles_SeviiIslands67,\n    .metatileAttributes = gMetatileAttributes_SeviiIslands67,\n    .callback = NULL,\n",
+      "gTileset_Slateport": "\n    .isCompressed = TRUE,\n    .isSecondary = TRUE,\n    .tiles = gTilesetTiles_Slateport,\n    .palettes = gTilesetPalettes_Slateport,\n    .metatiles = gMetatiles_Slateport,\n    .metatileAttributes = gMetatileAttributes_Slateport,\n    .callback = InitTilesetAnim_Slateport,\n",
+      "gTileset_Sootopolis": "\n    .isCompressed = TRUE,\n    .isSecondary = TRUE,\n    .tiles = gTilesetTiles_Sootopolis,\n    .palettes = gTilesetPalettes_Sootopolis,\n    .metatiles = gMetatiles_Sootopolis,\n    .metatileAttributes = gMetatileAttributes_Sootopolis,\n    .callback = InitTilesetAnim_Sootopolis,\n",
+      "gTileset_VermilionCity": "\n    .isCompressed = TRUE,\n    .isSecondary = TRUE,\n    .tiles = gTilesetTiles_VermilionCity,\n    .palettes = gTilesetPalettes_VermilionCity,\n    .metatiles = gMetatiles_VermilionCity,\n    .metatileAttributes = gMetatileAttributes_VermilionCity,\n    .callback = NULL,\n",
+      "gTileset_ViridianCity": "\n    .isCompressed = TRUE,\n    .isSecondary = TRUE,\n    .tiles = gTilesetTiles_ViridianCity,\n    .palettes = gTilesetPalettes_ViridianCity,\n    .metatiles = gMetatiles_ViridianCity,\n    .metatileAttributes = gMetatileAttributes_ViridianCity,\n    .callback = NULL,\n",
+      "gTileset_ViridianForest": "\n    .isCompressed = TRUE,\n    .isSecondary = TRUE,\n    .tiles = gTilesetTiles_ViridianForest,\n    .palettes = gTilesetPalettes_ViridianForest,\n    .metatiles = gMetatiles_ViridianForest,\n    .metatileAttributes = gMetatileAttributes_ViridianForest,\n    .callback = NULL,\n"
+    },
+    "src/data/tilesets/legends_kanto.h": {
+      "gTileset_LegendsKantoCeladonCity": "\n    .isCompressed = TRUE,\n    .isSecondary = TRUE,\n    .tiles = gTilesetTiles_LegendsKantoCeladonCity,\n    .palettes = gTilesetPalettes_LegendsKantoCeladonCity,\n    .metatiles = gMetatiles_LegendsKantoCeladonCity,\n    .metatileAttributes = gMetatileAttributes_LegendsKantoCeladonCity,\n    .callback = InitTilesetAnim_CeladonCity,\n",
+      "gTileset_LegendsKantoFuchsiaCity": "\n    .isCompressed = TRUE,\n    .isSecondary = TRUE,\n    .tiles = gTilesetTiles_LegendsKantoFuchsiaCity,\n    .palettes = gTilesetPalettes_LegendsKantoFuchsiaCity,\n    .metatiles = gMetatiles_LegendsKantoFuchsiaCity,\n    .metatileAttributes = gMetatileAttributes_LegendsKantoFuchsiaCity,\n    .callback = NULL,\n",
+      "gTileset_LegendsKantoLavenderTown": "\n    .isCompressed = TRUE,\n    .isSecondary = TRUE,\n    .tiles = gTilesetTiles_LegendsKantoLavenderTown,\n    .palettes = gTilesetPalettes_LegendsKantoLavenderTown,\n    .metatiles = gMetatiles_LegendsKantoLavenderTown,\n    .metatileAttributes = gMetatileAttributes_LegendsKantoLavenderTown,\n    .callback = NULL,\n",
+      "gTileset_LegendsKantoSaffronCity": "\n    .isCompressed = TRUE,\n    .isSecondary = TRUE,\n    .tiles = gTilesetTiles_LegendsKantoSaffronCity,\n    .palettes = gTilesetPalettes_LegendsKantoSaffronCity,\n    .metatiles = gMetatiles_LegendsKantoSaffronCity,\n    .metatileAttributes = gMetatileAttributes_LegendsKantoSaffronCity,\n    .callback = NULL,\n",
+      "gTileset_LegendsKantoVermilionCity": "\n    .isCompressed = TRUE,\n    .isSecondary = TRUE,\n    .tiles = gTilesetTiles_LegendsKantoVermilionCity,\n    .palettes = gTilesetPalettes_LegendsKantoVermilionCity,\n    .metatiles = gMetatiles_LegendsKantoVermilionCity,\n    .metatileAttributes = gMetatileAttributes_LegendsKantoVermilionCity,\n    .callback = NULL,\n"
+    },
+    "src/data/tilesets/legends_story.h": {
+      "gTileset_LegendsKantoCeruleanCity": "\n    .isCompressed = TRUE,\n    .isSecondary = TRUE,\n    .tiles = gTilesetTiles_LegendsStoryCeruleanCity,\n    .palettes = gTilesetPalettes_LegendsStoryCeruleanCity,\n    .metatiles = gMetatiles_LegendsStoryCeruleanCity,\n    .metatileAttributes = gMetatileAttributes_LegendsStoryCeruleanCity,\n    .callback = NULL,\n",
+      "gTileset_LegendsKantoCinnabarIsland": "\n    .isCompressed = TRUE,\n    .isSecondary = TRUE,\n    .tiles = gTilesetTiles_LegendsStoryCinnabarIsland,\n    .palettes = gTilesetPalettes_LegendsStoryCinnabarIsland,\n    .metatiles = gMetatiles_LegendsStoryCinnabarIsland,\n    .metatileAttributes = gMetatileAttributes_LegendsStoryCinnabarIsland,\n    .callback = NULL,\n",
+      "gTileset_LegendsKantoPalletTown": "\n    .isCompressed = TRUE,\n    .isSecondary = TRUE,\n    .tiles = gTilesetTiles_LegendsStoryPalletTown,\n    .palettes = gTilesetPalettes_LegendsStoryPalletTown,\n    .metatiles = gMetatiles_LegendsStoryPalletTown,\n    .metatileAttributes = gMetatileAttributes_LegendsStoryPalletTown,\n    .callback = NULL,\n",
+      "gTileset_LegendsKantoPewterCity": "\n    .isCompressed = TRUE,\n    .isSecondary = TRUE,\n    .tiles = gTilesetTiles_LegendsStoryPewterCity,\n    .palettes = gTilesetPalettes_LegendsStoryPewterCity,\n    .metatiles = gMetatiles_LegendsStoryPewterCity,\n    .metatileAttributes = gMetatileAttributes_LegendsStoryPewterCity,\n    .callback = NULL,\n",
+      "gTileset_LegendsKantoSeviiIslands123": "\n    .isCompressed = TRUE,\n    .isSecondary = TRUE,\n    .tiles = gTilesetTiles_LegendsStorySeviiIslands123,\n    .palettes = gTilesetPalettes_LegendsStorySeviiIslands123,\n    .metatiles = gMetatiles_LegendsStorySeviiIslands123,\n    .metatileAttributes = gMetatileAttributes_LegendsStorySeviiIslands123,\n    .callback = NULL,\n",
+      "gTileset_LegendsKantoViridianCity": "\n    .isCompressed = TRUE,\n    .isSecondary = TRUE,\n    .tiles = gTilesetTiles_LegendsStoryViridianCity,\n    .palettes = gTilesetPalettes_LegendsStoryViridianCity,\n    .metatiles = gMetatiles_LegendsStoryViridianCity,\n    .metatileAttributes = gMetatileAttributes_LegendsStoryViridianCity,\n    .callback = NULL,\n",
+      "gTileset_LegendsKantoViridianForest": "\n    .isCompressed = TRUE,\n    .isSecondary = TRUE,\n    .tiles = gTilesetTiles_LegendsStoryViridianForest,\n    .palettes = gTilesetPalettes_LegendsStoryViridianForest,\n    .metatiles = gMetatiles_LegendsStoryViridianForest,\n    .metatileAttributes = gMetatileAttributes_LegendsStoryViridianForest,\n    .callback = NULL,\n"
+    }
+  }
 }

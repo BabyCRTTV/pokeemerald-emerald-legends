@@ -21,7 +21,7 @@ for name,f in m['families'].items():
  native=R/'data/tilesets/primary'/name;im=Image.open(native/'tiles.png');lit=Image.open(out/(name+'_tiles.png'))
  a=art.words(native/'metatiles.bin');b=art.words(out/(name+'_metatiles.bin'));changed={c['metatile']*8+c['cell'] for c in f['cells']}
  assert all(x==y for i,(x,y) in enumerate(zip(a,b)) if i not in changed),'An unlit roof/path/wall changed'
- palettes=[art.palette(native/'palettes'/f'{i:02}.pal') for i in range(7)];newpal=art.palette(out/(name+'.pal'))
+ palettes=[art.palette(native/'palettes'/f'{i:02}.pal') for i in range(7)];newpal=art.palette(R/next(x['day'] for x in m['secondary'] if x['family']==name))
  reserved={c['tile'] for c in f['cells']};used={e&1023 for e in a}
  for s in m['secondary']:
   if s['family']==name:used.update(e&1023 for e in art.words(R/s['metatiles']))
@@ -32,13 +32,15 @@ for name,f in m['families'].items():
   for yy in range(8):
    for xx in range(8):
     old=x.getpixel((xx,yy));new=y.getpixel((xx,yy))
-    assert bool(old)==bool(new),'Transparent cell changed'
-    if old:assert p[old]==newpal[new],(name,cell,'Daytime RGB changed')
- flags={int(l) for l in (out/(name+'.pla')).read_text().splitlines() if l and not l.startswith('#')}
- assert flags=={i+1 for i,c in enumerate(f['colors']) if c['light']}
- assert flags and 0 not in flags
+    if cell.get('overlay'):
+     assert not new or old, 'Overlay created an opaque native transparent pixel'
+    else:assert bool(old)==bool(new),'Transparent cell changed'
+    if new:assert p[old]==newpal[new],(name,cell,'Daytime RGB changed')
+ flags={int(l) for l in Path(str(R/next(x['day'] for x in m['secondary'] if x['family']==name)).replace('.pal','.pla')).read_text().splitlines() if l and not l.startswith('#')}
+ assert flags=={0}|{i+1 for i,c in enumerate(f['colors']) if c['light']}
+ assert 0 in flags
  # Walls and sign borders remain ordinary tinted colors in the same palette.
- assert len(flags)<len(f['colors'])
+ assert len(flags - {0}) <= len(f['colors'])
 for g in m['glass_palettes']:
  assert art.palette(R/g['native'])==art.palette(R/g['palette'])
  assert set(g['lights'])=={8,9,10}
@@ -57,7 +59,7 @@ with tempfile.TemporaryDirectory() as d:
  p=Path(d);(p/'mix.c').write_text(pre+source);subprocess.run(['cc','-Wall','-Werror','-shared','-fPIC',str(p/'mix.c'),'-o',str(p/'mix.so')],check=True)
  fn=ctypes.CDLL(str(p/'mix.so')).TimeMixPalettes;day=Blend(0,0,0);night=Blend(116|(116<<8)|(157<<16),10,1)
  for name,f in m['families'].items():
-  rgb=art.palette(out/(name+'.pal'));flags={int(l) for l in (out/(name+'.pla')).read_text().splitlines() if l and not l.startswith('#')}
+  rgb=art.palette(out/(name+'.pal'));flags={int(l) for l in Path(str(R/next(x['day'] for x in m['secondary'] if x['family']==name)).replace('.pal','.pla')).read_text().splitlines() if l and not l.startswith('#')}
   colors=[(r>>3)|((g>>3)<<5)|((b>>3)<<10)|(0x8000 if i in flags else 0) for i,(r,g,b) in enumerate(rgb)]
   src=(ctypes.c_uint16*16)(*colors);dst=(ctypes.c_uint16*16)(*colors)
   fn(1,src,dst,ctypes.byref(day),ctypes.byref(day),256)
@@ -74,4 +76,4 @@ for family in ('general','general_frlg'):
  text='\n'.join((R/f).read_text() for f in ('src/graphics.c','src/data/tilesets/graphics.h','src/data/tilesets/legends_kanto.h'))
  assert 'data/tilesets/legends_lights/'+family+'_tiles.png' in text,('Unwired runtime art',family)
 assert 'data/tilesets/legends_lights/*.pla' in (R/'Makefile').read_text()
-print('29 window/sign cells: native daytime RGB, isolated night emission, free tile/palette slots, dawn blending and reproducible assets passed')
+print('Window/sign cells: native daytime RGB, isolated night emission, free tile/palette slots, dawn blending and reproducible assets passed')

@@ -35,6 +35,9 @@ static void AppendToList(u8 *a,u8 *n,u8 value){assert(*n<10);a[(*n)++]=value;}
 static bool32 StartMenuPlayerNameCallback(void){return TRUE;}
 struct MenuAction {const char *text;union {bool32 (*u8_void)(void);} func;};
 static struct MenuAction sStartMenuItems[20];
+static int sJournalPage;
+static bool32 IsOverworldLinkActive(void){return FALSE;}
+static bool32 InUnionRoom(void){return FALSE;}
 static u8 GetStartMenuWindowId(void){return 0;}
 static void FillWindowPixelBuffer(u8 w,u8 color){}
 static void FillWindowPixelRect(u8 w,u8 color,u32 x,u32 y,u32 a,u32 b){assert(x+a<=96&&y+b<=144);}

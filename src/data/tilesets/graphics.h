@@ -44,29 +44,29 @@ const u16 gTilesetPalettes_SecretBaseRedCave[][16] =
 
 #if !IS_FRLG
 
-const u32 gTilesetTiles_Petalburg[] = INCGFX_U32("data/tilesets/secondary/petalburg/tiles.png", ".4bpp.fastSmol", "-num_tiles 159 -Wnum_tiles");
+const u32 gTilesetTiles_Petalburg[] = INCGFX_U32("data/tilesets/legends_lights/petalburg_tiles.png", ".4bpp.fastSmol", "-num_tiles 159 -Wnum_tiles");
 
 const u16 gTilesetPalettes_Petalburg[][16] =
 {
-    INCGFX_U16("data/tilesets/secondary/petalburg/palettes/00.pal", ".gbapal"),
+    INCGFX_U16("data/tilesets/legends_lights/petalburg_windows_night.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/petalburg/palettes/01.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/petalburg/palettes/02.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/petalburg/palettes/03.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/petalburg/palettes/04.pal", ".gbapal"),
-    INCGFX_U16("data/tilesets/secondary/petalburg/palettes/05.pal", ".gbapal"),
+    INCGFX_U16("data/tilesets/legends_lights/petalburg_night.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/petalburg/palettes/06.pal", ".gbapal"),
-    INCGFX_U16("data/tilesets/secondary/petalburg/palettes/07.pal", ".gbapal"),
+    INCGFX_U16("data/tilesets/legends_lights/petalburg_windows_day.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/petalburg/palettes/08.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/petalburg/palettes/09.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/petalburg/palettes/10.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/petalburg/palettes/11.pal", ".gbapal"),
-    INCGFX_U16("data/tilesets/legends_lights/general.pal", ".gbapal"),
+    INCGFX_U16("data/tilesets/legends_lights/petalburg_day.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/petalburg/palettes/13.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/petalburg/palettes/14.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/petalburg/palettes/15.pal", ".gbapal"),
 };
 
-const u32 gTilesetTiles_Rustboro[] = INCGFX_U32("data/tilesets/secondary/rustboro/tiles.png", ".4bpp.fastSmol", "-num_tiles 498 -Wnum_tiles");
+const u32 gTilesetTiles_Rustboro[] = INCGFX_U32("data/tilesets/legends_lights/rustboro_tiles.png", ".4bpp.fastSmol", "-num_tiles 498 -Wnum_tiles");
 
 const u16 gTilesetPalettes_Rustboro[][16] =
 {
@@ -75,17 +75,17 @@ const u16 gTilesetPalettes_Rustboro[][16] =
     INCGFX_U16("data/tilesets/secondary/rustboro/palettes/02.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/rustboro/palettes/03.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/rustboro/palettes/04.pal", ".gbapal"),
-    INCGFX_U16("data/tilesets/secondary/rustboro/palettes/05.pal", ".gbapal"),
-    INCGFX_U16("data/tilesets/secondary/rustboro/palettes/06.pal", ".gbapal"),
+    INCGFX_U16("data/tilesets/legends_lights/rustboro_night.pal", ".gbapal"),
+    INCGFX_U16("data/tilesets/legends_lights/rustboro_windows_day.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/rustboro/palettes/07.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/rustboro/palettes/08.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/rustboro/palettes/09.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/rustboro/palettes/10.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/rustboro/palettes/11.pal", ".gbapal"),
-    INCGFX_U16("data/tilesets/legends_lights/general.pal", ".gbapal"),
+    INCGFX_U16("data/tilesets/legends_lights/rustboro_day.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/rustboro/palettes/13.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/rustboro/palettes/14.pal", ".gbapal"),
-    INCGFX_U16("data/tilesets/secondary/rustboro/palettes/15.pal", ".gbapal"),
+    INCGFX_U16("data/tilesets/legends_lights/rustboro_windows_night.pal", ".gbapal"),
 };
 
 const u32 gTilesetTiles_Dewford[] = INCGFX_U32("data/tilesets/secondary/dewford/tiles.png", ".4bpp.fastSmol", "-num_tiles 503 -Wnum_tiles");
@@ -97,14 +97,14 @@ const u16 gTilesetPalettes_Dewford[][16] =
     INCGFX_U16("data/tilesets/secondary/dewford/palettes/02.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/dewford/palettes/03.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/dewford/palettes/04.pal", ".gbapal"),
-    INCGFX_U16("data/tilesets/secondary/dewford/palettes/05.pal", ".gbapal"),
+    INCGFX_U16("data/tilesets/legends_lights/dewford_night.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/dewford/palettes/06.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/dewford/palettes/07.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/dewford/palettes/08.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/dewford/palettes/09.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/dewford/palettes/10.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/dewford/palettes/11.pal", ".gbapal"),
-    INCGFX_U16("data/tilesets/legends_lights/general.pal", ".gbapal"),
+    INCGFX_U16("data/tilesets/legends_lights/dewford_day.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/dewford/palettes/13.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/dewford/palettes/14.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/dewford/palettes/15.pal", ".gbapal"),
@@ -119,14 +119,14 @@ const u16 gTilesetPalettes_Slateport[][16] =
     INCGFX_U16("data/tilesets/secondary/slateport/palettes/02.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/slateport/palettes/03.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/slateport/palettes/04.pal", ".gbapal"),
-    INCGFX_U16("data/tilesets/secondary/slateport/palettes/05.pal", ".gbapal"),
+    INCGFX_U16("data/tilesets/legends_lights/slateport_night.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/slateport/palettes/06.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/slateport/palettes/07.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/slateport/palettes/08.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/slateport/palettes/09.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/slateport/palettes/10.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/slateport/palettes/11.pal", ".gbapal"),
-    INCGFX_U16("data/tilesets/legends_lights/general.pal", ".gbapal"),
+    INCGFX_U16("data/tilesets/legends_lights/slateport_day.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/slateport/palettes/13.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/slateport/palettes/14.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/slateport/palettes/15.pal", ".gbapal"),
@@ -141,14 +141,14 @@ const u16 gTilesetPalettes_Mauville[][16] =
     INCGFX_U16("data/tilesets/secondary/mauville/palettes/02.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/mauville/palettes/03.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/mauville/palettes/04.pal", ".gbapal"),
-    INCGFX_U16("data/tilesets/secondary/mauville/palettes/05.pal", ".gbapal"),
+    INCGFX_U16("data/tilesets/legends_lights/mauville_night.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/mauville/palettes/06.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/mauville/palettes/07.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/mauville/palettes/08.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/mauville/palettes/09.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/mauville/palettes/10.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/mauville/palettes/11.pal", ".gbapal"),
-    INCGFX_U16("data/tilesets/legends_lights/general.pal", ".gbapal"),
+    INCGFX_U16("data/tilesets/legends_lights/mauville_day.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/mauville/palettes/13.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/mauville/palettes/14.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/mauville/palettes/15.pal", ".gbapal"),
@@ -163,20 +163,20 @@ const u16 gTilesetPalettes_Lavaridge[][16] =
     INCGFX_U16("data/tilesets/secondary/lavaridge/palettes/02.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/lavaridge/palettes/03.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/lavaridge/palettes/04.pal", ".gbapal"),
-    INCGFX_U16("data/tilesets/secondary/lavaridge/palettes/05.pal", ".gbapal"),
+    INCGFX_U16("data/tilesets/legends_lights/lavaridge_night.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/lavaridge/palettes/06.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/lavaridge/palettes/07.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/lavaridge/palettes/08.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/lavaridge/palettes/09.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/lavaridge/palettes/10.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/lavaridge/palettes/11.pal", ".gbapal"),
-    INCGFX_U16("data/tilesets/legends_lights/general.pal", ".gbapal"),
+    INCGFX_U16("data/tilesets/legends_lights/lavaridge_day.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/lavaridge/palettes/13.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/lavaridge/palettes/14.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/lavaridge/palettes/15.pal", ".gbapal"),
 };
 
-const u32 gTilesetTiles_Fallarbor[] = INCGFX_U32("data/tilesets/secondary/fallarbor/tiles.png", ".4bpp.fastSmol");
+const u32 gTilesetTiles_Fallarbor[] = INCGFX_U32("data/tilesets/legends_lights/fallarbor_tiles.png", ".4bpp.fastSmol");
 
 const u16 gTilesetPalettes_Fallarbor[][16] =
 {
@@ -185,20 +185,20 @@ const u16 gTilesetPalettes_Fallarbor[][16] =
     INCGFX_U16("data/tilesets/secondary/fallarbor/palettes/02.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/fallarbor/palettes/03.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/fallarbor/palettes/04.pal", ".gbapal"),
-    INCGFX_U16("data/tilesets/secondary/fallarbor/palettes/05.pal", ".gbapal"),
+    INCGFX_U16("data/tilesets/legends_lights/fallarbor_night.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/fallarbor/palettes/06.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/fallarbor/palettes/07.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/fallarbor/palettes/08.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/fallarbor/palettes/09.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/fallarbor/palettes/10.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/fallarbor/palettes/11.pal", ".gbapal"),
-    INCGFX_U16("data/tilesets/legends_lights/general.pal", ".gbapal"),
+    INCGFX_U16("data/tilesets/legends_lights/fallarbor_day.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/fallarbor/palettes/13.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/fallarbor/palettes/14.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/fallarbor/palettes/15.pal", ".gbapal"),
 };
 
-const u32 gTilesetTiles_Fortree[] = INCGFX_U32("data/tilesets/secondary/fortree/tiles.png", ".4bpp.fastSmol", "-num_tiles 493 -Wnum_tiles");
+const u32 gTilesetTiles_Fortree[] = INCGFX_U32("data/tilesets/legends_lights/fortree_tiles.png", ".4bpp.fastSmol", "-num_tiles 493 -Wnum_tiles");
 
 const u16 gTilesetPalettes_Fortree[][16] =
 {
@@ -207,20 +207,20 @@ const u16 gTilesetPalettes_Fortree[][16] =
     INCGFX_U16("data/tilesets/secondary/fortree/palettes/02.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/fortree/palettes/03.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/fortree/palettes/04.pal", ".gbapal"),
-    INCGFX_U16("data/tilesets/secondary/fortree/palettes/05.pal", ".gbapal"),
-    INCGFX_U16("data/tilesets/secondary/fortree/palettes/06.pal", ".gbapal"),
+    INCGFX_U16("data/tilesets/legends_lights/fortree_night.pal", ".gbapal"),
+    INCGFX_U16("data/tilesets/legends_lights/fortree_windows_day.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/fortree/palettes/07.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/fortree/palettes/08.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/fortree/palettes/09.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/fortree/palettes/10.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/fortree/palettes/11.pal", ".gbapal"),
-    INCGFX_U16("data/tilesets/legends_lights/general.pal", ".gbapal"),
+    INCGFX_U16("data/tilesets/legends_lights/fortree_day.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/fortree/palettes/13.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/fortree/palettes/14.pal", ".gbapal"),
-    INCGFX_U16("data/tilesets/secondary/fortree/palettes/15.pal", ".gbapal"),
+    INCGFX_U16("data/tilesets/legends_lights/fortree_windows_night.pal", ".gbapal"),
 };
 
-const u32 gTilesetTiles_Lilycove[] = INCGFX_U32("data/tilesets/secondary/lilycove/tiles.png", ".4bpp.fastSmol");
+const u32 gTilesetTiles_Lilycove[] = INCGFX_U32("data/tilesets/legends_lights/lilycove_tiles.png", ".4bpp.fastSmol");
 
 const u16 gTilesetPalettes_Lilycove[][16] =
 {
@@ -229,17 +229,17 @@ const u16 gTilesetPalettes_Lilycove[][16] =
     INCGFX_U16("data/tilesets/secondary/lilycove/palettes/02.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/lilycove/palettes/03.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/lilycove/palettes/04.pal", ".gbapal"),
-    INCGFX_U16("data/tilesets/secondary/lilycove/palettes/05.pal", ".gbapal"),
-    INCGFX_U16("data/tilesets/secondary/lilycove/palettes/06.pal", ".gbapal"),
+    INCGFX_U16("data/tilesets/legends_lights/lilycove_night.pal", ".gbapal"),
+    INCGFX_U16("data/tilesets/legends_lights/lilycove_windows_day.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/lilycove/palettes/07.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/lilycove/palettes/08.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/lilycove/palettes/09.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/lilycove/palettes/10.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/lilycove/palettes/11.pal", ".gbapal"),
-    INCGFX_U16("data/tilesets/legends_lights/general.pal", ".gbapal"),
+    INCGFX_U16("data/tilesets/legends_lights/lilycove_day.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/lilycove/palettes/13.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/lilycove/palettes/14.pal", ".gbapal"),
-    INCGFX_U16("data/tilesets/secondary/lilycove/palettes/15.pal", ".gbapal"),
+    INCGFX_U16("data/tilesets/legends_lights/lilycove_windows_night.pal", ".gbapal"),
 };
 
 const u32 gTilesetTiles_Mossdeep[] = INCGFX_U32("data/tilesets/secondary/mossdeep/tiles.png", ".4bpp.fastSmol");
@@ -251,20 +251,20 @@ const u16 gTilesetPalettes_Mossdeep[][16] =
     INCGFX_U16("data/tilesets/secondary/mossdeep/palettes/02.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/mossdeep/palettes/03.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/mossdeep/palettes/04.pal", ".gbapal"),
-    INCGFX_U16("data/tilesets/secondary/mossdeep/palettes/05.pal", ".gbapal"),
+    INCGFX_U16("data/tilesets/legends_lights/mossdeep_night.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/mossdeep/palettes/06.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/mossdeep/palettes/07.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/mossdeep/palettes/08.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/mossdeep/palettes/09.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/mossdeep/palettes/10.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/mossdeep/palettes/11.pal", ".gbapal"),
-    INCGFX_U16("data/tilesets/legends_lights/general.pal", ".gbapal"),
+    INCGFX_U16("data/tilesets/legends_lights/mossdeep_day.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/mossdeep/palettes/13.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/mossdeep/palettes/14.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/mossdeep/palettes/15.pal", ".gbapal"),
 };
 
-const u32 gTilesetTiles_EverGrande[] = INCGFX_U32("data/tilesets/secondary/ever_grande/tiles.png", ".4bpp.fastSmol");
+const u32 gTilesetTiles_EverGrande[] = INCGFX_U32("data/tilesets/legends_lights/ever_grande_tiles.png", ".4bpp.fastSmol");
 
 const u16 gTilesetPalettes_EverGrande[][16] =
 {
@@ -273,17 +273,17 @@ const u16 gTilesetPalettes_EverGrande[][16] =
     INCGFX_U16("data/tilesets/secondary/ever_grande/palettes/02.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/ever_grande/palettes/03.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/ever_grande/palettes/04.pal", ".gbapal"),
-    INCGFX_U16("data/tilesets/secondary/ever_grande/palettes/05.pal", ".gbapal"),
-    INCGFX_U16("data/tilesets/secondary/ever_grande/palettes/06.pal", ".gbapal"),
+    INCGFX_U16("data/tilesets/legends_lights/ever_grande_night.pal", ".gbapal"),
+    INCGFX_U16("data/tilesets/legends_lights/ever_grande_windows_day.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/ever_grande/palettes/07.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/ever_grande/palettes/08.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/ever_grande/palettes/09.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/ever_grande/palettes/10.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/ever_grande/palettes/11.pal", ".gbapal"),
-    INCGFX_U16("data/tilesets/legends_lights/general.pal", ".gbapal"),
+    INCGFX_U16("data/tilesets/legends_lights/ever_grande_day.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/ever_grande/palettes/13.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/ever_grande/palettes/14.pal", ".gbapal"),
-    INCGFX_U16("data/tilesets/secondary/ever_grande/palettes/15.pal", ".gbapal"),
+    INCGFX_U16("data/tilesets/legends_lights/ever_grande_windows_night.pal", ".gbapal"),
 };
 
 const u32 gTilesetTiles_Pacifidlog[] = INCGFX_U32("data/tilesets/secondary/pacifidlog/tiles.png", ".4bpp.fastSmol", "-num_tiles 504 -Wnum_tiles");
@@ -295,14 +295,14 @@ const u16 gTilesetPalettes_Pacifidlog[][16] =
     INCGFX_U16("data/tilesets/secondary/pacifidlog/palettes/02.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/pacifidlog/palettes/03.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/pacifidlog/palettes/04.pal", ".gbapal"),
-    INCGFX_U16("data/tilesets/secondary/pacifidlog/palettes/05.pal", ".gbapal"),
+    INCGFX_U16("data/tilesets/legends_lights/pacifidlog_night.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/pacifidlog/palettes/06.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/pacifidlog/palettes/07.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/pacifidlog/palettes/08.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/pacifidlog/palettes/09.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/pacifidlog/palettes/10.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/pacifidlog/palettes/11.pal", ".gbapal"),
-    INCGFX_U16("data/tilesets/legends_lights/general.pal", ".gbapal"),
+    INCGFX_U16("data/tilesets/legends_lights/pacifidlog_day.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/pacifidlog/palettes/13.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/pacifidlog/palettes/14.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/pacifidlog/palettes/15.pal", ".gbapal"),
@@ -317,14 +317,14 @@ const u16 gTilesetPalettes_Sootopolis[][16] =
     INCGFX_U16("data/tilesets/secondary/sootopolis/palettes/02.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/sootopolis/palettes/03.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/sootopolis/palettes/04.pal", ".gbapal"),
-    INCGFX_U16("data/tilesets/secondary/sootopolis/palettes/05.pal", ".gbapal"),
+    INCGFX_U16("data/tilesets/legends_lights/sootopolis_night.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/sootopolis/palettes/06.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/sootopolis/palettes/07.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/sootopolis/palettes/08.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/sootopolis/palettes/09.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/sootopolis/palettes/10.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/sootopolis/palettes/11.pal", ".gbapal"),
-    INCGFX_U16("data/tilesets/legends_lights/general.pal", ".gbapal"),
+    INCGFX_U16("data/tilesets/legends_lights/sootopolis_day.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/sootopolis/palettes/13.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/sootopolis/palettes/14.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/sootopolis/palettes/15.pal", ".gbapal"),
@@ -339,14 +339,14 @@ const u16 gTilesetPalettes_BattleFrontierOutsideWest[][16] =
     INCGFX_U16("data/tilesets/secondary/battle_frontier_outside_west/palettes/02.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/battle_frontier_outside_west/palettes/03.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/battle_frontier_outside_west/palettes/04.pal", ".gbapal"),
-    INCGFX_U16("data/tilesets/secondary/battle_frontier_outside_west/palettes/05.pal", ".gbapal"),
+    INCGFX_U16("data/tilesets/legends_lights/battle_frontier_outside_west_night.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/battle_frontier_outside_west/palettes/06.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/battle_frontier_outside_west/palettes/12.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/battle_frontier_outside_west/palettes/08.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/battle_frontier_outside_west/palettes/09.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/battle_frontier_outside_west/palettes/10.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/battle_frontier_outside_west/palettes/11.pal", ".gbapal"),
-    INCGFX_U16("data/tilesets/legends_lights/general.pal", ".gbapal"),
+    INCGFX_U16("data/tilesets/legends_lights/battle_frontier_outside_west_day.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/battle_frontier_outside_west/palettes/13.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/battle_frontier_outside_west/palettes/14.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/battle_frontier_outside_west/palettes/15.pal", ".gbapal"),
@@ -361,14 +361,14 @@ const u16 gTilesetPalettes_BattleFrontierOutsideEast[][16] =
     INCGFX_U16("data/tilesets/secondary/battle_frontier_outside_east/palettes/02.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/battle_frontier_outside_east/palettes/03.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/battle_frontier_outside_east/palettes/04.pal", ".gbapal"),
-    INCGFX_U16("data/tilesets/secondary/battle_frontier_outside_east/palettes/05.pal", ".gbapal"),
+    INCGFX_U16("data/tilesets/legends_lights/battle_frontier_outside_east_night.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/battle_frontier_outside_east/palettes/12.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/battle_frontier_outside_east/palettes/07.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/battle_frontier_outside_east/palettes/08.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/battle_frontier_outside_east/palettes/09.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/battle_frontier_outside_east/palettes/10.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/battle_frontier_outside_east/palettes/11.pal", ".gbapal"),
-    INCGFX_U16("data/tilesets/legends_lights/general.pal", ".gbapal"),
+    INCGFX_U16("data/tilesets/legends_lights/battle_frontier_outside_east_day.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/battle_frontier_outside_east/palettes/13.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/battle_frontier_outside_east/palettes/14.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/battle_frontier_outside_east/palettes/15.pal", ".gbapal"),
@@ -449,14 +449,14 @@ const u16 gTilesetPalettes_Cave[][16] =
     INCGFX_U16("data/tilesets/secondary/cave/palettes/02.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/cave/palettes/03.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/cave/palettes/04.pal", ".gbapal"),
-    INCGFX_U16("data/tilesets/secondary/cave/palettes/05.pal", ".gbapal"),
+    INCGFX_U16("data/tilesets/legends_lights/cave_night.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/cave/palettes/06.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/cave/palettes/07.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/cave/palettes/08.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/cave/palettes/09.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/cave/palettes/10.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/cave/palettes/11.pal", ".gbapal"),
-    INCGFX_U16("data/tilesets/legends_lights/general.pal", ".gbapal"),
+    INCGFX_U16("data/tilesets/legends_lights/cave_day.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/cave/palettes/13.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/cave/palettes/14.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/cave/palettes/15.pal", ".gbapal"),
@@ -670,14 +670,14 @@ const u16 gTilesetPalettes_Facility[][16] =
     INCGFX_U16("data/tilesets/secondary/facility/palettes/02.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/facility/palettes/03.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/facility/palettes/04.pal", ".gbapal"),
-    INCGFX_U16("data/tilesets/secondary/facility/palettes/05.pal", ".gbapal"),
+    INCGFX_U16("data/tilesets/legends_lights/facility_night.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/facility/palettes/06.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/facility/palettes/07.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/facility/palettes/08.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/facility/palettes/09.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/facility/palettes/10.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/facility/palettes/11.pal", ".gbapal"),
-    INCGFX_U16("data/tilesets/legends_lights/general.pal", ".gbapal"),
+    INCGFX_U16("data/tilesets/legends_lights/facility_day.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/facility/palettes/13.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/facility/palettes/14.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/facility/palettes/15.pal", ".gbapal"),
@@ -1675,14 +1675,14 @@ const u32 gTilesetTiles_PalletTown[] = INCGFX_U32("data/tilesets/secondary/palle
 
 const u16 gTilesetPalettes_PalletTown[][16] =
 {
-    INCGFX_U16("data/tilesets/secondary/pallet_town_frlg/palettes/00.pal", ".gbapal"),
-    INCGFX_U16("data/tilesets/secondary/pallet_town_frlg/palettes/01.pal", ".gbapal"),
-    INCGFX_U16("data/tilesets/secondary/pallet_town_frlg/palettes/02.pal", ".gbapal"),
+    INCGFX_U16("data/tilesets/legends_lights/pallet_town_frlg_night.pal", ".gbapal"),
+    INCGFX_U16("data/tilesets/legends_lights/pallet_glass_08_night.pal", ".gbapal"),
+    INCGFX_U16("data/tilesets/legends_lights/pallet_glass_09_night.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/pallet_town_frlg/palettes/03.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/pallet_town_frlg/palettes/04.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/pallet_town_frlg/palettes/05.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/pallet_town_frlg/palettes/06.pal", ".gbapal"),
-    INCGFX_U16("data/tilesets/legends_lights/general_frlg.pal", ".gbapal"),
+    INCGFX_U16("data/tilesets/legends_lights/pallet_town_frlg_day.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/legends_lights/pallet_glass_08.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/legends_lights/pallet_glass_09.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/pallet_town_frlg/palettes/10.pal", ".gbapal"),
@@ -1697,14 +1697,14 @@ const u32 gTilesetTiles_ViridianCity[] = INCGFX_U32("data/tilesets/secondary/vir
 
 const u16 gTilesetPalettes_ViridianCity[][16] =
 {
-    INCGFX_U16("data/tilesets/secondary/viridian_city_frlg/palettes/00.pal", ".gbapal"),
+    INCGFX_U16("data/tilesets/legends_lights/viridian_city_frlg_night.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/viridian_city_frlg/palettes/01.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/viridian_city_frlg/palettes/02.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/viridian_city_frlg/palettes/03.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/viridian_city_frlg/palettes/04.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/viridian_city_frlg/palettes/05.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/viridian_city_frlg/palettes/06.pal", ".gbapal"),
-    INCGFX_U16("data/tilesets/legends_lights/general_frlg.pal", ".gbapal"),
+    INCGFX_U16("data/tilesets/legends_lights/viridian_city_frlg_day.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/viridian_city_frlg/palettes/08.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/viridian_city_frlg/palettes/09.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/viridian_city_frlg/palettes/10.pal", ".gbapal"),
@@ -1719,14 +1719,14 @@ const u32 gTilesetTiles_PewterCity[] = INCGFX_U32("data/tilesets/secondary/pewte
 
 const u16 gTilesetPalettes_PewterCity[][16] =
 {
-    INCGFX_U16("data/tilesets/secondary/pewter_city_frlg/palettes/00.pal", ".gbapal"),
+    INCGFX_U16("data/tilesets/legends_lights/pewter_city_frlg_night.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/pewter_city_frlg/palettes/01.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/pewter_city_frlg/palettes/02.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/pewter_city_frlg/palettes/03.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/pewter_city_frlg/palettes/04.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/pewter_city_frlg/palettes/05.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/pewter_city_frlg/palettes/06.pal", ".gbapal"),
-    INCGFX_U16("data/tilesets/legends_lights/general_frlg.pal", ".gbapal"),
+    INCGFX_U16("data/tilesets/legends_lights/pewter_city_frlg_day.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/pewter_city_frlg/palettes/08.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/pewter_city_frlg/palettes/09.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/pewter_city_frlg/palettes/10.pal", ".gbapal"),
@@ -1741,14 +1741,14 @@ const u32 gTilesetTiles_CeruleanCity[] = INCGFX_U32("data/tilesets/secondary/cer
 
 const u16 gTilesetPalettes_CeruleanCity[][16] =
 {
-    INCGFX_U16("data/tilesets/secondary/cerulean_city_frlg/palettes/00.pal", ".gbapal"),
+    INCGFX_U16("data/tilesets/legends_lights/cerulean_city_frlg_night.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/cerulean_city_frlg/palettes/01.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/cerulean_city_frlg/palettes/02.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/cerulean_city_frlg/palettes/03.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/cerulean_city_frlg/palettes/04.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/cerulean_city_frlg/palettes/05.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/cerulean_city_frlg/palettes/06.pal", ".gbapal"),
-    INCGFX_U16("data/tilesets/legends_lights/general_frlg.pal", ".gbapal"),
+    INCGFX_U16("data/tilesets/legends_lights/cerulean_city_frlg_day.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/cerulean_city_frlg/palettes/08.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/cerulean_city_frlg/palettes/09.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/cerulean_city_frlg/palettes/10.pal", ".gbapal"),
@@ -1763,14 +1763,14 @@ const u32 gTilesetTiles_LavenderTown[] = INCGFX_U32("data/tilesets/secondary/lav
 
 const u16 gTilesetPalettes_LavenderTown[][16] =
 {
-    INCGFX_U16("data/tilesets/secondary/lavender_town_frlg/palettes/00.pal", ".gbapal"),
+    INCGFX_U16("data/tilesets/legends_lights/lavender_town_frlg_night.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/lavender_town_frlg/palettes/01.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/lavender_town_frlg/palettes/02.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/lavender_town_frlg/palettes/03.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/lavender_town_frlg/palettes/04.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/lavender_town_frlg/palettes/05.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/lavender_town_frlg/palettes/06.pal", ".gbapal"),
-    INCGFX_U16("data/tilesets/legends_lights/general_frlg.pal", ".gbapal"),
+    INCGFX_U16("data/tilesets/legends_lights/lavender_town_frlg_day.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/lavender_town_frlg/palettes/08.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/lavender_town_frlg/palettes/09.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/lavender_town_frlg/palettes/10.pal", ".gbapal"),
@@ -1785,14 +1785,14 @@ const u32 gTilesetTiles_VermilionCity[] = INCGFX_U32("data/tilesets/secondary/ve
 
 const u16 gTilesetPalettes_VermilionCity[][16] =
 {
-    INCGFX_U16("data/tilesets/secondary/vermilion_city_frlg/palettes/00.pal", ".gbapal"),
+    INCGFX_U16("data/tilesets/legends_lights/vermilion_city_frlg_night.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/vermilion_city_frlg/palettes/01.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/vermilion_city_frlg/palettes/02.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/vermilion_city_frlg/palettes/03.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/vermilion_city_frlg/palettes/04.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/vermilion_city_frlg/palettes/05.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/vermilion_city_frlg/palettes/06.pal", ".gbapal"),
-    INCGFX_U16("data/tilesets/legends_lights/general_frlg.pal", ".gbapal"),
+    INCGFX_U16("data/tilesets/legends_lights/vermilion_city_frlg_day.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/vermilion_city_frlg/palettes/08.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/vermilion_city_frlg/palettes/09.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/vermilion_city_frlg/palettes/10.pal", ".gbapal"),
@@ -1807,14 +1807,14 @@ const u32 gTilesetTiles_CeladonCity[] = INCGFX_U32("data/tilesets/secondary/cela
 
 const u16 gTilesetPalettes_CeladonCity[][16] =
 {
-    INCGFX_U16("data/tilesets/secondary/celadon_city_frlg/palettes/00.pal", ".gbapal"),
+    INCGFX_U16("data/tilesets/legends_lights/celadon_city_frlg_night.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/celadon_city_frlg/palettes/01.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/celadon_city_frlg/palettes/02.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/celadon_city_frlg/palettes/03.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/celadon_city_frlg/palettes/04.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/celadon_city_frlg/palettes/05.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/celadon_city_frlg/palettes/06.pal", ".gbapal"),
-    INCGFX_U16("data/tilesets/legends_lights/general_frlg.pal", ".gbapal"),
+    INCGFX_U16("data/tilesets/legends_lights/celadon_city_frlg_day.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/celadon_city_frlg/palettes/08.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/celadon_city_frlg/palettes/09.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/celadon_city_frlg/palettes/10.pal", ".gbapal"),
@@ -1829,14 +1829,14 @@ const u32 gTilesetTiles_FuchsiaCity[] = INCGFX_U32("data/tilesets/secondary/fuch
 
 const u16 gTilesetPalettes_FuchsiaCity[][16] =
 {
-    INCGFX_U16("data/tilesets/secondary/fuchsia_city_frlg/palettes/00.pal", ".gbapal"),
+    INCGFX_U16("data/tilesets/legends_lights/fuchsia_city_frlg_night.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/fuchsia_city_frlg/palettes/01.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/fuchsia_city_frlg/palettes/02.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/fuchsia_city_frlg/palettes/03.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/fuchsia_city_frlg/palettes/04.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/fuchsia_city_frlg/palettes/05.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/fuchsia_city_frlg/palettes/06.pal", ".gbapal"),
-    INCGFX_U16("data/tilesets/legends_lights/general_frlg.pal", ".gbapal"),
+    INCGFX_U16("data/tilesets/legends_lights/fuchsia_city_frlg_day.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/fuchsia_city_frlg/palettes/08.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/fuchsia_city_frlg/palettes/09.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/fuchsia_city_frlg/palettes/10.pal", ".gbapal"),
@@ -1851,14 +1851,14 @@ const u32 gTilesetTiles_CinnabarIsland[] = INCGFX_U32("data/tilesets/secondary/c
 
 const u16 gTilesetPalettes_CinnabarIsland[][16] =
 {
-    INCGFX_U16("data/tilesets/secondary/cinnabar_island_frlg/palettes/00.pal", ".gbapal"),
+    INCGFX_U16("data/tilesets/legends_lights/cinnabar_island_frlg_night.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/cinnabar_island_frlg/palettes/01.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/cinnabar_island_frlg/palettes/02.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/cinnabar_island_frlg/palettes/03.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/cinnabar_island_frlg/palettes/04.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/cinnabar_island_frlg/palettes/05.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/cinnabar_island_frlg/palettes/06.pal", ".gbapal"),
-    INCGFX_U16("data/tilesets/legends_lights/general_frlg.pal", ".gbapal"),
+    INCGFX_U16("data/tilesets/legends_lights/cinnabar_island_frlg_day.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/cinnabar_island_frlg/palettes/08.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/cinnabar_island_frlg/palettes/09.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/cinnabar_island_frlg/palettes/10.pal", ".gbapal"),
@@ -1873,14 +1873,14 @@ const u32 gTilesetTiles_IndigoPlateau[] = INCGFX_U32("data/tilesets/secondary/in
 
 const u16 gTilesetPalettes_IndigoPlateau[][16] =
 {
-    INCGFX_U16("data/tilesets/secondary/indigo_plateau_frlg/palettes/00.pal", ".gbapal"),
+    INCGFX_U16("data/tilesets/legends_lights/indigo_plateau_frlg_night.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/indigo_plateau_frlg/palettes/01.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/indigo_plateau_frlg/palettes/02.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/indigo_plateau_frlg/palettes/03.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/indigo_plateau_frlg/palettes/04.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/indigo_plateau_frlg/palettes/05.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/indigo_plateau_frlg/palettes/06.pal", ".gbapal"),
-    INCGFX_U16("data/tilesets/legends_lights/general_frlg.pal", ".gbapal"),
+    INCGFX_U16("data/tilesets/legends_lights/indigo_plateau_frlg_day.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/indigo_plateau_frlg/palettes/08.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/indigo_plateau_frlg/palettes/09.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/indigo_plateau_frlg/palettes/10.pal", ".gbapal"),
@@ -1895,14 +1895,14 @@ const u32 gTilesetTiles_SaffronCity[] = INCGFX_U32("data/tilesets/secondary/saff
 
 const u16 gTilesetPalettes_SaffronCity[][16] =
 {
-    INCGFX_U16("data/tilesets/secondary/saffron_city_frlg/palettes/00.pal", ".gbapal"),
+    INCGFX_U16("data/tilesets/legends_lights/saffron_city_frlg_night.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/saffron_city_frlg/palettes/01.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/saffron_city_frlg/palettes/02.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/saffron_city_frlg/palettes/03.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/saffron_city_frlg/palettes/04.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/saffron_city_frlg/palettes/05.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/saffron_city_frlg/palettes/06.pal", ".gbapal"),
-    INCGFX_U16("data/tilesets/legends_lights/general_frlg.pal", ".gbapal"),
+    INCGFX_U16("data/tilesets/legends_lights/saffron_city_frlg_day.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/saffron_city_frlg/palettes/08.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/saffron_city_frlg/palettes/09.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/saffron_city_frlg/palettes/10.pal", ".gbapal"),
@@ -2335,14 +2335,14 @@ const u32 gTilesetTiles_ViridianForest[] = INCGFX_U32("data/tilesets/secondary/v
 
 const u16 gTilesetPalettes_ViridianForest[][16] =
 {
-    INCGFX_U16("data/tilesets/secondary/viridian_forest_frlg/palettes/00.pal", ".gbapal"),
+    INCGFX_U16("data/tilesets/legends_lights/viridian_forest_frlg_night.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/viridian_forest_frlg/palettes/01.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/viridian_forest_frlg/palettes/02.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/viridian_forest_frlg/palettes/03.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/viridian_forest_frlg/palettes/04.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/viridian_forest_frlg/palettes/05.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/viridian_forest_frlg/palettes/06.pal", ".gbapal"),
-    INCGFX_U16("data/tilesets/legends_lights/general_frlg.pal", ".gbapal"),
+    INCGFX_U16("data/tilesets/legends_lights/viridian_forest_frlg_day.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/viridian_forest_frlg/palettes/08.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/viridian_forest_frlg/palettes/09.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/viridian_forest_frlg/palettes/10.pal", ".gbapal"),
@@ -2777,14 +2777,14 @@ const u32 gTilesetTiles_BerryForest[] = INCGFX_U32("data/tilesets/secondary/berr
 
 const u16 gTilesetPalettes_BerryForest[][16] =
 {
-    INCGFX_U16("data/tilesets/secondary/berry_forest_frlg/palettes/00.pal", ".gbapal"),
+    INCGFX_U16("data/tilesets/legends_lights/berry_forest_frlg_night.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/berry_forest_frlg/palettes/01.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/berry_forest_frlg/palettes/02.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/berry_forest_frlg/palettes/03.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/berry_forest_frlg/palettes/04.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/berry_forest_frlg/palettes/05.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/berry_forest_frlg/palettes/06.pal", ".gbapal"),
-    INCGFX_U16("data/tilesets/legends_lights/general_frlg.pal", ".gbapal"),
+    INCGFX_U16("data/tilesets/legends_lights/berry_forest_frlg_day.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/berry_forest_frlg/palettes/08.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/berry_forest_frlg/palettes/09.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/berry_forest_frlg/palettes/10.pal", ".gbapal"),
@@ -2843,14 +2843,14 @@ const u32 gTilesetTiles_SeviiIslands123[] = INCGFX_U32("data/tilesets/secondary/
 
 const u16 gTilesetPalettes_SeviiIslands123[][16] =
 {
-    INCGFX_U16("data/tilesets/secondary/sevii_islands_123_frlg/palettes/00.pal", ".gbapal"),
+    INCGFX_U16("data/tilesets/legends_lights/sevii_islands_123_frlg_night.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/sevii_islands_123_frlg/palettes/01.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/sevii_islands_123_frlg/palettes/02.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/sevii_islands_123_frlg/palettes/03.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/sevii_islands_123_frlg/palettes/04.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/sevii_islands_123_frlg/palettes/05.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/sevii_islands_123_frlg/palettes/06.pal", ".gbapal"),
-    INCGFX_U16("data/tilesets/legends_lights/general_frlg.pal", ".gbapal"),
+    INCGFX_U16("data/tilesets/legends_lights/sevii_islands_123_frlg_day.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/sevii_islands_123_frlg/palettes/08.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/sevii_islands_123_frlg/palettes/09.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/sevii_islands_123_frlg/palettes/10.pal", ".gbapal"),
@@ -2865,14 +2865,14 @@ const u32 gTilesetTiles_SeviiIslands45[] = INCGFX_U32("data/tilesets/secondary/s
 
 const u16 gTilesetPalettes_SeviiIslands45[][16] =
 {
-    INCGFX_U16("data/tilesets/secondary/sevii_islands_45_frlg/palettes/00.pal", ".gbapal"),
+    INCGFX_U16("data/tilesets/legends_lights/sevii_islands_45_frlg_night.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/sevii_islands_45_frlg/palettes/01.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/sevii_islands_45_frlg/palettes/02.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/sevii_islands_45_frlg/palettes/03.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/sevii_islands_45_frlg/palettes/04.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/sevii_islands_45_frlg/palettes/05.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/sevii_islands_45_frlg/palettes/06.pal", ".gbapal"),
-    INCGFX_U16("data/tilesets/legends_lights/general_frlg.pal", ".gbapal"),
+    INCGFX_U16("data/tilesets/legends_lights/sevii_islands_45_frlg_day.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/sevii_islands_45_frlg/palettes/08.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/sevii_islands_45_frlg/palettes/09.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/sevii_islands_45_frlg/palettes/10.pal", ".gbapal"),
@@ -2887,14 +2887,14 @@ const u32 gTilesetTiles_SeviiIslands67[] = INCGFX_U32("data/tilesets/secondary/s
 
 const u16 gTilesetPalettes_SeviiIslands67[][16] =
 {
-    INCGFX_U16("data/tilesets/secondary/sevii_islands_67_frlg/palettes/00.pal", ".gbapal"),
+    INCGFX_U16("data/tilesets/legends_lights/sevii_islands_67_frlg_night.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/sevii_islands_67_frlg/palettes/01.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/sevii_islands_67_frlg/palettes/02.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/sevii_islands_67_frlg/palettes/03.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/sevii_islands_67_frlg/palettes/04.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/sevii_islands_67_frlg/palettes/05.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/sevii_islands_67_frlg/palettes/06.pal", ".gbapal"),
-    INCGFX_U16("data/tilesets/legends_lights/general_frlg.pal", ".gbapal"),
+    INCGFX_U16("data/tilesets/legends_lights/sevii_islands_67_frlg_day.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/sevii_islands_67_frlg/palettes/08.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/sevii_islands_67_frlg/palettes/09.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/sevii_islands_67_frlg/palettes/10.pal", ".gbapal"),

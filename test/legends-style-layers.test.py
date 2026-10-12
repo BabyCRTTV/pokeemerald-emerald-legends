@@ -22,6 +22,12 @@ for name,direction in (('South',0),('North',2),('West',1),('East',1)):
   for frame in map(int,re.findall(r'ANIMCMD_FRAME\((\d+)',body)):
    assert art.WORLD_DIRECTIONS['walking'][frame]==direction,(motion,name,frame)
    if motion!='Run':assert art.WORLD_DIRECTIONS['mach_bike'][frame]==direction
+# Read every native trick sequence; lateral back-wheel poses 23/24 face north.
+for motion in ('BunnyHopBackWheel','BunnyHopFrontWheel','StandingWheelieBackWheel','StandingWheelieFrontWheel','MovingWheelie'):
+ for name,direction in (('South',0),('North',2),('West',1),('East',1)):
+  body=re.search(r'sAnim_'+motion+name+r'\[\]\s*=\s*\{(.*?)\};',anims,re.S)[1]
+  for frame in map(int,re.findall(r'ANIMCMD_FRAME\((\d+)',body)):
+   assert art.WORLD_DIRECTIONS['acro_bike'][frame]==direction,(motion,name,frame)
 for state in ('surfing','watering'):
  assert [art.WORLD_DIRECTIONS[state][i] for i in (0,2,4)]==[0,2,1]
 assets=[root/'graphics/legends/styles/edits.bin',root/'src/data/legends/style_layers.h']
@@ -34,6 +40,8 @@ pre='''
 typedef uint8_t u8;typedef uint16_t u16;typedef uint32_t u32;typedef uint8_t bool8;
 #define LEGENDS_HAIR_COUNT 11
 #define LEGENDS_JACKET_COUNT 3
+#define FEMALE 1
+u8 LegendsGetLeggings(void){return 0;}
 #define TRUE 1
 #define FALSE 0
 u8 scarf;u8 color;
@@ -74,6 +82,13 @@ with tempfile.TemporaryDirectory() as d:
      painter(buf,w,g,kind,state,slot,hair,coat)
      raw=bytes(buf);out=unpack(raw,w,h)
      if not hair and not coat or kind==0 and state==4:assert raw==native
+     if g==1 and kind==2 and hair:
+      # Retired native lock tips must not float beside a shorter custom cut.
+      x,y=((55,41),(62,38),(49,35),(56,40))[native_index]
+      assert p[y][x] and out[y][x]==0,(name,slot,hair,coat,'native lock remnant')
+     if kind==0 and state==6:
+      for x,y in art.fishing_rod(p,g,native_index):
+       assert out[y][x]==p[y][x],(name,slot,hair,coat,'fishing rod',x,y)
      for x,y in protected:assert out[y][x]==p[y][x],(name,kind,state,slot,hair,coat,'face/hand/ball',x,y)
      if coat and kind==2:
       for y,row in enumerate(p):
@@ -89,7 +104,7 @@ with tempfile.TemporaryDirectory() as d:
        for x in range(w):
         if crown[y][x]!=p[y][x] and crown[y][x] in (4,8):assert out[y][x]==crown[y][x]
    if kind==1:assert len(signatures)==11,(name,'distinct portraits')
-   if (state!=4 or kind) and groups:assert len(signatures)>=5,(name,kind,state,slot,'distinct hairstyles')
+   if (state!=4 or kind) and (groups or kind==0 and art.WORLD_DIRECTIONS.get(FILES[state],())[native_index]==2):assert len(signatures)>=5,(name,kind,state,slot,'distinct hairstyles')
    if not (kind==0 and state==4):
     core=art.head_core(p,g,'overworld' if kind==0 else 'front' if kind==1 else 'back',native_index,FILES[state] if kind==0 else '')
     for hair in range(1,11):

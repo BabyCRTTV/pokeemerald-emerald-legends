@@ -10,6 +10,8 @@ from build_appearance import frames,pack,STATES,FILES
 from PIL import Image
 
 def array(name,data):return 'static const u8 '+name+'[]={'+','.join(map(str,data))+'};\n'
+# The ordinary battle sprite constructor must use the compositor too.
+assert 'gMultiuseSpriteTemplate.images = LegendsFootwearBackImages(trainerPicId,' in (root/'src/pokemon.c').read_text()
 source='\n'.join(l for l in (root/'src/legends_footwear.c').read_text().splitlines() if not l.startswith('#include'))
 header=(root/'src/data/legends/footwear_masks.h').read_text()
 header=re.sub(r'static const u8 ALIGNED\(4\) sFootwearMaskData\[\] = INCBIN_U8\([^;]+;',array('sFootwearMaskData',(root/'graphics/legends/footwear/masks.bin').read_bytes()),header)
@@ -21,13 +23,15 @@ pre=r'''
 typedef uint8_t u8;typedef uint16_t u16;typedef uint32_t u32;typedef int32_t s32;typedef int bool8;
 #define TRUE 1
 #define MALE 0
+#define FEMALE 1
+u8 LegendsGetLeggings(void){return 0;}
 #define FALSE 0
 #define EWRAM_DATA
 #define ALIGNED(x)
 #define ARRAY_COUNT(x) (sizeof(x)/sizeof((x)[0]))
 #define RGB(r,g,b) ((r)|((g)<<5)|((b)<<10))
 #define LEGENDS_OUTFIT_COUNT 5
-struct SpriteFrameImage {const u8 *data;u16 size;};
+struct SpriteFrameImage {const u8 *data;u16 size;bool8 relativeFrames;};
 enum TrainerPicID {TRAINER_PIC_LEGENDS_BRENDAN_EMERALD=200,TRAINER_PIC_LEGENDS_ACCESSORY_0=210,TRAINER_PIC_LEGENDS_COSTUME_0=240};
 static u8 shoes,costume,card,hair,coat,color;
 u8 LegendsGetShoes(void){return shoes;}u8 LegendsGetCostume(void){return costume;}u8 LegendsGetCardColor(void){return card;}
@@ -37,6 +41,7 @@ u8 LegendsGetScarf(void){return 0;}
 #define LEGENDS_HAIR_COUNT 11
 #define LEGENDS_JACKET_COUNT 3
 void LegendsUpdateAppearancePalettes(void){}
+#define CpuSmartCopy16(s,d,n) memcpy(d,s,n)
 void DecompressDataWithHeaderWram(const u32*s,void*d){memcpy(d,s,2048);}
 static u16 cardPal[48];
 void LoadPalette(const u16*p,int offset,int size){assert(size==2);cardPal[offset]=*p;}
@@ -142,6 +147,20 @@ int main(int argc,char**argv){
   }
  }
  color=0;
+ // Relative native walking tables expose one descriptor for all 18 frames.
+ // Accessory tables expose 18 descriptors. The compositor must treat both identically.
+ for(int g=0;g<2;g++){
+  u8 packedWorld[18*256],expectedWorld[18*256];
+  for(int i=0;i<18;i++)memcpy(packedWorld+i*256,nativeWorld[g][0][i].data,256);
+  hair=4;color=2;coat=0;shoes=7;
+  struct SpriteFrameImage relativeWorld={packedWorld,256,TRUE};
+  sWorldSource=NULL;
+  const struct SpriteFrameImage *explicitArt=LegendsFootwearImages(nativeWorld[g][0],g,0);
+  for(int i=0;i<18;i++)memcpy(expectedWorld+i*256,explicitArt[i].data,256);
+  const struct SpriteFrameImage *relativeArt=LegendsFootwearImages(&relativeWorld,g,0);
+  for(int i=0;i<18;i++){assert(relativeArt[i].size==256&&!relativeArt[i].relativeFrames);assert(!memcmp(relativeArt[i].data,expectedWorld+i*256,256));}
+ }
+ color=0;
  // Reserve native male shade 7 *before* footwear overlays. A shoe pixel
  // must never be replaced by the warm highlight reservation.
  u8 nativeShade=0x77, painted=0, bootMask=0x11;
@@ -149,7 +168,35 @@ int main(int argc,char**argv){
  Compose(&painted,&nativeShade,&bootMask,1,0,0,TRUE);assert(painted==0x66);
  Compose(&painted,&nativeShade,NULL,1,1,0,FALSE);assert(painted==0x77);
  hair=0;Compose(&painted,&nativeShade,NULL,1,0,0,FALSE);assert(painted==0x77);
- hair=coat=shoes=0;
+ // Native battle intros consume frame images directly, not the portrait
+ // copy helper. The shared bank must hold all four poses and rebuild on field
+ // reentry, without touching NPC/link pictures or painting costumes twice.
+ u8 backNative[8192], backExpected[8192];
+ for(int i=0;i<8192;i++)backNative[i]=(i%15)+1;
+ struct SpriteFrameImage backRelative={backNative,2048,TRUE};
+ struct SpriteFrameImage backExplicit[4];
+ for(int i=0;i<4;i++)backExplicit[i]=(struct SpriteFrameImage){backNative+i*2048,2048,FALSE};
+ for(int g=0;g<2;g++)for(int h=0;h<11;h++)for(int c=0;c<3;c++){
+  hair=h;coat=c;shoes=7;color=6;costume=0;
+  int pic=TRAINER_PIC_LEGENDS_BRENDAN_EMERALD+g*LEGENDS_OUTFIT_COUNT;
+  memcpy(backExpected,backNative,8192);LegendsFootwearBackPic(pic,backExpected,8192);
+  const struct SpriteFrameImage *back=LegendsFootwearBackImages(pic,&backRelative,4);
+  assert(back==sWorldImages&&sWorldSource==NULL);
+  for(int i=0;i<4;i++){
+   assert(back[i].size==2048&&!back[i].relativeFrames);
+   assert(!memcmp(back[i].data,backExpected+i*2048,2048));
+  }
+  assert(LegendsFootwearBackImages(pic,backExplicit,4)==back);
+  assert(!memcmp(sWorldPixels,backExpected,8192));
+  assert(!memcmp(backNative,backExplicit[0].data,8192));
+  const struct SpriteFrameImage *world=LegendsFootwearImages(nativeWorld[g][0],g,0);
+  assert(world==sWorldImages&&world[0].size==256&&sWorldSource==nativeWorld[g][0]);
+  costume=1;assert(LegendsFootwearBackImages(pic,&backRelative,4)==&backRelative);costume=0;
+  assert(LegendsFootwearBackImages(199,&backRelative,4)==&backRelative);
+  assert(LegendsFootwearBackImages(pic,&backRelative,5)==&backRelative);
+ }
+ hair=coat=shoes=color=0;
+ assert(LegendsFootwearBackImages(200,&backRelative,4)==&backRelative);
  for(int c=0;c<8;c++){
   card=c;for(int i=0;i<48;i++)cardPal[i]=i;LegendsApplyCardColor();
   for(int i=0;i<48;i++)if(i!=2&&i!=9&&i!=10&&i!=11&&i!=12&&i!=28&&i!=29)assert(cardPal[i]==i);

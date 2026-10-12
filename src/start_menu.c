@@ -1,5 +1,6 @@
 #include "global.h"
 #include "legends_adventure.h"
+#include "legends_journal.h"
 #include "legends_start_menu.h"
 #include "config/save.h"
 #include "battle_pike.h"
@@ -72,6 +73,8 @@ enum
     MENU_ACTION_DEBUG,
     MENU_ACTION_DEXNAV,
     MENU_ACTION_ADVENTURE,
+    MENU_ACTION_QUESTS,
+    MENU_ACTION_ACHIEVEMENTS,
 };
 
 // Save status
@@ -93,6 +96,7 @@ EWRAM_DATA static u8 sStartMenuCursorPos = 0;
 EWRAM_DATA static u8 sNumStartMenuActions = 0;
 EWRAM_DATA static u8 sCurrentStartMenuActions[10] = {0};
 EWRAM_DATA static u8 sStartMenuTop = 0;
+EWRAM_DATA static bool8 sJournalPage = FALSE;
 #define START_MENU_VISIBLE_ROWS 8
 
 EWRAM_DATA static s8 sInitStartMenuData[2] = {0};
@@ -118,6 +122,8 @@ static bool8 StartMenuBattlePyramidBagCallback(void);
 static bool8 StartMenuDebugCallback(void);
 static bool8 StartMenuDexNavCallback(void);
 static bool8 StartMenuAdventureCallback(void);
+static bool8 StartMenuQuestCallback(void);
+static bool8 StartMenuAchievementsCallback(void);
 
 // Menu callbacks
 static bool8 SaveStartCallback(void);
@@ -199,6 +205,8 @@ static const u8 sText_Adventure[] = _("ADVENTURE LOG");
 
 static const struct MenuAction sStartMenuItems[] =
 {
+    [MENU_ACTION_QUESTS] = {COMPOUND_STRING("QUEST LOG"), {.u8_void = StartMenuQuestCallback}},
+    [MENU_ACTION_ACHIEVEMENTS] = {COMPOUND_STRING("ACHIEVEMENTS"), {.u8_void = StartMenuAchievementsCallback}},
     [MENU_ACTION_ADVENTURE]       = {sText_Adventure, {.u8_void = StartMenuAdventureCallback}},
     [MENU_ACTION_POKEDEX]         = {gText_MenuPokedex, {.u8_void = StartMenuPokedexCallback}},
     [MENU_ACTION_POKEMON]         = {gText_MenuPokemon, {.u8_void = StartMenuPokemonCallback}},
@@ -292,6 +300,15 @@ static void HideStartMenuDebug(void);
 static void BuildStartMenuActions(void)
 {
     sNumStartMenuActions = 0;
+    if (IsOverworldLinkActive() || InUnionRoom()) sJournalPage = FALSE;
+    if (sJournalPage)
+    {
+        AddStartMenuAction(MENU_ACTION_QUESTS);
+        AddStartMenuAction(MENU_ACTION_ACHIEVEMENTS);
+        AddStartMenuAction(MENU_ACTION_ADVENTURE);
+        AddStartMenuAction(MENU_ACTION_EXIT);
+        return;
+    }
 
     if (IsOverworldLinkActive() == TRUE)
     {
@@ -499,6 +516,16 @@ static void RemoveExtraStartMenuWindows(void)
 static void DrawStartMenuScrollHints(void)
 {
     u8 row, windowId = GetStartMenuWindowId();
+    if (!IsOverworldLinkActive() && !InUnionRoom())
+    {
+        u8 y = min(sNumStartMenuActions, START_MENU_VISIBLE_ROWS) * 16 + 6;
+        for (row = 0; row < 5; row++)
+        {
+            u8 width = 1 + min(row, 4 - row);
+            FillWindowPixelRect(windowId, PIXEL_FILL(2), sJournalPage ? 9 - width : 86,
+                y + row, width, 1);
+        }
+    }
     if (sStartMenuTop > 0)
         for (row = 0; row < 3; row++)
             FillWindowPixelRect(windowId, PIXEL_FILL(2), 92 - row, 2 + row, 1 + row * 2, 1);
@@ -663,7 +690,7 @@ static void MoveStartMenuCursor(s8 delta)
     s8 index;
     if (delta < 0)
         sStartMenuCursorPos = sStartMenuCursorPos == 0 ? sNumStartMenuActions - 1 : sStartMenuCursorPos - 1;
-    else
+    else if (delta > 0)
         sStartMenuCursorPos = (sStartMenuCursorPos + 1) % sNumStartMenuActions;
     if (sStartMenuCursorPos < sStartMenuTop)
         sStartMenuTop = sStartMenuCursorPos;
@@ -710,6 +737,22 @@ static void ShowDexNavHelp(void)
 
 static bool8 HandleStartMenuInput(void)
 {
+    if (JOY_NEW(DPAD_LEFT | DPAD_RIGHT) && !IsOverworldLinkActive() && !InUnionRoom())
+    {
+        PlaySE(SE_SELECT);
+        sJournalPage = !sJournalPage;
+        sStartMenuCursorPos = sStartMenuTop = 0;
+        ClearStdWindowAndFrameToTransparent(GetStartMenuWindowId(), TRUE);
+        RemoveStartMenuWindow();
+        BuildStartMenuActions();
+        DrawStdWindowFrame(AddStartMenuWindow(min(sNumStartMenuActions, START_MENU_VISIBLE_ROWS)), FALSE);
+        MoveStartMenuCursor(0);
+        sStartMenuCursorPos = 0;
+        InitMenuNormal(GetStartMenuWindowId(), FONT_NORMAL, 0, 9, 16,
+            min(START_MENU_VISIBLE_ROWS, sNumStartMenuActions), 0);
+        CopyWindowToVram(GetStartMenuWindowId(), COPYWIN_FULL);
+        return FALSE;
+    }
     if (JOY_NEW(DPAD_UP))
     {
         PlaySE(SE_SELECT);
@@ -1613,4 +1656,26 @@ void Script_ForceSaveGame(struct ScriptContext *ctx)
     ShowSaveInfoWindow();
     gMenuCallback = SaveCallback;
     sSaveDialogCallback = SaveSavingMessageCallback;
+}
+
+static bool8 StartMenuQuestCallback(void)
+{
+    if (gPaletteFade.active)
+        return FALSE;
+    PlayRainStoppingSoundEffect();
+    RemoveExtraStartMenuWindows();
+    CleanupOverworldWindowsAndTilemaps();
+    SetMainCallback2(CB2_OpenQuestLog);
+    return TRUE;
+}
+
+static bool8 StartMenuAchievementsCallback(void)
+{
+    if (gPaletteFade.active)
+        return FALSE;
+    PlayRainStoppingSoundEffect();
+    RemoveExtraStartMenuWindows();
+    CleanupOverworldWindowsAndTilemaps();
+    SetMainCallback2(CB2_OpenAchievements);
+    return TRUE;
 }

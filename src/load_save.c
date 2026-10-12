@@ -1,4 +1,5 @@
 #include "global.h"
+#include "legends_storage.h"
 #include "malloc.h"
 #include "berry_powder.h"
 #include "fake_rtc.h"
@@ -258,7 +259,7 @@ void LoadPlayerBag(void)
     int i;
 
     // load player bag.
-    memcpy(&gLoadedSaveData.bag, &gSaveBlock1Ptr->bag, sizeof(struct Bag));
+    memcpy(&gLoadedSaveData.bag, LegendsStorageBag(), sizeof(struct Bag));
 
     // load mail.
     for (i = 0; i < MAIL_COUNT; i++)
@@ -273,7 +274,7 @@ void SavePlayerBag(void)
     u32 encryptionKeyBackup;
 
     // save player bag.
-    memcpy(&gSaveBlock1Ptr->bag, &gLoadedSaveData.bag, sizeof(struct Bag));
+    memcpy(LegendsStorageBag(), &gLoadedSaveData.bag, sizeof(struct Bag));
 
     // save mail.
     for (i = 0; i < MAIL_COUNT; i++)

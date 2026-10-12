@@ -1,0 +1,802 @@
+[
+  {
+    "title": "Stone Badge",
+    "description": "Earn the STONE BADGE.",
+    "kind": "FLAG",
+    "key": "FLAG_BADGE01_GET",
+    "target": 1,
+    "id": 0,
+    "berry": "CHERI",
+    "quantity": 3
+  },
+  {
+    "title": "Knuckle Badge",
+    "description": "Earn the KNUCKLE BADGE.",
+    "kind": "FLAG",
+    "key": "FLAG_BADGE02_GET",
+    "target": 1,
+    "id": 1,
+    "berry": "CHESTO",
+    "quantity": 3
+  },
+  {
+    "title": "Dynamo Badge",
+    "description": "Earn the DYNAMO BADGE.",
+    "kind": "FLAG",
+    "key": "FLAG_BADGE03_GET",
+    "target": 1,
+    "id": 2,
+    "berry": "PECHA",
+    "quantity": 3
+  },
+  {
+    "title": "Heat Badge",
+    "description": "Earn the HEAT BADGE.",
+    "kind": "FLAG",
+    "key": "FLAG_BADGE04_GET",
+    "target": 1,
+    "id": 3,
+    "berry": "RAWST",
+    "quantity": 3
+  },
+  {
+    "title": "Balance Badge",
+    "description": "Earn the BALANCE BADGE.",
+    "kind": "FLAG",
+    "key": "FLAG_BADGE05_GET",
+    "target": 1,
+    "id": 4,
+    "berry": "ASPEAR",
+    "quantity": 3
+  },
+  {
+    "title": "Feather Badge",
+    "description": "Earn the FEATHER BADGE.",
+    "kind": "FLAG",
+    "key": "FLAG_BADGE06_GET",
+    "target": 1,
+    "id": 5,
+    "berry": "LEPPA",
+    "quantity": 3
+  },
+  {
+    "title": "Mind Badge",
+    "description": "Earn the MIND BADGE.",
+    "kind": "FLAG",
+    "key": "FLAG_BADGE07_GET",
+    "target": 1,
+    "id": 6,
+    "berry": "ORAN",
+    "quantity": 3
+  },
+  {
+    "title": "Rain Badge",
+    "description": "Earn the RAIN BADGE.",
+    "kind": "FLAG",
+    "key": "FLAG_BADGE08_GET",
+    "target": 1,
+    "id": 7,
+    "berry": "PERSIM",
+    "quantity": 3
+  },
+  {
+    "title": "Field Researcher",
+    "description": "Receive your POKEDEX.",
+    "kind": "FLAG",
+    "key": "FLAG_SYS_POKEDEX_GET",
+    "target": 1,
+    "id": 8,
+    "berry": "LUM",
+    "quantity": 3
+  },
+  {
+    "title": "Special Delivery",
+    "description": "Deliver STEVEN's letter.",
+    "kind": "FLAG",
+    "key": "FLAG_DELIVERED_STEVEN_LETTER",
+    "target": 1,
+    "id": 9,
+    "berry": "SITRUS",
+    "quantity": 3
+  },
+  {
+    "title": "Devon Courier",
+    "description": "Deliver the DEVON GOODS.",
+    "kind": "FLAG",
+    "key": "FLAG_DELIVERED_DEVON_GOODS",
+    "target": 1,
+    "id": 10,
+    "berry": "FIGY",
+    "quantity": 3
+  },
+  {
+    "title": "Cloud Companion",
+    "description": "Receive CASTFORM.",
+    "kind": "FLAG",
+    "key": "FLAG_RECEIVED_CASTFORM",
+    "target": 1,
+    "id": 11,
+    "berry": "WIKI",
+    "quantity": 3
+  },
+  {
+    "title": "Space Center Hero",
+    "description": "Defend the SPACE CENTER.",
+    "kind": "FLAG",
+    "key": "FLAG_DEFEATED_MAGMA_SPACE_CENTER",
+    "target": 1,
+    "id": 12,
+    "berry": "MAGO",
+    "quantity": 3
+  },
+  {
+    "title": "Hoenn Champion",
+    "description": "Enter the HALL OF FAME.",
+    "kind": "FLAG",
+    "key": "FLAG_SYS_GAME_CLEAR",
+    "target": 1,
+    "id": 13,
+    "berry": "AGUAV",
+    "quantity": 3
+  },
+  {
+    "title": "Across the Sea",
+    "description": "Arrive in KANTO.",
+    "kind": "FLAG",
+    "key": "FLAG_LEGENDS_KANTO_WELCOMED",
+    "target": 1,
+    "id": 14,
+    "berry": "IAPAPA",
+    "quantity": 3
+  },
+  {
+    "title": "Wing Researcher",
+    "description": "Begin the WING SURVEY.",
+    "kind": "FLAG",
+    "key": "FLAG_LEGENDS_KANTO_SURVEY_STARTED",
+    "target": 1,
+    "id": 15,
+    "berry": "POMEG",
+    "quantity": 3
+  },
+  {
+    "title": "Borrowed Voice",
+    "description": "File the field survey report.",
+    "kind": "FLAG",
+    "key": "FLAG_LEGENDS_KANTO_SURVEY_FIELD_REPORT",
+    "target": 1,
+    "id": 16,
+    "berry": "KELPSY",
+    "quantity": 3
+  },
+  {
+    "title": "Thunder Witness",
+    "description": "Observe ZAPDOS.",
+    "kind": "FLAG",
+    "key": "FLAG_LEGENDS_KANTO_ZAPDOS_SEEN",
+    "target": 1,
+    "id": 17,
+    "berry": "QUALOT",
+    "quantity": 3
+  },
+  {
+    "title": "Stillwater Witness",
+    "description": "Observe ARTICUNO.",
+    "kind": "FLAG",
+    "key": "FLAG_LEGENDS_STORY_ARTICUNO_SEEN",
+    "target": 1,
+    "id": 18,
+    "berry": "HONDEW",
+    "quantity": 3
+  },
+  {
+    "title": "Ember Witness",
+    "description": "Observe MOLTRES.",
+    "kind": "FLAG",
+    "key": "FLAG_LEGENDS_STORY_MOLTRES_SEEN",
+    "target": 1,
+    "id": 19,
+    "berry": "GREPA",
+    "quantity": 3
+  },
+  {
+    "title": "Continent Calmer",
+    "description": "Calm REGIGIGAS.",
+    "kind": "FLAG",
+    "key": "FLAG_LEGENDS_STORY_REGIGIGAS_CALMED",
+    "target": 1,
+    "id": 20,
+    "berry": "TAMATO",
+    "quantity": 3
+  },
+  {
+    "title": "Eight Records",
+    "description": "Complete the visiting records.",
+    "kind": "FLAG",
+    "key": "FLAG_LEGENDS_FINAL_EIGHT_RECORDS",
+    "target": 1,
+    "id": 21,
+    "berry": "OCCA",
+    "quantity": 3
+  },
+  {
+    "title": "A Familiar Shadow",
+    "description": "Observe MEW.",
+    "kind": "FLAG",
+    "key": "FLAG_LEGENDS_FINAL_MEW_OBSERVED",
+    "target": 1,
+    "id": 22,
+    "berry": "PASSHO",
+    "quantity": 3
+  },
+  {
+    "title": "Beyond the Horizon",
+    "description": "Complete OAK's final report.",
+    "kind": "FLAG",
+    "key": "FLAG_LEGENDS_FINAL_REPORT",
+    "target": 1,
+    "id": 23,
+    "berry": "WACAN",
+    "quantity": 3
+  },
+  {
+    "title": "Ancient Doors",
+    "description": "Unseal the REGI doors.",
+    "kind": "FLAG",
+    "key": "FLAG_REGI_DOORS_OPENED",
+    "target": 1,
+    "id": 24,
+    "berry": "RINDO",
+    "quantity": 3
+  },
+  {
+    "title": "Surge Record",
+    "description": "Win the SURGE challenge.",
+    "kind": "FLAG",
+    "key": "FLAG_LEGENDS_KANTO_SURGE_WON",
+    "target": 1,
+    "id": 25,
+    "berry": "YACHE",
+    "quantity": 3
+  },
+  {
+    "title": "Koga Record",
+    "description": "Win the KOGA challenge.",
+    "kind": "FLAG",
+    "key": "FLAG_LEGENDS_KANTO_KOGA_WON",
+    "target": 1,
+    "id": 26,
+    "berry": "CHOPLE",
+    "quantity": 3
+  },
+  {
+    "title": "Erika Record",
+    "description": "Win the ERIKA challenge.",
+    "kind": "FLAG",
+    "key": "FLAG_LEGENDS_KANTO_ERIKA_WON",
+    "target": 1,
+    "id": 27,
+    "berry": "KEBIA",
+    "quantity": 3
+  },
+  {
+    "title": "Sabrina Record",
+    "description": "Win the SABRINA challenge.",
+    "kind": "FLAG",
+    "key": "FLAG_LEGENDS_KANTO_SABRINA_WON",
+    "target": 1,
+    "id": 28,
+    "berry": "SHUCA",
+    "quantity": 3
+  },
+  {
+    "title": "Misty Record",
+    "description": "Win the MISTY challenge.",
+    "kind": "FLAG",
+    "key": "FLAG_LEGENDS_KANTO_MISTY_WON",
+    "target": 1,
+    "id": 29,
+    "berry": "COBA",
+    "quantity": 3
+  },
+  {
+    "title": "Brock Record",
+    "description": "Win the BROCK challenge.",
+    "kind": "FLAG",
+    "key": "FLAG_LEGENDS_KANTO_BROCK_WON",
+    "target": 1,
+    "id": 30,
+    "berry": "PAYAPA",
+    "quantity": 3
+  },
+  {
+    "title": "Blaine Record",
+    "description": "Win the BLAINE challenge.",
+    "kind": "FLAG",
+    "key": "FLAG_LEGENDS_KANTO_BLAINE_WON",
+    "target": 1,
+    "id": 31,
+    "berry": "TANGA",
+    "quantity": 3
+  },
+  {
+    "title": "Viridian Record",
+    "description": "Win the VIRIDIAN challenge.",
+    "kind": "FLAG",
+    "key": "FLAG_LEGENDS_KANTO_VIRIDIAN_WON",
+    "target": 1,
+    "id": 32,
+    "berry": "CHARTI",
+    "quantity": 3
+  },
+  {
+    "title": "First Footprints",
+    "description": "Walk 1000 steps.",
+    "kind": "STAT",
+    "key": "GAME_STAT_STEPS",
+    "target": 1000,
+    "id": 33,
+    "berry": "KASIB",
+    "quantity": 5
+  },
+  {
+    "title": "Hoenn Hiker",
+    "description": "Walk 10000 steps.",
+    "kind": "STAT",
+    "key": "GAME_STAT_STEPS",
+    "target": 10000,
+    "id": 34,
+    "berry": "HABAN",
+    "quantity": 5
+  },
+  {
+    "title": "Long Road",
+    "description": "Walk 50000 steps.",
+    "kind": "STAT",
+    "key": "GAME_STAT_STEPS",
+    "target": 50000,
+    "id": 35,
+    "berry": "COLBUR",
+    "quantity": 5
+  },
+  {
+    "title": "First Catch",
+    "description": "Catch 1 POKEMON.",
+    "kind": "STAT",
+    "key": "GAME_STAT_POKEMON_CAPTURES",
+    "target": 1,
+    "id": 36,
+    "berry": "BABIRI",
+    "quantity": 3
+  },
+  {
+    "title": "Growing Team",
+    "description": "Catch 10 POKEMON.",
+    "kind": "STAT",
+    "key": "GAME_STAT_POKEMON_CAPTURES",
+    "target": 10,
+    "id": 37,
+    "berry": "CHILAN",
+    "quantity": 3
+  },
+  {
+    "title": "Seasoned Catcher",
+    "description": "Catch 50 POKEMON.",
+    "kind": "STAT",
+    "key": "GAME_STAT_POKEMON_CAPTURES",
+    "target": 50,
+    "id": 38,
+    "berry": "LIECHI",
+    "quantity": 5
+  },
+  {
+    "title": "Century Catcher",
+    "description": "Catch 100 POKEMON.",
+    "kind": "STAT",
+    "key": "GAME_STAT_POKEMON_CAPTURES",
+    "target": 100,
+    "id": 39,
+    "berry": "GANLON",
+    "quantity": 5
+  },
+  {
+    "title": "Battle Ready",
+    "description": "Take part in 10 battles.",
+    "kind": "STAT",
+    "key": "GAME_STAT_TOTAL_BATTLES",
+    "target": 10,
+    "id": 40,
+    "berry": "SALAC",
+    "quantity": 3
+  },
+  {
+    "title": "Battle Veteran",
+    "description": "Take part in 100 battles.",
+    "kind": "STAT",
+    "key": "GAME_STAT_TOTAL_BATTLES",
+    "target": 100,
+    "id": 41,
+    "berry": "PETAYA",
+    "quantity": 5
+  },
+  {
+    "title": "Battle Legend",
+    "description": "Take part in 500 battles.",
+    "kind": "STAT",
+    "key": "GAME_STAT_TOTAL_BATTLES",
+    "target": 500,
+    "id": 42,
+    "berry": "APICOT",
+    "quantity": 5
+  },
+  {
+    "title": "Trainer Circuit",
+    "description": "Take part in 10 trainer battles.",
+    "kind": "STAT",
+    "key": "GAME_STAT_TRAINER_BATTLES",
+    "target": 10,
+    "id": 43,
+    "berry": "LANSAT",
+    "quantity": 3
+  },
+  {
+    "title": "Trainer Veteran",
+    "description": "Take part in 50 trainer battles.",
+    "kind": "STAT",
+    "key": "GAME_STAT_TRAINER_BATTLES",
+    "target": 50,
+    "id": 44,
+    "berry": "STARF",
+    "quantity": 5
+  },
+  {
+    "title": "Trainer Century",
+    "description": "Take part in 100 trainer battles.",
+    "kind": "STAT",
+    "key": "GAME_STAT_TRAINER_BATTLES",
+    "target": 100,
+    "id": 45,
+    "berry": "CHERI",
+    "quantity": 5
+  },
+  {
+    "title": "First Hatch",
+    "description": "Hatch 1 eggs.",
+    "kind": "STAT",
+    "key": "GAME_STAT_HATCHED_EGGS",
+    "target": 1,
+    "id": 46,
+    "berry": "CHESTO",
+    "quantity": 3
+  },
+  {
+    "title": "Nest Keeper",
+    "description": "Hatch 10 eggs.",
+    "kind": "STAT",
+    "key": "GAME_STAT_HATCHED_EGGS",
+    "target": 10,
+    "id": 47,
+    "berry": "PECHA",
+    "quantity": 3
+  },
+  {
+    "title": "Egg Expert",
+    "description": "Hatch 30 eggs.",
+    "kind": "STAT",
+    "key": "GAME_STAT_HATCHED_EGGS",
+    "target": 30,
+    "id": 48,
+    "berry": "RAWST",
+    "quantity": 3
+  },
+  {
+    "title": "New Form",
+    "description": "Evolve 1 POKEMON.",
+    "kind": "STAT",
+    "key": "GAME_STAT_EVOLVED_POKEMON",
+    "target": 1,
+    "id": 49,
+    "berry": "ASPEAR",
+    "quantity": 3
+  },
+  {
+    "title": "Evolution Student",
+    "description": "Evolve 10 POKEMON.",
+    "kind": "STAT",
+    "key": "GAME_STAT_EVOLVED_POKEMON",
+    "target": 10,
+    "id": 50,
+    "berry": "LEPPA",
+    "quantity": 3
+  },
+  {
+    "title": "Evolution Expert",
+    "description": "Evolve 25 POKEMON.",
+    "kind": "STAT",
+    "key": "GAME_STAT_EVOLVED_POKEMON",
+    "target": 25,
+    "id": 51,
+    "berry": "ORAN",
+    "quantity": 3
+  },
+  {
+    "title": "First Seed",
+    "description": "Plant 1 berries.",
+    "kind": "STAT",
+    "key": "GAME_STAT_PLANTED_BERRIES",
+    "target": 1,
+    "id": 52,
+    "berry": "PERSIM",
+    "quantity": 3
+  },
+  {
+    "title": "Berry Garden",
+    "description": "Plant 10 berries.",
+    "kind": "STAT",
+    "key": "GAME_STAT_PLANTED_BERRIES",
+    "target": 10,
+    "id": 53,
+    "berry": "LUM",
+    "quantity": 3
+  },
+  {
+    "title": "Berry Orchard",
+    "description": "Plant 50 berries.",
+    "kind": "STAT",
+    "key": "GAME_STAT_PLANTED_BERRIES",
+    "target": 50,
+    "id": 54,
+    "berry": "SITRUS",
+    "quantity": 5
+  },
+  {
+    "title": "First Bite",
+    "description": "Find 1 fishing encounters.",
+    "kind": "STAT",
+    "key": "GAME_STAT_FISHING_ENCOUNTERS",
+    "target": 1,
+    "id": 55,
+    "berry": "FIGY",
+    "quantity": 3
+  },
+  {
+    "title": "Angler",
+    "description": "Find 10 fishing encounters.",
+    "kind": "STAT",
+    "key": "GAME_STAT_FISHING_ENCOUNTERS",
+    "target": 10,
+    "id": 56,
+    "berry": "WIKI",
+    "quantity": 3
+  },
+  {
+    "title": "Expert Angler",
+    "description": "Find 50 fishing encounters.",
+    "kind": "STAT",
+    "key": "GAME_STAT_FISHING_ENCOUNTERS",
+    "target": 50,
+    "id": 57,
+    "berry": "MAGO",
+    "quantity": 5
+  },
+  {
+    "title": "Contest Winner",
+    "description": "Win 1 contests.",
+    "kind": "STAT",
+    "key": "GAME_STAT_WON_CONTEST",
+    "target": 1,
+    "id": 58,
+    "berry": "AGUAV",
+    "quantity": 3
+  },
+  {
+    "title": "Contest Regular",
+    "description": "Win 5 contests.",
+    "kind": "STAT",
+    "key": "GAME_STAT_WON_CONTEST",
+    "target": 5,
+    "id": 59,
+    "berry": "IAPAPA",
+    "quantity": 3
+  },
+  {
+    "title": "Contest Star",
+    "description": "Win 20 contests.",
+    "kind": "STAT",
+    "key": "GAME_STAT_WON_CONTEST",
+    "target": 20,
+    "id": 60,
+    "berry": "POMEG",
+    "quantity": 3
+  },
+  {
+    "title": "First Blend",
+    "description": "Make 1 POKEBLOCKS.",
+    "kind": "STAT",
+    "key": "GAME_STAT_POKEBLOCKS",
+    "target": 1,
+    "id": 61,
+    "berry": "KELPSY",
+    "quantity": 3
+  },
+  {
+    "title": "Berry Blender",
+    "description": "Make 10 POKEBLOCKS.",
+    "kind": "STAT",
+    "key": "GAME_STAT_POKEBLOCKS",
+    "target": 10,
+    "id": 62,
+    "berry": "QUALOT",
+    "quantity": 3
+  },
+  {
+    "title": "Trail Clearer",
+    "description": "Use CUT 10 times.",
+    "kind": "STAT",
+    "key": "GAME_STAT_USED_CUT",
+    "target": 10,
+    "id": 63,
+    "berry": "HONDEW",
+    "quantity": 3
+  },
+  {
+    "title": "Rock Breaker",
+    "description": "Use ROCK SMASH 10 times.",
+    "kind": "STAT",
+    "key": "GAME_STAT_USED_ROCK_SMASH",
+    "target": 10,
+    "id": 64,
+    "berry": "GREPA",
+    "quantity": 3
+  },
+  {
+    "title": "Safari Visitor",
+    "description": "Enter the SAFARI ZONE.",
+    "kind": "STAT",
+    "key": "GAME_STAT_ENTERED_SAFARI_ZONE",
+    "target": 1,
+    "id": 65,
+    "berry": "TAMATO",
+    "quantity": 3
+  },
+  {
+    "title": "Day Care Visitor",
+    "description": "Use the DAY CARE.",
+    "kind": "STAT",
+    "key": "GAME_STAT_USED_DAYCARE",
+    "target": 1,
+    "id": 66,
+    "berry": "OCCA",
+    "quantity": 3
+  },
+  {
+    "title": "A Place of My Own",
+    "description": "Make a SECRET BASE.",
+    "kind": "STAT",
+    "key": "GAME_STAT_MOVED_SECRET_BASE",
+    "target": 1,
+    "id": 67,
+    "berry": "PASSHO",
+    "quantity": 3
+  },
+  {
+    "title": "Frontier Challenger",
+    "description": "Enter the BATTLE TOWER.",
+    "kind": "STAT",
+    "key": "GAME_STAT_ENTERED_BATTLE_TOWER",
+    "target": 1,
+    "id": 68,
+    "berry": "WACAN",
+    "quantity": 3
+  },
+  {
+    "title": "Tower Seven",
+    "description": "Reach a 7-win tower streak.",
+    "kind": "STAT",
+    "key": "GAME_STAT_BATTLE_TOWER_SINGLES_STREAK",
+    "target": 7,
+    "id": 69,
+    "berry": "RINDO",
+    "quantity": 3
+  },
+  {
+    "title": "Tower Twenty-one",
+    "description": "Reach a 21-win tower streak.",
+    "kind": "STAT",
+    "key": "GAME_STAT_BATTLE_TOWER_SINGLES_STREAK",
+    "target": 21,
+    "id": 70,
+    "berry": "YACHE",
+    "quantity": 3
+  },
+  {
+    "title": "Tower Forty-nine",
+    "description": "Reach a 49-win tower streak.",
+    "kind": "STAT",
+    "key": "GAME_STAT_BATTLE_TOWER_SINGLES_STREAK",
+    "target": 49,
+    "id": 71,
+    "berry": "CHOPLE",
+    "quantity": 3
+  },
+  {
+    "title": "DexNav Scout",
+    "description": "Scan 10 times with DEXNAV.",
+    "kind": "STAT",
+    "key": "GAME_STAT_DEXNAV_SCANNED",
+    "target": 10,
+    "id": 72,
+    "berry": "KEBIA",
+    "quantity": 3
+  },
+  {
+    "title": "DexNav Researcher",
+    "description": "Scan 100 times with DEXNAV.",
+    "kind": "STAT",
+    "key": "GAME_STAT_DEXNAV_SCANNED",
+    "target": 100,
+    "id": 73,
+    "berry": "SHUCA",
+    "quantity": 5
+  },
+  {
+    "title": "Trading Partners",
+    "description": "Trade a POKEMON.",
+    "kind": "STAT",
+    "key": "GAME_STAT_POKEMON_TRADES",
+    "target": 1,
+    "id": 74,
+    "berry": "COBA",
+    "quantity": 3
+  },
+  {
+    "title": "Returning Champion",
+    "description": "Enter the HALL OF FAME 5 times.",
+    "kind": "STAT",
+    "key": "GAME_STAT_ENTERED_HOF",
+    "target": 5,
+    "id": 75,
+    "berry": "PAYAPA",
+    "quantity": 3
+  },
+  {
+    "title": "Dex Collection 10",
+    "description": "Register 10 caught species.",
+    "kind": "DEX",
+    "key": 0,
+    "target": 10,
+    "id": 76,
+    "berry": "TANGA",
+    "quantity": 3
+  },
+  {
+    "title": "Dex Collection 50",
+    "description": "Register 50 caught species.",
+    "kind": "DEX",
+    "key": 0,
+    "target": 50,
+    "id": 77,
+    "berry": "CHARTI",
+    "quantity": 5
+  },
+  {
+    "title": "Dex Collection 100",
+    "description": "Register 100 caught species.",
+    "kind": "DEX",
+    "key": 0,
+    "target": 100,
+    "id": 78,
+    "berry": "KASIB",
+    "quantity": 5
+  },
+  {
+    "title": "Dex Collection 200",
+    "description": "Register 200 caught species.",
+    "kind": "DEX",
+    "key": 0,
+    "target": 200,
+    "id": 79,
+    "berry": "HABAN",
+    "quantity": 5
+  }
+]

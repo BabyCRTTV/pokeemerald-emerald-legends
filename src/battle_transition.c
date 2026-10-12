@@ -4123,15 +4123,15 @@ static void VBlankCB_BattleTransition(void)
 
 static void GetBg0TilemapDst(u16 **tileset)
 {
-    u16 charBase = REG_BG0CNT >> 2;
+    u16 charBase = (REG_BG0CNT >> 2) & 3;
     charBase <<= 14;
     *tileset = (u16 *)(BG_VRAM + charBase);
 }
 
 void GetBg0TilesDst(u16 **tilemap, u16 **tileset)
 {
-    u16 screenBase = REG_BG0CNT >> 8;
-    u16 charBase = REG_BG0CNT >> 2;
+    u16 screenBase = (REG_BG0CNT >> 8) & 31;
+    u16 charBase = (REG_BG0CNT >> 2) & 3;
 
     screenBase <<= 11;
     charBase <<= 14;

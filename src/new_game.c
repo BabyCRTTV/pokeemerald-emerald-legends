@@ -1,5 +1,7 @@
 #include "global.h"
+#include "legends_storage.h"
 #include "legends_adventure.h"
+#include "legends_journal.h"
 #include "legends_da_bug.h"
 #include "legends_appearance.h"
 #include "clock.h"
@@ -206,6 +208,7 @@ void NewGameInitData(void)
     gPartiesCount[B_TRAINER_PLAYER] = 0;
     ZeroPlayerPartyMons();
     ResetPokemonStorageSystem();
+    LegendsStorageNewGame();
     DeactivateAllRoamers();
     gSaveBlock1Ptr->registeredItem = ITEM_NONE;
     ClearBag();
@@ -245,6 +248,7 @@ void NewGameInitData(void)
     ResetDexNav();
     ClearFollowerNPCData();
     LegendsAdventureInit(TRUE);
+    LegendsJournalInit(TRUE);
 }
 
 static void ResetMiniGamesRecords(void)

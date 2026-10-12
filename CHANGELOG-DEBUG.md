@@ -2,6 +2,17 @@
 
 This is the developer-facing history for the **Debug** build. Shared Legends changes are repeated here so this file stands on its own; Debug-only behavior is called out separately.
 
+## [0.0.43] - 2026-10-12
+
+- Add a second pause-menu page with QUEST LOG, ACHIEVEMENTS, ADVENTURE LOG and EXIT. Left/Right switches pages; small directional arrows show the extra page. Keep linked-room menus and native activity controls available.
+- Track 33 quests: Hoenn's main adventure, every shipped Wing Survey chapter, the central-Hoenn Regigigas intermission, and seven basic side quests. Main/Side/Completed views show automatic objective checkmarks from native story flags; earlier saves recover their progress without replaying the story.
+- Add 80 permanent gameplay/progression achievements covering badges, visiting Leaders, expedition reports, collecting, battles, exploration, breeding, evolution, berries, fishing, contests, DexNav and the Battle Tower. Record stat thresholds as they happen, including streaks that later reset. Each achievement grants a varied berry bundle once, claimed from its detail screen into PC ITEM STORAGE; a full PC retains the pending claim for a retry.
+- Expand Pokemon storage from 14 to 20 boxes (420 to 600 slots), PC item storage from 50 to 150 slots, and Bag pockets to 150 Items / 60 Key Items / 32 Balls / 128 TMs-HMs / 80 Berries. Preserve original save-field offsets and migrate earlier Legends profiles automatically, including boxed Pokemon, box names/wallpapers, fusions, and every original inventory entry.
+- Store expanded PC/inventory data in a bounded, lossless compressed payload across the existing nine PC save sectors. Retain both alternating 128 KiB save slots, native Hall of Fame/Trainer Hill/recorded battles, sector checksums and an additional packed-payload integrity check. Normal, link and Frontier save paths include claimed rewards and expanded inventories. Check capacity before writing any flash; reject an oversized payload without replacing either existing save. Technical details and limits: `docs/features/quest-log-achievements.md`.
+- Correct nighttime window/sign colors to authored warm glass and pink-red Center signage with smooth native dusk/dawn palette swaps. Add previously missing town-specific windows while keeping daytime artwork and unlit roofs, walls, water and paths intact.
+- Fix bike/fishing direction and crown placement, preserve fishing rods, and apply selected hair/coats/footwear to ordinary battle back sprites and all four throw poses. Remove May's detached native shoulder hair triangle for custom cuts. Add female-only Grey/Black leggings in the wardrobe, with native neutral colors and shoes/boots drawn above them; preserve outfit/hair/eye colors, costumes and diving suits.
+- Shared by Release and Debug; no variant-specific gameplay differences. Both variants retain their established developer-feature separation and verified-BPS pipeline. Validation evidence and limitations: `docs/qa/journal-storage-v0.0.43.md`. Wiki content updates remain manual.
+
 ## [0.0.42] - 2026-10-12
 
 - Continue the Wing Survey with **The Last Record**, **A Familiar Shadow**, and **Beyond the Horizon**. Open the native western Kanto circuit through Route 2/Viridian Forest, Viridian City, Route 1, Pallet/Oak's lab, and the Route 21 Surf connection from Cinnabar.
