@@ -45,6 +45,9 @@ enum TrainerPicID {TRAINER_PIC_LEGENDS_BRENDAN_EMERALD=200};
 #define LEGENDS_SHOE_COUNT 8
 #define LEGENDS_CARD_COLOR_COUNT 8
 #define LEGENDS_HAIR_COUNT 11
+#define LEGENDS_HAIR_COLOR_COUNT 8
+#define RGB(r,g,b) ((r)|((g)<<5)|((b)<<10))
+#define COMPOUND_STRING(x) ((const u8 *)(x))
 #define LEGENDS_JACKET_COUNT 3
 #define VAR_LEGENDS_HAIR 5
 #define VAR_LEGENDS_SHOES 3
@@ -57,7 +60,7 @@ enum TrainerPicID {TRAINER_PIC_LEGENDS_BRENDAN_EMERALD=200};
 static u16 value,accessories,costume,shoes,card,hair;
 u16 VarGet(u16 id){return id==5?hair:id==4?card:id==3?shoes:id==2?costume:id==1?accessories:value;}
 void VarSet(u16 id,u16 v){if(id==5)hair=v;else if(id==4)card=v;else if(id==3)shoes=v;else if(id==2)costume=v;else if(id==1)accessories=v;else value=v;}
-u8 LegendsGetShoes(void);u8 LegendsGetCardColor(void);u8 LegendsGetHair(void);
+u8 LegendsGetShoes(void);u8 LegendsGetCardColor(void);u8 LegendsGetHair(void);u8 LegendsGetHairColor(void);
 void LegendsPrepareFootwearPalette(u16*p,u8 g,u8 k){}
 void LegendsClearAppearanceSelection(void);
 void LegendsUpdateAppearancePalettes(void);
@@ -72,6 +75,21 @@ for(int h=0;h<11;h++){
  LegendsBeginWardrobeSelection();LegendsSetHairSelection(h);LegendsApplyWardrobeSelection();assert(hair==h);
  LegendsBeginAppearanceSelection();LegendsApplyAppearanceToNewGame();assert(hair==0);
 }
+
+// Pack colors in the existing hair variable; all previous 0-10 IDs stay valid.
+for(int col=0;col<8;col++)for(int h=0;h<11;h++){
+ hair=11*col+h;LegendsClearAppearanceSelection();assert(LegendsGetHair()==h&&LegendsGetHairColor()==col);
+ LegendsBeginWardrobeSelection();LegendsSetHairColorSelection((col+1)%8);LegendsSetHairSelection((h+1)%11);
+ assert(hair==11*col+h);LegendsClearAppearanceSelection();assert(LegendsGetHair()==h&&LegendsGetHairColor()==col);
+ LegendsBeginWardrobeSelection();LegendsSetHairColorSelection((col+1)%8);LegendsApplyWardrobeSelection();
+ assert(hair==11*((col+1)%8)+h);
+ LegendsBeginAppearanceSelection();LegendsSetHairSelection(h);LegendsSetHairColorSelection(col);
+ hair=0;LegendsApplyAppearanceToNewGame();assert(hair==11*col+h);
+}
+hair=88;LegendsClearAppearanceSelection();assert(!LegendsGetHair()&&!LegendsGetHairColor());
+assert(!strcmp((const char*)LegendsGetHairName(MALE,9),"MAN BUN"));
+assert(!strcmp((const char*)LegendsGetHairName(FEMALE,10),"TWIN BRAIDS"));
+assert(!strcmp((const char*)LegendsGetHairColorName(7),"SILVER"));
 hair=65535;LegendsClearAppearanceSelection();assert(LegendsGetHair()==0);hair=0;
 for(int j=0;j<3;j++){
  accessories=0;LegendsClearAppearanceSelection();LegendsBeginWardrobeSelection();LegendsSetAccessorySelection(3,j);
@@ -203,6 +221,19 @@ for(int h=1;h<11;h++)for(int sc=0;sc<6;sc++)for(int j=0;j<3;j++)for(int tone=0;t
   }
   assert(gLegendsTrainerPalettes[g][15]==sBaseTrainerPalettes[g][15]);
   assert(gLegendsUnderwaterPalettes[g][7]==sBaseUnderwaterPalette[7]);
+ }
+}
+
+for(int col=1;col<8;col++)for(int j=0;j<3;j++)for(int sc=0;sc<6;sc++){
+ value=1;hair=col*11+5;accessories=j*6+sc;LegendsClearAppearanceSelection();LegendsUpdateAppearancePalettes();
+ for(int g=0;g<2;g++){
+  for(int k=1;k<=3;k++)assert(gLegendsTrainerPalettes[g][k]==sSkinPalettes[0][k-1]);
+  assert(gLegendsTrainerPalettes[g][5]==sBaseTrainerPalettes[g][5]);
+  assert(gLegendsTrainerPalettes[g][8]==sBaseTrainerPalettes[g][8]);
+  assert(gLegendsTrainerPalettes[g][15]==sBaseTrainerPalettes[g][15]);
+  assert(gLegendsUnderwaterPalettes[g][4]==sBaseUnderwaterPalette[4]);
+  assert(gLegendsUnderwaterPalettes[g][7]==sBaseUnderwaterPalette[7]);
+  if(j)assert(gLegendsTrainerPalettes[g][10]==(j==2?RGB(4,11,7):RGB(4,7,13)));
  }
 }
 hair=0;accessories=0;LegendsClearAppearanceSelection();LegendsUpdateAppearancePalettes();

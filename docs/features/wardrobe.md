@@ -4,18 +4,20 @@ Introduced in v0.0.23, refined in v0.0.24, costumes added in v0.0.25; shared by 
 
 A small clothes box using Emerald’s native moving-box artwork stands directly beneath the bed in your Littleroot bedroom. Face it from an adjacent tile and press A. Your rival’s wardrobe remains private. Interaction opens customization directly.
 
-Use Up/Down to scroll through OUTFIT, COSTUMES, SCARF, JACKET, SHOES, TRAINER CARD, APPLY and CANCEL. Six rows are visible at once; the cursor wraps and follows the viewport. Left/Right cycles a setting; A also cycles the selected setting. The native trainer portrait updates immediately. APPLY keeps all pending changes; CANCEL or B discards them. Closing restores the field through the native map reload, so player graphics and reflections rebuild together. Your skin tone is retained.
+Use Up/Down to scroll through OUTFIT, COSTUMES, HAIRSTYLE, HAIR COLOR, SCARF, JACKET, SHOES, TRAINER CARD, APPLY and CANCEL. Six rows are visible at once; the cursor wraps and follows the viewport. On HAIRSTYLE or HAIR COLOR, A or Left/Right opens a vertical list. Up/Down scrolls, A keeps that pending selection, and B restores the value from before opening the list. Other settings cycle with Left/Right or A. The native trainer portrait updates immediately. APPLY keeps all pending changes; CANCEL or B discards them. Closing restores the field through the native map reload, so player graphics and reflections rebuild together. Your skin tone is retained.
 
 | Setting | Choices |
 | --- | --- |
 | Outfit | Emerald, Trail, Sport, Yellow, Lavender |
 | Costumes | None, Team Magma, Team Aqua |
 | Added scarf | None, Crimson, Ocean, Emerald, Lavender, Cream |
-| Jacket | None, Navy |
+| Hairstyle | Original plus ten gender-specific cuts (see below) |
+| Hair color | Natural, Black, Dark Brown, Chestnut, Auburn, Honey, Blond, Silver |
+| Jacket | None, Navy, Winter (dark green) |
 | Shoes | Original, Red, Blue, Green, White, Purple, Light-brown boots, Black boots |
 | Trainer Card | Original, Emerald, Ocean, Crimson, Lavender, Gold, Rose, Slate |
 
-Scarf and jacket settings combine independently with all five outfits, both genders and the five existing skin tones. The Lavender outfit’s original cream neck trim remains part of that design when no added accessory is chosen; added scarves override its collar. The navy jacket has short sleeves and a visible center seam. Original Emerald gloves remain; custom outfits keep bare hands.
+Scarf and jacket settings combine independently with all five outfits, both genders and the five existing skin tones. The Lavender outfit’s original cream neck trim remains part of that design when no added accessory is chosen; added scarves override its collar. Both jackets have full sleeves reaching the cuffs. Navy uses fixed navy fabric; Winter uses dark green fabric, an ivory shearling collar and a longer tailored hem. Their fabric colors are independent of the outfit and hair. Original Emerald gloves remain; custom outfits keep bare hands.
 
 Accessories are visible on walking/running, both bikes, Surf, field moves, fishing/watering, local trainer front portraits, all four throw frames and the local Trainer Card. The diving suit keeps its native covered appearance. NPCs/rivals and remote Trainer Cards/link art remain native; this does not change the link protocol.
 
@@ -45,7 +47,7 @@ To regenerate, install Pillow 11.3.0, run both authoring scripts, then the appea
 
 COSTUMES chooses the native male/female Team Magma or Team Aqua grunt uniform. Walking and wardrobe/Trainer Card portraits use the exact original grunt pixel assets, with the selected skin ramp applied. Running uses the matching native walking motions at player speed. Bikes, Surf and field-action sheets adapt those uniforms to native player frame dimensions, while back battle art keeps all four player throwing motions under the matching hood or bandana. Diving remains in the covered native suit.
 
-SCARF and JACKET display FIXED while a costume is active to preserve the full uniform. Their saved choices are kept. Choose NONE to restore them, or change OUTFIT to switch back to normal clothes. Apply saves; Cancel/B discards costume edits too. Var 0x40A8 stores 0/1/2 without changing SaveBlock sizes; invalid values use None and New Game resets the var. Existing NPCs/rivals and link protocol are unchanged.
+HAIRSTYLE, HAIR COLOR, SCARF, JACKET and SHOES display FIXED while a costume is active to preserve the full uniform. Their saved choices are kept. Choose NONE to restore them, or change OUTFIT to switch back to normal clothes. Apply saves; Cancel/B discards costume edits too. Var 0x40A8 stores 0/1/2 without changing SaveBlock sizes; invalid values use None and New Game resets the var. Existing NPCs/rivals and link protocol are unchanged.
 
 `build_costumes.py` compiles independent 4bpp packs, frame tables and palettes. Its native uniform/front fidelity and frame/face/held-object checks run in project CI. Male Sport shorts now have explicit cloth hem stripes rather than recoloring entire trouser sections into skin.
 
@@ -92,3 +94,27 @@ The intro now displays five choices at once. Use Up/Down to scroll, A to select 
 `tools/legends/hair_pixels.py` contains separate male/female portrait and overworld pixel clusters. Front and overworld patterns are placed without scaling; back portraits use their own corrected head proportions. Coats now cover exposed arms through the protected hand boundaries. Custom male hair reserves native slot 7 for a warm highlight. The compositor moves the old male blue clothing shade to stable slot 5 before footwear overlays, while the native eye slots, female colors and underwater palette remain intact. The supplied Brendan/May sprite-generation sheets guide the clustered highlights, fringes and rounded silhouettes. Authoring sheets: `docs/qa/wardrobe-v0.0.39.png` and `docs/qa/wardrobe-actions-v0.0.39.png`. These are source-art renders, not emulator captures.
 
 Native mGBA review for this version is recorded in `docs/qa/appearance-v0.0.39.md`, with both gender previews and scrolling menus.
+
+### Complete heads, named lists and hair colors (v0.0.40)
+
+| Boy | Girl |
+| --- | --- |
+| Original | Original |
+| Crew Cut | Pixie |
+| Side Part | Side Part |
+| Spiky | Soft Layers |
+| Side Sweep | Side Sweep |
+| Tousled | Wavy Bob |
+| Quiff | Short Bob |
+| Shag | Long Bob |
+| Curls | Curls |
+| Man Bun | Ponytail |
+| Undercut | Twin Braids |
+
+The chosen gender determines both artwork and list names. Saved hairstyle IDs are retained; male tied styles now use a compact bun and an undercut. Every custom pose keeps the occupied native skull/nape connected under its new crown. Back throw poses use explicit face landmarks because a raised forearm can touch the cheek in the native sheet; it must still receive a sleeve.
+
+Hair color follows hairstyle in the intro. Natural preserves the native brown/custom highlight ramp. The other seven colors reserve slots 4 and 7 for hair; pose-local masks move non-hair uses to stable dark clothing shades before drawing coats, hair and shoes. Coat fabric uses slot 10 with true-black slot 15 shadows, avoiding the female hair-brown shadow shade; it does not recolor eye slot 5. Costumes and diving keep their native covered art and colors.
+
+`VAR_LEGENDS_HAIR` (0x4059) now stores `hairstyle + 11 * hairColor`, with valid values 0–87. Existing values 0–10 retain Natural color. Invalid values fall back to Original/Natural. Wardrobe previews remain staged until APPLY. Both the palette stamp and sprite/portrait caches include hair color, and the field reload rebuilds the avatar after Apply. No save structures or animation-frame buffers were enlarged.
+
+Current authoring renders and native emulator evidence are described in [the v0.0.40 QA record](../qa/appearance-v0.0.40.md).

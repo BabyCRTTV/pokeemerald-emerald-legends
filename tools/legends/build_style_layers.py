@@ -9,11 +9,21 @@ import json,re,struct
 from PIL import Image,ImageDraw
 from build_appearance import ROOT,STATES,FILES,frames,skin_components,hand_pixels,ball_pixels
 
+# In two throw frames the arm touches the cheek. Skin flood-fill alone then
+# joins the forearm to the face, incorrectly protecting it from long sleeves.
+BACK_FACE_RECTS = (
+    ((31,28,44,39),(37,29,50,39),(26,30,44,42),(35,27,49,37)),
+    ((28,30,42,42),(34,30,49,43),(22,32,38,49),(29,29,44,42)),
+)
+
 def head(p,gender,kind,pose,state=''):
     groups=skin_components(p);h,w=len(p),len(p[0])
     if kind!='overworld':
         candidates=[s for s in groups if len(s)>30]
         face=min(candidates,key=lambda s:min(y for x,y in s))
+        if kind=='back':
+            l,t,r,b=BACK_FACE_RECTS[gender][pose]
+            face={(x,y) for y in range(t,b+1) for x in range(l,r+1) if p[y][x] in (1,2,3)}
         # Every native portrait/back frame has a distinct hat/face location.
         left=min(x for x,y in face);right=max(x for x,y in face)
         top=min(y for x,y in face);bottom=max(y for x,y in face)
@@ -54,13 +64,51 @@ def head(p,gender,kind,pose,state=''):
     ht=8 if direction!=2 else 10
     return face,(max(0,cx-(10 if w==32 else 8)),max(0,min(cy-2,upper) if w==16 else cy-2),min(w-1,cx+(10 if w==32 else 8)),bottom), (cx,cy,hw,ht),direction
 
-def hair_edits(p,g,kind,pose,style,state=''):
+# Actual gloves/palms, separate from the old bare-hand outfit masks which
+# also included forearm pixels. Coats must cover those forearms to the cuff.
+COAT_HAND_RECTS = {
+ (0,'front'): [[(14,37,17,40),(45,29,50,33)]],
+ (1,'front'): [[(9,29,17,32),(41,35,48,39)]],
+ (0,'back'): [[(0,36,12,48),(54,47,63,55)],[(0,24,12,34),(50,59,63,63)],[(49,21,63,33)],[]],
+ (1,'back'): [[(0,39,14,49),(43,47,50,52)],[(0,25,13,35),(49,57,56,63)],[(43,25,58,33),(5,57,15,63)],[]],
+}
+def coat_hands(g,kind,pose):
+ return {(x,y) for l,t,r,b in COAT_HAND_RECTS[g,kind][pose] for y in range(t,b+1) for x in range(l,r+1)}
+
+def head_core(p,g,kind,pose,state=''):
     face,box,anchor,direction=head(p,g,kind,pose,state)
     cx,cy,hw,ht=anchor
-    if not hw:return p
-    h,w=len(p),len(p[0]);out=[r[:] for r in p]
+    if not face:return set()
+    l,t,r,b=box
+    if kind=='front':b=min(b,max(y for x,y in face))
+    # Native filled skull, excluding the extended hat brim/tip. Retaining this
+    # coverage under every cut prevents short crowns from erasing the nape.
+    radius=5 if kind=='overworld' else hw//2-2
+    top=cy+(6 if kind=='back' else 2) if kind!='front' else 11
+    core=set()
+    for y in range(max(t,top),b+1):
+        width=max(3,radius-max(0,y-cy-12)//2) if kind=='back' else radius
+        core|={(x,y) for x in range(max(l,cx-width),min(r,cx+width)+1) if p[y][x] and p[y][x] not in (12,13)}
+    return core
+
+def original_hair(p,g,kind,pose,state=''):
+    face,box,anchor,direction=head(p,g,kind,pose,state)
+    l,t,r,b=box;points=set()
+    hands=hand_pixels(g,kind,pose) if kind!='overworld' else set()
+    # Brown native hair only: eyes use 5/8/9/14/15, skin uses 1/2/3.
+    for y in range(t,b+1):
+        for x in range(l,r+1):
+            if (x,y) not in hands and p[y][x] in ((4,7) if g else (4,)):
+                points.add((x,y))
+    return points
+
+def hair_edits(p,g,kind,pose,style,state='',with_points=False):
+    face,box,anchor,direction=head(p,g,kind,pose,state)
+    cx,cy,hw,ht=anchor
+    if not hw:return (p,set()) if with_points else p
+    h,w=len(p),len(p[0]);out=[r[:] for r in p];hair_points=set()
     protected=set(face)
-    if kind!='overworld':protected |= {(x,y) for x,y in hand_pixels(g,kind,pose) if p[y][x] not in (4,7,8)}|ball_pixels(g,kind,pose)
+    if kind!='overworld':protected |= coat_hands(g,kind,pose)|ball_pixels(g,kind,pose)
     # Preserve eyes/mouth and face outlines inside the native face envelope.
     if face:
         fl,fr=min(x for x,y in face),max(x for x,y in face)
@@ -70,6 +118,10 @@ def hair_edits(p,g,kind,pose,style,state=''):
     for y in range(t,b+1):
         for x in range(l,r+1):
             if (x,y) not in protected and p[y][x] not in (1,2,3,12,13):
+                if kind=='front' and face and y>max(yy for xx,yy in face):
+                    fl,fr=min(xx for xx,yy in face),max(xx for xx,yy in face)
+                    if p[y][x] not in (4,7,8) or fl<=x<=fr:
+                        continue # Native collar/neck is not part of a hat.
                 # Keep the native nape behind the ear in back portraits;
                 # removing it would detach the hair from the face/neck.
                 if kind=='back' and face and y>=min(yy for xx,yy in face)-4 and p[y][x] in (4,7,8,15):
@@ -77,7 +129,7 @@ def hair_edits(p,g,kind,pose,style,state=''):
                 out[y][x]=0
     from hair_pixels import portrait, overworld
     rows = overworld(style, g) if kind == 'overworld' else portrait(style, g)
-    mask = Image.new('L', (len(rows[0]), max(24 if kind=='back' else 20, len(rows))))
+    mask = Image.new('L', (len(rows[0]), max(32 if kind=='back' else 20, len(rows))))
     for yy, row in enumerate(rows):
         for xx, char in enumerate(row):
             mask.putpixel((xx, yy), {'.':0, '#':8, '+':4, 'H':7}[char])
@@ -85,22 +137,37 @@ def hair_edits(p,g,kind,pose,style,state=''):
         # Back-facing locks use the same outer contour, with a connected
         # shaded crown instead of the front fringe's gaps.
         width=len(rows[0])
-        length=(14 if g else 12) if kind=='overworld' else (22 if g else 20)
+        length=(14 if g else 12) if kind=='overworld' else (26 if g else 24)
         if style in (1,2,3,4,5,6):length-=2
         center=(width-1)//2
         for yy in range(3,length):
-            radius=width//2-2
-            if yy>length//2:
-                radius=max(2,radius-(yy-length//2+1)//2)
+            radius=width//2-(2 if kind=='overworld' else 1)
+            taper=length//2
+            if yy>taper:
+                radius=max(2,radius-(yy-taper+1)//2)
             left,right=center-radius,center+radius
             for xx in range(left,right+1):
                 v=8 if xx in (left,right) or (yy>=length-3 and xx>center+1) else 4
                 # A broad curved light cluster breaks into tapered locks,
                 # following the supplied back-facing reference lighting.
                 offset=1 if yy<length//3 else 2
-                if 3<=yy<length-4 and left+offset<=xx<=left+offset+(3 if kind!='overworld' else 2):v=7
+                if kind!='overworld':offset=2+yy//6
+                span=2 if kind=='overworld' or yy>=14 else 3 if yy>=9 else 4
+                if 3<=yy<length-4 and left+offset<=xx<=left+offset+span:v=7
                 if yy in (length//2,length//2+2) and xx==left+offset:v=4
+                if kind!='overworld' and yy>length//2 and xx in (center+3,center+5) and (xx+yy)%4!=0:v=8
                 mask.putpixel((xx,yy),v)
+        # Ties remain visible from behind instead of becoming the same round
+        # bob as every other cut. These are drawn at each native grid size.
+        strands=[]
+        if style==9:
+            strands=[(center-1,5,('###','#H+#','#++#','#++#','###'))] if not g else [(center-1,6,('####','#HH#','#H+#','#H+#','#++#','#++#','###'))]
+        elif g and style==10:
+            strands=[(1,6,('###','#H#','#H#','#+#','###')), (width-4,6,('###','#H#','#H#','#+#','###'))]
+        for sx,sy,locks in strands:
+            for yy,row in enumerate(locks):
+                for xx,char in enumerate(row):
+                    mask.putpixel((sx+xx,sy+yy),{'#':8,'+':4,'H':7}[char])
     elif direction == 1:
         # The side fringe points toward the face. The far-side temple lies
         # behind the ear; native eye and nose pixels remain protected below.
@@ -125,17 +192,26 @@ def hair_edits(p,g,kind,pose,style,state=''):
             # Hair stops at the collar unless a long style has side strands.
             if py>b and style not in (7,8,9,10):continue
             if py>b and p[py][px] in (1,2,3,12,13,15):continue
-            out[py][px]=v
-    return out
+            out[py][px]=v;hair_points.add((px,py))
+    core=head_core(p,g,kind,pose,state)
+    for x,y in core:
+        if (x,y) not in protected and not out[y][x] and p[y][x] not in (1,2,3,12,13):
+            out[y][x]=8 if (x-1,y) not in core or (x+1,y) not in core else 4
+            hair_points.add((x,y))
+    return (out,hair_points) if with_points else out
 
 def coat_edits(p,g,kind,pose,coat):
     h,w=len(p),len(p[0]);out=[r[:] for r in p]
+    cloth_points=set()
+    def paint(x,y,value):
+        out[y][x]=value
+        if value in (5,8):cloth_points.add((x,y))
     groups=skin_components(p)
     if not groups:return out
-    face=max(groups,key=len) if kind=='overworld' else min((s for s in groups if len(s)>30),key=lambda s:min(y for x,y in s))
+    face=max(groups,key=len) if kind=='overworld' else head(p,g,kind,pose)[0]
     fb=max(y for x,y in face);cx=round(sum(x for x,y in face)/len(face))
     protected=set(face)
-    if kind!='overworld':protected |= hand_pixels(g,kind,pose)|ball_pixels(g,kind,pose)
+    if kind!='overworld':protected |= coat_hands(g,kind,pose)|ball_pixels(g,kind,pose)
     top=fb+1 if kind=='overworld' else (25 if kind=='front' else fb+1)
     # Front art: shaped shoulder seams -> fitted waist -> longer winter hem.
     # Back art: preserve the green native backpack over the coat.
@@ -159,12 +235,12 @@ def coat_edits(p,g,kind,pose,coat):
             if v==14:continue # selected scarf overlays the collar
             edge=abs(x-cx)>=extent-1
             if coat==2 and rel<4 and abs(x-cx)>1:
-                out[y][x]=9 if rel<3 or (x+y)%3 else 5
+                paint(x,y,9 if rel<3 or (x+y)%3 else 5)
             elif coat==2 and kind=='front' and rel in (10,11) and g:
-                out[y][x]=8 # fitted belt, feminine flared hem
-            elif x==cx and kind!='back':out[y][x]=8 # front fastening
+                paint(x,y,8) # fitted belt, feminine flared hem
+            elif x==cx and kind!='back':paint(x,y,8) # front fastening
             elif kind=='front' and x==cx+1 and rel in (6,11,16):out[y][x]=9
-            else:out[y][x]=8 if edge or x>cx+2 else 5
+            else:paint(x,y,8 if edge or x>cx+2 else 5)
     if kind=='front':
         # Authored sleeve/torso contours follow the native asymmetric stance.
         # A filled garment (rather than repainting shirt pixels) covers the
@@ -183,24 +259,24 @@ def coat_edits(p,g,kind,pose,coat):
                 if g and y==36:v=8
                 if x==cx:v=8
                 if x==cx+1 and y in (32,37,42):v=9
-                out[y][x]=v
+                paint(x,y,v)
     if kind in ('front','back'):
         # Carry sleeves to the glove/cuff boundary. The old torso-width pass
         # missed outstretched arms, making the winter coat look sleeveless.
-        for y in range(top, h if kind == 'back' else 37):
+        for y in range(0 if kind=='back' else top, h if kind == 'back' else 37):
             for x in range(w):
                 if (x,y) in protected or p[y][x] not in (1,2,3):
                     continue
                 if kind == 'front' and not (x < 24 or x > 35):
                     continue
-                out[y][x] = 5 if p[y][x] == 1 else 8
+                paint(x,y,5 if p[y][x] == 1 else 8)
         if kind == 'front':
             # Continuous lower hem plus a lit opening seam; keep the shorter
             # Navy jacket distinct from Winter's longer fitted silhouette.
             hem = 43 if coat == 2 and g else 44 if coat == 2 else 38
             for x in range(22 if g else 24, 36 if g else 38):
                 if (x,hem) not in protected and out[hem][x] in (5,8):
-                    out[hem][x] = 8
+                    paint(x,hem,8)
             for y in range(31,hem):
                 if out[y][cx-1] == 5:out[y][cx-1] = 9 if y in (32,37,42) else 5
     if coat==2:
@@ -213,11 +289,16 @@ def coat_edits(p,g,kind,pose,coat):
             for y in range(24,31):
                 for x in range(max(0,cx-8),min(w,cx+9)):
                     v=mask.getpixel((x,y))
-                    if v and (x,y) not in protected and p[y][x] not in (12,13):out[y][x]=v
+                    if v and (x,y) not in protected and p[y][x] not in (12,13):paint(x,y,v)
         elif kind=='overworld':
             for y in range(top,min(top+2,h)):
                 for x in range(max(0,cx-3),min(w,cx+4)):
                     if p[y][x] and p[y][x] not in (1,2,3,12,13,15) and (x,y) not in protected:out[y][x]=9
+    for y in range(h):
+        for x in range(w):
+            if out[y][x]!=p[y][x] or (x,y) in cloth_points:
+                if out[y][x]==5:out[y][x]=10
+                elif out[y][x]==8:out[y][x]=15
     return out
 
 def build():
@@ -227,12 +308,23 @@ def build():
     def emit(p,g,kind,i,state=''):
         nonlocal pose_count
         items=[]
-        for hair in range(1,11):items.append(hair_edits(p,g,kind,i,hair,state))
-        for coat in (1,2):items.append(coat_edits(p,g,kind,i,coat))
+        for hair in range(1,11):
+            art,points=hair_edits(p,g,kind,i,hair,state,True)
+            items.append((art,points))
+        for coat in (1,2):items.append((coat_edits(p,g,kind,i,coat),set()))
+        original=original_hair(p,g,kind,i,state)
+        # Forced native-hair values restore the two reserved hair shades even
+        # if footwear or a source-color reservation touched the same index.
+        items.append((p,original))
+        body={(x,y) for y,row in enumerate(p) for x,v in enumerate(row)
+              if v in (4,7) and (x,y) not in original}
+        remap=[row[:] for row in p]
+        for x,y in body:remap[y][x]=8 if p[y][x]==4 or g else 5
+        items.append((remap,body))
         desc=[]
-        for edited in items:
+        for edited,forced in items:
             off=len(blob)//2
-            edits=[((y*len(p[0])+x)<<4)|v for y,row in enumerate(edited) for x,v in enumerate(row) if v!=p[y][x]]
+            edits=[((y*len(p[0])+x)<<4)|v for y,row in enumerate(edited) for x,v in enumerate(row) if v!=p[y][x] or (x,y) in forced]
             blob.extend(struct.pack('<'+'H'*len(edits),*edits));desc.append(f'{{{off},{len(edits)}}}')
         pose_count+=1
         return '{'+','.join(desc)+'}'
@@ -244,16 +336,16 @@ def build():
             tab=mapping[name][state]['table'];idx=list(range(len(src))) if 'overworld_ascending_frames' in tab else [int(v) for v in re.findall(r'overworld_frame\([^,]+,\s*\d+,\s*\d+,\s*(\d+)\)',tab)]
             gc.append(len(idx))
             symbol=f'sStyle{g}{si}'
-            headers.append(f'static const struct StyleEdits {symbol}[][12] = {{\n'+',\n'.join(emit(src[i],g,'overworld',i,file) for i in idx)+'\n};\n');gt.append(symbol)
+            headers.append(f'static const struct StyleEdits {symbol}[][14] = {{\n'+',\n'.join(emit(src[i],g,'overworld',i,file) for i in idx)+'\n};\n');gt.append(symbol)
         counts.append(gc)
         tables.append('{'+','.join(gt)+'}')
         front.append(emit(frames(ROOT/f'graphics/trainers/front_pics/{name.lower()}.png',64,64)[0],g,'front',0))
         back.append('{'+','.join(emit(p,g,'back',i) for i,p in enumerate(frames(ROOT/f'graphics/trainers/back_pics/{name.lower()}.png',64,64)))+'}')
     headers.insert(1,'struct StyleEdits { u32 offset; u16 count; };\nstatic const u16 sStylePixels[] = INCBIN_U16("graphics/legends/styles/edits.bin");\n')
     headers.append('static const u8 sStyleFrameCount[2][8] = {'+','.join('{'+','.join(map(str,c))+'}' for c in counts)+'};\n')
-    headers.append('static const struct StyleEdits (*const sStyleWorld[2][8])[12] = {'+','.join(tables)+'};\n')
-    headers.append('static const struct StyleEdits sStyleFront[2][12] = {'+','.join(front)+'};\n')
-    headers.append('static const struct StyleEdits sStyleBack[2][4][12] = {'+','.join(back)+'};\n')
+    headers.append('static const struct StyleEdits (*const sStyleWorld[2][8])[14] = {'+','.join(tables)+'};\n')
+    headers.append('static const struct StyleEdits sStyleFront[2][14] = {'+','.join(front)+'};\n')
+    headers.append('static const struct StyleEdits sStyleBack[2][4][14] = {'+','.join(back)+'};\n')
     directory=ROOT/'graphics/legends/styles';directory.mkdir(parents=True,exist_ok=True);(directory/'edits.bin').write_bytes(blob)
     (ROOT/'src/data/legends/style_layers.h').write_text(''.join(headers))
     print(f'{pose_count} pose masks, {len(blob)} bytes of sparse edits')

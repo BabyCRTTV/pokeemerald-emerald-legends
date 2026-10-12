@@ -3,6 +3,7 @@
 #include "event_data.h"
 #include "constants/event_objects.h"
 #include "constants/vars.h"
+#include "constants/rgb.h"
 
 struct AppearanceSelection
 {
@@ -16,6 +17,7 @@ struct AppearanceSelection
     u8 hair;
     u8 jacket;
     bool8 legacySkin;
+    u8 hairColor;
 };
 
 EWRAM_DATA static struct AppearanceSelection sSelection = {0};
@@ -64,6 +66,7 @@ void LegendsBeginAppearanceSelection(void)
     sSelection.shoes = 0;
     sSelection.cardColor = 0;
     sSelection.hair = 0;
+    sSelection.hairColor = 0;
     sSelection.jacket = 0;
     sSelection.legacySkin = FALSE;
     sPaletteStamp = 0;
@@ -85,7 +88,7 @@ void LegendsApplyAppearanceToNewGame(void)
     VarSet(VAR_LEGENDS_COSTUME, 0);
     VarSet(VAR_LEGENDS_SHOES, 0);
     VarSet(VAR_LEGENDS_CARD_COLOR, 0);
-    VarSet(VAR_LEGENDS_HAIR, sSelection.valid ? sSelection.hair : 0);
+    VarSet(VAR_LEGENDS_HAIR, sSelection.valid ? sSelection.hair + LEGENDS_HAIR_COUNT * sSelection.hairColor : 0);
     LegendsClearAppearanceSelection();
 }
 
@@ -118,7 +121,7 @@ void LegendsBeginWardrobeSelection(void)
     u8 skin = LegendsGetSkinTone(), outfit = LegendsGetOutfit();
     u8 scarf = LegendsGetScarf(), costume = LegendsGetCostume();
     u8 shoes = LegendsGetShoes(), card = LegendsGetCardColor();
-    u8 jacket = LegendsGetJacketStyle(), hair = LegendsGetHair();
+    u8 jacket = LegendsGetJacketStyle(), hair = LegendsGetHair(), hairColor = LegendsGetHairColor();
     sSelection.legacySkin = GetAppearanceCode() == 0 || GetAppearanceCode() > 25;
     sSelection.skin = skin;
     sSelection.outfit = outfit;
@@ -127,6 +130,7 @@ void LegendsBeginWardrobeSelection(void)
     sSelection.shoes = shoes;
     sSelection.cardColor = card;
     sSelection.hair = hair;
+    sSelection.hairColor = hairColor;
     sSelection.jacket = jacket;
     sSelection.valid = TRUE;
     sPaletteStamp = 0;
@@ -146,7 +150,7 @@ void LegendsApplyWardrobeSelection(void)
     VarSet(VAR_LEGENDS_COSTUME, LegendsGetCostume());
     VarSet(VAR_LEGENDS_SHOES, LegendsGetShoes());
     VarSet(VAR_LEGENDS_CARD_COLOR, LegendsGetCardColor());
-    VarSet(VAR_LEGENDS_HAIR, LegendsGetHair());
+    VarSet(VAR_LEGENDS_HAIR, LegendsGetHair() + LEGENDS_HAIR_COUNT * LegendsGetHairColor());
     LegendsClearAppearanceSelection();
 }
 
@@ -154,7 +158,8 @@ void LegendsUpdateAppearancePalettes(void)
 {
     u16 code = GetAppearanceCode();
     u32 stamp = code + 1 + 31 * GetAccessoryCode() + 558 * LegendsGetCostume()
-              + 1674 * LegendsGetShoes() + 13392 * LegendsGetHair();
+              + 1674 * LegendsGetShoes() + 13392 * LegendsGetHair()
+              + 147312 * LegendsGetHairColor();
     u32 gender, i;
     u8 skin = LegendsGetSkinTone();
     u8 outfit = LegendsGetOutfit();
@@ -191,6 +196,22 @@ void LegendsUpdateAppearancePalettes(void)
             // His eyes use native 5/9/14/15 and keep their exact colors.
             gLegendsOverworldPalettes[gender][7] = 22 | (13 << 5) | (8 << 10);
             gLegendsTrainerPalettes[gender][7] = 22 | (15 << 5) | (10 << 10);
+        }
+        if (LegendsGetHairColor() && !LegendsGetCostume())
+        {
+            static const u16 colors[LEGENDS_HAIR_COLOR_COUNT-1][2] = {
+                {RGB(6,6,7),RGB(12,12,14)}, {RGB(10,6,5),RGB(17,11,8)},
+                {RGB(15,9,6),RGB(23,15,10)}, {RGB(17,6,4),RGB(26,12,7)},
+                {RGB(21,13,6),RGB(29,22,11)}, {RGB(26,20,11),RGB(31,28,20)},
+                {RGB(18,20,23),RGB(28,29,31)},
+            };
+            gLegendsOverworldPalettes[gender][4] = gLegendsTrainerPalettes[gender][4] = colors[LegendsGetHairColor()-1][0];
+            gLegendsOverworldPalettes[gender][7] = gLegendsTrainerPalettes[gender][7] = colors[LegendsGetHairColor()-1][1];
+        }
+        if (LegendsGetJacket() && !LegendsGetCostume())
+        {
+            u16 coat = LegendsGetJacketStyle() == 2 ? RGB(4,11,7) : RGB(4,7,13);
+            gLegendsOverworldPalettes[gender][10] = gLegendsTrainerPalettes[gender][10] = coat;
         }
         if (LegendsGetAccessoryStyle() && !LegendsGetCostume())
         {
@@ -249,13 +270,41 @@ void LegendsSetCardColorSelection(u8 value)
 
 // Zero is the unmodified Emerald hat; the remaining ten values are custom
 // hair silhouettes. Saved in an otherwise unused native state variable.
+static u16 GetHairCode(void)
+{
+    u16 value = VarGet(VAR_LEGENDS_HAIR);
+    return value < LEGENDS_HAIR_COUNT * LEGENDS_HAIR_COLOR_COUNT ? value : 0;
+}
+
 u8 LegendsGetHair(void)
 {
-    u16 value = sSelection.valid ? sSelection.hair : VarGet(VAR_LEGENDS_HAIR);
-    return value < LEGENDS_HAIR_COUNT ? value : 0;
+    return sSelection.valid ? sSelection.hair : GetHairCode() % LEGENDS_HAIR_COUNT;
+}
+u8 LegendsGetHairColor(void)
+{
+    return sSelection.valid ? sSelection.hairColor : GetHairCode() / LEGENDS_HAIR_COUNT;
 }
 void LegendsSetHairSelection(u8 hair)
 {
     sSelection.hair = hair < LEGENDS_HAIR_COUNT ? hair : 0;
     sPaletteStamp = 0;
+}
+void LegendsSetHairColorSelection(u8 color)
+{
+    sSelection.hairColor = color < LEGENDS_HAIR_COLOR_COUNT ? color : 0;
+    sPaletteStamp = 0;
+}
+
+const u8 *LegendsGetHairName(enum Gender gender, u8 hair)
+{
+    static const u8 *const names[2][LEGENDS_HAIR_COUNT] = {
+        {COMPOUND_STRING("ORIGINAL"),COMPOUND_STRING("CREW CUT"),COMPOUND_STRING("SIDE PART"),COMPOUND_STRING("SPIKY"),COMPOUND_STRING("SIDE SWEEP"),COMPOUND_STRING("TOUSLED"),COMPOUND_STRING("QUIFF"),COMPOUND_STRING("SHAG"),COMPOUND_STRING("CURLS"),COMPOUND_STRING("MAN BUN"),COMPOUND_STRING("UNDERCUT")},
+        {COMPOUND_STRING("ORIGINAL"),COMPOUND_STRING("PIXIE"),COMPOUND_STRING("SIDE PART"),COMPOUND_STRING("SOFT LAYERS"),COMPOUND_STRING("SIDE SWEEP"),COMPOUND_STRING("WAVY BOB"),COMPOUND_STRING("SHORT BOB"),COMPOUND_STRING("LONG BOB"),COMPOUND_STRING("CURLS"),COMPOUND_STRING("PONYTAIL"),COMPOUND_STRING("TWIN BRAIDS")},
+    };
+    return names[gender == FEMALE][hair < LEGENDS_HAIR_COUNT ? hair : 0];
+}
+const u8 *LegendsGetHairColorName(u8 color)
+{
+    static const u8 *const names[LEGENDS_HAIR_COLOR_COUNT] = {COMPOUND_STRING("NATURAL"),COMPOUND_STRING("BLACK"),COMPOUND_STRING("DARK BROWN"),COMPOUND_STRING("CHESTNUT"),COMPOUND_STRING("AUBURN"),COMPOUND_STRING("HONEY"),COMPOUND_STRING("BLOND"),COMPOUND_STRING("SILVER")};
+    return names[color < LEGENDS_HAIR_COLOR_COUNT ? color : 0];
 }

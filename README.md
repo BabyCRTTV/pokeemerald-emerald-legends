@@ -1,6 +1,6 @@
 # Pokémon Emerald: Legends
 
-**Version:** 0.0.39<br>
+**Version:** 0.0.40<br>
 **Base:** [pokeemerald-expansion](https://github.com/rh-hideout/pokeemerald-expansion)
 
 Pokémon Emerald: Legends is an unofficial, non-commercial Pokémon Emerald ROM-hack project built on the open-source `pokeemerald-expansion` decompilation/expansion base.
@@ -15,14 +15,14 @@ Kanto has four playable visiting Gyms: Lt. Surge, Koga, Erika and Sabrina offer 
 
 The pause menu includes ADVENTURE LOG: turn pages, filter by played day or story, and review milestones, locations and one recent catch. DAY above the clock counts dates actually played; skipped dates add none, while play hours carry across sessions. Existing saves start their notebook at Day 1. [Player guide](https://babycrttv.github.io/pokeemerald-emerald-legends/adventure-guide.html) · [Implementation and validation](docs/features/adventure-log.md).
 
-## Try the current v0.0.39 build
+## Try the current v0.0.40 build
 
 The project site provides two builds from the same source:
 
 - **Release (recommended):** https://babycrttv.github.io/pokeemerald-emerald-legends/patcher.html
 - **Debug / developer:** https://babycrttv.github.io/pokeemerald-emerald-legends/patcher.html?build=debug
-- **Release BPS:** https://babycrttv.github.io/pokeemerald-emerald-legends/downloads/Pokemon-Emerald-Legends-v0.0.39.bps
-- **Debug BPS:** https://babycrttv.github.io/pokeemerald-emerald-legends/downloads/Pokemon-Emerald-Legends-v0.0.39-debug.bps
+- **Release BPS:** https://babycrttv.github.io/pokeemerald-emerald-legends/downloads/Pokemon-Emerald-Legends-v0.0.40.bps
+- **Debug BPS:** https://babycrttv.github.io/pokeemerald-emerald-legends/downloads/Pokemon-Emerald-Legends-v0.0.40-debug.bps
 
 The Release and Debug builds contain the same Legends gameplay/content changes. Release disables developer entry points for a cleaner casual-player build. Debug retains the expansion's overworld/battle/sprite debug tools and title-screen Quickstart.
 
@@ -41,6 +41,8 @@ The Release and Debug builds contain the same Legends gameplay/content changes. 
 **SHINY RATE (v0.0.10):** Use NEXT PAGE + A (or L/R) to select the Legends Options page, then Left/Right on SHINY RATE to choose 1/8192 (default), 1/5680, or 1/1226. The chosen base rate is stored in an unused permanent save variable; it affects newly generated wild Pokémon, including fishing and DexNav. Shiny Charm, chain-fishing and DexNav bonus rolls still apply. Gift Pokémon, eggs, scripted encounters and already-owned Pokémon use their previous logic.
 
 **Maintenance QA (0.0.8.1):** Browser patching now ignores stale ROM validation and download operations; automated BPS decoding tests have been added. Gameplay mechanics are unchanged from 0.0.8.
+
+**HAIR AND WARDROBE (v0.0.40):** Choose a gender-specific hairstyle and one of eight hair colors in the intro or your home/secret-base wardrobe. Open HAIRSTYLE or HAIR COLOR with A or Left/Right, scroll with Up/Down, confirm with A, then APPLY. Both jackets have full sleeves: Navy and dark-green Winter with ivory shearling. Existing saves keep their hairstyles and Natural color. See [wardrobe details](docs/features/wardrobe.md).
 
 **STARTERS (v0.0.19):** Adventure Options offers Gen 1–9, Special (Happiny/Wattrel/Mankey), and Random (three distinct unevolved Pokémon that can evolve). The rescue screen follows your setting; your rival uses the generation counter or Zorua/Zoroark for Special/Random. Choose before opening the rescue bag; later edits apply to your next New Game. See [starter documentation](docs/features/starters.md).
 

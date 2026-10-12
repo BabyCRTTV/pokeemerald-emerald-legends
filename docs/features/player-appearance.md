@@ -3,7 +3,7 @@
 Introduced in v0.0.15, shared by Release and Debug.
 
 After choosing Boy or Girl in Birch's introduction, choose **Fair, Light, Medium,
-Brown or Deep**, then a hairstyle from the Up/Down scrolling list, then **Emerald, Trail, Sport, Yellow or Lavender**. Both genders have five designs:
+Brown or Deep**, then a gender-specific hairstyle and hair color from separate Up/Down scrolling lists, then **Emerald, Trail, Sport, Yellow or Lavender**. Both genders have five designs:
 the original Emerald clothing, a trail jacket with trousers, and a striped sport
 top with shorts, a yellow top, and a lavender top with plum shading and a cream scarf. Custom designs use bare hands; Emerald retains its original gloves. A bordered 64px trainer preview sits at the bottom right above
 the dialogue and updates when the cursor moves. A confirms; B returns to the
@@ -17,7 +17,7 @@ use their original assets. Native pond/ice filters generate reflections from the
 selected player palette; high bridges retain their dark-blue reflection rule.
 
 Existing saves retain their original Emerald appearance. Since v0.0.23, the
-[wardrobe](wardrobe.md) edits outfits and accessories at home or in your own secret base, retaining skin tone.
+[wardrobe](wardrobe.md) edits outfits, hairstyles, hair colors and accessories at home or in your own secret base, retaining skin tone.
 Debug Quickstart uses the original appearance. Link/remote appearance is not
 synchronized; remote Trainer Cards and native link-player scenes keep native art.
 
@@ -32,8 +32,7 @@ Accessory var 0x40A1 stores scarf/jacket settings. Invalid values fall back to l
 they survive `InitEventData`, then consumes them once during New Game. A fresh
 title entry discards staging. This is independent of the existing title Options
 bridge. Three dedicated palette pairs cover overworld, trainer and underwater
-art; only skin slots 1–3 and outfit accent slots 10–11 change. Other slots keep
-their native colors. Palette caches rebuild when the appearance changes.
+art; skin uses slots 1–3 and outfit accents use 10–11. Hair colors reserve 4/7 and coats reserve 10 through pose-specific masks; eye, skin and footwear roles stay separate. Palette caches rebuild when the appearance changes.
 
 `legends_appearance_graphics.c` supplies eighteen player-only graphics IDs
 (two genders × nine native avatar states) in the reserved `0x0F00–0x0F11` range.

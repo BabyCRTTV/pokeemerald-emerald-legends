@@ -2,6 +2,15 @@
 
 This is the developer-facing history for the **Debug** build. Shared Legends changes are repeated here so this file stands on its own; Debug-only behavior is called out separately.
 
+## [0.0.40] - 2026-10-12
+
+- Repair incomplete skull/nape coverage on all ten custom hairstyles across the 212 native animation-table poses, including facing away, cycling, field actions and throw portraits. Separate touching cheek/forearm pixels in raised-arm poses.
+- Give Boy and Girl distinct named hairstyle lists. Boy choices include Crew Cut, Quiff, Shag, Man Bun and Undercut; Girl choices include Pixie, Soft Layers, Wavy/Short/Long Bob, Ponytail and Twin Braids. Original and existing saved IDs remain supported.
+- Add a separate vertical hair-color list to the intro and wardrobe: Natural, Black, Dark Brown, Chestnut, Auburn, Honey, Blond and Silver. Hair colors keep native eyes, skin, shoe colors and costume/diving palettes separate. Existing hairstyle saves retain Natural color; no SaveBlock layout changes.
+- Make wardrobe HAIRSTYLE and HAIR COLOR lists accessible with A or Left/Right, with explicit on-screen controls. Up/Down scrolls the list; A keeps the pending selection, B restores its entry value, and APPLY saves both choices for the field.
+- Extend both jackets fully to the cuffs. Navy uses fixed navy fabric; Winter uses dark green fabric with ivory shearling, independent of the outfit or hair color. Preserve gloves, held balls, scarf layering and tailored hems.
+- Shared by Release and Debug; no variant-specific differences. Regression checks cover complete head coverage, forearm coverage, all 88 saved hair/color codes, intro/wardrobe lifecycle, protected palettes and the integrated footwear cache. Native mGBA evidence and playtest scope: `docs/qa/appearance-v0.0.40.md`. Both variants use the established verified-BPS release workflow.
+
 ## [0.0.39] - 2026-10-11
 
 - Replace the intro's single Left/Right hairstyle row with a five-row Up/Down scrolling list, scroll indicators and live preview. Widen the existing choice window within its allocated tiles so long names and arrows do not overlap. A selects; B returns to skin tone; revisiting restores the chosen hairstyle.

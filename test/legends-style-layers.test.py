@@ -25,7 +25,8 @@ typedef uint8_t u8;typedef uint16_t u16;typedef uint32_t u32;typedef uint8_t boo
 #define LEGENDS_JACKET_COUNT 3
 #define TRUE 1
 #define FALSE 0
-u8 scarf;
+u8 scarf;u8 color;
+u8 LegendsGetHairColor(void){return color;}
 u8 LegendsGetScarf(void){return scarf;}
 '''
 def unpack(raw,w,h):
@@ -49,12 +50,13 @@ with tempfile.TemporaryDirectory() as d:
    h=len(p);native=pack(p);signatures=set()
    groups=art.skin_components(p)
    face=(max(groups,key=len) if kind==0 else min((s for s in groups if len(s)>30),key=lambda s:min(y for x,y in s))) if groups else set()
+   if kind==2:face=art.head(p,g,'back',native_index)[0]
    protected=set(face)
    if face:
     left,right=min(x for x,y in face),max(x for x,y in face)
     top,bottom=min(y for x,y in face),max(y for x,y in face)
     protected |= {(x,y) for y in range(top,bottom+1) for x in range(left,right+1) if p[y][x] in (5,8,9,14,15)}
-   if kind:protected |= {(x,y) for x,y in art.hand_pixels(g,'front' if kind==1 else 'back',native_index) if p[y][x] not in (4,7,8)}|art.ball_pixels(g,'front' if kind==1 else 'back',native_index)
+   if kind:protected |= art.coat_hands(g,'front' if kind==1 else 'back',native_index)|art.ball_pixels(g,'front' if kind==1 else 'back',native_index)
    for hair in range(11):
     for coat in range(3):
      buf=(ctypes.c_uint8*len(native)).from_buffer_copy(native)
@@ -62,6 +64,11 @@ with tempfile.TemporaryDirectory() as d:
      raw=bytes(buf);out=unpack(raw,w,h)
      if not hair and not coat or kind==0 and state==4:assert raw==native
      for x,y in protected:assert out[y][x]==p[y][x],(name,kind,state,slot,hair,coat,'face/hand/ball',x,y)
+     if coat and kind==2:
+      for y,row in enumerate(p):
+       for x,v in enumerate(row):
+        if v in (1,2,3) and (x,y) not in protected:
+         assert out[y][x] in (10,15), (name,slot,'exposed forearm',x,y)
      if coat==0:signatures.add(raw)
      # Same custom hair under both coats: accessories cannot repaint its crown.
      if hair and not (kind==0 and state==4):
@@ -72,6 +79,12 @@ with tempfile.TemporaryDirectory() as d:
         if crown[y][x]!=p[y][x] and crown[y][x] in (4,8):assert out[y][x]==crown[y][x]
    if kind==1:assert len(signatures)==11,(name,'distinct portraits')
    if (state!=4 or kind) and groups:assert len(signatures)>=5,(name,kind,state,slot,'distinct hairstyles')
+   if not (kind==0 and state==4):
+    core=art.head_core(p,g,'overworld' if kind==0 else 'front' if kind==1 else 'back',native_index,FILES[state] if kind==0 else '')
+    for hair in range(1,11):
+     buf=(ctypes.c_uint8*len(native)).from_buffer_copy(native);painter(buf,w,g,kind,state,slot,hair,0)
+     out=unpack(bytes(buf),w,h)
+     assert all(out[y][x] for x,y in core), (name,kind,state,slot,hair,'incomplete head')
    poses+=1
  # Invalid settings and diving are safely ignored.
  for g,kind,state,pose,hair,coat in ((2,0,0,0,1,2),(0,0,8,0,1,2),(0,0,4,0,1,2),(0,2,0,4,1,2),(0,1,0,0,11,2),(0,1,0,0,1,3)):
