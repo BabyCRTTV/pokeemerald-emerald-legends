@@ -1,463 +1,693 @@
 {
   "families": {
     "general": {
-      "palette": 12,
       "cells": [
         {
-          "metatile": 19,
           "cell": 0,
-          "source_tile": 182,
+          "metatile": 19,
           "source_palette": 5,
+          "source_tile": 182,
           "tile": 1
         },
         {
-          "metatile": 19,
           "cell": 1,
-          "source_tile": 182,
+          "metatile": 19,
           "source_palette": 5,
+          "source_tile": 182,
           "tile": 1
         },
         {
-          "metatile": 33,
           "cell": 0,
-          "source_tile": 214,
+          "metatile": 33,
           "source_palette": 1,
+          "source_tile": 214,
           "tile": 15
         },
         {
-          "metatile": 33,
           "cell": 1,
-          "source_tile": 215,
+          "metatile": 33,
           "source_palette": 1,
+          "source_tile": 215,
           "tile": 26
         },
         {
-          "metatile": 66,
           "cell": 1,
-          "source_tile": 329,
+          "metatile": 66,
           "source_palette": 1,
+          "source_tile": 329,
           "tile": 31
         },
         {
-          "metatile": 67,
           "cell": 0,
-          "source_tile": 330,
+          "metatile": 67,
           "source_palette": 1,
+          "source_tile": 330,
           "tile": 39
         },
         {
-          "metatile": 98,
           "cell": 1,
-          "source_tile": 327,
+          "metatile": 98,
           "source_palette": 1,
+          "source_tile": 327,
           "tile": 42
         },
         {
-          "metatile": 99,
           "cell": 0,
-          "source_tile": 328,
+          "metatile": 99,
           "source_palette": 1,
+          "source_tile": 328,
           "tile": 55
         }
       ],
       "colors": [
         {
+          "light": false,
           "rgb": [
             205,
             156,
             82
-          ],
-          "light": false
+          ]
         },
         {
+          "light": false,
           "rgb": [
             65,
             74,
             106
-          ],
-          "light": false
+          ]
         },
         {
+          "light": true,
           "rgb": [
             189,
             205,
             230
-          ],
-          "light": true
+          ]
         },
         {
+          "light": true,
           "rgb": [
             156,
             180,
             222
-          ],
-          "light": true
+          ]
         },
         {
+          "light": false,
           "rgb": [
             213,
             180,
             106
-          ],
-          "light": false
+          ]
         },
         {
+          "light": false,
           "rgb": [
             222,
             106,
             98
-          ],
-          "light": false
+          ]
         },
         {
+          "light": false,
           "rgb": [
             98,
             98,
             123
-          ],
-          "light": false
+          ]
         },
         {
+          "light": true,
           "rgb": [
             98,
             172,
             238
-          ],
-          "light": true
+          ]
         },
         {
+          "light": true,
           "rgb": [
             115,
             189,
             246
-          ],
-          "light": true
+          ]
         },
         {
+          "light": false,
           "rgb": [
             205,
             65,
             82
-          ],
-          "light": false
+          ]
         },
         {
+          "light": false,
           "rgb": [
             255,
             255,
             255
-          ],
-          "light": false
+          ]
         },
         {
+          "light": false,
           "rgb": [
             189,
             205,
             230
-          ],
-          "light": false
+          ]
         },
         {
+          "light": true,
           "rgb": [
             255,
             189,
             131
-          ],
-          "light": true
+          ]
         },
         {
+          "light": false,
           "rgb": [
             222,
             230,
             238
-          ],
-          "light": false
+          ]
         },
         {
+          "light": true,
           "rgb": [
             205,
             65,
             82
-          ],
-          "light": true
+          ]
         }
-      ]
+      ],
+      "palette": 12
     },
     "general_frlg": {
-      "palette": 7,
       "cells": [
         {
-          "metatile": 96,
           "cell": 5,
-          "source_tile": 211,
+          "metatile": 96,
           "source_palette": 2,
+          "source_tile": 211,
           "tile": 1
         },
         {
-          "metatile": 97,
           "cell": 4,
-          "source_tile": 227,
+          "metatile": 97,
           "source_palette": 2,
+          "source_tile": 227,
           "tile": 35
         },
         {
-          "metatile": 32,
           "cell": 0,
-          "source_tile": 248,
+          "metatile": 32,
           "source_palette": 3,
+          "source_tile": 248,
           "tile": 61
         },
         {
-          "metatile": 32,
           "cell": 1,
-          "source_tile": 249,
+          "metatile": 32,
           "source_palette": 3,
+          "source_tile": 249,
           "tile": 188
         },
         {
-          "metatile": 33,
           "cell": 0,
-          "source_tile": 248,
+          "metatile": 33,
           "source_palette": 3,
+          "source_tile": 248,
           "tile": 61
         },
         {
+          "cell": 4,
           "metatile": 79,
-          "cell": 4,
-          "source_tile": 287,
           "source_palette": 3,
+          "source_tile": 287,
           "tile": 254
         },
         {
+          "cell": 5,
           "metatile": 79,
-          "cell": 5,
-          "source_tile": 287,
           "source_palette": 3,
+          "source_tile": 287,
           "tile": 254
         },
         {
+          "cell": 4,
           "metatile": 87,
-          "cell": 4,
-          "source_tile": 287,
           "source_palette": 3,
+          "source_tile": 287,
           "tile": 254
         },
         {
+          "cell": 5,
           "metatile": 87,
-          "cell": 5,
-          "source_tile": 287,
           "source_palette": 3,
+          "source_tile": 287,
           "tile": 254
         },
         {
-          "metatile": 411,
           "cell": 4,
-          "source_tile": 287,
-          "source_palette": 3,
-          "tile": 254
-        },
-        {
           "metatile": 411,
-          "cell": 5,
-          "source_tile": 287,
           "source_palette": 3,
+          "source_tile": 287,
           "tile": 254
         },
         {
-          "metatile": 412,
+          "cell": 5,
+          "metatile": 411,
+          "source_palette": 3,
+          "source_tile": 287,
+          "tile": 254
+        },
+        {
           "cell": 4,
-          "source_tile": 287,
-          "source_palette": 3,
-          "tile": 254
-        },
-        {
           "metatile": 412,
-          "cell": 5,
-          "source_tile": 287,
           "source_palette": 3,
+          "source_tile": 287,
           "tile": 254
         },
         {
-          "metatile": 384,
+          "cell": 5,
+          "metatile": 412,
+          "source_palette": 3,
+          "source_tile": 287,
+          "tile": 254
+        },
+        {
           "cell": 2,
-          "source_tile": 248,
+          "metatile": 384,
           "source_palette": 3,
+          "source_tile": 248,
           "tile": 61
         },
         {
-          "metatile": 384,
           "cell": 3,
-          "source_tile": 249,
+          "metatile": 384,
           "source_palette": 3,
+          "source_tile": 249,
           "tile": 188
         },
         {
-          "metatile": 385,
           "cell": 2,
-          "source_tile": 248,
+          "metatile": 385,
           "source_palette": 3,
+          "source_tile": 248,
           "tile": 61
         },
         {
-          "metatile": 385,
           "cell": 3,
-          "source_tile": 248,
+          "metatile": 385,
           "source_palette": 3,
+          "source_tile": 248,
           "tile": 61
         },
         {
-          "metatile": 386,
           "cell": 2,
-          "source_tile": 249,
+          "metatile": 386,
           "source_palette": 3,
+          "source_tile": 249,
           "tile": 188
         },
         {
-          "metatile": 386,
           "cell": 3,
-          "source_tile": 248,
+          "metatile": 386,
           "source_palette": 3,
+          "source_tile": 248,
           "tile": 61
         },
         {
+          "cell": 2,
           "metatile": 395,
-          "cell": 2,
-          "source_tile": 248,
           "source_palette": 3,
+          "source_tile": 248,
           "tile": 61
         },
         {
-          "metatile": 396,
           "cell": 3,
-          "source_tile": 248,
+          "metatile": 396,
           "source_palette": 3,
+          "source_tile": 248,
           "tile": 61
         }
       ],
       "colors": [
         {
+          "light": false,
           "rgb": [
             172,
             189,
             205
-          ],
-          "light": false
+          ]
         },
         {
+          "light": false,
           "rgb": [
             246,
             246,
             255
-          ],
-          "light": false
+          ]
         },
         {
+          "light": true,
           "rgb": [
             238,
             148,
             115
-          ],
-          "light": true
+          ]
         },
         {
+          "light": true,
           "rgb": [
             222,
             106,
             98
-          ],
-          "light": true
+          ]
         },
         {
+          "light": false,
           "rgb": [
             205,
             222,
             238
-          ],
-          "light": false
+          ]
         },
         {
+          "light": true,
           "rgb": [
             205,
             82,
             74
-          ],
-          "light": true
+          ]
         },
         {
+          "light": true,
           "rgb": [
             172,
             32,
             41
-          ],
-          "light": true
+          ]
         },
         {
+          "light": false,
           "rgb": [
             148,
             164,
             180
-          ],
-          "light": false
+          ]
         },
         {
+          "light": false,
           "rgb": [
             65,
             74,
             106
-          ],
-          "light": false
+          ]
         },
         {
+          "light": true,
           "rgb": [
             98,
             164,
             222
-          ],
-          "light": true
+          ]
         },
         {
+          "light": true,
           "rgb": [
             156,
             213,
             255
-          ],
-          "light": true
+          ]
         },
         {
+          "light": false,
           "rgb": [
             205,
             180,
             106
-          ],
-          "light": false
+          ]
         }
-      ]
+      ],
+      "palette": 7
     }
+  },
+  "glass_palettes": [
+    {
+      "lights": [
+        8,
+        9,
+        10
+      ],
+      "native": "data/tilesets/secondary/pallet_town_frlg/palettes/08.pal",
+      "palette": "data/tilesets/legends_lights/pallet_glass_08.pal"
+    },
+    {
+      "lights": [
+        8,
+        9,
+        10
+      ],
+      "native": "data/tilesets/secondary/pallet_town_frlg/palettes/09.pal",
+      "palette": "data/tilesets/legends_lights/pallet_glass_09.pal"
+    }
+  ],
+  "header_edits": {
+    "src/data/tilesets/graphics.h": [
+      {
+        "literal": 96,
+        "native": "data/tilesets/secondary/petalburg/palettes/12.pal"
+      },
+      {
+        "literal": 131,
+        "native": "data/tilesets/secondary/rustboro/palettes/12.pal"
+      },
+      {
+        "literal": 166,
+        "native": "data/tilesets/secondary/dewford/palettes/12.pal"
+      },
+      {
+        "literal": 201,
+        "native": "data/tilesets/secondary/slateport/palettes/12.pal"
+      },
+      {
+        "literal": 236,
+        "native": "data/tilesets/secondary/mauville/palettes/12.pal"
+      },
+      {
+        "literal": 271,
+        "native": "data/tilesets/secondary/lavaridge/palettes/12.pal"
+      },
+      {
+        "literal": 305,
+        "native": "data/tilesets/secondary/fallarbor/palettes/12.pal"
+      },
+      {
+        "literal": 340,
+        "native": "data/tilesets/secondary/fortree/palettes/12.pal"
+      },
+      {
+        "literal": 374,
+        "native": "data/tilesets/secondary/lilycove/palettes/12.pal"
+      },
+      {
+        "literal": 408,
+        "native": "data/tilesets/secondary/mossdeep/palettes/12.pal"
+      },
+      {
+        "literal": 442,
+        "native": "data/tilesets/secondary/ever_grande/palettes/12.pal"
+      },
+      {
+        "literal": 477,
+        "native": "data/tilesets/secondary/pacifidlog/palettes/12.pal"
+      },
+      {
+        "literal": 512,
+        "native": "data/tilesets/secondary/sootopolis/palettes/12.pal"
+      },
+      {
+        "literal": 537,
+        "native": "data/tilesets/secondary/battle_frontier_outside_west/palettes/07.pal"
+      },
+      {
+        "literal": 547,
+        "native": "data/tilesets/secondary/battle_frontier_outside_west/palettes/12.pal"
+      },
+      {
+        "literal": 570,
+        "native": "data/tilesets/secondary/battle_frontier_outside_east/palettes/06.pal"
+      },
+      {
+        "literal": 582,
+        "native": "data/tilesets/secondary/battle_frontier_outside_east/palettes/12.pal"
+      },
+      {
+        "literal": 722,
+        "native": "data/tilesets/secondary/cave/palettes/12.pal"
+      },
+      {
+        "literal": 1073,
+        "native": "data/tilesets/secondary/facility/palettes/12.pal"
+      },
+      {
+        "literal": 2660,
+        "native": "data/tilesets/secondary/pallet_town_frlg/palettes/07.pal"
+      },
+      {
+        "literal": 2662,
+        "native": "data/tilesets/secondary/pallet_town_frlg/palettes/08.pal"
+      },
+      {
+        "literal": 2664,
+        "native": "data/tilesets/secondary/pallet_town_frlg/palettes/09.pal"
+      },
+      {
+        "literal": 2694,
+        "native": "data/tilesets/secondary/viridian_city_frlg/palettes/07.pal"
+      },
+      {
+        "literal": 2728,
+        "native": "data/tilesets/secondary/pewter_city_frlg/palettes/07.pal"
+      },
+      {
+        "literal": 2762,
+        "native": "data/tilesets/secondary/cerulean_city_frlg/palettes/07.pal"
+      },
+      {
+        "literal": 2796,
+        "native": "data/tilesets/secondary/lavender_town_frlg/palettes/07.pal"
+      },
+      {
+        "literal": 2830,
+        "native": "data/tilesets/secondary/vermilion_city_frlg/palettes/07.pal"
+      },
+      {
+        "literal": 2864,
+        "native": "data/tilesets/secondary/celadon_city_frlg/palettes/07.pal"
+      },
+      {
+        "literal": 2898,
+        "native": "data/tilesets/secondary/fuchsia_city_frlg/palettes/07.pal"
+      },
+      {
+        "literal": 2932,
+        "native": "data/tilesets/secondary/cinnabar_island_frlg/palettes/07.pal"
+      },
+      {
+        "literal": 2966,
+        "native": "data/tilesets/secondary/indigo_plateau_frlg/palettes/07.pal"
+      },
+      {
+        "literal": 3000,
+        "native": "data/tilesets/secondary/saffron_city_frlg/palettes/07.pal"
+      },
+      {
+        "literal": 3681,
+        "native": "data/tilesets/secondary/viridian_forest_frlg/palettes/07.pal"
+      },
+      {
+        "literal": 4361,
+        "native": "data/tilesets/secondary/berry_forest_frlg/palettes/07.pal"
+      },
+      {
+        "literal": 4463,
+        "native": "data/tilesets/secondary/sevii_islands_123_frlg/palettes/07.pal"
+      },
+      {
+        "literal": 4497,
+        "native": "data/tilesets/secondary/sevii_islands_45_frlg/palettes/07.pal"
+      },
+      {
+        "literal": 4531,
+        "native": "data/tilesets/secondary/sevii_islands_67_frlg/palettes/07.pal"
+      },
+      {
+        "literal": 4751,
+        "native": "data/tilesets/primary/general_frlg/tiles.png"
+      }
+    ],
+    "src/data/tilesets/legends_story.h": [
+      {
+        "literal": 16,
+        "native": "data/tilesets/secondary/cinnabar_island_frlg/palettes/07.pal"
+      },
+      {
+        "literal": 88,
+        "native": "data/tilesets/secondary/cerulean_city_frlg/palettes/07.pal"
+      },
+      {
+        "literal": 196,
+        "native": "data/tilesets/secondary/pewter_city_frlg/palettes/07.pal"
+      },
+      {
+        "literal": 304,
+        "native": "data/tilesets/secondary/sevii_islands_123_frlg/palettes/07.pal"
+      },
+      {
+        "literal": 376,
+        "native": "data/tilesets/secondary/viridian_city_frlg/palettes/07.pal"
+      },
+      {
+        "literal": 412,
+        "native": "data/tilesets/secondary/viridian_forest_frlg/palettes/07.pal"
+      },
+      {
+        "literal": 484,
+        "native": "data/tilesets/secondary/pallet_town_frlg/palettes/07.pal"
+      },
+      {
+        "literal": 486,
+        "native": "data/tilesets/secondary/pallet_town_frlg/palettes/08.pal"
+      },
+      {
+        "literal": 488,
+        "native": "data/tilesets/secondary/pallet_town_frlg/palettes/09.pal"
+      }
+    ],
+    "src/data/tilesets/metatiles.h": [
+      {
+        "literal": 4,
+        "native": "data/tilesets/primary/general/metatiles.bin"
+      },
+      {
+        "literal": 32,
+        "native": "data/tilesets/secondary/battle_frontier_outside_west/metatiles.bin"
+      },
+      {
+        "literal": 34,
+        "native": "data/tilesets/secondary/battle_frontier_outside_east/metatiles.bin"
+      },
+      {
+        "literal": 144,
+        "native": "data/tilesets/primary/general_frlg/metatiles.bin"
+      }
+    ],
+    "src/graphics.c": [
+      {
+        "literal": 2781,
+        "native": "data/tilesets/primary/general/tiles.png"
+      }
+    ]
   },
   "native_metatiles": {
     "gMetatiles_BattleFrontierOutsideEast": "data/tilesets/secondary/battle_frontier_outside_east/metatiles.bin",
     "gMetatiles_BattleFrontierOutsideWest": "data/tilesets/secondary/battle_frontier_outside_west/metatiles.bin",
+    "gMetatiles_BerryForest": "data/tilesets/secondary/berry_forest_frlg/metatiles.bin",
     "gMetatiles_Cave": "data/tilesets/secondary/cave/metatiles.bin",
+    "gMetatiles_CeladonCity": "data/tilesets/secondary/celadon_city_frlg/metatiles.bin",
+    "gMetatiles_CeruleanCity": "data/tilesets/secondary/cerulean_city_frlg/metatiles.bin",
+    "gMetatiles_CinnabarIsland": "data/tilesets/secondary/cinnabar_island_frlg/metatiles.bin",
     "gMetatiles_Dewford": "data/tilesets/secondary/dewford/metatiles.bin",
     "gMetatiles_EverGrande": "data/tilesets/secondary/ever_grande/metatiles.bin",
     "gMetatiles_Facility": "data/tilesets/secondary/facility/metatiles.bin",
     "gMetatiles_Fallarbor": "data/tilesets/secondary/fallarbor/metatiles.bin",
     "gMetatiles_Fortree": "data/tilesets/secondary/fortree/metatiles.bin",
-    "gMetatiles_Lavaridge": "data/tilesets/secondary/lavaridge/metatiles.bin",
-    "gMetatiles_Lilycove": "data/tilesets/secondary/lilycove/metatiles.bin",
-    "gMetatiles_Mauville": "data/tilesets/secondary/mauville/metatiles.bin",
-    "gMetatiles_Mossdeep": "data/tilesets/secondary/mossdeep/metatiles.bin",
-    "gMetatiles_Pacifidlog": "data/tilesets/secondary/pacifidlog/metatiles.bin",
-    "gMetatiles_Petalburg": "data/tilesets/secondary/petalburg/metatiles.bin",
-    "gMetatiles_Rustboro": "data/tilesets/secondary/rustboro/metatiles.bin",
-    "gMetatiles_Slateport": "data/tilesets/secondary/slateport/metatiles.bin",
-    "gMetatiles_Sootopolis": "data/tilesets/secondary/sootopolis/metatiles.bin",
-    "gMetatiles_BerryForest": "data/tilesets/secondary/berry_forest_frlg/metatiles.bin",
-    "gMetatiles_CeladonCity": "data/tilesets/secondary/celadon_city_frlg/metatiles.bin",
-    "gMetatiles_CeruleanCity": "data/tilesets/secondary/cerulean_city_frlg/metatiles.bin",
-    "gMetatiles_CinnabarIsland": "data/tilesets/secondary/cinnabar_island_frlg/metatiles.bin",
     "gMetatiles_FuchsiaCity": "data/tilesets/secondary/fuchsia_city_frlg/metatiles.bin",
     "gMetatiles_IndigoPlateau": "data/tilesets/secondary/indigo_plateau_frlg/metatiles.bin",
+    "gMetatiles_Lavaridge": "data/tilesets/secondary/lavaridge/metatiles.bin",
     "gMetatiles_LavenderTown": "data/tilesets/secondary/lavender_town_frlg/metatiles.bin",
     "gMetatiles_LegendsKantoCeladonCity": "data/tilesets/secondary/celadon_city_frlg/metatiles.bin",
     "gMetatiles_LegendsKantoFuchsiaCity": "data/tilesets/secondary/fuchsia_city_frlg/metatiles.bin",
@@ -471,15 +701,68 @@
     "gMetatiles_LegendsStorySeviiIslands123": "data/tilesets/secondary/sevii_islands_123_frlg/metatiles.bin",
     "gMetatiles_LegendsStoryViridianCity": "data/tilesets/secondary/viridian_city_frlg/metatiles.bin",
     "gMetatiles_LegendsStoryViridianForest": "data/tilesets/secondary/viridian_forest_frlg/metatiles.bin",
+    "gMetatiles_Lilycove": "data/tilesets/secondary/lilycove/metatiles.bin",
+    "gMetatiles_Mauville": "data/tilesets/secondary/mauville/metatiles.bin",
+    "gMetatiles_Mossdeep": "data/tilesets/secondary/mossdeep/metatiles.bin",
+    "gMetatiles_Pacifidlog": "data/tilesets/secondary/pacifidlog/metatiles.bin",
     "gMetatiles_PalletTown": "data/tilesets/secondary/pallet_town_frlg/metatiles.bin",
+    "gMetatiles_Petalburg": "data/tilesets/secondary/petalburg/metatiles.bin",
     "gMetatiles_PewterCity": "data/tilesets/secondary/pewter_city_frlg/metatiles.bin",
+    "gMetatiles_Rustboro": "data/tilesets/secondary/rustboro/metatiles.bin",
     "gMetatiles_SaffronCity": "data/tilesets/secondary/saffron_city_frlg/metatiles.bin",
     "gMetatiles_SeviiIslands123": "data/tilesets/secondary/sevii_islands_123_frlg/metatiles.bin",
     "gMetatiles_SeviiIslands45": "data/tilesets/secondary/sevii_islands_45_frlg/metatiles.bin",
     "gMetatiles_SeviiIslands67": "data/tilesets/secondary/sevii_islands_67_frlg/metatiles.bin",
+    "gMetatiles_Slateport": "data/tilesets/secondary/slateport/metatiles.bin",
+    "gMetatiles_Sootopolis": "data/tilesets/secondary/sootopolis/metatiles.bin",
     "gMetatiles_VermilionCity": "data/tilesets/secondary/vermilion_city_frlg/metatiles.bin",
     "gMetatiles_ViridianCity": "data/tilesets/secondary/viridian_city_frlg/metatiles.bin",
     "gMetatiles_ViridianForest": "data/tilesets/secondary/viridian_forest_frlg/metatiles.bin"
+  },
+  "redirects": {
+    "data/tilesets/primary/general/metatiles.bin": "data/tilesets/legends_lights/general_metatiles.bin",
+    "data/tilesets/primary/general/tiles.png": "data/tilesets/legends_lights/general_tiles.png",
+    "data/tilesets/primary/general_frlg/metatiles.bin": "data/tilesets/legends_lights/general_frlg_metatiles.bin",
+    "data/tilesets/primary/general_frlg/tiles.png": "data/tilesets/legends_lights/general_frlg_tiles.png",
+    "data/tilesets/secondary/battle_frontier_outside_east/metatiles.bin": "data/tilesets/legends_lights/battle_frontier_outside_east_metatiles.bin",
+    "data/tilesets/secondary/battle_frontier_outside_east/palettes/06.pal": "data/tilesets/secondary/battle_frontier_outside_east/palettes/12.pal",
+    "data/tilesets/secondary/battle_frontier_outside_east/palettes/12.pal": "data/tilesets/legends_lights/general.pal",
+    "data/tilesets/secondary/battle_frontier_outside_west/metatiles.bin": "data/tilesets/legends_lights/battle_frontier_outside_west_metatiles.bin",
+    "data/tilesets/secondary/battle_frontier_outside_west/palettes/07.pal": "data/tilesets/secondary/battle_frontier_outside_west/palettes/12.pal",
+    "data/tilesets/secondary/battle_frontier_outside_west/palettes/12.pal": "data/tilesets/legends_lights/general.pal",
+    "data/tilesets/secondary/berry_forest_frlg/palettes/07.pal": "data/tilesets/legends_lights/general_frlg.pal",
+    "data/tilesets/secondary/cave/palettes/12.pal": "data/tilesets/legends_lights/general.pal",
+    "data/tilesets/secondary/celadon_city_frlg/palettes/07.pal": "data/tilesets/legends_lights/general_frlg.pal",
+    "data/tilesets/secondary/cerulean_city_frlg/palettes/07.pal": "data/tilesets/legends_lights/general_frlg.pal",
+    "data/tilesets/secondary/cinnabar_island_frlg/palettes/07.pal": "data/tilesets/legends_lights/general_frlg.pal",
+    "data/tilesets/secondary/dewford/palettes/12.pal": "data/tilesets/legends_lights/general.pal",
+    "data/tilesets/secondary/ever_grande/palettes/12.pal": "data/tilesets/legends_lights/general.pal",
+    "data/tilesets/secondary/facility/palettes/12.pal": "data/tilesets/legends_lights/general.pal",
+    "data/tilesets/secondary/fallarbor/palettes/12.pal": "data/tilesets/legends_lights/general.pal",
+    "data/tilesets/secondary/fortree/palettes/12.pal": "data/tilesets/legends_lights/general.pal",
+    "data/tilesets/secondary/fuchsia_city_frlg/palettes/07.pal": "data/tilesets/legends_lights/general_frlg.pal",
+    "data/tilesets/secondary/indigo_plateau_frlg/palettes/07.pal": "data/tilesets/legends_lights/general_frlg.pal",
+    "data/tilesets/secondary/lavaridge/palettes/12.pal": "data/tilesets/legends_lights/general.pal",
+    "data/tilesets/secondary/lavender_town_frlg/palettes/07.pal": "data/tilesets/legends_lights/general_frlg.pal",
+    "data/tilesets/secondary/lilycove/palettes/12.pal": "data/tilesets/legends_lights/general.pal",
+    "data/tilesets/secondary/mauville/palettes/12.pal": "data/tilesets/legends_lights/general.pal",
+    "data/tilesets/secondary/mossdeep/palettes/12.pal": "data/tilesets/legends_lights/general.pal",
+    "data/tilesets/secondary/pacifidlog/palettes/12.pal": "data/tilesets/legends_lights/general.pal",
+    "data/tilesets/secondary/pallet_town_frlg/palettes/07.pal": "data/tilesets/legends_lights/general_frlg.pal",
+    "data/tilesets/secondary/pallet_town_frlg/palettes/08.pal": "data/tilesets/legends_lights/pallet_glass_08.pal",
+    "data/tilesets/secondary/pallet_town_frlg/palettes/09.pal": "data/tilesets/legends_lights/pallet_glass_09.pal",
+    "data/tilesets/secondary/petalburg/palettes/12.pal": "data/tilesets/legends_lights/general.pal",
+    "data/tilesets/secondary/pewter_city_frlg/palettes/07.pal": "data/tilesets/legends_lights/general_frlg.pal",
+    "data/tilesets/secondary/rustboro/palettes/12.pal": "data/tilesets/legends_lights/general.pal",
+    "data/tilesets/secondary/saffron_city_frlg/palettes/07.pal": "data/tilesets/legends_lights/general_frlg.pal",
+    "data/tilesets/secondary/sevii_islands_123_frlg/palettes/07.pal": "data/tilesets/legends_lights/general_frlg.pal",
+    "data/tilesets/secondary/sevii_islands_45_frlg/palettes/07.pal": "data/tilesets/legends_lights/general_frlg.pal",
+    "data/tilesets/secondary/sevii_islands_67_frlg/palettes/07.pal": "data/tilesets/legends_lights/general_frlg.pal",
+    "data/tilesets/secondary/slateport/palettes/12.pal": "data/tilesets/legends_lights/general.pal",
+    "data/tilesets/secondary/sootopolis/palettes/12.pal": "data/tilesets/legends_lights/general.pal",
+    "data/tilesets/secondary/vermilion_city_frlg/palettes/07.pal": "data/tilesets/legends_lights/general_frlg.pal",
+    "data/tilesets/secondary/viridian_city_frlg/palettes/07.pal": "data/tilesets/legends_lights/general_frlg.pal",
+    "data/tilesets/secondary/viridian_forest_frlg/palettes/07.pal": "data/tilesets/legends_lights/general_frlg.pal"
   },
   "secondary": [
     {
@@ -707,288 +990,5 @@
       "metatiles": "data/tilesets/secondary/viridian_forest_frlg/metatiles.bin",
       "relocated_palette": null
     }
-  ],
-  "glass_palettes": [
-    {
-      "native": "data/tilesets/secondary/pallet_town_frlg/palettes/08.pal",
-      "palette": "data/tilesets/legends_lights/pallet_glass_08.pal",
-      "lights": [
-        8,
-        9,
-        10
-      ]
-    },
-    {
-      "native": "data/tilesets/secondary/pallet_town_frlg/palettes/09.pal",
-      "palette": "data/tilesets/legends_lights/pallet_glass_09.pal",
-      "lights": [
-        8,
-        9,
-        10
-      ]
-    }
-  ],
-  "redirects": {
-    "data/tilesets/primary/general/tiles.png": "data/tilesets/legends_lights/general_tiles.png",
-    "data/tilesets/primary/general/metatiles.bin": "data/tilesets/legends_lights/general_metatiles.bin",
-    "data/tilesets/secondary/battle_frontier_outside_east/metatiles.bin": "data/tilesets/legends_lights/battle_frontier_outside_east_metatiles.bin",
-    "data/tilesets/secondary/battle_frontier_outside_east/palettes/06.pal": "data/tilesets/secondary/battle_frontier_outside_east/palettes/12.pal",
-    "data/tilesets/secondary/battle_frontier_outside_east/palettes/12.pal": "data/tilesets/legends_lights/general.pal",
-    "data/tilesets/secondary/battle_frontier_outside_west/metatiles.bin": "data/tilesets/legends_lights/battle_frontier_outside_west_metatiles.bin",
-    "data/tilesets/secondary/battle_frontier_outside_west/palettes/07.pal": "data/tilesets/secondary/battle_frontier_outside_west/palettes/12.pal",
-    "data/tilesets/secondary/battle_frontier_outside_west/palettes/12.pal": "data/tilesets/legends_lights/general.pal",
-    "data/tilesets/secondary/cave/palettes/12.pal": "data/tilesets/legends_lights/general.pal",
-    "data/tilesets/secondary/dewford/palettes/12.pal": "data/tilesets/legends_lights/general.pal",
-    "data/tilesets/secondary/ever_grande/palettes/12.pal": "data/tilesets/legends_lights/general.pal",
-    "data/tilesets/secondary/facility/palettes/12.pal": "data/tilesets/legends_lights/general.pal",
-    "data/tilesets/secondary/fallarbor/palettes/12.pal": "data/tilesets/legends_lights/general.pal",
-    "data/tilesets/secondary/fortree/palettes/12.pal": "data/tilesets/legends_lights/general.pal",
-    "data/tilesets/secondary/lavaridge/palettes/12.pal": "data/tilesets/legends_lights/general.pal",
-    "data/tilesets/secondary/lilycove/palettes/12.pal": "data/tilesets/legends_lights/general.pal",
-    "data/tilesets/secondary/mauville/palettes/12.pal": "data/tilesets/legends_lights/general.pal",
-    "data/tilesets/secondary/mossdeep/palettes/12.pal": "data/tilesets/legends_lights/general.pal",
-    "data/tilesets/secondary/pacifidlog/palettes/12.pal": "data/tilesets/legends_lights/general.pal",
-    "data/tilesets/secondary/petalburg/palettes/12.pal": "data/tilesets/legends_lights/general.pal",
-    "data/tilesets/secondary/rustboro/palettes/12.pal": "data/tilesets/legends_lights/general.pal",
-    "data/tilesets/secondary/slateport/palettes/12.pal": "data/tilesets/legends_lights/general.pal",
-    "data/tilesets/secondary/sootopolis/palettes/12.pal": "data/tilesets/legends_lights/general.pal",
-    "data/tilesets/primary/general_frlg/tiles.png": "data/tilesets/legends_lights/general_frlg_tiles.png",
-    "data/tilesets/primary/general_frlg/metatiles.bin": "data/tilesets/legends_lights/general_frlg_metatiles.bin",
-    "data/tilesets/secondary/berry_forest_frlg/palettes/07.pal": "data/tilesets/legends_lights/general_frlg.pal",
-    "data/tilesets/secondary/celadon_city_frlg/palettes/07.pal": "data/tilesets/legends_lights/general_frlg.pal",
-    "data/tilesets/secondary/cerulean_city_frlg/palettes/07.pal": "data/tilesets/legends_lights/general_frlg.pal",
-    "data/tilesets/secondary/cinnabar_island_frlg/palettes/07.pal": "data/tilesets/legends_lights/general_frlg.pal",
-    "data/tilesets/secondary/fuchsia_city_frlg/palettes/07.pal": "data/tilesets/legends_lights/general_frlg.pal",
-    "data/tilesets/secondary/indigo_plateau_frlg/palettes/07.pal": "data/tilesets/legends_lights/general_frlg.pal",
-    "data/tilesets/secondary/lavender_town_frlg/palettes/07.pal": "data/tilesets/legends_lights/general_frlg.pal",
-    "data/tilesets/secondary/saffron_city_frlg/palettes/07.pal": "data/tilesets/legends_lights/general_frlg.pal",
-    "data/tilesets/secondary/vermilion_city_frlg/palettes/07.pal": "data/tilesets/legends_lights/general_frlg.pal",
-    "data/tilesets/secondary/pallet_town_frlg/palettes/07.pal": "data/tilesets/legends_lights/general_frlg.pal",
-    "data/tilesets/secondary/pewter_city_frlg/palettes/07.pal": "data/tilesets/legends_lights/general_frlg.pal",
-    "data/tilesets/secondary/sevii_islands_123_frlg/palettes/07.pal": "data/tilesets/legends_lights/general_frlg.pal",
-    "data/tilesets/secondary/viridian_city_frlg/palettes/07.pal": "data/tilesets/legends_lights/general_frlg.pal",
-    "data/tilesets/secondary/viridian_forest_frlg/palettes/07.pal": "data/tilesets/legends_lights/general_frlg.pal",
-    "data/tilesets/secondary/sevii_islands_45_frlg/palettes/07.pal": "data/tilesets/legends_lights/general_frlg.pal",
-    "data/tilesets/secondary/sevii_islands_67_frlg/palettes/07.pal": "data/tilesets/legends_lights/general_frlg.pal",
-    "data/tilesets/secondary/pallet_town_frlg/palettes/08.pal": "data/tilesets/legends_lights/pallet_glass_08.pal",
-    "data/tilesets/secondary/pallet_town_frlg/palettes/09.pal": "data/tilesets/legends_lights/pallet_glass_09.pal"
-  },
-  "header_edits": {
-    "src/data/tilesets/metatiles.h": [
-      {
-        "literal": 4,
-        "native": "data/tilesets/primary/general/metatiles.bin"
-      },
-      {
-        "literal": 32,
-        "native": "data/tilesets/secondary/battle_frontier_outside_west/metatiles.bin"
-      },
-      {
-        "literal": 34,
-        "native": "data/tilesets/secondary/battle_frontier_outside_east/metatiles.bin"
-      },
-      {
-        "literal": 144,
-        "native": "data/tilesets/primary/general_frlg/metatiles.bin"
-      }
-    ],
-    "src/data/tilesets/legends_story.h": [
-      {
-        "literal": 16,
-        "native": "data/tilesets/secondary/cinnabar_island_frlg/palettes/07.pal"
-      },
-      {
-        "literal": 88,
-        "native": "data/tilesets/secondary/cerulean_city_frlg/palettes/07.pal"
-      },
-      {
-        "literal": 196,
-        "native": "data/tilesets/secondary/pewter_city_frlg/palettes/07.pal"
-      },
-      {
-        "literal": 304,
-        "native": "data/tilesets/secondary/sevii_islands_123_frlg/palettes/07.pal"
-      },
-      {
-        "literal": 376,
-        "native": "data/tilesets/secondary/viridian_city_frlg/palettes/07.pal"
-      },
-      {
-        "literal": 412,
-        "native": "data/tilesets/secondary/viridian_forest_frlg/palettes/07.pal"
-      },
-      {
-        "literal": 484,
-        "native": "data/tilesets/secondary/pallet_town_frlg/palettes/07.pal"
-      },
-      {
-        "literal": 486,
-        "native": "data/tilesets/secondary/pallet_town_frlg/palettes/08.pal"
-      },
-      {
-        "literal": 488,
-        "native": "data/tilesets/secondary/pallet_town_frlg/palettes/09.pal"
-      }
-    ],
-    "src/data/tilesets/graphics.h": [
-      {
-        "literal": 96,
-        "native": "data/tilesets/secondary/petalburg/palettes/12.pal"
-      },
-      {
-        "literal": 131,
-        "native": "data/tilesets/secondary/rustboro/palettes/12.pal"
-      },
-      {
-        "literal": 166,
-        "native": "data/tilesets/secondary/dewford/palettes/12.pal"
-      },
-      {
-        "literal": 201,
-        "native": "data/tilesets/secondary/slateport/palettes/12.pal"
-      },
-      {
-        "literal": 236,
-        "native": "data/tilesets/secondary/mauville/palettes/12.pal"
-      },
-      {
-        "literal": 271,
-        "native": "data/tilesets/secondary/lavaridge/palettes/12.pal"
-      },
-      {
-        "literal": 305,
-        "native": "data/tilesets/secondary/fallarbor/palettes/12.pal"
-      },
-      {
-        "literal": 340,
-        "native": "data/tilesets/secondary/fortree/palettes/12.pal"
-      },
-      {
-        "literal": 374,
-        "native": "data/tilesets/secondary/lilycove/palettes/12.pal"
-      },
-      {
-        "literal": 408,
-        "native": "data/tilesets/secondary/mossdeep/palettes/12.pal"
-      },
-      {
-        "literal": 442,
-        "native": "data/tilesets/secondary/ever_grande/palettes/12.pal"
-      },
-      {
-        "literal": 477,
-        "native": "data/tilesets/secondary/pacifidlog/palettes/12.pal"
-      },
-      {
-        "literal": 512,
-        "native": "data/tilesets/secondary/sootopolis/palettes/12.pal"
-      },
-      {
-        "literal": 537,
-        "native": "data/tilesets/secondary/battle_frontier_outside_west/palettes/07.pal"
-      },
-      {
-        "literal": 547,
-        "native": "data/tilesets/secondary/battle_frontier_outside_west/palettes/12.pal"
-      },
-      {
-        "literal": 570,
-        "native": "data/tilesets/secondary/battle_frontier_outside_east/palettes/06.pal"
-      },
-      {
-        "literal": 582,
-        "native": "data/tilesets/secondary/battle_frontier_outside_east/palettes/12.pal"
-      },
-      {
-        "literal": 722,
-        "native": "data/tilesets/secondary/cave/palettes/12.pal"
-      },
-      {
-        "literal": 1073,
-        "native": "data/tilesets/secondary/facility/palettes/12.pal"
-      },
-      {
-        "literal": 2660,
-        "native": "data/tilesets/secondary/pallet_town_frlg/palettes/07.pal"
-      },
-      {
-        "literal": 2662,
-        "native": "data/tilesets/secondary/pallet_town_frlg/palettes/08.pal"
-      },
-      {
-        "literal": 2664,
-        "native": "data/tilesets/secondary/pallet_town_frlg/palettes/09.pal"
-      },
-      {
-        "literal": 2694,
-        "native": "data/tilesets/secondary/viridian_city_frlg/palettes/07.pal"
-      },
-      {
-        "literal": 2728,
-        "native": "data/tilesets/secondary/pewter_city_frlg/palettes/07.pal"
-      },
-      {
-        "literal": 2762,
-        "native": "data/tilesets/secondary/cerulean_city_frlg/palettes/07.pal"
-      },
-      {
-        "literal": 2796,
-        "native": "data/tilesets/secondary/lavender_town_frlg/palettes/07.pal"
-      },
-      {
-        "literal": 2830,
-        "native": "data/tilesets/secondary/vermilion_city_frlg/palettes/07.pal"
-      },
-      {
-        "literal": 2864,
-        "native": "data/tilesets/secondary/celadon_city_frlg/palettes/07.pal"
-      },
-      {
-        "literal": 2898,
-        "native": "data/tilesets/secondary/fuchsia_city_frlg/palettes/07.pal"
-      },
-      {
-        "literal": 2932,
-        "native": "data/tilesets/secondary/cinnabar_island_frlg/palettes/07.pal"
-      },
-      {
-        "literal": 2966,
-        "native": "data/tilesets/secondary/indigo_plateau_frlg/palettes/07.pal"
-      },
-      {
-        "literal": 3000,
-        "native": "data/tilesets/secondary/saffron_city_frlg/palettes/07.pal"
-      },
-      {
-        "literal": 3681,
-        "native": "data/tilesets/secondary/viridian_forest_frlg/palettes/07.pal"
-      },
-      {
-        "literal": 4361,
-        "native": "data/tilesets/secondary/berry_forest_frlg/palettes/07.pal"
-      },
-      {
-        "literal": 4463,
-        "native": "data/tilesets/secondary/sevii_islands_123_frlg/palettes/07.pal"
-      },
-      {
-        "literal": 4497,
-        "native": "data/tilesets/secondary/sevii_islands_45_frlg/palettes/07.pal"
-      },
-      {
-        "literal": 4531,
-        "native": "data/tilesets/secondary/sevii_islands_67_frlg/palettes/07.pal"
-      },
-      {
-        "literal": 4751,
-        "native": "data/tilesets/primary/general_frlg/tiles.png"
-      }
-    ],
-    "src/graphics.c": [
-      {
-        "literal": 2781,
-        "native": "data/tilesets/primary/general/tiles.png"
-      }
-    ]
-  }
+  ]
 }

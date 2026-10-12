@@ -24,7 +24,7 @@ def main():
  OUT.mkdir(parents=True,exist_ok=True)
  previous=json.loads((OUT/'manifest.json').read_text()) if (OUT/'manifest.json').exists() else None
  originals={}
- for path in list((ROOT/'src/data/tilesets').glob('*.h'))+[ROOT/'src/graphics.c']:
+ for path in sorted((ROOT/'src/data/tilesets').glob('*.h'))+[ROOT/'src/graphics.c']:
   text=path.read_text();relative=str(path.relative_to(ROOT))
   edits={e['literal']:e['native'] for e in previous.get('header_edits',{}).get(relative,[])} if previous else {}
   index=[0]
@@ -115,6 +115,6 @@ def main():
    return '"'+new+'"'
   (ROOT/relative).write_text(re.sub(r'"([^"]+)"',replace,text))
   if edits:manifest['header_edits'][relative]=edits
- (OUT/'manifest.json').write_text(json.dumps(manifest,indent=2)+'\n')
+ (OUT/'manifest.json').write_text(json.dumps(manifest,indent=2,sort_keys=True)+'\n')
  print('Night lighting:',sum(len(f['cells']) for f in manifest['families'].values()),'window/sign cells;',len(manifest['secondary']),'native/imported tilesets')
 if __name__=='__main__':main()
