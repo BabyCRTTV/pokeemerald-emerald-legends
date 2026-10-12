@@ -5,7 +5,17 @@ import json,struct,sys,subprocess,tempfile,ctypes
 R=Path(__file__).resolve().parents[1];sys.path.insert(0,str(R/'tools/legends'))
 import build_night_lights as art
 out=R/'data/tilesets/legends_lights';assets=list(out.iterdir())+list((R/'src/data/tilesets').glob('*.h'))+[R/'src/graphics.c']
-before={str(p):p.read_bytes() for p in assets};art.main();assert before=={str(p):p.read_bytes() for p in assets},'Non-reproducible light assets'
+def snapshot(p):
+ # Codec compression and Git's .pal CRLF checkout policy are not artwork.
+ # Require identical indexed pixels/palette and canonical palette text.
+ if p.suffix=='.png':
+  im=Image.open(p);pal=im.getpalette() or []
+  return (im.mode,im.size,im.tobytes(),tuple(pal+[0]*(768-len(pal))))
+ if p.suffix=='.pal':return p.read_text()
+ return p.read_bytes()
+before={str(p):snapshot(p) for p in assets};art.main()
+after={str(p):snapshot(p) for p in assets}
+assert before==after,('Non-reproducible light assets',[p for p in before if before[p]!=after[p]])
 m=json.loads((out/'manifest.json').read_text())
 for name,f in m['families'].items():
  native=R/'data/tilesets/primary'/name;im=Image.open(native/'tiles.png');lit=Image.open(out/(name+'_tiles.png'))

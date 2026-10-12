@@ -79,7 +79,7 @@ def main():
   im.save(OUT/(family+'_tiles.png'))
   (OUT/(family+'_metatiles.bin')).write_bytes(struct.pack('<'+'H'*len(mt),*mt))
   colors=[(0,0,0)]+[rgb for rgb,light in color_keys];colors += [(0,0,0)]*(16-len(colors))
-  (OUT/(family+'.pal')).write_text('JASC-PAL\n0100\n16\n'+''.join(' '.join(map(str,c))+'\n' for c in colors))
+  (OUT/(family+'.pal')).write_text('JASC-PAL\r\n0100\r\n16\r\n'+''.join(' '.join(map(str,c))+'\r\n' for c in colors),newline='')
   (OUT/(family+'.pla')).write_text('# Window panes and illuminated sign strokes only.\n'+''.join(str(i+1)+'\n' for i,(rgb,light) in enumerate(color_keys) if light))
   manifest['families'][family]={'palette':pal_slot,'cells':cells,'colors':[{'rgb':rgb,'light':light} for rgb,light in color_keys]}
   redirects[f'data/tilesets/primary/{family}/tiles.png']=f'data/tilesets/legends_lights/{family}_tiles.png'
