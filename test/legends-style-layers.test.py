@@ -12,7 +12,7 @@ assert all(m != f for m,f in zip(WORLD_MALE,WORLD_FEMALE))
 assert len({tuple(r) for r in WORLD_MALE}) == len({tuple(r) for r in WORLD_FEMALE}) == 10
 from build_appearance import frames,pack,STATES,FILES
 walking=frames(root/'graphics/object_events/pics/people/brendan/walking.png',16,32)[0]
-assert art.hair_edits(walking,0,'overworld',0,1)[10][10]==0, 'clear native hat tip above new crown'
+assert art.hair_edits(walking,0,'overworld',0,1,'walking')[10][10]==0, 'clear native hat tip above new crown'
 # The reported glitch changed facing on alternate steps. Check against the
 # actual native animation commands, not a second copy of the authoring table.
 anims=(root/'src/data/object_events/object_event_anims.h').read_text()
@@ -41,6 +41,7 @@ typedef uint8_t u8;typedef uint16_t u16;typedef uint32_t u32;typedef uint8_t boo
 #define LEGENDS_HAIR_COUNT 11
 #define LEGENDS_JACKET_COUNT 3
 #define FEMALE 1
+#define MALE 0
 u8 LegendsGetLeggings(void){return 0;}
 #define TRUE 1
 #define FALSE 0
@@ -77,6 +78,29 @@ with tempfile.TemporaryDirectory() as d:
     protected |= {(x,y) for y in range(top,bottom+1) for x in range(left,right+1) if p[y][x] in (5,8,9,14,15)}
    if kind:protected |= art.coat_hands(g,'front' if kind==1 else 'back',native_index)|art.ball_pixels(g,'front' if kind==1 else 'back',native_index)
    rear_walking = g == 0 and kind == 0 and state == 0 and art.WORLD_DIRECTIONS['walking'][native_index] == 2
+   male_world = g == 0 and kind == 0 and state != 4
+   if male_world:
+    # Imported fringes may cover the forehead above the native pupils. Check
+    # the actual lower face, pupils and ear folds, not the retired cap rectangle.
+    direction=art.WORLD_DIRECTIONS[FILES[state]][native_index]
+    ear_y=min(y for x,y in face)
+    if direction==2:
+     ear_y=min(y for y,row in enumerate(p) if any(v in (1,2,3) for v in row))
+     ears=[x for x,v in enumerate(p[ear_y]) if v in (1,2,3)]
+     left,right=min(ears),max(ears)
+    candidates=[]
+    if direction!=2:
+     for y in range(ear_y,min(h,ear_y+4)):
+      for x in range(left,right+1):
+       n=sum(0<=xx<w and 0<=yy<h and p[yy][xx] in (1,2,3) for xx,yy in ((x-1,y),(x+1,y),(x,y-1),(x,y+1)))
+       if p[y][x] in (5,8) and n>=3:candidates.append((x,y))
+     if candidates:ear_y=min(y for x,y in candidates)-1
+    protected={(x,y) for y,row in enumerate(p) for x,v in enumerate(row) if v in (1,2,3) and y>=ear_y+1}
+    for y in range(ear_y+1,min(h,ear_y+5)):
+     for x in range(left,right+1):
+      neighbors=sum(0<=xx<w and 0<=yy<h and p[yy][xx] in (1,2,3) for xx,yy in ((x-1,y),(x+1,y),(x,y-1),(x,y+1)))
+      if p[y][x] in (4,5,8,9,14,15) and neighbors>=3:protected.add((x,y))
+    if FILES[state]=='fishing':protected|=art.fishing_rod(p,g,native_index)
    if rear_walking:
     # A rear head has ears/neck, not eyes or a forehead. The white native
     # cap between the ears must not be classified as protected face art.
@@ -102,11 +126,10 @@ with tempfile.TemporaryDirectory() as d:
      if rear_walking and hair:
       assert all(out[y][x] not in (9,14) for y in range(ear_y-8,ear_y+2) for x in range(3,13)),(name,slot,hair,'native cap remnant')
       assert all(out[y][x] for y in (ear_y,ear_y+1) for x in range(3,13)),(name,slot,hair,coat,'transparent gap beside ear')
-      assert all(out[y][x] != 8 for y in range(ear_y-8,ear_y+2) for x in range(4,12)),(name,slot,hair,'navy clothing shade inside hair')
-      assert not all(out[ear_y+2][x] == 15 for x in range(5,11)),(name,slot,hair,'flat black cap rim at nape')
-      native_top = min(y for y,row in enumerate(p[:ear_y]) if any(row))
-      assert not any(v for row in out[:native_top] for v in row),(name,slot,hair,'crown taller than native rear head')
-      assert sum(bool(v) for row in out[:ear_y] for v in row) <= sum(bool(v) for row in p[:ear_y] for v in row),(name,slot,hair,'rear crown inflated beyond native proportions')
+      # Some supplied cuts intentionally have a straight dark nape outline.
+      # It must be authored by the new layer, never retained native cap art.
+      _,owned=art.hair_edits(p,g,'overworld',native_index,hair,FILES[state],True)
+      assert all((x,ear_y+2) in owned for x in range(5,11)),(name,slot,hair,'unauthored native cap rim')
      if coat and kind==2:
       for y,row in enumerate(p):
        for x,v in enumerate(row):
@@ -125,6 +148,19 @@ with tempfile.TemporaryDirectory() as d:
    if (state!=4 or kind) and (groups or kind==0 and art.WORLD_DIRECTIONS.get(FILES[state],())[native_index]==2):assert len(signatures)>=5,(name,kind,state,slot,'distinct hairstyles')
    if not (kind==0 and state==4):
     core=art.head_core(p,g,'overworld' if kind==0 else 'front' if kind==1 else 'back',native_index,FILES[state] if kind==0 else '')
+    if male_world:
+     # Anatomical skull core between the ears/forehead, excluding the native
+     # cap's protruding brim and tip, which are intentionally retired.
+     pupils=[]
+     if direction!=2:
+      for y in range(ear_y,min(h,ear_y+4)):
+       for x in range(left,right+1):
+        n=sum(0<=xx<w and 0<=yy<h and p[yy][xx] in (1,2,3) for xx,yy in ((x-1,y),(x+1,y),(x,y-1),(x,y+1)))
+        if p[y][x] in (5,8) and n>=3:pupils.append((x,y))
+     top=min(y for x,y in pupils) if pupils else ear_y+1
+     xs=[x for x,y in pupils if y==top]
+     center=(min(xs)+max(xs))//2 if xs else (left+right)//2
+     core={(x,y) for y in range(top-4,top+1) for x in range(center-2,center+3)}
     if rear_walking:
      # Check the skull interior anchored to actual native ears. The former
      # core included Brendan's protruding cap brim, which is now removed.

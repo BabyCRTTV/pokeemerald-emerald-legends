@@ -32,7 +32,7 @@ Accessory var 0x40A1 stores scarf/jacket settings. Invalid values fall back to l
 they survive `InitEventData`, then consumes them once during New Game. A fresh
 title entry discards staging. This is independent of the existing title Options
 bridge. Three dedicated palette pairs cover overworld, trainer and underwater
-art; skin uses slots 1–3 and outfit accents use 10–11. Hair colors reserve 4/7 and coats reserve 10 through pose-specific masks; eye, skin and footwear roles stay separate. Palette caches rebuild when the appearance changes.
+art; skin uses slots 1–3 and outfit accents use 10–11. Hair colors reserve 4/7 and coats reserve 10 through pose-specific masks; eye, skin and footwear roles stay separate. In the male overworld review, custom cuts also reserve 8 for a third hair shade. The compositor transfers native navy pixels to slot 5, which retains the original navy RGB value; footwear cannot choose 4/7/8 as replacement body colors. This is confined to custom male overworld art. Trainer/battle palettes, female art, Original and the diving suit retain their existing roles. Palette caches rebuild when the appearance changes.
 
 `legends_appearance_graphics.c` supplies eighteen player-only graphics IDs
 (two genders × nine native avatar states) in the reserved `0x0F00–0x0F11` range.
@@ -61,6 +61,27 @@ combinations, save staging, legacy defaults, all avatar states and NPC isolation
 Asset regressions check all 736 edited poses for reproducibility, native facial
 pixels, held-ball colors outside the torso, transparency and LZ77 roundtrip.
 The Legends workflow must also compile both variants and verify both BPS patches.
+
+### Male overworld reference import (review draft)
+
+`graphics/legends/male_overworld/heads.png` contains ten indexed native-grid
+head sets (front, rear and west). `male_overworld_sheets.json` records the supplied
+reference names, SHA-256 hashes and sampled eye/ear grid registration.
+`import_male_overworld_sheets.py` can reimport the original four-view sheets with
+Pillow and NumPy; ordinary builds consume the checked-in atlas and sparse masks.
+Native east-facing animations mirror the west image, matching the original engine.
+
+`male_overworld_hair.py` fits the atlas to all 83 male walking/running, bike,
+Surf, field-move, fishing and watering source poses before generating ROM edits.
+Pupils register forward/profile heads; actual ears register rear heads. Field-move
+poses with two visible eyes use the forward view even when the body turns sideways.
+Skin underneath separated fringe locks stays filled. Preserve lower faces, hands,
+real ears and fishing rods. The undercut's shaved temple uses the selected skin ramp.
+The native diving suit is checked through its existing animation table.
+
+Validation combines the real C compositor/cache tests with decoded mGBA frames,
+all eight hair colors and five skin tones, and outfit/coat/scarf/shoe combinations.
+Review details: [male overworld QA](../qa/male-overworld-review.md).
 
 ### Emulator QA
 

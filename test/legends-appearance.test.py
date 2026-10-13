@@ -214,13 +214,18 @@ for(int h=1;h<11;h++)for(int sc=0;sc<6;sc++)for(int j=0;j<3;j++)for(int tone=0;t
  value=1+tone;accessories=sc+6*j;hair=h;costume=0;
  LegendsClearAppearanceSelection();LegendsUpdateAppearancePalettes();
  assert(gLegendsTrainerPalettes[0][7]==(22|(15<<5)|(10<<10)));
- assert(gLegendsOverworldPalettes[0][7]==(22|(13<<5)|(8<<10)));
+ assert(gLegendsOverworldPalettes[0][7]==RGB(23,16,10));
+ assert(gLegendsOverworldPalettes[0][4]==RGB(17,11,7));
+ assert(gLegendsOverworldPalettes[0][5]==sBaseOverworldPalettes[0][8]);
+ assert(gLegendsOverworldPalettes[0][8]==RGB(8,5,4));
  assert(gLegendsTrainerPalettes[1][7]==sBaseTrainerPalettes[1][7]);
  for(int g=0;g<2;g++){
   for(int k=1;k<=3;k++)assert(gLegendsTrainerPalettes[g][k]==sSkinPalettes[tone][k-1]);
   for(int k=5;k<=8;k++)if(k!=7){
    assert(gLegendsTrainerPalettes[g][k]==sBaseTrainerPalettes[g][k]);
-   assert(gLegendsOverworldPalettes[g][k]==sBaseOverworldPalettes[g][k]);
+   if(g==0&&k==5)assert(gLegendsOverworldPalettes[g][k]==sBaseOverworldPalettes[g][8]);
+   else if(g==0&&k==8)assert(gLegendsOverworldPalettes[g][k]==RGB(8,5,4));
+   else assert(gLegendsOverworldPalettes[g][k]==sBaseOverworldPalettes[g][k]);
   }
   assert(gLegendsTrainerPalettes[g][15]==sBaseTrainerPalettes[g][15]);
   assert(gLegendsUnderwaterPalettes[g][7]==sBaseUnderwaterPalette[7]);
@@ -238,6 +243,9 @@ for(int col=1;col<8;col++)for(int j=0;j<3;j++)for(int sc=0;sc<6;sc++){
   assert(gLegendsUnderwaterPalettes[g][7]==sBaseUnderwaterPalette[7]);
   if(j)assert(gLegendsTrainerPalettes[g][10]==(j==2?RGB(4,11,7):RGB(4,7,13)));
  }
+ assert(gLegendsOverworldPalettes[0][5]==sBaseOverworldPalettes[0][8]);
+ assert(gLegendsOverworldPalettes[0][8]!=gLegendsOverworldPalettes[0][4]);
+ assert(gLegendsOverworldPalettes[0][8]!=gLegendsOverworldPalettes[0][7]);
 }
 hair=0;accessories=0;LegendsClearAppearanceSelection();LegendsUpdateAppearancePalettes();
 assert(gLegendsTrainerPalettes[0][7]==sBaseTrainerPalettes[0][7]);

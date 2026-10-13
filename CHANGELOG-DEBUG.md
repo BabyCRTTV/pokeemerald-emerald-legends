@@ -2,12 +2,13 @@
 
 This is the developer-facing history for the **Debug** build. Shared Legends changes are repeated here so this file stands on its own; Debug-only behavior is called out separately.
 
-## Unreleased (male walking sprite review)
+## Unreleased (male overworld sprite review)
 
-- Give all ten male rear walking/running hairstyles distinct native-grid crowns and napes; remove the leftover pale cap band, fill the missing lower-head pixels beside the ears, and align each head to its ears and neck. Use hair-colored interior shading, remove the flat black cap rim at the nape, soften the spiky/curly side contours and round the bun.
-- Match native Emerald rear-head proportions: lower and narrow all ten crowns, including Crew Cut, while retaining compact spikes, quiffs, curls and the bun. Check crown height and filled area against the native head in every rear walking/running pose.
-- Preserve approved female art, male front/side views, outfits and both battle sprite banks. Validate all 212 native pose tables and complete rear skulls.
-- Visual review draft for both Release and Debug; no variant-specific differences. See `docs/qa/male-rear-walking-review.md`.
+- Import the supplied male overworld hairstyles for all ten cuts: Crew Cut, Side Part, Spiky, Side Sweep, Tousled, Quiff, Shag, Curls, Man Bun and Undercut. Fit front, rear and profile views to native walking/running, both bikes and tricks, Surf, field moves, fishing and watering; retain native east mirroring and the covered diving suit.
+- Register each head to native pupils or ears, preserve lower faces, hands and props, fill the small gaps beneath separate fringe locks, and adapt three-quarter field-move poses. The undercut's shaved temple follows the selected skin tone.
+- Give custom male overworld hair three dedicated shades, independent of coats, scarves and shoes. Preserve native pupil RGB by moving body navy into a stable palette slot before painting hair.
+- Preserve all approved battle art/animations and female overworld art. Validate the real compositor, settings and footwear caches; preview the rebuilt sprites across all eight hair colors, five skin tones and accessories.
+- Visual review draft shared by Release and Debug; no variant-specific differences. See `docs/qa/male-overworld-review.md`. No new patch is published until approval.
 
 ## [0.0.45] - 2026-10-13
 

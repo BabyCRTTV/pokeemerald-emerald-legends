@@ -9,13 +9,16 @@ def render(path,g,kind,pose,hair,coat,state='',color=0):
     im=Image.open(path);native=frames(path,w,h)[pose]
     garment=coat_edits(native,g,kind,pose,coat) if coat else native
     hairart,points=hair_edits(native,g,kind,pose,hair,state,True) if hair else (native,original_hair(native,g,kind,pose,state))
-    out=[[5 if g==0 and hair and v==7 else v for v in row] for row in garment]
+    out=[[5 if g==0 and hair and (v==7 or kind=='overworld' and v==8) else v for v in row] for row in garment]
     if hair:
         for y in range(h):
             for x in range(w):
                 if hairart[y][x]!=native[y][x] or (x,y) in points:out[y][x]=hairart[y][x]
     pal=im.getpalette()[:]
     if g==0 and hair:pal[21:24]=[181,106 if kind=='overworld' else 123,66 if kind=='overworld' else 82]
+    if g==0 and hair and kind=='overworld':
+        pal[15:18]=pal[24:27]
+        pal[12:15]=[139,90,57];pal[21:24]=[189,132,82];pal[24:27]=[65,41,32]
     if coat:pal[30:33]=[33,90,57] if coat==2 else [33,57,106]
     a=Image.new('P',(w,h));a.putpalette(pal);a.putdata([v for row in out for v in row]);rgb=a.convert('RGB')
     for y in range(h):
