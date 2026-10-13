@@ -17,6 +17,9 @@ HAIR_SLOTS=(4,7,9)
 for i,c in zip(HAIR_SLOTS,RAMPS[0]):PALETTE[i]=c
 COLLAR_RECTS=((31,37,45,43),(36,38,50,45),(24,41,41,51),(34,36,50,43))
 HAND_RECTS=(((0,34,17,51),(51,45,63,58)),((0,23,18,42),(49,56,63,63)),((44,20,63,38),),())
+# The pale-blue edge of Brendan's white cap touches the raised glove, but
+# is not finger/cuff anatomy. A connected-silhouette check cannot detect it.
+CAP_TIP_CELLS={(18,26),(17,27),(16,28),(15,29),(16,30),(17,30),(18,30)}
 
 def native_base(p,pose):
     face,box,_,_=head(p,0,'back',pose)
@@ -28,6 +31,8 @@ def native_base(p,pose):
     hands=set()
     for l,t,r,b in HAND_RECTS[pose]:
         hands|={(x,y) for y in range(t,b+1) for x in range(l,r+1) if p[y][x] and p[y][x] not in (9,14)}
+    if pose==1:
+        hands-=CAP_TIP_CELLS
     # The release cuff and brim share green. Select the cuff's component by
     # the red glove rather than retaining the headwear inside a broad box.
     if pose==2:
@@ -83,6 +88,14 @@ def curly_crown(mask,anchor):
             if (x,y) in crown:crown[x,y]=v
     for q,v in crown.items():
         if q not in mask or q[1]<ny-4:mask[q]=v
+    # Brown ringlets meet the dark/green brim in the reference. Extraction
+    # retains some brim contours as a thin forward horn; finish that small
+    # forehead region on the hatless native grid instead.
+    for x,y in list(mask):
+        if x>=round(nx)+1 and y<=round(ny)-4:
+            del mask[x,y]
+        elif x>=round(nx) and y<round(ny)-6:
+            del mask[x,y]
 
 def convert(im,column,p,pose,name):
     out,protected,face=native_base(p,pose);mask,anchor=hair_mask(im,column,p,pose)
@@ -91,6 +104,7 @@ def convert(im,column,p,pose,name):
     for (x,y),v in original.items():
         adjacent=[original.get(q,0) for q in ((x-1,y),(x+1,y),(x,y-1),(x,y+1))]
         if 0 in adjacent:mask[x,y]=15
+        elif v==15:mask[x,y]=4 # internal strands use hair shadow, not black holes
         elif v==9 and adjacent.count(9)<2:mask[x,y]=7
     nl,nt,nr,nb=face
     for (x,y),v in mask.items():

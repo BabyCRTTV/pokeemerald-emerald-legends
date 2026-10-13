@@ -74,6 +74,22 @@ for n in range(10):
    for q in male.neighbors({(x,y)})&occupied-reached:reached.add(q);queue.append(q)
   assert reached==occupied,('male detached anatomy',n,pose,occupied-reached)
   assert all(any(v==slot for row in bitmap for v in row) for slot in (1,2,3)),('male skin shades',n,pose)
+  if pose==1:
+   # Independently inspect the shipped bitmap. These seven cells were cap
+   # edges joined to a raised finger, so silhouette connectivity missed them.
+   for x,y in ((18,26),(17,27),(16,28),(15,29),(16,30),(17,30)):
+    assert bitmap[y][x]==0,('raised-hand cap remnant',n,x,y)
+   # Curls' genuine rear contour can reach the last former cap cell.
+   assert bitmap[30][18] in (0,4,7,9,15),('raised-hand cap edge color',n)
+   for x,y in ((13,27),(14,27),(12,28),(13,28),(14,28),(10,30),(11,30),(12,30),(15,36),(16,37)):
+    value=p[y][x]
+    assert bitmap[y][x]==(3 if value==4 else 8 if value==7 else 14 if value==9 else value),('preserved raised fingers/glove/cuff',n,x,y)
+   if n==7:
+    for x,y in ((48,22),(49,22),(49,23),(50,23)):
+     assert bitmap[y][x]==0,('Curls reference brim',x,y)
+    assert bitmap[28][34]==4, 'Curls inner strand must use hair shadow'
+   if n==9:
+    assert bitmap[30][32]==4, 'Undercut inner strand must use hair shadow'
 male_names=['crew_cut','side_part','spiky','side_sweep','tousled','quiff','shag','curls','man_bun','undercut']
 assert [(a['hair_id'],a['name']) for a in json.loads((root/'tools/legends/battle_brendan_sheets.json').read_text())]==list(enumerate(male_names,1))
 

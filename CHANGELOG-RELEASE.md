@@ -7,6 +7,7 @@ This is the player-facing history for the recommended **Release** build. Shared 
 - Add ten prepared male battle hairstyles: Crew Cut, Side Part, Spiky, Side Sweep, Tousled, Quiff, Shag, Curls, Man Bun and Undercut. Match the existing male wardrobe IDs and refresh the cut/color/skin tone on the next battle after APPLY.
 - Fit supplied hair to Brendan's native face, hands, body and all four throw poses. Preserve the red gloves, green cuffs/backpack and original animated Ball; complete the cap-covered Curls crown as hatless curls.
 - Use independent male hair slots and all eight existing hair colors/five skin tones in the fixed native battle uniform. Keep the Original option's native hat and preserve all forty approved female bitmaps unchanged.
+- Remove seven native cap-edge cells beside the raised glove from every male cut. Remove the Curls reference's remaining brim projection and use hair-shadow colors for interior strands instead of fixed black specks. Preserve native fingers, cuff, face, collar and body geometry.
 - Extend prepared-battle validation to twenty cuts/eighty frames, native anatomy, silhouette connectivity, fixed clothing and current wardrobe choices.
 - Shared by Release and Debug; no variant-specific gameplay differences. Authoring and validation: `docs/features/male-battle-appearance.md`.
 
