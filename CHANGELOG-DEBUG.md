@@ -4,7 +4,7 @@ This is the developer-facing history for the **Debug** build. Shared Legends cha
 
 ## Unreleased (male walking sprite review)
 
-- Give all ten male rear walking/running hairstyles distinct native-grid crowns and napes; remove the leftover pale cap band and align each head to its ears and neck.
+- Give all ten male rear walking/running hairstyles distinct native-grid crowns and napes; remove the leftover pale cap band, fill the missing lower-head pixels beside the ears, and align each head to its ears and neck.
 - Preserve approved female art, male front/side views, outfits and both battle sprite banks. Validate all 212 native pose tables and complete rear skulls.
 - Visual review draft for both Release and Debug; no variant-specific differences. See `docs/qa/male-rear-walking-review.md`.
 

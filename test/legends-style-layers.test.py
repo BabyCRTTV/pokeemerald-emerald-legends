@@ -101,6 +101,7 @@ with tempfile.TemporaryDirectory() as d:
      for x,y in protected:assert out[y][x]==p[y][x],(name,kind,state,slot,hair,coat,'face/hand/ball',x,y)
      if rear_walking and hair:
       assert all(out[y][x] not in (9,14) for y in range(ear_y-8,ear_y+2) for x in range(3,13)),(name,slot,hair,'native cap remnant')
+      assert all(out[y][x] for y in (ear_y,ear_y+1) for x in range(3,13)),(name,slot,hair,coat,'transparent gap beside ear')
      if coat and kind==2:
       for y,row in enumerate(p):
        for x,v in enumerate(row):

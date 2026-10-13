@@ -21,8 +21,8 @@ BACKS = (
         '  #H++++++++s#',
         '  #++++++++ss#',
         '  #s++++++sss#',
-        '   #s++++ss#',
-        '    #ssssss#',
+        '   #s++++sss#',
+        '   #ssssssss#',
         '     ######',
     ),
     # Side Part: two connected masses separated by a diagonal part.
@@ -37,8 +37,8 @@ BACKS = (
         '  #Hs++++H+ss#',
         '  #s+++++++ss#',
         '   #++++++ss#',
-        '   #s++++ss#',
-        '    #s++ss#',
+        '   #s+++++ss#',
+        '   #ss+++sss#',
         '     ######',
     ),
     # Spiky: distinct connected tips and a textured taper.
@@ -54,8 +54,8 @@ BACKS = (
         '  #++++++H++ss#',
         '   #s++++++ss#',
         '   #+s++++ss#',
-        '    #s++ss#',
-        '    #s+sss#',
+        '   #s+++ssss#',
+        '   #ss++ssss#',
         '     ######',
     ),
     # Side Sweep: smooth asymmetric crown with a rightward flow.
@@ -69,8 +69,8 @@ BACKS = (
         '   #+++HH+++ss#',
         '   #++HH+++ss#',
         '   #+HH+++ss#',
-        '    #++++ss#',
-        '    #s++ss#',
+        '   #s+++++ss#',
+        '   #ss++++ss#',
         '     ######',
     ),
     # Tousled: asymmetric overlapping locks with a broken lower contour.
@@ -85,8 +85,8 @@ BACKS = (
         '   #+++H++++ss#',
         '  #s+++++s++s#',
         '   #++ss++ss#',
-        '    #s++ss+#',
-        '    #s++ss#',
+        '   #s++ss++s#',
+        '   #ss++ssss#',
         '     ######',
     ),
     # Quiff: a raised, swept crown, narrower temples and a neat neckline.
@@ -102,8 +102,8 @@ BACKS = (
         '  #++++++HH+s#',
         '   #s++++++s#',
         '   #s+++++ss#',
-        '    #s+++ss#',
-        '    #ssssss#',
+        '   #s++++sss#',
+        '   #ssssssss#',
         '     ######',
     ),
     # Shag: layered sides and longer, stepped locks at the nape.
@@ -119,7 +119,7 @@ BACKS = (
         '  #s+++s+++sss#',
         '   #++ss++sss#',
         '   #+ss++ss+#',
-        '    #s++sss#',
+        '   #s++ss++s#',
         '     #s++s#',
     ),
     # Curls: rounded clusters carry through the crown, sides and nape.
@@ -135,7 +135,7 @@ BACKS = (
         '  #s++HH++H+s#',
         '   #H++s++ss#',
         '   #+ss++ss+#',
-        '    #s+ss+s#',
+        '   #s+ss+ss+#',
         '     ##++##',
     ),
     # Man Bun: a centered knot, visible tie, and swept-back lower hair.
@@ -151,8 +151,8 @@ BACKS = (
         '  #H+++++++ss#',
         '  #+++++++sss#',
         '   #s++++sss#',
-        '   #ss++sss#',
-        '    #ssssss#',
+        '   #ss+++sss#',
+        '   #ssssssss#',
         '     ######',
     ),
     # Undercut: a short top and skin-tone stubble around the lower skull.
@@ -167,7 +167,7 @@ BACKS = (
         '  #stuttttuts#',
         '   #tuttuttu#',
         '   #tttttttt#',
-        '    #tttttt#',
+        '   #tttttttt#',
         '     ######',
     ),
 )
