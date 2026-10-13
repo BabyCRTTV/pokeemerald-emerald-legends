@@ -5,7 +5,7 @@ This is the developer-facing history for the **Debug** build. Shared Legends cha
 ## [0.0.45] - 2026-10-13
 
 - Add ten prepared male battle hairstyles: Crew Cut, Side Part, Spiky, Side Sweep, Tousled, Quiff, Shag, Curls, Man Bun and Undercut. Match the existing male wardrobe IDs and refresh the cut/color/skin tone on the next battle after APPLY.
-- Fit supplied hair to Brendan's native face, hands, body and all four throw poses. Preserve the red gloves, green cuffs/backpack and original animated Ball; complete the cap-covered Curls crown as hatless curls.
+- Fit supplied hair to Brendan's native face, hands, body and all four throw poses. Preserve the red gloves, green cuffs/backpack and original animated Ball.
 - Use independent male hair slots and all eight existing hair colors/five skin tones in the fixed native battle uniform. Keep the Original option's native hat and preserve all forty approved female bitmaps unchanged.
 - Remove native cap-edge remnants beside the raised glove and use hair-shadow colors for interior strands instead of fixed black specks. Preserve native fingers, cuff, face, collar and body geometry.
 - Retain the reference's small white-and-green cap on Curls, above its exposed ringlets. Join its white crown into one clean panel, remove isolated white brim/edge fragments, and soften the border with native slate outlines and pale gray shading. Fixed cap colors remain independent of all eight hair colors and five skin tones; the other nine male cuts are unchanged.
