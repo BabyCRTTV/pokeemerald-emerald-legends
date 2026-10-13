@@ -4,7 +4,7 @@ This is the player-facing history for the recommended **Release** build. Shared 
 
 ## Unreleased (male walking sprite review)
 
-- Give all ten male rear walking/running hairstyles distinct native-grid crowns and napes; remove the leftover pale cap band, fill the missing lower-head pixels beside the ears, and align each head to its ears and neck.
+- Give all ten male rear walking/running hairstyles distinct native-grid crowns and napes; remove the leftover pale cap band, fill the missing lower-head pixels beside the ears, and align each head to its ears and neck. Use hair-colored interior shading, remove the flat black cap rim at the nape, soften the spiky/curly side contours and round the bun.
 - Preserve approved female art, male front/side views, outfits and both battle sprite banks. Validate all 212 native pose tables and complete rear skulls.
 - Visual review draft for both Release and Debug; no variant-specific differences. See `docs/qa/male-rear-walking-review.md`.
 

@@ -1,11 +1,13 @@
 """Individually authored male rear walking/running crowns on the native 16px grid.
 
 Rows end at the native nape and follow its vertical walking/running bob. Hair
-uses the existing two recolorable shades, dark edge shade and native outline.
+uses the existing two recolorable hair shades and a one-pixel native outline.
 The native ears and the neck/body below the nape remain the source of truth.
 """
 
-COLORS = {'.': 0, '#': 15, 's': 8, '+': 4, 'H': 7, 'R': 13, 't': 2, 'u': 3}
+# Slot 8 belongs to navy clothing/eye edges, not a third hair shade. Both
+# authored midtone/shadow marks use recolorable hair slot 4; H is slot 7.
+COLORS = {'.': 0, '#': 15, 's': 4, '+': 4, 'H': 7, 'R': 13, 't': 2, 'u': 3}
 
 # Fourteen rows, centered around x=7.5. Empty leading rows set each cut's
 # height; the common final row sits directly above the native neck.
@@ -23,7 +25,7 @@ BACKS = (
         '  #s++++++sss#',
         '   #s++++sss#',
         '   #ssssssss#',
-        '     ######',
+        '     ++++++',
     ),
     # Side Part: two connected masses separated by a diagonal part.
     (
@@ -39,7 +41,7 @@ BACKS = (
         '   #++++++ss#',
         '   #s+++++ss#',
         '   #ss+++sss#',
-        '     ######',
+        '     ++++++',
     ),
     # Spiky: distinct connected tips and a textured taper.
     (
@@ -47,16 +49,16 @@ BACKS = (
         '        #',
         '    #  #H#  #',
         '   #H##HHH##H#',
-        '  #HHHHHH++++s#',
-        '   #HHH++HH+s#',
-        '  #HH+++HH+++s#',
-        '   #+++H++++s#',
-        '  #++++++H++ss#',
-        '   #s++++++ss#',
+        '  #HHHHHH+++s#',
+        '  #HHH++HH++s#',
+        '  #HH+++HH++s#',
+        '  #+++H+++++s#',
+        '   #++++H++s#',
+        '   #s+++++ss#',
         '   #+s++++ss#',
         '   #s+++ssss#',
         '   #ss++ssss#',
-        '     ######',
+        '     ++++++',
     ),
     # Side Sweep: smooth asymmetric crown with a rightward flow.
     (
@@ -71,7 +73,7 @@ BACKS = (
         '   #+HH+++ss#',
         '   #s+++++ss#',
         '   #ss++++ss#',
-        '     ######',
+        '     ++++++',
     ),
     # Tousled: asymmetric overlapping locks with a broken lower contour.
     (
@@ -87,7 +89,7 @@ BACKS = (
         '   #++ss++ss#',
         '   #s++ss++s#',
         '   #ss++ssss#',
-        '     ######',
+        '     ++++++',
     ),
     # Quiff: a raised, swept crown, narrower temples and a neat neckline.
     (
@@ -104,7 +106,7 @@ BACKS = (
         '   #s+++++ss#',
         '   #s++++sss#',
         '   #ssssssss#',
-        '     ######',
+        '     ++++++',
     ),
     # Shag: layered sides and longer, stepped locks at the nape.
     (
@@ -120,32 +122,32 @@ BACKS = (
         '   #++ss++sss#',
         '   #+ss++ss+#',
         '   #s++ss++s#',
-        '     #s++s#',
+        '     ss++ss',
     ),
     # Curls: rounded clusters carry through the crown, sides and nape.
     (
         '', '',
         '     ##  ##',
         '   ##HH##HH##',
-        '   #HHH++HH+s#',
+        '  #HHH++HH++s#',
         '  #HH++HHH++s#',
-        '  #++HH++HH++s#',
-        '   #HH++HH++s#',
-        '  #HH++HH+++ss#',
-        '  #s++HH++H+s#',
+        '  #++HH++HH+s#',
+        '  #HH++HH+++s#',
+        '   #H++HH++s#',
+        '   #++HH++Hs#',
         '   #H++s++ss#',
         '   #+ss++ss+#',
         '   #s+ss+ss+#',
-        '     ##++##',
+        '     ++ss++',
     ),
     # Man Bun: a centered knot, visible tie, and swept-back lower hair.
     (
         '',
-        '      ####',
-        '     #HH+s#',
-        '     #H++s#',
+        '       ##',
+        '      #HH#',
+        '     #H++H#',
         '      #RR#',
-        '   ###++ss###',
+        '    ##++++##',
         '  #HHH+++++ss#',
         '  #HH++++++ss#',
         '  #H+++++++ss#',
@@ -153,7 +155,7 @@ BACKS = (
         '   #s++++sss#',
         '   #ss+++sss#',
         '   #ssssssss#',
-        '     ######',
+        '     ++++++',
     ),
     # Undercut: a short top and skin-tone stubble around the lower skull.
     (
@@ -164,11 +166,11 @@ BACKS = (
         '  #HHH+++++ss#',
         '  #HH++++++ss#',
         '  #+++++++sss#',
-        '  #stuttttuts#',
-        '   #tuttuttu#',
-        '   #tttttttt#',
-        '   #tttttttt#',
-        '     ######',
+        '  #++++++++ss#',
+        '   #ususuusu#',
+        '   #uuuuuuuu#',
+        '   #uuttttuu#',
+        '     uttttu',
     ),
 )
 
