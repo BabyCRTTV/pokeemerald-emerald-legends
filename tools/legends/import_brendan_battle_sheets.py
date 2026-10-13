@@ -4,7 +4,7 @@ Only hair is fitted. Native face, hands, clothing and pose geometry supply
 all anatomy. The checked-in bank is static 4bpp, refreshed by wardrobe IDs.
 """
 import json
-from PIL import Image,ImageDraw
+from PIL import Image
 from build_appearance import ROOT,frames,pack
 from build_style_layers import head
 from import_battle_sheets import groups,bounds,neighbors,source_hair,source_eye,eye_anchor,rgb555,RAMPS,COLUMNS,ROWS,SOURCE_ORDER
@@ -73,33 +73,47 @@ def hair_mask(im,column,p,pose):
             if (x,y) not in mask and sum(q in mask for q in ((x-1,y),(x+1,y),(x,y-1),(x,y+1)))>=3:mask[x,y]=7
     return mask,(nx,ny)
 
-def curly_crown(mask,anchor):
-    # The supplied Curls sheet still wears a cap. Author the covered crown
-    # with scalloped curls, keeping its exposed reference ringlets/sideburns.
-    nx,ny=anchor;cx=round(nx-12);cy=round(ny-5)
-    patch=Image.new('L',(64,64));d=ImageDraw.Draw(patch)
-    d.ellipse((cx-11,cy-8,cx+10,cy+8),fill=7)
-    lobes=((-7,-6),(0,-8),(6,-6),(9,-2),(-10,-2),(-9,4),(-6,6))
-    for dx,dy in lobes:d.ellipse((cx+dx-2,cy+dy-2,cx+dx+2,cy+dy+2),fill=7)
-    crown={(x,y):patch.getpixel((x,y)) for y in range(64) for x in range(64) if patch.getpixel((x,y))}
-    for dx,dy in ((-7,-7),(0,-8),(6,-5),(-9,-1),(-2,-2),(4,2),(-6,5),(0,7)):
-        for q,v in (((0,0),9),((1,0),9),((0,1),9),((2,1),4),((1,2),4),((0,2),4)):
-            x,y=cx+dx+q[0],cy+dy+q[1]
-            if (x,y) in crown:crown[x,y]=v
-    for q,v in crown.items():
-        if q not in mask or q[1]<ny-4:mask[q]=v
-    # Brown ringlets meet the dark/green brim in the reference. Extraction
-    # retains some brim contours as a thin forward horn; finish that small
-    # forehead region on the hatless native grid instead.
-    for x,y in list(mask):
-        if x>=round(nx)+1 and y<=round(ny)-4:
-            del mask[x,y]
-        elif x>=round(nx) and y<round(ny)-6:
-            del mask[x,y]
+def curls_cap(im,column,p,pose):
+    """Fit the reference's small white/green cap above its exposed ringlets."""
+    cell,_,face=source_hair(im,column);sx,sy=source_eye(cell,face)
+    nx,ny=eye_anchor(p,head(p,0,'back',pose)[0]);core={}
+    # The face landmark separates cap greens/whites from the backpack/eye.
+    for y in range(face[1]+4):
+        for x in range(cell.width):
+            r,g,b=cell.getpixel((x,y))
+            if min(r,g,b)>120 and max(r,g,b)-min(r,g,b)<50:
+                core[x,y]=14
+            elif 45<g<225 and g>r*1.08 and g>b*1.2 and b<135:
+                core[x,y]=10 if g>145 else 11
+    pieces=groups(set(core))
+    cap=max((part for part in pieces if any(core[q]==14 for q in part)),key=len)
+    # Join green brim components within three source pixels of the white cap.
+    for part in pieces:
+        if any((x+dx,y+dy) in cap for x,y in part for dx,dy in ((-3,0),(3,0),(0,-3),(0,3),(-2,-2),(2,2),(-2,2),(2,-2))):
+            cap.update(part)
+    shades={q:core[q] for q in cap}
+    for x,y in list(cap):
+        for dx,dy in ((-2,0),(2,0),(0,-2),(0,2),(-1,-1),(1,1),(-1,1),(1,-1)):
+            q=x+dx,y+dy
+            if 0<=q[0]<cell.width and 0<=q[1]<face[1]+4 and q not in core:
+                r,g,b=cell.getpixel(q)
+                if max(r,g,b)<100 and r+g+b<210:shades[q]=15
+    samples={}
+    for (x,y),v in shades.items():
+        q=round((x-sx)/3+nx),round((y-sy)/3+ny)
+        if 0<=q[0]<64 and 0<=q[1]<64:samples.setdefault(q,[]).append(v)
+    result={}
+    for q,values in samples.items():
+        # White and fixed green cap colors never occupy a hair material slot.
+        result[q]=15 if values.count(15)/len(values)>=.45 else max((14,10,11),key=lambda v:values.count(v))
+    for y in range(1,63):
+        for x in range(1,63):
+            if (x,y) not in result and sum(q in result for q in ((x-1,y),(x+1,y),(x,y-1),(x,y+1)))>=3:
+                result[x,y]=14
+    return result
 
 def convert(im,column,p,pose,name):
     out,protected,face=native_base(p,pose);mask,anchor=hair_mask(im,column,p,pose)
-    if name=='curls':curly_crown(mask,anchor)
     original=dict(mask)
     for (x,y),v in original.items():
         adjacent=[original.get(q,0) for q in ((x-1,y),(x+1,y),(x,y-1),(x,y+1))]
@@ -110,6 +124,9 @@ def convert(im,column,p,pose,name):
     for (x,y),v in mask.items():
         if x>nr and nt+3<y<=nb+2:continue
         if (x,y) not in protected:out[y][x]=v
+    if name=='curls':
+        for (x,y),v in curls_cap(im,column,p,pose).items():
+            if (x,y) not in protected:out[y][x]=v
     return out
 
 def build():
