@@ -228,7 +228,7 @@ def build():
     header+='static const u8 ALIGNED(4) sMayBattleBits[] = INCBIN_U8("graphics/legends/battle_may/frames.bin");\n'
     header+='static const struct SpriteFrameImage sMayBattleImages[10] = {\n'+'\n'.join(desc)+'\n};\n'
     header+='static const u16 sMayBattleBasePalette[16] = {'+','.join(f'0x{rgb555(c):04X}' for c in PALETTE)+'};\n'
-    header+='static const u16 sMayBattleHairRamps[8][3] = {\n'+',\n'.join('    {'+','.join(f'0x{rgb555(c):04X}' for c in ramp)+'}' for ramp in RAMPS)+'\n};\n'
+    header+='static const u16 sBattleHairRamps[8][3] = {\n'+',\n'.join('    {'+','.join(f'0x{rgb555(c):04X}' for c in ramp)+'}' for ramp in RAMPS)+'\n};\n'
     (ROOT/'src/data/legends/battle_sheets.h').write_text(header)
     print(f'Fitted {len(manifest)} named cuts to 40 native May poses, {len(blob)} bytes')
 

@@ -3,6 +3,7 @@
 #include "graphics.h"
 #include "legends_appearance.h"
 #include "data/legends/battle_sheets.h"
+#include "data/legends/battle_brendan_sheets.h"
 
 extern const u8 gTrainerBackPic_Brendan[], gTrainerBackPic_May[];
 extern const u16 gTrainerPalette_Brendan[], gTrainerPalette_May[];
@@ -34,8 +35,8 @@ const struct SpriteFrameImage *LegendsBattleBackImage(enum TrainerPicID pic)
     u8 hair = LegendsGetHair();
     if (gender > 1)
         return NULL;
-    if (gender == FEMALE && hair > 0 && hair < LEGENDS_HAIR_COUNT)
-        return &sMayBattleImages[hair - 1];
+    if (hair > 0 && hair < LEGENDS_HAIR_COUNT)
+        return gender == FEMALE ? &sMayBattleImages[hair - 1] : &sBrendanBattleImages[hair - 1];
     return &sDefaultBattleImages[gender];
 }
 
@@ -47,16 +48,19 @@ const u16 *LegendsBattleBackPalette(enum TrainerPicID pic)
     const u16 *source;
     if (gender > 1)
         return NULL;
-    source = gender == FEMALE && hair > 0 && hair < LEGENDS_HAIR_COUNT
-        ? sMayBattleBasePalette : (gender == FEMALE ? gTrainerPalette_May : gTrainerPalette_Brendan);
+    source = hair > 0 && hair < LEGENDS_HAIR_COUNT
+        ? (gender == FEMALE ? sMayBattleBasePalette : sBrendanBattleBasePalette)
+        : (gender == FEMALE ? gTrainerPalette_May : gTrainerPalette_Brendan);
     for (i = 0; i < 16; i++)
         sBattlePalettes[gender][i] = source[i];
     LegendsCopySkinRamp(sBattlePalettes[gender] + 1);
-    if (gender == FEMALE && hair > 0 && hair < LEGENDS_HAIR_COUNT)
+    if (hair > 0 && hair < LEGENDS_HAIR_COUNT)
     {
-        sBattlePalettes[gender][4] = sMayBattleHairRamps[color][0];
-        sBattlePalettes[gender][7] = sMayBattleHairRamps[color][1];
-        sBattlePalettes[gender][11] = sMayBattleHairRamps[color][2];
+        sBattlePalettes[gender][4] = sBattleHairRamps[color][0];
+        sBattlePalettes[gender][7] = sBattleHairRamps[color][1];
+        sBattlePalettes[gender][gender == FEMALE ? 11 : 9] = sBattleHairRamps[color][2];
+        if (gender != FEMALE && hair == BRENDAN_BATTLE_CURLS_HAIR)
+            sBattlePalettes[gender][9] = sBrendanCurlsCapShadow;
     }
     return sBattlePalettes[gender];
 }
