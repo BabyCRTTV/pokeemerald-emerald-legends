@@ -6,9 +6,9 @@ The resulting static sheets use native 4bpp layout and independent skin and
 hair palette slots. Nothing is composited or inferred during battle.
 """
 import json
-from PIL import Image
+from PIL import Image, ImageDraw
 from build_appearance import ROOT, pack, frames
-from build_style_layers import head, coat_hands, BACK_FRONT_LOCK_RECTS
+from build_style_layers import head, BACK_FRONT_LOCK_RECTS
 
 COLUMNS = ((244,552),(557,877),(882,1203),(1208,1523))
 ROWS = ((133,262),(266,399),(403,535),(540,674),(679,812),(818,952),(958,1103))
@@ -76,37 +76,101 @@ def source_hair(im, column):
             if max(rr,g,bb)<85 and rr+g+bb<175:hair.add((x,y))
     return cell,hair,(fl,ft,fr,fb)
 
+def neighbors(points):
+    return {(x+dx,y+dy) for x,y in points for dx,dy in
+            ((-1,-1),(0,-1),(1,-1),(-1,0),(0,0),(1,0),(-1,1),(0,1),(1,1))
+            if 0<=x+dx<64 and 0<=y+dy<64}
+
+def eye_anchor(p, face):
+    l,t,r,b=bounds(face)
+    eye={(x,y) for y in range(t,b+1) for x in range(l,r+1) if p[y][x]==14}
+    assert eye, 'native eye landmark missing'
+    return sum(x for x,y in eye)/len(eye),sum(y for x,y in eye)/len(eye)
+
+def source_eye(cell, face):
+    l,t,r,b=face
+    whites={(x,y) for y in range(t,b+1) for x in range(l,r+1)
+            if min(cell.getpixel((x,y)))>165 and
+            max(cell.getpixel((x,y)))-min(cell.getpixel((x,y)))<30}
+    assert whites, 'source eye landmark missing'
+    eye=groups(whites)[0]
+    return sum(x for x,y in eye)/len(eye),sum(y for x,y in eye)/len(eye)
+
+# Native collar pixels sit partly inside the old bandana/hair envelope.
+COLLAR_RECTS = ((25,41,41,48),(30,41,44,50),(15,44,30,54),(26,40,42,48))
+# Exact glove/cuff regions, rather than the outfit compositor's broad bare-
+# hand rectangles (which also include native hat/hair in the raised poses).
+GLOVE_RECTS = (
+    ((0,38,14,52),(43,45,54,56)),
+    ((0,25,13,35),(0,35,17,43),(46,54,56,63)),
+    ((41,25,63,37),(5,50,15,63)),
+    (),
+)
+RETIRED_NAPE = (((19,43,24,44),),(),(),((22,43,23,43),))
+
+def native_hands(p, pose):
+    result=set()
+    for l,t,r,b in GLOVE_RECTS[pose]:
+        points={(x,y) for y in range(t,b+1) for x in range(l,r+1) if p[y][x]}
+        if (pose==0 and l==43) or (pose==2 and l==41):
+            # Swept brown hair abuts these hands but is not glove anatomy.
+            core={q for q in points if p[q[1]][q[0]] in (1,2,3,5,6,9,10,11,14)}
+            points=core|{q for q in neighbors(core)&points if p[q[1]][q[0]]==15}
+        result.update(points)
+    return result
+
 def native_base(p, pose):
-    """Remove native bandana/hair while keeping the exact face and body grid."""
+    """Retain anatomy; remove only the native headwear and swept locks."""
     face,box,_,_=head(p,1,'back',pose)
     fl,ft,fr,fb=bounds(face)
-    protected={(x,y) for y,row in enumerate(p) for x,v in enumerate(row) if v in (1,2,3,12,13)}
-    # The eye, nose, mouth, ear and face contour remain native. Glove/hand
-    # protection is pose-specific because the casting arm crosses the head.
-    face_protected={(x,y) for y in range(ft,fb+1) for x in range(fl,fr+1)
-                    if p[y][x] not in (0,10,11)}
-    protected.update(face_protected)
-    protected.update(coat_hands(1,'back',pose))
+    white={(x,y) for y in range(ft,fb+1) for x in range(fl,fr+1) if p[y][x]==14}
+    eye=white|{(x,y) for x,y in neighbors(neighbors(white)) if p[y][x] in (5,6,9,14,15)}
+    # A filled face rectangle also retains old hair beside the cheek. Keep
+    # actual skin/eye cells and their one-pixel contour instead.
+    features=face|eye
+    face_protected=features|{(x,y) for x,y in neighbors(features) if p[y][x] in (4,7,8,15)}
+    hands=native_hands(p,pose)
+    l,t,r,b=COLLAR_RECTS[pose]
+    collar={(x,y) for y in range(t,b+1) for x in range(l,r+1) if p[y][x] in (5,6)}
+    body={(x,y) for y,row in enumerate(p) for x,v in enumerate(row)
+          if v in (12,13) or (v in (1,2,3) and (x,y) not in face)}
+    body_edges={(x,y) for x,y in neighbors(body|hands|collar) if p[y][x] in (4,8,15)}
+    keep=face_protected|hands|collar|body|body_edges
     erase=set()
     for rect in (box,BACK_FRONT_LOCK_RECTS[pose]):
         l,t,r,b=rect
         for y in range(t,b+1):
             for x in range(l,r+1):
-                if (x,y) not in protected and (rect==box or p[y][x] in (4,7,8,15)):
+                if (x,y) not in keep and (rect==box or p[y][x] in (4,7,8,15)):
                     erase.add((x,y))
-    # The old nape has two dark rows below the face envelope. Clear its
-    # outer sweep while keeping the connected native neck/collar in place.
-    for y in range(fb+1,min(64,fb+4)):
-        for x in range(max(0,fl-15),max(0,fl-3)):
-            if (x,y) not in protected and p[y][x] in (4,7,8,15):erase.add((x,y))
+    for l,t,r,b in RETIRED_NAPE[pose]:
+        for y in range(t,b+1):
+            for x in range(l,r+1):
+                if p[y][x] in (4,7,8,15):erase.add((x,y))
     out=[row[:] for row in p]
     for x,y in erase:out[y][x]=0
+    # The release forearm was hidden beneath May's original swept hair.
+    # Restore it behind the native face and in front of the new hair. The
+    # skin materials remain 1/2/3 so all five tones affect the restored arm.
+    arm=set()
+    if pose==2:
+        patch=Image.new('L',(64,64));draw=ImageDraw.Draw(patch)
+        draw.polygon(((25,49),(30,51),(43,35),(43,31),(39,30),(26,44)),fill=8)
+        draw.polygon(((27,48),(29,49),(41,34),(41,32),(39,32),(28,44)),fill=2)
+        draw.polygon(((28,44),(39,32),(40,32),(29,47)),fill=1)
+        draw.line(((28,48),(29,49),(41,34)),fill=3,width=1)
+        for y in range(64):
+            for x in range(64):
+                v=patch.getpixel((x,y))
+                if v:
+                    arm.add((x,y))
+                    if (x,y) not in keep:out[y][x]=v
     for y,row in enumerate(out):
         for x,v in enumerate(row):
             if v==11:row[x]=10
-            elif v==7:row[x]=11
-            elif v==4:row[x]=7 if (x,y) in face_protected else 8
-    return out,face_protected|coat_hands(1,'back',pose),erase,(fl,ft,fr,fb)
+            elif v==7:row[x]=8 if (x,y) in keep else 11
+            elif v==4:row[x]=8
+    return out,face_protected|hands|arm,erase,(fl,ft,fr,fb)
 
 def convert(im, column, p, pose):
     cell,hair,source_face=source_hair(im,column)
@@ -115,9 +179,12 @@ def convert(im, column, p, pose):
     # The supplied artwork's logical grid is about three source pixels per
     # native pixel. Align to the native forehead/cheek, never the arm span.
     scale=1/3
+    sx,sy=source_eye(cell,source_face)
+    native_skin,_,_,_=head(p,1,'back',pose)
+    nx,ny=eye_anchor(p,native_skin)
     mask={};samples={}
     for x,y in hair:
-        q=(round((x-fr)*scale+nr),round((y-ft)*scale+nt))
+        q=(round((x-sx)*scale+nx),round((y-sy)*scale+ny))
         if 0<=q[0]<64 and 0<=q[1]<64:
             samples.setdefault(q,[]).append(cell.getpixel((x,y)))
     # Snap to one logical-pixel outline and broad native color clusters.

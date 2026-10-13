@@ -32,6 +32,21 @@ for n in range(10):
   for y in range(60,64):
    for x in range(64):
     assert cell(x,y)==base[y][x],('native lower-body geometry',n,pose,x,y)
+  # This uses only the shipped bitmap, not the importer's protection mask:
+  # fingers, cuffs, neck and hair must belong to the same solid silhouette.
+  occupied={(x,y) for y in range(64) for x in range(64) if cell(x,y)}
+  reached={next(iter(occupied))};queue=list(reached)
+  for x,y in queue:
+   for dx,dy in ((-1,-1),(0,-1),(1,-1),(-1,0),(1,0),(-1,1),(0,1),(1,1)):
+    q=(x+dx,y+dy)
+    if q in occupied and q not in reached:reached.add(q);queue.append(q)
+  assert reached==occupied,('detached glove/hair/neck pixels',n,pose,occupied-reached)
+  if pose==1:
+   # The original bug erased this native green cuff beneath the raised hand.
+   for x,y in ((12,37),(13,37),(14,37),(15,37),(12,38),(13,38),(11,39)):
+    assert cell(x,y)==10,('raised glove cuff',n,x,y)
+  for x,y in importer.head(p,1,'back',pose)[0]:
+   assert cell(x,y)==p[y][x],('native face skin',n,pose,x,y)
 
 manifest=json.loads((root/'tools/legends/battle_sheets.json').read_text())
 names=['pixie','side_part','soft_layers','side_sweep','wavy_bob','short_bob','long_bob','curls','ponytail','twin_braids']
