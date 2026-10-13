@@ -1,21 +1,24 @@
 # Male overworld reference review
 
-Status: unpublished visual-review draft on v0.0.45. Finalize a fine-grained version
-bump and publish verified Release/Debug BPS patches only after visual approval.
+Status: v0.0.46 ships the nine male cuts approved on October 13, 2026.
+Side Part remains on the byte-identical v0.0.45 masks and palette; its corrected
+reference preview is separate and awaits visual approval. Release and Debug
+publication requires the normal green build and verified-BPS workflow.
 
-Import the user's ten four-view sheets for Crew Cut, Side Part, Spiky, Side Sweep,
+Archive the user's ten four-view sheets; ship the nine approved cuts for Crew Cut, Side Part, Spiky, Side Sweep,
 Tousled, Quiff, Shag, Curls, Man Bun and Undercut. Update the complete male overworld
 set, including forward, rear and profile views; east uses native west mirroring.
 The indexed head atlas and source hash/grid records are checked in. All fitting
 runs at authoring time through the existing sparse layer pipeline. The 83 source
 poses map to 92 native runtime descriptors through repeated Surf/watering frames:
-920 male hair layers change; the other 2,472 layers remain byte-identical to v0.0.45.
+828 approved male hair layers change; every Side Part layer and the other
+2,564 layers remain byte-identical to v0.0.45.
 
 Fit all 83 non-diving male source poses across walking/running, Mach Bike, Acro
 Bike tricks, Surf, field moves, fishing and watering. Preserve original frame
 tables, dimensions, body movement, lower faces/pupils, skin, ears and props.
 Register heads to native pupils or rear ears, including three-quarter field-move
-faces. Fill the tiny background gaps under Side Part's separate fringe locks.
+faces. Side Part uses its original masks until the separately corrected preview is approved.
 Use the selected skin shade for the undercut's shaved temple. The supplied rear
 contours can include a straight dark nape outline; every nape pixel is owned by
 the imported layer, rather than accidentally retaining native cap pixels.
@@ -44,5 +47,9 @@ Validation:
 - Export ten individual four-view character sheets, a walking/running montage,
   native activity animation panels, and a color/skin-tone animation for approval.
 
-Release and Debug share this art. Keep root VERSION and the published downloads
-at v0.0.45 until approval; all three changelogs record the draft as Unreleased.
+Release and Debug share the approved art. Root VERSION and player-facing
+metadata are v0.0.46. A SHA-256 regression freezes all 101 stored Side Part
+layer descriptors (including the unchanged covered suit) to v0.0.45. Palette
+regressions retain its original shades. The comprehensive review archive labels
+the published Side Part and the pending revision separately. Native test checks
+pass locally; Actions independently rebuilds and verifies both BPS patches.

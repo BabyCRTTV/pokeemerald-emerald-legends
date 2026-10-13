@@ -4,13 +4,13 @@ All notable Pokémon Emerald: Legends project changes are documented here.
 
 For build-specific player views, see [CHANGELOG-RELEASE.md](CHANGELOG-RELEASE.md) and [CHANGELOG-DEBUG.md](CHANGELOG-DEBUG.md). The canonical history below records the project as a whole.
 
-## Unreleased (male overworld sprite review)
+## [0.0.46] - 2026-10-13
 
-- Import the supplied male overworld hairstyles for all ten cuts: Crew Cut, Side Part, Spiky, Side Sweep, Tousled, Quiff, Shag, Curls, Man Bun and Undercut. Fit front, rear and profile views to native walking/running, both bikes and tricks, Surf, field moves, fishing and watering; retain native east mirroring and the covered diving suit.
-- Register each head to native pupils or ears, preserve lower faces, hands and props, fill the small gaps beneath separate fringe locks, and adapt three-quarter field-move poses. The undercut's shaved temple follows the selected skin tone.
-- Give custom male overworld hair three dedicated shades, independent of coats, scarves and shoes. Preserve native pupil RGB by moving body navy into a stable palette slot before painting hair.
-- Preserve all approved battle art/animations and female overworld art. Validate the real compositor, settings and footwear caches; preview the rebuilt sprites across all eight hair colors, five skin tones and accessories.
-- Visual review draft shared by Release and Debug; no variant-specific differences. See `docs/qa/male-overworld-review.md`. No new patch is published until approval.
+- Publish the nine approved male overworld hairstyles: Crew Cut, Spiky, Side Sweep, Tousled, Quiff, Shag, Curls, Man Bun and Undercut. Fit front, rear and profile views to native walking/running, both bikes and tricks, Surf, field moves, fishing and watering. Retain native east mirroring and the covered diving suit.
+- Anchor each head to native pupils or ears, preserve lower faces, hands and props, and let the undercut temple follow the selected skin tone. Three independent hair shades preserve native pupil RGB through hair-color, coat, scarf and footwear changes.
+- Keep male Side Part on its published v0.0.45 art and palette while its separate revision awaits visual approval. Preserve all approved battle art and female overworld art unchanged.
+- Validate the native sparse compositor, saved settings and footwear caches. Prepare a complete labeled PNG/GIF review archive covering both trainers, field activities, colors, skin tones, battle throws and front/wardrobe portraits.
+- Shared by Release and Debug; no variant-specific gameplay differences. See `docs/qa/male-overworld-review.md`.
 
 ## [0.0.45] - 2026-10-13
 

@@ -9,6 +9,10 @@ import json,re,struct
 from PIL import Image,ImageDraw
 from build_appearance import ROOT,STATES,FILES,frames,skin_components,hand_pixels,ball_pixels
 
+# Side Part (2) still awaits separate visual approval. Preserve its published
+# v0.0.45 masks and palette while shipping the other nine reference cuts.
+APPROVED_MALE_WORLD_STYLES = frozenset((1,3,4,5,6,7,8,9,10))
+
 # In two throw frames the arm touches the cheek. Skin flood-fill alone then
 # joins the forearm to the face, incorrectly protecting it from long sleeves.
 BACK_FACE_RECTS = (
@@ -143,7 +147,7 @@ def original_hair(p,g,kind,pose,state=''):
 
 def hair_edits(p,g,kind,pose,style,state='',with_points=False):
     face,box,anchor,direction=head(p,g,kind,pose,state)
-    if g == 0 and kind == 'overworld' and state != 'underwater' and direction in (0,1,2):
+    if g == 0 and style in APPROVED_MALE_WORLD_STYLES and kind == 'overworld' and state != 'underwater' and direction in (0,1,2):
         from male_overworld_hair import imported_hair
         art,points=imported_hair(p,style,face,box,direction,state,pose)
         return (art,points) if with_points else art

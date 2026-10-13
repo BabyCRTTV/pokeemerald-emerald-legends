@@ -97,3 +97,10 @@ Review details: [male overworld QA](../qa/male-overworld-review.md).
   every throw-animation frame, then Safari, Frontier and the local Trainer Card and naming-screen icon.
 - Verify the rival and other NPCs remain unchanged; check a native link session
   uses its existing appearance behavior. Repeat in Release and Debug.
+
+### Male overworld approval — v0.0.46
+
+Nine reference cuts are approved and ship in v0.0.46. Side Part (saved ID 2)
+retains the v0.0.45 sparse masks and palette while a revised reference preview
+awaits approval. Female art, trainer/front portraits and both prepared battle
+banks retain their published artwork. The covered diving suit stays native.
