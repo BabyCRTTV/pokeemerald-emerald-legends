@@ -2,6 +2,13 @@
 
 This is the player-facing history for the recommended **Release** build. Shared Legends changes are repeated here so this file stands on its own; Release-only behavior is called out separately.
 
+## [Wiki 1.6.0] - 2026-10-13
+
+- Owner-requested documentation refresh against game v0.0.46. Preserve the wiki design and walkthrough layout; extend Chapters 19–25 through Seafoam, the Hoenn intermission, northern/western Kanto and Faraway Island.
+- Review all eight visiting Gyms, story gates and legendary observation/capture rules. Add Quest Log, achievements/rewards and expanded-storage guides; update wardrobe, leggings and fixed battle-uniform details.
+- Refresh the pinned encounter catalogue to 157 locations, including the limited Mt. Ember expedition. Keep Sevii encounter locations separate from mainland map markers; add footer links to the project site.
+- Documentation applies equally to Release and Debug; no variant-specific differences. ROM VERSION and verified BPS patches remain v0.0.46. Native wiki companions rebuild through their existing independent workflows.
+
 ## [0.0.46] - 2026-10-13
 
 - Publish the nine approved male overworld hairstyles: Crew Cut, Spiky, Side Sweep, Tousled, Quiff, Shag, Curls, Man Bun and Undercut. Fit front, rear and profile views to native walking/running, both bikes and tricks, Surf, field moves, fishing and watering. Retain native east mirroring and the covered diving suit.
