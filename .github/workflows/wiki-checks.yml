@@ -60,7 +60,9 @@ jobs:
           assert len(maps)>100 and len({m['id'] for m in maps})==len(maps)
           count=0
           for loc in maps:
-              assert loc['region'] in ('Hoenn','Kanto')
+              assert loc['region'] in ('Hoenn','Kanto','Sevii')
+              if loc['region']=='Sevii':
+                  assert loc['id'].startswith('MAP_LEGENDS_KANTO_MT_EMBER_'), 'only the shipped Mt. Ember expedition is indexed'
               assert loc['id'].startswith('MAP_LEGENDS_KANTO_') if loc['region']=='Kanto' else loc['id'].startswith('MAP_') and 'FRLG' not in loc['id']
               for method in loc['methods']:
                   assert method['id'] in ('land','surf','rock','old_rod','good_rod','super_rod')
