@@ -2,6 +2,14 @@
 
 This is the player-facing history for the recommended **Release** build. Shared Legends changes are repeated here so this file stands on its own; Release-only behavior is called out separately.
 
+## [0.0.45] - 2026-10-13
+
+- Add ten prepared male battle hairstyles: Crew Cut, Side Part, Spiky, Side Sweep, Tousled, Quiff, Shag, Curls, Man Bun and Undercut. Match the existing male wardrobe IDs and refresh the cut/color/skin tone on the next battle after APPLY.
+- Fit supplied hair to Brendan's native face, hands, body and all four throw poses. Preserve the red gloves, green cuffs/backpack and original animated Ball; complete the cap-covered Curls crown as hatless curls.
+- Use independent male hair slots and all eight existing hair colors/five skin tones in the fixed native battle uniform. Keep the Original option's native hat and preserve all forty approved female bitmaps unchanged.
+- Extend prepared-battle validation to twenty cuts/eighty frames, native anatomy, silhouette connectivity, fixed clothing and current wardrobe choices.
+- Shared by Release and Debug; no variant-specific gameplay differences. Authoring and validation: `docs/features/male-battle-appearance.md`.
+
 ## [0.0.44] - 2026-10-13
 
 - Import the ten supplied female battle hairstyles into fixed-outfit, four-frame Emerald battle sprites: Pixie, Side Part, Soft Layers, Side Sweep, Wavy Bob, Short Bob, Long Bob, Curls, Ponytail and Twin Braids. Use the matching saved hairstyle and hair color when entering a battle; wardrobe changes take effect on the next battle.

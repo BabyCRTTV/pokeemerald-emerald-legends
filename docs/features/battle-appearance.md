@@ -1,6 +1,6 @@
 # Prepared battle appearance — v0.0.44
 
-Battle backs use fixed clothing. Overworld/front portraits still use the full wardrobe. Selected skin tone remains active in battle. The ten supplied female sheets map directly to saved hairstyle IDs 1–10, matching Pixie through Twin Braids. Original (0) and male battle backs use native Emerald graphics. Male prepared sheets are not included in this revision.
+Battle backs use fixed clothing. Overworld/front portraits still use the full wardrobe. Selected skin tone remains active in battle. The ten supplied female sheets map directly to saved hairstyle IDs 1–10, matching Pixie through Twin Braids. Original (0) battle backs use native Emerald graphics. v0.0.45 adds prepared male cuts using the same current-choice runtime: [male battle appearance](male-battle-appearance.md).
 
 ## Authoring and palettes
 

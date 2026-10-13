@@ -1,0 +1,52 @@
+[
+  {
+    "hair_id": 1,
+    "name": "crew_cut",
+    "source": "graphics/legends/battle_sources/brendan/crew_cut.png"
+  },
+  {
+    "hair_id": 2,
+    "name": "side_part",
+    "source": "graphics/legends/battle_sources/brendan/side_part.png"
+  },
+  {
+    "hair_id": 3,
+    "name": "spiky",
+    "source": "graphics/legends/battle_sources/brendan/spiky.png"
+  },
+  {
+    "hair_id": 4,
+    "name": "side_sweep",
+    "source": "graphics/legends/battle_sources/brendan/side_sweep.png"
+  },
+  {
+    "hair_id": 5,
+    "name": "tousled",
+    "source": "graphics/legends/battle_sources/brendan/tousled.png"
+  },
+  {
+    "hair_id": 6,
+    "name": "quiff",
+    "source": "graphics/legends/battle_sources/brendan/quiff.png"
+  },
+  {
+    "hair_id": 7,
+    "name": "shag",
+    "source": "graphics/legends/battle_sources/brendan/shag.png"
+  },
+  {
+    "hair_id": 8,
+    "name": "curls",
+    "source": "graphics/legends/battle_sources/brendan/curls.png"
+  },
+  {
+    "hair_id": 9,
+    "name": "man_bun",
+    "source": "graphics/legends/battle_sources/brendan/man_bun.png"
+  },
+  {
+    "hair_id": 10,
+    "name": "undercut",
+    "source": "graphics/legends/battle_sources/brendan/undercut.png"
+  }
+]
