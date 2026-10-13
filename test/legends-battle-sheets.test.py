@@ -92,6 +92,9 @@ for n in range(10):
    upper=[v for row in bitmap[:face[1]] for v in row]
    assert upper.count(14)>60,('Curls white cap crown',pose)
    assert sum(upper.count(v) for v in (10,11))>20,('Curls green cap band',pose)
+   white={(x,y) for y,row in enumerate(bitmap[:face[1]]) for x,v in enumerate(row) if v==14}
+   assert len(male.groups(white))==1,('loose Curls cap white pixels',pose)
+   assert upper.count(9)>10,('Curls native grey cap shading',pose)
 male_names=['crew_cut','side_part','spiky','side_sweep','tousled','quiff','shag','curls','man_bun','undercut']
 assert [(a['hair_id'],a['name']) for a in json.loads((root/'tools/legends/battle_brendan_sheets.json').read_text())]==list(enumerate(male_names,1))
 
@@ -154,7 +157,8 @@ int main(void){
   const struct SpriteFrameImage *im=LegendsBattleBackImage(200);
   assert(im->data==sBrendanBattleBits+(h-1)*8192&&im->size==2048&&im->relativeFrames);
   u16 base[16];memcpy(base,LegendsBattleBackPalette(200),32);
-  assert(base[4]==sBattleHairRamps[c][0]&&base[7]==sBattleHairRamps[c][1]&&base[9]==sBattleHairRamps[c][2]);
+  assert(base[4]==sBattleHairRamps[c][0]&&base[7]==sBattleHairRamps[c][1]);
+  assert(base[9]==(h==BRENDAN_BATTLE_CURLS_HAIR?sBrendanCurlsCapShadow:sBattleHairRamps[c][2]));
   for(int s=0;s<5;s++){
    tone=s;const u16 *pal=LegendsBattleBackPalette(200);assert(!memcmp(pal+1,sSkinPalettes[s],6));
    for(int i=0;i<16;i++)if(i<1||i>3)assert(pal[i]==base[i]);

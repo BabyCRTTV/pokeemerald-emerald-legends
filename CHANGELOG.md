@@ -10,7 +10,7 @@ For build-specific player views, see [CHANGELOG-RELEASE.md](CHANGELOG-RELEASE.md
 - Fit supplied hair to Brendan's native face, hands, body and all four throw poses. Preserve the red gloves, green cuffs/backpack and original animated Ball; complete the cap-covered Curls crown as hatless curls.
 - Use independent male hair slots and all eight existing hair colors/five skin tones in the fixed native battle uniform. Keep the Original option's native hat and preserve all forty approved female bitmaps unchanged.
 - Remove native cap-edge remnants beside the raised glove and use hair-shadow colors for interior strands instead of fixed black specks. Preserve native fingers, cuff, face, collar and body geometry.
-- Retain the reference's small white-and-green cap on Curls, above its exposed ringlets. Its fixed cap colors remain independent of all eight hair colors and five skin tones; the other nine male cuts are unchanged.
+- Retain the reference's small white-and-green cap on Curls, above its exposed ringlets. Join its white crown into one clean panel, remove isolated white brim/edge fragments, and soften the border with native slate outlines and pale gray shading. Fixed cap colors remain independent of all eight hair colors and five skin tones; the other nine male cuts are unchanged.
 - Extend prepared-battle validation to twenty cuts/eighty frames, native anatomy, silhouette connectivity, fixed clothing and current wardrobe choices.
 - Shared by Release and Debug; no variant-specific gameplay differences. Authoring and validation: `docs/features/male-battle-appearance.md`.
 

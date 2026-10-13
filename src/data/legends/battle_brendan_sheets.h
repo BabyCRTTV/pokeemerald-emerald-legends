@@ -13,3 +13,5 @@ static const struct SpriteFrameImage sBrendanBattleImages[10] = {
     {.data=sBrendanBattleBits+73728, .size=2048, .relativeFrames=TRUE},
 };
 static const u16 sBrendanBattleBasePalette[16] = {0x530E,0x677F,0x4A9B,0x3A19,0x1CC9,0x4DEC,0x4169,0x296F,0x28A3,0x29B4,0x3B71,0x2E6C,0x2D9F,0x2118,0x7FFF,0x0000};
+enum { BRENDAN_BATTLE_CURLS_HAIR = 8 };
+static const u16 sBrendanCurlsCapShadow = 0x779B;

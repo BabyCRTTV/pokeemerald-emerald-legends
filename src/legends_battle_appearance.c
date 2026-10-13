@@ -59,6 +59,8 @@ const u16 *LegendsBattleBackPalette(enum TrainerPicID pic)
         sBattlePalettes[gender][4] = sBattleHairRamps[color][0];
         sBattlePalettes[gender][7] = sBattleHairRamps[color][1];
         sBattlePalettes[gender][gender == FEMALE ? 11 : 9] = sBattleHairRamps[color][2];
+        if (gender != FEMALE && hair == BRENDAN_BATTLE_CURLS_HAIR)
+            sBattlePalettes[gender][9] = sBrendanCurlsCapShadow;
     }
     return sBattlePalettes[gender];
 }
