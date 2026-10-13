@@ -4,6 +4,14 @@ All notable Pokémon Emerald: Legends project changes are documented here.
 
 For build-specific player views, see [CHANGELOG-RELEASE.md](CHANGELOG-RELEASE.md) and [CHANGELOG-DEBUG.md](CHANGELOG-DEBUG.md). The canonical history below records the project as a whole.
 
+## [0.0.46] - 2026-10-13
+
+- Publish the nine approved male overworld hairstyles: Crew Cut, Spiky, Side Sweep, Tousled, Quiff, Shag, Curls, Man Bun and Undercut. Fit front, rear and profile views to native walking/running, both bikes and tricks, Surf, field moves, fishing and watering. Retain native east mirroring and the covered diving suit.
+- Anchor each head to native pupils or ears, preserve lower faces, hands and props, and let the undercut temple follow the selected skin tone. Three independent hair shades preserve native pupil RGB through hair-color, coat, scarf and footwear changes.
+- Keep male Side Part on its published v0.0.45 art and palette while its separate revision awaits visual approval. Preserve all approved battle art and female overworld art unchanged.
+- Validate the native sparse compositor, saved settings and footwear caches. Prepare a complete labeled PNG/GIF review archive covering both trainers, field activities, colors, skin tones, battle throws and front/wardrobe portraits.
+- Shared by Release and Debug; no variant-specific gameplay differences. See `docs/qa/male-overworld-review.md`.
+
 ## [0.0.45] - 2026-10-13
 
 - Add ten prepared male battle hairstyles: Crew Cut, Side Part, Spiky, Side Sweep, Tousled, Quiff, Shag, Curls, Man Bun and Undercut. Match the existing male wardrobe IDs and refresh the cut/color/skin tone on the next battle after APPLY.

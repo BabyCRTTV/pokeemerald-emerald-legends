@@ -1,7 +1,7 @@
 """Run the real sparse compositor on every native pose; protect actual faces.
 Reproduce masks, check every ROM edit bound, exercise scarf order and defaults.
 """
-import sys,re,struct,subprocess,tempfile,ctypes,json
+import sys,re,struct,subprocess,tempfile,ctypes,json,hashlib
 from pathlib import Path
 root=Path(__file__).resolve().parents[1];sys.path.insert(0,str(root/'tools/legends'))
 import build_style_layers as art
@@ -12,7 +12,7 @@ assert all(m != f for m,f in zip(WORLD_MALE,WORLD_FEMALE))
 assert len({tuple(r) for r in WORLD_MALE}) == len({tuple(r) for r in WORLD_FEMALE}) == 10
 from build_appearance import frames,pack,STATES,FILES
 walking=frames(root/'graphics/object_events/pics/people/brendan/walking.png',16,32)[0]
-assert art.hair_edits(walking,0,'overworld',0,1)[10][10]==0, 'clear native hat tip above new crown'
+assert art.hair_edits(walking,0,'overworld',0,1,'walking')[10][10]==0, 'clear native hat tip above new crown'
 # The reported glitch changed facing on alternate steps. Check against the
 # actual native animation commands, not a second copy of the authoring table.
 anims=(root/'src/data/object_events/object_event_anims.h').read_text()
@@ -33,6 +33,14 @@ for state in ('surfing','watering'):
 assets=[root/'graphics/legends/styles/edits.bin',root/'src/data/legends/style_layers.h']
 before=[p.read_bytes() for p in assets];art.build();assert before==[p.read_bytes() for p in assets]
 header=assets[1].read_text();edits=struct.unpack('<'+'H'*(len(before[0])//2),before[0])
+# Freeze the unapproved Side Part to the published v0.0.45 edit stream.
+side_part=[]
+for state in range(8):
+ block=re.search(r'sStyle0'+str(state)+r'\[\]\[16\] = \{(.*?)\n\};',header,re.S)[1]
+ pairs=[tuple(map(int,p)) for p in re.findall(r'\{(\d+),(\d+)\}',block)]
+ for offset,count in pairs[1::16]:side_part.append(before[0][offset*2:(offset+count)*2])
+assert len(side_part)==101
+assert hashlib.sha256(b''.join(side_part)).hexdigest()=='6b0f0365f0d53512917c1a8998ee00c62cc959be185580ecc9af18e085a3c221'
 header=re.sub(r'static const u16 sStylePixels\[\] = INCBIN_U16\([^;]+;', 'static const u16 sStylePixels[]={'+','.join(map(str,edits))+'};',header)
 source='\n'.join(l for l in (root/'src/legends_style_layers.c').read_text().splitlines() if not l.startswith('#include'))
 pre='''
@@ -41,6 +49,7 @@ typedef uint8_t u8;typedef uint16_t u16;typedef uint32_t u32;typedef uint8_t boo
 #define LEGENDS_HAIR_COUNT 11
 #define LEGENDS_JACKET_COUNT 3
 #define FEMALE 1
+#define MALE 0
 u8 LegendsGetLeggings(void){return 0;}
 #define TRUE 1
 #define FALSE 0
@@ -76,6 +85,36 @@ with tempfile.TemporaryDirectory() as d:
     top,bottom=min(y for x,y in face),max(y for x,y in face)
     protected |= {(x,y) for y in range(top,bottom+1) for x in range(left,right+1) if p[y][x] in (5,8,9,14,15)}
    if kind:protected |= art.coat_hands(g,'front' if kind==1 else 'back',native_index)|art.ball_pixels(g,'front' if kind==1 else 'back',native_index)
+   rear_walking = g == 0 and kind == 0 and state == 0 and art.WORLD_DIRECTIONS['walking'][native_index] == 2
+   male_world = g == 0 and kind == 0 and state != 4
+   if male_world:
+    # Imported fringes may cover the forehead above the native pupils. Check
+    # the actual lower face, pupils and ear folds, not the retired cap rectangle.
+    direction=art.WORLD_DIRECTIONS[FILES[state]][native_index]
+    ear_y=min(y for x,y in face)
+    if direction==2:
+     ear_y=min(y for y,row in enumerate(p) if any(v in (1,2,3) for v in row))
+     ears=[x for x,v in enumerate(p[ear_y]) if v in (1,2,3)]
+     left,right=min(ears),max(ears)
+    candidates=[]
+    if direction!=2:
+     for y in range(ear_y,min(h,ear_y+4)):
+      for x in range(left,right+1):
+       n=sum(0<=xx<w and 0<=yy<h and p[yy][xx] in (1,2,3) for xx,yy in ((x-1,y),(x+1,y),(x,y-1),(x,y+1)))
+       if p[y][x] in (5,8) and n>=3:candidates.append((x,y))
+     if candidates:ear_y=min(y for x,y in candidates)-1
+    protected={(x,y) for y,row in enumerate(p) for x,v in enumerate(row) if v in (1,2,3) and y>=ear_y+1}
+    for y in range(ear_y+1,min(h,ear_y+5)):
+     for x in range(left,right+1):
+      neighbors=sum(0<=xx<w and 0<=yy<h and p[yy][xx] in (1,2,3) for xx,yy in ((x-1,y),(x+1,y),(x,y-1),(x,y+1)))
+      if p[y][x] in (4,5,8,9,14,15) and neighbors>=3:protected.add((x,y))
+    if FILES[state]=='fishing':protected|=art.fishing_rod(p,g,native_index)
+   if rear_walking:
+    # A rear head has ears/neck, not eyes or a forehead. The white native
+    # cap between the ears must not be classified as protected face art.
+    ear_y = min(y for y,row in enumerate(p) if any(v in (1,2,3) for v in row))
+    protected = {(x,y) for y,row in enumerate(p) for x,v in enumerate(row) if v in (1,2,3) and y <= ear_y + 2}
+    protected |= {(x,y) for y in (ear_y,ear_y+1) for x in (0,1,2,13,14,15) if p[y][x]}
    for hair in range(11):
     for coat in range(3):
      buf=(ctypes.c_uint8*len(native)).from_buffer_copy(native)
@@ -91,7 +130,15 @@ with tempfile.TemporaryDirectory() as d:
      if kind==0 and state==6:
       for x,y in art.fishing_rod(p,g,native_index):
        assert out[y][x]==p[y][x],(name,slot,hair,coat,'fishing rod',x,y)
-     for x,y in protected:assert out[y][x]==p[y][x],(name,kind,state,slot,hair,coat,'face/hand/ball',x,y)
+     if not (male_world and hair==2):
+      for x,y in protected:assert out[y][x]==p[y][x],(name,kind,state,slot,hair,coat,'face/hand/ball',x,y)
+     if rear_walking and hair in art.APPROVED_MALE_WORLD_STYLES:
+      assert all(out[y][x] not in (9,14) for y in range(ear_y-8,ear_y+2) for x in range(3,13)),(name,slot,hair,'native cap remnant')
+      assert all(out[y][x] for y in (ear_y,ear_y+1) for x in range(3,13)),(name,slot,hair,coat,'transparent gap beside ear')
+      # Some supplied cuts intentionally have a straight dark nape outline.
+      # It must be authored by the new layer, never retained native cap art.
+      _,owned=art.hair_edits(p,g,'overworld',native_index,hair,FILES[state],True)
+      assert all((x,ear_y+2) in owned for x in range(5,11)),(name,slot,hair,'unauthored native cap rim')
      if coat and kind==2:
       for y,row in enumerate(p):
        for x,v in enumerate(row):
@@ -106,10 +153,29 @@ with tempfile.TemporaryDirectory() as d:
        for x in range(w):
         if crown[y][x]!=p[y][x] and crown[y][x] in (4,8):assert out[y][x]==crown[y][x]
    if kind==1:assert len(signatures)==11,(name,'distinct portraits')
+   if rear_walking:assert len(signatures)==11,(name,slot,'eleven distinct rear cuts')
    if (state!=4 or kind) and (groups or kind==0 and art.WORLD_DIRECTIONS.get(FILES[state],())[native_index]==2):assert len(signatures)>=5,(name,kind,state,slot,'distinct hairstyles')
    if not (kind==0 and state==4):
     core=art.head_core(p,g,'overworld' if kind==0 else 'front' if kind==1 else 'back',native_index,FILES[state] if kind==0 else '')
+    if male_world:
+     # Anatomical skull core between the ears/forehead, excluding the native
+     # cap's protruding brim and tip, which are intentionally retired.
+     pupils=[]
+     if direction!=2:
+      for y in range(ear_y,min(h,ear_y+4)):
+       for x in range(left,right+1):
+        n=sum(0<=xx<w and 0<=yy<h and p[yy][xx] in (1,2,3) for xx,yy in ((x-1,y),(x+1,y),(x,y-1),(x,y+1)))
+        if p[y][x] in (5,8) and n>=3:pupils.append((x,y))
+     top=min(y for x,y in pupils) if pupils else ear_y+1
+     xs=[x for x,y in pupils if y==top]
+     center=(min(xs)+max(xs))//2 if xs else (left+right)//2
+     core={(x,y) for y in range(top-4,top+1) for x in range(center-2,center+3)}
+    if rear_walking:
+     # Check the skull interior anchored to actual native ears. The former
+     # core included Brendan's protruding cap brim, which is now removed.
+     core={(x,y) for y in range(ear_y-5,ear_y+2) for x in range(5,11)}
     for hair in range(1,11):
+     if male_world and hair==2:continue # Frozen published masks verified below.
      buf=(ctypes.c_uint8*len(native)).from_buffer_copy(native);painter(buf,w,g,kind,state,slot,hair,0)
      out=unpack(bytes(buf),w,h)
      assert all(out[y][x] for x,y in core), (name,kind,state,slot,hair,'incomplete head')

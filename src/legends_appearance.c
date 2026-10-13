@@ -223,6 +223,24 @@ void LegendsUpdateAppearancePalettes(void)
             gLegendsOverworldPalettes[gender][4] = gLegendsTrainerPalettes[gender][4] = colors[LegendsGetHairColor()-1][0];
             gLegendsOverworldPalettes[gender][7] = gLegendsTrainerPalettes[gender][7] = colors[LegendsGetHairColor()-1][1];
         }
+        if (gender == MALE && LegendsGetHair() && LegendsGetHair() != 2 && !LegendsGetCostume())
+        {
+            static const u16 shadows[LEGENDS_HAIR_COLOR_COUNT] = {
+                RGB(8,5,4), RGB(2,2,3), RGB(5,3,2), RGB(7,4,3),
+                RGB(7,2,2), RGB(10,6,3), RGB(13,9,4), RGB(7,8,11),
+            };
+            // Overworld-only third hair shade. Move the original navy 8 to
+            // stable slot 5 before painting hair; eyes retain that exact navy.
+            // Shoes reserve 6/11 and scarves 14, so all three hair materials
+            // remain independent of those accessories.
+            gLegendsOverworldPalettes[gender][5] = sBaseOverworldPalettes[gender][8];
+            gLegendsOverworldPalettes[gender][8] = shadows[LegendsGetHairColor()];
+            if (!LegendsGetHairColor())
+            {
+                gLegendsOverworldPalettes[gender][4] = RGB(17,11,7);
+                gLegendsOverworldPalettes[gender][7] = RGB(23,16,10);
+            }
+        }
         if (LegendsGetJacket() && !LegendsGetCostume())
         {
             u16 coat = LegendsGetJacketStyle() == 2 ? RGB(4,11,7) : RGB(4,7,13);
