@@ -104,6 +104,9 @@ with tempfile.TemporaryDirectory() as d:
       assert all(out[y][x] for y in (ear_y,ear_y+1) for x in range(3,13)),(name,slot,hair,coat,'transparent gap beside ear')
       assert all(out[y][x] != 8 for y in range(ear_y-8,ear_y+2) for x in range(4,12)),(name,slot,hair,'navy clothing shade inside hair')
       assert not all(out[ear_y+2][x] == 15 for x in range(5,11)),(name,slot,hair,'flat black cap rim at nape')
+      native_top = min(y for y,row in enumerate(p[:ear_y]) if any(row))
+      assert not any(v for row in out[:native_top] for v in row),(name,slot,hair,'crown taller than native rear head')
+      assert sum(bool(v) for row in out[:ear_y] for v in row) <= sum(bool(v) for row in p[:ear_y] for v in row),(name,slot,hair,'rear crown inflated beyond native proportions')
      if coat and kind==2:
       for y,row in enumerate(p):
        for x,v in enumerate(row):

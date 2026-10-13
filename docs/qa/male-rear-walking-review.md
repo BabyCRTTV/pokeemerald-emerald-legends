@@ -6,11 +6,15 @@ Replace the generic tapered rear mask with ten individually authored 16-pixel-wi
 
 Anchor each crown to the native ear row and finish directly above the neck. Preserve the actual ears, their outside rims, and the body. Clear the full native cap region, including its pale lower band, rather than treating cap pixels between the ears as a face. Fill both lower skull rows completely between the native ears; tapering these rows leaves transparent gaps beside the ears. A regression check verifies that coverage in every rear walking/running pose under all coat combinations. Use recolorable brown hair materials for interior shading rather than navy clothing slot 8. Replace the retained flat black cap rim at the nape with the hairline (or the undercut scalp ramp); keep black to the outer contour. Soften the Spiky/Curls side silhouettes and round the tied bun.
 
+Use the vanilla rear sprite as the proportion guide. Lower and narrow every crown, including Crew Cut: the main crown begins six pixels above the native ears; only Spiky, Quiff and Man Bun extend one more pixel. Keep most head sides ten pixels wide instead of the previous twelve-pixel dome. In the idle pose the new crowns contain 52–56 opaque pixels above the ears, compared with the native cap's 68, and their highest pixels sit one or two rows below its tip. Preserve full lower-skull coverage and the native neck position while reducing the oversized upper mass.
+
 The existing sparse layer generator and runtime compositor remain in use. The Normal sprite bank includes both walking and running: only male north-facing poses 1, 5, 6, 10, 14 and 15 receive the revised cuts. This changes 60 hair layers; all other 3,332 layers are byte-identical to v0.0.45, including every female layer, male front/side views, coats and other activities. Both approved battle frame banks are unchanged.
 
-Validation: the Debug ROM builds; `python3 test/legends-style-layers.test.py` passes all 212 native pose tables, art reproduction, actual skin/ear protection, coat order, complete skull interiors and unique rear cuts. The rear-view test now protects real ears/neck instead of incorrectly protecting the retired cap as eye pixels.
+Validation: the Debug ROM builds; `python3 test/legends-style-layers.test.py` passes all 212 native pose tables, art reproduction, actual skin/ear protection, coat order, complete skull interiors and unique rear cuts. The rear-view test now protects real ears/neck instead of incorrectly protecting the retired cap as eye pixels. Regression checks also require each rear crown to stay within the native crown height and opaque-area budget in all six poses and under all coats.
 
 Review exports are decoded from the rebuilt ROM in mGBA with Light skin and the default outfit. The front/back still sheet uses Natural hair; the walking GIF cycles all eight hair colors and contains an Original Emerald reference.
+
+The proportions comparison repeats the vanilla rear sprite beside each revised cut on the same canvas and foot baseline. Front-view preview pixels remain unchanged from the preceding review.
 
 After visual approval, finalize a fine-grained version bump, the three changelog entries and site metadata, then run the normal Release/Debug verified BPS publishing workflow.
 
