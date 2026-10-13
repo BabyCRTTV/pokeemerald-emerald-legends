@@ -9,6 +9,7 @@ import json
 from PIL import Image, ImageDraw
 from build_appearance import ROOT, pack, frames
 from build_style_layers import head, BACK_FRONT_LOCK_RECTS
+from battle_hair_finishes import finish
 
 COLUMNS = ((244,552),(557,877),(882,1203),(1208,1523))
 ROWS = ((133,262),(266,399),(403,535),(540,674),(679,812),(818,952),(958,1103))
@@ -172,7 +173,7 @@ def native_base(p, pose):
             elif v==4:row[x]=8
     return out,face_protected|hands|arm,erase,(fl,ft,fr,fb)
 
-def convert(im, column, p, pose):
+def convert(im, column, p, pose, name=None):
     cell,hair,source_face=source_hair(im,column)
     out,protected,erase,native_face=native_base(p,pose)
     fl,ft,fr,fb=source_face;nl,nt,nr,nb=native_face
@@ -202,6 +203,7 @@ def convert(im, column, p, pose):
         adjacent=[original.get(q,0) for q in ((x-1,y),(x+1,y),(x,y-1),(x,y+1))]
         if 0 in adjacent:mask[x,y]=15
         elif v==11 and adjacent.count(11)<2:mask[x,y]=7
+    finish(mask,name,pose,out)
     for (x,y),v in mask.items():
         if x>nr and nt+3<y<=nb+2:continue
         if (x,y) not in protected:out[y][x]=v
@@ -216,7 +218,7 @@ def build():
     for item in manifest:
         src=Image.open(ROOT/item['source']).convert('RGB')
         assert src.size==(1536,1152)
-        poses=[convert(src,column,native[pose],pose) for pose,column in enumerate(SOURCE_ORDER)]
+        poses=[convert(src,column,native[pose],pose,item['name']) for pose,column in enumerate(SOURCE_ORDER)]
         offset=len(blob);blob.extend(b''.join(pack(p) for p in poses))
         desc.append(f'    {{.data=sMayBattleBits+{offset}, .size=2048, .relativeFrames=TRUE}},')
         out=Image.new('P',(64,256));out.putpalette(sum((list(c) for c in PALETTE),[])+[0]*(768-48))

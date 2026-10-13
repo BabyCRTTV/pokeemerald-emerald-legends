@@ -11,6 +11,7 @@ For build-specific player views, see [CHANGELOG-RELEASE.md](CHANGELOG-RELEASE.md
 - Use a fixed battle uniform instead of layering wardrobe outfits, coats, scarves, footwear, leggings or costumes onto battle backs. Overworld customization and front/wardrobe portraits continue normally. Male and Original-hair female battles use native Emerald art with the selected skin tone until corresponding prepared sheets are available.
 - Fit the supplied hair to native May's original face, body proportions and four throwing poses, using clean three-shade Emerald hair palettes. Keep the native 64x64 frames and moving Ball animation; omit the detached illustration Ball from the supplied sheets.
 - Align battle hair to native eyes in every pose. Preserve full glove cuffs and collar boundaries, restore the arm hidden under May's original hair, and remove leftover forelock/nape pixels; check all 40 frames for detached anatomy or stray pixels.
+- Add a visible red Ponytail tie in every pose and let Twin Braids drape behind the shoulder with a small throw sway. Preserve the other eight approved cuts unchanged.
 - Remove the approved three leftover shoulder cells from May's custom front portraits, including geometry added by legacy jacket assets. Preserve the connected collar and sleeve.
 - Shared by Release and Debug; no variant-specific gameplay differences. Prepared-sprite pipeline and validation: `docs/features/battle-appearance.md`.
 
