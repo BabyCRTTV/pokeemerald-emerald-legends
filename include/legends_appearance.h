@@ -39,6 +39,8 @@ void LegendsSetCardColorSelection(u8 color);
 void LegendsPrepareFootwearPalette(u16 *palette, u8 gender, u8 kind);
 const struct SpriteFrameImage *LegendsFootwearImages(const struct SpriteFrameImage *images, u8 gender, u8 state);
 const u32 *LegendsFootwearFrontPic(enum TrainerPicID pic, const u32 *data);
+const u16 *LegendsMaleFrontPalette(enum TrainerPicID pic);
+void LegendsBuildMaleFront(u32 *picture, u8 *tiles);
 void LegendsFootwearBackPic(enum TrainerPicID pic, u8 *data, u32 size);
 const struct SpriteFrameImage *LegendsFootwearBackImages(enum TrainerPicID pic, const struct SpriteFrameImage *images, u8 frameCount);
 void LegendsApplyCardColor(void);

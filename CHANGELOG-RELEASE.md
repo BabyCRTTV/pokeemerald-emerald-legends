@@ -2,6 +2,12 @@
 
 This is the player-facing history for the recommended **Release** build. Shared Legends changes are repeated here so this file stands on its own; Release-only behavior is called out separately.
 
+## Unreleased — male portrait repair draft
+
+- Prepare generated-reference male front hairstyles with native Emerald face/body geometry for Trainer Card, wardrobe and the new-game preview. Preserve the native Curls cap panel.
+- Repair the five male front outfits, coats, scarves and footwear using separate authored materials; keep the diagonal strap and props distinct from shirt colors. Route the intro through the same front palette helper.
+- Preserve approved overworld/battle and female artwork, saved IDs, fixed costumes and untouched Original. Shared by Release/Debug; artwork awaits visual approval and VERSION remains 0.0.46. Evidence: `docs/qa/male-front-repair.md`.
+
 ## Wiki 1.6.0 - 2026-10-13
 
 - Owner-requested documentation refresh against game v0.0.46. Preserve the wiki design and walkthrough layout; extend Chapters 19–25 through Seafoam, the Hoenn intermission, northern/western Kanto and Faraway Island.

@@ -171,6 +171,11 @@ const u32 *LegendsFootwearFrontPic(enum TrainerPicID pic, const u32 *data)
     u8 leggings = gender == FEMALE ? LegendsGetLeggings() : 0;
     u8 *out;
     u32 i, pos;
+    if (gender == MALE && !LegendsGetCostume() && LegendsMaleFrontPalette(pic) != NULL)
+    {
+        LegendsBuildMaleFront(sFrontPic[MALE], sFrontPixels);
+        return sFrontPic[MALE];
+    }
     if (gender > 1 || LegendsGetCostume() || (!shoes && !hair && !hairColor && !coat && !leggings))
         return data;
     LegendsUpdateAppearancePalettes();

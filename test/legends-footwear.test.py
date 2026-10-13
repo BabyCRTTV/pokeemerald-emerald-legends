@@ -41,6 +41,10 @@ u8 LegendsGetScarf(void){return 0;}
 #define LEGENDS_HAIR_COUNT 11
 #define LEGENDS_JACKET_COUNT 3
 void LegendsUpdateAppearancePalettes(void){}
+// The dedicated male-front path has its own real-C palette/asset regression.
+// Keep this suite focused on the unchanged world, female and legacy compositor.
+const u16 *LegendsMaleFrontPalette(enum TrainerPicID pic){return NULL;}
+void LegendsBuildMaleFront(u32 *picture,u8 *tiles){assert(0);}
 #define CpuSmartCopy16(s,d,n) memcpy(d,s,n)
 void DecompressDataWithHeaderWram(const u32*s,void*d){memcpy(d,s,2048);}
 static u16 cardPal[48];
