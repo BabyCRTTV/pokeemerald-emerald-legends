@@ -38,7 +38,14 @@
   {label:'Lavender / Rock Tunnel',page:'walkthrough-kanto-current',section:'lavender-to-rock-tunnel',hint:'The northern survey road'},
   {label:'Route 10 / Power Plant',page:'walkthrough-kanto-current',section:'route-10-and-the-river',hint:'Center and Surf approach'},
   {label:'Power Plant — feeds',page:'walkthrough-kanto-current',section:'make-both-unused-feeds-safe',hint:'Isolate both terminals'},
-  {label:'Power Plant — Zapdos',page:'walkthrough-kanto-current',section:'observe-zapdos-at-the-roost',hint:'Observation and optional battle'}
+  {label:'Power Plant — Zapdos',page:'walkthrough-kanto-current',section:'observe-zapdos-at-the-roost',hint:'Observation and optional battle'},
+  {label:'Seafoam / Articuno',page:'walkthrough-stillwater',section:'drop-the-upper-boulders',hint:'Stillwater Wings'},
+  {label:'Weather Institute — return',page:'walkthrough-sleeping-continent',section:'answer-the-hoenn-call',hint:'Begin The Sleeping Continent'},
+  {label:'Fiery Path / Regigigas',page:'walkthrough-sleeping-continent',section:'enter-the-fiery-path-fault',hint:'Continental Vault'},
+  {label:'Cerulean / Misty',page:'walkthrough-stone-tide',section:'misty-and-the-river-reading',hint:'River comparison'},
+  {label:'Pewter / Brock',page:'walkthrough-stone-tide',section:'brock-and-the-stone-reading',hint:'Stone comparison'},
+  {label:'Cinnabar / Blaine',page:'walkthrough-ember-passage',section:'blaines-visiting-challenge',hint:'Ember’s Passage'},
+  {label:'Mt. Ember / Moltres',page:'walkthrough-ember-passage',section:'climb-mt-ember',hint:'Summit expedition'}
  ];
  function readingWalkthrough(active){document.documentElement.classList.toggle('reading-walkthrough',active);root.dataset.walkthroughPage='';}
  function walkthroughNavigation(id){
@@ -133,7 +140,7 @@
  function home(push=true){
    readingWalkthrough(false);setLocation({},push);side('');
    outline.innerHTML='<strong>Wiki guide</strong><p>Choose an article or search for a feature. Everything is open to read.</p>';
-   root.innerHTML='<section class="welcome"><h1 class="wiki-game-logo"><img src="legends-logo.svg" width="166" height="93" alt="Pokémon Emerald: Legends"></h1><p>Choose a topic below, or jump straight to Pokémon and wild encounters.</p><div class="dex-shortcuts" aria-label="LegendsDex shortcuts"><a href="dex.html?view=routes">⌁ Routes <small>Wild encounter guide</small></a><a href="dex.html?view=species">◈ Pokédex <small>Browse Pokémon</small></a></div><p class="walkthrough-shortcut"><a href="?page=walkthrough" data-page="walkthrough" class="action">Walkthrough <span aria-hidden="true">→</span></a><small>Eighteen chapters from New Game to Kanto’s Wing Survey</small></p><label class="searchrow"><span aria-hidden="true">⌕</span><input id="search" type="search" placeholder="Search articles, features, and places…" aria-label="Search wiki" autocomplete="off"><span class="small">/</span></label><p class="results-note" id="resultsnote">Browse '+pages.length+' articles across seven sections.</p></section><div id="cards"></div>';
+   root.innerHTML='<section class="welcome"><h1 class="wiki-game-logo"><img src="legends-logo.svg" width="166" height="93" alt="Pokémon Emerald: Legends"></h1><p>Choose a topic below, or jump straight to Pokémon and wild encounters.</p><div class="dex-shortcuts" aria-label="LegendsDex shortcuts"><a href="dex.html?view=routes">⌁ Routes <small>Wild encounter guide</small></a><a href="dex.html?view=species">◈ Pokédex <small>Browse Pokémon</small></a></div><p class="walkthrough-shortcut"><a href="?page=walkthrough" data-page="walkthrough" class="action">Walkthrough <span aria-hidden="true">→</span></a><small>Twenty-two chapters from New Game through the Wing Survey and Hoenn intermission</small></p><label class="searchrow"><span aria-hidden="true">⌕</span><input id="search" type="search" placeholder="Search articles, features, and places…" aria-label="Search wiki" autocomplete="off"><span class="small">/</span></label><p class="results-note" id="resultsnote">Browse '+pages.length+' articles across seven sections.</p></section><div id="cards"></div>';
    const input=document.getElementById('search');input.addEventListener('input',()=>cards(input.value));cards('');document.title='Emerald: Legends Wiki';menuClose();focusContent();
  }
  function cards(q){

@@ -1,5 +1,5 @@
 {
-  "sourceCommit": "d19f13ca089dcf6ea165ce1595b04a65a637238a",
+  "sourceCommit": "b08a71b89faee7e7b6f818d3c65650ae777fb5a4",
   "image": "map-hoenn.png",
   "places": {
     "littleroot": {
@@ -1387,6 +1387,1082 @@
         [
           144,
           32
+        ]
+      ]
+    },
+    "MAP_ROUTE101": {
+      "name": "Route 101",
+      "mapId": "MAP_ROUTE101",
+      "cells": [
+        [
+          32,
+          80
+        ]
+      ]
+    },
+    "MAP_ROUTE102": {
+      "name": "Route 102",
+      "mapId": "MAP_ROUTE102",
+      "cells": [
+        [
+          16,
+          72
+        ],
+        [
+          24,
+          72
+        ]
+      ]
+    },
+    "MAP_ROUTE103": {
+      "name": "Route 103",
+      "mapId": "MAP_ROUTE103",
+      "cells": [
+        [
+          32,
+          64
+        ],
+        [
+          40,
+          64
+        ],
+        [
+          48,
+          64
+        ],
+        [
+          56,
+          64
+        ]
+      ]
+    },
+    "MAP_ROUTE104": {
+      "name": "Route 104",
+      "mapId": "MAP_ROUTE104",
+      "cells": [
+        [
+          0,
+          56
+        ],
+        [
+          0,
+          64
+        ],
+        [
+          0,
+          72
+        ]
+      ]
+    },
+    "MAP_ROUTE105": {
+      "name": "Route 105",
+      "mapId": "MAP_ROUTE105",
+      "cells": [
+        [
+          0,
+          80
+        ],
+        [
+          0,
+          88
+        ],
+        [
+          0,
+          96
+        ]
+      ]
+    },
+    "MAP_ROUTE107": {
+      "name": "Route 107",
+      "mapId": "MAP_ROUTE107",
+      "cells": [
+        [
+          24,
+          112
+        ],
+        [
+          32,
+          112
+        ],
+        [
+          40,
+          112
+        ]
+      ]
+    },
+    "MAP_ROUTE108": {
+      "name": "Route 108",
+      "mapId": "MAP_ROUTE108",
+      "cells": [
+        [
+          48,
+          112
+        ],
+        [
+          56,
+          112
+        ]
+      ]
+    },
+    "MAP_ROUTE115": {
+      "name": "Route 115",
+      "mapId": "MAP_ROUTE115",
+      "cells": [
+        [
+          0,
+          16
+        ],
+        [
+          0,
+          24
+        ],
+        [
+          0,
+          32
+        ]
+      ]
+    },
+    "MAP_ROUTE116": {
+      "name": "Route 116",
+      "mapId": "MAP_ROUTE116",
+      "cells": [
+        [
+          8,
+          40
+        ],
+        [
+          16,
+          40
+        ],
+        [
+          24,
+          40
+        ],
+        [
+          32,
+          40
+        ]
+      ]
+    },
+    "MAP_ROUTE123": {
+      "name": "Route 123",
+      "mapId": "MAP_ROUTE123",
+      "cells": [
+        [
+          96,
+          48
+        ],
+        [
+          104,
+          48
+        ],
+        [
+          112,
+          48
+        ],
+        [
+          120,
+          48
+        ],
+        [
+          128,
+          48
+        ]
+      ]
+    },
+    "MAP_UNDERWATER_ROUTE124": {
+      "name": "Underwater Route 124",
+      "mapId": "MAP_UNDERWATER_ROUTE124",
+      "cells": [
+        [
+          160,
+          24
+        ],
+        [
+          168,
+          24
+        ],
+        [
+          176,
+          24
+        ],
+        [
+          184,
+          24
+        ],
+        [
+          160,
+          32
+        ],
+        [
+          168,
+          32
+        ],
+        [
+          176,
+          32
+        ],
+        [
+          184,
+          32
+        ],
+        [
+          160,
+          40
+        ],
+        [
+          168,
+          40
+        ],
+        [
+          176,
+          40
+        ],
+        [
+          184,
+          40
+        ]
+      ]
+    },
+    "MAP_ROUTE129": {
+      "name": "Route 129",
+      "mapId": "MAP_ROUTE129",
+      "cells": [
+        [
+          192,
+          80
+        ],
+        [
+          200,
+          80
+        ]
+      ]
+    },
+    "MAP_ROUTE130": {
+      "name": "Route 130",
+      "mapId": "MAP_ROUTE130",
+      "cells": [
+        [
+          168,
+          80
+        ],
+        [
+          176,
+          80
+        ],
+        [
+          184,
+          80
+        ]
+      ]
+    },
+    "MAP_ROUTE132": {
+      "name": "Route 132",
+      "mapId": "MAP_ROUTE132",
+      "cells": [
+        [
+          120,
+          80
+        ],
+        [
+          128,
+          80
+        ]
+      ]
+    },
+    "MAP_ROUTE133": {
+      "name": "Route 133",
+      "mapId": "MAP_ROUTE133",
+      "cells": [
+        [
+          96,
+          80
+        ],
+        [
+          104,
+          80
+        ],
+        [
+          112,
+          80
+        ]
+      ]
+    },
+    "MAP_ROUTE134": {
+      "name": "Route 134",
+      "mapId": "MAP_ROUTE134",
+      "cells": [
+        [
+          72,
+          80
+        ],
+        [
+          80,
+          80
+        ],
+        [
+          88,
+          80
+        ]
+      ]
+    },
+    "MAP_ABANDONED_SHIP_HIDDEN_FLOOR_CORRIDORS": {
+      "name": "Abandoned Ship Hidden Floor Corridors",
+      "mapId": "MAP_ABANDONED_SHIP_HIDDEN_FLOOR_CORRIDORS",
+      "cells": [
+        [
+          48,
+          112
+        ]
+      ]
+    },
+    "MAP_ABANDONED_SHIP_ROOMS_B1F": {
+      "name": "Abandoned Ship Rooms B1F",
+      "mapId": "MAP_ABANDONED_SHIP_ROOMS_B1F",
+      "cells": [
+        [
+          48,
+          112
+        ]
+      ]
+    },
+    "MAP_ALTERING_CAVE": {
+      "name": "Altering Cave",
+      "mapId": "MAP_ALTERING_CAVE",
+      "cells": [
+        [
+          48,
+          64
+        ]
+      ]
+    },
+    "MAP_ARTISAN_CAVE_1F": {
+      "name": "Artisan Cave 1F",
+      "mapId": "MAP_ARTISAN_CAVE_1F",
+      "cells": [
+        [
+          176,
+          96
+        ]
+      ]
+    },
+    "MAP_ARTISAN_CAVE_B1F": {
+      "name": "Artisan Cave B1F",
+      "mapId": "MAP_ARTISAN_CAVE_B1F",
+      "cells": [
+        [
+          176,
+          96
+        ]
+      ]
+    },
+    "MAP_CAVE_OF_ORIGIN_1F": {
+      "name": "Cave Of Origin 1F",
+      "mapId": "MAP_CAVE_OF_ORIGIN_1F",
+      "cells": [
+        [
+          168,
+          56
+        ]
+      ]
+    },
+    "MAP_CAVE_OF_ORIGIN_UNUSED_RUBY_SAPPHIRE_MAP1": {
+      "name": "Cave Of Origin Unused Ruby Sapphire Map1",
+      "mapId": "MAP_CAVE_OF_ORIGIN_UNUSED_RUBY_SAPPHIRE_MAP1",
+      "cells": [
+        [
+          168,
+          56
+        ]
+      ]
+    },
+    "MAP_CAVE_OF_ORIGIN_UNUSED_RUBY_SAPPHIRE_MAP2": {
+      "name": "Cave Of Origin Unused Ruby Sapphire Map2",
+      "mapId": "MAP_CAVE_OF_ORIGIN_UNUSED_RUBY_SAPPHIRE_MAP2",
+      "cells": [
+        [
+          168,
+          56
+        ]
+      ]
+    },
+    "MAP_CAVE_OF_ORIGIN_UNUSED_RUBY_SAPPHIRE_MAP3": {
+      "name": "Cave Of Origin Unused Ruby Sapphire Map3",
+      "mapId": "MAP_CAVE_OF_ORIGIN_UNUSED_RUBY_SAPPHIRE_MAP3",
+      "cells": [
+        [
+          168,
+          56
+        ]
+      ]
+    },
+    "MAP_DESERT_UNDERPASS": {
+      "name": "Desert Underpass",
+      "mapId": "MAP_DESERT_UNDERPASS",
+      "cells": [
+        [
+          16,
+          0
+        ]
+      ]
+    },
+    "MAP_GRANITE_CAVE_STEVENS_ROOM": {
+      "name": "Granite Cave Stevens Room",
+      "mapId": "MAP_GRANITE_CAVE_STEVENS_ROOM",
+      "cells": [
+        [
+          8,
+          104
+        ]
+      ]
+    },
+    "MAP_MAGMA_HIDEOUT_2F_1R": {
+      "name": "Magma Hideout 2F 1r",
+      "mapId": "MAP_MAGMA_HIDEOUT_2F_1R",
+      "cells": [
+        [
+          48,
+          24
+        ]
+      ]
+    },
+    "MAP_MAGMA_HIDEOUT_2F_2R": {
+      "name": "Magma Hideout 2F 2r",
+      "mapId": "MAP_MAGMA_HIDEOUT_2F_2R",
+      "cells": [
+        [
+          48,
+          24
+        ]
+      ]
+    },
+    "MAP_MAGMA_HIDEOUT_2F_3R": {
+      "name": "Magma Hideout 2F 3r",
+      "mapId": "MAP_MAGMA_HIDEOUT_2F_3R",
+      "cells": [
+        [
+          48,
+          24
+        ]
+      ]
+    },
+    "MAP_MAGMA_HIDEOUT_3F_1R": {
+      "name": "Magma Hideout 3F 1r",
+      "mapId": "MAP_MAGMA_HIDEOUT_3F_1R",
+      "cells": [
+        [
+          48,
+          24
+        ]
+      ]
+    },
+    "MAP_MAGMA_HIDEOUT_3F_2R": {
+      "name": "Magma Hideout 3F 2r",
+      "mapId": "MAP_MAGMA_HIDEOUT_3F_2R",
+      "cells": [
+        [
+          48,
+          24
+        ]
+      ]
+    },
+    "MAP_MAGMA_HIDEOUT_3F_3R": {
+      "name": "Magma Hideout 3F 3r",
+      "mapId": "MAP_MAGMA_HIDEOUT_3F_3R",
+      "cells": [
+        [
+          48,
+          24
+        ]
+      ]
+    },
+    "MAP_METEOR_FALLS_1F_2R": {
+      "name": "Meteor Falls 1F 2r",
+      "mapId": "MAP_METEOR_FALLS_1F_2R",
+      "cells": [
+        [
+          0,
+          24
+        ]
+      ]
+    },
+    "MAP_METEOR_FALLS_B1F_1R": {
+      "name": "Meteor Falls B1F 1r",
+      "mapId": "MAP_METEOR_FALLS_B1F_1R",
+      "cells": [
+        [
+          0,
+          24
+        ]
+      ]
+    },
+    "MAP_METEOR_FALLS_B1F_2R": {
+      "name": "Meteor Falls B1F 2r",
+      "mapId": "MAP_METEOR_FALLS_B1F_2R",
+      "cells": [
+        [
+          0,
+          24
+        ]
+      ]
+    },
+    "MAP_METEOR_FALLS_STEVENS_CAVE": {
+      "name": "Meteor Falls Stevens Cave",
+      "mapId": "MAP_METEOR_FALLS_STEVENS_CAVE",
+      "cells": [
+        [
+          0,
+          24
+        ]
+      ]
+    },
+    "MAP_MIRAGE_TOWER_2F": {
+      "name": "Mirage Tower 2F",
+      "mapId": "MAP_MIRAGE_TOWER_2F",
+      "cells": [
+        [
+          64,
+          16
+        ]
+      ]
+    },
+    "MAP_MIRAGE_TOWER_3F": {
+      "name": "Mirage Tower 3F",
+      "mapId": "MAP_MIRAGE_TOWER_3F",
+      "cells": [
+        [
+          64,
+          16
+        ]
+      ]
+    },
+    "MAP_MIRAGE_TOWER_4F": {
+      "name": "Mirage Tower 4F",
+      "mapId": "MAP_MIRAGE_TOWER_4F",
+      "cells": [
+        [
+          64,
+          16
+        ]
+      ]
+    },
+    "MAP_MT_PYRE_1F": {
+      "name": "Mt. Pyre 1F",
+      "mapId": "MAP_MT_PYRE_1F",
+      "cells": [
+        [
+          128,
+          32
+        ]
+      ]
+    },
+    "MAP_MT_PYRE_2F": {
+      "name": "Mt. Pyre 2F",
+      "mapId": "MAP_MT_PYRE_2F",
+      "cells": [
+        [
+          128,
+          32
+        ]
+      ]
+    },
+    "MAP_MT_PYRE_3F": {
+      "name": "Mt. Pyre 3F",
+      "mapId": "MAP_MT_PYRE_3F",
+      "cells": [
+        [
+          128,
+          32
+        ]
+      ]
+    },
+    "MAP_MT_PYRE_4F": {
+      "name": "Mt. Pyre 4F",
+      "mapId": "MAP_MT_PYRE_4F",
+      "cells": [
+        [
+          128,
+          32
+        ]
+      ]
+    },
+    "MAP_MT_PYRE_5F": {
+      "name": "Mt. Pyre 5f",
+      "mapId": "MAP_MT_PYRE_5F",
+      "cells": [
+        [
+          128,
+          32
+        ]
+      ]
+    },
+    "MAP_MT_PYRE_6F": {
+      "name": "Mt. Pyre 6f",
+      "mapId": "MAP_MT_PYRE_6F",
+      "cells": [
+        [
+          128,
+          32
+        ]
+      ]
+    },
+    "MAP_PETALBURG_WOODS": {
+      "name": "Petalburg Woods",
+      "mapId": "MAP_PETALBURG_WOODS",
+      "cells": [
+        [
+          0,
+          64
+        ]
+      ]
+    },
+    "MAP_SAFARI_ZONE_NORTH": {
+      "name": "Safari Zone North",
+      "mapId": "MAP_SAFARI_ZONE_NORTH",
+      "cells": [
+        [
+          128,
+          16
+        ]
+      ]
+    },
+    "MAP_SAFARI_ZONE_NORTHEAST": {
+      "name": "Safari Zone Northeast",
+      "mapId": "MAP_SAFARI_ZONE_NORTHEAST",
+      "cells": [
+        [
+          128,
+          16
+        ]
+      ]
+    },
+    "MAP_SAFARI_ZONE_NORTHWEST": {
+      "name": "Safari Zone Northwest",
+      "mapId": "MAP_SAFARI_ZONE_NORTHWEST",
+      "cells": [
+        [
+          128,
+          16
+        ]
+      ]
+    },
+    "MAP_SAFARI_ZONE_SOUTH": {
+      "name": "Safari Zone South",
+      "mapId": "MAP_SAFARI_ZONE_SOUTH",
+      "cells": [
+        [
+          128,
+          16
+        ]
+      ]
+    },
+    "MAP_SAFARI_ZONE_SOUTHEAST": {
+      "name": "Safari Zone Southeast",
+      "mapId": "MAP_SAFARI_ZONE_SOUTHEAST",
+      "cells": [
+        [
+          128,
+          16
+        ]
+      ]
+    },
+    "MAP_SAFARI_ZONE_SOUTHWEST": {
+      "name": "Safari Zone Southwest",
+      "mapId": "MAP_SAFARI_ZONE_SOUTHWEST",
+      "cells": [
+        [
+          128,
+          16
+        ]
+      ]
+    },
+    "MAP_SEAFLOOR_CAVERN_ROOM2": {
+      "name": "Seafloor Cavern Room2",
+      "mapId": "MAP_SEAFLOOR_CAVERN_ROOM2",
+      "cells": [
+        [
+          192,
+          72
+        ]
+      ]
+    },
+    "MAP_SEAFLOOR_CAVERN_ROOM3": {
+      "name": "Seafloor Cavern Room3",
+      "mapId": "MAP_SEAFLOOR_CAVERN_ROOM3",
+      "cells": [
+        [
+          192,
+          72
+        ]
+      ]
+    },
+    "MAP_SEAFLOOR_CAVERN_ROOM4": {
+      "name": "Seafloor Cavern Room4",
+      "mapId": "MAP_SEAFLOOR_CAVERN_ROOM4",
+      "cells": [
+        [
+          192,
+          72
+        ]
+      ]
+    },
+    "MAP_SEAFLOOR_CAVERN_ROOM5": {
+      "name": "Seafloor Cavern Room5",
+      "mapId": "MAP_SEAFLOOR_CAVERN_ROOM5",
+      "cells": [
+        [
+          192,
+          72
+        ]
+      ]
+    },
+    "MAP_SEAFLOOR_CAVERN_ROOM6": {
+      "name": "Seafloor Cavern Room6",
+      "mapId": "MAP_SEAFLOOR_CAVERN_ROOM6",
+      "cells": [
+        [
+          192,
+          72
+        ]
+      ]
+    },
+    "MAP_SEAFLOOR_CAVERN_ROOM7": {
+      "name": "Seafloor Cavern Room7",
+      "mapId": "MAP_SEAFLOOR_CAVERN_ROOM7",
+      "cells": [
+        [
+          192,
+          72
+        ]
+      ]
+    },
+    "MAP_SHOAL_CAVE_LOW_TIDE_ENTRANCE_ROOM": {
+      "name": "Shoal Cave Low Tide Entrance Room",
+      "mapId": "MAP_SHOAL_CAVE_LOW_TIDE_ENTRANCE_ROOM",
+      "cells": [
+        [
+          192,
+          32
+        ]
+      ]
+    },
+    "MAP_SHOAL_CAVE_LOW_TIDE_ICE_ROOM": {
+      "name": "Shoal Cave Low Tide Ice Room",
+      "mapId": "MAP_SHOAL_CAVE_LOW_TIDE_ICE_ROOM",
+      "cells": [
+        [
+          192,
+          32
+        ]
+      ]
+    },
+    "MAP_SHOAL_CAVE_LOW_TIDE_INNER_ROOM": {
+      "name": "Shoal Cave Low Tide Inner Room",
+      "mapId": "MAP_SHOAL_CAVE_LOW_TIDE_INNER_ROOM",
+      "cells": [
+        [
+          192,
+          32
+        ]
+      ]
+    },
+    "MAP_SHOAL_CAVE_LOW_TIDE_LOWER_ROOM": {
+      "name": "Shoal Cave Low Tide Lower Room",
+      "mapId": "MAP_SHOAL_CAVE_LOW_TIDE_LOWER_ROOM",
+      "cells": [
+        [
+          192,
+          32
+        ]
+      ]
+    },
+    "MAP_SHOAL_CAVE_LOW_TIDE_STAIRS_ROOM": {
+      "name": "Shoal Cave Low Tide Stairs Room",
+      "mapId": "MAP_SHOAL_CAVE_LOW_TIDE_STAIRS_ROOM",
+      "cells": [
+        [
+          192,
+          32
+        ]
+      ]
+    },
+    "MAP_SKY_PILLAR_3F": {
+      "name": "Sky Pillar 3F",
+      "mapId": "MAP_SKY_PILLAR_3F",
+      "cells": [
+        [
+          152,
+          80
+        ]
+      ]
+    },
+    "MAP_SKY_PILLAR_5F": {
+      "name": "Sky Pillar 5f",
+      "mapId": "MAP_SKY_PILLAR_5F",
+      "cells": [
+        [
+          152,
+          80
+        ]
+      ]
+    },
+    "MAP_LEGENDS_KANTO_MT_MOON_1F": {
+      "name": "Mt. Moon 1F",
+      "mapId": "MAP_LEGENDS_KANTO_MT_MOON_1F",
+      "cells": [
+        [
+          72,
+          24
+        ]
+      ]
+    },
+    "MAP_LEGENDS_KANTO_MT_MOON_B1F": {
+      "name": "Mt. Moon B1F",
+      "mapId": "MAP_LEGENDS_KANTO_MT_MOON_B1F",
+      "cells": [
+        [
+          72,
+          24
+        ]
+      ]
+    },
+    "MAP_LEGENDS_KANTO_MT_MOON_B2F": {
+      "name": "Mt. Moon B2F",
+      "mapId": "MAP_LEGENDS_KANTO_MT_MOON_B2F",
+      "cells": [
+        [
+          72,
+          24
+        ]
+      ]
+    },
+    "MAP_LEGENDS_KANTO_SEAFOAM_ISLANDS_1F": {
+      "name": "Seafoam Islands 1F",
+      "mapId": "MAP_LEGENDS_KANTO_SEAFOAM_ISLANDS_1F",
+      "cells": [
+        [
+          64,
+          112
+        ]
+      ]
+    },
+    "MAP_LEGENDS_KANTO_SEAFOAM_ISLANDS_B1F": {
+      "name": "Seafoam Islands B1F",
+      "mapId": "MAP_LEGENDS_KANTO_SEAFOAM_ISLANDS_B1F",
+      "cells": [
+        [
+          64,
+          112
+        ]
+      ]
+    },
+    "MAP_LEGENDS_KANTO_SEAFOAM_ISLANDS_B2F": {
+      "name": "Seafoam Islands B2F",
+      "mapId": "MAP_LEGENDS_KANTO_SEAFOAM_ISLANDS_B2F",
+      "cells": [
+        [
+          64,
+          112
+        ]
+      ]
+    },
+    "MAP_LEGENDS_KANTO_SEAFOAM_ISLANDS_B3F": {
+      "name": "Seafoam Islands B3F",
+      "mapId": "MAP_LEGENDS_KANTO_SEAFOAM_ISLANDS_B3F",
+      "cells": [
+        [
+          64,
+          112
+        ]
+      ]
+    },
+    "MAP_LEGENDS_KANTO_SEAFOAM_ISLANDS_B4F": {
+      "name": "Seafoam Islands B4F",
+      "mapId": "MAP_LEGENDS_KANTO_SEAFOAM_ISLANDS_B4F",
+      "cells": [
+        [
+          64,
+          112
+        ]
+      ]
+    },
+    "MAP_LEGENDS_KANTO_MT_EMBER_EXTERIOR": {
+      "name": "Mt. Ember Exterior",
+      "mapId": "MAP_LEGENDS_KANTO_MT_EMBER_EXTERIOR",
+      "cells": [
+        [
+          16,
+          24
+        ]
+      ]
+    },
+    "MAP_LEGENDS_KANTO_MT_EMBER_SUMMIT_PATH_1F": {
+      "name": "Mt. Ember Summit Path 1F",
+      "mapId": "MAP_LEGENDS_KANTO_MT_EMBER_SUMMIT_PATH_1F",
+      "cells": [
+        [
+          16,
+          24
+        ]
+      ]
+    },
+    "MAP_LEGENDS_KANTO_MT_EMBER_SUMMIT_PATH_2F": {
+      "name": "Mt. Ember Summit Path 2F",
+      "mapId": "MAP_LEGENDS_KANTO_MT_EMBER_SUMMIT_PATH_2F",
+      "cells": [
+        [
+          16,
+          24
+        ]
+      ]
+    },
+    "MAP_LEGENDS_KANTO_MT_EMBER_SUMMIT_PATH_3F": {
+      "name": "Mt. Ember Summit Path 3F",
+      "mapId": "MAP_LEGENDS_KANTO_MT_EMBER_SUMMIT_PATH_3F",
+      "cells": [
+        [
+          16,
+          24
+        ]
+      ]
+    },
+    "MAP_LEGENDS_KANTO_ROUTE3": {
+      "name": "Route3",
+      "mapId": "MAP_LEGENDS_KANTO_ROUTE3",
+      "cells": [
+        [
+          40,
+          32
+        ],
+        [
+          48,
+          32
+        ],
+        [
+          56,
+          32
+        ],
+        [
+          64,
+          32
+        ]
+      ]
+    },
+    "MAP_LEGENDS_KANTO_ROUTE4": {
+      "name": "Route4",
+      "mapId": "MAP_LEGENDS_KANTO_ROUTE4",
+      "cells": [
+        [
+          72,
+          24
+        ],
+        [
+          80,
+          24
+        ],
+        [
+          88,
+          24
+        ],
+        [
+          96,
+          24
+        ],
+        [
+          104,
+          24
+        ]
+      ]
+    },
+    "MAP_LEGENDS_KANTO_ROUTE9": {
+      "name": "Route9",
+      "mapId": "MAP_LEGENDS_KANTO_ROUTE9",
+      "cells": [
+        [
+          120,
+          24
+        ],
+        [
+          128,
+          24
+        ],
+        [
+          136,
+          24
+        ]
+      ]
+    },
+    "MAP_LEGENDS_KANTO_ROUTE20": {
+      "name": "Route20",
+      "mapId": "MAP_LEGENDS_KANTO_ROUTE20",
+      "cells": [
+        [
+          40,
+          112
+        ],
+        [
+          48,
+          112
+        ],
+        [
+          56,
+          112
+        ],
+        [
+          64,
+          112
+        ],
+        [
+          72,
+          112
+        ],
+        [
+          80,
+          112
+        ],
+        [
+          88,
+          112
+        ]
+      ]
+    },
+    "MAP_LEGENDS_KANTO_CERULEAN_CITY": {
+      "name": "Cerulean City",
+      "mapId": "MAP_LEGENDS_KANTO_CERULEAN_CITY",
+      "cells": [
+        [
+          112,
+          24
+        ]
+      ]
+    },
+    "MAP_LEGENDS_KANTO_CINNABAR_ISLAND": {
+      "name": "Cinnabar Island",
+      "mapId": "MAP_LEGENDS_KANTO_CINNABAR_ISLAND",
+      "cells": [
+        [
+          32,
+          112
+        ]
+      ]
+    },
+    "MAP_LEGENDS_KANTO_PEWTER_CITY": {
+      "name": "Pewter City",
+      "mapId": "MAP_LEGENDS_KANTO_PEWTER_CITY",
+      "cells": [
+        [
+          32,
+          32
+        ]
+      ]
+    },
+    "MAP_LEGENDS_HOENN_CONTINENTAL_VAULT": {
+      "name": "Continental Vault / Fiery Path",
+      "mapId": null,
+      "cells": [
+        [
+          48,
+          24
         ]
       ]
     }
@@ -3195,6 +4271,426 @@
         "region": "Kanto",
         "note": ""
       }
+    ],
+    "walkthrough-stillwater": [
+      {
+        "section": "chapter-overview",
+        "places": [
+          "MAP_LEGENDS_KANTO_ROUTE19",
+          "MAP_LEGENDS_KANTO_ROUTE20",
+          "MAP_LEGENDS_KANTO_SEAFOAM_ISLANDS_1F"
+        ],
+        "encounters": [],
+        "availableMethods": [
+          "land",
+          "rock",
+          "surf",
+          "old_rod",
+          "good_rod",
+          "super_rod"
+        ],
+        "region": "Kanto",
+        "note": ""
+      },
+      {
+        "section": "section-fuchsia-to-seafoam",
+        "places": [
+          "MAP_LEGENDS_KANTO_ROUTE19",
+          "MAP_LEGENDS_KANTO_ROUTE20"
+        ],
+        "encounters": [
+          "MAP_LEGENDS_KANTO_ROUTE19",
+          "MAP_LEGENDS_KANTO_ROUTE20"
+        ],
+        "availableMethods": [
+          "land",
+          "rock",
+          "surf",
+          "old_rod",
+          "good_rod",
+          "super_rod"
+        ],
+        "region": "Kanto",
+        "note": ""
+      },
+      {
+        "section": "section-drop-the-upper-boulders",
+        "places": [
+          "MAP_LEGENDS_KANTO_SEAFOAM_ISLANDS_1F",
+          "MAP_LEGENDS_KANTO_SEAFOAM_ISLANDS_B1F",
+          "MAP_LEGENDS_KANTO_SEAFOAM_ISLANDS_B2F"
+        ],
+        "encounters": [
+          "MAP_LEGENDS_KANTO_SEAFOAM_ISLANDS_1F",
+          "MAP_LEGENDS_KANTO_SEAFOAM_ISLANDS_B1F",
+          "MAP_LEGENDS_KANTO_SEAFOAM_ISLANDS_B2F"
+        ],
+        "availableMethods": [
+          "land",
+          "rock",
+          "surf",
+          "old_rod",
+          "good_rod",
+          "super_rod"
+        ],
+        "region": "Kanto",
+        "note": ""
+      },
+      {
+        "section": "section-settle-both-currents",
+        "places": [
+          "MAP_LEGENDS_KANTO_SEAFOAM_ISLANDS_B3F",
+          "MAP_LEGENDS_KANTO_SEAFOAM_ISLANDS_B4F"
+        ],
+        "encounters": [
+          "MAP_LEGENDS_KANTO_SEAFOAM_ISLANDS_B3F",
+          "MAP_LEGENDS_KANTO_SEAFOAM_ISLANDS_B4F"
+        ],
+        "availableMethods": [
+          "land",
+          "rock",
+          "surf",
+          "old_rod",
+          "good_rod",
+          "super_rod"
+        ],
+        "region": "Kanto",
+        "note": ""
+      },
+      {
+        "section": "section-observe-or-challenge-articuno",
+        "places": [
+          "MAP_LEGENDS_KANTO_SEAFOAM_ISLANDS_B4F"
+        ],
+        "encounters": [],
+        "availableMethods": [
+          "land",
+          "rock",
+          "surf",
+          "old_rod",
+          "good_rod",
+          "super_rod"
+        ],
+        "region": "Kanto",
+        "note": "Articuno is a scripted level 50 encounter; observing it advances the survey without capture."
+      }
+    ],
+    "walkthrough-sleeping-continent": [
+      {
+        "section": "chapter-overview",
+        "places": [
+          "MAP_ROUTE119",
+          "MAP_ROUTE111",
+          "MAP_FIERY_PATH"
+        ],
+        "encounters": [],
+        "availableMethods": [
+          "land",
+          "rock",
+          "surf",
+          "old_rod",
+          "good_rod",
+          "super_rod"
+        ],
+        "region": "Hoenn",
+        "note": ""
+      },
+      {
+        "section": "section-record-the-river-and-desert-cycles",
+        "places": [
+          "MAP_ROUTE119",
+          "MAP_ROUTE111"
+        ],
+        "encounters": [
+          "MAP_ROUTE119",
+          "MAP_ROUTE111"
+        ],
+        "availableMethods": [
+          "land",
+          "rock",
+          "surf",
+          "old_rod",
+          "good_rod",
+          "super_rod"
+        ],
+        "region": "Hoenn",
+        "note": ""
+      },
+      {
+        "section": "section-enter-the-fiery-path-fault",
+        "places": [
+          "MAP_ROUTE112",
+          "MAP_FIERY_PATH"
+        ],
+        "encounters": [
+          "MAP_FIERY_PATH"
+        ],
+        "availableMethods": [
+          "land",
+          "rock",
+          "surf",
+          "old_rod",
+          "good_rod",
+          "super_rod"
+        ],
+        "region": "Hoenn",
+        "note": ""
+      },
+      {
+        "section": "section-restore-the-three-regulators",
+        "places": [
+          "MAP_LEGENDS_HOENN_CONTINENTAL_VAULT"
+        ],
+        "encounters": [],
+        "availableMethods": [
+          "land",
+          "rock",
+          "surf",
+          "old_rod",
+          "good_rod",
+          "super_rod"
+        ],
+        "region": "Hoenn",
+        "note": "The vault uses Fiery Path’s surface marker. Its Regigigas battle is scripted, not an ordinary cave slot."
+      },
+      {
+        "section": "section-file-the-institute-report",
+        "places": [
+          "MAP_ROUTE119"
+        ],
+        "encounters": [],
+        "availableMethods": [
+          "land",
+          "rock",
+          "surf",
+          "old_rod",
+          "good_rod",
+          "super_rod"
+        ],
+        "region": "Hoenn",
+        "note": ""
+      }
+    ],
+    "walkthrough-stone-tide": [
+      {
+        "section": "chapter-overview",
+        "places": [
+          "MAP_LEGENDS_KANTO_CERULEAN_CITY",
+          "MAP_LEGENDS_KANTO_PEWTER_CITY",
+          "MAP_LEGENDS_KANTO_MT_MOON_1F"
+        ],
+        "encounters": [],
+        "availableMethods": [
+          "land",
+          "rock",
+          "surf",
+          "old_rod",
+          "good_rod",
+          "super_rod"
+        ],
+        "region": "Kanto",
+        "note": ""
+      },
+      {
+        "section": "section-route-9-and-cerulean",
+        "places": [
+          "MAP_LEGENDS_KANTO_ROUTE9",
+          "MAP_LEGENDS_KANTO_CERULEAN_CITY"
+        ],
+        "encounters": [
+          "MAP_LEGENDS_KANTO_ROUTE9",
+          "MAP_LEGENDS_KANTO_CERULEAN_CITY"
+        ],
+        "availableMethods": [
+          "land",
+          "rock",
+          "surf",
+          "old_rod",
+          "good_rod",
+          "super_rod"
+        ],
+        "region": "Kanto",
+        "note": ""
+      },
+      {
+        "section": "section-misty-and-the-river-reading",
+        "places": [
+          "MAP_LEGENDS_KANTO_CERULEAN_CITY"
+        ],
+        "encounters": [],
+        "availableMethods": [
+          "land",
+          "rock",
+          "surf",
+          "old_rod",
+          "good_rod",
+          "super_rod"
+        ],
+        "region": "Kanto",
+        "note": ""
+      },
+      {
+        "section": "section-route-4-and-the-return-trail",
+        "places": [
+          "MAP_LEGENDS_KANTO_ROUTE4",
+          "MAP_LEGENDS_KANTO_MT_MOON_1F",
+          "MAP_LEGENDS_KANTO_MT_MOON_B1F",
+          "MAP_LEGENDS_KANTO_MT_MOON_B2F"
+        ],
+        "encounters": [
+          "MAP_LEGENDS_KANTO_ROUTE4",
+          "MAP_LEGENDS_KANTO_MT_MOON_1F",
+          "MAP_LEGENDS_KANTO_MT_MOON_B1F",
+          "MAP_LEGENDS_KANTO_MT_MOON_B2F"
+        ],
+        "availableMethods": [
+          "land",
+          "rock",
+          "surf",
+          "old_rod",
+          "good_rod",
+          "super_rod"
+        ],
+        "region": "Kanto",
+        "note": ""
+      },
+      {
+        "section": "section-brock-and-the-stone-reading",
+        "places": [
+          "MAP_LEGENDS_KANTO_PEWTER_CITY",
+          "MAP_LEGENDS_KANTO_ROUTE3"
+        ],
+        "encounters": [
+          "MAP_LEGENDS_KANTO_ROUTE3"
+        ],
+        "availableMethods": [
+          "land",
+          "rock",
+          "surf",
+          "old_rod",
+          "good_rod",
+          "super_rod"
+        ],
+        "region": "Kanto",
+        "note": ""
+      }
+    ],
+    "walkthrough-ember-passage": [
+      {
+        "section": "chapter-overview",
+        "places": [
+          "MAP_LEGENDS_KANTO_CINNABAR_ISLAND",
+          "MAP_LEGENDS_KANTO_ROUTE20"
+        ],
+        "encounters": [],
+        "availableMethods": [
+          "land",
+          "rock",
+          "surf",
+          "old_rod",
+          "good_rod",
+          "super_rod"
+        ],
+        "region": "Kanto",
+        "note": ""
+      },
+      {
+        "section": "section-route-20-to-cinnabar",
+        "places": [
+          "MAP_LEGENDS_KANTO_ROUTE20",
+          "MAP_LEGENDS_KANTO_CINNABAR_ISLAND"
+        ],
+        "encounters": [
+          "MAP_LEGENDS_KANTO_ROUTE20",
+          "MAP_LEGENDS_KANTO_CINNABAR_ISLAND"
+        ],
+        "availableMethods": [
+          "land",
+          "rock",
+          "surf",
+          "old_rod",
+          "good_rod",
+          "super_rod"
+        ],
+        "region": "Kanto",
+        "note": ""
+      },
+      {
+        "section": "section-blaines-visiting-challenge",
+        "places": [
+          "MAP_LEGENDS_KANTO_CINNABAR_ISLAND"
+        ],
+        "encounters": [],
+        "availableMethods": [
+          "land",
+          "rock",
+          "surf",
+          "old_rod",
+          "good_rod",
+          "super_rod"
+        ],
+        "region": "Kanto",
+        "note": ""
+      },
+      {
+        "section": "section-board-the-summit-expedition",
+        "places": [
+          "MAP_LEGENDS_KANTO_MT_EMBER_EXTERIOR"
+        ],
+        "encounters": [],
+        "availableMethods": [
+          "land",
+          "rock",
+          "surf",
+          "old_rod",
+          "good_rod",
+          "super_rod"
+        ],
+        "region": "Sevii",
+        "note": "Native Sevii map for orientation; this release opens the Mt. Ember summit expedition, not the whole islands."
+      },
+      {
+        "section": "section-climb-mt-ember",
+        "places": [
+          "MAP_LEGENDS_KANTO_MT_EMBER_EXTERIOR",
+          "MAP_LEGENDS_KANTO_MT_EMBER_SUMMIT_PATH_1F",
+          "MAP_LEGENDS_KANTO_MT_EMBER_SUMMIT_PATH_2F",
+          "MAP_LEGENDS_KANTO_MT_EMBER_SUMMIT_PATH_3F"
+        ],
+        "encounters": [
+          "MAP_LEGENDS_KANTO_MT_EMBER_EXTERIOR",
+          "MAP_LEGENDS_KANTO_MT_EMBER_SUMMIT_PATH_1F",
+          "MAP_LEGENDS_KANTO_MT_EMBER_SUMMIT_PATH_2F",
+          "MAP_LEGENDS_KANTO_MT_EMBER_SUMMIT_PATH_3F"
+        ],
+        "availableMethods": [
+          "land",
+          "rock",
+          "surf",
+          "old_rod",
+          "good_rod",
+          "super_rod"
+        ],
+        "region": "Sevii",
+        "note": ""
+      },
+      {
+        "section": "section-observe-or-challenge-moltres",
+        "places": [
+          "MAP_LEGENDS_KANTO_MT_EMBER_EXTERIOR"
+        ],
+        "encounters": [],
+        "availableMethods": [
+          "land",
+          "rock",
+          "surf",
+          "old_rod",
+          "good_rod",
+          "super_rod"
+        ],
+        "region": "Sevii",
+        "note": "Moltres is a scripted level 50 encounter. The return sailor waits at the southern landing."
+      }
     ]
   },
   "regions": {
@@ -4114,9 +5610,9 @@
           "y": 32,
           "width": 8,
           "height": 8,
-          "population": 36,
-          "buildings": 6,
-          "statsBasis": "FireRed reference"
+          "population": 5,
+          "buildings": 3,
+          "statsBasis": "Legends snapshot"
         },
         {
           "name": "Cerulean City",
@@ -4124,9 +5620,9 @@
           "y": 24,
           "width": 8,
           "height": 8,
-          "population": 35,
-          "buildings": 9,
-          "statsBasis": "FireRed reference"
+          "population": 6,
+          "buildings": 3,
+          "statsBasis": "Legends snapshot"
         },
         {
           "name": "Vermilion City",
@@ -4174,9 +5670,9 @@
           "y": 112,
           "width": 8,
           "height": 8,
-          "population": 32,
-          "buildings": 4,
-          "statsBasis": "FireRed reference"
+          "population": 6,
+          "buildings": 3,
+          "statsBasis": "Legends snapshot"
         },
         {
           "name": "Saffron City",
@@ -4433,14 +5929,119 @@
               40
             ]
           ]
+        },
+        {
+          "id": "MAP_LEGENDS_KANTO_ROUTE3",
+          "name": "Route3",
+          "cells": [
+            [
+              40,
+              32
+            ],
+            [
+              48,
+              32
+            ],
+            [
+              56,
+              32
+            ],
+            [
+              64,
+              32
+            ]
+          ]
+        },
+        {
+          "id": "MAP_LEGENDS_KANTO_ROUTE4",
+          "name": "Route4",
+          "cells": [
+            [
+              72,
+              24
+            ],
+            [
+              80,
+              24
+            ],
+            [
+              88,
+              24
+            ],
+            [
+              96,
+              24
+            ],
+            [
+              104,
+              24
+            ]
+          ]
+        },
+        {
+          "id": "MAP_LEGENDS_KANTO_ROUTE9",
+          "name": "Route9",
+          "cells": [
+            [
+              120,
+              24
+            ],
+            [
+              128,
+              24
+            ],
+            [
+              136,
+              24
+            ]
+          ]
+        },
+        {
+          "id": "MAP_LEGENDS_KANTO_ROUTE20",
+          "name": "Route20",
+          "cells": [
+            [
+              40,
+              112
+            ],
+            [
+              48,
+              112
+            ],
+            [
+              56,
+              112
+            ],
+            [
+              64,
+              112
+            ],
+            [
+              72,
+              112
+            ],
+            [
+              80,
+              112
+            ],
+            [
+              88,
+              112
+            ]
+          ]
         }
       ]
+    },
+    "Sevii": {
+      "image": "map-sevii.png",
+      "towns": [],
+      "routes": []
     }
   },
   "townStatsSourceCommit": "f8b828f77d7c88955cf19ebaeb3898a48c6fa1b6",
   "postgameReview": {
     "date": "2026-10-12",
-    "gameVersion": "0.0.40",
-    "sourceCommit": "d19f13ca089dcf6ea165ce1595b04a65a637238a"
+    "gameVersion": "0.0.41",
+    "sourceCommit": "b08a71b89faee7e7b6f818d3c65650ae777fb5a4"
   }
 }

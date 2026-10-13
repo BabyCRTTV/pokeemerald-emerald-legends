@@ -27,7 +27,7 @@ for path in paths:
         sections[m['id']] = m.get('region_map_section')
 
 regions = {}
-for name, stem, layout in [('Hoenn', 'map', 'region_map_layout.h'), ('Kanto', 'map_kanto', 'region_map_layout_kanto.h')]:
+for name, stem, layout in [('Hoenn', 'map', 'region_map_layout.h'), ('Kanto', 'map_kanto', 'region_map_layout_kanto.h'), ('Sevii', 'map_sevii_123', 'region_map_layout_sevii123.h')]:
     base = f'graphics/pokenav/region_map/{stem}'
     tiles = Image.open(io.BytesIO(read(base + '.png'))).convert('RGB')
     tilemap = read(base + '.bin')
@@ -85,12 +85,13 @@ assert len(entries) == len(data['species']), 'Missing Pokédex entries'
 locations = {}
 for m in data['maps']:
     section = sections.get(m['id'])
-    cells = regions[m['region']]['cells'].get(section, [])
+    map_region = 'Sevii' if '_MT_EMBER_' in m['id'] else m['region']
+    cells = regions[map_region]['cells'].get(section, [])
     # Interiors use their game's map-section marker when no surface cells exist.
     if not cells and section in section_data:
         sec = section_data[section]
         cells = [[x * 8, y * 8] for y in range(sec['y'], sec['y'] + sec['height']) for x in range(sec['x'], sec['x'] + sec['width']) if 0 <= x < 28 and 0 <= y < 15]
-    locations[m['id']] = {'region': m['region'], 'section': section, 'cells': cells}
+    locations[m['id']] = {'region': m['region'], 'section': section, 'cells': cells, 'mapRegion': map_region}
 output = {'sourceCommit': commit, 'entries': entries, 'locations': locations,
           'regions': {name: {'image': region['image']} for name, region in regions.items()}}
 (WIKI / 'dex-profiles.js').write_text('/* Game maps and entries from the manually pinned wiki snapshot. */\nwindow.LegendsProfiles = ' + json.dumps(output, ensure_ascii=False, separators=(',', ':')) + ';\n')
