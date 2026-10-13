@@ -2,7 +2,7 @@
 
 This is the developer-facing history for the **Debug** build. Shared Legends changes are repeated here so this file stands on its own; Debug-only behavior is called out separately.
 
-## [Wiki 1.6.0] - 2026-10-13
+## Wiki 1.6.0 - 2026-10-13
 
 - Owner-requested documentation refresh against game v0.0.46. Preserve the wiki design and walkthrough layout; extend Chapters 19–25 through Seafoam, the Hoenn intermission, northern/western Kanto and Faraway Island.
 - Review all eight visiting Gyms, story gates and legendary observation/capture rules. Add Quest Log, achievements/rewards and expanded-storage guides; update wardrobe, leggings and fixed battle-uniform details.

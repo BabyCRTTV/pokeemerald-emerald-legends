@@ -4,7 +4,7 @@ All notable Pokémon Emerald: Legends project changes are documented here.
 
 For build-specific player views, see [CHANGELOG-RELEASE.md](CHANGELOG-RELEASE.md) and [CHANGELOG-DEBUG.md](CHANGELOG-DEBUG.md). The canonical history below records the project as a whole.
 
-## [Wiki 1.6.0] - 2026-10-13
+## Wiki 1.6.0 - 2026-10-13
 
 - Owner-requested documentation refresh against game v0.0.46. Preserve the wiki design and walkthrough layout; extend Chapters 19–25 through Seafoam, the Hoenn intermission, northern/western Kanto and Faraway Island.
 - Review all eight visiting Gyms, story gates and legendary observation/capture rules. Add Quest Log, achievements/rewards and expanded-storage guides; update wardrobe, leggings and fixed battle-uniform details.
