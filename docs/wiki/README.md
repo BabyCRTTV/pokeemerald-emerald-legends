@@ -64,3 +64,9 @@ The Android activity preserves its current page and filters while the window cha
 LegendsDex renders all matching Pokémon and routes at once. Bottom-tab switches preserve the current scroll offset. A fading, accessible up-arrow returns to the search field rather than the hero/header; reduced-motion settings disable animation. These behaviors are shared by browser, Android and Windows readers.
 
 `tools/build_wiki_sprite_atlas.py` generates one lossless transparent sprite atlas and index from the manually pinned `dex-data.json.sourceCommit`. All 1,026 sprites preload and decode before results appear; scrolling does not fetch additional images or Pokémon. Regenerate the atlas only when the owner requests a data snapshot revision. Cries remain tap-to-load.
+
+## Owner-requested review — 13 October 2026
+
+Wiki 1.6.0 is reviewed against game v0.0.46 at `e542033cf4fcb8378c68fdd5ffbc4f5b5933fb64`. Chapters 19–25 finish the shipped Wing Survey, with its Hoenn intermission. Quest Log, achievements, storage, wardrobe and all eight visiting records are documented. The current encounter snapshot has 157 locations. ROM VERSION is unchanged. Both wiki and LegendsDex footers link to the project site; reader styles remain unchanged.
+
+For an intentional encounter refresh, pin `dex-data.json.sourceCommit`, run `python3 tools/build_wiki_encounters.py`, and review the added maps and species metadata against that commit. Regenerate profiles, portraits and the sprite atlas using their existing tools. Mt. Ember tables use the Sevii expedition filter and deliberately have no mainland-map coordinates. Walkthrough blocks without an available regional marker use `showMap: false` while retaining their encounter panels and explanatory notes. Historical town counts retain their separate pinned provenance.

@@ -116,7 +116,9 @@
   function encounterMaps(locations,p){
     const profiles=window.LegendsProfiles;
     if(!locations.length||!profiles)return "";
-    return '<section class="encounter-maps"><h3>Encounter map</h3><p>Highlighted areas have listed wild encounters. Cave and interior markers show their region-map area.</p>'+Object.entries(profiles.regions).map(([name,regionMap])=>{
+    const expeditionNote=locations.some(loc=>loc.region==='Sevii')?'<p>Mt. Ember is reached by the Cinnabar survey boat. Its encounter tables are listed above; a full Sevii map is not available.</p>':'';
+    if(locations.every(loc=>!profiles.regions[loc.region]))return expeditionNote;
+    return '<section class="encounter-maps"><h3>Encounter map</h3><p>Highlighted areas have listed wild encounters. Cave and interior markers show their region-map area.</p>'+expeditionNote+Object.entries(profiles.regions).map(([name,regionMap])=>{
       const local=[...new Map(locations.filter(loc=>loc.region===name).map(loc=>[loc.mapId,loc])).values()];
       if(!local.length)return "";
       const cells=new Map();

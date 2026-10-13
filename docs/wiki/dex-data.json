@@ -1,10 +1,10 @@
 {
-  "wikiDexRevision": "1.1.0",
-  "gameVersion": "0.0.40",
-  "sourceCommit": "d19f13ca089dcf6ea165ce1595b04a65a637238a",
+  "wikiDexRevision": "1.2.0",
+  "gameVersion": "0.0.46",
+  "sourceCommit": "e542033cf4fcb8378c68fdd5ffbc4f5b5933fb64",
   "source": "src/data/wild_encounters.json and src/data/pokemon/species_info/gen_*_families.h",
   "methodNote": "Percentages are conditional slot shares after the selected encounter method succeeds, not chances per step. Fishing uses per-rod slot groups. Special scripts, gifts, time/season overrides, rare encounters and other nonstandard spawn sources may not be represented.",
-  "coverageNote": "Only active Emerald-style gWildMonHeaders records and Legends-specific Kanto tables are included. Unmodified unused FRLG tables and alternating-cave nondefault sets are excluded.",
+  "coverageNote": "Active Emerald tables and shipped Legends Kanto/Mt. Ember expedition tables only. Unused upstream FRLG tables and nondefault Altering Cave rotations are excluded. Scripted legendary battles are documented in the walkthrough, not standard slots.",
   "species": [
     {
       "id": "BULBASAUR",
@@ -27272,8 +27272,1649 @@
           ]
         }
       ]
+    },
+    {
+      "id": "MAP_LEGENDS_KANTO_MT_MOON_1F",
+      "name": "Mt. Moon 1F",
+      "region": "Kanto",
+      "methods": [
+        {
+          "id": "land",
+          "label": "Land",
+          "encounterRate": 7,
+          "entries": [
+            {
+              "id": "ZUBAT",
+              "min": 7,
+              "max": 10,
+              "rate": 69
+            },
+            {
+              "id": "GEODUDE",
+              "min": 7,
+              "max": 9,
+              "rate": 25
+            },
+            {
+              "id": "PARAS",
+              "min": 8,
+              "max": 8,
+              "rate": 5
+            },
+            {
+              "id": "CLEFAIRY",
+              "min": 8,
+              "max": 8,
+              "rate": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "MAP_LEGENDS_KANTO_MT_MOON_B1F",
+      "name": "Mt. Moon B1F",
+      "region": "Kanto",
+      "methods": [
+        {
+          "id": "land",
+          "label": "Land",
+          "encounterRate": 5,
+          "entries": [
+            {
+              "id": "PARAS",
+              "min": 5,
+              "max": 10,
+              "rate": 100
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "MAP_LEGENDS_KANTO_MT_MOON_B2F",
+      "name": "Mt. Moon B2F",
+      "region": "Kanto",
+      "methods": [
+        {
+          "id": "land",
+          "label": "Land",
+          "encounterRate": 7,
+          "entries": [
+            {
+              "id": "ZUBAT",
+              "min": 8,
+              "max": 11,
+              "rate": 49
+            },
+            {
+              "id": "GEODUDE",
+              "min": 9,
+              "max": 10,
+              "rate": 30
+            },
+            {
+              "id": "PARAS",
+              "min": 10,
+              "max": 12,
+              "rate": 15
+            },
+            {
+              "id": "CLEFAIRY",
+              "min": 10,
+              "max": 12,
+              "rate": 6
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "MAP_LEGENDS_KANTO_SEAFOAM_ISLANDS_1F",
+      "name": "Seafoam Islands 1F",
+      "region": "Kanto",
+      "methods": [
+        {
+          "id": "land",
+          "label": "Land",
+          "encounterRate": 7,
+          "entries": [
+            {
+              "id": "PSYDUCK",
+              "min": 26,
+              "max": 33,
+              "rate": 55
+            },
+            {
+              "id": "ZUBAT",
+              "min": 22,
+              "max": 26,
+              "rate": 34
+            },
+            {
+              "id": "GOLBAT",
+              "min": 26,
+              "max": 30,
+              "rate": 11
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "MAP_LEGENDS_KANTO_SEAFOAM_ISLANDS_B1F",
+      "name": "Seafoam Islands B1F",
+      "region": "Kanto",
+      "methods": [
+        {
+          "id": "land",
+          "label": "Land",
+          "encounterRate": 7,
+          "entries": [
+            {
+              "id": "PSYDUCK",
+              "min": 29,
+              "max": 31,
+              "rate": 40
+            },
+            {
+              "id": "ZUBAT",
+              "min": 22,
+              "max": 26,
+              "rate": 34
+            },
+            {
+              "id": "GOLBAT",
+              "min": 26,
+              "max": 30,
+              "rate": 11
+            },
+            {
+              "id": "SEEL",
+              "min": 28,
+              "max": 28,
+              "rate": 10
+            },
+            {
+              "id": "GOLDUCK",
+              "min": 33,
+              "max": 35,
+              "rate": 5
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "MAP_LEGENDS_KANTO_SEAFOAM_ISLANDS_B2F",
+      "name": "Seafoam Islands B2F",
+      "region": "Kanto",
+      "methods": [
+        {
+          "id": "land",
+          "label": "Land",
+          "encounterRate": 7,
+          "entries": [
+            {
+              "id": "PSYDUCK",
+              "min": 30,
+              "max": 32,
+              "rate": 40
+            },
+            {
+              "id": "SEEL",
+              "min": 30,
+              "max": 32,
+              "rate": 20
+            },
+            {
+              "id": "ZUBAT",
+              "min": 22,
+              "max": 24,
+              "rate": 20
+            },
+            {
+              "id": "GOLBAT",
+              "min": 26,
+              "max": 30,
+              "rate": 10
+            },
+            {
+              "id": "GOLDUCK",
+              "min": 32,
+              "max": 34,
+              "rate": 10
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "MAP_LEGENDS_KANTO_SEAFOAM_ISLANDS_B3F",
+      "name": "Seafoam Islands B3F",
+      "region": "Kanto",
+      "methods": [
+        {
+          "id": "land",
+          "label": "Land",
+          "encounterRate": 7,
+          "entries": [
+            {
+              "id": "SEEL",
+              "min": 30,
+              "max": 32,
+              "rate": 40
+            },
+            {
+              "id": "PSYDUCK",
+              "min": 30,
+              "max": 32,
+              "rate": 20
+            },
+            {
+              "id": "GOLDUCK",
+              "min": 32,
+              "max": 34,
+              "rate": 15
+            },
+            {
+              "id": "ZUBAT",
+              "min": 24,
+              "max": 24,
+              "rate": 10
+            },
+            {
+              "id": "GOLBAT",
+              "min": 26,
+              "max": 30,
+              "rate": 10
+            },
+            {
+              "id": "DEWGONG",
+              "min": 32,
+              "max": 34,
+              "rate": 5
+            }
+          ]
+        },
+        {
+          "id": "surf",
+          "label": "Surf",
+          "encounterRate": 2,
+          "entries": [
+            {
+              "id": "SEEL",
+              "min": 25,
+              "max": 35,
+              "rate": 60
+            },
+            {
+              "id": "HORSEA",
+              "min": 25,
+              "max": 30,
+              "rate": 30
+            },
+            {
+              "id": "DEWGONG",
+              "min": 35,
+              "max": 40,
+              "rate": 5
+            },
+            {
+              "id": "PSYDUCK",
+              "min": 30,
+              "max": 40,
+              "rate": 4
+            },
+            {
+              "id": "GOLDUCK",
+              "min": 35,
+              "max": 40,
+              "rate": 1
+            }
+          ]
+        },
+        {
+          "id": "old_rod",
+          "label": "Old Rod",
+          "encounterRate": 20,
+          "entries": [
+            {
+              "id": "MAGIKARP",
+              "min": 5,
+              "max": 5,
+              "rate": 100
+            }
+          ]
+        },
+        {
+          "id": "good_rod",
+          "label": "Good Rod",
+          "encounterRate": 20,
+          "entries": [
+            {
+              "id": "HORSEA",
+              "min": 5,
+              "max": 15,
+              "rate": 60
+            },
+            {
+              "id": "MAGIKARP",
+              "min": 5,
+              "max": 15,
+              "rate": 20
+            },
+            {
+              "id": "KRABBY",
+              "min": 5,
+              "max": 15,
+              "rate": 20
+            }
+          ]
+        },
+        {
+          "id": "super_rod",
+          "label": "Super Rod",
+          "encounterRate": 20,
+          "entries": [
+            {
+              "id": "HORSEA",
+              "min": 15,
+              "max": 30,
+              "rate": 80
+            },
+            {
+              "id": "GYARADOS",
+              "min": 15,
+              "max": 35,
+              "rate": 16
+            },
+            {
+              "id": "PSYDUCK",
+              "min": 15,
+              "max": 25,
+              "rate": 4
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "MAP_LEGENDS_KANTO_SEAFOAM_ISLANDS_B4F",
+      "name": "Seafoam Islands B4F",
+      "region": "Kanto",
+      "methods": [
+        {
+          "id": "land",
+          "label": "Land",
+          "encounterRate": 7,
+          "entries": [
+            {
+              "id": "SEEL",
+              "min": 30,
+              "max": 34,
+              "rate": 50
+            },
+            {
+              "id": "GOLDUCK",
+              "min": 32,
+              "max": 34,
+              "rate": 15
+            },
+            {
+              "id": "GOLBAT",
+              "min": 26,
+              "max": 30,
+              "rate": 15
+            },
+            {
+              "id": "PSYDUCK",
+              "min": 32,
+              "max": 32,
+              "rate": 10
+            },
+            {
+              "id": "DEWGONG",
+              "min": 34,
+              "max": 36,
+              "rate": 10
+            }
+          ]
+        },
+        {
+          "id": "surf",
+          "label": "Surf",
+          "encounterRate": 2,
+          "entries": [
+            {
+              "id": "SEEL",
+              "min": 25,
+              "max": 35,
+              "rate": 60
+            },
+            {
+              "id": "HORSEA",
+              "min": 25,
+              "max": 30,
+              "rate": 30
+            },
+            {
+              "id": "DEWGONG",
+              "min": 35,
+              "max": 40,
+              "rate": 5
+            },
+            {
+              "id": "PSYDUCK",
+              "min": 30,
+              "max": 40,
+              "rate": 4
+            },
+            {
+              "id": "GOLDUCK",
+              "min": 35,
+              "max": 40,
+              "rate": 1
+            }
+          ]
+        },
+        {
+          "id": "old_rod",
+          "label": "Old Rod",
+          "encounterRate": 20,
+          "entries": [
+            {
+              "id": "MAGIKARP",
+              "min": 5,
+              "max": 5,
+              "rate": 100
+            }
+          ]
+        },
+        {
+          "id": "good_rod",
+          "label": "Good Rod",
+          "encounterRate": 20,
+          "entries": [
+            {
+              "id": "HORSEA",
+              "min": 5,
+              "max": 15,
+              "rate": 60
+            },
+            {
+              "id": "MAGIKARP",
+              "min": 5,
+              "max": 15,
+              "rate": 20
+            },
+            {
+              "id": "KRABBY",
+              "min": 5,
+              "max": 15,
+              "rate": 20
+            }
+          ]
+        },
+        {
+          "id": "super_rod",
+          "label": "Super Rod",
+          "encounterRate": 20,
+          "entries": [
+            {
+              "id": "HORSEA",
+              "min": 15,
+              "max": 30,
+              "rate": 80
+            },
+            {
+              "id": "GYARADOS",
+              "min": 15,
+              "max": 35,
+              "rate": 16
+            },
+            {
+              "id": "PSYDUCK",
+              "min": 15,
+              "max": 25,
+              "rate": 4
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "MAP_LEGENDS_KANTO_MT_EMBER_EXTERIOR",
+      "name": "Mt. Ember Exterior",
+      "region": "Sevii",
+      "methods": [
+        {
+          "id": "land",
+          "label": "Land",
+          "encounterRate": 21,
+          "entries": [
+            {
+              "id": "PONYTA",
+              "min": 30,
+              "max": 36,
+              "rate": 35
+            },
+            {
+              "id": "FEAROW",
+              "min": 38,
+              "max": 40,
+              "rate": 25
+            },
+            {
+              "id": "SPEAROW",
+              "min": 30,
+              "max": 32,
+              "rate": 15
+            },
+            {
+              "id": "MACHOP",
+              "min": 35,
+              "max": 35,
+              "rate": 10
+            },
+            {
+              "id": "GEODUDE",
+              "min": 33,
+              "max": 33,
+              "rate": 10
+            },
+            {
+              "id": "RAPIDASH",
+              "min": 39,
+              "max": 42,
+              "rate": 5
+            }
+          ]
+        },
+        {
+          "id": "rock",
+          "label": "Rock Smash",
+          "encounterRate": 50,
+          "entries": [
+            {
+              "id": "GEODUDE",
+              "min": 5,
+              "max": 30,
+              "rate": 95
+            },
+            {
+              "id": "GRAVELER",
+              "min": 25,
+              "max": 40,
+              "rate": 5
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "MAP_LEGENDS_KANTO_MT_EMBER_SUMMIT_PATH_1F",
+      "name": "Mt. Ember Summit Path 1F",
+      "region": "Sevii",
+      "methods": [
+        {
+          "id": "land",
+          "label": "Land",
+          "encounterRate": 7,
+          "entries": [
+            {
+              "id": "GEODUDE",
+              "min": 29,
+              "max": 37,
+              "rate": 50
+            },
+            {
+              "id": "MACHOP",
+              "min": 31,
+              "max": 39,
+              "rate": 50
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "MAP_LEGENDS_KANTO_MT_EMBER_SUMMIT_PATH_2F",
+      "name": "Mt. Ember Summit Path 2F",
+      "region": "Sevii",
+      "methods": [
+        {
+          "id": "land",
+          "label": "Land",
+          "encounterRate": 7,
+          "entries": [
+            {
+              "id": "GEODUDE",
+              "min": 30,
+              "max": 34,
+              "rate": 40
+            },
+            {
+              "id": "MACHOP",
+              "min": 32,
+              "max": 36,
+              "rate": 40
+            },
+            {
+              "id": "MACHOKE",
+              "min": 38,
+              "max": 40,
+              "rate": 20
+            }
+          ]
+        },
+        {
+          "id": "rock",
+          "label": "Rock Smash",
+          "encounterRate": 50,
+          "entries": [
+            {
+              "id": "GEODUDE",
+              "min": 5,
+              "max": 30,
+              "rate": 95
+            },
+            {
+              "id": "GRAVELER",
+              "min": 25,
+              "max": 40,
+              "rate": 5
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "MAP_LEGENDS_KANTO_MT_EMBER_SUMMIT_PATH_3F",
+      "name": "Mt. Ember Summit Path 3F",
+      "region": "Sevii",
+      "methods": [
+        {
+          "id": "land",
+          "label": "Land",
+          "encounterRate": 7,
+          "entries": [
+            {
+              "id": "GEODUDE",
+              "min": 29,
+              "max": 37,
+              "rate": 50
+            },
+            {
+              "id": "MACHOP",
+              "min": 31,
+              "max": 39,
+              "rate": 50
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "MAP_LEGENDS_KANTO_ROUTE3",
+      "name": "Route 3",
+      "region": "Kanto",
+      "methods": [
+        {
+          "id": "land",
+          "label": "Land",
+          "encounterRate": 21,
+          "entries": [
+            {
+              "id": "SPEAROW",
+              "min": 6,
+              "max": 8,
+              "rate": 35
+            },
+            {
+              "id": "PIDGEY",
+              "min": 6,
+              "max": 7,
+              "rate": 30
+            },
+            {
+              "id": "NIDORAN_M",
+              "min": 6,
+              "max": 7,
+              "rate": 14
+            },
+            {
+              "id": "MANKEY",
+              "min": 7,
+              "max": 7,
+              "rate": 10
+            },
+            {
+              "id": "JIGGLYPUFF",
+              "min": 3,
+              "max": 7,
+              "rate": 10
+            },
+            {
+              "id": "NIDORAN_F",
+              "min": 6,
+              "max": 6,
+              "rate": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "MAP_LEGENDS_KANTO_ROUTE4",
+      "name": "Route 4",
+      "region": "Kanto",
+      "methods": [
+        {
+          "id": "land",
+          "label": "Land",
+          "encounterRate": 21,
+          "entries": [
+            {
+              "id": "SPEAROW",
+              "min": 8,
+              "max": 12,
+              "rate": 35
+            },
+            {
+              "id": "RATTATA",
+              "min": 8,
+              "max": 12,
+              "rate": 35
+            },
+            {
+              "id": "EKANS",
+              "min": 6,
+              "max": 12,
+              "rate": 25
+            },
+            {
+              "id": "MANKEY",
+              "min": 10,
+              "max": 12,
+              "rate": 5
+            }
+          ]
+        },
+        {
+          "id": "surf",
+          "label": "Surf",
+          "encounterRate": 2,
+          "entries": [
+            {
+              "id": "TENTACOOL",
+              "min": 5,
+              "max": 40,
+              "rate": 100
+            }
+          ]
+        },
+        {
+          "id": "old_rod",
+          "label": "Old Rod",
+          "encounterRate": 20,
+          "entries": [
+            {
+              "id": "MAGIKARP",
+              "min": 5,
+              "max": 5,
+              "rate": 100
+            }
+          ]
+        },
+        {
+          "id": "good_rod",
+          "label": "Good Rod",
+          "encounterRate": 20,
+          "entries": [
+            {
+              "id": "HORSEA",
+              "min": 5,
+              "max": 15,
+              "rate": 60
+            },
+            {
+              "id": "MAGIKARP",
+              "min": 5,
+              "max": 15,
+              "rate": 20
+            },
+            {
+              "id": "KRABBY",
+              "min": 5,
+              "max": 15,
+              "rate": 20
+            }
+          ]
+        },
+        {
+          "id": "super_rod",
+          "label": "Super Rod",
+          "encounterRate": 20,
+          "entries": [
+            {
+              "id": "HORSEA",
+              "min": 15,
+              "max": 35,
+              "rate": 84
+            },
+            {
+              "id": "GYARADOS",
+              "min": 15,
+              "max": 25,
+              "rate": 15
+            },
+            {
+              "id": "PSYDUCK",
+              "min": 25,
+              "max": 35,
+              "rate": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "MAP_LEGENDS_KANTO_ROUTE9",
+      "name": "Route 9",
+      "region": "Kanto",
+      "methods": [
+        {
+          "id": "land",
+          "label": "Land",
+          "encounterRate": 21,
+          "entries": [
+            {
+              "id": "RATTATA",
+              "min": 14,
+              "max": 17,
+              "rate": 40
+            },
+            {
+              "id": "SPEAROW",
+              "min": 13,
+              "max": 17,
+              "rate": 35
+            },
+            {
+              "id": "EKANS",
+              "min": 11,
+              "max": 17,
+              "rate": 25
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "MAP_LEGENDS_KANTO_ROUTE20",
+      "name": "Route 20",
+      "region": "Kanto",
+      "methods": [
+        {
+          "id": "surf",
+          "label": "Surf",
+          "encounterRate": 2,
+          "entries": [
+            {
+              "id": "TENTACOOL",
+              "min": 5,
+              "max": 40,
+              "rate": 100
+            }
+          ]
+        },
+        {
+          "id": "old_rod",
+          "label": "Old Rod",
+          "encounterRate": 20,
+          "entries": [
+            {
+              "id": "MAGIKARP",
+              "min": 5,
+              "max": 5,
+              "rate": 100
+            }
+          ]
+        },
+        {
+          "id": "good_rod",
+          "label": "Good Rod",
+          "encounterRate": 20,
+          "entries": [
+            {
+              "id": "HORSEA",
+              "min": 5,
+              "max": 15,
+              "rate": 60
+            },
+            {
+              "id": "MAGIKARP",
+              "min": 5,
+              "max": 15,
+              "rate": 20
+            },
+            {
+              "id": "KRABBY",
+              "min": 5,
+              "max": 15,
+              "rate": 20
+            }
+          ]
+        },
+        {
+          "id": "super_rod",
+          "label": "Super Rod",
+          "encounterRate": 20,
+          "entries": [
+            {
+              "id": "HORSEA",
+              "min": 15,
+              "max": 25,
+              "rate": 80
+            },
+            {
+              "id": "GYARADOS",
+              "min": 15,
+              "max": 25,
+              "rate": 15
+            },
+            {
+              "id": "SEADRA",
+              "min": 25,
+              "max": 35,
+              "rate": 4
+            },
+            {
+              "id": "PSYDUCK",
+              "min": 25,
+              "max": 35,
+              "rate": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "MAP_LEGENDS_KANTO_CERULEAN_CITY",
+      "name": "Cerulean City",
+      "region": "Kanto",
+      "methods": [
+        {
+          "id": "surf",
+          "label": "Surf",
+          "encounterRate": 1,
+          "entries": [
+            {
+              "id": "TENTACOOL",
+              "min": 5,
+              "max": 40,
+              "rate": 100
+            }
+          ]
+        },
+        {
+          "id": "old_rod",
+          "label": "Old Rod",
+          "encounterRate": 10,
+          "entries": [
+            {
+              "id": "MAGIKARP",
+              "min": 5,
+              "max": 5,
+              "rate": 100
+            }
+          ]
+        },
+        {
+          "id": "good_rod",
+          "label": "Good Rod",
+          "encounterRate": 10,
+          "entries": [
+            {
+              "id": "HORSEA",
+              "min": 5,
+              "max": 15,
+              "rate": 60
+            },
+            {
+              "id": "MAGIKARP",
+              "min": 5,
+              "max": 15,
+              "rate": 20
+            },
+            {
+              "id": "KRABBY",
+              "min": 5,
+              "max": 15,
+              "rate": 20
+            }
+          ]
+        },
+        {
+          "id": "super_rod",
+          "label": "Super Rod",
+          "encounterRate": 10,
+          "entries": [
+            {
+              "id": "HORSEA",
+              "min": 15,
+              "max": 35,
+              "rate": 84
+            },
+            {
+              "id": "GYARADOS",
+              "min": 15,
+              "max": 25,
+              "rate": 15
+            },
+            {
+              "id": "PSYDUCK",
+              "min": 25,
+              "max": 35,
+              "rate": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "MAP_LEGENDS_KANTO_CINNABAR_ISLAND",
+      "name": "Cinnabar Island",
+      "region": "Kanto",
+      "methods": [
+        {
+          "id": "surf",
+          "label": "Surf",
+          "encounterRate": 1,
+          "entries": [
+            {
+              "id": "TENTACOOL",
+              "min": 5,
+              "max": 40,
+              "rate": 100
+            }
+          ]
+        },
+        {
+          "id": "old_rod",
+          "label": "Old Rod",
+          "encounterRate": 10,
+          "entries": [
+            {
+              "id": "MAGIKARP",
+              "min": 5,
+              "max": 5,
+              "rate": 100
+            }
+          ]
+        },
+        {
+          "id": "good_rod",
+          "label": "Good Rod",
+          "encounterRate": 10,
+          "entries": [
+            {
+              "id": "HORSEA",
+              "min": 5,
+              "max": 15,
+              "rate": 60
+            },
+            {
+              "id": "MAGIKARP",
+              "min": 5,
+              "max": 15,
+              "rate": 20
+            },
+            {
+              "id": "KRABBY",
+              "min": 5,
+              "max": 15,
+              "rate": 20
+            }
+          ]
+        },
+        {
+          "id": "super_rod",
+          "label": "Super Rod",
+          "encounterRate": 10,
+          "entries": [
+            {
+              "id": "HORSEA",
+              "min": 15,
+              "max": 25,
+              "rate": 40
+            },
+            {
+              "id": "SHELLDER",
+              "min": 15,
+              "max": 25,
+              "rate": 40
+            },
+            {
+              "id": "GYARADOS",
+              "min": 15,
+              "max": 25,
+              "rate": 15
+            },
+            {
+              "id": "SEADRA",
+              "min": 25,
+              "max": 35,
+              "rate": 4
+            },
+            {
+              "id": "PSYDUCK",
+              "min": 25,
+              "max": 35,
+              "rate": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "MAP_LEGENDS_KANTO_VIRIDIAN_FOREST",
+      "name": "Viridian Forest",
+      "region": "Kanto",
+      "methods": [
+        {
+          "id": "land",
+          "label": "Land",
+          "encounterRate": 14,
+          "entries": [
+            {
+              "id": "CATERPIE",
+              "min": 3,
+              "max": 5,
+              "rate": 40
+            },
+            {
+              "id": "WEEDLE",
+              "min": 3,
+              "max": 5,
+              "rate": 40
+            },
+            {
+              "id": "KAKUNA",
+              "min": 4,
+              "max": 6,
+              "rate": 10
+            },
+            {
+              "id": "METAPOD",
+              "min": 5,
+              "max": 5,
+              "rate": 5
+            },
+            {
+              "id": "PIKACHU",
+              "min": 3,
+              "max": 5,
+              "rate": 5
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "MAP_LEGENDS_KANTO_ROUTE1",
+      "name": "Route 1",
+      "region": "Kanto",
+      "methods": [
+        {
+          "id": "land",
+          "label": "Land",
+          "encounterRate": 21,
+          "entries": [
+            {
+              "id": "PIDGEY",
+              "min": 2,
+              "max": 5,
+              "rate": 50
+            },
+            {
+              "id": "RATTATA",
+              "min": 2,
+              "max": 4,
+              "rate": 50
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "MAP_LEGENDS_KANTO_ROUTE2",
+      "name": "Route 2",
+      "region": "Kanto",
+      "methods": [
+        {
+          "id": "land",
+          "label": "Land",
+          "encounterRate": 21,
+          "entries": [
+            {
+              "id": "RATTATA",
+              "min": 2,
+              "max": 5,
+              "rate": 45
+            },
+            {
+              "id": "PIDGEY",
+              "min": 2,
+              "max": 5,
+              "rate": 45
+            },
+            {
+              "id": "CATERPIE",
+              "min": 4,
+              "max": 5,
+              "rate": 5
+            },
+            {
+              "id": "WEEDLE",
+              "min": 4,
+              "max": 5,
+              "rate": 5
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "MAP_LEGENDS_KANTO_ROUTE21_NORTH",
+      "name": "Route 21 North",
+      "region": "Kanto",
+      "methods": [
+        {
+          "id": "land",
+          "label": "Land",
+          "encounterRate": 14,
+          "entries": [
+            {
+              "id": "TANGELA",
+              "min": 17,
+              "max": 28,
+              "rate": 100
+            }
+          ]
+        },
+        {
+          "id": "surf",
+          "label": "Surf",
+          "encounterRate": 2,
+          "entries": [
+            {
+              "id": "TENTACOOL",
+              "min": 5,
+              "max": 40,
+              "rate": 100
+            }
+          ]
+        },
+        {
+          "id": "old_rod",
+          "label": "Old Rod",
+          "encounterRate": 20,
+          "entries": [
+            {
+              "id": "MAGIKARP",
+              "min": 5,
+              "max": 5,
+              "rate": 100
+            }
+          ]
+        },
+        {
+          "id": "good_rod",
+          "label": "Good Rod",
+          "encounterRate": 20,
+          "entries": [
+            {
+              "id": "HORSEA",
+              "min": 5,
+              "max": 15,
+              "rate": 60
+            },
+            {
+              "id": "MAGIKARP",
+              "min": 5,
+              "max": 15,
+              "rate": 20
+            },
+            {
+              "id": "KRABBY",
+              "min": 5,
+              "max": 15,
+              "rate": 20
+            }
+          ]
+        },
+        {
+          "id": "super_rod",
+          "label": "Super Rod",
+          "encounterRate": 20,
+          "entries": [
+            {
+              "id": "HORSEA",
+              "min": 15,
+              "max": 25,
+              "rate": 80
+            },
+            {
+              "id": "GYARADOS",
+              "min": 15,
+              "max": 25,
+              "rate": 15
+            },
+            {
+              "id": "SEADRA",
+              "min": 25,
+              "max": 35,
+              "rate": 4
+            },
+            {
+              "id": "PSYDUCK",
+              "min": 25,
+              "max": 35,
+              "rate": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "MAP_LEGENDS_KANTO_ROUTE21_SOUTH",
+      "name": "Route 21 South",
+      "region": "Kanto",
+      "methods": [
+        {
+          "id": "land",
+          "label": "Land",
+          "encounterRate": 14,
+          "entries": [
+            {
+              "id": "TANGELA",
+              "min": 17,
+              "max": 28,
+              "rate": 100
+            }
+          ]
+        },
+        {
+          "id": "surf",
+          "label": "Surf",
+          "encounterRate": 2,
+          "entries": [
+            {
+              "id": "TENTACOOL",
+              "min": 5,
+              "max": 40,
+              "rate": 100
+            }
+          ]
+        },
+        {
+          "id": "old_rod",
+          "label": "Old Rod",
+          "encounterRate": 20,
+          "entries": [
+            {
+              "id": "MAGIKARP",
+              "min": 5,
+              "max": 5,
+              "rate": 100
+            }
+          ]
+        },
+        {
+          "id": "good_rod",
+          "label": "Good Rod",
+          "encounterRate": 20,
+          "entries": [
+            {
+              "id": "HORSEA",
+              "min": 5,
+              "max": 15,
+              "rate": 60
+            },
+            {
+              "id": "MAGIKARP",
+              "min": 5,
+              "max": 15,
+              "rate": 20
+            },
+            {
+              "id": "KRABBY",
+              "min": 5,
+              "max": 15,
+              "rate": 20
+            }
+          ]
+        },
+        {
+          "id": "super_rod",
+          "label": "Super Rod",
+          "encounterRate": 20,
+          "entries": [
+            {
+              "id": "HORSEA",
+              "min": 15,
+              "max": 25,
+              "rate": 80
+            },
+            {
+              "id": "GYARADOS",
+              "min": 15,
+              "max": 25,
+              "rate": 15
+            },
+            {
+              "id": "SEADRA",
+              "min": 25,
+              "max": 35,
+              "rate": 4
+            },
+            {
+              "id": "PSYDUCK",
+              "min": 25,
+              "max": 35,
+              "rate": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "MAP_LEGENDS_KANTO_PALLET_TOWN",
+      "name": "Pallet Town",
+      "region": "Kanto",
+      "methods": [
+        {
+          "id": "surf",
+          "label": "Surf",
+          "encounterRate": 1,
+          "entries": [
+            {
+              "id": "TENTACOOL",
+              "min": 5,
+              "max": 40,
+              "rate": 100
+            }
+          ]
+        },
+        {
+          "id": "old_rod",
+          "label": "Old Rod",
+          "encounterRate": 10,
+          "entries": [
+            {
+              "id": "MAGIKARP",
+              "min": 5,
+              "max": 10,
+              "rate": 100
+            }
+          ]
+        },
+        {
+          "id": "good_rod",
+          "label": "Good Rod",
+          "encounterRate": 10,
+          "entries": [
+            {
+              "id": "HORSEA",
+              "min": 5,
+              "max": 15,
+              "rate": 60
+            },
+            {
+              "id": "MAGIKARP",
+              "min": 5,
+              "max": 15,
+              "rate": 20
+            },
+            {
+              "id": "KRABBY",
+              "min": 5,
+              "max": 15,
+              "rate": 20
+            }
+          ]
+        },
+        {
+          "id": "super_rod",
+          "label": "Super Rod",
+          "encounterRate": 10,
+          "entries": [
+            {
+              "id": "HORSEA",
+              "min": 15,
+              "max": 25,
+              "rate": 40
+            },
+            {
+              "id": "SHELLDER",
+              "min": 15,
+              "max": 25,
+              "rate": 40
+            },
+            {
+              "id": "GYARADOS",
+              "min": 15,
+              "max": 25,
+              "rate": 15
+            },
+            {
+              "id": "SEADRA",
+              "min": 25,
+              "max": 35,
+              "rate": 4
+            },
+            {
+              "id": "PSYDUCK",
+              "min": 25,
+              "max": 35,
+              "rate": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "MAP_LEGENDS_KANTO_VIRIDIAN_CITY",
+      "name": "Viridian City",
+      "region": "Kanto",
+      "methods": [
+        {
+          "id": "surf",
+          "label": "Surf",
+          "encounterRate": 1,
+          "entries": [
+            {
+              "id": "PSYDUCK",
+              "min": 20,
+              "max": 40,
+              "rate": 100
+            }
+          ]
+        },
+        {
+          "id": "old_rod",
+          "label": "Old Rod",
+          "encounterRate": 10,
+          "entries": [
+            {
+              "id": "MAGIKARP",
+              "min": 5,
+              "max": 5,
+              "rate": 100
+            }
+          ]
+        },
+        {
+          "id": "good_rod",
+          "label": "Good Rod",
+          "encounterRate": 10,
+          "entries": [
+            {
+              "id": "POLIWAG",
+              "min": 5,
+              "max": 15,
+              "rate": 60
+            },
+            {
+              "id": "MAGIKARP",
+              "min": 5,
+              "max": 15,
+              "rate": 20
+            },
+            {
+              "id": "GOLDEEN",
+              "min": 5,
+              "max": 15,
+              "rate": 20
+            }
+          ]
+        },
+        {
+          "id": "super_rod",
+          "label": "Super Rod",
+          "encounterRate": 10,
+          "entries": [
+            {
+              "id": "POLIWAG",
+              "min": 15,
+              "max": 25,
+              "rate": 40
+            },
+            {
+              "id": "POLIWHIRL",
+              "min": 20,
+              "max": 30,
+              "rate": 40
+            },
+            {
+              "id": "GYARADOS",
+              "min": 15,
+              "max": 25,
+              "rate": 15
+            },
+            {
+              "id": "PSYDUCK",
+              "min": 15,
+              "max": 35,
+              "rate": 5
+            }
+          ]
+        }
+      ]
     }
   ],
   "typeResolutionNote": "Source family-type macros resolved with P_UPDATED_TYPES=GEN_LATEST (Magnemite Steel, Togepi/Ralts/Cottonee Fairy).",
-  "lastManualReview": "2026-10-12"
+  "lastManualReview": "2026-10-13"
 }

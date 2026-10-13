@@ -34,9 +34,10 @@ const settle=()=>new Promise(r=>setImmediate(r));
  w.click('category','all');assert.equal((w.get('content').innerHTML.match(/data-page=/g)||[]).length,articles.articles.length);
  const chapters=articles.articles.filter(p=>Number.isInteger(p.chapter)).sort((a,b)=>a.chapter-b.chapter);
  assert(chapters.every(p=>!p.content.includes('## Your goal')&&!p.content.includes('First time playing?')));
- assert.deepEqual(chapters.map(p=>p.chapter),Array.from({length:18},(_,i)=>i+1));
+ assert.deepEqual(chapters.map(p=>p.chapter),Array.from({length:25},(_,i)=>i+1));
  w.click('page',chapters[0].id);assert.match(w.get('content').innerHTML,/Next chapter/);assert(!w.get('content').innerHTML.includes('Previous chapter'));
- w.click('page',chapters[17].id);assert.match(w.get('content').innerHTML,/Previous chapter/);assert(!w.get('content').innerHTML.includes('Next chapter'));
+ w.click('page',chapters[17].id);assert.match(w.get('content').innerHTML,/Next chapter/);
+ w.click('page',chapters[24].id);assert.match(w.get('content').innerHTML,/Previous chapter/);assert(!w.get('content').innerHTML.includes('Next chapter'));
  const deep=boot('wiki.js',articles,'https://example.test/wiki/?category=Kanto%20postgame');await settle();assert.match(deep.get('content').innerHTML,/<h1>Kanto postgame/);
  const data=JSON.parse(fs.readFileSync(base+'dex-data.json'));
  const maps=JSON.parse(fs.readFileSync(base+'walkthrough-maps.json'));assert.equal(maps.sourceCommit,data.sourceCommit);
@@ -56,7 +57,7 @@ const settle=()=>new Promise(r=>setImmediate(r));
  const profiles={window:{}};vm.runInNewContext(fs.readFileSync(base+'dex-profiles.js','utf8'),profiles);
  assert.equal(profiles.window.LegendsProfiles.sourceCommit,data.sourceCommit);
  for(const p of data.species)assert(profiles.window.LegendsProfiles.entries[p.id],p.id+' missing entry');
- for(const m of data.maps){const loc=profiles.window.LegendsProfiles.locations[m.id];assert.equal(loc.region,m.region);assert(loc.cells.length,m.id+' missing map marker');for(const [x,y] of loc.cells)assert(x>=0&&x<224&&y>=0&&y<120);}
+ for(const m of data.maps){const loc=profiles.window.LegendsProfiles.locations[m.id];assert.equal(loc.region,m.region);if(m.region==='Sevii'){assert.equal(loc.cells.length,0,'Sevii must not use mainland coordinates');assert.match(loc.note,/expedition/);}else assert(loc.cells.length,m.id+' missing map marker');for(const [x,y] of loc.cells)assert(x>=0&&x<224&&y>=0&&y<120);}
  assert.deepEqual(JSON.parse(JSON.stringify(profiles.window.LegendsProfiles.locations.MAP_ROUTE101.cells)),[[32,80]]);
  const d=boot('dex.js',data);await settle();assert.equal(d.sounds.length,0,'audio must not preload all cries');
  assert.match(d.get('results').innerHTML,/data-cry=/);assert.match(d.get('results').innerHTML,/class="pokemon-link"/);

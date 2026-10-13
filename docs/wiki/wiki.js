@@ -38,7 +38,22 @@
   {label:'Lavender / Rock Tunnel',page:'walkthrough-kanto-current',section:'lavender-to-rock-tunnel',hint:'The northern survey road'},
   {label:'Route 10 / Power Plant',page:'walkthrough-kanto-current',section:'route-10-and-the-river',hint:'Center and Surf approach'},
   {label:'Power Plant — feeds',page:'walkthrough-kanto-current',section:'make-both-unused-feeds-safe',hint:'Isolate both terminals'},
-  {label:'Power Plant — Zapdos',page:'walkthrough-kanto-current',section:'observe-zapdos-at-the-roost',hint:'Observation and optional battle'}
+  {label:'Power Plant — Zapdos',page:'walkthrough-kanto-current',section:'observe-zapdos-at-the-roost',hint:'Observation and optional battle'},
+  {"label": "Seafoam — currents", "page": "walkthrough-kanto-stillwater", "section": "follow-both-boulder-shafts", "hint": "Both native channels"},
+  {"label": "Seafoam — Articuno", "page": "walkthrough-kanto-stillwater", "section": "find-articuno-on-b4f", "hint": "Observation and optional battle"},
+  {"label": "Weather Institute — call", "page": "walkthrough-hoenn-continent", "section": "answer-the-weather-institute-call", "hint": "The Hoenn intermission"},
+  {"label": "Hoenn — field readings", "page": "walkthrough-hoenn-continent", "section": "collect-both-field-readings", "hint": "River and ground readings"},
+  {"label": "Fiery Path — vault", "page": "walkthrough-hoenn-continent", "section": "enter-the-fault-beside-fiery-path", "hint": "Regulators and Regigigas"},
+  {"label": "Cerulean — Misty", "page": "walkthrough-kanto-stone", "section": "misty-and-the-river-comparison", "hint": "Gym and river observation"},
+  {"label": "Route 4 / Mt. Moon", "page": "walkthrough-kanto-stone", "section": "route-4-and-the-return-trail", "hint": "The westbound return guide"},
+  {"label": "Pewter — Brock", "page": "walkthrough-kanto-stone", "section": "brock-and-the-stone-comparison", "hint": "Gym and stone observation"},
+  {"label": "Cinnabar — Blaine", "page": "walkthrough-kanto-ember", "section": "blaines-visiting-challenge", "hint": "Volcanic record"},
+  {"label": "Mt. Ember — summit path", "page": "walkthrough-kanto-ember", "section": "climb-the-summit-path", "hint": "Three cave rooms"},
+  {"label": "Mt. Ember — Moltres", "page": "walkthrough-kanto-ember", "section": "observe-moltres", "hint": "Observation and optional battle"},
+  {"label": "Viridian — Blue", "page": "walkthrough-kanto-record", "section": "blues-actingleader-challenge", "hint": "The eighth visiting record"},
+  {"label": "Pallet — Oak", "page": "walkthrough-kanto-shadow", "section": "compare-the-survey-with-oak", "hint": "Analysis and Old Sea Map"},
+  {"label": "Faraway Island — Mew", "page": "walkthrough-kanto-horizon", "section": "record-the-final-observation", "hint": "Native deep-grass search"},
+  {"label": "Pallet — final report", "page": "walkthrough-kanto-horizon", "section": "file-the-final-report-with-oak", "hint": "One-time Master Ball"}
  ];
  function readingWalkthrough(active){document.documentElement.classList.toggle('reading-walkthrough',active);root.dataset.walkthroughPage='';}
  function walkthroughNavigation(id){

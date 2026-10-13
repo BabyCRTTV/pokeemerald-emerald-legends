@@ -85,6 +85,12 @@ assert len(entries) == len(data['species']), 'Missing Pokédex entries'
 locations = {}
 for m in data['maps']:
     section = sections.get(m['id'])
+    if m['region'] == 'Sevii':
+        # Mt. Ember is playable through the survey boat, but has no map browser.
+        # Its Sevii coordinates must never be plotted on the Kanto background.
+        locations[m['id']] = {'region': 'Sevii', 'section': section, 'cells': [],
+                              'note': 'Mt. Ember expedition; no full Sevii map is available.'}
+        continue
     cells = regions[m['region']]['cells'].get(section, [])
     # Interiors use their game's map-section marker when no surface cells exist.
     if not cells and section in section_data:
