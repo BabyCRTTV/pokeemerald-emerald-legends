@@ -142,6 +142,12 @@ def original_hair(p,g,kind,pose,state=''):
     return points
 
 def hair_edits(p,g,kind,pose,style,state='',with_points=False):
+    if g == 0 and kind == 'overworld' and state == 'walking' and WORLD_DIRECTIONS[state][pose] == 2:
+        # Rear walking/running cuts own complete native-grid crowns. Do not
+        # reuse the generic tapered bob or preserve the old cap as a face.
+        from male_overworld_back_hair import rear_walking_hair
+        art, points = rear_walking_hair(p, style)
+        return (art, points) if with_points else art
     face,box,anchor,direction=head(p,g,kind,pose,state)
     cx,cy,hw,ht=anchor
     if not hw:return (p,set()) if with_points else p

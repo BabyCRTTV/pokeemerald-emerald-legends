@@ -76,6 +76,13 @@ with tempfile.TemporaryDirectory() as d:
     top,bottom=min(y for x,y in face),max(y for x,y in face)
     protected |= {(x,y) for y in range(top,bottom+1) for x in range(left,right+1) if p[y][x] in (5,8,9,14,15)}
    if kind:protected |= art.coat_hands(g,'front' if kind==1 else 'back',native_index)|art.ball_pixels(g,'front' if kind==1 else 'back',native_index)
+   rear_walking = g == 0 and kind == 0 and state == 0 and art.WORLD_DIRECTIONS['walking'][native_index] == 2
+   if rear_walking:
+    # A rear head has ears/neck, not eyes or a forehead. The white native
+    # cap between the ears must not be classified as protected face art.
+    ear_y = min(y for y,row in enumerate(p) if any(v in (1,2,3) for v in row))
+    protected = {(x,y) for y,row in enumerate(p) for x,v in enumerate(row) if v in (1,2,3) and y <= ear_y + 2}
+    protected |= {(x,y) for y in (ear_y,ear_y+1) for x in (0,1,2,13,14,15) if p[y][x]}
    for hair in range(11):
     for coat in range(3):
      buf=(ctypes.c_uint8*len(native)).from_buffer_copy(native)
@@ -92,6 +99,8 @@ with tempfile.TemporaryDirectory() as d:
       for x,y in art.fishing_rod(p,g,native_index):
        assert out[y][x]==p[y][x],(name,slot,hair,coat,'fishing rod',x,y)
      for x,y in protected:assert out[y][x]==p[y][x],(name,kind,state,slot,hair,coat,'face/hand/ball',x,y)
+     if rear_walking and hair:
+      assert all(out[y][x] not in (9,14) for y in range(ear_y-8,ear_y+2) for x in range(3,13)),(name,slot,hair,'native cap remnant')
      if coat and kind==2:
       for y,row in enumerate(p):
        for x,v in enumerate(row):
@@ -106,9 +115,14 @@ with tempfile.TemporaryDirectory() as d:
        for x in range(w):
         if crown[y][x]!=p[y][x] and crown[y][x] in (4,8):assert out[y][x]==crown[y][x]
    if kind==1:assert len(signatures)==11,(name,'distinct portraits')
+   if rear_walking:assert len(signatures)==11,(name,slot,'eleven distinct rear cuts')
    if (state!=4 or kind) and (groups or kind==0 and art.WORLD_DIRECTIONS.get(FILES[state],())[native_index]==2):assert len(signatures)>=5,(name,kind,state,slot,'distinct hairstyles')
    if not (kind==0 and state==4):
     core=art.head_core(p,g,'overworld' if kind==0 else 'front' if kind==1 else 'back',native_index,FILES[state] if kind==0 else '')
+    if rear_walking:
+     # Check the skull interior anchored to actual native ears. The former
+     # core included Brendan's protruding cap brim, which is now removed.
+     core={(x,y) for y in range(ear_y-5,ear_y+2) for x in range(5,11)}
     for hair in range(1,11):
      buf=(ctypes.c_uint8*len(native)).from_buffer_copy(native);painter(buf,w,g,kind,state,slot,hair,0)
      out=unpack(bytes(buf),w,h)

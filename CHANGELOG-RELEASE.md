@@ -2,6 +2,12 @@
 
 This is the player-facing history for the recommended **Release** build. Shared Legends changes are repeated here so this file stands on its own; Release-only behavior is called out separately.
 
+## Unreleased (male walking sprite review)
+
+- Give all ten male rear walking/running hairstyles distinct native-grid crowns and napes; remove the leftover pale cap band and align each head to its ears and neck.
+- Preserve approved female art, male front/side views, outfits and both battle sprite banks. Validate all 212 native pose tables and complete rear skulls.
+- Visual review draft for both Release and Debug; no variant-specific differences. See `docs/qa/male-rear-walking-review.md`.
+
 ## [0.0.45] - 2026-10-13
 
 - Add ten prepared male battle hairstyles: Crew Cut, Side Part, Spiky, Side Sweep, Tousled, Quiff, Shag, Curls, Man Bun and Undercut. Match the existing male wardrobe IDs and refresh the cut/color/skin tone on the next battle after APPLY.
