@@ -82,7 +82,8 @@ def imported_hair(native,style,face,box,direction,state,pose):
             if not 0<=x<w or (x,y) in protected:continue
             value=image.getpixel((view*16+ax,(style-1)*32+ay))
             if not value:continue
-            if value==5:value=8 # Reference navy hair-edge pixels use the hair ramp.
+            if value==8:value=4 # Native-scale hair has two independent brown shades.
+            if style==8 and value in (10,11):value=13 # Fixed cap green, separate from outfit/shoes.
             if native[y][x] in (12,13):continue
             out[y][x]=value;forced.add((x,y))
     if direction!=2:
@@ -96,10 +97,19 @@ def imported_hair(native,style,face,box,direction,state,pose):
     # The reference neck begins where the original cap rim ended. Restore
     # skin there if a short rear cut leaves that formerly covered row exposed.
     if direction==2:
+        for y in range(ear_y-5,ear_y+2):
+            for x in range(left+3,right-2):
+                if 0<=x<w and 0<=y<h and not out[y][x]:
+                    out[y][x]=4;forced.add((x,y))
         for y in (ear_y,ear_y+1):
             for x in range(left+1,right):
-                if not out[y][x]:out[y][x]=8;forced.add((x,y))
+                if not out[y][x]:out[y][x]=4;forced.add((x,y))
         for x in range(left+3,right-2):
             y=ear_y+2
             if 0<=y<h and not out[y][x]:out[y][x]=3;forced.add((x,y))
+    # Native brown face/ear contours share slot 4 with hair. Retag protected
+    # contours to skin shadow in every direction, including the rear ears.
+    for x,y in protected:
+        if native[y][x]==4:
+            out[y][x]=3;forced.add((x,y))
     return out,forced

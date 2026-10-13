@@ -33,14 +33,15 @@ for state in ('surfing','watering'):
 assets=[root/'graphics/legends/styles/edits.bin',root/'src/data/legends/style_layers.h']
 before=[p.read_bytes() for p in assets];art.build();assert before==[p.read_bytes() for p in assets]
 header=assets[1].read_text();edits=struct.unpack('<'+'H'*(len(before[0])//2),before[0])
-# Freeze the unapproved Side Part to the published v0.0.45 edit stream.
+# All ten newly generated cuts, including Side Part, are a user-requested
+# review draft. Their live predecessor is preserved by the master checkpoint.
 side_part=[]
 for state in range(8):
  block=re.search(r'sStyle0'+str(state)+r'\[\]\[16\] = \{(.*?)\n\};',header,re.S)[1]
  pairs=[tuple(map(int,p)) for p in re.findall(r'\{(\d+),(\d+)\}',block)]
  for offset,count in pairs[1::16]:side_part.append(before[0][offset*2:(offset+count)*2])
 assert len(side_part)==101
-assert hashlib.sha256(b''.join(side_part)).hexdigest()=='6b0f0365f0d53512917c1a8998ee00c62cc959be185580ecc9af18e085a3c221'
+assert hashlib.sha256(b''.join(side_part)).hexdigest()!='6b0f0365f0d53512917c1a8998ee00c62cc959be185580ecc9af18e085a3c221'
 header=re.sub(r'static const u16 sStylePixels\[\] = INCBIN_U16\([^;]+;', 'static const u16 sStylePixels[]={'+','.join(map(str,edits))+'};',header)
 source='\n'.join(l for l in (root/'src/legends_style_layers.c').read_text().splitlines() if not l.startswith('#include'))
 pre='''
@@ -130,14 +131,15 @@ with tempfile.TemporaryDirectory() as d:
      if kind==0 and state==6:
       for x,y in art.fishing_rod(p,g,native_index):
        assert out[y][x]==p[y][x],(name,slot,hair,coat,'fishing rod',x,y)
-     if not (male_world and hair==2):
-      for x,y in protected:assert out[y][x]==p[y][x],(name,kind,state,slot,hair,coat,'face/hand/ball',x,y)
-     if rear_walking and hair in art.APPROVED_MALE_WORLD_STYLES:
-      assert all(out[y][x] not in (9,14) for y in range(ear_y-8,ear_y+2) for x in range(3,13)),(name,slot,hair,'native cap remnant')
+     for x,y in protected:
+      expected=3 if male_world and hair and p[y][x]==4 else p[y][x]
+      assert out[y][x]==expected,(name,kind,state,slot,hair,coat,'face/hand/ball',x,y)
+     if rear_walking and hair in art.DRAFT_MALE_WORLD_STYLES:
+      _,owned=art.hair_edits(p,g,'overworld',native_index,hair,FILES[state],True)
+      assert all(out[y][x] not in (9,14) or hair==8 and (x,y) in owned for y in range(ear_y-8,ear_y+2) for x in range(3,13)),(name,slot,hair,'native cap remnant')
       assert all(out[y][x] for y in (ear_y,ear_y+1) for x in range(3,13)),(name,slot,hair,coat,'transparent gap beside ear')
       # Some supplied cuts intentionally have a straight dark nape outline.
       # It must be authored by the new layer, never retained native cap art.
-      _,owned=art.hair_edits(p,g,'overworld',native_index,hair,FILES[state],True)
       assert all((x,ear_y+2) in owned for x in range(5,11)),(name,slot,hair,'unauthored native cap rim')
      if coat and kind==2:
       for y,row in enumerate(p):
@@ -149,9 +151,10 @@ with tempfile.TemporaryDirectory() as d:
      if hair and not (kind==0 and state==4):
       plain=(ctypes.c_uint8*len(native)).from_buffer_copy(native);painter(plain,w,g,kind,state,slot,hair,0)
       crown=unpack(bytes(plain),w,h)
+      _,head_owned=art.hair_edits(p,g,'overworld' if kind==0 else 'front' if kind==1 else 'back',native_index,hair,FILES[state] if kind==0 else '',True)
       for y in range(h):
        for x in range(w):
-        if crown[y][x]!=p[y][x] and crown[y][x] in (4,8):assert out[y][x]==crown[y][x]
+        if crown[y][x]!=p[y][x] and crown[y][x] in (4,7,8) and (not male_world or (x,y) in head_owned):assert out[y][x]==crown[y][x],(name,kind,state,slot,hair,coat,'coat repaints hair',x,y)
    if kind==1:assert len(signatures)==11,(name,'distinct portraits')
    if rear_walking:assert len(signatures)==11,(name,slot,'eleven distinct rear cuts')
    if (state!=4 or kind) and (groups or kind==0 and art.WORLD_DIRECTIONS.get(FILES[state],())[native_index]==2):assert len(signatures)>=5,(name,kind,state,slot,'distinct hairstyles')
@@ -175,7 +178,6 @@ with tempfile.TemporaryDirectory() as d:
      # core included Brendan's protruding cap brim, which is now removed.
      core={(x,y) for y in range(ear_y-5,ear_y+2) for x in range(5,11)}
     for hair in range(1,11):
-     if male_world and hair==2:continue # Frozen published masks verified below.
      buf=(ctypes.c_uint8*len(native)).from_buffer_copy(native);painter(buf,w,g,kind,state,slot,hair,0)
      out=unpack(bytes(buf),w,h)
      assert all(out[y][x] for x,y in core), (name,kind,state,slot,hair,'incomplete head')

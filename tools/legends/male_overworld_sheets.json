@@ -2,241 +2,331 @@
   {
     "id": 1,
     "name": "Crew Cut",
-    "source_name": "185669.png",
-    "source_sha256": "d28ec8d29d422f941b2e3a5a88686d366e3f515114a0fdcbf6cbd7cc8c328cf2",
+    "source_sha256": "6ce63a91257b4084698759ab92a3603daa8039ff6691b9816b9f0eb625d8be95",
     "grid_step": [
-      22.0,
-      22.25
+      7,
+      7
     ],
     "anchors": [
       [
-        52.0,
-        658.5
+        34.5,
+        142,
+        19
       ],
       [
-        441.0,
-        658.5
+        149.5,
+        142.0,
+        18
       ],
       [
-        821.5,
-        658
+        375,
+        141,
+        19
       ]
-    ]
+    ],
+    "source_views": [
+      0,
+      1,
+      3
+    ],
+    "east": "native west mirroring",
+    "status": "draft awaiting tuning"
   },
   {
     "id": 2,
     "name": "Side Part",
-    "source_name": "185675.png",
-    "source_sha256": "f83da40af057f74d43e101c142ac2d05235c9cfdee963f882679bf0f18448197",
+    "source_sha256": "6ce63a91257b4084698759ab92a3603daa8039ff6691b9816b9f0eb625d8be95",
     "grid_step": [
-      22.333333333333332,
-      21.0
+      7,
+      7
     ],
     "anchors": [
       [
-        55.0,
-        712.0
+        536.75,
+        140,
+        19
       ],
       [
-        430.5,
-        712.0
+        653.5,
+        142.0,
+        18
       ],
       [
-        794.8333333333334,
-        711
+        920,
+        140,
+        19
       ]
-    ]
+    ],
+    "source_views": [
+      0,
+      1,
+      3
+    ],
+    "east": "native west mirroring",
+    "status": "draft awaiting tuning"
   },
   {
     "id": 3,
     "name": "Spiky",
-    "source_name": "185672.png",
-    "source_sha256": "a5f9ac569ad35d8afd47569fd41c28c7056dca5271b88d2142317a0e366d212e",
+    "source_sha256": "6ce63a91257b4084698759ab92a3603daa8039ff6691b9816b9f0eb625d8be95",
     "grid_step": [
-      24.0,
-      21.5
+      7,
+      7
     ],
     "anchors": [
       [
-        27.5,
-        705.0
+        34.0,
+        413,
+        19
       ],
       [
-        412.0,
-        705.0
+        149.5,
+        416.0,
+        18
       ],
       [
-        767.5,
-        705
+        376,
+        414,
+        19
       ]
-    ]
+    ],
+    "source_views": [
+      0,
+      1,
+      3
+    ],
+    "east": "native west mirroring",
+    "status": "draft awaiting tuning"
   },
   {
     "id": 4,
     "name": "Side Sweep",
-    "source_name": "185676.png",
-    "source_sha256": "44effcca45ea8705653f93580317523ea6580e2d90a14b4573240b042a66d8e8",
+    "source_sha256": "6ce63a91257b4084698759ab92a3603daa8039ff6691b9816b9f0eb625d8be95",
     "grid_step": [
-      21.833333333333332,
-      21.25
+      7,
+      7
     ],
     "anchors": [
       [
-        42.0,
-        699.0
+        539.5,
+        413,
+        19
       ],
       [
-        426.25,
-        699.0
+        653.5,
+        416.0,
+        18
       ],
       [
-        801.3333333333334,
-        702
+        926,
+        412,
+        19
       ]
-    ]
+    ],
+    "source_views": [
+      0,
+      1,
+      3
+    ],
+    "east": "native west mirroring",
+    "status": "draft awaiting tuning"
   },
   {
     "id": 5,
     "name": "Tousled",
-    "source_name": "185674.png",
-    "source_sha256": "ac33ed8e43a8a29a575e4ea188d8b2d7147be6d13a2dfef0d8ebed8a91f98510",
+    "source_sha256": "6ce63a91257b4084698759ab92a3603daa8039ff6691b9816b9f0eb625d8be95",
     "grid_step": [
-      20.833333333333332,
-      20.75
+      7,
+      7
     ],
     "anchors": [
       [
-        52.0,
-        687.0
+        33.5,
+        692,
+        19
       ],
       [
-        440.25,
-        687.0
+        149.5,
+        697.0,
+        18
       ],
       [
-        801.3333333333334,
-        687
+        376,
+        692,
+        19
       ]
-    ]
+    ],
+    "source_views": [
+      0,
+      1,
+      3
+    ],
+    "east": "native west mirroring",
+    "status": "draft awaiting tuning"
   },
   {
     "id": 6,
     "name": "Quiff",
-    "source_name": "185678.png",
-    "source_sha256": "b7121be24fb2a33ed79d463953704a1e55e586f80d8ad01ba6056fec56ea66c4",
+    "source_sha256": "6ce63a91257b4084698759ab92a3603daa8039ff6691b9816b9f0eb625d8be95",
     "grid_step": [
-      22.333333333333332,
-      22.0
+      7,
+      7
     ],
     "anchors": [
       [
-        37.0,
-        683.0
+        537.0,
+        693,
+        19
       ],
       [
-        430.0,
-        683.0
+        653.5,
+        695.0,
+        18
       ],
       [
-        798.3333333333334,
-        676
+        882,
+        692,
+        19
       ]
-    ]
+    ],
+    "source_views": [
+      0,
+      1,
+      3
+    ],
+    "east": "native west mirroring",
+    "status": "draft awaiting tuning"
   },
   {
     "id": 7,
     "name": "Shag",
-    "source_name": "185670.png",
-    "source_sha256": "915a99baebf6cd44a125e1ff4f98979d19b403d6a0656737911004f289e3259e",
+    "source_sha256": "6ce63a91257b4084698759ab92a3603daa8039ff6691b9816b9f0eb625d8be95",
     "grid_step": [
-      22.5,
-      21.25
+      7,
+      7
     ],
     "anchors": [
       [
-        40.5,
-        719.0
+        34.0,
+        973,
+        19
       ],
       [
-        419.75,
-        719.0
+        149.5,
+        977.0,
+        18
       ],
       [
-        779.0,
-        711
+        376,
+        973,
+        19
       ]
-    ]
+    ],
+    "source_views": [
+      0,
+      1,
+      3
+    ],
+    "east": "native west mirroring",
+    "status": "draft awaiting tuning"
   },
   {
     "id": 8,
     "name": "Curls",
-    "source_name": "185677.png",
-    "source_sha256": "a633d002dba72377ae3a1aecde00e5bf72be42cc69b71dcc4b90989077c7376e",
+    "source_sha256": "6ce63a91257b4084698759ab92a3603daa8039ff6691b9816b9f0eb625d8be95",
     "grid_step": [
-      21.166666666666668,
-      20.5
+      7,
+      7
     ],
     "anchors": [
       [
-        45.0,
-        693.0
+        535.5,
+        974,
+        19
       ],
       [
-        441.25,
-        693.0
+        653.5,
+        982.0,
+        18
       ],
       [
-        807.1666666666666,
-        690
+        878,
+        975,
+        19
       ]
-    ]
+    ],
+    "source_views": [
+      0,
+      1,
+      3
+    ],
+    "east": "native west mirroring",
+    "status": "draft awaiting tuning"
   },
   {
     "id": 9,
     "name": "Man Bun",
-    "source_name": "185673.png",
-    "source_sha256": "906dd245c1d536f1c690b32ce94cf884d790db2cd577e1e54be37cf7d550990a",
+    "source_sha256": "6ce63a91257b4084698759ab92a3603daa8039ff6691b9816b9f0eb625d8be95",
     "grid_step": [
-      22.666666666666668,
-      22.0
+      7,
+      7
     ],
     "anchors": [
       [
-        40.0,
-        686.0
+        32.0,
+        1263,
+        19
       ],
       [
-        418.5,
-        686.0
+        149.5,
+        1265.0,
+        18
       ],
       [
-        766.6666666666666,
-        686
+        374.5,
+        1264,
+        19
       ]
-    ]
+    ],
+    "source_views": [
+      0,
+      1,
+      3
+    ],
+    "east": "native west mirroring",
+    "status": "draft awaiting tuning"
   },
   {
     "id": 10,
     "name": "Undercut",
-    "source_name": "185671.png",
-    "source_sha256": "0b6c6490165b092d8f152fdb7a66fb5d7f42fa445c7540b3994a4b770a1e03b0",
+    "source_sha256": "6ce63a91257b4084698759ab92a3603daa8039ff6691b9816b9f0eb625d8be95",
     "grid_step": [
-      20.333333333333332,
-      19.0
+      7,
+      7
     ],
     "anchors": [
       [
-        61.5,
-        698.0
+        537.25,
+        1266,
+        19
       ],
       [
-        429.5,
-        698.0
+        653.5,
+        1266.0,
+        18
       ],
       [
-        802.8333333333334,
-        699
+        881,
+        1265,
+        19
       ]
-    ]
+    ],
+    "source_views": [
+      0,
+      1,
+      3
+    ],
+    "east": "native west mirroring",
+    "status": "draft awaiting tuning"
   }
 ]

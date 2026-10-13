@@ -4,11 +4,12 @@ All notable Pokémon Emerald: Legends project changes are documented here.
 
 For build-specific player views, see [CHANGELOG-RELEASE.md](CHANGELOG-RELEASE.md) and [CHANGELOG-DEBUG.md](CHANGELOG-DEBUG.md). The canonical history below records the project as a whole.
 
-## Unreleased — male portrait repair draft
+## Unreleased — male appearance repair draft
 
 - Prepare generated-reference male front hairstyles with native Emerald face/body geometry for Trainer Card, wardrobe and the new-game preview. Preserve the native Curls cap panel.
 - Repair the five male front outfits, coats, scarves and footwear using separate authored materials; keep the diagonal strap and props distinct from shirt colors. Route the intro through the same front palette helper.
-- Preserve approved overworld/battle and female artwork, saved IDs, fixed costumes and untouched Original. Shared by Release/Debug; artwork awaits visual approval and VERSION remains 0.0.46. Evidence: `docs/qa/male-front-repair.md`.
+- Extend the owner-requested review draft to all ten generated-reference male overworld cuts, including pending Side Part. Fit hair to native field poses; preserve lower faces, pupils, hands, props and east mirroring. Separate hair/skin/body colors and keep Curls cap colors fixed through outfit, scarf and footwear changes.
+- Preserve approved battle/female artwork, saved IDs, fixed costumes and untouched Original. Shared by Release/Debug; artwork awaits visual approval and VERSION remains 0.0.46. Evidence and compact compiled-C PNG/GIF previews: `docs/qa/male-front-repair.md` and `docs/qa/male-overworld-repair.md`.
 
 ## Wiki 1.6.0 - 2026-10-13
 

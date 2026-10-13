@@ -9,9 +9,10 @@ import json,re,struct
 from PIL import Image,ImageDraw
 from build_appearance import ROOT,STATES,FILES,frames,skin_components,hand_pixels,ball_pixels
 
-# Side Part (2) still awaits separate visual approval. Preserve its published
-# v0.0.45 masks and palette while shipping the other nine reference cuts.
+# The live v0.0.46 checkpoint approved nine cuts. This branch imports all ten
+# newly requested designs as a review draft; none are published yet.
 APPROVED_MALE_WORLD_STYLES = frozenset((1,3,4,5,6,7,8,9,10))
+DRAFT_MALE_WORLD_STYLES = frozenset(range(1,11))
 
 # In two throw frames the arm touches the cheek. Skin flood-fill alone then
 # joins the forearm to the face, incorrectly protecting it from long sleeves.
@@ -142,12 +143,14 @@ def original_hair(p,g,kind,pose,state=''):
     for y in range(t,b+1):
         for x in range(l,r+1):
             if (x,y) not in hands and p[y][x] in ((4,7) if g else (4,)):
+                if g==0 and kind=='overworld' and p[y][x]==4 and any(0<=xx<len(p[0]) and 0<=yy<len(p) and p[yy][xx] in (1,2,3) for xx,yy in ((x-1,y),(x+1,y),(x,y-1),(x,y+1))):
+                    continue # Facial/hand contours are skin, not exposed hair.
                 points.add((x,y))
     return points
 
 def hair_edits(p,g,kind,pose,style,state='',with_points=False):
     face,box,anchor,direction=head(p,g,kind,pose,state)
-    if g == 0 and style in APPROVED_MALE_WORLD_STYLES and kind == 'overworld' and state != 'underwater' and direction in (0,1,2):
+    if g == 0 and style in DRAFT_MALE_WORLD_STYLES and kind == 'overworld' and state != 'underwater' and direction in (0,1,2):
         from male_overworld_hair import imported_hair
         art,points=imported_hair(p,style,face,box,direction,state,pose)
         return (art,points) if with_points else art
@@ -415,7 +418,11 @@ def build():
         body={(x,y) for y,row in enumerate(p) for x,v in enumerate(row)
               if v in (4,7) and (x,y) not in original}
         remap=[row[:] for row in p]
-        for x,y in body:remap[y][x]=8 if p[y][x]==4 or g else 5
+        for x,y in body:
+            if g==0 and kind=='overworld':
+                skin_edge=p[y][x]==4 and any(0<=xx<len(p[0]) and 0<=yy<len(p) and p[yy][xx] in (1,2,3) for xx,yy in ((x-1,y),(x+1,y),(x,y-1),(x,y+1)))
+                remap[y][x]=3 if skin_edge else 8
+            else:remap[y][x]=8 if p[y][x]==4 or g else 5
         items.append((remap,body))
         for choice in (1,2):items.append((leggings_edits(p,g,kind,state,choice,i),set()))
         desc=[]

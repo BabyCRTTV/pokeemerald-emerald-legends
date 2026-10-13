@@ -168,7 +168,7 @@ int main(int argc,char**argv){
  // Reserve native male shade 7 *before* footwear overlays. A shoe pixel
  // must never be replaced by the warm highlight reservation.
  u8 nativeShade=0x77, painted=0, bootMask=0x11;
- hair=1;Compose(&painted,&nativeShade,NULL,1,0,0,FALSE);assert(painted==0x55);
+ hair=1;Compose(&painted,&nativeShade,NULL,1,0,0,FALSE);assert(painted==0x88);
  Compose(&painted,&nativeShade,&bootMask,1,0,0,TRUE);assert(painted==0x66);
  Compose(&painted,&nativeShade,NULL,1,1,0,FALSE);assert(painted==0x77);
  hair=0;Compose(&painted,&nativeShade,NULL,1,0,0,FALSE);assert(painted==0x77);
