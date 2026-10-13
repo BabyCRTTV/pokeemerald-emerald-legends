@@ -53,7 +53,10 @@ const u16 *LegendsBattleBackPalette(enum TrainerPicID pic)
         sBattlePalettes[gender][i] = source[i];
     LegendsCopySkinRamp(sBattlePalettes[gender] + 1);
     if (gender == FEMALE && hair > 0 && hair < LEGENDS_HAIR_COUNT)
-        for (i = 0; i < 4; i++)
-            sBattlePalettes[gender][4 + i] = sMayBattleHairRamps[color][i];
+    {
+        sBattlePalettes[gender][4] = sMayBattleHairRamps[color][0];
+        sBattlePalettes[gender][7] = sMayBattleHairRamps[color][1];
+        sBattlePalettes[gender][11] = sMayBattleHairRamps[color][2];
+    }
     return sBattlePalettes[gender];
 }

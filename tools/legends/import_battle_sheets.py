@@ -1,93 +1,166 @@
-"""Convert the supplied May sheets to indexed, fixed-outfit 64x64 battle art.
+"""Fit supplied hairstyles to Emerald's native May battle frames.
 
-The original sheets remain the authoring source. Natural-row geometry is kept
-consistent across hair colors, which use independent RGB555 palette ramps.
-Skin always occupies slots 1-3 and never shares a slot with hair or clothing.
-The detached illustration Ball is omitted; Emerald animates its own Ball.
+The presentation sheets supply only hair. Native body/face/hand geometry and
+all four throw poses are retained; no complete trainer image is scaled down.
+The resulting static sheets use native 4bpp layout and independent skin and
+hair palette slots. Nothing is composited or inferred during battle.
 """
-from pathlib import Path
-import json, math, struct
-from collections import deque
+import json
 from PIL import Image
-from build_appearance import ROOT, pack
+from build_appearance import ROOT, pack, frames
+from build_style_layers import head, coat_hands, BACK_FRONT_LOCK_RECTS
 
 COLUMNS = ((244,552),(557,877),(882,1203),(1208,1523))
 ROWS = ((133,262),(266,399),(403,535),(540,674),(679,812),(818,952),(958,1103))
-SCALE = 3.6
-# Semantic RGB prototypes; indexing, rather than a runtime color guess, owns
-# skin/hair isolation. Palette 0 is transparent, 8/15 are dark outlines.
-PALETTE = [(0,0,0),(255,211,174),(245,173,146),(196,119,106),
-           (73,49,47),(106,71,63),(142,96,78),(171,118,95),
-           (26,32,43),(239,239,247),(146,150,177),(230,57,57),
-           (171,36,45),(241,194,72),(167,128,54),(46,43,54)]
-RAMPS = [((65,45,45),(97,66,61),(137,92,77),(169,118,97)),
-         ((32,33,45),(46,47,63),(65,66,86),(86,86,110)),
-         ((52,32,28),(77,45,34),(108,68,49),(141,93,67)),
-         ((83,44,31),(121,63,41),(162,90,56),(191,120,77)),
-         ((70,29,29),(108,42,37),(145,59,47),(180,86,67)),
-         ((102,62,33),(145,89,43),(185,123,63),(215,161,88)),
-         ((151,108,48),(193,149,69),(228,187,102),(249,218,145)),
-         ((79,79,106),(116,117,153),(155,159,194),(193,198,222))]
+SOURCE_ORDER = (1,2,3,0)  # wind-up, cast, release, idle
+NATIVE_PATH = ROOT/'graphics/trainers/back_pics/may.png'
+PALETTE = [tuple(Image.open(NATIVE_PATH).getpalette()[i*3:i*3+3]) for i in range(16)]
+# Consolidate body-only warm edges to 8 and belt greens to 10. This frees
+# 4/7/11 for a native three-shade hair ramp without tinting skin or clothing.
+PALETTE[4],PALETTE[7],PALETTE[11]=PALETTE[8],PALETTE[4],PALETTE[7]
+RAMPS = [((74,49,57),(123,90,82),(164,106,82)),
+         ((24,24,32),(41,41,57),(74,74,98)),
+         ((49,32,32),(82,57,49),(131,90,65)),
+         ((74,41,32),(123,65,41),(173,106,74)),
+         ((65,24,32),(106,41,41),(164,74,57)),
+         ((90,57,32),(148,98,49),(213,156,90)),
+         ((131,90,49),(197,148,65),(246,213,131)),
+         ((74,74,98),(139,148,180),(213,222,239))]
 
-def foreground(rgb):
-    r,g,b=rgb
-    return not (g>r+23 and b>r+15 and g>b-5)
-
-def component(im):
-    # Drop background, grid lines and detached Balls without trimming fingers.
-    points={(x,y) for y in range(im.height) for x in range(im.width)
-            if foreground(im.getpixel((x,y)))}
-    groups=[]
-    while points:
-        seed=points.pop(); group={seed}; todo=deque([seed])
-        while todo:
-            x,y=todo.popleft()
+def groups(points):
+    remaining=set(points); result=[]
+    while remaining:
+        seed=min(remaining); remaining.remove(seed); queue=[seed]; group={seed}
+        for x,y in queue:
             for q in ((x-1,y),(x+1,y),(x,y-1),(x,y+1)):
-                if q in points:points.remove(q);group.add(q);todo.append(q)
-        groups.append(group)
-    return max(groups,key=len)
+                if q in remaining:
+                    remaining.remove(q);group.add(q);queue.append(q)
+        result.append(group)
+    return sorted(result,key=lambda g:(-len(g),min(g)))
 
-def index(rgb):
-    return min(range(1,16),key=lambda i:sum((a-b)**2 for a,b in zip(rgb,PALETTE[i])))
+def bounds(points):
+    return min(x for x,y in points),min(y for x,y in points),max(x for x,y in points),max(y for x,y in points)
 
-def convert(im, column):
-    l,r=COLUMNS[column]; t,b=ROWS[0]
-    cell=im.crop((l,t,r,b)); points=component(cell)
-    # Fixed sheet x anchors preserve the center of the torso across poses;
-    # a tight crop's bounding-box center would make throwing arms shift it.
-    anchors=(400,703,1035,1360)
-    frame=[[0]*64 for _ in range(64)]
-    for y in range(64):
-        sy=math.floor((y-64)*SCALE+(b-t))
-        if not 0<=sy<cell.height:continue
-        for x in range(64):
-            sx=math.floor((x-30)*SCALE+(anchors[column]-l))
-            if (sx,sy) in points:frame[y][x]=index(cell.getpixel((sx,sy)))
-    return frame
+def source_hair(im, column):
+    l,r=COLUMNS[column];t,b=ROWS[0];cell=im.crop((l,t,r,b))
+    skin=set();brown=set()
+    for y in range(cell.height):
+        for x in range(cell.width):
+            rr,g,bb=cell.getpixel((x,y))
+            if rr>184 and rr>g+20 and g>bb-12 and g>120 and rr<g*1.8:
+                skin.add((x,y))
+            if 30<rr<=185 and 20<g<145 and 15<bb<130 and g*1.04<rr<g*1.7 and bb>g*.62:
+                brown.add((x,y))
+    face=min((s for s in groups(skin) if len(s)>200 and bounds(s)[1]<85),key=lambda s:bounds(s)[1])
+    fl,ft,fr,fb=bounds(face)
+    # Select head-connected brown regions, including braids/ponytail which
+    # can be separated from the crown by the source's dark outline or ties.
+    candidates=[g for g in groups({q for q in brown if fl-125<=q[0]<=fr+12 and q[1]<=fb+47}) if len(g)>25]
+    crown=min((g for g in candidates if bounds(g)[1]<ft),key=lambda g:(-len(g),min(g)))
+    hair=set(crown);pending=[g for g in candidates if g is not crown]
+    while pending:
+        added=False
+        for g in pending[:]:
+            if any((x+dx,y+dy) in hair for x,y in g for dx,dy in ((-4,0),(4,0),(0,-4),(0,4),(-3,-3),(3,3),(-3,3),(3,-3))):
+                hair.update(g);pending.remove(g);added=True
+        if not added:break
+    # Retain dark contour/strand pixels next to the brown regions, including
+    # the divisions between braid lobes. Reconstructing only the outside
+    # silhouette would turn woven braids into an unbroken ponytail.
+    nearby=set(hair)
+    for x,y in hair:
+        nearby.update((x+dx,y+dy) for dx,dy in ((-2,0),(2,0),(0,-2),(0,2),(-1,-1),(1,1),(-1,1),(1,-1)))
+    for x,y in nearby:
+        if 0<=x<cell.width and 0<=y<cell.height:
+            rr,g,bb=cell.getpixel((x,y))
+            if max(rr,g,bb)<85 and rr+g+bb<175:hair.add((x,y))
+    return cell,hair,(fl,ft,fr,fb)
+
+def native_base(p, pose):
+    """Remove native bandana/hair while keeping the exact face and body grid."""
+    face,box,_,_=head(p,1,'back',pose)
+    fl,ft,fr,fb=bounds(face)
+    protected={(x,y) for y,row in enumerate(p) for x,v in enumerate(row) if v in (1,2,3,12,13)}
+    # The eye, nose, mouth, ear and face contour remain native. Glove/hand
+    # protection is pose-specific because the casting arm crosses the head.
+    face_protected={(x,y) for y in range(ft,fb+1) for x in range(fl,fr+1)
+                    if p[y][x] not in (0,10,11)}
+    protected.update(face_protected)
+    protected.update(coat_hands(1,'back',pose))
+    erase=set()
+    for rect in (box,BACK_FRONT_LOCK_RECTS[pose]):
+        l,t,r,b=rect
+        for y in range(t,b+1):
+            for x in range(l,r+1):
+                if (x,y) not in protected and (rect==box or p[y][x] in (4,7,8,15)):
+                    erase.add((x,y))
+    # The old nape has two dark rows below the face envelope. Clear its
+    # outer sweep while keeping the connected native neck/collar in place.
+    for y in range(fb+1,min(64,fb+4)):
+        for x in range(max(0,fl-15),max(0,fl-3)):
+            if (x,y) not in protected and p[y][x] in (4,7,8,15):erase.add((x,y))
+    out=[row[:] for row in p]
+    for x,y in erase:out[y][x]=0
+    for y,row in enumerate(out):
+        for x,v in enumerate(row):
+            if v==11:row[x]=10
+            elif v==7:row[x]=11
+            elif v==4:row[x]=7 if (x,y) in face_protected else 8
+    return out,face_protected|coat_hands(1,'back',pose),erase,(fl,ft,fr,fb)
+
+def convert(im, column, p, pose):
+    cell,hair,source_face=source_hair(im,column)
+    out,protected,erase,native_face=native_base(p,pose)
+    fl,ft,fr,fb=source_face;nl,nt,nr,nb=native_face
+    # The supplied artwork's logical grid is about three source pixels per
+    # native pixel. Align to the native forehead/cheek, never the arm span.
+    scale=1/3
+    mask={};samples={}
+    for x,y in hair:
+        q=(round((x-fr)*scale+nr),round((y-ft)*scale+nt))
+        if 0<=q[0]<64 and 0<=q[1]<64:
+            samples.setdefault(q,[]).append(cell.getpixel((x,y)))
+    # Snap to one logical-pixel outline and broad native color clusters.
+    for q,colors in samples.items():
+        outline=sum(max(c)<65 and c[0]<=c[1]+8 for c in colors)/len(colors)
+        light=sum(c[0] for c in colors)/len(colors)
+        mask[q]=15 if outline>=.4 else 11 if light>=112 else 7 if light>=80 else 4
+    # Close one-cell pinholes left by the presentation sheet's outlines.
+    for y in range(1,63):
+        for x in range(1,63):
+            if (x,y) not in mask and sum(q in mask for q in ((x-1,y),(x+1,y),(x,y-1),(x,y+1)))>=3:
+                mask[x,y]=7
+    original=dict(mask)
+    for (x,y),v in original.items():
+        adjacent=[original.get(q,0) for q in ((x-1,y),(x+1,y),(x,y-1),(x,y+1))]
+        if 0 in adjacent:mask[x,y]=15
+        elif v==11 and adjacent.count(11)<2:mask[x,y]=7
+    for (x,y),v in mask.items():
+        if x>nr and nt+3<y<=nb+2:continue
+        if (x,y) not in protected:out[y][x]=v
+    return out
 
 def rgb555(rgb):
-    r,g,b=rgb;return (round(r*31/255))|(round(g*31/255)<<5)|(round(b*31/255)<<10)
+    r,g,b=rgb;return round(r*31/255)|(round(g*31/255)<<5)|(round(b*31/255)<<10)
 
 def build():
     manifest=json.loads((ROOT/'tools/legends/battle_sheets.json').read_text())
-    blob=bytearray(); desc=[]
+    native=frames(NATIVE_PATH,64,64);blob=bytearray();desc=[]
     for item in manifest:
         src=Image.open(ROOT/item['source']).convert('RGB')
         assert src.size==(1536,1152)
-        frames=[convert(src,i) for i in range(4)]
-        assert all(any(v in (1,2,3) for row in f for v in row) for f in frames)
-        offset=len(blob);blob.extend(b''.join(pack(frames[i]) for i in (1,2,3,0)))
+        poses=[convert(src,column,native[pose],pose) for pose,column in enumerate(SOURCE_ORDER)]
+        offset=len(blob);blob.extend(b''.join(pack(p) for p in poses))
         desc.append(f'    {{.data=sMayBattleBits+{offset}, .size=2048, .relativeFrames=TRUE}},')
         out=Image.new('P',(64,256));out.putpalette(sum((list(c) for c in PALETTE),[])+[0]*(768-48))
-        out.putdata([v for f in frames for row in f for v in row])
-        out.save(ROOT/f'graphics/legends/battle_may/{item["name"]}.png',transparency=0)
+        out.putdata([v for p in poses for row in p for v in row]);out.save(ROOT/f'graphics/legends/battle_may/{item["name"]}.png',transparency=0)
     (ROOT/'graphics/legends/battle_may/frames.bin').write_bytes(blob)
     header='// Generated by tools/legends/import_battle_sheets.py.\n'
     header+='static const u8 ALIGNED(4) sMayBattleBits[] = INCBIN_U8("graphics/legends/battle_may/frames.bin");\n'
     header+='static const struct SpriteFrameImage sMayBattleImages[10] = {\n'+'\n'.join(desc)+'\n};\n'
     header+='static const u16 sMayBattleBasePalette[16] = {'+','.join(f'0x{rgb555(c):04X}' for c in PALETTE)+'};\n'
-    header+='static const u16 sMayBattleHairRamps[8][4] = {\n'+',\n'.join('    {'+','.join(f'0x{rgb555(c):04X}' for c in ramp)+'}' for ramp in RAMPS)+'\n};\n'
+    header+='static const u16 sMayBattleHairRamps[8][3] = {\n'+',\n'.join('    {'+','.join(f'0x{rgb555(c):04X}' for c in ramp)+'}' for ramp in RAMPS)+'\n};\n'
     (ROOT/'src/data/legends/battle_sheets.h').write_text(header)
-    print(f'Imported {len(manifest)} named cuts, 40 fixed-outfit poses, {len(blob)} bytes')
+    print(f'Fitted {len(manifest)} named cuts to 40 native May poses, {len(blob)} bytes')
 
 if __name__=='__main__':build()

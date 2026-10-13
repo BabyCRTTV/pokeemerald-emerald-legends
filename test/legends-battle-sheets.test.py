@@ -17,6 +17,22 @@ for i in range(40):
  assert all(any(v==skin for v in pixels) for skin in (1,2,3)),('skin ramp',i)
  assert any(v==9 for v in pixels) or i%4==3,('glove highlights',i)
 
+# Protect the native proportions against the rejected whole-image scaling.
+# Every face/eye/hand cell and the lower torso remain on May's original grid.
+native=importer.frames(importer.NATIVE_PATH,64,64)
+for n in range(10):
+ for pose,p in enumerate(native):
+  frame=raw[(n*4+pose)*2048:(n*4+pose+1)*2048]
+  def cell(x,y):
+   offset=((y//8)*8+x//8)*32+(y%8)*4+(x%8)//2
+   return frame[offset]>>(x%2*4)&15
+  base,protected,_,face=importer.native_base(p,pose)
+  for x,y in protected:
+   assert cell(x,y)==base[y][x],('native face/hand geometry',n,pose,x,y)
+  for y in range(60,64):
+   for x in range(64):
+    assert cell(x,y)==base[y][x],('native lower-body geometry',n,pose,x,y)
+
 manifest=json.loads((root/'tools/legends/battle_sheets.json').read_text())
 names=['pixie','side_part','soft_layers','side_sweep','wavy_bob','short_bob','long_bob','curls','ponytail','twin_braids']
 assert [(r['hair_id'],r['name']) for r in manifest]==list(enumerate(names,1))
@@ -55,6 +71,9 @@ int main(void){
   const struct SpriteFrameImage *im=LegendsBattleBackImage(205);
   assert(im->data==sMayBattleBits+(h-1)*8192&&im->size==2048&&im->relativeFrames);
   u16 base[16];memcpy(base,LegendsBattleBackPalette(205),32);
+  assert(base[4]==sMayBattleHairRamps[c][0]);
+  assert(base[7]==sMayBattleHairRamps[c][1]);
+  assert(base[11]==sMayBattleHairRamps[c][2]);
   for(int s=0;s<5;s++){
    tone=s;const u16 *pal=LegendsBattleBackPalette(205);
    assert(!memcmp(pal+1,sSkinPalettes[s],6));
@@ -74,7 +93,7 @@ int main(void){
  assert(old!=LegendsBattleBackImage(205)->data);
  const u16 *now=LegendsBattleBackPalette(205);
  assert(memcmp(oldPal+4,now+4,8)&&!memcmp(now+1,sSkinPalettes[1],6));
- for(int i=8;i<16;i++)assert(now[i]==oldPal[i]);
+ for(int i=4;i<16;i++)if(i!=4&&i!=7&&i!=11)assert(now[i]==oldPal[i]);
  hair=0;assert(LegendsBattleBackImage(205)->data==gTrainerBackPic_May);
  assert(!LegendsBattleBackImage(199)&&!LegendsBattleBackPalette(199));
  assert(!LegendsBattleBackImage(244)&&!LegendsBattleBackPalette(244));

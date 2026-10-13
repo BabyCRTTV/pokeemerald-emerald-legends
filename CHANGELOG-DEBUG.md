@@ -2,12 +2,12 @@
 
 This is the developer-facing history for the **Debug** build. Shared Legends changes are repeated here so this file stands on its own; Debug-only behavior is called out separately.
 
-## [0.0.44] - 2026-10-12
+## [0.0.44] - 2026-10-13
 
 - Import the ten supplied female battle hairstyles into fixed-outfit, four-frame Emerald battle sprites: Pixie, Side Part, Soft Layers, Side Sweep, Wavy Bob, Short Bob, Long Bob, Curls, Ponytail and Twin Braids. Use the matching saved hairstyle and hair color when entering a battle; wardrobe changes take effect on the next battle.
 - Give battle art an independent palette with five dedicated skin-tone ramps. Preserve hair, red uniform, gloves and outlines when skin tone changes. Keep all eight existing in-game hair-color choices, including Dark Brown.
 - Use a fixed battle uniform instead of layering wardrobe outfits, coats, scarves, footwear, leggings or costumes onto battle backs. Overworld customization and front/wardrobe portraits continue normally. Male and Original-hair female battles use native Emerald art with the selected skin tone until corresponding prepared sheets are available.
-- Fit the supplied frames to native 64x64 bounds and Emerald's idle/wind-up/release sequence. Keep the game's moving Ball animation instead of embedding the detached illustration Ball in the trainer bitmap.
+- Fit the supplied hair to native May's original face, body proportions and four throwing poses, using clean three-shade Emerald hair palettes. Keep the native 64x64 frames and moving Ball animation; omit the detached illustration Ball from the supplied sheets.
 - Remove the approved three leftover shoulder cells from May's custom front portraits, including geometry added by legacy jacket assets. Preserve the connected collar and sleeve.
 - Shared by Release and Debug; no variant-specific gameplay differences. Prepared-sprite pipeline and validation: `docs/features/battle-appearance.md`.
 
