@@ -6,6 +6,10 @@
 
 struct SpriteFrameImage;
 
+const struct SpriteFrameImage *LegendsBattleBackImage(enum TrainerPicID pic);
+const u16 *LegendsBattleBackPalette(enum TrainerPicID pic);
+void LegendsCopySkinRamp(u16 *dest);
+
 #define LEGENDS_SKIN_TONE_COUNT 5
 #define LEGENDS_OUTFIT_COUNT 5
 #define LEGENDS_SCARF_COUNT 6

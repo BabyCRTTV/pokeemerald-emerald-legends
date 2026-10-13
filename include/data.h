@@ -412,7 +412,8 @@ static inline const struct MonCoords *GetTrainerBackPicCoords(enum TrainerPicID 
 
 static inline const struct SpriteFrameImage *GetTrainerBackPicImage(enum TrainerPicID trainerPic)
 {
-    return &gTrainerPicInfo[SanitizeBackTrainerPic(trainerPic)].backPic->image;
+    const struct SpriteFrameImage *legends = LegendsBattleBackImage(trainerPic);
+    return legends != NULL ? legends : &gTrainerPicInfo[SanitizeBackTrainerPic(trainerPic)].backPic->image;
 }
 
 static inline const union AnimCmd *const *GetTrainerBackPicAnims(enum TrainerPicID trainerPic)
@@ -422,7 +423,8 @@ static inline const union AnimCmd *const *GetTrainerBackPicAnims(enum TrainerPic
 
 static inline const u16 *GetTrainerBackPicPalette(enum TrainerPicID trainerPic)
 {
-    return gTrainerPicInfo[SanitizeBackTrainerPic(trainerPic)].backPic->paletteData;
+    const u16 *legends = LegendsBattleBackPalette(trainerPic);
+    return legends != NULL ? legends : gTrainerPicInfo[SanitizeBackTrainerPic(trainerPic)].backPic->paletteData;
 }
 
 #endif // GUARD_DATA_H

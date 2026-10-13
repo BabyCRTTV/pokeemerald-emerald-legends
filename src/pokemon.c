@@ -1904,8 +1904,7 @@ void SetMultiuseSpriteTemplateToTrainerBack(enum TrainerPicID trainerPicId, enum
     if (battlerPosition == B_POSITION_PLAYER_LEFT || battlerPosition == B_POSITION_PLAYER_RIGHT)
     {
         gMultiuseSpriteTemplate = sTrainerBackSpriteTemplate;
-        gMultiuseSpriteTemplate.images = LegendsFootwearBackImages(trainerPicId,
-            GetTrainerBackPicImage(trainerPicId), GetTrainerBackPicCoords(trainerPicId)->y_offset);
+        gMultiuseSpriteTemplate.images = GetTrainerBackPicImage(trainerPicId);
         gMultiuseSpriteTemplate.anims = GetTrainerBackPicAnims(trainerPicId);
     }
     else

@@ -82,6 +82,8 @@ with tempfile.TemporaryDirectory() as d:
      painter(buf,w,g,kind,state,slot,hair,coat)
      raw=bytes(buf);out=unpack(raw,w,h)
      if not hair and not coat or kind==0 and state==4:assert raw==native
+     if g==1 and kind==1 and hair:
+      assert out[24][22] == out[26][21] == out[27][21] == 0,(name,hair,coat,'shoulder remnants')
      if g==1 and kind==2 and hair:
       # Retired native lock tips must not float beside a shorter custom cut.
       x,y=((55,41),(62,38),(49,35),(56,40))[native_index]

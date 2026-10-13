@@ -1,0 +1,52 @@
+[
+  {
+    "hair_id": 1,
+    "name": "pixie",
+    "source": "graphics/legends/battle_sources/pixie.png"
+  },
+  {
+    "hair_id": 2,
+    "name": "side_part",
+    "source": "graphics/legends/battle_sources/side_part.png"
+  },
+  {
+    "hair_id": 3,
+    "name": "soft_layers",
+    "source": "graphics/legends/battle_sources/soft_layers.png"
+  },
+  {
+    "hair_id": 4,
+    "name": "side_sweep",
+    "source": "graphics/legends/battle_sources/side_sweep.png"
+  },
+  {
+    "hair_id": 5,
+    "name": "wavy_bob",
+    "source": "graphics/legends/battle_sources/wavy_bob.png"
+  },
+  {
+    "hair_id": 6,
+    "name": "short_bob",
+    "source": "graphics/legends/battle_sources/short_bob.png"
+  },
+  {
+    "hair_id": 7,
+    "name": "long_bob",
+    "source": "graphics/legends/battle_sources/long_bob.png"
+  },
+  {
+    "hair_id": 8,
+    "name": "curls",
+    "source": "graphics/legends/battle_sources/curls.png"
+  },
+  {
+    "hair_id": 9,
+    "name": "ponytail",
+    "source": "graphics/legends/battle_sources/ponytail.png"
+  },
+  {
+    "hair_id": 10,
+    "name": "twin_braids",
+    "source": "graphics/legends/battle_sources/twin_braids.png"
+  }
+]

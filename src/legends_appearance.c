@@ -30,6 +30,8 @@ EWRAM_DATA u16 gLegendsUnderwaterPalettes[2][16] = {0};
 #include "data/legends/appearance_palettes.h"
 #include "data/legends/costume_palettes.h"
 
+
+
 static u16 GetAppearanceCode(void)
 {
     u16 code;
@@ -43,6 +45,14 @@ u8 LegendsGetSkinTone(void)
 {
     u16 code = GetAppearanceCode();
     return code && code <= 25 ? (code - 1) % LEGENDS_SKIN_TONE_COUNT : 0;
+}
+
+void LegendsCopySkinRamp(u16 *dest)
+{
+    u32 i;
+    u8 skin = LegendsGetSkinTone();
+    for (i = 0; i < 3; i++)
+        dest[i] = sSkinPalettes[skin][i];
 }
 
 u8 LegendsGetOutfit(void)

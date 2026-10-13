@@ -45,7 +45,7 @@ To regenerate, install Pillow 11.3.0, run both authoring scripts, then the appea
 
 ## Complete costumes (v0.0.25)
 
-COSTUMES chooses the native male/female Team Magma or Team Aqua grunt uniform. Walking and wardrobe/Trainer Card portraits use the exact original grunt pixel assets, with the selected skin ramp applied. Running uses the matching native walking motions at player speed. Bikes, Surf and field-action sheets adapt those uniforms to native player frame dimensions, while back battle art keeps all four player throwing motions under the matching hood or bandana. Diving remains in the covered native suit.
+COSTUMES chooses the native male/female Team Magma or Team Aqua grunt uniform. Walking and wardrobe/Trainer Card portraits use the exact original grunt pixel assets, with the selected skin ramp applied. Running uses the matching native walking motions at player speed. Bikes, Surf and field-action sheets adapt those uniforms to native player frame dimensions, while battles use the fixed battle uniform described below. Diving remains in the covered native suit.
 
 HAIRSTYLE, HAIR COLOR, SCARF, JACKET and SHOES display FIXED while a costume is active to preserve the full uniform. Their saved choices are kept. Choose NONE to restore them, or change OUTFIT to switch back to normal clothes. Apply saves; Cancel/B discards costume edits too. Var 0x40A8 stores 0/1/2 without changing SaveBlock sizes; invalid values use None and New Game resets the var. Existing NPCs/rivals and link protocol are unchanged.
 
@@ -118,3 +118,7 @@ Hair color follows hairstyle in the intro. Natural preserves the native brown/cu
 `VAR_LEGENDS_HAIR` (0x4059) now stores `hairstyle + 11 * hairColor`, with valid values 0–87. Existing values 0–10 retain Natural color. Invalid values fall back to Original/Natural. Wardrobe previews remain staged until APPLY. Both the palette stamp and sprite/portrait caches include hair color, and the field reload rebuilds the avatar after Apply. No save structures or animation-frame buffers were enlarged.
 
 Current authoring renders and native emulator evidence are described in [the v0.0.40 QA record](../qa/appearance-v0.0.40.md).
+
+## Fixed battle uniforms (v0.0.44)
+
+Wardrobe outfits, scarves, coats, shoes, leggings and costumes customize field sprites and front portraits. Battles use a fixed uniform with the chosen skin tone. Female custom hairstyles use the supplied four-frame sheets and the matching HAIRSTYLE/HAIR COLOR settings; changes applied in the wardrobe update the next battle. Original-hair female and male battles use native Emerald art with the selected skin tone. See [battle appearance](battle-appearance.md).

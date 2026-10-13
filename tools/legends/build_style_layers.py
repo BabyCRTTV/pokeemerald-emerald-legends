@@ -178,6 +178,11 @@ def hair_edits(p,g,kind,pose,style,state='',with_points=False):
         for y in range(23,28):
             for x in range(18,22):
                 if (x,y) not in protected and p[y][x] in (4,7,8,15):out[y][x]=0
+        # Retire the detached outline and the old jacket's extension into
+        # native transparent cells. Force these edits into the sparse layer.
+        for x,y in ((22,24),(21,26),(21,27)):
+            out[y][x]=0
+            hair_points.add((x,y))
     if g and kind=='back':
         l,t,r,b=BACK_FRONT_LOCK_RECTS[pose]
         for y in range(t,b+1):

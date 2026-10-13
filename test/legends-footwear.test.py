@@ -11,7 +11,7 @@ from PIL import Image
 
 def array(name,data):return 'static const u8 '+name+'[]={'+','.join(map(str,data))+'};\n'
 # The ordinary battle sprite constructor must use the compositor too.
-assert 'gMultiuseSpriteTemplate.images = LegendsFootwearBackImages(trainerPicId,' in (root/'src/pokemon.c').read_text()
+assert 'gMultiuseSpriteTemplate.images = GetTrainerBackPicImage(trainerPicId);' in (root/'src/pokemon.c').read_text()
 source='\n'.join(l for l in (root/'src/legends_footwear.c').read_text().splitlines() if not l.startswith('#include'))
 header=(root/'src/data/legends/footwear_masks.h').read_text()
 header=re.sub(r'static const u8 ALIGNED\(4\) sFootwearMaskData\[\] = INCBIN_U8\([^;]+;',array('sFootwearMaskData',(root/'graphics/legends/footwear/masks.bin').read_bytes()),header)
