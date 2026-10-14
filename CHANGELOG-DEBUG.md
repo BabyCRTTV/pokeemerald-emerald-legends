@@ -2,6 +2,12 @@
 
 This is the developer-facing history for the **Debug** build. Shared Legends changes are repeated here so this file stands on its own; Debug-only behavior is called out separately.
 
+## [0.0.47.1] - 2026-10-14
+
+- Move the pause-menu page arrow four pixels lower, leaving four clear pixel rows below EXIT instead of touching the text.
+- Keep the selection cursor, arrow shape and horizontal alignment, eight visible rows, scrolling and page navigation unchanged. Preserve the approved v0.0.47 sprite/color baseline.
+- Shared by Release and Debug; no variant-specific gameplay differences. Validate both page directions and every supported menu height. See `docs/qa/start-menu-footer.md`.
+
 ## [0.0.47] - 2026-10-14
 
 - Preserve the existing v0.0.46 trainer sprites, approved hairstyles and native animations as the baseline for further improvements.

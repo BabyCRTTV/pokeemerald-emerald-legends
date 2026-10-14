@@ -518,7 +518,8 @@ static void DrawStartMenuScrollHints(void)
     u8 row, windowId = GetStartMenuWindowId();
     if (!IsOverworldLinkActive() && !InUnionRoom())
     {
-        u8 y = min(sNumStartMenuActions, START_MENU_VISIBLE_ROWS) * 16 + 6;
+        // Separate the page arrow from the last item's text within the footer.
+        u8 y = min(sNumStartMenuActions, START_MENU_VISIBLE_ROWS) * 16 + 10;
         for (row = 0; row < 5; row++)
         {
             u8 width = 1 + min(row, 4 - row);

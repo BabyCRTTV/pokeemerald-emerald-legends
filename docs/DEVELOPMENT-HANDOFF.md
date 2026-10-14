@@ -6,7 +6,7 @@ The owner switches between models such as Astra and Sol. Use the selected model'
 
 ## Accepted baseline
 
-- Root version: **0.0.47**, shared by Release and Debug.
+- Approved sprite baseline: **0.0.47**, shared by Release and Debug.
 - The owner approved the minimal smile/body-color repair and requested publication. Preserve the existing v0.0.46 sprites and approved hairstyle artwork. Generated replacement sprites were rejected and are absent from the released tree.
 - Male native mouth/chin/ear and exposed-skin contours now use skin shadow instead of hair color. Natural custom hair receives body isolation; footwear remapping reserves both hair slots. Clothes and shoes retain their selected colors across hair-color changes.
 - Existing save choices, female sprites, approved battle art, fixed costumes, diving and untouched Original retain their established behavior. Side Part still uses its published art; its separate redesign has not received approval.
@@ -21,5 +21,7 @@ The owner switches between models such as Astra and Sol. Use the selected model'
 - [Simplified matching wardrobe/overworld PNG](qa/v0.0.47-sprite-sheet.png) shows Natural/Blond Crew Cut with identical Emerald clothing and red shoes, plus Silver Tousled with Trail/navy/Ocean scarf/black boots. It uses actual compiled-C buffers, not generated replacements or emulator captures. Reproduce with `python tools/legends/preview_appearance_baseline.py`.
 
 ## Next work
+
+The owner reported the pause-menu page arrow touching EXIT. The v0.0.47.1 correction moves that arrow four pixels lower, providing four clear rows while retaining its horizontal position, shape, selection cursor and eight-row navigation. Local compiled-C menu/footer, world-panel, Options and patcher checks passed. [Menu QA](qa/start-menu-footer.md). This correction is awaiting native build/BPS verification and publication; live downloads remain v0.0.47 until that is confirmed.
 
 The owner intends to improve from this approved baseline. Await specific visual tuning feedback before redesigning or publishing further artwork. Preserve the color repair and existing protected-asset checks. No new sprite redesign is approved by this handoff.
