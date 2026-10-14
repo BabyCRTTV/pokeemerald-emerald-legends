@@ -2,6 +2,13 @@
 
 This is the developer-facing history for the **Debug** build. Shared Legends changes are repeated here so this file stands on its own; Debug-only behavior is called out separately.
 
+## Unreleased preview — awaiting owner approval
+
+- Appended fifteen achievements, bringing the total to 95 while preserving the original eighty IDs and the existing save layout.
+- Added a temporary PC Item Storage confirmation after a manual reward claim, with full-PC retries and one-time claims preserved.
+- Added a queued upper-left achievement-name notice that disappeared automatically without blocking movement and waited through menus, scripts, fades and location banners.
+- Changes were shared by Release and Debug. Held publication for the owner’s requested visual review; details and previews were recorded in `docs/qa/achievement-preview.md`.
+
 ## [0.0.51] - 2026-10-14
 
 - Removed the duplicate Adventure Log from the second pause-menu page; kept it on the first page, with Quest Log, Achievements and Exit on the second.

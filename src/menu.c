@@ -1,4 +1,5 @@
 #include "global.h"
+#include "legends_journal.h"
 #include "bg.h"
 #include "blit.h"
 #include "decompress.h"
@@ -150,6 +151,7 @@ void InitStandardTextBoxWindows(void)
 
 void FreeAllOverworldWindowBuffers(void)
 {
+    LegendsAchievementPopupHide();
     FreeAllWindowBuffers();
 }
 

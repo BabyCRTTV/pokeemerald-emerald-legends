@@ -1,0 +1,201 @@
+{
+  "production_version": "0.0.51",
+  "state": "Unpublished preview",
+  "Debug_ROM_sha256": "b538ded1bc2899ca2724992860b69031c8faa50472bc5995ec2f647ba81b910c",
+  "emulator": "mGBA 0.10.2",
+  "captures": [
+    {
+      "name": "animation-00",
+      "sha256": "6984e33dfee705ede9cc069e1e86933bb070e7a8c49aaef197f3c1252a735545"
+    },
+    {
+      "name": "animation-01",
+      "sha256": "cba9ef601897ec8b3ab1f31cd1f4034c1636e31ac24324b787d75eae9fc7d4d6"
+    },
+    {
+      "name": "animation-02",
+      "sha256": "a0dade2120bb79918baf121d32092be0dc17e47c14903d189696509a8435f385"
+    },
+    {
+      "name": "animation-03",
+      "sha256": "4f7773132ee50be2b838cebeb5b0dfdafec27c1e082afafcd7bc211afdc02dca"
+    },
+    {
+      "name": "animation-04",
+      "sha256": "de1ad7f2dc362359ff989d9f97e08158982c54f40291b4dfcbabb7d5acae3250"
+    },
+    {
+      "name": "animation-05",
+      "sha256": "0ffb6ccbed6592e99ad66d2f0ea937efdd5b197d3f297a4aaff6383331945f4c"
+    },
+    {
+      "name": "animation-06",
+      "sha256": "aae56f77e6754aeac53a5d9320234752bc723b57154d642eaeb49e17b329a65b"
+    },
+    {
+      "name": "animation-07",
+      "sha256": "ee6597d4e1df790dc42d2207b68a146ecd34ce8884fd5cbdc6fc746162242f74"
+    },
+    {
+      "name": "animation-08",
+      "sha256": "ee6597d4e1df790dc42d2207b68a146ecd34ce8884fd5cbdc6fc746162242f74"
+    },
+    {
+      "name": "animation-09",
+      "sha256": "ee6597d4e1df790dc42d2207b68a146ecd34ce8884fd5cbdc6fc746162242f74"
+    },
+    {
+      "name": "animation-10",
+      "sha256": "0cada40e310e60e2f42602d4a02954fda5f1e11e428c3735525a55bfd012e368"
+    },
+    {
+      "name": "animation-11",
+      "sha256": "0cada40e310e60e2f42602d4a02954fda5f1e11e428c3735525a55bfd012e368"
+    },
+    {
+      "name": "animation-12",
+      "sha256": "ee6597d4e1df790dc42d2207b68a146ecd34ce8884fd5cbdc6fc746162242f74"
+    },
+    {
+      "name": "animation-13",
+      "sha256": "ee6597d4e1df790dc42d2207b68a146ecd34ce8884fd5cbdc6fc746162242f74"
+    },
+    {
+      "name": "animation-14",
+      "sha256": "ee6597d4e1df790dc42d2207b68a146ecd34ce8884fd5cbdc6fc746162242f74"
+    },
+    {
+      "name": "animation-15",
+      "sha256": "dd5828f70836fc9240de78244eeb6f45295c165b44abc500799b8604dd2f4f41"
+    },
+    {
+      "name": "animation-16",
+      "sha256": "dd5828f70836fc9240de78244eeb6f45295c165b44abc500799b8604dd2f4f41"
+    },
+    {
+      "name": "animation-17",
+      "sha256": "dd5828f70836fc9240de78244eeb6f45295c165b44abc500799b8604dd2f4f41"
+    },
+    {
+      "name": "animation-18",
+      "sha256": "ee6597d4e1df790dc42d2207b68a146ecd34ce8884fd5cbdc6fc746162242f74"
+    },
+    {
+      "name": "animation-19",
+      "sha256": "ee6597d4e1df790dc42d2207b68a146ecd34ce8884fd5cbdc6fc746162242f74"
+    },
+    {
+      "name": "animation-20",
+      "sha256": "0cada40e310e60e2f42602d4a02954fda5f1e11e428c3735525a55bfd012e368"
+    },
+    {
+      "name": "animation-21",
+      "sha256": "0cada40e310e60e2f42602d4a02954fda5f1e11e428c3735525a55bfd012e368"
+    },
+    {
+      "name": "animation-22",
+      "sha256": "0cada40e310e60e2f42602d4a02954fda5f1e11e428c3735525a55bfd012e368"
+    },
+    {
+      "name": "animation-23",
+      "sha256": "ee6597d4e1df790dc42d2207b68a146ecd34ce8884fd5cbdc6fc746162242f74"
+    },
+    {
+      "name": "animation-24",
+      "sha256": "ee6597d4e1df790dc42d2207b68a146ecd34ce8884fd5cbdc6fc746162242f74"
+    },
+    {
+      "name": "animation-25",
+      "sha256": "ee6597d4e1df790dc42d2207b68a146ecd34ce8884fd5cbdc6fc746162242f74"
+    },
+    {
+      "name": "animation-26",
+      "sha256": "dd5828f70836fc9240de78244eeb6f45295c165b44abc500799b8604dd2f4f41"
+    },
+    {
+      "name": "animation-27",
+      "sha256": "dd5828f70836fc9240de78244eeb6f45295c165b44abc500799b8604dd2f4f41"
+    },
+    {
+      "name": "animation-28",
+      "sha256": "ee6597d4e1df790dc42d2207b68a146ecd34ce8884fd5cbdc6fc746162242f74"
+    },
+    {
+      "name": "animation-29",
+      "sha256": "d7c80e3f3e5c1099cf765f289fece73c920429410fbc09f53aa2ab4b7c749fdd"
+    },
+    {
+      "name": "animation-30",
+      "sha256": "d7c80e3f3e5c1099cf765f289fece73c920429410fbc09f53aa2ab4b7c749fdd"
+    },
+    {
+      "name": "animation-31",
+      "sha256": "884201b204faf6d3254d16972524e63dd6f53243ca9c1595fd1349841b9722e3"
+    },
+    {
+      "name": "animation-32",
+      "sha256": "884201b204faf6d3254d16972524e63dd6f53243ca9c1595fd1349841b9722e3"
+    },
+    {
+      "name": "animation-33",
+      "sha256": "884201b204faf6d3254d16972524e63dd6f53243ca9c1595fd1349841b9722e3"
+    },
+    {
+      "name": "animation-34",
+      "sha256": "d7c80e3f3e5c1099cf765f289fece73c920429410fbc09f53aa2ab4b7c749fdd"
+    },
+    {
+      "name": "field-after",
+      "sha256": "d7c80e3f3e5c1099cf765f289fece73c920429410fbc09f53aa2ab4b7c749fdd"
+    },
+    {
+      "name": "field-before",
+      "sha256": "a47a8c2a8473f997354d97f4490c4ddf445c6cd3bdb1bdbbe339459be77a4ba2"
+    },
+    {
+      "name": "manual-claim",
+      "sha256": "ea2567463334a92b1f07f2709806ba09a2c93a7b5cd99c3b261ea8bea75111ef"
+    },
+    {
+      "name": "new-achievements",
+      "sha256": "888e862462dc495080769eb9ae04ab25931ae7a7dc712af86715fd10b538dac7"
+    },
+    {
+      "name": "reward-claimed",
+      "sha256": "640e11154b174e482fa7efedc08e6ee06c524c3f80e310ccafe36cec0004f851"
+    },
+    {
+      "name": "reward-sent",
+      "sha256": "36de44a20796e201b8ea81db0d34afa16209f981ee8a1db66080a05a17360d94"
+    },
+    {
+      "name": "unlock-notice",
+      "sha256": "6984e33dfee705ede9cc069e1e86933bb070e7a8c49aaef197f3c1252a735545"
+    }
+  ],
+  "passed": true,
+  "scope": "Private callback prepared a new Oldale Town scene. Actual FlagSet unlocked appended achievement 80; native field code displayed/expired the notice while emulated keys moved the player. Actual 95-entry journal navigation and manual claim were captured. No ROM or BPS was published.",
+  "harness_sha256": {
+    "arm.c": "c5871dd9cbec7be27a3735ac802a979d12cd1f77227f66238265ddd26b2adf89",
+    "host.c": "e741fc30b6164e8c884917be1f6ee2eb9136d9142132ee9ba60d49554ebe4edb",
+    "run.py": "70146909694d2a7fd593795b77a8e76375e54db3294bff2c328206b2eae5c5eb"
+  },
+  "Release_ROM_sha256": "52cb11152b482783a6ce531653c7625854928037644fc958e1c60b86530cb775",
+  "local_RAM": {
+    "Debug": {
+      "EWRAM": 254492,
+      "IWRAM": 28376
+    },
+    "Release": {
+      "EWRAM": 254494,
+      "IWRAM": 28328
+    },
+    "static_EWRAM_growth_bytes": 24
+  },
+  "save_layout_bytes": 36,
+  "reserved_achievement_capacity": 96,
+  "preview_sha256": {
+    "achievement-preview.png": "a1d5ee9240847b2045653c4ee0973eb1654276074115fc4408a8ebc346ed181c",
+    "achievement-unlock-preview.gif": "e352856158aff14b9464388db7b7831917b19ee1db9205343d9de1d72ce16b65"
+  }
+}

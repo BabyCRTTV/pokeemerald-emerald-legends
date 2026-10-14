@@ -10,6 +10,25 @@
 #include "data/legends/journal.h"
 #define JOURNAL_MAGIC 0x4C514143
 #define DATA (&gSaveBlock3Ptr->journal)
+// Transient notices never change the serialized journal or claim bits.
+EWRAM_DATA static u8 sPending[LEGENDS_ACHIEVEMENT_BYTES] = {0};
+EWRAM_DATA static bool8 sNoticesEnabled = FALSE;
+static void Earn(u16 id)
+{
+    DATA->earned[id / 8] |= 1 << (id % 8);
+    if (sNoticesEnabled) sPending[id / 8] |= 1 << (id % 8);
+}
+u16 LegendsAchievementNotice(void)
+{
+    u16 i;
+    for (i = 0; i < ARRAY_COUNT(sAchievements); i++)
+        if (sPending[i / 8] & (1 << (i % 8))) return i;
+    return 0xFFFF;
+}
+void LegendsAchievementNoticeDismiss(u16 id)
+{
+    if (id < ARRAY_COUNT(sAchievements)) sPending[id / 8] &= ~(1 << (id % 8));
+}
 static u32 Checksum(void)
 {
     const u8 *p = (const u8 *)DATA;
@@ -19,6 +38,8 @@ static u32 Checksum(void)
 }
 void LegendsJournalInit(bool32 newGame)
 {
+    sNoticesEnabled = FALSE;
+    memset(sPending, 0, sizeof(sPending));
     if (newGame || DATA->magic != JOURNAL_MAGIC || DATA->version != 1 || DATA->checksum != Checksum())
     {
         memset(DATA, 0, sizeof(*DATA));
@@ -26,6 +47,7 @@ void LegendsJournalInit(bool32 newGame)
         DATA->version = 1;
     }
     LegendsJournalRefresh();
+    sNoticesEnabled = TRUE;
 }
 u16 LegendsQuestCount(void) { return ARRAY_COUNT(sQuests); }
 const struct LegendsQuest *LegendsQuestGet(u16 id) { return id < ARRAY_COUNT(sQuests) ? &sQuests[id] : NULL; }
@@ -80,8 +102,21 @@ void LegendsJournalRefresh(void)
     if (DATA->magic != JOURNAL_MAGIC || IsOverworldLinkActive()) return;
     for (i = 0; i < ARRAY_COUNT(sAchievements); i++)
         if (!LegendsAchievementEarned(i) && LegendsAchievementProgress(i) >= sAchievements[i].target)
-            DATA->earned[i / 8] |= 1 << (i % 8);
+            Earn(i);
     DATA->checksum = Checksum();
+}
+void LegendsJournalFlagSet(u16 flag)
+{
+    u16 i;
+    bool32 changed = FALSE;
+    if (DATA->magic != JOURNAL_MAGIC || IsOverworldLinkActive()) return;
+    for (i = 0; i < ARRAY_COUNT(sAchievements); i++)
+        if (sAchievements[i].kind == JOURNAL_FLAG && sAchievements[i].key == flag && !LegendsAchievementEarned(i))
+        {
+            Earn(i);
+            changed = TRUE;
+        }
+    if (changed) DATA->checksum = Checksum();
 }
 void LegendsJournalStatSet(u8 stat, u32 value)
 {
@@ -92,7 +127,7 @@ void LegendsJournalStatSet(u8 stat, u32 value)
         if (sAchievements[i].kind == JOURNAL_STAT && sAchievements[i].key == stat
             && value >= sAchievements[i].target && !LegendsAchievementEarned(i))
         {
-            DATA->earned[i / 8] |= 1 << (i % 8);
+            Earn(i);
             changed = TRUE;
         }
     if (changed) DATA->checksum = Checksum();

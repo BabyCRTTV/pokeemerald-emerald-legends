@@ -10,6 +10,10 @@ The owner uses a phone. Provide narrow vertical PNG/GIF previews and explicit do
 
 On 14 October 2026 the owner reversed the earlier permission to ignore older saves. Backward compatibility for Legends battery saves is now required for future updates. Preserve existing save readers, field offsets and persistent IDs; add focused migrations/tests when saved data changes. [Save-compatibility policy and evidence](SAVE-COMPATIBILITY.md) defines the release gate without adding duplicate builds or per-patch full emulator runs. Existing checks pass; a complete historical-release save-fixture matrix remains unfinished and must not be represented as verified.
 
+## Pending owner review — 95 achievements and unlock notices
+
+The owner requested **fifteen more achievements**, manual reward claims with a PC Item Storage confirmation, and a small nonblocking upper-left unlock notice naming the achievement. **Show the preview before publishing.** Manual claims already existed; preserve their atomic full-PC retry/idempotency. Review branch `preview/achievement-notices-95` contains implemented IDs 80–94, the temporary claim popup and queued field panel. [Preview, design/compatibility decisions, tests, native captures and release gates](qa/achievement-preview.md). No merge, Pages change or BPS publication is authorized before appearance approval; production remains v0.0.51. Once approved, release this as v0.0.52 and synchronize all version/changelog/site locations.
+
 ## Current version — 0.0.51 (published and verified)
 
 The owner requested removal of the duplicate Adventure Log from pause-menu page two and a clear hovered quest. Page one retains Adventure Log; page two contains Quest Log, Achievements and Exit. The journal now uses a dark plum band, cream text with matching background, and a separate pointer, including Achievements/claimed markers. Existing checkboxes, inputs, scrolling, filters, details, claims and action IDs remain intact. No artwork or serialized/save data changed; no migration is required.

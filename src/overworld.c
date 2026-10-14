@@ -1863,6 +1863,7 @@ u8 UpdateSpritePaletteWithTime(u8 paletteNum)
 
 static void OverworldBasic(void)
 {
+    LegendsAchievementPopupUpdate();
     ScriptContext_RunScript();
     RunTasks();
     AnimateSprites();
@@ -2056,6 +2057,7 @@ void CB2_ReturnToField(void)
     else
     {
         FieldClearVBlankHBlankCallbacks();
+        LegendsJournalRefresh(); // Include milestones earned in link/trade screens.
         SetMainCallback2(CB2_ReturnToFieldLocal);
     }
 }

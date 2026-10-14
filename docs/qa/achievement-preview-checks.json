@@ -1,0 +1,195 @@
+{
+  "state": "Unpublished preview",
+  "checks": [
+    {
+      "name": "Exercise browser patcher regression tests",
+      "exit_code": 0
+    },
+    {
+      "name": "Exercise seasonal engine regression tests",
+      "exit_code": 0
+    },
+    {
+      "name": "Exercise seasonal battle scenes and Kanto foliage",
+      "exit_code": 0
+    },
+    {
+      "name": "Exercise dynamic weather regression tests",
+      "exit_code": 0
+    },
+    {
+      "name": "Exercise starter and rival regression tests",
+      "exit_code": 0
+    },
+    {
+      "name": "Exercise Options navigation regression tests",
+      "exit_code": 0
+    },
+    {
+      "name": "Exercise Options text regression tests",
+      "exit_code": 0
+    },
+    {
+      "name": "Exercise New Game Options regression tests",
+      "exit_code": 0
+    },
+    {
+      "name": "Exercise native follower regression tests",
+      "exit_code": 0
+    },
+    {
+      "name": "Exercise upstream held-item integration",
+      "exit_code": 0
+    },
+    {
+      "name": "Exercise first-item history and compatible save sectors",
+      "exit_code": 0
+    },
+    {
+      "name": "Exercise quest progression and achievement claims",
+      "exit_code": 0
+    },
+    {
+      "name": "Achievement notice lifecycle",
+      "exit_code": 0
+    },
+    {
+      "name": "Journal selection rendering and input",
+      "exit_code": 0
+    },
+    {
+      "name": "Exercise lossless expanded storage codec",
+      "exit_code": 0
+    },
+    {
+      "name": "Exercise pause panel regression tests",
+      "exit_code": 0
+    },
+    {
+      "name": "Exercise Adventure Log persistence, days and milestones",
+      "exit_code": 0
+    },
+    {
+      "name": "Exercise Adventure Log notebook and filters",
+      "exit_code": 0
+    },
+    {
+      "name": "Exercise scrolling pause menu",
+      "exit_code": 0
+    },
+    {
+      "name": "Exercise real/manual clocks and saved fallback",
+      "exit_code": 0
+    },
+    {
+      "name": "Exercise DexNav encounter proximity and approach rules",
+      "exit_code": 0
+    },
+    {
+      "name": "Exercise player appearance regression tests",
+      "exit_code": 0
+    },
+    {
+      "name": "Exercise visual polish regression tests",
+      "exit_code": 0
+    },
+    {
+      "name": "Verify native window frame assets and selection",
+      "exit_code": 0
+    },
+    {
+      "name": "Verify native hair / coat 4bpp layer geometry",
+      "exit_code": 0
+    },
+    {
+      "name": "Verify footwear compositor and protected sprite colors",
+      "exit_code": 0
+    },
+    {
+      "name": "Verify v0.0.46 artwork and isolated smile/body colors",
+      "exit_code": 0
+    },
+    {
+      "name": "Verify approved Side Part head and native animation frames",
+      "exit_code": 0
+    },
+    {
+      "name": "Verify approved front-face shading and unchanged other views",
+      "exit_code": 0
+    },
+    {
+      "name": "Verify approved parent skin tones and palette isolation",
+      "exit_code": 0
+    },
+    {
+      "name": "Exercise scrolling intro hairstyles",
+      "exit_code": 0
+    },
+    {
+      "name": "Exercise wardrobe navigation and access",
+      "exit_code": 0
+    },
+    {
+      "name": "Verify layered accessories and wardrobe furniture",
+      "exit_code": 0
+    },
+    {
+      "name": "Verify native costume assets and striped Sport shorts",
+      "exit_code": 0
+    },
+    {
+      "name": "Exercise Da Bug gift and species integration",
+      "exit_code": 0
+    },
+    {
+      "name": "Exercise Kanto invitation, ferry, welcome and map integration",
+      "exit_code": 0
+    },
+    {
+      "name": "Exercise empty Kanto foundation and Surf passage",
+      "exit_code": 0
+    },
+    {
+      "name": "Kanto challenge progression",
+      "exit_code": 0
+    },
+    {
+      "name": "Kanto Borrowed Voice progression and Trainer Card badges",
+      "exit_code": 0
+    },
+    {
+      "name": "Kanto Quiet Current and native wild levels",
+      "exit_code": 0
+    },
+    {
+      "name": "Three expeditions and the Hoenn weather intermission",
+      "exit_code": 0
+    },
+    {
+      "name": "Wing Survey finale and native Mew outcomes",
+      "exit_code": 0
+    },
+    {
+      "name": "Isolated outdoor night lights and native DNS blending",
+      "exit_code": 0
+    },
+    {
+      "name": "Region map browsing",
+      "exit_code": 0
+    },
+    {
+      "name": "Exercise prepared battle sheets and wardrobe refresh",
+      "exit_code": 0
+    },
+    {
+      "name": "Verify Legends project metadata",
+      "exit_code": 0
+    }
+  ],
+  "additional_latest_checks": [
+    "Journal legacy-bit backfill and one-time claims",
+    "Notice lifetime/deferral/cleanup",
+    "Journal success-popup expiration"
+  ],
+  "passed": true
+}
