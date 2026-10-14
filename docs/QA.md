@@ -1,6 +1,6 @@
 # Pokémon Emerald: Legends — Quality Assurance
 
-Latest appearance follow-up: [approved Side Part, v0.0.48](qa/side-part-v0.0.48.md).
+Latest appearance follow-up: [approved front-face shading, v0.0.49](qa/front-face-v0.0.49.md). The [approved Side Part, v0.0.48](qa/side-part-v0.0.48.md) remains the protected hair baseline.
 
 Current verification: [v0.0.47.1 project-state audit, 14 October 2026](qa/project-state-2026-10-14.md). Historical sections below retain their original release context; use current source/Options and the linked milestone evidence for the present behavior. Unchecked items remain playtest work unless a later QA record explicitly verifies the same scenario.
 

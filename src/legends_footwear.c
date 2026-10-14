@@ -120,7 +120,7 @@ const struct SpriteFrameImage *LegendsFootwearImages(const struct SpriteFrameIma
     u8 leggings = gender == FEMALE ? LegendsGetLeggings() : 0;
     // The native diving suit, including its head covering and original
     // palette, is intentionally unaffected by wardrobe layers.
-    if (LegendsGetCostume() || state == 4 || (!shoes && !hair && !hairColor && !coat && !leggings))
+    if (LegendsGetCostume() || state == 4)
         return images;
     if (sWorldSource == images && sWorldGender == gender && sWorldState == state
         && sWorldBoots == boots && sWorldShoes == shoes
@@ -141,6 +141,8 @@ const struct SpriteFrameImage *LegendsFootwearImages(const struct SpriteFrameIma
             shoes ? sFootwearMasks[gender][state][boots] + offset : NULL,
             size, gender, 0, shoes != 0);
         LegendsPaintStylePose(sWorldPixels + offset, width, gender, 0, state, i, hair, coat);
+        // Only skin-shadow 3 can change after hair/accessories are composed.
+        LegendsPaintFrontFaceShade(sWorldPixels + offset, width, gender, state, i);
         offset += size;
     }
     sWorldSource = images;

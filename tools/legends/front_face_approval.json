@@ -1,0 +1,125 @@
+{
+  "approved_on": "2026-10-14",
+  "version": "0.0.49",
+  "baseline_commit": "4f5b07ad45ddfc93ce66835ed94c11c81b6956c0",
+  "approved_preview_sha256": "64a25725dca1f1c2b1809085bb4047b18563d5d7315f3d2685395eed18ac6348",
+  "scope": "Front-facing overworld face only; no global palette change. Side/rear, hair, eyes, smile, ear and jaw outline are outside the selected edits.",
+  "standing_edits": {
+    "0": [
+      [
+        3,
+        19
+      ],
+      [
+        12,
+        19
+      ],
+      [
+        3,
+        20
+      ],
+      [
+        4,
+        20
+      ],
+      [
+        11,
+        20
+      ],
+      [
+        12,
+        20
+      ],
+      [
+        4,
+        21
+      ],
+      [
+        5,
+        21
+      ],
+      [
+        6,
+        21
+      ],
+      [
+        9,
+        21
+      ],
+      [
+        10,
+        21
+      ],
+      [
+        11,
+        21
+      ]
+    ],
+    "1": [
+      [
+        4,
+        20
+      ],
+      [
+        11,
+        20
+      ],
+      [
+        6,
+        21
+      ],
+      [
+        9,
+        21
+      ]
+    ]
+  },
+  "native_masks_sha256": "1ac95d6189803eebd7d7e24d039e9fc6fc3ff180195a75d715a04812e1f6dde1",
+  "method": "Native pose-local shadow pixels use existing shade 2; unchanged skin palettes, saved IDs and field offsets. No smoothing or global lightening.",
+  "running_edits": {
+    "0": [
+      [
+        3,
+        19
+      ],
+      [
+        4,
+        19
+      ],
+      [
+        11,
+        19
+      ],
+      [
+        12,
+        19
+      ],
+      [
+        4,
+        20
+      ],
+      [
+        5,
+        20
+      ],
+      [
+        10,
+        20
+      ],
+      [
+        11,
+        20
+      ]
+    ],
+    "1": [
+      [
+        4,
+        19
+      ],
+      [
+        11,
+        19
+      ]
+    ]
+  }
+}

@@ -87,11 +87,15 @@ int main(int argc,char**argv){
    for(int st=0;st<8;st++){
     const struct SpriteFrameImage *src=nativeWorld[g][st],*images=LegendsFootwearImages(src,g,st);
     if(world){u8 header[4]={s,g,st,st==0?16:32};fwrite(header,1,4,world);fwrite(images[0].data,1,images[0].size,world);fwrite(pal[st==4?2:0],2,16,world);}
-    if(!s||st==4){assert(images==src);continue;}
+    if(st==4){assert(images==src);continue;}
     assert(images==LegendsFootwearImages(src,g,st));
     int offset=0;
     for(int f=0;f<sFootwearFrameCount[g][st];f++){
-     CheckPixels(images[f].data,src[f].data,sFootwearMasks[g][st][s>=6]+offset,src[f].size);offset+=src[f].size;
+     u8 expected[512];memcpy(expected,src[f].data,src[f].size);
+     LegendsPaintFrontFaceShade(expected,st==0?16:32,g,st,f);
+     if(!s)assert(!memcmp(images[f].data,expected,src[f].size));
+     else CheckPixels(images[f].data,expected,sFootwearMasks[g][st][s>=6]+offset,src[f].size);
+     offset+=src[f].size;
     }
    }
    const u32 *pic=LegendsFootwearFrontPic(200+5*g,(const u32*)nativeFront[g]);

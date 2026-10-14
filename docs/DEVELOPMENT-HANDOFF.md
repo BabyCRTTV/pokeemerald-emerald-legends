@@ -8,7 +8,15 @@ The owner uses a phone. Provide narrow vertical PNG/GIF previews and explicit do
 
 On 14 October 2026 the owner reversed the earlier permission to ignore older saves. Backward compatibility for Legends battery saves is now required for future updates. Preserve existing save readers, field offsets and persistent IDs; add focused migrations/tests when saved data changes. [Save-compatibility policy and evidence](SAVE-COMPATIBILITY.md) defines the release gate without adding duplicate builds or per-patch full emulator runs. Existing checks pass; a complete historical-release save-fixture matrix remains unfinished and must not be represented as verified.
 
-## Current version — 0.0.48
+## Current work — 0.0.49 front-face shading
+
+The owner approved the five-tone male/female comparison on 14 October 2026 after explicitly limiting this cleanup to the **front-facing overworld face**. Apply only the selected lower-cheek shade-3 → shade-2 edits; preserve jaw outlines, eyes, smile, ears, all hair, hands/clothing, side/rear views, wardrobe/front portraits, battle art, costumes and diving. This is approved work, not a request for another redesign or global skin-palette lightening.
+
+The standing result matches the approved twelve male/four female cells exactly. Native running faces have shorter jaws and retain their original anatomy through separately authored masks. All 202 field descriptors have pose-local entries; only 62 front entries contain edits. The original sixteen style layers remain byte-identical; the new sparse pixel payload adds 404 bytes plus small ROM descriptors. The existing sprite cache and save format/IDs are unchanged. Preserve [SAVE-COMPATIBILITY.md](SAVE-COMPATIBILITY.md); no migration is needed for this art-only update.
+
+All 44 workflow commands passed locally, including 2,866 integrated before/after comparisons. Local GCC 13.2.1 Debug/Release builds passed. mGBA 0.10.2 checked all 1,010 native descriptor/palette buffers across both genders/five skin tones through a controlled ARM callback; all matched. This did not test natural gameplay or save persistence. BPS publication verification is in progress; do not report v0.0.49 published until Actions and live downloads pass. [Detailed QA and reproducible narrow PNG/GIF previews](qa/front-face-v0.0.49.md).
+
+## Previous verified version — 0.0.48
 
 The owner approved the retained four-view male Side Part preview on 14 October 2026 and requested preserving its look throughout animation while fixing one transparent pixel beside the front ear. That approval and repair are implemented and published. Front atlas cell `(4,17)` changed from transparency 0 to neighboring hair-shadow 8. Seven earlier corrections already visible in the approved preview were retained. Do not treat this revision as awaiting approval.
 

@@ -397,10 +397,40 @@ def leggings_edits(p,g,kind,state,choice,pose=0):
                     out[y][x]=5 if choice==1 and p[y][x] in (1,2) else 15
     return out
 
+def front_face_edits(p,g,pose,state):
+    """Author the approved cheek lift; leave jaw rims, eyes and other views."""
+    if state == 'underwater' or WORLD_DIRECTIONS[state][pose] != 0:return []
+    face=head(p,g,'overworld',pose,state)[0]
+    left,right=min(x for x,y in face),max(x for x,y in face)
+    top=min(y for x,y in face);w=len(p[0]);h=len(p);eyes=[]
+    for y in range(top,min(h,top+5)):
+        for x in range(left,right+1):
+            neighbors=sum(0<=xx<w and 0<=yy<h and p[yy][xx] in (1,2,3)
+                          for xx,yy in ((x-1,y),(x+1,y),(x,y-1),(x,y+1)))
+            if p[y][x] in (5,8) and neighbors>=3:eyes.append((x,y))
+    assert eyes,(g,state,pose,'front eyes')
+    eye_y=min(y for x,y in eyes);eye_x=sorted(x for x,y in eyes if y==eye_y)
+    assert len(eye_x)==2 and eye_x[1]-eye_x[0]==3,(g,state,pose,eye_x)
+    l,r=eye_x
+    jaw=max(y for y in range(eye_y,min(h,eye_y+6))
+            if any(p[y][x] in (1,2,3) for x in range(l+1,r)))
+    points=[]
+    for y in range(eye_y,jaw):
+        if g == 0:
+            points.extend((x,y) for x in range(l-3,r+4)
+                          if p[y][x]==3 or y==eye_y and x in (l-3,r+3) and p[y][x]==4)
+        else:
+            # Keep the outer shadow where two female cheek pixels meet.
+            for xs in (range(l-3,l+1),range(r,r+4)):
+                candidates=[x for x in xs if p[y][x]==3]
+                if candidates:points.append((min(candidates,key=lambda x:abs(x-(l+r)/2)),y))
+    assert all(eye_y<=y<=eye_y+2 for x,y in points),(g,state,pose,'outside cheek band')
+    return sorted(points,key=lambda p:(p[1],p[0]))
+
 def build():
     mapping=json.loads((ROOT/'tools/legends/appearance_frames.json').read_text())
     blob=bytearray();headers=['// Generated pose-local hair/coat edits.\n'];pose_count=0
-    tables=[];back=[];front=[];counts=[]
+    tables=[];back=[];front=[];counts=[];face_masks=[]
     def emit(p,g,kind,i,state=''):
         nonlocal pose_count
         fix_male_colors=g==0 and (kind=='front' or kind=='overworld' and state!='underwater')
@@ -448,15 +478,17 @@ def build():
         pose_count+=1
         return '{'+','.join(desc)+'}'
     for g,name in enumerate(('Brendan','May')):
-        gt=[];gc=[]
+        gt=[];gc=[];gf=[]
         for si,(state,file) in enumerate(zip(STATES,FILES)):
             w=16 if si==0 else 32;path=ROOT/f'graphics/object_events/pics/people/{name.lower()}/{file}.png';src=frames(path,w,32)
             if si==0:src+=frames(path.with_name('running.png'),16,32)
             tab=mapping[name][state]['table'];idx=list(range(len(src))) if 'overworld_ascending_frames' in tab else [int(v) for v in re.findall(r'overworld_frame\([^,]+,\s*\d+,\s*\d+,\s*(\d+)\)',tab)]
             gc.append(len(idx))
+            gf.append([front_face_edits(src[i],g,i,file) for i in idx])
             symbol=f'sStyle{g}{si}'
             headers.append(f'static const struct StyleEdits {symbol}[][16] = {{\n'+',\n'.join(emit(src[i],g,'overworld',i,file) for i in idx)+'\n};\n');gt.append(symbol)
         counts.append(gc)
+        face_masks.append(gf)
         tables.append('{'+','.join(gt)+'}')
         front.append(emit(frames(ROOT/f'graphics/trainers/front_pics/{name.lower()}.png',64,64)[0],g,'front',0))
         back.append('{'+','.join(emit(p,g,'back',i) for i,p in enumerate(frames(ROOT/f'graphics/trainers/back_pics/{name.lower()}.png',64,64)))+'}')
@@ -465,6 +497,24 @@ def build():
     headers.append('static const struct StyleEdits (*const sStyleWorld[2][8])[16] = {'+','.join(tables)+'};\n')
     headers.append('static const struct StyleEdits sStyleFront[2][16] = {'+','.join(front)+'};\n')
     headers.append('static const struct StyleEdits sStyleBack[2][4][16] = {'+','.join(back)+'};\n')
+    # Separate appended masks retain all sixteen established style layers
+    # and their existing blob offsets byte-for-byte.
+    face_tables=[];shared={}
+    for g,states in enumerate(face_masks):
+        row=[]
+        for state,poses in enumerate(states):
+            width=16 if state==0 else 32;descs=[]
+            for points in poses:
+                edits=tuple(((y*width+x)<<4)|2 for x,y in points)
+                if edits not in shared:
+                    shared[edits]=(len(blob)//2,len(edits))
+                    blob.extend(struct.pack('<'+'H'*len(edits),*edits))
+                off,count=shared[edits];descs.append(f'{{{off},{count}}}')
+            symbol=f'sFrontFaceShade{g}{state}'
+            headers.append(f'static const struct StyleEdits {symbol}[] = {{'+','.join(descs)+'};\n')
+            row.append(symbol)
+        face_tables.append('{'+','.join(row)+'}')
+    headers.append('static const struct StyleEdits *const sFrontFaceShadeWorld[2][8] = {'+','.join(face_tables)+'};\n')
     directory=ROOT/'graphics/legends/styles';directory.mkdir(parents=True,exist_ok=True);(directory/'edits.bin').write_bytes(blob)
     (ROOT/'src/data/legends/style_layers.h').write_text(''.join(headers))
     print(f'{pose_count} pose masks, {len(blob)} bytes of sparse edits')

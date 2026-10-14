@@ -8,7 +8,7 @@ This concerns the emulator's normal in-game battery save (`.sav`). Emulator save
 
 ## Current verified baseline and limits
 
-v0.0.48 changes appearance art/composition but does not change save fields, the storage format or saved hairstyle IDs. The approved Side Part remains ID 2. Existing compatibility checks pass on the published source; see [v0.0.48 evidence](qa/side-part-v0.0.48.md).
+v0.0.49 changes only front-facing cheek shading and does not change save fields, the storage format or saved IDs. No save migration is needed. The approved Side Part remains ID 2. Existing compatibility checks passed; see [v0.0.49 evidence and verification limits](qa/front-face-v0.0.49.md) and the previous [v0.0.48 evidence](qa/side-part-v0.0.48.md).
 
 | Area | Existing protection/evidence |
 | --- | --- |

@@ -1,6 +1,6 @@
 # Pokémon Emerald: Legends
 
-**Version:** 0.0.48<br>
+**Version:** 0.0.49<br>
 **Base:** [pokeemerald-expansion](https://github.com/rh-hideout/pokeemerald-expansion)
 
 Pokémon Emerald: Legends is an unofficial, non-commercial Pokémon Emerald ROM-hack project built on the open-source `pokeemerald-expansion` decompilation/expansion base.
@@ -28,7 +28,7 @@ The project site provides two builds from the same source:
 
 The Release and Debug builds contain the same Legends gameplay/content changes. Release disables developer entry points for a cleaner casual-player build. Debug retains the expansion's overworld/battle/sprite debug tools and title-screen Quickstart.
 
-**PLAYER APPEARANCE:** After choosing gender in Birch’s introduction, choose one of five skin tones and one of five outfits: Emerald, Trail (jacket/trousers), Sport (striped shirt/shorts), Yellow, or Lavender (cream scarf). The bottom-right preview updates as you browse. Custom outfits use bare hands; the default Emerald outfit retains its gloves. Choices save with your game and apply to overworld poses, local battle portraits and your Trainer Card. Existing saves retain the original appearance. See [appearance documentation](docs/features/player-appearance.md).
+**PLAYER APPEARANCE:** After choosing gender in Birch’s introduction, choose one of five skin tones and one of five outfits: Emerald, Trail (jacket/trousers), Sport (striped shirt/shorts), Yellow, or Lavender (cream scarf). The bottom-right preview updates as you browse. Custom outfits use bare hands; the default Emerald outfit retains its gloves. Choices save with your game and apply to overworld poses, local battle portraits and your Trainer Card. Existing saves retain the original appearance. v0.0.49 softened front-facing cheek shadows while preserving the other views and skin colors. See [appearance documentation](docs/features/player-appearance.md).
 
 **EXP Share:** The physical Gen 6-style Exp. Share is now a Key Item given at new-game start and restored on existing saves. The Key Item and Legends Options control the same ON/OFF setting, defaulting to ON. Participants earn full EXP and eligible benched Pokémon earn the modern half share when enabled.
 

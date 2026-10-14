@@ -4,6 +4,13 @@ All notable Pokémon Emerald: Legends project changes are documented here.
 
 For build-specific player views, see [CHANGELOG-RELEASE.md](CHANGELOG-RELEASE.md) and [CHANGELOG-DEBUG.md](CHANGELOG-DEBUG.md). The canonical history below records the project as a whole.
 
+## [0.0.49] - 2026-10-14
+
+- Softened the owner-approved front-facing overworld cheek shading on both characters across all five skin tones and matching native movement/field poses.
+- Preserved the jaw outline, eyes, smile, ears, approved hair, hands and clothing; side/rear views, portraits, battle sprites, costumes and diving retained their existing art.
+- Kept the existing skin palettes, sprite-cache capacity, save format and persistent IDs. Older Legends saves retained their existing upgrade path without a migration.
+- Changes were shared by Release and Debug, with no variant-specific gameplay differences. Added exact approval and front-only animation regression coverage. Validation: `docs/qa/front-face-v0.0.49.md`.
+
 ## [0.0.48] - 2026-10-14
 
 - Published the owner-approved male Side Part overworld head, retaining its four-view shape through native walking/running, both bikes, Surf, field moves, fishing and watering.

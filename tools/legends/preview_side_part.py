@@ -12,11 +12,11 @@ BG = (178, 167, 236)
 INK = (24, 25, 47)
 
 
-def compile_renderer(directory):
+def compile_renderer(directory, shade=True):
     path = ROOT / "test/legends-appearance-colors.test.py"
     fixture = {"__file__": str(path)}
     exec(path.read_text().split("# Artwork preservation:", 1)[0], fixture)
-    return fixture["compile_api"](directory)
+    return fixture["compile_api"](directory, shade=shade)
 
 
 def animation(name):

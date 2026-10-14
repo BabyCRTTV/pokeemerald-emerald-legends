@@ -23,7 +23,9 @@ for view, edits in approval["atlas_overrides"].items():
         assert atlas.getpixel((dx + x, 32 + y)) == value
 
 with tempfile.TemporaryDirectory() as temp:
-    api, render = compile_renderer(temp)
+    # Freeze the v0.0.48 hair reference independently of the separately
+    # approved v0.0.49 face shading; its integrated scope has its own suite.
+    api, render = compile_renderer(temp, shade=False)
     for pose, reference in enumerate(heads):
         _, pixels, _ = render(h=2, kind=0, pose=pose)
         for y, row in enumerate(reference["pixels"], reference["top"]):

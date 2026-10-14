@@ -90,14 +90,19 @@ int Count(u8 gender,u8 state){return sFootwearFrameCount[gender][state];}
 
 def rgb(c):return (c&31)*255//31,(c>>5&31)*255//31,(c>>10&31)*255//31
 def baseline(path):return subprocess.check_output(['git','show',BASE['base']+':'+path],cwd=root)
-def compile_api(temp,old=False):
-    def read(path):return baseline(path) if old else (root/path).read_bytes()
+def compile_api(temp,old=False,ref=None,shade=True):
+    def read(path):return subprocess.check_output(['git','show',ref+':'+path],cwd=root) if ref else baseline(path) if old else (root/path).read_bytes()
     h=read('src/data/legends/style_layers.h').decode();b=read('graphics/legends/styles/edits.bin')
     edits=struct.unpack('<'+'H'*(len(b)//2),b)
     h=re.sub(r'static const u16 sStylePixels\[\] = INCBIN_U16\([^;]+;', 'static const u16 sStylePixels[]={'+','.join(map(str,edits))+'};',h)
     def source(path):return '\n'.join(l for l in read(path).decode().splitlines() if not l.startswith('#include'))
     c=Path(temp)/('before.c' if old else 'after.c');so=c.with_suffix('.so')
-    c.write_text(pre+fixture['header']+h+source('src/legends_style_layers.c')+fixture['assets']+fixture['palettes']+(root/'src/data/legends/costume_palettes.h').read_text()+outfits+accessories+fronts+source('src/legends_footwear.c')+palette_source+wrappers)
+    footwear=source('src/legends_footwear.c')
+    if not shade:
+        # Reproduce the pre-shading pipeline for exact before/after QA.
+        footwear=footwear.replace('        LegendsPaintFrontFaceShade(sWorldPixels + offset, width, gender, state, i);','')
+        footwear=footwear.replace('if (LegendsGetCostume() || state == 4)', 'if (LegendsGetCostume() || state == 4 || (!shoes && !hair && !hairColor && !coat && !leggings))',1)
+    c.write_text(pre+fixture['header']+h+source('src/legends_style_layers.c')+fixture['assets']+fixture['palettes']+(root/'src/data/legends/costume_palettes.h').read_text()+outfits+accessories+fronts+footwear+palette_source+wrappers)
     subprocess.run(['cc','-std=gnu17','-Werror=implicit-function-declaration','-shared','-fPIC','-O1',str(c),'-o',str(so)],check=True)
     api=ctypes.CDLL(str(so));api.Render.argtypes=[ctypes.c_uint8]*11+[ctypes.POINTER(ctypes.c_uint8),ctypes.POINTER(ctypes.c_uint16)]
     def render(h=6,col=0,tone=0,o=0,coat=0,scarf=0,shoe=0,state=0,pose=0,g=0,kind=1):

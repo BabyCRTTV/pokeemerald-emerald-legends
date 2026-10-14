@@ -57,6 +57,7 @@ u8 LegendsGetHairColor(void);
 void LegendsSetHairColorSelection(u8 color);
 const u8 *LegendsGetHairName(enum Gender gender, u8 hair);
 const u8 *LegendsGetHairColorName(u8 color);
+void LegendsPaintFrontFaceShade(u8 *bits, u8 width, u8 gender, u8 state, u8 pose);
 void LegendsPaintStylePose(u8 *data, u8 width, u8 gender, u8 kind, u8 state, u8 pose, u8 hair, u8 coat);
 u8 LegendsGetAccessoryStyle(void);
 u8 LegendsGetSkinTone(void);

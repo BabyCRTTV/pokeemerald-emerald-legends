@@ -4,7 +4,7 @@
 
 // Art is authored against each original pose, then stored as sparse pixel
 // edits in ROM. No face detection or geometric drawing occurs on the GBA.
-enum { RECOLOR_BODY = 2, RECOLOR_MALE_WORLD_BODY = 4, RECOLOR_MALE_FACE = 5 };
+enum { RECOLOR_BODY = 2, RECOLOR_MALE_WORLD_BODY = 4, RECOLOR_MALE_FACE = 5, RECOLOR_FRONT_FACE = 6 };
 static void ApplyEdits(u8 *bits, u8 width, const struct StyleEdits *layer, u8 mode)
 {
     u32 i;
@@ -23,11 +23,20 @@ static void ApplyEdits(u8 *bits, u8 width, const struct StyleEdits *layer, u8 mo
             continue; // Never overwrite a shoe, scarf or painted coat.
         if (mode == RECOLOR_MALE_FACE && ((bits[index] >> shift) & 15) != 4)
             continue; // Keep hair strands, cuffs and painted accessories intact.
+        if (mode == RECOLOR_FRONT_FACE && ((bits[index] >> shift) & 15) != 3)
+            continue; // Only authored cheek shadows, never eyes or highlights.
         u8 value = edit & 15;
         if (mode == RECOLOR_MALE_WORLD_BODY && value == 8)
             value = 5; // Male overworld body navy cannot use hair-shadow slot 8.
         bits[index] = (bits[index] & ~(15 << shift)) | (value << shift);
     }
+}
+
+void LegendsPaintFrontFaceShade(u8 *bits, u8 width, u8 gender, u8 state, u8 pose)
+{
+    if (gender > 1 || state >= 8 || state == 4 || pose >= sStyleFrameCount[gender][state])
+        return;
+    ApplyEdits(bits, width, &sFrontFaceShadeWorld[gender][state][pose], RECOLOR_FRONT_FACE);
 }
 
 void LegendsPaintStylePose(u8 *bits, u8 width, u8 gender, u8 kind, u8 state, u8 pose, u8 hair, u8 coat)

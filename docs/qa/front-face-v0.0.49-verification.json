@@ -1,0 +1,23 @@
+{
+  "version": "0.0.49",
+  "baseline_commit": "4f5b07ad45ddfc93ce66835ed94c11c81b6956c0",
+  "local_project_checks": 44,
+  "integrated_C_comparisons": 2866,
+  "changed_front_results": 886,
+  "native_emulator": {
+    "emulator": "mGBA 0.10.2",
+    "rom_sha256": "c4159c188888f6580272c8b4ae3b57bc3ccff7d440d5768857629d9acfdc97d2",
+    "native_descriptors": 1010,
+    "genders": 2,
+    "skin_tones": 5,
+    "all_pixels_match_host_C": true,
+    "all_palettes_match_host_C": true,
+    "scope": "Actual ARM game compositor invoked from a private QA callback after boot; callback1 disabled for isolation. Full activity traversal and save persistence were not tested. Private callback/ROM are not distributed."
+  },
+  "local_native_targets": {
+    "Debug": "c4159c188888f6580272c8b4ae3b57bc3ccff7d440d5768857629d9acfdc97d2",
+    "Release": "afb6bfbe5ae2c2b245dc12ee0fb7d1de52fad4747e739039e81616870d758994"
+  },
+  "save_impact": "No serialized layouts, fields, capacities, codecs, initialization or persistent IDs changed; no migration required. Historical-save emulator matrix not newly exercised.",
+  "publication": "Pending remote native builds, clean-base BPS round trips, deployment and live downloads."
+}
