@@ -10,4 +10,6 @@ The existing body isolation layer also runs for Natural custom hair, and bare-sk
 
 The [one before/after review sheet](appearance-color-fix-preview.png) uses compiled host-C buffers from actual v0.0.46 code and the repaired code. It is not an emulator screenshot. Its original reference requires the v0.0.46 Git object when running `python test/legends-appearance-colors.test.py --preview`; the ordinary CI test does not require Git history.
 
-Debug and Release share this fix. The current-head native build/BPS workflow supplies build evidence before readiness is reported. Artwork remains on a draft branch for review; VERSION, master, Pages and published v0.0.46 patches are unchanged.
+The owner approved this repair as the v0.0.47 baseline. Debug and Release share the same sprite and color changes. The review sheet records the comparison made before approval; its v0.0.46 publication note is historical. The existing sprite artwork remains the baseline for future improvements.
+
+The repair commit `b56bc231a17a1330338f5b3f046d6ca9e67e5fef` passed [project checks](https://github.com/BabyCRTTV/pokeemerald-emerald-legends/actions/runs/38491254296) and the [native Debug/Release build and BPS verification](https://github.com/BabyCRTTV/pokeemerald-emerald-legends/actions/runs/38491254413). The v0.0.47 publication reruns the release workflow with the updated version and verifies that both patches reproduce their corresponding compiled ROMs byte-for-byte before publishing.

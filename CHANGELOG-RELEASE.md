@@ -2,11 +2,12 @@
 
 This is the player-facing history for the recommended **Release** build. Shared Legends changes are repeated here so this file stands on its own; Release-only behavior is called out separately.
 
-## Unreleased — existing sprite color repair
+## [0.0.47] - 2026-10-14
 
-- Retain the v0.0.46 male overworld/front sprites, approved head atlas, every existing hair/coat mask and native animations. Discard the rejected generated replacement draft.
-- Keep the male smile, chin, ear and bare-skin contours on the selected skin shadow instead of the hair color. Stabilize existing body shades for Natural/custom hair and reserve both hair slots during footwear remapping.
-- Preserve female sprites, approved battle art, fixed costumes, diving, saved choices and untouched Original. Shared by Debug and Release; VERSION and published downloads stay v0.0.46 pending review. Evidence: `docs/qa/appearance-color-fix.md`.
+- Preserve the existing v0.0.46 trainer sprites, approved hairstyles and native animations as the baseline for further improvements.
+- Fix male smile, chin, ear and bare-skin contours taking the selected hair color in the new-game selection, wardrobe, Trainer Card and overworld sprites.
+- Keep clothing/body colors stable across hair colors, including Natural, and prevent footwear recoloring from borrowing reserved hair colors.
+- Preserve saved wardrobe choices, female sprites, approved battle art, fixed costumes, diving and untouched Original. Shared by Release and Debug; no variant-specific gameplay differences. Validation: `docs/qa/appearance-color-fix.md`.
 
 ## Wiki 1.6.0 - 2026-10-13
 

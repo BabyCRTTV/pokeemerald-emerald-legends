@@ -1,6 +1,6 @@
 # Pokémon Emerald: Legends
 
-**Version:** 0.0.46<br>
+**Version:** 0.0.47<br>
 **Base:** [pokeemerald-expansion](https://github.com/rh-hideout/pokeemerald-expansion)
 
 Pokémon Emerald: Legends is an unofficial, non-commercial Pokémon Emerald ROM-hack project built on the open-source `pokeemerald-expansion` decompilation/expansion base.
@@ -17,7 +17,7 @@ Quest Log and Achievements are on the second pause-menu page (Left/Right). v0.0.
 
 The pause menu includes ADVENTURE LOG: turn pages, filter by played day or story, and review milestones, locations and one recent catch. DAY above the clock counts dates actually played; skipped dates add none, while play hours carry across sessions. Existing saves start their notebook at Day 1. [Player guide](https://babycrttv.github.io/pokeemerald-emerald-legends/adventure-guide.html) · [Implementation and validation](docs/features/adventure-log.md).
 
-## Try the current v0.0.44 build
+## Try the current build
 
 The project site provides two builds from the same source:
 
