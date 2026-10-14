@@ -37,7 +37,9 @@ with tempfile.TemporaryDirectory() as temp:
             getter=api.LegendsGetFamilyTrainerPalette if name=='battle' else api.LegendsGetFamilyPalette
             actual=list(getter(tag,fallback)[:16]);ramp=record['skin_ramps_RGB555'][tone]
             for pose,pixels in enumerate(frames(ROOT/SOURCES[name],64 if name=='battle' else 16,64 if name=='battle' else 32)):
-                mask=skin_mask(name,pixels);runtime=[list(row) for row in pixels]
+                mask=skin_mask(name,pixels)
+                assert hashlib.sha256(json.dumps(sorted(mask),separators=(',',':')).encode()).hexdigest()==record['skin_mask_sha256'][name][pose]
+                runtime=[list(row) for row in pixels]
                 if name=='mom':
                     for y,row in enumerate(runtime):
                         for x,v in enumerate(row):

@@ -1,0 +1,43 @@
+{
+  "version": "0.0.50",
+  "runtime_source_commit": "29e45ad535e1bd6a57e6e18f0a01939dd94740b9",
+  "approval_image_sha256": "c572b60df273ac6c790c7be0ae08dab25cd5fe26a1fb8bc100b0aa8701f57722",
+  "host_C_approved_pixel_alpha_cases": 95,
+  "local_workflow_commands_passed": 44,
+  "dependency_installation": "Pillow already installed; install step skipped locally.",
+  "native_mgba": {
+    "version": "0.0.50",
+    "Debug_ROM_sha256": "e14dc50c22ff9025fd6eeb9ee4d452313b22604893435e05652bc1908595d4e0",
+    "capture_sha256": "073458d33df3e35162fce05f35fc17596ce51cbeaccbf73b692b060ea9159f98",
+    "native_asset_tone_cases": 190,
+    "reflection_palettes": 20,
+    "wardrobe_apply_cancel_rounds": 10,
+    "all_16_slots_occupied": true,
+    "unrelated_NPC4_unchanged": true,
+    "passed": true,
+    "scope": "Controlled ARM callback after boot: real virtual-object creation, palette/reflection/wardrobe functions. Not natural map traversal, menu navigation or battery save/reload. Private ROM excluded from publication.",
+    "harness_sha256": {
+      "arm.c": "cab499f01908fcbe52bc5c81a148128230f29085a4908815c0f70f788056cbc1",
+      "host.c": "49530ad6fb89cb60498ae4698a368b54a2e83c6d39c227d7846b6f8cd479aaeb",
+      "run.py": "48cc80a7e742c11d644b04af073d0a8e7a080b981a9ae0e6be0a2a9e199a5a3c"
+    }
+  },
+  "local_native_targets": {
+    "Debug": {
+      "sha256": "e14dc50c22ff9025fd6eeb9ee4d452313b22604893435e05652bc1908595d4e0",
+      "bytes": 33554432,
+      "EWRAM": 254468,
+      "IWRAM": 28376,
+      "ROM": 30681532
+    },
+    "Release": {
+      "sha256": "6346c72650555aea6ea10353cc110b52bc292cf889be046516128a30671b8c2f",
+      "bytes": 33554432,
+      "EWRAM": 254470,
+      "IWRAM": 28328,
+      "ROM": 30832576
+    }
+  },
+  "save_impact": "No serialized layouts, fields, capacities, codecs, initialization rules or persistent IDs changed. Family colors derive from the existing appearance choice. No migration required; historical-save emulator matrix not newly exercised.",
+  "publication": "Pending remote native/BPS publication and live Pages/download verification."
+}

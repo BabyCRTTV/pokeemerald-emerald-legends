@@ -18,6 +18,12 @@ The restored workspace did not retain that uncommitted implementation, binaries 
 
 Current source check: `python3 test/legends-family-skin.test.py` compiles the actual family palette C and existing saved-code decoder. It checks every pixel/alpha cell in all native frames and five tones, outfit/legacy code handling, unrelated pointer identity and deterministic generation. Protected appearance and fast save suites remain part of the full workflow.
 
+## Restored-source native evidence
+
+The restored Debug ROM passed the controlled native checks again using mGBA 0.10.2. All 190 asset/tone buffers, 20 pond/ice reflection palettes, ten Apply/Cancel rounds, unrelated NPC-4 isolation and full-slot tag-reuse checks passed. [Structured native receipt](family-skin-v0.0.50-native.json) pins its ROM, capture and harness hashes. [Reproducible harness](../../tools/legends/native_family_qa/README.md) is included as development source; its private diagnostic ROM is never distributed. The actual original Debug image is unchanged by the test runner.
+
+Both restored-source GCC 13.2.1 builds passed. EWRAM/IWRAM were unchanged at 254468/28376 bytes (Debug) and 254470/28328 bytes (Release). ROM usage grew only 424/880 bytes respectively versus v0.0.49. [Complete local verification](family-skin-v0.0.50-verification.json) pins both final target hashes. Existing unrelated compiler warnings remained; no family build error occurred.
+
 ## Publication
 
 Pending rerun regression/native-build/BPS verification and live Pages/download checks. The latest verified public build remains v0.0.49 until these receipts are recorded. Broader natural movement/weather/follower playtests and historical battery-save fixtures remain outstanding; this palette-only change does not claim those tests.

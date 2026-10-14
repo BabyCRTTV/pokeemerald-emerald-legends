@@ -12,7 +12,7 @@ On 14 October 2026 the owner reversed the earlier permission to ignore older sav
 
 The owner approved the entire five-tone Mom/Norman study on 14 October 2026 (“Flawless work. Approved.”). Runtime integration uses private parent tags, ROM palettes and Mom-only hair material separation; it derives the tone from the existing saved player choice and adds no parent saved fields or sprite-cache RAM. Preserve the exact accepted native pixels. [Approval provenance](qa/family-skin-preview.md); [implementation and verification](qa/family-skin-v0.0.50.md). Publication has not yet been verified at this source milestone; v0.0.49 remains the last verified public build until the new checks/builds/patch deployment complete.
 
-The usage-limit interruption restored an older workspace snapshot. The uncommitted implementation was reconstructed from the recorded changes against preview commit `73f9fae86de65a33a87423efeffa228cfe7df3d5`. Its reproduced approval PNG matched the original SHA256 exactly. Current verification receipts must distinguish rerun checks from the earlier interrupted session; do not assume missing local binaries/logs survived.
+The usage-limit interruption restored an older workspace snapshot. The uncommitted implementation was reconstructed from the recorded changes against preview commit `73f9fae86de65a33a87423efeffa228cfe7df3d5`. Its reproduced approval PNG matched the original SHA256 exactly. All 44 executable project checks, restored GCC 13.2.1 Debug/Release builds and native mGBA checks passed again. The repository now includes a reproducible family native harness and pinned receipts; only remote patch/publication verification remains pending.
 
 ## Current version — 0.0.49
 

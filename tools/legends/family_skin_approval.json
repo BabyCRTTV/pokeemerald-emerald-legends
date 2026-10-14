@@ -37,5 +37,32 @@
   "alpha_and_non_skin_pixels_preserved": true,
   "image_sha256": "c572b60df273ac6c790c7be0ae08dab25cd5fe26a1fb8bc100b0aa8701f57722",
   "runtime_integrated": true,
-  "approval": "Owner: Flawless work. Approved. \u2014 14 October 2026"
+  "approval": "Owner: Flawless work. Approved. \u2014 14 October 2026",
+  "skin_mask_sha256": {
+    "mom": [
+      "97209d6e5257c4f408369eaa332fcadaabdc17cba3b0a445c2445d3aaca4afe1",
+      "d717ffce8a655aa20592d7c31c411b34d7f67668d5c42ddda3b80b2f067e8702",
+      "a37e0f7f3326e8423d034bada0bc8fe0d49edf85164d5d93d95637007404f5ee",
+      "4fbea18ea3f4e2a01799c3a1a7f89c752050eee68f356f842d5f39de37f3bd65",
+      "f87e9da58ef60d50431ca519631112ea3742d2ef7e38c38fe5ceb37b15ee35f3",
+      "ba0ccc3af0dbf87224f6b3210101a678b59a8a8b06d6a7a3d60cc01ca02c50a5",
+      "1fdff6b553a44cb22f70e76b64277358735d3b0ef27f59305b37cdd6227d04d8",
+      "46d23265faf019b4b788365072743b4f6ec34823a3cb4caba2b004ecdfd071c2",
+      "8af79621ecb2f3daa5f9f92dd1380610284eb0ea8737b958160f328859a2c0f4"
+    ],
+    "norman": [
+      "d08ae0c4673549623832c8a2474e6b431821f55c95b0d6e9ddf5265bb0a44abb",
+      "6caf8f3f9bc3ed1ba33177e7699b2297675e16550a3efbb39d52ad993abeba7b",
+      "31ba6df7e1251a83edee229d932ab9406e35e5016eafebec7400e46d2bfaf583",
+      "db3f79a8efdff6810b3845e4794fc2e7f61e9784ab5d63b36ad8fe24bf2c2754",
+      "ad56e34e8bff22381635b4d092601056331ad7d040ed292739786c4ec954a4de",
+      "473808381d28c7b0fe4071cc2426e24465408394a3bbc3de6528932cbe1eed45",
+      "5c1c22091cccbb9c71e7efd33808cd34ed20f1e5e19c61ad8dfc3e02de6b7a7a",
+      "1a7756d217c2a6bd6b2711b76966988e9c394d175407c4bfac44f106ec75965b",
+      "9c83eda88e2513e48ca9e208ae7be39e714a5c7e92ce89f4ec37f5af5a28371b"
+    ],
+    "battle": [
+      "c186ac23967697c221966535e5e568b194f06928b1e541a91ed61587e42b91d9"
+    ]
+  }
 }

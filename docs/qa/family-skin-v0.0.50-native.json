@@ -1,0 +1,17 @@
+{
+  "version": "0.0.50",
+  "Debug_ROM_sha256": "e14dc50c22ff9025fd6eeb9ee4d452313b22604893435e05652bc1908595d4e0",
+  "capture_sha256": "073458d33df3e35162fce05f35fc17596ce51cbeaccbf73b692b060ea9159f98",
+  "native_asset_tone_cases": 190,
+  "reflection_palettes": 20,
+  "wardrobe_apply_cancel_rounds": 10,
+  "all_16_slots_occupied": true,
+  "unrelated_NPC4_unchanged": true,
+  "passed": true,
+  "scope": "Controlled ARM callback after boot: real virtual-object creation, palette/reflection/wardrobe functions. Not natural map traversal, menu navigation or battery save/reload. Private ROM excluded from publication.",
+  "harness_sha256": {
+    "arm.c": "cab499f01908fcbe52bc5c81a148128230f29085a4908815c0f70f788056cbc1",
+    "host.c": "49530ad6fb89cb60498ae4698a368b54a2e83c6d39c227d7846b6f8cd479aaeb",
+    "run.py": "48cc80a7e742c11d644b04af073d0a8e7a080b981a9ae0e6be0a2a9e199a5a3c"
+  }
+}
