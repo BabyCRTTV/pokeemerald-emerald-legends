@@ -8,6 +8,10 @@ The owner uses a phone. Provide narrow vertical PNG/GIF previews and explicit do
 
 On 14 October 2026 the owner reversed the earlier permission to ignore older saves. Backward compatibility for Legends battery saves is now required for future updates. Preserve existing save readers, field offsets and persistent IDs; add focused migrations/tests when saved data changes. [Save-compatibility policy and evidence](SAVE-COMPATIBILITY.md) defines the release gate without adding duplicate builds or per-patch full emulator runs. Existing checks pass; a complete historical-release save-fixture matrix remains unfinished and must not be represented as verified.
 
+## Pending visual review — Mom and Norman
+
+The owner requested Mom and Norman to inherit the player's selected skin tone in their overworld sprites and Norman's battle portrait, and asked to see all five tones. A narrow native-asset preview is prepared; [review details, reproduction and integration constraints](qa/family-skin-preview.md). No family runtime hooks, save changes, version bump or replacement BPS have been applied. Await the owner's visual feedback before treating this artwork study as approved. Preserve Mom's shared-color hair highlights and isolate both parents from the shared NPC-4 palette when implementing. Derive the family tone from the existing player choice; do not add saved parent fields.
+
 ## Current version — 0.0.49
 
 The owner approved the five-tone male/female shading comparison on 14 October 2026 after explicitly limiting the cleanup to the **front-facing overworld face**. The accepted twelve male/four female standing cheek edits are implemented and published in both builds. Native running faces have shorter jaws and retain their anatomy through their own pose masks. This approval is complete; do not redesign other views or lighten the global skin palettes.
