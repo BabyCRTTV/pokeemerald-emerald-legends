@@ -1,6 +1,6 @@
 # Pokémon Emerald: Legends
 
-**Version:** 0.0.51<br>
+**Version:** 0.0.52<br>
 **Base:** [pokeemerald-expansion](https://github.com/rh-hideout/pokeemerald-expansion)
 
 Pokémon Emerald: Legends is an unofficial, non-commercial Pokémon Emerald ROM-hack project built on the open-source `pokeemerald-expansion` decompilation/expansion base.
@@ -11,7 +11,7 @@ The New Game / Continue / Options menu uses a soft lavender backdrop as of v0.0.
 
 Kanto has four playable visiting Gyms: Lt. Surge, Koga, Erika and Sabrina offer per-Gym difficulty choices with one victory per save. The Borrowed Voice adds two field surveys and an updated progress journal. The Trainer Card switches between Hoenn and Kanto badge collections. SELECT switches the postgame PokeNav between Hoenn and Kanto. [Postgame design and current scope](docs/features/kanto-postgame.md).
 
-Quest Log and Achievements are on the second pause-menu page (Left/Right). v0.0.43 tracks 33 quests and 80 achievements, with one-time berry rewards sent to PC item storage. Storage now offers 20 Pokemon boxes and larger Bag/PC inventories. See [journal and storage documentation](docs/features/quest-log-achievements.md).
+Quest Log and Achievements are on the second pause-menu page (Left/Right). v0.0.52 tracks 33 quests and 95 achievements, with one-time berry rewards manually claimed into PC item storage. Nonblocking unlock notices name each earned achievement; a temporary confirmation appears after a successful claim. Storage now offers 20 Pokemon boxes and larger Bag/PC inventories. See [journal and storage documentation](docs/features/quest-log-achievements.md).
 
 ## Adventure notebook
 

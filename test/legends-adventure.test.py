@@ -38,6 +38,7 @@ bool32 IsLeapYear(u32 y){return y%4==0;}
 u16 RtcGetDayCount(struct SiiRtcInfo *r){return date;}
 bool32 FlagGet(u16 f){return (flags[f/8]>>(f%8))&1;}
 bool32 IsOverworldLinkActive(void){return linked;}
+void LegendsJournalFlagSet(u16 id){}
 '''
 
 def function(name):

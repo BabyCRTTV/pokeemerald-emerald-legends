@@ -133,12 +133,14 @@ int main(void){
  for(int filter=0;filter<3;filter++){key(DPAD_RIGHT);assert(sSelected==0&&sTop==0);selection();}
  key(DPAD_LEFT);assert(sFilter==2);key(SELECT_BUTTON);assert(sFilter==0);
  memset(flags,0,sizeof(flags));sFilter=1;Draw();assert(Count()==0);selection();key(A_BUTTON);assert(!sDetail);
- LegendsJournalInit(TRUE);gMain.state=0;CB2_OpenAchievements();assert(sAchievements&&Count()==80);selection();
- for(int i=0;i<80;i++){selection();key(DPAD_DOWN);}
+ LegendsJournalInit(TRUE);gMain.state=0;CB2_OpenAchievements();assert(sAchievements&&Count()==95);selection();
+ for(int i=0;i<95;i++){selection();key(DPAD_DOWN);}
  key(DPAD_RIGHT);assert(sFilter==1&&Count()==0);selection();
  flags[FLAG_BADGE01_GET]=1;LegendsJournalRefresh();Draw();assert(Count()>0);selection();
  key(A_BUTTON);assert(sDetail);full=1;key(A_BUTTON);assert(sMessage==2&&!LegendsAchievementClaimed(Entry(sSelected)));
- full=0;key(A_BUTTON);assert(sMessage==1&&sFilter==0);u16 claimed=Entry(sSelected);assert(LegendsAchievementClaimed(claimed));
+ full=0;key(A_BUTTON);assert(sMessage==1&&sClaimFrames==180&&sFilter==0);
+ for(int t=0;t<180;t++){key(0);}
+ assert(sClaimFrames==0);u16 claimed=Entry(sSelected);assert(LegendsAchievementClaimed(claimed));
  key(B_BUTTON);selection();key(DPAD_RIGHT);key(DPAD_RIGHT);assert(sFilter==2&&Count()==1);selection();
  key(B_BUTTON);assert(gTasks[0].func==Task_Close);gPaletteFade.active=1;Task_Close(0);assert(freed==0);gPaletteFade.active=0;Task_Close(0);assert(freed==1&&currentCallback==CB2_ReturnToFieldWithOpenMenu);
  failedInit=1;gMain.state=0;CB2_OpenQuestLog();assert(freed==2&&currentCallback==CB2_ReturnToFieldWithOpenMenu);

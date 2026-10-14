@@ -10,7 +10,13 @@ The owner uses a phone. Provide narrow vertical PNG/GIF previews and explicit do
 
 On 14 October 2026 the owner reversed the earlier permission to ignore older saves. Backward compatibility for Legends battery saves is now required for future updates. Preserve existing save readers, field offsets and persistent IDs; add focused migrations/tests when saved data changes. [Save-compatibility policy and evidence](SAVE-COMPATIBILITY.md) defines the release gate without adding duplicate builds or per-patch full emulator runs. Existing checks pass; a complete historical-release save-fixture matrix remains unfinished and must not be represented as verified.
 
-## Current version — 0.0.51 (published and verified)
+## Approved v0.0.52 — publication in progress
+
+On 14 October 2026 the owner approved the corrected notice explicitly: “You did it! Perfect. Publish approved.” Approval is complete; preserve the corrected preview and carry publication through without asking again. [PR #67](https://github.com/BabyCRTTV/pokeemerald-emerald-legends/pull/67) contains fifteen appended achievements (95 total), the queued nonblocking upper-left unlock notice, and temporary PC Item Storage confirmation after the existing manual claim. The panel uses safe BG0 tiles 0x70–0xB7. All 172 visible native frames and 29 decoded GIF frames matched during four-direction movement. [Detailed design, compatibility, captures and verification](qa/achievement-preview.md).
+
+The original eighty IDs/claims and 36-byte version-1 journal remain intact. New goals backfill quietly from retained progress and stay unclaimed; full-PC retry/idempotency remain. No save migration or artwork/animation changes were introduced. The editable JSON catalogue is synchronized with all 95 native definitions and covered by a parity check. VERSION, all three changelogs, Options, README, homepage, patcher and journal guides now target v0.0.52. Remote merged-source build/BPS/download verification remains pending; the last verified public release below is v0.0.51.
+
+## Last verified public version — 0.0.51 (published and verified)
 
 The owner requested removal of the duplicate Adventure Log from pause-menu page two and a clear hovered quest. Page one retains Adventure Log; page two contains Quest Log, Achievements and Exit. The journal now uses a dark plum band, cream text with matching background, and a separate pointer, including Achievements/claimed markers. Existing checkboxes, inputs, scrolling, filters, details, claims and action IDs remain intact. No artwork or serialized/save data changed; no migration is required.
 

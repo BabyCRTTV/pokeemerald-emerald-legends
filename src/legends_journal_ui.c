@@ -40,11 +40,12 @@ static const u16 sPaperPalette[] =
 static const u8 sInk[] = {1, 2, 3};
 static const u8 sAccent[] = {1, 8, 3};
 static const u8 sSelectedInk[] = {8, 1, 0};
+static const u8 sClaimInk[] = {7, 8, 3};
 
 EWRAM_DATA static bool8 sAchievements = FALSE;
 EWRAM_DATA static bool8 sDetail = FALSE;
 EWRAM_DATA static u8 sFilter = 0, sMessage = 0;
-EWRAM_DATA static u16 sSelected = 0, sTop = 0;
+EWRAM_DATA static u16 sSelected = 0, sTop = 0, sClaimFrames = 0;
 static void Print(const u8 *text, u8 x, u8 y)
 {
     AddTextPrinterParameterized3(0, FONT_SMALL, x, y, sInk, TEXT_SKIP_DRAW, text);
@@ -145,8 +146,15 @@ static void Draw(void)
             StringCopy(text, COMPOUND_STRING("Reward: ")); StringAppend(text, GetItemName(a->berry));
             StringAppend(text, COMPOUND_STRING(" x"));
             ConvertIntToDecimalStringN(number, a->quantity, STR_CONV_MODE_LEFT_ALIGN, 2); StringAppend(text, number); Print(text, 13, 98);
-            Print(sMessage == 1 ? COMPOUND_STRING("Berries sent to PC ITEM STORAGE!") : sMessage == 2 ? COMPOUND_STRING("PC full. Make room, then retry.") :
-                LegendsAchievementClaimed(id) ? COMPOUND_STRING("Reward already claimed.") : COMPOUND_STRING("Claim sends berries to your PC."), 13, 121);
+            if (sMessage == 1 && sClaimFrames)
+            {
+                FillWindowPixelRect(0, PIXEL_FILL(7), 10, 113, 226, 28);
+                AddTextPrinterParameterized3(0, FONT_SMALL, 16, 113, sClaimInk, TEXT_SKIP_DRAW, COMPOUND_STRING("REWARD CLAIMED!"));
+                AddTextPrinterParameterized3(0, FONT_SMALL, 16, 126, sClaimInk, TEXT_SKIP_DRAW, COMPOUND_STRING("Sent to PC ITEM STORAGE."));
+            }
+            else
+                Print(sMessage == 2 ? COMPOUND_STRING("PC full. Make room, then retry.") :
+                    LegendsAchievementClaimed(id) ? COMPOUND_STRING("Reward already claimed.") : COMPOUND_STRING("Claim sends berries to your PC."), 13, 121);
             Print(COMPOUND_STRING("A: Claim reward   B: Back"), 13, 147);
         }
     }
@@ -209,9 +217,10 @@ static void Task_Read(u8 taskId)
 {
     u16 count, id;
     if (gPaletteFade.active) return;
+    if (sClaimFrames && --sClaimFrames == 0) Draw();
     if (JOY_NEW(B_BUTTON | START_BUTTON))
     {
-        if (sDetail && !JOY_NEW(START_BUTTON)) { sDetail = FALSE; sMessage = 0; Draw(); return; }
+        if (sDetail && !JOY_NEW(START_BUTTON)) { sDetail = FALSE; sMessage = 0; sClaimFrames = 0; Draw(); return; }
         PlaySE(SE_SELECT); BeginNormalPaletteFade(PALETTES_ALL, 0, 0, 16, RGB_BLACK);
         gTasks[taskId].func = Task_Close; return;
     }
@@ -222,6 +231,7 @@ static void Task_Read(u8 taskId)
         if (sAchievements && JOY_NEW(A_BUTTON) && id != 0xFFFF && !LegendsAchievementClaimed(id) && LegendsAchievementEarned(id))
             {
                 sMessage = LegendsAchievementClaim(id) ? 1 : 2;
+                sClaimFrames = sMessage == 1 ? 180 : 0;
                 if (sMessage == 1 && sFilter == 1)
                 {
                     sFilter = 0; sSelected = id; sTop = 0;
@@ -271,7 +281,7 @@ static void OpenJournal(void)
         }
         DeactivateAllTextPrinters();
         LoadPalette(sPaperPalette, 240, sizeof(sPaperPalette));
-        sFilter = 0; sSelected = 0; sTop = 0; sDetail = FALSE; sMessage = 0;
+        sFilter = 0; sSelected = 0; sTop = 0; sDetail = FALSE; sMessage = 0; sClaimFrames = 0;
         LegendsJournalRefresh();
         Draw();
         PutWindowTilemap(0);

@@ -2,6 +2,14 @@
 
 This is the player-facing history for the recommended **Release** build. Shared Legends changes are repeated here so this file stands on its own; Release-only behavior is called out separately.
 
+## [0.0.52] - 2026-10-14
+
+- Appended fifteen achievements, bringing the total to 95 while preserving the original eighty IDs and the existing save layout.
+- Added a temporary PC Item Storage confirmation after a manual reward claim, with full-PC retries and one-time claims preserved.
+- Added a queued upper-left achievement-name notice that disappeared automatically without blocking movement and waited through menus, scripts, fades and location banners.
+- Fixed the moving unlock notice overwriting map screen data; added physical VRAM bounds and frame-by-frame native/GIF pixel checks.
+- Changes were shared by Release and Debug, with no variant-specific gameplay differences. Published the owner-approved corrected preview; verification and compatibility evidence were recorded in `docs/qa/achievement-preview.md`.
+
 ## [0.0.51] - 2026-10-14
 
 - Removed the duplicate Adventure Log from the second pause-menu page; kept it on the first page, with Quest Log, Achievements and Exit on the second.

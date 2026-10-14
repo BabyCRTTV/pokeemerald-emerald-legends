@@ -1,6 +1,6 @@
-# Quest Log, achievements and expanded storage (v0.0.43)
+# Quest Log, achievements and expanded storage (v0.0.52)
 
-Press **Right or Left** in the pause menu to reach its second page. Choose **QUEST LOG** or **ACHIEVEMENTS**; the Adventure Log remains available on both pages. Linked-room menus retain their native restrictions.
+Press **Right or Left** in the pause menu to reach its second page. Choose **QUEST LOG** or **ACHIEVEMENTS**; the Adventure Log remains on the first page. Linked-room menus retain their native restrictions.
 
 ## Quests
 
@@ -18,11 +18,11 @@ The initial catalogue is in `data/legends/quests.json`, with the shipped C table
 
 ## Achievements and rewards
 
-There are **80 achievements**, listed in `data/legends/achievements.json`. Each has a title, explicit requirement, progress target and a bundle of three or five berries. Rewards cycle through 45 berry varieties, including healing, condition, EV-reducing, type-resistance and rare stat berries. No full-party or random-item reward is substituted.
+There are **95 achievements**, listed in `data/legends/achievements.json`. Each has a title, explicit requirement, progress target and a bundle of three or five berries. Rewards cycle through 45 berry varieties, including healing, condition, EV-reducing, type-resistance and rare stat berries. No full-party or random-item reward is substituted.
 
-Open a detail page and press **A** to claim. Berries are added directly to **PC ITEM STORAGE** through the native atomic item API. The claim bit is set only after that addition succeeds. If storage is full, the reward remains pending. Claims cannot be repeated after a successful save/load. Save your game normally to keep the reward; loading an earlier save rolls both the berries and claim state back together.
+Open a detail page and press **A** to claim. Berries are added directly to **PC ITEM STORAGE** through the native atomic item API. The claim bit is set only after that addition succeeds. If storage is full, the reward remains pending. Claims cannot be repeated after a successful save/load. A successful claim shows a temporary **REWARD CLAIMED! / Sent to PC ITEM STORAGE.** confirmation. Unlocking an achievement alone never grants its reward. Save your game normally to keep the reward; loading an earlier save rolls both the berries and claim state back together.
 
-All / Ready to Claim / Claimed views are available. An achievement stays unlocked after a streak resets. Stat milestones are captured by the native `SetGameStat` hook; story and Pokedex milestones refresh on opening the journal and saving. Existing profiles recover achievements from their retained flags, statistics and caught-species records. Feats absent from those records cannot be reconstructed.
+All / Ready to Claim / Claimed views are available. An achievement stays unlocked after a streak resets. Stat milestones are captured by the native `SetGameStat` hook, story milestones by flag transitions, and collection milestones by newly caught Pokédex entries. The journal also refreshes on returning to the field, opening the journal and saving. A compact upper-left notice names new unlocks for about three seconds without consuming input; simultaneous unlocks queue. Notices wait through scripts, fades, menus, battles and location banners. Existing profiles recover achievements quietly from their retained flags, statistics and caught-species records, without replaying old banners or auto-claiming new rewards. Feats absent from those records cannot be reconstructed.
 
 IDs are stable array positions. Append new achievements; do not reorder existing IDs. The reserved bitset supports 96 entries. Journal data is appended after the existing item-history field in SaveBlock3 with its own version/magic/checksum; existing field offsets remain unchanged.
 

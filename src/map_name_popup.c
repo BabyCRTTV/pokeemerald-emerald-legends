@@ -1,4 +1,5 @@
 #include "global.h"
+#include "legends_journal.h"
 #include "battle_pyramid.h"
 #include "bg.h"
 #include "event_data.h"
@@ -363,8 +364,14 @@ enum {
 #define tIncomingPopUp data[3]
 #define tPrintTimer    data[4]
 
+bool32 IsMapNamePopupActive(void)
+{
+    return FuncIsActiveTask(Task_MapNamePopUpWindow);
+}
+
 void ShowMapNamePopup(void)
 {
+    LegendsAchievementPopupHide();
     if (FlagGet(FLAG_HIDE_MAP_NAME_POPUP) != TRUE)
     {
         if (!FuncIsActiveTask(Task_MapNamePopUpWindow))

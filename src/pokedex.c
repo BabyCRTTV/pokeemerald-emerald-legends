@@ -1,4 +1,5 @@
 #include "global.h"
+#include "legends_journal.h"
 #include "battle_main.h"
 #include "battle_script_commands.h"
 #include "bg.h"
@@ -4507,7 +4508,11 @@ s8 GetSetPokedexFlag(enum NationalDexOrder nationalDexNo, u8 caseID)
         gSaveBlock1Ptr->dexSeen[index] |= mask;
         break;
     case FLAG_SET_CAUGHT:
-        gSaveBlock1Ptr->dexCaught[index] |= mask;
+        if (!(gSaveBlock1Ptr->dexCaught[index] & mask))
+        {
+            gSaveBlock1Ptr->dexCaught[index] |= mask;
+            LegendsJournalRefresh();
+        }
         break;
     }
 

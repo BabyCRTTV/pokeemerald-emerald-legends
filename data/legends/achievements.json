@@ -798,5 +798,155 @@
     "id": 79,
     "berry": "HABAN",
     "quantity": 5
+  },
+  {
+    "title": "Rydel's Rider",
+    "description": "Receive a bicycle from RYDEL.",
+    "kind": "FLAG",
+    "key": "FLAG_RECEIVED_BIKE",
+    "target": 1,
+    "id": 80,
+    "berry": "SITRUS",
+    "quantity": 3
+  },
+  {
+    "title": "Weather Watch",
+    "description": "Help the WEATHER INSTITUTE.",
+    "kind": "FLAG",
+    "key": "FLAG_RECEIVED_CASTFORM",
+    "target": 1,
+    "id": 81,
+    "berry": "LUM",
+    "quantity": 3
+  },
+  {
+    "title": "See the Unseen",
+    "description": "Receive the DEVON SCOPE.",
+    "kind": "FLAG",
+    "key": "FLAG_RECEIVED_DEVON_SCOPE",
+    "target": 1,
+    "id": 82,
+    "berry": "LEPPA",
+    "quantity": 3
+  },
+  {
+    "title": "Deep-Sea Salvage",
+    "description": "Exchange the SCANNER with STERN.",
+    "kind": "FLAG",
+    "key": "FLAG_EXCHANGED_SCANNER",
+    "target": 1,
+    "id": 83,
+    "berry": "WIKI",
+    "quantity": 3
+  },
+  {
+    "title": "Thunderwing Witness",
+    "description": "Observe ZAPDOS at its roost.",
+    "kind": "FLAG",
+    "key": "FLAG_LEGENDS_KANTO_ZAPDOS_SEEN",
+    "target": 1,
+    "id": 84,
+    "berry": "WACAN",
+    "quantity": 3
+  },
+  {
+    "title": "Frostwing Witness",
+    "description": "Observe ARTICUNO in SEAFOAM.",
+    "kind": "FLAG",
+    "key": "FLAG_LEGENDS_STORY_ARTICUNO_SEEN",
+    "target": 1,
+    "id": 85,
+    "berry": "YACHE",
+    "quantity": 3
+  },
+  {
+    "title": "Emberwing Witness",
+    "description": "Observe MOLTRES at MT. EMBER.",
+    "kind": "FLAG",
+    "key": "FLAG_LEGENDS_STORY_MOLTRES_SEEN",
+    "target": 1,
+    "id": 86,
+    "berry": "OCCA",
+    "quantity": 3
+  },
+  {
+    "title": "Sleeping Giant",
+    "description": "Calm REGIGIGAS in the vault.",
+    "kind": "FLAG",
+    "key": "FLAG_LEGENDS_STORY_REGIGIGAS_CALMED",
+    "target": 1,
+    "id": 87,
+    "berry": "CHOPLE",
+    "quantity": 3
+  },
+  {
+    "title": "Island Explorer",
+    "description": "Visit FARAWAY ISLAND.",
+    "kind": "FLAG",
+    "key": "FLAG_LEGENDS_FINAL_ISLAND_VISITED",
+    "target": 1,
+    "id": 88,
+    "berry": "MAGO",
+    "quantity": 3
+  },
+  {
+    "title": "A Familiar Shadow",
+    "description": "Observe MEW in the deep forest.",
+    "kind": "FLAG",
+    "key": "FLAG_LEGENDS_FINAL_MEW_OBSERVED",
+    "target": 1,
+    "id": 89,
+    "berry": "LANSAT",
+    "quantity": 3
+  },
+  {
+    "title": "Homeward Bound",
+    "description": "Read BIRCH's epilogue letter.",
+    "kind": "FLAG",
+    "key": "FLAG_LEGENDS_FINAL_HOENN_EPILOGUE",
+    "target": 1,
+    "id": 90,
+    "berry": "STARF",
+    "quantity": 3
+  },
+  {
+    "title": "Trailblazer",
+    "description": "Walk 100000 steps.",
+    "kind": "STAT",
+    "key": "GAME_STAT_STEPS",
+    "target": 100000,
+    "id": 91,
+    "berry": "SALAC",
+    "quantity": 5
+  },
+  {
+    "title": "Hatchery Master",
+    "description": "Hatch 50 eggs.",
+    "kind": "STAT",
+    "key": "GAME_STAT_HATCHED_EGGS",
+    "target": 50,
+    "id": 92,
+    "berry": "LIECHI",
+    "quantity": 5
+  },
+  {
+    "title": "Evolution Master",
+    "description": "Evolve 50 POKEMON.",
+    "kind": "STAT",
+    "key": "GAME_STAT_EVOLVED_POKEMON",
+    "target": 50,
+    "id": 93,
+    "berry": "PETAYA",
+    "quantity": 5
+  },
+  {
+    "title": "Dex Collection 300",
+    "description": "Register 300 caught species.",
+    "kind": "DEX",
+    "key": 0,
+    "target": 300,
+    "id": 94,
+    "berry": "APICOT",
+    "quantity": 5
   }
 ]
