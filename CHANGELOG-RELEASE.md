@@ -2,6 +2,13 @@
 
 This is the player-facing history for the recommended **Release** build. Shared Legends changes are repeated here so this file stands on its own; Release-only behavior is called out separately.
 
+## [0.0.48] - 2026-10-14
+
+- Published the owner-approved male Side Part overworld head, retaining its four-view shape through native walking/running, both bikes, Surf, field moves, fishing and watering.
+- Filled the single transparent cell beside the front-facing ear with the neighboring hair-shadow shade. Retained the separately approved profile corrections and all eight hair colors/five skin tones.
+- Preserved the v0.0.47 smile/body-color repair, saved hairstyle ID, other approved hairstyles, wardrobe choices, female art, portraits, fixed battle uniforms, costumes and native diving suit.
+- Changes were shared by Release and Debug, with no variant-specific gameplay differences. Added approved-head and native-animation regression coverage. Validation: `docs/qa/side-part-v0.0.48.md`.
+
 ## [0.0.47.1] - 2026-10-14
 
 - Moved the pause-menu page arrow four pixels lower, leaving four clear pixel rows below EXIT instead of touching the text.

@@ -223,7 +223,7 @@ void LegendsUpdateAppearancePalettes(void)
             gLegendsOverworldPalettes[gender][4] = gLegendsTrainerPalettes[gender][4] = colors[LegendsGetHairColor()-1][0];
             gLegendsOverworldPalettes[gender][7] = gLegendsTrainerPalettes[gender][7] = colors[LegendsGetHairColor()-1][1];
         }
-        if (gender == MALE && LegendsGetHair() && LegendsGetHair() != 2 && !LegendsGetCostume())
+        if (gender == MALE && LegendsGetHair() && !LegendsGetCostume())
         {
             static const u16 shadows[LEGENDS_HAIR_COLOR_COUNT] = {
                 RGB(8,5,4), RGB(2,2,3), RGB(5,3,2), RGB(7,4,3),

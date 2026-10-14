@@ -1,14 +1,14 @@
 {
   "base": "fa3b6dadfe3ed733c7db3f66181551960be1fef4",
   "unchanged_layers": {
-    "sStyle00": "bfb3ec5fdfd64a5d5ad50be0016c75eb7953382b48615fc007df82915ed4bfe0",
-    "sStyle01": "788caba8e65f51ad3bbbc6de9daffe9c58b955b8996f52baf52d78215efefcc5",
-    "sStyle02": "56520f36a498d6f77e7d30cb4b892ad81343269124af4a7a2bd67b48d1179d1c",
-    "sStyle03": "66bf0639a03a36788f3db026b939f7873fab86d25f1ed5b4693ecd55f270de88",
+    "sStyle00": "10c5691699918517003f10ae5ffa3f5f8fe95778b41432c396f7a753fc7662d7",
+    "sStyle01": "be3cdd0434a80cbe29c1179b86688aa454d1ee475e48dcb7adcbc3cc6d7ffa2f",
+    "sStyle02": "05d7f0ae7e351a7e7bd25da4f0bc17cf05671b1dd53b1c28ee6eaa8267b50497",
+    "sStyle03": "b9c630cba988463e2d0aa710795a6579e669d7407ee491efef548da65d14ad3c",
     "sStyle04": "57abbb50621082550e15288b7b80b26f116dc625137a5e6b6e90b0ce3c6f3b05",
-    "sStyle05": "d4f66c01bbebc390fccec75df94ae797a44018a7ad9fc27daa956f6f8c825331",
-    "sStyle06": "79171c80fae46a463940f4284ca1859d817eb82e05298ef50f1247b7e08994da",
-    "sStyle07": "407dfff58660250d35e1faa74f60dac84274301d63de9ca5aae63b29d8014bcd",
+    "sStyle05": "23591004f42ea06b23a3110e7cf762d749409dc7379e84283a3b1e0419bbde8d",
+    "sStyle06": "95baa0343234a47c32ace2c5225254440c603181901b620a1e8cc3df195be3a3",
+    "sStyle07": "0c57fa20f274ba3922342c39bf567b29e9f4229869a85f695bb0abcd56e73d1d",
     "sStyle10": "8fdc4aebaa82688d282edd073d851d1d3cbb6334f0d1c4cb9ec8843aac617220",
     "sStyle11": "d6cfe28f82ba2beb0095b224bf37c508822938266fcc23fef182bdb14955a0c5",
     "sStyle12": "744e029e767f4e4e620e425800a6d9db192dc06e45ac357090ffd8d6474a0a10",
@@ -21,7 +21,7 @@
     "sStyleBack": "65b9cfeb2d96dea196619cb95610b2a0bc6b3cc1a4b9ae40df1245176d6ab331"
   },
   "unchanged_files": {
-    "graphics/legends/male_overworld/heads.png": "0fe54054efc9294c8216ccc926a2986b1b5dabbf0610fbe0e43a2ab41ef99513",
+    "graphics/legends/male_overworld/heads.png": "b2ad4dc9e637a71b445f05dea256fbf9298262fde7d0ebfee77f2a9026214a5a",
     "tools/legends/male_overworld_sheets.json": "923780eab620251443f2d3f90f61accd659ca6bb010f4b4266fc10c3ee1f7c54"
   }
 }

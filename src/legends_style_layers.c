@@ -50,9 +50,9 @@ void LegendsPaintStylePose(u8 *bits, u8 width, u8 gender, u8 kind, u8 state, u8 
     if (gender == FEMALE && LegendsGetLeggings())
         ApplyEdits(bits, width, &layers[13 + LegendsGetLeggings()], 3);
     if (LegendsGetHairColor())
-        ApplyEdits(bits, width, &layers[13], gender == MALE && kind == 0 && hair && hair != 2 ? RECOLOR_MALE_WORLD_BODY : RECOLOR_BODY);
+        ApplyEdits(bits, width, &layers[13], gender == MALE && kind == 0 && hair ? RECOLOR_MALE_WORLD_BODY : RECOLOR_BODY);
     else if (gender == MALE && kind != 2 && hair)
-        ApplyEdits(bits, width, &layers[15], kind == 0 && hair != 2 ? RECOLOR_MALE_WORLD_BODY : RECOLOR_BODY);
+        ApplyEdits(bits, width, &layers[15], kind == 0 ? RECOLOR_MALE_WORLD_BODY : RECOLOR_BODY);
     if (coat)
         ApplyEdits(bits, width, &layers[9 + coat], TRUE);
     if (hair)

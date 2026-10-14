@@ -1,6 +1,6 @@
 # Pokémon Emerald: Legends Roadmap
 
-Reviewed against **v0.0.47.1** on 14 October 2026. The root `VERSION`, current source and [development handoff](docs/DEVELOPMENT-HANDOFF.md) take precedence over older milestone notes. [Verification and remaining playtests](docs/qa/project-state-2026-10-14.md).
+Reviewed against **v0.0.48** on 14 October 2026. The root `VERSION`, current source and [development handoff](docs/DEVELOPMENT-HANDOFF.md) take precedence over older milestone notes. [Verification and remaining playtests](docs/qa/project-state-2026-10-14.md).
 
 ## 0.0.x - Foundation
 
@@ -37,7 +37,8 @@ Goal: establish a stable `pokeemerald-expansion` project and implement the first
 - [x] Fixed Team Magma/Aqua costumes, striped Sport shorts and female leggings
 - [x] Prepared male/female battle hairstyles with fixed native battle uniforms
 - [x] Approved v0.0.46 male overworld artwork and v0.0.47 smile/body-color isolation
-- [ ] Further visual tuning from owner feedback; the separate Side Part redesign remains unapproved
+- [x] Approved Side Part head, single transparent-cell repair and native animation checks (v0.0.48)
+- [ ] Further visual tuning from specific owner feedback
 
 ### Kanto postgame
 - [x] Champion invitation and permanent Lilycove–Vermilion ferry

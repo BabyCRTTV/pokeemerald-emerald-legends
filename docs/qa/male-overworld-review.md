@@ -1,6 +1,10 @@
 # Male overworld reference review
 
-Status: v0.0.46 ships the nine male cuts approved on October 13, 2026.
+Current status: the owner approved Side Part on 14 October 2026, including the single-cell front-ear repair. All ten imported male cuts are integrated in v0.0.48. [Current QA](side-part-v0.0.48.md).
+
+## Historical v0.0.46 review
+
+Status at that release: v0.0.46 shipped the nine male cuts approved on October 13, 2026.
 Side Part remains on the byte-identical v0.0.45 masks and palette; its corrected
 reference preview is separate and awaits visual approval. Release and Debug
 publication requires the normal green build and verified-BPS workflow.

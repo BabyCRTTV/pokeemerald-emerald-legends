@@ -104,3 +104,7 @@ Nine reference cuts are approved and ship in v0.0.46. Side Part (saved ID 2)
 retains the v0.0.45 sparse masks and palette while a revised reference preview
 awaits approval. Female art, trainer/front portraits and both prepared battle
 banks retain their published artwork. The covered diving suit stays native.
+
+### Side Part approval — v0.0.48
+
+The owner approved the separately retained male Side Part four-view preview on 14 October 2026, with one requested repair beside the front ear. Its front atlas cell `(4,17)` now uses neighboring hair-shadow slot 8. All native walking/running, bike/trick, Surf, field-move, fishing and watering frames use that approved head. Saved ID 2 is retained; female art, front portraits, prepared battle uniforms, fixed costumes and the native diving suit remain unchanged. Hair/skin/clothing colors retain the v0.0.47 isolation fix. [Validation and mobile previews](../qa/side-part-v0.0.48.md).

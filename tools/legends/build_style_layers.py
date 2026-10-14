@@ -9,9 +9,9 @@ import json,re,struct
 from PIL import Image,ImageDraw
 from build_appearance import ROOT,STATES,FILES,frames,skin_components,hand_pixels,ball_pixels
 
-# Side Part (2) still awaits separate visual approval. Preserve its published
-# v0.0.45 masks and palette while shipping the other nine reference cuts.
-APPROVED_MALE_WORLD_STYLES = frozenset((1,3,4,5,6,7,8,9,10))
+# All ten supplied male overworld cuts are approved. Side Part joined the
+# existing nine-cut baseline after the owner's four-view review.
+APPROVED_MALE_WORLD_STYLES = frozenset(range(1,11))
 
 # In two throw frames the arm touches the cheek. Skin flood-fill alone then
 # joins the forearm to the face, incorrectly protecting it from long sleeves.
