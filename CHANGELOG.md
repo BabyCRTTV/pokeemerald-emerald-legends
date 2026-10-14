@@ -4,6 +4,13 @@ All notable Pokémon Emerald: Legends project changes are documented here.
 
 For build-specific player views, see [CHANGELOG-RELEASE.md](CHANGELOG-RELEASE.md) and [CHANGELOG-DEBUG.md](CHANGELOG-DEBUG.md). The canonical history below records the project as a whole.
 
+## [0.0.51] - 2026-10-14
+
+- Removed the duplicate Adventure Log from the second pause-menu page; kept it on the first page, with Quest Log, Achievements and Exit on the second.
+- Made the selected Quest Log row clear with a dark plum band, cream text and a separate pointer. Preserved completion checkboxes and applied the same readable selection to Achievements and claimed markers.
+- Preserved scrolling, filters, details, reward claims and older Legends save compatibility. Changed no serialized data or persistent IDs and required no migration.
+- Changes were shared by Release and Debug, with no variant-specific gameplay differences. Added real-renderer/input and page-composition regression coverage. Validation: `docs/qa/journal-selection-v0.0.51.md`.
+
 ## [0.0.50] - 2026-10-14
 
 - Made Mom and Norman inherit the player's existing selected skin tone in all native overworld frames and Norman's battle portrait, matching the owner-approved five-tone preview.

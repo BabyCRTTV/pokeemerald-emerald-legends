@@ -305,7 +305,6 @@ static void BuildStartMenuActions(void)
     {
         AddStartMenuAction(MENU_ACTION_QUESTS);
         AddStartMenuAction(MENU_ACTION_ACHIEVEMENTS);
-        AddStartMenuAction(MENU_ACTION_ADVENTURE);
         AddStartMenuAction(MENU_ACTION_EXIT);
         return;
     }

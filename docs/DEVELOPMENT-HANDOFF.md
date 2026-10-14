@@ -10,13 +10,19 @@ The owner uses a phone. Provide narrow vertical PNG/GIF previews and explicit do
 
 On 14 October 2026 the owner reversed the earlier permission to ignore older saves. Backward compatibility for Legends battery saves is now required for future updates. Preserve existing save readers, field offsets and persistent IDs; add focused migrations/tests when saved data changes. [Save-compatibility policy and evidence](SAVE-COMPATIBILITY.md) defines the release gate without adding duplicate builds or per-patch full emulator runs. Existing checks pass; a complete historical-release save-fixture matrix remains unfinished and must not be represented as verified.
 
-## Current version — 0.0.50 (published and verified)
+## Current version — 0.0.51 (source milestone; publication verification pending)
+
+The owner requested removal of the duplicate Adventure Log from pause-menu page two and a clear hovered quest. Page one retains Adventure Log; page two contains Quest Log, Achievements and Exit. The journal now uses a dark plum band, cream text with matching background, and a separate pointer, including Achievements/claimed markers. Existing checkboxes, inputs, scrolling, filters, details, claims and action IDs remain intact. No artwork or serialized/save data changed; no migration is required.
+
+All 45 executable project checks and native GCC 13.2.1 Debug/Release builds passed locally. RAM is unchanged; ROM grew only 68/84 bytes. Eight actual mGBA screens verified native list navigation, scroll/detail/back/filter state and claimed selection. [Scope, reproducible harness, preview and receipts](qa/journal-selection-v0.0.51.md). Remote source checks/build/BPS and live downloads remain pending until explicitly recorded below. Do not claim this source milestone alone is a published patch.
+
+## Previous version — 0.0.50 (published and verified)
 
 The owner approved all five Mom/Norman tones on 14 October 2026 (“Flawless work. Approved.”). Both parents now inherit the existing player skin choice in all native overworld frames and Norman’s battle portrait. This approval is complete. Preserve hair, clothing, outlines and native animation commands; Mom’s 54 shared-color hair highlights are separated from skin materials without changing their visible colors.
 
 Runtime source: `29e45ad535e1bd6a57e6e18f0a01939dd94740b9`. Private overworld tags `0x1174`/`0x1175` resolve to ROM palettes; Norman’s common trainer-front palette getter handles his battle portrait. Palette entries are appended to preserve numerical berry references. Keep original PNGs and derive colors from `LegendsGetSkinTone()`; do not add separate saved parent choices. No serialized layouts, persistent IDs, old readers, initialization rules or sprite-cache RAM changed. ROM usage grew only 424/880 bytes (Debug/Release); no migration is needed.
 
-## Verification and publication
+## v0.0.50 verification and publication
 
 - All 44 executable project checks passed locally after reconstruction and on [source CI](https://github.com/BabyCRTTV/pokeemerald-emerald-legends/actions/runs/38592974123). Actual family C matched all 95 approved asset/tone cases. Approval inputs and nineteen masks are pinned. [QA checks](https://github.com/BabyCRTTV/pokeemerald-emerald-legends/actions/runs/38593983229) passed for `ff0b287a61cbdca1e0590255a581d7a954df7b59`.
 - Restored GCC 13.2.1 Debug/Release builds passed with unchanged RAM. mGBA 0.10.2 repeated 190 asset/tone buffers, twenty pond/ice reflection palettes, ten wardrobe Apply/Cancel rounds, unrelated NPC-4 isolation and full sixteen-slot tag reuse. [Reproducible native harness](../tools/legends/native_family_qa/README.md) and receipts are committed. These were controlled ARM callbacks, not normal map/menu traversal or historical-save reload tests.

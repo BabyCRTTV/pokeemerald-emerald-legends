@@ -39,6 +39,7 @@ static const u16 sPaperPalette[] =
 };
 static const u8 sInk[] = {1, 2, 3};
 static const u8 sAccent[] = {1, 8, 3};
+static const u8 sSelectedInk[] = {8, 1, 0};
 
 EWRAM_DATA static bool8 sAchievements = FALSE;
 EWRAM_DATA static bool8 sDetail = FALSE;
@@ -105,7 +106,8 @@ static u16 Entry(u16 position)
 }
 static void Draw(void)
 {
-    u8 text[128], number[16], i;
+    u8 text[128], number[16], i, j;
+    const u8 *rowInk;
     u16 id, count = Count();
     const struct LegendsQuest *q;
     const struct LegendsAchievement *a;
@@ -159,10 +161,20 @@ static void Draw(void)
         for (i = 0; i < 6 && sTop + i < count; i++)
         {
             id = Entry(sTop + i);
-            if (sTop + i == sSelected) FillWindowPixelRect(0, PIXEL_FILL(7), 10, 42 + i * 16, 226, 16);
+            rowInk = sInk;
+            if (sTop + i == sSelected)
+            {
+                rowInk = sSelectedInk;
+                FillWindowPixelRect(0, PIXEL_FILL(8), 7, 41 + i * 16, 229, 16);
+                // Keep the pointer separate from the completion checkbox.
+                for (j = 0; j < 4; j++)
+                    FillWindowPixelRect(0, PIXEL_FILL(1), 8 + j, 46 + i * 16 + j, 1, 7 - 2 * j);
+            }
             Check(13, 46 + i * 16, sAchievements ? LegendsAchievementEarned(id) : LegendsQuestComplete(id));
-            Print(sAchievements ? LegendsAchievementGet(id)->title : LegendsQuestGet(id)->title, 26, 41 + i * 16);
-            if (sAchievements && LegendsAchievementClaimed(id)) Print(COMPOUND_STRING("C"), 222, 41 + i * 16);
+            AddTextPrinterParameterized3(0, FONT_SMALL, 26, 41 + i * 16, rowInk, TEXT_SKIP_DRAW,
+                sAchievements ? LegendsAchievementGet(id)->title : LegendsQuestGet(id)->title);
+            if (sAchievements && LegendsAchievementClaimed(id))
+                AddTextPrinterParameterized3(0, FONT_SMALL, 222, 41 + i * 16, rowInk, TEXT_SKIP_DRAW, COMPOUND_STRING("C"));
         }
         Print(COMPOUND_STRING("UP/DOWN: Select  A: Details  B: Close"), 10, 136);
         Print(COMPOUND_STRING("LEFT/RIGHT: View  L/R: Page"), 10, 148);

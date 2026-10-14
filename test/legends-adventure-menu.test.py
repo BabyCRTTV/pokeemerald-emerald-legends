@@ -9,7 +9,7 @@ def function(name,ret,args):
 enum=re.search(r'enum\s*\{\s*MENU_ACTION_POKEDEX,.*?\};',source,re.S).group(0)
 builders=['BuildNormalStartMenu','BuildDebugStartMenu','BuildSafariZoneStartMenu','BuildBattlePikeStartMenu','BuildBattlePyramidStartMenu','BuildMultiPartnerRoomStartMenu']
 code=function('AddStartMenuAction','void','u8 action')+'\n'+'\n'.join(function(n,'void','void') for n in builders)
-code+='\n'+function('DrawStartMenuScrollHints','void','void')+'\n'+function('PrintStartMenuActions','bool32','s8 *pIndex, u32 count')+'\n'+function('MoveStartMenuCursor','void','s8 delta')
+code+='\n'+function('BuildStartMenuActions','void','void')+'\n'+function('DrawStartMenuScrollHints','void','void')+'\n'+function('PrintStartMenuActions','bool32','s8 *pIndex, u32 count')+'\n'+function('MoveStartMenuCursor','void','s8 delta')
 preamble=r'''
 #include <stdint.h>
 #include <string.h>
@@ -39,6 +39,15 @@ static int sJournalPage;
 static u32 hintMinY, hintMaxY;
 static bool32 IsOverworldLinkActive(void){return FALSE;}
 static bool32 InUnionRoom(void){return FALSE;}
+#define PYRAMID_LOCATION_NONE 0
+#define DEBUG_OVERWORLD_MENU 0
+#define DEBUG_OVERWORLD_IN_MENU 0
+static bool32 GetSafariZoneFlag(void){return FALSE;}
+static bool32 InBattlePike(void){return FALSE;}
+static bool32 CurrentBattlePyramidLocation(void){return 0;}
+static bool32 InMultiPartnerRoom(void){return FALSE;}
+static void BuildLinkModeStartMenu(void){}
+static void BuildUnionRoomStartMenu(void){}
 static u8 GetStartMenuWindowId(void){return 0;}
 static void FillWindowPixelBuffer(u8 w,u8 color){}
 static void FillWindowPixelRect(u8 w,u8 color,u32 x,u32 y,u32 a,u32 b){
@@ -67,6 +76,22 @@ for(int mask=0;mask<16;mask++){
   MoveStartMenuCursor(-1);assert(sStartMenuCursorPos==count-1);
   MoveStartMenuCursor(1);assert(sStartMenuCursorPos==0);
  }
+}
+// Each page has exactly its intended entries, including before any unlocks.
+for(int mask=0;mask<16;mask++){
+ for(int i=0;i<4;i++)flags[i]=(mask>>i)&1;
+ sJournalPage=0;BuildStartMenuActions();
+ int adventureCount=0;
+ for(int i=0;i<sNumStartMenuActions;i++)adventureCount+=sCurrentStartMenuActions[i]==MENU_ACTION_ADVENTURE;
+ assert(adventureCount==1&&sCurrentStartMenuActions[0]==MENU_ACTION_ADVENTURE);
+ sJournalPage=1;BuildStartMenuActions();
+ assert(sNumStartMenuActions==3);
+ assert(sCurrentStartMenuActions[0]==MENU_ACTION_QUESTS);
+ assert(sCurrentStartMenuActions[1]==MENU_ACTION_ACHIEVEMENTS);
+ assert(sCurrentStartMenuActions[2]==MENU_ACTION_EXIT);
+ sStartMenuTop=sStartMenuCursorPos=0;
+ MoveStartMenuCursor(-1);assert(sStartMenuCursorPos==2);
+ MoveStartMenuCursor(1);assert(sStartMenuCursorPos==0);
 }
 for(int rows=1;rows<=8;rows++)for(int page=0;page<2;page++){
  sNumStartMenuActions=rows;sStartMenuTop=0;sJournalPage=page;

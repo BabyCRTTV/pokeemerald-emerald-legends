@@ -1,0 +1,46 @@
+{
+  "version": "0.0.51",
+  "Debug_ROM_sha256": "d991f3fe540b798c4e4d86ecc42387ac17b40d71ebcf58166e431b24cae1cc6f",
+  "emulator": "mGBA 0.10.2",
+  "captures": [
+    {
+      "name": "achievement-claimed",
+      "sha256": "bc1cd8c59c60a2c640754c50aee605ca1e0157a67eb7536721819df2d2ab575d"
+    },
+    {
+      "name": "achievement-second",
+      "sha256": "1aa311f24ecafd102c99044c3e3d7d19b8fdce10845e3dc81b7781eba8c02399"
+    },
+    {
+      "name": "quest-detail",
+      "sha256": "d626455d0f19aeb3eb00d5f920f67e9e093de5b767516e99bbc3b100806c909d"
+    },
+    {
+      "name": "quest-first",
+      "sha256": "3def54bb319156a726b970a2a8432fb9cca178096a5cb795154ba847b051f9e6"
+    },
+    {
+      "name": "quest-return",
+      "sha256": "19b63166f617fb1600c36ae1818ed78d7c9bf709ad79008827377482ef882abd"
+    },
+    {
+      "name": "quest-scrolled",
+      "sha256": "19b63166f617fb1600c36ae1818ed78d7c9bf709ad79008827377482ef882abd"
+    },
+    {
+      "name": "quest-second",
+      "sha256": "2c697978af724710db4717ee020d66dea007881671932334ebb7a996d2eeb7b1"
+    },
+    {
+      "name": "quest-side",
+      "sha256": "69a1f8ebbac45d8b067a7f61184237d7c345930276bc306cea9ec36d32f5369c"
+    }
+  ],
+  "passed": true,
+  "scope": "Controlled ARM callback opened the actual journal with quest flags set. Emulated keys drove native tasks, scrolling, details/back, filters and Achievements with a claimed reward. Not natural map traversal or historical-save loading. Private ROM excluded from publication.",
+  "harness_sha256": {
+    "arm.c": "f241478ca35aca9a9fdb460f3e7884ec0924ff02d9993f0e0ad955e3eb88bc8a",
+    "host.c": "16e90dc813e3cb716807184c1513a89a48c34c1c00dbdefc88923cea993d7a09",
+    "run.py": "9dfde28c53741ff2522963f74657689908bd21b2fc5086c54f9a704811d259fd"
+  }
+}
