@@ -8,3 +8,5 @@
 
 #include "data/tilesets/legends_kanto.h"
 #include "data/tilesets/legends_story.h"
+
+#include "data/tilesets/legends_bedroom.h"

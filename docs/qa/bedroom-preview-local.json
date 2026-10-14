@@ -1,0 +1,278 @@
+{
+  "state": "Owner-approved v0.0.53 original-chair color release candidate",
+  "base_master": "ed88772110e0952c9e9c3887f1345ecabd4429c0",
+  "review_parent": "cad47d5d0c534a2df51f0cce7d7de85a8b4416cd",
+  "VERSION": "0.0.53",
+  "checks": [
+    {
+      "name": "Exercise browser patcher regression tests",
+      "exit": 0
+    },
+    {
+      "name": "Exercise seasonal engine regression tests",
+      "exit": 0
+    },
+    {
+      "name": "Exercise seasonal battle scenes and Kanto foliage",
+      "exit": 0
+    },
+    {
+      "name": "Exercise dynamic weather regression tests",
+      "exit": 0
+    },
+    {
+      "name": "Exercise starter and rival regression tests",
+      "exit": 0
+    },
+    {
+      "name": "Exercise Options navigation regression tests",
+      "exit": 0
+    },
+    {
+      "name": "Exercise Options text regression tests",
+      "exit": 0
+    },
+    {
+      "name": "Exercise New Game Options regression tests",
+      "exit": 0
+    },
+    {
+      "name": "Exercise native follower regression tests",
+      "exit": 0
+    },
+    {
+      "name": "Exercise upstream held-item integration",
+      "exit": 0
+    },
+    {
+      "name": "Exercise first-item history and compatible save sectors",
+      "exit": 0
+    },
+    {
+      "name": "Exercise quest progression and achievement claims",
+      "exit": 0
+    },
+    {
+      "name": "Achievement notice lifecycle",
+      "exit": 0
+    },
+    {
+      "name": "Journal selection rendering and input",
+      "exit": 0
+    },
+    {
+      "name": "Exercise lossless expanded storage codec",
+      "exit": 0
+    },
+    {
+      "name": "Exercise pause panel regression tests",
+      "exit": 0
+    },
+    {
+      "name": "Exercise Adventure Log persistence, days and milestones",
+      "exit": 0
+    },
+    {
+      "name": "Exercise Adventure Log notebook and filters",
+      "exit": 0
+    },
+    {
+      "name": "Exercise scrolling pause menu",
+      "exit": 0
+    },
+    {
+      "name": "Exercise real/manual clocks and saved fallback",
+      "exit": 0
+    },
+    {
+      "name": "Exercise DexNav encounter proximity and approach rules",
+      "exit": 0
+    },
+    {
+      "name": "Exercise player appearance regression tests",
+      "exit": 0
+    },
+    {
+      "name": "Exercise visual polish regression tests",
+      "exit": 0
+    },
+    {
+      "name": "Verify player appearance art",
+      "exit": 0
+    },
+    {
+      "name": "Verify native window frame assets and selection",
+      "exit": 0
+    },
+    {
+      "name": "Verify native hair / coat 4bpp layer geometry",
+      "exit": 0
+    },
+    {
+      "name": "Verify footwear compositor and protected sprite colors",
+      "exit": 0
+    },
+    {
+      "name": "Verify v0.0.46 artwork and isolated smile/body colors",
+      "exit": 0
+    },
+    {
+      "name": "Verify approved Side Part head and native animation frames",
+      "exit": 0
+    },
+    {
+      "name": "Verify approved front-face shading and unchanged other views",
+      "exit": 0
+    },
+    {
+      "name": "Verify approved parent skin tones and palette isolation",
+      "exit": 0
+    },
+    {
+      "name": "Exercise scrolling intro hairstyles",
+      "exit": 0
+    },
+    {
+      "name": "Bedroom colors, memories and safe floor decoration",
+      "exit": 0
+    },
+    {
+      "name": "Exercise wardrobe navigation and access",
+      "exit": 0
+    },
+    {
+      "name": "Verify layered accessories and wardrobe furniture",
+      "exit": 0
+    },
+    {
+      "name": "Verify native costume assets and striped Sport shorts",
+      "exit": 0
+    },
+    {
+      "name": "Exercise Da Bug gift and species integration",
+      "exit": 0
+    },
+    {
+      "name": "Exercise Kanto invitation, ferry, welcome and map integration",
+      "exit": 0
+    },
+    {
+      "name": "Exercise empty Kanto foundation and Surf passage",
+      "exit": 0
+    },
+    {
+      "name": "Kanto challenge progression",
+      "exit": 0
+    },
+    {
+      "name": "Kanto Borrowed Voice progression and Trainer Card badges",
+      "exit": 0
+    },
+    {
+      "name": "Kanto Quiet Current and native wild levels",
+      "exit": 0
+    },
+    {
+      "name": "Three expeditions and the Hoenn weather intermission",
+      "exit": 0
+    },
+    {
+      "name": "Wing Survey finale and native Mew outcomes",
+      "exit": 0
+    },
+    {
+      "name": "Isolated outdoor night lights and native DNS blending",
+      "exit": 0
+    },
+    {
+      "name": "Region map browsing",
+      "exit": 0
+    },
+    {
+      "name": "Exercise prepared battle sheets and wardrobe refresh",
+      "exit": 0
+    },
+    {
+      "name": "Verify Legends project metadata",
+      "exit": 0
+    }
+  ],
+  "builds": {
+    "Debug": {
+      "ROM_sha256": "770d40eedab1c3ac04b0ac37228ed9a38dfe5b8d65cd2ebdd872fa58a968c72e",
+      "ROM_bytes": 33554432,
+      "memory": [
+        [
+          "EWRAM",
+          "254488"
+        ],
+        [
+          "IWRAM",
+          "28376"
+        ],
+        [
+          "ROM",
+          "30698760"
+        ]
+      ]
+    },
+    "Release": {
+      "ROM_sha256": "85b090aed633e652f095aeb3d3bdbebdfe0c4f494b25ea5d8ee5f26224941c26",
+      "ROM_bytes": 33554432,
+      "memory": [
+        [
+          "EWRAM",
+          "254498"
+        ],
+        [
+          "IWRAM",
+          "28328"
+        ],
+        [
+          "ROM",
+          "30850676"
+        ]
+      ]
+    }
+  },
+  "save_impact": {
+    "layout": "Unchanged save structures, capacities, existing identifiers and legacy readers.",
+    "colors": "Rug/bed: reserved 0x405C, signature 0xB400. Original chair color: reserved 0x405F, signature 0xCA00 with 0-6 index. Invalid/legacy/unpublished style values read as Default without writes.",
+    "native_flash": "Real menu color/cancel, chair PC access, actual PC -> Decoration and flash write/clear/load passed. Existing color/doll records survived their round trip.",
+    "limits": "Prepared current fixture, not a complete historical-release matrix or Pizza Boy test."
+  },
+  "patches": {
+    "source_sha1": "f3ae088181bf583e55daf962a92bb46f4f1d07b7",
+    "patches": [
+      {
+        "filename": "Pokemon-Emerald-Legends-v0.0.53.bps",
+        "bytes": 17436947,
+        "sha256": "ec4878a5c66162803ded0f8d04c3240ad5e2db84a1a1179fd4a646ebd7cc7ee3",
+        "target_sha256": "85b090aed633e652f095aeb3d3bdbebdfe0c4f494b25ea5d8ee5f26224941c26",
+        "source_crc32": "1f1c08fb",
+        "target_crc32": "e5dd8f11",
+        "patch_crc32": "ed3839b9",
+        "independent_browser_decoder": true
+      },
+      {
+        "filename": "Pokemon-Emerald-Legends-v0.0.53-debug.bps",
+        "bytes": 17268385,
+        "sha256": "815bda4f48a1b60d3de9db3bee081eb49d76267782127e0c7fce44733e0cc715",
+        "target_sha256": "770d40eedab1c3ac04b0ac37228ed9a38dfe5b8d65cd2ebdd872fa58a968c72e",
+        "source_crc32": "1f1c08fb",
+        "target_crc32": "f9d2d706",
+        "patch_crc32": "656db88e",
+        "independent_browser_decoder": true
+      }
+    ],
+    "also_verified_with_floating_ips": true
+  },
+  "CI_environment_repair": {
+    "initial_run": 38650676950,
+    "cause": "Pillow PNG encoder bytes differed despite identical indexed pixels/palette.",
+    "fix": "PNG determinism compares exact mode, dimensions, indices and full palette; binary/metadata checks remain byte exact.",
+    "reproduced_with_Pillow_11_3_0": true,
+    "focused_check_passed_both_versions": true,
+    "ROM_art_changes": false
+  }
+}

@@ -4,6 +4,14 @@ All notable Pokémon Emerald: Legends project changes are documented here.
 
 For build-specific player views, see [CHANGELOG-RELEASE.md](CHANGELOG-RELEASE.md) and [CHANGELOG-DEBUG.md](CHANGELOG-DEBUG.md). The canonical history below records the project as a whole.
 
+## [0.0.53] - 2026-10-14
+
+- Added evolving bedroom keepsakes and notebook/family memories through the current Kanto finale, using native assets and a Ball Poster beside the preserved wall map.
+- Preserved both consoles and the books beneath the poster, and widened each bedroom rug to the bed's edge.
+- Added independent rug, bed and original PC chair colors through the bedroom PC decoration menu. Retained the original chair shape and removed the unpublished alternate-chair styles.
+- Allowed existing bedroom dolls and cushions on clear floor beyond the rug, with furniture, access routes, saved decorations and Secret Base behavior protected.
+- Preserved save structures, capacities, existing IDs and readers; added validated color choices in unused native variables, with legacy values defaulting without mutation. Changes were shared by Release and Debug.
+
 ## [0.0.52] - 2026-10-14
 
 - Appended fifteen achievements, bringing the total to 95 while preserving the original eighty IDs and the existing save layout.

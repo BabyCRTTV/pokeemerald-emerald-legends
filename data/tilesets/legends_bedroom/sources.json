@@ -1,0 +1,23 @@
+{
+  "source": "Native bedroom and Secret Base art",
+  "objects": {
+    "FLOWERS": 710,
+    "SILVER": 712,
+    "GOLD": 714,
+    "POSTER_MALE": 716,
+    "POSTER_FEMALE": 718,
+    "CHAIR_MALE": 720,
+    "CHAIR_FEMALE": 721
+  },
+  "imported_tiles": 25,
+  "private_palette_slots": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    11,
+    12
+  ],
+  "original_art_unchanged": true
+}

@@ -1,0 +1,8 @@
+// Generated native-asset metatile IDs.
+#define BEDROOM_FLOWERS 0x2C6
+#define BEDROOM_SILVER 0x2C8
+#define BEDROOM_GOLD 0x2CA
+#define BEDROOM_POSTER_MALE 0x2CC
+#define BEDROOM_POSTER_FEMALE 0x2CE
+#define BEDROOM_CHAIR_MALE 0x2D0
+#define BEDROOM_CHAIR_FEMALE 0x2D1

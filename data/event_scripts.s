@@ -1866,3 +1866,5 @@ EventScript_PalletTown_PlayersHouse_2F_TurnOnPC::
 	.include "data/maps/LegendsKanto_PowerPlant/scripts.inc"
 	.include "data/maps/LegendsKanto_Route10_PokemonCenter_1F/scripts.inc"
 .endif
+
+	.include "data/scripts/legends_bedroom.inc"
