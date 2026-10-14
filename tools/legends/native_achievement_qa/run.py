@@ -5,7 +5,7 @@ Run from anywhere: python3 tools/legends/native_achievement_qa/run.py --output /
 Optional --mgba-prefix /path/to/usr for an extracted libmgba development package.
 ARM tools are resolved from PATH. Output contains a private modified ROM: never distribute it.
 """
-import argparse,hashlib,json,os,subprocess
+import argparse,hashlib,json,os,subprocess,re
 from pathlib import Path
 from PIL import Image
 ROOT=Path(__file__).resolve().parents[3]
@@ -47,11 +47,23 @@ def main():
     assert len(set(notice.crop((13,24,130,38)).getdata()))>=3 # Achievement title rendered too.
     animation=[Image.open(out/'field-before.png').resize((480,320),Image.Resampling.NEAREST)]+[Image.open(out/('animation-%02d.png'%i)).resize((480,320),Image.Resampling.NEAREST) for i in range(35)]
     animation[0].save(out/'achievement-unlock-preview.gif',save_all=True,append_images=animation[1:],duration=[800]+[100]*35,loop=0,optimize=False)
+    # Check the exported GIF too, after decoding/compositing its frames.
+    reference=notice.crop((8,8,152,40)).resize((288,64),Image.Resampling.NEAREST)
+    reference_bytes=reference.tobytes();gif_visible=0
+    with Image.open(out/'achievement-unlock-preview.gif') as gif:
+        for frame in range(gif.n_frames):
+            gif.seek(frame);crop=gif.convert('RGB').crop((16,16,304,80));raw=crop.tobytes()
+            equal=sum(a==b for a,b in zip(reference_bytes,raw))
+            if equal>len(raw)*0.6:
+                assert raw==reference_bytes, ('GIF banner corruption',frame)
+                gif_visible+=1
+    assert gif_visible>=20
+    stable_frames=int(re.search(r'Pixel-stable visible banner frames: (\d+)',(out/'emulator.log').read_text())[1])
     sheet=Image.new('RGB',(480,1000),(31,25,38))
     for i,name in enumerate(['unlock-notice','new-achievements','reward-sent']):
         sheet.paste(Image.open(out/(name+'.png')).resize((480,320),Image.Resampling.NEAREST),(0,8+i*336))
     sheet.save(out/'achievement-preview.png')
-    proof={'production_version':(ROOT/'VERSION').read_text().strip(),'state':'Unpublished preview','Debug_ROM_sha256':sha(ROOT/'pokeemerald.gba'),'emulator':'mGBA 0.10.2','captures':captures,'passed':True,'scope':'Private callback prepared a new Oldale Town scene. Actual FlagSet unlocked appended achievement 80; native field code displayed/expired the notice while emulated keys moved the player. Actual 95-entry journal navigation and manual claim were captured. No ROM or BPS was published.','harness_sha256':{f:sha(source/f) for f in ['arm.c','host.c','run.py']}}
+    proof={'production_version':(ROOT/'VERSION').read_text().strip(),'state':'Unpublished preview','Debug_ROM_sha256':sha(ROOT/'pokeemerald.gba'),'emulator':'mGBA 0.10.2','captures':captures,'passed':True,'native_pixel_stable_visible_frames':stable_frames,'gif_pixel_stable_visible_frames':gif_visible,'movement_inputs':['right','down','left','up'],'scope':'Private callback prepared a new Oldale Town scene. Actual FlagSet unlocked appended achievement 80; native field code displayed/expired the notice while emulated keys moved the player. Actual 95-entry journal navigation and manual claim were captured. No ROM or BPS was published.','harness_sha256':{f:sha(source/f) for f in ['arm.c','host.c','run.py']}}
     (out/'verification.json').write_text(json.dumps(proof,indent=2)+'\n')
     print(json.dumps(proof,indent=2))
 

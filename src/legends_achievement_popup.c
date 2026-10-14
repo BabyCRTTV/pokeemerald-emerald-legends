@@ -10,12 +10,13 @@
 #include "text.h"
 #include "map_name_popup.h"
 
-// Private tiles above field windows/frames (through 0x25F); no shared BG scroll,
-// palette change, script lock, input consumption or per-frame journal scan.
+// Field BG0 starts at VRAM 0x8000. Tiles 0x70-0xB7 fit between native
+// counter windows and the day panel, below all map screen blocks (0xE000+).
+// No shared BG scroll, palette change, script lock or input consumption.
 static const struct WindowTemplate sNoticeWindow =
 {
     .bg = 0, .tilemapLeft = 1, .tilemapTop = 1, .width = 18, .height = 4,
-    .paletteNum = 15, .baseBlock = 0x2C0,
+    .paletteNum = 15, .baseBlock = 0x70,
 };
 static const u8 sLabelInk[] = {2, 1, 3};
 static const u8 sTitleInk[] = {1, 2, 3};

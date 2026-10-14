@@ -1,156 +1,156 @@
 {
   "production_version": "0.0.51",
   "state": "Unpublished preview",
-  "Debug_ROM_sha256": "b538ded1bc2899ca2724992860b69031c8faa50472bc5995ec2f647ba81b910c",
+  "Debug_ROM_sha256": "72fc8cc7f1c7ad2d42ef4fb63c082e0250adceb1ec9753a1b6303c5e59b7f5b5",
   "emulator": "mGBA 0.10.2",
   "captures": [
     {
       "name": "animation-00",
-      "sha256": "6984e33dfee705ede9cc069e1e86933bb070e7a8c49aaef197f3c1252a735545"
+      "sha256": "d216e75b9a8e43fcb8ede249cf650b80188c3eae04e30bde7f7c237a86225f21"
     },
     {
       "name": "animation-01",
-      "sha256": "cba9ef601897ec8b3ab1f31cd1f4034c1636e31ac24324b787d75eae9fc7d4d6"
+      "sha256": "d28af1034683df57a4b384a30e625968f5113ea9ef2f7ab17d5e3a99b464f126"
     },
     {
       "name": "animation-02",
-      "sha256": "a0dade2120bb79918baf121d32092be0dc17e47c14903d189696509a8435f385"
+      "sha256": "ed2b90099c054a53a6e133bbf8559823d6f17b6125305b1e31c426bcd5761259"
     },
     {
       "name": "animation-03",
-      "sha256": "4f7773132ee50be2b838cebeb5b0dfdafec27c1e082afafcd7bc211afdc02dca"
+      "sha256": "3d7c2274b592024012e8eaf889bd64e4c3acef14b4171dc1cba83fb0f15148e0"
     },
     {
       "name": "animation-04",
-      "sha256": "de1ad7f2dc362359ff989d9f97e08158982c54f40291b4dfcbabb7d5acae3250"
+      "sha256": "a90a9947c639deae702584c3dd8ec6bb3b87777076f7631a471d686ced6c654f"
     },
     {
       "name": "animation-05",
-      "sha256": "0ffb6ccbed6592e99ad66d2f0ea937efdd5b197d3f297a4aaff6383331945f4c"
+      "sha256": "60b2054157d7d5d7573a4ab412de7bba1a6d6efcb2142ee219f41f271ae298db"
     },
     {
       "name": "animation-06",
-      "sha256": "aae56f77e6754aeac53a5d9320234752bc723b57154d642eaeb49e17b329a65b"
+      "sha256": "4b662451cd1a7823bc99d09b02774368f3461d95dae1af4f0c342157da603078"
     },
     {
       "name": "animation-07",
-      "sha256": "ee6597d4e1df790dc42d2207b68a146ecd34ce8884fd5cbdc6fc746162242f74"
+      "sha256": "0acbb62b2af1f4935aa7ca7b93d20db505cde027f406b4208952c8f5910ead90"
     },
     {
       "name": "animation-08",
-      "sha256": "ee6597d4e1df790dc42d2207b68a146ecd34ce8884fd5cbdc6fc746162242f74"
+      "sha256": "d12603f69f89d166fa5be59a67989dc1293e9a0ed6dc8c942afb124b8d6e4de0"
     },
     {
       "name": "animation-09",
-      "sha256": "ee6597d4e1df790dc42d2207b68a146ecd34ce8884fd5cbdc6fc746162242f74"
+      "sha256": "2942b43baaa7918ac85081fa46110b8d033877ac143730abcd13acaca7bdaf54"
     },
     {
       "name": "animation-10",
-      "sha256": "0cada40e310e60e2f42602d4a02954fda5f1e11e428c3735525a55bfd012e368"
+      "sha256": "d85fb1713a92e9a7e88bece70e2ffc3ae7f9534f78ca0c1b0bc2b6d52d383a69"
     },
     {
       "name": "animation-11",
-      "sha256": "0cada40e310e60e2f42602d4a02954fda5f1e11e428c3735525a55bfd012e368"
+      "sha256": "71a4b431175c4aabe1d3267dcd3c686133d66dbdb66f27c404c4f196cbe0aa99"
     },
     {
       "name": "animation-12",
-      "sha256": "ee6597d4e1df790dc42d2207b68a146ecd34ce8884fd5cbdc6fc746162242f74"
+      "sha256": "9ac100bf9a9ddc7879bccb6425986302ada3ed8884e39f6f217e047e3343c193"
     },
     {
       "name": "animation-13",
-      "sha256": "ee6597d4e1df790dc42d2207b68a146ecd34ce8884fd5cbdc6fc746162242f74"
+      "sha256": "fa61f69fa6914d4e2ea2ac1a5f3e817b7022aa6d60858d06434cfc720a686422"
     },
     {
       "name": "animation-14",
-      "sha256": "ee6597d4e1df790dc42d2207b68a146ecd34ce8884fd5cbdc6fc746162242f74"
+      "sha256": "325017e7382d2f14d90fcc1fe8eaac64acb46ad495d95503d94c22c56c3cd8fa"
     },
     {
       "name": "animation-15",
-      "sha256": "dd5828f70836fc9240de78244eeb6f45295c165b44abc500799b8604dd2f4f41"
+      "sha256": "3ec361e3f8a1b8967fa6bc1a24c8f7aa201c68b6f3ecdca14ec4824dca1acde2"
     },
     {
       "name": "animation-16",
-      "sha256": "dd5828f70836fc9240de78244eeb6f45295c165b44abc500799b8604dd2f4f41"
+      "sha256": "99f7f342176c00b0079ff8cb7cfc670195137b423da11ce1786a075058929a9a"
     },
     {
       "name": "animation-17",
-      "sha256": "dd5828f70836fc9240de78244eeb6f45295c165b44abc500799b8604dd2f4f41"
+      "sha256": "cb9cee6a2cff2d75e7731979dbb3a1401b263a1e5804d8c8020143cd6f14d8d8"
     },
     {
       "name": "animation-18",
-      "sha256": "ee6597d4e1df790dc42d2207b68a146ecd34ce8884fd5cbdc6fc746162242f74"
+      "sha256": "91143dedaf3c9316ee01d05ff195c235395b4d4b383284113d0dae6a90a2d82b"
     },
     {
       "name": "animation-19",
-      "sha256": "ee6597d4e1df790dc42d2207b68a146ecd34ce8884fd5cbdc6fc746162242f74"
+      "sha256": "037419a36f8e99c5fe74571392b697694aadfd82a0347ee003e39df826ae7c56"
     },
     {
       "name": "animation-20",
-      "sha256": "0cada40e310e60e2f42602d4a02954fda5f1e11e428c3735525a55bfd012e368"
+      "sha256": "424d08e941920139ab1600c65c500fb8370e80c6b98e0059084a128ff4768321"
     },
     {
       "name": "animation-21",
-      "sha256": "0cada40e310e60e2f42602d4a02954fda5f1e11e428c3735525a55bfd012e368"
+      "sha256": "a5bcfd437e063a8bfd2caf2a14d52bc25807973b3deba991b6fce6e5fdc9d8f3"
     },
     {
       "name": "animation-22",
-      "sha256": "0cada40e310e60e2f42602d4a02954fda5f1e11e428c3735525a55bfd012e368"
+      "sha256": "4b86db741602a0fa5e292a7932c0b57adc5472588405abd525455f20a7f6ef14"
     },
     {
       "name": "animation-23",
-      "sha256": "ee6597d4e1df790dc42d2207b68a146ecd34ce8884fd5cbdc6fc746162242f74"
+      "sha256": "8332cabd7237383bfdad6abff1385d4df40f3744c07c310cc40c915858007f98"
     },
     {
       "name": "animation-24",
-      "sha256": "ee6597d4e1df790dc42d2207b68a146ecd34ce8884fd5cbdc6fc746162242f74"
+      "sha256": "4f27ceb3cce2ce8d69fd2df159b1dd58c330ce4fe918d5ef6f36110a83ca8463"
     },
     {
       "name": "animation-25",
-      "sha256": "ee6597d4e1df790dc42d2207b68a146ecd34ce8884fd5cbdc6fc746162242f74"
+      "sha256": "fb73757a36dba6c33258c3aad5676a69dace3ac72a3cc05684397a31fa52957e"
     },
     {
       "name": "animation-26",
-      "sha256": "dd5828f70836fc9240de78244eeb6f45295c165b44abc500799b8604dd2f4f41"
+      "sha256": "3ea916a7b1c93e06dd4aa247217708e3a566f26dfcf11478a8a0c3d49413ea1d"
     },
     {
       "name": "animation-27",
-      "sha256": "dd5828f70836fc9240de78244eeb6f45295c165b44abc500799b8604dd2f4f41"
+      "sha256": "7518b3a30a7aad0cc8d641ad86479e6091f0bcfc74d8c4b0cfb69f43e5fe01ee"
     },
     {
       "name": "animation-28",
-      "sha256": "ee6597d4e1df790dc42d2207b68a146ecd34ce8884fd5cbdc6fc746162242f74"
+      "sha256": "ac8e4487570712054087d569063403ed56ad24bd2163ded2a8c0c2cc09d6d808"
     },
     {
       "name": "animation-29",
-      "sha256": "d7c80e3f3e5c1099cf765f289fece73c920429410fbc09f53aa2ab4b7c749fdd"
+      "sha256": "b1eb8e926b337e682846020fb7b78f6030d85c5786c5a668d819673c80ccf7f3"
     },
     {
       "name": "animation-30",
-      "sha256": "d7c80e3f3e5c1099cf765f289fece73c920429410fbc09f53aa2ab4b7c749fdd"
+      "sha256": "4193f55b1bb1bf878ed195af15f977be389ff71797c23ddf7e597826d01a7617"
     },
     {
       "name": "animation-31",
-      "sha256": "884201b204faf6d3254d16972524e63dd6f53243ca9c1595fd1349841b9722e3"
+      "sha256": "c0afc2f3e11091122f53336728a6511efce79d3e342a1d215418a7ffd8935f18"
     },
     {
       "name": "animation-32",
-      "sha256": "884201b204faf6d3254d16972524e63dd6f53243ca9c1595fd1349841b9722e3"
+      "sha256": "c4f43d1f858e23b68848d8292e3353f175c56c081fbc3d39b35529fa76df0ce6"
     },
     {
       "name": "animation-33",
-      "sha256": "884201b204faf6d3254d16972524e63dd6f53243ca9c1595fd1349841b9722e3"
+      "sha256": "48bfb7825a2900ed25e0eeaee7b61b58484c1697023d1767a3f8a1d0a62e4e60"
     },
     {
       "name": "animation-34",
-      "sha256": "d7c80e3f3e5c1099cf765f289fece73c920429410fbc09f53aa2ab4b7c749fdd"
+      "sha256": "eb30e6cc0eb47aeee45f6332def70dc0066c49269762b3e0f6d69336e5613ce4"
     },
     {
       "name": "field-after",
-      "sha256": "d7c80e3f3e5c1099cf765f289fece73c920429410fbc09f53aa2ab4b7c749fdd"
+      "sha256": "6016d2924b085b1f25353832738304eb5b4434d1ceab216e4d1f2133f92f9af9"
     },
     {
       "name": "field-before",
-      "sha256": "a47a8c2a8473f997354d97f4490c4ddf445c6cd3bdb1bdbbe339459be77a4ba2"
+      "sha256": "76af7e67c9fb9a14f699acf4673d1338e3f09fe3eea1bdfe9be4c018d8692497"
     },
     {
       "name": "manual-claim",
@@ -170,17 +170,25 @@
     },
     {
       "name": "unlock-notice",
-      "sha256": "6984e33dfee705ede9cc069e1e86933bb070e7a8c49aaef197f3c1252a735545"
+      "sha256": "4672d046e90975601ec53dc8bf57833203a0f934cc591e4c591cffe60770aadf"
     }
   ],
   "passed": true,
+  "native_pixel_stable_visible_frames": 172,
+  "gif_pixel_stable_visible_frames": 29,
+  "movement_inputs": [
+    "right",
+    "down",
+    "left",
+    "up"
+  ],
   "scope": "Private callback prepared a new Oldale Town scene. Actual FlagSet unlocked appended achievement 80; native field code displayed/expired the notice while emulated keys moved the player. Actual 95-entry journal navigation and manual claim were captured. No ROM or BPS was published.",
   "harness_sha256": {
     "arm.c": "c5871dd9cbec7be27a3735ac802a979d12cd1f77227f66238265ddd26b2adf89",
-    "host.c": "e741fc30b6164e8c884917be1f6ee2eb9136d9142132ee9ba60d49554ebe4edb",
-    "run.py": "70146909694d2a7fd593795b77a8e76375e54db3294bff2c328206b2eae5c5eb"
+    "host.c": "9a2d582463968600279d58741a487fb710bef04ec2a77ba7321844eb613d3fd2",
+    "run.py": "5f9b2efb6dad4cd534640ccfe5ae7f33762777afdb4a1b0808fc939187718c74"
   },
-  "Release_ROM_sha256": "52cb11152b482783a6ce531653c7625854928037644fc958e1c60b86530cb775",
+  "Release_ROM_sha256": "724fe8a989018ca7d5a4cb4aeafe910424db42301b2553aa482d118532535065",
   "local_RAM": {
     "Debug": {
       "EWRAM": 254492,
@@ -194,8 +202,11 @@
   },
   "save_layout_bytes": 36,
   "reserved_achievement_capacity": 96,
+  "previous_preview_commit": "ec2a97cb4c3bb48efbfce6e12ab1b83d2f9732d9",
+  "fix": "Moved the unchanged 144x32 panel from BG0 tile 0x2C0 to 0x70, avoiding screen block 28 at VRAM 0xE000.",
+  "old_allocation_rejected_by_new_VRAM_bound": true,
   "preview_sha256": {
-    "achievement-preview.png": "a1d5ee9240847b2045653c4ee0973eb1654276074115fc4408a8ebc346ed181c",
-    "achievement-unlock-preview.gif": "e352856158aff14b9464388db7b7831917b19ee1db9205343d9de1d72ce16b65"
+    "achievement-preview-v2.png": "c5f9128977547d9bc68fa86c34d2e21384bac3a3385f7c8f35466b2ede410754",
+    "achievement-unlock-preview-v2.gif": "7082f4c690d5b36a5e2cc02472ce54772d70d10423fa1c0c2ce3d3ae1362b84b"
   }
 }

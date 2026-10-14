@@ -6,6 +6,7 @@
 #include <fcntl.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 static struct mCore *c;
 static color_t *video;
 static unsigned selected, top, detail;
@@ -45,15 +46,28 @@ int main(int argc, char **argv)
     assert(c->busRead8(c,noticeWindow)!=0);
     capture(argv[2], "unlock-notice");
     unsigned position=c->busRead32(c,0x0203fc10),before=c->busRead32(c,position);
+    color_t panel[144*32];
+    for(int y=0;y<32;y++)memcpy(panel+y*144,video+(8+y)*240+8,144*sizeof(color_t));
+    unsigned stableFrames=0,moved=0;
     c->setKeys(c, 16);
     for(int i=0;i<210;i++){
         c->runFrame(c);
+        if(c->busRead8(c,noticeWindow)){
+            for(int y=0;y<32;y++)assert(!memcmp(panel+y*144,video+(8+y)*240+8,144*sizeof(color_t)));
+            stableFrames++;
+        }
         if(i%6==0){char name[64];snprintf(name,sizeof(name),"animation-%02d",i/6);capture(argv[2],name);}
-        if(i==29)c->setKeys(c,0);
+        if(c->busRead32(c,position)!=before)moved=1;
+        if(i==23)c->setKeys(c,128);
+        if(i==47)c->setKeys(c,32);
+        if(i==71)c->setKeys(c,64);
+        if(i==95)c->setKeys(c,0);
         if(i==60)assert(c->busRead8(c,noticeWindow)!=0);
     }
-    assert(c->busRead32(c,position)!=before);
+    assert(moved);
     assert(c->busRead8(c,noticeWindow)==0);
+    assert(stableFrames>=150);
+    printf("Pixel-stable visible banner frames: %u (movement included).\n",stableFrames);
     capture(argv[2], "field-after");
     c->busWrite32(c, 0x0203fc00, 2); c->busWrite32(c, mainAddr + 4, 0x09f80001); frames(90);
     for(int i=0;i<13;i++)key(256);key(128);key(128);state(80,75,0);

@@ -1,6 +1,9 @@
 """Compile real nonblocking achievement field notice lifecycle."""
 from pathlib import Path
-import subprocess,tempfile
+import subprocess,tempfile,re
+field=(Path(__file__).resolve().parents[1]/'src/overworld.c').read_text().split('sOverworldBgTemplates[] =')[1].split('};',1)[0]
+charbase=int(re.search(r'\.bg = 0,.*?\.charBaseIndex = (\d+)',field,re.S)[1])
+screenbase=min(map(int,re.findall(r'\.mapBaseIndex = (\d+)',field)))
 R=Path(__file__).resolve().parents[1]
 source='\n'.join(l for l in (R/'src/legends_achievement_popup.c').read_text().splitlines() if not l.startswith('#include'))
 stubs=r'''
@@ -33,7 +36,14 @@ int IsMapNamePopupActive(void){return mapPopup;}
 u16 LegendsAchievementNotice(void){return next<3?pending[next]:0xFFFF;}
 void LegendsAchievementNoticeDismiss(u16 id){assert(id==pending[next++]);dismissed++;}
 const struct A *LegendsAchievementGet(u16 id){return &achievement;}
-u8 AddWindow(const struct WindowTemplate *t){assert(t->tilemapLeft==1&&t->tilemapTop==1&&t->baseBlock>=0x260&&t->baseBlock+t->width*t->height<1024);if(fail)return 255;assert(!windows);windows++;shown++;return 2;}
+u8 AddWindow(const struct WindowTemplate *t){
+ assert(t->tilemapLeft==1&&t->tilemapTop==1);
+ unsigned begin=t->baseBlock,end=begin+t->width*t->height;
+ // The field uses char block 2 for UI and screen blocks 28-31 for maps.
+ assert(OVERWORLD_UI_CHAR_BASE*0x4000+end*32<=OVERWORLD_FIRST_SCREEN_BASE*0x800);
+ // Live native counters, day panel, map banner, menus, frames and help tiles.
+ const unsigned occupied[][2]={{0,0x40},{0xB8,0x100},{0x107,0x125},{0x125,0x139},{0x139,0x211},{0x214,0x23D},{0x250,0x2BC}};
+ for(unsigned i=0;i<sizeof(occupied)/sizeof(occupied[0]);i++)assert(end<=occupied[i][0]||begin>=occupied[i][1]);if(fail)return 255;assert(!windows);windows++;shown++;return 2;}
 void RemoveWindow(u8 id){assert(id==2&&windows);windows--;}
 void ClearWindowTilemap(u8 id){assert(id==2);cleared++;}
 void FillWindowPixelBuffer(u8 id,int fill){assert(id==2);}
@@ -64,6 +74,6 @@ int main(void){
 }
 '''
 with tempfile.TemporaryDirectory() as d:
- p=Path(d);(p/'popup.c').write_text(stubs+source+main)
+ p=Path(d);(p/'popup.c').write_text('#define OVERWORLD_UI_CHAR_BASE %d\n#define OVERWORLD_FIRST_SCREEN_BASE %d\n'%(charbase,screenbase)+stubs+source+main)
  subprocess.run(['cc','-std=gnu11','-Wall','-Wextra','-Wno-unused-parameter','-Wno-misleading-indentation','-Werror',str(p/'popup.c'),'-o',str(p/'popup')],check=True)
  subprocess.run([str(p/'popup')],check=True)

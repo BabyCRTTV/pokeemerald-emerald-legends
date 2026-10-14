@@ -1,5 +1,5 @@
 {
-  "state": "Unpublished preview",
+  "state": "Unpublished corrected preview",
   "checks": [
     {
       "name": "Exercise browser patcher regression tests",
@@ -187,9 +187,9 @@
     }
   ],
   "additional_latest_checks": [
-    "Journal legacy-bit backfill and one-time claims",
-    "Notice lifetime/deferral/cleanup",
-    "Journal success-popup expiration"
+    "Original 0x2C0 placement rejected by the physical VRAM bound",
+    "All 172 visible native banner frames pixel-identical with four-direction movement",
+    "Decoded/composited GIF banner frames pixel-identical"
   ],
   "passed": true
 }

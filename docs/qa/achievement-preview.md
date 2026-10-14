@@ -13,7 +13,7 @@ Production remains **v0.0.51**. The owner explicitly requested a preview before 
 
 The serialized journal remains version 1 and exactly **36 bytes**, with earned/claimed offsets 12/24 and the existing 96-bit capacity. No capacity, layout, persistent IDs, old readers or initialization signatures changed. Older saves preserve the first eighty earned/claimed bits. New goals use existing flags/stats/Dex data; already completed goals backfill quietly, remain unclaimed, and never auto-grant berries or flood Continue with old unlock banners. Reserved slot 95 remains available; exceeding 96 requires a separate compatibility design.
 
-Only 24 bytes of static EWRAM were added. The panel allocates 2304 bytes temporarily while visible. Its BG0 tiles occupy 0x2C0–0x307, above the existing field help window (ending before 0x2C0), pause windows and standard text/frame tiles. It reuses field palette 15; no new per-frame progress scan, palette, task, save migration or client patching step was introduced.
+Only 24 bytes of static EWRAM were added. The panel allocates 2304 bytes temporarily while visible. Its BG0 tiles occupy **0x70–0xB7**, between native counter windows and the day panel, with no overlap with help, menus, frames or map screen blocks. Physical VRAM is **0x8E00–0x96FF**; the first map screen block starts at 0xE000. It reuses field palette 15; no new per-frame progress scan, palette, task, save migration or client patching step was introduced.
 
 ## Verification and preview
 
@@ -22,7 +22,15 @@ Only 24 bytes of static EWRAM were added. The panel allocates 2304 bytes tempora
 - Backend tests pinned the original eighty definitions and journal layout; exercised all fifteen new thresholds, one-time notices, old-save quiet backfill, repeated initialization, manual claims, full-PC retries and duplicate-claim prevention. Renderer tests covered all 95 titles, selected-row colors/navigation and success-popup expiration. All titles fit the compact field panel with native font widths.
 - Notice lifecycle tests compiled the actual C and checked every deferral gate, allocation failure, interruption/resume, all queued notices, lifetime/gap and cleanup. They provide no lock/input setters, ensuring the notice cannot consume gameplay controls.
 - Controlled **mGBA 0.10.2** setup entered an actual Oldale Town field scene. The real FlagSet hook unlocked new ID 80; the new native field code displayed its title while emulated movement changed the saved player position. Native window-state assertions verified visibility and automatic dismissal. Actual journal tasks navigated all 95 entries and manually claimed ID 80; the claimed save bit changed only after the claim. The three-second confirmation and later claimed status were captured.
-- [Phone-friendly PNG](achievement-preview.png) and [animated native field preview](achievement-unlock-preview.gif) were rendered from actual emulator video; scene setup was diagnostic, not an ordinary story playthrough. No full ROM or BPS was distributed. General story playtests and historical battery-save matrices remain outside this preview.
+- [Phone-friendly PNG](achievement-preview-v2.png) and [animated native field preview](achievement-unlock-preview-v2.gif) were rendered from actual emulator video; scene setup was diagnostic, not an ordinary story playthrough. No full ROM or BPS was distributed. General story playtests and historical battery-save matrices remain outside this preview.
+
+## Moving-banner corruption — corrected after owner review
+
+The owner noticed colored artifacts at the lower right of the banner as soon as the player moved in the first GIF. This was **real native VRAM corruption**, also present in raw emulator frames, not GIF compression. The initial checks verified the still banner, movement and lifetime but missed pixel stability during movement.
+
+Field BG0 uses character block 2 (0x8000), while the map uses screen blocks 28–31 (starting at 0xE000). The old 0x2C0 allocation for 72 tiles spanned 0xD800–0xE0FF: its final eight tiles overlapped screen block 28. Camera map copies overwrote those tiles. Moving the unchanged panel to 0x70–0xB7 places all tiles at 0x8E00–0x96FF in the free gap below the day panel. Panel size, location, colors, font, text, timing and queue/claim behavior remained unchanged. RAM, save data and the approved artwork remained unchanged.
+
+The host lifecycle test now derives UI character/screen block positions from the actual overworld templates and checks physical VRAM bounds and disjoint field allocations. It rejects the old 0x2C0 placement. The mGBA harness compares **every panel pixel on every visible frame** while driving right/down/left/up, and still checks movement, automatic dismissal and manual claims. **All 172 visible frames matched exactly.** The GIF is then decoded/composited and all detected visible-banner frames are compared pixel-for-pixel to the native reference, so export artifacts are also caught. Both corrected native builds passed; updated screenshots/GIF and receipts replace the first preview.
 
 ## Approval and next steps
 
