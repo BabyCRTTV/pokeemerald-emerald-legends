@@ -1,0 +1,138 @@
+{
+  "version": "0.0.53",
+  "state": "Published and verified",
+  "owner_approval": "Original chair color controls only; publication authorized after alternate chair removal. Corrected poster explicitly accepted.",
+  "PR": "https://github.com/BabyCRTTV/pokeemerald-emerald-legends/pull/68",
+  "source_head": "ceb92c5638e7f58fe2d3fb46f86f62a315f9ec43",
+  "merge_commit": "c9fd40c9b9d8eefbd8134caf2ba0ef35a6b4fd11",
+  "patch_commit": "a628498ac6759acc3ba09e45fe8aba31c3a803aa",
+  "Actions": {
+    "PR_project_checks": {
+      "id": 38650982371,
+      "conclusion": "success"
+    },
+    "PR_builds_and_BPS": {
+      "id": 38650982379,
+      "conclusion": "success"
+    },
+    "merged_project_checks": {
+      "id": 38651162746,
+      "conclusion": "success"
+    },
+    "merged_builds_and_BPS": {
+      "id": 38651162729,
+      "conclusion": "success"
+    },
+    "patch_Pages": {
+      "id": 38652190333,
+      "conclusion": "success"
+    }
+  },
+  "website": {
+    "version": "0.0.53",
+    "site": "https://babycrttv.github.io/pokeemerald-emerald-legends/",
+    "files": [
+      {
+        "path": "index.html",
+        "http_status": 200,
+        "bytes": 6560,
+        "sha256": "7f9527f133aff837f36c256ae56df69c1de5a40ea352e0e424e6314cb2da4dde",
+        "matches_committed_bytes": true
+      },
+      {
+        "path": "changelog.html",
+        "http_status": 200,
+        "bytes": 96940,
+        "sha256": "aa3d2f0d729b6bd265581f3e3a67c6fedf776906a03ce0f450de3f2e6079d557",
+        "matches_committed_bytes": true
+      },
+      {
+        "path": "patcher.html",
+        "http_status": 200,
+        "bytes": 2508,
+        "sha256": "a3accf52cfe86263a24e2e861babf3854e2e39f74470a7a92bd65b344cba323f",
+        "matches_committed_bytes": true
+      },
+      {
+        "path": "patcher.js",
+        "http_status": 200,
+        "bytes": 9201,
+        "sha256": "2a603060cab741a1011ccf3025f73406defe127bc041df86aba7f73add24aecd",
+        "matches_committed_bytes": true
+      },
+      {
+        "path": "bedroom-guide.html",
+        "http_status": 200,
+        "bytes": 2611,
+        "sha256": "8b31f1ca4258287d248bc47e50b37e6507e445aacf3876b0d40d1e5f23d1b5bd",
+        "matches_committed_bytes": true
+      },
+      {
+        "path": "qa/bedroom-native-chair-colors.png",
+        "http_status": 200,
+        "bytes": 25895,
+        "sha256": "9381cf43a6a99ee489ef7cf5687472aaf02af01879a18c6259e109ac0c3f2788",
+        "matches_committed_bytes": true
+      },
+      {
+        "path": "qa/bedroom-native-menu.png",
+        "http_status": 200,
+        "bytes": 26091,
+        "sha256": "ac8b5430bd25fe07f47a3c0a5928c1263f69bd708cc85561c6c55bce844e15b8",
+        "matches_committed_bytes": true
+      },
+      {
+        "path": "downloads/SHA256SUMS.txt",
+        "http_status": 200,
+        "bytes": 412,
+        "sha256": "cba30b2a2095e8cb8cb6c23cec0c9c786fcd32ae20eba3c88ba589ebe5cd49e8",
+        "matches_committed_bytes": true
+      },
+      {
+        "path": "downloads/Pokemon-Emerald-Legends-v0.0.53.bps",
+        "http_status": 200,
+        "bytes": 17436947,
+        "sha256": "ec4878a5c66162803ded0f8d04c3240ad5e2db84a1a1179fd4a646ebd7cc7ee3",
+        "matches_committed_bytes": true
+      },
+      {
+        "path": "downloads/Pokemon-Emerald-Legends-v0.0.53-debug.bps",
+        "http_status": 200,
+        "bytes": 17268385,
+        "sha256": "815bda4f48a1b60d3de9db3bee081eb49d76267782127e0c7fce44733e0cc715",
+        "matches_committed_bytes": true
+      }
+    ]
+  },
+  "downloaded_patch_application": {
+    "source_sha1": "f3ae088181bf583e55daf962a92bb46f4f1d07b7",
+    "patches": [
+      {
+        "filename": "downloads_Pokemon-Emerald-Legends-v0.0.53.bps",
+        "bytes": 17436947,
+        "sha256": "ec4878a5c66162803ded0f8d04c3240ad5e2db84a1a1179fd4a646ebd7cc7ee3",
+        "target_sha256": "85b090aed633e652f095aeb3d3bdbebdfe0c4f494b25ea5d8ee5f26224941c26",
+        "source_crc32": "1f1c08fb",
+        "target_crc32": "e5dd8f11",
+        "patch_crc32": "ed3839b9",
+        "independent_browser_decoder": true
+      },
+      {
+        "filename": "downloads_Pokemon-Emerald-Legends-v0.0.53-debug.bps",
+        "bytes": 17268385,
+        "sha256": "815bda4f48a1b60d3de9db3bee081eb49d76267782127e0c7fce44733e0cc715",
+        "target_sha256": "770d40eedab1c3ac04b0ac37228ed9a38dfe5b8d65cd2ebdd872fa58a968c72e",
+        "source_crc32": "1f1c08fb",
+        "target_crc32": "f9d2d706",
+        "patch_crc32": "656db88e",
+        "independent_browser_decoder": true
+      }
+    ]
+  },
+  "local_and_CI_hashes_match": true,
+  "patch_growth_bytes": {
+    "Release": 6033,
+    "Debug": 5700
+  },
+  "limits": "Prepared native flash fixture, not complete historical saves or Pizza Boy playtesting. No serialized layouts, capacities, published identifiers or readers changed."
+}

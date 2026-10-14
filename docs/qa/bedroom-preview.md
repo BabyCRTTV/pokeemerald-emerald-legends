@@ -1,6 +1,6 @@
 # Evolving bedroom — v0.0.53 verification
 
-The owner approved publication on 14 October 2026 after requesting removal of alternate chair styles in favor of color changes to the original chair: “You can publish after the removal of chair changes other than color.” The corrected poster was explicitly accepted. The alternate native chair shapes from the prior unpublished preview were removed before release. Publication results are recorded separately; this document describes the verified implementation.
+The owner approved publication on 14 October 2026 after requesting removal of alternate chair styles in favor of color changes to the original chair: “You can publish after the removal of chair changes other than color.” The corrected poster was explicitly accepted. The alternate native chair shapes from the prior unpublished preview were removed before release. Publication completed and both live patches were verified: [public release receipt](bedroom-v0.0.53-public.json). This document describes the verified implementation.
 
 ## Native captures
 
