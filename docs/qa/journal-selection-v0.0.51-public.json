@@ -1,0 +1,67 @@
+{
+  "public_patches": [
+    {
+      "variant": "Release",
+      "filename": "Pokemon-Emerald-Legends-v0.0.51.bps",
+      "http": 200,
+      "bytes": 17428639,
+      "sha256": "fe04fac104afdf9397a25e5c002eade133af3011b35256af91437cdff8489e23",
+      "source_crc32": "1f1c08fb",
+      "target_crc32": "21762e67",
+      "patch_crc_verified": true,
+      "target_sha256": "4187e57fee17ec1987470c355114814fc2da80640eecfa61b4eadb3bcd5f73c1",
+      "matched_local_ROM": true,
+      "BPS_size_delta_from_v50": -906
+    },
+    {
+      "variant": "Debug",
+      "filename": "Pokemon-Emerald-Legends-v0.0.51-debug.bps",
+      "http": 200,
+      "bytes": 17261391,
+      "sha256": "398789aea9f6ec3213c73cad69f803865560f15354a9c5d5335761378fe6cf32",
+      "source_crc32": "1f1c08fb",
+      "target_crc32": "fd4c785c",
+      "patch_crc_verified": true,
+      "target_sha256": "d991f3fe540b798c4e4d86ecc42387ac17b40d71ebcf58166e431b24cae1cc6f",
+      "matched_local_ROM": true,
+      "BPS_size_delta_from_v50": -504
+    }
+  ],
+  "public_pages": [
+    {
+      "path": "index.html",
+      "http": 200,
+      "sha256": "58bf40763b62a8c37c53375e81e9ceea5154b46632ca2f98acee11210813ae8b",
+      "bytes": 6463
+    },
+    {
+      "path": "changelog.html",
+      "http": 200,
+      "sha256": "3450535bc76a2029ca9ea6d772895c11cc934c58ee50ad2622dcb2859ca16aaf",
+      "bytes": 94332
+    },
+    {
+      "path": "patcher.html",
+      "http": 200,
+      "sha256": "09202913aeb6758be9087f72176c97d0c8efe0daed768222e51cdd68d4999c15",
+      "bytes": 2508
+    },
+    {
+      "path": "patcher.js",
+      "http": 200,
+      "sha256": "14701d2bfa4765962880661b7d751ca5f39030db59f96a2707dd2fc6019e3a1c",
+      "bytes": 9201
+    },
+    {
+      "path": "qa/journal-selection-v0.0.51.png",
+      "http": 200,
+      "sha256": "a6c4c0d2ca2352e5c9c1b05c2e019eec32d364754cb84774bdd385c03d4ff121",
+      "bytes": 9068
+    }
+  ],
+  "source_commit": "da2a9572eecd3b9989a6f00f54bc514549e46de0",
+  "patch_commit": "ff8533bcee9ec19068eabb091ae89fd83bd4a7bc",
+  "source_checks_run": 38604169624,
+  "native_build_and_BPS_run": 38604169555,
+  "patch_Pages_run": 38605550314
+}

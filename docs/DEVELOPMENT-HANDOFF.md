@@ -10,11 +10,13 @@ The owner uses a phone. Provide narrow vertical PNG/GIF previews and explicit do
 
 On 14 October 2026 the owner reversed the earlier permission to ignore older saves. Backward compatibility for Legends battery saves is now required for future updates. Preserve existing save readers, field offsets and persistent IDs; add focused migrations/tests when saved data changes. [Save-compatibility policy and evidence](SAVE-COMPATIBILITY.md) defines the release gate without adding duplicate builds or per-patch full emulator runs. Existing checks pass; a complete historical-release save-fixture matrix remains unfinished and must not be represented as verified.
 
-## Current version — 0.0.51 (source milestone; publication verification pending)
+## Current version — 0.0.51 (published and verified)
 
 The owner requested removal of the duplicate Adventure Log from pause-menu page two and a clear hovered quest. Page one retains Adventure Log; page two contains Quest Log, Achievements and Exit. The journal now uses a dark plum band, cream text with matching background, and a separate pointer, including Achievements/claimed markers. Existing checkboxes, inputs, scrolling, filters, details, claims and action IDs remain intact. No artwork or serialized/save data changed; no migration is required.
 
-All 45 executable project checks and native GCC 13.2.1 Debug/Release builds passed locally. RAM is unchanged; ROM grew only 68/84 bytes. Eight actual mGBA screens verified native list navigation, scroll/detail/back/filter state and claimed selection. [Scope, reproducible harness, preview and receipts](qa/journal-selection-v0.0.51.md). Remote source checks/build/BPS and live downloads remain pending until explicitly recorded below. Do not claim this source milestone alone is a published patch.
+All 45 executable project checks and native GCC 13.2.1 Debug/Release builds passed locally. RAM is unchanged; ROM grew only 68/84 bytes. Eight actual mGBA screens verified native list navigation, scroll/detail/back/filter state and claimed selection. [Scope, reproducible harness, preview and receipts](qa/journal-selection-v0.0.51.md). Source `da2a9572eecd3b9989a6f00f54bc514549e46de0` passed [project checks 38604169624](https://github.com/BabyCRTTV/pokeemerald-emerald-legends/actions/runs/38604169624) and [native builds/independent clean-base BPS round trips 38604169555](https://github.com/BabyCRTTV/pokeemerald-emerald-legends/actions/runs/38604169555). Both CI target hashes matched local native builds.
+
+Patch commit `ff8533bcee9ec19068eabb091ae89fd83bd4a7bc` and [Pages 38605550314](https://github.com/BabyCRTTV/pokeemerald-emerald-legends/actions/runs/38605550314) succeeded. Both live Release/Debug patches returned 200, matched committed SHA256 values, source/target/patch CRCs and local ROM hashes. Homepage/changelog/patcher/preview matched committed bytes. BPS sizes decreased 906/504 bytes. [Public verification receipts](qa/journal-selection-v0.0.51-public.json). No hosting blocker remains; active Pages finished before this documentation update.
 
 ## Previous version — 0.0.50 (published and verified)
 
