@@ -2,6 +2,13 @@
 
 This is the player-facing history for the recommended **Release** build. Shared Legends changes are repeated here so this file stands on its own; Release-only behavior is called out separately.
 
+## Unreleased — bedroom preview (awaiting owner review)
+
+- Added C2 bedroom keepsakes and home memories through the current Kanto finale, using native assets and a Ball Poster beside the preserved wall map.
+- Extended each bedroom rug to the bed's edge and added independent rug/bed colors to the bedroom decoration menu.
+- Allowed existing bedroom dolls and cushions on clear floor beyond the rug, with furniture, access routes, saved decorations and Secret Base behavior protected.
+- Retained the existing save layout and added signed color choices in an unused native variable. Verification and unpublished native previews were recorded in `docs/qa/bedroom-preview.md`.
+
 ## [0.0.52] - 2026-10-14
 
 - Appended fifteen achievements, bringing the total to 95 while preserving the original eighty IDs and the existing save layout.

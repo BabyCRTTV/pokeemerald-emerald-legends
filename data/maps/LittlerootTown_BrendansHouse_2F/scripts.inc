@@ -1,6 +1,7 @@
 LittlerootTown_BrendansHouse_2F_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, LittlerootTown_BrendansHouse_2F_OnTransition
 	map_script MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE, LittlerootTown_BrendansHouse_2F_OnWarp
+	map_script MAP_SCRIPT_ON_LOAD, LegendsBedroom_OnLoad
 	.byte 0
 
 LittlerootTown_BrendansHouse_2F_OnTransition:
@@ -262,8 +263,7 @@ LittlerootTown_BrendansHouse_2F_EventScript_CheckRivalsPC::
 	end
 
 PlayersHouse_2F_EventScript_Notebook::
-	msgbox PlayersHouse_2F_Text_Notebook, MSGBOX_SIGN
-	end
+	goto LegendsBedroom_Notebook
 
 PlayersHouse_2F_EventScript_GameCube::
 	msgbox PlayersHouse_2F_Text_ItsAGameCube, MSGBOX_SIGN
@@ -289,7 +289,7 @@ PlayersHouse_2F_Text_Notebook:
 	.string "Open the MENU with START.\p"
 	.string "ADVENTURE RULE NO. 2\n"
 	.string "Record your progress with SAVE.\p"
-	.string "The remaining pages are blank…$"
+	.string "There is room for more memories!$"
 
 Common_Text_LookCloserAtMap:
 	.string "{PLAYER} took a closer look at the\n"

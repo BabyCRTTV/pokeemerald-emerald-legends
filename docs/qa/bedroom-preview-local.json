@@ -1,0 +1,245 @@
+{
+  "state": "Unpublished C2 implementation preview; pending owner visual review",
+  "base_master": "ed88772110e0952c9e9c3887f1345ecabd4429c0",
+  "design_base": "f52fbaa34c43f5f4cb133cfb12a386b21169d899",
+  "VERSION": "0.0.52",
+  "checks": [
+    {
+      "name": "Exercise browser patcher regression tests",
+      "exit": 0
+    },
+    {
+      "name": "Exercise seasonal engine regression tests",
+      "exit": 0
+    },
+    {
+      "name": "Exercise seasonal battle scenes and Kanto foliage",
+      "exit": 0
+    },
+    {
+      "name": "Exercise dynamic weather regression tests",
+      "exit": 0
+    },
+    {
+      "name": "Exercise starter and rival regression tests",
+      "exit": 0
+    },
+    {
+      "name": "Exercise Options navigation regression tests",
+      "exit": 0
+    },
+    {
+      "name": "Exercise Options text regression tests",
+      "exit": 0
+    },
+    {
+      "name": "Exercise New Game Options regression tests",
+      "exit": 0
+    },
+    {
+      "name": "Exercise native follower regression tests",
+      "exit": 0
+    },
+    {
+      "name": "Exercise upstream held-item integration",
+      "exit": 0
+    },
+    {
+      "name": "Exercise first-item history and compatible save sectors",
+      "exit": 0
+    },
+    {
+      "name": "Exercise quest progression and achievement claims",
+      "exit": 0
+    },
+    {
+      "name": "Achievement notice lifecycle",
+      "exit": 0
+    },
+    {
+      "name": "Journal selection rendering and input",
+      "exit": 0
+    },
+    {
+      "name": "Exercise lossless expanded storage codec",
+      "exit": 0
+    },
+    {
+      "name": "Exercise pause panel regression tests",
+      "exit": 0
+    },
+    {
+      "name": "Exercise Adventure Log persistence, days and milestones",
+      "exit": 0
+    },
+    {
+      "name": "Exercise Adventure Log notebook and filters",
+      "exit": 0
+    },
+    {
+      "name": "Exercise scrolling pause menu",
+      "exit": 0
+    },
+    {
+      "name": "Exercise real/manual clocks and saved fallback",
+      "exit": 0
+    },
+    {
+      "name": "Exercise DexNav encounter proximity and approach rules",
+      "exit": 0
+    },
+    {
+      "name": "Exercise player appearance regression tests",
+      "exit": 0
+    },
+    {
+      "name": "Exercise visual polish regression tests",
+      "exit": 0
+    },
+    {
+      "name": "Verify player appearance art",
+      "exit": 0
+    },
+    {
+      "name": "Verify native window frame assets and selection",
+      "exit": 0
+    },
+    {
+      "name": "Verify native hair / coat 4bpp layer geometry",
+      "exit": 0
+    },
+    {
+      "name": "Verify footwear compositor and protected sprite colors",
+      "exit": 0
+    },
+    {
+      "name": "Verify v0.0.46 artwork and isolated smile/body colors",
+      "exit": 0
+    },
+    {
+      "name": "Verify approved Side Part head and native animation frames",
+      "exit": 0
+    },
+    {
+      "name": "Verify approved front-face shading and unchanged other views",
+      "exit": 0
+    },
+    {
+      "name": "Verify approved parent skin tones and palette isolation",
+      "exit": 0
+    },
+    {
+      "name": "Exercise scrolling intro hairstyles",
+      "exit": 0
+    },
+    {
+      "name": "Bedroom colors, memories and safe floor decoration",
+      "exit": 0
+    },
+    {
+      "name": "Exercise wardrobe navigation and access",
+      "exit": 0
+    },
+    {
+      "name": "Verify layered accessories and wardrobe furniture",
+      "exit": 0
+    },
+    {
+      "name": "Verify native costume assets and striped Sport shorts",
+      "exit": 0
+    },
+    {
+      "name": "Exercise Da Bug gift and species integration",
+      "exit": 0
+    },
+    {
+      "name": "Exercise Kanto invitation, ferry, welcome and map integration",
+      "exit": 0
+    },
+    {
+      "name": "Exercise empty Kanto foundation and Surf passage",
+      "exit": 0
+    },
+    {
+      "name": "Kanto challenge progression",
+      "exit": 0
+    },
+    {
+      "name": "Kanto Borrowed Voice progression and Trainer Card badges",
+      "exit": 0
+    },
+    {
+      "name": "Kanto Quiet Current and native wild levels",
+      "exit": 0
+    },
+    {
+      "name": "Three expeditions and the Hoenn weather intermission",
+      "exit": 0
+    },
+    {
+      "name": "Wing Survey finale and native Mew outcomes",
+      "exit": 0
+    },
+    {
+      "name": "Isolated outdoor night lights and native DNS blending",
+      "exit": 0
+    },
+    {
+      "name": "Region map browsing",
+      "exit": 0
+    },
+    {
+      "name": "Exercise prepared battle sheets and wardrobe refresh",
+      "exit": 0
+    },
+    {
+      "name": "Verify Legends project metadata",
+      "exit": 0
+    }
+  ],
+  "additional_final_check": "Final full 48-block workflow passed, including large saved-doll footprints and blocked-route regression; final native replay passed.",
+  "builds": {
+    "Debug": {
+      "ROM_sha256": "128142ffd55e05f5760bcc8b456584896e88d6c7f2fc89dff7cdce085a25d79a",
+      "ROM_bytes": 33554432,
+      "memory": [
+        [
+          "EWRAM",
+          "254488"
+        ],
+        [
+          "IWRAM",
+          "28376"
+        ],
+        [
+          "ROM",
+          "30698136"
+        ]
+      ]
+    },
+    "Release": {
+      "ROM_sha256": "523aaa85ea8fa01fcfb0164d5e2fc3e883339d3881188b6857d0dd6e26c8d586",
+      "ROM_bytes": 33554432,
+      "memory": [
+        [
+          "EWRAM",
+          "254498"
+        ],
+        [
+          "IWRAM",
+          "28328"
+        ],
+        [
+          "ROM",
+          "30849732"
+        ]
+      ]
+    }
+  },
+  "save_impact": {
+    "layout": "Unchanged SaveBlock structures, capacities, journal/claim IDs, map IDs and legacy readers",
+    "colors": "Previously unreferenced native variable 0x405C, signature 0xB400, separate 4-bit rug/bed choices. Invalid/legacy values read as default without mutation.",
+    "native_flash": "Colors and a native UI-placed off-rug Pikachu Doll survived write -> clear -> load; both statuses were SAVE_STATUS_OK.",
+    "limits": "Not an authentic historical-save matrix or a claim of Pizza Boy testing."
+  }
+}

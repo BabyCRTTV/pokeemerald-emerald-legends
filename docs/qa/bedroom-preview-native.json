@@ -1,0 +1,23 @@
+{
+  "state": "unpublished native preview",
+  "emulator": "mGBA 0.10.2",
+  "unrelated_scene_pixels_unchanged_both_layouts": true,
+  "ROM_sha256": "128142ffd55e05f5760bcc8b456584896e88d6c7f2fc89dff7cdce085a25d79a",
+  "scope": "Controlled callbacks prepared both rooms. Real task input selected separate colors and canceled without applying; room reload, real flash write/load and native menu placement of a Pikachu Doll on wood floor checked; both colors and its saved position survived real flash write/load. No complete historical-save matrix or Pizza Boy playtest claimed.",
+  "log": "male-default\nbedroom-decor-menu\nrug-color-menu\nrug-rose-menu\nmale-rose-rug-mint-bed\nFlash save=1 load=1 profile=b423\nplacing-doll-start\nplace-on-wood-prompt\nPlaced decoration=77 position=7\ndoll-on-wood-floor\nfemale-default\nfemale-plum-rug-gold-bed\nfemale-doll-on-wood-floor\n",
+  "images": {
+    "bedroom-decor-menu.png": "7d7c131697ad1c0abc10e221d76c411c43899926c556951acb010f7e32128b7c",
+    "bedroom-native-menu.png": "7ae81456f2d00d7756afcb9be1a7de54ae896a5c36ddef8ebea5b5a0d7829715",
+    "bedroom-native-room.png": "822448ac58d2a4bac841e0ee99aa838d3f64de1d38a441e06cc1de447589bfbb",
+    "doll-on-wood-floor.png": "b45ac167ea53cc44e1abe42d73f97e04fea5176a299ead3d78c58874df1487df",
+    "female-default.png": "dd0e3cf485f83640c9ac1124145a75c7cee153455080a908af97a5d63c7c3577",
+    "female-doll-on-wood-floor.png": "4fc7cbd57494730e3996acb5f6c646089b3829081caf20dbcff712c60ad293e0",
+    "female-plum-rug-gold-bed.png": "c9944007dd6c5278a767f03e6c3bd11de2c51b4e20f62f43ce1f38012b77888e",
+    "male-default.png": "c5d22825039fd68b0e4ad4ef2d9284d36170d6611527c0cadd1397c9e3f0d9ff",
+    "male-rose-rug-mint-bed.png": "d1889a489802fb48a6fc23fb5040f3479652fe85296d92c0df8ca5ff61920d2e",
+    "place-on-wood-prompt.png": "94f9ef54f0b795c52335856e0316ef5e4fd4f9f10534f7be53e2d997ef9ad112",
+    "placing-doll-start.png": "2659054e6cb0fcb834d005b270152cccd85c13576f0aa829ae905ff904461be5",
+    "rug-color-menu.png": "66f6dc87c998ed72b16f59fe3db8a5dcd23d64c76827cd69b5e52868305718f0",
+    "rug-rose-menu.png": "f82af5b48d4efe0f4bdb89e4f2084f0f4d8d05b32a8066f1f3ab99755684f3e4"
+  }
+}

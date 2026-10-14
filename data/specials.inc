@@ -643,3 +643,7 @@ gSpecials::
 	def_special LegendsClockBufferTime
 	def_special LegendsClockUseRealTime
 	def_special LegendsRevealSurveyMew
+
+	def_special LegendsBedroomApply
+	def_special LegendsBedroomIsHomeSpecial
+	def_special LegendsBedroomMomMessage

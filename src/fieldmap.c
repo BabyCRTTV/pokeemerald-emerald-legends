@@ -1,4 +1,5 @@
 #include "global.h"
+#include "legends_bedroom.h"
 #include "legends_grass.h"
 #include "legends_seasons.h"
 #include "battle_pyramid.h"
@@ -1036,6 +1037,7 @@ static void LoadPrimaryTilesetPalette(struct MapLayout const *mapLayout)
 void LoadSecondaryTilesetPalette(struct MapLayout const *mapLayout, bool8 skipFaded)
 {
     LoadTilesetPalette(mapLayout->secondaryTileset, GetNumPalsInPrimary(mapLayout) * 16, (NUM_PALS_TOTAL - GetNumPalsInPrimary(mapLayout)) * PLTT_SIZE_4BPP, skipFaded, GetNumPalsInPrimary(mapLayout));
+    LegendsBedroomLoadPalette(skipFaded);
 }
 
 void CopyMapTilesetsToVram(struct MapLayout const *mapLayout)

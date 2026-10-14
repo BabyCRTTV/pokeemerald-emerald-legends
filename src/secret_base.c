@@ -1,4 +1,5 @@
 #include "global.h"
+#include "legends_bedroom.h"
 #include "malloc.h"
 #include "battle.h"
 #include "battle_setup.h"
@@ -596,7 +597,8 @@ void InitSecretBaseDecorationSprites(void)
             gSpecialVar_0x8007 = decorationPositions[i] & 0xF;
             metatileBehavior = MapGridGetMetatileBehaviorAt(gSpecialVar_0x8006 + MAP_OFFSET, gSpecialVar_0x8007 + MAP_OFFSET);
             if (MetatileBehavior_HoldsSmallDecoration(metatileBehavior) == TRUE
-             || MetatileBehavior_HoldsLargeDecoration(metatileBehavior) == TRUE)
+             || MetatileBehavior_HoldsLargeDecoration(metatileBehavior) == TRUE
+             || LegendsBedroomSavedPosition(gSpecialVar_0x8006, gSpecialVar_0x8007))
             {
                 gSpecialVar_Result = VAR_OBJ_GFX_ID_0 + (gMapHeader.events->objectEvents[objectEventId].graphicsId - OBJ_EVENT_GFX_VAR_0);
                 VarSet(gSpecialVar_Result, gDecorations[decorations[i]].tiles[0]);

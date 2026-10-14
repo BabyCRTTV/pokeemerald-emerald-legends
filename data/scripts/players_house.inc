@@ -392,6 +392,8 @@ PlayersHouse_1F_EventScript_TryGiveAmuletCoin::
 	end
 
 PlayersHouse_1F_EventScript_MomHealsParty::
+	special LegendsBedroomMomMessage
+	call_if_eq VAR_RESULT, TRUE, LegendsBedroom_MomComment
 	msgbox PlayersHouse_1F_Text_YouShouldRestABit, MSGBOX_DEFAULT
 	goto PlayersHouse_1F_EventScript_HealParty
 	end
@@ -720,3 +722,7 @@ PlayersHouse_1F_Movement_PlayerApproachTVForLatiFemale:
 EventScript_RunningShoesManual::
 	msgbox PlayersHouse_1F_Text_RunningShoesManual, MSGBOX_SIGN
 	end
+
+LegendsBedroom_MomComment:
+	msgbox gStringVar4, MSGBOX_DEFAULT
+	return

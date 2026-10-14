@@ -1,6 +1,14 @@
 # Evolving bedroom — owner review
 
-Status: **C selected as inspiration; revised layout awaits review. No ROM implementation.** Prepared from verified v0.0.52 master `ed88772110e0952c9e9c3887f1345ecabd4429c0`. The owner selected evolving bedrooms and requested designs/stages before implementation, extending through the current Kanto storyline. On 14 October 2026 the owner explicitly reiterated using existing game assets for world building; any newly designed artwork must be previewed separately first.
+Status: **C2 selected with Ball Poster; native implementation preview awaits review.** Prepared from verified v0.0.52 master `ed88772110e0952c9e9c3887f1345ecabd4429c0`. The owner selected evolving bedrooms and requested designs/stages before implementation, extending through the current Kanto storyline. On 14 October 2026 the owner explicitly reiterated using existing game assets for world building; any newly designed artwork must be previewed separately first.
+
+## Current implementation preview — C2 with Ball Poster
+
+The owner selected C2, requested the native Ball Poster, a rug extending to the bed, separate rug/bed color controls in the bedroom decoration menu, and placement across clear floor where safe. These changes are implemented on the review branch. [Native screenshots, verification, save impact and limits](../../qa/bedroom-preview.md). The public v0.0.52 ROM/patches have not changed.
+
+The wall map remains at its original position. C2 now uses the same Ball Poster throughout; Kanto reports and the finale also update home notebook memories and Mom's dialogue. Silver remains after gold is added. The original furniture, native color defaults, saved doll placements and reserved access tiles are protected. The color choices are Default, Blue, Rose, Mint, Gold, Plum and Coral. Placement supports the bedroom's existing dolls/cushions on available floor; it does not enable Secret Base-only furniture categories in bedrooms.
+
+The following earlier design material is historical. In particular, prior C1/poster colors, three-poster/map replacement, glass ornament and A recommendation are superseded. Await review of the native implementation before merge/publication.
 
 ## Current review — revised C
 

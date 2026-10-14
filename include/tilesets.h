@@ -85,4 +85,5 @@ extern const struct Tileset gTileset_LegendsKantoSaffronCity;
 extern const struct Tileset gTileset_LegendsKantoVermilionGym;
 extern const struct Tileset gTileset_LegendsKantoCeladonCity;
 #endif
+extern const struct Tileset gTileset_LegendsBedroom;
 #endif //GUARD_tilesets_H
