@@ -39,7 +39,7 @@
     }
   },
   "save_impact": "No serialized layouts, fields, capacities, codecs, initialization rules or persistent IDs changed. Family colors derive from the existing appearance choice. No migration required; historical-save emulator matrix not newly exercised.",
-  "publication": "v0.0.50 source and both BPS patches are publicly committed and verified through pinned GitHub downloads. Local/remote native builds and independent clean-base BPS round trips passed; both public GitHub downloads matched their manifest/CRCs and native targets. GitHub Pages remains blocked by a stale deployment lock despite cancellation reporting deployment_cancelled and a failed-job retry; site publication is not verified.",
+  "publication": "Verified complete: public GitHub and live Pages BPS downloads matched the SHA256 manifest and patch/source/target CRCs; both target hashes matched local native ROMs. Pages run 38597478728 attempt 2 succeeded. Live homepage, changelog, patcher HTML/JavaScript and approved PNG matched committed bytes. No ROM rebuild or version bump was needed for recovery.",
   "github_downloads": [
     {
       "variant": "Release",
@@ -69,7 +69,9 @@
     "patch_Pages_timeout": 38594477288,
     "Pages_retry": 38596593358,
     "Pages_recovery": 38597018064,
-    "Pages_retry_after_recovery": 38597017926
+    "Pages_retry_after_recovery": 38597017926,
+    "Pages_successful_retry": 38597478728,
+    "Pages_successful_attempt": 2
   },
   "supported_base_sha1": "f3ae088181bf583e55daf962a92bb46f4f1d07b7",
   "supported_base_crc32": "1f1c08fb",
@@ -77,17 +79,85 @@
     "Release": 539,
     "Debug": 904
   },
-  "pages_blocker": {
-    "failed_original_run": 38594477288,
-    "original_status": "Timed out in updating_pages after ten minutes.",
-    "retry_failure": "GitHub rejected creation because deployment 491a43c6cf6ad3d581c6ca6b57ee219ccb706a3b was still considered in progress.",
-    "recovery_commit": "bf5d9b9db3ed07d1263100f2404c82aabcc4f04e",
-    "recovery_run": 38597018064,
-    "cancel_API_status": "deployment_cancelled",
-    "retry_after_confirmed_cancel_run": 38597017926,
-    "retry_after_confirmed_cancel_attempt": 2,
-    "retry_after_cancel_result": "Still rejected by GitHub with the same stale in-progress deployment error.",
-    "temporary_recovery_workflow": "Removed after its successful bounded cancellation attempt; retained in git history.",
-    "next_step": "When GitHub releases the stale Pages deployment lock, rerun the latest failed Pages deploy job, then verify live BPS SHA256/CRCs and target hashes plus index/changelog/patcher/preview bytes. Do not rebuild ROMs or change VERSION for this hosting issue."
+  "public_patches": [
+    {
+      "variant": "Release",
+      "filename": "Pokemon-Emerald-Legends-v0.0.50.bps",
+      "http": 200,
+      "bytes": 17429545,
+      "sha256": "6949cc81410a0182b23e3170ff0e55dbe91cd06598db836728cb925e151a5486",
+      "source_crc32": "1f1c08fb",
+      "target_crc32": "bf4e8180",
+      "patch_crc_verified": true,
+      "target_sha256": "6346c72650555aea6ea10353cc110b52bc292cf889be046516128a30671b8c2f",
+      "matched_local_ROM": true,
+      "BPS_size_delta_from_v49": 539
+    },
+    {
+      "variant": "Debug",
+      "filename": "Pokemon-Emerald-Legends-v0.0.50-debug.bps",
+      "http": 200,
+      "bytes": 17261895,
+      "sha256": "3656ff9eacd3595070a2e2b650502018e8949958c35b5951c65d45a6be6efe2b",
+      "source_crc32": "1f1c08fb",
+      "target_crc32": "1e34cf8b",
+      "patch_crc_verified": true,
+      "target_sha256": "e14dc50c22ff9025fd6eeb9ee4d452313b22604893435e05652bc1908595d4e0",
+      "matched_local_ROM": true,
+      "BPS_size_delta_from_v49": 904
+    }
+  ],
+  "public_pages": [
+    {
+      "path": "index.html",
+      "http": 200,
+      "sha256": "88ec4c3a7b18715a6b80e36bc021bfbd9d512baa074f95ef2e22352d4fc37250",
+      "bytes": 6416
+    },
+    {
+      "path": "changelog.html",
+      "http": 200,
+      "sha256": "2b816c08e312b683b27a59f76936e9d8937ae2a86149c10f0c9c03b28c75b6a1",
+      "bytes": 93216
+    },
+    {
+      "path": "patcher.html",
+      "http": 200,
+      "sha256": "0ed036182721f49eb2d43e6c173f140fc8e19fba757ecb8d23a1d06170dcd4f2",
+      "bytes": 2508
+    },
+    {
+      "path": "patcher.js",
+      "http": 200,
+      "sha256": "b3ec85f853235c51b060874767f51729d3429099ce50dccf9a225dbc3e4ab5b4",
+      "bytes": 9201
+    },
+    {
+      "path": "qa/family-skin-v0.0.50-approved.png",
+      "http": 200,
+      "sha256": "c572b60df273ac6c790c7be0ae08dab25cd5fe26a1fb8bc100b0aa8701f57722",
+      "bytes": 36116
+    }
+  ],
+  "pages_recovery": {
+    "resolved": true,
+    "verified_at_UTC": "2026-10-14T16:47:40.386194+00:00",
+    "successful_run": 38597478728,
+    "successful_attempt": 2,
+    "deployed_commit": "32663cd486476834fed23509c59a926e8c12c547",
+    "action": "Reran only failed Pages jobs through the connected GitHub tool after the stale deployment lock cleared.",
+    "failure_history": {
+      "failed_original_run": 38594477288,
+      "original_status": "Timed out in updating_pages after ten minutes.",
+      "retry_failure": "GitHub rejected creation because deployment 491a43c6cf6ad3d581c6ca6b57ee219ccb706a3b was still considered in progress.",
+      "recovery_commit": "bf5d9b9db3ed07d1263100f2404c82aabcc4f04e",
+      "recovery_run": 38597018064,
+      "cancel_API_status": "deployment_cancelled",
+      "retry_after_confirmed_cancel_run": 38597017926,
+      "retry_after_confirmed_cancel_attempt": 2,
+      "retry_after_cancel_result": "Still rejected by GitHub with the same stale in-progress deployment error.",
+      "temporary_recovery_workflow": "Removed after its successful bounded cancellation attempt; retained in git history.",
+      "next_step": "When GitHub releases the stale Pages deployment lock, rerun the latest failed Pages deploy job, then verify live BPS SHA256/CRCs and target hashes plus index/changelog/patcher/preview bytes. Do not rebuild ROMs or change VERSION for this hosting issue."
+    }
   }
 }
