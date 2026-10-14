@@ -1,0 +1,430 @@
+{
+  "production_version": "0.0.52",
+  "state": "Approved v0.0.52 release verification",
+  "Debug_ROM_sha256": "1d009e26139d8d05c618b46cdbe17dd92c20405346753f3c3ec66e560cef3517",
+  "emulator": "mGBA 0.10.2",
+  "captures": [
+    {
+      "name": "animation-00",
+      "sha256": "6984e33dfee705ede9cc069e1e86933bb070e7a8c49aaef197f3c1252a735545"
+    },
+    {
+      "name": "animation-01",
+      "sha256": "cba9ef601897ec8b3ab1f31cd1f4034c1636e31ac24324b787d75eae9fc7d4d6"
+    },
+    {
+      "name": "animation-02",
+      "sha256": "a2fd7c2706d31b7e142e113895d8d3e0ff22ee2010f3d21abb77abba090b4c4c"
+    },
+    {
+      "name": "animation-03",
+      "sha256": "08e4b590f3c5bcc8c1ccc28525b25e805fefc4340f73bfcd1b2784f6915b1378"
+    },
+    {
+      "name": "animation-04",
+      "sha256": "4b638249268eaf9cb6dffe536328a8ed34e53a041c78bf0c0586ca49d3dba39f"
+    },
+    {
+      "name": "animation-05",
+      "sha256": "e4d2749cdfa83a90f2381104ae4fb38dd55ac2551180752ca189a688a94874b8"
+    },
+    {
+      "name": "animation-06",
+      "sha256": "b3d10038e40bf065bc46aeaeb6fb179be2c6a6678d2e0eaa42e9bcff92056ced"
+    },
+    {
+      "name": "animation-07",
+      "sha256": "a7a981d0d7e1bb0fff09c6410d468ae6e48110464e9c54d66acdb1767b4c1a1d"
+    },
+    {
+      "name": "animation-08",
+      "sha256": "3ca926bf3b13239bc5ac8191d47f78134d7ca6f47ddaaa0ec56e72329013b8f4"
+    },
+    {
+      "name": "animation-09",
+      "sha256": "13d17fe24caf839339478159c0d73791f4c087389bc6a97d08fc43604d5dcc69"
+    },
+    {
+      "name": "animation-10",
+      "sha256": "7cee1feafaf46364d1e8566f6b09f68b17ebefa59f4951ed3956f302c5cf1e4a"
+    },
+    {
+      "name": "animation-11",
+      "sha256": "ae8865e1fa863c0c9e9ee032f6331b0597efa5ec290c76cae0dfe510c314aa41"
+    },
+    {
+      "name": "animation-12",
+      "sha256": "37beec93e58551e40f484b1b5839f9ba9cea2fd571bdf4f2dcf2a4a4571daf45"
+    },
+    {
+      "name": "animation-13",
+      "sha256": "e2e3c8a7ea37fa63e42847c2c8219b7a4ab7b332cc900ead11eaa1ec4797623e"
+    },
+    {
+      "name": "animation-14",
+      "sha256": "f6eb255b08dbbca4982de6f61f3e058e8fa2d3026312541cc2223a53bc0271dc"
+    },
+    {
+      "name": "animation-15",
+      "sha256": "734bd289634c5c275ebd454561c4cee456e998615b19ad1097986cb04d346450"
+    },
+    {
+      "name": "animation-16",
+      "sha256": "19fd6aa0a7048ce959b89a851826b32cb6ccbd57ba7328de2fb86f0406f8342f"
+    },
+    {
+      "name": "animation-17",
+      "sha256": "acfda96003a4e38d92a7ca3ebfe3ad61d84586bfd0285b35f52e157d0f0e5358"
+    },
+    {
+      "name": "animation-18",
+      "sha256": "134c2fa71e506d428400056f58841708f73cdb26571c8b2d54711aae427d25d2"
+    },
+    {
+      "name": "animation-19",
+      "sha256": "134c2fa71e506d428400056f58841708f73cdb26571c8b2d54711aae427d25d2"
+    },
+    {
+      "name": "animation-20",
+      "sha256": "5b4fe11b00b816e283682057b5d659dd662f63d6933b04bc042d360c3096469d"
+    },
+    {
+      "name": "animation-21",
+      "sha256": "5b4fe11b00b816e283682057b5d659dd662f63d6933b04bc042d360c3096469d"
+    },
+    {
+      "name": "animation-22",
+      "sha256": "5b4fe11b00b816e283682057b5d659dd662f63d6933b04bc042d360c3096469d"
+    },
+    {
+      "name": "animation-23",
+      "sha256": "134c2fa71e506d428400056f58841708f73cdb26571c8b2d54711aae427d25d2"
+    },
+    {
+      "name": "animation-24",
+      "sha256": "134c2fa71e506d428400056f58841708f73cdb26571c8b2d54711aae427d25d2"
+    },
+    {
+      "name": "animation-25",
+      "sha256": "134c2fa71e506d428400056f58841708f73cdb26571c8b2d54711aae427d25d2"
+    },
+    {
+      "name": "animation-26",
+      "sha256": "7d0995e8256e53afb2f2a41feed84434050f1873321d250040e24d5bfdd0d3c7"
+    },
+    {
+      "name": "animation-27",
+      "sha256": "7d0995e8256e53afb2f2a41feed84434050f1873321d250040e24d5bfdd0d3c7"
+    },
+    {
+      "name": "animation-28",
+      "sha256": "134c2fa71e506d428400056f58841708f73cdb26571c8b2d54711aae427d25d2"
+    },
+    {
+      "name": "animation-29",
+      "sha256": "dd67e25cbcb054d41353c423f3c905871372eb624fae52dab18c4f871fd3eec7"
+    },
+    {
+      "name": "animation-30",
+      "sha256": "dd67e25cbcb054d41353c423f3c905871372eb624fae52dab18c4f871fd3eec7"
+    },
+    {
+      "name": "animation-31",
+      "sha256": "7c702aa0b9debae80deb3a1bf5c5291a1dd85d1116f381b1d54cd92a3cdfd663"
+    },
+    {
+      "name": "animation-32",
+      "sha256": "7c702aa0b9debae80deb3a1bf5c5291a1dd85d1116f381b1d54cd92a3cdfd663"
+    },
+    {
+      "name": "animation-33",
+      "sha256": "7c702aa0b9debae80deb3a1bf5c5291a1dd85d1116f381b1d54cd92a3cdfd663"
+    },
+    {
+      "name": "animation-34",
+      "sha256": "dd67e25cbcb054d41353c423f3c905871372eb624fae52dab18c4f871fd3eec7"
+    },
+    {
+      "name": "field-after",
+      "sha256": "dd67e25cbcb054d41353c423f3c905871372eb624fae52dab18c4f871fd3eec7"
+    },
+    {
+      "name": "field-before",
+      "sha256": "a47a8c2a8473f997354d97f4490c4ddf445c6cd3bdb1bdbbe339459be77a4ba2"
+    },
+    {
+      "name": "manual-claim",
+      "sha256": "ea2567463334a92b1f07f2709806ba09a2c93a7b5cd99c3b261ea8bea75111ef"
+    },
+    {
+      "name": "new-achievements",
+      "sha256": "888e862462dc495080769eb9ae04ab25931ae7a7dc712af86715fd10b538dac7"
+    },
+    {
+      "name": "reward-claimed",
+      "sha256": "640e11154b174e482fa7efedc08e6ee06c524c3f80e310ccafe36cec0004f851"
+    },
+    {
+      "name": "reward-sent",
+      "sha256": "36de44a20796e201b8ea81db0d34afa16209f981ee8a1db66080a05a17360d94"
+    },
+    {
+      "name": "unlock-notice",
+      "sha256": "6984e33dfee705ede9cc069e1e86933bb070e7a8c49aaef197f3c1252a735545"
+    }
+  ],
+  "passed": true,
+  "native_pixel_stable_visible_frames": 172,
+  "gif_pixel_stable_visible_frames": 23,
+  "movement_inputs": [
+    "right",
+    "down",
+    "left",
+    "up"
+  ],
+  "scope": "Controlled ARM setup entered an actual Oldale Town field scene, unlocked appended ID 80 via FlagSet, and drove native field/journal tasks with emulated inputs. Movement, automatic dismissal, every visible panel pixel, the decoded GIF and a manual claimed bit were checked. This was not natural story progression or historical battery-save replay; the private ROM was never distributed. Public BPS publication is recorded separately.",
+  "harness_sha256": {
+    "arm.c": "c5871dd9cbec7be27a3735ac802a979d12cd1f77227f66238265ddd26b2adf89",
+    "host.c": "9a2d582463968600279d58741a487fb710bef04ec2a77ba7321844eb613d3fd2",
+    "run.py": "5f9b2efb6dad4cd534640ccfe5ae7f33762777afdb4a1b0808fc939187718c74"
+  },
+  "approved_panel_material_pixels_unchanged": true,
+  "field_palette_mapping": [
+    {
+      "approved_RGB": [
+        90,
+        90,
+        90
+      ],
+      "current_RGB": [
+        99,
+        99,
+        99
+      ]
+    },
+    {
+      "approved_RGB": [
+        239,
+        239,
+        239
+      ],
+      "current_RGB": [
+        255,
+        255,
+        255
+      ]
+    },
+    {
+      "approved_RGB": [
+        198,
+        198,
+        189
+      ],
+      "current_RGB": [
+        214,
+        214,
+        206
+      ]
+    }
+  ],
+  "Release_ROM_sha256": "ce18b5630a2e9e1e60934879d313f2de1eab29f7d71f8e753ebc486773182b07",
+  "source_merge": "7e166f0af96fe8e0adf2e9ebdb4edb7c8976ad9b",
+  "local_checks": [
+    {
+      "name": "Exercise browser patcher regression tests",
+      "exit_code": 0
+    },
+    {
+      "name": "Exercise seasonal engine regression tests",
+      "exit_code": 0
+    },
+    {
+      "name": "Exercise seasonal battle scenes and Kanto foliage",
+      "exit_code": 0
+    },
+    {
+      "name": "Exercise dynamic weather regression tests",
+      "exit_code": 0
+    },
+    {
+      "name": "Exercise starter and rival regression tests",
+      "exit_code": 0
+    },
+    {
+      "name": "Exercise Options navigation regression tests",
+      "exit_code": 0
+    },
+    {
+      "name": "Exercise Options text regression tests",
+      "exit_code": 0
+    },
+    {
+      "name": "Exercise New Game Options regression tests",
+      "exit_code": 0
+    },
+    {
+      "name": "Exercise native follower regression tests",
+      "exit_code": 0
+    },
+    {
+      "name": "Exercise upstream held-item integration",
+      "exit_code": 0
+    },
+    {
+      "name": "Exercise first-item history and compatible save sectors",
+      "exit_code": 0
+    },
+    {
+      "name": "Exercise quest progression and achievement claims",
+      "exit_code": 0
+    },
+    {
+      "name": "Achievement notice lifecycle",
+      "exit_code": 0
+    },
+    {
+      "name": "Journal selection rendering and input",
+      "exit_code": 0
+    },
+    {
+      "name": "Exercise lossless expanded storage codec",
+      "exit_code": 0
+    },
+    {
+      "name": "Exercise pause panel regression tests",
+      "exit_code": 0
+    },
+    {
+      "name": "Exercise Adventure Log persistence, days and milestones",
+      "exit_code": 0
+    },
+    {
+      "name": "Exercise Adventure Log notebook and filters",
+      "exit_code": 0
+    },
+    {
+      "name": "Exercise scrolling pause menu",
+      "exit_code": 0
+    },
+    {
+      "name": "Exercise real/manual clocks and saved fallback",
+      "exit_code": 0
+    },
+    {
+      "name": "Exercise DexNav encounter proximity and approach rules",
+      "exit_code": 0
+    },
+    {
+      "name": "Exercise player appearance regression tests",
+      "exit_code": 0
+    },
+    {
+      "name": "Exercise visual polish regression tests",
+      "exit_code": 0
+    },
+    {
+      "name": "Verify native window frame assets and selection",
+      "exit_code": 0
+    },
+    {
+      "name": "Verify native hair / coat 4bpp layer geometry",
+      "exit_code": 0
+    },
+    {
+      "name": "Verify footwear compositor and protected sprite colors",
+      "exit_code": 0
+    },
+    {
+      "name": "Verify v0.0.46 artwork and isolated smile/body colors",
+      "exit_code": 0
+    },
+    {
+      "name": "Verify approved Side Part head and native animation frames",
+      "exit_code": 0
+    },
+    {
+      "name": "Verify approved front-face shading and unchanged other views",
+      "exit_code": 0
+    },
+    {
+      "name": "Verify approved parent skin tones and palette isolation",
+      "exit_code": 0
+    },
+    {
+      "name": "Exercise scrolling intro hairstyles",
+      "exit_code": 0
+    },
+    {
+      "name": "Exercise wardrobe navigation and access",
+      "exit_code": 0
+    },
+    {
+      "name": "Verify layered accessories and wardrobe furniture",
+      "exit_code": 0
+    },
+    {
+      "name": "Verify native costume assets and striped Sport shorts",
+      "exit_code": 0
+    },
+    {
+      "name": "Exercise Da Bug gift and species integration",
+      "exit_code": 0
+    },
+    {
+      "name": "Exercise Kanto invitation, ferry, welcome and map integration",
+      "exit_code": 0
+    },
+    {
+      "name": "Exercise empty Kanto foundation and Surf passage",
+      "exit_code": 0
+    },
+    {
+      "name": "Kanto challenge progression",
+      "exit_code": 0
+    },
+    {
+      "name": "Kanto Borrowed Voice progression and Trainer Card badges",
+      "exit_code": 0
+    },
+    {
+      "name": "Kanto Quiet Current and native wild levels",
+      "exit_code": 0
+    },
+    {
+      "name": "Three expeditions and the Hoenn weather intermission",
+      "exit_code": 0
+    },
+    {
+      "name": "Wing Survey finale and native Mew outcomes",
+      "exit_code": 0
+    },
+    {
+      "name": "Isolated outdoor night lights and native DNS blending",
+      "exit_code": 0
+    },
+    {
+      "name": "Region map browsing",
+      "exit_code": 0
+    },
+    {
+      "name": "Exercise prepared battle sheets and wardrobe refresh",
+      "exit_code": 0
+    },
+    {
+      "name": "Verify Legends project metadata",
+      "exit_code": 0
+    }
+  ],
+  "native_build_memory": {
+    "Debug": {
+      "EWRAM": 254492,
+      "IWRAM": 28376,
+      "ROM_used": 30683448
+    },
+    "Release": {
+      "EWRAM": 254494,
+      "IWRAM": 28328,
+      "ROM_used": 30835468
+    }
+  }
+}

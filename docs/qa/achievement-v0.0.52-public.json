@@ -1,0 +1,90 @@
+{
+  "public_patches": [
+    {
+      "variant": "Release",
+      "filename": "Pokemon-Emerald-Legends-v0.0.52.bps",
+      "http": 200,
+      "bytes": 17430914,
+      "sha256": "79e410570f6a56915589b155897b3a894f923d5ae2e7bee6783e0dd8f4e5470d",
+      "source_crc32": "1f1c08fb",
+      "target_crc32": "d0d2babb",
+      "patch_crc_verified": true,
+      "target_sha256": "ce18b5630a2e9e1e60934879d313f2de1eab29f7d71f8e753ebc486773182b07",
+      "matched_local_ROM": true,
+      "BPS_size_delta_from_v51": 2275
+    },
+    {
+      "variant": "Debug",
+      "filename": "Pokemon-Emerald-Legends-v0.0.52-debug.bps",
+      "http": 200,
+      "bytes": 17262685,
+      "sha256": "d9d544ff0da3097f43b0cd18b785d367299a744b90adadc1ae5eb8dc2dc5038c",
+      "source_crc32": "1f1c08fb",
+      "target_crc32": "511dd08d",
+      "patch_crc_verified": true,
+      "target_sha256": "1d009e26139d8d05c618b46cdbe17dd92c20405346753f3c3ec66e560cef3517",
+      "matched_local_ROM": true,
+      "BPS_size_delta_from_v51": 1294
+    }
+  ],
+  "public_pages": [
+    {
+      "path": "index.html",
+      "http": 200,
+      "sha256": "f849e47fe0ecf0347a2824202531a4c1c3fa04bfbd32e4b3c4c9814cf475c0ed",
+      "bytes": 6471
+    },
+    {
+      "path": "changelog.html",
+      "http": 200,
+      "sha256": "3e6656f84aa1015aff5112294488f0b8b5022385b25e96ae0daf82446691782f",
+      "bytes": 95656
+    },
+    {
+      "path": "patcher.html",
+      "http": 200,
+      "sha256": "293f4fb7f3c56df742611d1e0fa2e24202966b23b6e497e12f6ed3a4023225c5",
+      "bytes": 2508
+    },
+    {
+      "path": "patcher.js",
+      "http": 200,
+      "sha256": "7b6622719d3f7cf5457a43236dc36e4cc37af065d02fc4610ddb5fa0c8e89956",
+      "bytes": 9201
+    },
+    {
+      "path": "qa/achievement-preview-v2.png",
+      "http": 200,
+      "sha256": "c5f9128977547d9bc68fa86c34d2e21384bac3a3385f7c8f35466b2ede410754",
+      "bytes": 22959
+    },
+    {
+      "path": "qa/achievement-unlock-preview-v2.gif",
+      "http": 200,
+      "sha256": "7082f4c690d5b36a5e2cc02472ce54772d70d10423fa1c0c2ce3d3ae1362b84b",
+      "bytes": 651363
+    },
+    {
+      "path": "journal-guide.html",
+      "http": 200,
+      "sha256": "afcc38f288b8966e1a8bcdbdde59f9f184a4ffea6d72ab89f1d3ff937d4eb99e",
+      "bytes": 3265
+    },
+    {
+      "path": "features/quest-log-achievements.md",
+      "http": 200,
+      "sha256": "743a1eb6305524ca64196b1659e749dfa32b8b3216e3cee35caff0200cacf35d",
+      "bytes": 6566
+    }
+  ],
+  "version": "0.0.52",
+  "approval": "Owner approved corrected preview and publication on 14 October 2026.",
+  "PR": 67,
+  "approved_preview_commit": "32f93407f6a790b7955bb52fa62f91b90c86b79f",
+  "release_preparation_commit": "f5e2f60c8934172eae9a902d19ccb68b97452d86",
+  "source_merge": "7e166f0af96fe8e0adf2e9ebdb4edb7c8976ad9b",
+  "source_checks_run": 38613064246,
+  "native_build_and_independent_BPS_run": 38613063922,
+  "patch_commit": "5349d41f5eb70c45de316f447f09f68a96317ba5",
+  "patch_Pages_run": 38614496615
+}
