@@ -2322,7 +2322,7 @@ const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Flannery = {
 
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Norman = {
     .tileTag = TAG_NONE,
-    .paletteTag = OBJ_EVENT_PAL_TAG_NPC_4,
+    .paletteTag = OBJ_EVENT_PAL_TAG_LEGENDS_NORMAN,
     .reflectionPaletteTag = OBJ_EVENT_PAL_TAG_NONE,
     .size = 256,
     .width = 16,
@@ -3912,7 +3912,7 @@ const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Azurill = {
 
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Mom = {
     .tileTag = TAG_NONE,
-    .paletteTag = OBJ_EVENT_PAL_TAG_NPC_4,
+    .paletteTag = OBJ_EVENT_PAL_TAG_LEGENDS_MOM,
     .reflectionPaletteTag = OBJ_EVENT_PAL_TAG_NONE,
     .size = 256,
     .width = 16,

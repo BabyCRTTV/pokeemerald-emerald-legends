@@ -392,7 +392,7 @@ static inline const u32 *GetTrainerFrontPicData(enum TrainerPicID trainerPic)
 
 static inline const u16 *GetTrainerFrontPicPalette(enum TrainerPicID trainerPic)
 {
-    return gTrainerPicInfo[SanitizeFrontTrainerPic(trainerPic)].frontPic->paletteData;
+    return LegendsGetFamilyTrainerPalette(trainerPic, gTrainerPicInfo[SanitizeFrontTrainerPic(trainerPic)].frontPic->paletteData);
 }
 
 static inline const struct Coords16 GetTrainerFrontPicMugshotCoords(enum TrainerPicID trainerPic)

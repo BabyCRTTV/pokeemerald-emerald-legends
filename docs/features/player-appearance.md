@@ -108,3 +108,7 @@ banks retain their published artwork. The covered diving suit stays native.
 ### Side Part approval — v0.0.48
 
 The owner approved the separately retained male Side Part four-view preview on 14 October 2026, with one requested repair beside the front ear. Its front atlas cell `(4,17)` now uses neighboring hair-shadow slot 8. All native walking/running, bike/trick, Surf, field-move, fishing and watering frames use that approved head. Saved ID 2 is retained; female art, front portraits, prepared battle uniforms, fixed costumes and the native diving suit remain unchanged. Hair/skin/clothing colors retain the v0.0.47 isolation fix. [Validation and mobile previews](../qa/side-part-v0.0.48.md).
+
+## Family skin tones (v0.0.50)
+
+Mom and Norman inherit the player’s existing skin-tone choice in all overworld views and Norman’s battle portrait. Wardrobe Apply updates the family on return to the field; Cancel retains the saved choice. Their original hair, clothing, sprite outlines and animations are preserved. Older saves use the existing appearance decoder, with the first tone for legacy/default appearance codes; no separate parent setting or migration is needed.

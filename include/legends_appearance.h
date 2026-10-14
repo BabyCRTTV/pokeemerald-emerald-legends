@@ -9,6 +9,10 @@ struct SpriteFrameImage;
 const struct SpriteFrameImage *LegendsBattleBackImage(enum TrainerPicID pic);
 const u16 *LegendsBattleBackPalette(enum TrainerPicID pic);
 void LegendsCopySkinRamp(u16 *dest);
+const u16 *LegendsGetFamilyPalette(u16 tag, const u16 *original);
+const u16 *LegendsGetFamilyTrainerPalette(enum TrainerPicID pic, const u16 *original);
+extern const u16 gLegendsMomPalettes[5][16];
+extern const u16 gLegendsNormanPalettes[5][16];
 
 #define LEGENDS_SKIN_TONE_COUNT 5
 #define LEGENDS_OUTFIT_COUNT 5

@@ -589,6 +589,8 @@ static const struct SpritePalette sObjectEventSpritePalettes[] = {
     {gObjectEventPaletteLight2,             OBJ_EVENT_PAL_TAG_LIGHT_2},
     {gObjectEventPaletteEmotes,             OBJ_EVENT_PAL_TAG_EMOTES},
     {gObjectEventPaletteNeonLight,          OBJ_EVENT_PAL_TAG_NEON_LIGHT},
+    {gLegendsMomPalettes[0], OBJ_EVENT_PAL_TAG_LEGENDS_MOM},
+    {gLegendsNormanPalettes[0], OBJ_EVENT_PAL_TAG_LEGENDS_NORMAN},
 #ifdef BUGFIX
     {NULL,                                  OBJ_EVENT_PAL_TAG_NONE},
 #else
@@ -3077,6 +3079,9 @@ static void SetPlayerAvatarObjectEventIdAndObjectId(u8 objectEventId, u8 spriteI
 // Update sprite's palette, freeing old palette if necessary
 static u8 UpdateSpritePalette(const struct SpritePalette *spritePalette, struct Sprite *sprite)
 {
+    struct SpritePalette selectedPalette = *spritePalette;
+    selectedPalette.data = LegendsGetFamilyPalette(selectedPalette.tag, selectedPalette.data);
+    spritePalette = &selectedPalette;
     // Free palette if otherwise unused
     sprite->inUse = FALSE;
     FieldEffectFreePaletteIfUnused(sprite->oam.paletteNum);
@@ -3316,7 +3321,7 @@ u8 LoadObjectEventPalette(u16 paletteTag)
 u8 LoadObjectEventPaletteCopy(u16 originalTag, u16 copyTag)
 {
     u32 i = FindObjectEventPaletteIndexByTag(originalTag);
-    const struct SpritePalette palette = {sObjectEventSpritePalettes[i].data, copyTag};
+    const struct SpritePalette palette = {LegendsGetFamilyPalette(originalTag, sObjectEventSpritePalettes[i].data), copyTag};
     return LoadSpritePalette(&palette);
 }
 
@@ -3337,6 +3342,9 @@ static void UNUSED LoadObjectEventPaletteSet(u16 *paletteTags)
 // Really just loads the palette and applies weather fade
 static u8 LoadSpritePaletteIfTagExists(const struct SpritePalette *spritePalette)
 {
+    struct SpritePalette selectedPalette = *spritePalette;
+    selectedPalette.data = LegendsGetFamilyPalette(selectedPalette.tag, selectedPalette.data);
+    spritePalette = &selectedPalette;
     u8 paletteNum = IndexOfSpritePaletteTag(spritePalette->tag);
     if (paletteNum != 0xFF) // don't load twice; return
         return paletteNum;
@@ -3351,7 +3359,7 @@ void PatchObjectPalette(u16 paletteTag, u8 paletteSlot)
     // paletteTag is assumed to exist in sObjectEventSpritePalettes
     u8 paletteIndex = FindObjectEventPaletteIndexByTag(paletteTag);
 
-    LoadPalette(sObjectEventSpritePalettes[paletteIndex].data, OBJ_PLTT_ID(paletteSlot), PLTT_SIZE_4BPP);
+    LoadPalette(LegendsGetFamilyPalette(paletteTag, sObjectEventSpritePalettes[paletteIndex].data), OBJ_PLTT_ID(paletteSlot), PLTT_SIZE_4BPP);
 }
 
 void PatchObjectPaletteRange(const u16 *paletteTags, u8 minSlot, u8 maxSlot)

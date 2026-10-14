@@ -8,9 +8,11 @@ The owner uses a phone. Provide narrow vertical PNG/GIF previews and explicit do
 
 On 14 October 2026 the owner reversed the earlier permission to ignore older saves. Backward compatibility for Legends battery saves is now required for future updates. Preserve existing save readers, field offsets and persistent IDs; add focused migrations/tests when saved data changes. [Save-compatibility policy and evidence](SAVE-COMPATIBILITY.md) defines the release gate without adding duplicate builds or per-patch full emulator runs. Existing checks pass; a complete historical-release save-fixture matrix remains unfinished and must not be represented as verified.
 
-## Pending visual review — Mom and Norman
+## Approved family skin integration — v0.0.50 in validation
 
-The owner requested Mom and Norman to inherit the player's selected skin tone in their overworld sprites and Norman's battle portrait, and asked to see all five tones. A narrow native-asset preview is prepared; [review details, reproduction and integration constraints](qa/family-skin-preview.md). No family runtime hooks, save changes, version bump or replacement BPS have been applied. Await the owner's visual feedback before treating this artwork study as approved. Preserve Mom's shared-color hair highlights and isolate both parents from the shared NPC-4 palette when implementing. Derive the family tone from the existing player choice; do not add saved parent fields.
+The owner approved the entire five-tone Mom/Norman study on 14 October 2026 (“Flawless work. Approved.”). Runtime integration uses private parent tags, ROM palettes and Mom-only hair material separation; it derives the tone from the existing saved player choice and adds no parent saved fields or sprite-cache RAM. Preserve the exact accepted native pixels. [Approval provenance](qa/family-skin-preview.md); [implementation and verification](qa/family-skin-v0.0.50.md). Publication has not yet been verified at this source milestone; v0.0.49 remains the last verified public build until the new checks/builds/patch deployment complete.
+
+The usage-limit interruption restored an older workspace snapshot. The uncommitted implementation was reconstructed from the recorded changes against preview commit `73f9fae86de65a33a87423efeffa228cfe7df3d5`. Its reproduced approval PNG matched the original SHA256 exactly. Current verification receipts must distinguish rerun checks from the earlier interrupted session; do not assume missing local binaries/logs survived.
 
 ## Current version — 0.0.49
 

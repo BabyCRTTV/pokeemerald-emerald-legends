@@ -2,6 +2,13 @@
 
 This is the player-facing history for the recommended **Release** build. Shared Legends changes are repeated here so this file stands on its own; Release-only behavior is called out separately.
 
+## [0.0.50] - 2026-10-14
+
+- Made Mom and Norman inherit the player's existing selected skin tone in all native overworld frames and Norman's battle portrait, matching the owner-approved five-tone preview.
+- Preserved Mom's shared-color hair highlights, both parents' clothing/hair/silhouettes and native animations, and unrelated NPC/trainer palettes through private parent palette tags.
+- Derived parent colors from the existing appearance choice after wardrobe changes and on older saves. Kept serialized fields, persistent IDs and legacy readers unchanged; added no migration or sprite-cache RAM.
+- Changes were shared by Release and Debug, with no variant-specific gameplay differences. Added approved-pixel and palette-loader regression coverage. Validation: `docs/qa/family-skin-v0.0.50.md`.
+
 ## [0.0.49] - 2026-10-14
 
 - Softened the owner-approved front-facing overworld cheek shading on both characters across all five skin tones and matching native movement/field poses.

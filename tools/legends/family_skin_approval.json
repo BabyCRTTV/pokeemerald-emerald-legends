@@ -1,0 +1,41 @@
+{
+  "baseline": "4dd6a65d32c7daf2c326df35a1898a71d6281670",
+  "scope": "Review-only Mom/Norman overworld and Norman battle portrait using the five existing player ramps. Mom hair highlights excluded; Norman battle deepest skin contour follows its native shade ratio.",
+  "source_sha256": {
+    "graphics/object_events/pics/people/mom.png": "a404a3c79252a6a13e10622307c3bce4c76c1e1a39814b7c7a11ad7520442289",
+    "graphics/object_events/pics/people/gym_leaders/norman.png": "6025231aee6d5bfafba8b72347cb9bbd8d64c69b2cdb395fb1670dfd94e889e3",
+    "graphics/trainers/front_pics/leader_norman.png": "89dc293e389191a2f38679a6a08e82f8b1407b2f94d835c56cb5447fbce18be0"
+  },
+  "skin_ramps_RGB555": [
+    [
+      26527,
+      20189,
+      13847
+    ],
+    [
+      22366,
+      16026,
+      10708
+    ],
+    [
+      16026,
+      10741,
+      6479
+    ],
+    [
+      10709,
+      6480,
+      4299
+    ],
+    [
+      7470,
+      4298,
+      2150
+    ]
+  ],
+  "validated_asset_tone_cases": 95,
+  "alpha_and_non_skin_pixels_preserved": true,
+  "image_sha256": "c572b60df273ac6c790c7be0ae08dab25cd5fe26a1fb8bc100b0aa8701f57722",
+  "runtime_integrated": true,
+  "approval": "Owner: Flawless work. Approved. \u2014 14 October 2026"
+}

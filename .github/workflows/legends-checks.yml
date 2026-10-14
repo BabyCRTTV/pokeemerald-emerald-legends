@@ -69,6 +69,8 @@ jobs:
         run: python3 test/legends-side-part.test.py
       - name: Verify approved front-face shading and unchanged other views
         run: python3 test/legends-front-face.test.py
+      - name: Verify approved parent skin tones and palette isolation
+        run: python3 test/legends-family-skin.test.py
       - name: Exercise scrolling intro hairstyles
         run: python3 test/legends-intro-hair.test.py
       - name: Exercise wardrobe navigation and access
