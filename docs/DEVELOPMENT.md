@@ -4,6 +4,8 @@
 
 Pokémon Emerald: Legends should remain a normal fork/derivative of `rh-hideout/pokeemerald-expansion` so upstream changes can be incorporated deliberately.
 
+Start with [DEVELOPMENT-HANDOFF.md](DEVELOPMENT-HANDOFF.md), the live default branch, recent PRs/Actions and published files. The [14 October 2026 audit](qa/project-state-2026-10-14.md) records the verified v0.0.47.1 baseline and remaining work. Preserve accepted assets, existing save compatibility and completed systems when resuming.
+
 Recommended remotes for local development:
 
 ```text
@@ -18,6 +20,8 @@ upstream -> rh-hideout/pokeemerald-expansion
 - tags/releases - milestone snapshots using the current `VERSION` value
 
 Small, well-contained changes may be committed directly to `master` during early development, but each commit should describe one logical change whenever practical.
+
+Use the connected GitHub tools for repository writes. Inspect the current branch head before committing, and use an expected-head lease when updating it. Record important decisions, exact source/build evidence and unresolved work in the handoff; detailed QA belongs in linked records.
 
 ## Legends-specific code
 
@@ -37,33 +41,16 @@ Do not commit generated ROMs, copyrighted ROM data, save files containing person
 
 The authoritative project version lives in the root `VERSION` file.
 
-Current version: `0.0.13.1`.
+Read it when starting work instead of relying on a duplicated version label in this guide. Full release history is retained in the root [changelog](../CHANGELOG.md); development numbering and variant rules are defined in [VERSIONING.md](VERSIONING.md).
 
-During active pre-1.0 development, each meaningful shipped change increments the development revision:
+Every version bump must update the canonical, Release and Debug changelogs, Options, README, website and browser patcher together. Write completed changes in past tense. Documentation-only handoff maintenance does not require a new ROM version or replacement patches.
 
-- `0.0.1` - initial baseline
-- `0.0.2` - Release/Debug distribution split
-- `0.0.3` - separate variant changelogs
-- `0.0.4` - badge-earned HM field utilities
-- `0.0.4.1` - changelog-label and release-metadata maintenance
-- `0.0.4.2` - changelog split housekeeping and stronger consistency checks
-- `0.0.5` - default-on Gen 6-style party EXP Share with Options toggle
-- `0.0.6` - Rustboro Lucky Egg reward replacing the redundant held Exp. Share
-- `0.0.7` - National Pokédex from the initial Birch handoff and 25 Rare Candy Champion reward
-- `0.0.8` - paged General / Legends Options framework and window-frame corruption fix
-- `0.0.8.1` - browser patcher safety and regression testing
-- `0.0.9` - physical Exp. Share Key Item and early DexNav unlock
-- `0.0.10` - configurable wild shiny encounter rate in Legends Options
-- a fourth segment such as `0.0.3.1` may be used for a very small follow-up build when that is clearer than consuming the next normal revision
-
-Every version bump must update the canonical, Release, and Debug changelogs and be mirrored in player-facing version text. See [VERSIONING.md](VERSIONING.md).
+Keep the ROM release number separate from the wiki's revision and last manually reviewed game version. The wiki is updated when requested; a ROM release does not authorize automatic wiki synchronization. Game BPS files/checksums are published under `docs/downloads/`; the `wiki-desktop` prerelease is a separate companion installer.
 
 ## Quality checks
 
-Run node --test test/legends-patcher.test.cjs for BPS decoding and ROM-selection race coverage. CI verifies both variant builds and patch byte-for-byte round trips. The QA checklist (docs/QA.md) distinguishes automated validation from emulator scenarios that still need hands-on testing.
+Use the runnable steps in [the project-check workflow](../.github/workflows/legends-checks.yml) for the current regression inventory. They cover native C modules, event progression, appearance/asset protection, save/storage compatibility, browser patching and synchronized metadata. Run checks appropriate to the change and investigate failures.
 
-- `0.0.13.1` - soft lavender main menu backdrop
-- `0.0.13` - native overworld Pokémon followers with saved Options toggle
-- `0.0.12.1` - preserve title-screen Legends settings through New Game initialization
-- `0.0.12` - seven-hour seasons, faded map transitions, manual gameplay season selection and Options text fixes
-- `0.0.11` - real-time / 28-hour seasons, outdoor foliage and region-aware weather
+The [release workflow](../.github/workflows/build-release-patch.yml) compiles native Debug and Release ROMs, builds and verifies clean Emerald, independently applies both BPS patches and compares the results byte-for-byte before publishing. Confirm the final commit, Actions, Pages deployment and public download hashes before reporting publication. Documentation-only changes can retain the last verified ROM build when the runtime inputs are unchanged.
+
+The [QA checklist](QA.md) and linked milestone records distinguish host checks, sprite-buffer previews, controlled emulator scenes and uninterrupted gameplay. Keep those distinctions explicit; passing CI does not complete the remaining manual playtests.

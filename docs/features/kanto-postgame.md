@@ -85,13 +85,15 @@ An entrance guide explains the choice at each entry before the Leader fight. YES
 | Blaine | Playable, Cinnabar | 4 Pokemon, 60–64 | 6 Pokemon, 80–84 | `FLAG_LEGENDS_KANTO_BLAINE_WON` |
 | Blue | Playable, Viridian | 4 Pokemon, 64–68 | 6 Pokemon, 84–88 | `FLAG_LEGENDS_KANTO_VIRIDIAN_WON` |
 
-Targets for unimplemented teams are design notes, not shipped balance promises. Blue's proposed acting role avoids reversing the original Rocket/Giovanni outcome; establish it with dialogue when Viridian is implemented. Kanto's chronology is this hack's original continuation, not a claim that game and anime timelines are identical.
+All eight listed teams are implemented. Blue's acting role is established in the shipped Viridian dialogue, preserving the original Rocket/Giovanni outcome. Kanto's chronology is this hack's original continuation, not a claim that game and anime timelines are identical. Team levels still require human balance testing.
 
-**Only one victory per Leader, per save.** Winning either mode completes both permanently. Standard and Champion teams have different trainer IDs but share the Gym completion flag. Losing blackouts out of the native trainer script before the victory command; retry and reselection remain available. No mode grants extra story progress, rewards or permission to fight a second team. Hoenn's badges and their field permissions are untouched. A future eighth-record check will use all eight dedicated flags, not trainer ID counts or Emerald badges.
+**Only one victory per Leader, per save.** Winning either mode completes both permanently. Standard and Champion teams have different trainer IDs but share the Gym completion flag. Losing blackouts out of the native trainer script before the victory command; retry and reselection remain available. No mode grants extra story progress, rewards or permission to fight a second team. Hoenn's badges and their field permissions are untouched. The finale checks all eight dedicated flags, not trainer ID counts or Emerald badges.
 
 Surge's electrical barrier is opened by an on-load script for this visiting challenge; the familiar room and trash cans remain. Koga keeps the native invisible-wall geometry. Neither Gym imports FRLG badge, TM, Fame Checker or NPC story state.
 
-## Chapter plan
+## Original chapter plan (historical)
+
+The following design notes preserve the earlier plan and its original tense. Northern/western Kanto, all three bird habitats, Blue and the Faraway Island conclusion subsequently shipped in v0.0.41–0.0.42, as recorded at the top of this file. Future-tense passages here are not an unfinished-work list.
 
 ### 1. A Champion abroad — implemented opening
 
