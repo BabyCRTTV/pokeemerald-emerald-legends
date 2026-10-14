@@ -24,6 +24,11 @@ The restored Debug ROM passed the controlled native checks again using mGBA 0.10
 
 Both restored-source GCC 13.2.1 builds passed. EWRAM/IWRAM were unchanged at 254468/28376 bytes (Debug) and 254470/28328 bytes (Release). ROM usage grew only 424/880 bytes respectively versus v0.0.49. [Complete local verification](family-skin-v0.0.50-verification.json) pins both final target hashes. Existing unrelated compiler warnings remained; no family build error occurred.
 
-## Publication
+## Publication — GitHub verified, Pages retry pending
 
-Pending rerun regression/native-build/BPS verification and live Pages/download checks. The latest verified public build remains v0.0.49 until these receipts are recorded. Broader natural movement/weather/follower playtests and historical battery-save fixtures remain outstanding; this palette-only change does not claim those tests.
+- Runtime source: `29e45ad535e1bd6a57e6e18f0a01939dd94740b9`; [source checks](https://github.com/BabyCRTTV/pokeemerald-emerald-legends/actions/runs/38592974123) passed. Native harness and frozen masks: `ff0b287a61cbdca1e0590255a581d7a954df7b59`; [its checks](https://github.com/BabyCRTTV/pokeemerald-emerald-legends/actions/runs/38593983229) passed.
+- [Remote native Debug/Release builds, supported clean-base identity, independent BPS applications and byte comparisons](https://github.com/BabyCRTTV/pokeemerald-emerald-legends/actions/runs/38592973976) passed. Patch commit: `491a43c6cf6ad3d581c6ca6b57ee219ccb706a3b`. Both targets matched local native ROMs, including the actual Debug ROM tested in mGBA.
+- Both pinned public GitHub BPS URLs returned HTTP 200 and matched the committed SHA256 manifest. Patch/source/target CRCs passed. Release grew only 539 BPS bytes and Debug 904 bytes. [Structured publication receipts](family-skin-v0.0.50-verification.json) contain both direct download URLs and hashes.
+- [Pages deployment 38594477288](https://github.com/BabyCRTTV/pokeemerald-emerald-legends/actions/runs/38594477288) failed after its ten-minute timeout on 14 October 2026. The deployment API remained in `updating_pages`, then the action canceled it. ROM/patch builds and upload succeeded; this was the separate Pages deployment stage. The handoff update triggers a fresh deployment. At the last check, the live site still served the v0.0.49 patch manifest and v0.0.50 site BPS URLs returned 404. Do not call website publication complete until the retry and live-download checks pass.
+
+Broader natural movement/weather/follower playtests and historical battery-save fixtures remain outstanding. Controlled callbacks do not establish normal map/menu traversal or battery save/reload. No original or private diagnostic game ROM was published.

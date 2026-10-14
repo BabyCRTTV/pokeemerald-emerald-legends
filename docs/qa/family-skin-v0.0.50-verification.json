@@ -39,5 +39,39 @@
     }
   },
   "save_impact": "No serialized layouts, fields, capacities, codecs, initialization rules or persistent IDs changed. Family colors derive from the existing appearance choice. No migration required; historical-save emulator matrix not newly exercised.",
-  "publication": "Pending remote native/BPS publication and live Pages/download verification."
+  "publication": "Both native builds, independent clean-base BPS applications and pinned public GitHub downloads verified. Both targets matched local native ROMs. Pages run 38594477288 timed out while updating_pages; the handoff commit triggers a fresh deployment. Website BPS availability remains unverified; do not claim site publication until a retry and live checks pass.",
+  "github_downloads": [
+    {
+      "variant": "Release",
+      "url": "https://raw.githubusercontent.com/BabyCRTTV/pokeemerald-emerald-legends/491a43c6cf6ad3d581c6ca6b57ee219ccb706a3b/docs/downloads/Pokemon-Emerald-Legends-v0.0.50.bps",
+      "http": 200,
+      "bytes": 17429545,
+      "sha256": "6949cc81410a0182b23e3170ff0e55dbe91cd06598db836728cb925e151a5486",
+      "patch_source_target_CRC_verified": true,
+      "target_matched_local": true
+    },
+    {
+      "variant": "Debug",
+      "url": "https://raw.githubusercontent.com/BabyCRTTV/pokeemerald-emerald-legends/491a43c6cf6ad3d581c6ca6b57ee219ccb706a3b/docs/downloads/Pokemon-Emerald-Legends-v0.0.50-debug.bps",
+      "http": 200,
+      "bytes": 17261895,
+      "sha256": "3656ff9eacd3595070a2e2b650502018e8949958c35b5951c65d45a6be6efe2b",
+      "patch_source_target_CRC_verified": true,
+      "target_matched_local": true
+    }
+  ],
+  "patch_commit": "491a43c6cf6ad3d581c6ca6b57ee219ccb706a3b",
+  "qa_commit": "ff0b287a61cbdca1e0590255a581d7a954df7b59",
+  "workflow_runs": {
+    "runtime_source_checks": 38592974123,
+    "native_builds_BPS_publication": 38592973976,
+    "QA_checks": 38593983229,
+    "patch_Pages_timeout": 38594477288
+  },
+  "supported_base_sha1": "f3ae088181bf583e55daf962a92bb46f4f1d07b7",
+  "supported_base_crc32": "1f1c08fb",
+  "BPS_size_delta_from_v49": {
+    "Release": 539,
+    "Debug": 904
+  }
 }
