@@ -207,7 +207,7 @@ void LegendsUpdateAppearancePalettes(void)
         if (LegendsGetHair() && !LegendsGetCostume() && gender == MALE)
         {
             // Custom hair has a warm highlight. The compositor first moves
-            // Brendan's native clothing shade 7 to stable field blue slot 8.
+            // Brendan's native clothing shade 7 to stable blue slot 5.
             // His eyes use native 5/9/14/15 and keep their exact colors.
             gLegendsOverworldPalettes[gender][7] = 22 | (13 << 5) | (8 << 10);
             gLegendsTrainerPalettes[gender][7] = 22 | (15 << 5) | (10 << 10);
@@ -223,14 +223,18 @@ void LegendsUpdateAppearancePalettes(void)
             gLegendsOverworldPalettes[gender][4] = gLegendsTrainerPalettes[gender][4] = colors[LegendsGetHairColor()-1][0];
             gLegendsOverworldPalettes[gender][7] = gLegendsTrainerPalettes[gender][7] = colors[LegendsGetHairColor()-1][1];
         }
-        if (gender == MALE && LegendsGetHair() && !LegendsGetCostume())
+        if (gender == MALE && LegendsGetHair() && LegendsGetHair() != 2 && !LegendsGetCostume())
         {
-            // Native-scale field hair uses two independent shades and the
-            // native outline. Keep both original pupil/body blues (5/8).
-            // Curls reserves only red-shadow 13 for its fixed green cap;
-            // the compositor keeps small native red details in red 12.
-            if (LegendsGetHair() == 8)
-                gLegendsOverworldPalettes[gender][13] = sBaseOverworldPalettes[gender][10];
+            static const u16 shadows[LEGENDS_HAIR_COLOR_COUNT] = {
+                RGB(8,5,4), RGB(2,2,3), RGB(5,3,2), RGB(7,4,3),
+                RGB(7,2,2), RGB(10,6,3), RGB(13,9,4), RGB(7,8,11),
+            };
+            // Overworld-only third hair shade. Move the original navy 8 to
+            // stable slot 5 before painting hair; eyes retain that exact navy.
+            // Shoes reserve 6/11 and scarves 14, so all three hair materials
+            // remain independent of those accessories.
+            gLegendsOverworldPalettes[gender][5] = sBaseOverworldPalettes[gender][8];
+            gLegendsOverworldPalettes[gender][8] = shadows[LegendsGetHairColor()];
             if (!LegendsGetHairColor())
             {
                 gLegendsOverworldPalettes[gender][4] = RGB(17,11,7);

@@ -62,8 +62,8 @@ void LegendsPrepareFootwearPalette(u16 *palette, u8 gender, u8 kind)
         for (i = 0; i < ARRAY_COUNT(candidates); i++)
         {
             if ((LegendsGetHairColor() && (candidates[i] == 4 || candidates[i] == 7))
-                || (gender == MALE && LegendsGetHair() && candidates[i] == 7)
-                || (kind == 0 && gender == MALE && LegendsGetHair() && candidates[i] == 4))
+                || (gender == MALE && LegendsGetHair() && (candidates[i] == 4 || candidates[i] == 7))
+                || (kind == 0 && gender == MALE && LegendsGetHair() && LegendsGetHair() != 2 && candidates[i] == 8))
                 continue;
             u32 distance = ColorDistance(palette[slot ? 11 : 6], palette[candidates[i]]);
             if (distance < best)
@@ -93,13 +93,13 @@ static void Compose(u8 *dest, const u8 *src, const u8 *mask, u32 size, u8 gender
         {
             u8 pixel = (src[i] >> shift) & 15;
             u8 overlay = mask == NULL ? 0 : (mask[i] >> shift) & 15;
-            if (kind == 0 && gender == MALE && LegendsGetHair() == 8 && pixel == 13)
-                pixel = 12; // Fixed Curls green never colors native red props.
             // Slot 7 is a warm custom-hair highlight for Brendan. Move the
             // old shirt/trouser shade before shoes and hair are painted so
             // footwear masks cannot be overwritten by the palette reservation.
             if (gender == MALE && (LegendsGetHair() || LegendsGetHairColor()) && pixel == 7)
-                pixel = kind == 0 ? 8 : 5;
+                pixel = 5;
+            if (kind == 0 && gender == MALE && LegendsGetHair() && LegendsGetHair() != 2 && pixel == 8)
+                pixel = 5; // Stable original navy, independent of hair shadow 8.
             if (footwear && (pixel == 6 || pixel == 11))
                 pixel = sRemap[gender][kind][pixel == 6 ? 0 : 1];
             if (overlay)
@@ -171,11 +171,6 @@ const u32 *LegendsFootwearFrontPic(enum TrainerPicID pic, const u32 *data)
     u8 leggings = gender == FEMALE ? LegendsGetLeggings() : 0;
     u8 *out;
     u32 i, pos;
-    if (gender == MALE && !LegendsGetCostume() && LegendsMaleFrontPalette(pic) != NULL)
-    {
-        LegendsBuildMaleFront(sFrontPic[MALE], sFrontPixels);
-        return sFrontPic[MALE];
-    }
     if (gender > 1 || LegendsGetCostume() || (!shoes && !hair && !hairColor && !coat && !leggings))
         return data;
     LegendsUpdateAppearancePalettes();

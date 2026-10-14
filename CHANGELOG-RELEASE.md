@@ -2,12 +2,11 @@
 
 This is the player-facing history for the recommended **Release** build. Shared Legends changes are repeated here so this file stands on its own; Release-only behavior is called out separately.
 
-## Unreleased — male appearance repair draft
+## Unreleased — existing sprite color repair
 
-- Prepare generated-reference male front hairstyles with native Emerald face/body geometry for Trainer Card, wardrobe and the new-game preview. Preserve the native Curls cap panel.
-- Repair the five male front outfits, coats, scarves and footwear using separate authored materials; keep the diagonal strap and props distinct from shirt colors. Route the intro through the same front palette helper.
-- Extend the owner-requested review draft to all ten generated-reference male overworld cuts, including pending Side Part. Fit hair to native field poses; preserve lower faces, pupils, hands, props and east mirroring. Separate hair/skin/body colors and keep Curls cap colors fixed through outfit, scarf and footwear changes.
-- Preserve approved battle/female artwork, saved IDs, fixed costumes and untouched Original. Shared by Release/Debug; artwork awaits visual approval and VERSION remains 0.0.46. Evidence and compact compiled-C PNG/GIF previews: `docs/qa/male-front-repair.md` and `docs/qa/male-overworld-repair.md`.
+- Retain the v0.0.46 male overworld/front sprites, approved head atlas, every existing hair/coat mask and native animations. Discard the rejected generated replacement draft.
+- Keep the male smile, chin, ear and bare-skin contours on the selected skin shadow instead of the hair color. Stabilize existing body shades for Natural/custom hair and reserve both hair slots during footwear remapping.
+- Preserve female sprites, approved battle art, fixed costumes, diving, saved choices and untouched Original. Shared by Debug and Release; VERSION and published downloads stay v0.0.46 pending review. Evidence: `docs/qa/appearance-color-fix.md`.
 
 ## Wiki 1.6.0 - 2026-10-13
 

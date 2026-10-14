@@ -392,9 +392,6 @@ static inline const u32 *GetTrainerFrontPicData(enum TrainerPicID trainerPic)
 
 static inline const u16 *GetTrainerFrontPicPalette(enum TrainerPicID trainerPic)
 {
-    const u16 *male = LegendsMaleFrontPalette(trainerPic);
-    if (male != NULL)
-        return male;
     return gTrainerPicInfo[SanitizeFrontTrainerPic(trainerPic)].frontPic->paletteData;
 }
 

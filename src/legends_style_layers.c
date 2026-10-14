@@ -4,7 +4,7 @@
 
 // Art is authored against each original pose, then stored as sparse pixel
 // edits in ROM. No face detection or geometric drawing occurs on the GBA.
-enum { RECOLOR_BODY = 2, HAIR_MALE_WORLD = 4 };
+enum { RECOLOR_BODY = 2, RECOLOR_MALE_WORLD_BODY = 4, RECOLOR_MALE_FACE = 5 };
 static void ApplyEdits(u8 *bits, u8 width, const struct StyleEdits *layer, u8 mode)
 {
     u32 i;
@@ -19,11 +19,13 @@ static void ApplyEdits(u8 *bits, u8 width, const struct StyleEdits *layer, u8 mo
             continue;
         if (mode == 3 && ((bits[index] >> shift) & 15) != 1 && ((bits[index] >> shift) & 15) != 2 && ((bits[index] >> shift) & 15) != 3)
             continue; // Footwear and outerwear already painted above these cells.
-        if (mode == RECOLOR_BODY && ((bits[index] >> shift) & 15) != 4 && ((bits[index] >> shift) & 15) != 7)
+        if ((mode == RECOLOR_BODY || mode == RECOLOR_MALE_WORLD_BODY) && ((bits[index] >> shift) & 15) != 4 && ((bits[index] >> shift) & 15) != 7)
             continue; // Never overwrite a shoe, scarf or painted coat.
+        if (mode == RECOLOR_MALE_FACE && ((bits[index] >> shift) & 15) != 4)
+            continue; // Keep hair strands, cuffs and painted accessories intact.
         u8 value = edit & 15;
-        if (mode == HAIR_MALE_WORLD && LegendsGetScarf() && value == 14)
-            value = 9; // Fixed cap white cannot use the selected scarf color.
+        if (mode == RECOLOR_MALE_WORLD_BODY && value == 8)
+            value = 5; // Male overworld body navy cannot use hair-shadow slot 8.
         bits[index] = (bits[index] & ~(15 << shift)) | (value << shift);
     }
 }
@@ -47,12 +49,16 @@ void LegendsPaintStylePose(u8 *bits, u8 width, u8 gender, u8 kind, u8 state, u8 
         return;
     if (gender == FEMALE && LegendsGetLeggings())
         ApplyEdits(bits, width, &layers[13 + LegendsGetLeggings()], 3);
-    if (LegendsGetHairColor() || (gender == MALE && kind == 0 && hair))
-        ApplyEdits(bits, width, &layers[13], RECOLOR_BODY);
+    if (LegendsGetHairColor())
+        ApplyEdits(bits, width, &layers[13], gender == MALE && kind == 0 && hair && hair != 2 ? RECOLOR_MALE_WORLD_BODY : RECOLOR_BODY);
+    else if (gender == MALE && kind != 2 && hair)
+        ApplyEdits(bits, width, &layers[15], kind == 0 && hair != 2 ? RECOLOR_MALE_WORLD_BODY : RECOLOR_BODY);
     if (coat)
         ApplyEdits(bits, width, &layers[9 + coat], TRUE);
     if (hair)
-        ApplyEdits(bits, width, &layers[hair - 1], gender == MALE && kind == 0 ? HAIR_MALE_WORLD : FALSE);
+        ApplyEdits(bits, width, &layers[hair - 1], FALSE);
     else if (LegendsGetHairColor())
         ApplyEdits(bits, width, &layers[12], FALSE);
+    if (gender == MALE && kind != 2 && (hair || LegendsGetHairColor()))
+        ApplyEdits(bits, width, &layers[14], RECOLOR_MALE_FACE);
 }

@@ -41,10 +41,6 @@ u8 LegendsGetScarf(void){return 0;}
 #define LEGENDS_HAIR_COUNT 11
 #define LEGENDS_JACKET_COUNT 3
 void LegendsUpdateAppearancePalettes(void){}
-// The dedicated male-front path has its own real-C palette/asset regression.
-// Keep this suite focused on the unchanged world, female and legacy compositor.
-const u16 *LegendsMaleFrontPalette(enum TrainerPicID pic){return NULL;}
-void LegendsBuildMaleFront(u32 *picture,u8 *tiles){assert(0);}
 #define CpuSmartCopy16(s,d,n) memcpy(d,s,n)
 void DecompressDataWithHeaderWram(const u32*s,void*d){memcpy(d,s,2048);}
 static u16 cardPal[48];
@@ -168,7 +164,7 @@ int main(int argc,char**argv){
  // Reserve native male shade 7 *before* footwear overlays. A shoe pixel
  // must never be replaced by the warm highlight reservation.
  u8 nativeShade=0x77, painted=0, bootMask=0x11;
- hair=1;Compose(&painted,&nativeShade,NULL,1,0,0,FALSE);assert(painted==0x88);
+ hair=1;Compose(&painted,&nativeShade,NULL,1,0,0,FALSE);assert(painted==0x55);
  Compose(&painted,&nativeShade,&bootMask,1,0,0,TRUE);assert(painted==0x66);
  Compose(&painted,&nativeShade,NULL,1,1,0,FALSE);assert(painted==0x77);
  hair=0;Compose(&painted,&nativeShade,NULL,1,0,0,FALSE);assert(painted==0x77);

@@ -1662,7 +1662,7 @@ static void NewGameBirchSpeech_RefreshAppearance(u8 taskId)
         DecompressDataWithHeaderWram(GetTrainerFrontPicData(pic), sIntroAppearanceGfx[gender]);
         RequestSpriteCopy(sIntroAppearanceGfx[gender],
             (void *)(OBJ_VRAM0 + gSprites[spriteId].oam.tileNum * TILE_SIZE_4BPP), TRAINER_PIC_SIZE);
-        LoadPalette(GetTrainerFrontPicPalette(pic), OBJ_PLTT_ID(gSprites[spriteId].oam.paletteNum), PLTT_SIZE_4BPP);
+        LoadPalette(gLegendsTrainerPalettes[gender], OBJ_PLTT_ID(gSprites[spriteId].oam.paletteNum), PLTT_SIZE_4BPP);
     }
 }
 
