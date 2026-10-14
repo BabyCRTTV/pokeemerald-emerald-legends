@@ -65,6 +65,29 @@ def room(stage=0,gender='Brendans',theme='memories'):
         # Richer alternative: two existing shields; not recommended as default.
         prop(out,'silver',edge,4)
     return out.convert('RGB')
+def champion_revision(stage=6,gender='Brendans',arrangement='flanking'):
+    """Revision C: preserve the entire original map and all existing furniture."""
+    original=room(0,gender)
+    out=original.convert('RGBA')
+    right=gender=='Brendans';edge=8 if right else 0
+    if stage>=1:prop(out,'flowers',edge,6)
+    if stage>=2:prop(out,'silver',edge,4)
+    if stage>=3:prop(out,'gold',edge,2)
+    map_x=2 if right else 6
+    left,right_slot=map_x-1,map_x+1
+    if stage>=4:
+        if arrangement=='flanking':
+            out.alpha_composite(DECOR.meta(0x331,True),(left*16,8))
+            if stage>=6:out.alpha_composite(DECOR.meta(0x333,True),(right_slot*16,8))
+        else:
+            # One poster evolves from the early report to the final expedition.
+            out.alpha_composite(DECOR.meta(0x333 if stage>=6 else 0x331,True),(right_slot*16,8))
+    result=out.convert('RGB')
+    # The framed wall map spans two native metatiles; retain every pixel.
+    region=(map_x*16,0,(map_x+1)*16,32)
+    assert result.crop(region).tobytes()==original.crop(region).tobytes()
+    return result
+
 FONT='/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf'
 BOLD='/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf'
 def sheet(name,title,subtitle,cards):
@@ -96,6 +119,20 @@ def main():
     sheet('bedroom-both-layouts.png','Both player bedrooms','Final-stage layout concepts. Native room colors, furniture and wardrobe positions are retained.',[
       ('Brendan-layout home','Keepsakes use the outer right edge. The central rug and staircase remain open.',room(6)),
       ('May-layout home','The display mirrors to the outer left edge. The existing wardrobe stays on the right.',room(6,'Mays'))])
+    sheet('bedroom-c-revised-layouts.png','Champion room / revised','Option C inspiration / the original wall map stays fully visible. Existing game assets only.',[
+      ('C1 / Map with two posters','Recommended: posters flank the map. Gold and silver awards stay along the outer edge.',champion_revision()),
+      ('C2 / Map with one poster','A quieter wall: one poster beside the map changes as your Kanto research advances.',champion_revision(arrangement='single'))])
+    sheet('bedroom-c-revised-stages.png','Growing into option C','Revised progression / both awards remain. The wall map stays in place throughout.',[
+      ('Hoenn / Champion home',"Mom's flowers, Norman's silver display and your Champion gold display remain together.",champion_revision(3)),
+      ('Kanto / Research begins','The first filed Wing Survey report adds a green poster beside the original map.',champion_revision(4)),
+      ('Finale / A journey remembered',"Oak's final report and Birch's letter add the blue poster. Earlier research fills the notebook.",champion_revision(6))])
+    sheet('bedroom-c-revised-both.png','Option C / both bedrooms','C1 final-stage concepts / the original map, wardrobe, bed, clock and GameCube remain.',[
+      ('Brendan-layout home','The map remains above the desk. New posters sit on either side without covering it.',champion_revision()),
+      ('May-layout home','The same arrangement mirrors naturally. The map and existing room furniture stay intact.',champion_revision(gender='Mays'))])
+    for gender in ('Brendans','Mays'):
+        for stage in range(7):
+            for arrangement in ('flanking','single'):
+                champion_revision(stage,gender,arrangement)
     manifest={'base_commit':'ed88772110e0952c9e9c3887f1345ecabd4429c0','status':'Unapproved static design concepts; no ROM implementation','art':'Existing repository game assets only; foreground layers composed with native palettes; no AI or new pixel art','source_hash_normalization':'Palette text uses LF; binary art is hashed verbatim','sources':{p:source_hash(ROOT/p) for p in sorted(SOURCES)},'outputs':{p.name:hashlib.sha256(p.read_bytes()).hexdigest() for p in sorted(OUT.glob('*.png'))}}
     (OUT/'preview-manifest.json').write_text(json.dumps(manifest,indent=2)+'\n')
 if __name__=='__main__':main()

@@ -1,8 +1,24 @@
 # Evolving bedroom — owner review
 
-Status: **proposed, not approved or implemented**. Prepared from verified v0.0.52 master `ed88772110e0952c9e9c3887f1345ecabd4429c0`. The owner selected evolving bedrooms and requested designs/stages before implementation, extending through the current Kanto storyline. On 14 October 2026 the owner explicitly reiterated using existing game assets for world building; any newly designed artwork must be previewed separately first.
+Status: **C selected as inspiration; revised layout awaits review. No ROM implementation.** Prepared from verified v0.0.52 master `ed88772110e0952c9e9c3887f1345ecabd4429c0`. The owner selected evolving bedrooms and requested designs/stages before implementation, extending through the current Kanto storyline. On 14 October 2026 the owner explicitly reiterated using existing game assets for world building; any newly designed artwork must be previewed separately first.
 
-## Visual directions
+## Current review — revised C
+
+The owner preferred **C — Champion display**, but identified that the posters covered the existing wall map and explicitly requested that the map remain displayed. This supersedes the initial A recommendation and the initial proposal to remove the map. Do not implement or republish those earlier overlapping poster arrangements.
+
+- **C1 (recommended):** the original map stays exactly where it is. Two native posters flank it, one on each side. Gold and silver awards occupy the outer edge above Mom's flowers.
+- **C2:** retain the same awards and map, but use only one native poster beside the map; it changes from green to blue at the finale.
+- Norman's silver display remains after the Champion gold display is added. No glass ornament is proposed for revised C.
+- C1 progression: first Gym victory adds flowers; Norman adds silver; Hall of Fame adds gold; the first filed Wing Survey report adds the green poster; Oak's final report plus Birch's closing letter adds the blue poster. Individual bird reports, Regigigas, northern research, all eight visiting Gym records and Faraway Island continue to add notebook/family memories in between. Bird captures are not required.
+- Both layouts preserve the original map's full 16×32 native-pixel region. The generator asserts exact pixel equality for stages 0–6, both bedroom layouts and both variants (28 combinations). Existing furniture and original source assets remain unchanged. No collision, palette capacity, save-compatibility or gameplay verification is claimed by these static assertions.
+
+[Revised C layouts](bedroom-c-revised-layouts.png), [revised stages through Kanto](bedroom-c-revised-stages.png), [revised C in both bedrooms](bedroom-c-revised-both.png).
+
+## Historical first-round directions (superseded)
+
+The following initial images remain as review history. Their three-poster layout removed the map and was rejected by the owner's follow-up. Use the revised C images above for current work.
+
+## Original visual directions
 
 - **A — Home with memories (recommended):** flowers, a small Hoenn award, three native research-themed posters and a native glass ornament. Staged additions retain the familiar room layout, colors, furniture, GameCube, clock, bed and wardrobe positions. The original small picture gives way to the completed report display; its memory stays in the notebook.
 - **B — Cozy home:** flowers and the original picture; most changes appear in notebook entries and family dialogue. Least floor clutter.
@@ -12,7 +28,7 @@ Status: **proposed, not approved or implemented**. Prepared from verified v0.0.5
 
 These are **static native-asset compositions, not emulator captures or verified gameplay**. They contain no AI imagery, new pixel art or invented furniture. Native source tiles, their flips and native palettes are composed with transparency and enlarged by exactly 3× nearest neighbor. The presentation captions are outside the game scene. Existing decorations stand in for story mementos; their proposed role does not grant the original Battle Tower/Contest achievement or withdraw an owned item. The posters are report displays, not bird feathers or capture trophies.
 
-## Proposed progression
+## Original proposed progression (superseded where revised above)
 
 | Milestone in the existing game | Room / notebook / family change |
 | --- | --- |
@@ -33,6 +49,8 @@ These are presentation stages, not a replacement story progression variable. Com
 
 ## Implementation constraints after approval
 
+Apply these constraints to revised C; the original map must remain fully visible and pixel-identical in its original position.
+
 - Derive keepsakes from existing badge/story flags. Kanto sources include `FLAG_LEGENDS_KANTO_WELCOMED`, `FLAG_LEGENDS_KANTO_SURVEY_REPORT`, `FLAG_LEGENDS_KANTO_SURVEY_POWER_REPORT`, `FLAG_LEGENDS_STORY_SEAFOAM_REPORT`, `FLAG_LEGENDS_STORY_WEATHER_REPORT`, `FLAG_LEGENDS_STORY_NORTH_REPORT`, `FLAG_LEGENDS_STORY_EMBER_REPORT`, `FLAG_LEGENDS_FINAL_EIGHT_RECORDS`, `FLAG_LEGENDS_FINAL_ISLAND_VISITED`, `FLAG_LEGENDS_FINAL_REPORT` and `FLAG_LEGENDS_FINAL_HOENN_EPILOGUE`. Verify each actual script contract when implementing.
 - Keep saved structures, map/warp IDs, item/decor IDs, existing wardrobe choices and player decoration records unchanged. An existing progressed save should derive its earned displays on room entry, without item grants or migrations. This is a design objective, not a verified compatibility claim.
 - The 9×8 bedroom layouts and existing furniture coordinates remain intact in these concepts. Display props use the outer right column in Brendan's home and outer left column in May's home. Do not alter the rival's bedroom or opening/moving-in scenes.
@@ -44,6 +62,6 @@ These are presentation stages, not a replacement story progression variable. Com
 
 ## Reproduction and review evidence
 
-`python3 tools/legends/preview_evolving_bedroom.py` regenerates all four narrow PNGs and a source/output SHA256 manifest. Inspected the staged compositions, both bedroom variants and all three design options. Preview-only files do not enter ROM builds; VERSION stays 0.0.52. No new game build or BPS patch is claimed for this design milestone.
+`python3 tools/legends/preview_evolving_bedroom.py` regenerates the four historical PNGs and three revised C PNGs and a source/output SHA256 manifest. Inspected the staged compositions, both bedroom variants and all three design options. Preview-only files do not enter ROM builds; VERSION stays 0.0.52. No new game build or BPS patch is claimed for this design milestone.
 
-Next step: obtain the owner's preferred direction and adjustments, then implement the approved design. No design or implementation publication approval has been inferred from the earlier v0.0.52 approval.
+Next step: obtain the owner's review of revised C1/C2, then implement the approved design. The owner selected C as inspiration; that is not approval of this newly revised layout. No design or implementation publication approval has been inferred from the earlier v0.0.52 approval.
