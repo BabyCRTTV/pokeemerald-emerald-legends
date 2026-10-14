@@ -4,6 +4,8 @@
 
 The owner switches between models such as Astra and Sol. Use the selected model's strengths, retain the same quality standard, and communicate project decisions, approvals, validation and unfinished work through this file and the linked records. Live repository activity supersedes this snapshot. Inspect it before resuming; do not infer publication from a commit alone.
 
+The owner prefers changelog entries in past tense for easy reading. Use this convention in the canonical, Release, Debug and website changelogs.
+
 ## Current version — 0.0.47.1
 
 The owner requested a clear gap between EXIT and the pause-menu page arrow. The correction moves only the page indicator four pixels lower, providing four blank rows below EXIT while retaining cursor placement, horizontal alignment, eight visible rows and navigation.

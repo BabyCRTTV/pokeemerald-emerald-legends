@@ -4,16 +4,16 @@ This is the developer-facing history for the **Debug** build. Shared Legends cha
 
 ## [0.0.47.1] - 2026-10-14
 
-- Move the pause-menu page arrow four pixels lower, leaving four clear pixel rows below EXIT instead of touching the text.
-- Keep the selection cursor, arrow shape and horizontal alignment, eight visible rows, scrolling and page navigation unchanged. Preserve the approved v0.0.47 sprite/color baseline.
-- Shared by Release and Debug; no variant-specific gameplay differences. Validate both page directions and every supported menu height. See `docs/qa/start-menu-footer.md`.
+- Moved the pause-menu page arrow four pixels lower, leaving four clear pixel rows below EXIT instead of touching the text.
+- Kept the selection cursor, arrow shape and horizontal alignment, eight visible rows, scrolling and page navigation unchanged. Preserved the approved v0.0.47 sprite/color baseline.
+- Changes were shared by Release and Debug, with no variant-specific gameplay differences. Validated both page directions and every supported menu height. Validation: `docs/qa/start-menu-footer.md`.
 
 ## [0.0.47] - 2026-10-14
 
-- Preserve the existing v0.0.46 trainer sprites, approved hairstyles and native animations as the baseline for further improvements.
-- Fix male smile, chin, ear and bare-skin contours taking the selected hair color in the new-game selection, wardrobe, Trainer Card and overworld sprites.
-- Keep clothing/body colors stable across hair colors, including Natural, and prevent footwear recoloring from borrowing reserved hair colors.
-- Preserve saved wardrobe choices, female sprites, approved battle art, fixed costumes, diving and untouched Original. Shared by Release and Debug; no variant-specific gameplay differences. Validation: `docs/qa/appearance-color-fix.md`.
+- Preserved the existing v0.0.46 trainer sprites, approved hairstyles and native animations as the baseline for further improvements.
+- Fixed male smile, chin, ear and bare-skin contours taking the selected hair color in the new-game selection, wardrobe, Trainer Card and overworld sprites.
+- Kept clothing/body colors stable across hair colors, including Natural, and prevented footwear recoloring from borrowing reserved hair colors.
+- Preserved saved wardrobe choices, female sprites, approved battle art, fixed costumes, diving and untouched Original. Changes were shared by Release and Debug, with no variant-specific gameplay differences. Validation: `docs/qa/appearance-color-fix.md`.
 
 ## Wiki 1.6.0 - 2026-10-13
 
