@@ -131,7 +131,10 @@ with tempfile.TemporaryDirectory() as d:
       for x,y in art.fishing_rod(p,g,native_index):
        assert out[y][x]==p[y][x],(name,slot,hair,coat,'fishing rod',x,y)
      if not (male_world and hair==2):
-      for x,y in protected:assert out[y][x]==p[y][x],(name,kind,state,slot,hair,coat,'face/hand/ball',x,y)
+      props=art.ball_pixels(g,'front',native_index) if kind==1 else art.fishing_rod(p,g,native_index) if kind==0 and state==6 else set()
+      for x,y in protected:
+       expected=3 if g==0 and kind!=2 and not (kind==0 and state==4) and hair and p[y][x]==4 and (x,y) not in props and (kind==1 and (x,y) in art.coat_hands(g,'front',native_index) or any(0<=xx<w and 0<=yy<h and p[yy][xx] in (1,2,3) for xx,yy in ((x-1,y),(x+1,y),(x,y-1),(x,y+1)))) else p[y][x]
+       assert out[y][x]==expected,(name,kind,state,slot,hair,coat,'face/hand/ball',x,y)
      if rear_walking and hair in art.APPROVED_MALE_WORLD_STYLES:
       assert all(out[y][x] not in (9,14) for y in range(ear_y-8,ear_y+2) for x in range(3,13)),(name,slot,hair,'native cap remnant')
       assert all(out[y][x] for y in (ear_y,ear_y+1) for x in range(3,13)),(name,slot,hair,coat,'transparent gap beside ear')
@@ -149,9 +152,10 @@ with tempfile.TemporaryDirectory() as d:
      if hair and not (kind==0 and state==4):
       plain=(ctypes.c_uint8*len(native)).from_buffer_copy(native);painter(plain,w,g,kind,state,slot,hair,0)
       crown=unpack(bytes(plain),w,h)
+      _,head_owned=art.hair_edits(p,g,'overworld' if kind==0 else 'front' if kind==1 else 'back',native_index,hair,FILES[state] if kind==0 else '',True)
       for y in range(h):
        for x in range(w):
-        if crown[y][x]!=p[y][x] and crown[y][x] in (4,8):assert out[y][x]==crown[y][x]
+        if crown[y][x]!=p[y][x] and crown[y][x] in (4,8) and (x,y) in head_owned:assert out[y][x]==crown[y][x]
    if kind==1:assert len(signatures)==11,(name,'distinct portraits')
    if rear_walking:assert len(signatures)==11,(name,slot,'eleven distinct rear cuts')
    if (state!=4 or kind) and (groups or kind==0 and art.WORLD_DIRECTIONS.get(FILES[state],())[native_index]==2):assert len(signatures)>=5,(name,kind,state,slot,'distinct hairstyles')

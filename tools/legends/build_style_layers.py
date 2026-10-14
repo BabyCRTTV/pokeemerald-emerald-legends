@@ -403,6 +403,7 @@ def build():
     tables=[];back=[];front=[];counts=[]
     def emit(p,g,kind,i,state=''):
         nonlocal pose_count
+        fix_male_colors=g==0 and (kind=='front' or kind=='overworld' and state!='underwater')
         items=[]
         for hair in range(1,11):
             art,points=hair_edits(p,g,kind,i,hair,state,True)
@@ -414,10 +415,31 @@ def build():
         items.append((p,original))
         body={(x,y) for y,row in enumerate(p) for x,v in enumerate(row)
               if v in (4,7) and (x,y) not in original}
+        props=ball_pixels(g,kind,i) if kind=='front' else fishing_rod(p,g,i) if state=='fishing' else set()
+        hands=coat_hands(g,kind,i) if kind=='front' else set()
         remap=[row[:] for row in p]
-        for x,y in body:remap[y][x]=8 if p[y][x]==4 or g else 5
+        for x,y in body:
+            # Native brown beside bare skin is a skin contour, not clothing.
+            skin_edge=fix_male_colors and p[y][x]==4 and (x,y) not in props and ((x,y) in hands or any(0<=xx<len(p[0]) and 0<=yy<len(p) and p[yy][xx] in (1,2,3) for xx,yy in ((x-1,y),(x+1,y),(x,y-1),(x,y+1))))
+            remap[y][x]=3 if skin_edge else 8 if p[y][x]==4 or g else 5
         items.append((remap,body))
-        for choice in (1,2):items.append((leggings_edits(p,g,kind,state,choice,i),set()))
+        if fix_male_colors:
+            # Male slot 14 was unused. Retag only protected native brown
+            # mouth/face/ear contours after the existing hair layer, so a
+            # blond/silver selection cannot paint the smile or chin.
+            face=head(p,g,kind,i,state)[0]
+            contours={(x,y) for y,row in enumerate(p) for x,v in enumerate(row) if v==4 and (x,y) not in props and any((xx,yy) in face for xx,yy in ((x-1,y),(x+1,y),(x,y-1),(x,y+1)))}
+            fixed=[row[:] for row in p]
+            for x,y in contours:fixed[y][x]=3
+            items.append((fixed,contours))
+            # Natural uses the same stable body materials while preserving
+            # the published native Ball shading. Colored hair keeps the
+            # established slot-13 prop treatment.
+            natural=[row[:] for row in p]
+            for x,y in body-props:natural[y][x]=remap[y][x]
+            items.append((natural,body-props))
+        else:
+            for choice in (1,2):items.append((leggings_edits(p,g,kind,state,choice,i),set()))
         desc=[]
         for edited,forced in items:
             off=len(blob)//2

@@ -2,6 +2,13 @@
 
 This is the developer-facing history for the **Debug** build. Shared Legends changes are repeated here so this file stands on its own; Debug-only behavior is called out separately.
 
+## [0.0.47] - 2026-10-14
+
+- Preserve the existing v0.0.46 trainer sprites, approved hairstyles and native animations as the baseline for further improvements.
+- Fix male smile, chin, ear and bare-skin contours taking the selected hair color in the new-game selection, wardrobe, Trainer Card and overworld sprites.
+- Keep clothing/body colors stable across hair colors, including Natural, and prevent footwear recoloring from borrowing reserved hair colors.
+- Preserve saved wardrobe choices, female sprites, approved battle art, fixed costumes, diving and untouched Original. Shared by Release and Debug; no variant-specific gameplay differences. Validation: `docs/qa/appearance-color-fix.md`.
+
 ## Wiki 1.6.0 - 2026-10-13
 
 - Owner-requested documentation refresh against game v0.0.46. Preserve the wiki design and walkthrough layout; extend Chapters 19–25 through Seafoam, the Hoenn intermission, northern/western Kanto and Faraway Island.

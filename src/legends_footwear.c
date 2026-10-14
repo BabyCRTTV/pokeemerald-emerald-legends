@@ -62,8 +62,8 @@ void LegendsPrepareFootwearPalette(u16 *palette, u8 gender, u8 kind)
         for (i = 0; i < ARRAY_COUNT(candidates); i++)
         {
             if ((LegendsGetHairColor() && (candidates[i] == 4 || candidates[i] == 7))
-                || (gender == MALE && LegendsGetHair() && candidates[i] == 7)
-                || (kind == 0 && gender == MALE && LegendsGetHair() && LegendsGetHair() != 2 && (candidates[i] == 4 || candidates[i] == 8)))
+                || (gender == MALE && LegendsGetHair() && (candidates[i] == 4 || candidates[i] == 7))
+                || (kind == 0 && gender == MALE && LegendsGetHair() && LegendsGetHair() != 2 && candidates[i] == 8))
                 continue;
             u32 distance = ColorDistance(palette[slot ? 11 : 6], palette[candidates[i]]);
             if (distance < best)
