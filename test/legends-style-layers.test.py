@@ -33,14 +33,15 @@ for state in ('surfing','watering'):
 assets=[root/'graphics/legends/styles/edits.bin',root/'src/data/legends/style_layers.h']
 before=[p.read_bytes() for p in assets];art.build();assert before==[p.read_bytes() for p in assets]
 header=assets[1].read_text();edits=struct.unpack('<'+'H'*(len(before[0])//2),before[0])
-# Freeze the unapproved Side Part to the published v0.0.45 edit stream.
+# Freeze the owner-approved Side Part, including the single-cell hole repair.
 side_part=[]
 for state in range(8):
  block=re.search(r'sStyle0'+str(state)+r'\[\]\[16\] = \{(.*?)\n\};',header,re.S)[1]
  pairs=[tuple(map(int,p)) for p in re.findall(r'\{(\d+),(\d+)\}',block)]
  for offset,count in pairs[1::16]:side_part.append(before[0][offset*2:(offset+count)*2])
 assert len(side_part)==101
-assert hashlib.sha256(b''.join(side_part)).hexdigest()=='6b0f0365f0d53512917c1a8998ee00c62cc959be185580ecc9af18e085a3c221'
+approval=json.loads((root/'tools/legends/side_part_approval.json').read_text())
+assert hashlib.sha256(b''.join(side_part)).hexdigest()==approval['runtime_layers_sha256']
 header=re.sub(r'static const u16 sStylePixels\[\] = INCBIN_U16\([^;]+;', 'static const u16 sStylePixels[]={'+','.join(map(str,edits))+'};',header)
 source='\n'.join(l for l in (root/'src/legends_style_layers.c').read_text().splitlines() if not l.startswith('#include'))
 pre='''
@@ -130,11 +131,10 @@ with tempfile.TemporaryDirectory() as d:
      if kind==0 and state==6:
       for x,y in art.fishing_rod(p,g,native_index):
        assert out[y][x]==p[y][x],(name,slot,hair,coat,'fishing rod',x,y)
-     if not (male_world and hair==2):
-      props=art.ball_pixels(g,'front',native_index) if kind==1 else art.fishing_rod(p,g,native_index) if kind==0 and state==6 else set()
-      for x,y in protected:
-       expected=3 if g==0 and kind!=2 and not (kind==0 and state==4) and hair and p[y][x]==4 and (x,y) not in props and (kind==1 and (x,y) in art.coat_hands(g,'front',native_index) or any(0<=xx<w and 0<=yy<h and p[yy][xx] in (1,2,3) for xx,yy in ((x-1,y),(x+1,y),(x,y-1),(x,y+1)))) else p[y][x]
-       assert out[y][x]==expected,(name,kind,state,slot,hair,coat,'face/hand/ball',x,y)
+     props=art.ball_pixels(g,'front',native_index) if kind==1 else art.fishing_rod(p,g,native_index) if kind==0 and state==6 else set()
+     for x,y in protected:
+      expected=3 if g==0 and kind!=2 and not (kind==0 and state==4) and hair and p[y][x]==4 and (x,y) not in props and (kind==1 and (x,y) in art.coat_hands(g,'front',native_index) or any(0<=xx<w and 0<=yy<h and p[yy][xx] in (1,2,3) for xx,yy in ((x-1,y),(x+1,y),(x,y-1),(x,y+1)))) else p[y][x]
+      assert out[y][x]==expected,(name,kind,state,slot,hair,coat,'face/hand/ball',x,y)
      if rear_walking and hair in art.APPROVED_MALE_WORLD_STYLES:
       assert all(out[y][x] not in (9,14) for y in range(ear_y-8,ear_y+2) for x in range(3,13)),(name,slot,hair,'native cap remnant')
       assert all(out[y][x] for y in (ear_y,ear_y+1) for x in range(3,13)),(name,slot,hair,coat,'transparent gap beside ear')
@@ -179,7 +179,6 @@ with tempfile.TemporaryDirectory() as d:
      # core included Brendan's protruding cap brim, which is now removed.
      core={(x,y) for y in range(ear_y-5,ear_y+2) for x in range(5,11)}
     for hair in range(1,11):
-     if male_world and hair==2:continue # Frozen published masks verified below.
      buf=(ctypes.c_uint8*len(native)).from_buffer_copy(native);painter(buf,w,g,kind,state,slot,hair,0)
      out=unpack(bytes(buf),w,h)
      assert all(out[y][x] for x,y in core), (name,kind,state,slot,hair,'incomplete head')

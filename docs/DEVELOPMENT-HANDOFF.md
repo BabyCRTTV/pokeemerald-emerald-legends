@@ -6,7 +6,17 @@ The owner switches between models such as Astra and Sol. Use the selected model'
 
 The owner prefers changelog entries in past tense for easy reading. Use this convention in the canonical, Release, Debug and website changelogs.
 
-## Current version — 0.0.47.1
+## Current work — 0.0.48 Side Part
+
+The owner approved the retained four-view male Side Part preview on 14 October 2026 and requested preserving its look through animation while fixing one purple/transparent cell beside the front ear. This authorizes that existing revision and its single-cell repair. Front atlas cell `(4,17)` now uses neighboring hair shadow 8. Seven earlier corrections from the approved preview were retained; no other haircut was redesigned.
+
+The candidate uses all ten approved imported male overworld cuts. Side Part keeps saved ID 2 and fits the existing native walking/running, bike/trick, Surf, field-move, fishing and watering poses. Retain the v0.0.47 smile/body-color repair, fixed battle uniforms, existing front portraits, female art, costumes and native diving suit. Other nine head-atlas rows and all unrelated sparse layers remain fingerprint-protected.
+
+Dedicated checks match the approved head reference, all 18 walk/run frames, 92 non-diving field descriptors, native command directions/flips, pupils, colors and wardrobes. The generic 212-pose/400 smile-color/1,440 wardrobe checks passed. All 43 runnable regression workflow steps passed locally. Native build/publication verification is in progress; do not report the candidate published until its workflows and live downloads are confirmed. [Side Part QA and previews](qa/side-part-v0.0.48.md).
+
+The owner uses a phone and needs narrow vertical PNG/GIF previews plus explicit downloadable filename links. Reproduce these from actual C buffers with `python3 tools/legends/preview_side_part.py`; distinguish them from emulator captures.
+
+## Previous verified version — 0.0.47.1
 
 The owner requested a clear gap between EXIT and the pause-menu page arrow. The correction moves only the page indicator four pixels lower, providing four blank rows below EXIT while retaining cursor placement, horizontal alignment, eight visible rows and navigation.
 
@@ -17,7 +27,7 @@ Source: `942ee29598420c22442be61c18e5a902b72759ea` via [PR #65](https://github.c
 - Approved sprite baseline: **0.0.47**, shared by Release and Debug.
 - The owner approved the minimal smile/body-color repair and requested publication. Preserve the existing v0.0.46 sprites and approved hairstyle artwork. Generated replacement sprites were rejected and are absent from the released tree.
 - Male native mouth/chin/ear and exposed-skin contours now use skin shadow instead of hair color. Natural custom hair receives body isolation; footwear remapping reserves both hair slots. Clothes and shoes retain their selected colors across hair-color changes.
-- Existing save choices, female sprites, approved battle art, fixed costumes, diving and untouched Original retain their established behavior. Side Part still uses its published art; its separate redesign has not received approval.
+- Existing save choices, female sprites, approved battle art, fixed costumes, diving and untouched Original retain their established behavior. The previously separate Side Part revision was approved on 14 October 2026 and is integrated in the v0.0.48 candidate above.
 
 ## Confirmed implementation and validation
 
@@ -37,4 +47,4 @@ Resume audit on **14 October 2026** verified default-branch head `aa921927300c03
 - [PR #56](https://github.com/BabyCRTTV/pokeemerald-emerald-legends/pull/56) remains open and merge-conflicting. It targets an older wiki snapshot; current wiki v1.6.0 already covers Chapters 19–25. Reconcile its unique changes before deciding its disposition; do not merge the older snapshot over the current wiki. Wiki updates remain separate, manual and owner-requested.
 - Lucky Egg balance review, seasonal encounters, further configuration consolidation, a reusable test-save matrix, an upstream-update procedure and later Johto research remain roadmap ideas, not verified regressions or a newly selected implementation task.
 
-The owner intends to improve from the approved sprite baseline. Await specific visual tuning feedback before redesigning or publishing further artwork, including the separate Side Part proposal. Preserve the color repair, protected-asset checks, native animation geometry and fixed battle-uniform decision. This resumption request selected no new gameplay feature or sprite redesign. Documentation maintenance retained v0.0.47.1 and its verified Release/Debug patches.
+The approved Side Part and its requested one-cell repair are the current visual task. Further artwork redesigns still need specific owner feedback. Preserve the color repair, protected-asset checks, native animation geometry and fixed battle-uniform decision. The earlier documentation audit retained v0.0.47.1; its evidence remains historical.

@@ -85,6 +85,12 @@ def import_sheets(directory):
         records.append({'id':style+1,'name':name,'source_name':filename.split('-',1)[1],
                         'source_sha256':hashlib.sha256(path.read_bytes()).hexdigest(),
                         'grid_step':[sx,sy],'anchors':anchors})
+    # Keep the separately approved Side Part corrections when reimporting
+    # the original high-resolution source sheets. All other cells stay native.
+    approval=json.loads((ROOT/'tools/legends/side_part_approval.json').read_text())
+    for view,edits in approval['atlas_overrides'].items():
+        dx=0 if view=='front' else 32
+        for x,y,value in edits:atlas.putpixel((dx+x,32+y),value)
     target=ROOT/'graphics/legends/male_overworld'
     target.mkdir(parents=True,exist_ok=True)
     atlas.save(target/'heads.png',transparency=0)

@@ -1,5 +1,7 @@
 # Pokémon Emerald: Legends — Quality Assurance
 
+Latest appearance follow-up: [approved Side Part, v0.0.48](qa/side-part-v0.0.48.md).
+
 Current verification: [v0.0.47.1 project-state audit, 14 October 2026](qa/project-state-2026-10-14.md). Historical sections below retain their original release context; use current source/Options and the linked milestone evidence for the present behavior. Unchecked items remain playtest work unless a later QA record explicitly verifies the same scenario.
 
 Baseline: v0.0.8. Maintenance checks added in v0.0.8.1.

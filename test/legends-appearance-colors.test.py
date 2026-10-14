@@ -111,13 +111,13 @@ def compile_api(temp,old=False):
         return im,px,list(pal)
     return api,render
 
-# Artwork preservation: existing hair/coat masks, female layers, back layers,
-# the indexed male head atlas and the source registration are byte-identical.
+# Artwork preservation: only the separately approved male Side Part world
+# layer may differ. Existing coats, other cuts, portraits and battle art stay frozen.
 header=(root/'src/data/legends/style_layers.h').read_text();blob=(root/'graphics/legends/styles/edits.bin').read_bytes()
 for name,expected in BASE['unchanged_layers'].items():
     block=re.search(r'const struct StyleEdits '+name+r'[^=]*=\s*(.*?);',header,re.S)[1];pieces=[]
     for i,(off,n) in enumerate(re.findall(r'\{(\d+),(\d+)\}',block)):
-        if name.startswith('sStyle0') and name!='sStyle04' and i%16 in (13,14,15):continue
+        if name.startswith('sStyle0') and name!='sStyle04' and i%16 in (1,13,14,15):continue
         if name=='sStyleFront' and i<16 and i%16 in (13,14,15):continue
         pieces.append(struct.pack('<I',int(n))+blob[int(off)*2:(int(off)+int(n))*2])
     assert hashlib.sha256(b''.join(pieces)).hexdigest()==expected,('v0.0.46 artwork changed',name)
@@ -151,7 +151,7 @@ with tempfile.TemporaryDirectory() as temp:
                         for col in (1,6,7):
                             alt,_,_=render(kind=kind,col=col,o=o,coat=coat,scarf=scarf,shoe=shoe)
                             assert body_signature(im,kind)==body_signature(alt,kind),(kind,o,coat,scarf,shoe,'wardrobe body tint')
-    print('Preserved v0.0.46 hair/coat artwork; 400 smile/color/skin cases and 1,440 front/field wardrobe combinations isolate body RGB')
+    print('Preserved approved artwork outside the new Side Part; 400 smile/color/skin cases and 1,440 front/field wardrobe combinations isolate body RGB')
     if '--preview' in sys.argv:
         _,before=compile_api(temp,True)
         cases=[('Portrait smile / blond',dict(col=6),True),('Field chin / blond',dict(col=6,kind=0),True),('Field chin / silver',dict(col=7,tone=3,kind=0),True)]
