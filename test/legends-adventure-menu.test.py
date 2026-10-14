@@ -36,11 +36,15 @@ static bool32 StartMenuPlayerNameCallback(void){return TRUE;}
 struct MenuAction {const char *text;union {bool32 (*u8_void)(void);} func;};
 static struct MenuAction sStartMenuItems[20];
 static int sJournalPage;
+static u32 hintMinY, hintMaxY;
 static bool32 IsOverworldLinkActive(void){return FALSE;}
 static bool32 InUnionRoom(void){return FALSE;}
 static u8 GetStartMenuWindowId(void){return 0;}
 static void FillWindowPixelBuffer(u8 w,u8 color){}
-static void FillWindowPixelRect(u8 w,u8 color,u32 x,u32 y,u32 a,u32 b){assert(x+a<=96&&y+b<=144);}
+static void FillWindowPixelRect(u8 w,u8 color,u32 x,u32 y,u32 a,u32 b){
+ assert(x+a<=96&&y+b<=min(sNumStartMenuActions,START_MENU_VISIBLE_ROWS)*16u+16u);
+ if(x<90){if(y<hintMinY)hintMinY=y;if(y>hintMaxY)hintMaxY=y;}
+}
 static void StringExpandPlaceholders(u8 *d,const char *s){strcpy((char*)d,s);}
 static void PrintPlayerNameOnWindow(u8 w,const char *s,u32 x,u32 y){assert(y+16<=144);}
 static void AddTextPrinterParameterized(u8 w,u8 f,const u8 *text,u32 x,u32 y,u32 speed,void *cb){assert(y+16<=144&&x+strlen((const char*)text)*6<=96);}
@@ -64,7 +68,15 @@ for(int mask=0;mask<16;mask++){
   MoveStartMenuCursor(1);assert(sStartMenuCursorPos==0);
  }
 }
-puts("Pause menu builders, wrapping, scrolling and pixel bounds passed.");
+for(int rows=1;rows<=8;rows++)for(int page=0;page<2;page++){
+ sNumStartMenuActions=rows;sStartMenuTop=0;sJournalPage=page;
+ hintMinY=UINT32_MAX;hintMaxY=0;DrawStartMenuScrollHints();
+ // EXIT's native glyph ink ends 12 pixels below its text origin.
+ u32 exitInkBottom=(rows-1)*16+9+12;
+ assert(hintMinY>exitInkBottom+4); // Four clear pixel rows before the arrow.
+ assert(hintMaxY-hintMinY==4&&hintMaxY<rows*16u+16u);
+}
+puts("Pause menu builders, scrolling, footer clearance and pixel bounds passed.");
 }
 '''
 with tempfile.TemporaryDirectory() as d:
