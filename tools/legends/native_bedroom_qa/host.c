@@ -21,6 +21,8 @@ int main(int argc,char **argv){
  video=calloc(240*160,sizeof(color_t));c->setVideoBuffer(c,video,240);
  struct VFile *f=VFileOpen(argv[1],O_RDONLY);assert(f&&c->loadROM(c,f));c->reset(c);frames(300);
  c->busWrite32(c,mainAddr,0);command(0,400);capture(argv[2],"male-default");
+ command(6,350);capture(argv[2],"male-without-poster");
+ command(7,350);capture(argv[2],"male-with-poster");
  command(2,40);capture(argv[2],"bedroom-decor-menu");
  key(128);key(128);key(128);key(1);capture(argv[2],"rug-color-menu");
  key(128);key(128);key(1);assert(profile()==0xb420);capture(argv[2],"rug-rose-menu");
@@ -44,5 +46,23 @@ int main(int argc,char **argv){
  key(128);key(1);key(128);key(128);key(128);key(128);key(1);assert(profile()==0xb454);
  command(3,350);capture(argv[2],"female-plum-rug-gold-bed");
  command(5,350);capture(argv[2],"female-doll-on-wood-floor");
+ command(6,350);capture(argv[2],"female-without-poster");
+ command(7,350);capture(argv[2],"female-with-poster");
+ // Scroll through the actual chair list to HARD, cancel without changing it,
+ // then save/load and interact with the real PC from the replacement seat.
+ command(2,40);for(int i=0;i<5;i++)key(128);key(1);capture(argv[2],"chair-style-menu");
+ for(int i=0;i<9;i++)key(128);capture(argv[2],"chair-style-menu-scrolled");key(1);
+ command(9,2);assert(c->busRead32(c,0x0203fc24)==0xc909);
+ key(1);key(64);key(2);command(9,2);assert(c->busRead32(c,0x0203fc24)==0xc909);
+ command(4,1200);assert(c->busRead32(c,0x0203fc24)==0xc909);
+ command(3,350);capture(argv[2],"female-hard-chair");
+ command(8,350);key(64);key(1);frames(100);capture(argv[2],"female-chair-pc-access");
+ // Also select a different style in the male layout using real menu input.
+ command(0,400);command(2,40);for(int i=0;i<5;i++)key(128);key(1);
+ key(128);key(128);key(1);command(9,2);assert(c->busRead32(c,0x0203fc24)==0xc902);
+ command(3,350);capture(argv[2],"male-pokemon-chair");
+ command(8,350);key(64);key(1);frames(100);capture(argv[2],"male-chair-pc-access");
+ key(1);frames(80);capture(argv[2],"bedroom-pc-top-menu");
+ key(128);key(128);key(1);frames(80);capture(argv[2],"decorate-from-bedroom-pc");
  c->deinit(c);free(video);return 0;
 }

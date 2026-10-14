@@ -136,6 +136,8 @@ static void DecorationMenuAction_Cancel(u8 taskId);
 static void BedroomRugColor(u8 taskId);
 static void BedroomBedColor(u8 taskId);
 static void BedroomColorInput(u8 taskId);
+static void BedroomChairMenu(u8 taskId);
+static void BedroomChairInput(u8 taskId);
 static void ReturnToDecorationActionsAfterInvalidSelection(u8 taskId);
 static void SecretBasePC_PrepMenuForSelectingStoredDecors(u8 taskId);
 static void InitDecorationCategoriesWindow(u8 taskId);
@@ -245,12 +247,14 @@ static const struct MenuAction sDecorationMainMenuActions[] =
 
 static const u8 sRugColorText[] = _("RUG COLOR");
 static const u8 sBedColorText[] = _("BED COLOR");
+static const u8 sChairText[] = _("PC CHAIR");
 static const struct MenuAction sBedroomActions[] = {
     { .text = gText_Decorate, .func = { .void_u8 = DecorationMenuAction_Decorate } },
     { .text = gText_PutAway, .func = { .void_u8 = DecorationMenuAction_PutAway } },
     { .text = gText_Toss2, .func = { .void_u8 = DecorationMenuAction_Toss } },
     { .text = sRugColorText, .func = { .void_u8 = BedroomRugColor } },
     { .text = sBedColorText, .func = { .void_u8 = BedroomBedColor } },
+    { .text = sChairText, .func = { .void_u8 = BedroomChairMenu } },
     { .text = gText_Cancel, .func = { .void_u8 = DecorationMenuAction_Cancel } },
 };
 static const struct MenuAction sBedroomColors[] = {
@@ -650,7 +654,7 @@ static u8 AddDecorationWindow(u8 windowIndex)
     if (windowIndex == WINDOW_MAIN_MENU)
     {
         template = sDecorationWindowTemplates[WINDOW_MAIN_MENU];
-        template.height = 2 * DecorationActionCount();
+        template.height = BedroomActions() ? 13 : 2 * DecorationActionCount();
         template.width = GetMaxWidthInMenuTable(DecorationActions(), DecorationActionCount());
         if (template.width > 18)
             template.width = 18;
@@ -678,8 +682,19 @@ static void RemoveDecorationWindow(u8 windowIndex)
 static void AddDecorationActionsWindow(void)
 {
     u8 windowId = AddDecorationWindow(WINDOW_MAIN_MENU);
-    PrintMenuTable(windowId, DecorationActionCount(), DecorationActions());
-    InitMenuInUpperLeftCornerNormal(windowId, DecorationActionCount(), sDecorationActionsCursorPos);
+    if (BedroomActions())
+    {
+        u8 i;
+        for (i = 0; i < DecorationActionCount(); i++)
+            AddTextPrinterParameterized(windowId, FONT_NORMAL, DecorationActions()[i].text, 8, i * 14 + 1, TEXT_SKIP_DRAW, NULL);
+        CopyWindowToVram(windowId, COPYWIN_GFX);
+        InitMenuNormal(windowId, FONT_NORMAL, 0, 1, 14, DecorationActionCount(), sDecorationActionsCursorPos);
+    }
+    else
+    {
+        PrintMenuTable(windowId, DecorationActionCount(), DecorationActions());
+        InitMenuInUpperLeftCornerNormal(windowId, DecorationActionCount(), sDecorationActionsCursorPos);
+    }
 }
 
 static void InitDecorationActionsWindow(void)
@@ -740,7 +755,8 @@ static void PrintCurMainMenuDescription(void)
     FillWindowPixelBuffer(0, PIXEL_FILL(1));
     if (BedroomActions() && sDecorationActionsCursorPos == 3) description = COMPOUND_STRING("Choose your bedroom rug color.");
     else if (BedroomActions() && sDecorationActionsCursorPos == 4) description = COMPOUND_STRING("Choose your bedspread color.");
-    else description = sSecretBasePCMenuItemDescriptions[BedroomActions() && sDecorationActionsCursorPos == 5 ? 3 : sDecorationActionsCursorPos];
+    else if (BedroomActions() && sDecorationActionsCursorPos == 5) description = COMPOUND_STRING("Choose a chair style for the PC.");
+    else description = sSecretBasePCMenuItemDescriptions[BedroomActions() && sDecorationActionsCursorPos == 6 ? 3 : sDecorationActionsCursorPos];
     AddTextPrinterParameterized2(0, FONT_NORMAL, description, 0, 0, TEXT_COLOR_DARK_GRAY, TEXT_COLOR_WHITE, TEXT_COLOR_LIGHT_GRAY);
 }
 
@@ -2805,6 +2821,59 @@ static void BedroomColorInput(u8 taskId)
     if (input == MENU_NOTHING_CHOSEN) return;
     if (input >= 0 && input < BEDROOM_COLOR_COUNT)
         LegendsBedroomSetColor(gTasks[taskId].data[14], input);
+    RemoveDecorationWindow(WINDOW_MAIN_MENU);
+    AddDecorationActionsWindow();
+    PrintCurMainMenuDescription();
+    gTasks[taskId].func = HandleDecorationActionsMenuInput;
+}
+
+// These are cosmetic styles for the existing seat, not inventory decorations.
+// All nine native chairs fit its one-tile footprint; no doll slots are consumed.
+static void BedroomChairMenu(u8 taskId)
+{
+    static const struct ListMenuItem items[] = {
+        { COMPOUND_STRING("DEFAULT"), 0 },
+        { gDecorations[DECOR_SMALL_CHAIR].name, 1 },
+        { gDecorations[DECOR_POKEMON_CHAIR].name, 2 },
+        { gDecorations[DECOR_HEAVY_CHAIR].name, 3 },
+        { gDecorations[DECOR_PRETTY_CHAIR].name, 4 },
+        { gDecorations[DECOR_COMFORT_CHAIR].name, 5 },
+        { gDecorations[DECOR_RAGGED_CHAIR].name, 6 },
+        { gDecorations[DECOR_BRICK_CHAIR].name, 7 },
+        { gDecorations[DECOR_CAMP_CHAIR].name, 8 },
+        { gDecorations[DECOR_HARD_CHAIR].name, 9 },
+        { gText_Cancel, LIST_CANCEL },
+    };
+    struct WindowTemplate window = sDecorationWindowTemplates[WINDOW_MAIN_MENU];
+    struct ListMenuTemplate list = sDecorationItemsListMenuTemplate;
+    u8 selected = LegendsBedroomChair();
+    u8 scroll = selected > 7 ? selected - 7 : 0;
+    RemoveDecorationWindow(WINDOW_MAIN_MENU);
+    window.height = 16;
+    window.width = 16;
+    list.windowId = sDecorMenuWindowIds[WINDOW_MAIN_MENU] = AddWindow(&window);
+    DrawStdFrameWithCustomTileAndPalette(list.windowId, FALSE, 0x214, 14);
+    list.items = items;
+    list.moveCursorFunc = NULL;
+    list.itemPrintFunc = NULL;
+    list.totalItems = ARRAY_COUNT(items);
+    list.maxShowed = 8;
+    list.upText_Y = 1;
+    list.fontId = FONT_NORMAL;
+    gTasks[taskId].data[15] = ListMenuInit(&list, scroll, selected - scroll);
+    gTasks[taskId].func = BedroomChairInput;
+    ScheduleBgCopyTilemapToVram(0);
+}
+static void BedroomChairInput(u8 taskId)
+{
+    s32 input;
+    if (gPaletteFade.active) return;
+    input = ListMenu_ProcessInput(gTasks[taskId].data[15]);
+    if (input == LIST_NOTHING_CHOSEN) return;
+    PlaySE(SE_SELECT);
+    if (input >= 0 && input < BEDROOM_CHAIR_COUNT)
+        LegendsBedroomSetChair(input);
+    DestroyListMenuTask(gTasks[taskId].data[15], NULL, NULL);
     RemoveDecorationWindow(WINDOW_MAIN_MENU);
     AddDecorationActionsWindow();
     PrintCurMainMenuDescription();

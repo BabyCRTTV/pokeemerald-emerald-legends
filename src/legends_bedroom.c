@@ -5,6 +5,7 @@
 #include "event_data.h"
 #include "event_object_movement.h"
 #include "fieldmap.h"
+#include "field_camera.h"
 #include "field_player_avatar.h"
 #include "palette.h"
 #include "string_util.h"
@@ -22,11 +23,14 @@
 static const u16 sRoomPalette[] = INCGFX_U16("data/tilesets/secondary/brendans_mays_house/palettes/06.pal", ".gbapal");
 static const u16 sMaleBedPalette[] = INCGFX_U16("data/tilesets/secondary/brendans_mays_house/palettes/07.pal", ".gbapal");
 static const u16 sFemaleBedPalette[] = INCGFX_U16("data/tilesets/secondary/brendans_mays_house/palettes/10.pal", ".gbapal");
+static const u16 sDisplayBackdropPalette[] = INCGFX_U16("data/tilesets/legends_bedroom/chair_backdrop.pal", ".gbapal");
 static const u16 sDecorPalettes[][16] = {
     INCGFX_U16("data/tilesets/primary/secret_base/palettes/00.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/primary/secret_base/palettes/01.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/primary/secret_base/palettes/02.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/primary/secret_base/palettes/03.pal", ".gbapal"),
+    INCGFX_U16("data/tilesets/primary/secret_base/palettes/04.pal", ".gbapal"),
+    INCGFX_U16("data/tilesets/primary/secret_base/palettes/05.pal", ".gbapal"),
 };
 static const u16 sColors[][4] = {
     {RGB(8,13,21), RGB(13,18,24), RGB(17,23,30), RGB(23,27,31)}, // Blue
@@ -91,10 +95,30 @@ void LegendsBedroomLoadPalette(bool8 skipFaded)
         else { colors[10] = sColors[selected - 1][1]; colors[11] = sColors[selected - 1][2]; }
     }
     RoomPalette(colors, 2, skipFaded);
-    RoomPalette(sDecorPalettes[0], 5, skipFaded);
-    RoomPalette(sDecorPalettes[1], 11, skipFaded);
+    RoomPalette(sDecorPalettes[4], 5, skipFaded);
+    RoomPalette(sDisplayBackdropPalette, 11, skipFaded);
+    RoomPalette(sDecorPalettes[5], 12, skipFaded);
     RoomPalette(sDecorPalettes[2], 4, skipFaded);
     RoomPalette(sDecorPalettes[3], 3, skipFaded);
+}
+u8 LegendsBedroomChair(void)
+{
+    u16 value = VarGet(VAR_LEGENDS_BEDROOM_CHAIR);
+    return (value & 0xFF00) == 0xC900 && (value & 255) < BEDROOM_CHAIR_COUNT ? value & 255 : 0;
+}
+static void ApplyChair(void)
+{
+    u8 style = LegendsBedroomChair();
+    u16 tile = MaleRoom() ? 0x262 : 0x261;
+    if (style) tile = (MaleRoom() ? BEDROOM_CHAIRS_MALE : BEDROOM_CHAIRS_FEMALE) + style - 1;
+    MapGridSetMetatileIdAt((MaleRoom() ? 0 : 8) + MAP_OFFSET, 2 + MAP_OFFSET, tile);
+}
+void LegendsBedroomSetChair(u8 style)
+{
+    if (!LegendsBedroomIsHome() || style >= BEDROOM_CHAIR_COUNT) return;
+    VarSet(VAR_LEGENDS_BEDROOM_CHAIR, 0xC900 | style);
+    ApplyChair();
+    DrawWholeMapView();
 }
 static bool32 Floor(u16 tile)
 {
@@ -129,7 +153,8 @@ static void Keepsake(u8 x, u8 y, u16 tile)
 void LegendsBedroomApply(void)
 {
     u8 x, y, left, right, edge; u16 base;
-    if (!LegendsBedroomIsHome() || !FlagGet(FLAG_RESCUED_BIRCH)) return;
+    if (!LegendsBedroomIsHome()) return;
+    if (!FlagGet(FLAG_RESCUED_BIRCH)) { ApplyChair(); return; }
     // Reset only this room's ROM map; saved doll records are never touched.
     for (y = 0; y < ROOM_H; y++) for (x = 0; x < ROOM_W; x++)
         MapGridSetMetatileEntryAt(x + MAP_OFFSET, y + MAP_OFFSET, gMapHeader.mapLayout->map[y * ROOM_W + x]);
@@ -139,15 +164,17 @@ void LegendsBedroomApply(void)
         base = (MaleRoom() ? 0x298 : 0x29B) + (y == 3 ? 0 : y == 6 ? 16 : 8);
         MapGridSetMetatileEntryAt(x + MAP_OFFSET, y + MAP_OFFSET, (base + (x == left ? 0 : x == right ? 2 : 1)) | 0x3000);
     }
+    ApplyChair();
     edge = MaleRoom() ? 8 : 0;
     if (FlagGet(FLAG_BADGE01_GET)) Keepsake(edge, 6, BEDROOM_FLOWERS);
     if (FlagGet(FLAG_BADGE05_GET)) Keepsake(edge, 4, BEDROOM_SILVER);
     if (FlagGet(FLAG_SYS_GAME_CLEAR)) Keepsake(edge, 2, BEDROOM_GOLD);
     if (FlagGet(FLAG_LEGENDS_KANTO_SURVEY_REPORT))
     {
-        x = MaleRoom() ? 3 : 7;
-        MapGridSetMetatileIdAt(x + MAP_OFFSET, MAP_OFFSET, BEDROOM_POSTER);
-        MapGridSetMetatileIdAt(x + MAP_OFFSET, 1 + MAP_OFFSET, BEDROOM_POSTER + 1);
+        x = MaleRoom() ? 3 : 5;
+        base = MaleRoom() ? BEDROOM_POSTER_MALE : BEDROOM_POSTER_FEMALE;
+        MapGridSetMetatileIdAt(x + MAP_OFFSET, MAP_OFFSET, base);
+        MapGridSetMetatileIdAt(x + MAP_OFFSET, 1 + MAP_OFFSET, base + 1);
     }
 }
 // Flood-fill the actual passable map before/after placement. Functional

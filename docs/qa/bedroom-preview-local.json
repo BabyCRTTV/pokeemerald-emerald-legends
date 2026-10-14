@@ -197,10 +197,10 @@
       "exit": 0
     }
   ],
-  "additional_final_check": "Final full 48-block workflow passed, including large saved-doll footprints and blocked-route regression; final native replay passed.",
+  "additional_final_check": "All 48 workflow check blocks passed after poster/chair implementation; focused actual-C chair/default tests also passed after adding no-implicit-write assertions. Final native replay passed, including actual PC -> Decoration navigation.",
   "builds": {
     "Debug": {
-      "ROM_sha256": "128142ffd55e05f5760bcc8b456584896e88d6c7f2fc89dff7cdce085a25d79a",
+      "ROM_sha256": "d6b1bf8d6340d6993ff0de8e41008b7b8fe74391232e5051e4f7359d7780000a",
       "ROM_bytes": 33554432,
       "memory": [
         [
@@ -213,12 +213,12 @@
         ],
         [
           "ROM",
-          "30698136"
+          "30700332"
         ]
       ]
     },
     "Release": {
-      "ROM_sha256": "523aaa85ea8fa01fcfb0164d5e2fc3e883339d3881188b6857d0dd6e26c8d586",
+      "ROM_sha256": "3c107e8289e3186dcac82c4f7ada99e8f5f84e01c9582bc107e75200e0ba1dfd",
       "ROM_bytes": 33554432,
       "memory": [
         [
@@ -227,11 +227,11 @@
         ],
         [
           "IWRAM",
-          "28328"
+          "28324"
         ],
         [
           "ROM",
-          "30849732"
+          "30851484"
         ]
       ]
     }
@@ -239,7 +239,9 @@
   "save_impact": {
     "layout": "Unchanged SaveBlock structures, capacities, journal/claim IDs, map IDs and legacy readers",
     "colors": "Previously unreferenced native variable 0x405C, signature 0xB400, separate 4-bit rug/bed choices. Invalid/legacy values read as default without mutation.",
-    "native_flash": "Colors and a native UI-placed off-rug Pikachu Doll survived write -> clear -> load; both statuses were SAVE_STATUS_OK.",
-    "limits": "Not an authentic historical-save matrix or a claim of Pizza Boy testing."
-  }
+    "native_flash": "Colors, native UI-placed off-rug Pikachu Doll and Hard chair style survived their write -> clear -> load checks; both save/load statuses were SAVE_STATUS_OK.",
+    "limits": "Not an authentic historical-save matrix or a claim of Pizza Boy testing.",
+    "chair": "Previously unreferenced native variable 0x405F, signature 0xC900, validated 0-9 cosmetic style. Invalid/legacy values read as Default without writes; existing inventory and doll slots are untouched."
+  },
+  "review_parent": "8a7a13dbfaa14757b45ea703720d3aca459b7b19"
 }

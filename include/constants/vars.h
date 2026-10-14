@@ -130,6 +130,7 @@
 #define VAR_LILYCOVE_CITY_STATE                          0x405C // Unused Var
 #define VAR_MOSSDEEP_CITY_STATE                          0x405D
 #define VAR_SOOTOPOLIS_CITY_STATE                        0x405E
+#define VAR_LEGENDS_BEDROOM_CHAIR 0x405F // Previously unreferenced; signed cosmetic chair style
 #define VAR_EVER_GRANDE_CITY_STATE                       0x405F // Unused Var
 #define VAR_ROUTE101_STATE                               0x4060
 #define VAR_ROUTE102_STATE                               0x4061 // Unused Var

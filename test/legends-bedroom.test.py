@@ -10,7 +10,7 @@ def compile_api(directory):
         return ','.join(str((r>>3)|((g>>3)<<5)|((b>>3)<<10)) for r,g,b in colors)
     source=re.sub(r'INCGFX_U16\("([^"]+)", "\.gbapal"\)',palette,source)
     # Replace array macros with native C initializers (including nested arrays).
-    for name in ['sRoomPalette','sMaleBedPalette','sFemaleBedPalette']:
+    for name in ['sRoomPalette','sMaleBedPalette','sFemaleBedPalette','sDisplayBackdropPalette']:
         source=re.sub(r'('+name+r'\[\] = )([^;]+);',r'\1{\2};',source)
     maps=[]
     for g in ['Brendans','Mays']:
@@ -54,6 +54,7 @@ static void VarSet(u16 n,u16 v){variables[n]=v;writes++;}
 static int FlagGet(u16 n){return flags[n];}
 static void LoadPalette(const u16 *p,u16 offset,u16 size){memcpy(gPlttBufferUnfaded+offset,p,size);memcpy(gPlttBufferFaded+offset,p,size);}
 static void StringCopy(u8 *p,const u8 *s){strcpy((char*)p,(const char*)s);}
+static void DrawWholeMapView(void){}
 static void MapGridSetMetatileEntryAt(int x,int y,u16 v){assert(x>=7&&x<16&&y>=7&&y<15);grid[y][x]=v;}
 static void MapGridSetMetatileIdAt(int x,int y,u16 v){grid[y][x]=(grid[y][x]&0xf000)|v;}
 static int MapGridGetCollisionAt(int x,int y){return !!(grid[y][x]&0xc00);}
@@ -71,19 +72,23 @@ void TestRoom(u8 gender,u8 stage){
  if(stage>=1)flags[FLAG_BADGE01_GET]=1;if(stage>=2)flags[FLAG_BADGE05_GET]=1;if(stage>=3)flags[FLAG_SYS_GAME_CLEAR]=1;if(stage>=4)flags[FLAG_LEGENDS_KANTO_SURVEY_REPORT]=1;
  LegendsBedroomApply();LegendsBedroomLoadPalette(0);
 }
+unsigned Writes(void){return writes;}
 u16 Cell(int x,int y){return grid[y+7][x+7];}
 u16 Color(int p,int i){return gPlttBufferUnfaded[p*16+i];}
 void Rival(void){save2.playerGender^=1;}
 void Away(void){save1.location.mapGroup=2;}
 void Block(u8 x,u8 y){grid[y+7][x+7]|=0xc00;}
 void Profile(u16 v){variables[VAR_LEGENDS_BEDROOM_COLORS]=v;}
+void ChairProfile(u16 v){variables[VAR_LEGENDS_BEDROOM_CHAIR]=v;}
+u16 ChairGet(void){return variables[VAR_LEGENDS_BEDROOM_CHAIR];}
 u16 ProfileGet(void){return variables[VAR_LEGENDS_BEDROOM_COLORS];}
 void AddLargeDoll(u8 x,u8 y){save1.playerRoomDecorations[0]=100;save1.playerRoomDecorationPositions[0]=(x<<4)|y;}
 void AddOldDoll(u8 x,u8 y){save1.playerRoomDecorations[0]=77;save1.playerRoomDecorationPositions[0]=(x<<4)|y;}
 '''
     path=Path(directory)/'bedroom.c';path.write_text(preamble+'\nstatic const u16 native[2][72]={{'+maps[0]+'},{'+maps[1]+'}};\n'+source+'\n'+helpers)
     lib=Path(directory)/'bedroom.so';subprocess.run(['cc','-shared','-fPIC','-std=c11','-Werror=implicit-function-declaration','-Wno-incompatible-pointer-types','-I'+str(ROOT/'include'),str(path),'-o',str(lib)],check=True)
-    api=ctypes.CDLL(str(lib));api.Color.restype=api.Cell.restype=api.ProfileGet.restype=ctypes.c_uint16
+    api=ctypes.CDLL(str(lib));api.ChairGet.restype=api.Color.restype=api.Cell.restype=api.ProfileGet.restype=ctypes.c_uint16
+    api.LegendsBedroomChair.restype=ctypes.c_uint8
     return api
 
 def main():
@@ -100,6 +105,20 @@ def main():
         assert rug==[api.Color(1,i) for i in range(16)] and unrelated==[api.Color(6,i) for i in range(16)]
         bed=[api.Color(2,i) for i in range(16)];api.LegendsBedroomSetColor(0,5);assert bed==[api.Color(2,i) for i in range(16)]
         profile=api.ProfileGet();api.LegendsBedroomSetColor(1,255);assert api.ProfileGet()==profile
+        api.TestRoom(gender,4)
+        cx=0 if gender==0 else 8
+        original=api.Cell(cx,2)
+        for bad in [0,1,0xffff,0xc90a,0xc800]:
+            api.ChairProfile(bad);w=api.Writes();assert api.LegendsBedroomChair()==0 and api.ChairGet()==bad and api.Writes()==w
+        for style in range(10):
+            api.LegendsBedroomSetChair(style)
+            assert api.LegendsBedroomChair()==style and api.ChairGet()==0xc900|style
+            assert api.Cell(cx,2)&0xfc00==original&0xfc00
+            if style: assert api.Cell(cx,2)&1023==(0x2d0 if gender==0 else 0x2d9)+style-1
+            else: assert api.Cell(cx,2)==original
+            api.LegendsBedroomApply();assert api.LegendsBedroomChair()==style
+        profile=api.ChairGet();api.LegendsBedroomSetChair(255);assert api.ChairGet()==profile
+        api.Rival();api.LegendsBedroomSetChair(1);assert api.ChairGet()==profile;api.Rival()
         api.TestRoom(gender,4)
         xmap=2 if gender==0 else 6
         assert api.Cell(xmap,0)==before[xmap] and api.Cell(xmap,1)==before[9+xmap]
@@ -130,12 +149,18 @@ def main():
         api.LegendsBedroomSetColor(1,4);assert api.ProfileGet()==profile
         api.Away();before=[api.Color(p,i) for p in range(16) for i in range(16)]
         api.LegendsBedroomLoadPalette(0);assert before==[api.Color(p,i) for p in range(16) for i in range(16)]
-    print('Bedroom C rules passed: signed legacy defaults, independent colors, map preservation, wider rugs, floor placement, protected access and old decorations.')
+    print('Bedroom C rules passed: signed legacy defaults, independent colors, ten chair choices, map preservation, wider rugs, floor placement, protected access and old decorations.')
  # Generator determinism protects all shared source art.
- paths=['data/tilesets/legends_bedroom/'+s for s in ['tiles.png','metatiles.bin','metatile_attributes.bin','sources.json']]
+ paths=['data/tilesets/legends_bedroom/'+s for s in ['tiles.png','metatiles.bin','metatile_attributes.bin','sources.json','chair_backdrop.pal']]+['include/legends_bedroom_tiles.h']
  hashes=[hashlib.sha256((ROOT/p).read_bytes()).hexdigest() for p in paths]
  subprocess.run(['python3',str(ROOT/'tools/legends/build_bedroom.py')],check=True)
  assert hashes==[hashlib.sha256((ROOT/p).read_bytes()).hexdigest() for p in paths]
+ # Poster overlays preserve the original console tiles below the wall.
+ native=struct.unpack('<%dH'%((ROOT/'data/tilesets/secondary/brendans_mays_house/metatiles.bin').stat().st_size//2),(ROOT/'data/tilesets/secondary/brendans_mays_house/metatiles.bin').read_bytes())
+ built=struct.unpack('<%dH'%((ROOT/'data/tilesets/legends_bedroom/metatiles.bin').stat().st_size//2),(ROOT/'data/tilesets/legends_bedroom/metatiles.bin').read_bytes())
+ for poster,original in [(0x2cd,0x265),(0x2cf,0x257)]:
+  a=built[(poster-0x200)*8:(poster-0x200+1)*8];b=native[(original-0x200)*8:(original-0x200+1)*8]
+  assert a[:4]==b[:4] and a[6:]==b[6:]
  # Measure actual native glyph widths for all new notebook/family dialogue.
  chars={c:int(v,16) for c,v in re.findall(r"^'(.)'\s*=\s*([0-9A-F]{2})\s*$",(ROOT/'charmap.txt').read_text(),re.M)};chars["'"]=0xb4
  widths=list(map(int,re.findall(r'\d+',(ROOT/'src/fonts.c').read_text().split('gFontNormalLatinGlyphWidths[] = {')[1].split('};')[0])))

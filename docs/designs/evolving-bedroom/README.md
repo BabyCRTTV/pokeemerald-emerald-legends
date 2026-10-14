@@ -8,6 +8,8 @@ The owner selected C2, requested the native Ball Poster, a rug extending to the 
 
 The wall map remains at its original position. C2 now uses the same Ball Poster throughout; Kanto reports and the finale also update home notebook memories and Mom's dialogue. Silver remains after gold is added. The original furniture, native color defaults, saved doll placements and reserved access tiles are protected. The color choices are Default, Blue, Rose, Mint, Gold, Plum and Coral. Placement supports the bedroom's existing dolls/cushions on available floor; it does not enable Secret Base-only furniture categories in bedrooms.
 
+The follow-up preview repaired poster composition so both consoles and the books remain complete, and added PC CHAIR with Default and all nine native one-tile styles as cosmetic seat choices. Bedroom decoration is still reached only through the PC; real PC navigation and chair save/load were checked.
+
 The following earlier design material is historical. In particular, prior C1/poster colors, three-poster/map replacement, glass ornament and A recommendation are superseded. Await review of the native implementation before merge/publication.
 
 ## Current review — revised C

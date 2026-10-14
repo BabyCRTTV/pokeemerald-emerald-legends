@@ -6,6 +6,8 @@ For build-specific player views, see [CHANGELOG-RELEASE.md](CHANGELOG-RELEASE.md
 
 ## Unreleased — bedroom preview (awaiting owner review)
 
+- Fixed the bedroom Ball Poster overwriting the console/books beneath it, preserving both layouts and the wall map.
+- Added nine native PC chair styles plus Default through the bedroom PC decoration menu, preserving chair access, inventory and existing saves.
 - Added C2 bedroom keepsakes and home memories through the current Kanto finale, using native assets and a Ball Poster beside the preserved wall map.
 - Extended each bedroom rug to the bed's edge and added independent rug/bed colors to the bedroom decoration menu.
 - Allowed existing bedroom dolls and cushions on clear floor beyond the rug, with furniture, access routes, saved decorations and Secret Base behavior protected.
