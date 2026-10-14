@@ -29,6 +29,7 @@ The generator copies native art into free cells of a private bedroom extension; 
 
 ## Verification
 
+- The first PR check failed because Pillow 11.3 encoded the generated PNG differently from local Pillow. Reproduced with the pinned CI package: exact indices, palette, dimensions and mode matched, while encoded PNG bytes differed. The determinism check now compares those exact art properties for PNGs and byte hashes for binary metatiles/metadata. Both local and pinned-Pillow focused checks passed; no ROM/art changes were needed.
 - Actual-C host tests cover validated defaults, no implicit writes, independent materials, all seven chair colors in both layouts, invalid selections, rival/away isolation, repeated setup, map preservation, wider rugs, doll footprints, protected access and generator determinism.
 - A native-tile compositor regression compares both Default chairs against their original native pixels, including PC supports. The emulator Default scenes also matched the prior native baseline byte-for-byte. Chair color changes affected only the upholstery rectangle in both rooms. Rug/bed comparisons changed no pixels outside those materials.
 - Poster-on/off captures changed only the wall rectangle in both rooms, preserving both consoles and the female books. A metatile-word regression checks each original console. Keep this check: the earlier color-only comparison missed the poster bug.

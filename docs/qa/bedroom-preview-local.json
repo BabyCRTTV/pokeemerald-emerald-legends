@@ -266,5 +266,13 @@
       }
     ],
     "also_verified_with_floating_ips": true
+  },
+  "CI_environment_repair": {
+    "initial_run": 38650676950,
+    "cause": "Pillow PNG encoder bytes differed despite identical indexed pixels/palette.",
+    "fix": "PNG determinism compares exact mode, dimensions, indices and full palette; binary/metadata checks remain byte exact.",
+    "reproduced_with_Pillow_11_3_0": true,
+    "focused_check_passed_both_versions": true,
+    "ROM_art_changes": false
   }
 }

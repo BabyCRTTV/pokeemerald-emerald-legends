@@ -152,9 +152,17 @@ def main():
     print('Bedroom C rules passed: signed legacy defaults, independent colors, seven independent original-chair colors, map preservation, wider rugs, floor placement, protected access and old decorations.')
  # Generator determinism protects all shared source art.
  paths=['data/tilesets/legends_bedroom/'+s for s in ['tiles.png','metatiles.bin','metatile_attributes.bin','sources.json']]+['include/legends_bedroom_tiles.h']
- hashes=[hashlib.sha256((ROOT/p).read_bytes()).hexdigest() for p in paths]
+ def asset_digest(path):
+  if path.endswith('.png'):
+   from PIL import Image
+   with Image.open(ROOT/path) as image:
+    # Pillow/zlib versions may encode identical indexed art differently.
+    # Preserve exact pixel indices, palette colors, dimensions and mode.
+    return (image.mode,image.size,image.tobytes(),tuple(image.getpalette()))
+  return hashlib.sha256((ROOT/path).read_bytes()).hexdigest()
+ hashes=[asset_digest(p) for p in paths]
  subprocess.run(['python3',str(ROOT/'tools/legends/build_bedroom.py')],check=True)
- assert hashes==[hashlib.sha256((ROOT/p).read_bytes()).hexdigest() for p in paths]
+ assert hashes==[asset_digest(p) for p in paths]
  # Poster overlays preserve the original console tiles below the wall.
  native=struct.unpack('<%dH'%((ROOT/'data/tilesets/secondary/brendans_mays_house/metatiles.bin').stat().st_size//2),(ROOT/'data/tilesets/secondary/brendans_mays_house/metatiles.bin').read_bytes())
  built=struct.unpack('<%dH'%((ROOT/'data/tilesets/legends_bedroom/metatiles.bin').stat().st_size//2),(ROOT/'data/tilesets/legends_bedroom/metatiles.bin').read_bytes())
