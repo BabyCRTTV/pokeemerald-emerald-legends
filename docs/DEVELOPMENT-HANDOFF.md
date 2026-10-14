@@ -1,50 +1,35 @@
 # Development handoff
 
-## Working preference
+## Working preferences
 
-The owner switches between models such as Astra and Sol. Use the selected model's strengths, retain the same quality standard, and communicate project decisions, approvals, validation and unfinished work through this file and the linked records. Live repository activity supersedes this snapshot. Inspect it before resuming; do not infer publication from a commit alone.
+The owner may switch between models such as Astra and Sol. Preserve the same decisions, approvals and quality standard; live repository activity supersedes this snapshot. Root `VERSION` is authoritative. Use connected GitHub tools for repository writes, retain exact native pixels/animation geometry, and write completed changelog entries in past tense.
 
-The owner prefers changelog entries in past tense for easy reading. Use this convention in the canonical, Release, Debug and website changelogs.
+The owner uses a phone. Provide narrow vertical PNG/GIF previews and explicit downloadable filename links; wide inline sheets were clipped and could not be saved conveniently.
 
-## Current work — 0.0.48 Side Part
+On 14 October 2026 the owner reversed the earlier permission to ignore older saves. Backward compatibility for Legends battery saves is now required for future updates. Preserve existing save readers, field offsets and persistent IDs; add focused migrations/tests when saved data changes. [Save-compatibility policy and evidence](SAVE-COMPATIBILITY.md) defines the release gate without adding duplicate builds or per-patch full emulator runs. Existing checks pass; a complete historical-release save-fixture matrix remains unfinished and must not be represented as verified.
 
-The owner approved the retained four-view male Side Part preview on 14 October 2026 and requested preserving its look through animation while fixing one purple/transparent cell beside the front ear. This authorizes that existing revision and its single-cell repair. Front atlas cell `(4,17)` now uses neighboring hair shadow 8. Seven earlier corrections from the approved preview were retained; no other haircut was redesigned.
+## Current version — 0.0.48
 
-The candidate uses all ten approved imported male overworld cuts. Side Part keeps saved ID 2 and fits the existing native walking/running, bike/trick, Surf, field-move, fishing and watering poses. Retain the v0.0.47 smile/body-color repair, fixed battle uniforms, existing front portraits, female art, costumes and native diving suit. Other nine head-atlas rows and all unrelated sparse layers remain fingerprint-protected.
+The owner approved the retained four-view male Side Part preview on 14 October 2026 and requested preserving its look throughout animation while fixing one transparent pixel beside the front ear. That approval and repair are implemented and published. Front atlas cell `(4,17)` changed from transparency 0 to neighboring hair-shadow 8. Seven earlier corrections already visible in the approved preview were retained. Do not treat this revision as awaiting approval.
 
-Dedicated checks match the approved head reference, all 18 walk/run frames, 92 non-diving field descriptors, native command directions/flips, pupils, colors and wardrobes. The generic 212-pose/400 smile-color/1,440 wardrobe checks passed. All 43 runnable regression workflow steps passed locally. Native build/publication verification is in progress; do not report the candidate published until its workflows and live downloads are confirmed. [Side Part QA and previews](qa/side-part-v0.0.48.md).
+[PR #66](https://github.com/BabyCRTTV/pokeemerald-emerald-legends/pull/66) merged as `c9d3a0675a2e4a55e99d73cd14b5a1604eae4c32`. Side Part keeps saved ID 2 and uses the established native pupil/ear registration, pose tables and east mirroring across all 92 non-diving field descriptors. All ten imported male overworld cuts are now approved. The existing sprite cache/bank sizes and save fields are unchanged.
 
-The owner uses a phone and needs narrow vertical PNG/GIF previews plus explicit downloadable filename links. Reproduce these from actual C buffers with `python3 tools/legends/preview_side_part.py`; distinguish them from emulator captures.
+Preserve the v0.0.47 smile/body-color repair, other nine approved cuts, native faces/props, saved wardrobe choices, female art, front portraits, fixed battle uniforms, team costumes and native diving suit. Side Part now reserves the same three independent hair shades as the other approved cuts. Its exact head, animation buffers and the other cuts remain regression-protected by `tools/legends/side_part_approval.json` and the appearance tests. Further redesigns need specific owner feedback.
 
-## Previous verified version — 0.0.47.1
+## Verification and publication
 
-The owner requested a clear gap between EXIT and the pause-menu page arrow. The correction moves only the page indicator four pixels lower, providing four blank rows below EXIT while retaining cursor placement, horizontal alignment, eight visible rows and navigation.
+- All 43 runnable project-check steps passed locally and on the merged source. [Master checks](https://github.com/BabyCRTTV/pokeemerald-emerald-legends/actions/runs/38556684070).
+- Local GCC 13.2.1 Debug/Release builds passed. mGBA 0.10.2 invoked the actual ARM compositor in a private controlled callback; all 101 native descriptors/palettes matched the approved host-C results, including 92 field poses and nine unchanged diving frames. The tested Debug target hash matches the published target. This was not a natural field/story traversal or save-persistence test.
+- [Merged-source native builds, clean-base/BPS application and publication](https://github.com/BabyCRTTV/pokeemerald-emerald-legends/actions/runs/38556683931) passed. Patch commit: `4b8573588c586e86a3d26dd887d54f788fc55a70`. [Patch Pages deployment](https://github.com/BabyCRTTV/pokeemerald-emerald-legends/actions/runs/38557855004) passed.
+- Both live patches returned HTTP 200, matched the pinned SHA256 manifest and passed BPS CRC/source-identity checks. Both target hashes matched the local native builds. Live homepage/changelog/patcher and both mobile previews matched committed bytes.
+- [Detailed QA, provenance and downloadable previews](qa/side-part-v0.0.48.md). Reproduce the 360-pixel-wide four-view PNG and native-command walking/running GIF with `python3 tools/legends/preview_side_part.py`. These are actual C sprite-buffer exports, not emulator screen captures.
 
-Source: `942ee29598420c22442be61c18e5a902b72759ea` via [PR #65](https://github.com/BabyCRTTV/pokeemerald-emerald-legends/pull/65). [Merged project checks](https://github.com/BabyCRTTV/pokeemerald-emerald-legends/actions/runs/38497167668) and [native Debug/Release build/BPS verification](https://github.com/BabyCRTTV/pokeemerald-emerald-legends/actions/runs/38497167671) passed. Patch commit: `76aea480d17c684acc14303daec1e80ee43842f8`. [Menu QA](qa/start-menu-footer.md). PR #65 retains the final live-download confirmation after deployment.
+Earlier evidence remains in [v0.0.47 sprite/color QA](qa/appearance-color-fix.md), [v0.0.47.1 menu QA](qa/start-menu-footer.md) and the [resumption audit](qa/project-state-2026-10-14.md). Preserve their release provenance rather than inferring current state from historical pending-work notes.
 
-## Accepted baseline
+## Remaining work
 
-- Approved sprite baseline: **0.0.47**, shared by Release and Debug.
-- The owner approved the minimal smile/body-color repair and requested publication. Preserve the existing v0.0.46 sprites and approved hairstyle artwork. Generated replacement sprites were rejected and are absent from the released tree.
-- Male native mouth/chin/ear and exposed-skin contours now use skin shadow instead of hair color. Natural custom hair receives body isolation; footwear remapping reserves both hair slots. Clothes and shoes retain their selected colors across hair-color changes.
-- Existing save choices, female sprites, approved battle art, fixed costumes, diving and untouched Original retain their established behavior. The previously separate Side Part revision was approved on 14 October 2026 and is integrated in the v0.0.48 candidate above.
-
-## Confirmed implementation and validation
-
-- [PR #64](https://github.com/BabyCRTTV/pokeemerald-emerald-legends/pull/64) merged as `f6e4cd519c654865267f47e4cbcde48a233179bf`.
-- Versioned PR checks and native Debug/Release/BPS verification passed before merge. Merged-source [project checks](https://github.com/BabyCRTTV/pokeemerald-emerald-legends/actions/runs/38495112804) and [publication workflow](https://github.com/BabyCRTTV/pokeemerald-emerald-legends/actions/runs/38495112683) passed.
-- Both patches independently reproduced their corresponding compiled ROMs byte-for-byte against the verified clean Emerald base. Patch commit: `818792a92ad8623b099b6486fa4413006bd5d246`. [v0.0.47 manifest](https://github.com/BabyCRTTV/pokeemerald-emerald-legends/blob/818792a92ad8623b099b6486fa4413006bd5d246/docs/downloads/SHA256SUMS.txt).
-- At v0.0.47 publication, the live Pages index, changelog and browser patcher agreed on that version. Both public BPS downloads returned HTTP 200, matched the verified SHA256 manifest and passed patch CRC checks. The simplified PNG also returned HTTP 200. QA/preview commit `12211c565f772bb6f6dde77eb77c1fd3b27dc275` passed project checks and Pages deployment.
-- Relevant checks cover frozen artwork fingerprints, 212 native poses, 400 smile/color/skin cases, 1,440 front/field wardrobe combinations, footwear caches, intro, wardrobe and prepared battle sprites. [Detailed QA](qa/appearance-color-fix.md).
-- [Simplified matching wardrobe/overworld PNG](qa/v0.0.47-sprite-sheet.png) shows Natural/Blond Crew Cut with identical Emerald clothing and red shoes, plus Silver Tousled with Trail/navy/Ocean scarf/black boots. It uses actual compiled-C buffers, not generated replacements or emulator captures. Reproduce with `python tools/legends/preview_appearance_baseline.py`.
-
-## Next work
-
-Resume audit on **14 October 2026** verified default-branch head `aa921927300c032a3f6ef3d28a962b46ccadb21e`, v0.0.47.1, current Actions and live Pages downloads. All 42 runnable project-check steps passed locally. Both public patches returned HTTP 200, matched the pinned SHA256 manifest and passed patch CRC checks. The release-source-to-head comparison contained only documentation and published patches; runtime inputs still match the verified native build. [Audit, workflow evidence and playtest limits](qa/project-state-2026-10-14.md).
-
-- The roadmap and development guide were reconciled with shipped work: all eight visiting Gyms, three bird expeditions, the Hoenn Regigigas intermission and the native Faraway Island/Mew conclusion are implemented. Quest Log, achievements, expanded storage and prepared battle uniforms are also established. Do not rebuild these features from older summaries.
-- Complete the remaining uninterrupted Wing Survey/return-travel, battle-balance and broad mGBA/Pizza Boy regression playtests. Controlled emulator scenes and host tests do not establish those outcomes. See [QA](QA.md) and the audit's priority list.
-- [PR #56](https://github.com/BabyCRTTV/pokeemerald-emerald-legends/pull/56) remains open and merge-conflicting. It targets an older wiki snapshot; current wiki v1.6.0 already covers Chapters 19–25. Reconcile its unique changes before deciding its disposition; do not merge the older snapshot over the current wiki. Wiki updates remain separate, manual and owner-requested.
-- Lucky Egg balance review, seasonal encounters, further configuration consolidation, a reusable test-save matrix, an upstream-update procedure and later Johto research remain roadmap ideas, not verified regressions or a newly selected implementation task.
-
-The approved Side Part and its requested one-cell repair are the current visual task. Further artwork redesigns still need specific owner feedback. Preserve the color repair, protected-asset checks, native animation geometry and fixed battle-uniform decision. The earlier documentation audit retained v0.0.47.1; its evidence remains historical.
+- Continue uninterrupted Wing Survey/return-travel, battle-balance and broader Release/Debug mGBA/Pizza Boy playtests, including native movement/field actions, wardrobe Apply/Cancel/save/load, followers and seasonal/weather transitions. Controlled scenes and host tests do not establish those outcomes. Use [QA](QA.md) and milestone records.
+- All eight visiting Gyms, the three bird expeditions, the Hoenn Regigigas intermission and native Faraway Island/Mew conclusion are implemented. Quest Log, achievements, expanded storage and prepared battle uniforms are established. Do not reimplement shipped features from older summaries.
+- [PR #56](https://github.com/BabyCRTTV/pokeemerald-emerald-legends/pull/56) is an older conflicting wiki proposal. Reconcile unique changes before deciding its disposition; do not merge its older Chapters 19–22 snapshot over the current v1.6.0 Chapters 1–25 snapshot. Wiki content remains separately maintained, last reviewed against game v0.0.46, and is updated only when requested.
+- Establish a small, reproducible historical-save fixture matrix as save-affecting work proceeds: original fourteen-box format, expanded v0.0.43 format and current pre-update saves, with mid-story/postgame and non-default wardrobe/seasons. Record provenance and verified upgrade paths. Existing legacy emulator evidence and host tests are useful but do not cover every historical release.
+- Lucky Egg balance review, seasonal encounters, further configuration consolidation, an upstream-update procedure and later Johto research remain unselected roadmap ideas, not established current regressions.

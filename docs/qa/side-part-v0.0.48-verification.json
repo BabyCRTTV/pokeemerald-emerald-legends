@@ -1,0 +1,85 @@
+{
+  "version": "0.0.48",
+  "source_commit": "c9d3a0675a2e4a55e99d73cd14b5a1604eae4c32",
+  "patch_commit": "4b8573588c586e86a3d26dd887d54f788fc55a70",
+  "supported_base_sha1": "f3ae088181bf583e55daf962a92bb46f4f1d07b7",
+  "supported_base_crc32": "1f1c08fb",
+  "workflow_runs": {
+    "pr_project_checks": 38555631321,
+    "pr_native_builds_bps": 38555630992,
+    "master_project_checks": 38556684070,
+    "master_native_builds_bps_publication": 38556683931,
+    "patch_pages_deployment": 38557855004
+  },
+  "native_emulator": {
+    "emulator": "mGBA 0.10.2",
+    "rom_sha256": "bc21b87a634fd61d12b1159941879fb9bf7ef6689629feab5a0a1c6fa905fa78",
+    "native_descriptors": 101,
+    "non_diving": 92,
+    "pixel_buffers_match": true,
+    "palettes_match": true,
+    "scope": "Native ARM game compositor invoked from a private QA callback after boot; no natural field traversal or save persistence claimed.",
+    "source_commit": "d782ce5a55b7a5bd6592da4d1f1459d76ea1afff",
+    "merged_commit": "c9d3a0675a2e4a55e99d73cd14b5a1604eae4c32"
+  },
+  "public_patches": [
+    {
+      "variant": "Release",
+      "patch": "Pokemon-Emerald-Legends-v0.0.48.bps",
+      "http": 200,
+      "bytes": 17426496,
+      "sha256": "dee589b5f7cc9ef9e72d0c2e7127663689830a4f4cd8d968b1dd8f66f2822cf4",
+      "patch_crc_verified": true,
+      "target_sha256": "272627d35b70ebe1c01ec76e9fd5bfbd4b08880a45d0133da4050b89e30606f5",
+      "matched_local_rom": true
+    },
+    {
+      "variant": "Debug",
+      "patch": "Pokemon-Emerald-Legends-v0.0.48-debug.bps",
+      "http": 200,
+      "bytes": 17260279,
+      "sha256": "c004a9edd92253a630c6c30a69fd52affa360576a3c920090dbe03fa3b39f14d",
+      "patch_crc_verified": true,
+      "target_sha256": "bc21b87a634fd61d12b1159941879fb9bf7ef6689629feab5a0a1c6fa905fa78",
+      "matched_local_rom": true
+    }
+  ],
+  "public_pages_and_previews": [
+    {
+      "path": "docs/index.html",
+      "http": 200,
+      "sha256": "0f4f830917d070e70f8e742cb459e52f7830175bcf9a7c4e96b9b881e50a37ba",
+      "bytes": 6487
+    },
+    {
+      "path": "docs/changelog.html",
+      "http": 200,
+      "sha256": "7fcaa71cb746d07e0e25f68f09648de84ad155eedf383fa84505d1b85b7971aa",
+      "bytes": 90862
+    },
+    {
+      "path": "docs/patcher.html",
+      "http": 200,
+      "sha256": "e21c0a114136b5848bb386500b455e40e579c434a2504bb9beba271f7cc72514",
+      "bytes": 2508
+    },
+    {
+      "path": "docs/patcher.js",
+      "http": 200,
+      "sha256": "2173468d9a31f78ef79b297b0a73945bc843aa10ec0f57aaa3263419460845e3",
+      "bytes": 9201
+    },
+    {
+      "path": "docs/qa/side-part-v0.0.48-mobile.png",
+      "http": 200,
+      "sha256": "f995d73381f9bddb3b8a7e88d6ae19278553d9e988f610949febb1770aab83a6",
+      "bytes": 16914
+    },
+    {
+      "path": "docs/qa/side-part-v0.0.48-motion.gif",
+      "http": 200,
+      "sha256": "5659ecdd037a751f0d1d3c18ce793d10cb0ddd26001c54f6c1ad579485f680ae",
+      "bytes": 434157
+    }
+  ]
+}

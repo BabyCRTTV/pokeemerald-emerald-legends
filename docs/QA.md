@@ -8,6 +8,7 @@ Baseline: v0.0.8. Maintenance checks added in v0.0.8.1.
 
 ## Automated checks
 
+- Follow the [save-compatibility release requirement](SAVE-COMPATIBILITY.md). Existing sector, codec, journal, appearance, season, Adventure Log and clock checks remain in the normal workflow. Save-affecting changes also require focused old-format load → migrate → save → reload validation; routine art/text fixes do not add another ROM build or emulator matrix.
 - VERSION, canonical/Release/Debug changelogs, homepage, patcher, and in-game version labels stay synchronized.
 - Source-level checks cover the Options page allocation, Legends EXP Share flags/save initialization, Rustboro Lucky Egg, and Birch National Dex / Champion rewards.
 - Node regression tests cover browser BPS SourceRead, TargetRead, TargetCopy overlaps, source and patch CRC rejection, target CRC rejection, and stale ROM selection.
