@@ -1,8 +1,8 @@
 {
-  "state": "Unpublished C2 implementation preview; pending owner visual review",
+  "state": "Owner-approved v0.0.53 original-chair color release candidate",
   "base_master": "ed88772110e0952c9e9c3887f1345ecabd4429c0",
-  "design_base": "f52fbaa34c43f5f4cb133cfb12a386b21169d899",
-  "VERSION": "0.0.52",
+  "review_parent": "cad47d5d0c534a2df51f0cce7d7de85a8b4416cd",
+  "VERSION": "0.0.53",
   "checks": [
     {
       "name": "Exercise browser patcher regression tests",
@@ -197,10 +197,9 @@
       "exit": 0
     }
   ],
-  "additional_final_check": "All 48 workflow check blocks passed after poster/chair implementation; focused actual-C chair/default tests also passed after adding no-implicit-write assertions. Final native replay passed, including actual PC -> Decoration navigation.",
   "builds": {
     "Debug": {
-      "ROM_sha256": "d6b1bf8d6340d6993ff0de8e41008b7b8fe74391232e5051e4f7359d7780000a",
+      "ROM_sha256": "770d40eedab1c3ac04b0ac37228ed9a38dfe5b8d65cd2ebdd872fa58a968c72e",
       "ROM_bytes": 33554432,
       "memory": [
         [
@@ -213,12 +212,12 @@
         ],
         [
           "ROM",
-          "30700332"
+          "30698760"
         ]
       ]
     },
     "Release": {
-      "ROM_sha256": "3c107e8289e3186dcac82c4f7ada99e8f5f84e01c9582bc107e75200e0ba1dfd",
+      "ROM_sha256": "85b090aed633e652f095aeb3d3bdbebdfe0c4f494b25ea5d8ee5f26224941c26",
       "ROM_bytes": 33554432,
       "memory": [
         [
@@ -227,21 +226,45 @@
         ],
         [
           "IWRAM",
-          "28324"
+          "28328"
         ],
         [
           "ROM",
-          "30851484"
+          "30850676"
         ]
       ]
     }
   },
   "save_impact": {
-    "layout": "Unchanged SaveBlock structures, capacities, journal/claim IDs, map IDs and legacy readers",
-    "colors": "Previously unreferenced native variable 0x405C, signature 0xB400, separate 4-bit rug/bed choices. Invalid/legacy values read as default without mutation.",
-    "native_flash": "Colors, native UI-placed off-rug Pikachu Doll and Hard chair style survived their write -> clear -> load checks; both save/load statuses were SAVE_STATUS_OK.",
-    "limits": "Not an authentic historical-save matrix or a claim of Pizza Boy testing.",
-    "chair": "Previously unreferenced native variable 0x405F, signature 0xC900, validated 0-9 cosmetic style. Invalid/legacy values read as Default without writes; existing inventory and doll slots are untouched."
+    "layout": "Unchanged save structures, capacities, existing identifiers and legacy readers.",
+    "colors": "Rug/bed: reserved 0x405C, signature 0xB400. Original chair color: reserved 0x405F, signature 0xCA00 with 0-6 index. Invalid/legacy/unpublished style values read as Default without writes.",
+    "native_flash": "Real menu color/cancel, chair PC access, actual PC -> Decoration and flash write/clear/load passed. Existing color/doll records survived their round trip.",
+    "limits": "Prepared current fixture, not a complete historical-release matrix or Pizza Boy test."
   },
-  "review_parent": "8a7a13dbfaa14757b45ea703720d3aca459b7b19"
+  "patches": {
+    "source_sha1": "f3ae088181bf583e55daf962a92bb46f4f1d07b7",
+    "patches": [
+      {
+        "filename": "Pokemon-Emerald-Legends-v0.0.53.bps",
+        "bytes": 17436947,
+        "sha256": "ec4878a5c66162803ded0f8d04c3240ad5e2db84a1a1179fd4a646ebd7cc7ee3",
+        "target_sha256": "85b090aed633e652f095aeb3d3bdbebdfe0c4f494b25ea5d8ee5f26224941c26",
+        "source_crc32": "1f1c08fb",
+        "target_crc32": "e5dd8f11",
+        "patch_crc32": "ed3839b9",
+        "independent_browser_decoder": true
+      },
+      {
+        "filename": "Pokemon-Emerald-Legends-v0.0.53-debug.bps",
+        "bytes": 17268385,
+        "sha256": "815bda4f48a1b60d3de9db3bee081eb49d76267782127e0c7fce44733e0cc715",
+        "target_sha256": "770d40eedab1c3ac04b0ac37228ed9a38dfe5b8d65cd2ebdd872fa58a968c72e",
+        "source_crc32": "1f1c08fb",
+        "target_crc32": "f9d2d706",
+        "patch_crc32": "656db88e",
+        "independent_browser_decoder": true
+      }
+    ],
+    "also_verified_with_floating_ips": true
+  }
 }

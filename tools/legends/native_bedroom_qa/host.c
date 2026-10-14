@@ -48,19 +48,17 @@ int main(int argc,char **argv){
  command(5,350);capture(argv[2],"female-doll-on-wood-floor");
  command(6,350);capture(argv[2],"female-without-poster");
  command(7,350);capture(argv[2],"female-with-poster");
- // Scroll through the actual chair list to HARD, cancel without changing it,
- // then save/load and interact with the real PC from the replacement seat.
- command(2,40);for(int i=0;i<5;i++)key(128);key(1);capture(argv[2],"chair-style-menu");
- for(int i=0;i<9;i++)key(128);capture(argv[2],"chair-style-menu-scrolled");key(1);
- command(9,2);assert(c->busRead32(c,0x0203fc24)==0xc909);
- key(1);key(64);key(2);command(9,2);assert(c->busRead32(c,0x0203fc24)==0xc909);
- command(4,1200);assert(c->busRead32(c,0x0203fc24)==0xc909);
- command(3,350);capture(argv[2],"female-hard-chair");
+ // The original chair has the same seven-color picker as rug and bed.
+ command(2,40);for(int i=0;i<5;i++)key(128);key(1);capture(argv[2],"chair-color-menu");
+ for(int i=0;i<3;i++)key(128);key(1);
+ command(9,2);assert(c->busRead32(c,0x0203fc24)==0xca03);
+ key(1);key(64);key(2);command(9,2);assert(c->busRead32(c,0x0203fc24)==0xca03);
+ command(4,1200);assert(c->busRead32(c,0x0203fc24)==0xca03);
+ command(3,350);capture(argv[2],"female-mint-chair");
  command(8,350);key(64);key(1);frames(100);capture(argv[2],"female-chair-pc-access");
- // Also select a different style in the male layout using real menu input.
  command(0,400);command(2,40);for(int i=0;i<5;i++)key(128);key(1);
- key(128);key(128);key(1);command(9,2);assert(c->busRead32(c,0x0203fc24)==0xc902);
- command(3,350);capture(argv[2],"male-pokemon-chair");
+ key(128);key(128);key(1);command(9,2);assert(c->busRead32(c,0x0203fc24)==0xca02);
+ command(3,350);capture(argv[2],"male-rose-chair");
  command(8,350);key(64);key(1);frames(100);capture(argv[2],"male-chair-pc-access");
  key(1);frames(80);capture(argv[2],"bedroom-pc-top-menu");
  key(128);key(128);key(1);frames(80);capture(argv[2],"decorate-from-bedroom-pc");

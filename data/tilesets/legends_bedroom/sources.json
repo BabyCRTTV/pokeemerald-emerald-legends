@@ -6,10 +6,10 @@
     "GOLD": 714,
     "POSTER_MALE": 716,
     "POSTER_FEMALE": 718,
-    "CHAIRS_MALE": 720,
-    "CHAIRS_FEMALE": 729
+    "CHAIR_MALE": 720,
+    "CHAIR_FEMALE": 721
   },
-  "imported_tiles": 45,
+  "imported_tiles": 25,
   "private_palette_slots": [
     1,
     2,

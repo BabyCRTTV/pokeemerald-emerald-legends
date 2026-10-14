@@ -5,7 +5,6 @@
 #include "event_data.h"
 #include "event_object_movement.h"
 #include "fieldmap.h"
-#include "field_camera.h"
 #include "field_player_avatar.h"
 #include "palette.h"
 #include "string_util.h"
@@ -23,14 +22,11 @@
 static const u16 sRoomPalette[] = INCGFX_U16("data/tilesets/secondary/brendans_mays_house/palettes/06.pal", ".gbapal");
 static const u16 sMaleBedPalette[] = INCGFX_U16("data/tilesets/secondary/brendans_mays_house/palettes/07.pal", ".gbapal");
 static const u16 sFemaleBedPalette[] = INCGFX_U16("data/tilesets/secondary/brendans_mays_house/palettes/10.pal", ".gbapal");
-static const u16 sDisplayBackdropPalette[] = INCGFX_U16("data/tilesets/legends_bedroom/chair_backdrop.pal", ".gbapal");
 static const u16 sDecorPalettes[][16] = {
     INCGFX_U16("data/tilesets/primary/secret_base/palettes/00.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/primary/secret_base/palettes/01.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/primary/secret_base/palettes/02.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/primary/secret_base/palettes/03.pal", ".gbapal"),
-    INCGFX_U16("data/tilesets/primary/secret_base/palettes/04.pal", ".gbapal"),
-    INCGFX_U16("data/tilesets/primary/secret_base/palettes/05.pal", ".gbapal"),
 };
 static const u16 sColors[][4] = {
     {RGB(8,13,21), RGB(13,18,24), RGB(17,23,30), RGB(23,27,31)}, // Blue
@@ -56,20 +52,32 @@ bool32 LegendsBedroomIsHome(void)
     return LegendsBedroomIsMap() && (MaleRoom() == (gSaveBlock2Ptr->playerGender == MALE));
 }
 void LegendsBedroomIsHomeSpecial(void) { gSpecialVar_Result = LegendsBedroomIsHome(); }
-u8 LegendsBedroomColor(bool32 bed)
+u8 LegendsBedroomColor(u8 material)
 {
-    u16 value = VarGet(VAR_LEGENDS_BEDROOM_COLORS);
+    u16 value;
+    if (material == BEDROOM_MATERIAL_CHAIR)
+    {
+        value = VarGet(VAR_LEGENDS_BEDROOM_CHAIR_COLOR);
+        return (value & 0xFF00) == 0xCA00 && (value & 255) < BEDROOM_COLOR_COUNT ? value & 255 : 0;
+    }
+    value = VarGet(VAR_LEGENDS_BEDROOM_COLORS);
     if ((value & 0xFF00) != COLOR_SIGNATURE || (value & 15) >= BEDROOM_COLOR_COUNT || ((value >> 4) & 15) >= BEDROOM_COLOR_COUNT)
         return 0;
-    return (value >> (bed ? 0 : 4)) & 15;
+    return (value >> (material == BEDROOM_MATERIAL_BED ? 0 : 4)) & 15;
 }
-void LegendsBedroomSetColor(bool32 bed, u8 color)
+void LegendsBedroomSetColor(u8 material, u8 color)
 {
     u8 rug, blanket;
-    if (!LegendsBedroomIsHome() || color >= BEDROOM_COLOR_COUNT)
+    if (!LegendsBedroomIsHome() || material > BEDROOM_MATERIAL_CHAIR || color >= BEDROOM_COLOR_COUNT)
         return;
-    rug = LegendsBedroomColor(FALSE); blanket = LegendsBedroomColor(TRUE);
-    if (bed) blanket = color; else rug = color;
+    if (material == BEDROOM_MATERIAL_CHAIR)
+    {
+        VarSet(VAR_LEGENDS_BEDROOM_CHAIR_COLOR, 0xCA00 | color);
+        LegendsBedroomLoadPalette(FALSE);
+        return;
+    }
+    rug = LegendsBedroomColor(BEDROOM_MATERIAL_RUG); blanket = LegendsBedroomColor(BEDROOM_MATERIAL_BED);
+    if (material == BEDROOM_MATERIAL_BED) blanket = color; else rug = color;
     VarSet(VAR_LEGENDS_BEDROOM_COLORS, COLOR_SIGNATURE | (rug << 4) | blanket);
     LegendsBedroomLoadPalette(FALSE);
 }
@@ -95,30 +103,24 @@ void LegendsBedroomLoadPalette(bool8 skipFaded)
         else { colors[10] = sColors[selected - 1][1]; colors[11] = sColors[selected - 1][2]; }
     }
     RoomPalette(colors, 2, skipFaded);
-    RoomPalette(sDecorPalettes[4], 5, skipFaded);
-    RoomPalette(sDisplayBackdropPalette, 11, skipFaded);
-    RoomPalette(sDecorPalettes[5], 12, skipFaded);
+    RoomPalette(sDecorPalettes[0], 5, skipFaded);
+    RoomPalette(sDecorPalettes[1], 11, skipFaded);
+    CpuCopy16(MaleRoom() ? sMaleBedPalette : sFemaleBedPalette, colors, sizeof(colors));
+    colors[4] = colors[10]; colors[5] = colors[8]; colors[6] = colors[11];
+    selected = LegendsBedroomIsHome() ? LegendsBedroomColor(BEDROOM_MATERIAL_CHAIR) : 0;
+    if (selected)
+    {
+        if (MaleRoom()) { colors[8] = sColors[selected - 1][1]; colors[10] = sColors[selected - 1][2]; }
+        else { colors[10] = sColors[selected - 1][1]; colors[11] = sColors[selected - 1][2]; }
+    }
+    RoomPalette(colors, 12, skipFaded);
     RoomPalette(sDecorPalettes[2], 4, skipFaded);
     RoomPalette(sDecorPalettes[3], 3, skipFaded);
 }
-u8 LegendsBedroomChair(void)
-{
-    u16 value = VarGet(VAR_LEGENDS_BEDROOM_CHAIR);
-    return (value & 0xFF00) == 0xC900 && (value & 255) < BEDROOM_CHAIR_COUNT ? value & 255 : 0;
-}
 static void ApplyChair(void)
 {
-    u8 style = LegendsBedroomChair();
-    u16 tile = MaleRoom() ? 0x262 : 0x261;
-    if (style) tile = (MaleRoom() ? BEDROOM_CHAIRS_MALE : BEDROOM_CHAIRS_FEMALE) + style - 1;
-    MapGridSetMetatileIdAt((MaleRoom() ? 0 : 8) + MAP_OFFSET, 2 + MAP_OFFSET, tile);
-}
-void LegendsBedroomSetChair(u8 style)
-{
-    if (!LegendsBedroomIsHome() || style >= BEDROOM_CHAIR_COUNT) return;
-    VarSet(VAR_LEGENDS_BEDROOM_CHAIR, 0xC900 | style);
-    ApplyChair();
-    DrawWholeMapView();
+    MapGridSetMetatileIdAt((MaleRoom() ? 0 : 8) + MAP_OFFSET, 2 + MAP_OFFSET,
+        MaleRoom() ? BEDROOM_CHAIR_MALE : BEDROOM_CHAIR_FEMALE);
 }
 static bool32 Floor(u16 tile)
 {

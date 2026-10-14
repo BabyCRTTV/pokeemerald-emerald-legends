@@ -1,16 +1,14 @@
 # Evolving bedroom — owner review
 
-Status: **C2 selected with Ball Poster; native implementation preview awaits review.** Prepared from verified v0.0.52 master `ed88772110e0952c9e9c3887f1345ecabd4429c0`. The owner selected evolving bedrooms and requested designs/stages before implementation, extending through the current Kanto storyline. On 14 October 2026 the owner explicitly reiterated using existing game assets for world building; any newly designed artwork must be previewed separately first.
+Status: **C2 with Ball Poster and original-chair colors approved for v0.0.53 publication.** Prepared from verified v0.0.52 master `ed88772110e0952c9e9c3887f1345ecabd4429c0`. The owner selected evolving bedrooms and requested designs/stages before implementation, extending through the current Kanto storyline. On 14 October 2026 the owner explicitly reiterated using existing game assets for world building; any newly designed artwork must be previewed separately first.
 
-## Current implementation preview — C2 with Ball Poster
+## Accepted implementation — C2 with Ball Poster
 
-The owner selected C2, requested the native Ball Poster, a rug extending to the bed, separate rug/bed color controls in the bedroom decoration menu, and placement across clear floor where safe. These changes are implemented on the review branch. [Native screenshots, verification, save impact and limits](../../qa/bedroom-preview.md). The public v0.0.52 ROM/patches have not changed.
+The owner selected C2, the native Ball Poster, a rug extending to the bed, independent rug/bed colors and placement across safe clear floor. The corrected poster was accepted. On 14 October 2026 the owner requested removal of alternate chair styles and approved publication after retaining only original-chair color choices.
 
-The wall map remains at its original position. C2 now uses the same Ball Poster throughout; Kanto reports and the finale also update home notebook memories and Mom's dialogue. Silver remains after gold is added. The original furniture, native color defaults, saved doll placements and reserved access tiles are protected. The color choices are Default, Blue, Rose, Mint, Gold, Plum and Coral. Placement supports the bedroom's existing dolls/cushions on available floor; it does not enable Secret Base-only furniture categories in bedrooms.
+The native PC-only Decoration menu now offers rug, bed and original chair colors: Default, Blue, Rose, Mint, Gold, Plum and Coral. The original map/furniture, saved doll positions and protected approaches remain intact. Both consoles and the female books are preserved. Existing dolls/cushions may use safe floor beyond the rug; Secret Base-only furniture categories remain separate. Memories extend through the current Kanto finale. [Final implementation, native captures and verification](../../qa/bedroom-preview.md).
 
-The follow-up preview repaired poster composition so both consoles and the books remain complete, and added PC CHAIR with Default and all nine native one-tile styles as cosmetic seat choices. Bedroom decoration is still reached only through the PC; real PC navigation and chair save/load were checked.
-
-The following earlier design material is historical. In particular, prior C1/poster colors, three-poster/map replacement, glass ornament and A recommendation are superseded. Await review of the native implementation before merge/publication.
+Earlier concepts below are historical and superseded where they differ. The unpublished alternate chair shapes were removed. The owner authorized the final color-only chair implementation for v0.0.53 publication.
 
 ## Current review — revised C
 

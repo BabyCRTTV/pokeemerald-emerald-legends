@@ -2,14 +2,13 @@
 
 This is the developer-facing history for the **Debug** build. Shared Legends changes are repeated here so this file stands on its own; Debug-only behavior is called out separately.
 
-## Unreleased — bedroom preview (awaiting owner review)
+## [0.0.53] - 2026-10-14
 
-- Fixed the bedroom Ball Poster overwriting the console/books beneath it, preserving both layouts and the wall map.
-- Added nine native PC chair styles plus Default through the bedroom PC decoration menu, preserving chair access, inventory and existing saves.
-- Added C2 bedroom keepsakes and home memories through the current Kanto finale, using native assets and a Ball Poster beside the preserved wall map.
-- Extended each bedroom rug to the bed's edge and added independent rug/bed colors to the bedroom decoration menu.
+- Added evolving bedroom keepsakes and notebook/family memories through the current Kanto finale, using native assets and a Ball Poster beside the preserved wall map.
+- Preserved both consoles and the books beneath the poster, and widened each bedroom rug to the bed's edge.
+- Added independent rug, bed and original PC chair colors through the bedroom PC decoration menu. Retained the original chair shape and removed the unpublished alternate-chair styles.
 - Allowed existing bedroom dolls and cushions on clear floor beyond the rug, with furniture, access routes, saved decorations and Secret Base behavior protected.
-- Retained the existing save layout and added signed color choices in an unused native variable. Verification and unpublished native previews were recorded in `docs/qa/bedroom-preview.md`.
+- Preserved save structures, capacities, existing IDs and readers; added validated color choices in unused native variables, with legacy values defaulting without mutation. Changes were shared by Release and Debug.
 
 ## [0.0.52] - 2026-10-14
 

@@ -55,12 +55,12 @@ void qa(void)
         // Real flash write/load round trip; no new save layout or reader.
         box[4] = TrySavingData(SAVE_NORMAL);
         VarSet(VAR_LEGENDS_BEDROOM_COLORS, 0);
-        VarSet(VAR_LEGENDS_BEDROOM_CHAIR, 0);
+        VarSet(VAR_LEGENDS_BEDROOM_CHAIR_COLOR, 0);
         gSaveBlock1Ptr->playerRoomDecorations[0] = 0;
         gSaveBlock1Ptr->playerRoomDecorationPositions[0] = 0;
         box[5] = LoadGameSave(SAVE_NORMAL);
         box[6] = VarGet(VAR_LEGENDS_BEDROOM_COLORS);
-        box[9] = VarGet(VAR_LEGENDS_BEDROOM_CHAIR);
+        box[9] = VarGet(VAR_LEGENDS_BEDROOM_CHAIR_COLOR);
         SetMainCallback2(CB2_Overworld); break;
     case 5:
         gSaveBlock1Ptr->playerRoomDecorations[0] = DECOR_PIKACHU_DOLL;
@@ -77,7 +77,7 @@ void qa(void)
             -1, gSaveBlock2Ptr->playerGender ? 8 : 0, 2);
         WarpIntoMap(); SetMainCallback2(CB2_LoadMap); break;
     case 9:
-        box[9] = VarGet(VAR_LEGENDS_BEDROOM_CHAIR);
+        box[9] = VarGet(VAR_LEGENDS_BEDROOM_CHAIR_COLOR);
         box[7] = gSaveBlock1Ptr->playerRoomDecorations[0];
         box[8] = gSaveBlock1Ptr->playerRoomDecorationPositions[0];
         box[1] = VarGet(VAR_LEGENDS_BEDROOM_COLORS);
