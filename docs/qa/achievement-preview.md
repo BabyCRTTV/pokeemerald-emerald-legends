@@ -1,6 +1,6 @@
-# Achievement expansion and notices — unpublished preview
+# Achievement expansion and notices — approved v0.0.52
 
-Production remains **v0.0.51**. The owner explicitly requested a preview before publication. This branch is a review checkpoint; do not merge, update Pages/downloads or publish patches until the owner approves the appearance. The intended next release is v0.0.52, with normal version/site/changelog synchronization and native clean-base BPS verification still required at publication.
+The owner approved the corrected preview on 14 October 2026: **“You did it! Perfect. Publish approved.”** Appearance approval is complete. v0.0.52 publication is authorized and in progress; merged-source native/BPS and live-download results must be recorded before claiming publication complete. The approved review checkpoint was `32f93407f6a790b7955bb52fa62f91b90c86b79f`.
 
 ## Implemented
 
@@ -32,6 +32,6 @@ Field BG0 uses character block 2 (0x8000), while the map uses screen blocks 28�
 
 The host lifecycle test now derives UI character/screen block positions from the actual overworld templates and checks physical VRAM bounds and disjoint field allocations. It rejects the old 0x2C0 placement. The mGBA harness compares **every panel pixel on every visible frame** while driving right/down/left/up, and still checks movement, automatic dismissal and manual claims. **All 172 visible frames matched exactly.** The GIF is then decoded/composited and all detected visible-banner frames are compared pixel-for-pixel to the native reference, so export artifacts are also caught. Both corrected native builds passed; updated screenshots/GIF and receipts replace the first preview.
 
-## Approval and next steps
+## Approval and publication
 
-Await owner feedback on the unlock notice and claim popup. On approval, apply any requested refinements, advance VERSION and all matching release locations to v0.0.52, move the three Unreleased entries into the dated release sections, verify remote checks and both native/BPS round trips, then publish and verify Pages/downloads. Keep v0.0.51 available until that release passes its gates.
+The corrected appearance was approved on 14 October 2026. Version, all three changelogs, Options, README, website/patcher and journal guides were synchronized to v0.0.52; the JSON authoring catalogue was synchronized with the 95 native entries and tested for exact parity. No approved runtime/UI behavior was changed by release preparation. Final source/merge, native build/BPS round-trip and live Pages/download evidence is pending and will be appended after verification.

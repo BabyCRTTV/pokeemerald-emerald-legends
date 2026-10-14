@@ -122,3 +122,12 @@ catalogue=(R/'src/data/legends/journal.h').read_text().split('static const struc
 entries=re.findall(r'\{COMPOUND_STRING[^\n]+',catalogue)
 assert len(entries)==95
 assert hashlib.sha256(('\n'.join(entries[:80])+'\n').encode()).hexdigest()=="18a8c74c46e5596c5d7a3c8f9f7e5f1f120d13cfbd9b970800e6683b0f264f12"
+
+# The editable authoring data and native catalogue must agree on every stable ID.
+import json
+rows=json.loads((R/'data/legends/achievements.json').read_text())
+assert len(rows)==95
+for i,row in enumerate(rows):
+ assert row['id']==i
+ expected='{COMPOUND_STRING("%s"), COMPOUND_STRING("%s"), JOURNAL_%s, %s, %s, ITEM_%s_BERRY, %s},'%(row['title'],row['description'],row['kind'],row['key'],row['target'],row['berry'],row['quantity'])
+ assert entries[i].strip()==expected

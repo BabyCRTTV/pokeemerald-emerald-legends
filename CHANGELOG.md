@@ -4,13 +4,13 @@ All notable Pokémon Emerald: Legends project changes are documented here.
 
 For build-specific player views, see [CHANGELOG-RELEASE.md](CHANGELOG-RELEASE.md) and [CHANGELOG-DEBUG.md](CHANGELOG-DEBUG.md). The canonical history below records the project as a whole.
 
-## Unreleased preview — awaiting owner approval
+## [0.0.52] - 2026-10-14
 
 - Appended fifteen achievements, bringing the total to 95 while preserving the original eighty IDs and the existing save layout.
 - Added a temporary PC Item Storage confirmation after a manual reward claim, with full-PC retries and one-time claims preserved.
 - Added a queued upper-left achievement-name notice that disappeared automatically without blocking movement and waited through menus, scripts, fades and location banners.
 - Fixed the moving unlock notice overwriting map screen data; added physical VRAM bounds and frame-by-frame native/GIF pixel checks.
-- Changes were shared by Release and Debug. Held publication for the owner’s requested visual review; details and previews were recorded in `docs/qa/achievement-preview.md`.
+- Changes were shared by Release and Debug, with no variant-specific gameplay differences. Published the owner-approved corrected preview; verification and compatibility evidence were recorded in `docs/qa/achievement-preview.md`.
 
 ## [0.0.51] - 2026-10-14
 
