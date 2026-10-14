@@ -2,6 +2,8 @@
 
 ## Working preferences
 
+On 14 October 2026, after reviewing the art and animation touch-ups and the completed v0.0.50 work, the owner explicitly confirmed that this level of quality met their expectations. Treat today's approved pixel art, faithful animation, careful material isolation and verified incremental changes as the standard to maintain in future work. Preserve that polish across model changes and do not reinterpret this positive feedback as a request to redesign approved assets.
+
 The owner may switch between models such as Astra and Sol. Preserve the same decisions, approvals and quality standard; live repository activity supersedes this snapshot. Root `VERSION` is authoritative. Use connected GitHub tools for repository writes, retain exact native pixels/animation geometry, and write completed changelog entries in past tense.
 
 The owner uses a phone. Provide narrow vertical PNG/GIF previews and explicit downloadable filename links; wide inline sheets were clipped and could not be saved conveniently.
