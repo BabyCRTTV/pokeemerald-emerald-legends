@@ -23,4 +23,10 @@ Masks are authored from the original native source poses, then stored alongside 
 
 Reproduce with `python3 tools/legends/preview_front_face.py`. These are exact nearest-neighbor C sprite-buffer exports, not emulator screenshots. The before column reproduces the pre-shading pipeline; the after column uses the current compositor. Native South walking/running commands and durations drive the GIF. Both sides preserve the native head bob and shorter running jaw.
 
-Publication requires successful native Debug/Release Actions, independent clean-base BPS round trips, Pages deployment and live download verification. Until then this record describes a validated candidate.
+## Publication
+
+Published source: [`e1f1a53d5de5b6573a46a652dd909827be1314be`](https://github.com/BabyCRTTV/pokeemerald-emerald-legends/commit/e1f1a53d5de5b6573a46a652dd909827be1314be). [Project checks](https://github.com/BabyCRTTV/pokeemerald-emerald-legends/actions/runs/38562989276) and [native Debug/Release build and BPS publication](https://github.com/BabyCRTTV/pokeemerald-emerald-legends/actions/runs/38562989056) passed. The latter independently built clean Emerald, verified SHA-1 `f3ae088181bf583e55daf962a92bb46f4f1d07b7`, applied both generated patches and compared each result byte-for-byte with its compiled ROM.
+
+Patch commit: `bd4327fc62250ab92b0a6fc615e76b49ccbf8fee`; [pinned checksum manifest](https://github.com/BabyCRTTV/pokeemerald-emerald-legends/blob/bd4327fc62250ab92b0a6fc615e76b49ccbf8fee/docs/downloads/SHA256SUMS.txt). [Patch Pages deployment](https://github.com/BabyCRTTV/pokeemerald-emerald-legends/actions/runs/38564243447) passed. Both live BPS files returned HTTP 200, matched the manifest and passed patch/source/target CRC checks. Their target-ROM SHA256 values matched the local native builds, including the Debug ROM tested in mGBA. Release/Debug BPS sizes grew only 2,510/712 bytes compared with v0.0.48.
+
+The live homepage, changelog, patcher HTML/JS and all three PNG/GIF review files returned HTTP 200 and matched committed bytes. Both v0.0.49 variants and the approved front-face cleanup are published. Full natural activity/story traversal and historical-save playthroughs remain separate QA work, as recorded in the handoff.
