@@ -50,7 +50,7 @@ struct {u8 state;u16 newKeys;} gMain;
 struct {bool8 active;} gPaletteFade;
 struct Task {void (*func)(u8);} gTasks[1];
 static void (*currentCallback)(void);
-static int freed,failedInit;
+static int freed,failedInit,tilemapReady;
 static u8 paper[160][240];
 struct Op {u8 font,x,y;char text[256];u8 colors[3];};
 static struct Op ops[64];static int opCount;
@@ -63,9 +63,9 @@ void SetGpuReg(int reg,int value){} void ResetBgsAndClearDma3BusyFlags(int value
 void InitBgsFromTemplates(int a,const struct BgTemplate *t,int count){}
 void ChangeBgX(int a,int b,int c){} void ChangeBgY(int a,int b,int c){}
 void ResetTasks(void){} void ResetSpriteData(void){} void ResetPaletteFade(void){} void ScanlineEffect_Stop(void){}
-bool32 InitWindowsUnchecked(const struct WindowTemplate *t){assert(t->width*8==240&&t->height*8==160);assert(t->baseBlock+t->width*t->height<1024);return !failedInit;}
+bool32 InitWindowsUnchecked(const struct WindowTemplate *t){assert(t->width*8==240&&t->height*8==160);assert(t->baseBlock+t->width*t->height<1024);tilemapReady=0;return !failedInit;}
 void DeactivateAllTextPrinters(void){} void LoadPalette(const u16 *p,int offset,int bytes){assert(offset==240&&bytes==32);}
-void PutWindowTilemap(int window){} void ShowBg(int bg){} void CopyWindowToVram(int w,int flags){}
+void PutWindowTilemap(int window){tilemapReady=1;} void ShowBg(int bg){} void CopyWindowToVram(int w,int flags){assert(tilemapReady);}
 void BeginNormalPaletteFade(u32 a,int b,int c,int d,int e){}
 u8 CreateTask(void (*func)(u8),int priority){gTasks[0].func=func;return 0;}
 void DestroyTask(u8 id){} void FreeAllWindowBuffers(void){freed++;} void PlaySE(int se){}
@@ -142,7 +142,7 @@ int main(void){
  key(DPAD_LEFT);assert(sFilter==2);key(SELECT_BUTTON);assert(sFilter==0);
  memset(flags,0,sizeof(flags));sFilter=1;Draw();assert(Count()==0);selection();key(A_BUTTON);assert(!sDetail);
  LegendsJournalInit(TRUE);gMain.state=0;CB2_OpenAchievements();assert(sAchievements&&Count()==95);selection();
- for(int i=0;i<95;i++){selection();key(DPAD_DOWN);}
+ for(int i=0;i<95;i++){selection();key(A_BUTTON);assert(sDetail);key(B_BUTTON);selection();key(DPAD_DOWN);}
  key(DPAD_RIGHT);assert(sFilter==1&&Count()==0);selection();
  flags[FLAG_BADGE01_GET]=1;LegendsJournalRefresh();Draw();assert(Count()>0);selection();
  key(A_BUTTON);assert(sDetail);full=1;key(A_BUTTON);assert(sMessage==2&&!LegendsAchievementClaimed(Entry(sSelected)));

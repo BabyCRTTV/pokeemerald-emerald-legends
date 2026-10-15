@@ -142,9 +142,9 @@ static void Draw(void)
     FillWindowPixelRect(0, PIXEL_FILL(6), 6, 20, 234, 2);
     AddTextPrinterParameterized3(0, FONT_NORMAL, 13, 2, sHeaderInk, TEXT_SKIP_DRAW,
         sAchievements ? COMPOUND_STRING("ACHIEVEMENTS") : COMPOUND_STRING("QUEST LOG"));
-        ConvertIntToDecimalStringN(text, count ? sSelected + 1 : 0, STR_CONV_MODE_LEFT_ALIGN, 3);
-        StringAppend(text, COMPOUND_STRING("/")); ConvertIntToDecimalStringN(number, count, STR_CONV_MODE_LEFT_ALIGN, 3);
-        StringAppend(text, number); AddTextPrinterParameterized3(0, FONT_SMALL, 198, 4, sHeaderInk, TEXT_SKIP_DRAW, text);
+    ConvertIntToDecimalStringN(text, count ? sSelected + 1 : 0, STR_CONV_MODE_LEFT_ALIGN, 3);
+    StringAppend(text, COMPOUND_STRING("/")); ConvertIntToDecimalStringN(number, count, STR_CONV_MODE_LEFT_ALIGN, 3);
+    StringAppend(text, number); AddTextPrinterParameterized3(0, FONT_SMALL, 198, 4, sHeaderInk, TEXT_SKIP_DRAW, text);
     if (sDetail && id != 0xFFFF)
     {
         FillWindowPixelRect(0, PIXEL_FILL(6), 8, 23, 228, 113);
@@ -319,8 +319,9 @@ static void OpenJournal(void)
         LoadPalette(sPaperPalette, 240, sizeof(sPaperPalette));
         sFilter = 0; sSelected = 0; sTop = 0; sDetail = FALSE; sMessage = 0; sClaimFrames = 0;
         LegendsJournalRefresh();
-        Draw();
+        // Populate the complete map before Draw queues its DMA transfer.
         PutWindowTilemap(0);
+        Draw();
         ShowBg(0);
         SetGpuReg(REG_OFFSET_DISPCNT, DISPCNT_MODE_0 | DISPCNT_BG0_ON);
         BeginNormalPaletteFade(PALETTES_ALL, 0, 16, 0, RGB_BLACK);

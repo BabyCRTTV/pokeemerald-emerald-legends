@@ -5,6 +5,7 @@ This is the player-facing history for the recommended **Release** build. Shared 
 ## [0.0.56] - 2026-10-15
 
 - Refined Quest Log and Achievements with the owner-approved A layout: filter tabs, alternating paper rows, a top-right entry counter and the established plum selection band.
+- Completed the tilemap before queuing the opening DMA transfer, preventing a partially blank footer until the first input.
 - Kept six entries visible and fitted both control lines within the screen. Preserved full objectives, progress, reward details, scrolling and all existing filters.
 - Preserved manual one-time berry claims, PC Item Storage confirmations and full-PC retries. Changed no save structures, persistent IDs, catalogue order, artwork or gameplay rules.
 - Shared the interface changes between Release and Debug, with native rendering/input and catalogue-bound regression coverage.
