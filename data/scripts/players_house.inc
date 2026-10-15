@@ -359,6 +359,9 @@ PlayersHouse_1F_EventScript_Mom::
 	end
 
 PlayersHouse_1F_EventScript_DontPushYourselfTooHard::
+	special LegendsBedroomMomMessage
+	call_if_eq VAR_RESULT, TRUE, LegendsBedroom_MomComment
+	call LegendsHomecoming_Mom
 	msgbox PlayersHouse_1F_Text_DontPushYourselfTooHard, MSGBOX_DEFAULT
 	release
 	end
@@ -394,6 +397,7 @@ PlayersHouse_1F_EventScript_TryGiveAmuletCoin::
 PlayersHouse_1F_EventScript_MomHealsParty::
 	special LegendsBedroomMomMessage
 	call_if_eq VAR_RESULT, TRUE, LegendsBedroom_MomComment
+	call LegendsHomecoming_Mom
 	msgbox PlayersHouse_1F_Text_YouShouldRestABit, MSGBOX_DEFAULT
 	goto PlayersHouse_1F_EventScript_HealParty
 	end

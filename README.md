@@ -1,6 +1,6 @@
 # Pokémon Emerald: Legends
 
-**Version:** 0.0.54<br>
+**Version:** 0.0.55<br>
 **Base:** [pokeemerald-expansion](https://github.com/rh-hideout/pokeemerald-expansion)
 
 Pokémon Emerald: Legends is an unofficial, non-commercial Pokémon Emerald ROM-hack project built on the open-source `pokeemerald-expansion` decompilation/expansion base.

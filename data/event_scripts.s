@@ -1868,3 +1868,5 @@ EventScript_PalletTown_PlayersHouse_2F_TurnOnPC::
 .endif
 
 	.include "data/scripts/legends_bedroom.inc"
+
+	.include "data/scripts/legends_homecoming.inc"

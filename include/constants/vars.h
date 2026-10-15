@@ -142,6 +142,7 @@
 #define VAR_ROUTE108_STATE                               0x4067 // Unused Var
 #define VAR_ROUTE109_STATE                               0x4068 // Unused Var
 #define VAR_ROUTE110_STATE                               0x4069
+#define VAR_LEGENDS_HOMECOMING_MEMORY 0x406A // Signed Mom/Norman milestones and family welcome; native slot was unused
 #define VAR_ROUTE111_STATE                               0x406A // Unused Var
 #define VAR_ROUTE112_STATE                               0x406B // Unused Var
 #define VAR_ROUTE113_STATE                               0x406C // Unused Var

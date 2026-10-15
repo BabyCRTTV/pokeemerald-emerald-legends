@@ -647,3 +647,11 @@ gSpecials::
 	def_special LegendsBedroomApply
 	def_special LegendsBedroomIsHomeSpecial
 	def_special LegendsBedroomMomMessage
+
+	def_special LegendsHomecomingMomMessage
+	def_special LegendsHomecomingRememberMom
+	def_special LegendsHomecomingDadMessage
+	def_special LegendsHomecomingRememberDad
+	def_special LegendsHomecomingReady
+	def_special LegendsHomecomingShowDad
+	def_special LegendsHomecomingFinish
