@@ -275,6 +275,7 @@ static void BuildBattlePyramidStartMenu(void);
 static void BuildMultiPartnerRoomStartMenu(void);
 static void ShowSafariBallsWindow(void);
 static void ShowPyramidFloorWindow(void);
+static void ShowTrackedQuestReminder(void);
 static void RemoveExtraStartMenuWindows(void);
 static bool32 PrintStartMenuActions(s8 *pIndex, u32 count);
 static bool32 InitStartMenuStep(void);
@@ -512,6 +513,14 @@ static void RemoveExtraStartMenuWindows(void)
     }
 }
 
+static void ShowTrackedQuestReminder(void)
+{
+    // These layouts reserve the left column for native counters/help.
+    if (!GetSafariZoneFlag() && CurrentBattlePyramidLocation() == PYRAMID_LOCATION_NONE
+        && !IsOverworldLinkActive() && !InUnionRoom() && !InBattlePike() && !InMultiPartnerRoom())
+        LegendsShowTrackedQuestReminder();
+}
+
 static void DrawStartMenuScrollHints(void)
 {
     u8 row, windowId = GetStartMenuWindowId();
@@ -590,6 +599,7 @@ static bool32 InitStartMenuStep(void)
         break;
     case 3:
         LegendsShowStartMenuPanel();
+        ShowTrackedQuestReminder();
         if (GetSafariZoneFlag())
             ShowSafariBallsWindow();
         if (CurrentBattlePyramidLocation() != PYRAMID_LOCATION_NONE)
@@ -667,6 +677,11 @@ void Task_ShowStartMenu(u8 taskId)
         task->data[0]++;
         break;
     case 1:
+        if (gMenuCallback == HandleStartMenuInput)
+        {
+            ShowTrackedQuestReminder();
+            LegendsUpdateTrackedQuestReminder();
+        }
         if (gMenuCallback() == TRUE)
             DestroyTask(taskId);
         break;
@@ -723,6 +738,7 @@ static void ShowDexNavHelp(void)
         .bg = 0, .tilemapLeft = 1, .tilemapTop = 1, .width = 12,
         .height = 9, .paletteNum = 15, .baseBlock = 0x250,
     };
+    LegendsHideTrackedQuestReminder();
     sDexNavHelpWindow = AddWindow(&window);
     if (sDexNavHelpWindow == WINDOW_NONE)
         return;

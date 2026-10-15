@@ -120,7 +120,7 @@ static void selection(void){
  // Claimed markers use the same legible colors as their own title.
  for(int j=0;j<opCount;j++)if(ops[j].x==222){
   int row=(ops[j].y-JOURNAL_ROW_Y)/JOURNAL_ROW_HEIGHT;
-  assert(sAchievements&&LegendsAchievementClaimed(Entry(sTop+row)));
+  assert(sAchievements?LegendsAchievementClaimed(Entry(sTop+row)):LegendsQuestTracked()==Entry(sTop+row));
   assert(ops[j].colors[0]==(sTop+row==sSelected?8:(row&1?9:1)));
  }
 }
@@ -132,6 +132,16 @@ int main(void){
  }
  CB2_OpenQuestLog();assert(gTasks[0].func==Task_Read);selection();
  assert(Count()>6);u16 count=Count();
+ // Real detail-page A toggles tracking without changing selection/filter or rewards.
+ memset(flags,0,sizeof(flags));LegendsJournalInit(TRUE);Draw();
+ key(A_BUTTON);assert(sDetail);key(A_BUTTON);assert(LegendsQuestTracked()==0);
+ key(B_BUTTON);selection();key(A_BUTTON);key(A_BUTTON);assert(LegendsQuestTracked()==0xFFFF);
+ key(B_BUTTON);
+ for(unsigned q=0;q<LegendsQuestCount();q++){
+  const struct LegendsQuest *quest=LegendsQuestGet(q);
+  for(unsigned i=0;i<quest->count;i++)flags[quest->steps[i].flag]=1;
+ }
+ Draw();count=Count();
  gPaletteFade.active=1;key(DPAD_DOWN);assert(sSelected==0);gPaletteFade.active=0;
  for(unsigned i=0;i<count*2;i++){selection();u16 before=Entry(sSelected);key(A_BUTTON);assert(sDetail&&Entry(sSelected)==before);key(B_BUTTON);assert(!sDetail&&Entry(sSelected)==before);selection();key(DPAD_DOWN);}
  assert(sSelected==0);key(DPAD_UP);assert(sSelected==count-1);selection();

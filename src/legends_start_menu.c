@@ -5,12 +5,225 @@
 #include "field_weather.h"
 #include "legends_seasons.h"
 #include "legends_start_menu.h"
+#include "legends_journal.h"
+#include "map_name_popup.h"
 #include "menu.h"
+#include "malloc.h"
 #include "rtc.h"
 #include "window.h"
 #include "constants/map_types.h"
 #include "constants/weather.h"
 #include "constants/rtc.h"
+#include "constants/characters.h"
+
+// Framed bounds: x=0..111, y=0..87. The menu starts at x=128;
+// the existing day/weather panel starts at y=88. BG0 tiles end below 0xE000.
+// DexNav help reuses this tile range only after the reminder is removed.
+static const struct WindowTemplate sReminderTemplate =
+{
+    .bg = 0, .tilemapLeft = 1, .tilemapTop = 1,
+    .width = 12, .height = 9, .paletteNum = 15, .baseBlock = 0x250,
+};
+EWRAM_DATA static u8 sReminderHandle = 0;
+// This scratch window is RAM-only: never install its tilemap or upload it.
+static const struct WindowTemplate sReminderLineTemplate =
+{
+    .bg = 0, .width = 12, .height = 2, .paletteNum = 15,
+};
+#define REMINDER_BODY_TOP 12
+#define REMINDER_BODY_HEIGHT 60
+#define REMINDER_SCROLL_DELAY 120
+#define REMINDER_SCROLL_PERIOD 3
+EWRAM_DATA static u8 sReminderLineHandle = 0;
+EWRAM_DATA static u8 sReminderScrollTick = 0;
+EWRAM_DATA static u16 sReminderScrollOffset = 0;
+EWRAM_DATA static u16 sReminderScrollLimit = 0;
+EWRAM_DATA static u16 sReminderScrollPause = 0;
+EWRAM_DATA static bool8 sReminderReturning = FALSE;
+EWRAM_DATA static const u8 *sReminderTitle = NULL;
+EWRAM_DATA static const u8 *sReminderObjective = NULL;
+static const u8 sReminderLabelInk[] = {1, 8, 9};
+static const u8 sReminderInk[] = {1, 2, 3};
+
+struct ReminderLine { const u8 *text; u16 length; };
+EWRAM_DATA static struct ReminderLine *sReminderLines = NULL;
+enum { REMINDER_MEASURE, REMINDER_DRAW, REMINDER_CACHE };
+
+static void ReminderLine(u8 windowId, const u8 *line, u16 lineY)
+{
+    s32 y = REMINDER_BODY_TOP + lineY - sReminderScrollOffset;
+    s32 top, bottom, row, column;
+    if (y >= REMINDER_BODY_TOP + REMINDER_BODY_HEIGHT || y + 12 <= REMINDER_BODY_TOP) return;
+    if (!sReminderLineHandle)
+    {
+        AddTextPrinterParameterized3(windowId, FONT_SMALL, 4, y, sReminderInk, TEXT_SKIP_DRAW, line);
+        return;
+    }
+    FillWindowPixelBuffer(sReminderLineHandle - 1, PIXEL_FILL(1));
+    AddTextPrinterParameterized3(sReminderLineHandle - 1, FONT_SMALL, 4, 0, sReminderInk, TEXT_SKIP_DRAW, line);
+    top = y < REMINDER_BODY_TOP ? REMINDER_BODY_TOP : y;
+    bottom = y + 12 > REMINDER_BODY_TOP + REMINDER_BODY_HEIGHT ? REMINDER_BODY_TOP + REMINDER_BODY_HEIGHT : y + 12;
+    // Both native 4bpp buffers are twelve tiles wide and word-aligned.
+    // Copy complete eight-pixel rows instead of a per-pixel nibble blit.
+    const u32 *src = (const u32 *)GetWindowAttribute(sReminderLineHandle - 1, WINDOW_TILE_DATA);
+    u32 *dst = (u32 *)GetWindowAttribute(windowId, WINDOW_TILE_DATA);
+    for (row = top; row < bottom; row++)
+    {
+        u32 srcRow = ((row - y) / 8) * 96 + (row - y) % 8;
+        u32 dstRow = (row / 8) * 96 + row % 8;
+        for (column = 0; column < 12; column++) dst[dstRow + column * 8] = src[srcRow + column * 8];
+    }
+}
+
+static u16 ReminderText(u8 windowId, const u8 *text, u16 lineY, u8 mode)
+{
+    u8 line[128];
+    u16 length, space, i;
+    while (*text != EOS)
+    {
+        length = space = 0;
+        while (text[length] != EOS && text[length] != CHAR_NEWLINE && length < sizeof(line) - 2)
+        {
+            line[length] = text[length]; line[length + 1] = EOS;
+            if (GetStringWidth(FONT_SMALL, line, 0) > 88) break;
+            if (text[length] == CHAR_SPACE) space = length;
+            length++;
+        }
+        if (text[length] != EOS && text[length] != CHAR_NEWLINE && space) length = space;
+        if (!length && *text != CHAR_NEWLINE) length = 1;
+        if (mode == REMINDER_CACHE)
+            sReminderLines[lineY / 12] = (struct ReminderLine){text, length};
+        if (mode == REMINDER_DRAW)
+        {
+            for (i = 0; i < length; i++) line[i] = text[i];
+            line[length] = EOS;
+            ReminderLine(windowId, line, lineY);
+        }
+        lineY += 12;
+        text += length;
+        if (*text == CHAR_SPACE || *text == CHAR_NEWLINE) text++;
+    }
+    return lineY;
+}
+
+static void DrawReminderBody(void)
+{
+    u8 windowId = sReminderHandle - 1;
+    u16 y;
+    if (sReminderLines)
+    {
+        u8 text[128];
+        u16 row, i;
+        // Every viewport row is covered, including blank lines/background.
+        for (row = sReminderScrollOffset / 12; row <= (sReminderScrollOffset + REMINDER_BODY_HEIGHT - 1) / 12; row++)
+        {
+            const struct ReminderLine *line = &sReminderLines[row];
+            for (i = 0; i < line->length; i++) text[i] = line->text[i];
+            text[line->length] = EOS;
+            ReminderLine(windowId, text, row * 12);
+        }
+        return;
+    }
+    FillWindowPixelRect(windowId, PIXEL_FILL(1), 0, REMINDER_BODY_TOP, 96, REMINDER_BODY_HEIGHT);
+    y = ReminderText(windowId, sReminderTitle, 0, REMINDER_DRAW);
+    ReminderText(windowId, sReminderObjective, y, REMINDER_DRAW);
+}
+
+void LegendsUpdateTrackedQuestReminder(void)
+{
+    if (!sReminderHandle || !sReminderScrollLimit) return;
+    if (sReminderScrollPause)
+    {
+        sReminderScrollPause--;
+        return;
+    }
+    if (++sReminderScrollTick < REMINDER_SCROLL_PERIOD) return;
+    sReminderScrollTick = 0;
+    if (sReminderReturning)
+        sReminderScrollOffset--;
+    else
+        sReminderScrollOffset++;
+    if (!sReminderScrollOffset || sReminderScrollOffset == sReminderScrollLimit)
+    {
+        sReminderReturning = !sReminderReturning;
+        sReminderScrollPause = REMINDER_SCROLL_DELAY;
+    }
+    DrawReminderBody();
+    CopyWindowToVram(sReminderHandle - 1, COPYWIN_GFX);
+}
+
+void LegendsShowTrackedQuestReminder(void)
+{
+    u16 id;
+    u8 windowId, step;
+    u16 height;
+    const struct LegendsQuest *quest;
+    if (sReminderHandle || IsMapNamePopupActive()) return;
+    id = LegendsQuestTracked();
+    if (id == 0xFFFF) return;
+    quest = LegendsQuestGet(id);
+    step = LegendsQuestNextStep(id);
+    if (!quest || step >= quest->count) return;
+    sReminderTitle = quest->title;
+    sReminderObjective = quest->steps[step].text;
+    sReminderScrollOffset = sReminderScrollTick = 0;
+    sReminderReturning = FALSE;
+    sReminderScrollPause = REMINDER_SCROLL_DELAY;
+    height = ReminderText(0, sReminderTitle, 0, REMINDER_MEASURE);
+    height = ReminderText(0, sReminderObjective, height, REMINDER_MEASURE);
+    sReminderScrollLimit = height > REMINDER_BODY_HEIGHT ? height - REMINDER_BODY_HEIGHT : 0;
+    if (sReminderScrollLimit)
+    {
+        sReminderLines = AllocZeroedUnchecked((height / 12) * sizeof(*sReminderLines));
+        if (!sReminderLines) return;
+        height = ReminderText(0, sReminderTitle, 0, REMINDER_CACHE);
+        ReminderText(0, sReminderObjective, height, REMINDER_CACHE);
+    }
+    LegendsAchievementPopupHide();
+    windowId = AddWindow(&sReminderTemplate);
+    if (windowId == WINDOW_NONE)
+    {
+        Free(sReminderLines); sReminderLines = NULL;
+        return;
+    }
+    sReminderHandle = windowId + 1;
+    if (sReminderScrollLimit)
+    {
+        windowId = AddWindow(&sReminderLineTemplate);
+        if (windowId == WINDOW_NONE)
+        {
+            RemoveWindow(sReminderHandle - 1);
+            sReminderHandle = 0;
+            Free(sReminderLines); sReminderLines = NULL;
+            return;
+        }
+        sReminderLineHandle = windowId + 1;
+    }
+    windowId = sReminderHandle - 1;
+    DrawStdWindowFrame(windowId, FALSE);
+    AddTextPrinterParameterized3(windowId, FONT_SMALL, 4, 0, sReminderLabelInk, TEXT_SKIP_DRAW, COMPOUND_STRING("TRACKED QUEST"));
+    FillWindowPixelRect(windowId, PIXEL_FILL(3), 4, 11, 88, 1);
+    DrawReminderBody();
+    CopyWindowToVram(windowId, COPYWIN_FULL);
+}
+
+void LegendsHideTrackedQuestReminder(void)
+{
+    Free(sReminderLines);
+    sReminderLines = NULL;
+    if (sReminderLineHandle)
+    {
+        RemoveWindow(sReminderLineHandle - 1);
+        sReminderLineHandle = 0;
+    }
+    sReminderScrollOffset = sReminderScrollLimit = sReminderScrollTick = sReminderScrollPause = 0;
+    sReminderReturning = FALSE;
+    sReminderTitle = sReminderObjective = NULL;
+    if (!sReminderHandle) return;
+    ClearStdWindowAndFrameToTransparent(sReminderHandle - 1, TRUE);
+    RemoveWindow(sReminderHandle - 1);
+    sReminderHandle = 0;
+}
 
 // This gap sits below the map-name popup and above the save/counter tiles.
 static const struct WindowTemplate sPanelTemplate =
@@ -233,6 +446,7 @@ void LegendsShowStartMenuPanel(void)
 
 void LegendsHideStartMenuPanel(void)
 {
+    LegendsHideTrackedQuestReminder();
     if (sWindowHandle == 0)
         return;
     ClearStdWindowAndFrameToTransparent(sWindowHandle - 1, TRUE);

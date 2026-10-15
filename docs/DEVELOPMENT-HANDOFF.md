@@ -10,7 +10,15 @@ The owner uses a phone. Provide narrow vertical PNG/GIF previews and explicit do
 
 On 14 October 2026 the owner reversed the earlier permission to ignore older saves. Backward compatibility for Legends battery saves is now required for future updates. Preserve existing save readers, field offsets and persistent IDs; add focused migrations/tests when saved data changes. [Save-compatibility policy and evidence](SAVE-COMPATIBILITY.md) defines the release gate without adding duplicate builds or per-patch full emulator runs. Existing checks pass; a complete historical-release save-fixture matrix remains unfinished and must not be represented as verified.
 
-## Current version — v0.0.56 (published and verified)
+## Approved release in progress — v0.0.57 quest tracking
+
+On 15 October 2026 the owner approved the native card and smooth-scroll preview: “Excellent, apply and publish if all is bug free.” Implementation head `bc68eebce39aa584193ab36525c6d92ef515f574` is approved for publication. Release preparation is underway; confirm CI, merge, production BPS round trips and live Pages/download hashes before marking published. VERSION is now 0.0.57 in this branch; public master remains v0.0.56 until merge/publication.
+
+Details A tracks/stops one visible unfinished quest; T and TRACKED identify it. Both ordinary pause pages show the next objective above clock/weather, with a 16-pixel right-menu gap. Long text pauses at each end, scrolls by single pixels and smoothly returns; the heading stays fixed, short text stays still and reopening resets the cycle. Preserve menu/popup exclusions and the RAM-only scratch window with clipped 4bpp copies. The synthetic oversized objective is private QA content only. [Approved layout](qa/quest-tracking-preview.md), [scroll decisions and evidence](qa/quest-tracking-scroll.md), [preview receipts](qa/quest-tracking-scroll.json).
+
+Selection reuses reserved u16 offset 10 with signature 0xA700 in the unchanged 36-byte version-1 journal. Existing checksum/readers and achievement bits remain intact; legacy values default off without mutation. Preserve quest IDs 0–32 and append new entries. Pre-release all 49 checks, both builds, native Debug tracking/long-text/menu/flash/profile checks and unmodified Release Continue/menu/stop passed. Fresh final-version checks are recorded in [release QA](qa/quest-tracking-v0.0.57.md). No approved artwork, wardrobe, seasons or other gameplay changed. Historical-save matrix and Pizza Boy remain unfinished. AGENTS.md was reviewed; its existing rules apply without a new durable policy.
+
+## Protected v0.0.56 journal baseline
 
 The owner chose A: “I like A the most! Let's implement it.” Quest Log and Achievements shipped with six visible rows, filter tabs, alternating paper rows, the plum selected band/cream text/separate pointer and claimed markers. MAIN / SIDE / DONE and ALL / READY / CLAIMED map to unchanged filters. The counter moved to the header, and both help lines fit. Details retain every objective/progress/reward message. Do not reintroduce truncated exploratory details or B/C variants. Manual claims, atomic full-PC retry, field unlock overlays, catalogue order and save readers remain intact. No serialized fields, capacities, persistent IDs, artwork, wardrobe, seasons or gameplay rules changed.
 

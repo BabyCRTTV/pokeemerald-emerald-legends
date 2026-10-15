@@ -153,12 +153,15 @@ static void Draw(void)
         {
             q = LegendsQuestGet(id); Print(q->title, 13, 24);
             Print(q->side ? COMPOUND_STRING("SIDE QUEST") : COMPOUND_STRING("MAIN STORY"), 13, 36);
+            if (LegendsQuestTracked() == id) Print(COMPOUND_STRING("TRACKED"), 165, 36);
             for (i = 0; i < q->count; i++)
             {
                 Check(13, 54 + i * 20, LegendsQuestStepComplete(id, i));
                 Wrapped(q->steps[i].text, 26, 50 + i * 20, 2);
             }
-            Print(COMPOUND_STRING("Checks update as you play.  B: Back"), 13, 147);
+            Print(LegendsQuestComplete(id) ? COMPOUND_STRING("Quest complete.  B: Back") :
+                LegendsQuestTracked() == id ? COMPOUND_STRING("A: Stop tracking   B: Back") :
+                COMPOUND_STRING("A: Track quest   B: Back"), 13, 147);
         }
         else
         {
@@ -218,6 +221,8 @@ static void Draw(void)
                 sAchievements ? LegendsAchievementGet(id)->title : LegendsQuestGet(id)->title);
             if (sAchievements && LegendsAchievementClaimed(id))
                 AddTextPrinterParameterized3(0, FONT_SMALL, 222, JOURNAL_ROW_Y + i * JOURNAL_ROW_HEIGHT, rowInk, TEXT_SKIP_DRAW, COMPOUND_STRING("C"));
+            if (!sAchievements && LegendsQuestTracked() == id)
+                AddTextPrinterParameterized3(0, FONT_SMALL, 222, JOURNAL_ROW_Y + i * JOURNAL_ROW_HEIGHT, rowInk, TEXT_SKIP_DRAW, COMPOUND_STRING("T"));
         }
         FillWindowPixelRect(0, PIXEL_FILL(6), 7, 132, 229, 1);
         Print(COMPOUND_STRING("A: DETAILS   B: CLOSE   L/R: PAGE"), 12, 134);
@@ -264,6 +269,8 @@ static void Task_Read(u8 taskId)
     count = Count(); id = Entry(sSelected);
     if (sDetail)
     {
+        if (!sAchievements && JOY_NEW(A_BUTTON) && id != 0xFFFF && !LegendsQuestComplete(id))
+            LegendsQuestTrack(LegendsQuestTracked() == id ? 0xFFFF : id);
         if (sAchievements && JOY_NEW(A_BUTTON) && id != 0xFFFF && !LegendsAchievementClaimed(id) && LegendsAchievementEarned(id))
             {
                 sMessage = LegendsAchievementClaim(id) ? 1 : 2;

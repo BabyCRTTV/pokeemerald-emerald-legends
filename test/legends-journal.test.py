@@ -108,7 +108,35 @@ int main(void)
         full=0;unsigned quantity=pcQuantity;assert(LegendsAchievementClaim(id)&&LegendsAchievementClaimed(id));assert(pcQuantity==quantity+a->quantity);assert(!LegendsAchievementClaim(id));
         LegendsJournalInit(FALSE);assert(LegendsAchievementEarned(id)&&LegendsAchievementClaimed(id)&&LegendsAchievementNotice()==0xFFFF);
     }
-    puts("33 quests; 95 achievements; old saves, permanent unlocks, full-PC retry, claim idempotency and link guards passed.");
+    // Unchanged v1 reserved bytes: every possible word has a bounded, read-only meaning.
+    memset(flags,0,sizeof(flags));LegendsJournalInit(TRUE);
+    for(unsigned word=0;word<=65535;word++){
+        data.journal.reserved=word;struct LegendsJournalSave snapshot=data.journal;
+        unsigned id=(word&255)-1;
+        unsigned expected=(word&0xFF00)==0xA700 && (word&255) && id<LegendsQuestCount()
+            && LegendsQuestNextStep(id)!=0xFF ? id:0xFFFF;
+        assert(LegendsQuestTracked()==expected);
+        assert(!memcmp(&snapshot,&data.journal,sizeof(snapshot)));
+    }
+    data.journal.reserved=0;data.journal.checksum=Checksum();before=data.journal;
+    LegendsJournalInit(FALSE);assert(!memcmp(&before,&data.journal,sizeof(before)));
+    assert(LegendsQuestTracked()==0xFFFF);
+    assert(!LegendsQuestTrack(33)&&!LegendsQuestTrack(2)); // Invalid and undiscovered.
+    assert(!memcmp(&before,&data.journal,sizeof(before)));
+    assert(LegendsQuestTrack(0)&&LegendsQuestTracked()==0&&LegendsQuestNextStep(0)==0);
+    before=data.journal;LegendsJournalInit(FALSE);assert(!memcmp(&before,&data.journal,sizeof(before)));
+    flags[FLAG_SYS_POKEMON_GET]=1;assert(LegendsQuestNextStep(0)==1);
+    flags[FLAG_SYS_POKEDEX_GET]=1;assert(LegendsQuestTracked()==0xFFFF);
+    LegendsJournalRefresh();assert(data.journal.reserved==0xA700);
+    assert(!LegendsQuestTrack(0)); // Completed quests cannot be pinned.
+    assert(LegendsQuestTrack(1)&&LegendsQuestTracked()==1);
+    assert(LegendsQuestTrack(27)&&LegendsQuestTracked()==27); // Switch to bicycle side quest.
+    before=data.journal;linked=1;assert(!LegendsQuestTrack(1)&&!LegendsQuestTrack(0xFFFF));
+    assert(!memcmp(&before,&data.journal,sizeof(before)));linked=0;
+    assert(LegendsQuestTrack(0xFFFF)&&LegendsQuestTracked()==0xFFFF);
+    before=data.journal;LegendsJournalInit(FALSE);assert(!memcmp(&before,&data.journal,sizeof(before)));
+    assert(sizeof(data.journal)==36&&offsetof(struct LegendsJournalSave,reserved)==10);
+    puts("33 quests; 95 achievements; legacy tracking words, progression, persistence, claims and link guards passed.");
 }
 '''
 with tempfile.TemporaryDirectory() as d:

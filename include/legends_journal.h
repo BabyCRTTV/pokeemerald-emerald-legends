@@ -5,7 +5,7 @@
 struct LegendsJournalSave
 {
     u32 magic, checksum;
-    u16 version, reserved;
+    u16 version, reserved; // Signed tracked-quest selection; version-1 layout unchanged.
     u8 earned[LEGENDS_ACHIEVEMENT_BYTES], claimed[LEGENDS_ACHIEVEMENT_BYTES];
 };
 struct LegendsQuestStep { const u8 *text; u16 flag; };
@@ -25,6 +25,9 @@ const struct LegendsQuest *LegendsQuestGet(u16 id);
 bool32 LegendsQuestVisible(u16 id);
 bool32 LegendsQuestComplete(u16 id);
 bool32 LegendsQuestStepComplete(u16 id, u8 step);
+u16 LegendsQuestTracked(void); // 0xFFFF means no active reminder.
+u8 LegendsQuestNextStep(u16 id);
+bool32 LegendsQuestTrack(u16 id); // 0xFFFF explicitly stops tracking.
 u16 LegendsAchievementCount(void);
 const struct LegendsAchievement *LegendsAchievementGet(u16 id);
 bool32 LegendsAchievementEarned(u16 id);

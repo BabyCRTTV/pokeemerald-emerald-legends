@@ -4,6 +4,14 @@ All notable Pokémon Emerald: Legends project changes are documented here.
 
 For build-specific player views, see [CHANGELOG-RELEASE.md](CHANGELOG-RELEASE.md) and [CHANGELOG-DEBUG.md](CHANGELOG-DEBUG.md). The canonical history below records the project as a whole.
 
+## [0.0.57] - 2026-10-15
+
+- Added one saved tracked quest, selected or stopped with A on its Details page, with a T list marker and TRACKED label.
+- Added a native pause-menu reminder showing the quest and next unfinished objective above the clock/weather panel, clear of the right menu.
+- Added automatic single-pixel scrolling for overflowing text, pauses at both ends and a smooth return to the top; kept the heading fixed and short text stationary.
+- Removed the reminder around competing menus and suppressed it in special counter/link layouts. Kept existing journal controls, rewards, artwork and systems intact.
+- Preserved the 36-byte version-1 journal and existing save readers, using validated reserved space for the selection. Older values defaulted to no tracked quest; completion cleared the selection. Shared the changes between Release and Debug.
+
 ## [0.0.56] - 2026-10-15
 
 - Refined Quest Log and Achievements with the owner-approved A layout: filter tabs, alternating paper rows, a top-right entry counter and the established plum selection band.

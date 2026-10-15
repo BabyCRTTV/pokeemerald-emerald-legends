@@ -8,7 +8,9 @@
 #include "constants/game_stat.h"
 #include "constants/items.h"
 #include "data/legends/journal.h"
+STATIC_ASSERT(ARRAY_COUNT(sQuests) < 255, TrackedQuestIdsFitSignedWord);
 #define JOURNAL_MAGIC 0x4C514143
+#define TRACKED_QUEST_MAGIC 0xA700
 #define DATA (&gSaveBlock3Ptr->journal)
 // Transient notices never change the serialized journal or claim bits.
 EWRAM_DATA static u8 sPending[LEGENDS_ACHIEVEMENT_BYTES] = {0};
@@ -74,6 +76,35 @@ bool32 LegendsQuestStepComplete(u16 id, u8 step)
     const struct LegendsQuest *q = LegendsQuestGet(id);
     return q && step < q->count && (LegendsQuestComplete(id) || FlagGet(q->steps[step].flag));
 }
+u8 LegendsQuestNextStep(u16 id)
+{
+    u8 step;
+    const struct LegendsQuest *q = LegendsQuestGet(id);
+    if (q && LegendsQuestVisible(id) && !LegendsQuestComplete(id))
+        for (step = 0; step < q->count; step++)
+            if (!LegendsQuestStepComplete(id, step)) return step;
+    return 0xFF;
+}
+u16 LegendsQuestTracked(void)
+{
+    u16 word = DATA->reserved;
+    u16 id = (word & 0xFF) - 1;
+    // Old version-1 reserved bytes are not a selection. Reads never write.
+    if (DATA->magic != JOURNAL_MAGIC || DATA->version != 1
+        || (word & 0xFF00) != TRACKED_QUEST_MAGIC || !(word & 0xFF)
+        || LegendsQuestNextStep(id) == 0xFF)
+        return 0xFFFF;
+    return id;
+}
+bool32 LegendsQuestTrack(u16 id)
+{
+    if (DATA->magic != JOURNAL_MAGIC || DATA->version != 1 || IsOverworldLinkActive()
+        || (id != 0xFFFF && (id >= 255 || LegendsQuestNextStep(id) == 0xFF)))
+        return FALSE;
+    DATA->reserved = TRACKED_QUEST_MAGIC | (id == 0xFFFF ? 0 : id + 1);
+    DATA->checksum = Checksum();
+    return TRUE;
+}
 u16 LegendsAchievementCount(void) { return ARRAY_COUNT(sAchievements); }
 const struct LegendsAchievement *LegendsAchievementGet(u16 id) { return id < ARRAY_COUNT(sAchievements) ? &sAchievements[id] : NULL; }
 u32 LegendsAchievementProgress(u16 id)
@@ -100,6 +131,10 @@ void LegendsJournalRefresh(void)
 {
     u16 i;
     if (DATA->magic != JOURNAL_MAGIC || IsOverworldLinkActive()) return;
+    // Completion clears only a recognized selection, never arbitrary legacy bytes.
+    if ((DATA->reserved & 0xFF00) == TRACKED_QUEST_MAGIC
+        && (DATA->reserved & 0xFF) && LegendsQuestTracked() == 0xFFFF)
+        DATA->reserved = TRACKED_QUEST_MAGIC;
     for (i = 0; i < ARRAY_COUNT(sAchievements); i++)
         if (!LegendsAchievementEarned(i) && LegendsAchievementProgress(i) >= sAchievements[i].target)
             Earn(i);

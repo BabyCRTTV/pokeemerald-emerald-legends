@@ -10,6 +10,7 @@ enum=re.search(r'enum\s*\{\s*MENU_ACTION_POKEDEX,.*?\};',source,re.S).group(0)
 builders=['BuildNormalStartMenu','BuildDebugStartMenu','BuildSafariZoneStartMenu','BuildBattlePikeStartMenu','BuildBattlePyramidStartMenu','BuildMultiPartnerRoomStartMenu']
 code=function('AddStartMenuAction','void','u8 action')+'\n'+'\n'.join(function(n,'void','void') for n in builders)
 code+='\n'+function('BuildStartMenuActions','void','void')+'\n'+function('DrawStartMenuScrollHints','void','void')+'\n'+function('PrintStartMenuActions','bool32','s8 *pIndex, u32 count')+'\n'+function('MoveStartMenuCursor','void','s8 delta')
+code+='\n'+function('ShowTrackedQuestReminder','void','void')
 preamble=r'''
 #include <stdint.h>
 #include <string.h>
@@ -37,15 +38,17 @@ struct MenuAction {const char *text;union {bool32 (*u8_void)(void);} func;};
 static struct MenuAction sStartMenuItems[20];
 static int sJournalPage;
 static u32 hintMinY, hintMaxY;
-static bool32 IsOverworldLinkActive(void){return FALSE;}
-static bool32 InUnionRoom(void){return FALSE;}
+static unsigned restricted, reminderCalls;
+static void LegendsShowTrackedQuestReminder(void){reminderCalls++;}
+static bool32 IsOverworldLinkActive(void){return restricted&1;}
+static bool32 InUnionRoom(void){return restricted&2;}
 #define PYRAMID_LOCATION_NONE 0
 #define DEBUG_OVERWORLD_MENU 0
 #define DEBUG_OVERWORLD_IN_MENU 0
-static bool32 GetSafariZoneFlag(void){return FALSE;}
-static bool32 InBattlePike(void){return FALSE;}
-static bool32 CurrentBattlePyramidLocation(void){return 0;}
-static bool32 InMultiPartnerRoom(void){return FALSE;}
+static bool32 GetSafariZoneFlag(void){return restricted&4;}
+static bool32 InBattlePike(void){return restricted&8;}
+static bool32 CurrentBattlePyramidLocation(void){return restricted&16;}
+static bool32 InMultiPartnerRoom(void){return restricted&32;}
 static void BuildLinkModeStartMenu(void){}
 static void BuildUnionRoomStartMenu(void){}
 static u8 GetStartMenuWindowId(void){return 0;}
@@ -101,7 +104,10 @@ for(int rows=1;rows<=8;rows++)for(int page=0;page<2;page++){
  assert(hintMinY>exitInkBottom+4); // Four clear pixel rows before the arrow.
  assert(hintMaxY-hintMinY==4&&hintMaxY<rows*16u+16u);
 }
-puts("Pause menu builders, scrolling, footer clearance and pixel bounds passed.");
+for(unsigned mask=0;mask<64;mask++){
+ restricted=mask;reminderCalls=0;ShowTrackedQuestReminder();assert(reminderCalls==(mask==0));
+}
+puts("Pause menu builders, scrolling, footer clearance, reminder exclusions and pixel bounds passed.");
 }
 '''
 with tempfile.TemporaryDirectory() as d:
