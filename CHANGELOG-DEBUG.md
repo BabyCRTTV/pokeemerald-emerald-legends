@@ -2,6 +2,10 @@
 
 This is the developer-facing history for the **Debug** build. Shared Legends changes are repeated here so this file stands on its own; Debug-only behavior is called out separately.
 
+## Unreleased — OPTION card preview (awaiting review)
+
+- Added the current build version at the right edge of the title menu OPTION card, matching the original font, colors and baseline in all menu layouts.
+
 ## [0.0.53] - 2026-10-14
 
 - Added evolving bedroom keepsakes and notebook/family memories through the current Kanto finale, using native assets and a Ball Poster beside the preserved wall map.

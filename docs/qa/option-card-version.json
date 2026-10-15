@@ -1,0 +1,185 @@
+{
+  "state": "Preview only; not merged or published",
+  "base_master": "77ab0d9b92db76e70a035214804a8ee075e37ea5",
+  "base_version": "0.0.53",
+  "save_impact": "None: no saved fields, structures, identifiers, readers or defaults changed.",
+  "checks": [
+    "Actual Options text regression passed",
+    "Title Options handoff regression passed",
+    "Options navigation regression passed",
+    "Full project metadata block passed, including both new title-card version guards",
+    "Both Debug and Release native builds passed"
+  ],
+  "variants": {
+    "debug": {
+      "state": "Unpublished preview; owner review required",
+      "base_version": "0.0.53",
+      "variant": "Debug",
+      "ROM_sha256": "58ccfee5dad9abf4caaad80d6086f2ef667629a43ea26a7342711176d551aed0",
+      "emulator": "mGBA 0.10.2",
+      "controlled_setup": "Native main-menu initialization; RAM selects the four original layout states. No ROM injection or saved layout changes. Empty/saved native input enters Options and returns. Mystery layouts are controlled rendering cases, not full event progression.",
+      "layout_pixel_bounds": {
+        "0": {
+          "OPTION": [
+            44,
+            52
+          ],
+          "version": [
+            44,
+            52
+          ],
+          "version_rightmost_pixel": 222
+        },
+        "1": {
+          "OPTION": [
+            108,
+            116
+          ],
+          "version": [
+            108,
+            116
+          ],
+          "version_rightmost_pixel": 222
+        },
+        "2": {
+          "OPTION": [
+            140,
+            148
+          ],
+          "version": [
+            140,
+            148
+          ],
+          "version_rightmost_pixel": 222
+        },
+        "3": {
+          "OPTION": [
+            140,
+            148
+          ],
+          "version": [
+            140,
+            148
+          ],
+          "version_rightmost_pixel": 222
+        }
+      },
+      "options_return_matches_selected_scene": true,
+      "log": "layout-0-unselected\nlayout-0-selected\nlayout-0-options-open\nlayout-0-options-return\nlayout-1-unselected\nlayout-1-selected\nlayout-1-options-open\nlayout-1-options-return\nlayout-2-unselected\nlayout-2-selected\nlayout-3-unselected\nlayout-3-selected\nAll four layout selections and native Options open/return paths captured.\n",
+      "images": {
+        "layout-0-options-open.png": "2c4e39ec39fb6a2c18f21c1e38d96ea347dead91954191e7d766bbbbb3bc0743",
+        "layout-0-options-return.png": "04984602839f303d96b7bc288008549157afd6f8377138efc6c8c16282f265ea",
+        "layout-0-selected.png": "04984602839f303d96b7bc288008549157afd6f8377138efc6c8c16282f265ea",
+        "layout-0-unselected.png": "5f6ae404a9442ef16a72fe29f61b9bc67af2d705ce1311ba6dd8da24809c8865",
+        "layout-1-options-open.png": "2c4e39ec39fb6a2c18f21c1e38d96ea347dead91954191e7d766bbbbb3bc0743",
+        "layout-1-options-return.png": "54309fb53fb1941e272d757cb27b03b5f7ff2885e97a5ea99cd636e8ca32d0ae",
+        "layout-1-selected.png": "54309fb53fb1941e272d757cb27b03b5f7ff2885e97a5ea99cd636e8ca32d0ae",
+        "layout-1-unselected.png": "f57b16f79e31dc18c245fe0f4deb9223a7fa475d2a05c824ee4c4a213bc0fe37",
+        "layout-2-selected.png": "a1a588340d3a8f7f034a8ee6db1a2adbcc3725e87feae4b7c421926b9562eb3e",
+        "layout-2-unselected.png": "f1877409634b95c867f33957c07781d1d2abdefdc0e2a9e9372c6c4e7ea8a496",
+        "layout-3-selected.png": "a2cdd050a6a74dd9b2c9235e8f6fe287968e8db3b02f4fddd40a42f24ca510f5",
+        "layout-3-unselected.png": "63253ce355da652a3ce809e6996a74b0658190d5a58066b441c39551e4fd3427",
+        "option-card-debug.png": "83c57aa6d300ccd7923f3a6398d52e9170df045faffa237005215cb491019578"
+      },
+      "build_memory": [
+        [
+          "EWRAM",
+          "254488"
+        ],
+        [
+          "IWRAM",
+          "28376"
+        ],
+        [
+          "ROM",
+          "30698780"
+        ]
+      ]
+    },
+    "release": {
+      "state": "Unpublished preview; owner review required",
+      "base_version": "0.0.53",
+      "variant": "Release",
+      "ROM_sha256": "cceaab17c641dff2aa1231516dc2b59ea356fb0f2231d48dc21aa495a16f2385",
+      "emulator": "mGBA 0.10.2",
+      "controlled_setup": "Native main-menu initialization; RAM selects the four original layout states. No ROM injection or saved layout changes. Empty/saved native input enters Options and returns. Mystery layouts are controlled rendering cases, not full event progression.",
+      "layout_pixel_bounds": {
+        "0": {
+          "OPTION": [
+            44,
+            52
+          ],
+          "version": [
+            44,
+            52
+          ],
+          "version_rightmost_pixel": 222
+        },
+        "1": {
+          "OPTION": [
+            108,
+            116
+          ],
+          "version": [
+            108,
+            116
+          ],
+          "version_rightmost_pixel": 222
+        },
+        "2": {
+          "OPTION": [
+            140,
+            148
+          ],
+          "version": [
+            140,
+            148
+          ],
+          "version_rightmost_pixel": 222
+        },
+        "3": {
+          "OPTION": [
+            140,
+            148
+          ],
+          "version": [
+            140,
+            148
+          ],
+          "version_rightmost_pixel": 222
+        }
+      },
+      "options_return_matches_selected_scene": true,
+      "log": "layout-0-unselected\nlayout-0-selected\nlayout-0-options-open\nlayout-0-options-return\nlayout-1-unselected\nlayout-1-selected\nlayout-1-options-open\nlayout-1-options-return\nlayout-2-unselected\nlayout-2-selected\nlayout-3-unselected\nlayout-3-selected\nAll four layout selections and native Options open/return paths captured.\n",
+      "images": {
+        "layout-0-options-open.png": "41ce61fee4d204908b6f0830a112155145293b5427e722503ee30169c4c1a5da",
+        "layout-0-options-return.png": "41a933a31cb198c6a99dd64ce55a75a148c35635d690c90e694b1b8d79e6377a",
+        "layout-0-selected.png": "41a933a31cb198c6a99dd64ce55a75a148c35635d690c90e694b1b8d79e6377a",
+        "layout-0-unselected.png": "839cd5200f8621954285b34fed4e0c91a258393c165c3d175b66d97143c60c5e",
+        "layout-1-options-open.png": "41ce61fee4d204908b6f0830a112155145293b5427e722503ee30169c4c1a5da",
+        "layout-1-options-return.png": "bce65d541e296ae476c6286ff270409bd75d4cfb971b9470666c899b576cfb6b",
+        "layout-1-selected.png": "bce65d541e296ae476c6286ff270409bd75d4cfb971b9470666c899b576cfb6b",
+        "layout-1-unselected.png": "348f04ee897ebd123545a134490394ea2821e0ff63a072011f302d50e81f98e0",
+        "layout-2-selected.png": "55c563b96b0f44854109d0ad8dff4a8a3b53beb3640595db2d60c159c025676e",
+        "layout-2-unselected.png": "ae1021b51e65771a05ff68cfcfa691c7d3989fa8a3658a07d65f0751aaaaeb7d",
+        "layout-3-selected.png": "721a189f41102bee31aa7e8ba2aeb3102ac05c574eca922b2e57a5705bb88cf3",
+        "layout-3-unselected.png": "63253ce355da652a3ce809e6996a74b0658190d5a58066b441c39551e4fd3427",
+        "option-card-release.png": "1e622d1257aec8c9ab00a54c349363d534659d67e200f7cb413b5ba131d76552"
+      },
+      "build_memory": [
+        [
+          "EWRAM",
+          "254498"
+        ],
+        [
+          "IWRAM",
+          "28328"
+        ],
+        [
+          "ROM",
+          "30850756"
+        ]
+      ]
+    }
+  }
+}
