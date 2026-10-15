@@ -1,0 +1,530 @@
+{
+  "version": "0.0.56",
+  "owner_approval": "I like A the most! Let's implement it.",
+  "tested_game_source": "52d234fe9c0d9f589c06935a77601d65f9cac022",
+  "status": "Local Release/Debug and final PR source verification passed; production publication pending",
+  "checks": [
+    {
+      "name": "Exercise browser patcher regression tests",
+      "passed": true,
+      "seconds": 0.15
+    },
+    {
+      "name": "Exercise seasonal engine regression tests",
+      "passed": true,
+      "seconds": 0.11
+    },
+    {
+      "name": "Exercise seasonal battle scenes and Kanto foliage",
+      "passed": true,
+      "seconds": 0.1
+    },
+    {
+      "name": "Exercise dynamic weather regression tests",
+      "passed": true,
+      "seconds": 0.11
+    },
+    {
+      "name": "Exercise starter and rival regression tests",
+      "passed": true,
+      "seconds": 0.27
+    },
+    {
+      "name": "Exercise Options navigation regression tests",
+      "passed": true,
+      "seconds": 0.09
+    },
+    {
+      "name": "Exercise Options text regression tests",
+      "passed": true,
+      "seconds": 0.07
+    },
+    {
+      "name": "Exercise New Game Options regression tests",
+      "passed": true,
+      "seconds": 0.14
+    },
+    {
+      "name": "Exercise native follower regression tests",
+      "passed": true,
+      "seconds": 0.08
+    },
+    {
+      "name": "Exercise upstream held-item integration",
+      "passed": true,
+      "seconds": 0.07
+    },
+    {
+      "name": "Exercise first-item history and compatible save sectors",
+      "passed": true,
+      "seconds": 0.13
+    },
+    {
+      "name": "Exercise quest progression and achievement claims",
+      "passed": true,
+      "seconds": 0.14
+    },
+    {
+      "name": "Achievement notice lifecycle",
+      "passed": true,
+      "seconds": 0.08
+    },
+    {
+      "name": "Journal selection rendering and input",
+      "passed": true,
+      "seconds": 0.17
+    },
+    {
+      "name": "Exercise lossless expanded storage codec",
+      "passed": true,
+      "seconds": 0.45
+    },
+    {
+      "name": "Exercise pause panel regression tests",
+      "passed": true,
+      "seconds": 0.09
+    },
+    {
+      "name": "Exercise Adventure Log persistence, days and milestones",
+      "passed": true,
+      "seconds": 0.1
+    },
+    {
+      "name": "Exercise Adventure Log notebook and filters",
+      "passed": true,
+      "seconds": 0.12
+    },
+    {
+      "name": "Exercise scrolling pause menu",
+      "passed": true,
+      "seconds": 0.08
+    },
+    {
+      "name": "Exercise real/manual clocks and saved fallback",
+      "passed": true,
+      "seconds": 0.15
+    },
+    {
+      "name": "Exercise DexNav encounter proximity and approach rules",
+      "passed": true,
+      "seconds": 0.08
+    },
+    {
+      "name": "Exercise player appearance regression tests",
+      "passed": true,
+      "seconds": 0.35
+    },
+    {
+      "name": "Exercise visual polish regression tests",
+      "passed": true,
+      "seconds": 0.09
+    },
+    {
+      "name": "Verify player appearance art",
+      "passed": true,
+      "seconds": 1.19
+    },
+    {
+      "name": "Verify native window frame assets and selection",
+      "passed": true,
+      "seconds": 0.11
+    },
+    {
+      "name": "Verify native hair / coat 4bpp layer geometry",
+      "passed": true,
+      "seconds": 9.66
+    },
+    {
+      "name": "Verify footwear compositor and protected sprite colors",
+      "passed": true,
+      "seconds": 1.75
+    },
+    {
+      "name": "Verify v0.0.46 artwork and isolated smile/body colors",
+      "passed": true,
+      "seconds": 16.84
+    },
+    {
+      "name": "Verify approved Side Part head and native animation frames",
+      "passed": true,
+      "seconds": 2.76
+    },
+    {
+      "name": "Verify approved front-face shading and unchanged other views",
+      "passed": true,
+      "seconds": 8.1
+    },
+    {
+      "name": "Verify approved parent skin tones and palette isolation",
+      "passed": true,
+      "seconds": 0.23
+    },
+    {
+      "name": "Exercise scrolling intro hairstyles",
+      "passed": true,
+      "seconds": 0.08
+    },
+    {
+      "name": "Bedroom colors, memories and safe floor decoration",
+      "passed": true,
+      "seconds": 0.22
+    },
+    {
+      "name": "Homecoming conversations, native priority and save-safe memory",
+      "passed": true,
+      "seconds": 0.35
+    },
+    {
+      "name": "Exercise wardrobe navigation and access",
+      "passed": true,
+      "seconds": 0.1
+    },
+    {
+      "name": "Verify layered accessories and wardrobe furniture",
+      "passed": true,
+      "seconds": 5.82
+    },
+    {
+      "name": "Verify native costume assets and striped Sport shorts",
+      "passed": true,
+      "seconds": 1.44
+    },
+    {
+      "name": "Exercise Da Bug gift and species integration",
+      "passed": true,
+      "seconds": 0.26
+    },
+    {
+      "name": "Exercise Kanto invitation, ferry, welcome and map integration",
+      "passed": true,
+      "seconds": 0.11
+    },
+    {
+      "name": "Exercise empty Kanto foundation and Surf passage",
+      "passed": true,
+      "seconds": 0.1
+    },
+    {
+      "name": "Kanto challenge progression",
+      "passed": true,
+      "seconds": 0.07
+    },
+    {
+      "name": "Kanto Borrowed Voice progression and Trainer Card badges",
+      "passed": true,
+      "seconds": 0.23
+    },
+    {
+      "name": "Kanto Quiet Current and native wild levels",
+      "passed": true,
+      "seconds": 0.1
+    },
+    {
+      "name": "Three expeditions and the Hoenn weather intermission",
+      "passed": true,
+      "seconds": 0.2
+    },
+    {
+      "name": "Wing Survey finale and native Mew outcomes",
+      "passed": true,
+      "seconds": 0.16
+    },
+    {
+      "name": "Isolated outdoor night lights and native DNS blending",
+      "passed": true,
+      "seconds": 0.42
+    },
+    {
+      "name": "Region map browsing",
+      "passed": true,
+      "seconds": 0.07
+    },
+    {
+      "name": "Exercise prepared battle sheets and wardrobe refresh",
+      "passed": true,
+      "seconds": 6.67
+    },
+    {
+      "name": "Verify Legends project metadata",
+      "passed": true,
+      "seconds": 0.08
+    }
+  ],
+  "builds": {
+    "compiler": "ARM GCC 13.2.1",
+    "Debug": {
+      "passed": true,
+      "EWRAM_bytes": 254488,
+      "IWRAM_bytes": 28376,
+      "ROM_used_bytes": 30701972
+    },
+    "Release": {
+      "passed": true,
+      "EWRAM_bytes": 254494,
+      "IWRAM_bytes": 28328,
+      "ROM_used_bytes": 30854348
+    }
+  },
+  "BPS_round_trips": {
+    "supported_clean_Emerald_sha1": "f3ae088181bf583e55daf962a92bb46f4f1d07b7",
+    "patches": [
+      {
+        "variant": "Release",
+        "bytes": 17439238,
+        "sha256": "841ca39dbfa491691a74ede21467e28fec96a1dabe4ea77751354c61436d873c",
+        "target_sha256": "f180616dd87f21b0a8148e019c164a8c2697fd633f3a13ca5d7806c6e77d3a1e",
+        "source_crc32": "1f1c08fb",
+        "target_crc32": "34836b26",
+        "patch_crc32": "16970133",
+        "independent_browser_decoder": true,
+        "target_matches_local_native_build": true,
+        "growth_over_v55_bytes": 451
+      },
+      {
+        "variant": "Debug",
+        "bytes": 17270879,
+        "sha256": "e05e91e99ec29be56d6354d66076f2b67e62a26751aca4761709048947319188",
+        "target_sha256": "8f14e84fe0ec0f3c6c421ec941e5889acae8c7afd640f3bca4a55e280a703bb0",
+        "source_crc32": "1f1c08fb",
+        "target_crc32": "2837a41a",
+        "patch_crc32": "d9c9c50c",
+        "independent_browser_decoder": true,
+        "target_matches_local_native_build": true,
+        "growth_over_v55_bytes": -232
+      }
+    ]
+  },
+  "Floating_IPS_round_trips": {
+    "Release": true,
+    "Debug": true
+  },
+  "native": {
+    "Release": {
+      "version": "0.0.56",
+      "variant": "Release",
+      "ROM_sha256": "f180616dd87f21b0a8148e019c164a8c2697fd633f3a13ca5d7806c6e77d3a1e",
+      "emulator": "mGBA 0.10.2",
+      "captures": [
+        {
+          "name": "achievement-claim-popup",
+          "sha256": "573d56e957d1892f3f02d2c17d5d95189216cc4d5bf5469e1e6d16e7019c4306"
+        },
+        {
+          "name": "achievement-claimed-filter",
+          "sha256": "5482aacf1e7df6c1d3b92aced35a8fcfc272f6882aedaa9a5f79e05b45ea9910"
+        },
+        {
+          "name": "achievement-claimed-status",
+          "sha256": "b016d14afc75c81ee1e3f8f290ba8033b15a810e28a3610e8032b14d1d4938b4"
+        },
+        {
+          "name": "achievement-claimed",
+          "sha256": "11770107df743cd94b4166ac146b86e6108dd1828e1c524907973aa18f7a574c"
+        },
+        {
+          "name": "achievement-detail",
+          "sha256": "d4751a968f8b61f6c22abcd97fcac273dbf4dd1b8c4707e8a74a5bdac16efed3"
+        },
+        {
+          "name": "achievement-ready",
+          "sha256": "a8a868fda8586869ba8330cfe5578942c35dedbb7c4aa4880255875d619aea3b"
+        },
+        {
+          "name": "achievement-return",
+          "sha256": "c9f8d128da61974706b1f96d5a65ae1ab413b5894597c3b68a30742afdabc178"
+        },
+        {
+          "name": "achievement-second",
+          "sha256": "455cadbc9d7ebf43a7959cc6a3ee08d9e7d358222025b86e624084079c8bc5f8"
+        },
+        {
+          "name": "quest-detail",
+          "sha256": "bd481905d548065880a8ff358a46f4df9a2cda899f9b230f795e6bd465a5eb6c"
+        },
+        {
+          "name": "quest-first",
+          "sha256": "7a7e99c68c9e22804d6f7da5a7baff658482cdf69c7355d23c41f61b410304a6"
+        },
+        {
+          "name": "quest-return",
+          "sha256": "4c1f4b98457c00cd9af03a07ccc5a14a53cbb18da7aa256d5007d3696cbb4df1"
+        },
+        {
+          "name": "quest-scrolled",
+          "sha256": "4c1f4b98457c00cd9af03a07ccc5a14a53cbb18da7aa256d5007d3696cbb4df1"
+        },
+        {
+          "name": "quest-second",
+          "sha256": "df9f287e9916ededb5561b21cec90588e370030ca51c0e9d52d57cfa6eea16d8"
+        },
+        {
+          "name": "quest-side",
+          "sha256": "758e07010d4a1e288ec975f4ff8b3994716d7701f45b3801186deeb79a899e94"
+        }
+      ],
+      "passed": true,
+      "fixture": "Release seeds quest flags/journal/one claimed entry directly because LTO internalizes Debug setup helpers; the next manual claim uses actual game input.",
+      "scope": "Controlled ARM callback opened the actual journal with quest flags set. Emulated keys drove native tasks, scrolling, details/back, filters and Achievements with a claimed reward. Claims and confirmation timeout use actual emulated input. Not natural map traversal or historical-save loading. Private ROM excluded from publication.",
+      "harness_sha256": {
+        "arm.c": "f241478ca35aca9a9fdb460f3e7884ec0924ff02d9993f0e0ad955e3eb88bc8a",
+        "arm_release.c": "d6f24a273ecaecab5bd9ab88f44b988e220f501b1b2715423c232fd0dd40b9fe",
+        "host.c": "d141ad7103336f0843f47c4bfc2b3b019769e05bd634be7ea5162cd998233081",
+        "run.py": "c4d0ae2eddff1597cfb8f56b19ca3cce7b4b251d1f6ccbc5fc1845213b36ff96"
+      }
+    },
+    "Debug": {
+      "version": "0.0.56",
+      "variant": "Debug",
+      "ROM_sha256": "8f14e84fe0ec0f3c6c421ec941e5889acae8c7afd640f3bca4a55e280a703bb0",
+      "emulator": "mGBA 0.10.2",
+      "captures": [
+        {
+          "name": "achievement-claim-popup",
+          "sha256": "573d56e957d1892f3f02d2c17d5d95189216cc4d5bf5469e1e6d16e7019c4306"
+        },
+        {
+          "name": "achievement-claimed-filter",
+          "sha256": "5482aacf1e7df6c1d3b92aced35a8fcfc272f6882aedaa9a5f79e05b45ea9910"
+        },
+        {
+          "name": "achievement-claimed-status",
+          "sha256": "b016d14afc75c81ee1e3f8f290ba8033b15a810e28a3610e8032b14d1d4938b4"
+        },
+        {
+          "name": "achievement-claimed",
+          "sha256": "11770107df743cd94b4166ac146b86e6108dd1828e1c524907973aa18f7a574c"
+        },
+        {
+          "name": "achievement-detail",
+          "sha256": "d4751a968f8b61f6c22abcd97fcac273dbf4dd1b8c4707e8a74a5bdac16efed3"
+        },
+        {
+          "name": "achievement-ready",
+          "sha256": "a8a868fda8586869ba8330cfe5578942c35dedbb7c4aa4880255875d619aea3b"
+        },
+        {
+          "name": "achievement-return",
+          "sha256": "c9f8d128da61974706b1f96d5a65ae1ab413b5894597c3b68a30742afdabc178"
+        },
+        {
+          "name": "achievement-second",
+          "sha256": "455cadbc9d7ebf43a7959cc6a3ee08d9e7d358222025b86e624084079c8bc5f8"
+        },
+        {
+          "name": "quest-detail",
+          "sha256": "bd481905d548065880a8ff358a46f4df9a2cda899f9b230f795e6bd465a5eb6c"
+        },
+        {
+          "name": "quest-first",
+          "sha256": "7a7e99c68c9e22804d6f7da5a7baff658482cdf69c7355d23c41f61b410304a6"
+        },
+        {
+          "name": "quest-return",
+          "sha256": "4c1f4b98457c00cd9af03a07ccc5a14a53cbb18da7aa256d5007d3696cbb4df1"
+        },
+        {
+          "name": "quest-scrolled",
+          "sha256": "4c1f4b98457c00cd9af03a07ccc5a14a53cbb18da7aa256d5007d3696cbb4df1"
+        },
+        {
+          "name": "quest-second",
+          "sha256": "df9f287e9916ededb5561b21cec90588e370030ca51c0e9d52d57cfa6eea16d8"
+        },
+        {
+          "name": "quest-side",
+          "sha256": "758e07010d4a1e288ec975f4ff8b3994716d7701f45b3801186deeb79a899e94"
+        }
+      ],
+      "passed": true,
+      "fixture": "Debug sets quest flags and initializes/claims the first achievement through native functions.",
+      "scope": "Controlled ARM callback opened the actual journal with quest flags set. Emulated keys drove native tasks, scrolling, details/back, filters and Achievements with a claimed reward. Claims and confirmation timeout use actual emulated input. Not natural map traversal or historical-save loading. Private ROM excluded from publication.",
+      "harness_sha256": {
+        "arm.c": "f241478ca35aca9a9fdb460f3e7884ec0924ff02d9993f0e0ad955e3eb88bc8a",
+        "arm_release.c": "d6f24a273ecaecab5bd9ab88f44b988e220f501b1b2715423c232fd0dd40b9fe",
+        "host.c": "d141ad7103336f0843f47c4bfc2b3b019769e05bd634be7ea5162cd998233081",
+        "run.py": "c4d0ae2eddff1597cfb8f56b19ca3cce7b4b251d1f6ccbc5fc1845213b36ff96"
+      }
+    }
+  },
+  "native_variant_parity": [
+    {
+      "scene": "achievement-claim-popup",
+      "identical_native_pixels": true
+    },
+    {
+      "scene": "achievement-claimed",
+      "identical_native_pixels": true
+    },
+    {
+      "scene": "achievement-claimed-filter",
+      "identical_native_pixels": true
+    },
+    {
+      "scene": "achievement-claimed-status",
+      "identical_native_pixels": true
+    },
+    {
+      "scene": "achievement-detail",
+      "identical_native_pixels": true
+    },
+    {
+      "scene": "achievement-ready",
+      "identical_native_pixels": true
+    },
+    {
+      "scene": "achievement-return",
+      "identical_native_pixels": true
+    },
+    {
+      "scene": "achievement-second",
+      "identical_native_pixels": true
+    },
+    {
+      "scene": "quest-detail",
+      "identical_native_pixels": true
+    },
+    {
+      "scene": "quest-first",
+      "identical_native_pixels": true
+    },
+    {
+      "scene": "quest-return",
+      "identical_native_pixels": true
+    },
+    {
+      "scene": "quest-scrolled",
+      "identical_native_pixels": true
+    },
+    {
+      "scene": "quest-second",
+      "identical_native_pixels": true
+    },
+    {
+      "scene": "quest-side",
+      "identical_native_pixels": true
+    }
+  ],
+  "opening_DMA_fix": "PutWindowTilemap now precedes Draw, so the first DMA reads a complete map. All 14 final screens match across variants, including first-open footer. No extra buffer, task or saved state.",
+  "native_scope": "Controlled flags/journal fixtures and private diagnostic copy. Actual menu input/claim code and framebuffer. Release seeds one previously claimed fixture directly because LTO removes setup helpers. No natural story, historical-save or Pizza Boy claim.",
+  "save_impact": "None: serialized layouts, IDs, catalogue order/capacity, readers and claim rules unchanged. No migration or added per-save work.",
+  "publications": {
+    "PR": 71,
+    "final_PR_project_checks": 38792840208,
+    "final_PR_builds_BPS": 38792840283,
+    "conclusion": "success"
+  },
+  "preview_files": [
+    {
+      "path": "docs/qa/journal-v0.0.56-preview.png",
+      "sha256": "1b3e0a9d53769bf08bd70500fc1e29f0e1bc7b9cb1388e5d85f03dba51206bfe"
+    },
+    {
+      "path": "docs/qa/journal-v0.0.56-first-open.png",
+      "sha256": "7a7e99c68c9e22804d6f7da5a7baff658482cdf69c7355d23c41f61b410304a6"
+    },
+    {
+      "path": "docs/qa/journal-v0.0.56-claim.png",
+      "sha256": "573d56e957d1892f3f02d2c17d5d95189216cc4d5bf5469e1e6d16e7019c4306"
+    }
+  ]
+}
