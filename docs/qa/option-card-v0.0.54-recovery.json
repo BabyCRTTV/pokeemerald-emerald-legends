@@ -1,7 +1,7 @@
 {
   "version": "0.0.54",
   "approved_preview_commit": "619e085b2372219eea858ea8e4b54741ad013a23",
-  "status": "Recovered release preparation; fresh CI/public verification pending",
+  "status": "Published and verified; fresh CI and actual live BPS targets matched all retained fingerprints",
   "prior_session_evidence": "Before interruption, both local builds, 48 project check blocks, strict metadata checks, mGBA all four menu layouts/Options return and two independent BPS decoders passed. These fingerprints are retained from the captured session output; temporary local binaries/logs were cleared. This record does not claim they were rerun during recovery.",
   "ROM_sha256": {
     "Release": "c805600e5ac54b3002943e201f40522d5e1dc49a325b270c73645a8f8d881f50",
@@ -45,5 +45,6 @@
     "card_right_edge": 224,
     "options_return_identical_to_selected_scene": true
   },
-  "save_impact": "None. No serialized structures, identifiers, capacities, readers or gameplay defaults changed."
+  "save_impact": "None. No serialized structures, identifiers, capacities, readers or gameplay defaults changed.",
+  "fresh_public_verification": "option-card-v0.0.54-public.json"
 }

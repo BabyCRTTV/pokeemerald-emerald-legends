@@ -1,0 +1,213 @@
+{
+  "version": "0.0.54",
+  "status": "Published and verified",
+  "verified_date_UTC": "2026-10-15",
+  "owner_approval": "Perfect, publish! Approval retained through interruption and resume.",
+  "approved_preview_commit": "619e085b2372219eea858ea8e4b54741ad013a23",
+  "release_source_commit": "eeb5f87b1dcf310336110c19b0784373b0eb09cc",
+  "merge_commit": "def39d31ad5c5e0a271be3dd381d9bb61bfaff39",
+  "patch_commit": "9e1197e917ca04fa382cc1a0f5be4e3dfe6d1f63",
+  "pull_request": "https://github.com/BabyCRTTV/pokeemerald-emerald-legends/pull/69",
+  "actions": [
+    {
+      "id": 38710101545,
+      "scope": "PR project checks",
+      "conclusion": "success"
+    },
+    {
+      "id": 38710101271,
+      "scope": "PR Release/Debug builds and BPS",
+      "conclusion": "success"
+    },
+    {
+      "id": 38710309062,
+      "scope": "merged project checks",
+      "conclusion": "success"
+    },
+    {
+      "id": 38710309298,
+      "scope": "production Release/Debug builds and BPS",
+      "conclusion": "success"
+    },
+    {
+      "id": 38710308764,
+      "scope": "merge Pages",
+      "conclusion": "success"
+    },
+    {
+      "id": 38711560474,
+      "scope": "published patch Pages",
+      "conclusion": "success"
+    }
+  ],
+  "website": {
+    "site": "https://babycrttv.github.io/pokeemerald-emerald-legends/",
+    "files": [
+      {
+        "path": "index.html",
+        "status": 200,
+        "bytes": 6478,
+        "sha256": "36e7211e81051083f5e9e64ad323fb78b9472bf26d8a84eb18163730a521b4d9",
+        "matches_committed_bytes": true
+      },
+      {
+        "path": "changelog.html",
+        "status": 200,
+        "bytes": 97858,
+        "sha256": "3853a498c14be976c1829c6e3f10e755e6e1ec0b336993e608ca4d1e58fa952e",
+        "matches_committed_bytes": true
+      },
+      {
+        "path": "patcher.html",
+        "status": 200,
+        "bytes": 2508,
+        "sha256": "8f2d374c8c2dade9460d7c08fef32a860991c015bc640d982928691512090e45",
+        "matches_committed_bytes": true
+      },
+      {
+        "path": "patcher.js",
+        "status": 200,
+        "bytes": 9201,
+        "sha256": "e22e6ba93569c5782aa6ff2d45162843d486c882755b9068137728752e3aa430",
+        "matches_committed_bytes": true
+      },
+      {
+        "path": "downloads/SHA256SUMS.txt",
+        "status": 200,
+        "bytes": 412,
+        "sha256": "f019ea9c1e027f99465a8f770d1c0a0329b1c542bae9815b04790a4f7beea346",
+        "matches_committed_bytes": true
+      },
+      {
+        "path": "downloads/Pokemon-Emerald-Legends-v0.0.54.bps",
+        "status": 200,
+        "bytes": 17437152,
+        "sha256": "d72fe8e2824ca007fdfde762571eb26091359713ce95ddba98f9de8b414fbc75",
+        "matches_committed_bytes": true
+      },
+      {
+        "path": "downloads/Pokemon-Emerald-Legends-v0.0.54-debug.bps",
+        "status": 200,
+        "bytes": 17268637,
+        "sha256": "701b3c87df9e5903990b11395c205cc22328a5dd026cbc605d061388c06a859f",
+        "matches_committed_bytes": true
+      }
+    ]
+  },
+  "independent_live_patch_round_trips": {
+    "source_sha1": "f3ae088181bf583e55daf962a92bb46f4f1d07b7",
+    "patches": [
+      {
+        "variant": "Release",
+        "filename": "downloads_Pokemon-Emerald-Legends-v0.0.54.bps",
+        "bytes": 17437152,
+        "sha256": "d72fe8e2824ca007fdfde762571eb26091359713ce95ddba98f9de8b414fbc75",
+        "target_sha256": "c805600e5ac54b3002943e201f40522d5e1dc49a325b270c73645a8f8d881f50",
+        "source_crc32": "1f1c08fb",
+        "target_crc32": "9a04a6fb",
+        "patch_crc32": "0de61125",
+        "independent_browser_decoder": true,
+        "matched_pre_interruption_native_build": true
+      },
+      {
+        "variant": "Debug",
+        "filename": "downloads_Pokemon-Emerald-Legends-v0.0.54-debug.bps",
+        "bytes": 17268637,
+        "sha256": "701b3c87df9e5903990b11395c205cc22328a5dd026cbc605d061388c06a859f",
+        "target_sha256": "2e7359fd54c7eaf76ebcad641b05e38f30456ee174c5d1b9305ef113e5c02c90",
+        "source_crc32": "1f1c08fb",
+        "target_crc32": "351204c5",
+        "patch_crc32": "723b034e",
+        "independent_browser_decoder": true,
+        "matched_pre_interruption_native_build": true
+      }
+    ]
+  },
+  "prior_verified_ROM_fingerprints_match": true,
+  "BPS_growth_over_v53_bytes": {
+    "Release": 205,
+    "Debug": 252
+  },
+  "fresh_native_verification": {
+    "release": {
+      "core": "mGBA 0.10.2",
+      "rom_source": "independently decoded actual live BPS",
+      "natural_boot": true,
+      "controlled_RAM_or_ROM_injection": false,
+      "scenes": [
+        "New Game OPTION unselected",
+        "New Game OPTION selected",
+        "Options entered",
+        "B returned to identical selected menu"
+      ],
+      "return_identical": true,
+      "captures": [
+        {
+          "path": "docs/qa/option-card-v0.0.54-release-menu-unselected.png",
+          "sha256": "080842cb9594e6d8f394233ff7d3338da70c398cb790f546296a2960a0841c43",
+          "native_dimensions": [
+            240,
+            160
+          ]
+        },
+        {
+          "path": "docs/qa/option-card-v0.0.54-release-menu-selected.png",
+          "sha256": "cc878fe257e60684133055deb681fde0099f178ec2748c4c55fdf68751711ff9",
+          "native_dimensions": [
+            240,
+            160
+          ]
+        },
+        {
+          "path": "docs/qa/option-card-v0.0.54-release-options-open.png",
+          "sha256": "bd3bc2263ce85fd3678862ac337e63f9cd44314f0c78533cbf3e9f2cd115d885",
+          "native_dimensions": [
+            240,
+            160
+          ]
+        }
+      ]
+    },
+    "debug": {
+      "core": "mGBA 0.10.2",
+      "rom_source": "independently decoded actual live BPS",
+      "natural_boot": true,
+      "controlled_RAM_or_ROM_injection": false,
+      "scenes": [
+        "New Game OPTION unselected",
+        "New Game OPTION selected",
+        "Options entered",
+        "B returned to identical selected menu"
+      ],
+      "return_identical": true,
+      "captures": [
+        {
+          "path": "docs/qa/option-card-v0.0.54-debug-menu-unselected.png",
+          "sha256": "a57e452ce919934689139f27e8d75ccc825720baed1de10e5c5dfd14ae5ef39a",
+          "native_dimensions": [
+            240,
+            160
+          ]
+        },
+        {
+          "path": "docs/qa/option-card-v0.0.54-debug-menu-selected.png",
+          "sha256": "c2da32215f74558790c0e5577c463fcdfe2d64cb46b812b6b5a3283018ee7bcd",
+          "native_dimensions": [
+            240,
+            160
+          ]
+        },
+        {
+          "path": "docs/qa/option-card-v0.0.54-debug-options-open.png",
+          "sha256": "bd502373bac326ded2fc91865ed1decc34054351a92ce41498bceefc67cbe2e2",
+          "native_dimensions": [
+            240,
+            160
+          ]
+        }
+      ]
+    }
+  },
+  "save_impact": "None: no serialized structures, identifiers, capacities, readers or gameplay defaults changed. Historical save fixture matrix remains a separate unfinished task.",
+  "evidence_scope": "Fresh CI ran full project checks and both builds; recovery reran focused Options checks and strict metadata locally. Retained pre-interruption all-four-layout native evidence is distinguished in recovery receipt. Fresh native capture here uses natural boot with no save, for New Game layout only. No Pizza Boy or historical save matrix claim."
+}
