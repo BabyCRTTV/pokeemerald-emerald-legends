@@ -1,0 +1,167 @@
+{
+  "version": "0.0.55",
+  "status": "Published and verified",
+  "owner_authorization": "Approved pitch items 1, 2 and 4 on 2026-10-15; implement and publish under standing project instructions",
+  "tested_game_source": "a5b832c8a5fdee793c17bde1aba7896a76040bf4",
+  "qa_commit": "8317488e4204b1948af83d7bd52da58509dd1e24",
+  "merge_commit": "6522c1bf050c7bd8fdeefaf3e9f237afb81a276e",
+  "runtime_inputs_equal_to_tested_source": true,
+  "PR": 70,
+  "PR_checks": [
+    38716612102,
+    38718185531
+  ],
+  "PR_build_BPS": 38716612020,
+  "production_build_BPS": 38718501120,
+  "production_checks": 38718500917,
+  "native_receipt": "homecoming-v0.0.55-native.json",
+  "local_receipt": "homecoming-v0.0.55-local.json",
+  "save_impact": "One signed previously unused native var; no serialized layout/reader/ID changes. Controlled pre-feature-format flash fixture passed; full historical matrix remains unfinished.",
+  "limits": "Native conversations/flash evidence is controlled Debug mGBA, both home layouts plus individual Mom/Norman conversations. Both variants passed native OPTION-card checks. No uninterrupted story or Pizza Boy claim.",
+  "verified_date_UTC": "2026-10-15",
+  "patch_commit": "043c1f0a649024c533650b098727c2d32c803505",
+  "patch_Pages_run": 38719293587,
+  "actions": [
+    {
+      "id": 38716612102,
+      "scope": "PR runtime project checks",
+      "conclusion": "success"
+    },
+    {
+      "id": 38716612020,
+      "scope": "PR runtime Release/Debug builds and BPS",
+      "conclusion": "success"
+    },
+    {
+      "id": 38718185531,
+      "scope": "final PR project checks",
+      "conclusion": "success"
+    },
+    {
+      "id": 38718185471,
+      "scope": "final PR Release/Debug builds and BPS",
+      "conclusion": "success"
+    },
+    {
+      "id": 38718500917,
+      "scope": "merged project checks",
+      "conclusion": "success"
+    },
+    {
+      "id": 38718501120,
+      "scope": "production Release/Debug builds and BPS",
+      "conclusion": "success"
+    },
+    {
+      "id": 38718500897,
+      "scope": "merged Pages",
+      "conclusion": "success"
+    },
+    {
+      "id": 38719293587,
+      "scope": "published patch Pages",
+      "conclusion": "success"
+    }
+  ],
+  "website": {
+    "site": "https://babycrttv.github.io/pokeemerald-emerald-legends/",
+    "files": [
+      {
+        "path": "index.html",
+        "status": 200,
+        "bytes": 6432,
+        "sha256": "89e52705cfebdc504b11d61acf162f0f22b05480b8c146b5a86c6a29557236d0",
+        "matches_committed_bytes": true
+      },
+      {
+        "path": "changelog.html",
+        "status": 200,
+        "bytes": 98842,
+        "sha256": "a0c55ea126a55fa9b9aee037937946f67eb4b85afaf5c0ca0495243e985ebbae",
+        "matches_committed_bytes": true
+      },
+      {
+        "path": "patcher.html",
+        "status": 200,
+        "bytes": 2508,
+        "sha256": "067961f4b8b49fdadeb686444142a15da990da566175a892ab5c4951a37cb299",
+        "matches_committed_bytes": true
+      },
+      {
+        "path": "patcher.js",
+        "status": 200,
+        "bytes": 9201,
+        "sha256": "c9e90baaad6b05458da631432c587616da3aa7c25bd1ca1fb2dc3b7891fa5f17",
+        "matches_committed_bytes": true
+      },
+      {
+        "path": "bedroom-guide.html",
+        "status": 200,
+        "bytes": 3009,
+        "sha256": "5a42f8877e38e1ea8a1828c0d491f81dec2d4f6e0cd9922ab52921e640bdc387",
+        "matches_committed_bytes": true
+      },
+      {
+        "path": "qa/homecoming-v0.0.55-preview.png",
+        "status": 200,
+        "bytes": 28194,
+        "sha256": "af8202b762543c32bc673c6d125dcf3398fd9c51bd49c25ad748abfbe0478f58",
+        "matches_committed_bytes": true
+      },
+      {
+        "path": "downloads/SHA256SUMS.txt",
+        "status": 200,
+        "bytes": 412,
+        "sha256": "9dc4ba88ea0a5ba5e0c1d4aae64d5e59d94f8061c5d8854d1859445c089211ec",
+        "matches_committed_bytes": true
+      },
+      {
+        "path": "downloads/Pokemon-Emerald-Legends-v0.0.55.bps",
+        "status": 200,
+        "bytes": 17438787,
+        "sha256": "463684d7b675c6e7f994e632003e765a41b00ed71fc93ae5530190caa186b0c0",
+        "matches_committed_bytes": true
+      },
+      {
+        "path": "downloads/Pokemon-Emerald-Legends-v0.0.55-debug.bps",
+        "status": 200,
+        "bytes": 17271111,
+        "sha256": "edcde471c3c1f1e28164a491b9c679a8b41078cf54580fd8d575dfde66474b61",
+        "matches_committed_bytes": true
+      }
+    ]
+  },
+  "independent_live_patch_round_trips": {
+    "source_sha1": "f3ae088181bf583e55daf962a92bb46f4f1d07b7",
+    "patches": [
+      {
+        "variant": "Debug",
+        "patch_sha256": "edcde471c3c1f1e28164a491b9c679a8b41078cf54580fd8d575dfde66474b61",
+        "patch_bytes": 17271111,
+        "target_sha256": "d379f167f0729abe154315453d8fce32b7406d700618f8035809c45d2fa045fa",
+        "target_bytes": 33554432,
+        "source_crc32": "1f1c08fb",
+        "target_crc32": "1361baf1",
+        "patch_crc32": "c122fff4",
+        "independent_browser_decoder": true
+      },
+      {
+        "variant": "Release",
+        "patch_sha256": "463684d7b675c6e7f994e632003e765a41b00ed71fc93ae5530190caa186b0c0",
+        "patch_bytes": 17438787,
+        "target_sha256": "b33d1ae9fd1bd8f0b3e6679b2b07ec90a05f0261e17f70b9fe1a1b2d69f0a371",
+        "target_bytes": 33554432,
+        "source_crc32": "1f1c08fb",
+        "target_crc32": "3a18fc17",
+        "patch_crc32": "88e04eef",
+        "independent_browser_decoder": true
+      }
+    ],
+    "matched_exact_locally_tested_ROMs": true
+  },
+  "patch_growth_bytes": {
+    "Release": 1635,
+    "Debug": 2474
+  },
+  "publication_blockers": []
+}

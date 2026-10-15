@@ -1,6 +1,6 @@
 # Homecoming — v0.0.55
 
-Status: validated locally and in [PR #70](https://github.com/BabyCRTTV/pokeemerald-emerald-legends/pull/70); production publication pending.
+Status: **v0.0.55 published and verified**, through [PR #70](https://github.com/BabyCRTTV/pokeemerald-emerald-legends/pull/70). [Public receipts](homecoming-v0.0.55-public.json).
 
 [Native preview](homecoming-v0.0.55-preview.png) · [Local/build/BPS receipt](homecoming-v0.0.55-local.json) · [Native/flash receipt](homecoming-v0.0.55-native.json)
 
@@ -29,3 +29,9 @@ Controlled mGBA 0.10.2 checks used the normal Debug ROM with a private setup cal
 The prepared fixture uses the unchanged pre-feature save layout and current native save readers. It is not an authentic historical-release battery save. No schema migration was needed, and no claim is made for the unfinished historical-save matrix. Reproducible harness source is in `tools/legends/native_homecoming_qa/`. Private ROMs/saves are excluded.
 
 Uninterrupted story traversal, the full historical-save matrix and Pizza Boy remain broader QA work. Private QA ROMs are never distributed.
+
+## Publication
+
+PR #70 merged as `6522c1bf050c7bd8fdeefaf3e9f237afb81a276e`; both final PR checks/builds and merged checks/builds passed. Runtime inputs remained identical to the locally/native-tested source. Production run [38718501120](https://github.com/BabyCRTTV/pokeemerald-emerald-legends/actions/runs/38718501120) compiled both variants, verified canonical clean Emerald, created/reapplied both patches and committed them as `043c1f0a649024c533650b098727c2d32c803505`. Patch [Pages 38719293587](https://github.com/BabyCRTTV/pokeemerald-emerald-legends/actions/runs/38719293587) succeeded before this handoff update.
+
+Both actual live BPS downloads, manifest, homepage, changelog, patcher HTML/JS, bedroom guide and native preview returned HTTP 200 and matched committed bytes. Independent browser decoding of the downloaded patches reproduced the exact locally tested ROMs: Release `b33d1ae9fd1bd8f0b3e6679b2b07ec90a05f0261e17f70b9fe1a1b2d69f0a371`; Debug `d379f167f0729abe154315453d8fce32b7406d700618f8035809c45d2fa045fa`. Production patch hashes also matched the local patches. No publication blocker remained. No additional full emulator run was needed for identical verified ROM bytes; the controlled scope and broader playtest limits above remain unchanged.

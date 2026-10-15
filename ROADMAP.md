@@ -1,6 +1,6 @@
 # Pokémon Emerald: Legends Roadmap
 
-Reviewed against **v0.0.54** on 15 October 2026. The root `VERSION`, current source and [development handoff](docs/DEVELOPMENT-HANDOFF.md) take precedence over older milestone notes. [Verification and remaining playtests](docs/qa/project-state-2026-10-15.md).
+Reviewed against **v0.0.55** on 15 October 2026. The root `VERSION`, current source and [development handoff](docs/DEVELOPMENT-HANDOFF.md) take precedence over older milestone notes. [Verification and remaining playtests](docs/qa/project-state-2026-10-15.md).
 
 ## 0.0.x - Foundation
 
@@ -31,6 +31,7 @@ Goal: establish a stable `pokeemerald-expansion` project and implement the first
 - [x] Quest Log, 95 achievements and expanded Bag/PC storage
 - [x] Deferred achievement notices and corrected journal selection rendering
 - [x] Evolving bedroom keepsakes, independent furnishing colors and safe floor decoration
+- [x] Personal Mom/Norman milestones and a one-time family welcome after the finale (v0.0.55)
 - [ ] Seasonal encounter hooks
 
 ### Trainer appearance
