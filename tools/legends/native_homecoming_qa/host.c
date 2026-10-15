@@ -11,9 +11,11 @@ static struct mLogger logger={.log=quiet};
 static struct mCore *c; static color_t *video; static unsigned mainAddr,callback;
 static void frames(int n){while(n--)c->runFrame(c);}
 static void key(unsigned k){c->setKeys(c,k);frames(2);c->setKeys(c,0);frames(60);}
+static void move(unsigned k){c->setKeys(c,k);frames(12);c->setKeys(c,0);frames(60);}
 static void command(unsigned n,int count){c->busWrite32(c,0x0203fc00,n);c->busWrite32(c,mainAddr+4,callback);frames(count);}
 static unsigned box(int n){return c->busRead32(c,0x0203fc00+4*n);}
-static void capture(const char *dir,int gender,int page){char p[4096];snprintf(p,sizeof(p),"%s/%s-%02d.rgba",dir,gender==0?"male":gender==1?"female":gender==2?"mom":"norman",page);FILE *f=fopen(p,"wb");assert(f);assert(fwrite(video,4,240*160,f)==240*160);fclose(f);}
+static void capture(const char *dir,int gender,int page){frames(60);char p[4096];snprintf(p,sizeof(p),"%s/%s-%02d.rgba",dir,gender==0?"male":gender==1?"female":gender==2?"mom":"norman",page);FILE *f=fopen(p,"wb");assert(f);assert(fwrite(video,4,240*160,f)==240*160);fclose(f);}
+static void floorAt(int x,int y){command(2,2);assert(box(14)==x&&box(15)==y&&box(16)==0&&box(17)==0);}
 static void profile(void){command(2,2);assert(box(5)==0xb423&&box(6)==0xca03&&box(7)==3&&box(8)==2&&box(9)==3&&box(10)==1&&box(11)==3);}
 int main(int argc,char **argv){
  setbuf(stdout,NULL);mLogSetDefaultLogger(&logger);assert(argc==5);mainAddr=strtoul(argv[3],NULL,0);callback=strtoul(argv[4],NULL,0);
@@ -26,10 +28,12 @@ int main(int argc,char **argv){
   command(gender,400);profile();assert(box(1)==0xffff&&!box(2));
   unsigned appearance=box(4);
   command(3,1200);profile();assert(box(12)==1&&box(13)==1&&box(1)==0xffff&&box(4)==appearance);
-  key(gender?16:32);key(1);capture(argv[2],gender,0);
+  // Start on wood floor, then approach Mom with ordinary player input.
+  floorAt(gender?9:1,7);move(64);floorAt(gender?9:1,6);
+  move(gender?32:16);floorAt(gender?9:1,6);key(1);capture(argv[2],gender,0);
   int presses=0;unsigned last=0;
   for(;presses<65;presses++){
-   profile();last=box(1);if(!box(2))break;
+   profile();floorAt(gender?9:1,6);last=box(1);if(!box(2))break;
    key(1);capture(argv[2],gender,presses+1);
   }
   profile();printf("gender=%d presses=%d memory=%x script=%u dad=%u\n",gender,presses,box(1),box(2),box(3));
@@ -40,11 +44,17 @@ int main(int argc,char **argv){
   for(int n=0;n<14;n++){profile();assert(box(3)==16);if(!box(2))break;key(1);}
   profile();assert(!box(2)&&box(1)==0xd666);
   printf("gender=%d flash roundtrip and no-repeat passed\n",gender);
+  // Walk to the chair below Mom and try to enter the blocked table tile.
+  // This catches collision-off fixtures and accidental furniture spawns.
+  move(128);floorAt(gender?9:1,7);move(gender?32:16);floorAt(gender?8:2,7);
+  assert(box(18)!=0);move(gender?32:16);floorAt(gender?8:2,7);
+  printf("gender=%d normal table collision rejected movement; no-clip=%u\n",gender,box(17));
+  move(gender?16:32);move(64);move(gender?32:16);floorAt(gender?9:1,6);
  }
  command(4,2);key(1);
  for(int n=0;n<25;n++){profile();if(!box(2))break;capture(argv[2],2,n);key(1);}
  profile();assert(!box(2)&&box(1)==0xd604);
- command(5,400);key(64);key(1);
+ command(5,400);move(64);key(1);
  for(int n=0;n<25;n++){profile();if(!box(2))break;capture(argv[2],3,n);key(1);}
  profile();printf("personal Mom/Norman memory=%x script=%u\n",box(1),box(2));assert(!box(2)&&box(1)==0xd614);
  c->deinit(c);free(video);return 0;

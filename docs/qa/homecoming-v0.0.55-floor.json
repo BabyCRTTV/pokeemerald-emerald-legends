@@ -1,0 +1,24 @@
+{
+  "version": "0.0.55",
+  "passed": true,
+  "emulator": "mGBA 0.10.2",
+  "variant": "Debug",
+  "ROM_sha256": "d379f167f0729abe154315453d8fce32b7406d700618f8035809c45d2fa045fa",
+  "scope": "Controlled New Game setup of both home layouts and format-identical pre-feature state (not an authentic historical-release save). Passable floor spawns and real input approach to Mom; native table collision rejected movement with no-clip disabled in both layouts; unchanged walkable player position throughout the scene. Actual Mom interaction, native family script and object cleanup, real flash save/clear/load before and after the welcome, retained non-default wardrobe/bedroom/seasons, and no repeat after reload; actual Champion-stage Mom and Norman Gym conversations. Private callback ROM excluded from distribution. Uninterrupted story and Pizza Boy remain unverified.",
+  "log": "gender=0 presses=13 memory=d666 script=0 dad=16\ngender=0 flash roundtrip and no-repeat passed\ngender=0 normal table collision rejected movement; no-clip=0\ngender=1 presses=13 memory=d666 script=0 dad=16\ngender=1 flash roundtrip and no-repeat passed\ngender=1 normal table collision rejected movement; no-clip=0\npersonal Mom/Norman memory=d614 script=0\n",
+  "harness_sha256": {
+    "arm.c": "82dc7a23c2580c2da0a315da13ca9ee18d3eca17c67f843893a8df8f325148be",
+    "host.c": "1645af0dd27e572dceaf0dec8d52210436cfc3795384044a6e821861b96f46d8",
+    "run.py": "fbaced87ed8390c2013cae217b9a301b87ab6e188c252b2a4a74cff400600c79"
+  },
+  "verified_date_UTC": "2026-10-15",
+  "tested_game_source": "a5b832c8a5fdee793c17bde1aba7896a76040bf4",
+  "repository_base": "d3c5dc3e2382e4369eca5a1cfdd314dc57597ec0",
+  "correction": "The original QA warp placed the player on blocked furniture at (3,6)/(7,6). No collision flag was disabled. This fixture starts on floor (1,7)/(9,7), approaches Mom with native input, verifies the unchanged passable player position throughout dialogue, and attempts blocked table entry after reload in both layouts. No shipped game code, map, artwork, ROM, BPS or version changed. The original native/public receipts remain point-in-time records; this receipt supersedes their preview and placement coverage.",
+  "selected_native_frames": {
+    "mom-01.png": "d5a089e2b4cf9380286e5c0cb3ae17cd01965fb57ecb1baace39dabcf2d72f44",
+    "norman-01.png": "d3bc02567b510f6f26e947723392763a90a27910bebc13b351b8b2fe1272edf7",
+    "female-03.png": "3419ab773361e8c815e278b8894336c78d9f0af719dc6961f5b2f2c3fbe7121a"
+  },
+  "preview_sha256": "0b2f460d52deefaaefa83b806c46dd4e9a4fcea38144787e1a243e329e3b71fb"
+}

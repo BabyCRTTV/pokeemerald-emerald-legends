@@ -2,7 +2,7 @@
 
 Status: **v0.0.55 published and verified**, through [PR #70](https://github.com/BabyCRTTV/pokeemerald-emerald-legends/pull/70). [Public receipts](homecoming-v0.0.55-public.json).
 
-[Native preview](homecoming-v0.0.55-preview.png) · [Local/build/BPS receipt](homecoming-v0.0.55-local.json) · [Native/flash receipt](homecoming-v0.0.55-native.json)
+[Corrected native preview](homecoming-v0.0.55-preview.png) · [Floor/collision follow-up](homecoming-v0.0.55-floor.json) · [Local/build/BPS receipt](homecoming-v0.0.55-local.json) · [Native/flash receipt](homecoming-v0.0.55-native.json)
 
 ## Authorized scope
 
@@ -29,6 +29,14 @@ Controlled mGBA 0.10.2 checks used the normal Debug ROM with a private setup cal
 The prepared fixture uses the unchanged pre-feature save layout and current native save readers. It is not an authentic historical-release battery save. No schema migration was needed, and no claim is made for the unfinished historical-save matrix. Reproducible harness source is in `tools/legends/native_homecoming_qa/`. Private ROMs/saves are excluded.
 
 Uninterrupted story traversal, the full historical-save matrix and Pizza Boy remain broader QA work. Private QA ROMs are never distributed.
+
+## Preview placement correction — 15 October 2026
+
+The owner spotted the player standing on the table in the original preview. The controlled QA warp had placed the avatar on blocked furniture at Brendan (3,6) / May (7,6); collision was never disabled. The shipped scene does not move the player. This was a fixture and preview error, not evidence that furniture was walkable.
+
+The corrected harness starts on wood floor at (1,7) / (9,7), approaches Mom with ordinary input and asserts that the player remains on the same passable floor tile throughout dialogue. After the real flash round trip it walks beside the table and verifies that native collision rejects entry in both layouts, with no-clip disabled. Both family scenes, cleanup, retained settings, persistence and no-repeat checks passed again. Champion Mom/Norman conversations also passed. The preview was recaptured from this run; native pixels are still enlarged exactly 2×.
+
+[Fresh receipt](homecoming-v0.0.55-floor.json) records the harness, frames and corrected preview hashes. Original native/public receipts remain historical records of the earlier run and original preview hash, and did not establish collision coverage. No runtime source, approved art, map, ROM, BPS or version changed, so no new game release or duplicate ROM build was required. Private callback ROMs and saves remain excluded.
 
 ## Publication
 

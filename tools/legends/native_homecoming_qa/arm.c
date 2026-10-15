@@ -7,6 +7,8 @@
 #include "event_object_movement.h"
 #include "script.h"
 #include "fieldmap.h"
+#include "field_player_avatar.h"
+#include "config/overworld.h"
 #include "task.h"
 #include "save.h"
 #include "pokemon.h"
@@ -22,7 +24,7 @@ static void room(void)
 {
     u16 map = gSaveBlock2Ptr->playerGender ? MAP_NUM(MAP_LITTLEROOT_TOWN_MAYS_HOUSE_1F) : MAP_NUM(MAP_LITTLEROOT_TOWN_BRENDANS_HOUSE_1F);
     SetWarpDestination(MAP_GROUP(MAP_LITTLEROOT_TOWN_BRENDANS_HOUSE_1F), map, -1,
-        gSaveBlock2Ptr->playerGender ? 7 : 3, 6);
+        gSaveBlock2Ptr->playerGender ? 9 : 1, 7);
     WarpIntoMap(); SetMainCallback2(CB2_LoadMap);
 }
 void qa(void)
@@ -63,6 +65,13 @@ void qa(void)
         gPartiesCount[B_TRAINER_PLAYER] = 1;
         room(); break;
     case 2:
+    {
+        s16 x, y;
+        PlayerGetDestCoords(&x, &y);
+        box[14] = x - MAP_OFFSET; box[15] = y - MAP_OFFSET;
+        box[16] = MapGridGetCollisionAt(x, y);
+        box[17] = OW_FLAG_NO_COLLISION && FlagGet(OW_FLAG_NO_COLLISION);
+        box[18] = MapGridGetCollisionAt((gSaveBlock2Ptr->playerGender ? 7 : 3) + MAP_OFFSET, 7 + MAP_OFFSET);
         box[1] = VarGet(VAR_LEGENDS_HOMECOMING_MEMORY);
         box[2] = ScriptContext_IsEnabled();
         box[3] = GetObjectEventIdByLocalIdAndMap(LOCALID_PLAYERS_HOUSE_1F_DAD,
@@ -73,6 +82,7 @@ void qa(void)
         box[7] = LegendsGetSkinTone(); box[8] = LegendsGetHair(); box[9] = LegendsGetHairColor();
         box[10] = LegendsGetSeasonMode(); box[11] = LegendsGetSeason();
         SetMainCallback2(CB2_Overworld); break;
+    }
     case 4:
         FlagClear(FLAG_LEGENDS_FINAL_HOENN_EPILOGUE); FlagClear(FLAG_LEGENDS_KANTO_WELCOMED);
         VarSet(VAR_LEGENDS_HOMECOMING_MEMORY, 0);
