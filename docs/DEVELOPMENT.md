@@ -4,7 +4,7 @@
 
 Pokémon Emerald: Legends should remain a normal fork/derivative of `rh-hideout/pokeemerald-expansion` so upstream changes can be incorporated deliberately.
 
-Start with [DEVELOPMENT-HANDOFF.md](DEVELOPMENT-HANDOFF.md), the live default branch, recent PRs/Actions and published files. The [14 October 2026 audit](qa/project-state-2026-10-14.md) records the verified v0.0.47.1 baseline and remaining work. Preserve accepted assets, existing save compatibility and completed systems when resuming.
+Start with [DEVELOPMENT-HANDOFF.md](DEVELOPMENT-HANDOFF.md), the live default branch, recent PRs/Actions and published files. The [15 October 2026 audit](qa/project-state-2026-10-15.md) records the verified v0.0.54 baseline and remaining work. Preserve accepted assets, existing save compatibility and completed systems when resuming.
 
 Recommended remotes for local development:
 

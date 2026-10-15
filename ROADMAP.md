@@ -1,6 +1,6 @@
 # Pokémon Emerald: Legends Roadmap
 
-Reviewed against **v0.0.48** on 14 October 2026. The root `VERSION`, current source and [development handoff](docs/DEVELOPMENT-HANDOFF.md) take precedence over older milestone notes. [Verification and remaining playtests](docs/qa/project-state-2026-10-14.md).
+Reviewed against **v0.0.54** on 15 October 2026. The root `VERSION`, current source and [development handoff](docs/DEVELOPMENT-HANDOFF.md) take precedence over older milestone notes. [Verification and remaining playtests](docs/qa/project-state-2026-10-15.md).
 
 ## 0.0.x - Foundation
 
@@ -28,7 +28,9 @@ Goal: establish a stable `pokeemerald-expansion` project and implement the first
 - [x] Seasonal grass effects, winter scuffs and Hoenn/Kanto battle palettes
 - [x] Regional dynamic forecasts and animated day/night weather indicators
 - [x] Early DexNav, saved shiny-rate choices and starter-generation selection
-- [x] Quest Log, 80 achievements and expanded Bag/PC storage
+- [x] Quest Log, 95 achievements and expanded Bag/PC storage
+- [x] Deferred achievement notices and corrected journal selection rendering
+- [x] Evolving bedroom keepsakes, independent furnishing colors and safe floor decoration
 - [ ] Seasonal encounter hooks
 
 ### Trainer appearance
@@ -38,6 +40,7 @@ Goal: establish a stable `pokeemerald-expansion` project and implement the first
 - [x] Prepared male/female battle hairstyles with fixed native battle uniforms
 - [x] Approved v0.0.46 male overworld artwork and v0.0.47 smile/body-color isolation
 - [x] Approved Side Part head, single transparent-cell repair and native animation checks (v0.0.48)
+- [x] Approved front-face shading and inherited Mom/Norman skin tones (v0.0.49–0.0.50)
 - [ ] Further visual tuning from specific owner feedback
 
 ### Kanto postgame
