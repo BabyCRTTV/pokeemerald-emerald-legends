@@ -2,6 +2,13 @@
 
 This is the developer-facing history for the **Debug** build. Shared Legends changes are repeated here so this file stands on its own; Debug-only behavior is called out separately.
 
+## [0.0.55] - 2026-10-15
+
+- Added personal milestone conversations for Mom and Norman, with distinct family perspectives on the player's first travels, Balance Badge, Championship and Kanto journey.
+- Added a one-time family welcome when speaking to Mom after Birch's final Hoenn epilogue and the original postgame ticket/TV sequence. Reused the native parents and rooms, with no forced player movement.
+- Preserved native gifts, healing branches, Gym battles/rematches and existing bedroom comments. Personal conversations remembered the latest reached milestone without queuing older speeches.
+- Preserved save structures, readers and all published IDs; stored validated conversation memory in one previously unused native variable. Release and Debug shared the changes.
+
 ## [0.0.54] - 2026-10-15
 
 - Added the current build version at the right edge of the title menu OPTION card, matching the original font, colors and baseline in all menu layouts.
