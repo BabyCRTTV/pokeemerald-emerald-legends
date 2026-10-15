@@ -1,6 +1,10 @@
-# Quest Log, achievements and expanded storage (v0.0.52)
+# Quest Log, achievements and expanded storage (v0.0.56)
 
 Press **Right or Left** in the pause menu to reach its second page. Choose **QUEST LOG** or **ACHIEVEMENTS**; the Adventure Log remains on the first page. Linked-room menus retain their native restrictions.
+
+## Interface
+
+The owner-approved A layout keeps six entries visible. MAIN / SIDE / DONE quest tabs and ALL / READY / CLAIMED achievement tabs show the active view. READY means unlocked rewards that have not been claimed; DONE shows completed quests. The top-right counter shows the selected entry and view total. Alternating paper rows, a plum selection band, cream selected text and a separate pointer distinguish selection from the completion checkbox. C remains the claimed-reward marker. Both control lines fit within the screen. Details retain all existing objectives, progress, rewards and claim messages.
 
 ## Quests
 
