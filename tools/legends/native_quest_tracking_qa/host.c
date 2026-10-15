@@ -19,7 +19,7 @@ static void capture(const char *dir,const char *name){char p[4096];snprintf(p,si
 static void battery(const char *dir){void *data=NULL;size_t size=c->savedataClone(c,&data);assert(size==131072&&data);char p[4096];snprintf(p,sizeof(p),"%s/private-tracked.sav",dir);FILE *f=fopen(p,"wb");assert(f&&fwrite(data,1,size,f)==size);fclose(f);free(data);}
 static void profile(void){command(2,2);assert(box(6)==0xb423&&box(7)==0xca03&&box(8)==3&&box(9)==2&&box(10)==3&&box(11)==1&&box(12)==3);assert(box(15)==1&&box(16)==7&&box(17)==0);}
 int main(int argc,char **argv){
- setbuf(stdout,NULL);mLogSetDefaultLogger(&logger);assert(argc==6);mainAddr=strtoul(argv[3],NULL,0);callback=strtoul(argv[4],NULL,0);reminder=strtoul(argv[5],NULL,0);
+ setbuf(stdout,NULL);mLogSetDefaultLogger(&logger);assert(argc==6||argc==8);mainAddr=strtoul(argv[3],NULL,0);callback=strtoul(argv[4],NULL,0);reminder=strtoul(argv[5],NULL,0);
  c=mCoreFind(argv[1]);assert(c&&c->init(c));mCoreInitConfig(c,NULL);mCoreConfigSetDefaultIntValue(&c->config,"skipBios",1);c->loadConfig(c,&c->config);
  video=calloc(240*160,sizeof(color_t));c->setVideoBuffer(c,video,240);struct VFile *f=VFileOpen(argv[1],O_RDONLY);assert(f&&c->loadROM(c,f));c->reset(c);frames(300);c->busWrite32(c,mainAddr,0);
  command(0,400);profile();unsigned appearance=box(5);assert(box(3)==0&&box(1)==0xffff&&box(2)==1);
@@ -30,6 +30,24 @@ int main(int argc,char **argv){
  key(1);profile();assert(box(1)==9);capture(argv[2],"quest-detail-tracked");
  key(2);capture(argv[2],"quest-list-tracked");key(8);assert(card());capture(argv[2],"pause-journal");
  key(32);assert(card());capture(argv[2],"pause-tracked");
+ if(argc==8){
+  unsigned offset=strtoul(argv[6],NULL,0),limitAddr=strtoul(argv[7],NULL,0);
+  key(2);assert(!card());
+  c->setKeys(c,8);frames(2);c->setKeys(c,0);
+  for(int n=0;n<120&&!card();n++)frames(1);
+  assert(card());frames(16);capture(argv[2],"scroll-opening");
+  unsigned limit=c->busRead16(c,limitAddr),last=0,maxSeen=0,returned=0,count=0;assert(limit>0);
+  char path[4096];snprintf(path,sizeof(path),"%s/scroll.csv",argv[2]);FILE *log=fopen(path,"w");assert(log);fprintf(log,"frame,offset\n");
+  for(unsigned n=0;n<limit*12+1000;n++){
+   unsigned value=c->busRead16(c,offset);assert(value<=limit&&(!n||((value<=last+1)&&(last<=value+1))));last=value;
+   fprintf(log,"%u,%u\n",n,value);
+   if(n%3==0){char name[40];snprintf(name,sizeof(name),"scroll-%04u",count++);capture(argv[2],name);}
+   if(value==limit)maxSeen=1;
+   if(maxSeen&&!value){returned++;if(returned==30)break;}
+   frames(1);
+  }
+  fclose(log);assert(maxSeen&&returned==30);printf("Overflow completed: max=%u pixels, smooth return to zero.\n",limit);
+ }
  // Existing DexNav help temporarily owns the same left-side card region.
  key(128);key(128);key(1);assert(!card());capture(argv[2],"dexnav-help");
  key(2);assert(card());capture(argv[2],"dexnav-return");

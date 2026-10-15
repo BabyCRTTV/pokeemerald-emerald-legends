@@ -24,6 +24,10 @@ An unmodified Release ROM loaded a private copy of that battery fixture with nor
 
 These are prepared fixtures in the unchanged v0.0.56 save layout, not authentic historical-release saves. The historical matrix and Pizza Boy remain unfinished. Private diagnostic ROMs, ELFs and battery saves are excluded.
 
+## Overflow scrolling follow-up
+
+The owner requested automatic smooth scrolling after reviewing the card. [Native long-text animation](quest-tracking-scroll.gif), [implementation and scope](quest-tracking-scroll.md), and [fresh verification](quest-tracking-scroll.json) supersede the static-body behavior. The original evidence above remains historical.
+
 ## Approval and publication
 
 VERSION and public downloads remain v0.0.56 during review. Following owner layout approval: coordinate the next version/changelogs/title/Options/site labels, run final PR CI/build/BPS checks, merge and verify both live downloads through independent decoders and Pages. Do not merge or update Pages/downloads before approval. The developer-site refresh remains deferred.

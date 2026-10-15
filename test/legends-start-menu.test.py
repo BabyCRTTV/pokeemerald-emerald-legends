@@ -6,11 +6,15 @@ source = "\n".join(line for line in source.splitlines() if not line.startswith("
 preamble = r'''
 #include <assert.h>
 #include <stdint.h>
+#include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
 typedef uint8_t u8; typedef uint16_t u16; typedef uint32_t u32; typedef int bool8;
+typedef int32_t s32;
+#define WINDOW_TILE_DATA 7
 #define EOS 0
 #define CHAR_SPACE ' '
+#define CHAR_NEWLINE '\n'
 #define EWRAM_DATA
 #define TRUE 1
 #define FALSE 0
@@ -38,6 +42,15 @@ static int error,weather,season,adds,removes,copies,rtcReads,pixels,fail;
 static const struct WindowTemplate *template;
 static char texts[3][32];
 static u8 pixelBuffer[48][96];
+static u8 cardPixels[72][96];
+static u32 cardTiles[12*9*8], scratchTiles[12*2*8];
+static unsigned allocations;
+void *AllocZeroed(unsigned size){if(fail==3)return NULL;void *p=calloc(1,size);if(p)allocations++;return p;}
+void Free(void *p){if(p){assert(allocations);allocations--;free(p);}}
+static void setPixel(u32 *tiles,int x,int y,u8 color){unsigned i=(y/8*12+x/8)*8+y%8,shift=x%8*4;tiles[i]=(tiles[i]&~(15u<<shift))|((color&15u)<<shift);}
+static void unpackCard(void){for(int y=0;y<72;y++)for(int x=0;x<96;x++)cardPixels[y][x]=(cardTiles[(y/8*12+x/8)*8+y%8]>>(x%8*4))&15;}
+
+static unsigned activeWindows;
 static char reminderText[512];
 static u16 tracked=0xFFFF;
 static int mapPopup,noticeHides;
@@ -60,19 +73,28 @@ u8 GetCurrentWeather(void){return weather;}
 u8 LegendsGetActiveSeason(void){return season;}
 const u8 *LegendsGetSeasonName(u8 s){return (const u8 *[]){"SPRING","SUMMER","AUTUMN","WINTER"}[s];}
 void FormatDecimalTimeWithoutSeconds(u8 *d,int h,int m,int f){sprintf((char*)d,"%02d:%02d %s",h%12?h%12:12,m,h<12?"AM":"PM");}
-u32 AddWindow(const struct WindowTemplate *t){adds++;template=t;return fail?255:t->height==9?5:4;}
-void RemoveWindow(u32 w){assert(w==4||w==5);removes++;}
+u32 AddWindow(const struct WindowTemplate *t){adds++;template=t;if(fail==1||(fail==2&&t->height==2))return 255;unsigned w=t->height==2?6:t->height==9?5:4;assert(!(activeWindows&(1<<w)));activeWindows|=1<<w;return w;}
+void RemoveWindow(u32 w){assert(w==4||w==5||w==6);assert(activeWindows&(1<<w));activeWindows&=~(1<<w);removes++;}
 void PutWindowTilemap(u32 w){assert(w==4||w==5);}
 void DrawStdWindowFrame(u8 w,int c){assert(w==4||w==5);if(w==5)reminderText[0]=0;}
 void ClearStdWindowAndFrameToTransparent(u8 w,int c){assert((w==4||w==5)&&c);}
 void CopyWindowToVram(u32 w,u32 m){assert(w==4||w==5);copies++;}
-void FillWindowPixelBuffer(u32 w,u8 v){pixels=0;memset(pixelBuffer,v&15,sizeof(pixelBuffer));}
-void FillWindowPixelRect(u32 w,u8 v,u16 x,u16 y,u16 a,u16 b){if(w==5){assert(x+a<=96&&y+b<=72);return;}assert(x+a<=96&&y+b<=48);for(int j=y;j<y+b;j++)for(int i=x;i<x+a;i++)pixelBuffer[j][i]=v&15;pixels++;}
+void FillWindowPixelBuffer(u32 w,u8 v){if(w==6){memset(scratchTiles,v,sizeof(scratchTiles));return;}pixels=0;memset(pixelBuffer,v&15,sizeof(pixelBuffer));}
+void FillWindowPixelRect(u32 w,u8 v,u16 x,u16 y,u16 a,u16 b){if(w==5){assert(x+a<=96&&y+b<=72);for(int j=y;j<y+b;j++)for(int i=x;i<x+a;i++)setPixel(cardTiles,i,j,v);return;}assert(x+a<=96&&y+b<=48);for(int j=y;j<y+b;j++)for(int i=x;i<x+a;i++)pixelBuffer[j][i]=v&15;pixels++;}
 void AddTextPrinterParameterized(u8 w,u8 f,const u8 *t,u16 x,u16 y,int speed,void *cb){snprintf(texts[y/16],32,"%s",t);}
 void AddTextPrinterParameterized3(u8 w,u8 f,int x,int y,const u8 *ink,int speed,const u8 *t){
- assert(w==5&&x+GetStringWidth(f,t,0)<=96&&y+12<=72);
- if(y)for(;*t;t++)if(*t!=' '){unsigned n=strlen(reminderText);reminderText[n]=*t;reminderText[n+1]=0;}
+ assert((w==5||w==6)&&x+GetStringWidth(f,t,0)<=96&&y+12<=(w==6?16:72));
+ int px=x;for(const u8 *p=t;*p;p++){
+  for(int col=0;col<fontWidths[*p];col++)for(int row=2;row<10;row++){
+   u8 color=(*p+col+row)%12+2;
+   setPixel(w==6?scratchTiles:cardTiles,px+col,y+row,color);
+  }
+  px+=fontWidths[*p];
+ }
+ if(w==5&&y)for(;*t;t++)if(*t!=' '){unsigned n=strlen(reminderText);reminderText[n]=*t;reminderText[n+1]=0;}
 }
+uintptr_t GetWindowAttribute(u32 w,u32 a){assert((w==5||w==6)&&a==WINDOW_TILE_DATA);return (uintptr_t)(w==6?scratchTiles:cardTiles);}
+
 '''
 helpers = r'''
 static void checkReminder(const char *title,const char *step){
@@ -159,6 +181,32 @@ mapPopup=0;fail=1;LegendsShowTrackedQuestReminder();assert(!sReminderHandle);fai
 '''+cases+r'''
 LegendsShowTrackedQuestReminder();c=adds;LegendsShowTrackedQuestReminder();assert(adds==c);
 LegendsHideStartMenuPanel();assert(!sReminderHandle); // Also hides when the clock panel is absent.
+// Current short text stays still: no scratch allocation or repeated graphics copies.
+checkReminder("SHORT TITLE","A short objective.");LegendsShowTrackedQuestReminder();
+assert(!sReminderScrollLimit&&!sReminderLineHandle);c=copies;
+for(int f=0;f<900;f++)LegendsUpdateTrackedQuestReminder();assert(copies==c);
+LegendsHideTrackedQuestReminder();
+quest.title=(const u8*)"A longer title that wraps across several lines";
+quest.steps[0].text=(const u8*)"Return the recovered DEVON GOODS to the researcher waiting inside DEVON CORPORATION in RUSTBORO CITY. Speak to the receptionist and check the delivery details before you leave for the next destination.";
+LegendsShowTrackedQuestReminder();assert(sReminderScrollLimit>60&&sReminderLineHandle==7);
+unsigned limit=sReminderScrollLimit;u8 start[72][96];unpackCard();memcpy(start,cardPixels,sizeof(start));c=copies;
+for(int f=0;f<120;f++){LegendsUpdateTrackedQuestReminder();assert(sReminderScrollOffset==0);}
+assert(copies==c);
+for(unsigned f=0;f<limit*3;f++){
+ LegendsUpdateTrackedQuestReminder();assert(sReminderScrollOffset==(f+1)/3);
+ unpackCard();assert(!memcmp(start,cardPixels,12*96)); // Fixed label/divider are never scrolled.
+}
+assert(sReminderReturning&&sReminderScrollOffset==limit);c=copies;
+for(int f=0;f<120;f++)LegendsUpdateTrackedQuestReminder();assert(copies==c);
+for(unsigned f=0;f<limit*3;f++){
+ LegendsUpdateTrackedQuestReminder();assert(sReminderScrollOffset==limit-(f+1)/3);
+ unpackCard();assert(!memcmp(start,cardPixels,12*96));
+}
+assert(!sReminderScrollOffset&&!sReminderReturning&&!memcmp(start,cardPixels,sizeof(start)));
+LegendsHideTrackedQuestReminder();c=copies;
+for(int f=0;f<300;f++)LegendsUpdateTrackedQuestReminder();assert(copies==c&&!activeWindows&&!allocations);
+for(fail=1;fail<=3;fail++){LegendsShowTrackedQuestReminder();assert(!sReminderHandle&&!sReminderLineHandle&&!activeWindows&&!allocations);}fail=0;
+LegendsShowTrackedQuestReminder();assert(!sReminderScrollOffset);LegendsHideStartMenuPanel();assert(!activeWindows&&!allocations);
 '''
     main=main.replace('puts("Pause panel',extra+'puts("Pause panel')
     path.write_text(fontdef + preamble + source + helpers + main)

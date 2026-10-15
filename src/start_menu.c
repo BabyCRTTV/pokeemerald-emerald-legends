@@ -678,7 +678,10 @@ void Task_ShowStartMenu(u8 taskId)
         break;
     case 1:
         if (gMenuCallback == HandleStartMenuInput)
+        {
             ShowTrackedQuestReminder();
+            LegendsUpdateTrackedQuestReminder();
+        }
         if (gMenuCallback() == TRUE)
             DestroyTask(taskId);
         break;

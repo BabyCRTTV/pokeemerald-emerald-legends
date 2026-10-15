@@ -1,0 +1,120 @@
+{
+  "status": "Review branch only; master/Pages/downloads unchanged at v0.0.56. Owner preview approval required before publication.",
+  "base_commit": "668da34ef64f593c9584d26497d6596ddca97ec9",
+  "date": "2026-10-15",
+  "behavior": {
+    "body_pixels": {
+      "x": 8,
+      "y": 20,
+      "width": 96,
+      "height": 60
+    },
+    "overflow_only": true,
+    "header_fixed": true,
+    "endpoint_pause_updates": 120,
+    "pixels_per_move": 1,
+    "menu_updates_per_move": 3,
+    "return": "Smooth reverse scroll, then pause and repeat; reopening resets to top.",
+    "native_Debug_observed_move_interval_frames": 4,
+    "save_changes": false
+  },
+  "checks": {
+    "actual_C_pause_panel": "passed; packed native 4bpp buffers, all catalogue strings, short static text, overflow cycle, fixed header, hidden updates, allocation failures and cleanup",
+    "actual_C_pause_menu": "passed; special layouts, reminder exclusions and physical tile bounds",
+    "diff_check": "passed"
+  },
+  "builds": {
+    "Debug": {
+      "passed": true,
+      "command": "make -j8",
+      "ROM_sha256": "0b8ef6e4854f49fb9f2c46eff43aa80c9d519bd2e3952ea9e1cac8781396538b",
+      "log_sha256": "ce752bc038ed1a3f2a687d8ea52b04d0d8c16d349d8efc3ab5ee6a34ec340eec"
+    },
+    "Release": {
+      "passed": true,
+      "command": "make -j8 release",
+      "ROM_sha256": "1e4f43d614b6d8231c0b7dd4cee7caf235df1ce2d2140f1a01b53d656976aeb3",
+      "log_sha256": "834d05c8ce810202c45b41361f065b83a114b8b44b8ade8a954b3193a226af21"
+    }
+  },
+  "native_Debug_short": {
+    "version": "0.0.56",
+    "passed": true,
+    "emulator": "mGBA 0.10.2",
+    "variant": "Debug",
+    "ROM_sha256": "0b8ef6e4854f49fb9f2c46eff43aa80c9d519bd2e3952ea9e1cac8781396538b",
+    "overflow_demo": false,
+    "scope": "Controlled Debug fixture with the unchanged v0.0.56-format journal (reserved=0), non-default appearance/bedroom/Winter, and walkable floor position. Actual input tracks a quest through Details and opens the real pause menu on both pages, DexNav help/return and Save dialog. Native flag fixtures advance and complete the quest; Safari layout suppresses the reminder. Real flash save/clear/load verifies pre-feature defaults, tracked selection and completion. Not an authentic historical save, uninterrupted story or Pizza Boy test. Private ROM excluded.",
+    "menu_content_and_clock_pixels_unchanged": true,
+    "next_objective_pixels_updated": true,
+    "log": "capture pause-off card=0\ncapture quest-detail-before card=0\ncapture quest-detail-tracked card=0\ncapture quest-list-tracked card=0\ncapture pause-journal card=4\ncapture pause-tracked card=4\ncapture dexnav-help card=0\ncapture dexnav-return card=4\ncapture save-dialog card=0\ncapture save-return card=4\ncapture pause-after-flash card=4\ncapture pause-next-step card=4\ncapture safari-counter card=0\ncapture pause-completed card=0\nNative track, menu exclusion, next-step update, completion, real flash and retained profile checks passed.\n",
+    "harness_sha256": {
+      "arm.c": "fcbee7888ed50435f8b4cbd69f387b45204ecfb68ed79584650240a9b5c94c01",
+      "host.c": "254cc9d893505cd27ee43402b5e5caf93aca0e9a3025c9f5f3de4eca85146ef9",
+      "run.py": "773fc748477ab75da7e40542b8bdeb9ef20713190d9750185cc6e83839733907"
+    }
+  },
+  "native_Debug_overflow": {
+    "version": "0.0.56",
+    "passed": true,
+    "emulator": "mGBA 0.10.2",
+    "variant": "Debug",
+    "ROM_sha256": "0b8ef6e4854f49fb9f2c46eff43aa80c9d519bd2e3952ea9e1cac8781396538b",
+    "overflow_demo": true,
+    "scope": "Synthetic oversized objective pointer in private QA ROM only; shipped catalogue unchanged. Controlled Debug fixture with the unchanged v0.0.56-format journal (reserved=0), non-default appearance/bedroom/Winter, and walkable floor position. Actual input tracks a quest through Details and opens the real pause menu on both pages, DexNav help/return and Save dialog. Native flag fixtures advance and complete the quest; Safari layout suppresses the reminder. Real flash save/clear/load verifies pre-feature defaults, tracked selection and completion. Not an authentic historical save, uninterrupted story or Pizza Boy test. Private ROM excluded.",
+    "menu_content_and_clock_pixels_unchanged": true,
+    "next_objective_pixels_updated": true,
+    "log": "Overflow completed: max=132 pixels, smooth return to zero.\ncapture dexnav-help card=0\ncapture dexnav-return card=4\ncapture save-dialog card=0\ncapture save-return card=4\ncapture pause-after-flash card=4\ncapture pause-next-step card=4\ncapture safari-counter card=0\ncapture pause-completed card=0\nNative track, menu exclusion, next-step update, completion, real flash and retained profile checks passed.\n",
+    "harness_sha256": {
+      "arm.c": "fcbee7888ed50435f8b4cbd69f387b45204ecfb68ed79584650240a9b5c94c01",
+      "host.c": "3294d0f5d5443e9a90706bf77c319c08ee8b9cfddc85e8f1f326814a01159910",
+      "run.py": "773fc748477ab75da7e40542b8bdeb9ef20713190d9750185cc6e83839733907"
+    },
+    "log_sha256": "f398453ecfef053bac9e31aa432c511bc37993d9b12b1431a688a8d8ddef76dd",
+    "offset_csv_sha256": "481caf0fce1edbd83628aa10879101351484d2fe00fec841789b3fdce7da66ba"
+  },
+  "native_Release_unmodified": {
+    "passed": true,
+    "variant": "Release",
+    "emulator": "mGBA 0.10.2",
+    "ROM_sha256": "1e4f43d614b6d8231c0b7dd4cee7caf235df1ce2d2140f1a01b53d656976aeb3",
+    "ROM_unmodified": true,
+    "battery_fixture_sha256": "eeba90143d8e5e32331520ead457eb0b8d27af96ec4dd779d92668f53f08e310",
+    "reminder_pixels_equal_to_Debug": true,
+    "captures": {
+      "release-continued.png": "740491307c79c20c5c8a5ea7189b369604a59d653570de6edf2743474bc0e35b",
+      "release-detail-tracked.png": "628a79a62665288b8855fb64b3f5386c614f23ded14c24f4c47ce288f90b6d1c",
+      "release-journal-page.png": "e95a7072894f7cfde40bc509d030bf197cc3bbe18d44c99b797c8dc136a02ea6",
+      "release-pause-tracked.png": "62f1ba9d262114191c3bededbd4bc0b870905146190cd73a3c83bcef64c9426b",
+      "release-stopped.png": "542bd2b1944ae75655322c17b4a656c827ab412b37a0337f10e2e6a06315fc21"
+    },
+    "log": "release-continued card=0\nrelease-pause-tracked card=4\nrelease-journal-page card=4\nrelease-detail-tracked card=0\nrelease-stopped card=0\nNormal Release Continue loaded the battery fixture; native pause/journal/Details and stop tracking passed.\n",
+    "scope": "Unmodified Release ROM loaded the private Debug-produced controlled battery fixture via normal title/Continue input. Native pause pages, tracked Details and stop-tracking passed. Host did not write RAM or callbacks. Not a historical-release save or broader playthrough. Private fixture excluded.",
+    "harness_sha256": {
+      "release.c": "6a870f632bc8c16f0d21bd553a8190c1615952c99a1dd50feae9eaba5ae4d0e3",
+      "release.py": "a11572ac6504d795f132e461a0f72a5fe00cf03e5b0f8c4575b02e6636c8fc6d"
+    }
+  },
+  "native_GIF": {
+    "native_frames_checked": 1316,
+    "native_images_checked": 439,
+    "scroll_limit_pixels": 132,
+    "one_pixel_moves": 264,
+    "native_move_interval_frames": {
+      "4": 262,
+      "124": 1
+    },
+    "fixed_header_frame_and_menu_pixels": true,
+    "returned_to_identical_card": true,
+    "GIF_decoded_frames": 265,
+    "GIF_timeline_frames_verified": 439,
+    "GIF_SHA256": "27f09996e166fb0cb6e0a5a71817e821bad02f038c2bab35d0fa6a4100ac2f2e",
+    "scale": "2x nearest neighbor, exact native pixels; caption outside game",
+    "fixture": "Synthetic oversized objective in a private controlled Debug ROM; game quest text unchanged."
+  },
+  "limits": [
+    "Native overflow animation exercised in controlled Debug fixture. Unmodified Release normal Continue/menu/stop and both normal builds passed.",
+    "No new BPS/Pages publication during preview; existing release remains unchanged.",
+    "Historical save matrix, uninterrupted story playthrough and Pizza Boy testing remain outstanding."
+  ]
+}

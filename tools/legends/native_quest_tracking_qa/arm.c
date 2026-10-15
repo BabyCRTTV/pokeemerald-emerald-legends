@@ -7,6 +7,7 @@
 #include "fieldmap.h"
 #include "field_player_avatar.h"
 #include "save.h"
+#include "script.h"
 #include "pokemon.h"
 #include "safari_zone.h"
 #include "legends_journal.h"
@@ -54,7 +55,7 @@ void qa(void)
         box[8] = LegendsGetSkinTone(); box[9] = LegendsGetHair(); box[10] = LegendsGetHairColor();
         box[11] = LegendsGetSeasonMode(); box[12] = LegendsGetSeason();
         PlayerGetDestCoords(&x, &y); box[15] = x - MAP_OFFSET; box[16] = y - MAP_OFFSET;
-        box[17] = MapGridGetCollisionAt(x, y); break;
+        box[17] = MapGridGetCollisionAt(x, y); box[18] = ArePlayerFieldControlsLocked(); box[19] = ScriptContext_IsEnabled(); break;
     case 3:
         box[13] = TrySavingData(SAVE_NORMAL);
         gSaveBlock3Ptr->journal.reserved = 0;

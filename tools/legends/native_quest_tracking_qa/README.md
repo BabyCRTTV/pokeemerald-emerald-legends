@@ -14,3 +14,12 @@ The runner verifies unchanged menu-content/clock pixels and changed next-objecti
 Release loads a **private writable copy** of the Debug battery fixture through normal title/Continue input. mGBA's save mapping requires a writable file; the source fixture is preserved. This host changes neither ROM bytes nor RAM/callbacks. It checks both pause pages, tracked Details and stop tracking; the reminder pixels must match Debug exactly.
 
 These are controlled fixtures in the unchanged save layout, not authentic historical-release saves or uninterrupted traversal. Use fresh output directories. Never commit/distribute diagnostic ROMs, ELFs, full output directories or battery saves. Only selected previews, source and structured receipts belong in GitHub.
+
+## Overflow animation
+
+```
+python3 tools/legends/native_quest_tracking_qa/run.py --output /tmp/tracking-overflow --prefix /path/to/usr --overflow-demo
+python3 tools/legends/native_quest_tracking_qa/scroll_preview.py --captures /tmp/tracking-overflow --output /tmp/quest-tracking-scroll.gif
+```
+
+The private overflow fixture substitutes a deliberately oversized Devon objective pointer in unused ROM padding. It never changes the product catalogue. The host checks brief close/reopen taps, records every native frame offset through a full down/up cycle, and then performs the ordinary help/Save/flash/progression checks. Capture starts after the normal pause-menu text has finished drawing. The preview verifier checks single-pixel motion, fixed heading/frame/menu pixels, identical initial/final card pixels, and every decoded GIF frame/timing entry against exact 2× native captures. It emits the GIF and an adjacent `.verification.json`. Short-text and allocation/cleanup behavior are also tested by `test/legends-start-menu.test.py` with packed native 4bpp buffers.

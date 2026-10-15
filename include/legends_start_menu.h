@@ -5,6 +5,7 @@ void LegendsShowStartMenuPanel(void);
 void LegendsUpdateStartMenuPanel(void);
 void LegendsHideStartMenuPanel(void);
 void LegendsShowTrackedQuestReminder(void);
+void LegendsUpdateTrackedQuestReminder(void);
 void LegendsHideTrackedQuestReminder(void);
 
 #endif
