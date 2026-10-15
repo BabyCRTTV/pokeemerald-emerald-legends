@@ -2,6 +2,13 @@
 
 This is the player-facing history for the recommended **Release** build. Shared Legends changes are repeated here so this file stands on its own; Release-only behavior is called out separately.
 
+## [0.0.56] - 2026-10-15
+
+- Refined Quest Log and Achievements with the owner-approved A layout: filter tabs, alternating paper rows, a top-right entry counter and the established plum selection band.
+- Kept six entries visible and fitted both control lines within the screen. Preserved full objectives, progress, reward details, scrolling and all existing filters.
+- Preserved manual one-time berry claims, PC Item Storage confirmations and full-PC retries. Changed no save structures, persistent IDs, catalogue order, artwork or gameplay rules.
+- Shared the interface changes between Release and Debug, with native rendering/input and catalogue-bound regression coverage.
+
 ## [0.0.55] - 2026-10-15
 
 - Added personal milestone conversations for Mom and Norman, with distinct family perspectives on the player's first travels, Balance Badge, Championship and Kanto journey.

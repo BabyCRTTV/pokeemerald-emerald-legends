@@ -12,3 +12,5 @@ The owner may switch models, including Astra and Sol, for different tasks. Use t
 - Keep versioning, all three changelogs, Options, README, site and browser patcher consistent. Preserve Release/Debug distinctions.
 - Write changelog entries in past tense so readers can easily distinguish completed changes from planned work. Apply this convention to all three changelog files and the website changelog.
 - Update the handoff with accepted decisions, approval state, commit/build evidence and outstanding work at each completed milestone or interruption. Keep it short, and store detailed evidence in linked QA records. Avoid dumping full logs, registries, binary data or repeated inspections into the conversation.
+
+- Review this file at each release; update it when a durable owner preference or workflow rule changes. Keep version-specific approvals, commits and evidence in `docs/DEVELOPMENT-HANDOFF.md` and linked QA receipts.

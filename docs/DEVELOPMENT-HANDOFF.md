@@ -10,7 +10,13 @@ The owner uses a phone. Provide narrow vertical PNG/GIF previews and explicit do
 
 On 14 October 2026 the owner reversed the earlier permission to ignore older saves. Backward compatibility for Legends battery saves is now required for future updates. Preserve existing save readers, field offsets and persistent IDs; add focused migrations/tests when saved data changes. [Save-compatibility policy and evidence](SAVE-COMPATIBILITY.md) defines the release gate without adding duplicate builds or per-patch full emulator runs. Existing checks pass; a complete historical-release save-fixture matrix remains unfinished and must not be represented as verified.
 
-## Current version — 0.0.55 (published and verified)
+## Approved implementation — v0.0.56 journal interface
+
+The owner chose A: “I like A the most! Let's implement it.” Implementation and publication are authorized after verification. Keep six visible rows, filter tabs, alternating paper rows, the plum selected band/cream text/separate pointer and claimed markers. MAIN / SIDE / DONE and ALL / READY / CLAIMED map to unchanged filters. The counter moves to the header; both help lines fit on screen. Details retain every objective/progress/reward message. Do not ship truncated exploratory details or B/C variants. Manual claims, atomic full-PC retry, field unlock overlays, backend catalogue order and save readers remain intact. No serialized fields, capacities, persistent IDs, artwork or gameplay rules changed.
+
+Interrupted before commit; temporary preview/build files were cleared. Restored implementation from the captured design/code instructions and reran focused journal UI/backend checks successfully. Fresh builds/native/full checks/publication remain pending; see [journal QA](qa/journal-v0.0.56.md). Published baseline remains v0.0.55. Developer-site visual refresh remains deferred.
+
+## Protected v0.0.55 homecoming baseline
 
 The owner approved pitch items 1 + 2 + 4: personal Mom/Norman milestone conversations and a short family welcome after the finale. These shipped without changing approved artwork, map geometry or native event priority. Each parent's latest conversation plays once; older speeches do not queue. Speaking to Mom in the player's own home after Birch's final Hoenn epilogue and completed native ticket/TV events starts the one-time welcome, using Norman's existing object with no forced player movement. Native gifts, healing branches and Gym battles/rematches remain intact. Topic choices and everyday chatter were not selected.
 

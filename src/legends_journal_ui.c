@@ -38,7 +38,12 @@ static const u16 sPaperPalette[] =
     RGB(31,29,24), RGB(31,29,24), RGB(31,29,24), RGB(31,29,24),
 };
 static const u8 sInk[] = {1, 2, 3};
-static const u8 sAccent[] = {1, 8, 3};
+static const u8 sHeaderInk[] = {7, 8, 3};
+static const u8 sAltInk[] = {9, 2, 3};
+
+#define JOURNAL_ROWS 6
+#define JOURNAL_ROW_Y 40
+#define JOURNAL_ROW_HEIGHT 15
 static const u8 sSelectedInk[] = {8, 1, 0};
 static const u8 sClaimInk[] = {7, 8, 3};
 
@@ -105,6 +110,21 @@ static u16 Entry(u16 position)
     for (i = 0; i < total; i++) if (Matches(i) && position-- == 0) return i;
     return 0xFFFF;
 }
+static void JournalTab(const u8 *text, u8 x, u8 width, bool8 selected)
+{
+    if (selected)
+        FillWindowPixelRect(0, PIXEL_FILL(8), x, 24, width, 14);
+    else
+    {
+        FillWindowPixelRect(0, PIXEL_FILL(6), x, 24, width, 1);
+        FillWindowPixelRect(0, PIXEL_FILL(6), x, 37, width, 1);
+        FillWindowPixelRect(0, PIXEL_FILL(6), x, 24, 1, 14);
+        FillWindowPixelRect(0, PIXEL_FILL(6), x + width - 1, 24, 1, 14);
+    }
+    AddTextPrinterParameterized3(0, FONT_SMALL, x + 4, 24,
+        selected ? sSelectedInk : sInk, TEXT_SKIP_DRAW, text);
+}
+
 static void Draw(void)
 {
     u8 text[128], number[16], i, j;
@@ -114,15 +134,21 @@ static void Draw(void)
     const struct LegendsAchievement *a;
     if (sSelected >= count) sSelected = count ? count - 1 : 0;
     if (sTop > sSelected) sTop = sSelected;
-    if (sSelected >= sTop + 6) sTop = sSelected - 5;
+    if (sSelected >= sTop + JOURNAL_ROWS) sTop = sSelected - (JOURNAL_ROWS - 1);
     id = Entry(sSelected);
     FillWindowPixelBuffer(0, PIXEL_FILL(1));
     FillWindowPixelRect(0, PIXEL_FILL(6), 0, 0, 6, 160);
     FillWindowPixelRect(0, PIXEL_FILL(7), 6, 0, 234, 21);
-    AddTextPrinterParameterized3(0, FONT_NORMAL, 13, 2, sAccent, TEXT_SKIP_DRAW,
+    FillWindowPixelRect(0, PIXEL_FILL(6), 6, 20, 234, 2);
+    AddTextPrinterParameterized3(0, FONT_NORMAL, 13, 2, sHeaderInk, TEXT_SKIP_DRAW,
         sAchievements ? COMPOUND_STRING("ACHIEVEMENTS") : COMPOUND_STRING("QUEST LOG"));
+        ConvertIntToDecimalStringN(text, count ? sSelected + 1 : 0, STR_CONV_MODE_LEFT_ALIGN, 3);
+        StringAppend(text, COMPOUND_STRING("/")); ConvertIntToDecimalStringN(number, count, STR_CONV_MODE_LEFT_ALIGN, 3);
+        StringAppend(text, number); AddTextPrinterParameterized3(0, FONT_SMALL, 198, 4, sHeaderInk, TEXT_SKIP_DRAW, text);
     if (sDetail && id != 0xFFFF)
     {
+        FillWindowPixelRect(0, PIXEL_FILL(6), 8, 23, 228, 113);
+        FillWindowPixelRect(0, PIXEL_FILL(1), 9, 24, 226, 111);
         if (!sAchievements)
         {
             q = LegendsQuestGet(id); Print(q->title, 13, 24);
@@ -160,32 +186,42 @@ static void Draw(void)
     }
     else
     {
-        Print(sAchievements ? (sFilter == 0 ? COMPOUND_STRING("ALL") : sFilter == 1 ? COMPOUND_STRING("READY TO CLAIM") : COMPOUND_STRING("CLAIMED")) :
-            (sFilter == 0 ? COMPOUND_STRING("MAIN STORY") : sFilter == 1 ? COMPOUND_STRING("SIDE QUESTS") : COMPOUND_STRING("COMPLETED")), 13, 24);
-        ConvertIntToDecimalStringN(text, count ? sSelected + 1 : 0, STR_CONV_MODE_LEFT_ALIGN, 3);
-        StringAppend(text, COMPOUND_STRING("/")); ConvertIntToDecimalStringN(number, count, STR_CONV_MODE_LEFT_ALIGN, 3);
-        StringAppend(text, number); Print(text, 189, 24);
+        if (sAchievements)
+        {
+            JournalTab(COMPOUND_STRING("ALL"), 12, 45, sFilter == 0);
+            JournalTab(COMPOUND_STRING("READY"), 61, 57, sFilter == 1);
+            JournalTab(COMPOUND_STRING("CLAIMED"), 122, 67, sFilter == 2);
+        }
+        else
+        {
+            JournalTab(COMPOUND_STRING("MAIN"), 12, 50, sFilter == 0);
+            JournalTab(COMPOUND_STRING("SIDE"), 66, 50, sFilter == 1);
+            JournalTab(COMPOUND_STRING("DONE"), 120, 50, sFilter == 2);
+        }
         if (!count) Print(COMPOUND_STRING("No entries in this view yet."), 13, 70);
-        for (i = 0; i < 6 && sTop + i < count; i++)
+        for (i = 0; i < JOURNAL_ROWS && sTop + i < count; i++)
         {
             id = Entry(sTop + i);
-            rowInk = sInk;
+            rowInk = (i & 1) ? sAltInk : sInk;
+            if (i & 1)
+                FillWindowPixelRect(0, PIXEL_FILL(9), 7, JOURNAL_ROW_Y + i * JOURNAL_ROW_HEIGHT, 229, JOURNAL_ROW_HEIGHT);
             if (sTop + i == sSelected)
             {
                 rowInk = sSelectedInk;
-                FillWindowPixelRect(0, PIXEL_FILL(8), 7, 41 + i * 16, 229, 16);
+                FillWindowPixelRect(0, PIXEL_FILL(8), 7, JOURNAL_ROW_Y + i * JOURNAL_ROW_HEIGHT, 229, JOURNAL_ROW_HEIGHT);
                 // Keep the pointer separate from the completion checkbox.
                 for (j = 0; j < 4; j++)
-                    FillWindowPixelRect(0, PIXEL_FILL(1), 8 + j, 46 + i * 16 + j, 1, 7 - 2 * j);
+                    FillWindowPixelRect(0, PIXEL_FILL(1), 8 + j, JOURNAL_ROW_Y + 5 + i * JOURNAL_ROW_HEIGHT + j, 1, 7 - 2 * j);
             }
-            Check(13, 46 + i * 16, sAchievements ? LegendsAchievementEarned(id) : LegendsQuestComplete(id));
-            AddTextPrinterParameterized3(0, FONT_SMALL, 26, 41 + i * 16, rowInk, TEXT_SKIP_DRAW,
+            Check(13, JOURNAL_ROW_Y + 5 + i * JOURNAL_ROW_HEIGHT, sAchievements ? LegendsAchievementEarned(id) : LegendsQuestComplete(id));
+            AddTextPrinterParameterized3(0, FONT_SMALL, 26, JOURNAL_ROW_Y + i * JOURNAL_ROW_HEIGHT, rowInk, TEXT_SKIP_DRAW,
                 sAchievements ? LegendsAchievementGet(id)->title : LegendsQuestGet(id)->title);
             if (sAchievements && LegendsAchievementClaimed(id))
-                AddTextPrinterParameterized3(0, FONT_SMALL, 222, 41 + i * 16, rowInk, TEXT_SKIP_DRAW, COMPOUND_STRING("C"));
+                AddTextPrinterParameterized3(0, FONT_SMALL, 222, JOURNAL_ROW_Y + i * JOURNAL_ROW_HEIGHT, rowInk, TEXT_SKIP_DRAW, COMPOUND_STRING("C"));
         }
-        Print(COMPOUND_STRING("UP/DOWN: Select  A: Details  B: Close"), 10, 136);
-        Print(COMPOUND_STRING("LEFT/RIGHT: View  L/R: Page"), 10, 148);
+        FillWindowPixelRect(0, PIXEL_FILL(6), 7, 132, 229, 1);
+        Print(COMPOUND_STRING("A: DETAILS   B: CLOSE   L/R: PAGE"), 12, 134);
+        Print(COMPOUND_STRING("LEFT/RIGHT: CHANGE VIEW"), 12, 146);
     }
     CopyWindowToVram(0, COPYWIN_FULL);
 }
@@ -247,8 +283,8 @@ static void Task_Read(u8 taskId)
     {
         if (JOY_NEW(DPAD_UP)) sSelected = sSelected ? sSelected - 1 : count - 1;
         if (JOY_NEW(DPAD_DOWN)) sSelected = (sSelected + 1) % count;
-        if (JOY_NEW(L_BUTTON)) sSelected = sSelected > 6 ? sSelected - 6 : 0;
-        if (JOY_NEW(R_BUTTON)) sSelected = min(sSelected + 6, count - 1);
+        if (JOY_NEW(L_BUTTON)) sSelected = sSelected > JOURNAL_ROWS ? sSelected - JOURNAL_ROWS : 0;
+        if (JOY_NEW(R_BUTTON)) sSelected = min(sSelected + JOURNAL_ROWS, count - 1);
     }
     PlaySE(SE_SELECT); Draw();
 }

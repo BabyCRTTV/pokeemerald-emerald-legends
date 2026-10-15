@@ -92,28 +92,36 @@ static void key(u16 keys){gMain.newKeys=keys;Task_Read(0);gMain.newKeys=0;}
 static void selection(void){
  int titles=0, selected=0;
  for(int row=0;row<6 && sTop+row<Count();row++){
-  int y=41+row*16, active=sTop+row==sSelected;
-  assert(paper[y+1][235]==(active?8:1));
-  assert(paper[y+4][8]==(active?8:1));
-  assert(paper[y+5][8]==1);
+  int y=JOURNAL_ROW_Y+row*JOURNAL_ROW_HEIGHT, active=sTop+row==sSelected;
+  int bg=active?8:(row&1?9:1);
+  assert(paper[y+1][235]==bg);
+  assert(paper[y+4][8]==bg);
+  assert(paper[y+5][8]==(active?1:bg));
   // The pointer exists only on the selected row; it cannot look like a check.
-  assert(paper[y+8][11]==1);
-  assert(paper[y+5][11]==(active?8:1));
+  assert(paper[y+8][11]==(active?1:bg));
+  assert(paper[y+5][11]==bg);
   assert(paper[y+6][14]==1); // Checkbox interior remains readable.
   for(int j=0;j<opCount;j++)if(ops[j].x==26&&ops[j].y==y){
    u16 id=Entry(sTop+row);
    assert(!strcmp(ops[j].text,(const char*)(sAchievements?LegendsAchievementGet(id)->title:LegendsQuestGet(id)->title)));
-   assert(ops[j].colors[0]==(active?8:1));
+   assert(ops[j].colors[0]==bg);
    assert(ops[j].colors[1]==(active?1:2));
    selected+=active;titles++;
   }
  }
  assert(titles==min(6,Count()-sTop));assert(selected==(Count()!=0));
+ int tabs=0, activeTabs=0;
+ for(int j=0;j<opCount;j++){
+  if(ops[j].y==24){tabs++;activeTabs+=ops[j].colors[0]==8;}
+  if(ops[j].x==26)assert(ops[j].x+GetStringWidth(ops[j].font,(const u8*)ops[j].text,0)<=220);
+ }
+ assert(tabs==3&&activeTabs==1);
+ assert(paper[132][235]==6);
  // Claimed markers use the same legible colors as their own title.
  for(int j=0;j<opCount;j++)if(ops[j].x==222){
-  int row=(ops[j].y-41)/16;
+  int row=(ops[j].y-JOURNAL_ROW_Y)/JOURNAL_ROW_HEIGHT;
   assert(sAchievements&&LegendsAchievementClaimed(Entry(sTop+row)));
-  assert(ops[j].colors[0]==(sTop+row==sSelected?8:1));
+  assert(ops[j].colors[0]==(sTop+row==sSelected?8:(row&1?9:1)));
  }
 }
 int main(void){
