@@ -263,7 +263,7 @@
     "log": "capture pause-off card=0\ncapture quest-detail-before card=0\ncapture quest-detail-tracked card=0\ncapture quest-list-tracked card=0\ncapture pause-journal card=4\ncapture pause-tracked card=4\ncapture dexnav-help card=0\ncapture dexnav-return card=4\ncapture save-dialog card=0\ncapture save-return card=4\ncapture pause-after-flash card=4\ncapture pause-next-step card=4\ncapture safari-counter card=0\ncapture pause-completed card=0\nNative track, menu exclusion, next-step update, completion, real flash and retained profile checks passed.\n",
     "harness_sha256": {
       "arm.c": "68767212c6ffab3683c4a8887c8d6657ca7cf6264be583341d1119e18e7108b4",
-      "host.c": "84e411e6d8952eafa3baf63ea039edd988c6964bad22bedce0a1914ad86ccca0",
+      "host.c": "081428042b2a8c97d5652a57d1404c493360e51d6ee9cf091e3b6f10ecd0cf01",
       "run.py": "a56abe71531e501bc3fcb8fb76747e53a333b5c5e1fb51a5bc561d2d1c1ab815"
     }
   },
@@ -273,14 +273,14 @@
     "emulator": "mGBA 0.10.2",
     "ROM_sha256": "a132d96120f332db5050f0a25b378b2ad13ebe3193e609249a2cd82fa92fac76",
     "ROM_unmodified": true,
-    "battery_fixture_sha256": "3a33cbf9539ceaf394b2d58fb73af82a43922d54cadd865c3ac5048a5456038e",
+    "battery_fixture_sha256": "14eda19a8ea46c65606c77174be3918e204720e46443363228367d3c2910ee6b",
     "reminder_pixels_equal_to_Debug": true,
     "captures": {
-      "release-continued.png": "ab5f73db45f7b0fd4b93aeb962c8070d0c2afe82e71a24832ab40e3e10d7d8f6",
+      "release-continued.png": "740491307c79c20c5c8a5ea7189b369604a59d653570de6edf2743474bc0e35b",
       "release-detail-tracked.png": "628a79a62665288b8855fb64b3f5386c614f23ded14c24f4c47ce288f90b6d1c",
-      "release-journal-page.png": "137dee97372be61466a4543c2222bb53f8fe4bb1e3f9947984b98122bd39dfbe",
-      "release-pause-tracked.png": "8fe6899a7736556d868b55b983604e3f013c5faff1e8ad317ac2920a738e37e4",
-      "release-stopped.png": "b28316724e4df351e24656df987306a9a7ab2315851a21a57509cc7020830831"
+      "release-journal-page.png": "b1d2e2ac6d37e92b35f8df4c15a9f4d8c74d10bcc234dbfc870cad638f81a29b",
+      "release-pause-tracked.png": "4860a729501ac18511a63c9d514925d5e8a4202ae96021109a8aa8f585b5b113",
+      "release-stopped.png": "b6bb22b061976bb2e04c9d3dd3c12d91f61eea49ee94b5517397f4df790b51f3"
     },
     "log": "release-continued card=0\nrelease-pause-tracked card=4\nrelease-journal-page card=4\nrelease-detail-tracked card=0\nrelease-stopped card=0\nNormal Release Continue loaded the battery fixture; native pause/journal/Details and stop tracking passed.\n",
     "scope": "Unmodified Release ROM loaded the private Debug-produced controlled battery fixture via normal title/Continue input. Native pause pages, tracked Details and stop-tracking passed. Host did not write RAM or callbacks. Not a historical-release save or broader playthrough. Private fixture excluded.",
@@ -290,23 +290,23 @@
     }
   },
   "native_Debug_captures": {
-    "dexnav-help.png": "ff085b127d52a878e8095b786afadcf494108fde7c885572b165a3a253471379",
-    "dexnav-return.png": "7f22da43f199003fa36d98db3e13f2f16dfe1cbc99b82b8e84b421a7a8bfec7d",
-    "pause-after-flash.png": "ef972608b1ce9d31148e58f1c56aa984087d2d22d82944fce7768de246167843",
-    "pause-completed.png": "1643631085007a058e066d8eed2ea5ad54f194188ceba89a1d9228e0eba2fc29",
-    "pause-journal.png": "ad4e35c8155b47572c69294806f57af300be5fbf5032dcad0bb9dd51f511541c",
-    "pause-next-step.png": "3b019272516b94f3dab85097fc1ba82b49c7b0e713cd2b2068f958f722a7fbb8",
-    "pause-off.png": "317ee8c87b968ccce1a4bc9ef41240e39d7f14af981bf087727f502296fab07c",
-    "pause-tracked.png": "3699e6036b15e79b15732439281db6aa60bffba5d9614c67a379771049b1bc89",
+    "dexnav-help.png": "828bbbe6c43ce2bef5355575d4c35c7f8548388a4629938f01f682d906611e52",
+    "dexnav-return.png": "83c9a82aa3b9081e833fa0331f027449a2f7618a7517708a8aa6e54f9cfdb659",
+    "pause-after-flash.png": "510c2598e46044b5744aac3c4ded71018045a871d0ca6f9fbc231041c88a80e4",
+    "pause-completed.png": "6192b7986f9534adaaa36fc2269fefb3473e6eee67d029aae8dcdb1315b5b527",
+    "pause-journal.png": "2ad2c66cdbdfa397b12ee931cce19c36ebad2251882a1878274ffae7543c1875",
+    "pause-next-step.png": "163cc77e3261ef894f6eafb9a5ffe2494e5dadc1fbbd17115b9c9279420be24e",
+    "pause-off.png": "f00d4f14254aca96f409fa7e7fd320b714b9ebe1e25c169deed3d0f8afe2b73a",
+    "pause-tracked.png": "1aea7c8a4273cda5aef63326f1b1b4f66a2fcd42e17cf456430f0dffdb81246b",
     "quest-detail-before.png": "1850778cb89d351dc61fb4e34b3ffd5c0e7680efe4a97737b22f86420d4554bd",
     "quest-detail-tracked.png": "628a79a62665288b8855fb64b3f5386c614f23ded14c24f4c47ce288f90b6d1c",
     "quest-list-tracked.png": "8d67087123e072e22b48f21d7505ceb39d693b7b28fb894ba1cce5cd9d858780",
-    "safari-counter.png": "195d22cd36585f8a34451dd504cca9384ff9baf83106ff028f1f2cfe46c7a089",
-    "save-dialog.png": "41c808bba0b11a8702054a3bc3bdee2b496bfe528a895b88fe9c21c33bf0a4c7",
-    "save-return.png": "220dbacc2b8b892119d1a50ed422e345bc63562230699ae20968ba726f2150b5"
+    "safari-counter.png": "c8351ebab73cc2c4ca1cb280b58ac6cb9a1099ee53514603b625177712450940",
+    "save-dialog.png": "20ad57e0aee01d60ea51a6c076ae3e5976c64762594d884814e179323bd20d74",
+    "save-return.png": "ae6746f8470ea9049ac5dcab8129109927c87bee530733a4ddc94e11f45c09ce"
   },
-  "preview_sha256": "828b357e623b2a03db2b3b807d27c4be8102e18c7b7fc689ac8576d23bf50103",
-  "menu_safety_preview_sha256": "30c766c927050fcb3132804036ac57cfaa24d19c5b442ae158abbdc6b8244e14",
+  "preview_sha256": "f304e1ab73582284898cf9a7446f5258020a366dd042e8ebc65924d4066cc66a",
+  "menu_safety_preview_sha256": "57418b867711b87f0051660b74a89b6af06527d8a11777501182c04a0b3fe7dd",
   "save_contract": {
     "journal_bytes": 36,
     "selection_offset": 10,

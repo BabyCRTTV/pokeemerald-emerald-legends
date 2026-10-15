@@ -34,7 +34,7 @@ int main(int argc,char **argv){
  key(128);key(128);key(1);assert(!card());capture(argv[2],"dexnav-help");
  key(2);assert(card());capture(argv[2],"dexnav-return");
  // Save dialog and submenus must not retain the reminder.
- for(int i=0;i<4;i++)key(128);key(1);assert(!card());capture(argv[2],"save-dialog");
+ for(int i=0;i<4;i++)key(128);key(1);assert(!card());frames(150);capture(argv[2],"save-dialog");
  for(int n=0;n<3&&!card();n++)key(2);assert(card());capture(argv[2],"save-return");key(2);assert(!card());
  command(3,1200);profile();assert(box(13)==1&&box(14)==1&&box(1)==9&&box(5)==appearance);
  battery(argv[2]);
