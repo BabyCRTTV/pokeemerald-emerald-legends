@@ -1,0 +1,256 @@
+{
+  "version": "0.0.56",
+  "status": "Published and verified",
+  "verified_date_UTC": "2026-10-15",
+  "owner_authorization": "Approved A: I like A the most! Let's implement it. Standing implement/publish instructions retained.",
+  "PR": 71,
+  "tested_source": "52d234fe9c0d9f589c06935a77601d65f9cac022",
+  "merge_commit": "8d7a8d56ad60064cf6fb8a3e16bc2e487353d61f",
+  "patch_commit": "ee20772873a7073d636fa331790b4cc798c33e5f",
+  "actions": {
+    "PR_checks": 38792840208,
+    "PR_builds_BPS": 38792840283,
+    "merged_checks": 38796200951,
+    "production_builds_BPS": 38796200927,
+    "patch_Pages": 38797205338
+  },
+  "action_conclusions": "All listed runs completed successfully; an earlier merged build 38795868153 was superseded/cancelled, not a compile failure.",
+  "base_and_independent_live_patch_verification": {
+    "base_sha1": "f3ae088181bf583e55daf962a92bb46f4f1d07b7",
+    "patches": [
+      {
+        "variant": "Release",
+        "patch": "Pokemon-Emerald-Legends-v0.0.56.bps",
+        "patch_sha256": "841ca39dbfa491691a74ede21467e28fec96a1dabe4ea77751354c61436d873c",
+        "patch_bytes": 17439238,
+        "target_sha256": "f180616dd87f21b0a8148e019c164a8c2697fd633f3a13ca5d7806c6e77d3a1e",
+        "crc32": {
+          "source": "1f1c08fb",
+          "target": "34836b26",
+          "patch": "16970133"
+        },
+        "flips_passed": true,
+        "browser_passed": true
+      },
+      {
+        "variant": "Debug",
+        "patch": "Pokemon-Emerald-Legends-v0.0.56-debug.bps",
+        "patch_sha256": "e05e91e99ec29be56d6354d66076f2b67e62a26751aca4761709048947319188",
+        "patch_bytes": 17270879,
+        "target_sha256": "8f14e84fe0ec0f3c6c421ec941e5889acae8c7afd640f3bca4a55e280a703bb0",
+        "crc32": {
+          "source": "1f1c08fb",
+          "target": "2837a41a",
+          "patch": "d9c9c50c"
+        },
+        "flips_passed": true,
+        "browser_passed": true
+      }
+    ]
+  },
+  "live_files": [
+    {
+      "path": "downloads/Pokemon-Emerald-Legends-v0.0.56.bps",
+      "status": 200,
+      "bytes": 17439238,
+      "sha256": "841ca39dbfa491691a74ede21467e28fec96a1dabe4ea77751354c61436d873c",
+      "matches_committed": true
+    },
+    {
+      "path": "downloads/Pokemon-Emerald-Legends-v0.0.56-debug.bps",
+      "status": 200,
+      "bytes": 17270879,
+      "sha256": "e05e91e99ec29be56d6354d66076f2b67e62a26751aca4761709048947319188",
+      "matches_committed": true
+    },
+    {
+      "path": "downloads/SHA256SUMS.txt",
+      "status": 200,
+      "bytes": 412,
+      "sha256": "84a8ccd4f596638870458bdd2213a8545d1f327d59a1e575631e9ce2373a097d",
+      "matches_committed": true
+    },
+    {
+      "path": "index.html",
+      "status": 200,
+      "bytes": 6413,
+      "sha256": "ca3ac30451b977fdb47a5ffd1730b5a4f766971f539bdf41fa9485657d5c8d25",
+      "matches_committed": true
+    },
+    {
+      "path": "changelog.html",
+      "status": 200,
+      "bytes": 100022,
+      "sha256": "3851e3dac8fd23719fc55830c63f8c59ca724fbce7e1ef5980f146465ff0852e",
+      "matches_committed": true
+    },
+    {
+      "path": "patcher.html",
+      "status": 200,
+      "bytes": 2508,
+      "sha256": "7b727aa2cca722312bf0099a186929a36879f6c288b3cc59b410adf94b281584",
+      "matches_committed": true
+    },
+    {
+      "path": "patcher.js",
+      "status": 200,
+      "bytes": 9201,
+      "sha256": "b6dc11dd664041def832dca1ae532199357248fbfd58d2dd0a8994568bc1c292",
+      "matches_committed": true
+    }
+  ],
+  "native_runs": [
+    {
+      "version": "0.0.56",
+      "variant": "Debug",
+      "ROM_sha256": "8f14e84fe0ec0f3c6c421ec941e5889acae8c7afd640f3bca4a55e280a703bb0",
+      "emulator": "mGBA 0.10.2",
+      "captures": [
+        {
+          "name": "achievement-claim-popup",
+          "sha256": "573d56e957d1892f3f02d2c17d5d95189216cc4d5bf5469e1e6d16e7019c4306"
+        },
+        {
+          "name": "achievement-claimed-filter",
+          "sha256": "5482aacf1e7df6c1d3b92aced35a8fcfc272f6882aedaa9a5f79e05b45ea9910"
+        },
+        {
+          "name": "achievement-claimed-status",
+          "sha256": "b016d14afc75c81ee1e3f8f290ba8033b15a810e28a3610e8032b14d1d4938b4"
+        },
+        {
+          "name": "achievement-claimed",
+          "sha256": "11770107df743cd94b4166ac146b86e6108dd1828e1c524907973aa18f7a574c"
+        },
+        {
+          "name": "achievement-detail",
+          "sha256": "d4751a968f8b61f6c22abcd97fcac273dbf4dd1b8c4707e8a74a5bdac16efed3"
+        },
+        {
+          "name": "achievement-ready",
+          "sha256": "a8a868fda8586869ba8330cfe5578942c35dedbb7c4aa4880255875d619aea3b"
+        },
+        {
+          "name": "achievement-return",
+          "sha256": "c9f8d128da61974706b1f96d5a65ae1ab413b5894597c3b68a30742afdabc178"
+        },
+        {
+          "name": "achievement-second",
+          "sha256": "455cadbc9d7ebf43a7959cc6a3ee08d9e7d358222025b86e624084079c8bc5f8"
+        },
+        {
+          "name": "quest-detail",
+          "sha256": "bd481905d548065880a8ff358a46f4df9a2cda899f9b230f795e6bd465a5eb6c"
+        },
+        {
+          "name": "quest-first",
+          "sha256": "7a7e99c68c9e22804d6f7da5a7baff658482cdf69c7355d23c41f61b410304a6"
+        },
+        {
+          "name": "quest-return",
+          "sha256": "4c1f4b98457c00cd9af03a07ccc5a14a53cbb18da7aa256d5007d3696cbb4df1"
+        },
+        {
+          "name": "quest-scrolled",
+          "sha256": "4c1f4b98457c00cd9af03a07ccc5a14a53cbb18da7aa256d5007d3696cbb4df1"
+        },
+        {
+          "name": "quest-second",
+          "sha256": "df9f287e9916ededb5561b21cec90588e370030ca51c0e9d52d57cfa6eea16d8"
+        },
+        {
+          "name": "quest-side",
+          "sha256": "758e07010d4a1e288ec975f4ff8b3994716d7701f45b3801186deeb79a899e94"
+        }
+      ],
+      "passed": true,
+      "fixture": "Debug sets quest flags and initializes/claims the first achievement through native functions.",
+      "scope": "Controlled ARM callback opened the actual journal with quest flags set. Emulated keys drove native tasks, scrolling, details/back, filters and Achievements with a claimed reward. Claims and confirmation timeout use actual emulated input. Not natural map traversal or historical-save loading. Private ROM excluded from publication.",
+      "harness_sha256": {
+        "arm.c": "f241478ca35aca9a9fdb460f3e7884ec0924ff02d9993f0e0ad955e3eb88bc8a",
+        "arm_release.c": "d6f24a273ecaecab5bd9ab88f44b988e220f501b1b2715423c232fd0dd40b9fe",
+        "host.c": "d141ad7103336f0843f47c4bfc2b3b019769e05bd634be7ea5162cd998233081",
+        "run.py": "c4d0ae2eddff1597cfb8f56b19ca3cce7b4b251d1f6ccbc5fc1845213b36ff96"
+      }
+    },
+    {
+      "version": "0.0.56",
+      "variant": "Release",
+      "ROM_sha256": "f180616dd87f21b0a8148e019c164a8c2697fd633f3a13ca5d7806c6e77d3a1e",
+      "emulator": "mGBA 0.10.2",
+      "captures": [
+        {
+          "name": "achievement-claim-popup",
+          "sha256": "573d56e957d1892f3f02d2c17d5d95189216cc4d5bf5469e1e6d16e7019c4306"
+        },
+        {
+          "name": "achievement-claimed-filter",
+          "sha256": "5482aacf1e7df6c1d3b92aced35a8fcfc272f6882aedaa9a5f79e05b45ea9910"
+        },
+        {
+          "name": "achievement-claimed-status",
+          "sha256": "b016d14afc75c81ee1e3f8f290ba8033b15a810e28a3610e8032b14d1d4938b4"
+        },
+        {
+          "name": "achievement-claimed",
+          "sha256": "11770107df743cd94b4166ac146b86e6108dd1828e1c524907973aa18f7a574c"
+        },
+        {
+          "name": "achievement-detail",
+          "sha256": "d4751a968f8b61f6c22abcd97fcac273dbf4dd1b8c4707e8a74a5bdac16efed3"
+        },
+        {
+          "name": "achievement-ready",
+          "sha256": "a8a868fda8586869ba8330cfe5578942c35dedbb7c4aa4880255875d619aea3b"
+        },
+        {
+          "name": "achievement-return",
+          "sha256": "c9f8d128da61974706b1f96d5a65ae1ab413b5894597c3b68a30742afdabc178"
+        },
+        {
+          "name": "achievement-second",
+          "sha256": "455cadbc9d7ebf43a7959cc6a3ee08d9e7d358222025b86e624084079c8bc5f8"
+        },
+        {
+          "name": "quest-detail",
+          "sha256": "bd481905d548065880a8ff358a46f4df9a2cda899f9b230f795e6bd465a5eb6c"
+        },
+        {
+          "name": "quest-first",
+          "sha256": "7a7e99c68c9e22804d6f7da5a7baff658482cdf69c7355d23c41f61b410304a6"
+        },
+        {
+          "name": "quest-return",
+          "sha256": "4c1f4b98457c00cd9af03a07ccc5a14a53cbb18da7aa256d5007d3696cbb4df1"
+        },
+        {
+          "name": "quest-scrolled",
+          "sha256": "4c1f4b98457c00cd9af03a07ccc5a14a53cbb18da7aa256d5007d3696cbb4df1"
+        },
+        {
+          "name": "quest-second",
+          "sha256": "df9f287e9916ededb5561b21cec90588e370030ca51c0e9d52d57cfa6eea16d8"
+        },
+        {
+          "name": "quest-side",
+          "sha256": "758e07010d4a1e288ec975f4ff8b3994716d7701f45b3801186deeb79a899e94"
+        }
+      ],
+      "passed": true,
+      "fixture": "Release seeds quest flags/journal/one claimed entry directly because LTO internalizes Debug setup helpers; the next manual claim uses actual game input.",
+      "scope": "Controlled ARM callback opened the actual journal with quest flags set. Emulated keys drove native tasks, scrolling, details/back, filters and Achievements with a claimed reward. Claims and confirmation timeout use actual emulated input. Not natural map traversal or historical-save loading. Private ROM excluded from publication.",
+      "harness_sha256": {
+        "arm.c": "f241478ca35aca9a9fdb460f3e7884ec0924ff02d9993f0e0ad955e3eb88bc8a",
+        "arm_release.c": "d6f24a273ecaecab5bd9ab88f44b988e220f501b1b2715423c232fd0dd40b9fe",
+        "host.c": "d141ad7103336f0843f47c4bfc2b3b019769e05bd634be7ea5162cd998233081",
+        "run.py": "c4d0ae2eddff1597cfb8f56b19ca3cce7b4b251d1f6ccbc5fc1845213b36ff96"
+      }
+    }
+  ],
+  "all_14_native_screens_equal_between_variants": true,
+  "preview_sha256": "1b3e0a9d53769bf08bd70500fc1e29f0e1bc7b9cb1388e5d85f03dba51206bfe",
+  "continuity": "Earlier chat recorded local/full/native checks, but captures and structured receipts were not in the merged tree. This fresh run regenerated both normal ROMs to the production hashes, recaptured both variants and repeated independent decoding of the live downloads; it supersedes stale pending notes without claiming earlier missing files were retained.",
+  "save_impact": "No serialized field, capacity, persistent ID, catalogue order, save reader or gameplay change. No migration required.",
+  "limits": "Controlled native UI captures, not natural overworld traversal, full historical-save matrix or Pizza Boy. Private diagnostic ROMs/ELFs/saves excluded.",
+  "AGENTS_reviewed": true
+}
