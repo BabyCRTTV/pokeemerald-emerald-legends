@@ -4,7 +4,7 @@ All notable Pokémon Emerald: Legends project changes are documented here.
 
 For build-specific player views, see [CHANGELOG-RELEASE.md](CHANGELOG-RELEASE.md) and [CHANGELOG-DEBUG.md](CHANGELOG-DEBUG.md). The canonical history below records the project as a whole.
 
-## [0.0.54] - 2026-10-14
+## [0.0.54] - 2026-10-15
 
 - Added the current build version at the right edge of the title menu OPTION card, matching the original font, colors and baseline in all menu layouts.
 - Preserved the Debug -D suffix, selection styling and Options return behavior; added version consistency checks for future releases.

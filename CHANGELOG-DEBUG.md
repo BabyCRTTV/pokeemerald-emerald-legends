@@ -2,7 +2,7 @@
 
 This is the developer-facing history for the **Debug** build. Shared Legends changes are repeated here so this file stands on its own; Debug-only behavior is called out separately.
 
-## [0.0.54] - 2026-10-14
+## [0.0.54] - 2026-10-15
 
 - Added the current build version at the right edge of the title menu OPTION card, matching the original font, colors and baseline in all menu layouts.
 - Preserved the Debug -D suffix, selection styling and Options return behavior; added version consistency checks for future releases.
