@@ -80,7 +80,7 @@ for path in FILES:
   elif line and not line.startswith(('@','.','#')):commands.append(line)
 
 class Scripts:
- def __init__(self,api):self.api=api;self.messages=[];self.items={};self.bag_full=False;self.calls=[];self.battles=0;self.removed=[]
+ def __init__(self,api):self.api=api;self.messages=[];self.items={};self.bag_full=False;self.calls=[];self.battles=0;self.removed=[];self.lose=False
  def var(self,k):return self.api.GetVar(C[k]) if k in C else self.vars.get(k,0)
  def setvar(self,k,v):
   if k in C:self.api.Var(C[k],v)
@@ -128,7 +128,9 @@ class Scripts:
     self.setvar('VAR_RESULT',not self.bag_full)
     if not self.bag_full:self.items[a[0]]=self.items.get(a[0],0)+1
    elif op=='removeobject':self.removed.append(a[0])
-   elif op=='trainerbattle_rematch_double':self.battles+=1
+   elif op=='trainerbattle_rematch_double':
+    self.battles+=1
+    if self.lose:return
    elif op not in ('vsseeker_rematchid','lock','release','faceplayer','closemessage','delay','playfanfare','waitfanfare','incrementgamestat','fadescreen','applymovement','waitmovement'):raise AssertionError(op)
   raise AssertionError('script failed to terminate')
 
@@ -207,6 +209,16 @@ class Homecoming(unittest.TestCase):
   self.flag('FLAG_RECEIVED_TM_FACADE');self.put(M,0);s.run('PetalburgCity_Gym_EventScript_Norman')
   self.assertIn('PetalburgCity_Gym_Text_DadNoAmountOfTrainingIsEnough',s.messages)
   self.put('VAR_PETALBURG_GYM_STATE',8);s.run('PetalburgCity_Gym_EventScript_Norman');self.assertEqual(s.battles,1)
+ def test_norman_milestones_and_lost_rematch_do_not_consume_words(self):
+  self.api.Map(8,1)
+  for stage,f in enumerate(['FLAG_BADGE05_GET','FLAG_SYS_GAME_CLEAR','FLAG_LEGENDS_KANTO_WELCOMED','FLAG_LEGENDS_FINAL_HOENN_EPILOGUE'],1):
+   self.flag(f);self.api.LegendsHomecomingDadMessage();self.assertEqual(self.api.Result(),1)
+   self.api.LegendsHomecomingRememberDad();self.assertEqual((self.api.GetVar(C[M])>>3)&7,stage)
+   self.api.LegendsHomecomingDadMessage();self.assertEqual(self.api.Result(),0)
+  self.put(M,0);self.put('VAR_PETALBURG_GYM_STATE',8)
+  s=Scripts(self.api);s.lose=True;s.run('PetalburgCity_Gym_EventScript_Norman')
+  self.assertEqual(self.api.GetVar(C[M]),0);self.assertFalse(s.messages)
+  s.lose=False;s.run('PetalburgCity_Gym_EventScript_Norman');self.assertEqual(self.api.GetVar(C[M]),0xd620)
  def test_native_font_width_ids_and_assets(self):
   chars={c:int(v,16) for c,v in re.findall(r"^'(.)'\s*=\s*([0-9A-F]{2})\s*$",(R/'charmap.txt').read_text(),re.M)};chars["'"]=0xb4
   widths=list(map(int,re.findall(r'\d+',(R/'src/fonts.c').read_text().split('gFontNormalLatinGlyphWidths[] = {')[1].split('};')[0])))

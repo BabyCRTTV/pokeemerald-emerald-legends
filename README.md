@@ -9,6 +9,8 @@ The project is intended to preserve the feel and structure of Pokémon Emerald w
 
 The New Game / Continue / Options menu uses a soft lavender backdrop as of v0.0.13.1. v0.0.54 displays the current version at the right edge of its OPTION card, matching the native text; Debug includes the -D suffix.
 
+v0.0.55 adds personal Mom/Norman milestone conversations and a one-time family welcome after the finale. Speak to Mom at home or Norman at the Gym; native story events, rewards and battles retain priority.
+
 Kanto has eight playable visiting Gyms, each offering a difficulty choice with one victory per save. The Borrowed Voice adds two field surveys and an updated progress journal. The Trainer Card switches between Hoenn and Kanto badge collections. SELECT switches the postgame PokeNav between Hoenn and Kanto. [Postgame design and current scope](docs/features/kanto-postgame.md).
 
 v0.0.53 adds evolving bedroom keepsakes and memories through the current Kanto finale. The bedroom PC offers separate rug, bed and original chair colors, and existing dolls/cushions can use safe clear floor beyond the widened rug. See the [bedroom guide](docs/bedroom-guide.html).

@@ -1,0 +1,21 @@
+{
+  "version": "0.0.55",
+  "passed": true,
+  "emulator": "mGBA 0.10.2",
+  "variant": "Debug",
+  "ROM_sha256": "d379f167f0729abe154315453d8fce32b7406d700618f8035809c45d2fa045fa",
+  "scope": "Controlled New Game setup of both home layouts and format-identical pre-feature state (not an authentic historical-release save). Actual Mom interaction, native family script and object cleanup, real flash save/clear/load before and after the welcome, retained non-default wardrobe/bedroom/seasons, and no repeat after reload; actual Champion-stage Mom and Norman Gym conversations. Private callback ROM excluded from distribution. Uninterrupted story and Pizza Boy remain unverified.",
+  "log": "gender=0 presses=20 memory=d666 script=0 dad=16\ngender=0 flash roundtrip and no-repeat passed\ngender=1 presses=20 memory=d666 script=0 dad=16\ngender=1 flash roundtrip and no-repeat passed\npersonal Mom/Norman memory=d614 script=0\n",
+  "harness_sha256": {
+    "arm.c": "bea01de48fdfcf176571c8a34775f054e0204b4055e0474257f05efb912627cf",
+    "host.c": "f71051429d14762822547d6b4672cfcfd8aba08ca77db09c563a74a740ed2b8b",
+    "run.py": "20ad723f6cf3e1aa768326e7fcb7d96995b8dcce32a66d943158bff088acaf08"
+  },
+  "source_commit": "a5b832c8a5fdee793c17bde1aba7896a76040bf4",
+  "selected_native_frames": {
+    "mom-03.png": "cca0371c84aa81848ee83d85ecb89384cf0685be782c4d4dfec815f2e4020056",
+    "norman-02.png": "d3bc02567b510f6f26e947723392763a90a27910bebc13b351b8b2fe1272edf7",
+    "female-06.png": "6c945dd1d42293c34e7491ae1d5959a3961117ca61b5aecde990abb2c3a9b85d"
+  },
+  "preview_sha256": "af8202b762543c32bc673c6d125dcf3398fd9c51bd49c25ad748abfbe0478f58"
+}
