@@ -1,6 +1,6 @@
 # Tracked quest overflow — review follow-up
 
-Status: implemented on `feature/quest-tracking-preview`, awaiting the owner's original preview approval before release publication. VERSION, master, patches and Pages remain v0.0.56. [Native animation](quest-tracking-scroll.gif) · [Verification receipt](quest-tracking-scroll.json).
+Status: owner approved publication on 15 October 2026; v0.0.57 release checks are in progress. This document retains preview-stage evidence. [Native animation](quest-tracking-scroll.gif) · [Verification receipt](quest-tracking-scroll.json).
 
 ## Behavior and implementation
 
@@ -19,4 +19,4 @@ Wrapped line boundaries are cached once on opening. A RAM-only 96×16 scratch wi
 - The 480×354 GIF retains exact 2× nearest-neighbor game pixels and places its caption outside the game. All 265 decoded GIF frames and the full 439-frame timeline matched their native source captures, including coalesced holds.
 - Unmodified Release loaded the controlled battery fixture through ordinary title/Continue input, displayed both pause pages and Details, and stopped tracking. Short reminder pixels matched Debug. The oversized animation fixture was exercised in Debug; it is not represented as an unmodified Release overflow test.
 
-The animation uses a deliberately oversized objective in a private QA ROM to exercise text beyond the present catalogue. That text is not shipped. No ROMs or battery saves are committed. The original quest-tracking receipt remains historical; the linked fresh receipt contains these builds and checks. Historical-release saves, uninterrupted story traversal and Pizza Boy remain outside this focused check. Final coordinated version/changelog/BPS/Pages work follows owner preview approval.
+The animation uses a deliberately oversized objective in a private QA ROM to exercise text beyond the present catalogue. That text is not shipped. No ROMs or battery saves are committed. The original quest-tracking receipt remains historical; the linked fresh receipt contains these builds and checks. Historical-release saves, uninterrupted story traversal and Pizza Boy remain outside this focused check. The owner has now approved publication; final v0.0.57 release verification is in progress.

@@ -174,7 +174,7 @@ void LegendsShowTrackedQuestReminder(void)
     sReminderScrollLimit = height > REMINDER_BODY_HEIGHT ? height - REMINDER_BODY_HEIGHT : 0;
     if (sReminderScrollLimit)
     {
-        sReminderLines = AllocZeroed((height / 12) * sizeof(*sReminderLines));
+        sReminderLines = AllocZeroedUnchecked((height / 12) * sizeof(*sReminderLines));
         if (!sReminderLines) return;
         height = ReminderText(0, sReminderTitle, 0, REMINDER_CACHE);
         ReminderText(0, sReminderObjective, height, REMINDER_CACHE);

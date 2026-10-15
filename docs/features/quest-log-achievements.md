@@ -55,3 +55,9 @@ Earlier Legends saves are recognized by the original 14-box sector format. The r
 Compression has a fixed 35,696-byte payload budget. Typical populated storage compresses well, but an unusually incompressible collection is not guaranteed to fit merely because it uses fewer than 600 slots. Packing checks the limit before any flash erase/write and reports a failed save if it cannot fit; both prior flash slots and current RAM remain intact. This defensive limit is preferable to silently losing Pokemon or removing the backup slot. Future work can improve compression without changing achievement IDs or story flags.
 
 EWRAM holds the expanded native box arrays. The general heap is 96 KiB; native Contest scratch buffers are located relative to its end instead of the original hardcoded heap offsets. No Hall of Fame, Trainer Hill or recorded-battle sectors are repurposed.
+
+## Tracked quest (v0.0.57)
+
+A on an unfinished visible quest's Details tracks or stops it. One saved choice is marked T in the list and TRACKED in Details. Both ordinary pause pages show the next objective in the native card above clock/weather, with a 16-pixel gap from the right menu. Long wrapped text pauses at each end, scrolls by single pixels and smoothly returns; the heading stays fixed and short text stays still. Competing screens remove the card; special counter/link layouts suppress it. Quest completion clears the choice.
+
+Selection reuses the existing version-1 journal reserved u16 at offset 10 with signature 0xA700 and low byte quest ID + 1 (zero means off). Invalid/unsigned legacy values read as off without writes; the layout, checksum, storage codec, readers and achievement bits stay unchanged. Quest indices 0–32 are persistent and future quests must append. [Design and native evidence](../qa/quest-tracking-preview.md) · [Overflow verification](../qa/quest-tracking-scroll.md).

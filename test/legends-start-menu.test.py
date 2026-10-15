@@ -45,7 +45,7 @@ static u8 pixelBuffer[48][96];
 static u8 cardPixels[72][96];
 static u32 cardTiles[12*9*8], scratchTiles[12*2*8];
 static unsigned allocations;
-void *AllocZeroed(unsigned size){if(fail==3)return NULL;void *p=calloc(1,size);if(p)allocations++;return p;}
+void *AllocZeroedUnchecked(unsigned size){if(fail==3)return NULL;void *p=calloc(1,size);if(p)allocations++;return p;}
 void Free(void *p){if(p){assert(allocations);allocations--;free(p);}}
 static void setPixel(u32 *tiles,int x,int y,u8 color){unsigned i=(y/8*12+x/8)*8+y%8,shift=x%8*4;tiles[i]=(tiles[i]&~(15u<<shift))|((color&15u)<<shift);}
 static void unpackCard(void){for(int y=0;y<72;y++)for(int x=0;x<96;x++)cardPixels[y][x]=(cardTiles[(y/8*12+x/8)*8+y%8]>>(x%8*4))&15;}
