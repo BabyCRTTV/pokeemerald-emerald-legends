@@ -1,4 +1,4 @@
-// Authored journal catalogue. Stable achievement IDs follow array order.
+// Authored journal catalogue. Saved quest and achievement IDs follow array order; append new entries.
 static const struct LegendsQuest sQuests[] =
 {
     {COMPOUND_STRING("A New Beginning"), 0, 0, 2, {{COMPOUND_STRING("Rescue BIRCH on ROUTE 101"), FLAG_SYS_POKEMON_GET}, {COMPOUND_STRING("Receive your POKEDEX"), FLAG_SYS_POKEDEX_GET}}},

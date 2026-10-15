@@ -1,0 +1,332 @@
+{
+  "status": "Preview awaiting owner approval; no release publication",
+  "base_version": "0.0.56",
+  "base_commit": "c85acdce33b8e61a8607ad45c428395271c95f0c",
+  "review_branch": "feature/quest-tracking-preview",
+  "requested_scope": "Track/untrack from quest Details; next unfinished objective in pause reminder; no competing-menu overlap; preview before publication.",
+  "checks": [
+    {
+      "name": "Exercise browser patcher regression tests",
+      "passed": true,
+      "seconds": 0.16
+    },
+    {
+      "name": "Exercise seasonal engine regression tests",
+      "passed": true,
+      "seconds": 0.14
+    },
+    {
+      "name": "Exercise seasonal battle scenes and Kanto foliage",
+      "passed": true,
+      "seconds": 0.14
+    },
+    {
+      "name": "Exercise dynamic weather regression tests",
+      "passed": true,
+      "seconds": 0.14
+    },
+    {
+      "name": "Exercise starter and rival regression tests",
+      "passed": true,
+      "seconds": 0.28
+    },
+    {
+      "name": "Exercise Options navigation regression tests",
+      "passed": true,
+      "seconds": 0.09
+    },
+    {
+      "name": "Exercise Options text regression tests",
+      "passed": true,
+      "seconds": 0.09
+    },
+    {
+      "name": "Exercise New Game Options regression tests",
+      "passed": true,
+      "seconds": 0.15
+    },
+    {
+      "name": "Exercise native follower regression tests",
+      "passed": true,
+      "seconds": 0.09
+    },
+    {
+      "name": "Exercise upstream held-item integration",
+      "passed": true,
+      "seconds": 0.09
+    },
+    {
+      "name": "Exercise first-item history and compatible save sectors",
+      "passed": true,
+      "seconds": 0.13
+    },
+    {
+      "name": "Exercise quest progression and achievement claims",
+      "passed": true,
+      "seconds": 0.15
+    },
+    {
+      "name": "Achievement notice lifecycle",
+      "passed": true,
+      "seconds": 0.08
+    },
+    {
+      "name": "Journal selection rendering and input",
+      "passed": true,
+      "seconds": 0.21
+    },
+    {
+      "name": "Exercise lossless expanded storage codec",
+      "passed": true,
+      "seconds": 0.52
+    },
+    {
+      "name": "Exercise pause panel regression tests",
+      "passed": true,
+      "seconds": 0.1
+    },
+    {
+      "name": "Exercise Adventure Log persistence, days and milestones",
+      "passed": true,
+      "seconds": 0.11
+    },
+    {
+      "name": "Exercise Adventure Log notebook and filters",
+      "passed": true,
+      "seconds": 0.14
+    },
+    {
+      "name": "Exercise scrolling pause menu",
+      "passed": true,
+      "seconds": 0.08
+    },
+    {
+      "name": "Exercise real/manual clocks and saved fallback",
+      "passed": true,
+      "seconds": 0.15
+    },
+    {
+      "name": "Exercise DexNav encounter proximity and approach rules",
+      "passed": true,
+      "seconds": 0.07
+    },
+    {
+      "name": "Exercise player appearance regression tests",
+      "passed": true,
+      "seconds": 0.34
+    },
+    {
+      "name": "Exercise visual polish regression tests",
+      "passed": true,
+      "seconds": 0.09
+    },
+    {
+      "name": "Verify player appearance art",
+      "passed": true,
+      "seconds": 10.92
+    },
+    {
+      "name": "Verify native window frame assets and selection",
+      "passed": true,
+      "seconds": 0.11
+    },
+    {
+      "name": "Verify native hair / coat 4bpp layer geometry",
+      "passed": true,
+      "seconds": 10.04
+    },
+    {
+      "name": "Verify footwear compositor and protected sprite colors",
+      "passed": true,
+      "seconds": 1.78
+    },
+    {
+      "name": "Verify v0.0.46 artwork and isolated smile/body colors",
+      "passed": true,
+      "seconds": 15.25
+    },
+    {
+      "name": "Verify approved Side Part head and native animation frames",
+      "passed": true,
+      "seconds": 2.8
+    },
+    {
+      "name": "Verify approved front-face shading and unchanged other views",
+      "passed": true,
+      "seconds": 9.24
+    },
+    {
+      "name": "Verify approved parent skin tones and palette isolation",
+      "passed": true,
+      "seconds": 0.26
+    },
+    {
+      "name": "Exercise scrolling intro hairstyles",
+      "passed": true,
+      "seconds": 0.1
+    },
+    {
+      "name": "Bedroom colors, memories and safe floor decoration",
+      "passed": true,
+      "seconds": 0.22
+    },
+    {
+      "name": "Homecoming conversations, native priority and save-safe memory",
+      "passed": true,
+      "seconds": 0.38
+    },
+    {
+      "name": "Exercise wardrobe navigation and access",
+      "passed": true,
+      "seconds": 0.17
+    },
+    {
+      "name": "Verify layered accessories and wardrobe furniture",
+      "passed": true,
+      "seconds": 6.79
+    },
+    {
+      "name": "Verify native costume assets and striped Sport shorts",
+      "passed": true,
+      "seconds": 1.59
+    },
+    {
+      "name": "Exercise Da Bug gift and species integration",
+      "passed": true,
+      "seconds": 0.33
+    },
+    {
+      "name": "Exercise Kanto invitation, ferry, welcome and map integration",
+      "passed": true,
+      "seconds": 0.15
+    },
+    {
+      "name": "Exercise empty Kanto foundation and Surf passage",
+      "passed": true,
+      "seconds": 0.13
+    },
+    {
+      "name": "Kanto challenge progression",
+      "passed": true,
+      "seconds": 0.08
+    },
+    {
+      "name": "Kanto Borrowed Voice progression and Trainer Card badges",
+      "passed": true,
+      "seconds": 0.26
+    },
+    {
+      "name": "Kanto Quiet Current and native wild levels",
+      "passed": true,
+      "seconds": 0.15
+    },
+    {
+      "name": "Three expeditions and the Hoenn weather intermission",
+      "passed": true,
+      "seconds": 0.24
+    },
+    {
+      "name": "Wing Survey finale and native Mew outcomes",
+      "passed": true,
+      "seconds": 0.21
+    },
+    {
+      "name": "Isolated outdoor night lights and native DNS blending",
+      "passed": true,
+      "seconds": 0.5
+    },
+    {
+      "name": "Region map browsing",
+      "passed": true,
+      "seconds": 0.11
+    },
+    {
+      "name": "Exercise prepared battle sheets and wardrobe refresh",
+      "passed": true,
+      "seconds": 8.51
+    },
+    {
+      "name": "Verify Legends project metadata",
+      "passed": true,
+      "seconds": 0.11
+    }
+  ],
+  "Debug": {
+    "version": "0.0.56",
+    "passed": true,
+    "emulator": "mGBA 0.10.2",
+    "variant": "Debug",
+    "ROM_sha256": "8946faaa1066e3e1f0f6a4bc010a358c4f0b8ffb5ee7e4bfa025c1b09658e734",
+    "scope": "Controlled Debug fixture with the unchanged v0.0.56-format journal (reserved=0), non-default appearance/bedroom/Winter, and walkable floor position. Actual input tracks a quest through Details and opens the real pause menu on both pages, DexNav help/return and Save dialog. Native flag fixtures advance and complete the quest; Safari layout suppresses the reminder. Real flash save/clear/load verifies pre-feature defaults, tracked selection and completion. Not an authentic historical save, uninterrupted story or Pizza Boy test. Private ROM excluded.",
+    "menu_content_and_clock_pixels_unchanged": true,
+    "next_objective_pixels_updated": true,
+    "log": "capture pause-off card=0\ncapture quest-detail-before card=0\ncapture quest-detail-tracked card=0\ncapture quest-list-tracked card=0\ncapture pause-journal card=4\ncapture pause-tracked card=4\ncapture dexnav-help card=0\ncapture dexnav-return card=4\ncapture save-dialog card=0\ncapture save-return card=4\ncapture pause-after-flash card=4\ncapture pause-next-step card=4\ncapture safari-counter card=0\ncapture pause-completed card=0\nNative track, menu exclusion, next-step update, completion, real flash and retained profile checks passed.\n",
+    "harness_sha256": {
+      "arm.c": "68767212c6ffab3683c4a8887c8d6657ca7cf6264be583341d1119e18e7108b4",
+      "host.c": "84e411e6d8952eafa3baf63ea039edd988c6964bad22bedce0a1914ad86ccca0",
+      "run.py": "a56abe71531e501bc3fcb8fb76747e53a333b5c5e1fb51a5bc561d2d1c1ab815"
+    }
+  },
+  "Release": {
+    "passed": true,
+    "variant": "Release",
+    "emulator": "mGBA 0.10.2",
+    "ROM_sha256": "a132d96120f332db5050f0a25b378b2ad13ebe3193e609249a2cd82fa92fac76",
+    "ROM_unmodified": true,
+    "battery_fixture_sha256": "3a33cbf9539ceaf394b2d58fb73af82a43922d54cadd865c3ac5048a5456038e",
+    "reminder_pixels_equal_to_Debug": true,
+    "captures": {
+      "release-continued.png": "ab5f73db45f7b0fd4b93aeb962c8070d0c2afe82e71a24832ab40e3e10d7d8f6",
+      "release-detail-tracked.png": "628a79a62665288b8855fb64b3f5386c614f23ded14c24f4c47ce288f90b6d1c",
+      "release-journal-page.png": "137dee97372be61466a4543c2222bb53f8fe4bb1e3f9947984b98122bd39dfbe",
+      "release-pause-tracked.png": "8fe6899a7736556d868b55b983604e3f013c5faff1e8ad317ac2920a738e37e4",
+      "release-stopped.png": "b28316724e4df351e24656df987306a9a7ab2315851a21a57509cc7020830831"
+    },
+    "log": "release-continued card=0\nrelease-pause-tracked card=4\nrelease-journal-page card=4\nrelease-detail-tracked card=0\nrelease-stopped card=0\nNormal Release Continue loaded the battery fixture; native pause/journal/Details and stop tracking passed.\n",
+    "scope": "Unmodified Release ROM loaded the private Debug-produced controlled battery fixture via normal title/Continue input. Native pause pages, tracked Details and stop-tracking passed. Host did not write RAM or callbacks. Not a historical-release save or broader playthrough. Private fixture excluded.",
+    "harness_sha256": {
+      "release.c": "6a870f632bc8c16f0d21bd553a8190c1615952c99a1dd50feae9eaba5ae4d0e3",
+      "release.py": "a11572ac6504d795f132e461a0f72a5fe00cf03e5b0f8c4575b02e6636c8fc6d"
+    }
+  },
+  "native_Debug_captures": {
+    "dexnav-help.png": "ff085b127d52a878e8095b786afadcf494108fde7c885572b165a3a253471379",
+    "dexnav-return.png": "7f22da43f199003fa36d98db3e13f2f16dfe1cbc99b82b8e84b421a7a8bfec7d",
+    "pause-after-flash.png": "ef972608b1ce9d31148e58f1c56aa984087d2d22d82944fce7768de246167843",
+    "pause-completed.png": "1643631085007a058e066d8eed2ea5ad54f194188ceba89a1d9228e0eba2fc29",
+    "pause-journal.png": "ad4e35c8155b47572c69294806f57af300be5fbf5032dcad0bb9dd51f511541c",
+    "pause-next-step.png": "3b019272516b94f3dab85097fc1ba82b49c7b0e713cd2b2068f958f722a7fbb8",
+    "pause-off.png": "317ee8c87b968ccce1a4bc9ef41240e39d7f14af981bf087727f502296fab07c",
+    "pause-tracked.png": "3699e6036b15e79b15732439281db6aa60bffba5d9614c67a379771049b1bc89",
+    "quest-detail-before.png": "1850778cb89d351dc61fb4e34b3ffd5c0e7680efe4a97737b22f86420d4554bd",
+    "quest-detail-tracked.png": "628a79a62665288b8855fb64b3f5386c614f23ded14c24f4c47ce288f90b6d1c",
+    "quest-list-tracked.png": "8d67087123e072e22b48f21d7505ceb39d693b7b28fb894ba1cce5cd9d858780",
+    "safari-counter.png": "195d22cd36585f8a34451dd504cca9384ff9baf83106ff028f1f2cfe46c7a089",
+    "save-dialog.png": "41c808bba0b11a8702054a3bc3bdee2b496bfe528a895b88fe9c21c33bf0a4c7",
+    "save-return.png": "220dbacc2b8b892119d1a50ed422e345bc63562230699ae20968ba726f2150b5"
+  },
+  "preview_sha256": "828b357e623b2a03db2b3b807d27c4be8102e18c7b7fc689ac8576d23bf50103",
+  "menu_safety_preview_sha256": "30c766c927050fcb3132804036ac57cfaa24d19c5b442ae158abbdc6b8244e14",
+  "save_contract": {
+    "journal_bytes": 36,
+    "selection_offset": 10,
+    "version": 1,
+    "signature": "0xA700",
+    "payload": "0 = explicit off; 1..33 = existing quest array ID + 1",
+    "legacy_default": "Zero/unsigned/out-of-range/hidden/complete selections display no reminder; reads do not mutate. Recognized obsolete/completed selection clears during existing refresh.",
+    "checksums": "Existing checksum includes the reused word; old version/field offsets/readers and packed storage size stay unchanged.",
+    "IDs": "Current quest IDs 0..32 retain array order. Append future entries; do not reorder.",
+    "fixture_limits": "Prepared v0.0.56-format fixture, not an authentic historical-release save. Historical matrix and Pizza Boy remain unfinished."
+  },
+  "publication_pending": "Approve layout first; then bump all version/changelog/site labels together, run normal PR CI/build/BPS publication, independently verify downloads and Pages. No master, site, or public patch change made for this preview.",
+  "verified_date_UTC": "2026-10-15",
+  "runtime_source_sha256": {
+    "include/legends_journal.h": "3c9552f3cbe3a1f9b7ac9291fbbb50e0bc4fbdd05fbba7967ad18aa9bd8fbd57",
+    "include/legends_start_menu.h": "6361e7680dcfac55d2eb26c1216d877f31750922e2a4f2da72f4dc1dd8422157",
+    "src/data/legends/journal.h": "55e21aabf9c3281902b27278da6720bfb3ff6ab800457a7fb66ec60e31ca35eb",
+    "src/legends_journal.c": "7279d55ac362224441668d8c168b2f98f395faeb63a33176b4d4b9b81d2c37d2",
+    "src/legends_journal_ui.c": "2152a3b965a70bb3b6fa8d307d17f7dd1c02e8e241d521e91083ea1d1b78366a",
+    "src/legends_start_menu.c": "d9f25f8991a13fa757e11049002bb1f0660ba07ff5562d009f0c2489ebe6ffe6",
+    "src/start_menu.c": "6bfe92becbba379e190c593c54aac205df698b45ea5f8f4677a6baae7574af9d"
+  }
+}

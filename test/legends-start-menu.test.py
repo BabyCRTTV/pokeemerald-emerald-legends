@@ -1,5 +1,5 @@
 """Compile the actual pause panel under engine mocks; check lifecycle and snapshots."""
-import pathlib, subprocess, tempfile
+import pathlib, subprocess, tempfile, json, re
 root = pathlib.Path(__file__).resolve().parents[1]
 source = (root / "src/legends_start_menu.c").read_text()
 source = "\n".join(line for line in source.splitlines() if not line.startswith("#include"))
@@ -9,6 +9,8 @@ preamble = r'''
 #include <stdio.h>
 #include <string.h>
 typedef uint8_t u8; typedef uint16_t u16; typedef uint32_t u32; typedef int bool8;
+#define EOS 0
+#define CHAR_SPACE ' '
 #define EWRAM_DATA
 #define TRUE 1
 #define FALSE 0
@@ -36,6 +38,17 @@ static int error,weather,season,adds,removes,copies,rtcReads,pixels,fail;
 static const struct WindowTemplate *template;
 static char texts[3][32];
 static u8 pixelBuffer[48][96];
+static char reminderText[512];
+static u16 tracked=0xFFFF;
+static int mapPopup,noticeHides;
+struct LegendsQuest {const u8 *title;u8 count;struct {const u8 *text;} steps[4];};
+static struct LegendsQuest quest;
+u16 LegendsQuestTracked(void){return tracked;}
+const struct LegendsQuest *LegendsQuestGet(u16 id){return id==0?&quest:NULL;}
+u8 LegendsQuestNextStep(u16 id){return 0;}
+int IsMapNamePopupActive(void){return mapPopup;}
+void LegendsAchievementPopupHide(void){noticeHides++;}
+int GetStringWidth(int font,const u8 *text,int spacing){int w=0;for(;*text;text++)w+=fontWidths[*text];return w;}
 static u16 playedDays=1;
 void LegendsAdventureUpdateDay(void){}
 u16 LegendsAdventureDays(void){return playedDays;}
@@ -47,15 +60,28 @@ u8 GetCurrentWeather(void){return weather;}
 u8 LegendsGetActiveSeason(void){return season;}
 const u8 *LegendsGetSeasonName(u8 s){return (const u8 *[]){"SPRING","SUMMER","AUTUMN","WINTER"}[s];}
 void FormatDecimalTimeWithoutSeconds(u8 *d,int h,int m,int f){sprintf((char*)d,"%02d:%02d %s",h%12?h%12:12,m,h<12?"AM":"PM");}
-u32 AddWindow(const struct WindowTemplate *t){adds++;template=t;return fail?255:4;}
-void RemoveWindow(u32 w){assert(w==4);removes++;}
-void PutWindowTilemap(u32 w){assert(w==4);}
-void DrawStdWindowFrame(u8 w,int c){assert(w==4);}
-void ClearStdWindowAndFrameToTransparent(u8 w,int c){assert(w==4&&c);}
-void CopyWindowToVram(u32 w,u32 m){assert(w==4);copies++;}
+u32 AddWindow(const struct WindowTemplate *t){adds++;template=t;return fail?255:t->height==9?5:4;}
+void RemoveWindow(u32 w){assert(w==4||w==5);removes++;}
+void PutWindowTilemap(u32 w){assert(w==4||w==5);}
+void DrawStdWindowFrame(u8 w,int c){assert(w==4||w==5);if(w==5)reminderText[0]=0;}
+void ClearStdWindowAndFrameToTransparent(u8 w,int c){assert((w==4||w==5)&&c);}
+void CopyWindowToVram(u32 w,u32 m){assert(w==4||w==5);copies++;}
 void FillWindowPixelBuffer(u32 w,u8 v){pixels=0;memset(pixelBuffer,v&15,sizeof(pixelBuffer));}
-void FillWindowPixelRect(u32 w,u8 v,u16 x,u16 y,u16 a,u16 b){assert(x+a<=96&&y+b<=48);for(int j=y;j<y+b;j++)for(int i=x;i<x+a;i++)pixelBuffer[j][i]=v&15;pixels++;}
+void FillWindowPixelRect(u32 w,u8 v,u16 x,u16 y,u16 a,u16 b){if(w==5){assert(x+a<=96&&y+b<=72);return;}assert(x+a<=96&&y+b<=48);for(int j=y;j<y+b;j++)for(int i=x;i<x+a;i++)pixelBuffer[j][i]=v&15;pixels++;}
 void AddTextPrinterParameterized(u8 w,u8 f,const u8 *t,u16 x,u16 y,int speed,void *cb){snprintf(texts[y/16],32,"%s",t);}
+void AddTextPrinterParameterized3(u8 w,u8 f,int x,int y,const u8 *ink,int speed,const u8 *t){
+ assert(w==5&&x+GetStringWidth(f,t,0)<=96&&y+12<=72);
+ if(y)for(;*t;t++)if(*t!=' '){unsigned n=strlen(reminderText);reminderText[n]=*t;reminderText[n+1]=0;}
+}
+'''
+helpers = r'''
+static void checkReminder(const char *title,const char *step){
+ char expected[512];unsigned n=0;quest.title=(const u8*)title;quest.count=1;quest.steps[0].text=(const u8*)step;
+ for(const char *p=title;*p;p++)if(*p!=' ')expected[n++]=*p;
+ for(const char *p=step;*p;p++)if(*p!=' ')expected[n++]=*p;expected[n]=0;
+ LegendsShowTrackedQuestReminder();assert(sReminderHandle==6);assert(!strcmp(expected,reminderText));
+ LegendsHideTrackedQuestReminder();assert(!sReminderHandle);
+}
 '''
 main = r'''
 int main(void){
@@ -117,6 +143,38 @@ puts("Pause panel lifecycle, clock, colored animation and tile/pixel bounds pass
 '''
 with tempfile.TemporaryDirectory() as d:
     path = pathlib.Path(d) / "panel.c"
-    path.write_text(preamble + source + main)
+    charmap={c:int(v,16) for c,v in re.findall(r"^'(.)'\s*=\s*([0-9A-F]{2})\s*$",(root/'charmap.txt').read_text(),re.M)}
+    charmap["'"]=0xB4
+    widths=list(map(int,re.findall(r'\d+',(root/'src/fonts.c').read_text().split('gFontSmallLatinGlyphWidths[] = {')[1].split('};')[0])))
+    table=[widths[charmap[chr(i)]] if chr(i) in charmap else 0 for i in range(128)]
+    fontdef='static const int fontWidths[128]='+json.dumps(table).replace('[','{').replace(']','}')+';\n'
+    cases='\n'.join('checkReminder(%s,%s);'%(json.dumps(q['title']),json.dumps(step['text'])) for q in json.loads((root/'data/legends/quests.json').read_text()) for step in q['steps'])
+    extra=r'''
+tracked=0;mapPopup=1;c=adds;LegendsShowTrackedQuestReminder();assert(adds==c&&!sReminderHandle);
+assert(sReminderTemplate.tilemapLeft+sReminderTemplate.width+1<=16);
+assert(sReminderTemplate.tilemapTop+sReminderTemplate.height+1<=sPanelTemplate.tilemapTop-1);
+assert(sReminderTemplate.baseBlock>=0x214+9);
+assert(sReminderTemplate.baseBlock+sReminderTemplate.width*sReminderTemplate.height<=(0xE000-0x8000)/32);
+mapPopup=0;fail=1;LegendsShowTrackedQuestReminder();assert(!sReminderHandle);fail=0;
+'''+cases+r'''
+LegendsShowTrackedQuestReminder();c=adds;LegendsShowTrackedQuestReminder();assert(adds==c);
+LegendsHideStartMenuPanel();assert(!sReminderHandle); // Also hides when the clock panel is absent.
+'''
+    main=main.replace('puts("Pause panel',extra+'puts("Pause panel')
+    path.write_text(fontdef + preamble + source + helpers + main)
     subprocess.run(["cc","-std=gnu11","-Werror=implicit-function-declaration",str(path),"-o",d+"/panel"],check=True)
     subprocess.run([d+"/panel"],check=True)
+
+# Framed screen rectangles and physical VRAM ranges cannot collide.
+def disjoint(a,b):
+    return a[2]<=b[0] or b[2]<=a[0] or a[3]<=b[1] or b[3]<=a[1]
+assert disjoint((0,0,112,88),(128,0,240,160))
+assert disjoint((0,0,112,88),(0,88,112,152))
+assert 0x250 >= 0x214+9 and 0x250+12*9 <= (0xE000-0x8000)//32
+assert 0x139+12*18 <= 0x250 and 0xB8+12*6 <= 0x250
+menu=(root/'src/start_menu.c').read_text()
+helpbody=menu.split('static void ShowDexNavHelp(void)\n{')[1].split('\nstatic bool8 HandleStartMenuInput')[0]
+assert helpbody.index('LegendsHideTrackedQuestReminder();')<helpbody.index('AddWindow(&window)')
+guard=menu.split('static void ShowTrackedQuestReminder(void)\n{')[1].split('\n}')[0]
+for predicate in ['!GetSafariZoneFlag()', 'PYRAMID_LOCATION_NONE', '!IsOverworldLinkActive()', '!InUnionRoom()', '!InBattlePike()', '!InMultiPartnerRoom()']:
+    assert predicate in guard

@@ -5,12 +5,84 @@
 #include "field_weather.h"
 #include "legends_seasons.h"
 #include "legends_start_menu.h"
+#include "legends_journal.h"
+#include "map_name_popup.h"
 #include "menu.h"
 #include "rtc.h"
 #include "window.h"
 #include "constants/map_types.h"
 #include "constants/weather.h"
 #include "constants/rtc.h"
+#include "constants/characters.h"
+
+// Framed bounds: x=0..111, y=0..87. The menu starts at x=128;
+// the existing day/weather panel starts at y=88. BG0 tiles end below 0xE000.
+// DexNav help reuses this tile range only after the reminder is removed.
+static const struct WindowTemplate sReminderTemplate =
+{
+    .bg = 0, .tilemapLeft = 1, .tilemapTop = 1,
+    .width = 12, .height = 9, .paletteNum = 15, .baseBlock = 0x250,
+};
+EWRAM_DATA static u8 sReminderHandle = 0;
+static const u8 sReminderLabelInk[] = {1, 8, 9};
+static const u8 sReminderInk[] = {1, 2, 3};
+
+static u8 ReminderText(u8 windowId, const u8 *text, u8 y, u8 lines)
+{
+    u8 line[128];
+    u16 length, space, i;
+    while (*text != EOS && lines--)
+    {
+        length = space = 0;
+        while (text[length] != EOS && length < sizeof(line) - 2)
+        {
+            line[length] = text[length]; line[length + 1] = EOS;
+            if (GetStringWidth(FONT_SMALL, line, 0) > 88) break;
+            if (text[length] == CHAR_SPACE) space = length;
+            length++;
+        }
+        if (text[length] != EOS && space) length = space;
+        if (!length) length = 1;
+        for (i = 0; i < length; i++) line[i] = text[i];
+        line[length] = EOS;
+        AddTextPrinterParameterized3(windowId, FONT_SMALL, 4, y, sReminderInk, TEXT_SKIP_DRAW, line);
+        y += 12;
+        text += length;
+        if (*text == CHAR_SPACE) text++;
+    }
+    return y;
+}
+
+void LegendsShowTrackedQuestReminder(void)
+{
+    u16 id;
+    u8 windowId, y, step;
+    const struct LegendsQuest *quest;
+    if (sReminderHandle || IsMapNamePopupActive()) return;
+    id = LegendsQuestTracked();
+    if (id == 0xFFFF) return;
+    quest = LegendsQuestGet(id);
+    step = LegendsQuestNextStep(id);
+    if (!quest || step >= quest->count) return;
+    LegendsAchievementPopupHide();
+    windowId = AddWindow(&sReminderTemplate);
+    if (windowId == WINDOW_NONE) return;
+    sReminderHandle = windowId + 1;
+    DrawStdWindowFrame(windowId, FALSE);
+    AddTextPrinterParameterized3(windowId, FONT_SMALL, 4, 0, sReminderLabelInk, TEXT_SKIP_DRAW, COMPOUND_STRING("TRACKED QUEST"));
+    FillWindowPixelRect(windowId, PIXEL_FILL(3), 4, 11, 88, 1);
+    y = ReminderText(windowId, quest->title, 12, 2);
+    ReminderText(windowId, quest->steps[step].text, y, 3);
+    CopyWindowToVram(windowId, COPYWIN_FULL);
+}
+
+void LegendsHideTrackedQuestReminder(void)
+{
+    if (!sReminderHandle) return;
+    ClearStdWindowAndFrameToTransparent(sReminderHandle - 1, TRUE);
+    RemoveWindow(sReminderHandle - 1);
+    sReminderHandle = 0;
+}
 
 // This gap sits below the map-name popup and above the save/counter tiles.
 static const struct WindowTemplate sPanelTemplate =
@@ -233,6 +305,7 @@ void LegendsShowStartMenuPanel(void)
 
 void LegendsHideStartMenuPanel(void)
 {
+    LegendsHideTrackedQuestReminder();
     if (sWindowHandle == 0)
         return;
     ClearStdWindowAndFrameToTransparent(sWindowHandle - 1, TRUE);
