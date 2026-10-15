@@ -2,9 +2,11 @@
 
 This is the developer-facing history for the **Debug** build. Shared Legends changes are repeated here so this file stands on its own; Debug-only behavior is called out separately.
 
-## Unreleased — OPTION card preview (awaiting review)
+## [0.0.54] - 2026-10-14
 
 - Added the current build version at the right edge of the title menu OPTION card, matching the original font, colors and baseline in all menu layouts.
+- Preserved the Debug -D suffix, selection styling and Options return behavior; added version consistency checks for future releases.
+- Published the owner-approved layout in Release and Debug without changing gameplay, artwork or save data.
 
 ## [0.0.53] - 2026-10-14
 

@@ -1,0 +1,49 @@
+{
+  "version": "0.0.54",
+  "approved_preview_commit": "619e085b2372219eea858ea8e4b54741ad013a23",
+  "status": "Recovered release preparation; fresh CI/public verification pending",
+  "prior_session_evidence": "Before interruption, both local builds, 48 project check blocks, strict metadata checks, mGBA all four menu layouts/Options return and two independent BPS decoders passed. These fingerprints are retained from the captured session output; temporary local binaries/logs were cleared. This record does not claim they were rerun during recovery.",
+  "ROM_sha256": {
+    "Release": "c805600e5ac54b3002943e201f40522d5e1dc49a325b270c73645a8f8d881f50",
+    "Debug": "2e7359fd54c7eaf76ebcad641b05e38f30456ee174c5d1b9305ef113e5c02c90"
+  },
+  "BPS": {
+    "Release": {
+      "bytes": 17437152,
+      "sha256": "d72fe8e2824ca007fdfde762571eb26091359713ce95ddba98f9de8b414fbc75",
+      "source_crc32": "1f1c08fb",
+      "target_crc32": "9a04a6fb",
+      "patch_crc32": "0de61125"
+    },
+    "Debug": {
+      "bytes": 17268637,
+      "sha256": "701b3c87df9e5903990b11395c205cc22328a5dd026cbc605d061388c06a859f",
+      "source_crc32": "1f1c08fb",
+      "target_crc32": "351204c5",
+      "patch_crc32": "723b034e"
+    }
+  },
+  "supported_clean_Emerald_sha1": "f3ae088181bf583e55daf962a92bb46f4f1d07b7",
+  "native_bounds_both_variants": {
+    "0": [
+      44,
+      52
+    ],
+    "1": [
+      108,
+      116
+    ],
+    "2": [
+      140,
+      148
+    ],
+    "3": [
+      140,
+      148
+    ],
+    "rightmost_version_pixel": 222,
+    "card_right_edge": 224,
+    "options_return_identical_to_selected_scene": true
+  },
+  "save_impact": "None. No serialized structures, identifiers, capacities, readers or gameplay defaults changed."
+}

@@ -1,13 +1,13 @@
 # Pokémon Emerald: Legends
 
-**Version:** 0.0.53<br>
+**Version:** 0.0.54<br>
 **Base:** [pokeemerald-expansion](https://github.com/rh-hideout/pokeemerald-expansion)
 
 Pokémon Emerald: Legends is an unofficial, non-commercial Pokémon Emerald ROM-hack project built on the open-source `pokeemerald-expansion` decompilation/expansion base.
 
 The project is intended to preserve the feel and structure of Pokémon Emerald while layering in modern quality-of-life improvements, configurable mechanics, expanded systems, and new features developed incrementally.
 
-The New Game / Continue / Options menu uses a soft lavender backdrop as of v0.0.13.1.
+The New Game / Continue / Options menu uses a soft lavender backdrop as of v0.0.13.1. v0.0.54 displays the current version at the right edge of its OPTION card, matching the native text; Debug includes the -D suffix.
 
 Kanto has eight playable visiting Gyms, each offering a difficulty choice with one victory per save. The Borrowed Voice adds two field surveys and an updated progress journal. The Trainer Card switches between Hoenn and Kanto badge collections. SELECT switches the postgame PokeNav between Hoenn and Kanto. [Postgame design and current scope](docs/features/kanto-postgame.md).
 

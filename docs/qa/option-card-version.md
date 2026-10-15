@@ -1,6 +1,6 @@
 # Title-menu OPTION version — owner preview
 
-Status: **review branch only; public v0.0.53 remains unchanged**. The owner requested the current version on the far right of the OPTION card shown below NEW GAME/CONTINUE, matching the original text size and alignment. The developer-site refresh is deferred. No publication approval is inferred from earlier bedroom approval.
+Status: **owner-approved for v0.0.54 publication**. The owner said “Perfect, publish!” and later asked to resume after interruption. The captures below retain the approved v0.0.53 preview; final version labels advance to v0.0.54. The owner requested the current version on the far right of the OPTION card shown below NEW GAME/CONTINUE, matching the original text size and alignment. The developer-site refresh is deferred. No publication approval is inferred from earlier bedroom approval.
 
 [Release native preview](option-card-release.png) · [Debug native preview](option-card-debug.png) · [Build/native receipt](option-card-version.json)
 
@@ -10,4 +10,4 @@ Both native builds passed, along with Options text/navigation/title-handoff regr
 
 These are actual native 240×160 frames enlarged 2× nearest neighbor. Captions are outside the game image. The harness uses controlled RAM setup with the unmodified locally built ROM; no ROM injection or image-generated assets were used. No ROMs are distributed. No save structures, persistent IDs, gameplay, wardrobe, bedroom, seasons or existing art changed. No BPS or Pages publication was performed for this review milestone.
 
-After owner approval, prepare the next project version, synchronize the version strings/site/changelogs, and perform the normal BPS/CI/Pages release gates. Until then, preserve the published master and downloads.
+Publication is authorized for v0.0.54. The interrupted release had no committed v0.0.54 source; restore metadata from the approved branch, rebuild through CI, compare [known final fingerprints](option-card-v0.0.54-recovery.json), and complete independent BPS/Pages/live verification.
