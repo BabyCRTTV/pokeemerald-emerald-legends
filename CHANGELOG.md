@@ -4,6 +4,12 @@ All notable Pokémon Emerald: Legends project changes are documented here.
 
 For build-specific player views, see [CHANGELOG-RELEASE.md](CHANGELOG-RELEASE.md) and [CHANGELOG-DEBUG.md](CHANGELOG-DEBUG.md). The canonical history below records the project as a whole.
 
+## [0.0.54] - 2026-10-15
+
+- Added the current build version at the right edge of the title menu OPTION card, matching the original font, colors and baseline in all menu layouts.
+- Preserved the Debug -D suffix, selection styling and Options return behavior; added version consistency checks for future releases.
+- Published the owner-approved layout in Release and Debug without changing gameplay, artwork or save data.
+
 ## [0.0.53] - 2026-10-14
 
 - Added evolving bedroom keepsakes and notebook/family memories through the current Kanto finale, using native assets and a Ball Poster beside the preserved wall map.

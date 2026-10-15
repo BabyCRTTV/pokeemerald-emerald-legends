@@ -138,6 +138,8 @@ jobs:
           grep -Fq "**Version:** $VERSION_NUMBER" README.md
           grep -Fq "LEGENDS v$VERSION_NUMBER" src/option_menu.c
           grep -Fq "LEGENDS v$VERSION_NUMBER-D" src/option_menu.c
+          grep -Fq "_(\"v$VERSION_NUMBER\")" src/main_menu.c
+          grep -Fq "_(\"v$VERSION_NUMBER-D\")" src/main_menu.c
           grep -Fq "v$VERSION_NUMBER" docs/index.html
           grep -Fq "v$VERSION_NUMBER" docs/patcher.html
           grep -Fq "const VERSION = \"$VERSION_NUMBER\";" docs/patcher.js
