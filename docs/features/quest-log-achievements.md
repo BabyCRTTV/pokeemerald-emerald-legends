@@ -1,4 +1,4 @@
-# Quest Log, achievements and expanded storage (v0.0.56)
+# Quest Log, achievements and expanded storage (v0.0.58)
 
 Press **Right or Left** in the pause menu to reach its second page. Choose **QUEST LOG** or **ACHIEVEMENTS**; the Adventure Log remains on the first page. Linked-room menus retain their native restrictions.
 
@@ -8,7 +8,7 @@ The owner-approved A layout keeps six entries visible. MAIN / SIDE / DONE quest 
 
 ## Quests
 
-There are 33 entries: 26 main quests and seven basic side quests. Main quests cover Hoenn's introductory journey, all eight badges and major story errands, the Pokemon League, the nine current Wing Survey chapters and the Sleeping Continent intermission. Side quests cover the remaining visiting Leaders, a bicycle, Secret Power/base registration, the Scanner, ancient Regi doors, catching the three birds and catching Regigigas. These entries document existing gameplay; they do not add new story events.
+There are 39 entries: 26 main quests, seven existing side quests and six selectable Birch field requests. Main quests cover Hoenn's introductory journey, all eight badges and major story errands, the Pokemon League, the nine current Wing Survey chapters and the Sleeping Continent intermission. Side quests cover the remaining visiting Leaders, a bicycle, Secret Power/base registration, the Scanner, ancient Regi doors, catching the three birds and catching Regigigas. The original entries document existing gameplay. Birch's optional requests add local research objectives after the Pokédex; see [the field request guide](birch-field-requests.md). Only the accepted request and completed requests appear in the journal; abandoned work becomes available again from Birch.
 
 - **Up/Down:** select an entry.
 - **A:** open its objectives.

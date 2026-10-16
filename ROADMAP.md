@@ -32,6 +32,7 @@ Goal: establish a stable `pokeemerald-expansion` project and implement the first
 - [x] Deferred achievement notices and corrected journal selection rendering
 - [x] Evolving bedroom keepsakes, independent furnishing colors and safe floor decoration
 - [x] Personal Mom/Norman milestones and a one-time family welcome after the finale (v0.0.55)
+- [x] Six selectable Birch field requests with one-active, abandon/retry and native Quest Log integration (v0.0.58 preview; owner approval pending)
 - [ ] Seasonal encounter hooks
 
 ### Trainer appearance

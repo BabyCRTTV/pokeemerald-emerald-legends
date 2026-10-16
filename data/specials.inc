@@ -655,3 +655,10 @@ gSpecials::
 	def_special LegendsHomecomingReady
 	def_special LegendsHomecomingShowDad
 	def_special LegendsHomecomingFinish
+	def_special LegendsFieldRequestsGetActive
+	def_special LegendsFieldRequestsPrepareMenu
+	def_special LegendsFieldRequestsDescribe
+	def_special LegendsFieldRequestsAcceptSpecial
+	def_special LegendsFieldRequestsReview
+	def_special LegendsFieldRequestsSubmitSpecial
+	def_special LegendsFieldRequestsAbandonSpecial

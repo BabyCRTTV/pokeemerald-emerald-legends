@@ -1,5 +1,6 @@
 #include "global.h"
 #include "legends_journal.h"
+#include "legends_field_requests.h"
 #include "event_data.h"
 #include "overworld.h"
 #include "pokedex.h"
@@ -9,6 +10,7 @@
 #include "constants/items.h"
 #include "data/legends/journal.h"
 STATIC_ASSERT(ARRAY_COUNT(sQuests) < 255, TrackedQuestIdsFitSignedWord);
+STATIC_ASSERT(ARRAY_COUNT(sQuests) >= LEGENDS_FIELD_REQUEST_QUEST_BASE + LEGENDS_FIELD_REQUEST_COUNT, BirchRequestQuestIdsPresent);
 #define JOURNAL_MAGIC 0x4C514143
 #define TRACKED_QUEST_MAGIC 0xA700
 #define DATA (&gSaveBlock3Ptr->journal)
@@ -58,6 +60,8 @@ bool32 LegendsQuestComplete(u16 id)
     u8 i;
     const struct LegendsQuest *q = LegendsQuestGet(id);
     if (!q) return FALSE;
+    if (id >= LEGENDS_FIELD_REQUEST_QUEST_BASE && id < LEGENDS_FIELD_REQUEST_QUEST_BASE + LEGENDS_FIELD_REQUEST_COUNT)
+        return LegendsFieldRequestComplete(id - LEGENDS_FIELD_REQUEST_QUEST_BASE);
     if (!q->side) return FlagGet(q->steps[q->count - 1].flag);
     for (i = 0; i < q->count; i++) if (!FlagGet(q->steps[i].flag)) return FALSE;
     return TRUE;
@@ -67,6 +71,9 @@ bool32 LegendsQuestVisible(u16 id)
     u8 i;
     const struct LegendsQuest *q = LegendsQuestGet(id);
     if (!q) return FALSE;
+    if (id >= LEGENDS_FIELD_REQUEST_QUEST_BASE && id < LEGENDS_FIELD_REQUEST_QUEST_BASE + LEGENDS_FIELD_REQUEST_COUNT)
+        return LegendsFieldRequestActive() == id - LEGENDS_FIELD_REQUEST_QUEST_BASE
+            || LegendsFieldRequestComplete(id - LEGENDS_FIELD_REQUEST_QUEST_BASE);
     if (!q->start || FlagGet(q->start)) return TRUE;
     for (i = 0; i < q->count; i++) if (FlagGet(q->steps[i].flag)) return TRUE;
     return FALSE;
@@ -74,6 +81,8 @@ bool32 LegendsQuestVisible(u16 id)
 bool32 LegendsQuestStepComplete(u16 id, u8 step)
 {
     const struct LegendsQuest *q = LegendsQuestGet(id);
+    if (q && id >= LEGENDS_FIELD_REQUEST_QUEST_BASE && id < LEGENDS_FIELD_REQUEST_QUEST_BASE + LEGENDS_FIELD_REQUEST_COUNT)
+        return step < q->count && LegendsFieldRequestStepComplete(id - LEGENDS_FIELD_REQUEST_QUEST_BASE, step);
     return q && step < q->count && (LegendsQuestComplete(id) || FlagGet(q->steps[step].flag));
 }
 u8 LegendsQuestNextStep(u16 id)

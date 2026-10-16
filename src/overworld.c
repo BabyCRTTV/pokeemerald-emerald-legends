@@ -2,6 +2,7 @@
 #include "legends_story.h"
 #include "legends_adventure.h"
 #include "legends_journal.h"
+#include "legends_field_requests.h"
 #include "overworld.h"
 #include "battle_pyramid.h"
 #include "battle_setup.h"
@@ -1863,6 +1864,7 @@ u8 UpdateSpritePaletteWithTime(u8 paletteNum)
 
 static void OverworldBasic(void)
 {
+    LegendsFieldRequestsObserve();
     LegendsAchievementPopupUpdate();
     ScriptContext_RunScript();
     RunTasks();

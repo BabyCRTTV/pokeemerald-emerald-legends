@@ -23,6 +23,7 @@ typedef uint16_t u16; typedef uint32_t u32; typedef int bool32;
 #include "constants/items.h"
 #include "constants/game_stat.h"
 #include "legends_journal.h"
+#include "legends_field_requests.h"
 #include "src/data/legends/journal.h"
 static struct {struct LegendsJournalSave journal;} data,*gSaveBlock3Ptr=&data;
 static u8 flags[4096];static u32 stats[64],dex,pcQuantity,pcItem,full,linked;
@@ -31,6 +32,11 @@ u32 GetGameStat(u8 id){assert(id<64);return stats[id];}
 u32 GetNationalPokedexCount(u8 mode){return dex;}
 bool32 IsOverworldLinkActive(void){return linked;}
 bool32 AddPCItem(u16 item,u16 count){if(full)return FALSE;pcItem=item;pcQuantity+=count;return TRUE;}
+#ifndef TEST_REAL_FIELD_REQUESTS
+u16 LegendsFieldRequestActive(void){return FIELD_REQUEST_NONE;}
+bool32 LegendsFieldRequestComplete(u16 id){return FALSE;}
+bool32 LegendsFieldRequestStepComplete(u16 id,u8 step){return FALSE;}
+#endif
 '''
 # Include the catalogue after condition structs only once.
 s=s.replace('#define JOURNAL_MAGIC','#define JOURNAL_MAGIC',1)
@@ -40,7 +46,7 @@ int main(void)
     memset(&data,0xA5,sizeof(data)); flags[FLAG_BADGE01_GET]=1;
     stats[GAME_STAT_POKEMON_CAPTURES]=100; dex=200;
     LegendsJournalInit(FALSE);
-    assert(LegendsAchievementCount()==95 && LegendsQuestCount()==33);
+    assert(LegendsAchievementCount()==95 && LegendsQuestCount()==39);
     assert(LegendsAchievementEarned(0));
     assert(!LegendsAchievementEarned(1));
     for(unsigned i=0;i<LegendsAchievementCount();i++)
@@ -64,7 +70,7 @@ int main(void)
     LegendsJournalInit(FALSE);assert(!memcmp(&before,&data.journal,sizeof(before)));
     flags[FLAG_BADGE01_GET]=0;stats[GAME_STAT_POKEMON_CAPTURES]=0;dex=0;
     LegendsJournalRefresh();assert(LegendsAchievementEarned(0));
-    for(unsigned q=0;q<LegendsQuestCount();q++)
+    for(unsigned q=0;q<LEGENDS_FIELD_REQUEST_QUEST_BASE;q++)
     {
         const struct LegendsQuest *quest=LegendsQuestGet(q);
         memset(flags,0,sizeof(flags));
@@ -136,7 +142,7 @@ int main(void)
     assert(LegendsQuestTrack(0xFFFF)&&LegendsQuestTracked()==0xFFFF);
     before=data.journal;LegendsJournalInit(FALSE);assert(!memcmp(&before,&data.journal,sizeof(before)));
     assert(sizeof(data.journal)==36&&offsetof(struct LegendsJournalSave,reserved)==10);
-    puts("33 quests; 95 achievements; legacy tracking words, progression, persistence, claims and link guards passed.");
+    puts("39 quests; 95 achievements; legacy tracking words, progression, persistence, claims and link guards passed.");
 }
 '''
 with tempfile.TemporaryDirectory() as d:

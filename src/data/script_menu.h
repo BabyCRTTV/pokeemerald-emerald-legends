@@ -1139,6 +1139,26 @@ static const struct MenuAction sLegendsClockModes[] = {
     {COMPOUND_STRING("CANCEL")},
 };
 
+static const struct MenuAction sLegendsBirchMain[] = {
+    {COMPOUND_STRING("FIELD REQUESTS")},
+    {COMPOUND_STRING("POKéDEX RATING")},
+    {COMPOUND_STRING("NOT NOW")},
+};
+static const struct MenuAction sLegendsBirchRequests[] = {
+    {gLegendsFieldRequestMenuLabels[0]},
+    {gLegendsFieldRequestMenuLabels[1]},
+    {gLegendsFieldRequestMenuLabels[2]},
+    {gLegendsFieldRequestMenuLabels[3]},
+    {gLegendsFieldRequestMenuLabels[4]},
+    {gLegendsFieldRequestMenuLabels[5]},
+    {gText_Cancel2},
+};
+static const struct MenuAction sLegendsBirchActive[] = {
+    {COMPOUND_STRING("TURN IN REPORT")},
+    {COMPOUND_STRING("ABANDON REQUEST")},
+    {COMPOUND_STRING("BACK")},
+};
+
 static const struct MultichoiceListStruct sMultichoiceLists[] =
 {
     [MULTI_BRINEY_ON_DEWFORD]          = MULTICHOICE(MultichoiceList_BrineyOnDewford),
@@ -1274,6 +1294,9 @@ static const struct MultichoiceListStruct sMultichoiceLists[] =
     [MULTI_GAME_CORNER_BATTLE_ITEM_PRIZES] = MULTICHOICE(sMultichoiceList_GameCornerBattleItemPrizes),
     [MULTI_DEPT_STORE_ELEVATOR]            = MULTICHOICE(sMultichoiceList_DeptStoreElevator),
     [MULTI_LEGENDS_CLOCK_MODE] = MULTICHOICE(sLegendsClockModes),
+    [MULTI_LEGENDS_BIRCH_MAIN] = MULTICHOICE(sLegendsBirchMain),
+    [MULTI_LEGENDS_BIRCH_REQUESTS] = MULTICHOICE(sLegendsBirchRequests),
+    [MULTI_LEGENDS_BIRCH_ACTIVE] = MULTICHOICE(sLegendsBirchActive),
     [MULTI_GAME_CORNER_COIN_PURCHASE_COUNTER] = MULTICHOICE(sMultichoiceList_GameCornerCoinPurchaseCounter),
     [MULTI_LINKED_DIRECT_UNION]         = MULTICHOICE(sMultichoiceList_LinkedDirectUnion),
     [MULTI_CELADON_VENDING_MACHINE]           = MULTICHOICE(sMultichoiceList_CeladonVendingMachine),
