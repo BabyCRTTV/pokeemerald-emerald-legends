@@ -1,0 +1,122 @@
+{
+  "version": "0.0.59",
+  "verified_utc": "2026-10-16T19:00:25.517488+00:00",
+  "manifest": {
+    "url": "https://babycrttv.github.io/pokeemerald-emerald-legends/downloads/SHA256SUMS.txt",
+    "verification_request_url": "https://babycrttv.github.io/pokeemerald-emerald-legends/downloads/SHA256SUMS.txt?verify=9d99eda9",
+    "HTTP": 200,
+    "bytes": 412,
+    "sha256": "b02fd43774c56b6392e946afaf4e9c438985864648682c6a6436195b116c5c58"
+  },
+  "patches": {
+    "Release": {
+      "url": "https://babycrttv.github.io/pokeemerald-emerald-legends/downloads/Pokemon-Emerald-Legends-v0.0.59.bps",
+      "verification_request_url": "https://babycrttv.github.io/pokeemerald-emerald-legends/downloads/Pokemon-Emerald-Legends-v0.0.59.bps?verify=9d99eda9",
+      "HTTP": 200,
+      "bytes": 17452977,
+      "sha256": "05db993cd6f54d1a7975dd274bf034898a542ddb705c3247932dc202b8ad7bf3",
+      "Floating_IPS_verified": true,
+      "browser_decoder_verified": true,
+      "ROM_sha256": "87e68bf243e51ba3124a7898a61cf8335fcac99b3422386a5c7867551a35800d",
+      "matches_native_tested_ROM": true
+    },
+    "Debug": {
+      "url": "https://babycrttv.github.io/pokeemerald-emerald-legends/downloads/Pokemon-Emerald-Legends-v0.0.59-debug.bps",
+      "verification_request_url": "https://babycrttv.github.io/pokeemerald-emerald-legends/downloads/Pokemon-Emerald-Legends-v0.0.59-debug.bps?verify=9d99eda9",
+      "HTTP": 200,
+      "bytes": 17285303,
+      "sha256": "04844a6b0ed3bab54453132f0fc583b6aa11e9947d2d0713c142294df9472d8f",
+      "Floating_IPS_verified": true,
+      "browser_decoder_verified": true,
+      "ROM_sha256": "d51c4672663d340ffe83d0ecc42ab6646f0b8c9f4cac4bee7ca1fd83ec9f44b3",
+      "matches_native_tested_ROM": true
+    }
+  },
+  "site": {
+    "index.html": {
+      "url": "https://babycrttv.github.io/pokeemerald-emerald-legends/index.html",
+      "verification_request_url": "https://babycrttv.github.io/pokeemerald-emerald-legends/index.html?verify=9d99eda9",
+      "HTTP": 200,
+      "bytes": 3538,
+      "sha256": "188570c1f406a7e04ca9d68230bfb3e1490a8bd77f85acc241baadc7680cf58c",
+      "matches_committed_bytes": true
+    },
+    "changelog.html": {
+      "url": "https://babycrttv.github.io/pokeemerald-emerald-legends/changelog.html",
+      "verification_request_url": "https://babycrttv.github.io/pokeemerald-emerald-legends/changelog.html?verify=9d99eda9",
+      "HTTP": 200,
+      "bytes": 105011,
+      "sha256": "20db1011bb8381af8c4e165d763e867d92eb165322d1fb440f2965146e93db56",
+      "matches_committed_bytes": true
+    },
+    "patcher.html": {
+      "url": "https://babycrttv.github.io/pokeemerald-emerald-legends/patcher.html",
+      "verification_request_url": "https://babycrttv.github.io/pokeemerald-emerald-legends/patcher.html?verify=9d99eda9",
+      "HTTP": 200,
+      "bytes": 2679,
+      "sha256": "7b6a2fccec0ae64ddd15ec70bc383d004b36a001248d879caab514ab900ebfae",
+      "matches_committed_bytes": true
+    },
+    "patcher.js": {
+      "url": "https://babycrttv.github.io/pokeemerald-emerald-legends/patcher.js",
+      "verification_request_url": "https://babycrttv.github.io/pokeemerald-emerald-legends/patcher.js?verify=9d99eda9",
+      "HTTP": 200,
+      "bytes": 9353,
+      "sha256": "1f099a804296e880be48a68cfd4f17ef7f35960073e83c4370c190f35224fdea",
+      "matches_committed_bytes": true
+    },
+    "journal-guide.html": {
+      "url": "https://babycrttv.github.io/pokeemerald-emerald-legends/journal-guide.html",
+      "verification_request_url": "https://babycrttv.github.io/pokeemerald-emerald-legends/journal-guide.html?verify=9d99eda9",
+      "HTTP": 200,
+      "bytes": 4622,
+      "sha256": "a727f523f523430c5a1863847738208049cfbb487b48251721e911ae062abf0c",
+      "matches_committed_bytes": true
+    },
+    "features/research-requests.md": {
+      "url": "https://babycrttv.github.io/pokeemerald-emerald-legends/features/research-requests.md",
+      "verification_request_url": "https://babycrttv.github.io/pokeemerald-emerald-legends/features/research-requests.md?verify=9d99eda9",
+      "HTTP": 200,
+      "bytes": 6856,
+      "sha256": "38d6deb9142ee50f219bd8316c9f98ef7a94a348c3e64b1f03dc17ae116444f7",
+      "matches_committed_bytes": true
+    },
+    "qa/research-v0.0.59-preview.png": {
+      "url": "https://babycrttv.github.io/pokeemerald-emerald-legends/qa/research-v0.0.59-preview.png",
+      "verification_request_url": "https://babycrttv.github.io/pokeemerald-emerald-legends/qa/research-v0.0.59-preview.png?verify=9d99eda9",
+      "HTTP": 200,
+      "bytes": 55371,
+      "sha256": "18c75592f72d249827dcdc1c0444a05f76f32d4a45f5810eaafaed23314596c3",
+      "matches_committed_bytes": true
+    },
+    "qa/research-v0.0.59-preview.gif": {
+      "url": "https://babycrttv.github.io/pokeemerald-emerald-legends/qa/research-v0.0.59-preview.gif",
+      "verification_request_url": "https://babycrttv.github.io/pokeemerald-emerald-legends/qa/research-v0.0.59-preview.gif?verify=9d99eda9",
+      "HTTP": 200,
+      "bytes": 107703,
+      "sha256": "6ed0f877b25e546588cb1bbfab4787ff87809726835cb9288167b5b9c51075c4",
+      "matches_committed_bytes": true
+    }
+  },
+  "pipeline": {
+    "pull_request": 74,
+    "preview_commit": "9d39e965023e325ece2f4ed6bfbe7e90cd63a1cb",
+    "merge_commit": "aa1e9134a17fd3909fa14d17d1edcbb93cb4d4be",
+    "PR_checks_run": 38949074441,
+    "PR_patch_build_run": 38949074425,
+    "production_checks_run": 38950196789,
+    "production_patch_build_run": 38950196653,
+    "merge_pages_run": 38950195991,
+    "patch_commit": "9d99eda9e5c443a231f348078a2ebf29b35cb32b",
+    "patch_pages_run": 38951454158,
+    "all_required_runs": "completed/success",
+    "checksum_manifest_matches_GitHub_patch_commit": true
+  },
+  "authorization": "Owner authorized the 24-request expansion and publication on 16 October 2026.",
+  "AGENTS_reviewed": true,
+  "policy_changes_required": true,
+  "limits": [
+    "Controlled format-identical v0.0.58 saves, not authentic historical user fixtures.",
+    "No uninterrupted 30-request playthrough or Pizza Boy verification."
+  ]
+}

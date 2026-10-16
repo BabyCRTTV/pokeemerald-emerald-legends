@@ -1,5 +1,7 @@
 # Birch and Devon research requests — v0.0.59
 
+Published and verified. [Release verification](../qa/research-v0.0.59-public.json).
+
 The original six Birch requests remain available after the Pokédex, with their original IDs, objectives and rewards. Twelve additional Birch studies and twelve Devon contracts open through story progress. Early dialogue branches introduce Birch's work during his first calm lab conversation and Devon's research after the letter/PokéNav introduction; declining the explanation never blocks the main story. Players with existing saves can use the new conversations immediately when the relevant story gates are met.
 
 Talk to Birch for **Field Requests**, or Mr. Stone on Devon's third floor for **Research Contracts**. Birch has Nearby Requests, Hoenn Surveys and Advanced Studies; Devon has Field Contracts and Special Projects. Each list keeps six request rows plus Back. `Later:` identifies locked work and selecting it explains the requirement; `Done:` identifies permanent completion. Objectives, hints and rewards appear before acceptance.

@@ -1,5 +1,7 @@
 # Story-gated research requests — v0.0.59 QA
 
+Published and verified as v0.0.59 after PR #74 and production checks/builds/patches passed. [Public verification](research-v0.0.59-public.json).
+
 Owner authorized publication of twelve additional Birch requests and twelve Devon contracts, contextual first-meeting branches and one Master Ball for Devon's twelfth. [Design/catalogue](../features/research-requests.md) · [Actual-game PNG](research-v0.0.59-preview.png) · [Animated capture](research-v0.0.59-preview.gif) · [Machine receipts](research-v0.0.59.json).
 
 ## Scope and safeguards
@@ -22,4 +24,4 @@ The first proposed high word at 0x406E conflicted with a FireRed Safari alias cl
 
 ## Reproduction and limits
 
-`tools/legends/native_research_requests_qa/run.py --prefix <mGBA/GBA prefix> --output <private output>` generates the private Debug fixtures/captures. `release.py` takes `--fixture`, `--state`, `--done`, `--high`, `--seafoam` and `--master`, plus the prefix/output. All fixtures keep the native save format; they are synthetic, not historical user saves. Preserve old readers and appended IDs. An authentic historical-save matrix, Pizza Boy and a full uninterrupted thirty-request playthrough remain unfinished. Remote CI, production patch publication and live Pages verification must pass before reporting release completion.
+`tools/legends/native_research_requests_qa/run.py --prefix <mGBA/GBA prefix> --output <private output>` generates the private Debug fixtures/captures. `release.py` takes `--fixture`, `--state`, `--done`, `--high`, `--seafoam` and `--master`, plus the prefix/output. All fixtures keep the native save format; they are synthetic, not historical user saves. Preserve old readers and appended IDs. An authentic historical-save matrix, Pizza Boy and a full uninterrupted thirty-request playthrough remain unfinished. PR/production CI, both live patches and Pages verification subsequently passed; see the public receipt.

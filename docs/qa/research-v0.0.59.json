@@ -166,8 +166,8 @@
     "research-v0.0.59-preview.png": "18c75592f72d249827dcdc1c0444a05f76f32d4a45f5810eaafaed23314596c3"
   },
   "remaining": [
-    "Remote CI and production publication are pending.",
     "Controlled format-identical v0.0.58 state, not authentic historical user saves.",
     "No uninterrupted 30-request playthrough or Pizza Boy verification."
-  ]
+  ],
+  "publication_receipt": "research-v0.0.59-public.json"
 }
