@@ -1,0 +1,91 @@
+{
+  "before": {
+    "header": {
+      "bottom": 65,
+      "height": 37,
+      "width": 1100,
+      "x": 124,
+      "y": 28
+    },
+    "lights": {
+      "bottom": 52,
+      "height": 9,
+      "width": 39,
+      "x": 140,
+      "y": 43
+    },
+    "title": {
+      "bottom": 55,
+      "height": 15,
+      "width": 931.109375,
+      "x": 197,
+      "y": 40
+    },
+    "version": {
+      "bottom": 55,
+      "height": 15,
+      "width": 61.890625,
+      "x": 1146.109375,
+      "y": 40
+    },
+    "viewport": 1363
+  },
+  "after": {
+    "fit": "contain",
+    "gap": "18px",
+    "header": {
+      "bottom": 65,
+      "height": 37,
+      "width": 1100,
+      "x": 124,
+      "y": 28
+    },
+    "loaded": true,
+    "naturalHeight": 492,
+    "sprite": {
+      "bottom": 55,
+      "height": 15,
+      "width": 39,
+      "x": 140,
+      "y": 40
+    },
+    "title": {
+      "bottom": 55,
+      "height": 15,
+      "width": 931.109375,
+      "x": 197,
+      "y": 40
+    },
+    "version": {
+      "bottom": 55,
+      "height": 15,
+      "width": 61.890625,
+      "x": 1146.109375,
+      "y": 40
+    },
+    "viewport": 1363
+  },
+  "textBoundsUnchanged": true,
+  "scope": "Live desktop browser geometry. Mobile sizing is implemented with scoped row-spanning containment, not a captured mobile rendering test.",
+  "asset": {
+    "path": "images/pikachu-header.gif",
+    "source": "Owner upload 230079.gif",
+    "dimensions": [
+      500,
+      492
+    ],
+    "frames": 21,
+    "bytes_unchanged": true,
+    "sha256": "c6c9570d4e09e9bd50891a046966acbecd7b45d21b808cd06f4c34fd445cbda2"
+  },
+  "checks": {
+    "patcher_regressions_passed": 5,
+    "removed_only_redundant_build_changelog_links": true,
+    "header_no_added_intrinsic_height": true
+  },
+  "initial_CI": {
+    "run": 38839931211,
+    "cause": "Metadata still required the intentionally removed build-card changelog links; all other project steps passed.",
+    "fix": "Verify actual release-changelog/debug-changelog panel IDs in the Changelog page; the full metadata block passed locally."
+  }
+}

@@ -152,8 +152,8 @@ jobs:
           grep -Fq 'data-tab-target="debug"' docs/changelog.html
           grep -Fq "v$VERSION_NUMBER" docs/changelog.html
           test "$(grep -Fc "<h2>v$VERSION_NUMBER " docs/changelog.html)" -eq 2
-          grep -Fq 'href="changelog.html#release"' docs/index.html
-          grep -Fq 'href="changelog.html#debug"' docs/index.html
+          grep -Fq 'id="release-changelog"' docs/changelog.html
+          grep -Fq 'id="debug-changelog"' docs/changelog.html
 
           grep -Fq '#define I_EXP_SHARE_FLAG        FLAG_LEGENDS_EXP_SHARE' include/config/item.h
           grep -Fq '#define I_EXP_SHARE_ITEM        GEN_6' include/config/item.h
