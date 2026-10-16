@@ -16,6 +16,8 @@ The owner requested a website-only cleanup: removed DEV STATUS, numbered 01/02/0
 
 The header uses the owner's original transparent 230079.gif without re-encoding (500×492, 21 frames/timing retained). Its image is contained in the existing 39-pixel icon column and spans title/version rows on mobile without contributing intrinsic size. Live desktop measurements confirmed unchanged text/header bounds and an 18-pixel gap. [Geometry and scope](qa/site-header-sprite.json) · [Desktop preview](qa/site-header-sprite-desktop.jpg). The homepage stylesheet has a cache key for rapid edits. Updated the stale metadata check to verify Changelog tab targets after the link removal; the full metadata block passed locally.
 
+Extended the same animation and contained spacing to the Changelog header and removed only the homepage Roadmap button. Changelog history/tabs, the roadmap document and ROM assets remained unchanged; no ROM release was needed.
+
 ## Current version — v0.0.57 (published and verified)
 
 The owner approved the native quest-tracking card and smooth scroll on 15 October: “Excellent, apply and publish if all is bug free.” Details A tracks/stops one visible unfinished quest; T/TRACKED identify it. Both ordinary pause pages show the next objective above clock/weather with a 16-pixel right-menu gap. Long text pauses at each end and smoothly returns to the top; the heading stays fixed, short text stays still and reopening resets the cycle. Preserve menu/popup/special-layout exclusions, the RAM-only scratch window and clipped 4bpp copies. The optional line cache uses the recoverable allocator and frees resources on close/failure.
