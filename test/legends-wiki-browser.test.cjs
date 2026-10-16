@@ -9,6 +9,11 @@ const assert=require('node:assert/strict'),fs=require('node:fs');
   await context.route(/\/walkthrough-maps\.json$/,route=>route.fulfill({contentType:'application/json',body:JSON.stringify({regions:null})}));
   const page=await context.newPage(),errors=[],iconRequests=[];page.on('request',r=>{if(r.url().includes('/graphics/pokemon/'))iconRequests.push(r.url());});page.on('pageerror',e=>errors.push(e.message));
   await page.goto('http://127.0.0.1:8765/wiki/');await page.locator('.topic-cards').waitFor();
+  assert(await page.locator('.dex-shortcuts').evaluate(group=>{
+   const links=[...group.querySelectorAll('a')],last=links.at(-1),r=last.getBoundingClientRect(),above=links[1].getBoundingClientRect(),bounds=group.getBoundingClientRect();
+   return links.length===3&&Math.abs(r.left-bounds.left)<1&&Math.abs(r.width-bounds.width)<1&&Math.abs(r.height-above.height)<1&&Math.abs(r.top-above.bottom-10)<1&&getComputedStyle(last).backgroundColor==='rgb(105, 71, 149)';
+  }),'Walkthrough aligns with the shortcut group, with matching height, a 10px gap and dark purple fill');
+  assert.equal(await page.getByText('Eighteen chapters from New Game to Kanto’s Wing Survey',{exact:true}).count(),0);
   assert.equal(await page.locator('.topic-cards .card').count(),7);
   await page.waitForFunction(()=>{const img=document.querySelector('.wiki-game-logo img');return img?.complete&&img.naturalWidth>0;});
   assert.equal(await page.locator('.wiki-game-logo img').getAttribute('alt'),'Pokémon Emerald: Legends');

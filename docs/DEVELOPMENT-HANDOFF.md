@@ -24,6 +24,10 @@ Removed the Release/Debug download-card description paragraphs at the owner's re
 
 Extended the existing Pikachu header animation to the shared Release/Debug browser patcher page, using the same contained sprite column and mobile title/version row spacing as Home and Changelog. Patcher logic, validation, download counting and both build variants remained unchanged.
 
+## Wiki home polish — 16 October 2026
+
+Moved Walkthrough into the Routes/Pokédex shortcut group as a full-width following row. It shares the same button height, padding, corner radius and 10-pixel group gap, while keeping its existing dark purple/white colors. Removed the chapter-count tagline and redundant standalone margins; the search field keeps its existing 20-pixel top gap. Only homepage layout/cache keys changed; walkthrough content, links, game version and approved artwork remained intact.
+
 ## Current version — v0.0.57 (published and verified)
 
 The owner approved the native quest-tracking card and smooth scroll on 15 October: “Excellent, apply and publish if all is bug free.” Details A tracks/stops one visible unfinished quest; T/TRACKED identify it. Both ordinary pause pages show the next objective above clock/weather with a 16-pixel right-menu gap. Long text pauses at each end and smoothly returns to the top; the heading stays fixed, short text stays still and reopening resets the cycle. Preserve menu/popup/special-layout exclusions, the RAM-only scratch window and clipped 4bpp copies. The optional line cache uses the recoverable allocator and frees resources on close/failure.
