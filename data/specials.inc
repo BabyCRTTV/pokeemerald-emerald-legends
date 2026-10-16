@@ -662,3 +662,10 @@ gSpecials::
 	def_special LegendsFieldRequestsReview
 	def_special LegendsFieldRequestsSubmitSpecial
 	def_special LegendsFieldRequestsAbandonSpecial
+	def_special LegendsFieldRequestsBeginBirch
+	def_special LegendsFieldRequestsBeginDevon
+	def_special LegendsFieldRequestsGetPatron
+	def_special LegendsFieldRequestsSelectGroup
+	def_special LegendsFieldRequestsSelectRow
+	def_special LegendsFieldRequestsCanReview
+	def_special LegendsFieldRequestsGreeting

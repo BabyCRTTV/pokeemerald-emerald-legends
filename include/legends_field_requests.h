@@ -3,8 +3,10 @@
 
 #include "constants/legends_field_requests.h"
 
-extern u8 gLegendsFieldRequestMenuLabels[LEGENDS_FIELD_REQUEST_COUNT][48];
+extern u8 gLegendsFieldRequestMenuLabels[LEGENDS_REQUEST_PAGE_SIZE][48];
 u16 LegendsFieldRequestActive(void);
+bool32 LegendsFieldRequestUnlocked(u16 id);
+u8 LegendsFieldRequestOwner(u16 id);
 bool32 LegendsFieldRequestComplete(u16 id);
 bool32 LegendsFieldRequestStepComplete(u16 id, u8 step);
 u8 LegendsFieldRequestAccept(u16 id);
@@ -19,4 +21,11 @@ void LegendsFieldRequestsReview(void);
 void LegendsFieldRequestsSubmitSpecial(void);
 void LegendsFieldRequestsAbandonSpecial(void);
 
+void LegendsFieldRequestsBeginBirch(void);
+void LegendsFieldRequestsBeginDevon(void);
+void LegendsFieldRequestsGetPatron(void);
+void LegendsFieldRequestsSelectGroup(void);
+void LegendsFieldRequestsSelectRow(void);
+void LegendsFieldRequestsCanReview(void);
+void LegendsFieldRequestsGreeting(void);
 #endif

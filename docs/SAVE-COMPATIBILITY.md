@@ -25,6 +25,10 @@ A complete set of authentic saves from every historical release has not been rep
 
 The six new requests reuse verified-unused native vars 0x406B–0x406D. A signed, bounded active word guards completion and habitat-note bits; invalid legacy values read as no request without writes and initialize only when accepting work. Quest IDs 33–38 are appended, while original quests, achievements, journal size/offsets, save sectors and packed-storage readers remain unchanged. The state words currently support sixteen requests; future expansion beyond that needs explicit additional-word initialization. Host tests covered every possible active-word value, legacy snapshots, one-active/abandon/retry, pin retention and atomic sample/reward behavior. Controlled native Debug flash/load and normal unmodified Release Continue with legacy/active/completed fixtures passed. [Detailed evidence and limits](qa/birch-v0.0.58.md) records the assertions; the authentic historical-release fixture matrix and Pizza Boy testing remain unfinished.
 
+## Research expansion — v0.0.59
+
+The extended catalogue retains v1 B7 reads and upgrades valid v0.0.58 state only at a successful mutation. One verified-unused native word 0x407A holds high completion bits; migration zeros them without reading arbitrary legacy values. Existing completion, active selection, observations, quest pins and IDs remain intact. Invalid legacy state initializes only on acceptance; full-PC failure leaves all state and inventory unchanged. The native structures, journal size/offsets, sectors and packed-storage codec are unchanged. Host tests cover v1/v2, all thirty requests, high-word bits, caps, gates and snapshots; controlled native flash and all six unmodified Release Continue fixtures passed, including the high completion word and the one-time Master Ball inventory. [QA and limits](qa/research-v0.0.59.md). [Design and migration](features/research-requests.md).
+
 ## Review every update
 
 State the save impact in the PR/handoff, including “none” when appropriate. Check for changes to:
