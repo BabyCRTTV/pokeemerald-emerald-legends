@@ -40,6 +40,9 @@ a { color: var(--lime); }
   letter-spacing: .08em;
   font-size: 13px;
 }
+.titlebar-home { grid-template-columns: 39px minmax(0, 1fr) auto; }
+.header-sprite { position: relative; width: 39px; min-height: 0; align-self: stretch; }
+.header-sprite img { position: absolute; inset: 0; display: block; width: 100%; height: 100%; object-fit: contain; image-rendering: pixelated; }
 .lights { display: flex; gap: 6px; }
 .lights span { width: 9px; height: 9px; border: 1px solid var(--muted); background: var(--panel-hi); }
 .version { color: var(--emerald); }
@@ -80,6 +83,10 @@ footer p { max-width: 520px; }
   .shell { width: min(100% - 16px, 1100px); margin-top: 10px; }
   .titlebar { grid-template-columns: auto 1fr; }
   .titlebar .version { grid-column: 2; }
+  .titlebar-home { grid-template-columns: 39px minmax(0, 1fr); }
+  .titlebar-home .header-sprite { grid-column: 1; grid-row: 1 / span 2; }
+  .titlebar-home .title { grid-column: 2; grid-row: 1; }
+  .titlebar-home .version { grid-column: 2; grid-row: 2; }
   .hero { grid-template-columns: 1fr; padding: 26px; }
   .grid { grid-template-columns: 1fr; }
   .roadmap { grid-template-columns: 1fr; padding: 26px; }
