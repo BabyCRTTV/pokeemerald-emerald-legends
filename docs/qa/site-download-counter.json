@@ -1,0 +1,42 @@
+{
+  "implementation_commit": "14a226efcb2bfef66652ea576418f3b4b450b123",
+  "checks_run": 38842060978,
+  "pages_run": 38842060234,
+  "conclusions": "success",
+  "live_files_exact": [
+    "index.html",
+    "style.css",
+    "download-counter.js",
+    "patcher.html",
+    "patcher.js"
+  ],
+  "focused_tests_passed": 10,
+  "counter_service_qa": {
+    "separate_key": "babycrttv-emerald-legends/qa-downloads-20261016-995fafb8",
+    "hit": {
+      "http": 200,
+      "value": 1,
+      "cors": "*"
+    },
+    "get": {
+      "http": 200,
+      "value": 1,
+      "cors": "*"
+    }
+  },
+  "live_browser": {
+    "viewport": [
+      1363,
+      936
+    ],
+    "badge_text": "\u2193 0",
+    "label_font_px": 12,
+    "badge_font_px": 11,
+    "label_height_px": 19.796875,
+    "badge_height_px": 17.1875,
+    "horizontal_gap_px": 335.703125,
+    "duplicate_green_title_removed": true,
+    "preview": "site-download-counter.jpg"
+  },
+  "scope": "Site only; game source, version, BPS files and artwork unchanged. Mobile uses the same flex row with a minimum 24px gap; no native mobile browser capture was taken. This approximate public total counts download actions, not completed transfers or unique people. It does not recover historical downloads or track external direct URLs. No production increments were made by QA."
+}
