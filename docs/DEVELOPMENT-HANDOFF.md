@@ -12,7 +12,7 @@ On 14 October 2026 the owner reversed the earlier permission to ignore older sav
 
 ## Website cleanup — 15 October 2026
 
-The owner requested removal of the homepage's DEV STATUS display, numbered 01/02/03 cards (Emerald first / Quality of life / Built in public), and Current targets block. Removed those blocks and expanded the remaining hero to one column. Kept the v0.0.57 downloads, browser patcher, navigation and footer. This is a website-only cleanup; the ROM version, builds and patches remain v0.0.57. The broader site redesign remains deferred.
+The owner requested removal of the homepage's DEV STATUS display, numbered 01/02/03 cards (Emerald first / Quality of life / Built in public), and Current targets block. Removed those blocks and expanded the remaining hero to one column. Kept the v0.0.57 downloads, browser patcher, navigation and footer. This is a website-only cleanup; the ROM version, builds and patches remain v0.0.57. Follow-up: replaced the large “Emerald, expanded carefully” heading and green tagline with a compact green “Pokémon Emerald: Legends” heading. Replaced the download version description/guide links with a small centered Changelog button. Kept both Release/Debug download cards. Added a homepage stylesheet cache key so rapid site edits load fresh styling. The broader site redesign remains deferred.
 
 ## Current version — v0.0.57 (published and verified)
 

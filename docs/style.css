@@ -53,6 +53,7 @@ a { color: var(--lime); }
 h1 { margin: 0 0 18px; font-size: clamp(34px, 6vw, 70px); line-height: .95; letter-spacing: -.055em; max-width: 760px; }
 h2 { margin: 5px 0 12px; font-size: 23px; }
 p { line-height: 1.65; }
+.site-heading { font-size: 16px; line-height: 1.5; letter-spacing: .1em; }
 .hero-copy > p:not(.eyebrow) { max-width: 720px; color: #cbe0d4; font-size: 16px; }
 .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
 .button { display: inline-block; padding: 12px 15px; text-decoration: none; border: 2px solid var(--line); color: var(--ink); background: #0b1f17; box-shadow: 4px 4px 0 var(--shadow); font-weight: 700; }
@@ -93,7 +94,8 @@ footer p { max-width: 520px; }
   padding: 34px;
   margin: 18px 0;
 }
-.download-copy { color: var(--muted); max-width: 640px; }
+.download-changelog { display: flex; justify-content: center; margin-top: 18px; }
+.download-changelog .button { padding: 8px 12px; font-size: 13px; }
 .download-box {
   padding: 22px;
   border: 1px solid var(--line);
