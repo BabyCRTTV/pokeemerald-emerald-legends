@@ -91,7 +91,7 @@ jobs:
           }
           # Publish just this file through the Contents API. The Windows build
           # checkout can contain case/line-ending changes unrelated to the manifest.
-          $json=($manifest | ConvertTo-Json -Depth 4)+"`n"
+          $json=($manifest | ConvertTo-Json -Depth 4).Replace("`r`n","`n")+"`n"
           $encoded=[Convert]::ToBase64String([Text.Encoding]::UTF8.GetBytes($json))
           $endpoint="repos/$env:GITHUB_REPOSITORY/contents/docs/wiki/windows-version.json"
           for ($attempt=1; $attempt -le 3; $attempt++) {
