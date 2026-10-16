@@ -117,7 +117,7 @@ footer p { max-width: 520px; }
   font-weight: 700;
   letter-spacing: .13em;
 }
-.download-box strong { display: block; font-size: 20px; }
+.download-box strong { display: block; margin-bottom: 16px; font-size: 20px; }
 .download-box p { color: var(--muted); }
 .button.disabled {
   opacity: .5;
