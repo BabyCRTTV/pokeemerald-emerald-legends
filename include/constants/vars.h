@@ -150,6 +150,7 @@
 #define VAR_LEGENDS_FIELD_REQUEST_STATE                  0x406B // Signed active Birch request; native route slot unused
 #define VAR_LEGENDS_FIELD_REQUEST_DONE                   0x406C // Stable completion bits; native route slot unused
 #define VAR_LEGENDS_FIELD_REQUEST_NOTES                  0x406D // Active habitat observation; native route slot unused
+#define VAR_LEGENDS_FIELD_REQUEST_DONE_HIGH             0x407A // v2 completion bits 16-31; legacy slot unused
 #define VAR_ROUTE115_STATE                               0x406E // Unused Var
 #define VAR_ROUTE116_STATE                               0x406F
 #define VAR_ROUTE117_STATE                               0x4070 // Unused Var

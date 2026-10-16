@@ -1,27 +1,67 @@
 @ Birch keeps native registration/gifts/story events ahead of optional work.
 @ All menus close the dialogue first, so seven request rows cannot overlap it.
 LegendsFieldRequests_Talk::
-	msgbox LegendsFieldRequests_Text_Greeting, MSGBOX_DEFAULT
+	special LegendsFieldRequestsBeginBirch
+	goto LegendsFieldRequests_Root
+
+LegendsDevonRequests_Talk::
+	special LegendsFieldRequestsBeginDevon
+
+LegendsFieldRequests_Root:
+	special LegendsFieldRequestsGreeting
+	msgbox gStringVar4, MSGBOX_DEFAULT
 	closemessage
+	special LegendsFieldRequestsGetPatron
+	goto_if_eq VAR_RESULT, FIELD_PATRON_DEVON, LegendsFieldRequests_DevonMain
 	multichoice 1, 1, MULTI_LEGENDS_BIRCH_MAIN, FALSE
 	switch VAR_RESULT
 	case 0, LegendsFieldRequests_Work
 	case 1, ProfBirch_EventScript_NativeAskRatePokedex
 	goto LegendsFieldRequests_Leave
 
+LegendsFieldRequests_DevonMain:
+	multichoice 1, 1, MULTI_LEGENDS_DEVON_MAIN, FALSE
+	switch VAR_RESULT
+	case 0, LegendsFieldRequests_Work
+	case 1, RustboroCity_DevonCorp_3F_EventScript_NativeBusiness
+	goto LegendsFieldRequests_Leave
+
 LegendsFieldRequests_Work:
 	special LegendsFieldRequestsGetActive
-	goto_if_ne VAR_RESULT, FIELD_REQUEST_NONE, LegendsFieldRequests_Review
+	goto_if_eq VAR_RESULT, FIELD_REQUEST_NONE, LegendsFieldRequests_Groups
+	special LegendsFieldRequestsCanReview
+	goto_if_eq VAR_RESULT, TRUE, LegendsFieldRequests_Review
+	msgbox LegendsFieldRequests_Text_OtherPatron, MSGBOX_DEFAULT
+	goto LegendsFieldRequests_Root
+
+LegendsFieldRequests_Groups:
+	closemessage
+	special LegendsFieldRequestsGetPatron
+	goto_if_eq VAR_RESULT, FIELD_PATRON_DEVON, LegendsFieldRequests_DevonGroups
+	multichoice 1, 1, MULTI_LEGENDS_BIRCH_GROUPS, FALSE
+	goto LegendsFieldRequests_GroupSelected
+
+LegendsFieldRequests_DevonGroups:
+	multichoice 1, 1, MULTI_LEGENDS_DEVON_GROUPS, FALSE
+
+LegendsFieldRequests_GroupSelected:
+	copyvar VAR_0x8004, VAR_RESULT
+	special LegendsFieldRequestsSelectGroup
+	goto_if_eq VAR_RESULT, FALSE, LegendsFieldRequests_Root
+
+LegendsFieldRequests_List:
 	special LegendsFieldRequestsPrepareMenu
 	closemessage
 	multichoice 1, 1, MULTI_LEGENDS_BIRCH_REQUESTS, FALSE
-	goto_if_ge VAR_RESULT, LEGENDS_FIELD_REQUEST_COUNT, LegendsFieldRequests_Talk
+	goto_if_ge VAR_RESULT, LEGENDS_REQUEST_PAGE_SIZE, LegendsFieldRequests_Groups
 	copyvar VAR_0x8004, VAR_RESULT
+	special LegendsFieldRequestsSelectRow
+	goto_if_eq VAR_RESULT, FALSE, LegendsFieldRequests_Groups
 	special LegendsFieldRequestsDescribe
 	goto_if_eq VAR_RESULT, TRUE, LegendsFieldRequests_AlreadyFinished
 	msgbox gStringVar4, MSGBOX_DEFAULT
 	msgbox LegendsFieldRequests_Text_Accept, MSGBOX_YESNO
-	goto_if_eq VAR_RESULT, NO, LegendsFieldRequests_Work
+	goto_if_eq VAR_RESULT, NO, LegendsFieldRequests_List
 	special LegendsFieldRequestsAcceptSpecial
 	goto_if_ne VAR_RESULT, FIELD_REQUEST_OK, LegendsFieldRequests_Work
 	msgbox LegendsFieldRequests_Text_Accepted, MSGBOX_DEFAULT
@@ -29,7 +69,7 @@ LegendsFieldRequests_Work:
 
 LegendsFieldRequests_AlreadyFinished:
 	msgbox gStringVar4, MSGBOX_DEFAULT
-	goto LegendsFieldRequests_Work
+	goto LegendsFieldRequests_List
 
 LegendsFieldRequests_Review:
 	special LegendsFieldRequestsReview
@@ -39,7 +79,7 @@ LegendsFieldRequests_Review:
 	switch VAR_RESULT
 	case 0, LegendsFieldRequests_Submit
 	case 1, LegendsFieldRequests_AskAbandon
-	goto LegendsFieldRequests_Talk
+	goto LegendsFieldRequests_Root
 
 LegendsFieldRequests_Submit:
 	special LegendsFieldRequestsSubmitSpecial
@@ -49,22 +89,22 @@ LegendsFieldRequests_Submit:
 	msgbox gStringVar4, MSGBOX_DEFAULT
 	msgbox LegendsFieldRequests_Text_Reward, MSGBOX_DEFAULT
 	msgbox LegendsFieldRequests_Text_Finished, MSGBOX_DEFAULT
-	goto LegendsFieldRequests_Talk
+	goto LegendsFieldRequests_Root
 
 LegendsFieldRequests_NotReady:
 	msgbox LegendsFieldRequests_Text_NotReady, MSGBOX_DEFAULT
-	goto LegendsFieldRequests_Talk
+	goto LegendsFieldRequests_Root
 
 LegendsFieldRequests_Full:
 	msgbox LegendsFieldRequests_Text_Full, MSGBOX_DEFAULT
-	goto LegendsFieldRequests_Talk
+	goto LegendsFieldRequests_Root
 
 LegendsFieldRequests_AskAbandon:
 	msgbox LegendsFieldRequests_Text_AskAbandon, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, NO, LegendsFieldRequests_Talk
 	special LegendsFieldRequestsAbandonSpecial
 	msgbox LegendsFieldRequests_Text_Abandoned, MSGBOX_DEFAULT
-	goto LegendsFieldRequests_Talk
+	goto LegendsFieldRequests_Root
 
 LegendsFieldRequests_Leave:
 	release
@@ -76,7 +116,9 @@ LegendsFieldRequests_Text_Invitation:
 	.string "If you'd like some other work,\n"
 	.string "come and check in with me!\p"
 	.string "You can choose a field request\n"
-	.string "and help with my research.$"
+	.string "and help with my research.\p"
+	.string "New studies open as you travel.\n"
+	.string "Choose what interests you!$"
 
 LegendsFieldRequests_Text_Greeting:
 	.string "BIRCH: Good to see you!\n"
@@ -90,19 +132,19 @@ LegendsFieldRequests_Text_Accept:
 	.string "or speak to me to abandon it.$"
 
 LegendsFieldRequests_Text_Accepted:
-	.string "BIRCH: Wonderful! I've added it to\n"
+	.string "{STR_VAR_2}: I've added it to\n"
 	.string "the SIDE page of your QUEST LOG.\p"
 	.string "Come back when you're ready.\n"
 	.string "There's no time limit!$"
 
 LegendsFieldRequests_Text_NotReady:
-	.string "BIRCH: We still need a little more\n"
+	.string "{STR_VAR_2}: We need a little more\n"
 	.string "information for this report.\p"
 	.string "Check the request in your QUEST LOG,\n"
 	.string "then come back when you're ready.$"
 
 LegendsFieldRequests_Text_Full:
-	.string "BIRCH: Your PC's ITEM STORAGE\n"
+	.string "{STR_VAR_2}: Your PC ITEM STORAGE\n"
 	.string "doesn't have room for the reward.\p"
 	.string "I'll hold the report for you.\n"
 	.string "No samples have been taken.$"
@@ -112,7 +154,7 @@ LegendsFieldRequests_Text_Reward:
 	.string "{STR_VAR_1}!$"
 
 LegendsFieldRequests_Text_Finished:
-	.string "BIRCH: That request is complete!\p"
+	.string "{STR_VAR_2}: Request complete!\p"
 	.string "You're welcome to choose another\n"
 	.string "whenever you're ready.$"
 
@@ -122,7 +164,49 @@ LegendsFieldRequests_Text_AskAbandon:
 	.string "No reward or samples will change.$"
 
 LegendsFieldRequests_Text_Abandoned:
-	.string "BIRCH: All right. I've put it back\n"
+	.string "{STR_VAR_2}: I've put it back\n"
 	.string "on the list for another time.\p"
 	.string "You can try it again later,\n"
 	.string "or choose something different.$"
+
+LegendsFieldRequests_Text_OtherPatron:
+	.string "You're already helping with another\n"
+	.string "BIRCH or DEVON research request.\p"
+	.string "Please finish it, or speak to its\n"
+	.string "researcher to abandon it first.$"
+
+LegendsFieldRequests_EarlyBirchExplain:
+	msgbox LegendsFieldRequests_Text_EarlyBirchExplain, MSGBOX_DEFAULT
+	return
+
+LegendsFieldRequests_Text_EarlyBirchOffer:
+	.string "BIRCH: You have a good eye for\n"
+	.string "POKéMON. I could use that help!\p"
+	.string "Would you like to hear about\n"
+	.string "my field research?$"
+
+LegendsFieldRequests_Text_EarlyBirchExplain:
+	.string "BIRCH: Once you have a POKéDEX,\n"
+	.string "check in with me for field requests.\p"
+	.string "There are things to learn beyond\n"
+	.string "the GYM challenge. No rush, though!\p"
+	.string "First, get to know your new partner.\n"
+	.string "We'll study more as you explore.$"
+
+LegendsFieldRequests_EarlyDevonExplain:
+	msgbox LegendsFieldRequests_Text_EarlyDevonExplain, MSGBOX_DEFAULT
+	return
+
+LegendsFieldRequests_Text_EarlyDevonOffer:
+	.string "MR. STONE: You know, reliable help\n"
+	.string "like yours is hard to find.\p"
+	.string "Would you like to hear about\n"
+	.string "DEVON's research contracts?$"
+
+LegendsFieldRequests_Text_EarlyDevonExplain:
+	.string "MR. STONE: Our engineers need\n"
+	.string "reports from traveling TRAINERS.\p"
+	.string "Speak to me for optional contracts.\n"
+	.string "New work opens as you travel.\p"
+	.string "Your LETTER and parcel come first.\n"
+	.string "The research can wait for you.$"

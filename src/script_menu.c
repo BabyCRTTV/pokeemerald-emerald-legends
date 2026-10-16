@@ -26,7 +26,7 @@
 #include "constants/songs.h"
 
 #include "data/script_menu.h"
-STATIC_ASSERT(ARRAY_COUNT(sLegendsBirchRequests) == LEGENDS_FIELD_REQUEST_COUNT + 1, BirchMenuMatchesCatalogue);
+STATIC_ASSERT(ARRAY_COUNT(sLegendsBirchRequests) == LEGENDS_REQUEST_PAGE_SIZE + 1, BirchMenuMatchesCatalogue);
 
 struct DynamicListMenuEventArgs
 {

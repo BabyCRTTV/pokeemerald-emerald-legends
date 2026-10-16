@@ -1159,6 +1159,23 @@ static const struct MenuAction sLegendsBirchActive[] = {
     {COMPOUND_STRING("BACK")},
 };
 
+static const struct MenuAction sLegendsBirchGroups[] = {
+    {COMPOUND_STRING("NEARBY REQUESTS")},
+    {COMPOUND_STRING("HOENN SURVEYS")},
+    {COMPOUND_STRING("ADVANCED STUDIES")},
+    {COMPOUND_STRING("BACK")},
+};
+static const struct MenuAction sLegendsDevonGroups[] = {
+    {COMPOUND_STRING("FIELD CONTRACTS")},
+    {COMPOUND_STRING("SPECIAL PROJECTS")},
+    {COMPOUND_STRING("BACK")},
+};
+static const struct MenuAction sLegendsDevonMain[] = {
+    {COMPOUND_STRING("RESEARCH CONTRACTS")},
+    {COMPOUND_STRING("DEVON BUSINESS")},
+    {COMPOUND_STRING("NOT NOW")},
+};
+
 static const struct MultichoiceListStruct sMultichoiceLists[] =
 {
     [MULTI_BRINEY_ON_DEWFORD]          = MULTICHOICE(MultichoiceList_BrineyOnDewford),
@@ -1296,6 +1313,9 @@ static const struct MultichoiceListStruct sMultichoiceLists[] =
     [MULTI_LEGENDS_CLOCK_MODE] = MULTICHOICE(sLegendsClockModes),
     [MULTI_LEGENDS_BIRCH_MAIN] = MULTICHOICE(sLegendsBirchMain),
     [MULTI_LEGENDS_BIRCH_REQUESTS] = MULTICHOICE(sLegendsBirchRequests),
+    [MULTI_LEGENDS_BIRCH_GROUPS] = MULTICHOICE(sLegendsBirchGroups),
+    [MULTI_LEGENDS_DEVON_GROUPS] = MULTICHOICE(sLegendsDevonGroups),
+    [MULTI_LEGENDS_DEVON_MAIN] = MULTICHOICE(sLegendsDevonMain),
     [MULTI_LEGENDS_BIRCH_ACTIVE] = MULTICHOICE(sLegendsBirchActive),
     [MULTI_GAME_CORNER_COIN_PURCHASE_COUNTER] = MULTICHOICE(sMultichoiceList_GameCornerCoinPurchaseCounter),
     [MULTI_LINKED_DIRECT_UNION]         = MULTICHOICE(sMultichoiceList_LinkedDirectUnion),

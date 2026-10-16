@@ -41,6 +41,32 @@ static const struct LegendsQuest sQuests[] =
     {COMPOUND_STRING("Coastal Wings"), 0, 1, 2, {{COMPOUND_STRING("Observe WINGULL on ROUTE 104"), 0}, {COMPOUND_STRING("Return your notes to BIRCH"), 0}}},
     {COMPOUND_STRING("Nature's Recovery"), 0, 1, 2, {{COMPOUND_STRING("Show BIRCH a draining move"), 0}, {COMPOUND_STRING("Return your notes to BIRCH"), 0}}},
     {COMPOUND_STRING("A Balanced Team"), 0, 1, 2, {{COMPOUND_STRING("Show BIRCH three different types"), 0}, {COMPOUND_STRING("Return your notes to BIRCH"), 0}}},
+    // IDs 39–62: appended Birch and Devon story-gated research.
+    {COMPOUND_STRING("Granite Cave Life"), 0, 1, 2, {{COMPOUND_STRING("Observe a ROCK-type in GRANITE"), 0}, {COMPOUND_STRING("Return your notes to BIRCH"), 0}}},
+    {COMPOUND_STRING("Tidal Pool Records"), 0, 1, 3, {{COMPOUND_STRING("Record TENTACOOL as caught"), 0}, {COMPOUND_STRING("Record MAGIKARP as caught"), 0}, {COMPOUND_STRING("Return your notes to BIRCH"), 0}}},
+    {COMPOUND_STRING("Meadow Sparks"), 0, 1, 2, {{COMPOUND_STRING("Observe ELECTRIC on ROUTE 110"), 0}, {COMPOUND_STRING("Return your notes to BIRCH"), 0}}},
+    {COMPOUND_STRING("Dryland Partners"), 0, 1, 2, {{COMPOUND_STRING("Observe GROUND on ROUTE 111"), 0}, {COMPOUND_STRING("Return your notes to BIRCH"), 0}}},
+    {COMPOUND_STRING("Riverbank Survey"), 0, 1, 2, {{COMPOUND_STRING("Observe GRASS on ROUTE 119"), 0}, {COMPOUND_STRING("Return your notes to BIRCH"), 0}}},
+    {COMPOUND_STRING("Weather Partners"), 0, 1, 2, {{COMPOUND_STRING("Observe CASTFORM on ROUTE 119"), 0}, {COMPOUND_STRING("Return your notes to BIRCH"), 0}}},
+    {COMPOUND_STRING("Canopy Travelers"), 0, 1, 2, {{COMPOUND_STRING("Observe FLYING on ROUTE 120"), 0}, {COMPOUND_STRING("Return your notes to BIRCH"), 0}}},
+    {COMPOUND_STRING("Quiet Mountain"), 0, 1, 2, {{COMPOUND_STRING("Observe GHOST on MT. PYRE"), 0}, {COMPOUND_STRING("Return your notes to BIRCH"), 0}}},
+    {COMPOUND_STRING("Offshore Partners"), 0, 1, 2, {{COMPOUND_STRING("Observe WATER on ROUTE 124"), 0}, {COMPOUND_STRING("Return your notes to BIRCH"), 0}}},
+    {COMPOUND_STRING("Shoal Cave Voices"), 0, 1, 2, {{COMPOUND_STRING("Observe ICE in SHOAL CAVE"), 0}, {COMPOUND_STRING("Return your notes to BIRCH"), 0}}},
+    {COMPOUND_STRING("Peaceful Waters"), 0, 1, 2, {{COMPOUND_STRING("Observe WATER in SOOTOPOLIS"), 0}, {COMPOUND_STRING("Return your notes to BIRCH"), 0}}},
+    {COMPOUND_STRING("Hoenn Field Atlas"), 0, 1, 2, {{COMPOUND_STRING("Record 60 HOENN species caught"), 0}, {COMPOUND_STRING("Return your notes to BIRCH"), 0}}},
+    {COMPOUND_STRING("Tunnel Acoustics"), 0, 1, 2, {{COMPOUND_STRING("Observe WHISMUR in the TUNNEL"), 0}, {COMPOUND_STRING("Return your notes to MR. STONE"), 0}}},
+    {COMPOUND_STRING("Steel Under Stone"), 0, 1, 2, {{COMPOUND_STRING("Observe STEEL in GRANITE CAVE"), 0}, {COMPOUND_STRING("Return your notes to MR. STONE"), 0}}},
+    {COMPOUND_STRING("Harbor Field Test"), 0, 1, 2, {{COMPOUND_STRING("Observe WATER on ROUTE 109"), 0}, {COMPOUND_STRING("Return your notes to MR. STONE"), 0}}},
+    {COMPOUND_STRING("Current Conductors"), 0, 1, 2, {{COMPOUND_STRING("Show MR. STONE THUNDER WAVE"), 0}, {COMPOUND_STRING("Return your notes to MR. STONE"), 0}}},
+    {COMPOUND_STRING("Heatproof Materials"), 0, 1, 2, {{COMPOUND_STRING("Observe FIRE in FIERY PATH"), 0}, {COMPOUND_STRING("Return your notes to MR. STONE"), 0}}},
+    {COMPOUND_STRING("Working Waterways"), 0, 1, 2, {{COMPOUND_STRING("Observe WATER on ROUTE 118"), 0}, {COMPOUND_STRING("Return your notes to MR. STONE"), 0}}},
+    {COMPOUND_STRING("Rain Instruments"), 0, 1, 2, {{COMPOUND_STRING("Observe CASTFORM on ROUTE 119"), 0}, {COMPOUND_STRING("Return your notes to MR. STONE"), 0}}},
+    {COMPOUND_STRING("Flight Recorder"), 0, 1, 2, {{COMPOUND_STRING("Show MR. STONE the move FLY"), 0}, {COMPOUND_STRING("Return your notes to MR. STONE"), 0}}},
+    {COMPOUND_STRING("Power Components"), 0, 1, 3, {{COMPOUND_STRING("Record MAGNEMITE as caught"), 0}, {COMPOUND_STRING("Record VOLTORB as caught"), 0}, {COMPOUND_STRING("Return your notes to MR. STONE"), 0}}},
+    {COMPOUND_STRING("Orbital Telemetry"), 0, 1, 2, {{COMPOUND_STRING("Observe PSYCHIC in MOSSDEEP"), 0}, {COMPOUND_STRING("Return your notes to MR. STONE"), 0}}},
+    {COMPOUND_STRING("Pressure Recorder"), 0, 1, 2, {{COMPOUND_STRING("Observe WATER under ROUTE 124"), 0}, {COMPOUND_STRING("Return your notes to MR. STONE"), 0}}},
+    {COMPOUND_STRING("Devon Master Project"), 0, 1, 2, {{COMPOUND_STRING("Show MR. STONE six types"), 0}, {COMPOUND_STRING("Return your notes to MR. STONE"), 0}}},
+
 };
 static const struct LegendsAchievement sAchievements[] =
 {

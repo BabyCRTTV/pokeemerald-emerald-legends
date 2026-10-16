@@ -58,6 +58,8 @@ RustboroCity_DevonCorp_3F_EventScript_MeetPresident::
 	msgbox RustboroCity_DevonCorp_3F_Text_MrStoneExplainPokenavRestUp, MSGBOX_DEFAULT
 	closemessage
 	call Common_EventScript_OutOfCenterPartyHeal
+	msgbox LegendsFieldRequests_Text_EarlyDevonOffer, MSGBOX_YESNO
+	call_if_eq VAR_RESULT, YES, LegendsFieldRequests_EarlyDevonExplain
 	msgbox RustboroCity_DevonCorp_3F_Text_MrStoneGoWithCautionAndCare, MSGBOX_DEFAULT
 	setflag FLAG_HIDE_ROUTE_116_WANDAS_BOYFRIEND
 	clearflag FLAG_HIDE_RUSTURF_TUNNEL_WANDAS_BOYFRIEND
@@ -149,6 +151,12 @@ RustboroCity_DevonCorp_3F_Movement_PlayerApproachDesk:
 RustboroCity_DevonCorp_3F_EventScript_MrStone::
 	lock
 	faceplayer
+	@ Pending native LUCKY EGG keeps priority over optional research.
+	goto_if_set FLAG_RECEIVED_EXP_SHARE, LegendsDevonRequests_Talk
+	goto_if_set FLAG_DELIVERED_STEVEN_LETTER, RustboroCity_DevonCorp_3F_EventScript_GiveLuckyEgg
+	goto LegendsDevonRequests_Talk
+
+RustboroCity_DevonCorp_3F_EventScript_NativeBusiness::
 	goto_if_set FLAG_RECEIVED_EXP_SHARE, RustboroCity_DevonCorp_3F_EventScript_MrStoneAfterFavor
 	goto_if_set FLAG_DELIVERED_STEVEN_LETTER, RustboroCity_DevonCorp_3F_EventScript_GiveLuckyEgg
 	msgbox RustboroCity_DevonCorp_3F_Text_CountingOnYou, MSGBOX_DEFAULT

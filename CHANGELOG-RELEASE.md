@@ -2,6 +2,15 @@
 
 This is the player-facing history for the recommended **Release** build. Shared Legends changes are repeated here so this file stands on its own; Release-only behavior is called out separately.
 
+## [0.0.59] - 2026-10-16
+
+- Added twelve story-gated Birch requests and twelve Devon research contracts, bringing the shared catalogue to thirty requests and the Quest Log to 63 entries.
+- Introduced optional research through dialogue branches at Birch's first calm lab meeting and Mr. Stone's first Devon meeting, preserving native deliveries, gifts and story priorities.
+- Unlocked new work through badges and major story events; showed requirements for locked requests and grouped the lists into six-request pages.
+- Kept one active request across both patrons, owner-only reporting/abandonment, later retries, preserved quest pins and atomic one-time PC rewards.
+- Awarded one Master Ball for Devon's final project after his other eleven contracts and Champion status. Preserved the native Master Ball and Lucky Egg gifts.
+- Added a signed upgrade from v0.0.58 progress to one additional unused completion word and a compact observation flag, preserving existing requests, journal layout, saves, artwork, wardrobe and seasons.
+
 ## [0.0.58] - 2026-10-16
 
 - Added six optional Birch field requests after the Pokédex handoff, with objectives, hints and one-time rewards.

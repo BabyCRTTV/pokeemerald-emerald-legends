@@ -1,4 +1,4 @@
-# Quest Log, achievements and expanded storage (v0.0.58)
+# Quest Log, achievements and expanded storage (v0.0.59)
 
 Press **Right or Left** in the pause menu to reach its second page. Choose **QUEST LOG** or **ACHIEVEMENTS**; the Adventure Log remains on the first page. Linked-room menus retain their native restrictions.
 
@@ -8,7 +8,7 @@ The owner-approved A layout keeps six entries visible. MAIN / SIDE / DONE quest 
 
 ## Quests
 
-There are 39 entries: 26 main quests, seven existing side quests and six selectable Birch field requests. Main quests cover Hoenn's introductory journey, all eight badges and major story errands, the Pokemon League, the nine current Wing Survey chapters and the Sleeping Continent intermission. Side quests cover the remaining visiting Leaders, a bicycle, Secret Power/base registration, the Scanner, ancient Regi doors, catching the three birds and catching Regigigas. The original entries document existing gameplay. Birch's optional requests add local research objectives after the Pokédex; see [the field request guide](birch-field-requests.md). Only the accepted request and completed requests appear in the journal; abandoned work becomes available again from Birch.
+There are 63 entries: 26 main quests, seven existing side quests and six selectable Birch field requests. Main quests cover Hoenn's introductory journey, all eight badges and major story errands, the Pokemon League, the nine current Wing Survey chapters and the Sleeping Continent intermission. Side quests cover the remaining visiting Leaders, a bicycle, Secret Power/base registration, the Scanner, ancient Regi doors, catching the three birds and catching Regigigas. The original entries document existing gameplay. Birch's optional requests add local research objectives after the Pokédex; see [the field request guide](birch-field-requests.md). Only the accepted request and completed requests appear in the journal; abandoned work becomes available again from Birch.
 
 - **Up/Down:** select an entry.
 - **A:** open its objectives.
@@ -61,3 +61,5 @@ EWRAM holds the expanded native box arrays. The general heap is 96 KiB; native C
 A on an unfinished visible quest's Details tracks or stops it. One saved choice is marked T in the list and TRACKED in Details. Both ordinary pause pages show the next objective in the native card above clock/weather, with a 16-pixel gap from the right menu. Long wrapped text pauses at each end, scrolls by single pixels and smoothly returns; the heading stays fixed and short text stays still. Competing screens remove the card; special counter/link layouts suppress it. Quest completion clears the choice.
 
 Selection reuses the existing version-1 journal reserved u16 at offset 10 with signature 0xA700 and low byte quest ID + 1 (zero means off). Invalid/unsigned legacy values read as off without writes; the layout, checksum, storage codec, readers and achievement bits stay unchanged. Quest indices 0–32 are persistent and future quests must append. [Design and native evidence](../qa/quest-tracking-preview.md) · [Overflow verification](../qa/quest-tracking-scroll.md).
+
+The thirty optional [research requests](research-requests.md) include eighteen Birch studies and twelve Devon contracts, with story gates, owner-only reports, one active request and repeatable selection after abandonment.
