@@ -22,6 +22,8 @@ Removed the repeated green hero title at the owner's request; the animated heade
 
 Removed the Release/Debug download-card description paragraphs at the owner's request. Kept the small Debug features note below its buttons and added 16-pixel spacing between each build title and its buttons. The counter, links and game release remained unchanged.
 
+Extended the existing Pikachu header animation to the shared Release/Debug browser patcher page, using the same contained sprite column and mobile title/version row spacing as Home and Changelog. Patcher logic, validation, download counting and both build variants remained unchanged.
+
 ## Current version — v0.0.57 (published and verified)
 
 The owner approved the native quest-tracking card and smooth scroll on 15 October: “Excellent, apply and publish if all is bug free.” Details A tracks/stops one visible unfinished quest; T/TRACKED identify it. Both ordinary pause pages show the next objective above clock/weather with a 16-pixel right-menu gap. Long text pauses at each end and smoothly returns to the top; the heading stays fixed, short text stays still and reopening resets the cycle. Preserve menu/popup/special-layout exclusions, the RAM-only scratch window and clipped 4bpp copies. The optional line cache uses the recoverable allocator and frees resources on close/failure.
