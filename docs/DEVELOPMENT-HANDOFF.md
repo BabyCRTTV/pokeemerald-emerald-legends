@@ -28,7 +28,7 @@ Extended the existing Pikachu header animation to the shared Release/Debug brows
 
 Moved Walkthrough into the Routes/Pokédex shortcut group as a full-width following row. It shares the same button height, padding, corner radius and 10-pixel group gap, while keeping its existing dark purple/white colors. Removed the chapter-count tagline and redundant standalone margins; the search field keeps its existing 20-pixel top gap. Walkthrough content, links, game version and approved artwork remained intact. Wiki check 38877182594 passed the five-width browser geometry/color checks; project check 38877182785 and Pages 38877182604 passed, and live HTML/JS/CSS matched the committed bytes.
 
-The automatic Windows build uploaded its installer but run 38877182595 failed to publish the version manifest because tracked build changes left the checkout dirty. Added Git's temporary autostash to the existing rebase step, keeping those ephemeral changes out of the manifest commit. Android run 38877182615 passed; its existing signing/publication rules were preserved.
+The automatic Windows build uploaded its installer but run 38877182595 failed to publish the version manifest because tracked build changes left the checkout dirty. Autostash also failed on the Windows checkout (38877648226), so publication now uses a single-file Contents API update with the current blob SHA and three bounded attempts. It publishes only the manifest, bypasses unrelated checkout changes, and retains existing token permissions. Android run 38877182615 passed; its existing signing/publication rules were preserved.
 
 ## Current version — v0.0.57 (published and verified)
 
