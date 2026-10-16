@@ -96,7 +96,9 @@ jobs:
           # npm version updates tracked package.json only for the ephemeral build.
           # Restore it before rebasing our manifest commit onto concurrent site updates.
           git restore windows/wiki/package.json
-          git pull --rebase origin master
+          # Keep ephemeral tracked build changes out of the manifest commit and
+          # temporarily stash them while rebasing onto concurrent site updates.
+          git pull --rebase --autostash origin master
           if ($LASTEXITCODE -ne 0) { throw 'Version manifest rebase failed' }
           git push
           if ($LASTEXITCODE -ne 0) { throw 'Version manifest publish failed' }
