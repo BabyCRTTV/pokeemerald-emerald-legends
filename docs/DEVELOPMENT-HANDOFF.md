@@ -10,6 +10,10 @@ The owner uses a phone. Provide narrow vertical PNG/GIF previews and explicit do
 
 On 14 October 2026 the owner reversed the earlier permission to ignore older saves. Backward compatibility for Legends battery saves is now required for future updates. Preserve existing save readers, field offsets and persistent IDs; add focused migrations/tests when saved data changes. [Save-compatibility policy and evidence](SAVE-COMPATIBILITY.md) defines the release gate without adding duplicate builds or per-patch full emulator runs. Existing checks pass; a complete historical-release save-fixture matrix remains unfinished and must not be represented as verified.
 
+## Website cleanup — 15 October 2026
+
+The owner requested removal of the homepage's DEV STATUS display, numbered 01/02/03 cards (Emerald first / Quality of life / Built in public), and Current targets block. Removed those blocks and expanded the remaining hero to one column. Kept the v0.0.57 downloads, browser patcher, navigation and footer. This is a website-only cleanup; the ROM version, builds and patches remain v0.0.57. The broader site redesign remains deferred.
+
 ## Current version — v0.0.57 (published and verified)
 
 The owner approved the native quest-tracking card and smooth scroll on 15 October: “Excellent, apply and publish if all is bug free.” Details A tracks/stops one visible unfinished quest; T/TRACKED identify it. Both ordinary pause pages show the next objective above clock/weather with a 16-pixel right-menu gap. Long text pauses at each end and smoothly returns to the top; the heading stays fixed, short text stays still and reopening resets the cycle. Preserve menu/popup/special-layout exclusions, the RAM-only scratch window and clipped 4bpp copies. The optional line cache uses the recoverable allocator and frees resources on close/failure.
