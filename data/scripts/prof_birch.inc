@@ -39,6 +39,9 @@ ProfBirch_EventScript_RatePokedexOrRegister::
 	goto_if_unset FLAG_ENABLE_PROF_BIRCH_MATCH_CALL, EventScript_RegisterProfBirch
 
 ProfBirch_EventScript_AskRatePokedex::
+	goto_if_set FLAG_SYS_POKEDEX_GET, LegendsFieldRequests_Talk
+
+ProfBirch_EventScript_NativeAskRatePokedex::
 	msgbox gBirchDexRatingText_AreYouCurious, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, NO, ProfBirch_EventScript_DeclineRating
 	call ProfBirch_EventScript_RatePokedex

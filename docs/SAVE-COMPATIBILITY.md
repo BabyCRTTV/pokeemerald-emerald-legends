@@ -21,6 +21,10 @@ The existing legacy decoder is in `src/legends_storage.c`; sector validation and
 
 A complete set of authentic saves from every historical release has not been replayed against v0.0.48. The policy is a release requirement, not a claim that this missing historical matrix is already verified. Retain existing evidence and extend a small reproducible fixture set when save-affecting work is undertaken.
 
+## Birch request preview — v0.0.58
+
+The six new requests reuse verified-unused native vars 0x406B–0x406D. A signed, bounded active word guards completion and habitat-note bits; invalid legacy values read as no request without writes and initialize only when accepting work. Quest IDs 33–38 are appended, while original quests, achievements, journal size/offsets, save sectors and packed-storage readers remain unchanged. The state words currently support sixteen requests; future expansion beyond that needs explicit additional-word initialization. Host tests covered every possible active-word value, legacy snapshots, one-active/abandon/retry, pin retention and atomic sample/reward behavior. Controlled native Debug flash/load and normal unmodified Release Continue with legacy/active/completed fixtures passed. [Detailed evidence and limits](qa/birch-v0.0.58.md) records the assertions; the authentic historical-release fixture matrix and Pizza Boy testing remain unfinished.
+
 ## Review every update
 
 State the save impact in the PR/handoff, including “none” when appropriate. Check for changes to:

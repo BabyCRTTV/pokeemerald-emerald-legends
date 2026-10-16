@@ -429,11 +429,13 @@ LittlerootTown_ProfessorBirchsLab_EventScript_BirchGivePendingChampionReward::
 
 LittlerootTown_ProfessorBirchsLab_EventScript_CanHaveAnyOneOfRarePokemon::
 	msgbox LittlerootTown_ProfessorBirchsLab_Text_CanHaveAnyOneOfRarePokemon, MSGBOX_DEFAULT
+	goto LegendsFieldRequests_Talk
 	release
 	end
 
 LittlerootTown_ProfessorBirchsLab_EventScript_GrassyPatchWaiting::
 	msgbox LittlerootTown_ProfessorBirchsLab_Text_GrassyPatchWaiting2, MSGBOX_DEFAULT
+	goto LegendsFieldRequests_Talk
 	release
 	end
 
@@ -443,6 +445,7 @@ LittlerootTown_ProfessorBirchsLab_EventScript_TryRatePokedexOrRegister::
 	goto_if_ge VAR_DEX_UPGRADE_JOHTO_STARTER_STATE, 6, ProfBirch_EventScript_RatePokedexOrRegister
 	goto_if_eq VAR_BIRCH_LAB_STATE, 5, LittlerootTown_ProfessorBirchsLab_EventScript_PokemonAwait
 	msgbox LittlerootTown_ProfessorBirchsLab_Text_BirchRivalGoneHome, MSGBOX_DEFAULT
+	goto_if_set FLAG_SYS_POKEDEX_GET, LegendsFieldRequests_Talk
 	release
 	end
 
@@ -464,6 +467,7 @@ LittlerootTown_ProfessorBirchsLab_EventScript_GivePokedex::
 	msgbox LittlerootTown_ProfessorBirchsLab_Text_HeardYouBeatRivalTakePokedex, MSGBOX_DEFAULT
 	call LittlerootTown_ProfessorBirchsLab_EventScript_ReceivePokedex
 	msgbox LittlerootTown_ProfessorBirchsLab_Text_ExplainPokedex, MSGBOX_DEFAULT
+	msgbox LegendsFieldRequests_Text_Invitation, MSGBOX_DEFAULT
 	closemessage
 	applymovement LOCALID_BIRCHS_LAB_RIVAL, LittlerootTown_ProfessorBirchsLab_Movement_RivalApproachPlayer
 	waitmovement 0
@@ -512,6 +516,7 @@ LittlerootTown_ProfessorBirchsLab_EventScript_ReceivePokedex::
 
 LittlerootTown_ProfessorBirchsLab_EventScript_PokemonAwait::
 	msgbox LittlerootTown_ProfessorBirchsLab_Text_CountlessPokemonAwait, MSGBOX_DEFAULT
+	goto_if_set FLAG_SYS_POKEDEX_GET, LegendsFieldRequests_Talk
 	release
 	end
 

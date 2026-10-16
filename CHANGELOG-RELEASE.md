@@ -2,6 +2,14 @@
 
 This is the player-facing history for the recommended **Release** build. Shared Legends changes are repeated here so this file stands on its own; Release-only behavior is called out separately.
 
+## [0.0.58] - 2026-10-16
+
+- Added six optional Birch field requests after the Pokédex handoff, with objectives, hints and one-time rewards.
+- Added request selection, one active request at a time, progress review and confirmed abandonment that left unfinished requests available to try again.
+- Appended six stable Side Quest entries and connected their objectives to the existing tracked-quest reminder. Preserved previously pinned quests.
+- Sent rewards to PC Item Storage; full storage preserved pending reports and berry samples. Kept every research Pokémon and consumed three Oran Berries only on successful sample delivery.
+- Preserved existing journal/save layouts, artwork, wardrobe, seasons and Birch's native story/gift/rating paths. Shared the feature between Release and Debug.
+
 ## [0.0.57] - 2026-10-15
 
 - Added one saved tracked quest, selected or stopped with A on its Details page, with a T list marker and TRACKED label.

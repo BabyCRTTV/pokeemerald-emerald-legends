@@ -34,6 +34,13 @@ static const struct LegendsQuest sQuests[] =
     {COMPOUND_STRING("The Ancient Doors"), FLAG_BADGE08_GET, 1, 1, {{COMPOUND_STRING("Unseal the three REGI doors"), FLAG_REGI_DOORS_OPENED}}},
     {COMPOUND_STRING("Birds of a Feather"), FLAG_LEGENDS_KANTO_SURVEY_STARTED, 1, 3, {{COMPOUND_STRING("Catch ZAPDOS"), FLAG_LEGENDS_KANTO_ZAPDOS_CAUGHT}, {COMPOUND_STRING("Catch ARTICUNO"), FLAG_LEGENDS_STORY_ARTICUNO_CAUGHT}, {COMPOUND_STRING("Catch MOLTRES"), FLAG_LEGENDS_STORY_MOLTRES_CAUGHT}}},
     {COMPOUND_STRING("The Sleeping Titan"), FLAG_LEGENDS_STORY_REGIGIGAS_CALMED, 1, 1, {{COMPOUND_STRING("Catch REGIGIGAS in the vault"), FLAG_LEGENDS_STORY_REGIGIGAS_CAUGHT}}},
+    // IDs 33–38: Birch requests. Dynamic proof/completion uses the signed native vars.
+    {COMPOUND_STRING("Grassland Neighbors"), 0, 1, 3, {{COMPOUND_STRING("Record POOCHYENA as caught"), 0}, {COMPOUND_STRING("Record ZIGZAGOON as caught"), 0}, {COMPOUND_STRING("Return your notes to BIRCH"), 0}}},
+    {COMPOUND_STRING("Beneath the Canopy"), 0, 1, 2, {{COMPOUND_STRING("Observe a BUG-type in the WOODS"), 0}, {COMPOUND_STRING("Return your notes to BIRCH"), 0}}},
+    {COMPOUND_STRING("Berry Samples"), 0, 1, 2, {{COMPOUND_STRING("Bring 3 ORAN BERRIES to BIRCH"), 0}, {COMPOUND_STRING("Give BIRCH the samples"), 0}}},
+    {COMPOUND_STRING("Coastal Wings"), 0, 1, 2, {{COMPOUND_STRING("Observe WINGULL on ROUTE 104"), 0}, {COMPOUND_STRING("Return your notes to BIRCH"), 0}}},
+    {COMPOUND_STRING("Nature's Recovery"), 0, 1, 2, {{COMPOUND_STRING("Show BIRCH a draining move"), 0}, {COMPOUND_STRING("Return your notes to BIRCH"), 0}}},
+    {COMPOUND_STRING("A Balanced Team"), 0, 1, 2, {{COMPOUND_STRING("Show BIRCH three different types"), 0}, {COMPOUND_STRING("Return your notes to BIRCH"), 0}}},
 };
 static const struct LegendsAchievement sAchievements[] =
 {

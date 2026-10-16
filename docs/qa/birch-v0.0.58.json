@@ -1,0 +1,125 @@
+{
+  "version": "0.0.58",
+  "approval": "Preview requested; owner approval required before master merge, Pages or patches publication.",
+  "base_commit": "9af3087528bc06bd754587b83dc2d291f1362fd9",
+  "project_checks": {
+    "passed": 50,
+    "workflow": ".github/workflows/legends-checks.yml",
+    "log_sha256": "1af56a1651a3d408d4454ab5ff5e845ede8c7d436f8e678837994131687d22e0"
+  },
+  "native_debug": {
+    "version": "0.0.58",
+    "passed": true,
+    "emulator": "mGBA 0.10.2",
+    "variant": "Debug",
+    "ROM_sha256": "b118ad89fc47bf06cb90e126ac2a06530f9bf6728b850252c436acca54f1e5fd",
+    "scope": "Controlled format-identical pre-feature fixture with arbitrary legacy request vars, existing native journal/save layout and non-default wardrobe/bedroom/Winter. Real native dialogue/menu input selects, accepts, cancels/confirms abandonment, retries, handles full PC storage and one-time berry delivery. Actual flash save/clear/load covers pending and completed requests and habitat notes. Normal habitat arrivals and the actual Pokedex handoff run with collision enabled. Not an authentic historical save, uninterrupted story or Pizza Boy test. Private ROMs/saves excluded.",
+    "log": "capture birch-main-menu active=65535 menu=1 yesno=0\ncapture six-requests active=65535 menu=2 yesno=0\ncapture accept-berry-request active=65535 menu=0 yesno=1\ncapture accepted-berry-request active=2 menu=0 yesno=0\ncapture tracked-pause active=2 menu=0 yesno=0\ncapture side-request-details active=2 menu=0 yesno=0\ncapture active-request-menu active=2 menu=3 yesno=0\ncapture abandon-confirmation active=2 menu=0 yesno=1\ncapture available-after-abandon active=65535 menu=2 yesno=0\ncapture full-storage-retry active=2 menu=1 yesno=0\ncapture completed-request-marker active=65535 menu=2 yesno=0\nSelection, confirmed/cancelled abandonment, retry, full-PC atomic samples, one-time reward and real flash persistence passed.\ncapture pokedex-invitation-00 active=65535 menu=0 yesno=0\ncapture pokedex-invitation-01 active=65535 menu=0 yesno=0\ncapture pokedex-invitation-02 active=65535 menu=0 yesno=0\ncapture pokedex-invitation-03 active=65535 menu=0 yesno=0\ncapture pokedex-invitation-04 active=65535 menu=0 yesno=0\ncapture pokedex-invitation-05 active=65535 menu=0 yesno=0\ncapture pokedex-invitation-06 active=65535 menu=0 yesno=0\ncapture pokedex-invitation-07 active=65535 menu=0 yesno=0\ncapture pokedex-invitation-08 active=65535 menu=0 yesno=0\ncapture pokedex-invitation-09 active=65535 menu=0 yesno=0\ncapture pokedex-invitation-10 active=65535 menu=0 yesno=0\ncapture pokedex-invitation-11 active=65535 menu=0 yesno=0\ncapture pokedex-invitation-12 active=65535 menu=0 yesno=0\ncapture pokedex-invitation-13 active=65535 menu=0 yesno=0\ncapture pokedex-invitation-14 active=65535 menu=0 yesno=0\ncapture pokedex-invitation-15 active=65535 menu=0 yesno=0\ncapture pokedex-invitation-16 active=65535 menu=0 yesno=0\ncapture pokedex-invitation-17 active=65535 menu=0 yesno=0\ncapture pokedex-invitation-18 active=65535 menu=0 yesno=0\ncapture pokedex-invitation-19 active=65535 menu=0 yesno=0\ncapture pokedex-invitation-20 active=65535 menu=0 yesno=0\ncapture pokedex-invitation-21 active=65535 menu=0 yesno=0\ncapture pokedex-invitation-22 active=65535 menu=0 yesno=0\ncapture pokedex-invitation-23 active=65535 menu=0 yesno=0\ncapture pokedex-invitation-24 active=65535 menu=0 yesno=0\ncapture pokedex-invitation-25 active=65535 menu=0 yesno=0\ncapture pokedex-invitation-26 active=65535 menu=0 yesno=0\nNative Pok\u00e9dex invitation, rival gift continuation, habitat arrivals and saved observations passed.\n",
+    "harness_sha256": {
+      "arm.c": "cceab4a5608f77c774ab801d64e995ee173689874bd0e3764a0c4f419345855c",
+      "host.c": "afd88fdc314f6252e7fc9cd543c949ece6f0382ebc855bca144bd163763f3ba5",
+      "run.py": "a709a52239162d618b806b8d3457365be0c548dbe133877edd50e88d7a4d6a8c"
+    }
+  },
+  "native_release": {
+    "legacy": {
+      "passed": true,
+      "variant": "Release",
+      "emulator": "mGBA 0.10.2",
+      "ROM_sha256": "f135b2274f84b20e213815bd843e857fbde732d313087c7cbf14921939622fbc",
+      "ROM_unmodified": true,
+      "battery_fixture_sha256": "e49e18a54b33ceef04c012fcaadeb86cae41dfb0c8f9a81ca58d5cd95a74d7d3",
+      "reminder_pixels_equal_to_Debug": false,
+      "captures": {
+        "release-continued.png": "7da1ffef8d7223935e649c7284ab20ffa544c4400594b1a2b49925eacd1bbb4e"
+      },
+      "log": "release-continued card=0\nContinued request state=ffff done=ffff notes=ffff\n",
+      "scope": "Unmodified Release ROM loaded the private Debug-produced controlled battery fixture via normal title/Continue input. Verified persisted request words. The active-fixture run also exercised native pause pages, tracked SIDE Details and stop-tracking. Host did not write RAM or callbacks. Not a historical-release save or broader playthrough. Private fixture excluded.",
+      "harness_sha256": {
+        "release.c": "4a0afacd29c3e9dba2ccba24a2ed898f2b49ddc1f1cdb7e3359be8c37fe69156",
+        "release.py": "a630101ac519968d380297f3962d68460b587d43f1fd938c7ec06590fb8c3b7f"
+      }
+    },
+    "active": {
+      "passed": true,
+      "variant": "Release",
+      "emulator": "mGBA 0.10.2",
+      "ROM_sha256": "f135b2274f84b20e213815bd843e857fbde732d313087c7cbf14921939622fbc",
+      "ROM_unmodified": true,
+      "battery_fixture_sha256": "8eb7d4fa5f57ea0783b3ad0cd1e0fcf152868420f23acf91ed7f647795de139b",
+      "reminder_pixels_equal_to_Debug": true,
+      "captures": {
+        "release-continued.png": "65337551d0f3a27e186f2ace1b503e1caffbcdd0967ab9dc97e004030e17edae",
+        "release-detail-tracked.png": "5cfdd79af63d2540014dbce50c1673a6dd59179ce02b81dc8e9ff3625d34e334",
+        "release-journal-page.png": "1e8d75fc7f6492f9d8356b4115d7a83fc6143a554edcd4ef8de8b3140d3f028e",
+        "release-pause-tracked.png": "f023589a6a88b7016f76add7cdb47a24790dbaeca1d7832db3ed886377f8267d",
+        "release-stopped.png": "21ab34911046dcdeab269f0ab9c8cc954f40770acb463cad511bfe993e90005a"
+      },
+      "log": "release-continued card=0\nContinued request state=b703 done=0000 notes=0000\nrelease-pause-tracked card=4\nrelease-journal-page card=4\nrelease-detail-tracked card=0\nrelease-stopped card=0\nNormal Release Continue loaded the battery fixture; native pause/journal/Details and stop tracking passed.\n",
+      "scope": "Unmodified Release ROM loaded the private Debug-produced controlled battery fixture via normal title/Continue input. Verified persisted request words. The active-fixture run also exercised native pause pages, tracked SIDE Details and stop-tracking. Host did not write RAM or callbacks. Not a historical-release save or broader playthrough. Private fixture excluded.",
+      "harness_sha256": {
+        "release.c": "4a0afacd29c3e9dba2ccba24a2ed898f2b49ddc1f1cdb7e3359be8c37fe69156",
+        "release.py": "a630101ac519968d380297f3962d68460b587d43f1fd938c7ec06590fb8c3b7f"
+      }
+    },
+    "completed": {
+      "passed": true,
+      "variant": "Release",
+      "emulator": "mGBA 0.10.2",
+      "ROM_sha256": "f135b2274f84b20e213815bd843e857fbde732d313087c7cbf14921939622fbc",
+      "ROM_unmodified": true,
+      "battery_fixture_sha256": "e1db70b73056765a1abd40dfc502813e089986b79d6df400eb1c84609820a8b9",
+      "reminder_pixels_equal_to_Debug": false,
+      "captures": {
+        "release-continued.png": "65337551d0f3a27e186f2ace1b503e1caffbcdd0967ab9dc97e004030e17edae"
+      },
+      "log": "release-continued card=0\nContinued request state=b700 done=0004 notes=0000\n",
+      "scope": "Unmodified Release ROM loaded the private Debug-produced controlled battery fixture via normal title/Continue input. Verified persisted request words. The active-fixture run also exercised native pause pages, tracked SIDE Details and stop-tracking. Host did not write RAM or callbacks. Not a historical-release save or broader playthrough. Private fixture excluded.",
+      "harness_sha256": {
+        "release.c": "4a0afacd29c3e9dba2ccba24a2ed898f2b49ddc1f1cdb7e3359be8c37fe69156",
+        "release.py": "a630101ac519968d380297f3962d68460b587d43f1fd938c7ec06590fb8c3b7f"
+      }
+    }
+  },
+  "patches": {
+    "debug": {
+      "ROM_sha256": "b118ad89fc47bf06cb90e126ac2a06530f9bf6728b850252c436acca54f1e5fd",
+      "patch_sha256": "a51b7d7758fe34c2372635d6522da847069fc2a8c8f20384bf9305c00a1ccda3",
+      "patch_bytes": 17277926,
+      "Floating_IPS_verified": true,
+      "browser_decoder_verified": true
+    },
+    "release": {
+      "ROM_sha256": "f135b2274f84b20e213815bd843e857fbde732d313087c7cbf14921939622fbc",
+      "patch_sha256": "363207dacb46c7d35714ef96ed07574ddffab5b3e184399e2da740c13129f471",
+      "patch_bytes": 17445957,
+      "Floating_IPS_verified": true,
+      "browser_decoder_verified": true
+    },
+    "base_sha1": "f3ae088181bf583e55daf962a92bb46f4f1d07b7",
+    "publication": "Private verification only; no patch added to public downloads."
+  },
+  "captures": {
+    "birch-v0.0.58-preview.png": "efbb8b4773313a1a50d8f95eb5488af4a2f935dabcacf2f2f22c00ba8f6743f9",
+    "birch-v0.0.58-preview.gif": "aeb0c44b5487cd98c7042343fb63e312db515351d8ea591691f7482a66d4afc0"
+  },
+  "builds": {
+    "Debug": {
+      "passed": true,
+      "EWRAM_bytes": 254808,
+      "IWRAM_bytes": 28376,
+      "ROM_used_bytes": 30711668
+    },
+    "Release": {
+      "passed": true,
+      "EWRAM_bytes": 254814,
+      "IWRAM_bytes": 28332,
+      "ROM_used_bytes": 30864820
+    }
+  },
+  "limits": [
+    "Controlled synthetic format-identical saves, not an authentic historical-save matrix.",
+    "No uninterrupted six-request playthrough or Pizza Boy test.",
+    "Remote CI and production patch publication remain pending approval."
+  ]
+}

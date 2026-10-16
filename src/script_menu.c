@@ -1,4 +1,5 @@
 #include "global.h"
+#include "legends_field_requests.h"
 #include "main.h"
 #include "event_data.h"
 #include "field_effect.h"
@@ -25,6 +26,7 @@
 #include "constants/songs.h"
 
 #include "data/script_menu.h"
+STATIC_ASSERT(ARRAY_COUNT(sLegendsBirchRequests) == LEGENDS_FIELD_REQUEST_COUNT + 1, BirchMenuMatchesCatalogue);
 
 struct DynamicListMenuEventArgs
 {

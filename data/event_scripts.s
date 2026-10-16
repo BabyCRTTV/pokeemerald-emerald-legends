@@ -2,6 +2,7 @@
 #include "config/battle.h"
 #include "config/item.h"
 #include "constants/global.h"
+#include "constants/legends_field_requests.h"
 #include "constants/apprentice.h"
 #include "constants/apricorn_tree.h"
 #include "constants/battle.h"
@@ -1870,3 +1871,4 @@ EventScript_PalletTown_PlayersHouse_2F_TurnOnPC::
 	.include "data/scripts/legends_bedroom.inc"
 
 	.include "data/scripts/legends_homecoming.inc"
+	.include "data/scripts/legends_field_requests.inc"
