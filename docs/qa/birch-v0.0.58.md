@@ -1,6 +1,6 @@
 # Birch field requests — v0.0.58 preview QA
 
-**Approval:** implementation complete for review; do not merge master, deploy Pages or publish patches before owner preview approval. Production remains v0.0.57 at `9af3087528bc06bd754587b83dc2d291f1362fd9`.
+**Approved and published:** owner approved the actual-game preview on 16 October 2026. PR #73 merged as `7ef54bb9474140b8d66c2aff57e1b8923453a779`; production v0.0.58 checks, both builds/patches and live Pages/downloads were verified. [Public evidence](birch-v0.0.58-public.json).
 
 [Preview PNG](birch-v0.0.58-preview.png) · [Animated actual-game capture](birch-v0.0.58-preview.gif) · [Machine receipts](birch-v0.0.58.json) · [Feature design and request table](../features/birch-field-requests.md)
 
@@ -20,6 +20,6 @@
 
 ## Limits and next steps
 
-These are controlled format-identical save fixtures, not authentic historical user saves. An uninterrupted six-request playthrough, wider authentic-save matrix and Pizza Boy testing remain outstanding. Local verification does not imply remote CI passed.
+These are controlled format-identical save fixtures, not authentic historical user saves. An uninterrupted six-request playthrough, wider authentic-save matrix and Pizza Boy testing remain outstanding. The subsequent PR/production CI and public patch verification passed; see the linked publication receipt.
 
-After owner approval: inspect live master for changes, commit any requested revisions, open/merge the feature PR after checks and both native/BPS CI passes, then verify published Release/Debug patches, Pages bytes and downloads. Keep appended request/journal IDs stable. The existing signed words have room for 16 requests; expansion beyond that requires a tested additional-word migration.
+Owner approval, merge, PR/production checks and public Release/Debug patch/Pages verification are complete. Keep appended request/journal IDs stable. The existing signed words have room for 16 requests; expansion beyond that requires a tested additional-word migration.

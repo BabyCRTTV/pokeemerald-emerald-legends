@@ -1,0 +1,129 @@
+{
+  "verified_utc": "2026-10-16T17:42:37.992462+00:00",
+  "version": "0.0.58",
+  "manifest": {
+    "url": "https://babycrttv.github.io/pokeemerald-emerald-legends/downloads/SHA256SUMS.txt",
+    "HTTP": 200,
+    "bytes": 412,
+    "sha256": "980a9553e1aed279d10a49861328114cd1a76a16d82bde9a7a98270dae140b74",
+    "etag": "\"6ad26200-19c\""
+  },
+  "base_sha1": "f3ae088181bf583e55daf962a92bb46f4f1d07b7",
+  "patches": {
+    "Release": {
+      "url": "https://babycrttv.github.io/pokeemerald-emerald-legends/downloads/Pokemon-Emerald-Legends-v0.0.58.bps",
+      "HTTP": 200,
+      "bytes": 17445957,
+      "sha256": "363207dacb46c7d35714ef96ed07574ddffab5b3e184399e2da740c13129f471",
+      "etag": "\"6ad26200-10a3445\"",
+      "published_manifest_matches": true,
+      "Floating_IPS_verified": true,
+      "browser_decoder_verified": true,
+      "ROM_sha256": "f135b2274f84b20e213815bd843e857fbde732d313087c7cbf14921939622fbc",
+      "matches_native_preview_ROM": true
+    },
+    "Debug": {
+      "url": "https://babycrttv.github.io/pokeemerald-emerald-legends/downloads/Pokemon-Emerald-Legends-v0.0.58-debug.bps",
+      "HTTP": 200,
+      "bytes": 17277926,
+      "sha256": "a51b7d7758fe34c2372635d6522da847069fc2a8c8f20384bf9305c00a1ccda3",
+      "etag": "\"6ad26200-107a3e6\"",
+      "published_manifest_matches": true,
+      "Floating_IPS_verified": true,
+      "browser_decoder_verified": true,
+      "ROM_sha256": "b118ad89fc47bf06cb90e126ac2a06530f9bf6728b850252c436acca54f1e5fd",
+      "matches_native_preview_ROM": true
+    }
+  },
+  "site": {
+    "index.html": {
+      "url": "https://babycrttv.github.io/pokeemerald-emerald-legends/index.html",
+      "HTTP": 200,
+      "bytes": 3538,
+      "sha256": "808df56971a74023082d9c5d3ba77fa66448b4ef0c5b1ff0573f85130fe8dcb7",
+      "etag": "\"6ad26200-dd2\"",
+      "matches_committed_bytes": true
+    },
+    "changelog.html": {
+      "url": "https://babycrttv.github.io/pokeemerald-emerald-legends/changelog.html",
+      "HTTP": 200,
+      "bytes": 102697,
+      "sha256": "349c836c6ff3468cf14406387717ae75792c12f17f8d399a33aa034fb30c29de",
+      "etag": "\"6ad26200-19129\"",
+      "matches_committed_bytes": true
+    },
+    "patcher.html": {
+      "url": "https://babycrttv.github.io/pokeemerald-emerald-legends/patcher.html",
+      "HTTP": 200,
+      "bytes": 2679,
+      "sha256": "e13c2611716c0fb0ceadbd86cd076bfd95dff8844574a7de24bd89fdfc8b784d",
+      "etag": "\"6ad26200-a77\"",
+      "matches_committed_bytes": true
+    },
+    "patcher.js": {
+      "url": "https://babycrttv.github.io/pokeemerald-emerald-legends/patcher.js",
+      "HTTP": 200,
+      "bytes": 9353,
+      "sha256": "739dc9e13149338db0b9f0db31b98c86c518ed72214046572af5ca2a942410c8",
+      "etag": "\"6ad26200-2489\"",
+      "matches_committed_bytes": true
+    },
+    "journal-guide.html": {
+      "url": "https://babycrttv.github.io/pokeemerald-emerald-legends/journal-guide.html",
+      "HTTP": 200,
+      "bytes": 4536,
+      "sha256": "1405aae7d021ea2d8df298209d6ee3709716b394cc4a4df918b3ec422d1939b3",
+      "etag": "\"6ad26200-11b8\"",
+      "matches_committed_bytes": true
+    },
+    "features/birch-field-requests.md": {
+      "url": "https://babycrttv.github.io/pokeemerald-emerald-legends/features/birch-field-requests.md",
+      "HTTP": 200,
+      "bytes": 3258,
+      "sha256": "c50b493ac9b9327ec921af7dc10e65ca6aa70f7fe7cffe805206113e118be9b9",
+      "etag": "\"6ad26200-cba\"",
+      "matches_committed_bytes": true
+    },
+    "qa/birch-v0.0.58-preview.png": {
+      "url": "https://babycrttv.github.io/pokeemerald-emerald-legends/qa/birch-v0.0.58-preview.png",
+      "HTTP": 200,
+      "bytes": 50523,
+      "sha256": "efbb8b4773313a1a50d8f95eb5488af4a2f935dabcacf2f2f22c00ba8f6743f9",
+      "etag": "\"6ad26200-c55b\"",
+      "matches_committed_bytes": true
+    },
+    "qa/birch-v0.0.58-preview.gif": {
+      "url": "https://babycrttv.github.io/pokeemerald-emerald-legends/qa/birch-v0.0.58-preview.gif",
+      "HTTP": 200,
+      "bytes": 120229,
+      "sha256": "aeb0c44b5487cd98c7042343fb63e312db515351d8ea591691f7482a66d4afc0",
+      "etag": "\"6ad26200-1d5a5\"",
+      "matches_committed_bytes": true
+    }
+  },
+  "pipeline": {
+    "pull_request": 73,
+    "preview_commit": "63cfd7394cf266bd46f651904006bae400e202f5",
+    "merge_commit": "7ef54bb9474140b8d66c2aff57e1b8923453a779",
+    "PR_checks_run": 38918980235,
+    "PR_patch_build_run": 38918980185,
+    "production_checks_run": 38940402547,
+    "production_patch_build_run": 38940402595,
+    "merge_pages_run": 38940405017,
+    "patch_commit": "d51e68e2e4a7b26a954f56332ad6579febcf742c",
+    "patch_pages_run": 38941677222,
+    "all_required_runs": "completed/success",
+    "checksum_manifest_matches_GitHub_patch_commit": true
+  },
+  "approval": {
+    "date": "2026-10-16",
+    "quote": "This is great! Please implement it and apply.",
+    "preview_commit": "63cfd7394cf266bd46f651904006bae400e202f5"
+  },
+  "AGENTS_reviewed": true,
+  "policy_changes_required": false,
+  "remaining_limits": [
+    "Authentic historical-save fixture matrix remains unfinished.",
+    "Pizza Boy and an uninterrupted six-request playthrough remain outside verified coverage."
+  ]
+}

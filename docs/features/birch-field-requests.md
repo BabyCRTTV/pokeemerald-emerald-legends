@@ -1,6 +1,6 @@
 # Birch's field requests (v0.0.58)
 
-Preview implementation; publication awaits the owner's in-game visual approval.
+Published in v0.0.58 after owner approval on 16 October 2026. [Publication verification](../qa/birch-v0.0.58-public.json).
 
 After giving the National Pokédex, Birch invites the player to check in for work beyond the Gym challenge. Talk to him at his lab or during his native field visits and choose **Field Requests**. Native registration, gifts and story events retain priority. Pokédex rating remains a separate choice.
 

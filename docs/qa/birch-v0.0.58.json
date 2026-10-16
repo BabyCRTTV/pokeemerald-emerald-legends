@@ -1,6 +1,6 @@
 {
   "version": "0.0.58",
-  "approval": "Preview requested; owner approval required before master merge, Pages or patches publication.",
+  "approval": "Owner approved the actual-game preview and publication on 16 October 2026; see birch-v0.0.58-public.json for subsequent production verification.",
   "base_commit": "9af3087528bc06bd754587b83dc2d291f1362fd9",
   "project_checks": {
     "passed": 50,
@@ -119,7 +119,7 @@
   },
   "limits": [
     "Controlled synthetic format-identical saves, not an authentic historical-save matrix.",
-    "No uninterrupted six-request playthrough or Pizza Boy test.",
-    "Remote CI and production patch publication remain pending approval."
-  ]
+    "No uninterrupted six-request playthrough or Pizza Boy test."
+  ],
+  "publication_receipt": "birch-v0.0.58-public.json"
 }
