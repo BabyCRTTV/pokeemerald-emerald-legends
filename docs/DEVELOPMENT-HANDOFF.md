@@ -10,6 +10,10 @@ The owner uses a phone. Provide narrow vertical PNG/GIF previews and explicit do
 
 On 14 October 2026 the owner reversed the earlier permission to ignore older saves. Backward compatibility for Legends battery saves is now required for future updates. Preserve existing save readers, field offsets and persistent IDs; add focused migrations/tests when saved data changes. [Save-compatibility policy and evidence](SAVE-COMPATIBILITY.md) defines the release gate without adding duplicate builds or per-patch full emulator runs. Existing checks pass; a complete historical-release save-fixture matrix remains unfinished and must not be represented as verified.
 
+## Resumption audit — 16 October 2026
+
+Verified live master `02fd0597`, recent commits, PRs, release assets and Actions/jobs before any changes. v0.0.59 research work is complete; the sole open PR #56 is the older wiki proposal, not unfinished game work. Fresh downloads of both BPS files reconstructed the exact native-tested ROMs with Floating IPS and the browser decoder; eight site/guide/preview assets matched committed bytes. Seven focused host suites and the existing metadata workflow block passed. Production checks/builds and latest Pages were successful. [Audit receipt](qa/resume-2026-10-16.json) distinguishes fresh checks from reviewed native evidence and lists remaining playtests. No new feature scope was selected by the resumption request; continue from the protected baseline and QA backlog.
+
 ## Current version — v0.0.59 (published and verified)
 
 The owner authorized 12 additional Birch studies and 12 Devon-president contracts with story unlocks, relevant first-interaction branches and a Master Ball for Devon's twelfth. The game now has 30 research requests (18 Birch, 12 Devon), 63 total quests and the existing 95 achievements. Native first calm Birch lab and Devon letter/PokéNav/healing scenes offer Yes/No explanations; all mandatory story/gifts continue normally. New work unlocks through badges and major story flags, with six-row grouped menus and locked requirements.
@@ -114,7 +118,7 @@ The front-facing cheek cleanup shipped in v0.0.49; retain standing edits and pos
 
 ## Remaining work
 
-- The owner approved homecoming ideas 1 + 2 + 4: personal Mom/Norman milestone conversations and a short family welcome after the finale. The original proposal is superseded by this explicit scope. Implementation/build/publication status is recorded in [homecoming QA](qa/homecoming-v0.0.55.md). Ideas 3 (topic choices) and 5 (everyday chatter) were not selected.
+- Homecoming ideas 1 + 2 + 4 are complete and protected in v0.0.55 above; they are not pending work. Ideas 3 (topic choices) and 5 (everyday chatter) remain unselected.
 - Continue uninterrupted Wing Survey/return-travel, battle-balance and broader Release/Debug mGBA/Pizza Boy playtests, including native movement/field actions, wardrobe Apply/Cancel/save/load, followers and seasonal/weather transitions. Controlled scenes and host tests do not establish those outcomes. Use [QA](QA.md) and milestone records.
 - All eight visiting Gyms, the three bird expeditions, the Hoenn Regigigas intermission and native Faraway Island/Mew conclusion are implemented. Quest Log, achievements, expanded storage and prepared battle uniforms are established. Do not reimplement shipped features from older summaries.
 - [PR #56](https://github.com/BabyCRTTV/pokeemerald-emerald-legends/pull/56) is an older conflicting wiki proposal. Reconcile unique changes before deciding its disposition; do not merge its older Chapters 19–22 snapshot over the current v1.6.0 Chapters 1–25 snapshot. Wiki content remains separately maintained, last reviewed against game v0.0.46, and is updated only when requested.

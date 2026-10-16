@@ -1,0 +1,161 @@
+{
+  "version": "0.0.59",
+  "verified_utc": "2026-10-16T19:56:36.984723+00:00",
+  "manifest": {
+    "url": "https://babycrttv.github.io/pokeemerald-emerald-legends/downloads/SHA256SUMS.txt",
+    "verification_request_url": "https://babycrttv.github.io/pokeemerald-emerald-legends/downloads/SHA256SUMS.txt?verify=resume-20261016-1955",
+    "HTTP": 200,
+    "bytes": 412,
+    "sha256": "b02fd43774c56b6392e946afaf4e9c438985864648682c6a6436195b116c5c58"
+  },
+  "patches": {
+    "Release": {
+      "url": "https://babycrttv.github.io/pokeemerald-emerald-legends/downloads/Pokemon-Emerald-Legends-v0.0.59.bps",
+      "verification_request_url": "https://babycrttv.github.io/pokeemerald-emerald-legends/downloads/Pokemon-Emerald-Legends-v0.0.59.bps?verify=resume-20261016-1955",
+      "HTTP": 200,
+      "bytes": 17452977,
+      "sha256": "05db993cd6f54d1a7975dd274bf034898a542ddb705c3247932dc202b8ad7bf3",
+      "Floating_IPS_verified": true,
+      "browser_decoder_verified": true,
+      "ROM_sha256": "87e68bf243e51ba3124a7898a61cf8335fcac99b3422386a5c7867551a35800d",
+      "matches_native_tested_ROM": true
+    },
+    "Debug": {
+      "url": "https://babycrttv.github.io/pokeemerald-emerald-legends/downloads/Pokemon-Emerald-Legends-v0.0.59-debug.bps",
+      "verification_request_url": "https://babycrttv.github.io/pokeemerald-emerald-legends/downloads/Pokemon-Emerald-Legends-v0.0.59-debug.bps?verify=resume-20261016-1955",
+      "HTTP": 200,
+      "bytes": 17285303,
+      "sha256": "04844a6b0ed3bab54453132f0fc583b6aa11e9947d2d0713c142294df9472d8f",
+      "Floating_IPS_verified": true,
+      "browser_decoder_verified": true,
+      "ROM_sha256": "d51c4672663d340ffe83d0ecc42ab6646f0b8c9f4cac4bee7ca1fd83ec9f44b3",
+      "matches_native_tested_ROM": true
+    }
+  },
+  "site": {
+    "index.html": {
+      "url": "https://babycrttv.github.io/pokeemerald-emerald-legends/index.html",
+      "verification_request_url": "https://babycrttv.github.io/pokeemerald-emerald-legends/index.html?verify=resume-20261016-1955",
+      "HTTP": 200,
+      "bytes": 3538,
+      "sha256": "188570c1f406a7e04ca9d68230bfb3e1490a8bd77f85acc241baadc7680cf58c",
+      "matches_committed_bytes": true
+    },
+    "changelog.html": {
+      "url": "https://babycrttv.github.io/pokeemerald-emerald-legends/changelog.html",
+      "verification_request_url": "https://babycrttv.github.io/pokeemerald-emerald-legends/changelog.html?verify=resume-20261016-1955",
+      "HTTP": 200,
+      "bytes": 105011,
+      "sha256": "20db1011bb8381af8c4e165d763e867d92eb165322d1fb440f2965146e93db56",
+      "matches_committed_bytes": true
+    },
+    "patcher.html": {
+      "url": "https://babycrttv.github.io/pokeemerald-emerald-legends/patcher.html",
+      "verification_request_url": "https://babycrttv.github.io/pokeemerald-emerald-legends/patcher.html?verify=resume-20261016-1955",
+      "HTTP": 200,
+      "bytes": 2679,
+      "sha256": "7b6a2fccec0ae64ddd15ec70bc383d004b36a001248d879caab514ab900ebfae",
+      "matches_committed_bytes": true
+    },
+    "patcher.js": {
+      "url": "https://babycrttv.github.io/pokeemerald-emerald-legends/patcher.js",
+      "verification_request_url": "https://babycrttv.github.io/pokeemerald-emerald-legends/patcher.js?verify=resume-20261016-1955",
+      "HTTP": 200,
+      "bytes": 9353,
+      "sha256": "1f099a804296e880be48a68cfd4f17ef7f35960073e83c4370c190f35224fdea",
+      "matches_committed_bytes": true
+    },
+    "journal-guide.html": {
+      "url": "https://babycrttv.github.io/pokeemerald-emerald-legends/journal-guide.html",
+      "verification_request_url": "https://babycrttv.github.io/pokeemerald-emerald-legends/journal-guide.html?verify=resume-20261016-1955",
+      "HTTP": 200,
+      "bytes": 4622,
+      "sha256": "a727f523f523430c5a1863847738208049cfbb487b48251721e911ae062abf0c",
+      "matches_committed_bytes": true
+    },
+    "features/research-requests.md": {
+      "url": "https://babycrttv.github.io/pokeemerald-emerald-legends/features/research-requests.md",
+      "verification_request_url": "https://babycrttv.github.io/pokeemerald-emerald-legends/features/research-requests.md?verify=resume-20261016-1955",
+      "HTTP": 200,
+      "bytes": 6941,
+      "sha256": "a5d0b7b2adcaef6d9c7c9f99333f96c1dd742ca15da451360e40e5647dc79416",
+      "matches_committed_bytes": true
+    },
+    "qa/research-v0.0.59-preview.png": {
+      "url": "https://babycrttv.github.io/pokeemerald-emerald-legends/qa/research-v0.0.59-preview.png",
+      "verification_request_url": "https://babycrttv.github.io/pokeemerald-emerald-legends/qa/research-v0.0.59-preview.png?verify=resume-20261016-1955",
+      "HTTP": 200,
+      "bytes": 55371,
+      "sha256": "18c75592f72d249827dcdc1c0444a05f76f32d4a45f5810eaafaed23314596c3",
+      "matches_committed_bytes": true
+    },
+    "qa/research-v0.0.59-preview.gif": {
+      "url": "https://babycrttv.github.io/pokeemerald-emerald-legends/qa/research-v0.0.59-preview.gif",
+      "verification_request_url": "https://babycrttv.github.io/pokeemerald-emerald-legends/qa/research-v0.0.59-preview.gif?verify=resume-20261016-1955",
+      "HTTP": 200,
+      "bytes": 107703,
+      "sha256": "6ed0f877b25e546588cb1bbfab4787ff87809726835cb9288167b5b9c51075c4",
+      "matches_committed_bytes": true
+    }
+  },
+  "audited_head": "02fd0597374993a07594de5952cd30d5c483c102",
+  "fresh_checks": [
+    {
+      "test": "legends-field-requests.test.py",
+      "exit_code": 0,
+      "seconds": 1.99
+    },
+    {
+      "test": "legends-item-descriptions.test.py",
+      "exit_code": 0,
+      "seconds": 0.13
+    },
+    {
+      "test": "legends-storage-codec.test.py",
+      "exit_code": 0,
+      "seconds": 0.43
+    },
+    {
+      "test": "legends-journal.test.py",
+      "exit_code": 0,
+      "seconds": 0.14
+    },
+    {
+      "test": "legends-wardrobe.test.py",
+      "exit_code": 0,
+      "seconds": 0.11
+    },
+    {
+      "test": "legends-seasons.test.py",
+      "exit_code": 0,
+      "seconds": 0.12
+    },
+    {
+      "test": "legends-appearance.test.py",
+      "exit_code": 0,
+      "seconds": 0.36
+    }
+  ],
+  "metadata_check": {
+    "workflow": ".github/workflows/legends-checks.yml",
+    "step": "Verify Legends project metadata",
+    "exit_code": 0
+  },
+  "verified_existing_CI": {
+    "project_checks": 38950196789,
+    "native_builds_and_BPS": 38950196653,
+    "latest_Pages": 38952015925,
+    "result": "completed/success"
+  },
+  "release_channel": {
+    "game": "GitHub Pages BPS downloads",
+    "GitHub_releases": "Only wiki-desktop was listed; not a game-ROM release channel."
+  },
+  "scope": "Fresh public-download round trips, site-byte parity, seven focused host suites, metadata and live GitHub run/job inspection. Existing successful native builds/QA were reviewed, not rerun. No game/source/art/save/patch/version changes.",
+  "remaining": [
+    "Authentic historical battery-save fixture matrix, including original fourteen-box and expanded storage formats.",
+    "Uninterrupted Wing Survey/return travel, battle balance and thirty-request playthrough.",
+    "Broader wardrobe/follower/season/weather field playtests and Pizza Boy.",
+    "Review unique changes in older conflicting wiki PR #56 only when wiki work is requested. Developer-site refresh remains deferred."
+  ]
+}

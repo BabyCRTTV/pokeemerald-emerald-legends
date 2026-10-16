@@ -8,7 +8,9 @@ This concerns the emulator's normal in-game battery save (`.sav`). Emulator save
 
 ## Current verified baseline and limits
 
-v0.0.49 changes only front-facing cheek shading and does not change save fields, the storage format or saved IDs. No save migration is needed. The approved Side Part remains ID 2. Existing compatibility checks passed; see [v0.0.49 evidence and verification limits](qa/front-face-v0.0.49.md) and the previous [v0.0.48 evidence](qa/side-part-v0.0.48.md).
+The current published baseline is v0.0.59. Native sectors, storage readers, the 36-byte journal and previously published identifiers remain intact. Research progress retains read-only B7 support and migrates to B8 only on successful state changes, with high completion bits in verified-unused var 0x407A. The v0.0.58/v0.0.59 sections below describe focused migration and native Continue coverage; [the current release QA](qa/research-v0.0.59.md) states its limits. The authentic historical-save matrix remains unfinished.
+
+Historical v0.0.49 changed only front-facing cheek shading and required no save migration. The approved Side Part remains ID 2. Preserve [v0.0.49 evidence and limits](qa/front-face-v0.0.49.md) and the previous [v0.0.48 evidence](qa/side-part-v0.0.48.md).
 
 | Area | Existing protection/evidence |
 | --- | --- |
@@ -19,7 +21,7 @@ v0.0.49 changes only front-facing cheek shading and does not change save fields,
 
 The existing legacy decoder is in `src/legends_storage.c`; sector validation and slot recovery are in `src/save.c`. The expanded format was introduced in v0.0.43. Preserve both the original-format reader and the expanded-format reader. Its current packed header requires an exact `rawSize`: merely appending a field to `struct PokemonStorage` would invalidate old packed saves unless an explicit old-size decoder/migration is added.
 
-A complete set of authentic saves from every historical release has not been replayed against v0.0.48. The policy is a release requirement, not a claim that this missing historical matrix is already verified. Retain existing evidence and extend a small reproducible fixture set when save-affecting work is undertaken.
+A complete set of authentic saves from every historical release has not been replayed against the current published version. The policy is a release requirement, not a claim that this missing historical matrix is already verified. Retain existing evidence and extend a small reproducible fixture set when save-affecting work is undertaken.
 
 ## Birch request preview — v0.0.58
 
