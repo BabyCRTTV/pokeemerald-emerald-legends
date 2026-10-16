@@ -1,6 +1,6 @@
 # Quest tracking — review preview
 
-Status: **owner approved publication on 15 October 2026; v0.0.57 release checks in progress**. This document retains the preview-stage evidence. [Native preview](quest-tracking-preview.png) · [Competing-menu examples](quest-tracking-menu-safety.png) · [Verification receipt](quest-tracking-preview.json).
+Status: **published in v0.0.57 after owner approval**. This document retains preview-stage evidence; [final release verification](quest-tracking-v0.0.57.md) supersedes pending-publication notes.
 
 ## Interaction and placement
 
@@ -30,4 +30,4 @@ The owner requested automatic smooth scrolling after reviewing the card. [Native
 
 ## Approval and publication
 
-The owner approved publication after the scrolling preview. Final v0.0.57 checks/builds, PR/merge, independent patch decoding and live download/Pages verification are in progress. The developer-site refresh remains deferred.
+The owner approved publication after the scrolling preview. Final v0.0.57 checks/builds, PR/merge, independent patch decoding and live download/Pages verification passed; see the final release record. The developer-site refresh remains deferred.

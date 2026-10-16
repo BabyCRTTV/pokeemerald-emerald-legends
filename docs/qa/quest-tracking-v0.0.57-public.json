@@ -1,0 +1,292 @@
+{
+  "version": "0.0.57",
+  "status": "Published and verified",
+  "verified_date_UTC": "2026-10-16",
+  "owner_authorization": "Excellent, apply and publish if all is bug free.",
+  "PR": 72,
+  "tested_source": "ee8082ef9d3b751a5d52c22c571a43a55459ebe9",
+  "merge_commit": "7c34eaf147adcfab2d4078963439c6ee831f5bad",
+  "patch_commit": "1859f4925272fe9bd9b08afaafeed3eb9b719607",
+  "actions": [
+    {
+      "id": 38811281429,
+      "name": "Legends project checks",
+      "sha": "ee8082ef9d3b751a5d52c22c571a43a55459ebe9",
+      "conclusion": "success",
+      "status": "completed",
+      "url": "https://github.com/BabyCRTTV/pokeemerald-emerald-legends/actions/runs/38811281429"
+    },
+    {
+      "id": 38811281310,
+      "name": "Build release patches",
+      "sha": "ee8082ef9d3b751a5d52c22c571a43a55459ebe9",
+      "conclusion": "success",
+      "status": "completed",
+      "url": "https://github.com/BabyCRTTV/pokeemerald-emerald-legends/actions/runs/38811281310"
+    },
+    {
+      "id": 38812493553,
+      "name": "Legends project checks",
+      "sha": "7c34eaf147adcfab2d4078963439c6ee831f5bad",
+      "conclusion": "success",
+      "status": "completed",
+      "url": "https://github.com/BabyCRTTV/pokeemerald-emerald-legends/actions/runs/38812493553"
+    },
+    {
+      "id": 38812493630,
+      "name": "Build release patches",
+      "sha": "7c34eaf147adcfab2d4078963439c6ee831f5bad",
+      "conclusion": "success",
+      "status": "completed",
+      "url": "https://github.com/BabyCRTTV/pokeemerald-emerald-legends/actions/runs/38812493630"
+    },
+    {
+      "id": 38812492918,
+      "name": "pages build and deployment",
+      "sha": "7c34eaf147adcfab2d4078963439c6ee831f5bad",
+      "conclusion": "success",
+      "status": "completed",
+      "url": "https://github.com/BabyCRTTV/pokeemerald-emerald-legends/actions/runs/38812492918"
+    },
+    {
+      "id": 38813694630,
+      "name": "pages build and deployment",
+      "sha": "1859f4925272fe9bd9b08afaafeed3eb9b719607",
+      "conclusion": "success",
+      "status": "completed",
+      "url": "https://github.com/BabyCRTTV/pokeemerald-emerald-legends/actions/runs/38813694630"
+    }
+  ],
+  "merged_project_check_steps": [
+    "Set up job",
+    "Run actions/checkout@v4",
+    "Exercise browser patcher regression tests",
+    "Exercise seasonal engine regression tests",
+    "Exercise seasonal battle scenes and Kanto foliage",
+    "Exercise dynamic weather regression tests",
+    "Exercise starter and rival regression tests",
+    "Exercise Options navigation regression tests",
+    "Exercise Options text regression tests",
+    "Exercise New Game Options regression tests",
+    "Exercise native follower regression tests",
+    "Exercise upstream held-item integration",
+    "Exercise first-item history and compatible save sectors",
+    "Exercise quest progression and achievement claims",
+    "Achievement notice lifecycle",
+    "Journal selection rendering and input",
+    "Exercise lossless expanded storage codec",
+    "Exercise pause panel regression tests",
+    "Exercise Adventure Log persistence, days and milestones",
+    "Exercise Adventure Log notebook and filters",
+    "Exercise scrolling pause menu",
+    "Exercise real/manual clocks and saved fallback",
+    "Exercise DexNav encounter proximity and approach rules",
+    "Exercise player appearance regression tests",
+    "Exercise visual polish regression tests",
+    "Verify player appearance art",
+    "Verify native window frame assets and selection",
+    "Verify native hair / coat 4bpp layer geometry",
+    "Verify footwear compositor and protected sprite colors",
+    "Verify v0.0.46 artwork and isolated smile/body colors",
+    "Verify approved Side Part head and native animation frames",
+    "Verify approved front-face shading and unchanged other views",
+    "Verify approved parent skin tones and palette isolation",
+    "Exercise scrolling intro hairstyles",
+    "Bedroom colors, memories and safe floor decoration",
+    "Homecoming conversations, native priority and save-safe memory",
+    "Exercise wardrobe navigation and access",
+    "Verify layered accessories and wardrobe furniture",
+    "Verify native costume assets and striped Sport shorts",
+    "Exercise Da Bug gift and species integration",
+    "Exercise Kanto invitation, ferry, welcome and map integration",
+    "Exercise empty Kanto foundation and Surf passage",
+    "Kanto challenge progression",
+    "Kanto Borrowed Voice progression and Trainer Card badges",
+    "Kanto Quiet Current and native wild levels",
+    "Three expeditions and the Hoenn weather intermission",
+    "Wing Survey finale and native Mew outcomes",
+    "Isolated outdoor night lights and native DNS blending",
+    "Region map browsing",
+    "Exercise prepared battle sheets and wardrobe refresh",
+    "Verify Legends project metadata",
+    "Post Run actions/checkout@v4",
+    "Complete job"
+  ],
+  "checks": "All 49 local blocks passed before interruption, with focused follow-up after the recoverable cache allocation correction. PR and merged project checks passed; their durable Actions were freshly verified on resume. Two focused pause-card/menu tests passed again after recovery.",
+  "retained_native_results": {
+    "provenance": "Completed before interruption; retained executed results and ROM fingerprints from the session. Workspace maintenance pruned original temporary logs/captures/private fixtures before resumption. Native runs were not repeated after resumption; exact tested ROM hashes match the fresh independently decoded production targets. Approved preview-stage receipts and reproducible original harnesses remain committed.",
+    "Debug": {
+      "passed": true,
+      "ROM_SHA256": "d594664b57c50574d894cebf60e9d9c7fecf696cacc9bfb545a4e4c2c9969844",
+      "checks": [
+        "Details tracking/stop",
+        "both pause pages",
+        "brief close/reopen input",
+        "DexNav help/return",
+        "Save/cancel",
+        "flash save/clear/load",
+        "profile and walkable floor retention",
+        "next objective",
+        "completion",
+        "Safari suppression",
+        "oversized text traversal and return"
+      ]
+    },
+    "Release": {
+      "passed": true,
+      "ROM_SHA256": "06eb7a663b27e063a7bb4351509d4e9be8b3ae06979d79f5381cad747ae1ec0b",
+      "unmodified_ROM_Continue_test": "Normal title/Continue loaded private controlled battery fixture; both pause pages, Details and stop passed. No host RAM/callback writes. Short reminder pixels matched Debug.",
+      "private_oversized_test": "Separate private objective pointer/text substitution, normal Continue/input, no host RAM/callback writes; full scroll cycle and menu/stop passed. Not an unmodified-ROM overflow test."
+    },
+    "oversized_each_variant": {
+      "native_frames": 1316,
+      "images": 439,
+      "scroll_pixels": 132,
+      "single_pixel_moves": 264,
+      "fixed_header_frame_menu": true,
+      "identical_initial_final_card": true,
+      "decoded_GIF_timeline_checked": true
+    },
+    "cross_variant_distinct_card_states": {
+      "equal": true,
+      "states": 133,
+      "same_time_images_equal": 437,
+      "images_each": 439,
+      "note": "Two corresponding images differed in queued VRAM upload phase; offset arrays and all distinct card states matched. Not frame-for-frame temporal identity."
+    }
+  },
+  "fresh_live_patch_verification": {
+    "verified_date_UTC": "2026-10-16",
+    "base_sha1_expected": "f3ae088181bf583e55daf962a92bb46f4f1d07b7",
+    "patches": [
+      {
+        "variant": "Release",
+        "patch": "Pokemon-Emerald-Legends-v0.0.57.bps",
+        "patch_sha256": "92e50839bb45198f8620fda400b69ed8853e15d3eab3ddb0ca2fd18068154a74",
+        "patch_bytes": 17441907,
+        "target_sha256": "06eb7a663b27e063a7bb4351509d4e9be8b3ae06979d79f5381cad747ae1ec0b",
+        "CRC32": {
+          "source": "1f1c08fb",
+          "target": "c7c8a248",
+          "patch": "99008021"
+        },
+        "matches_pre_interruption_locally_decoded_patch": true,
+        "live_Floating_IPS_passed": true,
+        "live_browser_decoder_passed": true
+      },
+      {
+        "variant": "Debug",
+        "patch": "Pokemon-Emerald-Legends-v0.0.57-debug.bps",
+        "patch_sha256": "c83fb38209e08fe97bed90bcec01920c79a0525ba22b9a222f97fe213b4b7019",
+        "patch_bytes": 17272910,
+        "target_sha256": "d594664b57c50574d894cebf60e9d9c7fecf696cacc9bfb545a4e4c2c9969844",
+        "CRC32": {
+          "source": "1f1c08fb",
+          "target": "886974b2",
+          "patch": "3f991d05"
+        },
+        "matches_pre_interruption_locally_decoded_patch": true,
+        "live_Floating_IPS_passed": true,
+        "live_browser_decoder_passed": true
+      }
+    ],
+    "base_sha1_verified": "f3ae088181bf583e55daf962a92bb46f4f1d07b7"
+  },
+  "live_files": [
+    {
+      "path": "index.html",
+      "HTTP": 200,
+      "bytes": 6395,
+      "sha256": "d13aa30ea9e002e883c3242b0d47fb335e6b4ac3edaba8fb26cd3686e2403232",
+      "matches_committed_bytes": true
+    },
+    {
+      "path": "changelog.html",
+      "HTTP": 200,
+      "bytes": 101282,
+      "sha256": "39eec841102409b2ff758cc9188bee204332ba043d56a4362a3832e956bb36c8",
+      "matches_committed_bytes": true
+    },
+    {
+      "path": "patcher.html",
+      "HTTP": 200,
+      "bytes": 2508,
+      "sha256": "0f3e7ed2538e34d2da6d35f514f06d6ab016dd1739229b7e722c41fef55afb8b",
+      "matches_committed_bytes": true
+    },
+    {
+      "path": "patcher.js",
+      "HTTP": 200,
+      "bytes": 9201,
+      "sha256": "a1fa4ccb8d77f3e4b6876a86a02b172eaee994f15801c33fec7c7e2cb2331066",
+      "matches_committed_bytes": true
+    },
+    {
+      "path": "journal-guide.html",
+      "HTTP": 200,
+      "bytes": 4315,
+      "sha256": "f42cbdca4f5fddba5de0842beb2fab687e9b367f72d290e04bbd359c53c8c548",
+      "matches_committed_bytes": true
+    },
+    {
+      "path": "features/quest-log-achievements.md",
+      "HTTP": 200,
+      "bytes": 8188,
+      "sha256": "43f1439f15e20af5489d67d14d8646c633e01a8e27ab53fb1dfc8c2b3cc02dd8",
+      "matches_committed_bytes": true
+    },
+    {
+      "path": "qa/quest-tracking-preview.png",
+      "HTTP": 200,
+      "bytes": 26072,
+      "sha256": "f304e1ab73582284898cf9a7446f5258020a366dd042e8ebc65924d4066cc66a",
+      "matches_committed_bytes": true
+    },
+    {
+      "path": "qa/quest-tracking-scroll.gif",
+      "HTTP": 200,
+      "bytes": 642479,
+      "sha256": "27f09996e166fb0cb6e0a5a71817e821bad02f038c2bab35d0fa6a4100ac2f2e",
+      "matches_committed_bytes": true
+    },
+    {
+      "path": "downloads/SHA256SUMS.txt",
+      "HTTP": 200,
+      "bytes": 412,
+      "sha256": "3aca416ffee34ca6809440c89e07c70bc24c29ed62d63f814789f2989e6d1546",
+      "matches_committed_bytes": true
+    },
+    {
+      "path": "downloads/Pokemon-Emerald-Legends-v0.0.57.bps",
+      "HTTP": 200,
+      "bytes": 17441907,
+      "sha256": "92e50839bb45198f8620fda400b69ed8853e15d3eab3ddb0ca2fd18068154a74",
+      "matches_committed_bytes": true
+    },
+    {
+      "path": "downloads/Pokemon-Emerald-Legends-v0.0.57-debug.bps",
+      "HTTP": 200,
+      "bytes": 17272910,
+      "sha256": "c83fb38209e08fe97bed90bcec01920c79a0525ba22b9a222f97fe213b4b7019",
+      "matches_committed_bytes": true
+    }
+  ],
+  "approved_preview_SHA256": "f304e1ab73582284898cf9a7446f5258020a366dd042e8ebc65924d4066cc66a",
+  "approved_scroll_GIF_SHA256": "27f09996e166fb0cb6e0a5a71817e821bad02f038c2bab35d0fa6a4100ac2f2e",
+  "patch_growth_bytes": {
+    "Release": 2669,
+    "Debug": 2031
+  },
+  "save_contract": {
+    "journal_bytes": 36,
+    "version": 1,
+    "selection_offset": 10,
+    "signature": "0xA700",
+    "payload": "quest ID + 1; zero explicitly off",
+    "legacy": "Invalid/unsigned values default off without read-time mutation. Existing readers/checksum/achievement bits unchanged.",
+    "quest_IDs": "Preserve 0\u201332 and append future entries.",
+    "migration_required": false
+  },
+  "AGENTS_reviewed": true,
+  "limits": "Historical save matrix, uninterrupted story and Pizza Boy remain unfinished. Private ROMs/ELFs/saves are excluded. Temporary final-version raw native records were pruned; retained results are distinguished from fresh live decoding."
+}
