@@ -12,7 +12,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Exercise browser patcher regression tests
-        run: node --test test/legends-patcher.test.cjs
+        run: node --test test/legends-patcher.test.cjs test/legends-download-counter.test.cjs
       - name: Exercise seasonal engine regression tests
         run: python3 test/legends-seasons.test.py
       - name: Exercise seasonal battle scenes and Kanto foliage

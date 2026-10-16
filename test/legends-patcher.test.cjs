@@ -11,6 +11,7 @@ const instrumented = code.replace(/\}\)\(\);\s*$/, 'globalThis.__legendsTest = {
 
 function harness() {
   const nodes = {};
+  const downloads = [], events = [];
   for (const id of ['rom-file', 'patch-button', 'patch-status', 'build-version', 'build-label', 'build-description', 'build-footer']) {
     nodes[id] = {
       textContent: '', className: '', disabled: false, files: [], callbacks: {},
@@ -19,16 +20,20 @@ function harness() {
   }
   const sha = Buffer.from('f3ae088181bf583e55daf962a92bb46f4f1d07b7', 'hex');
   const ctx = {
-    document: { title: '', getElementById(id) { return nodes[id]; } },
+    document: {
+      title: '', getElementById(id) { return nodes[id]; },
+      body: { appendChild() {} },
+      createElement() { return { click() { downloads.push(this.download); }, remove() {} }; }
+    },
     URLSearchParams,
-    window: { location: { search: '' } },
+    window: { location: { search: '' }, dispatchEvent(event) { events.push(event.type); } },
     crypto: { subtle: { async digest() { return Uint8Array.from(sha).buffer; } } },
     fetch: async () => { throw new Error('Unexpected fetch'); },
     URL: { createObjectURL() { return 'blob:test'; }, revokeObjectURL() {} },
-    Blob, setTimeout() {}
+    Blob, Event, setTimeout() {}
   };
   vm.runInNewContext(instrumented, ctx, { filename: 'docs/patcher.js' });
-  return { nodes, bps: ctx.__legendsTest };
+  return { nodes, bps: ctx.__legendsTest, ctx, downloads, events };
 }
 function varint(v) {
   const output = [];
@@ -87,4 +92,22 @@ test('old ROM validation cannot override newer invalid file', async () => {
   await older;
   assert.equal(nodes['patch-button'].disabled, true);
   assert.match(nodes['patch-status'].textContent, /expected 16 MiB/);
+});
+
+test('download counter event follows verified output, never failed patching', async () => {
+  const { nodes, bps, ctx, downloads, events } = harness();
+  const source = new Uint8Array(16777216), target = Uint8Array.from([7]);
+  const patch = fixture(bps, source, target, [...varint(1), 7]);
+  nodes['rom-file'].files = [{ arrayBuffer: async () => source.buffer }];
+  await nodes['rom-file'].callbacks.change();
+  ctx.fetch = async () => ({ ok: true, arrayBuffer: async () => patch.buffer });
+  await nodes['patch-button'].callbacks.click();
+  assert.equal(downloads.length, 1);
+  assert.deepEqual(events, ['legends:download-started']);
+  assert.match(nodes['patch-status'].textContent, /created locally/);
+  patch[patch.length - 1] ^= 1;
+  await nodes['patch-button'].callbacks.click();
+  assert.equal(downloads.length, 1);
+  assert.equal(events.length, 1);
+  assert.match(nodes['patch-status'].textContent, /checksum failed/);
 });

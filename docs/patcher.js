@@ -98,6 +98,9 @@
       anchor.remove();
       setTimeout(() => URL.revokeObjectURL(url), 1000);
 
+      // Count only after a verified output download starts; never await analytics.
+      window.dispatchEvent(new Event("legends:download-started"));
+
       setStatus(`Done. Your Emerald: Legends v${VERSION} ${BUILD_LABEL} .gba has been created locally.`, "ok");
     } catch (err) {
       if (revision === romSelectionRevision)

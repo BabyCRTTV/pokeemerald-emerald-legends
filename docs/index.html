@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#173b2d">
   <title>Pokémon Emerald: Legends</title>
   <meta name="description" content="Pokémon Emerald: Legends - an unofficial fan ROM-hack project built on pokeemerald-expansion.">
-  <link rel="stylesheet" href="style.css?v=20261015-3">
+  <link rel="stylesheet" href="style.css?v=20261015-4">
 </head>
 <body>
   <main class="shell">
@@ -14,13 +14,12 @@
       <span class="header-sprite" aria-hidden="true">
         <img src="images/pikachu-header.gif" width="500" height="492" alt="" decoding="async">
       </span>
-      <div class="title">POKÉMON EMERALD: LEGENDS <a href="wiki/" style="color:#e8d7ff;margin-left:12px;text-decoration:underline;text-underline-offset:3px">WIKI</a></div>
+      <div class="title" role="heading" aria-level="1">POKÉMON EMERALD: LEGENDS <a href="wiki/" style="color:#e8d7ff;margin-left:12px;text-decoration:underline;text-underline-offset:3px">WIKI</a></div>
       <div class="version">v0.0.57</div>
     </header>
 
     <section class="hero panel">
       <div class="hero-copy">
-        <h1 class="eyebrow site-heading">Pokémon Emerald: Legends</h1>
         <p>Pokémon Emerald: Legends is an unofficial fan project built on <strong>pokeemerald-expansion</strong>. The goal is to keep Emerald recognizable while adding modern quality-of-life systems, configurable mechanics, and new ideas one feature at a time.</p>
         <div class="actions">
           <a class="button primary" href="#downloads">Downloads</a>
@@ -34,7 +33,10 @@
 
     <section class="panel downloads" id="downloads">
       <div>
-        <p class="eyebrow">Downloads</p>
+        <div class="downloads-heading">
+          <p class="eyebrow">Downloads</p>
+          <span class="download-count" id="download-count" role="status" aria-label="Loading download count" title="Download actions since October 15, 2026 (Release and Debug combined)">…</span>
+        </div>
         <h2>Version 0.0.57</h2>
         <div class="download-changelog">
           <a class="button" href="changelog.html">Changelog</a>
@@ -65,5 +67,6 @@
       <p>Built on <a href="https://github.com/rh-hideout/pokeemerald-expansion">pokeemerald-expansion</a>.</p>
     </footer>
   </main>
+  <script src="download-counter.js?v=20261015-1" defer></script>
 </body>
 </html>
