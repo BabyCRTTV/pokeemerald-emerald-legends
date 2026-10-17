@@ -21,7 +21,7 @@ for line in subprocess.check_output(["arm-none-eabi-nm", str(ELF)], text=True).s
         symbols[parts[2]] = int(parts[0], 16)
 assert "gMain" in symbols and "CB2_Overworld" in symbols, "Missing native callback symbols."
 
-subprocess.run(["cc", "-O2", "-std=c11", "-Wno-unused-parameter",
+subprocess.run(["cc", "-O2", "-std=gnu11", "-Wno-unused-parameter",
                 str(ROOT / "tools/legends/mgba_gameplay_smoke.c"),
                 "-lmgba", "-o", str(OUTPUT / "gameplay-smoke")], check=True)
 
