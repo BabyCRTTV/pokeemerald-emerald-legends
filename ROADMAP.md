@@ -1,6 +1,6 @@
 # Pokémon Emerald: Legends Roadmap
 
-Reviewed against **v0.0.55** on 15 October 2026. The root `VERSION`, current source and [development handoff](docs/DEVELOPMENT-HANDOFF.md) take precedence over older milestone notes. [Verification and remaining playtests](docs/qa/project-state-2026-10-15.md).
+Reviewed against the **v0.0.60** release candidate on 16 October 2026. The root `VERSION`, current source and [development handoff](docs/DEVELOPMENT-HANDOFF.md) take precedence over older milestone notes. [Current achievement QA and remaining playtests](docs/qa/achievements-v0.0.60.md).
 
 ## 0.0.x - Foundation
 
@@ -13,6 +13,8 @@ Goal: establish a stable `pokeemerald-expansion` project and implement the first
 - [x] Fork/import current stable `pokeemerald-expansion` base
 - [x] Confirm clean build through automated release verification
 - [x] Add automated build and BPS verification
+
+- [x] Expanded the achievement catalogue to 130 with compatible overflow progress (v0.0.60)
 
 ### Gameplay systems
 - [x] Gen 6-style party EXP Share with Options toggle

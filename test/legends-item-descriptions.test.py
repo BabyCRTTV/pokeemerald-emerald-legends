@@ -6,6 +6,7 @@ def function(path,signature):
  s=(R/path).read_text();start=s.index(signature+'\n{');return s[start:s.index('\n}',start)+2]
 g=(R/'include/global.h').read_text();a=g.index('struct SaveBlock3\n{');block=g[a:g.index('};',a)+2]
 legacy=block.replace('struct SaveBlock3','struct LegacySaveBlock3').replace('    struct LegendsJournalSave journal;\n','')
+legacy=legacy.replace('    struct LegendsAchievementExtraSave achievementExtra;\n','')
 legacy=legacy.replace('#if OW_SHOW_ITEM_DESCRIPTIONS == OW_ITEM_DESCRIPTIONS_FIRST_TIME\n    u8 itemFlags[ITEM_FLAGS_COUNT];\n#endif\n','')
 flags=(R/'include/overworld.h').read_text().split('enum ItemObtainFlags')[1].split('};')[0]
 pre=r'''
@@ -59,6 +60,7 @@ int main(void)
  assert(sizeof(struct LegacySaveBlock3)==0x21C);
  assert(offsetof(struct SaveBlock3,itemFlags)==0x21C);
  assert(offsetof(struct SaveBlock3,journal)==652);
+ assert(offsetof(struct SaveBlock3,achievementExtra)==688 && sizeof(struct SaveBlock3)==716);
  for(unsigned item=1;item<ITEMS_COUNT;item++){
   memset(&gSaveblock3,0,sizeof(gSaveblock3));assert(!GetSetItemObtained(item,FLAG_GET_ITEM_OBTAINED));
   assert(GetSetItemObtained(item,FLAG_SET_ITEM_OBTAINED));assert(GetSetItemObtained(item,FLAG_GET_ITEM_OBTAINED));

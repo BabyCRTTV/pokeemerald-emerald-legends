@@ -31,6 +31,12 @@ The six new requests reuse verified-unused native vars 0x406B–0x406D. A signed
 
 The extended catalogue retains v1 B7 reads and upgrades valid v0.0.58 state only at a successful mutation. One verified-unused native word 0x407A holds high completion bits; migration zeros them without reading arbitrary legacy values. Existing completion, active selection, observations, quest pins and IDs remain intact. Invalid legacy state initializes only on acceptance; full-PC failure leaves all state and inventory unchanged. The native structures, journal size/offsets, sectors and packed-storage codec are unchanged. Host tests cover v1/v2, all thirty requests, high-word bits, caps, gates and snapshots; controlled native flash and all six unmodified Release Continue fixtures passed, including the high completion word and the one-time Master Ball inventory. [QA and limits](qa/research-v0.0.59.md). [Design and migration](features/research-requests.md).
 
+## Achievement extension — v0.0.60
+
+The 130-achievement catalogue preserves original IDs 0–94 and all original definitions. The original 36-byte v1 journal stays at SaveBlock3 offset 652, with its checksum, earned/claimed arrays and tracked selection unchanged. A 28-byte separately signed/versioned/checksummed extension is appended at offset 688 for IDs 96–159; ID 95 uses the previously unpublished final legacy bit. Upgrading an old profile preserves its first 95 bits and pin, clears unpublished bit 95 and initializes only the absent extension. New goals backfill quietly without automatic rewards. Existing expanded-storage readers, capacities and sector geometry remain intact; no native var is reserved.
+
+SaveBlock3 grows from 688 to 716 bytes within the existing fourteen 116-byte sector tails. Existing full/link/Hall-of-Fame/Frontier transactions copy that bounded tail and the packed inventory together. Normal and native tests must verify new high-ID claims and exact reward quantities survive flash/Continue. Continue using v0.0.60 or newer after saving new achievement progress; older versions do not know the appended achievements. [Current extension QA](qa/achievements-v0.0.60.md) records actual results and limits.
+
 ## Review every update
 
 State the save impact in the PR/handoff, including “none” when appropriate. Check for changes to:

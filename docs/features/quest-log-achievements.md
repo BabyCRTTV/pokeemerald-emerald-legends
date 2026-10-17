@@ -1,4 +1,4 @@
-# Quest Log, achievements and expanded storage (v0.0.59)
+# Quest Log, achievements and expanded storage (v0.0.60)
 
 Press **Right or Left** in the pause menu to reach its second page. Choose **QUEST LOG** or **ACHIEVEMENTS**; the Adventure Log remains on the first page. Linked-room menus retain their native restrictions.
 
@@ -8,7 +8,7 @@ The owner-approved A layout keeps six entries visible. MAIN / SIDE / DONE quest 
 
 ## Quests
 
-There are 63 entries: 26 main quests, seven existing side quests and six selectable Birch field requests. Main quests cover Hoenn's introductory journey, all eight badges and major story errands, the Pokemon League, the nine current Wing Survey chapters and the Sleeping Continent intermission. Side quests cover the remaining visiting Leaders, a bicycle, Secret Power/base registration, the Scanner, ancient Regi doors, catching the three birds and catching Regigigas. The original entries document existing gameplay. Birch's optional requests add local research objectives after the Pokédex; see [the field request guide](birch-field-requests.md). Only the accepted request and completed requests appear in the journal; abandoned work becomes available again from Birch.
+There are 63 entries: 26 main quests, seven existing side quests and thirty research requests (18 Birch, 12 Devon). Main quests cover Hoenn's introductory journey, all eight badges and major story errands, the Pokemon League, the nine current Wing Survey chapters and the Sleeping Continent intermission. Side quests cover the remaining visiting Leaders, a bicycle, Secret Power/base registration, the Scanner, ancient Regi doors, catching the three birds and catching Regigigas. The original entries document existing gameplay. Birch's optional requests add local research objectives after the Pokédex; see [the field request guide](birch-field-requests.md). Only the accepted request and completed requests appear in the journal; abandoned work becomes available again from Birch.
 
 - **Up/Down:** select an entry.
 - **A:** open its objectives.
@@ -22,13 +22,13 @@ The initial catalogue is in `data/legends/quests.json`, with the shipped C table
 
 ## Achievements and rewards
 
-There are **95 achievements**, listed in `data/legends/achievements.json`. Each has a title, explicit requirement, progress target and a bundle of three or five berries. Rewards cycle through 45 berry varieties, including healing, condition, EV-reducing, type-resistance and rare stat berries. No full-party or random-item reward is substituted.
+There are **130 achievements**, listed in `data/legends/achievements.json`. Each has a title, explicit requirement, progress target and a bundle of three or five berries. Rewards cycle through 45 berry varieties, including healing, condition, EV-reducing, type-resistance and rare stat berries. No full-party or random-item reward is substituted.
 
 Open a detail page and press **A** to claim. Berries are added directly to **PC ITEM STORAGE** through the native atomic item API. The claim bit is set only after that addition succeeds. If storage is full, the reward remains pending. Claims cannot be repeated after a successful save/load. A successful claim shows a temporary **REWARD CLAIMED! / Sent to PC ITEM STORAGE.** confirmation. Unlocking an achievement alone never grants its reward. Save your game normally to keep the reward; loading an earlier save rolls both the berries and claim state back together.
 
 All / Ready to Claim / Claimed views are available. An achievement stays unlocked after a streak resets. Stat milestones are captured by the native `SetGameStat` hook, story milestones by flag transitions, and collection milestones by newly caught Pokédex entries. The journal also refreshes on returning to the field, opening the journal and saving. A compact upper-left notice names new unlocks for about three seconds without consuming input; simultaneous unlocks queue. Notices wait through scripts, fades, menus, battles and location banners. Existing profiles recover achievements quietly from their retained flags, statistics and caught-species records, without replaying old banners or auto-claiming new rewards. Feats absent from those records cannot be reconstructed.
 
-IDs are stable array positions. Append new achievements; do not reorder existing IDs. The reserved bitset supports 96 entries. Journal data is appended after the existing item-history field in SaveBlock3 with its own version/magic/checksum; existing field offsets remain unchanged.
+IDs are stable array positions. Append new achievements; do not reorder existing IDs. The original 96-bit earned/claimed arrays and 36-byte version-1 journal remain at their published offsets. A separate 28-byte signed extension at SaveBlock3 offset 688 adds 64 bits to each array; the combined capacity is 160 entries. Legacy migration preserves IDs 0–94 and the tracked quest, clears the formerly unpublished bit 95 and initializes only the new tail. No native variables, packed-storage schema, sector layout or inventory readers change. New achievements include ten research milestones, twenty activity milestones, three caught-species goals and two optional story gifts.
 
 ## Storage capacities
 

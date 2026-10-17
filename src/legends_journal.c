@@ -14,12 +14,25 @@ STATIC_ASSERT(ARRAY_COUNT(sQuests) >= LEGENDS_FIELD_REQUEST_QUEST_BASE + LEGENDS
 #define JOURNAL_MAGIC 0x4C514143
 #define TRACKED_QUEST_MAGIC 0xA700
 #define DATA (&gSaveBlock3Ptr->journal)
+#define EXTRA (&gSaveBlock3Ptr->achievementExtra)
+#define EXTRA_MAGIC 0x41434832
 // Transient notices never change the serialized journal or claim bits.
-EWRAM_DATA static u8 sPending[LEGENDS_ACHIEVEMENT_BYTES] = {0};
+EWRAM_DATA static u8 sPending[LEGENDS_ACHIEVEMENT_LIMIT / 8] = {0};
 EWRAM_DATA static bool8 sNoticesEnabled = FALSE;
+static u8 *AchievementBits(u16 id, bool32 claimed)
+{
+    if (id < LEGENDS_ACHIEVEMENT_LEGACY_LIMIT)
+        return claimed ? DATA->claimed : DATA->earned;
+    return claimed ? EXTRA->claimed : EXTRA->earned;
+}
+static u16 AchievementBitId(u16 id)
+{
+    return id < LEGENDS_ACHIEVEMENT_LEGACY_LIMIT ? id : id - LEGENDS_ACHIEVEMENT_LEGACY_LIMIT;
+}
 static void Earn(u16 id)
 {
-    DATA->earned[id / 8] |= 1 << (id % 8);
+    u16 bit = AchievementBitId(id);
+    AchievementBits(id, FALSE)[bit / 8] |= 1 << (bit % 8);
     if (sNoticesEnabled) sPending[id / 8] |= 1 << (id % 8);
 }
 u16 LegendsAchievementNotice(void)
@@ -40,15 +53,37 @@ static u32 Checksum(void)
     for (i = 8; i < sizeof(*DATA); i++) hash = (hash ^ p[i]) * 16777619u;
     return hash;
 }
+static u32 ExtraChecksum(void)
+{
+    const u8 *p = (const u8 *)EXTRA;
+    u32 i, hash = 2166136261u;
+    for (i = 8; i < sizeof(*EXTRA); i++) hash = (hash ^ p[i]) * 16777619u;
+    return hash;
+}
+static void UpdateChecksums(void)
+{
+    DATA->checksum = Checksum();
+    EXTRA->checksum = ExtraChecksum();
+}
 void LegendsJournalInit(bool32 newGame)
 {
+    bool32 reset = newGame || DATA->magic != JOURNAL_MAGIC || DATA->version != 1 || DATA->checksum != Checksum();
     sNoticesEnabled = FALSE;
     memset(sPending, 0, sizeof(sPending));
-    if (newGame || DATA->magic != JOURNAL_MAGIC || DATA->version != 1 || DATA->checksum != Checksum())
+    if (reset)
     {
         memset(DATA, 0, sizeof(*DATA));
         DATA->magic = JOURNAL_MAGIC;
         DATA->version = 1;
+    }
+    if (reset || EXTRA->magic != EXTRA_MAGIC || EXTRA->version != 1 || EXTRA->checksum != ExtraChecksum())
+    {
+        memset(EXTRA, 0, sizeof(*EXTRA));
+        EXTRA->magic = EXTRA_MAGIC;
+        EXTRA->version = 1;
+        // Bit 95 was unpublished through v0.0.59. Never inherit garbage as a reward claim.
+        DATA->earned[11] &= 0x7F;
+        DATA->claimed[11] &= 0x7F;
     }
     LegendsJournalRefresh();
     sNoticesEnabled = TRUE;
@@ -111,7 +146,7 @@ bool32 LegendsQuestTrack(u16 id)
         || (id != 0xFFFF && (id >= 255 || LegendsQuestNextStep(id) == 0xFF)))
         return FALSE;
     DATA->reserved = TRACKED_QUEST_MAGIC | (id == 0xFFFF ? 0 : id + 1);
-    DATA->checksum = Checksum();
+    UpdateChecksums();
     return TRUE;
 }
 u16 LegendsAchievementCount(void) { return ARRAY_COUNT(sAchievements); }
@@ -119,22 +154,34 @@ const struct LegendsAchievement *LegendsAchievementGet(u16 id) { return id < ARR
 u32 LegendsAchievementProgress(u16 id)
 {
     const struct LegendsAchievement *a = LegendsAchievementGet(id);
+    u16 request;
+    u32 count = 0;
     if (!a) return 0;
     switch (a->kind)
     {
     case JOURNAL_FLAG: return FlagGet(a->key);
     case JOURNAL_STAT: return GetGameStat(a->key);
     case JOURNAL_DEX: return GetNationalPokedexCount(FLAG_GET_CAUGHT);
+    case JOURNAL_RESEARCH:
+        for (request = 0; request < LEGENDS_FIELD_REQUEST_COUNT; request++)
+            if ((a->key == 2 || LegendsFieldRequestOwner(request) == a->key) && LegendsFieldRequestComplete(request)) count++;
+        return count;
     }
     return 0;
 }
 bool32 LegendsAchievementEarned(u16 id)
 {
-    return id < ARRAY_COUNT(sAchievements) && DATA->magic == JOURNAL_MAGIC && (DATA->earned[id / 8] & (1 << (id % 8)));
+    u16 bit = AchievementBitId(id);
+    return id < ARRAY_COUNT(sAchievements) && DATA->magic == JOURNAL_MAGIC
+        && (id < LEGENDS_ACHIEVEMENT_LEGACY_LIMIT || EXTRA->magic == EXTRA_MAGIC)
+        && (AchievementBits(id, FALSE)[bit / 8] & (1 << (bit % 8)));
 }
 bool32 LegendsAchievementClaimed(u16 id)
 {
-    return id < ARRAY_COUNT(sAchievements) && DATA->magic == JOURNAL_MAGIC && (DATA->claimed[id / 8] & (1 << (id % 8)));
+    u16 bit = AchievementBitId(id);
+    return id < ARRAY_COUNT(sAchievements) && DATA->magic == JOURNAL_MAGIC
+        && (id < LEGENDS_ACHIEVEMENT_LEGACY_LIMIT || EXTRA->magic == EXTRA_MAGIC)
+        && (AchievementBits(id, TRUE)[bit / 8] & (1 << (bit % 8)));
 }
 void LegendsJournalRefresh(void)
 {
@@ -147,7 +194,7 @@ void LegendsJournalRefresh(void)
     for (i = 0; i < ARRAY_COUNT(sAchievements); i++)
         if (!LegendsAchievementEarned(i) && LegendsAchievementProgress(i) >= sAchievements[i].target)
             Earn(i);
-    DATA->checksum = Checksum();
+    UpdateChecksums();
 }
 void LegendsJournalFlagSet(u16 flag)
 {
@@ -160,7 +207,7 @@ void LegendsJournalFlagSet(u16 flag)
             Earn(i);
             changed = TRUE;
         }
-    if (changed) DATA->checksum = Checksum();
+    if (changed) UpdateChecksums();
 }
 void LegendsJournalStatSet(u8 stat, u32 value)
 {
@@ -174,7 +221,7 @@ void LegendsJournalStatSet(u8 stat, u32 value)
             Earn(i);
             changed = TRUE;
         }
-    if (changed) DATA->checksum = Checksum();
+    if (changed) UpdateChecksums();
 }
 bool32 LegendsAchievementClaim(u16 id)
 {
@@ -183,7 +230,8 @@ bool32 LegendsAchievementClaim(u16 id)
     if (!a || IsOverworldLinkActive() || !LegendsAchievementEarned(id) || LegendsAchievementClaimed(id)) return FALSE;
     // Native AddPCItem is atomic: full storage retains the claim for a retry.
     if (!AddPCItem(a->berry, a->quantity)) return FALSE;
-    DATA->claimed[id / 8] |= 1 << (id % 8);
-    DATA->checksum = Checksum();
+    u16 bit = AchievementBitId(id);
+    AchievementBits(id, TRUE)[bit / 8] |= 1 << (bit % 8);
+    UpdateChecksums();
     return TRUE;
 }

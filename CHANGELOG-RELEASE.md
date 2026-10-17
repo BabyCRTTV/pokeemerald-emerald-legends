@@ -2,6 +2,13 @@
 
 This is the player-facing history for the recommended **Release** build. Shared Legends changes are repeated here so this file stands on its own; Release-only behavior is called out separately.
 
+## [0.0.60] - 2026-10-16
+
+- Added 35 achievements, bringing the total to 130 while preserving all original 95 IDs, goals and rewards.
+- Added research milestones for Birch, Devon and the combined thirty-request catalogue, plus exploration, collecting, battle and everyday-activity goals.
+- Preserved the original 36-byte journal and tracked quest; appended a separately signed achievement save extension without moving existing fields or changing storage readers.
+- Backfilled eligible new goals quietly from retained progress, with manual one-time berry claims, full-PC retries and the established unlock notices and journal interface.
+
 ## [0.0.59] - 2026-10-16
 
 - Added twelve story-gated Birch requests and twelve Devon research contracts, bringing the shared catalogue to thirty requests and the Quest Log to 63 entries.
