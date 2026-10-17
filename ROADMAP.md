@@ -1,6 +1,6 @@
 # Pokémon Emerald: Legends Roadmap
 
-Reviewed against the **v0.0.61** Living Hoenn candidate on 17 October 2026. The root `VERSION`, current source and [development handoff](docs/DEVELOPMENT-HANDOFF.md) take precedence over older milestone notes. [Current achievement QA and remaining playtests](docs/qa/achievements-v0.0.60.md).
+Reviewed against **published v0.0.61** Living Hoenn on 17 October 2026. The root `VERSION`, current source and [development handoff](docs/DEVELOPMENT-HANDOFF.md) take precedence over older milestone notes. [Current achievement QA and remaining playtests](docs/qa/achievements-v0.0.60.md).
 
 ## 0.0.x - Foundation
 

@@ -15,3 +15,7 @@ Existing first meetings, native Birch Pokédex gifts, Mr. Stone's letter/PokéNa
 ## Validation plan and limitations
 
 `test/legends-living-hoenn.test.py` checks connected dialogue entry points, four seasonal branches, menu ordering, original gift/story branches, read-only specials, save-sensitive invariants and old 0.0.60 history. Existing field-request and season suites continue to run. Native Release/Debug compilation, BPS round-trip validation and Pages deployment are release requirements; those outcomes belong in the [QA record](../qa/living-hoenn-v0.0.61.md) after real CI completes. Expanded old-save and uninterrupted emulator playthrough coverage remain separate tasks.
+
+## Publication and QA
+
+**Model: GPT-6 (High) | Logic: real mGBA startup proof plus targeted source branch testing; keep unexercised scenarios explicit.** [v0.0.61 production release, patch hashes, mGBA screenshot evidence and remaining manual scenarios](../qa/living-hoenn-v0.0.61.md). The shipped update makes no saved-state or artwork changes.
