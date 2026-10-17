@@ -24,6 +24,14 @@ On 14 October 2026 the owner reversed the earlier permission to ignore older sav
 
 The owner requested mGBA gameplay testing and previews **exclusively from actual Pokémon Emerald: Legends**. `tools/legends/mgba_gameplay_smoke.c` and `test/mgba-gameplay-smoke.py` launch the unchanged compiled Debug ROM under mGBA's native core, press real SELECT for Debug Quickstart, verify the overworld callback and capture unmodified 240×160 video-buffer frames. `.github/workflows/mgba-gameplay-qa.yml` builds and runs this regression in CI and uploads a screenshot-only artifact (no ROM or save). This is a **boot/Quickstart smoke check**, not proof that Birch/Devon research, Weather Institute bulletin or all four NPC branches have been played through. Those must receive actual targeted emulator runs later. For screenshots and external previews, only use captured frames traceable to this project's built ROM, never reference Pokémon screenshots or synthesized equivalents. Record live CI result before claiming it passed.
 
+## Preview in progress — v0.0.63 seasonal encounter trial / DexNav silhouettes
+
+**Model: GPT-6 | Approach: trace shared encounter consumers, preserve committed-season semantics and use native icon animation with an isolated palette.**
+
+The owner requested seasonal encounters on the first four routes, unknown DexNav icons as black silhouettes, and an actual-game preview **before publication**. Work is isolated on `codex/seasonal-encounters-preview-v0.0.63`; approval/merge/publication are pending, and live master remains v0.0.62. [Proposed catalogue and rules](features/seasonal-encounters.md). Preserve all original resident species in every season, native per-slot levels/rates, water/fishing/hidden tables, encounter priority, approved art/wardrobe and save layouts. A shared land resolver reads the committed active season for the 101–104 pilot and preserves baseline pointers elsewhere. DexNav keeps actual two-frame icons and transparency; its new black palette does not tint known neighbors or unlock names/searches. No new saved field/ID/migration is needed.
+
+Focused resolver/data, icon selection and existing DexNav proximity checks passed locally. Native Debug/Release builds, BPS validation and nineteen targeted mGBA scenarios/captures are pending. The private harness reuses the normal mGBA CI Debug build and uploads PNG/JSON/logs only. Do not merge the preview or change public downloads until the owner reviews the actual captures and encounter proposal.
+
 ## Current release — v0.0.62 Living Hoenn review (published and verified)
 
 **Model: GPT-6 | Approach: dependency-focused independent event review, executable branch/C checks and exact native text assertions.**
