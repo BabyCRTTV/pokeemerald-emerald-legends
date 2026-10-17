@@ -496,6 +496,22 @@ void LegendsFieldRequestsGetActive(void) { gSpecialVar_Result = LegendsFieldRequ
 void LegendsFieldRequestsBeginBirch(void) { sPatron = FIELD_PATRON_BIRCH; sGroup = 0; }
 void LegendsFieldRequestsBeginDevon(void) { sPatron = FIELD_PATRON_DEVON; sGroup = 0; }
 void LegendsFieldRequestsGetPatron(void) { gSpecialVar_Result = sPatron; }
+// Presentation only: count the patron's existing, signed completion bits.
+void LegendsFieldRequestsResearchNotes(void)
+{
+    u16 id = sPatron == FIELD_PATRON_DEVON ? LEGENDS_BIRCH_REQUEST_COUNT : 0;
+    u16 end = sPatron == FIELD_PATRON_DEVON ? LEGENDS_FIELD_REQUEST_COUNT : LEGENDS_BIRCH_REQUEST_COUNT;
+    u8 completed = 0;
+    for (; id < end; id++)
+        if (LegendsFieldRequestComplete(id))
+            completed++;
+    if (completed == (sPatron == FIELD_PATRON_DEVON ? 12 : 18))
+        gSpecialVar_Result = 3;
+    else if (completed >= (sPatron == FIELD_PATRON_DEVON ? 6 : 9))
+        gSpecialVar_Result = 2;
+    else
+        gSpecialVar_Result = completed >= 3 ? 1 : 0;
+}
 void LegendsFieldRequestsCanReview(void) { u16 id = LegendsFieldRequestActive(); gSpecialVar_Result = id != FIELD_REQUEST_NONE && LegendsFieldRequestOwner(id) == sPatron; }
 void LegendsFieldRequestsSelectGroup(void)
 {

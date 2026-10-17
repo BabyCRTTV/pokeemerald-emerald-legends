@@ -24,6 +24,7 @@ void LegendsFieldRequestsAbandonSpecial(void);
 void LegendsFieldRequestsBeginBirch(void);
 void LegendsFieldRequestsBeginDevon(void);
 void LegendsFieldRequestsGetPatron(void);
+void LegendsFieldRequestsResearchNotes(void);
 void LegendsFieldRequestsSelectGroup(void);
 void LegendsFieldRequestsSelectRow(void);
 void LegendsFieldRequestsCanReview(void);
