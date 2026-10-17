@@ -44,7 +44,7 @@ assert "goto_if_set FLAG_SYS_GAME_CLEAR, LittlerootTown_EventScript_FatManChampi
 assert "goto_if_set FLAG_BADGE01_GET, RustboroCity_EventScript_DevonEmployee2Badge" in read("data/maps/RustboroCity/scripts.inc")
 assert "goto_if_set FLAG_BADGE06_GET, FortreeCity_EventScript_OldManBadge" in read("data/maps/FortreeCity/scripts.inc")
 assert "goto_if_set FLAG_SYS_GAME_CLEAR, LilycoveCity_EventScript_Man3Champion" in read("data/maps/LilycoveCity/scripts.inc")
-assert read("VERSION").strip() == "0.0.61"
+assert re.fullmatch(r"0\.0\.\d+", read("VERSION").strip())
 assert read("docs/changelog.html").count("<h2>v0.0.60 ") == 2
 assert read("docs/changelog.html").count("<h2>v0.0.61 ") == 2
 

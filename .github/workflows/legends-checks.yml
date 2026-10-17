@@ -84,7 +84,9 @@ jobs:
       - name: Birch field request selection, abandonment and atomic rewards
         run: python3 test/legends-field-requests.test.py
       - name: Verify read-only Living Hoenn dialogue and story priorities
-        run: python3 test/legends-living-hoenn.test.py
+        run: |
+          python3 test/legends-living-hoenn.test.py
+          python3 test/legends-living-hoenn-branches.test.py
       - name: Exercise wardrobe navigation and access
         run: python3 test/legends-wardrobe.test.py
       - name: Verify layered accessories and wardrobe furniture

@@ -88,10 +88,11 @@ struct PaletteFade gPaletteFade;
 u16 gPlttBufferUnfaded[512];
 u16 gSpecialVar_Result;
 u16 vars[256], rtcError, savedWeather, reloads;
+u32 writes;
 u8 month = 3, scriptActive;
 u32 day = 100;
 u16 VarGet(u16 v) {return vars[v - 0x4000];}
-void VarSet(u16 v, u16 n) {vars[v - 0x4000] = n;}
+void VarSet(u16 v, u16 n) {vars[v - 0x4000] = n;writes++;}
 void RtcGetInfo(struct SiiRtcInfo *r) {r->month = (month / 10) * 16 + month % 10;}
 u32 ConvertBcdToBinary(u8 v) {return (v >> 4) * 10 + (v & 15);}
 u16 RtcGetErrorStatus(void) {return rtcError;}
@@ -121,7 +122,8 @@ int main(void)
         assert(LegendsGetSeason() == i);
         LegendsSeasonTick(); assert(LegendsGetSeason() == (i + 1) % 4);
         assert(LegendsGetActiveSeason() == i); // no mid-field palette jump
-        LegendsSeasonBulletinSpecial(); assert(gSpecialVar_Result == i);
+        u32 beforeBulletin = writes;
+        LegendsSeasonBulletinSpecial(); assert(gSpecialVar_Result == i && writes == beforeBulletin);
         LegendsCommitSeasonTransition();
         assert(LegendsGetActiveSeason() == (i + 1) % 4);
         LegendsSeasonBulletinSpecial();

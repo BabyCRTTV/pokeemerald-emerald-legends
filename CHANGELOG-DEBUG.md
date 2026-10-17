@@ -2,6 +2,12 @@
 
 This is the developer-facing history for the **Debug** build. Shared Legends changes are repeated here so this file stands on its own; Debug-only behavior is called out separately.
 
+## [0.0.62] - 2026-10-17
+
+- Corrected the Fortree resident's milestone speech to scroll its third line within the native two-line dialogue box.
+- Preserved Research Notes, seasonal bulletin choices, native gifts, quest/reward progress, save layouts, artwork and movement.
+- Added focused branch and text-layout regressions plus targeted native mGBA checks for Research Notes selection, bulletin choices/seasons and four towns' milestone dialogue.
+
 ## [0.0.61] - 2026-10-17
 
 - Added optional Research Notes to Birch and Mr. Stone's existing menus, with different reflections after three, nine and all eighteen Birch reports or three, six and all twelve Devon contracts.

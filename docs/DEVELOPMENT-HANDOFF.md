@@ -24,6 +24,12 @@ On 14 October 2026 the owner reversed the earlier permission to ignore older sav
 
 The owner requested mGBA gameplay testing and previews **exclusively from actual Pokémon Emerald: Legends**. `tools/legends/mgba_gameplay_smoke.c` and `test/mgba-gameplay-smoke.py` launch the unchanged compiled Debug ROM under mGBA's native core, press real SELECT for Debug Quickstart, verify the overworld callback and capture unmodified 240×160 video-buffer frames. `.github/workflows/mgba-gameplay-qa.yml` builds and runs this regression in CI and uploads a screenshot-only artifact (no ROM or save). This is a **boot/Quickstart smoke check**, not proof that Birch/Devon research, Weather Institute bulletin or all four NPC branches have been played through. Those must receive actual targeted emulator runs later. For screenshots and external previews, only use captured frames traceable to this project's built ROM, never reference Pokémon screenshots or synthesized equivalents. Record live CI result before claiming it passed.
 
+## In review — v0.0.62 Living Hoenn dialogue repair
+
+**Model: GPT-6 | Approach: dependency-focused independent event review, executable branch/C checks and exact native text assertions.**
+
+The owner requested review of v0.0.61's Research Notes, Weather Institute bulletin and milestone NPC edits. Found one product defect: Fortree's new speech used two newlines before a page break, overflowing the native two-line field box. Corrected its second newline to a scroll prompt without changing wording, events or saves. Also found that private QA run 39059912905 never entered Research Notes despite its captions; its successful exit is not notes coverage. The replacement native checker asserts the correct root menu/cursor/expected text and protected state across 23 controlled cases, reusing the existing mGBA CI build. Source/C tests now cover all note counts, B7/B8 reads, weather choices/seasons, NPC priority/fallbacks and field text geometry. Those local checks passed; native/CI/publication are pending. [Review and verification status](qa/living-hoenn-review-v0.0.62.md). Preserve the separate private preview branch, all approved art/wardrobe/seasons, original gifts/rewards and the published save layout.
+
 ## Achievement publication closeout — 17 October 2026
 
 **Model: GPT-6 | Approach: focused publication verification; preserve later work and distinguish fresh HTTP/host checks from retained native evidence.**
