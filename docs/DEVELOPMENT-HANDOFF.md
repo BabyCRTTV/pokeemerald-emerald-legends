@@ -10,9 +10,9 @@ The owner uses a phone. Provide narrow vertical PNG/GIF previews and explicit do
 
 On 14 October 2026 the owner reversed the earlier permission to ignore older saves. Backward compatibility for Legends battery saves is now required for future updates. Preserve existing save readers, field offsets and persistent IDs; add focused migrations/tests when saved data changes. [Save-compatibility policy and evidence](SAVE-COMPATIBILITY.md) defines the release gate without adding duplicate builds or per-patch full emulator runs. Existing checks pass; a complete historical-release save-fixture matrix remains unfinished and must not be represented as verified.
 
-## In progress — v0.0.60 achievements
+## Release candidate — v0.0.60 achievements
 
-The owner requested 35 additional achievements. IDs 95–129 append to the original 95; 130 total. Preserve the complete original catalogue and existing art, wardrobe, seasons and approved journal UI. A separate signed 28-byte save extension at SaveBlock3 offset 688 stores overflow bits while the original 36-byte v1 journal at 652 and tracked quest remain intact. Legacy initialization clears unpublished bit 95, preserves original progress and quietly backfills eligible new goals without rewards. No vars, storage-reader or sector changes. All 50 local project blocks passed; native builds/flash/Continue/publication are underway, not yet claimed. [Scope and evolving QA](qa/achievements-v0.0.60.md).
+The owner requested 35 additional achievements. IDs 95–129 append to the original 95; 130 total. Preserve the complete original catalogue and existing art, wardrobe, seasons and approved journal UI. A separate signed 28-byte save extension at SaveBlock3 offset 688 stores overflow bits while the original 36-byte v1 journal at 652 and tracked quest remain intact. Legacy initialization clears unpublished bit 95, preserves original progress and quietly backfills eligible new goals without rewards. No vars, storage-reader or sector changes. All 50 local project blocks, both native builds, controlled migration/high-ID UI/full-PC/one-time claim/flash, four unmodified Debug/Release Continue fixtures and independent private BPS round trips passed. PR #75 checks passed; CI build/production publication remain pending. [Scope and evolving QA](qa/achievements-v0.0.60.md).
 
 ## Resumption audit — 16 October 2026
 

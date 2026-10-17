@@ -10,7 +10,7 @@ static void quiet(struct mLogger *l,int c,enum mLogLevel v,const char *f,va_list
 static struct mLogger logger={.log=quiet};static struct mCore *c;static color_t *video;static unsigned mainAddr,callback,selected,detail;static const char *out;
 static void frames(int n){while(n--)c->runFrame(c);}
 static unsigned box(int n){return c->busRead32(c,0x0203fc00+4*n);}
-static void command(int n,int count){unsigned prev=c->busRead32(c,mainAddr+4);c->busWrite32(c,0x0203fc78,0);c->busWrite32(c,0x0203fc7c,prev);c->busWrite32(c,0x0203fc00,n);c->busWrite32(c,mainAddr+4,callback);frames(count);assert(box(30));}
+static void command(int n,int count){unsigned prev=c->busRead32(c,mainAddr+4);c->busWrite32(c,0x0203fc78,0);c->busWrite32(c,0x0203fc7c,prev);c->busWrite32(c,0x0203fc00,n);c->busWrite32(c,mainAddr+4,callback);frames(count);for(int wait=0;wait<400&&!box(30);wait++)frames(1);printf("command %d done=%u callback=%08x box0=%u\n",n,box(30),c->busRead32(c,mainAddr+4),box(0));assert(box(30));}
 static void key(unsigned k){c->setKeys(c,k);frames(2);c->setKeys(c,0);frames(90);}
 static void cap(const char *name){char p[4096];snprintf(p,sizeof(p),"%s/%s.rgba",out,name);FILE *f=fopen(p,"wb");assert(f&&fwrite(video,4,240*160,f)==240*160);fclose(f);puts(name);}
 static void battery(const char *name){void *data=NULL;size_t n=c->savedataClone(c,&data);assert(n==131072&&data);char p[4096];snprintf(p,sizeof(p),"%s/%s.sav",out,name);FILE *f=fopen(p,"wb");assert(f&&fwrite(data,1,n,f)==n);fclose(f);free(data);}
