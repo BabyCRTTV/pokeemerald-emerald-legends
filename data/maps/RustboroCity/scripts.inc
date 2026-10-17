@@ -143,9 +143,22 @@ RustboroCity_EventScript_FatManSawGrunt::
 RustboroCity_EventScript_DevonEmployee2::
 	lock
 	faceplayer
+	goto_if_set FLAG_SYS_GAME_CLEAR, RustboroCity_EventScript_DevonEmployee2Champion
+	goto_if_set FLAG_BADGE01_GET, RustboroCity_EventScript_DevonEmployee2Badge
 	msgbox RustboroCity_Text_YoureNewAroundHere, MSGBOX_DEFAULT
 	release
 	end
+
+RustboroCity_EventScript_DevonEmployee2Badge::
+	msgbox RustboroCity_Text_DevonEmployee2Badge, MSGBOX_DEFAULT
+	release
+	end
+
+RustboroCity_EventScript_DevonEmployee2Champion::
+	msgbox RustboroCity_Text_DevonEmployee2Champion, MSGBOX_DEFAULT
+	release
+	end
+
 
 RustboroCity_EventScript_Woman::
 	msgbox RustboroCity_Text_GymLeaderIsntEasyWithFire, MSGBOX_NPC
@@ -1034,6 +1047,19 @@ RustboroCity_Text_HeyThatsRustborosGymBadge:
 	.string "Hey, that's RUSTBORO's GYM BADGE!\p"
 	.string "Out of all the POKéMON GYM BADGES,\n"
 	.string "RUSTBORO's is the coolest, I'd say.$"
+
+RustboroCity_Text_DevonEmployee2Badge:
+	.string "I heard you earned ROXANNE's\n"
+	.string "STONE BADGE!\p"
+	.string "RUSTBORO takes training\n"
+	.string "pretty seriously. Good work!$"
+
+RustboroCity_Text_DevonEmployee2Champion:
+	.string "The whole DEVON office was\n"
+	.string "talking about your victory.\p"
+	.string "From ROXANNE's GYM all the\n"
+	.string "way to CHAMPION… Amazing!$"
+
 
 RustboroCity_Text_YoureNewAroundHere:
 	.string "Oh? Who might you be?\n"

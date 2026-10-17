@@ -1142,6 +1142,7 @@ static const struct MenuAction sLegendsClockModes[] = {
 static const struct MenuAction sLegendsBirchMain[] = {
     {COMPOUND_STRING("FIELD REQUESTS")},
     {COMPOUND_STRING("POKéDEX RATING")},
+    {COMPOUND_STRING("RESEARCH NOTES")},
     {COMPOUND_STRING("NOT NOW")},
 };
 static const struct MenuAction sLegendsBirchRequests[] = {
@@ -1173,6 +1174,7 @@ static const struct MenuAction sLegendsDevonGroups[] = {
 static const struct MenuAction sLegendsDevonMain[] = {
     {COMPOUND_STRING("RESEARCH CONTRACTS")},
     {COMPOUND_STRING("DEVON BUSINESS")},
+    {COMPOUND_STRING("RESEARCH NOTES")},
     {COMPOUND_STRING("NOT NOW")},
 };
 

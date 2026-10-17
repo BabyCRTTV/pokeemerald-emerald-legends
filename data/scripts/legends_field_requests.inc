@@ -17,6 +17,7 @@ LegendsFieldRequests_Root:
 	switch VAR_RESULT
 	case 0, LegendsFieldRequests_Work
 	case 1, ProfBirch_EventScript_NativeAskRatePokedex
+	case 2, LegendsFieldRequests_ResearchNotes
 	goto LegendsFieldRequests_Leave
 
 LegendsFieldRequests_DevonMain:
@@ -24,7 +25,51 @@ LegendsFieldRequests_DevonMain:
 	switch VAR_RESULT
 	case 0, LegendsFieldRequests_Work
 	case 1, RustboroCity_DevonCorp_3F_EventScript_NativeBusiness
+	case 2, LegendsFieldRequests_ResearchNotes
 	goto LegendsFieldRequests_Leave
+
+@ Research notes reflect signed completion bits; never accept, claim or save.
+LegendsFieldRequests_ResearchNotes:
+	special LegendsFieldRequestsGetPatron
+	goto_if_eq VAR_RESULT, FIELD_PATRON_DEVON, LegendsFieldRequests_DevonNotes
+	special LegendsFieldRequestsResearchNotes
+	goto_if_eq VAR_RESULT, 3, LegendsFieldRequests_BirchNotesFinal
+	goto_if_eq VAR_RESULT, 2, LegendsFieldRequests_BirchNotesAdvanced
+	goto_if_eq VAR_RESULT, 1, LegendsFieldRequests_BirchNotesEarly
+	msgbox LegendsFieldRequests_Text_BirchNotesNone, MSGBOX_DEFAULT
+	goto LegendsFieldRequests_Root
+
+LegendsFieldRequests_BirchNotesEarly:
+	msgbox LegendsFieldRequests_Text_BirchNotesEarly, MSGBOX_DEFAULT
+	goto LegendsFieldRequests_Root
+
+LegendsFieldRequests_BirchNotesAdvanced:
+	msgbox LegendsFieldRequests_Text_BirchNotesAdvanced, MSGBOX_DEFAULT
+	goto LegendsFieldRequests_Root
+
+LegendsFieldRequests_BirchNotesFinal:
+	msgbox LegendsFieldRequests_Text_BirchNotesFinal, MSGBOX_DEFAULT
+	goto LegendsFieldRequests_Root
+
+LegendsFieldRequests_DevonNotes:
+	special LegendsFieldRequestsResearchNotes
+	goto_if_eq VAR_RESULT, 3, LegendsFieldRequests_DevonNotesFinal
+	goto_if_eq VAR_RESULT, 2, LegendsFieldRequests_DevonNotesAdvanced
+	goto_if_eq VAR_RESULT, 1, LegendsFieldRequests_DevonNotesEarly
+	msgbox LegendsFieldRequests_Text_DevonNotesNone, MSGBOX_DEFAULT
+	goto LegendsFieldRequests_Root
+
+LegendsFieldRequests_DevonNotesEarly:
+	msgbox LegendsFieldRequests_Text_DevonNotesEarly, MSGBOX_DEFAULT
+	goto LegendsFieldRequests_Root
+
+LegendsFieldRequests_DevonNotesAdvanced:
+	msgbox LegendsFieldRequests_Text_DevonNotesAdvanced, MSGBOX_DEFAULT
+	goto LegendsFieldRequests_Root
+
+LegendsFieldRequests_DevonNotesFinal:
+	msgbox LegendsFieldRequests_Text_DevonNotesFinal, MSGBOX_DEFAULT
+	goto LegendsFieldRequests_Root
 
 LegendsFieldRequests_Work:
 	special LegendsFieldRequestsGetActive
@@ -109,6 +154,61 @@ LegendsFieldRequests_AskAbandon:
 LegendsFieldRequests_Leave:
 	release
 	end
+
+LegendsFieldRequests_Text_BirchNotesNone:
+	.string "BIRCH: A good field notebook\n"
+	.string "starts with an empty page.\p"
+	.string "The small things you notice\n"
+	.string "may answer the big questions.$"
+
+LegendsFieldRequests_Text_BirchNotesEarly:
+	.string "BIRCH: Those first reports tell\n"
+	.string "us something important.\p"
+	.string "POKéMON share their homes with\n"
+	.string "one another, and with people.\p"
+	.string "Even familiar paths are worth\n"
+	.string "another look.$"
+
+LegendsFieldRequests_Text_BirchNotesAdvanced:
+	.string "BIRCH: Your notes now span\n"
+	.string "forests, shores and highlands!\p"
+	.string "I can compare how POKéMON\n"
+	.string "adapt to very different places.\p"
+	.string "That's real field research.$"
+
+LegendsFieldRequests_Text_BirchNotesFinal:
+	.string "BIRCH: The HOENN FIELD ATLAS\n"
+	.string "is more than a list of species.\p"
+	.string "Your observations show how\n"
+	.string "every habitat fits together.\p"
+	.string "You should be proud of this.$"
+
+LegendsFieldRequests_Text_DevonNotesNone:
+	.string "MR. STONE: A good invention\n"
+	.string "begins with a good question.\p"
+	.string "Our engineers need honest\n"
+	.string "field reports, not guesses.$"
+
+LegendsFieldRequests_Text_DevonNotesEarly:
+	.string "MR. STONE: Your first contracts\n"
+	.string "helped us test real conditions.\p"
+	.string "A design on paper can look\n"
+	.string "perfect until it leaves the lab.$"
+
+LegendsFieldRequests_Text_DevonNotesAdvanced:
+	.string "MR. STONE: From tunnels to\n"
+	.string "stormy routes, your findings\l"
+	.string "have reached every department.\p"
+	.string "DEVON must build for the world\n"
+	.string "as it truly is.$"
+
+LegendsFieldRequests_Text_DevonNotesFinal:
+	.string "MR. STONE: Our master project\n"
+	.string "would not exist without you.\p"
+	.string "Different POKéMON working\n"
+	.string "together inspired its design.\p"
+	.string "No contract can measure\n"
+	.string "what that means to DEVON.$"
 
 LegendsFieldRequests_Text_Invitation:
 	.string "PROF. BIRCH: The GYM challenge isn't\n"

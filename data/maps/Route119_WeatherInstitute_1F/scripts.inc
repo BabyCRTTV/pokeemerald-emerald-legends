@@ -47,7 +47,32 @@ Route119_WeatherInstitute_1F_EventScript_StudyingRain::
 	end
 
 Route119_WeatherInstitute_1F_EventScript_InstituteWorker2::
-	msgbox Route119_WeatherInstitute_1F_Text_WhatWereAquasUpTo, MSGBOX_NPC
+	lock
+	faceplayer
+	msgbox Route119_WeatherInstitute_1F_Text_WhatWereAquasUpTo, MSGBOX_DEFAULT
+	goto_if_eq VAR_WEATHER_INSTITUTE_STATE, 0, Route119_WeatherInstitute_1F_EventScript_BulletinEnd
+	msgbox Route119_WeatherInstitute_1F_Text_BulletinOffer, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, NO, Route119_WeatherInstitute_1F_EventScript_BulletinEnd
+	special LegendsSeasonBulletinSpecial
+	goto_if_eq VAR_RESULT, 0, Route119_WeatherInstitute_1F_EventScript_BulletinSpring
+	goto_if_eq VAR_RESULT, 1, Route119_WeatherInstitute_1F_EventScript_BulletinSummer
+	goto_if_eq VAR_RESULT, 2, Route119_WeatherInstitute_1F_EventScript_BulletinAutumn
+	msgbox Route119_WeatherInstitute_1F_Text_BulletinWinter, MSGBOX_DEFAULT
+	goto Route119_WeatherInstitute_1F_EventScript_BulletinEnd
+
+Route119_WeatherInstitute_1F_EventScript_BulletinSpring:
+	msgbox Route119_WeatherInstitute_1F_Text_BulletinSpring, MSGBOX_DEFAULT
+	goto Route119_WeatherInstitute_1F_EventScript_BulletinEnd
+
+Route119_WeatherInstitute_1F_EventScript_BulletinSummer:
+	msgbox Route119_WeatherInstitute_1F_Text_BulletinSummer, MSGBOX_DEFAULT
+	goto Route119_WeatherInstitute_1F_EventScript_BulletinEnd
+
+Route119_WeatherInstitute_1F_EventScript_BulletinAutumn:
+	msgbox Route119_WeatherInstitute_1F_Text_BulletinAutumn, MSGBOX_DEFAULT
+
+Route119_WeatherInstitute_1F_EventScript_BulletinEnd:
+	release
 	end
 
 Route119_WeatherInstitute_1F_EventScript_Bed::
@@ -126,6 +151,40 @@ Route119_WeatherInstitute_1F_Text_WhatWereAquasUpTo:
 	.string "We've been saved by your actions!\p"
 	.string "What I don't understand is what on\n"
 	.string "earth the AQUAS were up to.$"
+
+Route119_WeatherInstitute_1F_Text_BulletinOffer:
+	.string "Our field bulletin follows the\n"
+	.string "region's changing seasons.\p"
+	.string "Would you like today's notes?$"
+
+Route119_WeatherInstitute_1F_Text_BulletinSpring:
+	.string "FIELD BULLETIN: SPRING\p"
+	.string "Fresh growth draws small BUG\n"
+	.string "POKéMON out of hiding.\p"
+	.string "Try watching the edges of\n"
+	.string "PETALBURG WOODS and ROUTE 104.$"
+
+Route119_WeatherInstitute_1F_Text_BulletinSummer:
+	.string "FIELD BULLETIN: SUMMER\p"
+	.string "Long, warm days make the\n"
+	.string "riverbanks busy places.\p"
+	.string "Watch the water along ROUTE 119.\n"
+	.string "Bring a partner you trust.$"
+
+Route119_WeatherInstitute_1F_Text_BulletinAutumn:
+	.string "FIELD BULLETIN: AUTUMN\p"
+	.string "Cooler air and mist change\n"
+	.string "the look of HOENN's forests.\p"
+	.string "Observe the treetops around\n"
+	.string "FORTREE for subtle differences.$"
+
+Route119_WeatherInstitute_1F_Text_BulletinWinter:
+	.string "FIELD BULLETIN: WINTER\p"
+	.string "Frost and flurries can hide\n"
+	.string "tracks near grassy paths.\p"
+	.string "Bring warm gear and watch\n"
+	.string "where POKéMON take shelter.$"
+
 
 Route119_WeatherInstitute_1F_Text_TakeRestInBed:
 	.string "There's a bed…\n"

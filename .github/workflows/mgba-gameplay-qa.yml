@@ -1,0 +1,57 @@
+name: Legends mGBA gameplay smoke
+
+on:
+  pull_request:
+    branches: [ master ]
+    paths:
+      - '.github/workflows/mgba-gameplay-qa.yml'
+      - 'tools/legends/mgba_gameplay_smoke.c'
+      - 'test/mgba-gameplay-smoke.py'
+      - 'src/**'
+      - 'include/**'
+      - 'data/**'
+      - 'graphics/**'
+      - 'maps/**'
+      - 'VERSION'
+  push:
+    branches: [ master ]
+    paths:
+      - '.github/workflows/mgba-gameplay-qa.yml'
+      - 'tools/legends/mgba_gameplay_smoke.c'
+      - 'test/mgba-gameplay-smoke.py'
+      - 'src/**'
+      - 'include/**'
+      - 'data/**'
+      - 'graphics/**'
+      - 'maps/**'
+      - 'VERSION'
+
+permissions:
+  contents: read
+
+jobs:
+  mgba-debug-smoke:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install compiler and native mGBA emulator
+        run: |
+          sudo apt-get -o Acquire::Retries=3 update
+          sudo apt-get -o Acquire::Retries=3 install -y --no-install-recommends \
+            build-essential gcc-arm-none-eabi binutils-arm-none-eabi \
+            libnewlib-arm-none-eabi libpng-dev libmgba-dev python3-pil g++
+      - name: Build unmodified Legends Debug ROM and ELF
+        run: make -j"$(nproc)"
+      - name: Execute native mGBA Quickstart and capture live gameplay
+        run: python3 test/mgba-gameplay-smoke.py
+      - name: Upload direct Legends gameplay frames and machine receipt
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: legends-mgba-v0.0.61-gameplay
+          path: |
+            build/legends-mgba-preview/*.png
+            build/legends-mgba-preview/*.json
+            build/legends-mgba-preview/*.log
+          if-no-files-found: warn

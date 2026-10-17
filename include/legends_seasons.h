@@ -25,6 +25,7 @@ void LegendsSetSeasonMode(u8 mode);
 void LegendsSetPlaytimeSeason(u8 season);
 u8 LegendsGetSeason(void);
 u8 LegendsGetActiveSeason(void);
+void LegendsSeasonBulletinSpecial(void);
 void LegendsCommitSeasonTransition(void);
 u8 LegendsGetSeasonForMode(u8 mode);
 const u8 *LegendsGetSeasonName(u8 season);

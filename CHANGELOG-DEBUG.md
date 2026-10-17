@@ -2,6 +2,13 @@
 
 This is the developer-facing history for the **Debug** build. Shared Legends changes are repeated here so this file stands on its own; Debug-only behavior is called out separately.
 
+## [0.0.61] - 2026-10-17
+
+- Added optional Research Notes to Birch and Mr. Stone's existing menus, with different reflections after three, nine and all eighteen Birch reports or three, six and all twelve Devon contracts.
+- Added a four-season field bulletin from the Weather Institute's first-floor worker after the Aqua rescue; preserved the Castform gift and all abnormal-weather investigations.
+- Added story-aware conversations for four ordinary residents of Littleroot, Rustboro, Fortree and Lilycove, while keeping original early-game guidance and story scripts.
+- Reused existing signed research progress, active season and story/badge flags. Changed no saves, rewards, quest IDs, graphics, native story priority or Debug/Release gameplay differences.
+
 ## [0.0.60] - 2026-10-16
 
 - Added 35 achievements, bringing the total to 130 while preserving all original 95 IDs, goals and rewards.

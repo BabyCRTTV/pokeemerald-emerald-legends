@@ -33,7 +33,12 @@ FortreeCity_EventScript_Girl::
 	end
 
 FortreeCity_EventScript_OldMan::
+	goto_if_set FLAG_BADGE06_GET, FortreeCity_EventScript_OldManBadge
 	msgbox FortreeCity_Text_EveryoneHealthyAndLively, MSGBOX_NPC
+	end
+
+FortreeCity_EventScript_OldManBadge::
+	msgbox FortreeCity_Text_OldManBadge, MSGBOX_NPC
 	end
 
 FortreeCity_EventScript_Boy::
@@ -111,6 +116,14 @@ FortreeCity_Text_TreesGrowByDrinkingRainwater:
 	.string "trees grow by drinking that water…\p"
 	.string "Our FORTREE CITY exists because\n"
 	.string "there's both water and soil.$"
+
+FortreeCity_Text_OldManBadge:
+	.string "You bested WINONA? Ha!\n"
+	.string "Even our treetop homes\n"
+	.string "couldn't keep that news down.\p"
+	.string "Remember to enjoy the view\n"
+	.string "between your battles.$"
+
 
 FortreeCity_Text_EveryoneHealthyAndLively:
 	.string "The CITY consists of homes built on\n"

@@ -82,6 +82,12 @@ u8 LegendsGetSeason(void)
     return LegendsGetSeasonForMode(LegendsGetSeasonMode());
 }
 
+// Read-only query of the committed visual season (not the pending next season).
+void LegendsSeasonBulletinSpecial(void)
+{
+    gSpecialVar_Result = LegendsGetActiveSeason();
+}
+
 // Commit only while loading a fully faded map (never a seamless route edge).
 // Foliage uses this saved snapshot until the next warp. Ambient forecasts
 // use the separate playtime weather clock and the active season.

@@ -49,7 +49,12 @@ LilycoveCity_EventScript_ReceivedBerry::
 	end
 
 LilycoveCity_EventScript_Man3::
+	goto_if_set FLAG_SYS_GAME_CLEAR, LilycoveCity_EventScript_Man3Champion
 	msgbox LilycoveCity_Text_ContestHallInTown, MSGBOX_NPC
+	end
+
+LilycoveCity_EventScript_Man3Champion::
+	msgbox LilycoveCity_Text_ChampionContest, MSGBOX_NPC
 	end
 
 LilycoveCity_EventScript_Girl::
@@ -574,6 +579,13 @@ LilycoveCity_Text_GetLostMessingUpTraining:
 	.string "Hunh? What do you want?\p"
 	.string "You're messing up our training,\n"
 	.string "so can you, like, get lost?$"
+
+LilycoveCity_Text_ChampionContest:
+	.string "A CHAMPION in LILYCOVE!\n"
+	.string "Maybe you'll try a CONTEST?\p"
+	.string "Battles are one way to shine.\n"
+	.string "There's another stage here!$"
+
 
 LilycoveCity_Text_ContestHallInTown:
 	.string "There's a POKéMON CONTEST HALL\n"

@@ -53,6 +53,7 @@ extern struct Weather *gWeatherPtr;
 struct PaletteFade {u8 active;};
 extern struct PaletteFade gPaletteFade;
 extern u16 gPlttBufferUnfaded[512];
+extern u16 gSpecialVar_Result;
 u16 VarGet(u16);
 void VarSet(u16, u16);
 void RtcGetInfo(struct SiiRtcInfo *);
@@ -85,6 +86,7 @@ struct Weather weather;
 struct Weather *gWeatherPtr = &weather;
 struct PaletteFade gPaletteFade;
 u16 gPlttBufferUnfaded[512];
+u16 gSpecialVar_Result;
 u16 vars[256], rtcError, savedWeather, reloads;
 u8 month = 3, scriptActive;
 u32 day = 100;
@@ -119,8 +121,11 @@ int main(void)
         assert(LegendsGetSeason() == i);
         LegendsSeasonTick(); assert(LegendsGetSeason() == (i + 1) % 4);
         assert(LegendsGetActiveSeason() == i); // no mid-field palette jump
+        LegendsSeasonBulletinSpecial(); assert(gSpecialVar_Result == i);
         LegendsCommitSeasonTransition();
         assert(LegendsGetActiveSeason() == (i + 1) % 4);
+        LegendsSeasonBulletinSpecial();
+        assert(gSpecialVar_Result == (i + 1) % 4);
     }
     // Migrate recorded playtime, then continue past the native 999-hour cap.
     memset(vars, 0, sizeof(vars)); save.playTimeHours = 999; save.playTimeMinutes = 59; save.playTimeSeconds = 59;
