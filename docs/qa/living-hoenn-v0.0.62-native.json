@@ -296,5 +296,12 @@
       "label": "Fortree: native scroll prompt"
     }
   ],
-  "preview_sha256": "f7487858a6e26c0cbd8fd19edcb885434c54ee0205a8014b527aa9097df0a281"
+  "preview_sha256": "f7487858a6e26c0cbd8fd19edcb885434c54ee0205a8014b527aa9097df0a281",
+  "production_confirmation": {
+    "workflow_run": 39072052932,
+    "artifact_id": 12115413650,
+    "receipt_identical_to_PR": true,
+    "additional_frames_reviewed": 92,
+    "note": "Exact native receipt/base ROM/harness/scenario parity. All displayed text matched; ambient weather and NPC movement varied between runs."
+  }
 }

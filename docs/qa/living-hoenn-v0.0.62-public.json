@@ -1,0 +1,110 @@
+{
+  "version": "0.0.62",
+  "verified_utc": "2026-10-17T21:52:49.065582+00:00",
+  "audited_head": "512acf964dba395551070cd59e83b0b59b19ba1e",
+  "patch_commit": "4a672a69348f3ff5b76112156ba2e271a38bae04",
+  "manifest": {
+    "url": "https://babycrttv.github.io/pokeemerald-emerald-legends/downloads/SHA256SUMS.txt",
+    "HTTP": 200,
+    "bytes": 412,
+    "sha256": "c10b0b2d1575fff46141487417fa7ca645d74c33cb22842605e29603cc60a41e"
+  },
+  "patches": {
+    "Release": {
+      "url": "https://babycrttv.github.io/pokeemerald-emerald-legends/downloads/Pokemon-Emerald-Legends-v0.0.62.bps",
+      "HTTP": 200,
+      "bytes": 17455647,
+      "sha256": "2db047a92f416a74e67040672ba1f3bd5a5d3477c4aa2ebff90587f50faf0f37",
+      "Floating_IPS_verified": true,
+      "downloaded_browser_decoder_verified": true,
+      "ROM_sha256": "3f56f22fe591b732d2d286923980e65a8e117fb95f8dd45c0c2cd59cf9883d20",
+      "matches_committed_patch_and_CI_manifest": true
+    },
+    "Debug": {
+      "url": "https://babycrttv.github.io/pokeemerald-emerald-legends/downloads/Pokemon-Emerald-Legends-v0.0.62-debug.bps",
+      "HTTP": 200,
+      "bytes": 17287791,
+      "sha256": "b4eab2ca1d3dfba879921d4e2e76a8dda2b5626f7722c14fcdeb84c0025e07c0",
+      "Floating_IPS_verified": true,
+      "downloaded_browser_decoder_verified": true,
+      "ROM_sha256": "c9de644f5e066b5edad8765032ad700ac9e267914bf49ae3cecb3ae897ad1e34",
+      "matches_committed_patch_and_CI_manifest": true
+    }
+  },
+  "site": {
+    "index.html": {
+      "url": "https://babycrttv.github.io/pokeemerald-emerald-legends/index.html",
+      "HTTP": 200,
+      "bytes": 3538,
+      "sha256": "dbcd4fc8b63106edb823b17de41109aef098a1ceaf40c3f3d882c6ed43e78341",
+      "matches_committed_bytes": true
+    },
+    "changelog.html": {
+      "url": "https://babycrttv.github.io/pokeemerald-emerald-legends/changelog.html",
+      "HTTP": 200,
+      "bytes": 108795,
+      "sha256": "37f61f7a6c337f0bd438231ced30a8c5f36e9e27f8fc574c38dcdb46e5cd1ab8",
+      "matches_committed_bytes": true
+    },
+    "patcher.html": {
+      "url": "https://babycrttv.github.io/pokeemerald-emerald-legends/patcher.html",
+      "HTTP": 200,
+      "bytes": 2679,
+      "sha256": "3e7130f0a3c7a02db6323a7547bf5be0966dccc0b0a25a3779946f76be259758",
+      "matches_committed_bytes": true
+    },
+    "patcher.js": {
+      "url": "https://babycrttv.github.io/pokeemerald-emerald-legends/patcher.js",
+      "HTTP": 200,
+      "bytes": 9353,
+      "sha256": "de7b31d493d1533dd9b4aa94f58036a1a50630cc94a95d5de9898153ea8bd857",
+      "matches_committed_bytes": true
+    },
+    "journal-guide.html": {
+      "url": "https://babycrttv.github.io/pokeemerald-emerald-legends/journal-guide.html",
+      "HTTP": 200,
+      "bytes": 4623,
+      "sha256": "d0f92bdafedc0ac3c15489e68e7fab697ecb2d05d980e875b3bf67ec6a4c5409",
+      "matches_committed_bytes": true
+    },
+    "features/quest-log-achievements.md": {
+      "url": "https://babycrttv.github.io/pokeemerald-emerald-legends/features/quest-log-achievements.md",
+      "HTTP": 200,
+      "bytes": 9085,
+      "sha256": "45ed8da58142b2fecbdb5ec3dc070a2bd3f81a6d873fbb93a22f3f1d98109bd0",
+      "matches_committed_bytes": true
+    },
+    "features/living-hoenn.md": {
+      "url": "https://babycrttv.github.io/pokeemerald-emerald-legends/features/living-hoenn.md",
+      "HTTP": 200,
+      "bytes": 3006,
+      "sha256": "838af998505db08cb3ba01fc965014b6918cc598476896f2b6dbd91556e7557a",
+      "matches_committed_bytes": true
+    },
+    "qa/living-hoenn-v0.0.62-preview.png": {
+      "url": "https://babycrttv.github.io/pokeemerald-emerald-legends/qa/living-hoenn-v0.0.62-preview.png",
+      "HTTP": 200,
+      "bytes": 48043,
+      "sha256": "f7487858a6e26c0cbd8fd19edcb885434c54ee0205a8014b527aa9097df0a281",
+      "matches_committed_bytes": true
+    }
+  },
+  "native_dialogue_QA": {
+    "receipt": "living-hoenn-v0.0.62-native.json",
+    "workflow_run": 39071368730,
+    "production_workflow_run": 39072052932,
+    "scenarios": 23,
+    "Debug_ROM_hash_matches_native_base": true
+  },
+  "scope": "Fresh public HTTP/hash downloads and committed-byte parity; Floating IPS and the downloaded browser decoder reconstructed both native-built Release/Debug ROMs. Focused source/C tests and 23 controlled native mGBA Debug scenarios passed, with all 92 dialogue frames reviewed.",
+  "limits": [
+    "Native dialogue scenarios used controlled flags/vars and private instrumentation of the compiled Debug ROM; they were not a natural full playthrough.",
+    "No authentic historical user-save matrix or Pizza Boy test. No separate Release dialogue playthrough."
+  ],
+  "production_actions": {
+    "project_checks": 39072052961,
+    "Debug_Release_builds_and_BPS": 39072052916,
+    "mGBA_smoke_and_23_scenarios": 39072052932,
+    "patch_Pages": 39072714381
+  }
+}
