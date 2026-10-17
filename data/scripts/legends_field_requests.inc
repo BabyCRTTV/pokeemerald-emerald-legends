@@ -156,58 +156,58 @@ LegendsFieldRequests_Leave:
 	end
 
 LegendsFieldRequests_Text_BirchNotesNone:
-	.string "BIRCH: A good field notebook\\n"
-	.string "starts with an empty page.\\p"
-	.string "The small things you notice\\n"
+	.string "BIRCH: A good field notebook\n"
+	.string "starts with an empty page.\p"
+	.string "The small things you notice\n"
 	.string "may answer the big questions.$"
 
 LegendsFieldRequests_Text_BirchNotesEarly:
-	.string "BIRCH: Those first reports tell\\n"
-	.string "us something important.\\p"
-	.string "POKéMON share their homes with\\n"
-	.string "one another, and with people.\\p"
-	.string "Even familiar paths are worth\\n"
+	.string "BIRCH: Those first reports tell\n"
+	.string "us something important.\p"
+	.string "POKéMON share their homes with\n"
+	.string "one another, and with people.\p"
+	.string "Even familiar paths are worth\n"
 	.string "another look.$"
 
 LegendsFieldRequests_Text_BirchNotesAdvanced:
-	.string "BIRCH: Your notes now span\\n"
-	.string "forests, shores and highlands!\\p"
-	.string "I can compare how POKéMON\\n"
-	.string "adapt to very different places.\\p"
+	.string "BIRCH: Your notes now span\n"
+	.string "forests, shores and highlands!\p"
+	.string "I can compare how POKéMON\n"
+	.string "adapt to very different places.\p"
 	.string "That's real field research.$"
 
 LegendsFieldRequests_Text_BirchNotesFinal:
-	.string "BIRCH: The HOENN FIELD ATLAS\\n"
-	.string "is more than a list of species.\\p"
-	.string "Your observations show how\\n"
-	.string "every habitat fits together.\\p"
+	.string "BIRCH: The HOENN FIELD ATLAS\n"
+	.string "is more than a list of species.\p"
+	.string "Your observations show how\n"
+	.string "every habitat fits together.\p"
 	.string "You should be proud of this.$"
 
 LegendsFieldRequests_Text_DevonNotesNone:
-	.string "MR. STONE: A good invention\\n"
-	.string "begins with a good question.\\p"
-	.string "Our engineers need honest\\n"
+	.string "MR. STONE: A good invention\n"
+	.string "begins with a good question.\p"
+	.string "Our engineers need honest\n"
 	.string "field reports, not guesses.$"
 
 LegendsFieldRequests_Text_DevonNotesEarly:
-	.string "MR. STONE: Your first contracts\\n"
-	.string "helped us test real conditions.\\p"
-	.string "A design on paper can look\\n"
+	.string "MR. STONE: Your first contracts\n"
+	.string "helped us test real conditions.\p"
+	.string "A design on paper can look\n"
 	.string "perfect until it leaves the lab.$"
 
 LegendsFieldRequests_Text_DevonNotesAdvanced:
-	.string "MR. STONE: From tunnels to\\n"
-	.string "stormy routes, your findings\\l"
-	.string "have reached every department.\\p"
-	.string "DEVON must build for the world\\n"
+	.string "MR. STONE: From tunnels to\n"
+	.string "stormy routes, your findings\l"
+	.string "have reached every department.\p"
+	.string "DEVON must build for the world\n"
 	.string "as it truly is.$"
 
 LegendsFieldRequests_Text_DevonNotesFinal:
-	.string "MR. STONE: Our master project\\n"
-	.string "would not exist without you.\\p"
-	.string "Different POKéMON working\\n"
-	.string "together inspired its design.\\p"
-	.string "No contract can measure\\n"
+	.string "MR. STONE: Our master project\n"
+	.string "would not exist without you.\p"
+	.string "Different POKéMON working\n"
+	.string "together inspired its design.\p"
+	.string "No contract can measure\n"
 	.string "what that means to DEVON.$"
 
 LegendsFieldRequests_Text_Invitation:
