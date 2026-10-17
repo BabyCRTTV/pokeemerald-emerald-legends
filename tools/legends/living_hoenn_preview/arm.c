@@ -26,7 +26,9 @@ void qa(void)
     if (box[0] == 0)
     {
         NewGameInitData();
-        StringCopy(gSaveBlock2Ptr->playerName, COMPOUND_STRING("LEGENDS"));
+        // Minimal native-encoded test name, matching existing private QA fixtures.
+        gSaveBlock2Ptr->playerName[0] = 0xBB;
+        gSaveBlock2Ptr->playerName[1] = EOS;
         gSaveBlock2Ptr->optionsTextSpeed = 2;
         FlagSet(FLAG_SYS_POKEMON_GET);
         FlagSet(FLAG_SYS_POKEDEX_GET);
