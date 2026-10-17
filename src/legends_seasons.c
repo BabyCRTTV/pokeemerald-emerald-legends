@@ -85,7 +85,7 @@ u8 LegendsGetSeason(void)
 // Read-only query of the committed visual season (not the pending next season).
 void LegendsSeasonBulletinSpecial(void)
 {
-    VarSet(VAR_RESULT, LegendsGetActiveSeason());
+    gSpecialVar_Result = LegendsGetActiveSeason();
 }
 
 // Commit only while loading a fully faded map (never a seamless route edge).

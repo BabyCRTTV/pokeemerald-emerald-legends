@@ -31,7 +31,7 @@ assert "completed == (sPatron == FIELD_PATRON_DEVON ? 12 : 18)" in requests
 assert "completed >= (sPatron == FIELD_PATRON_DEVON ? 6 : 9)" in requests
 assert "gSpecialVar_Result = completed >= 3 ? 1 : 0;" in requests
 assert "LegendsFieldRequestComplete(id)" in requests
-assert "VarSet(VAR_RESULT, LegendsGetActiveSeason());" in season
+assert "gSpecialVar_Result = LegendsGetActiveSeason();" in season
 assert "VAR_WEATHER_INSTITUTE_STATE, 0, Route119_WeatherInstitute_1F_EventScript_BulletinEnd" in weather
 for i, name in enumerate(("Spring", "Summer", "Autumn", "Winter")):
     assert f"Route119_WeatherInstitute_1F_Text_Bulletin{name}:" in weather
