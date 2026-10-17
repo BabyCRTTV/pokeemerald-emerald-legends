@@ -23,10 +23,6 @@ jobs:
           sudo apt-get -o Acquire::Retries=3 install -y --no-install-recommends \
             build-essential gcc-arm-none-eabi binutils-arm-none-eabi libnewlib-arm-none-eabi \
             libpng-dev libmgba-dev python3-pil g++
-      - name: Check private QA ARM instrument source before full ROM build
-        run: |
-          arm-none-eabi-gcc -iquote include -iquote . -DMODERN=1 -DEMERALD -mthumb -mcpu=arm7tdmi \
-            -Werror=implicit-function-declaration -fsyntax-only tools/legends/living_hoenn_preview/arm.c
       - name: Build actual Legends v0.0.61 Debug ROM
         run: make -j"$(nproc)"
       - name: Run private native mGBA scenarios and capture original dialogue

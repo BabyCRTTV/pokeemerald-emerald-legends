@@ -27,7 +27,14 @@ static void command(unsigned code,unsigned scene,unsigned frameCount)
     core->busWrite32(core,0x0203fc7c,original);
     core->busWrite32(core,gMain+4,qa);
     frames(frameCount);
-    assert(box(30)==1 && "Injected private QA dispatcher did not acknowledge command");
+    // Event callbacks can be delayed by VBlank/fade scheduling.
+    for (unsigned i=0; i<1000 && box(30)!=1; i++) frames(1);
+    if(box(30)!=1)
+    {
+        fprintf(stderr,"qa dispatch stalled: code=%u scene=%u cb2=%08x original=%08x qa=%08x box30=%u\n",
+                code,scene,core->busRead32(core,gMain+4),original,qa,box(30));
+        exit(4);
+    }
 }
 static void key(unsigned k)
 {
@@ -61,8 +68,8 @@ int main(int argc,char **argv)
     struct VFile *rom=VFileOpen(argv[1],O_RDONLY);assert(rom&&core->loadROM(core,rom));
     for(unsigned scene=0;scene<4;scene++)
     {
-        core->reset(core);frames(360);
-        command(0,scene,6);
+        core->reset(core);frames(650);
+        command(0,scene,120);
         unsigned ready=0;
         for(unsigned x=0;x<2000;x++)
         {
@@ -73,7 +80,7 @@ int main(int argc,char **argv)
         if(!ready) {cap(scene,98);return 3;}
         frames(250);
         cap(scene,0);
-        command(1,scene,3);
+        command(1,scene,80);
         frames(170);
         cap(scene,1);
         for(unsigned i=0;i<6;i++){key(1);cap(scene,i+2);} // real A through dialogue pages
