@@ -1,0 +1,109 @@
+{
+  "version": "0.0.61",
+  "verified_utc": "2026-10-17T21:03:53.898632+00:00",
+  "audited_head": "479ad24b781eaef7ddb9e117c18f8349ed606c54",
+  "patch_commit": "74de564aa6d30366d708dbb6bb9f9a23316d0c44",
+  "manifest": {
+    "url": "https://babycrttv.github.io/pokeemerald-emerald-legends/downloads/SHA256SUMS.txt",
+    "HTTP": 200,
+    "bytes": 412,
+    "sha256": "22c0af411e25a3f28d496545f3a23161996875db74f0e94d69991776382b9bb0"
+  },
+  "patches": {
+    "Release": {
+      "url": "https://babycrttv.github.io/pokeemerald-emerald-legends/downloads/Pokemon-Emerald-Legends-v0.0.61.bps",
+      "HTTP": 200,
+      "bytes": 17455643,
+      "sha256": "0697715ebe3202b4ffd03937705e68fcfc2d4722f5e5d5722c86c14f0adfad7a",
+      "Floating_IPS_verified": true,
+      "downloaded_browser_decoder_verified": true,
+      "ROM_sha256": "c438da5812ed8a82c71acf72208ca51d207b4dc4611d33578caecdfa1232cc5f",
+      "matches_committed_patch_and_CI_manifest": true
+    },
+    "Debug": {
+      "url": "https://babycrttv.github.io/pokeemerald-emerald-legends/downloads/Pokemon-Emerald-Legends-v0.0.61-debug.bps",
+      "HTTP": 200,
+      "bytes": 17287786,
+      "sha256": "3968b98615e222c29d79f33a1a290a5fa42c911f3373e08e848ed0d400bf4f4e",
+      "Floating_IPS_verified": true,
+      "downloaded_browser_decoder_verified": true,
+      "ROM_sha256": "9c061d1526966b20e2fc2755f4bcf88451227ef9dd0da1704103f4825d26777e",
+      "matches_committed_patch_and_CI_manifest": true
+    }
+  },
+  "site": {
+    "index.html": {
+      "url": "https://babycrttv.github.io/pokeemerald-emerald-legends/index.html",
+      "HTTP": 200,
+      "bytes": 3538,
+      "sha256": "763d9b8634f8706305ffe466813de4e596a4225318ec043f0d501b9fd2cec5fd",
+      "matches_committed_bytes": true
+    },
+    "changelog.html": {
+      "url": "https://babycrttv.github.io/pokeemerald-emerald-legends/changelog.html",
+      "HTTP": 200,
+      "bytes": 107665,
+      "sha256": "da6c4ec95dead1a6ad31ebd375b3a98403c09a26a8c428a44c8720b087264c27",
+      "matches_committed_bytes": true
+    },
+    "patcher.html": {
+      "url": "https://babycrttv.github.io/pokeemerald-emerald-legends/patcher.html",
+      "HTTP": 200,
+      "bytes": 2679,
+      "sha256": "9fecc7c2541909a7c50daf66d80d99d792c4e753cf9ce3cccac9e7571568ab19",
+      "matches_committed_bytes": true
+    },
+    "patcher.js": {
+      "url": "https://babycrttv.github.io/pokeemerald-emerald-legends/patcher.js",
+      "HTTP": 200,
+      "bytes": 9353,
+      "sha256": "8c92d1f476ef28a63142d02dde7f6945da3ee165e8a927363169f0886c6baeb3",
+      "matches_committed_bytes": true
+    },
+    "journal-guide.html": {
+      "url": "https://babycrttv.github.io/pokeemerald-emerald-legends/journal-guide.html",
+      "HTTP": 200,
+      "bytes": 4623,
+      "sha256": "d0f92bdafedc0ac3c15489e68e7fab697ecb2d05d980e875b3bf67ec6a4c5409",
+      "matches_committed_bytes": true
+    },
+    "features/quest-log-achievements.md": {
+      "url": "https://babycrttv.github.io/pokeemerald-emerald-legends/features/quest-log-achievements.md",
+      "HTTP": 200,
+      "bytes": 9085,
+      "sha256": "45ed8da58142b2fecbdb5ec3dc070a2bd3f81a6d873fbb93a22f3f1d98109bd0",
+      "matches_committed_bytes": true
+    },
+    "qa/achievements-v0.0.60-preview.png": {
+      "url": "https://babycrttv.github.io/pokeemerald-emerald-legends/qa/achievements-v0.0.60-preview.png",
+      "HTTP": 200,
+      "bytes": 12890,
+      "sha256": "4f4d3364fb99680c297d78509c6b59d4b4d8328b116475558f5732de73e7792b",
+      "matches_committed_bytes": true
+    }
+  },
+  "achievement_contract": {
+    "total": 130,
+    "appended_ids": [
+      95,
+      129
+    ],
+    "achievement_and_save_sources_identical_to_v0_0_60": true,
+    "fresh_host_tests": [
+      "test/legends-journal.test.py",
+      "test/legends-journal-ui.test.py"
+    ],
+    "passed": true
+  },
+  "scope": "Fresh HTTP/hash downloads, committed-byte parity, both independent BPS decoders, focused host tests, source comparison and live workflow inspection. Existing v0.0.60 native migration and v0.0.61 build/mGBA smoke evidence were reviewed, not rerun.",
+  "limits": [
+    "No fresh native emulator run, historical user-save matrix or Pizza Boy test.",
+    "No targeted v0.0.61 NPC/seasonal-bulletin interaction playthrough."
+  ],
+  "pipeline_review": {
+    "v0.0.60_production_build_and_patch_verification": 38988995495,
+    "v0.0.61_production_build_and_patch_verification": 39050991073,
+    "v0.0.61_native_mGBA_smoke": 39050991044,
+    "all_reviewed_jobs": "completed/success"
+  }
+}

@@ -24,6 +24,14 @@ On 14 October 2026 the owner reversed the earlier permission to ignore older sav
 
 The owner requested mGBA gameplay testing and previews **exclusively from actual Pokémon Emerald: Legends**. `tools/legends/mgba_gameplay_smoke.c` and `test/mgba-gameplay-smoke.py` launch the unchanged compiled Debug ROM under mGBA's native core, press real SELECT for Debug Quickstart, verify the overworld callback and capture unmodified 240×160 video-buffer frames. `.github/workflows/mgba-gameplay-qa.yml` builds and runs this regression in CI and uploads a screenshot-only artifact (no ROM or save). This is a **boot/Quickstart smoke check**, not proof that Birch/Devon research, Weather Institute bulletin or all four NPC branches have been played through. Those must receive actual targeted emulator runs later. For screenshots and external previews, only use captured frames traceable to this project's built ROM, never reference Pokémon screenshots or synthesized equivalents. Record live CI result before claiming it passed.
 
+## Achievement publication closeout — 17 October 2026
+
+**Model: GPT-6 | Approach: focused publication verification; preserve later work and distinguish fresh HTTP/host checks from retained native evidence.**
+
+Resumed the 35-achievement request after the repository had advanced to v0.0.61; did not roll back or rebuild the newer release. The 130-entry achievement catalogue, journal/extension logic and serialized save definitions are identical to the verified v0.0.60 implementation. Fresh journal and journal-UI host checks passed. Downloaded both current v0.0.61 BPS files and manifest from Pages; hashes/bytes matched the committed files, and Floating IPS plus the downloaded browser decoder independently reconstructed both exact CI target ROM hashes from canonical clean Emerald. Seven public site/guide/preview files also matched committed bytes. Reviewed successful v0.0.60/v0.0.61 production build/BPS jobs and v0.0.61 native mGBA smoke. [Fresh public receipts](qa/publication-v0.0.61-2026-10-17.json).
+
+This supersedes earlier inability to fetch Pages for the current release, without claiming a fresh emulator run, authentic historical-save matrix, Pizza Boy test or targeted Living Hoenn dialogue playthrough. No game code, art, version, patches or save format changed. The original 35-achievement request is complete and included in the current public release; broader pending QA and unrelated private preview branches remain separate.
+
 ## Current release — v0.0.61 A Living Hoenn (published)
 
 **Model: GPT-6 (High) | Logic: narrowly trace dialogue/script dependencies; read existing completion, season and story flags without new save state.**

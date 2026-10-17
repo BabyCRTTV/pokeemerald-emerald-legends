@@ -18,3 +18,9 @@ Birch and Mr. Stone gained optional `RESEARCH NOTES`, without changing their two
 This validates source branches, both builds, BPS reconstruction, normal Debug emulator startup and in-game rendered frame capture. **It does not validate the four new NPC interactions, all patrons' milestone conversation states, or bulletin seasons by walking to each NPC in a real mGBA save.** Nor does it prove full-playthrough stability, true historical battery-save compatibility or Pizza Boy behavior; those remain to be tested with targeted fixtures. The GitHub commit, manifest and successful Pages deployment were confirmed, but the public Pages host could not be independently fetched to compare binary download bytes in this session.
 
 **Preview provenance:** Any screenshot presented as actual gameplay is from the compiled v0.0.61 Debug ROM's mGBA native video buffer, not a stock Emerald screenshot, other media or generated substitute. Nearest-neighbor scaling preserves source pixels.
+
+## Public download closeout — 17 October 2026
+
+**Model: GPT-6 | Approach: focused publication verification; preserve later work and distinguish fresh HTTP/host checks from retained native evidence.**
+
+The current v0.0.61 public Release/Debug downloads and manifest were freshly fetched and matched committed bytes/hashes. Floating IPS and the downloaded browser decoder reconstructed both exact CI target hashes; seven public site/guide/preview assets matched. The 130-entry achievement catalogue and save logic remain identical to v0.0.60; focused journal/UI host checks passed. This closes current public-download verification, preserving the earlier native evidence and its limits. No fresh emulator or historical-save playthrough was performed. [Fresh public receipt](publication-v0.0.61-2026-10-17.json).
