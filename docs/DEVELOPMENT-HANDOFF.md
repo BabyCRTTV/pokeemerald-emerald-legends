@@ -2,6 +2,14 @@
 
 ## Working preferences
 
+### 17 October 2026 — Correlated-event review and model attribution
+
+**Model: GPT-6 (High) | Logic: dependency-aware, narrowly scoped review; preserve verified baselines.**
+
+The owner emphasized that Emerald: Legends is a complex game with correlated events. For each requested gameplay change, identify the relevant script or mechanic, then trace only its actual dependencies and consequences: flags/variables, dialogue priority, progression order, neighboring event handlers, triggers, quest and achievement unlocks, rewards, transitions and saved state where applicable. Account for partially completed saves, retries and one-time claims. Investigate relevant engine/upstream behavior with reliable source or internet research where useful. Prefer deliberate accuracy and focused regression tests to either rushed edits or unrelated refactoring.
+
+The owner additionally requires new or materially amended handoff notes to carry the contributing model's **actual model number**, a short description of its logic/approach, and what changed or was verified. Attribution helps other models distinguish contributions after context switches; do not assign credit for existing historical notes to the current model. This entry records only a workflow decision: **no gameplay code, event scripts, sprites, save schema, build version or BPS files changed**.
+
 On 14 October 2026, after reviewing the art and animation touch-ups and the completed v0.0.50 work, the owner explicitly confirmed that this level of quality met their expectations. Treat today's approved pixel art, faithful animation, careful material isolation and verified incremental changes as the standard to maintain in future work. Preserve that polish across model changes and do not reinterpret this positive feedback as a request to redesign approved assets.
 
 The owner may switch between models such as Astra and Sol. Preserve the same decisions, approvals and quality standard; live repository activity supersedes this snapshot. Root `VERSION` is authoritative. Use connected GitHub tools for repository writes, retain exact native pixels/animation geometry, and write completed changelog entries in past tense.
