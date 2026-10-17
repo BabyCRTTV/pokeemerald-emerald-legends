@@ -474,7 +474,7 @@ static bool32 CreateEnemyPartyOWE(struct InfoOWE *info, s32 x, s32 y)
     {
         wildArea = WILD_AREA_LAND;
         timeOfDay = GetTimeOfDayForEncounters(headerId, wildArea);
-        wildMonInfo = gWildMonHeaders[headerId].encounterTypes[timeOfDay].landMonsInfo;
+        wildMonInfo = GetLandMonsInfo(headerId, timeOfDay);
     }
 
     if (wildMonInfo == NULL)
@@ -611,7 +611,7 @@ static bool32 StartWildBattleWithOWE_CheckDoubleBattle(struct ObjectEvent *owe, 
         {
             wildArea = WILD_AREA_LAND;
             timeOfDay = GetTimeOfDayForEncounters(headerId, wildArea);
-            wildMonInfo = gWildMonHeaders[headerId].encounterTypes[timeOfDay].landMonsInfo;
+            wildMonInfo = GetLandMonsInfo(headerId, timeOfDay);
         }
 
         if (TryGenerateWildMon(wildMonInfo, wildArea, WILD_CHECK_REPEL | WILD_CHECK_KEEN_EYE))
@@ -706,7 +706,7 @@ static bool32 CheckCurrentWildMonHeaderForOWE(bool32 shouldSpawnWaterMons)
     }
 
     timeOfDay = GetTimeOfDayForEncounters(headerId, WILD_AREA_LAND);
-    return gWildMonHeaders[headerId].encounterTypes[timeOfDay].landMonsInfo != NULL;
+    return GetLandMonsInfo(headerId, timeOfDay) != NULL;
 }
 
 static u32 GetOldestActiveOWESlot(bool32 forceRemove)
