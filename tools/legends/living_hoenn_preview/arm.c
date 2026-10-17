@@ -11,6 +11,7 @@
 #include "legends_seasons.h"
 #include "constants/maps.h"
 #include "constants/flags.h"
+#include "constants/characters.h"
 #include "constants/vars.h"
 #include "constants/legends_field_requests.h"
 
