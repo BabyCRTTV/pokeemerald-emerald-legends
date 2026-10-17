@@ -151,8 +151,8 @@ int main(void){
  for(int filter=0;filter<3;filter++){key(DPAD_RIGHT);assert(sSelected==0&&sTop==0);selection();}
  key(DPAD_LEFT);assert(sFilter==2);key(SELECT_BUTTON);assert(sFilter==0);
  memset(flags,0,sizeof(flags));sFilter=1;Draw();assert(Count()==0);selection();key(A_BUTTON);assert(!sDetail);
- LegendsJournalInit(TRUE);gMain.state=0;CB2_OpenAchievements();assert(sAchievements&&Count()==95);selection();
- for(int i=0;i<95;i++){selection();key(A_BUTTON);assert(sDetail);key(B_BUTTON);selection();key(DPAD_DOWN);}
+ LegendsJournalInit(TRUE);gMain.state=0;CB2_OpenAchievements();assert(sAchievements&&Count()==130);selection();
+ for(int i=0;i<130;i++){selection();key(A_BUTTON);assert(sDetail);key(B_BUTTON);selection();key(DPAD_DOWN);}
  key(DPAD_RIGHT);assert(sFilter==1&&Count()==0);selection();
  flags[FLAG_BADGE01_GET]=1;LegendsJournalRefresh();Draw();assert(Count()>0);selection();
  key(A_BUTTON);assert(sDetail);full=1;key(A_BUTTON);assert(sMessage==2&&!LegendsAchievementClaimed(Entry(sSelected)));

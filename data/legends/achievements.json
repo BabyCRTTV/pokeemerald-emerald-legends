@@ -948,5 +948,355 @@
     "id": 94,
     "berry": "APICOT",
     "quantity": 5
+  },
+  {
+    "title": "Field Assistant",
+    "description": "Complete 1 request for BIRCH.",
+    "kind": "RESEARCH",
+    "key": 0,
+    "target": 1,
+    "id": 95,
+    "berry": "ORAN",
+    "quantity": 3
+  },
+  {
+    "title": "Birch Regular",
+    "description": "Complete 6 requests for BIRCH.",
+    "kind": "RESEARCH",
+    "key": 0,
+    "target": 6,
+    "id": 96,
+    "berry": "LEPPA",
+    "quantity": 5
+  },
+  {
+    "title": "Habitat Scholar",
+    "description": "Complete 12 requests for BIRCH.",
+    "kind": "RESEARCH",
+    "key": 0,
+    "target": 12,
+    "id": 97,
+    "berry": "SITRUS",
+    "quantity": 5
+  },
+  {
+    "title": "Hoenn Naturalist",
+    "description": "Complete 18 requests for BIRCH.",
+    "kind": "RESEARCH",
+    "key": 0,
+    "target": 18,
+    "id": 98,
+    "berry": "LANSAT",
+    "quantity": 5
+  },
+  {
+    "title": "Devon Associate",
+    "description": "Complete 1 request for DEVON.",
+    "kind": "RESEARCH",
+    "key": 1,
+    "target": 1,
+    "id": 99,
+    "berry": "CHERI",
+    "quantity": 3
+  },
+  {
+    "title": "Devon Specialist",
+    "description": "Complete 6 requests for DEVON.",
+    "kind": "RESEARCH",
+    "key": 1,
+    "target": 6,
+    "id": 100,
+    "berry": "LUM",
+    "quantity": 5
+  },
+  {
+    "title": "Devon Fellow",
+    "description": "Complete 12 requests for DEVON.",
+    "kind": "RESEARCH",
+    "key": 1,
+    "target": 12,
+    "id": 101,
+    "berry": "STARF",
+    "quantity": 5
+  },
+  {
+    "title": "Research Notebook",
+    "description": "Complete 10 research requests.",
+    "kind": "RESEARCH",
+    "key": 2,
+    "target": 10,
+    "id": 102,
+    "berry": "POMEG",
+    "quantity": 5
+  },
+  {
+    "title": "Research Portfolio",
+    "description": "Complete 20 research requests.",
+    "kind": "RESEARCH",
+    "key": 2,
+    "target": 20,
+    "id": 103,
+    "berry": "KELPSY",
+    "quantity": 5
+  },
+  {
+    "title": "Research Laureate",
+    "description": "Complete 30 research requests.",
+    "kind": "RESEARCH",
+    "key": 2,
+    "target": 30,
+    "id": 104,
+    "berry": "APICOT",
+    "quantity": 5
+  },
+  {
+    "title": "Wild Encounters",
+    "description": "Take part in 25 wild battles.",
+    "kind": "STAT",
+    "key": "GAME_STAT_WILD_BATTLES",
+    "target": 25,
+    "id": 105,
+    "berry": "FIGY",
+    "quantity": 5
+  },
+  {
+    "title": "Wildland Veteran",
+    "description": "Take part in 250 wild battles.",
+    "kind": "STAT",
+    "key": "GAME_STAT_WILD_BATTLES",
+    "target": 250,
+    "id": 106,
+    "berry": "WIKI",
+    "quantity": 5
+  },
+  {
+    "title": "Capture Expert",
+    "description": "Catch 250 POKEMON.",
+    "kind": "STAT",
+    "key": "GAME_STAT_POKEMON_CAPTURES",
+    "target": 250,
+    "id": 107,
+    "berry": "MAGO",
+    "quantity": 5
+  },
+  {
+    "title": "Capture Archivist",
+    "description": "Catch 500 POKEMON.",
+    "kind": "STAT",
+    "key": "GAME_STAT_POKEMON_CAPTURES",
+    "target": 500,
+    "id": 108,
+    "berry": "IAPAPA",
+    "quantity": 5
+  },
+  {
+    "title": "Wandering Soul",
+    "description": "Walk 250000 steps.",
+    "kind": "STAT",
+    "key": "GAME_STAT_STEPS",
+    "target": 250000,
+    "id": 109,
+    "berry": "SALAC",
+    "quantity": 5
+  },
+  {
+    "title": "Hundred Hatches",
+    "description": "Hatch 100 eggs.",
+    "kind": "STAT",
+    "key": "GAME_STAT_HATCHED_EGGS",
+    "target": 100,
+    "id": 110,
+    "berry": "LIECHI",
+    "quantity": 5
+  },
+  {
+    "title": "Evolution Scholar",
+    "description": "Evolve 100 POKEMON.",
+    "kind": "STAT",
+    "key": "GAME_STAT_EVOLVED_POKEMON",
+    "target": 100,
+    "id": 111,
+    "berry": "PETAYA",
+    "quantity": 5
+  },
+  {
+    "title": "Green Thumb",
+    "description": "Plant 100 berries.",
+    "kind": "STAT",
+    "key": "GAME_STAT_PLANTED_BERRIES",
+    "target": 100,
+    "id": 112,
+    "berry": "GREPA",
+    "quantity": 5
+  },
+  {
+    "title": "Master Angler",
+    "description": "Find 100 fishing encounters.",
+    "kind": "STAT",
+    "key": "GAME_STAT_FISHING_ENCOUNTERS",
+    "target": 100,
+    "id": 113,
+    "berry": "HONDEW",
+    "quantity": 5
+  },
+  {
+    "title": "Contest Celebrity",
+    "description": "Win 50 contests.",
+    "kind": "STAT",
+    "key": "GAME_STAT_WON_CONTEST",
+    "target": 50,
+    "id": 114,
+    "berry": "TAMATO",
+    "quantity": 5
+  },
+  {
+    "title": "Pokeblock Chef",
+    "description": "Make 50 POKEBLOCKS.",
+    "kind": "STAT",
+    "key": "GAME_STAT_POKEBLOCKS",
+    "target": 50,
+    "id": 115,
+    "berry": "QUALOT",
+    "quantity": 5
+  },
+  {
+    "title": "Trail Steward",
+    "description": "Use CUT 50 times.",
+    "kind": "STAT",
+    "key": "GAME_STAT_USED_CUT",
+    "target": 50,
+    "id": 116,
+    "berry": "RINDO",
+    "quantity": 5
+  },
+  {
+    "title": "Stone to Dust",
+    "description": "Use ROCK SMASH 50 times.",
+    "kind": "STAT",
+    "key": "GAME_STAT_USED_ROCK_SMASH",
+    "target": 50,
+    "id": 117,
+    "berry": "CHOPLE",
+    "quantity": 5
+  },
+  {
+    "title": "Day Care Regular",
+    "description": "Use the DAY CARE 10 times.",
+    "kind": "STAT",
+    "key": "GAME_STAT_USED_DAYCARE",
+    "target": 10,
+    "id": 118,
+    "berry": "PECHA",
+    "quantity": 5
+  },
+  {
+    "title": "Mountain Passenger",
+    "description": "Ride the CABLE CAR 5 times.",
+    "kind": "STAT",
+    "key": "GAME_STAT_RODE_CABLE_CAR",
+    "target": 5,
+    "id": 119,
+    "berry": "OCCA",
+    "quantity": 5
+  },
+  {
+    "title": "Hot Spring Holiday",
+    "description": "Visit the hot springs 5 times.",
+    "kind": "STAT",
+    "key": "GAME_STAT_ENTERED_HOT_SPRINGS",
+    "target": 5,
+    "id": 120,
+    "berry": "PASSHO",
+    "quantity": 5
+  },
+  {
+    "title": "Taking the Leap",
+    "description": "Jump down 100 ledges.",
+    "kind": "STAT",
+    "key": "GAME_STAT_JUMPED_DOWN_LEDGES",
+    "target": 100,
+    "id": 121,
+    "berry": "COBA",
+    "quantity": 5
+  },
+  {
+    "title": "Hidden Treasures",
+    "description": "Use the ITEMFINDER 25 times.",
+    "kind": "STAT",
+    "key": "GAME_STAT_USED_ITEMFINDER",
+    "target": 25,
+    "id": 122,
+    "berry": "COLBUR",
+    "quantity": 5
+  },
+  {
+    "title": "Ribbon Collection",
+    "description": "Receive 25 ribbons.",
+    "kind": "STAT",
+    "key": "GAME_STAT_RECEIVED_RIBBONS",
+    "target": 25,
+    "id": 123,
+    "berry": "BABIRI",
+    "quantity": 5
+  },
+  {
+    "title": "DexNav Specialist",
+    "description": "Scan 500 times with DEXNAV.",
+    "kind": "STAT",
+    "key": "GAME_STAT_DEXNAV_SCANNED",
+    "target": 500,
+    "id": 124,
+    "berry": "SHUCA",
+    "quantity": 5
+  },
+  {
+    "title": "Dex Collection 400",
+    "description": "Register 400 caught species.",
+    "kind": "DEX",
+    "key": 0,
+    "target": 400,
+    "id": 125,
+    "berry": "GANLON",
+    "quantity": 5
+  },
+  {
+    "title": "Dex Collection 600",
+    "description": "Register 600 caught species.",
+    "kind": "DEX",
+    "key": 0,
+    "target": 600,
+    "id": 126,
+    "berry": "LANSAT",
+    "quantity": 5
+  },
+  {
+    "title": "Dex Collection 800",
+    "description": "Register 800 caught species.",
+    "kind": "DEX",
+    "key": 0,
+    "target": 800,
+    "id": 127,
+    "berry": "STARF",
+    "quantity": 5
+  },
+  {
+    "title": "A Gift from Steven",
+    "description": "Receive STEVEN's BELDUM.",
+    "kind": "FLAG",
+    "key": "FLAG_RECEIVED_BELDUM",
+    "target": 1,
+    "id": 128,
+    "berry": "KEBIA",
+    "quantity": 3
+  },
+  {
+    "title": "Fossil Revival",
+    "description": "Revive a fossil at DEVON.",
+    "kind": "FLAG",
+    "key": "FLAG_RECEIVED_REVIVED_FOSSIL_MON",
+    "target": 1,
+    "id": 129,
+    "berry": "CHARTI",
+    "quantity": 3
   }
 ]

@@ -25,7 +25,7 @@ typedef uint16_t u16; typedef uint32_t u32; typedef int bool32;
 #include "legends_journal.h"
 #include "legends_field_requests.h"
 #include "src/data/legends/journal.h"
-static struct {struct LegendsJournalSave journal;} data,*gSaveBlock3Ptr=&data;
+static struct {struct LegendsJournalSave journal;struct LegendsAchievementExtraSave achievementExtra;} data,*gSaveBlock3Ptr=&data;
 static u8 flags[4096];static u32 stats[64],dex,pcQuantity,pcItem,full,linked;
 bool32 FlagGet(u16 flag){assert(flag<4096);return flags[flag];}
 u32 GetGameStat(u8 id){assert(id<64);return stats[id];}
@@ -34,7 +34,9 @@ bool32 IsOverworldLinkActive(void){return linked;}
 bool32 AddPCItem(u16 item,u16 count){if(full)return FALSE;pcItem=item;pcQuantity+=count;return TRUE;}
 #ifndef TEST_REAL_FIELD_REQUESTS
 u16 LegendsFieldRequestActive(void){return FIELD_REQUEST_NONE;}
-bool32 LegendsFieldRequestComplete(u16 id){return FALSE;}
+static u32 researchDone;
+bool32 LegendsFieldRequestComplete(u16 id){return !!(researchDone & (1u<<id));}
+u8 LegendsFieldRequestOwner(u16 id){return id < 18 ? 0 : 1;}
 bool32 LegendsFieldRequestStepComplete(u16 id,u8 step){return FALSE;}
 #endif
 '''
@@ -46,7 +48,7 @@ int main(void)
     memset(&data,0xA5,sizeof(data)); flags[FLAG_BADGE01_GET]=1;
     stats[GAME_STAT_POKEMON_CAPTURES]=100; dex=200;
     LegendsJournalInit(FALSE);
-    assert(LegendsAchievementCount()==95 && LegendsQuestCount()==63);
+    assert(LegendsAchievementCount()==130 && LegendsQuestCount()==63);
     assert(LegendsAchievementEarned(0));
     assert(!LegendsAchievementEarned(1));
     for(unsigned i=0;i<LegendsAchievementCount();i++)
@@ -82,7 +84,7 @@ int main(void)
         }
         assert(LegendsQuestComplete(q));
     }
-    assert(!LegendsAchievementClaim(95) && !LegendsAchievementEarned(65535));
+    assert(!LegendsAchievementClaim(130) && !LegendsAchievementEarned(65535));
     assert(!LegendsQuestVisible(33) && !LegendsQuestStepComplete(33,0));
     linked=1;flags[FLAG_BADGE02_GET]=1;assert(!LegendsAchievementClaim(1));linked=0;
     LegendsJournalInit(TRUE);assert(!LegendsAchievementClaimed(0));
@@ -101,11 +103,12 @@ int main(void)
     assert(LegendsAchievementEarned(80)&&!LegendsAchievementClaimed(80));
     assert(LegendsAchievementNotice()==0xFFFF&&pcQuantity==pcBefore); // Quiet, unrewarded backfill.
     // Each appended ID unlocks at its threshold, queues once and needs a manual claim.
-    for(unsigned id=80;id<95;id++){
+    for(unsigned id=80;id<130;id++){
         memset(flags,0,sizeof(flags));memset(stats,0,sizeof(stats));dex=0;
-        LegendsJournalInit(TRUE);const struct LegendsAchievement *a=LegendsAchievementGet(id);
+        researchDone=0;LegendsJournalInit(TRUE);const struct LegendsAchievement *a=LegendsAchievementGet(id);
         if(a->kind==JOURNAL_FLAG){flags[a->key]=1;LegendsJournalFlagSet(a->key);}
         else if(a->kind==JOURNAL_STAT){stats[a->key]=a->target-1;LegendsJournalStatSet(a->key,a->target-1);assert(!LegendsAchievementEarned(id));stats[a->key]=a->target;LegendsJournalStatSet(a->key,a->target);}
+        else if(a->kind==JOURNAL_RESEARCH){unsigned start=a->key==1?18:0;for(unsigned n=0;n+1<a->target;n++)researchDone|=1u<<(start+n);LegendsJournalRefresh();assert(!LegendsAchievementEarned(id));researchDone|=1u<<(start+a->target-1);LegendsJournalRefresh();}
         else {dex=a->target-1;LegendsJournalRefresh();assert(!LegendsAchievementEarned(id));dex=a->target;LegendsJournalRefresh();}
         assert(LegendsAchievementEarned(id)&&!LegendsAchievementClaimed(id));
         assert(sPending[id/8]&(1<<(id%8)));
@@ -142,7 +145,29 @@ int main(void)
     assert(LegendsQuestTrack(0xFFFF)&&LegendsQuestTracked()==0xFFFF);
     before=data.journal;LegendsJournalInit(FALSE);assert(!memcmp(&before,&data.journal,sizeof(before)));
     assert(sizeof(data.journal)==36&&offsetof(struct LegendsJournalSave,reserved)==10);
-    puts("63 quests; 95 achievements; legacy tracking words, progression, persistence, claims and link guards passed.");
+
+    // A valid v0.0.59 journal survives arbitrary unused tail bytes; bit 95 was unpublished.
+    memset(flags,0,sizeof(flags));memset(stats,0,sizeof(stats));dex=researchDone=0;
+    LegendsJournalInit(TRUE);
+    memset(data.journal.earned,0xFF,12);memset(data.journal.claimed,0x55,12);
+    data.journal.claimed[11]|=0x80; data.journal.checksum=Checksum();before=data.journal;
+    memset(&data.achievementExtra,0xA5,sizeof(data.achievementExtra));
+    LegendsJournalInit(FALSE);
+    assert(!memcmp(before.earned,data.journal.earned,11)&&!memcmp(before.claimed,data.journal.claimed,11));
+    assert(data.journal.earned[11]==0x7F && data.journal.claimed[11]==0x55);
+    for(unsigned id=95;id<130;id++)assert(!LegendsAchievementEarned(id)&&!LegendsAchievementClaimed(id));
+    assert(ExtraChecksum()==data.achievementExtra.checksum);
+    // Every new bit, including 95, 96, 127, 128 and 129, persists independently.
+    for(unsigned id=95;id<130;id++){
+        Earn(id);u16 bit=AchievementBitId(id);AchievementBits(id,TRUE)[bit/8]|=1<<(bit%8);
+    }
+    UpdateChecksums();typeof(data) all=data;
+    LegendsJournalInit(FALSE);assert(!memcmp(&all,&data,sizeof(data)));
+    for(unsigned id=95;id<130;id++)assert(LegendsAchievementEarned(id)&&LegendsAchievementClaimed(id));
+    assert(LegendsAchievementNotice()==0xFFFF);
+    // Legacy checksum and tracked-quest word remain independent of the appended tail.
+    assert(sizeof(data.journal)==36&&sizeof(data.achievementExtra)==28);
+    puts("63 quests; 130 achievements; legacy tracking words, progression, persistence, claims and link guards passed.");
 }
 '''
 with tempfile.TemporaryDirectory() as d:
@@ -154,13 +179,15 @@ with tempfile.TemporaryDirectory() as d:
 import re,hashlib
 catalogue=(R/'src/data/legends/journal.h').read_text().split('static const struct LegendsAchievement sAchievements[] =')[1]
 entries=re.findall(r'\{COMPOUND_STRING[^\n]+',catalogue)
-assert len(entries)==95
+assert len(entries)==130
 assert hashlib.sha256(('\n'.join(entries[:80])+'\n').encode()).hexdigest()=="18a8c74c46e5596c5d7a3c8f9f7e5f1f120d13cfbd9b970800e6683b0f264f12"
+
+assert hashlib.sha256(('\n'.join(entries[:95])+'\n').encode()).hexdigest()=="43683155034a7ab8eae45443de9e15a46ff7174794b098fb5b02a41ef90d12dd"
 
 # The editable authoring data and native catalogue must agree on every stable ID.
 import json
 rows=json.loads((R/'data/legends/achievements.json').read_text())
-assert len(rows)==95
+assert len(rows)==130
 for i,row in enumerate(rows):
  assert row['id']==i
  expected='{COMPOUND_STRING("%s"), COMPOUND_STRING("%s"), JOURNAL_%s, %s, %s, ITEM_%s_BERRY, %s},'%(row['title'],row['description'],row['kind'],row['key'],row['target'],row['berry'],row['quantity'])

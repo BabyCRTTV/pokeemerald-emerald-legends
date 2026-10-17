@@ -1,16 +1,25 @@
 #ifndef GUARD_LEGENDS_JOURNAL_H
 #define GUARD_LEGENDS_JOURNAL_H
-#define LEGENDS_ACHIEVEMENT_LIMIT 96
-#define LEGENDS_ACHIEVEMENT_BYTES (LEGENDS_ACHIEVEMENT_LIMIT / 8)
+#define LEGENDS_ACHIEVEMENT_LEGACY_LIMIT 96
+#define LEGENDS_ACHIEVEMENT_BYTES (LEGENDS_ACHIEVEMENT_LEGACY_LIMIT / 8)
+#define LEGENDS_ACHIEVEMENT_LIMIT 160
+#define LEGENDS_ACHIEVEMENT_EXTRA_BYTES ((LEGENDS_ACHIEVEMENT_LIMIT - LEGENDS_ACHIEVEMENT_LEGACY_LIMIT) / 8)
 struct LegendsJournalSave
 {
     u32 magic, checksum;
     u16 version, reserved; // Signed tracked-quest selection; version-1 layout unchanged.
     u8 earned[LEGENDS_ACHIEVEMENT_BYTES], claimed[LEGENDS_ACHIEVEMENT_BYTES];
 };
+// Separate append-only tail: never enlarge or move the published v1 journal.
+struct LegendsAchievementExtraSave
+{
+    u32 magic, checksum;
+    u16 version, reserved;
+    u8 earned[LEGENDS_ACHIEVEMENT_EXTRA_BYTES], claimed[LEGENDS_ACHIEVEMENT_EXTRA_BYTES];
+};
 struct LegendsQuestStep { const u8 *text; u16 flag; };
 struct LegendsQuest { const u8 *title; u16 start; u8 side, count; struct LegendsQuestStep steps[4]; };
-enum LegendsJournalCondition { JOURNAL_FLAG, JOURNAL_STAT, JOURNAL_DEX };
+enum LegendsJournalCondition { JOURNAL_FLAG, JOURNAL_STAT, JOURNAL_DEX, JOURNAL_RESEARCH };
 struct LegendsAchievement { const u8 *title, *description; u8 kind; u16 key; u32 target; u16 berry; u8 quantity; };
 void LegendsJournalInit(bool32 newGame);
 void LegendsJournalRefresh(void);

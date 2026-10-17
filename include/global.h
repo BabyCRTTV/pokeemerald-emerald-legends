@@ -278,6 +278,7 @@ struct SaveBlock3
     u8 itemFlags[ITEM_FLAGS_COUNT];
 #endif
     struct LegendsJournalSave journal;
+    struct LegendsAchievementExtraSave achievementExtra;
 }; /* max size 1624 bytes */
 
 extern struct SaveBlock3 *gSaveBlock3Ptr;
