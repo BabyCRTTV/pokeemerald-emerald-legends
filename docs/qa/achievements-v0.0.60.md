@@ -18,6 +18,6 @@ Four normal title/Continue runs used the unmodified Debug and Release ROMs, each
 
 ## Publication and limits
 
-PR #75 contains the implementation. GitHub project checks passed; build/production publication are still pending at this checkpoint. Do not infer publication from local results.
+PR #75 merged as `046eeba758cda44a09a875b0b6fd912ed95dcd3d`. The production [project checks](https://github.com/BabyCRTTV/pokeemerald-emerald-legends/actions/runs/38988995474) and [Release/Debug native build plus BPS verification](https://github.com/BabyCRTTV/pokeemerald-emerald-legends/actions/runs/38988995495) passed. The patch update landed as `c9d5a3e090588dc4c734ab4ae29b226d4f066656`, and the [Pages deployment](https://github.com/BabyCRTTV/pokeemerald-emerald-legends/actions/runs/38989753116) succeeded. Both v0.0.60 BPS files and SHA256SUMS.txt are committed. This audit checked the CI/commit evidence, not an independent downloaded live Pages byte comparison. See [17 October resumption audit](resume-2026-10-17.md).
 
 `tools/legends/native_achievement_expansion_qa/` reproduces the controlled extension migration and high-ID native UI/reward/flash tests. Fixtures are format-identical synthetic saves, not authentic historical user saves. An authentic historical-release matrix, Pizza Boy and a full uninterrupted playthrough remain outside this milestone. Private ROMs, saves and raw data are excluded. AGENTS.md was reviewed; no new durable rule was needed.

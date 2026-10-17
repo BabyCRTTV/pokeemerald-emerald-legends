@@ -8,7 +8,7 @@ This concerns the emulator's normal in-game battery save (`.sav`). Emulator save
 
 ## Current verified baseline and limits
 
-The current published baseline is v0.0.59. Native sectors, storage readers, the 36-byte journal and previously published identifiers remain intact. Research progress retains read-only B7 support and migrates to B8 only on successful state changes, with high completion bits in verified-unused var 0x407A. The v0.0.58/v0.0.59 sections below describe focused migration and native Continue coverage; [the current release QA](qa/research-v0.0.59.md) states its limits. The authentic historical-save matrix remains unfinished.
+The current published baseline is v0.0.60, retaining the v0.0.59 research compatibility guarantees and adding the achievement extension detailed below. Native sectors, storage readers, the 36-byte journal and previously published identifiers remain intact. Research progress retains read-only B7 support and migrates to B8 only on successful state changes, with high completion bits in verified-unused var 0x407A. The v0.0.58/v0.0.59 sections below describe focused migration and native Continue coverage; [the current release QA](qa/research-v0.0.59.md) states its limits. The authentic historical-save matrix remains unfinished.
 
 Historical v0.0.49 changed only front-facing cheek shading and required no save migration. The approved Side Part remains ID 2. Preserve [v0.0.49 evidence and limits](qa/front-face-v0.0.49.md) and the previous [v0.0.48 evidence](qa/side-part-v0.0.48.md).
 
