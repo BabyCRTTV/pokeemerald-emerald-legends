@@ -1,0 +1,300 @@
+{
+  "version": "0.0.62",
+  "base_ROM_sha256": "c9de644f5e066b5edad8765032ad700ac9e267914bf49ae3cecb3ae897ad1e34",
+  "emulator": "mGBA native core 0.10.2",
+  "private_instrumentation": true,
+  "public_ROM_unchanged": true,
+  "scenarios": [
+    {
+      "name": "birch-0",
+      "map": "LittlerootTown_ProfessorBirchsLab",
+      "x": 6,
+      "y": 5,
+      "kind": 0,
+      "arg": 0,
+      "entry": "LegendsFieldRequests_Talk",
+      "expected": "LegendsFieldRequests_Text_BirchNotesNone",
+      "localId": 2
+    },
+    {
+      "name": "birch-3",
+      "map": "LittlerootTown_ProfessorBirchsLab",
+      "x": 6,
+      "y": 5,
+      "kind": 0,
+      "arg": 3,
+      "entry": "LegendsFieldRequests_Talk",
+      "expected": "LegendsFieldRequests_Text_BirchNotesEarly",
+      "localId": 2
+    },
+    {
+      "name": "birch-9",
+      "map": "LittlerootTown_ProfessorBirchsLab",
+      "x": 6,
+      "y": 5,
+      "kind": 0,
+      "arg": 9,
+      "entry": "LegendsFieldRequests_Talk",
+      "expected": "LegendsFieldRequests_Text_BirchNotesAdvanced",
+      "localId": 2
+    },
+    {
+      "name": "birch-18",
+      "map": "LittlerootTown_ProfessorBirchsLab",
+      "x": 6,
+      "y": 5,
+      "kind": 0,
+      "arg": 18,
+      "entry": "LegendsFieldRequests_Talk",
+      "expected": "LegendsFieldRequests_Text_BirchNotesFinal",
+      "localId": 2
+    },
+    {
+      "name": "devon-0",
+      "map": "RustboroCity_DevonCorp_3F",
+      "x": 14,
+      "y": 5,
+      "kind": 1,
+      "arg": 0,
+      "entry": "LegendsDevonRequests_Talk",
+      "expected": "LegendsFieldRequests_Text_DevonNotesNone",
+      "localId": 1
+    },
+    {
+      "name": "devon-3",
+      "map": "RustboroCity_DevonCorp_3F",
+      "x": 14,
+      "y": 5,
+      "kind": 1,
+      "arg": 3,
+      "entry": "LegendsDevonRequests_Talk",
+      "expected": "LegendsFieldRequests_Text_DevonNotesEarly",
+      "localId": 1
+    },
+    {
+      "name": "devon-6",
+      "map": "RustboroCity_DevonCorp_3F",
+      "x": 14,
+      "y": 5,
+      "kind": 1,
+      "arg": 6,
+      "entry": "LegendsDevonRequests_Talk",
+      "expected": "LegendsFieldRequests_Text_DevonNotesAdvanced",
+      "localId": 1
+    },
+    {
+      "name": "devon-12",
+      "map": "RustboroCity_DevonCorp_3F",
+      "x": 14,
+      "y": 5,
+      "kind": 1,
+      "arg": 12,
+      "entry": "LegendsDevonRequests_Talk",
+      "expected": "LegendsFieldRequests_Text_DevonNotesFinal",
+      "localId": 1
+    },
+    {
+      "name": "weather-WhatWereAquasUpTo",
+      "map": "Route119_WeatherInstitute_1F",
+      "x": 5,
+      "y": 6,
+      "kind": 2,
+      "arg": 0,
+      "entry": "Route119_WeatherInstitute_1F_EventScript_InstituteWorker2",
+      "expected": "Route119_WeatherInstitute_1F_Text_WhatWereAquasUpTo",
+      "localId": 3
+    },
+    {
+      "name": "weather-BulletinOffer",
+      "map": "Route119_WeatherInstitute_1F",
+      "x": 5,
+      "y": 6,
+      "kind": 2,
+      "arg": 1,
+      "entry": "Route119_WeatherInstitute_1F_EventScript_InstituteWorker2",
+      "expected": "Route119_WeatherInstitute_1F_Text_BulletinOffer",
+      "localId": 3
+    },
+    {
+      "name": "weather-BulletinSpring",
+      "map": "Route119_WeatherInstitute_1F",
+      "x": 5,
+      "y": 6,
+      "kind": 2,
+      "arg": 2,
+      "entry": "Route119_WeatherInstitute_1F_EventScript_InstituteWorker2",
+      "expected": "Route119_WeatherInstitute_1F_Text_BulletinSpring",
+      "localId": 3
+    },
+    {
+      "name": "weather-BulletinSummer",
+      "map": "Route119_WeatherInstitute_1F",
+      "x": 5,
+      "y": 6,
+      "kind": 2,
+      "arg": 3,
+      "entry": "Route119_WeatherInstitute_1F_EventScript_InstituteWorker2",
+      "expected": "Route119_WeatherInstitute_1F_Text_BulletinSummer",
+      "localId": 3
+    },
+    {
+      "name": "weather-BulletinAutumn",
+      "map": "Route119_WeatherInstitute_1F",
+      "x": 5,
+      "y": 6,
+      "kind": 2,
+      "arg": 4,
+      "entry": "Route119_WeatherInstitute_1F_EventScript_InstituteWorker2",
+      "expected": "Route119_WeatherInstitute_1F_Text_BulletinAutumn",
+      "localId": 3
+    },
+    {
+      "name": "weather-BulletinWinter",
+      "map": "Route119_WeatherInstitute_1F",
+      "x": 5,
+      "y": 6,
+      "kind": 2,
+      "arg": 5,
+      "entry": "Route119_WeatherInstitute_1F_EventScript_InstituteWorker2",
+      "expected": "Route119_WeatherInstitute_1F_Text_BulletinWinter",
+      "localId": 3
+    },
+    {
+      "name": "LittlerootTown-0",
+      "map": "LittlerootTown",
+      "x": 11,
+      "y": 13,
+      "kind": 3,
+      "arg": 0,
+      "entry": "LittlerootTown_EventScript_FatMan",
+      "expected": "LittlerootTown_Text_CanUsePCToStoreItems",
+      "localId": 2
+    },
+    {
+      "name": "LittlerootTown-1",
+      "map": "LittlerootTown",
+      "x": 11,
+      "y": 13,
+      "kind": 3,
+      "arg": 1,
+      "entry": "LittlerootTown_EventScript_FatMan",
+      "expected": "LittlerootTown_Text_ChampionCameHome",
+      "localId": 2
+    },
+    {
+      "name": "RustboroCity-0",
+      "map": "RustboroCity",
+      "x": 13,
+      "y": 35,
+      "kind": 4,
+      "arg": 0,
+      "entry": "RustboroCity_EventScript_DevonEmployee2",
+      "expected": "RustboroCity_Text_YoureNewAroundHere",
+      "localId": 11
+    },
+    {
+      "name": "RustboroCity-1",
+      "map": "RustboroCity",
+      "x": 13,
+      "y": 35,
+      "kind": 4,
+      "arg": 1,
+      "entry": "RustboroCity_EventScript_DevonEmployee2",
+      "expected": "RustboroCity_Text_DevonEmployee2Badge",
+      "localId": 11
+    },
+    {
+      "name": "RustboroCity-2",
+      "map": "RustboroCity",
+      "x": 13,
+      "y": 35,
+      "kind": 4,
+      "arg": 2,
+      "entry": "RustboroCity_EventScript_DevonEmployee2",
+      "expected": "RustboroCity_Text_DevonEmployee2Champion",
+      "localId": 11
+    },
+    {
+      "name": "FortreeCity-0",
+      "map": "FortreeCity",
+      "x": 8,
+      "y": 11,
+      "kind": 5,
+      "arg": 0,
+      "entry": "FortreeCity_EventScript_OldMan",
+      "expected": "FortreeCity_Text_EveryoneHealthyAndLively",
+      "localId": 5
+    },
+    {
+      "name": "FortreeCity-1",
+      "map": "FortreeCity",
+      "x": 8,
+      "y": 11,
+      "kind": 5,
+      "arg": 1,
+      "entry": "FortreeCity_EventScript_OldMan",
+      "expected": "FortreeCity_Text_OldManBadge",
+      "localId": 5
+    },
+    {
+      "name": "LilycoveCity-0",
+      "map": "LilycoveCity",
+      "x": 28,
+      "y": 29,
+      "kind": 6,
+      "arg": 0,
+      "entry": "LilycoveCity_EventScript_Man3",
+      "expected": "LilycoveCity_Text_ContestHallInTown",
+      "localId": 3
+    },
+    {
+      "name": "LilycoveCity-1",
+      "map": "LilycoveCity",
+      "x": 28,
+      "y": 29,
+      "kind": 6,
+      "arg": 1,
+      "entry": "LilycoveCity_EventScript_Man3",
+      "expected": "LilycoveCity_Text_ChampionContest",
+      "localId": 3
+    }
+  ],
+  "passed": true,
+  "scope": "Original compiled text/scripts executed with controlled flags/vars; research cursor and exact expected text, weather choice/state/active season, all four NPC fallbacks/milestones, termination and protected request/journal/PC state checked. Floor collision checked. Not a natural full playthrough, save migration or Pizza Boy test.",
+  "harness_sha256": {
+    "arm.c": "9d0c75b051513645c5ed569ece996aae63cde32fb4ac461f02f5aef791a3ae18",
+    "host.c": "e36bdc0c0109a420e8496bcd12a77890093f425bba08a41e8ed480e748acb15c",
+    "run.py": "16c6345182fd48d66b1b2c2e2776c28b6cf842b27d211b6498ce4775d6285888"
+  },
+  "workflow_run": 39071368730,
+  "source_commit": "52a61d8583a4613a5c680eb928930efb831da399",
+  "screenshots_reviewed": 92,
+  "preview_frames": [
+    {
+      "file": "scene-03-page-00.png",
+      "sha256": "403a83eb7bb43f9d17daa59f5a3b23bd2cb5079746190111e194471109c6b689",
+      "label": "Birch: actual Research Notes"
+    },
+    {
+      "file": "scene-07-page-00.png",
+      "sha256": "49fb8372d836afaa21efd4e2b0dc4f4ce0e9740d3d30432bb1e5f9088a394f6c",
+      "label": "Stone: actual Research Notes"
+    },
+    {
+      "file": "scene-13-page-00.png",
+      "sha256": "b0d7a78800794423c16b5e3ea98186f9a2595324576dc09ff1d445ab0eb1616c",
+      "label": "Weather bulletin: active Winter"
+    },
+    {
+      "file": "scene-20-page-00.png",
+      "sha256": "209792397376e2dc29faed4bb862c81d51571e9787ef2cf92fb61aee0291a3cb",
+      "label": "Fortree: first two lines"
+    },
+    {
+      "file": "scene-20-page-01.png",
+      "sha256": "7dceefdf60094503b1421ba0f8577c9e2645c54c7e3ae24e91d240e5a2c56584",
+      "label": "Fortree: native scroll prompt"
+    }
+  ],
+  "preview_sha256": "f7487858a6e26c0cbd8fd19edcb885434c54ee0205a8014b527aa9097df0a281"
+}

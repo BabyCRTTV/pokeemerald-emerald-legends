@@ -73,6 +73,8 @@ int main(void){
  vars[VAR_LEGENDS_FIELD_REQUEST_DONE_HIGH-0x4000]=0xffff;unsigned legacyWrites=writes;
  LegendsFieldRequestsBeginBirch();LegendsFieldRequestsResearchNotes();assert(gSpecialVar_Result==1);
  LegendsFieldRequestsBeginDevon();LegendsFieldRequestsResearchNotes();assert(gSpecialVar_Result==0&&writes==legacyWrites&&vars[VAR_LEGENDS_FIELD_REQUEST_STATE-0x4000]==0xB700);
+ Reset();vars[VAR_LEGENDS_FIELD_REQUEST_STATE-0x4000]=0xB801;
+ LegendsFieldRequestsBeginBirch();LegendsFieldRequestsResearchNotes();assert(gSpecialVar_Result==0); // Acceptance alone is not a report.
  Reset();LegendsFieldRequestsBeginBirch();
  // Exhaustive legacy active words: readers never initialize or modify data.
  for(unsigned word=0;word<65536;word++){
