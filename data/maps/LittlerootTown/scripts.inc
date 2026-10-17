@@ -242,7 +242,12 @@ LittlerootTown_EventScript_SetRivalBirchPosForDexUpgradeFemale::
 	end
 
 LittlerootTown_EventScript_FatMan::
+	goto_if_set FLAG_SYS_GAME_CLEAR, LittlerootTown_EventScript_FatManChampion
 	msgbox LittlerootTown_Text_CanUsePCToStoreItems, MSGBOX_NPC
+	end
+
+LittlerootTown_EventScript_FatManChampion::
+	msgbox LittlerootTown_Text_ChampionCameHome, MSGBOX_NPC
 	end
 
 LittlerootTown_EventScript_Boy::
@@ -951,6 +956,13 @@ LittlerootTown_Text_ComeHomeIfAnythingHappens:
 	.string "…But please be careful.\n"
 	.string "If anything happens, you can come home.\p"
 	.string "Go on, go get them, honey!$"
+
+LittlerootTown_Text_ChampionCameHome:
+	.string "So our little town has a\n"
+	.string "CHAMPION of its own now!\p"
+	.string "I hope you'll still stop by\n"
+	.string "LITTLEROOT between journeys.$"
+
 
 LittlerootTown_Text_CanUsePCToStoreItems:
 	.string "If you use a PC, you can store items\n"
