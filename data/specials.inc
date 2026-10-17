@@ -670,3 +670,4 @@ gSpecials::
 	def_special LegendsFieldRequestsCanReview
 	def_special LegendsFieldRequestsGreeting
 	def_special LegendsFieldRequestsResearchNotes
+	def_special LegendsSeasonBulletinSpecial
