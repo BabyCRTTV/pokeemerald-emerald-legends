@@ -57,6 +57,23 @@ static void Map(u16 map){save1.location.mapGroup=MAP_GROUP(map);save1.location.m
 static void Mon(u8 slot,u16 species,u8 egg){gParties[0][slot].species=species;gParties[0][slot].egg=egg;if(gPartiesCount[0]<=slot)gPartiesCount[0]=slot+1;}
 int main(void){
  Reset();
+ // Read-only research reflections: every count, both patrons, other-patron reports and legacy B7.
+ for(unsigned patron=0;patron<2;patron++)for(unsigned n=0;n<=(patron?12:18);n++){
+  Reset();u32 mask=n?((1u<<n)-1):0;
+  u32 done=patron?((mask<<18)|0x3ffff):((0xfffu<<18)|mask);
+  vars[VAR_LEGENDS_FIELD_REQUEST_STATE-0x4000]=0xB800;
+  vars[VAR_LEGENDS_FIELD_REQUEST_DONE-0x4000]=done;
+  vars[VAR_LEGENDS_FIELD_REQUEST_DONE_HIGH-0x4000]=done>>16;
+  if(patron)LegendsFieldRequestsBeginDevon();else LegendsFieldRequestsBeginBirch();
+  u16 snapshot[256];memcpy(snapshot,vars,sizeof(vars));unsigned w=writes;
+  LegendsFieldRequestsResearchNotes();unsigned expected=n==(patron?12:18)?3:n>=(patron?6:9)?2:n>=3?1:0;
+  assert(gSpecialVar_Result==expected&&writes==w&&!memcmp(snapshot,vars,sizeof(vars)));
+ }
+ Reset();vars[VAR_LEGENDS_FIELD_REQUEST_STATE-0x4000]=0xB700;vars[VAR_LEGENDS_FIELD_REQUEST_DONE-0x4000]=0x3f;
+ vars[VAR_LEGENDS_FIELD_REQUEST_DONE_HIGH-0x4000]=0xffff;unsigned legacyWrites=writes;
+ LegendsFieldRequestsBeginBirch();LegendsFieldRequestsResearchNotes();assert(gSpecialVar_Result==1);
+ LegendsFieldRequestsBeginDevon();LegendsFieldRequestsResearchNotes();assert(gSpecialVar_Result==0&&writes==legacyWrites&&vars[VAR_LEGENDS_FIELD_REQUEST_STATE-0x4000]==0xB700);
+ Reset();LegendsFieldRequestsBeginBirch();
  // Exhaustive legacy active words: readers never initialize or modify data.
  for(unsigned word=0;word<65536;word++){
   vars[VAR_LEGENDS_FIELD_REQUEST_STATE-0x4000]=word;

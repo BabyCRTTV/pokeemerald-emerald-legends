@@ -7,6 +7,7 @@ on:
       - '.github/workflows/mgba-gameplay-qa.yml'
       - 'tools/legends/mgba_gameplay_smoke.c'
       - 'test/mgba-gameplay-smoke.py'
+      - 'tools/legends/native_living_hoenn_qa/**'
       - 'src/**'
       - 'include/**'
       - 'data/**'
@@ -19,6 +20,7 @@ on:
       - '.github/workflows/mgba-gameplay-qa.yml'
       - 'tools/legends/mgba_gameplay_smoke.c'
       - 'test/mgba-gameplay-smoke.py'
+      - 'tools/legends/native_living_hoenn_qa/**'
       - 'src/**'
       - 'include/**'
       - 'data/**'
@@ -45,13 +47,18 @@ jobs:
         run: make -j"$(nproc)"
       - name: Execute native mGBA Quickstart and capture live gameplay
         run: python3 test/mgba-gameplay-smoke.py
+      - name: Exercise research notes, bulletin and town dialogue branches
+        run: python3 tools/legends/native_living_hoenn_qa/run.py
       - name: Upload direct Legends gameplay frames and machine receipt
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: legends-mgba-v0.0.61-gameplay
+          name: legends-mgba-gameplay
           path: |
             build/legends-mgba-preview/*.png
             build/legends-mgba-preview/*.json
             build/legends-mgba-preview/*.log
+            build/living-hoenn-qa/*.png
+            build/living-hoenn-qa/*.json
+            build/living-hoenn-qa/*.log
           if-no-files-found: warn

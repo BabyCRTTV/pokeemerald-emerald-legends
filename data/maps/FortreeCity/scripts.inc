@@ -119,7 +119,7 @@ FortreeCity_Text_TreesGrowByDrinkingRainwater:
 
 FortreeCity_Text_OldManBadge:
 	.string "You bested WINONA? Ha!\n"
-	.string "Even our treetop homes\n"
+	.string "Even our treetop homes\l"
 	.string "couldn't keep that news down.\p"
 	.string "Remember to enjoy the view\n"
 	.string "between your battles.$"
