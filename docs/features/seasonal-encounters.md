@@ -2,7 +2,7 @@
 
 **Model: GPT-6 | Approach: preserve native residents/levels and resolve every dependent land-table consumer through the committed season.**
 
-Status: proposed v0.0.63 on a draft preview branch. The owner requested an actual-game preview before publication; approval and merge remain pending. The public release stays v0.0.62.
+Status: v0.0.63 on a draft preview branch. The owner approved the encounter roster and silhouette approach, then reported DexNav sizing/centering issues. Layout correction and a refreshed actual-game preview are in progress; merge/publication remain pending. The public release stays v0.0.62.
 
 ## Pilot rules
 
@@ -61,7 +61,7 @@ Year-round residents: Marill, Poochyena, Taillow, Wingull, Wurmple.
 
 ## DexNav silhouettes
 
-Unseen route entries use the actual native animated party icon with all nontransparent colors mapped to a separate black OBJ palette. Known icons retain their original shared palettes and animation. Empty slots retain the native X. Names, types, search eligibility, seen/caught flags and detector-mode selection stay unchanged. Locked hidden-only entries also show silhouettes rather than question marks. No icon artwork is replaced.
+Unseen route entries use the actual native animated party icon with all nontransparent colors mapped to a separate black OBJ palette. Known icons retain their original shared palettes and animation. Empty slots retain the native X. Names, types, search eligibility, seen/caught flags and detector-mode selection stay unchanged. Locked hidden-only entries also show silhouettes rather than question marks. No icon artwork is replaced. A DexNav-only presentation helper centers the combined bounds of both native poses and uniformly shrinks oversized icons to fit the existing columns. It never enlarges small species or edits shared party/battle/follower assets; both discovered and silhouette states use identical placement.
 
 ## Verification / approval
 

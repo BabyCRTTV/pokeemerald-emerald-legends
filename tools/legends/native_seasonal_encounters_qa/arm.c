@@ -40,6 +40,42 @@ static void check(bool32 passed, u32 error, volatile u32 *b)
 {
     if (!passed && !b[29]) b[29] = error;
 }
+static bool32 iconPixel(const u8 *tiles, u32 frame, s32 x, s32 y)
+{
+    if (x < 0 || x >= 32 || y < 0 || y >= 32) return FALSE;
+    u32 offset = frame * 512 + (y / 8) * 128 + (x / 8) * 32 + (y % 8) * 4 + (x % 8) / 2;
+    return (tiles[offset] >> ((x & 1) * 4)) & 15;
+}
+static void checkIconGeometry(struct Sprite *icon, volatile u32 *b)
+{
+    const u8 *tiles = (const u8 *)icon->images;
+    s32 scale = 256, minX = 99, maxX = -99, minY = 99, maxY = -99;
+    if (icon->oam.affineMode != ST_OAM_AFFINE_OFF)
+    {
+        const struct OamMatrix *m = &gOamMatrices[icon->oam.matrixNum];
+        check(icon->oam.affineMode == ST_OAM_AFFINE_NORMAL && m->a == m->d && !m->b && !m->c && m->a > 256, 24, b);
+        check(icon->affineAnimPaused && !icon->affineAnimBeginning, 25, b);
+        scale = m->a; b[25]++;
+    }
+    for (u32 frame = 0; frame < 2; frame++)
+        for (s32 y = -16; y < 16; y++)
+            for (s32 x = -16; x < 16; x++)
+                if (iconPixel(tiles, frame, ((x * scale) >> 8) + 16, ((y * scale) >> 8) + 16))
+                {
+                    s32 dx = x + icon->x2, dy = y + icon->y2;
+                    if (dx < minX) minX = dx;
+                    if (dx > maxX) maxX = dx;
+                    if (dy < minY) minY = dy;
+                    if (dy > maxY) maxY = dy;
+                }
+    check(maxX >= minX && maxY >= minY, 26, b);
+    check(maxX - minX + 1 <= 23 && maxY - minY + 1 <= 25, 27, b);
+    check(minX + maxX >= -2 && minX + maxX <= 2 && minY + maxY >= -2 && minY + maxY <= 2, 28, b);
+    if ((u32)(maxX - minX + 1) > b[26]) b[26] = maxX - minX + 1;
+    if ((u32)(maxY - minY + 1) > b[27]) b[27] = maxY - minY + 1;
+    b[24]++;
+}
+
 void qa(void)
 {
     volatile u32 *b = (u32 *)0x0203fc00;
@@ -116,6 +152,7 @@ void qa(void)
     else if (b[0] == 2)
     {
         struct DexNavGUI *ui = *(struct DexNavGUI **)QA_UI;
+        b[24] = b[25] = b[26] = b[27] = 0;
         b[3] = FindTaskIdByFunc((TaskFunc)QA_GUI_TASK) != TASK_NONE;
         b[4] = gPaletteFade.active; b[5] = 0; b[6] = 0; b[7] = 0;
         b[14] = hash(&gSaveBlock2Ptr->pokedex, sizeof(gSaveBlock2Ptr->pokedex));
@@ -168,6 +205,10 @@ void qa(void)
                 if (!duplicate) expectedCount++;
             }
             check(b[5] == expectedCount, 16, b);
+            // Inspect all three grid sections, including existing water residents.
+            for (u32 i = 0; i < MAX_SPRITES; i++)
+                if (gSprites[i].inUse && gSprites[i].callback == SpriteCB_MonIcon)
+                    checkIconGeometry(&gSprites[i], b);
         }
     }
     b[30] = 1; gMain.callback2 = (MainCallback)b[31];

@@ -19,7 +19,9 @@ def add(route,season,mode=0,south=False):
 for route in range(101,105):
  for season in range(4):add(route,season)
 add(101,0,1);add(104,3,2);add(104,3,south=True)
-assert len(scenes)==19
+for route in range(101,105):
+ for season in range(4):add(route,season,2)
+assert len(scenes)==35
 header=[ui,'struct QAScenario {u16 map; s16 x,y; u8 season,mode,min,max; enum Species expected[12];};','static const struct QAScenario scenarios[] = {']
 for s in scenes:header.append('{MAP_ROUTE%d,%d,%d,%d,%d,%d,%d,{%s}},'%(s['route'],s['x'],s['y'],s['season'],s['mode'],s['min'],s['max'],','.join(s['expected'])))
 header.append('};');(O/'qa_scenarios.h').write_text('\n'.join(header)+'\n')
@@ -35,5 +37,5 @@ finally:
  for p in O.glob('*.rgba'):Image.frombytes('RGBA',(240,160),p.read_bytes()).convert('RGB').save(p.with_suffix('.png'));p.unlink()
  private.unlink()
 assert sha(rom)==before
-proof={'version':(R/'VERSION').read_text().strip(),'base_ROM_sha256':before,'emulator':'mGBA native core 0.10.2','private_instrumentation':True,'public_ROM_unchanged':True,'scenarios':scenes,'wild_creations_per_scenario':256,'passed':True,'scope':'Actual compiled land tables, wild creation and DexNav GUI; controlled route/season/seen state, original icons and VRAM frames, isolated palettes, unseen selection lock, closure and protected state. Both Route104 halves checked. Not a natural progression playthrough, historical-save migration, full DexNav hunt or Pizza Boy test.','harness_sha256':{n:sha(S/n) for n in ['arm.c','host.c','run.py']}}
-(O/'verification.json').write_text(json.dumps(proof,indent=2)+'\n');print('PASS: 19 targeted native seasonal/DexNav scenarios and 4864 real generated Pokémon.')
+proof={'version':(R/'VERSION').read_text().strip(),'base_ROM_sha256':before,'emulator':'mGBA native core 0.10.2','private_instrumentation':True,'public_ROM_unchanged':True,'scenarios':scenes,'wild_creations_per_scenario':256,'passed':True,'scope':'Actual compiled land tables, wild creation and DexNav GUI; hardware-sampled two-pose bounds/centering and uniform shrink-only scale for every grid icon; controlled route/season/seen state, original icons and VRAM frames, isolated palettes, unseen selection lock, closure and protected state. Both Route104 halves checked. Not a natural progression playthrough, historical-save migration, full DexNav hunt or Pizza Boy test.','harness_sha256':{n:sha(S/n) for n in ['arm.c','host.c','run.py']}}
+(O/'verification.json').write_text(json.dumps(proof,indent=2)+'\n');print('PASS: 35 targeted native seasonal/DexNav scenarios and 8960 real generated Pokémon; original and all-land-seen cases.')

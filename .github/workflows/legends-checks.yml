@@ -55,6 +55,7 @@ jobs:
         run: |
           python3 test/legends-dexnav.test.py
           python3 test/legends-dexnav-silhouettes.test.py
+          python3 test/legends-dexnav-layout.test.py
           python3 test/legends-seasonal-encounters.test.py
       - name: Exercise player appearance regression tests
         run: python3 test/legends-appearance.test.py

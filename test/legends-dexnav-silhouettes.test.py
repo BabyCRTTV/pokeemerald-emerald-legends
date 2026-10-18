@@ -24,6 +24,9 @@ static u8 CreateMonIcon(enum Species species,void(*cb)(struct Sprite*),s16 x,s16
  if(allocated!=MAX_SPRITES)gSprites[allocated].oam.paletteNum=1;return allocated;
 }
 '''
+pre += r'''
+static u8 CreateDexNavMonIcon(enum Species species,s16 x,s16 y){return CreateMonIcon(species,SpriteCB_MonIcon,x,y,0,0xffffffff);}
+'''
 main=r'''
 int main(void){
  assert(sSilhouettePalette.tag==0x4011);for(unsigned i=0;i<16;i++)assert(!sSilhouettePalette.data[i]);

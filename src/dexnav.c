@@ -1814,6 +1814,11 @@ static void DexNav_InitWindows(void)
 
 static void DexNavGuiFreeResources(void)
 {
+    u32 i;
+    for (i = 0; i < MAX_SPRITES; i++)
+        if (gSprites[i].inUse && gSprites[i].callback == SpriteCB_MonIcon)
+            FreeSpriteOamMatrix(&gSprites[i]);
+
     Free(sDexNavUiDataPtr);
     Free(sBg1TilemapBuffer);
     FreeAllWindowBuffers();
@@ -1955,6 +1960,79 @@ static void DexNavLoadEncounterData(void)
     }
 }
 
+// Native party icons use a 32x32 canvas, while DexNav columns are 24px apart.
+// Fit the union of both poses, so padding cannot miscenter an icon and the
+// animation keeps its original motion. This affects only the DexNav grid.
+#define DEXNAV_ICON_MAX_WIDTH 22
+#define DEXNAV_ICON_MAX_HEIGHT 24
+
+static s16 DexNavIconCenterOffset(s32 twiceOffset, u32 inverseScale)
+{
+    s32 offset = twiceOffset * 128;
+    if (offset < 0)
+        return -((-offset + inverseScale / 2) / inverseScale);
+    return (offset + inverseScale / 2) / inverseScale;
+}
+
+static u8 CreateDexNavMonIcon(enum Species species, s16 x, s16 y)
+{
+    u8 spriteId = CreateMonIcon(species, SpriteCB_MonIcon, x, y, 0, 0xFFFFFFFF);
+    const u8 *tiles;
+    struct Sprite *sprite;
+    u32 minX = 32, minY = 32, maxX = 0, maxY = 0;
+    u32 frame, px, py, inverseScale, scaleY;
+
+    if (spriteId == MAX_SPRITES)
+        return spriteId;
+
+    sprite = &gSprites[spriteId];
+    tiles = GetMonIconPtr(species, 0xFFFFFFFF);
+    for (frame = 0; frame < 2; frame++)
+    {
+        for (py = 0; py < 32; py++)
+        {
+            for (px = 0; px < 32; px++)
+            {
+                u32 offset = frame * 512 + (py / 8) * 128 + (px / 8) * 32 + (py % 8) * 4 + (px % 8) / 2;
+                if (((tiles[offset] >> ((px & 1) * 4)) & 15) == 0)
+                    continue;
+                if (px < minX) minX = px;
+                if (px > maxX) maxX = px;
+                if (py < minY) minY = py;
+                if (py > maxY) maxY = py;
+            }
+        }
+    }
+    if (minX == 32) // defensively retain the native empty icon
+        return spriteId;
+
+    // GBA affine coefficients are inverse scale in 8.8 fixed point. Never
+    // enlarge small species or distort aspect ratio; only oversized art shrinks.
+    inverseScale = ((maxX - minX + 1) * 256 + DEXNAV_ICON_MAX_WIDTH - 1) / DEXNAV_ICON_MAX_WIDTH;
+    scaleY = ((maxY - minY + 1) * 256 + DEXNAV_ICON_MAX_HEIGHT - 1) / DEXNAV_ICON_MAX_HEIGHT;
+    if (scaleY > inverseScale) inverseScale = scaleY;
+    if (inverseScale < 256) inverseScale = 256;
+    if (inverseScale > 256)
+    {
+        u8 matrix = AllocOamMatrix();
+        if (matrix != 0xFF)
+        {
+            sprite->oam.affineMode = ST_OAM_AFFINE_NORMAL;
+            sprite->oam.matrixNum = matrix;
+            sprite->affineAnimBeginning = FALSE;
+            sprite->affineAnimPaused = TRUE;
+            SetOamMatrix(matrix, inverseScale, 0, 0, inverseScale);
+        }
+        else
+        {
+            inverseScale = 256; // preserve art safely if an external user exhausted matrices
+        }
+    }
+    sprite->x2 = DexNavIconCenterOffset(32 - (s32)minX - (s32)maxX, inverseScale);
+    sprite->y2 = DexNavIconCenterOffset(32 - (s32)minY - (s32)maxY, inverseScale);
+    return spriteId;
+}
+
 #define DEXNAV_SILHOUETTE_PAL_TAG 0x4011
 static const u16 sSilhouetteColors[16] = {RGB_BLACK};
 static const struct SpritePalette sSilhouettePalette = {sSilhouetteColors, DEXNAV_SILHOUETTE_PAL_TAG};
@@ -1972,7 +2050,7 @@ static void CreateSilhouetteIcon(enum Species species, s16 x, s16 y)
 
     // Keep both native icon frames and transparent pixels. Never recolor a
     // shared species palette: a discovered neighbor may be using it too.
-    spriteId = CreateMonIcon(species, SpriteCB_MonIcon, x, y, 0, 0xFFFFFFFF);
+    spriteId = CreateDexNavMonIcon(species, x, y);
     if (spriteId != MAX_SPRITES)
         gSprites[spriteId].oam.paletteNum = palette;
 }
@@ -1984,7 +2062,7 @@ static void TryDrawIconInSlot(enum Species species, s16 x, s16 y)
     else if (!GetSetPokedexFlag(SpeciesToNationalPokedexNum(species), FLAG_GET_SEEN))
         CreateSilhouetteIcon(species, x, y);
     else
-        CreateMonIcon(species, SpriteCB_MonIcon, x, y, 0, 0xFFFFFFFF);
+        CreateDexNavMonIcon(species, x, y);
 }
 
 static void DrawSpeciesIcons(void)
