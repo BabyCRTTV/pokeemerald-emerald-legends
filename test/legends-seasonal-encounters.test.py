@@ -20,6 +20,19 @@ for route,season,body in tables:
  visitors=set(odds)-residents;assert len(visitors)==2 and sorted(odds[x] for x in visitors)==[10,20]
  assert 'SPECIES_DA_BUG' not in visitors;all_visitors|=visitors
 assert len(all_visitors)==32
+water_weights=next(f['encounter_rates'] for f in g['fields'] if f['type']=='water_mons');assert water_weights==[60,30,5,4,1]
+water_native={int(x['map'][-3:]):x['water_mons'] for x in g['encounters'] if x['map'] in [f'MAP_ROUTE{i}' for i in range(105,109)]}
+water_tables=re.findall(r'static const struct WildPokemon sRoute(10[5-8])(Spring|Summer|Autumn|Winter)WaterMons.*?=\s*\{(.*?)\};',data,re.S);assert len(water_tables)==16
+water_visitors=set()
+for route,season,body in water_tables:
+ route=int(route);rows=re.findall(r'\{(\d+), (\d+), (SPECIES_\w+)\}',body);assert len(rows)==5
+ assert [(int(a),int(b)) for a,b,_ in rows]==[(m['min_level'],m['max_level']) for m in water_native[route]['mons']]
+ residents={m['species'] for m in water_native[route]['mons']};odds={}
+ for (_,_,species),weight in zip(rows,water_weights):odds[species]=odds.get(species,0)+weight
+ assert residents<=odds.keys() and sum(odds[x] for x in residents)==65
+ visitors=set(odds)-residents;assert len(visitors)==2 and sorted(odds[x] for x in visitors)==[5,30]
+ assert 'SPECIES_DA_BUG' not in visitors;water_visitors|=visitors
+assert len(water_visitors)==32
 pre=r'''
 #include <stdint.h>
 #include <stddef.h>
@@ -34,7 +47,12 @@ typedef uint8_t u8;typedef uint16_t u16;typedef uint32_t u32;
 #define MAP_ROUTE102 102
 #define MAP_ROUTE103 103
 #define MAP_ROUTE104 104
+#define MAP_ROUTE105 105
+#define MAP_ROUTE106 106
+#define MAP_ROUTE107 107
+#define MAP_ROUTE108 108
 #define NUM_LAND_MONS_ENCOUNTER_SLOTS 12
+#define NUM_WATER_MONS_ENCOUNTER_SLOTS 5
 #define HEADER_NONE 65535
 enum TimeOfDay {MORNING,DAY,EVENING,NIGHT,TIMES_OF_DAY_COUNT};
 enum {LEGENDS_SPRING,LEGENDS_SUMMER,LEGENDS_AUTUMN,LEGENDS_WINTER,LEGENDS_SEASON_COUNT};
@@ -42,8 +60,8 @@ struct WildPokemon {u8 minLevel,maxLevel;enum Species species;};
 struct WildPokemonInfo {u8 encounterRate;const struct WildPokemon *wildPokemon;};
 struct WildEncounterTypes {const struct WildPokemonInfo *landMonsInfo,*waterMonsInfo,*hiddenMonsInfo;};
 struct WildPokemonHeader {u8 mapGroup,mapNum;struct WildEncounterTypes encounterTypes[TIMES_OF_DAY_COUNT];};
-static struct WildPokemonInfo fallback[4];
-static struct WildPokemonHeader gWildMonHeaders[6];
+static struct WildPokemonInfo fallback[4],waterFallback[4];
+static struct WildPokemonHeader gWildMonHeaders[10];
 static unsigned active,reads,pending,currentHeader;
 #define MAX_LEVEL 100
 #define MON_LEVEL_NONEXISTENT 255
@@ -62,7 +80,7 @@ u8 LegendsGetActiveSeason(void){reads++;return active;}
 '''
 main=r'''
 int main(void){
- for(unsigned h=0;h<5;h++){gWildMonHeaders[h].mapNum=101+h;for(unsigned t=0;t<4;t++)gWildMonHeaders[h].encounterTypes[t].landMonsInfo=&fallback[t];}
+ for(unsigned h=0;h<9;h++){gWildMonHeaders[h].mapNum=101+h;for(unsigned t=0;t<4;t++){gWildMonHeaders[h].encounterTypes[t].landMonsInfo=&fallback[t];gWildMonHeaders[h].encounterTypes[t].waterMonsInfo=&waterFallback[t];}}
  for(unsigned season=0;season<4;season++)for(unsigned h=0;h<4;h++)for(unsigned t=0;t<4;t++){
   active=season;pending=(season+1)%4;const struct WildPokemonInfo *p=GetLandMonsInfo(h,t);
   assert(p==&sLegendsSeasonalLand[h].seasons[season]&&p->encounterRate==20);
@@ -79,10 +97,27 @@ int main(void){
 
  }
  unsigned n=reads;for(unsigned t=0;t<4;t++)assert(GetLandMonsInfo(4,t)==&fallback[t]);assert(reads==n);
- assert(!GetLandMonsInfo(HEADER_NONE,0)&&!GetLandMonsInfo(5,0)&&!GetLandMonsInfo(0,4));
+ assert(!GetLandMonsInfo(HEADER_NONE,0)&&!GetLandMonsInfo(9,0)&&!GetLandMonsInfo(0,4));
  active=255;assert(GetLandMonsInfo(0,0)==&fallback[0]);
+ for(unsigned season=0;season<4;season++)for(unsigned h=4;h<8;h++)for(unsigned t=0;t<4;t++){
+  active=season;pending=(season+1)%4;currentHeader=h;
+  const struct WildPokemonInfo *p=GetWaterMonsInfo(h,t);assert(p==&sLegendsSeasonalWater[h-4].seasons[season]&&p->encounterRate==4);
+  assert(active==season&&pending==(season+1)%4);
+  for(unsigned i=0;i<5;i++)assert(GetEncounterLevelFromMapData(p->wildPokemon[i].species,ENCOUNTER_TYPE_WATER)!=255);
+  const struct WildPokemonInfo *previous=&sLegendsSeasonalWater[h-4].seasons[(season+3)%4];unsigned absent=0;
+  for(unsigned i=0;i<5;i++){
+   enum Species species=previous->wildPokemon[i].species;unsigned present=0;
+   for(unsigned j=0;j<5;j++)if(p->wildPokemon[j].species==species)present=1;
+   if(!present){assert(GetEncounterLevelFromMapData(species,ENCOUNTER_TYPE_WATER)==255);absent++;}
+  }
+  assert(absent==2);assert(GetLandMonsInfo(h,t)==&fallback[t]);
+ }
+ n=reads;for(unsigned h=0;h<4;h++)for(unsigned t=0;t<4;t++)assert(GetWaterMonsInfo(h,t)==&waterFallback[t]);
+ for(unsigned t=0;t<4;t++){assert(GetWaterMonsInfo(8,t)==&waterFallback[t]);}assert(reads==n);
+ assert(!GetWaterMonsInfo(HEADER_NONE,0)&&!GetWaterMonsInfo(9,0)&&!GetWaterMonsInfo(0,4)&&!GetWaterMonsInfo(0,(enum TimeOfDay)-1));
+ active=255;assert(GetWaterMonsInfo(4,0)==&waterFallback[0]);
  currentHeader=HEADER_NONE;assert(GetEncounterLevelFromMapData(SPECIES_WURMPLE,ENCOUNTER_TYPE_LAND)==255);
- puts("PASS: 16 seasonal tables, all TODs, committed vs pending, unrelated-map pointer parity, invalid bounds/fallback, absent prior-season DexNav targets");
+ puts("PASS: 32 seasonal land/Surf tables, all TODs, committed vs pending, unrelated-map pointer parity, invalid bounds/fallback, absent prior-season DexNav targets");
 }
 '''
 with tempfile.TemporaryDirectory() as d:
@@ -90,8 +125,11 @@ with tempfile.TemporaryDirectory() as d:
  subprocess.run(['cc','-std=gnu17','-Wall','-Werror','-I'+str(R/'include'),str(p),'-o',d+'/test'],check=True);subprocess.run([d+'/test'],check=True)
 for f in ['dexnav.c','wild_encounter_ow.c','match_call.c']:
  text=(R/'src'/f).read_text();assert not re.search(r'gWildMonHeaders\[[^\]]+\]\.encounterTypes\[[^\]]+\]\.landMonsInfo',text),f
- assert 'GetLandMonsInfo(' in text
+ assert 'GetLandMonsInfo(' in text and 'GetWaterMonsInfo(' in text
+ assert not re.search(r'gWildMonHeaders\[[^\]]+\]\.encounterTypes\[[^\]]+\]\.waterMonsInfo',text),f
 assert s.count('gWildMonHeaders[headerId].encounterTypes[timeOfDay].landMonsInfo')==1 # getter fallback only
 assert 'encounters.landMonsInfo = GetLandMonsInfo(i, gAreaTimeOfDay);' in (R/'src/pokedex_area_screen.c').read_text()
+assert s.count('gWildMonHeaders[headerId].encounterTypes[timeOfDay].waterMonsInfo')==1
+assert 'encounters.waterMonsInfo = GetWaterMonsInfo(i, gAreaTimeOfDay);' in (R/'src/pokedex_area_screen.c').read_text()
 assert 'LegendsGetSeason()' not in function and 'VarSet(' not in function
-print('PASS: original residents/levels/rates, 70/20/10 base distribution, 32 visitors and all dependent land readers')
+print('PASS: original residents/levels/rates, 70/20/10 base distribution, 64 visitors, native 65/30/5 Surf odds and all dependent land/Surf readers')

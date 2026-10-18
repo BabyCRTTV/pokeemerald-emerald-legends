@@ -22,6 +22,7 @@ static int header,tiles[32][32],blocked[32][32];
 u32 GetCurrentMapWildMonHeaderId(void){return header;}
 int GetTimeOfDayForEncounters(int h,int area){return 0;}
 void *GetLandMonsInfo(u32 h,int t){return gWildMonHeaders[h].encounterTypes[t].landMonsInfo;}
+void *GetWaterMonsInfo(u32 h,int t){return gWildMonHeaders[h].encounterTypes[t].waterMonsInfo;}
 u8 MapGridGetMetatileBehaviorAt(s16 x,s16 y){assert(x>=0&&x<32&&y>=0&&y<32);return tiles[y][x];}
 int MapGridGetCollisionAt(int x,int y){return blocked[y][x];}
 int MetatileBehavior_IsLandWildEncounter(int v){return v==1||v==3;}

@@ -106,30 +106,37 @@ void qa(void)
     {
         u32 header = GetCurrentMapWildMonHeaderId();
         check(header != HEADER_NONE, 1, b);
-        const struct WildPokemonInfo *land = GetLandMonsInfo(header, TIME_OF_DAY_DEFAULT);
-        check(land && land->encounterRate == 20, 2, b);
-        for (u32 i = 0; i < 12; i++)
+        if (s->area == WILD_AREA_WATER)
+        {
+            SetPlayerAvatarTransitionFlags(PLAYER_AVATAR_FLAG_SURFING);
+            check(TestPlayerAvatarFlags(PLAYER_AVATAR_FLAG_SURFING), 32, b);
+        }
+        u32 slots = s->area == WILD_AREA_WATER ? 5 : 12;
+        const struct WildPokemonInfo *land = s->area == WILD_AREA_WATER ? GetWaterMonsInfo(header, TIME_OF_DAY_DEFAULT) : GetLandMonsInfo(header, TIME_OF_DAY_DEFAULT);
+        check(land && land->encounterRate == (s->area == WILD_AREA_WATER ? 4 : 20), 2, b);
+        for (u32 i = 0; i < slots; i++)
             check(land->wildPokemon[i].species == s->expected[i], 3, b);
         // Pending season must not affect current field or menu encounter data.
         LegendsSetPlaytimeSeason((s->season + 1) % 4);
-        check(GetLandMonsInfo(header, TIME_OF_DAY_DEFAULT) == land, 4, b);
-        const struct WildPokemonInfo *base = gWildMonHeaders[header].encounterTypes[TIME_OF_DAY_DEFAULT].landMonsInfo;
+        check((s->area == WILD_AREA_WATER ? GetWaterMonsInfo(header, TIME_OF_DAY_DEFAULT) : GetLandMonsInfo(header, TIME_OF_DAY_DEFAULT)) == land, 4, b);
+        const struct WildEncounterTypes *native = &gWildMonHeaders[header].encounterTypes[TIME_OF_DAY_DEFAULT];
+        const struct WildPokemonInfo *base = s->area == WILD_AREA_WATER ? native->waterMonsInfo : native->landMonsInfo;
         if (s->mode != 1)
         {
-            for (u32 i = 0; i < 12; i++)
+            for (u32 i = 0; i < slots; i++)
                 GetSetPokedexFlag(SpeciesToNationalPokedexNum(base->wildPokemon[i].species), FLAG_SET_SEEN);
             if (s->mode == 2)
-                for (u32 i = 0; i < 12; i++)
+                for (u32 i = 0; i < slots; i++)
                     GetSetPokedexFlag(SpeciesToNationalPokedexNum(land->wildPokemon[i].species), FLAG_SET_SEEN);
         }
         SeedRng(0x1234); u32 found = 0;
         // Actual compiled wild creation, not a sampling model or hand-made party.
         for (u32 n = 0; n < 256; n++)
         {
-            check(TryGenerateWildMon(GetLandMonsInfo(header, GetTimeOfDayForEncounters(header, WILD_AREA_LAND)), WILD_AREA_LAND, 0), 5, b);
+            check(TryGenerateWildMon(land, s->area, 0), 5, b);
             enum Species species = GetMonData(&gParties[B_TRAINER_OPPONENT_A][0], MON_DATA_SPECIES);
             u32 level = GetMonData(&gParties[B_TRAINER_OPPONENT_A][0], MON_DATA_LEVEL), match = 0;
-            for (u32 i = 0; i < 12; i++)
+            for (u32 i = 0; i < slots; i++)
                 if (land->wildPokemon[i].species == species)
                 {
                     found |= 1u << i;
@@ -137,13 +144,13 @@ void qa(void)
                 }
             check(match, 6, b);
         }
-        // All 12 source entries were checked above. Sampled Pokemon must be
+        // Every native source entry was checked above. Sampled Pokemon must be
         // valid and include both common visitors; do not demand a rare 1%
         // resident appears in a small random sample.
-        for (u32 i = 0; i < 12; i++)
+        for (u32 i = 0; i < slots; i++)
         {
             bool32 resident = FALSE;
-            for (u32 j = 0; j < 12; j++)
+            for (u32 j = 0; j < slots; j++)
                 if (base->wildPokemon[j].species == land->wildPokemon[i].species) resident = TRUE;
             if (!resident) check(found & (1u << i), 7, b);
         }
@@ -157,6 +164,7 @@ void qa(void)
     }
     else if (b[0] == 2)
     {
+        u32 slots = s->area == WILD_AREA_WATER ? 5 : 12;
         struct DexNavGUI *ui = *(struct DexNavGUI **)QA_UI;
         b[24] = b[25] = b[26] = b[27] = 0;
         b[3] = FindTaskIdByFunc((TaskFunc)QA_GUI_TASK) != TASK_NONE;
@@ -170,11 +178,14 @@ void qa(void)
         if (b[3] && !b[4])
         {
             b[23] = gSpecialVar_0x8000; // actual search request remains unset for unseen A
-            for (u32 i = 0; i < 12; i++)
+            for (u32 i = 0; i < slots; i++)
             {
-                enum Species species = ui->landSpecies[i];
+                enum Species species = s->area == WILD_AREA_WATER ? ui->waterSpecies[i] : ui->landSpecies[i];
+                check(species == s->expected[i] || s->area != WILD_AREA_WATER, 33, b);
                 if (species == SPECIES_NONE) continue;
-                b[5]++; x = ROW_LAND_ICON_X + 24 * (i % COL_LAND_COUNT); y = ROW_LAND_TOP_ICON_Y + (i >= COL_LAND_COUNT ? 28 : 0);
+                b[5]++;
+                x = s->area == WILD_AREA_WATER ? ROW_WATER_ICON_X + 24 * i : ROW_LAND_ICON_X + 24 * (i % COL_LAND_COUNT);
+                y = s->area == WILD_AREA_WATER ? ROW_WATER_ICON_Y : ROW_LAND_TOP_ICON_Y + (i >= COL_LAND_COUNT ? 28 : 0);
                 struct Sprite *icon = NULL;
                 for (u32 j = 0; j < MAX_SPRITES; j++)
                     if (gSprites[j].inUse && gSprites[j].x == x && gSprites[j].y == y && gSprites[j].callback == SpriteCB_MonIcon) icon = &gSprites[j];
@@ -204,7 +215,7 @@ void qa(void)
                 }
             }
             u32 expectedCount = 0;
-            for (u32 i = 0; i < 12; i++)
+            for (u32 i = 0; i < slots; i++)
             {
                 bool32 duplicate = FALSE;
                 for (u32 j = 0; j < i; j++) if (s->expected[i] == s->expected[j]) duplicate = TRUE;

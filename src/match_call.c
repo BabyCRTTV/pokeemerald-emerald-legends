@@ -1763,10 +1763,10 @@ static void PopulateSpeciesFromTrainerLocation(int matchCallId, u8 *destStr)
             }
 
             timeOfDay = GetTimeOfDayForEncounters(i, WILD_AREA_WATER);
-            if (gWildMonHeaders[i].encounterTypes[timeOfDay].waterMonsInfo)
+            if (GetWaterMonsInfo(i, timeOfDay))
             {
                 slot = GetWaterEncounterSlotForMatchCall();
-                species[numSpecies] = gWildMonHeaders[i].encounterTypes[timeOfDay].waterMonsInfo->wildPokemon[slot].species;
+                species[numSpecies] = GetWaterMonsInfo(i, timeOfDay)->wildPokemon[slot].species;
                 numSpecies++;
             }
 

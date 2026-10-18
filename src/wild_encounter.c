@@ -473,6 +473,28 @@ const struct WildPokemonInfo *GetLandMonsInfo(u32 headerId, enum TimeOfDay timeO
     return gWildMonHeaders[headerId].encounterTypes[timeOfDay].landMonsInfo;
 }
 
+// Seasonal Surf uses the same committed world season as land encounters.
+const struct WildPokemonInfo *GetWaterMonsInfo(u32 headerId, enum TimeOfDay timeOfDay)
+{
+    u32 i;
+
+    if (headerId >= ARRAY_COUNT(gWildMonHeaders) - 1 || (u32)timeOfDay >= TIMES_OF_DAY_COUNT)
+        return NULL;
+
+    for (i = 0; i < ARRAY_COUNT(sLegendsSeasonalWater); i++)
+    {
+        if (gWildMonHeaders[headerId].mapGroup == MAP_GROUP(sLegendsSeasonalWater[i].map)
+         && gWildMonHeaders[headerId].mapNum == MAP_NUM(sLegendsSeasonalWater[i].map))
+        {
+            u8 season = LegendsGetActiveSeason();
+            if (season < LEGENDS_SEASON_COUNT)
+                return &sLegendsSeasonalWater[i].seasons[season];
+        }
+    }
+
+    return gWildMonHeaders[headerId].encounterTypes[timeOfDay].waterMonsInfo;
+}
+
 enum TimeOfDay GetTimeOfDayForEncounters(u32 headerId, enum WildPokemonArea area)
 {
     const struct WildPokemonInfo *wildMonInfo;
@@ -491,7 +513,7 @@ enum TimeOfDay GetTimeOfDayForEncounters(u32 headerId, enum WildPokemonArea area
         wildMonInfo = GetLandMonsInfo(headerId, timeOfDay);
         break;
     case WILD_AREA_WATER:
-        wildMonInfo = gWildMonHeaders[headerId].encounterTypes[timeOfDay].waterMonsInfo;
+        wildMonInfo = GetWaterMonsInfo(headerId, timeOfDay);
         break;
     case WILD_AREA_ROCKS:
         wildMonInfo = gWildMonHeaders[headerId].encounterTypes[timeOfDay].rockSmashMonsInfo;
@@ -792,11 +814,11 @@ bool8 StandardWildEncounter(u16 curMetatileBehavior, u16 prevMetatileBehavior)
 
             if (AreLegendariesInSootopolisPreventingEncounters() == TRUE)
                 return FALSE;
-            else if (gWildMonHeaders[headerId].encounterTypes[timeOfDay].waterMonsInfo == NULL)
+            else if (GetWaterMonsInfo(headerId, timeOfDay) == NULL)
                 return FALSE;
             else if (prevMetatileBehavior != curMetatileBehavior && !AllowWildCheckOnNewMetatile())
                 return FALSE;
-            else if (WildEncounterCheck(gWildMonHeaders[headerId].encounterTypes[timeOfDay].waterMonsInfo->encounterRate, FALSE) != TRUE)
+            else if (WildEncounterCheck(GetWaterMonsInfo(headerId, timeOfDay)->encounterRate, FALSE) != TRUE)
                 return FALSE;
 
             if (TryStartRoamerEncounter())
@@ -810,13 +832,13 @@ bool8 StandardWildEncounter(u16 curMetatileBehavior, u16 prevMetatileBehavior)
             }
             else // try a regular surfing encounter
             {
-                if (TryGenerateWildMon(gWildMonHeaders[headerId].encounterTypes[timeOfDay].waterMonsInfo, WILD_AREA_WATER, WILD_CHECK_REPEL | WILD_CHECK_KEEN_EYE) == TRUE)
+                if (TryGenerateWildMon(GetWaterMonsInfo(headerId, timeOfDay), WILD_AREA_WATER, WILD_CHECK_REPEL | WILD_CHECK_KEEN_EYE) == TRUE)
                 {
                     gIsSurfingEncounter = TRUE;
                     if (TryDoDoubleWildBattle())
                     {
                         struct Pokemon mon1 = gParties[B_TRAINER_OPPONENT_A][0];
-                        TryGenerateWildMon(gWildMonHeaders[headerId].encounterTypes[timeOfDay].waterMonsInfo, WILD_AREA_WATER, WILD_CHECK_KEEN_EYE);
+                        TryGenerateWildMon(GetWaterMonsInfo(headerId, timeOfDay), WILD_AREA_WATER, WILD_CHECK_KEEN_EYE);
                         gParties[B_TRAINER_OPPONENT_A][1] = mon1;
                         BattleSetup_StartDoubleWildBattle();
                     }
@@ -941,7 +963,7 @@ bool8 SweetScentWildEncounter(void)
 
             if (AreLegendariesInSootopolisPreventingEncounters() == TRUE)
                 return FALSE;
-            if (gWildMonHeaders[headerId].encounterTypes[timeOfDay].waterMonsInfo == NULL)
+            if (GetWaterMonsInfo(headerId, timeOfDay) == NULL)
                 return FALSE;
 
             if (TryStartRoamerEncounter())
@@ -950,7 +972,7 @@ bool8 SweetScentWildEncounter(void)
                 return TRUE;
             }
 
-            TryGenerateWildMon(gWildMonHeaders[headerId].encounterTypes[timeOfDay].waterMonsInfo, WILD_AREA_WATER, 0);
+            TryGenerateWildMon(GetWaterMonsInfo(headerId, timeOfDay), WILD_AREA_WATER, 0);
             BattleSetup_StartWildBattle();
             return TRUE;
         }
@@ -1014,7 +1036,7 @@ u16 GetLocalWildMon(bool8 *isWaterMon)
     landMonsInfo = GetLandMonsInfo(headerId, timeOfDay);
 
     timeOfDay = GetTimeOfDayForEncounters(headerId, WILD_AREA_WATER);
-    waterMonsInfo = gWildMonHeaders[headerId].encounterTypes[timeOfDay].waterMonsInfo;
+    waterMonsInfo = GetWaterMonsInfo(headerId, timeOfDay);
 
     // Neither
     if (landMonsInfo == NULL && waterMonsInfo == NULL)
@@ -1049,7 +1071,7 @@ u16 GetLocalWaterMon(void)
     {
         timeOfDay = GetTimeOfDayForEncounters(headerId, WILD_AREA_WATER);
 
-        const struct WildPokemonInfo *waterMonsInfo = gWildMonHeaders[headerId].encounterTypes[timeOfDay].waterMonsInfo;
+        const struct WildPokemonInfo *waterMonsInfo = GetWaterMonsInfo(headerId, timeOfDay);
 
         if (waterMonsInfo)
             return waterMonsInfo->wildPokemon[ChooseWildMonIndex_Water()].species;

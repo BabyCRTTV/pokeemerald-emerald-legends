@@ -468,7 +468,7 @@ static bool32 CreateEnemyPartyOWE(struct InfoOWE *info, s32 x, s32 y)
     {
         wildArea = WILD_AREA_WATER;
         timeOfDay = GetTimeOfDayForEncounters(headerId, wildArea);
-        wildMonInfo = gWildMonHeaders[headerId].encounterTypes[timeOfDay].waterMonsInfo;
+        wildMonInfo = GetWaterMonsInfo(headerId, timeOfDay);
     }
     else
     {
@@ -605,7 +605,7 @@ static bool32 StartWildBattleWithOWE_CheckDoubleBattle(struct ObjectEvent *owe, 
         {
             wildArea = WILD_AREA_WATER;
             timeOfDay = GetTimeOfDayForEncounters(headerId, wildArea);
-            wildMonInfo = gWildMonHeaders[headerId].encounterTypes[timeOfDay].waterMonsInfo;
+            wildMonInfo = GetWaterMonsInfo(headerId, timeOfDay);
         }
         else
         {
@@ -702,7 +702,7 @@ static bool32 CheckCurrentWildMonHeaderForOWE(bool32 shouldSpawnWaterMons)
     if (shouldSpawnWaterMons)
     {
         timeOfDay = GetTimeOfDayForEncounters(headerId, WILD_AREA_WATER);
-        return gWildMonHeaders[headerId].encounterTypes[timeOfDay].waterMonsInfo != NULL;
+        return GetWaterMonsInfo(headerId, timeOfDay) != NULL;
     }
 
     timeOfDay = GetTimeOfDayForEncounters(headerId, WILD_AREA_LAND);

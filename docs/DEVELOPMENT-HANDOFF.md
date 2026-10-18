@@ -36,6 +36,14 @@ On 14 October 2026 the owner reversed the earlier permission to ignore older sav
 
 The owner requested mGBA gameplay testing and previews **exclusively from actual Pokémon Emerald: Legends**. `tools/legends/mgba_gameplay_smoke.c` and `test/mgba-gameplay-smoke.py` launch the unchanged compiled Debug ROM under mGBA's native core, press real SELECT for Debug Quickstart, verify the overworld callback and capture unmodified 240×160 video-buffer frames. `.github/workflows/mgba-gameplay-qa.yml` builds and runs this regression in CI and uploads a screenshot-only artifact (no ROM or save). This is a **boot/Quickstart smoke check**, not proof that Birch/Devon research, Weather Institute bulletin or all four NPC branches have been played through. Those must receive actual targeted emulator runs later. For screenshots and external previews, only use captured frames traceable to this project's built ROM, never reference Pokémon screenshots or synthesized equivalents. Record live CI result before claiming it passed.
 
+## In progress — v0.0.64 seasonal Surf, Routes 105–108
+
+**Model: GPT-6 | Approach: extend the shared method resolver, preserve native slot geometry and add controlled Surf coverage.**
+
+The owner requested encounters for the next four routes, then explicitly selected **Routes 105–108: Surf** over the next grass routes. Live master `4e6000ca` and v0.0.63 publication/Pages were verified before editing. Added sixteen Surf tables with 32 ordinary visitors across Generations 1–9. Native five-slot weights/levels/rate are preserved: Tentacool 60%, visitor 30%, visitor 5%, Wingull 4%, Pelipper 1%. Residents stay available year-round; original land tables, fishing, other maps, approved DexNav fitting/art, wardrobe, save layouts and identifiers are untouched. No migration is needed. [Roster and precise rules](features/seasonal-encounters.md).
+
+A bounds-checked `GetWaterMonsInfo` reads the committed season and returns identical native fallback pointers elsewhere. All ordinary dependent Surf readers use it, including DexNav/area maps/Sweet Scent/local helpers/Match Call/optional overworld encounters; native priorities remain intact. Focused shipped-C land/Surf and proximity checks passed. Expanded the existing native harness from 35 to 68 cases (33 Surf cases), retaining prior coverage and testing all four routes/seasons, seen/unseen palettes, placement/animation and 256 real wild creations per case. Native execution, Debug/Release builds, BPS gates and public verification remain pending. Do not claim a preview or release passed yet. [QA/status](qa/seasonal-surf-v0.0.64.md). AGENTS.md was reviewed; no new durable rule was required.
+
 ## Current release — v0.0.63 seasonal encounters and DexNav (published and verified)
 
 **Model: GPT-6 | Approach: preserve encounter dependencies and shared art; verify sampled icons against visible panels and independently decode the live release.**
