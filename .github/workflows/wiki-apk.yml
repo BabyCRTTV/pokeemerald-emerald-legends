@@ -147,6 +147,12 @@ jobs:
           fi
           gradle --project-dir android/wiki ":app:$TARGET" --no-daemon -PwikiVersionCode="$WIKI_VERSION_CODE" -PwikiVersionName="$WIKI_VERSION_NAME"
 
+      - name: Build unsigned Release for the existing private signer
+        if: env.WIKI_SIGNING == 'ephemeral-debug'
+        run: |
+          gradle --project-dir android/wiki :app:assembleRelease --no-daemon
+          test -s android/wiki/app/build/outputs/apk/release/app-release-unsigned.apk
+
       - name: Verify signature and privacy permissions
         run: |
           if [ "$WIKI_SIGNING" = "persistent-release" ]; then
@@ -182,6 +188,14 @@ jobs:
         with:
           name: emerald-legends-wiki-apk
           path: ${{ env.APK_PATH }}
+
+      - name: Upload unsigned Release for private signing
+        if: env.WIKI_SIGNING == 'ephemeral-debug'
+        uses: actions/upload-artifact@v4
+        with:
+          name: emerald-legends-wiki-unsigned-release
+          path: android/wiki/app/build/outputs/apk/release/app-release-unsigned.apk
+          if-no-files-found: error
 
       - name: Publish standalone APK to project website
         if: github.event_name != 'pull_request' && env.WIKI_SIGNING == 'persistent-release'
