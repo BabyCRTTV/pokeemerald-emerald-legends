@@ -8,6 +8,7 @@ on:
       - '.github/workflows/wiki-checks.yml'
       - 'test/legends-wiki-reader.test.cjs'
       - 'test/legends-wiki-browser.test.cjs'
+      - 'test/legends-wiki-seasons.test.cjs'
   pull_request:
     branches: [master]
     paths:
@@ -15,6 +16,7 @@ on:
       - '.github/workflows/wiki-checks.yml'
       - 'test/legends-wiki-reader.test.cjs'
       - 'test/legends-wiki-browser.test.cjs'
+      - 'test/legends-wiki-seasons.test.cjs'
   workflow_dispatch:
 
 permissions:
@@ -55,7 +57,8 @@ jobs:
           assert len(data['species'])>=1000, "incomplete national Pokédex"
           species={p['id'] for p in data['species']}
           assert len(species)==len(data['species'])
-          assert len({p['num'] for p in data['species'] if p['num']})==len(data['species'])
+          assert len({p['num'] for p in data['species'] if p['num']})==sum(bool(p['num']) for p in data['species'])
+          assert all(p.get('formOf') in species for p in data['species'] if not p['num'])
           maps=data['maps']
           assert len(maps)>100 and len({m['id'] for m in maps})==len(maps)
           count=0
@@ -69,6 +72,10 @@ jobs:
                   entries=method['entries']
                   assert entries and sum(entry['rate'] for entry in entries)==100, (loc['id'],method['id'])
                   assert all(entry['id'] in species and 1<=entry['min']<=entry['max']<=100 and 0<entry['rate']<=100 for entry in entries)
+                  for variant in method.get('seasonalVariants', []):
+                      assert variant['season'] in ('spring','summer','autumn','winter')
+                      assert sum(e['rate'] for e in variant['entries'])==100
+                      assert all(e['id'] in species and 1<=e['min']<=e['max']<=100 for e in variant['entries'])
                   count+=1
           assert (base/'dex.html').is_file() and (base/'dex.css').is_file()
           assert 'dex.html' in (base/'index.html').read_text()
@@ -83,6 +90,8 @@ jobs:
         run: |
           python3 -m http.server 8765 --directory docs > /tmp/wiki-server.log 2>&1 &
           WIKI_PLAYWRIGHT="$RUNNER_TEMP/wiki-browser/node_modules/playwright" node test/legends-wiki-browser.test.cjs
+      - name: Check encounter seasons and badges
+        run: WIKI_PLAYWRIGHT="$RUNNER_TEMP/wiki-browser/node_modules/playwright" node test/legends-wiki-seasons.test.cjs
       - name: Save reader screenshots
         if: always()
         uses: actions/upload-artifact@v4

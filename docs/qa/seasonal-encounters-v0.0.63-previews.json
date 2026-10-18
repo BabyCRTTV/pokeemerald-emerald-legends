@@ -1,0 +1,114 @@
+{
+  "version": "0.0.63",
+  "capture_source": "Actual compiled Legends Debug in native mGBA; private diagnostic fixtures",
+  "base_ROM_sha256": "185bb9dc9cd81d75c18775f968f93967896ffb8c22de3fa80e39d7eb1ecfd7cc",
+  "scale": "2x nearest-neighbor; original 240x160 frames unaltered, captions outside gameplay",
+  "frames": [
+    {
+      "preview": "route-101-seasonal-v0.0.63-preview.png",
+      "frame": "scene-00-gui.png",
+      "sha256": "eb4f98d5260240e95f204ff1b8bcf2ab51243275ccdaaaca62b7bb6f0bb96824"
+    },
+    {
+      "preview": "route-101-seasonal-v0.0.63-preview.png",
+      "frame": "scene-01-gui.png",
+      "sha256": "3f9bb053606ad94026261b484e71e3dbafd47b1bad4c77f16350ebd999a5efa6"
+    },
+    {
+      "preview": "route-101-seasonal-v0.0.63-preview.png",
+      "frame": "scene-02-gui.png",
+      "sha256": "3eb7eedcacf15f0ec7eb304279a9109e09bc25bfd9fb69470ae780b6c93c4af8"
+    },
+    {
+      "preview": "route-101-seasonal-v0.0.63-preview.png",
+      "frame": "scene-03-gui.png",
+      "sha256": "e81a447c972b5b4fd0102e21336b51411ba7cd6f3744d2d636d7c6769134dc55"
+    },
+    {
+      "preview": "route-102-seasonal-v0.0.63-preview.png",
+      "frame": "scene-04-gui.png",
+      "sha256": "5772cf0745fedbe12c683a9cb862009a50f31feb0e5f655d73168157ccdfc856"
+    },
+    {
+      "preview": "route-102-seasonal-v0.0.63-preview.png",
+      "frame": "scene-05-gui.png",
+      "sha256": "4e2184c1fbcc1667e82cd68cece152a8eca37a9e088fbc731b9fa063fdf8c797"
+    },
+    {
+      "preview": "route-102-seasonal-v0.0.63-preview.png",
+      "frame": "scene-06-gui.png",
+      "sha256": "c069cb237e0106fe0679d11371291b9d18c358d9eed737b9538cceef8c5c4378"
+    },
+    {
+      "preview": "route-102-seasonal-v0.0.63-preview.png",
+      "frame": "scene-07-gui.png",
+      "sha256": "f42163dd3bf34593f48bab29aa7519f4c6259561c07ef797560da5c601c617f1"
+    },
+    {
+      "preview": "route-103-seasonal-v0.0.63-preview.png",
+      "frame": "scene-08-gui.png",
+      "sha256": "5f5119f0fa52ad1e898497fe30001b9fa2098c6b54c90cd1205029a615abd5e7"
+    },
+    {
+      "preview": "route-103-seasonal-v0.0.63-preview.png",
+      "frame": "scene-09-gui.png",
+      "sha256": "beddba49eb2a17481757ddd5363ef793881fcba6872d42950d6c499626072714"
+    },
+    {
+      "preview": "route-103-seasonal-v0.0.63-preview.png",
+      "frame": "scene-10-gui.png",
+      "sha256": "348d7c5c7844170fefc0e94297fd8f61df05f61720d7edf10732f2c94bdc69e0"
+    },
+    {
+      "preview": "route-103-seasonal-v0.0.63-preview.png",
+      "frame": "scene-11-gui.png",
+      "sha256": "63fff90c48d674c1ef602d7d8f39a6b3364626e850571e7be31a8651a28e7a92"
+    },
+    {
+      "preview": "route-104-seasonal-v0.0.63-preview.png",
+      "frame": "scene-12-gui.png",
+      "sha256": "46f47d184da3be0a917dc9eb1815d6c98a6b6dc066e67f6bd5be2ada42d1791f"
+    },
+    {
+      "preview": "route-104-seasonal-v0.0.63-preview.png",
+      "frame": "scene-13-gui.png",
+      "sha256": "28cbb4ad80baae78eb4ec470cf4fda969f515d553759b24f52886c2e48368461"
+    },
+    {
+      "preview": "route-104-seasonal-v0.0.63-preview.png",
+      "frame": "scene-14-gui.png",
+      "sha256": "981bcf4c1921e3f9d6652ad6202aa9e1b7c5d59244ad1b03d304a2fce1288fa8"
+    },
+    {
+      "preview": "route-104-seasonal-v0.0.63-preview.png",
+      "frame": "scene-15-gui.png",
+      "sha256": "3c15104ef9f0b827bb3e7cfb00eecb63359ec0e66354ebf27eb05863d848160c"
+    },
+    {
+      "preview": "dexnav-silhouettes-v0.0.63-preview.png",
+      "frame": "scene-16-gui.png",
+      "sha256": "1ac922b84aad76202a6438d4b82678c9f608eeb480866c0fd5a37a56da181e73"
+    },
+    {
+      "preview": "dexnav-silhouettes-v0.0.63-preview.png",
+      "frame": "scene-15-gui.png",
+      "sha256": "3c15104ef9f0b827bb3e7cfb00eecb63359ec0e66354ebf27eb05863d848160c"
+    },
+    {
+      "preview": "dexnav-silhouettes-v0.0.63-preview.png",
+      "frame": "scene-17-gui.png",
+      "sha256": "4f2764ea9c43c3c667495a751c8d107f8af786d9eb810efdc4ee093d9c6ee163"
+    },
+    {
+      "preview": "dexnav-silhouettes-v0.0.63-preview.gif",
+      "frame": "scene-15-gui.png",
+      "sha256": "3c15104ef9f0b827bb3e7cfb00eecb63359ec0e66354ebf27eb05863d848160c"
+    },
+    {
+      "preview": "dexnav-silhouettes-v0.0.63-preview.gif",
+      "frame": "scene-15-animated.png",
+      "sha256": "8c351de0e996022f75b4ba9a0dc077a9f55bc0c4ff70979e10c7b5c3dcc18581"
+    }
+  ],
+  "animation_note": "Two real captured native icon states loop at an illustrative 500 ms per image; this is not a continuous recording."
+}

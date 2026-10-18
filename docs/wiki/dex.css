@@ -65,3 +65,24 @@ dialog{border:0;padding:0;border-radius:19px;max-width:min(630px,calc(100vw - 26
 .shiny-sparkles i{position:absolute;left:50%;top:50%;width:16px;height:16px;margin:-8px;color:#ffe36f;text-shadow:0 0 3px #9f6a18;font-size:22px;font-style:normal;line-height:16px;opacity:0;animation:shiny-encounter .85s ease-out forwards;animation-delay:calc(var(--spark) * 18ms);transform:rotate(calc(var(--spark) * 45deg)) translateY(-25px)}
 @keyframes shiny-encounter{0%{opacity:0;transform:rotate(calc(var(--spark) * 45deg)) translateY(-18px) scale(.2)}25%{opacity:1;transform:rotate(calc(var(--spark) * 45deg)) translateY(-38px) scale(1)}65%{opacity:1;transform:rotate(calc(var(--spark) * 45deg + 35deg)) translateY(-52px) scale(.9)}100%{opacity:0;transform:rotate(calc(var(--spark) * 45deg + 65deg)) translateY(-60px) scale(.2)}}
 @media(prefers-reduced-motion:reduce){.shiny-toggle:after,.shiny-sparkles i{animation:none}.shiny-toggle:after{display:none}}
+
+/* Availability sits halfway between species details and the encounter share. */
+.encounter .pokemon-link{display:grid;grid-template-columns:minmax(0,1fr) minmax(72px,1fr) auto;gap:8px;align-items:center}
+.enc-availability{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;min-width:0;text-align:center}
+.availability-badge{display:block;width:max-content;max-width:100%;border:1px solid;border-radius:6px;padding:3px 7px;font-size:10px;font-weight:750;line-height:1.2;text-align:center}
+.season--spring{background:#e4f3e5;border-color:#bfdcc2;color:#356442}
+.season--summer{background:#fff3cf;border-color:#e9d797;color:#765b1e}
+.season--autumn{background:#fbe9d7;border-color:#e6c5a3;color:#86512d}
+.season--winter{background:#e4effa;border-color:#bfd4ea;color:#3e658c}
+.season--all{background:#f0eaf7;border-color:#ded1eb;color:#756084}
+.time--all-day{background:#f6f3fa;border-color:#e1d9eb;color:#7a6c8a}
+.time--daytime{background:#fff6dc;border-color:#ebdba6;color:#806321}
+.time--nighttime{background:#e9e8f6;border-color:#cecae5;color:#57507d}
+.preview-note{padding:12px 16px;border:1px solid #e2cfa7;border-radius:12px;background:#fff8e8;color:#78623d;font-size:12px;line-height:1.6}
+.location-row>div:first-child{flex:1;min-width:0}.location-row .enc-availability{flex:1}
+@media(max-width:400px){
+ .encounter{gap:5px;padding:8px}.encounter .thumb{width:40px;height:44px;--sprite-size:44px}
+ .encounter .pokemon-link{grid-template-columns:minmax(0,1fr) 73px 45px;gap:4px}
+ .encounter .rate{min-width:45px;padding:5px 4px;font-size:12px}
+ .availability-badge{font-size:9px;padding:3px 5px}.encounter .species-copy strong{font-size:12px}
+}
