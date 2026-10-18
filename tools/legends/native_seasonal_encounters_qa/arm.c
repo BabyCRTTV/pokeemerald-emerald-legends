@@ -69,7 +69,7 @@ static void checkIconGeometry(struct Sprite *icon, volatile u32 *b)
                     if (dy > maxY) maxY = dy;
                 }
     check(maxX >= minX && maxY >= minY, 26, b);
-    check(maxX - minX + 1 <= 23 && maxY - minY + 1 <= 25, 27, b);
+    check(maxX - minX + 1 <= 23 && maxY - minY + 1 <= 23, 27, b);
     check(minX + maxX >= -2 && minX + maxX <= 2 && minY + maxY >= -2 && minY + maxY <= 2, 28, b);
     if ((u32)(maxX - minX + 1) > b[26]) b[26] = maxX - minX + 1;
     if ((u32)(maxY - minY + 1) > b[27]) b[27] = maxY - minY + 1;

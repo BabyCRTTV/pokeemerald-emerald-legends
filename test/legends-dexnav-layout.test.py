@@ -40,7 +40,7 @@ int main(void){
   assert(CreateDexNavMonIcon(TEST_SPECIES,20,72)==0);struct Sprite *p=&gSprites[0];
   assert(p->x==20&&p->y==72&&p->images==tiles&&p->callback==SpriteCB_MonIcon&&p->oam.paletteNum==5);
   assert(!memcmp(copy,tiles,sizeof copy));
-  if(w<=22&&h<=24)assert(!p->oam.affineMode&&scale==256);
+  if(w<=22&&h<=22)assert(!p->oam.affineMode&&scale==256);
   else assert(p->oam.affineMode==1&&p->oam.matrixNum==3&&p->affineAnimPaused&&!p->affineAnimBeginning);
   int loX=99,hiX=-99,loY=99,hiY=-99;
   for(int f=0;f<2;f++)for(int dy=-16;dy<16;dy++)for(int dx=-16;dx<16;dx++){
@@ -51,7 +51,7 @@ int main(void){
    }
   }
   // Hardware rounds samples to pixels; one pixel of raster rounding is allowed.
-  assert(hiX-loX+1<=23&&hiY-loY+1<=25);
+  assert(hiX-loX+1<=23&&hiY-loY+1<=23);
   assert(abs(loX+hiX)<=2&&abs(loY+hiY)<=2);cases++;
  }
  reset();CreateDexNavMonIcon(TEST_SPECIES,0,0);assert(!gSprites[0].x2&&!gSprites[0].y2&&!gSprites[0].oam.affineMode);
@@ -67,3 +67,5 @@ selector=s[s.index('#define DEXNAV_SILHOUETTE_PAL_TAG'):s.index('static void Dra
 assert selector.count('CreateDexNavMonIcon(species, x, y)')==2
 free=s[s.index('static void DexNavGuiFreeResources(void)'):s.index('static void CB1_InitDexNavSearch(void)')]
 assert 'FreeSpriteOamMatrix' in free and 'SpriteCB_MonIcon' in free
+
+assert "gSprites[spriteId].y2 = -4;" in s and "gSprites[spriteId].y2 = -5;" in s

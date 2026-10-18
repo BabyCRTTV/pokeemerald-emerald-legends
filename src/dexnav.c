@@ -1680,6 +1680,9 @@ static void CreateSelectionCursor(void)
     LoadPalette(sSelectionCursorPal, OBJ_PLTT_ID(sSelectionCursorOam.paletteNum), PLTT_SIZE_4BPP);
 
     spriteId = CreateSprite(&sSelectionCursorSpriteTemplate, 12, 32, 0);
+    // The native ring is padded 4px below its canvas center.
+    if (spriteId != MAX_SPRITES)
+        gSprites[spriteId].y2 = -4;
     //gSprites[spriteId].data[1] = -1;
 
     sDexNavUiDataPtr->cursorSpriteId = spriteId;
@@ -1688,7 +1691,10 @@ static void CreateSelectionCursor(void)
 
 static void CreateNoDataIcon(s16 x, s16 y)
 {
-    CreateSprite(&sNoDataIconTemplate, x, y, 0);
+    u8 spriteId = CreateSprite(&sNoDataIconTemplate, x, y, 0);
+    // Keep the empty X centered with the fitted Pokemon and selection ring.
+    if (spriteId != MAX_SPRITES)
+        gSprites[spriteId].y2 = -5;
 }
 
 static bool8 CapturedAllLandMons(u32 headerId)
@@ -1964,7 +1970,7 @@ static void DexNavLoadEncounterData(void)
 // Fit the union of both poses, so padding cannot miscenter an icon and the
 // animation keeps its original motion. This affects only the DexNav grid.
 #define DEXNAV_ICON_MAX_WIDTH 22
-#define DEXNAV_ICON_MAX_HEIGHT 24
+#define DEXNAV_ICON_MAX_HEIGHT 22
 
 static s16 DexNavIconCenterOffset(s32 twiceOffset, u32 inverseScale)
 {
