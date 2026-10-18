@@ -14,6 +14,10 @@ enum Species {TEST_SPECIES};
 #define FALSE 0
 #define TRUE 1
 #define ST_OAM_AFFINE_NORMAL 1
+#define ROW_WATER_ICON_Y 35
+#define ROW_LAND_TOP_ICON_Y 72
+#define ROW_LAND_BOT_ICON_Y 100
+#define ROW_HIDDEN_ICON_Y 138
 struct Sprite {struct {u8 affineMode,matrixNum,paletteNum;}oam;u8 affineAnimBeginning,affineAnimPaused; s16 x,y,x2,y2;const u8 *images;void(*callback)(struct Sprite*);}gSprites[65];
 static u8 tiles[1024],allocated=0,matrix=3;static int scale=256,calls=0;
 static void SpriteCB_MonIcon(struct Sprite *s){}
@@ -55,7 +59,7 @@ int main(void){
   }
   // Hardware rounds samples to pixels; one pixel of raster rounding is allowed.
   assert(fallback||(hiX-loX+1<=23&&hiY-loY+1<=23));
-  assert(abs(loX+hiX)<=2&&abs(loY+hiY)<=2);cases++;
+  assert(abs(loX+hiX)<=2&&abs(loY+hiY-2*DexNavGridRowOffset(p->y))<=2);cases++;
  }
  // Sparse edge pixels can be skipped by affine sampling; center actual poses.
  reset();for(int y=15;y<32;y++)for(int x=5;x<27;x++)pixel(1,x,y);pixel(0,0,0);pixel(0,31,0);
@@ -65,6 +69,14 @@ int main(void){
  }
  assert(abs(low+high)<=2);
  reset();pixel(0,0,0);pixel(1,31,31);CreateDexNavMonIcon(TEST_SPECIES,0,0);assert(!gSprites[0].oam.affineMode&&scale==256);
+ // Fully opaque oversized art must stay inside each actual white panel.
+ const int rows[]={35,72,100,138},tops[]={25,66,90,131},bottoms[]={49,89,114,155};
+ for(int row=0;row<4;row++){
+  reset();memset(tiles,0x11,sizeof tiles);CreateDexNavMonIcon(TEST_SPECIES,20,rows[row]);
+  for(int y=-16;y<16;y++)for(int x=-16;x<16;x++)if(opaque(0,((x*scale)>>8)+16,((y*scale)>>8)+16)){
+   int screenY=rows[row]+y+gSprites[0].y2;assert(screenY>=tops[row]&&screenY<=bottoms[row]);
+  }
+ }
  reset();CreateDexNavMonIcon(TEST_SPECIES,0,0);assert(!gSprites[0].x2&&!gSprites[0].y2&&!gSprites[0].oam.affineMode);
  reset();pixel(0,0,0);pixel(1,31,31);matrix=255;CreateDexNavMonIcon(TEST_SPECIES,0,0);assert(!gSprites[0].oam.affineMode&&scale==256);
  reset();allocated=MAX_SPRITES;memset(&gSprites[MAX_SPRITES],0xa5,sizeof(struct Sprite));struct Sprite guard=gSprites[MAX_SPRITES];assert(CreateDexNavMonIcon(TEST_SPECIES,0,0)==MAX_SPRITES);assert(!memcmp(&guard,&gSprites[MAX_SPRITES],sizeof guard));
@@ -79,4 +91,4 @@ assert selector.count('CreateDexNavMonIcon(species, x, y)')==2
 free=s[s.index('static void DexNavGuiFreeResources(void)'):s.index('static void CB1_InitDexNavSearch(void)')]
 assert 'FreeSpriteOamMatrix' in free and 'SpriteCB_MonIcon' in free
 
-assert "gSprites[spriteId].y2 = -4;" in s and "gSprites[spriteId].y2 = -5;" in s
+assert "DexNavGridRowOffset(y) - 4;" in s and "DexNavGridRowOffset(y) - 5;" in s

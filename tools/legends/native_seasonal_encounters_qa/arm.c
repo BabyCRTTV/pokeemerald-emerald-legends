@@ -70,7 +70,13 @@ static void checkIconGeometry(struct Sprite *icon, volatile u32 *b)
                 }
     check(maxX >= minX && maxY >= minY, 26, b);
     check(maxX - minX + 1 <= 23 && maxY - minY + 1 <= 23, 27, b);
-    check(minX + maxX >= -2 && minX + maxX <= 2 && minY + maxY >= -2 && minY + maxY <= 2, 28, b);
+    s32 offset = 0, panelTop = 0, panelBottom = 159;
+    if (icon->y == ROW_WATER_ICON_Y) { offset = 2; panelTop = 25; panelBottom = 49; }
+    if (icon->y == ROW_LAND_TOP_ICON_Y) { offset = 5; panelTop = 66; panelBottom = 89; }
+    if (icon->y == ROW_LAND_BOT_ICON_Y) { offset = 3; panelTop = 90; panelBottom = 114; }
+    if (icon->y == ROW_HIDDEN_ICON_Y) { offset = 5; panelTop = 131; panelBottom = 155; }
+    check(minX + maxX >= -2 && minX + maxX <= 2 && minY + maxY - 2 * offset >= -2 && minY + maxY - 2 * offset <= 2, 28, b);
+    check(icon->y + minY >= panelTop && icon->y + maxY <= panelBottom, 31, b);
     if ((u32)(maxX - minX + 1) > b[26]) b[26] = maxX - minX + 1;
     if ((u32)(maxY - minY + 1) > b[27]) b[27] = maxY - minY + 1;
     b[24]++;

@@ -1631,6 +1631,8 @@ static bool8 DexNav_LoadGraphics(void)
     return FALSE;
 }
 
+static s16 DexNavGridRowOffset(s16 y);
+
 static void UpdateCursorPosition(void)
 {
     u16 x, y;
@@ -1663,6 +1665,7 @@ static void UpdateCursorPosition(void)
 
     gSprites[sDexNavUiDataPtr->cursorSpriteId].x = x;
     gSprites[sDexNavUiDataPtr->cursorSpriteId].y = y;
+    gSprites[sDexNavUiDataPtr->cursorSpriteId].y2 = DexNavGridRowOffset(y) - 4;
 
     PrintCurrentSpeciesInfo();
 }
@@ -1680,9 +1683,6 @@ static void CreateSelectionCursor(void)
     LoadPalette(sSelectionCursorPal, OBJ_PLTT_ID(sSelectionCursorOam.paletteNum), PLTT_SIZE_4BPP);
 
     spriteId = CreateSprite(&sSelectionCursorSpriteTemplate, 12, 32, 0);
-    // The native ring is padded 4px below its canvas center.
-    if (spriteId != MAX_SPRITES)
-        gSprites[spriteId].y2 = -4;
     //gSprites[spriteId].data[1] = -1;
 
     sDexNavUiDataPtr->cursorSpriteId = spriteId;
@@ -1694,7 +1694,7 @@ static void CreateNoDataIcon(s16 x, s16 y)
     u8 spriteId = CreateSprite(&sNoDataIconTemplate, x, y, 0);
     // Keep the empty X centered with the fitted Pokemon and selection ring.
     if (spriteId != MAX_SPRITES)
-        gSprites[spriteId].y2 = -5;
+        gSprites[spriteId].y2 = DexNavGridRowOffset(y) - 5;
 }
 
 static bool8 CapturedAllLandMons(u32 headerId)
@@ -1972,6 +1972,18 @@ static void DexNavLoadEncounterData(void)
 #define DEXNAV_ICON_MAX_WIDTH 22
 #define DEXNAV_ICON_MAX_HEIGHT 22
 
+// Visible white interiors: water y25..49; land y66..114 (two rows);
+// hidden y131..155. Native OAM coordinates are canvas origins, not these
+// panels' visual centers. Use the same anchors for art, cursor and empty X.
+static s16 DexNavGridRowOffset(s16 y)
+{
+    if (y == ROW_WATER_ICON_Y) return 2;
+    if (y == ROW_LAND_TOP_ICON_Y) return 5;
+    if (y == ROW_LAND_BOT_ICON_Y) return 3;
+    if (y == ROW_HIDDEN_ICON_Y) return 5;
+    return 0;
+}
+
 static s16 DexNavIconCenterOffset(s32 twiceOffset, u32 inverseScale)
 {
     s32 offset = twiceOffset * 128;
@@ -2070,7 +2082,7 @@ static u8 CreateDexNavMonIcon(enum Species species, s16 x, s16 y)
         }
     }
     sprite->x2 = DexNavIconCenterOffset(32 - (s32)minX - (s32)maxX, 256);
-    sprite->y2 = DexNavIconCenterOffset(32 - (s32)minY - (s32)maxY, 256);
+    sprite->y2 = DexNavGridRowOffset(y) + DexNavIconCenterOffset(32 - (s32)minY - (s32)maxY, 256);
     return spriteId;
 }
 
