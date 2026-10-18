@@ -1,0 +1,22 @@
+{
+  "game_version": "0.0.63",
+  "old_source": "7c9b80a68ae67688b705dd0c63d8759573b01601",
+  "source_commit": "4660dc5387b2990ccb0ddecfbe0a7156cd4d862b",
+  "release_merge": "069b026dd8ab4c5a83981932a6a04da2219ac439",
+  "header_sha256": "d520067a8946c5dd971c95b83585ba208101c5394be2e01b224677814b4e3e8d",
+  "seasonal_status": "published",
+  "maps_and_species_unchanged": true,
+  "art_inputs_unchanged": true,
+  "art_regenerated": false,
+  "reader_regression": "passed",
+  "scope": "Intentional promotion of the exact owner-approved seasonal snapshot to its released game source; independent wiki/app versions and historical article/town-stat provenance retained.",
+  "live_verification": "Game publication verified; wiki metadata deployment pending",
+  "reader_published_preview_notice_hidden": "passed",
+  "live_game_verification": {
+    "receipt": "dexnav-layout-v0.0.63-public.json",
+    "patch_commit": "55b63356583daef21e11af20f0b1412c2659d354",
+    "Pages_run": 39148635650,
+    "both_live_patches_independently_decoded": true
+  },
+  "browser_QA_limit": "No fresh browser run for metadata-only promotion: Chromium download returned a truncated archive. Existing approved browser evidence retained; fresh VM reader and published-notice assertions passed. No UI logic, styling or art changed."
+}

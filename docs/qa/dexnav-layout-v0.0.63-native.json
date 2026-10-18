@@ -884,5 +884,16 @@
     "land_bottom": 103,
     "hidden": 143
   },
-  "approval": "Owner approved roster and silhouette approach; this implements the requested sizing/centering correction."
+  "approval": "Owner approved roster and silhouette approach; this implements the requested sizing/centering correction.",
+  "production_confirmation": {
+    "merge_commit": "069b026dd8ab4c5a83981932a6a04da2219ac439",
+    "workflow_run": 39148034545,
+    "artifact_id": 12144446555,
+    "artifact_sha256": "86c0401335ca1681745413bac42a6108d217415886d37193ad90a2ae49a66dad",
+    "passed": true,
+    "scenarios": 35,
+    "Debug_ROM_sha256": "607731b0953f924e0e164b02341be128de64c2628f1d34a64a5ade9708482541",
+    "production_frames": 54,
+    "all_decoded_pixels_match_reviewed_source_frames": true
+  }
 }

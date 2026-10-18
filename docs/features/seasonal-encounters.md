@@ -1,8 +1,8 @@
-# Seasonal encounters — Routes 101–104 preview
+# Seasonal encounters — Routes 101–104
 
 **Model: GPT-6 | Approach: preserve native residents/levels and resolve every dependent land-table consumer through the committed season.**
 
-Status: owner-approved v0.0.63 release candidate. The reported DexNav icon sizing/centering issues were corrected and verified in actual mGBA captures. Final publication checks are in progress; public downloads remain v0.0.62 until they complete.
+Status: published in v0.0.63. The reported DexNav icon sizing/centering issues were corrected and verified in actual mGBA captures; both live patches independently reconstructed the production ROMs.
 
 ## Pilot rules
 
@@ -13,7 +13,7 @@ Status: owner-approved v0.0.63 release candidate. The reported DexNav icon sizin
 - Read the committed active season used by the world. A pending clock/playtime change waits for the existing safe transition. No new option, variable, save field, encounter roll, quest or achievement ID was added.
 - Ordinary walking, Sweet Scent, local-mon helpers, optional overworld encounters, DexNav lists/levels/completion/hunts, Match Call hints and Pokédex habitat maps use the same land resolver. Outbreaks, roamers and Frontier tables retain native priority.
 
-## Proposed visitors
+## Seasonal visitors
 
 ### Route 101 — levels 2–3
 
@@ -67,4 +67,4 @@ Unseen route entries use the actual native animated party icon with all nontrans
 
 The owner approved the roster and silhouette approach, with a request to correct DexNav sizing/centering. Final source `4660dc53` passed project checks, 4,096 geometry cases, a shipped-C audit of all 1,809 native icon sheets and 35 controlled native mGBA cases (8,960 wild creations). All 54 captures were visually reviewed and panel containment was asserted. [Final correction evidence and release gate](../qa/dexnav-layout-v0.0.63.md) · [Native receipt](../qa/dexnav-layout-v0.0.63-native.json) · [Corrected preview](../qa/dexnav-layout-v0.0.63-preview.png).
 
-Final Debug/Release and BPS publication checks remain in progress. Controlled Debug fixtures do not establish natural progression, a full DexNav hunt, historical-save migration, native Release interaction or Pizza Boy coverage. Original pre-correction evidence remains in the [first trial QA record](../qa/seasonal-encounters-v0.0.63.md).
+PR and production Debug/Release builds, project checks, both BPS validations and native mGBA checks passed. [Live publication receipt](../qa/dexnav-layout-v0.0.63-public.json). Controlled Debug fixtures do not establish natural progression, a full DexNav hunt, historical-save migration, native Release interaction or Pizza Boy coverage. Original pre-correction evidence remains in the [first trial QA record](../qa/seasonal-encounters-v0.0.63.md).
