@@ -9,7 +9,7 @@ The project is intended to preserve the feel and structure of Pokémon Emerald w
 
 The New Game / Continue / Options menu uses a soft lavender backdrop as of v0.0.13.1. v0.0.54 displays the current version at the right edge of its OPTION card, matching the native text; Debug includes the -D suffix.
 
-v0.0.63 is a preview candidate for seasonal grass encounters on Routes 101–104 and native animated DexNav silhouettes. [Proposed roster and approval state](docs/features/seasonal-encounters.md). Publication is pending owner review.
+v0.0.63 added seasonal grass encounters on Routes 101–104 and native animated DexNav silhouettes, with icons fitted and centered inside the grid. [Roster and rules](docs/features/seasonal-encounters.md).
 
 v0.0.62 corrected the Fortree dialogue scroll and strengthened focused Living Hoenn checks. [Review and QA](docs/qa/living-hoenn-review-v0.0.62.md).
 

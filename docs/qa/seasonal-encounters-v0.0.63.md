@@ -2,7 +2,9 @@
 
 **Model: GPT-6 | Approach: dependency-focused encounter review, executable shipped-C checks and actual native mGBA GUI captures.**
 
-Status: preview ready on [draft PR #78](https://github.com/BabyCRTTV/pokeemerald-emerald-legends/pull/78). Owner approval, merge and game publication are pending. The public game remains v0.0.62. No ROM, private diagnostic ROM, ELF or save is included in these preview files.
+Historical pre-correction record. The owner subsequently approved the roster/style and requested icon fitting corrections; [final geometry/capture evidence](dexnav-layout-v0.0.63.md) supersedes its visual-readiness status. The encounter proposal is unchanged.
+
+Original status: preview ready on [draft PR #78](https://github.com/BabyCRTTV/pokeemerald-emerald-legends/pull/78). Owner approval, merge and game publication are pending. The public game remains v0.0.62. No ROM, private diagnostic ROM, ELF or save is included in these preview files.
 
 ## Design and dependency review
 

@@ -1,0 +1,145 @@
+{
+  "version": "0.0.63",
+  "capture_source": "Actual compiled Legends Debug ROM in mGBA native core; controlled diagnostic fixtures",
+  "before_ROM_sha256": "185bb9dc9cd81d75c18775f968f93967896ffb8c22de3fa80e39d7eb1ecfd7cc",
+  "after_ROM_sha256": "607731b0953f924e0e164b02341be128de64c2628f1d34a64a5ade9708482541",
+  "scale": "2x nearest-neighbor, exact native pixels; captions outside gameplay",
+  "animation": "Two genuine native states at illustrative 500ms intervals; not a continuous recording",
+  "frames": [
+    {
+      "preview": "dexnav-layout-v0.0.63-preview.png",
+      "frame": "scene-17-gui.png",
+      "artifact": "before",
+      "sha256": "4f2764ea9c43c3c667495a751c8d107f8af786d9eb810efdc4ee093d9c6ee163"
+    },
+    {
+      "preview": "dexnav-layout-v0.0.63-preview.png",
+      "frame": "scene-17-gui.png",
+      "artifact": "after",
+      "sha256": "a1a1904cc1312a015018a021269cff255a8384b1bd5c973d99d60056ed5528e7"
+    },
+    {
+      "preview": "dexnav-layout-v0.0.63-preview.png",
+      "frame": "scene-16-gui.png",
+      "artifact": "after",
+      "sha256": "50f990eeb5a1026fa14d7ad51698a45bb225ba5c9f0c44ed617c68148c51b449"
+    },
+    {
+      "preview": "dexnav-layout-v0.0.63-preview.png",
+      "frame": "scene-28-gui.png",
+      "artifact": "after",
+      "sha256": "8b12136a712ba54044ddb96a721fab15c2b2add3eaca38081549f37d2f8bfb29"
+    },
+    {
+      "preview": "route-101-seasonal-v0.0.63-centered-preview.png",
+      "frame": "scene-19-gui.png",
+      "artifact": "after",
+      "sha256": "0a0b0f601738a398e3dc13ee3d2bb59446d382f1d33e83d1e460538ffbfce826"
+    },
+    {
+      "preview": "route-101-seasonal-v0.0.63-centered-preview.png",
+      "frame": "scene-20-gui.png",
+      "artifact": "after",
+      "sha256": "8020466f4517ec5f749ef4761acd98495be2482fd0e617fbd685c80f821b4ca4"
+    },
+    {
+      "preview": "route-101-seasonal-v0.0.63-centered-preview.png",
+      "frame": "scene-21-gui.png",
+      "artifact": "after",
+      "sha256": "d5463b9dc3eb980761818b0f30353e51505144d58ae9bad6ba18e002f9be84e3"
+    },
+    {
+      "preview": "route-101-seasonal-v0.0.63-centered-preview.png",
+      "frame": "scene-22-gui.png",
+      "artifact": "after",
+      "sha256": "249e501a0f5951331f22e18148aa0fa3c6e2146afe73f63bcefab71a3e90e5a3"
+    },
+    {
+      "preview": "route-102-seasonal-v0.0.63-centered-preview.png",
+      "frame": "scene-23-gui.png",
+      "artifact": "after",
+      "sha256": "e4a57f3ae533adaceb26cc15b3624151a28369ae3d93c5ee8cc4a549a2ebea68"
+    },
+    {
+      "preview": "route-102-seasonal-v0.0.63-centered-preview.png",
+      "frame": "scene-24-gui.png",
+      "artifact": "after",
+      "sha256": "8507477abe5aa3067784ea67df3be6d0e3672daa0961d0d75ef61018b77ff0d7"
+    },
+    {
+      "preview": "route-102-seasonal-v0.0.63-centered-preview.png",
+      "frame": "scene-25-gui.png",
+      "artifact": "after",
+      "sha256": "7372d899b0ba6aa0a72d92b797eb14670765c69228a6059eee721361f73bdea3"
+    },
+    {
+      "preview": "route-102-seasonal-v0.0.63-centered-preview.png",
+      "frame": "scene-26-gui.png",
+      "artifact": "after",
+      "sha256": "46cef1471ee176f1cd329433a9cbbb2c17502fbb0b8d9bb44cce71829f28e6c8"
+    },
+    {
+      "preview": "route-103-seasonal-v0.0.63-centered-preview.png",
+      "frame": "scene-27-gui.png",
+      "artifact": "after",
+      "sha256": "83f71c5408dccc9890da8d7d340e6c2a28c07818c7f4a1caabf4af7c58fbc229"
+    },
+    {
+      "preview": "route-103-seasonal-v0.0.63-centered-preview.png",
+      "frame": "scene-28-gui.png",
+      "artifact": "after",
+      "sha256": "8b12136a712ba54044ddb96a721fab15c2b2add3eaca38081549f37d2f8bfb29"
+    },
+    {
+      "preview": "route-103-seasonal-v0.0.63-centered-preview.png",
+      "frame": "scene-29-gui.png",
+      "artifact": "after",
+      "sha256": "0e2ff81403369f40111b9e9fcdf89f0b4ee6959ba44f2f4849a9f4015ff43963"
+    },
+    {
+      "preview": "route-103-seasonal-v0.0.63-centered-preview.png",
+      "frame": "scene-30-gui.png",
+      "artifact": "after",
+      "sha256": "a227f1c630a108c1ce48efa85133652b6af548adec7b34d123bcf3b11a77dfad"
+    },
+    {
+      "preview": "route-104-seasonal-v0.0.63-centered-preview.png",
+      "frame": "scene-31-gui.png",
+      "artifact": "after",
+      "sha256": "da8b06e59d9819fbc748b0cff34e0958a180c967ed767856cdc0b4da2c3bc621"
+    },
+    {
+      "preview": "route-104-seasonal-v0.0.63-centered-preview.png",
+      "frame": "scene-32-gui.png",
+      "artifact": "after",
+      "sha256": "4466bd7a9502e2de8b3aea235fe011dac7943767e182289e276132c544ead730"
+    },
+    {
+      "preview": "route-104-seasonal-v0.0.63-centered-preview.png",
+      "frame": "scene-33-gui.png",
+      "artifact": "after",
+      "sha256": "536df04173cb1f6a82d6cb0a496e9ea41dfd8d5b9afe6583988d47de670e0971"
+    },
+    {
+      "preview": "route-104-seasonal-v0.0.63-centered-preview.png",
+      "frame": "scene-34-gui.png",
+      "artifact": "after",
+      "sha256": "a1a1904cc1312a015018a021269cff255a8384b1bd5c973d99d60056ed5528e7"
+    },
+    {
+      "preview": "dexnav-layout-v0.0.63-preview.gif",
+      "frame": "scene-15-gui.png",
+      "artifact": "after",
+      "sha256": "ab41f8cb0f9fa49c74712fbb0a368d0e41c0dd10f04c3da65ccce578a34d02b0"
+    },
+    {
+      "preview": "dexnav-layout-v0.0.63-preview.gif",
+      "frame": "scene-15-animated.png",
+      "artifact": "after",
+      "sha256": "5251cf864987758097cb426730a3fc576823d541a713d4fd2dddbde8c86bc2eb"
+    }
+  ],
+  "source_commit": "4660dc5387b2990ccb0ddecfbe0a7156cd4d862b",
+  "workflow_run": 39147065854,
+  "artifact_id": 12143917914
+}

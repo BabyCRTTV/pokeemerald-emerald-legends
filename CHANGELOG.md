@@ -12,7 +12,7 @@ For build-specific player views, see [CHANGELOG-RELEASE.md](CHANGELOG-RELEASE.md
 - Added Alolan Sandshrew and Autumn Deerling art, profiles and cry aliases, and regenerated the pinned encounter assets.
 - Kept the ROM version, gameplay, save data and Release/Debug patches unchanged; companion applications retained their independent versions.
 
-## [0.0.63] - 2026-10-17
+## [0.0.63] - 2026-10-18
 
 - Added seasonal grass encounter tables on Routes 101–104, retaining every original resident, native levels and encounter rates while rotating two visitors per season from across Generations 1–9.
 - Connected native land encounters, DexNav, habitat maps and encounter hints to the same committed-season tables; preserved water, fishing, other routes, native encounter priorities and save layouts.

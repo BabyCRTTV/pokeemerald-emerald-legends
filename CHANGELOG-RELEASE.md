@@ -2,7 +2,7 @@
 
 This is the player-facing history for the recommended **Release** build. Shared Legends changes are repeated here so this file stands on its own; Release-only behavior is called out separately.
 
-## [0.0.63] - 2026-10-17
+## [0.0.63] - 2026-10-18
 
 - Added seasonal grass encounter tables on Routes 101–104, retaining every original resident, native levels and encounter rates while rotating two visitors per season from across Generations 1–9.
 - Connected native land encounters, DexNav, habitat maps and encounter hints to the same committed-season tables; preserved water, fishing, other routes, native encounter priorities and save layouts.

@@ -2,7 +2,7 @@
 
 **Model: GPT-6 | Approach: preserve native residents/levels and resolve every dependent land-table consumer through the committed season.**
 
-Status: v0.0.63 on a draft preview branch. The owner approved the encounter roster and silhouette approach, then reported DexNav sizing/centering issues. Layout correction and a refreshed actual-game preview are in progress; merge/publication remain pending. The public release stays v0.0.62.
+Status: owner-approved v0.0.63 release candidate. The reported DexNav icon sizing/centering issues were corrected and verified in actual mGBA captures. Final publication checks are in progress; public downloads remain v0.0.62 until they complete.
 
 ## Pilot rules
 
@@ -65,6 +65,6 @@ Unseen route entries use the actual native animated party icon with all nontrans
 
 ## Verification / approval
 
-Project checks, both native Debug/Release builds and independent clean-base BPS round trips passed. Nineteen controlled native mGBA cases passed, covering all sixteen route/season tables, both halves of Route 104, 4,864 wild creations, native icon frames/palettes, unseen selection rejection and protected-state checks. All 38 native captures were visually reviewed. [Evidence and limits](../qa/seasonal-encounters-v0.0.63.md) · [Native receipt](../qa/seasonal-encounters-v0.0.63-native.json) · [Silhouette preview](../qa/dexnav-silhouettes-v0.0.63-preview.png).
+The owner approved the roster and silhouette approach, with a request to correct DexNav sizing/centering. Final source `4660dc53` passed project checks, 4,096 geometry cases, a shipped-C audit of all 1,809 native icon sheets and 35 controlled native mGBA cases (8,960 wild creations). All 54 captures were visually reviewed and panel containment was asserted. [Final correction evidence and release gate](../qa/dexnav-layout-v0.0.63.md) · [Native receipt](../qa/dexnav-layout-v0.0.63-native.json) · [Corrected preview](../qa/dexnav-layout-v0.0.63-preview.png).
 
-These controlled Debug fixtures do not establish natural progression, a full DexNav hunt, historical-save migration, Release interaction or Pizza Boy coverage. Publication remains pending the owner's preview approval; the public game stays v0.0.62.
+Final Debug/Release and BPS publication checks remain in progress. Controlled Debug fixtures do not establish natural progression, a full DexNav hunt, historical-save migration, native Release interaction or Pizza Boy coverage. Original pre-correction evidence remains in the [first trial QA record](../qa/seasonal-encounters-v0.0.63.md).
