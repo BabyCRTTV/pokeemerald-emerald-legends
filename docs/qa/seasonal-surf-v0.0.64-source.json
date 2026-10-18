@@ -68,6 +68,6 @@
     "native_mGBA": 39151527415,
     "build_BPS": 39151527431
   },
-  "status": "Project checks passed; native/build/BPS and publication remain pending.",
+  "status": "Project checks and native 68-case mGBA execution/capture review passed; build/BPS and publication remain pending.",
   "limits": "Controlled Debug fixtures do not establish natural progression, full hunts, Release interaction, authentic historical saves or Pizza Boy coverage. No saved data changed."
 }

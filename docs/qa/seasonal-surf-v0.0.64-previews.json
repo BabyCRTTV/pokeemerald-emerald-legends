@@ -1,0 +1,129 @@
+{
+  "version": "0.0.64",
+  "ROM_sha256": "f770c923b6afde9742ed6fbdf229d9267ee852755d46be4d572cb24eb80e2704",
+  "capture_source": "Actual compiled Legends Debug ROM in mGBA native core; controlled Surf fixtures",
+  "scale": "2x nearest-neighbor, exact native pixels, captions outside gameplay",
+  "animation": "Two native states with illustrative 500ms timing; not a continuous recording",
+  "frames": [
+    {
+      "preview": "route-105-seasonal-surf-v0.0.64-preview.png",
+      "frame": "scene-51-gui.png",
+      "scene": 51,
+      "sha256": "72ddd8e0bb8bbb7267cad73638c59ac17c31c123317d0deee01524cac1021b91"
+    },
+    {
+      "preview": "route-105-seasonal-surf-v0.0.64-preview.png",
+      "frame": "scene-52-gui.png",
+      "scene": 52,
+      "sha256": "d94cd23f3bd5b95e38bbbc4f9e1f7b14121a6456d55d116d7caa68ea35f4c0e2"
+    },
+    {
+      "preview": "route-105-seasonal-surf-v0.0.64-preview.png",
+      "frame": "scene-53-gui.png",
+      "scene": 53,
+      "sha256": "3dd517dc258964cd17bb497c0d75a34cfef2ba720b5cde35a5f435e26c2daa0e"
+    },
+    {
+      "preview": "route-105-seasonal-surf-v0.0.64-preview.png",
+      "frame": "scene-54-gui.png",
+      "scene": 54,
+      "sha256": "0930413144cc0ff92cafa421a417fe83ab9b4e63411617ae36dbd54151e0a00e"
+    },
+    {
+      "preview": "route-106-seasonal-surf-v0.0.64-preview.png",
+      "frame": "scene-55-gui.png",
+      "scene": 55,
+      "sha256": "4e0c00150b8fa8c9f8fa89804210cbf1591646c2562e041fe7432cd19553b552"
+    },
+    {
+      "preview": "route-106-seasonal-surf-v0.0.64-preview.png",
+      "frame": "scene-56-gui.png",
+      "scene": 56,
+      "sha256": "32e885f726a1bc553a8ae99f3990dbc2a098630df2bf598c26c4b5277ed9537c"
+    },
+    {
+      "preview": "route-106-seasonal-surf-v0.0.64-preview.png",
+      "frame": "scene-57-gui.png",
+      "scene": 57,
+      "sha256": "afaed73f9199e28f6f0e339bbb6bf5a2f886c9c2798eaf0aa6cc9e2e4a8abceb"
+    },
+    {
+      "preview": "route-106-seasonal-surf-v0.0.64-preview.png",
+      "frame": "scene-58-gui.png",
+      "scene": 58,
+      "sha256": "c8f4fae3b935fb40cdf25dca766be0742cbbff452da24d16b8f0eb36f996ff59"
+    },
+    {
+      "preview": "route-107-seasonal-surf-v0.0.64-preview.png",
+      "frame": "scene-59-gui.png",
+      "scene": 59,
+      "sha256": "8081b8f197ed87c50804544c632f591b86625d41a590d5e7de7a4987c287ca69"
+    },
+    {
+      "preview": "route-107-seasonal-surf-v0.0.64-preview.png",
+      "frame": "scene-60-gui.png",
+      "scene": 60,
+      "sha256": "3558d372f092e49463ab3cb2337bebc944f2a19e7ae1ab9963514c138c95a868"
+    },
+    {
+      "preview": "route-107-seasonal-surf-v0.0.64-preview.png",
+      "frame": "scene-61-gui.png",
+      "scene": 61,
+      "sha256": "063bd89a59f48e91a759febd0d53fe5d20e86952d22347c8422e2ce5b376915e"
+    },
+    {
+      "preview": "route-107-seasonal-surf-v0.0.64-preview.png",
+      "frame": "scene-62-gui.png",
+      "scene": 62,
+      "sha256": "1c3e0317f97804209e9f0c077144aa89e3f603ce7d7f6b7cb5b3bb6f822a83fd"
+    },
+    {
+      "preview": "route-108-seasonal-surf-v0.0.64-preview.png",
+      "frame": "scene-63-gui.png",
+      "scene": 63,
+      "sha256": "895998d11e2fca4f314697552465cbc800a1f48bebffd387aee874f44d0e9762"
+    },
+    {
+      "preview": "route-108-seasonal-surf-v0.0.64-preview.png",
+      "frame": "scene-64-gui.png",
+      "scene": 64,
+      "sha256": "8c9ca463079137acda8a3380e79899f7cf2a49a6a8891971955b8eadee97b141"
+    },
+    {
+      "preview": "route-108-seasonal-surf-v0.0.64-preview.png",
+      "frame": "scene-65-gui.png",
+      "scene": 65,
+      "sha256": "04cadc7791108b0922557df74dbb2c5e13a3183e66ba94425422eb99dca112e4"
+    },
+    {
+      "preview": "route-108-seasonal-surf-v0.0.64-preview.png",
+      "frame": "scene-66-gui.png",
+      "scene": 66,
+      "sha256": "dc26eed57887b7a0ee7cc7a72caa2e909e14185a4afbad20cffa93ce5f629be5"
+    },
+    {
+      "preview": "seasonal-surf-v0.0.64-preview.png",
+      "frame": "scene-35-gui.png",
+      "scene": 35,
+      "sha256": "79503bf08efba791f0699581d535314560f2ddde7114737ec3c31f56a09c1a2d"
+    },
+    {
+      "preview": "seasonal-surf-v0.0.64-preview.png",
+      "frame": "scene-66-gui.png",
+      "scene": 66,
+      "sha256": "dc26eed57887b7a0ee7cc7a72caa2e909e14185a4afbad20cffa93ce5f629be5"
+    },
+    {
+      "preview": "seasonal-surf-v0.0.64-preview.gif",
+      "frame": "scene-35-gui.png",
+      "scene": 35,
+      "sha256": "79503bf08efba791f0699581d535314560f2ddde7114737ec3c31f56a09c1a2d"
+    },
+    {
+      "preview": "seasonal-surf-v0.0.64-preview.gif",
+      "frame": "scene-35-animated.png",
+      "scene": 35,
+      "sha256": "555fa36cfa3e4497ac78b3998a01f13b453b51d75ca08c19569d424c37c52aa8"
+    }
+  ]
+}
