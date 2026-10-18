@@ -19,6 +19,8 @@ def read(path):
 for index,icon in enumerate(icons):
  base='graphics/pokemon/'+icon+'/'
  front=base+('anim_front.png' if base+'anim_front.png' in paths else 'front.png')
+ if front not in paths and icon.startswith('deerling/'):
+  front='graphics/pokemon/deerling/anim_front.png'
  sheet=Image.open(io.BytesIO(read(front)))
  assert sheet.mode=='P' and sheet.width==side and sheet.height>=side,icon
  indices=sheet.crop((0,0,side,side))

@@ -19,7 +19,7 @@ window.LegendsSprites = (() => {
     return pending;
   }
   function markup(p,size="small"){
-    const id=/^[a-z0-9_]+$/.test(p.sprite||"")?p.sprite:p.id.toLowerCase();
+    const id=/^[a-z0-9_]+(?:\/[a-z0-9_]+)*$/.test(p.sprite||"")?p.sprite:p.id.toLowerCase();
     const position=ready&&atlas.icons[id];
     const art=position?'<span class="sprite-art" aria-hidden="true" style="--sprite-x:'+(-position[0])+';--sprite-y:'+(-position[1])+';--atlas-columns:'+atlas.columns+';--atlas-rows:'+atlas.rows+'"></span>':'';
     return '<span class="thumb'+(size==="large"?' thumb-large':'')+(position?' sprite-ready':' fallback-only')+(size==='large'&&portraitsReady?' portrait-ready':'')+'"><span class="missing-icon" aria-hidden="true">◉</span>'+art+'</span>';

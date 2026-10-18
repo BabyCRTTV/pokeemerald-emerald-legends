@@ -1,5 +1,16 @@
 # Development handoff
 
+## Wiki 1.7.0 — approved, publication in progress
+
+**Model: GPT-6 | Approach: preserve the existing reader layout, review shipped changes against v0.0.62, and keep proposed encounter data explicitly separate.**
+
+The owner requested an information refresh plus stacked season/time badges centered between Pokémon details and encounter share, with a preview before publication. Work is on local branch `codex/wiki-season-badges-preview`, based on `7c9b80a6`; no remote branch/merge/deployment or companion build was performed. Updated affected articles for 63 quests, 130 achievements, thirty research requests, tracked reminders, bedroom/family changes and Living Hoenn. Added availability badges to route rows and profiles, a season selector, form art/cry aliases, pinned regenerated assets and a reviewed encounter snapshot. Preserved lavender encounter styling and existing guide theme/navigation.
+
+The trial header in `preview-inputs/seasonal-encounters.h` is an exact preserved copy from the separate gameplay preview, not gameplay source. Imported 16 proposed grass tables and marked them Preview; public ROM remains v0.0.62. Actual time-of-day encounter support is disabled, so current entries say All day; no nocturnal rules were invented. Before publication, reconcile the final seasonal game tables and approval state.
+
+Reader/data checks, focused real-browser tests at six widths and the complete offline interactive review file passed. [Evidence and limits](qa/wiki-season-badges-preview.json). Reproduce with `test/legends-wiki-seasons.test.cjs` and `tools/build_wiki_review_preview.py`; the latter writes the single review HTML outside the repository. Preview file: `Emerald-Legends-Wiki-preview.html` (saved for the owner). Article-level provenance stays historical for unchanged chapters. ROM VERSION and game assets/code/saves/patches were untouched. The owner approved this exact preview with “Well done, approved” on 18 October 2026 (New York). Wiki publication is authorized. Live master was rechecked at `7c9b80a6`; seasonal gameplay PR #78 remains separate and open. Its current header exactly matches the preserved trial. Keep the public wiki Preview notice until that game release is approved/published. Run wiki CI, publish through connected GitHub tools, then verify Android/Windows companions and live Pages.
+
+
 ## Working preferences
 
 ### 17 October 2026 — Correlated-event review and model attribution

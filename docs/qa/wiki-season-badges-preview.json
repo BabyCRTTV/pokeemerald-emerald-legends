@@ -1,0 +1,34 @@
+{
+  "status": "Owner approved 18 October 2026; publication in progress",
+  "wikiRevision": "1.7.0",
+  "reviewedGameVersion": "0.0.62",
+  "baseCommit": "7c9b80a68ae67688b705dd0c63d8759573b01601",
+  "seasonalInput": {
+    "baseGameVersion": "0.0.62",
+    "baseCommit": "7c9b80a68ae67688b705dd0c63d8759573b01601",
+    "headerSha256": "d520067a8946c5dd971c95b83585ba208101c5394be2e01b224677814b4e3e8d",
+    "note": "Proposed v0.0.63 tables; not in the published v0.0.62 ROM."
+  },
+  "verification": [
+    "Reader navigation, linked articles, sprite audio and catalogue/atlas/profile integrity test passed.",
+    "JSON/internal links verified: 59 articles, 1028 species including two forms, 157 locations, 409 baseline method tables and 16 seasonal variants.",
+    "Real Chromium checks passed at widths 320, 360, 412, 690, 768 and 1280: switching all seasons, rates sum 100%, no badge overlap or horizontal overflow, form icons/types and profiles, research article rendering.",
+    "Self-contained offline HTML passed browser checks for season switching, sprites, updated guide navigation and all three research tables.",
+    "Focused phone Route 101 capture visually inspected."
+  ],
+  "limits": [
+    "Seasonal trial is not shipped. Header is a preserved copy from the separate gameplay preview, with a hash; reconcile final approved game data before publishing.",
+    "Day/night encounter tables are disabled in published game and the trial; current entries correctly show All day.",
+    "No game code, save data, ROM version, BPS patch, app package or live website was changed.",
+    "Android/Windows builds and live deployment verification remain publication steps after approval."
+  ],
+  "previewLibraryId": "libfile_6ec4e6a207b88191868cfd4b2b7e16ea",
+  "previewSha256": "3c372a54e555d4b98ed303529c91a222a9e80a96b3bf7d1653e92ce469565dfe",
+  "approval": "Well done, approved",
+  "seasonalRemoteParity": {
+    "pullRequest": 78,
+    "head": "0a33a336a8211764bb87a34fc68a8e49fc8a5955",
+    "headerMatchesPreservedInput": true,
+    "gamePublication": "still separate and pending"
+  }
+}
