@@ -25,6 +25,7 @@ static u8 CreateMonIcon(enum Species species,void(*cb)(struct Sprite*),s16 x,s16
 }
 static u8 AllocOamMatrix(void){return matrix;}
 static void SetOamMatrix(u8 n,u32 a,u32 b,u32 c,u32 d){assert(n==matrix&&a==d&&!b&&!c);scale=a;}
+static void FreeSpriteOamMatrix(struct Sprite *p){p->oam.affineMode=0;scale=256;}
 static void pixel(int f,int x,int y){int i=f*512+(y/8)*128+(x/8)*32+(y%8)*4+(x%8)/2;tiles[i]|=1<<((x&1)*4);}
 static int opaque(int f,int x,int y){if(x<0||y<0||x>=32||y>=32)return 0;int i=f*512+(y/8)*128+(x/8)*32+(y%8)*4+(x%8)/2;return (tiles[i]>>((x&1)*4))&15;}
 static void reset(void){memset(tiles,0,sizeof tiles);memset(gSprites,0,sizeof gSprites);allocated=0;matrix=3;scale=256;}
@@ -41,7 +42,9 @@ int main(void){
   assert(p->x==20&&p->y==72&&p->images==tiles&&p->callback==SpriteCB_MonIcon&&p->oam.paletteNum==5);
   assert(!memcmp(copy,tiles,sizeof copy));
   if(w<=22&&h<=22)assert(!p->oam.affineMode&&scale==256);
-  else assert(p->oam.affineMode==1&&p->oam.matrixNum==3&&p->affineAnimPaused&&!p->affineAnimBeginning);
+  else if(p->oam.affineMode)assert(p->oam.matrixNum==3&&p->affineAnimPaused&&!p->affineAnimBeginning);
+  else assert(scale==256&&(w==1||h==1)); // disappearing one-pixel edge art falls back safely
+  int fallback=(w>22||h>22)&&!p->oam.affineMode;
   int loX=99,hiX=-99,loY=99,hiY=-99;
   for(int f=0;f<2;f++)for(int dy=-16;dy<16;dy++)for(int dx=-16;dx<16;dx++){
    int sx=((dx*scale)>>8)+16,sy=((dy*scale)>>8)+16;
@@ -51,9 +54,17 @@ int main(void){
    }
   }
   // Hardware rounds samples to pixels; one pixel of raster rounding is allowed.
-  assert(hiX-loX+1<=23&&hiY-loY+1<=23);
+  assert(fallback||(hiX-loX+1<=23&&hiY-loY+1<=23));
   assert(abs(loX+hiX)<=2&&abs(loY+hiY)<=2);cases++;
  }
+ // Sparse edge pixels can be skipped by affine sampling; center actual poses.
+ reset();for(int y=15;y<32;y++)for(int x=5;x<27;x++)pixel(1,x,y);pixel(0,0,0);pixel(0,31,0);
+ CreateDexNavMonIcon(TEST_SPECIES,0,0);int low=99,high=-99;
+ for(int y=-16;y<16;y++)for(int x=-16;x<16;x++)for(int f=0;f<2;f++)if(opaque(f,((x*scale)>>8)+16,((y*scale)>>8)+16)){
+  int dy=y+gSprites[0].y2;if(dy<low)low=dy;if(dy>high)high=dy;
+ }
+ assert(abs(low+high)<=2);
+ reset();pixel(0,0,0);pixel(1,31,31);CreateDexNavMonIcon(TEST_SPECIES,0,0);assert(!gSprites[0].oam.affineMode&&scale==256);
  reset();CreateDexNavMonIcon(TEST_SPECIES,0,0);assert(!gSprites[0].x2&&!gSprites[0].y2&&!gSprites[0].oam.affineMode);
  reset();pixel(0,0,0);pixel(1,31,31);matrix=255;CreateDexNavMonIcon(TEST_SPECIES,0,0);assert(!gSprites[0].oam.affineMode&&scale==256);
  reset();allocated=MAX_SPRITES;memset(&gSprites[MAX_SPRITES],0xa5,sizeof(struct Sprite));struct Sprite guard=gSprites[MAX_SPRITES];assert(CreateDexNavMonIcon(TEST_SPECIES,0,0)==MAX_SPRITES);assert(!memcmp(&guard,&gSprites[MAX_SPRITES],sizeof guard));

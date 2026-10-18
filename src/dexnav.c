@@ -2034,8 +2034,43 @@ static u8 CreateDexNavMonIcon(enum Species species, s16 x, s16 y)
             inverseScale = 256; // preserve art safely if an external user exhausted matrices
         }
     }
-    sprite->x2 = DexNavIconCenterOffset(32 - (s32)minX - (s32)maxX, inverseScale);
-    sprite->y2 = DexNavIconCenterOffset(32 - (s32)minY - (s32)maxY, inverseScale);
+    if (inverseScale > 256)
+    {
+        // Center the pixels the GBA actually samples. A thin antenna or smoke
+        // pixel can disappear during reduction and shift the visible bounds.
+        u32 left = 32, top = 32, right = 0, bottom = 0;
+        for (frame = 0; frame < 2; frame++)
+        {
+            for (py = 0; py < 32; py++)
+            {
+                s32 sy = (((s32)py - 16) * (s32)inverseScale >> 8) + 16;
+                if (sy < 0 || sy >= 32) continue;
+                for (px = 0; px < 32; px++)
+                {
+                    s32 sx = (((s32)px - 16) * (s32)inverseScale >> 8) + 16;
+                    u32 offset;
+                    if (sx < 0 || sx >= 32) continue;
+                    offset = frame * 512 + (sy / 8) * 128 + (sx / 8) * 32 + (sy % 8) * 4 + (sx % 8) / 2;
+                    if (((tiles[offset] >> ((sx & 1) * 4)) & 15) == 0) continue;
+                    if (px < left) left = px;
+                    if (px > right) right = px;
+                    if (py < top) top = py;
+                    if (py > bottom) bottom = py;
+                }
+            }
+        }
+        if (left != 32)
+        {
+            minX = left; maxX = right; minY = top; maxY = bottom;
+        }
+        else
+        {
+            // Never turn exceptionally sparse custom art into an empty slot.
+            FreeSpriteOamMatrix(sprite);
+        }
+    }
+    sprite->x2 = DexNavIconCenterOffset(32 - (s32)minX - (s32)maxX, 256);
+    sprite->y2 = DexNavIconCenterOffset(32 - (s32)minY - (s32)maxY, 256);
     return spriteId;
 }
 
