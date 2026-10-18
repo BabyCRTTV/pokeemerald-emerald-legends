@@ -77,6 +77,7 @@ u32 ChooseHiddenMonIndex(void);
 bool32 MapHasNoEncounterData(void);
 enum TimeOfDay GetTimeOfDayForEncounters(u32 headerId, enum WildPokemonArea area);
 const struct WildPokemonInfo *GetLandMonsInfo(u32 headerId, enum TimeOfDay timeOfDay);
+const struct WildPokemonInfo *GetWaterMonsInfo(u32 headerId, enum TimeOfDay timeOfDay);
 
 u8 GetLandEncounterSlotForMatchCall(void);
 u8 GetWaterEncounterSlotForMatchCall(void);

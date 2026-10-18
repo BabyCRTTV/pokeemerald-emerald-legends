@@ -1,0 +1,73 @@
+{
+  "version": "0.0.64",
+  "baseline": "4e6000ca35dbbaeb92b7a45296993a1de10a5f4e",
+  "game_source": "b9caaaad29265407ecd4ae990663610ce97d4373",
+  "PR": 80,
+  "seasonal_header_sha256": "42d3d5d5e8d387c73fced524d174c64bf7fd915ea8e3e6d6f15410f3ff255981",
+  "land_tables_match_approved_baseline": true,
+  "native_wild_and_fishing_JSON_unchanged": true,
+  "shared_art_maps_species_IDs_save_definitions_unchanged": true,
+  "Surf": {
+    "routes": [
+      105,
+      106,
+      107,
+      108
+    ],
+    "seasons": 4,
+    "tables": 16,
+    "unique_visitors": 32,
+    "native_weights": [
+      60,
+      30,
+      5,
+      4,
+      1
+    ],
+    "native_slot_levels": [
+      [
+        5,
+        35
+      ],
+      [
+        10,
+        30
+      ],
+      [
+        15,
+        25
+      ],
+      [
+        25,
+        30
+      ],
+      [
+        25,
+        30
+      ]
+    ],
+    "encounter_rate": 4,
+    "year_round_residents": {
+      "Tentacool": 60,
+      "Wingull": 4,
+      "Pelipper": 1
+    },
+    "visitor_odds": [
+      30,
+      5
+    ]
+  },
+  "local_checks": [
+    "shipped-C seasonal land/Surf resolver, exact data/distributions/levels, invalid/fallback/TOD/pending, absent prior-season DexNav targets",
+    "DexNav proximity, silhouettes, 4096 two-pose geometry cases",
+    "season engine regression",
+    "pinned wiki import: only four Surf methods changed, species/art unchanged, historical header removed stale future Surf variants"
+  ],
+  "PR_workflows": {
+    "project_checks": 39151527391,
+    "native_mGBA": 39151527415,
+    "build_BPS": 39151527431
+  },
+  "status": "Project checks and native 68-case mGBA execution/capture review passed; build/BPS and publication remain pending.",
+  "limits": "Controlled Debug fixtures do not establish natural progression, full hunts, Release interaction, authentic historical saves or Pizza Boy coverage. No saved data changed."
+}

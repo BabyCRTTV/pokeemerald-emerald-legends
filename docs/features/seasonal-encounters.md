@@ -1,10 +1,10 @@
-# Seasonal encounters — Routes 101–104
+# Seasonal encounters — Routes 101–108
 
 **Model: GPT-6 | Approach: preserve native residents/levels and resolve every dependent land-table consumer through the committed season.**
 
 Status: published in v0.0.63. The reported DexNav icon sizing/centering issues were corrected and verified in actual mGBA captures; both live patches independently reconstructed the production ROMs.
 
-## Pilot rules
+## Grass pilot — Routes 101–104 (v0.0.63)
 
 - Grass encounters on Routes 101, 102, 103 and 104 (both halves). Water, fishing, Rock Smash, hidden-only tables and other maps retain their published data.
 - Original resident species stay available in every season and collectively occupy 70% of normal grass encounters. Two visitors occupy 20% and 10%; the existing twelve-slot weights, per-slot levels and encounter rate 20 are retained. These are base odds before native Lures or attraction abilities apply.
@@ -58,6 +58,52 @@ Year-round residents: Marill, Poochyena, Taillow, Wingull, Wurmple.
 | Summer | Fomantis | Ledyba |
 | Autumn | Autumn Deerling | Shroomish |
 | Winter | Snorunt | Alolan Sandshrew |
+
+## Surf extension — Routes 105–108 (v0.0.64)
+
+The owner chose the next four numbered sea routes. Implementation is on the development branch; production and live patch verification must finish before declaring v0.0.64 published. These routes have no grass tables.
+
+The native five Surf slots retain weights **60/30/5/4/1**, their exact level ranges **5–35 / 10–30 / 15–25 / 25–30 / 25–30**, and encounter rate **4**. Tentacool occupies 60%, Wingull 4% and Pelipper 1% in every season; the two visitors occupy 30% and 5%. This intentionally makes 65% original residents and 35% seasonal visitors. Existing level ranges stay attached to slots; resident Wingull now uses the original fourth slot's levels 25–30. Native Lures and attraction abilities retain their usual modifiers.
+
+Fishing remains the original Old/Good/Super Rod data, including Magikarp, Tentacool and Wailmer. The Abandoned Ship, Island Cave, neighboring routes, Dive encounters, hidden-only data and the existing Routes 101–104 grass implementation are unchanged. Surf visitors use the committed active season, all day. The shared resolver covers normal Surf, Sweet Scent, DexNav lists/levels/completion/hunts, habitat maps, local helpers, Match Call and optional overworld encounters. Native roamers, suppression gates, encounter checks and scripted battles retain priority. No new saved field, flag/variable, option, persistent ID or migration was added.
+
+### Route 105 — Surf
+
+| Season | 30% visitor (levels 10–30) | 5% visitor (levels 15–25) |
+|---|---|---|
+| Spring | Finneon | Mantyke |
+| Summer | Finizen | Alomomola |
+| Autumn | Remoraid | Frillish |
+| Winter | Chinchou | Spheal |
+
+### Route 106 — Surf
+
+| Season | 30% visitor (levels 10–30) | 5% visitor (levels 15–25) |
+|---|---|---|
+| Spring | Krabby | Binacle |
+| Summer | Clauncher | Corsola |
+| Autumn | Skrelp | Mareanie |
+| Winter | Shellder | Pincurchin |
+
+### Route 107 — Surf
+
+| Season | 30% visitor (levels 10–30) | 5% visitor (levels 15–25) |
+|---|---|---|
+| Spring | Buizel | Wishiwashi |
+| Summer | Arrokuda | Bruxish |
+| Autumn | Basculin (red-striped) | Inkay |
+| Winter | Seel | Qwilfish |
+
+### Route 108 — Surf
+
+| Season | 30% visitor (levels 10–30) | 5% visitor (levels 15–25) |
+|---|---|---|
+| Spring | Horsea | Shellos (west) |
+| Summer | Wiglett | Pyukumuku |
+| Autumn | Corphish | Clamperl |
+| Winter | Slowpoke | Relicanth |
+
+[Surf QA and release status](../qa/seasonal-surf-v0.0.64.md).
 
 ## DexNav silhouettes
 

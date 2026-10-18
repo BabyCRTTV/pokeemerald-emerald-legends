@@ -342,6 +342,7 @@ static void FindMapsWithMon(enum Species species)
 
         struct WildEncounterTypes encounters = gWildMonHeaders[i].encounterTypes[gAreaTimeOfDay];
         encounters.landMonsInfo = GetLandMonsInfo(i, gAreaTimeOfDay);
+        encounters.waterMonsInfo = GetWaterMonsInfo(i, gAreaTimeOfDay);
         if (MapHasSpecies(&encounters, headerSectionId, species))
         {
             switch (gWildMonHeaders[i].mapGroup)

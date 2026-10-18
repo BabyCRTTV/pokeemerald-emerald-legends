@@ -1,0 +1,17 @@
+# Seasonal Surf — v0.0.64
+
+**Model: GPT-6 | Approach: preserve native encounter dependencies, execute shared C and inspect real compiled Legends in mGBA.**
+
+Status: PR #80 game source `b9caaaad29265407ecd4ae990663610ce97d4373` passed project checks and native mGBA; Debug/Release/BPS and publication gates must finish before merge. Baseline: published v0.0.63 master `4e6000ca35dbbaeb92b7a45296993a1de10a5f4e`.
+
+The owner explicitly chose Routes 105–108 Surf. [Roster/rules](../features/seasonal-encounters.md). Sixteen seasonal tables add 32 visitors, with original residents at 65%, visitors 30%/5%, original five-slot levels/rate and committed-season behavior. Land pilot tables, fishing/native data, map layouts, art, icon fitting, save structures/readers and identifiers remain intact. No migration was needed.
+
+`test/legends-seasonal-encounters.test.py` passed exact table/odds/levels/resident checks, all TOD values, active-vs-pending season, bounds/invalid season, unrelated native pointer parity, dependent readers and absent previous-season DexNav targets for both methods. DexNav proximity passed. The expanded native harness retains all 35 original grass cases and adds sixteen Surf mixed-seen rosters, sixteen all-seen rosters and one all-unseen lock case (68 total; 17,408 native wild creations if execution passes).
+
+[Project checks 39151527391](https://github.com/BabyCRTTV/pokeemerald-emerald-legends/actions/runs/39151527391) passed. [Native mGBA 39151527415](https://github.com/BabyCRTTV/pokeemerald-emerald-legends/actions/runs/39151527415) passed unmodified Debug Quickstart, all 23 prior Living Hoenn cases and all 68 encounter/DexNav cases (35 prior grass, 33 Surf; **17,408 actual wild creations**). All 51 new Surf frames were visually inspected; all 54 prior grass frames matched the reviewed v0.0.63 pixels exactly. Native checks included table membership/species/levels, both visitors, pending-season protection, original icon pointers/VRAM animation, black/known palettes, fitted bounds/centering, unseen A rejection, closure and protected state. Fixtures entered native Calm Water and used the actual Surf avatar transition. [Native receipt](seasonal-surf-v0.0.64-native.json) · [Source audit](seasonal-surf-v0.0.64-source.json).
+
+Debug ROM SHA-256: `f770c923b6afde9742ed6fbdf229d9267ee852755d46be4d572cb24eb80e2704`. Native artifact 12145736572 ZIP SHA-256: `250ce9d760db8890d962a2c182c29a888002f0f9c591ea576a22b84a144a709b`. The downloadable base remained unchanged; temporary diagnostic copies controlled setup. Only screenshot/JSON/log artifacts were retained, never ROMs/ELFs/saves.
+
+[Phone PNG](seasonal-surf-v0.0.64-preview.png) · [Native-frame GIF](seasonal-surf-v0.0.64-preview.gif) · [Route 105](route-105-seasonal-surf-v0.0.64-preview.png) · [Route 106](route-106-seasonal-surf-v0.0.64-preview.png) · [Route 107](route-107-seasonal-surf-v0.0.64-preview.png) · [Route 108](route-108-seasonal-surf-v0.0.64-preview.png) · [Frame provenance](seasonal-surf-v0.0.64-previews.json). All eighteen PNG gameplay panels preserved exact 2× native pixels; the GIF showed two real captured states at illustrative 500ms intervals, not a continuous recording. No generated artwork was used.
+
+PR build/BPS run 39151527431, production results and both live BPS decoders remain publication gates. Controlled Debug fixtures do not establish a full uninterrupted playthrough, detector hunt, historical-save migration, Release interaction or Pizza Boy coverage. Existing historical receipts remain protected.

@@ -1,4 +1,4 @@
-// Four-route grass encounter trial. Levels, rates and native slot weights are unchanged.
+// Seasonal grass (101-104) and Surf (105-108) tables; native slot levels/rates/weights.
 // See docs/features/seasonal-encounters.md for the full distribution and approval state.
 struct LegendsSeasonalLandTable
 {
@@ -287,5 +287,184 @@ static const struct LegendsSeasonalLandTable sLegendsSeasonalLand[] =
         [LEGENDS_SUMMER] = {20, sRoute104SummerMons},
         [LEGENDS_AUTUMN] = {20, sRoute104AutumnMons},
         [LEGENDS_WINTER] = {20, sRoute104WinterMons},
+    }},
+};
+
+// Native Surf weights: 60/30/5/4/1. Residents retain 65%; visitors 30%/5%.
+struct LegendsSeasonalWaterTable
+{
+    u16 map;
+    struct WildPokemonInfo seasons[LEGENDS_SEASON_COUNT];
+};
+
+static const struct WildPokemon sRoute105SpringWaterMons[NUM_WATER_MONS_ENCOUNTER_SLOTS] =
+{
+    {5, 35, SPECIES_TENTACOOL},
+    {10, 30, SPECIES_FINNEON},
+    {15, 25, SPECIES_MANTYKE},
+    {25, 30, SPECIES_WINGULL},
+    {25, 30, SPECIES_PELIPPER},
+};
+
+static const struct WildPokemon sRoute105SummerWaterMons[NUM_WATER_MONS_ENCOUNTER_SLOTS] =
+{
+    {5, 35, SPECIES_TENTACOOL},
+    {10, 30, SPECIES_FINIZEN},
+    {15, 25, SPECIES_ALOMOMOLA},
+    {25, 30, SPECIES_WINGULL},
+    {25, 30, SPECIES_PELIPPER},
+};
+
+static const struct WildPokemon sRoute105AutumnWaterMons[NUM_WATER_MONS_ENCOUNTER_SLOTS] =
+{
+    {5, 35, SPECIES_TENTACOOL},
+    {10, 30, SPECIES_REMORAID},
+    {15, 25, SPECIES_FRILLISH},
+    {25, 30, SPECIES_WINGULL},
+    {25, 30, SPECIES_PELIPPER},
+};
+
+static const struct WildPokemon sRoute105WinterWaterMons[NUM_WATER_MONS_ENCOUNTER_SLOTS] =
+{
+    {5, 35, SPECIES_TENTACOOL},
+    {10, 30, SPECIES_CHINCHOU},
+    {15, 25, SPECIES_SPHEAL},
+    {25, 30, SPECIES_WINGULL},
+    {25, 30, SPECIES_PELIPPER},
+};
+
+static const struct WildPokemon sRoute106SpringWaterMons[NUM_WATER_MONS_ENCOUNTER_SLOTS] =
+{
+    {5, 35, SPECIES_TENTACOOL},
+    {10, 30, SPECIES_KRABBY},
+    {15, 25, SPECIES_BINACLE},
+    {25, 30, SPECIES_WINGULL},
+    {25, 30, SPECIES_PELIPPER},
+};
+
+static const struct WildPokemon sRoute106SummerWaterMons[NUM_WATER_MONS_ENCOUNTER_SLOTS] =
+{
+    {5, 35, SPECIES_TENTACOOL},
+    {10, 30, SPECIES_CLAUNCHER},
+    {15, 25, SPECIES_CORSOLA},
+    {25, 30, SPECIES_WINGULL},
+    {25, 30, SPECIES_PELIPPER},
+};
+
+static const struct WildPokemon sRoute106AutumnWaterMons[NUM_WATER_MONS_ENCOUNTER_SLOTS] =
+{
+    {5, 35, SPECIES_TENTACOOL},
+    {10, 30, SPECIES_SKRELP},
+    {15, 25, SPECIES_MAREANIE},
+    {25, 30, SPECIES_WINGULL},
+    {25, 30, SPECIES_PELIPPER},
+};
+
+static const struct WildPokemon sRoute106WinterWaterMons[NUM_WATER_MONS_ENCOUNTER_SLOTS] =
+{
+    {5, 35, SPECIES_TENTACOOL},
+    {10, 30, SPECIES_SHELLDER},
+    {15, 25, SPECIES_PINCURCHIN},
+    {25, 30, SPECIES_WINGULL},
+    {25, 30, SPECIES_PELIPPER},
+};
+
+static const struct WildPokemon sRoute107SpringWaterMons[NUM_WATER_MONS_ENCOUNTER_SLOTS] =
+{
+    {5, 35, SPECIES_TENTACOOL},
+    {10, 30, SPECIES_BUIZEL},
+    {15, 25, SPECIES_WISHIWASHI},
+    {25, 30, SPECIES_WINGULL},
+    {25, 30, SPECIES_PELIPPER},
+};
+
+static const struct WildPokemon sRoute107SummerWaterMons[NUM_WATER_MONS_ENCOUNTER_SLOTS] =
+{
+    {5, 35, SPECIES_TENTACOOL},
+    {10, 30, SPECIES_ARROKUDA},
+    {15, 25, SPECIES_BRUXISH},
+    {25, 30, SPECIES_WINGULL},
+    {25, 30, SPECIES_PELIPPER},
+};
+
+static const struct WildPokemon sRoute107AutumnWaterMons[NUM_WATER_MONS_ENCOUNTER_SLOTS] =
+{
+    {5, 35, SPECIES_TENTACOOL},
+    {10, 30, SPECIES_BASCULIN},
+    {15, 25, SPECIES_INKAY},
+    {25, 30, SPECIES_WINGULL},
+    {25, 30, SPECIES_PELIPPER},
+};
+
+static const struct WildPokemon sRoute107WinterWaterMons[NUM_WATER_MONS_ENCOUNTER_SLOTS] =
+{
+    {5, 35, SPECIES_TENTACOOL},
+    {10, 30, SPECIES_SEEL},
+    {15, 25, SPECIES_QWILFISH},
+    {25, 30, SPECIES_WINGULL},
+    {25, 30, SPECIES_PELIPPER},
+};
+
+static const struct WildPokemon sRoute108SpringWaterMons[NUM_WATER_MONS_ENCOUNTER_SLOTS] =
+{
+    {5, 35, SPECIES_TENTACOOL},
+    {10, 30, SPECIES_HORSEA},
+    {15, 25, SPECIES_SHELLOS},
+    {25, 30, SPECIES_WINGULL},
+    {25, 30, SPECIES_PELIPPER},
+};
+
+static const struct WildPokemon sRoute108SummerWaterMons[NUM_WATER_MONS_ENCOUNTER_SLOTS] =
+{
+    {5, 35, SPECIES_TENTACOOL},
+    {10, 30, SPECIES_WIGLETT},
+    {15, 25, SPECIES_PYUKUMUKU},
+    {25, 30, SPECIES_WINGULL},
+    {25, 30, SPECIES_PELIPPER},
+};
+
+static const struct WildPokemon sRoute108AutumnWaterMons[NUM_WATER_MONS_ENCOUNTER_SLOTS] =
+{
+    {5, 35, SPECIES_TENTACOOL},
+    {10, 30, SPECIES_CORPHISH},
+    {15, 25, SPECIES_CLAMPERL},
+    {25, 30, SPECIES_WINGULL},
+    {25, 30, SPECIES_PELIPPER},
+};
+
+static const struct WildPokemon sRoute108WinterWaterMons[NUM_WATER_MONS_ENCOUNTER_SLOTS] =
+{
+    {5, 35, SPECIES_TENTACOOL},
+    {10, 30, SPECIES_SLOWPOKE},
+    {15, 25, SPECIES_RELICANTH},
+    {25, 30, SPECIES_WINGULL},
+    {25, 30, SPECIES_PELIPPER},
+};
+
+static const struct LegendsSeasonalWaterTable sLegendsSeasonalWater[] =
+{
+    {MAP_ROUTE105, {
+        [LEGENDS_SPRING] = {4, sRoute105SpringWaterMons},
+        [LEGENDS_SUMMER] = {4, sRoute105SummerWaterMons},
+        [LEGENDS_AUTUMN] = {4, sRoute105AutumnWaterMons},
+        [LEGENDS_WINTER] = {4, sRoute105WinterWaterMons},
+    }},
+    {MAP_ROUTE106, {
+        [LEGENDS_SPRING] = {4, sRoute106SpringWaterMons},
+        [LEGENDS_SUMMER] = {4, sRoute106SummerWaterMons},
+        [LEGENDS_AUTUMN] = {4, sRoute106AutumnWaterMons},
+        [LEGENDS_WINTER] = {4, sRoute106WinterWaterMons},
+    }},
+    {MAP_ROUTE107, {
+        [LEGENDS_SPRING] = {4, sRoute107SpringWaterMons},
+        [LEGENDS_SUMMER] = {4, sRoute107SummerWaterMons},
+        [LEGENDS_AUTUMN] = {4, sRoute107AutumnWaterMons},
+        [LEGENDS_WINTER] = {4, sRoute107WinterWaterMons},
+    }},
+    {MAP_ROUTE108, {
+        [LEGENDS_SPRING] = {4, sRoute108SpringWaterMons},
+        [LEGENDS_SUMMER] = {4, sRoute108SummerWaterMons},
+        [LEGENDS_AUTUMN] = {4, sRoute108AutumnWaterMons},
+        [LEGENDS_WINTER] = {4, sRoute108WinterWaterMons},
     }},
 };
