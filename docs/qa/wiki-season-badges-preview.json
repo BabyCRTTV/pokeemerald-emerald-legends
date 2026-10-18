@@ -1,5 +1,5 @@
 {
-  "status": "Owner approved 18 October 2026; publication in progress",
+  "status": "Owner approved; Wiki 1.7.0, Android 1.0.9 and Windows 1.0.24 published and verified.",
   "wikiRevision": "1.7.0",
   "reviewedGameVersion": "0.0.62",
   "baseCommit": "7c9b80a68ae67688b705dd0c63d8759573b01601",
@@ -19,8 +19,7 @@
   "limits": [
     "Seasonal trial is not shipped. Header is a preserved copy from the separate gameplay preview, with a hash; reconcile final approved game data before publishing.",
     "Day/night encounter tables are disabled in published game and the trial; current entries correctly show All day.",
-    "No game code, save data, ROM version, BPS patch, app package or live website was changed.",
-    "Android/Windows builds and live deployment verification remain publication steps after approval."
+    "No game code, save data, ROM version, BPS patch, app package or live website was changed."
   ],
   "previewLibraryId": "libfile_6ec4e6a207b88191868cfd4b2b7e16ea",
   "previewSha256": "3c372a54e555d4b98ed303529c91a222a9e80a96b3bf7d1653e92ce469565dfe",
@@ -30,5 +29,6 @@
     "head": "0a33a336a8211764bb87a34fc68a8e49fc8a5955",
     "headerMatchesPreservedInput": true,
     "gamePublication": "still separate and pending"
-  }
+  },
+  "publicationReceipt": "wiki-1.7.0-public.json"
 }

@@ -1,0 +1,154 @@
+{
+  "wikiRevision": "1.7.0",
+  "verifiedUtc": "2026-10-18T04:11:20Z",
+  "files": {
+    "wiki/articles.json": {
+      "HTTP": 200,
+      "sha256": "e7df1bbdd507f6c43148177ef63b772b163e466ef4c4a90f7b18b86aab174e8a",
+      "bytes": 176758,
+      "matchesApprovedCommit": true
+    },
+    "wiki/dex-data.json": {
+      "HTTP": 200,
+      "sha256": "f9d73f43245efdede027561b46784c8a5fe78070d4eb2ea8ec7c7fee87811685",
+      "bytes": 549896,
+      "matchesApprovedCommit": true
+    },
+    "wiki/dex.html": {
+      "HTTP": 200,
+      "sha256": "db1ddd6ffe8699d67fafa80356a5cded27e89901761dfd09e707141339adc414",
+      "bytes": 10138,
+      "matchesApprovedCommit": true
+    },
+    "wiki/dex.js": {
+      "HTTP": 200,
+      "sha256": "76d66e921dde52bb91e3f778cb180bb8d4eb1bbabae21b738f4b0d34a0819f51",
+      "bytes": 22027,
+      "matchesApprovedCommit": true
+    },
+    "wiki/dex.css": {
+      "HTTP": 200,
+      "sha256": "ba9ddc0f42130af0eb36f87fd96b1cd6dc950bd4429e6ebca0b93dfe8b4b0bcc",
+      "bytes": 18355,
+      "matchesApprovedCommit": true
+    },
+    "wiki/dex-sprites.js": {
+      "HTTP": 200,
+      "sha256": "c61fc168ba8adc8bcdf160e1bba5a92eca2a77e2dd9be238e6a260bfcab3e130",
+      "bytes": 1629,
+      "matchesApprovedCommit": true
+    },
+    "wiki/dex-sprite-atlas.js": {
+      "HTTP": 200,
+      "sha256": "555f94622c6faf86da365692dfabebc8e9a81a635ceb379db43b0b573dd5cb64",
+      "bytes": 18786,
+      "matchesApprovedCommit": true
+    },
+    "wiki/dex-sprite-atlas.webp": {
+      "HTTP": 200,
+      "sha256": "55bdf244830f30f9aeb5eeddb8f628b6885eccb2e95b171dac14df9b529190df",
+      "bytes": 153584,
+      "matchesApprovedCommit": true
+    },
+    "wiki/dex-profiles.js": {
+      "HTTP": 200,
+      "sha256": "be06272e16f4d27561ca4a9b78e8a003ecd3f541e11d8dbebc6fa8dc8b4d481a",
+      "bytes": 177391,
+      "matchesApprovedCommit": true
+    },
+    "wiki/dex-portraits.webp": {
+      "HTTP": 200,
+      "sha256": "6354da3a10fbd6e816236179a9ea53b64d1f9245acde6d8801d9903d820a60ef",
+      "bytes": 630468,
+      "matchesApprovedCommit": true
+    },
+    "wiki/dex-portraits-shiny.webp": {
+      "HTTP": 200,
+      "sha256": "307df389aa898b68c2fa530b216eaaaa4c44b62e80f83501d2b5ec3a5e27623e",
+      "bytes": 630538,
+      "matchesApprovedCommit": true
+    },
+    "wiki/dex-portrait-sources.json": {
+      "HTTP": 200,
+      "sha256": "3a36879709bfcf250709a71adc01f3fc693d120220049a37f2a7b713d2aa452c",
+      "bytes": 342,
+      "matchesApprovedCommit": true
+    },
+    "wiki/index.html": {
+      "HTTP": 200,
+      "sha256": "a67e7ec8425715479d7b0513a5ab59572b1240fc376da161294cb2001afd3ddb",
+      "bytes": 12342,
+      "matchesApprovedCommit": true
+    },
+    "wiki/walkthrough-maps.json": {
+      "HTTP": 200,
+      "sha256": "1132f2464b636bc92efbeb3cc91155e11008ee7dc2606dcb392c1a5020cadadd",
+      "bytes": 115267,
+      "matchesApprovedCommit": true
+    }
+  },
+  "packages": {
+    "android": {
+      "available": true,
+      "platform": "android",
+      "version": "1.0.9",
+      "versionCode": 9,
+      "url": "https://babycrttv.github.io/pokeemerald-emerald-legends/downloads/Emerald-Legends-Wiki.apk",
+      "signing": "persistent-manual",
+      "sha256": "e9fa5dae888ed47f5f0af646529920908f7ab7fd9944156038096bd4ed948d10",
+      "certificateSha256": "512877b4caedb6c7e3d5ca1e02d11067a910599c3d1b9def231c6c55ef909d42"
+    },
+    "windows": {
+      "available": true,
+      "platform": "windows",
+      "version": "1.0.24",
+      "url": "https://github.com/BabyCRTTV/pokeemerald-emerald-legends/releases/download/wiki-desktop/Legends-Wiki-Setup.exe",
+      "sha256": "029545c3fc0e520b14c8bad9c8fa786e6fdd38c1464ad4d7b9bb5987439ae036"
+    },
+    "windowsVerification": {
+      "version": "1.0.24",
+      "HTTP": 200,
+      "bytes": 82408703,
+      "sha256": "029545c3fc0e520b14c8bad9c8fa786e6fdd38c1464ad4d7b9bb5987439ae036",
+      "matchesLiveManifest": true
+    },
+    "androidVerification": {
+      "version": "1.0.9",
+      "versionCode": 9,
+      "package": "com.babycrttv.emeraldlegendswiki",
+      "certificateMatchesPublished": true,
+      "v2SignatureVerified": true,
+      "notDebuggable": true,
+      "permissions": [
+        "android.permission.INTERNET"
+      ],
+      "sha256": "e9fa5dae888ed47f5f0af646529920908f7ab7fd9944156038096bd4ed948d10",
+      "source": "Unsigned Release artifact from GitHub Actions; signed privately with the preserved original key.",
+      "liveHTTP": 200,
+      "liveHashMatchesManifest": true,
+      "liveCertificateVerified": true
+    }
+  },
+  "pullRequest": 79,
+  "approvedCommit": "33bf1194ea67bb28e87a92e836db7e805f4ba282",
+  "mergeCommit": "bbc08e2bd6944c79815a110053e97c4c77cf53c5",
+  "androidPublicationCommit": "ced449c6e148310c021f70896840d37893c0185f",
+  "windowsManifestCommit": "2fa0dd8d495fb229bc61d398d380a6ab75f3784a",
+  "workflows": {
+    "PRwiki": 39096054130,
+    "PRproject": 39096054082,
+    "PRandroid": 39096054094,
+    "productionWiki": 39096179315,
+    "productionProject": 39096179313,
+    "windowsBuild": 39096179320,
+    "unsignedAndroidRelease": 39096268694,
+    "unsignedWorkflowProject": 39096268738,
+    "initialPages": 39096179179,
+    "finalAndroidPages": 39096393057
+  },
+  "limits": [
+    "No Android device installation or Windows installer execution was performed; package bytes, signing/permissions/version and live checksums were verified.",
+    "Seasonal gameplay PR #78 remains separate; wiki trial tables remain marked Preview.",
+    "ROM VERSION and game code, save data and BPS patches were not changed."
+  ]
+}
