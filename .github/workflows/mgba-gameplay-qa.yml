@@ -8,6 +8,7 @@ on:
       - 'tools/legends/mgba_gameplay_smoke.c'
       - 'test/mgba-gameplay-smoke.py'
       - 'tools/legends/native_living_hoenn_qa/**'
+      - 'tools/legends/native_seasonal_encounters_qa/**'
       - 'src/**'
       - 'include/**'
       - 'data/**'
@@ -21,6 +22,7 @@ on:
       - 'tools/legends/mgba_gameplay_smoke.c'
       - 'test/mgba-gameplay-smoke.py'
       - 'tools/legends/native_living_hoenn_qa/**'
+      - 'tools/legends/native_seasonal_encounters_qa/**'
       - 'src/**'
       - 'include/**'
       - 'data/**'
@@ -49,6 +51,8 @@ jobs:
         run: python3 test/mgba-gameplay-smoke.py
       - name: Exercise research notes, bulletin and town dialogue branches
         run: python3 tools/legends/native_living_hoenn_qa/run.py
+      - name: Exercise seasonal encounter trial and native DexNav silhouettes
+        run: python3 tools/legends/native_seasonal_encounters_qa/run.py
       - name: Upload direct Legends gameplay frames and machine receipt
         if: always()
         uses: actions/upload-artifact@v4
@@ -61,4 +65,7 @@ jobs:
             build/living-hoenn-qa/*.png
             build/living-hoenn-qa/*.json
             build/living-hoenn-qa/*.log
+            build/seasonal-encounters-qa/*.png
+            build/seasonal-encounters-qa/*.json
+            build/seasonal-encounters-qa/*.log
           if-no-files-found: warn

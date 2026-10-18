@@ -579,7 +579,7 @@ bool8 DexNavHasNearbyEncounterArea(void)
     bool8 land, water;
     if (header == HEADER_NONE)
         return FALSE;
-    land = gWildMonHeaders[header].encounterTypes[GetTimeOfDayForEncounters(header, WILD_AREA_LAND)].landMonsInfo != NULL;
+    land = GetLandMonsInfo(header, GetTimeOfDayForEncounters(header, WILD_AREA_LAND)) != NULL;
     water = gWildMonHeaders[header].encounterTypes[GetTimeOfDayForEncounters(header, WILD_AREA_WATER)].waterMonsInfo != NULL;
     // Same map-grid coordinates and scan rectangle as the native search.
     for (y = gSaveBlock1Ptr->pos.y; y < gSaveBlock1Ptr->pos.y + SCANSIZE_Y; y++)
@@ -1485,7 +1485,7 @@ static u8 GetEncounterLevelFromMapData(enum Species species, enum EncounterType 
     {
     case ENCOUNTER_TYPE_LAND:    // grass
         timeOfDay = GetTimeOfDayForEncounters(headerId, WILD_AREA_LAND);
-        const struct WildPokemonInfo *landMonsInfo = gWildMonHeaders[headerId].encounterTypes[timeOfDay].landMonsInfo;
+        const struct WildPokemonInfo *landMonsInfo = GetLandMonsInfo(headerId, timeOfDay);
 
         if (landMonsInfo == NULL)
             return MON_LEVEL_NONEXISTENT; //Hidden Pokémon should only appear on walkable tiles or surf tiles
@@ -1631,6 +1631,8 @@ static bool8 DexNav_LoadGraphics(void)
     return FALSE;
 }
 
+static s16 DexNavGridRowOffset(s16 y);
+
 static void UpdateCursorPosition(void)
 {
     u16 x, y;
@@ -1663,6 +1665,7 @@ static void UpdateCursorPosition(void)
 
     gSprites[sDexNavUiDataPtr->cursorSpriteId].x = x;
     gSprites[sDexNavUiDataPtr->cursorSpriteId].y = y;
+    gSprites[sDexNavUiDataPtr->cursorSpriteId].y2 = DexNavGridRowOffset(y) - 4;
 
     PrintCurrentSpeciesInfo();
 }
@@ -1688,7 +1691,10 @@ static void CreateSelectionCursor(void)
 
 static void CreateNoDataIcon(s16 x, s16 y)
 {
-    CreateSprite(&sNoDataIconTemplate, x, y, 0);
+    u8 spriteId = CreateSprite(&sNoDataIconTemplate, x, y, 0);
+    // Keep the empty X centered with the fitted Pokemon and selection ring.
+    if (spriteId != MAX_SPRITES)
+        gSprites[spriteId].y2 = DexNavGridRowOffset(y) - 5;
 }
 
 static bool8 CapturedAllLandMons(u32 headerId)
@@ -1698,7 +1704,7 @@ static bool8 CapturedAllLandMons(u32 headerId)
     int count = 0;
     enum TimeOfDay timeOfDay = GetTimeOfDayForEncounters(headerId, WILD_AREA_LAND);
 
-    const struct WildPokemonInfo *landMonsInfo = gWildMonHeaders[headerId].encounterTypes[timeOfDay].landMonsInfo;
+    const struct WildPokemonInfo *landMonsInfo = GetLandMonsInfo(headerId, timeOfDay);
 
     if (landMonsInfo != NULL)
     {
@@ -1814,6 +1820,11 @@ static void DexNav_InitWindows(void)
 
 static void DexNavGuiFreeResources(void)
 {
+    u32 i;
+    for (i = 0; i < MAX_SPRITES; i++)
+        if (gSprites[i].inUse && gSprites[i].callback == SpriteCB_MonIcon)
+            FreeSpriteOamMatrix(&gSprites[i]);
+
     Free(sDexNavUiDataPtr);
     Free(sBg1TilemapBuffer);
     FreeAllWindowBuffers();
@@ -1910,7 +1921,7 @@ static void DexNavLoadEncounterData(void)
         return;
 
     timeOfDay = GetTimeOfDayForEncounters(headerId, WILD_AREA_LAND);
-    const struct WildPokemonInfo *landMonsInfo = gWildMonHeaders[headerId].encounterTypes[timeOfDay].landMonsInfo;
+    const struct WildPokemonInfo *landMonsInfo = GetLandMonsInfo(headerId, timeOfDay);
     timeOfDay = GetTimeOfDayForEncounters(headerId, WILD_AREA_WATER);
     const struct WildPokemonInfo *waterMonsInfo = gWildMonHeaders[headerId].encounterTypes[timeOfDay].waterMonsInfo;
     timeOfDay = GetTimeOfDayForEncounters(headerId, WILD_AREA_HIDDEN);
@@ -1955,14 +1966,156 @@ static void DexNavLoadEncounterData(void)
     }
 }
 
+// Native party icons use a 32x32 canvas, while DexNav columns are 24px apart.
+// Fit the union of both poses, so padding cannot miscenter an icon and the
+// animation keeps its original motion. This affects only the DexNav grid.
+#define DEXNAV_ICON_MAX_WIDTH 22
+#define DEXNAV_ICON_MAX_HEIGHT 22
+
+// Visible white interiors: water y25..49; land y66..114 (two rows);
+// hidden y131..155. Native OAM coordinates are canvas origins, not these
+// panels' visual centers. Use the same anchors for art, cursor and empty X.
+static s16 DexNavGridRowOffset(s16 y)
+{
+    if (y == ROW_WATER_ICON_Y) return 2;
+    if (y == ROW_LAND_TOP_ICON_Y) return 5;
+    if (y == ROW_LAND_BOT_ICON_Y) return 3;
+    if (y == ROW_HIDDEN_ICON_Y) return 5;
+    return 0;
+}
+
+static s16 DexNavIconCenterOffset(s32 twiceOffset, u32 inverseScale)
+{
+    s32 offset = twiceOffset * 128;
+    if (offset < 0)
+        return -((-offset + inverseScale / 2) / inverseScale);
+    return (offset + inverseScale / 2) / inverseScale;
+}
+
+static u8 CreateDexNavMonIcon(enum Species species, s16 x, s16 y)
+{
+    u8 spriteId = CreateMonIcon(species, SpriteCB_MonIcon, x, y, 0, 0xFFFFFFFF);
+    const u8 *tiles;
+    struct Sprite *sprite;
+    u32 minX = 32, minY = 32, maxX = 0, maxY = 0;
+    u32 frame, px, py, inverseScale, scaleY;
+
+    if (spriteId == MAX_SPRITES)
+        return spriteId;
+
+    sprite = &gSprites[spriteId];
+    tiles = GetMonIconPtr(species, 0xFFFFFFFF);
+    for (frame = 0; frame < 2; frame++)
+    {
+        for (py = 0; py < 32; py++)
+        {
+            for (px = 0; px < 32; px++)
+            {
+                u32 offset = frame * 512 + (py / 8) * 128 + (px / 8) * 32 + (py % 8) * 4 + (px % 8) / 2;
+                if (((tiles[offset] >> ((px & 1) * 4)) & 15) == 0)
+                    continue;
+                if (px < minX) minX = px;
+                if (px > maxX) maxX = px;
+                if (py < minY) minY = py;
+                if (py > maxY) maxY = py;
+            }
+        }
+    }
+    if (minX == 32) // defensively retain the native empty icon
+        return spriteId;
+
+    // GBA affine coefficients are inverse scale in 8.8 fixed point. Never
+    // enlarge small species or distort aspect ratio; only oversized art shrinks.
+    inverseScale = ((maxX - minX + 1) * 256 + DEXNAV_ICON_MAX_WIDTH - 1) / DEXNAV_ICON_MAX_WIDTH;
+    scaleY = ((maxY - minY + 1) * 256 + DEXNAV_ICON_MAX_HEIGHT - 1) / DEXNAV_ICON_MAX_HEIGHT;
+    if (scaleY > inverseScale) inverseScale = scaleY;
+    if (inverseScale < 256) inverseScale = 256;
+    if (inverseScale > 256)
+    {
+        u8 matrix = AllocOamMatrix();
+        if (matrix != 0xFF)
+        {
+            sprite->oam.affineMode = ST_OAM_AFFINE_NORMAL;
+            sprite->oam.matrixNum = matrix;
+            sprite->affineAnimBeginning = FALSE;
+            sprite->affineAnimPaused = TRUE;
+            SetOamMatrix(matrix, inverseScale, 0, 0, inverseScale);
+        }
+        else
+        {
+            inverseScale = 256; // preserve art safely if an external user exhausted matrices
+        }
+    }
+    if (inverseScale > 256)
+    {
+        // Center the pixels the GBA actually samples. A thin antenna or smoke
+        // pixel can disappear during reduction and shift the visible bounds.
+        u32 left = 32, top = 32, right = 0, bottom = 0;
+        for (frame = 0; frame < 2; frame++)
+        {
+            for (py = 0; py < 32; py++)
+            {
+                s32 sy = (((s32)py - 16) * (s32)inverseScale >> 8) + 16;
+                if (sy < 0 || sy >= 32) continue;
+                for (px = 0; px < 32; px++)
+                {
+                    s32 sx = (((s32)px - 16) * (s32)inverseScale >> 8) + 16;
+                    u32 offset;
+                    if (sx < 0 || sx >= 32) continue;
+                    offset = frame * 512 + (sy / 8) * 128 + (sx / 8) * 32 + (sy % 8) * 4 + (sx % 8) / 2;
+                    if (((tiles[offset] >> ((sx & 1) * 4)) & 15) == 0) continue;
+                    if (px < left) left = px;
+                    if (px > right) right = px;
+                    if (py < top) top = py;
+                    if (py > bottom) bottom = py;
+                }
+            }
+        }
+        if (left != 32)
+        {
+            minX = left; maxX = right; minY = top; maxY = bottom;
+        }
+        else
+        {
+            // Never turn exceptionally sparse custom art into an empty slot.
+            FreeSpriteOamMatrix(sprite);
+        }
+    }
+    sprite->x2 = DexNavIconCenterOffset(32 - (s32)minX - (s32)maxX, 256);
+    sprite->y2 = DexNavGridRowOffset(y) + DexNavIconCenterOffset(32 - (s32)minY - (s32)maxY, 256);
+    return spriteId;
+}
+
+#define DEXNAV_SILHOUETTE_PAL_TAG 0x4011
+static const u16 sSilhouetteColors[16] = {RGB_BLACK};
+static const struct SpritePalette sSilhouettePalette = {sSilhouetteColors, DEXNAV_SILHOUETTE_PAL_TAG};
+
+static void CreateSilhouetteIcon(enum Species species, s16 x, s16 y)
+{
+    u8 palette = IndexOfSpritePaletteTag(DEXNAV_SILHOUETTE_PAL_TAG);
+    u8 spriteId;
+
+    if (palette == 0xFF)
+    {
+        CreateNoDataIcon(x, y);
+        return;
+    }
+
+    // Keep both native icon frames and transparent pixels. Never recolor a
+    // shared species palette: a discovered neighbor may be using it too.
+    spriteId = CreateDexNavMonIcon(species, x, y);
+    if (spriteId != MAX_SPRITES)
+        gSprites[spriteId].oam.paletteNum = palette;
+}
+
 static void TryDrawIconInSlot(enum Species species, s16 x, s16 y)
 {
-    if (species == SPECIES_NONE || species > NUM_SPECIES)
+    if (species == SPECIES_NONE || species >= NUM_SPECIES)
         CreateNoDataIcon(x, y);   //'X' in slot
     else if (!GetSetPokedexFlag(SpeciesToNationalPokedexNum(species), FLAG_GET_SEEN))
-        CreateMonIcon(SPECIES_NONE, SpriteCB_MonIcon, x, y, 0, 0xFFFFFFFF); //question mark
+        CreateSilhouetteIcon(species, x, y);
     else
-        CreateMonIcon(species, SpriteCB_MonIcon, x, y, 0, 0xFFFFFFFF);
+        CreateDexNavMonIcon(species, x, y);
 }
 
 static void DrawSpeciesIcons(void)
@@ -1972,6 +2125,7 @@ static void DrawSpeciesIcons(void)
     enum Species species;
 
     LoadCompressedSpriteSheetUsingHeap(&sNoDataIconSpriteSheet);
+    LoadSpritePalette(&sSilhouettePalette);
     for (i = 0; i < NUM_LAND_MONS_ENCOUNTER_SLOTS; i++)
     {
         species = sDexNavUiDataPtr->landSpecies[i];
@@ -1995,10 +2149,10 @@ static void DrawSpeciesIcons(void)
         y = ROW_HIDDEN_ICON_Y;
         if (FlagGet(DN_FLAG_DETECTOR_MODE))
             TryDrawIconInSlot(species, x, y);
-       else if (species == SPECIES_NONE || species > NUM_SPECIES)
+        else if (species == SPECIES_NONE || species >= NUM_SPECIES)
             CreateNoDataIcon(x, y);
         else
-            CreateMonIcon(SPECIES_NONE, SpriteCB_MonIcon, x, y, 0, 0xFFFFFFFF); //question mark if detector mode inactive
+            CreateSilhouetteIcon(species, x, y); // detector selection stays locked
     }
 }
 
@@ -2523,7 +2677,7 @@ bool32 TryFindHiddenPokemon(void)
             }
             else
             {
-                species = gWildMonHeaders[headerId].encounterTypes[timeOfDay].landMonsInfo->wildPokemon[ChooseWildMonIndex_Land()].species;
+                species = GetLandMonsInfo(headerId, timeOfDay)->wildPokemon[ChooseWildMonIndex_Land()].species;
                 environment = ENCOUNTER_TYPE_LAND;
             }
             break;

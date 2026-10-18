@@ -12,6 +12,13 @@ For build-specific player views, see [CHANGELOG-RELEASE.md](CHANGELOG-RELEASE.md
 - Added Alolan Sandshrew and Autumn Deerling art, profiles and cry aliases, and regenerated the pinned encounter assets.
 - Kept the ROM version, gameplay, save data and Release/Debug patches unchanged; companion applications retained their independent versions.
 
+## [0.0.63] - 2026-10-18
+
+- Added seasonal grass encounter tables on Routes 101–104, retaining every original resident, native levels and encounter rates while rotating two visitors per season from across Generations 1–9.
+- Connected native land encounters, DexNav, habitat maps and encounter hints to the same committed-season tables; preserved water, fishing, other routes, native encounter priorities and save layouts.
+- Replaced undiscovered DexNav question marks with actual animated icon silhouettes using an isolated black palette; preserved discovered colors, search locks, empty slots and existing icon artwork.
+- Centered DexNav icons using both animation poses and uniformly reduced oversized icons to fit their slots; preserved native assets, relative animation and identical discovered/silhouette placement.
+
 ## [0.0.62] - 2026-10-17
 
 - Corrected the Fortree resident's milestone speech to scroll its third line within the native two-line dialogue box.

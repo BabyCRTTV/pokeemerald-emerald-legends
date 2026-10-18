@@ -1,0 +1,13 @@
+{
+  "scope": "Host execution of the actual shipped C factory on native PNG-derived tiled icons; GBA affine sample model, not emulator coverage of every species",
+  "icon_sheets": 1809,
+  "scaled_sheets": 1100,
+  "max_raster_bounds": [
+    22,
+    22
+  ],
+  "failures": [],
+  "passed": true,
+  "factory_sha256": "789dc318c8e42c364d2cb3bca4dc6a577734d9d92b72dd2a429d397e39e0a7d4",
+  "asset_set_sha256": "9bfff99fc5b18b5261a6e2f5860328d268905643aacaeb31a77f4b23f6264c53"
+}
