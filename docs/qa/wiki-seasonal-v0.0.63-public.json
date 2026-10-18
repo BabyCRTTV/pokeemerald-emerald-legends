@@ -1,0 +1,81 @@
+{
+  "verified_utc": "2026-10-18T17:20:38.207265+00:00",
+  "source_commit": "2710aac9dc4ba4957f146caf3aaf3e446444e26f",
+  "Pages_run": 39149073605,
+  "files": {
+    "wiki/README.md": {
+      "HTTP": 200,
+      "bytes": 11182,
+      "sha256": "2ce8001140e13544ad4558140a661c0f5bb71637766626a3b9b1a17eccaf5f2c",
+      "matches_source": true
+    },
+    "wiki/dex-data.json": {
+      "HTTP": 200,
+      "bytes": 549909,
+      "sha256": "83ed201a867c2eab4ac9a4d48d1862430e3157472d9481165e499fbf0e3a0605",
+      "matches_source": true
+    },
+    "wiki/dex-portrait-sources.json": {
+      "HTTP": 200,
+      "bytes": 342,
+      "sha256": "521e7e31d154f188a999c405fe7ea2f34ceac0e2e0004f2c75377316488425fb",
+      "matches_source": true
+    },
+    "wiki/dex-profiles.js": {
+      "HTTP": 200,
+      "bytes": 177391,
+      "sha256": "6c0279c02ff7bed8952a956a87cf43f218ff68e8e121548768be136a75ee92be",
+      "matches_source": true
+    },
+    "wiki/dex-sprite-atlas.js": {
+      "HTTP": 200,
+      "bytes": 18786,
+      "sha256": "148f8496ba650da54c1904695eb0c6917920643ec55cd1d7dfa4ac8e8364b170",
+      "matches_source": true
+    },
+    "wiki/walkthrough-maps.json": {
+      "HTTP": 200,
+      "bytes": 115267,
+      "sha256": "d2a3b7519056fb382ae590e69b49b123c00770483f94f32c90838b6475d0ce03",
+      "matches_source": true
+    },
+    "features/seasonal-encounters.md": {
+      "HTTP": 200,
+      "bytes": 4594,
+      "sha256": "c597b48a0519ad587db02e8b65a2004bfc452ac2281fd176dd9652319d7e385b",
+      "matches_source": true
+    },
+    "qa/dexnav-layout-v0.0.63-public.json": {
+      "HTTP": 200,
+      "bytes": 6567,
+      "sha256": "25fd3f62aa43f58457423f0992f624d79571ca995efd29baaa53592936270a5e",
+      "matches_source": true
+    },
+    "qa/dexnav-layout-v0.0.63-native.json": {
+      "HTTP": 200,
+      "bytes": 20738,
+      "sha256": "9c1fb5cf604d38f98fd4217b44f33fc0cecb46dfdcda3dcc085456df85be568d",
+      "matches_source": true
+    },
+    "qa/dexnav-layout-v0.0.63.md": {
+      "HTTP": 200,
+      "bytes": 6672,
+      "sha256": "135ebf4c728cc2faa0399902a8eaa4d93f238710c577bcd375ccfc9ebf6e5a0d",
+      "matches_source": true
+    },
+    "qa/wiki-seasonal-v0.0.63-promotion.json": {
+      "HTTP": 200,
+      "bytes": 1298,
+      "sha256": "d59eeaa4ea561386f45c67748ee8a66c0012a0e163908f59871fbea22438733a",
+      "matches_source": true
+    },
+    "DEVELOPMENT-HANDOFF.md": {
+      "HTTP": 200,
+      "bytes": 47379,
+      "sha256": "d9ce3aad646fdb43d11eb6a0c69992275edf7b2b2b9483ac1a2fb70619074609",
+      "matches_source": true
+    }
+  },
+  "seasonal_status": "published",
+  "game_version": "0.0.63"
+}

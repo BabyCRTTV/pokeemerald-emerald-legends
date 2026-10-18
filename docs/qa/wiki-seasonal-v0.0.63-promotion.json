@@ -10,7 +10,7 @@
   "art_regenerated": false,
   "reader_regression": "passed",
   "scope": "Intentional promotion of the exact owner-approved seasonal snapshot to its released game source; independent wiki/app versions and historical article/town-stat provenance retained.",
-  "live_verification": "Game publication verified; wiki metadata deployment pending",
+  "live_verification": "Passed: twelve fresh public closeout/wiki files matched committed bytes; v0.0.63 published status and source pin confirmed.",
   "reader_published_preview_notice_hidden": "passed",
   "live_game_verification": {
     "receipt": "dexnav-layout-v0.0.63-public.json",
@@ -18,5 +18,18 @@
     "Pages_run": 39148635650,
     "both_live_patches_independently_decoded": true
   },
-  "browser_QA_limit": "No fresh browser run for metadata-only promotion: Chromium download returned a truncated archive. Existing approved browser evidence retained; fresh VM reader and published-notice assertions passed. No UI logic, styling or art changed."
+  "browser_QA_limit": "No fresh browser run for metadata-only promotion: Chromium download returned a truncated archive. Existing approved browser evidence retained; fresh VM reader and published-notice assertions passed. No UI logic, styling or art changed.",
+  "live_wiki_verification": {
+    "source_commit": "2710aac9dc4ba4957f146caf3aaf3e446444e26f",
+    "Pages_run": 39149073605,
+    "receipt": "wiki-seasonal-v0.0.63-public.json",
+    "HTTP_files_verified": 12
+  },
+  "snapshot_validation": {
+    "articles": 59,
+    "species": 1028,
+    "maps": 157,
+    "weighted_tables": 409,
+    "all_seasonal_tables_total_100": true
+  }
 }

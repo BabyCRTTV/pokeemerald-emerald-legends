@@ -8,6 +8,7 @@ This is the player-facing history for the recommended **Release** build. Shared 
 - Connected native land encounters, DexNav, habitat maps and encounter hints to the same committed-season tables; preserved water, fishing, other routes, native encounter priorities and save layouts.
 - Replaced undiscovered DexNav question marks with actual animated icon silhouettes using an isolated black palette; preserved discovered colors, search locks, empty slots and existing icon artwork.
 - Centered DexNav icons using both animation poses and uniformly reduced oversized icons to fit their slots; preserved native assets, relative animation and identical discovered/silhouette placement.
+- Promoted the wiki's matching seasonal encounter snapshot to published v0.0.63 data after verifying both live patches; preserved approved artwork, layout and companion versions.
 
 ## [0.0.62] - 2026-10-17
 
