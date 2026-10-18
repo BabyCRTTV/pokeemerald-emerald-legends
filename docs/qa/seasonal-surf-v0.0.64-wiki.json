@@ -1,0 +1,26 @@
+{
+  "version": "0.0.64",
+  "source_commit": "b9caaaad29265407ecd4ae990663610ce97d4373",
+  "seasonal_header_sha256": "42d3d5d5e8d387c73fced524d174c64bf7fd915ea8e3e6d6f15410f3ff255981",
+  "previous_source_commit": "4660dc5387b2990ccb0ddecfbe0a7156cd4d862b",
+  "maps": 157,
+  "species": 1028,
+  "changed_methods": [
+    "MAP_ROUTE105 Surf",
+    "MAP_ROUTE106 Surf",
+    "MAP_ROUTE107 Surf",
+    "MAP_ROUTE108 Surf"
+  ],
+  "original_entries_and_other_methods_unchanged": true,
+  "art_inputs_unchanged": true,
+  "art_regenerated": false,
+  "independent_wiki_and_companion_versions_unchanged": true,
+  "status": "Game release and both live patches verified; wiki refresh awaiting post-deploy live byte/hash confirmation.",
+  "reader_navigation_and_audio": "passed",
+  "sixteen_Surf_views_actual_reader_JS": "passed: species, 100% odds, seasonal/all-season/all-day badges and hidden Preview notice",
+  "snapshot_validation": "passed: 59 articles, 1028 species, 157 maps, 409 methods and 32 seasonal variants",
+  "browser_limit": "No fresh real-browser layout run for data-only refresh; no UI logic, styling or art changed. Native gameplay preview and VM reader checks are separate evidence.",
+  "source_metadata_cache_keys": "Updated dex-profiles.js and dex-sprite-atlas.js URL keys to the b9caaaad source pin, preventing fresh no-store encounter JSON from rejecting an older cached atlas. Added reader regression; pixels/loader logic unchanged.",
+  "live_game_receipt": "seasonal-surf-v0.0.64-public.json",
+  "patch_commit": "b63c322262d042cdddba42e8a9c2f502a7962e51"
+}

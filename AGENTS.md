@@ -16,6 +16,7 @@ The owner may switch models, including Astra and Sol, for different tasks. Use t
 - Reserve space for new reminders and HUD elements; verify screen rectangles and physical tile allocations, and remove them before competing menus/dialogs.
 - Validate relevant changes and regressions. Verify native Release and Debug builds and independently apply both BPS patches against the supported clean Emerald base before claiming readiness. Confirm commits, merges, Actions results and live downloads before reporting them as completed.
 - Keep versioning, all three changelogs, Options, README, site and browser patcher consistent. Preserve Release/Debug distinctions.
+- When advancing the wiki encounter source pin, synchronize the source-keyed atlas/profile script URLs with the no-store JSON and run the reader regression. Stale script metadata can make the sprite preload guard reject otherwise unchanged approved art.
 - Write changelog entries in past tense so readers can easily distinguish completed changes from planned work. Apply this convention to all three changelog files and the website changelog.
 - Update the handoff with accepted decisions, approval state, commit/build evidence and outstanding work at each completed milestone or interruption. Keep it short, and store detailed evidence in linked QA records. Avoid dumping full logs, registries, binary data or repeated inspections into the conversation.
 

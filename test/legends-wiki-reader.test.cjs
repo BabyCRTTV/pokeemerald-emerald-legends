@@ -51,6 +51,12 @@ const settle=()=>new Promise(r=>setImmediate(r));
 
  const portraits=JSON.parse(fs.readFileSync(base+'dex-portrait-sources.json'));assert.equal(portraits.sourceCommit,data.sourceCommit);assert.equal(portraits.count,data.species.length);
  for(const [name,hash] of Object.entries(portraits.files))assert.equal(require('node:crypto').createHash('sha256').update(fs.readFileSync(base+name)).digest('hex'),hash,'portrait file integrity');
+ // Changed source pins must request fresh metadata together with no-store JSON.
+ const dexHTML=fs.readFileSync(base+'dex.html','utf8');
+ for(const script of ['dex-profiles.js','dex-sprite-atlas.js']){
+  const src=dexHTML.match(new RegExp('src="('+script.replaceAll('.','\\.')+'[^" ]*)"'))?.[1];
+  assert(src?.includes(data.sourceCommit.slice(0,8)),script+' cache key must match pinned source');
+ }
  const atlas={window:{}};vm.runInNewContext(fs.readFileSync(base+'dex-sprite-atlas.js','utf8'),atlas);
  assert.equal(atlas.window.LegendsSpriteAtlas.sourceCommit,data.sourceCommit);
  for(const p of data.species)assert(atlas.window.LegendsSpriteAtlas.icons[p.sprite],p.id+' missing from preloaded atlas');
@@ -59,6 +65,23 @@ const settle=()=>new Promise(r=>setImmediate(r));
  for(const p of data.species)assert(profiles.window.LegendsProfiles.entries[p.id],p.id+' missing entry');
  for(const m of data.maps){const loc=profiles.window.LegendsProfiles.locations[m.id];assert.equal(loc.region,m.region);if(m.region==='Sevii'){assert.equal(loc.cells.length,0,'Sevii must not use mainland coordinates');assert.match(loc.note,/expedition/);}else assert(loc.cells.length,m.id+' missing map marker');for(const [x,y] of loc.cells)assert(x>=0&&x<224&&y>=0&&y<120);}
  assert.deepEqual(JSON.parse(JSON.stringify(profiles.window.LegendsProfiles.locations.MAP_ROUTE101.cells)),[[32,80]]);
+ for(const route of [105,106,107,108]){
+  const u=boot('dex.js',data);await settle();u.get('method').listeners.change({target:{value:'surf'}});u.get('search').value='Route '+route;u.get('search').listeners.input();
+  assert.equal(u.get('seasonal-preview-note').hidden,true);
+  for(const season of ['spring','summer','autumn','winter']){
+   u.get('season').listeners.change({target:{value:season}});
+   const h=u.get('results').innerHTML;
+   assert.equal((h.match(/class="encounter"/g)||[]).length,5);
+   assert.equal((h.match(/season--all/g)||[]).length,3);
+   assert.equal((h.match(new RegExp('season--'+season,'g'))||[]).length,2);
+   assert.equal((h.match(/time--all-day/g)||[]).length,5);
+   const m=data.maps.find(m=>m.id==='MAP_ROUTE'+route).methods.find(m=>m.id==='surf');
+   const v=m.seasonalVariants.find(v=>v.season===season).entries;
+   for(const e of v)assert(h.includes('data-species="'+e.id+'"'),route+' '+season+' '+e.id);
+   assert.equal([...h.matchAll(/class="rate">(\d+)%/g)].reduce((n,x)=>n+Number(x[1]),0),100);
+  }
+ }
+ console.log('PASS: sixteen Surf views through actual reader JS, five exact species, 100% odds, three all-season/two seasonal badges, all-day labels, hidden Preview notice');
  const d=boot('dex.js',data);await settle();assert.equal(d.sounds.length,0,'audio must not preload all cries');
  assert.match(d.get('results').innerHTML,/data-cry=/);assert.match(d.get('results').innerHTML,/class="pokemon-link"/);
  const species=boot('dex.js',data,'https://example.test/wiki/dex.html?view=species');await settle();assert.match(species.get('results').innerHTML,/<div class="dex-card">/);assert.match(species.get('results').innerHTML,/<button type="button" class="pokemon-link" data-species="BULBASAUR"/);

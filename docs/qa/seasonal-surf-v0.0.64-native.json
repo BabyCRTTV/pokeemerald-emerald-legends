@@ -1492,5 +1492,17 @@
   "Surf_scenarios": 33,
   "visually_reviewed_new_Surf_frames": 51,
   "prior_frames_matching_reviewed_v0_0_63_pixels": 54,
-  "total_native_frames": 105
+  "total_native_frames": 105,
+  "production_confirmation": {
+    "merge_commit": "7f749c9ec4ad3cef03138273a51bb7f5eecd0025",
+    "workflow_run": 39152316551,
+    "artifact_id": 12145593665,
+    "artifact_sha256": "5f7f2300c7e67e8c4ea97e70922bcea9f762e0c0f51b45fff6685df360c77db4",
+    "passed": true,
+    "scenarios": 68,
+    "total_wild_creations": 17408,
+    "Debug_ROM_sha256": "f770c923b6afde9742ed6fbdf229d9267ee852755d46be4d572cb24eb80e2704",
+    "production_frames": 105,
+    "all_decoded_pixels_match_reviewed_source_frames": true
+  }
 }

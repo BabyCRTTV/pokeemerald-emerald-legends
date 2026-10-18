@@ -2,7 +2,7 @@
 
 **Model: GPT-6 | Approach: preserve native residents/levels and resolve every dependent land-table consumer through the committed season.**
 
-Status: published in v0.0.63. The reported DexNav icon sizing/centering issues were corrected and verified in actual mGBA captures; both live patches independently reconstructed the production ROMs.
+Status: Routes 101–104 grass shipped in v0.0.63; Routes 105–108 Surf shipped in v0.0.64. Both live v0.0.64 patches were independently decoded and verified against production ROM hashes. Approved native DexNav sizing/centering and silhouettes were preserved.
 
 ## Grass pilot — Routes 101–104 (v0.0.63)
 
@@ -61,7 +61,7 @@ Year-round residents: Marill, Poochyena, Taillow, Wingull, Wurmple.
 
 ## Surf extension — Routes 105–108 (v0.0.64)
 
-The owner chose the next four numbered sea routes. Implementation is on the development branch; production and live patch verification must finish before declaring v0.0.64 published. These routes have no grass tables.
+The owner chose the next four numbered sea routes. Their seasonal Surf extension shipped in v0.0.64 after PR/production builds, native mGBA, BPS round trips and both live patch decoders passed. These routes have no grass tables.
 
 The native five Surf slots retain weights **60/30/5/4/1**, their exact level ranges **5–35 / 10–30 / 15–25 / 25–30 / 25–30**, and encounter rate **4**. Tentacool occupies 60%, Wingull 4% and Pelipper 1% in every season; the two visitors occupy 30% and 5%. This intentionally makes 65% original residents and 35% seasonal visitors. Existing level ranges stay attached to slots; resident Wingull now uses the original fourth slot's levels 25–30. Native Lures and attraction abilities retain their usual modifiers.
 

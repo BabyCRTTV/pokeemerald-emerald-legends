@@ -68,6 +68,8 @@
     "native_mGBA": 39151527415,
     "build_BPS": 39151527431
   },
-  "status": "Project checks and native 68-case mGBA execution/capture review passed; build/BPS and publication remain pending.",
-  "limits": "Controlled Debug fixtures do not establish natural progression, full hunts, Release interaction, authentic historical saves or Pizza Boy coverage. No saved data changed."
+  "status": "Published v0.0.64: PR/production gates and both independently decoded live patches passed; wiki refresh deployment is tracked separately.",
+  "limits": "Controlled Debug fixtures do not establish natural progression, full hunts, Release interaction, authentic historical saves or Pizza Boy coverage. No saved data changed.",
+  "merge_commit": "7f749c9ec4ad3cef03138273a51bb7f5eecd0025",
+  "patch_commit": "b63c322262d042cdddba42e8a9c2f502a7962e51"
 }
