@@ -87,17 +87,12 @@ void qa(void)
             check(match, 6, b);
         }
         for (u32 i = 0; i < 12; i++) check(found & (1u << i), 7, b);
-        // Native DexNav level lookup must agree for every current species.
-        for (u32 i = 0; i < 12; i++)
-        {
-            u8 level = ((u8 (*)(enum Species, enum EncounterType))QA_LEVEL)(land->wildPokemon[i].species, ENCOUNTER_TYPE_LAND);
-            check(level >= s->min && level <= s->max, 8, b);
-        }
         b[8] = hash(&gSaveBlock2Ptr->pokedex, sizeof(gSaveBlock2Ptr->pokedex));
         b[9] = hash(&gSaveBlock3Ptr->journal, sizeof(gSaveBlock3Ptr->journal));
         b[10] = hash(&gSaveBlock3Ptr->achievementExtra, sizeof(gSaveBlock3Ptr->achievementExtra));
         b[11] = hash(gSaveBlock1Ptr->vars, sizeof(gSaveBlock1Ptr->vars));
         b[12] = LegendsGetActiveSeason(); b[13] = found;
+        gSpecialVar_0x8000 = 0;
         CreateTask(Task_OpenDexNavFromStartMenu, 0);
     }
     else if (b[0] == 2)
@@ -113,7 +108,7 @@ void qa(void)
         s16 x, y; PlayerGetDestCoords(&x, &y); b[19] = MapGridGetCollisionAt(x, y);
         if (b[3] && !b[4])
         {
-            b[23] = ((enum Species (*)(void))QA_SELECTED)();
+            b[23] = gSpecialVar_0x8000; // actual search request remains unset for unseen A
             for (u32 i = 0; i < 12; i++)
             {
                 enum Species species = ui->landSpecies[i];

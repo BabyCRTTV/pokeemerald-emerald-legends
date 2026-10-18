@@ -30,7 +30,7 @@ int main(int argc,char **argv){
   if(scene==16){assert(box(6)==box(5)&&!box(23));key(1);query();assert(box(3)&&!box(23));verify();cap("locked");}
   if(scene==17)assert(!box(6));
   key(2);frames(240);query();assert(!box(3));verify();
-  printf("PASS scene %u: 256 real wild creations, active table, level lookup, native icons/animation/palettes, closed UI and protected state\n",scene);
+  printf("PASS scene %u: 256 real wild creations, active table, native icons/animation/palettes, closed UI and protected state\n",scene);
  }
  c->deinit(c);free(video);return 0;
 }

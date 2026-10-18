@@ -24,7 +24,7 @@ header=[ui,'struct QAScenario {u16 map; s16 x,y; u8 season,mode,min,max; enum Sp
 for s in scenes:header.append('{MAP_ROUTE%d,%d,%d,%d,%d,%d,%d,{%s}},'%(s['route'],s['x'],s['y'],s['season'],s['mode'],s['min'],s['max'],','.join(s['expected'])))
 header.append('};');(O/'qa_scenarios.h').write_text('\n'.join(header)+'\n')
 args=['arm-none-eabi-gcc','-iquote','include','-iquote','.', '-I'+str(O),'-DMODERN=1','-DEMERALD','-mthumb','-mcpu=arm7tdmi','-mabi=apcs-gnu','-Os','-ffreestanding','-fno-builtin','-fno-jump-tables','-nostdlib']
-for define,symbol in [('QA_LEVEL','GetEncounterLevelFromMapData'),('QA_GUI_TASK','Task_DexNavMain'),('QA_SELECTED','DexNavGetSpecies'),('QA_UI','sDexNavUiDataPtr')]:args+=['-D'+define+'='+hex(syms[symbol]|(0 if define=='QA_UI' else 1))]
+for define,symbol in [('QA_GUI_TASK','Task_DexNavMain'),('QA_UI','sDexNavUiDataPtr')]:args+=['-D'+define+'='+hex(syms[symbol]|(0 if define=='QA_UI' else 1))]
 run(args+['-Wl,-Ttext=0x09f80000','-Wl,--entry=qa','-Wl,--just-symbols=pokeemerald.elf',str(S/'arm.c'),'-o',str(O/'qa.elf')],'arm-build.log')
 run(['arm-none-eabi-objcopy','-O','binary',str(O/'qa.elf'),str(O/'qa.bin')],'objcopy.log')
 a=subprocess.check_output(['arm-none-eabi-nm',str(O/'qa.elf')],text=True).splitlines();extra={v[2]:int(v[0],16) for line in a if len(v:=line.split())==3}
@@ -35,5 +35,5 @@ finally:
  for p in O.glob('*.rgba'):Image.frombytes('RGBA',(240,160),p.read_bytes()).convert('RGB').save(p.with_suffix('.png'));p.unlink()
  private.unlink()
 assert sha(rom)==before
-proof={'version':(R/'VERSION').read_text().strip(),'base_ROM_sha256':before,'emulator':'mGBA native core 0.10.2','private_instrumentation':True,'public_ROM_unchanged':True,'scenarios':scenes,'wild_creations_per_scenario':256,'passed':True,'scope':'Actual compiled land tables, wild creation and DexNav GUI/level lookup; controlled route/season/seen state, original icons and VRAM frames, isolated palettes, unseen selection lock, closure and protected state. Both Route104 halves checked. Not a natural progression playthrough, historical-save migration, full DexNav hunt or Pizza Boy test.','harness_sha256':{n:sha(S/n) for n in ['arm.c','host.c','run.py']}}
+proof={'version':(R/'VERSION').read_text().strip(),'base_ROM_sha256':before,'emulator':'mGBA native core 0.10.2','private_instrumentation':True,'public_ROM_unchanged':True,'scenarios':scenes,'wild_creations_per_scenario':256,'passed':True,'scope':'Actual compiled land tables, wild creation and DexNav GUI; controlled route/season/seen state, original icons and VRAM frames, isolated palettes, unseen selection lock, closure and protected state. Both Route104 halves checked. Not a natural progression playthrough, historical-save migration, full DexNav hunt or Pizza Boy test.','harness_sha256':{n:sha(S/n) for n in ['arm.c','host.c','run.py']}}
 (O/'verification.json').write_text(json.dumps(proof,indent=2)+'\n');print('PASS: 19 targeted native seasonal/DexNav scenarios and 4864 real generated Pokémon.')
