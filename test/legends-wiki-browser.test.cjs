@@ -1,4 +1,5 @@
 const {chromium}=require(process.env.WIKI_PLAYWRIGHT);
+const speciesCount=JSON.parse(require('node:fs').readFileSync('docs/wiki/dex-data.json')).species.length;
 const assert=require('node:assert/strict'),fs=require('node:fs');
 (async()=>{
  const browser=await chromium.launch({headless:true});
@@ -205,8 +206,8 @@ const assert=require('node:assert/strict'),fs=require('node:fs');
   await page.getByLabel('Search wiki',{exact:true}).fill('boots');assert(await page.locator('#cards [data-page="wardrobe"]').isVisible());
   await page.goto('http://127.0.0.1:8765/wiki/dex.html?view=species');
   await page.locator('.dex-card').first().waitFor();
-  assert.equal(await page.locator('.dex-card').count(),1026,'all Pokémon render before scrolling');
-  assert.equal(await page.locator('.dex-card .sprite-ready .sprite-art').count(),1026,'all sprites are ready');
+  assert.equal(await page.locator('.dex-card').count(),speciesCount,'all Pokémon render before scrolling');
+  assert.equal(await page.locator('.dex-card .sprite-ready .sprite-art').count(),speciesCount,'all sprites are ready');
   assert(await page.locator('#more').isHidden(),'no incremental loading');
   await page.evaluate(()=>scrollTo({top:0,behavior:'instant'}));
   await page.waitForFunction(()=>!document.querySelector('#return-to-search').classList.contains('is-visible'));
@@ -223,7 +224,7 @@ const assert=require('node:assert/strict'),fs=require('node:fs');
   assert(Math.abs(await page.evaluate(()=>scrollY)-before)<3,'switching to Pokédex preserves scroll');
   await page.screenshot({path:`wiki-preview/scroll-${width}.png`,fullPage:false});
   await page.evaluate(()=>scrollTo({top:document.documentElement.scrollHeight,behavior:'instant'}));
-  assert.equal(await page.locator('.dex-card').count(),1026);
+  assert.equal(await page.locator('.dex-card').count(),speciesCount);
   assert.deepEqual(iconRequests,[],'scrolling must not request individual sprites');
   await page.locator('#return-to-search').click();
   await page.waitForFunction(()=>{const y=document.querySelector('#search-anchor').getBoundingClientRect().top;return y>=10&&y<=15;});
@@ -303,7 +304,7 @@ const assert=require('node:assert/strict'),fs=require('node:fs');
   await page.goto('http://127.0.0.1:8765/wiki/dex.html?view=routes');await page.locator('.route-card').first().waitFor();await noOverflow();
   await page.screenshot({path:`wiki-preview/routes-${width}.png`,fullPage:false});
   await page.locator('#method').selectOption('surf');await page.locator('[data-view="species"]').click();await page.locator('#type').selectOption('all');
-  assert((await page.locator('#results-count').innerText()).startsWith('1026 '),'hidden route method must not filter the National Dex');
+  assert((await page.locator('#results-count').innerText()).startsWith(speciesCount+' '),'hidden route method must not filter the National Dex');
   assert.equal(await page.locator('.hero').evaluate(e=>getComputedStyle(e,'::before').content),'none');
   if(width===412){
     await page.goto('http://127.0.0.1:8765/wiki/dex.html?pokemon=nidoqueen');await page.locator('#detail').waitFor();

@@ -2,6 +2,7 @@
 (() => {
   const $ = (s,scope=document)=>scope.querySelector(s);
   const esc = text => String(text??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+  let season="autumn";
   let data=null, bySpecies=new Map(), view="routes", region="all", method="all", availability="all", type="all", query="", pokemonMap=new Map();
   const results=$("#results"), more=$("#more"), search=$("#search"), modal=$("#detail");
   const METHODS=["land","surf","rock","old_rod","good_rod","super_rod"];
@@ -26,15 +27,25 @@
       const mapMatch=map.name.toLowerCase().includes(query)||map.id.toLowerCase().includes(query);
       const methods=map.methods.map(m=>{
         if(method!=="all"&&m.id!==method)return null;
-        let entries=m.entries.filter(e=>mapMatch||!query||bySpecies.get(e.id)?.name.toLowerCase().includes(query)||e.id.toLowerCase().replaceAll("_"," ").includes(query));
+        let entries=activeEntries(m).filter(e=>mapMatch||!query||bySpecies.get(e.id)?.name.toLowerCase().includes(query)||e.id.toLowerCase().replaceAll("_"," ").includes(query));
         return entries.length?{...m,entries}:null;
       }).filter(Boolean);
       return methods.length?{...map,methods}:null;
     }).filter(Boolean);
   }
+  const SEASONS=["spring","summer","autumn","winter"];
+  const seasonTitle=s=>s[0].toUpperCase()+s.slice(1);
+  function availabilityBadges(e){
+    const seasons=e.seasons?.length?e.seasons:SEASONS;
+    const seasonLabel=seasons.length===4?"All seasons":seasons.map(seasonTitle).join(" / ");
+    const time=e.time||"all-day", timeLabel={"daytime":"Daytime","nighttime":"Nighttime","all-day":"All day"}[time]||"All day";
+    const color=seasons.length===1?seasons[0]:"all";
+    return '<span class="enc-availability"><span class="availability-badge season--'+color+'">'+esc(seasonLabel)+'</span><span class="availability-badge time--'+esc(time)+'">'+esc(timeLabel)+'</span></span>';
+  }
+  function activeEntries(method){return method.seasonalVariants?.find(v=>v.season===season)?.entries||method.entries;}
   function encounterCard(e){
     const p=bySpecies.get(e.id);if(!p)return "";
-    return '<div class="encounter">'+sprite(p)+'<button type="button" class="pokemon-link" data-species="'+esc(e.id)+'" aria-label="'+esc(p.name+' '+prettyLevel(e.min,e.max)+' '+e.rate+' percent encounter share')+'"><span class="species-copy"><strong>'+esc(p.name)+'</strong><span class="enc-meta">'+prettyLevel(e.min,e.max)+'</span></span><span class="rate">'+e.rate+'%<small>SPAWN</small></span></button></div>';
+    return '<div class="encounter">'+sprite(p)+'<button type="button" class="pokemon-link" data-species="'+esc(e.id)+'" aria-label="'+esc(p.name+' '+prettyLevel(e.min,e.max)+' '+e.rate+' percent encounter share')+'"><span class="species-copy"><strong>'+esc(p.name)+'</strong><span class="enc-meta">'+prettyLevel(e.min,e.max)+'</span></span>'+availabilityBadges(e)+'<span class="rate">'+e.rate+'%<small>SPAWN</small></span></button></div>';
   }
   function routeCard(map){
     let count=new Set(map.methods.flatMap(m=>m.entries.map(e=>e.id))).size;
@@ -42,7 +53,7 @@
      +map.methods.map(m=>'<div class="method-section"><div class="method-heading"><span>'+esc(m.label)+'</span>'+m.entries.length+' species <small>· Relative encounter share</small></div><div class="enc-grid">'+m.entries.map(encounterCard).join('')+'</div></div>').join('')+'</section>';
   }
   function dexCard(p){
-    const n=(pokemonMap.get(p.id)||[]).length;
+    const n=new Set((pokemonMap.get(p.id)||[]).map(x=>x.mapId)).size;
     return '<div class="dex-card">'+sprite(p)+'<button type="button" class="pokemon-link" data-species="'+esc(p.id)+'"><span><span class="dex-num">'+(p.num?"#"+String(p.num).padStart(4,"0"):"Special form")+'</span><strong>'+esc(p.name)+'</strong><span class="dex-sub">'+(n?n+" wild location"+(n===1?"":"s"):"No listed wild location")+'</span>'+chips(p)+'</span></button></div>';
   }
   function updateControls(){
@@ -50,6 +61,7 @@
     document.querySelectorAll("[data-mobileview]").forEach(b=>b.classList.toggle("active",b.dataset.mobileview===view));
     $("#method-box").hidden=view!=="routes";$("#availability-box").hidden=view!=="species";$("#type-box").hidden=view!=="species";
     document.querySelectorAll("[data-region]").forEach(b=>{let active=b.dataset.region===region;b.classList.toggle("active",active);b.setAttribute("aria-pressed",String(active))});
+    $("#season-box").hidden=view!=="routes"||!data.maps.some(m=>m.methods.some(x=>x.seasonalVariants));
     search.placeholder=view==="routes"?"Search a route or Pokémon…":"Search a Pokémon or Dex number…";
     $("#clear-search").hidden=!search.value;
   }
@@ -136,7 +148,7 @@
     selected.sort((a,b)=>a.region.localeCompare(b.region)||a.map.localeCompare(b.map));
     const stats=p.stats?.length===6&&p.stats.every(x=>Number.isFinite(x))?
       '<h3>Base stats</h3><div class="stat-table">'+["HP","Attack","Defense","Sp. Atk","Sp. Def","Speed"].map((name,i)=>'<span>'+name+'</span><div class="stat-track"><i style="width:'+Math.max(1,Math.min(100,p.stats[i]/2.55))+'%"></i></div><span>'+p.stats[i]+'</span>').join("")+'</div>':"";
-    const links=selected.length?selected.map(loc=>'<div class="location-row"><div><strong>'+esc(loc.map)+'</strong><small>'+esc(loc.region)+' · '+esc(loc.label)+' · '+prettyLevel(loc.min,loc.max)+'</small></div><span class="rate">'+loc.rate+'%<small>SPAWN</small></span></div>').join(""):'<p>No standard wild encounter is listed in the currently indexed and accessible route tables. It might be obtainable through other methods, or not yet obtainable. This does not establish that the Pokémon is unavailable everywhere.</p>';
+    const links=selected.length?selected.map(loc=>'<div class="location-row"><div><strong>'+esc(loc.map)+'</strong><small>'+esc(loc.region)+' · '+esc(loc.label)+' · '+prettyLevel(loc.min,loc.max)+'</small></div>'+availabilityBadges(loc)+'<span class="rate">'+loc.rate+'%<small>SPAWN</small></span></div>').join(""):'<p>No standard wild encounter is listed in the currently indexed and accessible route tables. It might be obtainable through other methods, or not yet obtainable. This does not establish that the Pokémon is unavailable everywhere.</p>';
     $("#detail-content").innerHTML='<div class="detail-top">'+sprite(p,"large")+'<div><span class="detail-meta">'+(p.num?"NATIONAL #"+String(p.num).padStart(4,"0"):"SPECIAL FORM")+'</span><h2><button type="button" class="profile-name" id="toggle-entry" aria-expanded="false" aria-controls="pokedex-entry">'+esc(p.name)+'</button></h2><div class="detail-category"><p style="margin:0;font-size:12px;color:#837399">'+esc(p.category||"Pokémon")+' Pokémon</p><button type="button" class="shiny-toggle" id="toggle-shiny" aria-pressed="false" aria-label="Show shiny '+esc(p.name)+'" '+(LegendsSprites.portraitsAvailable?.()?'':'disabled')+'><span aria-hidden="true">✦</span> Shiny</button></div>'+chips(p)+'<p class="rotom-tip"><img src="rotom-dex.png" width="32" height="32" alt="" aria-hidden="true"><span>Tap '+esc(p.name)+'’s name for its Pokédex entry!</span></p></div></div><div class="detail-content"><section id="pokedex-entry" class="pokedex-entry" hidden><strong>Pokédex entry</strong><p>'+esc(window.LegendsProfiles?.entries[id]||'No Pokédex entry is recorded in this snapshot.')+'</p></section>'+stats+'<h3>Where to find '+esc(p.name)+'</h3><p style="font-size:12px;color:#7c708b;margin-top:0">Wild encounter tables only. Rates are conditional on the chosen method.</p>'+links+encounterMaps(selected,p)+'</div>';
     LegendsSprites.hydrate($("#detail-content"),data.sourceCommit);
     if(!modal.open)modal.showModal();
@@ -174,9 +186,19 @@
   }
   function generateMapIndex(){
     bySpecies=new Map(data.species.map(p=>[p.id,p]));pokemonMap=new Map();
-    for(const m of data.maps)for(const method of m.methods)for(const e of method.entries){
-      if(!pokemonMap.has(e.id))pokemonMap.set(e.id,[]);
-      pokemonMap.get(e.id).push({map:m.name,region:m.region,method:method.id,label:method.label,min:e.min,max:e.max,rate:e.rate,mapId:m.id});
+    for(const m of data.maps)for(const method of m.methods){
+      const variants=method.seasonalVariants||[{entries:method.entries}];
+      const merged=new Map();
+      for(const variant of variants)for(const e of variant.entries){
+        const key=[e.id,e.min,e.max,e.rate,e.time||"all-day"].join(":");
+        if(!merged.has(key))merged.set(key,{...e,seasons:[]});
+        const entry=merged.get(key);
+        for(const available of e.seasons||SEASONS)if(!entry.seasons.includes(available))entry.seasons.push(available);
+      }
+      for(const e of merged.values()){
+        if(!pokemonMap.has(e.id))pokemonMap.set(e.id,[]);
+        pokemonMap.get(e.id).push({...e,map:m.name,region:m.region,method:method.id,label:method.label,mapId:m.id});
+      }
     }
     const validTypes=new Set(["NORMAL","FIRE","WATER","GRASS","ELECTRIC","ICE","FIGHTING","POISON","GROUND","FLYING","PSYCHIC","BUG","ROCK","GHOST","DRAGON","DARK","STEEL","FAIRY"]);
     const types=[...new Set(data.species.flatMap(x=>x.types||[]))].filter(x=>validTypes.has(x)).sort();
@@ -196,7 +218,8 @@
   async function playCry(id,button){
     if(!bySpecies.has(id))return;
     stopCry();const token=cryToken;
-    const stem=id.toLowerCase()+(window.LegendsCryForms[id]?'_'+window.LegendsCryForms[id]:'');
+    const cryId=bySpecies.get(id).crySpecies||id;
+    const stem=cryId.toLowerCase()+(window.LegendsCryForms[cryId]?'_'+window.LegendsCryForms[cryId]:'');
     const audio=new Audio('https://raw.githubusercontent.com/BabyCRTTV/pokeemerald-emerald-legends/'+data.sourceCommit+'/sound/direct_sound_samples/cries/'+stem+'.wav');cryAudio=audio;audio.preload='none';
     button.classList.add('playing');$('#cry-status').textContent='';
     audio.addEventListener('ended',()=>{if(token===cryToken)stopCry();},{once:true});
@@ -211,6 +234,11 @@
   document.querySelectorAll("[data-region]").forEach(b=>b.addEventListener("click",()=>{region=b.dataset.region;render()}));
   search.addEventListener("input",()=>{query=search.value.trim().toLowerCase();render()});
   $("#clear-search").addEventListener("click",()=>{search.value="";query="";render();search.focus()});
+  $("#season").addEventListener("change",e=>{
+    season=e.target.value;
+    const url=new URL(location.href);url.searchParams.set("season",season);history.replaceState(null,"",url);
+    render();
+  });
   $("#method").addEventListener("change",e=>{method=e.target.value;render()});
   $("#availability").addEventListener("change",e=>{availability=e.target.value;render()});
   $("#type").addEventListener("change",e=>{type=e.target.value;render()});
@@ -222,7 +250,13 @@
   $("#help").addEventListener("click",e=>{if(e.target===$("#help"))$("#help").close()});
   fetch("dex-data.json",{cache:"no-store"}).then(r=>{if(!r.ok)throw Error("HTTP "+r.status);return r.json()}).then(async json=>{
     if(!Array.isArray(json.maps)||!Array.isArray(json.species)||json.maps.length===0)throw Error("Invalid Pokédex data");
-    data=json;generateMapIndex();
+    data=json;
+    const requestedSeason=new URL(location.href).searchParams.get("season");
+    if(SEASONS.includes(requestedSeason))season=requestedSeason;
+    $("#season").value=season;
+    $("#season-box").hidden=!data.maps.some(m=>m.methods.some(x=>x.seasonalVariants));
+    $("#seasonal-preview-note").hidden=data.seasonalStatus!=="preview";
+    generateMapIndex();
     await LegendsSprites.preload(data.sourceCommit);
     const link=new URL(location.href),pokemon=link.searchParams.get("pokemon")?.toUpperCase(),map=link.searchParams.get("map");
     if(link.searchParams.get("view")==="species")view="species";

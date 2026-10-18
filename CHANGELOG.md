@@ -4,6 +4,14 @@ All notable Pokémon Emerald: Legends project changes are documented here.
 
 For build-specific player views, see [CHANGELOG-RELEASE.md](CHANGELOG-RELEASE.md) and [CHANGELOG-DEBUG.md](CHANGELOG-DEBUG.md). The canonical history below records the project as a whole.
 
+## Wiki 1.7.0 - 2026-10-18
+
+- Refreshed the owner-requested wiki snapshot against published game v0.0.62, including 63 quests, 130 achievements, thirty research requests, tracked objectives, bedroom/family changes and Living Hoenn conversations.
+- Added centered season and time badges to encounter rows and Pokémon location profiles while preserving the approved layout.
+- Added a season selector and independently weighted Routes 101–104 trial tables, explicitly labeled Preview until the separate game update ships.
+- Added Alolan Sandshrew and Autumn Deerling art, profiles and cry aliases, and regenerated the pinned encounter assets.
+- Kept the ROM version, gameplay, save data and Release/Debug patches unchanged; companion applications retained their independent versions.
+
 ## [0.0.62] - 2026-10-17
 
 - Corrected the Fortree resident's milestone speech to scroll its third line within the native two-line dialogue box.
