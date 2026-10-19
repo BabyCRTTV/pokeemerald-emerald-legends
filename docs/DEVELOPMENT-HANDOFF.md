@@ -14,6 +14,12 @@ Android publication commit: `ced449c6e148310c021f70896840d37893c0185f`; successf
 
 ## Working preferences
 
+### 19 October 2026 — Routine route additions: no presentation previews
+
+**Model: GPT-6 | Approach: remove redundant preview presentation while retaining encounter QA and release/data parity.**
+
+After accepting v0.0.65, the owner explicitly waived previews for routine new route entries because the established DexNav quality is approved. Future encounter batches should proceed without generating user-facing DexNav sheets/GIFs or waiting for preview approval when existing art/UI is unchanged. Keep appropriate builds, native/regression checks and useful internal diagnostic captures. Update the wiki/LegendsDex with each verified encounter release, including rosters, season/time availability, levels and odds; preserve the approved artwork/layout and source-key/cache rules. Recorded this durable preference in AGENTS.md. This is a workflow-only update: no gameplay, ROM version, save data, BPS or wiki encounter data changed.
+
 ### 17 October 2026 — Correlated-event review and model attribution
 
 **Model: GPT-6 (High) | Logic: dependency-aware, narrowly scoped review; preserve verified baselines.**
