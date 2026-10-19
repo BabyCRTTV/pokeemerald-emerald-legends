@@ -2,7 +2,7 @@
 
 **Model: GPT-6 | Approach: preserve native residents/levels and resolve every dependent land-table consumer through the committed season.**
 
-Status: Routes 101–104 grass shipped in v0.0.63; Routes 105–108 Surf shipped in v0.0.64. Both live v0.0.64 patches were independently decoded and verified against production ROM hashes. Approved native DexNav sizing/centering and silhouettes were preserved.
+Status: Routes 101–104 grass shipped in v0.0.63; Routes 105–108 Surf in v0.0.64; Route 109 Surf and Routes 110–112 land in v0.0.65. Both live v0.0.65 patches were independently decoded and verified against production ROM hashes. Approved native DexNav sizing/centering and silhouettes were preserved.
 
 ## Grass pilot — Routes 101–104 (v0.0.63)
 
@@ -105,7 +105,7 @@ Fishing remains the original Old/Good/Super Rod data, including Magikarp, Tentac
 
 [Surf QA and release status](../qa/seasonal-surf-v0.0.64.md).
 
-## Next numbered routes — v0.0.65 (in verification)
+## Next numbered routes — v0.0.65 (published and verified)
 
 **Model: GPT-6 | Approach: append native-method tables; retain every resident, committed-season behavior and approved icon geometry.**
 

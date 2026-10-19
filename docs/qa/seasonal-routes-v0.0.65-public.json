@@ -1,0 +1,135 @@
+{
+  "version": "0.0.65",
+  "verified_utc": "2026-10-19T08:15:28.427349+00:00",
+  "audited_head": "5ab989be69561f4e3d033867583d1fff9516c261",
+  "patch_commit": "5ab989be69561f4e3d033867583d1fff9516c261",
+  "manifest": {
+    "url": "https://babycrttv.github.io/pokeemerald-emerald-legends/downloads/SHA256SUMS.txt",
+    "HTTP": 200,
+    "bytes": 412,
+    "sha256": "088f20cafd8d870d0906dd5d4bf0c3b777e33992be037ef28a5a6a8a0dfcecbc"
+  },
+  "canonical_base_SHA1": "f3ae088181bf583e55daf962a92bb46f4f1d07b7",
+  "patches": {
+    "Release": {
+      "url": "https://babycrttv.github.io/pokeemerald-emerald-legends/downloads/Pokemon-Emerald-Legends-v0.0.65.bps",
+      "HTTP": 200,
+      "bytes": 17458195,
+      "sha256": "239f31b1e322e91ced04d5a9fe9f473131c91ffc1e50ef80b9e907680bb22e14",
+      "Floating_IPS_verified": true,
+      "downloaded_browser_decoder_verified": true,
+      "ROM_sha256": "be4c2ac4b57d32d7c580e31886afb29a6f0c5ce0d19354050f1cf0aa5aa919d6",
+      "matches_committed_bytes": true
+    },
+    "Debug": {
+      "url": "https://babycrttv.github.io/pokeemerald-emerald-legends/downloads/Pokemon-Emerald-Legends-v0.0.65-debug.bps",
+      "HTTP": 200,
+      "bytes": 17290230,
+      "sha256": "e0bcd34496278cf06258e2cb2e4fdd89335df3ef584efb336f7fa21943ba922b",
+      "Floating_IPS_verified": true,
+      "downloaded_browser_decoder_verified": true,
+      "ROM_sha256": "fb24e26d40d44e0eeaa9fef4ffdafed32c6949ef23d582ed8f98fb52b3826fbd",
+      "matches_committed_bytes": true
+    }
+  },
+  "site": {
+    "index.html": {
+      "url": "https://babycrttv.github.io/pokeemerald-emerald-legends/index.html",
+      "HTTP": 200,
+      "bytes": 3538,
+      "sha256": "22cd24605ec16746a0f14952ca72d7a6fb23e8f3dc513f5684c224d8e7f7b7a4",
+      "matches_committed_bytes": true
+    },
+    "changelog.html": {
+      "url": "https://babycrttv.github.io/pokeemerald-emerald-legends/changelog.html",
+      "HTTP": 200,
+      "bytes": 113965,
+      "sha256": "a151a8a32dc26dba5790c6b478dfec92cac12d54eac65e6d83671f6220b7cdde",
+      "matches_committed_bytes": true
+    },
+    "patcher.html": {
+      "url": "https://babycrttv.github.io/pokeemerald-emerald-legends/patcher.html",
+      "HTTP": 200,
+      "bytes": 2679,
+      "sha256": "b63e4617fea93aad578850cb359e44038136c01236eb5ee9d69fb567ac942de1",
+      "matches_committed_bytes": true
+    },
+    "patcher.js": {
+      "url": "https://babycrttv.github.io/pokeemerald-emerald-legends/patcher.js",
+      "HTTP": 200,
+      "bytes": 9353,
+      "sha256": "009614dcfa924b2b37426389c3b43ed5d593150c18c495731f5a16d150b97f46",
+      "matches_committed_bytes": true
+    },
+    "features/seasonal-encounters.md": {
+      "url": "https://babycrttv.github.io/pokeemerald-emerald-legends/features/seasonal-encounters.md",
+      "HTTP": 200,
+      "bytes": 9339,
+      "sha256": "2e0b2f313b51d213f2a8ce9d896822a7a8698e12642c0e6fd2b2edfbf7bc9a8c",
+      "matches_committed_bytes": true
+    },
+    "qa/seasonal-routes-v0.0.65-preview.png": {
+      "url": "https://babycrttv.github.io/pokeemerald-emerald-legends/qa/seasonal-routes-v0.0.65-preview.png",
+      "HTTP": 200,
+      "bytes": 20305,
+      "sha256": "4bc059f119ce9deab8eca0dd50bcc49252eb00ec0dd9a8d1729af9c29f86d373",
+      "matches_committed_bytes": true
+    },
+    "qa/seasonal-routes-v0.0.65-preview.gif": {
+      "url": "https://babycrttv.github.io/pokeemerald-emerald-legends/qa/seasonal-routes-v0.0.65-preview.gif",
+      "HTTP": 200,
+      "bytes": 17097,
+      "sha256": "b8662d973ab8d9a5a7c834b37b61e832966ae18208ce5ab5589a8832384b4357",
+      "matches_committed_bytes": true
+    },
+    "qa/route-109-seasonal-v0.0.65-preview.png": {
+      "url": "https://babycrttv.github.io/pokeemerald-emerald-legends/qa/route-109-seasonal-v0.0.65-preview.png",
+      "HTTP": 200,
+      "bytes": 39105,
+      "sha256": "2e2849d84eb9fd95d3cb4faff974d709e40408772feb7657d713e7a7fc3ff911",
+      "matches_committed_bytes": true
+    },
+    "qa/route-110-seasonal-v0.0.65-preview.png": {
+      "url": "https://babycrttv.github.io/pokeemerald-emerald-legends/qa/route-110-seasonal-v0.0.65-preview.png",
+      "HTTP": 200,
+      "bytes": 43579,
+      "sha256": "3c0d9750070b9d14c95b58f373c67349005e2f9a173f3e3d4ecaa4625a18b250",
+      "matches_committed_bytes": true
+    },
+    "qa/route-111-seasonal-v0.0.65-preview.png": {
+      "url": "https://babycrttv.github.io/pokeemerald-emerald-legends/qa/route-111-seasonal-v0.0.65-preview.png",
+      "HTTP": 200,
+      "bytes": 40348,
+      "sha256": "f947a314db53225403f27461eec1ecf942d2e63f4b0df21e492a4de22058d7e1",
+      "matches_committed_bytes": true
+    },
+    "qa/route-112-seasonal-v0.0.65-preview.png": {
+      "url": "https://babycrttv.github.io/pokeemerald-emerald-legends/qa/route-112-seasonal-v0.0.65-preview.png",
+      "HTTP": 200,
+      "bytes": 38405,
+      "sha256": "8b5b44e8ff296465df66c4a2848e666b48ed0e50ee461513fa6354efb6f73dd9",
+      "matches_committed_bytes": true
+    }
+  },
+  "native_QA": {
+    "source_workflow": 39219001558,
+    "production_workflow": 39220172611,
+    "seasonal_scenarios": 102,
+    "real_wild_creations": 26112,
+    "reviewed_new_frames": 54,
+    "previous_pixel_regressions": 105,
+    "Debug_matches_native_base": true
+  },
+  "limits": [
+    "Controlled Debug fixtures, not a natural full progression playthrough, full detector hunt, Release interaction, historical-save matrix or Pizza Boy test."
+  ],
+  "model": "GPT-6",
+  "production_gates": {
+    "project": 39220172442,
+    "builds_BPS": 39220172592,
+    "native": 39220172611
+  },
+  "patch_Pages_run": 39221335539,
+  "compiled_source": "2f9ccc8c8f42338e3755a6c776aaf12a5d1b3365",
+  "merge_commit": "a2f494be367077246640397d7aef0a7c19980667"
+}

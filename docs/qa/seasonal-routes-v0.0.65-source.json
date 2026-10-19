@@ -21,7 +21,7 @@
   "residents_retained": true,
   "slot_levels_weights_preserved": true,
   "header_sha256": "c6806f45688c92f55f84e0e0aa5ef228aaab03698b9401e97cd997dbec4fd483",
-  "status": "PR source/native/both-build/BPS gates passed; merged; production/public verification pending",
+  "status": "Game published and verified; matching wiki deployment verification follows",
   "limits": [
     "Per-slot levels retained; species shares and level ranges can change with reassigned slots.",
     "No natural progression, full hunt, historical-save, Release interaction or Pizza Boy claim."
@@ -33,5 +33,12 @@
     "builds_BPS": 39219001427,
     "native": 39219001558
   },
-  "production_project_check": 39220172442
+  "production_project_check": 39220172442,
+  "production_gates": {
+    "project": 39220172442,
+    "builds_BPS": 39220172592,
+    "native": 39220172611
+  },
+  "patch_commit": "5ab989be69561f4e3d033867583d1fff9516c261",
+  "public_receipt": "seasonal-routes-v0.0.65-public.json"
 }

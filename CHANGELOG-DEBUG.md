@@ -7,6 +7,7 @@ This is the developer-facing history for the **Debug** build. Shared Legends cha
 - Added 32 seasonal visitors across Generations 1–9 to Route 109 Surf, Route 110 grass, Route 111 desert and Route 112 grass.
 - Retained every original resident year-round, native slot levels/weights and encounter rates; kept the desert visitor roster suited to its arid habitat.
 - Preserved Routes 101–108, fishing, Rock Smash, other water tables, approved artwork and DexNav fitting, encounter priorities and save layouts.
+- Updated matching LegendsDex seasonal rosters, season badges and walkthrough resident shares; preserved the approved wiki artwork, layout and companion versions.
 
 ## [0.0.64] - 2026-10-18
 

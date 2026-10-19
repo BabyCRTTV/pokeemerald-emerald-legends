@@ -1,0 +1,48 @@
+{
+  "gameSource": "2f9ccc8c8f42338e3755a6c776aaf12a5d1b3365",
+  "changed_methods": [
+    [
+      "MAP_ROUTE109",
+      "surf"
+    ],
+    [
+      "MAP_ROUTE110",
+      "land"
+    ],
+    [
+      "MAP_ROUTE111",
+      "land"
+    ],
+    [
+      "MAP_ROUTE112",
+      "land"
+    ]
+  ],
+  "original_entries_and_prior_variants_preserved": true,
+  "species_preserved": 1028,
+  "companion_versions_changed": false,
+  "version": "0.0.65",
+  "status": "Committed for publication; live deployment verification pending",
+  "model": "GPT-6",
+  "seasonal_tables": 48,
+  "seasonal_views_checked": 48,
+  "walkthrough_methods_checked": 409,
+  "seasonal_walkthrough_methods": 12,
+  "importer_generations_checked": [
+    48,
+    32,
+    16
+  ],
+  "art_layout_preserved": true,
+  "cache_keys_synchronized": [
+    "dex.html:atlas/profiles",
+    "index.html:atlas/maps"
+  ],
+  "scope": "Only Route109 Surf and Routes110/111/112 land gained seasonal variants; previous32 seasonal tables and base entries/species retained. Art/profile/map inputs identical across the baseline-to-game diff; source metadata pins advanced without regenerating artwork.",
+  "limits": [
+    "Actual shipped-JS VM controls/renderer checks passed; no fresh browser geometry pass is claimed.",
+    "No companion binary, version or signing identity change."
+  ],
+  "game_publication_verified": true,
+  "game_public_receipt": "seasonal-routes-v0.0.65-public.json"
+}

@@ -70,23 +70,23 @@ const settle=()=>new Promise(r=>setImmediate(r));
  for(const p of data.species)assert(profiles.window.LegendsProfiles.entries[p.id],p.id+' missing entry');
  for(const m of data.maps){const loc=profiles.window.LegendsProfiles.locations[m.id];assert.equal(loc.region,m.region);if(m.region==='Sevii'){assert.equal(loc.cells.length,0,'Sevii must not use mainland coordinates');assert.match(loc.note,/expedition/);}else assert(loc.cells.length,m.id+' missing map marker');for(const [x,y] of loc.cells)assert(x>=0&&x<224&&y>=0&&y<120);}
  assert.deepEqual(JSON.parse(JSON.stringify(profiles.window.LegendsProfiles.locations.MAP_ROUTE101.cells)),[[32,80]]);
- for(const route of [105,106,107,108]){
-  const u=boot('dex.js',data);await settle();u.get('method').listeners.change({target:{value:'surf'}});u.get('search').value='Route '+route;u.get('search').listeners.input();
+ for(const [route,method] of [[101,'land'],[102,'land'],[103,'land'],[104,'land'],[105,'surf'],[106,'surf'],[107,'surf'],[108,'surf'],[109,'surf'],[110,'land'],[111,'land'],[112,'land']]){
+  const u=boot('dex.js',data);await settle();u.get('method').listeners.change({target:{value:method}});u.get('search').value='Route '+route;u.get('search').listeners.input();
   assert.equal(u.get('seasonal-preview-note').hidden,true);
+  const m=data.maps.find(m=>m.id==='MAP_ROUTE'+route).methods.find(m=>m.id===method);
+  const resident=m.seasonalVariants[0].entries.filter(e=>m.seasonalVariants.every(v=>v.entries.some(x=>x.id===e.id)));
   for(const season of ['spring','summer','autumn','winter']){
    u.get('season').listeners.change({target:{value:season}});
-   const h=u.get('results').innerHTML;
-   assert.equal((h.match(/class="encounter"/g)||[]).length,5);
-   assert.equal((h.match(/season--all/g)||[]).length,3);
+   const h=u.get('results').innerHTML,v=m.seasonalVariants.find(v=>v.season===season).entries;
+   assert.equal((h.match(/class="encounter"/g)||[]).length,v.length);
+   assert.equal((h.match(/season--all/g)||[]).length,resident.length);
    assert.equal((h.match(new RegExp('season--'+season,'g'))||[]).length,2);
-   assert.equal((h.match(/time--all-day/g)||[]).length,5);
-   const m=data.maps.find(m=>m.id==='MAP_ROUTE'+route).methods.find(m=>m.id==='surf');
-   const v=m.seasonalVariants.find(v=>v.season===season).entries;
+   assert.equal((h.match(/time--all-day/g)||[]).length,v.length);
    for(const e of v)assert(h.includes('data-species="'+e.id+'"'),route+' '+season+' '+e.id);
    assert.equal([...h.matchAll(/class="rate">(\d+)%/g)].reduce((n,x)=>n+Number(x[1]),0),100);
   }
  }
- console.log('PASS: sixteen Surf views through actual reader JS, five exact species, 100% odds, three all-season/two seasonal badges, all-day labels, hidden Preview notice');
+ console.log('PASS: all forty-eight seasonal views through actual reader JS, exact species/counts, 100% odds, resident/visitor badges, All day and hidden Preview notice');
  const d=boot('dex.js',data);await settle();assert.equal(d.sounds.length,0,'audio must not preload all cries');
  assert.match(d.get('results').innerHTML,/data-cry=/);assert.match(d.get('results').innerHTML,/class="pokemon-link"/);
  const species=boot('dex.js',data,'https://example.test/wiki/dex.html?view=species');await settle();assert.match(species.get('results').innerHTML,/<div class="dex-card">/);assert.match(species.get('results').innerHTML,/<button type="button" class="pokemon-link" data-species="BULBASAUR"/);
