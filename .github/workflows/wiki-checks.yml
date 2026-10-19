@@ -2,7 +2,7 @@ name: Check Legends Wiki
 
 on:
   push:
-    branches: [master]
+    branches: [master, qa/legendsdex-all-seasons-v66]
     paths:
       - 'docs/wiki/**'
       - '.github/workflows/wiki-checks.yml'

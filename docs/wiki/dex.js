@@ -42,7 +42,22 @@
     const color=seasons.length===1?seasons[0]:"all";
     return '<span class="enc-availability"><span class="availability-badge season--'+color+'">'+esc(seasonLabel)+'</span><span class="availability-badge time--'+esc(time)+'">'+esc(timeLabel)+'</span></span>';
   }
-  function activeEntries(method){return method.seasonalVariants?.find(v=>v.season===season)?.entries||method.entries;}
+  function allSeasonEntries(method){
+    if(!method.seasonalVariants?.length)return method.entries;
+    const merged=new Map();
+    for(const variant of method.seasonalVariants)for(const e of variant.entries){
+      // Shares belong to the listed seasons. Never sum or average seasonal odds.
+      const key=[e.id,e.min,e.max,e.rate,e.time||"all-day"].join(":");
+      if(!merged.has(key))merged.set(key,{...e,seasons:[]});
+      const entry=merged.get(key);
+      for(const available of e.seasons?.length?e.seasons:[variant.season])
+        if(!entry.seasons.includes(available))entry.seasons.push(available);
+    }
+    return [...merged.values()].sort((a,b)=>b.rate-a.rate);
+  }
+  function activeEntries(method){
+    return season==="all"?allSeasonEntries(method):method.seasonalVariants?.find(v=>v.season===season)?.entries||method.entries;
+  }
   function encounterCard(e){
     const p=bySpecies.get(e.id);if(!p)return "";
     return '<div class="encounter">'+sprite(p)+'<button type="button" class="pokemon-link" data-species="'+esc(e.id)+'" aria-label="'+esc(p.name+' '+prettyLevel(e.min,e.max)+' '+e.rate+' percent encounter share')+'"><span class="species-copy"><strong>'+esc(p.name)+'</strong><span class="enc-meta">'+prettyLevel(e.min,e.max)+'</span></span>'+availabilityBadges(e)+'<span class="rate">'+e.rate+'%<small>SPAWN</small></span></button></div>';
@@ -50,7 +65,7 @@
   function routeCard(map){
     let count=new Set(map.methods.flatMap(m=>m.entries.map(e=>e.id))).size;
     return '<section class="route-card" id="route-'+esc(map.id)+'" data-map="'+esc(map.id)+'" tabindex="-1"><div class="route-head"><div><div class="route-name">'+esc(map.name)+'</div><div class="route-sub">'+count+' Pokémon · '+map.methods.length+' encounter '+(map.methods.length===1?"method":"methods")+'</div></div><span class="region-tag">'+esc(map.region)+'</span></div>'
-     +map.methods.map(m=>'<div class="method-section"><div class="method-heading"><span>'+esc(m.label)+'</span>'+m.entries.length+' species <small>· Relative encounter share</small></div><div class="enc-grid">'+m.entries.map(encounterCard).join('')+'</div></div>').join('')+'</section>';
+     +map.methods.map(m=>'<div class="method-section"><div class="method-heading"><span>'+esc(m.label)+'</span>'+m.entries.length+' species <small>· '+(season==="all"&&m.seasonalVariants?.length?"Shares apply in the seasons shown":"Relative encounter share")+'</small></div><div class="enc-grid">'+m.entries.map(encounterCard).join('')+'</div></div>').join('')+'</section>';
   }
   function dexCard(p){
     const n=new Set((pokemonMap.get(p.id)||[]).map(x=>x.mapId)).size;
@@ -187,15 +202,7 @@
   function generateMapIndex(){
     bySpecies=new Map(data.species.map(p=>[p.id,p]));pokemonMap=new Map();
     for(const m of data.maps)for(const method of m.methods){
-      const variants=method.seasonalVariants||[{entries:method.entries}];
-      const merged=new Map();
-      for(const variant of variants)for(const e of variant.entries){
-        const key=[e.id,e.min,e.max,e.rate,e.time||"all-day"].join(":");
-        if(!merged.has(key))merged.set(key,{...e,seasons:[]});
-        const entry=merged.get(key);
-        for(const available of e.seasons||SEASONS)if(!entry.seasons.includes(available))entry.seasons.push(available);
-      }
-      for(const e of merged.values()){
+      for(const e of allSeasonEntries(method)){
         if(!pokemonMap.has(e.id))pokemonMap.set(e.id,[]);
         pokemonMap.get(e.id).push({...e,map:m.name,region:m.region,method:method.id,label:method.label,mapId:m.id});
       }
@@ -252,7 +259,7 @@
     if(!Array.isArray(json.maps)||!Array.isArray(json.species)||json.maps.length===0)throw Error("Invalid Pokédex data");
     data=json;
     const requestedSeason=new URL(location.href).searchParams.get("season");
-    if(SEASONS.includes(requestedSeason))season=requestedSeason;
+    if(requestedSeason==="all"||SEASONS.includes(requestedSeason))season=requestedSeason;
     $("#season").value=season;
     $("#season-box").hidden=!data.maps.some(m=>m.methods.some(x=>x.seasonalVariants));
     $("#seasonal-preview-note").hidden=data.seasonalStatus!=="preview";

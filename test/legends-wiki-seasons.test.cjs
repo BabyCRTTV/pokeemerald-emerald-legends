@@ -25,6 +25,22 @@ const server=http.createServer((req,res)=>{
    await page.locator('#season').selectOption(season);assert.equal(await route.locator('.season--'+season).count(),2);
    assert.equal((await route.locator('.rate').allTextContents()).reduce((a,b)=>a+parseInt(b),0),100);
   }
+  await page.locator('#search').fill('Route 101');
+  await page.locator('#season').selectOption('all');
+  assert.equal(await route.locator('.encounter').count(),11);assert.equal(await route.locator('.season--all').count(),3);
+  for(const season of ['spring','summer','autumn','winter'])assert.equal(await route.locator('.season--'+season).count(),2);
+  assert((await route.innerText()).includes('Shares apply in the seasons shown'));
+  assert.equal((await route.locator('.rate').allTextContents()).reduce((a,b)=>a+parseInt(b),0),190,'union retains per-season rates, never an invented 100% total');
+  assert(new URL(page.url()).searchParams.get('season')==='all');
+  await page.reload();await route.waitFor();assert.equal(await page.locator('#season').inputValue(),'all');
+  await page.locator('#search').fill('Route 101');assert.equal(await route.locator('.encounter').count(),11);
+  for(const n of [113,114,115,116]){
+   await page.locator('#search').fill('Route '+n);
+   const card=page.locator('#route-MAP_ROUTE'+n);await card.waitFor();
+   assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),'All Seasons overflow '+width+' route '+n);
+   for(const row of await card.locator('.encounter').all())assert(await row.evaluate(e=>{const a=e.querySelector('.enc-availability').getBoundingClientRect(),n=e.querySelector('.species-copy').getBoundingClientRect(),r=e.querySelector('.rate').getBoundingClientRect();return a.left>=n.right-1&&a.right<=r.left+1;}),'All Seasons badge overlap '+width+' route '+n);
+  }
+  await page.locator('#season').selectOption('winter');
   await page.locator('#search').fill('Route 104');
   assert.equal(await page.locator('[data-cry="SANDSHREW_ALOLA"] .sprite-ready').count(),1,'Alolan icon');
   await page.locator('[data-species="SANDSHREW_ALOLA"]').click();assert(await page.locator('#detail-content .type--ice').isVisible());assert((await page.locator('#detail-content').innerText()).includes('Winter'));
@@ -38,7 +54,7 @@ const server=http.createServer((req,res)=>{
   }
   await page.goto(url+'?page=research');await page.locator('.article h1').waitFor();assert((await page.locator('#content').innerText()).includes('Devon Master Project'));
   assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),'article overflow '+width);
-  assert.deepEqual(errors,[]);console.log('PASS season switching, rates, badges, forms, guide and layout at '+width);
+  assert.deepEqual(errors,[]);console.log('PASS season switching, All Seasons unions/shared links, rates, badges, forms, guide and layout at '+width);
  }
  await browser.close();server.close();
 })().catch(e=>{console.error(e);server.close();process.exit(1)});
