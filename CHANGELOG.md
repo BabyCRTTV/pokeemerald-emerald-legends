@@ -12,6 +12,11 @@ For build-specific player views, see [CHANGELOG-RELEASE.md](CHANGELOG-RELEASE.md
 - Added Alolan Sandshrew and Autumn Deerling art, profiles and cry aliases, and regenerated the pinned encounter assets.
 - Kept the ROM version, gameplay, save data and Release/Debug patches unchanged; companion applications retained their independent versions.
 
+## [0.0.66] - 2026-10-19
+
+- Added 32 seasonal visitors across Generations 1–9 to Routes 113–116, including the native ash fields on Route 113.
+- Retained every original resident year-round, native per-slot levels, weights and encounter rates; preserved Routes 101–112, other encounter methods, approved artwork/DexNav fitting and saves.
+
 ## [0.0.65] - 2026-10-19
 
 - Added 32 seasonal visitors across Generations 1–9 to Route 109 Surf, Route 110 grass, Route 111 desert and Route 112 grass.

@@ -42,6 +42,14 @@ On 14 October 2026 the owner reversed the earlier permission to ignore older sav
 
 The owner requested mGBA gameplay testing and previews **exclusively from actual Pokémon Emerald: Legends**. `tools/legends/mgba_gameplay_smoke.c` and `test/mgba-gameplay-smoke.py` launch the unchanged compiled Debug ROM under mGBA's native core, press real SELECT for Debug Quickstart, verify the overworld callback and capture unmodified 240×160 video-buffer frames. `.github/workflows/mgba-gameplay-qa.yml` builds and runs this regression in CI and uploads a screenshot-only artifact (no ROM or save). This is a **boot/Quickstart smoke check**, not proof that Birch/Devon research, Weather Institute bulletin or all four NPC branches have been played through. Those must receive actual targeted emulator runs later. For screenshots and external previews, only use captured frames traceable to this project's built ROM, never reference Pokémon screenshots or synthesized equivalents. Record live CI result before claiming it passed.
 
+## Active work — v0.0.66 Routes 113–116 and LegendsDex All Seasons
+
+**Model: GPT-6 | Approach: append native land rosters, preserve earlier art/saves and expose the seasonal union without inventing combined odds.**
+
+The owner requested the next four routes and an All Seasons filter. Baseline live master `a60e80f01a75bbbdccb07232906c8a3179baa924` is the verified v0.0.65 release plus the recorded preview waiver; all relevant prior production gates/Pages passed. Added sixteen land tables with 32 visitors on Routes113–116, retaining every resident, native slots/levels/rate20, earlier48 tables, other methods, approved art/UI and saved state. Route113 uses native ash grass; Route115 keeps its northern grass/access gates. No migration is needed. No user-facing DexNav previews will be generated; native regression QA remains required. [Roster/rules](features/seasonal-encounters.md).
+
+Next: focused executable/importer and native coverage (136 cases), both builds/BPS gates, All Seasons reader/browser checks, publication and matching wiki source/cache keys. All Seasons must merge identical species/levels/rate/time entries across seasons, retain availability badges and per-season odds, accept `?season=all`, preserve individual-season views and native fallback methods, and avoid adding seasonal percentages together. No v0.0.66 publication is claimed at this checkpoint.
+
 ## Current release — v0.0.65 (published and verified)
 
 **Model: GPT-6 | Approach: preserve native encounter dependencies/art/saves; verify compiled previews and independently decode both live patches.**

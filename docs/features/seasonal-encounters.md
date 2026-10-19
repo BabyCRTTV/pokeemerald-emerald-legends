@@ -1,4 +1,4 @@
-# Seasonal encounters — Routes 101–112
+# Seasonal encounters — Routes 101–116
 
 **Model: GPT-6 | Approach: preserve native residents/levels and resolve every dependent land-table consumer through the committed season.**
 
@@ -156,6 +156,56 @@ Year-round residents: Numel, Marill.
 | Summer | Litleo | Sizzlipede |
 | Autumn | Houndour | Rolycoly |
 | Winter | Vulpix | Rockruff |
+
+## Routes 113–116 — v0.0.66 (in verification)
+
+**Model: GPT-6 | Approach: append native land tables and retain the approved encounter, art and save baseline.**
+
+Sixteen tables add 32 distinct visitors across Generations 1–9. Original residents occupy 70% in every season, with two visitors at 20% and 10%. Native twelve-slot levels/weights and encounter rate 20 stay exact; species shares and species-level ranges can change with reassigned slots. Route 113 uses its existing ash-grass encounters; the ash/weather, flute collection, maps and tile behavior are unchanged. Route 115 uses its existing northern grass, retaining normal access requirements. Water, fishing, Rock Smash, cave encounters and all earlier seasonal tables remain unchanged. All visitors use the committed active season, all day. No saved fields, IDs or migrations were added. Routine user-facing DexNav previews were waived; focused native QA remains required.
+
+### Route 113
+
+Year-round residents: Spinda, Slugma, Skarmory.
+
+| Season | 20% visitor | 10% visitor |
+|---|---|---|
+| Spring | Growlithe | Rufflet |
+| Summer | Salandit | Charcadet |
+| Autumn | Vullaby | Klink |
+| Winter | Sneasel | Bronzor |
+
+### Route 114
+
+Year-round residents: Swablu, Lotad, Lombre, Seviper, Nuzleaf.
+
+| Season | 20% visitor | 10% visitor |
+|---|---|---|
+| Spring | Bounsweet | Applin |
+| Summer | Skiddo | Pancham |
+| Autumn | Teddiursa | Morelull |
+| Winter | Snover | Cetoddle |
+
+### Route 115
+
+Year-round residents: Swablu, Taillow, Swellow, Jigglypuff, Wingull.
+
+| Season | 20% visitor | 10% visitor |
+|---|---|---|
+| Spring | Mienfoo | Farfetchd |
+| Summer | Hawlucha | Passimian |
+| Autumn | Zangoose | Murkrow |
+| Winter | Minccino | Absol |
+
+### Route 116
+
+Year-round residents: Poochyena, Whismur, Nincada, Abra, Taillow, Skitty.
+
+| Season | 20% visitor | 10% visitor |
+|---|---|---|
+| Spring | Pichu | Buneary |
+| Summer | Kricketot | Blipbug |
+| Autumn | Nymble | Patrat |
+| Winter | Wooloo | Espurr |
 
 ## DexNav silhouettes
 

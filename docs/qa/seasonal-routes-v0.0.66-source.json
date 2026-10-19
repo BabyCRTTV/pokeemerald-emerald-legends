@@ -1,0 +1,12 @@
+{
+  "version": "0.0.66",
+  "baseline": "a60e80f01a75bbbdccb07232906c8a3179baa924",
+  "prior_tables_preserved": 48,
+  "added_tables": 16,
+  "visitors": 32,
+  "header_sha256": "9b712c85c95d82da8f85c3e7d8f119cfe507b7a4c3ddfda24bcf8fcadc17fa6e",
+  "save_change": false,
+  "status": "Implementation in verification; not published",
+  "native_scenarios_planned": 136,
+  "user_facing_DexNav_previews": false
+}
