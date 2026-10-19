@@ -12,6 +12,12 @@ For build-specific player views, see [CHANGELOG-RELEASE.md](CHANGELOG-RELEASE.md
 - Added Alolan Sandshrew and Autumn Deerling art, profiles and cry aliases, and regenerated the pinned encounter assets.
 - Kept the ROM version, gameplay, save data and Release/Debug patches unchanged; companion applications retained their independent versions.
 
+## [0.0.65] - 2026-10-19
+
+- Added 32 seasonal visitors across Generations 1–9 to Route 109 Surf, Route 110 grass, Route 111 desert and Route 112 grass.
+- Retained every original resident year-round, native slot levels/weights and encounter rates; kept the desert visitor roster suited to its arid habitat.
+- Preserved Routes 101–108, fishing, Rock Smash, other water tables, approved artwork and DexNav fitting, encounter priorities and save layouts.
+
 ## [0.0.64] - 2026-10-18
 
 - Added seasonal Surf encounters on Routes 105–108 with 32 visitors across Generations 1–9; retained Tentacool, Wingull and Pelipper year-round.

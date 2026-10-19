@@ -1,0 +1,29 @@
+{
+  "version": "0.0.65",
+  "baseline": "5ad991d66944ceb7d6a60afef8dfedd1862017fd",
+  "model": "GPT-6",
+  "prior_tables_preserved": 32,
+  "added_tables": 16,
+  "new_visitor_selections": 32,
+  "new_methods": {
+    "109": "Surf",
+    "110": "grass",
+    "111": "desert",
+    "112": "grass"
+  },
+  "save_change": false,
+  "native_rates": {
+    "109": 4,
+    "110": 20,
+    "111": 10,
+    "112": 20
+  },
+  "residents_retained": true,
+  "slot_levels_weights_preserved": true,
+  "header_sha256": "c6806f45688c92f55f84e0e0aa5ef228aaab03698b9401e97cd997dbec4fd483",
+  "status": "Source checks passed; native/build/public verification pending",
+  "limits": [
+    "Per-slot levels retained; species shares and level ranges can change with reassigned slots.",
+    "No natural progression, full hunt, historical-save, Release interaction or Pizza Boy claim."
+  ]
+}

@@ -104,6 +104,7 @@ void qa(void)
     }
     if (b[0] == 1)
     {
+        b[2] = s->mode | (s->area << 8);
         u32 header = GetCurrentMapWildMonHeaderId();
         check(header != HEADER_NONE, 1, b);
         if (s->area == WILD_AREA_WATER)
@@ -113,7 +114,7 @@ void qa(void)
         }
         u32 slots = s->area == WILD_AREA_WATER ? 5 : 12;
         const struct WildPokemonInfo *land = s->area == WILD_AREA_WATER ? GetWaterMonsInfo(header, TIME_OF_DAY_DEFAULT) : GetLandMonsInfo(header, TIME_OF_DAY_DEFAULT);
-        check(land && land->encounterRate == (s->area == WILD_AREA_WATER ? 4 : 20), 2, b);
+        check(land && land->encounterRate == s->rate, 2, b);
         for (u32 i = 0; i < slots; i++)
             check(land->wildPokemon[i].species == s->expected[i], 3, b);
         // Pending season must not affect current field or menu encounter data.

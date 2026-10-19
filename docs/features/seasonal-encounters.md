@@ -1,4 +1,4 @@
-# Seasonal encounters — Routes 101–108
+# Seasonal encounters — Routes 101–112
 
 **Model: GPT-6 | Approach: preserve native residents/levels and resolve every dependent land-table consumer through the committed season.**
 
@@ -104,6 +104,58 @@ Fishing remains the original Old/Good/Super Rod data, including Magikarp, Tentac
 | Winter | Slowpoke | Relicanth |
 
 [Surf QA and release status](../qa/seasonal-surf-v0.0.64.md).
+
+## Next numbered routes — v0.0.65 (in verification)
+
+**Model: GPT-6 | Approach: append native-method tables; retain every resident, committed-season behavior and approved icon geometry.**
+
+The next four numbered routes add sixteen tables and 32 distinct visitors across Generations 1–9. Route 109 uses Surf (65% residents, 30%/5% visitors); Routes 110–112 use native land encounters (70% residents, 20%/10% visitors). Route 111 applies to desert sand encounters, not its southern paths. Native per-slot levels, slot weights and encounter rates remain exact; species shares and species-level ranges can change when their slots change. Route 111 retains encounter rate 10; Routes 110/112 retain 20; Route 109 Surf retains 4. All use the committed active season, all day.
+
+Fishing, Rock Smash, Routes 110/111 Surf, hidden-only tables, neighboring caves and Routes 101–108 remain unchanged. No maps, art, options, saved fields, variables, persistent IDs or migrations were added. Native desert access, weather, encounter priorities, attraction abilities and DexNav seen/search gates remain intact.
+
+### Route 109 — Surf
+
+Year-round residents: Tentacool, Wingull, Pelipper.
+
+| Season | 30% visitor | 5% visitor |
+|---|---|---|
+| Spring | Staryu | Dewpider |
+| Summer | Luvdisc | Chewtle |
+| Autumn | Cramorant | Veluza |
+| Winter | Sealeo | Eiscue |
+
+### Route 110 — grass
+
+Year-round residents: Poochyena, Electrike, Gulpin, Minun, Oddish, Wingull, Plusle.
+
+| Season | 20% visitor | 10% visitor |
+|---|---|---|
+| Spring | Combee | Petilil |
+| Summer | Yamper | Blitzle |
+| Autumn | Trubbish | Shroodle |
+| Winter | Pachirisu | Emolga |
+
+### Route 111 — desert
+
+Year-round residents: Sandshrew, Trapinch, Baltoy, Cacnea.
+
+| Season | 20% visitor | 10% visitor |
+|---|---|---|
+| Spring | Sandile | Helioptile |
+| Summer | Silicobra | Hippopotas |
+| Autumn | Dwebble | Skorupi |
+| Winter | Phanpy | Gible |
+
+### Route 112 — grass
+
+Year-round residents: Numel, Marill.
+
+| Season | 20% visitor | 10% visitor |
+|---|---|---|
+| Spring | Ponyta | Deerling |
+| Summer | Litleo | Sizzlipede |
+| Autumn | Houndour | Rolycoly |
+| Winter | Vulpix | Rockruff |
 
 ## DexNav silhouettes
 
