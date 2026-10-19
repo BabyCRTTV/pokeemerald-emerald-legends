@@ -1,0 +1,129 @@
+{
+  "version": "0.0.65",
+  "ROM_sha256": "fb24e26d40d44e0eeaa9fef4ffdafed32c6949ef23d582ed8f98fb52b3826fbd",
+  "capture_source": "Actual compiled Legends Debug ROM in mGBA native core; controlled fixtures",
+  "scale": "2x nearest-neighbor; exact native pixels with captions outside gameplay",
+  "animation": "Two native states with illustrative 500ms timing, not a continuous recording",
+  "frames": [
+    {
+      "preview": "route-109-seasonal-v0.0.65-preview.png",
+      "frame": "scene-84-gui.png",
+      "scene": 84,
+      "sha256": "e5543574800b4bf8ab682b3757cffd9754250cce4136ac4dd366adb20266be26"
+    },
+    {
+      "preview": "route-109-seasonal-v0.0.65-preview.png",
+      "frame": "scene-85-gui.png",
+      "scene": 85,
+      "sha256": "c4f13dc6de1ca688267c5e73b2e8b2338183794198fcc861941f0f9f9bb23160"
+    },
+    {
+      "preview": "route-109-seasonal-v0.0.65-preview.png",
+      "frame": "scene-86-gui.png",
+      "scene": 86,
+      "sha256": "b12b28eccb002e0d104d92a17b27d5b6f1f615fd2393b57e5c4fa43f35586cf7"
+    },
+    {
+      "preview": "route-109-seasonal-v0.0.65-preview.png",
+      "frame": "scene-87-gui.png",
+      "scene": 87,
+      "sha256": "dd8657de4c02630d279851b65396f1523a47356daf38684781e081e96b903b30"
+    },
+    {
+      "preview": "route-110-seasonal-v0.0.65-preview.png",
+      "frame": "scene-88-gui.png",
+      "scene": 88,
+      "sha256": "c5920bf93e55df33d9e393e4f2dddb323ff479a561349367238a699ddc234939"
+    },
+    {
+      "preview": "route-110-seasonal-v0.0.65-preview.png",
+      "frame": "scene-89-gui.png",
+      "scene": 89,
+      "sha256": "2f51c756bc8769666c396e6063587c0293986e73d59bc6e3075bfa68587c3a9c"
+    },
+    {
+      "preview": "route-110-seasonal-v0.0.65-preview.png",
+      "frame": "scene-90-gui.png",
+      "scene": 90,
+      "sha256": "0dfc895894e357c28c671d71e85103e181025c2517159e803e941ea486b27229"
+    },
+    {
+      "preview": "route-110-seasonal-v0.0.65-preview.png",
+      "frame": "scene-91-gui.png",
+      "scene": 91,
+      "sha256": "46b2d01abd0c35278da0e62ca62c7685fa2d74c9139794ef848eab4d9e678055"
+    },
+    {
+      "preview": "route-111-seasonal-v0.0.65-preview.png",
+      "frame": "scene-92-gui.png",
+      "scene": 92,
+      "sha256": "222c60fde441a3587797f263aca8c2053e64fa6da86a5fe56b98c6c8d4a3df02"
+    },
+    {
+      "preview": "route-111-seasonal-v0.0.65-preview.png",
+      "frame": "scene-93-gui.png",
+      "scene": 93,
+      "sha256": "d81120cb931b64f99ac863e3a3915ecdf291cad1f84e471ec99ef5396cff1b0e"
+    },
+    {
+      "preview": "route-111-seasonal-v0.0.65-preview.png",
+      "frame": "scene-94-gui.png",
+      "scene": 94,
+      "sha256": "ef6cbe8964ea305bcd3c8c54263367da68b13311f25325456268af2c8841fc24"
+    },
+    {
+      "preview": "route-111-seasonal-v0.0.65-preview.png",
+      "frame": "scene-95-gui.png",
+      "scene": 95,
+      "sha256": "51da59d85aa267492d587efad2b0b292d180ad557a11d0f4eef16b9a4ea121e4"
+    },
+    {
+      "preview": "route-112-seasonal-v0.0.65-preview.png",
+      "frame": "scene-96-gui.png",
+      "scene": 96,
+      "sha256": "58f528d6413aef79b21f207e4a864f21fad938d915d851bb5ae2e12762b15773"
+    },
+    {
+      "preview": "route-112-seasonal-v0.0.65-preview.png",
+      "frame": "scene-97-gui.png",
+      "scene": 97,
+      "sha256": "4db75b59311ed6252d908899cbc3185fbd04aaa2574045bbd0f25407340c77a1"
+    },
+    {
+      "preview": "route-112-seasonal-v0.0.65-preview.png",
+      "frame": "scene-98-gui.png",
+      "scene": 98,
+      "sha256": "b84221fdfa6bead5af0f9db96277493ab24bd4bc320ae5e2aaa62be340a1c60b"
+    },
+    {
+      "preview": "route-112-seasonal-v0.0.65-preview.png",
+      "frame": "scene-99-gui.png",
+      "scene": 99,
+      "sha256": "5a0bde25ae35eb18e709a7d825dfb0206a14a384df906c5955de09d8dd64c8af"
+    },
+    {
+      "preview": "seasonal-routes-v0.0.65-preview.png",
+      "frame": "scene-68-gui.png",
+      "scene": 68,
+      "sha256": "364615eeb098ed09be6bd18c2e01e652f7021a95bad45c0ac0f0c892da37d874"
+    },
+    {
+      "preview": "seasonal-routes-v0.0.65-preview.png",
+      "frame": "scene-95-gui.png",
+      "scene": 95,
+      "sha256": "51da59d85aa267492d587efad2b0b292d180ad557a11d0f4eef16b9a4ea121e4"
+    },
+    {
+      "preview": "seasonal-routes-v0.0.65-preview.gif",
+      "frame": "scene-68-gui.png",
+      "scene": 68,
+      "sha256": "364615eeb098ed09be6bd18c2e01e652f7021a95bad45c0ac0f0c892da37d874"
+    },
+    {
+      "preview": "seasonal-routes-v0.0.65-preview.gif",
+      "frame": "scene-68-animated.png",
+      "scene": 68,
+      "sha256": "c2f1701f6edb88fe35b0e69e52d2a25dbd205eab6e1de178931a0a5604a4c0e1"
+    }
+  ]
+}

@@ -1,6 +1,6 @@
-"""The pinned table importer adds Surf only and removes stale future variants."""
+"""Pinned seasonal imports preserve base tables and remove stale future batches."""
 from pathlib import Path
-import copy, json, subprocess, tempfile
+import copy, json, re, subprocess, tempfile
 R=Path(__file__).resolve().parents[1]
 base=json.loads((R/'docs/wiki/dex-data.json').read_text())
 base['sourceCommit']=subprocess.check_output(['git','rev-parse','HEAD'],cwd=R,text=True).strip()
@@ -26,6 +26,18 @@ with tempfile.TemporaryDirectory() as d:
      assert all(sum(e['rate'] for e in v['entries'])==100 for v in y['seasonalVariants'])
    changed.append(a['id'])
  assert len(changed)==8
+ # Import the previous thirty-two-table generation after the newer snapshot.
+ header=(R/'src/data/legends_seasonal_encounters.h').read_text()
+ header=re.sub(r'static const struct WildPokemon sRoute(?:109|110|111|112)(?:Spring|Summer|Autumn|Winter)(?:Water)?Mons.*?=\s*\{.*?\};', '',header,flags=re.S)
+ previous=Path(d)/'previous-header.h';previous.write_text(header)
+ prior=build(previous)
+ expected=copy.deepcopy(base['maps'])
+ for m in expected:
+  if m['id'] in [f'MAP_ROUTE{r}' for r in range(105,109)]:
+   current=next(x for x in new['maps'] if x['id']==m['id'])
+   for method in m['methods']:
+    if method['id']=='surf':method['seasonalVariants']=next(x for x in current['methods'] if x['id']=='surf')['seasonalVariants']
+ assert prior['maps']==expected,'previous headers must remove only the newer route batch'
  old=build('preview-inputs/seasonal-encounters.h')
  assert old['maps']==base['maps'], 'old pinned headers must not retain stale future Surf tables'
-print('PASS: pinned land/Surf import, only eight intended methods changed, original data retained, stale future variants removed')
+print('PASS: pinned land/Surf import, only eight intended methods changed, original data retained, 48/32/16-table imports removed stale future variants')
