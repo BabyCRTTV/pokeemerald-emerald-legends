@@ -1,6 +1,6 @@
 # Pokémon Emerald: Legends
 
-**Version:** 0.0.65<br>
+**Version:** 0.0.66<br>
 **Base:** [pokeemerald-expansion](https://github.com/rh-hideout/pokeemerald-expansion)
 
 Pokémon Emerald: Legends is an unofficial, non-commercial Pokémon Emerald ROM-hack project built on the open-source `pokeemerald-expansion` decompilation/expansion base.
@@ -9,7 +9,7 @@ The project is intended to preserve the feel and structure of Pokémon Emerald w
 
 The New Game / Continue / Options menu uses a soft lavender backdrop as of v0.0.13.1. v0.0.54 displays the current version at the right edge of its OPTION card, matching the native text; Debug includes the -D suffix.
 
-v0.0.65 extended seasonal encounters to Route 109 Surf, Route 110 grass, Route 111 desert and Route 112 grass, with 32 visitors across Generations 1–9. All original residents remain available year-round, with native per-slot levels/rates retained. Seasonal Routes 101–108 and fitted native DexNav silhouettes remain included. [Roster and rules](docs/features/seasonal-encounters.md).
+v0.0.66 extended seasonal land encounters to Routes 113–116 with 32 visitors across Generations 1–9. Original residents remain year-round, with native per-slot levels, weights and encounter rates retained. Seasonal Routes 101–112 and fitted native DexNav silhouettes remain included. [Roster and rules](docs/features/seasonal-encounters.md).
 
 v0.0.62 corrected the Fortree dialogue scroll and strengthened focused Living Hoenn checks. [Review and QA](docs/qa/living-hoenn-review-v0.0.62.md).
 

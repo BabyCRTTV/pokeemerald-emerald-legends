@@ -2,6 +2,11 @@
 
 This is the player-facing history for the recommended **Release** build. Shared Legends changes are repeated here so this file stands on its own; Release-only behavior is called out separately.
 
+## [0.0.66] - 2026-10-19
+
+- Added 32 seasonal visitors across Generations 1–9 to Routes 113–116, including the native ash fields on Route 113.
+- Retained every original resident year-round, native per-slot levels, weights and encounter rates; preserved Routes 101–112, other encounter methods, approved artwork/DexNav fitting and saves.
+
 ## [0.0.65] - 2026-10-19
 
 - Added 32 seasonal visitors across Generations 1–9 to Route 109 Surf, Route 110 grass, Route 111 desert and Route 112 grass.

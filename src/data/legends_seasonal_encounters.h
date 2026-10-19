@@ -1,4 +1,4 @@
-// Seasonal land (101-104, 110-112) and Surf (105-109); native slot levels/rates/weights.
+// Seasonal land (101-104, 110-116) and Surf (105-109); native slot levels/rates/weights.
 // See docs/features/seasonal-encounters.md for the full distribution and approval state.
 struct LegendsSeasonalLandTable
 {
@@ -454,6 +454,262 @@ static const struct WildPokemon sRoute112WinterMons[NUM_LAND_MONS_ENCOUNTER_SLOT
     {16, 16, SPECIES_ROCKRUFF},
 };
 
+static const struct WildPokemon sRoute113SpringMons[NUM_LAND_MONS_ENCOUNTER_SLOTS] =
+{
+    {15, 15, SPECIES_SPINDA},
+    {15, 15, SPECIES_GROWLITHE},
+    {15, 15, SPECIES_SLUGMA},
+    {14, 14, SPECIES_SPINDA},
+    {14, 14, SPECIES_RUFFLET},
+    {14, 14, SPECIES_SLUGMA},
+    {16, 16, SPECIES_SPINDA},
+    {16, 16, SPECIES_SLUGMA},
+    {16, 16, SPECIES_SPINDA},
+    {16, 16, SPECIES_SKARMORY},
+    {16, 16, SPECIES_SPINDA},
+    {16, 16, SPECIES_SKARMORY},
+};
+
+static const struct WildPokemon sRoute113SummerMons[NUM_LAND_MONS_ENCOUNTER_SLOTS] =
+{
+    {15, 15, SPECIES_SPINDA},
+    {15, 15, SPECIES_SALANDIT},
+    {15, 15, SPECIES_SLUGMA},
+    {14, 14, SPECIES_SPINDA},
+    {14, 14, SPECIES_CHARCADET},
+    {14, 14, SPECIES_SLUGMA},
+    {16, 16, SPECIES_SPINDA},
+    {16, 16, SPECIES_SLUGMA},
+    {16, 16, SPECIES_SPINDA},
+    {16, 16, SPECIES_SKARMORY},
+    {16, 16, SPECIES_SPINDA},
+    {16, 16, SPECIES_SKARMORY},
+};
+
+static const struct WildPokemon sRoute113AutumnMons[NUM_LAND_MONS_ENCOUNTER_SLOTS] =
+{
+    {15, 15, SPECIES_SPINDA},
+    {15, 15, SPECIES_VULLABY},
+    {15, 15, SPECIES_SLUGMA},
+    {14, 14, SPECIES_SPINDA},
+    {14, 14, SPECIES_KLINK},
+    {14, 14, SPECIES_SLUGMA},
+    {16, 16, SPECIES_SPINDA},
+    {16, 16, SPECIES_SLUGMA},
+    {16, 16, SPECIES_SPINDA},
+    {16, 16, SPECIES_SKARMORY},
+    {16, 16, SPECIES_SPINDA},
+    {16, 16, SPECIES_SKARMORY},
+};
+
+static const struct WildPokemon sRoute113WinterMons[NUM_LAND_MONS_ENCOUNTER_SLOTS] =
+{
+    {15, 15, SPECIES_SPINDA},
+    {15, 15, SPECIES_SNEASEL},
+    {15, 15, SPECIES_SLUGMA},
+    {14, 14, SPECIES_SPINDA},
+    {14, 14, SPECIES_BRONZOR},
+    {14, 14, SPECIES_SLUGMA},
+    {16, 16, SPECIES_SPINDA},
+    {16, 16, SPECIES_SLUGMA},
+    {16, 16, SPECIES_SPINDA},
+    {16, 16, SPECIES_SKARMORY},
+    {16, 16, SPECIES_SPINDA},
+    {16, 16, SPECIES_SKARMORY},
+};
+
+static const struct WildPokemon sRoute114SpringMons[NUM_LAND_MONS_ENCOUNTER_SLOTS] =
+{
+    {16, 16, SPECIES_SWABLU},
+    {16, 16, SPECIES_BOUNSWEET},
+    {17, 17, SPECIES_SWABLU},
+    {15, 15, SPECIES_LOTAD},
+    {15, 15, SPECIES_APPLIN},
+    {16, 16, SPECIES_LOMBRE},
+    {16, 16, SPECIES_LOMBRE},
+    {18, 18, SPECIES_LOMBRE},
+    {17, 17, SPECIES_SEVIPER},
+    {15, 15, SPECIES_SEVIPER},
+    {17, 17, SPECIES_SEVIPER},
+    {15, 15, SPECIES_NUZLEAF},
+};
+
+static const struct WildPokemon sRoute114SummerMons[NUM_LAND_MONS_ENCOUNTER_SLOTS] =
+{
+    {16, 16, SPECIES_SWABLU},
+    {16, 16, SPECIES_SKIDDO},
+    {17, 17, SPECIES_SWABLU},
+    {15, 15, SPECIES_LOTAD},
+    {15, 15, SPECIES_PANCHAM},
+    {16, 16, SPECIES_LOMBRE},
+    {16, 16, SPECIES_LOMBRE},
+    {18, 18, SPECIES_LOMBRE},
+    {17, 17, SPECIES_SEVIPER},
+    {15, 15, SPECIES_SEVIPER},
+    {17, 17, SPECIES_SEVIPER},
+    {15, 15, SPECIES_NUZLEAF},
+};
+
+static const struct WildPokemon sRoute114AutumnMons[NUM_LAND_MONS_ENCOUNTER_SLOTS] =
+{
+    {16, 16, SPECIES_SWABLU},
+    {16, 16, SPECIES_TEDDIURSA},
+    {17, 17, SPECIES_SWABLU},
+    {15, 15, SPECIES_LOTAD},
+    {15, 15, SPECIES_MORELULL},
+    {16, 16, SPECIES_LOMBRE},
+    {16, 16, SPECIES_LOMBRE},
+    {18, 18, SPECIES_LOMBRE},
+    {17, 17, SPECIES_SEVIPER},
+    {15, 15, SPECIES_SEVIPER},
+    {17, 17, SPECIES_SEVIPER},
+    {15, 15, SPECIES_NUZLEAF},
+};
+
+static const struct WildPokemon sRoute114WinterMons[NUM_LAND_MONS_ENCOUNTER_SLOTS] =
+{
+    {16, 16, SPECIES_SWABLU},
+    {16, 16, SPECIES_SNOVER},
+    {17, 17, SPECIES_SWABLU},
+    {15, 15, SPECIES_LOTAD},
+    {15, 15, SPECIES_CETODDLE},
+    {16, 16, SPECIES_LOMBRE},
+    {16, 16, SPECIES_LOMBRE},
+    {18, 18, SPECIES_LOMBRE},
+    {17, 17, SPECIES_SEVIPER},
+    {15, 15, SPECIES_SEVIPER},
+    {17, 17, SPECIES_SEVIPER},
+    {15, 15, SPECIES_NUZLEAF},
+};
+
+static const struct WildPokemon sRoute115SpringMons[NUM_LAND_MONS_ENCOUNTER_SLOTS] =
+{
+    {23, 23, SPECIES_SWABLU},
+    {23, 23, SPECIES_MIENFOO},
+    {25, 25, SPECIES_SWABLU},
+    {24, 24, SPECIES_TAILLOW},
+    {25, 25, SPECIES_FARFETCHD},
+    {25, 25, SPECIES_SWELLOW},
+    {24, 24, SPECIES_JIGGLYPUFF},
+    {25, 25, SPECIES_JIGGLYPUFF},
+    {24, 24, SPECIES_WINGULL},
+    {24, 24, SPECIES_WINGULL},
+    {26, 26, SPECIES_WINGULL},
+    {25, 25, SPECIES_WINGULL},
+};
+
+static const struct WildPokemon sRoute115SummerMons[NUM_LAND_MONS_ENCOUNTER_SLOTS] =
+{
+    {23, 23, SPECIES_SWABLU},
+    {23, 23, SPECIES_HAWLUCHA},
+    {25, 25, SPECIES_SWABLU},
+    {24, 24, SPECIES_TAILLOW},
+    {25, 25, SPECIES_PASSIMIAN},
+    {25, 25, SPECIES_SWELLOW},
+    {24, 24, SPECIES_JIGGLYPUFF},
+    {25, 25, SPECIES_JIGGLYPUFF},
+    {24, 24, SPECIES_WINGULL},
+    {24, 24, SPECIES_WINGULL},
+    {26, 26, SPECIES_WINGULL},
+    {25, 25, SPECIES_WINGULL},
+};
+
+static const struct WildPokemon sRoute115AutumnMons[NUM_LAND_MONS_ENCOUNTER_SLOTS] =
+{
+    {23, 23, SPECIES_SWABLU},
+    {23, 23, SPECIES_ZANGOOSE},
+    {25, 25, SPECIES_SWABLU},
+    {24, 24, SPECIES_TAILLOW},
+    {25, 25, SPECIES_MURKROW},
+    {25, 25, SPECIES_SWELLOW},
+    {24, 24, SPECIES_JIGGLYPUFF},
+    {25, 25, SPECIES_JIGGLYPUFF},
+    {24, 24, SPECIES_WINGULL},
+    {24, 24, SPECIES_WINGULL},
+    {26, 26, SPECIES_WINGULL},
+    {25, 25, SPECIES_WINGULL},
+};
+
+static const struct WildPokemon sRoute115WinterMons[NUM_LAND_MONS_ENCOUNTER_SLOTS] =
+{
+    {23, 23, SPECIES_SWABLU},
+    {23, 23, SPECIES_MINCCINO},
+    {25, 25, SPECIES_SWABLU},
+    {24, 24, SPECIES_TAILLOW},
+    {25, 25, SPECIES_ABSOL},
+    {25, 25, SPECIES_SWELLOW},
+    {24, 24, SPECIES_JIGGLYPUFF},
+    {25, 25, SPECIES_JIGGLYPUFF},
+    {24, 24, SPECIES_WINGULL},
+    {24, 24, SPECIES_WINGULL},
+    {26, 26, SPECIES_WINGULL},
+    {25, 25, SPECIES_WINGULL},
+};
+
+static const struct WildPokemon sRoute116SpringMons[NUM_LAND_MONS_ENCOUNTER_SLOTS] =
+{
+    {6, 6, SPECIES_PICHU},
+    {6, 6, SPECIES_WHISMUR},
+    {6, 6, SPECIES_NINCADA},
+    {7, 7, SPECIES_ABRA},
+    {7, 7, SPECIES_BUNEARY},
+    {6, 6, SPECIES_TAILLOW},
+    {7, 7, SPECIES_TAILLOW},
+    {8, 8, SPECIES_TAILLOW},
+    {7, 7, SPECIES_POOCHYENA},
+    {8, 8, SPECIES_POOCHYENA},
+    {7, 7, SPECIES_SKITTY},
+    {8, 8, SPECIES_SKITTY},
+};
+
+static const struct WildPokemon sRoute116SummerMons[NUM_LAND_MONS_ENCOUNTER_SLOTS] =
+{
+    {6, 6, SPECIES_KRICKETOT},
+    {6, 6, SPECIES_WHISMUR},
+    {6, 6, SPECIES_NINCADA},
+    {7, 7, SPECIES_ABRA},
+    {7, 7, SPECIES_BLIPBUG},
+    {6, 6, SPECIES_TAILLOW},
+    {7, 7, SPECIES_TAILLOW},
+    {8, 8, SPECIES_TAILLOW},
+    {7, 7, SPECIES_POOCHYENA},
+    {8, 8, SPECIES_POOCHYENA},
+    {7, 7, SPECIES_SKITTY},
+    {8, 8, SPECIES_SKITTY},
+};
+
+static const struct WildPokemon sRoute116AutumnMons[NUM_LAND_MONS_ENCOUNTER_SLOTS] =
+{
+    {6, 6, SPECIES_NYMBLE},
+    {6, 6, SPECIES_WHISMUR},
+    {6, 6, SPECIES_NINCADA},
+    {7, 7, SPECIES_ABRA},
+    {7, 7, SPECIES_PATRAT},
+    {6, 6, SPECIES_TAILLOW},
+    {7, 7, SPECIES_TAILLOW},
+    {8, 8, SPECIES_TAILLOW},
+    {7, 7, SPECIES_POOCHYENA},
+    {8, 8, SPECIES_POOCHYENA},
+    {7, 7, SPECIES_SKITTY},
+    {8, 8, SPECIES_SKITTY},
+};
+
+static const struct WildPokemon sRoute116WinterMons[NUM_LAND_MONS_ENCOUNTER_SLOTS] =
+{
+    {6, 6, SPECIES_WOOLOO},
+    {6, 6, SPECIES_WHISMUR},
+    {6, 6, SPECIES_NINCADA},
+    {7, 7, SPECIES_ABRA},
+    {7, 7, SPECIES_ESPURR},
+    {6, 6, SPECIES_TAILLOW},
+    {7, 7, SPECIES_TAILLOW},
+    {8, 8, SPECIES_TAILLOW},
+    {7, 7, SPECIES_POOCHYENA},
+    {8, 8, SPECIES_POOCHYENA},
+    {7, 7, SPECIES_SKITTY},
+    {8, 8, SPECIES_SKITTY},
+};
+
 static const struct LegendsSeasonalLandTable sLegendsSeasonalLand[] =
 {
     {MAP_ROUTE101, {
@@ -497,6 +753,30 @@ static const struct LegendsSeasonalLandTable sLegendsSeasonalLand[] =
         [LEGENDS_SUMMER] = {20, sRoute112SummerMons},
         [LEGENDS_AUTUMN] = {20, sRoute112AutumnMons},
         [LEGENDS_WINTER] = {20, sRoute112WinterMons},
+    }},
+    {MAP_ROUTE113, {
+        [LEGENDS_SPRING] = {20, sRoute113SpringMons},
+        [LEGENDS_SUMMER] = {20, sRoute113SummerMons},
+        [LEGENDS_AUTUMN] = {20, sRoute113AutumnMons},
+        [LEGENDS_WINTER] = {20, sRoute113WinterMons},
+    }},
+    {MAP_ROUTE114, {
+        [LEGENDS_SPRING] = {20, sRoute114SpringMons},
+        [LEGENDS_SUMMER] = {20, sRoute114SummerMons},
+        [LEGENDS_AUTUMN] = {20, sRoute114AutumnMons},
+        [LEGENDS_WINTER] = {20, sRoute114WinterMons},
+    }},
+    {MAP_ROUTE115, {
+        [LEGENDS_SPRING] = {20, sRoute115SpringMons},
+        [LEGENDS_SUMMER] = {20, sRoute115SummerMons},
+        [LEGENDS_AUTUMN] = {20, sRoute115AutumnMons},
+        [LEGENDS_WINTER] = {20, sRoute115WinterMons},
+    }},
+    {MAP_ROUTE116, {
+        [LEGENDS_SPRING] = {20, sRoute116SpringMons},
+        [LEGENDS_SUMMER] = {20, sRoute116SummerMons},
+        [LEGENDS_AUTUMN] = {20, sRoute116AutumnMons},
+        [LEGENDS_WINTER] = {20, sRoute116WinterMons},
     }},
 };
 
