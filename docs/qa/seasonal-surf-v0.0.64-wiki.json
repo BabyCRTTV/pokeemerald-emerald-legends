@@ -15,7 +15,7 @@
   "art_inputs_unchanged": true,
   "art_regenerated": false,
   "independent_wiki_and_companion_versions_unchanged": true,
-  "status": "Published game and seasonal wiki snapshot verified; final walkthrough resident-share/cache correction awaiting deployment.",
+  "status": "Published and verified: seasonal snapshot and final walkthrough correction passed fresh live byte/hash/source checks.",
   "reader_navigation_and_audio": "passed",
   "sixteen_Surf_views_actual_reader_JS": "passed: species, 100% odds, seasonal/all-season/all-day badges and hidden Preview notice",
   "snapshot_validation": "passed: 59 articles, 1028 species, 157 maps, 409 methods and 32 seasonal variants",
@@ -23,5 +23,11 @@
   "source_metadata_cache_keys": "Source-keyed metadata URLs now cover both Dex and guide pages, including the corrected guide renderer; reader regression enforces both consumers.",
   "live_game_receipt": "seasonal-surf-v0.0.64-public.json",
   "patch_commit": "b63c322262d042cdddba42e8a9c2f502a7962e51",
-  "walkthrough_regression": "Passed: shipped rendering across all 409 methods; eight seasonal methods show invariant 65%/70% resident shares and LegendsDex guidance, other methods retain full tables; empty variants handled."
+  "walkthrough_regression": "Passed: shipped rendering across all 409 methods; eight seasonal methods show invariant 65%/70% resident shares and LegendsDex guidance, other methods retain full tables; empty variants handled.",
+  "public_receipt": "seasonal-surf-v0.0.64-wiki-public.json",
+  "guide_publication": {
+    "commit": "07368350c0c7284f11f76e2f1bdcc638cf11871c",
+    "Pages_run": 39179679316,
+    "HTTP_files_verified": 14
+  }
 }

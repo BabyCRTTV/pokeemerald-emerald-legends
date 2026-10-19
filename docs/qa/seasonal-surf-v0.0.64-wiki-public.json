@@ -120,5 +120,97 @@
       "matches_previously_dual_decoded_patch": true
     }
   },
-  "scope": "Fresh live HTTP/hash checks; BPS bytes equal the unchanged patches independently decoded in the retained publication receipt. No duplicate native build or patch decoding was needed."
+  "scope": "Fresh live HTTP/hash checks; BPS bytes equal the unchanged patches independently decoded in the retained publication receipt. No duplicate native build or patch decoding was needed.",
+  "guide_confirmation": {
+    "verified_utc": "2026-10-19T00:12:47.198972+00:00",
+    "source_commit": "07368350c0c7284f11f76e2f1bdcc638cf11871c",
+    "Pages_run": 39179679316,
+    "site": {
+      "wiki/index.html": {
+        "HTTP": 200,
+        "bytes": 12360,
+        "sha256": "aef14cae209be16982fd754c76c5232745a3e689b1bc5373faca6b5fd4d47b3a",
+        "matches_committed_source": true
+      },
+      "wiki/walkthrough-maps.js": {
+        "HTTP": 200,
+        "bytes": 11768,
+        "sha256": "f37d95bdc83a4bb9640a9917f218af26f1269fa4451ab671f33fb15dc019cf9b",
+        "matches_committed_source": true
+      },
+      "wiki/dex.html": {
+        "HTTP": 200,
+        "bytes": 10156,
+        "sha256": "b1f764bac218804e3646c202af7c01bf03eeb81f168f7701a5132b10f6c9ccf0",
+        "matches_committed_source": true
+      },
+      "wiki/dex-data.json": {
+        "HTTP": 200,
+        "bytes": 578244,
+        "sha256": "f483c9b33e09eaedcb12cad563ef60496413acc4254f2ed54535d9d7974e17d4",
+        "matches_committed_source": true
+      },
+      "wiki/dex-sprite-atlas.js": {
+        "HTTP": 200,
+        "bytes": 18786,
+        "sha256": "4ef84caff4ecd1c90d3da3697b41d7a760090d01298ed5d46fbe3961da534112",
+        "matches_committed_source": true
+      },
+      "wiki/dex-profiles.js": {
+        "HTTP": 200,
+        "bytes": 177391,
+        "sha256": "2a2f95b6729ae0ba189e33dea60f11b212d4024c38434dcd7051a6cac107475c",
+        "matches_committed_source": true
+      },
+      "wiki/walkthrough-maps.json": {
+        "HTTP": 200,
+        "bytes": 115267,
+        "sha256": "482d1aacbe5dc04fd35428ad192f3590c1f24596941a5d9fa4cdca11f2fa5330",
+        "matches_committed_source": true
+      },
+      "wiki/README.md": {
+        "HTTP": 200,
+        "bytes": 11988,
+        "sha256": "8f7b98e3eaa4476a949c3831c2ab3b236a73efbe36326a62f6cef65ecba6449d",
+        "matches_committed_source": true
+      },
+      "changelog.html": {
+        "HTTP": 200,
+        "bytes": 112839,
+        "sha256": "b641209b1d3f065e99e4efbc08ac7599d0f9f8c445c170b9810aa3d77c5cb108",
+        "matches_committed_source": true
+      },
+      "qa/seasonal-surf-v0.0.64-wiki.json": {
+        "HTTP": 200,
+        "bytes": 1770,
+        "sha256": "73bfc4029236b6aa8a67fa229794a90c409c44504584f04129730ff4373bb256",
+        "matches_committed_source": true
+      },
+      "qa/seasonal-surf-v0.0.64-wiki-public.json": {
+        "HTTP": 200,
+        "bytes": 4279,
+        "sha256": "e6628027d4a74e9aebb32d8e929cd2c889521c869532dfb0f6952a450b4851f1",
+        "matches_committed_source": true
+      },
+      "qa/seasonal-surf-v0.0.64.md": {
+        "HTTP": 200,
+        "bytes": 5278,
+        "sha256": "2554655068efa441d575a5f4314beadbf3304a63cfbbdc3983699c2b5f66cb5a",
+        "matches_committed_source": true
+      },
+      "DEVELOPMENT-HANDOFF.md": {
+        "HTTP": 200,
+        "bytes": 52009,
+        "sha256": "06419b1370591983584e8a189a110f83e3e25edbdbfb99460e78bcb780b3d1f2",
+        "matches_committed_source": true
+      },
+      "downloads/SHA256SUMS.txt": {
+        "HTTP": 200,
+        "bytes": 412,
+        "sha256": "a6d298eb41d8d14011654d5f303597997b1050ee06c66239e5929d05ffab1e26",
+        "matches_committed_source": true
+      }
+    },
+    "scope": "Fresh live byte/hash/source checks including corrected guide renderer, both consumer cache keys, published encounter JSON and unchanged patch manifest."
+  }
 }
