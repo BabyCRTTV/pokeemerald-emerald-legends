@@ -21,15 +21,15 @@ int main(int argc,char **argv){
  for(scene=0;scene<count;scene++){
   c->reset(c);frames(650);c->busWrite32(c,mainAddr,0);c->busWrite32(c,0x0203fc74,0);command(0,400);
   for(int i=0;i<2000&&c->busRead32(c,mainAddr+4)!=overworld;i++)frames(1);assert(c->busRead32(c,mainAddr+4)==overworld);frames(200);
-  command(1,1);frames(240);if(scene>=35)key(64);query();for(int i=0;i<400&&(!box(3)||box(4));i++){frames(1);query();}assert(box(3)&&!box(4));verify();cap("gui");
+  command(1,1);frames(240);if(box(2)>>8)key(64);query();for(int i=0;i<400&&(!box(3)||box(4));i++){frames(1);query();}assert(box(3)&&!box(4));verify();cap("gui");
   unsigned icons=box(24),scaled=box(25),width=box(26),height=box(27);assert(icons>=box(5));
   if(box(6)){
    unsigned first=box(20),animated=box(21);assert(first);int changed=0;
    for(int i=0;i<12;i++){frames(5);query();verify();if(box(20)!=first){cap("animated");changed=1;break;}}
    assert(!animated||changed);
   }
-  if(scene==16||scene==67){assert(box(6)==box(5)&&!box(23));key(1);query();assert(box(3)&&!box(23));verify();cap("locked");}
-  if(scene==17||(scene>=51&&scene<67))assert(!box(6));
+  if((box(2)&255)==1){assert(box(6)==box(5)&&!box(23));key(1);query();assert(box(3)&&!box(23));verify();cap("locked");}
+  if((box(2)&255)==2)assert(!box(6));
   key(2);frames(240);query();assert(!box(3));verify();
   printf("PASS scene %u: 256 real wild creations, native icons/animation/palettes, %u centered icons (%u shrunk), max %ux%u, closed UI and protected state\n",scene,icons,scaled,width,height);
  }

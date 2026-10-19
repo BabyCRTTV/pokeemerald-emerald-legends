@@ -36,6 +36,12 @@ On 14 October 2026 the owner reversed the earlier permission to ignore older sav
 
 The owner requested mGBA gameplay testing and previews **exclusively from actual Pokémon Emerald: Legends**. `tools/legends/mgba_gameplay_smoke.c` and `test/mgba-gameplay-smoke.py` launch the unchanged compiled Debug ROM under mGBA's native core, press real SELECT for Debug Quickstart, verify the overworld callback and capture unmodified 240×160 video-buffer frames. `.github/workflows/mgba-gameplay-qa.yml` builds and runs this regression in CI and uploads a screenshot-only artifact (no ROM or save). This is a **boot/Quickstart smoke check**, not proof that Birch/Devon research, Weather Institute bulletin or all four NPC branches have been played through. Those must receive actual targeted emulator runs later. For screenshots and external previews, only use captured frames traceable to this project's built ROM, never reference Pokémon screenshots or synthesized equivalents. Record live CI result before claiming it passed.
 
+## Active work — v0.0.65 seasonal Routes 109–112
+
+**Model: GPT-6 | Approach: append native-method rosters, preserve the verified v0.0.64 baseline and extend focused native coverage.**
+
+The owner requested the next run of routes. Live master was verified at `5ad991d66944ceb7d6a60afef8dfedd1862017fd`; prior production builds/native checks/Pages succeeded and no v0.0.64 publication work remains. New scope is Route 109 Surf, Route 110 grass, Route 111 desert and Route 112 grass: sixteen tables, 32 visitors, all original residents year-round. Existing committed-season helpers require no redesign. Preserve native slot levels/weights/rates (including desert rate 10), other methods, all previous tables, artwork/DexNav fit and save layouts/IDs. No migration is needed. Implementation is undergoing source/native/build verification; no v0.0.65 publication is claimed. The full roster is in [seasonal rules](features/seasonal-encounters.md). Next: focused regression and native fixtures, actual compiled-game preview, both builds/BPS gates, publication and matching wiki data/cache keys.
+
 ## Current release — v0.0.64 seasonal Surf (published and verified)
 
 **Model: GPT-6 | Approach: extend the shared method resolver, preserve native encounter geometry/art/saves and independently decode public patches.**
@@ -205,7 +211,7 @@ The front-facing cheek cleanup shipped in v0.0.49; retain standing edits and pos
 - All eight visiting Gyms, the three bird expeditions, the Hoenn Regigigas intermission and native Faraway Island/Mew conclusion are implemented. Quest Log, achievements, expanded storage and prepared battle uniforms are established. Do not reimplement shipped features from older summaries.
 - [PR #56](https://github.com/BabyCRTTV/pokeemerald-emerald-legends/pull/56) is an older conflicting wiki proposal. Reconcile unique changes before deciding its disposition; do not merge its older Chapters 19–22 snapshot over the current v1.6.0 Chapters 1–25 snapshot. Wiki content remains separately maintained, last reviewed against game v0.0.46, and is updated only when requested.
 - Establish a small, reproducible historical-save fixture matrix as save-affecting work proceeds: original fourteen-box format, expanded v0.0.43 format and current pre-update saves, with mid-story/postgame and non-default wardrobe/seasons. Record provenance and verified upgrade paths. Existing legacy emulator evidence and host tests are useful but do not cover every historical release.
-- Seasonal encounters on Routes 101–104 are selected and implemented on the preview branch above, awaiting owner review. Lucky Egg balance review, further configuration consolidation, an upstream-update procedure and later Johto research remain unselected roadmap ideas, not established current regressions.
+- Seasonal Routes 101–108 shipped and are protected above. Routes 109–112 are the active extension. Lucky Egg balance review, further configuration consolidation, an upstream-update procedure and later Johto research remain unselected roadmap ideas, not established current regressions.
 
 ## Bedroom technical continuity
 

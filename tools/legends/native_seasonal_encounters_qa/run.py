@@ -8,14 +8,15 @@ def run(cmd,log):
  with (O/log).open('w') as f:subprocess.run(cmd,cwd=R,stdout=f,stderr=subprocess.STDOUT,check=True)
 lines=subprocess.check_output(['arm-none-eabi-nm',str(R/'pokeemerald.elf')],text=True).splitlines();syms={v[2]:int(v[0],16) for line in lines if len(v:=line.split())==3}
 source=(R/'src/dexnav.c').read_text();ui=source[source.index('struct DexNavGUI\n{'):source.index('\n};',source.index('struct DexNavGUI\n{'))+3]
-data=(R/'src/data/legends_seasonal_encounters.h').read_text();tables={(int(r),s.lower()):re.findall(r'SPECIES_\w+',body) for r,s,method,body in re.findall(r'static const struct WildPokemon sRoute(10[1-8])(Spring|Summer|Autumn|Winter)(Water)?Mons.*?=\s*\{(.*?)\};',data,re.S)}
+data=(R/'src/data/legends_seasonal_encounters.h').read_text();tables={(int(r),s.lower()):re.findall(r'SPECIES_\w+',body) for r,s,method,body in re.findall(r'static const struct WildPokemon sRoute((?:10[1-9]|11[0-2]))(Spring|Summer|Autumn|Winter)(Water)?Mons.*?=\s*\{(.*?)\};',data,re.S)}
 layouts=json.loads((R/'data/layouts/layouts.json').read_text())['layouts'];scenes=[]
 def add(route,season,mode=0,south=False):
+ water=105<=route<=109;terrain=0x170 if water else 0x251 if route==111 else 13
  d=json.loads((R/f'data/maps/Route{route}/map.json').read_text());l=next(l for l in layouts if l['id']==d['layout']);raw=(R/l['blockdata_filepath']).read_bytes();blocks=struct.unpack('<'+'H'*(len(raw)//2),raw)
- occupied={(o['x'],o['y']) for o in d['object_events']};coords=[(i%l['width'],i//l['width']) for i,v in enumerate(blocks) if v&0xfff==(0x170 if route>=105 else 13) and 3<i%l['width']<l['width']-3 and 3<i//l['width']<l['height']-3 and (i%l['width'],i//l['width']) not in occupied and (not south or i//l['width']>40)]
+ occupied={(o['x'],o['y']) for o in d['object_events']};coords=[(i%l['width'],i//l['width']) for i,v in enumerate(blocks) if v&0xfff==terrain and 3<i%l['width']<l['width']-3 and 3<i//l['width']<l['height']-3 and (i%l['width'],i//l['width']) not in occupied and (not south or i//l['width']>40)]
  assert coords,(route,'no passable native terrain fixture');x,y=coords[0];name=['spring','summer','autumn','winter'][season];expected=tables[route,name]
- rows=re.findall(r'\{(\d+), (\d+), SPECIES_\w+\}',re.search(r'sRoute'+str(route)+name.title()+('Water' if route>=105 else '')+r'Mons.*?=\s*\{(.*?)\};',data,re.S)[1]);minimum=min(int(a) for a,b in rows);maximum=max(int(b) for a,b in rows)
- scenes.append(dict(name=f'route{route}-{name}'+('-all-unseen' if mode==1 else '-all-seen' if mode==2 else '-south' if south else ''),route=route,season=season,mode=mode,area=1 if route>=105 else 0,x=x,y=y,min=minimum,max=maximum,expected=expected))
+ rows=re.findall(r'\{(\d+), (\d+), SPECIES_\w+\}',re.search(r'sRoute'+str(route)+name.title()+('Water' if water else '')+r'Mons.*?=\s*\{(.*?)\};',data,re.S)[1]);minimum=min(int(a) for a,b in rows);maximum=max(int(b) for a,b in rows)
+ scenes.append(dict(name=f'route{route}-{name}'+('-all-unseen' if mode==1 else '-all-seen' if mode==2 else '-south' if south else ''),route=route,season=season,mode=mode,area=1 if water else 0,x=x,y=y,min=minimum,max=maximum,rate=10 if route==111 else 4 if water else 20,expected=expected))
 for route in range(101,105):
  for season in range(4):add(route,season)
 add(101,0,1);add(104,3,2);add(104,3,south=True)
@@ -26,9 +27,13 @@ for route in range(105,109):
 for route in range(105,109):
  for season in range(4):add(route,season,2)
 add(105,0,1)
-assert len(scenes)==68
-header=[ui,'struct QAScenario {u16 map; s16 x,y; u8 season,mode,area,min,max; enum Species expected[12];};','static const struct QAScenario scenarios[] = {']
-for s in scenes:header.append('{MAP_ROUTE%d,%d,%d,%d,%d,%d,%d,%d,{%s}},'%(s['route'],s['x'],s['y'],s['season'],s['mode'],s['area'],s['min'],s['max'],','.join(s['expected'])))
+for mode in [0,2]:
+ for route in range(109,113):
+  for season in range(4):add(route,season,mode)
+add(109,0,1);add(111,3,1)
+assert len(scenes)==102
+header=[ui,'struct QAScenario {u16 map; s16 x,y; u8 season,mode,area,min,max,rate; enum Species expected[12];};','static const struct QAScenario scenarios[] = {']
+for s in scenes:header.append('{MAP_ROUTE%d,%d,%d,%d,%d,%d,%d,%d,%d,{%s}},'%(s['route'],s['x'],s['y'],s['season'],s['mode'],s['area'],s['min'],s['max'],s['rate'],','.join(s['expected'])))
 header.append('};');(O/'qa_scenarios.h').write_text('\n'.join(header)+'\n')
 args=['arm-none-eabi-gcc','-iquote','include','-iquote','.', '-I'+str(O),'-DMODERN=1','-DEMERALD','-mthumb','-mcpu=arm7tdmi','-mabi=apcs-gnu','-Os','-ffreestanding','-fno-builtin','-fno-jump-tables','-nostdlib']
 for define,symbol in [('QA_GUI_TASK','Task_DexNavMain'),('QA_UI','sDexNavUiDataPtr')]:args+=['-D'+define+'='+hex(syms[symbol]|(0 if define=='QA_UI' else 1))]
@@ -42,5 +47,5 @@ finally:
  for p in O.glob('*.rgba'):Image.frombytes('RGBA',(240,160),p.read_bytes()).convert('RGB').save(p.with_suffix('.png'));p.unlink()
  private.unlink()
 assert sha(rom)==before
-proof={'version':(R/'VERSION').read_text().strip(),'base_ROM_sha256':before,'emulator':'mGBA native core 0.10.2','private_instrumentation':True,'public_ROM_unchanged':True,'scenarios':scenes,'wild_creations_per_scenario':256,'passed':True,'scope':'Actual compiled land and Surf tables, wild creation and DexNav GUI; hardware-sampled two-pose bounds/centering and uniform shrink-only scale for every grid icon; controlled route/season/seen state, original icons and VRAM frames, isolated palettes, unseen selection lock, closure and protected state. Both Route104 halves and surfing fixtures on Routes105-108 checked. Not a natural progression playthrough, historical-save migration, full DexNav hunt or Pizza Boy test.','harness_sha256':{n:sha(S/n) for n in ['arm.c','host.c','run.py']}}
-(O/'verification.json').write_text(json.dumps(proof,indent=2)+'\n');print('PASS: 68 targeted native seasonal/DexNav scenarios and 17408 real generated Pokémon; grass and Surf, original/seen/unseen states.')
+proof={'version':(R/'VERSION').read_text().strip(),'base_ROM_sha256':before,'emulator':'mGBA native core 0.10.2','private_instrumentation':True,'public_ROM_unchanged':True,'scenarios':scenes,'wild_creations_per_scenario':256,'passed':True,'scope':'Actual compiled land and Surf tables, wild creation and DexNav GUI; hardware-sampled two-pose bounds/centering and uniform shrink-only scale for every grid icon; controlled route/season/seen state, original icons and VRAM frames, isolated palettes, unseen selection lock, closure and protected state. Both Route104 halves, native Surf fixtures on Routes105-109 and Route111 desert fixtures checked. Not a natural progression playthrough, historical-save migration, full DexNav hunt or Pizza Boy test.','harness_sha256':{n:sha(S/n) for n in ['arm.c','host.c','run.py']}}
+(O/'verification.json').write_text(json.dumps(proof,indent=2)+'\n');print('PASS: 102 targeted native seasonal/DexNav scenarios and 26112 real generated Pokémon; grass and Surf, original/seen/unseen states.')
