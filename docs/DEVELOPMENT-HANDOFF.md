@@ -36,7 +36,7 @@ On 14 October 2026 the owner reversed the earlier permission to ignore older sav
 
 The owner requested mGBA gameplay testing and previews **exclusively from actual Pokémon Emerald: Legends**. `tools/legends/mgba_gameplay_smoke.c` and `test/mgba-gameplay-smoke.py` launch the unchanged compiled Debug ROM under mGBA's native core, press real SELECT for Debug Quickstart, verify the overworld callback and capture unmodified 240×160 video-buffer frames. `.github/workflows/mgba-gameplay-qa.yml` builds and runs this regression in CI and uploads a screenshot-only artifact (no ROM or save). This is a **boot/Quickstart smoke check**, not proof that Birch/Devon research, Weather Institute bulletin or all four NPC branches have been played through. Those must receive actual targeted emulator runs later. For screenshots and external previews, only use captured frames traceable to this project's built ROM, never reference Pokémon screenshots or synthesized equivalents. Record live CI result before claiming it passed.
 
-## Current release — v0.0.65 (game published and verified; wiki deployment pending)
+## Current release — v0.0.65 (published and verified)
 
 **Model: GPT-6 | Approach: preserve native encounter dependencies/art/saves; verify compiled previews and independently decode both live patches.**
 
@@ -46,7 +46,7 @@ Compiled source `2f9ccc8c` passed PR project **39219001418**, both builds/BPS **
 
 Patch commit `5ab989be` and Pages **39221335539** succeeded. Both fresh live BPS files matched source/manifest and independently reconstructed exact production targets with Flips and the browser decoder against canonical clean Emerald. Debug matched the native base (`fb24e26d…826fbd`); eleven live release/preview assets matched source. [Public game receipt](qa/seasonal-routes-v0.0.65-public.json).
 
-The matching wiki update is committed with this closeout; **Pages/live wiki verification remains the final step**. Only four methods gained variants; prior variants, native entries, species/art/layout and companion versions/signing stayed intact. Local reader checks passed all 48 seasonal views; walkthrough checks all 409 methods; importer checks all 48/32/16-table snapshots. Both consumer cache keys match the game source. Verify deployment bytes, then close [the wiki receipt](qa/seasonal-routes-v0.0.65-wiki.json). Controlled Debug fixtures do not establish natural full progression, full hunts, Release interaction, historical saves or Pizza Boy; broader playtests/site redesign remain backlog. AGENTS.md was reviewed; no new durable policy was needed.
+Matching wiki data/source keys shipped in `01c6ffb3`; Pages **39221740574** passed, and seventeen fresh live wiki/guide/release/QA/manifest files matched source. Only four methods gained variants; prior variants, native entries, species/art/layout and companion versions/signing stayed intact. Actual reader checks passed all 48 seasonal views; walkthrough checks all 409 methods; importer checks all 48/32/16-table snapshots. Both consumer cache keys match the game source. [Closed wiki receipt](qa/seasonal-routes-v0.0.65-wiki.json) · [Public wiki evidence](qa/seasonal-routes-v0.0.65-wiki-public.json). **No publication blocker remains.** Controlled Debug fixtures do not establish natural full progression, full hunts, Release interaction, historical saves or Pizza Boy; broader playtests/site redesign remain backlog. AGENTS.md was reviewed; no new durable policy was needed.
 
 ## Previous release — v0.0.64 seasonal Surf (published and verified)
 

@@ -1,0 +1,132 @@
+{
+  "version": "0.0.65",
+  "audited_head": "01c6ffb334947a3c2a06cd36f8e4d0f24dee4529",
+  "verified_utc": "2026-10-19T08:18:41.787245+00:00",
+  "files": {
+    "wiki/index.html": {
+      "url": "https://babycrttv.github.io/pokeemerald-emerald-legends/wiki/index.html",
+      "HTTP": 200,
+      "bytes": 12360,
+      "sha256": "087f91085d9edc6ba60c7ed723076178fd385c9d877488260bba30e7799e86f2",
+      "matches_committed_bytes": true
+    },
+    "wiki/dex.html": {
+      "url": "https://babycrttv.github.io/pokeemerald-emerald-legends/wiki/dex.html",
+      "HTTP": 200,
+      "bytes": 10156,
+      "sha256": "af2c5b11ca547a5f03f796a7633284ae82305f710c082c05046d75b45f963f3e",
+      "matches_committed_bytes": true
+    },
+    "wiki/dex.js": {
+      "url": "https://babycrttv.github.io/pokeemerald-emerald-legends/wiki/dex.js",
+      "HTTP": 200,
+      "bytes": 22027,
+      "sha256": "76d66e921dde52bb91e3f778cb180bb8d4eb1bbabae21b738f4b0d34a0819f51",
+      "matches_committed_bytes": true
+    },
+    "wiki/dex-data.json": {
+      "url": "https://babycrttv.github.io/pokeemerald-emerald-legends/wiki/dex-data.json",
+      "HTTP": 200,
+      "bytes": 612425,
+      "sha256": "1c2e3b7ddd7a07e3f440e5787167cf39a270d9c66e71662563783f36baddb1e6",
+      "matches_committed_bytes": true
+    },
+    "wiki/dex-sprite-atlas.js": {
+      "url": "https://babycrttv.github.io/pokeemerald-emerald-legends/wiki/dex-sprite-atlas.js",
+      "HTTP": 200,
+      "bytes": 18786,
+      "sha256": "83756d1306f537b4bb9efffcf26d3d39728274404807ee93a6ddb867c6175969",
+      "matches_committed_bytes": true
+    },
+    "wiki/dex-profiles.js": {
+      "url": "https://babycrttv.github.io/pokeemerald-emerald-legends/wiki/dex-profiles.js",
+      "HTTP": 200,
+      "bytes": 177391,
+      "sha256": "4e636bfc75bbc92a367694be034b4f19b21d2b27671e96588ea172b335a11da8",
+      "matches_committed_bytes": true
+    },
+    "wiki/dex-portrait-sources.json": {
+      "url": "https://babycrttv.github.io/pokeemerald-emerald-legends/wiki/dex-portrait-sources.json",
+      "HTTP": 200,
+      "bytes": 342,
+      "sha256": "75e9a34d5175b359579a37597e74edab13f84ca4f2815d16da83f30b02d8d848",
+      "matches_committed_bytes": true
+    },
+    "wiki/walkthrough-maps.json": {
+      "url": "https://babycrttv.github.io/pokeemerald-emerald-legends/wiki/walkthrough-maps.json",
+      "HTTP": 200,
+      "bytes": 115267,
+      "sha256": "3701578a0192e9e66886926d415bc433c9c0d34fcf251cab908c42793551a046",
+      "matches_committed_bytes": true
+    },
+    "wiki/walkthrough-maps.js": {
+      "url": "https://babycrttv.github.io/pokeemerald-emerald-legends/wiki/walkthrough-maps.js",
+      "HTTP": 200,
+      "bytes": 11768,
+      "sha256": "f37d95bdc83a4bb9640a9917f218af26f1269fa4451ab671f33fb15dc019cf9b",
+      "matches_committed_bytes": true
+    },
+    "wiki/README.md": {
+      "url": "https://babycrttv.github.io/pokeemerald-emerald-legends/wiki/README.md",
+      "HTTP": 200,
+      "bytes": 11928,
+      "sha256": "962fe3d4855876849bdd27e5325b8d40062bcb5ec94f1fff7301d54d9652b3ef",
+      "matches_committed_bytes": true
+    },
+    "features/seasonal-encounters.md": {
+      "url": "https://babycrttv.github.io/pokeemerald-emerald-legends/features/seasonal-encounters.md",
+      "HTTP": 200,
+      "bytes": 9391,
+      "sha256": "11870fe2b0f24973d378405f5f25fe6c1941378ff6d75bf6349174be66d38a8c",
+      "matches_committed_bytes": true
+    },
+    "changelog.html": {
+      "url": "https://babycrttv.github.io/pokeemerald-emerald-legends/changelog.html",
+      "HTTP": 200,
+      "bytes": 114303,
+      "sha256": "4baa967c056a0047f441b7dd61ec801d658d351d0749b062ad7a8cb9922efb4f",
+      "matches_committed_bytes": true
+    },
+    "downloads/SHA256SUMS.txt": {
+      "url": "https://babycrttv.github.io/pokeemerald-emerald-legends/downloads/SHA256SUMS.txt",
+      "HTTP": 200,
+      "bytes": 412,
+      "sha256": "088f20cafd8d870d0906dd5d4bf0c3b777e33992be037ef28a5a6a8a0dfcecbc",
+      "matches_committed_bytes": true
+    },
+    "qa/seasonal-routes-v0.0.65-wiki.json": {
+      "url": "https://babycrttv.github.io/pokeemerald-emerald-legends/qa/seasonal-routes-v0.0.65-wiki.json",
+      "HTTP": 200,
+      "bytes": 1415,
+      "sha256": "6463a25c9ffd240e32b348f826c9b6d5670a0bf81e5d2fce343e0cae119db87f",
+      "matches_committed_bytes": true
+    },
+    "qa/seasonal-routes-v0.0.65-public.json": {
+      "url": "https://babycrttv.github.io/pokeemerald-emerald-legends/qa/seasonal-routes-v0.0.65-public.json",
+      "HTTP": 200,
+      "bytes": 5671,
+      "sha256": "9ee7cd7f37a1fd6591fa1a9a4b9dca9e5e7b05f8502f53457644f35753796786",
+      "matches_committed_bytes": true
+    },
+    "DEVELOPMENT-HANDOFF.md": {
+      "url": "https://babycrttv.github.io/pokeemerald-emerald-legends/DEVELOPMENT-HANDOFF.md",
+      "HTTP": 200,
+      "bytes": 54843,
+      "sha256": "255ab2220ef46b104507296d360ac7cadc2e1f87c3661fc2f897bda38df11c43",
+      "matches_committed_bytes": true
+    },
+    "qa/seasonal-routes-v0.0.65.md": {
+      "url": "https://babycrttv.github.io/pokeemerald-emerald-legends/qa/seasonal-routes-v0.0.65.md",
+      "HTTP": 200,
+      "bytes": 5182,
+      "sha256": "6cf6cd90ed122cb3ccf0b678e59ebc30cf409d1e2c8a36e7fdf175e42a922f78",
+      "matches_committed_bytes": true
+    }
+  },
+  "scope": "Fresh live HTTP/body parity for seventeen wiki, guide, release/QA and manifest files; all48 seasonal views/all409 methods passed shipped-JS VM checks. Both Dex and guide source-keyed asset metadata match the no-store encounter snapshot.",
+  "limits": [
+    "No fresh browser geometry run was needed or claimed for this data/cache-key refresh.",
+    "No companion binary, version or signing identity changed."
+  ],
+  "Pages_run": 39221740574
+}

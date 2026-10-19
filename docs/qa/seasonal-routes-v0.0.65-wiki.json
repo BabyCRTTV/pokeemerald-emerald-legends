@@ -22,7 +22,7 @@
   "species_preserved": 1028,
   "companion_versions_changed": false,
   "version": "0.0.65",
-  "status": "Committed for publication; live deployment verification pending",
+  "status": "Published and verified",
   "model": "GPT-6",
   "seasonal_tables": 48,
   "seasonal_views_checked": 48,
@@ -44,5 +44,10 @@
     "No companion binary, version or signing identity change."
   ],
   "game_publication_verified": true,
-  "game_public_receipt": "seasonal-routes-v0.0.65-public.json"
+  "game_public_receipt": "seasonal-routes-v0.0.65-public.json",
+  "publication_commit": "01c6ffb334947a3c2a06cd36f8e4d0f24dee4529",
+  "Pages_run": 39221740574,
+  "live_files_verified": 17,
+  "public_receipt": "seasonal-routes-v0.0.65-wiki-public.json",
+  "publication_blockers": []
 }

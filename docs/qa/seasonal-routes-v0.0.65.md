@@ -2,7 +2,7 @@
 
 **Model: GPT-6 | Approach: append native tables, preserve approved art/saves and verify native output plus both public patch decoders.**
 
-Game status: **published and verified**. Matching wiki data/source keys are committed with this closeout; Pages/live wiki verification follows. [Roster/rules](../features/seasonal-encounters.md) · [Source receipt](seasonal-routes-v0.0.65-source.json) · [Native receipt](seasonal-routes-v0.0.65-native.json) · [Public patch receipt](seasonal-routes-v0.0.65-public.json) · [Wiki receipt](seasonal-routes-v0.0.65-wiki.json).
+Status: **game and matching wiki published and verified**. [Roster/rules](../features/seasonal-encounters.md) · [Source receipt](seasonal-routes-v0.0.65-source.json) · [Native receipt](seasonal-routes-v0.0.65-native.json) · [Public patch receipt](seasonal-routes-v0.0.65-public.json) · [Wiki receipt](seasonal-routes-v0.0.65-wiki.json).
 
 ## Scope and preservation
 
@@ -26,6 +26,6 @@ Patch commit `5ab989be69561f4e3d033867583d1fff9516c261` and Pages **39221335539*
 
 ## Matching wiki and limits
 
-Only the four new methods gained seasonal variants; native entries, earlier 32 variants and all 1,028 species remained intact. Actual reader JS passed all 48 seasonal views for exact species/counts, odds, badges and All day labels. The shipped walkthrough renderer passed all 409 methods, including twelve seasonal methods with actual year-round shares. Source-keyed atlas/profile URLs cover both Dex and guide pages; approved art/layout and independent companion versions/signing identities remained intact. Detailed public wiki verification follows deployment.
+Only the four new methods gained seasonal variants; native entries, earlier 32 variants and all 1,028 species remained intact. Actual reader JS passed all 48 seasonal views for exact species/counts, odds, badges and All day labels. The shipped walkthrough renderer passed all 409 methods, including twelve seasonal methods with actual year-round shares. Source-keyed atlas/profile URLs cover both Dex and guide pages; approved art/layout and independent companion versions/signing identities remained intact. Wiki publication `01c6ffb3` deployed with successful Pages **39221740574**. Seventeen fresh live wiki, guide, release/QA and manifest files matched source, including both source-keyed consumers and the no-store encounter snapshot. [Public wiki receipt](seasonal-routes-v0.0.65-wiki-public.json). No publication blocker remains.
 
 Controlled Debug fixtures do not establish natural full progression, a full detector hunt, Release interaction, authentic historical-save migration or Pizza Boy coverage. No fresh browser geometry pass is claimed for the focused data/key refresh. Broader playtests and the developer-site redesign remain separate backlog items. AGENTS.md was reviewed; no new durable policy was needed.

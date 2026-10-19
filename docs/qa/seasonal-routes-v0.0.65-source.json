@@ -21,7 +21,7 @@
   "residents_retained": true,
   "slot_levels_weights_preserved": true,
   "header_sha256": "c6806f45688c92f55f84e0e0aa5ef228aaab03698b9401e97cd997dbec4fd483",
-  "status": "Game published and verified; matching wiki deployment verification follows",
+  "status": "Game and matching wiki published and verified",
   "limits": [
     "Per-slot levels retained; species shares and level ranges can change with reassigned slots.",
     "No natural progression, full hunt, historical-save, Release interaction or Pizza Boy claim."
