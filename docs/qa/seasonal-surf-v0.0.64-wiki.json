@@ -15,12 +15,13 @@
   "art_inputs_unchanged": true,
   "art_regenerated": false,
   "independent_wiki_and_companion_versions_unchanged": true,
-  "status": "Game release and both live patches verified; wiki refresh awaiting post-deploy live byte/hash confirmation.",
+  "status": "Published game and seasonal wiki snapshot verified; final walkthrough resident-share/cache correction awaiting deployment.",
   "reader_navigation_and_audio": "passed",
   "sixteen_Surf_views_actual_reader_JS": "passed: species, 100% odds, seasonal/all-season/all-day badges and hidden Preview notice",
   "snapshot_validation": "passed: 59 articles, 1028 species, 157 maps, 409 methods and 32 seasonal variants",
-  "browser_limit": "No fresh real-browser layout run for data-only refresh; no UI logic, styling or art changed. Native gameplay preview and VM reader checks are separate evidence.",
-  "source_metadata_cache_keys": "Updated dex-profiles.js and dex-sprite-atlas.js URL keys to the b9caaaad source pin, preventing fresh no-store encounter JSON from rejecting an older cached atlas. Added reader regression; pixels/loader logic unchanged.",
+  "browser_limit": "No fresh real-browser layout pass for focused data/guide correction. Existing structure, styles and approved art preserved; executable reader/render checks are separate from native gameplay evidence.",
+  "source_metadata_cache_keys": "Source-keyed metadata URLs now cover both Dex and guide pages, including the corrected guide renderer; reader regression enforces both consumers.",
   "live_game_receipt": "seasonal-surf-v0.0.64-public.json",
-  "patch_commit": "b63c322262d042cdddba42e8a9c2f502a7962e51"
+  "patch_commit": "b63c322262d042cdddba42e8a9c2f502a7962e51",
+  "walkthrough_regression": "Passed: shipped rendering across all 409 methods; eight seasonal methods show invariant 65%/70% resident shares and LegendsDex guidance, other methods retain full tables; empty variants handled."
 }

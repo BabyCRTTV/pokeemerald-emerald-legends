@@ -62,7 +62,12 @@ window.LegendsWalkthroughMaps=(()=>{
  function encounterList(place,maps,species,available=["land"]){
   const route=maps.get(place.mapId);if(!route)return '';
   const land=route.methods.filter(m=>available.includes(m.id)),later=route.methods.filter(m=>!available.includes(m.id));
-  const method=m=>'<div class="walkthrough-method"><strong>'+esc(m.id==='land'?'Walking encounters':m.label)+'</strong><ul>'+m.entries.map(e=>speciesRow(e,species)).join('')+'</ul></div>';
+  const method=m=>{
+   const variants=m.seasonalVariants?.length?m.seasonalVariants:null;
+   const residents=variants?variants[0].entries.filter(e=>variants.every(v=>v.entries.some(x=>x.id===e.id&&x.rate===e.rate&&x.min===e.min&&x.max===e.max))):m.entries;
+   const note=variants?'<p class="walkthrough-encounter-note">Year-round residents shown. Open LegendsDex above for seasonal visitors and each season’s full encounter shares.</p>':'';
+   return '<div class="walkthrough-method"><strong>'+esc(m.id==='land'?'Walking encounters':m.label)+'</strong>'+note+'<ul>'+residents.map(e=>speciesRow(e,species)).join('')+'</ul></div>';
+  };
   return '<section class="walkthrough-route" data-route="'+esc(route.id)+'"><div class="walkthrough-route-heading"><strong>'+esc(route.name)+' encounters</strong><a href="dex.html?map='+encodeURIComponent(route.id)+'">Open in LegendsDex →</a></div>'+land.map(method).join('')+(later.length?'<details class="walkthrough-later"><summary>Other methods to revisit</summary><p>These methods need the matching rod or field utility. Return once you have it.</p>'+later.map(method).join('')+'</details>':'')+'</section>';
  }
  async function decorate(root,page){

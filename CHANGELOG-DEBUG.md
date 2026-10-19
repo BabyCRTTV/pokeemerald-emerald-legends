@@ -7,7 +7,7 @@ This is the developer-facing history for the **Debug** build. Shared Legends cha
 - Added seasonal Surf encounters on Routes 105–108 with 32 visitors across Generations 1–9; retained Tentacool, Wingull and Pelipper year-round.
 - Preserved native five-slot Surf weights, per-slot levels and encounter rate: residents occupied 65%, with seasonal visitors at 30% and 5%; kept fishing, other maps and the approved Routes 101–104 grass tables intact.
 - Connected Surf encounters, Sweet Scent, DexNav, habitat maps, local helpers and hints to the committed world season; preserved encounter priorities, approved icon fitting/artwork and save layouts.
-- Refreshed the wiki's seasonal Surf data and synchronized cached sprite/profile metadata; preserved approved artwork, layout and companion versions.
+- Refreshed the wiki's seasonal Surf data, corrected walkthrough resident shares and synchronized cached sprite/profile metadata; preserved approved artwork, layout and companion versions.
 
 ## [0.0.63] - 2026-10-18
 

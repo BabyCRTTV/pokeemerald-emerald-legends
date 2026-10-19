@@ -1,0 +1,124 @@
+{
+  "verified_utc": "2026-10-19T00:10:52.598455+00:00",
+  "source_commit": "19fc08994edbfe7d549054e7bc16b88df7970138",
+  "Pages_run": 39153272273,
+  "site": {
+    "wiki/dex.html": {
+      "HTTP": 200,
+      "bytes": 10156,
+      "sha256": "b1f764bac218804e3646c202af7c01bf03eeb81f168f7701a5132b10f6c9ccf0",
+      "matches_committed_source": true
+    },
+    "wiki/README.md": {
+      "HTTP": 200,
+      "bytes": 11674,
+      "sha256": "f2ff9d4cdbec6e3823c9804d2701d3af8a86336261986f0f450a0bf0d0d4f578",
+      "matches_committed_source": true
+    },
+    "wiki/dex-data.json": {
+      "HTTP": 200,
+      "bytes": 578244,
+      "sha256": "f483c9b33e09eaedcb12cad563ef60496413acc4254f2ed54535d9d7974e17d4",
+      "matches_committed_source": true
+    },
+    "wiki/dex-portrait-sources.json": {
+      "HTTP": 200,
+      "bytes": 342,
+      "sha256": "0f56360bd951eb8abd2926ed4f77b4c06f3a3639d92edce6e8ac90017d670096",
+      "matches_committed_source": true
+    },
+    "wiki/dex-profiles.js": {
+      "HTTP": 200,
+      "bytes": 177391,
+      "sha256": "2a2f95b6729ae0ba189e33dea60f11b212d4024c38434dcd7051a6cac107475c",
+      "matches_committed_source": true
+    },
+    "wiki/dex-sprite-atlas.js": {
+      "HTTP": 200,
+      "bytes": 18786,
+      "sha256": "4ef84caff4ecd1c90d3da3697b41d7a760090d01298ed5d46fbe3961da534112",
+      "matches_committed_source": true
+    },
+    "wiki/walkthrough-maps.json": {
+      "HTTP": 200,
+      "bytes": 115267,
+      "sha256": "482d1aacbe5dc04fd35428ad192f3590c1f24596941a5d9fa4cdca11f2fa5330",
+      "matches_committed_source": true
+    },
+    "features/seasonal-encounters.md": {
+      "HTTP": 200,
+      "bytes": 7180,
+      "sha256": "df5b79a0bc7bdf0eb88f7e53713816cd22bebedaadb124e3ec31d4177b823112",
+      "matches_committed_source": true
+    },
+    "changelog.html": {
+      "HTTP": 200,
+      "bytes": 112761,
+      "sha256": "75581e07b4002eb04b4bef1273c0ecb92069f613d3e069711b59271ab8841300",
+      "matches_committed_source": true
+    },
+    "qa/seasonal-surf-v0.0.64-public.json": {
+      "HTTP": 200,
+      "bytes": 6572,
+      "sha256": "72c9adc26854858d95de8452ff2ffe5a5888df44373d16d4d74b3d71a7282302",
+      "matches_committed_source": true
+    },
+    "qa/seasonal-surf-v0.0.64-native.json": {
+      "HTTP": 200,
+      "bytes": 32701,
+      "sha256": "493a2682e8708b033526d15ee06e65aee0eddafaa6c3a5cd8d032f118b5cf59b",
+      "matches_committed_source": true
+    },
+    "qa/seasonal-surf-v0.0.64-source.json": {
+      "HTTP": 200,
+      "bytes": 2028,
+      "sha256": "ff508a417284331d5bd187d3d9ec423a353a045eedb5833d4df0796efc3232a3",
+      "matches_committed_source": true
+    },
+    "qa/seasonal-surf-v0.0.64-wiki.json": {
+      "HTTP": 200,
+      "bytes": 1564,
+      "sha256": "465ab79e7c2fed2f36104cab0b04abbe53fccc16be03b78846cbca4b3527f616",
+      "matches_committed_source": true
+    },
+    "qa/seasonal-surf-v0.0.64.md": {
+      "HTTP": 200,
+      "bytes": 4969,
+      "sha256": "f5150de63fa646c9e5b41c03f3f79bb4badaf14982d8d2d5b6600eabd6480853",
+      "matches_committed_source": true
+    },
+    "DEVELOPMENT-HANDOFF.md": {
+      "HTTP": 200,
+      "bytes": 51479,
+      "sha256": "97dec38cad46868fe5b2b54105bd37556920428ed1e9a8212441ccc0b7ba4f8d",
+      "matches_committed_source": true
+    },
+    "wiki/index.html": {
+      "HTTP": 200,
+      "bytes": 12342,
+      "sha256": "a67e7ec8425715479d7b0513a5ab59572b1240fc376da161294cb2001afd3ddb",
+      "matches_committed_source": true
+    },
+    "wiki/walkthrough-maps.js": {
+      "HTTP": 200,
+      "bytes": 11320,
+      "sha256": "ccd937cb8e78e5d2b9c2ed652ed05bea0ec9bf88b83c8b3fb13e0c1d1fc70872",
+      "matches_committed_source": true
+    }
+  },
+  "patches": {
+    "Release": {
+      "HTTP": 200,
+      "sha256": "de0db1abd33efceae73b8ca17481a452cda9967bd3dfb565995f5ea3e8520afc",
+      "bytes": 17457977,
+      "matches_previously_dual_decoded_patch": true
+    },
+    "Debug": {
+      "HTTP": 200,
+      "sha256": "4da918a259ceba611c8905461412a175d8f2377dfe8339c11352cb74f0d13652",
+      "bytes": 17290073,
+      "matches_previously_dual_decoded_patch": true
+    }
+  },
+  "scope": "Fresh live HTTP/hash checks; BPS bytes equal the unchanged patches independently decoded in the retained publication receipt. No duplicate native build or patch decoding was needed."
+}

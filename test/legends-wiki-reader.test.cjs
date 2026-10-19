@@ -57,6 +57,11 @@ const settle=()=>new Promise(r=>setImmediate(r));
   const src=dexHTML.match(new RegExp('src="('+script.replaceAll('.','\\.')+'[^" ]*)"'))?.[1];
   assert(src?.includes(data.sourceCommit.slice(0,8)),script+' cache key must match pinned source');
  }
+ const guideHTML=fs.readFileSync(base+'index.html','utf8');
+ for(const script of ['dex-sprite-atlas.js','walkthrough-maps.js']){
+  const src=guideHTML.match(new RegExp('src="('+script.replaceAll('.','\\.')+'[^" ]*)"'))?.[1];
+  assert(src?.includes(data.sourceCommit.slice(0,8)),script+' guide cache key must match pinned source');
+ }
  const atlas={window:{}};vm.runInNewContext(fs.readFileSync(base+'dex-sprite-atlas.js','utf8'),atlas);
  assert.equal(atlas.window.LegendsSpriteAtlas.sourceCommit,data.sourceCommit);
  for(const p of data.species)assert(atlas.window.LegendsSpriteAtlas.icons[p.sprite],p.id+' missing from preloaded atlas');

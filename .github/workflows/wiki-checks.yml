@@ -7,6 +7,7 @@ on:
       - 'docs/wiki/**'
       - '.github/workflows/wiki-checks.yml'
       - 'test/legends-wiki-reader.test.cjs'
+      - 'test/legends-wiki-walkthrough-encounters.test.cjs'
       - 'test/legends-wiki-browser.test.cjs'
       - 'test/legends-wiki-seasons.test.cjs'
   pull_request:
@@ -15,6 +16,7 @@ on:
       - 'docs/wiki/**'
       - '.github/workflows/wiki-checks.yml'
       - 'test/legends-wiki-reader.test.cjs'
+      - 'test/legends-wiki-walkthrough-encounters.test.cjs'
       - 'test/legends-wiki-browser.test.cjs'
       - 'test/legends-wiki-seasons.test.cjs'
   workflow_dispatch:
@@ -39,7 +41,9 @@ jobs:
           python3 tools/build_wiki_cries.py
           git diff --exit-code docs/wiki/cry-forms.js
       - name: Check reader navigation and sprite audio
-        run: node test/legends-wiki-reader.test.cjs
+        run: |
+          node test/legends-wiki-reader.test.cjs
+          node test/legends-wiki-walkthrough-encounters.test.cjs
       - name: Validate wiki and encounter snapshot
         run: |
           python3 - <<'PY'
