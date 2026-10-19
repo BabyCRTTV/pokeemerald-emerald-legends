@@ -2,7 +2,7 @@
 
 **Model: GPT-6 | Approach: append native encounter tables and extend focused regression coverage.**
 
-Status: source/native preview verified; both-build/BPS gate and publication pending. Source baseline: `5ad991d66944ceb7d6a60afef8dfedd1862017fd` (verified live master). [Roster/rules](../features/seasonal-encounters.md) · [Source receipt](seasonal-routes-v0.0.65-source.json).
+Status: merged after all PR gates passed; production/native/public verification pending. Source baseline: `5ad991d66944ceb7d6a60afef8dfedd1862017fd` (verified live master). [Roster/rules](../features/seasonal-encounters.md) · [Source receipt](seasonal-routes-v0.0.65-source.json).
 
 Route109 Surf and Routes110 grass/111 desert/112 grass add sixteen tables and 32 visitors across Generations1–9. All original residents remain year-round. Native per-slot levels/weights and encounter rates are exact, including desert rate10. Species distributions and species-level ranges can change with their slots. Earlier32 seasonal tables/mappings are identical. Core committed-season resolvers, native method tables, art, save layouts and IDs are unchanged.
 
@@ -17,3 +17,7 @@ No natural story playthrough, full detector hunt, historical-save migration, Rel
 All54 new captures were visually reviewed; all105 previous captures matched v0.0.64 production pixels exactly. This is105 pixel regressions plus54 fresh visual inspections, not159 fresh visual inspections. Hardware-sampled icon checks covered the entire visible grid. New UI modes/methods are passed through the private mailbox rather than inferred from scene numbers. [Native receipt](seasonal-routes-v0.0.65-native.json) · [Preview provenance](seasonal-routes-v0.0.65-previews.json) · [Phone preview](seasonal-routes-v0.0.65-preview.png) · [Two native animation states](seasonal-routes-v0.0.65-preview.gif). The owner was shown the actual-game preview before publication.
 
 [Route109](route-109-seasonal-v0.0.65-preview.png) · [Route110](route-110-seasonal-v0.0.65-preview.png) · [Route111](route-111-seasonal-v0.0.65-preview.png) · [Route112](route-112-seasonal-v0.0.65-preview.png). Captions are outside gameplay; images preserve exact2x nearest-neighbor native pixels. GIF timing is illustrative, not a continuous recording.
+
+## Merge checkpoint
+
+PR #81 merged as `a2f494be367077246640397d7aef0a7c19980667`. Both PR builds, canonical-base identity and independent BPS round trips passed in **39219001427**. Production project checks **39220172442** passed, including the stronger 48/32/16-table importer regression. Production build/publication **39220172592** and native **39220172611** remain in progress at this checkpoint. The related Birch Route110 Electric and Route111 Ground surveys retain native resident options in every season; Devon's Route109 water survey and native fishing proofs remain available. No quest/script priority, reward, ID or saved-state changes were made.
