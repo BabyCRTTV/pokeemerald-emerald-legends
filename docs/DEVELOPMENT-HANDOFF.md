@@ -1,5 +1,13 @@
 # Development handoff
 
+## Tablet encounter layout repair — 19 October 2026
+
+**Model: GPT-6 | Reasoning: reproduce the width-dependent layout failure while preserving the approved cards, artwork and encounter data.**
+
+The owner reported portrait-tablet names wrapping a few letters per line after season/time badges were added. The encounter grid forced two columns both in its base CSS and in the fold portrait override; page-overflow tests missed the squeezed species column. Replaced the fixed grid with available-width sizing (430px minimum per card, capped to the container), removed the conflicting fold override and balanced multiline badge labels. Kept centered season/time badges, sprite geometry, colors, encounter tuples and game v0.0.66 unchanged. This repairs the approved layout without introducing a new visual design.
+
+Expanded the actual browser season regression to fourteen widths, including both sides of the 580/620px boundaries and intermediate tablet widths; it now checks name/level readability and badge clipping in addition to overlap and page overflow. Local reader and all-409-method walkthrough checks passed. Local Chromium download was truncated; fresh browser and publication verification will use GitHub CI before completion. No ROM/save/BPS changes or game release are involved. AGENTS.md reviewed; no policy change needed.
+
 ## Wiki 1.7.0 — published and verified (18 October 2026)
 
 **Model: GPT-6 | Approach: preserve the approved layout, refresh shipped facts and keep proposed encounters distinct; verify publication bytes and existing signing identity.**

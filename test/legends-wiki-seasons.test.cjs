@@ -11,7 +11,7 @@ const server=http.createServer((req,res)=>{
  fs.mkdirSync(path.join(root,'wiki-preview'),{recursive:true});
  const browser=await chromium.launch({headless:true,...(process.env.WIKI_CHROMIUM?{executablePath:process.env.WIKI_CHROMIUM,args:['--no-sandbox','--no-zygote','--single-process','--disable-gpu','--disable-software-rasterizer','--disable-gpu-compositing','--use-gl=disabled','--disable-dev-shm-usage']}:{})});
  const page=await browser.newPage({viewport:{width:412,height:915},deviceScaleFactor:2});const errors=[];page.on('pageerror',e=>errors.push(e.message));
- for(const width of [320,360,412,690,768,1280]){
+ for(const width of [320,360,412,580,581,619,620,690,768,820,900,960,1024,1280]){
   await page.setViewportSize({width,height:915});
   await page.goto(url+'dex.html?season=autumn');await page.locator('.route-card').first().waitFor();
   const snapshot=JSON.parse(fs.readFileSync(path.join(root,'docs/wiki/dex-data.json')));
@@ -51,6 +51,16 @@ const server=http.createServer((req,res)=>{
   if([360,412,768,1280].includes(width))await page.screenshot({path:path.join(root,`wiki-preview/seasonal-${width}.png`)});
   for(const row of await page.locator('.encounter').all()){
    assert(await row.evaluate(e=>{const a=e.querySelector('.enc-availability').getBoundingClientRect(),n=e.querySelector('.species-copy').getBoundingClientRect(),r=e.querySelector('.rate').getBoundingClientRect();return a.left>=n.right-1&&a.right<=r.left+1;}),'badge overlaps '+width);
+  }
+  // Page overflow alone misses names crushed into one-letter columns.
+  for(const row of await route.locator('.encounter').all()){
+   assert(await row.evaluate(e=>{
+    const name=e.querySelector('.species-copy strong'),level=e.querySelector('.enc-meta'),badge=e.querySelector('.availability-badge');
+    const lineHeight=parseFloat(getComputedStyle(name).lineHeight);
+    return name.getBoundingClientRect().height<=lineHeight*2+1 &&
+     level.getBoundingClientRect().height<=parseFloat(getComputedStyle(level).lineHeight)+1 &&
+     badge.scrollWidth<=badge.clientWidth+1;
+   }),'readable name, level and season badge at '+width);
   }
   await page.goto(url+'?page=research');await page.locator('.article h1').waitFor();assert((await page.locator('#content').innerText()).includes('Devon Master Project'));
   assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),'article overflow '+width);
