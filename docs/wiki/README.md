@@ -18,7 +18,7 @@ The wiki is static HTML, CSS, JavaScript and JSON, runs without a login or backe
 2. Edit only affected articles in `docs/wiki/articles.json`, **including previously written articles** whose facts have changed. Remove obsolete statements, distinguish shipped vs planned, and preserve article IDs when possible.
 3. Change `wikiRevision` / `reviewedAgainstGameVersion` below as part of an owner-requested content refresh, independently of the game release.
 4. Validate JSON parsing, article IDs, links, mobile behavior, search, and rendering; deploy Pages.
-5. Versioned wiki documentation revisions build Android and Windows companions through their independent workflows. Routine encounter snapshots and web-delivered LegendsDex changes use the existing live pages without changing native packages or signing identities when wrapper inputs are unchanged. Keep package versions independent from ROM/LegendsDex versions; verify deployed web data and cache keys.
+5. Every owner-requested wiki revision triggers **new Android APK and Windows installer builds**. Their independent workflows version and publish the packages and their platform manifests after validation; the articles themselves are immediately readable online.
 
 ## Wiki scope
 
@@ -85,4 +85,4 @@ The owner approved this wiki preview on 18 October 2026. After gameplay PR #78 m
 
 ## LegendsDex 1.4.0 — All Seasons
 
-The season filter includes **All Seasons**, shareable with `dex.html?season=all`. It shows the union of seasonal entries rather than the older native fallback table. Identical species/level/rate/time rows appear once with combined availability; differing tuples stay separate. Each displayed share belongs to its listed seasons and is never summed or averaged. Route headings explain this. Individual-season views still total 100%; All Seasons is an availability view, not a combined probability distribution. Route rows and species profiles use the same union helper, including safe native fallbacks for absent/empty variants. The changed reader script has its own revision cache key. Existing wrappers load the live feature without a native package or signing change.
+The season filter includes **All Seasons**, shareable with `dex.html?season=all`. It shows the union of seasonal entries rather than the older native fallback table. Identical species/level/rate/time rows appear once with combined availability; differing tuples stay separate. Each displayed share belongs to its listed seasons and is never summed or averaged. Route headings explain this. Individual-season views still total 100%; All Seasons is an availability view, not a combined probability distribution. Route rows and species profiles use the same union helper, including safe native fallbacks for absent/empty variants. The changed reader script has its own revision cache key. Existing wrappers load the live feature; the existing companion workflows handle any resulting package builds and publication independently.
