@@ -1,0 +1,155 @@
+{
+  "version": "0.0.68",
+  "published_scope": "Only owner-approved bedroom surround; rejected card/sign/menu changes absent",
+  "merged_PR": 86,
+  "merge_commit": "8898dfe8acee02eaec5096d01296767cab291a20",
+  "runtime_inputs_exactly_tested_source": "f7c9f445ab2c3897ae8df5640589a87eb4e592b5",
+  "source_checks": {
+    "project": 39435438715,
+    "build_BPS_two_decoders": 39435438733,
+    "native_Debug_and_Release": 39435438741,
+    "conclusions": "All success"
+  },
+  "production_recheck": {
+    "project": {
+      "run": 39473543666,
+      "job": 118803536139,
+      "conclusion": "success"
+    },
+    "Debug_Release_BPS_two_decoders": {
+      "run": 39473543402,
+      "job": 118803535612,
+      "conclusion": "success"
+    },
+    "native_Debug_and_unmodified_Release": {
+      "run": 39473543577,
+      "job": 118803535860,
+      "conclusion": "success"
+    },
+    "native_artifact": {
+      "id": 12288472115,
+      "ZIP_sha256": "3f32f07b6f26d4d9a573c62ffcd89a2381ca6d540f21990bfdde6802811a4ce9"
+    },
+    "both_native_ROM_hashes_equal_source_tested_artifact": true,
+    "stable_bedroom_wardrobe_card_frame_hashes_equal_source_tested_artifact": {
+      "visual-repairs-qa/verification.json": [
+        "female-room-initial.png",
+        "female-room.png",
+        "hoenn-card.png",
+        "kanto-card.png",
+        "male-room-initial.png",
+        "male-room-return.png",
+        "male-room.png",
+        "pause-page1.png",
+        "pause-page2.png",
+        "wardrobe-cancel-room.png",
+        "wardrobe.png"
+      ],
+      "bedroom-release-qa/verification.json": [
+        "male/kanto-card.png",
+        "male/wardrobe-return.png",
+        "male/continued.png",
+        "male/wardrobe.png",
+        "male/hoenn-card.png",
+        "female/kanto-card.png",
+        "female/wardrobe-return.png",
+        "female/continued.png",
+        "female/wardrobe.png",
+        "female/hoenn-card.png",
+        "day/kanto-card.png",
+        "day/hoenn-card.png",
+        "night/kanto-card.png",
+        "night/hoenn-card.png"
+      ]
+    },
+    "dynamic_outdoor_and_clock_HUD_frames_not_whole_frame_regression_targets": {
+      "visual-repairs-qa/verification.json": [
+        "center-day.png",
+        "center-night.png"
+      ],
+      "bedroom-release-qa/verification.json": [
+        "male/pause-page2.png",
+        "male/pause-page1.png",
+        "female/pause-page2.png",
+        "female/pause-page1.png",
+        "day/pause-page2.png",
+        "day/continued.png",
+        "day/pause-page1.png",
+        "night/pause-page2.png",
+        "night/continued.png",
+        "night/pause-page1.png"
+      ]
+    },
+    "patch_job_left_committed_source_verified_BPS_unchanged": true
+  },
+  "Pages_refresh_request": {
+    "run": 39473803887,
+    "conclusion": "success",
+    "configuration_unchanged": true,
+    "workflow_on_isolated_QA_branch_only": true
+  },
+  "fresh_public_bytes": [
+    {
+      "path": "index.html",
+      "size": 3538,
+      "sha256": "4b88895fe107cb00987cf098c3fc15d5e0d0a70cbbae0cbc3c11296ec3021002",
+      "matches_source": true
+    },
+    {
+      "path": "changelog.html",
+      "size": 117727,
+      "sha256": "c07e9a72c5617f6fdbc714fef2c2ca1c7f374d5515aec3ec0a4e4e880887f467",
+      "matches_source": true
+    },
+    {
+      "path": "patcher.html",
+      "size": 2679,
+      "sha256": "6282213eb7b2b47aba0f2c7fe227d1261c5a0498f1ef38b4f7fdcd244d88d8f3",
+      "matches_source": true
+    },
+    {
+      "path": "patcher.js",
+      "size": 9353,
+      "sha256": "2bae44465609be25f55a1c0e96a8229facd8bdcb9e858e60e33db11ee78d2005",
+      "matches_source": true
+    },
+    {
+      "path": "downloads/SHA256SUMS.txt",
+      "size": 412,
+      "sha256": "e40edd0fff4dc9f9b46f8b69d9e2541902b723f2b8ea4cd95351e2411cbd908f",
+      "matches_source": true
+    },
+    {
+      "path": "downloads/Pokemon-Emerald-Legends-v0.0.68.bps",
+      "size": 17458986,
+      "sha256": "ae0745df37b63fbbd1a91a9807bbe4bb4295a8c8484ea5f49a8b3d729da66b28",
+      "matches_source": true
+    },
+    {
+      "path": "downloads/Pokemon-Emerald-Legends-v0.0.68-debug.bps",
+      "size": 17290964,
+      "sha256": "6b2a9464aa881d916971d7a14e53aaf5738680337cc360d76507593a45898c45",
+      "matches_source": true
+    },
+    {
+      "path": "qa/bedroom-v0.0.68-native.png",
+      "size": 23307,
+      "sha256": "f67d3cbd49afcd38035c368b541ff5170f918ab2da29dea369da818d324fdbdd",
+      "matches_source": true
+    },
+    {
+      "path": "qa/bedroom-v0.0.68-verification.json",
+      "size": 8225,
+      "sha256": "59ae61021d672c8a6f3ec9eb151ee41ec4d2465f21b24af642208ff85090519a",
+      "matches_source": true
+    }
+  ],
+  "live_BPS_match_independently_decoded_and_native_tested_targets": true,
+  "limits": "Exact live-byte identity to the source-verified dual-decoder patches; no additional clean-base reconstruction was repeated locally after transient build dependencies were lost. This does not claim a Pizza Boy test or resolution of rare outfit corruption.",
+  "state": "Published and verified; no publication blocker",
+  "Pages": {
+    "run": 39473821704,
+    "conclusion": "success",
+    "deployed_commit": "8898dfe8acee02eaec5096d01296767cab291a20"
+  }
+}
