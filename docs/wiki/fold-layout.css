@@ -61,7 +61,6 @@
   .hero h1{font-size:clamp(29px,4.3vw,41px);line-height:1.13}
   .hero p{max-width:56ch;font-size:clamp(13px,1.7vw,16px);line-height:1.6}
   .tools{padding:clamp(13px,2vw,19px)}
-  .enc-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
   .top .top-inner{flex-wrap:nowrap}
 }
 .hero,.tools,.route-card,.encounter,.dex-card,.results-toolbar{min-width:0}
