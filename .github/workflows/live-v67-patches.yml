@@ -1,0 +1,65 @@
+name: Verify live v0.0.67 patches
+on:
+  push:
+    branches: [qa/live-v67-patches]
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build canonical clean Emerald and independent decoder
+        run: |
+          sudo apt-get -o Acquire::Retries=3 update
+          sudo apt-get -o Acquire::Retries=3 install -y --no-install-recommends build-essential binutils-arm-none-eabi libpng-dev python3 g++
+          git clone --depth 1 https://github.com/pret/pokeemerald.git /tmp/vanilla
+          git clone --depth 1 https://github.com/pret/agbcc.git /tmp/agbcc
+          cd /tmp/agbcc
+          ./build.sh
+          ./install.sh /tmp/vanilla
+          make -C /tmp/vanilla -j"$(nproc)"
+          echo 'f3ae088181bf583e55daf962a92bb46f4f1d07b7  /tmp/vanilla/pokeemerald.gba' | sha1sum -c -
+          git clone --depth 1 https://github.com/bates64/flips.git /tmp/flips
+          cd /tmp/flips
+          TARGET=cli make -j"$(nproc)"
+      - name: Download published patches and browser decoder
+        run: |
+          mkdir -p /tmp/live
+          base='https://babycrttv.github.io/pokeemerald-emerald-legends'
+          for attempt in $(seq 1 30); do
+            if curl -fsSL "$base/downloads/Pokemon-Emerald-Legends-v0.0.67-debug.bps" -o /tmp/live/debug.bps; then break; fi
+            if [ "$attempt" = 30 ]; then exit 1; fi
+            sleep 20
+          done
+          curl -fsSL --retry 3 "$base/downloads/Pokemon-Emerald-Legends-v0.0.67.bps" -o /tmp/live/release.bps
+          curl -fsSL --retry 3 "$base/downloads/SHA256SUMS.txt" -o /tmp/live/SHA256SUMS.txt
+          curl -fsSL --retry 3 "$base/patcher.js" -o /tmp/live/patcher.js
+          /tmp/flips/flips --apply /tmp/live/release.bps /tmp/vanilla/pokeemerald.gba /tmp/live/release.gba
+          /tmp/flips/flips --apply /tmp/live/debug.bps /tmp/vanilla/pokeemerald.gba /tmp/live/debug.gba
+      - name: Verify downloaded browser decoder, CRCs and exact production hashes
+        run: |
+          node <<'JS'
+          const fs=require('node:fs'),vm=require('node:vm'),crypto=require('node:crypto'),assert=require('node:assert/strict');
+          const sha=b=>crypto.createHash('sha256').update(b).digest('hex');
+          const source=fs.readFileSync('/tmp/vanilla/pokeemerald.gba');
+          const code=fs.readFileSync('/tmp/live/patcher.js','utf8');
+          assert(code.includes('const VERSION = "0.0.67"'));
+          const helpers=code.slice(code.indexOf('  function readVarInt('),code.lastIndexOf('})();'));
+          const ctx={Uint8Array,Uint32Array};vm.runInNewContext(helpers+';this.decode=applyBps;',ctx);
+          const manifest=Object.fromEntries(fs.readFileSync('/tmp/live/SHA256SUMS.txt','utf8').trim().split('\n').map(l=>{const [hash,file]=l.split(/\s+/);return [file,hash]}));
+          const receipt={version:'0.0.67',canonical_source_SHA1:crypto.createHash('sha1').update(source).digest('hex'),downloaded_browser_decoder_SHA256:sha(Buffer.from(code)),patches:{},scope:'Fresh live HTTP downloads, independently decoded with Floating IPS and downloaded browser applyBps, CRCs checked by both; exact production manifest targets. No ROM is uploaded.'};
+          for(const [kind,suffix,target] of [['release','','pokeemerald-release.gba'],['debug','-debug','pokeemerald.gba']]){
+            const patch=fs.readFileSync('/tmp/live/'+kind+'.bps'),ips=fs.readFileSync('/tmp/live/'+kind+'.gba'),browser=Buffer.from(ctx.decode(source,patch));
+            assert(browser.equals(ips));assert.equal(sha(browser),manifest[target]);
+            assert.equal(sha(patch),manifest['docs/downloads/Pokemon-Emerald-Legends-v0.0.67'+suffix+'.bps']);
+            if(kind==='debug')assert.equal(sha(browser),'87680bf3bee6e5a953562858fd096923af45b82420894081caa0da46da2d9cd8');
+            receipt.patches[kind]={patch_sha256:sha(patch),patch_bytes:patch.length,ROM_sha256:sha(browser),Floating_IPS_passed:true,downloaded_browser_decoder_passed:true,source_target_patch_CRCs_passed:true};
+          }
+          fs.mkdirSync('live-proof',{recursive:true});fs.writeFileSync('live-proof/receipt.json',JSON.stringify(receipt,null,2)+'\n');console.log(JSON.stringify(receipt,null,2));
+          JS
+      - uses: actions/upload-artifact@v4
+        with:
+          name: live-v67-patch-proof
+          path: live-proof/receipt.json
