@@ -2,6 +2,13 @@
 
 This is the developer-facing history for the **Debug** build. Shared Legends changes are repeated here so this file stands on its own; Debug-only behavior is called out separately.
 
+## Unreleased — visual repair candidate
+
+- Removed the numbered white Trainer Card badge boxes behind transparent badge art.
+- Restored the native black bedroom surround by isolating its palette from decoration colors.
+- Kept Pokémon Center sign faces warm white at night, with distinct red lettering and unchanged daytime artwork.
+- Replaced the pause menu's page triangle with a LEFT/RIGHT page label and retained separate list-scroll indicators.
+
 ## [0.0.67] - 2026-10-20
 
 - Added 40 seasonal visitors across Generations 1–9 to Routes 117–121, with two visitors per route in each season.

@@ -11,6 +11,15 @@ def build():
     OUT.mkdir(parents=True,exist_ok=True)
     atlas=Image.open(src/'tiles.png');extended=Image.new('P',(128,256),0);extended.putpalette(atlas.getpalette());extended.paste(atlas,(0,0))
     data=bytearray((src/'metatiles.bin').read_bytes());attrs=bytearray((src/'metatile_attributes.bin').read_bytes())
+    # Native void cells use palette 11's black index 15. Decorations reuse
+    # slot 11, so give those cells the identical black in decoration slot 5.
+    # Keep every source pixel, tile, flip and collision attribute intact.
+    for offset in range(0,len(data),2):
+        w=struct.unpack_from('<H',data,offset)[0]
+        if w>>12==11:
+            tile=(w&1023)-512
+            assert set(atlas.crop((tile%16*8,tile//16*8,tile%16*8+8,tile//16*8+8)).getdata())=={15}
+            struct.pack_into('<H',data,offset,(w&0xfff)|0x5000)
     used={w&1023 for w in struct.unpack('<'+'H'*(len(data)//2),data)}
     free=iter(n for n in range(512,1024) if n not in used)
     source_atlas=Image.open(art/'tiles.png');cache={}

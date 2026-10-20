@@ -1536,6 +1536,14 @@ static void DrawCardFrontOrBack(u16 *ptr)
                 dst[32 * i + j] = ptr[0];
         }
     }
+    if (!sData->isLink && !IS_FRLG && ptr == sData->frontTilemap)
+    {
+        // Native numbered Hoenn slots show through transparent Kanto badges.
+        // Continue the adjacent card stripes under both badge regions.
+        for (i = 15; i <= 16; i++)
+            for (j = 4; j < 28; j++)
+                dst[32 * i + j] = ptr[30 * i + 3];
+    }
     CopyBgTilemapBufferToVram(0);
 }
 

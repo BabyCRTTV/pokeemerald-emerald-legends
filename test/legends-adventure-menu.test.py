@@ -21,6 +21,8 @@ typedef uint8_t u8; typedef int8_t s8; typedef uint32_t u32; typedef int bool32;
 #define FALSE 0
 #define START_MENU_VISIBLE_ROWS 8
 #define FONT_NORMAL 1
+#define FONT_SMALL 0
+#define COMPOUND_STRING(s) ((const u8 *)(s))
 #define TEXT_SKIP_DRAW 0
 #define COPYWIN_FULL 3
 #define PIXEL_FILL(x) ((x)|((x)<<4))
@@ -59,7 +61,11 @@ static void FillWindowPixelRect(u8 w,u8 color,u32 x,u32 y,u32 a,u32 b){
 }
 static void StringExpandPlaceholders(u8 *d,const char *s){strcpy((char*)d,s);}
 static void PrintPlayerNameOnWindow(u8 w,const char *s,u32 x,u32 y){assert(y+16<=144);}
-static void AddTextPrinterParameterized(u8 w,u8 f,const u8 *text,u32 x,u32 y,u32 speed,void *cb){assert(y+16<=144&&x+strlen((const char*)text)*6<=96);}
+static void AddTextPrinterParameterized(u8 w,u8 f,const u8 *text,u32 x,u32 y,u32 speed,void *cb){
+ if(f==FONT_SMALL){assert(x==8&&y==min(sNumStartMenuActions,8)*16u+4);assert(!strcmp((const char*)text,sJournalPage?"LEFT/RIGHT 2/2":"LEFT/RIGHT 1/2"));hintMinY=y+3;hintMaxY=y+11;assert(y+12<=min(sNumStartMenuActions,8)*16u+16);}
+ else assert(y+16<=144);
+ assert(x+strlen((const char*)text)*6<=96);
+}
 static void CopyWindowToVram(u8 w,u8 flags){}
 static u8 InitMenuNormal(u8 w,u8 f,u8 x,u8 y,u8 height,u8 count,u8 initial){assert(count>0&&count<=8&&initial<count);return initial;}
 '''
@@ -101,8 +107,8 @@ for(int rows=1;rows<=8;rows++)for(int page=0;page<2;page++){
  hintMinY=UINT32_MAX;hintMaxY=0;DrawStartMenuScrollHints();
  // EXIT's native glyph ink ends 12 pixels below its text origin.
  u32 exitInkBottom=(rows-1)*16+9+12;
- assert(hintMinY>exitInkBottom+4); // Four clear pixel rows before the arrow.
- assert(hintMaxY-hintMinY==4&&hintMaxY<rows*16u+16u);
+ assert(hintMinY>exitInkBottom); // Small-font ink starts below the last action.
+ assert(hintMaxY-hintMinY==8&&hintMaxY<rows*16u+16u);
 }
 for(unsigned mask=0;mask<64;mask++){
  restricted=mask;reminderCalls=0;ShowTrackedQuestReminder();assert(reminderCalls==(mask==0));
@@ -117,3 +123,14 @@ with tempfile.TemporaryDirectory() as d:
 # Menu, day panel and standard text windows have disjoint tile allocations.
 assert '0, 17, 1, 12, (numActions * 2) + 2, 15, 0x139' in (R/'src/menu.c').read_text()
 assert 0x139+12*18<=0x214
+
+# Measure native footer ink, including the slash's extra top pixel and shadow.
+from PIL import Image
+chars={c:int(v,16) for c,v in re.findall(r"^'(.)'\s*=\s*([0-9A-F]{2})\s*$",(R/'charmap.txt').read_text(),re.M)}
+font=Image.open(R/'graphics/fonts/latin_small.png')
+rows=[]
+for char in 'LEFT/RIGHT 1/2':
+ i=chars[char];glyph=font.crop((i%16*16,i//16*16,i%16*16+16,i//16*16+16))
+ rows.extend(y for y in range(16) if any(v in (1,2) for v in glyph.crop((0,y,16,y+1)).getdata()))
+assert min(rows)==3 and max(rows)==11
+assert 4+min(rows)>5+1 and 4+max(rows)<16

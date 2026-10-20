@@ -41,8 +41,10 @@ def window_color(rgb):return (255,232,152)
 
 def sign_color(rgb):
  r,g,b=rgb
- if max(rgb)-min(rgb)<35:return (255,146,172)
- if r>g+30:return (255,80+(g*56//255),106+(g*48//255))
+ # The pale sign face stays warm white; only its red lettering glows red.
+ # Turning both materials pink flattened the native P.C. lettering at night.
+ if max(rgb)-min(rgb)<35:return (255,240,224)
+ if r>g+30:return (255,96+(g*40//255),112+(g*32//255))
  return None
 
 def write_pal(name, colors, flags):

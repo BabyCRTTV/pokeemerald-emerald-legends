@@ -1,5 +1,15 @@
 # Development handoff
 
+## Visual bug repair candidate — 20 October 2026
+
+**Model: GPT-6 (Codex) | Reasoning: trace native tile/palette ownership and real menu/save transitions; preserve approved art.**
+
+Owner paused the selected hidden-grotto feature to report badge boxes, the Center night sign, pale bedroom borders, pause arrows and rare outfit oversaturation. Started from verified v0.0.67 `e019d5f8`; clean local Debug reproduced the exact published ROM hash. Four scoped repairs are on the review branch: remove only underlying numbered card slots, remap twelve native black bedroom-void cells away from the reused decoration palette, distinguish pale sign faces from red night lettering, and replace the page triangle with a LEFT/RIGHT page label. Original sprite pixels, furniture, native ceiling highlight, movement geometry, saved IDs/layouts and seasonal encounters are retained.
+
+Rare outfit corruption is **unreproduced and unresolved**; no speculative wardrobe recoloring/cache patch was applied. Actual native palette checks covered 72 gender/movement cases, 16 repeated Apply/Cancel/Card cycles and real flash reloads of nine appearance/bedroom fields for both genders. Ten focused host regressions and both local builds passed. Native Debug captures and a normal Release Continue harness are in `tools/legends/native_visual_repairs_qa/`; private injected ROMs/save fixtures must never be published. [Detailed QA, review state and next steps](qa/visual-repairs.md).
+
+This is an unpublished review candidate, not a released v0.0.67 patch. Master/downloads/Pages remain v0.0.67. Review actual native captures before publishing the proposed menu/sign presentation. Complete CI/BPS receipts, promote version/site/changelogs together for the next release, and retain the outfit investigation as open unless reproduced and verified. Grottos remain next after this visual review/repair work; do not restart completed routes, wardrobe or artwork.
+
 ## Current release — v0.0.67 seasonal Routes 117–121 (20 October 2026)
 
 **Model: GPT-6.1 | Reasoning: preserve native encounter dependencies/terrain and approved art while appending five routes.**

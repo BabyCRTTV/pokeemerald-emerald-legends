@@ -163,6 +163,16 @@ def main():
  hashes=[asset_digest(p) for p in paths]
  subprocess.run(['python3',str(ROOT/'tools/legends/build_bedroom.py')],check=True)
  assert hashes==[asset_digest(p) for p in paths]
+ # The original black void must not borrow decoration palette 11.
+ native_void=0
+ native_words=struct.unpack('<%dH'%((ROOT/'data/tilesets/secondary/brendans_mays_house/metatiles.bin').stat().st_size//2),(ROOT/'data/tilesets/secondary/brendans_mays_house/metatiles.bin').read_bytes())
+ private_words=struct.unpack('<%dH'%((ROOT/'data/tilesets/legends_bedroom/metatiles.bin').stat().st_size//2),(ROOT/'data/tilesets/legends_bedroom/metatiles.bin').read_bytes())
+ for i,w in enumerate(native_words):
+  if w>>12==11:
+   native_void+=1
+   assert private_words[i]==(w&0xfff)|0x5000
+ assert native_void==12
+ assert (ROOT/'data/tilesets/primary/secret_base/palettes/00.pal').read_text().splitlines()[18]=='0 0 0'
  # Poster overlays preserve the original console tiles below the wall.
  native=struct.unpack('<%dH'%((ROOT/'data/tilesets/secondary/brendans_mays_house/metatiles.bin').stat().st_size//2),(ROOT/'data/tilesets/secondary/brendans_mays_house/metatiles.bin').read_bytes())
  built=struct.unpack('<%dH'%((ROOT/'data/tilesets/legends_bedroom/metatiles.bin').stat().st_size//2),(ROOT/'data/tilesets/legends_bedroom/metatiles.bin').read_bytes())

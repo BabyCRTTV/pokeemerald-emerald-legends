@@ -9,6 +9,7 @@ on:
       - 'test/mgba-gameplay-smoke.py'
       - 'tools/legends/native_living_hoenn_qa/**'
       - 'tools/legends/native_seasonal_encounters_qa/**'
+      - 'tools/legends/native_visual_repairs_qa/**'
       - 'src/**'
       - 'include/**'
       - 'data/**'
@@ -23,6 +24,7 @@ on:
       - 'test/mgba-gameplay-smoke.py'
       - 'tools/legends/native_living_hoenn_qa/**'
       - 'tools/legends/native_seasonal_encounters_qa/**'
+      - 'tools/legends/native_visual_repairs_qa/**'
       - 'src/**'
       - 'include/**'
       - 'data/**'
@@ -53,6 +55,8 @@ jobs:
         run: python3 tools/legends/native_living_hoenn_qa/run.py
       - name: Exercise seasonal encounter trial and native DexNav silhouettes
         run: python3 tools/legends/native_seasonal_encounters_qa/run.py
+      - name: Exercise visual repairs and wardrobe return/save paths
+        run: python3 tools/legends/native_visual_repairs_qa/run.py --output build/visual-repairs-qa --mgba-prefix /usr
       - name: Upload direct Legends gameplay frames and machine receipt
         if: always()
         uses: actions/upload-artifact@v4
@@ -68,4 +72,7 @@ jobs:
             build/seasonal-encounters-qa/*.png
             build/seasonal-encounters-qa/*.json
             build/seasonal-encounters-qa/*.log
+            build/visual-repairs-qa/*.png
+            build/visual-repairs-qa/*.json
+            build/visual-repairs-qa/*.log
           if-no-files-found: warn
