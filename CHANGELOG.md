@@ -16,6 +16,7 @@ For build-specific player views, see [CHANGELOG-RELEASE.md](CHANGELOG-RELEASE.md
 
 - Added 32 seasonal visitors across Generations 1–9 to Routes 113–116, including the native ash fields on Route 113.
 - Retained every original resident year-round, native per-slot levels, weights and encounter rates; preserved Routes 101–112, other encounter methods, approved artwork/DexNav fitting and saves.
+- Updated LegendsDex to the matching 64 seasonal tables and added All Seasons with season-specific availability and odds; preserved approved artwork, layout and companion versions.
 
 ## [0.0.65] - 2026-10-19
 

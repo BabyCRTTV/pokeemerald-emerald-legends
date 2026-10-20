@@ -1,0 +1,46 @@
+{
+  "model": "GPT-6.1",
+  "version": "0.0.66",
+  "verified_utc": "2026-10-20T00:42:55.865915+00:00",
+  "audited_head": "5c506a521153c2735dfb48106a24e0cb53dd3f46",
+  "production_gates": {
+    "project": 39232437978,
+    "builds_and_canonical_BPS_roundtrips": 39232438004,
+    "native_mGBA": 39232438144,
+    "Pages": 39233654346
+  },
+  "native_log_verified": {
+    "seasonal_cases": 136,
+    "real_wild_creations": 34816,
+    "Living_Hoenn_cases": 23,
+    "Debug_ROM_SHA256": "a7434d2e51e38c59f839987bcedf6749773f24a6cfdc60d6a43f3cb85ce06375"
+  },
+  "patches": {
+    "Release": {
+      "url": "https://babycrttv.github.io/pokeemerald-emerald-legends/downloads/Pokemon-Emerald-Legends-v0.0.66.bps",
+      "HTTP": 200,
+      "bytes": 17458465,
+      "sha256": "29fef01677e40d6f38044a3e013eebeec9f4276095ae0e91625b02ad6f726957",
+      "matches_committed_bytes": true,
+      "source_CRC32": "1f1c08fb",
+      "target_CRC32": "b8242362",
+      "patch_CRC32": "4cef4750",
+      "patch_CRC_verified": true
+    },
+    "Debug": {
+      "url": "https://babycrttv.github.io/pokeemerald-emerald-legends/downloads/Pokemon-Emerald-Legends-v0.0.66-debug.bps",
+      "HTTP": 200,
+      "bytes": 17290634,
+      "sha256": "6dc823cedb5a42839e1a6a49c1398ef5bd0b4589da297ff7985e2f403386d545",
+      "matches_committed_bytes": true,
+      "source_CRC32": "1f1c08fb",
+      "target_CRC32": "ad59ed81",
+      "patch_CRC32": "37faf153",
+      "patch_CRC_verified": true
+    }
+  },
+  "limits": [
+    "Production CI verified Floating IPS application against canonical clean Emerald and exact built targets. This resumption verified identical live patch bytes and patch CRCs; it did not independently decode live patches with a second decoder because no local clean base/compiler was available.",
+    "Controlled Debug cases do not establish natural progression, Release interaction, historical saves or Pizza Boy coverage."
+  ]
+}
