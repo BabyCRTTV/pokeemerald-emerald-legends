@@ -17,11 +17,6 @@ before={str(p):snapshot(p) for p in assets};art.main()
 after={str(p):snapshot(p) for p in assets}
 assert before==after,('Non-reproducible light assets',[p for p in before if before[p]!=after[p]])
 m=json.loads((out/'manifest.json').read_text())
-# Native white sign faces stay neutral and distinct from the red lettering.
-for neutral in [(255,255,255),(230,230,230)]:
- face=art.sign_color(neutral);letters=art.sign_color((255,80,80))
- assert max(face)-min(face)<=32 and face[1]-letters[1]>=80
-assert art.sign_color((70,90,150)) is None
 for name,f in m['families'].items():
  native=R/'data/tilesets/primary'/name;im=Image.open(native/'tiles.png');lit=Image.open(out/(name+'_tiles.png'))
  a=art.words(native/'metatiles.bin');b=art.words(out/(name+'_metatiles.bin'));changed={c['metatile']*8+c['cell'] for c in f['cells']}

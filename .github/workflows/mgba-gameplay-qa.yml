@@ -55,8 +55,12 @@ jobs:
         run: python3 tools/legends/native_living_hoenn_qa/run.py
       - name: Exercise seasonal encounter trial and native DexNav silhouettes
         run: python3 tools/legends/native_seasonal_encounters_qa/run.py
-      - name: Exercise visual repairs and wardrobe return/save paths
+      - name: Exercise accepted bedroom repair and wardrobe return/save paths
         run: python3 tools/legends/native_visual_repairs_qa/run.py --output build/visual-repairs-qa --mgba-prefix /usr
+      - name: Build unmodified Legends Release ROM and ELF
+        run: make -j"$(nproc)" release
+      - name: Exercise unmodified Release Continue, both bedrooms and wardrobe returns
+        run: python3 tools/legends/native_visual_repairs_qa/release.py --prefix /usr --fixtures build/visual-repairs-qa --output build/bedroom-release-qa
       - name: Upload direct Legends gameplay frames and machine receipt
         if: always()
         uses: actions/upload-artifact@v4
@@ -75,4 +79,7 @@ jobs:
             build/visual-repairs-qa/*.png
             build/visual-repairs-qa/*.json
             build/visual-repairs-qa/*.log
+            build/bedroom-release-qa/**/*.png
+            build/bedroom-release-qa/**/*.json
+            build/bedroom-release-qa/**/*.log
           if-no-files-found: warn

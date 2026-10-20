@@ -1,4 +1,4 @@
-# Native visual repair QA
+# Native bedroom repair and appearance regression QA
 
 Requires a built Debug ROM/ELF, ARM tools, Pillow and libmGBA. Run:
 
@@ -23,3 +23,5 @@ node tools/legends/verify_bps_with_browser.cjs clean.gba release.bps debug.bps p
 ```
 
 This executes the actual committed browser decoder in a Node VM and requires exact native target bytes. It does not automate a physical browser file picker or Pizza Boy. Keep all .gba/.sav inputs private.
+
+The owner approved only the bedroom surround. Badge, night-sign and pause-menu proposals were rejected and restored to v0.0.67. Their captures are regression evidence of retained baseline behavior, not approved repairs. Rare outfit corruption remains unreproduced.

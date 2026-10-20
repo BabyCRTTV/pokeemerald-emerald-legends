@@ -526,11 +526,14 @@ static void DrawStartMenuScrollHints(void)
     u8 row, windowId = GetStartMenuWindowId();
     if (!IsOverworldLinkActive() && !InUnionRoom())
     {
-        // Label page navigation separately from the list's scroll indicators.
-        u8 y = min(sNumStartMenuActions, START_MENU_VISIBLE_ROWS) * 16 + 4;
-        AddTextPrinterParameterized(windowId, FONT_SMALL,
-            sJournalPage ? COMPOUND_STRING("LEFT/RIGHT 2/2") : COMPOUND_STRING("LEFT/RIGHT 1/2"),
-            8, y, TEXT_SKIP_DRAW, NULL);
+        // Separate the page arrow from the last item's text within the footer.
+        u8 y = min(sNumStartMenuActions, START_MENU_VISIBLE_ROWS) * 16 + 10;
+        for (row = 0; row < 5; row++)
+        {
+            u8 width = 1 + min(row, 4 - row);
+            FillWindowPixelRect(windowId, PIXEL_FILL(2), sJournalPage ? 9 - width : 86,
+                y + row, width, 1);
+        }
     }
     if (sStartMenuTop > 0)
         for (row = 0; row < 3; row++)

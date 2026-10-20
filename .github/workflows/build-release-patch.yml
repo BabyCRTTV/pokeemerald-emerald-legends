@@ -124,6 +124,15 @@ jobs:
           sha256sum pokeemerald-release.gba pokeemerald.gba >> docs/downloads/SHA256SUMS.txt
           printf 'release=%s\ndebug=%s\n' "$RELEASE_PATCH" "$DEBUG_PATCH" >> "$GITHUB_OUTPUT"
 
+      - name: Independently decode both patches with the shipped browser engine
+        run: |
+          VERSION="$(tr -d '\r\n' < VERSION)"
+          node tools/legends/verify_bps_with_browser.cjs \
+            /tmp/pokeemerald-vanilla/pokeemerald.gba \
+            "docs/downloads/Pokemon-Emerald-Legends-v${VERSION}.bps" \
+            "docs/downloads/Pokemon-Emerald-Legends-v${VERSION}-debug.bps" \
+            pokeemerald-release.gba pokeemerald.gba build/browser-decoder-verification.json
+
       - name: Retain verified pull-request candidate patches
         if: github.event_name == 'pull_request'
         uses: actions/upload-artifact@v4
@@ -133,6 +142,7 @@ jobs:
             ${{ steps.verified-patches.outputs.release }}
             ${{ steps.verified-patches.outputs.debug }}
             docs/downloads/SHA256SUMS.txt
+            build/browser-decoder-verification.json
           if-no-files-found: error
 
       - name: Commit patches to site

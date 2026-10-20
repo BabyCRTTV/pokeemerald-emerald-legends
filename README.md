@@ -9,7 +9,7 @@ The project is intended to preserve the feel and structure of Pokémon Emerald w
 
 The New Game / Continue / Options menu uses a soft lavender backdrop as of v0.0.13.1. v0.0.54 displays the current version at the right edge of its OPTION card, matching the native text; Debug includes the -D suffix.
 
-v0.0.68 repaired Trainer Card badge backgrounds, restored native black bedroom surrounds, improved Pokémon Center sign readability at night and clarified pause-page controls. Approved wardrobe artwork and seasonal encounters were preserved. Rare outfit oversaturation remains under investigation; this update does not claim to resolve it.
+v0.0.68 restored the native black surround in both trainer bedrooms while preserving furniture, rugs, beds and ceiling trim. Rare outfit oversaturation remains under investigation.
 
 v0.0.62 corrected the Fortree dialogue scroll and strengthened focused Living Hoenn checks. [Review and QA](docs/qa/living-hoenn-review-v0.0.62.md).
 
