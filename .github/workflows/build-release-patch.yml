@@ -89,6 +89,7 @@ jobs:
           TARGET=cli make -j"$(nproc)"
 
       - name: Create and verify Release and Debug BPS patches
+        id: verified-patches
         run: |
           VERSION="$(tr -d '\r\n' < VERSION)"
           RELEASE_PATCH="docs/downloads/Pokemon-Emerald-Legends-v${VERSION}.bps"
@@ -121,6 +122,18 @@ jobs:
 
           sha256sum "$RELEASE_PATCH" "$DEBUG_PATCH" > docs/downloads/SHA256SUMS.txt
           sha256sum pokeemerald-release.gba pokeemerald.gba >> docs/downloads/SHA256SUMS.txt
+          printf 'release=%s\ndebug=%s\n' "$RELEASE_PATCH" "$DEBUG_PATCH" >> "$GITHUB_OUTPUT"
+
+      - name: Retain verified pull-request candidate patches
+        if: github.event_name == 'pull_request'
+        uses: actions/upload-artifact@v4
+        with:
+          name: legends-candidate-patches
+          path: |
+            ${{ steps.verified-patches.outputs.release }}
+            ${{ steps.verified-patches.outputs.debug }}
+            docs/downloads/SHA256SUMS.txt
+          if-no-files-found: error
 
       - name: Commit patches to site
         if: github.event_name != 'pull_request'

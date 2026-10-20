@@ -1,6 +1,6 @@
-# Visual repair candidate after v0.0.67
+# v0.0.68 visual repair candidate
 
-Unpublished; four visual repairs prepared for owner review. The rare outfit report remains open. No version, public patch or Pages publication is claimed.
+Unpublished [PR #86](https://github.com/BabyCRTTV/pokeemerald-emerald-legends/pull/86); four visual repairs prepared for owner review. The rare outfit report remains open. Version and site metadata are prepared for v0.0.68 on the review branch; no public patch or Pages publication is claimed.
 
 ## Causes and scope
 
@@ -19,9 +19,11 @@ Both normal Debug and LTO Release builds passed. Controlled Debug mGBA checks co
 
 Normal unmodified Release Continue, both pause pages, both badge regions and natural floor approach to each bedroom wardrobe passed. Both Release bedroom frames and all four Kanto badge rows matched Debug exactly. Daytime Fallarbor and the wardrobe preview matched the original baseline frame exactly; bedroom differences were exclusively the old lavender void becoming black. Card changes were confined to its badge row. Moving outdoor NPCs are not a whole-frame regression target. [Local machine receipts](visual-repairs-local.json) include exact ROM/image hashes. [Native UI review](visual-repairs-ui.png) and [native world review](visual-repairs-world.png) show before/after at 2× nearest-neighbor scale. CI/BPS results remain pending and are not implied by local build success. Original screenshot files and private ROM/save fixtures are excluded from commits and CI uploads.
 
+The first project CI attempt exposed that the new native-font bounds test ran before Pillow was installed. Moved the existing pinned Pillow install before that test; the v0.0.67-source rerun passed. The v0.0.68 candidate now includes synchronized version labels, three changelogs, site/patcher metadata and a PR-only artifact upload for independently verified BPS patches. Generated .pal blobs follow the repository's LF-in-Git/CRLF-checkout policy; palette colors and native ROM bytes are unaffected by newline normalization.
+
 ## Remaining work
 
 - Owner review of the proposed native menu/sign appearance; publish only after that review.
-- Complete next-version metadata, all three changelogs/site, Debug/Release BPS application and live publication verification when promoting the candidate.
+- Publish the prepared v0.0.68 metadata/site and independently verified Debug/Release patches only after visual approval; then verify live bytes and Actions.
 - Reproduce rare outfit oversaturation, retaining the exact appearance settings, preceding menu/field action, weather/time, follower and whether a map reload restores it. Keep the issue open; successful controlled tests are not proof it is fixed on Pizza Boy.
 - Continue hidden grottos after the visual work. No grotto mechanics or assets were implemented here.

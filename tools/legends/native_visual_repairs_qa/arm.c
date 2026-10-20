@@ -69,7 +69,7 @@ void qa(void)
     case 5: case 6:
         LegendsClockSetManual(box[0]==5 ? 12 : 22,0);
         CleanupOverworldWindowsAndTilemaps(); ResetTasks();
-        SetWarpDestination(MAP_GROUP(MAP_FALLARBOR_TOWN), MAP_NUM(MAP_FALLARBOR_TOWN), -1, 16, 7);
+        SetWarpDestination(MAP_GROUP(MAP_FALLARBOR_TOWN), MAP_NUM(MAP_FALLARBOR_TOWN), -1, 17, 6);
         WarpIntoMap(); SetMainCallback2(CB2_LoadMap); break;
     case 7:
         {

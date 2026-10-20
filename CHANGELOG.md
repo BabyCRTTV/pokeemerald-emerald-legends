@@ -4,12 +4,14 @@ All notable Pokémon Emerald: Legends project changes are documented here.
 
 For build-specific player views, see [CHANGELOG-RELEASE.md](CHANGELOG-RELEASE.md) and [CHANGELOG-DEBUG.md](CHANGELOG-DEBUG.md). The canonical history below records the project as a whole.
 
-## Unreleased — visual repair candidate
+## [0.0.68] - 2026-10-20
 
 - Removed the numbered white Trainer Card badge boxes behind transparent badge art.
 - Restored the native black bedroom surround by isolating its palette from decoration colors.
 - Kept Pokémon Center sign faces warm white at night, with distinct red lettering and unchanged daytime artwork.
 - Replaced the pause menu's page triangle with a LEFT/RIGHT page label and retained separate list-scroll indicators.
+- Preserved approved wardrobe artwork, saved choices and seasonal encounters; retained the rare outfit-oversaturation report as unresolved.
+- Shared the repairs between Release and Debug without variant-specific gameplay differences.
 
 ## Wiki 1.7.0 - 2026-10-18
 
