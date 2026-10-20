@@ -1,0 +1,48 @@
+name: Stage verified v0.0.68 candidate patches
+on:
+  push:
+    branches: [ 'qa/visual-v68-patches-aa675502' ]
+permissions:
+  contents: write
+  actions: read
+jobs:
+  stage:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Download the independently verified source-matched candidate
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh run download 39421438715 --repo BabyCRTTV/pokeemerald-emerald-legends --name legends-candidate-patches --dir /tmp/legends-v68-stage
+      - name: Verify hashes and stage only BPS patches and their manifest
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import hashlib, shutil
+          root=Path('/tmp/legends-v68-stage')
+          expected={
+            'Pokemon-Emerald-Legends-v0.0.68.bps':'f3c106acedba213c1d711f2c6967819d0d66ecb2c72e0a1bfbfc3bd93fcfd5d3',
+            'Pokemon-Emerald-Legends-v0.0.68-debug.bps':'9888d89199428e597832a937cf2979aaee3d3b8ee2d9d6acf6f49471dd810168',
+            'pokeemerald-release.gba':'d1b4cfa56d9f1cdf1b2f04826a59dc9a47dd50a08f7a24f3561fc2af0db476c8',
+            'pokeemerald.gba':'9e02457f9fb5fb74a2081bd27956d7d78fdf40c05545ed160ddae08009ad8ca4',
+          }
+          manifests=list(root.rglob('SHA256SUMS.txt'));assert len(manifests)==1
+          manifest=manifests[0]
+          declared={Path(f).name:h for h,f in (line.split() for line in manifest.read_text().splitlines())}
+          assert declared==expected
+          out=Path('docs/downloads');out.mkdir(exist_ok=True)
+          for name,digest in expected.items():
+            if not name.endswith('.bps'):continue
+            matches=list(root.rglob(name));assert len(matches)==1
+            data=matches[0].read_bytes();assert hashlib.sha256(data).hexdigest()==digest
+            shutil.copyfile(matches[0],out/name)
+            print(name,len(data),digest)
+          shutil.copyfile(manifest,out/'SHA256SUMS.txt')
+          PY
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -f docs/downloads/Pokemon-Emerald-Legends-v0.0.68.bps docs/downloads/Pokemon-Emerald-Legends-v0.0.68-debug.bps docs/downloads/SHA256SUMS.txt
+          git commit -m "QA: stage verified v0.0.68 candidate BPS patches [skip ci]"
+          git push origin HEAD:qa/visual-v68-patches-aa675502
+          git rev-parse HEAD
