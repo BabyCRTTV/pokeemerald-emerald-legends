@@ -1,0 +1,17 @@
+name: Publish approved bedroom release Pages
+on:
+  push:
+    branches: [ 'qa/bedroom-v68-pages-8898dfe8' ]
+permissions:
+  contents: read
+  pages: write
+jobs:
+  request-pages:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - name: Request the configured branch-based Pages build
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh api -X POST repos/BabyCRTTV/pokeemerald-emerald-legends/pages/builds
