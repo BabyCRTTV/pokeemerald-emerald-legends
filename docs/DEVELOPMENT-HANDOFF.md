@@ -1,5 +1,13 @@
 # Development handoff
 
+## Active work — v0.0.67 seasonal Routes 117–121
+
+**Model: GPT-6.1 | Reasoning: preserve native encounter dependencies/terrain and approved art while appending five routes.**
+
+Owner requested five more routes. Started from live `93ec8468`, including the independently merged tablet layout fix; preserved that fix and its cache keys. Appended twenty land tables/40 distinct new visitors across Generations 1–9, retaining all original residents (70%), prior 64 tables, exact native slot levels/weights and rates (Route119=15; others=20). Routes119/120 use native long grass. No map/script/artwork, save layout or persistent ID changed. Field surveys retain resident Grass/Water options, earlier-route Flying partners and the unchanged Castform gift; Day Care, Feebas fishing, Weather Institute/rival/Kecleon and Safari gates are untouched. Existing resolver consumers cover DexNav, wild generation, habitat maps and hints without redesign. [Rosters/rules](features/seasonal-encounters.md) · [source receipt](qa/seasonal-routes-v0.0.67-source.json).
+
+Extended shipped-C checks to 84 tables and native diagnostic coverage to 178 cases/45,568 actual creations, preserving the prior 136 scene indices. Importer supports 84/64/48/32/16 snapshots. Verification, Release/Debug builds/canonical BPS gates, native execution, publication and matching wiki source/cache keys remain pending at this checkpoint. Keep the recent tablet name-width regression and All Seasons tuple-derived availability. No routine user-facing previews or approval wait are needed. AGENTS.md reviewed; no durable preference changed.
+
 ## Tablet encounter layout repair — 19 October 2026
 
 **Model: GPT-6 | Reasoning: reproduce the width-dependent layout failure while preserving the approved cards, artwork and encounter data.**
