@@ -6,6 +6,7 @@ This is the player-facing history for the recommended **Release** build. Shared 
 
 - Added 32 seasonal visitors across Generations 1–9 to Routes 113–116, including the native ash fields on Route 113.
 - Retained every original resident year-round, native per-slot levels, weights and encounter rates; preserved Routes 101–112, other encounter methods, approved artwork/DexNav fitting and saves.
+- Updated LegendsDex to the matching 64 seasonal tables and added All Seasons with season-specific availability and odds; preserved approved artwork, layout and independent companion release handling.
 
 ## [0.0.65] - 2026-10-19
 
@@ -19,7 +20,7 @@ This is the player-facing history for the recommended **Release** build. Shared 
 - Added seasonal Surf encounters on Routes 105–108 with 32 visitors across Generations 1–9; retained Tentacool, Wingull and Pelipper year-round.
 - Preserved native five-slot Surf weights, per-slot levels and encounter rate: residents occupied 65%, with seasonal visitors at 30% and 5%; kept fishing, other maps and the approved Routes 101–104 grass tables intact.
 - Connected Surf encounters, Sweet Scent, DexNav, habitat maps, local helpers and hints to the committed world season; preserved encounter priorities, approved icon fitting/artwork and save layouts.
-- Refreshed the wiki's seasonal Surf data, corrected walkthrough resident shares and synchronized cached sprite/profile metadata; preserved approved artwork, layout and companion versions.
+- Refreshed the wiki's seasonal Surf data, corrected walkthrough resident shares and synchronized cached sprite/profile metadata; preserved approved artwork, layout and independent companion release handling.
 
 ## [0.0.63] - 2026-10-18
 
@@ -27,7 +28,7 @@ This is the player-facing history for the recommended **Release** build. Shared 
 - Connected native land encounters, DexNav, habitat maps and encounter hints to the same committed-season tables; preserved water, fishing, other routes, native encounter priorities and save layouts.
 - Replaced undiscovered DexNav question marks with actual animated icon silhouettes using an isolated black palette; preserved discovered colors, search locks, empty slots and existing icon artwork.
 - Centered DexNav icons using both animation poses and uniformly reduced oversized icons to fit their slots; preserved native assets, relative animation and identical discovered/silhouette placement.
-- Promoted the wiki's matching seasonal encounter snapshot to published v0.0.63 data after verifying both live patches; preserved approved artwork, layout and companion versions.
+- Promoted the wiki's matching seasonal encounter snapshot to published v0.0.63 data after verifying both live patches; preserved approved artwork, layout and independent companion release handling.
 
 ## [0.0.62] - 2026-10-17
 

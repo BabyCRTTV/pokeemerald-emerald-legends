@@ -157,7 +157,7 @@ Year-round residents: Numel, Marill.
 | Autumn | Houndour | Rolycoly |
 | Winter | Vulpix | Rockruff |
 
-## Routes 113–116 — v0.0.66 (in verification)
+## Routes 113–116 — v0.0.66 (shipped; production CI verified)
 
 **Model: GPT-6 | Approach: append native land tables and retain the approved encounter, art and save baseline.**
 
