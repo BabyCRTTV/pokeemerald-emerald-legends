@@ -1,0 +1,92 @@
+{
+  "version": "0.0.68",
+  "baseline": "e019d5f85e550bc1e69bfa7c38eea710c85ec916",
+  "runtime_source": "f7c9f445ab2c3897ae8df5640589a87eb4e592b5",
+  "owner_approval": "Only the bedroom edit was accepted. Badge, lighting and pause-menu proposals were rejected.",
+  "only_game_input_changes": [
+    "data/tilesets/legends_bedroom/metatiles.bin",
+    "src/main_menu.c",
+    "src/option_menu.c"
+  ],
+  "source_changes_only_version_labels": true,
+  "bedroom_tile_reference_changes": [
+    {
+      "word": 120,
+      "before": "0xb210",
+      "after": "0x5210"
+    },
+    {
+      "word": 121,
+      "before": "0xb210",
+      "after": "0x5210"
+    },
+    {
+      "word": 122,
+      "before": "0xb210",
+      "after": "0x5210"
+    },
+    {
+      "word": 123,
+      "before": "0xb210",
+      "after": "0x5210"
+    },
+    {
+      "word": 184,
+      "before": "0xb610",
+      "after": "0x5610"
+    },
+    {
+      "word": 185,
+      "before": "0xb610",
+      "after": "0x5610"
+    },
+    {
+      "word": 186,
+      "before": "0xb610",
+      "after": "0x5610"
+    },
+    {
+      "word": 187,
+      "before": "0xb610",
+      "after": "0x5610"
+    },
+    {
+      "word": 248,
+      "before": "0xb210",
+      "after": "0x5210"
+    },
+    {
+      "word": 249,
+      "before": "0xb210",
+      "after": "0x5210"
+    },
+    {
+      "word": 250,
+      "before": "0xb210",
+      "after": "0x5210"
+    },
+    {
+      "word": 251,
+      "before": "0xb210",
+      "after": "0x5210"
+    }
+  ],
+  "all_tile_pixel_flip_attribute_geometry_preserved": true,
+  "graphics_and_other_tileset_assets_exact_baseline": true,
+  "saved_layouts_IDs_readers_exact_baseline": true,
+  "rejected_systems_generators_tests_exact_baseline": true,
+  "local_focused_tests": [
+    "bedroom",
+    "night-lights",
+    "start-menu",
+    "adventure-menu",
+    "trainer-card-badges",
+    "wardrobe",
+    "appearance",
+    "appearance-colors",
+    "footwear",
+    "family-skin"
+  ],
+  "rare_outfit_corruption": "Unreproduced and unresolved",
+  "hidden_grottos": "Selected and deferred"
+}
