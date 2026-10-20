@@ -1,0 +1,152 @@
+{
+  "model": "GPT-6.1",
+  "version": "0.0.67",
+  "baseline": "93ec846886bfa0141753ce23fbc4757af79dbcdc",
+  "prior_tables_preserved": 64,
+  "added_tables": 20,
+  "distinct_new_visitors": 40,
+  "rosters": {
+    "117": [
+      [
+        "CHERUBI",
+        "FLABEBE"
+      ],
+      [
+        "VENONAT",
+        "ROSELIA"
+      ],
+      [
+        "FOONGUS",
+        "SWIRLIX"
+      ],
+      [
+        "SNUBBULL",
+        "DROWZEE"
+      ]
+    ],
+    "118": [
+      [
+        "DODUO",
+        "NIDORAN_M"
+      ],
+      [
+        "TAUROS",
+        "GIRAFARIG"
+      ],
+      [
+        "MILTANK",
+        "STANTLER"
+      ],
+      [
+        "BOUFFALANT",
+        "SHINX"
+      ]
+    ],
+    "119": [
+      [
+        "BELLSPROUT",
+        "BONSLY"
+      ],
+      [
+        "YANMA",
+        "CARNIVINE"
+      ],
+      [
+        "PARAS",
+        "CROAGUNK"
+      ],
+      [
+        "TANGELA",
+        "ORANGURU"
+      ]
+    ],
+    "120": [
+      [
+        "EXEGGCUTE",
+        "NATU"
+      ],
+      [
+        "AIPOM",
+        "HERACROSS"
+      ],
+      [
+        "PINECO",
+        "BRAMBLIN"
+      ],
+      [
+        "SNOM",
+        "HATENNA"
+      ]
+    ],
+    "121": [
+      [
+        "DUSKULL",
+        "GOTHITA"
+      ],
+      [
+        "SCRAGGY",
+        "VENIPEDE"
+      ],
+      [
+        "PHANTUMP",
+        "PUMPKABOO"
+      ],
+      [
+        "MISDREAVUS",
+        "GREAVARD"
+      ]
+    ]
+  },
+  "visitor_slot_indices": {
+    "117": [
+      [
+        2,
+        3
+      ],
+      [
+        5
+      ]
+    ],
+    "118": [
+      [
+        2,
+        3
+      ],
+      [
+        6,
+        7
+      ]
+    ],
+    "119": [
+      [
+        2,
+        4
+      ],
+      [
+        5
+      ]
+    ],
+    "120": [
+      [
+        2,
+        3
+      ],
+      [
+        5
+      ]
+    ],
+    "121": [
+      [
+        3,
+        4
+      ],
+      [
+        5
+      ]
+    ]
+  },
+  "header_sha256": "b4eefe307ac31d181795ad9bfbeb30c093a7db40e0bf1bef2e1b548bf96b61a6",
+  "save_change": false,
+  "native_cases_planned": 178,
+  "status": "Implementation in verification; not published"
+}

@@ -2,6 +2,12 @@
 
 This is the developer-facing history for the **Debug** build. Shared Legends changes are repeated here so this file stands on its own; Debug-only behavior is called out separately.
 
+## [0.0.67] - 2026-10-19
+
+- Added 40 seasonal visitors across Generations 1–9 to Routes 117–121, with two visitors per route in each season.
+- Retained every original resident year-round, the previous 64 seasonal tables, native per-slot levels and weights, and Route 119’s lower encounter rate and long-grass habitat.
+- Preserved fishing, Surf, scripted encounters, story access, approved artwork/wardrobe/DexNav fitting and save layouts; synchronized matching LegendsDex data after verified game publication.
+
 ## [0.0.66] - 2026-10-19
 
 - Added 32 seasonal visitors across Generations 1–9 to Routes 113–116, including the native ash fields on Route 113.

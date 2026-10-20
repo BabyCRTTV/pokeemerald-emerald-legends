@@ -1,4 +1,4 @@
-# Seasonal encounters — Routes 101–116
+# Seasonal encounters — Routes 101–121
 
 **Model: GPT-6 | Approach: preserve native residents/levels and resolve every dependent land-table consumer through the committed season.**
 
@@ -206,6 +206,67 @@ Year-round residents: Poochyena, Whismur, Nincada, Abra, Taillow, Skitty.
 | Summer | Kricketot | Blipbug |
 | Autumn | Nymble | Patrat |
 | Winter | Wooloo | Espurr |
+
+## Routes 117–121 — v0.0.67 (in verification)
+
+**Model: GPT-6.1 | Reasoning: extend native land rosters while preserving habitat, encounter dependencies, approved assets and save compatibility.**
+
+Twenty new seasonal land tables add 40 distinct visitors not present in the previous seasonal roster. Original residents remain available year-round at a combined 70%; seasonal visitors occupy 20% and 10%. Native twelve-slot levels/weights stay exact. Encounter rate stays 20 except Route 119, which retains 15. Routes 119–120 retain native long grass and their existing field-move/weather behavior. Surf, fishing, Feebas fishing tiles, Kecleon events, Weather Institute/rival/story gates, Day Care, Safari access and all prior tables are unchanged. Birch/Devon survey types retain their original resident/gift options. No saved data or identifiers changed; no migration is needed. Availability is all day and uses the existing committed active season.
+
+### Route 117
+
+Year-round residents: Poochyena, Oddish, Marill, Illumise, Volbeat, Seedot.
+
+| Season | 20% visitor | 10% visitor |
+|---|---|---|
+| Spring | Cherubi | Flabebe |
+| Summer | Venonat | Roselia |
+| Autumn | Foongus | Swirlix |
+| Winter | Snubbull | Drowzee |
+
+### Route 118
+
+Year-round residents: Zigzagoon, Electrike, Linoone, Manectric, Wingull, Kecleon.
+
+| Season | 20% visitor | 10% visitor |
+|---|---|---|
+| Spring | Doduo | Nidoran M |
+| Summer | Tauros | Girafarig |
+| Autumn | Miltank | Stantler |
+| Winter | Bouffalant | Shinx |
+
+### Route 119
+
+Year-round residents: Zigzagoon, Linoone, Oddish, Tropius, Kecleon.
+
+| Season | 20% visitor | 10% visitor |
+|---|---|---|
+| Spring | Bellsprout | Bonsly |
+| Summer | Yanma | Carnivine |
+| Autumn | Paras | Croagunk |
+| Winter | Tangela | Oranguru |
+
+### Route 120
+
+Year-round residents: Poochyena, Mightyena, Oddish, Marill, Absol, Kecleon, Seedot.
+
+| Season | 20% visitor | 10% visitor |
+|---|---|---|
+| Spring | Exeggcute | Natu |
+| Summer | Aipom | Heracross |
+| Autumn | Pineco | Bramblin |
+| Winter | Snom | Hatenna |
+
+### Route 121
+
+Year-round residents: Poochyena, Shuppet, Mightyena, Oddish, Gloom, Wingull, Kecleon.
+
+| Season | 20% visitor | 10% visitor |
+|---|---|---|
+| Spring | Duskull | Gothita |
+| Summer | Scraggy | Venipede |
+| Autumn | Phantump | Pumpkaboo |
+| Winter | Misdreavus | Greavard |
 
 ## DexNav silhouettes
 

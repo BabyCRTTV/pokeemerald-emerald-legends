@@ -65,6 +65,24 @@ for route in range(113,117):
   assert len(visitors)==2 and sorted(odds[x] for x in visitors)==([5,30] if route==109 else [10,20])
   assert 'SPECIES_DA_BUG' not in visitors;next_visitors|=visitors
 assert len(next_visitors)==32
+# Five-route batch: every original resident remains, with exact native levels/rates.
+latest_visitors=set()
+for route in range(117,122):
+ original=next(e['land_mons'] for e in g['encounters'] if e['map']==f'MAP_ROUTE{route}')
+ assert original['encounter_rate']==(15 if route==119 else 20)
+ residents={m['species'] for m in original['mons']}
+ for season in ['Spring','Summer','Autumn','Winter']:
+  body=re.search(rf'sRoute{route}{season}Mons.*?=\s*\{{(.*?)\}};',data,re.S)[1]
+  rows=re.findall(r'\{(\d+), (\d+), (SPECIES_\w+)\}',body);assert len(rows)==12
+  assert [(int(a),int(b)) for a,b,_ in rows]==[(m['min_level'],m['max_level']) for m in original['mons']]
+  odds={}
+  for (_,_,species),weight in zip(rows,weights):odds[species]=odds.get(species,0)+weight
+  visitors=set(odds)-residents
+  assert residents<=odds.keys() and sum(odds[x] for x in residents)==70
+  assert len(visitors)==2 and sorted(odds[x] for x in visitors)==[10,20]
+  assert not (visitors & (all_visitors|water_visitors|extra_visitors|next_visitors))
+  assert 'SPECIES_DA_BUG' not in visitors;latest_visitors|=visitors
+assert len(latest_visitors)==40
 pre=r'''
 #include <stdint.h>
 #include <stddef.h>
@@ -91,6 +109,11 @@ typedef uint8_t u8;typedef uint16_t u16;typedef uint32_t u32;
 #define MAP_ROUTE114 114
 #define MAP_ROUTE115 115
 #define MAP_ROUTE116 116
+#define MAP_ROUTE117 117
+#define MAP_ROUTE118 118
+#define MAP_ROUTE119 119
+#define MAP_ROUTE120 120
+#define MAP_ROUTE121 121
 #define NUM_LAND_MONS_ENCOUNTER_SLOTS 12
 #define NUM_WATER_MONS_ENCOUNTER_SLOTS 5
 #define HEADER_NONE 65535
@@ -101,7 +124,7 @@ struct WildPokemonInfo {u8 encounterRate;const struct WildPokemon *wildPokemon;}
 struct WildEncounterTypes {const struct WildPokemonInfo *landMonsInfo,*waterMonsInfo,*hiddenMonsInfo;};
 struct WildPokemonHeader {u8 mapGroup,mapNum;struct WildEncounterTypes encounterTypes[TIMES_OF_DAY_COUNT];};
 static struct WildPokemonInfo fallback[4],waterFallback[4];
-static struct WildPokemonHeader gWildMonHeaders[18];
+static struct WildPokemonHeader gWildMonHeaders[23];
 static unsigned active,reads,pending,currentHeader;
 #define MAX_LEVEL 100
 #define MON_LEVEL_NONEXISTENT 255
@@ -120,16 +143,16 @@ u8 LegendsGetActiveSeason(void){reads++;return active;}
 '''
 main=r'''
 int main(void){
- for(unsigned h=0;h<17;h++){gWildMonHeaders[h].mapNum=101+h;for(unsigned t=0;t<4;t++){gWildMonHeaders[h].encounterTypes[t].landMonsInfo=&fallback[t];gWildMonHeaders[h].encounterTypes[t].waterMonsInfo=&waterFallback[t];}}
+ for(unsigned h=0;h<22;h++){gWildMonHeaders[h].mapNum=101+h;for(unsigned t=0;t<4;t++){gWildMonHeaders[h].encounterTypes[t].landMonsInfo=&fallback[t];gWildMonHeaders[h].encounterTypes[t].waterMonsInfo=&waterFallback[t];}}
  for(unsigned season=0;season<4;season++)for(unsigned t=0;t<4;t++){
   active=season;pending=(season+1)%4;
-  for(unsigned h=0;h<17;h++){
+  for(unsigned h=0;h<22;h++){
    currentHeader=h;
    for(unsigned area=0;area<2;area++){
     const struct WildPokemonInfo *expected=area?&waterFallback[t]:&fallback[t],*previous=NULL;
     unsigned rate=0,slots=area?5:12;
     if(area){for(unsigned i=0;i<ARRAY_COUNT(sLegendsSeasonalWater);i++)if(sLegendsSeasonalWater[i].map==101+h){expected=&sLegendsSeasonalWater[i].seasons[season];previous=&sLegendsSeasonalWater[i].seasons[(season+3)%4];rate=4;}}
-    else {for(unsigned i=0;i<ARRAY_COUNT(sLegendsSeasonalLand);i++)if(sLegendsSeasonalLand[i].map==101+h){expected=&sLegendsSeasonalLand[i].seasons[season];previous=&sLegendsSeasonalLand[i].seasons[(season+3)%4];rate=(h==10?10:20);}}
+    else {for(unsigned i=0;i<ARRAY_COUNT(sLegendsSeasonalLand);i++)if(sLegendsSeasonalLand[i].map==101+h){expected=&sLegendsSeasonalLand[i].seasons[season];previous=&sLegendsSeasonalLand[i].seasons[(season+3)%4];rate=(h==10?10:h==18?15:20);}}
     unsigned before=reads;const struct WildPokemonInfo *p=area?GetWaterMonsInfo(h,t):GetLandMonsInfo(h,t);
     assert(p==expected);assert(active==season&&pending==(season+1)%4);
     if(!previous){assert(reads==before);continue;}assert(p->encounterRate==rate);
@@ -143,11 +166,11 @@ int main(void){
    }
   }
  }
- assert(!GetLandMonsInfo(HEADER_NONE,0)&&!GetLandMonsInfo(17,0)&&!GetLandMonsInfo(0,4)&&!GetLandMonsInfo(0,(enum TimeOfDay)-1));
- assert(!GetWaterMonsInfo(HEADER_NONE,0)&&!GetWaterMonsInfo(17,0)&&!GetWaterMonsInfo(0,4)&&!GetWaterMonsInfo(0,(enum TimeOfDay)-1));
- active=255;for(unsigned h=0;h<17;h++){assert(GetLandMonsInfo(h,0)==&fallback[0]);assert(GetWaterMonsInfo(h,0)==&waterFallback[0]);}
+ assert(!GetLandMonsInfo(HEADER_NONE,0)&&!GetLandMonsInfo(22,0)&&!GetLandMonsInfo(0,4)&&!GetLandMonsInfo(0,(enum TimeOfDay)-1));
+ assert(!GetWaterMonsInfo(HEADER_NONE,0)&&!GetWaterMonsInfo(22,0)&&!GetWaterMonsInfo(0,4)&&!GetWaterMonsInfo(0,(enum TimeOfDay)-1));
+ active=255;for(unsigned h=0;h<22;h++){assert(GetLandMonsInfo(h,0)==&fallback[0]);assert(GetWaterMonsInfo(h,0)==&waterFallback[0]);}
  currentHeader=HEADER_NONE;assert(GetEncounterLevelFromMapData(SPECIES_WURMPLE,ENCOUNTER_TYPE_LAND)==255);
- puts("PASS: all 64 seasonal tables, exact rates including desert, all TODs, committed vs pending, unrelated map/method parity, bounds/fallback and absent prior-season DexNav targets");
+ puts("PASS: all 84 seasonal tables, exact rates including desert, all TODs, committed vs pending, unrelated map/method parity, bounds/fallback and absent prior-season DexNav targets");
 }
 '''
 with tempfile.TemporaryDirectory() as d:
@@ -162,4 +185,4 @@ assert 'encounters.landMonsInfo = GetLandMonsInfo(i, gAreaTimeOfDay);' in (R/'sr
 assert s.count('gWildMonHeaders[headerId].encounterTypes[timeOfDay].waterMonsInfo')==1
 assert 'encounters.waterMonsInfo = GetWaterMonsInfo(i, gAreaTimeOfDay);' in (R/'src/pokedex_area_screen.c').read_text()
 assert 'LegendsGetSeason()' not in function and 'VarSet(' not in function
-print('PASS: original residents/levels/rates, 70/20/10 base distribution, 128 visitor selections, native 65/30/5 Surf odds and all dependent land/Surf readers')
+print('PASS: original residents/levels/rates, 70/20/10 base distribution, 168 visitor selections, native 65/30/5 Surf odds and all dependent land/Surf readers')
