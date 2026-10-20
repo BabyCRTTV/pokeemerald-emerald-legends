@@ -82,5 +82,5 @@
     "release.c": "1514192a531d734428c13d3e2f938431f7ad174f6f42f047074987039cecfa19",
     "host.c": "de957cacb4220022ad692dc2217b9a90018770f656c3fbcf39296ea7a5687991"
   },
-  "CI_BPS_status": "Pending v0.0.68 candidate CI verification; no public patch or publication claimed."
+  "CI_BPS_status": "Passed; see visual-repairs-ci.json. Candidate patches prepared; not published."
 }
