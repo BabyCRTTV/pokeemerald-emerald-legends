@@ -1,0 +1,177 @@
+{
+  "model": "GPT-6.1",
+  "gameVersion": "0.0.67",
+  "LegendsDexRevision": "1.4.0",
+  "wiki_commit": "cb8ee5584c133313125ce031a8f7dc2dac85a9b6",
+  "wiki_Pages": 39406511579,
+  "verified_utc": "2026-10-20T10:15:32.708354+00:00",
+  "files": {
+    "wiki/dex.html": {
+      "HTTP": 200,
+      "bytes": 10246,
+      "sha256": "bf88e2ccc1aebf7ce8bcabe0f5348059f393d729971d16011e228188ed7b170a",
+      "matches_committed_bytes": true
+    },
+    "wiki/dex.js": {
+      "HTTP": 200,
+      "bytes": 22337,
+      "sha256": "9dd05e85e82ddf5fac280b412a391e2364149e7702e7d09f0be266c2c77f602b",
+      "matches_committed_bytes": true
+    },
+    "wiki/dex-data.json": {
+      "HTTP": 200,
+      "bytes": 709830,
+      "sha256": "e7ddbbc69ad0255fdafdafeca1340a6cafdf992fe9dbe6fa475b71d805990a05",
+      "matches_committed_bytes": true
+    },
+    "wiki/dex-profiles.js": {
+      "HTTP": 200,
+      "bytes": 177391,
+      "sha256": "991d2236ff9efb93c8656a4c53b8de8805738cecb5a4bfb813af22cfa9333b55",
+      "matches_committed_bytes": true
+    },
+    "wiki/dex-sprite-atlas.js": {
+      "HTTP": 200,
+      "bytes": 18786,
+      "sha256": "9ffafb8004d45fcac46d0b5ba8e1e7a6bf656854af214789d0dcaadb6b0f4c98",
+      "matches_committed_bytes": true
+    },
+    "wiki/dex-portrait-sources.json": {
+      "HTTP": 200,
+      "bytes": 342,
+      "sha256": "36a1896a93f33477590e1b9309a6dc78491a8cdd40b61caad9fc9ab91b48fb1c",
+      "matches_committed_bytes": true
+    },
+    "wiki/walkthrough-maps.json": {
+      "HTTP": 200,
+      "bytes": 115267,
+      "sha256": "31c20be3ea69c4159a06cc9954b3c1f867dbfc11b430cbb6d62db5a708b62fea",
+      "matches_committed_bytes": true
+    },
+    "wiki/walkthrough-maps.js": {
+      "HTTP": 200,
+      "bytes": 11768,
+      "sha256": "f37d95bdc83a4bb9640a9917f218af26f1269fa4451ab671f33fb15dc019cf9b",
+      "matches_committed_bytes": true
+    },
+    "wiki/index.html": {
+      "HTTP": 200,
+      "bytes": 12360,
+      "sha256": "54963ac4bf341b05a24758856968ee5fc49ec52a5051e0153913c117ad35eca2",
+      "matches_committed_bytes": true
+    },
+    "wiki/dex.css": {
+      "HTTP": 200,
+      "bytes": 18394,
+      "sha256": "ea4b53a732856e453133cb4a25a2dc3abfc29d8dd1ffc8911c126d002a6d0c0a",
+      "matches_committed_bytes": true
+    },
+    "wiki/fold-layout.css": {
+      "HTTP": 200,
+      "bytes": 22219,
+      "sha256": "ea7c0e4a08e819f18687c4dcff99c4a6bcceb3bf020949ef1d851f19ed7dc989",
+      "matches_committed_bytes": true
+    },
+    "wiki/README.md": {
+      "HTTP": 200,
+      "bytes": 12721,
+      "sha256": "20315e282accafba91a40864d04caba24ea2927af62945133599f4e55faeb1f2",
+      "matches_committed_bytes": true
+    },
+    "wiki/android-version.json": {
+      "HTTP": 200,
+      "bytes": 399,
+      "sha256": "e34e5b41b07dc69569ca2eb266093ce5e634615cba426422edbcfc8bcf8f35d5",
+      "matches_committed_bytes": true
+    },
+    "wiki/windows-version.json": {
+      "HTTP": 200,
+      "bytes": 275,
+      "sha256": "38a5777c2eee7115516f7aac201eded6ff62765f870f8d14a606667da2cdace6",
+      "matches_committed_bytes": true
+    },
+    "index.html": {
+      "HTTP": 200,
+      "bytes": 3538,
+      "sha256": "4f0430fbae4f3a98bb42033e96d9c56194ff613ed7ff284dda05d77c4f717e25",
+      "matches_committed_bytes": true
+    },
+    "patcher.html": {
+      "HTTP": 200,
+      "bytes": 2679,
+      "sha256": "a29f33268c87a41ef734da7fda2133600eaff378bd0e6560a59a6c1d032997dd",
+      "matches_committed_bytes": true
+    },
+    "patcher.js": {
+      "HTTP": 200,
+      "bytes": 9353,
+      "sha256": "6affc429bc5ef970d2364062d24f7062d171004472305ab8968bf79f32806022",
+      "matches_committed_bytes": true
+    },
+    "changelog.html": {
+      "HTTP": 200,
+      "bytes": 116935,
+      "sha256": "7d3630df257494ad443f69df2170a455dfacfef8efc9e192de4beba3661828e1",
+      "matches_committed_bytes": true
+    },
+    "features/seasonal-encounters.md": {
+      "HTTP": 200,
+      "bytes": 13725,
+      "sha256": "20836a8808131514b56016b9ec5cd0a524fad56ae75aa5acc59d974f105a18fb",
+      "matches_committed_bytes": true
+    },
+    "downloads/SHA256SUMS.txt": {
+      "HTTP": 200,
+      "bytes": 412,
+      "sha256": "77b6b74809cf76325b454e9e2652c474e3b0433ee5acba82aae93c2f8a92e039",
+      "matches_committed_bytes": true
+    },
+    "qa/seasonal-routes-v0.0.67-native.json": {
+      "HTTP": 200,
+      "bytes": 102058,
+      "sha256": "06e44b35858f58f34a7379edf7bd395579531e574bfa29d8f4f68211227ee5b2",
+      "matches_committed_bytes": true
+    },
+    "qa/seasonal-routes-v0.0.67-public.json": {
+      "HTTP": 200,
+      "bytes": 2791,
+      "sha256": "18d4b36b283182f166898c3974aeb44268b25f9403e0217a0940ce38a0a36b8d",
+      "matches_committed_bytes": true
+    }
+  },
+  "browser_candidate": {
+    "commit": "01e2d6f0b45880405055d13f2cf7b9e8832e7437",
+    "run": 39351355249,
+    "widths": [
+      320,
+      360,
+      412,
+      580,
+      581,
+      619,
+      620,
+      690,
+      768,
+      820,
+      900,
+      960,
+      1024,
+      1280
+    ],
+    "individual_season_views": 84,
+    "All_Seasons_unions": 21,
+    "walkthrough_methods": 409,
+    "published_files_match_tested_candidate": true
+  },
+  "preserved": [
+    "previous 64 seasonal variants and all original native entries",
+    "all species and approved sprite/profile/portrait content except source metadata",
+    "tablet CSS and cache keys",
+    "All Seasons tuple availability",
+    "unchanged Android 1.0.9 signing identity and Windows 1.0.26 package; web snapshot uses existing live wrappers"
+  ],
+  "limits": [
+    "Browser execution was verified on the exact candidate in CI; production byte verification confirmed identical published reader/data files.",
+    "No fresh physical companion installation, natural full game progression, historical-save fixture matrix or Pizza Boy coverage was claimed."
+  ]
+}
