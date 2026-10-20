@@ -1,0 +1,142 @@
+{
+  "version": "0.0.68",
+  "scope": "Owner-approved bedroom surround only; all other proposed visual changes rejected and restored to v0.0.67",
+  "runtime_source": "f7c9f445ab2c3897ae8df5640589a87eb4e592b5",
+  "baseline": "e019d5f85e550bc1e69bfa7c38eea710c85ec916",
+  "state": "Verified candidate; publication pending",
+  "CI": {
+    "project": {
+      "run": 39435438715,
+      "job": 118671089680,
+      "conclusion": "success"
+    },
+    "Debug_Release_BPS_and_second_decoder": {
+      "run": 39435438733,
+      "job": 118671093530,
+      "conclusion": "success"
+    },
+    "native_Debug_and_unmodified_Release": {
+      "run": 39435438741,
+      "job": 118671088802,
+      "conclusion": "success"
+    }
+  },
+  "artifacts": {
+    "patch": {
+      "id": 12271656319,
+      "ZIP_sha256": "a805f5cd1295879ce341b91622a1680faf8182fad13c1053d8909c25874f52b7"
+    },
+    "native": {
+      "id": 12272436566,
+      "ZIP_sha256": "92fc4459cbcac739befe1b40adfaba6aad1cff829737379b3ff55d646fc01a3d"
+    }
+  },
+  "accepted_bedroom_frame_exact_match_previous_review": true,
+  "reviewed_male_pixel_changes_only_lavender_to_black": 19968,
+  "both_layouts_Release_Continue_equal_Debug_pixels": true,
+  "Release_wardrobe_equals_Debug_pixels": true,
+  "patches": {
+    "Pokemon-Emerald-Legends-v0.0.68-debug.bps": {
+      "size": 17290964,
+      "sha256": "6b2a9464aa881d916971d7a14e53aaf5738680337cc360d76507593a45898c45",
+      "source_crc32": "0x1f1c08fb",
+      "target_crc32": "0xa3880af7",
+      "patch_crc32": "0x7056af9c"
+    },
+    "Pokemon-Emerald-Legends-v0.0.68.bps": {
+      "size": 17458986,
+      "sha256": "ae0745df37b63fbbd1a91a9807bbe4bb4295a8c8484ea5f49a8b3d729da66b28",
+      "source_crc32": "0x1f1c08fb",
+      "target_crc32": "0x137048b2",
+      "patch_crc32": "0xf2ecaacc"
+    }
+  },
+  "independent_browser_decoder": {
+    "passed": true,
+    "source_SHA1": "f3ae088181bf583e55daf962a92bb46f4f1d07b7",
+    "decoder": "Actual committed docs/patcher.js applyBps executed in Node VM; independent of Floating IPS",
+    "decoder_sha256": "2bae44465609be25f55a1c0e96a8229facd8bdcb9e858e60e33db11ee78d2005",
+    "verifier_sha256": "bbb6057cadba5a72d14e73c1f75cc57563c121eebd68e0ce97869fd18a110d8b",
+    "results": {
+      "Pokemon-Emerald-Legends-v0.0.68.bps": {
+        "patch_sha256": "ae0745df37b63fbbd1a91a9807bbe4bb4295a8c8484ea5f49a8b3d729da66b28",
+        "target_sha256": "b77bbfc067fdd7545eae987dfc6327f03a476a9f15ceb591b9d0f9e766821160",
+        "target_bytes": 33554432,
+        "exact_native_ROM_match": true
+      },
+      "Pokemon-Emerald-Legends-v0.0.68-debug.bps": {
+        "patch_sha256": "6b2a9464aa881d916971d7a14e53aaf5738680337cc360d76507593a45898c45",
+        "target_sha256": "0173808a1169fd9f279481416dc9cf23bf87556ef29c9818ac6fcf46a5bbc439",
+        "target_bytes": 33554432,
+        "exact_native_ROM_match": true
+      }
+    },
+    "limits": "Byte-decoder test; physical browser file-picker/download and Pizza Boy execution are separate checks."
+  },
+  "Debug_native": {
+    "ROM_sha256": "0173808a1169fd9f279481416dc9cf23bf87556ef29c9818ac6fcf46a5bbc439",
+    "ROM_version": "0.0.68",
+    "state": "Bedroom-only v0.0.68; other visual proposals rejected and restored to v0.0.67",
+    "emulator": "mGBA 0.10.2",
+    "controlled_setup": "Private callback prepares both bedrooms and native manual-clock day/night Fallarbor. Production ROM stays unchanged; do not publish private ROM or save fixtures.",
+    "movement_palette_cases": 72,
+    "wardrobe_apply_cancel_card_cycles": 16,
+    "battery_roundtrip_fields_per_gender": 9,
+    "outfit_corruption_reproduced": false,
+    "limits": "Controlled current saves and direct state switches; not historical saves or a Pizza Boy device reproduction.",
+    "images": {
+      "center-day.png": "22966669c7943a0623d589e52bd3684610e5479d71d4cd5fe3d7fbad59734fcb",
+      "center-night.png": "08152598a239d65a9574bcf4edbf2db61ec2db2722075358f8b7327910ee2171",
+      "female-room-initial.png": "136a44604f4df17d7334fb44f528e412195cc1b3aa0564d624ce7eaf894f3329",
+      "female-room.png": "4ee3de82e166163de9864d4685eb7d624ebf2dc4227641d2860809c448b41579",
+      "hoenn-card.png": "7549ba0280a51429a368b4726211e5e3b5d1a5936e830917e2f537006db332ee",
+      "kanto-card.png": "c60c2a78c6d7c933fc669b8bdcc4510cc66519653e599265b68a8beaa307c78a",
+      "male-room-initial.png": "7efbe49453189f392500b0860e34bc9447ba56a203be370725d71bf0056c2e0a",
+      "male-room-return.png": "48630541596f7168a6203498591351e75f0b0c3ea60fda21377d6db6bb0189d3",
+      "male-room.png": "7efbe49453189f392500b0860e34bc9447ba56a203be370725d71bf0056c2e0a",
+      "pause-page1.png": "3e2aeb4d2acf2d0eeb35118f6391b8e729e9dccbbf12e118b5ecc14d5fafae13",
+      "pause-page2.png": "5e27d14ba71dd440a2c8a1594d8346c9ec28064b0e93b0a83574840158e185b9",
+      "wardrobe-cancel-room.png": "7efbe49453189f392500b0860e34bc9447ba56a203be370725d71bf0056c2e0a",
+      "wardrobe.png": "22b8d0b6133cc3291f5169e1e036fa91591d235a83be1f22b38c0f8b10a8b405"
+    }
+  },
+  "Release_native": {
+    "ROM_sha256": "b77bbfc067fdd7545eae987dfc6327f03a476a9f15ceb591b9d0f9e766821160",
+    "ROM_unmodified": true,
+    "input": "Normal Release Continue and controller buttons; no RAM/callback writes",
+    "fixtures": "Controlled current Debug saves, not historical owner saves",
+    "images": {
+      "male/kanto-card.png": "6fc9a4f97f1dd60f4d7dd5d4aaa4ce15cd4d3bf83020cfe0ce5e1bee6dbb67c2",
+      "male/wardrobe-return.png": "83ab9d87f8cff2e9cc643a2a04347ebcdd0dd47cc80d34aafd22c2dcab7a1ae9",
+      "male/pause-page2.png": "83250136e36234df4c731472fa85dec5972b71adc63685dd1e3660d297f92b6d",
+      "male/continued.png": "7efbe49453189f392500b0860e34bc9447ba56a203be370725d71bf0056c2e0a",
+      "male/wardrobe.png": "22b8d0b6133cc3291f5169e1e036fa91591d235a83be1f22b38c0f8b10a8b405",
+      "male/pause-page1.png": "ade75e1959cb26ccd7ee413e95245e23d557ca3c77728ff2fef5c0aef9a1ef14",
+      "male/hoenn-card.png": "7549ba0280a51429a368b4726211e5e3b5d1a5936e830917e2f537006db332ee",
+      "female/kanto-card.png": "aa8185fa0deccc2c5ca3293aa2ca6c2872b162e13907638258707614822d78ff",
+      "female/wardrobe-return.png": "b50b253d52ce01e0f979e0a9baad35a5338638044a6eebe851cb17049660e831",
+      "female/pause-page2.png": "5e2250a046f34d3bb767f5b32bf555b365af95ee52a7482ff8e34da45af5f075",
+      "female/continued.png": "136a44604f4df17d7334fb44f528e412195cc1b3aa0564d624ce7eaf894f3329",
+      "female/wardrobe.png": "7edaf71f76fa6285954644617d081ec4414d4a0099eda499d3c2d78e63914ad7",
+      "female/pause-page1.png": "263cb3f449ceb585e2d16a5211bd2076d732b3465a944122b8f47f24bd87089a",
+      "female/hoenn-card.png": "4da9b2692f3752134f42a307174f8661e93303f4d259fd871b46622491f8baec",
+      "day/kanto-card.png": "6fc9a4f97f1dd60f4d7dd5d4aaa4ce15cd4d3bf83020cfe0ce5e1bee6dbb67c2",
+      "day/pause-page2.png": "231417d993d3543a1cf2fd4aba28db7f20300582ba5b21250d0a683bb86556ac",
+      "day/continued.png": "d0da2706ae3d55dec3f4ce7955e937c09cbcd96a3694e5d42283b7469383a7b8",
+      "day/pause-page1.png": "76c101bbc098d6576f5b78e36c132a70f32e705c864f9622d81fc07754813906",
+      "day/hoenn-card.png": "7549ba0280a51429a368b4726211e5e3b5d1a5936e830917e2f537006db332ee",
+      "night/kanto-card.png": "6fc9a4f97f1dd60f4d7dd5d4aaa4ce15cd4d3bf83020cfe0ce5e1bee6dbb67c2",
+      "night/pause-page2.png": "af2d509fa646781f76b9bc6729d9a6288b21aa48b66d67c3b38eb8de3b0acb5c",
+      "night/continued.png": "c67fe9f88e621411e99489bdad241d810e8d91d3f467f158e709c6acb8af2fd0",
+      "night/pause-page1.png": "83bb5479661238ef9950f341da34c74820336bdcec2e3049579905873b22599c",
+      "night/hoenn-card.png": "7549ba0280a51429a368b4726211e5e3b5d1a5936e830917e2f537006db332ee"
+    }
+  },
+  "limits": "Builds and native tests executed in GitHub CI; artifacts downloaded, hashes/CRCs and actual pixels reviewed locally. No fresh local native build was completed after transient compiler dependencies were lost. Controlled saves do not establish an authentic historical-save matrix or a Pizza Boy device reproduction. Rare outfit corruption remains unresolved.",
+  "isolated_patch_staging": {
+    "branch": "qa/bedroom-v68-patches-f7c9f445",
+    "run": 39473246491,
+    "conclusion": "success",
+    "temporary_workflow_excluded_from_review_tree": true
+  }
+}

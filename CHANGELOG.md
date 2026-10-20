@@ -4,6 +4,12 @@ All notable Pokémon Emerald: Legends project changes are documented here.
 
 For build-specific player views, see [CHANGELOG-RELEASE.md](CHANGELOG-RELEASE.md) and [CHANGELOG-DEBUG.md](CHANGELOG-DEBUG.md). The canonical history below records the project as a whole.
 
+## [0.0.68] - 2026-10-20
+
+- Restored the native black surround in both trainer bedrooms by isolating its palette from decoration colors.
+- Preserved the original furniture, rug and bed colors, ceiling trim and saved decoration choices.
+- Applied the same bedroom repair to Release and Debug.
+
 ## Wiki 1.7.0 - 2026-10-18
 
 - Refreshed the owner-requested wiki snapshot against published game v0.0.62, including 63 quests, 130 achievements, thirty research requests, tracked objectives, bedroom/family changes and Living Hoenn conversations.

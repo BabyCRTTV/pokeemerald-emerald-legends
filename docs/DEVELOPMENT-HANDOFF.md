@@ -1,5 +1,15 @@
 # Development handoff
 
+## Bedroom-only v0.0.68 revision — 20 October 2026
+
+**Model: GPT-6 (Codex) | Reasoning: apply explicit owner rejection, retain only the accepted native palette repair.**
+
+Owner rejected every proposed visual edit except the bedroom surround. Revised [PR #86](https://github.com/BabyCRTTV/pokeemerald-emerald-legends/pull/86) to bedroom-only. Restored Trainer Card, pause menu, night-sign generator/palettes and their tests exactly to published v0.0.67 `e019d5f8`. The previous four-fix preview/patch receipts and v0.0.68 patch bytes are superseded; do not ship or reuse them. The only gameplay change now remaps twelve existing bedroom-void tile references from reused palette 11 to the identical black in slot 5. Native pixels, flips, geometry, ceiling highlight, furniture, decorations and saved IDs/layouts stay intact; no migration is needed.
+
+Bedroom visuals are explicitly approved. Reduced source `f7c9f445` passed project **39435438715**, Debug/Release/BPS plus independent browser-decoder **39435438733**, and native Debug/unmodified Release **39435438741**. Both downloaded patch targets matched the separately native-tested ROM hashes. Both bedroom layouts matched Debug/Release; the male frame exactly matched the accepted review, with only the old lavender surround becoming black against v0.0.67. Source audit confirmed only twelve bedroom palette references and version labels differ in game inputs. Master is still v0.0.67; publication/live-byte verification is next. No rejected change was published. [Current QA and release state](qa/visual-repairs.md). Keep the useful native diagnostic harness and PR-only verified BPS artifact retention; captures of other interfaces are baseline regressions only.
+
+Rare outfit corruption is **unreproduced and unresolved**. Controlled palette and flash tests do not establish a Pizza Boy fix. Badge/sign/menu reports also remain open after rejection; do not apply speculative recoloring or artwork replacements. Hidden grottos remain selected and deferred until this visual work is settled. Preserve shipped routes, wardrobe, seasons, approved artwork and quality standards. No new durable AGENTS.md rule was necessary.
+
 ## Current release — v0.0.67 seasonal Routes 117–121 (20 October 2026)
 
 **Model: GPT-6.1 | Reasoning: preserve native encounter dependencies/terrain and approved art while appending five routes.**

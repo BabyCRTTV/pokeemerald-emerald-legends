@@ -2,6 +2,12 @@
 
 This is the player-facing history for the recommended **Release** build. Shared Legends changes are repeated here so this file stands on its own; Release-only behavior is called out separately.
 
+## [0.0.68] - 2026-10-20
+
+- Restored the native black surround in both trainer bedrooms by isolating its palette from decoration colors.
+- Preserved the original furniture, rug and bed colors, ceiling trim and saved decoration choices.
+- Applied the same bedroom repair to Release and Debug.
+
 ## [0.0.67] - 2026-10-20
 
 - Added 40 seasonal visitors across Generations 1–9 to Routes 117–121, with two visitors per route in each season.
