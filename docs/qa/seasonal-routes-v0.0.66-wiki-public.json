@@ -1,0 +1,142 @@
+{
+  "model": "GPT-6.1",
+  "verified_utc": "2026-10-20T00:48:42.064729+00:00",
+  "merge": "31f3c00fe00ac84b32fb0c6d94b23463f9b6c613",
+  "Pages": 39349714877,
+  "LegendsDex": "1.4.0",
+  "game": "0.0.66",
+  "files": {
+    "wiki/dex.html": {
+      "HTTP": 200,
+      "bytes": 10218,
+      "sha256": "8089b11644ceeda42edbf9199622f5b04db5753117aef5c91c529ba5e884a892",
+      "matches_merged_source": true
+    },
+    "wiki/dex.js": {
+      "HTTP": 200,
+      "bytes": 22337,
+      "sha256": "9dd05e85e82ddf5fac280b412a391e2364149e7702e7d09f0be266c2c77f602b",
+      "matches_merged_source": true
+    },
+    "wiki/dex-data.json": {
+      "HTTP": 200,
+      "bytes": 650991,
+      "sha256": "fc9e059faea5c123b2314dc32a13219b3aaf268db9a7b3a4e27bf184a067829f",
+      "matches_merged_source": true
+    },
+    "wiki/dex-profiles.js": {
+      "HTTP": 200,
+      "bytes": 177391,
+      "sha256": "ffb8101834fb7ae96d8690220ca391ae4de48b34a0fab377ad83b26ad82f8c10",
+      "matches_merged_source": true
+    },
+    "wiki/dex-sprite-atlas.js": {
+      "HTTP": 200,
+      "bytes": 18786,
+      "sha256": "0d7b98116db45ba00218a57a85f9e4faca8d19ce88280775a5836122c71f34bf",
+      "matches_merged_source": true
+    },
+    "wiki/dex-portrait-sources.json": {
+      "HTTP": 200,
+      "bytes": 342,
+      "sha256": "8f984ddc6de9e73e5207f980203a0205be6c863d5356d9dacf222d341f67ec8d",
+      "matches_merged_source": true
+    },
+    "wiki/index.html": {
+      "HTTP": 200,
+      "bytes": 12360,
+      "sha256": "e97a6abb6cfeefd6af5ebd150474e4d78a84a5185fd6303059dc7cc6de3bb8f1",
+      "matches_merged_source": true
+    },
+    "wiki/walkthrough-maps.json": {
+      "HTTP": 200,
+      "bytes": 115267,
+      "sha256": "d165eb8fb249e2ac3b73fe9a2d22f23f937a4db74d8a3b514a3771d824929d8d",
+      "matches_merged_source": true
+    },
+    "wiki/README.md": {
+      "HTTP": 200,
+      "bytes": 12717,
+      "sha256": "58cdf69a7737d6eb0f13934071ffe371276fb302614882ca41b8284354c6680f",
+      "matches_merged_source": true
+    },
+    "changelog.html": {
+      "HTTP": 200,
+      "bytes": 115687,
+      "sha256": "1effcdbe0ef8281890fab95328446e651576e33b20dfff384202a17a97141890",
+      "matches_merged_source": true
+    },
+    "features/seasonal-encounters.md": {
+      "HTTP": 200,
+      "bytes": 11385,
+      "sha256": "2d48a73207a095c7cf947cca010b0203c8c8211895b8abccf839d838b730551e",
+      "matches_merged_source": true
+    },
+    "index.html": {
+      "HTTP": 200,
+      "bytes": 3538,
+      "sha256": "479662ac42eb9195bfad1ac208f529e36f6103c21f20769b55c3c4e9bb85765c",
+      "matches_merged_source": true
+    },
+    "patcher.js": {
+      "HTTP": 200,
+      "bytes": 9353,
+      "sha256": "2767da726bad24aa1be71d90c5ef5595da27b2defe0b1156480f9f075f808e7a",
+      "matches_merged_source": true
+    },
+    "downloads/SHA256SUMS.txt": {
+      "HTTP": 200,
+      "bytes": 412,
+      "sha256": "3b0e07a1c5359d0067fcef5051c7fa9f12147010d8a6c42e1381c880629b69fc",
+      "matches_merged_source": true
+    }
+  },
+  "PR_gates": {
+    "project": 39349488917,
+    "wiki_browser": 39349488757,
+    "Android_build": 39349488756
+  },
+  "local_checks": [
+    "64 individual-season reader views and 16 All Seasons unions, exact tuple availability, native fallbacks and URL round trips",
+    "409 walkthrough methods",
+    "64/48/32/16 importer snapshots",
+    "64 actual-C encounter tables",
+    "prior 48 seasonal variants/native entries/species and approved asset content preserved"
+  ],
+  "limits": [
+    "Fresh browser checks were performed in GitHub CI because local browser archives were truncated.",
+    "No game code, artwork or saved data changed in this closeout. Existing game-playtest and second live patch decoder limits remain in the game receipt."
+  ],
+  "production_gates": {
+    "project": 39349715476,
+    "wiki_browser": 39349715486,
+    "Android_build": 39349715450,
+    "Windows_build_publish": 39349715489,
+    "Windows_manifest_Pages": 39349893929
+  },
+  "audited_final_head": "8d495a4c88149148697e9040fe02343275c68964",
+  "windows_manifest": {
+    "available": true,
+    "platform": "windows",
+    "version": "1.0.25",
+    "url": "https://github.com/BabyCRTTV/pokeemerald-emerald-legends/releases/download/wiki-desktop/Legends-Wiki-Setup.exe",
+    "sha256": "ed20b3931e1f875774486fb98ab132b2f374fdcf721f78729cb4a7f079f3283c"
+  },
+  "android_manifest": {
+    "available": true,
+    "platform": "android",
+    "version": "1.0.9",
+    "versionCode": 9,
+    "url": "https://babycrttv.github.io/pokeemerald-emerald-legends/downloads/Emerald-Legends-Wiki.apk",
+    "signing": "persistent-manual",
+    "sha256": "e9fa5dae888ed47f5f0af646529920908f7ab7fd9944156038096bd4ed948d10",
+    "certificateSha256": "512877b4caedb6c7e3d5ca1e02d11067a910599c3d1b9def231c6c55ef909d42"
+  },
+  "Windows_live_installer": {
+    "HTTP": 200,
+    "bytes": 82408755,
+    "sha256": "ed20b3931e1f875774486fb98ab132b2f374fdcf721f78729cb4a7f079f3283c",
+    "matches_published_manifest_and_GitHub_asset_digest": true,
+    "physical_install_not_tested": true
+  }
+}

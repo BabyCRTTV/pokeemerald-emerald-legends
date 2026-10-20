@@ -42,5 +42,37 @@
   "limits": [
     "Production CI verified Floating IPS application against canonical clean Emerald and exact built targets. This resumption verified identical live patch bytes and patch CRCs; it did not independently decode live patches with a second decoder because no local clean base/compiler was available.",
     "Controlled Debug cases do not establish natural progression, Release interaction, historical saves or Pizza Boy coverage."
-  ]
+  ],
+  "site_before_wiki_closeout": {
+    "downloads/SHA256SUMS.txt": {
+      "HTTP": 200,
+      "bytes": 412,
+      "sha256": "3b0e07a1c5359d0067fcef5051c7fa9f12147010d8a6c42e1381c880629b69fc",
+      "matches_audited_head": true
+    },
+    "index.html": {
+      "HTTP": 200,
+      "bytes": 3538,
+      "sha256": "479662ac42eb9195bfad1ac208f529e36f6103c21f20769b55c3c4e9bb85765c",
+      "matches_audited_head": true
+    },
+    "patcher.html": {
+      "HTTP": 200,
+      "bytes": 2679,
+      "sha256": "27184833e1ebac65449ec3076ced3a16b727fb59da6cb3f935c3cc0e5d73f99d",
+      "matches_audited_head": true
+    },
+    "patcher.js": {
+      "HTTP": 200,
+      "bytes": 9353,
+      "sha256": "2767da726bad24aa1be71d90c5ef5595da27b2defe0b1156480f9f075f808e7a",
+      "matches_audited_head": true
+    },
+    "changelog.html": {
+      "HTTP": 200,
+      "bytes": 115193,
+      "sha256": "ee65eff14b8c41e15976ff08ca1cdd7dc1cc913b81fc072c549591963dea63c9",
+      "matches_audited_head": true
+    }
+  }
 }

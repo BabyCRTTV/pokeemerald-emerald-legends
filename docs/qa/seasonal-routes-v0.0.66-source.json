@@ -6,7 +6,13 @@
   "visitors": 32,
   "header_sha256": "9b712c85c95d82da8f85c3e7d8f119cfe507b7a4c3ddfda24bcf8fcadc17fa6e",
   "save_change": false,
-  "status": "Implementation in verification; not published",
-  "native_scenarios_planned": 136,
-  "user_facing_DexNav_previews": false
+  "status": "Shipped via PR #82; production CI and fresh live patch hashes/CRCs verified. LegendsDex parity published via PR #83.",
+  "user_facing_DexNav_previews": false,
+  "native_scenarios_verified": 136,
+  "native_scenarios_planned_at_original_checkpoint": 136,
+  "resumption_model": "GPT-6.1",
+  "public_receipts": [
+    "seasonal-routes-v0.0.66-public.json",
+    "seasonal-routes-v0.0.66-wiki-public.json"
+  ]
 }
