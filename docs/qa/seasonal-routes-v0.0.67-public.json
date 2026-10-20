@@ -1,0 +1,66 @@
+{
+  "model": "GPT-6.1",
+  "version": "0.0.67",
+  "verified_utc": "2026-10-20T10:12:44.378284+00:00",
+  "source_commit": "0d13f23794686525203fcfe3f8c6496e6921d2f2",
+  "merge": "cf01e23e6a21cc7c6df1ece783146b9bf5d8ab02",
+  "patch_commit": "a36222038e9416bfa0c0d77ad9d3ca7cbb11fa68",
+  "production_gates": {
+    "project": 39405118843,
+    "builds_and_canonical_BPS": 39405118865,
+    "native_mGBA": 39405118767,
+    "patch_Pages": 39406145909,
+    "independent_live_two_decoders": 39405313944
+  },
+  "patches": {
+    "release": {
+      "url": "https://babycrttv.github.io/pokeemerald-emerald-legends/downloads/Pokemon-Emerald-Legends-v0.0.67.bps",
+      "HTTP": 200,
+      "bytes": 17458958,
+      "sha256": "94a39ca8cf46d526663460b6534d4876c52f0438d8e3a04ccc6abd4e6aecdbed",
+      "matches_committed_bytes": true,
+      "source_CRC32": "1f1c08fb",
+      "target_CRC32": "cd51c95b",
+      "patch_CRC32": "91634132",
+      "patch_CRC_verified": true
+    },
+    "debug": {
+      "url": "https://babycrttv.github.io/pokeemerald-emerald-legends/downloads/Pokemon-Emerald-Legends-v0.0.67-debug.bps",
+      "HTTP": 200,
+      "bytes": 17290942,
+      "sha256": "2d9b41858636c499cdc7ab09812b659256cd3ffb368961e22b8cd0e1b3593d23",
+      "matches_committed_bytes": true,
+      "source_CRC32": "1f1c08fb",
+      "target_CRC32": "059fecba",
+      "patch_CRC32": "e9729b85",
+      "patch_CRC_verified": true
+    }
+  },
+  "limits": [
+    "Controlled Debug fixtures are not a natural full progression, full hunt, Release interaction, historical-save fixture matrix or Pizza Boy test."
+  ],
+  "independent_live_decoding": {
+    "version": "0.0.67",
+    "canonical_source_SHA1": "f3ae088181bf583e55daf962a92bb46f4f1d07b7",
+    "downloaded_browser_decoder_SHA256": "6affc429bc5ef970d2364062d24f7062d171004472305ab8968bf79f32806022",
+    "patches": {
+      "release": {
+        "patch_sha256": "94a39ca8cf46d526663460b6534d4876c52f0438d8e3a04ccc6abd4e6aecdbed",
+        "patch_bytes": 17458958,
+        "ROM_sha256": "57a658be512dde9499a192f5b60f3eb16d1fb25b3dac68154b79ec26994f891f",
+        "Floating_IPS_passed": true,
+        "downloaded_browser_decoder_passed": true,
+        "source_target_patch_CRCs_passed": true
+      },
+      "debug": {
+        "patch_sha256": "2d9b41858636c499cdc7ab09812b659256cd3ffb368961e22b8cd0e1b3593d23",
+        "patch_bytes": 17290942,
+        "ROM_sha256": "87680bf3bee6e5a953562858fd096923af45b82420894081caa0da46da2d9cd8",
+        "Floating_IPS_passed": true,
+        "downloaded_browser_decoder_passed": true,
+        "source_target_patch_CRCs_passed": true
+      }
+    },
+    "scope": "Fresh live HTTP downloads, independently decoded with Floating IPS and downloaded browser applyBps, CRCs checked by both; exact production manifest targets. No ROM is uploaded."
+  }
+}

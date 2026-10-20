@@ -207,7 +207,7 @@ Year-round residents: Poochyena, Whismur, Nincada, Abra, Taillow, Skitty.
 | Autumn | Nymble | Patrat |
 | Winter | Wooloo | Espurr |
 
-## Routes 117–121 — v0.0.67 (in verification)
+## Routes 117–121 — v0.0.67 (published and verified)
 
 **Model: GPT-6.1 | Reasoning: extend native land rosters while preserving habitat, encounter dependencies, approved assets and save compatibility.**
 

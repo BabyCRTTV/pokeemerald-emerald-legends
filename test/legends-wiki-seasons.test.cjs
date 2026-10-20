@@ -34,11 +34,16 @@ const server=http.createServer((req,res)=>{
   assert(new URL(page.url()).searchParams.get('season')==='all');
   await page.reload();await route.waitFor();assert.equal(await page.locator('#season').inputValue(),'all');
   await page.locator('#search').fill('Route 101');assert.equal(await route.locator('.encounter').count(),11);
-  for(const n of [113,114,115,116]){
+  for(const n of [113,114,115,116,117,118,119,120,121]){
    await page.locator('#search').fill('Route '+n);
    const card=page.locator('#route-MAP_ROUTE'+n);await card.waitFor();
    assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),'All Seasons overflow '+width+' route '+n);
    for(const row of await card.locator('.encounter').all())assert(await row.evaluate(e=>{const a=e.querySelector('.enc-availability').getBoundingClientRect(),n=e.querySelector('.species-copy').getBoundingClientRect(),r=e.querySelector('.rate').getBoundingClientRect();return a.left>=n.right-1&&a.right<=r.left+1;}),'All Seasons badge overlap '+width+' route '+n);
+   for(const row of await card.locator('.encounter').all())assert(await row.evaluate(e=>{
+    const name=e.querySelector('.species-copy strong'),level=e.querySelector('.enc-meta'),badge=e.querySelector('.availability-badge');
+    return name.getBoundingClientRect().height<=parseFloat(getComputedStyle(name).lineHeight)*2+1 &&
+     level.getBoundingClientRect().height<=parseFloat(getComputedStyle(level).lineHeight)+1 && badge.scrollWidth<=badge.clientWidth+1;
+   }),'readable All Seasons name, level and badge at '+width+' route '+n);
   }
   await page.locator('#season').selectOption('winter');
   await page.locator('#search').fill('Route 104');

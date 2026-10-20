@@ -1,12 +1,18 @@
 # Development handoff
 
-## Active work — v0.0.67 seasonal Routes 117–121
+## Current release — v0.0.67 seasonal Routes 117–121 (20 October 2026)
 
 **Model: GPT-6.1 | Reasoning: preserve native encounter dependencies/terrain and approved art while appending five routes.**
 
 Owner requested five more routes. Started from live `93ec8468`, including the independently merged tablet layout fix; preserved that fix and its cache keys. Appended twenty land tables/40 distinct new visitors across Generations 1–9, retaining all original residents (70%), prior 64 tables, exact native slot levels/weights and rates (Route119=15; others=20). Routes119/120 use native long grass. No map/script/artwork, save layout or persistent ID changed. Field surveys retain resident Grass/Water options, earlier-route Flying partners and the unchanged Castform gift; Day Care, Feebas fishing, Weather Institute/rival/Kecleon and Safari gates are untouched. Existing resolver consumers cover DexNav, wild generation, habitat maps and hints without redesign. [Rosters/rules](features/seasonal-encounters.md) · [source receipt](qa/seasonal-routes-v0.0.67-source.json).
 
-Extended shipped-C checks to 84 tables and native diagnostic coverage to 178 cases/45,568 actual creations, preserving the prior 136 scene indices. Importer supports 84/64/48/32/16 snapshots. Verification, Release/Debug builds/canonical BPS gates, native execution, publication and matching wiki source/cache keys remain pending at this checkpoint. Keep the recent tablet name-width regression and All Seasons tuple-derived availability. No routine user-facing previews or approval wait are needed. AGENTS.md reviewed; no durable preference changed.
+PR #85 merged as `cf01e23e`. Source `0d13f237` passed project **39351211731**, Release/Debug/canonical BPS **39351211697**, native **39351212024** and matching wiki/browser candidate **39351355249**. Actual-C checks covered 84 tables; importer covered 84/64/48/32/16 snapshots. Native passed 178 cases/45,568 real creations. The original 136 scenario indices and all 213 previous pixels were retained; all 279 production frames matched reviewed source. Reviewed three fully-seen native frames internally. Keep All Seasons tuple badges and the approved tablet name-width checks.
+
+Production project **39405118843**, builds/canonical BPS **39405118865**, native **39405118767** and patch Pages **39406145909** passed. Patch commit `a3622203` shipped both BPS downloads. Fresh live patch verification **39405313944** applied both downloads with Floating IPS and the downloaded browser decoder against a freshly built canonical clean Emerald; CRCs and exact production target hashes matched, including native Debug `87680bf3…2d9cd8`. Local public bytes also matched committed patches. This release completed the fresh second-decoder check that remained unperformed in the earlier v0.0.66 checkpoint. [Detailed QA](qa/seasonal-routes-v0.0.67.md) · [native receipt](qa/seasonal-routes-v0.0.67-native.json) · [public patch/decoder receipt](qa/seasonal-routes-v0.0.67-public.json).
+
+Matching wiki source/cache-key publication is in progress; its candidate passed full browser QA at fourteen widths, 84 seasonal views, 21 All Seasons unions and all 409 walkthrough methods. Exactly five land methods gained variants; earlier variants/native entries/species/art and tablet styles were retained. Exclude temporary QA workflow triggers when publishing. No routine user-facing preview/approval wait is needed. AGENTS.md reviewed; no durable preference changed. Publication occurred October 20 after the overnight interruption; changelog dates reflect that.
+
+Limits remain controlled Debug fixtures rather than natural full progression, complete hunts, Release interactions, authentic historical-save matrix or Pizza Boy coverage. Broader gameplay/save fixtures, balance checks and the older conflicting wiki PR #56 remain backlog; do not reimplement shipped Kanto, wardrobe, bedroom or artwork features.
 
 ## Tablet encounter layout repair — 19 October 2026
 
@@ -58,7 +64,7 @@ On 14 October 2026 the owner reversed the earlier permission to ignore older sav
 
 The owner requested mGBA gameplay testing and previews **exclusively from actual Pokémon Emerald: Legends**. `tools/legends/mgba_gameplay_smoke.c` and `test/mgba-gameplay-smoke.py` launch the unchanged compiled Debug ROM under mGBA's native core, press real SELECT for Debug Quickstart, verify the overworld callback and capture unmodified 240×160 video-buffer frames. `.github/workflows/mgba-gameplay-qa.yml` builds and runs this regression in CI and uploads a screenshot-only artifact (no ROM or save). This is a **boot/Quickstart smoke check**, not proof that Birch/Devon research, Weather Institute bulletin or all four NPC branches have been played through. Those must receive actual targeted emulator runs later. For screenshots and external previews, only use captured frames traceable to this project's built ROM, never reference Pokémon screenshots or synthesized equivalents. Record live CI result before claiming it passed.
 
-## Current state — v0.0.66 and LegendsDex 1.4.0 published (19 October 2026)
+## Previous state — v0.0.66 and LegendsDex 1.4.0 published (19 October 2026)
 
 **Model: GPT-6.1 | Reasoning: verify live source and release evidence, recover the tested candidate, preserve approved assets and repair tuple-specific season badges.**
 

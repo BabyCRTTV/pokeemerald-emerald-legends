@@ -2,7 +2,7 @@
 
 This is the player-facing history for the recommended **Release** build. Shared Legends changes are repeated here so this file stands on its own; Release-only behavior is called out separately.
 
-## [0.0.67] - 2026-10-19
+## [0.0.67] - 2026-10-20
 
 - Added 40 seasonal visitors across Generations 1–9 to Routes 117–121, with two visitors per route in each season.
 - Retained every original resident year-round, the previous 64 seasonal tables, native per-slot levels and weights, and Route 119’s lower encounter rate and long-grass habitat.

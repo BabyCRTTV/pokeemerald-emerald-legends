@@ -22,7 +22,7 @@ for(const route of data.maps)for(const method of route.methods){
   assert.equal([...html.matchAll(/walkthrough-rate">(\d+)%/g)].reduce((s,x)=>s+Number(x[1]),0),100);
  }
 }
-assert.equal(count,16);
+assert.equal(count,21);
 const m=data.maps[0],empty={...m,methods:m.methods.map(x=>({...x,seasonalVariants:[]}))};
 assert(!c.render({mapId:m.id},new Map([[m.id,empty]]),species).includes('Year-round residents shown.'));
-console.log('PASS: all 409 walkthrough methods, sixteen seasonal methods show actual 65%/70% resident shares and seasonal guidance; other methods and empty variants retain full tables');
+console.log('PASS: all 409 walkthrough methods, twenty-one seasonal methods show actual 65%/70% resident shares and seasonal guidance; other methods and empty variants retain full tables');

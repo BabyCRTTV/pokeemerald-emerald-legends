@@ -147,6 +147,7 @@
   },
   "header_sha256": "b4eefe307ac31d181795ad9bfbeb30c093a7db40e0bf1bef2e1b548bf96b61a6",
   "save_change": false,
-  "native_cases_planned": 178,
-  "status": "Implementation in verification; not published"
+  "status": "Published game; production native/builds/canonical BPS gates and independent decoding of both public patches passed. Matching wiki publication follows.",
+  "native_cases_verified": 178,
+  "publication_date": "2026-10-20"
 }
