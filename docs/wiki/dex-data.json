@@ -36037,6 +36037,870 @@
           ]
         }
       ]
+    },
+    {
+      "id": "MAP_LEGENDS_GROTTO_LEAFSHADE",
+      "name": "Leafshade Hollow",
+      "region": "Grotto",
+      "parentRegion": "Hoenn",
+      "description": "Petalburg Woods · One visible visitor. After capture or defeat, take 4,500 steps to renew it. Fleeing or losing preserves the visitor.",
+      "methods": [
+        {
+          "id": "grotto",
+          "label": "Grotto visitor",
+          "encounterRate": 100,
+          "entries": [
+            {
+              "id": "ZORUA",
+              "min": 8,
+              "max": 12,
+              "rate": 30,
+              "seasons": [
+                "autumn"
+              ],
+              "time": "all-day"
+            },
+            {
+              "id": "PHANTUMP",
+              "min": 8,
+              "max": 12,
+              "rate": 25,
+              "seasons": [
+                "autumn"
+              ],
+              "time": "all-day"
+            },
+            {
+              "id": "EEVEE",
+              "min": 8,
+              "max": 12,
+              "rate": 20,
+              "seasons": [
+                "autumn"
+              ],
+              "time": "all-day"
+            },
+            {
+              "id": "RIOLU",
+              "min": 8,
+              "max": 12,
+              "rate": 15,
+              "seasons": [
+                "autumn"
+              ],
+              "time": "all-day"
+            },
+            {
+              "id": "CHESPIN",
+              "min": 8,
+              "max": 12,
+              "rate": 10,
+              "seasons": [
+                "autumn"
+              ],
+              "time": "all-day"
+            }
+          ],
+          "seasonalVariants": [
+            {
+              "season": "spring",
+              "entries": [
+                {
+                  "id": "RIOLU",
+                  "min": 8,
+                  "max": 12,
+                  "rate": 30,
+                  "seasons": [
+                    "spring"
+                  ],
+                  "time": "all-day"
+                },
+                {
+                  "id": "RALTS",
+                  "min": 8,
+                  "max": 12,
+                  "rate": 25,
+                  "seasons": [
+                    "spring"
+                  ],
+                  "time": "all-day"
+                },
+                {
+                  "id": "EEVEE",
+                  "min": 8,
+                  "max": 12,
+                  "rate": 20,
+                  "seasons": [
+                    "spring"
+                  ],
+                  "time": "all-day"
+                },
+                {
+                  "id": "ZORUA",
+                  "min": 8,
+                  "max": 12,
+                  "rate": 15,
+                  "seasons": [
+                    "spring"
+                  ],
+                  "time": "all-day"
+                },
+                {
+                  "id": "BULBASAUR",
+                  "min": 8,
+                  "max": 12,
+                  "rate": 10,
+                  "seasons": [
+                    "spring"
+                  ],
+                  "time": "all-day"
+                }
+              ]
+            },
+            {
+              "season": "summer",
+              "entries": [
+                {
+                  "id": "LARVESTA",
+                  "min": 8,
+                  "max": 12,
+                  "rate": 30,
+                  "seasons": [
+                    "summer"
+                  ],
+                  "time": "all-day"
+                },
+                {
+                  "id": "FENNEKIN",
+                  "min": 8,
+                  "max": 12,
+                  "rate": 25,
+                  "seasons": [
+                    "summer"
+                  ],
+                  "time": "all-day"
+                },
+                {
+                  "id": "EEVEE",
+                  "min": 8,
+                  "max": 12,
+                  "rate": 20,
+                  "seasons": [
+                    "summer"
+                  ],
+                  "time": "all-day"
+                },
+                {
+                  "id": "ZORUA",
+                  "min": 8,
+                  "max": 12,
+                  "rate": 15,
+                  "seasons": [
+                    "summer"
+                  ],
+                  "time": "all-day"
+                },
+                {
+                  "id": "SNIVY",
+                  "min": 8,
+                  "max": 12,
+                  "rate": 10,
+                  "seasons": [
+                    "summer"
+                  ],
+                  "time": "all-day"
+                }
+              ]
+            },
+            {
+              "season": "autumn",
+              "entries": [
+                {
+                  "id": "ZORUA",
+                  "min": 8,
+                  "max": 12,
+                  "rate": 30,
+                  "seasons": [
+                    "autumn"
+                  ],
+                  "time": "all-day"
+                },
+                {
+                  "id": "PHANTUMP",
+                  "min": 8,
+                  "max": 12,
+                  "rate": 25,
+                  "seasons": [
+                    "autumn"
+                  ],
+                  "time": "all-day"
+                },
+                {
+                  "id": "EEVEE",
+                  "min": 8,
+                  "max": 12,
+                  "rate": 20,
+                  "seasons": [
+                    "autumn"
+                  ],
+                  "time": "all-day"
+                },
+                {
+                  "id": "RIOLU",
+                  "min": 8,
+                  "max": 12,
+                  "rate": 15,
+                  "seasons": [
+                    "autumn"
+                  ],
+                  "time": "all-day"
+                },
+                {
+                  "id": "CHESPIN",
+                  "min": 8,
+                  "max": 12,
+                  "rate": 10,
+                  "seasons": [
+                    "autumn"
+                  ],
+                  "time": "all-day"
+                }
+              ]
+            },
+            {
+              "season": "winter",
+              "entries": [
+                {
+                  "id": "VULPIX",
+                  "min": 8,
+                  "max": 12,
+                  "rate": 30,
+                  "seasons": [
+                    "winter"
+                  ],
+                  "time": "all-day"
+                },
+                {
+                  "id": "SNOM",
+                  "min": 8,
+                  "max": 12,
+                  "rate": 25,
+                  "seasons": [
+                    "winter"
+                  ],
+                  "time": "all-day"
+                },
+                {
+                  "id": "EEVEE",
+                  "min": 8,
+                  "max": 12,
+                  "rate": 20,
+                  "seasons": [
+                    "winter"
+                  ],
+                  "time": "all-day"
+                },
+                {
+                  "id": "RIOLU",
+                  "min": 8,
+                  "max": 12,
+                  "rate": 15,
+                  "seasons": [
+                    "winter"
+                  ],
+                  "time": "all-day"
+                },
+                {
+                  "id": "PIPLUP",
+                  "min": 8,
+                  "max": 12,
+                  "rate": 10,
+                  "seasons": [
+                    "winter"
+                  ],
+                  "time": "all-day"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "MAP_LEGENDS_GROTTO_STILLWATER",
+      "name": "Stillwater Nook",
+      "region": "Grotto",
+      "parentRegion": "Hoenn",
+      "description": "Route 114 · One visible visitor. After capture or defeat, take 4,500 steps to renew it. Fleeing or losing preserves the visitor.",
+      "methods": [
+        {
+          "id": "grotto",
+          "label": "Grotto visitor",
+          "encounterRate": 100,
+          "entries": [
+            {
+              "id": "DREEPY",
+              "min": 18,
+              "max": 22,
+              "rate": 30,
+              "seasons": [
+                "autumn"
+              ],
+              "time": "all-day"
+            },
+            {
+              "id": "SABLEYE",
+              "min": 18,
+              "max": 22,
+              "rate": 25,
+              "seasons": [
+                "autumn"
+              ],
+              "time": "all-day"
+            },
+            {
+              "id": "BELDUM",
+              "min": 18,
+              "max": 22,
+              "rate": 20,
+              "seasons": [
+                "autumn"
+              ],
+              "time": "all-day"
+            },
+            {
+              "id": "DEINO",
+              "min": 18,
+              "max": 22,
+              "rate": 15,
+              "seasons": [
+                "autumn"
+              ],
+              "time": "all-day"
+            },
+            {
+              "id": "FUECOCO",
+              "min": 18,
+              "max": 22,
+              "rate": 10,
+              "seasons": [
+                "autumn"
+              ],
+              "time": "all-day"
+            }
+          ],
+          "seasonalVariants": [
+            {
+              "season": "spring",
+              "entries": [
+                {
+                  "id": "GIBLE",
+                  "min": 18,
+                  "max": 22,
+                  "rate": 30,
+                  "seasons": [
+                    "spring"
+                  ],
+                  "time": "all-day"
+                },
+                {
+                  "id": "CARBINK",
+                  "min": 18,
+                  "max": 22,
+                  "rate": 25,
+                  "seasons": [
+                    "spring"
+                  ],
+                  "time": "all-day"
+                },
+                {
+                  "id": "BELDUM",
+                  "min": 18,
+                  "max": 22,
+                  "rate": 20,
+                  "seasons": [
+                    "spring"
+                  ],
+                  "time": "all-day"
+                },
+                {
+                  "id": "DEINO",
+                  "min": 18,
+                  "max": 22,
+                  "rate": 15,
+                  "seasons": [
+                    "spring"
+                  ],
+                  "time": "all-day"
+                },
+                {
+                  "id": "MUDKIP",
+                  "min": 18,
+                  "max": 22,
+                  "rate": 10,
+                  "seasons": [
+                    "spring"
+                  ],
+                  "time": "all-day"
+                }
+              ]
+            },
+            {
+              "season": "summer",
+              "entries": [
+                {
+                  "id": "AXEW",
+                  "min": 18,
+                  "max": 22,
+                  "rate": 30,
+                  "seasons": [
+                    "summer"
+                  ],
+                  "time": "all-day"
+                },
+                {
+                  "id": "CHARCADET",
+                  "min": 18,
+                  "max": 22,
+                  "rate": 25,
+                  "seasons": [
+                    "summer"
+                  ],
+                  "time": "all-day"
+                },
+                {
+                  "id": "BELDUM",
+                  "min": 18,
+                  "max": 22,
+                  "rate": 20,
+                  "seasons": [
+                    "summer"
+                  ],
+                  "time": "all-day"
+                },
+                {
+                  "id": "DRATINI",
+                  "min": 18,
+                  "max": 22,
+                  "rate": 15,
+                  "seasons": [
+                    "summer"
+                  ],
+                  "time": "all-day"
+                },
+                {
+                  "id": "TOTODILE",
+                  "min": 18,
+                  "max": 22,
+                  "rate": 10,
+                  "seasons": [
+                    "summer"
+                  ],
+                  "time": "all-day"
+                }
+              ]
+            },
+            {
+              "season": "autumn",
+              "entries": [
+                {
+                  "id": "DREEPY",
+                  "min": 18,
+                  "max": 22,
+                  "rate": 30,
+                  "seasons": [
+                    "autumn"
+                  ],
+                  "time": "all-day"
+                },
+                {
+                  "id": "SABLEYE",
+                  "min": 18,
+                  "max": 22,
+                  "rate": 25,
+                  "seasons": [
+                    "autumn"
+                  ],
+                  "time": "all-day"
+                },
+                {
+                  "id": "BELDUM",
+                  "min": 18,
+                  "max": 22,
+                  "rate": 20,
+                  "seasons": [
+                    "autumn"
+                  ],
+                  "time": "all-day"
+                },
+                {
+                  "id": "DEINO",
+                  "min": 18,
+                  "max": 22,
+                  "rate": 15,
+                  "seasons": [
+                    "autumn"
+                  ],
+                  "time": "all-day"
+                },
+                {
+                  "id": "FUECOCO",
+                  "min": 18,
+                  "max": 22,
+                  "rate": 10,
+                  "seasons": [
+                    "autumn"
+                  ],
+                  "time": "all-day"
+                }
+              ]
+            },
+            {
+              "season": "winter",
+              "entries": [
+                {
+                  "id": "FRIGIBAX",
+                  "min": 18,
+                  "max": 22,
+                  "rate": 30,
+                  "seasons": [
+                    "winter"
+                  ],
+                  "time": "all-day"
+                },
+                {
+                  "id": "AMAURA",
+                  "min": 18,
+                  "max": 22,
+                  "rate": 25,
+                  "seasons": [
+                    "winter"
+                  ],
+                  "time": "all-day"
+                },
+                {
+                  "id": "BELDUM",
+                  "min": 18,
+                  "max": 22,
+                  "rate": 20,
+                  "seasons": [
+                    "winter"
+                  ],
+                  "time": "all-day"
+                },
+                {
+                  "id": "GIBLE",
+                  "min": 18,
+                  "max": 22,
+                  "rate": 15,
+                  "seasons": [
+                    "winter"
+                  ],
+                  "time": "all-day"
+                },
+                {
+                  "id": "PIPLUP",
+                  "min": 18,
+                  "max": 22,
+                  "rate": 10,
+                  "seasons": [
+                    "winter"
+                  ],
+                  "time": "all-day"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "MAP_LEGENDS_GROTTO_RAINROOT",
+      "name": "Rainroot Hollow",
+      "region": "Grotto",
+      "parentRegion": "Hoenn",
+      "description": "Route 119 · One visible visitor. After capture or defeat, take 4,500 steps to renew it. Fleeing or losing preserves the visitor.",
+      "methods": [
+        {
+          "id": "grotto",
+          "label": "Grotto visitor",
+          "encounterRate": 100,
+          "entries": [
+            {
+              "id": "DREEPY",
+              "min": 25,
+              "max": 30,
+              "rate": 30,
+              "seasons": [
+                "autumn"
+              ],
+              "time": "all-day"
+            },
+            {
+              "id": "MIMIKYU",
+              "min": 25,
+              "max": 30,
+              "rate": 25,
+              "seasons": [
+                "autumn"
+              ],
+              "time": "all-day"
+            },
+            {
+              "id": "BAGON",
+              "min": 25,
+              "max": 30,
+              "rate": 20,
+              "seasons": [
+                "autumn"
+              ],
+              "time": "all-day"
+            },
+            {
+              "id": "GOOMY",
+              "min": 25,
+              "max": 30,
+              "rate": 15,
+              "seasons": [
+                "autumn"
+              ],
+              "time": "all-day"
+            },
+            {
+              "id": "ROWLET",
+              "min": 25,
+              "max": 30,
+              "rate": 10,
+              "seasons": [
+                "autumn"
+              ],
+              "time": "all-day"
+            }
+          ],
+          "seasonalVariants": [
+            {
+              "season": "spring",
+              "entries": [
+                {
+                  "id": "GOOMY",
+                  "min": 25,
+                  "max": 30,
+                  "rate": 30,
+                  "seasons": [
+                    "spring"
+                  ],
+                  "time": "all-day"
+                },
+                {
+                  "id": "APPLIN",
+                  "min": 25,
+                  "max": 30,
+                  "rate": 25,
+                  "seasons": [
+                    "spring"
+                  ],
+                  "time": "all-day"
+                },
+                {
+                  "id": "BAGON",
+                  "min": 25,
+                  "max": 30,
+                  "rate": 20,
+                  "seasons": [
+                    "spring"
+                  ],
+                  "time": "all-day"
+                },
+                {
+                  "id": "DREEPY",
+                  "min": 25,
+                  "max": 30,
+                  "rate": 15,
+                  "seasons": [
+                    "spring"
+                  ],
+                  "time": "all-day"
+                },
+                {
+                  "id": "CHIKORITA",
+                  "min": 25,
+                  "max": 30,
+                  "rate": 10,
+                  "seasons": [
+                    "spring"
+                  ],
+                  "time": "all-day"
+                }
+              ]
+            },
+            {
+              "season": "summer",
+              "entries": [
+                {
+                  "id": "JANGMO_O",
+                  "min": 25,
+                  "max": 30,
+                  "rate": 30,
+                  "seasons": [
+                    "summer"
+                  ],
+                  "time": "all-day"
+                },
+                {
+                  "id": "DURALUDON",
+                  "min": 25,
+                  "max": 30,
+                  "rate": 25,
+                  "seasons": [
+                    "summer"
+                  ],
+                  "time": "all-day"
+                },
+                {
+                  "id": "BAGON",
+                  "min": 25,
+                  "max": 30,
+                  "rate": 20,
+                  "seasons": [
+                    "summer"
+                  ],
+                  "time": "all-day"
+                },
+                {
+                  "id": "GOOMY",
+                  "min": 25,
+                  "max": 30,
+                  "rate": 15,
+                  "seasons": [
+                    "summer"
+                  ],
+                  "time": "all-day"
+                },
+                {
+                  "id": "FROAKIE",
+                  "min": 25,
+                  "max": 30,
+                  "rate": 10,
+                  "seasons": [
+                    "summer"
+                  ],
+                  "time": "all-day"
+                }
+              ]
+            },
+            {
+              "season": "autumn",
+              "entries": [
+                {
+                  "id": "DREEPY",
+                  "min": 25,
+                  "max": 30,
+                  "rate": 30,
+                  "seasons": [
+                    "autumn"
+                  ],
+                  "time": "all-day"
+                },
+                {
+                  "id": "MIMIKYU",
+                  "min": 25,
+                  "max": 30,
+                  "rate": 25,
+                  "seasons": [
+                    "autumn"
+                  ],
+                  "time": "all-day"
+                },
+                {
+                  "id": "BAGON",
+                  "min": 25,
+                  "max": 30,
+                  "rate": 20,
+                  "seasons": [
+                    "autumn"
+                  ],
+                  "time": "all-day"
+                },
+                {
+                  "id": "GOOMY",
+                  "min": 25,
+                  "max": 30,
+                  "rate": 15,
+                  "seasons": [
+                    "autumn"
+                  ],
+                  "time": "all-day"
+                },
+                {
+                  "id": "ROWLET",
+                  "min": 25,
+                  "max": 30,
+                  "rate": 10,
+                  "seasons": [
+                    "autumn"
+                  ],
+                  "time": "all-day"
+                }
+              ]
+            },
+            {
+              "season": "winter",
+              "entries": [
+                {
+                  "id": "FRIGIBAX",
+                  "min": 25,
+                  "max": 30,
+                  "rate": 30,
+                  "seasons": [
+                    "winter"
+                  ],
+                  "time": "all-day"
+                },
+                {
+                  "id": "DURALUDON",
+                  "min": 25,
+                  "max": 30,
+                  "rate": 25,
+                  "seasons": [
+                    "winter"
+                  ],
+                  "time": "all-day"
+                },
+                {
+                  "id": "BAGON",
+                  "min": 25,
+                  "max": 30,
+                  "rate": 20,
+                  "seasons": [
+                    "winter"
+                  ],
+                  "time": "all-day"
+                },
+                {
+                  "id": "DRATINI",
+                  "min": 25,
+                  "max": 30,
+                  "rate": 15,
+                  "seasons": [
+                    "winter"
+                  ],
+                  "time": "all-day"
+                },
+                {
+                  "id": "POPPLIO",
+                  "min": 25,
+                  "max": 30,
+                  "rate": 10,
+                  "seasons": [
+                    "winter"
+                  ],
+                  "time": "all-day"
+                }
+              ]
+            }
+          ]
+        }
+      ]
     }
   ],
   "typeResolutionNote": "Source family-type macros resolved with P_UPDATED_TYPES=GEN_LATEST (Magnemite Steel, Togepi/Ralts/Cottonee Fairy).",
@@ -36047,5 +36911,11 @@
     "baseCommit": "0d13f23794686525203fcfe3f8c6496e6921d2f2",
     "headerSha256": "b4eefe307ac31d181795ad9bfbeb30c093a7db40e0bf1bef2e1b548bf96b61a6",
     "note": "Read from pinned game source."
+  },
+  "grottoSource": {
+    "path": "src/data/legends/grotto_encounters.json",
+    "sha256": "fc592f065c7be2e41eacfcc1d5d1db725ef017cac1e33dfabf4c545c91c237f3",
+    "refreshSteps": 4500,
+    "status": "review"
   }
 }

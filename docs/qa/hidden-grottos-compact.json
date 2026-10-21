@@ -1,0 +1,29 @@
+{
+  "model": "GPT-6 (Codex)",
+  "review": "Compact grotto interiors, unshipped third review",
+  "dimensions_before": [
+    22,
+    20
+  ],
+  "dimensions_after": [
+    18,
+    16
+  ],
+  "checks": {
+    "debug_build": "passed",
+    "release_build": "passed",
+    "native_debug_seasonal_scenes": 12,
+    "native_exit_decline_reentry_paths": 3,
+    "native_discovery_frames": 176,
+    "native_quickstart": "passed",
+    "focused_grotto_tests": 5,
+    "seasonal_encounter_tables": 84,
+    "kanto_event_tests": 8
+  },
+  "sha256": {
+    "pokeemerald.gba": "20bb9af6441bbf2d0f294e17212a2859d676ed9eed5f58368b72fedd20c50c77",
+    "pokeemerald-release.gba": "1c23985bdd239bf3d94ef12f19d1da804feb48639e5469ae0ba362ccf983d6e6",
+    "docs/designs/hidden-grottos/Emerald-Legends-Grottos-Compact-Preview.png": "9e0a501d4049edfacf8dc9e150c93881ffe8647b0cd2fc37c194b830ed581ed8",
+    "docs/designs/hidden-grottos/Emerald-Legends-Grotto-Discovery.gif": "43a3a6592c11d99b59a744979b09bd411739d0a565ccbaff8cefc3923172341b"
+  }
+}

@@ -1,0 +1,21 @@
+room=0 season=0 active=0 map=76,1 floor=0 xy=9,9 gfx=16811/16811
+reentry room=0 map=76,1 xy=9,11 script=0
+room=0 season=1 active=1 map=76,1 floor=0 xy=9,9 gfx=17137/17137
+room=0 season=2 active=2 map=76,1 floor=0 xy=9,9 gfx=16669/16669
+room=0 season=3 active=3 map=76,1 floor=0 xy=9,9 gfx=16956/16956
+room=1 season=0 active=0 map=76,2 floor=0 xy=9,9 gfx=16567/16567
+reentry room=1 map=76,2 xy=9,11 script=0
+PASS: walked from Route 114 (15,40) onto landing (14,40), faced actual mouth (13,40), declined and reentered; 165 film frames.
+room=1 season=1 active=1 map=76,2 floor=0 xy=9,9 gfx=16723/16723
+room=1 season=2 active=2 map=76,2 floor=0 xy=9,9 gfx=16578/16578
+room=1 season=3 active=3 map=76,2 floor=0 xy=9,9 gfx=16745/16745
+room=2 season=0 active=0 map=76,3 floor=0 xy=9,9 gfx=17139/17139
+reentry room=2 map=76,3 xy=9,11 script=0
+room=2 season=1 active=1 map=76,3 floor=0 xy=9,9 gfx=16741/16741
+room=2 season=2 active=2 map=76,3 floor=0 xy=9,9 gfx=17088/17088
+room=2 season=3 active=3 map=76,3 floor=0 xy=9,9 gfx=16717/16717
+PASS: filmed native approach, examine, confirm and entry; 176 original frames.
+PASS: entrance option 0, real landing approach, inspect, decline and enter.
+PASS: entrance option 1, real landing approach, inspect, decline and enter.
+PASS: entrance option 2, real landing approach, inspect, decline and enter.
+PASS: twelve seasonal scenes, native movement and visitor dialogue.

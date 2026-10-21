@@ -1,0 +1,20 @@
+{
+  "model": "GPT-6 (Codex)",
+  "change": "Rainroot native long-grass root row and compact clump",
+  "source_parent": "51213e5fb44368a5ef8da5060d07b1f310fb000b",
+  "checks": {
+    "debug_build": "passed",
+    "release_build": "passed",
+    "focused_grotto_regressions": 6,
+    "native_debug_seasonal_scenes": 12,
+    "native_exit_decline_reentry_paths": 3,
+    "native_discovery_frames": 176,
+    "visual_inspection": "actual Rainroot Spring screenshot"
+  },
+  "limits": "Unshipped exploration prototype. Native Debug controlled scenes; no new Release emulator or full-story/save-migration test. No publication or reward/persistence implementation.",
+  "sha256": {
+    "pokeemerald.gba": "7b1055b928cad7ea74e377126ad5aceafa538b5951e1edc6fa7929f76bc7adae",
+    "pokeemerald-release.gba": "ad528df4b67396a7637ad29c0ff71005c8c2d1be636882f2cf4e6876ac200dd3",
+    "docs/designs/hidden-grottos/Emerald-Legends-Rainroot-Grass-Fix.png": "9878e0bc5fe4fb7c47150bc94359b51c735ea7d730f25cd0dbaa0f71694333d9"
+  }
+}

@@ -256,6 +256,7 @@ struct NPCFollower
 
 #include "legends_adventure.h"
 #include "legends_journal.h"
+#include "legends_grottos.h"
 
 struct SaveBlock3
 {
@@ -279,6 +280,7 @@ struct SaveBlock3
 #endif
     struct LegendsJournalSave journal;
     struct LegendsAchievementExtraSave achievementExtra;
+    struct LegendsGrottoSave grottos;
 }; /* max size 1624 bytes */
 
 extern struct SaveBlock3 *gSaveBlock3Ptr;

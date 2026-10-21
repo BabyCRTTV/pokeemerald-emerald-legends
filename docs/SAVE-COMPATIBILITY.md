@@ -60,3 +60,9 @@ Record source version, fixture provenance, target commit, build/emulator, assert
 ## Updating a player's ROM
 
 Keep a backup of the in-game battery save before updating. Apply the new BPS to the supported clean Emerald base, then have the emulator use that existing battery save with the new ROM (matching its save filename or importing the save as required). Use Continue and make an in-game save. v0.0.43 and newer use the expanded storage format, so retain the backup if returning to an older ROM.
+
+## Hidden grotto encounter extension — unshipped review
+
+The owner requested persistent visitors and a per-grotto 4,500-step renewal after capture or defeat. SaveBlock3 appends 276 bytes at offset 716, growing to 992 bytes inside the existing fourteen 116-byte tails. The original prefix, native sectors, expanded storage format and all published IDs retain their positions. No persistent flag or native variable is reserved. Each room stores the exact native 80-byte BoxPokemon plus bounded species, level, season, state and remaining steps. A separate magic/version/checksum recognizes valid grotto data; absent/invalid legacy tail bytes initialize only this extension. Continue and New Game call the feature initializer.
+
+Existing full/link/Hall-of-Fame transactions already cover every sector tail; the sector regression exercises all fourteen rotations/both slots at the larger width. The production-C grotto regression checks repeated initialization, untouched legacy prefixes, stable visitors, all battle outcomes and independent cooldown boundaries. Focused native flash/battle results and their limits are recorded in [grotto encounter QA](qa/grotto-encounters.md). The authentic historical-release save matrix remains unfinished; this extension does not claim to complete it.

@@ -1,4 +1,5 @@
 #include "global.h"
+#include "legends_grottos.h"
 #include "legends_storage.h"
 #include "legends_adventure.h"
 #include "legends_journal.h"
@@ -249,6 +250,7 @@ void NewGameInitData(void)
     ClearFollowerNPCData();
     LegendsAdventureInit(TRUE);
     LegendsJournalInit(TRUE);
+    LegendsGrottoInit(TRUE);
 }
 
 static void ResetMiniGamesRecords(void)

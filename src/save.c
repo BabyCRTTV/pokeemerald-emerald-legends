@@ -89,6 +89,7 @@ STATIC_ASSERT(offsetof(struct SaveBlock3, itemFlags) == 0x21C, ItemHistoryAppend
 STATIC_ASSERT(offsetof(struct SaveBlock3, journal) == 652, JournalAppendOnly);
 STATIC_ASSERT(sizeof(struct LegendsJournalSave) == 36, JournalV1Size);
 STATIC_ASSERT(offsetof(struct SaveBlock3, achievementExtra) == 688, AchievementExtraAppendOnly);
+STATIC_ASSERT(offsetof(struct SaveBlock3, grottos) == 716, GrottosAppendOnly);
 STATIC_ASSERT(sizeof(struct LegendsAchievementExtraSave) == 28, AchievementExtraSize);
 STATIC_ASSERT(offsetof(struct SaveBlock3, adventure) + sizeof(struct LegendsAdventureSave) <= SAVE_BLOCK_3_CHUNK_SIZE * 5, AdventurePartialSaveFits);
 STATIC_ASSERT(sizeof(struct SaveBlock2) <= SECTOR_DATA_SIZE, SaveBlock2FreeSpace);

@@ -10,6 +10,7 @@ on:
       - 'test/legends-wiki-walkthrough-encounters.test.cjs'
       - 'test/legends-wiki-browser.test.cjs'
       - 'test/legends-wiki-seasons.test.cjs'
+      - 'test/legends-wiki-grottos.test.cjs'
   pull_request:
     branches: [master]
     paths:
@@ -19,6 +20,7 @@ on:
       - 'test/legends-wiki-walkthrough-encounters.test.cjs'
       - 'test/legends-wiki-browser.test.cjs'
       - 'test/legends-wiki-seasons.test.cjs'
+      - 'test/legends-wiki-grottos.test.cjs'
   workflow_dispatch:
 
 permissions:
@@ -67,12 +69,12 @@ jobs:
           assert len(maps)>100 and len({m['id'] for m in maps})==len(maps)
           count=0
           for loc in maps:
-              assert loc['region'] in ('Hoenn','Kanto','Sevii')
+              assert loc['region'] in ('Hoenn','Kanto','Sevii','Grotto')
               if loc['region']=='Sevii':
                   assert loc['id'].startswith('MAP_LEGENDS_KANTO_MT_EMBER_'), 'only the shipped Mt. Ember expedition is indexed'
               assert loc['id'].startswith('MAP_LEGENDS_KANTO_') if loc['region']=='Kanto' else loc['id'].startswith('MAP_') and 'FRLG' not in loc['id']
               for method in loc['methods']:
-                  assert method['id'] in ('land','surf','rock','old_rod','good_rod','super_rod')
+                  assert method['id'] in ('land','surf','rock','old_rod','good_rod','super_rod','grotto')
                   entries=method['entries']
                   assert entries and sum(entry['rate'] for entry in entries)==100, (loc['id'],method['id'])
                   assert all(entry['id'] in species and 1<=entry['min']<=entry['max']<=100 and 0<entry['rate']<=100 for entry in entries)
@@ -96,6 +98,8 @@ jobs:
           WIKI_PLAYWRIGHT="$RUNNER_TEMP/wiki-browser/node_modules/playwright" node test/legends-wiki-browser.test.cjs
       - name: Check encounter seasons and badges
         run: WIKI_PLAYWRIGHT="$RUNNER_TEMP/wiki-browser/node_modules/playwright" node test/legends-wiki-seasons.test.cjs
+      - name: Check grotto filter and compact labels
+        run: WIKI_PLAYWRIGHT="$RUNNER_TEMP/wiki-browser/node_modules/playwright" GROTTO_WIKI_OUTPUT=wiki-preview node test/legends-wiki-grottos.test.cjs
       - name: Save reader screenshots
         if: always()
         uses: actions/upload-artifact@v4

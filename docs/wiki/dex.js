@@ -5,7 +5,7 @@
   let season="autumn";
   let data=null, bySpecies=new Map(), view="routes", region="all", method="all", availability="all", type="all", query="", pokemonMap=new Map();
   const results=$("#results"), more=$("#more"), search=$("#search"), modal=$("#detail");
-  const METHODS=["land","surf","rock","old_rod","good_rod","super_rod"];
+  const METHODS=["grotto","land","surf","rock","old_rod","good_rod","super_rod"];
   function sprite(p,size="small"){
     const image=LegendsSprites.markup(p,size);
     return '<button type="button" class="cry-sprite" data-cry="'+esc(p.id)+'" aria-label="Play '+esc(p.name)+' cry" title="Play '+esc(p.name)+' cry">'+image+'</button>';
@@ -64,7 +64,7 @@
   function routeCard(map){
     let count=new Set(map.methods.flatMap(m=>m.entries.map(e=>e.id))).size;
     return '<section class="route-card" id="route-'+esc(map.id)+'" data-map="'+esc(map.id)+'" tabindex="-1"><div class="route-head"><div><div class="route-name">'+esc(map.name)+'</div><div class="route-sub">'+count+' Pokémon · '+map.methods.length+' encounter '+(map.methods.length===1?"method":"methods")+'</div></div><span class="region-tag">'+esc(map.region)+'</span></div>'
-     +map.methods.map(m=>'<div class="method-section"><div class="method-heading"><span>'+esc(m.label)+'</span>'+m.entries.length+' species <small>· '+(season==="all"&&m.seasonalVariants?.length?"Shares apply in the seasons shown":"Relative encounter share")+'</small></div><div class="enc-grid">'+m.entries.map(encounterCard).join('')+'</div></div>').join('')+'</section>';
+     +(map.description?'<p class="grotto-note">'+esc(map.description)+'</p>':"")+map.methods.map(m=>'<div class="method-section"><div class="method-heading"><span>'+esc(m.label)+'</span>'+m.entries.length+' species <small>· '+(season==="all"&&m.seasonalVariants?.length?"Shares apply in the seasons shown":"Relative encounter share")+'</small></div><div class="enc-grid">'+m.entries.map(encounterCard).join('')+'</div></div>').join('')+'</section>';
   }
   function dexCard(p){
     const n=new Set((pokemonMap.get(p.id)||[]).map(x=>x.mapId)).size;
@@ -143,8 +143,9 @@
     const profiles=window.LegendsProfiles;
     if(!locations.length||!profiles)return "";
     const expeditionNote=locations.some(loc=>loc.region==='Sevii')?'<p>Mt. Ember is reached by the Cinnabar survey boat. Its encounter tables are listed above; a full Sevii map is not available.</p>':'';
-    if(locations.every(loc=>!profiles.regions[loc.region]))return expeditionNote;
-    return '<section class="encounter-maps"><h3>Encounter map</h3><p>Highlighted areas have listed wild encounters. Cave and interior markers show their region-map area.</p>'+expeditionNote+Object.entries(profiles.regions).map(([name,regionMap])=>{
+    const grottoNote=locations.some(loc=>loc.region==='Grotto')?'<p>Hidden grottos are reached from Petalburg Woods, Route 114 and Route 119. Capture or defeat starts a separate 4,500-step cooldown for that grotto. An existing visitor stays through season changes.</p>':'';
+    if(locations.every(loc=>!profiles.regions[loc.region]))return expeditionNote+grottoNote;
+    return '<section class="encounter-maps"><h3>Encounter map</h3><p>Highlighted areas have listed wild encounters. Cave and interior markers show their region-map area.</p>'+expeditionNote+grottoNote+Object.entries(profiles.regions).map(([name,regionMap])=>{
       const local=[...new Map(locations.filter(loc=>loc.region===name).map(loc=>[loc.mapId,loc])).values()];
       if(!local.length)return "";
       const cells=new Map();

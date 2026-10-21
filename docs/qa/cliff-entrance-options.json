@@ -1,0 +1,51 @@
+{
+  "source": "d6ce8ecc98e48bdc6a7215ec7d2108f944b37f21",
+  "base_metatile_count": 367,
+  "metatiles_prefix_sha256": "5dfb07863ac871defebf2f2302e06ff4d542f0b72b5fec63da663293a0ed6da8",
+  "attributes_prefix_sha256": "7fd255fcec5eedb159270c73baad381a01e29571f7d8655d55c459cb5e04128d",
+  "unchanged_files": {
+    "data/tilesets/secondary/fallarbor/tiles.png": "8ef07535b1fa52f2dd4ad76d8131d8087a08c9a504671e1914fdd2baf3683995",
+    "data/tilesets/secondary/fallarbor/palettes/00.pal": "ce729441a82075c51cf1cc248df3c4a2277201c44da521173a5606f694258a03",
+    "data/tilesets/secondary/fallarbor/palettes/01.pal": "c17687ece4bb432d345b43b4e806ebba741553b1ed83b0f46207ce537db5d25c",
+    "data/tilesets/secondary/fallarbor/palettes/02.pal": "6a2609b1c79e8489ed11182eb075edf0e25d80b5b3b7912c0de20dc5da594eb9",
+    "data/tilesets/secondary/fallarbor/palettes/03.pal": "aacf274887ca5cb5455af5f1f5ee302ee599a846eb6dac553a9054e06b884f7f",
+    "data/tilesets/secondary/fallarbor/palettes/04.pal": "1f617c775dd998070b103a860bc15ed872da86d79145e36f994fcca580204bee",
+    "data/tilesets/secondary/fallarbor/palettes/05.pal": "8356b54b4d39ed880b83f39c82b61699dd720e28eb2ebc2d80a4bd360d8720e2",
+    "data/tilesets/secondary/fallarbor/palettes/06.pal": "253883bd6cd274820313cb90331bbb9ecb719065996696fae6d174dd5a2a7cd1",
+    "data/tilesets/secondary/fallarbor/palettes/07.pal": "170066d770a9e7ec6d5cde37a69d4c4151c2ee78a047acf146124d8f4b812631",
+    "data/tilesets/secondary/fallarbor/palettes/08.pal": "015ef54cc5f6ff2ecf41d891b9e4036d071d2b4d67de0abee0f516440e54a66a",
+    "data/tilesets/secondary/fallarbor/palettes/09.pal": "4d384849f2b3fc1d72060bda026c7fa71f094d370ccbf2c79337d53dfc3ea543",
+    "data/tilesets/secondary/fallarbor/palettes/10.pal": "a12734d98b6804ecefdab082c3ed7735517256e3dfdb0bae18e447176110aae2",
+    "data/tilesets/secondary/fallarbor/palettes/11.pal": "a3202cb0944118052dcfb41b85daa9274f5fd95920e44f5f3af9784efe640bf4",
+    "data/tilesets/secondary/fallarbor/palettes/12.pal": "ea391b70a00c55f0fe13590e345ee9b66fb9013864b737f40258d99f70f6eb04",
+    "data/tilesets/secondary/fallarbor/palettes/13.pal": "ea391b70a00c55f0fe13590e345ee9b66fb9013864b737f40258d99f70f6eb04",
+    "data/tilesets/secondary/fallarbor/palettes/14.pal": "ea391b70a00c55f0fe13590e345ee9b66fb9013864b737f40258d99f70f6eb04",
+    "data/tilesets/secondary/fallarbor/palettes/15.pal": "ea391b70a00c55f0fe13590e345ee9b66fb9013864b737f40258d99f70f6eb04"
+  },
+  "route114_sha256": "70a7988203747491a38ea575f891c18e8459a24d6adb19f9dc8d11d1362b8f94",
+  "options": [
+    {
+      "label": "Narrow cleft",
+      "metatiles": [
+        879,
+        880
+      ]
+    },
+    {
+      "label": "Sheltered opening",
+      "metatiles": [
+        881,
+        882
+      ]
+    },
+    {
+      "label": "Angled recess",
+      "metatiles": [
+        883,
+        884
+      ]
+    }
+  ],
+  "status": "Historical native A/B/C alternatives. Owner selected A as the basis for the custom recess; the two mouth words now use the custom review asset.",
+  "compiled_metatiles_prefix_sha256": "4fdcfc93a13d9e731f097ce49df76089fecea681b718cac6e7f17a5bdd3adf7f"
+}

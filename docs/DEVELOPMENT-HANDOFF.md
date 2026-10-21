@@ -1,5 +1,123 @@
 # Development handoff
 
+## Approved v0.0.69 publication — in progress (21 October 2026)
+
+**Model: GPT-6 (Codex) | Reasoning: apply explicit owner approval, synchronize release metadata and verify the actual published patches before claiming completion.**
+
+Owner: “Ok, please publish. Approved.” Implementation `6b200593e15db7a643de247eb4bbb2fba79efa3c` passed project, wiki, native mGBA, candidate Release/Debug patch verification and companion workflows; labels were skipped. Prepared v0.0.69 labels, all three changelogs, README, site and browser patcher. No new gameplay, art or save changes were added. Existing [native/save evidence and limits](qa/grotto-encounters.md) apply. AGENTS.md was reviewed; no new durable policy was needed.
+
+Publication remains in progress: verify versioned candidate checks, merge PR #87, allow automatic Release/Debug patch publication and Pages deployment, promote the matching wiki supplement and verify the actual live files. This entry does not assert that publication finished. The previous interrupted metadata upload did not advance the branch; resume uses the verified live 6b200593 source.
+
+## Rare grotto encounters and LegendsDex polish (21 October 2026)
+
+**Model: GPT-6 (Codex) | Reasoning: preserve approved scenery, isolate append-only state and verify actual battle/flash/Continue paths.**
+
+Owner requested plain cliff above Rainroot (Route 119, earlier message said 129), Sevii chip shortening, removal of “Updated on request”, Grotto region filter, rare visitors and renewal after 4,500 steps only after capture/defeat. Implemented all three real visitor battles and seasonal 30/25/20/15/10% rare pools. Each room keeps its exact BoxPokemon until resolved; fleeing/loss/season changes/revisits do not replace it. Independent cooldowns use the native step counter (including running/cycling/Surf), with no banked steps before resolution. The two requested Route 119 cliff cells changed; all other approved looks and access remain protected.
+
+SaveBlock3 appends a separately signed 276-byte extension at 716, total 992; original offsets/IDs/storage/sectors remain intact. Missing/invalid tail initializes only the new feature. Continue/On Resume handling prepares the visitor before restored sprites are recreated, including older review saves. Native temp flag 5 is local visibility only; no persistent var/flag reservation. Canonical JSON generates both C and the three LegendsDex supplements; the original 157-map v0.0.67 source pin/catalogue/atlas remain exact, with separate hashed review provenance. The profile and reader script cache revisions were updated.
+
+Debug/Release builds, production-C state/outcome/boundary tests, native mGBA escape/KO/capture and real flash round-trips, four unmodified Release Continue fixtures, twelve seasonal world scenes, three entrance paths, Quickstart, existing save/journal/Adventure/seasons/geometry checks and focused four-width browser/reader regressions passed. [QA, previews, hashes and limits](qa/grotto-encounters.md). Historical authentic saves, full-PC refusal, full progression and Pizza Boy remain unverified; item-ball prop remains unchanged. Draft PR #87 is still unshipped; public VERSION v0.0.68, patches and downloads are unchanged. Implementation saved as `54480ce0f0d896d1cab8511039cada559fe255d6`. The first remote project run exposed Pillow being installed after the grotto art check; moved its existing pinned install before that check. CI reruns remain separate from the passed local evidence. No new durable owner policy was needed.
+
+## Grotto visuals explicitly approved; location gallery (21 October 2026)
+
+**Model: GPT-6 (Codex) | Reasoning: record owner approval and show the exact current locations/visuals without changing gameplay or approved art.**
+
+Owner: “Excellent work, approved.” This approves the final smoothed custom cliff recess and the current grotto visuals; preserve all three interiors, entrances and working landing. Locations verified in current source: Leafshade in southern Petalburg Woods beside the lower Trainer Tips sign (interaction `(12–13,31)`, approach `(13,32)`); Stillwater on Route 114 southwest of Lanette's house (mouth `(13,40)`, landing `(14,40)`, face west); Rainroot on lower Route 119 northwest of the small house (interaction `(27,105)`, approach `(27,106)`, face north).
+
+Created [paired exterior/interior gallery](designs/hidden-grottos/approved-overview/Emerald-Legends-Grottos-Inside-Outside.png) and individual phone views from the six current native Spring captures. Verified every input frame hash against the native receipt and its ROM hash against the current compiled Debug ROM. Labels sit outside exact 2× nearest-neighbor gameplay pixels. No game source/art changed and no new builds or emulator runs were necessary for this presentation-only step. [Visual approval, exact map/asset hashes and capture provenance](designs/hidden-grottos/approved-overview/approval-and-capture-receipt.json).
+
+Draft PR #87 remains an unshipped exploration prototype; visual approval is recorded, while captures/rewards/stable refresh state and eventual release gates remain unfinished. This request asks for locations and another look, not publication of incomplete gameplay. VERSION/BPS/wiki/site remain unchanged. Existing native test limits apply. No new durable AGENTS.md policy was necessary.
+
+## Smoother custom cliff contour (21 October 2026)
+
+**Model: GPT-6 (Codex) | Reasoning: keep the accepted recess and improve pixel cadence along its bend without touching access or surrounding scenery.**
+
+Owner liked the custom entrance and requested tighter, smoother, cleaner bending. Changed 33 overlay pixels: replaced isolated lip highlights with a continuous two-tone cheek, made the dim far inner face continuous, and simplified the threshold taper. Resolution, palette, allocated tile IDs, metatile/attribute bytes, map words, collisions, landing, scripts and all other approved looks are unchanged. The asset generator and sibling atlas/export reproduce the refinement through the existing lighting pipeline. [Actual native before/after detail](designs/hidden-grottos/custom-cliff-smooth/Emerald-Legends-Custom-Cliff-Detail.png), [world view](designs/hidden-grottos/custom-cliff-smooth/Emerald-Legends-Custom-Cliff-Preview.png), [actual walk](designs/hidden-grottos/custom-cliff-smooth/Emerald-Legends-Custom-Cliff-Walk-In.gif).
+
+Debug/Release builds, all ten grotto regressions and lighting regeneration/DNS checks passed. Native mGBA passed the existing twelve seasonal scenes, three production exit/decline/reentry paths, 165-frame cliff walk and three historical option paths. Inspected the final native comparison. [Hashes and scope](qa/custom-cliff-smooth.json); previous custom integration/limits still apply. Draft PR #87 remains unshipped; this requested polish is reviewable and no publication/version/BPS/wiki/site change occurred. No new durable AGENTS.md policy was needed.
+
+## Custom recessed cliff art based on A (21 October 2026)
+
+**Model: GPT-6 (Codex) | Reasoning: author the side perspective at native pixel resolution while keeping palette, collision and all other approved scenery exact.**
+
+Owner selected A as the basis and explicitly requested a custom high-quality recessed hole. Authored a 16×32 indexed overlay: projecting near rock cheek, offset cap, shadowed cavity, dim far inner face and receding threshold. Original palette 11 is unchanged. Eight unreferenced, animation-safe tile cells in a sibling atlas and two appended definitions (`0x375–0x376`) hold the art. Only Route 114's two mouth words change; the landing, real interaction/return, other exteriors/interiors and persistent IDs are preserved. [Actual A/custom comparison and world capture](designs/hidden-grottos/custom-cliff/Emerald-Legends-Custom-Cliff-Preview.png), [actual walk-in](designs/hidden-grottos/custom-cliff/Emerald-Legends-Custom-Cliff-Walk-In.gif).
+
+The lighting pipeline now derives its accepted Fallarbor base first, builds the custom sibling and records the three active atlas/metatile/attribute redirects. Original source/lighting PNGs, palettes and metatile prefixes remain unchanged. Ten focused checks and existing lighting regeneration/DNS checks passed; Debug/Release compiled. Native mGBA verified actual compiled metatile bytes, twelve seasonal scenes, all three production visitor/exit/decline/reentry paths and three historical option paths. The 165-frame actual approach film uses the custom production map. Inspected final actual native previews. [Detailed integration, hashes and limits](qa/custom-cliff-recess.md).
+
+Save this as the new unshipped visual checkpoint in draft PR #87; owner review of the custom refinement remains pending. No merge/publication/BPS/wiki/site/version change. No full-story/old-save/Release-emulator/Pizza Boy claim; captures/rewards/refresh persistence remain unfinished. Preserve all other approved looks. The owner's explicit request permits this entrance's custom pixels; no general world-art policy change or new AGENTS.md rule was needed.
+
+## Side-facing cliff entrance alternatives (21 October 2026)
+
+**Model: GPT-6 (Codex) | Reasoning: match the cliff's side perspective by assembling existing native rock/cave cells, with no repainting or replacement of approved scenery.**
+
+Owner likes the accessible grotto but requested alternatives to the forward-facing cave. Added three review-only two-metatile assemblies: A narrow cleft, B low opening beneath a full rock lip, C wider angled recess. All words reuse unchanged native Fallarbor/General 8×8 art and palettes; six definitions append at `0x36F–0x374`, preserving every existing metatile/attribute prefix. No map references changed: the accepted front-facing entrance, landing, scripts and all other approved looks stay as source `d6ce8ecc` pending owner selection. Recommend A for the most convincing side perspective. [Closeups](designs/hidden-grottos/cliff-options/Emerald-Legends-Cliff-Options.png), [full native scenes](designs/hidden-grottos/cliff-options/Emerald-Legends-Cliff-Options-World.png).
+
+Fallarbor's active pointer uses `legends_lights/fallarbor_metatiles.bin`, so its unchanged accepted prefix also receives the six appended non-window definitions. The source and active derivative prefixes, native graphic PNG and sixteen palettes are pinned by regression. Native QA checks the active compiled array against actual ROM bytes before capture; an early internal capture from an unsynchronized derivative was rejected and replaced. QA substitutions explicitly retain solid mouth collision bits, and each option starts from a fresh fixture to keep lighting consistent. Options are staged only by the private harness, not a production map edit.
+
+Local Debug/Release builds, nine focused regressions and the existing night-light reproducibility/DNS checks passed. Native mGBA passed twelve seasonal scenes, existing three exit/decline/reentry paths, and all three alternatives' real landing approach, solid mouth facing, inspection, decline and entry. Inspected final native crops/full scenes. [Asset specification](qa/cliff-entrance-options.json), [build hashes/limits](qa/cliff-entrance-options-builds.json), [native evidence](designs/hidden-grottos/cliff-options/verification.json). These are actual compiled in-game assets rendered in controlled native Debug fixtures, with nearest-neighbor crops/enlargement only. No full-story/old-save/Release-emulator/Pizza Boy claim, publication or feature completion. PR #87 remains a draft. Owner selection of an alternative is pending; preserve all other approved looks. No new AGENTS.md policy was necessary.
+
+## Stillwater reachable landing and actual walk-in proof (21 October 2026)
+
+**Model: GPT-6 (Codex) | Reasoning: align visible mouth, approach collision and interaction coordinates, then verify real movement instead of a remote prompt.**
+
+Owner correctly identified the cliff collision blocking access to the visible mouth. The previous checkpoint's native test only proved an adjacent intermediary prompt at `(14,40)` worked while the art was at `(13,40)`; that was inadequate access validation. Replaced the single intervening ledge cell `(14,40)` with ordinary passable grass. The mouth artwork stays at `(13,39–40)`, its background interaction and narrow warp guard move onto the actual mouth `(13,40)`, and the walking exit returns to the landing `(14,40)`. All other accepted grotto visuals, route cells, IDs, objects, event scripts and save layouts retain their meanings.
+
+Eight focused regressions passed, including a new ordinary-ground `(15,40)` → walkable landing `(14,40)` → visible adjacent mouth `(13,40)` check, return placement and exact approved-look preservation. Local Debug/Release builds passed. Native mGBA checked all twelve seasonal scenes and the three exit/decline/reentry paths. The revised cliff test walks east onto ordinary route ground, records walking west onto the landing, checks passability/location, faces the solid mouth without warping, examines it, declines and reenters. It asserts the real player coordinates after movement instead of substituting a direct placement at the entrance. A 165-original-frame clip shows this production movement and dialogue; inspected the actual landing still and film frames. [Walk-in preview](designs/hidden-grottos/Emerald-Legends-Cliff-Walk-In.gif), [scope/hashes](qa/hidden-grottos-access.json), [native assertions](designs/hidden-grottos/emulator.log).
+
+Supersedes the previous exterior's access claim. Keep all other approved looks locked. Draft PR #87 remains unshipped; no merge/publication/BPS/wiki/site/version changes. Native controlled Debug scene setup is not a full-story/save-matrix/Release-emulator/Pizza Boy claim. Capture/reward/refresh persistence remains unfinished prototype work. No new durable AGENTS.md policy was needed.
+
+## Stillwater cliff exterior touchup; other grotto looks locked (21 October 2026)
+
+**Model: GPT-6 (Codex) | Reasoning: seat the opening in the actual cliff face and retain the accepted surrounding visual baseline.**
+
+Owner approved the current grotto interiors/exteriors, including Rainroot's repaired grass, with one exception: the cliff pit looked strange. Replaced the rounded Secret Base floor-like hole at Route 114 `(14,40)` with a native two-tile brown cave mouth at `(13,39–40)`, within the cliff itself, and restored the original adjacent cliff/grass edge at `(14,40)`. Only these three map words differ from approved source `0d89eb5f`. The existing inspect cell `(14,40)`, approach/return `(15,40)`, scripts, guard, collision boundaries, objects, all interiors and other entrances remain unchanged in function. The visible cave mouth uses native nonanimated entrance behavior, which requires a matching warp event to warp; none was added. It is solid scenery reached through the existing Examine/Yes/No script.
+
+Added approved-look hashes for all three interior maps and both other exterior maps plus an exact Route 114 three-cell exception. All seven focused checks passed, including original route restoration, accepted-look preservation and the existing native C guard. Debug/Release builds passed. Native mGBA passed twelve seasonal scenes and all three exit/decline/reentry paths, including actual inspection/entry at the revised cliff. Inspected the [actual updated cliff frame](designs/hidden-grottos/Emerald-Legends-Cliff-Entrance-Refined.png). [Hashes, scope and limits](qa/hidden-grottos-cliff.json).
+
+Preserve the approved current grotto appearances except further explicitly requested changes. This exterior refinement is saved in draft PR #87 for review, with no merge/publication/version/BPS/wiki/site changes. Captures/rewards/refresh persistence are still unfinished prototype work. Native scene setup remains controlled Debug QA, not a full-story/save matrix, Release emulator or Pizza Boy claim. No durable AGENTS.md policy change was necessary.
+
+## Rainroot tall-grass edge repair (21 October 2026)
+
+**Model: GPT-6 (Codex) | Reasoning: use the native Route 119 long-grass assembly rather than ending stalk tiles directly on grass.**
+
+Owner liked the compact layouts and requested correction of Rainroot's tall grass. Replaced the narrow uneven strip with a two-column, two-row clump followed by native Fortree `0x208` root tiles. Route 119 itself uses `0x015` stalks followed by this root row; `FixLongGrassMetatilesWindowTop/Bottom` in `src/fldeff_cut.c` confirms that relationship. Only three Rainroot map words changed; all other grotto geometry, interactions and route entrances remain as in compact source `51213e5f`. Added a regression for stalk/root pairing and passability.
+
+Debug and Release builds and all six focused regressions passed. Recaptured native mGBA's twelve seasonal scenes and all three visitor/exit/decline/reentry paths; inspected the new actual Rainroot frame. [Updated preview](designs/hidden-grottos/Emerald-Legends-Rainroot-Grass-Fix.png) and [QA receipt](qa/hidden-grottos-grass.json). Prior compact-layout QA remains applicable except for the three corrected words and superseded frame/ROM hashes. No new persistent IDs/state, battle/reward implementation or publication. PR #87 remains a draft; the compact direction is accepted, final grotto implementation/release remains outstanding.
+
+## Hidden grottos — smaller, tidier interior review (21 October 2026)
+
+**Model: GPT-6 (Codex) | Reasoning: tighten the spaces around their visitors while preserving native tile assemblies and established route discovery.**
+
+Owner requested another cleanup and smaller grotto interiors. Reduced all three unshipped layouts from 22×20 to 18×16 (35% less map area), brought complete tree borders/walls inward, grouped flowers/grass, shrank both pools and simplified the cave chamber. Visitor/item/clue positions, entry scripts, exit triggers and native QA fixtures move together. Route entrances, returns, entrance guard, published map/layout IDs and saves are unchanged from the preceding review. The generator updates existing review layout dimensions in place without renumbering IDs. [Current concept](features/hidden-grottos-review.md).
+
+Local Debug/Release builds, native Quickstart, all five focused grotto checks and season/84-table encounter/eight Kanto regressions passed. Native mGBA passed twelve seasonal scenes and all three visitor/exit/decline/reentry paths; the 176-frame discovery film was recaptured. Visually inspected the actual native compact sheet. The first Debug link found one zero-byte cached build object; rebuilding that object passed without source changes. [Evidence, hashes and limits](qa/hidden-grottos-compact.md). No Release emulator run, full-story/old-save/Pizza Boy proof or capture/reward/persistence implementation is claimed.
+
+PR #87 remains a draft for owner visual review. These changes and actual previews are the third review checkpoint; the earlier larger sheets are superseded. No merge, publication, VERSION/BPS/wiki/site change was authorized or performed. Public v0.0.68 stays intact. No new durable AGENTS.md rule was necessary.
+
+## Hidden grottos — refined art and discovery review (20 October 2026)
+
+**Model: GPT-6 (Codex) | Reasoning: replace incomplete native tile assemblies, make discovery readable and trace the borrowed entrance art's real field-control behavior.**
+
+Owner requested more convincing grotto visuals plus route/entrance examples; this is **not publication approval**. Replaced isolated tree-bottom tiles with full native trees, rebuilt a complete irregular Route-102-style pond and Scorched-Slab-style spring/walls, and matched the rocky opening to Route 114's cliff palette. Ten allowlisted route cells show the vine-framed trunk, rocky crevice and complete undergrowth opening; existing scripts/warps/events and every other native route cell are preserved by pinned baseline regression. Leafshade uses the two trunk halves beside the southern Trainer Tips sign; Stillwater is southwest of Lanette's house; Rainroot is northwest of the lower Route 119 house and returns to `(27,106)`.
+
+Native testing caught borrowed open Secret Base art entering a stale native base on Up before the grotto prompt. Added a read-only four-coordinate guard in `TryDoorWarp`; A still uses the actual background script and all other Secret Base positions retain native behavior. The actual C predicate passed exhaustive 16-bit map-ID and target-route coordinate probes. No save allocations, flags, map IDs, palette assets or claim/reward semantics changed.
+
+Both local Debug/Release builds and native Quickstart passed. Native mGBA passed all twelve seasonal scenes, sprite/floor/season checks, real visitor dialogue, three exits, declines and reentries. A 176-frame native capture records walking from southern Petalburg Woods through examination, Yes/No, fade and arrival; setup is controlled, subsequent movement/text/transition use production code. Full-tree, geometry, bounded route-art, guard, season/84-table encounter and Kanto checks passed. [Updated art/entry evidence and limits](qa/hidden-grottos-polish.md). The earlier preview is superseded. PR #87 remains a draft; review of this revised checkpoint, capture/reward/cooldown implementation, persistence and eventual release gates remain outstanding. Published v0.0.68 and BPS/wiki/site stay unchanged.
+
+Revised source and native previews are saved in draft PR #87 at `06200769`; all 59 changed blobs matched local Git object hashes before the branch update. New-source project **39525842600**, native **39525842770** and build/BPS **39525842603** were in progress at handoff; verify their outcomes independently. No merge or public release was performed.
+
+## Hidden grottos — unshipped first review (20 October 2026)
+
+**Model: GPT-6 (Codex) | Reasoning: make the selected concept concrete in native maps, preserve the published baseline and isolate unfinished gameplay until owner review.**
+
+Owner authorized starting hidden grottos and explicitly requested the idea and previews. Added a draft exploration prototype on v0.0.68: Leafshade Hollow (southern Petalburg Woods), Stillwater Nook (Route 114) and Rainroot Hollow (lower Route 119). Appended maps/layouts without renumbering published IDs; added only three background entrance interactions to existing routes. Native yes/no entry, walking return, twelve committed-season visitors with cry/dialogue, environmental clues and inspectable item placeholders work. Existing map pixels/scripts, bedroom approval and rejected visual proposals are untouched. The proposed finished loop is one optional capture plus a small item, with a 1,024-step refresh after clearing; this rule and roster/levels are **unapproved proposals**, not implemented rewards or saved progress.
+
+Local Debug and Release compiled. Native mGBA 0.10.2 passed twelve seasonal scenes, actual sprite identity/season/floor checks, visitor dialogue, all three walking exits, entrance declines and reentries. The native Quickstart smoke passed. Geometry/append-only ID checks and existing season, 84-table encounter and Kanto-script regressions passed. Phone preview sheet, season GIF, original frames, ROM hashes and reproducible harness are retained in [review evidence](qa/hidden-grottos-review.md). QA scene setup is privately instrumented; it is not a natural full playthrough or Pizza Boy proof.
+
+**Do not merge or publish before the owner's visual/concept review.** VERSION, all release changelogs, public site, wiki and BPS downloads remain v0.0.68. No claim/cooldown fields or native var allocations were added; new maps are appended, and existing saves retain all original map meanings. After review, implement and test stable persistent contents, capture/outcome/storage handling, item/full-Bag retries, refresh/save/Continue behavior and final release/wiki parity. No new durable AGENTS.md rule was necessary. [Concept and explicit prototype limits](features/hidden-grottos-review.md).
+
+Draft [PR #87](https://github.com/BabyCRTTV/pokeemerald-emerald-legends/pull/87) preserves source and exact native review frames at `0657b0d4`. All 62 uploaded blobs matched local Git object hashes. Initial CI project **39523403636**, native **39523403622** and build/BPS **39523403677** were running at the review handoff; do not report their outcomes as passed until checked. The local results above are complete. Owner review remains pending; master and published downloads are unchanged.
+
 ## Current release — v0.0.68 bedroom-only (20 October 2026)
 
 **Model: GPT-6 (Codex) | Reasoning: apply explicit owner rejection, retain only the accepted native palette repair.**

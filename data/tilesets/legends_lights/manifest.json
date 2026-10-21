@@ -1092,6 +1092,10 @@
         "native": "data/tilesets/secondary/fallarbor/metatiles.bin"
       },
       {
+        "literal": 19,
+        "native": "data/tilesets/secondary/fallarbor/metatile_attributes.bin"
+      },
+      {
         "literal": 20,
         "native": "data/tilesets/secondary/fortree/metatiles.bin"
       },
@@ -1203,10 +1207,11 @@
     "data/tilesets/secondary/ever_grande/tiles.png": "data/tilesets/legends_lights/ever_grande_tiles.png",
     "data/tilesets/secondary/facility/palettes/05.pal": "data/tilesets/legends_lights/facility_night.pal",
     "data/tilesets/secondary/facility/palettes/12.pal": "data/tilesets/legends_lights/facility_day.pal",
-    "data/tilesets/secondary/fallarbor/metatiles.bin": "data/tilesets/legends_lights/fallarbor_metatiles.bin",
+    "data/tilesets/secondary/fallarbor/metatile_attributes.bin": "data/tilesets/legends_grotto/fallarbor_cliff_attributes.bin",
+    "data/tilesets/secondary/fallarbor/metatiles.bin": "data/tilesets/legends_grotto/fallarbor_cliff_metatiles.bin",
     "data/tilesets/secondary/fallarbor/palettes/05.pal": "data/tilesets/legends_lights/fallarbor_night.pal",
     "data/tilesets/secondary/fallarbor/palettes/12.pal": "data/tilesets/legends_lights/fallarbor_day.pal",
-    "data/tilesets/secondary/fallarbor/tiles.png": "data/tilesets/legends_lights/fallarbor_tiles.png",
+    "data/tilesets/secondary/fallarbor/tiles.png": "data/tilesets/legends_grotto/fallarbor_cliff_tiles.png",
     "data/tilesets/secondary/fortree/metatiles.bin": "data/tilesets/legends_lights/fortree_metatiles.bin",
     "data/tilesets/secondary/fortree/palettes/05.pal": "data/tilesets/legends_lights/fortree_night.pal",
     "data/tilesets/secondary/fortree/palettes/06.pal": "data/tilesets/legends_lights/fortree_windows_day.pal",
