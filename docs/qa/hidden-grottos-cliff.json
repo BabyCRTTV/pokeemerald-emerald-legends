@@ -1,0 +1,41 @@
+{
+  "model": "GPT-6 (Codex)",
+  "review": "Cliff exterior only; preserve accepted grotto looks",
+  "source_parent": "0d89eb5f97c196c6f0ab2430436e33718bfd5d50",
+  "route114_word_changes": [
+    {
+      "x": 13,
+      "y": 39,
+      "old": 1578,
+      "new": 1625
+    },
+    {
+      "x": 13,
+      "y": 40,
+      "old": 1578,
+      "new": 1633
+    },
+    {
+      "x": 14,
+      "y": 40,
+      "old": 1552,
+      "new": 1852
+    }
+  ],
+  "checks": {
+    "debug_build": "passed",
+    "release_build": "passed",
+    "focused_grotto_regressions": 7,
+    "native_debug_seasonal_scenes": 12,
+    "native_exit_decline_reentry_paths": 3,
+    "native_discovery_frames": 176,
+    "approved_look_map_hashes": "matched except exact three cliff cells",
+    "visual_inspection": "actual native Stillwater exterior frame"
+  },
+  "limits": "Unshipped exploration review; native Debug controlled setup. No Release emulator/full-story/save matrix/Pizza Boy claim; no publication.",
+  "sha256": {
+    "pokeemerald.gba": "1ae87964035bb6e12ea37399e0c5f733242c5d02a64e0e02edc2b9bea2a7ac69",
+    "pokeemerald-release.gba": "3fd21bb8646ee6d43ad18cb9f690e1b6c48a3bc68365efefc87204a5dcdea8bd",
+    "docs/designs/hidden-grottos/Emerald-Legends-Cliff-Entrance-Refined.png": "32ff9fa9281c970150d2db1d9a97708660d98a4087697369188672a1b0dba348"
+  }
+}

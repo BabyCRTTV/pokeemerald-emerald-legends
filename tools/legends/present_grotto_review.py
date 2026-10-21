@@ -43,6 +43,11 @@ def main():
         text(entrances,(16,y+25),place,12)
         entrances.paste(Image.open(SOURCE/f'room-{i}-season-0-entrance.png').resize((480,320),Image.Resampling.NEAREST),(0,y+44))
     entrances.save(OUT/'Emerald-Legends-Grotto-Entrances.png')
+    cliff=Image.new('RGB',(480,384),'#282831')
+    text(cliff,(14,9),'STILLWATER NOOK',18,True)
+    text(cliff,(14,34),'Route 114 cliff opening | native mGBA review',12)
+    cliff.paste(Image.open(SOURCE/'room-1-season-0-exit.png').resize((480,320),Image.Resampling.NEAREST),(0,64))
+    cliff.save(OUT/'Emerald-Legends-Cliff-Entrance-Refined.png')
     frames=[]
     for season,(name,visitor) in enumerate([('Spring','Morelull'),('Summer','Tropius'),('Autumn','Goomy'),('Winter','Swablu')]):
         card=Image.new('RGB',(480,384),'#282831')

@@ -1,5 +1,15 @@
 # Development handoff
 
+## Stillwater cliff exterior touchup; other grotto looks locked (21 October 2026)
+
+**Model: GPT-6 (Codex) | Reasoning: seat the opening in the actual cliff face and retain the accepted surrounding visual baseline.**
+
+Owner approved the current grotto interiors/exteriors, including Rainroot's repaired grass, with one exception: the cliff pit looked strange. Replaced the rounded Secret Base floor-like hole at Route 114 `(14,40)` with a native two-tile brown cave mouth at `(13,39–40)`, within the cliff itself, and restored the original adjacent cliff/grass edge at `(14,40)`. Only these three map words differ from approved source `0d89eb5f`. The existing inspect cell `(14,40)`, approach/return `(15,40)`, scripts, guard, collision boundaries, objects, all interiors and other entrances remain unchanged in function. The visible cave mouth uses native nonanimated entrance behavior, which requires a matching warp event to warp; none was added. It is solid scenery reached through the existing Examine/Yes/No script.
+
+Added approved-look hashes for all three interior maps and both other exterior maps plus an exact Route 114 three-cell exception. All seven focused checks passed, including original route restoration, accepted-look preservation and the existing native C guard. Debug/Release builds passed. Native mGBA passed twelve seasonal scenes and all three exit/decline/reentry paths, including actual inspection/entry at the revised cliff. Inspected the [actual updated cliff frame](designs/hidden-grottos/Emerald-Legends-Cliff-Entrance-Refined.png). [Hashes, scope and limits](qa/hidden-grottos-cliff.json).
+
+Preserve the approved current grotto appearances except further explicitly requested changes. This exterior refinement is saved in draft PR #87 for review, with no merge/publication/version/BPS/wiki/site changes. Captures/rewards/refresh persistence are still unfinished prototype work. Native scene setup remains controlled Debug QA, not a full-story/save matrix, Release emulator or Pizza Boy claim. No durable AGENTS.md policy change was necessary.
+
 ## Rainroot tall-grass edge repair (21 October 2026)
 
 **Model: GPT-6 (Codex) | Reasoning: use the native Route 119 long-grass assembly rather than ending stalk tiles directly on grass.**

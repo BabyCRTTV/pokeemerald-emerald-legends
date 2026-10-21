@@ -39,6 +39,15 @@ class Grottos(unittest.TestCase):
                         struct.pack_into('<H',data,offset,patch['old'])
                 self.assertEqual(BASE['routes'][route]['files'][f],hashlib.sha256(data).hexdigest())
 
+    def test_approved_looks_preserved_except_cliff_opening(self):
+        approved=read('docs/qa/hidden-grottos-approved-looks.json')
+        for path,sha in approved['map_sha256'].items():
+            self.assertEqual(hashlib.sha256((R/path).read_bytes()).hexdigest(),sha,path)
+        a=bytearray((R/'data/layouts/Route114/map.bin').read_bytes())
+        for patch in approved['Route114_restore_words']:
+            struct.pack_into('<H',a,patch['index']*2,patch['old'])
+        self.assertEqual(hashlib.sha256(a).hexdigest(),approved['Route114_sha256'])
+
     def test_reach_every_interaction_and_exit(self):
         layouts = {l['id']:l for l in read('data/layouts/layouts.json')['layouts']}
         for key in ['Leafshade','Stillwater','Rainroot']:

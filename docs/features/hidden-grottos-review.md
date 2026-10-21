@@ -2,7 +2,7 @@
 
 Status: **unshipped exploration prototype, third, compact interior review**, based on v0.0.68. Owner requested another cleanup and smaller grotto interiors after the discovery review. Layouts, names, roster and renewal rules remain proposals pending review.
 
-Three small, optional shelters reward inspecting the edges of familiar routes. A vine-framed trunk, a rock crevice and a gap in the undergrowth provide visible clues. Each entrance asks before entering; walking back through the mouth returns to the original approach. Native Hoenn art and species sprites supply every pixel. Ten bounded route cells show the openings; existing route events, warps and story scripts retain their meanings.
+Three small, optional shelters reward inspecting the edges of familiar routes. A vine-framed trunk, a tall rock crevice and a gap in the undergrowth provide visible clues. Each entrance asks before entering; walking back through the mouth returns to the original approach. Native Hoenn art and species sprites supply every pixel. Eleven bounded route cells show the openings; existing route events, warps and story scripts retain their meanings.
 
 | Shelter | Entrance | Character | Environmental clue |
 | --- | --- | --- | --- |

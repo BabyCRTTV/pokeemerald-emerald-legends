@@ -1,0 +1,25 @@
+{
+  "source": "0d89eb5f97c196c6f0ab2430436e33718bfd5d50",
+  "map_sha256": {
+    "data/layouts/LegendsGrotto_Leafshade/map.bin": "8cde7af812c122b84a7149b870684e7e863da5c71061c7a3a16b15865b248d11",
+    "data/layouts/LegendsGrotto_Stillwater/map.bin": "48516533ff46102f1c2a3dc71db2954a67879cd993a311d0257b40fe1843e72f",
+    "data/layouts/LegendsGrotto_Rainroot/map.bin": "37df7f56643a228d064ddb19d5216582e5d6cbaa161cea2851ca834f519b42af",
+    "data/layouts/PetalburgWoods/map.bin": "c5c556e9cc031f3a6b8916473c48a2cae8306585e19998c74a9c3e1e74b9d9de",
+    "data/layouts/Route119/map.bin": "5968bc3c8405aa7155641b58f7e138c948c344c98a46e0b8385aa7af7aefc210"
+  },
+  "Route114_sha256": "976691430855081d3bcce04b398a9c986ed720de847ec74c24eb0d7a07315bae",
+  "Route114_restore_words": [
+    {
+      "index": 1573,
+      "old": 1578
+    },
+    {
+      "index": 1613,
+      "old": 1578
+    },
+    {
+      "index": 1614,
+      "old": 1552
+    }
+  ]
+}
