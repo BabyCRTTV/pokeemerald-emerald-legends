@@ -13,13 +13,14 @@ static struct mCore *c;
 static color_t *video;
 static unsigned mainAddr, callback;
 static const char *output;
-static int recording, recordFrames, recorded;
+static int recording, recordFrames, recorded, cliffFrames;
+static const char *recordName="discovery";
 static unsigned box(int n) { return c->busRead32(c,0x0203ffc0+n*4); }
 static void frames(int n) {
     while(n--) {
         c->runFrame(c);
         if(recording && recordFrames++ % 6 == 0) {
-            char p[4096];snprintf(p,sizeof(p),"%s/discovery-%04d.rgba",output,recorded++);
+            char p[4096];snprintf(p,sizeof(p),"%s/%s-%04d.rgba",output,recordName,recorded++);
             FILE *f=fopen(p,"wb");assert(f&&fwrite(video,4,240*160,f)==240*160);fclose(f);
         }
     }
@@ -65,16 +66,29 @@ int main(int argc,char **argv) {
             for(int i=0;i<8&&box(12);i++) {key(1);command(1,2);} assert(!box(12));
             for(int i=0;i<12;i++) {key(128);command(1,2);if(box(5)!=group||box(6)!=map) break;}
             frames(250);command(1,2);assert(box(5)!=group||box(6)!=map);
+            if(room==1) {
+                assert(box(10)==14&&box(11)==40&&box(9)==0);
+                // Walk out to ordinary route ground, then film the real approach.
+                for(int i=0;i<3&&box(10)<15;i++){key(16);command(1,2);}
+                assert(box(10)==15&&box(11)==40);
+                recordName="cliff";recorded=0;recordFrames=0;recording=1;frames(45);
+                for(int i=0;i<3&&box(10)>14;i++){key(32);command(1,2);}
+                assert(box(10)==14&&box(11)==40&&box(9)==0&&!box(12));
+                frames(45);
+            }
             capture(argv[2],room,season,"exit");
             // Entry approaches face the inspected tree/cliff/bush.
             unsigned outsideGroup=box(5), outsideMap=box(6);
-            key(room==1?32:64);key(1);frames(90);capture(argv[2],room,season,"entrance");command(1,2);
+            key(room==1?32:64);
+            if(room==1){command(1,2);assert(box(10)==14&&box(11)==40&&!box(12)&&box(5)==outsideGroup&&box(6)==outsideMap);}
+            key(1);frames(90);capture(argv[2],room,season,"entrance");command(1,2);
             for(int i=0;i<8&&box(12);i++){key(2);command(1,2);}
             assert(!box(12)&&box(5)==outsideGroup&&box(6)==outsideMap);
             key(1);key(1);key(1);key(1);frames(300);command(1,2);
             printf("reentry room=%d map=%u,%u xy=%u,%u script=%u\n",room,box(5),box(6),box(10),box(11),box(12));
             assert(box(5)==group&&box(6)==map&&!box(12));
             capture(argv[2],room,season,"reentry");
+            if(room==1){frames(90);recording=0;cliffFrames=recorded;recordName="discovery";recorded=0;recordFrames=0;printf("PASS: walked from Route 114 (15,40) onto landing (14,40), faced actual mouth (13,40), declined and reentered; %d film frames.\n",cliffFrames);}
         }
     }
     command(2,500);command(1,2);

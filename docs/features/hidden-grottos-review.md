@@ -2,7 +2,7 @@
 
 Status: **unshipped exploration prototype, third, compact interior review**, based on v0.0.68. Owner requested another cleanup and smaller grotto interiors after the discovery review. Layouts, names, roster and renewal rules remain proposals pending review.
 
-Three small, optional shelters reward inspecting the edges of familiar routes. A vine-framed trunk, a tall rock crevice and a gap in the undergrowth provide visible clues. Each entrance asks before entering; walking back through the mouth returns to the original approach. Native Hoenn art and species sprites supply every pixel. Eleven bounded route cells show the openings; existing route events, warps and story scripts retain their meanings.
+Three small, optional shelters reward inspecting the edges of familiar routes. A vine-framed trunk, a tall rock crevice and a gap in the undergrowth provide visible clues. Each entrance asks before entering; walking back through the mouth returns to the original approach. Native Hoenn art and species sprites supply every pixel. Twelve bounded route cells show the openings; existing route events, warps and story scripts retain their meanings.
 
 | Shelter | Entrance | Character | Environmental clue |
 | --- | --- | --- | --- |
@@ -16,7 +16,7 @@ The compact revision reduces each map from **22×20 to 18×16 tiles** (35% less 
 
 These use the existing area's access conditions. Leafshade is an early discovery in the southern woods; Stillwater and Rainroot become reachable as the player reaches their routes. Once at an opening, no special move or item is required.
 
-Walk up to the visible opening and press **A**. A short description mentions the draft, trail or footprints, followed by an **Explore [name]?** Yes/No choice. Yes fades into the separate grotto map. No leaves the player outside. Walking back through the mouth returns to a passable tile beside the same opening. Both halves of Leafshade's vine-framed trunk accept examination.
+Walk up to the visible opening and press **A**. A short description mentions the draft, trail or footprints, followed by an **Explore [name]?** Yes/No choice. Yes fades into the separate grotto map. No leaves the player outside. Walking back through the mouth returns to a passable tile beside the same opening. Both halves of Leafshade's vine-framed trunk accept examination. Stillwater has a walkable landing at `(14,40)`, reached from ordinary Route 114 ground at `(15,40)`; face west and examine the actual cave mouth at `(13,40)`. Walking out returns to the landing.
 
 The borrowed native entrance graphics carry Secret Base behavior. A coordinate-specific door-warp guard isolates exactly these four interaction cells from the native auto-warp; all other Secret Base positions retain the original path. The route 119 return is now `(27,106)`, directly below its complete undergrowth opening.
 

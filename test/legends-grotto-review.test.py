@@ -70,7 +70,7 @@ class Grottos(unittest.TestCase):
 
     def test_entrances_have_safe_returns_and_no_event_collisions(self):
         layouts = {l['id']:l for l in read('data/layouts/layouts.json')['layouts']}
-        for route,approach in [('PetalburgWoods',(13,32)),('Route114',(15,40)),('Route119',(27,106))]:
+        for route,approach in [('PetalburgWoods',(13,32)),('Route114',(14,40)),('Route119',(27,106))]:
             m=read(f'data/maps/{route}/map.json');l=layouts[m['layout']];a=cells(l)
             entries=[e for e in m['bg_events'] if e.get('script','').startswith('LegendsGrotto_Enter')]
             entry=min(entries,key=lambda e:abs(e['x']-approach[0])+abs(e['y']-approach[1]))
@@ -78,6 +78,20 @@ class Grottos(unittest.TestCase):
             self.assertEqual(abs(entry['x']-approach[0])+abs(entry['y']-approach[1]),1)
             self.assertFalse(any(o['x']==approach[0] and o['y']==approach[1] for o in m['object_events']))
             self.assertFalse(any(e['x']==entry['x'] and e['y']==entry['y'] for e in m['bg_events'] if e is not entry))
+
+    def test_cliff_mouth_has_a_real_walkable_approach(self):
+        l=next(l for l in read('data/layouts/layouts.json')['layouts'] if l['name']=='Route114_Layout')
+        a=cells(l);w=l['width']
+        # Ordinary route -> landing -> adjacent visible cave mouth, with no
+        # intervening cliff/ledge or remote background interaction.
+        for x in [15,14]:
+            self.assertEqual(a[40*w+x]&0xC00,0)
+            self.assertEqual(a[40*w+x]&1023,0x001)
+        self.assertEqual(a[40*w+13]&1023,0x261)
+        m=read('data/maps/Route114/map.json')
+        e=next(e for e in m['bg_events'] if e.get('script')=='LegendsGrotto_EnterStillwater')
+        self.assertEqual((e['x'],e['y']),(13,40))
+        self.assertIn('warp MAP_ROUTE114, 14, 40',(R/'data/scripts/legends_grotto_review.inc').read_text())
 
     def test_every_tree_is_complete(self):
         for key in ['Leafshade','Rainroot']:

@@ -12,7 +12,7 @@ ROOMS = [
     ('Leafshade', 'Leafshade Hollow', 'PetalburgWoods', 'MAPSEC_PETALBURG_WOODS',
      'gTileset_Rustboro', 'MUS_PETALBURG_WOODS', 'WEATHER_SHADE', (13, 31), (13, 32)),
     ('Stillwater', 'Stillwater Nook', 'Route114', 'MAPSEC_ROUTE_114',
-     'gTileset_Cave', 'MUS_PETALBURG_WOODS', 'WEATHER_NONE', (14, 40), (15, 40)),
+     'gTileset_Cave', 'MUS_PETALBURG_WOODS', 'WEATHER_NONE', (13, 40), (14, 40)),
     ('Rainroot', 'Rainroot Hollow', 'Route119', 'MAPSEC_ROUTE_119',
      'gTileset_Fortree', 'MUS_ROUTE119', 'WEATHER_RAIN', (27, 105), (27, 106)),
 ]
@@ -20,7 +20,7 @@ ROOMS = [
 # Every cell is existing Hoenn art; no tileset, palette or persistent ID changes.
 ENTRANCE_TILES = {
     'PetalburgWoods': [(12, 31, 0x036), (13, 31, 0x037)],
-    'Route114': [(13, 39, 0x259), (13, 40, 0x261), (14, 40, 0x33C)],
+    'Route114': [(13, 39, 0x259), (13, 40, 0x261), (14, 40, 0x001)],
     'Route119': [(26, 104, 0x279), (27, 104, 0x27A), (28, 104, 0x27B),
                  (26, 105, 0x281), (27, 105, 0x278), (28, 105, 0x283),
                  (26, 106, 0x001)],

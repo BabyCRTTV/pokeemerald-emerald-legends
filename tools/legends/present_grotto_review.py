@@ -73,6 +73,19 @@ def main():
     palette=palette_source.quantize(colors=256,method=Image.Quantize.MEDIANCUT)
     compact=[frame.quantize(palette=palette,dither=Image.Dither.NONE) for frame in discovery]
     compact[0].save(OUT/'Emerald-Legends-Grotto-Discovery.gif',save_all=True,append_images=compact[1:],duration=100,loop=0,disposal=1,optimize=True)
+    cliff_frames=[]
+    for path in sorted(SOURCE.glob('cliff-*.png')):
+        card=Image.new('RGB',(480,384),'#282831')
+        text(card,(14,8),'STILLWATER: WALKING TO THE ENTRANCE',16,True)
+        text(card,(14,35),'v0.0.68 review | native mGBA: walk up, press A',12)
+        card.paste(Image.open(path).resize((480,320),Image.Resampling.NEAREST),(0,64))
+        cliff_frames.append(card)
+    assert len(cliff_frames)==proof['cliff_approach_film_frames']>40
+    atlas=Image.new('RGB',(960,96*((len(cliff_frames)+7)//8)))
+    for i,frame in enumerate(cliff_frames):atlas.paste(frame.resize((120,96),Image.Resampling.NEAREST),(i%8*120,i//8*96))
+    palette=atlas.quantize(colors=256,method=Image.Quantize.MEDIANCUT)
+    frames=[f.quantize(palette=palette,dither=Image.Dither.NONE) for f in cliff_frames]
+    frames[0].save(OUT/'Emerald-Legends-Cliff-Walk-In.gif',save_all=True,append_images=frames[1:],duration=100,loop=0,disposal=1,optimize=True)
     print(OUT)
 
 if __name__=='__main__':main()

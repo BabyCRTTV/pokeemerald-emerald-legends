@@ -1,0 +1,35 @@
+{
+  "model": "GPT-6 (Codex)",
+  "source_parent": "d575728ccbbf20aec535e0b77d405802e30066fb",
+  "repair": "Walkable landing and actual mouth interaction; remove remote-prompt workaround",
+  "ordinary_ground": [
+    15,
+    40
+  ],
+  "landing_and_return": [
+    14,
+    40
+  ],
+  "mouth_and_interaction": [
+    13,
+    40
+  ],
+  "checks": {
+    "debug_build": "passed",
+    "release_build": "passed",
+    "focused_grotto_tests": 8,
+    "native_seasonal_scenes": 12,
+    "native_exit_decline_reentry_paths": 3,
+    "native_cliff_walk_frames": 165,
+    "native_leaf_discovery_frames": 176,
+    "visual_inspection": "actual exterior still and approach film frames",
+    "preserved_looks": "all three interiors and other exterior maps match approved hashes"
+  },
+  "limits": "Controlled native Debug scenes, no publication/full-story/old-save/Release-emulator/Pizza Boy claim.",
+  "sha256": {
+    "pokeemerald.gba": "89515e183bcc92d15612c9a87f8c097e07bccfeedbcabc789c1bf8a3239ad60f",
+    "pokeemerald-release.gba": "7f53e89af9338034991e48d20df8bd850c9242ba0e8d6f388bf334f0e318f5df",
+    "docs/designs/hidden-grottos/Emerald-Legends-Cliff-Walk-In.gif": "7068e2999091b1fb8011049a4be54cfd0650dff224c53e7c2e54e13e039a98bd",
+    "docs/designs/hidden-grottos/Emerald-Legends-Cliff-Entrance-Refined.png": "0bc6970669d0be362df56facd92854612134d06889f47be1e5d2eda715da216b"
+  }
+}

@@ -1,5 +1,15 @@
 # Development handoff
 
+## Stillwater reachable landing and actual walk-in proof (21 October 2026)
+
+**Model: GPT-6 (Codex) | Reasoning: align visible mouth, approach collision and interaction coordinates, then verify real movement instead of a remote prompt.**
+
+Owner correctly identified the cliff collision blocking access to the visible mouth. The previous checkpoint's native test only proved an adjacent intermediary prompt at `(14,40)` worked while the art was at `(13,40)`; that was inadequate access validation. Replaced the single intervening ledge cell `(14,40)` with ordinary passable grass. The mouth artwork stays at `(13,39–40)`, its background interaction and narrow warp guard move onto the actual mouth `(13,40)`, and the walking exit returns to the landing `(14,40)`. All other accepted grotto visuals, route cells, IDs, objects, event scripts and save layouts retain their meanings.
+
+Eight focused regressions passed, including a new ordinary-ground `(15,40)` → walkable landing `(14,40)` → visible adjacent mouth `(13,40)` check, return placement and exact approved-look preservation. Local Debug/Release builds passed. Native mGBA checked all twelve seasonal scenes and the three exit/decline/reentry paths. The revised cliff test walks east onto ordinary route ground, records walking west onto the landing, checks passability/location, faces the solid mouth without warping, examines it, declines and reenters. It asserts the real player coordinates after movement instead of substituting a direct placement at the entrance. A 165-original-frame clip shows this production movement and dialogue; inspected the actual landing still and film frames. [Walk-in preview](designs/hidden-grottos/Emerald-Legends-Cliff-Walk-In.gif), [scope/hashes](qa/hidden-grottos-access.json), [native assertions](designs/hidden-grottos/emulator.log).
+
+Supersedes the previous exterior's access claim. Keep all other approved looks locked. Draft PR #87 remains unshipped; no merge/publication/BPS/wiki/site/version changes. Native controlled Debug scene setup is not a full-story/save-matrix/Release-emulator/Pizza Boy claim. Capture/reward/refresh persistence remains unfinished prototype work. No new durable AGENTS.md policy was needed.
+
 ## Stillwater cliff exterior touchup; other grotto looks locked (21 October 2026)
 
 **Model: GPT-6 (Codex) | Reasoning: seat the opening in the actual cliff face and retain the accepted surrounding visual baseline.**

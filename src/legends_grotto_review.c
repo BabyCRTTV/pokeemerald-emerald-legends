@@ -43,7 +43,7 @@ bool32 LegendsGrottoIsEntrance(s16 x, s16 y)
     switch (map)
     {
     case MAP_PETALBURG_WOODS: return y == 31 && (x == 12 || x == 13);
-    case MAP_ROUTE114: return x == 14 && y == 40;
+    case MAP_ROUTE114: return x == 13 && y == 40;
     case MAP_ROUTE119: return x == 27 && y == 105;
     default: return FALSE;
     }
