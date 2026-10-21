@@ -48,6 +48,20 @@ class Grottos(unittest.TestCase):
             struct.pack_into('<H',a,patch['index']*2,patch['old'])
         self.assertEqual(hashlib.sha256(a).hexdigest(),approved['Route114_sha256'])
 
+    def test_cliff_options_append_native_assets_without_changing_baseline(self):
+        proof=read('docs/qa/cliff-entrance-options.json');base='data/tilesets/secondary/fallarbor/'
+        for path,sha in proof['unchanged_files'].items():
+            self.assertEqual(hashlib.sha256((R/path).read_bytes()).hexdigest(),sha)
+        for path,key,size in [('metatiles.bin','metatiles_prefix_sha256',16),('metatile_attributes.bin','attributes_prefix_sha256',2)]:
+            data=(R/(base+path)).read_bytes();count=proof['base_metatile_count']
+            self.assertEqual(len(data),(count+6)*size)
+            self.assertEqual(hashlib.sha256(data[:count*size]).hexdigest(),proof[key])
+        active=(R/'data/tilesets/legends_lights/fallarbor_metatiles.bin').read_bytes()
+        native=(R/(base+'metatiles.bin')).read_bytes();prefix=proof['base_metatile_count']*16
+        self.assertEqual(hashlib.sha256(active[:prefix]).hexdigest(),proof['compiled_metatiles_prefix_sha256'])
+        self.assertEqual(active[prefix:],native[prefix:])
+        self.assertEqual(hashlib.sha256((R/'data/layouts/Route114/map.bin').read_bytes()).hexdigest(),proof['route114_sha256'])
+
     def test_reach_every_interaction_and_exit(self):
         layouts = {l['id']:l for l in read('data/layouts/layouts.json')['layouts']}
         for key in ['Leafshade','Stillwater','Rainroot']:

@@ -48,7 +48,7 @@ int main(int argc,char **argv) {
     mCoreConfigSetDefaultIntValue(&c->config,"skipBios",1); c->loadConfig(c,&c->config);
     video=calloc(240*160,sizeof(color_t)); c->setVideoBuffer(c,video,240);
     struct VFile *f=VFileOpen(argv[1],O_RDONLY); assert(f&&c->loadROM(c,f));
-    unsigned leafGroup=0, leafMap=0;
+    unsigned leafGroup=0, leafMap=0, stillGroup=0, stillMap=0;
     for(int room=0;room<3;room++) for(int season=0;season<4;season++) {
         c->reset(c); frames(500); c->busWrite32(c,mainAddr,0);
         c->busWrite32(c,0x0203ffc4,room); c->busWrite32(c,0x0203ffc8,season);
@@ -58,6 +58,7 @@ int main(int argc,char **argv) {
         assert(box(7)==season&&box(9)==0&&box(10)==9&&box(11)==9&&box(8)==box(13));
         unsigned group=box(5), map=box(6);
         if(room==0){leafGroup=group;leafMap=map;}
+        if(room==1){stillGroup=group;stillMap=map;}
         capture(argv[2],room,season,"overview");
         if(season==0) {
             for(int i=0;i<5&&box(11)>7;i++){key(64);command(1,2);}
@@ -103,5 +104,24 @@ int main(int argc,char **argv) {
     key(1);frames(320);command(1,2);assert(box(5)==leafGroup&&box(6)==leafMap&&!box(12));
     capture(argv[2],0,0,"discovery-inside");frames(90);recording=0;
     printf("PASS: filmed native approach, examine, confirm and entry; %d original frames.\n",recorded);
+    for(int variant=0;variant<3;variant++) {
+        c->reset(c);frames(500);c->busWrite32(c,mainAddr,0);
+        c->busWrite32(c,0x0203ffc4,1);c->busWrite32(c,0x0203ffc8,0);
+        command(0,500);
+        command(3,500);command(1,2);assert(box(10)==15&&box(11)==40);
+        c->busWrite32(c,0x0203ffc4,variant);command(4,90);
+        for(int i=0;i<3&&box(10)>14;i++){key(32);command(1,2);}
+        assert(box(10)==14&&box(11)==40&&box(9)==0&&!box(12));
+        key(32);command(1,2);assert(box(10)==14&&!box(12));
+        char p[4096];snprintf(p,sizeof(p),"%s/entrance-option-%d.rgba",output,variant);
+        FILE *f=fopen(p,"wb");assert(f&&fwrite(video,4,240*160,f)==240*160);fclose(f);
+        unsigned outsideGroup=box(5),outsideMap=box(6);
+        key(1);command(1,2);assert(box(12));
+        for(int i=0;i<8&&box(12);i++){key(2);command(1,2);}
+        assert(!box(12)&&box(5)==outsideGroup&&box(6)==outsideMap);
+        key(1);key(1);key(1);key(1);frames(300);command(1,2);
+        assert(box(5)==stillGroup&&box(6)==stillMap&&!box(12));
+        printf("PASS: entrance option %d, real landing approach, inspect, decline and enter.\n",variant);
+    }
     c->deinit(c);free(video);puts("PASS: twelve seasonal scenes, native movement and visitor dialogue.");
 }

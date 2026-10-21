@@ -13,7 +13,7 @@ def main():
     p.add_argument('--elf', type=Path, default=R/'pokeemerald.elf')
     p.add_argument('--output', type=Path, default=R/'build/grotto-review')
     args = p.parse_args(); out = args.output.resolve(); out.mkdir(parents=True, exist_ok=True)
-    for artifact in list(out.glob('room-*.png')) + list(out.glob('room-*.rgba')) + list(out.glob('discovery-*.png')) + list(out.glob('discovery-*.rgba')) + list(out.glob('cliff-*.png')) + list(out.glob('cliff-*.rgba')):
+    for artifact in list(out.glob('room-*.png')) + list(out.glob('room-*.rgba')) + list(out.glob('discovery-*.png')) + list(out.glob('discovery-*.rgba')) + list(out.glob('cliff-*.png')) + list(out.glob('cliff-*.rgba')) + list(out.glob('entrance-option-*')):
         artifact.unlink()
     prefix = args.prefix.resolve(); env = os.environ.copy()
     env['PATH'] = str(prefix/'bin') + ':' + env['PATH']
@@ -29,7 +29,11 @@ def main():
          '-fno-jump-tables','-nostdlib','-Wl,-Ttext=0x09f80000','-Wl,--entry=qa',
          '-Wl,--just-symbols='+str(args.elf),str(S/'arm.c'),'-o',str(out/'arm.elf')],'arm-build.log')
     run(['arm-none-eabi-objcopy','-O','binary',str(out/'arm.elf'),str(out/'arm.bin')],'objcopy.log')
-    source = args.rom.read_bytes(); rom = bytearray(source); payload = (out/'arm.bin').read_bytes()
+    source = args.rom.read_bytes()
+    active_metatiles=(R/'data/tilesets/legends_lights/fallarbor_metatiles.bin').read_bytes()
+    tile_offset=symbols(args.elf)['gMetatiles_Fallarbor']-0x08000000
+    assert source[tile_offset:tile_offset+len(active_metatiles)]==active_metatiles
+    rom = bytearray(source); payload = (out/'arm.bin').read_bytes()
     assert len(payload)<65536 and set(rom[0x1f80000:0x1f80000+len(payload)])=={255}
     rom[0x1f80000:0x1f80000+len(payload)] = payload
     private = out/'PRIVATE-QA.gba'; private.write_bytes(rom)
@@ -41,8 +45,10 @@ def main():
         Image.frombytes('RGBA',(240,160),raw.read_bytes()).convert('RGB').save(raw.with_suffix('.png'))
         raw.unlink()
     assert len(list(out.glob('room-*.png'))) == 28
+    assert len(list(out.glob('entrance-option-*.png'))) == 3
     proof = dict(version=(R/'VERSION').read_text().strip()+' + unshipped grotto review',
         ROM_sha256=hashlib.sha256(source).hexdigest(),emulator='mGBA 0.10.2 native core',
+        entrance_options={p.name:hashlib.sha256(p.read_bytes()).hexdigest() for p in sorted(out.glob('entrance-option-*.png'))},
         seasonal_scenes=12, walking_exit_reentry_and_decline_paths=3,
         discovery_film_frames=len(list(out.glob('discovery-*.png'))),
         cliff_approach_film_frames=len(list(out.glob('cliff-*.png'))),

@@ -1,0 +1,22 @@
+{
+  "model": "GPT-6 (Codex)",
+  "status": "Three optional native assemblies, no production map selection",
+  "checks": {
+    "debug_build": "passed",
+    "release_build": "passed",
+    "grotto_regressions": 9,
+    "night_light_assets_and_reproducibility": "passed",
+    "native_seasonal_scenes": 12,
+    "native_existing_entry_exit_paths": 3,
+    "native_alternative_approach_decline_entry_paths": 3,
+    "native_compiled_metatile_array": "ROM bytes equal active source derivative",
+    "visual_inspection": "final three native frames and crop sheet"
+  },
+  "limits": "Controlled native Debug QA only; alternatives staged by private setup. No new Release emulator, full-story/old-save/Pizza Boy claim or publication.",
+  "sha256": {
+    "pokeemerald.gba": "9099325247363b630f8f69204276a07b9e8c2474f77ffad52260fce8ed1dc411",
+    "pokeemerald-release.gba": "cb374446c5286821c703f1529bdd3472b74994a375005305a291026e8a09674c",
+    "docs/designs/hidden-grottos/cliff-options/Emerald-Legends-Cliff-Options.png": "599125211ed3b75827ea9ba62d77d679052ff2e68cdf0c90e735edcf2897349b",
+    "docs/designs/hidden-grottos/cliff-options/Emerald-Legends-Cliff-Options-World.png": "ed9855552b2902d3e0cfd6dfa918cb4276a7e43068edd410191d20ae40eee469"
+  }
+}

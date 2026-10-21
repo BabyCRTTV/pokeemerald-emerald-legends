@@ -1,5 +1,15 @@
 # Development handoff
 
+## Side-facing cliff entrance alternatives (21 October 2026)
+
+**Model: GPT-6 (Codex) | Reasoning: match the cliff's side perspective by assembling existing native rock/cave cells, with no repainting or replacement of approved scenery.**
+
+Owner likes the accessible grotto but requested alternatives to the forward-facing cave. Added three review-only two-metatile assemblies: A narrow cleft, B low opening beneath a full rock lip, C wider angled recess. All words reuse unchanged native Fallarbor/General 8×8 art and palettes; six definitions append at `0x36F–0x374`, preserving every existing metatile/attribute prefix. No map references changed: the accepted front-facing entrance, landing, scripts and all other approved looks stay as source `d6ce8ecc` pending owner selection. Recommend A for the most convincing side perspective. [Closeups](designs/hidden-grottos/cliff-options/Emerald-Legends-Cliff-Options.png), [full native scenes](designs/hidden-grottos/cliff-options/Emerald-Legends-Cliff-Options-World.png).
+
+Fallarbor's active pointer uses `legends_lights/fallarbor_metatiles.bin`, so its unchanged accepted prefix also receives the six appended non-window definitions. The source and active derivative prefixes, native graphic PNG and sixteen palettes are pinned by regression. Native QA checks the active compiled array against actual ROM bytes before capture; an early internal capture from an unsynchronized derivative was rejected and replaced. QA substitutions explicitly retain solid mouth collision bits, and each option starts from a fresh fixture to keep lighting consistent. Options are staged only by the private harness, not a production map edit.
+
+Local Debug/Release builds, nine focused regressions and the existing night-light reproducibility/DNS checks passed. Native mGBA passed twelve seasonal scenes, existing three exit/decline/reentry paths, and all three alternatives' real landing approach, solid mouth facing, inspection, decline and entry. Inspected final native crops/full scenes. [Asset specification](qa/cliff-entrance-options.json), [build hashes/limits](qa/cliff-entrance-options-builds.json), [native evidence](designs/hidden-grottos/cliff-options/verification.json). These are actual compiled in-game assets rendered in controlled native Debug fixtures, with nearest-neighbor crops/enlargement only. No full-story/old-save/Release-emulator/Pizza Boy claim, publication or feature completion. PR #87 remains a draft. Owner selection of an alternative is pending; preserve all other approved looks. No new AGENTS.md policy was necessary.
+
 ## Stillwater reachable landing and actual walk-in proof (21 October 2026)
 
 **Model: GPT-6 (Codex) | Reasoning: align visible mouth, approach collision and interaction coordinates, then verify real movement instead of a remote prompt.**

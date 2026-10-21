@@ -1,5 +1,6 @@
 // Private scene setup and assertions. Never part of the public game binary.
 #include "global.h"
+#include "field_camera.h"
 #include "main.h"
 #include "new_game.h"
 #include "overworld.h"
@@ -65,6 +66,21 @@ void qa(void)
         VarSet(VAR_REPEL_STEP_COUNT, 200);
         SetWarpDestination(MAP_GROUP(MAP_PETALBURG_WOODS), MAP_NUM(MAP_PETALBURG_WOODS), -1, 13, 35);
         WarpIntoMap(); b[4] = 1; SetMainCallback2(CB2_LoadMap); return;
+    }
+    if (b[0] == 3)
+    {
+        LegendsSetPlaytimeSeason(LEGENDS_SPRING);
+        VarSet(VAR_REPEL_STEP_COUNT, 200);
+        SetWarpDestination(MAP_GROUP(MAP_ROUTE114), MAP_NUM(MAP_ROUTE114), -1, 15, 40);
+        WarpIntoMap(); b[4] = 1; SetMainCallback2(CB2_LoadMap); return;
+    }
+    if (b[0] == 4)
+    {
+        // The map remains unchanged in production. Compare the compiled native
+        // metatile alternatives through the real field compositor in QA only.
+        MapGridSetMetatileIdAt(13 + 7, 39 + 7, 0x400 | (0x36F + b[1] * 2));
+        MapGridSetMetatileIdAt(13 + 7, 40 + 7, 0x400 | (0x370 + b[1] * 2));
+        DrawWholeMapView();
     }
     b[4] = 1;
     gMain.callback2 = (MainCallback)b[3];
