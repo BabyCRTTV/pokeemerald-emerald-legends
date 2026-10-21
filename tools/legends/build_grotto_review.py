@@ -7,7 +7,7 @@ import json
 import struct
 
 ROOT = Path(__file__).resolve().parents[2]
-W, H = 22, 20
+W, H = 18, 16
 ROOMS = [
     ('Leafshade', 'Leafshade Hollow', 'PetalburgWoods', 'MAPSEC_PETALBURG_WOODS',
      'gTileset_Rustboro', 'MUS_PETALBURG_WOODS', 'WEATHER_SHADE', (13, 31), (13, 32)),
@@ -41,13 +41,12 @@ def tree(a, x, y):
 def pool(a, x, y, cave=False):
     # Complete native shorelines: Route 102's reflective pool and Scorched Slab's
     # rock-water bank. The final row is walkable soil, never a cut water tile.
-    rows = ([[0x289, 0x291, 0x291, 0x281], [0x28A, 0x170, 0x170, 0x288],
-             [0x28A, 0x170, 0x170, 0x288], [0x25E, 0x25E, 0x25E, 0x25E]]
-            if cave else [[0x0B0, 0x0B1, 0x0B2, 0x001, 0x001],
-                          [0x0B8, 0x0A1, 0x0C2, 0x0B1, 0x0B2],
-                          [0x0B8, 0x0A1, 0x0A1, 0x0A1, 0x0BA],
-                          [0x0B8, 0x0A1, 0x0A1, 0x0A1, 0x0BA],
-                          [0x002, 0x002, 0x002, 0x002, 0x002]])
+    rows = ([[0x289, 0x291, 0x281], [0x28A, 0x170, 0x288],
+             [0x28A, 0x170, 0x288], [0x25E, 0x25E, 0x25E]]
+            if cave else [[0x0B0, 0x0B1, 0x0B1, 0x0B2],
+                          [0x0B8, 0x0A1, 0x0A1, 0x0BA],
+                          [0x0B8, 0x0A1, 0x0A1, 0x0BA],
+                          [0x002, 0x002, 0x002, 0x002]])
     for dy, row in enumerate(rows):
         for dx, tile in enumerate(row):
             put(a, x + dx, y + dy, tile, dy < len(rows) - 1 and tile != 0x001)
@@ -55,47 +54,36 @@ def pool(a, x, y, cave=False):
 def landscape(kind):
     a = [0x3400 | 0x211] * (W * H) if kind == 1 else [0x3001] * (W * H)
     if kind == 1:
-        for y in range(7, 16):
-            for x in range(6, 17):
+        for y in range(5, 12):
+            for x in range(5, 13):
                 put(a, x, y, 0x201)
-            put(a, 5, y, 0x212, True)
-            put(a, 17, y, 0x210, True)
-        for x in range(5, 18):
-            put(a, x, 6, 0x21B if x == 5 else 0x21C if x == 17 else 0x219, True)
-            put(a, x, 16, 0x247 if x in [5,17] else 0x209, True)
-        # A stepped northern recess uses the same convex/concave corners as
-        # native Scorched Slab instead of repeating a diagonal wall every cell.
-        put(a, 13, 6, 0x21C, True)
-        put(a, 13, 7, 0x218, True)
-        for x in range(14, 18):
-            put(a, x, 6, 0x211, True)
-            put(a, x, 7, 0x21C if x == 17 else 0x219, True)
-        pool(a, 6, 9, True)
-        for x, y in [(15, 8), (16, 12), (7, 14), (12, 7)]:
+            put(a, 4, y, 0x212, True)
+            put(a, 13, y, 0x210, True)
+        for x in range(4, 14):
+            put(a, x, 4, 0x21B if x == 4 else 0x21C if x == 13 else 0x219, True)
+            put(a, x, 12, 0x247 if x in [4, 13] else 0x209, True)
+        pool(a, 5, 7, True)
+        for x, y in [(11, 5), (12, 10)]:
             put(a, x, y, 0x202, True)
-        for y in range(16, 20):
-            put(a, 11, y, 0x201)
-            put(a, 12, y, 0x201)
+        for y in range(12, H):
+            for x in [8, 9]:
+                put(a, x, y, 0x201)
     else:
         for y in range(0, H, 2):
             for x in range(0, W, 2):
-                # Clear whole trees to preserve native crowns and trunks.
-                if ((x + 1 - 11) / 6.2) ** 2 + ((y + 1 - 10) / 4.8) ** 2 > 1:
+                # Keep complete crowns around a small, softly stepped clearing.
+                if ((x + 1 - 9) / 5.1) ** 2 + ((y + 1 - 8) / 4.1) ** 2 > 1:
                     tree(a, x, y)
-        for y in range(14, H):
-            for x in [10, 11]:
+        for y in range(12, H):
+            for x in [8, 9]:
                 put(a, x, y, 0x001)
         if kind == 0:
-            for x, y in [(7, 7), (8, 7), (7, 8), (14, 10), (15, 10), (14, 11)]:
+            for x, y in [(6, 6), (7, 6), (6, 7), (11, 8), (12, 8), (12, 9)]:
                 put(a, x, y, 0x004)
-            tree(a, 6, 10)
-            tree(a, 14, 6)
         else:
-            pool(a, 6, 9)
-            for x, y in [(13, 7), (14, 7), (15, 7), (14, 8), (15, 8), (15, 11), (15, 12)]:
-                # Long grass is scenery; no encounter table is registered.
+            pool(a, 4, 8)
+            for x, y in [(11, 6), (12, 6), (11, 7), (12, 7), (12, 8), (12, 9)]:
                 put(a, x, y, 0x015)
-            tree(a, 14, 8)
     return a
 
 def obj(gfx, x, y, script):
@@ -123,6 +111,7 @@ def main():
                 primary_tileset='gTileset_General', secondary_tileset=secondary,
                 border_filepath=f'data/layouts/{name}/border.bin',
                 blockdata_filepath=f'data/layouts/{name}/map.bin', layout_version='emerald'))
+        next(l for l in layouts['layouts'] if l['id'] == lid).update(width=W, height=H)
         if name not in groups['gMapGroup_LegendsHoenn']:
             groups['gMapGroup_LegendsHoenn'].append(name)
         m = dict(id=mid, name=name, layout=lid, music=music, region='REGION_HOENN',
@@ -130,15 +119,15 @@ def main():
             map_type='MAP_TYPE_UNDERGROUND' if i == 1 else 'MAP_TYPE_ROUTE',
             allow_cycling=False, allow_escaping=False, allow_running=True,
             show_map_name=False, battle_scene='MAP_BATTLE_SCENE_NORMAL', connections=None,
-            object_events=[obj('OBJ_EVENT_GFX_VAR_F', 11, 8, 'LegendsGrotto_Visitor'),
-                           obj('OBJ_EVENT_GFX_ITEM_BALL', 14, 13, 'LegendsGrotto_Find')],
-            warp_events=[], coord_events=[], bg_events=[dict(type='sign', x=11, y=19,
+            object_events=[obj('OBJ_EVENT_GFX_VAR_F', 9, 6, 'LegendsGrotto_Visitor'),
+                           obj('OBJ_EVENT_GFX_ITEM_BALL', 11, 10, 'LegendsGrotto_Find')],
+            warp_events=[], coord_events=[], bg_events=[dict(type='sign', x=9, y=15,
                 elevation=0, player_facing_dir='BG_EVENT_PLAYER_FACING_ANY', script='LegendsGrotto_Exit' + key)])
         # A bottom coordinate trigger gives an ordinary walking exit; inspecting
         # the mouth also works. Temporary native variables are not save claims.
-        m['coord_events'] = [dict(type='trigger', x=x, y=18, elevation=0,
-            var='VAR_TEMP_1', var_value='0', script='LegendsGrotto_Exit' + key) for x in [10, 11, 12] if a[18*W+x] & 0xC00 == 0]
-        clue = [(6, 11), (12, 7), (15, 9)][i]
+        m['coord_events'] = [dict(type='trigger', x=x, y=14, elevation=0,
+            var='VAR_TEMP_1', var_value='0', script='LegendsGrotto_Exit' + key) for x in [8, 9] if a[14*W+x] & 0xC00 == 0]
+        clue = [(4, 7), (11, 5), (12, 7)][i]
         m['bg_events'].append(dict(type='sign', x=clue[0], y=clue[1], elevation=0,
             player_facing_dir='BG_EVENT_PLAYER_FACING_ANY', script='LegendsGrotto_Clue' + key))
         mp = ROOT / 'data/maps' / name

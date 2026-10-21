@@ -9,7 +9,7 @@ LegendsGrotto_EnterLeafshade::
 	msgbox LegendsGrotto_Text_LeafshadeEntry, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, NO, LegendsGrotto_Decline
 	closemessage
-	warp MAP_LEGENDS_GROTTO_LEAFSHADE, 11, 14
+	warp MAP_LEGENDS_GROTTO_LEAFSHADE, 9, 11
 	waitstate
 	releaseall
 	end
@@ -18,7 +18,7 @@ LegendsGrotto_EnterStillwater::
 	msgbox LegendsGrotto_Text_StillwaterEntry, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, NO, LegendsGrotto_Decline
 	closemessage
-	warp MAP_LEGENDS_GROTTO_STILLWATER, 11, 14
+	warp MAP_LEGENDS_GROTTO_STILLWATER, 9, 11
 	waitstate
 	releaseall
 	end
@@ -27,7 +27,7 @@ LegendsGrotto_EnterRainroot::
 	msgbox LegendsGrotto_Text_RainrootEntry, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, NO, LegendsGrotto_Decline
 	closemessage
-	warp MAP_LEGENDS_GROTTO_RAINROOT, 11, 14
+	warp MAP_LEGENDS_GROTTO_RAINROOT, 9, 11
 	waitstate
 	releaseall
 	end

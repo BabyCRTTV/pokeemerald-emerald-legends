@@ -37,7 +37,7 @@ void qa(void)
         LegendsClockSetManual(12, 0);
         LegendsSetSeasonMode(LEGENDS_SEASONS_PLAYTIME);
         LegendsSetPlaytimeSeason(b[2]);
-        SetWarpDestination(MAP_GROUP(map), MAP_NUM(map), -1, 11, 11);
+        SetWarpDestination(MAP_GROUP(map), MAP_NUM(map), -1, 9, 9);
         WarpIntoMap(); b[4] = 1; SetMainCallback2(CB2_LoadMap); return;
     }
     if (b[0] == 1)

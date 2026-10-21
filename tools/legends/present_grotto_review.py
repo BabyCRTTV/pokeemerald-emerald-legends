@@ -23,7 +23,7 @@ def main():
     shutil.copyfile(SOURCE/'emulator.log', OUT/'emulator.log')
     sheet = Image.new('RGB',(480,1208),'#282831')
     text(sheet,(16,12),'HIDDEN GROTTOS',24,True)
-    text(sheet,(16,45),'Refined habitats - unpublished review',14)
+    text(sheet,(16,45),'Compact habitats - unpublished review',14)
     text(sheet,(16,66),'v0.0.68 + prototype | native mGBA captures',12)
     for i,(name,route) in enumerate([('Leafshade Hollow','Petalburg Woods'),('Stillwater Nook','Route 114'),('Rainroot Hollow','Route 119')]):
         y=100+i*368
@@ -32,7 +32,7 @@ def main():
         frame=Image.open(SOURCE/f'room-{i}-season-0-overview.png')
         assert frame.size==(240,160)
         sheet.paste(frame.resize((480,320),Image.Resampling.NEAREST),(0,y+44))
-    sheet.save(OUT/'Emerald-Legends-Grottos-Refined-Preview.png')
+    sheet.save(OUT/'Emerald-Legends-Grottos-Compact-Preview.png')
     entrances=Image.new('RGB',(480,1208),'#282831')
     text(entrances,(16,12),'FINDING THE ENTRANCES',22,True)
     text(entrances,(16,47),'Approach the opening and press A',15)

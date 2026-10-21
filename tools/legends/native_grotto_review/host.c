@@ -54,13 +54,13 @@ int main(int argc,char **argv) {
         command(0,500); command(1,2);
         printf("room=%d season=%d active=%u map=%u,%u floor=%u xy=%u,%u gfx=%u/%u\n",
             room,season,box(7),box(5),box(6),box(9),box(10),box(11),box(8),box(13));
-        assert(box(7)==season&&box(9)==0&&box(10)==11&&box(11)==11&&box(8)==box(13));
+        assert(box(7)==season&&box(9)==0&&box(10)==9&&box(11)==9&&box(8)==box(13));
         unsigned group=box(5), map=box(6);
         if(room==0){leafGroup=group;leafMap=map;}
         capture(argv[2],room,season,"overview");
         if(season==0) {
-            for(int i=0;i<5&&box(11)>9;i++){key(64);command(1,2);}
-            assert(box(10)==11&&box(11)==9);
+            for(int i=0;i<5&&box(11)>7;i++){key(64);command(1,2);}
+            assert(box(10)==9&&box(11)==7);
             key(1); command(1,2); assert(box(12)); capture(argv[2],room,season,"visitor");
             for(int i=0;i<8&&box(12);i++) {key(1);command(1,2);} assert(!box(12));
             for(int i=0;i<12;i++) {key(128);command(1,2);if(box(5)!=group||box(6)!=map) break;}

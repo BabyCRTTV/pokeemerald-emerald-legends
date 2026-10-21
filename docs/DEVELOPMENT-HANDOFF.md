@@ -1,5 +1,15 @@
 # Development handoff
 
+## Hidden grottos — smaller, tidier interior review (21 October 2026)
+
+**Model: GPT-6 (Codex) | Reasoning: tighten the spaces around their visitors while preserving native tile assemblies and established route discovery.**
+
+Owner requested another cleanup and smaller grotto interiors. Reduced all three unshipped layouts from 22×20 to 18×16 (35% less map area), brought complete tree borders/walls inward, grouped flowers/grass, shrank both pools and simplified the cave chamber. Visitor/item/clue positions, entry scripts, exit triggers and native QA fixtures move together. Route entrances, returns, entrance guard, published map/layout IDs and saves are unchanged from the preceding review. The generator updates existing review layout dimensions in place without renumbering IDs. [Current concept](features/hidden-grottos-review.md).
+
+Local Debug/Release builds, native Quickstart, all five focused grotto checks and season/84-table encounter/eight Kanto regressions passed. Native mGBA passed twelve seasonal scenes and all three visitor/exit/decline/reentry paths; the 176-frame discovery film was recaptured. Visually inspected the actual native compact sheet. The first Debug link found one zero-byte cached build object; rebuilding that object passed without source changes. [Evidence, hashes and limits](qa/hidden-grottos-compact.md). No Release emulator run, full-story/old-save/Pizza Boy proof or capture/reward/persistence implementation is claimed.
+
+PR #87 remains a draft for owner visual review. These changes and actual previews are the third review checkpoint; the earlier larger sheets are superseded. No merge, publication, VERSION/BPS/wiki/site change was authorized or performed. Public v0.0.68 stays intact. No new durable AGENTS.md rule was necessary.
+
 ## Hidden grottos — refined art and discovery review (20 October 2026)
 
 **Model: GPT-6 (Codex) | Reasoning: replace incomplete native tile assemblies, make discovery readable and trace the borrowed entrance art's real field-control behavior.**

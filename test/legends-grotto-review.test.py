@@ -45,12 +45,13 @@ class Grottos(unittest.TestCase):
             m=read(f'data/maps/LegendsGrotto_{key}/map.json');l=layouts[m['layout']];a=cells(l);w=l['width'];h=l['height']
             blocked={(o['x'],o['y']) for o in m['object_events']}
             def walkable(x,y):return 0<=x<w and 0<=y<h and not a[y*w+x]&0xC00 and (x,y) not in blocked
-            seen={(11,14)};pending=list(seen)
+            seen={(9,11)};pending=list(seen)
             while pending:
                 x,y=pending.pop()
                 for v in [(x-1,y),(x+1,y),(x,y-1),(x,y+1)]:
                     if v not in seen and walkable(*v):seen.add(v);pending.append(v)
-            self.assertIn((11,11),seen)
+            self.assertIn((9,9),seen)
+            self.assertEqual((w,h),(18,16))
             for obj in m['object_events']+m['bg_events'][1:]:
                 x,y=obj['x'],obj['y'];self.assertTrue(any(p in seen for p in [(x-1,y),(x+1,y),(x,y-1),(x,y+1)]),(key,obj))
             for e in m['coord_events']:self.assertIn((e['x'],e['y']),seen)
@@ -71,13 +72,14 @@ class Grottos(unittest.TestCase):
 
     def test_every_tree_is_complete(self):
         for key in ['Leafshade','Rainroot']:
-            a=struct.unpack('<440H',(R/f'data/layouts/LegendsGrotto_{key}/map.bin').read_bytes())
+            l=next(l for l in read('data/layouts/layouts.json')['layouts'] if l['id']=='LAYOUT_LEGENDS_GROTTO_'+key.upper())
+            a=cells(l); w=l['width']
             self.assertNotIn(0x017,[v&1023 for v in a])
             for i,v in enumerate(a):
                 if v&1023==0x1D4:
-                    self.assertEqual([a[i+1]&1023,a[i+22]&1023,a[i+23]&1023],[0x1D5,0x1E4,0x1E5])
-                if v&1023==0x1E4:self.assertEqual(a[i-22]&1023,0x1D4)
-                if v&1023==0x1E5:self.assertEqual(a[i-23]&1023,0x1D4)
+                    self.assertEqual([a[i+1]&1023,a[i+w]&1023,a[i+w+1]&1023],[0x1D5,0x1E4,0x1E5])
+                if v&1023==0x1E4:self.assertEqual(a[i-w]&1023,0x1D4)
+                if v&1023==0x1E5:self.assertEqual(a[i-w-1]&1023,0x1D4)
 
     def test_real_native_warp_guard_only_matches_scripted_openings(self):
         groups=read('data/maps/map_groups.json')

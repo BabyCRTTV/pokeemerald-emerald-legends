@@ -17,8 +17,8 @@
   "object_events": [
     {
       "graphics_id": "OBJ_EVENT_GFX_VAR_F",
-      "x": 11,
-      "y": 8,
+      "x": 9,
+      "y": 6,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
       "movement_range_x": 0,
@@ -30,8 +30,8 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
-      "x": 14,
-      "y": 13,
+      "x": 11,
+      "y": 10,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
       "movement_range_x": 0,
@@ -46,8 +46,8 @@
   "coord_events": [
     {
       "type": "trigger",
-      "x": 10,
-      "y": 18,
+      "x": 8,
+      "y": 14,
       "elevation": 0,
       "var": "VAR_TEMP_1",
       "var_value": "0",
@@ -55,8 +55,8 @@
     },
     {
       "type": "trigger",
-      "x": 11,
-      "y": 18,
+      "x": 9,
+      "y": 14,
       "elevation": 0,
       "var": "VAR_TEMP_1",
       "var_value": "0",
@@ -66,16 +66,16 @@
   "bg_events": [
     {
       "type": "sign",
-      "x": 11,
-      "y": 19,
+      "x": 9,
+      "y": 15,
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
       "script": "LegendsGrotto_ExitRainroot"
     },
     {
       "type": "sign",
-      "x": 15,
-      "y": 9,
+      "x": 12,
+      "y": 7,
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
       "script": "LegendsGrotto_ClueRainroot"

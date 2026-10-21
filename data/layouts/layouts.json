@@ -10500,8 +10500,8 @@
     {
       "id": "LAYOUT_LEGENDS_GROTTO_LEAFSHADE",
       "name": "LegendsGrotto_Leafshade_Layout",
-      "width": 22,
-      "height": 20,
+      "width": 18,
+      "height": 16,
       "primary_tileset": "gTileset_General",
       "secondary_tileset": "gTileset_Rustboro",
       "border_filepath": "data/layouts/LegendsGrotto_Leafshade/border.bin",
@@ -10511,8 +10511,8 @@
     {
       "id": "LAYOUT_LEGENDS_GROTTO_STILLWATER",
       "name": "LegendsGrotto_Stillwater_Layout",
-      "width": 22,
-      "height": 20,
+      "width": 18,
+      "height": 16,
       "primary_tileset": "gTileset_General",
       "secondary_tileset": "gTileset_Cave",
       "border_filepath": "data/layouts/LegendsGrotto_Stillwater/border.bin",
@@ -10522,8 +10522,8 @@
     {
       "id": "LAYOUT_LEGENDS_GROTTO_RAINROOT",
       "name": "LegendsGrotto_Rainroot_Layout",
-      "width": 22,
-      "height": 20,
+      "width": 18,
+      "height": 16,
       "primary_tileset": "gTileset_General",
       "secondary_tileset": "gTileset_Fortree",
       "border_filepath": "data/layouts/LegendsGrotto_Rainroot/border.bin",

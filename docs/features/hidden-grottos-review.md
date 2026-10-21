@@ -1,6 +1,6 @@
-# Hidden grottos — first review
+# Hidden grottos — exploration review
 
-Status: **unshipped exploration prototype, second visual/discovery review**, based on v0.0.68. Owner requested tidier, convincing grotto art and an example of discovery/entry. Layouts, names, roster and renewal rules remain proposals pending review.
+Status: **unshipped exploration prototype, third, compact interior review**, based on v0.0.68. Owner requested another cleanup and smaller grotto interiors after the discovery review. Layouts, names, roster and renewal rules remain proposals pending review.
 
 Three small, optional shelters reward inspecting the edges of familiar routes. A vine-framed trunk, a rock crevice and a gap in the undergrowth provide visible clues. Each entrance asks before entering; walking back through the mouth returns to the original approach. Native Hoenn art and species sprites supply every pixel. Ten bounded route cells show the openings; existing route events, warps and story scripts retain their meanings.
 
@@ -8,7 +8,9 @@ Three small, optional shelters reward inspecting the edges of familiar routes. A
 | --- | --- | --- | --- |
 | Leafshade Hollow | Southern Petalburg Woods, beside the lower Trainer Tips sign | Shaded clearing, flowers and close tree cover | Nibbled berries and small prints beneath roots |
 | Stillwater Nook | Route 114, southwest of Lanette's house | Compact rocky chamber and clear spring | A stone worn smooth on only one side |
-| Rainroot Hollow | Lower Route 119, northwest of the small house | Wet foliage, irregular pool and long grass | Curled leaves shelter a dry sleeping place |
+| Rainroot Hollow | Lower Route 119, northwest of the small house | Wet foliage, small reflective pool and long grass | Curled leaves shelter a dry sleeping place |
+
+The compact revision reduces each map from **22×20 to 18×16 tiles** (35% less map area), draws the canopy/walls closer around the visitor and keeps a clear central approach. Stillwater uses a simpler continuous chamber wall and a narrower spring; the outdoor shelters use smaller, grouped planting and complete native trees. Route entrances and return points are unchanged. [Current native preview](../designs/hidden-grottos/Emerald-Legends-Grottos-Compact-Preview.png).
 
 ## Finding and entering
 
