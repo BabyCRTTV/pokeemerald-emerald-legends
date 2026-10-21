@@ -85,6 +85,9 @@ assert len(entries) == len(data['species']), 'Missing Pokédex entries'
 locations = {}
 for m in data['maps']:
     section = sections.get(m['id'])
+    if m['region'] == 'Grotto':
+        locations[m['id']] = {'region': 'Grotto', 'section': None, 'cells': [], 'note': m['description']}
+        continue
     if m['region'] == 'Sevii':
         # Mt. Ember is playable through the survey boat, but has no map browser.
         # Its Sevii coordinates must never be plotted on the Kanto background.
@@ -99,5 +102,7 @@ for m in data['maps']:
     locations[m['id']] = {'region': m['region'], 'section': section, 'cells': cells}
 output = {'sourceCommit': commit, 'entries': entries, 'locations': locations,
           'regions': {name: {'image': region['image']} for name, region in regions.items()}}
+if data.get('grottoSource'):
+    output['grottoSource'] = data['grottoSource']
 (WIKI / 'dex-profiles.js').write_text('/* Game maps and entries from the manually pinned wiki snapshot. */\nwindow.LegendsProfiles = ' + json.dumps(output, ensure_ascii=False, separators=(',', ':')) + ';\n')
 print(f'Packaged {len(entries)} Pokédex entries and {sum(bool(x["cells"]) for x in locations.values())}/{len(locations)} mapped encounter locations from {commit}')

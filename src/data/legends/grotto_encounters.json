@@ -1,0 +1,309 @@
+{
+  "refreshSteps": 4500,
+  "refreshAfter": [
+    "caught",
+    "defeated"
+  ],
+  "rooms": [
+    {
+      "key": "Leafshade",
+      "name": "Leafshade Hollow",
+      "map": "MAP_LEGENDS_GROTTO_LEAFSHADE",
+      "entrance": "Petalburg Woods",
+      "levels": [
+        8,
+        12
+      ],
+      "seasons": {
+        "spring": [
+          {
+            "species": "RIOLU",
+            "weight": 30
+          },
+          {
+            "species": "RALTS",
+            "weight": 25
+          },
+          {
+            "species": "EEVEE",
+            "weight": 20
+          },
+          {
+            "species": "ZORUA",
+            "weight": 15
+          },
+          {
+            "species": "BULBASAUR",
+            "weight": 10
+          }
+        ],
+        "summer": [
+          {
+            "species": "LARVESTA",
+            "weight": 30
+          },
+          {
+            "species": "FENNEKIN",
+            "weight": 25
+          },
+          {
+            "species": "EEVEE",
+            "weight": 20
+          },
+          {
+            "species": "ZORUA",
+            "weight": 15
+          },
+          {
+            "species": "SNIVY",
+            "weight": 10
+          }
+        ],
+        "autumn": [
+          {
+            "species": "ZORUA",
+            "weight": 30
+          },
+          {
+            "species": "PHANTUMP",
+            "weight": 25
+          },
+          {
+            "species": "EEVEE",
+            "weight": 20
+          },
+          {
+            "species": "RIOLU",
+            "weight": 15
+          },
+          {
+            "species": "CHESPIN",
+            "weight": 10
+          }
+        ],
+        "winter": [
+          {
+            "species": "VULPIX",
+            "weight": 30
+          },
+          {
+            "species": "SNOM",
+            "weight": 25
+          },
+          {
+            "species": "EEVEE",
+            "weight": 20
+          },
+          {
+            "species": "RIOLU",
+            "weight": 15
+          },
+          {
+            "species": "PIPLUP",
+            "weight": 10
+          }
+        ]
+      }
+    },
+    {
+      "key": "Stillwater",
+      "name": "Stillwater Nook",
+      "map": "MAP_LEGENDS_GROTTO_STILLWATER",
+      "entrance": "Route 114",
+      "levels": [
+        18,
+        22
+      ],
+      "seasons": {
+        "spring": [
+          {
+            "species": "GIBLE",
+            "weight": 30
+          },
+          {
+            "species": "CARBINK",
+            "weight": 25
+          },
+          {
+            "species": "BELDUM",
+            "weight": 20
+          },
+          {
+            "species": "DEINO",
+            "weight": 15
+          },
+          {
+            "species": "MUDKIP",
+            "weight": 10
+          }
+        ],
+        "summer": [
+          {
+            "species": "AXEW",
+            "weight": 30
+          },
+          {
+            "species": "CHARCADET",
+            "weight": 25
+          },
+          {
+            "species": "BELDUM",
+            "weight": 20
+          },
+          {
+            "species": "DRATINI",
+            "weight": 15
+          },
+          {
+            "species": "TOTODILE",
+            "weight": 10
+          }
+        ],
+        "autumn": [
+          {
+            "species": "DREEPY",
+            "weight": 30
+          },
+          {
+            "species": "SABLEYE",
+            "weight": 25
+          },
+          {
+            "species": "BELDUM",
+            "weight": 20
+          },
+          {
+            "species": "DEINO",
+            "weight": 15
+          },
+          {
+            "species": "FUECOCO",
+            "weight": 10
+          }
+        ],
+        "winter": [
+          {
+            "species": "FRIGIBAX",
+            "weight": 30
+          },
+          {
+            "species": "AMAURA",
+            "weight": 25
+          },
+          {
+            "species": "BELDUM",
+            "weight": 20
+          },
+          {
+            "species": "GIBLE",
+            "weight": 15
+          },
+          {
+            "species": "PIPLUP",
+            "weight": 10
+          }
+        ]
+      }
+    },
+    {
+      "key": "Rainroot",
+      "name": "Rainroot Hollow",
+      "map": "MAP_LEGENDS_GROTTO_RAINROOT",
+      "entrance": "Route 119",
+      "levels": [
+        25,
+        30
+      ],
+      "seasons": {
+        "spring": [
+          {
+            "species": "GOOMY",
+            "weight": 30
+          },
+          {
+            "species": "APPLIN",
+            "weight": 25
+          },
+          {
+            "species": "BAGON",
+            "weight": 20
+          },
+          {
+            "species": "DREEPY",
+            "weight": 15
+          },
+          {
+            "species": "CHIKORITA",
+            "weight": 10
+          }
+        ],
+        "summer": [
+          {
+            "species": "JANGMO_O",
+            "weight": 30
+          },
+          {
+            "species": "DURALUDON",
+            "weight": 25
+          },
+          {
+            "species": "BAGON",
+            "weight": 20
+          },
+          {
+            "species": "GOOMY",
+            "weight": 15
+          },
+          {
+            "species": "FROAKIE",
+            "weight": 10
+          }
+        ],
+        "autumn": [
+          {
+            "species": "DREEPY",
+            "weight": 30
+          },
+          {
+            "species": "MIMIKYU",
+            "weight": 25
+          },
+          {
+            "species": "BAGON",
+            "weight": 20
+          },
+          {
+            "species": "GOOMY",
+            "weight": 15
+          },
+          {
+            "species": "ROWLET",
+            "weight": 10
+          }
+        ],
+        "winter": [
+          {
+            "species": "FRIGIBAX",
+            "weight": 30
+          },
+          {
+            "species": "DURALUDON",
+            "weight": 25
+          },
+          {
+            "species": "BAGON",
+            "weight": 20
+          },
+          {
+            "species": "DRATINI",
+            "weight": 15
+          },
+          {
+            "species": "POPPLIO",
+            "weight": 10
+          }
+        ]
+      }
+    }
+  ]
+}

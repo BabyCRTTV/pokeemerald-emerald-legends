@@ -31,7 +31,7 @@ def main():
     for encounter in group['encounters']:
         encounters.setdefault(encounter['map'], encounter)
     old = {m['id']: m for m in data['maps']}
-    selected = list(old)
+    selected = [ident for ident, m in old.items() if m.get('region') != 'Grotto']
     selected.extend(e['map'] for e in group['encounters']
                     if e['map'].startswith('MAP_LEGENDS_KANTO_') and e['map'] not in old)
     names = {}
@@ -80,9 +80,9 @@ def main():
                 if prior and method['encounterRate'] == prior['encounterRate'] and sorted(method['entries'], key=lambda e: e['id']) == sorted(prior['entries'], key=lambda e: e['id']):
                     out['methods'][index] = prior
         result.append(out)
-    data['maps'] = result
+    data['maps'] = result + [m for m in old.values() if m.get('region') == 'Grotto']
     TARGET.write_text(json.dumps(data, ensure_ascii=False, indent=2) + '\n')
-    print(f'Review snapshot {commit}: {len(result)} locations, {len(result) - len(old)} added')
+    print(f'Review snapshot {commit}: {len(result)} ordinary locations, {len(data["maps"]) - len(result)} preserved grotto supplements')
 
 
 if __name__ == '__main__':

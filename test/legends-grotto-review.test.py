@@ -42,7 +42,9 @@ class Grottos(unittest.TestCase):
     def test_approved_looks_preserved_except_cliff_opening(self):
         approved=read('docs/qa/hidden-grottos-approved-looks.json')
         for path,sha in approved['map_sha256'].items():
-            self.assertEqual(hashlib.sha256((R/path).read_bytes()).hexdigest(),sha,path)
+            data=bytearray((R/path).read_bytes())
+            for patch in approved.get('map_exceptions',{}).get(path,[]):struct.pack_into('<H',data,patch['index']*2,patch['old'])
+            self.assertEqual(hashlib.sha256(data).hexdigest(),sha,path)
         a=bytearray((R/'data/layouts/Route114/map.bin').read_bytes())
         for patch in approved['Route114_restore_words']:
             struct.pack_into('<H',a,patch['index']*2,patch['old'])

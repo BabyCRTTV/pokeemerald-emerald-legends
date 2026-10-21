@@ -21,7 +21,7 @@ ROOMS = [
 ENTRANCE_TILES = {
     'PetalburgWoods': [(12, 31, 0x036), (13, 31, 0x037)],
     'Route114': [(13, 39, 0x375), (13, 40, 0x376), (14, 40, 0x001)],
-    'Route119': [(26, 104, 0x279), (27, 104, 0x27A), (28, 104, 0x27B),
+    'Route119': [(26, 103, 0x079), (27, 103, 0x079), (26, 104, 0x279), (27, 104, 0x27A), (28, 104, 0x27B),
                  (26, 105, 0x281), (27, 105, 0x278), (28, 105, 0x283),
                  (26, 106, 0x001)],
 }
@@ -134,10 +134,11 @@ def main():
         clue = [(4, 7), (11, 5), (12, 7)][i]
         m['bg_events'].append(dict(type='sign', x=clue[0], y=clue[1], elevation=0,
             player_facing_dir='BG_EVENT_PLAYER_FACING_ANY', script='LegendsGrotto_Clue' + key))
+        m['object_events'][0]['flag'] = 'FLAG_TEMP_5'
         mp = ROOT / 'data/maps' / name
         mp.mkdir(exist_ok=True)
         save(mp / 'map.json', json.dumps(m, indent=2) + '\n')
-        save(mp / 'scripts.inc', f'{name}_MapScripts::\n\tmap_script MAP_SCRIPT_ON_TRANSITION, LegendsGrotto_OnTransition\n\t.byte 0\n')
+        save(mp / 'scripts.inc', f'{name}_MapScripts::\n\tmap_script MAP_SCRIPT_ON_TRANSITION, LegendsGrotto_OnTransition\n\tmap_script MAP_SCRIPT_ON_RESUME, LegendsGrotto_OnTransition\n\t.byte 0\n')
         rp = ROOT / 'data/maps' / route / 'map.json'
         r = json.loads(rp.read_text())
         script = 'LegendsGrotto_Enter' + key

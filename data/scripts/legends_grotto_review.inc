@@ -1,5 +1,4 @@
-@ Review build: exploration, seasonal visitors and clues only.
-@ Capture, reward and replenishment rules await owner review.
+@ Persistent visitors: capture or defeat starts a 4,500-step refresh.
 LegendsGrotto_OnTransition::
 	special LegendsGrottoPrepareVisitor
 	end
@@ -59,9 +58,20 @@ LegendsGrotto_Visitor::
 	lock
 	faceplayer
 	special LegendsGrottoPrepareVisitor
+	goto_if_eq VAR_RESULT, FALSE, LegendsGrotto_VisitorGone
 	playmoncry VAR_0x8004, CRY_MODE_NORMAL
-	msgbox LegendsGrotto_Text_Visitor, MSGBOX_DEFAULT
 	waitmoncry
+	msgbox LegendsGrotto_Text_Visitor, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, NO, LegendsGrotto_VisitorLeave
+	closemessage
+	special LegendsGrottoStartBattle
+	goto_if_eq VAR_RESULT, FALSE, LegendsGrotto_VisitorGone
+	special BattleSetup_StartScriptedWildBattle
+	special LegendsGrottoPrepareVisitor
+	goto_if_eq VAR_RESULT, TRUE, LegendsGrotto_VisitorLeave
+LegendsGrotto_VisitorGone::
+	removeobject 1
+LegendsGrotto_VisitorLeave::
 	release
 	end
 LegendsGrotto_Find::
@@ -93,7 +103,7 @@ LegendsGrotto_Text_RainrootEntry:
 	.string "Explore RAINROOT HOLLOW?$"
 LegendsGrotto_Text_Visitor:
 	.string "{STR_VAR_1} watches you quietly.\n"
-	.string "It seems at home in this shelter.$"
+	.string "Challenge this Pokémon?$"
 LegendsGrotto_Text_Find:
 	.string "Something has been tucked away here.\n"
 	.string "You leave it undisturbed for now.$"

@@ -64,7 +64,7 @@ int main(int argc,char **argv) {
             for(int i=0;i<5&&box(11)>7;i++){key(64);command(1,2);}
             assert(box(10)==9&&box(11)==7);
             key(1); command(1,2); assert(box(12)); capture(argv[2],room,season,"visitor");
-            for(int i=0;i<8&&box(12);i++) {key(1);command(1,2);} assert(!box(12));
+            for(int i=0;i<8;i++) {key(2);command(1,2);} assert(!box(12));
             for(int i=0;i<12;i++) {key(128);command(1,2);if(box(5)!=group||box(6)!=map) break;}
             frames(250);command(1,2);assert(box(5)!=group||box(6)!=map);
             if(room==1) {

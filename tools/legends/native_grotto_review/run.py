@@ -54,7 +54,7 @@ def main():
         cliff_approach_film_frames=len(list(out.glob('cliff-*.png'))),
         cliff_frame_hashes=[hashlib.sha256(p.read_bytes()).hexdigest() for p in sorted(out.glob('cliff-*.png'))],
         setup='Private callback creates controlled twelve seasonal fixtures; native map renderer, sprites, movement and dialogue are unaltered.',
-        limits='Exploration prototype only. Captures, rewards, cooldowns, real-save migration, natural progression and Pizza Boy not implemented/tested here.',
+        limits='This harness checks exploration and scenery only. Battles, cooldowns and flash loading are tested separately by native_grotto_encounters; no natural progression or Pizza Boy coverage.',
         images={p.name:hashlib.sha256(p.read_bytes()).hexdigest() for p in out.glob('room-*.png')},
         discovery_frame_hashes=[hashlib.sha256(p.read_bytes()).hexdigest() for p in sorted(out.glob('discovery-*.png'))])
     (out/'verification.json').write_text(json.dumps(proof,indent=2)+'\n')

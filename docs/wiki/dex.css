@@ -86,3 +86,5 @@ dialog{border:0;padding:0;border-radius:19px;max-width:min(630px,calc(100vw - 26
  .encounter .rate{min-width:45px;padding:5px 4px;font-size:12px}
  .availability-badge{font-size:9px;padding:3px 5px}.encounter .species-copy strong{font-size:12px}
 }
+
+.grotto-note{margin:0;padding:0 18px 18px;color:#71657f;font-size:13px;line-height:1.6}

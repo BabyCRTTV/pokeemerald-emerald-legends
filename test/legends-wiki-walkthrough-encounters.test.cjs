@@ -5,24 +5,24 @@ const source=text.slice(text.indexOf(' function speciesRow('),text.indexOf(' asy
 const c={window:{LegendsSpriteAtlas:{icons:{}}},esc:s=>String(s)};
 vm.runInNewContext(source+'\nthis.render=encounterList;',c);
 const data=JSON.parse(fs.readFileSync(root+'docs/wiki/dex-data.json'));
-const species=new Map(data.species.map(p=>[p.id,p]));let count=0;
+const species=new Map(data.species.map(p=>[p.id,p]));let count=0,grottoCount=0;
 for(const route of data.maps)for(const method of route.methods){
  const html=c.render({mapId:route.id},new Map([[route.id,{...route,methods:[method]}]]),species,[method.id]);
  if(method.seasonalVariants?.length){
-  count++;
+  count++;if(method.id==='grotto')grottoCount++;
   const rows=method.seasonalVariants[0].entries.filter(e=>method.seasonalVariants.every(v=>v.entries.some(x=>x.id===e.id&&x.rate===e.rate&&x.min===e.min&&x.max===e.max)));
   assert(html.includes('Year-round residents shown.'));assert(html.includes('Open LegendsDex above'));
   assert.equal((html.match(/<li>/g)||[]).length,rows.length);
   for(const e of rows){assert(html.includes('pokemon='+e.id+'"'));assert(html.includes('walkthrough-rate">'+e.rate+'%'));}
   for(const v of method.seasonalVariants)for(const e of v.entries)if(!rows.some(x=>x.id===e.id))assert(!html.includes('pokemon='+e.id+'"'));
-  assert.equal([...html.matchAll(/walkthrough-rate">(\d+)%/g)].reduce((s,x)=>s+Number(x[1]),0),method.id==='surf'?65:70);
+  assert.equal([...html.matchAll(/walkthrough-rate">(\d+)%/g)].reduce((s,x)=>s+Number(x[1]),0),method.id==='grotto'?rows.reduce((sum,e)=>sum+e.rate,0):method.id==='surf'?65:70);
  }else{
   assert(!html.includes('Year-round residents shown.'));
   assert.equal((html.match(/<li>/g)||[]).length,method.entries.length);
   assert.equal([...html.matchAll(/walkthrough-rate">(\d+)%/g)].reduce((s,x)=>s+Number(x[1]),0),100);
  }
 }
-assert.equal(count,21);
+assert.equal(count-grottoCount,21);assert.equal(grottoCount,3);
 const m=data.maps[0],empty={...m,methods:m.methods.map(x=>({...x,seasonalVariants:[]}))};
 assert(!c.render({mapId:m.id},new Map([[m.id,empty]]),species).includes('Year-round residents shown.'));
-console.log('PASS: all 409 walkthrough methods, twenty-one seasonal methods show actual 65%/70% resident shares and seasonal guidance; other methods and empty variants retain full tables');
+console.log('PASS: all 412 walkthrough methods, twenty-one ordinary seasonal methods and three grotto methods show their actual invariant resident shares and seasonal guidance; other methods and empty variants retain full tables');

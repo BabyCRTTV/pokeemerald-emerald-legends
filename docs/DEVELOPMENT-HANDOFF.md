@@ -1,5 +1,15 @@
 # Development handoff
 
+## Rare grotto encounters and LegendsDex polish (21 October 2026)
+
+**Model: GPT-6 (Codex) | Reasoning: preserve approved scenery, isolate append-only state and verify actual battle/flash/Continue paths.**
+
+Owner requested plain cliff above Rainroot (Route 119, earlier message said 129), Sevii chip shortening, removal of “Updated on request”, Grotto region filter, rare visitors and renewal after 4,500 steps only after capture/defeat. Implemented all three real visitor battles and seasonal 30/25/20/15/10% rare pools. Each room keeps its exact BoxPokemon until resolved; fleeing/loss/season changes/revisits do not replace it. Independent cooldowns use the native step counter (including running/cycling/Surf), with no banked steps before resolution. The two requested Route 119 cliff cells changed; all other approved looks and access remain protected.
+
+SaveBlock3 appends a separately signed 276-byte extension at 716, total 992; original offsets/IDs/storage/sectors remain intact. Missing/invalid tail initializes only the new feature. Continue/On Resume handling prepares the visitor before restored sprites are recreated, including older review saves. Native temp flag 5 is local visibility only; no persistent var/flag reservation. Canonical JSON generates both C and the three LegendsDex supplements; the original 157-map v0.0.67 source pin/catalogue/atlas remain exact, with separate hashed review provenance. The profile and reader script cache revisions were updated.
+
+Debug/Release builds, production-C state/outcome/boundary tests, native mGBA escape/KO/capture and real flash round-trips, four unmodified Release Continue fixtures, twelve seasonal world scenes, three entrance paths, Quickstart, existing save/journal/Adventure/seasons/geometry checks and focused four-width browser/reader regressions passed. [QA, previews, hashes and limits](qa/grotto-encounters.md). Historical authentic saves, full-PC refusal, full progression and Pizza Boy remain unverified; item-ball prop remains unchanged. Draft PR #87 is still unshipped; public VERSION v0.0.68, patches and downloads are unchanged. No new durable owner policy was needed.
+
 ## Grotto visuals explicitly approved; location gallery (21 October 2026)
 
 **Model: GPT-6 (Codex) | Reasoning: record owner approval and show the exact current locations/visuals without changing gameplay or approved art.**

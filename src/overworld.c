@@ -1,4 +1,5 @@
 #include "global.h"
+#include "legends_grottos.h"
 #include "legends_story.h"
 #include "legends_adventure.h"
 #include "legends_journal.h"
@@ -2145,6 +2146,7 @@ void CB2_ContinueSavedGame(void)
     LoadSaveblockMapHeader();
     LegendsAdventureInit(FALSE);
     LegendsJournalInit(FALSE);
+    LegendsGrottoInit(FALSE);
     LegendsCommitSeasonTransition();
     LegendsRestoreSeasonWeather();
     ClearDiveAndHoleWarps();

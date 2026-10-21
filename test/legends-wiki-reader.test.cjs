@@ -68,9 +68,9 @@ const settle=()=>new Promise(r=>setImmediate(r));
  const profiles={window:{}};vm.runInNewContext(fs.readFileSync(base+'dex-profiles.js','utf8'),profiles);
  assert.equal(profiles.window.LegendsProfiles.sourceCommit,data.sourceCommit);
  for(const p of data.species)assert(profiles.window.LegendsProfiles.entries[p.id],p.id+' missing entry');
- for(const m of data.maps){const loc=profiles.window.LegendsProfiles.locations[m.id];assert.equal(loc.region,m.region);if(m.region==='Sevii'){assert.equal(loc.cells.length,0,'Sevii must not use mainland coordinates');assert.match(loc.note,/expedition/);}else assert(loc.cells.length,m.id+' missing map marker');for(const [x,y] of loc.cells)assert(x>=0&&x<224&&y>=0&&y<120);}
+ for(const m of data.maps){const loc=profiles.window.LegendsProfiles.locations[m.id];assert.equal(loc.region,m.region);if(m.region==='Sevii'){assert.equal(loc.cells.length,0,'Sevii must not use mainland coordinates');assert.match(loc.note,/expedition/);}else if(m.region==='Grotto'){assert.equal(loc.cells.length,0);assert.match(loc.note,/4,500/);}else assert(loc.cells.length,m.id+' missing map marker');for(const [x,y] of loc.cells)assert(x>=0&&x<224&&y>=0&&y<120);}
  assert.deepEqual(JSON.parse(JSON.stringify(profiles.window.LegendsProfiles.locations.MAP_ROUTE101.cells)),[[32,80]]);
- const seasonalMethods=data.maps.flatMap(m=>m.methods.filter(x=>x.seasonalVariants?.length).map(x=>[m.id.replace('MAP_ROUTE',''),x.id]));
+ const seasonalMethods=data.maps.flatMap(m=>m.methods.filter(x=>x.seasonalVariants?.length&&m.region!=='Grotto').map(x=>[m.id.replace('MAP_ROUTE',''),x.id]));
  for(const [route,method] of seasonalMethods){
   const u=boot('dex.js',data);await settle();u.get('method').listeners.change({target:{value:method}});u.get('search').value='Route '+route;u.get('search').listeners.input();
   assert.equal(u.get('seasonal-preview-note').hidden,data.seasonalStatus!=='preview');
@@ -117,7 +117,7 @@ const settle=()=>new Promise(r=>setImmediate(r));
  const fallback=JSON.parse(original);fallback.maps[0].methods[0].seasonalVariants=[];
  const empty=boot('dex.js',fallback,'https://example.test/wiki/dex.html?season=all');await settle();assert.match(empty.get('results').innerHTML,/data-species="PIKACHU"/);empty.click('species','PIKACHU');assert.match(empty.get('detail-content').innerHTML,/class="location-row"/);
  const invalid=boot('dex.js',data,'https://example.test/wiki/dex.html?season=invalid');await settle();assert.equal(invalid.get('season').value,'autumn');
- assert.match(dexHTML,/<option value="all">All Seasons<\/option>/);assert.match(dexHTML,/dex\.js\?v=legendsdex-1\.4\.0/);
+ assert.match(dexHTML,/<option value="all">All Seasons<\/option>/);assert.match(dexHTML,/dex\.js\?v=legendsdex-1\.5\.0/);
  console.log('PASS: '+seasonalMethods.length*4+' individual-season views and '+seasonalMethods.length+' All Seasons unions, exact shares/badges, URL round trips, tuple identity, fallbacks and no source mutation');
  const d=boot('dex.js',data);await settle();assert.equal(d.sounds.length,0,'audio must not preload all cries');
  assert.match(d.get('results').innerHTML,/data-cry=/);assert.match(d.get('results').innerHTML,/class="pokemon-link"/);

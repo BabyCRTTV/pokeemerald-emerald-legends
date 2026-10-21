@@ -1,4 +1,5 @@
 #include "global.h"
+#include "legends_grottos.h"
 #include "legends_story.h"
 #include "legends_wardrobe.h"
 #include "legends_grotto_review.h"
@@ -186,6 +187,7 @@ int ProcessPlayerFieldInput(struct FieldInput *input)
     if (input->tookStep)
     {
         IncrementGameStat(GAME_STAT_STEPS);
+        LegendsGrottoStep();
         IncrementBirthIslandRockStepCount();
         DespawnAllOverworldWildEncounters(OWE_GENERATED, WILD_CHECK_REPEL);
         if (FindTaskIdByFunc(Task_FollowerNPCOutOfDoor) == TASK_NONE && TryStartStepBasedScript(&position, metatileBehavior, playerDirection) == TRUE)

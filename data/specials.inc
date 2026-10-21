@@ -672,3 +672,7 @@ gSpecials::
 	def_special LegendsFieldRequestsResearchNotes
 	def_special LegendsSeasonBulletinSpecial
 	def_special LegendsGrottoPrepareVisitor
+
+	def_special LegendsGrottoStartBattle
+
+	def_special BattleSetup_StartScriptedWildBattle, waitstate=1
