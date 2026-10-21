@@ -1,6 +1,6 @@
 # Development handoff
 
-## v0.0.70 grotto variety — merged, public patches pending (21 October 2026)
+## v0.0.70 grotto variety — published (21 October 2026)
 
 **Model: GPT-6 (Codex) | Reasoning: disjoint species ownership across seasons, generated pool width and save identity preservation.**
 
@@ -10,7 +10,9 @@ Synced game/Options/site/patcher and all three changelogs for v0.0.70. LegendsDe
 
 Candidate `994a632f0012339c2e11f9cd9331aef51e100dbf` in PR #88 passed project `39613150336`, wiki/browser `39613150355` (retried transient npm ECONNRESET), patch `39613150329`, native mGBA `39613150455` and Android `39613150392`; labels skipped. The metadata gate caught old title/Options labels, fixed in that candidate. Local Debug/Release ROM hashes match both independently decoded candidate patches exactly. Production-C all-roll/outcome checks, old off-pool visitor persistence, canonical/C/wiki agreement, protected geometry, compatible sector tests, Quickstart, real native battles/flash and four Release Continue fixtures passed. Inspected the phone browser screenshot. [Focused receipts and limits](qa/grotto-variety-v0.0.70.json).
 
-This checkpoint adds only QA/handoff and the LegendsDex game-version badge (v0.0.70); game code and tested source are unchanged. PR #88 merged as `b739cfc046427c2a7a7b69d05bd3e4839df86275`. Main patch workflow `39615239996` and native workflow `39615239610` are running. Merge Pages deployment passed and the live LegendsDex confirms v0.0.70 and eight choices per season. Verify automatic patch publication, final Pages and actual live BPS hashes before reporting publication. AGENTS.md reviewed: no new durable owner rule needed. Broader historical-save/Pizza Boy/full-story limits remain unchanged.
+PR #88 merged as `b739cfc046427c2a7a7b69d05bd3e4839df86275`; final QA/badge checkpoint changed no tested game source. Automatic Release/Debug patch commit `b138727a8c758f371b43d00e93b9c10f83a1099d` published successfully. Main patch `39615239996`, native `39615239610`, project `39615239694`, wiki `39615241117`, Android `39615239723`, Windows `39615240184` and final patch Pages `39616672415` all passed. Use cache-busting query parameters for GitHub API status verification; cached URLs temporarily retained older queued/in-progress snapshots.
+
+Downloaded both actual live BPS files and verified their published SHA256 values against the independently decoded candidate patches: Release `875eadec7289125596dfd8411d945ad338fb5bb0f85bf22afbd4f636ea03217b`, Debug `1b1bd8b687e3a6889d1874bae182af2c60490daa81b85314669062333e5cd360`. Their target ROMs exactly match the native-tested local builds. Live site/patcher/changelogs show v0.0.70; live LegendsDex badge, supplement/profile provenance, all 96 seasonal slots and 77 disjoint species verified. Ordinary catalogue and approved art/source pin remain exact. Game source/assets/version/build instructions match the tested candidate. AGENTS.md reviewed: no new durable owner rule needed. No publication work remains for this release; broader historical-save/Pizza Boy/full-story limits remain unchanged.
 
 ## Owner Porymap edit protection (21 October 2026)
 

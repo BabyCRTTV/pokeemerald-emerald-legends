@@ -72,7 +72,7 @@
       "legacy.png": "7a8a8bb5d99582566b6407d406b247af1f805bcf1e3b2818d64daf08995cac29"
     }
   },
-  "publication": "Merged; live LegendsDex v0.0.70 confirmed. Public patches and final live verification pending.",
+  "publication": "Complete: both live BPS files, SHA256SUMS, site, patcher, changelogs and LegendsDex verified; live patches exactly match independently decoded candidate patches and native-tested ROMs.",
   "quickstart": {
     "model": "GPT-6 (High)",
     "version": "0.0.70",
@@ -143,5 +143,41 @@
     "android": 39615239723,
     "windows": 39615240184,
     "pages": 39615238807
-  }
+  },
+  "live": {
+    "version": "0.0.70",
+    "passed": true,
+    "baseURL": "https://babycrttv.github.io/pokeemerald-emerald-legends/",
+    "seasonalSlots": 96,
+    "uniqueSpecies": 77,
+    "sha256": {
+      "index.html": "358b8bb873c6d9029bebe8f018b4278ff54823af4a80c449b448aaacb22c4a74",
+      "patcher.html": "dec58462d0d66ed682fa9784dcfddb68473de6149952d4d7a92354ee5109a8e1",
+      "patcher.js": "ee3e5c4d12d1179c29da7c2e97a34c767e55d2ee5f588de3631b49842b238b00",
+      "changelog.html": "2d9175ce0698daff4d682fc1a54644ab0c332094435e27e32358e5383075de92",
+      "wiki/dex-data.json": "77621d7869877b28efc23c4a235e759d1060158c44092b5daafaca3e14d5df65",
+      "wiki/dex-profiles.js": "ae4c686e70e236b33c2765d76cecef4d68073c92d7109a48e13fe5282b8e4bf4",
+      "downloads/SHA256SUMS.txt": "051968285e95c9cdb6cee3ade25eca5225c664ba318fcb8bb70de0b13614582c",
+      "downloads/Pokemon-Emerald-Legends-v0.0.70.bps": "875eadec7289125596dfd8411d945ad338fb5bb0f85bf22afbd4f636ea03217b",
+      "downloads/Pokemon-Emerald-Legends-v0.0.70-debug.bps": "1b1bd8b687e3a6889d1874bae182af2c60490daa81b85314669062333e5cd360"
+    },
+    "publishedSums": {
+      "docs/downloads/Pokemon-Emerald-Legends-v0.0.70.bps": "875eadec7289125596dfd8411d945ad338fb5bb0f85bf22afbd4f636ea03217b",
+      "docs/downloads/Pokemon-Emerald-Legends-v0.0.70-debug.bps": "1b1bd8b687e3a6889d1874bae182af2c60490daa81b85314669062333e5cd360",
+      "pokeemerald-release.gba": "405d8463feb6064d0a4c3112a441ff3f97f9c69daaecefddcd4135c941ba2c17",
+      "pokeemerald.gba": "32d699360f3052d2ee5335d26887d134f0153dc1c5bfd2320d7f49953b18aa19"
+    }
+  },
+  "patchPublicationCommit": "b138727a8c758f371b43d00e93b9c10f83a1099d",
+  "finalPagesRun": 39616672415,
+  "mainWorkflowConclusions": {
+    "patches": "success",
+    "native": "success",
+    "project": "success",
+    "wiki": "success",
+    "android": "success",
+    "windows": "success",
+    "pages": "success"
+  },
+  "publishedGameMatchesVerifiedCandidate": true
 }
