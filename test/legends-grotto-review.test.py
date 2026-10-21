@@ -4,6 +4,8 @@ import hashlib
 from pathlib import Path
 import struct
 import unittest
+import subprocess
+import tempfile
 
 R = Path(__file__).resolve().parents[1]
 
@@ -23,12 +25,19 @@ class Grottos(unittest.TestCase):
         self.assertEqual(BASE['layouts_sha256'],digest(layouts[:BASE['layout_count']]))
         for route in ['PetalburgWoods','Route114','Route119']:
             p=f'data/maps/{route}/map.json'; current=read(p)
-            new=current['bg_events'].pop()
-            self.assertTrue(new['script'].startswith('LegendsGrotto_Enter'))
+            new=[b for b in current['bg_events'] if b.get('script','').startswith('LegendsGrotto_Enter')]
+            self.assertEqual(len(new),2 if route=='PetalburgWoods' else 1)
+            current['bg_events']=[b for b in current['bg_events'] if b not in new]
             self.assertEqual(BASE['routes'][route]['map_json_sha256'],digest(current))
-            # Exact original metatiles/collisions, scripts and all existing events.
+            # Only the bounded review entrance cells may differ.
             for f in ['data/layouts/'+route+'/map.bin','data/maps/'+route+'/scripts.inc']:
-                self.assertEqual(BASE['routes'][route]['files'][f],hashlib.sha256((R/f).read_bytes()).hexdigest())
+                data=bytearray((R/f).read_bytes())
+                if f.endswith('map.bin'):
+                    for patch in BASE['entrance_patches'][route]:
+                        offset=patch['index']*2
+                        self.assertEqual(struct.unpack_from('<H',data,offset)[0],patch['new'])
+                        struct.pack_into('<H',data,offset,patch['old'])
+                self.assertEqual(BASE['routes'][route]['files'][f],hashlib.sha256(data).hexdigest())
 
     def test_reach_every_interaction_and_exit(self):
         layouts = {l['id']:l for l in read('data/layouts/layouts.json')['layouts']}
@@ -51,11 +60,52 @@ class Grottos(unittest.TestCase):
 
     def test_entrances_have_safe_returns_and_no_event_collisions(self):
         layouts = {l['id']:l for l in read('data/layouts/layouts.json')['layouts']}
-        for route,approach in [('PetalburgWoods',(13,32)),('Route114',(15,40)),('Route119',(28,105))]:
-            m=read(f'data/maps/{route}/map.json');l=layouts[m['layout']];a=cells(l);entry=m['bg_events'][-1]
+        for route,approach in [('PetalburgWoods',(13,32)),('Route114',(15,40)),('Route119',(27,106))]:
+            m=read(f'data/maps/{route}/map.json');l=layouts[m['layout']];a=cells(l)
+            entries=[e for e in m['bg_events'] if e.get('script','').startswith('LegendsGrotto_Enter')]
+            entry=min(entries,key=lambda e:abs(e['x']-approach[0])+abs(e['y']-approach[1]))
             self.assertEqual(a[approach[1]*l['width']+approach[0]]&0xC00,0)
             self.assertEqual(abs(entry['x']-approach[0])+abs(entry['y']-approach[1]),1)
             self.assertFalse(any(o['x']==approach[0] and o['y']==approach[1] for o in m['object_events']))
-            self.assertFalse(any(e['x']==entry['x'] and e['y']==entry['y'] for e in m['bg_events'][:-1]))
+            self.assertFalse(any(e['x']==entry['x'] and e['y']==entry['y'] for e in m['bg_events'] if e is not entry))
+
+    def test_every_tree_is_complete(self):
+        for key in ['Leafshade','Rainroot']:
+            a=struct.unpack('<440H',(R/f'data/layouts/LegendsGrotto_{key}/map.bin').read_bytes())
+            self.assertNotIn(0x017,[v&1023 for v in a])
+            for i,v in enumerate(a):
+                if v&1023==0x1D4:
+                    self.assertEqual([a[i+1]&1023,a[i+22]&1023,a[i+23]&1023],[0x1D5,0x1E4,0x1E5])
+                if v&1023==0x1E4:self.assertEqual(a[i-22]&1023,0x1D4)
+                if v&1023==0x1E5:self.assertEqual(a[i-23]&1023,0x1D4)
+
+    def test_real_native_warp_guard_only_matches_scripted_openings(self):
+        groups=read('data/maps/map_groups.json')
+        maps={}
+        for gi,group in enumerate(groups['group_order']):
+            names=groups[group]
+            for mi,name in enumerate(names):maps[name]=(gi<<8)|mi
+        source=(R/'src/legends_grotto_review.c').read_text()
+        helper='bool32 LegendsGrottoIsEntrance'+source.split('bool32 LegendsGrottoIsEntrance',1)[1]
+        prelude='''#include <stdint.h>
+#include <assert.h>
+typedef uint16_t u16;typedef int16_t s16;typedef uint32_t bool32;
+#define FALSE 0
+struct Save { struct {uint8_t mapNum,mapGroup;} location; } save;
+struct Save *gSaveBlock1Ptr=&save;
+'''
+        routes={'PetalburgWoods':'MAP_PETALBURG_WOODS','Route114':'MAP_ROUTE114','Route119':'MAP_ROUTE119'}
+        for route,macro in routes.items():prelude+=f'#define {macro} {maps[route]}\n'
+        body='int main(void){for(int g=0;g<256;g++)for(int m=0;m<256;m++){save.location.mapGroup=g;save.location.mapNum=m;'
+        body+='if(((g<<8)|m)!=MAP_PETALBURG_WOODS&&((g<<8)|m)!=MAP_ROUTE114&&((g<<8)|m)!=MAP_ROUTE119){assert(!LegendsGrottoIsEntrance(13,31));assert(!LegendsGrottoIsEntrance(27,105));continue;}'
+        body+='for(int x=0;x<64;x++)for(int y=0;y<160;y++){int expected=0;'
+        for route,macro in routes.items():
+            coords=[(b['x'],b['y']) for b in read(f'data/maps/{route}/map.json')['bg_events'] if b.get('script','').startswith('LegendsGrotto_Enter')]
+            for x,y in coords:body+=f'expected|=(((g<<8)|m)=={macro}&&x=={x}&&y=={y});'
+        body+='assert(!!LegendsGrottoIsEntrance(x,y)==!!expected);}}return 0;}'
+        with tempfile.TemporaryDirectory() as tmp:
+            p=Path(tmp);(p/'probe.c').write_text(prelude+helper+body)
+            subprocess.run(['cc','-std=c11','-Wall','-Werror',str(p/'probe.c'),'-o',str(p/'probe')],check=True)
+            subprocess.run([str(p/'probe')],check=True)
 
 if __name__=='__main__':unittest.main()

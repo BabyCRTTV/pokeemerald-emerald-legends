@@ -1,6 +1,7 @@
 #include "global.h"
 #include "legends_story.h"
 #include "legends_wardrobe.h"
+#include "legends_grotto_review.h"
 #include "battle_setup.h"
 #include "bike.h"
 #include "coord_event_weather.h"
@@ -1109,6 +1110,11 @@ static void SetupWarp(struct MapHeader *unused, s8 warpEventId, struct MapPositi
 static bool8 TryDoorWarp(struct MapPosition *position, u16 metatileBehavior, enum Direction direction)
 {
     s8 warpEventId;
+
+    // These openings use a background Examine/Yes/No script, not the native
+    // Secret Base auto-warp carried by their reused artwork.
+    if (LegendsGrottoIsEntrance(position->x - MAP_OFFSET, position->y - MAP_OFFSET))
+        return FALSE;
 
     if (direction == DIR_NORTH)
     {

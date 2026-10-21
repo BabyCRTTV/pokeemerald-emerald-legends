@@ -1,6 +1,6 @@
 """Build three review-only grotto maps from unchanged native Hoenn metatiles.
 
-Run from the repository root. Does not edit existing map pixels or published IDs.
+Run from the repository root. Uses a bounded native entrance patch on each route.
 """
 from pathlib import Path
 import json
@@ -14,8 +14,17 @@ ROOMS = [
     ('Stillwater', 'Stillwater Nook', 'Route114', 'MAPSEC_ROUTE_114',
      'gTileset_Cave', 'MUS_PETALBURG_WOODS', 'WEATHER_NONE', (14, 40), (15, 40)),
     ('Rainroot', 'Rainroot Hollow', 'Route119', 'MAPSEC_ROUTE_119',
-     'gTileset_Fortree', 'MUS_ROUTE119', 'WEATHER_RAIN', (27, 105), (28, 105)),
+     'gTileset_Fortree', 'MUS_ROUTE119', 'WEATHER_RAIN', (27, 105), (27, 106)),
 ]
+
+# Every cell is existing Hoenn art; no tileset, palette or persistent ID changes.
+ENTRANCE_TILES = {
+    'PetalburgWoods': [(12, 31, 0x036), (13, 31, 0x037)],
+    'Route114': [(14, 40, 0x210)],
+    'Route119': [(26, 104, 0x279), (27, 104, 0x27A), (28, 104, 0x27B),
+                 (26, 105, 0x281), (27, 105, 0x278), (28, 105, 0x283),
+                 (26, 106, 0x001)],
+}
 
 def save(path, data):
     data = data.encode() if isinstance(data, str) else data
@@ -30,31 +39,39 @@ def tree(a, x, y):
         put(a, x + dx, y + dy, tile, True)
 
 def pool(a, x, y, cave=False):
-    # Native grass-bank and cave-bank water edges. Water is deliberately solid:
-    # the review needs no Surf transition, fishing table or new random battles.
-    tiles = ([0x286, 0x283, 0x285, 0x28A, 0x283, 0x282, 0x274, 0x284, 0x272]
-             if cave else [0x180, 0x189, 0x181, 0x190, 0x170, 0x192, 0x198, 0x199, 0x19A])
-    for i, tile in enumerate(tiles):
-        put(a, x + i % 3, y + i // 3, tile, True)
-    if not cave:
-        for dx in range(3):
-            put(a, x + dx, y + 3, 0x002)
+    # Complete native shorelines: Route 102's reflective pool and Scorched Slab's
+    # rock-water bank. The final row is walkable soil, never a cut water tile.
+    rows = ([[0x289, 0x291, 0x291, 0x281], [0x28A, 0x170, 0x170, 0x288],
+             [0x28A, 0x170, 0x170, 0x288], [0x25E, 0x25E, 0x25E, 0x25E]]
+            if cave else [[0x0B0, 0x0B1, 0x0B2, 0x001, 0x001],
+                          [0x0B8, 0x0A1, 0x0C2, 0x0B1, 0x0B2],
+                          [0x0B8, 0x0A1, 0x0A1, 0x0A1, 0x0BA],
+                          [0x0B8, 0x0A1, 0x0A1, 0x0A1, 0x0BA],
+                          [0x002, 0x002, 0x002, 0x002, 0x002]])
+    for dy, row in enumerate(rows):
+        for dx, tile in enumerate(row):
+            put(a, x + dx, y + dy, tile, dy < len(rows) - 1 and tile != 0x001)
 
 def landscape(kind):
-    a = [0x3400 | 0x20D] * (W * H) if kind == 1 else [0x3001] * (W * H)
+    a = [0x3400 | 0x211] * (W * H) if kind == 1 else [0x3001] * (W * H)
     if kind == 1:
-        for y in range(7, 17):
-            left = 4 if 9 <= y <= 13 else 6
-            right = 17 if 9 <= y <= 13 else 16
-            for x in range(left, right + 1):
+        for y in range(7, 16):
+            for x in range(6, 17):
                 put(a, x, y, 0x201)
-            put(a, left - 1, y, 0x213, True)
-            put(a, right + 1, y, 0x210, True)
-        for x in range(6, 17):
-            put(a, x, 5, 0x20D, True)
-            put(a, x, 6, 0x214, True)
-        pool(a, 5, 10, True)
-        for x, y in [(15, 8), (16, 12), (5, 13), (13, 7)]:
+            put(a, 5, y, 0x212, True)
+            put(a, 17, y, 0x210, True)
+        for x in range(5, 18):
+            put(a, x, 6, 0x21B if x == 5 else 0x21C if x == 17 else 0x219, True)
+            put(a, x, 16, 0x247 if x in [5,17] else 0x209, True)
+        # A stepped northern recess uses the same convex/concave corners as
+        # native Scorched Slab instead of repeating a diagonal wall every cell.
+        put(a, 13, 6, 0x21C, True)
+        put(a, 13, 7, 0x218, True)
+        for x in range(14, 18):
+            put(a, x, 6, 0x211, True)
+            put(a, x, 7, 0x21C if x == 17 else 0x219, True)
+        pool(a, 6, 9, True)
+        for x, y in [(15, 8), (16, 12), (7, 14), (12, 7)]:
             put(a, x, y, 0x202, True)
         for y in range(16, 20):
             put(a, 11, y, 0x201)
@@ -71,15 +88,14 @@ def landscape(kind):
         if kind == 0:
             for x, y in [(7, 7), (8, 7), (7, 8), (14, 10), (15, 10), (14, 11)]:
                 put(a, x, y, 0x004)
-            for x, y in [(6, 11), (7, 12), (15, 12)]:
-                put(a, x, y, 0x017, True)
+            tree(a, 6, 10)
+            tree(a, 14, 6)
         else:
             pool(a, 6, 9)
             for x, y in [(13, 7), (14, 7), (15, 7), (14, 8), (15, 8), (15, 11), (15, 12)]:
                 # Long grass is scenery; no encounter table is registered.
                 put(a, x, y, 0x015)
-            for x, y in [(7, 6), (15, 9), (7, 13)]:
-                put(a, x, y, 0x017, True)
+            tree(a, 14, 8)
     return a
 
 def obj(gfx, x, y, script):
@@ -101,7 +117,7 @@ def main():
         dp.mkdir(exist_ok=True)
         a = landscape(i)
         save(dp / 'map.bin', struct.pack('<%dH' % len(a), *a))
-        save(dp / 'border.bin', struct.pack('<4H', *([0x360D] * 4 if i == 1 else [0x35D4, 0x35D5, 0x35E4, 0x35E5])))
+        save(dp / 'border.bin', struct.pack('<4H', *([0x3611] * 4 if i == 1 else [0x35D4, 0x35D5, 0x35E4, 0x35E5])))
         if not any(l['id'] == lid for l in layouts['layouts']):
             layouts['layouts'].append(dict(id=lid, name=name + '_Layout', width=W, height=H,
                 primary_tileset='gTileset_General', secondary_tileset=secondary,
@@ -122,7 +138,7 @@ def main():
         # the mouth also works. Temporary native variables are not save claims.
         m['coord_events'] = [dict(type='trigger', x=x, y=18, elevation=0,
             var='VAR_TEMP_1', var_value='0', script='LegendsGrotto_Exit' + key) for x in [10, 11, 12] if a[18*W+x] & 0xC00 == 0]
-        clue = [(6, 11), (13, 7), (15, 9)][i]
+        clue = [(6, 11), (12, 7), (15, 9)][i]
         m['bg_events'].append(dict(type='sign', x=clue[0], y=clue[1], elevation=0,
             player_facing_dir='BG_EVENT_PLAYER_FACING_ANY', script='LegendsGrotto_Clue' + key))
         mp = ROOT / 'data/maps' / name
@@ -132,9 +148,17 @@ def main():
         rp = ROOT / 'data/maps' / route / 'map.json'
         r = json.loads(rp.read_text())
         script = 'LegendsGrotto_Enter' + key
-        if not any(b.get('script') == script for b in r['bg_events']):
-            r['bg_events'].append(dict(type='sign', x=entrance[0], y=entrance[1],
+        r['bg_events'] = [b for b in r['bg_events'] if b.get('script') != script]
+        for ex, ey in ([entrance, (12, 31)] if i == 0 else [entrance]):
+            r['bg_events'].append(dict(type='sign', x=ex, y=ey,
                 elevation=0, player_facing_dir='BG_EVENT_PLAYER_FACING_ANY', script=script))
+        route_layout = next(l for l in layouts['layouts'] if l['id'] == r['layout'])
+        route_path = ROOT / route_layout['blockdata_filepath']
+        words = list(struct.unpack('<%dH' % (route_path.stat().st_size // 2), route_path.read_bytes()))
+        for x, y, tile in ENTRANCE_TILES[route]:
+            index = y * route_layout['width'] + x
+            words[index] = (words[index] & 0xF000) | (0 if tile == 0x001 else 0x400) | tile
+        save(route_path, struct.pack('<%dH' % len(words), *words))
         save(rp, json.dumps(r, indent=2) + '\n')
     save(groups_path, json.dumps(groups, indent=2) + '\n')
     save(layouts_path, json.dumps(layouts, indent=2) + '\n')

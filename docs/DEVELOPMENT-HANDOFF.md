@@ -1,5 +1,15 @@
 # Development handoff
 
+## Hidden grottos — refined art and discovery review (20 October 2026)
+
+**Model: GPT-6 (Codex) | Reasoning: replace incomplete native tile assemblies, make discovery readable and trace the borrowed entrance art's real field-control behavior.**
+
+Owner requested more convincing grotto visuals plus route/entrance examples; this is **not publication approval**. Replaced isolated tree-bottom tiles with full native trees, rebuilt a complete irregular Route-102-style pond and Scorched-Slab-style spring/walls, and matched the rocky opening to Route 114's cliff palette. Ten allowlisted route cells show the vine-framed trunk, rocky crevice and complete undergrowth opening; existing scripts/warps/events and every other native route cell are preserved by pinned baseline regression. Leafshade uses the two trunk halves beside the southern Trainer Tips sign; Stillwater is southwest of Lanette's house; Rainroot is northwest of the lower Route 119 house and returns to `(27,106)`.
+
+Native testing caught borrowed open Secret Base art entering a stale native base on Up before the grotto prompt. Added a read-only four-coordinate guard in `TryDoorWarp`; A still uses the actual background script and all other Secret Base positions retain native behavior. The actual C predicate passed exhaustive 16-bit map-ID and target-route coordinate probes. No save allocations, flags, map IDs, palette assets or claim/reward semantics changed.
+
+Both local Debug/Release builds and native Quickstart passed. Native mGBA passed all twelve seasonal scenes, sprite/floor/season checks, real visitor dialogue, three exits, declines and reentries. A 176-frame native capture records walking from southern Petalburg Woods through examination, Yes/No, fade and arrival; setup is controlled, subsequent movement/text/transition use production code. Full-tree, geometry, bounded route-art, guard, season/84-table encounter and Kanto checks passed. [Updated art/entry evidence and limits](qa/hidden-grottos-polish.md). The earlier preview is superseded. PR #87 remains a draft; review of this revised checkpoint, capture/reward/cooldown implementation, persistence and eventual release gates remain outstanding. Published v0.0.68 and BPS/wiki/site stay unchanged.
+
 ## Hidden grottos — unshipped first review (20 October 2026)
 
 **Model: GPT-6 (Codex) | Reasoning: make the selected concept concrete in native maps, preserve the published baseline and isolate unfinished gameplay until owner review.**

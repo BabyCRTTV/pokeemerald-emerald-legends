@@ -50,7 +50,7 @@ LegendsGrotto_ExitStillwater::
 	end
 LegendsGrotto_ExitRainroot::
 	lockall
-	warp MAP_ROUTE119, 28, 105
+	warp MAP_ROUTE119, 27, 106
 	waitstate
 	releaseall
 	end
@@ -80,7 +80,7 @@ LegendsGrotto_ClueRainroot::
 	end
 
 LegendsGrotto_Text_LeafshadeEntry:
-	.string "Cool air slips between the roots.\n"
+	.string "Vines frame a gap in the trunk.\n"
 	.string "A narrow trail leads out of sight.\p"
 	.string "Explore LEAFSHADE HOLLOW?$"
 LegendsGrotto_Text_StillwaterEntry:

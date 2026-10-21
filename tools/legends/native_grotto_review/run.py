@@ -13,7 +13,7 @@ def main():
     p.add_argument('--elf', type=Path, default=R/'pokeemerald.elf')
     p.add_argument('--output', type=Path, default=R/'build/grotto-review')
     args = p.parse_args(); out = args.output.resolve(); out.mkdir(parents=True, exist_ok=True)
-    for artifact in list(out.glob('room-*.png')) + list(out.glob('room-*.rgba')):
+    for artifact in list(out.glob('room-*.png')) + list(out.glob('room-*.rgba')) + list(out.glob('discovery-*.png')) + list(out.glob('discovery-*.rgba')):
         artifact.unlink()
     prefix = args.prefix.resolve(); env = os.environ.copy()
     env['PATH'] = str(prefix/'bin') + ':' + env['PATH']
@@ -40,13 +40,15 @@ def main():
     for raw in list(out.glob('*.rgba')):
         Image.frombytes('RGBA',(240,160),raw.read_bytes()).convert('RGB').save(raw.with_suffix('.png'))
         raw.unlink()
-    assert len(list(out.glob('room-*.png'))) == 24
+    assert len(list(out.glob('room-*.png'))) == 28
     proof = dict(version=(R/'VERSION').read_text().strip()+' + unshipped grotto review',
         ROM_sha256=hashlib.sha256(source).hexdigest(),emulator='mGBA 0.10.2 native core',
         seasonal_scenes=12, walking_exit_reentry_and_decline_paths=3,
+        discovery_film_frames=len(list(out.glob('discovery-*.png'))),
         setup='Private callback creates controlled twelve seasonal fixtures; native map renderer, sprites, movement and dialogue are unaltered.',
         limits='Exploration prototype only. Captures, rewards, cooldowns, real-save migration, natural progression and Pizza Boy not implemented/tested here.',
-        images={p.name:hashlib.sha256(p.read_bytes()).hexdigest() for p in out.glob('*.png')})
+        images={p.name:hashlib.sha256(p.read_bytes()).hexdigest() for p in out.glob('room-*.png')},
+        discovery_frame_hashes=[hashlib.sha256(p.read_bytes()).hexdigest() for p in sorted(out.glob('discovery-*.png'))])
     (out/'verification.json').write_text(json.dumps(proof,indent=2)+'\n')
     private.unlink()
     print('PASS: native grotto review. '+str(out))

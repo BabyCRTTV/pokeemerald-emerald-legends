@@ -13,4 +13,5 @@ reentry room=2 map=76,3 xy=11,14 script=0
 room=2 season=1 active=1 map=76,3 floor=0 xy=11,11 gfx=16741/16741
 room=2 season=2 active=2 map=76,3 floor=0 xy=11,11 gfx=17088/17088
 room=2 season=3 active=3 map=76,3 floor=0 xy=11,11 gfx=16717/16717
+PASS: filmed native approach, examine, confirm and entry; 176 original frames.
 PASS: twelve seasonal scenes, native movement and visitor dialogue.

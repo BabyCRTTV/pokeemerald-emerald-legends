@@ -1,14 +1,24 @@
 # Hidden grottos — first review
 
-Status: **unshipped exploration prototype**, based on v0.0.68. Owner requested implementation and previews before publication on 20 October 2026. Layouts, names, roster and renewal rules are proposals pending that review.
+Status: **unshipped exploration prototype, second visual/discovery review**, based on v0.0.68. Owner requested tidier, convincing grotto art and an example of discovery/entry. Layouts, names, roster and renewal rules remain proposals pending review.
 
-Three small, optional shelters reward inspecting the edges of familiar routes. A root gap, a cool draft and footprints provide discoverable clues. Each entrance asks before entering; walking back through the mouth returns to the original approach. Native Hoenn art and species sprites supply every pixel. Existing route artwork and story scripts are unchanged.
+Three small, optional shelters reward inspecting the edges of familiar routes. A vine-framed trunk, a rock crevice and a gap in the undergrowth provide visible clues. Each entrance asks before entering; walking back through the mouth returns to the original approach. Native Hoenn art and species sprites supply every pixel. Ten bounded route cells show the openings; existing route events, warps and story scripts retain their meanings.
 
 | Shelter | Entrance | Character | Environmental clue |
 | --- | --- | --- | --- |
-| Leafshade Hollow | Southern Petalburg Woods | Shaded clearing, flowers and close tree cover | Nibbled berries and small prints beneath roots |
-| Stillwater Nook | Route 114, below the bridge | Compact rocky chamber and clear spring | A stone worn smooth on only one side |
-| Rainroot Hollow | Lower Route 119 | Wet foliage, small pool and long grass | Curled leaves shelter a dry sleeping place |
+| Leafshade Hollow | Southern Petalburg Woods, beside the lower Trainer Tips sign | Shaded clearing, flowers and close tree cover | Nibbled berries and small prints beneath roots |
+| Stillwater Nook | Route 114, southwest of Lanette's house | Compact rocky chamber and clear spring | A stone worn smooth on only one side |
+| Rainroot Hollow | Lower Route 119, northwest of the small house | Wet foliage, irregular pool and long grass | Curled leaves shelter a dry sleeping place |
+
+## Finding and entering
+
+These use the existing area's access conditions. Leafshade is an early discovery in the southern woods; Stillwater and Rainroot become reachable as the player reaches their routes. Once at an opening, no special move or item is required.
+
+Walk up to the visible opening and press **A**. A short description mentions the draft, trail or footprints, followed by an **Explore [name]?** Yes/No choice. Yes fades into the separate grotto map. No leaves the player outside. Walking back through the mouth returns to a passable tile beside the same opening. Both halves of Leafshade's vine-framed trunk accept examination.
+
+The borrowed native entrance graphics carry Secret Base behavior. A coordinate-specific door-warp guard isolates exactly these four interaction cells from the native auto-warp; all other Secret Base positions retain the original path. The route 119 return is now `(27,106)`, directly below its complete undergrowth opening.
+
+The [discovery clip](../designs/hidden-grottos/Emerald-Legends-Grotto-Discovery.gif) records a real native walk from three tiles away, then examination, confirmation, fade and arrival. Private QA setup places the player at the start of that short approach; it does not depict a complete new-game journey.
 
 ## Proposed visitor rotation
 
@@ -33,7 +43,7 @@ Before shipping that loop, add signed persistent state, audit shared Hoenn/FireR
 
 ## Implemented review scope
 
-- Three appended maps and layouts; three background entrance interactions added to the existing routes.
+- Three appended maps and layouts; four background interaction cells at three entrances added to the existing routes.
 - Native yes/no entry, walking exits, seasonal overworld visitors with cry/dialogue, environmental clue text and an inspectable item placeholder.
 - No battle, capture, item award, cooldown, save-state allocation, version bump, BPS replacement or public-site change in this review.
 - Published v0.0.68 and its bedroom-only approval remain the baseline. The rejected badge, sign, pause-menu and outfit proposals remain untouched.

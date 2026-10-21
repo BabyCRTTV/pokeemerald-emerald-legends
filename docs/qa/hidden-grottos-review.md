@@ -1,5 +1,7 @@
 # Hidden grotto first-review evidence
 
+Historical first-review receipt. The owner requested visual cleanup and discovery examples; [second-review evidence](hidden-grottos-polish.md) and its newer native frames supersede the initial presentation.
+
 Unshipped prototype based on published `a3eea770` / v0.0.68. This is a review checkpoint, not a release candidate.
 
 - Both local native builds completed with GCC ARM 13.2.1: Debug `pokeemerald.gba`, Release `pokeemerald-release.gba`. Hashes: [receipt](hidden-grottos-review.json). Neither ROM is committed or distributed.

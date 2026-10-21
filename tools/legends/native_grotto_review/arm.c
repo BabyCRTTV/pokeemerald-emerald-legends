@@ -56,6 +56,16 @@ void qa(void)
         if (!TryGetObjectEventIdByLocalIdAndMap(1, b[6], b[5], &object))
             b[13] = gObjectEvents[object].graphicsId;
     }
+    if (b[0] == 2)
+    {
+        // Start on the ordinary approach path. The host records real input
+        // from here through the root interaction, choice, fade and entry.
+        LegendsSetSeasonMode(LEGENDS_SEASONS_PLAYTIME);
+        LegendsSetPlaytimeSeason(LEGENDS_SPRING);
+        VarSet(VAR_REPEL_STEP_COUNT, 200);
+        SetWarpDestination(MAP_GROUP(MAP_PETALBURG_WOODS), MAP_NUM(MAP_PETALBURG_WOODS), -1, 13, 35);
+        WarpIntoMap(); b[4] = 1; SetMainCallback2(CB2_LoadMap); return;
+    }
     b[4] = 1;
     gMain.callback2 = (MainCallback)b[3];
 }
