@@ -10,6 +10,8 @@ Native testing caught borrowed open Secret Base art entering a stale native base
 
 Both local Debug/Release builds and native Quickstart passed. Native mGBA passed all twelve seasonal scenes, sprite/floor/season checks, real visitor dialogue, three exits, declines and reentries. A 176-frame native capture records walking from southern Petalburg Woods through examination, Yes/No, fade and arrival; setup is controlled, subsequent movement/text/transition use production code. Full-tree, geometry, bounded route-art, guard, season/84-table encounter and Kanto checks passed. [Updated art/entry evidence and limits](qa/hidden-grottos-polish.md). The earlier preview is superseded. PR #87 remains a draft; review of this revised checkpoint, capture/reward/cooldown implementation, persistence and eventual release gates remain outstanding. Published v0.0.68 and BPS/wiki/site stay unchanged.
 
+Revised source and native previews are saved in draft PR #87 at `06200769`; all 59 changed blobs matched local Git object hashes before the branch update. New-source project **39525842600**, native **39525842770** and build/BPS **39525842603** were in progress at handoff; verify their outcomes independently. No merge or public release was performed.
+
 ## Hidden grottos — unshipped first review (20 October 2026)
 
 **Model: GPT-6 (Codex) | Reasoning: make the selected concept concrete in native maps, preserve the published baseline and isolate unfinished gameplay until owner review.**
