@@ -72,7 +72,7 @@
       "legacy.png": "7a8a8bb5d99582566b6407d406b247af1f805bcf1e3b2818d64daf08995cac29"
     }
   },
-  "publication": "Candidate verified; matching LegendsDex badge and QA-only checkpoint prepared before merge. Main patch publication and live verification pending.",
+  "publication": "Merged; live LegendsDex v0.0.70 confirmed. Public patches and final live verification pending.",
   "quickstart": {
     "model": "GPT-6 (High)",
     "version": "0.0.70",
@@ -133,5 +133,15 @@
     },
     "limits": "Byte-decoder test; physical browser file-picker/download and Pizza Boy execution are separate checks."
   },
-  "candidateSums": "875eadec7289125596dfd8411d945ad338fb5bb0f85bf22afbd4f636ea03217b  docs/downloads/Pokemon-Emerald-Legends-v0.0.70.bps\n1b1bd8b687e3a6889d1874bae182af2c60490daa81b85314669062333e5cd360  docs/downloads/Pokemon-Emerald-Legends-v0.0.70-debug.bps\n405d8463feb6064d0a4c3112a441ff3f97f9c69daaecefddcd4135c941ba2c17  pokeemerald-release.gba\n32d699360f3052d2ee5335d26887d134f0153dc1c5bfd2320d7f49953b18aa19  pokeemerald.gba\n"
+  "candidateSums": "875eadec7289125596dfd8411d945ad338fb5bb0f85bf22afbd4f636ea03217b  docs/downloads/Pokemon-Emerald-Legends-v0.0.70.bps\n1b1bd8b687e3a6889d1874bae182af2c60490daa81b85314669062333e5cd360  docs/downloads/Pokemon-Emerald-Legends-v0.0.70-debug.bps\n405d8463feb6064d0a4c3112a441ff3f97f9c69daaecefddcd4135c941ba2c17  pokeemerald-release.gba\n32d699360f3052d2ee5335d26887d134f0153dc1c5bfd2320d7f49953b18aa19  pokeemerald.gba\n",
+  "merge": "b739cfc046427c2a7a7b69d05bd3e4839df86275",
+  "mainWorkflowRuns": {
+    "patches": 39615239996,
+    "native": 39615239610,
+    "project": 39615239694,
+    "wiki": 39615241117,
+    "android": 39615239723,
+    "windows": 39615240184,
+    "pages": 39615238807
+  }
 }
