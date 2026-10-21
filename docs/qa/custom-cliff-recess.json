@@ -1,0 +1,40 @@
+{
+  "model": "GPT-6 (Codex)",
+  "source_parent": "74336c436549f78d5d596bf17cdb6b6dda9b0c15",
+  "custom_asset": [
+    16,
+    32
+  ],
+  "metatiles": [
+    885,
+    886
+  ],
+  "changed_route_words": [
+    [
+      13,
+      39
+    ],
+    [
+      13,
+      40
+    ]
+  ],
+  "checks": {
+    "debug_build": "passed",
+    "release_build": "passed",
+    "focused_grotto_regressions": 10,
+    "night_light_reproducibility_and_DNS": "passed",
+    "native_seasonal_scenes": 12,
+    "native_production_exit_decline_entry_paths": 3,
+    "native_original_alternative_paths": 3,
+    "native_cliff_walk_frames": 165,
+    "visual_inspection": "actual native A/custom comparison and world capture"
+  },
+  "sha256": {
+    "pokeemerald.gba": "2bb1256ebdb084585e34755fab0dc1fcdfad835f503832d39ad1b26b107c0b9d",
+    "pokeemerald-release.gba": "edc0acb38e94de532d972f3fb97428f3720c5f55ab2c198fb6bfb0ef434fd595",
+    "docs/designs/hidden-grottos/custom-cliff/Emerald-Legends-Custom-Cliff-Preview.png": "7b402a50ce6e7a59df6c6f3362d1ac4b22168fa417cd433716fba76fd4b8a846",
+    "docs/designs/hidden-grottos/custom-cliff/Emerald-Legends-Custom-Cliff-Walk-In.gif": "21ba9b2886d3dec1007bcedad07b5c4b4a1c4842f4e5f387c6708b1ff9036b6e"
+  },
+  "limits": "Unshipped controlled native Debug review; no full-story/old-save/Release-emulator/Pizza Boy claim or publication."
+}

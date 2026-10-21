@@ -20,7 +20,7 @@ ROOMS = [
 # Every cell is existing Hoenn art; no tileset, palette or persistent ID changes.
 ENTRANCE_TILES = {
     'PetalburgWoods': [(12, 31, 0x036), (13, 31, 0x037)],
-    'Route114': [(13, 39, 0x259), (13, 40, 0x261), (14, 40, 0x001)],
+    'Route114': [(13, 39, 0x375), (13, 40, 0x376), (14, 40, 0x001)],
     'Route119': [(26, 104, 0x279), (27, 104, 0x27A), (28, 104, 0x27B),
                  (26, 105, 0x281), (27, 105, 0x278), (28, 105, 0x283),
                  (26, 106, 0x001)],

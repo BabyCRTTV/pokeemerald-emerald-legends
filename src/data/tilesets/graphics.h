@@ -176,7 +176,7 @@ const u16 gTilesetPalettes_Lavaridge[][16] =
     INCGFX_U16("data/tilesets/secondary/lavaridge/palettes/15.pal", ".gbapal"),
 };
 
-const u32 gTilesetTiles_Fallarbor[] = INCGFX_U32("data/tilesets/legends_lights/fallarbor_tiles.png", ".4bpp.fastSmol");
+const u32 gTilesetTiles_Fallarbor[] = INCGFX_U32("data/tilesets/legends_grotto/fallarbor_cliff_tiles.png", ".4bpp.fastSmol");
 
 const u16 gTilesetPalettes_Fallarbor[][16] =
 {

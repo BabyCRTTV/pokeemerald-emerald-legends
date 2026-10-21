@@ -1,5 +1,15 @@
 # Development handoff
 
+## Custom recessed cliff art based on A (21 October 2026)
+
+**Model: GPT-6 (Codex) | Reasoning: author the side perspective at native pixel resolution while keeping palette, collision and all other approved scenery exact.**
+
+Owner selected A as the basis and explicitly requested a custom high-quality recessed hole. Authored a 16×32 indexed overlay: projecting near rock cheek, offset cap, shadowed cavity, dim far inner face and receding threshold. Original palette 11 is unchanged. Eight unreferenced, animation-safe tile cells in a sibling atlas and two appended definitions (`0x375–0x376`) hold the art. Only Route 114's two mouth words change; the landing, real interaction/return, other exteriors/interiors and persistent IDs are preserved. [Actual A/custom comparison and world capture](designs/hidden-grottos/custom-cliff/Emerald-Legends-Custom-Cliff-Preview.png), [actual walk-in](designs/hidden-grottos/custom-cliff/Emerald-Legends-Custom-Cliff-Walk-In.gif).
+
+The lighting pipeline now derives its accepted Fallarbor base first, builds the custom sibling and records the three active atlas/metatile/attribute redirects. Original source/lighting PNGs, palettes and metatile prefixes remain unchanged. Ten focused checks and existing lighting regeneration/DNS checks passed; Debug/Release compiled. Native mGBA verified actual compiled metatile bytes, twelve seasonal scenes, all three production visitor/exit/decline/reentry paths and three historical option paths. The 165-frame actual approach film uses the custom production map. Inspected final actual native previews. [Detailed integration, hashes and limits](qa/custom-cliff-recess.md).
+
+Save this as the new unshipped visual checkpoint in draft PR #87; owner review of the custom refinement remains pending. No merge/publication/BPS/wiki/site/version change. No full-story/old-save/Release-emulator/Pizza Boy claim; captures/rewards/refresh persistence remain unfinished. Preserve all other approved looks. The owner's explicit request permits this entrance's custom pixels; no general world-art policy change or new AGENTS.md rule was needed.
+
 ## Side-facing cliff entrance alternatives (21 October 2026)
 
 **Model: GPT-6 (Codex) | Reasoning: match the cliff's side perspective by assembling existing native rock/cave cells, with no repainting or replacement of approved scenery.**

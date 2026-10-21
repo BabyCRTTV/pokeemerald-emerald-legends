@@ -1,0 +1,26 @@
+{
+  "resolution": [
+    16,
+    32
+  ],
+  "palette": 11,
+  "metatiles": [
+    885,
+    886
+  ],
+  "tile_ids": [
+    523,
+    524,
+    526,
+    527,
+    538,
+    539,
+    540,
+    541
+  ],
+  "base_atlas_sha256": "ae821cefe381992d3bceab3004d2868b87519ae848945c3719f74c5daad75d0b",
+  "base_metatiles_sha256": "85fa85286cee4a85ade21a83ff83c359b5c1c197fcacad4b557443bae76b9508",
+  "base_attributes_sha256": "7e3e07ed64409c02eefe65b18f06ac2dfcedfde07fa745836ee08d7569baeb40",
+  "style": "Asymmetric rock lip, near occlusion, shadowed cavity, dim far inner wall, diagonal threshold",
+  "authoring": "Indexed native tile overlay; existing palette and every pixel outside the eight free tile cells are unchanged."
+}

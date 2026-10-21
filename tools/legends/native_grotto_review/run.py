@@ -30,7 +30,7 @@ def main():
          '-Wl,--just-symbols='+str(args.elf),str(S/'arm.c'),'-o',str(out/'arm.elf')],'arm-build.log')
     run(['arm-none-eabi-objcopy','-O','binary',str(out/'arm.elf'),str(out/'arm.bin')],'objcopy.log')
     source = args.rom.read_bytes()
-    active_metatiles=(R/'data/tilesets/legends_lights/fallarbor_metatiles.bin').read_bytes()
+    active_metatiles=(R/'data/tilesets/legends_grotto/fallarbor_cliff_metatiles.bin').read_bytes()
     tile_offset=symbols(args.elf)['gMetatiles_Fallarbor']-0x08000000
     assert source[tile_offset:tile_offset+len(active_metatiles)]==active_metatiles
     rom = bytearray(source); payload = (out/'arm.bin').read_bytes()

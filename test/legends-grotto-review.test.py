@@ -60,7 +60,31 @@ class Grottos(unittest.TestCase):
         native=(R/(base+'metatiles.bin')).read_bytes();prefix=proof['base_metatile_count']*16
         self.assertEqual(hashlib.sha256(active[:prefix]).hexdigest(),proof['compiled_metatiles_prefix_sha256'])
         self.assertEqual(active[prefix:],native[prefix:])
-        self.assertEqual(hashlib.sha256((R/'data/layouts/Route114/map.bin').read_bytes()).hexdigest(),proof['route114_sha256'])
+        route=bytearray((R/'data/layouts/Route114/map.bin').read_bytes())
+        for y,word in [(39,0x659),(40,0x661)]:struct.pack_into('<H',route,(y*40+13)*2,word)
+        self.assertEqual(hashlib.sha256(route).hexdigest(),proof['route114_sha256'])
+
+    def test_custom_cliff_only_uses_free_tiles_and_preserves_existing_art(self):
+        from PIL import Image
+        root=R/'data/tilesets/legends_grotto';spec=json.loads((root/'custom_cliff.json').read_text())
+        base=R/'data/tilesets/legends_lights/fallarbor_tiles.png'
+        self.assertEqual(hashlib.sha256(base.read_bytes()).hexdigest(),spec['base_atlas_sha256'])
+        original=Image.open(base);custom=Image.open(root/'fallarbor_cliff_tiles.png')
+        self.assertEqual(original.size,custom.size);self.assertEqual(original.getpalette(),custom.getpalette())
+        used=set(spec['tile_ids']);self.assertEqual(len(used),8)
+        native=(R/'data/tilesets/legends_lights/fallarbor_metatiles.bin').read_bytes()
+        words=struct.unpack('<%dH'%(len(native)//2),native)
+        self.assertFalse(used&{v&1023 for v in words})
+        for y in range(original.height):
+            for x in range(original.width):
+                if 512+(y//8)*16+x//8 not in used:self.assertEqual(original.getpixel((x,y)),custom.getpixel((x,y)))
+        meta=(root/'fallarbor_cliff_metatiles.bin').read_bytes()
+        self.assertEqual(meta[:-32],native)
+        attrs=(root/'fallarbor_cliff_attributes.bin').read_bytes()
+        self.assertEqual(attrs[:-4],(R/'data/tilesets/secondary/fallarbor/metatile_attributes.bin').read_bytes())
+        self.assertEqual(len(meta)//16,375)
+        self.assertIn('legends_grotto/fallarbor_cliff_tiles.png',(R/'src/data/tilesets/graphics.h').read_text())
+        self.assertIn('legends_grotto/fallarbor_cliff_metatiles.bin',(R/'src/data/tilesets/metatiles.h').read_text())
 
     def test_reach_every_interaction_and_exit(self):
         layouts = {l['id']:l for l in read('data/layouts/layouts.json')['layouts']}
@@ -101,7 +125,7 @@ class Grottos(unittest.TestCase):
         for x in [15,14]:
             self.assertEqual(a[40*w+x]&0xC00,0)
             self.assertEqual(a[40*w+x]&1023,0x001)
-        self.assertEqual(a[40*w+13]&1023,0x261)
+        self.assertEqual(a[40*w+13]&1023,0x376)
         m=read('data/maps/Route114/map.json')
         e=next(e for e in m['bg_events'] if e.get('script')=='LegendsGrotto_EnterStillwater')
         self.assertEqual((e['x'],e['y']),(13,40))

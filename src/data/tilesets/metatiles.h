@@ -27,8 +27,8 @@ const u16 gMetatileAttributes_Mauville[] = INCBIN_U16("data/tilesets/secondary/m
 const u16 gMetatiles_Lavaridge[] = INCBIN_U16("data/tilesets/secondary/lavaridge/metatiles.bin");
 const u16 gMetatileAttributes_Lavaridge[] = INCBIN_U16("data/tilesets/secondary/lavaridge/metatile_attributes.bin");
 
-const u16 gMetatiles_Fallarbor[] = INCBIN_U16("data/tilesets/legends_lights/fallarbor_metatiles.bin");
-const u16 gMetatileAttributes_Fallarbor[] = INCBIN_U16("data/tilesets/secondary/fallarbor/metatile_attributes.bin");
+const u16 gMetatiles_Fallarbor[] = INCBIN_U16("data/tilesets/legends_grotto/fallarbor_cliff_metatiles.bin");
+const u16 gMetatileAttributes_Fallarbor[] = INCBIN_U16("data/tilesets/legends_grotto/fallarbor_cliff_attributes.bin");
 
 const u16 gMetatiles_Fortree[] = INCBIN_U16("data/tilesets/legends_lights/fortree_metatiles.bin");
 const u16 gMetatileAttributes_Fortree[] = INCBIN_U16("data/tilesets/secondary/fortree/metatile_attributes.bin");

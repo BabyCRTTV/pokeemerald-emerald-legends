@@ -192,6 +192,15 @@ def main():
   for symbol in swaps:
    if 'PalletTown' in symbol:swaps[symbol]|=1<<(slot-7)
   manifest['glass_palettes'].append({'native':native,'palette':day,'night':night,'lights':[8,9,10]})
+ # The custom cliff is a sibling of the generated Fallarbor atlas: preserve
+ # all existing light art, then author only verified-unused cells.
+ from build_custom_cliff import build as build_custom_cliff
+ build_custom_cliff()
+ redirects.update({
+  'data/tilesets/secondary/fallarbor/tiles.png':'data/tilesets/legends_grotto/fallarbor_cliff_tiles.png',
+  'data/tilesets/secondary/fallarbor/metatiles.bin':'data/tilesets/legends_grotto/fallarbor_cliff_metatiles.bin',
+  'data/tilesets/secondary/fallarbor/metatile_attributes.bin':'data/tilesets/legends_grotto/fallarbor_cliff_attributes.bin',
+ })
  manifest['redirects']=redirects;manifest['header_edits']={}
  for relative,text in originals.items():
   edits=[];index=[0]
