@@ -1,14 +1,18 @@
 DewfordTown_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, DewfordTown_OnTransition
+	map_script MAP_SCRIPT_ON_RESUME, Wyrmtide_DewfordResume
 	.byte 0
 
 DewfordTown_OnTransition:
+	call Wyrmtide_PrepareDewford
 	setflag FLAG_VISITED_DEWFORD_TOWN
 	end
 
 DewfordTown_EventScript_Briney::
 	lock
 	faceplayer
+	goto_if_set FLAG_LEGENDS_WYRMTIDE_CALL, Wyrmtide_DewfordChoice
+DewfordTown_EventScript_BrineyNormal::
 	goto_if_unset FLAG_DELIVERED_STEVEN_LETTER, DewfordTown_EventScript_ReturnToPetalburgPrompt
 	message DewfordTown_Text_WhereAreWeBound
 	waitmessage

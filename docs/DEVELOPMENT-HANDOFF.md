@@ -1,5 +1,15 @@
 # Development handoff
 
+## Wyrmtide Isle — unshipped story review (21 October 2026)
+
+**Model: GPT-6 (Codex) | Reasoning: post-Regigigas event dependencies, original Briney travel, append-only identifiers and native visual review.**
+
+Owner requested an unexpected unknown-number Pokenav call from Mr. Briney after Regigigas, an island west of Dewford, tablet clues, a party-Regigigas seal, a long stair descent and sleeping Regidrago. Implemented Wyrmtide Isle, four stair landings and the Heart, using existing native art. The call waits until the existing Weather Institute report and Regigigas-calmed flags, then eight safe outdoor steps. Briney's new Dewford contact appears only when his original counterpart is absent. Native old coastal and S.S. Tidal state remains unchanged. The seal requires a real party Regigigas (fainted allowed; eggs/boxed excluded), then stays open. Lv75 Regidrago supports escape/defeat retries and capture once; Briney's report completes appended side quest 63.
+
+Local branch `codex/wyrmtide-isle` is based on published `7cf9a7bfcb515ad33b4840ce38cd7d2e88008b8d`. This is a visual/story review, not a release: VERSION stays 0.0.70 and public downloads remain unchanged. No existing map-layout or tileset binary changed. All previous map/layout/section/quest IDs, including MAPSEC_NONE, retain their values; seven audited unused flags 0x493–0x499 are appended aliases. No save structure/var allocation changes. Dewford Continue repairs only the two new cached NPC templates, preserving existing permanent moves and deferring spawn if occupied. Generator refuses to overwrite existing review layouts without explicit `--refresh-review`.
+
+Debug compiled, production-C allocation/gate tests and journal/save-sector tests passed. Actual mGBA map captures and voyage menu exist; full interaction QA, final Release build and independent candidate BPS verification are in progress. Do not imply those unfinished checks passed. [Design](features/wyrmtide-isle.md). No publication approval has been requested for these new visuals.
+
 ## v0.0.70 grotto variety — published (21 October 2026)
 
 **Model: GPT-6 (Codex) | Reasoning: disjoint species ownership across seasons, generated pool width and save identity preservation.**

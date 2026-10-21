@@ -1299,6 +1299,15 @@
 #define FLAG_ITEM_SAFARI_ZONE_NORTH_EAST_NUGGET                     0x491
 #define FLAG_ITEM_SAFARI_ZONE_SOUTH_EAST_BIG_PEARL                  0x492
 
+// Wyrmtide Isle: audited unused native bits; no saved layouts or IDs moved.
+#define FLAG_LEGENDS_WYRMTIDE_CALL         0x493
+#define FLAG_LEGENDS_WYRMTIDE_LANDED       0x494
+#define FLAG_LEGENDS_WYRMTIDE_SEAL_OPEN    0x495
+#define FLAG_LEGENDS_WYRMTIDE_AWAKENED     0x496
+#define FLAG_LEGENDS_WYRMTIDE_CALMED       0x497
+#define FLAG_LEGENDS_WYRMTIDE_CAUGHT       0x498
+#define FLAG_LEGENDS_WYRMTIDE_REPORT       0x499
+
 #define FLAG_UNUSED_0x493                                           0x493 // Unused Flag
 #define FLAG_UNUSED_0x494                                           0x494 // Unused Flag
 #define FLAG_UNUSED_0x495                                           0x495 // Unused Flag

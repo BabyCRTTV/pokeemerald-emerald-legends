@@ -32,6 +32,13 @@ const struct RegionMapLocation gRegionMapEntries[] = {
 {% endif %}
     },
 ## endfor
+## for map_section in legends_map_sections
+    [{{ map_section.id }}] = {
+        .x = {{ map_section.x }}, .y = {{ map_section.y }},
+        .width = {{ map_section.width }}, .height = {{ map_section.height }},
+        .name = COMPOUND_STRING("{{ map_section.name }}"),
+    },
+## endfor
 };
 
 #endif // GUARD_DATA_REGION_MAP_REGION_MAP_ENTRIES_H

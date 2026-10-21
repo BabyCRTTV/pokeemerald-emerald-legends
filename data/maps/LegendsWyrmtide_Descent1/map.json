@@ -1,0 +1,45 @@
+{
+  "id": "MAP_LEGENDS_WYRMTIDE_DESCENT1",
+  "name": "LegendsWyrmtide_Descent1",
+  "layout": "LAYOUT_LEGENDS_WYRMTIDE_DESCENT1",
+  "music": "MUS_SEALED_CHAMBER",
+  "region": "REGION_HOENN",
+  "region_map_section": "MAPSEC_LEGENDS_WYRMTIDE_ISLE",
+  "requires_flash": false,
+  "weather": "WEATHER_NONE",
+  "map_type": "MAP_TYPE_UNDERGROUND",
+  "allow_cycling": false,
+  "allow_escaping": false,
+  "allow_running": true,
+  "show_map_name": false,
+  "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+  "connections": null,
+  "object_events": [],
+  "warp_events": [
+    {
+      "x": 8,
+      "y": 3,
+      "elevation": 3,
+      "dest_map": "MAP_LEGENDS_WYRMTIDE_ISLE",
+      "dest_warp_id": "0"
+    },
+    {
+      "x": 11,
+      "y": 20,
+      "elevation": 3,
+      "dest_map": "MAP_LEGENDS_WYRMTIDE_DESCENT2",
+      "dest_warp_id": "0"
+    }
+  ],
+  "coord_events": [],
+  "bg_events": [
+    {
+      "type": "sign",
+      "x": 13,
+      "y": 18,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "Wyrmtide_DepthTablet"
+    }
+  ]
+}

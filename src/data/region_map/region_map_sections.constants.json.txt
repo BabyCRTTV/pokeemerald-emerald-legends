@@ -7,6 +7,9 @@ enum {
     {{ map_section.id }},
 ## endfor
     MAPSEC_NONE,
+## for map_section in legends_map_sections
+    {{ map_section.id }},
+## endfor
     MAPSEC_COUNT
 };
 
