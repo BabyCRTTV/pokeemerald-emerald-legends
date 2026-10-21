@@ -13,11 +13,16 @@ elf=R/'pokeemerald.elf';rom=R/'pokeemerald.gba';symbols=syms(elf);source=rom.rea
 run(['arm-none-eabi-gcc','-iquote','include','-iquote','.', '-DMODERN=1','-DEMERALD','-mthumb','-mcpu=arm7tdmi','-mabi=apcs-gnu','-Os','-ffreestanding','-fno-builtin','-fno-jump-tables','-nostdlib','-Wl,-Ttext=0x09f80000','-Wl,--entry=qa','-Wl,--just-symbols='+str(elf),str(S/'arm.c'),'-o',str(out/'arm.elf')],'arm-build.log')
 run(['arm-none-eabi-objcopy','-O','binary',str(out/'arm.elf'),str(out/'arm.bin')],'objcopy.log');payload=(out/'arm.bin').read_bytes();assert len(payload)<65536 and set(source[0x1f80000:0x1f80000+len(payload)])=={255};private=out/'PRIVATE-QA.gba';patched=bytearray(source);patched[0x1f80000:0x1f80000+len(payload)]=payload;private.write_bytes(patched)
 # Navigation checks use the compiled map collision words and real button steps.
-grids=[]
-for name in ['Descent1','Descent2','Descent3','Descent4']:
- raw=(R/f'data/layouts/LegendsWyrmtide_{name}/map.bin').read_bytes()
- grids.append('{'+','.join(str(v) for v in struct.unpack('<456H',raw))+'}')
-(out/'paths.h').write_text('static const unsigned short grids[4][456]={'+','.join(grids)+'};\n')
+grids=[];widths=[];sizes=[];warps=[]
+layouts=json.loads((R/'data/layouts/layouts.json').read_text())['layouts']
+for name in ['Descent1','Descent2','Descent3','Descent4','Isle','Heart']:
+ m=json.loads((R/f'data/maps/LegendsWyrmtide_{name}/map.json').read_text());l=next(x for x in layouts if x['id']==m['layout']);w=l['width'];raw=(R/l['blockdata_filepath']).read_bytes();cells=list(struct.unpack('<%dH'%(len(raw)//2),raw))
+ # Surface water is not a walking route. NPCs are physical obstacles as well.
+ for i,v in enumerate(cells):
+  if v>>12!=3:cells[i]|=0x400
+ for o in m['object_events']:cells[o['y']*w+o['x']]|=0x400
+ grids.append('{'+','.join(str(v) for v in cells)+'}');widths.append(w);sizes.append(len(cells));warps.append('{'+','.join(str(e['y']*w+e['x']) for e in m['warp_events'])+(', -1' if len(m['warp_events'])==1 else '')+'}')
+(out/'paths.h').write_text('static const unsigned short grids[6][986]={'+','.join(grids)+'};\nstatic const int widths[]={'+','.join(map(str,widths))+'},sizes[]={'+','.join(map(str,sizes))+'},warps[6][2]={'+','.join(warps)+'};\n')
 run(['cc','-I'+str(out),str(S/'host.c'),'-I'+str(prefix/'include'),'-I'+str(prefix/'include/x86_64-linux-gnu'),'-L'+str(prefix/'lib/x86_64-linux-gnu'),'-lmgba','-o',str(out/'host')],'host-build.log')
 choices=[hex(int(line.split()[0],16)) for line in subprocess.check_output(['arm-none-eabi-nm',str(elf)],env=env,text=True).splitlines() if line.endswith(' t HandleInputChooseAction')];assert len(choices)==3
 try:run([str(out/'host'),str(private),str(out),hex(symbols['gMain']),hex(syms(out/'arm.elf')['qa']),hex(symbols['gBattlerControllerFuncs']),*choices,str(int(a.scenes_only))],'emulator.log')

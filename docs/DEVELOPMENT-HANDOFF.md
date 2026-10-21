@@ -1,5 +1,13 @@
 # Development handoff
 
+## Wyrmtide island and tomb redesign — visual review (21 October 2026)
+
+**Model: GPT-6 Astra | Reasoning: native environmental composition, varied descent geometry and actual walking access.**
+
+Owner requested a stronger island/tomb design. Reworked the six unshipped maps into a stepped coastal headland with a raised ruin court and complete tablet monuments; four distinct descent layouts (Maker's Hall, drowned gallery, memorial switchback, twin-shaft procession); and a raised Regidrago dais between pools beneath an inscribed headstone. Replaced repeated ladder-looking treads with existing native stone-step pixels with Cave’s sandstone palette, appended to the sibling Cave tileset. Native Cave definitions/pixels and existing owner art stay exact. No quest scripts, persistent IDs, flags, save structures, encounter outcomes or published version changed. New Wyrmtide layout dimensions/warps retain their values; Isle now uses its sibling tileset too.
+
+Expanded native walking QA to navigate the shore, all three clue approaches, seal, every descent in both directions, and the final dais. This caught a palm blocking the eastern route; moved it and verified actual walking. Full native call/voyage/gate/egg/fainted/flash/retry/KO/catch/report/return checks pass on the redesigned Debug ROM. Source checks protect exact borrowed pixels/palettes and all old identifiers. [Native gallery](designs/wyrmtide/astra-redesign/Wyrmtide-Redesign.png), [receipt and limits](qa/wyrmtide-redesign.json). Release build and new candidate patch CI are in progress at this checkpoint; earlier patch receipts apply only to the preceding design. PR #89 remains a draft. Owner visual approval is required before publication under AGENTS.md; no approval is needed to continue this authorized refinement.
+
 ## Wyrmtide Isle — unshipped story review (21 October 2026)
 
 **Model: GPT-6 (Codex) | Reasoning: post-Regigigas event dependencies, original Briney travel, append-only identifiers and native visual review.**

@@ -1,4 +1,4 @@
-// Wyrmtide's stair tread: all art/animation geometry is the unchanged native Cave.
+// Native stone-step pixels use the existing Cave sandstone palette.
 const u16 gMetatiles_LegendsWyrmtideCave[] = INCBIN_U16("data/tilesets/legends_wyrmtide/metatiles.bin");
 const u16 gMetatileAttributes_LegendsWyrmtideCave[] = INCBIN_U16("data/tilesets/legends_wyrmtide/metatile_attributes.bin");
 const struct Tileset gTileset_LegendsWyrmtideCave = {

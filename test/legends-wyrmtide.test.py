@@ -30,8 +30,13 @@ secs=json.loads((R/'src/data/region_map/region_map_sections.json').read_text())[
 # verifies the immutable ID baseline and original/sibling asset relationship.
 changed=subprocess.check_output(['git','diff','--name-only','HEAD','--','data/layouts','data/tilesets'],cwd=R,text=True).splitlines();assert all(x=='data/layouts/layouts.json' or 'LegendsWyrmtide_' in x or '/legends_wyrmtide/' in x for x in changed),changed
 base=R/'data/tilesets/secondary/cave';sib=R/'data/tilesets/legends_wyrmtide'
-assert (sib/'metatiles.bin').read_bytes()==(m:=(base/'metatiles.bin').read_bytes())+m[64:80]
-assert (sib/'metatile_attributes.bin').read_bytes()==(base/'metatile_attributes.bin').read_bytes()+struct.pack('<H',0x61)
+native=(base/'metatiles.bin').read_bytes();authored=(sib/'metatiles.bin').read_bytes()
+assert authored[:len(native)]==native and len(authored)==len(native)+32
+assert authored[-32:-16]==authored[-16:]
+assert (sib/'metatile_attributes.bin').read_bytes()==(base/'metatile_attributes.bin').read_bytes()+struct.pack('<HH',0x61,0)
+# Exact existing stone-step pixels/flips, using only Cave's native palette 6.
+source=struct.unpack_from('<8H',(R/'data/tilesets/primary/general/metatiles.bin').read_bytes(),0xAF*16)
+assert struct.unpack('<8H',authored[-16:])==tuple((w&0xFFF)|0x6000 if w else 0 for w in source)
 # Every stair landing is reachable on foot, and both directions retain exact pairs.
 for key in ['Descent1','Descent2','Descent3','Descent4','Heart']:
  name='LegendsWyrmtide_'+key;m=json.loads((R/f'data/maps/{name}/map.json').read_text());l=next(x for x in layouts if x['id']==m['layout']);a=struct.unpack('<%dH'%(l['width']*l['height']),(R/l['blockdata_filepath']).read_bytes());w=l['width'];start=(8,3) if key!='Heart' else (11,17);goal=(11,20) if key!='Heart' else (11,8)
@@ -44,6 +49,17 @@ for key in ['Descent1','Descent2','Descent3','Descent4','Heart']:
  for i,warp in enumerate(m['warp_events']):
   destkey=warp['dest_map'].removeprefix('MAP_LEGENDS_WYRMTIDE_');destname='LegendsWyrmtide_'+({'ISLE':'Isle','HEART':'Heart'}.get(destkey,destkey.title()))
   dest=json.loads((R/f'data/maps/{destname}/map.json').read_text());back=dest['warp_events'][int(warp['dest_warp_id'])];assert back['dest_map']==m['id'] and int(back['dest_warp_id'])==i,(key,i)
+# All outdoor clue approaches are reachable from Briney's landing without Surf.
+l=next(x for x in layouts if x['name']=='LegendsWyrmtide_Isle_Layout');w=l['width'];raw=(R/l['blockdata_filepath']).read_bytes();cells=struct.unpack('<%dH'%(len(raw)//2),raw)
+objects=json.loads((R/'data/maps/LegendsWyrmtide_Isle/map.json').read_text())['object_events'];blocked={(o['x'],o['y']) for o in objects};seen={(14,21)};q=collections.deque(seen)
+while q:
+ x,y=q.popleft()
+ for xx,yy in [(x+1,y),(x-1,y),(x,y+1),(x,y-1)]:
+  if not (0<=xx<w and 0<=yy<l['height']) or (xx,yy) in seen|blocked:continue
+  v=cells[yy*w+xx]
+  if v&0xC00 or v>>12!=3:continue
+  seen.add((xx,yy));q.append((xx,yy))
+assert {(10,18),(23,15),(19,21),(16,11)}<=seen,'An island clue or the seal is cut off'
 script=(R/'data/scripts/legends_wyrmtide.inc').read_text();assert 'specialvar VAR_RESULT, LegendsWyrmtideHasMaker' in script
 assert 'BottomMid, FALSE' in script and 'B_OUTCOME_CAUGHT, Wyrmtide_Caught' in script and 'B_OUTCOME_WON, Wyrmtide_Calmed' in script
 # Compile actual production C with deterministic native engine boundaries.
