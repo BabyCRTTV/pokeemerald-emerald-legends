@@ -1,5 +1,11 @@
 # Development handoff
 
+## Owner Porymap edit protection (21 October 2026)
+
+**Model: GPT-6 (Codex) | Reasoning: retain owner-authored map and tileset changes across sessions.**
+
+Owner will make occasional Porymap edits, usually tilesets, and announce them. Added the standing preservation rule to AGENTS.md: do not overwrite these edits during routine work; only an explicit request or verified functional break permits a targeted repair, with an explanation to the owner. No game or artwork files changed. Publication continuity remains in [the v0.0.69 checkpoint](qa/grotto-publication-v0.0.69.md); the automatic patch commit is now `f051c1042baac5ee652e47c66e3052a7a8ce6951`, but final workflow/live/wiki verification still needs completion. The previous local upload manifest is absent after workspace restoration; recover prepared blobs from the remote object database or recreate the matching wiki promotion from current source.
+
 ## Approved v0.0.69 publication — in progress (21 October 2026)
 
 **Model: GPT-6 (Codex) | Reasoning: apply explicit owner approval, synchronize release metadata and verify the actual published patches before claiming completion.**
