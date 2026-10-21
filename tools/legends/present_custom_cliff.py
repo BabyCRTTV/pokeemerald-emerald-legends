@@ -1,6 +1,6 @@
 """Present the custom recess using actual compiled-ROM mGBA captures only."""
 from pathlib import Path
-import json,shutil
+import argparse,json,shutil
 from PIL import Image,ImageDraw,ImageFont
 ROOT=Path(__file__).resolve().parents[2]
 SRC=ROOT/'build/grotto-review'
@@ -10,24 +10,30 @@ BOLD='/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf'
 def text(im,xy,s,size=14,bold=False):
     ImageDraw.Draw(im).text(xy,s,font=ImageFont.truetype(BOLD if bold else FONT,size),fill='#efe9da')
 def main():
+    global OUT
+    parser=argparse.ArgumentParser()
+    parser.add_argument('--previous',type=Path)
+    parser.add_argument('--output',type=Path,default=OUT)
+    args=parser.parse_args();OUT=args.output
     p=json.loads((SRC/'verification.json').read_text())
     assert p['seasonal_scenes']==12 and p['cliff_approach_film_frames']>40
     OUT.mkdir(parents=True,exist_ok=True)
     for name in list(p['images'])+list(p['entrance_options'])+['verification.json','emulator.log']:
         shutil.copyfile(SRC/name,OUT/name)
-    old=Image.open(SRC/'entrance-option-0.png')
+    old=Image.open(args.previous or SRC/'entrance-option-0.png')
     new=Image.open(SRC/'room-1-season-0-exit.png')
     assert old.size==new.size==(240,160)
     sheet=Image.new('RGB',(512,730),'#282831')
     text(sheet,(14,10),'CUSTOM CLIFF RECESS',22,True)
     text(sheet,(14,40),'v0.0.68 review | actual native mGBA captures',12)
-    text(sheet,(12,68),'A · previous cleft',16,True)
-    text(sheet,(268,68),'Custom recess',16,True)
+    text(sheet,(12,68),'Before' if args.previous else 'A · previous cleft',16,True)
+    text(sheet,(268,68),'Smoothed recess' if args.previous else 'Custom recess',16,True)
     for i,frame in enumerate([old,new]):
         sheet.paste(frame.crop((80,48,144,112)).resize((256,256),Image.Resampling.NEAREST),(i*256,92))
     text(sheet,(16,365),'In the world · landing and access preserved',14,True)
     sheet.paste(new.resize((480,320),Image.Resampling.NEAREST),(16,394))
     sheet.save(OUT/'Emerald-Legends-Custom-Cliff-Preview.png')
+    sheet.crop((0,0,512,348)).save(OUT/'Emerald-Legends-Custom-Cliff-Detail.png')
     film=[]
     for file in sorted(SRC.glob('cliff-*.png')):
         frame=Image.new('RGB',(480,384),'#282831')

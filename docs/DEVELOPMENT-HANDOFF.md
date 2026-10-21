@@ -1,5 +1,13 @@
 # Development handoff
 
+## Smoother custom cliff contour (21 October 2026)
+
+**Model: GPT-6 (Codex) | Reasoning: keep the accepted recess and improve pixel cadence along its bend without touching access or surrounding scenery.**
+
+Owner liked the custom entrance and requested tighter, smoother, cleaner bending. Changed 33 overlay pixels: replaced isolated lip highlights with a continuous two-tone cheek, made the dim far inner face continuous, and simplified the threshold taper. Resolution, palette, allocated tile IDs, metatile/attribute bytes, map words, collisions, landing, scripts and all other approved looks are unchanged. The asset generator and sibling atlas/export reproduce the refinement through the existing lighting pipeline. [Actual native before/after detail](designs/hidden-grottos/custom-cliff-smooth/Emerald-Legends-Custom-Cliff-Detail.png), [world view](designs/hidden-grottos/custom-cliff-smooth/Emerald-Legends-Custom-Cliff-Preview.png), [actual walk](designs/hidden-grottos/custom-cliff-smooth/Emerald-Legends-Custom-Cliff-Walk-In.gif).
+
+Debug/Release builds, all ten grotto regressions and lighting regeneration/DNS checks passed. Native mGBA passed the existing twelve seasonal scenes, three production exit/decline/reentry paths, 165-frame cliff walk and three historical option paths. Inspected the final native comparison. [Hashes and scope](qa/custom-cliff-smooth.json); previous custom integration/limits still apply. Draft PR #87 remains unshipped; this requested polish is reviewable and no publication/version/BPS/wiki/site change occurred. No new durable AGENTS.md policy was needed.
+
 ## Custom recessed cliff art based on A (21 October 2026)
 
 **Model: GPT-6 (Codex) | Reasoning: author the side perspective at native pixel resolution while keeping palette, collision and all other approved scenery exact.**

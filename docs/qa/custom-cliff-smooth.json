@@ -1,0 +1,35 @@
+{
+  "model": "GPT-6 (Codex)",
+  "source_parent": "a92813b52593342b41314ce3b0be8b4748f5c93d",
+  "change": "Smooth lip, continuous inner face and clean threshold bend",
+  "changed_overlay_pixels": 33,
+  "unchanged": [
+    "palette",
+    "tile allocation",
+    "metatile/attribute bytes",
+    "all map/layout bytes",
+    "collision",
+    "landing",
+    "scripts",
+    "other approved scenery"
+  ],
+  "checks": {
+    "debug_build": "passed",
+    "release_build": "passed",
+    "grotto_regressions": 10,
+    "night_lighting_reproducibility_and_DNS": "passed",
+    "native_seasonal_scenes": 12,
+    "native_production_exit_decline_entry_paths": 3,
+    "native_historical_option_paths": 3,
+    "native_walk_frames": 165,
+    "visual_inspection": "actual native before/after detail and world capture"
+  },
+  "sha256": {
+    "pokeemerald.gba": "9432e2ce502694e72c0ed86d742ac8562d81bcb2b8fe1b60dfaad75d895a1c19",
+    "pokeemerald-release.gba": "7f5b9dcfea44c4ddba3e713329bdf295d1dc787200ad503e2900d842e1798b99",
+    "data/tilesets/legends_grotto/cliff_recess_overlay.png": "2db0a3b371cf45020bf6fa7eb2054161c1c5c3022bed69242bb7e75abadd1d8e",
+    "docs/designs/hidden-grottos/custom-cliff-smooth/Emerald-Legends-Custom-Cliff-Detail.png": "16fe6607987bf032da0a111d30390679ca36dca7e284e71176c49c6425035f9a",
+    "docs/designs/hidden-grottos/custom-cliff-smooth/Emerald-Legends-Custom-Cliff-Walk-In.gif": "fee330048ba8b383e3a142b823a0dffc93a5926732b466cd5913dd19618cf916"
+  },
+  "limits": "Unshipped controlled Debug scene QA; no full-story/old-save/Release-emulator/Pizza Boy or publication claim."
+}
