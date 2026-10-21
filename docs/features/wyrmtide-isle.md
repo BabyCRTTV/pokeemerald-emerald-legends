@@ -25,4 +25,4 @@ Four switchback stair landings lead to the Heart. Their native stair warps work 
 
 `test/legends-wyrmtide.test.py` checks alias allocation, original IDs, old geometry, source collision/warp pairs and production C gates. `tools/legends/native_wyrmtide_qa/run.py` runs controlled fixtures in the compiled ROM through native mGBA, records real gameplay PNGs and tests affected interactions. The setup payload is private and deleted, never included in published ROMs. Controlled fixtures are not an authentic historical owner save or a full natural story playthrough.
 
-Final native interaction, Release/Debug patch and old-save results will be recorded with the review checkpoint. New artwork is not generated for this quest; all gameplay preview frames must be actual native captures.
+Local Debug/Release compilation, full native interaction and controlled old-Dewford-cache flash repair passed; see [receipt and limits](../qa/wyrmtide-native.json). Independent Release/Debug candidate BPS verification is pending PR CI. New artwork is not generated for this quest; all gameplay preview frames must be actual native captures.

@@ -1,0 +1,63 @@
+{
+  "version": "0.0.70 + unshipped Wyrmtide review",
+  "ROM_sha256": "7ff7f57bc43ffa2a70c82cc2c8d60211d9d02b190bc7ad328f2a5ffd4f180c7d",
+  "emulator": "mGBA 0.10.2 native core",
+  "scenesOnly": false,
+  "passed": true,
+  "setup": "Controlled fresh native fixtures, actual map/script/battle engine and button input; private setup payload never distributed.",
+  "limits": "Not an authentic historical owner save, natural full-story playthrough, Release-emulator or Pizza Boy test.",
+  "log": "map=0/11 xy=11,9 flags=01 maker=0 battle=0 script=0 party=1 outcome=0\nmap=76/4 xy=14,21 flags=03 maker=0 battle=0 script=0 party=1 outcome=0\nmap=76/4 xy=16,11 flags=03 maker=0 battle=0 script=0 party=1 outcome=0\nmap=76/5 xy=13,9 flags=01 maker=0 battle=0 script=0 party=1 outcome=0\nmap=76/6 xy=9,11 flags=01 maker=0 battle=0 script=0 party=1 outcome=0\nmap=76/7 xy=9,11 flags=01 maker=0 battle=0 script=0 party=1 outcome=0\nmap=76/8 xy=9,11 flags=01 maker=0 battle=0 script=0 party=1 outcome=0\nmap=76/9 xy=11,8 flags=01 maker=0 battle=0 script=0 party=1 outcome=0\nmap=0/11 xy=8,11 flags=00 maker=0 battle=0 script=0 party=1 outcome=0\nmap=0/11 xy=9,11 flags=00 maker=0 battle=0 script=0 party=1 outcome=0\nmap=0/11 xy=8,11 flags=00 maker=0 battle=0 script=0 party=1 outcome=0\nmap=0/11 xy=9,11 flags=00 maker=0 battle=0 script=0 party=1 outcome=0\nmap=0/11 xy=8,11 flags=00 maker=0 battle=0 script=0 party=1 outcome=0\nmap=0/11 xy=9,11 flags=00 maker=0 battle=0 script=0 party=1 outcome=0\nmap=0/11 xy=8,11 flags=00 maker=0 battle=0 script=0 party=1 outcome=0\nmap=0/11 xy=9,11 flags=00 maker=0 battle=0 script=0 party=1 outcome=0\nmap=0/11 xy=8,11 flags=00 maker=0 battle=0 script=1 party=1 outcome=0\nmap=0/11 xy=8,11 flags=00 maker=0 battle=0 script=1 party=1 outcome=0\nmap=0/11 xy=8,11 flags=01 maker=0 battle=0 script=0 party=1 outcome=0\nPASS actual eight-step mystery call and one-time completion\nmap=0/11 xy=11,9 flags=01 maker=0 battle=0 script=0 party=1 outcome=0\nPASS old Dewford cached-template flash/load repair preserves native NPCs\nmap=76/4 xy=14,21 flags=03 maker=0 battle=0 script=0 party=1 outcome=0\nmap=76/4 xy=16,11 flags=03 maker=0 battle=0 script=0 party=1 outcome=0\nmap=76/4 xy=16,11 flags=03 maker=0 battle=0 script=0 party=2 outcome=0\nmap=76/5 xy=8,4 flags=07 maker=1 battle=0 script=1 party=2 outcome=0\nPASS party/egg/fainted gate, actual opening and first stair entry, native flash flags\nmap=76/6 xy=8,3 flags=07 maker=1 battle=0 script=0 party=2 outcome=0\nmap=76/7 xy=8,3 flags=07 maker=1 battle=0 script=0 party=2 outcome=0\nmap=76/8 xy=8,3 flags=07 maker=1 battle=0 script=0 party=2 outcome=0\nmap=76/9 xy=11,17 flags=07 maker=1 battle=0 script=0 party=2 outcome=0\nmap=76/8 xy=11,20 flags=07 maker=1 battle=0 script=0 party=2 outcome=0\nmap=76/7 xy=11,20 flags=07 maker=1 battle=0 script=0 party=2 outcome=0\nmap=76/6 xy=11,20 flags=07 maker=1 battle=0 script=0 party=2 outcome=0\nmap=76/5 xy=11,20 flags=07 maker=1 battle=0 script=0 party=2 outcome=0\nmap=76/4 xy=16,11 flags=07 maker=1 battle=0 script=0 party=2 outcome=0\nPASS all four descent maps, both stair directions and surface exit\nmap=76/9 xy=11,8 flags=05 maker=0 battle=0 script=0 party=1 outcome=0\nmap=76/9 xy=11,8 flags=0d maker=0 battle=0 script=0 party=1 outcome=4\nmap=76/9 xy=11,8 flags=1d maker=0 battle=0 script=0 party=1 outcome=1\nmap=76/9 xy=11,8 flags=1d maker=0 battle=0 script=0 party=1 outcome=4\nPASS escape, defeat and actual same-sprite rematch\nmap=76/9 xy=11,8 flags=05 maker=0 battle=0 script=0 party=1 outcome=0\nmap=76/9 xy=11,8 flags=3d maker=0 battle=0 script=0 party=2 outcome=7\nPASS actual Regidrago capture, caught/calmed flags, party award and flash persistence\nmap=76/9 xy=11,8 flags=3d maker=0 battle=0 script=0 party=2 outcome=7\nmap=76/4 xy=14,21 flags=17 maker=0 battle=0 script=0 party=1 outcome=0\nmap=0/11 xy=11,10 flags=57 maker=0 battle=0 script=0 party=1 outcome=0\nPASS Briney report, quest completion and actual return voyage\n",
+  "images": {
+    "09-unknown-number-call.png": "0cc85f5196248f1fa424dfa1d9a23a10ea4388f01714bd021b31c5261c747694",
+    "14-first-descent-arrival.png": "6abc375a0cf7992a6ff64644816b5463d3c1d5bb3ebfd8694f87f55a05abdb4b",
+    "12-sealed-without-maker.png": "ee4188bd238c52ee9162b074f69fac200337e0d2b6f2dc8ebf8f24ac98b5189b",
+    "13-maker-opens-seal.png": "22f1803ff02df84abb013484e5b74aa94bb0c9a76f387448889050ac4423620b",
+    "08-slumbering-regidrago.png": "d23593279f702cf6b95126b1aedcc2bb206ba121610dbf9459ffd12fde642a92",
+    "16-regidrago-battle.png": "8aae73a2a742fe8dc28472163145605cff50632f7ea03684afa5f927eaae76fa",
+    "04-stair-descent.png": "5e5e99e95996eac3a93d5bd74d9151bdd85fb152079c207138d7922801d3f410",
+    "01b-briney-voyage-menu.png": "84a26384dd776d3ad06082f1baaeebf400369b121ca82fc29bb0441ebba3d42c",
+    "10-departure-choice.png": "b7e7a395961bc43480bda15c6214dc898c859a7763a93b0a4d2f56a366b5aec2",
+    "01-dewford-dock.png": "59e70d7ee6463f4fd28e227dbf46118ba025fd58653e3e40b228c03d817ef51a",
+    "15-sleeping-dragon-prompt.png": "2614adaea3a2e705a7bab2514c41fb3586e119fb3da1f4b67d710810115228b1",
+    "05-second-landing.png": "b28f508ee4526433cf242b04d30b33975dc189957434af8c062dfe128c416df5",
+    "07-fourth-landing.png": "b28f508ee4526433cf242b04d30b33975dc189957434af8c062dfe128c416df5",
+    "11-actual-arrival.png": "27580d87cf62a89f01ce688784fe7049726e36ceee5681512bd7d875633631e8",
+    "15b-escaped-retry.png": "c2f448a96a49b967e2d9735cdb48a03007671f4d94f1ce284f7ab6308a39dd46",
+    "18-report-and-return.png": "4c7574ce68601757be243ecb59365391097c54d1daf8d3748e7391be44d06439",
+    "02-island-landing.png": "1c514e0490238a319f2517b392355f5eaef6d6814d6d49942f8996c7d77db3cc",
+    "14b-deepest-arrival.png": "4ced605a76b39234fdb7093cc81f79e7dcb953c46131783910866b4810aee7d7",
+    "15c-defeated-retry.png": "c2f448a96a49b967e2d9735cdb48a03007671f4d94f1ce284f7ab6308a39dd46",
+    "03-ancient-seal.png": "19b607332d22c696d78beefb33f6c4480cc49c72aab7ad105fb626454c7ce1a4",
+    "06-third-landing.png": "648e0174f815469f6512f2b70b5b0367922fb87d9a5312cd93ab59a3904fd866",
+    "17-capture-resolved.png": "e44fd43c40a04c388d18d234741951937b33fdbfe7876c9f7576f0cac262431c"
+  },
+  "model": "GPT-6 (Codex)",
+  "gameSourceCheckpoint": "39b8e6c108afe17d3d655f630a1ae00de086fab3",
+  "release_ROM_sha256": "e50f2e4ef84462f4b9beff0f3668635d8f286a82e7cd16e32b102d915e83899a",
+  "focusedHostTests": [
+    "test/legends-wyrmtide.test.py",
+    "test/legends-journal.test.py",
+    "test/legends-item-descriptions.test.py"
+  ],
+  "quickstart": {
+    "model": "GPT-6 (High)",
+    "version": "0.0.70",
+    "emulator": "Ubuntu libmGBA 0.10.x, native core",
+    "build": "Debug",
+    "rom_sha256": "7ff7f57bc43ffa2a70c82cc2c8d60211d9d02b190bc7ad328f2a5ffd4f180c7d",
+    "ROM_unmodified": true,
+    "RAM_writes_by_test": false,
+    "test_scope": "Title SELECT Quickstart -> overworld; two live 240x160 frames",
+    "not_tested": "Research dialogue/Weather Institute/Champion conversations through normal save progression, Release run, historical saves and full playthrough.",
+    "captures": [
+      {
+        "name": "living-hoenn-gameplay",
+        "colors": 26
+      },
+      {
+        "name": "living-hoenn-interaction",
+        "colors": 26
+      }
+    ]
+  }
+}

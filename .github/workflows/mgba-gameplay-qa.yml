@@ -12,6 +12,7 @@ on:
       - 'tools/legends/native_visual_repairs_qa/**'
       - 'tools/legends/native_grotto_review/**'
       - 'tools/legends/native_grotto_encounters/**'
+      - 'tools/legends/native_wyrmtide_qa/**'
       - 'src/**'
       - 'include/**'
       - 'data/**'
@@ -29,6 +30,7 @@ on:
       - 'tools/legends/native_visual_repairs_qa/**'
       - 'tools/legends/native_grotto_review/**'
       - 'tools/legends/native_grotto_encounters/**'
+      - 'tools/legends/native_wyrmtide_qa/**'
       - 'src/**'
       - 'include/**'
       - 'data/**'
@@ -59,6 +61,8 @@ jobs:
         run: python3 tools/legends/native_grotto_review/run.py
       - name: Exercise grotto battles, exact cooldowns and native flash saves
         run: python3 tools/legends/native_grotto_encounters/run.py
+      - name: Exercise Wyrmtide call, voyage, party seal, stairs, battles and native flash
+        run: python3 tools/legends/native_wyrmtide_qa/run.py
       - name: Exercise research notes, bulletin and town dialogue branches
         run: python3 tools/legends/native_living_hoenn_qa/run.py
       - name: Exercise seasonal encounter trial and native DexNav silhouettes
@@ -86,6 +90,9 @@ jobs:
             build/grotto-encounters-release/*.png
             build/grotto-encounters-release/*.log
             build/grotto-encounters/*.log
+            build/wyrmtide-native/*.png
+            build/wyrmtide-native/verification.json
+            build/wyrmtide-native/*.log
             build/grotto-review/*.png
             build/grotto-review/*.json
             build/grotto-review/*.log
