@@ -671,3 +671,4 @@ gSpecials::
 	def_special LegendsFieldRequestsGreeting
 	def_special LegendsFieldRequestsResearchNotes
 	def_special LegendsSeasonBulletinSpecial
+	def_special LegendsGrottoPrepareVisitor

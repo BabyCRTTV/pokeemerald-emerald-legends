@@ -1,0 +1,342 @@
+{
+  "source": "a3eea7706988f7e191ba3e00f4358670ea354bcb",
+  "groups": {
+    "group_order": {
+      "count": 77,
+      "sha256": "c2944f7c42251a36effe68b1c89293566ec88f7473f3429ab51d11cae4686274"
+    },
+    "gMapGroup_TownsAndRoutes": {
+      "count": 57,
+      "sha256": "da1f95727550a980e8240fc19a171b0597bbcf1b1df62c5c94a2ecb346744d2a"
+    },
+    "gMapGroup_IndoorLittleroot": {
+      "count": 5,
+      "sha256": "097f1a494f300ca36b488a407d1e7002ab6a40aad16e4f3622ffedb20550e973"
+    },
+    "gMapGroup_IndoorOldale": {
+      "count": 5,
+      "sha256": "3bc434a73cdb0611eb72f1250932f3227d1557e22adb1aaf7f6d2e224a8978f0"
+    },
+    "gMapGroup_IndoorDewford": {
+      "count": 6,
+      "sha256": "9fdb2317aeba4e30a4fb19a9c4a66d3e7cb178299d5ac347137ee2a4d3f766a7"
+    },
+    "gMapGroup_IndoorLavaridge": {
+      "count": 7,
+      "sha256": "d05e976b42ead3b386fb1a7cca49b7d81afa6e6b1cdca6cb5bcab2bc2ef79647"
+    },
+    "gMapGroup_IndoorFallarbor": {
+      "count": 8,
+      "sha256": "f931eb266096177b85e1c9bca907fa5bfe5c3787bcb4a366cb15b950dcdbd509"
+    },
+    "gMapGroup_IndoorVerdanturf": {
+      "count": 9,
+      "sha256": "47f770f9c47e4729a3e4b23add82364a751b98520b66921b108ad1e90da8336c"
+    },
+    "gMapGroup_IndoorPacifidlog": {
+      "count": 7,
+      "sha256": "ba0d25067a4d2bc2e03484040494642122714c7679258b37deede3c29e8c44d9"
+    },
+    "gMapGroup_IndoorPetalburg": {
+      "count": 7,
+      "sha256": "92f460912bd8e5884376133886b16bf90202c7c9e5e83af2c8b4438622077ed5"
+    },
+    "gMapGroup_IndoorSlateport": {
+      "count": 14,
+      "sha256": "d8610e9b56b1812430f42dca8b1ef37522b3ef79781fc1214c3f03bd769df47e"
+    },
+    "gMapGroup_IndoorMauville": {
+      "count": 8,
+      "sha256": "920e2e4fd1fb808be6597d3153a863746f94ea9d2d7473b752bd38e2f49fb166"
+    },
+    "gMapGroup_IndoorRustboro": {
+      "count": 17,
+      "sha256": "e511ff3d3de59c7296cc827ea6295cc1616e8ac26d81d4d7c4abd18d36641c63"
+    },
+    "gMapGroup_IndoorFortree": {
+      "count": 10,
+      "sha256": "3b8ffe56aefd264ccf147585b447a653d963bf2e01bed5d23ddc59d4c14e7585"
+    },
+    "gMapGroup_IndoorLilycove": {
+      "count": 23,
+      "sha256": "ca100fb4ee25d2f8ac3eb19b198e77f4666dc49bc6b8b48be0c00c851c7584ec"
+    },
+    "gMapGroup_IndoorMossdeep": {
+      "count": 13,
+      "sha256": "154764fc745b97887b494e17269dcbcf0742c83362ac355e81c94b8467eaa79f"
+    },
+    "gMapGroup_IndoorSootopolis": {
+      "count": 15,
+      "sha256": "d2418103a399d40e46bbf13a5d97ecd9a97202cf4ebf447575060577cdbd9806"
+    },
+    "gMapGroup_IndoorEverGrande": {
+      "count": 15,
+      "sha256": "94ceef32935a26b8a5a193aa1ff0aec8c6a70aa5c2ea0ba6f659cd7403d5e3da"
+    },
+    "gMapGroup_IndoorRoute104": {
+      "count": 2,
+      "sha256": "fea45f5d2ccadfc6785f3044964d85c7c6063f9149128514298afe49a7637108"
+    },
+    "gMapGroup_IndoorRoute111": {
+      "count": 2,
+      "sha256": "c39ba9a690ceb817d5d1dd71d3857b373863155c34cf65ed9c3edba40e5e157c"
+    },
+    "gMapGroup_IndoorRoute112": {
+      "count": 2,
+      "sha256": "e8eb3c3a8bbce8f4a7c4fadc4bf66ef53cc31e1c5deb36142edd80773c11dfb0"
+    },
+    "gMapGroup_IndoorRoute114": {
+      "count": 3,
+      "sha256": "e9df890b9713651459caa40887962cbd5f6d970099691ba90561e02211797c55"
+    },
+    "gMapGroup_IndoorRoute116": {
+      "count": 1,
+      "sha256": "ed6a3aa58a36687421dcd9c17d0c4106a6221e35d04eba46cb2c8d2cea342cba"
+    },
+    "gMapGroup_IndoorRoute117": {
+      "count": 1,
+      "sha256": "7972ebb6f6008d7b3424f8aa031bcc5ecf0aac7cf17d3b0a5f04214100132e24"
+    },
+    "gMapGroup_IndoorRoute121": {
+      "count": 1,
+      "sha256": "b8bd851abad0eac7a865aa29e371435f3146e0565f620cdca341f1735b14a62c"
+    },
+    "gMapGroup_Dungeons": {
+      "count": 108,
+      "sha256": "27a41572d5a0de042f2c1ccf6b1bf36544bdbd6957b28dfe428b8017de3543f5"
+    },
+    "gMapGroup_IndoorDynamic": {
+      "count": 61,
+      "sha256": "0892b3fbc77cb61548b12594a34af58fc6ca27695256911c212c65ea1b742903"
+    },
+    "gMapGroup_SpecialArea": {
+      "count": 89,
+      "sha256": "0afa49b83b5dc01832f6dd5cd6b836ce0e2684fba9235384622aad9d6cd48adf"
+    },
+    "gMapGroup_IndoorRoute104Prototype": {
+      "count": 2,
+      "sha256": "13e99fd6abda48a833ba3f17a93ae372909b9598d8d188c06c8830064868aaea"
+    },
+    "gMapGroup_IndoorRoute109": {
+      "count": 1,
+      "sha256": "abc778663ff9036e6b03d71d4ba92021e4699dcc6a11aa94fe2b81c3ea7a8f4d"
+    },
+    "gMapGroup_IndoorRoute110": {
+      "count": 13,
+      "sha256": "2885c6b5cc648c0e44a06668ff1a08c55d32f937ea151e81a3d4e62b5ec28636"
+    },
+    "gMapGroup_IndoorRoute113": {
+      "count": 1,
+      "sha256": "f358fdbb9f6ce96059bfb8172cd9b41df6a11a5ebd252c204cc081a6aa5895d4"
+    },
+    "gMapGroup_IndoorRoute123": {
+      "count": 1,
+      "sha256": "689ef26a3c9abb8a439f41c79f9f6c769d3463e01112154583ff2bb60916cbc2"
+    },
+    "gMapGroup_IndoorRoute119": {
+      "count": 3,
+      "sha256": "ca5567c8ebd592cd29a058b4068d2cd9a23612765abc02b70f05cd3a0f67dda2"
+    },
+    "gMapGroup_IndoorRoute124": {
+      "count": 1,
+      "sha256": "6c720f980a1921e0628465bd18c38b15b10cfdc442bc116c5d09172b869cdff7"
+    },
+    "gMapGroup_Link_Frlg": {
+      "count": 5,
+      "sha256": "03fc5a88349024b71f45e5389fc5eba7ab8f99e52add6509beef09cad5858162"
+    },
+    "gMapGroup_Dungeons_Frlg": {
+      "count": 123,
+      "sha256": "da082668fe7b88b79d0f24a901e16da607a083b62986d3e779f7211fb738b1f3"
+    },
+    "gMapGroup_SpecialArea_Frlg": {
+      "count": 60,
+      "sha256": "f3092b6109a4376b5b2b4e02d0aac1ad04c2496c4fa35712493e4d11b0962369"
+    },
+    "gMapGroup_TownsAndRoutes_Frlg": {
+      "count": 62,
+      "sha256": "bed352c744aa557d0ae1ab032437756ecd4b03c231b824c341ccc562c04d9e7b"
+    },
+    "gMapGroup_IndoorPallet_Frlg": {
+      "count": 4,
+      "sha256": "b183f6dae53865639748c2fefc92e23053615c2b8fdc24c2428187647bb8a563"
+    },
+    "gMapGroup_IndoorViridian_Frlg": {
+      "count": 6,
+      "sha256": "ed08d529d09ae4a8823333dcf8b74efdf344c9f345183b3f853258f21020bb9f"
+    },
+    "gMapGroup_IndoorPewter_Frlg": {
+      "count": 8,
+      "sha256": "7c91415e0f2663071de1c61007f7e389986b88e3ebf71ea9f57806f32f4c7370"
+    },
+    "gMapGroup_IndoorCerulean_Frlg": {
+      "count": 10,
+      "sha256": "2d212cbad22093ab37f91f7a887022781bcc17c44bd0ba8a3ee16ea1af4d5f2c"
+    },
+    "gMapGroup_IndoorLavender_Frlg": {
+      "count": 6,
+      "sha256": "27628d58d16353ffe2a979724dc088b30ded92e1c3839b2740dcdcf6159af223"
+    },
+    "gMapGroup_IndoorVermilion_Frlg": {
+      "count": 8,
+      "sha256": "dd70777918276ef8e0f28a70a56a51ca8f8f1e24cdad85183efb1e3565e7f216"
+    },
+    "gMapGroup_IndoorCeladon_Frlg": {
+      "count": 20,
+      "sha256": "5b890d96f23b361d5d50e9d6b45573924af13316a35db3bc623b7dd7ddcf0a48"
+    },
+    "gMapGroup_IndoorFuchsia_Frlg": {
+      "count": 10,
+      "sha256": "a8001f320970d7be1cedcfa5f922823b66d439cfd5af820ca16219e50beb08c7"
+    },
+    "gMapGroup_IndoorCinnabar_Frlg": {
+      "count": 8,
+      "sha256": "34577b118eff16053447381af5c66266d10fa18b0364a81dccd1453fb9c9abdf"
+    },
+    "gMapGroup_IndoorIndigoPlateau_Frlg": {
+      "count": 2,
+      "sha256": "7a876666bebd9296e01eb447a1fe21e6fad15390356e807ecdb1299fb11cfbb7"
+    },
+    "gMapGroup_IndoorSaffron_Frlg": {
+      "count": 10,
+      "sha256": "332cffe758a136cd2744fabcde10c92eef338fe5289d5cd806573c7ecdbc1e6b"
+    },
+    "gMapGroup_IndoorRoute2_Frlg": {
+      "count": 4,
+      "sha256": "424dde9e87a615e80f6d821299644fbc042bacd07bacc9db2d7d0f8ab1a6ff46"
+    },
+    "gMapGroup_IndoorRoute4_Frlg": {
+      "count": 2,
+      "sha256": "0d7a99e975ff25abb5473e0033368f821a782ab8043b25d95210ff0c525c1ae0"
+    },
+    "gMapGroup_IndoorRoute5_Frlg": {
+      "count": 2,
+      "sha256": "6da55b547fade592f50e2d48f3c1056c59c54207ddb892f9360f227d2733e6f7"
+    },
+    "gMapGroup_IndoorRoute6_Frlg": {
+      "count": 1,
+      "sha256": "d77fe97276450856c284b5534c296bc321ab80a77f4eac90bada8b93143408c7"
+    },
+    "gMapGroup_IndoorRoute7_Frlg": {
+      "count": 1,
+      "sha256": "489ea16066613b9f88d403dee08dafea57ee2f58dade4202a0389c39715bc50c"
+    },
+    "gMapGroup_IndoorRoute8_Frlg": {
+      "count": 1,
+      "sha256": "3079e8572ebdfeecf597213ccf06b5103e1c211edfc22b8e46cd6d30ecbb2ab5"
+    },
+    "gMapGroup_IndoorRoute10_Frlg": {
+      "count": 2,
+      "sha256": "63cecb02a039c9e02510e17b2d632c0925b855f832ba45a06e12b794802405cc"
+    },
+    "gMapGroup_IndoorRoute11_Frlg": {
+      "count": 2,
+      "sha256": "8844bb68678900b1555dae87eb1e44a9bdf56caa2da9802b71c305a657203982"
+    },
+    "gMapGroup_IndoorRoute12_Frlg": {
+      "count": 3,
+      "sha256": "79ca7889be3c21998ebc27c2b014dda5c1c5ab834a2cc798ecc5e995ca154ade"
+    },
+    "gMapGroup_IndoorRoute15_Frlg": {
+      "count": 2,
+      "sha256": "1fd1d70b643f5f2752a0b56ed4fb187220f32841c761c6702f2b422f88a72c90"
+    },
+    "gMapGroup_IndoorRoute16_Frlg": {
+      "count": 3,
+      "sha256": "b5709a887fe7c2abf70a8771df66817f821a9e6887270a962b3c21816a3d02e5"
+    },
+    "gMapGroup_IndoorRoute18_Frlg": {
+      "count": 2,
+      "sha256": "9bd4cab29adb68b5e95682df2c4604707dce917cdf9b7e001d2bb35c4ad9501b"
+    },
+    "gMapGroup_IndoorRoute22_Frlg": {
+      "count": 1,
+      "sha256": "a4d07d32ec5ef0607965e82f3efb72f6655b416e357686529bb04e419f921533"
+    },
+    "gMapGroup_IndoorRoute25_Frlg": {
+      "count": 1,
+      "sha256": "d1fb354521c3088422fa548631d57f84c267b11c2ca54885fe484a869f672fdb"
+    },
+    "gMapGroup_IndoorSevenIsland_Frlg": {
+      "count": 6,
+      "sha256": "8f0209a0c696fd0bb0682a91ba83d99268448e145cfc12c5f75ae000dd3a73da"
+    },
+    "gMapGroup_IndoorOneIsland_Frlg": {
+      "count": 5,
+      "sha256": "1d65d5127eee94d9bf524061487dd01766097e1350e850c141c8d60760b90798"
+    },
+    "gMapGroup_IndoorTwoIsland_Frlg": {
+      "count": 5,
+      "sha256": "eb18105c508d883c386eeff67a5cb46b1cd8e32440de0a940a6eda80bf6b214c"
+    },
+    "gMapGroup_IndoorThreeIsland_Frlg": {
+      "count": 8,
+      "sha256": "b16bec2b08b7ad5c95579d5e054f6cf04648999e8215b5d73f06b4f9de474e1e"
+    },
+    "gMapGroup_IndoorFourIsland_Frlg": {
+      "count": 8,
+      "sha256": "9e9c36141c12b602f7d729c7af172f657435feffd9502a1f10681b97e490a1bb"
+    },
+    "gMapGroup_IndoorFiveIsland_Frlg": {
+      "count": 5,
+      "sha256": "c6502a79d2ddcdf6b2fc6aa41de2f0356c878063965513a72e1c7abebb5f8c91"
+    },
+    "gMapGroup_IndoorSixIsland_Frlg": {
+      "count": 5,
+      "sha256": "0da82e45afb83f2327d2756b579d6fbf84ee93397b71504fe5b39b41fc15f29b"
+    },
+    "gMapGroup_IndoorThreeIslandRoute_Frlg": {
+      "count": 1,
+      "sha256": "dd25bacac1cacee5fdd59137aa47a6002c749c651af6eefd794c6b6d8cb269e7"
+    },
+    "gMapGroup_IndoorFiveIslandRoute_Frlg": {
+      "count": 1,
+      "sha256": "475d53e2096bcbde0e037b2426aa00068c1d66f84683af341b7ec9afd12aba3d"
+    },
+    "gMapGroup_IndoorTwoIslandRoute_Frlg": {
+      "count": 1,
+      "sha256": "2903aaeb044ac80477c13675aeccc6b1d4384451670490008007a380129b4a5b"
+    },
+    "gMapGroup_IndoorSixIslandRoute_Frlg": {
+      "count": 2,
+      "sha256": "704f5e3dac271f05ee6b6587696dbd1b2739242dbd36915d6640284597a13170"
+    },
+    "gMapGroup_IndoorSevenIslandRoute_Frlg": {
+      "count": 1,
+      "sha256": "0084df357e04d20403a7d2e2d1fe10819911a22cba778cb4f7f364bbed5fbde1"
+    },
+    "gMapGroup_LegendsKanto": {
+      "count": 107,
+      "sha256": "442ee3ce671359c5d626054f85e2578e2ec107dcc4d67f6f2382b1a3c6273fb9"
+    },
+    "gMapGroup_LegendsHoenn": {
+      "count": 1,
+      "sha256": "b0470f8804093bf76b51a697094661b0ff85f024cfb7786203bad9e9497db25a"
+    }
+  },
+  "layout_count": 869,
+  "layouts_sha256": "948c92c3404a1ab188fe7117a81a2bc3b911ed1c4a036f0aec561ab97a2541d1",
+  "routes": {
+    "PetalburgWoods": {
+      "map_json_sha256": "c363959848ad5b3580d0eda0fd1c1b4c1b9144727f68eace5099b5bb2881b12c",
+      "files": {
+        "data/layouts/PetalburgWoods/map.bin": "053fc2e64d7065edaf0bfaa4b7504fef15ad808dc458f8b937cb3a2604495442",
+        "data/maps/PetalburgWoods/scripts.inc": "1108c54edd44f6a9307d6f4a8d0b1bf7168f9a44fa0f61ed51046d8f584d93ba"
+      }
+    },
+    "Route114": {
+      "map_json_sha256": "6b2354879138cd6cccbb11d7426e1952a79480f17149f37ce06e6f8ffff02744",
+      "files": {
+        "data/layouts/Route114/map.bin": "2b2c0d6a1bc47c172448db6a9231522d5716d5272ac827dd0fbd23f9798d88d7",
+        "data/maps/Route114/scripts.inc": "7d18e579f289f81c6a0176420a6b3574ae653535069336e87af2533056f1a53f"
+      }
+    },
+    "Route119": {
+      "map_json_sha256": "8b8d8948fc2b21fc47830618989d6dc786158129167d21fcb3fd62f33c9d93de",
+      "files": {
+        "data/layouts/Route119/map.bin": "f6c948a0fb90925afce408b4bf1742ba56e9e6c95ffb899a348d563d1ba5f47d",
+        "data/maps/Route119/scripts.inc": "8bd515d529b1437729401bc766558bf9671060840a14d629963b809f7be1f803"
+      }
+    }
+  }
+}

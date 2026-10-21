@@ -1,0 +1,40 @@
+{
+  "version": "0.0.68 + unshipped grotto review",
+  "ROM_sha256": "a8785deb5bb56a143a5b515ad702290727b4b04838dde1c8d0d07cbbdb38e7e5",
+  "emulator": "mGBA 0.10.2 native core",
+  "seasonal_scenes": 12,
+  "walking_exit_reentry_and_decline_paths": 3,
+  "setup": "Private callback creates controlled twelve seasonal fixtures; native map renderer, sprites, movement and dialogue are unaltered.",
+  "limits": "Exploration prototype only. Captures, rewards, cooldowns, real-save migration, natural progression and Pizza Boy not implemented/tested here.",
+  "images": {
+    "room-1-season-1-overview.png": "336dcbcc9bd4895282936a26d1a5d02060f09980d9094f6861fc5c106c102026",
+    "room-2-season-0-reentry.png": "89bb1ec3bec6f084ed9eabbe882f31466160d6e4d51de68ab777d030b4f1fe1b",
+    "room-2-season-1-overview.png": "a72b4fec07834a86fa0fed0ce3b399053c71d9e73b4f992cc4e43e9445e45df6",
+    "room-1-season-0-exit.png": "b9ffa78598b1ab671cb9d95ded6bd8ca49f479f514f72ee0eee50439a948b210",
+    "room-1-season-0-entrance.png": "8c7a00322cde98862af2fd8160de78229010b7c5f207f51c8811433783bb9a77",
+    "room-0-season-0-visitor.png": "609cfe51373482d244fac51d907b653102e028e948cb4066b5080506e43bdf35",
+    "room-2-season-0-overview.png": "39699a9379c895c1f035f16168af266fc63dc5dcfa20af1e32ee7947d21888b4",
+    "room-0-season-1-overview.png": "77614677d69b003f4a2458058582bba2354175f221737ed67e58ff50963b046e",
+    "room-2-season-0-visitor.png": "580e6bfe0bf13ac37b3a0a156ea82c860ddfc8392925abc623f8beef8abf2f1f",
+    "room-1-season-0-visitor.png": "8cd138d0b9a8cc72f4efd9eed548429f60940031b620c26e28150915bae5ab47",
+    "room-1-season-0-reentry.png": "7cbf9cb1c43381c06389a581e81fb667ad6bd7f10f258ad0c5516a99b736856d",
+    "room-2-season-2-overview.png": "d54a054e62f41a48e8f7ed875602a1d9981a07ae38fe045f3f42df88e7694467",
+    "room-0-season-0-exit.png": "e6e0e51386abd08aed5e052f9793c6af6ca4966576d592e80224f7ae873a0b80",
+    "room-2-season-0-entrance.png": "9a8b7cdf78132b110daf4db8c37fe3fb93b8db9931f6315315c72b871906ece7",
+    "room-2-season-3-overview.png": "83d2f3ce38995d6f918917ebdad1065d67a7adf0d3e52e2a479c3aa51405fef6",
+    "room-0-season-0-overview.png": "171ae15da03d90f6dead7da6ec4c0f1636829ae1f9ce1b951dc987e1aebf04db",
+    "room-1-season-2-overview.png": "b1f9c3e1d4d1952cc348ea975fb1150db4380a8cb58c8e890cb9cc08c9e40c76",
+    "room-2-season-0-exit.png": "71ea1dad25fb9e3effe36ee22677d03a7a4ed12e65ab1ba930f7813376320c3f",
+    "room-0-season-3-overview.png": "e12556d7af1ceaeb1bff8f8398dd406a05bd1bf515f6b747610e883f28df62d1",
+    "room-1-season-0-overview.png": "83fca6df544d78b523285663b6facc843417b8af5aecc0d0ce693719b447ca63",
+    "room-0-season-0-reentry.png": "61de25f9ad7c7b855b373c3ab2c157c06a3f711b4dddf268c1c74e9a52970e2d",
+    "room-1-season-3-overview.png": "fe3f5a86b11359876705270201d587172262e1eeb156d2c0cc2dc65b40fa4f3a",
+    "room-0-season-2-overview.png": "488e6109e9b98c0daeef5fa138b83e2679954e18c8281b6a4fc47d89c5d9ac1a",
+    "room-0-season-0-entrance.png": "03be18734c9e52e00842c07e6dd50fbc975333dc3dc2395ae3a55235e9c83c33"
+  },
+  "builds": {
+    "Debug": "a8785deb5bb56a143a5b515ad702290727b4b04838dde1c8d0d07cbbdb38e7e5",
+    "Release": "80d3e53008cb49f10679d912db7dd78cf726d9a26c4eed2b165c0239a5154d5b"
+  },
+  "scope": "Unshipped exploration review only; no BPS or public release generated."
+}

@@ -1,5 +1,15 @@
 # Development handoff
 
+## Hidden grottos — unshipped first review (20 October 2026)
+
+**Model: GPT-6 (Codex) | Reasoning: make the selected concept concrete in native maps, preserve the published baseline and isolate unfinished gameplay until owner review.**
+
+Owner authorized starting hidden grottos and explicitly requested the idea and previews. Added a draft exploration prototype on v0.0.68: Leafshade Hollow (southern Petalburg Woods), Stillwater Nook (Route 114) and Rainroot Hollow (lower Route 119). Appended maps/layouts without renumbering published IDs; added only three background entrance interactions to existing routes. Native yes/no entry, walking return, twelve committed-season visitors with cry/dialogue, environmental clues and inspectable item placeholders work. Existing map pixels/scripts, bedroom approval and rejected visual proposals are untouched. The proposed finished loop is one optional capture plus a small item, with a 1,024-step refresh after clearing; this rule and roster/levels are **unapproved proposals**, not implemented rewards or saved progress.
+
+Local Debug and Release compiled. Native mGBA 0.10.2 passed twelve seasonal scenes, actual sprite identity/season/floor checks, visitor dialogue, all three walking exits, entrance declines and reentries. The native Quickstart smoke passed. Geometry/append-only ID checks and existing season, 84-table encounter and Kanto-script regressions passed. Phone preview sheet, season GIF, original frames, ROM hashes and reproducible harness are retained in [review evidence](qa/hidden-grottos-review.md). QA scene setup is privately instrumented; it is not a natural full playthrough or Pizza Boy proof.
+
+**Do not merge or publish before the owner's visual/concept review.** VERSION, all release changelogs, public site, wiki and BPS downloads remain v0.0.68. No claim/cooldown fields or native var allocations were added; new maps are appended, and existing saves retain all original map meanings. After review, implement and test stable persistent contents, capture/outcome/storage handling, item/full-Bag retries, refresh/save/Continue behavior and final release/wiki parity. No new durable AGENTS.md rule was necessary. [Concept and explicit prototype limits](features/hidden-grottos-review.md).
+
 ## Current release — v0.0.68 bedroom-only (20 October 2026)
 
 **Model: GPT-6 (Codex) | Reasoning: apply explicit owner rejection, retain only the accepted native palette repair.**

@@ -505,6 +505,14 @@
       "elevation": 3,
       "item": "ITEM_REVIVE",
       "flag": "FLAG_HIDDEN_ITEM_ROUTE_114_REVIVE"
+    },
+    {
+      "type": "sign",
+      "x": 14,
+      "y": 40,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "LegendsGrotto_EnterStillwater"
     }
   ]
 }

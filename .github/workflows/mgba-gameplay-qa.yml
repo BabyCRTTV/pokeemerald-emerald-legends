@@ -10,6 +10,7 @@ on:
       - 'tools/legends/native_living_hoenn_qa/**'
       - 'tools/legends/native_seasonal_encounters_qa/**'
       - 'tools/legends/native_visual_repairs_qa/**'
+      - 'tools/legends/native_grotto_review/**'
       - 'src/**'
       - 'include/**'
       - 'data/**'
@@ -25,6 +26,7 @@ on:
       - 'tools/legends/native_living_hoenn_qa/**'
       - 'tools/legends/native_seasonal_encounters_qa/**'
       - 'tools/legends/native_visual_repairs_qa/**'
+      - 'tools/legends/native_grotto_review/**'
       - 'src/**'
       - 'include/**'
       - 'data/**'
@@ -51,6 +53,8 @@ jobs:
         run: make -j"$(nproc)"
       - name: Execute native mGBA Quickstart and capture live gameplay
         run: python3 test/mgba-gameplay-smoke.py
+      - name: Exercise unshipped grotto review maps and seasonal visitors
+        run: python3 tools/legends/native_grotto_review/run.py
       - name: Exercise research notes, bulletin and town dialogue branches
         run: python3 tools/legends/native_living_hoenn_qa/run.py
       - name: Exercise seasonal encounter trial and native DexNav silhouettes
@@ -70,6 +74,9 @@ jobs:
             build/legends-mgba-preview/*.png
             build/legends-mgba-preview/*.json
             build/legends-mgba-preview/*.log
+            build/grotto-review/*.png
+            build/grotto-review/*.json
+            build/grotto-review/*.log
             build/living-hoenn-qa/*.png
             build/living-hoenn-qa/*.json
             build/living-hoenn-qa/*.log

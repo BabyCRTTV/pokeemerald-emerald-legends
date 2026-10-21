@@ -932,6 +932,14 @@
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
       "script": "Route119_EventScript_TrainerTipsDecoration"
+    },
+    {
+      "type": "sign",
+      "x": 27,
+      "y": 105,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "LegendsGrotto_EnterRainroot"
     }
   ]
 }

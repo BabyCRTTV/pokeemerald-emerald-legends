@@ -10496,6 +10496,39 @@
       "blockdata_filepath": "data/layouts/Route21_South_Frlg/map.bin",
       "layout_version": "emerald",
       "tileset_format": "frlg"
+    },
+    {
+      "id": "LAYOUT_LEGENDS_GROTTO_LEAFSHADE",
+      "name": "LegendsGrotto_Leafshade_Layout",
+      "width": 22,
+      "height": 20,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Rustboro",
+      "border_filepath": "data/layouts/LegendsGrotto_Leafshade/border.bin",
+      "blockdata_filepath": "data/layouts/LegendsGrotto_Leafshade/map.bin",
+      "layout_version": "emerald"
+    },
+    {
+      "id": "LAYOUT_LEGENDS_GROTTO_STILLWATER",
+      "name": "LegendsGrotto_Stillwater_Layout",
+      "width": 22,
+      "height": 20,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Cave",
+      "border_filepath": "data/layouts/LegendsGrotto_Stillwater/border.bin",
+      "blockdata_filepath": "data/layouts/LegendsGrotto_Stillwater/map.bin",
+      "layout_version": "emerald"
+    },
+    {
+      "id": "LAYOUT_LEGENDS_GROTTO_RAINROOT",
+      "name": "LegendsGrotto_Rainroot_Layout",
+      "width": 22,
+      "height": 20,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Fortree",
+      "border_filepath": "data/layouts/LegendsGrotto_Rainroot/border.bin",
+      "blockdata_filepath": "data/layouts/LegendsGrotto_Rainroot/map.bin",
+      "layout_version": "emerald"
     }
   ]
 }

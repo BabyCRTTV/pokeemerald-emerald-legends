@@ -1273,6 +1273,9 @@
     "LegendsKanto_Route21_South"
   ],
   "gMapGroup_LegendsHoenn": [
-    "LegendsHoenn_ContinentalVault"
+    "LegendsHoenn_ContinentalVault",
+    "LegendsGrotto_Leafshade",
+    "LegendsGrotto_Stillwater",
+    "LegendsGrotto_Rainroot"
   ]
 }
