@@ -10,6 +10,8 @@ Local Debug and Release compiled. Native mGBA 0.10.2 passed twelve seasonal scen
 
 **Do not merge or publish before the owner's visual/concept review.** VERSION, all release changelogs, public site, wiki and BPS downloads remain v0.0.68. No claim/cooldown fields or native var allocations were added; new maps are appended, and existing saves retain all original map meanings. After review, implement and test stable persistent contents, capture/outcome/storage handling, item/full-Bag retries, refresh/save/Continue behavior and final release/wiki parity. No new durable AGENTS.md rule was necessary. [Concept and explicit prototype limits](features/hidden-grottos-review.md).
 
+Draft [PR #87](https://github.com/BabyCRTTV/pokeemerald-emerald-legends/pull/87) preserves source and exact native review frames at `0657b0d4`. All 62 uploaded blobs matched local Git object hashes. Initial CI project **39523403636**, native **39523403622** and build/BPS **39523403677** were running at the review handoff; do not report their outcomes as passed until checked. The local results above are complete. Owner review remains pending; master and published downloads are unchanged.
+
 ## Current release — v0.0.68 bedroom-only (20 October 2026)
 
 **Model: GPT-6 (Codex) | Reasoning: apply explicit owner rejection, retain only the accepted native palette repair.**
