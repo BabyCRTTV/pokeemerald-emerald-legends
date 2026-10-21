@@ -1,5 +1,13 @@
 # Development handoff
 
+## Approved v0.0.69 publication — in progress (21 October 2026)
+
+**Model: GPT-6 (Codex) | Reasoning: apply explicit owner approval, synchronize release metadata and verify the actual published patches before claiming completion.**
+
+Owner: “Ok, please publish. Approved.” Implementation `6b200593e15db7a643de247eb4bbb2fba79efa3c` passed project, wiki, native mGBA, candidate Release/Debug patch verification and companion workflows; labels were skipped. Prepared v0.0.69 labels, all three changelogs, README, site and browser patcher. No new gameplay, art or save changes were added. Existing [native/save evidence and limits](qa/grotto-encounters.md) apply. AGENTS.md was reviewed; no new durable policy was needed.
+
+Publication remains in progress: verify versioned candidate checks, merge PR #87, allow automatic Release/Debug patch publication and Pages deployment, promote the matching wiki supplement and verify the actual live files. This entry does not assert that publication finished. The previous interrupted metadata upload did not advance the branch; resume uses the verified live 6b200593 source.
+
 ## Rare grotto encounters and LegendsDex polish (21 October 2026)
 
 **Model: GPT-6 (Codex) | Reasoning: preserve approved scenery, isolate append-only state and verify actual battle/flash/Continue paths.**

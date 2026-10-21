@@ -1,6 +1,6 @@
 # Pokémon Emerald: Legends
 
-**Version:** 0.0.68<br>
+**Version:** 0.0.69<br>
 **Base:** [pokeemerald-expansion](https://github.com/rh-hideout/pokeemerald-expansion)
 
 Pokémon Emerald: Legends is an unofficial, non-commercial Pokémon Emerald ROM-hack project built on the open-source `pokeemerald-expansion` decompilation/expansion base.
@@ -8,6 +8,8 @@ Pokémon Emerald: Legends is an unofficial, non-commercial Pokémon Emerald ROM-
 The project is intended to preserve the feel and structure of Pokémon Emerald while layering in modern quality-of-life improvements, configurable mechanics, expanded systems, and new features developed incrementally.
 
 The New Game / Continue / Options menu uses a soft lavender backdrop as of v0.0.13.1. v0.0.54 displays the current version at the right edge of its OPTION card, matching the native text; Debug includes the -D suffix.
+
+v0.0.69 added hidden grottos in Petalburg Woods, Route 114 and Route 119, rare seasonal visitors and independent 4,500-step renewal after capture or defeat. [Locations and rules](docs/features/hidden-grottos.md).
 
 v0.0.68 restored the native black surround in both trainer bedrooms while preserving furniture, rugs, beds and ceiling trim. Rare outfit oversaturation remains under investigation.
 

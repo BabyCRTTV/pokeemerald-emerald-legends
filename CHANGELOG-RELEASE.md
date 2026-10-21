@@ -2,6 +2,14 @@
 
 This is the player-facing history for the recommended **Release** build. Shared Legends changes are repeated here so this file stands on its own; Release-only behavior is called out separately.
 
+## [0.0.69] - 2026-10-21
+
+- Added hidden grottos in Petalburg Woods, Route 114 and Route 119, with compact interiors, clues and reachable entrances.
+- Added rare seasonal visitors and real capture battles; capture or defeat started each grotto’s independent 4,500-step renewal, while other outcomes preserved its visitor.
+- Preserved older Legends saves with isolated appended grotto data and verified native flash loading and Release Continue.
+- Matched the cliff above Route 119’s grotto to the neighboring rock and retained the approved recessed entrance and scenery.
+- Added the LegendsDex Grotto filter, shortened Sevii and removed the Updated on request tag.
+
 ## [0.0.68] - 2026-10-20
 
 - Restored the native black surround in both trainer bedrooms by isolating its palette from decoration colors.
