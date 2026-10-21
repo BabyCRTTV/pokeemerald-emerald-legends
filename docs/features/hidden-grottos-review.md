@@ -1,6 +1,6 @@
 # Hidden grottos — exploration review
 
-Status: **unshipped exploration prototype, third, compact interior review**, based on v0.0.68. Owner requested another cleanup and smaller grotto interiors after the discovery review. Layouts, names, roster and renewal rules remain proposals pending review.
+Status: **visuals approved, unshipped exploration prototype**, based on v0.0.68. The owner approved the compact interiors, all three exteriors and the final smoothed custom cliff recess on 21 October 2026. Preserve these looks. Capture/reward/persistent-renewal gameplay and its balance remain unfinished proposals. [Approved inside/outside views](../designs/hidden-grottos/approved-overview/Emerald-Legends-Grottos-Inside-Outside.png).
 
 Three small, optional shelters reward inspecting the edges of familiar routes. A vine-framed trunk, a tall rock crevice and a gap in the undergrowth provide visible clues. Each entrance asks before entering; walking back through the mouth returns to the original approach. Native Hoenn scenery and species sprites surround a custom cliff recess drawn in the existing rock palette. Twelve bounded route cells show the openings; existing route events, warps and story scripts retain their meanings.
 

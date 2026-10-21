@@ -1,5 +1,15 @@
 # Development handoff
 
+## Grotto visuals explicitly approved; location gallery (21 October 2026)
+
+**Model: GPT-6 (Codex) | Reasoning: record owner approval and show the exact current locations/visuals without changing gameplay or approved art.**
+
+Owner: “Excellent work, approved.” This approves the final smoothed custom cliff recess and the current grotto visuals; preserve all three interiors, entrances and working landing. Locations verified in current source: Leafshade in southern Petalburg Woods beside the lower Trainer Tips sign (interaction `(12–13,31)`, approach `(13,32)`); Stillwater on Route 114 southwest of Lanette's house (mouth `(13,40)`, landing `(14,40)`, face west); Rainroot on lower Route 119 northwest of the small house (interaction `(27,105)`, approach `(27,106)`, face north).
+
+Created [paired exterior/interior gallery](designs/hidden-grottos/approved-overview/Emerald-Legends-Grottos-Inside-Outside.png) and individual phone views from the six current native Spring captures. Verified every input frame hash against the native receipt and its ROM hash against the current compiled Debug ROM. Labels sit outside exact 2× nearest-neighbor gameplay pixels. No game source/art changed and no new builds or emulator runs were necessary for this presentation-only step. [Visual approval, exact map/asset hashes and capture provenance](designs/hidden-grottos/approved-overview/approval-and-capture-receipt.json).
+
+Draft PR #87 remains an unshipped exploration prototype; visual approval is recorded, while captures/rewards/stable refresh state and eventual release gates remain unfinished. This request asks for locations and another look, not publication of incomplete gameplay. VERSION/BPS/wiki/site remain unchanged. Existing native test limits apply. No new durable AGENTS.md policy was necessary.
+
 ## Smoother custom cliff contour (21 October 2026)
 
 **Model: GPT-6 (Codex) | Reasoning: keep the accepted recess and improve pixel cadence along its bend without touching access or surrounding scenery.**

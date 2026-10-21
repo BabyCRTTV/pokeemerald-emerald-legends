@@ -1,0 +1,81 @@
+{
+  "approval": "Owner: Excellent work, approved.",
+  "date": "2026-10-21",
+  "source_commit": "ecd005983f4d8835da6b93b7d430a7331831a870",
+  "ROM_sha256": "9432e2ce502694e72c0ed86d742ac8562d81bcb2b8fe1b60dfaad75d895a1c19",
+  "emulator": "mGBA 0.10.2 native core",
+  "capture_setup": "Private callback creates controlled twelve seasonal fixtures; native map renderer, sprites, movement and dialogue are unaltered.",
+  "presentation": "Exact current native Spring frames, labels outside gameplay, nearest-neighbor 2\u00d7 enlargement",
+  "images": {
+    "room-0-season-0-exit.png": "c3a70bf69eec511c210ff95faefe8f20aa59ef8f582114b79005683e00ab825e",
+    "room-0-season-0-overview.png": "aa2c84e385790e5b840f24e1f60dba10982f389df4a14a7402ba5f82a8e23502",
+    "room-1-season-0-exit.png": "d71ca5f27ee24d24381b7c90ef92c570b992c7197dbff5c24f57eb9afeca2421",
+    "room-1-season-0-overview.png": "5a6771661db5809b7e04422d4f1aa7a4f1ffc16654b38bc8aba1aea9ae34fabe",
+    "room-2-season-0-exit.png": "87d7ee8815e131827f2decededdf2c0fba90cb80faa072b1e5006bb842a161d9",
+    "room-2-season-0-overview.png": "49bebaa48948c853b41f6e2d1501aa739893e4aa3aa5ec78287ec5943a8ea0b6"
+  },
+  "status": "Visuals approved. Exploration prototype remains unshipped; capture/reward/refresh persistence is unfinished.",
+  "approved_visual_sha256": {
+    "data/layouts/LegendsGrotto_Leafshade/map.bin": "8cde7af812c122b84a7149b870684e7e863da5c71061c7a3a16b15865b248d11",
+    "data/layouts/LegendsGrotto_Stillwater/map.bin": "48516533ff46102f1c2a3dc71db2954a67879cd993a311d0257b40fe1843e72f",
+    "data/layouts/LegendsGrotto_Rainroot/map.bin": "37df7f56643a228d064ddb19d5216582e5d6cbaa161cea2851ca834f519b42af",
+    "data/layouts/PetalburgWoods/map.bin": "c5c556e9cc031f3a6b8916473c48a2cae8306585e19998c74a9c3e1e74b9d9de",
+    "data/layouts/Route114/map.bin": "27787c9430e286cdaaf336738812c14fd8fc137565d09b54faea8c709b4d462b",
+    "data/layouts/Route119/map.bin": "5968bc3c8405aa7155641b58f7e138c948c344c98a46e0b8385aa7af7aefc210",
+    "data/tilesets/legends_grotto/cliff_recess_overlay.png": "2db0a3b371cf45020bf6fa7eb2054161c1c5c3022bed69242bb7e75abadd1d8e",
+    "data/tilesets/legends_grotto/fallarbor_cliff_tiles.png": "fa6c63f67fd1462f7293922d23bc1c07263762b6d566f167393d858afd38185a",
+    "data/tilesets/legends_grotto/fallarbor_cliff_metatiles.bin": "5c738bf97664c71801436fb60e5b3eb9f9a6928fa22b1c2b4e02997ca6b34486",
+    "data/tilesets/legends_grotto/fallarbor_cliff_attributes.bin": "1cd7372c3fa86cf0596feee22a84444664806a7236aef996b3dd1988165b6226"
+  },
+  "entrances": [
+    {
+      "name": "Leafshade Hollow",
+      "map": "PetalburgWoods",
+      "interaction_cells": [
+        [
+          12,
+          31
+        ],
+        [
+          13,
+          31
+        ]
+      ],
+      "approach": [
+        13,
+        32
+      ],
+      "landmark": "Vine-framed trunk beside the lower Trainer Tips sign"
+    },
+    {
+      "name": "Stillwater Nook",
+      "map": "Route114",
+      "interaction_cells": [
+        [
+          13,
+          40
+        ]
+      ],
+      "approach": [
+        14,
+        40
+      ],
+      "landmark": "Cliff recess southwest of Lanette\u2019s house"
+    },
+    {
+      "name": "Rainroot Hollow",
+      "map": "Route119",
+      "interaction_cells": [
+        [
+          27,
+          105
+        ]
+      ],
+      "approach": [
+        27,
+        106
+      ],
+      "landmark": "Undergrowth northwest of the small house at the southern end"
+    }
+  ]
+}
