@@ -39,6 +39,22 @@
   "sourceScope": "Only the six unshipped Wyrmtide maps and sibling tileset; published map IDs, quest state and original artwork unchanged.",
   "nativeArt": "Exact General 0xAF stone-step pixels/flips use the existing Cave palette 6; appended ordinary and warp treads at 0x39F/0x39E. No pixel or palette files edited.",
   "gallery_sha256": "30b557b66c4e94421dba9d1b9727f04b47244ab1ba0ee8741cac858b13c7929a",
-  "releaseBuild": "in progress",
-  "patchVerification": "pending candidate CI"
+  "releaseBuild": {
+    "passed": true,
+    "ROM_sha256": "4c9856f7a6819176ea042267f18654a62250770facca03ad96e561ef2fa97ad4",
+    "EWRAM_bytes": 255132,
+    "ROM_used_bytes": 30914128
+  },
+  "patchVerification": "pending candidate CI",
+  "sourceCommit": "a6db6a7d33589c50f64067336ee194a5199e1591",
+  "candidateWorkflows": {
+    "project": 39694370477,
+    "native": 39694370864,
+    "patches": 39694370606,
+    "status": "in progress at review checkpoint; no publication"
+  },
+  "quickstart": {
+    "passed": true,
+    "log_sha256": "3725e1de8c21f16ecd66292760587cf35ae0ed18dae4cf0e90dcdf16f4abfa50"
+  }
 }
