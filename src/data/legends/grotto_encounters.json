@@ -18,89 +18,137 @@
         "spring": [
           {
             "species": "RIOLU",
-            "weight": 30
+            "weight": 22
           },
           {
             "species": "RALTS",
-            "weight": 25
+            "weight": 18
           },
           {
             "species": "EEVEE",
-            "weight": 20
+            "weight": 16
           },
           {
             "species": "ZORUA",
-            "weight": 15
+            "weight": 12
           },
           {
             "species": "BULBASAUR",
             "weight": 10
+          },
+          {
+            "species": "HATENNA",
+            "weight": 9
+          },
+          {
+            "species": "CUTIEFLY",
+            "weight": 7
+          },
+          {
+            "species": "SPRIGATITO",
+            "weight": 6
           }
         ],
         "summer": [
           {
             "species": "LARVESTA",
-            "weight": 30
+            "weight": 22
           },
           {
             "species": "FENNEKIN",
-            "weight": 25
+            "weight": 18
           },
           {
             "species": "EEVEE",
-            "weight": 20
+            "weight": 16
           },
           {
             "species": "ZORUA",
-            "weight": 15
+            "weight": 12
           },
           {
             "species": "SNIVY",
             "weight": 10
+          },
+          {
+            "species": "PONYTA",
+            "weight": 9
+          },
+          {
+            "species": "MORELULL",
+            "weight": 7
+          },
+          {
+            "species": "SCORBUNNY",
+            "weight": 6
           }
         ],
         "autumn": [
           {
             "species": "ZORUA",
-            "weight": 30
+            "weight": 22
           },
           {
             "species": "PHANTUMP",
-            "weight": 25
+            "weight": 18
           },
           {
             "species": "EEVEE",
-            "weight": 20
+            "weight": 16
           },
           {
             "species": "RIOLU",
-            "weight": 15
+            "weight": 12
           },
           {
             "species": "CHESPIN",
             "weight": 10
+          },
+          {
+            "species": "IMPIDIMP",
+            "weight": 9
+          },
+          {
+            "species": "SINISTEA",
+            "weight": 7
+          },
+          {
+            "species": "LITTEN",
+            "weight": 6
           }
         ],
         "winter": [
           {
             "species": "VULPIX",
-            "weight": 30
+            "weight": 22
           },
           {
             "species": "SNOM",
-            "weight": 25
+            "weight": 18
           },
           {
             "species": "EEVEE",
-            "weight": 20
+            "weight": 16
           },
           {
             "species": "RIOLU",
-            "weight": 15
+            "weight": 12
           },
           {
             "species": "PIPLUP",
             "weight": 10
+          },
+          {
+            "species": "ESPURR",
+            "weight": 9
+          },
+          {
+            "species": "MILCERY",
+            "weight": 7
+          },
+          {
+            "species": "GROOKEY",
+            "weight": 6
           }
         ]
       }
@@ -118,89 +166,137 @@
         "spring": [
           {
             "species": "GIBLE",
-            "weight": 30
+            "weight": 22
           },
           {
             "species": "CARBINK",
-            "weight": 25
+            "weight": 18
           },
           {
             "species": "BELDUM",
-            "weight": 20
+            "weight": 16
           },
           {
             "species": "DEINO",
-            "weight": 15
+            "weight": 12
           },
           {
             "species": "MUDKIP",
             "weight": 10
+          },
+          {
+            "species": "GLIMMET",
+            "weight": 9
+          },
+          {
+            "species": "TYRUNT",
+            "weight": 7
+          },
+          {
+            "species": "OSHAWOTT",
+            "weight": 6
           }
         ],
         "summer": [
           {
             "species": "AXEW",
-            "weight": 30
+            "weight": 22
           },
           {
             "species": "CHARCADET",
-            "weight": 25
+            "weight": 18
           },
           {
             "species": "BELDUM",
-            "weight": 20
+            "weight": 16
           },
           {
             "species": "DRATINI",
-            "weight": 15
+            "weight": 12
           },
           {
             "species": "TOTODILE",
             "weight": 10
+          },
+          {
+            "species": "TURTONATOR",
+            "weight": 9
+          },
+          {
+            "species": "ROCKRUFF",
+            "weight": 7
+          },
+          {
+            "species": "TORCHIC",
+            "weight": 6
           }
         ],
         "autumn": [
           {
-            "species": "DREEPY",
-            "weight": 30
+            "species": "LARVITAR",
+            "weight": 22
           },
           {
             "species": "SABLEYE",
-            "weight": 25
+            "weight": 18
           },
           {
             "species": "BELDUM",
-            "weight": 20
+            "weight": 16
           },
           {
             "species": "DEINO",
-            "weight": 15
+            "weight": 12
           },
           {
             "species": "FUECOCO",
             "weight": 10
+          },
+          {
+            "species": "HONEDGE",
+            "weight": 9
+          },
+          {
+            "species": "SPIRITOMB",
+            "weight": 7
+          },
+          {
+            "species": "SQUIRTLE",
+            "weight": 6
           }
         ],
         "winter": [
           {
             "species": "FRIGIBAX",
-            "weight": 30
+            "weight": 22
           },
           {
             "species": "AMAURA",
-            "weight": 25
+            "weight": 18
           },
           {
             "species": "BELDUM",
-            "weight": 20
+            "weight": 16
           },
           {
             "species": "GIBLE",
-            "weight": 15
+            "weight": 12
           },
           {
-            "species": "PIPLUP",
+            "species": "TIRTOUGA",
             "weight": 10
+          },
+          {
+            "species": "CRYOGONAL",
+            "weight": 9
+          },
+          {
+            "species": "BERGMITE",
+            "weight": 7
+          },
+          {
+            "species": "CYNDAQUIL",
+            "weight": 6
           }
         ]
       }
@@ -218,89 +314,137 @@
         "spring": [
           {
             "species": "GOOMY",
-            "weight": 30
+            "weight": 22
           },
           {
             "species": "APPLIN",
-            "weight": 25
+            "weight": 18
           },
           {
             "species": "BAGON",
-            "weight": 20
+            "weight": 16
           },
           {
             "species": "DREEPY",
-            "weight": 15
+            "weight": 12
           },
           {
             "species": "CHIKORITA",
             "weight": 10
+          },
+          {
+            "species": "TOXEL",
+            "weight": 9
+          },
+          {
+            "species": "TOGEPI",
+            "weight": 7
+          },
+          {
+            "species": "TREECKO",
+            "weight": 6
           }
         ],
         "summer": [
           {
             "species": "JANGMO_O",
-            "weight": 30
+            "weight": 22
           },
           {
             "species": "DURALUDON",
-            "weight": 25
+            "weight": 18
           },
           {
             "species": "BAGON",
-            "weight": 20
+            "weight": 16
           },
           {
             "species": "GOOMY",
-            "weight": 15
+            "weight": 12
           },
           {
             "species": "FROAKIE",
             "weight": 10
+          },
+          {
+            "species": "DHELMISE",
+            "weight": 9
+          },
+          {
+            "species": "DRAMPA",
+            "weight": 7
+          },
+          {
+            "species": "SOBBLE",
+            "weight": 6
           }
         ],
         "autumn": [
           {
             "species": "DREEPY",
-            "weight": 30
+            "weight": 22
           },
           {
             "species": "MIMIKYU",
-            "weight": 25
+            "weight": 18
           },
           {
             "species": "BAGON",
-            "weight": 20
+            "weight": 16
           },
           {
             "species": "GOOMY",
-            "weight": 15
+            "weight": 12
           },
           {
             "species": "ROWLET",
             "weight": 10
+          },
+          {
+            "species": "ORANGURU",
+            "weight": 9
+          },
+          {
+            "species": "PASSIMIAN",
+            "weight": 7
+          },
+          {
+            "species": "TEPIG",
+            "weight": 6
           }
         ],
         "winter": [
           {
-            "species": "FRIGIBAX",
-            "weight": 30
+            "species": "SKRELP",
+            "weight": 22
           },
           {
             "species": "DURALUDON",
-            "weight": 25
+            "weight": 18
           },
           {
             "species": "BAGON",
-            "weight": 20
+            "weight": 16
           },
           {
-            "species": "DRATINI",
-            "weight": 15
+            "species": "FINIZEN",
+            "weight": 12
           },
           {
             "species": "POPPLIO",
             "weight": 10
+          },
+          {
+            "species": "LAPRAS",
+            "weight": 9
+          },
+          {
+            "species": "EISCUE",
+            "weight": 7
+          },
+          {
+            "species": "QUAXLY",
+            "weight": 6
           }
         ]
       }

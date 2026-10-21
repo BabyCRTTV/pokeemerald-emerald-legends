@@ -1,5 +1,15 @@
 # Development handoff
 
+## v0.0.70 grotto variety — validation in progress (21 October 2026)
+
+**Model: GPT-6 (Codex) | Reasoning: disjoint species ownership across seasons, generated pool width and save identity preservation.**
+
+Owner requested more rare encounters in each grotto with no repeats between grottos. Expanded all twelve seasonal pools from five to eight slots (22/18/16/12/10/9/7/6%); 77 distinct species overall, 40 added. Leafshade owns Piplup; Stillwater owns Dratini and Frigibax; Rainroot owns Dreepy. Replaced their other-room appearances with Larvitar, Tirtouga, Skrelp and Finizen. Seasonal repeats inside one grotto remain intentional. Generator rejects cross-room sharing and derives the engine pool width. Levels, saves, visitor identities, room IDs, all maps/tilesets and capture/defeat-only 4,500-step renewal remain unchanged. Existing active visitors removed from a room's new pool remain valid until resolved, then future visitors use the new pool.
+
+Synced game/Options/site/patcher and all three changelogs for v0.0.70. LegendsDex 1.5.0 includes matching grotto rows/profiles and published supplement provenance; the ordinary v0.0.67 source/atlas pin remains unchanged. Updated profile cache key. Prior v0.0.69 patch and native workflows completed successfully; the earlier wiki promotion was absent remotely, so this update carries the current grotto data directly rather than recovering stale files.
+
+Passed production-C all-roll weighting, 768 outcome cases, disjoint rosters, old off-pool visitor persistence, exact cooldown, canonical/C/wiki agreement; ten protected-geometry tests; compatible sector tests; Options checks and browser patcher/counter tests. Debug compiled. Release/native/browser/patch publication checks are pending; do not claim publication from this checkpoint. AGENTS.md reviewed: no new durable owner rule needed. Broader historical-save/Pizza Boy/full-story limits remain unchanged.
+
 ## Owner Porymap edit protection (21 October 2026)
 
 **Model: GPT-6 (Codex) | Reasoning: retain owner-authored map and tileset changes across sessions.**

@@ -4,6 +4,13 @@ All notable Pokémon Emerald: Legends project changes are documented here.
 
 For build-specific player views, see [CHANGELOG-RELEASE.md](CHANGELOG-RELEASE.md) and [CHANGELOG-DEBUG.md](CHANGELOG-DEBUG.md). The canonical history below records the project as a whole.
 
+## [0.0.70] - 2026-10-21
+
+- Expanded each hidden grotto from five to eight Pokémon per season, with 96 seasonal encounter slots across three grottos.
+- Removed shared species between grottos and added 40 species to the combined roster.
+- Preserved existing saved visitors, encounter levels and independent 4,500-step renewal after capture or defeat.
+- Synchronized LegendsDex grotto rosters, seasons and encounter odds.
+
 ## [0.0.69] - 2026-10-21
 
 - Added hidden grottos in Petalburg Woods, Route 114 and Route 119, with compact interiors, clues and reachable entrances.
