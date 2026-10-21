@@ -1,5 +1,17 @@
 # Development handoff
 
+## v0.0.70 grotto variety — candidate verified, publication pending (21 October 2026)
+
+**Model: GPT-6 (Codex) | Reasoning: disjoint species ownership across seasons, generated pool width and save identity preservation.**
+
+Owner requested more rare encounters in each grotto with no repeats between grottos. Expanded all twelve seasonal pools from five to eight slots (22/18/16/12/10/9/7/6%); 77 distinct species overall, 40 added. Leafshade owns Piplup; Stillwater owns Dratini and Frigibax; Rainroot owns Dreepy. Replaced their other-room appearances with Larvitar, Tirtouga, Skrelp and Finizen. Seasonal repeats inside one grotto remain intentional. Generator rejects cross-room sharing and derives the engine pool width. Levels, saves, visitor identities, room IDs, all maps/tilesets and capture/defeat-only 4,500-step renewal remain unchanged. Existing active visitors removed from a room's new pool remain valid until resolved, then future visitors use the new pool.
+
+Synced game/Options/site/patcher and all three changelogs for v0.0.70. LegendsDex 1.5.0 includes matching grotto rows/profiles and published supplement provenance; the ordinary v0.0.67 source/atlas pin remains unchanged. Updated profile cache key. Prior v0.0.69 patch and native workflows completed successfully; the earlier wiki promotion was absent remotely, so this update carries the current grotto data directly rather than recovering stale files.
+
+Candidate `994a632f0012339c2e11f9cd9331aef51e100dbf` in PR #88 passed project `39613150336`, wiki/browser `39613150355` (retried transient npm ECONNRESET), patch `39613150329`, native mGBA `39613150455` and Android `39613150392`; labels skipped. The metadata gate caught old title/Options labels, fixed in that candidate. Local Debug/Release ROM hashes match both independently decoded candidate patches exactly. Production-C all-roll/outcome checks, old off-pool visitor persistence, canonical/C/wiki agreement, protected geometry, compatible sector tests, Quickstart, real native battles/flash and four Release Continue fixtures passed. Inspected the phone browser screenshot. [Focused receipts and limits](qa/grotto-variety-v0.0.70.json).
+
+This checkpoint adds only QA/handoff and the LegendsDex game-version badge (v0.0.70); game code and tested source are unchanged. Merge PR #88, verify automatic main patch publication/Pages and actual live BPS hashes/LegendsDex before reporting publication. AGENTS.md reviewed: no new durable owner rule needed. Broader historical-save/Pizza Boy/full-story limits remain unchanged.
+
 ## Owner Porymap edit protection (21 October 2026)
 
 **Model: GPT-6 (Codex) | Reasoning: retain owner-authored map and tileset changes across sessions.**

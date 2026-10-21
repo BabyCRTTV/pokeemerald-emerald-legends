@@ -85,7 +85,7 @@ static void Generate(u8 room)
     if (season >= 4) season = 0;
     memset(r, 0, sizeof(*r));
     r->season = season;
-    for (i = 0; i < 5; i++)
+    for (i = 0; i < LEGENDS_GROTTO_POOL_SIZE; i++)
     {
         const struct GrottoEncounter *e = &sGrottoEncounters[room][season][i];
         if (roll < e->weight) { r->species = e->species; break; }

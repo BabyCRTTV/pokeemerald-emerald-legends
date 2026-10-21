@@ -71,15 +71,15 @@ int main(void) {
  for(int i=0;i<716;i++)assert(sb3.legacy[i]==0xA5);
  assert(sizeof(sb3.grottos)==276);
  for(int room=0;room<3;room++)for(int s=0;s<4;s++) {
-  int counts[5]={0};
+  int counts[LEGENDS_GROTTO_POOL_SIZE]={0};
   for(int value=0;value<100;value++) {
    LegendsGrottoInit(TRUE);enter(room,s,value);
    struct LegendsGrottoRoomSave *r=&DATA->rooms[room];
-   int slot=-1;for(int i=0;i<5;i++)if(r->species==sGrottoEncounters[room][s][i].species)slot=i;
+   int slot=-1;for(int i=0;i<LEGENDS_GROTTO_POOL_SIZE;i++)if(r->species==sGrottoEncounters[room][s][i].species)slot=i;
    assert(slot>=0);counts[slot]++;assert(r->level>=sGrottoLevels[room][0]&&r->level<=sGrottoLevels[room][1]);
    assert(gfx==r->species+OBJ_EVENT_MON);
   }
-  for(int i=0;i<5;i++)assert(counts[i]==sGrottoEncounters[room][s][i].weight);
+  for(int i=0;i<LEGENDS_GROTTO_POOL_SIZE;i++)assert(counts[i]==sGrottoEncounters[room][s][i].weight);
  }
  for(int room=0;room<3;room++) {
   LegendsGrottoInit(TRUE);enter(room,0,45);struct LegendsGrottoSave original=*DATA;
@@ -110,6 +110,13 @@ int main(void) {
   playerY=14;LegendsGrottoStep();assert(spawned==1&&DATA->rooms[room].state==1&&before<generated);
   for(int i=0;i<716;i++)assert(sb3.legacy[i]==0xA5);
  }
+ LegendsGrottoInit(TRUE);enter(1,2,0);
+ DATA->rooms[1].species=SPECIES_DREEPY;Sign();
+ struct LegendsGrottoSave oldVisitor=*DATA;int oldGenerated=generated;
+ LegendsGrottoInit(FALSE);LegendsGrottoPrepareVisitor();
+ assert(!memcmp(DATA,&oldVisitor,sizeof(oldVisitor))&&generated==oldGenerated);
+ assert(LegendsGrottoStartBattle());LegendsGrottoFinishBattle(7);
+ assert(LegendsGrottoRemainingSteps(1)==4500);
  LegendsGrottoInit(TRUE);DATA->magic^=1;LegendsGrottoInit(FALSE);assert(Valid());
  DATA->version++;Sign();LegendsGrottoInit(FALSE);assert(Valid()&&DATA->version==1);
  DATA->rooms[0].state=9;Sign();assert(!Valid());LegendsGrottoInit(FALSE);assert(Valid());
@@ -125,7 +132,17 @@ with tempfile.TemporaryDirectory() as d:
 manifest=json.loads((R/'src/data/legends/grotto_encounters.json').read_text())
 wiki=json.loads((R/'docs/wiki/dex-data.json').read_text())
 assert manifest['refreshSteps']==4500 and manifest['refreshAfter']==['caught','defeated']
+expected=[[(e['species'],e['weight']) for e in room['seasons'][season]] for room in manifest['rooms'] for season in ['spring','summer','autumn','winter']]
+actual=[[(sp,int(w)) for sp,w in re.findall(r'\{SPECIES_(\w+), (\d+)\}',line)] for line in table.splitlines() if 'SPECIES_' in line]
+assert actual==expected, 'Generated C encounter slots must match the canonical roster'
+owned=set()
 for room in manifest['rooms']:
+ roster={e['species'] for entries in room['seasons'].values() for e in entries}
+ assert not owned & roster, f'Cross-grotto duplicates: {owned & roster}'
+ owned.update(roster)
+ for entries in room['seasons'].values():
+  assert len(entries)==8 and len({e['species'] for e in entries})==8
+  assert sum(e['weight'] for e in entries)==100
  m=next(m for m in wiki['maps'] if m['id']==room['map']);assert m['region']=='Grotto'
  for variant in m['methods'][0]['seasonalVariants']:
   assert [(e['id'],e['rate'],e['min'],e['max']) for e in variant['entries']]==[(e['species'],e['weight'],*room['levels']) for e in room['seasons'][variant['season']]]

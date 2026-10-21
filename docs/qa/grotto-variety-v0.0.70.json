@@ -1,0 +1,137 @@
+{
+  "model": "GPT-6 (Codex)",
+  "version": "0.0.70",
+  "candidate": "994a632f0012339c2e11f9cd9331aef51e100dbf",
+  "pullRequest": 88,
+  "scope": "Eight choices per season, 96 slots, 77 species, 40 additions; no species shared across grotto rooms. No maps, tilesets, serialized data, room IDs, levels or cooldown rules changed.",
+  "passed": [
+    "Production-C all 1200 room/season/roll combinations and 768 outcome cases",
+    "Old active off-pool visitor survived reinitialization and battle start",
+    "Cross-room uniqueness and exact canonical/C/wiki odds",
+    "Ten protected geometry regressions",
+    "All 28 native save-sector layouts and legacy payload/checksum tests",
+    "Options navigation and version text tests",
+    "Ten browser patcher/download-counter unit tests",
+    "Encounter/profile generation reproduced exact candidate files",
+    "Both Debug and Release native builds",
+    "Native mGBA actual flee/KO/capture and exact 4500-step renewal",
+    "Native flash round-trips and four unmodified Release Continue fixtures",
+    "Unmodified Debug Quickstart smoke",
+    "Full project metadata gate, including final title/Options version labels",
+    "GitHub browser checks: folded/unfolded/desktop reader, seasonal badges and expanded Grotto pools at 360/412/768/1280px",
+    "Candidate Release/Debug BPS independently reapplied to the verified clean Emerald base and decoded with browser engine (GitHub run 39613150329)",
+    "All candidate native mGBA workflow gates including Release Continue (39613150455)"
+  ],
+  "limits": [
+    "Controlled native fixtures are not authentic historical owner saves",
+    "No Pizza Boy or full playthrough",
+    "Local Chromium installation returned truncated archives; browser checks run in GitHub Actions"
+  ],
+  "ROM_sha256": {
+    "pokeemerald.gba": "32d699360f3052d2ee5335d26887d134f0153dc1c5bfd2320d7f49953b18aa19",
+    "pokeemerald-release.gba": "405d8463feb6064d0a4c3112a441ff3f97f9c69daaecefddcd4135c941ba2c17"
+  },
+  "native_grotto": {
+    "version": "0.0.70 + unshipped grotto encounters",
+    "ROM_sha256": "32d699360f3052d2ee5335d26887d134f0153dc1c5bfd2320d7f49953b18aa19",
+    "emulator": "mGBA 0.10.2 native core",
+    "passed": true,
+    "log": "legacy save=1 load=1 prefix=1 party=1 bag/season=1 initialized=1\nPASS legacy and active actual flash round-trip\napproach xy=9,9 script=0\napproach xy=9,9 script=0\napproach xy=9,8 script=0\napproach xy=9,7 script=0\nstate=1 steps=0 identity=241dd37c outcome=0 battle=1 script=0 party=1 hidden=0 caught=0\npp=20 battlefunc=8086659 controller=805c865\nstate=1 steps=0 identity=241dd37c outcome=4 battle=0 script=0 party=1 hidden=0 caught=0\npp=20 battlefunc=8082611 controller=8059941\nPASS actual escape retains visitor\napproach xy=9,9 script=0\napproach xy=9,9 script=0\napproach xy=9,8 script=0\napproach xy=9,7 script=0\nstate=1 steps=0 identity=2ac35e17 outcome=0 battle=1 script=0 party=1 hidden=0 caught=0\npp=20 battlefunc=8086659 controller=805c865\nstate=2 steps=4500 identity=c1b82605 outcome=1 battle=0 script=0 party=1 hidden=1 caught=0\npp=19 battlefunc=8082611 controller=8059941\nPASS actual KO starts cooldown and removes visitor\nstate=2 steps=4499 identity=c1b82605 outcome=1 battle=0 script=0 party=1 hidden=1 caught=0\npp=19 battlefunc=8082611 controller=8059941\nPASS persisted cooldown expires exactly at 4500 and visibly respawns\nstate=1 steps=0 identity=d183e79 outcome=0 battle=1 script=0 party=1 hidden=0 caught=0\npp=19 battlefunc=8086659 controller=805c865\nstate=2 steps=4500 identity=c1b82605 outcome=7 battle=0 script=0 party=2 hidden=1 caught=447\npp=19 battlefunc=8082611 controller=8059941\nPASS actual Master Ball capture, party award, cooldown and removal\nPASS capture state actual flash round-trip\n",
+    "setup": "Private all-badge level-100 fixture (animations off), one physical walking step and fast-forward remaining-step callback; production battle, capture, scripts, state, flash writer and loader.",
+    "limits": "Synthetic pre-grotto unused tail, not an authentic historical user save; no Pizza Boy or full playthrough.",
+    "harness_sha256": {
+      "arm.c": "d3f6ddaad62eb0c9897df6024372993d44729497421dd1a970c28580f2e02de3",
+      "host.c": "a4036fdf3b4f374cce72652d9be4a935919d858d6af43e1d3c574756ab433ad1",
+      "run.py": "fc3b348235d4bb98fe64d10d72723c1d20d4af7a71f5daba89ef832edcf04057"
+    },
+    "images": {
+      "refreshed.png": "27a4c95dcf7ee7b8c796e66f350427ef37d9c4b7a34399549b18138aa98f3971",
+      "battle.png": "465460814755942e2b30a68e1e9cdc9d8687dfc745c783fef6494f3dfdae4d80",
+      "approach.png": "b5ec890f037851688211edd06bbd704ec49a0226c9f1bdf25992f07d9c5f0764",
+      "defeated-empty.png": "47fbde60709a27683035d7b385f06dd1447f68c6548272758e15a335cf3bc15e",
+      "captured-empty.png": "33684c74109d2c601c5bc7ca3a2bd254186e039c117c001d246edf7628ba1e6b",
+      "visitor-prompt.png": "8167294f283a451ced2b1bb3091f9eddc368be069d876f61540cde4dfe19572e"
+    }
+  },
+  "release_continue": {
+    "ROM_sha256": "405d8463feb6064d0a4c3112a441ff3f97f9c69daaecefddcd4135c941ba2c17",
+    "ROM_unmodified": true,
+    "RAM_writes": false,
+    "emulator": "mGBA 0.10.2",
+    "scope": "Title and normal Release Continue; synthetic absent-tail migration, exact active visitor/cooldown checksums and caught-party count. Debug-generated controlled batteries, not authentic historical owner saves.",
+    "log": [
+      "PASS Release Continue legacy: checksum=24c03640 state=1 steps=0 party=1",
+      "PASS Release Continue active: checksum=c39c0b43 state=1 steps=0 party=1",
+      "PASS Release Continue cooldown: checksum=5f51d631 state=2 steps=4500 party=1",
+      "PASS Release Continue captured: checksum=5f51d631 state=2 steps=4500 party=2"
+    ],
+    "images": {
+      "captured.png": "98a815eeddf7b9be1e42b0acbcb5bc82488434ef7b7ca1b15858953bb85d6bd7",
+      "active.png": "7a8a8bb5d99582566b6407d406b247af1f805bcf1e3b2818d64daf08995cac29",
+      "cooldown.png": "b75078a223edac81d5dd2daad33021faf4565142ebbc47c68292b9884ecd0e53",
+      "legacy.png": "7a8a8bb5d99582566b6407d406b247af1f805bcf1e3b2818d64daf08995cac29"
+    }
+  },
+  "publication": "Candidate verified; matching LegendsDex badge and QA-only checkpoint prepared before merge. Main patch publication and live verification pending.",
+  "quickstart": {
+    "model": "GPT-6 (High)",
+    "version": "0.0.70",
+    "emulator": "Ubuntu libmGBA 0.10.x, native core",
+    "build": "Debug",
+    "rom_sha256": "32d699360f3052d2ee5335d26887d134f0153dc1c5bfd2320d7f49953b18aa19",
+    "ROM_unmodified": true,
+    "RAM_writes_by_test": false,
+    "test_scope": "Title SELECT Quickstart -> overworld; two live 240x160 frames",
+    "not_tested": "Research dialogue/Weather Institute/Champion conversations through normal save progression, Release run, historical saves and full playthrough.",
+    "captures": [
+      {
+        "name": "living-hoenn-gameplay",
+        "colors": 26
+      },
+      {
+        "name": "living-hoenn-interaction",
+        "colors": 26
+      }
+    ]
+  },
+  "candidateWorkflowRuns": {
+    "project": 39613150336,
+    "wiki": 39613150355,
+    "patches": 39613150329,
+    "native": 39613150455,
+    "android": 39613150392
+  },
+  "candidateArtifact": {
+    "id": 12351153512,
+    "sha256": "b29e25a85b464e71a48c3bf1b5b7607418de6832aeea4580d55370f661c26e82"
+  },
+  "browserArtifacts": {
+    "id": 12351382679,
+    "screenshotsInspected": [
+      "LegendsDex-Grotto-Filter.png"
+    ]
+  },
+  "browserDecoder": {
+    "passed": true,
+    "source_SHA1": "f3ae088181bf583e55daf962a92bb46f4f1d07b7",
+    "decoder": "Actual committed docs/patcher.js applyBps executed in Node VM; independent of Floating IPS",
+    "decoder_sha256": "ee3e5c4d12d1179c29da7c2e97a34c767e55d2ee5f588de3631b49842b238b00",
+    "verifier_sha256": "bbb6057cadba5a72d14e73c1f75cc57563c121eebd68e0ce97869fd18a110d8b",
+    "results": {
+      "Pokemon-Emerald-Legends-v0.0.70.bps": {
+        "patch_sha256": "875eadec7289125596dfd8411d945ad338fb5bb0f85bf22afbd4f636ea03217b",
+        "target_sha256": "405d8463feb6064d0a4c3112a441ff3f97f9c69daaecefddcd4135c941ba2c17",
+        "target_bytes": 33554432,
+        "exact_native_ROM_match": true
+      },
+      "Pokemon-Emerald-Legends-v0.0.70-debug.bps": {
+        "patch_sha256": "1b1bd8b687e3a6889d1874bae182af2c60490daa81b85314669062333e5cd360",
+        "target_sha256": "32d699360f3052d2ee5335d26887d134f0153dc1c5bfd2320d7f49953b18aa19",
+        "target_bytes": 33554432,
+        "exact_native_ROM_match": true
+      }
+    },
+    "limits": "Byte-decoder test; physical browser file-picker/download and Pizza Boy execution are separate checks."
+  },
+  "candidateSums": "875eadec7289125596dfd8411d945ad338fb5bb0f85bf22afbd4f636ea03217b  docs/downloads/Pokemon-Emerald-Legends-v0.0.70.bps\n1b1bd8b687e3a6889d1874bae182af2c60490daa81b85314669062333e5cd360  docs/downloads/Pokemon-Emerald-Legends-v0.0.70-debug.bps\n405d8463feb6064d0a4c3112a441ff3f97f9c69daaecefddcd4135c941ba2c17  pokeemerald-release.gba\n32d699360f3052d2ee5335d26887d134f0153dc1c5bfd2320d7f49953b18aa19  pokeemerald.gba\n"
+}

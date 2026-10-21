@@ -1,6 +1,6 @@
 {
-  "wikiDexRevision": "1.4.0",
-  "gameVersion": "0.0.67",
+  "wikiDexRevision": "1.5.0",
+  "gameVersion": "0.0.70",
   "sourceCommit": "0d13f23794686525203fcfe3f8c6496e6921d2f2",
   "source": "src/data/wild_encounters.json, src/data/legends_seasonal_encounters.h and src/data/pokemon/species_info/gen_*_families.h",
   "methodNote": "Percentages are conditional encounter shares for the selected method and season, not chances per step. Native lure/ability modifiers, scripted encounters and gifts are separate.",
@@ -36054,7 +36054,7 @@
               "id": "ZORUA",
               "min": 8,
               "max": 12,
-              "rate": 30,
+              "rate": 22,
               "seasons": [
                 "autumn"
               ],
@@ -36064,7 +36064,7 @@
               "id": "PHANTUMP",
               "min": 8,
               "max": 12,
-              "rate": 25,
+              "rate": 18,
               "seasons": [
                 "autumn"
               ],
@@ -36074,7 +36074,7 @@
               "id": "EEVEE",
               "min": 8,
               "max": 12,
-              "rate": 20,
+              "rate": 16,
               "seasons": [
                 "autumn"
               ],
@@ -36084,7 +36084,7 @@
               "id": "RIOLU",
               "min": 8,
               "max": 12,
-              "rate": 15,
+              "rate": 12,
               "seasons": [
                 "autumn"
               ],
@@ -36099,6 +36099,36 @@
                 "autumn"
               ],
               "time": "all-day"
+            },
+            {
+              "id": "IMPIDIMP",
+              "min": 8,
+              "max": 12,
+              "rate": 9,
+              "seasons": [
+                "autumn"
+              ],
+              "time": "all-day"
+            },
+            {
+              "id": "SINISTEA",
+              "min": 8,
+              "max": 12,
+              "rate": 7,
+              "seasons": [
+                "autumn"
+              ],
+              "time": "all-day"
+            },
+            {
+              "id": "LITTEN",
+              "min": 8,
+              "max": 12,
+              "rate": 6,
+              "seasons": [
+                "autumn"
+              ],
+              "time": "all-day"
             }
           ],
           "seasonalVariants": [
@@ -36109,7 +36139,7 @@
                   "id": "RIOLU",
                   "min": 8,
                   "max": 12,
-                  "rate": 30,
+                  "rate": 22,
                   "seasons": [
                     "spring"
                   ],
@@ -36119,7 +36149,7 @@
                   "id": "RALTS",
                   "min": 8,
                   "max": 12,
-                  "rate": 25,
+                  "rate": 18,
                   "seasons": [
                     "spring"
                   ],
@@ -36129,7 +36159,7 @@
                   "id": "EEVEE",
                   "min": 8,
                   "max": 12,
-                  "rate": 20,
+                  "rate": 16,
                   "seasons": [
                     "spring"
                   ],
@@ -36139,7 +36169,7 @@
                   "id": "ZORUA",
                   "min": 8,
                   "max": 12,
-                  "rate": 15,
+                  "rate": 12,
                   "seasons": [
                     "spring"
                   ],
@@ -36154,6 +36184,36 @@
                     "spring"
                   ],
                   "time": "all-day"
+                },
+                {
+                  "id": "HATENNA",
+                  "min": 8,
+                  "max": 12,
+                  "rate": 9,
+                  "seasons": [
+                    "spring"
+                  ],
+                  "time": "all-day"
+                },
+                {
+                  "id": "CUTIEFLY",
+                  "min": 8,
+                  "max": 12,
+                  "rate": 7,
+                  "seasons": [
+                    "spring"
+                  ],
+                  "time": "all-day"
+                },
+                {
+                  "id": "SPRIGATITO",
+                  "min": 8,
+                  "max": 12,
+                  "rate": 6,
+                  "seasons": [
+                    "spring"
+                  ],
+                  "time": "all-day"
                 }
               ]
             },
@@ -36164,7 +36224,7 @@
                   "id": "LARVESTA",
                   "min": 8,
                   "max": 12,
-                  "rate": 30,
+                  "rate": 22,
                   "seasons": [
                     "summer"
                   ],
@@ -36174,7 +36234,7 @@
                   "id": "FENNEKIN",
                   "min": 8,
                   "max": 12,
-                  "rate": 25,
+                  "rate": 18,
                   "seasons": [
                     "summer"
                   ],
@@ -36184,7 +36244,7 @@
                   "id": "EEVEE",
                   "min": 8,
                   "max": 12,
-                  "rate": 20,
+                  "rate": 16,
                   "seasons": [
                     "summer"
                   ],
@@ -36194,7 +36254,7 @@
                   "id": "ZORUA",
                   "min": 8,
                   "max": 12,
-                  "rate": 15,
+                  "rate": 12,
                   "seasons": [
                     "summer"
                   ],
@@ -36209,6 +36269,36 @@
                     "summer"
                   ],
                   "time": "all-day"
+                },
+                {
+                  "id": "PONYTA",
+                  "min": 8,
+                  "max": 12,
+                  "rate": 9,
+                  "seasons": [
+                    "summer"
+                  ],
+                  "time": "all-day"
+                },
+                {
+                  "id": "MORELULL",
+                  "min": 8,
+                  "max": 12,
+                  "rate": 7,
+                  "seasons": [
+                    "summer"
+                  ],
+                  "time": "all-day"
+                },
+                {
+                  "id": "SCORBUNNY",
+                  "min": 8,
+                  "max": 12,
+                  "rate": 6,
+                  "seasons": [
+                    "summer"
+                  ],
+                  "time": "all-day"
                 }
               ]
             },
@@ -36219,7 +36309,7 @@
                   "id": "ZORUA",
                   "min": 8,
                   "max": 12,
-                  "rate": 30,
+                  "rate": 22,
                   "seasons": [
                     "autumn"
                   ],
@@ -36229,7 +36319,7 @@
                   "id": "PHANTUMP",
                   "min": 8,
                   "max": 12,
-                  "rate": 25,
+                  "rate": 18,
                   "seasons": [
                     "autumn"
                   ],
@@ -36239,7 +36329,7 @@
                   "id": "EEVEE",
                   "min": 8,
                   "max": 12,
-                  "rate": 20,
+                  "rate": 16,
                   "seasons": [
                     "autumn"
                   ],
@@ -36249,7 +36339,7 @@
                   "id": "RIOLU",
                   "min": 8,
                   "max": 12,
-                  "rate": 15,
+                  "rate": 12,
                   "seasons": [
                     "autumn"
                   ],
@@ -36264,6 +36354,36 @@
                     "autumn"
                   ],
                   "time": "all-day"
+                },
+                {
+                  "id": "IMPIDIMP",
+                  "min": 8,
+                  "max": 12,
+                  "rate": 9,
+                  "seasons": [
+                    "autumn"
+                  ],
+                  "time": "all-day"
+                },
+                {
+                  "id": "SINISTEA",
+                  "min": 8,
+                  "max": 12,
+                  "rate": 7,
+                  "seasons": [
+                    "autumn"
+                  ],
+                  "time": "all-day"
+                },
+                {
+                  "id": "LITTEN",
+                  "min": 8,
+                  "max": 12,
+                  "rate": 6,
+                  "seasons": [
+                    "autumn"
+                  ],
+                  "time": "all-day"
                 }
               ]
             },
@@ -36274,7 +36394,7 @@
                   "id": "VULPIX",
                   "min": 8,
                   "max": 12,
-                  "rate": 30,
+                  "rate": 22,
                   "seasons": [
                     "winter"
                   ],
@@ -36284,7 +36404,7 @@
                   "id": "SNOM",
                   "min": 8,
                   "max": 12,
-                  "rate": 25,
+                  "rate": 18,
                   "seasons": [
                     "winter"
                   ],
@@ -36294,7 +36414,7 @@
                   "id": "EEVEE",
                   "min": 8,
                   "max": 12,
-                  "rate": 20,
+                  "rate": 16,
                   "seasons": [
                     "winter"
                   ],
@@ -36304,7 +36424,7 @@
                   "id": "RIOLU",
                   "min": 8,
                   "max": 12,
-                  "rate": 15,
+                  "rate": 12,
                   "seasons": [
                     "winter"
                   ],
@@ -36315,6 +36435,36 @@
                   "min": 8,
                   "max": 12,
                   "rate": 10,
+                  "seasons": [
+                    "winter"
+                  ],
+                  "time": "all-day"
+                },
+                {
+                  "id": "ESPURR",
+                  "min": 8,
+                  "max": 12,
+                  "rate": 9,
+                  "seasons": [
+                    "winter"
+                  ],
+                  "time": "all-day"
+                },
+                {
+                  "id": "MILCERY",
+                  "min": 8,
+                  "max": 12,
+                  "rate": 7,
+                  "seasons": [
+                    "winter"
+                  ],
+                  "time": "all-day"
+                },
+                {
+                  "id": "GROOKEY",
+                  "min": 8,
+                  "max": 12,
+                  "rate": 6,
                   "seasons": [
                     "winter"
                   ],
@@ -36339,10 +36489,10 @@
           "encounterRate": 100,
           "entries": [
             {
-              "id": "DREEPY",
+              "id": "LARVITAR",
               "min": 18,
               "max": 22,
-              "rate": 30,
+              "rate": 22,
               "seasons": [
                 "autumn"
               ],
@@ -36352,7 +36502,7 @@
               "id": "SABLEYE",
               "min": 18,
               "max": 22,
-              "rate": 25,
+              "rate": 18,
               "seasons": [
                 "autumn"
               ],
@@ -36362,7 +36512,7 @@
               "id": "BELDUM",
               "min": 18,
               "max": 22,
-              "rate": 20,
+              "rate": 16,
               "seasons": [
                 "autumn"
               ],
@@ -36372,7 +36522,7 @@
               "id": "DEINO",
               "min": 18,
               "max": 22,
-              "rate": 15,
+              "rate": 12,
               "seasons": [
                 "autumn"
               ],
@@ -36387,6 +36537,36 @@
                 "autumn"
               ],
               "time": "all-day"
+            },
+            {
+              "id": "HONEDGE",
+              "min": 18,
+              "max": 22,
+              "rate": 9,
+              "seasons": [
+                "autumn"
+              ],
+              "time": "all-day"
+            },
+            {
+              "id": "SPIRITOMB",
+              "min": 18,
+              "max": 22,
+              "rate": 7,
+              "seasons": [
+                "autumn"
+              ],
+              "time": "all-day"
+            },
+            {
+              "id": "SQUIRTLE",
+              "min": 18,
+              "max": 22,
+              "rate": 6,
+              "seasons": [
+                "autumn"
+              ],
+              "time": "all-day"
             }
           ],
           "seasonalVariants": [
@@ -36397,7 +36577,7 @@
                   "id": "GIBLE",
                   "min": 18,
                   "max": 22,
-                  "rate": 30,
+                  "rate": 22,
                   "seasons": [
                     "spring"
                   ],
@@ -36407,7 +36587,7 @@
                   "id": "CARBINK",
                   "min": 18,
                   "max": 22,
-                  "rate": 25,
+                  "rate": 18,
                   "seasons": [
                     "spring"
                   ],
@@ -36417,7 +36597,7 @@
                   "id": "BELDUM",
                   "min": 18,
                   "max": 22,
-                  "rate": 20,
+                  "rate": 16,
                   "seasons": [
                     "spring"
                   ],
@@ -36427,7 +36607,7 @@
                   "id": "DEINO",
                   "min": 18,
                   "max": 22,
-                  "rate": 15,
+                  "rate": 12,
                   "seasons": [
                     "spring"
                   ],
@@ -36442,6 +36622,36 @@
                     "spring"
                   ],
                   "time": "all-day"
+                },
+                {
+                  "id": "GLIMMET",
+                  "min": 18,
+                  "max": 22,
+                  "rate": 9,
+                  "seasons": [
+                    "spring"
+                  ],
+                  "time": "all-day"
+                },
+                {
+                  "id": "TYRUNT",
+                  "min": 18,
+                  "max": 22,
+                  "rate": 7,
+                  "seasons": [
+                    "spring"
+                  ],
+                  "time": "all-day"
+                },
+                {
+                  "id": "OSHAWOTT",
+                  "min": 18,
+                  "max": 22,
+                  "rate": 6,
+                  "seasons": [
+                    "spring"
+                  ],
+                  "time": "all-day"
                 }
               ]
             },
@@ -36452,7 +36662,7 @@
                   "id": "AXEW",
                   "min": 18,
                   "max": 22,
-                  "rate": 30,
+                  "rate": 22,
                   "seasons": [
                     "summer"
                   ],
@@ -36462,7 +36672,7 @@
                   "id": "CHARCADET",
                   "min": 18,
                   "max": 22,
-                  "rate": 25,
+                  "rate": 18,
                   "seasons": [
                     "summer"
                   ],
@@ -36472,7 +36682,7 @@
                   "id": "BELDUM",
                   "min": 18,
                   "max": 22,
-                  "rate": 20,
+                  "rate": 16,
                   "seasons": [
                     "summer"
                   ],
@@ -36482,7 +36692,7 @@
                   "id": "DRATINI",
                   "min": 18,
                   "max": 22,
-                  "rate": 15,
+                  "rate": 12,
                   "seasons": [
                     "summer"
                   ],
@@ -36497,6 +36707,36 @@
                     "summer"
                   ],
                   "time": "all-day"
+                },
+                {
+                  "id": "TURTONATOR",
+                  "min": 18,
+                  "max": 22,
+                  "rate": 9,
+                  "seasons": [
+                    "summer"
+                  ],
+                  "time": "all-day"
+                },
+                {
+                  "id": "ROCKRUFF",
+                  "min": 18,
+                  "max": 22,
+                  "rate": 7,
+                  "seasons": [
+                    "summer"
+                  ],
+                  "time": "all-day"
+                },
+                {
+                  "id": "TORCHIC",
+                  "min": 18,
+                  "max": 22,
+                  "rate": 6,
+                  "seasons": [
+                    "summer"
+                  ],
+                  "time": "all-day"
                 }
               ]
             },
@@ -36504,10 +36744,10 @@
               "season": "autumn",
               "entries": [
                 {
-                  "id": "DREEPY",
+                  "id": "LARVITAR",
                   "min": 18,
                   "max": 22,
-                  "rate": 30,
+                  "rate": 22,
                   "seasons": [
                     "autumn"
                   ],
@@ -36517,7 +36757,7 @@
                   "id": "SABLEYE",
                   "min": 18,
                   "max": 22,
-                  "rate": 25,
+                  "rate": 18,
                   "seasons": [
                     "autumn"
                   ],
@@ -36527,7 +36767,7 @@
                   "id": "BELDUM",
                   "min": 18,
                   "max": 22,
-                  "rate": 20,
+                  "rate": 16,
                   "seasons": [
                     "autumn"
                   ],
@@ -36537,7 +36777,7 @@
                   "id": "DEINO",
                   "min": 18,
                   "max": 22,
-                  "rate": 15,
+                  "rate": 12,
                   "seasons": [
                     "autumn"
                   ],
@@ -36552,6 +36792,36 @@
                     "autumn"
                   ],
                   "time": "all-day"
+                },
+                {
+                  "id": "HONEDGE",
+                  "min": 18,
+                  "max": 22,
+                  "rate": 9,
+                  "seasons": [
+                    "autumn"
+                  ],
+                  "time": "all-day"
+                },
+                {
+                  "id": "SPIRITOMB",
+                  "min": 18,
+                  "max": 22,
+                  "rate": 7,
+                  "seasons": [
+                    "autumn"
+                  ],
+                  "time": "all-day"
+                },
+                {
+                  "id": "SQUIRTLE",
+                  "min": 18,
+                  "max": 22,
+                  "rate": 6,
+                  "seasons": [
+                    "autumn"
+                  ],
+                  "time": "all-day"
                 }
               ]
             },
@@ -36562,7 +36832,7 @@
                   "id": "FRIGIBAX",
                   "min": 18,
                   "max": 22,
-                  "rate": 30,
+                  "rate": 22,
                   "seasons": [
                     "winter"
                   ],
@@ -36572,7 +36842,7 @@
                   "id": "AMAURA",
                   "min": 18,
                   "max": 22,
-                  "rate": 25,
+                  "rate": 18,
                   "seasons": [
                     "winter"
                   ],
@@ -36582,7 +36852,7 @@
                   "id": "BELDUM",
                   "min": 18,
                   "max": 22,
-                  "rate": 20,
+                  "rate": 16,
                   "seasons": [
                     "winter"
                   ],
@@ -36592,17 +36862,47 @@
                   "id": "GIBLE",
                   "min": 18,
                   "max": 22,
-                  "rate": 15,
+                  "rate": 12,
                   "seasons": [
                     "winter"
                   ],
                   "time": "all-day"
                 },
                 {
-                  "id": "PIPLUP",
+                  "id": "TIRTOUGA",
                   "min": 18,
                   "max": 22,
                   "rate": 10,
+                  "seasons": [
+                    "winter"
+                  ],
+                  "time": "all-day"
+                },
+                {
+                  "id": "CRYOGONAL",
+                  "min": 18,
+                  "max": 22,
+                  "rate": 9,
+                  "seasons": [
+                    "winter"
+                  ],
+                  "time": "all-day"
+                },
+                {
+                  "id": "BERGMITE",
+                  "min": 18,
+                  "max": 22,
+                  "rate": 7,
+                  "seasons": [
+                    "winter"
+                  ],
+                  "time": "all-day"
+                },
+                {
+                  "id": "CYNDAQUIL",
+                  "min": 18,
+                  "max": 22,
+                  "rate": 6,
                   "seasons": [
                     "winter"
                   ],
@@ -36630,7 +36930,7 @@
               "id": "DREEPY",
               "min": 25,
               "max": 30,
-              "rate": 30,
+              "rate": 22,
               "seasons": [
                 "autumn"
               ],
@@ -36640,7 +36940,7 @@
               "id": "MIMIKYU",
               "min": 25,
               "max": 30,
-              "rate": 25,
+              "rate": 18,
               "seasons": [
                 "autumn"
               ],
@@ -36650,7 +36950,7 @@
               "id": "BAGON",
               "min": 25,
               "max": 30,
-              "rate": 20,
+              "rate": 16,
               "seasons": [
                 "autumn"
               ],
@@ -36660,7 +36960,7 @@
               "id": "GOOMY",
               "min": 25,
               "max": 30,
-              "rate": 15,
+              "rate": 12,
               "seasons": [
                 "autumn"
               ],
@@ -36675,6 +36975,36 @@
                 "autumn"
               ],
               "time": "all-day"
+            },
+            {
+              "id": "ORANGURU",
+              "min": 25,
+              "max": 30,
+              "rate": 9,
+              "seasons": [
+                "autumn"
+              ],
+              "time": "all-day"
+            },
+            {
+              "id": "PASSIMIAN",
+              "min": 25,
+              "max": 30,
+              "rate": 7,
+              "seasons": [
+                "autumn"
+              ],
+              "time": "all-day"
+            },
+            {
+              "id": "TEPIG",
+              "min": 25,
+              "max": 30,
+              "rate": 6,
+              "seasons": [
+                "autumn"
+              ],
+              "time": "all-day"
             }
           ],
           "seasonalVariants": [
@@ -36685,7 +37015,7 @@
                   "id": "GOOMY",
                   "min": 25,
                   "max": 30,
-                  "rate": 30,
+                  "rate": 22,
                   "seasons": [
                     "spring"
                   ],
@@ -36695,7 +37025,7 @@
                   "id": "APPLIN",
                   "min": 25,
                   "max": 30,
-                  "rate": 25,
+                  "rate": 18,
                   "seasons": [
                     "spring"
                   ],
@@ -36705,7 +37035,7 @@
                   "id": "BAGON",
                   "min": 25,
                   "max": 30,
-                  "rate": 20,
+                  "rate": 16,
                   "seasons": [
                     "spring"
                   ],
@@ -36715,7 +37045,7 @@
                   "id": "DREEPY",
                   "min": 25,
                   "max": 30,
-                  "rate": 15,
+                  "rate": 12,
                   "seasons": [
                     "spring"
                   ],
@@ -36730,6 +37060,36 @@
                     "spring"
                   ],
                   "time": "all-day"
+                },
+                {
+                  "id": "TOXEL",
+                  "min": 25,
+                  "max": 30,
+                  "rate": 9,
+                  "seasons": [
+                    "spring"
+                  ],
+                  "time": "all-day"
+                },
+                {
+                  "id": "TOGEPI",
+                  "min": 25,
+                  "max": 30,
+                  "rate": 7,
+                  "seasons": [
+                    "spring"
+                  ],
+                  "time": "all-day"
+                },
+                {
+                  "id": "TREECKO",
+                  "min": 25,
+                  "max": 30,
+                  "rate": 6,
+                  "seasons": [
+                    "spring"
+                  ],
+                  "time": "all-day"
                 }
               ]
             },
@@ -36740,7 +37100,7 @@
                   "id": "JANGMO_O",
                   "min": 25,
                   "max": 30,
-                  "rate": 30,
+                  "rate": 22,
                   "seasons": [
                     "summer"
                   ],
@@ -36750,7 +37110,7 @@
                   "id": "DURALUDON",
                   "min": 25,
                   "max": 30,
-                  "rate": 25,
+                  "rate": 18,
                   "seasons": [
                     "summer"
                   ],
@@ -36760,7 +37120,7 @@
                   "id": "BAGON",
                   "min": 25,
                   "max": 30,
-                  "rate": 20,
+                  "rate": 16,
                   "seasons": [
                     "summer"
                   ],
@@ -36770,7 +37130,7 @@
                   "id": "GOOMY",
                   "min": 25,
                   "max": 30,
-                  "rate": 15,
+                  "rate": 12,
                   "seasons": [
                     "summer"
                   ],
@@ -36785,6 +37145,36 @@
                     "summer"
                   ],
                   "time": "all-day"
+                },
+                {
+                  "id": "DHELMISE",
+                  "min": 25,
+                  "max": 30,
+                  "rate": 9,
+                  "seasons": [
+                    "summer"
+                  ],
+                  "time": "all-day"
+                },
+                {
+                  "id": "DRAMPA",
+                  "min": 25,
+                  "max": 30,
+                  "rate": 7,
+                  "seasons": [
+                    "summer"
+                  ],
+                  "time": "all-day"
+                },
+                {
+                  "id": "SOBBLE",
+                  "min": 25,
+                  "max": 30,
+                  "rate": 6,
+                  "seasons": [
+                    "summer"
+                  ],
+                  "time": "all-day"
                 }
               ]
             },
@@ -36795,7 +37185,7 @@
                   "id": "DREEPY",
                   "min": 25,
                   "max": 30,
-                  "rate": 30,
+                  "rate": 22,
                   "seasons": [
                     "autumn"
                   ],
@@ -36805,7 +37195,7 @@
                   "id": "MIMIKYU",
                   "min": 25,
                   "max": 30,
-                  "rate": 25,
+                  "rate": 18,
                   "seasons": [
                     "autumn"
                   ],
@@ -36815,7 +37205,7 @@
                   "id": "BAGON",
                   "min": 25,
                   "max": 30,
-                  "rate": 20,
+                  "rate": 16,
                   "seasons": [
                     "autumn"
                   ],
@@ -36825,7 +37215,7 @@
                   "id": "GOOMY",
                   "min": 25,
                   "max": 30,
-                  "rate": 15,
+                  "rate": 12,
                   "seasons": [
                     "autumn"
                   ],
@@ -36840,6 +37230,36 @@
                     "autumn"
                   ],
                   "time": "all-day"
+                },
+                {
+                  "id": "ORANGURU",
+                  "min": 25,
+                  "max": 30,
+                  "rate": 9,
+                  "seasons": [
+                    "autumn"
+                  ],
+                  "time": "all-day"
+                },
+                {
+                  "id": "PASSIMIAN",
+                  "min": 25,
+                  "max": 30,
+                  "rate": 7,
+                  "seasons": [
+                    "autumn"
+                  ],
+                  "time": "all-day"
+                },
+                {
+                  "id": "TEPIG",
+                  "min": 25,
+                  "max": 30,
+                  "rate": 6,
+                  "seasons": [
+                    "autumn"
+                  ],
+                  "time": "all-day"
                 }
               ]
             },
@@ -36847,10 +37267,10 @@
               "season": "winter",
               "entries": [
                 {
-                  "id": "FRIGIBAX",
+                  "id": "SKRELP",
                   "min": 25,
                   "max": 30,
-                  "rate": 30,
+                  "rate": 22,
                   "seasons": [
                     "winter"
                   ],
@@ -36860,7 +37280,7 @@
                   "id": "DURALUDON",
                   "min": 25,
                   "max": 30,
-                  "rate": 25,
+                  "rate": 18,
                   "seasons": [
                     "winter"
                   ],
@@ -36870,17 +37290,17 @@
                   "id": "BAGON",
                   "min": 25,
                   "max": 30,
-                  "rate": 20,
+                  "rate": 16,
                   "seasons": [
                     "winter"
                   ],
                   "time": "all-day"
                 },
                 {
-                  "id": "DRATINI",
+                  "id": "FINIZEN",
                   "min": 25,
                   "max": 30,
-                  "rate": 15,
+                  "rate": 12,
                   "seasons": [
                     "winter"
                   ],
@@ -36891,6 +37311,36 @@
                   "min": 25,
                   "max": 30,
                   "rate": 10,
+                  "seasons": [
+                    "winter"
+                  ],
+                  "time": "all-day"
+                },
+                {
+                  "id": "LAPRAS",
+                  "min": 25,
+                  "max": 30,
+                  "rate": 9,
+                  "seasons": [
+                    "winter"
+                  ],
+                  "time": "all-day"
+                },
+                {
+                  "id": "EISCUE",
+                  "min": 25,
+                  "max": 30,
+                  "rate": 7,
+                  "seasons": [
+                    "winter"
+                  ],
+                  "time": "all-day"
+                },
+                {
+                  "id": "QUAXLY",
+                  "min": 25,
+                  "max": 30,
+                  "rate": 6,
                   "seasons": [
                     "winter"
                   ],
@@ -36914,8 +37364,9 @@
   },
   "grottoSource": {
     "path": "src/data/legends/grotto_encounters.json",
-    "sha256": "fc592f065c7be2e41eacfcc1d5d1db725ef017cac1e33dfabf4c545c91c237f3",
+    "sha256": "f99dc3ef3900081441d27a8efb3fa76523f8924d3f2a7ec1b1aa84c0a1a7a08f",
     "refreshSteps": 4500,
-    "status": "review"
+    "status": "published",
+    "gameVersion": "0.0.70"
   }
 }

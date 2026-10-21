@@ -10,14 +10,14 @@ const assert=require('node:assert/strict'),fs=require('node:fs');
   assert.equal(await page.getByText('Updated on request',{exact:true}).count(),0);
   assert.equal(await page.locator('[data-region="Sevii"]').textContent(),'Sevii');
   await page.locator('[data-region="Grotto"]').click();
-  assert.equal(await page.locator('.route-card').count(),3);assert.equal(await page.locator('.encounter').count(),15);
+  assert.equal(await page.locator('.route-card').count(),3);assert.equal(await page.locator('.encounter').count(),24);
   assert(await page.locator('.route-card').first().textContent().then(t=>t.includes('4,500')));
   for(const s of ['spring','summer','autumn','winter']){
-   await page.locator('#season').selectOption(s);assert.equal(await page.locator('.encounter').count(),15);
+   await page.locator('#season').selectOption(s);assert.equal(await page.locator('.encounter').count(),24);
    for(const card of await page.locator('.route-card').all())assert.equal((await card.locator('.rate').allTextContents()).reduce((sum,t)=>sum+parseInt(t),0),100);
   }
-  await page.locator('#season').selectOption('all');assert(await page.locator('.encounter').count()>15);
-  await page.locator('#tab-species').click();assert(await page.locator('.dex-card').count()>15);
+  await page.locator('#season').selectOption('all');assert(await page.locator('.encounter').count()>24);
+  await page.locator('#tab-species').click();assert(await page.locator('.dex-card').count()>24);
   await page.locator('#tab-routes').click();
   await page.locator('#season').selectOption('spring');
   await page.locator('#method').selectOption('grotto');assert.equal(await page.locator('.route-card').count(),3);
