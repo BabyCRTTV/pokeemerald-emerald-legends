@@ -1,5 +1,13 @@
 # Development handoff
 
+## Rainroot tall-grass edge repair (21 October 2026)
+
+**Model: GPT-6 (Codex) | Reasoning: use the native Route 119 long-grass assembly rather than ending stalk tiles directly on grass.**
+
+Owner liked the compact layouts and requested correction of Rainroot's tall grass. Replaced the narrow uneven strip with a two-column, two-row clump followed by native Fortree `0x208` root tiles. Route 119 itself uses `0x015` stalks followed by this root row; `FixLongGrassMetatilesWindowTop/Bottom` in `src/fldeff_cut.c` confirms that relationship. Only three Rainroot map words changed; all other grotto geometry, interactions and route entrances remain as in compact source `51213e5f`. Added a regression for stalk/root pairing and passability.
+
+Debug and Release builds and all six focused regressions passed. Recaptured native mGBA's twelve seasonal scenes and all three visitor/exit/decline/reentry paths; inspected the new actual Rainroot frame. [Updated preview](designs/hidden-grottos/Emerald-Legends-Rainroot-Grass-Fix.png) and [QA receipt](qa/hidden-grottos-grass.json). Prior compact-layout QA remains applicable except for the three corrected words and superseded frame/ROM hashes. No new persistent IDs/state, battle/reward implementation or publication. PR #87 remains a draft; the compact direction is accepted, final grotto implementation/release remains outstanding.
+
 ## Hidden grottos — smaller, tidier interior review (21 October 2026)
 
 **Model: GPT-6 (Codex) | Reasoning: tighten the spaces around their visitors while preserving native tile assemblies and established route discovery.**

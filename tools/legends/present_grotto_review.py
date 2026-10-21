@@ -50,6 +50,7 @@ def main():
         text(card,(14,34),f'{name} - {visitor} | unshipped review',14)
         card.paste(Image.open(SOURCE/f'room-2-season-{season}-overview.png').resize((480,320),Image.Resampling.NEAREST),(0,64))
         frames.append(card)
+    frames[0].save(OUT/'Emerald-Legends-Rainroot-Grass-Fix.png')
     frames[0].save(OUT/'Emerald-Legends-Grotto-Seasons.gif',save_all=True,append_images=frames[1:],duration=1800,loop=0,disposal=2)
     discovery=[]
     for path in sorted(SOURCE.glob('discovery-*.png')):

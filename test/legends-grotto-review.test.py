@@ -81,6 +81,21 @@ class Grottos(unittest.TestCase):
                 if v&1023==0x1E4:self.assertEqual(a[i-w]&1023,0x1D4)
                 if v&1023==0x1E5:self.assertEqual(a[i-w-1]&1023,0x1D4)
 
+    def test_rainroot_long_grass_has_native_roots(self):
+        l=next(l for l in read('data/layouts/layouts.json')['layouts'] if l['id']=='LAYOUT_LEGENDS_GROTTO_RAINROOT')
+        a=cells(l);w=l['width'];grass=[i for i,v in enumerate(a) if v&1023==0x015]
+        self.assertTrue(grass)
+        for i in grass:
+            self.assertLess(i+w,len(a))
+            self.assertIn(a[i+w]&1023,[0x015,0x208])
+            self.assertEqual(a[i]&0xC00,0)
+        roots=[i for i,v in enumerate(a) if v&1023==0x208]
+        self.assertTrue(roots)
+        for i in roots:
+            self.assertGreaterEqual(i,w)
+            self.assertEqual(a[i-w]&1023,0x015)
+            self.assertEqual(a[i]&0xC00,0)
+
     def test_real_native_warp_guard_only_matches_scripted_openings(self):
         groups=read('data/maps/map_groups.json')
         maps={}

@@ -82,8 +82,12 @@ def landscape(kind):
                 put(a, x, y, 0x004)
         else:
             pool(a, 4, 8)
-            for x, y in [(11, 6), (12, 6), (11, 7), (12, 7), (12, 8), (12, 9)]:
-                put(a, x, y, 0x015)
+            # Native Route 119 long grass needs a south-edge root row.
+            # Keep a compact clump with complete stalks rather than a raw strip.
+            for x in [11, 12]:
+                for y in [6, 7]:
+                    put(a, x, y, 0x015)
+                put(a, x, 8, 0x208)
     return a
 
 def obj(gfx, x, y, script):
