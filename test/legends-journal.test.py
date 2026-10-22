@@ -48,7 +48,7 @@ int main(void)
     memset(&data,0xA5,sizeof(data)); flags[FLAG_BADGE01_GET]=1;
     stats[GAME_STAT_POKEMON_CAPTURES]=100; dex=200;
     LegendsJournalInit(FALSE);
-    assert(LegendsAchievementCount()==130 && LegendsQuestCount()==63);
+    assert(LegendsAchievementCount()==130 && LegendsQuestCount()==64);
     assert(LegendsAchievementEarned(0));
     assert(!LegendsAchievementEarned(1));
     for(unsigned i=0;i<LegendsAchievementCount();i++)
@@ -167,7 +167,7 @@ int main(void)
     assert(LegendsAchievementNotice()==0xFFFF);
     // Legacy checksum and tracked-quest word remain independent of the appended tail.
     assert(sizeof(data.journal)==36&&sizeof(data.achievementExtra)==28);
-    puts("63 quests; 130 achievements; legacy tracking words, progression, persistence, claims and link guards passed.");
+    puts("64 quests; 130 achievements; legacy tracking words, progression, persistence, claims and link guards passed.");
 }
 '''
 with tempfile.TemporaryDirectory() as d:

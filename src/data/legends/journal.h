@@ -67,6 +67,9 @@ static const struct LegendsQuest sQuests[] =
     {COMPOUND_STRING("Pressure Recorder"), 0, 1, 2, {{COMPOUND_STRING("Observe WATER under ROUTE 124"), 0}, {COMPOUND_STRING("Return your notes to MR. STONE"), 0}}},
     {COMPOUND_STRING("Devon Master Project"), 0, 1, 2, {{COMPOUND_STRING("Show MR. STONE six types"), 0}, {COMPOUND_STRING("Return your notes to MR. STONE"), 0}}},
 
+    // ID 63: optional voyage after the Sleeping Continent report.
+    {COMPOUND_STRING("The Maker's Last Dream"), FLAG_LEGENDS_WYRMTIDE_CALL, 1, 4, {{COMPOUND_STRING("Sail from DEWFORD with BRINEY"), FLAG_LEGENDS_WYRMTIDE_LANDED}, {COMPOUND_STRING("Solve the island's ancient seal"), FLAG_LEGENDS_WYRMTIDE_SEAL_OPEN}, {COMPOUND_STRING("Meet the dragon beneath the isle"), FLAG_LEGENDS_WYRMTIDE_CALMED}, {COMPOUND_STRING("Return to BRINEY on the shore"), FLAG_LEGENDS_WYRMTIDE_REPORT}}},
+
 };
 static const struct LegendsAchievement sAchievements[] =
 {

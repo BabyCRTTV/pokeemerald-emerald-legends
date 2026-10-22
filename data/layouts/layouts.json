@@ -10529,6 +10529,72 @@
       "border_filepath": "data/layouts/LegendsGrotto_Rainroot/border.bin",
       "blockdata_filepath": "data/layouts/LegendsGrotto_Rainroot/map.bin",
       "layout_version": "emerald"
+    },
+    {
+      "id": "LAYOUT_LEGENDS_WYRMTIDE_ISLE",
+      "name": "LegendsWyrmtide_Isle_Layout",
+      "width": 34,
+      "height": 29,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_LegendsWyrmtideShore",
+      "border_filepath": "data/layouts/LegendsWyrmtide_Isle/border.bin",
+      "blockdata_filepath": "data/layouts/LegendsWyrmtide_Isle/map.bin",
+      "layout_version": "emerald"
+    },
+    {
+      "id": "LAYOUT_LEGENDS_WYRMTIDE_DESCENT1",
+      "name": "LegendsWyrmtide_Descent1_Layout",
+      "width": 19,
+      "height": 24,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_LegendsWyrmtideCave",
+      "border_filepath": "data/layouts/LegendsWyrmtide_Descent1/border.bin",
+      "blockdata_filepath": "data/layouts/LegendsWyrmtide_Descent1/map.bin",
+      "layout_version": "emerald"
+    },
+    {
+      "id": "LAYOUT_LEGENDS_WYRMTIDE_DESCENT2",
+      "name": "LegendsWyrmtide_Descent2_Layout",
+      "width": 19,
+      "height": 24,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_LegendsWyrmtideCave",
+      "border_filepath": "data/layouts/LegendsWyrmtide_Descent2/border.bin",
+      "blockdata_filepath": "data/layouts/LegendsWyrmtide_Descent2/map.bin",
+      "layout_version": "emerald"
+    },
+    {
+      "id": "LAYOUT_LEGENDS_WYRMTIDE_DESCENT3",
+      "name": "LegendsWyrmtide_Descent3_Layout",
+      "width": 19,
+      "height": 24,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_LegendsWyrmtideCave",
+      "border_filepath": "data/layouts/LegendsWyrmtide_Descent3/border.bin",
+      "blockdata_filepath": "data/layouts/LegendsWyrmtide_Descent3/map.bin",
+      "layout_version": "emerald"
+    },
+    {
+      "id": "LAYOUT_LEGENDS_WYRMTIDE_DESCENT4",
+      "name": "LegendsWyrmtide_Descent4_Layout",
+      "width": 19,
+      "height": 24,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_LegendsWyrmtideCave",
+      "border_filepath": "data/layouts/LegendsWyrmtide_Descent4/border.bin",
+      "blockdata_filepath": "data/layouts/LegendsWyrmtide_Descent4/map.bin",
+      "layout_version": "emerald"
+    },
+    {
+      "id": "LAYOUT_LEGENDS_WYRMTIDE_HEART",
+      "name": "LegendsWyrmtide_Heart_Layout",
+      "width": 23,
+      "height": 21,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_LegendsWyrmtideCave",
+      "border_filepath": "data/layouts/LegendsWyrmtide_Heart/border.bin",
+      "blockdata_filepath": "data/layouts/LegendsWyrmtide_Heart/map.bin",
+      "layout_version": "emerald"
     }
   ]
 }

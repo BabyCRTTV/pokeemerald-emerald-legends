@@ -67,12 +67,23 @@ def main():
   originals[relative]=re.sub(r'"([^\"]+)"',restore,text)
  headers='\n'.join(originals.values())
  layouts={l['id']:l for l in json.loads((ROOT/'data/layouts/layouts.json').read_text())['layouts']}
- pairs=set()
+ pairs=set();sibling_primary={'general':set(),'general_frlg':set()}
  for path in (ROOT/'data/maps').glob('*/map.json'):
   m=json.loads(path.read_text());l=layouts[m['layout']]
   if m['map_type'] not in ('MAP_TYPE_CITY','MAP_TYPE_TOWN','MAP_TYPE_ROUTE','MAP_TYPE_OCEAN_ROUTE') or 'General' not in l['primary_tileset']:continue
   family='general_frlg' if 'Frlg' in l['primary_tileset'] or 'Legends' in l['primary_tileset'] else 'general'
-  symbol=l['secondary_tileset'];body=re.search(r'const struct Tileset '+symbol+r'\s*=\s*\{(.*?)\};',headers,re.S)[1]
+  symbol=l['secondary_tileset']
+  if symbol=='gTileset_LegendsWyrmtideShore':
+   # Shore retains Dewford's primary references, windows and alternate palette.
+   # Appended inscriptions use secondary pixels and the otherwise unused pal 6.
+   sibling=re.search(r'const struct Tileset '+symbol+r'\s*=\s*\{(.*?)\};',headers,re.S)[1]
+   assert '.swapPalettes = 0x40' in sibling
+   native=words(ROOT/'data/tilesets/secondary/dewford/metatiles.bin');extra=words(ROOT/'data/tilesets/legends_wyrmtide_shore/metatiles.bin')
+   assert extra[:len(native)]==native and len(extra)==len(native)+8*8
+   assert all(not e or e>>12 in (3,5,6) for e in extra[len(native):])
+   sibling_primary[family].update(e&1023 for e in extra[len(native):] if (e&1023)<512)
+   symbol='gTileset_Dewford'
+  body=re.search(r'const struct Tileset '+symbol+r'\s*=\s*\{(.*?)\};',headers,re.S)[1]
   meta=re.search(r'\.metatiles = (\w+)',body)[1];mt=re.search(r'const u16 '+meta+r'\[\] = INCBIN_U16\("([^\"]+)',headers)[1]
   gfx=re.search(r'\.tiles = (\w+)',body)[1];image=re.search(r'const u32 '+gfx+r'\[\] = INCGFX_U32\("([^\"]+)',headers)[1]
   pairs.add((family,symbol,meta,mt,image))
@@ -80,7 +91,7 @@ def main():
  redirects={};swaps={}
  for family,selected in SELECTION.items():
   primary=ROOT/'data/tilesets/primary'/family;im=Image.open(primary/'tiles.png');mt=words(primary/'metatiles.bin')
-  used={e&1023 for e in mt}
+  used={e&1023 for e in mt}|sibling_primary[family]
   for f,s,meta,path,gfx in pairs:
    if f==family:used.update(e&1023 for e in words(ROOT/path))
   limit=640 if family.endswith('frlg') else 512

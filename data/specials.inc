@@ -676,3 +676,7 @@ gSpecials::
 	def_special LegendsGrottoStartBattle
 
 	def_special BattleSetup_StartScriptedWildBattle, waitstate=1
+
+	def_special LegendsWyrmtideHasMaker
+
+	def_special LegendsWyrmtideRefreshDewford
