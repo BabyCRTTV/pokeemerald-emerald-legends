@@ -10536,7 +10536,7 @@
       "width": 34,
       "height": 29,
       "primary_tileset": "gTileset_General",
-      "secondary_tileset": "gTileset_LegendsWyrmtideCave",
+      "secondary_tileset": "gTileset_LegendsWyrmtideShore",
       "border_filepath": "data/layouts/LegendsWyrmtide_Isle/border.bin",
       "blockdata_filepath": "data/layouts/LegendsWyrmtide_Isle/map.bin",
       "layout_version": "emerald"

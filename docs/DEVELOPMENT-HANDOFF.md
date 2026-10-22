@@ -1,5 +1,23 @@
 # Development handoff
 
+## Wyrmtide renewed design review (22 October 2026)
+
+**Model: GPT-6.1 Sol (Codex) | Reasoning: native Hoenn terrain grammar, restrained ruin composition and playable stair architecture.**
+
+Owner superseded the pending publication with another design pass and requested previews. PR #89 remains unmerged at a7a10b49; master remains the published v0.0.70. Reverted only this session's uncommitted v0.0.71 release metadata; retained the lighting-generator integration repair. No owner map edits have arrived on the branch. New visual revisions require review before publication. Retain the previous design gallery as history and preserve subsequent owner Porymap work.
+
+Rebuilt the shore with a Dewford sibling, exact native palms, a coherent pink-rock Regi facade, two columns and three low inscription ledges. Eight new metatiles copy existing Cave pixels into free sibling cells; every native Dewford referenced pixel/animation and all original shared artwork remain exact. The native Cave sibling now borrows Cave 0x396 stair geometry/palette at 0x39E/39F. Thick Sealed Chamber walls and retaining banks guide walking through four distinct landings; the final room centers the dragon among seven worn stones. Updated only the facade-opening metatiles in the event script; quest gates, saves, map dimensions, IDs and warp endpoints remain intact. Night generator preserves sibling primary references and native Dewford light wiring.
+
+Debug/Release builds, unchanged Debug Quickstart, focused source/lighting checks and full native quest/walking/retry/capture/flash/report QA passed. Four descending routes cross 9/6/9/7 stair cells under real input. [New gallery](designs/wyrmtide/hoenn-review/Wyrmtide-Redesign.png), [island source-tile overview](designs/wyrmtide/hoenn-review/Island-Layout.png), [receipt and limits](qa/wyrmtide-hoenn-review.json). Native frames are controlled Debug mGBA fixtures; no authentic historical owner save, natural full-story or Release-emulator playthrough is claimed. Saving review source to PR #89; visual approval and any release publication remain pending.
+
+## v0.0.71 Wyrmtide publication authorized (21 October 2026)
+
+**Model: GPT-6.1 Sol (Codex) | Reasoning: authorized publication, native validation and owner mapping handoff.**
+
+Owner explicitly requested publication of the current Wyrmtide version so they can make manual Porymap map/tileset edits. This authorizes shipping the current visuals; it does not imply aesthetic satisfaction. Preserve all subsequent owner edits and do not regenerate Wyrmtide layouts. Porymap opens the source project folder, not the compiled GBA. Maps are LegendsWyrmtide_Isle (76/4), Descent1–4 (76/5–8) and Heart (76/9).
+
+Prepared v0.0.71 version labels, all changelogs, site and patcher. Prior redesign candidate passed both independently decoded patches; project CI exposed the light generator treating the outdoor sibling as a separate palette owner. Added a checked alias to its unchanged Cave graphics/palettes, retaining its existing night wiring and all artwork. No map or quest change. Release candidate builds/checks, merge, automatic patch publication and actual live download verification remain in progress. AGENTS.md reviewed; existing owner-edit protection applies.
+
 ## Wyrmtide island and tomb redesign — visual review (21 October 2026)
 
 **Model: GPT-6 Astra | Reasoning: native environmental composition, varied descent geometry and actual walking access.**

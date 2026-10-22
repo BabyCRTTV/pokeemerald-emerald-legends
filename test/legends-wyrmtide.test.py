@@ -28,15 +28,29 @@ layouts=json.loads((R/'data/layouts/layouts.json').read_text())['layouts'];v=bas
 secs=json.loads((R/'src/data/region_map/region_map_sections.json').read_text())['map_sections'];v=baseline['nativeMapSectionIds'];assert len(secs)==v['count'] and hashlist([s['id'] for s in secs])==v['sha256']
 # No uncommitted native layout/tileset overwrite during local authoring; CI also
 # verifies the immutable ID baseline and original/sibling asset relationship.
-changed=subprocess.check_output(['git','diff','--name-only','HEAD','--','data/layouts','data/tilesets'],cwd=R,text=True).splitlines();assert all(x=='data/layouts/layouts.json' or 'LegendsWyrmtide_' in x or '/legends_wyrmtide/' in x for x in changed),changed
+changed=subprocess.check_output(['git','diff','--name-only','HEAD','--','data/layouts','data/tilesets'],cwd=R,text=True).splitlines();assert all(x=='data/layouts/layouts.json' or 'LegendsWyrmtide_' in x or '/legends_wyrmtide/' in x or '/legends_wyrmtide_shore/' in x for x in changed),changed
 base=R/'data/tilesets/secondary/cave';sib=R/'data/tilesets/legends_wyrmtide'
 native=(base/'metatiles.bin').read_bytes();authored=(sib/'metatiles.bin').read_bytes()
 assert authored[:len(native)]==native and len(authored)==len(native)+32
 assert authored[-32:-16]==authored[-16:]
 assert (sib/'metatile_attributes.bin').read_bytes()==(base/'metatile_attributes.bin').read_bytes()+struct.pack('<HH',0x61,0)
-# Exact existing stone-step pixels/flips, using only Cave's native palette 6.
-source=struct.unpack_from('<8H',(R/'data/tilesets/primary/general/metatiles.bin').read_bytes(),0xAF*16)
-assert struct.unpack('<8H',authored[-16:])==tuple((w&0xFFF)|0x6000 if w else 0 for w in source)
+# Exact native Cave stair art, with no foreign palette or graphics allocation.
+source=struct.unpack_from('<8H',native,(0x396-512)*16)
+assert struct.unpack('<8H',authored[-16:])==source
+# Shore: exact Dewford native prefix and every referenced pixel are retained.
+from PIL import Image
+shore=R/'data/tilesets/legends_wyrmtide_shore';dew=R/'data/tilesets/secondary/dewford'
+dewmeta=(dew/'metatiles.bin').read_bytes();shoremeta=(shore/'metatiles.bin').read_bytes()
+assert shoremeta[:len(dewmeta)]==dewmeta
+pixels=Image.open(shore/'tiles.png');original=Image.open(dew/'tiles.png')
+used={e[0]&1023 for e in struct.iter_unpack('<H',dewmeta)}|set(range(682,688))
+for tile in used:
+ if tile<512:continue
+ i=tile-512;rect=(i%16*8,i//16*8,i%16*8+8,i//16*8+8)
+ assert pixels.crop(rect).tobytes()==original.crop(rect).tobytes(),('Dewford pixel overwrite',tile)
+assert (shore/'metatile_attributes.bin').read_bytes()[:(dew/'metatile_attributes.bin').stat().st_size]==(dew/'metatile_attributes.bin').read_bytes()
+lights=json.loads((R/'data/tilesets/legends_lights/manifest.json').read_text())
+assert not {e['tile'] for e in lights['families']['general']['cells']}&{e[0]&1023 for e in struct.iter_unpack('<H',shoremeta[len(dewmeta):]) if (e[0]&1023)<512},'Shore column pixels overlap night emission cells'
 # Every stair landing is reachable on foot, and both directions retain exact pairs.
 for key in ['Descent1','Descent2','Descent3','Descent4','Heart']:
  name='LegendsWyrmtide_'+key;m=json.loads((R/f'data/maps/{name}/map.json').read_text());l=next(x for x in layouts if x['id']==m['layout']);a=struct.unpack('<%dH'%(l['width']*l['height']),(R/l['blockdata_filepath']).read_bytes());w=l['width'];start=(8,3) if key!='Heart' else (11,17);goal=(11,20) if key!='Heart' else (11,8)
@@ -61,7 +75,7 @@ while q:
   seen.add((xx,yy));q.append((xx,yy))
 assert {(10,18),(23,15),(19,21),(16,11)}<=seen,'An island clue or the seal is cut off'
 script=(R/'data/scripts/legends_wyrmtide.inc').read_text();assert 'specialvar VAR_RESULT, LegendsWyrmtideHasMaker' in script
-assert 'BottomMid, FALSE' in script and 'B_OUTCOME_CAUGHT, Wyrmtide_Caught' in script and 'B_OUTCOME_WON, Wyrmtide_Calmed' in script
+assert 'METATILE_General_CaveEntrance_Bottom, FALSE' in script and 'B_OUTCOME_CAUGHT, Wyrmtide_Caught' in script and 'B_OUTCOME_WON, Wyrmtide_Calmed' in script
 # Compile actual production C with deterministic native engine boundaries.
 src=re.sub(r'^#include .*$', '',(R/'src/legends_wyrmtide.c').read_text(),flags=re.M)
 names={k:i for i,k in enumerate(sorted(set(re.findall(r'FLAG_[A-Z0-9_]+',src))))}

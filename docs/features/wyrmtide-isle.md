@@ -1,6 +1,6 @@
-# Wyrmtide Isle — story review
+# Wyrmtide Isle
 
-Unshipped addition to the v0.0.70 source, authored for visual review. Uses only existing native Emerald: Legends art. Public Release/Debug downloads are unchanged.
+Unshipped addition to the v0.0.70 source. The owner requested another design review on 22 October; public downloads are unchanged. Uses existing native Emerald: Legends artwork. Preserve subsequent owner Porymap edits.
 
 ## Story and progression
 
@@ -10,23 +10,25 @@ Briney's Dewford menu offers Wyrmtide Isle and keeps his native coastal routes w
 
 Three weathered tablets refer to the hand that shaped the original three titans, the continent's mover standing among six companions, and a last heart hidden from the sun. The sealed entrance opens only with a non-egg Regigigas in the actual party; a fainted companion qualifies. Opening is permanent, so storing it afterward cannot strand the player.
 
-Four distinct stair landings lead to the Heart: the Maker's Hall, a drowned gallery, a memorial switchback and a final procession between dark shafts. Their native stair warps work in both directions. There are no random encounters or forced Flash requirement. The last inscription describes dragon power sealed in an unfinished body. A sleeping Lv75 Regidrago waits on the dais; interaction asks whether to awaken it. Escaping/loss leaves it available, defeating it calms it and permits another challenge, and capture hides it permanently. Reporting to Briney after defeat or capture completes the appended journal quest, The Maker's Last Dream.
+Four distinct stair landings lead to the Heart: the Maker's Hall, a tidal stair, a memorial switchback and a final procession between sea-water basins. Their native stair warps work in both directions. There are no random encounters or forced Flash requirement. The last inscription describes dragon power sealed in an unfinished body. A sleeping Lv75 Regidrago waits on the dais; interaction asks whether to awaken it. Escaping/loss leaves it available, defeating it calms it and permits another challenge, and capture hides it permanently. Reporting to Briney after defeat or capture completes the appended journal quest, The Maker's Last Dream.
 
 ## Identity and save handling
 
 - Appended six maps/layouts, a new map section after preserved MAPSEC_NONE, two menu IDs, two specials and quest ID 63. All published IDs keep their values.
 - Seven audited native flags occupy 0x493–0x499, retaining their unused aliases. No native variable, serialized structure, sector, inventory or storage format changes.
 - On older Dewford Continue saves, refresh only the two appended source NPC templates. Preserve all existing cached NPC templates/permanent movements. Defer spawning a contact or boat while the player's tile is occupied.
-- Original maps/tileset binaries are untouched. One sibling Cave tileset preserves the native metatile/pixel prefix and appends existing General stone-step pixels with Cave’s sandstone palette, as ordinary and native-ladder treads. The region-map sea cell west of Dewford gains a label without changing world-map pixel artwork.
+- Original shared map/tileset artwork is untouched. The shore sibling retains Dewford’s metatile prefix, every referenced pixel, native palm animation and day/night wiring. Eight cells add exact Cave inscription/column pixels in unused sibling slots and Cave’s native palette 6 in Dewford’s unused palette 6.
+- The underground sibling retains all 414 original Cave definitions and reuses native Cave 0x396 for ordinary/warp stairs at 0x39F/0x39E. The exterior entrance uses the same pink-rock cells as Hoenn’s original Regi islands. No palette colors were authored or changed.
+- The region-map sea cell west of Dewford gains a label without changing world-map pixel artwork.
 
-`tools/legends/build_wyrmtide_maps.py` authored the new maps. Existing files are preserved by default. `--refresh-review` is an explicit authoring operation for this unshipped draft, never part of routine builds or releases. Later owner Porymap changes must be retained.
+`tools/legends/build_wyrmtide_maps.py` authored the new maps. Existing files are preserved by default. `--refresh-review` is an explicit map-authoring operation, never part of routine builds or releases. Later owner Porymap changes must be retained.
 
-## Revised environment
+## Current environment review
 
-The island now has a stepped rocky headland, palm groves, a raised entrance court and three complete tablet monuments. The final chamber frames Regidrago on a raised dais between pools, backed by an inscribed headstone. [Current native gallery](../designs/wyrmtide/astra-redesign/Wyrmtide-Redesign.png). [Redesign evidence](../qa/wyrmtide-redesign.json) supersedes the earlier visuals and ROM hashes.
+The 22 October pass uses a single pink-rock headland, two slender native columns and a sheltered sandy landing with Dewford palms. Three low inscription ledges form short clue spurs. Proper three-cell-deep Sealed Chamber walls enclose four stair landings. Retaining banks guide actual movement through the stairs; the tidal gallery and last procession carry the sea beneath the island. A single final inscription, paired columns and seven worn stones frame the sleeping dragon.
 
-## Verification
+[Current native gallery](../designs/wyrmtide/hoenn-review/Wyrmtide-Redesign.png), [source-tile island overview](../designs/wyrmtide/hoenn-review/Island-Layout.png), and [verification/limits](../qa/wyrmtide-hoenn-review.json). The earlier [Astra gallery](../designs/wyrmtide/astra-redesign/Wyrmtide-Redesign.png) remains as design history. This revision is pending owner visual review.
 
-`test/legends-wyrmtide.test.py` checks alias allocation, original IDs, old geometry, source collision/warp pairs and production C gates. `tools/legends/native_wyrmtide_qa/run.py` runs controlled fixtures in the compiled ROM through native mGBA, records real gameplay PNGs and tests affected interactions. The setup payload is private and deleted, never included in published ROMs. Controlled fixtures are not an authentic historical owner save or a full natural story playthrough.
+Source inspiration: [wally-217’s Hoenn map remake](https://www.reddit.com/r/PokemonROMhacks/comments/10ul67l/hoenn_now_with_more_water/) and [redscarewiggler’s Emerald EXP map discussion](https://www.reddit.com/r/PokemonROMhacks/comments/utl9aj/some_beta_maps_for_our_emerald_exp_project/). These informed coherent terrain and small coastal discoveries; no external art or map data was imported. [Porymap’s metatile documentation](https://huderlem.github.io/porymap/manual/tileset-editor.html) describes the layered tile/behavior model used for the local cells.
 
-Local Debug/Release compilation, full native interaction and controlled old-Dewford-cache flash repair passed; see [receipt and limits](../qa/wyrmtide-native.json). Project, full native mGBA and Release/Debug candidate patch workflows passed for source `7279100bcaed27904e83dcb8da69dba0c5ed6373` in [PR #89](https://github.com/BabyCRTTV/pokeemerald-emerald-legends/pull/89). Both candidate BPS patches independently decode against the supported clean base to ROMs exactly matching the local builds. [Patch receipt](../qa/wyrmtide-patches.json). New artwork is not generated for this quest; all gameplay preview frames must be actual native captures.
+For manual editing, the island uses `gTileset_LegendsWyrmtideShore` (new cells 0x37B–0x382); all underground maps use `gTileset_LegendsWyrmtideCave` (warp 0x39E, ordinary stair 0x39F). Existing files are preserved by the generator unless the explicit authoring override is supplied. Do not regenerate over future owner edits.

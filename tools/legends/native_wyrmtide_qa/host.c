@@ -32,12 +32,15 @@ static void navigate(int grid,int targetX,int targetY){
  }
  assert(parent[target]>=0);int reverse[986],count=0;
  for(int at=target;at!=start;at=parent[at])reverse[count++]=at;
+ int stairSteps=0;for(int i=0;i<count;i++)if((grids[grid][reverse[i]]&1023)==0x39F||(grids[grid][reverse[i]]&1023)==0x39E)stairSteps++;
+ if(grid<4&&targetX==11&&targetY==20){assert(stairSteps>=6);printf("PASS descent %d route crosses %d native stair cells\n",grid+1,stairSteps);}
  int at=start;while(count){int next=reverse[--count],delta=next-at;walk(delta==-width?64:delta==width?128:delta==-1?32:16);at=next;}
  frames(350);status();if(target!=warps[grid][0]&&target!=warps[grid][1])assert(box(10)==targetX&&box(11)==targetY);
 }
 int main(int argc,char**argv){assert(argc==10);setbuf(stdout,NULL);mLogSetDefaultLogger(&logger);out=argv[2];mainAddr=strtoul(argv[3],0,0);callback=strtoul(argv[4],0,0)|1;controller=strtoul(argv[5],0,0);for(int i=0;i<3;i++)choices[i]=strtoul(argv[6+i],0,0)|1;scenesOnly=atoi(argv[9]);c=mCoreFind(argv[1]);assert(c&&c->init(c));mCoreInitConfig(c,NULL);mCoreConfigSetDefaultIntValue(&c->config,"skipBios",1);c->loadConfig(c,&c->config);video=calloc(240*160,sizeof(color_t));c->setVideoBuffer(c,video,240);struct VFile*f=VFileOpen(argv[1],O_RDONLY);assert(f&&c->loadROM(c,f));
  const char*names[]={"01-dewford-dock","02-island-landing","03-ancient-seal","04-stair-descent","05-second-landing","06-third-landing","07-fourth-landing","08-slumbering-regidrago"};
  for(int i=0;i<8;i++){setup(i,1);mapIds[i]=box(6);capture(names[i]);if(i==0){key(16);key(1);frames(130);key(1);frames(80);capture("01b-briney-voyage-menu");}}
+ setup(10,1|4);capture("23-open-headland-entrance");
  setup(9,1);key(64);key(1);frames(130);key(1);frames(100);capture("19-maker-inscription");key(1);frames(100);capture("20-maker-among-six");
  if(scenesOnly){puts("PASS native world scenes");c->deinit(c);free(video);return 0;}
  // Actual free movement invokes the production eight-step call hook.

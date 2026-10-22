@@ -130,9 +130,9 @@ Wyrmtide_Sealed::
 	releaseall
 	end
 Wyrmtide_RemoveSeal::
-	setmetatile 15, 10, METATILE_Cave_SealedChamberEntrance_BottomLeft, TRUE
-	setmetatile 16, 10, METATILE_Cave_SealedChamberEntrance_BottomMid, FALSE
-	setmetatile 17, 10, METATILE_Cave_SealedChamberEntrance_BottomRight, TRUE
+	@ Original Route 105/111/120 Regi entrance top and native cave-door foot.
+	setmetatile 16, 9, 0x064, TRUE
+	setmetatile 16, 10, METATILE_General_CaveEntrance_Bottom, FALSE
 	return
 Wyrmtide_DepthTablet::
 	msgbox Wyrmtide_Text_DepthTablet, MSGBOX_SIGN
