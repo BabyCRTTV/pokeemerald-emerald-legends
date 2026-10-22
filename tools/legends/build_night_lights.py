@@ -80,7 +80,7 @@ def main():
    assert '.swapPalettes = 0x40' in sibling
    native=words(ROOT/'data/tilesets/secondary/dewford/metatiles.bin');extra=words(ROOT/'data/tilesets/legends_wyrmtide_shore/metatiles.bin')
    assert extra[:len(native)]==native and len(extra)==len(native)+8*8
-   assert all(not e or e>>12 in (3,6) for e in extra[len(native):])
+   assert all(not e or e>>12 in (3,5,6) for e in extra[len(native):])
    sibling_primary[family].update(e&1023 for e in extra[len(native):] if (e&1023)<512)
    symbol='gTileset_Dewford'
   body=re.search(r'const struct Tileset '+symbol+r'\s*=\s*\{(.*?)\};',headers,re.S)[1]

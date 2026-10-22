@@ -1,5 +1,15 @@
 # Development handoff
 
+## Wyrmtide terrain-border repair (22 October 2026)
+
+**Model: GPT-6 (Codex) | Reasoning: context-aware tile backgrounds, complete native shoreline families and palette continuity.**
+
+Owner clarified that the main design defect is hard tile cutoffs where a tile's border/background does not match its environment. Treat this as a durable mapping preference (added to AGENTS.md). The issue is terrain continuity; preserve the current layout while fixing these joins. Review base is 40929da4 on draft PR #89; master remains 7cf9a7bf/v0.0.70. No new owner Porymap edits were present.
+
+Rebased the shore columns onto General sand and removed the cave-floor matte surrounding the native inscription rocks. Replaced the pool's unrelated dry-rock corners with the complete native General enclosed-pond outline, using the actual Cave 0x201 floor and existing Cave stone shades around animated water. Restored the brown Cave 0x204 stair palette. Eight contextual pool cells append at 0x3A0–0x3A7; existing identifiers, warps, collision footprints, quest logic and save layout remain unchanged. Only the three affected pool layouts and isolated Wyrmtide sibling assets are repaired; original shared pixels/animations remain exact. The asset-only authoring helper requires an explicit refresh and does not write maps.
+
+Debug compilation (GCC 13.2.1), full native mGBA quest/walking/inscription/retry/capture/save-flag/report tests, unmodified Quickstart and focused source/lighting/native-art integrity checks passed. [Native before/after](designs/wyrmtide/edge-review/Native-Border-Comparison.png), [composition detail](designs/wyrmtide/edge-review/Tile-Border-Comparison.png), [receipt/limits](qa/wyrmtide-edge-review.json). Original shared artwork and all pool collision/elevation words remain exact. Release/BPS candidate CI is pending; no release-readiness claim. Visual review remains pending; this is not publication authorization for the revised art.
+
 ## Wyrmtide renewed design review (22 October 2026)
 
 **Model: GPT-6.1 Sol (Codex) | Reasoning: native Hoenn terrain grammar, restrained ruin composition and playable stair architecture.**

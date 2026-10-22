@@ -4,7 +4,7 @@ Only new layouts are regenerated. Existing owner-authored layouts/tilesets are
 never rewritten. Native stair warp pairs and collision words are explicit.
 """
 import json,struct
-from PIL import Image
+from build_wyrmtide_tilesets import shore_tileset,cave_tileset,POOL_IDS
 from pathlib import Path
 R=Path(__file__).resolve().parents[2]
 def write(p,data):
@@ -16,43 +16,10 @@ def obj(gfx,x,y,script='0x0',flag='0',elevation=3):
  return dict(graphics_id=gfx,x=x,y=y,elevation=elevation,movement_type='MOVEMENT_TYPE_FACE_DOWN',movement_range_x=0,movement_range_y=0,trainer_type='TRAINER_TYPE_NONE',trainer_sight_or_berry_tree_id='0',script=script,flag=flag)
 def sign(x,y,script):return dict(type='sign',x=x,y=y,elevation=0,player_facing_dir='BG_EVENT_PLAYER_FACING_ANY',script=script)
 def warp(x,y,dest,index):return dict(x=x,y=y,elevation=3,dest_map='MAP_LEGENDS_WYRMTIDE_'+dest.upper(),dest_warp_id=str(index))
-def shore_tileset():
- # Keep every used Dewford pixel/metatile and its native palm animation intact.
- # Only unused sibling cells receive exact Cave inscription pixels (palette 6,
- # unused by Dewford). The original shared tilesets are never written.
- dew=R/'data/tilesets/secondary/dewford';cave=R/'data/tilesets/secondary/cave';out=R/'data/tilesets/legends_wyrmtide_shore';out.mkdir(parents=True,exist_ok=True)
- image=Image.open(dew/'tiles.png').copy();source=Image.open(cave/'tiles.png')
- native=(dew/'metatiles.bin').read_bytes();words=struct.unpack('<%dH'%(len(native)//2),native)
- used={w&1023 for w in words};assert not used&set(range(944,1024))
- assert 6 not in {w>>12 for w in words},'Dewford palette 6 is no longer free'
- metas=[];mapping={};ids={}
- for original in [0x208,0x209,0x20A,0x218,0x235,0x21A,0x2BC,0x2C4]:
-  block=[]
-  for w in struct.unpack_from('<8H',(cave/'metatiles.bin').read_bytes(),(original-512)*16):
-   tile=w&1023
-   if tile>=512:
-    if tile not in mapping:
-     target=944+len(mapping);assert target<1024;mapping[tile]=target
-     src=tile-512;dst=target-512
-     image.paste(source.crop((src%16*8,src//16*8,src%16*8+8,src//16*8+8)),(dst%16*8,dst//16*8))
-    w=(w&~1023)|mapping[tile]
-   assert w>>12 in (0,3,6)
-   block.append(w)
-  ids[original]=512+len(native)//16+len(metas);metas.append(struct.pack('<8H',*block))
- image.save(out/'tiles.png')
- write('data/tilesets/legends_wyrmtide_shore/metatiles.bin',native+b''.join(metas))
- write('data/tilesets/legends_wyrmtide_shore/metatile_attributes.bin',(dew/'metatile_attributes.bin').read_bytes()+bytes(16))
- write('data/tilesets/legends_wyrmtide_shore/source.json',{'native':'Dewford','inscriptions':'Cave 0x208/209/20A/218/235/21A/2BC/2C4','source_to_sibling_tiles':mapping,'metatiles':ids,'palette':6,'animationReserved':[682,687]})
- return ids
 def main(refresh_review=False):
  if any((R/f"data/layouts/LegendsWyrmtide_{k}/map.bin").exists() for k in ["Isle","Descent1","Descent2","Descent3","Descent4","Heart"]) and not refresh_review:
   raise SystemExit("Existing Wyrmtide maps preserved. Use --refresh-review only for explicit review-layout edits.")
- # Native Cave stair geometry; no pixel or palette files are changed.
- base=R/"data/tilesets/secondary/cave";native=(base/"metatiles.bin").read_bytes();attrs=(base/"metatile_attributes.bin").read_bytes()
- assert len(native)//16==414, "Native Cave allocation changed; review without overwriting owner art"
- tread=native[(0x396-512)*16:(0x397-512)*16]
- write("data/tilesets/legends_wyrmtide/metatiles.bin",native+tread+tread)
- write("data/tilesets/legends_wyrmtide/metatile_attributes.bin",attrs+struct.pack("<HH",0x61,0))
+ cave_tileset()
  shore_ids=shore_tileset()
  groups=json.loads((R/'data/maps/map_groups.json').read_text());layouts=json.loads((R/'data/layouts/layouts.json').read_text())
  for level,key in enumerate(['Isle','Descent1','Descent2','Descent3','Descent4','Heart']):
@@ -87,9 +54,9 @@ def main(refresh_review=False):
   def pool(x1,y1,x2,y2):
    # Native Cave basin: complete bank corners, no cut water edges.
    fill(x1,y1,x2,y2,0x27B,True)
-   for x in range(x1+1,x2):put(x,y1,0x251,True);put(x,y2,0x261,True)
-   for y in range(y1+1,y2):put(x1,y,0x253,True);put(x2,y,0x255,True)
-   for x,y,t in [(x1,y1,0x250),(x2,y1,0x252),(x1,y2,0x260),(x2,y2,0x262)]:put(x,y,t,True)
+   for x in range(x1+1,x2):put(x,y1,POOL_IDS[0x291],True);put(x,y2,POOL_IDS[0x26B],True)
+   for y in range(y1+1,y2):put(x1,y,POOL_IDS[0x28A],True);put(x2,y,POOL_IDS[0x288],True)
+   for x,y,t in [(x1,y1,POOL_IDS[0x289]),(x2,y1,POOL_IDS[0x281]),(x1,y2,POOL_IDS[0x26C]),(x2,y2,POOL_IDS[0x26A])]:put(x,y,t,True)
   def room():
    # Original Sealed Chamber's three-cell-deep wall grammar and bevels.
    # The old draft used outward-facing boulder rims as paper-thin room walls.

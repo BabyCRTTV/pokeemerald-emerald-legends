@@ -31,12 +31,12 @@ secs=json.loads((R/'src/data/region_map/region_map_sections.json').read_text())[
 changed=subprocess.check_output(['git','diff','--name-only','HEAD','--','data/layouts','data/tilesets'],cwd=R,text=True).splitlines();assert all(x=='data/layouts/layouts.json' or 'LegendsWyrmtide_' in x or '/legends_wyrmtide/' in x or '/legends_wyrmtide_shore/' in x for x in changed),changed
 base=R/'data/tilesets/secondary/cave';sib=R/'data/tilesets/legends_wyrmtide'
 native=(base/'metatiles.bin').read_bytes();authored=(sib/'metatiles.bin').read_bytes()
-assert authored[:len(native)]==native and len(authored)==len(native)+32
-assert authored[-32:-16]==authored[-16:]
-assert (sib/'metatile_attributes.bin').read_bytes()==(base/'metatile_attributes.bin').read_bytes()+struct.pack('<HH',0x61,0)
+assert authored[:len(native)]==native and len(authored)==len(native)+32+8*16
+assert authored[len(native):len(native)+16]==authored[len(native)+16:len(native)+32]
+assert (sib/'metatile_attributes.bin').read_bytes()[:len(native)//8+4]==(base/'metatile_attributes.bin').read_bytes()+struct.pack('<HH',0x61,0)
 # Exact native Cave stair art, with no foreign palette or graphics allocation.
-source=struct.unpack_from('<8H',native,(0x396-512)*16)
-assert struct.unpack('<8H',authored[-16:])==source
+source=struct.unpack_from('<8H',native,4*16)
+assert struct.unpack_from('<8H',authored,len(native))==source
 # Shore: exact Dewford native prefix and every referenced pixel are retained.
 from PIL import Image
 shore=R/'data/tilesets/legends_wyrmtide_shore';dew=R/'data/tilesets/secondary/dewford'
@@ -51,6 +51,12 @@ for tile in used:
 assert (shore/'metatile_attributes.bin').read_bytes()[:(dew/'metatile_attributes.bin').stat().st_size]==(dew/'metatile_attributes.bin').read_bytes()
 lights=json.loads((R/'data/tilesets/legends_lights/manifest.json').read_text())
 assert not {e['tile'] for e in lights['families']['general']['cells']}&{e[0]&1023 for e in struct.iter_unpack('<H',shoremeta[len(dewmeta):]) if (e[0]&1023)<512},'Shore column pixels overlap night emission cells'
+# Native cave pixels and animation cells remain exact in the expanded sibling.
+cp=Image.open(sib/'tiles.png');original=Image.open(base/'tiles.png')
+assert cp.crop((0,0,*original.size)).tobytes()==original.tobytes()
+# Outdoor imported objects have the same sand underlay as their surroundings.
+sand=struct.unpack_from('<4H',(R/'data/tilesets/primary/general/metatiles.bin').read_bytes(),0x124*16)
+for i in range(8):assert struct.unpack_from('<4H',shoremeta,len(dewmeta)+i*16)==sand
 # Every stair landing is reachable on foot, and both directions retain exact pairs.
 for key in ['Descent1','Descent2','Descent3','Descent4','Heart']:
  name='LegendsWyrmtide_'+key;m=json.loads((R/f'data/maps/{name}/map.json').read_text());l=next(x for x in layouts if x['id']==m['layout']);a=struct.unpack('<%dH'%(l['width']*l['height']),(R/l['blockdata_filepath']).read_bytes());w=l['width'];start=(8,3) if key!='Heart' else (11,17);goal=(11,20) if key!='Heart' else (11,8)
