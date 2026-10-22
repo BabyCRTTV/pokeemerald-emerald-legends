@@ -56,9 +56,9 @@ int main(int argc,char**argv){assert(argc==10);setbuf(stdout,NULL);mLogSetDefaul
  for(int i=0;i<20;i++){command(1);if(box(6)==mapIds[3])break;key(1);frames(100);}status();assert(box(6)==mapIds[3]);capture("14-first-descent-arrival");command(3);assert(box(5)==1&&box(6)==1&&box(7));puts("PASS party/egg/fainted gate, actual opening and first stair entry, native flash flags");
  // Traverse every descending and ascending stair warp using actual movement.
  for(int i=0;i<4;i++){navigate(i,11,20);assert(box(6)==mapIds[i<3?4+i:7]);}
- capture("14b-deepest-arrival");navigate(5,11,8);capture("22-walked-dragon-dais");navigate(5,11,17);frames(350);status();assert(box(6)==mapIds[6]);
- for(int i=3;i>=0;i--){navigate(i,8,3);assert(box(6)==mapIds[i?i+2:1]);}
- puts("PASS all four descent maps, both stair directions and surface exit");
+ capture("14b-deepest-arrival");navigate(5,11,5);key(64);key(1);dismiss(25);puts("PASS actual walking and reading of the final inscription");navigate(5,11,8);capture("22-walked-dragon-dais");navigate(5,11,17);frames(350);status();assert(box(6)==mapIds[6]);
+ for(int i=3;i>=0;i--){if(i==0||i==2){navigate(i,13,19);key(64);key(1);dismiss(25);}navigate(i,8,3);assert(box(6)==mapIds[i?i+2:1]);}
+ puts("PASS all four descent maps, both stair directions, both depth inscriptions and surface exit");
  // Escape, defeat, then challenge the same native field sprite again.
  setup(7,1|4);key(64);key(1);frames(100);menu();key(128);key(16);key(1);finish(1);status();assert(box(15)==4&&!(box(7)&(16|32)));capture("15b-escaped-retry");
  key(1);frames(100);menu();key(64);key(32);key(1);frames(80);key(1);frames(400);finish(1);status();assert(box(15)==1&&(box(7)&16)&&!(box(7)&32));capture("15c-defeated-retry");

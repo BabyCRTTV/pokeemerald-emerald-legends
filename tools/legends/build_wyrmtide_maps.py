@@ -192,7 +192,7 @@ def main(refresh_review=False):
     for x,y in [(4,3),(14,3),(4,17),(14,17)]:pillar(x,y)
     for y in range(6,15):put(7,y,0x212,True);put(11,y,0x210,True)
     stairs(8,6,10,8);stairs(8,11,10,13)
-    put(8,15,0x2D5);put(10,15,0x2D5)
+    put(8,15,0x2D5,True);put(10,15,0x2D5,True)
    # Recessed, native-looking stair mouths keep both travel directions obvious.
    put(8,2,0x39F);put(8,3,0x39E)
    stairs(10,18,12,19);put(11,20,0x39E)
@@ -208,7 +208,7 @@ def main(refresh_review=False):
    for x in [10,11,12]:signs.append(sign(x,4,'Wyrmtide_FinalTablet'))
    for x,y in [(6,4),(16,4),(6,14),(16,14)]:pillar(x,y)
    pool(3,8,7,12);pool(15,8,19,12)
-   for x,y in [(9,6),(13,6),(8,7),(14,7),(9,9),(11,10),(13,9)]:put(x,y,0x2D5)
+   for x,y in [(9,6),(13,6),(8,7),(14,7),(9,9),(11,10),(13,9)]:put(x,y,0x2D5,True)
    bank(8,12,14,14);stairs(10,12,12,14);put(11,16,0x39F);put(11,17,0x39E)
    objects=[obj('OBJ_EVENT_GFX_VAR_F',11,7,'Wyrmtide_Regidrago','FLAG_LEGENDS_WYRMTIDE_CAUGHT')]
    warps=[warp(11,17,'Descent4',1)]
