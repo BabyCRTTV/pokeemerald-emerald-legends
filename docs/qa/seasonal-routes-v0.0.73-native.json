@@ -1171,5 +1171,44 @@
   "captures_inspected": {
     "scene-249-gui.png": "158724575a97e217ff15bf82338b6d5bc7a7a95981976f76d0d690a4ec31d64d",
     "scene-257-gui.png": "dc077a42a0e25bb15ac95327d5bd75826e3b19b4c7e75623d4bf9e7654cd9db1"
+  },
+  "build_and_dual_decoder_run": 40546074400,
+  "patch_artifact": 12755206106,
+  "patch_artifact_sha256": "c35bb9f41e51edd3819d47724bd9537f983bec1fce3805b355850bdc5c64a11c",
+  "patches": {
+    "Pokemon-Emerald-Legends-v0.0.73.bps": {
+      "patch_sha256": "596a11f7eca9385baec4e97d90e9d0349c53aadaa5f3a31283cb90c082328343",
+      "target_sha256": "10014a76eacd097fa5bb9208073ca83ffe13e2bab46a40888848e2b0e9b27656",
+      "target_bytes": 33554432,
+      "exact_native_ROM_match": true
+    },
+    "Pokemon-Emerald-Legends-v0.0.73-debug.bps": {
+      "patch_sha256": "c1631b83ea96c9dbb590855087dbe4b9438dec25c556b0bab46eba49db0cd237",
+      "target_sha256": "e139970cac991914e68b07542bebc17fcbc0c03b084ce8bf79c09d29e1f2c371",
+      "target_bytes": 33554432,
+      "exact_native_ROM_match": true
+    }
+  },
+  "independent_browser_decoder": {
+    "passed": true,
+    "source_SHA1": "f3ae088181bf583e55daf962a92bb46f4f1d07b7",
+    "decoder": "Actual committed docs/patcher.js applyBps executed in Node VM; independent of Floating IPS",
+    "decoder_sha256": "591e8d1e9b284a867fe8c11a81d5fc020f7e4d7f8f930dcfb39c1887d716f6df",
+    "verifier_sha256": "bbb6057cadba5a72d14e73c1f75cc57563c121eebd68e0ce97869fd18a110d8b",
+    "results": {
+      "Pokemon-Emerald-Legends-v0.0.73.bps": {
+        "patch_sha256": "596a11f7eca9385baec4e97d90e9d0349c53aadaa5f3a31283cb90c082328343",
+        "target_sha256": "10014a76eacd097fa5bb9208073ca83ffe13e2bab46a40888848e2b0e9b27656",
+        "target_bytes": 33554432,
+        "exact_native_ROM_match": true
+      },
+      "Pokemon-Emerald-Legends-v0.0.73-debug.bps": {
+        "patch_sha256": "c1631b83ea96c9dbb590855087dbe4b9438dec25c556b0bab46eba49db0cd237",
+        "target_sha256": "e139970cac991914e68b07542bebc17fcbc0c03b084ce8bf79c09d29e1f2c371",
+        "target_bytes": 33554432,
+        "exact_native_ROM_match": true
+      }
+    },
+    "limits": "Byte-decoder test; physical browser file-picker/download and Pizza Boy execution are separate checks."
   }
 }

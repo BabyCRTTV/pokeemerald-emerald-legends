@@ -376,7 +376,7 @@ Fishing/Dive, Mirage Island’s Wynaut grass/appearance/Liechi Berry, Sky Pillar
 | Autumn | Frogadier | Greninja |
 | Winter | Drizzile | Gyarados |
 
-[Source/compatibility receipt](../qa/seasonal-routes-v0.0.73-source.json). Host/source, project/browser, both native builds and all 262 candidate native scenarios passed; all 345 prior frames retained identical pixels. Independent BPS reconstruction and publication gates remain pending. Public v0.0.72 remains intact until verified publication.
+[Source/compatibility receipt](../qa/seasonal-routes-v0.0.73-source.json). Host/source, project/browser, both native builds and all 262 candidate native scenarios passed; all 345 prior frames retained identical pixels. Both independent BPS reconstructions also passed; production/publication gates remain pending. Public v0.0.72 remains intact until verified publication.
 
 ## DexNav silhouettes
 
