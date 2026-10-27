@@ -2,6 +2,12 @@
 
 Model: GPT-6 (Codex) | Reasoning: preserve approved game inputs, distinguish host/native/decoder evidence and stop publication at the unresolved Release gate.
 
+## Verified candidate — 27 October 2026
+
+Native run `40445792327` completed successfully after the package-install delay. Debug created both private native battery fixtures and passed real boat interactions plus the established grotto/flash/Living Hoenn/seasonal/DexNav/bedroom/wardrobe suite. Unmodified Release booted normally through Continue and passed return decline/accept, clear-ground landing, real walking, outbound-gate retention and decline/reboarding with both gate snapshots. Existing normal Release grotto/bedroom/wardrobe Continue checks also passed. No Release ROM/RAM writes were used by the boat host. Downloaded artifact `12708703326` matched its archive digest; both actual native ROM hashes exactly matched the dual-decoder patch targets below. Verified image hashes and inspected actual Release Cinnabar return/Mt. Ember reboarding captures. [Durable native receipts](ember-return-v0.0.71-native.json).
+
+Current project `40445792342` and build/dual-decoder patch `40445792347` passed. Downloaded its artifact `12708143740`, verified archive/patch hashes and decoder receipt. Tested source `b7a111ad`; later commits changed only documentation/changelog dates, confirmed by compare. All four v0.0.71 changelog views now use October 27, the publication date. AGENTS.md was reviewed without a new durable rule. Candidate is ready for the already-authorized merge/publication; actual merged runs, automatic patch commit, Pages and live-byte verification must be recorded separately before declaring publication complete. Controlled current fixtures do not establish authentic historical saves, uninterrupted story/balance or Pizza Boy coverage.
+
 ## Scope and compatibility
 
 Published baseline: master `7cf9a7bfcb515ad33b4840ce38cd7d2e88008b8d`, VERSION 0.0.70. PR #90 prepares 0.0.71. Its only gameplay change moves the existing Mt. Ember boat return from blocked Cinnabar `(20,9)` to clear `(21,8)` beside the existing sailor. Maps, tilesets, approved artwork, wardrobe, seasons, flags/IDs, save layouts/readers, rewards and outbound progression gates are unchanged. No migration is required. The original geometry review remains in [the October 26 record](ember-return-2026-10-26.md).
@@ -21,7 +27,7 @@ Published baseline: master `7cf9a7bfcb515ad33b4840ce38cd7d2e88008b8d`, VERSION 0
 
 Fresh v0.0.70 live Release/Debug downloads matched the published manifest. Live homepage, changelog, patcher HTML and JS matched pinned Git blobs. No new release was published during this checkpoint.
 
-## Remaining gate / exact resume point
+## Earlier blocked checkpoint (superseded by verified candidate above)
 
 At 2026-10-27 03:55 UTC (October 26 locally), native run `40445792327`, job `121996650473`, remained in compiler/mGBA package installation, which began at 03:44:05 UTC. It had not reached the new tests. The running job's logs were not yet available. Local ARM/mGBA packages are unavailable. This is an external setup delay, not an observed new game or Release harness failure.
 
