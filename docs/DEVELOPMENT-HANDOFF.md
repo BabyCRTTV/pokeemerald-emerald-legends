@@ -1,5 +1,15 @@
 # Development handoff
 
+## v0.0.72 Routes 122–126 — implementation candidate (27 October 2026)
+
+**Model: GPT-6 (Codex) | Reasoning: append native-method seasonal data while preserving resident access, earlier tables and correlated field-survey/story paths.**
+
+Owner requested more encounters on untouched routes and has not made TileForge edits yet. Prepared the next five numbered routes: Route 123 grass and Routes 122/124/125/126 Surf, with twenty tables and forty distinct new seasonal visitors spanning Generations 1–9. None overlap earlier seasonal visitors or grotto pools. Preserved all 84 earlier C arrays exactly, native residents, per-slot levels/weights/rates, all-day committed-season behavior and unrelated methods. Maps/tilesets/artwork, fishing/Dive, field requests, story/HM gates, saves and identifiers are unchanged. Existing Route 124 Water partners remain available year-round.
+
+Actual-C host checks passed all 104 tables, distributions, dependent readers, pending-season isolation, bounds and fallback. Importer regression passed 104/84/64/48/32/16-table snapshots with stale future variants removed. The native harness preserves all 178 earlier scenarios exactly and appends 42 native grass/Surf cases (220 planned; 56,320 real creations). This is a verified scenario plan, not a native execution claim. [Source/compatibility receipt](qa/seasonal-routes-v0.0.72-source.json), [candidate QA](qa/seasonal-routes-v0.0.72.md).
+
+Prepared v0.0.72 metadata/changelogs; public master/downloads remain v0.0.71. Finish matching LegendsDex source/data/cache metadata, then verify project/wiki/browser checks, Debug/Release builds, native execution and both independent clean-base patch decoders before merge/publication/live-byte checks. Routine encounter previews were previously waived; no artwork/UI redesign or extra visual approval is needed. AGENTS.md reviewed; existing preservation rules cover future map-editor edits, so no new durable rule was added. Historical saves/full-story/Pizza Boy limits and separate Wyrmtide/wiki backlog remain unchanged.
+
 ## v0.0.71 return landing — published and verified (27 October 2026)
 
 **Model: GPT-6 (Codex) | Reasoning: preserve approved game inputs, require real Debug/normal Release interactions and verify the exact published bytes.**

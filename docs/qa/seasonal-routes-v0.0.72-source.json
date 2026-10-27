@@ -1,0 +1,384 @@
+{
+  "model": "GPT-6 (Codex)",
+  "baseline_commit": "6316eb66eac73dde03fffb01b252c0e11c546f75",
+  "baseline_header_sha256": "b4eefe307ac31d181795ad9bfbeb30c093a7db40e0bf1bef2e1b548bf96b61a6",
+  "protected_array_sha256": {
+    "sRoute101SpringMons": "18c941de12bdfbb336330236d62a69ff6e44b0c730685f64cd08b726d67d0fdc",
+    "sRoute101SummerMons": "cd18440f3b968b7c87c4efe3c5bea64d3fc02dd53a7bac5a1771b81614139dfb",
+    "sRoute101AutumnMons": "3813ad44cf6de359261bda1c711ebd90a6f6a88e6cc2165d805d42e94c19baa5",
+    "sRoute101WinterMons": "501ca714b06ff3a89581f51710d2511bf5a2cb393884b41714f172d0e1531145",
+    "sRoute102SpringMons": "6b19b7d0b7bced449fd0cd683c9340a7f4655be21f72cccc5c606ab4ab2d930d",
+    "sRoute102SummerMons": "8b026d9e1a96c4beee017e650442106eb915750b3afdcc374bc31fee056a0773",
+    "sRoute102AutumnMons": "56b312695c3d9209a308d256165e51c4cb58e781ad62f0f8e8cf90040454070c",
+    "sRoute102WinterMons": "1d4efeb3ce967526c3f26f53afa9246109708c599ec27126667f03843a8c465f",
+    "sRoute103SpringMons": "6a9fcf814d990c42af1dd6db57f3a345ec6aae74c32b04507311151847b94968",
+    "sRoute103SummerMons": "9f9cfc44bccf26691f7b822c21a622280a0bf491f3c277c96ded843fa878a33a",
+    "sRoute103AutumnMons": "8f199598deeaf633715127f620bcde344e2b0bc2329189e733b8ad322ef448f4",
+    "sRoute103WinterMons": "e3dbc4fabdf9df0a05629d8a7c9f01433cabff7632a9879908faa4235018978b",
+    "sRoute104SpringMons": "2a546d57c580a2fc5be243b0501f1df8fd51f97d6565e5d07eea844ea410140c",
+    "sRoute104SummerMons": "9c35c3221a5c5b9647774b4e8902e0e42ec2ea3944335ee8f4cbff96511ac5b2",
+    "sRoute104AutumnMons": "ec44a7f93619ad863f6efc4b7228c020f05272fb6830d02c1905cdd3ce418000",
+    "sRoute104WinterMons": "283eebfbc696473386773a86f645bb848cff6e8d946cbe7528a30ee97ccb345b",
+    "sRoute110SpringMons": "39fd3ea6dde0a56c3341497ce82bcbc555b56f2a9e46de768f1d71577a2fd321",
+    "sRoute110SummerMons": "5925057e82d9b5f54aa3dfabf7ab03c8c862203820f4f33702889328ead251a8",
+    "sRoute110AutumnMons": "6d41990209b5ab829b4af840915dac039046da2e426e81f75635056f563c5d8e",
+    "sRoute110WinterMons": "907d6a0f5362feb41408c3740dea9422317854d10bf5cb7aa65419cf26948a15",
+    "sRoute111SpringMons": "7b793de7788f9cb3db46e0b424f54a29ee66ffa1b36ec37b5702b7ef5f617dd5",
+    "sRoute111SummerMons": "5f5fd344e74742c5d26d99cd7f4261c2f215b16c33fd2a03c2442ae70f89e133",
+    "sRoute111AutumnMons": "ae16a129ea61ba47f802d2d179241adc15cfd759826b758ca187cde30b6eaf17",
+    "sRoute111WinterMons": "97257cfedf2ce4651c5741dbc68aed92e79f0629566521cdbfc94fa301ccf429",
+    "sRoute112SpringMons": "6a7df34c9eb8b07902ccb6b40ef37b10fecdab561e092244f71a83230620d94a",
+    "sRoute112SummerMons": "12791841486ed3f61206810bd6d6471154b2a66b7d814cbbcd6bf6359d6f59ba",
+    "sRoute112AutumnMons": "619a10704b6f864fccb9922f3907bd7b6db5a0e0a7536e3cc1b30fddf833c747",
+    "sRoute112WinterMons": "a8a27f7ea3dfc06480a61777d4154da753a676a5c9eb206dd4ad7353b74e1b4f",
+    "sRoute113SpringMons": "3715e35f9b424305e5cf6f650f5888af40f3c70c6246337265866031cb627f0f",
+    "sRoute113SummerMons": "1fb63b0049ac6f517df0e97b9acb8650ec0c9382adc338ca304a1777a252196f",
+    "sRoute113AutumnMons": "98dea783e4591b0dfe85e6776ad6ceee45a2319f1f8de1bf1bd797fd17a6e81b",
+    "sRoute113WinterMons": "a2f9e965fcb24377651020cacc92d52d17cb67f111b6cb5062819f0b6302df64",
+    "sRoute114SpringMons": "727eafbc6b96f9108f7f93c9d224e10336dc709e27dfb1faf307e583cacc22dc",
+    "sRoute114SummerMons": "100acfe317f4d6aff203d9e683846b425d78e009714a7d638004a53722d5e742",
+    "sRoute114AutumnMons": "15865a240b66c10a1a65a4d423d309c76b5e7903d5e1bdaa428cdf27c5ddc90c",
+    "sRoute114WinterMons": "47e8b133981c772ac99f14f5d344fd1893014714e9b6dc75f8bd84522c699402",
+    "sRoute115SpringMons": "3baabf82697b1db77aa525b80470f0cbc9c4eae02b9a98db5a06fe13e172ec8b",
+    "sRoute115SummerMons": "0860f86e97063e1ddfdaed2927b64883caaab7c3fb24f6fc816cba608f022c3a",
+    "sRoute115AutumnMons": "88ad0d523cd37ecab1a29608885409f455b16fb6419dc5e52ab39150f7b33787",
+    "sRoute115WinterMons": "0298f1e5531b6365126cfc3c8b252cbd3d373436d27fe16b00742177173e690c",
+    "sRoute116SpringMons": "185fb5652941769d8b634683546a85438df3009422c770650ee152f6c4473c3f",
+    "sRoute116SummerMons": "bb8eff5832c91a87fb481a3c913409c097ecfb362436f2c3bd0abbafbabbcb33",
+    "sRoute116AutumnMons": "7dba9a74ed5fcb3b533354df2f9d024f2f1167ee3b7d6cf9e46200b7055430d6",
+    "sRoute116WinterMons": "8cb38b651285d6a4cc57515951030247f8bcbbdab7e563bc14a1a58d9474dce4",
+    "sRoute117SpringMons": "2a6f63b680b54eff3a5e50b96e9d3b30921ef0c3665d67d5c6539ebb4a2a63d6",
+    "sRoute117SummerMons": "b56b8713d682e0f4123e40729bd9203af5789b8778c89af3ad17e195b0f31eb2",
+    "sRoute117AutumnMons": "f37bb78059739a9daab19508b9c4c2617ecd831460bfe90e62ede351354a88da",
+    "sRoute117WinterMons": "66ba72f35adf1fa15e9e470d3a1ca5026d737ba76bab89c0f99ccf5dec3803f8",
+    "sRoute118SpringMons": "eed20ec88b1d2e41cf0d1835aa67297c43bebfd38e9cfff42b294085563b8edf",
+    "sRoute118SummerMons": "be9751275915511dcbd1fc87d3397c34d394134233e87169bd5fb5ad0a59484c",
+    "sRoute118AutumnMons": "9fa76b74079d6e95e115d8fb65d1d62fec8ce50fae84e6d4e94e24b1e881f376",
+    "sRoute118WinterMons": "b381a0cf38464c5fbf062c9f00c10d3d1aee3d0d678e62b0b5d5fdfd01683018",
+    "sRoute119SpringMons": "67609902405650f151bd40dcf4cf9c77cee59455763b768a295e6e43bf273893",
+    "sRoute119SummerMons": "46b6b9a6b7d4e926a2f2610bab2f60b187c3985a10fe31fe4ce2afd7e330cd93",
+    "sRoute119AutumnMons": "34182bae71f014b5c0933dc9c3498318c86db86992152cd8b0a8a652f0586a02",
+    "sRoute119WinterMons": "3040b88f87c1117a61c651969a08a68df41d9735b029eea47e33e1f64a86aa4e",
+    "sRoute120SpringMons": "ea3989c4a83fef44747b86745dc030aa65ecba75b9f0a32264fc195fc091f03e",
+    "sRoute120SummerMons": "c903ad25e4047ba08df31ac5e9ca76e8b3c7752ced5add1236321e7471e4504c",
+    "sRoute120AutumnMons": "d852a23e791cef69c75bfdb4d34d9c8578dd1763fa32b68db5e7efa696f985c4",
+    "sRoute120WinterMons": "1dc9682c2c164f28d8ab2180c24d331b6982ecba2744d462512a57e9c4983797",
+    "sRoute121SpringMons": "a2fe5eef46cf4f1dff86cd4f259421b8289953a5a03d4dd73cef007e38be8cbd",
+    "sRoute121SummerMons": "7e19311be7b83b6faa9d3fbde1fc55fc9dfd69f583ed0655f1781cc23e552830",
+    "sRoute121AutumnMons": "9371b73ffb51168cd73e58da2c68cbd8d4f9150994df3bbd421d668127f57c81",
+    "sRoute121WinterMons": "b1bf58426f027cf5915eaddd341877e9ea951f781a787fad543ed0eca31a339f",
+    "sRoute105SpringWaterMons": "8372226dd537b6a0a14c3d6b7b8548dccf896416c34e0fa6a345745f203f132e",
+    "sRoute105SummerWaterMons": "8bb32e62c67606e811707f2dea500935243fa3a0129fa514a57d89c46edd5817",
+    "sRoute105AutumnWaterMons": "b97597f5720c17a438c1e4e19332e872c5a2712c6a421d715577a18d49d1a9fa",
+    "sRoute105WinterWaterMons": "28f4aa9f0622891403d97c49d6bc2481157b6469b7a9d26232aa3a6c2d1390d7",
+    "sRoute106SpringWaterMons": "886592b88aa0be9aa5cb253ab4644b53b517c17884c28dd0c9b55083e0ad0eaf",
+    "sRoute106SummerWaterMons": "fefef350b00bf14e558d50d12e0a5ed8bbe61cd21b7211b7a40d4cd1d3b98880",
+    "sRoute106AutumnWaterMons": "f8ac5f997fb636c96e127586ec71c0099f0e5905d338ae1cd208aa9e7ddaf479",
+    "sRoute106WinterWaterMons": "51587c331e32404c369a865ebd6ac1a6eb821a4ff81179ac19037fbbe2c58c66",
+    "sRoute107SpringWaterMons": "6e584cc921e4c6dd683ec54980532b00cc8350ce7bd5181507be0c7ec6faae07",
+    "sRoute107SummerWaterMons": "33b0804e2f07a5a0c412281a7601ede25ec395eed73c2c65e19c026254b7e7a1",
+    "sRoute107AutumnWaterMons": "92dabe3fa45b62e9b563c8f7eb0cbe30918a66a5a8aa045dbbf40354f5b8fcad",
+    "sRoute107WinterWaterMons": "bf01edf901e0ffc631fd1260329bb11fc5659bdcd48737096268fc5f711b6cb5",
+    "sRoute108SpringWaterMons": "ad55cc37a6a03b5ed57de621e4281abab09db9c662922880e96453bb75e46663",
+    "sRoute108SummerWaterMons": "26879096bee454cb305a3ad2383744e5f19c054cfa23884f8366ca86bff1dc49",
+    "sRoute108AutumnWaterMons": "5bb67977892bb34858994253bbc7b5907dcdca3d58e5cd057337ca1663b1e9d2",
+    "sRoute108WinterWaterMons": "6dd1a2d3e4b662e70e13158583c6d1c80ba01a6ba6e6b6d873747d540ef61dfa",
+    "sRoute109SpringWaterMons": "5b08d0bd7d3f40cdfbdba5727760076713795fbb2929680e97a1910cb1ebbc3c",
+    "sRoute109SummerWaterMons": "8e95333c92b4d3e2580b29b2b765c79ec5f6f5465c2530a43e91bb92baf72aba",
+    "sRoute109AutumnWaterMons": "ddacdff48439b7e5aa51d9226d71ecb2777faff47c262cc8ee94745b4f0d4af3",
+    "sRoute109WinterWaterMons": "df99125910aeefc133da6ba85d71c198cc7b69492d958c3c6d00f1c9ae54f964"
+  },
+  "added_tables": 20,
+  "total_tables": 104,
+  "distinct_new_visitors": 40,
+  "routes": {
+    "122": {
+      "method": "water_mons",
+      "encounter_rate": 4,
+      "native_slots": [
+        {
+          "min_level": 5,
+          "max_level": 35,
+          "species": "SPECIES_TENTACOOL"
+        },
+        {
+          "min_level": 10,
+          "max_level": 30,
+          "species": "SPECIES_WINGULL"
+        },
+        {
+          "min_level": 15,
+          "max_level": 25,
+          "species": "SPECIES_WINGULL"
+        },
+        {
+          "min_level": 25,
+          "max_level": 30,
+          "species": "SPECIES_PELIPPER"
+        },
+        {
+          "min_level": 25,
+          "max_level": 30,
+          "species": "SPECIES_PELIPPER"
+        }
+      ],
+      "visitors": {
+        "spring": [
+          "PSYDUCK",
+          "GOLDEEN"
+        ],
+        "summer": [
+          "POLIWAG",
+          "SEAKING"
+        ],
+        "autumn": [
+          "BARBOACH",
+          "QUAGSIRE"
+        ],
+        "winter": [
+          "PALPITOAD",
+          "DEWGONG"
+        ]
+      }
+    },
+    "123": {
+      "method": "land_mons",
+      "encounter_rate": 20,
+      "native_slots": [
+        {
+          "min_level": 26,
+          "max_level": 26,
+          "species": "SPECIES_POOCHYENA"
+        },
+        {
+          "min_level": 26,
+          "max_level": 26,
+          "species": "SPECIES_SHUPPET"
+        },
+        {
+          "min_level": 26,
+          "max_level": 26,
+          "species": "SPECIES_MIGHTYENA"
+        },
+        {
+          "min_level": 28,
+          "max_level": 28,
+          "species": "SPECIES_SHUPPET"
+        },
+        {
+          "min_level": 28,
+          "max_level": 28,
+          "species": "SPECIES_MIGHTYENA"
+        },
+        {
+          "min_level": 26,
+          "max_level": 26,
+          "species": "SPECIES_ODDISH"
+        },
+        {
+          "min_level": 28,
+          "max_level": 28,
+          "species": "SPECIES_ODDISH"
+        },
+        {
+          "min_level": 28,
+          "max_level": 28,
+          "species": "SPECIES_GLOOM"
+        },
+        {
+          "min_level": 26,
+          "max_level": 26,
+          "species": "SPECIES_WINGULL"
+        },
+        {
+          "min_level": 27,
+          "max_level": 27,
+          "species": "SPECIES_WINGULL"
+        },
+        {
+          "min_level": 28,
+          "max_level": 28,
+          "species": "SPECIES_WINGULL"
+        },
+        {
+          "min_level": 25,
+          "max_level": 25,
+          "species": "SPECIES_KECLEON"
+        }
+      ],
+      "visitors": {
+        "spring": [
+          "TOEDSCOOL",
+          "CHINGLING"
+        ],
+        "summer": [
+          "DUNSPARCE",
+          "STUNKY"
+        ],
+        "autumn": [
+          "YAMASK",
+          "LITWICK"
+        ],
+        "winter": [
+          "GOLETT",
+          "ELGYEM"
+        ]
+      }
+    },
+    "124": {
+      "method": "water_mons",
+      "encounter_rate": 4,
+      "native_slots": [
+        {
+          "min_level": 5,
+          "max_level": 35,
+          "species": "SPECIES_TENTACOOL"
+        },
+        {
+          "min_level": 10,
+          "max_level": 30,
+          "species": "SPECIES_WINGULL"
+        },
+        {
+          "min_level": 15,
+          "max_level": 25,
+          "species": "SPECIES_WINGULL"
+        },
+        {
+          "min_level": 25,
+          "max_level": 30,
+          "species": "SPECIES_PELIPPER"
+        },
+        {
+          "min_level": 25,
+          "max_level": 30,
+          "species": "SPECIES_PELIPPER"
+        }
+      ],
+      "visitors": {
+        "spring": [
+          "LUMINEON",
+          "MANTINE"
+        ],
+        "summer": [
+          "FLOATZEL",
+          "OCTILLERY"
+        ],
+        "autumn": [
+          "LANTURN",
+          "SEADRA"
+        ],
+        "winter": [
+          "GOLDUCK",
+          "CLOYSTER"
+        ]
+      }
+    },
+    "125": {
+      "method": "water_mons",
+      "encounter_rate": 4,
+      "native_slots": [
+        {
+          "min_level": 5,
+          "max_level": 35,
+          "species": "SPECIES_TENTACOOL"
+        },
+        {
+          "min_level": 10,
+          "max_level": 30,
+          "species": "SPECIES_WINGULL"
+        },
+        {
+          "min_level": 15,
+          "max_level": 25,
+          "species": "SPECIES_WINGULL"
+        },
+        {
+          "min_level": 25,
+          "max_level": 30,
+          "species": "SPECIES_PELIPPER"
+        },
+        {
+          "min_level": 25,
+          "max_level": 30,
+          "species": "SPECIES_PELIPPER"
+        }
+      ],
+      "visitors": {
+        "spring": [
+          "WIMPOD",
+          "KINGLER"
+        ],
+        "summer": [
+          "CARVANHA",
+          "SHARPEDO"
+        ],
+        "autumn": [
+          "WUGTRIO",
+          "CRAWDAUNT"
+        ],
+        "winter": [
+          "WAILMER",
+          "WALREIN"
+        ]
+      }
+    },
+    "126": {
+      "method": "water_mons",
+      "encounter_rate": 4,
+      "native_slots": [
+        {
+          "min_level": 5,
+          "max_level": 35,
+          "species": "SPECIES_TENTACOOL"
+        },
+        {
+          "min_level": 10,
+          "max_level": 30,
+          "species": "SPECIES_WINGULL"
+        },
+        {
+          "min_level": 15,
+          "max_level": 25,
+          "species": "SPECIES_WINGULL"
+        },
+        {
+          "min_level": 25,
+          "max_level": 30,
+          "species": "SPECIES_PELIPPER"
+        },
+        {
+          "min_level": 25,
+          "max_level": 30,
+          "species": "SPECIES_PELIPPER"
+        }
+      ],
+      "visitors": {
+        "spring": [
+          "ARAQUANID",
+          "SWANNA"
+        ],
+        "summer": [
+          "DREDNAW",
+          "CLAWITZER"
+        ],
+        "autumn": [
+          "JELLICENT",
+          "BARBARACLE"
+        ],
+        "winter": [
+          "TENTACRUEL",
+          "KINGDRA"
+        ]
+      }
+    }
+  },
+  "notes": "Native residents/slot levels/weights/rates retained; data-only addition. Fishing, Dive, maps, scripts, save identifiers, artwork and all previous arrays unchanged. New visitors do not duplicate earlier seasonal or grotto species.",
+  "native_scenario_plan": {
+    "previous": 178,
+    "total": 220,
+    "appended": 42,
+    "previous_scenarios_sha256": "32e7635b64cf5dfa7ac16c07bc2be89416db020bebf6decca23c158fce42cd2f",
+    "actual_native_execution": "pending"
+  }
+}

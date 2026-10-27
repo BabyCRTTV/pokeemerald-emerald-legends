@@ -2,6 +2,13 @@
 
 This is the player-facing history for the recommended **Release** build. Shared Legends changes are repeated here so this file stands on its own; Release-only behavior is called out separately.
 
+## [0.0.72] - 2026-10-27
+
+- Added seasonal encounters to Route 123 grass and Routes 122, 124, 125 and 126 Surf.
+- Added 40 distinct seasonal visitors across Generations 1–9 while retaining original residents, native slot levels and encounter rates.
+- Preserved earlier encounter tables, fishing, Dive, story events, approved artwork and save compatibility.
+- Synchronized LegendsDex seasonal rosters, encounter odds and source metadata.
+
 ## [0.0.71] - 2026-10-27
 
 - Corrected the Mt. Ember return boat landing in Cinnabar so the player arrived on clear ground beside the expedition sailor.
