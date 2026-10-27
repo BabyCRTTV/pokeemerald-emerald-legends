@@ -1,5 +1,15 @@
 # Development handoff
 
+## Release boat QA uses normal Continue — candidate pending (26 October 2026)
+
+**Model: GPT-6 (Codex) | Reasoning: validate optimized Release behavior through its supported save/Continue path rather than depend on private LTO function names.**
+
+Combined `3f60da69` passed project `40444532680` and Debug mGBA boat decline/accept, clear-ground return, walking, outbound-gate retention and reboarding. Its broader native Debug grotto/battle/flash/Living Hoenn/seasonal/DexNav/bedroom/wardrobe checks also passed. Artifact `12708046192` retains the actual frames and receipt; Debug ROM is `cf9e5925781e6f2ecd7f5b98d2b251e3b25cf290b9b86fab5c74b1f53943a000`. Inspected its actual Cinnabar return frame. The same job's Release ROM compiled, but the private injection runner stopped before gameplay because LTO did not preserve `Task_HandleYesNoInput` under that exact name; this is not a Release gameplay failure or pass.
+
+Replaced that Release-only harness path in `b7a111ad`: the existing Debug fixture callback performs real native saves before interaction, cloning two private current-format battery fixtures with/without outbound gates. New release.py/release.c boots the unchanged Release ROM through normal title/Continue and uses real buttons plus read-only position, flags, result and field-lock observations for the same boat scenarios. It resolves unique LTO data aliases where necessary, checks the ROM hash before/after and records fixture provenance/limits. Private saves/ROMs are excluded from uploaded artifact globs; only frames, receipts and logs are retained. Production scripts/assets/metadata/ROM inputs are unchanged. Python syntax review passed; new Debug fixture creation and Release interaction results are still pending in CI `40445792327`. Project `40445792342` and patch `40445792347` also need final verification.
+
+Earlier patch run `40444532795` passed both builds, canonical clean Emerald identity, Floating IPS reconstruction and the independent browser decoder; artifact `12708191242` contains candidate patches and hashes. Before merge/publication, require successful current native Debug/Release results and patch checks, compare native and decoded target hashes, preserve any concurrent edits, then verify automatic patch commit, Pages and actual live bytes. VERSION/public master remain 0.0.70 until that verified release. No new game source/artwork/save format or durable AGENTS.md rule changed; authentic historical saves, full progression and Pizza Boy remain outside this controlled QA.
+
 ## Resumption audit and native input correction (26 October 2026)
 
 **Model: GPT-6 (Codex) | Reasoning: distinguish a fixture-input failure from production event behavior; preserve live concurrent work and approved assets.**
