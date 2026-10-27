@@ -2,7 +2,7 @@
 
 **Model: GPT-6 | Approach: preserve native residents/levels and resolve every dependent land-table consumer through the committed season.**
 
-Status: Routes 101–121 shipped across v0.0.63–v0.0.67. The v0.0.72 candidate adds Route 123 grass and Routes 122/124/125/126 Surf. Native candidate testing passed; publication is pending and public v0.0.71 is unchanged. Approved DexNav silhouettes, centering, artwork and all earlier tables remain protected.
+Status: Routes 101–121 shipped across v0.0.63–v0.0.67. Published v0.0.72 added Route 123 grass and Routes 122/124/125/126 Surf. Candidate/production native tests, both builds, independent BPS decoders and live download verification passed. Approved DexNav silhouettes, centering, artwork and all earlier tables remain protected.
 
 ## Grass pilot — Routes 101–104 (v0.0.63)
 
@@ -268,7 +268,7 @@ Year-round residents: Poochyena, Shuppet, Mightyena, Oddish, Gloom, Wingull, Kec
 | Autumn | Phantump | Pumpkaboo |
 | Winter | Misdreavus | Greavard |
 
-## Routes 122–126 — v0.0.72 candidate
+## Routes 122–126 — v0.0.72 (published and verified)
 
 **Model: GPT-6 (Codex) | Reasoning: append native-method data, preserve every original resident/slot and related field-survey/story access.**
 
@@ -321,7 +321,7 @@ Native residents remain year-round: Poochyena, Shuppet, Mightyena, Oddish, Gloom
 | Autumn | Jellicent | Barbaracle |
 | Winter | Tentacruel | Kingdra |
 
-[Source/compatibility receipt](../qa/seasonal-routes-v0.0.72-source.json). Candidate native results passed; publication/live-byte verification remains required before this is described as shipped.
+[Source/compatibility receipt](../qa/seasonal-routes-v0.0.72-source.json). Candidate and production native checks passed all 220 scenarios / 56,320 actual creations, with all 279 prior encounter frames pixel-identical. Both public patches match the independently decoded candidates and native-tested ROM targets. [Production/public receipt](../qa/seasonal-routes-v0.0.72-public.json).
 
 ## DexNav silhouettes
 
