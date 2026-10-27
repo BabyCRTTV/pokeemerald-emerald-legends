@@ -397,6 +397,6 @@
     8,
     9
   ],
-  "native_gameplay_status": "pending",
+  "native_gameplay_status": "passed candidate40546074571:262 scenarios/67072 creations;345 prior RGB frames exact",
   "compatibility": "No maps, scripts, saved layouts, readers, flags, variables or persistent identifiers changed. Route129 retains Wailord at1%; Route130 Mirage Island land and all unrelated methods retain native source."
 }

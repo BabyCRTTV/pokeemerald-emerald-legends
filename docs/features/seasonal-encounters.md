@@ -327,9 +327,9 @@ Native residents remain year-round: Poochyena, Shuppet, Mightyena, Oddish, Gloom
 
 **Model: GPT-6 (Codex) | Reasoning: retain native slot capacity, rare Wailord and special island/story layouts while extending ordinary Surf only.**
 
-Twenty new Surf tables add 36 distinct seasonal visitors spanning Generations 1–9, with no earlier seasonal/grotto species repeated. Routes 127/128/130/131 retain Tentacool60%, Wingull4% and Pelipper1%, with visitors30%/5%. Route129 has four native residents: Tentacool60%, Wingull5%, Pelipper4% and **Wailord1%**. It therefore receives one seasonal visitor at30%, preserving every resident and the rare Wailord slot without expanding/reweighting the native five slots. Exact native per-slot levels and rate4 remain unchanged; common visitors use10–30 and rare visitors15–25. All use the committed active season, all day.
+Twenty new Surf tables add 36 distinct seasonal visitors spanning Generations 1–9, with no earlier seasonal/grotto species repeated. Routes 127/128/130/131 retain Tentacool 60%, Wingull 4% and Pelipper 1%, with visitors 30%/5%. Route 129 has four native residents: Tentacool 60%, Wingull 5%, Pelipper 4% and **Wailord 1%**. It therefore receives one seasonal visitor at 30%, preserving every resident and the rare Wailord slot without expanding/reweighting the native five slots. Exact native per-slot levels and rate 4 remain unchanged; common visitors use 10–30 and rare visitors 15–25. All use the committed active season, all day.
 
-Fishing/Dive, Mirage Island’s Wynaut grass/appearance/Liechi Berry, Sky Pillar layout/access, Route127/129 abnormal weather/Marine Cave, Route128 Seafloor Cavern/story actors and Route129 grotto-related scenery remain unchanged. No maps, tilesets, scripts, artwork, sprites, saves, readers, flags/variables or persistent IDs changed. Earlier104 tables are protected by exact hashes. No migration is needed.
+Fishing/Dive, Mirage Island’s Wynaut grass/appearance/Liechi Berry, Sky Pillar layout/access, Route127/129 abnormal weather/Marine Cave, Route 128 Seafloor Cavern/story actors and existing grotto scenery remain unchanged. No maps, tilesets, scripts, artwork, sprites, saves, readers, flags/variables or persistent IDs changed. Earlier 104 tables are protected by exact hashes. No migration is needed.
 
 ### Route 127 — Surf
 
@@ -376,7 +376,7 @@ Fishing/Dive, Mirage Island’s Wynaut grass/appearance/Liechi Berry, Sky Pillar
 | Autumn | Frogadier | Greninja |
 | Winter | Drizzile | Gyarados |
 
-[Source/compatibility receipt](../qa/seasonal-routes-v0.0.73-source.json). Host/source checks passed; candidate native/build/browser/publication gates remain pending. Public v0.0.72 remains intact until verified publication.
+[Source/compatibility receipt](../qa/seasonal-routes-v0.0.73-source.json). Host/source, project/browser, both native builds and all 262 candidate native scenarios passed; all 345 prior frames retained identical pixels. Independent BPS reconstruction and publication gates remain pending. Public v0.0.72 remains intact until verified publication.
 
 ## DexNav silhouettes
 
