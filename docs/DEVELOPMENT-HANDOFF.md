@@ -1,5 +1,13 @@
 # Development handoff
 
+## v0.0.71 native verified — publication in progress (27 October 2026)
+
+**Model: GPT-6 (Codex) | Reasoning: verify normal Release Continue and exact native/decoded targets before publishing the approved return repair.**
+
+Owner explicitly requested finishing and publishing. Native `40445792327` passed after dependency setup recovered: Debug fixture creation/boat interactions and established regressions, normal unmodified Release Continue/return/walking/reboarding with and without outbound gates, plus existing Release grotto/bedroom/wardrobe checks. Downloaded artifact `12708703326`, checked its digest, all retained boat image hashes and both target ROM hashes against the independently decoded candidate patches; inspected actual Release return/reboarding frames. Current project `40445792342` and patch `40445792347` passed. [QA, native receipts, exact hashes and limits](qa/ember-return-v0.0.71.md). Both native targets exactly matched the verified patches. No authentic historical-save/full-story/Pizza Boy claim.
+
+Only the approved return coordinate and version labels changed game inputs; maps, tilesets, artwork, wardrobe, seasons, saves/IDs and progression remain protected. Later commits are documentation/changelog-only, with publication dates synchronized to October 27. AGENTS.md reviewed; no new durable rule needed. Merge PR #90 using the current expected head, then verify merged checks, automatic BPS publication, final Pages and actual live bytes. Publication is not yet claimed complete; preserve concurrent edits and separate Wyrmtide/older wiki/backlog work.
+
 ## v0.0.71 checkpoint — Release native gate waiting on CI setup (26 October 2026)
 
 **Model: GPT-6 (Codex) | Reasoning: retain verified Debug/patch evidence while withholding publication until normal Release interactions pass.**
