@@ -18,7 +18,9 @@ def main():
     env['LD_LIBRARY_PATH'] = str(prefix/'lib/x86_64-linux-gnu') + ':' + env.get('LD_LIBRARY_PATH','')
     def run(cmd, log):
         with (out/log).open('w') as f:
-            subprocess.run(cmd,cwd=R,env=env,stdout=f,stderr=subprocess.STDOUT,check=True)
+            result = subprocess.run(cmd,cwd=R,env=env,stdout=f,stderr=subprocess.STDOUT)
+        if result.returncode:
+            raise RuntimeError((out/log).read_text()[-10000:])
     def symbols(path):
         s = subprocess.check_output(['arm-none-eabi-nm',str(path)],env=env,text=True)
         return {v[2]:int(v[0],16) for line in s.splitlines() if len(v:=line.split())==3}
