@@ -1,0 +1,95 @@
+{
+  "model": "GPT-6 (Codex)",
+  "verified_date": "2026-10-27",
+  "source_commit": "b7a111ad2d7932114bb7af6318ed20923cc26e1a",
+  "workflow_run": 40445792327,
+  "artifact_id": 12708703326,
+  "artifact_sha256": "f51f4a2b55d3e77ef787018253dc42407591dd657898c712d5185307bd9291ed",
+  "Debug": {
+    "version": "0.0.71",
+    "ROM_sha256": "cf9e5925781e6f2ecd7f5b98d2b251e3b25cf290b9b86fab5c74b1f53943a000",
+    "emulator": "native mGBA core",
+    "variant": "Debug",
+    "scope": "Controlled new-game fixtures with and without outbound gates; actual sailor interaction, decline/accept, boat warp, collision-enabled walking and reboarding. No production script or map substitutions.",
+    "limits": "Not an uninterrupted story playthrough, authentic historical save or Pizza Boy test.",
+    "log": "map=75,89 xy=28,47 collision=0 script=0 flags=0 noclip=0 choice=0 result=0\nmap=75,89 xy=28,46 collision=0 script=0 flags=0 noclip=0 choice=0 result=0\nmap=75,89 xy=28,46 collision=0 script=0 flags=0 noclip=0 choice=0 result=0\nmap=75,89 xy=28,46 collision=0 script=0 flags=0 noclip=0 choice=0 result=0\nPASS: declined return without movement or progression change\nmap=75,85 xy=21,8 collision=0 script=0 flags=0 noclip=0 choice=0 result=1\nmap=75,85 xy=21,7 collision=0 script=0 flags=0 noclip=0 choice=0 result=1\nmap=75,85 xy=21,8 collision=0 script=0 flags=0 noclip=0 choice=0 result=1\nPASS: native return and real walking on Cinnabar ground\nmap=75,85 xy=21,8 collision=0 script=0 flags=0 noclip=0 choice=0 result=1\nmap=75,85 xy=21,8 collision=0 script=0 flags=0 noclip=0 choice=0 result=1\nPASS: return remained available without opening outbound expedition gates\nmap=75,89 xy=28,47 collision=0 script=0 flags=3 noclip=0 choice=0 result=0\nmap=75,89 xy=28,46 collision=0 script=0 flags=3 noclip=0 choice=0 result=0\nmap=75,89 xy=28,46 collision=0 script=0 flags=3 noclip=0 choice=0 result=0\nmap=75,89 xy=28,46 collision=0 script=0 flags=3 noclip=0 choice=0 result=0\nPASS: declined return without movement or progression change\nmap=75,85 xy=21,8 collision=0 script=0 flags=3 noclip=0 choice=0 result=1\nmap=75,85 xy=21,7 collision=0 script=0 flags=3 noclip=0 choice=0 result=1\nmap=75,85 xy=21,8 collision=0 script=0 flags=3 noclip=0 choice=0 result=1\nPASS: native return and real walking on Cinnabar ground\nmap=75,85 xy=21,8 collision=0 script=0 flags=3 noclip=0 choice=0 result=1\nmap=75,85 xy=21,8 collision=0 script=0 flags=3 noclip=0 choice=0 result=0\nmap=75,89 xy=28,47 collision=0 script=0 flags=3 noclip=0 choice=0 result=1\nPASS: declined then reboarded the production expedition boat\n",
+    "harness_sha256": {
+      "arm.c": "727d47991baa88687989f1035effb94792b53d43d21ebe81e4085214c6ad7ccb",
+      "host.c": "e3546d0dd98acbd671d263919292ea8004bb0dc7e848f1fefefff6b44e11654f",
+      "run.py": "8cc07599932e588767f7dea2105ed058cfbb67e689ef9eb4cc69fa534b7cefc3"
+    },
+    "images": {
+      "return-ready.png": "785275ca79575b61e0f204225c05aef8695b192706bbe3989662834ff4534ae9",
+      "reboarded.png": "04deaf46ef852664cccf382d62fa5f2d1d342c3c98a7bb7822b513c0b66b725c",
+      "return-without-gates.png": "785275ca79575b61e0f204225c05aef8695b192706bbe3989662834ff4534ae9"
+    }
+  },
+  "Release": {
+    "version": "0.0.71",
+    "variant": "Release",
+    "ROM_sha256": "6786a3a4d5a8ca46361aaee9db8245352d9718ef71f47fbc6b084b72b1ee6654",
+    "ROM_unmodified": true,
+    "RAM_writes": false,
+    "emulator": "native mGBA core",
+    "scope": "Normal title/Continue, actual boat decline/accept, return, walking and reboarding; with/without outbound gates.",
+    "limits": "Controlled current Debug-produced battery fixtures, not authentic historical saves, full story traversal or Pizza Boy.",
+    "fixture_ROM_sha256": "cf9e5925781e6f2ecd7f5b98d2b251e3b25cf290b9b86fab5c74b1f53943a000",
+    "harness_sha256": {
+      "release.c": "7196e000561c83df5040f43257373ade5ee7136df967f86acaf42d43da527bb3",
+      "release.py": "67fe376326cf0dc0c828c9f3f3b1466e0a998c5499279df596898c9b8f33aca7"
+    },
+    "fixtures": {
+      "locked": {
+        "fixture_sha256": "f9b6e4d598d51c6ff4ab126e5376bdfaa82c3c9905a6fe6ccc86f8e901e6fbba",
+        "metadata": {
+          "flags_offset": 4720,
+          "flag_ids": [
+            661,
+            628,
+            664
+          ],
+          "ember": [
+            75,
+            89
+          ],
+          "town": [
+            75,
+            85
+          ]
+        },
+        "log": "map=75,89 xy=28,47 flags=0 lock=0 result=0\nmap=75,89 xy=28,46 flags=0 lock=0 result=0\nmap=75,89 xy=28,46 flags=0 lock=0 result=0\nmap=75,89 xy=28,46 flags=0 lock=0 result=0\nPASS Release declined return without movement or flag changes\nmap=75,85 xy=21,8 flags=0 lock=0 result=1\nmap=75,85 xy=21,7 flags=0 lock=0 result=1\nmap=75,85 xy=21,8 flags=0 lock=0 result=1\nPASS Release actual return and collision-enabled walking\nmap=75,85 xy=21,8 flags=0 lock=0 result=1\nmap=75,85 xy=21,8 flags=0 lock=0 result=1\nPASS Release outbound gates retained after unrestricted return\n"
+      },
+      "ready": {
+        "fixture_sha256": "8745fcc1bd095646aa107f91f171e0bb325878df957eb16be99b3af267d691f4",
+        "metadata": {
+          "flags_offset": 4720,
+          "flag_ids": [
+            661,
+            628,
+            664
+          ],
+          "ember": [
+            75,
+            89
+          ],
+          "town": [
+            75,
+            85
+          ]
+        },
+        "log": "map=75,89 xy=28,47 flags=3 lock=0 result=0\nmap=75,89 xy=28,46 flags=3 lock=0 result=0\nmap=75,89 xy=28,46 flags=3 lock=0 result=0\nmap=75,89 xy=28,46 flags=3 lock=0 result=0\nPASS Release declined return without movement or flag changes\nmap=75,85 xy=21,8 flags=3 lock=0 result=1\nmap=75,85 xy=21,7 flags=3 lock=0 result=1\nmap=75,85 xy=21,8 flags=3 lock=0 result=1\nPASS Release actual return and collision-enabled walking\nmap=75,85 xy=21,8 flags=3 lock=0 result=1\nmap=75,85 xy=21,8 flags=3 lock=0 result=0\nmap=75,89 xy=28,47 flags=3 lock=0 result=1\nPASS Release declined then reboarded production boat\n"
+      }
+    },
+    "images": {
+      "locked/return.png": "ccb76db8b35069359b57599c3b63370e0c399fb14b24e34bb29524664497e031",
+      "ready/return.png": "fcc4a3d9437af64f9309f6f9d070f334490bb813a370b19e392918935d83cd6e",
+      "ready/reboarded.png": "1672bc4ca5955c0da48f57a069341e93095183ab2ea5543aeb58b268662febc0"
+    }
+  },
+  "captures_inspected": [
+    "Release ready/return.png",
+    "Release ready/reboarded.png"
+  ],
+  "patch_workflow": 40445792347,
+  "patch_artifact": 12708143740
+}
