@@ -1,5 +1,15 @@
 # Development handoff
 
+## Resumption audit and native input correction (26 October 2026)
+
+**Model: GPT-6 (Codex) | Reasoning: distinguish a fixture-input failure from production event behavior; preserve live concurrent work and approved assets.**
+
+Fresh repository audit confirmed public master `7cf9a7bf`, VERSION 0.0.70, successful production builds/native/project/Pages workflows and the separate Windows companion release. Both actual live BPS downloads matched the v0.0.70 SHA256 manifest; homepage/changelog/patcher HTML and JS matched the pinned Git blobs. Read AGENTS.md and the complete handoff. Reran all 57 focused Kanto/postgame tests successfully. PR #90's prepared v0.0.71 source `3edbb5f8` passed project checks `40443200727`; native Quickstart passed with Debug ROM `cf9e5925781e6f2ecd7f5b98d2b251e3b25cf290b9b86fab5c74b1f53943a000`.
+
+Native run `40443200736` failed at the first ordinary movement assertion, before any boat dialogue: the three-frame Up tap left the avatar at `(28,47)` instead of `(28,46)`. Artifact `12707700599` records collision=0, script=0 and noclip=0. Corrected only the private host input in `dca0a003`: use the existing harness convention of a twelve-frame hold for actual walking, retaining short menu/facing taps and every position/collision/progression assertion. Production game source and ROM inputs did not change. This is not a native boat-pass claim; fresh Debug/Release focused interaction results are required. Local compiler/mGBA packages remain unavailable; use CI, inspect its detailed logs/receipts and compare the independently decoded BPS target hashes with native ROM hashes before publication. Do not publish or merge merely because compilation/Quickstart succeeds.
+
+The existing checkout was changing during this audit; preserve its additional edits (including the patcher script cache key) and check the live PR head before writes/merges. Wyrmtide PR #89 at `761ac235` has since passed project `39772437214`, patch `39772437250` and native `39772437313`; latest visual approval is still pending, so keep it separate. PR #56 remains an older conflicting wiki proposal. Broader historical-save fixtures, uninterrupted progression/balance, unresolved rare outfit corruption and Pizza Boy playtests remain unfinished. No new durable AGENTS.md rule was needed.
+
 ## Approved v0.0.71 return landing publication — in progress (26 October 2026)
 
 **Model: GPT-6 (Codex) | Reasoning: apply explicit publication approval and verify native return interactions before release.**
