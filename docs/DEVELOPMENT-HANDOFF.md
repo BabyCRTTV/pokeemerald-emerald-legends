@@ -1,12 +1,14 @@
 # Development handoff
 
-## v0.0.71 native verified — publication in progress (27 October 2026)
+## v0.0.71 return landing — published and verified (27 October 2026)
 
-**Model: GPT-6 (Codex) | Reasoning: verify normal Release Continue and exact native/decoded targets before publishing the approved return repair.**
+**Model: GPT-6 (Codex) | Reasoning: preserve approved game inputs, require real Debug/normal Release interactions and verify the exact published bytes.**
 
-Owner explicitly requested finishing and publishing. Native `40445792327` passed after dependency setup recovered: Debug fixture creation/boat interactions and established regressions, normal unmodified Release Continue/return/walking/reboarding with and without outbound gates, plus existing Release grotto/bedroom/wardrobe checks. Downloaded artifact `12708703326`, checked its digest, all retained boat image hashes and both target ROM hashes against the independently decoded candidate patches; inspected actual Release return/reboarding frames. Current project `40445792342` and patch `40445792347` passed. [QA, native receipts, exact hashes and limits](qa/ember-return-v0.0.71.md). Both native targets exactly matched the verified patches. No authentic historical-save/full-story/Pizza Boy claim.
+Owner requested finishing and publishing. PR #90 merged as `ab52786d11e709014240520451c05d9d2cef5f24`; its tree exactly matched the reviewed head. The Mt. Ember return now lands on clear Cinnabar `(21,8)` beside the existing sailor. Maps/tilesets, approved artwork, wardrobe, seasons, saves/readers/IDs, progression and rewards are unchanged. All v0.0.71 metadata/cache keys and changelogs are synchronized to October 27. AGENTS.md reviewed; no new durable rule needed.
 
-Only the approved return coordinate and version labels changed game inputs; maps, tilesets, artwork, wardrobe, seasons, saves/IDs and progression remain protected. Later commits are documentation/changelog-only, with publication dates synchronized to October 27. AGENTS.md reviewed; no new durable rule needed. Merge PR #90 using the current expected head, then verify merged checks, automatic BPS publication, final Pages and actual live bytes. Publication is not yet claimed complete; preserve concurrent edits and separate Wyrmtide/older wiki/backlog work.
+Candidate checks, both native builds/canonical-base/two BPS decoders, actual Debug boat interactions and unmodified Release normal Continue/return/walking/reboarding passed. Production project `40448115913`, builds/BPS/dual-decoder `40448115841` and native `40448115945` also passed. Retained native artifacts and exact target/image hashes were checked; actual Release return/reboarding captures were inspected. Release uses private current Debug-generated battery fixtures with controller inputs/read-only observations, avoiding optimized private function injection. [Detailed QA, hashes, native/public receipts and limits](qa/ember-return-v0.0.71.md).
+
+Automatic patch commit `15e147a4a3c2d4969285fdee42188a4bceafe790` and patch Pages `40449056949` passed. Fresh live Release/Debug BPS, manifest, homepage, changelog and patcher HTML/JS matched committed/verified bytes; patch CRCs passed. Both published targets exactly match native-tested production ROMs and independently decoded candidates. **Publication is complete; no v0.0.71 publication blocker remains.** Do not redo this repair. Authentic historical saves, uninterrupted story/balance, rare outfit corruption and Pizza Boy remain separate limits; Wyrmtide visual approval and older conflicting wiki PR #56 remain separate backlog. Private QA ROMs/saves were not distributed.
 
 ## v0.0.71 checkpoint — Release native gate waiting on CI setup (26 October 2026)
 

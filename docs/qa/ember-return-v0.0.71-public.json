@@ -1,0 +1,112 @@
+{
+  "model": "GPT-6 (Codex)",
+  "version": "0.0.71",
+  "verified_at": "2026-10-27T04:22:20.236191+00:00",
+  "merge_commit": "ab52786d11e709014240520451c05d9d2cef5f24",
+  "patch_commit": "15e147a4a3c2d4969285fdee42188a4bceafe790",
+  "pages_run": 40449056949,
+  "production_checks": {
+    "project": 40448115913,
+    "builds_and_dual_decoder": 40448115841,
+    "native_Debug_and_Release": 40448115945
+  },
+  "passed": true,
+  "live_files": [
+    {
+      "path": "patcher.js",
+      "url": "https://babycrttv.github.io/pokeemerald-emerald-legends/patcher.js",
+      "status": 200,
+      "bytes": 9353,
+      "sha256": "bc14ec5d47e9fa7b4f2e20fd4ac659672e21e839ba4c1446d65a0ec209830ae1",
+      "git_blob_sha": "2f2b64192a21c79e082b4da6cfabe0bdbed43b23"
+    },
+    {
+      "path": "index.html",
+      "url": "https://babycrttv.github.io/pokeemerald-emerald-legends/index.html",
+      "status": 200,
+      "bytes": 3538,
+      "sha256": "daaaf3f92a7e8af86f81f8fb6d4042a4ea7d8d5d2bd5d63762bf484a9c0fbbed",
+      "git_blob_sha": "7764ff6c9cae7daf0fa278c6037e0b4bd72e1851"
+    },
+    {
+      "path": "patcher.html",
+      "url": "https://babycrttv.github.io/pokeemerald-emerald-legends/patcher.html",
+      "status": 200,
+      "bytes": 2675,
+      "sha256": "549823d14de77c5f40ca12616deacb0b2edd1ba0169bc89da96b2e58f710df3d",
+      "git_blob_sha": "5f0202b10067a0c3c0df893310a3b6ec94cf39a7"
+    },
+    {
+      "path": "changelog.html",
+      "url": "https://babycrttv.github.io/pokeemerald-emerald-legends/changelog.html",
+      "status": 200,
+      "bytes": 120871,
+      "sha256": "28373dca51902a261ac9c42bfdbe19b3c57f59242680cd952fb8c29623bf5db0",
+      "git_blob_sha": "72835c5e35c4ec50b1eeebb7cca16a135e12ede8"
+    },
+    {
+      "path": "downloads/SHA256SUMS.txt",
+      "url": "https://babycrttv.github.io/pokeemerald-emerald-legends/downloads/SHA256SUMS.txt",
+      "status": 200,
+      "bytes": 412,
+      "sha256": "17560e10696a9514a54f4a552f49b458631bf7ab167c933ad89f723a6b2464f4",
+      "git_blob_sha": "8c602c8df5924c2f7fffddbeb174d64175cb429c"
+    },
+    {
+      "path": "downloads/Pokemon-Emerald-Legends-v0.0.71.bps",
+      "url": "https://babycrttv.github.io/pokeemerald-emerald-legends/downloads/Pokemon-Emerald-Legends-v0.0.71.bps",
+      "status": 200,
+      "bytes": 17462462,
+      "sha256": "bf915116c6c7cb848d701fe01790f88f69bff5fe78694818a34d490955a24924",
+      "git_blob_sha": "ab9d89312611e3d94bf4a4a00a48178ce0c041ea",
+      "crc32": {
+        "source": "1f1c08fb",
+        "target": "27c16b1d",
+        "patch": "0c2320b1"
+      }
+    },
+    {
+      "path": "downloads/Pokemon-Emerald-Legends-v0.0.71-debug.bps",
+      "url": "https://babycrttv.github.io/pokeemerald-emerald-legends/downloads/Pokemon-Emerald-Legends-v0.0.71-debug.bps",
+      "status": 200,
+      "bytes": 17294917,
+      "sha256": "aca1afb419b879b264851f80f69258934bc4d7bcfd68e94279d7b2a6fd1e493b",
+      "git_blob_sha": "67eaf236979f522c740efb7b95742d3862d15c60",
+      "crc32": {
+        "source": "1f1c08fb",
+        "target": "0b86ba6b",
+        "patch": "2a06f48e"
+      }
+    }
+  ],
+  "scope": "Fresh public HTTP byte/hash and BPS patch-CRC verification. Both downloaded patches are byte-identical to independently dual-decoded candidate patches whose target hashes match native Debug/Release ROMs. Independent clean-base applications were executed in candidate and production CI; no fresh local base application is claimed.",
+  "limits": "Controlled current-save native fixtures do not establish authentic historical saves, uninterrupted full story/balance or Pizza Boy.",
+  "production_native": {
+    "run": 40448115945,
+    "artifact": 12709552687,
+    "artifact_sha256": "788bf7a42917649048240fbe7b08d46ae6af9e7109dfb923101eabf2e401fed9",
+    "passed": true,
+    "targets": {
+      "ember-return-qa": {
+        "ROM_sha256": "cf9e5925781e6f2ecd7f5b98d2b251e3b25cf290b9b86fab5c74b1f53943a000",
+        "images": {
+          "return-ready.png": "785275ca79575b61e0f204225c05aef8695b192706bbe3989662834ff4534ae9",
+          "reboarded.png": "04deaf46ef852664cccf382d62fa5f2d1d342c3c98a7bb7822b513c0b66b725c",
+          "return-without-gates.png": "785275ca79575b61e0f204225c05aef8695b192706bbe3989662834ff4534ae9"
+        }
+      },
+      "ember-return-release-qa": {
+        "ROM_sha256": "6786a3a4d5a8ca46361aaee9db8245352d9718ef71f47fbc6b084b72b1ee6654",
+        "images": {
+          "locked/return.png": "59005a49dd5743b1fbad4a814a9505258f934becd47179fd337afbcd13c962e3",
+          "ready/return.png": "09660b714d773f6ece59adafda0ce4681ba47048a68e9c12939c046ceb387888",
+          "ready/reboarded.png": "db5140042ff4a784ef21de7e75eaded0fb3b6ddb0a5827151c4eaddb9e9e6459"
+        }
+      }
+    }
+  },
+  "production_captures_inspected": [
+    "Release ready/return.png",
+    "candidate Release ready/reboarded.png"
+  ]
+}
