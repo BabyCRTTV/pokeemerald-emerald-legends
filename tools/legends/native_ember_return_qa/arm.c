@@ -46,6 +46,7 @@ void qa(void)
         b[10] = x-7; b[11] = y-7;
         b[12] = ScriptContext_IsEnabled() || (MainCallback)b[3] != CB2_Overworld;
         b[13] = FindTaskIdByFunc((TaskFunc)QA_YESNO) != TASK_NONE;
+        b[12] |= b[13]; b[1] = gSpecialVar_Result;
         b[14] = (FlagGet(FLAG_LEGENDS_STORY_NORTH_REPORT) ? 1 : 0) | (FlagGet(FLAG_LEGENDS_KANTO_BLAINE_WON) ? 2 : 0) | (FlagGet(FLAG_LEGENDS_STORY_EMBER_REPORT) ? 4 : 0);
         b[15] = OW_FLAG_NO_COLLISION && FlagGet(OW_FLAG_NO_COLLISION);
     }
