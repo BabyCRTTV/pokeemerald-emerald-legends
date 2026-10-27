@@ -9,6 +9,7 @@
 #include "pokemon.h"
 #include "script.h"
 #include "task.h"
+#include "save.h"
 #include "config/overworld.h"
 #include "constants/maps.h"
 #include "constants/flags.h"
@@ -34,6 +35,14 @@ void qa(void)
         gPartiesCount[B_TRAINER_PLAYER] = 1;
         SetWarpDestination(MAP_GROUP(MAP_LEGENDS_KANTO_MT_EMBER_EXTERIOR), MAP_NUM(MAP_LEGENDS_KANTO_MT_EMBER_EXTERIOR), -1, 28, 47);
         WarpIntoMap(); b[4] = 1; SetMainCallback2(CB2_LoadMap); return;
+    }
+    if (b[0] == 2)
+    {
+        b[5] = TrySavingData(SAVE_NORMAL);
+        b[6] = offsetof(struct SaveBlock1, flags);
+        b[7] = FLAG_LEGENDS_STORY_NORTH_REPORT;
+        b[8] = FLAG_LEGENDS_KANTO_BLAINE_WON;
+        b[9] = FLAG_LEGENDS_STORY_EMBER_REPORT;
     }
     if (b[0] == 1)
     {

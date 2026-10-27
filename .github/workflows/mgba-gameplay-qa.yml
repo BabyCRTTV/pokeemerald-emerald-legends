@@ -72,7 +72,7 @@ jobs:
       - name: Build unmodified Legends Release ROM and ELF
         run: make -j"$(nproc)" release
       - name: Exercise native Release Ember boat return, walking and reboarding
-        run: python3 tools/legends/native_ember_return_qa/run.py --rom pokeemerald-release.gba --elf pokeemerald-release.elf --output build/ember-return-release-qa
+        run: python3 tools/legends/native_ember_return_qa/release.py
       - name: Exercise normal Release Continue with grotto battery fixtures
         run: python3 tools/legends/native_grotto_encounters/release.py
       - name: Exercise unmodified Release Continue, both bedrooms and wardrobe returns
@@ -86,9 +86,9 @@ jobs:
             build/ember-return-qa/*.png
             build/ember-return-qa/*.json
             build/ember-return-qa/*.log
-            build/ember-return-release-qa/*.png
-            build/ember-return-release-qa/*.json
-            build/ember-return-release-qa/*.log
+            build/ember-return-release-qa/**/*.png
+            build/ember-return-release-qa/**/*.json
+            build/ember-return-release-qa/**/*.log
             build/legends-mgba-preview/*.png
             build/legends-mgba-preview/*.json
             build/legends-mgba-preview/*.log
