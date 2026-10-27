@@ -1,5 +1,55 @@
 # Development handoff
 
+## v0.0.71 native verified — publication in progress (27 October 2026)
+
+**Model: GPT-6 (Codex) | Reasoning: verify normal Release Continue and exact native/decoded targets before publishing the approved return repair.**
+
+Owner explicitly requested finishing and publishing. Native `40445792327` passed after dependency setup recovered: Debug fixture creation/boat interactions and established regressions, normal unmodified Release Continue/return/walking/reboarding with and without outbound gates, plus existing Release grotto/bedroom/wardrobe checks. Downloaded artifact `12708703326`, checked its digest, all retained boat image hashes and both target ROM hashes against the independently decoded candidate patches; inspected actual Release return/reboarding frames. Current project `40445792342` and patch `40445792347` passed. [QA, native receipts, exact hashes and limits](qa/ember-return-v0.0.71.md). Both native targets exactly matched the verified patches. No authentic historical-save/full-story/Pizza Boy claim.
+
+Only the approved return coordinate and version labels changed game inputs; maps, tilesets, artwork, wardrobe, seasons, saves/IDs and progression remain protected. Later commits are documentation/changelog-only, with publication dates synchronized to October 27. AGENTS.md reviewed; no new durable rule needed. Merge PR #90 using the current expected head, then verify merged checks, automatic BPS publication, final Pages and actual live bytes. Publication is not yet claimed complete; preserve concurrent edits and separate Wyrmtide/older wiki/backlog work.
+
+## v0.0.71 checkpoint — Release native gate waiting on CI setup (26 October 2026)
+
+**Model: GPT-6 (Codex) | Reasoning: retain verified Debug/patch evidence while withholding publication until normal Release interactions pass.**
+
+Current project `40445792342` and both-build/canonical-base/dual-decoder patch `40445792347` passed. Prior actual Debug boat and broader native checks passed; exact patches/target hashes, artifact provenance, test-only corrections and limits are in [the focused checkpoint](qa/ember-return-v0.0.71.md). New normal-Continue Release testing is committed in `b7a111ad`; no production game/art/save inputs changed. At 03:55 UTC, native `40445792327` was still installing compiler/mGBA packages after more than ten minutes, before the new tests. Local dependencies are unavailable. Resume by inspecting this run, retrying only a failed setup if necessary, and requiring actual Debug fixtures/Release interactions plus matching native target hashes before merge/publication. Do not mistake a successful build or decoder for this missing gameplay result.
+
+PR #90 remains unmerged; public v0.0.70 and both freshly hash-verified downloads are intact. Preserve concurrent edits. After native success, complete expected-head merge, merged workflows, automatic patch/Pages publication and actual live byte verification. Wyrmtide visual approval, the conflicting older wiki proposal and broader historical-save/Pizza Boy/story/balance work remain separate. AGENTS.md reviewed; no new durable policy needed.
+
+## Release boat QA uses normal Continue — candidate pending (26 October 2026)
+
+**Model: GPT-6 (Codex) | Reasoning: validate optimized Release behavior through its supported save/Continue path rather than depend on private LTO function names.**
+
+Combined `3f60da69` passed project `40444532680` and Debug mGBA boat decline/accept, clear-ground return, walking, outbound-gate retention and reboarding. Its broader native Debug grotto/battle/flash/Living Hoenn/seasonal/DexNav/bedroom/wardrobe checks also passed. Artifact `12708046192` retains the actual frames and receipt; Debug ROM is `cf9e5925781e6f2ecd7f5b98d2b251e3b25cf290b9b86fab5c74b1f53943a000`. Inspected its actual Cinnabar return frame. The same job's Release ROM compiled, but the private injection runner stopped before gameplay because LTO did not preserve `Task_HandleYesNoInput` under that exact name; this is not a Release gameplay failure or pass.
+
+Replaced that Release-only harness path in `b7a111ad`: the existing Debug fixture callback performs real native saves before interaction, cloning two private current-format battery fixtures with/without outbound gates. New release.py/release.c boots the unchanged Release ROM through normal title/Continue and uses real buttons plus read-only position, flags, result and field-lock observations for the same boat scenarios. It resolves unique LTO data aliases where necessary, checks the ROM hash before/after and records fixture provenance/limits. Private saves/ROMs are excluded from uploaded artifact globs; only frames, receipts and logs are retained. Production scripts/assets/metadata/ROM inputs are unchanged. Python syntax review passed; new Debug fixture creation and Release interaction results are still pending in CI `40445792327`. Project `40445792342` and patch `40445792347` also need final verification.
+
+Earlier patch run `40444532795` passed both builds, canonical clean Emerald identity, Floating IPS reconstruction and the independent browser decoder; artifact `12708191242` contains candidate patches and hashes. Before merge/publication, require successful current native Debug/Release results and patch checks, compare native and decoded target hashes, preserve any concurrent edits, then verify automatic patch commit, Pages and actual live bytes. VERSION/public master remain 0.0.70 until that verified release. No new game source/artwork/save format or durable AGENTS.md rule changed; authentic historical saves, full progression and Pizza Boy remain outside this controlled QA.
+
+## Resumption audit and native input correction (26 October 2026)
+
+**Model: GPT-6 (Codex) | Reasoning: distinguish a fixture-input failure from production event behavior; preserve live concurrent work and approved assets.**
+
+Fresh repository audit confirmed public master `7cf9a7bf`, VERSION 0.0.70, successful production builds/native/project/Pages workflows and the separate Windows companion release. Both actual live BPS downloads matched the v0.0.70 SHA256 manifest; homepage/changelog/patcher HTML and JS matched the pinned Git blobs. Read AGENTS.md and the complete handoff. Reran all 57 focused Kanto/postgame tests successfully. PR #90's prepared v0.0.71 source `3edbb5f8` passed project checks `40443200727`; native Quickstart passed with Debug ROM `cf9e5925781e6f2ecd7f5b98d2b251e3b25cf290b9b86fab5c74b1f53943a000`.
+
+Native run `40443200736` failed at the first ordinary movement assertion, before any boat dialogue: the three-frame Up tap left the avatar at `(28,47)` instead of `(28,46)`. Artifact `12707700599` records collision=0, script=0 and noclip=0. Corrected only the private host input in `dca0a003`: use the existing harness convention of a twelve-frame hold for actual walking, retaining short menu/facing taps and every position/collision/progression assertion. Production game source and ROM inputs did not change. This is not a native boat-pass claim; fresh Debug/Release focused interaction results are required. Local compiler/mGBA packages remain unavailable; use CI, inspect its detailed logs/receipts and compare the independently decoded BPS target hashes with native ROM hashes before publication. Do not publish or merge merely because compilation/Quickstart succeeds.
+
+The existing checkout was changing during this audit; preserve its additional edits (including the patcher script cache key) and check the live PR head before writes/merges. Wyrmtide PR #89 at `761ac235` has since passed project `39772437214`, patch `39772437250` and native `39772437313`; latest visual approval is still pending, so keep it separate. PR #56 remains an older conflicting wiki proposal. Broader historical-save fixtures, uninterrupted progression/balance, unresolved rare outfit corruption and Pizza Boy playtests remain unfinished. No new durable AGENTS.md rule was needed.
+
+## Approved v0.0.71 return landing publication — in progress (26 October 2026)
+
+**Model: GPT-6 (Codex) | Reasoning: apply explicit publication approval and verify native return interactions before release.**
+
+Owner approved publishing the Mt. Ember landing repair. Prepared v0.0.71 labels, all three changelogs, README, site and patcher. Added a private native mGBA harness to the existing Debug/Release workflow for actual sailor decline/accept, return warp, collision-enabled walking and reboarding, with and without outbound gates. It changes no production game source beyond the approved destination and version labels. Local dependency installation failed because the package mirror was unavailable, so native results must come from CI. PR #90 remains unmerged pending the versioned candidate checks, native harness, independently verified patches and live deployment. Earlier 57 host checks passed; no claim yet that the new native scenarios passed. Preserve maps/tilesets/saves and published v0.0.70 files until verified publication.
+
+## Mt. Ember return landing repair — review candidate (26 October 2026)
+
+**Model: GPT-6 (Codex) | Reasoning: resolve script warps against actual map collision and preserve owner geometry.**
+
+Resumed from published v0.0.70 at `7cf9a7bf`. Found the boat return targeted blocked Cinnabar `(20,9)` (`0x0433`), also a self-targeting closed-door warp. Changed only that script destination to clear `(21,8)` (`0x30D0`), beside the existing sailor with matching elevation and a clear north path. No maps/tilesets, saves, IDs, story gates, version or published downloads changed. A new geometry/decline/return-state regression failed before the repair and passed after it; all 57 focused Kanto/postgame tests and diff whitespace checks passed. [Evidence, impact and limits](qa/ember-return-2026-10-26.md).
+
+Candidate remains unshipped. Local native compiler/mGBA dependencies are absent; candidate CI builds/BPS/native smoke and a focused actual boat-return/walk/reboard emulator test remain pending. Do not equate the new host checks with uninterrupted gameplay or historical-save coverage. AGENTS.md reviewed; no new durable rule needed.
+
 ## v0.0.70 grotto variety — published (21 October 2026)
 
 **Model: GPT-6 (Codex) | Reasoning: disjoint species ownership across seasons, generated pool width and save identity preservation.**

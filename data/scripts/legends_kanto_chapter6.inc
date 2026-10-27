@@ -33,7 +33,7 @@ LegendsStory_EmberReturn::
 	fadescreen FADE_TO_BLACK
 	playse SE_SHIP
 	delay 40
-	warp MAP_LEGENDS_KANTO_CINNABAR_ISLAND, 20, 9
+	warp MAP_LEGENDS_KANTO_CINNABAR_ISLAND, 21, 8
 	waitstate
 	releaseall
 	end

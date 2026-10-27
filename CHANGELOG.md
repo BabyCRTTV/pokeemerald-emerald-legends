@@ -4,6 +4,10 @@ All notable Pokémon Emerald: Legends project changes are documented here.
 
 For build-specific player views, see [CHANGELOG-RELEASE.md](CHANGELOG-RELEASE.md) and [CHANGELOG-DEBUG.md](CHANGELOG-DEBUG.md). The canonical history below records the project as a whole.
 
+## [0.0.71] - 2026-10-27
+
+- Corrected the Mt. Ember return boat landing in Cinnabar so the player arrived on clear ground beside the expedition sailor.
+
 ## [0.0.70] - 2026-10-21
 
 - Expanded each hidden grotto from five to eight Pokémon per season, with 96 seasonal encounter slots across three grottos.
