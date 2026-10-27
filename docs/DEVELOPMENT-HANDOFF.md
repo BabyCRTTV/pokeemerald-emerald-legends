@@ -1,5 +1,13 @@
 # Development handoff
 
+## v0.0.73 Routes 127–131 — implementation prepared; verification next (27 October 2026)
+
+**Model: GPT-6 (Codex) | Reasoning: preserve rare native slot access and special-map event dependencies while appending ordinary Surf.**
+
+Owner requested the next encounter set. Live master was published v0.0.72 at `bda68bb1`, all production/Pages gates passed; separate PRs #89/#56 remain untouched. Prepared20 seasonal Surf tables /36 distinct visitors across Routes127–131. Route129 keeps all four residents and its Wailord1% slot, so it uses one30% visitor; other routes use30%/5% visitors and65% residents. All104 prior arrays and220 native scenario identities are exact. Native levels/rate4, fishing/Dive, Mirage Island Wynaut/berry/appearance, Sky Pillar access/layout, Marine Cave/weather, Route128 story/Seafloor Cavern, maps/tilesets, approved art/wardrobe/sprites and save layouts/IDs remain unchanged. No migration. [Rosters](features/seasonal-encounters.md), [source receipt](qa/seasonal-routes-v0.0.73-source.json), [QA/checkpoint](qa/seasonal-routes-v0.0.73.md).
+
+Actual-C124-table odds/levels/residents/rates/TOD/pending-season/fallback and dependent-reader checks passed; importer124/104/84/64/48/32/16 snapshots passed. Related field requests, season engine, Kanto foundation, compatible save-sector tests, patcher and metadata checks passed. Appended42 native scenarios (262 planned;67,072 creations), preserving earlier220 indices; coordinates are native Calm Water under both Route130/131 alternate layouts. These plans are not native pass results. Next: pin/sync LegendsDex1.6.1 to the game commit, preserve art/data/grotto provenance, run project/browser/native/build/dual-decoder gates, inspect actual captures, merge with head lease and verify production/BPS/Pages/live bytes before claiming publication. Routine encounter preview approval remains waived. AGENTS.md reviewed; no new durable rule. Historical-save/full-story/Release seasonal/Pizza Boy limits and separate Wyrmtide approval remain.
+
 ## v0.0.72 Routes 122–126 — published and verified (27 October 2026)
 
 **Model: GPT-6 (Codex) | Reasoning: preserve native encounters and dependent events, then verify production/native results and exact public bytes before closing publication.**

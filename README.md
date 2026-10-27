@@ -1,6 +1,6 @@
 # Pokémon Emerald: Legends
 
-**Version:** 0.0.72<br>
+**Version:** 0.0.73<br>
 **Base:** [pokeemerald-expansion](https://github.com/rh-hideout/pokeemerald-expansion)
 
 Pokémon Emerald: Legends is an unofficial, non-commercial Pokémon Emerald ROM-hack project built on the open-source `pokeemerald-expansion` decompilation/expansion base.
@@ -9,7 +9,7 @@ The project is intended to preserve the feel and structure of Pokémon Emerald w
 
 The New Game / Continue / Options menu uses a soft lavender backdrop as of v0.0.13.1. v0.0.54 displays the current version at the right edge of its OPTION card, matching the native text; Debug includes the -D suffix.
 
-v0.0.72 added seasonal grass/Surf visitors on Routes 122–126 while retaining native residents, slot levels, fishing, Dive and earlier seasonal tables. [Rosters and rules](docs/features/seasonal-encounters.md).
+v0.0.73 added 36 distinct seasonal Surf visitors on Routes 127–131 while retaining all native residents, Route 129’s 1% Wailord, Mirage Island grass, fishing, Dive and earlier seasonal tables. [Rosters and rules](docs/features/seasonal-encounters.md).
 
 v0.0.71 corrected the Mt. Ember return boat landing in Cinnabar, placing the player on clear ground beside the expedition sailor.
 

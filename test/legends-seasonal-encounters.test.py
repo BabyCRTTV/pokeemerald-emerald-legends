@@ -109,6 +109,31 @@ for route in range(122,127):
   assert not(old_species&{v.removeprefix('SPECIES_') for v in visitors})
   assert not(new_visitors&visitors);new_visitors|=visitors
 assert len(new_visitors)==40
+# Routes 127–131: protect every preceding array and rare native Wailord.
+latest=json.loads((R/'docs/qa/seasonal-routes-v0.0.73-source.json').read_text())
+for match in re.finditer(r'static const struct WildPokemon (sRoute\w+Mons)\[.*?=\s*\{.*?\};',data,re.S):
+ if match[1] in latest['protected_array_sha256']:
+  assert hashlib.sha256(match[0].encode()).hexdigest()==latest['protected_array_sha256'][match[1]],match[1]
+fresh=set();grotto=json.loads((R/'src/data/legends/grotto_encounters.json').read_text())
+grotto_species={m['species'] for room in grotto['rooms'] for pool in room['seasons'].values() for m in pool}
+prior=set(re.findall(r'SPECIES_(\w+)', '\n'.join(m[0] for m in re.finditer(r'static const struct WildPokemon (sRoute\w+Mons)\[.*?=\s*\{.*?\};',data,re.S) if m[1] in latest['protected_array_sha256'])))
+for route in range(127,132):
+ original=next(e['water_mons'] for e in g['encounters'] if e['map']==f'MAP_ROUTE{route}')
+ residents={m['species'] for m in original['mons']}
+ for season in ['Spring','Summer','Autumn','Winter']:
+  body=re.search(rf'sRoute{route}{season}WaterMons.*?=\s*\{{(.*?)\}};',data,re.S)[1]
+  rows=re.findall(r'\{(\d+), (\d+), (SPECIES_\w+)\}',body)
+  assert len(rows)==5 and [(int(a),int(b)) for a,b,_ in rows]==[(m['min_level'],m['max_level']) for m in original['mons']]
+  odds={}
+  for (_,_,species),weight in zip(rows,water_weights):odds[species]=odds.get(species,0)+weight
+  visitors=set(odds)-residents
+  assert residents<=odds.keys() and sum(odds[x] for x in residents)==(70 if route==129 else 65)
+  assert sorted(odds[x] for x in visitors)==([30] if route==129 else [5,30])
+  if route==129:assert odds['SPECIES_WAILORD']==1
+  stripped={s.removeprefix('SPECIES_') for s in visitors}
+  assert stripped==set(latest['routes'][str(route)]['visitors'][season.lower()])
+  assert not(stripped&(prior|grotto_species|fresh));fresh|=stripped
+assert len(fresh)==36
 pre=r'''
 #include <stdint.h>
 #include <stddef.h>
@@ -145,6 +170,11 @@ typedef uint8_t u8;typedef uint16_t u16;typedef uint32_t u32;
 #define MAP_ROUTE124 124
 #define MAP_ROUTE125 125
 #define MAP_ROUTE126 126
+#define MAP_ROUTE127 127
+#define MAP_ROUTE128 128
+#define MAP_ROUTE129 129
+#define MAP_ROUTE130 130
+#define MAP_ROUTE131 131
 #define NUM_LAND_MONS_ENCOUNTER_SLOTS 12
 #define NUM_WATER_MONS_ENCOUNTER_SLOTS 5
 #define HEADER_NONE 65535
@@ -155,7 +185,7 @@ struct WildPokemonInfo {u8 encounterRate;const struct WildPokemon *wildPokemon;}
 struct WildEncounterTypes {const struct WildPokemonInfo *landMonsInfo,*waterMonsInfo,*hiddenMonsInfo;};
 struct WildPokemonHeader {u8 mapGroup,mapNum;struct WildEncounterTypes encounterTypes[TIMES_OF_DAY_COUNT];};
 static struct WildPokemonInfo fallback[4],waterFallback[4];
-static struct WildPokemonHeader gWildMonHeaders[28];
+static struct WildPokemonHeader gWildMonHeaders[33];
 static unsigned active,reads,pending,currentHeader;
 #define MAX_LEVEL 100
 #define MON_LEVEL_NONEXISTENT 255
@@ -174,10 +204,10 @@ u8 LegendsGetActiveSeason(void){reads++;return active;}
 '''
 main=r'''
 int main(void){
- for(unsigned h=0;h<27;h++){gWildMonHeaders[h].mapNum=101+h;for(unsigned t=0;t<4;t++){gWildMonHeaders[h].encounterTypes[t].landMonsInfo=&fallback[t];gWildMonHeaders[h].encounterTypes[t].waterMonsInfo=&waterFallback[t];}}
+ for(unsigned h=0;h<32;h++){gWildMonHeaders[h].mapNum=101+h;for(unsigned t=0;t<4;t++){gWildMonHeaders[h].encounterTypes[t].landMonsInfo=&fallback[t];gWildMonHeaders[h].encounterTypes[t].waterMonsInfo=&waterFallback[t];}}
  for(unsigned season=0;season<4;season++)for(unsigned t=0;t<4;t++){
   active=season;pending=(season+1)%4;
-  for(unsigned h=0;h<27;h++){
+  for(unsigned h=0;h<32;h++){
    currentHeader=h;
    for(unsigned area=0;area<2;area++){
     const struct WildPokemonInfo *expected=area?&waterFallback[t]:&fallback[t],*previous=NULL;
@@ -197,11 +227,11 @@ int main(void){
    }
   }
  }
- assert(!GetLandMonsInfo(HEADER_NONE,0)&&!GetLandMonsInfo(27,0)&&!GetLandMonsInfo(0,4)&&!GetLandMonsInfo(0,(enum TimeOfDay)-1));
- assert(!GetWaterMonsInfo(HEADER_NONE,0)&&!GetWaterMonsInfo(27,0)&&!GetWaterMonsInfo(0,4)&&!GetWaterMonsInfo(0,(enum TimeOfDay)-1));
- active=255;for(unsigned h=0;h<27;h++){assert(GetLandMonsInfo(h,0)==&fallback[0]);assert(GetWaterMonsInfo(h,0)==&waterFallback[0]);}
+ assert(!GetLandMonsInfo(HEADER_NONE,0)&&!GetLandMonsInfo(32,0)&&!GetLandMonsInfo(0,4)&&!GetLandMonsInfo(0,(enum TimeOfDay)-1));
+ assert(!GetWaterMonsInfo(HEADER_NONE,0)&&!GetWaterMonsInfo(32,0)&&!GetWaterMonsInfo(0,4)&&!GetWaterMonsInfo(0,(enum TimeOfDay)-1));
+ active=255;for(unsigned h=0;h<32;h++){assert(GetLandMonsInfo(h,0)==&fallback[0]);assert(GetWaterMonsInfo(h,0)==&waterFallback[0]);}
  currentHeader=HEADER_NONE;assert(GetEncounterLevelFromMapData(SPECIES_WURMPLE,ENCOUNTER_TYPE_LAND)==255);
- puts("PASS: all 104 seasonal tables, exact rates including desert, all TODs, committed vs pending, unrelated map/method parity, bounds/fallback and absent prior-season DexNav targets");
+ puts("PASS: all 124 seasonal tables, exact rates including desert, all TODs, committed vs pending, unrelated map/method parity, bounds/fallback and absent prior-season DexNav targets");
 }
 '''
 with tempfile.TemporaryDirectory() as d:
@@ -216,4 +246,4 @@ assert 'encounters.landMonsInfo = GetLandMonsInfo(i, gAreaTimeOfDay);' in (R/'sr
 assert s.count('gWildMonHeaders[headerId].encounterTypes[timeOfDay].waterMonsInfo')==1
 assert 'encounters.waterMonsInfo = GetWaterMonsInfo(i, gAreaTimeOfDay);' in (R/'src/pokedex_area_screen.c').read_text()
 assert 'LegendsGetSeason()' not in function and 'VarSet(' not in function
-print('PASS: original residents/levels/rates, 70/20/10 base distribution, 208 visitor selections, native 65/30/5 Surf odds and all dependent land/Surf readers')
+print('PASS: original residents/levels/rates, 70/20/10 base distribution, 244 visitor selections, native 65/30/5 Surf odds and all dependent land/Surf readers')
