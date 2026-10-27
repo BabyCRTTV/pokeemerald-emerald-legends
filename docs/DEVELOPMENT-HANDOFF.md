@@ -1,5 +1,11 @@
 # Development handoff
 
+## Approved v0.0.71 return landing publication — in progress (26 October 2026)
+
+**Model: GPT-6 (Codex) | Reasoning: apply explicit publication approval and verify native return interactions before release.**
+
+Owner approved publishing the Mt. Ember landing repair. Prepared v0.0.71 labels, all three changelogs, README, site and patcher. Added a private native mGBA harness to the existing Debug/Release workflow for actual sailor decline/accept, return warp, collision-enabled walking and reboarding, with and without outbound gates. It changes no production game source beyond the approved destination and version labels. Local dependency installation failed because the package mirror was unavailable, so native results must come from CI. PR #90 remains unmerged pending the versioned candidate checks, native harness, independently verified patches and live deployment. Earlier 57 host checks passed; no claim yet that the new native scenarios passed. Preserve maps/tilesets/saves and published v0.0.70 files until verified publication.
+
 ## Mt. Ember return landing repair — review candidate (26 October 2026)
 
 **Model: GPT-6 (Codex) | Reasoning: resolve script warps against actual map collision and preserve owner geometry.**

@@ -270,9 +270,9 @@ static const u8 gText_MainMenuNewGame[] = _("NEW GAME");
 static const u8 gText_MainMenuContinue[] = _("CONTINUE");
 static const u8 gText_MainMenuOption[] = _("OPTION");
 #ifdef RELEASE
-static const u8 sText_MainMenuVersion[] = _("v0.0.70");
+static const u8 sText_MainMenuVersion[] = _("v0.0.71");
 #else
-static const u8 sText_MainMenuVersion[] = _("v0.0.70-D");
+static const u8 sText_MainMenuVersion[] = _("v0.0.71-D");
 #endif
 static const u8 gText_MainMenuMysteryGift[] = _("MYSTERY GIFT");
 static const u8 gText_MainMenuMysteryGift2[] = _("MYSTERY GIFT");

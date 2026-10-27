@@ -2,6 +2,10 @@
 
 This is the player-facing history for the recommended **Release** build. Shared Legends changes are repeated here so this file stands on its own; Release-only behavior is called out separately.
 
+## [0.0.71] - 2026-10-26
+
+- Corrected the Mt. Ember return boat landing in Cinnabar so the player arrived on clear ground beside the expedition sailor.
+
 ## [0.0.70] - 2026-10-21
 
 - Expanded each hidden grotto from five to eight Pokémon per season, with 96 seasonal encounter slots across three grottos.
