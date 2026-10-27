@@ -1,0 +1,86 @@
+{
+  "model": "GPT-6 (Codex)",
+  "new_source": "a64354e358e8422c4ea62a396934ad0ea12afde5",
+  "old_source": "0d13f23794686525203fcfe3f8c6496e6921d2f2",
+  "gameVersion": "0.0.72",
+  "LegendsDex": "1.6.0",
+  "changed_methods": [
+    [
+      "MAP_ROUTE122",
+      "surf"
+    ],
+    [
+      "MAP_ROUTE123",
+      "land"
+    ],
+    [
+      "MAP_ROUTE124",
+      "surf"
+    ],
+    [
+      "MAP_ROUTE125",
+      "surf"
+    ],
+    [
+      "MAP_ROUTE126",
+      "surf"
+    ]
+  ],
+  "ordinary_seasonal_tables": 104,
+  "ordinary_seasonal_methods": 26,
+  "species_count": 1028,
+  "map_count": 160,
+  "grotto_supplement_preserved": true,
+  "previous_methods_and_native_entries_preserved": true,
+  "source_art_and_species_inputs_unchanged": [
+    "graphics/pokemon",
+    "src/data/pokemon",
+    "include/constants/species.h",
+    "include/constants/pokemon.h",
+    "include/config/pokemon.h",
+    "data/region_map",
+    "src/region_map.c",
+    "graphics/pokedex",
+    "src/data/region_map",
+    "graphics/pokenav/region_map"
+  ],
+  "protected_asset_sha256": {
+    "dex-sprite-atlas.webp": "55bdf244830f30f9aeb5eeddb8f628b6885eccb2e95b171dac14df9b529190df",
+    "map-hoenn.png": "6abac3457dd2c588173b001c7f5ad37b58b4429ff50d3d54373f2fe868e5f625",
+    "map-kanto.png": "bc89ff01cbc5dca3fe849d2c0d872c1e98b57a450663d72a7a210d3645b495f0"
+  },
+  "notes": "Only the five new ordinary seasonal methods gained variants. Global source metadata/cache URLs advanced together after unchanged art/species/region-map inputs were verified. Existing atlas/profile content, walkthrough context/town-stat provenance, grotto supplement, layouts/styles, companion signing and packages were retained. Browser checks passed, including all five added routes and existing tablet readability checks. Native candidate passed; publication remains pending.",
+  "local_reader_passed": {
+    "individual_season_views": 104,
+    "all_seasons_unions": 26,
+    "walkthrough_methods": 412,
+    "prior_snapshot_imports": [
+      104,
+      84,
+      64,
+      48,
+      32,
+      16
+    ]
+  },
+  "native_wild_source_unchanged": true,
+  "ordinary_region_sections_verified": 157,
+  "browser_run": 40452334731,
+  "browser_passed": true,
+  "browser_widths": [
+    320,
+    360,
+    412,
+    580,
+    581,
+    619,
+    620,
+    690,
+    768,
+    820,
+    900,
+    960,
+    1024,
+    1280
+  ]
+}

@@ -1,8 +1,8 @@
-# Seasonal encounters — Routes 101–121
+# Seasonal encounters — Routes 101–126
 
 **Model: GPT-6 | Approach: preserve native residents/levels and resolve every dependent land-table consumer through the committed season.**
 
-Status: Routes 101–104 grass shipped in v0.0.63; Routes 105–108 Surf in v0.0.64; Route 109 Surf and Routes 110–112 land in v0.0.65. Both live v0.0.65 patches were independently decoded and verified against production ROM hashes. Approved native DexNav sizing/centering and silhouettes were preserved.
+Status: Routes 101–121 shipped across v0.0.63–v0.0.67. The v0.0.72 candidate adds Route 123 grass and Routes 122/124/125/126 Surf. Native candidate testing passed; publication is pending and public v0.0.71 is unchanged. Approved DexNav silhouettes, centering, artwork and all earlier tables remain protected.
 
 ## Grass pilot — Routes 101–104 (v0.0.63)
 
@@ -267,6 +267,61 @@ Year-round residents: Poochyena, Shuppet, Mightyena, Oddish, Gloom, Wingull, Kec
 | Summer | Scraggy | Venipede |
 | Autumn | Phantump | Pumpkaboo |
 | Winter | Misdreavus | Greavard |
+
+## Routes 122–126 — v0.0.72 candidate
+
+**Model: GPT-6 (Codex) | Reasoning: append native-method data, preserve every original resident/slot and related field-survey/story access.**
+
+Twenty appended tables add 40 distinct visitors spanning Generations 1–9, without repeating earlier seasonal visitors or grotto pools. Route 123 grass keeps residents at 70% and visitors at 20%/10%; Surf on Routes 122/124/125/126 keeps residents at 65% and visitors at 30%/5%. Slot levels and native rates (20 grass; 4 Surf) remain exact. Grass visitors use levels 28 and 26; Surf visitors retain levels 10–30 and 15–25. All use the existing committed season, all day.
+
+Native residents remain year-round: Poochyena, Shuppet, Mightyena, Oddish, Gloom, Wingull and Kecleon on Route 123; Tentacool, Wingull and Pelipper on the sea routes. Fishing, Route 123 Surf, Dive encounters, shards, berries, Mt. Pyre/Shoal Cave, Sootopolis/story/HM access, weather and all existing maps/scripts/artwork are unchanged. Birch’s Route 124 Water-partner and underwater studies retain native partners and gates. No save fields, identifiers, options or migrations were introduced.
+
+### Route 122 — Surf
+
+| Season | 30% visitor | 5% visitor |
+|---|---|---|
+| Spring | Psyduck | Goldeen |
+| Summer | Poliwag | Seaking |
+| Autumn | Barboach | Quagsire |
+| Winter | Palpitoad | Dewgong |
+
+### Route 123 — grass
+
+| Season | 20% visitor | 10% visitor |
+|---|---|---|
+| Spring | Toedscool | Chingling |
+| Summer | Dunsparce | Stunky |
+| Autumn | Yamask | Litwick |
+| Winter | Golett | Elgyem |
+
+### Route 124 — Surf
+
+| Season | 30% visitor | 5% visitor |
+|---|---|---|
+| Spring | Lumineon | Mantine |
+| Summer | Floatzel | Octillery |
+| Autumn | Lanturn | Seadra |
+| Winter | Golduck | Cloyster |
+
+### Route 125 — Surf
+
+| Season | 30% visitor | 5% visitor |
+|---|---|---|
+| Spring | Wimpod | Kingler |
+| Summer | Carvanha | Sharpedo |
+| Autumn | Wugtrio | Crawdaunt |
+| Winter | Wailmer | Walrein |
+
+### Route 126 — Surf
+
+| Season | 30% visitor | 5% visitor |
+|---|---|---|
+| Spring | Araquanid | Swanna |
+| Summer | Drednaw | Clawitzer |
+| Autumn | Jellicent | Barbaracle |
+| Winter | Tentacruel | Kingdra |
+
+[Source/compatibility receipt](../qa/seasonal-routes-v0.0.72-source.json). Candidate native results passed; publication/live-byte verification remains required before this is described as shipped.
 
 ## DexNav silhouettes
 

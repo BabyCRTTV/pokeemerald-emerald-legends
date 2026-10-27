@@ -21,6 +21,11 @@ function boot(file,data,url='https://example.test/wiki/'){
  return {ctx,get,click,sounds,back(){location=new URL(stack[--index]);windowListeners.popstate();},listeners};
 }
 const settle=()=>new Promise(r=>setImmediate(r));
+function routeHtml(reader,route){
+ const marker='<section class="route-card" id="route-MAP_ROUTE'+route+'"';
+ const parts=reader.get('results').innerHTML.split(marker);assert.equal(parts.length,2,'exact route card '+route);
+ return parts[1].split('</section>')[0];
+}
 (async()=>{
  const articles=JSON.parse(fs.readFileSync(base+'articles.json'));
  const w=boot('wiki.js',articles);await settle();
@@ -78,7 +83,7 @@ const settle=()=>new Promise(r=>setImmediate(r));
   const resident=m.seasonalVariants[0].entries.filter(e=>m.seasonalVariants.every(v=>v.entries.some(x=>x.id===e.id)));
   for(const season of ['spring','summer','autumn','winter']){
    u.get('season').listeners.change({target:{value:season}});
-   const h=u.get('results').innerHTML,v=m.seasonalVariants.find(v=>v.season===season).entries;
+   const h=routeHtml(u,route),v=m.seasonalVariants.find(v=>v.season===season).entries;
    assert.equal((h.match(/class="encounter"/g)||[]).length,v.length);
    assert.equal((h.match(/season--all/g)||[]).length,resident.length);
    assert.equal((h.match(new RegExp('season--'+season,'g'))||[]).length,2);
@@ -93,8 +98,8 @@ const settle=()=>new Promise(r=>setImmediate(r));
   assert.equal(u.get('season').value,'all');u.get('method').listeners.change({target:{value:method}});u.get('search').value='Route '+route;u.get('search').listeners.input();
   const m=data.maps.find(m=>m.id==='MAP_ROUTE'+route).methods.find(m=>m.id===method),expected=new Map();
   for(const v of m.seasonalVariants)for(const e of v.entries)expected.set([e.id,e.min,e.max,e.rate,e.time||'all-day'].join(':'),e);
-  const rows=u.get('results').innerHTML.split('<div class="encounter">').slice(1);
-  assert.equal(rows.length,expected.size,route+' union count');assert.match(u.get('results').innerHTML,/Shares apply in the seasons shown/);
+  const card=routeHtml(u,route),rows=card.split('<div class="encounter">').slice(1);
+  assert.equal(rows.length,expected.size,route+' union count');assert.match(card,/Shares apply in the seasons shown/);
   for(const e of expected.values()){
    const row=rows.find(row=>row.includes('data-species="'+e.id+'"')&&row.includes('class="rate">'+e.rate+'%'));
    assert(row,route+' all '+e.id);assert(row.includes('time--'+(e.time||'all-day')));
@@ -103,7 +108,7 @@ const settle=()=>new Promise(r=>setImmediate(r));
   }
   u.get('season').listeners.change({target:{value:'winter'}});assert.equal(u.ctx.location.search.includes('season=winter'),true);
   u.get('season').listeners.change({target:{value:'all'}});assert.equal(u.ctx.location.search.includes('season=all'),true);
-  assert.equal(u.get('results').innerHTML.split('<div class="encounter">').length-1,expected.size);
+  assert.equal(routeHtml(u,route).split('<div class="encounter">').length-1,expected.size);
  }
  // Different levels/rates/times for one species stay separate, with variant-derived badges.
  const fixture={...data,species:data.species.filter(p=>['BULBASAUR','PIKACHU'].includes(p.id)),maps:[{id:'MAP_ROUTE101',name:'Route 101',region:'Hoenn',methods:[{id:'land',label:'Land / grass',entries:[{id:'PIKACHU',min:4,max:4,rate:100}],seasonalVariants:[{season:'spring',entries:[{id:'BULBASAUR',min:2,max:2,rate:30,time:'nighttime'}]},{season:'summer',entries:[{id:'BULBASAUR',min:3,max:3,rate:10,time:'daytime'}]},{season:'autumn',entries:[{id:'BULBASAUR',min:2,max:2,rate:30,time:'nighttime'}]},{season:'winter',entries:[{id:'BULBASAUR',min:2,max:2,rate:30,time:'nighttime'}]}]}]}]};
@@ -117,7 +122,7 @@ const settle=()=>new Promise(r=>setImmediate(r));
  const fallback=JSON.parse(original);fallback.maps[0].methods[0].seasonalVariants=[];
  const empty=boot('dex.js',fallback,'https://example.test/wiki/dex.html?season=all');await settle();assert.match(empty.get('results').innerHTML,/data-species="PIKACHU"/);empty.click('species','PIKACHU');assert.match(empty.get('detail-content').innerHTML,/class="location-row"/);
  const invalid=boot('dex.js',data,'https://example.test/wiki/dex.html?season=invalid');await settle();assert.equal(invalid.get('season').value,'autumn');
- assert.match(dexHTML,/<option value="all">All Seasons<\/option>/);assert.match(dexHTML,/dex\.js\?v=legendsdex-1\.5\.0/);
+ assert.match(dexHTML,/<option value="all">All Seasons<\/option>/);assert(dexHTML.includes('dex.js?v=legendsdex-'+data.wikiDexRevision));
  console.log('PASS: '+seasonalMethods.length*4+' individual-season views and '+seasonalMethods.length+' All Seasons unions, exact shares/badges, URL round trips, tuple identity, fallbacks and no source mutation');
  const d=boot('dex.js',data);await settle();assert.equal(d.sounds.length,0,'audio must not preload all cries');
  assert.match(d.get('results').innerHTML,/data-cry=/);assert.match(d.get('results').innerHTML,/class="pokemon-link"/);

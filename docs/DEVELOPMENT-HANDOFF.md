@@ -1,5 +1,15 @@
 # Development handoff
 
+## v0.0.72 Routes 122–126 — candidate verified; publication next (27 October 2026)
+
+**Model: GPT-6 (Codex) | Reasoning: append native-method seasonal data while preserving resident access, earlier tables and correlated field-survey/story paths.**
+
+Owner requested more encounters on untouched routes and has not made TileForge edits yet. Prepared the next five numbered routes: Route 123 grass and Routes 122/124/125/126 Surf, with twenty tables and forty distinct new seasonal visitors spanning Generations 1–9. None overlap earlier seasonal visitors or grotto pools. Preserved all 84 earlier C arrays exactly, native residents, per-slot levels/weights/rates, all-day committed-season behavior and unrelated methods. Maps/tilesets/artwork, fishing/Dive, field requests, story/HM gates, saves and identifiers are unchanged. Existing Route 124 Water partners remain available year-round.
+
+Actual-C host checks passed all 104 tables, distributions, dependent readers, pending-season isolation, bounds and fallback. Importer regression passed 104/84/64/48/32/16-table snapshots with stale future variants removed. The native harness preserves all 178 earlier scenarios exactly and appends 42 native grass/Surf cases (220 planned; 56,320 real creations). Native CI `40452334033` subsequently passed all 220 scenarios / 56,320 real creations; all 279 prior encounter frames were pixel-identical to v0.0.71. Inspected actual Route 123/126 fully-seen captures. Project `40452333868`, build/dual-decoder `40452334072`, wiki/browser `40452334731` and Android `40452334151` passed; downloaded artifacts/target hashes matched native ROMs. Detailed native/patch receipts are linked in QA. [Source/compatibility receipt](qa/seasonal-routes-v0.0.72-source.json), [candidate QA](qa/seasonal-routes-v0.0.72.md).
+
+Prepared v0.0.72 metadata/changelogs; public master/downloads remain v0.0.71. Matching LegendsDex 1.6.0 is prepared against pinned game source `a64354e3`: exactly five methods gained variants; earlier data, all species/maps, atlas/profile art and grotto supplement are unchanged. Source metadata/cache keys advanced together after unchanged art/species/region-map inputs were verified. Actual-reader 104 season/26 All Seasons views and all 412 walkthrough methods passed. All those candidate gates passed. Merge PR #91 with the current head lease, then verify merged workflows, automatic patch/Pages publication and actual live game/wiki bytes before declaring completion. Routine encounter previews were previously waived; no artwork/UI redesign or extra visual approval is needed. AGENTS.md reviewed; existing preservation rules cover future map-editor edits, so no new durable rule was added. Historical saves/full-story/Pizza Boy limits and separate Wyrmtide/wiki backlog remain unchanged.
+
 ## v0.0.71 return landing — published and verified (27 October 2026)
 
 **Model: GPT-6 (Codex) | Reasoning: preserve approved game inputs, require real Debug/normal Release interactions and verify the exact published bytes.**
