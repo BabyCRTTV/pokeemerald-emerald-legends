@@ -1,5 +1,13 @@
 # Development handoff
 
+## Mt. Ember return landing repair — review candidate (26 October 2026)
+
+**Model: GPT-6 (Codex) | Reasoning: resolve script warps against actual map collision and preserve owner geometry.**
+
+Resumed from published v0.0.70 at `7cf9a7bf`. Found the boat return targeted blocked Cinnabar `(20,9)` (`0x0433`), also a self-targeting closed-door warp. Changed only that script destination to clear `(21,8)` (`0x30D0`), beside the existing sailor with matching elevation and a clear north path. No maps/tilesets, saves, IDs, story gates, version or published downloads changed. A new geometry/decline/return-state regression failed before the repair and passed after it; all 57 focused Kanto/postgame tests and diff whitespace checks passed. [Evidence, impact and limits](qa/ember-return-2026-10-26.md).
+
+Candidate remains unshipped. Local native compiler/mGBA dependencies are absent; candidate CI builds/BPS/native smoke and a focused actual boat-return/walk/reboard emulator test remain pending. Do not equate the new host checks with uninterrupted gameplay or historical-save coverage. AGENTS.md reviewed; no new durable rule needed.
+
 ## v0.0.70 grotto variety — published (21 October 2026)
 
 **Model: GPT-6 (Codex) | Reasoning: disjoint species ownership across seasons, generated pool width and save identity preservation.**

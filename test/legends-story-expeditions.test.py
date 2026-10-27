@@ -150,7 +150,31 @@ class Story(unittest.TestCase):
    e=self.ready(*flags);e.run('LegendsStory_EmberFerry');self.assertEqual(e.warps,[])
   e=self.ready('NORTH_REPORT');e.flags.add('FLAG_LEGENDS_KANTO_BLAINE_WON');e.run('LegendsStory_EmberFerry',[0]);self.assertEqual(e.warps,[])
   e.run('LegendsStory_EmberFerry',[1]);self.assertEqual(e.warps[-1],['MAP_LEGENDS_KANTO_MT_EMBER_EXTERIOR','28','47'])
-  e.run('LegendsStory_EmberReturn',[1]);self.assertEqual(e.warps[-1],['MAP_LEGENDS_KANTO_CINNABAR_ISLAND','20','9'])
+  e.run('LegendsStory_EmberReturn',[1]);self.assertEqual(e.warps[-1],['MAP_LEGENDS_KANTO_CINNABAR_ISLAND','21','8'])
+ def test_ember_return_lands_on_clear_ground_beside_sailor(self):
+  # Read the destination produced by the script, rather than blessing its coordinates.
+  # Return travel must remain available even without expedition progression flags.
+  for flags in [[],['NORTH_REPORT'],['NORTH_REPORT','EMBER_REPORT']]:
+   e=self.ready(*flags);before=e.flags.copy()
+   e.run('LegendsStory_EmberReturn',[0]);self.assertFalse(e.warps)
+   e.run('LegendsStory_EmberReturn',[1]);self.assertEqual(e.flags,before)
+   dest,x,y=e.warps[-1];x,y=int(x),int(y)
+   d=json.loads((R/'data/maps/LegendsKanto_CinnabarIsland/map.json').read_text())
+   self.assertEqual(dest,d['id'])
+   l=next(l for l in json.loads((R/'data/layouts/layouts.json').read_text())['layouts'] if l['id']==d['layout'])
+   self.assertTrue(0<=x<l['width'] and 0<=y<l['height'])
+   data=(R/l['blockdata_filepath']).read_bytes()
+   def word(px,py):return struct.unpack_from('<H',data,2*(py*l['width']+px))[0]
+   landing=word(x,y)
+   self.assertEqual(landing&0xC00,0,'Boat return landed on a blocked map cell')
+   self.assertNotIn((x,y),[(o['x'],o['y']) for o in d['object_events']])
+   self.assertNotIn((x,y),[(w['x'],w['y']) for w in d['warp_events']])
+   sailor=next(o for o in d['object_events'] if o['script']=='LegendsStory_EmberFerry')
+   self.assertEqual(abs(x-sailor['x'])+abs(y-sailor['y']),1)
+   self.assertEqual(landing>>12,sailor['elevation'])
+   # The adjacent north tile leads back onto Cinnabar's open path.
+   self.assertEqual(word(x,y-1)&0xC00,0)
+   self.assertEqual(word(x,y-1)>>12,landing>>12)
  def test_maps_native_art_warp_indices_and_npc_floors(self):
   maps={d['id']:d for p in (R/'data/maps').glob('*/map.json') if (d:=json.loads(p.read_text()))}
   layouts={l['id']:l for l in json.loads((R/'data/layouts/layouts.json').read_text())['layouts']}
