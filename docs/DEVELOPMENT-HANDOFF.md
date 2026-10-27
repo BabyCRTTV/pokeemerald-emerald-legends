@@ -1,5 +1,13 @@
 # Development handoff
 
+## v0.0.71 checkpoint — Release native gate waiting on CI setup (26 October 2026)
+
+**Model: GPT-6 (Codex) | Reasoning: retain verified Debug/patch evidence while withholding publication until normal Release interactions pass.**
+
+Current project `40445792342` and both-build/canonical-base/dual-decoder patch `40445792347` passed. Prior actual Debug boat and broader native checks passed; exact patches/target hashes, artifact provenance, test-only corrections and limits are in [the focused checkpoint](qa/ember-return-v0.0.71.md). New normal-Continue Release testing is committed in `b7a111ad`; no production game/art/save inputs changed. At 03:55 UTC, native `40445792327` was still installing compiler/mGBA packages after more than ten minutes, before the new tests. Local dependencies are unavailable. Resume by inspecting this run, retrying only a failed setup if necessary, and requiring actual Debug fixtures/Release interactions plus matching native target hashes before merge/publication. Do not mistake a successful build or decoder for this missing gameplay result.
+
+PR #90 remains unmerged; public v0.0.70 and both freshly hash-verified downloads are intact. Preserve concurrent edits. After native success, complete expected-head merge, merged workflows, automatic patch/Pages publication and actual live byte verification. Wyrmtide visual approval, the conflicting older wiki proposal and broader historical-save/Pizza Boy/story/balance work remain separate. AGENTS.md reviewed; no new durable policy needed.
+
 ## Release boat QA uses normal Continue — candidate pending (26 October 2026)
 
 **Model: GPT-6 (Codex) | Reasoning: validate optimized Release behavior through its supported save/Continue path rather than depend on private LTO function names.**
