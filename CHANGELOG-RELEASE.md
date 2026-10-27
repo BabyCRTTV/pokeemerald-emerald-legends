@@ -2,6 +2,13 @@
 
 This is the player-facing history for the recommended **Release** build. Shared Legends changes are repeated here so this file stands on its own; Release-only behavior is called out separately.
 
+## [0.0.74] - 2026-10-27
+
+- Added 24 distinct seasonal aquatic visitors to Surf encounters on Routes 132–134.
+- Retained all original residents, native slot levels and encounter rate, with 30%/5% seasonal visitors.
+- Preserved currents, Dive, Sealed Chamber party/Dig requirements, Feebas fishing tiles, earlier encounters, approved artwork and saved data.
+- Synchronized matching LegendsDex seasonal rosters, odds and source metadata.
+
 ## [0.0.73] - 2026-10-27
 
 - Added seasonal Surf encounters to Routes 127–131, with 36 distinct visitors across Generations 1–9.

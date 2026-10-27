@@ -1,4 +1,4 @@
-# Seasonal encounters — Routes 101–131
+# Seasonal encounters — Routes 101–134
 
 **Model: GPT-6 | Approach: preserve native residents/levels and resolve every dependent land-table consumer through the committed season.**
 
@@ -377,6 +377,43 @@ Fishing/Dive, Mirage Island’s Wynaut grass/appearance/Liechi Berry, Sky Pillar
 | Winter | Drizzile | Gyarados |
 
 [Source/compatibility receipt](../qa/seasonal-routes-v0.0.73-source.json). Candidate and production project/browser/native/build/dual-decoder gates passed. Candidate captures retained identical pixels across all 345 prior encounter frames. Both actual public patches match independently decoded candidates and their native-tested ROM targets; LegendsDex 1.6.1 is synchronized. [Production/public receipt and limits](../qa/seasonal-routes-v0.0.73-public.json).
+
+## Routes 132–134 — v0.0.74 candidate
+
+**Model: GPT-6 (Codex) | Reasoning: append native Surf variety while preserving the current maze, underwater access and ancient puzzle requirements.**
+
+Twelve new Surf tables add 24 distinct aquatic visitors, repeating no earlier seasonal/grotto species. Tentacool remains60%, Wingull 4% and Pelipper 1% in every season; visitors use 30%/5%. Native five-slot weights, per-slot levels and encounter rate 4 remain exact. Visitors retain levels 10–30 and 15–25, all day, using the existing committed active season.
+
+Currents, map/collision geometry, Route 134’s Dive warp, underwater encounters, Sealed Chamber Dig/first-Wailord/last-Relicanth checks and one-time doors remain unchanged. No new Wailord, Relicanth or Feebas sources were added. Fishing/Feebas tiles, earlier tables, approved artwork/wardrobe and save layouts/IDs remain unchanged; no migration is needed.
+
+### Route 132 — Surf
+
+| Season | 30% visitor | 5% visitor |
+|---|---|---|
+| Spring | Panpour | Simipour |
+| Summer | Wartortle | Blastoise |
+| Autumn | Bibarel | Ludicolo |
+| Winter | Clobbopus | Grapploct |
+
+### Route 133 — Surf
+
+| Season | 30% visitor | 5% visitor |
+|---|---|---|
+| Spring | Tynamo | Eelektrik |
+| Summer | Eelektross | Malamar |
+| Autumn | Stunfisk | Vaporeon |
+| Winter | Flamigo | Cursola |
+
+### Route 134 — Surf
+
+| Season | 30% visitor | 5% visitor |
+|---|---|---|
+| Spring | Omanyte | Omastar |
+| Summer | Kabuto | Kabutops |
+| Autumn | Magikarp | Milotic |
+| Winter | Dracovish | Arctovish |
+
+[Source/compatibility receipt](../qa/seasonal-routes-v0.0.74-source.json). Host checks passed; candidate/native/browser/build/patch and publication gates remain pending.
 
 ## DexNav silhouettes
 

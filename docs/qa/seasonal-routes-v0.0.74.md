@@ -1,0 +1,11 @@
+# Seasonal Routes 132–134 — v0.0.74 candidate
+
+Model: GPT-6 (Codex) | Reasoning: extend native Surf tables without changing related movement, puzzle access, approved art or saved state.
+
+Started from published v0.0.73 at `67b441119ea6476e1e015029e82648702f6381c8`. Added twelve Surf tables / 24 distinct aquatic visitors on Routes 132–134, with no previous seasonal/grotto species repeated. Retained Tentacool 60%, Wingull 4%, Pelipper 1%, native slot levels/weights and rate 4, with 30%/5% seasonal visitors at 10–30 /15–25. All use the committed active season, all day. [Rosters](../features/seasonal-encounters.md), [source/hashes](seasonal-routes-v0.0.74-source.json).
+
+Related dependency review preserved all current metatiles/forced movement, map/collision/warp data, Route 134’s underwater Dive target, Sealed Chamber Dig and first-Wailord/last-Relicanth checks, once-only Regi door flags, fishing/Feebas tiles, native encounter priorities, grotto renewal, all 124 prior seasonal arrays and saved layouts/IDs. New rosters do not add Wailord, Relicanth or Feebas. Approved art, sprites and wardrobe are unchanged. No migration is needed.
+
+Actual-C checks passed all 136 tables, resident/visitor odds, exact native levels/rates, all TODs, pending-versus-active season isolation, unavailable prior-season targets, unrelated-map/method fallback and bounds. Importer 136/124/104/84/64/48/32/16 snapshots passed and removed stale future variants. Related season engine, all 30 field requests, compatible save-sector, syntax and whitespace checks passed. Appended 26 native cases (288 planned; 73,728 actual creations planned), retaining all 262 prior cases exactly. Native fixtures use passable Calm Water, avoiding forced-current motion while checking real Surf tables and DexNav. Planned cases are not native gameplay results.
+
+Candidate project/browser/native, both builds and independent canonical-base BPS reconstruction gates remain pending. Matching LegendsDex promotion, real capture review, merge/production/live-byte verification are required before publication. Public v0.0.73 remains unchanged. Routine user-facing encounter preview approval remains waived when art/UI are unchanged. Controlled fixtures do not establish authentic historical-owner saves, natural full-story/balance, native Release seasonal hunts or Pizza Boy coverage.

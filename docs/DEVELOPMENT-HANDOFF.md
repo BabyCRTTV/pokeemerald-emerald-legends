@@ -1,5 +1,13 @@
 # Development handoff
 
+## v0.0.74 Routes 132–134 — implementation prepared; verification next (27 October 2026)
+
+**Model: GPT-6 (Codex) | Reasoning: preserve current-maze navigation and Sealed Chamber access while appending native Surf variety.**
+
+Owner requested the next encounter set after verified v0.0.73 at `67b44111`; live history, VERSION and Actions confirmed that completed release. Prepared twelve Surf tables / 24 distinct aquatic visitors on Routes 132–134. Native residents/slot levels/weights/rate 4 and committed-season/all-day behavior remain. All 124 prior arrays and 262 native scenario identities are protected exactly. Currents/map collision/warps, Route 134 Dive/underwater data, Sealed Chamber Dig/first-Wailord/last-Relicanth/one-time door requirements, Feebas fishing tiles, approved art/wardrobe/sprites and save layouts/IDs are unchanged. No new Wailord/Relicanth/Feebas source or migration. [Rosters](features/seasonal-encounters.md), [source receipt](qa/seasonal-routes-v0.0.74-source.json), [QA](qa/seasonal-routes-v0.0.74.md).
+
+Actual-C 136-table checks, eight historical importer generations, season engine, thirty field requests, save sectors and syntax/whitespace checks passed. Appended 26 native scenarios (288 planned; 73,728 creations) using native calm-water fixtures; this is not yet a gameplay pass. Next: pin/sync LegendsDex 1.6.2 without regenerating approved art, run candidate project/browser/native/both-build/dual-decoder gates and inspect real captures; then expected-head merge, production, automatic patches/Pages and actual live-byte checks before claiming completion. Public v0.0.73 remains intact. AGENTS.md reviewed; no new durable rule. Routine encounter preview approval remains waived. Earlier release work, historical-save/full-story/Pizza Boy limits, Wyrmtide #89 approval and conflicting wiki #56 remain separate.
+
 ## v0.0.73 Routes 127–131 — published and verified (27 October 2026)
 
 **Model: GPT-6 (Codex) | Reasoning: preserve native rare-resident slots and related island/story access, require real gameplay and independently reconstructed patches, then verify exact public bytes.**
