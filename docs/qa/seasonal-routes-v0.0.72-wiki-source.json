@@ -49,7 +49,7 @@
     "map-hoenn.png": "6abac3457dd2c588173b001c7f5ad37b58b4429ff50d3d54373f2fe868e5f625",
     "map-kanto.png": "bc89ff01cbc5dca3fe849d2c0d872c1e98b57a450663d72a7a210d3645b495f0"
   },
-  "notes": "Only the five new ordinary seasonal methods gained variants. Global source metadata/cache URLs advanced together after unchanged art/species/region-map inputs were verified. Existing atlas/profile content, walkthrough context/town-stat provenance, grotto supplement, layouts/styles, companion signing and packages were retained. Browser/native results and publication remain pending.",
+  "notes": "Only the five new ordinary seasonal methods gained variants. Global source metadata/cache URLs advanced together after unchanged art/species/region-map inputs were verified. Existing atlas/profile content, walkthrough context/town-stat provenance, grotto supplement, layouts/styles, companion signing and packages were retained. Browser checks passed, including all five added routes and existing tablet readability checks. Native candidate passed; publication remains pending.",
   "local_reader_passed": {
     "individual_season_views": 104,
     "all_seasons_unions": 26,
@@ -64,5 +64,23 @@
     ]
   },
   "native_wild_source_unchanged": true,
-  "ordinary_region_sections_verified": 157
+  "ordinary_region_sections_verified": 157,
+  "browser_run": 40452334731,
+  "browser_passed": true,
+  "browser_widths": [
+    320,
+    360,
+    412,
+    580,
+    581,
+    619,
+    620,
+    690,
+    768,
+    820,
+    900,
+    960,
+    1024,
+    1280
+  ]
 }

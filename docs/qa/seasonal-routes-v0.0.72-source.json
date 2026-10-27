@@ -379,6 +379,17 @@
     "total": 220,
     "appended": 42,
     "previous_scenarios_sha256": "32e7635b64cf5dfa7ac16c07bc2be89416db020bebf6decca23c158fce42cd2f",
-    "actual_native_execution": "pending"
-  }
+    "actual_native_execution": "Passed candidate CI 40452334033; see seasonal-routes-v0.0.72-native.json"
+  },
+  "verified_generations": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9
+  ]
 }
