@@ -1,5 +1,15 @@
 # Development handoff
 
+## v0.0.73 Routes 127–131 — candidate verified; publication next (27 October 2026)
+
+**Model: GPT-6 (Codex) | Reasoning: retain native rare-resident slots and related island/story access, then require independent patches and actual publication before closing.**
+
+Owner requested the next encounter set. Prepared twenty Surf tables / 36 distinct visitors across Generations 1–9 on Routes 127–131, with no prior seasonal/grotto species repeated. Route 129 retains all four residents and Wailord 1%, so it receives one 30% seasonal visitor; the other four routes keep 65% residents and 30%/5% visitors. All 104 earlier arrays and 220 native scenario identities remain exact. Native levels/rate 4, fishing/Dive, Mirage Island Wynaut/berry/appearance, Sky Pillar access/layout, Marine Cave/weather, Route 128 story/Seafloor Cavern, maps/tilesets, approved art/wardrobe/sprites and saved layouts/IDs are unchanged. No migration. [Rosters](features/seasonal-encounters.md), [source receipt](qa/seasonal-routes-v0.0.73-source.json), [focused QA](qa/seasonal-routes-v0.0.73.md).
+
+Candidate `845a3ab0` passed project 40546074678, browser 40546074535, Android 40546074475 and native 40546074571. Downloaded native artifact 12754665300 and verified its digest, both ROM identities, all 262 scenarios / 67,072 real creations and exact RGB equality of all 345 prior encounter frames to v0.0.72. Earlier 220 scenarios retain exact indices/content. Inspected native Routes 129/131 Summer captures and the phone browser screenshot. Existing Debug interactions and normal unmodified Release Continue/boat/wardrobe/grotto checks passed. [Detailed native receipt](qa/seasonal-routes-v0.0.73-native.json). Actual-C 124-table checks, seven historical importer snapshots, related field requests/season/save-sector checks and reader 124 season/31 union/412-method checks passed. LegendsDex 1.6.1 is synchronized at source 1989230f, with only five methods gaining variants; species/maps/atlas/profile art and complete grotto supplement retained.
+
+Patch run 40546074400 passed both builds, canonical base identity and independent Floating IPS/browser reconstructions. Downloaded artifact 12755206106, verified its archive/patch hashes and CRCs, and matched both decoded targets to native ROMs. All candidate gates passed. Next: source-equivalent expected-head PR #92 merge, production checks/automatic patches/Pages and exact live bytes before claiming publication. Public v0.0.72 is intact. Documentation checkpoints change no tested implementation. Routine user-facing preview approval remains waived; AGENTS.md reviewed, no new durable rule. Historical-owner saves, uninterrupted full-story/balance, native Release seasonal interactions and Pizza Boy remain unclaimed; separate Wyrmtide #89 approval and old wiki #56 remain untouched.
+
 ## v0.0.72 Routes 122–126 — published and verified (27 October 2026)
 
 **Model: GPT-6 (Codex) | Reasoning: preserve native encounters and dependent events, then verify production/native results and exact public bytes before closing publication.**

@@ -15,14 +15,14 @@ for(const route of data.maps)for(const method of route.methods){
   assert.equal((html.match(/<li>/g)||[]).length,rows.length);
   for(const e of rows){assert(html.includes('pokemon='+e.id+'"'));assert(html.includes('walkthrough-rate">'+e.rate+'%'));}
   for(const v of method.seasonalVariants)for(const e of v.entries)if(!rows.some(x=>x.id===e.id))assert(!html.includes('pokemon='+e.id+'"'));
-  assert.equal([...html.matchAll(/walkthrough-rate">(\d+)%/g)].reduce((s,x)=>s+Number(x[1]),0),method.id==='grotto'?rows.reduce((sum,e)=>sum+e.rate,0):method.id==='surf'?65:70);
+  assert.equal([...html.matchAll(/walkthrough-rate">(\d+)%/g)].reduce((s,x)=>s+Number(x[1]),0),method.id==='grotto'?rows.reduce((sum,e)=>sum+e.rate,0):method.id==='surf'&&route.id!=='MAP_ROUTE129'?65:70);
  }else{
   assert(!html.includes('Year-round residents shown.'));
   assert.equal((html.match(/<li>/g)||[]).length,method.entries.length);
   assert.equal([...html.matchAll(/walkthrough-rate">(\d+)%/g)].reduce((s,x)=>s+Number(x[1]),0),100);
  }
 }
-assert.equal(count-grottoCount,26);assert.equal(grottoCount,3);
+assert.equal(count-grottoCount,31);assert.equal(grottoCount,3);
 const m=data.maps[0],empty={...m,methods:m.methods.map(x=>({...x,seasonalVariants:[]}))};
 assert(!c.render({mapId:m.id},new Map([[m.id,empty]]),species).includes('Year-round residents shown.'));
-console.log('PASS: all 412 walkthrough methods, twenty-six ordinary seasonal methods and three grotto methods show their actual invariant resident shares and seasonal guidance; other methods and empty variants retain full tables');
+console.log('PASS: all 412 walkthrough methods, thirty-one ordinary seasonal methods and three grotto methods show their actual invariant resident shares and seasonal guidance; other methods and empty variants retain full tables');

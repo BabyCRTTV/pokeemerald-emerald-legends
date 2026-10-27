@@ -86,7 +86,7 @@ function routeHtml(reader,route){
    const h=routeHtml(u,route),v=m.seasonalVariants.find(v=>v.season===season).entries;
    assert.equal((h.match(/class="encounter"/g)||[]).length,v.length);
    assert.equal((h.match(/season--all/g)||[]).length,resident.length);
-   assert.equal((h.match(new RegExp('season--'+season,'g'))||[]).length,2);
+   assert.equal((h.match(new RegExp('season--'+season,'g'))||[]).length,v.length-resident.length);
    assert.equal((h.match(/time--all-day/g)||[]).length,v.length);
    for(const e of v)assert(h.includes('data-species="'+e.id+'"'),route+' '+season+' '+e.id);
    assert.equal([...h.matchAll(/class="rate">(\d+)%/g)].reduce((n,x)=>n+Number(x[1]),0),100);

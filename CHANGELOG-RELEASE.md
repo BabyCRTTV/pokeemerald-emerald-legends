@@ -2,6 +2,13 @@
 
 This is the player-facing history for the recommended **Release** build. Shared Legends changes are repeated here so this file stands on its own; Release-only behavior is called out separately.
 
+## [0.0.73] - 2026-10-27
+
+- Added seasonal Surf encounters to Routes 127–131, with 36 distinct visitors across Generations 1–9.
+- Retained every original resident and native slot level/rate, including Route 129’s 1% Wailord; that route received one seasonal visitor per season.
+- Preserved Mirage Island’s Wynaut grass, Sky Pillar/story access, fishing, Dive, grotto renewal, approved artwork and saved data.
+- Synchronized matching LegendsDex seasonal rosters, odds and source metadata.
+
 ## [0.0.72] - 2026-10-27
 
 - Added seasonal encounters to Route 123 grass and Routes 122, 124, 125 and 126 Surf.

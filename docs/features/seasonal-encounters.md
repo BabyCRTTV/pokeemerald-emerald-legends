@@ -1,4 +1,4 @@
-# Seasonal encounters — Routes 101–126
+# Seasonal encounters — Routes 101–131
 
 **Model: GPT-6 | Approach: preserve native residents/levels and resolve every dependent land-table consumer through the committed season.**
 
@@ -322,6 +322,61 @@ Native residents remain year-round: Poochyena, Shuppet, Mightyena, Oddish, Gloom
 | Winter | Tentacruel | Kingdra |
 
 [Source/compatibility receipt](../qa/seasonal-routes-v0.0.72-source.json). Candidate and production native checks passed all 220 scenarios / 56,320 actual creations, with all 279 prior encounter frames pixel-identical. Both public patches match the independently decoded candidates and native-tested ROM targets. [Production/public receipt](../qa/seasonal-routes-v0.0.72-public.json).
+
+## Routes 127–131 — v0.0.73 candidate
+
+**Model: GPT-6 (Codex) | Reasoning: retain native slot capacity, rare Wailord and special island/story layouts while extending ordinary Surf only.**
+
+Twenty new Surf tables add 36 distinct seasonal visitors spanning Generations 1–9, with no earlier seasonal/grotto species repeated. Routes 127/128/130/131 retain Tentacool 60%, Wingull 4% and Pelipper 1%, with visitors 30%/5%. Route 129 has four native residents: Tentacool 60%, Wingull 5%, Pelipper 4% and **Wailord 1%**. It therefore receives one seasonal visitor at 30%, preserving every resident and the rare Wailord slot without expanding/reweighting the native five slots. Exact native per-slot levels and rate 4 remain unchanged; common visitors use 10–30 and rare visitors 15–25. All use the committed active season, all day.
+
+Fishing/Dive, Mirage Island’s Wynaut grass/appearance/Liechi Berry, Sky Pillar layout/access, Route127/129 abnormal weather/Marine Cave, Route 128 Seafloor Cavern/story actors and existing grotto scenery remain unchanged. No maps, tilesets, scripts, artwork, sprites, saves, readers, flags/variables or persistent IDs changed. Earlier 104 tables are protected by exact hashes. No migration is needed.
+
+### Route 127 — Surf
+
+| Season | 30% visitor | 5% visitor |
+|---|---|---|
+| Spring | Poliwhirl | Politoed |
+| Summer | Azumarill | Poliwrath |
+| Autumn | Whiscash | Seismitoad |
+| Winter | Slowbro | Slowking |
+
+### Route 128 — Surf
+
+| Season | 30% visitor | 5% visitor |
+|---|---|---|
+| Spring | Croconaw | Starmie |
+| Summer | Feraligatr | Toxapex |
+| Autumn | Huntail | Gorebyss |
+| Winter | Dragalge | Golisopod |
+
+### Route 129 — Surf
+
+| Season | 30% visitor | Native rare resident |
+|---|---|---|
+| Spring | Gastrodon | Wailord (1%, all seasons) |
+| Summer | Dondozo | Wailord (1%, all seasons) |
+| Autumn | Carracosta | Wailord (1%, all seasons) |
+| Winter | Empoleon | Wailord (1%, all seasons) |
+
+### Route 130 — Surf
+
+| Season | 30% visitor | 5% visitor |
+|---|---|---|
+| Spring | Marshtomp | Swampert |
+| Summer | Brionne | Primarina |
+| Autumn | Dewott | Samurott |
+| Winter | Prinplup | Inteleon |
+
+### Route 131 — Surf
+
+| Season | 30% visitor | 5% visitor |
+|---|---|---|
+| Spring | Overqwil | Barraskewda |
+| Summer | Quaxwell | Quaquaval |
+| Autumn | Frogadier | Greninja |
+| Winter | Drizzile | Gyarados |
+
+[Source/compatibility receipt](../qa/seasonal-routes-v0.0.73-source.json). Host/source, project/browser, both native builds and all 262 candidate native scenarios passed; all 345 prior frames retained identical pixels. Both independent BPS reconstructions also passed; production/publication gates remain pending. Public v0.0.72 remains intact until verified publication.
 
 ## DexNav silhouettes
 

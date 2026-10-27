@@ -1,0 +1,59 @@
+{
+  "model": "GPT-6 (Codex)",
+  "gameVersion": "0.0.73",
+  "wikiDexRevision": "1.6.1",
+  "sourceCommit": "1989230f95b629a0ce3b677799e7086278974f47",
+  "previous_sourceCommit": "a64354e358e8422c4ea62a396934ad0ea12afde5",
+  "changed_methods": [
+    "MAP_ROUTE127",
+    "MAP_ROUTE128",
+    "MAP_ROUTE129",
+    "MAP_ROUTE130",
+    "MAP_ROUTE131"
+  ],
+  "ordinary_seasonal_methods": 31,
+  "ordinary_seasonal_tables": 124,
+  "species": 1028,
+  "maps": 160,
+  "total_methods": 412,
+  "species_unchanged": true,
+  "grotto_source_unchanged": {
+    "path": "src/data/legends/grotto_encounters.json",
+    "sha256": "f99dc3ef3900081441d27a8efb3fa76523f8924d3f2a7ec1b1aa84c0a1a7a08f",
+    "refreshSteps": 4500,
+    "status": "published",
+    "gameVersion": "0.0.70"
+  },
+  "source_art_species_wild_map_inputs_unchanged": true,
+  "atlas_profile_map_metadata_only": true,
+  "protected_asset_sha256": {
+    "dex-sprite-atlas.webp": "55bdf244830f30f9aeb5eeddb8f628b6885eccb2e95b171dac14df9b529190df",
+    "map-hoenn.png": "6abac3457dd2c588173b001c7f5ad37b58b4429ff50d3d54373f2fe868e5f625",
+    "map-kanto.png": "bc89ff01cbc5dca3fe849d2c0d872c1e98b57a450663d72a7a210d3645b495f0"
+  },
+  "reader_checks": "passed124seasonal/31union/412walkthrough",
+  "browser_checks": "passed",
+  "native_checks": "passed candidate40546074571",
+  "viewport_widths": [
+    320,
+    360,
+    412,
+    580,
+    581,
+    619,
+    620,
+    690,
+    768,
+    820,
+    900,
+    960,
+    1024,
+    1280
+  ],
+  "browser_run": 40546074535,
+  "browser_artifact": 12751939541,
+  "browser_artifact_sha256": "22d44bbf0bb42f0a141c848d37c8cb772c3d85921e08878e6b15fc08be56ded6",
+  "internal_capture_inspected": {
+    "seasonal-412.png": "8f5a4fa93c7bc34528011d354e107ee0e4156f6e7144832a200ed7aa38c316e9"
+  }
+}
