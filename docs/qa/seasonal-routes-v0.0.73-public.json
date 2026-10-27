@@ -1,0 +1,163 @@
+{
+  "model": "GPT-6 (Codex)",
+  "version": "0.0.73",
+  "merge_commit": "924f424dc7c6538fa11ddd1175ae6577f144e52d",
+  "reviewed_head": "aa9ef92c4bfeb109c6254c7e4d69e6da603de325",
+  "reviewed_tree": "1e8e3a9a6bc3928e30d7f910f554c1d8bef793f8",
+  "merged_tree_exact": true,
+  "patch_commit": "63c49464e4909980894d3fb94a8e4933afa7112f",
+  "patch_Pages_run": 40551558725,
+  "production_runs": {
+    "project": 40550544552,
+    "wiki_browser": 40550544709,
+    "Android": 40550544551,
+    "Windows": 40550544361,
+    "build_and_dual_decoder": 40550545726,
+    "native": 40550544165
+  },
+  "candidate": {
+    "source": "845a3ab0bda6cfb33d26c3556951b93ceea08df0",
+    "native_run": 40546074571,
+    "native_artifact": 12754665300,
+    "native_artifact_sha256": "b724c2f54983208de128bac883b7c9a6f571b14911a284592a1e6ff72b46dbb9",
+    "Debug_ROM_sha256": "e139970cac991914e68b07542bebc17fcbc0c03b084ce8bf79c09d29e1f2c371",
+    "Release_ROM_sha256": "10014a76eacd097fa5bb9208073ca83ffe13e2bab46a40888848e2b0e9b27656",
+    "scenario_count": 262,
+    "wild_creations": 67072,
+    "previous_scenarios_retained": 220,
+    "previous_frames_compared_RGB": 345,
+    "previous_frame_differences": []
+  },
+  "public_web": [
+    {
+      "path": "changelog.html",
+      "git_blob_sha1": "28411ec7547d89c1559a5c5befccdbc2b4cc0df2",
+      "bytes": 123197,
+      "live_bytes_matched": true
+    },
+    {
+      "path": "index.html",
+      "git_blob_sha1": "677e3072562d3283c1d2079ce8520f722fb43f30",
+      "bytes": 3538,
+      "live_bytes_matched": true
+    },
+    {
+      "path": "patcher.html",
+      "git_blob_sha1": "39b8968be63ea22e5aa367a6a001ccccc2625a62",
+      "bytes": 2675,
+      "live_bytes_matched": true
+    },
+    {
+      "path": "patcher.js",
+      "git_blob_sha1": "81c4a33b9fc8cb080b572204b0b5d03efe318dad",
+      "bytes": 9353,
+      "live_bytes_matched": true
+    },
+    {
+      "path": "wiki/dex-data.json",
+      "git_blob_sha1": "5f6b5447421fa1699478e7ce06971192483ccd05",
+      "bytes": 822149,
+      "live_bytes_matched": true
+    },
+    {
+      "path": "wiki/dex-portrait-sources.json",
+      "git_blob_sha1": "bd144f637d689751fafe5bb5b587ab541c063b92",
+      "bytes": 342,
+      "live_bytes_matched": true
+    },
+    {
+      "path": "wiki/dex-profiles.js",
+      "git_blob_sha1": "ef8d94665615485decee88370c94ff974e567538",
+      "bytes": 178251,
+      "live_bytes_matched": true
+    },
+    {
+      "path": "wiki/dex-sprite-atlas.js",
+      "git_blob_sha1": "d3b75a3865ddabc77d9f4e1061863f26b4dd54ef",
+      "bytes": 18786,
+      "live_bytes_matched": true
+    },
+    {
+      "path": "wiki/dex-sprite-atlas.webp",
+      "git_blob_sha1": "dd91aded78d44fc6aea679a678a0274edb93add1",
+      "bytes": 153584,
+      "live_bytes_matched": true
+    },
+    {
+      "path": "wiki/dex.html",
+      "git_blob_sha1": "7bfe2e87845bab8096e0279817607485dbd7dd7a",
+      "bytes": 10572,
+      "live_bytes_matched": true
+    },
+    {
+      "path": "wiki/index.html",
+      "git_blob_sha1": "671800629196f61c98f15d9218f33db6f8632485",
+      "bytes": 12360,
+      "live_bytes_matched": true
+    },
+    {
+      "path": "wiki/map-hoenn.png",
+      "git_blob_sha1": "10f2d26f42c381c2af7f51a7c835b4b3b190107f",
+      "bytes": 6757,
+      "live_bytes_matched": true
+    },
+    {
+      "path": "wiki/map-kanto.png",
+      "git_blob_sha1": "241cf5864b38426d1cc75ebfa70b865afdcbcac3",
+      "bytes": 3728,
+      "live_bytes_matched": true
+    },
+    {
+      "path": "wiki/walkthrough-maps.json",
+      "git_blob_sha1": "3c2cb70cd3e788cedd9ddda3a4c906a60c9d56bc",
+      "bytes": 115267,
+      "live_bytes_matched": true
+    }
+  ],
+  "public_patches": [
+    {
+      "path": "downloads/Pokemon-Emerald-Legends-v0.0.73.bps",
+      "HTTP": 200,
+      "patch_sha256": "596a11f7eca9385baec4e97d90e9d0349c53aadaa5f3a31283cb90c082328343",
+      "target_sha256": "10014a76eacd097fa5bb9208073ca83ffe13e2bab46a40888848e2b0e9b27656",
+      "target_bytes": 33554432,
+      "exact_live_candidate_bytes": true,
+      "supported_source_crc32": "1f1c08fb",
+      "patch_CRC_passed": true,
+      "independent_Floating_IPS_and_browser_reconstruction_passed": true,
+      "exact_native_candidate_ROM_target": true
+    },
+    {
+      "path": "downloads/Pokemon-Emerald-Legends-v0.0.73-debug.bps",
+      "HTTP": 200,
+      "patch_sha256": "c1631b83ea96c9dbb590855087dbe4b9438dec25c556b0bab46eba49db0cd237",
+      "target_sha256": "e139970cac991914e68b07542bebc17fcbc0c03b084ce8bf79c09d29e1f2c371",
+      "target_bytes": 33554432,
+      "exact_live_candidate_bytes": true,
+      "supported_source_crc32": "1f1c08fb",
+      "patch_CRC_passed": true,
+      "independent_Floating_IPS_and_browser_reconstruction_passed": true,
+      "exact_native_candidate_ROM_target": true
+    }
+  ],
+  "public_manifest": "596a11f7eca9385baec4e97d90e9d0349c53aadaa5f3a31283cb90c082328343  docs/downloads/Pokemon-Emerald-Legends-v0.0.73.bps\nc1631b83ea96c9dbb590855087dbe4b9438dec25c556b0bab46eba49db0cd237  docs/downloads/Pokemon-Emerald-Legends-v0.0.73-debug.bps\n10014a76eacd097fa5bb9208073ca83ffe13e2bab46a40888848e2b0e9b27656  pokeemerald-release.gba\ne139970cac991914e68b07542bebc17fcbc0c03b084ce8bf79c09d29e1f2c371  pokeemerald.gba\n",
+  "live_bytes_verified_before_workspace_unavailability": true,
+  "limits": "Both actual live patches/manifest and fourteen live web/data/art files were checked before the local workspace became unavailable. The production artifact's PNG/JSON payload was not re-extracted after that interruption; the 345-frame pixel comparison and both native target hashes refer to the fully inspected candidate. Production native job/log evidence is recorded separately. Controlled Debug seasonal instrumentation and normal Release Continue/boat/wardrobe/grotto fixtures do not establish authentic historical-owner saves, uninterrupted story/balance, native Release seasonal hunts or Pizza Boy.",
+  "recorded_UTC": "2026-10-27T17:55:17.999Z",
+  "production_required_runs_all_passed": true,
+  "production_native": {
+    "run": 40550544165,
+    "job": 122352755644,
+    "status": "success",
+    "scenario_count": 262,
+    "wild_creations": 67072,
+    "Debug_ROM_sha256_from_actual_Quickstart_log": "e139970cac991914e68b07542bebc17fcbc0c03b084ce8bf79c09d29e1f2c371",
+    "Debug_ROM_matches_candidate": true,
+    "seasonal_pass_from_actual_job_log": true,
+    "normal_Release_Continue_boat_wardrobe_grotto_job_passed": true,
+    "artifact": 12757076072,
+    "GitHub_reported_artifact_sha256": "f65b1e752a8cd50d2b3921b673e985fd76b42ddc8d5ba762255f40143743885a",
+    "artifact_available_through_connector": true,
+    "artifact_JSON_PNG_reextraction_completed": false
+  }
+}

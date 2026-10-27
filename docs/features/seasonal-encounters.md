@@ -2,7 +2,7 @@
 
 **Model: GPT-6 | Approach: preserve native residents/levels and resolve every dependent land-table consumer through the committed season.**
 
-Status: Routes 101–121 shipped across v0.0.63–v0.0.67. Published v0.0.72 added Route 123 grass and Routes 122/124/125/126 Surf. Candidate/production native tests, both builds, independent BPS decoders and live download verification passed. Approved DexNav silhouettes, centering, artwork and all earlier tables remain protected.
+Status: Routes 101–131 shipped across v0.0.63–v0.0.73. The latest batch added 36 seasonal Surf visitors on Routes 127–131, preserving Route 129’s native 1% Wailord. Approved DexNav silhouettes, centering, artwork and all earlier tables remain protected.
 
 ## Grass pilot — Routes 101–104 (v0.0.63)
 
@@ -323,7 +323,7 @@ Native residents remain year-round: Poochyena, Shuppet, Mightyena, Oddish, Gloom
 
 [Source/compatibility receipt](../qa/seasonal-routes-v0.0.72-source.json). Candidate and production native checks passed all 220 scenarios / 56,320 actual creations, with all 279 prior encounter frames pixel-identical. Both public patches match the independently decoded candidates and native-tested ROM targets. [Production/public receipt](../qa/seasonal-routes-v0.0.72-public.json).
 
-## Routes 127–131 — v0.0.73 candidate
+## Routes 127–131 — v0.0.73 (published and verified)
 
 **Model: GPT-6 (Codex) | Reasoning: retain native slot capacity, rare Wailord and special island/story layouts while extending ordinary Surf only.**
 
@@ -376,7 +376,7 @@ Fishing/Dive, Mirage Island’s Wynaut grass/appearance/Liechi Berry, Sky Pillar
 | Autumn | Frogadier | Greninja |
 | Winter | Drizzile | Gyarados |
 
-[Source/compatibility receipt](../qa/seasonal-routes-v0.0.73-source.json). Host/source, project/browser, both native builds and all 262 candidate native scenarios passed; all 345 prior frames retained identical pixels. Both independent BPS reconstructions also passed; production/publication gates remain pending. Public v0.0.72 remains intact until verified publication.
+[Source/compatibility receipt](../qa/seasonal-routes-v0.0.73-source.json). Candidate and production project/browser/native/build/dual-decoder gates passed. Candidate captures retained identical pixels across all 345 prior encounter frames. Both actual public patches match independently decoded candidates and their native-tested ROM targets; LegendsDex 1.6.1 is synchronized. [Production/public receipt and limits](../qa/seasonal-routes-v0.0.73-public.json).
 
 ## DexNav silhouettes
 
