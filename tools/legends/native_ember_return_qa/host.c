@@ -16,10 +16,10 @@ static void key(unsigned k){c->setKeys(c,k);frames(3);c->setKeys(c,0);frames(42)
 static void walk(unsigned k){c->setKeys(c,k);frames(12);c->setKeys(c,0);frames(42);}
 static void command(int n){unsigned previous=c->busRead32(c,mainAddr+4);c->busWrite32(c,0x0203ffc0,n);c->busWrite32(c,0x0203ffd0,0);c->busWrite32(c,0x0203ffcc,previous);c->busWrite32(c,mainAddr+4,callback);for(int i=0;i<1000&&!box(4);i++){frames(1);if(!box(4))c->busWrite32(c,mainAddr+4,callback);}assert(box(4));}
 static void snapshot(void){command(1);}
-static void choice(void){for(int i=0;i<50;i++){snapshot();if(box(13))return;key(1);}assert(!"Choice did not appear");}
-static void finish(void){for(int i=0;i<80;i++){frames(30);snapshot();if(!box(12))return;assert(!box(13));key(1);}assert(!"Event did not finish");}
+static void choice(void){for(int i=0;i<50;i++){snapshot();if(box(13)){frames(12);snapshot();assert(box(13));return;}key(1);}assert(!"Choice did not appear");}
+static void finish(void){for(int i=0;i<80;i++){frames(30);snapshot();if(!box(12)){frames(120);snapshot();if(!box(12))return;}assert(!box(13));if(box(12))key(1);}assert(!"Event did not finish");}
 static void capture(const char *out,const char *name){char p[4096];snprintf(p,sizeof(p),"%s/%s.rgba",out,name);FILE *f=fopen(p,"wb");assert(f&&fwrite(video,4,240*160,f)==240*160);fclose(f);}
-static void location(unsigned group,unsigned map,unsigned x,unsigned y){snapshot();printf("map=%u,%u xy=%u,%u collision=%u script=%u flags=%u noclip=%u\n",box(5),box(6),box(10),box(11),box(9),box(12),box(14),box(15));assert(box(5)==group&&box(6)==map&&box(10)==x&&box(11)==y&&box(9)==0&&!box(12)&&!box(15));}
+static void location(unsigned group,unsigned map,unsigned x,unsigned y){snapshot();printf("map=%u,%u xy=%u,%u collision=%u script=%u flags=%u noclip=%u choice=%u result=%u\n",box(5),box(6),box(10),box(11),box(9),box(12),box(14),box(15),box(13),box(1));assert(box(5)==group&&box(6)==map&&box(10)==x&&box(11)==y&&box(9)==0&&!box(12)&&!box(13)&&!box(15));}
 int main(int argc,char **argv){
  assert(argc==5);setbuf(stdout,NULL);mLogSetDefaultLogger(&logger);mainAddr=strtoul(argv[3],0,0);callback=strtoul(argv[4],0,0)|1;
  c=mCoreFind(argv[1]);assert(c&&c->init(c));mCoreInitConfig(c,NULL);mCoreConfigSetDefaultIntValue(&c->config,"skipBios",1);c->loadConfig(c,&c->config);
