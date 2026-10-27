@@ -12,6 +12,8 @@ static struct mCore *c; static color_t *video; static unsigned mainAddr,callback
 static unsigned box(int n){return c->busRead32(c,0x0203ffc0+n*4);}
 static void frames(int n){while(n--)c->runFrame(c);}
 static void key(unsigned k){c->setKeys(c,k);frames(3);c->setKeys(c,0);frames(42);}
+// A three-frame tap may only turn the avatar. Hold long enough to start one real step.
+static void walk(unsigned k){c->setKeys(c,k);frames(12);c->setKeys(c,0);frames(42);}
 static void command(int n){unsigned previous=c->busRead32(c,mainAddr+4);c->busWrite32(c,0x0203ffc0,n);c->busWrite32(c,0x0203ffd0,0);c->busWrite32(c,0x0203ffcc,previous);c->busWrite32(c,mainAddr+4,callback);for(int i=0;i<1000&&!box(4);i++){frames(1);if(!box(4))c->busWrite32(c,mainAddr+4,callback);}assert(box(4));}
 static void snapshot(void){command(1);}
 static void choice(void){for(int i=0;i<50;i++){snapshot();if(box(13))return;key(1);}assert(!"Choice did not appear");}
@@ -25,10 +27,10 @@ int main(int argc,char **argv){
  for(int ready=0;ready<2;ready++){
   c->reset(c);frames(500);c->busWrite32(c,mainAddr,0);c->busWrite32(c,0x0203ffc4,ready);command(0);frames(500);snapshot();
   unsigned group=box(5),map=box(6),townGroup=box(7),townMap=box(8);location(group,map,28,47);
-  key(64);location(group,map,28,46);key(16);location(group,map,28,46);key(1);choice();key(2);finish();location(group,map,28,46);
+  walk(64);location(group,map,28,46);key(16);location(group,map,28,46);key(1);choice();key(2);finish();location(group,map,28,46);
   assert(box(14)==(ready?3:0));puts("PASS: declined return without movement or progression change");
   key(1);choice();key(1);finish();location(townGroup,townMap,21,8);assert(box(14)==(ready?3:0));capture(argv[2],ready?"return-ready":"return-without-gates");
-  key(64);location(townGroup,townMap,21,7);key(128);location(townGroup,townMap,21,8);puts("PASS: native return and real walking on Cinnabar ground");
+  walk(64);location(townGroup,townMap,21,7);walk(128);location(townGroup,townMap,21,8);puts("PASS: native return and real walking on Cinnabar ground");
   key(32);location(townGroup,townMap,21,8);key(1);
   if(ready){choice();key(2);finish();location(townGroup,townMap,21,8);key(1);choice();key(1);finish();location(group,map,28,47);assert(box(14)==3);capture(argv[2],"reboarded");puts("PASS: declined then reboarded the production expedition boat");}
   else{finish();location(townGroup,townMap,21,8);assert(box(14)==0);puts("PASS: return remained available without opening outbound expedition gates");}
