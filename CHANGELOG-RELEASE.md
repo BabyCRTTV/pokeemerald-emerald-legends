@@ -2,7 +2,7 @@
 
 This is the player-facing history for the recommended **Release** build. Shared Legends changes are repeated here so this file stands on its own; Release-only behavior is called out separately.
 
-## [0.0.71] - 2026-10-26
+## [0.0.71] - 2026-10-27
 
 - Corrected the Mt. Ember return boat landing in Cinnabar so the player arrived on clear ground beside the expedition sailor.
 
