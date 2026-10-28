@@ -1,0 +1,227 @@
+{
+  "model": "GPT-6 (Codex)",
+  "version": "0.0.74",
+  "verified_UTC": "2026-10-28T00:18:58.806524+00:00",
+  "merge_commit": "9c33aafaf87a0bb3f6c60248e47c37b39199f5c0",
+  "reviewed_tree": "932c08c4d546ea2ea6ca78f90356c9df1f6e0c29",
+  "patch_commit": "f4d0b71f2926d0d0b66967a1f96c10d50c5523b2",
+  "patch_pages_run": 40607524394,
+  "production_runs": [
+    {
+      "id": 40606365967,
+      "name": "Legends project checks",
+      "conclusion": "success"
+    },
+    {
+      "id": 40606365981,
+      "name": "Check Legends Wiki",
+      "conclusion": "success"
+    },
+    {
+      "id": 40606365980,
+      "name": "Build Legends Wiki Android APK",
+      "conclusion": "success"
+    },
+    {
+      "id": 40606365993,
+      "name": "Build Legends Wiki Windows Installer",
+      "conclusion": "success"
+    },
+    {
+      "id": 40606366127,
+      "name": "Build release patches",
+      "conclusion": "success"
+    },
+    {
+      "id": 40606366007,
+      "name": "Legends mGBA gameplay smoke",
+      "conclusion": "success"
+    }
+  ],
+  "production_native": {
+    "model": "GPT-6 (Codex)",
+    "version": "0.0.74",
+    "run": 40606366007,
+    "artifact": 12780814150,
+    "artifact_sha256": "d8066cb1c49930653fba66b9796358c7775aac0b81b996ad9819c76c1a36de53",
+    "Debug_ROM_sha256": "5a3f1b36690c9464e427dd077b55de90873f81e7faa80e38e3c0881d6623b524",
+    "Release_ROM_sha256": "29a66e000cc0d14181b363f377cc97d71a5280b48b195735ec3ef01ee62f3ce3",
+    "scenario_count": 288,
+    "wild_creations": 73728,
+    "previous_scenarios_retained": 288,
+    "previous_frames_compared_RGB": 453,
+    "previous_frames_exact_RGB": 452,
+    "previous_frame_differences": [
+      "scene-255-gui.png"
+    ],
+    "private_Debug_instrumentation": true,
+    "public_ROM_unchanged": true,
+    "normal_Release_Continue_boat_wardrobe_grotto_passed": true,
+    "limits": "Actual compiled land and Surf tables, wild creation and DexNav GUI; hardware-sampled two-pose bounds/centering and uniform shrink-only scale for every grid icon; controlled route/season/seen state, original icons and VRAM frames, isolated palettes, unseen selection lock, closure and protected state. Both Route104 halves, native Surf fixtures on Routes105-109/122/124-134 and Route111 desert, Route113 native ash-grass and Routes114-118/121/123 grass and Routes119-120 native long-grass fixtures (Route119 rate15) checked. Not a natural progression playthrough, historical-save migration, full DexNav hunt or Pizza Boy test.",
+    "animation_phase_audit": {
+      "passed": true,
+      "comparison": "production against verified candidate",
+      "differences": [
+        "scene-255-gui.png"
+      ],
+      "changed_pixels": 735,
+      "bbox": [
+        10,
+        26,
+        137,
+        86
+      ],
+      "all_pixels_outside_native_icon_cells_identical": true,
+      "basis": "Visually inspected both actual captures. Existing native icon animation poses only; original assets/factory/callback unchanged, native VRAM/palette/two-pose geometry assertions passed. All other pixels exact.",
+      "limits": "This one production capture is not pixel-identical; no animation was changed to force matching ticks."
+    }
+  },
+  "previous_release_comparison": {
+    "compared": 411,
+    "exact_RGB": 407,
+    "native_animation_phase_only": 4,
+    "receipt": "seasonal-routes-v0.0.74-native.json"
+  },
+  "web": [
+    {
+      "path": "changelog.html",
+      "HTTP": 200,
+      "bytes": 124301,
+      "git_blob_sha1": "532143ffaa223f6eff5b16f6a2080603c0d8519b",
+      "sha256": "7794bf0838028430242e2f271c489c6c95105df279199f6d35fb2604743ce89c",
+      "matches_committed_source": true
+    },
+    {
+      "path": "index.html",
+      "HTTP": 200,
+      "bytes": 3538,
+      "git_blob_sha1": "b787a54ba5eec4e0ff871fbd88f2ffd66f570279",
+      "sha256": "43f7ffe7ed9984923549e3040f645294712f3c7a86f364a372b081fad3f26485",
+      "matches_committed_source": true
+    },
+    {
+      "path": "patcher.html",
+      "HTTP": 200,
+      "bytes": 2675,
+      "git_blob_sha1": "ca07095185e3774bdb160a9e2e65323be5226e07",
+      "sha256": "50207b0410a661f6470e83ff92a8484d2fd50a5267a012242ed2cb8617836bd8",
+      "matches_committed_source": true
+    },
+    {
+      "path": "patcher.js",
+      "HTTP": 200,
+      "bytes": 9353,
+      "git_blob_sha1": "29d24623246c0980ed98a8171197f3679f6956ca",
+      "sha256": "6db8ee3be0f56e1bbe1f9a0ff70216e5de93fd228b026fc6995c0413fb06ffcd",
+      "matches_committed_source": true
+    },
+    {
+      "path": "wiki/dex-data.json",
+      "HTTP": 200,
+      "bytes": 843410,
+      "git_blob_sha1": "f9b5e504cc82e478f09cef5575e96902170b45d2",
+      "sha256": "aa331052e36399a12ed9310d1ad6248e25c26af0694c4ffa1dccd9f93a21ffa5",
+      "matches_committed_source": true
+    },
+    {
+      "path": "wiki/dex-portrait-sources.json",
+      "HTTP": 200,
+      "bytes": 342,
+      "git_blob_sha1": "e0b3c0cfdfc775d9f2f93a1ccf42e6ce1f0d932c",
+      "sha256": "d06da7c4d57223c12669c90103b78093b8dee2bcccc4b4a06b17c90ff4e9b77a",
+      "matches_committed_source": true
+    },
+    {
+      "path": "wiki/dex-profiles.js",
+      "HTTP": 200,
+      "bytes": 178251,
+      "git_blob_sha1": "9c2f9a20058cff3ef3e918f2f4088e6bde984b1c",
+      "sha256": "c3c039cdc2223d0f0e60814b0ce3e5b51fefea6e4cf013a74e2a1c66cdbd4b7a",
+      "matches_committed_source": true
+    },
+    {
+      "path": "wiki/dex-sprite-atlas.js",
+      "HTTP": 200,
+      "bytes": 18786,
+      "git_blob_sha1": "6816a85159fdc0108203f1d54ee79e86d2aced72",
+      "sha256": "f2c0f0bdf7a1b27e35caefa0d59df990f49a1a871f64bea685a1a7ef162f9340",
+      "matches_committed_source": true
+    },
+    {
+      "path": "wiki/dex-sprite-atlas.webp",
+      "HTTP": 200,
+      "bytes": 153584,
+      "git_blob_sha1": "dd91aded78d44fc6aea679a678a0274edb93add1",
+      "sha256": "55bdf244830f30f9aeb5eeddb8f628b6885eccb2e95b171dac14df9b529190df",
+      "matches_committed_source": true
+    },
+    {
+      "path": "wiki/dex.html",
+      "HTTP": 200,
+      "bytes": 10572,
+      "git_blob_sha1": "d7f1b3e39f75084cd37d4ad64e6813247f44a5c0",
+      "sha256": "8f045573ae571a2e6ab5386f4e1c4a58f140b9fc18b34f07b348e0a9f7daff41",
+      "matches_committed_source": true
+    },
+    {
+      "path": "wiki/index.html",
+      "HTTP": 200,
+      "bytes": 12360,
+      "git_blob_sha1": "58c822c18ea84f47fc36d0f57aca7fef0ed33732",
+      "sha256": "9d99b8843098cd156e4c0db8d9bea232e7073a66c2569fa38b2ec9885f62638f",
+      "matches_committed_source": true
+    },
+    {
+      "path": "wiki/map-hoenn.png",
+      "HTTP": 200,
+      "bytes": 6757,
+      "git_blob_sha1": "10f2d26f42c381c2af7f51a7c835b4b3b190107f",
+      "sha256": "6abac3457dd2c588173b001c7f5ad37b58b4429ff50d3d54373f2fe868e5f625",
+      "matches_committed_source": true
+    },
+    {
+      "path": "wiki/map-kanto.png",
+      "HTTP": 200,
+      "bytes": 3728,
+      "git_blob_sha1": "241cf5864b38426d1cc75ebfa70b865afdcbcac3",
+      "sha256": "bc89ff01cbc5dca3fe849d2c0d872c1e98b57a450663d72a7a210d3645b495f0",
+      "matches_committed_source": true
+    },
+    {
+      "path": "wiki/walkthrough-maps.json",
+      "HTTP": 200,
+      "bytes": 115267,
+      "git_blob_sha1": "435e4a43b3fbacad83cb2aa95dc7178621098991",
+      "sha256": "e1914202128c65862a06923f64be730a34e3c40ac235e7c9a6e38f536c882c49",
+      "matches_committed_source": true
+    }
+  ],
+  "patches": [
+    {
+      "path": "downloads/Pokemon-Emerald-Legends-v0.0.74.bps",
+      "HTTP": 200,
+      "bytes": 17462757,
+      "sha256": "6d040c4c5e10b6c069bb8f7ea50b1ae104bfd252730e584adefc0c5d0ca98b4e",
+      "target_sha256": "29a66e000cc0d14181b363f377cc97d71a5280b48b195735ec3ef01ee62f3ce3",
+      "supported_source_crc32": "1f1c08fb",
+      "patch_CRC_passed": true,
+      "exact_candidate_bytes": true,
+      "independent_reconstructions_passed": true,
+      "exact_production_native_target": true
+    },
+    {
+      "path": "downloads/Pokemon-Emerald-Legends-v0.0.74-debug.bps",
+      "HTTP": 200,
+      "bytes": 17295762,
+      "sha256": "d6e8cc2f351a1ff23937e7aba2507999d3db1412762b314c0c03adb6dc8ad3e7",
+      "target_sha256": "5a3f1b36690c9464e427dd077b55de90873f81e7faa80e38e3c0881d6623b524",
+      "supported_source_crc32": "1f1c08fb",
+      "patch_CRC_passed": true,
+      "exact_candidate_bytes": true,
+      "independent_reconstructions_passed": true,
+      "exact_production_native_target": true
+    }
+  ],
+  "manifest": "6d040c4c5e10b6c069bb8f7ea50b1ae104bfd252730e584adefc0c5d0ca98b4e  docs/downloads/Pokemon-Emerald-Legends-v0.0.74.bps\nd6e8cc2f351a1ff23937e7aba2507999d3db1412762b314c0c03adb6dc8ad3e7  docs/downloads/Pokemon-Emerald-Legends-v0.0.74-debug.bps\n29a66e000cc0d14181b363f377cc97d71a5280b48b195735ec3ef01ee62f3ce3  pokeemerald-release.gba\n5a3f1b36690c9464e427dd077b55de90873f81e7faa80e38e3c0881d6623b524  pokeemerald.gba\n",
+  "limits": "No new local clean-base application: actual public patches are byte-identical to candidates independently applied in CI with Floating IPS and the shipped browser decoder. Controlled Debug seasonal instrumentation and normal unmodified Release Continue/boat/wardrobe/grotto fixtures do not establish authentic historical-owner saves, uninterrupted story/balance, native Release seasonal hunts or Pizza Boy."
+}

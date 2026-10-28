@@ -2,7 +2,7 @@
 
 **Model: GPT-6 | Approach: preserve native residents/levels and resolve every dependent land-table consumer through the committed season.**
 
-Status: Routes 101–131 shipped across v0.0.63–v0.0.73. The latest batch added 36 seasonal Surf visitors on Routes 127–131, preserving Route 129’s native 1% Wailord. Approved DexNav silhouettes, centering, artwork and all earlier tables remain protected.
+Status: Routes 101–134 shipped across v0.0.63–v0.0.74. The latest batch added 24 seasonal Surf visitors on Routes 132–134, preserving native residents, current navigation and Sealed Chamber requirements. Approved DexNav silhouettes, centering, artwork and all earlier tables remain protected.
 
 ## Grass pilot — Routes 101–104 (v0.0.63)
 
@@ -378,7 +378,7 @@ Fishing/Dive, Mirage Island’s Wynaut grass/appearance/Liechi Berry, Sky Pillar
 
 [Source/compatibility receipt](../qa/seasonal-routes-v0.0.73-source.json). Candidate and production project/browser/native/build/dual-decoder gates passed. Candidate captures retained identical pixels across all 345 prior encounter frames. Both actual public patches match independently decoded candidates and their native-tested ROM targets; LegendsDex 1.6.1 is synchronized. [Production/public receipt and limits](../qa/seasonal-routes-v0.0.73-public.json).
 
-## Routes 132–134 — v0.0.74 candidate
+## Routes 132–134 — v0.0.74
 
 **Model: GPT-6 (Codex) | Reasoning: append native Surf variety while preserving the current maze, underwater access and ancient puzzle requirements.**
 
@@ -413,7 +413,7 @@ Currents, map/collision geometry, Route 134’s Dive warp, underwater encounters
 | Autumn | Magikarp | Milotic |
 | Winter | Dracovish | Arctovish |
 
-[Source/compatibility receipt](../qa/seasonal-routes-v0.0.74-source.json). Host and candidate project/browser/native/both-build/dual-decoder checks passed; all 288 native scenarios completed. The four native animation-phase differences in older Route 130 captures are recorded in QA; no artwork/layout changed. Production/publication checks remain pending.
+[Source/compatibility receipt](../qa/seasonal-routes-v0.0.74-source.json). Host and candidate project/browser/native/both-build/dual-decoder checks passed; all 288 native scenarios completed. The four native animation-phase differences in older Route 130 captures are recorded in QA; no artwork/layout changed. Production project/browser/native/both-build/dual-decoder gates passed. Both actual public patches match independently decoded candidates and native-tested production ROMs; LegendsDex 1.6.2 is live. [Production/public receipt and limits](../qa/seasonal-routes-v0.0.74-public.json).
 
 ## DexNav silhouettes
 
