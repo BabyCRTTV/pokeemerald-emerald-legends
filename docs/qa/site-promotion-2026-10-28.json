@@ -2,15 +2,307 @@
   "model": "GPT-6 (Codex)",
   "baseline_commit": "42af9d928f0eb36d934429fe238347c855743c58",
   "game_version": "0.0.75",
-  "status": "local checks passed; candidate CI and production staging pending",
-  "activation": "pending: Pages Source must change from legacy master:/docs to GitHub Actions",
-  "active": false,
-  "local_tests": {"site_promotion": 16, "shared_build": 13, "public_verifier": 8, "patcher_and_counter": 10},
-  "candidate": null,
-  "production_staging": null,
-  "actual_deployment": null,
+  "status": "implemented, merged, activated and first real gated deployment/live bytes verified",
+  "activation": "complete: Pages Source saved as GitHub Actions; observed custom workflow deployment",
+  "active": true,
+  "local_tests": {
+    "site_promotion": 16,
+    "shared_build": 13,
+    "public_verifier": 8,
+    "patcher_and_counter": 10
+  },
+  "candidate": {
+    "project_run": 40733020853,
+    "promotion_fixture_run": 40733021049,
+    "passed": true
+  },
+  "production_staging": {
+    "run": 40733791196,
+    "source": "4783be9cb550cbd338b3ed0f3803a0531cce8c5b",
+    "passed": true,
+    "artifacts": {
+      "evidence": {
+        "status": {
+          "ready": true,
+          "source_commit": "4783be9cb550cbd338b3ed0f3803a0531cce8c5b"
+        },
+        "gates": {
+          "build-release-patch.yml": {
+            "id": 40646959764,
+            "input_sha256": "583ecd9f4693e60eb81129da1616a5c1854b3a205c9b8a0274ffb097eb34f27b",
+            "run_attempt": 1,
+            "source_commit": "fc99a7c1d567a0a7ef3a7298d88fde49e22984b4",
+            "workflow": "build-release-patch.yml"
+          },
+          "legends-checks.yml": {
+            "id": 40733477714,
+            "input_sha256": "9816364bb25e077df0acee68dc30847118b6ff7d722da837de1d90fc7122c8d7",
+            "run_attempt": 1,
+            "source_commit": "4783be9cb550cbd338b3ed0f3803a0531cce8c5b",
+            "workflow": "legends-checks.yml"
+          },
+          "wiki-apk.yml": {
+            "id": 40628689517,
+            "input_sha256": "a7fed66aed1506be37108abdad8367e2da4a1c25272c2581000ce8526dcbf071",
+            "run_attempt": 1,
+            "source_commit": "e86df95e44cf71521f205fef21168c0df7aa5af9",
+            "workflow": "wiki-apk.yml"
+          },
+          "wiki-checks.yml": {
+            "id": 40635448307,
+            "input_sha256": "7ba5e74ae82ee1b43081e284b506547a0bd7096bfd0ac65232f17779f0f4a670",
+            "run_attempt": 1,
+            "source_commit": "4b8eaa7a118701d1e6d9651eb7fb35de8c4573f4",
+            "workflow": "wiki-checks.yml"
+          },
+          "wiki-windows.yml": {
+            "id": 40628689486,
+            "input_sha256": "af80400148a316d991800e7dcf4a00201955c28164e6502c04bcaec63d570a9c",
+            "run_attempt": 1,
+            "source_commit": "e86df95e44cf71521f205fef21168c0df7aa5af9",
+            "workflow": "wiki-windows.yml"
+          }
+        },
+        "patch_artifact": {
+          "digest": "sha256:726bdaeaab73593e31a705cfa93fa55fbc0436b4c5d9ecbe603f71e3986d0cb8",
+          "id": 12797784885,
+          "manifest_sha256": "a34f6b9a42f0f79abb7b3c3d7862840f18828043a3c3255ba5b6ad880e746900",
+          "native_ROM_sha256": {
+            "pokeemerald-release.gba": "2a45d33966dcf131385e21709712de419e7117c61832d6ca163b7b73359d2bc8",
+            "pokeemerald.gba": "8f9b0365c2c71edad917c9b7107367d7377522e2b8c1787d0b6f1bfe748a6f50"
+          }
+        },
+        "files": 731,
+        "critical_files": 21,
+        "id": 12835224587,
+        "digest": "sha256:30bfa0bb5175cc2eb22b5dcce49903751424fd75f71624ab19e32499c26f0d38"
+      },
+      "site": {
+        "full_site_files_verified": 732,
+        "no_ROM_ELF_save_or_links": true,
+        "all_expected_file_bytes_SHA256_and_Git_blobs_verified": true,
+        "id": 12835702908,
+        "digest": "sha256:0be79af3f3b837ca952b3c948224b5ea73db0aaa0ebfec8a2bb4d0f8a9811462"
+      }
+    }
+  },
+  "actual_deployment": {
+    "run": 40734313847,
+    "prepare_job": 122978644441,
+    "deploy_job": 122979287723,
+    "passed": true,
+    "site_artifact": {
+      "id": 12835489056,
+      "digest": "sha256:b0d40f7a791e3d8600d7748841ff2b8fcc102e13767824e1b014bc61d143f992"
+    },
+    "evidence_artifact": {
+      "id": 12835928026,
+      "digest": "sha256:db9af9f99f5cdc1450168134d22a4f3ad6830a292beb172a6eacf9b2c4d4bd57"
+    },
+    "live_artifact": {
+      "id": 12835244008,
+      "digest": "sha256:8d58b57f094c8bf11128a5851d75528471d669c7ec9abe724bad7a4821e63a1a"
+    },
+    "live_report": {
+      "version": "0.0.75",
+      "verified_at_UTC": "2026-10-28T17:19:17.333010+00:00",
+      "passed": true,
+      "files": [
+        {
+          "path": "index.html",
+          "passed": true,
+          "HTTP": 200,
+          "bytes": 3538,
+          "sha256": "9582f42c887c4da210032580fa4d3927317a889cdbb5210acd3e2f4ba47d496e",
+          "Git_blob_sha1": "6cf53ee448fb81023c16f4b012493b13bd05b752"
+        },
+        {
+          "path": "patcher.html",
+          "passed": true,
+          "HTTP": 200,
+          "bytes": 2675,
+          "sha256": "422057e568f724c87b2c296d649f39a9e3bcae0ced32f5b4bb28754bd24b5e7f",
+          "Git_blob_sha1": "028f5b4229ba8da3906d87fadf73127b8de76804"
+        },
+        {
+          "path": "patcher.js",
+          "passed": true,
+          "HTTP": 200,
+          "bytes": 9353,
+          "sha256": "9c3282f54a768cfe8efbd98cb70fbf0f74d2f14c4dc4446b01ea93640a67179f",
+          "Git_blob_sha1": "919d7a4c96aedc5894d569b46ada7b00d0db4ecb"
+        },
+        {
+          "path": "changelog.html",
+          "passed": true,
+          "HTTP": 200,
+          "bytes": 126069,
+          "sha256": "57fb4fa11103bc2a5e7022a6771aef8be4f50a8b33b83491b4114e83f0d7aaa7",
+          "Git_blob_sha1": "a0ba8763f30e8d7693c041ff794bf6e11db64505"
+        },
+        {
+          "path": "wiki/index.html",
+          "passed": true,
+          "HTTP": 200,
+          "bytes": 12798,
+          "sha256": "7efe131474b37be963e640e361af9c49354beba604ac5bffd6698f8a02a9029d",
+          "Git_blob_sha1": "7bc35a1a90b7c609ca33c943c5135f4969027d24"
+        },
+        {
+          "path": "wiki/dex.html",
+          "passed": true,
+          "HTTP": 200,
+          "bytes": 10572,
+          "sha256": "8f045573ae571a2e6ab5386f4e1c4a58f140b9fc18b34f07b348e0a9f7daff41",
+          "Git_blob_sha1": "d7f1b3e39f75084cd37d4ad64e6813247f44a5c0"
+        },
+        {
+          "path": "wiki/dex-data.json",
+          "passed": true,
+          "HTTP": 200,
+          "bytes": 843410,
+          "sha256": "5a928b6f32cb6378f90ad9005df8b94c0d95fdf966de432f2d4a037d44f61830",
+          "Git_blob_sha1": "8542027d8aebe94a4f39af32a64c1cf1a86fd932"
+        },
+        {
+          "path": "wiki/dex-profiles.js",
+          "passed": true,
+          "HTTP": 200,
+          "bytes": 178251,
+          "sha256": "c3c039cdc2223d0f0e60814b0ce3e5b51fefea6e4cf013a74e2a1c66cdbd4b7a",
+          "Git_blob_sha1": "9c2f9a20058cff3ef3e918f2f4088e6bde984b1c"
+        },
+        {
+          "path": "wiki/dex-sprite-atlas.js",
+          "passed": true,
+          "HTTP": 200,
+          "bytes": 18786,
+          "sha256": "f2c0f0bdf7a1b27e35caefa0d59df990f49a1a871f64bea685a1a7ef162f9340",
+          "Git_blob_sha1": "6816a85159fdc0108203f1d54ee79e86d2aced72"
+        },
+        {
+          "path": "wiki/dex-sprite-atlas.webp",
+          "passed": true,
+          "HTTP": 200,
+          "bytes": 153584,
+          "sha256": "55bdf244830f30f9aeb5eeddb8f628b6885eccb2e95b171dac14df9b529190df",
+          "Git_blob_sha1": "dd91aded78d44fc6aea679a678a0274edb93add1"
+        },
+        {
+          "path": "wiki/dex-portrait-sources.json",
+          "passed": true,
+          "HTTP": 200,
+          "bytes": 342,
+          "sha256": "d06da7c4d57223c12669c90103b78093b8dee2bcccc4b4a06b17c90ff4e9b77a",
+          "Git_blob_sha1": "e0b3c0cfdfc775d9f2f93a1ccf42e6ce1f0d932c"
+        },
+        {
+          "path": "wiki/map-hoenn.png",
+          "passed": true,
+          "HTTP": 200,
+          "bytes": 6757,
+          "sha256": "6abac3457dd2c588173b001c7f5ad37b58b4429ff50d3d54373f2fe868e5f625",
+          "Git_blob_sha1": "10f2d26f42c381c2af7f51a7c835b4b3b190107f"
+        },
+        {
+          "path": "wiki/map-kanto.png",
+          "passed": true,
+          "HTTP": 200,
+          "bytes": 3728,
+          "sha256": "bc89ff01cbc5dca3fe849d2c0d872c1e98b57a450663d72a7a210d3645b495f0",
+          "Git_blob_sha1": "241cf5864b38426d1cc75ebfa70b865afdcbcac3"
+        },
+        {
+          "path": "wiki/walkthrough-maps.json",
+          "passed": true,
+          "HTTP": 200,
+          "bytes": 115267,
+          "sha256": "e1914202128c65862a06923f64be730a34e3c40ac235e7c9a6e38f536c882c49",
+          "Git_blob_sha1": "435e4a43b3fbacad83cb2aa95dc7178621098991"
+        },
+        {
+          "path": "wiki/android-version.json",
+          "passed": true,
+          "HTTP": 200,
+          "bytes": 399,
+          "sha256": "e34e5b41b07dc69569ca2eb266093ce5e634615cba426422edbcfc8bcf8f35d5",
+          "Git_blob_sha1": "eef161550efb41e023e6e11884b964dc01713bc2"
+        },
+        {
+          "path": "wiki/windows-version.json",
+          "passed": true,
+          "HTTP": 200,
+          "bytes": 275,
+          "sha256": "c50e75994ae5eaad3afb058d1f74a930d25459c1fe9f2efc24589198dac03a59",
+          "Git_blob_sha1": "b7b6ced98f93bcb1b3e06f71fd06dbee1e93f34c"
+        },
+        {
+          "path": "features/eon-roamers.md",
+          "passed": true,
+          "HTTP": 200,
+          "bytes": 2244,
+          "sha256": "5839b026abdd24d2ea62ef1359559d7ddf0d402efae50726473a2b79c56e1aad",
+          "Git_blob_sha1": "1f1bdffaf6978eba649ba9d0c521cc0bc937171c"
+        },
+        {
+          "path": "downloads/SHA256SUMS.txt",
+          "passed": true,
+          "HTTP": 200,
+          "bytes": 412,
+          "sha256": "3eac564508b2db09b16062b89e88d455f3c55b8d7a0e7279e629eb9c1c7a6d95",
+          "Git_blob_sha1": "125baa2159d010f09451ebf2b67c937788a1a77a"
+        },
+        {
+          "path": "downloads/Pokemon-Emerald-Legends-v0.0.75.bps",
+          "passed": true,
+          "HTTP": 200,
+          "bytes": 17466996,
+          "sha256": "5285292bf816586d2ae74507e6744b29b3b3d40c2769c49beb73fc11b7ba353f",
+          "Git_blob_sha1": "5486a853800354fdcfcda38949cc3422ff2fb927",
+          "source_CRC32": "1f1c08fb",
+          "target_CRC32": "3b8b0bb0",
+          "patch_CRC_passed": true
+        },
+        {
+          "path": "downloads/Pokemon-Emerald-Legends-v0.0.75-debug.bps",
+          "passed": true,
+          "HTTP": 200,
+          "bytes": 17299468,
+          "sha256": "d665af96901eca05bb42fb18517ed0d4924fb294f2f74806fbddd9ca724e9f71",
+          "Git_blob_sha1": "97ffe5ab962dca984aebe4e598cb774ce9d7b042",
+          "source_CRC32": "1f1c08fb",
+          "target_CRC32": "b8b9a6ca",
+          "patch_CRC_passed": true
+        },
+        {
+          "path": "release-publication.json",
+          "passed": true,
+          "HTTP": 200,
+          "bytes": 178296,
+          "sha256": "6d3557c716b2f8f7e69f8a782d5303f7092111ef2e15ee637285586d2cba0afb",
+          "Git_blob_sha1": "8d89765fe93dbb26f9cec829b429bdfec830c4a9"
+        }
+      ],
+      "scope": "Fresh live HTTP bytes, reviewed SHA256/Git blobs and BPS footer CRCs only; not a gameplay, build or clean-base reconstruction test.",
+      "expected_receipt_sha256": "8b75aad32ec8d4249e67bb6210ecdf0f8cd25432703eabd255349abc4147a7a1"
+    },
+    "live_manifest_matches_inspected_snapshot": true
+  },
   "game_source_assets_saves_and_patch_bytes_unchanged": true,
   "required_production_game_gates_unchanged": true,
   "new_game_compilation_passes": 0,
-  "limits": "One Pages snapshot; not browser-cache or external Release-asset atomicity. Existing current-pair cleanup, companion rebuild/signing and native playtest limits remain. No deliberately failed real deployment or raced release claim."
+  "limits": "One Pages snapshot; not browser-cache or external Release-asset atomicity. Existing current-pair cleanup, companion rebuild/signing and native playtest limits remain. No deliberately failed real deployment or raced release claim.",
+  "pull_request": 96,
+  "implementation_commit": "0a173bf2e35133c721a7fe6781f4b3c33eb979c3",
+  "merge_commit": "4783be9cb550cbd338b3ed0f3803a0531cce8c5b",
+  "reviewed_and_merged_tree": "fdaf510aa4e0ad5bd7632fbd353a49bc8a52b7fd",
+  "production_project_run": 40733477714,
+  "initial_production_hold": {
+    "run": 40733477736,
+    "passed": true,
+    "deployment_skipped": true,
+    "reason": "Newest matching project run was still in progress; observed live hold, not a fabricated pass."
+  },
+  "pages_setting_proof": "pages-source-2026-10-28.jpg",
+  "publication_gate_boundary": "All required automatic candidate/production game gates retained; only identical relevant existing production inputs reused for this site-only change."
 }

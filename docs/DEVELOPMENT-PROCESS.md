@@ -46,17 +46,17 @@ Inspect the combined run and its `verify / mgba-debug-smoke` and publisher jobs 
 
 The workflow responds to production check completion as well as source pushes, so bot patch/app commits do not require manual coordination. Promotions serialize, recheck master and run attempts before deployment, retain failed diagnostics and avoid an already verified identical snapshot. The prior live site remains during staging or failure. `release-publication.json` records every staged file hash and all selected production runs; post-deployment HTTP checks verify the critical pages, assets, app manifests, both BPS files and that receipt. The Pages artifact expires after seven days; failed or interrupted runs restage from Git and retained patch evidence rather than reuse an unverified partial directory.
 
-**One-time activation:** Settings → Pages → Source must be **GitHub Actions**. While it remains **Deploy from a branch**, the workflow validates/uploads candidates but refuses its own deployment; legacy automatic publishing still bypasses the gates. Confirm the actual setting and an observed successful deploy/live check before claiming this optimization is active. The GitHub connector cannot change that setting. [Implementation, current activation status and limits](qa/site-promotion-2026-10-28.md).
+**Activation completed on 28 October 2026:** Settings → Pages → Source is **GitHub Actions**, and a real gated deployment/live check passed. Preserve this setting; **Deploy from a branch** bypasses the release gates. The connector has no settings operation; the permitted browser fallback was used only for activation and the first manual dispatch. Routine publication is automatic. [Implementation, evidence and limits](qa/site-promotion-2026-10-28.md).
 
 Snapshot promotion is a server-side deployment boundary, not a transaction across pre-existing browser caches or GitHub Release installer assets. The existing companion rebuild/signing policy and native pipeline remain intact. Keep the prior live downloads available until promotion; old versioned BPS retention after promotion remains the existing current-pair policy. Do not call a generic Windows Release asset clobber part of atomic Pages publication.
 
 1. Inspect completed candidate gates and their actual receipts; compare native ROM hashes with both independently reconstructed BPS targets. Confirm that the merged tree preserves the reviewed inputs. Current production gates remain required; do not treat documentation differences as new game changes.
 2. Wait for production gates, automatic patch commit, required companion publication and the corresponding Pages deployment. Batch status reads. App build success without the required signing identity is not published-APK success.
-3. Prepare expected public file hashes from the reviewed Git blobs and verified patch/native receipts. For the v0.0.75 receipt format, run:
+3. Prepare expected public file hashes from the reviewed Git blobs and verified patch/native receipts. Download and verify the latest successful site workflow’s `legends-site-evidence` artifact (GitHub archive SHA256), then use its exact `site-expected.json`. Historical release receipts describe their original deployed bytes and may differ after intentional site maintenance. For example:
 
    ```sh
    python3 tools/legends/verify_public_release.py \
-     --receipt docs/qa/eon-roamers-v0.0.75-public.json \
+     --receipt build/publication-evidence/site-expected.json \
      --output build/qa/v0.0.75-live-recheck.json
    ```
 
