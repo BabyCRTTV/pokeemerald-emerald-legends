@@ -1,12 +1,12 @@
 # Development handoff
 
-## Seasonal QA parallelism — native validation pending (28 October 2026)
+## Seasonal QA parallelism — published and verified (28 October 2026)
 
 **Model: GPT-6 (Codex) | Reasoning: isolate emulator state, enforce exact coverage and compare against a full serial reference before claiming speedup.**
 
 Owner authorized the first larger optimization only, after verified maintenance at `94afb7d6`. Added at most four CPU-capped native worker processes with disjoint global scenario ranges and private outputs. All 288 scenarios / 73,728 creations, ARM callback, native assertions, frame waits, original ordered log and capture locations remain. Failed/missing/duplicate cases, missing captures, timeouts and worker failures reject QA and retain diagnostics. Serial mode remains available. [Focused QA](qa/seasonal-qa-parallel-2026-10-28.md), [machine status](qa/seasonal-qa-parallel-2026-10-28.json).
 
-Nine worker-control tests, Python syntax, YAML and whitespace checks passed locally. The first CI commit opts into all-case serial/parallel log and raw-capture comparison plus timings; normal future runs omit that extra serial reference. Native parity, actual speedup and full Debug/Release regression results remain pending. Inspect that run and receipts before marking completion. AGENTS preservation/verification rules remain applicable; no new durable rule is required.
+Nine worker-control tests, Python syntax, YAML and whitespace checks passed. Implementation `062386c4602a8a6493f99e953efc264557f2f6d1` passed project `40638470413`, full native Debug/Release `40638470262` and Pages `40638470184`. Downloaded artifact `12794889546` and verified its ZIP digest, source/harness hashes, all cases/creations in both modes, exact native logs and all 453 raw capture matches; independently compared all 453 extracted PNG pairs as RGB bytes. Serial execution took 301.079s versus 135.855s with four workers: 2.216× throughput / 54.88% less time (165.224s saved). This is emulator execution, not an entire-session speedup; initial CI included the extra full serial reference and slower dependency setup. Normal future runs omit the reference and retain --jobs 1. Both game ROM hashes exactly match published v0.0.75; all existing Eon/boat/grotto/wardrobe checks passed. AGENTS rules remain applicable; no new durable rule is required. **This first optimization is complete and active.**
 
 Game v0.0.75, source/assets/maps/wardrobe/seasons/saves and patches are unchanged. Build sharing and publication redesign are not part of this change; wait for the owner's next instruction after completing this first optimization.
 
