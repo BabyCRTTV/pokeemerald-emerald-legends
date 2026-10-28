@@ -1,6 +1,6 @@
 # Development handoff
 
-## Development process maintenance — implementation verified locally, CI pending (28 October 2026)
+## Development process maintenance — published and verified (28 October 2026)
 
 **Model: GPT-6 (Codex) | Reasoning: measure repeated work, preserve verification strength and make release closeout resumable.**
 
@@ -10,7 +10,9 @@ Added PR-only cancellation for obsolete native/project/wiki runs, with workflow-
 
 Native/build sharing, parallel seasonal groups, candidate-to-production evidence promotion, dependency caching and companion rebuild policy changes are documented follow-ups, not implemented or claimed faster. No game source, artwork, maps, saves, version or patch bytes changed. The workspace briefly disconnected after local tests; it recovered with the prepared files intact, and their exact Git blob hashes were retained before connected-tool publication.
 
-**Next:** inspect this maintenance commit's project, native and wiki Actions; diagnose only a failed stage, retain results in this entry and verify the documentation deployment. Game v0.0.75 remains published; there is no new ROM release to build or announce.
+Maintenance commit `4b8eaa7a118701d1e6d9651eb7fb35de8c4573f4` passed project `40635448507` (including the eight verifier tests), full native Debug/Release `40635448486`, wiki/browser `40635448307` and Pages `40635448150`. Confirmed the entire existing workflow content is byte-for-byte retained after removing only the new concurrency block and verifier-test step. Existing game/patch evidence remains applicable because all game, build and native harness inputs are unchanged. Final closeout changes documentation/evidence only; no game-version bump or new patch publication is needed.
+
+**Maintenance is complete.** Future optimization should measure native seasonal parallelism/build sharing and enforce complete provenance before any candidate-to-production reuse. The audit also records atomic site/patch promotion as a release-coordination follow-up. These larger changes and companion rebuild policy changes remain unimplemented. Game v0.0.75 stays published; broader historical-owner-save/Pizza Boy/story and Wyrmtide/wiki backlogs remain separate.
 
 ## v0.0.75 both Eon roamers — published and verified (27 October 2026)
 
