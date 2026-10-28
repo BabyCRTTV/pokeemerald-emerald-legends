@@ -20,6 +20,8 @@ def main():
         with (out/log).open('w') as f:
             result = subprocess.run(cmd,cwd=R,env=env,stdout=f,stderr=subprocess.STDOUT)
         if result.returncode:
+            for raw in out.glob('*.rgba'):
+                Image.frombytes('RGBA',(240,160),raw.read_bytes()).convert('RGB').save(raw.with_suffix('.png'))
             raise RuntimeError((out/log).read_text()[-10000:])
     def symbols(path):
         s = subprocess.check_output(['arm-none-eabi-nm',str(path)],env=env,text=True)
