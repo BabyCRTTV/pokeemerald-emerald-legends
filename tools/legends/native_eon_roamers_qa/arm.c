@@ -47,7 +47,7 @@ void qa(void)
    if(attempt>=10000)break;
   }while((!TryStartRoamerEncounter()||gEncounteredRoamerIndex!=target)&&attempt++<10000);
   b[5]=attempt<10000&&gEncounteredRoamerIndex==target;b[4]=1;
-  if(b[5]){BattleSetup_StartRoamerBattle();return;}
+  if(b[5]){gMain.callback2=(MainCallback)b[3];BattleSetup_StartRoamerBattle();return;}
  }
  if(b[0]==7){
   b[5]=offsetof(struct SaveBlock1,roamer);b[6]=Hash(GetRoamer(0),sizeof(struct Roamer));b[7]=gSaveBlock3Ptr->eon.checksum;b[8]=GetRoamer(0)->active;b[9]=GetRoamer(1)->active;b[10]=gSaveBlock3Ptr->eon.unlocked;b[11]=gPartiesCount[B_TRAINER_PLAYER];
