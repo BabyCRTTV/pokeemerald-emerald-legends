@@ -24,8 +24,9 @@ void qa(void)
   gSaveBlock2Ptr->optionsTextSpeed=2;gSaveBlock2Ptr->optionsBattleSceneOff=TRUE;
   FlagSet(FLAG_SYS_POKEMON_GET);FlagSet(FLAG_SYS_POKEDEX_GET);FlagSet(FLAG_HIDE_MAP_NAME_POPUP);FlagSet(FLAG_RESCUED_BIRCH);FlagSet(FLAG_SET_WALL_CLOCK);FlagSet(FLAG_RECEIVED_RUNNING_SHOES);
   VarSet(VAR_LITTLEROOT_INTRO_STATE,9);VarSet(VAR_LITTLEROOT_RIVAL_STATE,4);VarSet(VAR_BIRCH_LAB_STATE,5);
-  CreateMonWithIVs(&gParties[B_TRAINER_PLAYER][0],SPECIES_RAYQUAZA,100,32,OTID_STRUCT_PLAYER_ID,31);
-  SetMonMoveSlot(&gParties[B_TRAINER_PLAYER][0],MOVE_DRAGON_CLAW,0);
+  CreateMonWithIVs(&gParties[B_TRAINER_PLAYER][0],SPECIES_GOTHITELLE,100,32,OTID_STRUCT_PLAYER_ID,31);
+  u8 hiddenAbility=2;SetMonData(&gParties[B_TRAINER_PLAYER][0],MON_DATA_ABILITY_NUM,&hiddenAbility); // Native Shadow Tag makes the KO scenario possible.
+  SetMonMoveSlot(&gParties[B_TRAINER_PLAYER][0],MOVE_SHADOW_BALL,0);
   for(u32 i=1;i<4;i++)SetMonMoveSlot(&gParties[B_TRAINER_PLAYER][0],MOVE_NONE,i);
   u16 stone=ITEM_EVERSTONE;SetMonData(&gParties[B_TRAINER_PLAYER][0],MON_DATA_HELD_ITEM,&stone);gPartiesCount[B_TRAINER_PLAYER]=1;
   AddBagItem(ITEM_MASTER_BALL,8);AddBagItem(ITEM_ORAN_BERRY,11);LegendsClockSetManual(12,0);LegendsSetSeasonMode(LEGENDS_SEASONS_PLAYTIME);LegendsSetPlaytimeSeason(LEGENDS_AUTUMN);
