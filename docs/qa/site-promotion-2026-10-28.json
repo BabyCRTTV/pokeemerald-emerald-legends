@@ -1,0 +1,16 @@
+{
+  "model": "GPT-6 (Codex)",
+  "baseline_commit": "42af9d928f0eb36d934429fe238347c855743c58",
+  "game_version": "0.0.75",
+  "status": "local checks passed; candidate CI and production staging pending",
+  "activation": "pending: Pages Source must change from legacy master:/docs to GitHub Actions",
+  "active": false,
+  "local_tests": {"site_promotion": 16, "shared_build": 13, "public_verifier": 8, "patcher_and_counter": 10},
+  "candidate": null,
+  "production_staging": null,
+  "actual_deployment": null,
+  "game_source_assets_saves_and_patch_bytes_unchanged": true,
+  "required_production_game_gates_unchanged": true,
+  "new_game_compilation_passes": 0,
+  "limits": "One Pages snapshot; not browser-cache or external Release-asset atomicity. Existing current-pair cleanup, companion rebuild/signing and native playtest limits remain. No deliberately failed real deployment or raced release claim."
+}

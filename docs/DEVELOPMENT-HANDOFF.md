@@ -1,5 +1,17 @@
 # Development handoff
 
+## Staged site promotion — candidate validation pending (28 October 2026)
+
+**Model: GPT-6 (Codex) | Reasoning: promote one complete Pages snapshot only after matching production evidence, preserving the prior live release on failed or incomplete gates.**
+
+Owner authorized optimization three after verified shared builds at `42af9d92`. Added `pages.yml` and `stage_site.py` for exact Git-input matching of production project/native-patch/wiki/app gates, safe verified patch-archive validation, consistent frontend/download/LegendsDex/APK labels, a complete hash-recorded site artifact, serialized promotion, stale-master/run-attempt checks and actual live-byte verification. Failed/incomplete evidence holds publication; identical verified snapshots avoid redeployment. Existing game and companion build/signing policies remain. Corrected the changelog header's stale v0.0.72 label to its existing v0.0.75 content. [Design/verification/limits](qa/site-promotion-2026-10-28.md), [machine status](qa/site-promotion-2026-10-28.json).
+
+Sixteen local site fixtures, thirteen shared-build guards, eight public-verifier tests and ten patcher/counter tests passed. Candidate CI and actual production staging remain pending. No new game compilation is added; all game/build/native inputs and v0.0.75 patch bytes remain unchanged, so verified production game evidence is retained only for identical relevant inputs. Do not skip required candidate or production game gates on future game changes.
+
+**Activation is pending:** Pages is still configured as legacy `master:/docs`. The connector cannot change Pages settings; prepare and verify the concrete candidate before requesting browser fallback permission or the owner's one-time Settings → Pages → Source → GitHub Actions switch. While legacy mode remains, automatic branch publishing bypasses the new gates and the new deployment job deliberately skips. Do not claim optimization three is active before observing the setting, a successful custom deployment and actual live bytes. Preserve the existing live site during activation.
+
+Atomicity is one complete Pages snapshot, not browser caches or external Windows Release asset clobbers. Existing old-BPS cleanup after promotion, app policy and native playtest limits remain. Interrupted staging/retry and stale-state cases have fixtures; deliberately failed real production deployments and release races have not been performed. Important next step: inspect candidate checks, merge exact reviewed tree, inspect production stage/hold diagnostics, then complete activation and live verification.
+
 ## Shared native/patch builds — published and verified (28 October 2026)
 
 **Model: GPT-6 (Codex) | Reasoning: remove duplicate compilation while preserving immutable build identities, all native/decoder gates and a patch-only publication boundary.**

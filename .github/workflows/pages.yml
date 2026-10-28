@@ -1,0 +1,174 @@
+name: Promote verified Legends site
+
+on:
+  push:
+    branches: [master]
+    paths:
+      - 'docs/**'
+      - 'VERSION'
+      - '.github/workflows/pages.yml'
+      - 'tools/legends/stage_site.py'
+      - 'test/legends-site-promotion.test.py'
+  pull_request:
+    branches: [master]
+    paths:
+      - '.github/workflows/pages.yml'
+      - 'tools/legends/stage_site.py'
+      - 'test/legends-site-promotion.test.py'
+  workflow_run:
+    workflows:
+      - Legends project checks
+      - Build release patches
+      - Check Legends Wiki
+      - Build Legends Wiki Android APK
+      - Build Legends Wiki Windows Installer
+    types: [completed]
+    branches: [master]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+# Serialize promotions without cancelling an in-flight deployment. GitHub retains
+# the newest pending event; each event resolves the current master, never a PR.
+concurrency:
+  group: legends-site-${{ github.event_name == 'pull_request' && github.event.pull_request.number || 'production' }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+jobs:
+  validate:
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - run: python3 -m pip install PyYAML==6.0.3
+      - run: python3 test/legends-site-promotion.test.py
+
+  prepare:
+    if: >-
+      github.event_name != 'pull_request' &&
+      (github.event_name != 'workflow_run' ||
+       (github.event.workflow_run.event == 'push' &&
+        github.event.workflow_run.repository.full_name == github.repository))
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    permissions:
+      contents: read
+      actions: read
+      pages: read
+    outputs:
+      ready: ${{ steps.stage.outputs.ready }}
+      source_commit: ${{ steps.stage.outputs.source_commit }}
+      pages_mode: ${{ steps.settings.outputs.mode }}
+      unchanged: ${{ steps.live.outputs.unchanged }}
+    steps:
+      - name: Checkout current production source, never triggering PR content
+        uses: actions/checkout@v4
+        with:
+          ref: master
+          fetch-depth: 0
+          filter: blob:none
+          persist-credentials: false
+      - run: python3 -m pip install PyYAML==6.0.3
+      - name: Read Pages activation state
+        id: settings
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          python3 - <<'PY'
+          import os,sys
+          sys.path.insert(0,'tools/legends')
+          from stage_site import GitHub
+          mode=GitHub(os.environ['GITHUB_REPOSITORY'],os.environ['GH_TOKEN']).get('/pages')['build_type']
+          with open(os.environ['GITHUB_OUTPUT'],'a') as output:
+              print('mode='+mode,file=output)
+          if mode!='workflow':
+              print('::warning::Snapshot validation is active, but gated deployment requires Settings > Pages > Source > GitHub Actions. Legacy branch publishing remains active until that one-time switch.')
+          PY
+      - name: Match production gates, verified patches and complete site bytes
+        id: stage
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python3 tools/legends/stage_site.py stage
+      - name: Avoid redeploying an already verified identical snapshot
+        id: live
+        if: steps.stage.outputs.ready == 'true'
+        run: |
+          if python3 tools/legends/verify_public_release.py --receipt build/site-expected.json --output build/site-live-before.json; then
+            echo 'unchanged=true' >> "$GITHUB_OUTPUT"
+          else
+            echo 'unchanged=false' >> "$GITHUB_OUTPUT"
+          fi
+      - name: Upload one complete immutable site snapshot
+        if: steps.stage.outputs.ready == 'true' && steps.live.outputs.unchanged != 'true'
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: build/site
+          retention-days: 7
+      - name: Retain promotion diagnostics and exact public expectations
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: legends-site-evidence
+          path: |
+            build/site-status.json
+            build/site-expected.json
+            build/site-live-before.json
+            build/site/release-publication.json
+          if-no-files-found: warn
+
+  deploy:
+    needs: prepare
+    if: >-
+      needs.prepare.outputs.ready == 'true' &&
+      needs.prepare.outputs.pages_mode == 'workflow' &&
+      needs.prepare.outputs.unchanged != 'true'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    permissions:
+      contents: read
+      actions: read
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ needs.prepare.outputs.source_commit }}
+          persist-credentials: false
+      - run: python3 -m pip install PyYAML==6.0.3
+      - name: Download exact expectations and gate identities from this run
+        uses: actions/download-artifact@v4
+        with:
+          name: legends-site-evidence
+          path: build/publication-evidence
+      - name: Refuse a snapshot superseded while preparing
+        id: fresh
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          python3 tools/legends/stage_site.py fresh \
+            --manifest build/publication-evidence/site/release-publication.json
+      - name: Promote the complete verified snapshot
+        id: deployment
+        if: steps.fresh.outputs.ready == 'true'
+        uses: actions/deploy-pages@v4
+      - name: Verify actual deployed bytes and both patch CRCs
+        if: steps.deployment.outcome == 'success'
+        run: |
+          python3 tools/legends/verify_public_release.py \
+            --receipt build/publication-evidence/site-expected.json \
+            --output build/site-live-after.json
+      - name: Retain actual deployment verification
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: legends-site-live-result
+          path: |
+            build/site-status.json
+            build/site-live-after.json
+          if-no-files-found: warn

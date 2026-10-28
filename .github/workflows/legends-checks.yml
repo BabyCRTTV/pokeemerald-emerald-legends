@@ -20,6 +20,10 @@ jobs:
         run: python3 -m pip install Pillow==11.3.0
       - name: Exercise shared build provenance and publication guards
         run: python3 test/legends-shared-build.test.py
+      - name: Exercise staged site gates, interrupted promotion and stale snapshots
+        run: |
+          python3 -m pip install PyYAML==6.0.3
+          python3 test/legends-site-promotion.test.py
       - name: Exercise isolated seasonal QA workers and exact coverage
         run: python3 test/legends-seasonal-qa-workers.test.py
       - name: Exercise release verification regressions

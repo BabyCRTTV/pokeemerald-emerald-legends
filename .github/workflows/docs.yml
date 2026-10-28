@@ -1,9 +1,9 @@
 # Upstream pokeemerald-expansion documentation workflow.
 #
-# Pokémon Emerald: Legends publishes its project website directly from
-# master:/docs via GitHub Pages. Automatic mdBook deployment is disabled here
+# Pokémon Emerald: Legends uses pages.yml for staged site promotion once the
+# one-time Pages Source switch to GitHub Actions is activated. mdBook is disabled
 # because GitHub Pages supports one publishing source at a time and this
-# workflow conflicts with the Legends site deployment.
+# workflow would conflict with the Legends site deployment.
 #
 # Keep the workflow available for an explicit manual documentation build if
 # upstream documentation needs to be checked later.
