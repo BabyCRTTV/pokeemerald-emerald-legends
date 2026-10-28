@@ -364,7 +364,7 @@ static void FindMapsWithMon(enum Species species)
     // Add roamers to the area map
     for (i = 0; i < ROAMER_COUNT; i++)
     {
-        roamer = &gSaveBlock1Ptr->roamer[i];
+        roamer = GetRoamer(i);
         if (species == roamer->species && roamer->active)
         {
             // This is a roamer's species, show where this roamer is currently

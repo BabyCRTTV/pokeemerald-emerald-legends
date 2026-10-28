@@ -1,0 +1,111 @@
+{
+  "model": "GPT-6 (Codex)",
+  "version": "0.0.75",
+  "base": "7a0f61c885984b15adacd322ea6346ac2726499f",
+  "original_roamer_declaration_SHA256": "ee0dec88e76ee0f5e0a53b6e33b716cf919480fe97774b0874ea982603fa7543",
+  "native_SaveBlock1_member_order_and_all_following_fields_exact": true,
+  "native_array_kept_at_legacy_one_element_width": true,
+  "old_SaveBlock3_prefix_bytes": 992,
+  "new_extension_bytes": 40,
+  "new_SaveBlock3_bytes": 1032,
+  "protected_files": [
+    {
+      "path": "src/data/legends_seasonal_encounters.h",
+      "SHA256": "31cb7eb17b591b63c6db7ce4c05015e9f0675d5e11d55b36647920f7861df094",
+      "unchanged": true
+    },
+    {
+      "path": "src/data/wild_encounters.json",
+      "SHA256": "ab6a094df7885138779d9f7e9421e397c7627d20b606dd864738266d43102668",
+      "unchanged": true
+    },
+    {
+      "path": "src/legends_grottos.c",
+      "SHA256": "78ee94039c3cb81ae62059d1dd76b3ed173fae50d499aac484fc9780ea02e5cf",
+      "unchanged": true
+    },
+    {
+      "path": "src/legends_storage.c",
+      "SHA256": "539c855acd6435501dbb15e1d8eea87978ed0d4a989597ed6871fe183c10cfdd",
+      "unchanged": true
+    },
+    {
+      "path": "src/legends_appearance.c",
+      "SHA256": "e275852185884b099c454049f71dc563ed88abe99f8ec1c65a5b44bb82482e77",
+      "unchanged": true
+    },
+    {
+      "path": "data/scripts/players_house.inc",
+      "SHA256": "86d6f2857cb4491ae60b2371d227028a6a193d7981e4974c2236eb49e07ba908",
+      "unchanged": true
+    }
+  ],
+  "legacy_seen_fallback_only_on_absent_or_invalid_extension": true,
+  "approved_psychic_background_sources": [
+    {
+      "path": "graphics/battle_anims/backgrounds/psychic_terrain.png",
+      "SHA256": "576afb6c87d8e655a7b6300c14730aa6efaf7b9171c33f5bd2b7d9846d4b5721",
+      "canonical_LF_palette": false,
+      "unchanged": true
+    },
+    {
+      "path": "graphics/battle_anims/backgrounds/psychic_terrain.pal",
+      "SHA256": "cd182bcc11b296f730daa50bf065967dea07017995aefe1d6dd0e2b2e1585b72",
+      "canonical_LF_palette": true,
+      "unchanged": true
+    },
+    {
+      "path": "graphics/battle_anims/backgrounds/psychic_terrain.bin",
+      "SHA256": "1a78f9e8e74eb366eaccca1c7e046a5eb0df0bbafb1a6d9aec590568321184f4",
+      "canonical_LF_palette": false,
+      "unchanged": true
+    }
+  ],
+  "encoding_repair": {
+    "asset": "graphics/battle_anims/backgrounds/psychic_terrain.png",
+    "PNG_SHA256": "576afb6c87d8e655a7b6300c14730aa6efaf7b9171c33f5bd2b7d9846d4b5721",
+    "raw_bytes": 14080,
+    "conversion": "Canonical native gbagfx raw bytes and both canonical compressor/decoder formats matched exactly in CI.",
+    "results": [
+      {
+        "codec": "smol",
+        "mode": 6,
+        "encoded_bytes": 3920,
+        "temporary_heap_bytes": 12152,
+        "decoded_SHA256": "635681cae116a817b35b4510cd90b0d6ce3d9deff4925cec4c803ad60fd3e067",
+        "exact_raw_bytes": true
+      },
+      {
+        "codec": "fastSmol",
+        "mode": 1,
+        "encoded_bytes": 7372,
+        "temporary_heap_bytes": 0,
+        "decoded_SHA256": "635681cae116a817b35b4510cd90b0d6ce3d9deff4925cec4c803ad60fd3e067",
+        "exact_raw_bytes": true
+      }
+    ],
+    "native_verification": {
+      "asset": "graphics/battle_anims/backgrounds/psychic_terrain.png",
+      "raw_SHA256": "635681cae116a817b35b4510cd90b0d6ce3d9deff4925cec4c803ad60fd3e067",
+      "PNG_SHA256": "576afb6c87d8e655a7b6300c14730aa6efaf7b9171c33f5bd2b7d9846d4b5721",
+      "canonical_gbagfx": true,
+      "decoded_pixels_identical": true,
+      "results": [
+        {
+          "codec": "smol",
+          "mode": 6,
+          "encoded_bytes": 3920,
+          "scratch_bytes": 12152,
+          "exact_raw_bytes": true
+        },
+        {
+          "codec": "fastSmol",
+          "mode": 1,
+          "encoded_bytes": 7372,
+          "scratch_bytes": 0,
+          "exact_raw_bytes": true
+        }
+      ]
+    }
+  }
+}

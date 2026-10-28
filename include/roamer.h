@@ -1,6 +1,8 @@
 #ifndef GUARD_ROAMER_H
 #define GUARD_ROAMER_H
 
+struct Roamer *GetRoamer(u32 index);
+void LegendsRoamerInit(bool32 newGame);
 void DeactivateAllRoamers(void);
 void InitRoamer(void);
 void UpdateLocationHistoryForRoamer(void);

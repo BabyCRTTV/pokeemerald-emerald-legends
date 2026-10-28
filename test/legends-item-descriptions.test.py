@@ -7,7 +7,7 @@ def function(path,signature):
 g=(R/'include/global.h').read_text();a=g.index('struct SaveBlock3\n{');block=g[a:g.index('};',a)+2]
 legacy=block.replace('struct SaveBlock3','struct LegacySaveBlock3').replace('    struct LegendsJournalSave journal;\n','')
 legacy=legacy.replace('    struct LegendsAchievementExtraSave achievementExtra;\n','')
-legacy=legacy.replace('    struct LegendsGrottoSave grottos;\n','')
+legacy=legacy.replace('    struct LegendsGrottoSave grottos;\n','').replace('    struct LegendsEonSave eon;\n','')
 legacy=legacy.replace('#if OW_SHOW_ITEM_DESCRIPTIONS == OW_ITEM_DESCRIPTIONS_FIRST_TIME\n    u8 itemFlags[ITEM_FLAGS_COUNT];\n#endif\n','')
 flags=(R/'include/overworld.h').read_text().split('enum ItemObtainFlags')[1].split('};')[0]
 pre=r'''
@@ -33,6 +33,8 @@ typedef void (*MainCallback)(void);
 #include "legends_adventure.h"
 #include "legends_journal.h"
 #include "legends_grottos.h"
+#include "constants/species.h"
+#include "legends_roamers.h"
 #include "save.h"
 #define ITEM_FLAGS_COUNT ((ITEMS_COUNT+7)/8)
 '''
@@ -62,7 +64,7 @@ int main(void)
  assert(sizeof(struct LegacySaveBlock3)==0x21C);
  assert(offsetof(struct SaveBlock3,itemFlags)==0x21C);
  assert(offsetof(struct SaveBlock3,journal)==652);
- assert(offsetof(struct SaveBlock3,achievementExtra)==688 && offsetof(struct SaveBlock3,grottos)==716 && sizeof(struct SaveBlock3)==992);
+ assert(offsetof(struct SaveBlock3,achievementExtra)==688 && offsetof(struct SaveBlock3,grottos)==716 && offsetof(struct SaveBlock3,eon)==992 && sizeof(struct SaveBlock3)==1032);
  for(unsigned item=1;item<ITEMS_COUNT;item++){
   memset(&gSaveblock3,0,sizeof(gSaveblock3));assert(!GetSetItemObtained(item,FLAG_GET_ITEM_OBTAINED));
   assert(GetSetItemObtained(item,FLAG_SET_ITEM_OBTAINED));assert(GetSetItemObtained(item,FLAG_GET_ITEM_OBTAINED));

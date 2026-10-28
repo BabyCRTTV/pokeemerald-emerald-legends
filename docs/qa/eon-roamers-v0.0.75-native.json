@@ -1,0 +1,133 @@
+{
+  "native": {
+    "model": "GPT-6 (Codex)",
+    "version": "0.0.75",
+    "run": 40626940595,
+    "artifact": 12790038503,
+    "artifact_sha256": "sha256:532dcaf6d890a86fe8ccdd8e4a3469a0dd427a02dfda2bfada70b908a7d07dcd",
+    "Debug_ROM_sha256": "8f9b0365c2c71edad917c9b7107367d7377522e2b8c1787d0b6f1bfe748a6f50",
+    "Release_ROM_sha256": "2a45d33966dcf131385e21709712de419e7117c61832d6ca163b7b73359d2bc8",
+    "eon_Debug": {
+      "version": "0.0.75",
+      "ROM_sha256": "8f9b0365c2c71edad917c9b7107367d7377522e2b8c1787d0b6f1bfe748a6f50",
+      "emulator": "native mGBA core",
+      "variant": "Debug",
+      "passed": true,
+      "codec_verification": {
+        "asset": "graphics/battle_anims/backgrounds/psychic_terrain.png",
+        "raw_SHA256": "635681cae116a817b35b4510cd90b0d6ce3d9deff4925cec4c803ad60fd3e067",
+        "PNG_SHA256": "576afb6c87d8e655a7b6300c14730aa6efaf7b9171c33f5bd2b7d9846d4b5721",
+        "canonical_gbagfx": true,
+        "decoded_pixels_identical": true,
+        "results": [
+          {
+            "codec": "smol",
+            "mode": 6,
+            "encoded_bytes": 3920,
+            "scratch_bytes": 12152,
+            "exact_raw_bytes": true
+          },
+          {
+            "codec": "fastSmol",
+            "mode": 1,
+            "encoded_bytes": 7372,
+            "scratch_bytes": 0,
+            "exact_raw_bytes": true
+          }
+        ]
+      },
+      "scope": "Both TV choices; actual roamer battles with escape/capture/KO, partner unlock and independent resolution. Synthetic legacy/current actual flash write/load and repeated initialization with native slot, 992-byte prefix, party, Bag and season retained.",
+      "limits": "Not an uninterrupted story playthrough, authentic historical save or Pizza Boy test.",
+      "log": "first=1 partner=0 unlocked=0 outcome=0 battle=0 script=0 party=1 species=380/0 identity=f5cbf9f5\nflash=1 load=1 native=1 prefix=1 party=1 partner=1 Bag/season=1\nfirst=1 partner=0 unlocked=0 outcome=0 battle=1 script=0 party=1 species=380/0 identity=f5cbf9f5\nfirst=1 partner=1 unlocked=1 outcome=4 battle=0 script=0 party=1 species=380/381 identity=9763d9d5\nflash=1 load=1 native=1 prefix=1 party=1 partner=1 Bag/season=1\nfirst=1 partner=1 unlocked=1 outcome=0 battle=1 script=0 party=1 species=380/381 identity=9763d9d5\nfirst=1 partner=0 unlocked=1 outcome=7 battle=0 script=0 party=2 species=380/381 identity=761b18e2\nflash=1 load=1 native=1 prefix=1 party=1 partner=1 Bag/season=1\nflash=1 load=1 native=1 prefix=1 party=1 partner=1 Bag/season=1\nfirst=1 partner=0 unlocked=1 outcome=7 battle=0 script=0 party=2 species=380/381 identity=761b18e2\nPASS both species, first outcome, partner capture and persistent independent removal\nfirst=1 partner=0 unlocked=0 outcome=0 battle=0 script=0 party=1 species=380/0 identity=f5cbf9f5\nflash=1 load=1 native=1 prefix=1 party=1 partner=1 Bag/season=1\nfirst=1 partner=0 unlocked=0 outcome=0 battle=1 script=0 party=1 species=380/0 identity=f5cbf9f5\nfirst=0 partner=1 unlocked=1 outcome=7 battle=0 script=0 party=2 species=380/381 identity=e23bc1b\nflash=1 load=1 native=1 prefix=1 party=1 partner=1 Bag/season=1\nfirst=0 partner=1 unlocked=1 outcome=0 battle=1 script=0 party=2 species=380/381 identity=e23bc1b\nfirst=0 partner=0 unlocked=1 outcome=7 battle=0 script=0 party=3 species=380/381 identity=ecdafb28\nflash=1 load=1 native=1 prefix=1 party=1 partner=1 Bag/season=1\nflash=1 load=1 native=1 prefix=1 party=1 partner=1 Bag/season=1\nfirst=0 partner=0 unlocked=1 outcome=7 battle=0 script=0 party=3 species=380/381 identity=ecdafb28\nPASS both species, first outcome, partner capture and persistent independent removal\nfirst=1 partner=0 unlocked=0 outcome=0 battle=0 script=0 party=1 species=380/0 identity=f5cbf9f5\nflash=1 load=1 native=1 prefix=1 party=1 partner=1 Bag/season=1\nfirst=1 partner=0 unlocked=0 outcome=0 battle=1 script=0 party=1 species=380/0 identity=f5cbf9f5\nfirst=0 partner=1 unlocked=1 outcome=1 battle=0 script=0 party=1 species=380/381 identity=35b31696\nflash=1 load=1 native=1 prefix=1 party=1 partner=1 Bag/season=1\nfirst=0 partner=1 unlocked=1 outcome=0 battle=1 script=0 party=1 species=380/381 identity=35b31696\nfirst=0 partner=0 unlocked=1 outcome=7 battle=0 script=0 party=2 species=380/381 identity=56fbd789\nflash=1 load=1 native=1 prefix=1 party=1 partner=1 Bag/season=1\nflash=1 load=1 native=1 prefix=1 party=1 partner=1 Bag/season=1\nfirst=0 partner=0 unlocked=1 outcome=7 battle=0 script=0 party=2 species=380/381 identity=56fbd789\nPASS both species, first outcome, partner capture and persistent independent removal\nfirst=1 partner=0 unlocked=0 outcome=0 battle=0 script=0 party=1 species=381/0 identity=f5cbf9f5\nflash=1 load=1 native=1 prefix=1 party=1 partner=1 Bag/season=1\nfirst=1 partner=0 unlocked=0 outcome=0 battle=1 script=0 party=1 species=381/0 identity=f5cbf9f5\nfirst=1 partner=1 unlocked=1 outcome=4 battle=0 script=0 party=1 species=381/380 identity=6618ba79\nflash=1 load=1 native=1 prefix=1 party=1 partner=1 Bag/season=1\nfirst=1 partner=1 unlocked=1 outcome=0 battle=1 script=0 party=1 species=381/380 identity=6618ba79\nfirst=1 partner=0 unlocked=1 outcome=7 battle=0 script=0 party=2 species=381/380 identity=44cff986\nflash=1 load=1 native=1 prefix=1 party=1 partner=1 Bag/season=1\nflash=1 load=1 native=1 prefix=1 party=1 partner=1 Bag/season=1\nfirst=1 partner=0 unlocked=1 outcome=7 battle=0 script=0 party=2 species=381/380 identity=44cff986\nPASS both species, first outcome, partner capture and persistent independent removal\nfirst=1 partner=0 unlocked=0 outcome=0 battle=0 script=0 party=1 species=381/0 identity=f5cbf9f5\nflash=1 load=1 native=1 prefix=1 party=1 partner=1 Bag/season=1\nfirst=1 partner=0 unlocked=0 outcome=0 battle=1 script=0 party=1 species=381/0 identity=f5cbf9f5\nfirst=0 partner=1 unlocked=1 outcome=7 battle=0 script=0 party=2 species=381/380 identity=4ba14ce8\nflash=1 load=1 native=1 prefix=1 party=1 partner=1 Bag/season=1\nfirst=0 partner=1 unlocked=1 outcome=0 battle=1 script=0 party=2 species=381/380 identity=4ba14ce8\nfirst=0 partner=0 unlocked=1 outcome=7 battle=0 script=0 party=3 species=381/380 identity=6cea0ddb\nflash=1 load=1 native=1 prefix=1 party=1 partner=1 Bag/season=1\nflash=1 load=1 native=1 prefix=1 party=1 partner=1 Bag/season=1\nfirst=0 partner=0 unlocked=1 outcome=7 battle=0 script=0 party=3 species=381/380 identity=6cea0ddb\nPASS both species, first outcome, partner capture and persistent independent removal\nfirst=1 partner=0 unlocked=0 outcome=0 battle=0 script=0 party=1 species=381/0 identity=f5cbf9f5\nflash=1 load=1 native=1 prefix=1 party=1 partner=1 Bag/season=1\nfirst=1 partner=0 unlocked=0 outcome=0 battle=1 script=0 party=1 species=381/0 identity=f5cbf9f5\nfirst=0 partner=1 unlocked=1 outcome=1 battle=0 script=0 party=1 species=381/380 identity=1b4e580a\nflash=1 load=1 native=1 prefix=1 party=1 partner=1 Bag/season=1\nfirst=0 partner=1 unlocked=1 outcome=0 battle=1 script=0 party=1 species=381/380 identity=1b4e580a\nfirst=0 partner=0 unlocked=1 outcome=7 battle=0 script=0 party=2 species=381/380 identity=3c9718fd\nflash=1 load=1 native=1 prefix=1 party=1 partner=1 Bag/season=1\nflash=1 load=1 native=1 prefix=1 party=1 partner=1 Bag/season=1\nfirst=0 partner=0 unlocked=1 outcome=7 battle=0 script=0 party=2 species=381/380 identity=3c9718fd\nPASS both species, first outcome, partner capture and persistent independent removal\n",
+      "harness_sha256": {
+        "arm.c": "23551b390430e30a4fdc911df5d2cc4adacf810a505ebf68b479bfb8c6d41364",
+        "host.c": "f3562c38a06c7f55d9ba44f94ae98a096c66d539ebf6dcdf04ffbea09c75ca33",
+        "run.py": "bbd7843e9fd3a0a77516ffbeca3b075e8fc13740e9c014f3879f706adc59d9fd"
+      },
+      "images": {
+        "partner-0-1.png": "c64404d31f32e445583c70bb0d6c89ef3dcdec88e4650031a91b8161dbe45249",
+        "first-0-0.png": "bffb4e14322b569ae4f77850c983269e33a7903d272b472613ca254d3feed18e",
+        "first-1-1.png": "c64404d31f32e445583c70bb0d6c89ef3dcdec88e4650031a91b8161dbe45249",
+        "partner-0-2.png": "14e03664539e002f1f019d41edd7098d72ed2c9d5514f25cabea34da722f8027",
+        "first-0-1.png": "bffb4e14322b569ae4f77850c983269e33a7903d272b472613ca254d3feed18e",
+        "partner-0-0.png": "c64404d31f32e445583c70bb0d6c89ef3dcdec88e4650031a91b8161dbe45249",
+        "partner-1-0.png": "07669db783eac39e696e1f70cc6db8d07a6731abf1348247059757f5bb4a30eb",
+        "first-1-2.png": "14e03664539e002f1f019d41edd7098d72ed2c9d5514f25cabea34da722f8027",
+        "partner-1-1.png": "bffb4e14322b569ae4f77850c983269e33a7903d272b472613ca254d3feed18e",
+        "first-1-0.png": "14e03664539e002f1f019d41edd7098d72ed2c9d5514f25cabea34da722f8027",
+        "partner-1-2.png": "07669db783eac39e696e1f70cc6db8d07a6731abf1348247059757f5bb4a30eb",
+        "first-0-2.png": "07669db783eac39e696e1f70cc6db8d07a6731abf1348247059757f5bb4a30eb"
+      }
+    },
+    "eon_Release": {
+      "ROM_sha256": "2a45d33966dcf131385e21709712de419e7117c61832d6ca163b7b73359d2bc8",
+      "ROM_unmodified": true,
+      "RAM_writes": false,
+      "emulator": "mGBA 0.10.2",
+      "scope": "Title and normal Release Continue; Debug-generated legacy-initialized, first escaped/caught/defeated and partner resolved fixtures, exact original roamer and signed partner identities/state plus party count. Debug-generated controlled batteries, not authentic historical owner saves.",
+      "log": [
+        "PASS normal Release Continue: exact first identity/HP/status/removal, signed partner checksum/identity/removal and party count",
+        "PASS normal Release Continue: exact first identity/HP/status/removal, signed partner checksum/identity/removal and party count",
+        "PASS normal Release Continue: exact first identity/HP/status/removal, signed partner checksum/identity/removal and party count",
+        "PASS normal Release Continue: exact first identity/HP/status/removal, signed partner checksum/identity/removal and party count",
+        "PASS normal Release Continue: exact first identity/HP/status/removal, signed partner checksum/identity/removal and party count",
+        "PASS normal Release Continue: exact first identity/HP/status/removal, signed partner checksum/identity/removal and party count",
+        "PASS normal Release Continue: exact first identity/HP/status/removal, signed partner checksum/identity/removal and party count",
+        "PASS normal Release Continue: exact first identity/HP/status/removal, signed partner checksum/identity/removal and party count",
+        "PASS normal Release Continue: exact first identity/HP/status/removal, signed partner checksum/identity/removal and party count",
+        "PASS normal Release Continue: exact first identity/HP/status/removal, signed partner checksum/identity/removal and party count"
+      ],
+      "images": {
+        "0-0-unlocked.png": "fa17012f4f68caad95c699d7172f99670c8a744a220b6c939785d47a7a69022d",
+        "1-2-unlocked.png": "a6da2d68ce4d46066073957f258d107473ff55dd74d35a6e576138599159eee3",
+        "0-1-resolved.png": "960ed3a262e535967a178035bce467ca7906173e51716aa5524b51c623d18ac9",
+        "0-0-legacy.png": "abbb972287780340d60e89b39cfd14ba4443f972d0fcb19b9e94b5f0ec36ef8e",
+        "1-0-unlocked.png": "7b1a29dd2eed98698d2da5076f59a3abdd7872ebde8a9e39e0da2dd5c3d62819",
+        "0-2-unlocked.png": "b9f8a4acc7fa48c427e223d3bb1fc6b3d71661ab83c06801245f79efbd0c1f8b",
+        "0-1-unlocked.png": "42635d96d3044696978699ff5310cfbcea235109e133be8e4151269caea54807",
+        "1-0-legacy.png": "59c7b668fb95b4281824da8df5bc79bdd54724a69fd30f162d95ab58c6fc70f1",
+        "1-1-unlocked.png": "fa2fdb156e5347f786bec408024be97b73daa7ff48b4c09fe3abc63d3646a3f0",
+        "1-1-resolved.png": "886f91e963de7e07b8565a29c0e432312a4f61c584e7e7a1a26a328a47d37bfa"
+      }
+    },
+    "seasonal_scenarios": 288,
+    "wild_creations": 73728,
+    "normal_Release_Continue_boat_wardrobe_grotto_passed": true
+  },
+  "candidate": {
+    "base": "7a0f61c885984b15adacd322ea6346ac2726499f",
+    "roaming_source": "238436e7bf8f0fae51801497abedf22a9bfa1957",
+    "graphics_source": "6a6134950810531a088750593773f1b4c358af92",
+    "review_candidate": "762bb9297f4a7f567048bd784b710778f4ad2893",
+    "PR": 94,
+    "native_run": 40626940595,
+    "native_job": 122614029635,
+    "patch_run": 40626940570,
+    "project_run": 40626940648,
+    "browser_run": 40626940562,
+    "android_run": 40626940603,
+    "state": "all six real Debug Eon battle/flash cases passed; existing regressions and normal Release Continue pending"
+  },
+  "patches": {
+    "passed": true,
+    "source_SHA1": "f3ae088181bf583e55daf962a92bb46f4f1d07b7",
+    "decoder": "Actual committed docs/patcher.js applyBps executed in Node VM; independent of Floating IPS",
+    "decoder_sha256": "9c3282f54a768cfe8efbd98cb70fbf0f74d2f14c4dc4446b01ea93640a67179f",
+    "verifier_sha256": "bbb6057cadba5a72d14e73c1f75cc57563c121eebd68e0ce97869fd18a110d8b",
+    "results": {
+      "Pokemon-Emerald-Legends-v0.0.75.bps": {
+        "patch_sha256": "5285292bf816586d2ae74507e6744b29b3b3d40c2769c49beb73fc11b7ba353f",
+        "target_sha256": "2a45d33966dcf131385e21709712de419e7117c61832d6ca163b7b73359d2bc8",
+        "target_bytes": 33554432,
+        "exact_native_ROM_match": true
+      },
+      "Pokemon-Emerald-Legends-v0.0.75-debug.bps": {
+        "patch_sha256": "d665af96901eca05bb42fb18517ed0d4924fb294f2f74806fbddd9ca724e9f71",
+        "target_sha256": "8f9b0365c2c71edad917c9b7107367d7377522e2b8c1787d0b6f1bfe748a6f50",
+        "target_bytes": 33554432,
+        "exact_native_ROM_match": true
+      }
+    },
+    "limits": "Byte-decoder test; physical browser file-picker/download and Pizza Boy execution are separate checks."
+  }
+}

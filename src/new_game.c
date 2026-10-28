@@ -251,6 +251,7 @@ void NewGameInitData(void)
     LegendsAdventureInit(TRUE);
     LegendsJournalInit(TRUE);
     LegendsGrottoInit(TRUE);
+    LegendsRoamerInit(TRUE);
 }
 
 static void ResetMiniGamesRecords(void)
