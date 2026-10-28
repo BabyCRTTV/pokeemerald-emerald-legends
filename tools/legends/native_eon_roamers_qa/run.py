@@ -32,6 +32,23 @@ def main():
          '-Wl,--just-symbols='+str(args.elf),str(S/'arm.c'),'-o',str(out/'arm.elf')],'arm-build.log')
     run(['arm-none-eabi-objcopy','-O','binary',str(out/'arm.elf'),str(out/'arm.bin')],'objcopy.log')
     (out/'symbols.json').write_text(json.dumps(symbols(args.elf),sort_keys=True))
+    # Compare canonical gbagfx bytes through both codecs, not a rendered approximation.
+    stem = 'graphics/battle_anims/backgrounds/psychic_terrain.4bpp'
+    run(['make',stem,stem+'.smol',stem+'.fastSmol'],'codec-build.log')
+    raw = (R/stem).read_bytes()
+    assert hashlib.sha256(raw).hexdigest() == '635681cae116a817b35b4510cd90b0d6ce3d9deff4925cec4c803ad60fd3e067'
+    codec_rows = []
+    import struct
+    for suffix in ['smol','fastSmol']:
+        encoded = R/(stem+'.'+suffix); decoded = out/('decoded-'+suffix+'.bin')
+        run([str(R/'tools/compresSmol/compresSmol'),'-d',str(encoded),str(decoded)],'codec-'+suffix+'.log')
+        assert decoded.read_bytes() == raw
+        a,b = struct.unpack('<II',encoded.read_bytes()[:8]); mode = a & 15
+        sym,lo = a >> 18,b >> 19
+        scratch = 0 if mode == 1 else ((sym+1)&~1)*2+((lo+1)&~1)
+        codec_rows.append(dict(codec=suffix,mode=mode,encoded_bytes=encoded.stat().st_size,scratch_bytes=scratch,exact_raw_bytes=True))
+    assert codec_rows[0]['scratch_bytes']==12152 and codec_rows[1]['scratch_bytes']==0
+    codec = dict(asset='graphics/battle_anims/backgrounds/psychic_terrain.png',raw_SHA256=hashlib.sha256(raw).hexdigest(),PNG_SHA256=hashlib.sha256((R/'graphics/battle_anims/backgrounds/psychic_terrain.png').read_bytes()).hexdigest(),canonical_gbagfx=True,decoded_pixels_identical=True,results=codec_rows)
     source = args.rom.read_bytes()
     rom = bytearray(source); payload = (out/'arm.bin').read_bytes()
     assert len(payload)<65536 and set(rom[0x1f80000:0x1f80000+len(payload)])=={255}
@@ -46,7 +63,7 @@ def main():
         raw.unlink()
     proof = dict(version=(R/'VERSION').read_text().strip(), ROM_sha256=hashlib.sha256(source).hexdigest(),
         emulator='native mGBA core', variant='Release' if 'release' in args.rom.name else 'Debug',
-        passed=True, scope='Both TV choices; actual roamer battles with escape/capture/KO, partner unlock and independent resolution. Synthetic legacy/current actual flash write/load and repeated initialization with native slot, 992-byte prefix, party, Bag and season retained.',
+        passed=True, codec_verification=codec, scope='Both TV choices; actual roamer battles with escape/capture/KO, partner unlock and independent resolution. Synthetic legacy/current actual flash write/load and repeated initialization with native slot, 992-byte prefix, party, Bag and season retained.',
         limits='Not an uninterrupted story playthrough, authentic historical save or Pizza Boy test.',
         log=(out/'emulator.log').read_text(),
         harness_sha256={n:hashlib.sha256((S/n).read_bytes()).hexdigest() for n in ['arm.c','host.c','run.py']},

@@ -1546,7 +1546,9 @@ const u32 gBattleAnimBgImage_PsychicTerrain[] = INCGFX_U32("graphics/battle_anim
 const u16 gBattleAnimBgPalette_PsychicTerrain[] = INCGFX_U16("graphics/battle_anims/backgrounds/new_psychic_terrain.pal", ".gbapal");
 const u32 gBattleAnimBgTilemap_PsychicTerrain[] = INCGFX_U32("graphics/battle_anims/backgrounds/new_psychic_terrain.bin", ".smolTM");
 #else
-const u32 gBattleAnimBgImage_PsychicTerrain[] = INCGFX_U32("graphics/battle_anims/backgrounds/psychic_terrain.png", ".4bpp.smol");
+// Identical approved pixels; BASE_ONLY decoding avoids a 12,152-byte temporary
+// allocation while battle graphics/windows are resident.
+const u32 gBattleAnimBgImage_PsychicTerrain[] = INCGFX_U32("graphics/battle_anims/backgrounds/psychic_terrain.png", ".4bpp.fastSmol");
 const u16 gBattleAnimBgPalette_PsychicTerrain[] = INCGFX_U16("graphics/battle_anims/backgrounds/psychic_terrain.pal", ".gbapal");
 const u32 gBattleAnimBgTilemap_PsychicTerrain[] = INCGFX_U32("graphics/battle_anims/backgrounds/psychic_terrain.bin", ".smolTM");
 
