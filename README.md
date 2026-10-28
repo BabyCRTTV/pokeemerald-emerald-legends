@@ -1,6 +1,6 @@
 # Pokémon Emerald: Legends
 
-**Version:** 0.0.74<br>
+**Version:** 0.0.75<br>
 **Base:** [pokeemerald-expansion](https://github.com/rh-hideout/pokeemerald-expansion)
 
 Pokémon Emerald: Legends is an unofficial, non-commercial Pokémon Emerald ROM-hack project built on the open-source `pokeemerald-expansion` decompilation/expansion base.
@@ -9,7 +9,7 @@ The project is intended to preserve the feel and structure of Pokémon Emerald w
 
 The New Game / Continue / Options menu uses a soft lavender backdrop as of v0.0.13.1. v0.0.54 displays the current version at the right edge of its OPTION card, matching the native text; Debug includes the -D suffix.
 
-v0.0.74 added 24 distinct seasonal aquatic visitors on Routes 132–134 while retaining native residents, levels/rates, currents, Dive/Sealed Chamber access, Feebas fishing tiles and all earlier seasonal tables. [Rosters and rules](docs/features/seasonal-encounters.md).
+v0.0.75 made both Eon Pokémon available as independent level-40 roamers: choose the first on TV, then encounter it to unlock the opposite one. Capturing or defeating either leaves the other available. Existing saved progress is retained. [Rules and legacy-save behavior](docs/features/eon-roamers.md).
 
 v0.0.71 corrected the Mt. Ember return boat landing in Cinnabar, placing the player on clear ground beside the expedition sailor.
 

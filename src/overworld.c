@@ -2147,6 +2147,7 @@ void CB2_ContinueSavedGame(void)
     LegendsAdventureInit(FALSE);
     LegendsJournalInit(FALSE);
     LegendsGrottoInit(FALSE);
+    LegendsRoamerInit(FALSE);
     LegendsCommitSeasonTransition();
     LegendsRestoreSeasonWeather();
     ClearDiveAndHoleWarps();

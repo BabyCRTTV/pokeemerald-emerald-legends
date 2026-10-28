@@ -772,7 +772,7 @@ bool8 StandardWildEncounter(u16 curMetatileBehavior, u16 prevMetatileBehavior)
 
             if (TryStartRoamerEncounter())
             {
-                roamer = &gSaveBlock1Ptr->roamer[gEncounteredRoamerIndex];
+                roamer = GetRoamer(gEncounteredRoamerIndex);
                 if (!IsWildLevelAllowedByRepel(roamer->level))
                     return FALSE;
 
@@ -823,7 +823,7 @@ bool8 StandardWildEncounter(u16 curMetatileBehavior, u16 prevMetatileBehavior)
 
             if (TryStartRoamerEncounter())
             {
-                roamer = &gSaveBlock1Ptr->roamer[gEncounteredRoamerIndex];
+                roamer = GetRoamer(gEncounteredRoamerIndex);
                 if (!IsWildLevelAllowedByRepel(roamer->level))
                     return FALSE;
 

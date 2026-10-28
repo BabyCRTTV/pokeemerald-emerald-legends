@@ -4,6 +4,13 @@ All notable Pokémon Emerald: Legends project changes are documented here.
 
 For build-specific player views, see [CHANGELOG-RELEASE.md](CHANGELOG-RELEASE.md) and [CHANGELOG-DEBUG.md](CHANGELOG-DEBUG.md). The canonical history below records the project as a whole.
 
+## [0.0.75] - 2026-10-27
+
+- Unlocked the opposite level-40 Eon roamer after the first roaming battle with the Pokémon chosen on TV, including escape, capture or defeat.
+- Kept both roamers independent, retaining their own identities, HP, status and caught/defeated states without respawning resolved Pokémon.
+- Preserved the original saved roamer and added compatible one-time initialization for the second; existing post-TV saves with a resolved or previously seen chosen Eon received the opposite roamer.
+- Preserved seasonal encounters, artwork, wardrobe, maps and story requirements.
+
 ## [0.0.74] - 2026-10-27
 
 - Added 24 distinct seasonal aquatic visitors to Surf encounters on Routes 132–134.

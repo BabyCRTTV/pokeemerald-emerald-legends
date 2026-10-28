@@ -1,5 +1,13 @@
 # Development handoff
 
+## v0.0.75 both Eon roamers — candidate pending (27 October 2026)
+
+**Model: GPT-6 (Codex) | Reasoning: preserve native save offsets and first-roamer identity; unlock an independent partner only after an actual battle.**
+
+Owner requested the opposite Eon after encountering the TV-selected one, preserving both chances after catch/defeat. Starting from verified published v0.0.74 `7a0f61c8`, retained the one-element native serialized array and added a 40-byte signed/versioned/checksummed SaveBlock3 tail at 992. Two runtime roamers use an accessor in roaming, Repel and habitat consumers. Actual battle return unlocks the opposite level-40 Eon once; each keeps native HP/status/identity and independent removal. Removed unused premature TV initialization and guarded repeated imported calls. [Rules/legacy seen-flag proxy](features/eon-roamers.md), [QA](qa/eon-roamers-v0.0.75.md).
+
+Host state/legacy/sector tests passed. Native Debug/Release battle/flash fixtures are added but pending CI; builds/independent BPS/merge/production/live bytes remain required. No published v0.0.75 claim yet. Approved artwork, maps, wardrobe, all seasonal tables, IDs and legacy readers are retained. AGENTS reviewed; no durable rule change. Resume current candidate and investigate CI failures; do not redo v0.0.74 or unrelated backlog.
+
 ## v0.0.74 Routes 132–134 — published and verified (27 October 2026)
 
 **Model: GPT-6 (Codex) | Reasoning: preserve current-maze navigation and Sealed Chamber access while appending native Surf variety.**

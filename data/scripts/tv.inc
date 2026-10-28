@@ -31,12 +31,9 @@ EventScript_PlayersHouseMovie::
 	releaseall
 	end
 
-@ special InitRoamer is a junk call. Its input var (VAR_0x8004) hasn't been set, and
-@ It's called again when Mom actually asks for the color, overwriting
-@ whatever it does here.
+@ The roamer starts only after Mom asks for its color.
 EventScript_PlayersHouseLatiNewsFlash::
 	msgbox PlayersHouse_1F_Text_LatiEmergencyNewsFlash, MSGBOX_DEFAULT
-	special InitRoamer
 	clearflag FLAG_SYS_TV_LATIAS_LATIOS
 	setflag FLAG_LATIOS_OR_LATIAS_ROAMING
 	special TurnOffTVScreen

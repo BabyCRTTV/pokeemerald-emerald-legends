@@ -257,6 +257,7 @@ struct NPCFollower
 #include "legends_adventure.h"
 #include "legends_journal.h"
 #include "legends_grottos.h"
+#include "legends_roamers.h"
 
 struct SaveBlock3
 {
@@ -281,6 +282,7 @@ struct SaveBlock3
     struct LegendsJournalSave journal;
     struct LegendsAchievementExtraSave achievementExtra;
     struct LegendsGrottoSave grottos;
+    struct LegendsEonSave eon;
 }; /* max size 1624 bytes */
 
 extern struct SaveBlock3 *gSaveBlock3Ptr;
@@ -699,24 +701,7 @@ struct Pokeblock
     u8 feel;
 };
 
-struct Roamer
-{
-    /*0x00*/ u32 ivs;
-    /*0x04*/ u32 personality;
-    /*0x08*/ enum Species species;
-    /*0x0A*/ u16 hp;
-    /*0x0C*/ u8 level;
-    /*0x0D*/ u8 statusA;
-    /*0x0E*/ u8 cool;
-    /*0x0F*/ u8 beauty;
-    /*0x10*/ u8 cute;
-    /*0x11*/ u8 smart;
-    /*0x12*/ u8 tough;
-    /*0x13*/ bool8 active;
-    /*0x14*/ u8 statusB; // Stores frostbite
-    /*0x15*/ bool8 shiny;
-    /*0x16*/ u8 filler[0x6];
-};
+
 
 struct RamScriptData
 {
@@ -1191,7 +1176,7 @@ struct SaveBlock1
                u8 padding[4];
     /*0x31B3*/ struct ExternalEventData externalEventData;
     /*0x31C7*/ struct ExternalEventFlags externalEventFlags;
-    /*0x31DC*/ struct Roamer roamer[ROAMER_COUNT];
+    /*0x31DC*/ struct Roamer roamer[1];
 #if FREE_ENIGMA_BERRY == FALSE
     /*0x31F8*/ struct EnigmaBerry enigmaBerry;
 #endif //FREE_ENIGMA_BERRY

@@ -4,6 +4,7 @@
 #include "pokemon.h"
 #include "random.h"
 #include "roamer.h"
+#include "pokedex.h"
 
 // Despite having a variable to track it, the roamer is
 // hard-coded to only ever be in map group 0
@@ -15,7 +16,53 @@ enum
     MAP_NUM, // map number
 };
 
-#define ROAMER(index) (&gSaveBlock1Ptr->roamer[index])
+#define ROAMER(index) GetRoamer(index)
+#define EON (&gSaveBlock3Ptr->eon)
+#define EON_MAGIC 0x314E4F45 // EON1
+STATIC_ASSERT(sizeof(struct Roamer) == 28, NativeRoamerWidth);
+STATIC_ASSERT(sizeof(struct LegendsEonSave) == 40, EonSaveWidth);
+
+struct Roamer *GetRoamer(u32 index)
+{
+    // All callers bound indices by ROAMER_COUNT; preserve the native slot's address.
+    return index == 0 ? &gSaveBlock1Ptr->roamer[0] : &EON->partner;
+}
+
+static u32 EonChecksum(void)
+{
+    const u8 *bytes = (const u8 *)EON;
+    u32 i, value = 2166136261u;
+    for (i = 8; i < sizeof(*EON); i++)
+        value = (value ^ bytes[i]) * 16777619u;
+    return value;
+}
+
+static void SignEon(void) { EON->checksum = EonChecksum(); }
+static bool32 IsEon(enum Species species)
+{
+    return species == SPECIES_LATIAS || species == SPECIES_LATIOS;
+}
+static void UnlockEonPartner(void);
+
+void LegendsRoamerInit(bool32 newGame)
+{
+    bool32 valid = EON->magic == EON_MAGIC && EON->version == 1
+        && EON->unlocked <= TRUE && EON->checksum == EonChecksum()
+        && (!EON->unlocked || (IsEon(EON->partner.species) && EON->partner.level == 40));
+    if (newGame || !valid)
+    {
+        memset(EON, 0, sizeof(*EON));
+        EON->magic = EON_MAGIC;
+        EON->version = 1;
+        SignEon();
+    }
+    // Legacy saves have no exact battle-history bit. Preserve their native slot,
+    // and backfill a completed roamer or a previously seen selected Eon once.
+    if (!newGame && !EON->unlocked && FlagGet(FLAG_LATIOS_OR_LATIAS_ROAMING)
+        && IsEon(ROAMER(0)->species)
+        && (!ROAMER(0)->active || GetSetPokedexFlag(SpeciesToNationalPokedexNum(ROAMER(0)->species), FLAG_GET_SEEN)))
+        UnlockEonPartner();
+}
 EWRAM_DATA static u8 sLocationHistory[ROAMER_COUNT][3][2] = {0};
 EWRAM_DATA static u8 sRoamerLocation[ROAMER_COUNT][2] = {0};
 EWRAM_DATA u8 gEncounteredRoamerIndex = 0;
@@ -100,29 +147,32 @@ void MoveAllRoamers(void)
 
 static void CreateInitialRoamerMon(u8 index, enum Species species, u8 level)
 {
+    struct Pokemon created;
+    struct Pokemon *mon = &created;
     ClearRoamerLocationHistory(index);
     u32 personality = GetMonPersonality(species,
         GetSynchronizedGender(ROAMER_ORIGIN, species),
         GetSynchronizedNature(ROAMER_ORIGIN, species),
         RANDOM_UNOWN_LETTER);
-    CreateMonWithIVs(&gParties[B_TRAINER_OPPONENT_A][0], species, level, personality, OTID_STRUCT_PLAYER_ID, USE_RANDOM_IVS);
-    GiveMonInitialMoveset(&gParties[B_TRAINER_OPPONENT_A][0]);
-    ROAMER(index)->ivs = GetMonData(&gParties[B_TRAINER_OPPONENT_A][0], MON_DATA_IVS);
-    ROAMER(index)->personality = GetMonData(&gParties[B_TRAINER_OPPONENT_A][0], MON_DATA_PERSONALITY);
+    CreateMonWithIVs(mon, species, level, personality, OTID_STRUCT_PLAYER_ID, USE_RANDOM_IVS);
+    GiveMonInitialMoveset(mon);
+    ROAMER(index)->ivs = GetMonData(mon, MON_DATA_IVS);
+    ROAMER(index)->personality = GetMonData(mon, MON_DATA_PERSONALITY);
     ROAMER(index)->species = species;
     ROAMER(index)->level = level;
     ROAMER(index)->statusA = 0;
     ROAMER(index)->statusB = 0;
-    ROAMER(index)->hp = GetMonData(&gParties[B_TRAINER_OPPONENT_A][0], MON_DATA_MAX_HP);
-    ROAMER(index)->cool = GetMonData(&gParties[B_TRAINER_OPPONENT_A][0], MON_DATA_COOL);
-    ROAMER(index)->beauty = GetMonData(&gParties[B_TRAINER_OPPONENT_A][0], MON_DATA_BEAUTY);
-    ROAMER(index)->cute = GetMonData(&gParties[B_TRAINER_OPPONENT_A][0], MON_DATA_CUTE);
-    ROAMER(index)->smart = GetMonData(&gParties[B_TRAINER_OPPONENT_A][0], MON_DATA_SMART);
-    ROAMER(index)->tough = GetMonData(&gParties[B_TRAINER_OPPONENT_A][0], MON_DATA_TOUGH);
-    ROAMER(index)->shiny = GetMonData(&gParties[B_TRAINER_OPPONENT_A][0], MON_DATA_IS_SHINY);
+    ROAMER(index)->hp = GetMonData(mon, MON_DATA_MAX_HP);
+    ROAMER(index)->cool = GetMonData(mon, MON_DATA_COOL);
+    ROAMER(index)->beauty = GetMonData(mon, MON_DATA_BEAUTY);
+    ROAMER(index)->cute = GetMonData(mon, MON_DATA_CUTE);
+    ROAMER(index)->smart = GetMonData(mon, MON_DATA_SMART);
+    ROAMER(index)->tough = GetMonData(mon, MON_DATA_TOUGH);
+    ROAMER(index)->shiny = GetMonData(mon, MON_DATA_IS_SHINY);
     ROAMER(index)->active = TRUE;
     sRoamerLocation[index][MAP_GRP] = ROAMER_MAP_GROUP;
     sRoamerLocation[index][MAP_NUM] = sRoamerLocations[Random() % NUM_LOCATION_SETS][0];
+    if (index == 1) SignEon();
 }
 
 static u8 GetFirstInactiveRoamerIndex(void)
@@ -152,13 +202,23 @@ bool8 TryAddRoamer(enum Species species, u8 level)
     return FALSE;
 }
 
-// gSpecialVar_0x8004 here corresponds to the options in the multichoice MULTI_TV_LATI (0 for 'Red', 1 for 'Blue')
+// Only Mom's color selection initializes the native slot. Repeated scripted
+// calls (including the imported Celio call) must not duplicate or revive it.
 void InitRoamer(void)
 {
-    if (gSpecialVar_0x8004 == 0) // Red
-        TryAddRoamer(SPECIES_LATIAS, 40);
-    else
-        TryAddRoamer(SPECIES_LATIOS, 40);
+    if (!FlagGet(FLAG_LATIOS_OR_LATIAS_ROAMING) || IsEon(ROAMER(0)->species))
+        return;
+    TryAddRoamer(gSpecialVar_0x8004 == 0 ? SPECIES_LATIAS : SPECIES_LATIOS, 40);
+}
+
+static void UnlockEonPartner(void)
+{
+    if (EON->unlocked || !FlagGet(FLAG_LATIOS_OR_LATIAS_ROAMING) || !IsEon(ROAMER(0)->species))
+        return;
+    // Reserved second slot: never replace, regenerate or reactivate either Eon.
+    CreateInitialRoamerMon(1, ROAMER(0)->species == SPECIES_LATIAS ? SPECIES_LATIOS : SPECIES_LATIAS, 40);
+    EON->unlocked = TRUE;
+    SignEon();
 }
 
 void UpdateLocationHistoryForRoamer(void)
@@ -284,12 +344,17 @@ void UpdateRoamerHPStatus(struct Pokemon *mon)
     ROAMER(gEncounteredRoamerIndex)->statusA = status;
     ROAMER(gEncounteredRoamerIndex)->statusB = status >> 8;
 
+    if (gEncounteredRoamerIndex == 1)
+        SignEon();
+    else
+        UnlockEonPartner(); // Real battle return, never a Repel-blocked roll.
     RoamerMoveToOtherLocationSet(gEncounteredRoamerIndex);
 }
 
 void SetRoamerInactive(u32 roamerIndex)
 {
     ROAMER(roamerIndex)->active = FALSE;
+    if (roamerIndex == 1) SignEon();
 }
 
 void GetRoamerLocation(u32 roamerIndex, u8 *mapGroup, u8 *mapNum)

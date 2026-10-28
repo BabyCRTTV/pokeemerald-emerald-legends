@@ -1,6 +1,6 @@
 {
   "wikiDexRevision": "1.6.2",
-  "gameVersion": "0.0.74",
+  "gameVersion": "0.0.75",
   "sourceCommit": "c7f99550ac91b7b142bc9efd4692a0eb148b5008",
   "source": "src/data/wild_encounters.json, src/data/legends_seasonal_encounters.h and src/data/pokemon/species_info/gen_*_families.h",
   "methodNote": "Percentages are conditional encounter shares for the selected method and season, not chances per step. Native lure/ability modifiers, scripted encounters and gifts are separate.",
