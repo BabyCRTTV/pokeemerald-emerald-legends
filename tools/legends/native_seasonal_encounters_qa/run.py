@@ -1,8 +1,18 @@
 """Real compiled DexNav/seasonal encounter previews in a private diagnostic copy."""
 from pathlib import Path
-import hashlib,json,subprocess,re,struct
+import argparse,hashlib,json,subprocess,re,struct,shutil
+from workers import worker_count,execute,compare
 from PIL import Image
-R=Path(__file__).resolve().parents[3];S=Path(__file__).resolve().parent;O=R/'build/seasonal-encounters-qa';O.mkdir(parents=True,exist_ok=True)
+R=Path(__file__).resolve().parents[3];S=Path(__file__).resolve().parent
+parser=argparse.ArgumentParser(description=__doc__)
+parser.add_argument('--jobs',type=int,default=None,help='1–4 isolated native processes, capped by CPU affinity')
+parser.add_argument('--compare-serial',action='store_true',help='One-time complete serial/parallel parity benchmark')
+parser.add_argument('--output',type=Path,default=R/'build/seasonal-encounters-qa')
+options=parser.parse_args();jobs=worker_count(options.jobs);O=options.output.resolve();O.mkdir(parents=True,exist_ok=True)
+for old in ['verification.json','serial-parallel-comparison.json','emulator.log']:(O/old).unlink(missing_ok=True)
+for folder in ['parallel','serial-reference']:
+ if (O/folder).exists():shutil.rmtree(O/folder)
+for old in O.glob('scene-*.png'):old.unlink()
 def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()
 def run(cmd,log):
  with (O/log).open('w') as f:subprocess.run(cmd,cwd=R,stdout=f,stderr=subprocess.STDOUT,check=True)
@@ -62,10 +72,24 @@ run(['arm-none-eabi-objcopy','-O','binary',str(O/'qa.elf'),str(O/'qa.bin')],'obj
 a=subprocess.check_output(['arm-none-eabi-nm',str(O/'qa.elf')],text=True).splitlines();extra={v[2]:int(v[0],16) for line in a if len(v:=line.split())==3}
 rom=R/'pokeemerald.gba';before=sha(rom);image=bytearray(rom.read_bytes());payload=(O/'qa.bin').read_bytes();assert len(payload)<65536 and set(image[0x1f80000:0x1f80000+len(payload)])=={255};image[0x1f80000:0x1f80000+len(payload)]=payload;private=O/'PRIVATE-QA.gba';private.write_bytes(image)
 run(['cc','-std=gnu11',str(S/'host.c'),'-lmgba','-o',str(O/'host')],'host-build.log')
-try:run([str(O/'host'),str(private),str(O),hex(syms['gMain']),hex(extra['qa']),hex(syms['CB2_Overworld']),str(len(scenes))],'emulator.log')
+execution={};parity=None
+addresses=[hex(syms['gMain']),hex(extra['qa']),hex(syms['CB2_Overworld'])]
+try:
+ execution=execute([str(O/'host')],private,addresses,len(scenes),jobs,O/'parallel')
+ if options.compare_serial:
+  serial=execute([str(O/'host')],private,addresses,len(scenes),1,O/'serial-reference')
+  parity=compare(O/'serial-reference',O/'parallel')
+  parity.update(serial_seconds=serial['seconds'],parallel_seconds=execution['seconds'],speedup=round(serial['seconds']/execution['seconds'],3))
+  (O/'serial-parallel-comparison.json').write_text(json.dumps(parity,indent=2)+'\n')
 finally:
- for p in O.glob('*.rgba'):Image.frombytes('RGBA',(240,160),p.read_bytes()).convert('RGB').save(p.with_suffix('.png'));p.unlink()
- private.unlink()
+ for mode in ['parallel','serial-reference']:
+  for p in sorted((O/mode).glob('worker-*/*.rgba')):
+   target=O/p.with_suffix('.png').name if mode=='parallel' else O/mode/p.with_suffix('.png').name
+   Image.frombytes('RGBA',(240,160),p.read_bytes()).convert('RGB').save(target);p.unlink()
+ if (O/'parallel/emulator.log').exists():shutil.copyfile(O/'parallel/emulator.log',O/'emulator.log')
+ private.unlink(missing_ok=True)
 assert sha(rom)==before
-proof={'version':(R/'VERSION').read_text().strip(),'base_ROM_sha256':before,'emulator':'mGBA native core 0.10.2','private_instrumentation':True,'public_ROM_unchanged':True,'scenarios':scenes,'wild_creations_per_scenario':256,'passed':True,'scope':'Actual compiled land and Surf tables, wild creation and DexNav GUI; hardware-sampled two-pose bounds/centering and uniform shrink-only scale for every grid icon; controlled route/season/seen state, original icons and VRAM frames, isolated palettes, unseen selection lock, closure and protected state. Both Route104 halves, native Surf fixtures on Routes105-109/122/124-134 and Route111 desert, Route113 native ash-grass and Routes114-118/121/123 grass and Routes119-120 native long-grass fixtures (Route119 rate15) checked. Not a natural progression playthrough, historical-save migration, full DexNav hunt or Pizza Boy test.','harness_sha256':{n:sha(S/n) for n in ['arm.c','host.c','run.py']}}
+proof={'version':(R/'VERSION').read_text().strip(),'base_ROM_sha256':before,'emulator':'mGBA native core 0.10.2','private_instrumentation':True,'public_ROM_unchanged':True,'scenarios':scenes,'wild_creations_per_scenario':256,'passed':True,'scope':'Actual compiled land and Surf tables, wild creation and DexNav GUI; hardware-sampled two-pose bounds/centering and uniform shrink-only scale for every grid icon; controlled route/season/seen state, original icons and VRAM frames, isolated palettes, unseen selection lock, closure and protected state. Both Route104 halves, native Surf fixtures on Routes105-109/122/124-134 and Route111 desert, Route113 native ash-grass and Routes114-118/121/123 grass and Routes119-120 native long-grass fixtures (Route119 rate15) checked. Not a natural progression playthrough, historical-save migration, full DexNav hunt or Pizza Boy test.','harness_sha256':{n:sha(S/n) for n in ['arm.c','host.c','run.py','workers.py']}}
+proof['execution']=execution
+if parity is not None:proof['serial_parallel_comparison']=parity
 (O/'verification.json').write_text(json.dumps(proof,indent=2)+'\n');print('PASS: 288 targeted native seasonal/DexNav scenarios and 73728 real generated Pokémon; grass and Surf, original/seen/unseen states.')

@@ -1,6 +1,12 @@
 name: Legends mGBA gameplay smoke
 
 on:
+  workflow_dispatch:
+    inputs:
+      compare_serial:
+        description: Compare all serial/parallel cases, captures and timings
+        type: boolean
+        default: false
   pull_request:
     branches: [ master ]
     paths:
@@ -75,7 +81,14 @@ jobs:
       - name: Exercise research notes, bulletin and town dialogue branches
         run: python3 tools/legends/native_living_hoenn_qa/run.py
       - name: Exercise seasonal encounter trial and native DexNav silhouettes
-        run: python3 tools/legends/native_seasonal_encounters_qa/run.py
+        env:
+          COMPARE_SEASONAL_SERIAL: ${{ inputs.compare_serial == true || contains(github.event.head_commit.message, '[benchmark seasonal QA]') }}
+        run: |
+          seasonal_args=()
+          if [ "$COMPARE_SEASONAL_SERIAL" = "true" ]; then
+            seasonal_args+=(--compare-serial)
+          fi
+          python3 tools/legends/native_seasonal_encounters_qa/run.py "${seasonal_args[@]}"
       - name: Exercise accepted bedroom repair and wardrobe return/save paths
         run: python3 tools/legends/native_visual_repairs_qa/run.py --output build/visual-repairs-qa --mgba-prefix /usr
       - name: Build unmodified Legends Release ROM and ELF
@@ -124,6 +137,11 @@ jobs:
             build/seasonal-encounters-qa/*.png
             build/seasonal-encounters-qa/*.json
             build/seasonal-encounters-qa/*.log
+            build/seasonal-encounters-qa/parallel/**/*.log
+            build/seasonal-encounters-qa/parallel/**/*.json
+            build/seasonal-encounters-qa/serial-reference/**/*.log
+            build/seasonal-encounters-qa/serial-reference/**/*.json
+            build/seasonal-encounters-qa/serial-reference/*.png
             build/visual-repairs-qa/*.png
             build/visual-repairs-qa/*.json
             build/visual-repairs-qa/*.log

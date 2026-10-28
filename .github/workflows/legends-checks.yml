@@ -18,6 +18,8 @@ jobs:
       - uses: actions/checkout@v4
       - name: Install image-test dependency before grotto art checks
         run: python3 -m pip install Pillow==11.3.0
+      - name: Exercise isolated seasonal QA workers and exact coverage
+        run: python3 test/legends-seasonal-qa-workers.test.py
       - name: Exercise release verification regressions
         run: python3 test/legends-development-process.test.py
       - name: Exercise browser patcher regression tests

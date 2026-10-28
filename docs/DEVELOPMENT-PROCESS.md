@@ -30,6 +30,10 @@ When a native test fails, inspect its first failure, frame, log and runtime diag
 - Persist resumable scripts and costly evidence under the workspace's ignored build directory, with the immutable provenance in the repository QA record. `/tmp` alone is not a checkpoint. After workspace loss, recover only the artifacts needed for the next unverified step.
 - Use one per-release evidence record plus a short handoff link. Record commit, run ID, last verified stage, blocker and exact next step at meaningful milestones. Do not append a new historical handoff section for every poll or copy full logs into it. Reuse completed evidence only when its relevant inputs are identical; document why it remains applicable. Harness edits invalidate harness evidence even if game code is unchanged.
 
+## Seasonal native QA execution
+
+The seasonal runner supports up to four isolated mGBA processes, capped by CPU affinity, with unchanged cases/assertions and strict complete coverage. Worker logs and receipts retain failures. Use `--jobs 1` for serial troubleshooting or `--compare-serial` for the complete serial/parallel log, pixel and timing comparison. Normal runs do not repeat a serial reference. The native workflow supports manual `compare_serial` input; `[benchmark seasonal QA]` in a push commit message also explicitly opts into that validation. [Implementation status and measured evidence](qa/seasonal-qa-parallel-2026-10-28.md).
+
 ## Publish and close
 
 1. Inspect completed candidate gates and their actual receipts; compare native ROM hashes with both independently reconstructed BPS targets. Confirm that the merged tree preserves the reviewed inputs. Current production gates remain required; do not treat documentation differences as new game changes.

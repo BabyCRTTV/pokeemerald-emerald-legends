@@ -16,9 +16,9 @@ static void key(unsigned k){c->setKeys(c,k);frames(3);c->setKeys(c,0);frames(18)
 static void cap(const char *suffix){char p[4096];snprintf(p,sizeof(p),"%s/scene-%02u-%s.rgba",out,scene,suffix);FILE *f=fopen(p,"wb");assert(f&&fwrite(video,4,240*160,f)==240*160);fclose(f);}
 static void verify(void){if(box(29)){cap("FAIL");fprintf(stderr,"scene %u diagnostic failure %u\n",scene,box(29));exit(2);}assert(!box(19));for(int i=8;i<=12;i++)assert(box(i)==box(i+6));}
 int main(int argc,char **argv){
- assert(argc==7);setbuf(stdout,NULL);out=argv[2];mainAddr=strtoul(argv[3],0,0);qa=strtoul(argv[4],0,0)|1;overworld=strtoul(argv[5],0,0)|1;unsigned count=strtoul(argv[6],0,0);mLogSetDefaultLogger(&logger);
+ assert(argc==7||argc==9);setbuf(stdout,NULL);out=argv[2];mainAddr=strtoul(argv[3],0,0);qa=strtoul(argv[4],0,0)|1;overworld=strtoul(argv[5],0,0)|1;unsigned count=strtoul(argv[6],0,0);unsigned first=argc==9?strtoul(argv[7],0,0):0,last=argc==9?strtoul(argv[8],0,0):count;assert(first<last&&last<=count);mLogSetDefaultLogger(&logger);
  c=mCoreFind(argv[1]);assert(c&&c->init(c));mCoreInitConfig(c,NULL);mCoreConfigSetDefaultIntValue(&c->config,"skipBios",1);c->loadConfig(c,&c->config);video=calloc(240*160,sizeof(color_t));c->setVideoBuffer(c,video,240);struct VFile *f=VFileOpen(argv[1],O_RDONLY);assert(f&&c->loadROM(c,f));
- for(scene=0;scene<count;scene++){
+ for(scene=first;scene<last;scene++){
   c->reset(c);frames(650);c->busWrite32(c,mainAddr,0);c->busWrite32(c,0x0203fc74,0);command(0,400);
   for(int i=0;i<2000&&c->busRead32(c,mainAddr+4)!=overworld;i++)frames(1);assert(c->busRead32(c,mainAddr+4)==overworld);frames(200);
   command(1,1);frames(240);if(box(2)>>8)key(64);query();for(int i=0;i<400&&(!box(3)||box(4));i++){frames(1);query();}assert(box(3)&&!box(4));verify();cap("gui");

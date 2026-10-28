@@ -1,0 +1,27 @@
+{
+  "status": "local checks passed; native serial/parallel benchmark pending",
+  "model": "GPT-6 (Codex)",
+  "baseline_commit": "94afb7d6fff5183a316fdec226f131042b4a5191",
+  "game_version": "0.0.75",
+  "scope": "Seasonal QA parallelism only; build sharing is not implemented",
+  "scenario_count": 288,
+  "wild_creations_per_mode": 73728,
+  "local_tests_passed": 9,
+  "maximum_workers": 4,
+  "CPU_affinity_cap": true,
+  "worker_timeout_seconds": 600,
+  "unchanged_inputs": [
+    "game source/assets/maps/save layouts",
+    "seasonal scenario definitions",
+    "private ARM callback",
+    "native per-scenario assertions/frame waits/inputs",
+    "game VERSION and published BPS files"
+  ],
+  "native_results": null,
+  "source_review": {
+    "scenario_generation_exact": true,
+    "native_per_case_body_exact": true,
+    "ARM_callback_exact": true,
+    "ARM_callback_sha256": "9fa3e6cb20ffb5c70f1d0d3867c3d528c7e88e95c9b11284d809399455ae8fef"
+  }
+}

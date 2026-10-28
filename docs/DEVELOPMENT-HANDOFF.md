@@ -1,5 +1,15 @@
 # Development handoff
 
+## Seasonal QA parallelism — native validation pending (28 October 2026)
+
+**Model: GPT-6 (Codex) | Reasoning: isolate emulator state, enforce exact coverage and compare against a full serial reference before claiming speedup.**
+
+Owner authorized the first larger optimization only, after verified maintenance at `94afb7d6`. Added at most four CPU-capped native worker processes with disjoint global scenario ranges and private outputs. All 288 scenarios / 73,728 creations, ARM callback, native assertions, frame waits, original ordered log and capture locations remain. Failed/missing/duplicate cases, missing captures, timeouts and worker failures reject QA and retain diagnostics. Serial mode remains available. [Focused QA](qa/seasonal-qa-parallel-2026-10-28.md), [machine status](qa/seasonal-qa-parallel-2026-10-28.json).
+
+Nine worker-control tests, Python syntax, YAML and whitespace checks passed locally. The first CI commit opts into all-case serial/parallel log and raw-capture comparison plus timings; normal future runs omit that extra serial reference. Native parity, actual speedup and full Debug/Release regression results remain pending. Inspect that run and receipts before marking completion. AGENTS preservation/verification rules remain applicable; no new durable rule is required.
+
+Game v0.0.75, source/assets/maps/wardrobe/seasons/saves and patches are unchanged. Build sharing and publication redesign are not part of this change; wait for the owner's next instruction after completing this first optimization.
+
 ## Development process maintenance — published and verified (28 October 2026)
 
 **Model: GPT-6 (Codex) | Reasoning: measure repeated work, preserve verification strength and make release closeout resumable.**
