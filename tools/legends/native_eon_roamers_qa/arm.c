@@ -22,6 +22,7 @@ void qa(void)
  if(b[0]==0){
   NewGameInitData();gSaveBlock2Ptr->playerName[0]=0xBB;gSaveBlock2Ptr->playerName[1]=0xFF;
   gSaveBlock2Ptr->optionsTextSpeed=2;gSaveBlock2Ptr->optionsBattleSceneOff=TRUE;
+  for(u32 flag=FLAG_BADGE01_GET;flag<=FLAG_BADGE08_GET;flag++)FlagSet(flag); // Obedient level-100 controlled fixture.
   FlagSet(FLAG_SYS_POKEMON_GET);FlagSet(FLAG_SYS_POKEDEX_GET);FlagSet(FLAG_HIDE_MAP_NAME_POPUP);FlagSet(FLAG_RESCUED_BIRCH);FlagSet(FLAG_SET_WALL_CLOCK);FlagSet(FLAG_RECEIVED_RUNNING_SHOES);
   VarSet(VAR_LITTLEROOT_INTRO_STATE,9);VarSet(VAR_LITTLEROOT_RIVAL_STATE,4);VarSet(VAR_BIRCH_LAB_STATE,5);
   CreateMonWithIVs(&gParties[B_TRAINER_PLAYER][0],SPECIES_GOTHITELLE,100,32,OTID_STRUCT_PLAYER_ID,31);
