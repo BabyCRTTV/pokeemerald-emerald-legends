@@ -1,5 +1,15 @@
 # Development handoff
 
+## v0.0.74 Routes 132–134 — candidate verified; publication next (27 October 2026)
+
+**Model: GPT-6 (Codex) | Reasoning: preserve current-maze navigation and Sealed Chamber access while appending native Surf variety.**
+
+Owner requested the next encounter set after verified v0.0.73 at `67b44111`; live history, VERSION and Actions confirmed that completed release. Prepared twelve Surf tables / 24 distinct aquatic visitors on Routes 132–134. Native residents/slot levels/weights/rate 4 and committed-season/all-day behavior remain. All 124 prior arrays and 262 native scenario identities are protected exactly. Currents/map collision/warps, Route 134 Dive/underwater data, Sealed Chamber Dig/first-Wailord/last-Relicanth/one-time door requirements, Feebas fishing tiles, approved art/wardrobe/sprites and save layouts/IDs are unchanged. New wild rosters exclude Wailord/Relicanth/Feebas; no migration. [Rosters](features/seasonal-encounters.md), [source receipt](qa/seasonal-routes-v0.0.74-source.json), [QA](qa/seasonal-routes-v0.0.74.md).
+
+Candidate `e6956546` passed project 40603769592, browser 40603769605, Android 40603769648, native 40603769671 and both-build/canonical-base/independent Floating IPS/browser decoder 40603769655. Downloaded verified archives, matched both decoded targets to native Debug/Release ROM hashes and passed all 288 cases / 73,728 real creations. Existing normal Release Continue/boat/wardrobe/grotto checks passed. All 262 previous scenarios retain exact identity. Of 411 previous frames, 407 are pixel-identical; four Route 130 captures differ only in native icon animation poses, confined to existing icon cells with all other pixels/text/layout exact. Original sprite assets/factory/callback and native palette/VRAM/two-pose geometry checks remain protected. Do not claim all 411 screenshots are identical or alter accepted animations to force matching capture ticks. Inspected actual new Routes 133/134 and differing Route 130 captures. [Detailed native/patch/animation receipt](qa/seasonal-routes-v0.0.74-native.json). LegendsDex 1.6.2 is synced at game source `c7f99550`, with all approved art, species/maps and grotto provenance retained.
+
+Next: expected-head PR #93 merge, production workflows, automatic Release/Debug patches/Pages and exact live bytes before declaring publication. Documentation checkpoints do not alter tested implementation. Public v0.0.73 is intact. AGENTS.md reviewed; no durable rule change; encounter preview approval remains waived. Historical-owner saves/full-story/Release seasonal hunt/Pizza Boy limits and separate Wyrmtide/wiki backlog remain unchanged.
+
 ## v0.0.73 Routes 127–131 — published and verified (27 October 2026)
 
 **Model: GPT-6 (Codex) | Reasoning: preserve native rare-resident slots and related island/story access, require real gameplay and independently reconstructed patches, then verify exact public bytes.**
