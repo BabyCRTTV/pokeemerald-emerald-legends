@@ -1,5 +1,17 @@
 # Development handoff
 
+## Development process maintenance — implementation verified locally, CI pending (28 October 2026)
+
+**Model: GPT-6 (Codex) | Reasoning: measure repeated work, preserve verification strength and make release closeout resumable.**
+
+Owner requested process optimization without lowering Legends quality. Audited published v0.0.75 at `7819b69e`, live Actions and related source/policies. Native production job took 14m52s: 7m06s building, 5m04s seasonal/DexNav, 26s Eon battles and 10s Eon Release Continue. Patch workflow separately rebuilt both variants; host checks took only 55s. Nine preceding failed Eon native run windows total about 50 minutes; inspect fixture/runtime diagnostics before another remote iteration. [Measured findings, deferred work and limits](qa/development-process-2026-10-28.md), [timings](qa/development-process-2026-10-28.json).
+
+Added PR-only cancellation for obsolete native/project/wiki runs, with workflow-specific and per-master-commit groups retaining production gates. All existing build/test commands and candidate/production gates remain. Added reusable live-publication verifier with eight HTTP/CLI regressions; all eight passed locally, followed by a fresh successful 18-file v0.0.75 public recheck. Workflow YAML, Python syntax and diff whitespace reviewed. Updated AGENTS and [the development procedure](DEVELOPMENT-PROCESS.md) for scoped history, immutable evidence reuse, fixture-first failure diagnosis, bounded polling and durable checkpoints; corrected stale current QA/save pointers without expanding historical-save claims.
+
+Native/build sharing, parallel seasonal groups, candidate-to-production evidence promotion, dependency caching and companion rebuild policy changes are documented follow-ups, not implemented or claimed faster. No game source, artwork, maps, saves, version or patch bytes changed. The workspace briefly disconnected after local tests; it recovered with the prepared files intact, and their exact Git blob hashes were retained before connected-tool publication.
+
+**Next:** inspect this maintenance commit's project, native and wiki Actions; diagnose only a failed stage, retain results in this entry and verify the documentation deployment. Game v0.0.75 remains published; there is no new ROM release to build or announce.
+
 ## v0.0.75 both Eon roamers — published and verified (27 October 2026)
 
 **Model: GPT-6 (Codex) | Reasoning: preserve native save offsets and first-roamer identity; unlock an independent partner only after an actual battle.**

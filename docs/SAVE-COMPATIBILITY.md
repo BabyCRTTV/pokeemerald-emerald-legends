@@ -8,7 +8,7 @@ This concerns the emulator's normal in-game battery save (`.sav`). Emulator save
 
 ## Current verified baseline and limits
 
-The current published baseline is v0.0.60, retaining the v0.0.59 research compatibility guarantees and adding the achievement extension detailed below. Native sectors, storage readers, the 36-byte journal and previously published identifiers remain intact. Research progress retains read-only B7 support and migrates to B8 only on successful state changes, with high completion bits in verified-unused var 0x407A. The v0.0.58/v0.0.59 sections below describe focused migration and native Continue coverage; [the current release QA](qa/research-v0.0.59.md) states its limits. The authentic historical-save matrix remains unfinished.
+The current published baseline is v0.0.75. The original native SaveBlock1 roamer remains 28 bytes; the separately signed dual-Eon extension brings SaveBlock3 to 1,032 bytes while preserving the previous 992-byte prefix and native sector/storage readers and IDs. [v0.0.75 QA](qa/eon-roamers-v0.0.75.md) and [the production/public receipt](qa/eon-roamers-v0.0.75-public.json) cover six controlled native Debug battle/flash cases and ten normal unmodified Release Continue fixtures. Earlier journal, research, appearance and grotto guarantees remain; their versioned sections below retain the original evidence and limits. The authentic historical-owner-save matrix remains unfinished. This summary does not extend controlled-fixture evidence to that matrix.
 
 Historical v0.0.49 changed only front-facing cheek shading and required no save migration. The approved Side Part remains ID 2. Preserve [v0.0.49 evidence and limits](qa/front-face-v0.0.49.md) and the previous [v0.0.48 evidence](qa/side-part-v0.0.48.md).
 
@@ -61,7 +61,7 @@ Record source version, fixture provenance, target commit, build/emulator, assert
 
 Keep a backup of the in-game battery save before updating. Apply the new BPS to the supported clean Emerald base, then have the emulator use that existing battery save with the new ROM (matching its save filename or importing the save as required). Use Continue and make an in-game save. v0.0.43 and newer use the expanded storage format, so retain the backup if returning to an older ROM.
 
-## Hidden grotto encounter extension — unshipped review
+## Hidden grotto encounter extension — published in v0.0.69
 
 The owner requested persistent visitors and a per-grotto 4,500-step renewal after capture or defeat. SaveBlock3 appends 276 bytes at offset 716, growing to 992 bytes inside the existing fourteen 116-byte tails. The original prefix, native sectors, expanded storage format and all published IDs retain their positions. No persistent flag or native variable is reserved. Each room stores the exact native 80-byte BoxPokemon plus bounded species, level, season, state and remaining steps. A separate magic/version/checksum recognizes valid grotto data; absent/invalid legacy tail bytes initialize only this extension. Continue and New Game call the feature initializer.
 

@@ -2,7 +2,7 @@
 
 Latest appearance follow-up: [approved front-face shading, v0.0.49](qa/front-face-v0.0.49.md). The [approved Side Part, v0.0.48](qa/side-part-v0.0.48.md) remains the protected hair baseline.
 
-Current verification: [v0.0.57 tracked-quest builds, native scroll/save results and live publication QA](qa/quest-tracking-v0.0.57.md); [v0.0.56 journal interface builds, native captures and publication QA](qa/journal-v0.0.56.md); [v0.0.55 homecoming/flash QA](qa/homecoming-v0.0.55.md); [15 October resumption audit](qa/project-state-2026-10-15.md). Historical sections below retain their original release context; use current source/Options and the linked milestone evidence for the present behavior. Unchecked items remain playtest work unless a later QA record explicitly verifies the same scenario.
+Current verification: [published v0.0.75 dual Eon QA](qa/eon-roamers-v0.0.75.md), [production/public receipt](qa/eon-roamers-v0.0.75-public.json) and the newest [development handoff](DEVELOPMENT-HANDOFF.md). Use [the development process](DEVELOPMENT-PROCESS.md) to scope checks and resume verified work. Historical sections below retain their original release context; unchecked items remain playtest work unless a later QA record explicitly verifies the same scenario.
 
 Baseline: v0.0.8. Maintenance checks added in v0.0.8.1.
 
