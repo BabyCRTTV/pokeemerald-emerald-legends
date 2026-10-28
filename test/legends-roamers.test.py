@@ -75,6 +75,9 @@ int main(void){
   struct Roamer retained=*ROAMER(0);SetRoamerInactive(1);assert(!memcmp(&retained,ROAMER(0),28));flash=sb3;
   for(int i=0;i<8;i++){LegendsRoamerInit(FALSE);InitRoamer();assert(!ROAMER(1)->active&&created==2&&!memcmp(&flash,&sb3,sizeof(sb3)));}
  }
+ for(int choice=0;choice<2;choice++){
+  begin(choice);seen=1;LegendsRoamerInit(FALSE);assert(!EON->unlocked&&!ROAMER(1)->active&&created==1);
+ }
  for(int choice=0;choice<2;choice++)for(int active=0;active<2;active++)for(int wasSeen=0;wasSeen<2;wasSeen++){
   begin(choice);ROAMER(0)->active=active;seen=wasSeen;struct Roamer original=*ROAMER(0);memset(EON,0xA5,sizeof(*EON));
   LegendsRoamerInit(FALSE);assert(!memcmp(&original,ROAMER(0),28));assert(!!EON->unlocked==(!active||wasSeen));

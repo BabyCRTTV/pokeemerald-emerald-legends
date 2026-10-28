@@ -58,7 +58,7 @@ void LegendsRoamerInit(bool32 newGame)
     }
     // Legacy saves have no exact battle-history bit. Preserve their native slot,
     // and backfill a completed roamer or a previously seen selected Eon once.
-    if (!newGame && !EON->unlocked && FlagGet(FLAG_LATIOS_OR_LATIAS_ROAMING)
+    if (!newGame && !valid && !EON->unlocked && FlagGet(FLAG_LATIOS_OR_LATIAS_ROAMING)
         && IsEon(ROAMER(0)->species)
         && (!ROAMER(0)->active || GetSetPokedexFlag(SpeciesToNationalPokedexNum(ROAMER(0)->species), FLAG_GET_SEEN)))
         UnlockEonPartner();
