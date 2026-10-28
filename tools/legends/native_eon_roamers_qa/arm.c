@@ -36,7 +36,7 @@ void qa(void)
   struct Roamer first=*GetRoamer(0);struct LegendsEonSave second=gSaveBlock3Ptr->eon;
   u32 prefix=Hash(gSaveBlock3Ptr,992),party=Hash(gParties[B_TRAINER_PLAYER],sizeof(gParties[B_TRAINER_PLAYER]));
   if(b[0]==2)memset(&gSaveBlock3Ptr->eon,0xA5,sizeof(gSaveBlock3Ptr->eon));
-  b[5]=TrySavingData(SAVE_NORMAL);memset(gSaveBlock3Ptr,0,sizeof(*gSaveBlock3Ptr));b[6]=LoadGameSave(SAVE_NORMAL);LegendsRoamerInit(FALSE);
+  b[5]=TrySavingData(SAVE_NORMAL);prefix=Hash(gSaveBlock3Ptr,992);memset(gSaveBlock3Ptr,0,sizeof(*gSaveBlock3Ptr));b[6]=LoadGameSave(SAVE_NORMAL);LegendsRoamerInit(FALSE);
   b[7]=Hash(&first,sizeof(first))==Hash(GetRoamer(0),sizeof(first));b[8]=prefix==Hash(gSaveBlock3Ptr,992);b[9]=party==Hash(gParties[B_TRAINER_PLAYER],sizeof(gParties[B_TRAINER_PLAYER]));
   b[10]=b[0]==2?!gSaveBlock3Ptr->eon.unlocked:Hash(&second,sizeof(second))==Hash(&gSaveBlock3Ptr->eon,sizeof(second));
   b[11]=CheckBagHasItem(ITEM_ORAN_BERRY,11)&&LegendsGetActiveSeason()==LEGENDS_AUTUMN;
