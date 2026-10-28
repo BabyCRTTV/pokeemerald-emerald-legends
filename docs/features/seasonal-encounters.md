@@ -384,7 +384,7 @@ Fishing/Dive, Mirage Island’s Wynaut grass/appearance/Liechi Berry, Sky Pillar
 
 Twelve new Surf tables add 24 distinct aquatic visitors, repeating no earlier seasonal/grotto species. Tentacool remains60%, Wingull 4% and Pelipper 1% in every season; visitors use 30%/5%. Native five-slot weights, per-slot levels and encounter rate 4 remain exact. Visitors retain levels 10–30 and 15–25, all day, using the existing committed active season.
 
-Currents, map/collision geometry, Route 134’s Dive warp, underwater encounters, Sealed Chamber Dig/first-Wailord/last-Relicanth checks and one-time doors remain unchanged. No new Wailord, Relicanth or Feebas sources were added. Fishing/Feebas tiles, earlier tables, approved artwork/wardrobe and save layouts/IDs remain unchanged; no migration is needed.
+Currents, map/collision geometry, Route 134’s Dive warp, underwater encounters, Sealed Chamber Dig/first-Wailord/last-Relicanth checks and one-time doors remain unchanged. New wild rosters do not include Wailord, Relicanth or Feebas. Fishing/Feebas tiles, earlier tables, approved artwork/wardrobe and save layouts/IDs remain unchanged; no migration is needed.
 
 ### Route 132 — Surf
 
@@ -413,7 +413,7 @@ Currents, map/collision geometry, Route 134’s Dive warp, underwater encounters
 | Autumn | Magikarp | Milotic |
 | Winter | Dracovish | Arctovish |
 
-[Source/compatibility receipt](../qa/seasonal-routes-v0.0.74-source.json). Host checks passed; candidate/native/browser/build/patch and publication gates remain pending.
+[Source/compatibility receipt](../qa/seasonal-routes-v0.0.74-source.json). Host and candidate project/browser/native/both-build/dual-decoder checks passed; all 288 native scenarios completed. The four native animation-phase differences in older Route 130 captures are recorded in QA; no artwork/layout changed. Production/publication checks remain pending.
 
 ## DexNav silhouettes
 

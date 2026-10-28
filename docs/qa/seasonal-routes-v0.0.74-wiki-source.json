@@ -30,7 +30,7 @@
     "map-kanto.png": "bc89ff01cbc5dca3fe849d2c0d872c1e98b57a450663d72a7a210d3645b495f0"
   },
   "reader_checks": "passed136seasonal/34union/412walkthrough",
-  "browser_checks": "pending",
+  "browser_checks": "passed",
   "viewport_widths": [
     320,
     360,
@@ -46,5 +46,11 @@
     960,
     1024,
     1280
-  ]
+  ],
+  "browser_run": 40603769605,
+  "browser_artifact": 12779851496,
+  "browser_artifact_sha256": "15ee2740891f35bdb4a3c2aa9f2ac9dfe034a0be00a34f64efc1c93e17e34705",
+  "captures_inspected": {
+    "seasonal-412.png": "8f5a4fa93c7bc34528011d354e107ee0e4156f6e7144832a200ed7aa38c316e9"
+  }
 }

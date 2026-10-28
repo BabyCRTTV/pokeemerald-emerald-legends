@@ -299,6 +299,21 @@
     }
   },
   "distinct_new_visitors": 24,
-  "native_gameplay_status": "pending",
-  "compatibility": "Only ordinary Surf const tables and version labels changed production game inputs. Currents, collision/maps, Dive, Sealed Chamber first-Wailord/last-Relicanth/Dig checks and one-time flags, Feebas fishing tiles, saves/readers/IDs and approved artwork remain unchanged."
+  "native_gameplay_status": "passed candidate40603769671:288cases/73728creations",
+  "compatibility": "Only ordinary Surf const tables and version labels changed production game inputs. Currents, collision/maps, Dive, Sealed Chamber first-Wailord/last-Relicanth/Dig checks and one-time flags, Feebas fishing tiles, saves/readers/IDs and approved artwork remain unchanged.",
+  "protected_related_source_sha256": {
+    "src/field_player_avatar.c": "36814240654271a1f8ec81c45212bd5d8168706d5818a228223bcfaf903c97d8",
+    "src/metatile_behavior.c": "7c1fec6697c1c2072d01b8b075e98831e06c1f7a56912a5ac8185bcfa8e8319a",
+    "src/field_control_avatar.c": "873e3af07f9d66bc2b953e44159088264c6db7dfaff72dca32aa0ec99cb7fe3d",
+    "src/wild_encounter.c": "1bef0aceb6cfc31214ae1b9b4e88def7ddd78376152e36e1101bf885d1a7061d",
+    "src/braille_puzzles.c": "9e6152ccbec7b7ffe167e349e9d99f0a5742717bc861bce23bd32c49a1ab3f93",
+    "data/maps/Route132/map.json": "6bcf439a5824caf31d8dcae7c659ffc227ece5d81172dc30e1c5f6ee2a3c39d0",
+    "data/maps/Route133/map.json": "4615d81ab7be9816014ce780a130e1a0c63c2ab0c4754f0b92520515d58ad867",
+    "data/maps/Route134/map.json": "60c8f0943e0a929d78903cae6dab4b7b67d4856ca20de4b4f6bbaeaa81253744",
+    "data/maps/Route132/scripts.inc": "2e904d2d21a9c7a95f3983183d2c97e34fa1f7af6aa7fe4482014998039e8133",
+    "data/maps/Route133/scripts.inc": "ba1caab417ee2a2ff3cd865e021189f43405c82b3707472af8ff1b396e85f0a0",
+    "data/maps/Route134/scripts.inc": "5cb633d5ad1b72dd66568413b8edb3b6d6979dd8944f3f8b338c3073bed6c3e2",
+    "data/maps/SealedChamber_OuterRoom/scripts.inc": "53c2220f823e78ac6dc3e57cd31f78a9de7ac870f219c78b65b61c37eea2b450",
+    "data/maps/SealedChamber_InnerRoom/scripts.inc": "225cb3062a51362f927e293cd262ae29ac49a05e73d079946ec4e37398b22d98"
+  }
 }
