@@ -8,6 +8,9 @@ Owner requested the opposite Eon after encountering the TV-selected one, preserv
 
 Host state/legacy/sector tests passed. Native Debug/Release battle/flash fixtures are added but pending CI; builds/independent BPS/merge/production/live bytes remain required. No published v0.0.75 claim yet. Approved artwork, maps, wardrobe, all seasonal tables, IDs and legacy readers are retained. AGENTS reviewed; no durable rule change. Resume current candidate and investigate CI failures; do not redo v0.0.74 or unrelated backlog.
 
+
+Native checkpoint: Debug run 40623148581/artifact 12788705640 confirmed Red-first escape, independent opposite capture, both Eons caught in one save and exact actual flash round-trips. The first knockout case remains blocked; do not call native QA complete or publish. Fixture corrections already made: compare prefix after normal save journal/clock updates; restore field callback before scheduling the battle; use native Shadow Tag/legal Shadow Ball and explicit Fight inputs. Diagnostic candidate 1c3e3415/run 40623933002 now retains failure-frame, callback and symbol evidence to distinguish test control from battle logic. Game code is unchanged since 238436e7; seen-flag backfill is limited to absent/invalid extension initialization. Native Blue-first/KO and normal Release Continue gates remain unverified. Resume this candidate/PR #94, inspect the diagnostic artifact and resolve the failure; do not redo v0.0.74 or publish while blocked.
+
 ## v0.0.74 Routes 132–134 — published and verified (27 October 2026)
 
 **Model: GPT-6 (Codex) | Reasoning: preserve current-maze navigation and Sealed Chamber access while appending native Surf variety.**
