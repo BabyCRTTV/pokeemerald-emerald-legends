@@ -1,0 +1,263 @@
+{
+  "version": "0.0.75",
+  "model": "GPT-6 (Codex)",
+  "verified_at_UTC": "2026-10-28T04:37:16Z",
+  "merge_commit": "e86df95e44cf71521f205fef21168c0df7aa5af9",
+  "reviewed_commit": "76903af18b1e67acb2660328d78d06cf6ff40ad9",
+  "reviewed_tree": "22a5291d3aa9a1788696958ffacd510ab00c700a",
+  "patch_commit": "6bdfa65334c9b68f991bee052fd4d4c3e0a57198",
+  "patch_Pages_run": 40629591178,
+  "Windows_manifest_commit": "07f2b6df8aa4204b610f5443fb28129645fef370",
+  "production_runs": [
+    {
+      "id": 40628689748,
+      "name": "Legends project checks",
+      "head_sha": "e86df95e44cf71521f205fef21168c0df7aa5af9",
+      "conclusion": "success"
+    },
+    {
+      "id": 40628689620,
+      "name": "Check Legends Wiki",
+      "head_sha": "e86df95e44cf71521f205fef21168c0df7aa5af9",
+      "conclusion": "success"
+    },
+    {
+      "id": 40628689517,
+      "name": "Build Legends Wiki Android APK",
+      "head_sha": "e86df95e44cf71521f205fef21168c0df7aa5af9",
+      "conclusion": "success"
+    },
+    {
+      "id": 40628689486,
+      "name": "Build Legends Wiki Windows Installer",
+      "head_sha": "e86df95e44cf71521f205fef21168c0df7aa5af9",
+      "conclusion": "success"
+    },
+    {
+      "id": 40628689473,
+      "name": "Build release patches",
+      "head_sha": "e86df95e44cf71521f205fef21168c0df7aa5af9",
+      "conclusion": "success"
+    },
+    {
+      "id": 40628689606,
+      "name": "Legends mGBA gameplay smoke",
+      "head_sha": "e86df95e44cf71521f205fef21168c0df7aa5af9",
+      "conclusion": "success"
+    },
+    {
+      "id": 40629591178,
+      "name": "pages build and deployment",
+      "head_sha": "6bdfa65334c9b68f991bee052fd4d4c3e0a57198",
+      "conclusion": "success"
+    }
+  ],
+  "production_native_artifact": 12791361254,
+  "production_native_artifact_sha256": "41f3fd63c558d97e40c0b1fbcdeeff519c6b6be4cd3e6a7cdf2565ce905f57e8",
+  "actual_live_files": [
+    {
+      "path": "changelog.html",
+      "Git_blob_sha1": "52ffaa9e635b1a9f3ba139f9e22e1324daffb6ed",
+      "sha256": "9113ac0b77adc8bf5a6a07a7aae7648ddcd29484604e73e906fe781ac84616db",
+      "bytes": 126069,
+      "HTTP": 200
+    },
+    {
+      "path": "downloads/Pokemon-Emerald-Legends-v0.0.75-debug.bps",
+      "Git_blob_sha1": "97ffe5ab962dca984aebe4e598cb774ce9d7b042",
+      "sha256": "d665af96901eca05bb42fb18517ed0d4924fb294f2f74806fbddd9ca724e9f71",
+      "bytes": 17299468,
+      "HTTP": 200,
+      "source_CRC32": "1f1c08fb",
+      "patch_CRC_passed": true,
+      "target_CRC32": "b8b9a6ca"
+    },
+    {
+      "path": "downloads/Pokemon-Emerald-Legends-v0.0.75.bps",
+      "Git_blob_sha1": "5486a853800354fdcfcda38949cc3422ff2fb927",
+      "sha256": "5285292bf816586d2ae74507e6744b29b3b3d40c2769c49beb73fc11b7ba353f",
+      "bytes": 17466996,
+      "HTTP": 200,
+      "source_CRC32": "1f1c08fb",
+      "patch_CRC_passed": true,
+      "target_CRC32": "3b8b0bb0"
+    },
+    {
+      "path": "downloads/SHA256SUMS.txt",
+      "Git_blob_sha1": "125baa2159d010f09451ebf2b67c937788a1a77a",
+      "sha256": "3eac564508b2db09b16062b89e88d455f3c55b8d7a0e7279e629eb9c1c7a6d95",
+      "bytes": 412,
+      "HTTP": 200
+    },
+    {
+      "path": "features/eon-roamers.md",
+      "Git_blob_sha1": "1f1bdffaf6978eba649ba9d0c521cc0bc937171c",
+      "sha256": "5839b026abdd24d2ea62ef1359559d7ddf0d402efae50726473a2b79c56e1aad",
+      "bytes": 2244,
+      "HTTP": 200
+    },
+    {
+      "path": "index.html",
+      "Git_blob_sha1": "6cf53ee448fb81023c16f4b012493b13bd05b752",
+      "sha256": "9582f42c887c4da210032580fa4d3927317a889cdbb5210acd3e2f4ba47d496e",
+      "bytes": 3538,
+      "HTTP": 200
+    },
+    {
+      "path": "patcher.html",
+      "Git_blob_sha1": "028f5b4229ba8da3906d87fadf73127b8de76804",
+      "sha256": "422057e568f724c87b2c296d649f39a9e3bcae0ced32f5b4bb28754bd24b5e7f",
+      "bytes": 2675,
+      "HTTP": 200
+    },
+    {
+      "path": "patcher.js",
+      "Git_blob_sha1": "919d7a4c96aedc5894d569b46ada7b00d0db4ecb",
+      "sha256": "9c3282f54a768cfe8efbd98cb70fbf0f74d2f14c4dc4446b01ea93640a67179f",
+      "bytes": 9353,
+      "HTTP": 200
+    },
+    {
+      "path": "wiki/dex-data.json",
+      "Git_blob_sha1": "8542027d8aebe94a4f39af32a64c1cf1a86fd932",
+      "sha256": "5a928b6f32cb6378f90ad9005df8b94c0d95fdf966de432f2d4a037d44f61830",
+      "bytes": 843410,
+      "HTTP": 200
+    },
+    {
+      "path": "wiki/dex-portrait-sources.json",
+      "Git_blob_sha1": "e0b3c0cfdfc775d9f2f93a1ccf42e6ce1f0d932c",
+      "sha256": "d06da7c4d57223c12669c90103b78093b8dee2bcccc4b4a06b17c90ff4e9b77a",
+      "bytes": 342,
+      "HTTP": 200
+    },
+    {
+      "path": "wiki/dex-profiles.js",
+      "Git_blob_sha1": "9c2f9a20058cff3ef3e918f2f4088e6bde984b1c",
+      "sha256": "c3c039cdc2223d0f0e60814b0ce3e5b51fefea6e4cf013a74e2a1c66cdbd4b7a",
+      "bytes": 178251,
+      "HTTP": 200
+    },
+    {
+      "path": "wiki/dex-sprite-atlas.js",
+      "Git_blob_sha1": "6816a85159fdc0108203f1d54ee79e86d2aced72",
+      "sha256": "f2c0f0bdf7a1b27e35caefa0d59df990f49a1a871f64bea685a1a7ef162f9340",
+      "bytes": 18786,
+      "HTTP": 200
+    },
+    {
+      "path": "wiki/dex-sprite-atlas.webp",
+      "Git_blob_sha1": "dd91aded78d44fc6aea679a678a0274edb93add1",
+      "sha256": "55bdf244830f30f9aeb5eeddb8f628b6885eccb2e95b171dac14df9b529190df",
+      "bytes": 153584,
+      "HTTP": 200
+    },
+    {
+      "path": "wiki/dex.html",
+      "Git_blob_sha1": "d7f1b3e39f75084cd37d4ad64e6813247f44a5c0",
+      "sha256": "8f045573ae571a2e6ab5386f4e1c4a58f140b9fc18b34f07b348e0a9f7daff41",
+      "bytes": 10572,
+      "HTTP": 200
+    },
+    {
+      "path": "wiki/index.html",
+      "Git_blob_sha1": "7bc35a1a90b7c609ca33c943c5135f4969027d24",
+      "sha256": "7efe131474b37be963e640e361af9c49354beba604ac5bffd6698f8a02a9029d",
+      "bytes": 12798,
+      "HTTP": 200
+    },
+    {
+      "path": "wiki/map-hoenn.png",
+      "Git_blob_sha1": "10f2d26f42c381c2af7f51a7c835b4b3b190107f",
+      "sha256": "6abac3457dd2c588173b001c7f5ad37b58b4429ff50d3d54373f2fe868e5f625",
+      "bytes": 6757,
+      "HTTP": 200
+    },
+    {
+      "path": "wiki/map-kanto.png",
+      "Git_blob_sha1": "241cf5864b38426d1cc75ebfa70b865afdcbcac3",
+      "sha256": "bc89ff01cbc5dca3fe849d2c0d872c1e98b57a450663d72a7a210d3645b495f0",
+      "bytes": 3728,
+      "HTTP": 200
+    },
+    {
+      "path": "wiki/walkthrough-maps.json",
+      "Git_blob_sha1": "435e4a43b3fbacad83cb2aa95dc7178621098991",
+      "sha256": "e1914202128c65862a06923f64be730a34e3c40ac235e7c9a6e38f536c882c49",
+      "bytes": 115267,
+      "HTTP": 200
+    }
+  ],
+  "limits": "Controlled Debug battle/flash and normal unmodified Release Continue fixtures; not authentic historical-owner saves, full TV cutscene replay, native Release Eon hunts, uninterrupted story/balance, physical browser file picker or Pizza Boy testing.",
+  "production_native": {
+    "Debug_ROM_sha256": "8f9b0365c2c71edad917c9b7107367d7377522e2b8c1787d0b6f1bfe748a6f50",
+    "Release_ROM_sha256": "2a45d33966dcf131385e21709712de419e7117c61832d6ca163b7b73359d2bc8",
+    "exact_candidate_ROM_matches": true,
+    "six_Debug_Eon_battle_flash_cases_passed": true,
+    "ten_normal_Release_Continue_fixtures_passed": true,
+    "seasonal_scenarios": 288,
+    "wild_creations": 73728,
+    "normal_Release_boat_wardrobe_grotto_passed": true,
+    "codec_verification": {
+      "asset": "graphics/battle_anims/backgrounds/psychic_terrain.png",
+      "raw_SHA256": "635681cae116a817b35b4510cd90b0d6ce3d9deff4925cec4c803ad60fd3e067",
+      "PNG_SHA256": "576afb6c87d8e655a7b6300c14730aa6efaf7b9171c33f5bd2b7d9846d4b5721",
+      "canonical_gbagfx": true,
+      "decoded_pixels_identical": true,
+      "results": [
+        {
+          "codec": "smol",
+          "mode": 6,
+          "encoded_bytes": 3920,
+          "scratch_bytes": 12152,
+          "exact_raw_bytes": true
+        },
+        {
+          "codec": "fastSmol",
+          "mode": 1,
+          "encoded_bytes": 7372,
+          "scratch_bytes": 0,
+          "exact_raw_bytes": true
+        }
+      ]
+    },
+    "verification_file_sha256": {
+      "eon-roamers-qa": "1c9c4e5513f512a0194956c1b69f66a5bc1279e194154af3642af1f7d5baabe1",
+      "eon-roamers-release-qa": "85b478f11b1307134c3b8a1f82d3a9a70c01f9a23b00a5d539426d062a81c3a9",
+      "seasonal-encounters-qa": "ff7ac1502fa4bd76f327e8f8477d3e6741104ac5f41415b48cd096bbdc4d7906",
+      "ember-return-release-qa": "e3aace04cd78e774289a0872a12e830a06d35b72f670e5f9ad3382a9efd643b1",
+      "bedroom-release-qa": "2848ba7c12b585b75e7a6154a0b1f0c26b4e8f7bdaaa4c3145f6b3211aef2426",
+      "grotto-encounters-release": "6f3e51eba4865323767e09061d264ab89c258512f6b9c977d03d337cc5b31d78"
+    }
+  },
+  "independent_patch_reconstruction": {
+    "passed": true,
+    "source_SHA1": "f3ae088181bf583e55daf962a92bb46f4f1d07b7",
+    "decoder": "Actual committed docs/patcher.js applyBps executed in Node VM; independent of Floating IPS",
+    "decoder_sha256": "9c3282f54a768cfe8efbd98cb70fbf0f74d2f14c4dc4446b01ea93640a67179f",
+    "verifier_sha256": "bbb6057cadba5a72d14e73c1f75cc57563c121eebd68e0ce97869fd18a110d8b",
+    "results": {
+      "Pokemon-Emerald-Legends-v0.0.75.bps": {
+        "patch_sha256": "5285292bf816586d2ae74507e6744b29b3b3d40c2769c49beb73fc11b7ba353f",
+        "target_sha256": "2a45d33966dcf131385e21709712de419e7117c61832d6ca163b7b73359d2bc8",
+        "target_bytes": 33554432,
+        "exact_native_ROM_match": true
+      },
+      "Pokemon-Emerald-Legends-v0.0.75-debug.bps": {
+        "patch_sha256": "d665af96901eca05bb42fb18517ed0d4924fb294f2f74806fbddd9ca724e9f71",
+        "target_sha256": "8f9b0365c2c71edad917c9b7107367d7377522e2b8c1787d0b6f1bfe748a6f50",
+        "target_bytes": 33554432,
+        "exact_native_ROM_match": true
+      }
+    },
+    "limits": "Byte-decoder test; physical browser file-picker/download and Pizza Boy execution are separate checks."
+  },
+  "wiki": {
+    "gameVersion": "0.0.75",
+    "revision": "1.6.2",
+    "sourceCommit": "c7f99550ac91b7b142bc9efd4692a0eb148b5008",
+    "species": 1028,
+    "maps": 160,
+    "approved_art_unchanged": true
+  }
+}
