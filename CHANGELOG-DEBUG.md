@@ -8,6 +8,7 @@ This is the developer-facing history for the **Debug** build. Shared Legends cha
 - Kept both roamers independent, retaining their own identities, HP, status and caught/defeated states without respawning resolved Pokémon.
 - Preserved the original saved roamer and added compatible one-time initialization for the second; existing post-TV saves with a resolved or previously seen chosen Eon received the opposite roamer.
 - Preserved seasonal encounters, artwork, wardrobe, maps and story requirements.
+- Prevented a Psychic Terrain battle-background decompression failure by changing only its lossless encoding, retaining identical approved pixels and the existing heap size.
 
 ## [0.0.74] - 2026-10-27
 

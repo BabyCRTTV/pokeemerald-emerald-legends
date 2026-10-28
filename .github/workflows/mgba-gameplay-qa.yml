@@ -75,7 +75,7 @@ jobs:
         run: python3 tools/legends/native_visual_repairs_qa/run.py --output build/visual-repairs-qa --mgba-prefix /usr
       - name: Build unmodified Legends Release ROM and ELF
         run: make -j"$(nproc)" release
-      - name: Exercise native Release dual Eon battles and flash persistence
+      - name: Exercise normal Release Continue with independent Eon state fixtures
         run: python3 tools/legends/native_eon_roamers_qa/release.py
       - name: Exercise native Release Ember boat return, walking and reboarding
         run: python3 tools/legends/native_ember_return_qa/release.py

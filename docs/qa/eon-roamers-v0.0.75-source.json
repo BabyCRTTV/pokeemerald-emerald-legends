@@ -40,5 +40,72 @@
       "unchanged": true
     }
   ],
-  "legacy_seen_fallback_only_on_absent_or_invalid_extension": true
+  "legacy_seen_fallback_only_on_absent_or_invalid_extension": true,
+  "approved_psychic_background_sources": [
+    {
+      "path": "graphics/battle_anims/backgrounds/psychic_terrain.png",
+      "SHA256": "576afb6c87d8e655a7b6300c14730aa6efaf7b9171c33f5bd2b7d9846d4b5721",
+      "canonical_LF_palette": false,
+      "unchanged": true
+    },
+    {
+      "path": "graphics/battle_anims/backgrounds/psychic_terrain.pal",
+      "SHA256": "cd182bcc11b296f730daa50bf065967dea07017995aefe1d6dd0e2b2e1585b72",
+      "canonical_LF_palette": true,
+      "unchanged": true
+    },
+    {
+      "path": "graphics/battle_anims/backgrounds/psychic_terrain.bin",
+      "SHA256": "1a78f9e8e74eb366eaccca1c7e046a5eb0df0bbafb1a6d9aec590568321184f4",
+      "canonical_LF_palette": false,
+      "unchanged": true
+    }
+  ],
+  "encoding_repair": {
+    "asset": "graphics/battle_anims/backgrounds/psychic_terrain.png",
+    "PNG_SHA256": "576afb6c87d8e655a7b6300c14730aa6efaf7b9171c33f5bd2b7d9846d4b5721",
+    "raw_bytes": 14080,
+    "conversion": "Canonical native gbagfx raw bytes and both canonical compressor/decoder formats matched exactly in CI.",
+    "results": [
+      {
+        "codec": "smol",
+        "mode": 6,
+        "encoded_bytes": 3920,
+        "temporary_heap_bytes": 12152,
+        "decoded_SHA256": "635681cae116a817b35b4510cd90b0d6ce3d9deff4925cec4c803ad60fd3e067",
+        "exact_raw_bytes": true
+      },
+      {
+        "codec": "fastSmol",
+        "mode": 1,
+        "encoded_bytes": 7372,
+        "temporary_heap_bytes": 0,
+        "decoded_SHA256": "635681cae116a817b35b4510cd90b0d6ce3d9deff4925cec4c803ad60fd3e067",
+        "exact_raw_bytes": true
+      }
+    ],
+    "native_verification": {
+      "asset": "graphics/battle_anims/backgrounds/psychic_terrain.png",
+      "raw_SHA256": "635681cae116a817b35b4510cd90b0d6ce3d9deff4925cec4c803ad60fd3e067",
+      "PNG_SHA256": "576afb6c87d8e655a7b6300c14730aa6efaf7b9171c33f5bd2b7d9846d4b5721",
+      "canonical_gbagfx": true,
+      "decoded_pixels_identical": true,
+      "results": [
+        {
+          "codec": "smol",
+          "mode": 6,
+          "encoded_bytes": 3920,
+          "scratch_bytes": 12152,
+          "exact_raw_bytes": true
+        },
+        {
+          "codec": "fastSmol",
+          "mode": 1,
+          "encoded_bytes": 7372,
+          "scratch_bytes": 0,
+          "exact_raw_bytes": true
+        }
+      ]
+    }
+  }
 }
