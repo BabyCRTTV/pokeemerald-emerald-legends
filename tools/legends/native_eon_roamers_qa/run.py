@@ -39,7 +39,7 @@ def main():
     private = out/'PRIVATE-QA.gba'; private.write_bytes(rom)
     run(['cc',str(S/'host.c'),'-I'+str(prefix/'include'),'-I'+str(prefix/'include/x86_64-linux-gnu'),
          '-L'+str(prefix/'lib/x86_64-linux-gnu'),'-lmgba','-o',str(out/'host')],'host-build.log')
-    run([str(out/'host'),str(private),str(out),hex(symbols(args.elf)['gMain']),hex(symbols(out/'arm.elf')['qa']),hex(symbols(args.elf)['gBattlerControllerFuncs'])]+[hex(int(line.split()[0],16)) for line in subprocess.check_output(['arm-none-eabi-nm',str(args.elf)],env=env,text=True).splitlines() if line.endswith(' t HandleInputChooseAction')]+[hex(symbols(args.elf)['gBattleMainFunc'])],'emulator.log')
+    run([str(out/'host'),str(private),str(out),hex(symbols(args.elf)['gMain']),hex(symbols(out/'arm.elf')['qa']),hex(symbols(args.elf)['gBattlerControllerFuncs'])]+[hex(int(line.split()[0],16)) for line in subprocess.check_output(['arm-none-eabi-nm',str(args.elf)],env=env,text=True).splitlines() if line.endswith(' t HandleInputChooseAction')]+[hex(symbols(args.elf)[name]) for name in ['gBattleMainFunc','gHeap','sDataPtr']],'emulator.log')
     assert args.rom.read_bytes()==source
     for raw in list(out.glob('*.rgba')):
         Image.frombytes('RGBA',(240,160),raw.read_bytes()).convert('RGB').save(raw.with_suffix('.png'))
