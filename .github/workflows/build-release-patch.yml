@@ -1,10 +1,12 @@
 name: Build release patches
 
+# One automatic entry point; ROMs and ELFs stay in the private reusable job.
 on:
   push:
-    branches: [ master ]
-    paths:
+    branches: [master]
+    paths: &verified-inputs
       - '.github/workflows/build-release-patch.yml'
+      - '.github/workflows/mgba-gameplay-qa.yml'
       - 'VERSION'
       - 'src/**'
       - 'include/**'
@@ -13,162 +15,123 @@ on:
       - 'sound/**'
       - 'maps/**'
       - 'scripts/**'
+      - 'asm/**'
       - 'Makefile'
-      - 'make_tools.mk'
+      - '*.mk'
+      - '*.ld'
+      - 'charmap.txt'
+      - 'check_history.sh'
+      - 'tools/legends/mgba_gameplay_smoke.c'
+      - 'tools/legends/native_*/**'
+      - 'tools/legends/shared_build.py'
+      - 'tools/legends/build_verified_patches.sh'
+      - 'tools/legends/verify_bps_with_browser.cjs'
+      - 'docs/patcher.js'
+      - 'test/mgba-gameplay-smoke.py'
+      - 'tools/bin2c/**'
+      - 'tools/gbafix/**'
+      - 'tools/gbagfx/**'
+      - 'tools/jsonproc/**'
+      - 'tools/mapjson/**'
+      - 'tools/mid2agb/**'
+      - 'tools/preproc/**'
+      - 'tools/ramscrgen/**'
+      - 'tools/rsfont/**'
+      - 'tools/scaninc/**'
+      - 'tools/trainerproc/**'
+      - 'tools/compresSmol/**'
+      - 'tools/wav2agb/**'
+      - 'tools/wild_encounters/**'
+      - 'tools/misc/**'
+      - 'tools/learnset_helpers/**'
   pull_request:
-    branches: [ master ]
-    paths:
-      - '.github/workflows/build-release-patch.yml'
-      - 'VERSION'
-      - 'src/**'
-      - 'include/**'
-      - 'data/**'
-      - 'graphics/**'
-      - 'sound/**'
-      - 'maps/**'
-      - 'scripts/**'
-      - 'Makefile'
-      - 'make_tools.mk'
+    branches: [master]
+    paths: *verified-inputs
   workflow_dispatch:
+    inputs:
+      publish_patches:
+        description: Publish after native QA and both independent decoders pass
+        type: boolean
+        default: true
+      compare_serial:
+        description: Also run the full serial/parallel seasonal comparison
+        type: boolean
+        default: false
 
 permissions:
-  contents: write
+  contents: read
 
 concurrency:
-  group: legends-release-patch-${{ github.ref }}
-  cancel-in-progress: true
+  group: legends-pipeline-${{ github.workflow }}-${{ github.event.pull_request.number || github.sha }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
 jobs:
-  build-patches:
+  verify:
     if: github.actor != 'github-actions[bot]'
-    runs-on: ubuntu-24.04
-    timeout-minutes: 55
+    uses: ./.github/workflows/mgba-gameplay-qa.yml
+    permissions:
+      contents: read
+    with:
+      verify_patches: true
+      compare_serial: ${{ inputs.compare_serial == true }}
 
+  build-patches:
+    needs: verify
+    if: ${{ github.ref == 'refs/heads/master' && (github.event_name == 'push' || (github.event_name == 'workflow_dispatch' && inputs.publish_patches)) }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 8
+    permissions:
+      contents: write
     steps:
-      - name: Checkout Emerald Legends
+      - name: Checkout the verified source revision
         uses: actions/checkout@v4
         with:
+          ref: ${{ needs.verify.outputs.source_commit }}
           fetch-depth: 1
-
-      - name: Install build dependencies
-        run: |
-          sudo apt-get -o Acquire::Retries=3 update
-          sudo apt-get -o Acquire::Retries=3 install -y --no-install-recommends \
-            build-essential \
-            binutils-arm-none-eabi \
-            gcc-arm-none-eabi \
-            libnewlib-arm-none-eabi \
-            git \
-            libpng-dev \
-            python3 \
-            g++
-
-      - name: Build Emerald Legends Debug
-        run: make -j"$(nproc)"
-
-      - name: Build Emerald Legends Release
-        run: make -j"$(nproc)" release
-
-      - name: Build matching vanilla Pokémon Emerald
-        run: |
-          git clone --depth 1 https://github.com/pret/pokeemerald.git /tmp/pokeemerald-vanilla
-          git clone --depth 1 https://github.com/pret/agbcc.git /tmp/agbcc
-          cd /tmp/agbcc
-          ./build.sh
-          ./install.sh /tmp/pokeemerald-vanilla
-          make -C /tmp/pokeemerald-vanilla -j"$(nproc)"
-
-      - name: Verify vanilla ROM identity
-        run: |
-          echo "f3ae088181bf583e55daf962a92bb46f4f1d07b7  /tmp/pokeemerald-vanilla/pokeemerald.gba" | sha1sum -c -
-
-      - name: Build Floating IPS
-        run: |
-          git clone --depth 1 https://github.com/bates64/flips.git /tmp/flips
-          cd /tmp/flips
-          TARGET=cli make -j"$(nproc)"
-
-      - name: Create and verify Release and Debug BPS patches
-        id: verified-patches
-        run: |
-          VERSION="$(tr -d '\r\n' < VERSION)"
-          RELEASE_PATCH="docs/downloads/Pokemon-Emerald-Legends-v${VERSION}.bps"
-          DEBUG_PATCH="docs/downloads/Pokemon-Emerald-Legends-v${VERSION}-debug.bps"
-
-          mkdir -p docs/downloads
-
-          /tmp/flips/flips --create --bps \
-            /tmp/pokeemerald-vanilla/pokeemerald.gba \
-            pokeemerald-release.gba \
-            "$RELEASE_PATCH"
-
-          /tmp/flips/flips --create --bps \
-            /tmp/pokeemerald-vanilla/pokeemerald.gba \
-            pokeemerald.gba \
-            "$DEBUG_PATCH"
-
-          /tmp/flips/flips --apply \
-            "$RELEASE_PATCH" \
-            /tmp/pokeemerald-vanilla/pokeemerald.gba \
-            /tmp/emerald-legends-release-verified.gba
-
-          /tmp/flips/flips --apply \
-            "$DEBUG_PATCH" \
-            /tmp/pokeemerald-vanilla/pokeemerald.gba \
-            /tmp/emerald-legends-debug-verified.gba
-
-          cmp /tmp/emerald-legends-release-verified.gba pokeemerald-release.gba
-          cmp /tmp/emerald-legends-debug-verified.gba pokeemerald.gba
-
-          sha256sum "$RELEASE_PATCH" "$DEBUG_PATCH" > docs/downloads/SHA256SUMS.txt
-          sha256sum pokeemerald-release.gba pokeemerald.gba >> docs/downloads/SHA256SUMS.txt
-          printf 'release=%s\ndebug=%s\n' "$RELEASE_PATCH" "$DEBUG_PATCH" >> "$GITHUB_OUTPUT"
-
-      - name: Independently decode both patches with the shipped browser engine
-        run: |
-          VERSION="$(tr -d '\r\n' < VERSION)"
-          node tools/legends/verify_bps_with_browser.cjs \
-            /tmp/pokeemerald-vanilla/pokeemerald.gba \
-            "docs/downloads/Pokemon-Emerald-Legends-v${VERSION}.bps" \
-            "docs/downloads/Pokemon-Emerald-Legends-v${VERSION}-debug.bps" \
-            pokeemerald-release.gba pokeemerald.gba build/browser-decoder-verification.json
-
-      - name: Retain verified pull-request candidate patches
-        if: github.event_name == 'pull_request'
-        uses: actions/upload-artifact@v4
+      - name: Download verified patches and receipts from this run
+        uses: actions/download-artifact@v4
         with:
           name: legends-candidate-patches
-          path: |
-            ${{ steps.verified-patches.outputs.release }}
-            ${{ steps.verified-patches.outputs.debug }}
-            docs/downloads/SHA256SUMS.txt
-            build/browser-decoder-verification.json
-          if-no-files-found: error
-
-      - name: Commit patches to site
-        if: github.event_name != 'pull_request'
+          path: build/verified-publication
+      - name: Publish only verified patches while preserving concurrent bot manifests
+        env:
+          EXPECTED_MANIFEST: ${{ needs.verify.outputs.manifest_sha256 }}
+          EXPECTED_SOURCE: ${{ needs.verify.outputs.source_commit }}
+          EXPECTED_FINGERPRINT: ${{ needs.verify.outputs.source_fingerprint }}
         run: |
-          VERSION="$(tr -d '\r\n' < VERSION)"
-          RELEASE_PATCH="Pokemon-Emerald-Legends-v${VERSION}.bps"
-          DEBUG_PATCH="Pokemon-Emerald-Legends-v${VERSION}-debug.bps"
-
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-
-          # Keep only the current Release and Debug BPS files in the site download slot.
+          cp tools/legends/shared_build.py "$RUNNER_TEMP/legends-publication-guard.py"
+          git fetch origin master
+          git rebase origin/master
+          check_publication() {
+            python3 "$RUNNER_TEMP/legends-publication-guard.py" check-publication \
+              --root "$GITHUB_WORKSPACE" --folder build/verified-publication \
+              --manifest-sha "$EXPECTED_MANIFEST" --source-commit "$EXPECTED_SOURCE" \
+              --source-fingerprint "$EXPECTED_FINGERPRINT"
+          }
+          check_publication
+          game_version="$(tr -d '\r\n' < VERSION)"
+          release_patch="Pokemon-Emerald-Legends-v${game_version}.bps"
+          debug_patch="Pokemon-Emerald-Legends-v${game_version}-debug.bps"
+          mkdir -p docs/downloads
+          cp "build/verified-publication/$release_patch" "docs/downloads/$release_patch"
+          cp "build/verified-publication/$debug_patch" "docs/downloads/$debug_patch"
+          cp build/verified-publication/SHA256SUMS.txt docs/downloads/SHA256SUMS.txt
           find docs/downloads -maxdepth 1 -type f -name 'Pokemon-Emerald-Legends-v*.bps' \
-            ! -name "$RELEASE_PATCH" \
-            ! -name "$DEBUG_PATCH" \
-            -delete
-
-          git add -f "docs/downloads/$RELEASE_PATCH" "docs/downloads/$DEBUG_PATCH" docs/downloads/SHA256SUMS.txt
+            ! -name "$release_patch" ! -name "$debug_patch" -delete
+          git add -f "docs/downloads/$release_patch" "docs/downloads/$debug_patch" docs/downloads/SHA256SUMS.txt
           git add -u docs/downloads
-
           if git diff --cached --quiet; then
-            echo "Release patches are already current."
+            echo "Release patches are already current; all shared-build publication checks passed."
             exit 0
           fi
-
-          git commit -m "Release: refresh Emerald Legends v${VERSION} Release and Debug patches [skip ci]"
-          git pull --rebase origin master
-          git push
+          git commit -m "Release: refresh Emerald Legends v${game_version} Release and Debug patches [skip ci]"
+          for publish_attempt in 1 2 3; do
+            git fetch origin master
+            git rebase origin/master
+            check_publication
+            if git push origin HEAD:master; then exit 0; fi
+          done
+          echo "::error::Publication failed after three guarded attempts."
+          exit 1

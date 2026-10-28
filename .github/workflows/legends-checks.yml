@@ -18,6 +18,8 @@ jobs:
       - uses: actions/checkout@v4
       - name: Install image-test dependency before grotto art checks
         run: python3 -m pip install Pillow==11.3.0
+      - name: Exercise shared build provenance and publication guards
+        run: python3 test/legends-shared-build.test.py
       - name: Exercise isolated seasonal QA workers and exact coverage
         run: python3 test/legends-seasonal-qa-workers.test.py
       - name: Exercise release verification regressions

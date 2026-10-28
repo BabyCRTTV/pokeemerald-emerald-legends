@@ -1,5 +1,15 @@
 # Development handoff
 
+## Shared native/patch builds — candidate validation pending (28 October 2026)
+
+**Model: GPT-6 (Codex) | Reasoning: remove duplicate compilation while keeping immutable build identities, all native/decoder gates and a patch-only publication boundary.**
+
+Owner authorized optimization two after verified seasonal parallelism at `72bf6b8c`. Consolidated automatic triggers under the release workflow calling one read-only reusable native job. It builds Debug/Release once each, records both ROM/ELF hashes and runs unchanged native checks alongside private canonical-base/dual-decoder work. Only verified BPS/receipt files reach a separate write-enabled publisher, which checks manifest/source identity and refuses stale source while allowing known bot outputs. Manual native runs remain available. [QA/design/limits](qa/shared-build-2026-10-28.md), [status/evidence](qa/shared-build-2026-10-28.json).
+
+Thirteen local guard tests and syntax/whitespace checks passed; original native commands and former trigger coverage were preserved. Candidate CI/artifact inspection and merged production/publication checks remain pending. Validate one candidate before merge; after production success, retain exact build/decoder/native artifact identities and update this entry. A no-op for unchanged v0.0.75 patches verifies the handoff but is not a changed-patch push or race test.
+
+Game source/assets/maps/saves/wardrobe/seasonal runner, version and existing patches are unchanged. Both independent decoders and all native regressions remain required. Do not claim a fixed total-session speedup; duplicate runner work is removed but CPU contention/setup varies. AGENTS now records the durable single-private-build and patch-only-handoff rule. Atomic frontend promotion and candidate-to-production reuse remain outside scope.
+
 ## Seasonal QA parallelism — published and verified (28 October 2026)
 
 **Model: GPT-6 (Codex) | Reasoning: isolate emulator state, enforce exact coverage and compare against a full serial reference before claiming speedup.**

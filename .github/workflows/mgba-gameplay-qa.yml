@@ -1,73 +1,68 @@
 name: Legends mGBA gameplay smoke
 
 on:
+  workflow_call:
+    inputs:
+      compare_serial:
+        type: boolean
+        default: false
+      verify_patches:
+        type: boolean
+        default: true
+    outputs:
+      source_commit:
+        value: ${{ jobs.mgba-debug-smoke.outputs.source_commit }}
+      source_fingerprint:
+        value: ${{ jobs.mgba-debug-smoke.outputs.source_fingerprint }}
+      manifest_sha256:
+        value: ${{ jobs.mgba-debug-smoke.outputs.manifest_sha256 }}
   workflow_dispatch:
     inputs:
       compare_serial:
         description: Compare all serial/parallel cases, captures and timings
         type: boolean
         default: false
-  pull_request:
-    branches: [ master ]
-    paths:
-      - '.github/workflows/mgba-gameplay-qa.yml'
-      - 'tools/legends/mgba_gameplay_smoke.c'
-      - 'test/mgba-gameplay-smoke.py'
-      - 'tools/legends/native_living_hoenn_qa/**'
-      - 'tools/legends/native_seasonal_encounters_qa/**'
-      - 'tools/legends/native_visual_repairs_qa/**'
-      - 'tools/legends/native_ember_return_qa/**'
-      - 'tools/legends/native_eon_roamers_qa/**'
-      - 'tools/legends/native_grotto_review/**'
-      - 'tools/legends/native_grotto_encounters/**'
-      - 'src/**'
-      - 'include/**'
-      - 'data/**'
-      - 'graphics/**'
-      - 'maps/**'
-      - 'VERSION'
-  push:
-    branches: [ master ]
-    paths:
-      - '.github/workflows/mgba-gameplay-qa.yml'
-      - 'tools/legends/mgba_gameplay_smoke.c'
-      - 'test/mgba-gameplay-smoke.py'
-      - 'tools/legends/native_living_hoenn_qa/**'
-      - 'tools/legends/native_seasonal_encounters_qa/**'
-      - 'tools/legends/native_visual_repairs_qa/**'
-      - 'tools/legends/native_ember_return_qa/**'
-      - 'tools/legends/native_eon_roamers_qa/**'
-      - 'tools/legends/native_grotto_review/**'
-      - 'tools/legends/native_grotto_encounters/**'
-      - 'src/**'
-      - 'include/**'
-      - 'data/**'
-      - 'graphics/**'
-      - 'maps/**'
-      - 'VERSION'
+      verify_patches:
+        description: Also verify both patches against the canonical base
+        type: boolean
+        default: true
 
 permissions:
   contents: read
 
 # Superseded PR runs are obsolete; every master commit keeps its own gate.
 concurrency:
-  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.sha }}
+  group: legends-native-${{ github.workflow }}-${{ github.event.pull_request.number || github.sha }}
   cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
 jobs:
   mgba-debug-smoke:
     runs-on: ubuntu-24.04
-    timeout-minutes: 30
+    timeout-minutes: 35
+    outputs:
+      source_commit: ${{ steps.shared.outputs.source_commit }}
+      source_fingerprint: ${{ steps.shared.outputs.source_fingerprint }}
+      manifest_sha256: ${{ steps.shared.outputs.manifest_sha256 }}
     steps:
       - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
       - name: Install compiler and native mGBA emulator
         run: |
           sudo apt-get -o Acquire::Retries=3 update
           sudo apt-get -o Acquire::Retries=3 install -y --no-install-recommends \
             build-essential gcc-arm-none-eabi binutils-arm-none-eabi \
-            libnewlib-arm-none-eabi libpng-dev libmgba-dev python3-pil g++
+            libnewlib-arm-none-eabi libpng-dev libmgba-dev python3-pil g++ git
       - name: Build unmodified Legends Debug ROM and ELF
         run: make -j"$(nproc)"
+      - name: Build unmodified Legends Release ROM and ELF
+        run: make -j"$(nproc)" release
+      - name: Record the private shared build identities
+        run: python3 tools/legends/shared_build.py record
+      - name: Start canonical-base and dual-decoder verification alongside native QA
+        id: patch_start
+        if: inputs.verify_patches
+        run: python3 tools/legends/shared_build.py start
       - name: Execute native mGBA Quickstart and capture live gameplay
         run: python3 test/mgba-gameplay-smoke.py
       - name: Exercise native dual Eon battles and legacy/current flash persistence
@@ -91,8 +86,6 @@ jobs:
           python3 tools/legends/native_seasonal_encounters_qa/run.py "${seasonal_args[@]}"
       - name: Exercise accepted bedroom repair and wardrobe return/save paths
         run: python3 tools/legends/native_visual_repairs_qa/run.py --output build/visual-repairs-qa --mgba-prefix /usr
-      - name: Build unmodified Legends Release ROM and ELF
-        run: make -j"$(nproc)" release
       - name: Exercise normal Release Continue with independent Eon state fixtures
         run: python3 tools/legends/native_eon_roamers_qa/release.py
       - name: Exercise native Release Ember boat return, walking and reboarding
@@ -101,12 +94,25 @@ jobs:
         run: python3 tools/legends/native_grotto_encounters/release.py
       - name: Exercise unmodified Release Continue, both bedrooms and wardrobe returns
         run: python3 tools/legends/native_visual_repairs_qa/release.py --prefix /usr --fixtures build/visual-repairs-qa --output build/bedroom-release-qa
+      - name: Join canonical-base and patch verification
+        if: ${{ always() && !cancelled() && steps.patch_start.outcome == 'success' }}
+        run: python3 tools/legends/shared_build.py join
+      - name: Bind native and decoder receipts to the same private builds
+        id: shared
+        env:
+          VERIFY_PATCHES: ${{ inputs.verify_patches }}
+        run: |
+          shared_args=()
+          if [ "$VERIFY_PATCHES" != "true" ]; then shared_args+=(--without-patches); fi
+          python3 tools/legends/shared_build.py finalize "${shared_args[@]}"
       - name: Upload direct Legends gameplay frames and machine receipt
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: legends-mgba-gameplay
           path: |
+            build/shared-build/*.json
+            build/shared-build/*.log
             build/eon-roamers-qa/*.png
             build/eon-roamers-qa/*.json
             build/eon-roamers-qa/*.log
@@ -149,3 +155,10 @@ jobs:
             build/bedroom-release-qa/**/*.json
             build/bedroom-release-qa/**/*.log
           if-no-files-found: warn
+      - name: Retain patches and receipts only, never ROM or ELF files
+        if: inputs.verify_patches
+        uses: actions/upload-artifact@v4
+        with:
+          name: legends-candidate-patches
+          path: build/shared-build/publication/
+          if-no-files-found: error

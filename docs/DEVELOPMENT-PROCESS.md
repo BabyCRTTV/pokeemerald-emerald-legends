@@ -34,6 +34,12 @@ When a native test fails, inspect its first failure, frame, log and runtime diag
 
 The seasonal runner supports up to four isolated mGBA processes, capped by CPU affinity, with unchanged cases/assertions and strict complete coverage. Worker logs and receipts retain failures. Use `--jobs 1` for serial troubleshooting or `--compare-serial` for the complete serial/parallel log, pixel and timing comparison. Normal runs do not repeat a serial reference. The native workflow supports manual `compare_serial` input; `[benchmark seasonal QA]` in a push commit message also explicitly opts into that validation. [Implementation status and measured evidence](qa/seasonal-qa-parallel-2026-10-28.md).
 
+## Shared builds and patch publication
+
+Automatic game/build/native changes enter `build-release-patch.yml`, which calls the reusable `mgba-gameplay-qa.yml` private verification job. Debug and Release each compile once. All native checks and both decoders bind to those same immutable ROM/ELF files; canonical-base/patch work overlaps native QA in isolated directories. Full ROMs/ELFs/saves remain on that runner. Only verified patches and receipts transfer to the separate publisher. Manual native runs remain supported.
+
+Inspect the combined run and its `verify / mgba-debug-smoke` and publisher jobs rather than waiting for a second automatic native workflow. `legends-candidate-patches` now contains five flat files: two BPS patches, SHA256SUMS.txt, browser-decoder-verification.json and verification.json. A failed publisher can be retried without rebuilding, provided the same artifact is retained and current source still matches. Known bot download/version outputs may advance; other tracked changes block stale publication. Finish publication before committing closeout documentation. [Design, evidence and limits](qa/shared-build-2026-10-28.md).
+
 ## Publish and close
 
 1. Inspect completed candidate gates and their actual receipts; compare native ROM hashes with both independently reconstructed BPS targets. Confirm that the merged tree preserves the reviewed inputs. Current production gates remain required; do not treat documentation differences as new game changes.

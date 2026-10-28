@@ -1,0 +1,17 @@
+{
+  "model": "GPT-6 (Codex)",
+  "baseline_commit": "72bf6b8c62ac6b35bde44c6b7ac6b93f06d8ad3e",
+  "game_version": "0.0.75",
+  "status": "local checks passed; candidate and production verification pending",
+  "local_tests_passed": 13,
+  "full_builds_per_phase_before": 4,
+  "full_builds_per_phase_after": 2,
+  "automatic_entry_point": ".github/workflows/build-release-patch.yml",
+  "private_builder": ".github/workflows/mgba-gameplay-qa.yml",
+  "transferred_payload": "BPS files and signed-by-hash JSON/text receipts only; no ROM, ELF or save",
+  "native_commands_preserved": true,
+  "former_native_trigger_coverage_preserved": true,
+  "candidate": null,
+  "production": null,
+  "limits": "No fixed overall wall-time claim, no atomic frontend promotion or candidate-to-production reuse. Changed-patch push/race behavior requires observed evidence before a test claim."
+}
