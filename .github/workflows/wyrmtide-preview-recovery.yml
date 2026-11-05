@@ -1,4 +1,4 @@
-name: Recover Wyrmtide failure diagnostics
+name: Recover verified Wyrmtide preview
 on:
   push:
     branches: [ codex/wyrmtide-isle ]
@@ -15,8 +15,8 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
           REPO: BabyCRTTV/pokeemerald-emerald-legends
-          NATIVE_RUN: '42073616828'
-          NATIVE_HEAD: 'f6e01f80b2133633f3ef69b6e6e3b5c355237e97'
+          NATIVE_RUN: '42075191592'
+          NATIVE_HEAD: '18fd38377a5b263779f20bab7c6ad7cfff4d6c1b'
         run: |
           python3 - <<'PY'
           import os,time,json,urllib.request,hashlib,zipfile,io,base64
@@ -35,7 +35,7 @@ jobs:
               run=json.loads(req('/actions/runs/'+run_id))
               assert run['head_sha']==expected and run['head_branch']=='codex/wyrmtide-isle'
               if run['status']=='completed':
-                  assert run['conclusion']=='failure', 'This recovery is only for the pinned diagnostic failure'
+                  assert run['conclusion']=='success', 'Matching native run failed: '+str(run['conclusion'])
                   break
               print('Waiting for matching native checks:',run['status'],flush=True);time.sleep(8)
           else: raise AssertionError('Native run did not finish')
@@ -49,9 +49,10 @@ jobs:
               found=[n for n in names if n.endswith('wyrmtide-native/'+name)]
               assert len(found)==1,(name,found)
               return z.read(found[0])
-          print('DIAGNOSTIC_LOG:'+base64.b64encode(native('emulator.log')).decode(),flush=True)
-          for name in ['05-second-landing.png','26-tidal-pool.png','27-tidal-pool-animation.png']:
-              image=native(name)
-              print('DIAGNOSTIC_PNG:'+name+':'+base64.b64encode(image).decode(),flush=True)
-          print('Diagnostic archive hash verified; no successful native receipt is claimed.',flush=True)
+          proof=json.loads(native('verification.json'))
+          assert proof['passed'] and not proof['scenesOnly']
+          for name in ['05-second-landing.png','26-tidal-pool.png','27-tidal-pool-animation.png','08-slumbering-regidrago.png']:
+              image=native(name);assert hashlib.sha256(image).hexdigest()==proof['images'][name]
+              print('NATIVE_PNG:'+name+':'+base64.b64encode(image).decode(),flush=True)
+          print('NATIVE_RECEIPT:'+base64.b64encode(json.dumps({'source':expected,'run':run_id,'artifact':art,'native':proof}).encode()).decode(),flush=True)
           PY
