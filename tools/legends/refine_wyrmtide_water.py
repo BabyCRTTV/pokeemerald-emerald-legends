@@ -20,9 +20,11 @@ for n in range(0x3a0,0x3a8):
 extras.extend(water+[0]*4);attrs.append(struct.unpack_from('<H',at,(0x27b-512)*2)[0])
 (S/'metatiles.bin').write_bytes(m+struct.pack('<72H',*extras))
 (S/'metatile_attributes.bin').write_bytes(at+struct.pack('<9H',*attrs))
-colors=(R/'data/tilesets/primary/general/palettes/04.pal').read_text().splitlines()[3:19]
-indices=[10,9,9,9,9,10,10,10,9,10,10,9,10,10,10,10]
-(S/'water.pal').write_text('JASC-PAL\n0100\n16\n'+'\n'.join(colors[i] for i in indices)+'\n')
+general=(R/'data/tilesets/primary/general/palettes/04.pal').read_text().splitlines()[3:19]
+cave=(R/'data/tilesets/secondary/cave/palettes/03.pal').read_text().splitlines()[3:19]
+colors=[cave[8]]*16
+colors[11]=general[9];colors[12]=general[10];colors[13]=cave[7];colors[14]=cave[8]
+(S/'water.pal').write_text('JASC-PAL\n0100\n16\n'+'\n'.join(colors)+'\n')
 p=R/'data/layouts/LegendsWyrmtide_Descent2/map.bin';a=list(struct.unpack('<456H',p.read_bytes()))
 def put(x,y,t,solid=False):a[y*19+x]=0x3000|(0x400 if solid else 0)|t
 for y in range(6,11):

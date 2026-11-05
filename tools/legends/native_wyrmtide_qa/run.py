@@ -32,8 +32,8 @@ finally:
  private.unlink(missing_ok=True)
 # The real pool animation must survive palette isolation; sample only water pixels.
 from PIL import ImageChops
-before=Image.open(out/'26-tidal-pool.png').crop((128,0,192,64))
-after=Image.open(out/'27-tidal-pool-animation.png').crop((128,0,192,64))
+before=Image.open(out/'26-tidal-pool.png').crop((128,48,192,112))
+after=Image.open(out/'27-tidal-pool-animation.png').crop((128,48,192,112))
 assert ImageChops.difference(before,after).getbbox(),'Pool reflections stopped animating'
 assert rom.read_bytes()==source
 proof={'version':(R/'VERSION').read_text().strip()+' + unshipped Wyrmtide review','ROM_sha256':hashlib.sha256(source).hexdigest(),'emulator':'mGBA 0.10.2 native core','scenesOnly':a.scenes_only,'passed':True,'setup':'Controlled fresh native fixtures, actual map/script/battle engine and button input; private setup payload never distributed.','limits':'Not an authentic historical owner save, natural full-story playthrough, Release-emulator or Pizza Boy test.','log':(out/'emulator.log').read_text(),'images':{p.name:hashlib.sha256(p.read_bytes()).hexdigest() for p in captures}}
