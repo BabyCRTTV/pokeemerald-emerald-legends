@@ -15,9 +15,9 @@ const u16 gTilesetPalettes_LegendsWyrmtideCave[][16] =
     INCGFX_U16("data/tilesets/secondary/cave/palettes/08.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/cave/palettes/09.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/cave/palettes/10.pal", ".gbapal"),
-    INCGFX_U16("data/tilesets/secondary/cave/palettes/11.pal", ".gbapal"),
-    INCGFX_U16("data/tilesets/legends_lights/cave_day.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/legends_wyrmtide/water.pal", ".gbapal"),
+    INCGFX_U16("data/tilesets/legends_lights/cave_day.pal", ".gbapal"),
+    INCGFX_U16("data/tilesets/secondary/cave/palettes/13.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/cave/palettes/14.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/secondary/cave/palettes/15.pal", ".gbapal"),
 };

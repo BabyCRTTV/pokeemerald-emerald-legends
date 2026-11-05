@@ -1,5 +1,5 @@
 """Explicit review-only water edit. Refuse changed inputs before writing.
-Uses native metatile pixels and animated water, private palette13, and native
+Uses native metatile pixels and animated water, private palette11, and native
 night/day palette entries5/12. Never regenerates the approved shore or Heart.
 """
 from pathlib import Path
@@ -12,8 +12,13 @@ for f,h in expected.items():
 S=R/'data/tilesets/legends_wyrmtide'
 m=(S/'metatiles.bin').read_bytes();at=(S/'metatile_attributes.bin').read_bytes()
 assert len(m)==6784 and len(at)==848
-assert 13 not in {v[0]>>12 for v in struct.iter_unpack('<H',m)}
-water=[0xd1c6,0xd1c7,0xd1c7,0xd1c6];extras=[];attrs=[]
+for key in ['Descent1','Descent2','Descent3','Descent4','Heart']:
+ data=(R/f'data/layouts/LegendsWyrmtide_{key}/map.bin').read_bytes()
+ for cell, in struct.iter_unpack('<H',data):
+  mid=cell&1023
+  if 512<=mid<0x3a8:
+   assert all(w[0]>>12!=11 for w in struct.iter_unpack('<H',m[(mid-512)*16:(mid-511)*16])), 'Room palette11 is occupied'
+water=[0xb1c6,0xb1c7,0xb1c7,0xb1c6];extras=[];attrs=[]
 for n in range(0x3a0,0x3a8):
  extras.extend(water+list(struct.unpack_from('<8H',m,(n-512)*16))[4:])
  attrs.append(struct.unpack_from('<H',at,(n-512)*2)[0])

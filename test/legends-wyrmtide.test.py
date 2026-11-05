@@ -37,11 +37,18 @@ assert (sib/'metatile_attributes.bin').read_bytes()[:len(native)//8+4]==(base/'m
 # Exact native Cave stair art, with no foreign palette or graphics allocation.
 source=struct.unpack_from('<8H',native,4*16)
 assert struct.unpack_from('<8H',authored,len(native))==source
-# Pool-only palette13 leaves native day/night slots5/12 and all old cells intact.
+# Pool-only palette11 leaves native day/night slots5/12 and all old cells intact.
 for i in range(8):
  old=struct.unpack_from('<8H',authored,(0x3a0+i-512)*16)
  new=struct.unpack_from('<8H',authored,(0x3a8+i-512)*16)
- assert new[:4]==(0xd1c6,0xd1c7,0xd1c7,0xd1c6) and new[4:]==old[4:]
+ assert new[:4]==(0xb1c6,0xb1c7,0xb1c7,0xb1c6) and new[4:]==old[4:]
+# All old room cells leave field palette11 available for the isolated pool.
+for key in ['Descent1','Descent2','Descent3','Descent4','Heart']:
+ data=(R/f'data/layouts/LegendsWyrmtide_{key}/map.bin').read_bytes()
+ for cell, in struct.iter_unpack('<H',data):
+  mid=cell&1023
+  if 512<=mid<0x3a8:
+   assert all(w[0]>>12!=11 for w in struct.iter_unpack('<H',authored[(mid-512)*16:(mid-511)*16])),(key,mid,'palette11 is occupied')
 # Shore: exact Dewford native prefix and every referenced pixel are retained.
 from PIL import Image
 shore=R/'data/tilesets/legends_wyrmtide_shore';dew=R/'data/tilesets/secondary/dewford'
