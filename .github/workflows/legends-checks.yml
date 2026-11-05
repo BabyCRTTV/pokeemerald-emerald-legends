@@ -2,7 +2,8 @@ name: Legends project checks
 
 on:
   push:
-    branches: [ master ]
+    # Temporary Wyrmtide review; retain current-master workflow on integration.
+    branches: [ master, codex/wyrmtide-isle ]
   pull_request:
     branches: [ master ]
 
