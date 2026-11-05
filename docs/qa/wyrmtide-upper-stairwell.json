@@ -146,11 +146,20 @@
   "projectCI": {
     "run": 42125621166,
     "result": "success",
-    "source": "55b4268facd0cf18981fd19a02da82cac71e21b6"
+    "source": "55b4268facd0cf18981fd19a02da82cac71e21b6",
+    "mediaAndFinalHarnessRun": {
+      "run": 42126628788,
+      "source": "a6068ae12e81e14400ca369c3e225f4fed0ffcae",
+      "result": "success"
+    }
   },
   "releaseCI": {
     "run": 42125621400,
-    "result": "pending"
+    "source": "55b4268facd0cf18981fd19a02da82cac71e21b6",
+    "result": "pending at closeout; compiler installation in progress",
+    "url": "https://github.com/BabyCRTTV/pokeemerald-emerald-legends/actions/runs/42125621400",
+    "temporaryWorkflowRemoved": true,
+    "runContinuesOnOriginalSnapshot": true
   },
   "preserved": "Approved terrace treads, side joins, lighting, pool, Isle, Heart and original warp indices. Heart RGB exact against approved fixture.",
   "newFootprint": "Only (9,2) opens collision in each of the four descent maps; alias2 at (9,3) returns to warp0 destination.",
@@ -243,5 +252,38 @@
     }
   },
   "routeGuardFix": "Full-room stair minimum applies to upper arrivals at y3 or scripted y4, not segmented movie legs after already crossing the stairs.",
-  "routeHostSHA256": "cff37570f2700b4a8975cbe24d245c6c4ca176b931a218064f27b31b52917e47"
+  "routeHostSHA256": "cff37570f2700b4a8975cbe24d245c6c4ca176b931a218064f27b31b52917e47",
+  "imageDerivations": {
+    "Upper-Stairwell.png": {
+      "source": "native-final-tour/walkthrough-video.raw",
+      "emulatedFrame": 510,
+      "sourceFrameIndex": 255,
+      "scale": 4,
+      "filter": "nearest"
+    },
+    "Upper-Stairwell-Closeup.png": {
+      "sourceFrameIndex": 255,
+      "sourceCrop": [
+        100,
+        22,
+        172,
+        56
+      ],
+      "outputSize": [
+        720,
+        340
+      ],
+      "filter": "nearest"
+    }
+  },
+  "localRelease": {
+    "result": "failed",
+    "reason": "arm-none-eabi-gcc13.2.1 internal compiler error: Segmentation fault signal terminated program lto1",
+    "defaultLTO": true,
+    "optimizationDisabled": false,
+    "originalBuildLogSHA256": "aa770dce1dce3f34d99046a45790366c0d05fa4fbb2a8fc99d30c2ca6ec8e69a",
+    "stack64MiBRetry": "same compiler failure",
+    "limit": "Release was not verified; do not claim Release or patch readiness."
+  },
+  "closeout": "Game inputs still match55b4268f; recorded movie, tested harness and source checks are saved. Temporary branch source trigger restored and Release workflow removed; PR remains draft."
 }
