@@ -20,7 +20,7 @@ on:
       - 'maps/**'
       - 'VERSION'
   push:
-    branches: [ master, codex/wyrmtide-isle ]
+    branches: [ master ]
     paths:
       - '.github/workflows/mgba-gameplay-qa.yml'
       - 'tools/legends/mgba_gameplay_smoke.c'
@@ -63,26 +63,6 @@ jobs:
         run: python3 tools/legends/native_grotto_encounters/run.py
       - name: Exercise Wyrmtide call, voyage, party seal, stairs, battles and native flash
         run: python3 tools/legends/native_wyrmtide_qa/run.py
-      - name: Export verified Wyrmtide review frames
-        run: |
-          python3 - <<'PY'
-          from pathlib import Path
-          from PIL import Image
-          import base64,hashlib,json
-          p=Path('build/wyrmtide-native')
-          proof=json.loads((p/'verification.json').read_text())
-          assert proof['passed'] and not proof['scenesOnly'] and proof['protectedHeartRGBExact']
-          for src,dst in [('28-stone-stair-flight.png','Stone-Stairs.png'),('29-wide-stone-flight.png','Wide-Stairs.png')]:
-              Image.open(p/src).resize((720,480),Image.Resampling.NEAREST).save(p/dst)
-          before=Image.open('docs/designs/wyrmtide/water-review/05-second-landing.png').convert('RGB')
-          after=Image.open(p/'05-second-landing.png').convert('RGB')
-          board=Image.new('RGB',(488,160),(24,24,30));board.paste(before,(0,0));board.paste(after,(248,0))
-          board.resize((976,320),Image.Resampling.NEAREST).save(p/'Stairs-Before-After.png')
-          for n in ['Stone-Stairs.png','Wide-Stairs.png','Stairs-Before-After.png','04-stair-descent.png','05-second-landing.png','06-third-landing.png','07-fourth-landing.png','08-slumbering-regidrago.png','28-stone-stair-flight.png','29-wide-stone-flight.png']:
-              b=(p/n).read_bytes()
-              print('STAIR_NATIVE '+n+' '+hashlib.sha256(b).hexdigest()+' '+base64.b64encode(b).decode())
-          print('STAIR_NATIVE_RECEIPT '+base64.b64encode((p/'verification.json').read_bytes()).decode())
-          PY
       - name: Exercise research notes, bulletin and town dialogue branches
         run: python3 tools/legends/native_living_hoenn_qa/run.py
       - name: Exercise seasonal encounter trial and native DexNav silhouettes

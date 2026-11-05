@@ -1,12 +1,16 @@
 # Development handoff
 
-## Wyrmtide stairs — authoring checkpoint (5 November 2026)
+## Wyrmtide continuous stone stairs — visual review (5 November 2026)
 
-**Model: GPT-6.1 Sol (Codex) | Reasoning: one continuous native stone flight, floor landings and unchanged movement semantics.**
+**Model: GPT-6.1 Sol (Codex) | Reasoning: native tread assembly, complete landings and unchanged physical stair/warp behavior.**
 
-Owner accepted that the water improved and explicitly requested correction of the still ladder-like stairs. Source is `792873f1`. Current defect: the complete narrow Cave 0x204 tile is repeated sideways, duplicating dark side edges. Prepare bounded sibling-only variants from those native tread/edge pixels and Cave 0x201 floor pixels: outer edges only, four risers, native material shades and top/bottom floor landings. Preserve all collisions/elevations, warp behavior/coordinates, water, approved Heart/island, shared art and saved data. This is an authorized refinement, not publication approval.
+Owner explicitly requested correction of the remaining ladder-like stairs after the water improvement. From `792873f1`, replaced repeated complete narrow flights with eight sibling modules: native Cave 0x204 tread/edge pixels, Cave 0x201 floor landings, outer edges only and four risers instead of eight. Palette6 uses existing stone shades (indices1→2,2→3,7→6). Appended tiles976–1007 and metatiles0x3B1–0x3B8; all older art/definitions remain exact. Only 48 existing stair cells across Descent1–4 changed. Collision/elevation bits, warp coordinates/behavior, scripts, saves, improved water, approved island and Heart remain unchanged. The authoring helper refuses changed baseline hashes.
 
-Local execution environment is unavailable. Use the pinned authoring helper and temporary read-only CI authoring workflow to recover canonical generated source bytes, then commit those exact blobs with source/native guards and verify an actual compiled game in CI. No completed stairs, reviewed native screenshot or gameplay success claim yet. Earlier restored scratch copies may contain obsolete water prototypes; GitHub remains authoritative. Final visual review and current-master reconciliation are still required before release.
+Compiled source `09452e99120eae4ea691dba3e32f248ea9a1f1e8`; guard-only successor `4364c3fe`. [Native run42086012859](https://github.com/BabyCRTTV/pokeemerald-emerald-legends/actions/runs/42086012859) passed Debug/Release builds, full Debug Wyrmtide walking/quest/warp/retry/capture/animation QA and existing Debug/Release Continue checks. Project42086328363 passed all source/art guards; capture-recovery42087907321 verified the archive digest, original PNG hashes and scaled derivations. Final evidence and real frames are linked in [the stair gallery](designs/wyrmtide/stair-review/README.md) and [bound receipt](qa/wyrmtide-stair-review.json). Source checks validate allocation, native tread gradients, matching floor strips and warp topology. An initial guard incorrectly limited native gradient rows to two colors; corrected the guard without changing art/game code. Native QA retains the full quest/entrance/retry/capture checks and adds close views of the ordinary/wide flights plus an exact approved-Heart RGB assertion.
+
+Local execution remained unavailable. Read-only authoring CI produced hash-verified canonical source blobs; native CI compiled the committed files and supplied actual mGBA captures. Captures are v0.0.70 plus unshipped Wyrmtide Debug fixtures. The temporary authoring/capture workflows and review-only push triggers were removed after verification. Earlier scratch prototypes remain obsolete; use committed source.
+
+New stair visuals await review; carry prior Heart/shore/entrance approvals and the improved water forward. Public v0.0.75 remains unchanged. This older branch still requires reconciliation with current master and current candidate/BPS gates before publication. No authentic historical-owner-save, natural full-story, Release Wyrmtide playthrough, Pizza Boy or release-readiness claim.
 
 ## Wyrmtide interior water — completed visual review (5 November 2026)
 
