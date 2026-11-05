@@ -1,5 +1,13 @@
 # Development handoff
 
+## Regidrago cave polish — visual review (5 November 2026)
+
+**Model: GPT-6 (Codex) | Reasoning: native Regi-room composition, bounded map edits and actual emulator review.**
+
+Resumed PR #89 at `761ac235`; live master is `c09ff3fc` / public v0.0.75. Replaced only five Wyrmtide cave layout binaries: native Sealed Chamber perimeter assemblies, a narrower dry Heart with integrated rear inscription, retained seven-stone focal arrangement and clear approach. Removed the Heart pools, columns and stair terrace. Island, shared art/palettes/sprites, scripts/events/quest gates, dimensions, warp coordinates, IDs and serialized data remain exact. Authoring script refuses baseline hash mismatches before touching any layout, preserving later Porymap edits.
+
+Debug build, focused source/topology/allocation checks and full native Wyrmtide story/walking QA passed after the final footprint adjustment. [Actual emulator comparison](designs/wyrmtide/cave-polish/Before-After.png), [gallery and limits](designs/wyrmtide/cave-polish/README.md), [machine receipt](qa/wyrmtide-cave-polish.json). Captures are v0.0.70 plus unshipped Wyrmtide Debug fixtures, not the current published release. New visuals await owner review. No release readiness/publication claim: reconcile this old feature branch with current master while retaining current workflow/save/art protections, then run current candidate gates after approval. Do not replace current master with this old branch or regenerate owner maps. Earlier native and patch receipts remain historical.
+
 ## Wyrmtide terrain-border repair (22 October 2026)
 
 **Model: GPT-6 (Codex) | Reasoning: context-aware tile backgrounds, complete native shoreline families and palette continuity.**
