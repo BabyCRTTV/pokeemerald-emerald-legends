@@ -7,9 +7,9 @@
   ],
   "authoredTileRange": [
     944,
-    975
+    1007
   ],
-  "stairs": "Exact Cave 0x204 geometry and palette 6",
+  "stairs": "Native Cave 0x204 tread/edge pixels with Cave 0x201 landings; one continuous four-riser flight, outer edges only",
   "poolMetatiles": {
     "618": 935,
     "619": 934,
@@ -30,7 +30,7 @@
     217,
     218
   ],
-  "ground": "Cave 0x201 replaces the native pond’s grass matte",
+  "ground": "Cave 0x201 replaces the native pond\u2019s grass matte",
   "rim": "Existing Cave palette 6 dark/medium/light stone shades",
   "water": "Original animated General water indices",
   "interiorWater": {
@@ -47,5 +47,39 @@
     "pixelArtUnchanged": true,
     "animation": "Unchanged General 432..461",
     "nativeDayNightBanksPreserved": true
+  },
+  "stairFlights": {
+    "metatiles": [
+      945,
+      952
+    ],
+    "tileRange": [
+      976,
+      1007
+    ],
+    "palette": 6,
+    "toneMap": {
+      "1": 2,
+      "2": 3,
+      "7": 6
+    },
+    "treadRows": [
+      8,
+      23
+    ],
+    "floorLandingRows": [
+      [
+        0,
+        7
+      ],
+      [
+        24,
+        31
+      ]
+    ],
+    "ordinaryAttributes": 0,
+    "warpBottomAttribute": 97,
+    "collisionAndElevationUnchanged": true,
+    "source": "Native Cave 0x204 and 0x201"
   }
 }

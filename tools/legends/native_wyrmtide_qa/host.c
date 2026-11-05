@@ -32,7 +32,7 @@ static void navigate(int grid,int targetX,int targetY){
  }
  assert(parent[target]>=0);int reverse[986],count=0;
  for(int at=target;at!=start;at=parent[at])reverse[count++]=at;
- int stairSteps=0;for(int i=0;i<count;i++)if((grids[grid][reverse[i]]&1023)==0x39F||(grids[grid][reverse[i]]&1023)==0x39E)stairSteps++;
+ int stairSteps=0;for(int i=0;i<count;i++)if((grids[grid][reverse[i]]&1023)>=0x3b1&&(grids[grid][reverse[i]]&1023)<=0x3b8)stairSteps++;
  if(grid<4&&targetX==11&&targetY==20){// The tidal gallery now has one two-cell flight plus the two-cell exit;
   // the other landings retain two short flights plus that exit.
   static const int minimumSteps[]={6,4,6,6};assert(stairSteps>=minimumSteps[grid]);printf("PASS descent %d route crosses %d native stair cells\n",grid+1,stairSteps);}
@@ -45,6 +45,8 @@ int main(int argc,char**argv){assert(argc==10);setbuf(stdout,NULL);mLogSetDefaul
  setup(10,1|4);capture("23-open-headland-entrance");
  setup(9,1);key(64);key(1);frames(130);key(1);frames(100);capture("19-maker-inscription");key(1);frames(100);capture("20-maker-among-six");
  setup(4,1);navigate(1,11,8);capture("26-tidal-pool");frames(16);capture("27-tidal-pool-animation");
+ setup(4,1);navigate(1,6,12);capture("28-stone-stair-flight");
+ setup(6,1);navigate(3,9,10);capture("29-wide-stone-flight");
  if(scenesOnly){puts("PASS native world scenes");c->deinit(c);free(video);return 0;}
  // Actual free movement invokes the production eight-step call hook.
  setup(8,0);for(int i=0;i<8;i++){walk(i%2?32:16);status();}frames(150);status();assert(box(12));key(1);frames(180);capture("09-unknown-number-call");dismiss(90);status();assert(box(7)&1);puts("PASS actual eight-step mystery call and one-time completion");command(3);assert(box(5)==1&&box(6)==1&&box(7));

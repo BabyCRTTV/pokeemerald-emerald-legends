@@ -31,7 +31,7 @@ secs=json.loads((R/'src/data/region_map/region_map_sections.json').read_text())[
 changed=subprocess.check_output(['git','diff','--name-only','HEAD','--','data/layouts','data/tilesets'],cwd=R,text=True).splitlines();assert all(x=='data/layouts/layouts.json' or 'LegendsWyrmtide_' in x or '/legends_wyrmtide/' in x or '/legends_wyrmtide_shore/' in x for x in changed),changed
 base=R/'data/tilesets/secondary/cave';sib=R/'data/tilesets/legends_wyrmtide'
 native=(base/'metatiles.bin').read_bytes();authored=(sib/'metatiles.bin').read_bytes()
-assert authored[:len(native)]==native and len(authored)==len(native)+32+17*16
+assert authored[:len(native)]==native and len(authored)==len(native)+32+25*16
 assert authored[len(native):len(native)+16]==authored[len(native)+16:len(native)+32]
 assert (sib/'metatile_attributes.bin').read_bytes()[:len(native)//8+4]==(base/'metatile_attributes.bin').read_bytes()+struct.pack('<HH',0x61,0)
 # Exact native Cave stair art, with no foreign palette or graphics allocation.
@@ -76,6 +76,37 @@ assert not {e['tile'] for e in lights['families']['general']['cells']}&{e[0]&102
 # Native cave pixels and animation cells remain exact in the expanded sibling.
 cp=Image.open(sib/'tiles.png');original=Image.open(base/'tiles.png')
 assert cp.crop((0,0,*original.size)).tobytes()==original.tobytes()
+# Continuous stair modules occupy only new sibling slots; old definitions stay exact.
+stair_bytes=authored[(0x3b1-512)*16:]
+assert len(stair_bytes)==8*16
+assert not {w[0]&1023 for w in struct.iter_unpack('<H',authored[:(0x3b1-512)*16])}&set(range(976,1008)), 'Stair tiles overwrite existing art'
+stair_attrs=struct.unpack_from('<8H',(sib/'metatile_attributes.bin').read_bytes(),(0x3b1-512)*2)
+assert stair_attrs==(0,0,0,0,0,0,0,0x61), 'Ordinary/warp stair behavior changed'
+for n in range(8):
+ words=struct.unpack_from('<8H',stair_bytes,n*16)
+ assert words[:4]==tuple(0x6000+976+n*4+i for i in range(4)) and words[4:]==(0,0,0,0)
+# Decode the real authored art: native floor strips at both ends and no duplicate
+# narrow-flight edges at the internal module seam.
+def indexed_cell(pixels,words):
+ im=Image.new('P',(16,16),0)
+ for i,w in enumerate(words[:4]):
+  t=(w&1023)-512;im.paste(pixels.crop((t%16*8,t//16*8,t%16*8+8,t//16*8+8)),(i%2*8,i//2*8))
+ return im
+floor=indexed_cell(original,struct.unpack_from('<8H',native,16))
+for width,rows in [(32,[[0x3b1,0x3b2],[0x3b3,0x3b4]]),(48,[[0x3b1,0x3b5,0x3b2],[0x3b3,0x3b6,0x3b4]])]:
+ im=Image.new('P',(width,32),0)
+ for y,row in enumerate(rows):
+  for x,mid in enumerate(row):im.paste(indexed_cell(cp,struct.unpack_from('<8H',authored,(mid-512)*16)),(x*16,y*16))
+ for y in list(range(8))+list(range(24,32)):
+  assert all(im.getpixel((x,y))==floor.getpixel((x%16,y%16)) for x in range(width)), 'Stair landing floor mismatch'
+ for y in range(8,24):
+  # Native treads are horizontal. A repeated rail would introduce an extra
+  # dark vertical stripe at x15/16 or31/32 compared with the inner tread.
+  assert len({im.getpixel((x,y)) for x in range(2,width-2)})<=2, 'Duplicate interior stair edge'
+# Original step footprints and actual native warp behavior are retained.
+for key in ['Descent1','Descent2','Descent3','Descent4']:
+ a=struct.unpack('<456H',(R/f'data/layouts/LegendsWyrmtide_{key}/map.bin').read_bytes())
+ assert all((a[y*19+x]&1023)==mid for x,y,mid in [(8,2,0x3b7),(8,3,0x3b8),(11,19,0x3b7),(11,20,0x3b8)])
 # Outdoor imported objects have the same sand underlay as their surroundings.
 sand=struct.unpack_from('<4H',(R/'data/tilesets/primary/general/metatiles.bin').read_bytes(),0x124*16)
 for i in range(8):assert struct.unpack_from('<4H',shoremeta,len(dewmeta)+i*16)==sand
