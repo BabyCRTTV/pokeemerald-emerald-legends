@@ -33,7 +33,9 @@ static void navigate(int grid,int targetX,int targetY){
  assert(parent[target]>=0);int reverse[986],count=0;
  for(int at=target;at!=start;at=parent[at])reverse[count++]=at;
  int stairSteps=0;for(int i=0;i<count;i++)if((grids[grid][reverse[i]]&1023)==0x39F||(grids[grid][reverse[i]]&1023)==0x39E)stairSteps++;
- if(grid<4&&targetX==11&&targetY==20){assert(stairSteps>=6);printf("PASS descent %d route crosses %d native stair cells\n",grid+1,stairSteps);}
+ if(grid<4&&targetX==11&&targetY==20){// The tidal gallery now has one two-cell flight plus the two-cell exit;
+  // the other landings retain two short flights plus that exit.
+  static const int minimumSteps[]={6,4,6,6};assert(stairSteps>=minimumSteps[grid]);printf("PASS descent %d route crosses %d native stair cells\n",grid+1,stairSteps);}
  int at=start;while(count){int next=reverse[--count],delta=next-at;walk(delta==-width?64:delta==width?128:delta==-1?32:16);at=next;}
  frames(350);status();if(target!=warps[grid][0]&&target!=warps[grid][1])assert(box(10)==targetX&&box(11)==targetY);
 }

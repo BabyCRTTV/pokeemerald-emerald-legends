@@ -66,6 +66,7 @@ for key in ['Descent1','Descent2','Descent3','Descent4','Heart']:
   for xx,yy in [(x+1,y),(x-1,y),(x,y+1),(x,y-1)]:
    if 0<=xx<w and 0<=yy<l['height'] and not a[yy*w+xx]&0xC00 and (xx,yy) not in seen:seen.add((xx,yy));q.append((xx,yy))
  assert goal in seen,(key,'unreachable descent')
+ if key in ['Descent1','Descent3']:assert (13,19) in seen,(key,'return path cannot reach the depth inscription')
  for i,warp in enumerate(m['warp_events']):
   destkey=warp['dest_map'].removeprefix('MAP_LEGENDS_WYRMTIDE_');destname='LegendsWyrmtide_'+({'ISLE':'Isle','HEART':'Heart'}.get(destkey,destkey.title()))
   dest=json.loads((R/f'data/maps/{destname}/map.json').read_text());back=dest['warp_events'][int(warp['dest_warp_id'])];assert back['dest_map']==m['id'] and int(back['dest_warp_id'])==i,(key,i)

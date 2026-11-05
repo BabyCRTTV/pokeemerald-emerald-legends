@@ -1,5 +1,15 @@
 # Development handoff
 
+## Wyrmtide shore and descent consistency — review (5 November 2026)
+
+**Model: GPT-6.1 Sol (Codex) | Reasoning: complete vanilla terrain assemblies, protected approved chamber and native walking verification.**
+
+Owner approved the refined Regidrago Heart, then identified remaining island/entrance inconsistencies and requested vanilla plus ROM-hack references, especially Emerald Crest. Starting from `ee19ec85`, changed only the Isle and four descent layouts. Restored shore caps under an edge tree and boulder, moved vegetation wholly inland, replaced the stretched cliff/columns with vanilla Desert Ruins rock geometry and shortened the interior stair flights. The final landing now uses a dry procession. The approved Heart map and its native chamber capture remain exact; all shared art/palettes/tilesets, scripts/events, persistent IDs, dimensions, warps and serialized data remain unchanged. AGENTS records the standing reference preference. [Audit, reference scope and gallery](designs/wyrmtide/terrain-review/README.md).
+
+Debug, focused existing source/allocation/art/topology checks, full native Wyrmtide walking/story/retry/capture/flash/report QA and unmodified Quickstart passed on the same final ROM. Actual stair routes cross 6/4/6/6 cells; the gallery's one-flight geometry is explicitly reflected in the fixture. Tests exposed a sideways stair entry and then an isolated depth-tablet approach during iteration; corrected the surrounds, added a source reachability assertion and reran full native QA successfully. [Machine receipt](qa/wyrmtide-terrain-review.json).
+
+New shore/descent visuals await review; the Heart approval carries forward. Public v0.0.75 is unchanged; this remains the old v0.0.70 Wyrmtide feature branch. Do not merge it over current master. Reconcile with current master and its current release/save/workflow protections before Release/current patch gates and any publication. No Release readiness, historical-owner-save or full-story claim. Preserve subsequent Porymap edits; the review helper rejects changed baseline hashes before writing.
+
 ## Regidrago cave polish — visual review (5 November 2026)
 
 **Model: GPT-6 (Codex) | Reasoning: native Regi-room composition, bounded map edits and actual emulator review.**
