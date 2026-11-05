@@ -31,12 +31,17 @@ secs=json.loads((R/'src/data/region_map/region_map_sections.json').read_text())[
 changed=subprocess.check_output(['git','diff','--name-only','HEAD','--','data/layouts','data/tilesets'],cwd=R,text=True).splitlines();assert all(x=='data/layouts/layouts.json' or 'LegendsWyrmtide_' in x or '/legends_wyrmtide/' in x or '/legends_wyrmtide_shore/' in x for x in changed),changed
 base=R/'data/tilesets/secondary/cave';sib=R/'data/tilesets/legends_wyrmtide'
 native=(base/'metatiles.bin').read_bytes();authored=(sib/'metatiles.bin').read_bytes()
-assert authored[:len(native)]==native and len(authored)==len(native)+32+8*16
+assert authored[:len(native)]==native and len(authored)==len(native)+32+17*16
 assert authored[len(native):len(native)+16]==authored[len(native)+16:len(native)+32]
 assert (sib/'metatile_attributes.bin').read_bytes()[:len(native)//8+4]==(base/'metatile_attributes.bin').read_bytes()+struct.pack('<HH',0x61,0)
 # Exact native Cave stair art, with no foreign palette or graphics allocation.
 source=struct.unpack_from('<8H',native,4*16)
 assert struct.unpack_from('<8H',authored,len(native))==source
+# Pool-only palette13 leaves native day/night slots5/12 and all old cells intact.
+for i in range(8):
+ old=struct.unpack_from('<8H',authored,(0x3a0+i-512)*16)
+ new=struct.unpack_from('<8H',authored,(0x3a8+i-512)*16)
+ assert new[:4]==(0xd1c6,0xd1c7,0xd1c7,0xd1c6) and new[4:]==old[4:]
 # Shore: exact Dewford native prefix and every referenced pixel are retained.
 from PIL import Image
 shore=R/'data/tilesets/legends_wyrmtide_shore';dew=R/'data/tilesets/secondary/dewford'

@@ -2,9 +2,28 @@
 const u32 gTilesetTiles_LegendsWyrmtideCave[] = INCGFX_U32("data/tilesets/legends_wyrmtide/tiles.png", ".4bpp.fastSmol");
 const u16 gMetatiles_LegendsWyrmtideCave[] = INCBIN_U16("data/tilesets/legends_wyrmtide/metatiles.bin");
 const u16 gMetatileAttributes_LegendsWyrmtideCave[] = INCBIN_U16("data/tilesets/legends_wyrmtide/metatile_attributes.bin");
+const u16 gTilesetPalettes_LegendsWyrmtideCave[][16] =
+{
+    INCGFX_U16("data/tilesets/secondary/cave/palettes/00.pal", ".gbapal"),
+    INCGFX_U16("data/tilesets/secondary/cave/palettes/01.pal", ".gbapal"),
+    INCGFX_U16("data/tilesets/secondary/cave/palettes/02.pal", ".gbapal"),
+    INCGFX_U16("data/tilesets/secondary/cave/palettes/03.pal", ".gbapal"),
+    INCGFX_U16("data/tilesets/secondary/cave/palettes/04.pal", ".gbapal"),
+    INCGFX_U16("data/tilesets/legends_lights/cave_night.pal", ".gbapal"),
+    INCGFX_U16("data/tilesets/secondary/cave/palettes/06.pal", ".gbapal"),
+    INCGFX_U16("data/tilesets/secondary/cave/palettes/07.pal", ".gbapal"),
+    INCGFX_U16("data/tilesets/secondary/cave/palettes/08.pal", ".gbapal"),
+    INCGFX_U16("data/tilesets/secondary/cave/palettes/09.pal", ".gbapal"),
+    INCGFX_U16("data/tilesets/secondary/cave/palettes/10.pal", ".gbapal"),
+    INCGFX_U16("data/tilesets/secondary/cave/palettes/11.pal", ".gbapal"),
+    INCGFX_U16("data/tilesets/legends_lights/cave_day.pal", ".gbapal"),
+    INCGFX_U16("data/tilesets/legends_wyrmtide/water.pal", ".gbapal"),
+    INCGFX_U16("data/tilesets/secondary/cave/palettes/14.pal", ".gbapal"),
+    INCGFX_U16("data/tilesets/secondary/cave/palettes/15.pal", ".gbapal"),
+};
 const struct Tileset gTileset_LegendsWyrmtideCave = {
     .isCompressed = TRUE, .isSecondary = TRUE,
-    .tiles = gTilesetTiles_LegendsWyrmtideCave, .palettes = gTilesetPalettes_Cave,
+    .tiles = gTilesetTiles_LegendsWyrmtideCave, .palettes = gTilesetPalettes_LegendsWyrmtideCave,
     .metatiles = gMetatiles_LegendsWyrmtideCave,
     .metatileAttributes = gMetatileAttributes_LegendsWyrmtideCave,
     .callback = InitTilesetAnim_Cave, .swapPalettes = 0x40,

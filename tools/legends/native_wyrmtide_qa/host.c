@@ -44,6 +44,7 @@ int main(int argc,char**argv){assert(argc==10);setbuf(stdout,NULL);mLogSetDefaul
  for(int i=0;i<8;i++){setup(i,1);mapIds[i]=box(6);capture(names[i]);if(i==0){key(16);key(1);frames(130);key(1);frames(80);capture("01b-briney-voyage-menu");}}
  setup(10,1|4);capture("23-open-headland-entrance");
  setup(9,1);key(64);key(1);frames(130);key(1);frames(100);capture("19-maker-inscription");key(1);frames(100);capture("20-maker-among-six");
+ setup(4,1);navigate(1,11,11);capture("26-tidal-pool");frames(16);capture("27-tidal-pool-animation");
  if(scenesOnly){puts("PASS native world scenes");c->deinit(c);free(video);return 0;}
  // Actual free movement invokes the production eight-step call hook.
  setup(8,0);for(int i=0;i<8;i++){walk(i%2?32:16);status();}frames(150);status();assert(box(12));key(1);frames(180);capture("09-unknown-number-call");dismiss(90);status();assert(box(7)&1);puts("PASS actual eight-step mystery call and one-time completion");command(3);assert(box(5)==1&&box(6)==1&&box(7));

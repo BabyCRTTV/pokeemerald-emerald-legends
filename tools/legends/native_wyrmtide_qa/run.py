@@ -30,6 +30,11 @@ finally:
  for raw in out.glob('*.rgba'):
   png=raw.with_suffix('.png');Image.frombytes('RGBA',(240,160),raw.read_bytes()).convert('RGB').save(png);captures.append(png);raw.unlink()
  private.unlink(missing_ok=True)
+# The real pool animation must survive palette isolation; sample only water pixels.
+from PIL import ImageChops
+before=Image.open(out/'26-tidal-pool.png').crop((128,0,192,64))
+after=Image.open(out/'27-tidal-pool-animation.png').crop((128,0,192,64))
+assert ImageChops.difference(before,after).getbbox(),'Pool reflections stopped animating'
 assert rom.read_bytes()==source
 proof={'version':(R/'VERSION').read_text().strip()+' + unshipped Wyrmtide review','ROM_sha256':hashlib.sha256(source).hexdigest(),'emulator':'mGBA 0.10.2 native core','scenesOnly':a.scenes_only,'passed':True,'setup':'Controlled fresh native fixtures, actual map/script/battle engine and button input; private setup payload never distributed.','limits':'Not an authentic historical owner save, natural full-story playthrough, Release-emulator or Pizza Boy test.','log':(out/'emulator.log').read_text(),'images':{p.name:hashlib.sha256(p.read_bytes()).hexdigest() for p in captures}}
 (out/'verification.json').write_text(json.dumps(proof,indent=2)+'\n');print('PASS native Wyrmtide '+('scenes' if a.scenes_only else 'story interactions')+': '+str(out))

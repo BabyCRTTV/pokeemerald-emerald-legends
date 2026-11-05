@@ -1,5 +1,13 @@
 # Development handoff
 
+## Wyrmtide water review — CI checkpoint (5 November 2026)
+
+**Model: GPT-6.1 Sol (Codex) | Reasoning: isolated indoor water colors, complete shoreline and native verification.**
+
+Owner requested the remaining interior water repair after approving the shore/entrance and Heart. Base `ac7508d8a59f7fdc21b60b488aa5e7e5dd41f916`. The second landing pool is smaller with a joined rock ledge; nine appended cells reuse all native water/rim pixels with low-contrast native deep-water blues in private palette13. Preserve native night/day slots5/12 and every other palette entry, shared asset, map, script, ID and warp. The native fixture adds a closer pool view and two real animation frames with a reflection-change check.
+
+The local environment became unavailable during refinement. Earlier local palettes were provisional (one too patterned, one accidentally flat) and their lighting check exposed raw Cave palette05 being redirected. This checkpoint reconstructs only the authorized water work from saved Git source, copies the actual runtime Cave palette array including its existing light wiring, and uses unused bank13. Do not treat previous provisional local captures as final. Existing project/night-light/source guards and native Debug/Release CI must pass; recover its real frames and visually inspect before completing this review. No release or new visual approval claim. Public v0.0.75 and the approved Heart/shore remain unchanged. This older feature branch still needs reconciliation with current master before any release.
+
 ## Wyrmtide physical entrance verified (5 November 2026)
 
 **Model: GPT-6.1 Sol (Codex) | Reasoning: verify visible seal opening and physical map-warp entry independently of dialogue.**

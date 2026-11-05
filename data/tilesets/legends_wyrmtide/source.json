@@ -11,14 +11,14 @@
   ],
   "stairs": "Exact Cave 0x204 geometry and palette 6",
   "poolMetatiles": {
-    "649": 928,
-    "657": 929,
-    "641": 930,
-    "650": 931,
-    "648": 932,
-    "620": 933,
+    "618": 935,
     "619": 934,
-    "618": 935
+    "620": 933,
+    "641": 930,
+    "648": 932,
+    "649": 928,
+    "650": 931,
+    "657": 929
   },
   "nativePondOutline": [
     200,
@@ -30,7 +30,22 @@
     217,
     218
   ],
-  "ground": "Cave 0x201 replaces the native pond\u2019s grass matte",
+  "ground": "Cave 0x201 replaces the native pond’s grass matte",
   "rim": "Existing Cave palette 6 dark/medium/light stone shades",
-  "water": "Original animated General water indices"
+  "water": "Original animated General water indices",
+  "interiorWater": {
+    "metatiles": [
+      936,
+      944
+    ],
+    "paletteBank": 13,
+    "paletteSource": "Exact existing General palette04 deep-water blues 9/10; lower contrast only",
+    "nativeRimSource": [
+      928,
+      935
+    ],
+    "pixelArtUnchanged": true,
+    "animation": "Unchanged General 432..461",
+    "nativeDayNightBanksPreserved": true
+  }
 }
