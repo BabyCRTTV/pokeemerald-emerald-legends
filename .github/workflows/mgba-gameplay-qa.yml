@@ -20,8 +20,7 @@ on:
       - 'maps/**'
       - 'VERSION'
   push:
-    # Temporary review branch: no production publication; preserve current-master workflow on integration.
-    branches: [ master, codex/wyrmtide-isle ]
+    branches: [ master ]
     paths:
       - '.github/workflows/mgba-gameplay-qa.yml'
       - 'tools/legends/mgba_gameplay_smoke.c'

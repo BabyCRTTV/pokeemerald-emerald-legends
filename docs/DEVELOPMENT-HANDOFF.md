@@ -1,12 +1,16 @@
 # Development handoff
 
-## Wyrmtide water review — CI checkpoint (5 November 2026)
+## Wyrmtide interior water — completed visual review (5 November 2026)
 
-**Model: GPT-6.1 Sol (Codex) | Reasoning: isolated indoor water colors, complete shoreline and native verification.**
+**Model: GPT-6.1 Sol (Codex) | Reasoning: native animated water, loaded palette isolation and complete shoreline joins.**
 
-Owner requested the remaining interior water repair after approving the shore/entrance and Heart. Base `ac7508d8a59f7fdc21b60b488aa5e7e5dd41f916`. The second landing pool is smaller with a joined rock ledge; nine appended cells reuse all native water/rim pixels with low-contrast native deep-water blues in private palette13. Preserve native night/day slots5/12 and every other palette entry, shared asset, map, script, ID and warp. The native fixture adds a closer pool view and two real animation frames with a reflection-change check.
+Owner approved the Heart, shore and physical entrance, then requested the remaining interior water repair. From `ac7508d8`, reduced Descent2's pool from 5×5 to 4×4, joined its lower-left rock ledge and appended nine contextual water/rim metatiles using existing native pixels. Four distinct RGB555 shades come from vanilla General/Cave palettes. A private sibling palette uses loaded, previously unused bank11; native night/day slots5/12 and all other runtime palette references remain exact. No shared artwork, other layouts, sprites, events, IDs, warps or save structures changed. Approved Heart RGB capture remains exact.
 
-The local environment became unavailable during refinement. Earlier local palettes were provisional (one too patterned, one accidentally flat) and their lighting check exposed raw Cave palette05 being redirected. This checkpoint reconstructs only the authorized water work from saved Git source, copies the actual runtime Cave palette array including its existing light wiring, and uses unused bank13. Do not treat previous provisional local captures as final. Existing project/night-light/source guards and native Debug/Release CI must pass; recover its real frames and visually inspect before completing this review. No release or new visual approval claim. Public v0.0.75 and the approved Heart/shore remain unchanged. This older feature branch still needs reconciliation with current master before any release.
+Final compiled game source `733d93908d203f2ded6b8d182c98269232349472`: Debug/Release builds, full native Wyrmtide routes/gates/retries/capture/entrance QA, actual water animation pixel-change check and existing Debug/Release Continue smoke checks passed in [native run42077224680](https://github.com/BabyCRTTV/pokeemerald-emerald-legends/actions/runs/42077224680). Palette/source guards subsequently passed at `6ff1dc82` in run42077581017; only the guard test and recovery workflow changed after the compiled source. [Actual mGBA gallery](designs/wyrmtide/water-review/README.md), [bound verification receipt](qa/wyrmtide-water-review.json).
+
+Local execution was unavailable; committed-source CI builds and hash-verified native artifacts supplied the reviewed frames. Earlier scratch palettes12/13 and provisional lighting manifests are obsolete: bank13 is outside the field loader; never restore those prototypes. Canonical binary Git hashes exposed and corrected a transport-transcoded map before final verification. The authoring helper refuses changed baseline hashes. Temporary branch triggers and artifact-recovery workflow were removed after success.
+
+Water visuals await owner review. Carry the approved Heart/shore/entrance forward. Public v0.0.75 remains unchanged; captures are v0.0.70 plus unshipped Wyrmtide Debug fixtures. Reconcile this older branch with current master and its protections before current candidate/BPS gates and any publication. No historical-owner-save, natural full-story, Release Wyrmtide playthrough or release-readiness claim.
 
 ## Wyrmtide physical entrance verified (5 November 2026)
 
