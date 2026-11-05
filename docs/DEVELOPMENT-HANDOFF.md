@@ -1,5 +1,13 @@
 # Development handoff
 
+## Wyrmtide stairs — authoring checkpoint (5 November 2026)
+
+**Model: GPT-6.1 Sol (Codex) | Reasoning: one continuous native stone flight, floor landings and unchanged movement semantics.**
+
+Owner accepted that the water improved and explicitly requested correction of the still ladder-like stairs. Source is `792873f1`. Current defect: the complete narrow Cave 0x204 tile is repeated sideways, duplicating dark side edges. Prepare bounded sibling-only variants from those native tread/edge pixels and Cave 0x201 floor pixels: outer edges only, four risers, native material shades and top/bottom floor landings. Preserve all collisions/elevations, warp behavior/coordinates, water, approved Heart/island, shared art and saved data. This is an authorized refinement, not publication approval.
+
+Local execution environment is unavailable. Use the pinned authoring helper and temporary read-only CI authoring workflow to recover canonical generated source bytes, then commit those exact blobs with source/native guards and verify an actual compiled game in CI. No completed stairs, reviewed native screenshot or gameplay success claim yet. Earlier restored scratch copies may contain obsolete water prototypes; GitHub remains authoritative. Final visual review and current-master reconciliation are still required before release.
+
 ## Wyrmtide interior water — completed visual review (5 November 2026)
 
 **Model: GPT-6.1 Sol (Codex) | Reasoning: native animated water, loaded palette isolation and complete shoreline joins.**

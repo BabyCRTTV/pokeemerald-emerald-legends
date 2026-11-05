@@ -1,0 +1,24 @@
+name: Wyrmtide stair authoring review
+on:
+  push:
+    branches: [ codex/wyrmtide-isle ]
+    paths:
+      - '.github/workflows/wyrmtide-stair-authoring.yml'
+      - 'tools/legends/refine_wyrmtide_stairs.py'
+permissions:
+  contents: read
+jobs:
+  author:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - run: python3 -m pip install Pillow==11.3.0
+      - name: Author only the pinned native stair review and emit exact source blobs
+        run: python3 tools/legends/refine_wyrmtide_stairs.py --apply
+      - uses: actions/upload-artifact@v4
+        with:
+          name: wyrmtide-stair-authoring
+          path: |
+            build/stair-authoring/*.json
+            build/stair-authoring/*.png
