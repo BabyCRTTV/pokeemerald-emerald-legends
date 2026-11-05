@@ -1,0 +1,505 @@
+{
+  "model": "GPT-6.1 Sol (Codex)",
+  "approvedBaseline": "f4e6cae2b0e5bde0eb19ce482a74d2ff220b52f0",
+  "gameSource": "ea8fef3eb86e1b0106922689700a60bd41a3e8e6",
+  "version": "0.0.70 + unshipped Wyrmtide review",
+  "sourceBlobs": {
+    ".github/workflows/legends-checks.yml": "e820e72a0882d56e8d3255b04eca5750432e9fbd",
+    "include/constants/event_objects.h": "1da3a9a06f1e8fdefd3202366a0ab89d26b95342",
+    "data/scripts/legends_wyrmtide.inc": "2257400c5d0bd03f906ceffc2466ee61d27fd81b",
+    "src/data/wild_encounters.json": "88618cac15d127131068462e581b4f7ec8fc732a",
+    "src/data/object_events/object_event_graphics.h": "49c7bee058ab92455f5e04c1da12f3a03698d6a9",
+    "src/data/object_events/object_event_pic_tables.h": "ea68ccd8a53dafbacb1d0063fee70ad3a0254198",
+    "src/data/object_events/object_event_graphics_info.h": "b63b95b75c20379a4912b591d5084c4d27df22e6",
+    "src/event_object_movement.c": "0ef0b5b769d4291c36d920b5085798ed86ac3404",
+    "test/legends-wyrmtide.test.py": "c5542f803e06b21c2a7a5d77aa876003dd678761",
+    "tools/legends/refine_wyrmtide_passages.py": "ede34cacc0cbd35adf4b48fdcbebae3a1945dfa5",
+    "tools/legends/native_wyrmtide_qa/arm.c": "e409a1a26fb2075cdccf10d6892b037c2fa3ff17",
+    "tools/legends/native_wyrmtide_qa/host.c": "2ae6937a44df364769e834602ac8fd97dbc7e758",
+    "tools/legends/native_wyrmtide_qa/run.py": "3941eb56c8db2f664892491ba4a921e1d8805899",
+    "data/layouts/LegendsWyrmtide_Descent1/map.bin": "ab624428232d730af4c8415b52959494e4851ac0",
+    "data/layouts/LegendsWyrmtide_Descent2/map.bin": "3983cc875fd7b6e9b962099bc77a09cdefef7ff9",
+    "data/layouts/LegendsWyrmtide_Descent3/map.bin": "f9ce446371d684124a4107e30f076a6c413e4f2b",
+    "data/layouts/LegendsWyrmtide_Descent4/map.bin": "c3cb66f102c0bb937c27f5bad1dc8a6258829677",
+    "data/layouts/LegendsWyrmtide_Heart/map.bin": "ee39a00cf2ad40076d468c26c37075d75440ddae",
+    "data/maps/LegendsWyrmtide_Descent1/map.json": "998b22d7f2a4ed9dbf8773296f2e6867ccc8334a",
+    "data/maps/LegendsWyrmtide_Descent2/map.json": "e1493b5251410c6c169a627b927444e6ccc8c19b",
+    "data/maps/LegendsWyrmtide_Descent3/map.json": "f6ea2a408868f8214100eaf24723360e8ff5033a",
+    "data/maps/LegendsWyrmtide_Heart/map.json": "9884bda537f0603a711b8624dd79279c3057257f",
+    "data/tilesets/legends_wyrmtide/metatiles.bin": "2e267d2a6c8b4cece42cb2f13ccc59f0fc0803f0",
+    "data/tilesets/legends_wyrmtide/metatile_attributes.bin": "95ca65e316359eceb8eeb5bad800b01af2820a49",
+    "data/tilesets/legends_wyrmtide/source.json": "72fc8c74516414515683894a9d466f1b372e88bc",
+    "data/tilesets/legends_wyrmtide/tiles.png": "c240b9e8f18b5df95988b3346be57c9212588d9f"
+  },
+  "native": {
+    "version": "0.0.70 + unshipped Wyrmtide review",
+    "ROM_sha256": "bf5e3670080379c2655d4c375a2e3cec336a2dc6caf29cc838b7c97d5b5000dc",
+    "emulator": "mGBA 0.10.2 native core",
+    "protectedHeartTerrainOutsideExitExact": true,
+    "authorizedHeartSpriteChange": "Cave-only 64px native art, anchor y8; follower art unchanged",
+    "scenesOnly": false,
+    "walkthroughRecorded": false,
+    "passed": true,
+    "setup": "Controlled fresh native fixtures, actual map/script/battle engine and button input; private setup payload never distributed.",
+    "limits": "Not an authentic historical owner save, natural full-story playthrough, Release-emulator or Pizza Boy test.",
+    "log": "map=0/11 xy=11,9 flags=01 maker=0 battle=0 script=0 party=1 outcome=0\nmap=76/4 xy=14,21 flags=03 maker=0 battle=0 script=0 party=1 outcome=0\nmap=76/4 xy=16,11 flags=03 maker=0 battle=0 script=0 party=1 outcome=0\nmap=76/5 xy=13,9 flags=01 maker=0 battle=0 script=0 party=1 outcome=0\nmap=76/6 xy=6,11 flags=01 maker=0 battle=0 script=0 party=1 outcome=0\nmap=76/7 xy=9,11 flags=01 maker=0 battle=0 script=0 party=1 outcome=0\nmap=76/8 xy=9,11 flags=01 maker=0 battle=0 script=0 party=1 outcome=0\nmap=76/9 xy=11,9 flags=01 maker=0 battle=0 script=0 party=1 outcome=0\nmap=76/4 xy=16,12 flags=07 maker=0 battle=0 script=0 party=1 outcome=0\nmap=76/4 xy=23,15 flags=03 maker=0 battle=0 script=0 party=1 outcome=0\nmap=76/6 xy=6,11 flags=01 maker=0 battle=0 script=0 party=1 outcome=0\nmap=76/6 xy=11,8 flags=01 maker=0 battle=0 script=0 party=1 outcome=0\nmap=76/6 xy=6,11 flags=01 maker=0 battle=0 script=0 party=1 outcome=0\nmap=76/6 xy=6,12 flags=01 maker=0 battle=0 script=0 party=1 outcome=0\nmap=76/8 xy=9,11 flags=01 maker=0 battle=0 script=0 party=1 outcome=0\nmap=76/8 xy=9,10 flags=01 maker=0 battle=0 script=0 party=1 outcome=0\nmap=76/8 xy=9,11 flags=01 maker=0 battle=0 script=0 party=1 outcome=0\nmap=76/8 xy=9,6 flags=01 maker=0 battle=0 script=0 party=1 outcome=0\nPASS actual southward walking descent captured through the upper flight\nmap=76/5 xy=13,9 flags=05 maker=0 battle=0 script=0 party=1 outcome=0\nmap=76/5 xy=8,4 flags=05 maker=0 battle=0 script=0 party=1 outcome=0\nmap=76/5 xy=11,19 flags=05 maker=0 battle=0 script=0 party=1 outcome=0\nmap=76/9 xy=11,9 flags=05 maker=0 battle=0 script=0 party=1 outcome=0\nmap=76/9 xy=11,16 flags=05 maker=0 battle=0 script=0 party=1 outcome=0\nmap=76/5 xy=13,9 flags=05 maker=0 battle=0 script=0 party=1 outcome=0\nmap=76/5 xy=8,8 flags=05 maker=0 battle=0 script=0 party=1 outcome=0\nmap=76/6 xy=6,11 flags=05 maker=0 battle=0 script=0 party=1 outcome=0\nmap=76/6 xy=12,17 flags=05 maker=0 battle=0 script=0 party=1 outcome=0\nmap=76/7 xy=9,11 flags=05 maker=0 battle=0 script=0 party=1 outcome=0\nmap=76/7 xy=13,19 flags=05 maker=0 battle=0 script=0 party=1 outcome=0\nmap=0/11 xy=8,11 flags=00 maker=0 battle=0 script=0 party=1 outcome=0\nmap=0/11 xy=9,11 flags=00 maker=0 battle=0 script=0 party=1 outcome=0\nmap=0/11 xy=8,11 flags=00 maker=0 battle=0 script=0 party=1 outcome=0\nmap=0/11 xy=9,11 flags=00 maker=0 battle=0 script=0 party=1 outcome=0\nmap=0/11 xy=8,11 flags=00 maker=0 battle=0 script=0 party=1 outcome=0\nmap=0/11 xy=9,11 flags=00 maker=0 battle=0 script=0 party=1 outcome=0\nmap=0/11 xy=8,11 flags=00 maker=0 battle=0 script=0 party=1 outcome=0\nmap=0/11 xy=9,11 flags=00 maker=0 battle=0 script=0 party=1 outcome=0\nmap=0/11 xy=8,11 flags=00 maker=0 battle=0 script=1 party=1 outcome=0\nmap=0/11 xy=8,11 flags=00 maker=0 battle=0 script=1 party=1 outcome=0\nmap=0/11 xy=8,11 flags=01 maker=0 battle=0 script=0 party=1 outcome=0\nPASS actual eight-step mystery call and one-time completion\nmap=0/11 xy=11,9 flags=01 maker=0 battle=0 script=0 party=1 outcome=0\nPASS old Dewford cached-template flash/load repair preserves native NPCs\nmap=76/4 xy=14,21 flags=03 maker=0 battle=0 script=0 party=1 outcome=0\nmap=76/4 xy=10,18 flags=03 maker=0 battle=0 script=0 party=1 outcome=0\nmap=76/4 xy=23,15 flags=03 maker=0 battle=0 script=0 party=1 outcome=0\nmap=76/4 xy=19,21 flags=03 maker=0 battle=0 script=0 party=1 outcome=0\nmap=76/4 xy=16,11 flags=03 maker=0 battle=0 script=0 party=1 outcome=0\nPASS actual shore-to-all-three-tablets-to-seal walking route\nmap=76/4 xy=16,11 flags=03 maker=0 battle=0 script=0 party=1 outcome=0\nmap=76/4 xy=16,11 flags=03 maker=0 battle=0 script=0 party=2 outcome=0\nmap=76/5 xy=8,4 flags=07 maker=1 battle=0 script=1 party=2 outcome=0\nPASS party/egg/fainted gate, actual opening and first stair entry, native flash flags\nPASS descent 1 route crosses 6 native stair cells\nmap=76/6 xy=8,3 flags=07 maker=1 battle=0 script=0 party=2 outcome=0\nPASS descent 2 route crosses 4 native stair cells\nmap=76/7 xy=8,3 flags=07 maker=1 battle=0 script=0 party=2 outcome=0\nPASS descent 3 route crosses 6 native stair cells\nmap=76/8 xy=8,3 flags=07 maker=1 battle=0 script=0 party=2 outcome=0\nPASS descent 4 route crosses 6 native stair cells\nmap=76/9 xy=11,17 flags=07 maker=1 battle=0 script=0 party=2 outcome=0\nmap=76/9 xy=11,5 flags=07 maker=1 battle=0 script=0 party=2 outcome=0\nPASS actual walking and reading of the final inscription\nmap=76/9 xy=11,9 flags=07 maker=1 battle=0 script=0 party=2 outcome=0\nmap=76/8 xy=11,20 flags=07 maker=1 battle=0 script=0 party=2 outcome=0\nmap=76/8 xy=11,20 flags=07 maker=1 battle=0 script=0 party=2 outcome=0\nmap=76/7 xy=11,20 flags=07 maker=1 battle=0 script=0 party=2 outcome=0\nmap=76/7 xy=13,19 flags=07 maker=1 battle=0 script=0 party=2 outcome=0\nmap=76/6 xy=11,20 flags=07 maker=1 battle=0 script=0 party=2 outcome=0\nmap=76/5 xy=11,20 flags=07 maker=1 battle=0 script=0 party=2 outcome=0\nmap=76/5 xy=13,19 flags=07 maker=1 battle=0 script=0 party=2 outcome=0\nmap=76/4 xy=16,11 flags=07 maker=1 battle=0 script=0 party=2 outcome=0\nPASS all four descent maps, both stair directions, both depth inscriptions and surface exit\nmap=76/5 xy=8,3 flags=07 maker=1 battle=0 script=0 party=2 outcome=0\nmap=76/4 xy=16,11 flags=07 maker=1 battle=0 script=0 party=2 outcome=0\nPASS actual open-door walking entry and native stair return\nmap=76/5 xy=13,9 flags=05 maker=0 battle=0 script=0 party=1 outcome=0\nmap=76/4 xy=16,11 flags=07 maker=0 battle=0 script=0 party=1 outcome=0\nmap=76/6 xy=6,11 flags=05 maker=0 battle=0 script=0 party=1 outcome=0\nmap=76/5 xy=11,20 flags=05 maker=0 battle=0 script=0 party=1 outcome=0\nmap=76/7 xy=9,11 flags=05 maker=0 battle=0 script=0 party=1 outcome=0\nmap=76/6 xy=11,20 flags=05 maker=0 battle=0 script=0 party=1 outcome=0\nmap=76/8 xy=9,11 flags=05 maker=0 battle=0 script=0 party=1 outcome=0\nmap=76/7 xy=11,20 flags=05 maker=0 battle=0 script=0 party=1 outcome=0\nPASS both active columns of all four widened upper return stairwells\nmap=76/9 xy=11,9 flags=05 maker=0 battle=0 script=0 party=1 outcome=0\nmap=76/9 xy=11,9 flags=0d maker=0 battle=0 script=0 party=1 outcome=4\nmap=76/9 xy=11,9 flags=1d maker=0 battle=0 script=0 party=1 outcome=1\nmap=76/9 xy=11,9 flags=1d maker=0 battle=0 script=0 party=1 outcome=4\nPASS escape, defeat and actual same-sprite rematch\nmap=76/9 xy=11,9 flags=05 maker=0 battle=0 script=0 party=1 outcome=0\nmap=76/9 xy=11,9 flags=3d maker=0 battle=0 script=0 party=2 outcome=7\nPASS actual Regidrago capture, caught/calmed flags, party award and flash persistence\nmap=76/9 xy=11,9 flags=3d maker=0 battle=0 script=0 party=2 outcome=7\nmap=76/4 xy=14,21 flags=17 maker=0 battle=0 script=0 party=1 outcome=0\nmap=0/11 xy=11,10 flags=57 maker=0 battle=0 script=0 party=1 outcome=0\nPASS Briney report, quest completion and actual return voyage\nmap=76/5 xy=8,5 flags=05 maker=0 battle=0 script=0 party=1 outcome=0\nPASS floor1 actual walking encounter after13 steps, species75 level52, native live roster match\nmap=76/5 xy=8,5 flags=05 maker=0 battle=0 script=0 party=1 outcome=4\nmap=76/6 xy=8,5 flags=05 maker=0 battle=0 script=0 party=1 outcome=0\nPASS floor2 actual walking encounter after56 steps, species302 level55, native live roster match\nmap=76/6 xy=8,6 flags=05 maker=0 battle=0 script=0 party=1 outcome=4\nmap=76/7 xy=8,5 flags=05 maker=0 battle=0 script=0 party=1 outcome=0\nPASS floor3 actual walking encounter after17 steps, species621 level58, native live roster match\nmap=76/7 xy=8,6 flags=05 maker=0 battle=0 script=0 party=1 outcome=4\nmap=76/8 xy=8,5 flags=05 maker=0 battle=0 script=0 party=1 outcome=0\nPASS floor4 actual walking encounter after12 steps, species42 level61, native live roster match\nmap=76/8 xy=8,5 flags=05 maker=0 battle=0 script=0 party=1 outcome=4\nmap=76/5 xy=8,5 flags=05 maker=0 battle=0 script=0 party=1 outcome=0\nPASS native table-generated rare dragon preview, species371 level48\n",
+    "images": {
+      "33-recessed-upper-passage.png": "e04b84e4710db49dd5709b73696ac01ac923d1ce9d42b381cecbbb668f69fc30",
+      "30-descending-14.png": "6af7df91708f7f8da91c6731450c1173b53a292691791dd14045c84f4994fd6d",
+      "01b-briney-voyage-menu.png": "7dfe63ecdfd1bab074195b7092647fabc91742377f73fcc724926118d657fdf5",
+      "11-actual-arrival.png": "49e2b98d945e1cc6fb82cc06e0d883f726bbc5efbdf954f795ef2d8d44f21092",
+      "30-descending-08.png": "0114258b74a95820b1db3f7f504f26ae65c1b1cb20a388a8a4bbfee82c3a112f",
+      "03-ancient-seal.png": "a2c1d65648b12ecdffbc8a355b590a824eb54bcf3625a5e8d3c604adfd4e212c",
+      "29-wide-stone-flight.png": "1329c15ccb7d6f7c8025b8a9a7242f22375e2eaafce87c00c9023d10f2a4b72a",
+      "15c-defeated-retry.png": "9de21414ab6d46204ca9947439e45eca3111a895e4e6c02588547d02dbf71b6c",
+      "30-descending-20.png": "7e9de723f3b7cbb75cf7942a1ac60c7ff598b11a2d6bbd136ca7416f29460c0a",
+      "26-tidal-pool.png": "1daf0cbc2199db1eb9e71eb28fd5d90be1b56752793d1594edafb7b2e9889e9c",
+      "21-walked-ruined-court.png": "3adb6ac6db923dcec96e48f705c6b84aecad7ac86ee381263b7799de76a7532c",
+      "30-descending-03.png": "9fd53d3ebddb8bd2f3ea7dd8dcb2b3d04444338c8d194c0aaf12ac4b58b5f73f",
+      "18-report-and-return.png": "6e00cda78c232fc23ab0d9d36e634d44b888b24b44ca7a1f471fde507d214a54",
+      "34-south-exit-approach.png": "9ed51de355799c64a2eaf9d4b56ce2f806516e64c01fffaa27cd1f352e0e8c60",
+      "04-stair-descent.png": "c260d31ba8f4ab3a935d07898d45706d08652f4a5fd4f8e941ca29ac2a104803",
+      "28-stone-stair-flight.png": "edabf4d36f0c9427a4d23c9d83c3eaecc195b63360b3cd9d585699ea1d795842",
+      "10-departure-choice.png": "4396ede62374bf8ccaa9d0c249999f21ff0b6084d6769f4a8c8845e910e1cf11",
+      "25-returned-through-entrance.png": "b5b86030027fc5b38bc8da2bd86bef437f7758a5062778c633ee63891c1673b7",
+      "27-tidal-pool-animation.png": "568f189b804b219d8cd0e8cfd1ec0129450adf80f2d2e4bca4266d0cd2c27134",
+      "30-descending-23.png": "f08aae23571d533419ae78892f7044984cd2c999e46a2f72c522c6681a9f8b84",
+      "30-descending-06.png": "aee4c4814c74b2652e7649250f3b5fdc7ee62519fa6be0a92e2dc232e1b9102b",
+      "30-descending-21.png": "1ac5f7ec6e1f0f4d5f1e63d10ca8613ba98501e68d087c2ae54011c9c0ead170",
+      "30-descending-09.png": "cabca21e4af81c3cf1a081e219166b428f86ca99a7acfeb1ba0105688aae4168",
+      "30-descending-18.png": "24d716409251935036055b4ea7126813f40b8faa0b4c5836adc566d4ca8426c6",
+      "24-walked-open-entrance.png": "a57ed86523906f9b2bf451aed292030d13b044f2e16e0bd89f8b83a27af4fcc7",
+      "40-tidal-lore.png": "afa014e10c86f0f330b2361c29dbdebab0d0d70143701855f80715d8f7243464",
+      "14b-deepest-arrival.png": "4de2e33c9e5451b71a443fed91a337d1d2eba27c3fbd7759e61de932d61116b1",
+      "42-deep-lore.png": "8cc4ec40e9725efda195451e628b0b1b9d0623ad45672196021be2532287ddf8",
+      "12-sealed-without-maker.png": "69b2c8073a8b1c13bfed1cd68e3d4524e7d56d64ee336bb0a3b5feea7cd696de",
+      "38-threshold-lore.png": "8fb978970c51d3b125bae9e0938bf9e4be6692aec7d7d12b7af67722e61de4f8",
+      "43-wild-floor-4.png": "d0f4a71df306b545f72c7a581d1117796abed7ddca50a1ae42d2499fe736067a",
+      "30-descending-17.png": "d3a657ff3c13584261cd0f22c5060112d1d89776a0aa0eed6b4cc309d59cac9d",
+      "35-large-regidrago.png": "6b404722922267dca294de9134bea6c9e3313b02ca887a5f130f5d8922b3cf62",
+      "30-descending-00.png": "dbfae05ec0f3b5e0e0da926b60cec20a0290c22da383ffb6a146ffd7da6f30fd",
+      "30-descending-12.png": "ce7130730b87ef7b5540f96ca6fbfda23dea0814f7f4d88755e13fbe38ccf773",
+      "22-walked-dragon-dais.png": "29a6bb966d7d429a94fc1681ad1d19f379b14c0405a8fe7bca67503506b08fc4",
+      "09-unknown-number-call.png": "e28153037a3ef24a33c249662de5eb6a52d378abe0c3dae9f6a3d94d5806bbd7",
+      "15b-escaped-retry.png": "9de21414ab6d46204ca9947439e45eca3111a895e4e6c02588547d02dbf71b6c",
+      "30-descending-22.png": "59448997511e0075c93220d721b506cd56e147850901b0779216bf7626be564f",
+      "30-descending-07.png": "468d8975351b74a2f7f82314c7f6f88c19bc2ba4f132128289ee16362281cfe1",
+      "30-descending-10.png": "e75b1105e6f98007f68952eaccca51f9ab1adf855d5df3da697bbc41b59192db",
+      "08-slumbering-regidrago.png": "6b404722922267dca294de9134bea6c9e3313b02ca887a5f130f5d8922b3cf62",
+      "37-threshold-inscription.png": "c2f6f709f653246021e8ea31292e6b91527555ed2cca18a3f07cc55b89d1d545",
+      "19-maker-inscription.png": "441d31e7a485d303283d75441e849d66c2d4c27e214297a2059b4d4162034386",
+      "06-third-landing.png": "085958db868c9720faeb0ebd13152e7835de08cb14adccfd6c965c6854b4c096",
+      "41-deep-inscription.png": "7b5290be6a2d5115d41a828143d84011a8aeb64b590ee36385471322d3d9ec58",
+      "43-wild-floor-3.png": "590201bd064ad08c710d4d9107cff6417e6c100a01f32bf3d6008fa7c5adbea3",
+      "44-rare-dragon-encounter.png": "74e9acb8d79ceb22ef504eca6aea9ec0cf1af0a23b6b7a694bdf22dd26df701e",
+      "30-descending-11.png": "00f40f695f31cc3652c459ac70ed89172ae5b740840965f52d68c67e8c1efeb0",
+      "05-second-landing.png": "505073e7029b4254f7a3b7d5aa3c0820bfc992b2de935c1d8a09a1ad0c22c191",
+      "01-dewford-dock.png": "3aa77549b3f0964adf63319416f252070bb2a5cbd01b87109fe9424db87d5b69",
+      "39-tidal-inscription.png": "e5d19c581d12e2447ac63a86d10cc0538dbc3a6053a889b9aa97e07fdf37a3ed",
+      "20-maker-among-six.png": "7f154cdc9a6b31720c8db12b47d70b5abd6b971cb2585c43a592dccf3cc0867b",
+      "14-first-descent-arrival.png": "37fbee053522bd22ea70f6c374d9dc70fd44e79f5b5e3d729f4d8beb8931af64",
+      "16-regidrago-battle.png": "8aae73a2a742fe8dc28472163145605cff50632f7ea03684afa5f927eaae76fa",
+      "30-descending-19.png": "d58537b34375ac3c2c2239593729dad84b38a8b3ff55e139954ee19bfc642e29",
+      "30-descending-16.png": "e666e30862dd65970ba78519f0469c171a9dde4ae65be8c94156bee6d3e992c4",
+      "30-descending-01.png": "74890d0361938a13030803e4c839b9ac51d09316a27dd6c1967a849211d07c86",
+      "23-open-headland-entrance.png": "fd56556118c64f54caf9e80c5b589f473485f37433f503b3172d9dd2fe2ce03a",
+      "43-wild-floor-2.png": "d716452408a7c7a1def3094da18646341cfc4f21e599a3c2bc57c308096eda38",
+      "30-descending-13.png": "c9c92aedc66c81f3f3ae233aaae7a8a99b544c30510ea7ce444b72455539f445",
+      "02-island-landing.png": "a4e8a9c348d8c4d371ea1257ae15a1f3e1d190ad3aaf6a8541ee3eab5dbe93d3",
+      "30-descending-15.png": "1e5ea9c9d671f5019cbc5d10f69e8908e10a5638af59c688c3ddc7860ec799a7",
+      "15-sleeping-dragon-prompt.png": "488decfe6813cc362649e2737deeff2fd24964a3e08e898308bea3c17fa213e7",
+      "07-fourth-landing.png": "cf99ae5a11f6cd86e8b0b7f300653e16f6af47e39e2918bb046ff7579fd8e58e",
+      "36-sanctuary-exit.png": "62a21df8b7162d8b981182cbeeabefdaf62290eed97183771f77a9d353230f20",
+      "30-descending-05.png": "09362fe4ce14407f8f011e9fb524755b2f84482cfc16c1c8605fe02eb58e285c",
+      "30-descending-04.png": "01f803c440bc9ec060a0f0414ed98e87301a3c4735e0ebb995e5f7adae8a6d50",
+      "43-wild-floor-1.png": "1dcdb04cdcc855375a7ffae6bb2dddfc92b1ca1962dddd2b6c78189117c1d739",
+      "13-maker-opens-seal.png": "09723da8f39e291ef6ee05a475733cfdd20d33fb88dec612dc9310d6af0713c4",
+      "30-descending-02.png": "177f3c927e734870b76ff9d74d91398a1e6ee6c2eecc14ccc4fe6bd89875ec43",
+      "17-capture-resolved.png": "344b12deb7cc1a1689446c191c97125c78d4a23bd6b416dc6983dfc2fcc64ff6"
+    }
+  },
+  "quickstart": {
+    "model": "GPT-6 (High)",
+    "version": "0.0.70",
+    "emulator": "Ubuntu libmGBA 0.10.x, native core",
+    "build": "Debug",
+    "rom_sha256": "bf5e3670080379c2655d4c375a2e3cec336a2dc6caf29cc838b7c97d5b5000dc",
+    "ROM_unmodified": true,
+    "RAM_writes_by_test": false,
+    "test_scope": "Title SELECT Quickstart -> overworld; two live 240x160 frames",
+    "not_tested": "Research dialogue/Weather Institute/Champion conversations through normal save progression, Release run, historical saves and full playthrough.",
+    "captures": [
+      {
+        "name": "living-hoenn-gameplay",
+        "colors": 26
+      },
+      {
+        "name": "living-hoenn-interaction",
+        "colors": 26
+      }
+    ]
+  },
+  "beforeInputs": {
+    "data/tilesets/legends_wyrmtide/metatiles.bin": "380e87f90337a945d90f735bb5893eb3b8c3385d",
+    "data/tilesets/legends_wyrmtide/metatile_attributes.bin": "0b3ce7209a3f9f9f37f5f53361e9384febbca152",
+    "data/tilesets/legends_wyrmtide/source.json": "c14e662e8f01378de210a69085cd8dee03b39934",
+    "src/data/wild_encounters.json": "54df9516c48e1492d902c3acbf22f4ed6f5b38e5",
+    "data/scripts/legends_wyrmtide.inc": "b534a33bf9ace3cd365d73f2c3ef6f7256b2d325",
+    "data/maps/LegendsWyrmtide_Heart/map.json": "c38f4f7276376b3ddb1ad7b0d68579cfb88cf66c",
+    "data/layouts/LegendsWyrmtide_Heart/map.bin": "0a28989e98a1fe5aced3323344f9b4fbc222c523",
+    "data/layouts/LegendsWyrmtide_Descent1/map.bin": "ce1af4da60a76e50f5007d050efc8f44f48cae4e",
+    "data/layouts/LegendsWyrmtide_Descent2/map.bin": "aab8ced4bd5179cb6708df38ed81bbc2dfc5c315",
+    "data/layouts/LegendsWyrmtide_Descent3/map.bin": "33c591442bbb1bc17d11141dc44bf37047974e5d",
+    "data/layouts/LegendsWyrmtide_Descent4/map.bin": "6c3ab2d2bb6bc2ffb428e7f024e9030db175974e",
+    "data/maps/LegendsWyrmtide_Descent1/map.json": "c8ec6e46f648ea41034a5f4a24c82e22cc36e52a",
+    "data/maps/LegendsWyrmtide_Descent2/map.json": "e8687bb478acfc877fa2addc7715b9291f680c82",
+    "data/maps/LegendsWyrmtide_Descent3/map.json": "947c24a1185399b386e1c228ac88bb2f228b3a1d",
+    "data/maps/LegendsWyrmtide_Descent4/map.json": "569e9cd7f84473512a7a8a2fc774747c34ad2b22"
+  },
+  "encounters": [
+    {
+      "map": "MAP_LEGENDS_WYRMTIDE_DESCENT1",
+      "base_label": "gLegendsWyrmtideDescent1",
+      "land_mons": {
+        "encounter_rate": 8,
+        "mons": [
+          {
+            "min_level": 48,
+            "max_level": 54,
+            "species": "SPECIES_GOLBAT"
+          },
+          {
+            "min_level": 48,
+            "max_level": 54,
+            "species": "SPECIES_GRAVELER"
+          },
+          {
+            "min_level": 48,
+            "max_level": 54,
+            "species": "SPECIES_GOLBAT"
+          },
+          {
+            "min_level": 48,
+            "max_level": 54,
+            "species": "SPECIES_GRAVELER"
+          },
+          {
+            "min_level": 48,
+            "max_level": 54,
+            "species": "SPECIES_SABLEYE"
+          },
+          {
+            "min_level": 48,
+            "max_level": 54,
+            "species": "SPECIES_MAWILE"
+          },
+          {
+            "min_level": 48,
+            "max_level": 54,
+            "species": "SPECIES_NOSEPASS"
+          },
+          {
+            "min_level": 48,
+            "max_level": 54,
+            "species": "SPECIES_CARBINK"
+          },
+          {
+            "min_level": 48,
+            "max_level": 54,
+            "species": "SPECIES_BAGON"
+          },
+          {
+            "min_level": 48,
+            "max_level": 54,
+            "species": "SPECIES_SABLEYE"
+          },
+          {
+            "min_level": 48,
+            "max_level": 54,
+            "species": "SPECIES_GIBLE"
+          },
+          {
+            "min_level": 48,
+            "max_level": 54,
+            "species": "SPECIES_ONIX"
+          }
+        ]
+      }
+    },
+    {
+      "map": "MAP_LEGENDS_WYRMTIDE_DESCENT2",
+      "base_label": "gLegendsWyrmtideDescent2",
+      "land_mons": {
+        "encounter_rate": 8,
+        "mons": [
+          {
+            "min_level": 50,
+            "max_level": 56,
+            "species": "SPECIES_GOLBAT"
+          },
+          {
+            "min_level": 50,
+            "max_level": 56,
+            "species": "SPECIES_GRAVELER"
+          },
+          {
+            "min_level": 50,
+            "max_level": 56,
+            "species": "SPECIES_GOLBAT"
+          },
+          {
+            "min_level": 50,
+            "max_level": 56,
+            "species": "SPECIES_GRAVELER"
+          },
+          {
+            "min_level": 50,
+            "max_level": 56,
+            "species": "SPECIES_SABLEYE"
+          },
+          {
+            "min_level": 50,
+            "max_level": 56,
+            "species": "SPECIES_MAWILE"
+          },
+          {
+            "min_level": 50,
+            "max_level": 56,
+            "species": "SPECIES_NOSEPASS"
+          },
+          {
+            "min_level": 50,
+            "max_level": 56,
+            "species": "SPECIES_CARBINK"
+          },
+          {
+            "min_level": 50,
+            "max_level": 56,
+            "species": "SPECIES_NOIBAT"
+          },
+          {
+            "min_level": 50,
+            "max_level": 56,
+            "species": "SPECIES_SABLEYE"
+          },
+          {
+            "min_level": 50,
+            "max_level": 56,
+            "species": "SPECIES_AXEW"
+          },
+          {
+            "min_level": 50,
+            "max_level": 56,
+            "species": "SPECIES_ONIX"
+          }
+        ]
+      }
+    },
+    {
+      "map": "MAP_LEGENDS_WYRMTIDE_DESCENT3",
+      "base_label": "gLegendsWyrmtideDescent3",
+      "land_mons": {
+        "encounter_rate": 8,
+        "mons": [
+          {
+            "min_level": 53,
+            "max_level": 59,
+            "species": "SPECIES_GOLBAT"
+          },
+          {
+            "min_level": 53,
+            "max_level": 59,
+            "species": "SPECIES_GRAVELER"
+          },
+          {
+            "min_level": 53,
+            "max_level": 59,
+            "species": "SPECIES_GOLBAT"
+          },
+          {
+            "min_level": 53,
+            "max_level": 59,
+            "species": "SPECIES_GRAVELER"
+          },
+          {
+            "min_level": 53,
+            "max_level": 59,
+            "species": "SPECIES_SABLEYE"
+          },
+          {
+            "min_level": 53,
+            "max_level": 59,
+            "species": "SPECIES_MAWILE"
+          },
+          {
+            "min_level": 53,
+            "max_level": 59,
+            "species": "SPECIES_NOSEPASS"
+          },
+          {
+            "min_level": 53,
+            "max_level": 59,
+            "species": "SPECIES_CARBINK"
+          },
+          {
+            "min_level": 53,
+            "max_level": 59,
+            "species": "SPECIES_DRUDDIGON"
+          },
+          {
+            "min_level": 53,
+            "max_level": 59,
+            "species": "SPECIES_SABLEYE"
+          },
+          {
+            "min_level": 53,
+            "max_level": 59,
+            "species": "SPECIES_DEINO"
+          },
+          {
+            "min_level": 53,
+            "max_level": 59,
+            "species": "SPECIES_ONIX"
+          }
+        ]
+      }
+    },
+    {
+      "map": "MAP_LEGENDS_WYRMTIDE_DESCENT4",
+      "base_label": "gLegendsWyrmtideDescent4",
+      "land_mons": {
+        "encounter_rate": 8,
+        "mons": [
+          {
+            "min_level": 55,
+            "max_level": 61,
+            "species": "SPECIES_GOLBAT"
+          },
+          {
+            "min_level": 55,
+            "max_level": 61,
+            "species": "SPECIES_GRAVELER"
+          },
+          {
+            "min_level": 55,
+            "max_level": 61,
+            "species": "SPECIES_GOLBAT"
+          },
+          {
+            "min_level": 55,
+            "max_level": 61,
+            "species": "SPECIES_GRAVELER"
+          },
+          {
+            "min_level": 55,
+            "max_level": 61,
+            "species": "SPECIES_SABLEYE"
+          },
+          {
+            "min_level": 55,
+            "max_level": 61,
+            "species": "SPECIES_MAWILE"
+          },
+          {
+            "min_level": 55,
+            "max_level": 61,
+            "species": "SPECIES_NOSEPASS"
+          },
+          {
+            "min_level": 55,
+            "max_level": 61,
+            "species": "SPECIES_CARBINK"
+          },
+          {
+            "min_level": 55,
+            "max_level": 61,
+            "species": "SPECIES_GABITE"
+          },
+          {
+            "min_level": 55,
+            "max_level": 61,
+            "species": "SPECIES_SABLEYE"
+          },
+          {
+            "min_level": 55,
+            "max_level": 61,
+            "species": "SPECIES_FRAXURE"
+          },
+          {
+            "min_level": 55,
+            "max_level": 61,
+            "species": "SPECIES_ONIX"
+          }
+        ]
+      }
+    }
+  ],
+  "invariants": {
+    "allFiveLayoutCollisionElevationWordsExact": true,
+    "allFourWarpListsExact": true,
+    "existingEncounterTablesExact": true,
+    "nativePaletteAndSpriteSourcesUnchanged": true,
+    "nativeDynamicGraphicsEnumUnchanged": true,
+    "caveSpriteSize": [
+      64,
+      64
+    ],
+    "followerSpriteWidth": 32,
+    "firstShoreFirstCaveFinalTextHashGuard": true,
+    "allCarvingsUniqueAndReadable": true,
+    "passageReproductionFromPinnedBaseline": "all assets and five layouts byte-exact",
+    "changedOwnerInputGuard": "rejected without writing"
+  },
+  "nativeScopes": "Full quest call, voyage, party/egg/fainted seal gate, both return lanes, south exits, inscriptions, escape/defeat/capture/flash/report, actual walking encounter on every cave floor and cave battle environment. Rare Bagon preview generated by production live-table selection with controlled seed.",
+  "sourceChecks": [
+    "Wyrmtide progression, flag allocations, native art, topology, encounters and protected text",
+    "50 player appearances and palette isolation",
+    "736 outfit poses and compression roundtrips",
+    "wardrobe guards/navigation/apply/cancel"
+  ],
+  "gallery": {
+    "version": "0.0.70 + unshipped Wyrmtide review",
+    "ROM_sha256": "bf5e3670080379c2655d4c375a2e3cec336a2dc6caf29cc838b7c97d5b5000dc",
+    "nativeSource": "mGBA 0.10.2 native core",
+    "RGBExactScaling": true,
+    "rarePreview": "Production generation from the live 4% Bagon slot with a controlled seed; actual walking encounters independently verified on all four floors.",
+    "images": {
+      "Tidal-Inscription.png": "116da2aa1b86984f9757d0ab10abd38820bc819679942b7739f3f376622d1550",
+      "Deep-Inscription.png": "b6e3ae9622c76cfd4eb785bbcac1df5ff6178def45c9f2983998c1123c2a0b8d",
+      "Sanctuary-Exit.png": "9afeab5993000eebc4a57dd98853f9dda8ef83d2efddfaa22efed72f2e5efb04",
+      "Regidrago-Large.png": "d5503cd3da25889bf6d005adddd911f48298dfd5ecbd6607bd96fd76b3cb0759",
+      "33-recessed-upper-passage.png": "e04b84e4710db49dd5709b73696ac01ac923d1ce9d42b381cecbbb668f69fc30",
+      "Inscriptions-Text.png": "c15ab5607acc713a01a7ae4bfcaa0c358c3d2c5365cc790d53ad5de84441fec1",
+      "35-large-regidrago.png": "6b404722922267dca294de9134bea6c9e3313b02ca887a5f130f5d8922b3cf62",
+      "Rare-Bagon.png": "101cff8885f0ace66f228828c938aa2da16772cabcfe11f0d077491b5d86611c",
+      "Passages.png": "824745b9db005f9a57848ac6479cd6c54bf64478bda61aa119384ce34d0bbdc1",
+      "34-south-exit-approach.png": "9ed51de355799c64a2eaf9d4b56ce2f806516e64c01fffaa27cd1f352e0e8c60",
+      "Inscriptions.png": "3183d7e9087bb20672cf4efcf1a030580caa3f2735461fd5543ab50f16c737a1",
+      "Lower-Exit.png": "e261ac2694b0e2bcdbfff30f099e7d3ef4e1b88d73de34938f6fee739a39dab3",
+      "Upper-Passage.png": "13747f326667fb9ec9b51906150780f1557e54b288fbc6060460473815326068",
+      "44-rare-dragon-encounter.png": "74e9acb8d79ceb22ef504eca6aea9ec0cf1af0a23b6b7a694bdf22dd26df701e",
+      "Threshold-Inscription.png": "929ce207c23f02154adcc8f0cf74a24e8db40304d2bd78a9186f0f95ca4ed81a"
+    }
+  },
+  "projectCI": {
+    "run": 42131155521,
+    "source": "ea8fef3eb86e1b0106922689700a60bd41a3e8e6",
+    "conclusion": "success",
+    "url": "https://github.com/BabyCRTTV/pokeemerald-emerald-legends/actions/runs/42131155521"
+  },
+  "priorReleaseJob": {
+    "run": 42125621400,
+    "conclusion": "cancelled during compiler installation",
+    "scope": "previous stairwell source only"
+  },
+  "limits": "New Debug visual/encounter review, not a Release or patch-readiness claim. Prior local LTO compiler crash and clean setup cancellation remain unresolved. Not a natural full-story, authentic historical owner-save, Release-emulator or Pizza Boy playthrough. Keep PR89 draft; current-master reconciliation and Release/BPS gates before publishing.",
+  "nativeArtSourceBlobs": {
+    "graphics/pokemon/regidrago/front.png": "59f367fae290257ae1914957e0d126ba8d205af5",
+    "graphics/pokemon/regidrago/normal.pal": "163704ca66458a1169f191a231aa315aec18b2fe",
+    "graphics/pokemon/regidrago/overworld.png": "5999a2cd6e5a1424ea527aac568d4426429fffb9",
+    "graphics/pokemon/regidrago/overworld_normal.pal": "2a6d185cffa77c7f35146965a7578200ce540e09",
+    "data/tilesets/secondary/cave/tiles.png": "cd9a8370190b695bfdef79ab3cc7b8acfc3a6a5a"
+  },
+  "nativeBattleEnvironment": "Cave verified by native gBattleEnvironment on all four walking encounters and the rare dragon preview.",
+  "closeout": "Only gallery exports/builder, QA/handoff and temporary branch-source-trigger cleanup follow the tested game commit. New visuals await review."
+}
