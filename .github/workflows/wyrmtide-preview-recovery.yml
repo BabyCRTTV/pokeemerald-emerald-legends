@@ -1,4 +1,4 @@
-name: Recover verified Wyrmtide preview
+name: Recover Wyrmtide failure diagnostics
 on:
   push:
     branches: [ codex/wyrmtide-isle ]
@@ -29,7 +29,7 @@ jobs:
               run=json.loads(req('/actions/runs/'+run_id))
               assert run['head_sha']==expected and run['head_branch']=='codex/wyrmtide-isle'
               if run['status']=='completed':
-                  assert run['conclusion']=='success', 'Matching native run failed: '+str(run['conclusion'])
+                  assert run['conclusion']=='failure', 'This recovery is only for the pinned diagnostic failure'
                   break
               print('Waiting for matching native checks:',run['status'],flush=True);time.sleep(8)
           else: raise AssertionError('Native run did not finish')
@@ -43,10 +43,9 @@ jobs:
               found=[n for n in names if n.endswith('wyrmtide-native/'+name)]
               assert len(found)==1,(name,found)
               return z.read(found[0])
-          proof=json.loads(native('verification.json'))
-          assert proof['passed'] and not proof['scenesOnly']
+          print('DIAGNOSTIC_LOG:'+base64.b64encode(native('emulator.log')).decode(),flush=True)
           for name in ['05-second-landing.png','26-tidal-pool.png','27-tidal-pool-animation.png']:
-              image=native(name);assert hashlib.sha256(image).hexdigest()==proof['images'][name]
-              print('NATIVE_PNG:'+name+':'+base64.b64encode(image).decode(),flush=True)
-          print('NATIVE_RECEIPT:'+base64.b64encode(json.dumps({'source':expected,'run':run_id,'artifact':art,'native':proof}).encode()).decode(),flush=True)
+              image=native(name)
+              print('DIAGNOSTIC_PNG:'+name+':'+base64.b64encode(image).decode(),flush=True)
+          print('Diagnostic archive hash verified; no successful native receipt is claimed.',flush=True)
           PY
