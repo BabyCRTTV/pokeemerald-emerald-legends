@@ -1,5 +1,15 @@
 # Development handoff
 
+## Terrace approval and upper return-stair inspection (5 November 2026)
+
+**Model: GPT-6.1 Sol (Codex) | Reasoning: preserve explicit visual approval, generalize native terrain lessons and explain the actual warp.**
+
+Owner approved the terrace-depth result at `ed361352` and asked that the knowledge carry into future work. AGENTS now names the approved terrace-depth/stair-fit galleries as standing quality references, building on the existing native-material, complete-cap, continuous-tread, loaded-palette and motion-preview rules. Carry this accepted baseline forward; no publication instruction was given.
+
+Owner then identified the small upper staircase shown at the start of the walking clip and asked how it functions. It is Descent4's upper return warp at `(8,3)`, leading to Descent3's bottom warp1 at `(11,20)`. Walking north onto it triggers the normal cave floor transition; it is also the arrival point when entering this landing from the preceding room. The wide flights traverse the current room; this narrow stair links rooms. All four return pairs and surface exit already passed native walking QA.
+
+[Unobstructed close-up/context](designs/wyrmtide/upper-stair-review/README.md) reuse verified native frame `30-descending-00.png` from Debug ROM `e705d98267de46954e91bdd85e981234c1d10569c15ef7b3113115cadf42fcad`. [Crop/source receipt](qa/wyrmtide-upper-stair-inspection.json). No game or fixture changed, so earlier build/native receipts remain applicable. Public v0.0.75 and the old-branch/current-master release limitations are unchanged.
+
 ## Wyrmtide terrace depth — visual review (5 November 2026)
 
 **Model: GPT-6.1 Sol (Codex) | Reasoning: native rim/face lighting and contact shadows with accepted geometry retained.**
@@ -10,7 +20,7 @@ Source `ad731de350e49aeed830fde05e97cc594aa81e49` passed Debug compilation, unmo
 
 [Source CI42096385738](https://github.com/BabyCRTTV/pokeemerald-emerald-legends/actions/runs/42096385738) and [standard Release CI42096385990](https://github.com/BabyCRTTV/pokeemerald-emerald-legends/actions/runs/42096385990) passed on the same source with default LTO. All14 Release inputs were verified, accounting for `.gitattributes` CRLF palette checkout normalization; canonical/raw hashes are recorded. Local Release was not repeated after its earlier compiler crash. Temporary CI setup was removed on closeout. The gallery helper affects only exported review media.
 
-New lighting/shadows await visual approval. Retain the accepted stair/bank geometry and prior Heart/shore/entrance decisions. Captures are v0.0.70 plus unshipped Wyrmtide Debug fixtures; public v0.0.75 is unchanged. Reconcile this older branch with current master and current candidate/BPS gates before publication. No new Release Wyrmtide playthrough, historical-owner-save, natural full-story, Pizza Boy or release-readiness claim.
+Owner subsequently approved these lighting/shadows and requested the lessons be retained for future work. Retain the accepted stair/bank geometry and prior Heart/shore/entrance decisions. Captures are v0.0.70 plus unshipped Wyrmtide Debug fixtures; public v0.0.75 is unchanged. Reconcile this older branch with current master and current candidate/BPS gates before publication. No new Release Wyrmtide playthrough, historical-owner-save, natural full-story, Pizza Boy or release-readiness claim.
 
 ## Wyrmtide stair side joins — visual review (5 November 2026)
 
