@@ -1,6 +1,7 @@
 #include <mgba/flags.h>
 #include <mgba/core/core.h>
 #include <mgba/core/log.h>
+#include <mgba/core/blip_buf.h>
 #include <mgba-util/vfs.h>
 #include <assert.h>
 #include <fcntl.h>
@@ -10,15 +11,20 @@
 #include "paths.h"
 static void quiet(struct mLogger*l,int c,enum mLogLevel v,const char*f,va_list a){}
 static struct mLogger logger={.log=quiet};static struct mCore*c;static color_t*video;static unsigned mainAddr,callback,controller,choices[3],mapIds[8];static const char*out;static int scenesOnly;
-static unsigned box(int n){return c->busRead32(c,0x0203ffc0+n*4);}static void frames(int n){while(n--)c->runFrame(c);}static void key(unsigned k){c->setKeys(c,k);frames(3);c->setKeys(c,0);frames(42);}
-static void walk(unsigned k){c->setKeys(c,k);frames(12);c->setKeys(c,0);frames(30);}
-static void command(int n){unsigned old=c->busRead32(c,mainAddr+4);c->busWrite32(c,0x0203ffc0,n);c->busWrite32(c,0x0203ffd0,0);c->busWrite32(c,0x0203ffcc,old);c->busWrite32(c,mainAddr+4,callback);frames(2);for(int i=0;i<1000&&!box(4);i++){c->busWrite32(c,mainAddr+4,callback);frames(1);}assert(box(4));}
+static int recording,audioReady;static FILE *movieVideo,*movieAudio,*movieNotes;static unsigned movieTicks,movieFrames,movieSamples;
+static unsigned box(int n){return c->busRead32(c,0x0203ffc0+n*4);}static void frames(int n){while(n--){c->runFrame(c);
+ if(audioReady){blip_t*l=c->getAudioChannel(c,0),*r=c->getAudioChannel(c,1);int count=blip_samples_avail(l);assert(count==blip_samples_avail(r)&&count<=4096);short samples[8192];blip_read_samples(l,samples,count,1);blip_read_samples(r,samples+1,count,1);if(recording){assert(fwrite(samples,4,count,movieAudio)==count);movieSamples+=count;}}
+ if(recording){if(movieTicks%2==0){assert(fwrite(video,4,240*160,movieVideo)==240*160);movieFrames++;}movieTicks++;}
+ }}static void key(unsigned k){c->setKeys(c,k);frames(3);c->setKeys(c,0);frames(42);}
+static void walk(unsigned k){c->setKeys(c,k);frames(12);c->setKeys(c,0);frames(recording?8:30);}
+static void command(int n){if(recording)assert(n==1);unsigned old=c->busRead32(c,mainAddr+4);c->busWrite32(c,0x0203ffc0,n);c->busWrite32(c,0x0203ffd0,0);c->busWrite32(c,0x0203ffcc,old);c->busWrite32(c,mainAddr+4,callback);frames(2);for(int i=0;i<1000&&!box(4);i++){c->busWrite32(c,mainAddr+4,callback);frames(1);}assert(box(4));}
 static void status(void){command(1);printf("map=%u/%u xy=%u,%u flags=%02x maker=%u battle=%u script=%u party=%u outcome=%u\n",box(5),box(6),box(10),box(11),box(7),box(8),box(9),box(12),box(14),box(15));}
 static void capture(const char*name){char path[4096];snprintf(path,sizeof(path),"%s/%s.rgba",out,name);FILE*f=fopen(path,"wb");assert(f&&fwrite(video,4,240*160,f)==240*160);fclose(f);}
-static void setup(int scene,unsigned flags){c->reset(c);frames(500);c->busWrite32(c,mainAddr,0);c->busWrite32(c,0x0203ffc4,scene);c->busWrite32(c,0x0203ffc8,flags);command(0);frames(500);status();}
+static void setup(int scene,unsigned flags){assert(!recording);c->reset(c);frames(500);c->busWrite32(c,mainAddr,0);c->busWrite32(c,0x0203ffc4,scene);c->busWrite32(c,0x0203ffc8,flags);command(0);frames(500);status();}
 static void dismiss(int max){for(int i=0;i<max;i++){command(1);if(!box(12)&&!box(9))return;key(1);frames(55);}status();assert(!"script failed to finish");}
 static void menu(void){for(int i=0;i<35;i++){unsigned p=c->busRead32(c,controller);if(p==choices[0]||p==choices[1]||p==choices[2])return;key(1);frames(70);}status();capture("battle-menu-timeout");assert(!"battle menu not reached");}
 static void finish(int button){for(int i=0;i<100;i++){key(button);command(1);if(!box(9)&&!box(12)){frames(200);command(1);if(!box(9)&&!box(12))return;}}status();assert(!"battle failed to return");}
+static int isWarp(int grid,int at){for(int i=0;i<warp_counts[grid];i++)if(at==warps[grid][i])return 1;return 0;}
 static void navigate(int grid,int targetX,int targetY){
  command(1);int width=widths[grid],size=sizes[grid],start=box(11)*width+box(10),target=targetY*width+targetX;
  int parent[986],queue[986],first=0,last=0;for(int i=0;i<size;i++)parent[i]=-1;
@@ -26,20 +32,38 @@ static void navigate(int grid,int targetX,int targetY){
  while(first<last&&parent[target]<0){int at=queue[first++],x=at%width;
   int near[4]={at-width,at+width,at-1,at+1};
   for(int k=0;k<4;k++){int n=near[k];if((k==2&&x==0)||(k==3&&x==width-1)||n<0||n>=size||parent[n]>=0||(grids[grid][n]&0xc00))continue;
-   if((n==warps[grid][0]||n==warps[grid][1])&&n!=target)continue;
+   if(isWarp(grid,n)&&n!=target)continue;
    parent[n]=at;queue[last++]=n;
   }
  }
  assert(parent[target]>=0);int reverse[986],count=0;
  for(int at=target;at!=start;at=parent[at])reverse[count++]=at;
  int stairSteps=0;for(int i=0;i<count;i++)if((grids[grid][reverse[i]]&1023)>=0x3b1&&(grids[grid][reverse[i]]&1023)<=0x3b8)stairSteps++;
- if(grid<4&&targetX==11&&targetY==20){// The tidal gallery now has one two-cell flight plus the two-cell exit;
+ if(grid<4&&targetX==11&&targetY==20&&start==3*width+8){// The tidal gallery now has one two-cell flight plus the two-cell exit;
   // the other landings retain two short flights plus that exit.
   static const int minimumSteps[]={6,4,6,6};assert(stairSteps>=minimumSteps[grid]);printf("PASS descent %d route crosses %d native stair cells\n",grid+1,stairSteps);}
  int at=start;while(count){int next=reverse[--count],delta=next-at;walk(delta==-width?64:delta==width?128:delta==-1?32:16);at=next;}
- frames(350);status();if(target!=warps[grid][0]&&target!=warps[grid][1])assert(box(10)==targetX&&box(11)==targetY);
+ frames(recording?(isWarp(grid,target)?180:20):350);status();if(!isWarp(grid,target))assert(box(10)==targetX&&box(11)==targetY);
+}
+static FILE*movieFile(const char*name){char path[4096];snprintf(path,sizeof(path),"%s/%s",out,name);FILE*f=fopen(path,"wb");assert(f);return f;}
+static void startMovie(void){assert(!recording);movieVideo=movieFile("walkthrough-video.raw");movieAudio=movieFile("walkthrough-audio.raw");movieNotes=movieFile("walkthrough-chapters.txt");movieTicks=movieFrames=movieSamples=0;recording=1;}
+static void note(const char*title){fprintf(movieNotes,"%u|%s\n",movieTicks,title);fflush(movieNotes);}
+static void stopMovie(void){assert(recording);recording=0;fclose(movieVideo);fclose(movieAudio);fclose(movieNotes);FILE*f=movieFile("walkthrough-recording.json");fprintf(f,"{\"emulatedFrames\":%u,\"videoFrames\":%u,\"audioSamples\":%u,\"sampleRate\":48000,\"videoFrameStep\":2,\"noResetsDuringRecording\":true}\n",movieTicks,movieFrames,movieSamples);fclose(f);}
+static void readTablet(void){key(64);key(1);frames(180);dismiss(30);frames(30);}
+static void tour(void){
+ setup(10,1|2|4);startMovie();note("Cave entrance");frames(120);
+ navigate(4,16,11);walk(64);frames(180);status();assert(box(6)==mapIds[3]);
+ note("First chamber - upper stairwell");capture("31-upper-stairwell");frames(90);
+ navigate(0,8,8);frames(60);navigate(0,12,12);frames(45);navigate(0,6,17);frames(45);
+ navigate(0,13,19);note("First chamber inscription");readTablet();navigate(0,11,20);assert(box(6)==mapIds[4]);
+ note("Tidal gallery - upper stairwell");frames(60);navigate(1,11,8);frames(120);navigate(1,6,12);frames(60);navigate(1,12,17);frames(90);navigate(1,11,20);assert(box(6)==mapIds[5]);
+ note("Third chamber - descending terraces");frames(60);navigate(2,12,10);frames(45);navigate(2,6,15);frames(45);navigate(2,13,19);readTablet();navigate(2,11,20);assert(box(6)==mapIds[6]);
+ note("Fourth chamber - final descent");frames(60);navigate(3,9,10);frames(90);navigate(3,9,16);frames(90);navigate(3,11,20);assert(box(6)==mapIds[7]);
+ note("Regidrago sanctuary");frames(90);navigate(5,11,5);note("Final inscription");readTablet();navigate(5,11,8);key(64);frames(180);capture("32-sanctuary-walkthrough-end");note("Sleeping Regidrago - end of cavern walkthrough");stopMovie();
+ puts("PASS continuous entrance-to-Regidrago walkthrough with native audio and no scene resets");
 }
 int main(int argc,char**argv){assert(argc==10);setbuf(stdout,NULL);mLogSetDefaultLogger(&logger);out=argv[2];mainAddr=strtoul(argv[3],0,0);callback=strtoul(argv[4],0,0)|1;controller=strtoul(argv[5],0,0);for(int i=0;i<3;i++)choices[i]=strtoul(argv[6+i],0,0)|1;scenesOnly=atoi(argv[9]);c=mCoreFind(argv[1]);assert(c&&c->init(c));mCoreInitConfig(c,NULL);mCoreConfigSetDefaultIntValue(&c->config,"skipBios",1);c->loadConfig(c,&c->config);video=calloc(240*160,sizeof(color_t));c->setVideoBuffer(c,video,240);struct VFile*f=VFileOpen(argv[1],O_RDONLY);assert(f&&c->loadROM(c,f));
+ if(scenesOnly==3){audioReady=1;c->setAudioBufferSize(c,4096);blip_set_rates(c->getAudioChannel(c,0),c->frequency(c),48000);blip_set_rates(c->getAudioChannel(c,1),c->frequency(c),48000);}
  const char*names[]={"01-dewford-dock","02-island-landing","03-ancient-seal","04-stair-descent","05-second-landing","06-third-landing","07-fourth-landing","08-slumbering-regidrago"};
  for(int i=0;i<8;i++){setup(i,1);mapIds[i]=box(6);capture(names[i]);if(i==0){key(16);key(1);frames(130);key(1);frames(80);capture("01b-briney-voyage-menu");}}
  setup(10,1|4);capture("23-open-headland-entrance");
@@ -50,7 +74,8 @@ int main(int argc,char**argv){assert(argc==10);setbuf(stdout,NULL);mLogSetDefaul
  setup(6,1);navigate(3,9,6);c->setKeys(c,128);
  for(int i=0;i<24;i++){char name[64];frames(4);snprintf(name,sizeof(name),"30-descending-%02d",i);capture(name);}
  c->setKeys(c,0);frames(40);command(1);assert(box(6)==mapIds[6]&&box(11)>8);puts("PASS actual southward walking descent captured through the upper flight");
- if(scenesOnly){puts("PASS native world scenes");c->deinit(c);free(video);return 0;}
+ if(scenesOnly==3)tour();
+ if(scenesOnly==1){puts("PASS native world scenes");c->deinit(c);free(video);return 0;}
  // Actual free movement invokes the production eight-step call hook.
  setup(8,0);for(int i=0;i<8;i++){walk(i%2?32:16);status();}frames(150);status();assert(box(12));key(1);frames(180);capture("09-unknown-number-call");dismiss(90);status();assert(box(7)&1);puts("PASS actual eight-step mystery call and one-time completion");command(3);assert(box(5)==1&&box(6)==1&&box(7));
  // Use Briney's real dialogue/menu and actual voyage warp.
@@ -73,6 +98,8 @@ int main(int argc,char**argv){assert(argc==10);setbuf(stdout,NULL);mLogSetDefaul
  // Native map-warp entry lands on the return tile; step off before re-entry.
  walk(128);navigate(0,8,3);assert(box(6)==mapIds[1]);capture("25-returned-through-entrance");
  puts("PASS actual open-door walking entry and native stair return");
+ for(int i=0;i<4;i++){setup(3+i,1|4);walk(128);navigate(i,9,3);assert(box(6)==mapIds[i?i+2:1]);}
+ puts("PASS both active columns of all four widened upper return stairwells");
  // Escape, defeat, then challenge the same native field sprite again.
  setup(7,1|4);key(64);key(1);frames(100);menu();key(128);key(16);key(1);finish(1);status();assert(box(15)==4&&!(box(7)&(16|32)));capture("15b-escaped-retry");
  key(1);frames(100);menu();key(64);key(32);key(1);frames(80);key(1);frames(400);finish(1);status();assert(box(15)==1&&(box(7)&16)&&!(box(7)&32));capture("15c-defeated-retry");

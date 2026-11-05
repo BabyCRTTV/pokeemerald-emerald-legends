@@ -32,7 +32,7 @@ changed=subprocess.check_output(['git','diff','--name-only','HEAD','--','data/la
 base=R/'data/tilesets/secondary/cave';sib=R/'data/tilesets/legends_wyrmtide'
 native=(base/'metatiles.bin').read_bytes();authored=(sib/'metatiles.bin').read_bytes()
 depth=json.loads((sib/'source.json').read_text())['terraceDepth']
-assert authored[:len(native)]==native and len(authored)==len(native)+32+(25+len(depth['variants']))*16
+assert authored[:len(native)]==native and len(authored)==len(native)+32+(29+len(depth['variants']))*16
 base_mid=lambda mid:next((v['source'] for v in depth['variants'] if v['id']==mid),mid)
 assert authored[len(native):len(native)+16]==authored[len(native)+16:len(native)+32]
 assert (sib/'metatile_attributes.bin').read_bytes()[:len(native)//8+4]==(base/'metatile_attributes.bin').read_bytes()+struct.pack('<HH',0x61,0)
@@ -112,7 +112,20 @@ for width,rows in [(32,[[0x3b1,0x3b2],[0x3b3,0x3b4]]),(48,[[0x3b1,0x3b5,0x3b2],[
 # Original step footprints and actual native warp behavior are retained.
 for key in ['Descent1','Descent2','Descent3','Descent4']:
  a=struct.unpack('<456H',(R/f'data/layouts/LegendsWyrmtide_{key}/map.bin').read_bytes())
- assert all((a[y*19+x]&1023)==mid for x,y,mid in [(8,2,0x3b7),(8,3,0x3b8),(11,19,0x3b7),(11,20,0x3b8)])
+ assert all((a[y*19+x]&1023)==mid for x,y,mid in [(7,2,0x2fa),(8,2,0x3c1),(9,2,0x3c2),(10,2,0x2f8),(8,3,0x3c3),(9,3,0x3c4),(11,19,0x3b7),(11,20,0x3b8)])
+# Widened upper return uses accepted treads, native wall canopy and two live lanes.
+attrs=(sib/'metatile_attributes.bin').read_bytes()
+words=lambda mid:struct.unpack_from('<8H',authored,(mid-512)*16)
+for n,origin in enumerate([0x3b1,0x3b2,0x3b3,0x3b4]):
+ mid=0x3c1+n
+ assert words(mid)[:4]==words(origin)[:4]
+ assert words(mid)[4:]==(words(0x2f9)[4:6]+(0,0) if n<2 else words(origin)[4:])
+ assert struct.unpack_from('<H',attrs,(mid-512)*2)[0]==(0 if n<2 else 0x61)
+for i in range(1,5):
+ m=json.loads((R/f'data/maps/LegendsWyrmtide_Descent{i}/map.json').read_text());ws=m['warp_events']
+ assert len(ws)==3 and (ws[0]['x'],ws[0]['y'])==(8,3) and ws[2]=={**ws[0],'x':9}
+ a=struct.unpack('<456H',(R/f'data/layouts/LegendsWyrmtide_Descent{i}/map.bin').read_bytes())
+ assert all(not a[y*19+x]&0xc00 for x in [8,9] for y in [2,3])
 # Each cut closes both adjacent rock banks with the complete native cap pair.
 # Solid middle-face cells at these positions leave an uncapped side gap.
 stair_flights={'Descent1':[(12,9,2),(5,15,2)],'Descent2':[(5,9,2)],'Descent3':[(12,7,2),(5,13,2)],'Descent4':[(8,7,3),(8,13,3)]}
@@ -163,7 +176,7 @@ for key in ['Descent1','Descent2','Descent3','Descent4','Heart']:
  if key in ['Descent1','Descent3']:assert (13,19) in seen,(key,'return path cannot reach the depth inscription')
  for i,warp in enumerate(m['warp_events']):
   destkey=warp['dest_map'].removeprefix('MAP_LEGENDS_WYRMTIDE_');destname='LegendsWyrmtide_'+({'ISLE':'Isle','HEART':'Heart'}.get(destkey,destkey.title()))
-  dest=json.loads((R/f'data/maps/{destname}/map.json').read_text());back=dest['warp_events'][int(warp['dest_warp_id'])];assert back['dest_map']==m['id'] and int(back['dest_warp_id'])==i,(key,i)
+  dest=json.loads((R/f'data/maps/{destname}/map.json').read_text());back=dest['warp_events'][int(warp['dest_warp_id'])];assert back['dest_map']==m['id'] and int(back['dest_warp_id'])==(0 if i==2 else i),(key,i)
 # All outdoor clue approaches are reachable from Briney's landing without Surf.
 l=next(x for x in layouts if x['name']=='LegendsWyrmtide_Isle_Layout');w=l['width'];raw=(R/l['blockdata_filepath']).read_bytes();cells=struct.unpack('<%dH'%(len(raw)//2),raw)
 objects=json.loads((R/'data/maps/LegendsWyrmtide_Isle/map.json').read_text())['object_events'];blocked={(o['x'],o['y']) for o in objects};seen={(14,21)};q=collections.deque(seen)

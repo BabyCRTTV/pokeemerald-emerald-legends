@@ -145,5 +145,30 @@
       "MtEmberFRLG12 index12"
     ],
     "floorMatteUnchanged": true
+  },
+  "upperStairwell": {
+    "metatiles": [
+      961,
+      964
+    ],
+    "sourceTreads": [
+      945,
+      946,
+      947,
+      948
+    ],
+    "canopySource": 761,
+    "nativeEndCaps": [
+      762,
+      760
+    ],
+    "liveReturnColumns": [
+      8,
+      9
+    ],
+    "warpRow": 3,
+    "originalWarpIndicesPreserved": true,
+    "newAliasWarpIndex": 2,
+    "newPixelArt": false
   }
 }

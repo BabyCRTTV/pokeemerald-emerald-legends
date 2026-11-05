@@ -1,5 +1,14 @@
 # Development handoff
 
+## Upper stairwell and continuous walkthrough checkpoint (5 November 2026)
+
+**Model: GPT-6.1 Sol (Codex) | Reasoning: fit accepted native treads into the upper return opening and verify both active lanes.**
+
+Owner requested the shown wider upper return design and a complete chamber walkthrough. Appended four metatiles reusing accepted tread pixels and native Sealed Chamber canopy/caps. Widened all four upper openings; only (9,2) collision opens. Existing warp indices0/1 are retained; new alias2 at (9,3) returns to the same destination as warp0. No new pixels/palettes, persistent IDs or save structures changed. Approved terraces, water, Isle and Heart remain protected. Authoring refuses changed baseline inputs.
+
+Checkpoint only: focused source checks passed; Debug build, full native walking/story checks, both upper lanes, continuous entrance-to-sleeping-Regidrago recording with native audio, and clean standard Release CI are in progress. Recording starts after a controlled open-seal fixture and forbids resets/scene setup while active; status-only native fixture queries remain. Do not claim these pending checks or movie complete. Temporary branch source/Release workflows must be restored/removed during closeout. Keep PR #89 draft; no merge/publication. Public v0.0.75 unchanged.
+
+
 ## Terrace approval and upper return-stair inspection (5 November 2026)
 
 **Model: GPT-6.1 Sol (Codex) | Reasoning: preserve explicit visual approval, generalize native terrain lessons and explain the actual warp.**
