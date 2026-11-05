@@ -42,6 +42,16 @@ for i in range(8):
  old=struct.unpack_from('<8H',authored,(0x3a0+i-512)*16)
  new=struct.unpack_from('<8H',authored,(0x3a8+i-512)*16)
  assert new[:4]==(0xb1c6,0xb1c7,0xb1c7,0xb1c6) and new[4:]==old[4:]
+# Respect the engine's loaded field-palette range, not just unused atlas words.
+loaded=int(re.search(r'^#define NUM_PALS_TOTAL\\s+(\\d+)',(R/'include/fieldmap.h').read_text(),re.M)[1])
+assert all(w[0]>>12<loaded for w in struct.iter_unpack('<H',authored[len(native)+32+8*16:])), 'Pool references a reserved/unloaded BG palette'
+native_pals=re.search(r'gTilesetPalettes_Cave\\[\\]\\[16\\]\\s*=\\s*\\{(.*?)\\n};',(R/'src/data/tilesets/graphics.h').read_text(),re.S)[1]
+private_pals=re.search(r'gTilesetPalettes_LegendsWyrmtideCave\\[\\]\\[16\\]\\s*=\\s*\\{(.*?)\\n};',(R/'src/data/tilesets/legends_wyrmtide.h').read_text(),re.S)[1]
+paths=lambda s:re.findall(r'INCGFX_U16\\("([^\"]+)',s)
+np,pp=paths(native_pals),paths(private_pals)
+assert len(np)==len(pp)==16 and all(np[i]==pp[i] for i in range(16) if i!=11), 'A non-water Cave palette was changed'
+pal=[tuple(map(int,line.split())) for line in (sib/'water.pal').read_text().splitlines()[3:19]]
+assert len({tuple(c//8 for c in pal[i]) for i in [11,12,13,14]})==4, 'Native ripple shades collapse after RGB555 conversion'
 # All old room cells leave field palette11 available for the isolated pool.
 for key in ['Descent1','Descent2','Descent3','Descent4','Heart']:
  data=(R/f'data/layouts/LegendsWyrmtide_{key}/map.bin').read_bytes()
