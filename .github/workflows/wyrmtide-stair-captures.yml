@@ -1,0 +1,78 @@
+name: Wyrmtide stair capture recovery
+on:
+  push:
+    branches: [ codex/wyrmtide-isle ]
+    paths: [ '.github/workflows/wyrmtide-stair-captures.yml' ]
+permissions:
+  contents: read
+  actions: read
+jobs:
+  captures:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - run: python3 -m pip install Pillow==11.3.0
+      - name: Verify completed native artifact and expose only review PNGs
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          python3 -u - <<'PY'
+          import os,json,time,hashlib,base64,io,zipfile,urllib.request,urllib.parse
+          from pathlib import Path
+          from PIL import Image
+          run_id=42086012859
+          source='09452e99120eae4ea691dba3e32f248ea9a1f1e8'
+          root='https://api.github.com/repos/'+os.environ['GH_REPO']
+          class Redirect(urllib.request.HTTPRedirectHandler):
+              def redirect_request(self,req,fp,code,msg,headers,newurl):
+                  r=super().redirect_request(req,fp,code,msg,headers,newurl)
+                  if urllib.parse.urlsplit(newurl).hostname!=urllib.parse.urlsplit(req.full_url).hostname:
+                      r.remove_header('Authorization')
+                  return r
+          opener=urllib.request.build_opener(Redirect())
+          def get(url):
+              req=urllib.request.Request(url,headers={'Authorization':'Bearer '+os.environ['GH_TOKEN'],'Accept':'application/vnd.github+json'})
+              return opener.open(req,timeout=90).read()
+          def api(path):return json.loads(get(root+path))
+          for i in range(100):
+              run=api('/actions/runs/'+str(run_id))
+              assert run['head_sha']==source
+              if run['status']=='completed':
+                  assert run['conclusion']=='success',run['conclusion']
+                  break
+              if i%6==0:print('Waiting for native run',run_id,run['status'],flush=True)
+              time.sleep(10)
+          else:raise AssertionError('Native run did not finish within capture recovery window')
+          artifact=next(a for a in api('/actions/runs/'+str(run_id)+'/artifacts')['artifacts'] if a['name']=='legends-mgba-gameplay')
+          assert artifact['workflow_run']['head_sha']==source
+          archive=get(artifact['archive_download_url'])
+          assert 'sha256:'+hashlib.sha256(archive).hexdigest()==artifact['digest']
+          z=zipfile.ZipFile(io.BytesIO(archive))
+          assert not any(n.lower().endswith(('.gba','.elf','.sav','.ss0')) for n in z.namelist())
+          def read(name):
+              matches=[n for n in z.namelist() if n.endswith('/wyrmtide-native/'+name) or n=='wyrmtide-native/'+name]
+              assert len(matches)==1,(name,matches)
+              return z.read(matches[0])
+          native=json.loads(read('verification.json'))
+          assert native['passed'] and not native['scenesOnly'] and native['protectedHeartRGBExact']
+          selected=['Stone-Stairs.png','Wide-Stairs.png','Stairs-Before-After.png','04-stair-descent.png','05-second-landing.png','06-third-landing.png','07-fourth-landing.png','08-slumbering-regidrago.png','28-stone-stair-flight.png','29-wide-stone-flight.png']
+          for name in selected:
+              data=read(name)
+              if name in native['images']:assert hashlib.sha256(data).hexdigest()==native['images'][name]
+              image=Image.open(io.BytesIO(data)).convert('RGB')
+              if name in ['Stone-Stairs.png','Wide-Stairs.png']:
+                  original=read('28-stone-stair-flight.png' if name=='Stone-Stairs.png' else '29-wide-stone-flight.png')
+                  assert hashlib.sha256(original).hexdigest()==native['images']['28-stone-stair-flight.png' if name=='Stone-Stairs.png' else '29-wide-stone-flight.png']
+                  assert image.tobytes()==Image.open(io.BytesIO(original)).convert('RGB').resize((720,480),Image.Resampling.NEAREST).tobytes()
+              elif name=='Stairs-Before-After.png':
+                  old=Path('docs/designs/wyrmtide/water-review/05-second-landing.png').read_bytes()
+                  assert hashlib.sha256(old).hexdigest()=='34d43b3795c67e39dd020fdadc9082ecbd841f2757972f53609aa22286faaa15'
+                  current=read('05-second-landing.png');assert hashlib.sha256(current).hexdigest()==native['images']['05-second-landing.png']
+                  board=Image.new('RGB',(488,160),(24,24,30));board.paste(Image.open(io.BytesIO(old)).convert('RGB'),(0,0));board.paste(Image.open(io.BytesIO(current)).convert('RGB'),(248,0))
+                  assert image.tobytes()==board.resize((976,320),Image.Resampling.NEAREST).tobytes()
+              print('STAIR_NATIVE '+name+' '+hashlib.sha256(data).hexdigest()+' '+base64.b64encode(data).decode())
+          receipt={'source':source,'run':run_id,'artifact':artifact,'native':native,'archiveDigestVerified':True,'derivedScalingVerified':True}
+          print('STAIR_NATIVE_RECEIPT '+base64.b64encode(json.dumps(receipt).encode()).decode())
+          PY
