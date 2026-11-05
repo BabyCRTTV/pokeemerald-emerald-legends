@@ -1,12 +1,16 @@
 # Development handoff
 
-## Wyrmtide terrace depth — native checkpoint (5 November 2026)
+## Wyrmtide terrace depth — visual review (5 November 2026)
 
-**Model: GPT-6.1 Sol (Codex) | Reasoning: native rim/face separation and contact shadows without changing accepted terrain geometry.**
+**Model: GPT-6.1 Sol (Codex) | Reasoning: native rim/face lighting and contact shadows with accepted geometry retained.**
 
-Owner accepted the fitted bank joins and requested a stronger impression of descending height. From `f707ff4c`, added private native-color rim/face palettes in previously unused loaded banks7/8, six context-only rock variants and two native-footprint contact-shadow cells. The original floor base remains consistent, the fitted rock silhouettes/side joins remain exact, and all accepted tread pixels are retained. One soft contact row shades the stair foot. Added an actual southward walking clip to the native fixture. No collision/elevation, dimensions, warps, scripts, IDs or serialized-data changes. Heart/island/water are protected.
+Owner accepted the fitted stair banks and requested a clearer impression of height/downward travel. From `f707ff4c`, added native warm rim highlights, deeper vertical faces and short contact shadows under bank feet/final risers. Six rock variants and two floor-shadow cells append to the sibling, using unused loaded banks7/8 and4 unused8px tiles1008–1011. All accepted tread pixels, bank silhouettes, fitted joins and stair coordinates remain exact; all four layouts normalize to the accepted geometry/movement words. Water, Heart/island, all other palette wiring, warps/scripts/IDs and saved data remain protected.
 
-Local source checks, native light wiring and initial actual mGBA scene/animation/approved-Heart checks passed on Debug ROM `e705d98267de46954e91bdd85e981234c1d10569c15ef7b3113115cadf42fcad`. Full native gameplay/clip, source CI and clean standard Release build remain in progress. Use clean Release CI because the restored local compiler previously crashed in LTO; do not change release optimization flags. New depth visuals await review; this remains an unshipped v0.0.70 feature branch and public v0.0.75 is unchanged. Current-master reconciliation and BPS gates remain before publication.
+Source `ad731de350e49aeed830fde05e97cc594aa81e49` passed Debug compilation, unmodified Quickstart, source/night-light guards and full actual native Wyrmtide walking/story/doorway/gates/retry/capture/flash/report QA. Heart RGB remains exact and pool animation passes. An actual southward walk supplies24 sampled frames; the GIF is decoded and compared with every original at exact2× scaling and native colors. [Gallery](designs/wyrmtide/terrace-depth/README.md), [bound receipt](qa/wyrmtide-terrace-depth.json). Compiled-map offsets bind the capture source to Debug ROM `e705d98267de46954e91bdd85e981234c1d10569c15ef7b3113115cadf42fcad`.
+
+[Source CI42096385738](https://github.com/BabyCRTTV/pokeemerald-emerald-legends/actions/runs/42096385738) and [standard Release CI42096385990](https://github.com/BabyCRTTV/pokeemerald-emerald-legends/actions/runs/42096385990) passed on the same source with default LTO. All14 Release inputs were verified, accounting for `.gitattributes` CRLF palette checkout normalization; canonical/raw hashes are recorded. Local Release was not repeated after its earlier compiler crash. Temporary CI setup was removed on closeout. The gallery helper affects only exported review media.
+
+New lighting/shadows await visual approval. Retain the accepted stair/bank geometry and prior Heart/shore/entrance decisions. Captures are v0.0.70 plus unshipped Wyrmtide Debug fixtures; public v0.0.75 is unchanged. Reconcile this older branch with current master and current candidate/BPS gates before publication. No new Release Wyrmtide playthrough, historical-owner-save, natural full-story, Pizza Boy or release-readiness claim.
 
 ## Wyrmtide stair side joins — visual review (5 November 2026)
 

@@ -1,0 +1,400 @@
+{
+  "review": "Wyrmtide terrace depth and actual southward descent",
+  "date": "2026-11-05",
+  "model": "GPT-6.1 Sol (Codex)",
+  "baseline": "f707ff4c3271531f2969be487d75c18a3bc399de",
+  "gameSource": "ad731de350e49aeed830fde05e97cc594aa81e49",
+  "nativeDebug": {
+    "version": "0.0.70 + unshipped Wyrmtide review",
+    "ROM_sha256": "e705d98267de46954e91bdd85e981234c1d10569c15ef7b3113115cadf42fcad",
+    "emulator": "mGBA 0.10.2 native core",
+    "protectedHeartRGBExact": true,
+    "scenesOnly": false,
+    "passed": true,
+    "setup": "Controlled fresh native fixtures, actual map/script/battle engine and button input; private setup payload never distributed.",
+    "limits": "Not an authentic historical owner save, natural full-story playthrough, Release-emulator or Pizza Boy test.",
+    "log": "map=0/11 xy=11,9 flags=01 maker=0 battle=0 script=0 party=1 outcome=0\nmap=76/4 xy=14,21 flags=03 maker=0 battle=0 script=0 party=1 outcome=0\nmap=76/4 xy=16,11 flags=03 maker=0 battle=0 script=0 party=1 outcome=0\nmap=76/5 xy=13,9 flags=01 maker=0 battle=0 script=0 party=1 outcome=0\nmap=76/6 xy=6,11 flags=01 maker=0 battle=0 script=0 party=1 outcome=0\nmap=76/7 xy=9,11 flags=01 maker=0 battle=0 script=0 party=1 outcome=0\nmap=76/8 xy=9,11 flags=01 maker=0 battle=0 script=0 party=1 outcome=0\nmap=76/9 xy=11,8 flags=01 maker=0 battle=0 script=0 party=1 outcome=0\nmap=76/4 xy=16,12 flags=07 maker=0 battle=0 script=0 party=1 outcome=0\nmap=76/4 xy=23,15 flags=03 maker=0 battle=0 script=0 party=1 outcome=0\nmap=76/6 xy=6,11 flags=01 maker=0 battle=0 script=0 party=1 outcome=0\nmap=76/6 xy=11,8 flags=01 maker=0 battle=0 script=0 party=1 outcome=0\nmap=76/6 xy=6,11 flags=01 maker=0 battle=0 script=0 party=1 outcome=0\nmap=76/6 xy=6,12 flags=01 maker=0 battle=0 script=0 party=1 outcome=0\nmap=76/8 xy=9,11 flags=01 maker=0 battle=0 script=0 party=1 outcome=0\nmap=76/8 xy=9,10 flags=01 maker=0 battle=0 script=0 party=1 outcome=0\nmap=76/8 xy=9,11 flags=01 maker=0 battle=0 script=0 party=1 outcome=0\nmap=76/8 xy=9,6 flags=01 maker=0 battle=0 script=0 party=1 outcome=0\nPASS actual southward walking descent captured through the upper flight\nmap=0/11 xy=8,11 flags=00 maker=0 battle=0 script=0 party=1 outcome=0\nmap=0/11 xy=9,11 flags=00 maker=0 battle=0 script=0 party=1 outcome=0\nmap=0/11 xy=8,11 flags=00 maker=0 battle=0 script=0 party=1 outcome=0\nmap=0/11 xy=9,11 flags=00 maker=0 battle=0 script=0 party=1 outcome=0\nmap=0/11 xy=8,11 flags=00 maker=0 battle=0 script=0 party=1 outcome=0\nmap=0/11 xy=9,11 flags=00 maker=0 battle=0 script=0 party=1 outcome=0\nmap=0/11 xy=8,11 flags=00 maker=0 battle=0 script=0 party=1 outcome=0\nmap=0/11 xy=9,11 flags=00 maker=0 battle=0 script=0 party=1 outcome=0\nmap=0/11 xy=8,11 flags=00 maker=0 battle=0 script=1 party=1 outcome=0\nmap=0/11 xy=8,11 flags=00 maker=0 battle=0 script=1 party=1 outcome=0\nmap=0/11 xy=8,11 flags=01 maker=0 battle=0 script=0 party=1 outcome=0\nPASS actual eight-step mystery call and one-time completion\nmap=0/11 xy=11,9 flags=01 maker=0 battle=0 script=0 party=1 outcome=0\nPASS old Dewford cached-template flash/load repair preserves native NPCs\nmap=76/4 xy=14,21 flags=03 maker=0 battle=0 script=0 party=1 outcome=0\nmap=76/4 xy=10,18 flags=03 maker=0 battle=0 script=0 party=1 outcome=0\nmap=76/4 xy=23,15 flags=03 maker=0 battle=0 script=0 party=1 outcome=0\nmap=76/4 xy=19,21 flags=03 maker=0 battle=0 script=0 party=1 outcome=0\nmap=76/4 xy=16,11 flags=03 maker=0 battle=0 script=0 party=1 outcome=0\nPASS actual shore-to-all-three-tablets-to-seal walking route\nmap=76/4 xy=16,11 flags=03 maker=0 battle=0 script=0 party=1 outcome=0\nmap=76/4 xy=16,11 flags=03 maker=0 battle=0 script=0 party=2 outcome=0\nmap=76/5 xy=8,4 flags=07 maker=1 battle=0 script=1 party=2 outcome=0\nPASS party/egg/fainted gate, actual opening and first stair entry, native flash flags\nPASS descent 1 route crosses 6 native stair cells\nmap=76/6 xy=8,3 flags=07 maker=1 battle=0 script=0 party=2 outcome=0\nPASS descent 2 route crosses 4 native stair cells\nmap=76/7 xy=8,3 flags=07 maker=1 battle=0 script=0 party=2 outcome=0\nPASS descent 3 route crosses 6 native stair cells\nmap=76/8 xy=8,3 flags=07 maker=1 battle=0 script=0 party=2 outcome=0\nPASS descent 4 route crosses 6 native stair cells\nmap=76/9 xy=11,17 flags=07 maker=1 battle=0 script=0 party=2 outcome=0\nmap=76/9 xy=11,5 flags=07 maker=1 battle=0 script=0 party=2 outcome=0\nPASS actual walking and reading of the final inscription\nmap=76/9 xy=11,8 flags=07 maker=1 battle=0 script=0 party=2 outcome=0\nmap=76/8 xy=11,20 flags=07 maker=1 battle=0 script=0 party=2 outcome=0\nmap=76/8 xy=11,20 flags=07 maker=1 battle=0 script=0 party=2 outcome=0\nmap=76/7 xy=11,20 flags=07 maker=1 battle=0 script=0 party=2 outcome=0\nmap=76/7 xy=13,19 flags=07 maker=1 battle=0 script=0 party=2 outcome=0\nmap=76/6 xy=11,20 flags=07 maker=1 battle=0 script=0 party=2 outcome=0\nmap=76/5 xy=11,20 flags=07 maker=1 battle=0 script=0 party=2 outcome=0\nmap=76/5 xy=13,19 flags=07 maker=1 battle=0 script=0 party=2 outcome=0\nmap=76/4 xy=16,11 flags=07 maker=1 battle=0 script=0 party=2 outcome=0\nPASS all four descent maps, both stair directions, both depth inscriptions and surface exit\nmap=76/5 xy=8,3 flags=07 maker=1 battle=0 script=0 party=2 outcome=0\nmap=76/4 xy=16,11 flags=07 maker=1 battle=0 script=0 party=2 outcome=0\nPASS actual open-door walking entry and native stair return\nmap=76/9 xy=11,8 flags=05 maker=0 battle=0 script=0 party=1 outcome=0\nmap=76/9 xy=11,8 flags=0d maker=0 battle=0 script=0 party=1 outcome=4\nmap=76/9 xy=11,8 flags=1d maker=0 battle=0 script=0 party=1 outcome=1\nmap=76/9 xy=11,8 flags=1d maker=0 battle=0 script=0 party=1 outcome=4\nPASS escape, defeat and actual same-sprite rematch\nmap=76/9 xy=11,8 flags=05 maker=0 battle=0 script=0 party=1 outcome=0\nmap=76/9 xy=11,8 flags=3d maker=0 battle=0 script=0 party=2 outcome=7\nPASS actual Regidrago capture, caught/calmed flags, party award and flash persistence\nmap=76/9 xy=11,8 flags=3d maker=0 battle=0 script=0 party=2 outcome=7\nmap=76/4 xy=14,21 flags=17 maker=0 battle=0 script=0 party=1 outcome=0\nmap=0/11 xy=11,10 flags=57 maker=0 battle=0 script=0 party=1 outcome=0\nPASS Briney report, quest completion and actual return voyage\n",
+    "images": {
+      "30-descending-00.png": "e4f4c8125674a7a9f00564bc2c7958fe2aa0a6e1a4d9b1f43acc0836fae77b1d",
+      "30-descending-07.png": "5cb781351f1a520cfcbc7f02ecab3ed4eae84247dc7ff753ebe0be73a9207503",
+      "12-sealed-without-maker.png": "69b2c8073a8b1c13bfed1cd68e3d4524e7d56d64ee336bb0a3b5feea7cd696de",
+      "13-maker-opens-seal.png": "09723da8f39e291ef6ee05a475733cfdd20d33fb88dec612dc9310d6af0713c4",
+      "30-descending-23.png": "f08aae23571d533419ae78892f7044984cd2c999e46a2f72c522c6681a9f8b84",
+      "20-maker-among-six.png": "7f154cdc9a6b31720c8db12b47d70b5abd6b971cb2585c43a592dccf3cc0867b",
+      "26-tidal-pool.png": "dcdf70b70ca2c53c21605abf8d380bf4cb20a4a8aee26ba81145b752ffd5efb4",
+      "15c-defeated-retry.png": "c447ce5667190b53f298bc4324aeb03574dd390015eedb8a5452d91edb5be8cb",
+      "30-descending-11.png": "00f40f695f31cc3652c459ac70ed89172ae5b740840965f52d68c67e8c1efeb0",
+      "23-open-headland-entrance.png": "fd56556118c64f54caf9e80c5b589f473485f37433f503b3172d9dd2fe2ce03a",
+      "30-descending-02.png": "08ca4b3df6f6bff5e4fe1a9fc4f68dc0b46de08c108954177195943e80cfc850",
+      "30-descending-05.png": "d66cac033be6ef3b4585a68bda63d661816e45682bf7608d68bd4822b34497eb",
+      "22-walked-dragon-dais.png": "a48ae07c30ea76dfd15972420f72ec402bbc0c416a68c64f4f241fe3651bf69e",
+      "06-third-landing.png": "085958db868c9720faeb0ebd13152e7835de08cb14adccfd6c965c6854b4c096",
+      "15-sleeping-dragon-prompt.png": "bb49cbae5ce02555011dcfdc6988ace3c4f331173fa70a569fe37c4eaf34a21e",
+      "01-dewford-dock.png": "34c310178b2a5fc3eecc0ef5dfdfa31da5aba46382190103a0892ff2b5ad75a9",
+      "30-descending-16.png": "e666e30862dd65970ba78519f0469c171a9dde4ae65be8c94156bee6d3e992c4",
+      "02-island-landing.png": "a4e8a9c348d8c4d371ea1257ae15a1f3e1d190ad3aaf6a8541ee3eab5dbe93d3",
+      "14b-deepest-arrival.png": "972064ef14996c5531460d0d482fc80e66a801d0c922d52b35b90d10640f73b8",
+      "04-stair-descent.png": "c260d31ba8f4ab3a935d07898d45706d08652f4a5fd4f8e941ca29ac2a104803",
+      "28-stone-stair-flight.png": "edabf4d36f0c9427a4d23c9d83c3eaecc195b63360b3cd9d585699ea1d795842",
+      "10-departure-choice.png": "4396ede62374bf8ccaa9d0c249999f21ff0b6084d6769f4a8c8845e910e1cf11",
+      "30-descending-13.png": "c9c92aedc66c81f3f3ae233aaae7a8a99b544c30510ea7ce444b72455539f445",
+      "30-descending-08.png": "ccb352fc7ba1d3f794d037b19a5ca0d63f5b4c9d9ee195ce92328d69b02798cc",
+      "01b-briney-voyage-menu.png": "559bd44f1d6141cff3969172eb83f76cf645c7dc94f5f5bea651d5e1f1c3627a",
+      "30-descending-10.png": "e75b1105e6f98007f68952eaccca51f9ab1adf855d5df3da697bbc41b59192db",
+      "30-descending-20.png": "7e9de723f3b7cbb75cf7942a1ac60c7ff598b11a2d6bbd136ca7416f29460c0a",
+      "15b-escaped-retry.png": "c447ce5667190b53f298bc4324aeb03574dd390015eedb8a5452d91edb5be8cb",
+      "21-walked-ruined-court.png": "3adb6ac6db923dcec96e48f705c6b84aecad7ac86ee381263b7799de76a7532c",
+      "30-descending-12.png": "ce7130730b87ef7b5540f96ca6fbfda23dea0814f7f4d88755e13fbe38ccf773",
+      "29-wide-stone-flight.png": "1329c15ccb7d6f7c8025b8a9a7242f22375e2eaafce87c00c9023d10f2a4b72a",
+      "30-descending-09.png": "0220d0cfd7f7a72142990c23329101c74ab090eeb97af7fbc4ff39084767450a",
+      "30-descending-15.png": "1e5ea9c9d671f5019cbc5d10f69e8908e10a5638af59c688c3ddc7860ec799a7",
+      "27-tidal-pool-animation.png": "685c48329b2f39035a86ae7aa8837054055b334e2657e3b9dd081bded3417f58",
+      "11-actual-arrival.png": "49e2b98d945e1cc6fb82cc06e0d883f726bbc5efbdf954f795ef2d8d44f21092",
+      "30-descending-19.png": "d58537b34375ac3c2c2239593729dad84b38a8b3ff55e139954ee19bfc642e29",
+      "18-report-and-return.png": "97240230487f356b8220e4a4d72abb00d928a9161fc9def14c5dbc3c8ef4b40a",
+      "30-descending-01.png": "987ef1662f9501d1e13dc17586cadaf1bb49d0660a947057225a5968938cef9b",
+      "19-maker-inscription.png": "441d31e7a485d303283d75441e849d66c2d4c27e214297a2059b4d4162034386",
+      "16-regidrago-battle.png": "8aae73a2a742fe8dc28472163145605cff50632f7ea03684afa5f927eaae76fa",
+      "09-unknown-number-call.png": "3beb490ec6d6712130a3b36c7e06f882a3379ee7a0ded11a75a29cb2dbfd23e4",
+      "08-slumbering-regidrago.png": "76e440d2c2ebe4de062576ed6dad0fc0ee4a621327120eea3fa7ae181f9c02bd",
+      "30-descending-21.png": "1ac5f7ec6e1f0f4d5f1e63d10ca8613ba98501e68d087c2ae54011c9c0ead170",
+      "03-ancient-seal.png": "a2c1d65648b12ecdffbc8a355b590a824eb54bcf3625a5e8d3c604adfd4e212c",
+      "30-descending-04.png": "e0adcf516d809bc7d0bcad8e41111b230763ea6795135138518f547674ecad3d",
+      "05-second-landing.png": "505073e7029b4254f7a3b7d5aa3c0820bfc992b2de935c1d8a09a1ad0c22c191",
+      "30-descending-17.png": "d3a657ff3c13584261cd0f22c5060112d1d89776a0aa0eed6b4cc309d59cac9d",
+      "14-first-descent-arrival.png": "06b30c844634f919f5ad4ec43b08b3c33ee679f5e1a7ac7c2afa443609ad32bb",
+      "07-fourth-landing.png": "cf99ae5a11f6cd86e8b0b7f300653e16f6af47e39e2918bb046ff7579fd8e58e",
+      "30-descending-18.png": "24d716409251935036055b4ea7126813f40b8faa0b4c5836adc566d4ca8426c6",
+      "24-walked-open-entrance.png": "3ccd210cdd9760932b0b885b2a45a04bf1c5fd447ffe9d0b891b2d3309d81534",
+      "30-descending-06.png": "827587695279f7c33a7c710d400efe68b247297f85e2d87a91e51b24e826e9fc",
+      "30-descending-14.png": "6af7df91708f7f8da91c6731450c1173b53a292691791dd14045c84f4994fd6d",
+      "30-descending-22.png": "59448997511e0075c93220d721b506cd56e147850901b0779216bf7626be564f",
+      "17-capture-resolved.png": "1f63195bbe5de655a77f9a90d842bcf1a8a216c72f7364d223dccdc4fa495354",
+      "30-descending-03.png": "ec487cfd21c0385e637e854863e998c1a7496ab355326223847c20082aefe89e",
+      "25-returned-through-entrance.png": "b5b86030027fc5b38bc8da2bd86bef437f7758a5062778c633ee63891c1673b7"
+    }
+  },
+  "quickstart": {
+    "model": "GPT-6 (High)",
+    "version": "0.0.70",
+    "emulator": "Ubuntu libmGBA 0.10.x, native core",
+    "build": "Debug",
+    "rom_sha256": "e705d98267de46954e91bdd85e981234c1d10569c15ef7b3113115cadf42fcad",
+    "ROM_unmodified": true,
+    "RAM_writes_by_test": false,
+    "test_scope": "Title SELECT Quickstart -> overworld; two live 240x160 frames",
+    "not_tested": "Research dialogue/Weather Institute/Champion conversations through normal save progression, Release run, historical saves and full playthrough.",
+    "captures": [
+      {
+        "name": "living-hoenn-gameplay",
+        "colors": 26
+      },
+      {
+        "name": "living-hoenn-interaction",
+        "colors": 26
+      }
+    ]
+  },
+  "authoring": {
+    "baseline": "f707ff4c3271531f2969be487d75c18a3bc399de",
+    "inputs": {
+      "data/tilesets/legends_wyrmtide/tiles.png": "32c886b52c8851c15877e07ab894c5de51e90af9",
+      "data/tilesets/legends_wyrmtide/metatiles.bin": "d8d3fc1f7c4b6ac944e89b9ef35b79e325872781",
+      "data/tilesets/legends_wyrmtide/metatile_attributes.bin": "bde2db393e71e77082653725994e0de8e3ff541a",
+      "data/tilesets/legends_wyrmtide/source.json": "0be8af534fbb5c46929acd2b2b89409e0847acbf",
+      "src/data/tilesets/legends_wyrmtide.h": "6632ce27955536711896bb59c46e1f3d64c20285",
+      "data/layouts/LegendsWyrmtide_Descent1/map.bin": "fe41a195c9fccee96ecd67c4ee7233a2b2b7cbe6",
+      "data/layouts/LegendsWyrmtide_Descent2/map.bin": "50c0b8bbda987ca57dacd6ff3e7b0c175c53e8a4",
+      "data/layouts/LegendsWyrmtide_Descent3/map.bin": "5cdce7d6fdfadcdd5af71f913ff662b7119ce5bd",
+      "data/layouts/LegendsWyrmtide_Descent4/map.bin": "7219a16a5efedb98d7dec70db54516d44ba23f1d"
+    },
+    "maps": {
+      "Descent1": {
+        "changedCells": 59,
+        "movementBitsExact": true,
+        "stairCellsExact": true
+      },
+      "Descent2": {
+        "changedCells": 19,
+        "movementBitsExact": true,
+        "stairCellsExact": true
+      },
+      "Descent3": {
+        "changedCells": 62,
+        "movementBitsExact": true,
+        "stairCellsExact": true
+      },
+      "Descent4": {
+        "changedCells": 56,
+        "movementBitsExact": true,
+        "stairCellsExact": true
+      }
+    },
+    "variants": [
+      {
+        "id": 953,
+        "source": 520,
+        "role": "upper-rim"
+      },
+      {
+        "id": 954,
+        "source": 521,
+        "role": "upper-rim"
+      },
+      {
+        "id": 955,
+        "source": 522,
+        "role": "upper-rim"
+      },
+      {
+        "id": 956,
+        "source": 536,
+        "role": "vertical-face"
+      },
+      {
+        "id": 957,
+        "source": 537,
+        "role": "vertical-face"
+      },
+      {
+        "id": 958,
+        "source": 538,
+        "role": "vertical-face"
+      },
+      {
+        "id": 959,
+        "source": 513,
+        "role": "bank-contact-shadow-0x219"
+      },
+      {
+        "id": 960,
+        "source": 513,
+        "role": "bank-contact-shadow-0x21a"
+      }
+    ],
+    "paletteBanks": [
+      7,
+      8
+    ],
+    "nativeSourcesOnly": true,
+    "protectedHeartIsleWaterExact": true
+  },
+  "independentAudit": {
+    "oldTilesThrough975Exact": true,
+    "old441MetatilesExact": true,
+    "old441AttributesExact": true,
+    "allTreadPixelsExact": true,
+    "fittedRockGeometryExact": true,
+    "DebugROM_sha256": "e705d98267de46954e91bdd85e981234c1d10569c15ef7b3113115cadf42fcad",
+    "compiledMaps": [
+      {
+        "path": "data/layouts/LegendsWyrmtide_Descent1/map.bin",
+        "ROM_offset": 19401648,
+        "sha256": "db31789d7b388050e0f71284f22a7bd5e1a82ff2f2cfc5175906095cebb99cbd"
+      },
+      {
+        "path": "data/layouts/LegendsWyrmtide_Descent2/map.bin",
+        "ROM_offset": 19402596,
+        "sha256": "a081c813e0dc6dc47ff511aba6eba76d1f05f98aabc4276795fdda17fc7e55f9"
+      },
+      {
+        "path": "data/layouts/LegendsWyrmtide_Descent3/map.bin",
+        "ROM_offset": 19403544,
+        "sha256": "c19437450bca126aae4bbae9c314080c25709be450f93d70add4985b0f102607"
+      },
+      {
+        "path": "data/layouts/LegendsWyrmtide_Descent4/map.bin",
+        "ROM_offset": 19404492,
+        "sha256": "6845e1b0618c466628bf632ac9c1d586f5a876ea7d6444ee5477341df05f8356"
+      }
+    ],
+    "allFourLayoutsNormalizeExactlyToAcceptedGeometry": true
+  },
+  "gallery": {
+    "ROM_sha256": "e705d98267de46954e91bdd85e981234c1d10569c15ef7b3113115cadf42fcad",
+    "emulator": "mGBA 0.10.2 native core",
+    "version": "0.0.70 + unshipped Wyrmtide review",
+    "nativeFrames": [
+      "30-descending-00.png",
+      "30-descending-01.png",
+      "30-descending-02.png",
+      "30-descending-03.png",
+      "30-descending-04.png",
+      "30-descending-05.png",
+      "30-descending-06.png",
+      "30-descending-07.png",
+      "30-descending-08.png",
+      "30-descending-09.png",
+      "30-descending-10.png",
+      "30-descending-11.png",
+      "30-descending-12.png",
+      "30-descending-13.png",
+      "30-descending-14.png",
+      "30-descending-15.png",
+      "30-descending-16.png",
+      "30-descending-17.png",
+      "30-descending-18.png",
+      "30-descending-19.png",
+      "30-descending-20.png",
+      "30-descending-21.png",
+      "30-descending-22.png",
+      "30-descending-23.png"
+    ],
+    "sampleIntervalEmulatedFrames": 4,
+    "gifColors": 29,
+    "gifRGBRoundtripExact": true,
+    "stillScale": 3,
+    "gifScale": 2,
+    "gifDurationMilliseconds": [
+      300,
+      70,
+      70,
+      70,
+      70,
+      70,
+      70,
+      70,
+      70,
+      70,
+      70,
+      70,
+      70,
+      70,
+      70,
+      70,
+      70,
+      70,
+      70,
+      70,
+      70,
+      70,
+      70,
+      500
+    ],
+    "outputs": {
+      "Depth-Before-After.png": "4fa3b52a0b92dc42d7ae2a987a3d7040a376683fc4eba9814994fa722f2cf6bc",
+      "Wide-Terrace-Depth.png": "5cb6c1b757b100d54c4a0c4a2d03ad393b7735b5ddeb9ee302ce65caf8ece183",
+      "Walking-Down.gif": "45748ccf45d5bebafe3d418eda6fad2b84488ef51c68f7be9783869585ac54f9",
+      "Terrace-Depth.png": "b41d6b6097a8c335949eb617c6394708bb7230f324d92f472ca589770e31f079"
+    }
+  },
+  "sourceInputs": [
+    {
+      "path": "data/tilesets/legends_wyrmtide/tiles.png",
+      "GitBlob": "9d7b010fc5d66b9cc9fd8228c8de3ef4158f19d6",
+      "SHA256": "7a433998fed20a231947a868f65e4f97c244f1679913b8251e22a71acfb63a95"
+    },
+    {
+      "path": "data/tilesets/legends_wyrmtide/metatiles.bin",
+      "GitBlob": "2387a7f9f9d7291f6c4d92cd93bbccbb905bbbad",
+      "SHA256": "f7f88ce7c363fdc8dc2d57c811b810af9bed18122563ed4980ada37cfe31bfe7"
+    },
+    {
+      "path": "data/tilesets/legends_wyrmtide/metatile_attributes.bin",
+      "GitBlob": "3a96dc76d36d288720e9cb662381ad487bfd11b5",
+      "SHA256": "f6e3889efd7aae648ccb60358a38fa2f9332b3f3f3fa40507ab659372271c919"
+    },
+    {
+      "path": "data/tilesets/legends_wyrmtide/source.json",
+      "GitBlob": "27199d5dff0a2fd7dc3772bec419fa8faf9eb061",
+      "SHA256": "d756bf588624cf49d0abb2b8032a7573ef602d591af50e53ce038184128b3cf5"
+    },
+    {
+      "path": "data/tilesets/legends_wyrmtide/ledge_rim.pal",
+      "GitBlob": "af9c79fa9378de84b68e90cfba1aa5006bcc5fc7",
+      "SHA256": "4dc55754dd5dfd9cce0c8657ac4892be1e3dd303e58fdb91918ac9f88df90971"
+    },
+    {
+      "path": "data/tilesets/legends_wyrmtide/ledge_face.pal",
+      "GitBlob": "861fa023a51a50b46d47328307c3cbdd5f6f983b",
+      "SHA256": "0823845d9a8117a6fb05e87fc04f7ed4fc5e11385720e44c82599b11e6b273eb"
+    },
+    {
+      "path": "src/data/tilesets/legends_wyrmtide.h",
+      "GitBlob": "b48e62c36bf963f9665c5b08622ef2ff3de8e744",
+      "SHA256": "1e900ad4e492fdcd7820cec20c5099f9b1d58978e1aa1dcf5689b83aa7b5cd36"
+    },
+    {
+      "path": "data/layouts/LegendsWyrmtide_Descent1/map.bin",
+      "GitBlob": "5944fea6a94364090a1f72c481c78c3bd523fd88",
+      "SHA256": "db31789d7b388050e0f71284f22a7bd5e1a82ff2f2cfc5175906095cebb99cbd"
+    },
+    {
+      "path": "data/layouts/LegendsWyrmtide_Descent2/map.bin",
+      "GitBlob": "64e17d52cec4a26d7985aa5ae9b3d77f6f10ae7a",
+      "SHA256": "a081c813e0dc6dc47ff511aba6eba76d1f05f98aabc4276795fdda17fc7e55f9"
+    },
+    {
+      "path": "data/layouts/LegendsWyrmtide_Descent3/map.bin",
+      "GitBlob": "7625c9988b58e89ebea06e44d98ca76306dda0ff",
+      "SHA256": "c19437450bca126aae4bbae9c314080c25709be450f93d70add4985b0f102607"
+    },
+    {
+      "path": "data/layouts/LegendsWyrmtide_Descent4/map.bin",
+      "GitBlob": "338fc1d7d833d89023951bba9633573d70422b62",
+      "SHA256": "6845e1b0618c466628bf632ac9c1d586f5a876ea7d6444ee5477341df05f8356"
+    },
+    {
+      "path": "test/legends-wyrmtide.test.py",
+      "GitBlob": "2dbbd3194da8eddf5d73527d84873c7bc3edabc6",
+      "SHA256": "4a81d1327b04080566c3f2c2d6e45332ff9c34f93484b55c81b874b4ebaf9067"
+    },
+    {
+      "path": "tools/legends/native_wyrmtide_qa/host.c",
+      "GitBlob": "59f5ce2c33fc7f9ddc5ce382dc6c7b8c58d38ae4",
+      "SHA256": "95a2001308dcb27c99b292f275a164926a6320bdb0ba559fce616c8491d699b0"
+    },
+    {
+      "path": "tools/legends/refine_wyrmtide_depth.py",
+      "GitBlob": "c6613ee6f594a63e68441c0c0762ed1425887730",
+      "SHA256": "99611a652e2eddc2f883f36581b213fc0f9bd788ba4fa2db9e6493f177206996"
+    }
+  ],
+  "sourceCI": {
+    "run": 42096385738,
+    "conclusion": "success"
+  },
+  "releaseCI": {
+    "run": 42096385990,
+    "conclusion": "success",
+    "source": "ad731de350e49aeed830fde05e97cc594aa81e49",
+    "passed": true,
+    "build": "Release",
+    "standardLTO": true,
+    "ROM_sha256": "bcc5ac46d383b190dfd627636eff1de5500ce76f9520215108d34783ca3591d9",
+    "fileBlobs": {
+      "data/tilesets/legends_wyrmtide/tiles.png": "9d7b010fc5d66b9cc9fd8228c8de3ef4158f19d6",
+      "data/tilesets/legends_wyrmtide/metatiles.bin": "2387a7f9f9d7291f6c4d92cd93bbccbb905bbbad",
+      "data/tilesets/legends_wyrmtide/metatile_attributes.bin": "3a96dc76d36d288720e9cb662381ad487bfd11b5",
+      "data/tilesets/legends_wyrmtide/source.json": "27199d5dff0a2fd7dc3772bec419fa8faf9eb061",
+      "data/tilesets/legends_wyrmtide/ledge_rim.pal": "62e69d956ad7d043b52dfd949fbbc429dbee8331",
+      "data/tilesets/legends_wyrmtide/ledge_face.pal": "a990b61a7617e8e53b8dbb36afc0fad63a89613f",
+      "src/data/tilesets/legends_wyrmtide.h": "b48e62c36bf963f9665c5b08622ef2ff3de8e744",
+      "data/layouts/LegendsWyrmtide_Descent1/map.bin": "5944fea6a94364090a1f72c481c78c3bd523fd88",
+      "data/layouts/LegendsWyrmtide_Descent2/map.bin": "64e17d52cec4a26d7985aa5ae9b3d77f6f10ae7a",
+      "data/layouts/LegendsWyrmtide_Descent3/map.bin": "7625c9988b58e89ebea06e44d98ca76306dda0ff",
+      "data/layouts/LegendsWyrmtide_Descent4/map.bin": "338fc1d7d833d89023951bba9633573d70422b62",
+      "test/legends-wyrmtide.test.py": "2dbbd3194da8eddf5d73527d84873c7bc3edabc6",
+      "tools/legends/native_wyrmtide_qa/host.c": "59f5ce2c33fc7f9ddc5ce382dc6c7b8c58d38ae4",
+      "tools/legends/refine_wyrmtide_depth.py": "c6613ee6f594a63e68441c0c0762ed1425887730"
+    },
+    "allReviewInputsVerified": true,
+    "paletteCheckoutNormalization": [
+      {
+        "path": "data/tilesets/legends_wyrmtide/ledge_rim.pal",
+        "canonicalGitBlob": "af9c79fa9378de84b68e90cfba1aa5006bcc5fc7",
+        "checkoutRawBlob": "62e69d956ad7d043b52dfd949fbbc429dbee8331",
+        "checkoutRule": "*.pal text eol=crlf"
+      },
+      {
+        "path": "data/tilesets/legends_wyrmtide/ledge_face.pal",
+        "canonicalGitBlob": "861fa023a51a50b46d47328307c3cbdd5f6f983b",
+        "checkoutRawBlob": "a990b61a7617e8e53b8dbb36afc0fad63a89613f",
+        "checkoutRule": "*.pal text eol=crlf"
+      }
+    ]
+  },
+  "approval": "new lighting/contact shadows pending visual review; accepted stair/fit/Heart/island geometry retained",
+  "publication": false,
+  "limits": "Controlled actual Debug engine fixtures and sampled live walking frames. No natural full-story, authentic historical owner save, Release Wyrmtide playthrough, Pizza Boy or independently applied BPS claim. Old feature branch still needs current-master reconciliation."
+}
