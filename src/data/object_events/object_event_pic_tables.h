@@ -1,3 +1,16 @@
+static const struct SpriteFrameImage sPicTable_WyrmtideRegidrago[] = {
+    overworld_frame(gObjectEventPic_WyrmtideRegidrago, 8, 8, 0),
+    overworld_frame(gObjectEventPic_WyrmtideRegidrago, 8, 8, 0),
+    overworld_frame(gObjectEventPic_WyrmtideRegidrago, 8, 8, 0),
+    overworld_frame(gObjectEventPic_WyrmtideRegidrago, 8, 8, 0),
+    overworld_frame(gObjectEventPic_WyrmtideRegidrago, 8, 8, 0),
+    overworld_frame(gObjectEventPic_WyrmtideRegidrago, 8, 8, 0),
+    overworld_frame(gObjectEventPic_WyrmtideRegidrago, 8, 8, 0),
+    overworld_frame(gObjectEventPic_WyrmtideRegidrago, 8, 8, 0),
+    overworld_frame(gObjectEventPic_WyrmtideRegidrago, 8, 8, 0),
+
+};
+
 static const struct SpriteFrameImage sPicTable_BrendanNormal[] = {
     overworld_ascending_frames(gObjectEventPic_BrendanNormalRunning, 2, 4),
 };

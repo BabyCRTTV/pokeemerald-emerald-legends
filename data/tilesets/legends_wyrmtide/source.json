@@ -170,5 +170,47 @@
     "originalWarpIndicesPreserved": true,
     "newAliasWarpIndex": 2,
     "newPixelArt": false
+  },
+  "interiorPassages": {
+    "upperNativeAssembly": [
+      [
+        782,
+        968,
+        969,
+        767
+      ],
+      [
+        790,
+        965,
+        966,
+        775
+      ]
+    ],
+    "topLeft": [
+      7,
+      1
+    ],
+    "upperTreadSources": [
+      945,
+      946
+    ],
+    "shadowSource": 774,
+    "southStair": 967,
+    "southBehavior": 101,
+    "southTreadSource": 952,
+    "newPixelArt": false,
+    "extendedArchInnerColumn": {
+      "source": 766,
+      "x": 7,
+      "tiles": [
+        1012,
+        1013
+      ],
+      "metatiles": [
+        968,
+        969
+      ]
+    },
+    "southFootShadeSource": 774
   }
 }

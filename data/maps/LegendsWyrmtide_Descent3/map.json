@@ -46,7 +46,7 @@
       "y": 18,
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-      "script": "Wyrmtide_DepthTablet"
+      "script": "Wyrmtide_DeepTablet"
     }
   ]
 }

@@ -1,5 +1,17 @@
 # Development handoff
 
+## Interior feedback, encounters and larger Regidrago (5 November 2026)
+
+**Model: GPT-6.1 Sol (Codex) | Reasoning: preserve visual approval, clarify native passages, add real cave ecology and readable lore without shifting saved IDs.**
+
+Owner approved the previous stairwell/walkthrough at f4e6cae2, then requested interior entry/exit touchups, rare dragon plus regular cave encounters, a much larger Regidrago and unique middle inscriptions, with images before further review. This authorizes these revisions, not publication.
+
+Fitted all four upper returns with the native Seafloor Cavern arch/shadow/caps and accepted treads. The extended inner column keeps each arch edge once. Lower flights now disappear into native cave shade and use native south-arrow transitions; Heart's return uses the same assembly. Original warp indices/aliases, collision words, accepted terrace flights/depth, water and island remain unchanged. The explicit authoring helper rejects changed source and reproduces all five layouts/art exactly from approved pins.
+
+Appended four encounter tables: low native rate8, ordinary cave species plus two dragon slots totaling5% per chamber (4%/1%), levels48–61 by depth. No sanctuary encounters; old tables remain exact and existing header indices stay stable. Reused existing native64px Regidrago front art/palette as a dedicated cave-only static object, keeping follower/battle source art unchanged. New graphics ID0x0E00 and palette0x1176 avoid native/dynamic/player ID shifts. Moved its anchor down one tile for inscription clearance. Added readable Threshold/Tidal carvings and distinct Deep lore; preserved first shore, first cave and final texts exactly.
+
+Local Debug and full native quest/walking/party-gate/retry/capture/flash/report tests passed. Both return lanes and revised south exits worked; walking triggered actual wild battles on all four floors. Native generation from the live4% slot supplied the controlled Bagon preview. All visible new lore pages were read/captured; larger sprite resolves64×64/2048 bytes while follower remains32px. Focused progression/art/ID/encounter/text checks and appearance/wardrobe regressions passed. Final source CI, gallery/receipt closeout are in progress. Prior Release job42125621400 was cancelled during compiler installation; Release/BPS readiness remains unverified. Keep PR#89 draft, publicv0.0.75 unchanged. New visuals await owner review; this remains the old v0.0.70 feature branch requiring current-master reconciliation before shipping.
+
 ## Upper return stairs and complete chamber walkthrough (5 November 2026)
 
 **Model: GPT-6.1 Sol (Codex) | Reasoning: accepted native stair assembly, two functional return lanes and continuous real-game proof.**

@@ -32,7 +32,7 @@ changed=subprocess.check_output(['git','diff','--name-only','HEAD','--','data/la
 base=R/'data/tilesets/secondary/cave';sib=R/'data/tilesets/legends_wyrmtide'
 native=(base/'metatiles.bin').read_bytes();authored=(sib/'metatiles.bin').read_bytes()
 depth=json.loads((sib/'source.json').read_text())['terraceDepth']
-assert authored[:len(native)]==native and len(authored)==len(native)+32+(29+len(depth['variants']))*16
+assert authored[:len(native)]==native and len(authored)==len(native)+32+(34+len(depth['variants']))*16
 base_mid=lambda mid:next((v['source'] for v in depth['variants'] if v['id']==mid),mid)
 assert authored[len(native):len(native)+16]==authored[len(native)+16:len(native)+32]
 assert (sib/'metatile_attributes.bin').read_bytes()[:len(native)//8+4]==(base/'metatile_attributes.bin').read_bytes()+struct.pack('<HH',0x61,0)
@@ -112,7 +112,7 @@ for width,rows in [(32,[[0x3b1,0x3b2],[0x3b3,0x3b4]]),(48,[[0x3b1,0x3b5,0x3b2],[
 # Original step footprints and actual native warp behavior are retained.
 for key in ['Descent1','Descent2','Descent3','Descent4']:
  a=struct.unpack('<456H',(R/f'data/layouts/LegendsWyrmtide_{key}/map.bin').read_bytes())
- assert all((a[y*19+x]&1023)==mid for x,y,mid in [(7,2,0x2fa),(8,2,0x3c1),(9,2,0x3c2),(10,2,0x2f8),(8,3,0x3c3),(9,3,0x3c4),(11,19,0x3b7),(11,20,0x3b8)])
+ assert all((a[y*19+x]&1023)==mid for x,y,mid in [(7,1,0x30e),(8,1,0x3c8),(9,1,0x3c9),(10,1,0x2ff),(7,2,0x316),(8,2,0x3c5),(9,2,0x3c6),(10,2,0x307),(8,3,0x3c3),(9,3,0x3c4),(11,19,0x3b7),(11,20,0x3c7)])
 # Widened upper return uses accepted treads, native wall canopy and two live lanes.
 attrs=(sib/'metatile_attributes.bin').read_bytes()
 words=lambda mid:struct.unpack_from('<8H',authored,(mid-512)*16)
@@ -254,3 +254,28 @@ int main(void){
 with tempfile.TemporaryDirectory() as d:
  p=Path(d)/'test.c';p.write_text(prefix+src+test);subprocess.run(['cc','-std=c11','-O2',str(p),'-o',str(Path(d)/'test')],check=True);subprocess.run([str(Path(d)/'test')],check=True)
 print('PASS native flag allocation, append-only IDs/layouts, protected owner assets, sibling stair art and all stair return pairs')
+
+# Owner-requested interior feedback: live cave tables and stable native art/IDs.
+preserved_text_hashes={'Wyrmtide_Text_ShoreTablet': '611356c9395a9c16ed0fbe0d24eb9f2a140432fb9d1f6df5727beda6cb1a0564', 'Wyrmtide_Text_DepthTablet': 'aecc5d074b72e9cc1a2c5466bafe0ea571e3c4d405a431a1d25810cf4970ba59', 'Wyrmtide_Text_FinalTablet': '78e7c63709611cb56e9ccbeea5627f2dd1cd86393fdabef45b078a1ff3655877'}
+story=(R/'data/scripts/legends_wyrmtide.inc').read_text()
+for name,h in preserved_text_hashes.items():
+ content=story.split(name+':',1)[1].split('\nWyrmtide_',1)[0]
+ assert hashlib.sha256(content.encode()).hexdigest()==h,(name,'preserved first/final text changed')
+labels=['Shore','Maker','Sea','Depth','Threshold','Tidal','Deep','Final']
+texts=[story.split('Wyrmtide_Text_'+name+'Tablet:',1)[1].split('\nWyrmtide_',1)[0] for name in labels]
+assert len(set(texts))==len(texts)
+wild=json.loads((R/'src/data/wild_encounters.json').read_text());group=next(g for g in wild['wild_encounter_groups'] if g['for_maps']);rates=next(f['encounter_rates'] for f in group['fields'] if f['type']=='land_mons')
+dragons=[['BAGON','GIBLE'],['NOIBAT','AXEW'],['DRUDDIGON','DEINO'],['GABITE','FRAXURE']]
+for i,names in enumerate(dragons,1):
+ entry=[e for e in group['encounters'] if e['map']==f'MAP_LEGENDS_WYRMTIDE_DESCENT{i}'];assert len(entry)==1
+ info=entry[0]['land_mons'];assert info['encounter_rate']==8 and len(info['mons'])==12
+ assert sum(rate for rate,mon in zip(rates,info['mons']) if mon['species'] in ['SPECIES_'+n for n in names])==5
+ assert all(48<=m['min_level']<=m['max_level']<=61 for m in info['mons'])
+assert not any(e['map']=='MAP_LEGENDS_WYRMTIDE_HEART' for e in group['encounters'])
+assert struct.unpack_from('<H',attrs,(0x201-512)*2)[0]&0xff==8
+assert words(0x3c7)[:2]==words(0x3b8)[:2] and words(0x3c7)[2:4]==words(0x306)[2:4] and struct.unpack_from('<H',attrs,(0x3c7-512)*2)[0]==0x65
+info=(R/'src/data/object_events/object_event_graphics_info.h').read_text().split('gObjectEventGraphicsInfo_WyrmtideRegidrago = {',1)[1].split('};',1)[0]
+assert '.width = 64' in info and '.height = 64' in info and '.size = 2048' in info
+assert 'graphics/pokemon/regidrago/front.png' in (R/'src/data/object_events/object_event_graphics.h').read_text()
+assert '#define OBJ_EVENT_GFX_LEGENDS_WYRMTIDE_REGIDRAGO 0x0E00' in (R/'include/constants/event_objects.h').read_text()
+print('PASS unique readable carvings, protected first/final text, 5% dragons, quiet Heart and dedicated 64px native legendary')

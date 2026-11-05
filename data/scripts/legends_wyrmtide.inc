@@ -138,7 +138,7 @@ Wyrmtide_DepthTablet::
 	msgbox Wyrmtide_Text_DepthTablet, MSGBOX_SIGN
 	end
 Wyrmtide_ChamberOnTransition::
-	setvar VAR_OBJ_GFX_ID_F, OBJ_EVENT_MON + SPECIES_REGIDRAGO
+	setvar VAR_OBJ_GFX_ID_F, OBJ_EVENT_GFX_LEGENDS_WYRMTIDE_REGIDRAGO
 	end
 Wyrmtide_ChamberOnResume::
 	call_if_set FLAG_SYS_CTRL_OBJ_DELETE, Wyrmtide_CheckCatch
@@ -314,3 +314,34 @@ Wyrmtide_DewfordResume::
 	call Wyrmtide_PrepareDewford
 	special LegendsWyrmtideRefreshDewford
 	end
+
+Wyrmtide_ThresholdTablet::
+	msgbox Wyrmtide_Text_ThresholdTablet, MSGBOX_SIGN
+	end
+Wyrmtide_Text_ThresholdTablet:
+	.string "The carving is smooth beneath\n"
+	.string "your fingertips.\p"
+	.string "FROM THE LAND OUR MAKER RAISED,\n"
+	.string "WE CUT A ROAD BENEATH THE SEA.\p"
+	.string "LET NO HAMMER STRIKE THE HEART\n"
+	.string "THAT BEATS BELOW THESE STONES.$"
+
+Wyrmtide_TidalTablet::
+	msgbox Wyrmtide_Text_TidalTablet, MSGBOX_SIGN
+	end
+Wyrmtide_Text_TidalTablet:
+	.string "Water has gathered in the cuts.\p"
+	.string "THE TIDE MAY CLAIM OUR FOOTSTEPS.\n"
+	.string "IT SHALL NOT CLAIM THIS OATH.\p"
+	.string "WE KEEP THE MAKER'S LAST WORK\n"
+	.string "BEYOND THE HUNGER OF THE SEA.$"
+
+Wyrmtide_DeepTablet::
+	msgbox Wyrmtide_Text_DeepTablet, MSGBOX_SIGN
+	end
+Wyrmtide_Text_DeepTablet:
+	.string "The strokes grow deeper here.\p"
+	.string "WE HEARD NO BREATH, YET STONE\n"
+	.string "TREMBLED WITH THE DRAGON'S PULSE.\p"
+	.string "WE LOWERED OUR TOOLS,\n"
+	.string "AND LEFT IT TO ITS DREAM.$"

@@ -591,6 +591,7 @@ static const struct SpritePalette sObjectEventSpritePalettes[] = {
     {gObjectEventPaletteNeonLight,          OBJ_EVENT_PAL_TAG_NEON_LIGHT},
     {gLegendsMomPalettes[0], OBJ_EVENT_PAL_TAG_LEGENDS_MOM},
     {gLegendsNormanPalettes[0], OBJ_EVENT_PAL_TAG_LEGENDS_NORMAN},
+    {gObjectEventPal_WyrmtideRegidrago, OBJ_EVENT_PAL_TAG_LEGENDS_WYRMTIDE_REGIDRAGO},
 #ifdef BUGFIX
     {NULL,                                  OBJ_EVENT_PAL_TAG_NONE},
 #else
@@ -3216,6 +3217,9 @@ const struct ObjectEventGraphicsInfo *GetObjectEventGraphicsInfo(u16 graphicsId)
 
     appearanceGraphicsId = graphicsId;
     graphicsId = LegendsGetBasePlayerGraphicsId(graphicsId);
+
+    if (graphicsId == OBJ_EVENT_GFX_LEGENDS_WYRMTIDE_REGIDRAGO)
+        return &gObjectEventGraphicsInfo_WyrmtideRegidrago;
 
     if (graphicsId == OBJ_EVENT_GFX_BARD)
         return gMauvilleOldManGraphicsInfoPointers[GetCurrentMauvilleOldMan()];

@@ -1,3 +1,6 @@
+// Reuse the game's native 64px Regidrago art for this stationary sanctuary object.
+const u32 gObjectEventPic_WyrmtideRegidrago[] = INCGFX_U32("graphics/pokemon/regidrago/front.png", ".4bpp");
+const u16 gObjectEventPal_WyrmtideRegidrago[] = INCGFX_U16("graphics/pokemon/regidrago/normal.pal", ".gbapal");
 const u32 gObjectEventPic_BrendanNormalRunning[] = INCBIN_U32("graphics/object_events/pics/people/brendan/walking.4bpp", "graphics/object_events/pics/people/brendan/running.4bpp");
 const u16 gObjectEventPal_Brendan[] = INCGFX_U16("graphics/object_events/palettes/brendan.pal", ".gbapal");
 const u32 gObjectEventPic_RubySapphireBrendanNormal[] = INCGFX_U32("graphics/object_events/pics/people/ruby_sapphire_brendan/walking.png", ".4bpp", "-mwidth 2 -mheight 4");

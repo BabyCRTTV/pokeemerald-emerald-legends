@@ -13,7 +13,7 @@ elf=R/'pokeemerald.elf';rom=R/'pokeemerald.gba';symbols=syms(elf);source=rom.rea
 run(['arm-none-eabi-gcc','-iquote','include','-iquote','.', '-DMODERN=1','-DEMERALD','-mthumb','-mcpu=arm7tdmi','-mabi=apcs-gnu','-Os','-ffreestanding','-fno-builtin','-fno-jump-tables','-nostdlib','-Wl,-Ttext=0x09f80000','-Wl,--entry=qa','-Wl,--just-symbols='+str(elf),str(S/'arm.c'),'-o',str(out/'arm.elf')],'arm-build.log')
 run(['arm-none-eabi-objcopy','-O','binary',str(out/'arm.elf'),str(out/'arm.bin')],'objcopy.log');payload=(out/'arm.bin').read_bytes();assert len(payload)<65536 and set(source[0x1f80000:0x1f80000+len(payload)])=={255};private=out/'PRIVATE-QA.gba';patched=bytearray(source);patched[0x1f80000:0x1f80000+len(payload)]=payload;private.write_bytes(patched)
 # Navigation checks use the compiled map collision words and real button steps.
-grids=[];widths=[];sizes=[];warps=[];warp_counts=[]
+grids=[];widths=[];sizes=[];warps=[];warp_counts=[];warp_dirs=[]
 layouts=json.loads((R/'data/layouts/layouts.json').read_text())['layouts']
 for name in ['Descent1','Descent2','Descent3','Descent4','Isle','Heart']:
  m=json.loads((R/f'data/maps/LegendsWyrmtide_{name}/map.json').read_text());l=next(x for x in layouts if x['id']==m['layout']);w=l['width'];raw=(R/l['blockdata_filepath']).read_bytes();cells=list(struct.unpack('<%dH'%(len(raw)//2),raw))
@@ -21,8 +21,8 @@ for name in ['Descent1','Descent2','Descent3','Descent4','Isle','Heart']:
  for i,v in enumerate(cells):
   if v>>12!=3:cells[i]|=0x400
  for o in m['object_events']:cells[o['y']*w+o['x']]|=0x400
- grids.append('{'+','.join(str(v) for v in cells)+'}');widths.append(w);sizes.append(len(cells));warps.append('{'+','.join(str(e['y']*w+e['x']) for e in m['warp_events'])+'}');warp_counts.append(len(m['warp_events']))
-(out/'paths.h').write_text('static const unsigned short grids[6][986]={'+','.join(grids)+'};\nstatic const int widths[]={'+','.join(map(str,widths))+'},sizes[]={'+','.join(map(str,sizes))+'},warp_counts[]={'+','.join(map(str,warp_counts))+'},warps[6]['+str(max(warp_counts))+']={'+','.join(warps)+'};\n')
+ grids.append('{'+','.join(str(v) for v in cells)+'}');widths.append(w);sizes.append(len(cells));warps.append('{'+','.join(str(e['y']*w+e['x']) for e in m['warp_events'])+'}');warp_counts.append(len(m['warp_events']));warp_dirs.append('{'+','.join('128' if (name!='Isle' and (name=='Heart' or j==1)) else '0' for j,e in enumerate(m['warp_events']))+'}')
+(out/'paths.h').write_text('static const unsigned short grids[6][986]={'+','.join(grids)+'};\nstatic const int widths[]={'+','.join(map(str,widths))+'},sizes[]={'+','.join(map(str,sizes))+'},warp_counts[]={'+','.join(map(str,warp_counts))+'},warps[6]['+str(max(warp_counts))+']={'+','.join(warps)+'};\nstatic const int warp_dirs[6]['+str(max(warp_counts))+']={'+','.join(warp_dirs)+'};\n')
 run(['cc','-I'+str(out),str(S/'host.c'),'-I'+str(prefix/'include'),'-I'+str(prefix/'include/x86_64-linux-gnu'),'-L'+str(prefix/'lib/x86_64-linux-gnu'),'-lmgba','-o',str(out/'host')],'host-build.log')
 choices=[hex(int(line.split()[0],16)) for line in subprocess.check_output(['arm-none-eabi-nm',str(elf)],env=env,text=True).splitlines() if line.endswith(' t HandleInputChooseAction')];assert len(choices)==3
 try:run([str(out/'host'),str(private),str(out),hex(symbols['gMain']),hex(syms(out/'arm.elf')['qa']),hex(symbols['gBattlerControllerFuncs']),*choices,str(3 if a.walkthrough else int(a.scenes_only))],'emulator.log')
@@ -35,8 +35,10 @@ from PIL import ImageChops
 before=Image.open(out/'26-tidal-pool.png').crop((128,48,192,112))
 after=Image.open(out/'27-tidal-pool-animation.png').crop((128,48,192,112))
 assert ImageChops.difference(before,after).getbbox(),'Pool reflections stopped animating'
-approved_heart=Image.open(R/'docs/designs/wyrmtide/water-review/../terrain-review/08-slumbering-regidrago.png').convert('RGB')
-assert Image.open(out/'08-slumbering-regidrago.png').convert('RGB').tobytes()==approved_heart.tobytes(), 'Approved Heart capture changed'
+# Owner authorized larger sprite and return-exit touchup; protect every other terrain cell.
+heart_path=R/'data/layouts/LegendsWyrmtide_Heart/map.bin'
+heart=bytearray(heart_path.read_bytes());struct.pack_into('<H',heart,(16*23+11)*2,0x339f);struct.pack_into('<H',heart,(17*23+11)*2,0x339e)
+assert hashlib.sha1(b'blob '+str(len(heart)).encode()+b'\0'+heart).hexdigest()=='0a28989e98a1fe5aced3323344f9b4fbc222c523', 'Heart terrain changed beyond authorized exit'
 assert rom.read_bytes()==source
-proof={'version':(R/'VERSION').read_text().strip()+' + unshipped Wyrmtide review','ROM_sha256':hashlib.sha256(source).hexdigest(),'emulator':'mGBA 0.10.2 native core','protectedHeartRGBExact':True,'scenesOnly':a.scenes_only,'walkthroughRecorded':a.walkthrough,'passed':True,'setup':'Controlled fresh native fixtures, actual map/script/battle engine and button input; private setup payload never distributed.','limits':'Not an authentic historical owner save, natural full-story playthrough, Release-emulator or Pizza Boy test.','log':(out/'emulator.log').read_text(),'images':{p.name:hashlib.sha256(p.read_bytes()).hexdigest() for p in captures}}
+proof={'version':(R/'VERSION').read_text().strip()+' + unshipped Wyrmtide review','ROM_sha256':hashlib.sha256(source).hexdigest(),'emulator':'mGBA 0.10.2 native core','protectedHeartTerrainOutsideExitExact':True,'authorizedHeartSpriteChange':'Cave-only 64px native art, anchor y8; follower art unchanged','scenesOnly':a.scenes_only,'walkthroughRecorded':a.walkthrough,'passed':True,'setup':'Controlled fresh native fixtures, actual map/script/battle engine and button input; private setup payload never distributed.','limits':'Not an authentic historical owner save, natural full-story playthrough, Release-emulator or Pizza Boy test.','log':(out/'emulator.log').read_text(),'images':{p.name:hashlib.sha256(p.read_bytes()).hexdigest() for p in captures}}
 (out/'verification.json').write_text(json.dumps(proof,indent=2)+'\n');print('PASS native Wyrmtide '+('scenes' if a.scenes_only else 'story interactions')+': '+str(out))
