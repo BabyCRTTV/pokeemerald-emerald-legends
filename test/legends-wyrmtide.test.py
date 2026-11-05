@@ -43,11 +43,11 @@ for i in range(8):
  new=struct.unpack_from('<8H',authored,(0x3a8+i-512)*16)
  assert new[:4]==(0xb1c6,0xb1c7,0xb1c7,0xb1c6) and new[4:]==old[4:]
 # Respect the engine's loaded field-palette range, not just unused atlas words.
-loaded=int(re.search(r'^#define NUM_PALS_TOTAL\\s+(\\d+)',(R/'include/fieldmap.h').read_text(),re.M)[1])
+loaded=int(next(line.split()[2] for line in (R/'include/fieldmap.h').read_text().splitlines() if line.startswith('#define NUM_PALS_TOTAL ')))
 assert all(w[0]>>12<loaded for w in struct.iter_unpack('<H',authored[len(native)+32+8*16:])), 'Pool references a reserved/unloaded BG palette'
-native_pals=re.search(r'gTilesetPalettes_Cave\\[\\]\\[16\\]\\s*=\\s*\\{(.*?)\\n};',(R/'src/data/tilesets/graphics.h').read_text(),re.S)[1]
-private_pals=re.search(r'gTilesetPalettes_LegendsWyrmtideCave\\[\\]\\[16\\]\\s*=\\s*\\{(.*?)\\n};',(R/'src/data/tilesets/legends_wyrmtide.h').read_text(),re.S)[1]
-paths=lambda s:re.findall(r'INCGFX_U16\\("([^\"]+)',s)
+native_pals=(R/'src/data/tilesets/graphics.h').read_text().split('gTilesetPalettes_Cave[][16]',1)[1].split('};',1)[0]
+private_pals=(R/'src/data/tilesets/legends_wyrmtide.h').read_text().split('gTilesetPalettes_LegendsWyrmtideCave[][16]',1)[1].split('};',1)[0]
+paths=lambda text:[line.split('"')[1] for line in text.splitlines() if 'INCGFX_U16(' in line]
 np,pp=paths(native_pals),paths(private_pals)
 assert len(np)==len(pp)==16 and all(np[i]==pp[i] for i in range(16) if i!=11), 'A non-water Cave palette was changed'
 pal=[tuple(map(int,line.split())) for line in (sib/'water.pal').read_text().splitlines()[3:19]]
