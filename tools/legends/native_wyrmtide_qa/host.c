@@ -61,6 +61,12 @@ int main(int argc,char**argv){assert(argc==10);setbuf(stdout,NULL);mLogSetDefaul
  capture("14b-deepest-arrival");navigate(5,11,5);key(64);key(1);dismiss(25);puts("PASS actual walking and reading of the final inscription");navigate(5,11,8);capture("22-walked-dragon-dais");navigate(5,11,17);frames(350);status();assert(box(6)==mapIds[6]);
  for(int i=3;i>=0;i--){if(i==0||i==2){navigate(i,13,19);key(64);key(1);dismiss(25);}navigate(i,8,3);assert(box(6)==mapIds[i?i+2:1]);}
  puts("PASS all four descent maps, both stair directions, both depth inscriptions and surface exit");
+ // Walk through the actual opened map doorway, independently of the seal's
+ // dialogue-driven entry, then return through the native stair warp.
+ walk(64);frames(350);status();assert(box(6)==mapIds[3]);capture("24-walked-open-entrance");
+ // Native map-warp entry lands on the return tile; step off before re-entry.
+ walk(128);navigate(0,8,3);assert(box(6)==mapIds[1]);capture("25-returned-through-entrance");
+ puts("PASS actual open-door walking entry and native stair return");
  // Escape, defeat, then challenge the same native field sprite again.
  setup(7,1|4);key(64);key(1);frames(100);menu();key(128);key(16);key(1);finish(1);status();assert(box(15)==4&&!(box(7)&(16|32)));capture("15b-escaped-retry");
  key(1);frames(100);menu();key(64);key(32);key(1);frames(80);key(1);frames(400);finish(1);status();assert(box(15)==1&&(box(7)&16)&&!(box(7)&32));capture("15c-defeated-retry");

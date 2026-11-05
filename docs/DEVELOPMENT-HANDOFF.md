@@ -1,5 +1,11 @@
 # Development handoff
 
+## Wyrmtide physical entrance verified (5 November 2026)
+
+**Model: GPT-6.1 Sol (Codex) | Reasoning: verify visible seal opening and physical map-warp entry independently of dialogue.**
+
+Owner requested assurance of a cave entrance. The existing seal reveals the native doorway at `(16,9–10)` when a real party Regigigas answers; no game/art/map changes were needed. Extended the native fixture to walk into the opened doorway, step off the arrival/return warp tile, then walk back out. Both paths and the full existing Wyrmtide suite passed on the exact previously verified Debug ROM. [Opened entrance capture](designs/wyrmtide/terrain-review/Entrance-Open.png), [bound native receipt](qa/wyrmtide-entrance-check.json). The fixture initially tried to retrigger the arrival tile without stepping off; corrected that fixture, preserving normal engine behavior. Approved Heart, new visual-review status and public v0.0.75 are unchanged. This is verification, not publication.
+
 ## Wyrmtide shore and descent consistency — review (5 November 2026)
 
 **Model: GPT-6.1 Sol (Codex) | Reasoning: complete vanilla terrain assemblies, protected approved chamber and native walking verification.**
