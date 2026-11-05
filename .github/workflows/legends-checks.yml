@@ -2,7 +2,7 @@ name: Legends project checks
 
 on:
   push:
-    branches: [ master ]
+    branches: [ master, codex/wyrmtide-isle ]
   pull_request:
     branches: [ master ]
 

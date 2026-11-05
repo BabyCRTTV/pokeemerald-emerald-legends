@@ -110,6 +110,17 @@ for width,rows in [(32,[[0x3b1,0x3b2],[0x3b3,0x3b4]]),(48,[[0x3b1,0x3b5,0x3b2],[
 for key in ['Descent1','Descent2','Descent3','Descent4']:
  a=struct.unpack('<456H',(R/f'data/layouts/LegendsWyrmtide_{key}/map.bin').read_bytes())
  assert all((a[y*19+x]&1023)==mid for x,y,mid in [(8,2,0x3b7),(8,3,0x3b8),(11,19,0x3b7),(11,20,0x3b8)])
+# Each cut closes both adjacent rock banks with the complete native cap pair.
+# Solid middle-face cells at these positions leave an uncapped side gap.
+stair_flights={'Descent1':[(12,9,2),(5,15,2)],'Descent2':[(5,9,2)],'Descent3':[(12,7,2),(5,13,2)],'Descent4':[(8,7,3),(8,13,3)]}
+for key,flights in stair_flights.items():
+ a=struct.unpack('<456H',(R/f'data/layouts/LegendsWyrmtide_{key}/map.bin').read_bytes())
+ for x,y,width in flights:
+  for xx,yy,mid in [(x-1,y,0x20a),(x-1,y+1,0x21a),(x+width,y,0x208),(x+width,y+1,0x218)]:
+   v=a[yy*19+xx]
+   assert v&1023==mid and v&0xc00 and v>>12==3,(key,x,y,'incomplete stair-bank return')
+  assert [a[y*19+x+i]&1023 for i in range(width)]==([0x3b1,0x3b2] if width==2 else [0x3b1,0x3b5,0x3b2])
+  assert [a[(y+1)*19+x+i]&1023 for i in range(width)]==([0x3b3,0x3b4] if width==2 else [0x3b3,0x3b6,0x3b4])
 # Outdoor imported objects have the same sand underlay as their surroundings.
 sand=struct.unpack_from('<4H',(R/'data/tilesets/primary/general/metatiles.bin').read_bytes(),0x124*16)
 for i in range(8):assert struct.unpack_from('<4H',shoremeta,len(dewmeta)+i*16)==sand

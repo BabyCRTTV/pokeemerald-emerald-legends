@@ -1,5 +1,13 @@
 # Development handoff
 
+## Wyrmtide stair side joins — native checkpoint (5 November 2026)
+
+**Model: GPT-6.1 Sol (Codex) | Reasoning: complete native bank end caps around retained stair artwork.**
+
+Owner liked the new tread design but identified the exposed side gaps. From `c144f78b`, changed only 28 neighboring solid rock cells around the seven ordinary flights: native right-facing cap pairs0x20A/21A on the left bank and left-facing0x208/218 on the right bank. The stair cells/artwork, all collision/elevation bits, water, entrance, approved Heart, shared assets, scripts/warps/IDs and saved data remain exact. The explicit authoring helper validates all four baseline maps before writing, protecting later Porymap edits. Added checks for both complete rock cheek pairs and unchanged tread assemblies.
+
+Local execution returned. Restored the authoritative remote runtime files by verified Git blob hashes before building; obsolete scratch water prototypes were preserved separately and superseded. Debug build, source checks, native scene/animation/approved-Heart checks and the full native Wyrmtide walking/quest suite passed on Debug ROM `042d5eea96626eceabc736f267ae6ac8cbbeaa8d0ffd1ca12772cc7e5df61a1f`. Actual mGBA views confirm rounded rock returns instead of square side cuts. Release compilation, final source CI and durable captures/receipts remain in progress. This is an unshipped v0.0.70 review; public v0.0.75 is unchanged. Preserve prior approvals and reconcile this old branch with current master before release/BPS gates.
+
 ## Wyrmtide continuous stone stairs — visual review (5 November 2026)
 
 **Model: GPT-6.1 Sol (Codex) | Reasoning: native tread assembly, complete landings and unchanged physical stair/warp behavior.**
