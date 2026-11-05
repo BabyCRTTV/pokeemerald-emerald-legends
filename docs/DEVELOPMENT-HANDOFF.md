@@ -1,13 +1,16 @@
 # Development handoff
 
-## Upper stairwell and continuous walkthrough checkpoint (5 November 2026)
+## Upper return stairs and complete chamber walkthrough (5 November 2026)
 
-**Model: GPT-6.1 Sol (Codex) | Reasoning: fit accepted native treads into the upper return opening and verify both active lanes.**
+**Model: GPT-6.1 Sol (Codex) | Reasoning: accepted native stair assembly, two functional return lanes and continuous real-game proof.**
 
-Owner requested the shown wider upper return design and a complete chamber walkthrough. Appended four metatiles reusing accepted tread pixels and native Sealed Chamber canopy/caps. Widened all four upper openings; only (9,2) collision opens. Existing warp indices0/1 are retained; new alias2 at (9,3) returns to the same destination as warp0. No new pixels/palettes, persistent IDs or save structures changed. Approved terraces, water, Isle and Heart remain protected. Authoring refuses changed baseline inputs.
+Owner requested the wider design for the small upper stairwell and a complete chamber tour. Starting from approved9625cb0d, appended four native metatiles combining accepted wide tread pixels with Sealed Chamber canopy/caps. All four upper returns are two columns wide. Original warp indices0/1 stay exact; alias2 at(9,3) returns to warp0's destination. Only adjacent cell(9,2) becomes walkable per room. No new pixel art/palettes, persistent IDs, scripts or save structures. Approved wider terrace flights, fitted banks/depth, water, island and Heart remain protected. Authoring helper checks every input hash before writing and requires --apply.
 
-Checkpoint only: focused source checks passed; Debug build, full native walking/story checks, both upper lanes, continuous entrance-to-sleeping-Regidrago recording with native audio, and clean standard Release CI are in progress. Recording starts after a controlled open-seal fixture and forbids resets/scene setup while active; status-only native fixture queries remain. Do not claim these pending checks or movie complete. Temporary branch source/Release workflows must be restored/removed during closeout. Keep PR #89 draft; no merge/publication. Public v0.0.75 unchanged.
+Game source checkpoint55b4268f passed local Debug, focused Wyrmtide/native-art/flag/topology and night-light checks, native title SELECT Quickstart and full mGBA Wyrmtide walking/story/party-gate/retry/capture/flash/report tests. Both upper lanes passed real controller walking. Heart RGB remains exact; pool animation passes. Project CI42125621166 passed at identical game source. Standard Release/default-LTO CI42125621400 is still pending; closeout must attach its result and remove the temporary workflow/branch trigger. Do not claim Release readiness yet.
 
+[Upper stair gallery](designs/wyrmtide/upper-stairwell/README.md), [bound QA](qa/wyrmtide-upper-stairwell.json), [walkthrough provenance](qa/wyrmtide-walkthrough.json). The continuous125.855s movie starts outside the opened cave, crosses every descent, reads depth/final inscriptions and ends at sleeping Regidrago before battle. Actual Debug mGBA0.10.2 footage/native audio, with one controlled setup before recording and status-only private fixture queries during it; no resets/scene/party/flag edits while filming. Silent drafts were rejected: mCoreLoadConfig now maps the emulator's real volume correctly. Final AAC peak-7.7dB; exact RGB chapter PNGs and SHA-bound movie proof are retained. [Watch/download video](https://chatgpt.com/library?file_id=libfile_17a61f47ee68819187e58bf0c91787cd&account_id=personal).
+
+This is v0.0.70 plus unshipped Wyrmtide review, not publicv0.0.75. Keep PR#89 draft; no merge/publication. Reconcile this older feature branch with current master and current save/art/workflow protections before new release and independently applied BPS gates. No authentic historical-owner-save, natural full-story or Release-emulator/Pizza Boy claim. Preserve subsequent Porymap edits.
 
 ## Terrace approval and upper return-stair inspection (5 November 2026)
 
