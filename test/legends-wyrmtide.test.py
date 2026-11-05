@@ -93,6 +93,7 @@ def indexed_cell(pixels,words):
   t=(w&1023)-512;im.paste(pixels.crop((t%16*8,t//16*8,t%16*8+8,t//16*8+8)),(i%2*8,i//2*8))
  return im
 floor=indexed_cell(original,struct.unpack_from('<8H',native,16))
+original_steps=indexed_cell(original,source)
 for width,rows in [(32,[[0x3b1,0x3b2],[0x3b3,0x3b4]]),(48,[[0x3b1,0x3b5,0x3b2],[0x3b3,0x3b6,0x3b4]])]:
  im=Image.new('P',(width,32),0)
  for y,row in enumerate(rows):
@@ -100,9 +101,11 @@ for width,rows in [(32,[[0x3b1,0x3b2],[0x3b3,0x3b4]]),(48,[[0x3b1,0x3b5,0x3b2],[
  for y in list(range(8))+list(range(24,32)):
   assert all(im.getpixel((x,y))==floor.getpixel((x%16,y%16)) for x in range(width)), 'Stair landing floor mismatch'
  for y in range(8,24):
-  # Native treads are horizontal. A repeated rail would introduce an extra
-  # dark vertical stripe at x15/16 or31/32 compared with the inner tread.
-  assert len({im.getpixel((x,y)) for x in range(2,width-2)})<=2, 'Duplicate interior stair edge'
+  # Preserve the native tread's actual gradients. Only source interior pixels,
+  # with the documented native-material tone map, may cross module seams.
+  tone={1:2,2:3,7:6}
+  allowed={tone.get(original_steps.getpixel((x,y-8)),original_steps.getpixel((x,y-8))) for x in range(2,14)}
+  assert all(im.getpixel((x,y)) in allowed for x in range(2,width-2)), 'An outer stair edge intrudes into the tread'
 # Original step footprints and actual native warp behavior are retained.
 for key in ['Descent1','Descent2','Descent3','Descent4']:
  a=struct.unpack('<456H',(R/f'data/layouts/LegendsWyrmtide_{key}/map.bin').read_bytes())
