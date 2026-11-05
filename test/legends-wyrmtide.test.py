@@ -31,7 +31,9 @@ secs=json.loads((R/'src/data/region_map/region_map_sections.json').read_text())[
 changed=subprocess.check_output(['git','diff','--name-only','HEAD','--','data/layouts','data/tilesets'],cwd=R,text=True).splitlines();assert all(x=='data/layouts/layouts.json' or 'LegendsWyrmtide_' in x or '/legends_wyrmtide/' in x or '/legends_wyrmtide_shore/' in x for x in changed),changed
 base=R/'data/tilesets/secondary/cave';sib=R/'data/tilesets/legends_wyrmtide'
 native=(base/'metatiles.bin').read_bytes();authored=(sib/'metatiles.bin').read_bytes()
-assert authored[:len(native)]==native and len(authored)==len(native)+32+25*16
+depth=json.loads((sib/'source.json').read_text())['terraceDepth']
+assert authored[:len(native)]==native and len(authored)==len(native)+32+(25+len(depth['variants']))*16
+base_mid=lambda mid:next((v['source'] for v in depth['variants'] if v['id']==mid),mid)
 assert authored[len(native):len(native)+16]==authored[len(native)+16:len(native)+32]
 assert (sib/'metatile_attributes.bin').read_bytes()[:len(native)//8+4]==(base/'metatile_attributes.bin').read_bytes()+struct.pack('<HH',0x61,0)
 # Exact native Cave stair art, with no foreign palette or graphics allocation.
@@ -49,7 +51,7 @@ native_pals=(R/'src/data/tilesets/graphics.h').read_text().split('gTilesetPalett
 private_pals=(R/'src/data/tilesets/legends_wyrmtide.h').read_text().split('gTilesetPalettes_LegendsWyrmtideCave[][16]',1)[1].split('};',1)[0]
 paths=lambda text:[line.split('"')[1] for line in text.splitlines() if 'INCGFX_U16(' in line]
 np,pp=paths(native_pals),paths(private_pals)
-assert len(np)==len(pp)==16 and all(np[i]==pp[i] for i in range(16) if i!=11), 'A non-water Cave palette was changed'
+assert len(np)==len(pp)==16 and all(np[i]==pp[i] for i in range(16) if i not in [7,8,11]), 'A non-water Cave palette was changed'
 pal=[tuple(map(int,line.split())) for line in (sib/'water.pal').read_text().splitlines()[3:19]]
 assert len({tuple(c//8 for c in pal[i]) for i in [11,12,13,14]})==4, 'Native ripple shades collapse after RGB555 conversion'
 # All old room cells leave field palette11 available for the isolated pool.
@@ -77,7 +79,7 @@ assert not {e['tile'] for e in lights['families']['general']['cells']}&{e[0]&102
 cp=Image.open(sib/'tiles.png');original=Image.open(base/'tiles.png')
 assert cp.crop((0,0,*original.size)).tobytes()==original.tobytes()
 # Continuous stair modules occupy only new sibling slots; old definitions stay exact.
-stair_bytes=authored[(0x3b1-512)*16:]
+stair_bytes=authored[(0x3b1-512)*16:(0x3b9-512)*16]
 assert len(stair_bytes)==8*16
 assert not {w[0]&1023 for w in struct.iter_unpack('<H',authored[:(0x3b1-512)*16])}&set(range(976,1008)), 'Stair tiles overwrite existing art'
 stair_attrs=struct.unpack_from('<8H',(sib/'metatile_attributes.bin').read_bytes(),(0x3b1-512)*2)
@@ -98,8 +100,9 @@ for width,rows in [(32,[[0x3b1,0x3b2],[0x3b3,0x3b4]]),(48,[[0x3b1,0x3b5,0x3b2],[
  im=Image.new('P',(width,32),0)
  for y,row in enumerate(rows):
   for x,mid in enumerate(row):im.paste(indexed_cell(cp,struct.unpack_from('<8H',authored,(mid-512)*16)),(x*16,y*16))
- for y in list(range(8))+list(range(24,32)):
+ for y in list(range(8))+list(range(25,32)):
   assert all(im.getpixel((x,y))==floor.getpixel((x%16,y%16)) for x in range(width)), 'Stair landing floor mismatch'
+ assert all(im.getpixel((x,24))==5 for x in range(2,width-2)), 'Stair-foot shadow missing'
  for y in range(8,24):
   # Preserve the native tread's actual gradients. Only source interior pixels,
   # with the documented native-material tone map, may cross module seams.
@@ -118,9 +121,33 @@ for key,flights in stair_flights.items():
  for x,y,width in flights:
   for xx,yy,mid in [(x-1,y,0x20a),(x-1,y+1,0x21a),(x+width,y,0x208),(x+width,y+1,0x218)]:
    v=a[yy*19+xx]
-   assert v&1023==mid and v&0xc00 and v>>12==3,(key,x,y,'incomplete stair-bank return')
+   assert base_mid(v&1023)==mid and v&0xc00 and v>>12==3,(key,x,y,'incomplete stair-bank return')
   assert [a[y*19+x+i]&1023 for i in range(width)]==([0x3b1,0x3b2] if width==2 else [0x3b1,0x3b5,0x3b2])
   assert [a[(y+1)*19+x+i]&1023 for i in range(width)]==([0x3b3,0x3b4] if width==2 else [0x3b3,0x3b6,0x3b4])
+# Depth variants retain native geometry, behavior and loaded field banks.
+assert depth['paletteBanks']==[7,8] and len(depth['variants'])==8
+for variant in depth['variants']:
+ mid,origin=variant['id'],variant['source']
+ old=struct.unpack_from('<8H',authored,(origin-512)*16)
+ new=struct.unpack_from('<8H',authored,(mid-512)*16)
+ assert struct.unpack_from('<H',(sib/'metatile_attributes.bin').read_bytes(),(mid-512)*2)==struct.unpack_from('<H',(sib/'metatile_attributes.bin').read_bytes(),(origin-512)*2)
+ if variant['role'] in ['upper-rim','vertical-face']:
+  bank=7 if variant['role']=='upper-rim' else 8
+  assert new==tuple((w&0xfff)|(bank<<12) if w else 0 for w in old)
+ else:
+  assert new[:4]==old[:4] and new[6:]==(0,0)
+  assert all(w>>12==6 and 1008<=w&1023<=1011 for w in new[4:6])
+# The protected Heart does not reference either private depth bank.
+a=(R/'data/layouts/LegendsWyrmtide_Heart/map.bin').read_bytes()
+for cell, in struct.iter_unpack('<H',a):
+ mid=cell&1023
+ if mid>=512:assert not {w[0]>>12 for w in struct.iter_unpack('<H',authored[(mid-512)*16:(mid-511)*16])}&{7,8}
+# Keep original floor colors around the face so there is no square floor matte.
+original_pal=[tuple(map(int,l.split())) for l in (base/'palettes/06.pal').read_text().splitlines()[3:19]]
+face_pal=[tuple(map(int,l.split())) for l in (sib/'ledge_face.pal').read_text().splitlines()[3:19]]
+rim_pal=[tuple(map(int,l.split())) for l in (sib/'ledge_rim.pal').read_text().splitlines()[3:19]]
+assert face_pal[:6]==original_pal[:6] and rim_pal[4:]==original_pal[4:]
+assert rim_pal[3]==original_pal[2] and face_pal[6]==(90,65,57) and face_pal[7]==(49,32,32)
 # Outdoor imported objects have the same sand underlay as their surroundings.
 sand=struct.unpack_from('<4H',(R/'data/tilesets/primary/general/metatiles.bin').read_bytes(),0x124*16)
 for i in range(8):assert struct.unpack_from('<4H',shoremeta,len(dewmeta)+i*16)==sand

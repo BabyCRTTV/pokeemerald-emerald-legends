@@ -47,6 +47,9 @@ int main(int argc,char**argv){assert(argc==10);setbuf(stdout,NULL);mLogSetDefaul
  setup(4,1);navigate(1,11,8);capture("26-tidal-pool");frames(16);capture("27-tidal-pool-animation");
  setup(4,1);navigate(1,6,12);capture("28-stone-stair-flight");
  setup(6,1);navigate(3,9,10);capture("29-wide-stone-flight");
+ setup(6,1);navigate(3,9,6);c->setKeys(c,128);
+ for(int i=0;i<24;i++){char name[64];frames(4);snprintf(name,sizeof(name),"30-descending-%02d",i);capture(name);}
+ c->setKeys(c,0);frames(40);command(1);assert(box(6)==mapIds[6]&&box(11)>8);puts("PASS actual southward walking descent captured through the upper flight");
  if(scenesOnly){puts("PASS native world scenes");c->deinit(c);free(video);return 0;}
  // Actual free movement invokes the production eight-step call hook.
  setup(8,0);for(int i=0;i<8;i++){walk(i%2?32:16);status();}frames(150);status();assert(box(12));key(1);frames(180);capture("09-unknown-number-call");dismiss(90);status();assert(box(7)&1);puts("PASS actual eight-step mystery call and one-time completion");command(3);assert(box(5)==1&&box(6)==1&&box(7));

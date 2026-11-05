@@ -7,7 +7,7 @@
   ],
   "authoredTileRange": [
     944,
-    1007
+    1011
   ],
   "stairs": "Native Cave 0x204 tread/edge pixels with Cave 0x201 landings; one continuous four-riser flight, outer edges only",
   "poolMetatiles": {
@@ -73,13 +73,77 @@
         7
       ],
       [
-        24,
+        25,
         31
       ]
     ],
     "ordinaryAttributes": 0,
     "warpBottomAttribute": 97,
     "collisionAndElevationUnchanged": true,
-    "source": "Native Cave 0x204 and 0x201"
+    "source": "Native Cave 0x204 and 0x201",
+    "contactShadowRows": [
+      24,
+      24
+    ]
+  },
+  "terraceDepth": {
+    "paletteBanks": [
+      7,
+      8
+    ],
+    "variants": [
+      {
+        "id": 953,
+        "source": 520,
+        "role": "upper-rim"
+      },
+      {
+        "id": 954,
+        "source": 521,
+        "role": "upper-rim"
+      },
+      {
+        "id": 955,
+        "source": 522,
+        "role": "upper-rim"
+      },
+      {
+        "id": 956,
+        "source": 536,
+        "role": "vertical-face"
+      },
+      {
+        "id": 957,
+        "source": 537,
+        "role": "vertical-face"
+      },
+      {
+        "id": 958,
+        "source": 538,
+        "role": "vertical-face"
+      },
+      {
+        "id": 959,
+        "source": 513,
+        "role": "bank-contact-shadow-0x219"
+      },
+      {
+        "id": 960,
+        "source": 513,
+        "role": "bank-contact-shadow-0x21a"
+      }
+    ],
+    "contactTiles": [
+      1008,
+      1011
+    ],
+    "stairFootRow": 24,
+    "treadsAndGeometryUnchanged": true,
+    "rimHighlight": "Cave06 index2",
+    "faceShades": [
+      "Cave07 index7",
+      "MtEmberFRLG12 index12"
+    ],
+    "floorMatteUnchanged": true
   }
 }

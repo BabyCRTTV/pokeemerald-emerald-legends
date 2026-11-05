@@ -1,0 +1,39 @@
+name: Wyrmtide terrace depth Release verification
+on:
+  push:
+    branches: [ codex/wyrmtide-isle ]
+    paths: [ '.github/workflows/wyrmtide-depth-release.yml' ]
+permissions:
+  contents: read
+jobs:
+  release:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install the standard Release compiler
+        run: |
+          sudo apt-get -o Acquire::Retries=3 update
+          sudo apt-get -o Acquire::Retries=3 install -y --no-install-recommends build-essential gcc-arm-none-eabi binutils-arm-none-eabi libnewlib-arm-none-eabi libpng-dev g++ python3-pil
+      - name: Build the unmodified Release target with standard LTO
+        run: make -j"$(nproc)" release > release-build.log 2>&1
+      - name: Bind Release ROM and committed review inputs
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import hashlib,json,subprocess
+          paths=["data/tilesets/legends_wyrmtide/tiles.png","data/tilesets/legends_wyrmtide/metatiles.bin","data/tilesets/legends_wyrmtide/metatile_attributes.bin","data/tilesets/legends_wyrmtide/source.json","data/tilesets/legends_wyrmtide/ledge_rim.pal","data/tilesets/legends_wyrmtide/ledge_face.pal","src/data/tilesets/legends_wyrmtide.h","data/layouts/LegendsWyrmtide_Descent1/map.bin","data/layouts/LegendsWyrmtide_Descent2/map.bin","data/layouts/LegendsWyrmtide_Descent3/map.bin","data/layouts/LegendsWyrmtide_Descent4/map.bin","test/legends-wyrmtide.test.py","tools/legends/native_wyrmtide_qa/host.c","tools/legends/refine_wyrmtide_depth.py"]
+          def blob(p):
+              b=Path(p).read_bytes()
+              return hashlib.sha1(b'blob '+str(len(b)).encode()+b'\0'+b).hexdigest()
+          proof={'source':subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip(),'passed':True,'build':'Release','standardLTO':True,'ROM_sha256':hashlib.sha256(Path('pokeemerald-release.gba').read_bytes()).hexdigest(),'fileBlobs':{p:blob(p) for p in paths}}
+          Path('release-proof.json').write_text(json.dumps(proof,indent=2)+'\n')
+          print('TERRACE_RELEASE '+json.dumps(proof))
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: wyrmtide-depth-release-proof
+          path: |
+            release-build.log
+            release-proof.json

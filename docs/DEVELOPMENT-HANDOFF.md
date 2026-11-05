@@ -1,5 +1,13 @@
 # Development handoff
 
+## Wyrmtide terrace depth — native checkpoint (5 November 2026)
+
+**Model: GPT-6.1 Sol (Codex) | Reasoning: native rim/face separation and contact shadows without changing accepted terrain geometry.**
+
+Owner accepted the fitted bank joins and requested a stronger impression of descending height. From `f707ff4c`, added private native-color rim/face palettes in previously unused loaded banks7/8, six context-only rock variants and two native-footprint contact-shadow cells. The original floor base remains consistent, the fitted rock silhouettes/side joins remain exact, and all accepted tread pixels are retained. One soft contact row shades the stair foot. Added an actual southward walking clip to the native fixture. No collision/elevation, dimensions, warps, scripts, IDs or serialized-data changes. Heart/island/water are protected.
+
+Local source checks, native light wiring and initial actual mGBA scene/animation/approved-Heart checks passed on Debug ROM `e705d98267de46954e91bdd85e981234c1d10569c15ef7b3113115cadf42fcad`. Full native gameplay/clip, source CI and clean standard Release build remain in progress. Use clean Release CI because the restored local compiler previously crashed in LTO; do not change release optimization flags. New depth visuals await review; this remains an unshipped v0.0.70 feature branch and public v0.0.75 is unchanged. Current-master reconciliation and BPS gates remain before publication.
+
 ## Wyrmtide stair side joins — visual review (5 November 2026)
 
 **Model: GPT-6.1 Sol (Codex) | Reasoning: complete native bank end caps around retained stair artwork.**
