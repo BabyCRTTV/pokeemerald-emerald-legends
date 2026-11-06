@@ -35,6 +35,11 @@ function routeHtml(reader,route){
  w.click('page','wardrobe');assert.match(w.ctx.location.search,/page=wardrobe/);
  w.back();assert.match(w.get('content').innerHTML,/<h1>Customization<\/h1>/);
  w.back();assert.match(w.get('content').innerHTML,/alt="Pokémon Emerald: Legends"/);
+ assert.match(w.get('content').innerHTML,/New in v0\.0\.77/);
+ for(const id of ['wyrmtide-isle','when-morning-never-comes'])assert(w.get('content').innerHTML.includes('data-page="'+id+'"'));
+ w.click('category','Exploration');
+ for(const id of ['wyrmtide-isle','when-morning-never-comes'])assert(w.get('content').innerHTML.includes('data-page="'+id+'"'));
+ w.click('home');
  w.get('search').value='boots';w.get('search').listeners.input();assert.match(w.get('cards').innerHTML,/wardrobe/);
  w.click('category','all');assert.equal((w.get('content').innerHTML.match(/data-page=/g)||[]).length,articles.articles.length);
  const chapters=articles.articles.filter(p=>Number.isInteger(p.chapter)).sort((a,b)=>a.chapter-b.chapter);

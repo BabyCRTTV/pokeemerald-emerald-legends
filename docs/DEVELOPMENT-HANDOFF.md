@@ -1,5 +1,11 @@
 # Development handoff
 
+## Wiki quest visibility repaired (6 November 2026)
+
+**Model: Codex | Reasoning: diagnose actual reader navigation instead of assuming content publication implies visibility.**
+
+Owner reported no visible wiki changes. The two new articles used categories absent from the reader’s fixed seven-category menu, and the homepage lacked visible update links. Moved Wyrmtide/Darkrai into Exploration, added two homepage cards labeled New in v0.0.77, corrected the project-site Darkrai link from unsupported article= to page=, and bumped the reader script URL. Wiki revision1.9.2. Added reader regressions for homepage cards and Exploration listing; local focused navigation/deep-link checks passed. Required full CI, companion and Pages/live checks follow. No ROM, patches, encounter data or artwork changed.
+
 ## v0.0.77 wiki refresh (6 November 2026)
 
 **Model: Codex | Reasoning: refresh player navigation and stale summaries against published quest source.**
