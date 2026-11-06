@@ -1,6 +1,6 @@
 # Interior passages, cave encounters and sanctuary scale
 
-Actual Pokémon Emerald: Legends v0.0.70 + unshipped Wyrmtide Debug review, mGBA 0.10.2. Game source ea8fef3e; public v0.0.75 unchanged. The owner approved f4e6cae2, then requested these refinements. New visuals await review; PR #89 remains draft.
+Actual Pokémon Emerald: Legends v0.0.70 + unshipped Wyrmtide Debug review, mGBA 0.10.2. Game source ea8fef3e; public v0.0.75 unchanged. The owner subsequently approved these refinements at 5645e36c, except the lower-exit detail. See the [targeted exit cleanup](../exit-cleanup/README.md) for that remaining revision. PR #89 remains draft.
 
 ## Passages
 

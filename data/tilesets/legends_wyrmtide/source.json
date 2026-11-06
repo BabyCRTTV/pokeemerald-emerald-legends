@@ -211,6 +211,23 @@
         969
       ]
     },
-    "southFootShadeSource": 774
+    "southFootShadeSource": 518
+  },
+  "lowerExitCleanup": {
+    "metatiles": [
+      970,
+      971
+    ],
+    "flankSource": 536,
+    "floorSource": 513,
+    "innerWidthPixels": 8,
+    "leftStoneMirrored": true,
+    "treadsSource": 952,
+    "shadeSource": 518,
+    "centerWarp": 967,
+    "nativeSouthBehavior": 101,
+    "newPixelArt": false,
+    "newPalette": false,
+    "collisionAndWarpsUnchanged": true
   }
 }

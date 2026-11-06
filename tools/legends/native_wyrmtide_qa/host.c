@@ -76,6 +76,7 @@ int main(int argc,char**argv){assert(argc==10);setbuf(stdout,NULL);mLogSetDefaul
  for(int i=0;i<24;i++){char name[64];frames(4);snprintf(name,sizeof(name),"30-descending-%02d",i);capture(name);}
  c->setKeys(c,0);frames(40);command(1);assert(box(6)==mapIds[6]&&box(11)>8);puts("PASS actual southward walking descent captured through the upper flight");
  setup(3,1|4);navigate(0,8,4);capture("33-recessed-upper-passage");navigate(0,11,19);key(128);frames(30);capture("34-south-exit-approach");
+ setup(3,1|4);navigate(0,13,19);key(64);capture("45-clean-lower-exit");
  setup(7,1|4);command(7);assert(!box(5)&&box(6)==64&&box(7)==64&&box(8)==2048&&box(9)==0x0e00&&box(10)==0x1176&&box(11)==32);capture("35-large-regidrago");navigate(5,11,16);capture("36-sanctuary-exit");
  setup(3,1|4);navigate(0,8,8);key(64);key(1);frames(160);capture("37-threshold-inscription");key(1);frames(100);capture("38-threshold-lore");dismiss(30);
  setup(4,1|4);navigate(1,12,17);key(64);key(1);frames(160);capture("39-tidal-inscription");key(1);frames(100);capture("40-tidal-lore");dismiss(30);

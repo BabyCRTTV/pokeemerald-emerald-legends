@@ -1,5 +1,17 @@
 # Development handoff
 
+## Targeted lower exit cleanup and remaining approval (5 November 2026)
+
+**Model: GPT-6.1 Sol (Codex) | Reasoning: preserve the approved interior and correct only the pictured exit's material and bulky rim.**
+
+Owner approved all interior/encounter/lore/larger-Regidrago changes at 5645e36c except the pictured lower stairwell. Retain those approvals; this remaining exit revision awaits review. No publication instruction.
+
+Replaced the grey Cave0x306 checker at the foot with native brown Cave0x206 recess. Compact symmetric returns use the inner8px of native0x218 on matching floor; only the left stone is mirrored. Existing tread pixels and south-arrow behavior remain exact. Changed only0x3c7 within the old metatile prefix, appended0x3ca/3cb and replaced two flank IDs per descent map. All collision/elevation words, warps, scripts, encounter tables, graphics IDs/palettes and other approved terrain/art are exact. The sanctuary shares the corrected central recess. No new pixel art or palette.
+
+Debug, focused source guards and full native Wyrmtide walking/doors/gates/inscriptions/retry/capture/flash/report/wild encounters passed on ROM6f6bc32823b949f2fdec32575c32d67eaef4918ebb2826690b06415a9d0a0408. Native upper-mouth and larger-Regidrago captures remain RGB exact; a matched exit image differs only within48×16px. The pinned helper reproduced byte-exact and refused changed inputs before writing. Sixteen other prior approved game/harness inputs were hash-verified unchanged.
+
+[Actual native exit/context/comparison](designs/wyrmtide/exit-cleanup/README.md), [bound source/QA receipt](qa/wyrmtide-exit-cleanup.json). Source, tests and review exports are committed together. Keep PR #89 draft; public v0.0.75 and prior Release/LTO/compiler-setup limitations are unchanged. This is an unshipped v0.0.70 Debug review, not Release/BPS readiness or a natural full-story/historical-owner-save/Release/Pizza Boy playthrough. Preserve later Porymap edits and reconcile with current master/current release gates before publishing.
+
 ## Interior feedback, encounters and larger Regidrago (5 November 2026)
 
 **Model: GPT-6.1 Sol (Codex) | Reasoning: preserve explicit approval, clarify native passages, add cave ecology and readable lore without shifting saved IDs.**

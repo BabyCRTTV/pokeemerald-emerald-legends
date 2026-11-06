@@ -32,7 +32,7 @@ changed=subprocess.check_output(['git','diff','--name-only','HEAD','--','data/la
 base=R/'data/tilesets/secondary/cave';sib=R/'data/tilesets/legends_wyrmtide'
 native=(base/'metatiles.bin').read_bytes();authored=(sib/'metatiles.bin').read_bytes()
 depth=json.loads((sib/'source.json').read_text())['terraceDepth']
-assert authored[:len(native)]==native and len(authored)==len(native)+32+(34+len(depth['variants']))*16
+assert authored[:len(native)]==native and len(authored)==len(native)+32+(36+len(depth['variants']))*16
 base_mid=lambda mid:next((v['source'] for v in depth['variants'] if v['id']==mid),mid)
 assert authored[len(native):len(native)+16]==authored[len(native)+16:len(native)+32]
 assert (sib/'metatile_attributes.bin').read_bytes()[:len(native)//8+4]==(base/'metatile_attributes.bin').read_bytes()+struct.pack('<HH',0x61,0)
@@ -273,9 +273,18 @@ for i,names in enumerate(dragons,1):
  assert all(48<=m['min_level']<=m['max_level']<=61 for m in info['mons'])
 assert not any(e['map']=='MAP_LEGENDS_WYRMTIDE_HEART' for e in group['encounters'])
 assert struct.unpack_from('<H',attrs,(0x201-512)*2)[0]&0xff==8
-assert words(0x3c7)[:2]==words(0x3b8)[:2] and words(0x3c7)[2:4]==words(0x306)[2:4] and struct.unpack_from('<H',attrs,(0x3c7-512)*2)[0]==0x65
+assert words(0x3c7)[:2]==words(0x3b8)[:2] and words(0x3c7)[2:4]==words(0x206)[2:4] and struct.unpack_from('<H',attrs,(0x3c7-512)*2)[0]==0x65
 info=(R/'src/data/object_events/object_event_graphics_info.h').read_text().split('gObjectEventGraphicsInfo_WyrmtideRegidrago = {',1)[1].split('};',1)[0]
 assert '.width = 64' in info and '.height = 64' in info and '.size = 2048' in info
 assert 'graphics/pokemon/regidrago/front.png' in (R/'src/data/object_events/object_event_graphics.h').read_text()
 assert '#define OBJ_EVENT_GFX_LEGENDS_WYRMTIDE_REGIDRAGO 0x0E00' in (R/'include/constants/event_objects.h').read_text()
 print('PASS unique readable carvings, protected first/final text, 5% dragons, quiet Heart and dedicated 64px native legendary')
+
+# Approved lower-exit cleanup: complete compact native stone returns, stable physics.
+floor_words=words(0x201);rim_words=words(0x218)
+assert words(0x3ca)==(floor_words[0],rim_words[0]^0x400,floor_words[2],rim_words[2]^0x400,0,0,0,0)
+assert words(0x3cb)==(rim_words[0],floor_words[1],rim_words[2],floor_words[3],0,0,0,0)
+for i in range(1,5):
+ cells=struct.unpack('<456H',(R/f'data/layouts/LegendsWyrmtide_Descent{i}/map.bin').read_bytes())
+ for x,mid in [(10,0x3ca),(12,0x3cb)]:assert cells[20*19+x]&0xfc00==0x3400 and cells[20*19+x]&1023==mid
+print('PASS compact native exit rims and stable south-arrow collision/behavior')
