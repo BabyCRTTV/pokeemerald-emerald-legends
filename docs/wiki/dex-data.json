@@ -1,10 +1,10 @@
 {
-  "wikiDexRevision": "1.6.2",
+  "wikiDexRevision": "1.6.3",
   "gameVersion": "0.0.76",
-  "sourceCommit": "c7f99550ac91b7b142bc9efd4692a0eb148b5008",
+  "sourceCommit": "680732553661a9e062f3fd5a291cf3ac99485f97",
   "source": "src/data/wild_encounters.json, src/data/legends_seasonal_encounters.h and src/data/pokemon/species_info/gen_*_families.h",
   "methodNote": "Percentages are conditional encounter shares for the selected method and season, not chances per step. Native lure/ability modifiers, scripted encounters and gifts are separate.",
-  "coverageNote": "Active Emerald tables and shipped Legends Kanto/Mt. Ember expedition tables only. Unused upstream FRLG tables and nondefault Altering Cave rotations are excluded. Scripted legendary battles are documented in the walkthrough, not standard slots.",
+  "coverageNote": "Active Emerald tables, shipped Legends Kanto/Mt. Ember expedition tables and the four Wyrmtide descent rosters. Unused upstream FRLG tables and nondefault Altering Cave rotations are excluded. Scripted legendary battles are documented separately.",
   "species": [
     {
       "id": "BULBASAUR",
@@ -41200,11 +41200,11 @@
     }
   ],
   "typeResolutionNote": "Source family-type macros resolved with P_UPDATED_TYPES=GEN_LATEST (Magnemite Steel, Togepi/Ralts/Cottonee Fairy).",
-  "lastManualReview": "2026-10-17",
+  "lastManualReview": "2026-11-05",
   "seasonalStatus": "published",
   "seasonalSource": {
-    "baseGameVersion": "0.0.74",
-    "baseCommit": "c7f99550ac91b7b142bc9efd4692a0eb148b5008",
+    "baseGameVersion": "0.0.76",
+    "baseCommit": "680732553661a9e062f3fd5a291cf3ac99485f97",
     "headerSha256": "31cb7eb17b591b63c6db7ce4c05015e9f0675d5e11d55b36647920f7861df094",
     "note": "Read from pinned game source."
   },
