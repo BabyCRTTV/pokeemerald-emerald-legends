@@ -45,10 +45,19 @@ s=s.replace('#define JOURNAL_MAGIC','#define JOURNAL_MAGIC',1)
 main=r'''
 int main(void)
 {
+    // Appended quest64 is driven by its own native flags and retains the
+    // prior journal layout, rewards and IDs.
+    assert(!LegendsQuestVisible(64));
+    flags[FLAG_LEGENDS_NIGHTMARE_CALL]=1;assert(LegendsQuestVisible(64));assert(!LegendsQuestComplete(64));
+    flags[FLAG_LEGENDS_NIGHTMARE_VISITED]=1;assert(LegendsQuestStepComplete(64,0));
+    flags[FLAG_LEGENDS_NIGHTMARE_WING]=1;assert(LegendsQuestStepComplete(64,1));
+    flags[FLAG_LEGENDS_NIGHTMARE_RESOLVED]=1;assert(LegendsQuestStepComplete(64,2)&&!LegendsQuestComplete(64));
+    flags[FLAG_LEGENDS_NIGHTMARE_REPORTED]=1;assert(LegendsQuestComplete(64));
+    memset(flags,0,sizeof(flags));
     memset(&data,0xA5,sizeof(data)); flags[FLAG_BADGE01_GET]=1;
     stats[GAME_STAT_POKEMON_CAPTURES]=100; dex=200;
     LegendsJournalInit(FALSE);
-    assert(LegendsAchievementCount()==130 && LegendsQuestCount()==64);
+    assert(LegendsAchievementCount()==130 && LegendsQuestCount()==65);
     assert(LegendsAchievementEarned(0));
     assert(!LegendsAchievementEarned(1));
     for(unsigned i=0;i<LegendsAchievementCount();i++)
@@ -167,7 +176,7 @@ int main(void)
     assert(LegendsAchievementNotice()==0xFFFF);
     // Legacy checksum and tracked-quest word remain independent of the appended tail.
     assert(sizeof(data.journal)==36&&sizeof(data.achievementExtra)==28);
-    puts("64 quests; 130 achievements; legacy tracking words, progression, persistence, claims and link guards passed.");
+    puts("65 quests; 130 achievements; legacy tracking words, progression, persistence, claims and link guards passed.");
 }
 '''
 with tempfile.TemporaryDirectory() as d:

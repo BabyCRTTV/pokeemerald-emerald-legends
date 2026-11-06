@@ -42,7 +42,7 @@ int main(int argc,char**argv){
  for(int i=0;i<6;i++){setup(i,7);mapIds[i]=box(6);}
  setup(1,0);capture("00-before-the-call");
  setup(6,0);for(int i=0;i<10;i++)walk(i%2?16:32);status();assert(!(box(7)&1)&&!box(12));puts("PASS no call before a successful Regidrago outcome");
- setup(6,1<<16);for(int i=0;i<8;i++)walk(i%2?16:32);frames(150);status();assert(box(12));capture("01-unknown-number");key(1);frames(100);capture("01b-fathers-plea");dismiss(80);status();assert(box(7)&1);
+ setup(6,1<<16);for(int i=0;i<8;i++)walk(i%2?16:32);frames(150);status();assert(box(12));capture("01-unknown-number");key(1);frames(100);capture("01b-fathers-plea");key(1);frames(140);capture("01c-elias-and-briney");key(1);frames(140);capture("01d-daughter-wont-wake");dismiss(80);status();assert(box(7)&1);
  for(int i=0;i<10;i++)walk(i%2?16:32);status();assert(!box(12));flash();puts("PASS native eight-step one-time call and persisted progress");
  setup(0,1);command(5);frames(650);status();assert(box(6)==mapIds[0]&&box(10)==50&&box(11)==16);walk(16);walk(32);status();assert(box(10)==50&&box(11)==16);puts("PASS older-style Lilycove wall-position flash/load and real Continue relocation");navigate(0,50,15);assert(box(6)==mapIds[1]);navigate(1,6,5);key(64);key(1);frames(150);capture("02-father-at-the-bedside");dismiss(55);status();assert(box(7)&2);
  navigate(1,8,5);key(64);key(1);frames(150);capture("03-miras-slumber");dismiss(20);status();assert(!(box(7)&4));
