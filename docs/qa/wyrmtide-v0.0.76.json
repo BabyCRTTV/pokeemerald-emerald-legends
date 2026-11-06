@@ -4,7 +4,7 @@
   "authorization": "Owner approved all visuals and explicitly requested inclusion in the public release.",
   "baselineMaster": "c09ff3fc2d09503f5b3558587fd0eacd0ef46489",
   "approvedFeature": "050cb9296a163a535eebca0f10202df84501bb44",
-  "status": "combined game source saved; wiki pin and four cave rosters synchronized; candidate gates next",
+  "status": "Candidate metadata repaired locally; current production checks and full wiki reader pass; awaiting refreshed candidate gates.",
   "impact": [
     "Append-only Wyrmtide map/layout/section/quest/menu IDs and audited flags0x493\u20130x499",
     "Existing Weather Institute/Regigigas call gate, NPC priority and Dewford legacy-cache repair",
@@ -24,7 +24,7 @@
     "cause": "Azure Ubuntu mirror stalled the57.5MB compiler and49.2MB newlib downloads until35-minute cancellation",
     "repair": "Same standard compiler packages from official Ubuntu HTTPS archive, bounded network timeouts; no game gate disabled"
   },
-  "next": "Upload coherent documentation/wiki checkpoint to PR89 and inspect required candidate gates before merging.",
+  "next": "Push coherent metadata correction, inspect refreshed candidate/native gates, merge PR89 and verify production publication.",
   "immutableGameSource": "680732553661a9e062f3fd5a291cf3ac99485f97",
   "sourceCheckpoint": "codex/wyrmtide-v0.0.76-source",
   "localHostChecks": {
@@ -100,5 +100,20 @@
     "seasonalTables": 136,
     "allPreviousRostersPreserved": true,
     "existingSpritePixelsRegenerated": false
+  },
+  "candidateChecks": {
+    "initialHead": "c92d0adf548509d1b950d39d3a6beef97909be00",
+    "android": {
+      "run": 42139374452,
+      "conclusion": "success"
+    },
+    "project": {
+      "run": 42139374685,
+      "failure": "Missing v0.0.76 entry in Debug website changelog; restored entry and full metadata script passed locally."
+    },
+    "wiki": {
+      "run": 42139374262,
+      "failure": "Old walkthrough/portrait/source-keyed script metadata; synchronized pins/cache keys, regenerated profiles from immutable source without changing prior entries/locations or images. Reader, walkthrough, JS and schema passed locally."
+    }
   }
 }
