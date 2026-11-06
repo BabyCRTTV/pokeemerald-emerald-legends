@@ -4,9 +4,9 @@
   "authorization": "Owner approved all visuals and explicitly requested inclusion in the public release.",
   "baselineMaster": "c09ff3fc2d09503f5b3558587fd0eacd0ef46489",
   "approvedFeature": "050cb9296a163a535eebca0f10202df84501bb44",
-  "status": "Candidate metadata repaired locally; current production checks and full wiki reader pass; awaiting refreshed candidate gates.",
+  "status": "PR89 merged after every candidate gate passed; production build/app/wiki/Pages publication pending.",
   "impact": [
-    "Append-only Wyrmtide map/layout/section/quest/menu IDs and audited flags0x493\u20130x499",
+    "Append-only Wyrmtide map/layout/section/quest/menu IDs and audited flags0x493–0x499",
     "Existing Weather Institute/Regigigas call gate, NPC priority and Dewford legacy-cache repair",
     "Non-egg party Regigigas gate and permanent seal, both exit lanes and return travel",
     "Lv75 Regidrago retry/capture/report paths and cave encounters",
@@ -24,7 +24,7 @@
     "cause": "Azure Ubuntu mirror stalled the57.5MB compiler and49.2MB newlib downloads until35-minute cancellation",
     "repair": "Same standard compiler packages from official Ubuntu HTTPS archive, bounded network timeouts; no game gate disabled"
   },
-  "next": "Push coherent metadata correction, inspect refreshed candidate/native gates, merge PR89 and verify production publication.",
+  "next": "Inspect production run42141830982 and required project/wiki/Android/Windows gates; verify bot-published patches, gated Pages snapshot and actual live bytes before reporting shipped.",
   "immutableGameSource": "680732553661a9e062f3fd5a291cf3ac99485f97",
   "sourceCheckpoint": "codex/wyrmtide-v0.0.76-source",
   "localHostChecks": {
@@ -90,7 +90,8 @@
       "Region map browsing",
       "Exercise prepared battle sheets and wardrobe refresh",
       "Verify Legends project metadata"
-    ]
+    ],
+    "note": "All59 host steps including the corrected metadata script passed after the coherent metadata repair. Site-promotion regressions passed separately (16 cases)."
   },
   "wiki": {
     "sourceCommit": "680732553661a9e062f3fd5a291cf3ac99485f97",
@@ -115,5 +116,65 @@
       "run": 42139374262,
       "failure": "Old walkthrough/portrait/source-keyed script metadata; synchronized pins/cache keys, regenerated profiles from immutable source without changing prior entries/locations or images. Reader, walkthrough, JS and schema passed locally."
     }
-  }
+  },
+  "releaseHead": "d4a7f8971d73083e49dca4d61e1b104d9458762e",
+  "mergeCommit": "a1337576f5c499e83b2f8d9f70d21ef6c67a33f8",
+  "candidatePassed": {
+    "nativeAndBothDecoders": 42140059445,
+    "project": 42140059254,
+    "wikiBrowser": 42140059421,
+    "android": 42140059398
+  },
+  "candidateArtifacts": [
+    {
+      "id": 13468089230,
+      "name": "legends-candidate-patches",
+      "digest": "sha256:f50c3b31fd4d94321dacf45e2a88447c8fc0159d8f5887f96890628c6a6ab239",
+      "bytes": 33118561
+    },
+    {
+      "id": 13467619796,
+      "name": "legends-mgba-gameplay",
+      "digest": "sha256:c2b4e388c37983ea9845064b92a1e78a1fdcaa86b61694a9e0ebc790d5ac6059",
+      "bytes": 8175383
+    }
+  ],
+  "productionRuns": [
+    {
+      "id": 42141830910,
+      "name": "Legends project checks",
+      "status": "in_progress",
+      "conclusion": null
+    },
+    {
+      "id": 42141830963,
+      "name": "Promote verified Legends site",
+      "status": "in_progress",
+      "conclusion": null
+    },
+    {
+      "id": 42141830934,
+      "name": "Build Legends Wiki Android APK",
+      "status": "in_progress",
+      "conclusion": null
+    },
+    {
+      "id": 42141831017,
+      "name": "Build Legends Wiki Windows Installer",
+      "status": "in_progress",
+      "conclusion": null
+    },
+    {
+      "id": 42141830982,
+      "name": "Build release patches",
+      "status": "in_progress",
+      "conclusion": null
+    },
+    {
+      "id": 42141830920,
+      "name": "Check Legends Wiki",
+      "status": "in_progress",
+      "conclusion": null
+    }
+  ]
 }
