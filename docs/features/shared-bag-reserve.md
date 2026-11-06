@@ -12,6 +12,6 @@ New shared-pocket lengths are bounded against the total pool before use or save.
 
 ## Verification
 
-The production-C regression tests all five pockets at full shared capacity, allocation refusal, cross-pocket preservation, sorting/swapping, positions above255, exact multi-stack quantity removal, old native and LPC2 migration, current save/reload and malformed-size refusal under address/undefined sanitizers. The existing codec and sector tests remain required.
+The production-C regression tests all five pockets at full shared capacity, allocation refusal, cross-pocket preservation, sorting/swapping, positions above255, repeated actual save relocation/re-encryption (with a failing pre-fix negative control), exact multi-stack quantity removal, old native and LPC2 migration, current save/reload and malformed-size refusal under address/undefined sanitizers. The existing codec and sector tests remain required.
 
 The extended existing native suite prepares a600-stack bag, selects slot599 with the actual menu, saves to native flash and reloads. It also derives a format-identical LPC2 battery fixture from a450-stack native seed. Unmodified Release must Continue both fixtures, inspect all pocket counts/quantities, select slot599/149, save through controller input, reset and Continue again. Fixtures are controlled and private; they are not authentic historical-owner saves. Builds/native evidence is pending at this checkpoint. No new screenshots are requested for this capacity change.

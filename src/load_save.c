@@ -128,6 +128,8 @@ void MoveSaveBlocks_ResetHeap(void)
     *gSaveBlock2Ptr = *saveBlock2Copy;
     *gSaveBlock1Ptr = *saveBlock1Copy;
     *gPokemonStoragePtr = *pokemonStorageCopy;
+    // Shared pocket offsets depend on the restored lengths, not stale RAM.
+    SetBagItemsPointers();
 
     // heap was destroyed in the copying process, so reset it
     InitHeap(gHeap, HEAP_SIZE);

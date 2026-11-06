@@ -2,14 +2,14 @@
 from pathlib import Path
 import re,subprocess,tempfile
 R=Path(__file__).resolve().parents[1]
-item=(R/'src/item.c').read_text();storage=(R/'src/legends_storage.c').read_text();menu=(R/'src/item_menu.c').read_text()
+item=(R/'src/item.c').read_text();storage=(R/'src/legends_storage.c').read_text();menu=(R/'src/item_menu.c').read_text();loadsave=(R/'src/load_save.c').read_text()
 def function(source,name):
  m=re.search(r'^[^\n;]*\b'+name+r'\([^;]*?\)\n\{',source,re.M);assert m,name
  start=m.start();a=source.index('{',m.start());depth=1;b=a+1
  while depth:depth+=(source[b]=='{')-(source[b]=='}');b+=1
  return source[start:b]
-names=['IsBagPocketNonEmpty','BagPoolUsed','BagPocket_GetSlotDataGeneric','BagPocket_GetSlotDataPC','BagPocket_SetSlotDataGeneric','BagPocket_SetSlotDataPC','BagPocket_GetSlotData','BagPocket_SetSlotData','SetBagItemsPointers','CheckSlotAndUpdateCount','BagPocket_AddItem','BagPocket_RemoveItem','BagPocket_CompactItems','BagPocket_MoveItemSlot','BagPocket_CountTotalItemQuantity']
-funcs=[function(item,n) for n in names]+[function(menu,n) for n in ['Merge','MergeSort']]
+names=['ApplyNewEncryptionKeyToBagItems','IsBagPocketNonEmpty','BagPoolUsed','BagPocket_GetSlotDataGeneric','BagPocket_GetSlotDataPC','BagPocket_SetSlotDataGeneric','BagPocket_SetSlotDataPC','BagPocket_GetSlotData','BagPocket_SetSlotData','SetBagItemsPointers','CheckSlotAndUpdateCount','BagPocket_AddItem','BagPocket_RemoveItem','BagPocket_CompactItems','BagPocket_MoveItemSlot','BagPocket_CountTotalItemQuantity']
+funcs=[function(item,n) for n in names]+[function(menu,n) for n in ['Merge','MergeSort']]+[function(loadsave,'MoveSaveBlocks_ResetHeap')]
 code=r'''
 #include <stdint.h>
 #include <stddef.h>
@@ -51,8 +51,8 @@ struct Pokemon {u8 bytes[100];};
 struct PokemonStorage {u8 currentBox;struct BoxPokemon boxes[20][30];u8 boxNames[20][9],boxWallpapers[20];struct Pokemon fusions[4];struct Bag inventory;struct ItemSlot pcItems[150];};
 struct BagPocket {struct ItemSlot *itemSlots;u16 capacity;enum Pocket id;};
 struct PokemonStorage data,*gPokemonStoragePtr=&data;
-struct {struct LegacyBag bag;struct ItemSlot pcItems[50];} nativeSave,*gSaveBlock1Ptr=&nativeSave;
-struct {u32 encryptionKey;} save2={0x1234abcd},*gSaveBlock2Ptr=&save2;
+struct SaveBlock1 {struct LegacyBag bag;struct ItemSlot pcItems[50];} nativeSave,*gSaveBlock1Ptr=&nativeSave;
+struct SaveBlock2 {u32 encryptionKey;u8 playerTrainerId[4];} save2={.encryptionKey=0x1234abcd},*gSaveBlock2Ptr=&save2;
 struct BagPocket gBagPockets[POCKETS_COUNT];
 static int failAlloc;
 static void *Alloc(u32 n){return failAlloc?NULL:malloc(n);}
@@ -62,6 +62,20 @@ static u8 *StringCopy(u8 *dst,const u8 *src){strcpy((char *)dst,(const char *)sr
 static void ConvertIntToDecimalStringN(u8 *dst,u32 n,u32 mode,u32 digits){(void)mode;(void)digits;sprintf((char *)dst,"%u",n);}
 #include "legends_storage.h"
 void SetBagItemsPointers(void);
+static void ApplyNewEncryptionKeyToHword(u16 *value,u32 key){*value ^= gSaveBlock2Ptr->encryptionKey ^ key;}
+static struct {void *vblankCallback,*hblankCallback;} gMain;
+static void *gTrainerHillVBlankCounter;
+#define HEAP_SIZE 98304
+static u32 heapWords[HEAP_SIZE/4];
+#define gHeap ((u8 *)heapWords)
+static struct PokemonStorage movedStorage;
+static struct SaveBlock1 movedSave;
+static struct SaveBlock2 movedKey;
+static void SetSaveBlocksPointers(u16 offset){(void)offset;gPokemonStoragePtr=gPokemonStoragePtr==&data?&movedStorage:&data;gSaveBlock1Ptr=gSaveBlock1Ptr==&nativeSave?&movedSave:&nativeSave;gSaveBlock2Ptr=gSaveBlock2Ptr==&save2?&movedKey:&save2;SetBagItemsPointers();}
+static void InitHeap(void *heap,u32 size){(void)heap;(void)size;}
+static u32 Random32(void){static u32 n=0x12345678;return ++n;}
+static void ApplyNewEncryptionKeyToAllEncryptedData(u32 key);
+
 static enum Item GetBagItemId(enum Pocket p,u32 pos);
 static void BagPocket_SetSlotItemIdAndCount(struct BagPocket *p,u32 pos,enum Item id,u16 q);
 '''
@@ -70,6 +84,7 @@ code+='\n'.join(l for l in storage.splitlines() if not l.startswith('#include'))
 code+=r'''
 static void BagPocket_SetSlotItemIdAndCount(struct BagPocket *p,u32 pos,enum Item id,u16 q){BagPocket_SetSlotData(p,pos,(struct ItemSlot){id,q});}
 static enum Item GetBagItemId(enum Pocket p,u32 pos){return BagPocket_GetSlotData(&gBagPockets[p],pos).itemId;}
+static void ApplyNewEncryptionKeyToAllEncryptedData(u32 key){ApplyNewEncryptionKeyToBagItems(key);}
 static s32 cmp(enum Pocket id,struct ItemSlot a,struct ItemSlot b){(void)id;return !a.itemId?1:!b.itemId?-1:(s32)a.itemId-b.itemId;}
 static void fresh(void){memset(&data,0,sizeof(data));SetBagItemsPointers();}
 static void invariant(void){u32 offset=0,used=BagPoolUsed();assert(used<=1152);for(u32 p=0;p<5;p++){assert(gBagPockets[p].itemSlots==data.inventory.slots+offset);assert(gBagPockets[p].capacity==data.inventory.pocketSizes[p]+1152-used);offset+=data.inventory.pocketSizes[p];}}
@@ -106,6 +121,12 @@ int main(void)
  fresh();memset(&nativeSave,0,sizeof(nativeSave));nativeSave.bag.keyItems[29]=(struct ItemSlot){875,1^save2.encryptionKey};nativeSave.bag.items[29]=(struct ItemSlot){23,77^save2.encryptionKey};nativeSave.pcItems[49]=(struct ItemSlot){88,99};
  assert(LegendsStorageAllocate());memset(sPacked,0,LEGENDS_STORAGE_FLASH_BYTES);assert(LegendsStorageDecode());invariant();assert(BagPocket_GetSlotData(&gBagPockets[4],29).itemId==875);assert(BagPocket_GetSlotData(&gBagPockets[0],29).quantity==77);assert(data.pcItems[49].quantity==99);assert(data.boxNames[19][0]=='B');LegendsStorageRelease();
  fresh();failAlloc=1;assert(!BagPocket_AddItem(&gBagPockets[0],1,1));assert(!LegendsStoragePrepare());failAlloc=0;
+ // Execute the real battle/Continue save relocation, including re-encryption.
+ fresh();for(unsigned p=0;p<5;p++)for(unsigned i=0;i<p+1;i++)assert(BagPocket_AddItem(&gBagPockets[p],p*100+i+1,77));
+ for(unsigned round=0;round<6;round++){
+  MoveSaveBlocks_ResetHeap();unsigned offset=0;
+  for(unsigned p=0;p<5;p++){assert(gBagPockets[p].itemSlots==gPokemonStoragePtr->inventory.slots+offset);offset+=p+1;for(unsigned i=0;i<p+1;i++){struct ItemSlot v=BagPocket_GetSlotData(&gBagPockets[p],i);assert(v.itemId==p*100+i+1&&v.quantity==77);}}
+ }
  puts("PASS: each pocket1152 stacks; shared reuse/full refusal; >255 indices; cross-pocket preservation; sorting/swapping; old14-box and v43-v77 packed migration; new save/reload; malformed-size and allocation refusal");
 }
 '''
