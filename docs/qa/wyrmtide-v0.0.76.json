@@ -4,9 +4,9 @@
   "authorization": "Owner approved all visuals and explicitly requested inclusion in the public release.",
   "baselineMaster": "c09ff3fc2d09503f5b3558587fd0eacd0ef46489",
   "approvedFeature": "050cb9296a163a535eebca0f10202df84501bb44",
-  "status": "Candidate metadata repaired locally; current production checks and full wiki reader pass; awaiting refreshed candidate gates.",
+  "status": "Published v0.0.76; candidate, production, gated Pages and independent live-byte verification passed.",
   "impact": [
-    "Append-only Wyrmtide map/layout/section/quest/menu IDs and audited flags0x493\u20130x499",
+    "Append-only Wyrmtide map/layout/section/quest/menu IDs and audited flags0x493–0x499",
     "Existing Weather Institute/Regigigas call gate, NPC priority and Dewford legacy-cache repair",
     "Non-egg party Regigigas gate and permanent seal, both exit lanes and return travel",
     "Lv75 Regidrago retry/capture/report paths and cave encounters",
@@ -24,7 +24,7 @@
     "cause": "Azure Ubuntu mirror stalled the57.5MB compiler and49.2MB newlib downloads until35-minute cancellation",
     "repair": "Same standard compiler packages from official Ubuntu HTTPS archive, bounded network timeouts; no game gate disabled"
   },
-  "next": "Push coherent metadata correction, inspect refreshed candidate/native gates, merge PR89 and verify production publication.",
+  "next": "Release complete. This documentation-only closeout preserves all game, art, harness, patch and companion inputs. Apply retained native-art lessons to future work and preserve subsequent Porymap edits.",
   "immutableGameSource": "680732553661a9e062f3fd5a291cf3ac99485f97",
   "sourceCheckpoint": "codex/wyrmtide-v0.0.76-source",
   "localHostChecks": {
@@ -90,7 +90,8 @@
       "Region map browsing",
       "Exercise prepared battle sheets and wardrobe refresh",
       "Verify Legends project metadata"
-    ]
+    ],
+    "note": "All59 host steps including the corrected metadata script passed after the coherent metadata repair. Site-promotion regressions passed separately (16 cases)."
   },
   "wiki": {
     "sourceCommit": "680732553661a9e062f3fd5a291cf3ac99485f97",
@@ -115,5 +116,277 @@
       "run": 42139374262,
       "failure": "Old walkthrough/portrait/source-keyed script metadata; synchronized pins/cache keys, regenerated profiles from immutable source without changing prior entries/locations or images. Reader, walkthrough, JS and schema passed locally."
     }
-  }
+  },
+  "releaseHead": "d4a7f8971d73083e49dca4d61e1b104d9458762e",
+  "mergeCommit": "a1337576f5c499e83b2f8d9f70d21ef6c67a33f8",
+  "candidatePassed": {
+    "nativeAndBothDecoders": 42140059445,
+    "project": 42140059254,
+    "wikiBrowser": 42140059421,
+    "android": 42140059398
+  },
+  "candidateArtifacts": [
+    {
+      "id": 13468089230,
+      "name": "legends-candidate-patches",
+      "digest": "sha256:f50c3b31fd4d94321dacf45e2a88447c8fc0159d8f5887f96890628c6a6ab239",
+      "bytes": 33118561
+    },
+    {
+      "id": 13467619796,
+      "name": "legends-mgba-gameplay",
+      "digest": "sha256:c2b4e388c37983ea9845064b92a1e78a1fdcaa86b61694a9e0ebc790d5ac6059",
+      "bytes": 8175383
+    }
+  ],
+  "productionRuns": {
+    "nativeAndPatches": {
+      "id": 42141830982,
+      "run_attempt": 2,
+      "conclusion": "success",
+      "successfulNativeBuildAttempt": 1
+    },
+    "project": {
+      "id": 42143055438,
+      "conclusion": "success"
+    },
+    "wiki": {
+      "id": 42141830920,
+      "conclusion": "success"
+    },
+    "androidBuild": {
+      "id": 42141830934,
+      "conclusion": "success"
+    },
+    "windowsBuild": {
+      "id": 42141831017,
+      "conclusion": "success"
+    }
+  },
+  "publication": {
+    "patchCommit": "897ed752c94ae4e1ffdb654c55bfa75e0cd5a278",
+    "firstPagesRun": 42143262886,
+    "firstPagesSource": "897ed752c94ae4e1ffdb654c55bfa75e0cd5a278",
+    "pagesSourceMode": "workflow",
+    "completeSnapshotFiles": 895,
+    "siteEvidenceArtifact": {
+      "id": 13469445554,
+      "digest": "sha256:cefb3863f1258623bed54b5d4d4959c2669568c96d59cff3ebae54c7bf23d967"
+    },
+    "patchArtifact": {
+      "id": 13469410247,
+      "name": "legends-candidate-patches",
+      "digest": "sha256:edb7a5ab71ea6a81e2de685442f732eb2bda0317dd6e72413fbabd1dd71b27ee",
+      "bytes": 33118558
+    },
+    "nativeCaptureArtifact": {
+      "id": 13469290522,
+      "name": "legends-mgba-gameplay",
+      "digest": "sha256:4ecac90d8a5fec4411c2a727312935efd0149e386ff10305876bdda851c76808",
+      "bytes": 8162497
+    },
+    "manifestSHA256": "cfc3b46605e3400604f9431155169c917c4bb330aeb7db77d4aef15174ed85e3",
+    "sourceFingerprint": "f075be78570c829917c09d2733a3dc92ed11bb99fea3eb9a03600b73bbb21fae",
+    "ROM_SHA256": {
+      "Release": "323bb73a32e3b9b2edbc9a381fe1547919965dbc2d98be55218c530cbd09ce03",
+      "Debug": "c468e242d4d7efbe286d6e8a057ac851b2157153aeaeb52df4259de6f0830085"
+    },
+    "canonicalBaseSHA1": "f3ae088181bf583e55daf962a92bb46f4f1d07b7",
+    "nativeReceipts": 13,
+    "independentDecoders": [
+      "Floating IPS reconstructed both native ROMs byte-exact",
+      "Committed browser patcher reconstructed both native ROMs byte-exact"
+    ],
+    "liveVerification": {
+      "version": "0.0.76",
+      "verified_at_UTC": "2026-11-06T01:23:55.864727+00:00",
+      "passed": true,
+      "files": [
+        {
+          "path": "index.html",
+          "passed": true,
+          "HTTP": 200,
+          "bytes": 3735,
+          "sha256": "460cfe9286263c34331d7bdee139fe2da108c3d29f11c7db88638bd5c7e2f85d",
+          "Git_blob_sha1": "dbb2613def602a0952a0b4de33519908389a805b"
+        },
+        {
+          "path": "patcher.html",
+          "passed": true,
+          "HTTP": 200,
+          "bytes": 2675,
+          "sha256": "72a826f8d6267c6a6c2e29bf09cdc6ac66193703a1bc9cfbc3410e7b9708308a",
+          "Git_blob_sha1": "a700441dae2cc229fe6a26059d923bfd6d11f7ea"
+        },
+        {
+          "path": "patcher.js",
+          "passed": true,
+          "HTTP": 200,
+          "bytes": 9353,
+          "sha256": "d8224039fb200a0d299111d930121f062626fd97d9cc178bb876ae354c723d81",
+          "Git_blob_sha1": "df766fc600f5aa0fcc26c780fb978c37167c5a8a"
+        },
+        {
+          "path": "changelog.html",
+          "passed": true,
+          "HTTP": 200,
+          "bytes": 127919,
+          "sha256": "2139505fb370ce3ea7b7a5bbfebba254e40edc63458591203ab8abb04dcd1d24",
+          "Git_blob_sha1": "ca58b765d2e2cff0b5b34a0161e44c32a2d9fbb9"
+        },
+        {
+          "path": "wiki/index.html",
+          "passed": true,
+          "HTTP": 200,
+          "bytes": 12798,
+          "sha256": "414d4048badfbd84d80f3adff9cd688162e5bdb181a54296cde2ab302a07a5d6",
+          "Git_blob_sha1": "9fcf334a58a9ebed63f6943e53db3514f73d6158"
+        },
+        {
+          "path": "wiki/dex.html",
+          "passed": true,
+          "HTTP": 200,
+          "bytes": 10572,
+          "sha256": "496267390713e9675d4116d5d0af7bfca3a735cf83844046912c72f0211d8925",
+          "Git_blob_sha1": "6f4881c7c48acacfea5e6dad6aff02434ad82dbf"
+        },
+        {
+          "path": "wiki/dex-data.json",
+          "passed": true,
+          "HTTP": 200,
+          "bytes": 849391,
+          "sha256": "7798de19bcc0fda57dfe80ef24ba60fedceda8cc28ca508894b7da224e7d6bc3",
+          "Git_blob_sha1": "f8fcde0affa13dede1fe730f967e320fac27b6f7"
+        },
+        {
+          "path": "wiki/dex-profiles.js",
+          "passed": true,
+          "HTTP": 200,
+          "bytes": 178691,
+          "sha256": "0ccfee5466e5ead2d400bbdebb70ff830d58a6864d0a85b3f7bdef069e7c3557",
+          "Git_blob_sha1": "b7c3db3038bf3216a0e2a0da4c08c2a0d276ebdb"
+        },
+        {
+          "path": "wiki/dex-sprite-atlas.js",
+          "passed": true,
+          "HTTP": 200,
+          "bytes": 18786,
+          "sha256": "8b3a1d1224df211929a8079fdd621f16904600305601433afcc117c8f800b04d",
+          "Git_blob_sha1": "de0bf49a8b01f87b9fea58adaa888a3d02e7ec46"
+        },
+        {
+          "path": "wiki/dex-sprite-atlas.webp",
+          "passed": true,
+          "HTTP": 200,
+          "bytes": 153584,
+          "sha256": "55bdf244830f30f9aeb5eeddb8f628b6885eccb2e95b171dac14df9b529190df",
+          "Git_blob_sha1": "dd91aded78d44fc6aea679a678a0274edb93add1"
+        },
+        {
+          "path": "wiki/dex-portrait-sources.json",
+          "passed": true,
+          "HTTP": 200,
+          "bytes": 342,
+          "sha256": "644decdf201a0623707327e6d524178ab8e0f7e376f15bcf1f2ad4abded02b93",
+          "Git_blob_sha1": "758c4db1f73c6baaa968366d6d70c1aa628eff23"
+        },
+        {
+          "path": "wiki/map-hoenn.png",
+          "passed": true,
+          "HTTP": 200,
+          "bytes": 6757,
+          "sha256": "6abac3457dd2c588173b001c7f5ad37b58b4429ff50d3d54373f2fe868e5f625",
+          "Git_blob_sha1": "10f2d26f42c381c2af7f51a7c835b4b3b190107f"
+        },
+        {
+          "path": "wiki/map-kanto.png",
+          "passed": true,
+          "HTTP": 200,
+          "bytes": 3728,
+          "sha256": "bc89ff01cbc5dca3fe849d2c0d872c1e98b57a450663d72a7a210d3645b495f0",
+          "Git_blob_sha1": "241cf5864b38426d1cc75ebfa70b865afdcbcac3"
+        },
+        {
+          "path": "wiki/walkthrough-maps.json",
+          "passed": true,
+          "HTTP": 200,
+          "bytes": 115267,
+          "sha256": "e128160a99993707fa984de362ac717de79c655ae89d82b1f171808013874706",
+          "Git_blob_sha1": "e134483416c2c36620038df884e7977bdf67aaa8"
+        },
+        {
+          "path": "wiki/android-version.json",
+          "passed": true,
+          "HTTP": 200,
+          "bytes": 399,
+          "sha256": "e34e5b41b07dc69569ca2eb266093ce5e634615cba426422edbcfc8bcf8f35d5",
+          "Git_blob_sha1": "eef161550efb41e023e6e11884b964dc01713bc2"
+        },
+        {
+          "path": "wiki/windows-version.json",
+          "passed": true,
+          "HTTP": 200,
+          "bytes": 275,
+          "sha256": "7803315239319f7eaebe22303b42d81519609a934bb59e59a1b86adaf623abe2",
+          "Git_blob_sha1": "74c0f4e51e922902c12589d607ec7f8b18bfd097"
+        },
+        {
+          "path": "features/eon-roamers.md",
+          "passed": true,
+          "HTTP": 200,
+          "bytes": 2244,
+          "sha256": "5839b026abdd24d2ea62ef1359559d7ddf0d402efae50726473a2b79c56e1aad",
+          "Git_blob_sha1": "1f1bdffaf6978eba649ba9d0c521cc0bc937171c"
+        },
+        {
+          "path": "downloads/SHA256SUMS.txt",
+          "passed": true,
+          "HTTP": 200,
+          "bytes": 412,
+          "sha256": "8c79cc43149f3f164abd01f1c0adc3a99099dc7a8cb72d1d32d63baf270598ab",
+          "Git_blob_sha1": "ab43e0e9b17e00440ef762731dd0c40278895771"
+        },
+        {
+          "path": "downloads/Pokemon-Emerald-Legends-v0.0.76.bps",
+          "passed": true,
+          "HTTP": 200,
+          "bytes": 17475974,
+          "sha256": "32f0768376505211306847e73a48ff1e664fdcad83e191c24897172f0a1c4abf",
+          "Git_blob_sha1": "2ce0940c0eae366162ede52cac50dc4c2a905b88",
+          "source_CRC32": "1f1c08fb",
+          "target_CRC32": "353e4bb1",
+          "patch_CRC_passed": true
+        },
+        {
+          "path": "downloads/Pokemon-Emerald-Legends-v0.0.76-debug.bps",
+          "passed": true,
+          "HTTP": 200,
+          "bytes": 17306327,
+          "sha256": "1fd24dd1fe9dddfac21c2cba7b2a6e42c0b9a541c53148556fff6d2a4af9760d",
+          "Git_blob_sha1": "cee1ef3bc52373c004452958113539ba721bae27",
+          "source_CRC32": "1f1c08fb",
+          "target_CRC32": "4c147a26",
+          "patch_CRC_passed": true
+        },
+        {
+          "path": "release-publication.json",
+          "passed": true,
+          "HTTP": 200,
+          "bytes": 219162,
+          "sha256": "b856708e002dc89ffa2a5f8f83b409e02021fb2f43d8162051b736b31e535431",
+          "Git_blob_sha1": "d1cf3f5190f874306dd21192181e2edd271edc8b"
+        }
+      ],
+      "scope": "Fresh live HTTP bytes, reviewed SHA256/Git blobs and BPS footer CRCs only; not a gameplay, build or clean-base reconstruction test.",
+      "expected_receipt_sha256": "6b201058c9b640e894243c6e4f92f6b9f088519df216fa1b1093130c465549c0"
+    }
+  },
+  "publicationRepair": {
+    "failedJob": 127647220076,
+    "cause": "A documentation-only milestone153db8dd changed the deliberately full tracked-input fingerprint while production verification ran. Publisher correctly refused publication.",
+    "repair": "Restored only the two documents to the verified source in1b48fe45, retaining milestone evidence in history. Re-ran only the publisher; successful native/build/decoder jobs and exact artifact were reused. No gate or fingerprint rule weakened.",
+    "retainedMilestone": "153db8dde4ae32a6fc0ef648917c36cbadffd564"
+  },
+  "limits": "Controlled native fixtures and normal Release Continue cases passed; not an authentic historical owner-save matrix, natural full-story walkthrough, physical browser file-picker/download or Pizza Boy execution claim.",
+  "companions": "Production Android and Windows workflows passed. Windows manifest1.0.33 published; Android retains the existing persistent-manual signed1.0.9 APK, whose content is loaded from the updated remote wiki. No newly signed Android APK claim."
 }

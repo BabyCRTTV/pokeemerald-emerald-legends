@@ -1,12 +1,14 @@
 # Development handoff
 
-## v0.0.76 Wyrmtide publication authorized, integration in progress (5 November 2026)
+## v0.0.76 Wyrmtide published and live verified (5 November 2026)
 
-**Model: GPT-6 (Codex) | Reasoning: ship the explicitly approved result on the current protected release baseline.**
+**Model: GPT-6 (Codex) | Reasoning: ship the explicitly approved result and verify actual downloads.**
 
-Owner asked to include all approved cave changes in the public download. Authorization now covers integration, candidate verification, merge and publication. Combined currentmaster c09ff3fc /v0.0.75 with approved050cb929 in an isolated worktree, preserving all approved cave assets and current save/Eon/seasonal/wardrobe/publishing protections. Resolved only documentation and native-workflow conflicts; retained the single shared private Debug/Release build pipeline and added Wyrmtide's native receipt to its manifest. Bumped the candidate to v0.0.76 and prepared the cave guide/four encounter tables. The prior compiler setup cancellation was a measured Azure-mirror download stall; switched that compiler step to Ubuntu's official HTTPS archive with bounded timeouts, retaining every build/game/decoder gate.
+Owner authorized public inclusion of all approved cave work. PR #89 merged at a1337576; current v0.0.75 Eon/save, seasonal, wardrobe and publishing protections were retained. The approved Wyrmtide layouts and native art remain byte-exact. The released feature includes Briney's voyage, permanent party-Regigigas seal, four descending cave chambers, fitted entrances/stairs/complete exit rocks, rare cave dragons, distinct inscriptions and the larger cave-only Regidrago. Wiki guide, encounter tables and source-keyed metadata are synchronized to immutable game checkpoint68073255.
 
-[Single release evidence and exact next step](qa/wyrmtide-v0.0.76.json). Integration/focused source/shared-build/site checks passed; candidate/production and live publication are pending. Do not report v0.0.76 shipped until both reconstructed patches, required native/source/wiki/app production gates, Pages deployment and actual live bytes pass. Publicv0.0.75 remains live until gated promotion completes. No new historical-owner-save/full-story/Pizza Boy claim; maintain existing compatibility limits and preserve later Porymap edits.
+Candidate and production Debug/Release builds, native Wyrmtide and shared regressions,13 bound native receipts and both independent clean-base BPS decoders passed. Verified patches were published at897ed752. Pages run42143262886 promoted the complete895-file snapshot with all project/wiki/Android/Windows production gates matched; its post-deployment verifier and a separate fresh21-file live verification passed, including both BPS hashes/footer CRCs. [Single release evidence, source/build/artifact hashes and live receipt](qa/wyrmtide-v0.0.76.json). Publicv0.0.76 is available on the project download/patcher page.
+
+A documentation checkpoint during production correctly tripped the full tracked-input publication fingerprint. Restored only those two documents, preserving the checkpoint in history, and retried only the publisher; no rebuild or weakened guard. Process guidance now defers production-head documentation checkpoints until the publisher completes. This final closeout changes documentation only and reuses unchanged game evidence. Android retains its existing manually signed APK and reads the updated remote wiki; no newly signed APK claim. Authentic historical-owner-save, natural full-story, physical browser picker and Pizza Boy coverage remain incomplete. Preserve later Porymap edits and all owner-approved art.
 
 ## Final visual approval and retained design lessons (5 November 2026)
 
