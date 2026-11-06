@@ -1,12 +1,14 @@
 # Development handoff
 
-## Darkrai nightmare quest implementation in progress (5 November 2026)
+## Darkrai nightmare quest implemented, native visual review ready (5 November 2026)
 
-**Model: GPT-6 (Codex) | Reasoning: implement the owner-approved personal mystery and verify progression through actual game captures.**
+**Model: GPT-6 (Codex) | Reasoning: complete the approved personal mystery and prove progression with actual compiled-game inputs and captures.**
 
-Owner approved When Morning Never Comes and requested implementation plus progression visuals. Branch codex/darkrai-nightmare starts at publicv0.0.76 /2b99c655. Elias calls after either Regidrago outcome; Mira sleeps in a new native Lilycove home; the Mt Pyre caretaker provides a Lunar Wing; an empty dream bedroom, deserted Lilycove and moonless shore lead to level80 Darkrai. Capture or defeat wakes Mira, while defeat permits later capture; report to her father completes appended quest64. Preserve all existing cave/player/seasonal/wardrobe/save work. [Single checkpoint and next step](qa/nightmare-quest.json).
+Owner requested When Morning Never Comes after capture or defeat of Regidrago, plus progression visuals. Branch codex/darkrai-nightmare starts at publicv0.0.76 /2b99c655. Elias calls once after eight safe outdoor steps. His daughter Mira sleeps in a new complete native Lilycove home; the Mt Pyre caretaker provides a real Lunar Wing Key Item while retaining the Cleanse Tag grant. An empty dream bedroom, deserted city, Mira's echo and a wrong door lead to the complete native moonless shore and level80 Darkrai. Capture or defeat wakes Mira; report to Elias completes appended quest64. Defeat preserves later capture; the bed offers safe exits and post-quest revisits. Private palettes/guarded water battle background match the setting. Darkrai has a full temporary silhouette footprint and a clear approach, restored after capture.
 
-This checkpoint is unverified implementation, not a published release or visual approval. Debug build and focused native progression/flash/battle QA are next. Keep master and publicv0.0.76 unchanged until the owner reviews the resulting visuals. Do not substitute generated images for native emulator captures.
+Local Debug, allocation/production-C/ID/native-assembly/save-width and seasonal palette checks passed. Native mGBA tested the call, real house and both exit lanes, investigation, actual wing/Cleanse Tag grants, decline/entry, dream/echo/shore walking, Darkrai capture/defeat/escape/blackout, awakening/report, post-quest revisit, both shore exits, cleared caught footprint and flash persistence. A controlled older-style Lilycove wall-position save passed actual flash/load/Continue relocation with walking afterward. All old serialized offsets remain intact. [Single bound verification record](qa/nightmare-quest.json), [quest guide](features/when-morning-never-comes.md).
+
+Candidate Release/independent-patch gates and the final gallery are next. This remains an unshipped review with new visuals awaiting owner approval. Keep master/publicv0.0.76 unchanged. No authentic historical-owner-save matrix, natural full-story, Release-emulator or Pizza Boy claim. Preserve every approved Wyrmtide/player/seasonal/wardrobe asset and later Porymap edits.
 
 ## v0.0.76 Wyrmtide published and live verified (5 November 2026)
 

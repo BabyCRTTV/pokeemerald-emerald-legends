@@ -1,5 +1,6 @@
 #include "global.h"
 #include "legends_grottos.h"
+#include "legends_nightmare.h"
 #include "legends_story.h"
 #include "legends_adventure.h"
 #include "legends_journal.h"
@@ -2139,6 +2140,7 @@ void CB2_ContinueSavedGame(void)
     FieldClearVBlankHBlankCallbacks();
     StopMapMusic();
     ResetSafariZoneFlag_();
+    LegendsNightmareRepairLegacyPosition();
     LegendsRestoreUnlocksOnContinue();
     if (gSaveFileStatus == SAVE_STATUS_ERROR)
         ResetWinStreaks();

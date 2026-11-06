@@ -45,6 +45,8 @@ struct MapLayout {const struct Tileset *primaryTileset,*secondaryTileset;};
 struct {u8 mapType,weather;u16 regionMapSectionId;const struct MapLayout *mapLayout;} gMapHeader;
 u16 gPlttBufferUnfaded[512],gPlttBufferFaded[512];u32 gBattleTypeFlags;
 static u8 season;
+static bool32 nightmareShore;
+bool32 LegendsNightmareIsShore(void){return nightmareShore;}
 struct {u8 altWeight;} gTimeBlend;
 u8 LegendsGetActiveSeason(void){return season;}
 u32 GetNumPalsInPrimary(const struct MapLayout *l){return 7;}
@@ -68,6 +70,17 @@ main = r'''
 static void fresh(void){for(int i=0;i<512;i++)gPlttBufferUnfaded[i]=gPlttBufferFaded[i]=0x4210;}
 static void unchanged(u16 environment){fresh();LegendsLoadBattleSeasonPalette(environment,native[0]);assert(!memcmp(gPlttBufferUnfaded+32,native[0],96));}
 int main(int argc,char **argv){
+ // The private Darkrai scene recolors only the terrain palette, while all
+ // existing seasonal scenarios below exercise the unchanged non-dream path.
+ nightmareShore=TRUE;gBattleTypeFlags=BATTLE_TYPE_LEGENDARY;fresh();
+ LegendsLoadBattleSeasonPalette(BATTLE_ENVIRONMENT_WATER,native[0]);
+ for(int i=0;i<48;i++){
+  unsigned c=native[0][i],r=c&31,g=(c>>5)&31,b=(c>>10)&31;
+  u16 expected=((r*43+b*8+50)/100)|(((g*46+b*8+50)/100)<<5)|(((b*63+r*8+50)/100)<<10);
+  assert(gPlttBufferUnfaded[32+i]==expected&&gPlttBufferFaded[32+i]==expected);
+ }
+ for(int i=0;i<512;i++)if(i<32||i>=80)assert(gPlttBufferUnfaded[i]==0x4210);
+ nightmareShore=FALSE;gBattleTypeFlags=0;
  const int eligible[]={BATTLE_ENVIRONMENT_GRASS,BATTLE_ENVIRONMENT_LONG_GRASS,BATTLE_ENVIRONMENT_PLAIN};
  FILE *preview=argc>1?fopen(argv[1],"wb"):NULL;
  gMapHeader.mapType=MAP_TYPE_ROUTE;gMapHeader.weather=WEATHER_SUNNY;gMapHeader.regionMapSectionId=MAPSEC_ROUTE_101;

@@ -132,7 +132,7 @@ Nightmare_CheckCapture::
 	return
 Nightmare_Darkrai::
 	lockall
-	faceplayer
+	setvar VAR_LAST_TALKED, 1
 	goto_if_set FLAG_LEGENDS_NIGHTMARE_CAUGHT, Nightmare_End
 	msgbox Nightmare_Text_Darkrai, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, NO, Nightmare_End
@@ -171,7 +171,7 @@ Nightmare_Mira::
 	end
 
 Nightmare_Text_Call:
-	.string "UNKNOWN NUMBER: ...Hello?\nIs this {PLAYER}?\pMy name is ELIAS. MR. BRINEY\nsaid you might be able to help.\pMy daughter won't wake up.\nNot for days. Nothing helps.\pShe keeps whispering about a house\nbeside a sea with no moon.\pWe're in LILYCOVE, in the little\nhouse beside the MOVE DELETER.\pPlease... I don't know who else\nto ask.$"
+	.string "UNKNOWN NUMBER: ...Hello?\nIs this {PLAYER}?\pMy name is ELIAS. MR. BRINEY\nsaid you might be able to help.\pMy daughter won't wake up.\nNot for days. Nothing helps.\pShe keeps whispering about a house\nbeside a sea with no moon.\pWe're in LILYCOVE. Our house is\njust east of the TRAINER FAN CLUB.\pPlease... I don't know who else\nto ask.$"
 
 Nightmare_Text_Before:
 	.string "ELIAS: My daughter loves the sea.\nShe says it follows her into dreams.$"
@@ -245,3 +245,27 @@ Nightmare_Text_BedBefore:
 	.string "MIRA's bed is neatly made.\nSea air drifts through the window.$"
 Nightmare_Text_MiraBefore:
 	.string "MIRA: I like listening to the waves.\nThey help me fall asleep.$"
+
+Nightmare_ClosedDoor::
+	msgbox Nightmare_Text_ClosedDoor, MSGBOX_SIGN
+	end
+Nightmare_ShoreSign::
+	msgbox Nightmare_Text_ShoreSign, MSGBOX_SIGN
+	end
+Nightmare_Text_ClosedDoor:
+	.string "Nothing stirs beyond the door.\nThe street seems to hold its breath.$"
+Nightmare_Text_ShoreSign:
+	.string "The letters have almost faded.\pOnly one phrase remains:\nFOLLOW THE LIGHT HOME.$"
+
+@ Reserve the actual32px silhouette, keeping every native pier pixel intact.
+@ A native BG interaction on its near edge gives the player clear space.
+Nightmare_ShoreLoad::
+	goto_if_set FLAG_LEGENDS_NIGHTMARE_CAUGHT, Nightmare_ShoreLoadEnd
+	setmetatile 11, 21, 0x056, TRUE
+	setmetatile 12, 21, 0x056, TRUE
+	setmetatile 13, 21, 0x056, TRUE
+	setmetatile 11, 22, 0x05E, TRUE
+	setmetatile 12, 22, 0x05E, TRUE
+	setmetatile 13, 22, 0x05E, TRUE
+Nightmare_ShoreLoadEnd::
+	end

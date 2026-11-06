@@ -5,9 +5,40 @@
 #include "field_player_avatar.h"
 #include "constants/flags.h"
 #include "constants/map_types.h"
+#include "constants/layouts.h"
+#include "constants/maps.h"
 
 extern const u8 Nightmare_UnknownCall[];
 static EWRAM_DATA u8 sNightmareCallSteps;
+
+bool32 LegendsNightmareIsShore(void)
+{
+    return gMapHeader.mapLayoutId == LAYOUT_LEGENDS_NIGHTMARE_SHORE;
+}
+
+// An older battery save may be standing in the formerly empty grass occupied
+// by the new house's solid walls. Repair only that impossible position, before
+// Continue restores actors; keep every other actor and all saved story state.
+void LegendsNightmareRepairLegacyPosition(void)
+{
+    u32 i;
+    if (gSaveBlock1Ptr->location.mapGroup != MAP_GROUP(MAP_LILYCOVE_CITY)
+     || gSaveBlock1Ptr->location.mapNum != MAP_NUM(MAP_LILYCOVE_CITY)
+     || gSaveBlock1Ptr->pos.x < 49 || gSaveBlock1Ptr->pos.x > 52
+     || gSaveBlock1Ptr->pos.y < 13 || gSaveBlock1Ptr->pos.y > 15)
+        return;
+    gSaveBlock1Ptr->pos.x = 50;
+    gSaveBlock1Ptr->pos.y = 16;
+    for (i = 0; i < OBJECT_EVENTS_COUNT; i++)
+    {
+        struct ObjectEvent *actor = &gSaveBlock1Ptr->objectEvents[i];
+        if (!actor->isPlayer)
+            continue;
+        actor->initialCoords.x = actor->currentCoords.x = actor->previousCoords.x = 57;
+        actor->initialCoords.y = actor->currentCoords.y = actor->previousCoords.y = 23;
+        actor->currentElevation = actor->previousElevation = 3;
+    }
+}
 
 // The shared CALMED flag covers capture or defeat, but never escape/blackout.
 // Called only after higher-priority field events and the Wyrmtide call.

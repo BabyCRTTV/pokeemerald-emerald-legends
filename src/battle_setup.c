@@ -2,6 +2,7 @@
 #include "data.h"
 #include "main.h"
 #include "legends_starters.h"
+#include "legends_nightmare.h"
 #include "battle.h"
 #include "battle_frontier.h"
 #include "battle_pike.h"
@@ -761,6 +762,11 @@ enum BattleEnvironments BattleSetup_GetEnvironmentId(void)
 {
     u16 tileBehavior;
     s16 x, y;
+
+    // The dream disallows Fly/Teleport like an interior, but this battle still
+    // takes place on the pier above water, never on an indoor building floor.
+    if (LegendsNightmareIsShore())
+        return BATTLE_ENVIRONMENT_WATER;
 
     if (ShouldUseFishingEnvironmentInBattle())
         GetXYCoordsOneStepInFrontOfPlayer(&x, &y);
