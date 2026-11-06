@@ -33,9 +33,9 @@ class API:
         stream = io.BytesIO()
         with zipfile.ZipFile(stream, 'w') as archive:
             for name, data in self.f.payload.items():
-                archive.writestr(name, data)
+                archive.writestr(zipfile.ZipInfo(name, (2026, 1, 1, 0, 0, 0)), data)
             if self.extra:
-                archive.writestr(self.extra, b'unsafe')
+                archive.writestr(zipfile.ZipInfo(self.extra, (2026, 1, 1, 0, 0, 0)), b'unsafe')
         return stream.getvalue()
 
     def get(self, path, **kwargs):

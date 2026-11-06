@@ -38,7 +38,7 @@ const assert=require('node:assert/strict'),fs=require('node:fs');
   assert.equal(await page.locator('.walkthrough-stops a').count(),27);
   assert.equal(await page.locator('.chapter-group').count(),3);
   assert.equal(await page.locator('.chapter-group').first().locator('a').count(),10);
-  assert.equal(await page.locator('.chapter-group').last().locator('a').count(),5);
+  assert.equal(await page.locator('.chapter-group').last().locator('a').count(),7);
   await page.locator('#next-chapter-group').click();
   await page.waitForFunction(()=>document.querySelector('#chapter-group-label').textContent==='Chapters 11–20 of 27');
   assert(await page.locator('#next-chapter-group').isEnabled());
