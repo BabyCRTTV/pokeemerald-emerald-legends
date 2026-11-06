@@ -1,5 +1,7 @@
 # Compact lower exit cleanup
 
+Superseded side rocks: the owner identified the cropped outlines in this pass. See the [complete native rock correction](../whole-exit-rocks/README.md). The approved stair/recess and all other changes remain intact.
+
 Owner approved the interior encounters, larger Regidrago, unique lore and upper mouths at 5645e36c, with only this lower-exit detail remaining. Replaced its mismatched grey checker shade with the native brown Cave 0x206 recess, and replaced bulky side caps with compact symmetric native stone returns on matching floor. Existing tread pixels, south-arrow behavior, warp indices/coordinates and every collision/elevation word are exact. No new pixels/palettes. The same lower-exit component is coherent across the descent; the sanctuary shares its recess.
 
 ![Clean lower exit](Clean-Exit.png)

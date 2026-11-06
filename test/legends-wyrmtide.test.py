@@ -280,11 +280,9 @@ assert 'graphics/pokemon/regidrago/front.png' in (R/'src/data/object_events/obje
 assert '#define OBJ_EVENT_GFX_LEGENDS_WYRMTIDE_REGIDRAGO 0x0E00' in (R/'include/constants/event_objects.h').read_text()
 print('PASS unique readable carvings, protected first/final text, 5% dragons, quiet Heart and dedicated 64px native legendary')
 
-# Approved lower-exit cleanup: complete compact native stone returns, stable physics.
-floor_words=words(0x201);rim_words=words(0x218)
-assert words(0x3ca)==(floor_words[0],rim_words[0]^0x400,floor_words[2],rim_words[2]^0x400,0,0,0,0)
-assert words(0x3cb)==(rim_words[0],floor_words[1],rim_words[2],floor_words[3],0,0,0,0)
+# Lower-exit correction: whole native rock silhouettes and bases, stable physics.
+assert words(0x3ca)==words(0x202) and words(0x3cb)==words(0x202), "Exit rocks must retain every native quadrant, silhouette and base"
 for i in range(1,5):
  cells=struct.unpack('<456H',(R/f'data/layouts/LegendsWyrmtide_Descent{i}/map.bin').read_bytes())
  for x,mid in [(10,0x3ca),(12,0x3cb)]:assert cells[20*19+x]&0xfc00==0x3400 and cells[20*19+x]&1023==mid
-print('PASS compact native exit rims and stable south-arrow collision/behavior')
+print('PASS complete native exit rocks and stable south-arrow collision/behavior')

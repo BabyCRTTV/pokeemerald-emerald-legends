@@ -1,5 +1,15 @@
 # Development handoff
 
+## Whole exit rocks, cropped-cap correction (5 November 2026)
+
+**Model: GPT-6 (Codex) | Reasoning: correct the actual cropped silhouettes, retain complete native rock art and preserve approved gameplay.**
+
+Owner identified that the compact side rocks at c7179c3b were still cut off. The previous half-width wall-cap construction caused this. Replaced both contextual definitions0x3ca/3cb with all eight words of the complete native Cave0x202 rock, retaining its rounded top, full sides/base and native lighting. No cropping or added mirroring. Stair/recess, every layout/collision/elevation word, warp, attribute, script, encounter table, Pokémon artwork and graphics IDs remain exact. Only those two existing metatile definitions plus their authoring metadata changed. Other prior approvals carry forward; this rock correction awaits review.
+
+Debug, existing focused progression/art/roster/text/whole-rock guards and full native Wyrmtide walking/exit/return/quest/party-gate/retry/capture/flash/report/wild-encounter tests passed. Native upper-mouth and larger-Regidrago frames remain RGB exact; matched exit differences are confined to the two rock positions. Whole definitions match native0x202 byte-for-byte. The helper reproduced exactly from pinned source and refused changed owner inputs before writing. AGENTS explicitly requires complete silhouettes/bases for freestanding rocks and prohibits cropped wall caps as standalone rocks.
+
+[Full context, detail and matched comparison](designs/wyrmtide/whole-exit-rocks/README.md), [bound source/native receipt](qa/wyrmtide-whole-exit-rocks.json). Source, guards and verified captures are committed together. Keep PR #89 draft; public v0.0.75 unchanged. This remains the unshipped v0.0.70 Wyrmtide Debug review. Prior Release/LTO/clean-compiler-setup limits and current-master/release/BPS reconciliation remain outstanding before shipping; no new release-readiness or historical-owner-save/natural-full-story/Release/Pizza Boy claim.
+
 ## Targeted lower exit cleanup and remaining approval (5 November 2026)
 
 **Model: GPT-6.1 Sol (Codex) | Reasoning: preserve the approved interior and correct only the pictured exit's material and bulky rim.**

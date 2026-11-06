@@ -218,16 +218,18 @@
       970,
       971
     ],
-    "flankSource": 536,
+    "flankSource": 514,
     "floorSource": 513,
-    "innerWidthPixels": 8,
-    "leftStoneMirrored": true,
+    "innerWidthPixels": 16,
+    "leftStoneMirrored": false,
     "treadsSource": 952,
     "shadeSource": 518,
     "centerWarp": 967,
     "nativeSouthBehavior": 101,
     "newPixelArt": false,
     "newPalette": false,
-    "collisionAndWarpsUnchanged": true
+    "collisionAndWarpsUnchanged": true,
+    "completeNativeRocks": true,
+    "completeSilhouetteAndBase": true
   }
 }
