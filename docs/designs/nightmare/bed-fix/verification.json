@@ -1,6 +1,6 @@
 {
-  "parentSource": "3cc33457f711d513ba9eeaee2882d94c2e88be82",
-  "correction": "Complete native GenericBuilding bed headboard/pillow/sheet/footboard; elevation4 keeps the native sleeping head above opaque bedding; native head shifted3px onto pillow. Matching bedside floor, open foot/right approaches, chair moved to6,3 in both rooms.",
+  "parentSource": "d037fa8a3f2ff51b11cb69b417ce044584cf2b17",
+  "correction": "Removed the mistaken wall-context row0x2ca..2cc above the bed in both rooms. Native two-row bed0x2d2..2d4/0x2da..2dc remains complete. Only six cells revert to matching wood floor; no sprite, interaction, script, warp or other geometry changes.",
   "fullGameplayBeforePortraitOnlyAdjustment": {
     "version": "0.0.76 + unshipped Darkrai review",
     "ROM_sha256": "4d78fa8492522c19981a0ec01493cf8070b4a8d751c2dfb9d27d271368372476",
@@ -43,9 +43,9 @@
   "finalBedRegression": {
     "scope": "bed interaction, wing entry, safe wake and resolved revisit",
     "version": "0.0.76 + unshipped Darkrai review",
-    "ROM_sha256": "2ab3e85d1409afdd5472ce71ea735d1e3e1599f4ae4360f1f3c87a18825c0e99",
+    "ROM_sha256": "5c106a004b57b3fc473cfe7d0c90ed869b3aa2b8290dda53673e3a91e70dee44",
     "emulator": "mGBA0.10.2 native core",
-    "ELF_sha256": "4b73106b16cf67701b3d7de279ce5928aad9c9df9fcda88ee63af58dd73f1faa",
+    "ELF_sha256": "51f23b9efd008d8f34c293dac3b44dd4c15792c527e4233c40b20392e96142d9",
     "harness_sha256": {
       "arm.c": "d5e8b4e7cc7e6ee13544746cca6ec54bca0e6f2e1fa8c4b8d22713b00447cdeb",
       "host.c": "713557f78e8d967d00f7fe4b432c9c34f1421c2c7d4df67f2559187c87f38fb1",
@@ -56,18 +56,18 @@
     "limits": "Not a natural full-story playthrough, authentic historical owner-save matrix, Release emulator or Pizza Boy test.",
     "log": "map=76/10 xy=6,5 flags=01 wing=0 battle=0 script=0 party=1 outcome=0 state=0\nmap=76/10 xy=8,5 flags=01 wing=0 battle=0 script=0 party=1 outcome=0 state=0\nmap=76/10 xy=6,5 flags=07 wing=1 battle=0 script=0 party=1 outcome=0 state=0\nmap=76/10 xy=8,5 flags=07 wing=1 battle=0 script=0 party=1 outcome=0 state=0\nmap=76/11 xy=6,6 flags=0f wing=1 battle=0 script=0 party=1 outcome=0 state=0\nmap=76/11 xy=6,4 flags=0f wing=1 battle=0 script=0 party=1 outcome=0 state=0\nmap=76/11 xy=8,5 flags=0f wing=1 battle=0 script=0 party=1 outcome=0 state=0\nmap=76/10 xy=7,5 flags=0f wing=1 battle=0 script=0 party=1 outcome=0 state=0\nmap=76/10 xy=6,5 flags=3f wing=1 battle=0 script=0 party=1 outcome=0 state=0\nmap=76/10 xy=9,4 flags=3f wing=1 battle=0 script=0 party=1 outcome=0 state=0\nmap=76/11 xy=6,6 flags=3f wing=1 battle=0 script=0 party=1 outcome=0 state=0\nPASS bed-only native sleeping interaction, wing entry, moved chair, safe waking and resolved side revisit\n",
     "images": {
-      "03-miras-slumber.png": "a852793176b6884353af1a7f8a528a092584aa3528ac1f4fb1f802dac0d0f218"
+      "03-miras-slumber.png": "8b3bf0e7522175e57dc28c4352236e7a89ef497c48a0e520f3d7e412c7af5a25"
     }
   },
-  "scope": "Final ROM bed/wing/dream/chair/safe wake/resolved revisit exercised natively. Full capture/defeat/flee/loss/report/door/flash/Continue suite passed on identical game logic/layouts before only the sleeping portrait pixels moved up3px.",
+  "scope": "Focused final-ROM native sleeping interaction, wing entry, chair, safe wake and completed-quest side revisit passed. Earlier complete outcome tests retained as historical evidence; no unchanged battle tests replayed locally.",
   "source_sha256": {
-    "data/layouts/LegendsNightmare_Home/map.bin": "7659a3c57604da65e36c6589466208e7a678dc81ef0efd3b05259f7e885d4b53",
-    "data/layouts/LegendsNightmare_Bedroom/map.bin": "7659a3c57604da65e36c6589466208e7a678dc81ef0efd3b05259f7e885d4b53",
+    "data/layouts/LegendsNightmare_Home/map.bin": "6f3b0c986e4b166f81d08298fdec6e3f2f09ec64c5fdd6e7cbef11500af2e78f",
+    "data/layouts/LegendsNightmare_Bedroom/map.bin": "6f3b0c986e4b166f81d08298fdec6e3f2f09ec64c5fdd6e7cbef11500af2e78f",
     "data/maps/LegendsNightmare_Home/map.json": "88aac4246f24462d5d0e66d255b845435e8f7e4814facb1141bce7a560a38198",
     "data/maps/LegendsNightmare_Bedroom/map.json": "24947abc4e73a1ce13e690243decb3c7a89b704144d246fa226482c422bf6a45",
     "graphics/object_events/pics/people/legends_mira_asleep.png": "2981ce7cb34e116ebcf0a57e90853a88c028e478c659c6a6e803b6b72a1cecb8",
     "data/scripts/legends_nightmare.inc": "cf8f6f447e26b9f8bd17b52f44f10bc59da49404c5b5e9eeef1be615579b7747",
-    "tools/legends/build_nightmare.py": "8ca76efee095836bf3612e4a22042125ae2374acf88a094cb0cd9b98b3cc41d8",
+    "tools/legends/build_nightmare.py": "97f58a609defe364bdeebc17a440451dc1313a513f5b197975f5a6cc3cb6536f",
     "tools/legends/native_nightmare_qa/arm.c": "d5e8b4e7cc7e6ee13544746cca6ec54bca0e6f2e1fa8c4b8d22713b00447cdeb",
     "tools/legends/native_nightmare_qa/host.c": "713557f78e8d967d00f7fe4b432c9c34f1421c2c7d4df67f2559187c87f38fb1",
     "tools/legends/native_nightmare_qa/run.py": "98a2b2373950878554dd18716368ad13fb2b5748362717392928494d6094942b"

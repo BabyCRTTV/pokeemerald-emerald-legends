@@ -1,7 +1,7 @@
 {
   "model": "GPT-6 (Codex)",
   "base": "2b99c6555954d6284a8d4ebee488e349a8e05a61",
-  "status": "Owner approved the quest visuals except the bed. Complete native bed correction implemented and final focused native interactions passed; bed capture awaiting review. Unshipped review.",
+  "status": "Quest visuals approved apart from bed. Removed mistaken wall-context headboard row from both rooms; final native bed interactions passed. Single refreshed capture awaiting review; unshipped.",
   "authorization": "Owner approved the proposed Darkrai story and requested implementation plus genuine progression visuals.",
   "branch": "codex/darkrai-nightmare",
   "impact": [
@@ -437,5 +437,11 @@
   "candidateAt3cc33457": {
     "nativeDebugReleaseAndDecoders": "42164957135 native verification job127719155893 passed; publisher skipped as expected for PR",
     "projectChecks": "42164957128 failed because the shallow CI checkout lacked the pinned published baseline needed by the new comparison. Fixed setup by fetching that exact baseline immediately before the test; no test weakened."
+  },
+  "candidateAtD037fa8a": {
+    "source": "d037fa8a3f2ff51b11cb69b417ce044584cf2b17",
+    "projectChecks": "success, check127728334076",
+    "sharedDebugReleaseNativeVerification": "success, check127728334578",
+    "publisher": "skipped for PR"
   }
 }

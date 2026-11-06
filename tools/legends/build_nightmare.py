@@ -34,10 +34,10 @@ def main():
   for x in range(4):home[y*W+x]=native[y*10+x]
  for x in [5,9]:put(x,0,0x207,True,0);put(x,1,0x20f,True,0)
  put(10,3,0x222,True);put(10,4,0x22a,True)
- # Complete native three-column bed: headboard, pillow/sheet and footboard.
+ # Native two-row bed only; the preceding atlas row is wall, not furniture.
  # Side tiles include matching wooden floor, so both bedside approaches remain open.
- for y,row in enumerate([[0x2ca,0x2cb,0x2cc],[0x2d2,0x2d3,0x2d4],[0x2da,0x2db,0x2dc]]):
-  for x,t in enumerate(row):put(7+x,2+y,t,y==0 or x==1,4 if (x,y)==(1,1) else 3)
+ for y,row in enumerate([[0x2d2,0x2d3,0x2d4],[0x2da,0x2db,0x2dc]]):
+  for x,t in enumerate(row):put(7+x,3+y,t,x==1,4 if (x,y)==(1,0) else 3)
  rug=[[0x235,0x236,0x237],[0x23d,0x23e,0x23f],[0x245,0x246,0x247]]
  for y,row in enumerate(rug):
   for x,t in enumerate(row):put(x+2,y+5,t)

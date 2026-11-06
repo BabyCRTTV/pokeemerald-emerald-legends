@@ -1,5 +1,13 @@
 # Development handoff
 
+## Darkrai bed wall-context correction (6 November 2026)
+
+**Model: Codex | Reasoning: distinguish furniture from neighboring room-context tiles, preserve the working quest.**
+
+Owner correctly identified the wall tiles around the bed. The prior three-row assembly mistakenly included native wall-context0x2ca..2cc as a headboard. Removed only those three cells above the bed in each room, restoring matching wood floor. The complete native two-row bed, sleeping portrait, bedside paths, chair and every script/warp/ID remain unchanged. AGENTS now requires checking furniture in original map context, rather than inferring whole objects from neighboring atlas rows.
+
+Debug, focused assembly/source checks and the final-ROM native bed regression passed: sleeping interaction, Lunar Wing entry, chair, safe wake and resolved side revisit. One refreshed genuine capture replaces the previous bed preview. [Updated bound evidence](designs/nightmare/bed-fix/verification.json). The preceding d037fa8a candidate passed project checks and shared Debug/Release/native verification. This small correction has its own new candidate gates; no extra local battles or progression boards were generated. Keep PR97 draft and publicv0.0.76 unchanged; corrected bed awaits review.
+
 ## Darkrai bed corrected, one capture requested (6 November 2026)
 
 **Model: Codex | Reasoning: complete native furniture and correct sprite layering with focused functional verification.**
