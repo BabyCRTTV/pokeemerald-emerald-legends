@@ -1,5 +1,13 @@
 # Development handoff
 
+## v0.0.77 Darkrai approved for publication (6 November 2026)
+
+**Model: Codex | Reasoning: retain explicit visual approval and prepare one versioned release with existing safeguards.**
+
+Owner approved the final room at d1af3c6b and explicitly requested publication of all completed Darkrai work. The approved bedside-only floor repair and continuous top shadow are protected. AGENTS was reviewed; its standing rules retain native assemblies, matching underlays/palettes, scoped repairs and approved foregrounds. VERSION, menu labels, all three changelogs, website/browser patcher and new wiki quest guide are synchronized to v0.0.77. Encounter inputs are unchanged from the verified immutable wiki snapshot; its source-keyed art/profiles remain intact with the new release compatibility label. No art regeneration or additional game logic.
+
+Candidate and production Debug/Release/native/dual-decoder checks, patch publication and gated Pages/live verification remain required. Do not write to production during the guarded patch publisher; use the ignored release checkpoint until it finishes. [Single release record](qa/nightmare-v0.0.77.json). Prior quest/game/save and final-room evidence remain linked there with their actual limits.
+
 ## Darkrai top-row shadow completed (6 November 2026)
 
 **Model: Codex | Reasoning: extend the existing shadow only where requested.**

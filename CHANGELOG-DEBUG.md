@@ -2,6 +2,15 @@
 
 This is the developer-facing history for the **Debug** build. Shared Legends changes are repeated here so this file stands on its own; Debug-only behavior is called out separately.
 
+## [0.0.77] - 2026-11-06
+
+- Added When Morning Never Comes after capturing or defeating Regidrago, beginning with a one-time call from a father worried about his sleeping daughter.
+- Added Elias and Mira’s Lilycove home, the Mt. Pyre caretaker’s Lunar Wing, an empty dream bedroom, deserted Lilycove and a moonless shore with level-80 Darkrai.
+- Added awakening and family closure after capture or defeat, safe dream exits and revisits, and retry paths after fleeing or losing; defeat retained a later capture opportunity.
+- Included the approved native room artwork, matching bedside floor and continuous top-row shadow above the bed.
+- Preserved existing save layouts, published identifiers, Wyrmtide artwork, wardrobe, seasonal systems and earlier features; repaired old Lilycove save positions only inside the new house footprint.
+- Retained Debug menus and Quickstart, with native checks covering the call, Lunar Wing, dream travel, Darkrai outcomes, awakening, revisits and save persistence.
+
 ## [0.0.76] - 2026-11-05
 
 - Added Mr. Briney's Wyrmtide Isle voyage after Regigigas and the Weather Institute report, with a permanent party-Regigigas seal and a return route.

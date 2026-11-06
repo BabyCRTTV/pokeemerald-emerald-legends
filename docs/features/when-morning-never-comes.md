@@ -1,6 +1,6 @@
-# When Morning Never Comes — Darkrai quest review
+# When Morning Never Comes
 
-Unshipped implementation on v0.0.76. Awaiting owner review of genuine compiled-game progression visuals; this has not changed the public download.
+Introduced in v0.0.77. A worried father’s call after Regidrago leads to a rescue beyond waking Hoenn.
 
 ## The call and investigation
 
@@ -24,4 +24,4 @@ All earlier map, layout, quest, item and graphics IDs retain their values; this 
 
 The new house uses a complete native Lilycove roof/facade/door and native interior furniture with complete caps/bases. The dream coast is the complete vanilla Southern Island exterior assembly. The standing Emerald Crest reference is its creator's official outdoor gallery: coherent material use, clear approaches and complete shore/vegetation edges guide the composition, without importing Crest art. [Creator gallery](https://thatsimpledev.itch.io/emerald-crest).
 
-[Single verification record](../qa/nightmare-quest.json). Controlled native mGBA input exercised the phone, house, caregiver/key-item grant, dream traversal, all Darkrai outcomes, awakening, report, revisits and flash persistence. This does not claim an authentic historical-owner-save matrix, natural full-story playthrough or Pizza Boy test. Candidate Release and independent patch gates are recorded separately when available.
+[Single verification record](../qa/nightmare-quest.json). Controlled native mGBA input exercised the phone, house, caregiver/key-item grant, dream traversal, all Darkrai outcomes, awakening, report, revisits and flash persistence. This does not claim an authentic historical-owner-save matrix, natural full-story playthrough or Pizza Boy test. Release, native verification and independent patch evidence are recorded in the release receipt.

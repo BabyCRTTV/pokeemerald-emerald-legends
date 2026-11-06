@@ -113,9 +113,9 @@ EWRAM_DATA static bool8 sArrowPressed = FALSE;
 
 static const u8 gText_PageControls[]       = _("A: NEXT  B: SAVE");
 #ifdef RELEASE
-static const u8 gText_LegendsVersion[]      = _("LEGENDS v0.0.76");
+static const u8 gText_LegendsVersion[]      = _("LEGENDS v0.0.77");
 #else
-static const u8 gText_LegendsVersion[]      = _("LEGENDS v0.0.76-D");
+static const u8 gText_LegendsVersion[]      = _("LEGENDS v0.0.77-D");
 #endif
 static const u8 gText_TextSpeedSlow[]      = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}SLOW");
 static const u8 gText_TextSpeedMid[]       = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}MID");
