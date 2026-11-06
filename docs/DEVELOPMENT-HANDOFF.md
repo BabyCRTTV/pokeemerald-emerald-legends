@@ -1,5 +1,15 @@
 # Development handoff
 
+## Shared bag reserve implementation, native verification pending (6 November 2026)
+
+**Model: Codex | Reasoning: remove per-pocket capacity maintenance while respecting GBA memory and published saves.**
+
+Owner requested larger capacity for Key Items, Berries, healing and every other normal bag pocket, with room for future additions. Replaced five fixed partitions (450 combined slots) with a1,152-stack pool that all five pockets borrow automatically; stacks remain999. Healing remains in Items. Retained the published native SaveBlock1/SaveBlock3 layouts, item IDs, PC150 slots, challenge rules, heap size and approved art/maps. Wider runtime menu counts/positions/swap sentinel support indexes above255; name/list buffers allocate for owned stacks instead of the full reserve. Existing Wally and link backups preserve the full shared inventory. Multi-stack removal now subtracts the requested amount once and releases empty slots; total counts use32 bits.
+
+New packed magicLPC3 retains the oldLPC2 reader for v0.0.43–v0.0.77 and the original fourteen-box native reader. Migration preserves the entire Pokemon prefix, encrypted quantities, all450 old bag entries and PC contents, then saves in the new format. Malformed lengths, unsupported sizes, allocation and packed-capacity failures refuse rather than silently empty a bag. No flags/vars or persistent IDs were reserved.
+
+Production-C sanitizer checks passed for each pocket at1,152, shared reuse/full refusal, sorting/swapping, high indices, multi-stack quantity conservation, both published inventory migrations and save/reload. Existing codec and all28 sector/rotation/item-history checks passed. Local LeakSanitizer was disabled only because this executor cannot inspect /proc under ptrace; address/undefined sanitizers stayed enabled. Full builds and added native five-pocket flash/high-index selection plus normal Release old/current Continue→Save→reset→Continue tests are pending. [Design and verification scope](features/shared-bag-reserve.md). Keep this feature on its review branch until native evidence passes; publicv0.0.77 remains unchanged.
+
 ## Walkthrough scope corrected to27 chapters (6 November 2026)
 
 **Model: Codex | Reasoning: follow the owner’s established walkthrough format and audit encounter inputs.**

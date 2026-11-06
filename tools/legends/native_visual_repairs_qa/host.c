@@ -44,5 +44,11 @@ int main(int argc,char **argv){
   command(4,350);checkPalette();puts("Wardrobe Apply/Cancel, Trainer Card returns and real flash roundtrip: passed");
   capture(argv[2],gender?"female-room":"male-room-return");
  }
+ command(10,1200);assert(c->busRead32(c,0x0203fc2c)==1&&c->busRead32(c,0x0203fc30)==1&&c->busRead32(c,0x0203fc34)==0);
+ battery(argv[2],"private-bag");
+ {char path[4096];snprintf(path,sizeof(path),"%s/bag-layout.json",argv[2]);FILE *f=fopen(path,"w");assert(f);fprintf(f,"{\"inventoryOffset\":%u,\"bagSize\":%u,\"cursorOffset\":%u,\"scrollOffset\":%u,\"etherId\":%u,\"encryptionKeyOffset\":%u}\n",c->busRead32(c,0x0203fc38),c->busRead32(c,0x0203fc3c),c->busRead32(c,0x0203fc40),c->busRead32(c,0x0203fc44),c->busRead32(c,0x0203fc48),c->busRead32(c,0x0203fc54));fclose(f);}
+ command(11,240);key(1);command(12,2);assert(c->busRead32(c,0x0203fc4c)==599&&c->busRead32(c,0x0203fc50)==c->busRead32(c,0x0203fc48));key(2);key(2);frames(240);
+ command(13,1200);assert(c->busRead32(c,0x0203fc2c)==1&&c->busRead32(c,0x0203fc30)==1&&c->busRead32(c,0x0203fc34)==0);battery(argv[2],"private-bag-legacy-source");
+ puts("Shared bag native flash/load, five pockets, PC slot149 and selecting slot599: passed");
  c->deinit(c);free(video);return 0;
 }

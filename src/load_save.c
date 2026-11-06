@@ -275,6 +275,7 @@ void SavePlayerBag(void)
 
     // save player bag.
     memcpy(LegendsStorageBag(), &gLoadedSaveData.bag, sizeof(struct Bag));
+    SetBagItemsPointers();
 
     // save mail.
     for (i = 0; i < MAIL_COUNT; i++)

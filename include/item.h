@@ -92,7 +92,7 @@ struct ItemInfo
 struct ALIGNED(2) BagPocket
 {
     struct ItemSlot *itemSlots;
-    u16 capacity:10;
+    u16 capacity;
     enum Pocket id:6;
 };
 
@@ -258,7 +258,7 @@ void CompactItemsInBagPocket(enum Pocket pocketId);
 void MoveItemSlotInPocket(enum Pocket pocketId, u32 from, u32 to);
 void MoveItemSlotInPC(struct ItemSlot *itemSlots, u32 from, u32 to);
 void ClearBag(void);
-u16 CountTotalItemQuantityInBag(enum Item itemId);
+u32 CountTotalItemQuantityInBag(enum Item itemId);
 bool32 AddPyramidBagItem(enum Item itemId, u16 count);
 bool32 RemovePyramidBagItem(enum Item itemId, u16 count);
 const u8 *GetItemName(enum Item itemId);

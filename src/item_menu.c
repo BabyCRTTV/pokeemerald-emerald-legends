@@ -58,12 +58,8 @@
 // The buffer for the bag item list needs to be large enough to hold the maximum
 // number of item slots that could fit in a single pocket, + 1 for Cancel.
 // This constant picks the max of the existing pocket sizes.
-// By default, the largest pocket is BAG_TMHM_COUNT at 64.
-#define MAX_POCKET_ITEMS  ((max(BAG_TMHM_COUNT,              \
-                            max(BAG_BERRIES_COUNT,           \
-                            max(BAG_ITEMS_COUNT,             \
-                            max(BAG_KEYITEMS_COUNT,          \
-                                BAG_POKEBALLS_COUNT))))) + 1)
+// Any pocket can use the shared space; include the Close Bag row.
+#define MAX_POCKET_ITEMS (LEGENDS_BAG_SLOTS + 1)
 
 // Up to 8 item slots can be visible at a time
 #define MAX_ITEMS_SHOWN 8
@@ -106,19 +102,10 @@ enum {
 };
 
 // Item list ID for toSwapPos to indicate an item is not currently being swapped
-#define NOT_SWAPPING 0xFF
-
-struct ListBuffer1 {
-    struct ListMenuItem subBuffers[MAX_POCKET_ITEMS];
-};
-
-struct ListBuffer2 {
-    u8 name[MAX_POCKET_ITEMS][max(ITEM_NAME_LENGTH, MOVE_NAME_LENGTH) + 15];
-};
+#define NOT_SWAPPING 0xFFFF
 
 struct TempWallyBag {
-    struct ItemSlot bagPocket_Items[BAG_ITEMS_COUNT];
-    struct ItemSlot bagPocket_PokeBalls[BAG_POKEBALLS_COUNT];
+    struct Bag bag;
     u16 cursorPosition[POCKETS_COUNT];
     u16 scrollPosition[POCKETS_COUNT];
     u16 unused;
@@ -130,7 +117,7 @@ static bool8 SetupBagMenu(void);
 static void BagMenu_InitBGs(void);
 static bool8 LoadBagMenu_Graphics(void);
 static void LoadBagMenuTextWindows(void);
-static void AllocateBagItemListBuffers(void);
+static bool32 AllocateBagItemListBuffers(void);
 static void LoadBagItemListBuffers(u8);
 static void PrintPocketNames(const u8 *, const u8 *);
 static void CopyPocketNameToWindow(u32);
@@ -579,8 +566,8 @@ static const struct WindowTemplate sContextMenuWindowTemplates[] =
 
 EWRAM_DATA struct BagMenu *gBagMenu = 0;
 EWRAM_DATA struct BagPosition gBagPosition = {0};
-static EWRAM_DATA struct ListBuffer1 *sListBuffer1 = 0;
-static EWRAM_DATA struct ListBuffer2 *sListBuffer2 = 0;
+static EWRAM_DATA struct ListMenuItem *sListBuffer1 = NULL;
+static EWRAM_DATA u8 (*sListBuffer2)[max(ITEM_NAME_LENGTH, MOVE_NAME_LENGTH) + 15] = NULL;
 EWRAM_DATA enum Item gSpecialVar_ItemId = 0;
 static EWRAM_DATA struct TempWallyBag *sTempWallyBag = 0;
 
@@ -776,7 +763,12 @@ static bool8 SetupBagMenu(void)
         gMain.state++;
         break;
     case 11:
-        AllocateBagItemListBuffers();
+        if (!AllocateBagItemListBuffers())
+        {
+            SetMainCallback2(gBagPosition.exitCallback);
+            FreeBagMenu();
+            return TRUE;
+        }
         gMain.state++;
         break;
     case 12:
@@ -898,10 +890,15 @@ static u8 CreateBagInputHandlerTask(u8 location)
     return taskId;
 }
 
-static void AllocateBagItemListBuffers(void)
+static bool32 AllocateBagItemListBuffers(void)
 {
-    sListBuffer1 = Alloc(sizeof(*sListBuffer1));
-    sListBuffer2 = Alloc(sizeof(*sListBuffer2));
+    u32 rows = 1, pocket;
+    // Only allocate names for owned stacks, not the full future reserve.
+    for (pocket = 0; pocket < POCKETS_COUNT; pocket++)
+        rows = max(rows, gBagMenu->numItemStacks[pocket]);
+    sListBuffer1 = Alloc(rows * sizeof(*sListBuffer1));
+    sListBuffer2 = Alloc(rows * sizeof(*sListBuffer2));
+    return sListBuffer1 != NULL && sListBuffer2 != NULL;
 }
 
 static void LoadBagItemListBuffers(u8 pocketId)
@@ -913,29 +910,29 @@ static void LoadBagItemListBuffers(u8 pocketId)
     {
         for (i = 0; i < gBagMenu->numItemStacks[pocketId] - 1; i++)
         {
-            GetItemNameFromPocket(sListBuffer2->name[i], GetBagItemId(pocketId, i));
-            subBuffer = sListBuffer1->subBuffers;
-            subBuffer[i].name = sListBuffer2->name[i];
+            GetItemNameFromPocket(sListBuffer2[i], GetBagItemId(pocketId, i));
+            subBuffer = sListBuffer1;
+            subBuffer[i].name = sListBuffer2[i];
             subBuffer[i].id = i;
         }
-        StringCopy(sListBuffer2->name[i], gText_CloseBag);
-        subBuffer = sListBuffer1->subBuffers;
-        subBuffer[i].name = sListBuffer2->name[i];
+        StringCopy(sListBuffer2[i], gText_CloseBag);
+        subBuffer = sListBuffer1;
+        subBuffer[i].name = sListBuffer2[i];
         subBuffer[i].id = LIST_CANCEL;
     }
     else
     {
         for (i = 0; i < gBagMenu->numItemStacks[pocketId]; i++)
         {
-            GetItemNameFromPocket(sListBuffer2->name[i], GetBagItemId(pocketId, i));
-            subBuffer = sListBuffer1->subBuffers;
-            subBuffer[i].name = sListBuffer2->name[i];
+            GetItemNameFromPocket(sListBuffer2[i], GetBagItemId(pocketId, i));
+            subBuffer = sListBuffer1;
+            subBuffer[i].name = sListBuffer2[i];
             subBuffer[i].id = i;
         }
     }
     gMultiuseListMenuTemplate = sItemListMenu;
     gMultiuseListMenuTemplate.totalItems = gBagMenu->numItemStacks[pocketId];
-    gMultiuseListMenuTemplate.items = sListBuffer1->subBuffers;
+    gMultiuseListMenuTemplate.items = sListBuffer1;
     gMultiuseListMenuTemplate.maxShowed = gBagMenu->numShownItems[pocketId];
 }
 
@@ -1002,7 +999,7 @@ static void BagMenu_ItemPrintCallback(u8 windowId, u32 itemIndex, u8 y)
         if (gBagMenu->toSwapPos != NOT_SWAPPING)
         {
             // Swapping items, draw cursor at original item's location
-            if (gBagMenu->toSwapPos == (u8)itemIndex)
+            if (gBagMenu->toSwapPos == (u16)itemIndex)
                 BagMenu_PrintCursorAtPos(y, COLORID_GRAY_CURSOR);
             else
                 BagMenu_PrintCursorAtPos(y, COLORID_NONE);
@@ -1212,7 +1209,7 @@ static void InitPocketScrollPositions(void)
         SetCursorScrollWithinListBounds(&gBagPosition.scrollPosition[i], &gBagPosition.cursorPosition[i], gBagMenu->numShownItems[i], gBagMenu->numItemStacks[i], MAX_ITEMS_SHOWN);
 }
 
-u8 GetItemListPosition(u8 pocketId)
+u16 GetItemListPosition(u8 pocketId)
 {
     return gBagPosition.scrollPosition[pocketId] + gBagPosition.cursorPosition[pocketId];
 }
@@ -2419,16 +2416,14 @@ static void PrepareBagForWallyTutorial(void)
     u32 i;
 
     sTempWallyBag = AllocZeroed(sizeof(*sTempWallyBag));
-    memcpy(sTempWallyBag->bagPocket_Items, LegendsStorageBag()->items, sizeof(LegendsStorageBag()->items));
-    memcpy(sTempWallyBag->bagPocket_PokeBalls, LegendsStorageBag()->pokeBalls, sizeof(LegendsStorageBag()->pokeBalls));
+    memcpy(&sTempWallyBag->bag, LegendsStorageBag(), sizeof(struct Bag));
     sTempWallyBag->pocket = gBagPosition.pocket;
     for (i = 0; i < POCKETS_COUNT; i++)
     {
         sTempWallyBag->cursorPosition[i] = gBagPosition.cursorPosition[i];
         sTempWallyBag->scrollPosition[i] = gBagPosition.scrollPosition[i];
     }
-    memset(LegendsStorageBag()->items, 0, sizeof(LegendsStorageBag()->items));
-    memset(LegendsStorageBag()->pokeBalls, 0, sizeof(LegendsStorageBag()->pokeBalls));
+    ClearBag();
     ResetBagScrollPositions();
 }
 
@@ -2436,8 +2431,8 @@ static void RestoreBagAfterWallyTutorial(void)
 {
     u32 i;
 
-    memcpy(LegendsStorageBag()->items, sTempWallyBag->bagPocket_Items, sizeof(sTempWallyBag->bagPocket_Items));
-    memcpy(LegendsStorageBag()->pokeBalls, sTempWallyBag->bagPocket_PokeBalls, sizeof(sTempWallyBag->bagPocket_PokeBalls));
+    memcpy(LegendsStorageBag(), &sTempWallyBag->bag, sizeof(struct Bag));
+    SetBagItemsPointers();
     gBagPosition.pocket = sTempWallyBag->pocket;
     for (i = 0; i < POCKETS_COUNT; i++)
     {
@@ -2930,8 +2925,7 @@ static inline __attribute__((always_inline)) void Merge(struct BagPocket *pocket
 // Source: https://en.wikipedia.org/wiki/Merge_sort#Bottom-up_implementation
 static void MergeSort(struct BagPocket *pocket, s32 (*comparator)(enum Pocket, struct ItemSlot, struct ItemSlot))
 {
-    struct ItemSlot *dummySlots = AllocZeroed(sizeof(struct ItemSlot) * pocket->capacity);
-
+    struct ItemSlot *dummySlots;
     u32 usedCapacity = 0;
     for (u32 i = 0; i < pocket->capacity; i++)
     {
@@ -2939,6 +2933,9 @@ static void MergeSort(struct BagPocket *pocket, s32 (*comparator)(enum Pocket, s
             usedCapacity = i + 1;
     }
 
+    if (usedCapacity < 2) return;
+    dummySlots = AllocZeroed(sizeof(struct ItemSlot) * usedCapacity);
+    if (!dummySlots) return;
     for (u32 width = 1; width < usedCapacity; width *= 2)
     {
         for (u32 i = 0; i < usedCapacity; i += 2 * width)
