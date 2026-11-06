@@ -56,7 +56,7 @@ void qa(void)
   b[5]=offsetof(struct SaveBlock1,roamer);b[6]=Hash(GetRoamer(0),sizeof(struct Roamer));b[7]=gSaveBlock3Ptr->eon.checksum;b[8]=GetRoamer(0)->active;b[9]=GetRoamer(1)->active;b[10]=gSaveBlock3Ptr->eon.unlocked;b[11]=gPartiesCount[B_TRAINER_PLAYER];
  }
  if(b[0]==4){
-  b[5]=GetRoamer(0)->active;b[6]=GetRoamer(1)->active;b[7]=gSaveBlock3Ptr->eon.unlocked;b[8]=gBattleOutcome;b[9]=gMain.inBattle;b[10]=ScriptContext_IsEnabled();b[11]=gPartiesCount[B_TRAINER_PLAYER];b[12]=GetRoamer(0)->species;b[13]=GetRoamer(1)->species;b[14]=Hash(GetRoamer(1),sizeof(struct Roamer));
+  b[5]=GetRoamer(0)->active;b[6]=GetRoamer(1)->active;b[7]=gSaveBlock3Ptr->eon.unlocked;b[8]=gBattleOutcome;b[9]=gMain.inBattle;b[10]=ScriptContext_IsEnabled();b[11]=gPartiesCount[B_TRAINER_PLAYER];b[12]=GetRoamer(0)->species;b[13]=GetRoamer(1)->species;b[14]=Hash(GetRoamer(1),sizeof(struct Roamer));b[15]=(GetBagItemId(POCKET_POKE_BALLS,0)<<16)|GetBagItemQuantity(POCKET_POKE_BALLS,0);
  }
  b[4]=1;gMain.callback2=(MainCallback)b[3];
 }
