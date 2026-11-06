@@ -1,5 +1,13 @@
 # Development handoff
 
+## v0.0.77 wiki refresh (6 November 2026)
+
+**Model: Codex | Reasoning: refresh player navigation and stale summaries against published quest source.**
+
+Owner requested the wiki update after publication. Updated nine articles: welcome, walkthrough index, Quest Log, implemented status, Wing Survey, Regigigas chapter, finale chapter, Wyrmtide and Darkrai. Corrected the source-verified65 quests (26 main/39 side), removed obsolete seasonal-preview claims and connected the optional Regigigas/report → Regidrago → Darkrai chain. Added Darkrai objectives, safe exits and retry/revisit guidance. Wiki revision1.9.1 retains earlier chapter provenance and all encounter/art source pins. No game, map, sprite, save, patch or version change.
+
+Internal article targets and quest totals were checked before committing. Required project/wiki/companion checks and gated Pages/live verification follow automatically; unchanged game evidence remains valid. This entry records implementation scope, not a claim that pending publication gates passed.
+
 ## v0.0.77 Darkrai published and live verified (6 November 2026)
 
 **Model: Codex | Reasoning: preserve approved local tile fixes and close the authorized release with bound production evidence.**
