@@ -1,0 +1,119 @@
+{
+  "review": "Wyrmtide interior water",
+  "date": "2026-11-05",
+  "model": "GPT-6.1 Sol (Codex)",
+  "approval": "water pending; prior Heart/shore/entrance carried",
+  "compiled_game_source": "733d93908d203f2ded6b8d182c98269232349472",
+  "source_guard_head": "6ff1dc82d5f24986ba3318dd69bfbb050d231260",
+  "native_workflow": {
+    "run_id": 42077224680,
+    "status": "completed",
+    "conclusion": "success"
+  },
+  "project_workflow": {
+    "run_id": 42077581017,
+    "status": "completed",
+    "conclusion": "success"
+  },
+  "artifact_recovery": {
+    "run_id": 42077310814,
+    "verified_archive_sha256": "sha256:680f69cbe1a36d55c6ce422faefeb399f9e30727161a6958dd14479d60600429",
+    "verified_png_sha256": true,
+    "workflow_removed_after_review": true
+  },
+  "artifact": {
+    "id": 13439348476,
+    "node_id": "MDg6QXJ0aWZhY3QxMzQzOTM0ODQ3Ng==",
+    "name": "legends-mgba-gameplay",
+    "size_in_bytes": 5334799,
+    "url": "https://api.github.com/repos/BabyCRTTV/pokeemerald-emerald-legends/actions/artifacts/13439348476",
+    "archive_download_url": "https://api.github.com/repos/BabyCRTTV/pokeemerald-emerald-legends/actions/artifacts/13439348476/zip",
+    "expired": false,
+    "digest": "sha256:680f69cbe1a36d55c6ce422faefeb399f9e30727161a6958dd14479d60600429",
+    "created_at": "2026-11-05T17:55:58Z",
+    "updated_at": "2026-11-05T17:55:58Z",
+    "expires_at": "2027-02-03T17:42:23Z",
+    "workflow_run": {
+      "id": 42077224680,
+      "repository_id": 1408159296,
+      "head_repository_id": 1408159296,
+      "head_branch": "codex/wyrmtide-isle",
+      "head_sha": "733d93908d203f2ded6b8d182c98269232349472"
+    }
+  },
+  "native": {
+    "version": "0.0.70 + unshipped Wyrmtide review",
+    "ROM_sha256": "9f55c66e31d51805c38ebf061a68dcec05ada621c852e024ea28aee57b9db490",
+    "emulator": "mGBA 0.10.2 native core",
+    "scenesOnly": false,
+    "passed": true,
+    "setup": "Controlled fresh native fixtures, actual map/script/battle engine and button input; private setup payload never distributed.",
+    "limits": "Not an authentic historical owner save, natural full-story playthrough, Release-emulator or Pizza Boy test.",
+    "log": "map=0/11 xy=11,9 flags=01 maker=0 battle=0 script=0 party=1 outcome=0\nmap=76/4 xy=14,21 flags=03 maker=0 battle=0 script=0 party=1 outcome=0\nmap=76/4 xy=16,11 flags=03 maker=0 battle=0 script=0 party=1 outcome=0\nmap=76/5 xy=13,9 flags=01 maker=0 battle=0 script=0 party=1 outcome=0\nmap=76/6 xy=6,11 flags=01 maker=0 battle=0 script=0 party=1 outcome=0\nmap=76/7 xy=9,11 flags=01 maker=0 battle=0 script=0 party=1 outcome=0\nmap=76/8 xy=9,11 flags=01 maker=0 battle=0 script=0 party=1 outcome=0\nmap=76/9 xy=11,8 flags=01 maker=0 battle=0 script=0 party=1 outcome=0\nmap=76/4 xy=16,12 flags=07 maker=0 battle=0 script=0 party=1 outcome=0\nmap=76/4 xy=23,15 flags=03 maker=0 battle=0 script=0 party=1 outcome=0\nmap=76/6 xy=6,11 flags=01 maker=0 battle=0 script=0 party=1 outcome=0\nmap=76/6 xy=11,8 flags=01 maker=0 battle=0 script=0 party=1 outcome=0\nmap=0/11 xy=8,11 flags=00 maker=0 battle=0 script=0 party=1 outcome=0\nmap=0/11 xy=9,11 flags=00 maker=0 battle=0 script=0 party=1 outcome=0\nmap=0/11 xy=8,11 flags=00 maker=0 battle=0 script=0 party=1 outcome=0\nmap=0/11 xy=9,11 flags=00 maker=0 battle=0 script=0 party=1 outcome=0\nmap=0/11 xy=8,11 flags=00 maker=0 battle=0 script=0 party=1 outcome=0\nmap=0/11 xy=9,11 flags=00 maker=0 battle=0 script=0 party=1 outcome=0\nmap=0/11 xy=8,11 flags=00 maker=0 battle=0 script=0 party=1 outcome=0\nmap=0/11 xy=9,11 flags=00 maker=0 battle=0 script=0 party=1 outcome=0\nmap=0/11 xy=8,11 flags=00 maker=0 battle=0 script=1 party=1 outcome=0\nmap=0/11 xy=8,11 flags=00 maker=0 battle=0 script=1 party=1 outcome=0\nmap=0/11 xy=8,11 flags=01 maker=0 battle=0 script=0 party=1 outcome=0\nPASS actual eight-step mystery call and one-time completion\nmap=0/11 xy=11,9 flags=01 maker=0 battle=0 script=0 party=1 outcome=0\nPASS old Dewford cached-template flash/load repair preserves native NPCs\nmap=76/4 xy=14,21 flags=03 maker=0 battle=0 script=0 party=1 outcome=0\nmap=76/4 xy=10,18 flags=03 maker=0 battle=0 script=0 party=1 outcome=0\nmap=76/4 xy=23,15 flags=03 maker=0 battle=0 script=0 party=1 outcome=0\nmap=76/4 xy=19,21 flags=03 maker=0 battle=0 script=0 party=1 outcome=0\nmap=76/4 xy=16,11 flags=03 maker=0 battle=0 script=0 party=1 outcome=0\nPASS actual shore-to-all-three-tablets-to-seal walking route\nmap=76/4 xy=16,11 flags=03 maker=0 battle=0 script=0 party=1 outcome=0\nmap=76/4 xy=16,11 flags=03 maker=0 battle=0 script=0 party=2 outcome=0\nmap=76/5 xy=8,4 flags=07 maker=1 battle=0 script=1 party=2 outcome=0\nPASS party/egg/fainted gate, actual opening and first stair entry, native flash flags\nPASS descent 1 route crosses 6 native stair cells\nmap=76/6 xy=8,3 flags=07 maker=1 battle=0 script=0 party=2 outcome=0\nPASS descent 2 route crosses 4 native stair cells\nmap=76/7 xy=8,3 flags=07 maker=1 battle=0 script=0 party=2 outcome=0\nPASS descent 3 route crosses 6 native stair cells\nmap=76/8 xy=8,3 flags=07 maker=1 battle=0 script=0 party=2 outcome=0\nPASS descent 4 route crosses 6 native stair cells\nmap=76/9 xy=11,17 flags=07 maker=1 battle=0 script=0 party=2 outcome=0\nmap=76/9 xy=11,5 flags=07 maker=1 battle=0 script=0 party=2 outcome=0\nPASS actual walking and reading of the final inscription\nmap=76/9 xy=11,8 flags=07 maker=1 battle=0 script=0 party=2 outcome=0\nmap=76/8 xy=11,20 flags=07 maker=1 battle=0 script=0 party=2 outcome=0\nmap=76/8 xy=11,20 flags=07 maker=1 battle=0 script=0 party=2 outcome=0\nmap=76/7 xy=11,20 flags=07 maker=1 battle=0 script=0 party=2 outcome=0\nmap=76/7 xy=13,19 flags=07 maker=1 battle=0 script=0 party=2 outcome=0\nmap=76/6 xy=11,20 flags=07 maker=1 battle=0 script=0 party=2 outcome=0\nmap=76/5 xy=11,20 flags=07 maker=1 battle=0 script=0 party=2 outcome=0\nmap=76/5 xy=13,19 flags=07 maker=1 battle=0 script=0 party=2 outcome=0\nmap=76/4 xy=16,11 flags=07 maker=1 battle=0 script=0 party=2 outcome=0\nPASS all four descent maps, both stair directions, both depth inscriptions and surface exit\nmap=76/5 xy=8,3 flags=07 maker=1 battle=0 script=0 party=2 outcome=0\nmap=76/4 xy=16,11 flags=07 maker=1 battle=0 script=0 party=2 outcome=0\nPASS actual open-door walking entry and native stair return\nmap=76/9 xy=11,8 flags=05 maker=0 battle=0 script=0 party=1 outcome=0\nmap=76/9 xy=11,8 flags=0d maker=0 battle=0 script=0 party=1 outcome=4\nmap=76/9 xy=11,8 flags=1d maker=0 battle=0 script=0 party=1 outcome=1\nmap=76/9 xy=11,8 flags=1d maker=0 battle=0 script=0 party=1 outcome=4\nPASS escape, defeat and actual same-sprite rematch\nmap=76/9 xy=11,8 flags=05 maker=0 battle=0 script=0 party=1 outcome=0\nmap=76/9 xy=11,8 flags=3d maker=0 battle=0 script=0 party=2 outcome=7\nPASS actual Regidrago capture, caught/calmed flags, party award and flash persistence\nmap=76/9 xy=11,8 flags=3d maker=0 battle=0 script=0 party=2 outcome=7\nmap=76/4 xy=14,21 flags=17 maker=0 battle=0 script=0 party=1 outcome=0\nmap=0/11 xy=11,10 flags=57 maker=0 battle=0 script=0 party=1 outcome=0\nPASS Briney report, quest completion and actual return voyage\n",
+    "images": {
+      "06-third-landing.png": "cf1cf9c7de0ca26a5934c33585941f2fca2151a0f68ed093cfec12b8b4ddb9be",
+      "24-walked-open-entrance.png": "11fa6f6d670f0c46d95f621abc65b9ab633783c76f141af4cd31a46934f513d6",
+      "04-stair-descent.png": "1be1fefa8a2a8673c0ea41b5a393aeb8fb32851c4649e1d40506598fc47ac331",
+      "10-departure-choice.png": "41c200302b7481d76a507962923a8dd5c14bd4ad23cbe60f6a7ed3efb562199d",
+      "03-ancient-seal.png": "a2c1d65648b12ecdffbc8a355b590a824eb54bcf3625a5e8d3c604adfd4e212c",
+      "07-fourth-landing.png": "0b4689e495699e4c2abe833734d46939e1b3952697954cb8a817fa20dce328cd",
+      "25-returned-through-entrance.png": "b5b86030027fc5b38bc8da2bd86bef437f7758a5062778c633ee63891c1673b7",
+      "14b-deepest-arrival.png": "972064ef14996c5531460d0d482fc80e66a801d0c922d52b35b90d10640f73b8",
+      "21-walked-ruined-court.png": "3adb6ac6db923dcec96e48f705c6b84aecad7ac86ee381263b7799de76a7532c",
+      "17-capture-resolved.png": "1f63195bbe5de655a77f9a90d842bcf1a8a216c72f7364d223dccdc4fa495354",
+      "26-tidal-pool.png": "c9ea1a84113bf3055886d02eeda2561c3b41172e22680ed584c030235a315633",
+      "11-actual-arrival.png": "49e2b98d945e1cc6fb82cc06e0d883f726bbc5efbdf954f795ef2d8d44f21092",
+      "05-second-landing.png": "34d43b3795c67e39dd020fdadc9082ecbd841f2757972f53609aa22286faaa15",
+      "19-maker-inscription.png": "441d31e7a485d303283d75441e849d66c2d4c27e214297a2059b4d4162034386",
+      "09-unknown-number-call.png": "38ff4c68df28219fc942ef75357d0ed62fe4377248d811c586e80494fafa59b7",
+      "01b-briney-voyage-menu.png": "4396ede62374bf8ccaa9d0c249999f21ff0b6084d6769f4a8c8845e910e1cf11",
+      "18-report-and-return.png": "06e0820d785ba1fa0bc2eb38799ff72e518631c9ac0ca543470b293353929bd7",
+      "14-first-descent-arrival.png": "2e6dc199876f15d2a2da4bbda0fda8ca8d1307df60508bd6243d1ba9cd45eed1",
+      "02-island-landing.png": "a4e8a9c348d8c4d371ea1257ae15a1f3e1d190ad3aaf6a8541ee3eab5dbe93d3",
+      "01-dewford-dock.png": "59e70d7ee6463f4fd28e227dbf46118ba025fd58653e3e40b228c03d817ef51a",
+      "13-maker-opens-seal.png": "09723da8f39e291ef6ee05a475733cfdd20d33fb88dec612dc9310d6af0713c4",
+      "23-open-headland-entrance.png": "fd56556118c64f54caf9e80c5b589f473485f37433f503b3172d9dd2fe2ce03a",
+      "22-walked-dragon-dais.png": "a48ae07c30ea76dfd15972420f72ec402bbc0c416a68c64f4f241fe3651bf69e",
+      "15-sleeping-dragon-prompt.png": "bb49cbae5ce02555011dcfdc6988ace3c4f331173fa70a569fe37c4eaf34a21e",
+      "15c-defeated-retry.png": "c447ce5667190b53f298bc4324aeb03574dd390015eedb8a5452d91edb5be8cb",
+      "15b-escaped-retry.png": "c447ce5667190b53f298bc4324aeb03574dd390015eedb8a5452d91edb5be8cb",
+      "12-sealed-without-maker.png": "69b2c8073a8b1c13bfed1cd68e3d4524e7d56d64ee336bb0a3b5feea7cd696de",
+      "27-tidal-pool-animation.png": "f0b9223bcc387c878fd5410a9009cc173957ccc9c1eb95c75076072997e2027c",
+      "08-slumbering-regidrago.png": "76e440d2c2ebe4de062576ed6dad0fc0ee4a621327120eea3fa7ae181f9c02bd",
+      "16-regidrago-battle.png": "8aae73a2a742fe8dc28472163145605cff50632f7ea03684afa5f927eaae76fa",
+      "20-maker-among-six.png": "7f154cdc9a6b31720c8db12b47d70b5abd6b971cb2585c43a592dccf3cc0867b"
+    }
+  },
+  "post_build_changes": [
+    {
+      "filename": ".github/workflows/wyrmtide-preview-recovery.yml",
+      "sha": "8fa2f9aa08eb584b2dd04732f68f630655f397f2",
+      "status": "modified"
+    },
+    {
+      "filename": "test/legends-wyrmtide.test.py",
+      "sha": "0448a58186cc9ad0f0d9de59911579c788fd757c",
+      "status": "modified"
+    }
+  ],
+  "protected_approved_heart_rgb_exact": true,
+  "changes": {
+    "map": "LegendsWyrmtide_Descent2 only",
+    "pool": {
+      "before": "5x5 x11..15,y6..10",
+      "after": "4x4 x12..15,y6..9"
+    },
+    "private_palette": 11,
+    "metatiles": "0x3a8..0x3b0",
+    "native_water_tiles": [
+      "0x1c6",
+      "0x1c7"
+    ],
+    "native_alternate_light_slots_preserved": [
+      5,
+      12
+    ],
+    "shared_pixel_art_changed": false
+  },
+  "publication": false
+}

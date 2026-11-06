@@ -1,0 +1,235 @@
+{
+  "native": "Cave",
+  "nativePixelsPreserved": true,
+  "animationReserved": [
+    928,
+    931
+  ],
+  "authoredTileRange": [
+    944,
+    1011
+  ],
+  "stairs": "Native Cave 0x204 tread/edge pixels with Cave 0x201 landings; one continuous four-riser flight, outer edges only",
+  "poolMetatiles": {
+    "618": 935,
+    "619": 934,
+    "620": 933,
+    "641": 930,
+    "648": 932,
+    "649": 928,
+    "650": 931,
+    "657": 929
+  },
+  "nativePondOutline": [
+    200,
+    201,
+    202,
+    208,
+    210,
+    216,
+    217,
+    218
+  ],
+  "ground": "Cave 0x201 replaces the native pond\u2019s grass matte",
+  "rim": "Existing Cave palette 6 dark/medium/light stone shades",
+  "water": "Original animated General water indices",
+  "interiorWater": {
+    "metatiles": [
+      936,
+      944
+    ],
+    "paletteBank": 11,
+    "paletteSource": "Exact existing Cave03 and General04 dark blues, four distinct native ripple shades",
+    "nativeRimSource": [
+      928,
+      935
+    ],
+    "pixelArtUnchanged": true,
+    "animation": "Unchanged General 432..461",
+    "nativeDayNightBanksPreserved": true
+  },
+  "stairFlights": {
+    "metatiles": [
+      945,
+      952
+    ],
+    "tileRange": [
+      976,
+      1007
+    ],
+    "palette": 6,
+    "toneMap": {
+      "1": 2,
+      "2": 3,
+      "7": 6
+    },
+    "treadRows": [
+      8,
+      23
+    ],
+    "floorLandingRows": [
+      [
+        0,
+        7
+      ],
+      [
+        25,
+        31
+      ]
+    ],
+    "ordinaryAttributes": 0,
+    "warpBottomAttribute": 97,
+    "collisionAndElevationUnchanged": true,
+    "source": "Native Cave 0x204 and 0x201",
+    "contactShadowRows": [
+      24,
+      24
+    ]
+  },
+  "terraceDepth": {
+    "paletteBanks": [
+      7,
+      8
+    ],
+    "variants": [
+      {
+        "id": 953,
+        "source": 520,
+        "role": "upper-rim"
+      },
+      {
+        "id": 954,
+        "source": 521,
+        "role": "upper-rim"
+      },
+      {
+        "id": 955,
+        "source": 522,
+        "role": "upper-rim"
+      },
+      {
+        "id": 956,
+        "source": 536,
+        "role": "vertical-face"
+      },
+      {
+        "id": 957,
+        "source": 537,
+        "role": "vertical-face"
+      },
+      {
+        "id": 958,
+        "source": 538,
+        "role": "vertical-face"
+      },
+      {
+        "id": 959,
+        "source": 513,
+        "role": "bank-contact-shadow-0x219"
+      },
+      {
+        "id": 960,
+        "source": 513,
+        "role": "bank-contact-shadow-0x21a"
+      }
+    ],
+    "contactTiles": [
+      1008,
+      1011
+    ],
+    "stairFootRow": 24,
+    "treadsAndGeometryUnchanged": true,
+    "rimHighlight": "Cave06 index2",
+    "faceShades": [
+      "Cave07 index7",
+      "MtEmberFRLG12 index12"
+    ],
+    "floorMatteUnchanged": true
+  },
+  "upperStairwell": {
+    "metatiles": [
+      961,
+      964
+    ],
+    "sourceTreads": [
+      945,
+      946,
+      947,
+      948
+    ],
+    "canopySource": 761,
+    "nativeEndCaps": [
+      762,
+      760
+    ],
+    "liveReturnColumns": [
+      8,
+      9
+    ],
+    "warpRow": 3,
+    "originalWarpIndicesPreserved": true,
+    "newAliasWarpIndex": 2,
+    "newPixelArt": false
+  },
+  "interiorPassages": {
+    "upperNativeAssembly": [
+      [
+        782,
+        968,
+        969,
+        767
+      ],
+      [
+        790,
+        965,
+        966,
+        775
+      ]
+    ],
+    "topLeft": [
+      7,
+      1
+    ],
+    "upperTreadSources": [
+      945,
+      946
+    ],
+    "shadowSource": 774,
+    "southStair": 967,
+    "southBehavior": 101,
+    "southTreadSource": 952,
+    "newPixelArt": false,
+    "extendedArchInnerColumn": {
+      "source": 766,
+      "x": 7,
+      "tiles": [
+        1012,
+        1013
+      ],
+      "metatiles": [
+        968,
+        969
+      ]
+    },
+    "southFootShadeSource": 518
+  },
+  "lowerExitCleanup": {
+    "metatiles": [
+      970,
+      971
+    ],
+    "flankSource": 514,
+    "floorSource": 513,
+    "innerWidthPixels": 16,
+    "leftStoneMirrored": false,
+    "treadsSource": 952,
+    "shadeSource": 518,
+    "centerWarp": 967,
+    "nativeSouthBehavior": 101,
+    "newPixelArt": false,
+    "newPalette": false,
+    "collisionAndWarpsUnchanged": true,
+    "completeNativeRocks": true,
+    "completeSilhouetteAndBase": true
+  }
+}

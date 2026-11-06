@@ -1,10 +1,10 @@
 {
-  "wikiDexRevision": "1.6.2",
-  "gameVersion": "0.0.75",
-  "sourceCommit": "c7f99550ac91b7b142bc9efd4692a0eb148b5008",
+  "wikiDexRevision": "1.6.3",
+  "gameVersion": "0.0.76",
+  "sourceCommit": "680732553661a9e062f3fd5a291cf3ac99485f97",
   "source": "src/data/wild_encounters.json, src/data/legends_seasonal_encounters.h and src/data/pokemon/species_info/gen_*_families.h",
   "methodNote": "Percentages are conditional encounter shares for the selected method and season, not chances per step. Native lure/ability modifiers, scripted encounters and gifts are separate.",
-  "coverageNote": "Active Emerald tables and shipped Legends Kanto/Mt. Ember expedition tables only. Unused upstream FRLG tables and nondefault Altering Cave rotations are excluded. Scripted legendary battles are documented in the walkthrough, not standard slots.",
+  "coverageNote": "Active Emerald tables, shipped Legends Kanto/Mt. Ember expedition tables and the four Wyrmtide descent rosters. Unused upstream FRLG tables and nondefault Altering Cave rotations are excluded. Scripted legendary battles are documented separately.",
   "species": [
     {
       "id": "BULBASAUR",
@@ -40925,14 +40925,286 @@
           ]
         }
       ]
+    },
+    {
+      "id": "MAP_LEGENDS_WYRMTIDE_DESCENT1",
+      "name": "Wyrmtide Isle — Descent 1",
+      "region": "Hoenn",
+      "methods": [
+        {
+          "id": "land",
+          "label": "Cave",
+          "encounterRate": 8,
+          "entries": [
+            {
+              "id": "GOLBAT",
+              "min": 48,
+              "max": 54,
+              "rate": 30
+            },
+            {
+              "id": "GRAVELER",
+              "min": 48,
+              "max": 54,
+              "rate": 30
+            },
+            {
+              "id": "SABLEYE",
+              "min": 48,
+              "max": 54,
+              "rate": 14
+            },
+            {
+              "id": "MAWILE",
+              "min": 48,
+              "max": 54,
+              "rate": 10
+            },
+            {
+              "id": "NOSEPASS",
+              "min": 48,
+              "max": 54,
+              "rate": 5
+            },
+            {
+              "id": "CARBINK",
+              "min": 48,
+              "max": 54,
+              "rate": 5
+            },
+            {
+              "id": "BAGON",
+              "min": 48,
+              "max": 54,
+              "rate": 4
+            },
+            {
+              "id": "GIBLE",
+              "min": 48,
+              "max": 54,
+              "rate": 1
+            },
+            {
+              "id": "ONIX",
+              "min": 48,
+              "max": 54,
+              "rate": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "MAP_LEGENDS_WYRMTIDE_DESCENT2",
+      "name": "Wyrmtide Isle — Descent 2",
+      "region": "Hoenn",
+      "methods": [
+        {
+          "id": "land",
+          "label": "Cave",
+          "encounterRate": 8,
+          "entries": [
+            {
+              "id": "GOLBAT",
+              "min": 50,
+              "max": 56,
+              "rate": 30
+            },
+            {
+              "id": "GRAVELER",
+              "min": 50,
+              "max": 56,
+              "rate": 30
+            },
+            {
+              "id": "SABLEYE",
+              "min": 50,
+              "max": 56,
+              "rate": 14
+            },
+            {
+              "id": "MAWILE",
+              "min": 50,
+              "max": 56,
+              "rate": 10
+            },
+            {
+              "id": "NOSEPASS",
+              "min": 50,
+              "max": 56,
+              "rate": 5
+            },
+            {
+              "id": "CARBINK",
+              "min": 50,
+              "max": 56,
+              "rate": 5
+            },
+            {
+              "id": "NOIBAT",
+              "min": 50,
+              "max": 56,
+              "rate": 4
+            },
+            {
+              "id": "AXEW",
+              "min": 50,
+              "max": 56,
+              "rate": 1
+            },
+            {
+              "id": "ONIX",
+              "min": 50,
+              "max": 56,
+              "rate": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "MAP_LEGENDS_WYRMTIDE_DESCENT3",
+      "name": "Wyrmtide Isle — Descent 3",
+      "region": "Hoenn",
+      "methods": [
+        {
+          "id": "land",
+          "label": "Cave",
+          "encounterRate": 8,
+          "entries": [
+            {
+              "id": "GOLBAT",
+              "min": 53,
+              "max": 59,
+              "rate": 30
+            },
+            {
+              "id": "GRAVELER",
+              "min": 53,
+              "max": 59,
+              "rate": 30
+            },
+            {
+              "id": "SABLEYE",
+              "min": 53,
+              "max": 59,
+              "rate": 14
+            },
+            {
+              "id": "MAWILE",
+              "min": 53,
+              "max": 59,
+              "rate": 10
+            },
+            {
+              "id": "NOSEPASS",
+              "min": 53,
+              "max": 59,
+              "rate": 5
+            },
+            {
+              "id": "CARBINK",
+              "min": 53,
+              "max": 59,
+              "rate": 5
+            },
+            {
+              "id": "DRUDDIGON",
+              "min": 53,
+              "max": 59,
+              "rate": 4
+            },
+            {
+              "id": "DEINO",
+              "min": 53,
+              "max": 59,
+              "rate": 1
+            },
+            {
+              "id": "ONIX",
+              "min": 53,
+              "max": 59,
+              "rate": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "MAP_LEGENDS_WYRMTIDE_DESCENT4",
+      "name": "Wyrmtide Isle — Descent 4",
+      "region": "Hoenn",
+      "methods": [
+        {
+          "id": "land",
+          "label": "Cave",
+          "encounterRate": 8,
+          "entries": [
+            {
+              "id": "GOLBAT",
+              "min": 55,
+              "max": 61,
+              "rate": 30
+            },
+            {
+              "id": "GRAVELER",
+              "min": 55,
+              "max": 61,
+              "rate": 30
+            },
+            {
+              "id": "SABLEYE",
+              "min": 55,
+              "max": 61,
+              "rate": 14
+            },
+            {
+              "id": "MAWILE",
+              "min": 55,
+              "max": 61,
+              "rate": 10
+            },
+            {
+              "id": "NOSEPASS",
+              "min": 55,
+              "max": 61,
+              "rate": 5
+            },
+            {
+              "id": "CARBINK",
+              "min": 55,
+              "max": 61,
+              "rate": 5
+            },
+            {
+              "id": "GABITE",
+              "min": 55,
+              "max": 61,
+              "rate": 4
+            },
+            {
+              "id": "FRAXURE",
+              "min": 55,
+              "max": 61,
+              "rate": 1
+            },
+            {
+              "id": "ONIX",
+              "min": 55,
+              "max": 61,
+              "rate": 1
+            }
+          ]
+        }
+      ]
     }
   ],
   "typeResolutionNote": "Source family-type macros resolved with P_UPDATED_TYPES=GEN_LATEST (Magnemite Steel, Togepi/Ralts/Cottonee Fairy).",
-  "lastManualReview": "2026-10-17",
+  "lastManualReview": "2026-11-05",
   "seasonalStatus": "published",
   "seasonalSource": {
-    "baseGameVersion": "0.0.74",
-    "baseCommit": "c7f99550ac91b7b142bc9efd4692a0eb148b5008",
+    "baseGameVersion": "0.0.76",
+    "baseCommit": "680732553661a9e062f3fd5a291cf3ac99485f97",
     "headerSha256": "31cb7eb17b591b63c6db7ce4c05015e9f0675d5e11d55b36647920f7861df094",
     "note": "Read from pinned game source."
   },

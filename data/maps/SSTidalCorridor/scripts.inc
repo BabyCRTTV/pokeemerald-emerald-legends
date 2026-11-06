@@ -80,6 +80,7 @@ SSTidalRooms_EventScript_ProgessCruiseAfterBed::
 	return
 
 SSTidalCorridor_EventScript_Briney::
+	goto_if_set FLAG_LEGENDS_WYRMTIDE_CALL, Wyrmtide_ShipReminder
 	msgbox SSTidalCorridor_Text_BrineyWelcomeAboard, MSGBOX_NPC
 	end
 

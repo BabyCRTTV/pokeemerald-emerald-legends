@@ -1133,6 +1133,16 @@ struct MultichoiceListStruct
     u8 count;
 };
 
+static const struct MenuAction sLegendsWyrmtideExpedition[] = {
+    {COMPOUND_STRING("WYRMTIDE ISLE")},
+    {COMPOUND_STRING("CANCEL")},
+};
+static const struct MenuAction sLegendsWyrmtide[] = {
+    {COMPOUND_STRING("WYRMTIDE ISLE")},
+    {COMPOUND_STRING("NORMAL ROUTES")},
+    {COMPOUND_STRING("CANCEL")},
+};
+
 static const struct MenuAction sLegendsClockModes[] = {
     {COMPOUND_STRING("REAL TIME")},
     {COMPOUND_STRING("MANUAL")},
@@ -1312,6 +1322,8 @@ static const struct MultichoiceListStruct sMultichoiceLists[] =
     [MULTI_GAME_CORNER_TMPRIZES]           = MULTICHOICE(sMultichoiceList_GameCornerTMPrizes),
     [MULTI_GAME_CORNER_BATTLE_ITEM_PRIZES] = MULTICHOICE(sMultichoiceList_GameCornerBattleItemPrizes),
     [MULTI_DEPT_STORE_ELEVATOR]            = MULTICHOICE(sMultichoiceList_DeptStoreElevator),
+    [MULTI_LEGENDS_WYRMTIDE_EXPEDITION] = MULTICHOICE(sLegendsWyrmtideExpedition),
+    [MULTI_LEGENDS_WYRMTIDE] = MULTICHOICE(sLegendsWyrmtide),
     [MULTI_LEGENDS_CLOCK_MODE] = MULTICHOICE(sLegendsClockModes),
     [MULTI_LEGENDS_BIRCH_MAIN] = MULTICHOICE(sLegendsBirchMain),
     [MULTI_LEGENDS_BIRCH_REQUESTS] = MULTICHOICE(sLegendsBirchRequests),

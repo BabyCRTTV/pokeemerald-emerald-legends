@@ -1,0 +1,49 @@
+{
+  "baseline": "792873f194ceea0d56caed20720538c822ca96a0",
+  "inputBlobs": {
+    "data/tilesets/legends_wyrmtide/tiles.png": "974fdd13c0df76cf32c1a0216781c64bb02e5e0c",
+    "data/tilesets/legends_wyrmtide/metatiles.bin": "cabf042f9e0257ca9a4b2071da77fb1008725506",
+    "data/tilesets/legends_wyrmtide/metatile_attributes.bin": "b75fe92328b3ca153f5f27ed7ea46bff7bdb51a1",
+    "data/layouts/LegendsWyrmtide_Descent1/map.bin": "70b1544cacbd9c5228c827552ab6506c13d13507",
+    "data/layouts/LegendsWyrmtide_Descent2/map.bin": "a9232435ae93c63f78e37529ddcb679c26219714",
+    "data/layouts/LegendsWyrmtide_Descent3/map.bin": "43bc7204ab7b9404499bd8dd7a4cbc930e51ce9a",
+    "data/layouts/LegendsWyrmtide_Descent4/map.bin": "ae598d86b5b7538ab845e34ad3f8126a102a341c",
+    "data/tilesets/secondary/cave/tiles.png": "cd9a8370190b695bfdef79ab3cc7b8acfc3a6a5a",
+    "data/tilesets/secondary/cave/metatiles.bin": "cc8b117e20f6477dfdeb92612730fb3136372523",
+    "data/layouts/LegendsWyrmtide_Heart/map.bin": "0a28989e98a1fe5aced3323344f9b4fbc222c523",
+    "data/layouts/LegendsWyrmtide_Isle/map.bin": "b6694bccdf7bf80cb60d1305d13ffb8451d6566a",
+    "data/tilesets/legends_wyrmtide/source.json": "9b4f52027f94f3672d72d0960e8b588d0e434411"
+  },
+  "changedCells": {
+    "Descent1": 12,
+    "Descent2": 8,
+    "Descent3": 12,
+    "Descent4": 16
+  },
+  "outputBlobs": {
+    "data/tilesets/legends_wyrmtide/tiles.png": "32c886b52c8851c15877e07ab894c5de51e90af9",
+    "data/tilesets/legends_wyrmtide/metatiles.bin": "d8d3fc1f7c4b6ac944e89b9ef35b79e325872781",
+    "data/tilesets/legends_wyrmtide/metatile_attributes.bin": "bde2db393e71e77082653725994e0de8e3ff541a",
+    "data/tilesets/legends_wyrmtide/source.json": "0be8af534fbb5c46929acd2b2b89409e0847acbf",
+    "data/layouts/LegendsWyrmtide_Descent1/map.bin": "1d7131ab9e66dbde19db4d75aa26943c3bfce0a1",
+    "data/layouts/LegendsWyrmtide_Descent2/map.bin": "961561388ac368bdee19f436fb5851644c0d09b9",
+    "data/layouts/LegendsWyrmtide_Descent3/map.bin": "b9add8edb8761ef87e5d2a15f379fa03af50dbac",
+    "data/layouts/LegendsWyrmtide_Descent4/map.bin": "4fd63fb375ded29790e99e53ace933e2870eaf69"
+  },
+  "outputSHA256": {
+    "data/tilesets/legends_wyrmtide/tiles.png": "f00782cea1774966f6f54b97d714495ffaedec08f557baef5e1b73d0874c570d",
+    "data/tilesets/legends_wyrmtide/metatiles.bin": "ff7d51eb538233014374b2abb384507e62fc6ae38f873cf96a71fe60b0327587",
+    "data/tilesets/legends_wyrmtide/metatile_attributes.bin": "979b49fab77a83353d9f4a8f4ce5fd6a56aaf9818efa4eb201366a3eaf0324d0",
+    "data/tilesets/legends_wyrmtide/source.json": "08845b5117692d360cce6f7d200633e118987c599d71a97fb27fed4f6b9d19d2",
+    "data/layouts/LegendsWyrmtide_Descent1/map.bin": "14d8137a08e08bebc8b18e9879615c39c2cf31e2052b247a4fa1f058ba519e78",
+    "data/layouts/LegendsWyrmtide_Descent2/map.bin": "5f666cd0ddec681fbbc9ecef6048fadd4162fef211d1ff7c3deb2b7ea6f61a54",
+    "data/layouts/LegendsWyrmtide_Descent3/map.bin": "19ea2d240a855708e30070c2350bbf1d715f4bd1e2ba0eb204fe0fcfd6790e9c",
+    "data/layouts/LegendsWyrmtide_Descent4/map.bin": "80c9d13e744edc603c6b1fd0affe0aa122fafc03a5b443ece35f89ce1d175b4f"
+  },
+  "protectedMaps": [
+    "Heart",
+    "Isle"
+  ],
+  "collisionAndElevationExact": true,
+  "authoring_run": 42085568133
+}

@@ -1,0 +1,221 @@
+{
+  "review": "Wyrmtide continuous stone stairs",
+  "date": "2026-11-05",
+  "model": "GPT-6.1 Sol (Codex)",
+  "approval": "stair visuals pending; prior Heart/shore/entrance carried",
+  "baseline": "792873f194ceea0d56caed20720538c822ca96a0",
+  "compiledGameSource": "09452e99120eae4ea691dba3e32f248ea9a1f1e8",
+  "guardHead": "4364c3febeca0cb1a7592425b9c96f87fa7753e7",
+  "nativeWorkflow": {
+    "id": 42086012859,
+    "conclusion": "success",
+    "DebugBuild": true,
+    "ReleaseBuild": true,
+    "fullDebugWyrmtide": true,
+    "existingDebugAndReleaseContinueSuites": true
+  },
+  "projectWorkflows": [
+    {
+      "id": 42086328363,
+      "head": "4364c3febeca0cb1a7592425b9c96f87fa7753e7",
+      "conclusion": "success"
+    },
+    {
+      "id": 42087907305,
+      "head": "36c0013def7ab86abc217572ea4f399d17fa2449",
+      "conclusion": "success"
+    }
+  ],
+  "captureRecovery": {
+    "id": 42087907321,
+    "conclusion": "success",
+    "archiveDigestVerified": true,
+    "derivedScalingVerified": true
+  },
+  "artifact": {
+    "id": 13443468729,
+    "node_id": "MDg6QXJ0aWZhY3QxMzQ0MzQ2ODcyOQ==",
+    "name": "legends-mgba-gameplay",
+    "size_in_bytes": 6847352,
+    "url": "https://api.github.com/repos/BabyCRTTV/pokeemerald-emerald-legends/actions/artifacts/13443468729",
+    "archive_download_url": "https://api.github.com/repos/BabyCRTTV/pokeemerald-emerald-legends/actions/artifacts/13443468729/zip",
+    "expired": false,
+    "digest": "sha256:7b8413d5b054d82ed0420526b6ed0d9cc5ba4d1a126660e63c1fec606bc8f09d",
+    "created_at": "2026-11-05T18:51:37Z",
+    "updated_at": "2026-11-05T18:51:37Z",
+    "expires_at": "2027-02-03T18:37:26Z",
+    "workflow_run": {
+      "id": 42086012859,
+      "repository_id": 1408159296,
+      "head_repository_id": 1408159296,
+      "head_branch": "codex/wyrmtide-isle",
+      "head_sha": "09452e99120eae4ea691dba3e32f248ea9a1f1e8"
+    }
+  },
+  "native": {
+    "version": "0.0.70 + unshipped Wyrmtide review",
+    "ROM_sha256": "3182d668c21272e032d919bf473a2a70b4758370153e4255c2bc7aa99ab3e219",
+    "emulator": "mGBA 0.10.2 native core",
+    "protectedHeartRGBExact": true,
+    "scenesOnly": false,
+    "passed": true,
+    "setup": "Controlled fresh native fixtures, actual map/script/battle engine and button input; private setup payload never distributed.",
+    "limits": "Not an authentic historical owner save, natural full-story playthrough, Release-emulator or Pizza Boy test.",
+    "log": "map=0/11 xy=11,9 flags=01 maker=0 battle=0 script=0 party=1 outcome=0\nmap=76/4 xy=14,21 flags=03 maker=0 battle=0 script=0 party=1 outcome=0\nmap=76/4 xy=16,11 flags=03 maker=0 battle=0 script=0 party=1 outcome=0\nmap=76/5 xy=13,9 flags=01 maker=0 battle=0 script=0 party=1 outcome=0\nmap=76/6 xy=6,11 flags=01 maker=0 battle=0 script=0 party=1 outcome=0\nmap=76/7 xy=9,11 flags=01 maker=0 battle=0 script=0 party=1 outcome=0\nmap=76/8 xy=9,11 flags=01 maker=0 battle=0 script=0 party=1 outcome=0\nmap=76/9 xy=11,8 flags=01 maker=0 battle=0 script=0 party=1 outcome=0\nmap=76/4 xy=16,12 flags=07 maker=0 battle=0 script=0 party=1 outcome=0\nmap=76/4 xy=23,15 flags=03 maker=0 battle=0 script=0 party=1 outcome=0\nmap=76/6 xy=6,11 flags=01 maker=0 battle=0 script=0 party=1 outcome=0\nmap=76/6 xy=11,8 flags=01 maker=0 battle=0 script=0 party=1 outcome=0\nmap=76/6 xy=6,11 flags=01 maker=0 battle=0 script=0 party=1 outcome=0\nmap=76/6 xy=6,12 flags=01 maker=0 battle=0 script=0 party=1 outcome=0\nmap=76/8 xy=9,11 flags=01 maker=0 battle=0 script=0 party=1 outcome=0\nmap=76/8 xy=9,10 flags=01 maker=0 battle=0 script=0 party=1 outcome=0\nmap=0/11 xy=8,11 flags=00 maker=0 battle=0 script=0 party=1 outcome=0\nmap=0/11 xy=9,11 flags=00 maker=0 battle=0 script=0 party=1 outcome=0\nmap=0/11 xy=8,11 flags=00 maker=0 battle=0 script=0 party=1 outcome=0\nmap=0/11 xy=9,11 flags=00 maker=0 battle=0 script=0 party=1 outcome=0\nmap=0/11 xy=8,11 flags=00 maker=0 battle=0 script=0 party=1 outcome=0\nmap=0/11 xy=9,11 flags=00 maker=0 battle=0 script=0 party=1 outcome=0\nmap=0/11 xy=8,11 flags=00 maker=0 battle=0 script=0 party=1 outcome=0\nmap=0/11 xy=9,11 flags=00 maker=0 battle=0 script=0 party=1 outcome=0\nmap=0/11 xy=8,11 flags=00 maker=0 battle=0 script=1 party=1 outcome=0\nmap=0/11 xy=8,11 flags=00 maker=0 battle=0 script=1 party=1 outcome=0\nmap=0/11 xy=8,11 flags=01 maker=0 battle=0 script=0 party=1 outcome=0\nPASS actual eight-step mystery call and one-time completion\nmap=0/11 xy=11,9 flags=01 maker=0 battle=0 script=0 party=1 outcome=0\nPASS old Dewford cached-template flash/load repair preserves native NPCs\nmap=76/4 xy=14,21 flags=03 maker=0 battle=0 script=0 party=1 outcome=0\nmap=76/4 xy=10,18 flags=03 maker=0 battle=0 script=0 party=1 outcome=0\nmap=76/4 xy=23,15 flags=03 maker=0 battle=0 script=0 party=1 outcome=0\nmap=76/4 xy=19,21 flags=03 maker=0 battle=0 script=0 party=1 outcome=0\nmap=76/4 xy=16,11 flags=03 maker=0 battle=0 script=0 party=1 outcome=0\nPASS actual shore-to-all-three-tablets-to-seal walking route\nmap=76/4 xy=16,11 flags=03 maker=0 battle=0 script=0 party=1 outcome=0\nmap=76/4 xy=16,11 flags=03 maker=0 battle=0 script=0 party=2 outcome=0\nmap=76/5 xy=8,4 flags=07 maker=1 battle=0 script=1 party=2 outcome=0\nPASS party/egg/fainted gate, actual opening and first stair entry, native flash flags\nPASS descent 1 route crosses 6 native stair cells\nmap=76/6 xy=8,3 flags=07 maker=1 battle=0 script=0 party=2 outcome=0\nPASS descent 2 route crosses 4 native stair cells\nmap=76/7 xy=8,3 flags=07 maker=1 battle=0 script=0 party=2 outcome=0\nPASS descent 3 route crosses 6 native stair cells\nmap=76/8 xy=8,3 flags=07 maker=1 battle=0 script=0 party=2 outcome=0\nPASS descent 4 route crosses 6 native stair cells\nmap=76/9 xy=11,17 flags=07 maker=1 battle=0 script=0 party=2 outcome=0\nmap=76/9 xy=11,5 flags=07 maker=1 battle=0 script=0 party=2 outcome=0\nPASS actual walking and reading of the final inscription\nmap=76/9 xy=11,8 flags=07 maker=1 battle=0 script=0 party=2 outcome=0\nmap=76/8 xy=11,20 flags=07 maker=1 battle=0 script=0 party=2 outcome=0\nmap=76/8 xy=11,20 flags=07 maker=1 battle=0 script=0 party=2 outcome=0\nmap=76/7 xy=11,20 flags=07 maker=1 battle=0 script=0 party=2 outcome=0\nmap=76/7 xy=13,19 flags=07 maker=1 battle=0 script=0 party=2 outcome=0\nmap=76/6 xy=11,20 flags=07 maker=1 battle=0 script=0 party=2 outcome=0\nmap=76/5 xy=11,20 flags=07 maker=1 battle=0 script=0 party=2 outcome=0\nmap=76/5 xy=13,19 flags=07 maker=1 battle=0 script=0 party=2 outcome=0\nmap=76/4 xy=16,11 flags=07 maker=1 battle=0 script=0 party=2 outcome=0\nPASS all four descent maps, both stair directions, both depth inscriptions and surface exit\nmap=76/5 xy=8,3 flags=07 maker=1 battle=0 script=0 party=2 outcome=0\nmap=76/4 xy=16,11 flags=07 maker=1 battle=0 script=0 party=2 outcome=0\nPASS actual open-door walking entry and native stair return\nmap=76/9 xy=11,8 flags=05 maker=0 battle=0 script=0 party=1 outcome=0\nmap=76/9 xy=11,8 flags=0d maker=0 battle=0 script=0 party=1 outcome=4\nmap=76/9 xy=11,8 flags=1d maker=0 battle=0 script=0 party=1 outcome=1\nmap=76/9 xy=11,8 flags=1d maker=0 battle=0 script=0 party=1 outcome=4\nPASS escape, defeat and actual same-sprite rematch\nmap=76/9 xy=11,8 flags=05 maker=0 battle=0 script=0 party=1 outcome=0\nmap=76/9 xy=11,8 flags=3d maker=0 battle=0 script=0 party=2 outcome=7\nPASS actual Regidrago capture, caught/calmed flags, party award and flash persistence\nmap=76/9 xy=11,8 flags=3d maker=0 battle=0 script=0 party=2 outcome=7\nmap=76/4 xy=14,21 flags=17 maker=0 battle=0 script=0 party=1 outcome=0\nmap=0/11 xy=11,10 flags=57 maker=0 battle=0 script=0 party=1 outcome=0\nPASS Briney report, quest completion and actual return voyage\n",
+    "images": {
+      "29-wide-stone-flight.png": "3fd4e58a801aeb4dec21ba39eb82ba4bbd2253f60a964f6d19e67debd4212bc9",
+      "28-stone-stair-flight.png": "af2544055baa5b59448ed589af534c31ba5d3ffcf6fbcded5b881eb5c58ca92d",
+      "06-third-landing.png": "30fb704501c6d86a7e123c1e549c171f147bc26203145f7c730e157555a084bf",
+      "24-walked-open-entrance.png": "3ccd210cdd9760932b0b885b2a45a04bf1c5fd447ffe9d0b891b2d3309d81534",
+      "04-stair-descent.png": "75b3e632d266c08b88ff6589ca5529f94a5c7feeca55a4c1d576ebf1049ab25c",
+      "10-departure-choice.png": "4bf3d5712053c874c7dbe19855632f197a2ee2fbad0fec74f6c124290be03d08",
+      "03-ancient-seal.png": "a2c1d65648b12ecdffbc8a355b590a824eb54bcf3625a5e8d3c604adfd4e212c",
+      "07-fourth-landing.png": "3b14c787e5cee09536d7943bcfa1fb91b5ff294d068f81fe5b2af5f95a4071ee",
+      "25-returned-through-entrance.png": "b5b86030027fc5b38bc8da2bd86bef437f7758a5062778c633ee63891c1673b7",
+      "14b-deepest-arrival.png": "972064ef14996c5531460d0d482fc80e66a801d0c922d52b35b90d10640f73b8",
+      "21-walked-ruined-court.png": "3adb6ac6db923dcec96e48f705c6b84aecad7ac86ee381263b7799de76a7532c",
+      "17-capture-resolved.png": "1f63195bbe5de655a77f9a90d842bcf1a8a216c72f7364d223dccdc4fa495354",
+      "26-tidal-pool.png": "623775a9cb7ff38e0baa0175420c856e932e2b77a4ce96c5bd2fc64cbdcc9e44",
+      "11-actual-arrival.png": "49e2b98d945e1cc6fb82cc06e0d883f726bbc5efbdf954f795ef2d8d44f21092",
+      "05-second-landing.png": "a7a4ee114420f6b6be16f625b89f4430579697ed84eb59fe59fbecaaa12c79cd",
+      "19-maker-inscription.png": "441d31e7a485d303283d75441e849d66c2d4c27e214297a2059b4d4162034386",
+      "09-unknown-number-call.png": "3beb490ec6d6712130a3b36c7e06f882a3379ee7a0ded11a75a29cb2dbfd23e4",
+      "01b-briney-voyage-menu.png": "265b2363401f9dd142ed48cecfd485479826b76c311ab4af612847d0691fd0e7",
+      "18-report-and-return.png": "e6bb94ce16e256a09c77e1e457ba61845759847a52af66d8687747a3c573bf6e",
+      "14-first-descent-arrival.png": "91c30d53c7afa9cd2afb2e1ee19b50e7a8e52a160f2e45f1dd04e6464190d704",
+      "02-island-landing.png": "a4e8a9c348d8c4d371ea1257ae15a1f3e1d190ad3aaf6a8541ee3eab5dbe93d3",
+      "01-dewford-dock.png": "00826f00f775c3eb0cac4a88db6decbb947f429a1d8e908f6c6795989e4b10f6",
+      "13-maker-opens-seal.png": "09723da8f39e291ef6ee05a475733cfdd20d33fb88dec612dc9310d6af0713c4",
+      "23-open-headland-entrance.png": "fd56556118c64f54caf9e80c5b589f473485f37433f503b3172d9dd2fe2ce03a",
+      "22-walked-dragon-dais.png": "a48ae07c30ea76dfd15972420f72ec402bbc0c416a68c64f4f241fe3651bf69e",
+      "15-sleeping-dragon-prompt.png": "bb49cbae5ce02555011dcfdc6988ace3c4f331173fa70a569fe37c4eaf34a21e",
+      "15c-defeated-retry.png": "c447ce5667190b53f298bc4324aeb03574dd390015eedb8a5452d91edb5be8cb",
+      "15b-escaped-retry.png": "c447ce5667190b53f298bc4324aeb03574dd390015eedb8a5452d91edb5be8cb",
+      "12-sealed-without-maker.png": "69b2c8073a8b1c13bfed1cd68e3d4524e7d56d64ee336bb0a3b5feea7cd696de",
+      "27-tidal-pool-animation.png": "8f0e4abf1f470ed265c4e92506cd5bd344510a984b164cf7d71f8f3d88f78920",
+      "08-slumbering-regidrago.png": "76e440d2c2ebe4de062576ed6dad0fc0ee4a621327120eea3fa7ae181f9c02bd",
+      "16-regidrago-battle.png": "8aae73a2a742fe8dc28472163145605cff50632f7ea03684afa5f927eaae76fa",
+      "20-maker-among-six.png": "7f154cdc9a6b31720c8db12b47d70b5abd6b971cb2585c43a592dccf3cc0867b"
+    }
+  },
+  "authoring": {
+    "baseline": "792873f194ceea0d56caed20720538c822ca96a0",
+    "inputBlobs": {
+      "data/tilesets/legends_wyrmtide/tiles.png": "974fdd13c0df76cf32c1a0216781c64bb02e5e0c",
+      "data/tilesets/legends_wyrmtide/metatiles.bin": "cabf042f9e0257ca9a4b2071da77fb1008725506",
+      "data/tilesets/legends_wyrmtide/metatile_attributes.bin": "b75fe92328b3ca153f5f27ed7ea46bff7bdb51a1",
+      "data/layouts/LegendsWyrmtide_Descent1/map.bin": "70b1544cacbd9c5228c827552ab6506c13d13507",
+      "data/layouts/LegendsWyrmtide_Descent2/map.bin": "a9232435ae93c63f78e37529ddcb679c26219714",
+      "data/layouts/LegendsWyrmtide_Descent3/map.bin": "43bc7204ab7b9404499bd8dd7a4cbc930e51ce9a",
+      "data/layouts/LegendsWyrmtide_Descent4/map.bin": "ae598d86b5b7538ab845e34ad3f8126a102a341c",
+      "data/tilesets/secondary/cave/tiles.png": "cd9a8370190b695bfdef79ab3cc7b8acfc3a6a5a",
+      "data/tilesets/secondary/cave/metatiles.bin": "cc8b117e20f6477dfdeb92612730fb3136372523",
+      "data/layouts/LegendsWyrmtide_Heart/map.bin": "0a28989e98a1fe5aced3323344f9b4fbc222c523",
+      "data/layouts/LegendsWyrmtide_Isle/map.bin": "b6694bccdf7bf80cb60d1305d13ffb8451d6566a",
+      "data/tilesets/legends_wyrmtide/source.json": "9b4f52027f94f3672d72d0960e8b588d0e434411"
+    },
+    "changedCells": {
+      "Descent1": 12,
+      "Descent2": 8,
+      "Descent3": 12,
+      "Descent4": 16
+    },
+    "outputBlobs": {
+      "data/tilesets/legends_wyrmtide/tiles.png": "32c886b52c8851c15877e07ab894c5de51e90af9",
+      "data/tilesets/legends_wyrmtide/metatiles.bin": "d8d3fc1f7c4b6ac944e89b9ef35b79e325872781",
+      "data/tilesets/legends_wyrmtide/metatile_attributes.bin": "bde2db393e71e77082653725994e0de8e3ff541a",
+      "data/tilesets/legends_wyrmtide/source.json": "0be8af534fbb5c46929acd2b2b89409e0847acbf",
+      "data/layouts/LegendsWyrmtide_Descent1/map.bin": "1d7131ab9e66dbde19db4d75aa26943c3bfce0a1",
+      "data/layouts/LegendsWyrmtide_Descent2/map.bin": "961561388ac368bdee19f436fb5851644c0d09b9",
+      "data/layouts/LegendsWyrmtide_Descent3/map.bin": "b9add8edb8761ef87e5d2a15f379fa03af50dbac",
+      "data/layouts/LegendsWyrmtide_Descent4/map.bin": "4fd63fb375ded29790e99e53ace933e2870eaf69"
+    },
+    "outputSHA256": {
+      "data/tilesets/legends_wyrmtide/tiles.png": "f00782cea1774966f6f54b97d714495ffaedec08f557baef5e1b73d0874c570d",
+      "data/tilesets/legends_wyrmtide/metatiles.bin": "ff7d51eb538233014374b2abb384507e62fc6ae38f873cf96a71fe60b0327587",
+      "data/tilesets/legends_wyrmtide/metatile_attributes.bin": "979b49fab77a83353d9f4a8f4ce5fd6a56aaf9818efa4eb201366a3eaf0324d0",
+      "data/tilesets/legends_wyrmtide/source.json": "08845b5117692d360cce6f7d200633e118987c599d71a97fb27fed4f6b9d19d2",
+      "data/layouts/LegendsWyrmtide_Descent1/map.bin": "14d8137a08e08bebc8b18e9879615c39c2cf31e2052b247a4fa1f058ba519e78",
+      "data/layouts/LegendsWyrmtide_Descent2/map.bin": "5f666cd0ddec681fbbc9ecef6048fadd4162fef211d1ff7c3deb2b7ea6f61a54",
+      "data/layouts/LegendsWyrmtide_Descent3/map.bin": "19ea2d240a855708e30070c2350bbf1d715f4bd1e2ba0eb204fe0fcfd6790e9c",
+      "data/layouts/LegendsWyrmtide_Descent4/map.bin": "80c9d13e744edc603c6b1fd0affe0aa122fafc03a5b443ece35f89ce1d175b4f"
+    },
+    "protectedMaps": [
+      "Heart",
+      "Isle"
+    ],
+    "collisionAndElevationExact": true,
+    "run": 42085568133
+  },
+  "independentMapAudit": [
+    {
+      "map": "Descent1",
+      "collisionAndElevationExact": true,
+      "onlyExistingStairCellsChanged": true,
+      "changes": 12
+    },
+    {
+      "map": "Descent2",
+      "collisionAndElevationExact": true,
+      "onlyExistingStairCellsChanged": true,
+      "changes": 8
+    },
+    {
+      "map": "Descent3",
+      "collisionAndElevationExact": true,
+      "onlyExistingStairCellsChanged": true,
+      "changes": 12
+    },
+    {
+      "map": "Descent4",
+      "collisionAndElevationExact": true,
+      "onlyExistingStairCellsChanged": true,
+      "changes": 16
+    }
+  ],
+  "independentArtAudit": {
+    "atlasSizeExact": [
+      128,
+      256
+    ],
+    "oldIndexedPixelsExactThroughTile": 975,
+    "olderMetatileDefinitionsExact": 433,
+    "olderMetatileAttributesExact": 433,
+    "existingWaterRimAndAnimationPixelsExact": true
+  },
+  "scope": {
+    "onlyEightAuthorizedDataFiles": true,
+    "sharedAssetsChanged": false,
+    "scriptsChanged": false,
+    "savedDataChanged": false,
+    "waterPaletteChanged": false,
+    "heartOrIsleLayoutChanged": false
+  },
+  "imageFiles": {
+    "Stone-Stairs.png": "3a1188fa2aca0c87236e45e9cc38d2ac7ecd921c92c01a69312d32f61bf89a17",
+    "Wide-Stairs.png": "e7653190165b8d80e3d2f6b5532faf53acbf61a96d5cfd1d98c267bb4ae6886d",
+    "Stairs-Before-After.png": "f38e3a382ee7ca8f31a4a801d34038500a7c58a06ba80cc7900b83b0121ef8c7",
+    "04-stair-descent.png": "75b3e632d266c08b88ff6589ca5529f94a5c7feeca55a4c1d576ebf1049ab25c",
+    "05-second-landing.png": "a7a4ee114420f6b6be16f625b89f4430579697ed84eb59fe59fbecaaa12c79cd",
+    "06-third-landing.png": "30fb704501c6d86a7e123c1e549c171f147bc26203145f7c730e157555a084bf",
+    "07-fourth-landing.png": "3b14c787e5cee09536d7943bcfa1fb91b5ff294d068f81fe5b2af5f95a4071ee",
+    "08-slumbering-regidrago.png": "76e440d2c2ebe4de062576ed6dad0fc0ee4a621327120eea3fa7ae181f9c02bd",
+    "28-stone-stair-flight.png": "af2544055baa5b59448ed589af534c31ba5d3ffcf6fbcded5b881eb5c58ca92d",
+    "29-wide-stone-flight.png": "3fd4e58a801aeb4dec21ba39eb82ba4bbd2253f60a964f6d19e67debd4212bc9"
+  },
+  "initialGuardCorrection": "Replaced an incorrect two-shade-per-row assumption with checks against the actual native tread gradient; game/art unchanged.",
+  "publication": false,
+  "limits": "Not an authentic historical owner save, natural full-story playthrough, Release-emulator or Pizza Boy test. Old branch still requires reconciliation with current master and current independently applied BPS gates.",
+  "postBuildChanges": [
+    {
+      "path": ".github/workflows/wyrmtide-stair-captures.yml",
+      "sha": "4650b4abe0c155db0cf5422a0ef0c84ec6d204a1",
+      "status": "added"
+    },
+    {
+      "path": "test/legends-wyrmtide.test.py",
+      "sha": "8ef443629d3b39048ac89ab74ffa280a1ae24689",
+      "status": "modified"
+    }
+  ]
+}

@@ -1,0 +1,119 @@
+{
+  "model": "GPT-6 (Codex)",
+  "version": "0.0.76",
+  "authorization": "Owner approved all visuals and explicitly requested inclusion in the public release.",
+  "baselineMaster": "c09ff3fc2d09503f5b3558587fd0eacd0ef46489",
+  "approvedFeature": "050cb9296a163a535eebca0f10202df84501bb44",
+  "status": "Candidate metadata repaired locally; current production checks and full wiki reader pass; awaiting refreshed candidate gates.",
+  "impact": [
+    "Append-only Wyrmtide map/layout/section/quest/menu IDs and audited flags0x493\u20130x499",
+    "Existing Weather Institute/Regigigas call gate, NPC priority and Dewford legacy-cache repair",
+    "Non-egg party Regigigas gate and permanent seal, both exit lanes and return travel",
+    "Lv75 Regidrago retry/capture/report paths and cave encounters",
+    "Current v0.0.75 Eon save extension, seasonal encounters, wardrobe, art and private-build/site gates preserved"
+  ],
+  "saveImpact": "No new serialized layout, native variable, sector or codec changes; original published IDs retain positions. Existing v0.0.75 compatibility readers and Eon extension preserved. Focused historical Dewford cache repair and new-flag persistence included; authentic historical-save matrix remains incomplete.",
+  "localChecks": [
+    "Wyrmtide production-C/native-art/ID/topology/encounter/lore/whole-rock guards passed",
+    "13 shared-build and16 site-promotion regressions passed",
+    "Approved Wyrmtide layouts/tileset/Regidrago sources byte-exact against approved feature"
+  ],
+  "setupDiagnosis": {
+    "oldRun": 42125621400,
+    "job": 127588921082,
+    "cause": "Azure Ubuntu mirror stalled the57.5MB compiler and49.2MB newlib downloads until35-minute cancellation",
+    "repair": "Same standard compiler packages from official Ubuntu HTTPS archive, bounded network timeouts; no game gate disabled"
+  },
+  "next": "Push coherent metadata correction, inspect refreshed candidate/native gates, merge PR89 and verify production publication.",
+  "immutableGameSource": "680732553661a9e062f3fd5a291cf3ac99485f97",
+  "sourceCheckpoint": "codex/wyrmtide-v0.0.76-source",
+  "localHostChecks": {
+    "passed": true,
+    "count": 59,
+    "names": [
+      "Exercise shared build provenance and publication guards",
+      "Exercise isolated seasonal QA workers and exact coverage",
+      "Exercise release verification regressions",
+      "Exercise browser patcher regression tests",
+      "Exercise seasonal engine regression tests",
+      "Exercise hidden grotto review geometry and preserved map IDs",
+      "Exercise dual Eon progression and save compatibility",
+      "Exercise persistent grotto encounters and cooldowns",
+      "Exercise seasonal battle scenes and Kanto foliage",
+      "Exercise dynamic weather regression tests",
+      "Exercise starter and rival regression tests",
+      "Exercise Options navigation regression tests",
+      "Exercise Options text regression tests",
+      "Exercise New Game Options regression tests",
+      "Exercise native follower regression tests",
+      "Exercise upstream held-item integration",
+      "Exercise first-item history and compatible save sectors",
+      "Exercise Wyrmtide progression, native flag allocation and stair topology",
+      "Exercise quest progression and achievement claims",
+      "Achievement notice lifecycle",
+      "Journal selection rendering and input",
+      "Exercise lossless expanded storage codec",
+      "Exercise pause panel regression tests",
+      "Exercise Adventure Log persistence, days and milestones",
+      "Exercise Adventure Log notebook and filters",
+      "Exercise scrolling pause menu",
+      "Exercise real/manual clocks and saved fallback",
+      "Exercise DexNav encounter proximity and approach rules",
+      "Exercise player appearance regression tests",
+      "Exercise visual polish regression tests",
+      "Verify player appearance art",
+      "Verify DexNav icon geometry against the native asset catalogue",
+      "Verify native window frame assets and selection",
+      "Verify native hair / coat 4bpp layer geometry",
+      "Verify footwear compositor and protected sprite colors",
+      "Verify v0.0.46 artwork and isolated smile/body colors",
+      "Verify approved Side Part head and native animation frames",
+      "Verify approved front-face shading and unchanged other views",
+      "Verify approved parent skin tones and palette isolation",
+      "Exercise scrolling intro hairstyles",
+      "Bedroom colors, memories and safe floor decoration",
+      "Homecoming conversations, native priority and save-safe memory",
+      "Birch field request selection, abandonment and atomic rewards",
+      "Verify read-only Living Hoenn dialogue and story priorities",
+      "Exercise wardrobe navigation and access",
+      "Verify layered accessories and wardrobe furniture",
+      "Verify native costume assets and striped Sport shorts",
+      "Exercise Da Bug gift and species integration",
+      "Exercise Kanto invitation, ferry, welcome and map integration",
+      "Exercise empty Kanto foundation and Surf passage",
+      "Kanto challenge progression",
+      "Kanto Borrowed Voice progression and Trainer Card badges",
+      "Kanto Quiet Current and native wild levels",
+      "Three expeditions and the Hoenn weather intermission",
+      "Wing Survey finale and native Mew outcomes",
+      "Isolated outdoor night lights and native DNS blending",
+      "Region map browsing",
+      "Exercise prepared battle sheets and wardrobe refresh",
+      "Verify Legends project metadata"
+    ]
+  },
+  "wiki": {
+    "sourceCommit": "680732553661a9e062f3fd5a291cf3ac99485f97",
+    "wikiRevision": "1.8.0",
+    "dexRevision": "1.6.3",
+    "newCaveMaps": 4,
+    "seasonalTables": 136,
+    "allPreviousRostersPreserved": true,
+    "existingSpritePixelsRegenerated": false
+  },
+  "candidateChecks": {
+    "initialHead": "c92d0adf548509d1b950d39d3a6beef97909be00",
+    "android": {
+      "run": 42139374452,
+      "conclusion": "success"
+    },
+    "project": {
+      "run": 42139374685,
+      "failure": "Missing v0.0.76 entry in Debug website changelog; restored entry and full metadata script passed locally."
+    },
+    "wiki": {
+      "run": 42139374262,
+      "failure": "Old walkthrough/portrait/source-keyed script metadata; synchronized pins/cache keys, regenerated profiles from immutable source without changing prior entries/locations or images. Reader, walkthrough, JS and schema passed locally."
+    }
+  }
+}

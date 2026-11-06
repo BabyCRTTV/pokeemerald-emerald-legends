@@ -1,0 +1,92 @@
+{
+  "version": "0.0.70 + unshipped Wyrmtide review",
+  "ROM_sha256": "c42cf751ed87b72863b61c8bd6254e3d4e905ddac8f1e19a6a0bcaeade68088c",
+  "emulator": "mGBA 0.10.2 native core",
+  "passed": true,
+  "continuous": true,
+  "setup": "Open-seal native fixture before recording; real movement and status-only fixture queries during recording. No resets or scene/party/flag setup during movie.",
+  "ending": "Sleeping Regidrago; recording ends before battle.",
+  "stats": {
+    "emulatedFrames": 7517,
+    "videoFrames": 3759,
+    "audioSamples": 6041033,
+    "sampleRate": 48000,
+    "videoFrameStep": 2,
+    "noResetsDuringRecording": true
+  },
+  "durationSeconds": 125.855,
+  "audioPeak": 13560,
+  "nativeAudio": true,
+  "rawVideoSHA256": "890621f6b4a037ec39bb57aa30ee56184dcc8552ae1630d49b1c5bf004a28b43",
+  "rawAudioSHA256": "ede99a20f5c1c4428ec74e1332bc5a914f3096a4c576826becbf62af204fcc5a",
+  "movieSHA256": "2b9cf561dbad695b10055165dab6f34e934db52ac820438e9ed26e78283eb12b",
+  "movieBytes": 6286205,
+  "encoding": "Native 240x160 sampled every two emulated frames at actual GBA rate; exact nearest-neighbor 4x scaling, H.264 CRF15 with AAC native audio. Chapter PNGs preserve exact source RGB at 3x.",
+  "chapters": [
+    {
+      "tick": 0,
+      "title": "Cave entrance",
+      "seconds": 0.0
+    },
+    {
+      "tick": 366,
+      "title": "First chamber - upper stairwell",
+      "seconds": 6.128
+    },
+    {
+      "tick": 1482,
+      "title": "First chamber inscription",
+      "seconds": 24.813
+    },
+    {
+      "tick": 2334,
+      "title": "Tidal gallery - upper stairwell",
+      "seconds": 39.077
+    },
+    {
+      "tick": 3560,
+      "title": "Third chamber - descending terraces",
+      "seconds": 59.604
+    },
+    {
+      "tick": 5294,
+      "title": "Fourth chamber - final descent",
+      "seconds": 88.636
+    },
+    {
+      "tick": 6166,
+      "title": "Regidrago sanctuary",
+      "seconds": 103.236
+    },
+    {
+      "tick": 6560,
+      "title": "Final inscription",
+      "seconds": 109.832
+    },
+    {
+      "tick": 7517,
+      "title": "Sleeping Regidrago - end of cavern walkthrough",
+      "seconds": 125.855
+    }
+  ],
+  "images": {
+    "Chapter-01.png": "7b3aefe16884bd9859818eddfc2b11415ed63b806273b1ca6ef5a2bc993c9f15",
+    "Chapter-02.png": "58b331e57c70033b861e54ec9635557dc8b0057d8135bd89a711a2ce2805a868",
+    "Chapter-03.png": "d6214ccf51a00829dd480f961dfed30e59a0883ae53e97f17d88113f13d269f9",
+    "Chapter-04.png": "892a77efeb9c61ecb87e6388dffc9f4d3975718d56a5d42670223c9279f1dd63",
+    "Chapter-05.png": "c4e7a60b7a3dcf3a34f56d531fc829bc97c6c976b6e8969f25d612ebd2e2db28",
+    "Chapter-06.png": "0fc90985bd9cc591dc2538cb11760ddc4e625de5d6d3869e3ec324c38e699ad4",
+    "Chapter-07.png": "c9fcb16e8ad4469e2cbd20b9eed78da6fd1bd6e0172e55d1990f338c09017062",
+    "Chapter-08.png": "8a4501e2a95072a07388bb43b6b35b88465b5d825f64fca908e476dc2cea047b",
+    "Chapter-09.png": "24442ddcbc8b6f525e14fcb4d14fee594f5419b298b51614ca63aa0f3444004a"
+  },
+  "LibraryVideo": {
+    "library_file_id": "libfile_17a61f47ee68819187e58bf0c91787cd",
+    "file_name": "Emerald-Legends-Cavern-Walkthrough.mp4"
+  },
+  "encodedAudio": {
+    "meanVolumeDB": -23.5,
+    "maxVolumeDB": -7.7,
+    "check": "ffmpeg volumedetect over entire AAC stream"
+  }
+}

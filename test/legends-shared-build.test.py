@@ -60,7 +60,7 @@ class SharedBuildTests(unittest.TestCase):
     def test_complete_chain_binds_native_decoders_and_payload(self):
         result = shared.finalize(self.root)
         self.assertTrue(result['passed'] and result['patches_verified'])
-        self.assertEqual(len(result['native_receipt_sha256']), 12)
+        self.assertEqual(len(result['native_receipt_sha256']), 13)
         self.assertEqual(len(self.check()['payload_files']), 4)
 
     def test_each_compiled_rom_and_elf_is_immutable(self):

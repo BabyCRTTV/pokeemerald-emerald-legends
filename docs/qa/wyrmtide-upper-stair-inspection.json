@@ -1,0 +1,34 @@
+{
+  "sourceGameCommit": "ad731de350e49aeed830fde05e97cc594aa81e49",
+  "approvedReview": "ed361352e7711d54b6fe84fe9573c047760e6f77",
+  "ROM_sha256": "e705d98267de46954e91bdd85e981234c1d10569c15ef7b3113115cadf42fcad",
+  "emulator": "mGBA 0.10.2 native core",
+  "version": "0.0.70 + unshipped Wyrmtide review",
+  "sourceFrame": "30-descending-00.png",
+  "sourceFrameSHA256": "e4f4c8125674a7a9f00564bc2c7958fe2aa0a6e1a4d9b1f43acc0836fae77b1d",
+  "crop": [
+    64,
+    0,
+    144,
+    64
+  ],
+  "closeupScale": 6,
+  "contextScale": 3,
+  "gameAndFixtureChanged": false,
+  "map": "LegendsWyrmtide_Descent4",
+  "upperWarp": {
+    "x": 8,
+    "y": 3,
+    "destination": "LegendsWyrmtide_Descent3",
+    "destinationWarp": 1,
+    "destinationCoordinates": [
+      11,
+      20
+    ]
+  },
+  "previousNativeProofPassed": true,
+  "images": {
+    "Upper-Stair-Context.png": "dca5e6ce77162bbd639ed5b4f1d231f6e11da9614e0efec9cfd814c13afe6470",
+    "Upper-Stair-Closeup.png": "6c926dcced297b327340493fbfc17a73ee60dd387db9b657fdd5d89f8431476a"
+  }
+}

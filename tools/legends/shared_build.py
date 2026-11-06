@@ -21,6 +21,7 @@ NATIVE = {
     'ember-return-qa/verification.json': ('Debug', 'ROM_sha256'),
     'grotto-review/verification.json': ('Debug', 'ROM_sha256'),
     'grotto-encounters/verification.json': ('Debug', 'ROM_sha256'),
+    'wyrmtide-native/verification.json': ('Debug', 'ROM_sha256'),
     'living-hoenn-qa/verification.json': ('Debug', 'base_ROM_sha256'),
     'seasonal-encounters-qa/verification.json': ('Debug', 'base_ROM_sha256'),
     'visual-repairs-qa/verification.json': ('Debug', 'ROM_sha256'),

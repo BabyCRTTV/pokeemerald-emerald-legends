@@ -1,0 +1,24 @@
+{
+  "version": "0.0.70 + unshipped Wyrmtide review",
+  "ROM_sha256": "bf5e3670080379c2655d4c375a2e3cec336a2dc6caf29cc838b7c97d5b5000dc",
+  "nativeSource": "mGBA 0.10.2 native core",
+  "RGBExactScaling": true,
+  "rarePreview": "Production generation from the live 4% Bagon slot with a controlled seed; actual walking encounters independently verified on all four floors.",
+  "images": {
+    "Tidal-Inscription.png": "116da2aa1b86984f9757d0ab10abd38820bc819679942b7739f3f376622d1550",
+    "Deep-Inscription.png": "b6e3ae9622c76cfd4eb785bbcac1df5ff6178def45c9f2983998c1123c2a0b8d",
+    "Sanctuary-Exit.png": "9afeab5993000eebc4a57dd98853f9dda8ef83d2efddfaa22efed72f2e5efb04",
+    "Regidrago-Large.png": "d5503cd3da25889bf6d005adddd911f48298dfd5ecbd6607bd96fd76b3cb0759",
+    "33-recessed-upper-passage.png": "e04b84e4710db49dd5709b73696ac01ac923d1ce9d42b381cecbbb668f69fc30",
+    "Inscriptions-Text.png": "c15ab5607acc713a01a7ae4bfcaa0c358c3d2c5365cc790d53ad5de84441fec1",
+    "35-large-regidrago.png": "6b404722922267dca294de9134bea6c9e3313b02ca887a5f130f5d8922b3cf62",
+    "Rare-Bagon.png": "101cff8885f0ace66f228828c938aa2da16772cabcfe11f0d077491b5d86611c",
+    "Passages.png": "824745b9db005f9a57848ac6479cd6c54bf64478bda61aa119384ce34d0bbdc1",
+    "34-south-exit-approach.png": "9ed51de355799c64a2eaf9d4b56ce2f806516e64c01fffaa27cd1f352e0e8c60",
+    "Inscriptions.png": "3183d7e9087bb20672cf4efcf1a030580caa3f2735461fd5543ab50f16c737a1",
+    "Lower-Exit.png": "e261ac2694b0e2bcdbfff30f099e7d3ef4e1b88d73de34938f6fee739a39dab3",
+    "Upper-Passage.png": "13747f326667fb9ec9b51906150780f1557e54b288fbc6060460473815326068",
+    "44-rare-dragon-encounter.png": "74e9acb8d79ceb22ef504eca6aea9ec0cf1af0a23b6b7a694bdf22dd26df701e",
+    "Threshold-Inscription.png": "929ce207c23f02154adcc8f0cf74a24e8db40304d2bd78a9186f0f95ca4ed81a"
+  }
+}

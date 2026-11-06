@@ -235,9 +235,12 @@ print('PASS: native text widths and verified-unused native save slots')
 # The 33 previously published quests keep every byte and stable ID.
 catalogue=(R/'src/data/legends/journal.h').read_text().split('static const struct LegendsAchievement')[0]
 entries=re.findall(r'^    \{COMPOUND_STRING.*$',catalogue,re.M)
-assert len(entries)==63 and hashlib.sha256(('\n'.join(entries[:33])+'\n').encode()).hexdigest()=='79a3781ce4a11339786e5d464da1e837e7f0bae28646f7c2feff77cf3b46674f'
+assert len(entries)>=63 and hashlib.sha256(('\n'.join(entries[:33])+'\n').encode()).hexdigest()=='79a3781ce4a11339786e5d464da1e837e7f0bae28646f7c2feff77cf3b46674f'
 
 assert hashlib.sha256(('\n'.join(entries[:39])+'\n').encode()).hexdigest()=='cb08a14e4f2c7133eb2a6abd5bf27f223a9ad36e045631785c6a0ada411f65bd'
+
+# All 63 published definitions keep their IDs; new side quests may append.
+assert hashlib.sha256(('\n'.join(entries[:63])+'\n').encode()).hexdigest()=='f3cf2d95e6f878cb6e6d8df68a3b25f208bb0571544872e5edc0164a5bf93d81'
 
 # Resolve symbolic aliases too: the Seafoam entry aliases an unused-looking route slot.
 definitions={}

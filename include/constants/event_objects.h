@@ -416,6 +416,9 @@ enum
     NUM_OBJ_EVENT_GFX,
 };
 
+// Cave-only static legendary art; preserve native/dynamic graphics IDs.
+#define OBJ_EVENT_GFX_LEGENDS_WYRMTIDE_REGIDRAGO 0x0E00
+
 // Player-only appearance IDs live outside the native/dynamic ranges.
 // Keep NUM_OBJ_EVENT_GFX stable: old saves contain dynamic template IDs.
 #define OBJ_EVENT_GFX_LEGENDS_PLAYER_START 0x0F00
@@ -640,6 +643,7 @@ enum
 #define OBJ_EVENT_PAL_TAG_LEGENDS_UNDERWATER_FEMALE 0x1173
 #define OBJ_EVENT_PAL_TAG_LEGENDS_MOM             0x1174
 #define OBJ_EVENT_PAL_TAG_LEGENDS_NORMAN          0x1175
+#define OBJ_EVENT_PAL_TAG_LEGENDS_WYRMTIDE_REGIDRAGO 0x1176
 #define OBJ_EVENT_PAL_TAG_NONE                    0x11FF
 
 // This + localId is used as the tileTag
