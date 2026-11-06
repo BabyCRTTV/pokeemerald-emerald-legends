@@ -220,9 +220,9 @@ u8 *CopyItemNameHandlePlural(enum Item itemId, u8 *dst, u32 quantity)
 
 bool32 IsBagPocketNonEmpty(enum Pocket pocketId)
 {
-    u8 i;
+    u32 i;
 
-    for (i = 0; i < gBagPockets[pocketId].capacity; i++)
+    for (i = 0; i < LegendsStorageBag()->pocketSizes[pocketId]; i++)
     {
         if (GetBagItemId(pocketId, i) != ITEM_NONE)
             return TRUE;

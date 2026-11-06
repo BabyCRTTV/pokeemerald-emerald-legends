@@ -8,7 +8,7 @@ def function(source,name):
  start=m.start();a=source.index('{',m.start());depth=1;b=a+1
  while depth:depth+=(source[b]=='{')-(source[b]=='}');b+=1
  return source[start:b]
-names=['BagPoolUsed','BagPocket_GetSlotDataGeneric','BagPocket_GetSlotDataPC','BagPocket_SetSlotDataGeneric','BagPocket_SetSlotDataPC','BagPocket_GetSlotData','BagPocket_SetSlotData','SetBagItemsPointers','CheckSlotAndUpdateCount','BagPocket_AddItem','BagPocket_RemoveItem','BagPocket_CompactItems','BagPocket_MoveItemSlot','BagPocket_CountTotalItemQuantity']
+names=['IsBagPocketNonEmpty','BagPoolUsed','BagPocket_GetSlotDataGeneric','BagPocket_GetSlotDataPC','BagPocket_SetSlotDataGeneric','BagPocket_SetSlotDataPC','BagPocket_GetSlotData','BagPocket_SetSlotData','SetBagItemsPointers','CheckSlotAndUpdateCount','BagPocket_AddItem','BagPocket_RemoveItem','BagPocket_CompactItems','BagPocket_MoveItemSlot','BagPocket_CountTotalItemQuantity']
 funcs=[function(item,n) for n in names]+[function(menu,n) for n in ['Merge','MergeSort']]
 code=r'''
 #include <stdint.h>
@@ -62,20 +62,22 @@ static u8 *StringCopy(u8 *dst,const u8 *src){strcpy((char *)dst,(const char *)sr
 static void ConvertIntToDecimalStringN(u8 *dst,u32 n,u32 mode,u32 digits){(void)mode;(void)digits;sprintf((char *)dst,"%u",n);}
 #include "legends_storage.h"
 void SetBagItemsPointers(void);
+static enum Item GetBagItemId(enum Pocket p,u32 pos);
 static void BagPocket_SetSlotItemIdAndCount(struct BagPocket *p,u32 pos,enum Item id,u16 q);
 '''
 code+='\n'.join(f[:f.index('{')].strip()+';' for f in funcs)+'\n'
 code+='\n'.join(l for l in storage.splitlines() if not l.startswith('#include'))+'\n'+'\n'.join(funcs)
 code+=r'''
 static void BagPocket_SetSlotItemIdAndCount(struct BagPocket *p,u32 pos,enum Item id,u16 q){BagPocket_SetSlotData(p,pos,(struct ItemSlot){id,q});}
+static enum Item GetBagItemId(enum Pocket p,u32 pos){return BagPocket_GetSlotData(&gBagPockets[p],pos).itemId;}
 static s32 cmp(enum Pocket id,struct ItemSlot a,struct ItemSlot b){(void)id;return !a.itemId?1:!b.itemId?-1:(s32)a.itemId-b.itemId;}
 static void fresh(void){memset(&data,0,sizeof(data));SetBagItemsPointers();}
 static void invariant(void){u32 offset=0,used=BagPoolUsed();assert(used<=1152);for(u32 p=0;p<5;p++){assert(gBagPockets[p].itemSlots==data.inventory.slots+offset);assert(gBagPockets[p].capacity==data.inventory.pocketSizes[p]+1152-used);offset+=data.inventory.pocketSizes[p];}}
 int main(void)
 {
  for(unsigned pocket=0;pocket<5;pocket++){
-  fresh();for(unsigned i=1;i<=1152;i++){assert(BagPocket_AddItem(&gBagPockets[pocket],i,999));invariant();}
-  assert(data.inventory.pocketSizes[pocket]==1152);
+  fresh();assert(!IsBagPocketNonEmpty(pocket));for(unsigned i=1;i<=1152;i++){assert(BagPocket_AddItem(&gBagPockets[pocket],i,999));invariant();}
+  assert(data.inventory.pocketSizes[pocket]==1152);assert(IsBagPocketNonEmpty(pocket));
   for(unsigned i=0;i<1152;i++){struct ItemSlot v=BagPocket_GetSlotData(&gBagPockets[pocket],i);assert(v.itemId==i+1&&v.quantity==999);}
   struct Bag before=data.inventory;assert(!BagPocket_AddItem(&gBagPockets[(pocket+1)%5],5000,1));assert(!memcmp(&before,&data.inventory,sizeof(before)));
   assert(BagPocket_RemoveItem(&gBagPockets[pocket],600,999));invariant();assert(BagPocket_AddItem(&gBagPockets[(pocket+1)%5],5000,1));invariant();
