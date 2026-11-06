@@ -30,6 +30,7 @@
 #include "constants/vars.h"
 #include "constants/decorations.h"
 #include "constants/species.h"
+void CB2_BagMenuRun(void); // Existing production callback; private QA only.
 static void room(void)
 {
     SetWarpDestination(MAP_GROUP(MAP_LITTLEROOT_TOWN_BRENDANS_HOUSE_2F),
