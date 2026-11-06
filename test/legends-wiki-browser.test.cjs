@@ -163,6 +163,8 @@ const assert=require('node:assert/strict'),fs=require('node:fs');
    await page.getByRole('heading',{name:new RegExp('^Chapter '+chapter+':')}).waitFor();
    await page.locator('.walkthrough-field-guide').first().waitFor();await noOverflow();
    assert.equal(await page.locator('.chapter-step').count(),chapter===27?1:2);
+   if(chapter===26)assert.equal(await page.locator('[data-walkthrough-section="section-the-descent"] .walkthrough-route').count(),4);
+   if(chapter===27)assert.equal(await page.locator('.walkthrough-route').count(),0,'dream encounter must not become a random table');
    if(chapter===19)await page.locator('[data-route="MAP_LEGENDS_KANTO_SEAFOAM_ISLANDS_B4F"]').waitFor();
    if(chapter===22){
     const expedition=page.locator('[data-walkthrough-section="section-climb-the-summit-path"]');

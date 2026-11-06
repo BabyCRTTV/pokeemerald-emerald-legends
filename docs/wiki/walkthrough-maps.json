@@ -1734,6 +1734,26 @@
       "name": "FarawayIsland Interior",
       "mapId": "MAP_FARAWAY_ISLAND_INTERIOR",
       "cells": []
+    },
+    "MAP_LEGENDS_WYRMTIDE_DESCENT1": {
+      "name": "Wyrmtide Isle — Descent 1",
+      "mapId": "MAP_LEGENDS_WYRMTIDE_DESCENT1",
+      "cells": []
+    },
+    "MAP_LEGENDS_WYRMTIDE_DESCENT2": {
+      "name": "Wyrmtide Isle — Descent 2",
+      "mapId": "MAP_LEGENDS_WYRMTIDE_DESCENT2",
+      "cells": []
+    },
+    "MAP_LEGENDS_WYRMTIDE_DESCENT3": {
+      "name": "Wyrmtide Isle — Descent 3",
+      "mapId": "MAP_LEGENDS_WYRMTIDE_DESCENT3",
+      "cells": []
+    },
+    "MAP_LEGENDS_WYRMTIDE_DESCENT4": {
+      "name": "Wyrmtide Isle — Descent 4",
+      "mapId": "MAP_LEGENDS_WYRMTIDE_DESCENT4",
+      "cells": []
     }
   },
   "chapters": {
@@ -4295,6 +4315,120 @@
         "region": "Hoenn",
         "note": ""
       }
+    ],
+    "wyrmtide-isle": [
+      {
+        "section": "section-starting-the-expedition",
+        "places": [
+          "MAP_DEWFORD_TOWN"
+        ],
+        "encounters": [],
+        "availableMethods": [
+          "land",
+          "rock",
+          "surf",
+          "old_rod",
+          "good_rod",
+          "super_rod"
+        ],
+        "region": "Hoenn",
+        "note": "Meet Briney at the Dewford dock after his call. The island seal requires Regigigas in your party.",
+        "showMap": true
+      },
+      {
+        "section": "section-the-descent",
+        "places": [
+          "MAP_LEGENDS_WYRMTIDE_DESCENT1",
+          "MAP_LEGENDS_WYRMTIDE_DESCENT2",
+          "MAP_LEGENDS_WYRMTIDE_DESCENT3",
+          "MAP_LEGENDS_WYRMTIDE_DESCENT4"
+        ],
+        "encounters": [
+          "MAP_LEGENDS_WYRMTIDE_DESCENT1",
+          "MAP_LEGENDS_WYRMTIDE_DESCENT2",
+          "MAP_LEGENDS_WYRMTIDE_DESCENT3",
+          "MAP_LEGENDS_WYRMTIDE_DESCENT4"
+        ],
+        "availableMethods": [
+          "land",
+          "rock",
+          "surf",
+          "old_rod",
+          "good_rod",
+          "super_rod"
+        ],
+        "region": "Hoenn",
+        "note": "Wyrmtide’s private cave chambers have no mainland map markers. These are the four shipped cave tables; dragon shares are percentages of wild encounters, not chances per step.",
+        "showMap": false
+      },
+      {
+        "section": "section-regidrago-and-the-return-voyage",
+        "places": [],
+        "encounters": [],
+        "availableMethods": [
+          "land",
+          "rock",
+          "surf",
+          "old_rod",
+          "good_rod",
+          "super_rod"
+        ],
+        "region": "Hoenn",
+        "note": "The sanctuary has no random encounters. Level75 Regidrago is a scripted battle; capture or defeat permits the expedition report, and defeat preserves later capture.",
+        "showMap": false
+      }
+    ],
+    "when-morning-never-comes": [
+      {
+        "section": "section-the-call-and-investigation",
+        "places": [
+          "MAP_LILYCOVE_CITY"
+        ],
+        "encounters": [],
+        "availableMethods": [
+          "land",
+          "rock",
+          "surf",
+          "old_rod",
+          "good_rod",
+          "super_rod"
+        ],
+        "region": "Hoenn",
+        "note": "Elias and Mira live east of Lilycove’s Trainer Fan Club. Visit them before seeking the Lunar Wing from the caretaker on Mt. Pyre’s first floor.",
+        "showMap": true
+      },
+      {
+        "section": "section-following-the-dream",
+        "places": [],
+        "encounters": [],
+        "availableMethods": [
+          "land",
+          "rock",
+          "surf",
+          "old_rod",
+          "good_rod",
+          "super_rod"
+        ],
+        "region": "Hoenn",
+        "note": "The dream bedroom, deserted city and moonless shore have no random encounters. Follow Mira’s echo and the neighboring house door; use the empty bed to wake safely.",
+        "showMap": false
+      },
+      {
+        "section": "section-darkrai-and-the-return",
+        "places": [],
+        "encounters": [],
+        "availableMethods": [
+          "land",
+          "rock",
+          "surf",
+          "old_rod",
+          "good_rod",
+          "super_rod"
+        ],
+        "region": "Hoenn",
+        "note": "Level80 Darkrai is a scripted encounter. Catching or defeating it wakes Mira; speak to Elias afterward. Fleeing or losing remains retryable, and defeat preserves later capture.",
+        "showMap": false
+      }
     ]
   },
   "regions": {
@@ -5702,5 +5836,15 @@
     "date": "2026-10-13",
     "gameVersion": "0.0.46",
     "sourceCommit": "e542033cf4fcb8378c68fdd5ffbc4f5b5933fb64"
+  },
+  "optionalQuestReview": {
+    "gameVersion": "0.0.77",
+    "sourceCommit": "a67381e2bf53dbf5022d375b0bfb8134044826f6",
+    "date": "2026-11-06",
+    "chapters": [
+      26,
+      27
+    ],
+    "encounterSourceUnchanged": true
   }
 }
