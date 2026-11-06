@@ -1,0 +1,31 @@
+{
+  "passed": true,
+  "source_SHA1": "f3ae088181bf583e55daf962a92bb46f4f1d07b7",
+  "decoder": "Actual committed docs/patcher.js applyBps executed in Node VM; independent of Floating IPS",
+  "decoder_sha256": "ee3e5c4d12d1179c29da7c2e97a34c767e55d2ee5f588de3631b49842b238b00",
+  "verifier_sha256": "bbb6057cadba5a72d14e73c1f75cc57563c121eebd68e0ce97869fd18a110d8b",
+  "results": {
+    "Pokemon-Emerald-Legends-v0.0.70.bps": {
+      "patch_sha256": "1e90a208848c63e5b2c44e58681eb7a5600d3c3f38d0e7de626d0d02d81bc261",
+      "target_sha256": "e50f2e4ef84462f4b9beff0f3668635d8f286a82e7cd16e32b102d915e83899a",
+      "target_bytes": 33554432,
+      "exact_native_ROM_match": true
+    },
+    "Pokemon-Emerald-Legends-v0.0.70-debug.bps": {
+      "patch_sha256": "5d23cd3f54c0eca379a2d568c0af3883b2943c659ea45cfb5422cec5666c7333",
+      "target_sha256": "7ff7f57bc43ffa2a70c82cc2c8d60211d9d02b190bc7ad328f2a5ffd4f180c7d",
+      "target_bytes": 33554432,
+      "exact_native_ROM_match": true
+    }
+  },
+  "limits": "Byte-decoder test; physical browser file-picker/download and Pizza Boy execution are separate checks.",
+  "reviewCommit": "7279100bcaed27904e83dcb8da69dba0c5ed6373",
+  "pullRequest": 89,
+  "candidateArtifact": 12371846788,
+  "runs": {
+    "project": 39654935442,
+    "native": 39654935424,
+    "patches": 39654935625
+  },
+  "local_ROMs_match_independently_decoded_CI_targets": true
+}

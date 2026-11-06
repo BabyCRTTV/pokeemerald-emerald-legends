@@ -1,7 +1,7 @@
 {
-  "wikiRevision": "1.7.0",
-  "reviewedAgainstGameVersion": "0.0.62",
-  "lastManualReview": "2026-10-17",
+  "wikiRevision": "1.8.0",
+  "reviewedAgainstGameVersion": "0.0.76",
+  "lastManualReview": "2026-11-05",
   "articles": [
     {
       "id": "welcome",
@@ -608,7 +608,16 @@
       "content": "## Research Notes\nBirch and Mr. Stone offer an optional **Research Notes** menu action. Their reflections depend on reports you have completed, rather than the request you are currently carrying. Birch’s notes change after three, nine and all eighteen reports. Devon’s change after three, six and all twelve contracts. You can reread these conversations; they do not award another reward or accept work.\n\n## Weather Institute bulletin\nAfter the Aqua rescue, the second worker on the first floor offers a field bulletin for the active season. Read it for seasonal advice. It does not change encounters or replace the upstairs Castform gift and later abnormal-weather investigation.\n\n## Town conversations\nThe PC-advice resident in Littleroot recognizes the Champion. A Rustboro Devon worker acknowledges the Stone Badge or Championship. Fortree’s older resident recognizes the Feather Badge, and Lilycove’s contest enthusiast recognizes a Champion. Their early-game guidance remains available before those milestones.\n\n[[research|Research requests]] and [[home-life|family conversations]] have separate guides.",
       "reviewedAgainstGameVersion": "0.0.62",
       "reviewedSourceCommit": "7c9b80a68ae67688b705dd0c63d8759573b01601"
+    },
+    {
+      "id": "wyrmtide-isle",
+      "title": "Wyrmtide Isle and Regidrago",
+      "category": "Side quests",
+      "summary": "Mr. Briney's post-Regigigas island expedition, rare cave dragons and the Maker's last dream.",
+      "content": "# Wyrmtide Isle\n\nIntroduced in v0.0.76. Mr. Briney can take you to a small island west of Dewford, where an ancient seal hides the Maker's last unfinished creation.\n\n## Starting the expedition\n\nCalm Regigigas and finish the Weather Institute report. After eight ordinary outdoor steps, an unknown-number Pokénav call reveals Mr. Briney and his discovery. Visit his Dewford dock and choose Wyrmtide Isle. His original coastal routes remain available when the story permits them. Briney offers a return voyage from the island before and after solving its seal.\n\nThe three shore tablets point toward the continent's mover. Bring a real, non-egg Regigigas in your party; a fainted Regigigas also qualifies. Opening the seal is permanent, so storing Regigigas afterward cannot trap you outside.\n\n## The descent\n\nFour connected cave chambers lead to Regidrago's sanctuary. Complete native rock openings, fitted stair flights and shaded terraces mark the route; upper stairwells return to the previous room. The tidal gallery has a small animated pool. Each carved tablet is readable and has distinct lore. Flash is not required.\n\nOrdinary cave encounters include Golbat, Graveler, Sableye, Mawile, Nosepass, Carbink and Onix. The encounter rate is deliberately restrained. Dragon percentages below are shares of wild encounters, not per-step probabilities.\n\n| Chamber | Levels | Dragon at 4% | Dragon at 1% |\n| --- | --- | --- | --- |\n| Descent 1 | 48–54 | Bagon | Gible |\n| Descent 2 | 50–56 | Noibat | Axew |\n| Descent 3 | 53–59 | Druddigon | Deino |\n| Descent 4 | 55–61 | Gabite | Fraxure |\n\nThe sanctuary has no random encounters.\n\n## Regidrago and the return voyage\n\nA sleeping level-75 Regidrago waits beneath the final inscription. Speak to it and choose whether to awaken it. Escaping or losing leaves it available. Defeating it calms it and permits another challenge. Capturing it removes the field encounter permanently. Report to Briney after defeat or capture to complete **The Maker's Last Dream**; return travel remains available.\n\nExisting saves keep their Pokémon, inventory, wardrobe, seasons and story state. Wyrmtide appends its maps and quest without renumbering published identifiers and uses audited unused flags. Older Dewford NPC caches receive only the two expedition actors; existing actors and movements are preserved. Use the normal in-game battery save when updating.\n\n[Approved artwork](../designs/wyrmtide/whole-exit-rocks/README.md) · [Save compatibility](../SAVE-COMPATIBILITY.md)\n",
+      "reviewedAgainstGameVersion": "0.0.76",
+      "reviewedSourceCommit": "PENDING_RELEASE_SOURCE"
     }
   ],
-  "latestManualReview": "Updated against published game v0.0.62; seasonal encounters and DexNav silhouettes remain a separate unpublished preview."
+  "latestManualReview": "Added the Wyrmtide Isle expedition and four native cave encounter tables for v0.0.76; earlier articles retain their individual review provenance."
 }

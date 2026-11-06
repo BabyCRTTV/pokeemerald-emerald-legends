@@ -1,0 +1,4 @@
+LegendsWyrmtide_Heart_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, Wyrmtide_ChamberOnTransition
+	map_script MAP_SCRIPT_ON_RESUME, Wyrmtide_ChamberOnResume
+	.byte 0

@@ -1,0 +1,86 @@
+{
+  "version": "0.0.70 + unshipped Wyrmtide review",
+  "ROM_sha256": "7c38260dd871da57d91cc2aa938bf41a4a72f45c0fb35b39c1edba9ffb2d4ab6",
+  "emulator": "mGBA 0.10.2 native core",
+  "scenesOnly": false,
+  "passed": true,
+  "setup": "Controlled fresh native fixtures, actual map/script/battle engine and button input; private setup payload never distributed.",
+  "limits": "Not an authentic historical owner save, natural full-story playthrough, Release-emulator or Pizza Boy test.",
+  "log": "map=0/11 xy=11,9 flags=01 maker=0 battle=0 script=0 party=1 outcome=0\nmap=76/4 xy=14,21 flags=03 maker=0 battle=0 script=0 party=1 outcome=0\nmap=76/4 xy=16,11 flags=03 maker=0 battle=0 script=0 party=1 outcome=0\nmap=76/5 xy=13,9 flags=01 maker=0 battle=0 script=0 party=1 outcome=0\nmap=76/6 xy=6,11 flags=01 maker=0 battle=0 script=0 party=1 outcome=0\nmap=76/7 xy=9,11 flags=01 maker=0 battle=0 script=0 party=1 outcome=0\nmap=76/8 xy=9,11 flags=01 maker=0 battle=0 script=0 party=1 outcome=0\nmap=76/9 xy=11,8 flags=01 maker=0 battle=0 script=0 party=1 outcome=0\nmap=76/4 xy=16,12 flags=07 maker=0 battle=0 script=0 party=1 outcome=0\nmap=76/4 xy=23,15 flags=03 maker=0 battle=0 script=0 party=1 outcome=0\nmap=0/11 xy=8,11 flags=00 maker=0 battle=0 script=0 party=1 outcome=0\nmap=0/11 xy=9,11 flags=00 maker=0 battle=0 script=0 party=1 outcome=0\nmap=0/11 xy=8,11 flags=00 maker=0 battle=0 script=0 party=1 outcome=0\nmap=0/11 xy=9,11 flags=00 maker=0 battle=0 script=0 party=1 outcome=0\nmap=0/11 xy=8,11 flags=00 maker=0 battle=0 script=0 party=1 outcome=0\nmap=0/11 xy=9,11 flags=00 maker=0 battle=0 script=0 party=1 outcome=0\nmap=0/11 xy=8,11 flags=00 maker=0 battle=0 script=0 party=1 outcome=0\nmap=0/11 xy=9,11 flags=00 maker=0 battle=0 script=0 party=1 outcome=0\nmap=0/11 xy=8,11 flags=00 maker=0 battle=0 script=1 party=1 outcome=0\nmap=0/11 xy=8,11 flags=00 maker=0 battle=0 script=1 party=1 outcome=0\nmap=0/11 xy=8,11 flags=01 maker=0 battle=0 script=0 party=1 outcome=0\nPASS actual eight-step mystery call and one-time completion\nmap=0/11 xy=11,9 flags=01 maker=0 battle=0 script=0 party=1 outcome=0\nPASS old Dewford cached-template flash/load repair preserves native NPCs\nmap=76/4 xy=14,21 flags=03 maker=0 battle=0 script=0 party=1 outcome=0\nmap=76/4 xy=10,18 flags=03 maker=0 battle=0 script=0 party=1 outcome=0\nmap=76/4 xy=23,15 flags=03 maker=0 battle=0 script=0 party=1 outcome=0\nmap=76/4 xy=19,21 flags=03 maker=0 battle=0 script=0 party=1 outcome=0\nmap=76/4 xy=16,11 flags=03 maker=0 battle=0 script=0 party=1 outcome=0\nPASS actual shore-to-all-three-tablets-to-seal walking route\nmap=76/4 xy=16,11 flags=03 maker=0 battle=0 script=0 party=1 outcome=0\nmap=76/4 xy=16,11 flags=03 maker=0 battle=0 script=0 party=2 outcome=0\nmap=76/5 xy=8,4 flags=07 maker=1 battle=0 script=1 party=2 outcome=0\nPASS party/egg/fainted gate, actual opening and first stair entry, native flash flags\nPASS descent 1 route crosses 9 native stair cells\nmap=76/6 xy=8,3 flags=07 maker=1 battle=0 script=0 party=2 outcome=0\nPASS descent 2 route crosses 6 native stair cells\nmap=76/7 xy=8,3 flags=07 maker=1 battle=0 script=0 party=2 outcome=0\nPASS descent 3 route crosses 9 native stair cells\nmap=76/8 xy=8,3 flags=07 maker=1 battle=0 script=0 party=2 outcome=0\nPASS descent 4 route crosses 7 native stair cells\nmap=76/9 xy=11,17 flags=07 maker=1 battle=0 script=0 party=2 outcome=0\nmap=76/9 xy=11,5 flags=07 maker=1 battle=0 script=0 party=2 outcome=0\nPASS actual walking and reading of the final inscription\nmap=76/9 xy=11,8 flags=07 maker=1 battle=0 script=0 party=2 outcome=0\nmap=76/8 xy=11,20 flags=07 maker=1 battle=0 script=0 party=2 outcome=0\nmap=76/8 xy=11,20 flags=07 maker=1 battle=0 script=0 party=2 outcome=0\nmap=76/7 xy=11,20 flags=07 maker=1 battle=0 script=0 party=2 outcome=0\nmap=76/7 xy=13,19 flags=07 maker=1 battle=0 script=0 party=2 outcome=0\nmap=76/6 xy=11,20 flags=07 maker=1 battle=0 script=0 party=2 outcome=0\nmap=76/5 xy=11,20 flags=07 maker=1 battle=0 script=0 party=2 outcome=0\nmap=76/5 xy=13,19 flags=07 maker=1 battle=0 script=0 party=2 outcome=0\nmap=76/4 xy=16,11 flags=07 maker=1 battle=0 script=0 party=2 outcome=0\nPASS all four descent maps, both stair directions, both depth inscriptions and surface exit\nmap=76/9 xy=11,8 flags=05 maker=0 battle=0 script=0 party=1 outcome=0\nmap=76/9 xy=11,8 flags=0d maker=0 battle=0 script=0 party=1 outcome=4\nmap=76/9 xy=11,8 flags=1d maker=0 battle=0 script=0 party=1 outcome=1\nmap=76/9 xy=11,8 flags=1d maker=0 battle=0 script=0 party=1 outcome=4\nPASS escape, defeat and actual same-sprite rematch\nmap=76/9 xy=11,8 flags=05 maker=0 battle=0 script=0 party=1 outcome=0\nmap=76/9 xy=11,8 flags=3d maker=0 battle=0 script=0 party=2 outcome=7\nPASS actual Regidrago capture, caught/calmed flags, party award and flash persistence\nmap=76/9 xy=11,8 flags=3d maker=0 battle=0 script=0 party=2 outcome=7\nmap=76/4 xy=14,21 flags=17 maker=0 battle=0 script=0 party=1 outcome=0\nmap=0/11 xy=11,10 flags=57 maker=0 battle=0 script=0 party=1 outcome=0\nPASS Briney report, quest completion and actual return voyage\n",
+  "images": {
+    "05-second-landing.png": "160ffcedab2d5e7bb7a624a0b65dd170e24900bc8e8ab074a56e40b6b1476834",
+    "07-fourth-landing.png": "2d4bd84fe936f62df6f6d79fade6b82754121b15a688d48cfd76de8ace6a082e",
+    "12-sealed-without-maker.png": "fbd83faa7890d99de2084d6110c82289d02e121a079043fba68d47466370f03f",
+    "08-slumbering-regidrago.png": "e295d9e39d2f4a397778c9dd692af16bfc68dd8095aea9964a16edd17532e313",
+    "15b-escaped-retry.png": "f86df9b0875de7910f720797df3f679f1ea9eb61c23908949ad854e62f6946df",
+    "14b-deepest-arrival.png": "759a26da228e6758cd84b79eacf32df112000a4e344da4cad883fd63951435f6",
+    "20-maker-among-six.png": "ed1ae8d7105c9eb794697bda1c26ad55b410d9b3adb66b569b211d0db6bbef0d",
+    "03-ancient-seal.png": "151213c3eb2c0f085f918c1f18be9052fe3121c2cd3a0c02d177c7420c594f6e",
+    "15-sleeping-dragon-prompt.png": "ddd03ec3c6273e67ee00f67d8d6e25ec4f68a3d445d269aebfd32ae634c99847",
+    "02-island-landing.png": "d986a032911ea782bc89fd785527b8a241f4732ebe29b31c865cece6ff49a870",
+    "15c-defeated-retry.png": "433f8813de6ab3f7fff1b916f32d319e191aab378d5b2e5c5ecd9fc948f039eb",
+    "22-walked-dragon-dais.png": "de734184a3df450fc09bfd3df27788e5753444b947c567b979650218018dcb12",
+    "09-unknown-number-call.png": "fed311008b9ea7d99653af0f454fc03363c7a4809a2e71115747e8d179fb968f",
+    "11-actual-arrival.png": "979076bdb6621e9c8b9bf7ff7572d001efdfdf8905893ea4230d546109d1b632",
+    "13-maker-opens-seal.png": "f4155628bfeb00007f4cb0cd571ece83f994b672cabc4799982613856502d2e3",
+    "01-dewford-dock.png": "ca500578322b1253d4ec9a4308b003c23862a970b219b1d452070070713a0877",
+    "14-first-descent-arrival.png": "cd544910c78aef31a8bf1dd3fe26c99f2ae23abe387dad953c573e8e05fe4072",
+    "21-walked-ruined-court.png": "47bd180ad659d2db19fd1e6a1ee6ab1bc2bd9d8afdef09fc9de02aca467f0bec",
+    "19-maker-inscription.png": "01f1d09e78f73269cf0a25fc70f8292e3f64f89d95027f8f09532273f4cdc48f",
+    "18-report-and-return.png": "b178d1650682be305183bcf23b243321b50b15c474721969c491a1e2b25a9fd3",
+    "17-capture-resolved.png": "0a466085a1330fe1e0bbb9b9e8a42dfea8a1f6f47852c40ecd89045c7ae1a95f",
+    "16-regidrago-battle.png": "8aae73a2a742fe8dc28472163145605cff50632f7ea03684afa5f927eaae76fa",
+    "06-third-landing.png": "ef20a84a4c9f270ad3a6565dcd16ed5ba27297f3f639bdce7f95254e004edb96",
+    "04-stair-descent.png": "b84a90d1c93c755d6c86a2dcfa9f9eeaf77fc212cef95328e18d81654242015d",
+    "10-departure-choice.png": "570966f7fec9e54db609fbc63936b36dd5bb361687cd2133a92cc420a0313853",
+    "01b-briney-voyage-menu.png": "570966f7fec9e54db609fbc63936b36dd5bb361687cd2133a92cc420a0313853",
+    "23-open-headland-entrance.png": "aaf182e937aba7bfdcd8af16f8d3c5d175d1e2b945775fc9d83f015b6af7cfa3"
+  },
+  "design": "Dewford shore with a pink-rock Regi facade, two weathered columns, three low inscription ledges, thick native cave walls, four traversable stair landings and an axial dragon sanctuary.",
+  "sourceScope": "Six unshipped Wyrmtide layouts, sibling tilesets and native facade opening cells. Published IDs, save structures and quest state retain their values and behavior.",
+  "nativeArt": "Exact Cave 0x396 stone stairs use the existing palette 7 at 0x39E/39F. Shore retains every used Dewford pixel, all native metatiles and animation cells. Eight appended inscription/column cells copy existing Cave pixels into unused sibling slots; native Cave palette 6 occupies Dewford\u2019s unused palette 6. Original shared artwork and palette files are untouched.",
+  "gallery_sha256": "fbe5793507c742556d7737d1303119a6bc85db44baa12c824b446600bd34e8d9",
+  "releaseBuild": {
+    "passed": true,
+    "sha256": "0348f7988307d6a1018474320a525cdb0e4a9991312e6625779fc945f0e7a79e",
+    "ewramBytes": 255132,
+    "romUsedBytes": 30928064
+  },
+  "patchVerification": "Not a release; independent candidate patch checks run after review source is saved.",
+  "model": "gpt-6.1-sol-wm",
+  "reviewDate": "2026-10-22",
+  "ownerApproval": "Requested another design review; previous publication request was superseded. New visuals are not yet approved.",
+  "debugQuickstart": {
+    "passed": true,
+    "unmodifiedROM": true,
+    "sha256": "7c38260dd871da57d91cc2aa938bf41a4a72f45c0fb35b39c1edba9ffb2d4ab6"
+  },
+  "sourceChecks": [
+    "Wyrmtide allocation/IDs/owner-asset protection/topology/production C gates",
+    "Night-light asset reproducibility and sibling primary-cell allocation",
+    "Native full quest, shore/tablets/seal walking, all stair warps both ways, gate/egg/fainted, flash/load, retry/capture/report/return",
+    "Solid decorative stones; actual walking and reading of both depth inscriptions and the final inscription"
+  ],
+  "stairSteps": [
+    9,
+    6,
+    9,
+    7
+  ],
+  "references": [
+    "https://www.reddit.com/r/PokemonROMhacks/comments/10ul67l/hoenn_now_with_more_water/",
+    "https://www.reddit.com/r/PokemonROMhacks/comments/utl9aj/some_beta_maps_for_our_emerald_exp_project/",
+    "https://huderlem.github.io/porymap/manual/tileset-editor.html"
+  ],
+  "islandOverview": {
+    "kind": "Source-tile layout; NPCs omitted, not a gameplay screenshot.",
+    "sha256": "6f7b5c65eae2b12ded9bd64369e47573e6697c6f3c9004bb67c452c59c029965"
+  },
+  "designCommit": "cfe4bf160438cd175abcddd6dd4017dbc4dbd8d3",
+  "sourceNote": "This receipt is committed alongside the final solid-stone collision follow-up and matching native captures.",
+  "initialDesignProjectCI": {
+    "source": "cfe4bf160438cd175abcddd6dd4017dbc4dbd8d3",
+    "run": 39759041846,
+    "result": "success"
+  }
+}

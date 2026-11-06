@@ -1,0 +1,28 @@
+{
+  "model": "GPT-6 (Codex)",
+  "version": "0.0.76",
+  "authorization": "Owner approved all visuals and explicitly requested inclusion in the public release.",
+  "baselineMaster": "c09ff3fc2d09503f5b3558587fd0eacd0ef46489",
+  "approvedFeature": "050cb9296a163a535eebca0f10202df84501bb44",
+  "status": "integrated in isolated worktree; preparing immutable source and wiki snapshot before candidate gates",
+  "impact": [
+    "Append-only Wyrmtide map/layout/section/quest/menu IDs and audited flags0x493\u20130x499",
+    "Existing Weather Institute/Regigigas call gate, NPC priority and Dewford legacy-cache repair",
+    "Non-egg party Regigigas gate and permanent seal, both exit lanes and return travel",
+    "Lv75 Regidrago retry/capture/report paths and cave encounters",
+    "Current v0.0.75 Eon save extension, seasonal encounters, wardrobe, art and private-build/site gates preserved"
+  ],
+  "saveImpact": "No new serialized layout, native variable, sector or codec changes; original published IDs retain positions. Existing v0.0.75 compatibility readers and Eon extension preserved. Focused historical Dewford cache repair and new-flag persistence included; authentic historical-save matrix remains incomplete.",
+  "localChecks": [
+    "Wyrmtide production-C/native-art/ID/topology/encounter/lore/whole-rock guards passed",
+    "13 shared-build and16 site-promotion regressions passed",
+    "Approved Wyrmtide layouts/tileset/Regidrago sources byte-exact against approved feature"
+  ],
+  "setupDiagnosis": {
+    "oldRun": 42125621400,
+    "job": 127588921082,
+    "cause": "Azure Ubuntu mirror stalled the57.5MB compiler and49.2MB newlib downloads until35-minute cancellation",
+    "repair": "Same standard compiler packages from official Ubuntu HTTPS archive, bounded network timeouts; no game gate disabled"
+  },
+  "next": "Create immutable combined game source, pin matching wiki metadata, push coherent v0.0.76 candidate on PR89; inspect required candidate gates before merging."
+}

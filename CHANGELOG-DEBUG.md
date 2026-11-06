@@ -2,6 +2,15 @@
 
 This is the developer-facing history for the **Debug** build. Shared Legends changes are repeated here so this file stands on its own; Debug-only behavior is called out separately.
 
+## [0.0.76] - 2026-11-05
+
+- Added Mr. Briney's Wyrmtide Isle voyage after Regigigas and the Weather Institute report, with a permanent party-Regigigas seal and a return route.
+- Added four descending cave chambers, distinct readable inscriptions and the sleeping level-75 Regidrago encounter, with escape/defeat retries and capture/report completion.
+- Added restrained cave encounters with familiar cave Pokémon and rare dragon slots totaling 5% per chamber; kept the sanctuary free of random encounters.
+- Included the approved native cave entrances, fitted stairs, complete exit rocks, depth lighting, tidal pool and larger Regidrago overworld sprite.
+- Preserved existing save layouts, original map/quest/graphics identifiers, seasonal encounters, wardrobe and all previously released features.
+- Retained the Debug menus and Quickstart; verified Wyrmtide call, gates, travel, exits, encounters, retries, capture and native save flags.
+
 ## [0.0.75] - 2026-10-27
 
 - Unlocked the opposite level-40 Eon roamer after the first roaming battle with the Pokémon chosen on TV, including escape, capture or defeat.

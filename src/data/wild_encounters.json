@@ -40466,6 +40466,282 @@
               }
             ]
           }
+        },
+        {
+          "map": "MAP_LEGENDS_WYRMTIDE_DESCENT1",
+          "base_label": "gLegendsWyrmtideDescent1",
+          "land_mons": {
+            "encounter_rate": 8,
+            "mons": [
+              {
+                "min_level": 48,
+                "max_level": 54,
+                "species": "SPECIES_GOLBAT"
+              },
+              {
+                "min_level": 48,
+                "max_level": 54,
+                "species": "SPECIES_GRAVELER"
+              },
+              {
+                "min_level": 48,
+                "max_level": 54,
+                "species": "SPECIES_GOLBAT"
+              },
+              {
+                "min_level": 48,
+                "max_level": 54,
+                "species": "SPECIES_GRAVELER"
+              },
+              {
+                "min_level": 48,
+                "max_level": 54,
+                "species": "SPECIES_SABLEYE"
+              },
+              {
+                "min_level": 48,
+                "max_level": 54,
+                "species": "SPECIES_MAWILE"
+              },
+              {
+                "min_level": 48,
+                "max_level": 54,
+                "species": "SPECIES_NOSEPASS"
+              },
+              {
+                "min_level": 48,
+                "max_level": 54,
+                "species": "SPECIES_CARBINK"
+              },
+              {
+                "min_level": 48,
+                "max_level": 54,
+                "species": "SPECIES_BAGON"
+              },
+              {
+                "min_level": 48,
+                "max_level": 54,
+                "species": "SPECIES_SABLEYE"
+              },
+              {
+                "min_level": 48,
+                "max_level": 54,
+                "species": "SPECIES_GIBLE"
+              },
+              {
+                "min_level": 48,
+                "max_level": 54,
+                "species": "SPECIES_ONIX"
+              }
+            ]
+          }
+        },
+        {
+          "map": "MAP_LEGENDS_WYRMTIDE_DESCENT2",
+          "base_label": "gLegendsWyrmtideDescent2",
+          "land_mons": {
+            "encounter_rate": 8,
+            "mons": [
+              {
+                "min_level": 50,
+                "max_level": 56,
+                "species": "SPECIES_GOLBAT"
+              },
+              {
+                "min_level": 50,
+                "max_level": 56,
+                "species": "SPECIES_GRAVELER"
+              },
+              {
+                "min_level": 50,
+                "max_level": 56,
+                "species": "SPECIES_GOLBAT"
+              },
+              {
+                "min_level": 50,
+                "max_level": 56,
+                "species": "SPECIES_GRAVELER"
+              },
+              {
+                "min_level": 50,
+                "max_level": 56,
+                "species": "SPECIES_SABLEYE"
+              },
+              {
+                "min_level": 50,
+                "max_level": 56,
+                "species": "SPECIES_MAWILE"
+              },
+              {
+                "min_level": 50,
+                "max_level": 56,
+                "species": "SPECIES_NOSEPASS"
+              },
+              {
+                "min_level": 50,
+                "max_level": 56,
+                "species": "SPECIES_CARBINK"
+              },
+              {
+                "min_level": 50,
+                "max_level": 56,
+                "species": "SPECIES_NOIBAT"
+              },
+              {
+                "min_level": 50,
+                "max_level": 56,
+                "species": "SPECIES_SABLEYE"
+              },
+              {
+                "min_level": 50,
+                "max_level": 56,
+                "species": "SPECIES_AXEW"
+              },
+              {
+                "min_level": 50,
+                "max_level": 56,
+                "species": "SPECIES_ONIX"
+              }
+            ]
+          }
+        },
+        {
+          "map": "MAP_LEGENDS_WYRMTIDE_DESCENT3",
+          "base_label": "gLegendsWyrmtideDescent3",
+          "land_mons": {
+            "encounter_rate": 8,
+            "mons": [
+              {
+                "min_level": 53,
+                "max_level": 59,
+                "species": "SPECIES_GOLBAT"
+              },
+              {
+                "min_level": 53,
+                "max_level": 59,
+                "species": "SPECIES_GRAVELER"
+              },
+              {
+                "min_level": 53,
+                "max_level": 59,
+                "species": "SPECIES_GOLBAT"
+              },
+              {
+                "min_level": 53,
+                "max_level": 59,
+                "species": "SPECIES_GRAVELER"
+              },
+              {
+                "min_level": 53,
+                "max_level": 59,
+                "species": "SPECIES_SABLEYE"
+              },
+              {
+                "min_level": 53,
+                "max_level": 59,
+                "species": "SPECIES_MAWILE"
+              },
+              {
+                "min_level": 53,
+                "max_level": 59,
+                "species": "SPECIES_NOSEPASS"
+              },
+              {
+                "min_level": 53,
+                "max_level": 59,
+                "species": "SPECIES_CARBINK"
+              },
+              {
+                "min_level": 53,
+                "max_level": 59,
+                "species": "SPECIES_DRUDDIGON"
+              },
+              {
+                "min_level": 53,
+                "max_level": 59,
+                "species": "SPECIES_SABLEYE"
+              },
+              {
+                "min_level": 53,
+                "max_level": 59,
+                "species": "SPECIES_DEINO"
+              },
+              {
+                "min_level": 53,
+                "max_level": 59,
+                "species": "SPECIES_ONIX"
+              }
+            ]
+          }
+        },
+        {
+          "map": "MAP_LEGENDS_WYRMTIDE_DESCENT4",
+          "base_label": "gLegendsWyrmtideDescent4",
+          "land_mons": {
+            "encounter_rate": 8,
+            "mons": [
+              {
+                "min_level": 55,
+                "max_level": 61,
+                "species": "SPECIES_GOLBAT"
+              },
+              {
+                "min_level": 55,
+                "max_level": 61,
+                "species": "SPECIES_GRAVELER"
+              },
+              {
+                "min_level": 55,
+                "max_level": 61,
+                "species": "SPECIES_GOLBAT"
+              },
+              {
+                "min_level": 55,
+                "max_level": 61,
+                "species": "SPECIES_GRAVELER"
+              },
+              {
+                "min_level": 55,
+                "max_level": 61,
+                "species": "SPECIES_SABLEYE"
+              },
+              {
+                "min_level": 55,
+                "max_level": 61,
+                "species": "SPECIES_MAWILE"
+              },
+              {
+                "min_level": 55,
+                "max_level": 61,
+                "species": "SPECIES_NOSEPASS"
+              },
+              {
+                "min_level": 55,
+                "max_level": 61,
+                "species": "SPECIES_CARBINK"
+              },
+              {
+                "min_level": 55,
+                "max_level": 61,
+                "species": "SPECIES_GABITE"
+              },
+              {
+                "min_level": 55,
+                "max_level": 61,
+                "species": "SPECIES_SABLEYE"
+              },
+              {
+                "min_level": 55,
+                "max_level": 61,
+                "species": "SPECIES_FRAXURE"
+              },
+              {
+                "min_level": 55,
+                "max_level": 61,
+                "species": "SPECIES_ONIX"
+              }
+            ]
+          }
         }
       ]
     },
