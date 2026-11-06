@@ -443,5 +443,12 @@
     "projectChecks": "success, check127728334076",
     "sharedDebugReleaseNativeVerification": "success, check127728334578",
     "publisher": "skipped for PR"
+  },
+  "bedsideOnlyCorrection": {
+    "parent": "976861dde055606d186f3713f2eff50754d41c18",
+    "originalRoom": "0a30deaa7d739d4a3cf28cd242fdfdee2f1e662b",
+    "nativeROM_sha256": "7edb75fc5a88b3a373e014116e7569e2cd0d1193f3a7412e92c7c0d164caf6f9",
+    "passed": true,
+    "scope": "Original floor and palettes restored; only400 bedside floor-background pixels differ from original capture. All other capture pixels exact."
   }
 }

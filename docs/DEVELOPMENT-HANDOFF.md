@@ -1,5 +1,13 @@
 # Development handoff
 
+## Darkrai bedside-only floor correction (6 November 2026)
+
+**Model: Codex | Reasoning: restore the original room and limit the repair to the reported bedside mismatch.**
+
+Owner rejected the broader floor replacement. Restored the pre-redesign room layouts and original palettes byte-exact from0a30deaa. Only the lower-layer floor backgrounds of native bed-side metatiles0x2d2/0x2d4 now match the existing GenericBuilding0x223 pattern. Two private tiles retain the exact bed-frame pixels. All other metatiles, original floor, wall, furniture, Mira, actors, scripts, collision and dream color scheme remain unchanged. No save-state or progression changes.
+
+Build, focused source/palette checks, idempotent generation and native mGBA bed/wing/chair/safe-wake/resolved-revisit checks passed. Compared against the original matched capture: exactly400 changed background pixels, confined to the two16x16 bedside cells; every other pixel is identical. One refreshed genuine capture replaces the preview. [Bound source/ROM/pixel receipt](designs/nightmare/bed-fix/verification.json). PR97 remains draft awaiting review; publicv0.0.76 unchanged. This supersedes the rejected whole-room floor replacement below. Candidate gates remain required before release.
+
 ## Darkrai room surroundings repaired (6 November 2026)
 
 **Model: Codex | Reasoning: inspect surrounding terrain and baked-in furniture backgrounds; preserve the accepted bed foreground.**
