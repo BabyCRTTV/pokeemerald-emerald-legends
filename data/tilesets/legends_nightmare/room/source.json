@@ -1,0 +1,16 @@
+{
+  "nativeInputs": {
+    "data/tilesets/secondary/generic_building/tiles.png": "7783d199aaaaa51db286c745ddc6907a576f2930767a2f52862128c39cf15be8",
+    "data/tilesets/secondary/generic_building/metatiles.bin": "c3401446239749a25f6abc1daab0c19cd43eb6333a7ec5335bb7e1580d002b1d",
+    "data/tilesets/secondary/generic_building/metatile_attributes.bin": "eb3e942c013770224ffc7d99c469cdaf9cd31243f71ce3fb05a70b278dc5a509"
+  },
+  "changedMetatiles": [
+    722,
+    724
+  ],
+  "allocatedTiles": [
+    512,
+    514
+  ],
+  "scope": "Only the two bed-side floor backgrounds match existing GenericBuilding 0x223. Original room floor, palettes, furniture, wall, maps, scripts and collisions retained."
+}

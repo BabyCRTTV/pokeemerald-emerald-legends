@@ -418,6 +418,7 @@ enum
 
 // Cave-only static legendary art; preserve native/dynamic graphics IDs.
 #define OBJ_EVENT_GFX_LEGENDS_WYRMTIDE_REGIDRAGO 0x0E00
+#define OBJ_EVENT_GFX_LEGENDS_MIRA_ASLEEP 0x0E01
 
 // Player-only appearance IDs live outside the native/dynamic ranges.
 // Keep NUM_OBJ_EVENT_GFX stable: old saves contain dynamic template IDs.

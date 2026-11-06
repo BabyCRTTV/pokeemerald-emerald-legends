@@ -1,5 +1,65 @@
 # Development handoff
 
+## v0.0.77 Darkrai approved for publication (6 November 2026)
+
+**Model: Codex | Reasoning: retain explicit visual approval and prepare one versioned release with existing safeguards.**
+
+Owner approved the final room at d1af3c6b and explicitly requested publication of all completed Darkrai work. The approved bedside-only floor repair and continuous top shadow are protected. AGENTS was reviewed; its standing rules retain native assemblies, matching underlays/palettes, scoped repairs and approved foregrounds. VERSION, menu labels, all three changelogs, website/browser patcher and new wiki quest guide are synchronized to v0.0.77. Encounter inputs are unchanged from the verified immutable wiki snapshot; its source-keyed art/profiles remain intact with the new release compatibility label. No art regeneration or additional game logic.
+
+Candidate and production Debug/Release/native/dual-decoder checks, patch publication and gated Pages/live verification remain required. Do not write to production during the guarded patch publisher; use the ignored release checkpoint until it finishes. [Single release record](qa/nightmare-v0.0.77.json). Prior quest/game/save and final-room evidence remain linked there with their actual limits.
+
+## Darkrai top-row shadow completed (6 November 2026)
+
+**Model: Codex | Reasoning: extend the existing shadow only where requested.**
+
+Owner approved the bedside floor repair at39460778, then requested the existing top-row shadow continue across the gap above the bed. Changed only three0x223 cells to native0x224 in Home and dream Bedroom. The original authoring helper already specifies this continuous row. All other layout words, tilesets, palettes, bed/furniture/sprite pixels, actors, scripts, collision/elevation and saved state remain unchanged.
+
+Build, focused source check and native mGBA bed/wing/chair/safe-wake/resolved-revisit passed. Matched capture comparison confines every changed pixel to the48x16 shadow gap above the bed; all other pixels equal the approved frame. One refreshed capture replaces the existing preview. [Bound evidence](designs/nightmare/bed-fix/verification.json). Keep PR97 draft; publicv0.0.76 unchanged. Candidate gates remain required before release.
+
+## Darkrai bedside-only floor correction (6 November 2026)
+
+**Model: Codex | Reasoning: restore the original room and limit the repair to the reported bedside mismatch.**
+
+Owner rejected the broader floor replacement. Restored the pre-redesign room layouts and original palettes byte-exact from0a30deaa. Only the lower-layer floor backgrounds of native bed-side metatiles0x2d2/0x2d4 now match the existing GenericBuilding0x223 pattern. Two private tiles retain the exact bed-frame pixels. All other metatiles, original floor, wall, furniture, Mira, actors, scripts, collision and dream color scheme remain unchanged. No save-state or progression changes.
+
+Build, focused source/palette checks, idempotent generation and native mGBA bed/wing/chair/safe-wake/resolved-revisit checks passed. Compared against the original matched capture: exactly400 changed background pixels, confined to the two16x16 bedside cells; every other pixel is identical. One refreshed genuine capture replaces the preview. [Bound source/ROM/pixel receipt](designs/nightmare/bed-fix/verification.json). PR97 remains draft awaiting review; publicv0.0.76 unchanged. This supersedes the rejected whole-room floor replacement below. Candidate gates remain required before release.
+
+## Darkrai room surroundings repaired (6 November 2026)
+
+**Model: Codex | Reasoning: inspect surrounding terrain and baked-in furniture backgrounds; preserve the accepted bed foreground.**
+
+Owner clarified the issue is around the bed, not the bed itself. Earlier passes focused too narrowly on the bed. The surrounding floor repeated heavy horizontal strips, the bedside tiles carried mismatched wall-shadow backgrounds, and the north-wall contact shadow had a gap. Two private room tileset wrappers now use exact native BrendansMaysHouse0x201 wood pixels, with matching floor under the existing furniture and a continuous back-wall contact shadow. Only eight otherwise unused private tile slots and unused loaded palette12 are needed. Native bed/frame foreground, Mira artwork, chair/plant foreground, behavior/collision/elevation, actors, scripts, warps, IDs and all shared/owner assets remain intact. Dream palette12 follows the existing private cold transform.
+
+Debug and the focused final-ROM native bed/wing/chair/safe-wake/resolved-revisit checks passed. Exact native wood RGB, all unchanged foreground layers/attributes, unchanged Mira art, idempotent pinned authoring and seasonal palette regressions passed. Reused prior unchanged battle/save evidence; no repeated local full battles or multi-panel exports. One refreshed native capture replaces the existing preview. [Bound source/ROM/native receipt](designs/nightmare/bed-fix/verification.json). Current candidate gates are required before release; PR97 stays draft and publicv0.0.76 unchanged. This correction awaits visual review.
+
+## Darkrai bed wall-context correction (6 November 2026)
+
+**Model: Codex | Reasoning: distinguish furniture from neighboring room-context tiles, preserve the working quest.**
+
+Owner correctly identified the wall tiles around the bed. The prior three-row assembly mistakenly included native wall-context0x2ca..2cc as a headboard. Removed only those three cells above the bed in each room, restoring matching wood floor. The complete native two-row bed, sleeping portrait, bedside paths, chair and every script/warp/ID remain unchanged. AGENTS now requires checking furniture in original map context, rather than inferring whole objects from neighboring atlas rows.
+
+Debug, focused assembly/source checks and the final-ROM native bed regression passed: sleeping interaction, Lunar Wing entry, chair, safe wake and resolved side revisit. One refreshed genuine capture replaces the previous bed preview. [Updated bound evidence](designs/nightmare/bed-fix/verification.json). The preceding d037fa8a candidate passed project checks and shared Debug/Release/native verification. This small correction has its own new candidate gates; no extra local battles or progression boards were generated. Keep PR97 draft and publicv0.0.76 unchanged; corrected bed awaits review.
+
+## Darkrai bed corrected, one capture requested (6 November 2026)
+
+**Model: Codex | Reasoning: complete native furniture and correct sprite layering with focused functional verification.**
+
+Owner approved the quest visuals and requested the bed fix, one capture only, and working interactions. Replaced the mistaken two-cell floor/left-edge selection with the complete native three-column headboard/pillow/sheet/footboard in Home and dream Bedroom. Native side underlays match the wood; feet/right approaches and wake position remain open. Moved the nearby chair and its dialogue target to6,3. Pillow elevation4 reveals the sleeping head above the opaque native bedding, and its original native pixels sit3px higher on the pillow. No shared artwork, persistent IDs, quest scripts, original maps, wardrobe or seasonal changes.
+
+Debug build and focused source/assembly checks passed. Full native capture/defeat/flee/loss/report/door/flash/Continue progression passed on the corrected layouts. After only the final portrait alignment, a focused final-ROM native run passed sleeping interaction, Lunar Wing entry, moved chair, safe wake and resolved side revisit. One genuine240x160 frame is presented at exact4x scale; prior progression boards retain their historical source. [Bed receipt and capture](designs/nightmare/bed-fix/verification.json). Added a reusable bed-only native mode to avoid repeating unrelated battles for portrait-only changes.
+
+Previous candidate42164957135 passed shared Debug/Release/native/decoder verification. Project run42164957128 exposed a shallow-checkout fixture issue: pinned baseline missing. The workflow now fetches that exact baseline before the existing comparison; no tests weakened. Updated candidate gates are pending. Keep PR97 draft and publicv0.0.76 unchanged; corrected bed awaits visual approval. [Current quest evidence](qa/nightmare-quest.json).
+
+## Darkrai nightmare quest implemented, native visual review ready (5 November 2026)
+
+**Model: GPT-6 (Codex) | Reasoning: complete the approved personal mystery and prove progression with actual compiled-game inputs and captures.**
+
+Owner requested When Morning Never Comes after capture or defeat of Regidrago, plus progression visuals. Branch codex/darkrai-nightmare starts at publicv0.0.76 /2b99c655. Elias calls once after eight safe outdoor steps. His daughter Mira sleeps in a new complete native Lilycove home; the Mt Pyre caretaker provides a real Lunar Wing Key Item while retaining the Cleanse Tag grant. An empty dream bedroom, deserted city, Mira's echo and a wrong door lead to the complete native moonless shore and level80 Darkrai. Capture or defeat wakes Mira; report to Elias completes appended quest64. Defeat preserves later capture; the bed offers safe exits and post-quest revisits. Private palettes/guarded water battle background match the setting. Darkrai has a full temporary silhouette footprint and a clear approach, restored after capture.
+
+Local Debug, allocation/production-C/ID/native-assembly/save-width and seasonal palette checks passed. Native mGBA tested the call, real house and both exit lanes, investigation, actual wing/Cleanse Tag grants, decline/entry, dream/echo/shore walking, Darkrai capture/defeat/escape/blackout, awakening/report, post-quest revisit, both shore exits, cleared caught footprint and flash persistence. A controlled older-style Lilycove wall-position save passed actual flash/load/Continue relocation with walking afterward. All old serialized offsets remain intact. [Single bound verification record](qa/nightmare-quest.json), [quest guide](features/when-morning-never-comes.md).
+
+All61 host checks passed, with journal progression extended explicitly to65 quests while preserving130 achievements and saved tracking behavior. The final gallery contains11 ordered panels from22 fresh native frames, with exact3x RGB scaling verified. [Native progression gallery](designs/nightmare/README.md). Candidate Release/independent-patch gates are next. This remains an unshipped review with new visuals awaiting owner approval. Keep master/publicv0.0.76 unchanged. No authentic historical-owner-save matrix, natural full-story, Release-emulator or Pizza Boy claim. Preserve every approved Wyrmtide/player/seasonal/wardrobe asset and later Porymap edits.
+
 ## v0.0.76 Wyrmtide published and live verified (5 November 2026)
 
 **Model: GPT-6 (Codex) | Reasoning: ship the explicitly approved result and verify actual downloads.**

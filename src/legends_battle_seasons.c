@@ -3,6 +3,7 @@
 #include "graphics.h"
 #include "legends_battle_seasons.h"
 #include "legends_seasons.h"
+#include "legends_nightmare.h"
 #include "palette.h"
 
 void LegendsLoadBattleSeasonPalette(u16 environment, const u16 *source)
@@ -10,6 +11,21 @@ void LegendsLoadBattleSeasonPalette(u16 environment, const u16 *source)
     u16 colors[3 * 16];
     u32 i;
     u8 season;
+    if (LegendsNightmareIsShore() && (gBattleTypeFlags & BATTLE_TYPE_LEGENDARY))
+    {
+        // Only the new scripted dream battle; sprites/UI and all other battle
+        // palettes remain native. Match the private cold shoreline materials.
+        for (i = 0; i < ARRAY_COUNT(colors); i++)
+        {
+            u16 color = source[i];
+            u32 r = color & 31, g = (color >> 5) & 31, b = (color >> 10) & 31;
+            colors[i] = ((r * 43 + b * 8 + 50) / 100)
+                      | (((g * 46 + b * 8 + 50) / 100) << 5)
+                      | (((b * 63 + r * 8 + 50) / 100) << 10);
+        }
+        LoadPalette(colors, BG_PLTT_ID(2), sizeof(colors));
+        return;
+    }
     if ((environment != BATTLE_ENVIRONMENT_GRASS
       && environment != BATTLE_ENVIRONMENT_LONG_GRASS
       && environment != BATTLE_ENVIRONMENT_PLAIN)

@@ -1811,6 +1811,12 @@ EventScript_PalletTown_PlayersHouse_2F_TurnOnPC::
 	.include "data/maps/LegendsHoenn_ContinentalVault/scripts.inc"
 	.include "data/scripts/legends_story_common.inc"
 	.include "data/scripts/legends_wyrmtide.inc"
+	.include "data/scripts/legends_nightmare.inc"
+	.include "data/maps/LegendsNightmare_Home/scripts.inc"
+	.include "data/maps/LegendsNightmare_Bedroom/scripts.inc"
+	.include "data/maps/LegendsNightmare_Street/scripts.inc"
+	.include "data/maps/LegendsNightmare_Shore/scripts.inc"
+
 	.include "data/maps/LegendsWyrmtide_Isle/scripts.inc"
 	.include "data/maps/LegendsWyrmtide_Descent1/scripts.inc"
 	.include "data/maps/LegendsWyrmtide_Descent2/scripts.inc"

@@ -70,6 +70,8 @@ static const struct LegendsQuest sQuests[] =
     // ID 63: optional voyage after the Sleeping Continent report.
     {COMPOUND_STRING("The Maker's Last Dream"), FLAG_LEGENDS_WYRMTIDE_CALL, 1, 4, {{COMPOUND_STRING("Sail from DEWFORD with BRINEY"), FLAG_LEGENDS_WYRMTIDE_LANDED}, {COMPOUND_STRING("Solve the island's ancient seal"), FLAG_LEGENDS_WYRMTIDE_SEAL_OPEN}, {COMPOUND_STRING("Meet the dragon beneath the isle"), FLAG_LEGENDS_WYRMTIDE_CALMED}, {COMPOUND_STRING("Return to BRINEY on the shore"), FLAG_LEGENDS_WYRMTIDE_REPORT}}},
 
+    // ID64: optional Nightmare quest after either Regidrago outcome.
+    {COMPOUND_STRING("When Morning Never Comes"), FLAG_LEGENDS_NIGHTMARE_CALL, 1, 4, {{COMPOUND_STRING("Visit MIRA in LILYCOVE"), FLAG_LEGENDS_NIGHTMARE_VISITED}, {COMPOUND_STRING("Seek a LUNAR WING at MT. PYRE"), FLAG_LEGENDS_NIGHTMARE_WING}, {COMPOUND_STRING("Free MIRA from the nightmare"), FLAG_LEGENDS_NIGHTMARE_RESOLVED}, {COMPOUND_STRING("Speak to her father again"), FLAG_LEGENDS_NIGHTMARE_REPORTED}}},
 };
 static const struct LegendsAchievement sAchievements[] =
 {

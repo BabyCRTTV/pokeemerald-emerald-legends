@@ -2571,3 +2571,7 @@ static const struct SpriteFrameImage sPicTable_MomFrlg[] = {
 };
 
 #endif // IS_FRLG
+
+static const struct SpriteFrameImage sPicTable_MiraAsleep[] = {
+    overworld_ascending_frames(gObjectEventPic_MiraAsleep, 2, 2),
+};

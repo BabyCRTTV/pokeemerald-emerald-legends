@@ -1,0 +1,29 @@
+{
+  "version": "0.0.77",
+  "approval": {
+    "source": "d1af3c6bee9482f23c1adf40171d6f7dcbdf200a",
+    "date": "2026-11-06",
+    "instruction": "You did it! Continue to retain this kind of stuff in your mind. Ok, publish it all"
+  },
+  "implementation": "nightmare-quest.json",
+  "approvedRoom": "../designs/nightmare/bed-fix/verification.json",
+  "scope": "Complete When Morning Never Comes quest with approved bedside-only underlay and top-shadow corrections.",
+  "encounters": {
+    "unchangedInputs": [
+      "src/data/wild_encounters.json",
+      "src/data/legends_seasonal_encounters.h",
+      "src/data/pokemon/species_info"
+    ],
+    "retainedSource": "680732553661a9e062f3fd5a291cf3ac99485f97",
+    "reason": "No random encounters or species data changed; scripted Darkrai documented in new wiki article."
+  },
+  "limits": "Controlled native fixtures; no authentic historical-owner-save matrix, uninterrupted natural full-story or Pizza Boy claim.",
+  "status": "Versioned release candidate prepared; candidate/production/patch/Pages/live gates pending.",
+  "localValidation": {
+    "hostChecks": 61,
+    "hostChecksPassed": 61,
+    "wikiReaderAndEncounters": "passed",
+    "patcher": "passed",
+    "approvedArt": "No data, graphics or gameplay source changed after approval; only menu version strings changed."
+  }
+}

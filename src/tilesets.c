@@ -12,3 +12,5 @@
 #include "data/tilesets/legends_bedroom.h"
 
 #include "data/tilesets/legends_wyrmtide.h"
+#include "data/tilesets/legends_nightmare_room.h"
+#include "data/tilesets/legends_nightmare.h"

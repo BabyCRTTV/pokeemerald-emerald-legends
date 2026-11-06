@@ -1054,6 +1054,8 @@ enum __attribute__((packed)) Item
 
     // Legends travel invitation; append without renumbering existing items.
     ITEM_INVITE_TICKET = 874,
+    // Nightmare quest: within the existing110-byte saved item-history bitmap.
+    ITEM_LUNAR_WING = 875,
 
     ITEMS_COUNT,
     ITEM_FIELD_ARROW = ITEMS_COUNT,

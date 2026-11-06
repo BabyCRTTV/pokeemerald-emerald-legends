@@ -4,6 +4,7 @@ MtPyre_1F_MapScripts::
 MtPyre_1F_EventScript_CleanseTagWoman::
 	lock
 	faceplayer
+	call Nightmare_Keeper
 	goto_if_set FLAG_RECEIVED_CLEANSE_TAG, MtPyre_1F_EventScript_ReceivedCleanseTag
 	msgbox MtPyre_1F_Text_TakeThisForYourOwnGood, MSGBOX_DEFAULT
 	giveitem ITEM_CLEANSE_TAG

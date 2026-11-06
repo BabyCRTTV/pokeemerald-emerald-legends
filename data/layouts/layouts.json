@@ -10595,6 +10595,50 @@
       "border_filepath": "data/layouts/LegendsWyrmtide_Heart/border.bin",
       "blockdata_filepath": "data/layouts/LegendsWyrmtide_Heart/map.bin",
       "layout_version": "emerald"
+    },
+    {
+      "id": "LAYOUT_LEGENDS_NIGHTMARE_HOME",
+      "name": "LegendsNightmare_Home_Layout",
+      "width": 12,
+      "height": 10,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_NightmareHomeInterior",
+      "border_filepath": "data/layouts/LegendsNightmare_Home/border.bin",
+      "blockdata_filepath": "data/layouts/LegendsNightmare_Home/map.bin",
+      "layout_version": "emerald"
+    },
+    {
+      "id": "LAYOUT_LEGENDS_NIGHTMARE_BEDROOM",
+      "name": "LegendsNightmare_Bedroom_Layout",
+      "width": 12,
+      "height": 10,
+      "primary_tileset": "gTileset_NightmareBuilding",
+      "secondary_tileset": "gTileset_NightmareInterior",
+      "border_filepath": "data/layouts/LegendsNightmare_Bedroom/border.bin",
+      "blockdata_filepath": "data/layouts/LegendsNightmare_Bedroom/map.bin",
+      "layout_version": "emerald"
+    },
+    {
+      "id": "LAYOUT_LEGENDS_NIGHTMARE_STREET",
+      "name": "LegendsNightmare_Street_Layout",
+      "width": 80,
+      "height": 40,
+      "primary_tileset": "gTileset_NightmareGeneral",
+      "secondary_tileset": "gTileset_NightmareLilycove",
+      "border_filepath": "data/layouts/LegendsNightmare_Street/border.bin",
+      "blockdata_filepath": "data/layouts/LegendsNightmare_Street/map.bin",
+      "layout_version": "emerald"
+    },
+    {
+      "id": "LAYOUT_LEGENDS_NIGHTMARE_SHORE",
+      "name": "LegendsNightmare_Shore_Layout",
+      "width": 33,
+      "height": 30,
+      "primary_tileset": "gTileset_NightmareGeneral",
+      "secondary_tileset": "gTileset_NightmareRustboro",
+      "border_filepath": "data/layouts/LegendsNightmare_Shore/border.bin",
+      "blockdata_filepath": "data/layouts/LegendsNightmare_Shore/map.bin",
+      "layout_version": "emerald"
     }
   ]
 }

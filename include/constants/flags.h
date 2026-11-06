@@ -1315,6 +1315,16 @@
 #define FLAG_UNUSED_0x497                                           0x497 // Unused Flag
 #define FLAG_UNUSED_0x498                                           0x498 // Unused Flag
 #define FLAG_UNUSED_0x499                                           0x499 // Unused Flag
+// When Morning Never Comes: unused native flags, append-only progression.
+#define FLAG_LEGENDS_NIGHTMARE_CALL         0x49A
+#define FLAG_LEGENDS_NIGHTMARE_VISITED      0x49B
+#define FLAG_LEGENDS_NIGHTMARE_WING         0x49C
+#define FLAG_LEGENDS_NIGHTMARE_ENTERED      0x49D
+#define FLAG_LEGENDS_NIGHTMARE_VOICE        0x49E
+#define FLAG_LEGENDS_NIGHTMARE_RESOLVED     0x49F
+#define FLAG_LEGENDS_NIGHTMARE_CAUGHT       0x4A0
+#define FLAG_LEGENDS_NIGHTMARE_REPORTED     0x4A1
+
 #define FLAG_UNUSED_0x49A                                           0x49A // Unused Flag
 #define FLAG_UNUSED_0x49B                                           0x49B // Unused Flag
 #define FLAG_UNUSED_0x49C                                           0x49C // Unused Flag

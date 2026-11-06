@@ -1,0 +1,460 @@
+{
+  "model": "GPT-6 (Codex)",
+  "base": "2b99c6555954d6284a8d4ebee488e349a8e05a61",
+  "status": "Owner clarified the problem is the surrounding room, not the bed. Native wooden floor, matching furniture underlays and continuous wall contact shadow repaired privately. Final native interactions passed; single refreshed capture awaiting review. Unshipped.",
+  "authorization": "Owner approved the proposed Darkrai story and requested implementation plus genuine progression visuals.",
+  "branch": "codex/darkrai-nightmare",
+  "impact": [
+    "One-time safe outdoor call after Regidrago CALMED (capture or defeat)",
+    "Bounded16-cell complete-house addition in Lilycove; old events and warp indices retained",
+    "Four appended maps and quest64; no Wyrmtide map/art edits",
+    "Eight audited native flag candidates0x49a..0x4a1; no native var reservation",
+    "Lunar Wing875 appended within existing110-byte itemFlags bitmap; preserve save offsets",
+    "Private native dream palettes, head/pillow composition; existing original source art retained",
+    "Level80 Darkrai capture/defeat wakes Mira; flee/loss retries; defeat retains later capture opportunity",
+    "Mt Pyre caretaker original Cleanse Tag grant continues"
+  ],
+  "next": "Review the surrounding room correction and updated candidate gates. Preserve approved quest and bed foreground; no publication authorization. Publicv0.0.76 remains unchanged.",
+  "native": {
+    "version": "0.0.76 + unshipped Darkrai review",
+    "ROM_sha256": "40e1e622c3c698c9364d25d6fa20753f0f7fc3ef1a2524a1436ac9200fafc3f4",
+    "emulator": "mGBA0.10.2 native core",
+    "ELF_sha256": "25982a3e7dd7760346efde23d807b01c1bb8998cac9bb21bbe257503f076204e",
+    "harness_sha256": {
+      "arm.c": "d5e8b4e7cc7e6ee13544746cca6ec54bca0e6f2e1fa8c4b8d22713b00447cdeb",
+      "host.c": "ad9e2e1547bfc2a63ff117489dc072c22ec58f99c1402ba8797524dbfccc742b",
+      "run.py": "c4671a2aadc277124699ac3c0dd9f2e2712ecd23dde6381a6c3ac919a99d4fa3"
+    },
+    "passed": true,
+    "setup": "Controlled fresh fixtures; actual compiled map/script/battle engine and real controller inputs. Scene cuts only between independent test cases; no synthetic gameplay images.",
+    "limits": "Not a natural full-story playthrough, authentic historical owner-save matrix, Release emulator or Pizza Boy test.",
+    "log": "map=0/5 xy=50,16 flags=07 wing=1 battle=0 script=0 party=1 outcome=0 state=0\nmap=76/10 xy=6,5 flags=07 wing=1 battle=0 script=0 party=1 outcome=0 state=0\nmap=24/15 xy=21,3 flags=07 wing=1 battle=0 script=0 party=1 outcome=0 state=0\nmap=76/11 xy=6,6 flags=0f wing=1 battle=0 script=0 party=1 outcome=0 state=0\nmap=76/12 xy=50,16 flags=07 wing=1 battle=0 script=0 party=1 outcome=0 state=0\nmap=76/13 xy=14,22 flags=07 wing=1 battle=0 script=0 party=1 outcome=0 state=0\nmap=76/10 xy=6,5 flags=00 wing=0 battle=0 script=0 party=1 outcome=0 state=0\nmap=0/11 xy=8,11 flags=00 wing=0 battle=0 script=0 party=1 outcome=0 state=0\nmap=0/11 xy=8,11 flags=00 wing=0 battle=0 script=0 party=1 outcome=0 state=0\nPASS no call before a successful Regidrago outcome\nmap=0/11 xy=8,11 flags=00 wing=0 battle=0 script=0 party=1 outcome=0 state=0\nmap=0/11 xy=8,11 flags=01 wing=0 battle=0 script=1 party=1 outcome=0 state=0\nmap=0/11 xy=8,11 flags=01 wing=0 battle=0 script=0 party=1 outcome=0 state=0\nmap=0/11 xy=8,11 flags=01 wing=0 battle=0 script=0 party=1 outcome=0 state=0\nPASS native eight-step one-time call and persisted progress\nmap=0/5 xy=50,16 flags=01 wing=0 battle=0 script=0 party=1 outcome=0 state=0\nmap=0/5 xy=50,16 flags=01 wing=0 battle=0 script=0 party=1 outcome=0 state=0\nmap=0/5 xy=50,16 flags=01 wing=0 battle=0 script=0 party=1 outcome=0 state=0\nPASS older-style Lilycove wall-position flash/load and real Continue relocation\nmap=76/10 xy=5,9 flags=01 wing=0 battle=0 script=0 party=1 outcome=0 state=0\nmap=76/10 xy=6,5 flags=01 wing=0 battle=0 script=0 party=1 outcome=0 state=0\nmap=76/10 xy=6,5 flags=03 wing=0 battle=0 script=0 party=1 outcome=0 state=0\nmap=76/10 xy=8,5 flags=03 wing=0 battle=0 script=0 party=1 outcome=0 state=0\nmap=76/10 xy=8,5 flags=03 wing=0 battle=0 script=0 party=1 outcome=0 state=0\nmap=0/5 xy=50,16 flags=03 wing=0 battle=0 script=0 party=1 outcome=0 state=0\nmap=76/10 xy=5,9 flags=03 wing=0 battle=0 script=0 party=1 outcome=0 state=0\nmap=0/5 xy=50,16 flags=03 wing=0 battle=0 script=0 party=1 outcome=0 state=0\nmap=76/10 xy=5,9 flags=03 wing=0 battle=0 script=0 party=1 outcome=0 state=0\nPASS native new-house door, father investigation, bed and both exit lanes\nmap=24/15 xy=21,3 flags=03 wing=0 battle=0 script=0 party=1 outcome=0 state=0\nmap=24/15 xy=21,3 flags=07 wing=1 battle=0 script=0 party=1 outcome=0 state=0\nPASS actual Lunar Wing key item and unchanged Cleanse Tag grant, no duplicate wing, native flash save/load\nmap=76/10 xy=6,5 flags=07 wing=1 battle=0 script=0 party=1 outcome=0 state=0\nmap=76/10 xy=8,5 flags=07 wing=1 battle=0 script=0 party=1 outcome=0 state=0\nmap=76/10 xy=8,5 flags=07 wing=1 battle=0 script=0 party=1 outcome=0 state=0\nmap=76/11 xy=6,6 flags=0f wing=1 battle=0 script=0 party=1 outcome=0 state=0\nmap=76/11 xy=7,5 flags=0f wing=1 battle=0 script=0 party=1 outcome=0 state=0\nmap=76/12 xy=50,16 flags=0f wing=1 battle=0 script=0 party=1 outcome=0 state=0\nmap=76/12 xy=53,18 flags=0f wing=1 battle=0 script=0 party=1 outcome=0 state=0\nmap=76/12 xy=53,18 flags=1f wing=1 battle=0 script=0 party=1 outcome=0 state=0\nmap=76/13 xy=14,6 flags=1f wing=1 battle=0 script=0 party=1 outcome=0 state=0\nmap=76/13 xy=14,22 flags=1f wing=1 battle=0 script=0 party=1 outcome=0 state=0\nmap=76/10 xy=7,5 flags=7f wing=1 battle=0 script=0 party=2 outcome=7 state=0\nmap=76/10 xy=6,5 flags=7f wing=1 battle=0 script=0 party=2 outcome=7 state=0\nmap=76/10 xy=6,5 flags=ff wing=1 battle=0 script=0 party=2 outcome=7 state=0\nPASS actual bed-to-dream-room-to-street-to-shore walking, echo, Darkrai capture, awakening and father completion\nmap=76/13 xy=14,22 flags=7f wing=1 battle=0 script=0 party=1 outcome=0 state=0\nmap=76/13 xy=12,22 flags=7f wing=1 battle=0 script=0 party=1 outcome=0 state=0\nPASS caught Darkrai is absent and its full footprint is walkable on revisit\nmap=76/13 xy=14,22 flags=1f wing=1 battle=0 script=0 party=1 outcome=0 state=0\nmap=76/13 xy=14,22 flags=1f wing=1 battle=0 script=0 party=1 outcome=4 state=0\nmap=76/10 xy=7,5 flags=3f wing=1 battle=0 script=0 party=1 outcome=1 state=0\nmap=76/10 xy=9,4 flags=3f wing=1 battle=0 script=0 party=1 outcome=1 state=0\nmap=76/11 xy=6,6 flags=3f wing=1 battle=0 script=0 party=1 outcome=1 state=0\nPASS escape, defeat awakening, retained catch opportunity and post-resolution dream revisit\nmap=76/11 xy=8,5 flags=3f wing=1 battle=0 script=0 party=1 outcome=1 state=0\nmap=76/10 xy=7,5 flags=3f wing=1 battle=0 script=0 party=1 outcome=1 state=0\nPASS safe wake-up route from the dream bedroom\nmap=76/13 xy=14,22 flags=1f wing=1 battle=0 script=0 party=1 outcome=0 state=0\nmap=76/12 xy=55,16 flags=1f wing=1 battle=0 script=0 party=1 outcome=0 state=0\nmap=76/13 xy=14,22 flags=1f wing=1 battle=0 script=0 party=1 outcome=0 state=0\nmap=76/12 xy=55,16 flags=1f wing=1 battle=0 script=0 party=1 outcome=0 state=0\nPASS both native shore exit lanes\nmap=76/13 xy=14,22 flags=1f wing=1 battle=0 script=0 party=1 outcome=0 state=0\nmap=13/6 xy=7,4 flags=1f wing=1 battle=0 script=0 party=1 outcome=2 state=0\nPASS actual loss/blackout preserves unfinished quest and wing\nPASS complete native Nightmare progression and retry suite\n",
+    "images": {
+      "00-before-the-call.png": "38599fe2d4a8501cb8658b405debfdbfa0681f17f40b4c7afe546f8bea34d0f7",
+      "01-unknown-number.png": "d9db385dbf79c7b64c78bf540d025e6d94d19fa3a81ffd277337568e74d5a881",
+      "01b-fathers-plea.png": "8fb25bab867eabe87076e46a6b7b0e2bbfe1e50ed7f2d57e689f33d4e4557ba5",
+      "01c-elias-and-briney.png": "5785ba52085e63d2448b4ed0312955884dea6b172868408b4bbe23853b20ada2",
+      "01d-daughter-wont-wake.png": "68c9300ec3b1f4fbf4be93a470078db026fb8940bb7615dc47530fda29183675",
+      "02-father-at-the-bedside.png": "7fe5a94b069b25b62e5bea5aa9144ed290dbce90d2c6a06794e12553aced75ef",
+      "03-miras-slumber.png": "26468a49c5daa7ab2deabc4623df97ae1fc6f99d44d4f7656324d2cac78eda0f",
+      "04-mt-pyre-caretaker.png": "91c0e09a87c40d02ceab53261eb986d54e768061b1a0d76d3bfaab7113e9fb79",
+      "05-lunar-wing-at-the-bed.png": "2b073d932f8e4c7124843c1df043beb2bbfe119987bc77b1bc316d698753c028",
+      "06-empty-dream-bedroom.png": "c196ee267dd32065eaa4e4c5fb0c13e8557bb861cee26bcabe71103b299650a9",
+      "06b-the-empty-chair.png": "e979b28393d97b82e7bec94186f63baabc1a40ce88f87f3f721279ecf6c93dad",
+      "07-deserted-lilycove.png": "fd7eed31ab374afd82a77b832be8f5ec7a65a76b79114ec0691a7894395ebc6a",
+      "08-miras-echo.png": "add8b9809075a7ee31a7ad8e21fcada48598a6cf43f187c938da300d97c9c678",
+      "09-the-wrong-door.png": "b3b33d7a827b7ad17cb75de6e6681a514f70a2d42c369f68cd3e816119fcafa1",
+      "10-moonless-shore.png": "a96867b0e93d707bd7c07bff1311eee920ff1e89775159ee4acc332acd8a4707",
+      "11-darkrai-battle.png": "6cc0565a52bed8401fce2e59562e54375b6b2dc8a5a6e55e40999d0a489cfe09",
+      "12-mira-awakens.png": "5cb6d73695fc388aade4c55428627b47b8e204a5aa5a0416ba22bcad946eecba",
+      "13-miras-return.png": "546096338a7fbb6f30a05da00df213708edf069a50d50518571fabfd67dd13b6",
+      "14-fathers-thanks.png": "34712ce2ce7569f8b561b9039bb3b83ad84ea4608935660bb660cd163a20bf62",
+      "15-escape-retry.png": "bb33b286281fcc66f0ca00afcf235dce5a9f5a2b16d59f202c47f208b615a9cb",
+      "16-defeat-also-wakes-mira.png": "5cb6d73695fc388aade4c55428627b47b8e204a5aa5a0416ba22bcad946eecba",
+      "17-blackout-safe.png": "7df2df247cb6311a8a3e810757003803f01a570ad9812688d2af5666dfce6a22"
+    }
+  },
+  "localChecks": [
+    "test/legends-nightmare.test.py passed",
+    "test/legends-item-descriptions.test.py passed with all saved offsets unchanged",
+    "test/legends-season-scenes.test.py passed with new guarded dream terrain palette and all old exclusions",
+    "13 shared-build regression cases passed with14 native receipts",
+    "16 site-promotion regression cases passed"
+  ],
+  "visualReference": {
+    "vanilla": "Complete native Lilycove house and House1 wall/furniture assemblies; complete Southern Island coast/stairs/pier",
+    "EmeraldCrest": "Official ThatSimpleDev gallery reviewed for building/grass setbacks, consistent night materials and player/large-Pokemon clearance. No Crest artwork imported.",
+    "url": "https://thatsimpledev.itch.io/emerald-crest"
+  },
+  "saveCompatibility": "Lunar Wing875 keeps bitmap110 bytes; original SaveBlock3 offsets and1032-byte size preserved. Four appended maps/layouts and quest64; flags0x49a..0x4a1 audited in both native namespaces. Controlled older-style wall-position flash/load and actual Continue repair passed; not an authentic historical owner battery save.",
+  "verifiedGameSource": "bd9dd0fc2fe05fe7a147eddef992eb3b368c4c21",
+  "fullHostChecks": [
+    {
+      "name": "Exercise shared build provenance and publication guards",
+      "passed": true
+    },
+    {
+      "name": "Exercise staged site gates, interrupted promotion and stale snapshots",
+      "passed": true
+    },
+    {
+      "name": "Exercise isolated seasonal QA workers and exact coverage",
+      "passed": true
+    },
+    {
+      "name": "Exercise release verification regressions",
+      "passed": true
+    },
+    {
+      "name": "Exercise browser patcher regression tests",
+      "passed": true
+    },
+    {
+      "name": "Exercise seasonal engine regression tests",
+      "passed": true
+    },
+    {
+      "name": "Exercise hidden grotto review geometry and preserved map IDs",
+      "passed": true
+    },
+    {
+      "name": "Exercise dual Eon progression and save compatibility",
+      "passed": true
+    },
+    {
+      "name": "Exercise persistent grotto encounters and cooldowns",
+      "passed": true
+    },
+    {
+      "name": "Exercise seasonal battle scenes and Kanto foliage",
+      "passed": true
+    },
+    {
+      "name": "Exercise dynamic weather regression tests",
+      "passed": true
+    },
+    {
+      "name": "Exercise starter and rival regression tests",
+      "passed": true
+    },
+    {
+      "name": "Exercise Options navigation regression tests",
+      "passed": true
+    },
+    {
+      "name": "Exercise Options text regression tests",
+      "passed": true
+    },
+    {
+      "name": "Exercise New Game Options regression tests",
+      "passed": true
+    },
+    {
+      "name": "Exercise native follower regression tests",
+      "passed": true
+    },
+    {
+      "name": "Exercise upstream held-item integration",
+      "passed": true
+    },
+    {
+      "name": "Exercise first-item history and compatible save sectors",
+      "passed": true
+    },
+    {
+      "name": "Exercise Wyrmtide progression, native flag allocation and stair topology",
+      "passed": true
+    },
+    {
+      "name": "Exercise Nightmare call, append-only IDs, native assemblies and old-save position repair",
+      "passed": true
+    },
+    {
+      "name": "Exercise quest progression and achievement claims",
+      "passed": true
+    },
+    {
+      "name": "Achievement notice lifecycle",
+      "passed": true
+    },
+    {
+      "name": "Journal selection rendering and input",
+      "passed": true
+    },
+    {
+      "name": "Exercise lossless expanded storage codec",
+      "passed": true
+    },
+    {
+      "name": "Exercise pause panel regression tests",
+      "passed": true
+    },
+    {
+      "name": "Exercise Adventure Log persistence, days and milestones",
+      "passed": true
+    },
+    {
+      "name": "Exercise Adventure Log notebook and filters",
+      "passed": true
+    },
+    {
+      "name": "Exercise scrolling pause menu",
+      "passed": true
+    },
+    {
+      "name": "Exercise real/manual clocks and saved fallback",
+      "passed": true
+    },
+    {
+      "name": "Exercise DexNav encounter proximity and approach rules",
+      "passed": true
+    },
+    {
+      "name": "Exercise player appearance regression tests",
+      "passed": true
+    },
+    {
+      "name": "Exercise visual polish regression tests",
+      "passed": true
+    },
+    {
+      "name": "Verify player appearance art",
+      "passed": true
+    },
+    {
+      "name": "Verify DexNav icon geometry against the native asset catalogue",
+      "passed": true
+    },
+    {
+      "name": "Verify native window frame assets and selection",
+      "passed": true
+    },
+    {
+      "name": "Verify native hair / coat 4bpp layer geometry",
+      "passed": true
+    },
+    {
+      "name": "Verify footwear compositor and protected sprite colors",
+      "passed": true
+    },
+    {
+      "name": "Verify v0.0.46 artwork and isolated smile/body colors",
+      "passed": true
+    },
+    {
+      "name": "Verify approved Side Part head and native animation frames",
+      "passed": true
+    },
+    {
+      "name": "Verify approved front-face shading and unchanged other views",
+      "passed": true
+    },
+    {
+      "name": "Verify approved parent skin tones and palette isolation",
+      "passed": true
+    },
+    {
+      "name": "Exercise scrolling intro hairstyles",
+      "passed": true
+    },
+    {
+      "name": "Bedroom colors, memories and safe floor decoration",
+      "passed": true
+    },
+    {
+      "name": "Homecoming conversations, native priority and save-safe memory",
+      "passed": true
+    },
+    {
+      "name": "Birch field request selection, abandonment and atomic rewards",
+      "passed": true
+    },
+    {
+      "name": "Verify read-only Living Hoenn dialogue and story priorities",
+      "passed": true
+    },
+    {
+      "name": "Exercise wardrobe navigation and access",
+      "passed": true
+    },
+    {
+      "name": "Verify layered accessories and wardrobe furniture",
+      "passed": true
+    },
+    {
+      "name": "Verify native costume assets and striped Sport shorts",
+      "passed": true
+    },
+    {
+      "name": "Exercise Da Bug gift and species integration",
+      "passed": true
+    },
+    {
+      "name": "Exercise Kanto invitation, ferry, welcome and map integration",
+      "passed": true
+    },
+    {
+      "name": "Exercise empty Kanto foundation and Surf passage",
+      "passed": true
+    },
+    {
+      "name": "Kanto challenge progression",
+      "passed": true
+    },
+    {
+      "name": "Kanto Borrowed Voice progression and Trainer Card badges",
+      "passed": true
+    },
+    {
+      "name": "Kanto Quiet Current and native wild levels",
+      "passed": true
+    },
+    {
+      "name": "Three expeditions and the Hoenn weather intermission",
+      "passed": true
+    },
+    {
+      "name": "Wing Survey finale and native Mew outcomes",
+      "passed": true
+    },
+    {
+      "name": "Isolated outdoor night lights and native DNS blending",
+      "passed": true
+    },
+    {
+      "name": "Region map browsing",
+      "passed": true
+    },
+    {
+      "name": "Exercise prepared battle sheets and wardrobe refresh",
+      "passed": true
+    },
+    {
+      "name": "Verify Legends project metadata",
+      "passed": true
+    }
+  ],
+  "fullHostCheckCount": 61,
+  "gallery": {
+    "ROM_sha256": "40e1e622c3c698c9364d25d6fa20753f0f7fc3ef1a2524a1436ac9200fafc3f4",
+    "native_proof_sha256": "4b7b7ecf2ebe106b77dcc23b0c9c8b7ba9bb57e4d5a67c4d060e768f05a3e0a7",
+    "panels": {
+      "01-Darkrai-The-Call.png": [
+        {
+          "source": "01d-daughter-wont-wake.png",
+          "rectangle": [
+            24,
+            160,
+            744,
+            640
+          ]
+        },
+        {
+          "source": "03-miras-slumber.png",
+          "rectangle": [
+            24,
+            702,
+            744,
+            1182
+          ]
+        },
+        {
+          "source": "04-mt-pyre-caretaker.png",
+          "rectangle": [
+            24,
+            1244,
+            744,
+            1724
+          ]
+        }
+      ],
+      "02-Darkrai-Into-The-Dream.png": [
+        {
+          "source": "05-lunar-wing-at-the-bed.png",
+          "rectangle": [
+            24,
+            160,
+            744,
+            640
+          ]
+        },
+        {
+          "source": "06-empty-dream-bedroom.png",
+          "rectangle": [
+            24,
+            702,
+            744,
+            1182
+          ]
+        },
+        {
+          "source": "07-deserted-lilycove.png",
+          "rectangle": [
+            24,
+            1244,
+            744,
+            1724
+          ]
+        },
+        {
+          "source": "08-miras-echo.png",
+          "rectangle": [
+            24,
+            1786,
+            744,
+            2266
+          ]
+        }
+      ],
+      "03-Darkrai-Awakening.png": [
+        {
+          "source": "10-moonless-shore.png",
+          "rectangle": [
+            24,
+            160,
+            744,
+            640
+          ]
+        },
+        {
+          "source": "11-darkrai-battle.png",
+          "rectangle": [
+            24,
+            702,
+            744,
+            1182
+          ]
+        },
+        {
+          "source": "13-miras-return.png",
+          "rectangle": [
+            24,
+            1244,
+            744,
+            1724
+          ]
+        },
+        {
+          "source": "14-fathers-thanks.png",
+          "rectangle": [
+            24,
+            1786,
+            744,
+            2266
+          ]
+        }
+      ]
+    },
+    "board_sha256": {
+      "01-Darkrai-The-Call.png": "91a064c6916fb340f51d78a8cd8f8d0660c6ddcf9ccb075c42cfe488d58a8887",
+      "02-Darkrai-Into-The-Dream.png": "063083adf9202fc147f94e3daf36521ecb951c25742221a2bc89df2232beaa4c",
+      "03-Darkrai-Awakening.png": "c7ce62f56392a2ec1da9203841eaf475c95d2f40b8cf9e77ac884611861c4c3f"
+    },
+    "pixelVerification": "Every game panel resizes back to the exact240x160 RGB source; no overlays or repainted pixels."
+  },
+  "nativeGallery": "docs/designs/nightmare/README.md",
+  "bedCorrection": "docs/designs/nightmare/bed-fix/verification.json",
+  "candidateAt3cc33457": {
+    "nativeDebugReleaseAndDecoders": "42164957135 native verification job127719155893 passed; publisher skipped as expected for PR",
+    "projectChecks": "42164957128 failed because the shallow CI checkout lacked the pinned published baseline needed by the new comparison. Fixed setup by fetching that exact baseline immediately before the test; no test weakened."
+  },
+  "candidateAtD037fa8a": {
+    "source": "d037fa8a3f2ff51b11cb69b417ce044584cf2b17",
+    "projectChecks": "success, check127728334076",
+    "sharedDebugReleaseNativeVerification": "success, check127728334578",
+    "publisher": "skipped for PR"
+  },
+  "bedsideOnlyCorrection": {
+    "parent": "976861dde055606d186f3713f2eff50754d41c18",
+    "originalRoom": "0a30deaa7d739d4a3cf28cd242fdfdee2f1e662b",
+    "nativeROM_sha256": "7edb75fc5a88b3a373e014116e7569e2cd0d1193f3a7412e92c7c0d164caf6f9",
+    "passed": true,
+    "scope": "Original floor and palettes restored; only400 bedside floor-background pixels differ from original capture. All other capture pixels exact."
+  },
+  "topShadowExtension": {
+    "parent": "39460778a9eedb159932e7ba75ba63fb555be490",
+    "ROM_sha256": "f615dbb90790755739f9948f0a9a84f33f8920192f348d0959e1d285a967d192",
+    "passed": true,
+    "scope": "Existing shadow extended across three top-row gap cells above the bed; all other pixels match approved capture."
+  }
+}
