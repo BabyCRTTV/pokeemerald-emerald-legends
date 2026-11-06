@@ -2,6 +2,7 @@
 #include "legends_grottos.h"
 #include "legends_story.h"
 #include "legends_wyrmtide.h"
+#include "legends_nightmare.h"
 #include "legends_wardrobe.h"
 #include "legends_grotto_review.h"
 #include "battle_setup.h"
@@ -833,6 +834,10 @@ static bool8 TryStartStepCountScript(u16 metatileBehavior)
     if (!(gPlayerAvatar.flags & PLAYER_AVATAR_FLAG_FORCED_MOVE)
      && !MetatileBehavior_IsForcedMovementTile(metatileBehavior)
      && LegendsWyrmtideTryCall())
+        return TRUE;
+    if (!(gPlayerAvatar.flags & PLAYER_AVATAR_FLAG_FORCED_MOVE)
+     && !MetatileBehavior_IsForcedMovementTile(metatileBehavior)
+     && LegendsNightmareTryCall())
         return TRUE;
     if (TryStartMatchCall())
         return TRUE;

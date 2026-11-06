@@ -1,0 +1,36 @@
+{
+  "baseline": "2b99c6555954d6284a8d4ebee488e349a8e05a61",
+  "exteriorBefore": {
+    "1009": 12289,
+    "1010": 12289,
+    "1011": 12289,
+    "1012": 12289,
+    "1089": 12289,
+    "1090": 12289,
+    "1091": 12289,
+    "1092": 12289,
+    "1169": 1135,
+    "1170": 12289,
+    "1171": 12289,
+    "1172": 12289,
+    "1249": 1157,
+    "1250": 12289,
+    "1251": 12289,
+    "1252": 12289
+  },
+  "exteriorFootprint": [
+    49,
+    12,
+    52,
+    15
+  ],
+  "nativeHouseSource": [
+    35,
+    3,
+    38,
+    6
+  ],
+  "shore": "SouthernIsland_Exterior exact block and border bytes",
+  "sleepingPortrait": "Exact native Little Girl head pixels tucked into native bed",
+  "paletteScope": "Private primary0..5 and secondary6..12"
+}

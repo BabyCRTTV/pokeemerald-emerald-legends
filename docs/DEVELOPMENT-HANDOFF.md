@@ -1,5 +1,13 @@
 # Development handoff
 
+## Darkrai nightmare quest implementation in progress (5 November 2026)
+
+**Model: GPT-6 (Codex) | Reasoning: implement the owner-approved personal mystery and verify progression through actual game captures.**
+
+Owner approved When Morning Never Comes and requested implementation plus progression visuals. Branch codex/darkrai-nightmare starts at publicv0.0.76 /2b99c655. Elias calls after either Regidrago outcome; Mira sleeps in a new native Lilycove home; the Mt Pyre caretaker provides a Lunar Wing; an empty dream bedroom, deserted Lilycove and moonless shore lead to level80 Darkrai. Capture or defeat wakes Mira, while defeat permits later capture; report to her father completes appended quest64. Preserve all existing cave/player/seasonal/wardrobe/save work. [Single checkpoint and next step](qa/nightmare-quest.json).
+
+This checkpoint is unverified implementation, not a published release or visual approval. Debug build and focused native progression/flash/battle QA are next. Keep master and publicv0.0.76 unchanged until the owner reviews the resulting visuals. Do not substitute generated images for native emulator captures.
+
 ## v0.0.76 Wyrmtide published and live verified (5 November 2026)
 
 **Model: GPT-6 (Codex) | Reasoning: ship the explicitly approved result and verify actual downloads.**

@@ -1,0 +1,18 @@
+{
+  "model": "GPT-6 (Codex)",
+  "base": "2b99c6555954d6284a8d4ebee488e349a8e05a61",
+  "status": "Implementation checkpoint; Debug build and native progression harness pending. Not released or visually approved.",
+  "authorization": "Owner approved the proposed Darkrai story and requested implementation plus genuine progression visuals.",
+  "branch": "codex/darkrai-nightmare",
+  "impact": [
+    "One-time safe outdoor call after Regidrago CALMED (capture or defeat)",
+    "Bounded16-cell complete-house addition in Lilycove; old events and warp indices retained",
+    "Four appended maps and quest64; no Wyrmtide map/art edits",
+    "Eight audited native flag candidates0x49a..0x4a1; no native var reservation",
+    "Lunar Wing875 appended within existing110-byte itemFlags bitmap; preserve save offsets",
+    "Private native dream palettes, head/pillow composition; existing original source art retained",
+    "Level80 Darkrai capture/defeat wakes Mira; flee/loss retries; defeat retains later capture opportunity",
+    "Mt Pyre caretaker original Cleanse Tag grant continues"
+  ],
+  "next": "Finish focused allocation/save/input checks, Debug build and native mGBA controller progression/battle/flash tests; inspect real captures and provide gallery. Keep master/publicv76 unchanged pending visual approval."
+}

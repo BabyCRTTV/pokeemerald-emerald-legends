@@ -14338,6 +14338,21 @@ const struct ItemInfo gItemsInfo[] =
 
 // Story Key Items
 
+    [ITEM_LUNAR_WING] =
+    {
+        .name = ITEM_NAME("Lunar Wing"),
+        .description = COMPOUND_STRING(
+            "A feather carrying\n"
+            "moonlight. Hold it\n"
+            "beside MIRA's bed."),
+        .pocket = POCKET_KEY_ITEMS,
+        .type = ITEM_USE_BAG_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .important = TRUE,
+        .iconPic = gItemIcon_PrettyFeather,
+        .iconPalette = gItemIconPalette_PrettyFeather,
+    },
+
     [ITEM_INVITE_TICKET] =
     {
         .name = ITEM_NAME("Invite Ticket"),

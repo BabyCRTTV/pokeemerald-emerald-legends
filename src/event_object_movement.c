@@ -3218,6 +3218,9 @@ const struct ObjectEventGraphicsInfo *GetObjectEventGraphicsInfo(u16 graphicsId)
     appearanceGraphicsId = graphicsId;
     graphicsId = LegendsGetBasePlayerGraphicsId(graphicsId);
 
+    if (graphicsId == OBJ_EVENT_GFX_LEGENDS_MIRA_ASLEEP)
+        return &gObjectEventGraphicsInfo_MiraAsleep;
+
     if (graphicsId == OBJ_EVENT_GFX_LEGENDS_WYRMTIDE_REGIDRAGO)
         return &gObjectEventGraphicsInfo_WyrmtideRegidrago;
 
