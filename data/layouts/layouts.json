@@ -10602,7 +10602,7 @@
       "width": 12,
       "height": 10,
       "primary_tileset": "gTileset_Building",
-      "secondary_tileset": "gTileset_GenericBuilding",
+      "secondary_tileset": "gTileset_NightmareHomeInterior",
       "border_filepath": "data/layouts/LegendsNightmare_Home/border.bin",
       "blockdata_filepath": "data/layouts/LegendsNightmare_Home/map.bin",
       "layout_version": "emerald"

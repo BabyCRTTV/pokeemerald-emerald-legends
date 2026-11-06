@@ -76,5 +76,7 @@ def main():
  for i in range(9):head.paste(source.crop((0,0,16,10)),(i*16,2))
  head.save(R/'graphics/object_events/pics/people/legends_mira_asleep.png')
  path=R/'data/tilesets/legends_nightmare/source.json';old=json.loads(path.read_text()) if path.exists() else {};save('data/tilesets/legends_nightmare/source.json',dict(baseline='2b99c6555954d6284a8d4ebee488e349a8e05a61',exteriorBefore=old.get('exteriorBefore',before),exteriorFootprint=[49,12,52,15],nativeHouseSource=[35,3,38,6],shore='SouthernIsland_Exterior exact block and border bytes',sleepingPortrait='Exact native Little Girl head pixels tucked into native bed',paletteScope='Private primary0..5 and secondary6..12'))
+ from build_nightmare_room_floor import apply as fit_room_floor
+ fit_room_floor()
  print('Authored four Nightmare maps and a complete native Lilycove house; shared art preserved.')
 if __name__=='__main__':main()

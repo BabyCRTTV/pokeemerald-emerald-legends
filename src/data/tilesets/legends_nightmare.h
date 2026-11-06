@@ -115,7 +115,7 @@ const u16 gNightmarePalettesInterior[][16] = {
 };
 const struct Tileset gTileset_NightmareInterior = {
     .isCompressed = TRUE, .isSecondary = TRUE,
-    .tiles = gTilesetTiles_GenericBuilding, .palettes = gNightmarePalettesInterior,
-    .metatiles = gMetatiles_GenericBuilding, .metatileAttributes = gMetatileAttributes_GenericBuilding,
+    .tiles = gNightmareRoomTiles, .palettes = gNightmarePalettesInterior,
+    .metatiles = gNightmareRoomMetatiles, .metatileAttributes = gNightmareRoomAttributes,
     .callback = NULL,
 };

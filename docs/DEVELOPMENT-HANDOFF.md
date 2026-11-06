@@ -1,5 +1,13 @@
 # Development handoff
 
+## Darkrai room surroundings repaired (6 November 2026)
+
+**Model: Codex | Reasoning: inspect surrounding terrain and baked-in furniture backgrounds; preserve the accepted bed foreground.**
+
+Owner clarified the issue is around the bed, not the bed itself. Earlier passes focused too narrowly on the bed. The surrounding floor repeated heavy horizontal strips, the bedside tiles carried mismatched wall-shadow backgrounds, and the north-wall contact shadow had a gap. Two private room tileset wrappers now use exact native BrendansMaysHouse0x201 wood pixels, with matching floor under the existing furniture and a continuous back-wall contact shadow. Only eight otherwise unused private tile slots and unused loaded palette12 are needed. Native bed/frame foreground, Mira artwork, chair/plant foreground, behavior/collision/elevation, actors, scripts, warps, IDs and all shared/owner assets remain intact. Dream palette12 follows the existing private cold transform.
+
+Debug and the focused final-ROM native bed/wing/chair/safe-wake/resolved-revisit checks passed. Exact native wood RGB, all unchanged foreground layers/attributes, unchanged Mira art, idempotent pinned authoring and seasonal palette regressions passed. Reused prior unchanged battle/save evidence; no repeated local full battles or multi-panel exports. One refreshed native capture replaces the existing preview. [Bound source/ROM/native receipt](designs/nightmare/bed-fix/verification.json). Current candidate gates are required before release; PR97 stays draft and publicv0.0.76 unchanged. This correction awaits visual review.
+
 ## Darkrai bed wall-context correction (6 November 2026)
 
 **Model: Codex | Reasoning: distinguish furniture from neighboring room-context tiles, preserve the working quest.**

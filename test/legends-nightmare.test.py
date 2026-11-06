@@ -60,12 +60,28 @@ for room in ['Home','Bedroom']:
  cells=struct.unpack('<120H',(R/f'data/layouts/LegendsNightmare_{room}/map.bin').read_bytes())
  assert [[cells[(y+3)*12+x+7]&0x3ff for x in range(3)] for y in range(2)]==[
   [0x2d2,0x2d3,0x2d4],[0x2da,0x2db,0x2dc]]
- assert all(cells[2*12+x]==0x3223 for x in range(7,10)) # No floating room-wall strip.
+ assert all(cells[2*12+x]==0x3224 for x in range(7,10)) # Continuous native wall contact shadow, no floating wall strip.
  assert cells[3*12+8]>>12==4 # Head remains above the native opaque bedding layer.
  for x,y in [(8,5),(9,4),(7,5)]:assert not cells[y*12+x]&0xc00
  m=json.loads(read(f'data/maps/LegendsNightmare_{room}/map.json'))
  assert any(e['x']==8 and e['y']==4 and e['script'].endswith('Bed') for e in m['bg_events'])
  assert any(e['x']==6 and e['y']==3 and e['script'].endswith('Chair') for e in m['bg_events'])
+# The surroundings use exact native bedroom floor pixels, not wall-strip
+# backgrounds. Furniture foreground layers and all behavior attributes stay native.
+from PIL import Image
+room=R/'data/tilesets/legends_nightmare/room';native=R/'data/tilesets/secondary/generic_building';wood=R/'data/tilesets/secondary/brendans_mays_house'
+metas=(room/'metatiles.bin').read_bytes();base=(native/'metatiles.bin').read_bytes()
+assert (room/'metatile_attributes.bin').read_bytes()==(native/'metatile_attributes.bin').read_bytes()
+for i in range(len(base)//16):assert metas[i*16+8:i*16+16]==base[i*16+8:i*16+16]
+def floor_pixels(image,words,palette):
+ out=[];image=Image.open(image)
+ colors=[tuple(map(int,x.split())) for x in palette.read_text().splitlines()[3:19]]
+ for y in range(16):
+  for x in range(16):
+   w=words[(y//8)*2+x//8];n=(w&1023)-512;xx=x%8;yy=y%8
+   out.append(colors[image.getpixel((n%16*8+(7-xx if w&1024 else xx),n//16*8+(7-yy if w&2048 else yy)))%16])
+ return out
+assert floor_pixels(room/'tiles.png',struct.unpack_from('<8H',metas,(0x223-512)*16),room/'12.pal')==floor_pixels(wood/'tiles.png',struct.unpack_from('<8H',(wood/'metatiles.bin').read_bytes(),16),wood/'palettes/06.pal')
 # Original caretaker grant follows the added helper; wing progress follows only
 # successful item receipt. Battle outcomes remain distinct, with a retry path.
 scripts=read('data/scripts/legends_nightmare.inc');caretaker=read('data/maps/MtPyre_1F/scripts.inc')

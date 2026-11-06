@@ -1,7 +1,7 @@
 {
   "model": "GPT-6 (Codex)",
   "base": "2b99c6555954d6284a8d4ebee488e349a8e05a61",
-  "status": "Quest visuals approved apart from bed. Removed mistaken wall-context headboard row from both rooms; final native bed interactions passed. Single refreshed capture awaiting review; unshipped.",
+  "status": "Owner clarified the problem is the surrounding room, not the bed. Native wooden floor, matching furniture underlays and continuous wall contact shadow repaired privately. Final native interactions passed; single refreshed capture awaiting review. Unshipped.",
   "authorization": "Owner approved the proposed Darkrai story and requested implementation plus genuine progression visuals.",
   "branch": "codex/darkrai-nightmare",
   "impact": [
@@ -14,7 +14,7 @@
     "Level80 Darkrai capture/defeat wakes Mira; flee/loss retries; defeat retains later capture opportunity",
     "Mt Pyre caretaker original Cleanse Tag grant continues"
   ],
-  "next": "Review single corrected bed capture and updated candidate checks. Preserve approved quest/Wyrmtide art. Publicv0.0.76 remains unchanged; no publication authorization.",
+  "next": "Review the surrounding room correction and updated candidate gates. Preserve approved quest and bed foreground; no publication authorization. Publicv0.0.76 remains unchanged.",
   "native": {
     "version": "0.0.76 + unshipped Darkrai review",
     "ROM_sha256": "40e1e622c3c698c9364d25d6fa20753f0f7fc3ef1a2524a1436ac9200fafc3f4",
