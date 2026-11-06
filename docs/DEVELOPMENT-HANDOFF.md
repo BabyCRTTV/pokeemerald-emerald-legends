@@ -1,5 +1,15 @@
 # Development handoff
 
+## Final visual approval and retained design lessons (5 November 2026)
+
+**Model: GPT-6 (Codex) | Reasoning: preserve explicit final approval and turn the native-art lessons into standing project guidance.**
+
+Owner explicitly approved the complete exit rocks at2300d6df, saying this is the result they had been looking for, and requested the lessons be retained and applied to future in-game edits. The chamber, interior entrances/exits, larger Regidrago, cave encounters and inscription revisions are now visually approved. Preserve this accepted baseline and subsequent owner Porymap edits.
+
+AGENTS now names the [approved whole-rock gallery](designs/wyrmtide/whole-exit-rocks/README.md) alongside the accepted terrace-depth/stair-fit references. Standing lessons: use complete native silhouettes with intact tops/sides/bases; use matching materials/palettes/floor underlays; assemble every cap/join and continuous tread; convey height with coherent rims/faces/shadows; verify the complete result in the actual compiled game and walk every visible passage lane. Cropped wall caps are unsuitable as freestanding rocks.
+
+Documentation/approval only. Tested game/art and prior native/build receipts remain exact, so no build or gameplay tests were repeated. Visual approval does not publish or merge the feature: keep PR #89 draft and existing current-master/release/BPS verification work outstanding. Public v0.0.75 remains unchanged.
+
 ## Whole exit rocks, cropped-cap correction (5 November 2026)
 
 **Model: GPT-6 (Codex) | Reasoning: correct the actual cropped silhouettes, retain complete native rock art and preserve approved gameplay.**
