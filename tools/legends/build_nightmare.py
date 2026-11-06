@@ -34,11 +34,14 @@ def main():
   for x in range(4):home[y*W+x]=native[y*10+x]
  for x in [5,9]:put(x,0,0x207,True,0);put(x,1,0x20f,True,0)
  put(10,3,0x222,True);put(10,4,0x22a,True)
- put(8,3,0x2d2,True);put(8,4,0x2da,True)
+ # Complete native three-column bed: headboard, pillow/sheet and footboard.
+ # Side tiles include matching wooden floor, so both bedside approaches remain open.
+ for y,row in enumerate([[0x2ca,0x2cb,0x2cc],[0x2d2,0x2d3,0x2d4],[0x2da,0x2db,0x2dc]]):
+  for x,t in enumerate(row):put(7+x,2+y,t,y==0 or x==1,4 if (x,y)==(1,1) else 3)
  rug=[[0x235,0x236,0x237],[0x23d,0x23e,0x23f],[0x245,0x246,0x247]]
  for y,row in enumerate(rug):
   for x,t in enumerate(row):put(x+2,y+5,t)
- put(7,4,0x22b,True)
+ put(6,3,0x22b,True)
  put(5,9,0x208,False,0);put(6,9,0x209,False,0)
  template=json.loads((R/'data/maps/LilycoveCity_House2/map.json').read_text());shore=(R/'data/layouts/SouthernIsland_Exterior/map.bin').read_bytes()
  cases=[('Home',12,10,'Building','GenericBuilding',home),('Bedroom',12,10,'NightmareBuilding','NightmareInterior',home),('Street',80,40,'NightmareGeneral','NightmareLilycove',cells),('Shore',33,30,'NightmareGeneral','NightmareRustboro',list(struct.unpack('<990H',shore)))]
@@ -51,9 +54,9 @@ def main():
   m=dict(template,id='MAP_LEGENDS_NIGHTMARE_'+key.upper(),name=stem,layout=ident,music='MUS_LILYCOVE' if key=='Home' else 'MUS_MT_PYRE',weather='WEATHER_NONE',map_type='MAP_TYPE_INDOOR',allow_running=True,connections=None,show_map_name=False,object_events=[],warp_events=[],coord_events=[],bg_events=[])
   load=''
   if key=='Home':
-   m['object_events']=[obj('OBJ_EVENT_GFX_MAN_3',6,4,'Nightmare_Father'),obj('OBJ_EVENT_GFX_LEGENDS_MIRA_ASLEEP',8,3,'Nightmare_Bed','FLAG_TEMP_9'),obj('OBJ_EVENT_GFX_LITTLE_GIRL',8,5,'Nightmare_Mira','FLAG_TEMP_8')];m['warp_events']=[warp(x,9,'MAP_LILYCOVE_CITY',exitid) for x in [5,6]];m['bg_events']=[sign(8,4,'Nightmare_Bed'),sign(7,4,'Nightmare_Chair')];load='\tmap_script MAP_SCRIPT_ON_LOAD, Nightmare_HomeLoad\n'
+   m['object_events']=[obj('OBJ_EVENT_GFX_MAN_3',6,4,'Nightmare_Father'),obj('OBJ_EVENT_GFX_LEGENDS_MIRA_ASLEEP',8,3,'Nightmare_Bed','FLAG_TEMP_9'),obj('OBJ_EVENT_GFX_LITTLE_GIRL',8,5,'Nightmare_Mira','FLAG_TEMP_8')];m['warp_events']=[warp(x,9,'MAP_LILYCOVE_CITY',exitid) for x in [5,6]];m['bg_events']=[sign(8,4,'Nightmare_Bed'),sign(6,3,'Nightmare_Chair')];load='\tmap_script MAP_SCRIPT_ON_LOAD, Nightmare_HomeLoad\n'
   elif key=='Bedroom':
-   m['warp_events']=[warp(x,9,'MAP_LEGENDS_NIGHTMARE_STREET',0) for x in [5,6]];m['bg_events']=[sign(8,4,'Nightmare_DreamBed'),sign(7,4,'Nightmare_DreamChair')];load='\tmap_script MAP_SCRIPT_ON_TRANSITION, Nightmare_EnterDream\n'
+   m['warp_events']=[warp(x,9,'MAP_LEGENDS_NIGHTMARE_STREET',0) for x in [5,6]];m['bg_events']=[sign(8,4,'Nightmare_DreamBed'),sign(6,3,'Nightmare_DreamChair')];load='\tmap_script MAP_SCRIPT_ON_TRANSITION, Nightmare_EnterDream\n'
   elif key=='Street':
    m['warp_events']=[warp(50,15,'MAP_LEGENDS_NIGHTMARE_BEDROOM',0),warp(55,15,'MAP_LEGENDS_NIGHTMARE_SHORE',0)];m['object_events']=[obj('OBJ_EVENT_GFX_LITTLE_GIRL',53,17,'Nightmare_Echo')];m['bg_events']=[sign(55,15,'Nightmare_WrongDoor')]+[sign(q['x'],q['y'],'Nightmare_ClosedDoor') for q in lily['warp_events'] if (q['x'],q['y']) not in [(50,15),(55,15)]]
   else:
@@ -70,7 +73,7 @@ def main():
   header.extend(['};',f'const struct Tileset gTileset_Nightmare{key} = {{',f'    .isCompressed = TRUE, .isSecondary = {"TRUE" if sec else "FALSE"},',f'    .tiles = gTilesetTiles_{symbol}, .palettes = gNightmarePalettes{key},',f'    .metatiles = gMetatiles_{symbol}, .metatileAttributes = gMetatileAttributes_{symbol},',f'    .callback = {callback},','};'])
  save('src/data/tilesets/legends_nightmare.h','\n'.join(header)+'\n')
  source=Image.open(R/'graphics/object_events/pics/people/little_girl.png');head=Image.new('P',(144,16),0);head.putpalette(source.getpalette())
- for i in range(9):head.paste(source.crop((0,0,16,10)),(i*16,5))
+ for i in range(9):head.paste(source.crop((0,0,16,10)),(i*16,2))
  head.save(R/'graphics/object_events/pics/people/legends_mira_asleep.png')
  path=R/'data/tilesets/legends_nightmare/source.json';old=json.loads(path.read_text()) if path.exists() else {};save('data/tilesets/legends_nightmare/source.json',dict(baseline='2b99c6555954d6284a8d4ebee488e349a8e05a61',exteriorBefore=old.get('exteriorBefore',before),exteriorFootprint=[49,12,52,15],nativeHouseSource=[35,3,38,6],shore='SouthernIsland_Exterior exact block and border bytes',sleepingPortrait='Exact native Little Girl head pixels tucked into native bed',paletteScope='Private primary0..5 and secondary6..12'))
  print('Authored four Nightmare maps and a complete native Lilycove house; shared art preserved.')

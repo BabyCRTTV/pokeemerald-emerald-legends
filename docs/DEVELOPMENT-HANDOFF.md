@@ -1,5 +1,15 @@
 # Development handoff
 
+## Darkrai bed corrected, one capture requested (6 November 2026)
+
+**Model: Codex | Reasoning: complete native furniture and correct sprite layering with focused functional verification.**
+
+Owner approved the quest visuals and requested the bed fix, one capture only, and working interactions. Replaced the mistaken two-cell floor/left-edge selection with the complete native three-column headboard/pillow/sheet/footboard in Home and dream Bedroom. Native side underlays match the wood; feet/right approaches and wake position remain open. Moved the nearby chair and its dialogue target to6,3. Pillow elevation4 reveals the sleeping head above the opaque native bedding, and its original native pixels sit3px higher on the pillow. No shared artwork, persistent IDs, quest scripts, original maps, wardrobe or seasonal changes.
+
+Debug build and focused source/assembly checks passed. Full native capture/defeat/flee/loss/report/door/flash/Continue progression passed on the corrected layouts. After only the final portrait alignment, a focused final-ROM native run passed sleeping interaction, Lunar Wing entry, moved chair, safe wake and resolved side revisit. One genuine240x160 frame is presented at exact4x scale; prior progression boards retain their historical source. [Bed receipt and capture](designs/nightmare/bed-fix/verification.json). Added a reusable bed-only native mode to avoid repeating unrelated battles for portrait-only changes.
+
+Previous candidate42164957135 passed shared Debug/Release/native/decoder verification. Project run42164957128 exposed a shallow-checkout fixture issue: pinned baseline missing. The workflow now fetches that exact baseline before the existing comparison; no tests weakened. Updated candidate gates are pending. Keep PR97 draft and publicv0.0.76 unchanged; corrected bed awaits visual approval. [Current quest evidence](qa/nightmare-quest.json).
+
 ## Darkrai nightmare quest implemented, native visual review ready (5 November 2026)
 
 **Model: GPT-6 (Codex) | Reasoning: complete the approved personal mystery and prove progression with actual compiled-game inputs and captures.**

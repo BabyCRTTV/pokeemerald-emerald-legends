@@ -3,10 +3,11 @@ from pathlib import Path
 import argparse,hashlib,json,os,subprocess,struct,time
 from PIL import Image
 R=Path(__file__).resolve().parents[3];S=Path(__file__).resolve().parent
-p=argparse.ArgumentParser();p.add_argument('--prefix',type=Path,default=Path('/usr'));p.add_argument('--output',type=Path,default=R/'build/nightmare-native');a=p.parse_args();out=a.output.resolve();out.mkdir(parents=True,exist_ok=True);prefix=a.prefix.resolve();env=os.environ.copy();env['PATH']=str(prefix/'bin')+':'+env['PATH'];env['LD_LIBRARY_PATH']=str(prefix/'lib/x86_64-linux-gnu')+':'+env.get('LD_LIBRARY_PATH','');previous=[*out.glob('*.png'),*out.glob('*.rgba')]+[q for q in [out/'verification.json',out/'emulator.log'] if q.exists()]
+p=argparse.ArgumentParser();p.add_argument('--bed-only',action='store_true');p.add_argument('--prefix',type=Path,default=Path('/usr'));p.add_argument('--output',type=Path,default=R/'build/nightmare-native');a=p.parse_args();out=a.output.resolve();out.mkdir(parents=True,exist_ok=True);prefix=a.prefix.resolve();env=os.environ.copy();env['PATH']=str(prefix/'bin')+':'+env['PATH'];env['LD_LIBRARY_PATH']=str(prefix/'lib/x86_64-linux-gnu')+':'+env.get('LD_LIBRARY_PATH','');previous=[*out.glob('*.png'),*out.glob('*.rgba')]+[q for q in [out/'verification.json',out/'emulator.log'] if q.exists()]
 if previous:
  archive=out/'history'/str(time.time_ns());archive.mkdir(parents=True)
  for old in previous:old.rename(archive/old.name)
+if a.bed_only:env['LEGENDS_NIGHTMARE_BED_ONLY']='1'
 captures=[]
 def run(cmd,log):
  with (out/log).open('w') as f:subprocess.run(cmd,cwd=R,env=env,stdout=f,stderr=subprocess.STDOUT,check=True)
@@ -33,5 +34,5 @@ finally:
   png=raw.with_suffix('.png');Image.frombytes('RGBA',(240,160),raw.read_bytes()).convert('RGB').save(png);captures.append(png);raw.unlink()
  private.unlink(missing_ok=True)
 assert rom.read_bytes()==source
-proof=dict(version=(R/'VERSION').read_text().strip()+' + unshipped Darkrai review',ROM_sha256=hashlib.sha256(source).hexdigest(),emulator='mGBA0.10.2 native core',ELF_sha256=hashlib.sha256(elf.read_bytes()).hexdigest(),harness_sha256={n:hashlib.sha256((S/n).read_bytes()).hexdigest() for n in ['arm.c','host.c','run.py']},passed=True,setup='Controlled fresh fixtures; actual compiled map/script/battle engine and real controller inputs. Scene cuts only between independent test cases; no synthetic gameplay images.',limits='Not a natural full-story playthrough, authentic historical owner-save matrix, Release emulator or Pizza Boy test.',log=(out/'emulator.log').read_text(),images={p.name:hashlib.sha256(p.read_bytes()).hexdigest() for p in sorted(captures)})
-(out/'verification.json').write_text(json.dumps(proof,indent=2)+'\n');print('PASS native Nightmare progression: '+str(out))
+proof=dict(scope='bed interaction, wing entry, safe wake and resolved revisit' if a.bed_only else 'complete Nightmare progression and retry suite',version=(R/'VERSION').read_text().strip()+' + unshipped Darkrai review',ROM_sha256=hashlib.sha256(source).hexdigest(),emulator='mGBA0.10.2 native core',ELF_sha256=hashlib.sha256(elf.read_bytes()).hexdigest(),harness_sha256={n:hashlib.sha256((S/n).read_bytes()).hexdigest() for n in ['arm.c','host.c','run.py']},passed=True,setup='Controlled fresh fixtures; actual compiled map/script/battle engine and real controller inputs. Scene cuts only between independent test cases; no synthetic gameplay images.',limits='Not a natural full-story playthrough, authentic historical owner-save matrix, Release emulator or Pizza Boy test.',log=(out/'emulator.log').read_text(),images={p.name:hashlib.sha256(p.read_bytes()).hexdigest() for p in sorted(captures)})
+(out/'verification.json').write_text(json.dumps(proof,indent=2)+'\n');print('PASS native Nightmare '+('bed regression' if a.bed_only else 'progression')+': '+str(out))

@@ -1,6 +1,6 @@
 # When Morning Never Comes — native progression review
 
-Source checkpoint bd9dd0fc2fe05fe7a147eddef992eb3b368c4c21. Actual compiled Debug game in mGBA0.10.2; controlled quest fixtures, not synthetic images. No new visual approval or public release yet.
+Source checkpoint bd9dd0fc2fe05fe7a147eddef992eb3b368c4c21. Actual compiled Debug game in mGBA0.10.2; controlled quest fixtures, not synthetic images. Owner approved these quest visuals except the bed; no public release yet. The numbered progression frames below retain their original checkpoint. The corrected current bed is in [one native capture](bed-fix/03-miras-slumber.png), with [bound native evidence](bed-fix/verification.json).
 
 [Quest guide](../../features/when-morning-never-comes.md), [bound evidence](../../qa/nightmare-quest.json), [native frame/harness/ROM receipt](verification.json).
 

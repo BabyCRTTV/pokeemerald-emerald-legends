@@ -59,7 +59,10 @@ jobs:
       - name: Exercise Wyrmtide progression, native flag allocation and stair topology
         run: python3 test/legends-wyrmtide.test.py
       - name: Exercise Nightmare call, append-only IDs, native assemblies and old-save position repair
-        run: python3 test/legends-nightmare.test.py
+        run: |
+          # This regression compares append-only IDs and artwork to the published baseline.
+          git fetch --no-tags --depth=1 origin 2b99c6555954d6284a8d4ebee488e349a8e05a61
+          python3 test/legends-nightmare.test.py
       - name: Exercise quest progression and achievement claims
         run: python3 test/legends-journal.test.py
       - name: Achievement notice lifecycle

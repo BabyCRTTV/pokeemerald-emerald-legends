@@ -54,6 +54,17 @@ for key in ['Home','Bedroom','Street','Shore']:
  m=json.loads(read(f'data/maps/LegendsNightmare_{key}/map.json'));layout=next(x for x in layouts if x['id']==m['layout']);a=struct.unpack('<%dH'%((R/layout['blockdata_filepath']).stat().st_size//2),(R/layout['blockdata_filepath']).read_bytes());assert len(a)==layout['width']*layout['height']
  for w in m['warp_events']:
   assert 0<=w['x']<layout['width'] and 0<=w['y']<layout['height'];assert key=='Street' or not (a[w['y']*layout['width']+w['x']]&0xc00),(key,w)
+# Complete native bed silhouette in both rooms, with clear feet/side approaches.
+# The previous two-cell assembly mistakenly selected floor/left-edge pieces.
+for room in ['Home','Bedroom']:
+ cells=struct.unpack('<120H',(R/f'data/layouts/LegendsNightmare_{room}/map.bin').read_bytes())
+ assert [[cells[(y+2)*12+x+7]&0x3ff for x in range(3)] for y in range(3)]==[
+  [0x2ca,0x2cb,0x2cc],[0x2d2,0x2d3,0x2d4],[0x2da,0x2db,0x2dc]]
+ assert cells[3*12+8]>>12==4 # Head remains above the native opaque bedding layer.
+ for x,y in [(8,5),(9,4),(7,5)]:assert not cells[y*12+x]&0xc00
+ m=json.loads(read(f'data/maps/LegendsNightmare_{room}/map.json'))
+ assert any(e['x']==8 and e['y']==4 and e['script'].endswith('Bed') for e in m['bg_events'])
+ assert any(e['x']==6 and e['y']==3 and e['script'].endswith('Chair') for e in m['bg_events'])
 # Original caretaker grant follows the added helper; wing progress follows only
 # successful item receipt. Battle outcomes remain distinct, with a retry path.
 scripts=read('data/scripts/legends_nightmare.inc');caretaker=read('data/maps/MtPyre_1F/scripts.inc')

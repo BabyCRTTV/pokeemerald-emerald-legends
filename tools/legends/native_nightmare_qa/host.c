@@ -39,6 +39,13 @@ static void challenge(void){key(32);key(1);untilYes();key(1);frames(130);menu();
 int main(int argc,char**argv){
  assert(argc==11);setbuf(stdout,NULL);mLogSetDefaultLogger(&logger);out=argv[2];yesNo=strtoul(argv[9],0,0)|1;whiteout=strtoul(argv[10],0,0)|1;mainAddr=strtoul(argv[3],0,0);callback=strtoul(argv[4],0,0)|1;controller=strtoul(argv[5],0,0);for(int i=0;i<3;i++)choices[i]=strtoul(argv[6+i],0,0)|1;
  c=mCoreFind(argv[1]);assert(c&&c->init(c));mCoreInitConfig(c,NULL);mCoreConfigSetDefaultIntValue(&c->config,"skipBios",1);mCoreLoadConfig(c);video=calloc(240*160,sizeof(color_t));c->setVideoBuffer(c,video,240);struct VFile*f=VFileOpen(argv[1],O_RDONLY);assert(f&&c->loadROM(c,f));
+ if(getenv("LEGENDS_NIGHTMARE_BED_ONLY")){
+  setup(1,1);unsigned home=box(6);navigate(1,8,5);key(64);key(1);frames(150);capture("03-miras-slumber");dismiss(20);command(1);assert(box(6)==home&&!(box(7)&8));
+  setup(1,7);navigate(1,8,5);key(64);key(1);untilYes();key(1);frames(400);status();assert(box(6)!=home&&(box(7)&8));unsigned dream=box(6);
+  navigate(3,6,4);key(64);key(1);dismiss(25);navigate(3,8,5);key(64);key(1);untilYes();key(1);frames(400);status();assert(box(6)==home);
+  setup(1,63);navigate(1,9,4);key(32);key(1);untilYes();key(1);frames(400);status();assert(box(6)==dream&&(box(7)&32));
+  puts("PASS bed-only native sleeping interaction, wing entry, moved chair, safe waking and resolved side revisit");c->deinit(c);free(video);return 0;
+ }
  for(int i=0;i<6;i++){setup(i,7);mapIds[i]=box(6);}
  setup(1,0);capture("00-before-the-call");
  setup(6,0);for(int i=0;i<10;i++)walk(i%2?16:32);status();assert(!(box(7)&1)&&!box(12));puts("PASS no call before a successful Regidrago outcome");
@@ -55,7 +62,7 @@ int main(int argc,char**argv){
  // Select NO on the real native yes/no task, after all dialogue pages finish.
  key(128);key(1);dismiss(20);status();assert(box(6)==mapIds[1]&&!(box(7)&8));
  key(1);untilYes();key(1);frames(400);status();assert(box(6)==mapIds[3]&&(box(7)&8));capture("06-empty-dream-bedroom");
- navigate(3,7,5);key(64);key(1);frames(160);capture("06b-the-empty-chair");dismiss(25);
+ navigate(3,6,4);key(64);key(1);frames(160);capture("06b-the-empty-chair");dismiss(25);
  navigate(3,5,9);assert(box(6)==mapIds[4]);capture("07-deserted-lilycove");navigate(4,53,18);key(64);key(1);frames(150);capture("08-miras-echo");dismiss(35);status();assert(box(7)&16);
  navigate(4,55,15);assert(box(6)==mapIds[5]);capture("09-the-wrong-door");navigate(5,14,22);capture("10-moonless-shore");challenge();capture("11-darkrai-battle");
  // A real capture ends the dream and returns to the home, not a reset fixture.

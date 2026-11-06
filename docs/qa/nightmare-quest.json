@@ -1,7 +1,7 @@
 {
   "model": "GPT-6 (Codex)",
   "base": "2b99c6555954d6284a8d4ebee488e349a8e05a61",
-  "status": "Implemented and visually inspected; local Debug/native progression and all61 host checks passed. Final exported progression gallery saved. Draft visual review; candidate Release/decoder gates pending.",
+  "status": "Owner approved the quest visuals except the bed. Complete native bed correction implemented and final focused native interactions passed; bed capture awaiting review. Unshipped review.",
   "authorization": "Owner approved the proposed Darkrai story and requested implementation plus genuine progression visuals.",
   "branch": "codex/darkrai-nightmare",
   "impact": [
@@ -14,7 +14,7 @@
     "Level80 Darkrai capture/defeat wakes Mira; flee/loss retries; defeat retains later capture opportunity",
     "Mt Pyre caretaker original Cleanse Tag grant continues"
   ],
-  "next": "Owner visual review of the delivered gallery; inspect draft PR candidate Debug/Release/native and both BPS decoder gates before any public release. Publicv0.0.76 remains unchanged.",
+  "next": "Review single corrected bed capture and updated candidate checks. Preserve approved quest/Wyrmtide art. Publicv0.0.76 remains unchanged; no publication authorization.",
   "native": {
     "version": "0.0.76 + unshipped Darkrai review",
     "ROM_sha256": "40e1e622c3c698c9364d25d6fa20753f0f7fc3ef1a2524a1436ac9200fafc3f4",
@@ -432,5 +432,10 @@
     },
     "pixelVerification": "Every game panel resizes back to the exact240x160 RGB source; no overlays or repainted pixels."
   },
-  "nativeGallery": "docs/designs/nightmare/README.md"
+  "nativeGallery": "docs/designs/nightmare/README.md",
+  "bedCorrection": "docs/designs/nightmare/bed-fix/verification.json",
+  "candidateAt3cc33457": {
+    "nativeDebugReleaseAndDecoders": "42164957135 native verification job127719155893 passed; publisher skipped as expected for PR",
+    "projectChecks": "42164957128 failed because the shallow CI checkout lacked the pinned published baseline needed by the new comparison. Fixed setup by fetching that exact baseline immediately before the test; no test weakened."
+  }
 }
