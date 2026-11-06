@@ -53,7 +53,9 @@
   {"label": "Viridian — Blue", "page": "walkthrough-kanto-record", "section": "blues-actingleader-challenge", "hint": "The eighth visiting record"},
   {"label": "Pallet — Oak", "page": "walkthrough-kanto-shadow", "section": "compare-the-survey-with-oak", "hint": "Analysis and Old Sea Map"},
   {"label": "Faraway Island — Mew", "page": "walkthrough-kanto-horizon", "section": "record-the-final-observation", "hint": "Native deep-grass search"},
-  {"label": "Pallet — final report", "page": "walkthrough-kanto-horizon", "section": "file-the-final-report-with-oak", "hint": "One-time Master Ball"}
+  {"label": "Pallet — final report", "page": "walkthrough-kanto-horizon", "section": "file-the-final-report-with-oak", "hint": "One-time Master Ball"},
+  {label:"Dewford — Wyrmtide Isle",page:"wyrmtide-isle",section:"starting-the-expedition",hint:"Briney’s voyage and Regidrago"},
+  {label:"Lilycove — Mira’s nightmare",page:"when-morning-never-comes",section:"the-call-and-investigation",hint:"Lunar Wing and Darkrai"}
  ];
  function readingWalkthrough(active){document.documentElement.classList.toggle('reading-walkthrough',active);root.dataset.walkthroughPage='';}
  function walkthroughNavigation(id){
@@ -134,7 +136,7 @@
  function navigate(id,push=true,section=""){
    if(!byId.has(id)){home(push);return;}
    const p=byId.get(id),r=render(p.content);
-   const walkthrough=id==='walkthrough'||id.startsWith('walkthrough-');readingWalkthrough(walkthrough);
+   const walkthrough=id==='walkthrough'||id.startsWith('walkthrough-')||Number.isInteger(p.chapter);readingWalkthrough(walkthrough);
    setLocation({page:id},push,section);
    side(id);
    root.innerHTML='<article class="article"><div class="crumbs"><button id="home" type="button">Wiki home</button> › '+'<a href="?category='+encodeURIComponent(p.category)+'" data-category="'+escape(p.category)+'">'+escape(p.category)+'</a></div><h1>'+escape(p.title)+'</h1><p class="lede">'+escape(p.summary)+'</p>'+(walkthrough?walkthroughNavigation(id):'')+'<div class="articlebody">'+(Number.isInteger(p.chapter)?'<aside class="chapter-intro-tip" aria-label="RotomDex tip"><img src="rotom-dex.png" width="30" height="30" alt="RotomDex"><p>New here? Follow one section at a time. Use the town selector to jump back, or open <a href="?page=walkthrough" data-page="walkthrough">beginner tips</a>.</p></aside>':'')+r.html+'</div>'+chapterNavigation(id)+'<div class="articlefooter"><button class="action" id="back" type="button">← '+escape(p.category)+'</button><button class="action" id="share" type="button">Copy article link</button></div></article>';
@@ -148,7 +150,7 @@
  function home(push=true){
    readingWalkthrough(false);setLocation({},push);side('');
    outline.innerHTML='<strong>Wiki guide</strong><p>Choose an article or search for a feature. Everything is open to read.</p>';
-   root.innerHTML='<section class="welcome"><h1 class="wiki-game-logo"><img src="legends-logo.svg" width="166" height="93" alt="Pokémon Emerald: Legends"></h1><p>Choose a topic below, or jump straight to Pokémon and wild encounters.</p><div class="dex-shortcuts" aria-label="Wiki shortcuts"><a href="dex.html?view=routes">⌁ Routes <small>Wild encounter guide</small></a><a href="dex.html?view=species">◈ Pokédex <small>Browse Pokémon</small></a><a href="?page=walkthrough" data-page="walkthrough" class="walkthrough-shortcut">Walkthrough <span aria-hidden="true">→</span></a></div><label class="searchrow"><span aria-hidden="true">⌕</span><input id="search" type="search" placeholder="Search articles, features, and places…" aria-label="Search wiki" autocomplete="off"><span class="small">/</span></label><p class="results-note" id="resultsnote">Browse '+pages.length+' articles across seven sections.</p></section><section aria-label="Latest wiki additions"><h2 class="section-head">New in v0.0.77</h2>'+articleCards(pages.filter(p=>["wyrmtide-isle","when-morning-never-comes"].includes(p.id)))+'</section><div id="cards"></div>';
+   root.innerHTML='<section class="welcome"><h1 class="wiki-game-logo"><img src="legends-logo.svg" width="166" height="93" alt="Pokémon Emerald: Legends"></h1><p>Choose a topic below, or jump straight to Pokémon and wild encounters.</p><div class="dex-shortcuts" aria-label="Wiki shortcuts"><a href="dex.html?view=routes">⌁ Routes <small>Wild encounter guide</small></a><a href="dex.html?view=species">◈ Pokédex <small>Browse Pokémon</small></a><a href="?page=walkthrough" data-page="walkthrough" class="walkthrough-shortcut">Walkthrough <span aria-hidden="true">→</span></a></div><label class="searchrow"><span aria-hidden="true">⌕</span><input id="search" type="search" placeholder="Search articles, features, and places…" aria-label="Search wiki" autocomplete="off"><span class="small">/</span></label><p class="results-note" id="resultsnote">Browse '+pages.length+' articles across seven sections.</p></section><div id="cards"></div>';
    const input=document.getElementById('search');input.addEventListener('input',()=>cards(input.value));cards('');document.title='Emerald: Legends Wiki';menuClose();focusContent();
  }
  function cards(q){

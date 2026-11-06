@@ -1,5 +1,13 @@
 # Development handoff
 
+## Walkthrough scope corrected to27 chapters (6 November 2026)
+
+**Model: Codex | Reasoning: follow the owner’s established walkthrough format and audit encounter inputs.**
+
+Owner clarified that update the wiki means walkthrough and encounters/LegendsDex, not reference-only updates or a New in section. Removed the unrequested homepage section. Promoted the existing Wyrmtide and Darkrai articles to numbered chapters26/27, keeping their IDs/links; added chapter cards, Previous/Next and location-selector entries, and linked from Chapter25. Existing chapter paging now covers27 chapters. Updated browser/reader regressions and script cache key. Focused local navigation tests passed; full CI/companion/Pages verification follows automatically.
+
+Audited all200 changed paths from the encounter snapshot68073255 through current source: wild tables, seasonal headers, grotto rosters and species families are unchanged. Retained their verified source/art pins; Regidrago/Darkrai scripted encounter levels and retry rules are covered in chapters26/27. No ROM, patch, encounters, artwork or save changes. AGENTS now retains the owner’s exact meaning of wiki updates.
+
 ## Wiki quest visibility repaired (6 November 2026)
 
 **Model: Codex | Reasoning: diagnose actual reader navigation instead of assuming content publication implies visibility.**

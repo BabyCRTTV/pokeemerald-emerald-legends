@@ -35,20 +35,20 @@ const assert=require('node:assert/strict'),fs=require('node:fs');
   else await page.getByRole('link',{name:'Walkthrough',exact:false}).first().click();
   await page.getByRole('heading',{name:'Game walkthrough: start your adventure',exact:true}).waitFor();await noOverflow();
   assert(await page.locator('.wiki-mobile-nav').isHidden(),'walkthrough hides encounter navigation');
-  assert.equal(await page.locator('.walkthrough-stops a').count(),25);
+  assert.equal(await page.locator('.walkthrough-stops a').count(),27);
   assert.equal(await page.locator('.chapter-group').count(),3);
   assert.equal(await page.locator('.chapter-group').first().locator('a').count(),10);
   assert.equal(await page.locator('.chapter-group').last().locator('a').count(),5);
   await page.locator('#next-chapter-group').click();
-  await page.waitForFunction(()=>document.querySelector('#chapter-group-label').textContent==='Chapters 11–20 of 25');
+  await page.waitForFunction(()=>document.querySelector('#chapter-group-label').textContent==='Chapters 11–20 of 27');
   assert(await page.locator('#next-chapter-group').isEnabled());
   await page.locator('#next-chapter-group').click();
-  await page.waitForFunction(()=>document.querySelector('#chapter-group-label').textContent==='Chapters 21–25 of 25');
+  await page.waitForFunction(()=>document.querySelector('#chapter-group-label').textContent==='Chapters 21–27 of 27');
   assert(await page.locator('#next-chapter-group').isDisabled());
   await page.locator('#previous-chapter-group').click();
-  await page.waitForFunction(()=>document.querySelector('#chapter-group-label').textContent==='Chapters 11–20 of 25');
+  await page.waitForFunction(()=>document.querySelector('#chapter-group-label').textContent==='Chapters 11–20 of 27');
   await page.locator('#previous-chapter-group').click();
-  await page.waitForFunction(()=>document.querySelector('#chapter-group-label').textContent==='Chapters 1–10 of 25');
+  await page.waitForFunction(()=>document.querySelector('#chapter-group-label').textContent==='Chapters 1–10 of 27');
   await page.waitForFunction(()=>document.querySelector('#chapter-groups').scrollLeft<2);
   if(width===412){await page.locator('.chapter-browser').scrollIntoViewIfNeeded();await page.screenshot({path:'wiki-preview/compact-chapters.png'});}
   await page.locator('.region-map-explorer svg').waitFor();
@@ -158,11 +158,11 @@ const assert=require('node:assert/strict'),fs=require('node:fs');
   assert((await page.locator('.articlebody').innerText()).includes('Catching or fighting Zapdos is optional'));
   await noOverflow();
   if(width===412){await page.locator('[data-walkthrough-section="section-make-both-unused-feeds-safe"]').screenshot({path:'wiki-preview/power-plant-current.png'});}
-  for(const chapter of [19,20,21,22,23,24,25]){
+  for(const chapter of [19,20,21,22,23,24,25,26,27]){
    await page.locator('.chapter-step').last().click();
    await page.getByRole('heading',{name:new RegExp('^Chapter '+chapter+':')}).waitFor();
    await page.locator('.walkthrough-field-guide').first().waitFor();await noOverflow();
-   assert.equal(await page.locator('.chapter-step').count(),chapter===25?1:2);
+   assert.equal(await page.locator('.chapter-step').count(),chapter===27?1:2);
    if(chapter===19)await page.locator('[data-route="MAP_LEGENDS_KANTO_SEAFOAM_ISLANDS_B4F"]').waitFor();
    if(chapter===22){
     const expedition=page.locator('[data-walkthrough-section="section-climb-the-summit-path"]');
