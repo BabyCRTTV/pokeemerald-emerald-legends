@@ -1,5 +1,15 @@
 # Development handoff
 
+## v0.0.77 Darkrai published and live verified (6 November 2026)
+
+**Model: Codex | Reasoning: preserve approved local tile fixes and close the authorized release with bound production evidence.**
+
+Owner approved the final room and authorized publication of all Darkrai work. PR97 merged at5780b68f with the exact candidate tree. Released When Morning Never Comes after capture/defeat of Regidrago: Elias’s call, Mira’s slumber, Lunar Wing investigation, dream bedroom/city/shore, level80 Darkrai, awakening/report, safe exits/revisits and all retry outcomes. The original room floor and approved bed/foreground remain intact; only the bedside underlay and requested continuous top shadow were corrected. AGENTS retains the lesson: inspect surrounding materials, match existing underlays/palettes and scope repairs to the reported cells.
+
+All61 local/CI project checks, wiki/companion gates, candidate and production Debug/Release builds,14 bound native receipts and both independent clean-base BPS decoders passed. Production binaries equal the candidate exactly. Verified patches published at97198210. Pages42177612958 promoted the complete924-file snapshot, passed deployed-byte/patch-CRC checks, and a fresh independent21-file live verification also passed. Windows1.0.34 published; Android retains its existing signed1.0.9 APK and receives the updated remote wiki. [Single release record, hashes and live evidence](qa/nightmare-v0.0.77.json).
+
+This closeout changes documentation only; unchanged game evidence remains valid. No authentic historical-owner-save matrix, uninterrupted natural full-story or Pizza Boy claim. Preserve current owner Porymap edits, approved Wyrmtide/player/bedroom art, wardrobe, seasons and earlier features.
+
 ## v0.0.77 Darkrai approved for publication (6 November 2026)
 
 **Model: Codex | Reasoning: retain explicit visual approval and prepare one versioned release with existing safeguards.**
