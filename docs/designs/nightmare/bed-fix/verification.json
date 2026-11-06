@@ -1,6 +1,6 @@
 {
-  "parentSource": "976861dde055606d186f3713f2eff50754d41c18",
-  "correction": "Restored original room floor and palettes. Only the floor backgrounds of bed-side metatiles0x2d2/0x2d4 match existing GenericBuilding0x223; exact frame pixels and every other metatile remain native.",
+  "parentSource": "39460778a9eedb159932e7ba75ba63fb555be490",
+  "correction": "Approved bedside floor retained. Extend existing native0x224 top-row shadow through three gap cells above the bed in Home and dream Bedroom. No other game source or assets changed.",
   "fullGameplayBeforePortraitOnlyAdjustment": {
     "version": "0.0.76 + unshipped Darkrai review",
     "ROM_sha256": "4d78fa8492522c19981a0ec01493cf8070b4a8d751c2dfb9d27d271368372476",
@@ -43,9 +43,9 @@
   "finalBedRegression": {
     "scope": "bed interaction, wing entry, safe wake and resolved revisit",
     "version": "0.0.76 + unshipped Darkrai review",
-    "ROM_sha256": "7edb75fc5a88b3a373e014116e7569e2cd0d1193f3a7412e92c7c0d164caf6f9",
+    "ROM_sha256": "f615dbb90790755739f9948f0a9a84f33f8920192f348d0959e1d285a967d192",
     "emulator": "mGBA0.10.2 native core",
-    "ELF_sha256": "57397cdbfd3d3f4c5fcc0dbd7e7ad88360549260e5524b49e7c65758d07c86e0",
+    "ELF_sha256": "b460a011fb8dffdea213ef97decf5d5ee6642c66f86ecc33fb5ef47df9d511b8",
     "harness_sha256": {
       "arm.c": "d5e8b4e7cc7e6ee13544746cca6ec54bca0e6f2e1fa8c4b8d22713b00447cdeb",
       "host.c": "713557f78e8d967d00f7fe4b432c9c34f1421c2c7d4df67f2559187c87f38fb1",
@@ -56,13 +56,13 @@
     "limits": "Not a natural full-story playthrough, authentic historical owner-save matrix, Release emulator or Pizza Boy test.",
     "log": "map=76/10 xy=6,5 flags=01 wing=0 battle=0 script=0 party=1 outcome=0 state=0\nmap=76/10 xy=8,5 flags=01 wing=0 battle=0 script=0 party=1 outcome=0 state=0\nmap=76/10 xy=6,5 flags=07 wing=1 battle=0 script=0 party=1 outcome=0 state=0\nmap=76/10 xy=8,5 flags=07 wing=1 battle=0 script=0 party=1 outcome=0 state=0\nmap=76/11 xy=6,6 flags=0f wing=1 battle=0 script=0 party=1 outcome=0 state=0\nmap=76/11 xy=6,4 flags=0f wing=1 battle=0 script=0 party=1 outcome=0 state=0\nmap=76/11 xy=8,5 flags=0f wing=1 battle=0 script=0 party=1 outcome=0 state=0\nmap=76/10 xy=7,5 flags=0f wing=1 battle=0 script=0 party=1 outcome=0 state=0\nmap=76/10 xy=6,5 flags=3f wing=1 battle=0 script=0 party=1 outcome=0 state=0\nmap=76/10 xy=9,4 flags=3f wing=1 battle=0 script=0 party=1 outcome=0 state=0\nmap=76/11 xy=6,6 flags=3f wing=1 battle=0 script=0 party=1 outcome=0 state=0\nPASS bed-only native sleeping interaction, wing entry, moved chair, safe waking and resolved side revisit\n",
     "images": {
-      "03-miras-slumber.png": "58f3ba90e4006e4d80fa5378029bed332747cc7a8e48aafb8edec0b822949dfd"
+      "03-miras-slumber.png": "ddb6dcc21f4fdf33d31f2f0ad400b4972c7857a2bdc9c5e41d9802924661ca1e"
     }
   },
-  "scope": "Original-room restoration with bedside-only underlay fix. Native sleeping interaction, wing entry, chair, safe wake and resolved revisit passed. Earlier complete battle/save evidence retained; no new full-battle/Release claim.",
+  "scope": "Three top-row cells per room only; same collision/elevation/behavior. Focused native bed interactions, wing entry, chair, safe wake and resolved revisit passed.",
   "source_sha256": {
-    "data/layouts/LegendsNightmare_Home/map.bin": "6f3b0c986e4b166f81d08298fdec6e3f2f09ec64c5fdd6e7cbef11500af2e78f",
-    "data/layouts/LegendsNightmare_Bedroom/map.bin": "6f3b0c986e4b166f81d08298fdec6e3f2f09ec64c5fdd6e7cbef11500af2e78f",
+    "data/layouts/LegendsNightmare_Home/map.bin": "c2f8e3fdda5334234f51f84651bc7bf97bec4f2a94dd522233ecbf52b44c56f6",
+    "data/layouts/LegendsNightmare_Bedroom/map.bin": "c2f8e3fdda5334234f51f84651bc7bf97bec4f2a94dd522233ecbf52b44c56f6",
     "data/maps/LegendsNightmare_Home/map.json": "88aac4246f24462d5d0e66d255b845435e8f7e4814facb1141bce7a560a38198",
     "data/maps/LegendsNightmare_Bedroom/map.json": "24947abc4e73a1ce13e690243decb3c7a89b704144d246fa226482c422bf6a45",
     "graphics/object_events/pics/people/legends_mira_asleep.png": "2981ce7cb34e116ebcf0a57e90853a88c028e478c659c6a6e803b6b72a1cecb8",
@@ -114,6 +114,18 @@
         56
       ]
     ],
-    "assertion": "Only background pixels in the two bedside cells differ. Every other pixel, including furniture and room floor, matches the original native capture."
+    "assertion": "Only background pixels in the two bedside cells differ. Every other pixel, including furniture and room floor, matches the original native capture.",
+    "status": "Historical proof for the approved bedside-only correction at39460778; superseded only in the top-row shadow gap by the comparison below."
+  },
+  "topShadowComparison": {
+    "source": "39460778a9eedb159932e7ba75ba63fb555be490",
+    "changedPixels": 768,
+    "rectangle": [
+      96,
+      24,
+      144,
+      40
+    ],
+    "assertion": "Every changed pixel is in the three shadow-gap cells above the bed; every other pixel matches the approved capture."
   }
 }

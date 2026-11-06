@@ -60,7 +60,7 @@ for room in ['Home','Bedroom']:
  cells=struct.unpack('<120H',(R/f'data/layouts/LegendsNightmare_{room}/map.bin').read_bytes())
  assert [[cells[(y+3)*12+x+7]&0x3ff for x in range(3)] for y in range(2)]==[
   [0x2d2,0x2d3,0x2d4],[0x2da,0x2db,0x2dc]]
- assert all(cells[2*12+x]==0x3223 for x in range(7,10)) # Preserve original floor above the accepted bed.
+ assert all(cells[2*12+x]==0x3224 for x in range(4,12)) # Continue the existing top-row shadow across the gap above the bed.
  assert cells[3*12+8]>>12==4 # Head remains above the native opaque bedding layer.
  for x,y in [(8,5),(9,4),(7,5)]:assert not cells[y*12+x]&0xc00
  m=json.loads(read(f'data/maps/LegendsNightmare_{room}/map.json'))

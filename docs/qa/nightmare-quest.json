@@ -450,5 +450,11 @@
     "nativeROM_sha256": "7edb75fc5a88b3a373e014116e7569e2cd0d1193f3a7412e92c7c0d164caf6f9",
     "passed": true,
     "scope": "Original floor and palettes restored; only400 bedside floor-background pixels differ from original capture. All other capture pixels exact."
+  },
+  "topShadowExtension": {
+    "parent": "39460778a9eedb159932e7ba75ba63fb555be490",
+    "ROM_sha256": "f615dbb90790755739f9948f0a9a84f33f8920192f348d0959e1d285a967d192",
+    "passed": true,
+    "scope": "Existing shadow extended across three top-row gap cells above the bed; all other pixels match approved capture."
   }
 }

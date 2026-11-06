@@ -1,5 +1,13 @@
 # Development handoff
 
+## Darkrai top-row shadow completed (6 November 2026)
+
+**Model: Codex | Reasoning: extend the existing shadow only where requested.**
+
+Owner approved the bedside floor repair at39460778, then requested the existing top-row shadow continue across the gap above the bed. Changed only three0x223 cells to native0x224 in Home and dream Bedroom. The original authoring helper already specifies this continuous row. All other layout words, tilesets, palettes, bed/furniture/sprite pixels, actors, scripts, collision/elevation and saved state remain unchanged.
+
+Build, focused source check and native mGBA bed/wing/chair/safe-wake/resolved-revisit passed. Matched capture comparison confines every changed pixel to the48x16 shadow gap above the bed; all other pixels equal the approved frame. One refreshed capture replaces the existing preview. [Bound evidence](designs/nightmare/bed-fix/verification.json). Keep PR97 draft; publicv0.0.76 unchanged. Candidate gates remain required before release.
+
 ## Darkrai bedside-only floor correction (6 November 2026)
 
 **Model: Codex | Reasoning: restore the original room and limit the repair to the reported bedside mismatch.**
