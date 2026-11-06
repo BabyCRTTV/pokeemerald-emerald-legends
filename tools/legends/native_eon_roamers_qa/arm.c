@@ -32,7 +32,8 @@ void qa(void)
   u16 stone=ITEM_EVERSTONE;SetMonData(&gParties[B_TRAINER_PLAYER][0],MON_DATA_HELD_ITEM,&stone);gPartiesCount[B_TRAINER_PLAYER]=1;
   AddBagItem(ITEM_MASTER_BALL,8);AddBagItem(ITEM_ORAN_BERRY,11);LegendsClockSetManual(12,0);LegendsSetSeasonMode(LEGENDS_SEASONS_PLAYTIME);LegendsSetPlaytimeSeason(LEGENDS_AUTUMN);
   FlagSet(FLAG_LATIOS_OR_LATIAS_ROAMING);gSpecialVar_0x8004=b[1];InitRoamer();
-  SetWarpDestination(MAP_GROUP(MAP_ROUTE110),MAP_NUM(MAP_ROUTE110),-1,10,10);WarpIntoMap();b[4]=1;SetMainCallback2(CB2_LoadMap);return;
+  // Keep repeated battle-menu A presses away from the wandering Old Man at10,11.
+  SetWarpDestination(MAP_GROUP(MAP_ROUTE110),MAP_NUM(MAP_ROUTE110),-1,13,10);WarpIntoMap();b[4]=1;SetMainCallback2(CB2_LoadMap);return;
  }
  if(b[0]==2 || b[0]==5){
   struct Roamer first=*GetRoamer(0);struct LegendsEonSave second=gSaveBlock3Ptr->eon;
