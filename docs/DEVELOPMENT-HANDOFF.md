@@ -1,5 +1,12 @@
 # Development handoff
 
+## Poffin Kitchen preview (6 November 2026)
+
+**Model: Codex | Reasoning: preserve existing save records and adapt directional stirring to GBA input.**
+
+Working branch based on 0.0.77. Added the Poffin Maker to 46 Center maps plus the Ever Grande League lobby. Map objects are appended, with private graphics ID 0x0E02. One or two berries cook into a flavored Poffin stored and fed through the existing contest-treat system. No new save fields, flags, or persistent variables. Verified native cooking, mixed flavors, feeding, battery round trip, cancellation, and static walkable approaches. See the [game captures, native QA, and limits](designs/poffin-kitchen/README.md). Awaiting visual review before release. Keep separate from the bag capacity work and reconcile newer master before release.
+
+
 ## Walkthrough scope corrected to27 chapters (6 November 2026)
 
 **Model: Codex | Reasoning: follow the owner’s established walkthrough format and audit encounter inputs.**

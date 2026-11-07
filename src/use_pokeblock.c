@@ -870,7 +870,8 @@ static void AskUsePokeblock(void)
 
     GetMonData(&gParties[B_TRAINER_PLAYER][GetPartyIdFromSelectionId(sMenu->info.curSelection)], MON_DATA_NICKNAME, stringBuffer);
     StringGet_Nickname(stringBuffer);
-    StringAppend(stringBuffer, sText_GetsAPokeBlockQuestion);
+    StringAppend(stringBuffer, sInfo->pokeblock->color >= POFFIN_SPICY
+        ? COMPOUND_STRING(" gets a POFFIN?") : sText_GetsAPokeBlockQuestion);
     StringCopy(gStringVar4, stringBuffer);
     FillWindowPixelBuffer(WIN_TEXT, 17);
     DrawTextBorderOuter(WIN_TEXT, 151, 14);
