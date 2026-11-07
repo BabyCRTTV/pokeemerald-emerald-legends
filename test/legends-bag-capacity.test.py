@@ -43,8 +43,10 @@ typedef uint8_t u8;typedef uint16_t u16;typedef uint32_t u32;typedef int32_t s32
 #define SECRET_BASE_USED_BAG 0
 #include "constants/item.h"
 enum Item {ITEM_NONE=0};
-struct ItemSlot {u16 itemId,quantity;};
+struct __attribute__((aligned(4))) ItemSlot {u16 itemId,quantity;};
 struct Bag {u16 pocketSizes[POCKETS_COUNT];struct ItemSlot slots[LEGENDS_BAG_SLOTS];};
+_Static_assert(offsetof(struct Bag,slots)==12,"Native ARM APCS slot alignment");
+_Static_assert(sizeof(struct Bag)==4620,"Native ARM APCS bag width");
 struct LegacyBag {struct ItemSlot items[30],keyItems[30],pokeBalls[16],TMsHMs[64],berries[46];};
 struct BoxPokemon {u32 personality,otId;u8 other[24];struct {u32 raw[12];} secure;};
 struct Pokemon {u8 bytes[100];};

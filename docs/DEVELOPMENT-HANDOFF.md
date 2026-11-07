@@ -1,5 +1,15 @@
 # Development handoff
 
+## Shared bag focused native verification passed (6 November 2026)
+
+**Model: Codex | Reasoning: finish the actual native failures before another full integration gate.**
+
+Both native game builds match CI849bf415 byte-for-byte: Debug dcc112424fc9c861798adc3fc391af98f489a6a6e8355517f3542e4c5ba059ca; Release0391e334d40b8c53aeb0c0e3a1910740a599f8ded89dc019c397b8dfcd070066. Debug now passes all wardrobe/palette/flash checks and actual slot599 selection; all six Eon choice/outcome cases and partner battles/flash checks pass with the completed-field-return acknowledgement.
+
+The normal Release test then exposed a private-fixture ABI assumption: native ARM APCS places Bag.slots at offset12 and rounds sizeof(Bag) to4620, while its Python/raw-memory checks assumed offset10. The game already used C members correctly. Fixtures now read the compiler-reported offset; host sanitizer mocks also use the actual native alignment. Corrected the controller sequence to close the pause menu restored after leaving the Bag before opening Save. Normal unmodified Release passes both current600-stack and format-identical LPC2 legacy450-stack Continue → select → Save → reset → Continue, preserving all five pocket counts and quantities. No game/art/map/save-ID changes in these fixture fixes. Failure logs/frames now survive exceptions. [Preflight evidence and explicit limits](qa/shared-bag-reserve.json).
+
+Final full candidate project/native/dual-decoder gates remain required; PR98 records their latest run and completion state. Keep the public v0.0.77 download unchanged until separately authorized publication.
+
 ## Shared bag resume: large-list bounds repaired (6 November 2026)
 
 **Model: Codex | Reasoning: inspect the retained failure before rebuilding and cover the actual shared menu helpers.**

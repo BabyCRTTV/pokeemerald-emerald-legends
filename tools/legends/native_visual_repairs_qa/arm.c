@@ -128,6 +128,7 @@ void qa(void)
             box[17] = offsetof(struct BagPosition,scrollPosition);
             box[18] = ITEM_ETHER;
             box[21] = offsetof(struct SaveBlock2,encryptionKey);
+            box[22] = offsetof(struct Bag,slots);
         }
         SetMainCallback2(CB2_Overworld);break;
     case 11:

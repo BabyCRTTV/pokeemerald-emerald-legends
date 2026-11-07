@@ -52,7 +52,7 @@ def convert(source,target,layout):
   offset=layout['inventoryOffset'];counts=struct.unpack_from('<5H',raw,offset);limits=[150,32,128,80,60]
   if any(n>cap for n,cap in zip(counts,limits)):
    save[half*14*4096:(half+1)*14*4096]=b'\xff'*(14*4096);continue
-  chunks=[];start=offset+10
+  chunks=[];start=offset+layout['slotOffset']
   for n,cap in zip(counts,limits):chunks.append(bytes(raw[start:start+n*4])+bytes((cap-n)*4));start+=n*4
   old=raw[:offset]+b''.join(chunks[i] for i in [0,4,1,2,3])+raw[offset+layout['bagSize']:offset+layout['bagSize']+600]
   body=pack(old);assert unpack(body,len(old))==old
