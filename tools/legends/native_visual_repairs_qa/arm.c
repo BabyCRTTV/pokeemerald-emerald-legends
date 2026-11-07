@@ -20,12 +20,17 @@
 #include "decoration_inventory.h"
 #include "task.h"
 #include "save.h"
+#include "item.h"
+#include "item_menu.h"
+#include "legends_storage.h"
+#include "pokemon_storage_system.h"
 #include "pokemon.h"
 #include "constants/maps.h"
 #include "constants/flags.h"
 #include "constants/vars.h"
 #include "constants/decorations.h"
 #include "constants/species.h"
+void CB2_BagMenuRun(void); // Existing production callback; private QA only.
 static void room(void)
 {
     SetWarpDestination(MAP_GROUP(MAP_LITTLEROOT_TOWN_BRENDANS_HOUSE_2F),
@@ -93,6 +98,47 @@ void qa(void)
             for(i=0;i<ARRAY_COUNT(ids);i++)if(VarGet(ids[i])!=values[i])box[9]++;
         }
         SetMainCallback2(CB2_Overworld);break;
+    case 10: case 13:
+        {
+            u32 i, p, legacy = box[0] == 13, errors = 0;
+            static const u16 items[] = {ITEM_POTION, ITEM_POKE_BALL, ITEM_TM_FOCUS_PUNCH, ITEM_ORAN_BERRY, ITEM_LUNAR_WING};
+            static const u16 counts[] = {150,32,128,80,60};
+            ClearBag();
+            for (p = 0; p < POCKETS_COUNT; p++)
+                for (i = 0; i < (legacy ? counts[p] : p == 0 ? 600 : 1); i++)
+                    BagPocket_SetSlotData(&gBagPockets[p], i, (struct ItemSlot){items[p], p == 4 ? 1 : 77});
+            BagPocket_SetSlotData(&gBagPockets[0], legacy ? 149 : 599, (struct ItemSlot){ITEM_ETHER,77});
+            BagPocket_SetSlotData(&gBagPockets[4], 0, (struct ItemSlot){ITEM_EXP_SHARE,1});
+            if (!legacy) AddBagItem(ITEM_LUNAR_WING,1);
+            LegendsStoragePCItems()[149] = (struct ItemSlot){ITEM_MASTER_BALL,1};
+            box[11] = TrySavingData(SAVE_NORMAL);
+            ClearBag();
+            box[12] = LoadGameSave(SAVE_NORMAL);
+            for (p = 0; p < POCKETS_COUNT; p++)
+            {
+                u32 expected = legacy ? counts[p] : p == 0 ? 600 : p == 4 ? 2 : 1;
+                if (LegendsStorageBag()->pocketSizes[p] != expected) errors++;
+            }
+            if (GetBagItemId(0,legacy ? 149 : 599) != ITEM_ETHER || GetBagItemQuantity(0,legacy ? 149 : 599) != 77) errors++;
+            if (LegendsStoragePCItems()[149].itemId != ITEM_MASTER_BALL) errors++;
+            box[13] = errors;
+            box[14] = offsetof(struct PokemonStorage,inventory);
+            box[15] = sizeof(struct Bag);
+            box[16] = offsetof(struct BagPosition,cursorPosition);
+            box[17] = offsetof(struct BagPosition,scrollPosition);
+            box[18] = ITEM_ETHER;
+            box[21] = offsetof(struct SaveBlock2,encryptionKey);
+            box[22] = offsetof(struct Bag,slots);
+        }
+        SetMainCallback2(CB2_Overworld);break;
+    case 11:
+        gBagPosition.scrollPosition[POCKET_ITEMS] = 592;
+        gBagPosition.cursorPosition[POCKET_ITEMS] = 7;
+        GoToBagMenu(ITEMMENULOCATION_FIELD,POCKET_ITEMS,CB2_ReturnToField);break;
+    case 12:
+        box[19] = GetItemListPosition(POCKET_ITEMS);
+        box[20] = gSpecialVar_ItemId;
+        SetMainCallback2(CB2_BagMenuRun);break;
     case 8:
         ObjectEventSetGraphicsId(&gObjectEvents[gPlayerAvatar.objectEventId], LegendsGetPlayerGraphicsId(box[10],gSaveBlock2Ptr->playerGender));
         SetMainCallback2(CB2_Overworld);break;

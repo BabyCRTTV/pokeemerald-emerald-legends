@@ -30,9 +30,11 @@ void qa(void)
   SetMonMoveSlot(&gParties[B_TRAINER_PLAYER][0],MOVE_SHADOW_BALL,0);
   for(u32 i=1;i<4;i++)SetMonMoveSlot(&gParties[B_TRAINER_PLAYER][0],MOVE_NONE,i);
   u16 stone=ITEM_EVERSTONE;SetMonData(&gParties[B_TRAINER_PLAYER][0],MON_DATA_HELD_ITEM,&stone);gPartiesCount[B_TRAINER_PLAYER]=1;
+  for(u32 i=0;i<1149;i++)BagPocket_SetSlotData(&gBagPockets[POCKET_ITEMS],i,(struct ItemSlot){ITEM_POTION,77});
   AddBagItem(ITEM_MASTER_BALL,8);AddBagItem(ITEM_ORAN_BERRY,11);LegendsClockSetManual(12,0);LegendsSetSeasonMode(LEGENDS_SEASONS_PLAYTIME);LegendsSetPlaytimeSeason(LEGENDS_AUTUMN);
   FlagSet(FLAG_LATIOS_OR_LATIAS_ROAMING);gSpecialVar_0x8004=b[1];InitRoamer();
-  SetWarpDestination(MAP_GROUP(MAP_ROUTE110),MAP_NUM(MAP_ROUTE110),-1,10,10);WarpIntoMap();b[4]=1;SetMainCallback2(CB2_LoadMap);return;
+  // Keep repeated battle-menu A presses away from the wandering Old Man at10,11.
+  SetWarpDestination(MAP_GROUP(MAP_ROUTE110),MAP_NUM(MAP_ROUTE110),-1,13,10);WarpIntoMap();b[4]=1;SetMainCallback2(CB2_LoadMap);return;
  }
  if(b[0]==2 || b[0]==5){
   struct Roamer first=*GetRoamer(0);struct LegendsEonSave second=gSaveBlock3Ptr->eon;
@@ -55,7 +57,8 @@ void qa(void)
   b[5]=offsetof(struct SaveBlock1,roamer);b[6]=Hash(GetRoamer(0),sizeof(struct Roamer));b[7]=gSaveBlock3Ptr->eon.checksum;b[8]=GetRoamer(0)->active;b[9]=GetRoamer(1)->active;b[10]=gSaveBlock3Ptr->eon.unlocked;b[11]=gPartiesCount[B_TRAINER_PLAYER];
  }
  if(b[0]==4){
-  b[5]=GetRoamer(0)->active;b[6]=GetRoamer(1)->active;b[7]=gSaveBlock3Ptr->eon.unlocked;b[8]=gBattleOutcome;b[9]=gMain.inBattle;b[10]=ScriptContext_IsEnabled();b[11]=gPartiesCount[B_TRAINER_PLAYER];b[12]=GetRoamer(0)->species;b[13]=GetRoamer(1)->species;b[14]=Hash(GetRoamer(1),sizeof(struct Roamer));
+  b[5]=GetRoamer(0)->active;b[6]=GetRoamer(1)->active;b[7]=gSaveBlock3Ptr->eon.unlocked;b[8]=gBattleOutcome;b[9]=gMain.inBattle;b[10]=ScriptContext_IsEnabled();b[11]=gPartiesCount[B_TRAINER_PLAYER];b[12]=GetRoamer(0)->species;b[13]=GetRoamer(1)->species;b[14]=Hash(GetRoamer(1),sizeof(struct Roamer));// inBattle clears before field rebuilding finishes; acknowledge the actual return.
+  b[15]=((b[3]==(u32)CB2_Overworld)?0x80000000:0)|(GetBagItemId(POCKET_POKE_BALLS,0)<<16)|GetBagItemQuantity(POCKET_POKE_BALLS,0);
  }
  b[4]=1;gMain.callback2=(MainCallback)b[3];
 }

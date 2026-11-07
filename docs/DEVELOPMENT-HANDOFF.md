@@ -1,5 +1,41 @@
 # Development handoff
 
+## Full-capacity battle memory repair under verification (6 November 2026)
+
+**Model: Codex | Reasoning: verify the advertised maximum in battle, where menu heap competes with battle state.**
+
+An additional native full-pool probe (1,149 Item stacks plus the existing Key Item, Balls and Berry stacks) reproduced a Debug out-of-memory screen when opening Bag in battle. The earlier600-stack field test did not cover this heap peak. Replaced one formatted name allocation per owned row with one reusable scratch name, formatted by the existing item-print callback immediately before ListMenu draws that row. IDs and menu geometry remain unchanged; existing TM/berry/name formatting is reused. Maximum list storage is now the ID/pointer array plus35 bytes of names rather than roughly40KB of names. The production-C sanitizer regression enforces this memory bound and rejects the old per-row allocation negative control.
+
+The established Eon native fixture now fills the complete shared pool and opens/closes Bag during every battle-outcome case, checking the real Bag callback before continuing. This remains within the original14 native gates and one private Debug/Release pair. All six full-pool Debug battle/outcome/partner/native-flash cases passed and the rendered names/quantities were reviewed. Updated Release and final CI verification remain pending at this checkpoint; PR98 carries the live completion status. Public v0.0.77 remains unchanged.
+
+## Shared bag focused native verification passed (6 November 2026)
+
+**Model: Codex | Reasoning: finish the actual native failures before another full integration gate.**
+
+Both native game builds match CI849bf415 byte-for-byte: Debug dcc112424fc9c861798adc3fc391af98f489a6a6e8355517f3542e4c5ba059ca; Release0391e334d40b8c53aeb0c0e3a1910740a599f8ded89dc019c397b8dfcd070066. Debug now passes all wardrobe/palette/flash checks and actual slot599 selection; all six Eon choice/outcome cases and partner battles/flash checks pass with the completed-field-return acknowledgement.
+
+The normal Release test then exposed a private-fixture ABI assumption: native ARM APCS places Bag.slots at offset12 and rounds sizeof(Bag) to4620, while its Python/raw-memory checks assumed offset10. The game already used C members correctly. Fixtures now read the compiler-reported offset; host sanitizer mocks also use the actual native alignment. Corrected the controller sequence to close the pause menu restored after leaving the Bag before opening Save. Normal unmodified Release passes both current600-stack and format-identical LPC2 legacy450-stack Continue → select → Save → reset → Continue, preserving all five pocket counts and quantities. No game/art/map/save-ID changes in these fixture fixes. Failure logs/frames now survive exceptions. [Preflight evidence and explicit limits](qa/shared-bag-reserve.json).
+
+Final full candidate project/native/dual-decoder gates remain required; PR98 records their latest run and completion state. Keep the public v0.0.77 download unchanged until separately authorized publication.
+
+## Shared bag resume: large-list bounds repaired (6 November 2026)
+
+**Model: Codex | Reasoning: inspect the retained failure before rebuilding and cover the actual shared menu helpers.**
+
+Resumed PR98 at c6b3a409. Verified artifact13529145918 (SHA256 310fd68a81739b14b9f2123d07a486ece1e5ca52ef4bff8376a1fa6b12f01268): all wardrobe/palette and flash checks passed; the new slot599 selection assertion failed. Traced this to SetCursorWithinListBounds and SetCursorScrollWithinListBounds accepting u8 totalItems, truncating601 to89. Widened only their count arguments to u16. Production-C ASAN/UBSAN tests now cover totals257–1153 and exact slot599 reopening; the old-signature negative control fails. Existing shared-capacity, migration and relocation checks still pass.
+
+The Eon fixture also treated inBattle=false as completed field return, although CB2_EndWildBattle still schedules field rebuilding. Its private status now acknowledges the actual CB2_Overworld callback; the host waits for that before another save/battle. No battle rules changed. Focused native failure logs and frames are retained on error. Native/full gate results remain pending; keep draft and public v0.0.77 unchanged. PR98 retains the latest run and completion status.
+
+## Shared bag reserve implementation, native verification pending (6 November 2026)
+
+**Model: Codex | Reasoning: remove per-pocket capacity maintenance while respecting GBA memory and published saves.**
+
+Owner requested larger capacity for Key Items, Berries, healing and every other normal bag pocket, with room for future additions. Replaced five fixed partitions (450 combined slots) with a1,152-stack pool that all five pockets borrow automatically; stacks remain999. Healing remains in Items. Retained the published native SaveBlock1/SaveBlock3 layouts, item IDs, PC150 slots, challenge rules, heap size and approved art/maps. Wider runtime menu counts/positions/swap sentinel support indexes above255; name/list buffers allocate for owned stacks instead of the full reserve. Existing Wally and link backups preserve the full shared inventory. Multi-stack removal now subtracts the requested amount once and releases empty slots; total counts use32 bits.
+
+New packed magicLPC3 retains the oldLPC2 reader for v0.0.43–v0.0.77 and the original fourteen-box native reader. Migration preserves the entire Pokemon prefix, encrypted quantities, all450 old bag entries and PC contents, then saves in the new format. Malformed lengths, unsupported sizes, allocation and packed-capacity failures refuse rather than silently empty a bag. No flags/vars or persistent IDs were reserved.
+
+Production-C sanitizer checks passed for each pocket at1,152, shared reuse/full refusal, sorting/swapping, high indices, multi-stack quantity conservation, both published inventory migrations and save/reload. Existing codec and all28 sector/rotation/item-history checks passed. Local LeakSanitizer was disabled only because this executor cannot inspect /proc under ptrace; address/undefined sanitizers stayed enabled. Candidate b0d0019d passed full Debug/Release builds (260,816/260,820 bytes EWRAM), Quickstart, project checks and both independent clean-base BPS decoders in run42261990085. Existing Eon native flash/load checks preserved Bag/season, but its third battle fixture reopened the wandering Old Man dialogue at Route11010,11; the retained no-menu capture confirms the input collision. Moved only the private fixture starting position from10,10 to13,10, away from NPC reach. The next Eon run42264706821 passed its flash checks but lost the quick-ball menu after a battle. Traced the actual dynamic-pocket regression: MoveSaveBlocks_ResetHeap recalculated pocket pointers before copying the relocated inventory lengths, then encrypted using stale offsets. Rebuild pointers after the copy. The production-C regression now executes that actual relocation and re-encryption routine six times across five pockets; the fix passes and an explicit pre-fix negative control fails its pointer invariant. Native five-pocket flash/high-index selection plus normal Release old/current Continue→Save→reset→Continue tests remain pending on the corrected candidate. PR98 retains current gate status and evidence. [Design and verification scope](features/shared-bag-reserve.md). Keep this feature on its review branch until native evidence passes; publicv0.0.77 remains unchanged.
+
 ## Walkthrough scope corrected to27 chapters (6 November 2026)
 
 **Model: Codex | Reasoning: follow the owner’s established walkthrough format and audit encounter inputs.**

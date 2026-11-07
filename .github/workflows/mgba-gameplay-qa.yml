@@ -70,6 +70,10 @@ jobs:
         run: python3 tools/legends/shared_build.py start
       - name: Execute native mGBA Quickstart and capture live gameplay
         run: python3 test/mgba-gameplay-smoke.py
+      - name: Exercise accepted bedroom repair and wardrobe return/save paths
+        run: python3 tools/legends/native_visual_repairs_qa/run.py --output build/visual-repairs-qa --mgba-prefix /usr
+      - name: Exercise unmodified Release Continue, both bedrooms and wardrobe returns
+        run: python3 tools/legends/native_visual_repairs_qa/release.py --prefix /usr --fixtures build/visual-repairs-qa --output build/bedroom-release-qa
       - name: Exercise native dual Eon battles and legacy/current flash persistence
         run: python3 tools/legends/native_eon_roamers_qa/run.py
       - name: Exercise native Ember boat return, walking and reboarding
@@ -93,16 +97,12 @@ jobs:
             seasonal_args+=(--compare-serial)
           fi
           python3 tools/legends/native_seasonal_encounters_qa/run.py "${seasonal_args[@]}"
-      - name: Exercise accepted bedroom repair and wardrobe return/save paths
-        run: python3 tools/legends/native_visual_repairs_qa/run.py --output build/visual-repairs-qa --mgba-prefix /usr
       - name: Exercise normal Release Continue with independent Eon state fixtures
         run: python3 tools/legends/native_eon_roamers_qa/release.py
       - name: Exercise native Release Ember boat return, walking and reboarding
         run: python3 tools/legends/native_ember_return_qa/release.py
       - name: Exercise normal Release Continue with grotto battery fixtures
         run: python3 tools/legends/native_grotto_encounters/release.py
-      - name: Exercise unmodified Release Continue, both bedrooms and wardrobe returns
-        run: python3 tools/legends/native_visual_repairs_qa/release.py --prefix /usr --fixtures build/visual-repairs-qa --output build/bedroom-release-qa
       - name: Join canonical-base and patch verification
         if: ${{ always() && !cancelled() && steps.patch_start.outcome == 'success' }}
         run: python3 tools/legends/shared_build.py join

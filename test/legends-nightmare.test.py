@@ -33,7 +33,17 @@ assert 'When Morning Never Comes' in quests and 'FLAG_LEGENDS_NIGHTMARE_REPORTED
 # SaveBlock3 offset. Existing items and saved structs remain byte-for-byte.
 items=read('include/constants/items.h');assert 'ITEM_LUNAR_WING = 875' in items
 assert (875+7)//8==(876+7)//8==110
-assert (R/'include/global.h').read_bytes()==old('include/global.h')
+# Darkrai itself changed no serialized globals. The later shared-bag feature
+# explicitly migrates only PokemonStorage.inventory; preserve this guard for
+# every other byte, including all native saved blocks and persistent IDs.
+priorGlobal=old('include/global.h').decode()
+currentGlobal=read('include/global.h')
+if 'struct ItemSlot slots[LEGENDS_BAG_SLOTS];' in currentGlobal:
+ assert 'u16 pocketSizes[POCKETS_COUNT];' in currentGlobal
+ priorBag=re.search(r'struct Bag\n\{.*?\n\};',priorGlobal,re.S).group(0)
+ currentGlobal=re.sub(r'struct Bag\n\{.*?\n\};',lambda m:priorBag,currentGlobal,count=1,flags=re.S)
+ currentGlobal=currentGlobal.replace('#include "constants/item.h"\n','')
+assert currentGlobal==priorGlobal
 assert items[:items.index('    ITEM_INVITE_TICKET = 874,')]==old('include/constants/items.h').decode().split('    ITEM_INVITE_TICKET = 874,')[0]
 # Bound the only old-map terrain patch to a complete house; retain old objects,
 # coordinates, event scripts and warp IDs, including original Lilycove stories.

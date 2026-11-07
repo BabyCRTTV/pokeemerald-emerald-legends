@@ -1,0 +1,69 @@
+{
+  "phase": "full-capacity-battle-fix-Debug-native-passed; final-Release-and-integration-pending",
+  "review_pr": "https://github.com/BabyCRTTV/pokeemerald-emerald-legends/pull/98",
+  "game_source_commit": "849bf415081ebfc679555913f9f838b7f4cd46d5",
+  "public_version_unchanged": "0.0.77",
+  "capacity": {
+    "total_shared_stacks": 1152,
+    "per_stack": 999,
+    "pockets": [
+      "Items/healing",
+      "Balls",
+      "TMs/HMs",
+      "Berries",
+      "Key Items"
+    ]
+  },
+  "native_layout": {
+    "inventoryOffset": 48604,
+    "bagSize": 4620,
+    "cursorOffset": 8,
+    "scrollOffset": 18,
+    "etherId": 49,
+    "encryptionKeyOffset": 172,
+    "slotOffset": 12
+  },
+  "binaries": {
+    "pokeemerald.gba": "dcc112424fc9c861798adc3fc391af98f489a6a6e8355517f3542e4c5ba059ca",
+    "pokeemerald-release.gba": "0391e334d40b8c53aeb0c0e3a1910740a599f8ded89dc019c397b8dfcd070066"
+  },
+  "identical_ci_binaries": {
+    "run": 42317736877,
+    "artifact": 13551473102,
+    "archive_sha256": "163ea528ba645397586309524c32cda57adfff3025d1742e7415075c667531ea"
+  },
+  "passed": [
+    "Production-C ASAN/UBSAN: all pockets1152, full refusal/reuse, sort/swap, quantity conservation, both published inventory formats, current reload, actual relocation and large menu bounds257-1153",
+    "Explicit old 8-bit menu helper negative control rejected",
+    "Debug600-stack native flash/load, five pockets, PC149, actual slot599 selection",
+    "All6 Eon TV-choice/outcome and partner-battle/native flash cases",
+    "Normal unmodified Release current600-stack and LPC2 legacy450-stack Continue/select/Save/reset/Continue; all pocket counts/quantities retained",
+    "Both independent clean-base BPS decoders passed in prior CI42317736877"
+  ],
+  "preflight_harness_sha256": {
+    "tools/legends/native_visual_repairs_qa/arm.c": "cf4a1a7ebf1b2a8e443bd1785c21e4fa413e8d7d5bce2cc146a38fcc6e53763d",
+    "tools/legends/native_visual_repairs_qa/host.c": "1ce8728d06d88fab3f3b3f3466f2fe0b52662c687ae6759e4a9d3ab14d461cc4",
+    "tools/legends/native_visual_repairs_qa/release.c": "bd72ad65f540a045929024c1eee0ed668f503c734a7f4d3f256aafd53285ed89",
+    "tools/legends/native_visual_repairs_qa/release.py": "2d1436dafd8e1210fe6cd9c6abe05e748e46d49b345e8952c22c8ed1a126ce55",
+    "tools/legends/native_visual_repairs_qa/legacy_bag.py": "04c8d92d93b87544546dc624a6204eb7fada27984a6bf1c6b23ad14cd7b6b513"
+  },
+  "receipt_sha256": {
+    "visual-repairs-qa": "a4e4700162dfc174780705a65eed23f7e05af31ff108fc31d96b20773b286386",
+    "eon-roamers-qa": "a2d619f2aaf466b388cdc15b790f59f78b2d6c3a65970a8e19579b15de1abad9",
+    "bedroom-release-qa": "38d96bb01ed72ac445c54b7e64be15ab117618a20d0339f7539e1e1286b7a368"
+  },
+  "limits": [
+    "Controlled format-identical LPC2/native fixtures, not authentic historical owner saves",
+    "No uninterrupted full-story or Pizza Boy/device claim",
+    "All original final candidate native/decoder/provenance gates remain required; latest results live in PR98",
+    "No publication or release completed"
+  ],
+  "full_capacity_battle": {
+    "before": "Native full pool of1149 Item stacks plus Key/Ball/Berry reproduced OOM while allocating formatted names per row",
+    "repair": "One shared formatted name produced immediately before each ListMenu row; ID array still covers all rows",
+    "regression": "Production-C allocation budget passes; old per-row allocation negative control fails; established Eon fixture now opens full Bag in every scenario",
+    "native_after": "All6 Eon choice/outcome/partner/native-flash cases passed with full1152 pool and actual battle Bag callback; frame reviewed for correct names/quantities",
+    "Debug_ROM_sha256": "14a71608b0267a74cb34a13ed0cfbaff16b5daeec5c3f1595a498a86ddbe5dbe",
+    "host_regression": "Actual allocation/list construction functions pass bounded memory and full1153 rows; prior allocation negative control fails"
+  }
+}

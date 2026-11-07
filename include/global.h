@@ -24,6 +24,7 @@
 #include "constants/trainer_hill.h"
 #include "constants/trainer_tower.h"
 #include "constants/items.h"
+#include "constants/item.h"
 #include "constants/moves.h"
 #include "config/save.h"
 
@@ -252,6 +253,7 @@ struct NPCFollower
 };
 
 #include "constants/items.h"
+#include "constants/item.h"
 #define ITEM_FLAGS_COUNT ((ITEMS_COUNT / 8) + ((ITEMS_COUNT % 8) ? 1 : 0))
 
 #include "legends_adventure.h"
@@ -1084,11 +1086,8 @@ struct LegacyBag
 };
 struct Bag
 {
-    struct ItemSlot items[BAG_ITEMS_COUNT];
-    struct ItemSlot keyItems[BAG_KEYITEMS_COUNT];
-    struct ItemSlot pokeBalls[BAG_POKEBALLS_COUNT];
-    struct ItemSlot TMsHMs[BAG_TMHM_COUNT];
-    struct ItemSlot berries[BAG_BERRIES_COUNT];
+    u16 pocketSizes[POCKETS_COUNT];
+    struct ItemSlot slots[LEGENDS_BAG_SLOTS];
 };
 
 struct SaveBlock1

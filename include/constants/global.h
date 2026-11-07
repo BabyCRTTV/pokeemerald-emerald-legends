@@ -109,6 +109,10 @@ enum Language
 #define PYRAMID_BAG_ITEMS_COUNT 10
 #define ROAMER_COUNT 2 // Number of maximum concurrent active roamers
 
+// Published v0.0.43 pocket widths below are retained only for legacy readers/ROM metadata.
+// Runtime pockets borrow from one shared pool; new item definitions need no pocket resizing.
+#define LEGENDS_BAG_SLOTS 1152
+
 // Bag constants
 #define BAG_ITEMS_COUNT 150
 #define BAG_KEYITEMS_COUNT 60

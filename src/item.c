@@ -64,8 +64,19 @@ const struct TmHmIndexKey gTMHMItemMoveIds[NUM_ALL_MACHINES + 1] =
 #undef UNPACK_TM_ITEM_ID
 #undef UNPACK_HM_ITEM_ID
 
+// The pool is grouped in Pocket enum order. Unallocated positions are virtual
+// empty slots, so each pocket can borrow every free slot without reserving RAM.
+static u32 BagPoolUsed(void)
+{
+    u32 i, used = 0;
+    for (i = 0; i < POCKETS_COUNT; i++) used += LegendsStorageBag()->pocketSizes[i];
+    return used;
+}
+
 static inline struct ItemSlot NONNULL BagPocket_GetSlotDataGeneric(struct BagPocket *pocket, u32 pocketPos)
 {
+    if (pocketPos >= LegendsStorageBag()->pocketSizes[pocket->id])
+        return (struct ItemSlot) {0};
     return (struct ItemSlot) {
         .itemId = pocket->itemSlots[pocketPos].itemId,
         .quantity = pocket->itemSlots[pocketPos].quantity ^ gSaveBlock2Ptr->encryptionKey,
@@ -82,8 +93,34 @@ static inline struct ItemSlot NONNULL BagPocket_GetSlotDataPC(struct BagPocket *
 
 static inline void NONNULL BagPocket_SetSlotDataGeneric(struct BagPocket *pocket, u32 pocketPos, struct ItemSlot newSlot)
 {
+    struct Bag *bag = LegendsStorageBag();
+    u32 id = pocket->id, size = bag->pocketSizes[id], used = BagPoolUsed();
+    u32 offset = pocket->itemSlots - bag->slots, added, trimmed;
+    if (pocketPos >= size)
+    {
+        if (newSlot.itemId == ITEM_NONE) return;
+        added = pocketPos + 1 - size;
+        if (added > LEGENDS_BAG_SLOTS - used) return;
+        memmove(bag->slots + offset + size + added, bag->slots + offset + size,
+            (used - offset - size) * sizeof(struct ItemSlot));
+        memset(bag->slots + offset + size, 0, added * sizeof(struct ItemSlot));
+        bag->pocketSizes[id] += added;
+        used += added;
+        SetBagItemsPointers();
+    }
     pocket->itemSlots[pocketPos].itemId = newSlot.itemId;
     pocket->itemSlots[pocketPos].quantity = newSlot.quantity ^ gSaveBlock2Ptr->encryptionKey;
+    size = bag->pocketSizes[id];
+    trimmed = 0;
+    while (size && pocket->itemSlots[size - 1].itemId == ITEM_NONE) { size--; trimmed++; }
+    if (trimmed)
+    {
+        memmove(bag->slots + offset + size, bag->slots + offset + size + trimmed,
+            (used - offset - size - trimmed) * sizeof(struct ItemSlot));
+        memset(bag->slots + used - trimmed, 0, trimmed * sizeof(struct ItemSlot));
+        bag->pocketSizes[id] = size;
+        SetBagItemsPointers();
+    }
 }
 
 static inline void NONNULL BagPocket_SetSlotDataPC(struct BagPocket *pocket, u32 pocketPos, struct ItemSlot newSlot)
@@ -138,32 +175,23 @@ void ApplyNewEncryptionKeyToBagItems(u32 newKey)
     enum Item item;
     for (pocketId = 0; pocketId < POCKETS_COUNT; pocketId++)
     {
-        for (item = ITEM_NONE; item < gBagPockets[pocketId].capacity; item++)
+        for (item = ITEM_NONE; item < LegendsStorageBag()->pocketSizes[pocketId]; item++)
             ApplyNewEncryptionKeyToHword(&(gBagPockets[pocketId].itemSlots[item].quantity), newKey);
     }
 }
 
 void SetBagItemsPointers(void)
 {
-    gBagPockets[POCKET_ITEMS].itemSlots = LegendsStorageBag()->items;
-    gBagPockets[POCKET_ITEMS].capacity = BAG_ITEMS_COUNT;
-    gBagPockets[POCKET_ITEMS].id = POCKET_ITEMS;
-
-    gBagPockets[POCKET_KEY_ITEMS].itemSlots = LegendsStorageBag()->keyItems;
-    gBagPockets[POCKET_KEY_ITEMS].capacity = BAG_KEYITEMS_COUNT;
-    gBagPockets[POCKET_KEY_ITEMS].id = POCKET_KEY_ITEMS;
-
-    gBagPockets[POCKET_POKE_BALLS].itemSlots = LegendsStorageBag()->pokeBalls;
-    gBagPockets[POCKET_POKE_BALLS].capacity = BAG_POKEBALLS_COUNT;
-    gBagPockets[POCKET_POKE_BALLS].id = POCKET_POKE_BALLS;
-
-    gBagPockets[POCKET_TM_HM].itemSlots = LegendsStorageBag()->TMsHMs;
-    gBagPockets[POCKET_TM_HM].capacity = BAG_TMHM_COUNT;
-    gBagPockets[POCKET_TM_HM].id = POCKET_TM_HM;
-
-    gBagPockets[POCKET_BERRIES].itemSlots = LegendsStorageBag()->berries;
-    gBagPockets[POCKET_BERRIES].capacity = BAG_BERRIES_COUNT;
-    gBagPockets[POCKET_BERRIES].id = POCKET_BERRIES;
+    struct Bag *bag = LegendsStorageBag();
+    u32 i, offset = 0, used = BagPoolUsed();
+    for (i = 0; i < POCKETS_COUNT; i++)
+    {
+        gBagPockets[i].id = i;
+        gBagPockets[i].itemSlots = bag->slots + (used <= LEGENDS_BAG_SLOTS ? offset : 0);
+        gBagPockets[i].capacity = used <= LEGENDS_BAG_SLOTS
+            ? bag->pocketSizes[i] + LEGENDS_BAG_SLOTS - used : 0;
+        offset += bag->pocketSizes[i];
+    }
 }
 
 u8 *CopyItemName(enum Item itemId, u8 *dst)
@@ -192,9 +220,9 @@ u8 *CopyItemNameHandlePlural(enum Item itemId, u8 *dst, u32 quantity)
 
 bool32 IsBagPocketNonEmpty(enum Pocket pocketId)
 {
-    u8 i;
+    u32 i;
 
-    for (i = 0; i < gBagPockets[pocketId].capacity; i++)
+    for (i = 0; i < LegendsStorageBag()->pocketSizes[pocketId]; i++)
     {
         if (GetBagItemId(pocketId, i) != ITEM_NONE)
             return TRUE;
@@ -312,6 +340,7 @@ static bool32 NONNULL BagPocket_AddItem(struct BagPocket *pocket, enum Item item
 
     // First, check that there is a free slot for this item
     u16 *tempPocketSlotQuantities = AllocZeroed(sizeof(u16) * pocket->capacity);
+    if (!tempPocketSlotQuantities) return FALSE;
 
     switch (pocket->id)
     {
@@ -363,9 +392,10 @@ bool32 AddBagItem(enum Item itemId, u16 count)
 
 static bool32 NONNULL BagPocket_RemoveItem(struct BagPocket *pocket, enum Item itemId, u16 count)
 {
-    u32 itemLookupIndex, itemRemoveIndex = 0, totalQuantity = 0;
+    u32 itemLookupIndex, itemRemoveIndex = 0, totalQuantity = 0, remaining = count;
     struct ItemSlot tempItem;
     u16 *tempPocketSlotQuantities = AllocZeroed(sizeof(u16) * pocket->capacity);
+    if (!tempPocketSlotQuantities) return FALSE;
 
     for (itemLookupIndex = 0; itemLookupIndex < pocket->capacity && totalQuantity < count; itemLookupIndex++)
     {
@@ -378,7 +408,9 @@ static bool32 NONNULL BagPocket_RemoveItem(struct BagPocket *pocket, enum Item i
 
             // Gather quantities (+ 1 to tempPocketSlotQuantities so that even if setting to 0 we know which indices to target)
             totalQuantity += tempItem.quantity;
-            tempPocketSlotQuantities[itemLookupIndex] = (tempItem.quantity <= count ? 0 : tempItem.quantity - count) + 1;
+            u32 removed = min(tempItem.quantity, remaining);
+            tempPocketSlotQuantities[itemLookupIndex] = tempItem.quantity - removed + 1;
+            remaining -= removed;
         }
     }
 
@@ -398,7 +430,7 @@ static bool32 NONNULL BagPocket_RemoveItem(struct BagPocket *pocket, enum Item i
         }
     }
 
-    if (totalQuantity == count)
+    if (totalQuantity >= count)
         BagPocket_CompactItems(pocket);
 
     Free(tempPocketSlotQuantities);
@@ -425,9 +457,9 @@ void RemoveBagItemFromSlot(struct BagPocket *pocket, u16 slotId, u16 count)
     BagPocket_SetSlotItemIdAndCount(pocket, slotId, itemSlot.itemId, itemSlot.quantity - count);
 }
 
-static u8 NONNULL BagPocket_CountUsedItemSlots(struct BagPocket *pocket)
+static u16 NONNULL BagPocket_CountUsedItemSlots(struct BagPocket *pocket)
 {
-    u8 usedSlots = 0;
+    u16 usedSlots = 0;
 
     for (u32 i = 0; i < pocket->capacity; i++)
     {
@@ -561,9 +593,10 @@ void MoveItemSlotInPC(struct ItemSlot *itemSlots, u32 from, u32 to)
 void ClearBag(void)
 {
     CpuFill16(0, LegendsStorageBag(), sizeof(struct Bag));
+    SetBagItemsPointers();
 }
 
-static inline u16 NONNULL BagPocket_CountTotalItemQuantity(struct BagPocket *pocket, enum Item itemId)
+static inline u32 NONNULL BagPocket_CountTotalItemQuantity(struct BagPocket *pocket, enum Item itemId)
 {
     u32 ownedCount = 0;
     struct ItemSlot tempItem;
@@ -578,7 +611,7 @@ static inline u16 NONNULL BagPocket_CountTotalItemQuantity(struct BagPocket *poc
     return ownedCount;
 }
 
-u16 CountTotalItemQuantityInBag(enum Item itemId)
+u32 CountTotalItemQuantityInBag(enum Item itemId)
 {
     return BagPocket_CountTotalItemQuantity(&gBagPockets[GetItemPocket(itemId)], itemId);
 }

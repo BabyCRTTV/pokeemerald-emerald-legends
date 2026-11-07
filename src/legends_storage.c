@@ -16,6 +16,42 @@ struct LegacyPokemonStorage
     u8 boxWallpapers[14];
     struct Pokemon fusions[MAX_FUSION_STORAGE];
 };
+// Exact v0.0.43-v0.0.77 expanded inventory; never use mutable runtime limits.
+struct LegacyExpandedBag
+{
+    struct ItemSlot items[150], keyItems[60], pokeBalls[32], TMsHMs[128], berries[80];
+};
+STATIC_ASSERT(sizeof(struct PokemonStorage) < 65536, StorageHashPositionsFitU16);
+STATIC_ASSERT(LEGENDS_BAG_SLOTS >= 450, BagCanMigratePublishedInventory);
+
+static bool32 BagLayoutValid(void)
+{
+    u32 i, used = 0;
+    for (i = 0; i < POCKETS_COUNT; i++) used += LegendsStorageBag()->pocketSizes[i];
+    return used <= LEGENDS_BAG_SLOTS;
+}
+
+// Copy encrypted quantities verbatim; preserve pocket order and every stack.
+static void ImportPocket(enum Pocket pocket, const struct ItemSlot *source, u32 count)
+{
+    struct Bag *bag = LegendsStorageBag();
+    u32 i, offset = 0;
+    while (count && source[count - 1].itemId == ITEM_NONE) count--;
+    for (i = 0; i < pocket; i++) offset += bag->pocketSizes[i];
+    memcpy(bag->slots + offset, source, count * sizeof(*source));
+    bag->pocketSizes[pocket] = count;
+}
+
+static void ImportExpandedBag(const struct LegacyExpandedBag *old)
+{
+    memset(LegendsStorageBag(), 0, sizeof(struct Bag));
+    ImportPocket(POCKET_ITEMS, old->items, ARRAY_COUNT(old->items));
+    ImportPocket(POCKET_POKE_BALLS, old->pokeBalls, ARRAY_COUNT(old->pokeBalls));
+    ImportPocket(POCKET_TM_HM, old->TMsHMs, ARRAY_COUNT(old->TMsHMs));
+    ImportPocket(POCKET_BERRIES, old->berries, ARRAY_COUNT(old->berries));
+    ImportPocket(POCKET_KEY_ITEMS, old->keyItems, ARRAY_COUNT(old->keyItems));
+}
+
 EWRAM_DATA static u8 *sPacked = NULL;
 
 struct Bag *LegendsStorageBag(void) { return &gPokemonStoragePtr->inventory; }
@@ -126,6 +162,7 @@ bool32 LegendsStoragePrepare(void)
     struct LegendsPackedHeader *header;
     u16 *hash;
     u32 size;
+    if (!BagLayoutValid()) return FALSE;
     LegendsStorageRelease();
     if (!LegendsStorageAllocate()) return FALSE;
     hash = Alloc(4096 * sizeof(*hash));
@@ -158,13 +195,34 @@ bool32 LegendsStorageDecode(void)
 {
     struct LegendsPackedHeader *header = (struct LegendsPackedHeader *)sPacked;
     if (!sPacked) return FALSE;
-    if (header->magic == LEGENDS_STORAGE_MAGIC)
+    if (header->magic == LEGENDS_STORAGE_MAGIC || header->magic == LEGENDS_STORAGE_LEGACY_MAGIC)
     {
-        if (header->rawSize != sizeof(*gPokemonStoragePtr) || !header->payloadSize
+        const u32 inventoryOffset = offsetof(struct PokemonStorage, inventory);
+        const u32 oldSize = inventoryOffset + sizeof(struct LegacyExpandedBag) + PC_ITEMS_COUNT * sizeof(struct ItemSlot);
+        bool32 oldFormat = header->magic == LEGENDS_STORAGE_LEGACY_MAGIC;
+        u32 rawSize = oldFormat ? oldSize : sizeof(*gPokemonStoragePtr);
+        struct LegacyExpandedBag *oldBag = NULL;
+        if (header->rawSize != rawSize || !header->payloadSize
             || header->payloadSize > LEGENDS_STORAGE_FLASH_BYTES - sizeof(*header)) return FALSE;
+        // Acquire migration scratch before changing the loaded destination.
+        if (oldFormat && !(oldBag = Alloc(sizeof(*oldBag)))) return FALSE;
         if (!LegendsStorageUnpack(sPacked + sizeof(*header), header->payloadSize,
-            (u8 *)gPokemonStoragePtr, sizeof(*gPokemonStoragePtr))) return FALSE;
-        if (Hash((u8 *)gPokemonStoragePtr, sizeof(*gPokemonStoragePtr)) != header->checksum) return FALSE;
+            (u8 *)gPokemonStoragePtr, rawSize)
+            || Hash((u8 *)gPokemonStoragePtr, rawSize) != header->checksum)
+        {
+            if (oldBag) Free(oldBag);
+            return FALSE;
+        }
+        if (oldFormat)
+        {
+            u8 *raw = (u8 *)gPokemonStoragePtr;
+            memcpy(oldBag, raw + inventoryOffset, sizeof(*oldBag));
+            memmove(gPokemonStoragePtr->pcItems, raw + inventoryOffset + sizeof(*oldBag),
+                sizeof(gPokemonStoragePtr->pcItems));
+            ImportExpandedBag(oldBag);
+            Free(oldBag);
+        }
+        if (!BagLayoutValid()) return FALSE;
         ToggleEncryption();
         if (gPokemonStoragePtr->currentBox >= TOTAL_BOXES_COUNT) return FALSE;
     }
@@ -179,10 +237,13 @@ bool32 LegendsStorageDecode(void)
         memcpy(gPokemonStoragePtr->boxWallpapers, old->boxWallpapers, sizeof(old->boxWallpapers));
         memcpy(gPokemonStoragePtr->fusions, old->fusions, sizeof(old->fusions));
         for (i = 14; i < TOTAL_BOXES_COUNT; i++) InitExtraBox(i);
-        // Every original inventory entry and its encrypted quantity survives.
-#define MIGRATE(pocket) memcpy(gPokemonStoragePtr->inventory.pocket, gSaveBlock1Ptr->bag.pocket, sizeof(gSaveBlock1Ptr->bag.pocket))
-        MIGRATE(items); MIGRATE(keyItems); MIGRATE(pokeBalls); MIGRATE(TMsHMs); MIGRATE(berries);
-#undef MIGRATE
+        // Original fourteen-box saves retain their native pocket widths.
+        memset(LegendsStorageBag(), 0, sizeof(struct Bag));
+        ImportPocket(POCKET_ITEMS, gSaveBlock1Ptr->bag.items, ARRAY_COUNT(gSaveBlock1Ptr->bag.items));
+        ImportPocket(POCKET_POKE_BALLS, gSaveBlock1Ptr->bag.pokeBalls, ARRAY_COUNT(gSaveBlock1Ptr->bag.pokeBalls));
+        ImportPocket(POCKET_TM_HM, gSaveBlock1Ptr->bag.TMsHMs, ARRAY_COUNT(gSaveBlock1Ptr->bag.TMsHMs));
+        ImportPocket(POCKET_BERRIES, gSaveBlock1Ptr->bag.berries, ARRAY_COUNT(gSaveBlock1Ptr->bag.berries));
+        ImportPocket(POCKET_KEY_ITEMS, gSaveBlock1Ptr->bag.keyItems, ARRAY_COUNT(gSaveBlock1Ptr->bag.keyItems));
         memcpy(gPokemonStoragePtr->pcItems, gSaveBlock1Ptr->pcItems, sizeof(gSaveBlock1Ptr->pcItems));
     }
     SetBagItemsPointers();

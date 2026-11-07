@@ -1,6 +1,7 @@
 #ifndef GUARD_LEGENDS_STORAGE_H
 #define GUARD_LEGENDS_STORAGE_H
-#define LEGENDS_STORAGE_MAGIC 0x4C504332
+#define LEGENDS_STORAGE_LEGACY_MAGIC 0x4C504332
+#define LEGENDS_STORAGE_MAGIC 0x4C504333
 #define LEGENDS_STORAGE_FLASH_BYTES (3968 * 9)
 struct LegendsPackedHeader { u32 magic, rawSize, checksum, payloadSize; };
 struct Bag *LegendsStorageBag(void);
