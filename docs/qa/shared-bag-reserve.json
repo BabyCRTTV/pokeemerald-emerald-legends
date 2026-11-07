@@ -1,5 +1,5 @@
 {
-  "phase": "focused-native-passed-full-integration-pending",
+  "phase": "full-capacity-battle-fix-Debug-native-passed; final-Release-and-integration-pending",
   "review_pr": "https://github.com/BabyCRTTV/pokeemerald-emerald-legends/pull/98",
   "game_source_commit": "849bf415081ebfc679555913f9f838b7f4cd46d5",
   "public_version_unchanged": "0.0.77",
@@ -57,5 +57,13 @@
     "No uninterrupted full-story or Pizza Boy/device claim",
     "All original final candidate native/decoder/provenance gates remain required; latest results live in PR98",
     "No publication or release completed"
-  ]
+  ],
+  "full_capacity_battle": {
+    "before": "Native full pool of1149 Item stacks plus Key/Ball/Berry reproduced OOM while allocating formatted names per row",
+    "repair": "One shared formatted name produced immediately before each ListMenu row; ID array still covers all rows",
+    "regression": "Production-C allocation budget passes; old per-row allocation negative control fails; established Eon fixture now opens full Bag in every scenario",
+    "native_after": "All6 Eon choice/outcome/partner/native-flash cases passed with full1152 pool and actual battle Bag callback; frame reviewed for correct names/quantities",
+    "Debug_ROM_sha256": "14a71608b0267a74cb34a13ed0cfbaff16b5daeec5c3f1595a498a86ddbe5dbe",
+    "host_regression": "Actual allocation/list construction functions pass bounded memory and full1153 rows; prior allocation negative control fails"
+  }
 }

@@ -9,7 +9,7 @@ def function(source,name):
  while depth:depth+=(source[b]=='{')-(source[b]=='}');b+=1
  return source[start:b]
 names=['ApplyNewEncryptionKeyToBagItems','IsBagPocketNonEmpty','BagPoolUsed','BagPocket_GetSlotDataGeneric','BagPocket_GetSlotDataPC','BagPocket_SetSlotDataGeneric','BagPocket_SetSlotDataPC','BagPocket_GetSlotData','BagPocket_SetSlotData','SetBagItemsPointers','CheckSlotAndUpdateCount','BagPocket_AddItem','BagPocket_RemoveItem','BagPocket_CompactItems','BagPocket_MoveItemSlot','BagPocket_CountTotalItemQuantity']
-funcs=[function(item,n) for n in names]+[function(menu,n) for n in ['Merge','MergeSort']]+[function(loadsave,'MoveSaveBlocks_ResetHeap')]+[function(helpers,n) for n in ['SetCursorWithinListBounds','SetCursorScrollWithinListBounds']]
+funcs=[function(item,n) for n in names]+[function(menu,n) for n in ['Merge','MergeSort','AllocateBagItemListBuffers','LoadBagItemListBuffers']]+[function(loadsave,'MoveSaveBlocks_ResetHeap')]+[function(helpers,n) for n in ['SetCursorWithinListBounds','SetCursorScrollWithinListBounds']]
 code=r'''
 #include <stdint.h>
 #include <stddef.h>
@@ -56,8 +56,17 @@ struct PokemonStorage data,*gPokemonStoragePtr=&data;
 struct SaveBlock1 {struct LegacyBag bag;struct ItemSlot pcItems[50];} nativeSave,*gSaveBlock1Ptr=&nativeSave;
 struct SaveBlock2 {u32 encryptionKey;u8 playerTrainerId[4];} save2={.encryptionKey=0x1234abcd},*gSaveBlock2Ptr=&save2;
 struct BagPocket gBagPockets[POCKETS_COUNT];
+struct ListMenuItem {const u8 *name;s32 id;};
+struct ListTemplate {struct ListMenuItem *items;u16 totalItems,maxShowed;};
+static struct ListTemplate gMultiuseListMenuTemplate;
+static const struct ListTemplate sItemListMenu={0};
+static struct {u16 numItemStacks[5];u8 numShownItems[5];bool32 hideCloseBagText;} miniBagMenu,*gBagMenu=&miniBagMenu;
+static struct ListMenuItem *sListBuffer1;
+static u8 (*sListBuffer2)[35];
+#define LIST_CANCEL -2
+static u32 allocBytes;
 static int failAlloc;
-static void *Alloc(u32 n){return failAlloc?NULL:malloc(n);}
+static void *Alloc(u32 n){allocBytes+=n;return failAlloc?NULL:malloc(n);}
 static void *AllocZeroed(u32 n){return failAlloc?NULL:calloc(1,n);}
 #define Free free
 static u8 *StringCopy(u8 *dst,const u8 *src){strcpy((char *)dst,(const char *)src);return dst+strlen((const char *)dst);}
@@ -134,6 +143,14 @@ int main(void)
   u16 scroll=total-9,cursor=7;SetCursorWithinListBounds(&scroll,&cursor,8,total);SetCursorScrollWithinListBounds(&scroll,&cursor,8,total,8);assert(scroll+cursor==total-2);assert((unsigned)scroll+8<=total);
  }
  {u16 scroll=592,cursor=7;SetCursorWithinListBounds(&scroll,&cursor,8,601);SetCursorScrollWithinListBounds(&scroll,&cursor,8,601,8);assert(scroll+cursor==599);}
+ // Even a full pocket must leave battle memory available; names are painted
+ // on demand rather than allocating35 bytes for every possible list row.
+ gBagMenu->numItemStacks[0]=1153;gBagMenu->numShownItems[0]=8;allocBytes=0;
+ assert(AllocateBagItemListBuffers());assert(allocBytes<=1153*sizeof(struct ListMenuItem)+64);
+ LoadBagItemListBuffers(0);assert(gMultiuseListMenuTemplate.totalItems==1153&&gMultiuseListMenuTemplate.maxShowed==8);
+ for(unsigned i=0;i<1153;i++){assert(sListBuffer1[i].name==sListBuffer2[0]);assert(sListBuffer1[i].id==(i==1152?LIST_CANCEL:(s32)i));}
+ gBagMenu->hideCloseBagText=TRUE;gBagMenu->numItemStacks[0]=1152;LoadBagItemListBuffers(0);assert(sListBuffer1[1151].id==1151);
+ Free(sListBuffer1);Free(sListBuffer2);
  puts("PASS: each pocket1152 stacks; shared reuse/full refusal; >255 indices; cross-pocket preservation; sorting/swapping; old14-box and v43-v77 packed migration; new save/reload; malformed-size and allocation refusal");
 }
 '''

@@ -894,42 +894,24 @@ static u8 CreateBagInputHandlerTask(u8 location)
 static bool32 AllocateBagItemListBuffers(void)
 {
     u32 rows = 1, pocket;
-    // Only allocate names for owned stacks, not the full future reserve.
+    // Item IDs persist for the list; format only the row being painted.
     for (pocket = 0; pocket < POCKETS_COUNT; pocket++)
         rows = max(rows, gBagMenu->numItemStacks[pocket]);
     sListBuffer1 = Alloc(rows * sizeof(*sListBuffer1));
-    sListBuffer2 = Alloc(rows * sizeof(*sListBuffer2));
+    sListBuffer2 = Alloc(sizeof(*sListBuffer2));
     return sListBuffer1 != NULL && sListBuffer2 != NULL;
 }
 
 static void LoadBagItemListBuffers(u8 pocketId)
 {
     u16 i;
-    struct ListMenuItem *subBuffer;
-
-    if (!gBagMenu->hideCloseBagText)
+    // ListMenu invokes itemPrintFunc immediately before drawing each row name.
+    // Every row can therefore share one scratch name without retaining a copy.
+    for (i = 0; i < gBagMenu->numItemStacks[pocketId]; i++)
     {
-        for (i = 0; i < gBagMenu->numItemStacks[pocketId] - 1; i++)
-        {
-            GetItemNameFromPocket(sListBuffer2[i], GetBagItemId(pocketId, i));
-            subBuffer = sListBuffer1;
-            subBuffer[i].name = sListBuffer2[i];
-            subBuffer[i].id = i;
-        }
-        StringCopy(sListBuffer2[i], gText_CloseBag);
-        subBuffer = sListBuffer1;
-        subBuffer[i].name = sListBuffer2[i];
-        subBuffer[i].id = LIST_CANCEL;
-    }
-    else
-    {
-        for (i = 0; i < gBagMenu->numItemStacks[pocketId]; i++)
-        {
-            GetItemNameFromPocket(sListBuffer2[i], GetBagItemId(pocketId, i));
-            subBuffer = sListBuffer1;
-            subBuffer[i].name = sListBuffer2[i];
-            subBuffer[i].id = i;
-        }
+        sListBuffer1[i].name = sListBuffer2[0];
+        sListBuffer1[i].id = !gBagMenu->hideCloseBagText
+            && i == gBagMenu->numItemStacks[pocketId] - 1 ? LIST_CANCEL : i;
     }
     gMultiuseListMenuTemplate = sItemListMenu;
     gMultiuseListMenuTemplate.totalItems = gBagMenu->numItemStacks[pocketId];
@@ -993,6 +975,11 @@ static void BagMenu_MoveCursorCallback(s32 itemIndex, bool8 onInit, struct ListM
 
 static void BagMenu_ItemPrintCallback(u8 windowId, u32 itemIndex, u8 y)
 {
+    if (itemIndex == LIST_CANCEL)
+        StringCopy(sListBuffer2[0], gText_CloseBag);
+    else
+        GetItemNameFromPocket(sListBuffer2[0], GetBagItemId(gBagPosition.pocket, itemIndex));
+
     if (itemIndex != LIST_CANCEL)
     {
         s32 offset;

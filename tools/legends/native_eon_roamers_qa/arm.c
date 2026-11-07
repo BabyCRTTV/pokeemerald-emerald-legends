@@ -30,6 +30,7 @@ void qa(void)
   SetMonMoveSlot(&gParties[B_TRAINER_PLAYER][0],MOVE_SHADOW_BALL,0);
   for(u32 i=1;i<4;i++)SetMonMoveSlot(&gParties[B_TRAINER_PLAYER][0],MOVE_NONE,i);
   u16 stone=ITEM_EVERSTONE;SetMonData(&gParties[B_TRAINER_PLAYER][0],MON_DATA_HELD_ITEM,&stone);gPartiesCount[B_TRAINER_PLAYER]=1;
+  for(u32 i=0;i<1149;i++)BagPocket_SetSlotData(&gBagPockets[POCKET_ITEMS],i,(struct ItemSlot){ITEM_POTION,77});
   AddBagItem(ITEM_MASTER_BALL,8);AddBagItem(ITEM_ORAN_BERRY,11);LegendsClockSetManual(12,0);LegendsSetSeasonMode(LEGENDS_SEASONS_PLAYTIME);LegendsSetPlaytimeSeason(LEGENDS_AUTUMN);
   FlagSet(FLAG_LATIOS_OR_LATIAS_ROAMING);gSpecialVar_0x8004=b[1];InitRoamer();
   // Keep repeated battle-menu A presses away from the wandering Old Man at10,11.

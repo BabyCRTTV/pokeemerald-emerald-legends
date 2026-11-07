@@ -1,5 +1,13 @@
 # Development handoff
 
+## Full-capacity battle memory repair under verification (6 November 2026)
+
+**Model: Codex | Reasoning: verify the advertised maximum in battle, where menu heap competes with battle state.**
+
+An additional native full-pool probe (1,149 Item stacks plus the existing Key Item, Balls and Berry stacks) reproduced a Debug out-of-memory screen when opening Bag in battle. The earlier600-stack field test did not cover this heap peak. Replaced one formatted name allocation per owned row with one reusable scratch name, formatted by the existing item-print callback immediately before ListMenu draws that row. IDs and menu geometry remain unchanged; existing TM/berry/name formatting is reused. Maximum list storage is now the ID/pointer array plus35 bytes of names rather than roughly40KB of names. The production-C sanitizer regression enforces this memory bound and rejects the old per-row allocation negative control.
+
+The established Eon native fixture now fills the complete shared pool and opens/closes Bag during every battle-outcome case, checking the real Bag callback before continuing. This remains within the original14 native gates and one private Debug/Release pair. All six full-pool Debug battle/outcome/partner/native-flash cases passed and the rendered names/quantities were reviewed. Updated Release and final CI verification remain pending at this checkpoint; PR98 carries the live completion status. Public v0.0.77 remains unchanged.
+
 ## Shared bag focused native verification passed (6 November 2026)
 
 **Model: Codex | Reasoning: finish the actual native failures before another full integration gate.**

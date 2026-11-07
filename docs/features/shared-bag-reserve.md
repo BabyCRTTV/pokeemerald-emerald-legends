@@ -2,7 +2,7 @@
 
 Implementation review:1,152 total stacks shared automatically across Items (including healing), Key Items, Poké Balls, TMs/HMs and Berries. Unused capacity is available to every pocket; adding an item definition no longer requires changing a pocket limit. Each stack remains capped at999. This is a finite GBA inventory, not unlimited storage.
 
-The published450-stack partitioned bag was150 Items,60 Key Items,32 Balls,128 TMs/HMs and80 Berries. The larger shared pool avoids five oversized arrays and retains the existing heap. Menu counts, selected positions and swap markers now cover the full pool, with list/name allocations proportional to owned stacks. PC Item Storage and facility-specific rules remain separate.
+The published450-stack partitioned bag was150 Items,60 Key Items,32 Balls,128 TMs/HMs and80 Berries. The larger shared pool avoids five oversized arrays and retains the existing heap. Menu counts, selected positions and swap markers now cover the full pool, with list IDs proportional to owned stacks and one scratch name formatted only when a row is drawn. This keeps the full bag usable alongside battle memory. PC Item Storage and facility-specific rules remain separate.
 
 ## Save format and migration
 
