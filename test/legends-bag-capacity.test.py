@@ -2,14 +2,14 @@
 from pathlib import Path
 import re,subprocess,tempfile
 R=Path(__file__).resolve().parents[1]
-item=(R/'src/item.c').read_text();storage=(R/'src/legends_storage.c').read_text();menu=(R/'src/item_menu.c').read_text();loadsave=(R/'src/load_save.c').read_text()
+item=(R/'src/item.c').read_text();storage=(R/'src/legends_storage.c').read_text();menu=(R/'src/item_menu.c').read_text();loadsave=(R/'src/load_save.c').read_text();helpers=(R/'src/menu_helpers.c').read_text()
 def function(source,name):
  m=re.search(r'^[^\n;]*\b'+name+r'\([^;]*?\)\n\{',source,re.M);assert m,name
  start=m.start();a=source.index('{',m.start());depth=1;b=a+1
  while depth:depth+=(source[b]=='{')-(source[b]=='}');b+=1
  return source[start:b]
 names=['ApplyNewEncryptionKeyToBagItems','IsBagPocketNonEmpty','BagPoolUsed','BagPocket_GetSlotDataGeneric','BagPocket_GetSlotDataPC','BagPocket_SetSlotDataGeneric','BagPocket_SetSlotDataPC','BagPocket_GetSlotData','BagPocket_SetSlotData','SetBagItemsPointers','CheckSlotAndUpdateCount','BagPocket_AddItem','BagPocket_RemoveItem','BagPocket_CompactItems','BagPocket_MoveItemSlot','BagPocket_CountTotalItemQuantity']
-funcs=[function(item,n) for n in names]+[function(menu,n) for n in ['Merge','MergeSort']]+[function(loadsave,'MoveSaveBlocks_ResetHeap')]
+funcs=[function(item,n) for n in names]+[function(menu,n) for n in ['Merge','MergeSort']]+[function(loadsave,'MoveSaveBlocks_ResetHeap')]+[function(helpers,n) for n in ['SetCursorWithinListBounds','SetCursorScrollWithinListBounds']]
 code=r'''
 #include <stdint.h>
 #include <stddef.h>
@@ -127,6 +127,11 @@ int main(void)
   MoveSaveBlocks_ResetHeap();unsigned offset=0;
   for(unsigned p=0;p<5;p++){assert(gBagPockets[p].itemSlots==gPokemonStoragePtr->inventory.slots+offset);offset+=p+1;for(unsigned i=0;i<p+1;i++){struct ItemSlot v=BagPocket_GetSlotData(&gBagPockets[p],i);assert(v.itemId==p*100+i+1&&v.quantity==77);}}
  }
+ // The shared menu bounds must keep positions above255 on reopen and scroll.
+ for(unsigned total=257;total<=1153;total++){
+  u16 scroll=total-9,cursor=7;SetCursorWithinListBounds(&scroll,&cursor,8,total);SetCursorScrollWithinListBounds(&scroll,&cursor,8,total,8);assert(scroll+cursor==total-2);assert((unsigned)scroll+8<=total);
+ }
+ {u16 scroll=592,cursor=7;SetCursorWithinListBounds(&scroll,&cursor,8,601);SetCursorScrollWithinListBounds(&scroll,&cursor,8,601,8);assert(scroll+cursor==599);}
  puts("PASS: each pocket1152 stacks; shared reuse/full refusal; >255 indices; cross-pocket preservation; sorting/swapping; old14-box and v43-v77 packed migration; new save/reload; malformed-size and allocation refusal");
 }
 '''

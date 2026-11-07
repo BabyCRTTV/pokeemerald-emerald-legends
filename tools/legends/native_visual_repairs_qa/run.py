@@ -7,7 +7,10 @@ def main():
  p=argparse.ArgumentParser();p.add_argument('--output',type=Path,required=True);p.add_argument('--mgba-prefix',type=Path,required=True);p.add_argument('--rom',type=Path,default=ROOT/'pokeemerald.gba');p.add_argument('--elf',type=Path,default=ROOT/'pokeemerald.elf');args=p.parse_args();out=args.output.resolve();out.mkdir(exist_ok=True,parents=True)
  src=Path(__file__).resolve().parent;env=os.environ.copy();prefix=args.mgba_prefix.resolve();env['PATH']=str(prefix/'bin')+':'+env['PATH'];env['LD_LIBRARY_PATH']=str(prefix/'lib/x86_64-linux-gnu')+':'+env.get('LD_LIBRARY_PATH','')
  def run(cmd,log):
-  with (out/log).open('w') as f:subprocess.run(cmd,cwd=ROOT,env=env,stdout=f,stderr=subprocess.STDOUT,check=True)
+  with (out/log).open('w') as f:result=subprocess.run(cmd,cwd=ROOT,env=env,stdout=f,stderr=subprocess.STDOUT)
+  if result.returncode:
+   for raw in out.glob('*.rgba'):Image.frombytes('RGBA',(240,160),raw.read_bytes()).convert('RGB').save(raw.with_suffix('.png'))
+   raise RuntimeError((out/log).read_text()[-10000:])
  run(['arm-none-eabi-gcc','-iquote','include','-iquote','.', '-DMODERN=1','-DEMERALD','-mthumb','-mcpu=arm7tdmi','-mabi=apcs-gnu','-Os','-ffreestanding','-fno-builtin','-fno-jump-tables','-nostdlib','-Wl,-Ttext=0x09f80000','-Wl,--entry=qa','-Wl,--just-symbols='+str(args.elf.resolve()),str(src/'arm.c'),'-o',str(out/'arm.elf')],'arm-build.log')
  arm_nm=subprocess.check_output(['arm-none-eabi-nm',str(out/'arm.elf')],cwd=ROOT,env=env,text=True)
  callback=next(int(line.split()[0],16)|1 for line in arm_nm.splitlines() if line.split()[-1]=='qa')

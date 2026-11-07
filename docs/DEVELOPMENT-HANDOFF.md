@@ -1,5 +1,13 @@
 # Development handoff
 
+## Shared bag resume: large-list bounds repaired (6 November 2026)
+
+**Model: Codex | Reasoning: inspect the retained failure before rebuilding and cover the actual shared menu helpers.**
+
+Resumed PR98 at c6b3a409. Verified artifact13529145918 (SHA256 310fd68a81739b14b9f2123d07a486ece1e5ca52ef4bff8376a1fa6b12f01268): all wardrobe/palette and flash checks passed; the new slot599 selection assertion failed. Traced this to SetCursorWithinListBounds and SetCursorScrollWithinListBounds accepting u8 totalItems, truncating601 to89. Widened only their count arguments to u16. Production-C ASAN/UBSAN tests now cover totals257–1153 and exact slot599 reopening; the old-signature negative control fails. Existing shared-capacity, migration and relocation checks still pass.
+
+The Eon fixture also treated inBattle=false as completed field return, although CB2_EndWildBattle still schedules field rebuilding. Its private status now acknowledges the actual CB2_Overworld callback; the host waits for that before another save/battle. No battle rules changed. Focused native failure logs and frames are retained on error. Native/full gate results remain pending; keep draft and public v0.0.77 unchanged. PR98 retains the latest run and completion status.
+
 ## Shared bag reserve implementation, native verification pending (6 November 2026)
 
 **Model: Codex | Reasoning: remove per-pocket capacity maintenance while respecting GBA memory and published saves.**
