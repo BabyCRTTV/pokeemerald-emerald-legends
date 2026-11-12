@@ -680,3 +680,7 @@ gSpecials::
 	def_special LegendsWyrmtideHasMaker
 
 	def_special LegendsWyrmtideRefreshDewford
+
+	def_special LegendsCookPoffin, waitstate=1
+	def_special LegendsPoffinHasRoom
+	def_special LegendsOpenTreatCase, waitstate=1

@@ -1,5 +1,26 @@
 # Development handoff
 
+## v0.0.78 Poffin publication approved (12 November 2026)
+
+**Model: Codex | Reasoning: publish the approved native visuals through existing candidate and production gates.**
+
+Owner approved publication of cooking, separate Treat Case and custom feeding. Preparing v0.0.78 from approved commit `68547d640b74dee6ddcea640a66ae2369274670d`; live master `92dd5f2894aa76b03acb8102519f151f3c444eff` has no intervening changes. Updated version, Options, player changelogs and website labels. Bag capacity work remains outside this release. Existing review gameplay and old-battery migration evidence is linked below; release-number builds, required CI, patch reconstruction and live deployment must complete before claiming publication.
+
+## Separate Treat Case review (12 November 2026)
+
+**Model: Codex | Reasoning: independent treat storage, first-use reward, native feeding visuals and append-only save compatibility.**
+
+Completed the owner’s follow-up on `feature/poffin-kitchen`: first machine interaction grants TREAT CASE (item 876); portable 40-Poffin list with flavor art/stats; Bag and registered SELECT entry; separate plated-Poffin feeding with bites and Pokémon reaction. Preserved approved cooking art and maps. SaveBlock3 appends 324 bytes at offset 1032; old preview Poffins migrate once while ordinary Pokéblocks remain. Native controller checks, Debug/Release builds, sector-tail/codec tests and a real older-build synthetic battery Continue → migrate → save → reset → Continue passed. [Screenshots, animation, hashes and limitations](designs/poffin-kitchen/README.md).
+
+Review only, version remains 0.0.77. Awaiting review of the new visuals; do not publish yet. Release patch/CI gates, integration with any newer master/bag-capacity work and the authentic historical-owner-save matrix are outstanding. No ROMs, ELFs or saves belong in the commit.
+
+## Poffin Kitchen preview (6 November 2026)
+
+**Model: Codex | Reasoning: preserve existing save records and adapt directional stirring to GBA input.**
+
+Working branch based on 0.0.77. Added the Poffin Maker to 46 Center maps plus the Ever Grande League lobby. Map objects are appended, with private graphics ID 0x0E02. One or two berries cook into a flavored Poffin stored and fed through the existing contest-treat system. No new save fields, flags, or persistent variables. Verified native cooking, mixed flavors, feeding, battery round trip, cancellation, and static walkable approaches. See the [game captures, native QA, and limits](designs/poffin-kitchen/README.md). Awaiting visual review before release. Keep separate from the bag capacity work and reconcile newer master before release.
+
+
 ## Walkthrough scope corrected to27 chapters (6 November 2026)
 
 **Model: Codex | Reasoning: follow the owner’s established walkthrough format and audit encounter inputs.**

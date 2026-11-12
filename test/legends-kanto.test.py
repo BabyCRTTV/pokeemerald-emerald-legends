@@ -155,6 +155,13 @@ class KantoTests(unittest.TestCase):
         for symbol in ("Woman1Frlg", "CooltrainerM", "SailorFrlg", "SSAnne"):
             self.assertIn("= &gObjectEventGraphicsInfo_" + symbol, result)
         registered = set(re.findall(r'\[(OBJ_EVENT_GFX_\w+)\]\s*=', result))
+        # Private Legends graphics are resolved before the indexed native table.
+        movement = (ROOT / 'src/event_object_movement.c').read_text()
+        private = re.findall(r'if \(graphicsId == (OBJ_EVENT_GFX_LEGENDS_\w+)\)\s*return &(gObjectEventGraphicsInfo_\w+);', movement)
+        definitions = (ROOT / 'src/data/object_events/object_event_graphics_info.h').read_text()
+        for graphics, info in private:
+            self.assertIn('const struct ObjectEventGraphicsInfo ' + info, definitions)
+            registered.add(graphics)
         for path in (ROOT / 'data/maps').glob('LegendsKanto_*/map.json'):
             for obj in json.loads(path.read_text())['object_events']:
                 graphics = obj['graphics_id']

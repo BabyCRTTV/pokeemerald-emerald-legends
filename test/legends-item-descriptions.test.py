@@ -7,6 +7,7 @@ def function(path,signature):
 g=(R/'include/global.h').read_text();a=g.index('struct SaveBlock3\n{');block=g[a:g.index('};',a)+2]
 legacy=block.replace('struct SaveBlock3','struct LegacySaveBlock3').replace('    struct LegendsJournalSave journal;\n','')
 legacy=legacy.replace('    struct LegendsAchievementExtraSave achievementExtra;\n','')
+legacy=legacy.replace('    struct LegendsPoffinSave poffins;\n','')
 legacy=legacy.replace('    struct LegendsGrottoSave grottos;\n','').replace('    struct LegendsEonSave eon;\n','')
 legacy=legacy.replace('#if OW_SHOW_ITEM_DESCRIPTIONS == OW_ITEM_DESCRIPTIONS_FIRST_TIME\n    u8 itemFlags[ITEM_FLAGS_COUNT];\n#endif\n','')
 flags=(R/'include/overworld.h').read_text().split('enum ItemObtainFlags')[1].split('};')[0]
@@ -38,6 +39,8 @@ typedef void (*MainCallback)(void);
 #include "save.h"
 #define ITEM_FLAGS_COUNT ((ITEMS_COUNT+7)/8)
 '''
+# Match the ARM APCS structure-size boundary (native Pokeblock stride is 8).
+pre+=g[g.index('struct Pokeblock\n{'):g.index('struct SaveBlock3\n{')].replace('struct Pokeblock\n{', 'struct __attribute__((aligned(4))) Pokeblock\n{')
 pre+='enum ItemObtainFlags'+flags+'};\n'+legacy+'\n'+block+r'''
 static struct SaveBlock3 gSaveblock3,*gSaveBlock3Ptr=&gSaveblock3;
 static struct SaveSector flash[28],buffer,*gReadWriteSector=&buffer;
@@ -64,7 +67,7 @@ int main(void)
  assert(sizeof(struct LegacySaveBlock3)==0x21C);
  assert(offsetof(struct SaveBlock3,itemFlags)==0x21C);
  assert(offsetof(struct SaveBlock3,journal)==652);
- assert(offsetof(struct SaveBlock3,achievementExtra)==688 && offsetof(struct SaveBlock3,grottos)==716 && offsetof(struct SaveBlock3,eon)==992 && sizeof(struct SaveBlock3)==1032);
+ assert(offsetof(struct SaveBlock3,achievementExtra)==688 && offsetof(struct SaveBlock3,grottos)==716 && offsetof(struct SaveBlock3,eon)==992 && offsetof(struct SaveBlock3,poffins)==1032 && sizeof(struct Pokeblock)==8 && sizeof(struct SaveBlock3)==1356);
  for(unsigned item=1;item<ITEMS_COUNT;item++){
   memset(&gSaveblock3,0,sizeof(gSaveblock3));assert(!GetSetItemObtained(item,FLAG_GET_ITEM_OBTAINED));
   assert(GetSetItemObtained(item,FLAG_SET_ITEM_OBTAINED));assert(GetSetItemObtained(item,FLAG_GET_ITEM_OBTAINED));

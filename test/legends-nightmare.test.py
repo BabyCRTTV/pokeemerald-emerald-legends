@@ -33,7 +33,15 @@ assert 'When Morning Never Comes' in quests and 'FLAG_LEGENDS_NIGHTMARE_REPORTED
 # SaveBlock3 offset. Existing items and saved structs remain byte-for-byte.
 items=read('include/constants/items.h');assert 'ITEM_LUNAR_WING = 875' in items
 assert (875+7)//8==(876+7)//8==110
-assert (R/'include/global.h').read_bytes()==old('include/global.h')
+# The later Poffin extension is append-only; the original definitions stay exact.
+current_global=read('include/global.h');old_global=old('include/global.h').decode()
+record=r'struct Pokeblock\n\{.*?\n\};'
+assert re.search(record,current_global,re.S)[0]==re.search(record,old_global,re.S)[0]
+current_global=re.sub(record,'',current_global,flags=re.S)
+old_global=re.sub(record,'',old_global,flags=re.S)
+current_global=re.sub(r'#define LEGENDS_POFFIN_CAPACITY 40\n\nstruct LegendsPoffinSave\n\{.*?\n\};','',current_global,flags=re.S)
+current_global=current_global.replace('    struct LegendsPoffinSave poffins;\n','')
+assert [l for l in current_global.splitlines() if l.strip()]==[l for l in old_global.splitlines() if l.strip()]
 assert items[:items.index('    ITEM_INVITE_TICKET = 874,')]==old('include/constants/items.h').decode().split('    ITEM_INVITE_TICKET = 874,')[0]
 # Bound the only old-map terrain patch to a complete house; retain old objects,
 # coordinates, event scripts and warp IDs, including original Lilycove stories.

@@ -1,4 +1,5 @@
 #include "global.h"
+#include "legends_poffin.h"
 #include "main.h"
 #include "dma3.h"
 #include "pokeblock.h"
@@ -709,7 +710,10 @@ static void FeedPokeblockToMon(void)
             FREE_AND_SET_NULL(sMenu);
             FreeAllWindowBuffers();
             gMain.savedCallback = CB2_ReturnAndChooseMonToGivePokeblock;
-            PreparePokeblockFeedScene();
+            if (sPokeblock->color >= POFFIN_SPICY)
+                LegendsPreparePoffinFeed(sPokeblock);
+            else
+                PreparePokeblockFeedScene();
         }
         break;
     }
@@ -811,7 +815,7 @@ static void ShowPokeblockResults(void)
     case 5:
         if (JOY_NEW(A_BUTTON | B_BUTTON) && !TryPrintNextEnhancement())
         {
-            TryClearPokeblock((u8)gSpecialVar_ItemId);
+            memset(sInfo->pokeblock, 0, sizeof(*sInfo->pokeblock));
             SetUsePokeblockCallback(CloseUsePokeblockMenu);
         }
         break;
@@ -870,7 +874,8 @@ static void AskUsePokeblock(void)
 
     GetMonData(&gParties[B_TRAINER_PLAYER][GetPartyIdFromSelectionId(sMenu->info.curSelection)], MON_DATA_NICKNAME, stringBuffer);
     StringGet_Nickname(stringBuffer);
-    StringAppend(stringBuffer, sText_GetsAPokeBlockQuestion);
+    StringAppend(stringBuffer, sInfo->pokeblock->color >= POFFIN_SPICY
+        ? COMPOUND_STRING(" gets a POFFIN?") : sText_GetsAPokeBlockQuestion);
     StringCopy(gStringVar4, stringBuffer);
     FillWindowPixelBuffer(WIN_TEXT, 17);
     DrawTextBorderOuter(WIN_TEXT, 151, 14);

@@ -259,6 +259,24 @@ struct NPCFollower
 #include "legends_grottos.h"
 #include "legends_roamers.h"
 
+struct Pokeblock
+{
+    u8 color;
+    u8 spicy;
+    u8 dry;
+    u8 sweet;
+    u8 bitter;
+    u8 sour;
+    u8 feel;
+};
+#define LEGENDS_POFFIN_CAPACITY 40
+
+struct LegendsPoffinSave
+{
+    u32 signature;
+    struct Pokeblock treats[LEGENDS_POFFIN_CAPACITY];
+};
+
 struct SaveBlock3
 {
 #if OW_USE_FAKE_RTC
@@ -283,6 +301,7 @@ struct SaveBlock3
     struct LegendsAchievementExtraSave achievementExtra;
     struct LegendsGrottoSave grottos;
     struct LegendsEonSave eon;
+    struct LegendsPoffinSave poffins;
 }; /* max size 1624 bytes */
 
 extern struct SaveBlock3 *gSaveBlock3Ptr;
@@ -690,16 +709,7 @@ struct ItemSlot
     u16 quantity;
 };
 
-struct Pokeblock
-{
-    u8 color;
-    u8 spicy;
-    u8 dry;
-    u8 sweet;
-    u8 bitter;
-    u8 sour;
-    u8 feel;
-};
+
 
 
 

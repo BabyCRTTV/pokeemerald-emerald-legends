@@ -414,7 +414,12 @@ static const u16 *const sPokeblocksPals[] =
     [PBLOCK_CLR_GRAY - 1]      = gPokeblockGray_Pal,
     [PBLOCK_CLR_BLACK - 1]     = gPokeblockBlack_Pal,
     [PBLOCK_CLR_WHITE - 1]     = gPokeblockWhite_Pal,
-    [PBLOCK_CLR_GOLD - 1]      = gPokeblockGold_Pal
+    [PBLOCK_CLR_GOLD - 1]      = gPokeblockGold_Pal,
+    [POFFIN_SPICY - 1] = gPokeblockRed_Pal,
+    [POFFIN_DRY - 1] = gPokeblockBlue_Pal,
+    [POFFIN_SWEET - 1] = gPokeblockPink_Pal,
+    [POFFIN_BITTER - 1] = gPokeblockGreen_Pal,
+    [POFFIN_SOUR - 1] = gPokeblockYellow_Pal,
 };
 
 static const union AffineAnimCmd sAffineAnim_Still[] =
@@ -680,7 +685,14 @@ static bool8 LoadMonAndSceneGfx(struct Pokemon *mon)
         sPokeblockFeed->loadGfxState++;
         break;
     case 4:
-        LoadCompressedSpriteSheet(&sSpriteSheet_Pokeblock);
+        if (gSaveBlock1Ptr->pokeblocks[gSpecialVar_ItemId].color >= POFFIN_SPICY)
+        {
+            static const u32 bun[] = INCGFX_U32("graphics/poffin/bite.png", ".4bpp.lz");
+            static const struct CompressedSpriteSheet sheet = {bun, 0x20, TAG_POKEBLOCK};
+            LoadCompressedSpriteSheet(&sheet);
+        }
+        else
+            LoadCompressedSpriteSheet(&sSpriteSheet_Pokeblock);
         sPokeblockFeed->loadGfxState++;
         break;
     case 5:

@@ -1,0 +1,30 @@
+{
+  "version": "0.0.77 + Treat Case review",
+  "emulator": "mGBA 0.10.5 native core",
+  "rom_sha256": "9a7ca637d1f75d52fcf544c7f84e58ea4241f7bef3bc3f86850059e0a3af3b32",
+  "passed": true,
+  "tests": [
+    "first-use gift",
+    "one case on repeat interaction",
+    "two-berry cooking",
+    "separate storage",
+    "battery round trip",
+    "custom feeding and condition gains",
+    "exactly one consumed",
+    "Bag open/return",
+    "registered SELECT use",
+    "preview record migration and idempotence",
+    "40-record capacity and scroll",
+    "full-case refusal without berry loss"
+  ],
+  "limits": "Controlled fixture, not an authentic historical player save or full story playthrough.",
+  "release_rom_sha256": "62af8a4f8181b578239585384fab23c5046d81e99461a991e48f4de0b14526ea",
+  "host_tests": [
+    "item history and sector tails: all 28 slot/rotation layouts",
+    "storage codec sanitizer checks"
+  ],
+  "builds": {
+    "Debug": "passed",
+    "Release": "passed"
+  }
+}
