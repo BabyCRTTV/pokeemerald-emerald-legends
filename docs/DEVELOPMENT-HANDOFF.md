@@ -1,5 +1,11 @@
 # Development handoff
 
+## v0.0.78 Poffin publication approved (12 November 2026)
+
+**Model: Codex | Reasoning: publish the approved native visuals through existing candidate and production gates.**
+
+Owner approved publication of cooking, separate Treat Case and custom feeding. Preparing v0.0.78 from approved commit `68547d640b74dee6ddcea640a66ae2369274670d`; live master `92dd5f2894aa76b03acb8102519f151f3c444eff` has no intervening changes. Updated version, Options, player changelogs and website labels. Bag capacity work remains outside this release. Existing review gameplay and old-battery migration evidence is linked below; release-number builds, required CI, patch reconstruction and live deployment must complete before claiming publication.
+
 ## Separate Treat Case review (12 November 2026)
 
 **Model: Codex | Reasoning: independent treat storage, first-use reward, native feeding visuals and append-only save compatibility.**

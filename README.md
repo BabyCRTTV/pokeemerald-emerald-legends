@@ -1,6 +1,6 @@
 # Pokémon Emerald: Legends
 
-**Version:** 0.0.77<br>
+**Version:** 0.0.78<br>
 **Base:** [pokeemerald-expansion](https://github.com/rh-hideout/pokeemerald-expansion)
 
 Pokémon Emerald: Legends is an unofficial, non-commercial Pokémon Emerald ROM-hack project built on the open-source `pokeemerald-expansion` decompilation/expansion base.
@@ -9,7 +9,7 @@ The project is intended to preserve the feel and structure of Pokémon Emerald w
 
 The New Game / Continue / Options menu uses a soft lavender backdrop as of v0.0.13.1. v0.0.54 displays the current version at the right edge of its OPTION card, matching the native text; Debug includes the -D suffix.
 
-v0.0.77 added **When Morning Never Comes**, a Darkrai rescue quest after Regidrago. Follow a worried father’s call, investigate his daughter’s slumber and enter a deserted dream with the Lunar Wing. [Quest access, outcomes and revisits](docs/features/when-morning-never-comes.md).
+v0.0.78 added **Poffin cooking**, a portable **Treat Case**, and a dedicated Pokémon feeding display. Visit a Pokémon Center, choose berries, and roll the D-pad to stir.
 
 v0.0.75 made both Eon Pokémon available as independent level-40 roamers: choose the first on TV, then encounter it to unlock the opposite one. Capturing or defeating either leaves the other available. Existing saved progress is retained. [Rules and legacy-save behavior](docs/features/eon-roamers.md).
 

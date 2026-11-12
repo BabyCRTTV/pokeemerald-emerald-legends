@@ -241,9 +241,10 @@ key(1, 180)
 command(2)
 assert (value(10), value(11), value(14), value(15)) == (1, 1, 1, 1)
 
+assert core.battery(bytes(OUTPUT / "private-full-case.sav"))
 assert rom.read_bytes() == original
 receipt = {
-    "version": "0.0.77 + Treat Case review",
+    "version": (ROOT / "VERSION").read_text().strip(),
     "emulator": "mGBA native core",
     "rom_sha256": hashlib.sha256(original).hexdigest(),
     "passed": True,
