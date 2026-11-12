@@ -3440,3 +3440,6 @@ extern const u32 gGhostFrontPic[];
 extern const u16 gGhostPalette[];
 
 #endif //GUARD_GRAPHICS_H
+
+extern const u32 gItemIcon_TreatCase[];
+extern const u16 gItemIconPalette_TreatCase[];

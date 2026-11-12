@@ -19,3 +19,23 @@ void step(int frames,int k){c->setKeys(c,k);while(frames-->0)c->runFrame(c);}
 void wr(unsigned int addr,unsigned int value){c->busWrite32(c,addr,value);}
 unsigned int rd(unsigned int addr){return c->busRead32(c,addr);}
 const void *screen(void){return video;}
+
+#include <stdio.h>
+int battery(const char *path)
+{
+    void *data = NULL;
+    size_t size = c->savedataClone(c, &data);
+    FILE *file = fopen(path, "wb");
+    if (!file || !data)
+        return 0;
+    size_t written = fwrite(data, 1, size, file);
+    fclose(file);
+    free(data);
+    return written == 131072;
+}
+int load_battery(const char *path)
+{
+    struct VFile *file = VFileOpen(path, O_RDWR);
+    return file && c->loadSave(c, file);
+}
+void reset(void) { c->reset(c); }

@@ -1135,3 +1135,5 @@ static void CopyFromSaveBlock3(u32 sectorId, struct SaveSector *sector)
     u32 size = SaveBlock3Size(sectorId);
     memcpy(sector->saveBlock3Chunk, (u8 *)&gSaveblock3 + (sectorId * SAVE_BLOCK_3_CHUNK_SIZE), size);
 }
+
+STATIC_ASSERT(offsetof(struct SaveBlock3, poffins) == 1032, PoffinAppendOnly);

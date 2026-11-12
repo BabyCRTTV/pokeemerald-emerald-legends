@@ -14338,6 +14338,22 @@ const struct ItemInfo gItemsInfo[] =
 
 // Story Key Items
 
+    [ITEM_TREAT_CASE] =
+    {
+        .name = ITEM_NAME("Treat Case"),
+        .description = COMPOUND_STRING(
+            "A pastry case for\n"
+            "40 POFFINS. Open it\n"
+            "to feed your POKéMON."),
+        .importance = 1,
+        .pocket = POCKET_KEY_ITEMS,
+        .type = ITEM_USE_BAG_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_TreatCase,
+        .iconPic = gItemIcon_TreatCase,
+        .iconPalette = gItemIconPalette_TreatCase,
+    },
+
+
     [ITEM_LUNAR_WING] =
     {
         .name = ITEM_NAME("Lunar Wing"),

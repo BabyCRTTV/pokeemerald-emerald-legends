@@ -1,4 +1,5 @@
 #include "global.h"
+#include "legends_poffin.h"
 #include "item_use.h"
 #include "battle.h"
 #include "battle_anim.h"
@@ -1577,6 +1578,45 @@ void ItemUseOutOfBattle_TownMap(u8 taskId)
     else
     {
         gTasks[taskId].func = ItemUseOnFieldCB_TownMap;
+    }
+}
+
+#undef tUsingRegisteredKeyItem
+
+// Match the registered-item task argument used by the other key items.
+#define tUsingRegisteredKeyItem data[3]
+
+static void CB2_OpenTreatCaseFromBag(void)
+{
+    LegendsShowTreatCase(CB2_ReturnToBagMenuPocket);
+}
+
+static void Task_OpenRegisteredTreatCase(u8 taskId)
+{
+    if (gPaletteFade.active)
+        return;
+    CleanupOverworldWindowsAndTilemaps();
+    DestroyTask(taskId);
+    LegendsShowTreatCase(CB2_ReturnToField);
+}
+
+void ItemUseOutOfBattle_TreatCase(u8 taskId)
+{
+    if (MenuHelpers_IsLinkActive())
+    {
+        DisplayDadsAdviceCannotUseItemMessage(taskId, gTasks[taskId].tUsingRegisteredKeyItem);
+        return;
+    }
+    if (gTasks[taskId].tUsingRegisteredKeyItem)
+    {
+        gFieldCallback = FieldCB_ReturnToFieldNoScript;
+        FadeScreen(FADE_TO_BLACK, 0);
+        gTasks[taskId].func = Task_OpenRegisteredTreatCase;
+    }
+    else
+    {
+        gBagMenu->newScreenCallback = CB2_OpenTreatCaseFromBag;
+        Task_FadeAndCloseBagMenu(taskId);
     }
 }
 

@@ -1,4 +1,5 @@
 #include "global.h"
+#include "legends_poffin.h"
 #include "legends_grottos.h"
 #include "legends_storage.h"
 #include "legends_adventure.h"
@@ -252,6 +253,7 @@ void NewGameInitData(void)
     LegendsJournalInit(TRUE);
     LegendsGrottoInit(TRUE);
     LegendsRoamerInit(TRUE);
+    LegendsPoffinInit(TRUE);
 }
 
 static void ResetMiniGamesRecords(void)

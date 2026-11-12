@@ -1,5 +1,12 @@
 LegendsPoffin_Machine::
 	lockall
+	checkitem ITEM_TREAT_CASE
+	goto_if_eq VAR_RESULT, TRUE, Poffin_HaveCase
+	msgbox Poffin_Welcome, MSGBOX_DEFAULT
+	giveitem ITEM_TREAT_CASE
+	goto_if_eq VAR_RESULT, FALSE, Poffin_NoCase
+	msgbox Poffin_CaseGuide, MSGBOX_DEFAULT
+Poffin_HaveCase:
 	msgbox Poffin_Intro, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, NO, Poffin_View
 	special LegendsPoffinHasRoom
@@ -49,3 +56,13 @@ Poffin_FullText:
 	.string "The treat case is full.$"
 Poffin_ShortText:
 	.string "There aren't enough BERRIES or\nspace for this batch.$"
+
+Poffin_NoCase:
+	msgbox Poffin_NoCaseText, MSGBOX_DEFAULT
+	goto Poffin_End
+Poffin_Welcome:
+	.string "Welcome to the POFFIN KITCHEN!\nHere's a TREAT CASE to get you started.$"
+Poffin_CaseGuide:
+	.string "Your case holds 40 POFFINS.\nOpen it from KEY ITEMS to feed one\lto a POKéMON!$"
+Poffin_NoCaseText:
+	.string "Please make room in KEY ITEMS\nand come back for your TREAT CASE.$"

@@ -13,8 +13,10 @@
 #include "constants/flags.h"
 #include "constants/species.h"
 #include "constants/items.h"
+#include "constants/vars.h"
 
 #include "pokeblock.h"
+#include "legends_poffin.h"
 void qa(void)
 {
     volatile u32 *b = (u32 *)0x0203ffc0;
@@ -41,16 +43,38 @@ void qa(void)
     if (b[0] == 2)
     {
         b[10] = TrySavingData(SAVE_NORMAL);
-        gSaveBlock1Ptr->pokeblocks[0].color = 0;
+        gSaveBlock3Ptr->poffins.treats[0].color = 0;
         b[11] = LoadGameSave(SAVE_NORMAL);
     }
+
+    if (b[0] == 3)
+    {
+        // Old preview storage alongside an existing native block.
+        memset(&gSaveBlock3Ptr->poffins, 0, sizeof(gSaveBlock3Ptr->poffins));
+        gSaveBlock1Ptr->pokeblocks[0] = (struct Pokeblock){PBLOCK_CLR_RED, 10, 0, 0, 0, 0, 20};
+        gSaveBlock1Ptr->pokeblocks[1] = (struct Pokeblock){POFFIN_DRY, 8, 21, 0, 0, 0, 25};
+        LegendsPoffinInit(FALSE);
+        LegendsPoffinInit(FALSE);
+    }
+    if (b[0] == 4)
+    {
+        // Full case must refuse another batch without spending berries.
+        for (u8 i = 0; i < LEGENDS_POFFIN_CAPACITY; i++)
+            gSaveBlock3Ptr->poffins.treats[i] = (struct Pokeblock){POFFIN_SPICY + i % 5, 15, 9, 7, 5, 3, 20};
+    }
+    b[16] = gSaveBlock1Ptr->pokeblocks[1].color;
+    b[17] = VarGet(VAR_LEGENDS_HAIR);
+    b[18] = VarGet(VAR_LEGENDS_SEASON_MODE);
+    b[19] = GetMonData(&gParties[B_TRAINER_PLAYER][0], MON_DATA_SPECIES);
+    b[14] = CountTotalItemQuantityInBag(ITEM_TREAT_CASE);
+    b[15] = gSaveBlock1Ptr->pokeblocks[0].color;
     b[12] = GetMonData(&gParties[B_TRAINER_PLAYER][0],MON_DATA_COOL);
     b[13] = GetMonData(&gParties[B_TRAINER_PLAYER][0],MON_DATA_BEAUTY);
     b[5] = CountTotalItemQuantityInBag(ITEM_CHERI_BERRY);
     b[6] = CountTotalItemQuantityInBag(ITEM_CHESTO_BERRY);
-    b[7] = gSaveBlock1Ptr->pokeblocks[0].color;
-    b[8] = gSaveBlock1Ptr->pokeblocks[0].spicy;
-    b[9] = gSaveBlock1Ptr->pokeblocks[0].dry;
+    b[7] = gSaveBlock3Ptr->poffins.treats[0].color;
+    b[8] = gSaveBlock3Ptr->poffins.treats[0].spicy;
+    b[9] = gSaveBlock3Ptr->poffins.treats[0].dry;
     b[4]=1;
     SetMainCallback2((MainCallback)b[3]);
 }

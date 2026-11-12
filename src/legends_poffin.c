@@ -1,4 +1,5 @@
 #include "global.h"
+#include "legends_poffin.h"
 #include "berry.h"
 #include "bg.h"
 #include "event_data.h"
@@ -133,7 +134,7 @@ static bool32 FinishBatch(void)
     u8 firstBerry[5];
     u16 feel = 0;
     u8 count = sBatch.berries[1] ? 2 : 1;
-    if (!HaveIngredients() || GetFirstFreePokeblockSlot() < 0)
+    if (!HaveIngredients() || LegendsPoffinFreeSlot() < 0)
         return FALSE;
     for (u8 i = 0; i < count; i++)
     {
@@ -157,7 +158,7 @@ static bool32 FinishBatch(void)
     treat.color = POFFIN_SPICY + sBatch.flavor;
     treat.spicy = flavors[0]; treat.dry = flavors[1]; treat.sweet = flavors[2];
     treat.bitter = flavors[3]; treat.sour = flavors[4]; treat.feel = max(1, feel / count);
-    if (!AddPokeblock(&treat))
+    if (!LegendsPoffinStore(&treat))
         return FALSE;
     RemoveBagItem(sBatch.berries[0], 1);
     if (count == 2)
@@ -301,7 +302,7 @@ void LegendsCookPoffin(void)
     sBatch.berries[0] = gSpecialVar_0x8004;
     sBatch.berries[1] = gSpecialVar_0x8005;
     sBatch.lastDir = -1;
-    gSpecialVar_Result = HaveIngredients() && GetFirstFreePokeblockSlot() >= 0;
+    gSpecialVar_Result = HaveIngredients() && LegendsPoffinFreeSlot() >= 0;
     if (!gSpecialVar_Result)
     {
         CreateTask(ResumeWithoutCooking, 0);
@@ -313,11 +314,11 @@ void LegendsCookPoffin(void)
 
 void LegendsPoffinHasRoom(void)
 {
-    gSpecialVar_Result = GetFirstFreePokeblockSlot() >= 0;
+    gSpecialVar_Result = LegendsPoffinFreeSlot() >= 0;
 }
 
 void LegendsOpenTreatCase(void)
 {
     CleanupOverworldWindowsAndTilemaps();
-    OpenPokeblockCase(PBLOCK_CASE_FIELD, CB2_ReturnToFieldContinueScriptPlayMapMusic);
+    LegendsShowTreatCase(CB2_ReturnToFieldContinueScriptPlayMapMusic);
 }

@@ -1,5 +1,13 @@
 # Development handoff
 
+## Separate Treat Case review (12 November 2026)
+
+**Model: Codex | Reasoning: independent treat storage, first-use reward, native feeding visuals and append-only save compatibility.**
+
+Completed the owner’s follow-up on `feature/poffin-kitchen`: first machine interaction grants TREAT CASE (item 876); portable 40-Poffin list with flavor art/stats; Bag and registered SELECT entry; separate plated-Poffin feeding with bites and Pokémon reaction. Preserved approved cooking art and maps. SaveBlock3 appends 284 bytes at offset 1032; old preview Poffins migrate once while ordinary Pokéblocks remain. Native controller checks, Debug/Release builds, sector-tail/codec tests and a real older-build synthetic battery Continue → migrate → save → reset → Continue passed. [Screenshots, animation, hashes and limitations](designs/poffin-kitchen/README.md).
+
+Review only, version remains 0.0.77. Awaiting review of the new visuals; do not publish yet. Release patch/CI gates, integration with any newer master/bag-capacity work and the authentic historical-owner-save matrix are outstanding. No ROMs, ELFs or saves belong in the commit.
+
 ## Poffin Kitchen preview (6 November 2026)
 
 **Model: Codex | Reasoning: preserve existing save records and adapt directional stirring to GBA input.**
