@@ -83,6 +83,6 @@ The only existing terrain change is the complete16-cell house addition to Lilyco
 
 ## Independent Treat Case — review branch, 12 November 2026
 
-SaveBlock3 appends a separately signed 284-byte Poffin section at offset 1032 (total 1316, inside the existing 1624-byte tails). All earlier offsets and storage readers remain. New Game clears it; Continue initializes an absent signature and moves only prior-preview Poffin colors 15–19 from native treat records, preserving their exact bytes and ordinary Pokéblocks. Repeated initialization is inert. Item 876 is appended without growing the item-history bitmap.
+SaveBlock3 appends a separately signed 324-byte Poffin section at offset 1032 (total 1356, inside the existing 1624-byte tails). All earlier offsets and storage readers remain. New Game clears it; Continue initializes an absent signature and moves only prior-preview Poffin colors 15–19 from native treat records, preserving their exact bytes and ordinary Pokéblocks. Repeated initialization is inert. Item 876 is appended without growing the item-history bitmap.
 
 Both-slot/all-rotation sector tests and codec checks passed. A controlled battery generated with the actual earlier preview build passed normal Continue migration and save/reset/Continue, preserving sampled inventory, party, hairstyle and season state. [Detailed receipt and limits](designs/poffin-kitchen/legacy-verification.json). This review is not published and does not complete the authentic historical-save matrix.

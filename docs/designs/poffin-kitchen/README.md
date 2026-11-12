@@ -15,11 +15,11 @@ These are actual mGBA 0.10.5 Debug captures, enlarged exactly 3×:
 | New feeding display | [Feeding still](12-Poffin-Feeding.png) · [Actual animation](13-Poffin-Feeding.gif) |
 | Full case, scrolled | [40-treat fixture](18-Full-Treat-Case.png) |
 
-Both Debug and Release builds passed. Native controller tests covered the one-time gift, cooking, independent storage, feeding exactly one treat with condition gains, Bag return, registered SELECT, full-case refusal without berry loss, scrolling and flash persistence. The sector-tail regression passed both slots/all fourteen rotations at the new 1,316-byte SaveBlock3 size; storage codec sanitizer checks passed. [Verification receipt](verification.json).
+Both Debug and Release builds passed. Native controller tests covered the one-time gift, cooking, independent storage, feeding exactly one treat with condition gains, Bag return, registered SELECT, full-case refusal without berry loss, scrolling and flash persistence. The sector-tail regression passed both slots/all fourteen rotations at the new 1,356-byte SaveBlock3 size; storage codec sanitizer checks passed. [Verification receipt](verification.json).
 
 An earlier preview ROM generated a controlled older-format battery save. The new ROM’s normal Continue migrated the exact Poffin flavors while retaining a normal Pokéblock, party, berries, hairstyle and season; saving, resetting and Continue passed again. [Migration receipt](legacy-verification.json). This is a synthetic fixture, not the authentic historical-owner-save matrix.
 
-The signed Poffin section starts at SaveBlock3 offset 1,032 and appends 284 bytes, leaving the old prefix, sectors and packed storage unchanged. Missing signatures initialize the extension and move preview Poffins once from native records. Full release patch/CI/publication gates remain pending; this is a review branch, not a published release.
+The signed Poffin section starts at SaveBlock3 offset 1,032 and appends 324 bytes, leaving the old prefix, sectors and packed storage unchanged. Missing signatures initialize the extension and move preview Poffins once from native records. Full release patch/CI/publication gates remain pending; this is a review branch, not a published release.
 
 Run `python tools/legends/native_poffin_qa/run.py` after building Debug. The optional `legacy.py` checks migration when the private baseline build pair from commit `714669411aa84f1d2efbcd37599854d95e693c14` is present at `build/poffin-native/legacy/pokeemerald.{gba,elf}`. Do not commit ROMs, ELFs or battery saves.
 
@@ -39,7 +39,7 @@ These are mGBA 0.10.2 captures from a private debug build of Emerald: Legends ba
 
 A clockwise, counterclockwise, then clockwise sequence fits the GBA D-pad. Single-direction holds and opposite-direction taps earn no stirring credit. Speed matters while the batter is thin, and pauses can burn thick batter. Cooking accepts one or two berries. Each batch makes one treat and commits its ingredients on completion. B cancels during cooking.
 
-Primary flavor sets the crust color. The strongest remaining flavor sets the sprinkle color. Berry order breaks a tie between flavors. This original preview used Emerald's seven-byte contest-treat records and feeding scene. The independent case and custom feeding implementation above supersede that storage/UI; sheen and nature rules remain.
+Primary flavor sets the crust color. The strongest remaining flavor sets the sprinkle color. Berry order breaks a tie between flavors. This original preview used Emerald's contest-treat records (seven data bytes in an eight-byte native stride) and feeding scene. The independent case and custom feeding implementation above supersede that storage/UI; sheen and nature rules remain.
 
 ## Verification
 

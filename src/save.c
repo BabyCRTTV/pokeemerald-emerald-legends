@@ -1137,3 +1137,5 @@ static void CopyFromSaveBlock3(u32 sectorId, struct SaveSector *sector)
 }
 
 STATIC_ASSERT(offsetof(struct SaveBlock3, poffins) == 1032, PoffinAppendOnly);
+STATIC_ASSERT(sizeof(struct Pokeblock) == 8, PoffinNativeRecordStride);
+STATIC_ASSERT(sizeof(struct SaveBlock3) == 1356, PoffinSaveBlockSize);

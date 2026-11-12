@@ -20,8 +20,8 @@ for _ in range(50):
 assert c.rd(sy['gMain']+4)==sy['CB2_Overworld']|1
 c.step(180,0)
 address=c.rd(sy['gSaveBlock3Ptr'])+1032
-actual=b''.join(c.rd(address+i).to_bytes(4,'little') for i in range(0,284,4))
-expected=(0x31464650).to_bytes(4,'little')+b''.join(bytes([15+i%5,15,9,7,5,3,20]) for i in range(40))
+actual=b''.join(c.rd(address+i).to_bytes(4,'little') for i in range(0,324,4))
+expected=(0x31464650).to_bytes(4,'little')+b''.join(bytes([15+i%5,15,9,7,5,3,20,0]) for i in range(40))
 assert actual==expected
 assert rom.read_bytes()==original
 receipt={'passed':True,'version':(root/'VERSION').read_text().strip(),'rom_sha256':hashlib.sha256(original).hexdigest(),'ROM_unmodified':True,'RAM_writes':False,'checks':['normal Release Continue','all 40 exact Poffin records retained'],'limits':'Controlled Debug-generated battery, not a historical owner save.'}
