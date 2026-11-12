@@ -1,4 +1,6 @@
-# Poffin Kitchen and Treat Case review
+# Poffin Kitchen and Treat Case
+
+Published in v0.0.78 following owner approval. [Production builds, gameplay, patch and live-download evidence](../../qa/poffins-v0.0.78.json). The captures below retain their original review-build provenance.
 
 ## Separate case and feeding display — 12 November 2026
 
@@ -19,7 +21,7 @@ Both Debug and Release builds passed. Native controller tests covered the one-ti
 
 An earlier preview ROM generated a controlled older-format battery save. The new ROM’s normal Continue migrated the exact Poffin flavors while retaining a normal Pokéblock, party, berries, hairstyle and season; saving, resetting and Continue passed again. [Migration receipt](legacy-verification.json). This is a synthetic fixture, not the authentic historical-owner-save matrix.
 
-The signed Poffin section starts at SaveBlock3 offset 1,032 and appends 324 bytes, leaving the old prefix, sectors and packed storage unchanged. Missing signatures initialize the extension and move preview Poffins once from native records. Full release patch/CI/publication gates remain pending; this is a review branch, not a published release.
+The signed Poffin section starts at SaveBlock3 offset 1,032 and appends 324 bytes, leaving the old prefix, sectors and packed storage unchanged. Missing signatures initialize the extension and move preview Poffins once from native records. Candidate and production build/native/patch gates and live publication subsequently passed for v0.0.78; see the release evidence above.
 
 Run `python tools/legends/native_poffin_qa/run.py` after building Debug. The optional `legacy.py` checks migration when the private baseline build pair from commit `714669411aa84f1d2efbcd37599854d95e693c14` is present at `build/poffin-native/legacy/pokeemerald.{gba,elf}`. Do not commit ROMs, ELFs or battery saves.
 

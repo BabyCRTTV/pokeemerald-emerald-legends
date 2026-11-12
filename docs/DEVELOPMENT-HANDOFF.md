@@ -1,10 +1,14 @@
 # Development handoff
 
-## v0.0.78 Poffin publication approved (12 November 2026)
+## v0.0.78 Poffins published and live verified (12 November 2026)
 
-**Model: Codex | Reasoning: publish the approved native visuals through existing candidate and production gates.**
+**Model: Codex | Reasoning: preserve approved native visuals and saves, verify candidate and production artifacts, and confirm actual deployed bytes.**
 
-Owner approved publication of cooking, separate Treat Case and custom feeding. Preparing v0.0.78 from approved commit `68547d640b74dee6ddcea640a66ae2369274670d`; live master `92dd5f2894aa76b03acb8102519f151f3c444eff` has no intervening changes. Updated version, Options, player changelogs and website labels. Bag capacity work remains outside this release. Existing review gameplay and old-battery migration evidence is linked below; release-number builds, required CI, patch reconstruction and live deployment must complete before claiming publication.
+Published the approved Poffin machines, D-pad cooking, first-use Treat Case gift, independent 40-treat display and custom feeding. PR #99 merged as `a717b26ce7ce3096893e834c24d8d8d64e539723`; verified patches committed at `6ac4ff974cbdb3e6cc55429c6fd50359e6167692`. Candidate and production builds/native gameplay, both independent BPS decoders, project/wiki checks, Android/Windows companion builds and gated Pages deployment passed. All 21 critical live files matched reviewed hashes, including both BPS downloads. [Bound release evidence and limits](qa/poffins-v0.0.78.json). [Approved game captures](designs/poffin-kitchen/README.md).
+
+SaveBlock3 preserves its 1032-byte prefix and appends 324 bytes (40 native eight-byte treat records plus signature), total 1356. Sector tests model ARM alignment; native compile assertions lock the widths. Controlled earlier-build battery migration and normal unmodified Release Continue passed. The authentic historical-owner-save matrix remains incomplete. Existing maps, wardrobe and seasonal features were retained. Bag-capacity work remains separate.
+
+Updated older test assumptions for private sprite registrations and append-only headers. The Nightmare victory fixture now uses a fresh legal counter after the escape; real battle/quest rules and the independent blackout test remain unchanged. Do not revisit approved artwork or repeat successful game builds for this documentation-only closeout.
 
 ## Separate Treat Case review (12 November 2026)
 
