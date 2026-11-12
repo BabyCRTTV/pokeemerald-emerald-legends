@@ -124,6 +124,9 @@ jobs:
         with:
           name: legends-mgba-gameplay
           path: |
+            build/treat-case-native/*.png
+            build/treat-case-native/*.gif
+            build/treat-case-native/*verification.json
             build/shared-build/*.json
             build/shared-build/*.log
             build/eon-roamers-qa/*.png
