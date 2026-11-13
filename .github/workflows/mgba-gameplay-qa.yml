@@ -86,6 +86,10 @@ jobs:
         run: python3 tools/legends/native_wyrmtide_qa/run.py
       - name: Exercise Nightmare phone, wing, dream travel, Darkrai outcomes and native saves
         run: python3 tools/legends/native_nightmare_qa/run.py
+      - name: Exercise Poffin cooking, portable case and custom feeding
+        run: |
+          python3 tools/legends/native_poffin_qa/run.py
+          python3 tools/legends/native_poffin_qa/release.py
       - name: Exercise research notes, bulletin and town dialogue branches
         run: python3 tools/legends/native_living_hoenn_qa/run.py
       - name: Exercise seasonal encounter trial and native DexNav silhouettes
@@ -120,6 +124,9 @@ jobs:
         with:
           name: legends-mgba-gameplay
           path: |
+            build/treat-case-native/*.png
+            build/treat-case-native/*.gif
+            build/treat-case-native/*verification.json
             build/shared-build/*.json
             build/shared-build/*.log
             build/eon-roamers-qa/*.png

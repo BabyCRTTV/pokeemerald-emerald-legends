@@ -25,6 +25,7 @@
 #include "legends_storage.h"
 #include "pokemon_storage_system.h"
 #include "pokemon.h"
+#include "pokeblock.h"
 #include "constants/maps.h"
 #include "constants/flags.h"
 #include "constants/vars.h"
@@ -109,7 +110,14 @@ void qa(void)
                     BagPocket_SetSlotData(&gBagPockets[p], i, (struct ItemSlot){items[p], p == 4 ? 1 : 77});
             BagPocket_SetSlotData(&gBagPockets[0], legacy ? 149 : 599, (struct ItemSlot){ITEM_ETHER,77});
             BagPocket_SetSlotData(&gBagPockets[4], 0, (struct ItemSlot){ITEM_EXP_SHARE,1});
-            if (!legacy) AddBagItem(ITEM_LUNAR_WING,1);
+            if (legacy)
+            {
+                BagPocket_SetSlotData(&gBagPockets[4], 59, (struct ItemSlot){ITEM_TREAT_CASE, 1});
+                for (i = 0; i < LEGENDS_POFFIN_CAPACITY; i++)
+                    gSaveBlock3Ptr->poffins.treats[i] = (struct Pokeblock){POFFIN_SPICY + i % 5, 15, 9, 7, 5, 3, 20};
+            }
+            else
+                AddBagItem(ITEM_LUNAR_WING, 1);
             LegendsStoragePCItems()[149] = (struct ItemSlot){ITEM_MASTER_BALL,1};
             box[11] = TrySavingData(SAVE_NORMAL);
             ClearBag();
@@ -129,6 +137,8 @@ void qa(void)
             box[18] = ITEM_ETHER;
             box[21] = offsetof(struct SaveBlock2,encryptionKey);
             box[22] = offsetof(struct Bag,slots);
+            box[23] = offsetof(struct SaveBlock3, poffins);
+            box[24] = ITEM_TREAT_CASE;
         }
         SetMainCallback2(CB2_Overworld);break;
     case 11:

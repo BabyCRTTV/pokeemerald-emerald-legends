@@ -16,7 +16,7 @@ struct LegacyPokemonStorage
     u8 boxWallpapers[14];
     struct Pokemon fusions[MAX_FUSION_STORAGE];
 };
-// Exact v0.0.43-v0.0.77 expanded inventory; never use mutable runtime limits.
+// Exact v0.0.43-v0.0.78 expanded inventory; never use mutable runtime limits.
 struct LegacyExpandedBag
 {
     struct ItemSlot items[150], keyItems[60], pokeBalls[32], TMsHMs[128], berries[80];

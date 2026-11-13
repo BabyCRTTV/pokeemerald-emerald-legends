@@ -1,0 +1,326 @@
+{
+  "version": "0.0.78",
+  "published": true,
+  "model": "Codex",
+  "source_commit": "a717b26ce7ce3096893e834c24d8d8d64e539723",
+  "patch_commit": "6ac4ff974cbdb3e6cc55429c6fd50359e6167692",
+  "pull_request": 99,
+  "candidate_head": "6e3a71efde68c2334b55edb90c58f50c0ba3b04a",
+  "runs": {
+    "candidate_native": 43264319201,
+    "production_native_patches": 43315700662,
+    "production_project": 43315700472,
+    "production_wiki": 43315700502,
+    "android": 43315700485,
+    "windows": 43315700651,
+    "site": 43318222318
+  },
+  "artifact_sha256": {
+    "candidate_gameplay": "c01464639dd6cf1fe070600750a046bcf2697081b3fe5873e0db70fff2bcc0c9",
+    "candidate_patches": "556dcf5235d037c54992b689e41ba5137580aeed99939ab17b8bc9423d1c40aa",
+    "production_gameplay": "25d0d99a29f56bcd123933e1fac1000df01c7122c1480a7d7b1c52031bb78a2f",
+    "production_patches": "1694a6ba7c4479bc17bded8814c00b2153afc79142d714c2e8c03df29c1fca27",
+    "site_evidence": "62e803276d07c695e47afe75c70209b125fd2dec02fbe905a178331c13521fbd"
+  },
+  "shared_build_verification": {
+    "passed": true,
+    "patches_verified": true,
+    "inputs": {
+      "version": "0.0.78",
+      "source_commit": "a717b26ce7ce3096893e834c24d8d8d64e539723",
+      "source_tree": "35ffad192c9331d9a92d24f36d7f80118ba71208",
+      "source_fingerprint": "c64b64d2e80ed0b7c4998610cb67c5228a8d00ed7c0c12632d8b0e39a0b1d853",
+      "nonce": "d1ae1a16356b4d8fa035571fb15211a6",
+      "binaries": {
+        "pokeemerald.gba": "e7295ad9384795a4ebb32bf060d27675ec5e07516bfa08421e36a28c898f5824",
+        "pokeemerald.elf": "19f75b388b592e04a0072b0582096b20db53b654cbfd4b023c2e49ae4a5bdb1d",
+        "pokeemerald-release.gba": "46626f089497b505deaac4844f3ef15d23dd007041f4376a60c474127be29700",
+        "pokeemerald-release.elf": "12811e0b3e257b5f0c05da417badb61a745d0d1a98911f59bca7320dfeba9548"
+      }
+    },
+    "native_receipt_sha256": {
+      "legends-mgba-preview/results.json": "82e315d5b8fbb8fd31be9430802928b4aae7ef32d6250f47f0915f1ae55474bf",
+      "eon-roamers-qa/verification.json": "5ff486e24a296798a53bd6a53b336e7c23c1a8d0de2700e8d8ae219b5042f0c3",
+      "ember-return-qa/verification.json": "49bb0fb213defcad818aa429bdedbcfebb1ac81e11eb9c43ba0060c5062d86c8",
+      "grotto-review/verification.json": "1e42d451aa6ca506ffe18ad5497292d30f672d755519c2edf8065a386de5a184",
+      "grotto-encounters/verification.json": "9e8684fba5bc83d1181ab383055f6c115cd3d0346a43d991e17aa98f7df99fe7",
+      "wyrmtide-native/verification.json": "4c60b44718dd6307c1f96a56ee038959a565aadbb4e7328b21ae31f68153834f",
+      "nightmare-native/verification.json": "f0de53aef7b6de8794424537ff1463ecc089ee4ac9f8922c698f8a9bffb82b68",
+      "living-hoenn-qa/verification.json": "5dafa232c0b8153324ea434c7ff1e55dd35c935e90c0b67abc4928873d60d6a0",
+      "seasonal-encounters-qa/verification.json": "85bf78f52745b8ec916e5efb96a6fa75f51410db01a92d35d565b6d489038404",
+      "visual-repairs-qa/verification.json": "10a3263faea00cc6c9ac14aacf842999a6290eb83234e537a89b22ac85575471",
+      "eon-roamers-release-qa/verification.json": "e19a512a42b45a4a4b3558693f1b5671c35e59b5d311d780b2b690716506695f",
+      "ember-return-release-qa/verification.json": "79605f0151076bf701759df2f63e6e4e3caa9ecdaf29fca55c500b48dd00d9a0",
+      "grotto-encounters-release/verification.json": "99ddccaeab090a3d885738941576010464fc98058eba08d0443464d6c8207387",
+      "bedroom-release-qa/verification.json": "b24b4a2f57b8871d4c18bdf3b0439e524b85593a82e077a6754eb4b0d5ae987e"
+    },
+    "payload_files": {
+      "Pokemon-Emerald-Legends-v0.0.78.bps": "86be693ca54ff33bbd3fb2eb1801ef20fccd08f00fb502234ef6f9817b22c734",
+      "Pokemon-Emerald-Legends-v0.0.78-debug.bps": "050593b62704fddcf22d1301552e192f86d360755c6271649a0feca0512c5d68",
+      "SHA256SUMS.txt": "88ddcc93c873249a793aa6cd3fc76a574d2b970cacbefaa9ae05cc2a9f0cb2f9",
+      "browser-decoder-verification.json": "73b49d4ad9ad51effb7199a0d6f99f7f40566a543a32a46a8361147d529fded0"
+    },
+    "patch_worker": {
+      "passed": true,
+      "nonce": "d1ae1a16356b4d8fa035571fb15211a6",
+      "seconds": 174.581
+    },
+    "decoder": {
+      "passed": true,
+      "source_SHA1": "f3ae088181bf583e55daf962a92bb46f4f1d07b7",
+      "decoder": "Actual committed docs/patcher.js applyBps executed in Node VM; independent of Floating IPS",
+      "decoder_sha256": "90329cab391b23f1c891dcbeb6573cf219f90b9adbdbf235c2a583ee7349e99f",
+      "verifier_sha256": "bbb6057cadba5a72d14e73c1f75cc57563c121eebd68e0ce97869fd18a110d8b",
+      "results": {
+        "Pokemon-Emerald-Legends-v0.0.78.bps": {
+          "patch_sha256": "86be693ca54ff33bbd3fb2eb1801ef20fccd08f00fb502234ef6f9817b22c734",
+          "target_sha256": "46626f089497b505deaac4844f3ef15d23dd007041f4376a60c474127be29700",
+          "target_bytes": 33554432,
+          "exact_native_ROM_match": true
+        },
+        "Pokemon-Emerald-Legends-v0.0.78-debug.bps": {
+          "patch_sha256": "050593b62704fddcf22d1301552e192f86d360755c6271649a0feca0512c5d68",
+          "target_sha256": "e7295ad9384795a4ebb32bf060d27675ec5e07516bfa08421e36a28c898f5824",
+          "target_bytes": 33554432,
+          "exact_native_ROM_match": true
+        }
+      },
+      "limits": "Byte-decoder test; physical browser file-picker/download and Pizza Boy execution are separate checks."
+    }
+  },
+  "poffin_debug": {
+    "version": "0.0.78",
+    "emulator": "mGBA native core",
+    "rom_sha256": "e7295ad9384795a4ebb32bf060d27675ec5e07516bfa08421e36a28c898f5824",
+    "passed": true,
+    "tests": [
+      "first-use gift",
+      "one case on repeat interaction",
+      "two-berry cooking",
+      "separate storage",
+      "battery round trip",
+      "custom feeding and condition gains",
+      "exactly one consumed",
+      "Bag open/return",
+      "registered SELECT use",
+      "preview record migration and idempotence",
+      "40-record capacity and scroll",
+      "full-case refusal without berry loss"
+    ],
+    "limits": "Controlled fixture, not an authentic historical player save or full story playthrough."
+  },
+  "poffin_release": {
+    "passed": true,
+    "version": "0.0.78",
+    "rom_sha256": "46626f089497b505deaac4844f3ef15d23dd007041f4376a60c474127be29700",
+    "ROM_unmodified": true,
+    "RAM_writes": false,
+    "checks": [
+      "normal Release Continue",
+      "all 40 exact Poffin records retained"
+    ],
+    "limits": "Controlled Debug-generated battery, not a historical owner save."
+  },
+  "live_verification": {
+    "version": "0.0.78",
+    "verified_at_UTC": "2026-11-12T22:17:40.303548+00:00",
+    "passed": true,
+    "files": [
+      {
+        "path": "index.html",
+        "passed": true,
+        "HTTP": 200,
+        "bytes": 3721,
+        "sha256": "7208623aacc24b6232affb9305ccda38d11566272175671a2c8ac1e55b657174",
+        "Git_blob_sha1": "8031738e61a2754d13d5a08cf9ffed41698b65e2"
+      },
+      {
+        "path": "patcher.html",
+        "passed": true,
+        "HTTP": 200,
+        "bytes": 2675,
+        "sha256": "9d43e88415ac920bc3882bc0dd4179e93f03990d8bff07c6eda71f5c691d49c7",
+        "Git_blob_sha1": "1aad3de8bf36cb5944e2629e1ed46d9672f31158"
+      },
+      {
+        "path": "patcher.js",
+        "passed": true,
+        "HTTP": 200,
+        "bytes": 9353,
+        "sha256": "90329cab391b23f1c891dcbeb6573cf219f90b9adbdbf235c2a583ee7349e99f",
+        "Git_blob_sha1": "a4ecbfee946426df92b35c9774fa794976f30304"
+      },
+      {
+        "path": "changelog.html",
+        "passed": true,
+        "HTTP": 200,
+        "bytes": 131590,
+        "sha256": "7729361e5dcceb26d3fd26f10925ceec7c0248a316df758ae99c8158fb97cbee",
+        "Git_blob_sha1": "766c384aa7a6ab5c7c48f90236680701eb45489a"
+      },
+      {
+        "path": "wiki/index.html",
+        "passed": true,
+        "HTTP": 200,
+        "bytes": 12810,
+        "sha256": "c95566cab0c9feebc6963c506c80f8734afb9dad634b893e05a54354624ec2d1",
+        "Git_blob_sha1": "b4c1be3b3ad0668f87ff2b347ac6cf9174abfb8d"
+      },
+      {
+        "path": "wiki/dex.html",
+        "passed": true,
+        "HTTP": 200,
+        "bytes": 10572,
+        "sha256": "6873a238568b920927720dff099c2742f7b425c55493a570c244257814b1cfd9",
+        "Git_blob_sha1": "5613fddb0ca46f306d26dbc15fe932fa3864243d"
+      },
+      {
+        "path": "wiki/dex-data.json",
+        "passed": true,
+        "HTTP": 200,
+        "bytes": 849391,
+        "sha256": "22ffb471817f92192bedb75dae791686b92cbe0c0c1e4b2ac03222a3e617780c",
+        "Git_blob_sha1": "65dce8cb4225de1a96e162c0bb3cd4b40231615f"
+      },
+      {
+        "path": "wiki/dex-profiles.js",
+        "passed": true,
+        "HTTP": 200,
+        "bytes": 178691,
+        "sha256": "0ccfee5466e5ead2d400bbdebb70ff830d58a6864d0a85b3f7bdef069e7c3557",
+        "Git_blob_sha1": "b7c3db3038bf3216a0e2a0da4c08c2a0d276ebdb"
+      },
+      {
+        "path": "wiki/dex-sprite-atlas.js",
+        "passed": true,
+        "HTTP": 200,
+        "bytes": 18786,
+        "sha256": "8b3a1d1224df211929a8079fdd621f16904600305601433afcc117c8f800b04d",
+        "Git_blob_sha1": "de0bf49a8b01f87b9fea58adaa888a3d02e7ec46"
+      },
+      {
+        "path": "wiki/dex-sprite-atlas.webp",
+        "passed": true,
+        "HTTP": 200,
+        "bytes": 153584,
+        "sha256": "55bdf244830f30f9aeb5eeddb8f628b6885eccb2e95b171dac14df9b529190df",
+        "Git_blob_sha1": "dd91aded78d44fc6aea679a678a0274edb93add1"
+      },
+      {
+        "path": "wiki/dex-portrait-sources.json",
+        "passed": true,
+        "HTTP": 200,
+        "bytes": 342,
+        "sha256": "644decdf201a0623707327e6d524178ab8e0f7e376f15bcf1f2ad4abded02b93",
+        "Git_blob_sha1": "758c4db1f73c6baaa968366d6d70c1aa628eff23"
+      },
+      {
+        "path": "wiki/map-hoenn.png",
+        "passed": true,
+        "HTTP": 200,
+        "bytes": 6757,
+        "sha256": "6abac3457dd2c588173b001c7f5ad37b58b4429ff50d3d54373f2fe868e5f625",
+        "Git_blob_sha1": "10f2d26f42c381c2af7f51a7c835b4b3b190107f"
+      },
+      {
+        "path": "wiki/map-kanto.png",
+        "passed": true,
+        "HTTP": 200,
+        "bytes": 3728,
+        "sha256": "bc89ff01cbc5dca3fe849d2c0d872c1e98b57a450663d72a7a210d3645b495f0",
+        "Git_blob_sha1": "241cf5864b38426d1cc75ebfa70b865afdcbcac3"
+      },
+      {
+        "path": "wiki/walkthrough-maps.json",
+        "passed": true,
+        "HTTP": 200,
+        "bytes": 119656,
+        "sha256": "bb6a344d516f911772685dbfaf2d19b439829aa8e387efc470e830e3879d7af1",
+        "Git_blob_sha1": "f0e8eee57a8b30cdcf6e5b1a0f365f007a3e0182"
+      },
+      {
+        "path": "wiki/android-version.json",
+        "passed": true,
+        "HTTP": 200,
+        "bytes": 399,
+        "sha256": "e34e5b41b07dc69569ca2eb266093ce5e634615cba426422edbcfc8bcf8f35d5",
+        "Git_blob_sha1": "eef161550efb41e023e6e11884b964dc01713bc2"
+      },
+      {
+        "path": "wiki/windows-version.json",
+        "passed": true,
+        "HTTP": 200,
+        "bytes": 275,
+        "sha256": "fefb7a7fc7a0ad397cf1faea030a5c725219d9b0bf3eb8201cd0335341a99d04",
+        "Git_blob_sha1": "38091e90fa6277adba94c34f35c3321845b4aa80"
+      },
+      {
+        "path": "features/eon-roamers.md",
+        "passed": true,
+        "HTTP": 200,
+        "bytes": 2244,
+        "sha256": "5839b026abdd24d2ea62ef1359559d7ddf0d402efae50726473a2b79c56e1aad",
+        "Git_blob_sha1": "1f1bdffaf6978eba649ba9d0c521cc0bc937171c"
+      },
+      {
+        "path": "downloads/SHA256SUMS.txt",
+        "passed": true,
+        "HTTP": 200,
+        "bytes": 412,
+        "sha256": "88ddcc93c873249a793aa6cd3fc76a574d2b970cacbefaa9ae05cc2a9f0cb2f9",
+        "Git_blob_sha1": "3cf349ed5550b74c909e6ce9d50f4d82920a3a22"
+      },
+      {
+        "path": "downloads/Pokemon-Emerald-Legends-v0.0.78-debug.bps",
+        "passed": true,
+        "HTTP": 200,
+        "bytes": 17330775,
+        "sha256": "050593b62704fddcf22d1301552e192f86d360755c6271649a0feca0512c5d68",
+        "Git_blob_sha1": "1bce4e133189f094070757c38f7cc05e78ea1dab",
+        "source_CRC32": "1f1c08fb",
+        "target_CRC32": "871f85d7",
+        "patch_CRC_passed": true
+      },
+      {
+        "path": "downloads/Pokemon-Emerald-Legends-v0.0.78.bps",
+        "passed": true,
+        "HTTP": 200,
+        "bytes": 17500608,
+        "sha256": "86be693ca54ff33bbd3fb2eb1801ef20fccd08f00fb502234ef6f9817b22c734",
+        "Git_blob_sha1": "24e2db523a096ab5be92edb9cad1977b58bbe24b",
+        "source_CRC32": "1f1c08fb",
+        "target_CRC32": "952d3394",
+        "patch_CRC_passed": true
+      },
+      {
+        "path": "release-publication.json",
+        "passed": true,
+        "HTTP": 200,
+        "bytes": 229558,
+        "sha256": "aef732c6533db53bf2eedb1207c9fddeccd28433a85eb797c73d3969ac38f94f",
+        "Git_blob_sha1": "be7b8e61f91ea225ee1ffb37c0c6914c33b37431"
+      }
+    ],
+    "scope": "Fresh live HTTP bytes, reviewed SHA256/Git blobs and BPS footer CRCs only; not a gameplay, build or clean-base reconstruction test.",
+    "expected_receipt_sha256": "3a8f1e99efb92fce40fc056ef78f69efcfff0edc5883b15948f8f1e0c6bba782"
+  },
+  "save_layout": {
+    "legacy_prefix_bytes": 1032,
+    "record_data_bytes": 7,
+    "native_record_stride": 8,
+    "extension_bytes": 324,
+    "SaveBlock3_bytes": 1356,
+    "capacity": 40
+  },
+  "limits": [
+    "Older-build synthetic battery migration passed; authentic historical-owner-save matrix remains incomplete.",
+    "No full story playthrough or physical Pizza Boy test claimed.",
+    "Separate bag-capacity work was not included."
+  ],
+  "test_repairs": [
+    "Kanto graphics test now verifies defined private runtime registrations.",
+    "Nightmare preservation test compares the exact original header prefix after removing only the appended Poffin definitions and relocating the unchanged treat record declaration.",
+    "Host save tests model ARM APCS record alignment; native compile assertions enforce the actual widths.",
+    "Nightmare victory fixture uses a fresh legal Mewtwo with Aura Sphere and Choice Specs after the escape, preserving real battle rules and a separate natural blackout case."
+  ]
+}

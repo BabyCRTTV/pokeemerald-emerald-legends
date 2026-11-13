@@ -110,9 +110,16 @@
    s=s.replace(/\*\*([^*]+)\*\*/g,'<strong>$1</strong>').replace(/\x60([^\x60]+)\x60/g,'<code>$1</code>');
    return s;
  }
- function render(md) {
+ function render(md,catalogues={}) {
    const lines=md.trim().split(/\r?\n/),out=[],heads=[];
-   let list=null,para=[],table=[];
+   let list=null,para=[],table=[],section='';
+   const flushCatalogue=()=>{
+     const entries=catalogues[section];
+     if(!Array.isArray(entries)||!entries.length)return;
+     out.push('<div class="interaction-catalogue">'+entries.map(entry=>
+       '<details><summary>'+escape(entry.name)+'</summary><p>'+escape(entry.effect)+'</p></details>'
+     ).join('')+'</div>');
+   };
    const flushP=()=>{if(para.length){out.push('<p>'+inline(para.join(' '))+'</p>');para=[];}};
    const flushL=()=>{if(list){out.push('</'+list+'>');list=null;}};
    const flushT=()=>{if(table.length){out.push('<div class="scroll-table"><table><thead><tr>'+table[0].map(c=>'<th>'+inline(c)+'</th>').join('')+'</tr></thead><tbody>'+table.slice(1).map(r=>'<tr>'+r.map(c=>'<td>'+inline(c)+'</td>').join('')+'</tr>').join('')+'</tbody></table></div>');table=[];}};
@@ -121,13 +128,75 @@
      if(/^\|/.test(l)){flushP();flushL();if(/^\|\s*:?-{3,}/.test(l))continue;table.push(l.replace(/^\||\|$/g,'').split('|').map(c=>c.trim()));continue;}
      flushT();
      const h=l.match(/^(#{2,3})\s+(.+)$/);
-     if(h){flushP();flushL();let id="section-"+h[2].toLowerCase().replace(/[^a-z0-9 ]/g,'').trim().replace(/\s+/g,'-');heads.push({id,label:h[2]});out.push('<h'+h[1].length+' id="'+id+'">'+inline(h[2])+'</h'+h[1].length+'>');continue;}
+     if(h){flushP();flushL();flushCatalogue();let id="section-"+h[2].toLowerCase().replace(/[^a-z0-9 ]/g,'').trim().replace(/\s+/g,'-');section=h[2].normalize('NFD').replace(/\p{M}/gu,'').toLowerCase();heads.push({id,label:h[2]});out.push('<h'+h[1].length+' id="'+id+'">'+inline(h[2])+'</h'+h[1].length+'>');continue;}
      const li=l.match(/^([-*]|\d+\.)\s+(.+)$/);
      if(li){flushP();let next=/\d/.test(li[1][0])?'ol':'ul';if(list!==next){flushL();out.push('<'+next+'>');list=next;}out.push('<li>'+inline(li[2])+'</li>');continue;}
      flushL();para.push(l);
    }
-   flushP();flushL();flushT();return {html:out.join('\n'),heads};
+   flushP();flushL();flushT();flushCatalogue();return {html:out.join('\n'),heads};
  }
+
+ const interactionTopics=[
+   {key:"poffins",title:"Poffins",icon:""},
+   {key:"pokeblocks",title:"Pokéblocks",icon:"pokeblock-case.png"},
+   {key:"berries",title:"Berries",icon:"berries/oran_berry.png"}
+ ];
+ const poffinFlavors=["spicy","dry","sweet","bitter","sour"];
+ const pokeblockColors={"red":"#e6505c","blue":"#4886dc","pink":"#e9a0c6","green":"#5ab778","yellow":"#edc949","purple":"#9770cc","indigo":"#6e70b3","brown":"#ae8254","liteblue":"#83cfe3","olive":"#a0aa57","gray":"#9797a0","black":"#555361","white":"#f1eef9","gold":"#d8a83f"};
+ function poffinArt(primary,accent){
+   const x=poffinFlavors.indexOf(primary),y=poffinFlavors.indexOf(accent);
+   if(x<0||y<0)return "";
+   return '<span class="interaction-poffin-art" style="background-position:-'+(x*45)+'px -'+(y*45)+'px" aria-hidden="true"></span>';
+ }
+ function interactionPicture(group,item){
+   const name=item.name;
+   if(group==="berries"){
+     const berry=name.split(" Berry")[0].toLowerCase().replace(/[^a-z]/g,"");
+     return '<span class="interaction-pic"><img src="art/interactions/berries/'+berry+'_berry.png" width="40" height="40" loading="lazy" decoding="async" alt=""></span>';
+   }
+   if(group==="poffins"){
+     const primary=item.primary||name.split(" ")[0].toLowerCase();
+     const accent=item.accent||primary;
+     return '<span class="interaction-pic interaction-poffin">'+poffinArt(primary,accent)+'</span>';
+   }
+   const color=pokeblockColors[name.replace(/ Pokéblock$/,"").toLowerCase().replace(/[^a-z]/g,"")]||"#9677aa";
+   return '<span class="interaction-pic interaction-block" style="--block-color:'+color+'"><img src="art/interactions/pokeblock.png" width="40" height="40" loading="lazy" decoding="async" alt=""></span>';
+ }
+ function interactionItems(group,entries){
+   return '<div class="interaction-items">'+entries.map(item=>
+      '<div class="interaction-item">'+interactionPicture(group,item)+'<div><strong>'+escape(item.name)+'</strong><p>'+escape(item.effect)+'</p></div></div>'
+   ).join('')+'</div>';
+ }
+ function interactionGroups(article){
+   if(!article?.catalogues)return "";
+   return '<div class="interaction-groups">'+interactionTopics.map(topic=>{
+     const entries=article.catalogues[topic.key]||[];
+     const mixes=topic.key==="poffins"?(article.catalogues.poffinMixes||[]):[];
+     const count=entries.length+mixes.length;
+     const marker="## "+topic.title+"\n";
+     const start=article.content.indexOf(marker);
+     const text=start<0?"":article.content.slice(start+marker.length);
+     const end=text.indexOf("\n## ");
+     const description=start<0?"":render((end<0?text:text.slice(0,end)).trim()).html;
+     const icon=topic.key==="poffins"
+       ?'<span class="interaction-topic-icon interaction-topic-icon-poffin"><span class="interaction-poffin-art" aria-hidden="true"></span></span>'
+       :'<span class="interaction-topic-icon"><img src="art/interactions/'+topic.icon+'" width="32" height="32" loading="lazy" alt=""></span>';
+     const body=topic.key==="poffins"
+       ?'<h3 class="interaction-subheading">Five named flavors</h3>'+interactionItems(topic.key,entries)
+         +'<h3 class="interaction-subheading">Cross-mixed flavors and sprinkles</h3>'
+         +'<p class="interaction-mix-note">These 20 appearances are labeled by the main flavor in the Treat Case. Sprinkle colors show the strongest secondary flavor, not additional inventory item types.</p>'
+         +interactionItems(topic.key,mixes)
+       :interactionItems(topic.key,entries);
+     return '<details class="interaction-topic"><summary id="interaction-'+topic.key+'">'+icon+'<strong>'+escape(topic.title)+'</strong><small>'+count+' entries</small><span class="interaction-arrow" aria-hidden="true">⌄</span></summary><div class="interaction-topic-body"><div class="interaction-description">'+description+'</div>'+body+'</div></details>';
+   }).join('')+'</div>';
+ }
+
+ function interactionHome(){
+   const article=byId.get("interacting-with-your-pokemon");
+   if(!article)return "";
+   return '<a class="interaction-home" href="?page=interacting-with-your-pokemon" data-page="interacting-with-your-pokemon" aria-label="Pokémon Interactions, open guide"><span class="interaction-home-inner"><span class="interaction-home-label">Pokémon Interactions</span><span class="interaction-home-arrow" aria-hidden="true">→</span></span></a>';
+ }
+
  function side(active){
    const current=byId.get(active)?.category||(categories.includes(active)?active:'');
    nav.innerHTML='<a href="./" data-home>Wiki home</a><div class="sidetitle">Topics</div>'+categories.map(cat=>'<a class="'+(cat===current?'current':'')+'" href="?category='+encodeURIComponent(cat)+'" data-category="'+escape(cat)+'">'+escape(cat)+'</a>').join('')+'<a href="?category=all" data-category="all">All articles</a>';
@@ -135,7 +204,7 @@
  }
  function navigate(id,push=true,section=""){
    if(!byId.has(id)){home(push);return;}
-   const p=byId.get(id),r=render(p.content);
+   const p=byId.get(id),r=id==='interacting-with-your-pokemon'?{html:interactionGroups(p),heads:interactionTopics.map(t=>({id:'interaction-'+t.key,label:t.title}))}:render(p.content,p.catalogues);
    const walkthrough=id==='walkthrough'||id.startsWith('walkthrough-')||Number.isInteger(p.chapter);readingWalkthrough(walkthrough);
    setLocation({page:id},push,section);
    side(id);
@@ -150,7 +219,7 @@
  function home(push=true){
    readingWalkthrough(false);setLocation({},push);side('');
    outline.innerHTML='<strong>Wiki guide</strong><p>Choose an article or search for a feature. Everything is open to read.</p>';
-   root.innerHTML='<section class="welcome"><h1 class="wiki-game-logo"><img src="legends-logo.svg" width="166" height="93" alt="Pokémon Emerald: Legends"></h1><p>Choose a topic below, or jump straight to Pokémon and wild encounters.</p><div class="dex-shortcuts" aria-label="Wiki shortcuts"><a href="dex.html?view=routes">⌁ Routes <small>Wild encounter guide</small></a><a href="dex.html?view=species">◈ Pokédex <small>Browse Pokémon</small></a><a href="?page=walkthrough" data-page="walkthrough" class="walkthrough-shortcut">Walkthrough <span aria-hidden="true">→</span></a></div><label class="searchrow"><span aria-hidden="true">⌕</span><input id="search" type="search" placeholder="Search articles, features, and places…" aria-label="Search wiki" autocomplete="off"><span class="small">/</span></label><p class="results-note" id="resultsnote">Browse '+pages.length+' articles across seven sections.</p></section><div id="cards"></div>';
+   root.innerHTML='<section class="welcome"><h1 class="wiki-game-logo"><img src="legends-logo.svg" width="166" height="93" alt="Pokémon Emerald: Legends"></h1><p>Choose a topic below, or jump straight to Pokémon and wild encounters.</p><div class="dex-shortcuts" aria-label="Wiki shortcuts"><a href="dex.html?view=routes">⌁ Routes <small>Wild encounter guide</small></a><a href="dex.html?view=species">◈ Pokédex <small>Browse Pokémon</small></a><a href="?page=walkthrough" data-page="walkthrough" class="walkthrough-shortcut">Walkthrough <span aria-hidden="true">→</span></a></div>'+interactionHome()+'<label class="searchrow"><span aria-hidden="true">⌕</span><input id="search" type="search" placeholder="Search articles, features, and places…" aria-label="Search wiki" autocomplete="off"><span class="small">/</span></label><p class="results-note" id="resultsnote">Browse '+pages.length+' articles across seven sections.</p></section><div id="cards"></div>';
    const input=document.getElementById('search');input.addEventListener('input',()=>cards(input.value));cards('');document.title='Emerald: Legends Wiki';menuClose();focusContent();
  }
  function cards(q){

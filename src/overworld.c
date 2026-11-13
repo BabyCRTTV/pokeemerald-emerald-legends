@@ -1,4 +1,5 @@
 #include "global.h"
+#include "legends_poffin.h"
 #include "legends_grottos.h"
 #include "legends_nightmare.h"
 #include "legends_story.h"
@@ -2150,6 +2151,7 @@ void CB2_ContinueSavedGame(void)
     LegendsJournalInit(FALSE);
     LegendsGrottoInit(FALSE);
     LegendsRoamerInit(FALSE);
+    LegendsPoffinInit(FALSE);
     LegendsCommitSeasonTransition();
     LegendsRestoreSeasonWeather();
     ClearDiveAndHoleWarps();

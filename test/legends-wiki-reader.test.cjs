@@ -29,6 +29,73 @@ function routeHtml(reader,route){
 (async()=>{
  const articles=JSON.parse(fs.readFileSync(base+'articles.json'));
  const w=boot('wiki.js',articles);await settle();
+ const shortcuts=w.get('content').innerHTML;
+ assert.match(shortcuts,/class="walkthrough-shortcut"/);
+ assert.match(shortcuts,/<a class="interaction-home" href="\?page=interacting-with-your-pokemon" data-page="interacting-with-your-pokemon"/);
+ assert.equal((shortcuts.match(/class="interaction-home"/g)||[]).length,1,'one clickable guide shortcut');
+ assert(!shortcuts.includes('<details class="interaction-home"'),'main entry is navigation, not an accordion');
+ assert(!shortcuts.includes('class="interaction-topic"'),'the nested categories only appear after opening the guide');
+ assert(shortcuts.indexOf('class="walkthrough-shortcut"')<shortcuts.indexOf('class="interaction-home"'),'guide shortcut remains below Walkthrough');
+ assert.match(shortcuts,/class="interaction-home-inner"/,'centered title-and-arrow wrapper exists');
+ assert.match(shortcuts,/<span class="interaction-home-label">Pokémon Interactions<\/span>/,'concise button label');
+ assert.match(shortcuts,/<span class="interaction-home-arrow" aria-hidden="true">→<\/span>/,'arrow remains paired with label');
+ assert.match(shortcuts,/aria-label="Pokémon Interactions, open guide"/,'accessible descriptive link');
+ assert(!shortcuts.includes('<strong>Interacting with Your Pokemon</strong>'),'old wrapped home title is gone');
+ const interactions=boot('wiki.js',articles,'https://example.test/wiki/?page=interacting-with-your-pokemon');await settle();
+ w.click('page','interacting-with-your-pokemon');
+ assert.match(w.ctx.location.search,/page=interacting-with-your-pokemon/,'home shortcut opens guide');
+ assert.equal((w.get('content').innerHTML.match(/<details class="interaction-topic"/g)||[]).length,3,'all categories nested on guide page');
+ w.back();
+ assert.match(w.get('content').innerHTML,/class="interaction-home"/,'return to single home shortcut');
+ const guide=interactions.get('content').innerHTML;
+ assert.match(guide,/<h1>Interacting with Your Pokemon<\/h1>/);
+ assert.equal((guide.match(/<details class="interaction-topic"/g)||[]).length,3,'one toggle per category');
+ assert.equal((guide.match(/class="interaction-item"/g)||[]).length,107,'5 main Poffins, 20 mixes, 14 Pokéblocks and 68 berries');
+ assert(!/<details class="interaction-topic"[^>]* open/.test(guide),'categories start closed');
+ for(const key of ['poffins','pokeblocks','berries'])assert(guide.includes('id="interaction-'+key+'"'),key+' button');
+ for(const name of ['Spicy Poffin','Gold Pokéblock','Cheri Berry','Maranga Berry','Enigma Berry (e-Reader)'])assert(guide.includes('<strong>'+name+'</strong>'),name);
+ for(const phrase of ['first visit to the machine','Contest receptionist','Wailmer Pail','raises Coolness','Treat flavors'])assert(guide.includes(phrase),phrase);
+ const images=[...guide.matchAll(/src="(art\/interactions\/[^"]+\.png)"/g)].map(([,src])=>src);
+ assert.equal(new Set(images).size,69,'67 berry icons and two Pokéblock assets; Poffins use one SVG atlas');
+ for(const src of new Set(images))assert(fs.existsSync(base+src),'missing image '+src);
+
+ const poffinArticle=articles.articles.find(a=>a.id==='interacting-with-your-pokemon');
+ assert.equal(poffinArticle.catalogues.poffins.length,5,'five named Poffins');
+ assert.equal(poffinArticle.catalogues.poffinMixes.length,20,'all primary-secondary mixes');
+ const names=['spicy','dry','sweet','bitter','sour'];
+ const pairs=new Set(poffinArticle.catalogues.poffinMixes.map(x=>x.primary+'-'+x.accent));
+ for(const primary of names)for(const accent of names)if(primary!==accent)assert(pairs.has(primary+'-'+accent),'missing '+primary+'/'+accent);
+ assert.match(guide,/Five named flavors/);
+ assert.match(guide,/Cross-mixed flavors and sprinkles/);
+ assert.match(guide,/Spicy Poffin · Dry sprinkles/);
+ assert.match(guide,/Treat Case still calls this a Spicy Poffin/);
+ assert.equal((guide.match(/class="interaction-poffin-art"/g)||[]).length,26,'twenty-five cards plus the category icon');
+ const poffinAtlas=fs.readFileSync(base+'art/interactions/poffin-atlas.svg','utf8');
+ const poffinParts=[...poffinAtlas.matchAll(/<svg x="(\d+)" y="(\d+)"[^>]*><image[^>]+href="data:image\/png;base64,([^"]+)"/g)];
+ assert.equal(poffinParts.length,25,'all twenty-five sprite tiles in the atlas');
+ const pngParts=bytes=>{
+   assert.equal(bytes.subarray(0,8).toString('hex'),'89504e470d0a1a0a');
+   const chunks=new Map();
+   for(let i=8;i<bytes.length;){const len=bytes.readUInt32BE(i),name=bytes.toString('ascii',i+4,i+8);chunks.set(name,bytes.subarray(i+8,i+8+len));i+=12+len;if(name==='IEND')break;}
+   return chunks;
+ };
+ const poffinOriginal=pngParts(fs.readFileSync(base+'../../graphics/poffin/served.png'));
+ const gameColors=[
+   [[26,10,11],[31,18,16]],[[12,15,23],[18,22,27]],[[27,15,20],[31,22,25]],
+   [[13,21,14],[20,26,18]],[[28,23,10],[31,28,18]]
+ ];
+ for(let n=0;n<poffinParts.length;n++){
+   const [,x,y,encoded]=poffinParts[n],p=Math.floor(n/5),a=n%5;
+   assert.equal(Number(x),p*64);assert.equal(Number(y),a*64);
+   const png=pngParts(Buffer.from(encoded,'base64')),palette=png.get('PLTE');
+   assert.equal(png.get('IHDR').readUInt32BE(0),64,'native sprite width');
+   assert.equal(png.get('IHDR').readUInt32BE(4),256,'unaltered four feeding frames');
+   assert.equal(png.get('tRNS')?.[0],0,'transparent palette background');
+   assert.deepEqual(png.get('IDAT'),poffinOriginal.get('IDAT'),'compressed native pixels untouched');
+   for(const [index,rgb] of [[9,gameColors[p][0]],[10,gameColors[p][1]],[15,gameColors[a][1]]])
+     assert.deepEqual([...palette.subarray(index*3,index*3+3)],rgb.map(v=>(v<<3)|(v>>2)),'native primary/secondary palette '+n+'/'+index);
+ }
+
  assert.equal((w.get('cards').innerHTML.match(/data-category=/g)||[]).length,8);
  assert(!w.get('cards').innerHTML.includes('data-page='),'home must not dump every article');
  w.click('category','Customization');assert.match(w.ctx.location.search,/category=Customization/);assert.match(w.get('content').innerHTML,/Trainer Card customization/);

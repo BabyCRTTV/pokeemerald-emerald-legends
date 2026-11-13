@@ -22,7 +22,7 @@ static void walkTo(unsigned savePtr,int x,int y){
 }
 static void capture(const char *dir,const char *name){char p[4096];snprintf(p,sizeof(p),"%s/%s.rgba",dir,name);FILE *f=fopen(p,"wb");assert(f&&fwrite(video,4,240*160,f)==240*160);fclose(f);puts(name);}
 int main(int argc,char **argv){
- assert(argc==21);setbuf(stdout,NULL);mLogSetDefaultLogger(&logger);
+ assert(argc==24);setbuf(stdout,NULL);mLogSetDefaultLogger(&logger);
  unsigned main=strtoul(argv[4],NULL,0),overworld=strtoul(argv[5],NULL,0)|1;
  c=mCoreFind(argv[1]);assert(c&&c->init(c));mCoreInitConfig(c,NULL);mCoreConfigSetDefaultIntValue(&c->config,"skipBios",1);c->loadConfig(c,&c->config);
  video=calloc(240*160,sizeof(color_t));c->setVideoBuffer(c,video,240);
@@ -50,6 +50,15 @@ int main(int argc,char **argv){
    assert(c->busRead16(c,storage+offset+slotOffset+target*4)==ether);
    unsigned keyAddr=c->busRead32(c,strtoul(argv[18],NULL,0))+strtoul(argv[19],NULL,0),encryption=c->busRead32(c,keyAddr)&65535,at=storage+offset+slotOffset;
    for(int p=0;p<5;p++)for(unsigned slot=0;slot<counts[p];slot++,at+=4)assert((c->busRead16(c,at+2)^encryption)==(p==4?1:77));
+   if(legacy){
+    assert(c->busRead16(c,at-4)==strtoul(argv[23],NULL,0));
+    unsigned poffins=c->busRead32(c,strtoul(argv[21],NULL,0))+strtoul(argv[22],NULL,0);
+    assert(c->busRead32(c,poffins)==0x31464650);
+    const unsigned char treat[]={15,15,9,7,5,3,20,0};
+    for(unsigned i=0;i<40;i++)
+     for(unsigned byte=0;byte<sizeof(treat);byte++)
+      assert(c->busRead8(c,poffins+4+i*sizeof(treat)+byte)==treat[byte]+(byte==0?i%5:0));
+   }
    key(8);for(int n=0;n<10&&c->busRead8(c,actions+c->busRead8(c,cursor))!=2;n++)key(128);assert(c->busRead8(c,actions+c->busRead8(c,cursor))==2);key(1);frames(240);
    int moved=0;c->setKeys(c,128);
    while(c->busRead16(c,bagPos+cursorOff)+c->busRead16(c,bagPos+scrollOff)!=target&&moved++<12000)frames(1);

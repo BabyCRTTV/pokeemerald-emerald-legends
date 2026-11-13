@@ -2,6 +2,21 @@
 
 This is the developer-facing history for the **Debug** build. Shared Legends changes are repeated here so this file stands on its own; Debug-only behavior is called out separately.
 
+## [0.0.79] - 2026-11-12
+
+- Expanded the Bag to 1,152 stacks shared across Items (including healing), Key Items, Poké Balls, TMs/HMs, and Berries, with up to 999 per stack.
+- Kept the full Bag usable in the field and in battle, and retained the separate PC Item Storage and Battle Pyramid rules.
+- Migrated older Legends saves automatically, preserving inventory, the Treat Case, and other saved progress.
+
+## [0.0.78] - 2026-11-12
+
+- Added Poffin Makers to every Pokémon Center and the Ever Grande League lobby, with one- or two-berry recipes and D-pad stirring.
+- Added changing stir directions, burn and spill feedback, and colored Poffins with flavor sprinkles.
+- Granted a separate Treat Case on first machine interaction, holding 40 Poffins with flavor, level and feel displays.
+- Added a dedicated feeding scene with the selected Pokémon, plated Poffin, bite animation and flavor reaction.
+- Preserved existing saves and migrated earlier preview Poffins into the new case without changing ordinary Pokéblocks.
+- Retained Debug menus and Quickstart alongside the shared Poffin features.
+
 ## [0.0.77] - 2026-11-06
 
 - Added When Morning Never Comes after capturing or defeating Regidrago, beginning with a one-time call from a father worried about his sleeping daughter.

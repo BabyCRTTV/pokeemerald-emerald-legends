@@ -215,7 +215,13 @@ const u8 *const gPokeblockNames[] =
     [PBLOCK_CLR_GRAY]      = COMPOUND_STRING("GRAY {POKEBLOCK}"),
     [PBLOCK_CLR_BLACK]     = COMPOUND_STRING("BLACK {POKEBLOCK}"),
     [PBLOCK_CLR_WHITE]     = COMPOUND_STRING("WHITE {POKEBLOCK}"),
-    [PBLOCK_CLR_GOLD]      = COMPOUND_STRING("GOLD {POKEBLOCK}")
+    [PBLOCK_CLR_GOLD]      = COMPOUND_STRING("GOLD {POKEBLOCK}"),
+    [POFFIN_SPICY] = COMPOUND_STRING("SPICY POFFIN"),
+    [POFFIN_DRY] = COMPOUND_STRING("DRY POFFIN"),
+    [POFFIN_SWEET] = COMPOUND_STRING("SWEET POFFIN"),
+    [POFFIN_BITTER] = COMPOUND_STRING("BITTER POFFIN"),
+    [POFFIN_SOUR] = COMPOUND_STRING("SOUR POFFIN"),
+
 };
 
 static const struct MenuAction sPokeblockMenuActions[] =
@@ -1262,7 +1268,10 @@ static void PokeblockAction_UseInBattle(u8 taskId)
     StringCopy(gBattleTextBuff1, gPokeblockNames[gSaveBlock1Ptr->pokeblocks[gSpecialVar_ItemId].color]);
     TryClearPokeblock(gSpecialVar_ItemId);
 
-    gSpecialVar_ItemId = gSaveBlock1Ptr->pokeblocks[gSpecialVar_ItemId].color << 8;
+    u8 color = gSaveBlock1Ptr->pokeblocks[gSpecialVar_ItemId].color;
+    if (color >= POFFIN_SPICY)
+        color = PBLOCK_CLR_RED + color - POFFIN_SPICY;
+    gSpecialVar_ItemId = color << 8;
     if (gain == 0)
         gSpecialVar_ItemId += 1;
     else if (gain > 0)

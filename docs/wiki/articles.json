@@ -1,7 +1,7 @@
 {
-  "wikiRevision": "1.9.3",
+  "wikiRevision": "1.9.10",
   "reviewedAgainstGameVersion": "0.0.77",
-  "lastManualReview": "2026-11-06",
+  "lastManualReview": "2026-11-12",
   "articles": [
     {
       "id": "welcome",
@@ -29,6 +29,493 @@
       "content": "## Release — recommended\nRelease is intended for ordinary players. It contains every shipped Legends gameplay and content addition without developer-only shortcuts.\n\n## Debug — for testing\nDebug contains the same gameplay and story but keeps tools available in the expansion, such as overworld and battle debug menus, Pokémon sprite inspection, and title-screen Quickstart where supported.\n\n## Which should I use?\n- Choose **Release** for your primary adventure.\n- Choose **Debug** for checking encounters, maps, graphics, and reporting reproducible bugs.\n\nThese are two builds from one source revision. **Release is not vanilla Emerald**: vanilla Emerald means the untouched commercial original.\n\nFind both options on the [main downloads page](../index.html#downloads). Public downloads are BPS patches, not redistributed commercial ROMs.",
       "reviewedAgainstGameVersion": "0.0.40",
       "reviewedSourceCommit": "d19f13ca089dcf6ea165ce1595b04a65a637238a"
+    },
+    {
+      "id": "interacting-with-your-pokemon",
+      "title": "Interacting with Your Pokemon",
+      "category": "Core gameplay",
+      "summary": "Make treats, feed your Pokémon, and use berries on your adventure.",
+      "content": "## Poffins\nTalk to a **Poffin Maker** in a Pokémon Center to receive a **Treat Case** on your first visit to the machine. Choose one or two berries, then roll the D-pad in the direction shown. Follow the cues to reverse direction and adjust your speed as the batter thickens.\n\nOpen the **Treat Case** from **Bag → Key Items**. It holds up to **40 Poffins** and shows each treat’s flavor, level, and feel. Choose a Poffin and a Pokémon to feed it. Each flavor raises a different Contest condition. Mixed treats can raise more than one, and the amount depends on the treat’s flavor values and the Pokémon’s nature. Both kinds of treats add sheen based on feel.\n\nThere are **five named Poffin flavors** in Legends: Spicy, Dry, Sweet, Bitter, and Sour. A two-berry recipe can make a **mixed Poffin** with a differently colored sprinkle topping. The Treat Case still names it by its dominant flavor; the 20 possible dominant/secondary pairings below are visual and flavor combinations, not 20 extra inventory item types. Recipes can also contain weaker third, fourth, or fifth flavors. Berry order breaks ties, and mixing performance and the Pokémon's nature affect the final gains.\n\n## Pokéblocks\nTalk to the Contest receptionist in **Lilycove City** to get a **Pokéblock Case**. Use the Berry Blender at the Contest Hall to make Pokéblocks from berries. Open the Pokéblock Case from **Key Items** and choose a block and a Pokémon to feed it. Pokéblocks also raise Contest condition and are stored in their own case.\n\n## Berries\nPick berries from plants along routes. You can plant a berry in soft soil and water it with the **Wailmer Pail** to grow more. Use a berry from the Bag when its effect applies, or give one to a Pokémon to hold. For example, an **Oran Berry** restores HP and a **Pecha Berry** cures poison. You can also use berries as ingredients for Poffins and Pokéblocks.\n",
+      "reviewedAgainstGameVersion": "0.0.78",
+      "reviewedSourceCommit": "a717b26ce7ce3096893e834c24d8d8d64e539723",
+      "catalogues": {
+        "poffins": [
+          {
+            "name": "Spicy Poffin",
+            "effect": "Spicy is the main flavor and raises Coolness. Any other flavors present raise their matching Contest conditions too."
+          },
+          {
+            "name": "Dry Poffin",
+            "effect": "Dry is the main flavor and raises Beauty. Any other flavors present raise their matching Contest conditions too."
+          },
+          {
+            "name": "Sweet Poffin",
+            "effect": "Sweet is the main flavor and raises Cuteness. Any other flavors present raise their matching Contest conditions too."
+          },
+          {
+            "name": "Bitter Poffin",
+            "effect": "Bitter is the main flavor and raises Smartness. Any other flavors present raise their matching Contest conditions too."
+          },
+          {
+            "name": "Sour Poffin",
+            "effect": "Sour is the main flavor and raises Toughness. Any other flavors present raise their matching Contest conditions too."
+          }
+        ],
+        "pokeblocks": [
+          {
+            "name": "Red Pokéblock",
+            "effect": "Spicy is its only flavor. Raises Coolness."
+          },
+          {
+            "name": "Blue Pokéblock",
+            "effect": "Dry is its only flavor. Raises Beauty."
+          },
+          {
+            "name": "Pink Pokéblock",
+            "effect": "Sweet is its only flavor. Raises Cuteness."
+          },
+          {
+            "name": "Green Pokéblock",
+            "effect": "Bitter is its only flavor. Raises Smartness."
+          },
+          {
+            "name": "Yellow Pokéblock",
+            "effect": "Sour is its only flavor. Raises Toughness."
+          },
+          {
+            "name": "Purple Pokéblock",
+            "effect": "Spicy is the stronger of its two flavors. Raises Coolness and the condition tied to its second flavor."
+          },
+          {
+            "name": "Indigo Pokéblock",
+            "effect": "Dry is the stronger of its two flavors. Raises Beauty and the condition tied to its second flavor."
+          },
+          {
+            "name": "Brown Pokéblock",
+            "effect": "Sweet is the stronger of its two flavors. Raises Cuteness and the condition tied to its second flavor."
+          },
+          {
+            "name": "LiteBlue Pokéblock",
+            "effect": "Bitter is the stronger of its two flavors. Raises Smartness and the condition tied to its second flavor."
+          },
+          {
+            "name": "Olive Pokéblock",
+            "effect": "Sour is the stronger of its two flavors. Raises Toughness and the condition tied to its second flavor."
+          },
+          {
+            "name": "Gray Pokéblock",
+            "effect": "Has three flavors and raises their three matching Contest conditions."
+          },
+          {
+            "name": "Black Pokéblock",
+            "effect": "Has three randomly assigned flavors with a value of 2 each. Raises the matching Contest conditions by a small amount."
+          },
+          {
+            "name": "White Pokéblock",
+            "effect": "Has four or five flavors and raises each matching Contest condition."
+          },
+          {
+            "name": "Gold Pokéblock",
+            "effect": "Has one or two flavors, with at least one flavor value above 50. Raises the Contest conditions tied to its flavors."
+          }
+        ],
+        "berries": [
+          {
+            "name": "Cheri Berry",
+            "effect": "A held item that heals paralysis in battle. Treat flavors: Spicy 10."
+          },
+          {
+            "name": "Chesto Berry",
+            "effect": "A held item that awakens Pokémon in battle. Treat flavors: Dry 10."
+          },
+          {
+            "name": "Pecha Berry",
+            "effect": "A held item that heals poisoning in battle. Treat flavors: Sweet 10."
+          },
+          {
+            "name": "Rawst Berry",
+            "effect": "A held item that heals a burn in battle. Treat flavors: Bitter 10."
+          },
+          {
+            "name": "Aspear Berry",
+            "effect": "Thaws a frozen Pokémon. Treat flavors: Sour 10."
+          },
+          {
+            "name": "Leppa Berry",
+            "effect": "A held item that restores 10 PP in battle. Treat flavors: Spicy 10, Sweet 10, Bitter 10, Sour 10."
+          },
+          {
+            "name": "Oran Berry",
+            "effect": "A held item that restores 10 HP in battle. Treat flavors: Spicy 10, Dry 10, Sweet 10, Bitter 10, Sour 10."
+          },
+          {
+            "name": "Persim Berry",
+            "effect": "A held item that heals confusion in battle. Treat flavors: Spicy 10, Dry 10, Sweet 10, Bitter 10, Sour 10."
+          },
+          {
+            "name": "Lum Berry",
+            "effect": "Cures a major status condition or confusion. Treat flavors: Spicy 10, Dry 10, Sweet 10, Bitter 10, Sour 10."
+          },
+          {
+            "name": "Sitrus Berry",
+            "effect": "Restores one-quarter of a Pokémon’s maximum HP. Treat flavors: Spicy 10, Dry 10, Sweet 10, Bitter 10, Sour 10."
+          },
+          {
+            "name": "Figy Berry",
+            "effect": "Restores HP when held and triggered at low HP. Confuses the holder if it dislikes spicy flavors. Treat flavors: Spicy 10."
+          },
+          {
+            "name": "Wiki Berry",
+            "effect": "Restores HP when held and triggered at low HP. Confuses the holder if it dislikes dry flavors. Treat flavors: Dry 10."
+          },
+          {
+            "name": "Mago Berry",
+            "effect": "Restores HP when held and triggered at low HP. Confuses the holder if it dislikes sweet flavors. Treat flavors: Sweet 10."
+          },
+          {
+            "name": "Aguav Berry",
+            "effect": "Restores HP when held and triggered at low HP. Confuses the holder if it dislikes bitter flavors. Treat flavors: Bitter 10."
+          },
+          {
+            "name": "Iapapa Berry",
+            "effect": "Restores HP when held and triggered at low HP. Confuses the holder if it dislikes sour flavors. Treat flavors: Sour 10."
+          },
+          {
+            "name": "Razz Berry",
+            "effect": "An ingredient for making treats. Treat flavors: Spicy 10, Dry 10."
+          },
+          {
+            "name": "Bluk Berry",
+            "effect": "An ingredient for making treats. Treat flavors: Dry 10, Sweet 10."
+          },
+          {
+            "name": "Nanab Berry",
+            "effect": "An ingredient for making treats. Treat flavors: Sweet 10, Bitter 10."
+          },
+          {
+            "name": "Wepear Berry",
+            "effect": "An ingredient for making treats. Treat flavors: Bitter 10, Sour 10."
+          },
+          {
+            "name": "Pinap Berry",
+            "effect": "An ingredient for making treats. Treat flavors: Spicy 10, Sour 10."
+          },
+          {
+            "name": "Pomeg Berry",
+            "effect": "Raises friendship and removes up to 10 HP EVs. Treat flavors: Spicy 10, Sweet 10, Bitter 10."
+          },
+          {
+            "name": "Kelpsy Berry",
+            "effect": "Raises friendship and removes up to 10 Attack EVs. Treat flavors: Dry 10, Bitter 10, Sour 10."
+          },
+          {
+            "name": "Qualot Berry",
+            "effect": "Raises friendship and removes up to 10 Defense EVs. Treat flavors: Spicy 10, Sweet 10, Sour 10."
+          },
+          {
+            "name": "Hondew Berry",
+            "effect": "Raises friendship and removes up to 10 Sp. Atk EVs. Treat flavors: Spicy 10, Dry 10, Bitter 10."
+          },
+          {
+            "name": "Grepa Berry",
+            "effect": "Raises friendship and removes up to 10 Sp. Def EVs. Treat flavors: Dry 10, Sweet 10, Sour 10."
+          },
+          {
+            "name": "Tamato Berry",
+            "effect": "Raises friendship and removes up to 10 Speed EVs. Treat flavors: Spicy 20, Dry 10."
+          },
+          {
+            "name": "Cornn Berry",
+            "effect": "An ingredient for making treats. Treat flavors: Dry 20, Sweet 10."
+          },
+          {
+            "name": "Magost Berry",
+            "effect": "An ingredient for making treats. Treat flavors: Sweet 20, Bitter 10."
+          },
+          {
+            "name": "Rabuta Berry",
+            "effect": "An ingredient for making treats. Treat flavors: Bitter 20, Sour 10."
+          },
+          {
+            "name": "Nomel Berry",
+            "effect": "An ingredient for making treats. Treat flavors: Spicy 10, Sour 20."
+          },
+          {
+            "name": "Spelon Berry",
+            "effect": "An ingredient for making treats. Treat flavors: Spicy 40, Dry 10."
+          },
+          {
+            "name": "Pamtre Berry",
+            "effect": "An ingredient for making treats. Treat flavors: Dry 40, Sweet 10."
+          },
+          {
+            "name": "Watmel Berry",
+            "effect": "An ingredient for making treats. Treat flavors: Sweet 40, Bitter 10."
+          },
+          {
+            "name": "Durin Berry",
+            "effect": "An ingredient for making treats. Treat flavors: Bitter 40, Sour 10."
+          },
+          {
+            "name": "Belue Berry",
+            "effect": "An ingredient for making treats. Treat flavors: Spicy 10, Sour 40."
+          },
+          {
+            "name": "Chilan Berry",
+            "effect": "A held item that weakens one Normal-type move. Treat flavors: Dry 25, Sweet 10."
+          },
+          {
+            "name": "Occa Berry",
+            "effect": "Weakens one supereffective Fire-type move. Treat flavors: Spicy 15, Sweet 10."
+          },
+          {
+            "name": "Passho Berry",
+            "effect": "Weakens one supereffective Water-type move. Treat flavors: Dry 15, Bitter 10."
+          },
+          {
+            "name": "Wacan Berry",
+            "effect": "Weakens one supereffective Electric move. Treat flavors: Sweet 15, Sour 10."
+          },
+          {
+            "name": "Rindo Berry",
+            "effect": "Weakens one supereffective Grass-type move. Treat flavors: Spicy 10, Bitter 15."
+          },
+          {
+            "name": "Yache Berry",
+            "effect": "Weakens one supereffective Ice-type move. Treat flavors: Dry 10, Sour 15."
+          },
+          {
+            "name": "Chople Berry",
+            "effect": "Weakens one supereffective Fighting move. Treat flavors: Spicy 15, Bitter 10."
+          },
+          {
+            "name": "Kebia Berry",
+            "effect": "Weakens one supereffective Poison-type move. Treat flavors: Dry 15, Sour 10."
+          },
+          {
+            "name": "Shuca Berry",
+            "effect": "Weakens one supereffective Ground-type move. Treat flavors: Spicy 10, Sweet 15."
+          },
+          {
+            "name": "Coba Berry",
+            "effect": "Weakens one supereffective Flying-type move. Treat flavors: Dry 10, Bitter 15."
+          },
+          {
+            "name": "Payapa Berry",
+            "effect": "Weakens one supereffective Psychic-type move. Treat flavors: Sweet 10, Sour 15."
+          },
+          {
+            "name": "Tanga Berry",
+            "effect": "Weakens one supereffective Bug-type move. Treat flavors: Spicy 20, Sour 10."
+          },
+          {
+            "name": "Charti Berry",
+            "effect": "Weakens one supereffective Rock-type move. Treat flavors: Spicy 10, Dry 20."
+          },
+          {
+            "name": "Kasib Berry",
+            "effect": "Weakens one supereffective Ghost-type move. Treat flavors: Dry 10, Sweet 20."
+          },
+          {
+            "name": "Haban Berry",
+            "effect": "Weakens one supereffective Dragon-type move. Treat flavors: Sweet 10, Bitter 20."
+          },
+          {
+            "name": "Colbur Berry",
+            "effect": "Weakens one supereffective Dark-type move. Treat flavors: Bitter 10, Sour 20."
+          },
+          {
+            "name": "Babiri Berry",
+            "effect": "Weakens one supereffective Steel-type move. Treat flavors: Spicy 25, Dry 10."
+          },
+          {
+            "name": "Roseli Berry",
+            "effect": "Weakens one supereffective Fairy-type move. Treat flavors: Sweet 25, Bitter 10."
+          },
+          {
+            "name": "Liechi Berry",
+            "effect": "A held item that raises Attack in a pinch. Treat flavors: Spicy 40, Sweet 40, Sour 10."
+          },
+          {
+            "name": "Ganlon Berry",
+            "effect": "A held item that raises Defense in a pinch. Treat flavors: Dry 40, Bitter 40."
+          },
+          {
+            "name": "Salac Berry",
+            "effect": "A held item that raises Speed in a pinch. Treat flavors: Sweet 40, Sour 40."
+          },
+          {
+            "name": "Petaya Berry",
+            "effect": "A held item that raises Sp. Atk in a pinch. Treat flavors: Spicy 40, Bitter 40."
+          },
+          {
+            "name": "Apicot Berry",
+            "effect": "A held item that raises Sp. Def in a pinch. Treat flavors: Dry 40, Sour 40."
+          },
+          {
+            "name": "Lansat Berry",
+            "effect": "A held item that ups the critical- hit rate in a pinch. Treat flavors: Spicy 10, Dry 10, Sweet 10, Bitter 10, Sour 10."
+          },
+          {
+            "name": "Starf Berry",
+            "effect": "A held item that sharply raises a stat in a pinch. Treat flavors: Spicy 10, Dry 10, Sweet 10, Bitter 10, Sour 10."
+          },
+          {
+            "name": "Enigma Berry",
+            "effect": "Restores HP when hit by a super effective move. Treat flavors: Spicy 40, Dry 10."
+          },
+          {
+            "name": "Micle Berry",
+            "effect": "A held item that boosts accuracy in a pinch. Treat flavors: Dry 40, Sweet 10."
+          },
+          {
+            "name": "Custap Berry",
+            "effect": "The holder gets to move first just once in a pinch. Treat flavors: Sweet 40, Bitter 10."
+          },
+          {
+            "name": "Jaboca Berry",
+            "effect": "If hit by a physical move, the foe will also take damage. Treat flavors: Bitter 40, Sour 10."
+          },
+          {
+            "name": "Rowap Berry",
+            "effect": "If hit by a special move, the foe will also take damage. Treat flavors: Spicy 10, Sour 40."
+          },
+          {
+            "name": "Kee Berry",
+            "effect": "If hit by a physical move, it raises the holder's Defense. Treat flavors: Spicy 30, Dry 30, Sweet 10, Bitter 10, Sour 10."
+          },
+          {
+            "name": "Maranga Berry",
+            "effect": "If hit by a special move, it raises the holder's Sp. Def. Treat flavors: Spicy 10, Dry 10, Sweet 30, Bitter 30, Sour 10."
+          },
+          {
+            "name": "Enigma Berry (e-Reader)",
+            "effect": "A legacy berry slot. Its effect and flavor depend on the loaded e-Reader berry data."
+          }
+        ],
+        "poffinMixes": [
+          {
+            "name": "Spicy Poffin · Dry sprinkles",
+            "primary": "spicy",
+            "accent": "dry",
+            "effect": "Spicy is the main flavor (Coolness); Dry is the strongest secondary flavor (Beauty) and colors the sprinkles. Example: Cheri Berry first + Chesto Berry second. The Treat Case still calls this a Spicy Poffin; other berry mixes can add further flavors."
+          },
+          {
+            "name": "Spicy Poffin · Sweet sprinkles",
+            "primary": "spicy",
+            "accent": "sweet",
+            "effect": "Spicy is the main flavor (Coolness); Sweet is the strongest secondary flavor (Cuteness) and colors the sprinkles. Example: Cheri Berry first + Pecha Berry second. The Treat Case still calls this a Spicy Poffin; other berry mixes can add further flavors."
+          },
+          {
+            "name": "Spicy Poffin · Bitter sprinkles",
+            "primary": "spicy",
+            "accent": "bitter",
+            "effect": "Spicy is the main flavor (Coolness); Bitter is the strongest secondary flavor (Smartness) and colors the sprinkles. Example: Cheri Berry first + Rawst Berry second. The Treat Case still calls this a Spicy Poffin; other berry mixes can add further flavors."
+          },
+          {
+            "name": "Spicy Poffin · Sour sprinkles",
+            "primary": "spicy",
+            "accent": "sour",
+            "effect": "Spicy is the main flavor (Coolness); Sour is the strongest secondary flavor (Toughness) and colors the sprinkles. Example: Cheri Berry first + Aspear Berry second. The Treat Case still calls this a Spicy Poffin; other berry mixes can add further flavors."
+          },
+          {
+            "name": "Dry Poffin · Spicy sprinkles",
+            "primary": "dry",
+            "accent": "spicy",
+            "effect": "Dry is the main flavor (Beauty); Spicy is the strongest secondary flavor (Coolness) and colors the sprinkles. Example: Chesto Berry first + Cheri Berry second. The Treat Case still calls this a Dry Poffin; other berry mixes can add further flavors."
+          },
+          {
+            "name": "Dry Poffin · Sweet sprinkles",
+            "primary": "dry",
+            "accent": "sweet",
+            "effect": "Dry is the main flavor (Beauty); Sweet is the strongest secondary flavor (Cuteness) and colors the sprinkles. Example: Chesto Berry first + Pecha Berry second. The Treat Case still calls this a Dry Poffin; other berry mixes can add further flavors."
+          },
+          {
+            "name": "Dry Poffin · Bitter sprinkles",
+            "primary": "dry",
+            "accent": "bitter",
+            "effect": "Dry is the main flavor (Beauty); Bitter is the strongest secondary flavor (Smartness) and colors the sprinkles. Example: Chesto Berry first + Rawst Berry second. The Treat Case still calls this a Dry Poffin; other berry mixes can add further flavors."
+          },
+          {
+            "name": "Dry Poffin · Sour sprinkles",
+            "primary": "dry",
+            "accent": "sour",
+            "effect": "Dry is the main flavor (Beauty); Sour is the strongest secondary flavor (Toughness) and colors the sprinkles. Example: Chesto Berry first + Aspear Berry second. The Treat Case still calls this a Dry Poffin; other berry mixes can add further flavors."
+          },
+          {
+            "name": "Sweet Poffin · Spicy sprinkles",
+            "primary": "sweet",
+            "accent": "spicy",
+            "effect": "Sweet is the main flavor (Cuteness); Spicy is the strongest secondary flavor (Coolness) and colors the sprinkles. Example: Pecha Berry first + Cheri Berry second. The Treat Case still calls this a Sweet Poffin; other berry mixes can add further flavors."
+          },
+          {
+            "name": "Sweet Poffin · Dry sprinkles",
+            "primary": "sweet",
+            "accent": "dry",
+            "effect": "Sweet is the main flavor (Cuteness); Dry is the strongest secondary flavor (Beauty) and colors the sprinkles. Example: Pecha Berry first + Chesto Berry second. The Treat Case still calls this a Sweet Poffin; other berry mixes can add further flavors."
+          },
+          {
+            "name": "Sweet Poffin · Bitter sprinkles",
+            "primary": "sweet",
+            "accent": "bitter",
+            "effect": "Sweet is the main flavor (Cuteness); Bitter is the strongest secondary flavor (Smartness) and colors the sprinkles. Example: Pecha Berry first + Rawst Berry second. The Treat Case still calls this a Sweet Poffin; other berry mixes can add further flavors."
+          },
+          {
+            "name": "Sweet Poffin · Sour sprinkles",
+            "primary": "sweet",
+            "accent": "sour",
+            "effect": "Sweet is the main flavor (Cuteness); Sour is the strongest secondary flavor (Toughness) and colors the sprinkles. Example: Pecha Berry first + Aspear Berry second. The Treat Case still calls this a Sweet Poffin; other berry mixes can add further flavors."
+          },
+          {
+            "name": "Bitter Poffin · Spicy sprinkles",
+            "primary": "bitter",
+            "accent": "spicy",
+            "effect": "Bitter is the main flavor (Smartness); Spicy is the strongest secondary flavor (Coolness) and colors the sprinkles. Example: Rawst Berry first + Cheri Berry second. The Treat Case still calls this a Bitter Poffin; other berry mixes can add further flavors."
+          },
+          {
+            "name": "Bitter Poffin · Dry sprinkles",
+            "primary": "bitter",
+            "accent": "dry",
+            "effect": "Bitter is the main flavor (Smartness); Dry is the strongest secondary flavor (Beauty) and colors the sprinkles. Example: Rawst Berry first + Chesto Berry second. The Treat Case still calls this a Bitter Poffin; other berry mixes can add further flavors."
+          },
+          {
+            "name": "Bitter Poffin · Sweet sprinkles",
+            "primary": "bitter",
+            "accent": "sweet",
+            "effect": "Bitter is the main flavor (Smartness); Sweet is the strongest secondary flavor (Cuteness) and colors the sprinkles. Example: Rawst Berry first + Pecha Berry second. The Treat Case still calls this a Bitter Poffin; other berry mixes can add further flavors."
+          },
+          {
+            "name": "Bitter Poffin · Sour sprinkles",
+            "primary": "bitter",
+            "accent": "sour",
+            "effect": "Bitter is the main flavor (Smartness); Sour is the strongest secondary flavor (Toughness) and colors the sprinkles. Example: Rawst Berry first + Aspear Berry second. The Treat Case still calls this a Bitter Poffin; other berry mixes can add further flavors."
+          },
+          {
+            "name": "Sour Poffin · Spicy sprinkles",
+            "primary": "sour",
+            "accent": "spicy",
+            "effect": "Sour is the main flavor (Toughness); Spicy is the strongest secondary flavor (Coolness) and colors the sprinkles. Example: Aspear Berry first + Cheri Berry second. The Treat Case still calls this a Sour Poffin; other berry mixes can add further flavors."
+          },
+          {
+            "name": "Sour Poffin · Dry sprinkles",
+            "primary": "sour",
+            "accent": "dry",
+            "effect": "Sour is the main flavor (Toughness); Dry is the strongest secondary flavor (Beauty) and colors the sprinkles. Example: Aspear Berry first + Chesto Berry second. The Treat Case still calls this a Sour Poffin; other berry mixes can add further flavors."
+          },
+          {
+            "name": "Sour Poffin · Sweet sprinkles",
+            "primary": "sour",
+            "accent": "sweet",
+            "effect": "Sour is the main flavor (Toughness); Sweet is the strongest secondary flavor (Cuteness) and colors the sprinkles. Example: Aspear Berry first + Pecha Berry second. The Treat Case still calls this a Sour Poffin; other berry mixes can add further flavors."
+          },
+          {
+            "name": "Sour Poffin · Bitter sprinkles",
+            "primary": "sour",
+            "accent": "bitter",
+            "effect": "Sour is the main flavor (Toughness); Bitter is the strongest secondary flavor (Smartness) and colors the sprinkles. Example: Aspear Berry first + Rawst Berry second. The Treat Case still calls this a Sour Poffin; other berry mixes can add further flavors."
+          }
+        ]
+      }
     },
     {
       "id": "walkthrough",
@@ -494,9 +981,9 @@
       "title": "Bag, boxes and save compatibility",
       "category": "Core gameplay",
       "summary": "Current storage limits, older-save migration and the expanded-save boundary.",
-      "content": "## Current capacities\n| Storage | Capacity |\n| --- | --- |\n| Pokémon PC | 20 boxes × 30 slots = 600 Pokémon |\n| PC Item Storage | 150 item slots |\n| Bag — Items | 150 slots |\n| Bag — Key Items | 60 slots |\n| Bag — Poké Balls | 32 slots |\n| Bag — TMs/HMs | 128 slots |\n| Bag — Berries | 80 slots |\n\nNormal pocket rules and per-stack quantities remain in effect. Boxes retain their names, wallpapers and 30-slot layout. The Battle Pyramid keeps its separate native challenge Bag limits. Achievement berry rewards are claimed into PC Item Storage.\n\n## Using an earlier Legends save\nv0.0.43 and newer recognize earlier Legends saves and migrate their original boxes and inventories automatically. The six extra boxes and expanded slots begin empty. **After saving in v0.0.43 or newer, continue using v0.0.43 or newer:** older builds cannot read the expanded format. Keep a backup before changing builds.\n\nThe game still uses a normal **128 KiB flash `.sav`**. You do not need to enlarge the emulator’s save setting. Emulator save states are separate from the game’s normal SAVE function.\n\n## If a save cannot fit\nExpanded storage is saved with bounded, lossless compression. An unusually incompressible collection can exceed its fixed payload budget even below 600 Pokémon. The game checks this before writing and reports a failed save; it preserves the existing flash saves and current in-memory collection. Do not treat a failed SAVE as completed. Preserve your previous `.sav` and report the version and circumstances through [[support|Troubleshooting]].\n",
-      "reviewedAgainstGameVersion": "0.0.46",
-      "reviewedSourceCommit": "e542033cf4fcb8378c68fdd5ffbc4f5b5933fb64"
+      "content": "## Current capacities\n| Storage | Capacity |\n| --- | --- |\n| Pokémon PC | 20 boxes × 30 slots = 600 Pokémon |\n| PC Item Storage | 150 item slots |\n| Bag | 1,152 shared stacks, up to 999 items per stack |\n\nItems (including healing), Key Items, Poké Balls, TMs/HMs and Berries draw from the same pool. Any pocket can use the remaining space. Boxes retain their names, wallpapers and 30-slot layout. The Battle Pyramid keeps its separate native challenge Bag limits. Achievement berry rewards are claimed into PC Item Storage.\n\n## Using an earlier Legends save\nv0.0.79 automatically upgrades earlier Legends battery saves. Your inventory, Pokémon, Treat Case and saved progress carry over. **After saving in v0.0.79, use v0.0.79 or newer.** Keep a backup if you want to return to an older build.\n\nThe game still uses a normal **128 KiB flash `.sav`**. You do not need to enlarge the emulator’s save setting. Emulator save states are separate from the game’s normal SAVE function.\n\n## If a save cannot fit\nExpanded storage is saved with bounded, lossless compression. An unusually incompressible collection can exceed its fixed payload budget even below 600 Pokémon. The game checks this before writing and reports a failed save; it preserves the existing flash saves and current in-memory collection. Do not treat a failed SAVE as completed. Preserve your previous `.sav` and report the version and circumstances through [[support|Troubleshooting]].\n",
+      "reviewedAgainstGameVersion": "0.0.79",
+      "reviewedSourceCommit": "c44632c7b2a4a201874ba971981c81432fbed9d3"
     },
     {
       "id": "walkthrough-kanto-stillwater",

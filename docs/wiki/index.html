@@ -28,6 +28,51 @@ footer{max-width:1380px;margin:auto;padding:0 22px 32px;font-size:12px;color:var
 @media(max-width:1100px){.navlinks .secondary-nav{display:none}}
 @media(max-width:750px){.top-inner{flex-wrap:nowrap;gap:6px;min-height:60px;padding:8px 10px}.brand{min-width:0;font-size:12px;white-space:nowrap}.mark{display:none}.navlinks{margin-left:auto;width:auto;gap:3px;flex-wrap:nowrap}.navlinks .update-wiki,.navlinks .dex-link{font-size:11px;padding:6px 7px;min-height:40px}.navlinks .header-search{width:39px;min-height:40px}.navlinks #menu{display:none}.layout{padding-top:14px}.sidebar{display:none}.navlinks .update-wiki span{display:none}}
 @media(max-width:390px){.brand{font-size:10px}.navlinks .update-wiki,.navlinks .dex-link{font-size:10px;padding:5px}.navlinks .header-search{width:36px}}
+.dex-shortcuts .pokemon-interactions-shortcut{flex-basis:100%}
+.interaction-catalogue{display:grid;gap:6px;margin:12px 0 20px}
+.interaction-catalogue details{border:1px solid #dfcdf3;border-radius:10px;background:#faf6ff}
+.interaction-catalogue summary{padding:10px 12px;cursor:pointer;font-weight:700;color:#543579}
+.interaction-catalogue details p{margin:0;padding:0 12px 12px}
+
+/* The home shortcut navigates to a guide; its three category buttons expand inside that guide. */
+.interaction-home{display:flex;align-items:center;justify-content:center;min-height:49px;margin:14px 0 3px;padding:12px 15px;border:1px solid #d5c4e9;border-radius:13px;background:#f3ecfc;color:#543579;text-decoration:none;font-weight:800;text-align:center;cursor:pointer;min-width:0}
+.interaction-home-inner{display:inline-flex;align-items:center;justify-content:center;gap:11px;max-width:100%;min-width:0}
+.interaction-home-label{font-size:clamp(17px,4.3vw,24px);line-height:1.2;text-wrap:balance;min-width:0}
+.interaction-home-arrow{font-size:23px;line-height:1;flex:none}
+.interaction-home:hover,.interaction-home:focus-visible{background:#eae0f9;color:#543579}
+.interaction-home:focus-visible{outline:3px solid #9b80d5;outline-offset:2px}
+.interaction-topic{border:1px solid #d5c4e9;border-radius:13px;background:#fff;overflow:hidden;min-width:0}
+.interaction-topic>summary{display:flex;align-items:center;gap:10px;cursor:pointer;list-style:none;min-height:49px;padding:11px 13px;color:#543579;background:#f3ecfc}
+.interaction-topic>summary::-webkit-details-marker{display:none}
+.interaction-topic>summary strong{flex:1}
+.interaction-topic[open]>summary{border-bottom:1px solid #d5c4e9;background:#eae0f9}
+.interaction-arrow{font-size:22px;line-height:1;transition:transform .2s}
+details[open]>summary>.interaction-arrow{transform:rotate(180deg)}
+.interaction-topic-body{padding:13px}
+.interaction-groups{display:grid;gap:10px;min-width:0}
+.interaction-topic-icon{display:block;flex:0 0 32px;width:32px;height:32px;overflow:hidden}
+.interaction-topic-icon img{display:block;width:32px;height:32px;object-fit:contain;image-rendering:pixelated}
+.interaction-topic-icon-poffin .interaction-poffin-art{width:32px;height:32px;background-size:160px 160px;background-position:0 0}
+.interaction-topic>summary small{font-weight:750;font-size:12px;color:#79688e;white-space:nowrap}
+.interaction-description{font-size:14px;line-height:1.6;margin-bottom:13px}
+.interaction-description p{margin:0 0 10px}
+.interaction-items{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));gap:9px}
+.interaction-item{display:flex;align-items:flex-start;gap:10px;padding:10px;border:1px solid #e6dcee;border-radius:11px;background:#fff;min-width:0}
+.interaction-item>div{min-width:0}
+.interaction-item strong{display:block;color:#4f3767;font-size:14px;line-height:1.4}
+.interaction-item p,.welcome .interaction-item p{color:#625872;font-size:12px;line-height:1.5;margin:4px 0 0;max-width:none;overflow-wrap:anywhere}
+.interaction-pic{display:grid;place-items:center;position:relative;flex:0 0 47px;width:47px;height:47px;background:#f7f2fc;border:1px solid #e9dff3;border-radius:10px;overflow:hidden}
+.interaction-pic img{width:40px;height:40px;object-fit:contain;image-rendering:pixelated}
+.interaction-block:before{content:"";width:39px;height:39px;position:absolute;background:var(--block-color);mask:url("art/interactions/pokeblock.png") center/contain no-repeat;-webkit-mask:url("art/interactions/pokeblock.png") center/contain no-repeat}
+.interaction-block img{position:relative;mix-blend-mode:multiply;opacity:.35}
+/* Authentic plated sprinkled frame: 25 palette variants in one transparent game-art atlas. */
+.interaction-poffin{background:transparent}
+.interaction-poffin-art{display:block;width:45px;height:45px;flex:0 0 45px;background-image:url("art/interactions/poffin-atlas.svg");background-repeat:no-repeat;background-size:225px 225px;image-rendering:pixelated}
+.interaction-subheading{font-size:14px;color:#573b79;margin:17px 0 9px}
+.interaction-description+.interaction-subheading{margin-top:0}
+.interaction-mix-note{font-size:13px;color:#655873;margin:0 0 12px;line-height:1.6}
+.interaction-topic summary:focus-visible{outline:3px solid #9b80d5;outline-offset:-3px}
+@media(max-width:650px){.interaction-topic-body{padding:10px}.interaction-items{grid-template-columns:1fr}}
 </style><link rel="stylesheet" href="fold-layout.css?v=20261016-1"></head><body>
 <header class="top"><div class="top-inner">
 <a class="brand" href="./" aria-label="Emerald Legends Wiki home"><span class="mark" aria-hidden="true">◉</span><span class="wiki-brand-full">EMERALD: LEGENDS <span style="color:#9d84c3">/ WIKI</span></span><span class="wiki-brand-compact">LEGENDS WIKI</span></a>
@@ -45,5 +90,5 @@ footer{max-width:1380px;margin:auto;padding:0 22px 32px;font-size:12px;color:var
 <script src="wiki-updates.js" defer></script>
 <script src="dex-sprite-atlas.js?v=1.8.0-68073255" defer></script>
 <script src="walkthrough-maps.js?v=1.8.0-68073255" defer></script>
-<script src="wiki.js?v=20261106-walkthrough27" defer></script>
+<script src="wiki.js?v=20261112-centered-interaction-button" defer></script>
 </body></html>

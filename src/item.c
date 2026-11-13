@@ -1,4 +1,5 @@
 #include "global.h"
+#include "legends_poffin.h"
 #include "legends_storage.h"
 #include "item.h"
 #include "berry.h"

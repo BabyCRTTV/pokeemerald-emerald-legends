@@ -2575,3 +2575,5 @@ static const struct SpriteFrameImage sPicTable_MomFrlg[] = {
 static const struct SpriteFrameImage sPicTable_MiraAsleep[] = {
     overworld_ascending_frames(gObjectEventPic_MiraAsleep, 2, 2),
 };
+
+static const struct SpriteFrameImage sPicTable_PoffinMaker[] = {obj_frame_tiles(sPoffinMakerGraphics)};

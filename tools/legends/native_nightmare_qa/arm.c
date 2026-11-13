@@ -55,6 +55,16 @@ void qa(void)
   // A legal weak party for the actual loss/blackout case, not a forced outcome.
   ZeroMonData(&gParties[B_TRAINER_PLAYER][0]);CreateMon(&gParties[B_TRAINER_PLAYER][0],SPECIES_MAGIKARP,1,32,OTID_STRUCT_PLAYER_ID);SetMonMoveSlot(&gParties[B_TRAINER_PLAYER][0],MOVE_SPLASH,0);for(u32 i=1;i<4;i++)SetMonMoveSlot(&gParties[B_TRAINER_PLAYER][0],MOVE_NONE,i);gPartiesCount[B_TRAINER_PLAYER]=1;
  }
+ if(b[0]==4){
+  // A fresh legal counter makes the intended win independent of Dark Void,
+  // damage from the preceding escape, and encounter nature/speed rolls.
+  ZeroMonData(&gParties[B_TRAINER_PLAYER][0]);
+  CreateMonWithIVs(&gParties[B_TRAINER_PLAYER][0],SPECIES_MEWTWO,100,32,OTID_STRUCT_PLAYER_ID,31);
+  SetMonMoveSlot(&gParties[B_TRAINER_PLAYER][0],MOVE_AURA_SPHERE,0);
+  for(u32 i=1;i<4;i++)SetMonMoveSlot(&gParties[B_TRAINER_PLAYER][0],MOVE_NONE,i);
+  u16 item=ITEM_CHOICE_SPECS;SetMonData(&gParties[B_TRAINER_PLAYER][0],MON_DATA_HELD_ITEM,&item);
+  gPartiesCount[B_TRAINER_PLAYER]=1;
+ }
  if(b[0]==3){
   u32 before=0;for(u32 i=0;i<8;i++)if(FlagGet(flags[i]))before|=1<<i;
   b[5]=TrySavingData(SAVE_NORMAL);for(u32 i=0;i<8;i++)FlagClear(flags[i]);b[6]=LoadGameSave(SAVE_NORMAL);u32 after=0;for(u32 i=0;i<8;i++)if(FlagGet(flags[i]))after|=1<<i;b[7]=before==after;b[8]=CheckBagHasItem(ITEM_LUNAR_WING,1);b[9]=CheckBagHasItem(ITEM_CLEANSE_TAG,1);

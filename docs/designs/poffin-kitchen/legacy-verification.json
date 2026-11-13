@@ -1,0 +1,14 @@
+{
+  "passed": true,
+  "baseline_rom_sha256": "d623b958ec4be0c328726810376c6e1da917fc2ac4793b7dc3dbc615387b2137",
+  "target_rom_sha256": "9a7ca637d1f75d52fcf544c7f84e58ea4241f7bef3bc3f86850059e0a3af3b32",
+  "tests": [
+    "older-format battery Continue",
+    "Poffin migrated with exact flavors",
+    "ordinary Pokeblock preserved",
+    "hairstyle and season preserved",
+    "Torchic and berries preserved",
+    "new save reset Continue"
+  ],
+  "limits": "Synthetic baseline-build battery, not an authentic historical player save."
+}

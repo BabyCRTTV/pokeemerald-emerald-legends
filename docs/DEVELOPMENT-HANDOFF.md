@@ -1,5 +1,77 @@
 # Development handoff
 
+## v0.0.79 shared Bag release candidate (12 November 2026)
+
+**Model: GPT-6 | Reasoning: integrate the previously verified expansion with the published Poffin layout and verify both formats through Continue.**
+
+Owner approved finishing and publishing PR #98. The five Bag pockets now draw from 1,152 shared stacks of up to 999 each. The LPC3 writer retains the LPC2 and original native readers. The v0.0.78 SaveBlock3 layout, Treat Case, map and artwork assets, and current wiki navigation are preserved. The migration fixture covers the old five-pocket inventory plus a full Treat Case, then verifies a new LPC3 battery save and normal Release Continue. Updated the Bag reference and release labels while keeping the encounter and artwork source pins. See [release evidence](qa/shared-bag-v0.0.79.json). Candidate and production gates remain required.
+
+## Wiki 1.9.9 centered Pokémon Interactions home shortcut (12 November 2026)
+
+**Model: GPT-6 | Reasoning: keep the owner's approved shortcut hierarchy, minimize text width, and visually align mobile cards.**
+
+The homepage guide button now reads “Pokémon Interactions.” Its title and right arrow are one centered, responsive inline group instead of a left-stretched title and detached far-right arrow. The full guide remains titled “Interacting with Your Pokemon,” and all three nested category accordions, 25 Poffin pictures, 14 Pokéblocks, and 68 Berries are unchanged. Cache-busted the wiki script to make the new label appear promptly. Reader and five-viewport browser checks assert short text, centered arrow grouping, horizontal fit, navigation, and the pre-existing guide contents. No game/save/graphics changes.
+
+## Wiki 1.9.8 dedicated interaction guide shortcut (12 November 2026)
+
+**Model: GPT-6 | Reasoning: follow the owner's clarified navigation hierarchy without disturbing verified game sprite art, recipes, or other wiki sections.**
+
+Replaced the home-page “Interacting with Your Pokemon” main `<details>` accordion with one full-width, accessible navigation link styled as a button immediately beneath Walkthrough. Activating it opens the existing `?page=interacting-with-your-pokemon` article, which contains the three individually expandable Poffins, Pokéblocks, and Berries category buttons. No treatment content, recipe catalogues, sprites, visual palettes, maps, encounter data, ROM version, or saves were altered. Updated reader and mobile/fold/desktop Playwright regressions to check that only the button appears on the home page, that it navigates properly, that all nested catalogues and images remain functional, and that returning home works.
+
+Art accuracy note: the transparent 5×5 atlas embeds the original first 64×64 frame of `graphics/poffin/served.png` and applies the exact `src/legends_poffin_case.c` GBA crust/sprinkle palette indices. It accurately reproduces the game's *plated feeding-screen Poffin* at web pixel scaling, not the separate unplated cooking screen or a screenshot of each individual recipe. The real Treat Case still names only five dominant flavors.
+
+## Wiki 1.9.7 transparent Poffin sprinkles and all cross-mixes (12 November 2026)
+
+**Model: GPT-6 | Reasoning: reuse genuine shipped game pixels and actual recipe logic; do not invent additional item types.**
+
+Switched wiki Poffin imagery from plain miniature icons to the first frame of the native sprinkled/plated feeding art. In a compact 5×5 SVG atlas, each of the 25 pictures embeds the original game's byte-identical compressed pixels, with palette index zero transparent, crust colors from game palette indices 9/10 and secondary sprinkles from index 15. The wiki lists five real dominant Poffin names plus all 20 possible dominant/secondary visual flavor combinations, with berry-order recipe examples and their Contest condition effects. Two-berry mixes retain their dominant-flavor name in the Treat Case; extra flavor values are not new inventory item types. The main collapsed section, the three category buttons, 14 Pokéblocks, 68 berries, original artwork and all ROM/save/encounter content remain unchanged.
+
+Regression tests now check 25 atlas tiles and their exact game palette values, alpha, byte-identical compressed pixel data, all 20 combinations, and responsive browser rendering. Publication status is tracked separately from the source commit.
+
+## Wiki 1.9.6 illustrated interactions (12 November 2026)
+
+**Model: GPT-6 | Reasoning: preserve the shipped catalogues and reuse native artwork in a touch-friendly nested guide.**
+
+The existing home-page “Interacting with Your Pokemon” shortcut is now a collapsed expandable main section beneath Walkthrough. Poffins, Pokéblocks and Berries are separate expandable buttons. Opening a category immediately displays its entire illustrated catalogue and effects (five, fourteen, and 68 entries); individual entries no longer require a further tap. The dedicated article shares these three buttons. Berry sprites, Poffin art and Pokéblock art are copied from the game source as native Git blobs into the wiki’s own assets. Existing effects and game mechanics are unchanged. No gameplay, maps, encounter data or saves were edited.
+
+Verification: static checks of category counts, content preservation, closed-by-default accordions, image mappings and source-file integrity; verify committed tree and deployment status after the write.
+
+## Wiki 1.9.5 treat and berry catalogues (12 November 2026)
+
+**Model: GPT-6.1 Sol | Reasoning: document the full item lists and effects from the shipped game source.**
+
+Added native expandable entries to the existing interactions guide for five Poffin types, fourteen Pokéblock colors, and 68 berry slots including the legacy e-Reader entry. Berry flavor values come from the berry table. Contest treat effects distinguish dominant flavors from fixed effects. Reader regression checks catalogue placement and counts.
+
+## Wiki 1.9.4 Pokémon interactions (12 November 2026)
+
+**Model: GPT-6.1 Sol | Reasoning: match the existing wiki navigation and document shipped mechanics.**
+
+Added “Interacting with Your Pokemon” immediately below Walkthrough, with Poffins, Pokéblocks, and berries. The guide uses the v0.0.78 game source and is ready for future playing and washing sections. Existing reader and encounter regressions passed.
+
+## v0.0.78 Poffins published and live verified (12 November 2026)
+
+**Model: Codex | Reasoning: preserve approved native visuals and saves, verify candidate and production artifacts, and confirm actual deployed bytes.**
+
+Published the approved Poffin machines, D-pad cooking, first-use Treat Case gift, independent 40-treat display and custom feeding. PR #99 merged as `a717b26ce7ce3096893e834c24d8d8d64e539723`; verified patches committed at `6ac4ff974cbdb3e6cc55429c6fd50359e6167692`. Candidate and production builds/native gameplay, both independent BPS decoders, project/wiki checks, Android/Windows companion builds and gated Pages deployment passed. All 21 critical live files matched reviewed hashes, including both BPS downloads. [Bound release evidence and limits](qa/poffins-v0.0.78.json). [Approved game captures](designs/poffin-kitchen/README.md).
+
+SaveBlock3 preserves its 1032-byte prefix and appends 324 bytes (40 native eight-byte treat records plus signature), total 1356. Sector tests model ARM alignment; native compile assertions lock the widths. Controlled earlier-build battery migration and normal unmodified Release Continue passed. The authentic historical-owner-save matrix remains incomplete. Existing maps, wardrobe and seasonal features were retained. Bag-capacity work remains separate.
+
+Updated older test assumptions for private sprite registrations and append-only headers. The Nightmare victory fixture now uses a fresh legal counter after the escape; real battle/quest rules and the independent blackout test remain unchanged. Do not revisit approved artwork or repeat successful game builds for this documentation-only closeout.
+
+## Separate Treat Case review (12 November 2026)
+
+**Model: Codex | Reasoning: independent treat storage, first-use reward, native feeding visuals and append-only save compatibility.**
+
+Completed the owner’s follow-up on `feature/poffin-kitchen`: first machine interaction grants TREAT CASE (item 876); portable 40-Poffin list with flavor art/stats; Bag and registered SELECT entry; separate plated-Poffin feeding with bites and Pokémon reaction. Preserved approved cooking art and maps. SaveBlock3 appends 324 bytes at offset 1032; old preview Poffins migrate once while ordinary Pokéblocks remain. Native controller checks, Debug/Release builds, sector-tail/codec tests and a real older-build synthetic battery Continue → migrate → save → reset → Continue passed. [Screenshots, animation, hashes and limitations](designs/poffin-kitchen/README.md).
+
+Review only, version remains 0.0.77. Awaiting review of the new visuals; do not publish yet. Release patch/CI gates, integration with any newer master/bag-capacity work and the authentic historical-owner-save matrix are outstanding. No ROMs, ELFs or saves belong in the commit.
+
+## Poffin Kitchen preview (6 November 2026)
+
+**Model: Codex | Reasoning: preserve existing save records and adapt directional stirring to GBA input.**
+
+Working branch based on 0.0.77. Added the Poffin Maker to 46 Center maps plus the Ever Grande League lobby. Map objects are appended, with private graphics ID 0x0E02. One or two berries cook into a flavored Poffin stored and fed through the existing contest-treat system. No new save fields, flags, or persistent variables. Verified native cooking, mixed flavors, feeding, battery round trip, cancellation, and static walkable approaches. See the [game captures, native QA, and limits](designs/poffin-kitchen/README.md). Awaiting visual review before release. Keep separate from the bag capacity work and reconcile newer master before release.
+
 ## Full-capacity battle memory repair under verification (6 November 2026)
 
 **Model: Codex | Reasoning: verify the advertised maximum in battle, where menu heap competes with battle state.**

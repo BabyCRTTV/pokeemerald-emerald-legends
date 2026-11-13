@@ -14,12 +14,19 @@ def main():
  layout=json.loads((a.fixtures/'bag-layout.json').read_text())
  for name in ['male','female','day','night','bag','bag-legacy']:
   scene=out/name;scene.mkdir(exist_ok=True);save=scene/'private.sav';save.write_bytes((a.fixtures/('private-'+name+'.sav')).read_bytes())
-  with (scene/'emulator.log').open('w') as log:result=subprocess.run([str(out/'host'),str(rom),str(save),str(scene),hex(symbols['gMain']),hex(symbols['CB2_Overworld']),str(1 if name=='male' else 2 if name=='female' else 3 if name=='bag' else 4 if name=='bag-legacy' else 0),hex(symbols['sCurrentStartMenuActions']),hex(symbols['sStartMenuCursorPos']),hex(symbols['CB2_TrainerCard']),hex(symbols['gSaveBlock1Ptr']),hex(symbols['gPokemonStoragePtr']),str(layout['inventoryOffset']),hex(symbols['gBagPosition']),hex(symbols['gSpecialVar_ItemId']),str(layout['etherId']),str(layout['cursorOffset']),str(layout['scrollOffset']),hex(symbols['gSaveBlock2Ptr']),str(layout['encryptionKeyOffset']),str(layout['slotOffset'])],env=env,stdout=log,stderr=subprocess.STDOUT,check=False)
+  with (scene/'emulator.log').open('w') as log:result=subprocess.run([str(out/'host'),str(rom),str(save),str(scene),hex(symbols['gMain']),hex(symbols['CB2_Overworld']),str(1 if name=='male' else 2 if name=='female' else 3 if name=='bag' else 4 if name=='bag-legacy' else 0),hex(symbols['sCurrentStartMenuActions']),hex(symbols['sStartMenuCursorPos']),hex(symbols['CB2_TrainerCard']),hex(symbols['gSaveBlock1Ptr']),hex(symbols['gPokemonStoragePtr']),str(layout['inventoryOffset']),hex(symbols['gBagPosition']),hex(symbols['gSpecialVar_ItemId']),str(layout['etherId']),str(layout['cursorOffset']),str(layout['scrollOffset']),hex(symbols['gSaveBlock2Ptr']),str(layout['encryptionKeyOffset']),str(layout['slotOffset']),hex(symbols['gSaveBlock3Ptr']),str(layout['poffinOffset']),str(layout['treatCaseId'])],env=env,stdout=log,stderr=subprocess.STDOUT,check=False)
   if result.returncode:
    for raw in scene.glob('*.rgba'):Image.frombytes('RGBA',(240,160),raw.read_bytes()).convert('RGB').save(raw.with_suffix('.png'))
    raise RuntimeError((scene/'emulator.log').read_text()[-10000:])
   for raw in scene.glob('*.rgba'):Image.frombytes('RGBA',(240,160),raw.read_bytes()).convert('RGB').save(raw.with_suffix('.png'))
+  if name=='bag-legacy':
+   battery=save.read_bytes()
+   offsets=range(0,28*4096,4096)
+   packed=[off for off in offsets if battery[off+4084:off+4086]==b'\x05\x00']
+   assert packed
+   newest=max(packed,key=lambda off:int.from_bytes(battery[off+4092:off+4096],'little'))
+   assert int.from_bytes(battery[newest:newest+4],'little')==0x4c504333
  assert sha(rom)==before
- (out/'verification.json').write_text(json.dumps({'ROM_sha256':before,'ROM_unmodified':True,'bagChecks':'Current600-stack and LPC2 legacy450-stack fixture loaded by normal Release Continue; slot599/149 selected; normal in-game Save then reset/Continue retained inventory', 'input':'Normal Release Continue and controller buttons; no RAM/callback writes','fixtures':'Controlled current Debug saves plus a format-identical LPC2 inventory fixture, not historical owner saves','images':{str(p.relative_to(out)):sha(p) for p in out.rglob('*.png')}},indent=2)+'\n')
+ (out/'verification.json').write_text(json.dumps({'ROM_sha256':before,'ROM_unmodified':True,'bagChecks':'Current600-stack and LPC2 legacy450-stack fixture loaded by normal Release Continue; slot599/149 selected; normal in-game Save then reset/Continue retained inventory and all 40 v0.0.78 Treat Case records; newest save used LPC3', 'input':'Normal Release Continue and controller buttons; no RAM/callback writes','fixtures':'Controlled current Debug saves plus a format-identical LPC2 inventory fixture, not historical owner saves','images':{str(p.relative_to(out)):sha(p) for p in out.rglob('*.png')}},indent=2)+'\n')
  print('Unmodified Release Continue and UI captures completed for both bedrooms and day/night Fallarbor.')
 if __name__=='__main__':main()

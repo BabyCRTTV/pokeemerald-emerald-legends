@@ -1056,6 +1056,7 @@ enum __attribute__((packed)) Item
     ITEM_INVITE_TICKET = 874,
     // Nightmare quest: within the existing110-byte saved item-history bitmap.
     ITEM_LUNAR_WING = 875,
+    ITEM_TREAT_CASE = 876,
 
     ITEMS_COUNT,
     ITEM_FIELD_ARROW = ITEMS_COUNT,

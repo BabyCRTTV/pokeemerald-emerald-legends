@@ -1,0 +1,20 @@
+{
+  "version": "0.0.79",
+  "status": "candidate",
+  "pull_request": 98,
+  "integrated_baseline": "3387da10aa37671ef0580363f40f94c7d0593234",
+  "previous_bag_candidate": {
+    "commit": "c44632c7b2a4a201874ba971981c81432fbed9d3",
+    "project_run": 42320974933,
+    "native_patch_run": 42320974953
+  },
+  "scope": [
+    "1,152 shared stacks across five pockets, with up to 999 items per stack",
+    "Original native and LPC2 readers retained; LPC3 writes",
+    "v0.0.78 Treat Case Key Item and all 40 Poffins across normal Release migration and reload"
+  ],
+  "limits": [
+    "Controlled battery fixtures; authentic historical owner-save matrix remains incomplete.",
+    "No uninterrupted full-story or Pizza Boy device verification."
+  ]
+}

@@ -72,6 +72,7 @@ int main(int argc,char**argv){
  // Fleeing leaves Mira asleep and Darkrai available.
  setup(5,31);challenge();key(128);key(16);key(1);finish(1);status();assert(box(6)==mapIds[5]&&box(15)==4&&!(box(7)&96));capture("15-escape-retry");
  // Defeat releases Mira but deliberately preserves a later capture opportunity.
+ command(4);
  challenge();key(64);key(32);key(1);frames(80);key(1);frames(400);finish(1);status();assert(box(6)==mapIds[1]&&box(15)==1&&(box(7)&32)&&!(box(7)&64));capture("16-defeat-also-wakes-mira");flash();
  navigate(1,9,4);key(32);key(1);untilYes();key(1);frames(400);status();assert(box(6)==mapIds[3]);puts("PASS escape, defeat awakening, retained catch opportunity and post-resolution dream revisit");
  // Dream bed is an explicit early exit: no battle or reward required.
