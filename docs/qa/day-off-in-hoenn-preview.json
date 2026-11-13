@@ -1,0 +1,38 @@
+{
+  "version": "0.0.80",
+  "romSha256": "dcdf5f24efd648b163ef79ab77d22012018d7f674e8290c2036c4fc36dab9a34",
+  "emulator": "mGBA native core 0.10.5",
+  "captureSize": [
+    720,
+    480
+  ],
+  "captureScaling": "3x nearest-neighbor",
+  "fixtures": "Private controlled map, position and party setup, then actual controller input",
+  "checks": [
+    "Route102",
+    "Dewford",
+    "Route113-Torchic",
+    "Route113-Mudkip",
+    "Woods-find",
+    "Woods-miss",
+    "Woods-cancel",
+    "main-menu cancel",
+    "ordinary talk from menu",
+    "ordinary talk away from a play spot"
+  ],
+  "harnessSha256": {
+    "arm.c": "9499e15891dc4cd697ea5e3c1045dfaca46da03dc56cf6a5b2377ddb27904997",
+    "run.py": "b26f606a9c22b8c8b6a0635297bb245d503e19586c96ba7d378c4111c720c898"
+  },
+  "baseCommit": "1a08f8e164b36bddee2b12de1182594fb5734a98",
+  "releaseRomSha256": "8b66ec00beeb16784956948696b7f52061ac7fcc121141b802e16fd3f59f0b21",
+  "captures": {
+    "Day-Off-Dewford-Mudkip.png": "49419bf62f25c0be7bf906cae0b668709b7cbba8f973d3bdff3e6b9bf694862b",
+    "Day-Off-Petalburg-Hide-and-Seek.png": "2974c0045ec60d0491fd4b6ca8f4ec185dc077078d958c9610bbe74dd21b60f4",
+    "Day-Off-Petalburg-Shroomish.png": "a81c9f77d2483b4433dcde1320510bdd3bef0ad461bdf162d545c34ceab4492c",
+    "Day-Off-Route-102-Stone-Skipping.png": "1a4f1302e6a6bd09314b26f6d19576f1330c4d8f400e1bfb1e107d910c57acc3",
+    "Day-Off-Route-113-Torchic.png": "ddb992c30832d7d6f3e842ba60c8b876bc88de796743f23b9ab03ac81dcbab8a",
+    "Day-Off-Route-113-Wash.png": "45545d20e407fbd691994ef707ecc1c0cf56bc67fca4f41f2a968e327c0b1677"
+  },
+  "scope": "Local review build. Focused controller checks used Debug with controlled map and party setup. Release compiled. Full production, BPS and historical-save gates are outstanding."
+}

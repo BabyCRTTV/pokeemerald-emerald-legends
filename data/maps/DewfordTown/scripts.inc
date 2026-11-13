@@ -638,7 +638,9 @@ DewfordTown_Text_TinyIslandCommunity:
 
 DewfordTown_Text_TownSign:
 	.string "DEWFORD TOWN\n"
-	.string "“A tiny island in the blue sea.”$"
+	.string "“A tiny island in the blue sea.”\p"
+	.string "At the water's edge, talk to your\n"
+	.string "POKéMON to skip stones together.$"
 
 DewfordTown_Text_GymSign:
 	.string "DEWFORD TOWN POKéMON GYM\n"

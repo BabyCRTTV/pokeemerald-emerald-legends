@@ -2,6 +2,7 @@
 #include "config/battle.h"
 #include "config/item.h"
 #include "constants/global.h"
+#include "constants/legends_day_off.h"
 #include "constants/legends_field_requests.h"
 #include "constants/apprentice.h"
 #include "constants/apricorn_tree.h"

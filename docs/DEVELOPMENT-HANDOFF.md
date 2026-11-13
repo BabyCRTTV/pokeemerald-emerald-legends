@@ -1,5 +1,13 @@
 # Development handoff
 
+## A Day Off in Hoenn preview (13 November 2026)
+
+**Model: GPT-6 | Reasoning: extend native follower interactions and use each location's existing terrain, effects, and story context.**
+
+Added Play at the Route 102 pond, on Dewford's shore, and in the Petalburg Woods clearing, plus Wash outside the Route 113 Glass Workshop. Players face the walking Pokémon and press A. Water and shy follower reactions differ, Grass followers have a camouflage reveal, and Fire followers get a damp cloth. Local dialogue and existing signs explain where to try the actions. Hide-and-seek presents two guesses and restores the follower on a hit, miss, or cancellation. The activities are repeatable and cosmetic. No serialized structures, persistent IDs, map geometry, assets or quest/encounter progression were edited.
+
+Local Debug and Release built. mGBA controller verification passed ten targeted cases including Talk and Cancel, with genuine in-game captures. The follower host regression and shared-build provenance tests passed. Added the focused mGBA suite to the existing private native workflow. [Build and capture evidence](qa/day-off-in-hoenn-preview.json). This is a v0.0.80-based review branch. Await visual approval and the full release gates before publication.
+
 ## v0.0.80 berry palettes published and live verified (13 November 2026)
 
 **Model: GPT-6 | Reasoning: preserve the approved native artwork, validate the integrated Bag release, and bind live downloads to verified production builds.**

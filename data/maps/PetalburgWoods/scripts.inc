@@ -461,7 +461,9 @@ PetalburgWoods_Text_TrainerTipsExperience:
 	.string "left of the team list.\p"
 	.string "As soon as a battle starts, switch it\n"
 	.string "out. It will earn EXP Points without\l"
-	.string "being exposed to any harm.$"
+	.string "being exposed to any harm.\p"
+	.string "The clearing by this sign is a good\n"
+	.string "spot to play hide-and-seek.$"
 
 PetalburgWoods_Text_TrainerTipsPP:
 	.string "TRAINER TIPS\p"

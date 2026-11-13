@@ -684,3 +684,11 @@ gSpecials::
 	def_special LegendsCookPoffin, waitstate=1
 	def_special LegendsPoffinHasRoom
 	def_special LegendsOpenTreatCase, waitstate=1
+
+	def_special LegendsDayOffGetSpot
+	def_special LegendsDayOffGetReaction
+	def_special LegendsDayOffSkipStone
+	def_special LegendsDayOffPickHidingPlace
+	def_special LegendsDayOffWashEffect
+	def_special LegendsDayOffHeart
+	def_special LegendsDayOffSplashBack

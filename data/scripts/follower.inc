@@ -13,6 +13,9 @@ gText_WantsToFly::
 EventScript_Follower::
 	lock
 	bufferlivemonnickname STR_VAR_1
+	specialvar VAR_0x8004, LegendsDayOffGetSpot
+	goto_if_ne VAR_0x8004, DAY_OFF_NONE, LegendsDayOff_Menu
+EventScript_FollowerChat::
 	playfirstmoncry
 	getfolloweraction
 EventScript_FollowerEnd::
@@ -646,3 +649,5 @@ EventScript_FollowerFaceRight:
 	applymovement OBJ_EVENT_ID_FOLLOWER Common_Movement_FaceRight
 	waitmovement OBJ_EVENT_ID_FOLLOWER
 	goto EventScript_FollowerGenericSkipFace
+
+	.include "data/scripts/legends_day_off.inc"
