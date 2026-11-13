@@ -1,10 +1,12 @@
 # Development handoff
 
-## v0.0.79 shared Bag release candidate (12 November 2026)
+## v0.0.79 shared Bag published and live verified (12 November 2026)
 
-**Model: GPT-6 | Reasoning: integrate the previously verified expansion with the published Poffin layout and verify both formats through Continue.**
+**Model: GPT-6 | Reasoning: verify existing battery migration and bind both public patches to the candidate and production game builds.**
 
-Owner approved finishing and publishing PR #98. The five Bag pockets now draw from 1,152 shared stacks of up to 999 each. The LPC3 writer retains the LPC2 and original native readers. The v0.0.78 SaveBlock3 layout, Treat Case, map and artwork assets, and current wiki navigation are preserved. The migration fixture covers the old five-pocket inventory plus a full Treat Case, then verifies a new LPC3 battery save and normal Release Continue. Updated the Bag reference and release labels while keeping the encounter and artwork source pins. See [release evidence](qa/shared-bag-v0.0.79.json). Candidate and production gates remain required.
+Released PR #98 at `8090a7d3f8a2ec0d1623d24c4b67bec58d5d3039` with 1,152 shared stacks across all five pockets and up to 999 items per stack. The LPC3 writer retains both prior readers. Verified the full Bag in battle, high-index menu selection, old/current flash saves, and normal Release Continue → in-game Save → reset → Continue with a battery from the actual v0.0.78 build. Its inventory, Treat Case item and all 40 Poffins were preserved. The integrated candidate also synchronized the title version and moved private emulator mailboxes above production game RAM. Fixed a battle crash from Electric Terrain temporary allocations by using the existing lossless zero-scratch encoding for all four active terrain backgrounds. Decoded tiles matched the original bytes.
+
+Candidate and production native/project gates passed. Both clean-base decoders matched the native Release and Debug binaries. The verified patches were committed at `ca290b32495595093cfaddb4b50882cf9840dae2`; gated Pages run 43374162739 deployed them, and a fresh live check matched 21 critical files including both BPS downloads. [Release evidence and limits](qa/shared-bag-v0.0.79.json). The authentic historical owner-save matrix remains incomplete.
 
 ## Wiki 1.9.9 centered Pokémon Interactions home shortcut (12 November 2026)
 

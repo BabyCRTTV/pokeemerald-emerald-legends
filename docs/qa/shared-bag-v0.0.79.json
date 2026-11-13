@@ -1,20 +1,314 @@
 {
   "version": "0.0.79",
-  "status": "candidate",
+  "published": true,
   "pull_request": 98,
   "integrated_baseline": "3387da10aa37671ef0580363f40f94c7d0593234",
-  "previous_bag_candidate": {
-    "commit": "c44632c7b2a4a201874ba971981c81432fbed9d3",
-    "project_run": 42320974933,
-    "native_patch_run": 42320974953
+  "candidate_head": "cfa199405b828b2105aaf999e48e9e75cc35d9ec",
+  "candidate_tree": "32a6ebd917f3c52967bfa76f911043c00253263a",
+  "source_commit": "8090a7d3f8a2ec0d1623d24c4b67bec58d5d3039",
+  "patch_commit": "ca290b32495595093cfaddb4b50882cf9840dae2",
+  "runs": {
+    "candidate": {
+      "project": 43370915579,
+      "native_patches": 43370915707,
+      "wiki": 43370915534,
+      "android": 43370915545
+    },
+    "production": {
+      "project": 43372393838,
+      "native_patches": 43372393928,
+      "wiki": 43372393844,
+      "android": 43372393778,
+      "windows": 43372393777
+    },
+    "site": 43374162739
   },
-  "scope": [
-    "1,152 shared stacks across five pockets, with up to 999 items per stack",
-    "Original native and LPC2 readers retained; LPC3 writes",
-    "v0.0.78 Treat Case Key Item and all 40 Poffins across normal Release migration and reload"
-  ],
+  "artifact_sha256": {
+    "candidate-patches": "sha256:bc613b3fa40fde62b18ea5483dfb03ce433d6af04d2f520b8f737b0f61a185e8",
+    "candidate-gameplay": "sha256:02e503e85dd832965cea2798f78e529670db66de23d102c8ec1c99bc7fac8e67",
+    "production-gameplay": "sha256:622c6b6d0f26d31208fd3769478a1f21461e8e800504ac2da8325cf9cf8a90a4",
+    "production-patches": "sha256:879a8666363d3dc36d0575be2c58ccf32ae8764d7b7cf7a649f5e1cc8ab61961",
+    "site-evidence": "sha256:cfe147080ed273f8d8fa3d4ffdb244b1ed81de01c554ccd087e58c2878bcafca"
+  },
+  "shared_build_verification": {
+    "passed": true,
+    "patches_verified": true,
+    "inputs": {
+      "version": "0.0.79",
+      "source_commit": "8090a7d3f8a2ec0d1623d24c4b67bec58d5d3039",
+      "source_tree": "32a6ebd917f3c52967bfa76f911043c00253263a",
+      "source_fingerprint": "8ccf111f8f2fc168c2291eabbc8f4f8946c060fcf69c7f9f016077688c11e919",
+      "nonce": "1a23f75722d348e293a93493c4b3c026",
+      "binaries": {
+        "pokeemerald.gba": "5c872f1e18c5ab4ad1f9276ca0cc28f9d99a1da7f077f1ecdf1d037362cd974c",
+        "pokeemerald.elf": "50be714290aadbe733d1a408a5480b9ba9b82a7cbcf93fa7b3564954c6d99a29",
+        "pokeemerald-release.gba": "6c29a3049194adc79bc3ff5eb4708457d7d1343fbf167e3184453d319b28ec0a",
+        "pokeemerald-release.elf": "9d838b1a3acf993d38f8fca5348a211dd38d40c1706ae53a08bfa5e0239e7d11"
+      }
+    },
+    "native_receipt_sha256": {
+      "legends-mgba-preview/results.json": "a43ac60c51355e0cd5a67de5527a40d02dfb4b29fe4dcb861047e96b1ec8b318",
+      "eon-roamers-qa/verification.json": "ae2ff3cef8d927091aedef41cb2da2728f392ccd229c50c139063ab3fe1beddb",
+      "ember-return-qa/verification.json": "6be748744e5eacd5a6552ab6bd3d47d5bb7e065e81bfaee6edb9c3058e72cbb8",
+      "grotto-review/verification.json": "3ec5cb0ae34c51c6475c6af2548ff8af73784f28672075645e2285272c4da17e",
+      "grotto-encounters/verification.json": "81a126f43e7d7c25231a890e99121a87919a88ffc326f215ea4c8a5df22b04e0",
+      "wyrmtide-native/verification.json": "0bb8e8b8c4df4d317433a1aff3cc3d5942f25229c028def9d5de775849c2ef7a",
+      "nightmare-native/verification.json": "525e9cc0d02ed84c1f58826dc49cdbb8cbd962fb6d059ce862ce9fe2a5b87021",
+      "living-hoenn-qa/verification.json": "1b48bb82d4d0c1c71eccafd96d929f726d1cb84e346432ef8f764219b27a5f32",
+      "seasonal-encounters-qa/verification.json": "8136d00a5553405ca06810c716231a798ba29cd1d8cabdde2eabced9abbfa341",
+      "visual-repairs-qa/verification.json": "413b79b78312c68881bb3f4dac818ecadc428a3249c173d4c2ea7884d4ec7065",
+      "eon-roamers-release-qa/verification.json": "a70a03bafca5e075b1794739051d1886eb39af663adc29ec0c8311fb2462b8ae",
+      "ember-return-release-qa/verification.json": "f861fb56bf16b06898ecbd261cb53636be3ce9253c996145144a81132e43da02",
+      "grotto-encounters-release/verification.json": "c1a446ead76a6fa84bc4263c1f4de81d1fb408de4e2604cc0e0648b88ebb2f6b",
+      "bedroom-release-qa/verification.json": "e106dc64f960637f7f9cda598f53b3cddb24273fc212a1e32aa693c6de85a119"
+    },
+    "payload_files": {
+      "Pokemon-Emerald-Legends-v0.0.79.bps": "bf121e6cc5f4adc40b6171788fd2446cc02d3ebb29b773a1b12eb84b0c365da0",
+      "Pokemon-Emerald-Legends-v0.0.79-debug.bps": "e49130282c2ae8dd51d97d2f7f857d8a86630be032f6f309f89a1a5e50969a38",
+      "SHA256SUMS.txt": "217efab983d3c8e6ed99be8f5a72d18157ccfd3c7d170aeea868421d3b004d38",
+      "browser-decoder-verification.json": "429dec06368e462c3cdb05d4ba0a95a0627df60526149f9572ca7fe99e814eed"
+    },
+    "patch_worker": {
+      "passed": true,
+      "nonce": "1a23f75722d348e293a93493c4b3c026",
+      "seconds": 175.644
+    },
+    "decoder": {
+      "passed": true,
+      "source_SHA1": "f3ae088181bf583e55daf962a92bb46f4f1d07b7",
+      "decoder": "Actual committed docs/patcher.js applyBps executed in Node VM; independent of Floating IPS",
+      "decoder_sha256": "b53085c9e463caedad971fa8616c1bf828886d6b3fb73bd7c74a3fb3e6fafbaf",
+      "verifier_sha256": "bbb6057cadba5a72d14e73c1f75cc57563c121eebd68e0ce97869fd18a110d8b",
+      "results": {
+        "Pokemon-Emerald-Legends-v0.0.79.bps": {
+          "patch_sha256": "bf121e6cc5f4adc40b6171788fd2446cc02d3ebb29b773a1b12eb84b0c365da0",
+          "target_sha256": "6c29a3049194adc79bc3ff5eb4708457d7d1343fbf167e3184453d319b28ec0a",
+          "target_bytes": 33554432,
+          "exact_native_ROM_match": true
+        },
+        "Pokemon-Emerald-Legends-v0.0.79-debug.bps": {
+          "patch_sha256": "e49130282c2ae8dd51d97d2f7f857d8a86630be032f6f309f89a1a5e50969a38",
+          "target_sha256": "5c872f1e18c5ab4ad1f9276ca0cc28f9d99a1da7f077f1ecdf1d037362cd974c",
+          "target_bytes": 33554432,
+          "exact_native_ROM_match": true
+        }
+      },
+      "limits": "Byte-decoder test; physical browser file-picker/download and Pizza Boy execution are separate checks."
+    }
+  },
+  "v078_battery_native_migration": {
+    "passed": true,
+    "previous_rom_sha256": "262d2c54550097df65acbc3a0b13007cfb10d5a219ffd1fe0b4fdddfdc7a315b",
+    "previous_battery_sha256": "07cb82850dfccdd2ee18d1f69c7fe67b70d89421be39a389585f67d4d30eea3a",
+    "target_release_sha256": "6c29a3049194adc79bc3ff5eb4708457d7d1343fbf167e3184453d319b28ec0a",
+    "input": "Controlled battery actually generated by the v0.0.78 native Debug build",
+    "checks": [
+      "Normal Release Continue from LPC2",
+      "all five pocket counts and ordered inventory",
+      "Treat Case key item and 40 exact Poffin records",
+      "controller Save wrote LPC3",
+      "reset and normal Continue retained the migrated inventory and treats"
+    ],
+    "pocket_counts": [
+      0,
+      0,
+      0,
+      2,
+      2
+    ],
+    "limits": "Controlled fixture, not an authentic historical owner save."
+  },
+  "live_verification": {
+    "version": "0.0.79",
+    "verified_at_UTC": "2026-11-13T05:47:55.964431+00:00",
+    "passed": true,
+    "files": [
+      {
+        "path": "index.html",
+        "passed": true,
+        "HTTP": 200,
+        "bytes": 3742,
+        "sha256": "91e0154e5ed45a7c064e392cdbe1fbeecb43446640030831c033c499dd1a95dc",
+        "Git_blob_sha1": "61404ecc97ad9abca32c3bf4c67bf90f0f5356cc"
+      },
+      {
+        "path": "patcher.html",
+        "passed": true,
+        "HTTP": 200,
+        "bytes": 2675,
+        "sha256": "8149cd99b27166a3b14651bd4f2cad88811e13ec629b0c9cbe737f99133bb8e1",
+        "Git_blob_sha1": "81a0c6fbb93aa185df9dc944c245160313279726"
+      },
+      {
+        "path": "patcher.js",
+        "passed": true,
+        "HTTP": 200,
+        "bytes": 9353,
+        "sha256": "b53085c9e463caedad971fa8616c1bf828886d6b3fb73bd7c74a3fb3e6fafbaf",
+        "Git_blob_sha1": "09b090d728aad5a95a85bd86f1600c29af9a0373"
+      },
+      {
+        "path": "changelog.html",
+        "passed": true,
+        "HTTP": 200,
+        "bytes": 132622,
+        "sha256": "f3ec1444fb0be486c7fe8aede20acbe8f9e6f82b46e6943937f844bd750dc1e5",
+        "Git_blob_sha1": "0a9f222acf83382d2e61715e651dc75b3ee4195b"
+      },
+      {
+        "path": "wiki/index.html",
+        "passed": true,
+        "HTTP": 200,
+        "bytes": 17201,
+        "sha256": "8b3bd7d3ed852dbb4aaff3604b9e6ee06c257f8123591d8c47bf924547b685ab",
+        "Git_blob_sha1": "1e624c4836f0dfee591f1cc59ca69d7bfde8f06b"
+      },
+      {
+        "path": "wiki/dex.html",
+        "passed": true,
+        "HTTP": 200,
+        "bytes": 10572,
+        "sha256": "6873a238568b920927720dff099c2742f7b425c55493a570c244257814b1cfd9",
+        "Git_blob_sha1": "5613fddb0ca46f306d26dbc15fe932fa3864243d"
+      },
+      {
+        "path": "wiki/dex-data.json",
+        "passed": true,
+        "HTTP": 200,
+        "bytes": 849391,
+        "sha256": "f85a6668a7d643b210d016d4703d069738f37327942c2e7785011c4596e95c46",
+        "Git_blob_sha1": "dc2e15e3c23e9d9e5f82ae0d367c8adc7f6a77a4"
+      },
+      {
+        "path": "wiki/dex-profiles.js",
+        "passed": true,
+        "HTTP": 200,
+        "bytes": 178691,
+        "sha256": "0ccfee5466e5ead2d400bbdebb70ff830d58a6864d0a85b3f7bdef069e7c3557",
+        "Git_blob_sha1": "b7c3db3038bf3216a0e2a0da4c08c2a0d276ebdb"
+      },
+      {
+        "path": "wiki/dex-sprite-atlas.js",
+        "passed": true,
+        "HTTP": 200,
+        "bytes": 18786,
+        "sha256": "8b3a1d1224df211929a8079fdd621f16904600305601433afcc117c8f800b04d",
+        "Git_blob_sha1": "de0bf49a8b01f87b9fea58adaa888a3d02e7ec46"
+      },
+      {
+        "path": "wiki/dex-sprite-atlas.webp",
+        "passed": true,
+        "HTTP": 200,
+        "bytes": 153584,
+        "sha256": "55bdf244830f30f9aeb5eeddb8f628b6885eccb2e95b171dac14df9b529190df",
+        "Git_blob_sha1": "dd91aded78d44fc6aea679a678a0274edb93add1"
+      },
+      {
+        "path": "wiki/dex-portrait-sources.json",
+        "passed": true,
+        "HTTP": 200,
+        "bytes": 342,
+        "sha256": "644decdf201a0623707327e6d524178ab8e0f7e376f15bcf1f2ad4abded02b93",
+        "Git_blob_sha1": "758c4db1f73c6baaa968366d6d70c1aa628eff23"
+      },
+      {
+        "path": "wiki/map-hoenn.png",
+        "passed": true,
+        "HTTP": 200,
+        "bytes": 6757,
+        "sha256": "6abac3457dd2c588173b001c7f5ad37b58b4429ff50d3d54373f2fe868e5f625",
+        "Git_blob_sha1": "10f2d26f42c381c2af7f51a7c835b4b3b190107f"
+      },
+      {
+        "path": "wiki/map-kanto.png",
+        "passed": true,
+        "HTTP": 200,
+        "bytes": 3728,
+        "sha256": "bc89ff01cbc5dca3fe849d2c0d872c1e98b57a450663d72a7a210d3645b495f0",
+        "Git_blob_sha1": "241cf5864b38426d1cc75ebfa70b865afdcbcac3"
+      },
+      {
+        "path": "wiki/walkthrough-maps.json",
+        "passed": true,
+        "HTTP": 200,
+        "bytes": 119656,
+        "sha256": "bb6a344d516f911772685dbfaf2d19b439829aa8e387efc470e830e3879d7af1",
+        "Git_blob_sha1": "f0e8eee57a8b30cdcf6e5b1a0f365f007a3e0182"
+      },
+      {
+        "path": "wiki/android-version.json",
+        "passed": true,
+        "HTTP": 200,
+        "bytes": 399,
+        "sha256": "e34e5b41b07dc69569ca2eb266093ce5e634615cba426422edbcfc8bcf8f35d5",
+        "Git_blob_sha1": "eef161550efb41e023e6e11884b964dc01713bc2"
+      },
+      {
+        "path": "wiki/windows-version.json",
+        "passed": true,
+        "HTTP": 200,
+        "bytes": 275,
+        "sha256": "2c723b5f180ce035bfd2e0b827f4c8d1c6006c82fb1119975fc89adcce3fa41f",
+        "Git_blob_sha1": "2a33010dd651661a279f0e71c51bdbe111991f97"
+      },
+      {
+        "path": "features/eon-roamers.md",
+        "passed": true,
+        "HTTP": 200,
+        "bytes": 2244,
+        "sha256": "5839b026abdd24d2ea62ef1359559d7ddf0d402efae50726473a2b79c56e1aad",
+        "Git_blob_sha1": "1f1bdffaf6978eba649ba9d0c521cc0bc937171c"
+      },
+      {
+        "path": "downloads/SHA256SUMS.txt",
+        "passed": true,
+        "HTTP": 200,
+        "bytes": 412,
+        "sha256": "217efab983d3c8e6ed99be8f5a72d18157ccfd3c7d170aeea868421d3b004d38",
+        "Git_blob_sha1": "28ba6496c341e142211723a122ccacb5379e9f8d"
+      },
+      {
+        "path": "downloads/Pokemon-Emerald-Legends-v0.0.79.bps",
+        "passed": true,
+        "HTTP": 200,
+        "bytes": 17509732,
+        "sha256": "bf121e6cc5f4adc40b6171788fd2446cc02d3ebb29b773a1b12eb84b0c365da0",
+        "Git_blob_sha1": "595f92631a9fc8cd64ceb9e4777d288a3d31d528",
+        "source_CRC32": "1f1c08fb",
+        "target_CRC32": "e4e3f847",
+        "patch_CRC_passed": true
+      },
+      {
+        "path": "downloads/Pokemon-Emerald-Legends-v0.0.79-debug.bps",
+        "passed": true,
+        "HTTP": 200,
+        "bytes": 17339097,
+        "sha256": "e49130282c2ae8dd51d97d2f7f857d8a86630be032f6f309f89a1a5e50969a38",
+        "Git_blob_sha1": "8023faa01d2412f54df9fc473d847065e4e982bb",
+        "source_CRC32": "1f1c08fb",
+        "target_CRC32": "a6a94e45",
+        "patch_CRC_passed": true
+      },
+      {
+        "path": "release-publication.json",
+        "passed": true,
+        "HTTP": 200,
+        "bytes": 247925,
+        "sha256": "bc695fd2735b1b52e3d63f0491cac64a02136c338aef3f6213631fd524713dc6",
+        "Git_blob_sha1": "7fc2fa2b9033837de259d72c283e434444525c34"
+      }
+    ],
+    "scope": "Fresh live HTTP bytes, reviewed SHA256/Git blobs and BPS footer CRCs only; not a gameplay, build or clean-base reconstruction test.",
+    "expected_receipt_sha256": "ba1322505fa8ba7a91adde5f85007844bea061d4ce9bc5f39313249512deb6b4"
+  },
+  "terrain_failure": {
+    "previous_head": "b4c386f145bba611aece09e17e7d4c5c3eff48cb",
+    "native_run": 43369802311,
+    "artifact_id": 14012152927,
+    "cause": "Electric Terrain 10904-byte scratch allocation with only 5884 bytes left on battle heap"
+  },
   "limits": [
-    "Controlled battery fixtures; authentic historical owner-save matrix remains incomplete.",
-    "No uninterrupted full-story or Pizza Boy device verification."
+    "Native migration used controlled fixtures, including a battery generated by a v0.0.78 build. The authentic historical owner-save matrix remains incomplete.",
+    "No uninterrupted full-story or Pizza Boy device claim."
   ]
 }
