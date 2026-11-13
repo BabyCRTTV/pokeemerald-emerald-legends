@@ -52,7 +52,7 @@ core.wr.restype = None
 assert core.init(bytes(private_path))
 private_path.unlink()
 main = sy["gMain"]
-mailbox = 0x0203ffc0
+mailbox = 0x0203fd00
 
 
 def frames(count, keys=0):

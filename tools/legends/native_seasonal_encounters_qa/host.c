@@ -8,9 +8,9 @@
 #include <stdlib.h>
 static void quiet(struct mLogger *l,int c,enum mLogLevel v,const char *f,va_list a){}
 static struct mLogger logger={.log=quiet};static struct mCore *c;static color_t *video;static unsigned mainAddr,qa,overworld,scene;static const char *out;
-static unsigned box(int n){return c->busRead32(c,0x0203fc00+n*4);}
+static unsigned box(int n){return c->busRead32(c,0x0203fd00+n*4);}
 static void frames(int n){while(n--)c->runFrame(c);}
-static void command(int n,int count){unsigned previous=c->busRead32(c,mainAddr+4);c->busWrite32(c,0x0203fc00,n);c->busWrite32(c,0x0203fc04,scene);c->busWrite32(c,0x0203fc78,0);c->busWrite32(c,0x0203fc7c,previous);c->busWrite32(c,mainAddr+4,qa);frames(count);for(int i=0;i<20000&&!box(30);i++)frames(1);assert(box(30));}
+static void command(int n,int count){unsigned previous=c->busRead32(c,mainAddr+4);c->busWrite32(c,0x0203fd00,n);c->busWrite32(c,0x0203fd04,scene);c->busWrite32(c,0x0203fd78,0);c->busWrite32(c,0x0203fd7c,previous);c->busWrite32(c,mainAddr+4,qa);frames(count);for(int i=0;i<20000&&!box(30);i++)frames(1);assert(box(30));}
 static void query(void){command(2,2);}
 static void key(unsigned k){c->setKeys(c,k);frames(3);c->setKeys(c,0);frames(18);}
 static void cap(const char *suffix){char p[4096];snprintf(p,sizeof(p),"%s/scene-%02u-%s.rgba",out,scene,suffix);FILE *f=fopen(p,"wb");assert(f&&fwrite(video,4,240*160,f)==240*160);fclose(f);}
@@ -19,7 +19,7 @@ int main(int argc,char **argv){
  assert(argc==7||argc==9);setbuf(stdout,NULL);out=argv[2];mainAddr=strtoul(argv[3],0,0);qa=strtoul(argv[4],0,0)|1;overworld=strtoul(argv[5],0,0)|1;unsigned count=strtoul(argv[6],0,0);unsigned first=argc==9?strtoul(argv[7],0,0):0,last=argc==9?strtoul(argv[8],0,0):count;assert(first<last&&last<=count);mLogSetDefaultLogger(&logger);
  c=mCoreFind(argv[1]);assert(c&&c->init(c));mCoreInitConfig(c,NULL);mCoreConfigSetDefaultIntValue(&c->config,"skipBios",1);c->loadConfig(c,&c->config);video=calloc(240*160,sizeof(color_t));c->setVideoBuffer(c,video,240);struct VFile *f=VFileOpen(argv[1],O_RDONLY);assert(f&&c->loadROM(c,f));
  for(scene=first;scene<last;scene++){
-  c->reset(c);frames(650);c->busWrite32(c,mainAddr,0);c->busWrite32(c,0x0203fc74,0);command(0,400);
+  c->reset(c);frames(650);c->busWrite32(c,mainAddr,0);c->busWrite32(c,0x0203fd74,0);command(0,400);
   for(int i=0;i<2000&&c->busRead32(c,mainAddr+4)!=overworld;i++)frames(1);assert(c->busRead32(c,mainAddr+4)==overworld);frames(200);
   command(1,1);frames(240);if(box(2)>>8)key(64);query();for(int i=0;i<400&&(!box(3)||box(4));i++){frames(1);query();}assert(box(3)&&!box(4));verify();cap("gui");
   unsigned icons=box(24),scaled=box(25),width=box(26),height=box(27);assert(icons>=box(5));

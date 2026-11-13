@@ -40,7 +40,7 @@ static void room(void)
 }
 void qa(void)
 {
-    volatile u32 *box = (u32 *)0x0203fc00;
+    volatile u32 *box = (u32 *)0x0203fd00;
     switch (box[0])
     {
     case 0: case 1:
