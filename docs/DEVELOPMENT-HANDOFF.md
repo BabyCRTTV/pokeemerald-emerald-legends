@@ -1,5 +1,13 @@
 # Development handoff
 
+## Wiki 1.9.6 illustrated interactions (12 November 2026)
+
+**Model: GPT-6 | Reasoning: preserve the shipped catalogues and reuse native artwork in a touch-friendly nested guide.**
+
+The existing home-page “Interacting with Your Pokemon” shortcut is now a collapsed expandable main section beneath Walkthrough. Poffins, Pokéblocks and Berries are separate expandable buttons. Opening a category immediately displays its entire illustrated catalogue and effects (five, fourteen, and 68 entries); individual entries no longer require a further tap. The dedicated article shares these three buttons. Berry sprites, Poffin art and Pokéblock art are copied from the game source as native Git blobs into the wiki’s own assets. Existing effects and game mechanics are unchanged. No gameplay, maps, encounter data or saves were edited.
+
+Verification: static checks of category counts, content preservation, closed-by-default accordions, image mappings and source-file integrity; verify committed tree and deployment status after the write.
+
 ## Wiki 1.9.5 treat and berry catalogues (12 November 2026)
 
 **Model: GPT-6.1 Sol | Reasoning: document the full item lists and effects from the shipped game source.**

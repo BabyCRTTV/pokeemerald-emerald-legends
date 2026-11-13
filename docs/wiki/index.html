@@ -33,6 +33,37 @@ footer{max-width:1380px;margin:auto;padding:0 22px 32px;font-size:12px;color:var
 .interaction-catalogue details{border:1px solid #dfcdf3;border-radius:10px;background:#faf6ff}
 .interaction-catalogue summary{padding:10px 12px;cursor:pointer;font-weight:700;color:#543579}
 .interaction-catalogue details p{margin:0;padding:0 12px 12px}
+
+/* Illustrated interactions: the main home section and its three buttons start collapsed. */
+.interaction-home,.interaction-topic{border:1px solid #d5c4e9;border-radius:13px;background:#fff;overflow:hidden;min-width:0}
+.interaction-home{margin:14px 0 3px}
+.interaction-home>summary,.interaction-topic>summary{display:flex;align-items:center;gap:10px;cursor:pointer;list-style:none;min-height:49px;padding:11px 13px;color:#543579;background:#f3ecfc}
+.interaction-home>summary::-webkit-details-marker,.interaction-topic>summary::-webkit-details-marker{display:none}
+.interaction-home>summary strong,.interaction-topic>summary strong{flex:1}
+.interaction-home[open]>summary,.interaction-topic[open]>summary{border-bottom:1px solid #d5c4e9;background:#eae0f9}
+.interaction-arrow{font-size:22px;line-height:1;transition:transform .2s}
+details[open]>summary>.interaction-arrow{transform:rotate(180deg)}
+.interaction-home-body,.interaction-topic-body{padding:13px}
+.interaction-home-body>p{margin:0 0 13px;color:#615371;font-size:14px}
+.interaction-groups{display:grid;gap:10px;min-width:0}
+.interaction-topic>summary img{width:32px;height:32px;object-fit:contain;image-rendering:pixelated}
+.interaction-topic>summary small{font-weight:750;font-size:12px;color:#79688e;white-space:nowrap}
+.interaction-description{font-size:14px;line-height:1.6;margin-bottom:13px}
+.interaction-description p{margin:0 0 10px}
+.interaction-items{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));gap:9px}
+.interaction-item{display:flex;align-items:flex-start;gap:10px;padding:10px;border:1px solid #e6dcee;border-radius:11px;background:#fff;min-width:0}
+.interaction-item>div{min-width:0}
+.interaction-item strong{display:block;color:#4f3767;font-size:14px;line-height:1.4}
+.interaction-item p,.welcome .interaction-item p{color:#625872;font-size:12px;line-height:1.5;margin:4px 0 0;max-width:none;overflow-wrap:anywhere}
+.interaction-pic{display:grid;place-items:center;position:relative;flex:0 0 47px;width:47px;height:47px;background:#f7f2fc;border:1px solid #e9dff3;border-radius:10px;overflow:hidden}
+.interaction-pic img{width:40px;height:40px;object-fit:contain;image-rendering:pixelated}
+.interaction-block:before{content:"";width:39px;height:39px;position:absolute;background:var(--block-color);mask:url("art/interactions/pokeblock.png") center/contain no-repeat;-webkit-mask:url("art/interactions/pokeblock.png") center/contain no-repeat}
+.interaction-block img{position:relative;mix-blend-mode:multiply;opacity:.35}
+.poffin-spicy img{filter:hue-rotate(-24deg) saturate(1.3)}.poffin-dry img{filter:hue-rotate(175deg) saturate(1.3)}
+.poffin-sweet img{filter:hue-rotate(295deg) saturate(1.3)}.poffin-bitter img{filter:hue-rotate(85deg) saturate(1.3)}.poffin-sour img{filter:hue-rotate(35deg) saturate(1.3)}
+.interaction-article-link{display:inline-block;margin-top:13px;font-weight:800;font-size:13px;color:#69479a}
+.interaction-home summary:focus-visible,.interaction-topic summary:focus-visible{outline:3px solid #9b80d5;outline-offset:-3px}
+@media(max-width:650px){.interaction-home-body,.interaction-topic-body{padding:10px}.interaction-items{grid-template-columns:1fr}}
 </style><link rel="stylesheet" href="fold-layout.css?v=20261016-1"></head><body>
 <header class="top"><div class="top-inner">
 <a class="brand" href="./" aria-label="Emerald Legends Wiki home"><span class="mark" aria-hidden="true">◉</span><span class="wiki-brand-full">EMERALD: LEGENDS <span style="color:#9d84c3">/ WIKI</span></span><span class="wiki-brand-compact">LEGENDS WIKI</span></a>
@@ -50,5 +81,5 @@ footer{max-width:1380px;margin:auto;padding:0 22px 32px;font-size:12px;color:var
 <script src="wiki-updates.js" defer></script>
 <script src="dex-sprite-atlas.js?v=1.8.0-68073255" defer></script>
 <script src="walkthrough-maps.js?v=1.8.0-68073255" defer></script>
-<script src="wiki.js?v=20261112-interaction-catalogues" defer></script>
+<script src="wiki.js?v=20261112-illustrated-interactions" defer></script>
 </body></html>

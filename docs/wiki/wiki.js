@@ -135,6 +135,39 @@
    }
    flushP();flushL();flushT();flushCatalogue();return {html:out.join('\n'),heads};
  }
+
+ const interactionTopics=[{"key":"poffins","title":"Poffins","icon":"poffin.png"},{"key":"pokeblocks","title":"Pokéblocks","icon":"pokeblock-case.png"},{"key":"berries","title":"Berries","icon":"berries/oran_berry.png"}];
+ const pokeblockColors={"red":"#e6505c","blue":"#4886dc","pink":"#e9a0c6","green":"#5ab778","yellow":"#edc949","purple":"#9770cc","indigo":"#6e70b3","brown":"#ae8254","liteblue":"#83cfe3","olive":"#a0aa57","gray":"#9797a0","black":"#555361","white":"#f1eef9","gold":"#d8a83f"};
+ function interactionPicture(group,name){
+   if(group==="berries"){
+     const berry=name.split(" Berry")[0].toLowerCase().replace(/[^a-z]/g,"");
+     return '<span class="interaction-pic"><img src="art/interactions/berries/'+berry+'_berry.png" width="40" height="40" loading="lazy" decoding="async" alt=""></span>';
+   }
+   if(group==="poffins"){
+     const flavor=name.split(" ")[0].toLowerCase();
+     return '<span class="interaction-pic poffin-'+flavor+'"><img src="art/interactions/poffin.png" width="40" height="40" loading="lazy" decoding="async" alt=""></span>';
+   }
+   const color=pokeblockColors[name.replace(/ Pokéblock$/,"").toLowerCase().replace(/[^a-z]/g,"")]||"#9677aa";
+   return '<span class="interaction-pic interaction-block" style="--block-color:'+color+'"><img src="art/interactions/pokeblock.png" width="40" height="40" loading="lazy" decoding="async" alt=""></span>';
+ }
+ function interactionGroups(article){
+   if(!article?.catalogues)return "";
+   return '<div class="interaction-groups">'+interactionTopics.map(topic=>{
+     const entries=article.catalogues[topic.key]||[];
+     const marker="## "+topic.title+"\\n";
+     const start=article.content.indexOf(marker);
+     const text=start<0?"":article.content.slice(start+marker.length);
+     const end=text.indexOf("\\n## ");
+     const description=start<0?"":render((end<0?text:text.slice(0,end)).trim()).html;
+     return '<details class="interaction-topic"><summary id="interaction-'+topic.key+'"><img src="art/interactions/'+topic.icon+'" width="32" height="32" loading="lazy" alt=""><strong>'+escape(topic.title)+'</strong><small>'+entries.length+' items</small><span class="interaction-arrow" aria-hidden="true">⌄</span></summary><div class="interaction-topic-body"><div class="interaction-description">'+description+'</div><div class="interaction-items">'+entries.map(item=>'<div class="interaction-item">'+interactionPicture(topic.key,item.name)+'<div><strong>'+escape(item.name)+'</strong><p>'+escape(item.effect)+'</p></div></div>').join("")+'</div></div></details>';
+   }).join("")+'</div>';
+ }
+ function interactionHome(){
+   const article=byId.get("interacting-with-your-pokemon");
+   if(!article)return "";
+   return '<details class="interaction-home"><summary><strong>Interacting with Your Pokemon</strong><span class="interaction-arrow" aria-hidden="true">⌄</span></summary><div class="interaction-home-body"><p>'+escape(article.summary)+'</p>'+interactionGroups(article)+'<a class="interaction-article-link" href="?page=interacting-with-your-pokemon" data-page="interacting-with-your-pokemon">Open full guide →</a></div></details>';
+ }
+
  function side(active){
    const current=byId.get(active)?.category||(categories.includes(active)?active:'');
    nav.innerHTML='<a href="./" data-home>Wiki home</a><div class="sidetitle">Topics</div>'+categories.map(cat=>'<a class="'+(cat===current?'current':'')+'" href="?category='+encodeURIComponent(cat)+'" data-category="'+escape(cat)+'">'+escape(cat)+'</a>').join('')+'<a href="?category=all" data-category="all">All articles</a>';
@@ -142,7 +175,7 @@
  }
  function navigate(id,push=true,section=""){
    if(!byId.has(id)){home(push);return;}
-   const p=byId.get(id),r=render(p.content,p.catalogues);
+   const p=byId.get(id),r=id==='interacting-with-your-pokemon'?{html:interactionGroups(p),heads:interactionTopics.map(t=>({id:'interaction-'+t.key,label:t.title}))}:render(p.content,p.catalogues);
    const walkthrough=id==='walkthrough'||id.startsWith('walkthrough-')||Number.isInteger(p.chapter);readingWalkthrough(walkthrough);
    setLocation({page:id},push,section);
    side(id);
@@ -157,7 +190,7 @@
  function home(push=true){
    readingWalkthrough(false);setLocation({},push);side('');
    outline.innerHTML='<strong>Wiki guide</strong><p>Choose an article or search for a feature. Everything is open to read.</p>';
-   root.innerHTML='<section class="welcome"><h1 class="wiki-game-logo"><img src="legends-logo.svg" width="166" height="93" alt="Pokémon Emerald: Legends"></h1><p>Choose a topic below, or jump straight to Pokémon and wild encounters.</p><div class="dex-shortcuts" aria-label="Wiki shortcuts"><a href="dex.html?view=routes">⌁ Routes <small>Wild encounter guide</small></a><a href="dex.html?view=species">◈ Pokédex <small>Browse Pokémon</small></a><a href="?page=walkthrough" data-page="walkthrough" class="walkthrough-shortcut">Walkthrough <span aria-hidden="true">→</span></a><a href="?page=interacting-with-your-pokemon" data-page="interacting-with-your-pokemon" class="pokemon-interactions-shortcut">Interacting with Your Pokemon <span aria-hidden="true">→</span></a></div><label class="searchrow"><span aria-hidden="true">⌕</span><input id="search" type="search" placeholder="Search articles, features, and places…" aria-label="Search wiki" autocomplete="off"><span class="small">/</span></label><p class="results-note" id="resultsnote">Browse '+pages.length+' articles across seven sections.</p></section><div id="cards"></div>';
+   root.innerHTML='<section class="welcome"><h1 class="wiki-game-logo"><img src="legends-logo.svg" width="166" height="93" alt="Pokémon Emerald: Legends"></h1><p>Choose a topic below, or jump straight to Pokémon and wild encounters.</p><div class="dex-shortcuts" aria-label="Wiki shortcuts"><a href="dex.html?view=routes">⌁ Routes <small>Wild encounter guide</small></a><a href="dex.html?view=species">◈ Pokédex <small>Browse Pokémon</small></a><a href="?page=walkthrough" data-page="walkthrough" class="walkthrough-shortcut">Walkthrough <span aria-hidden="true">→</span></a></div>'+interactionHome()+'<label class="searchrow"><span aria-hidden="true">⌕</span><input id="search" type="search" placeholder="Search articles, features, and places…" aria-label="Search wiki" autocomplete="off"><span class="small">/</span></label><p class="results-note" id="resultsnote">Browse '+pages.length+' articles across seven sections.</p></section><div id="cards"></div>';
    const input=document.getElementById('search');input.addEventListener('input',()=>cards(input.value));cards('');document.title='Emerald: Legends Wiki';menuClose();focusContent();
  }
  function cards(q){
