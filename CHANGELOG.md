@@ -4,6 +4,11 @@ All notable Pokémon Emerald: Legends project changes are documented here.
 
 For build-specific player views, see [CHANGELOG-RELEASE.md](CHANGELOG-RELEASE.md) and [CHANGELOG-DEBUG.md](CHANGELOG-DEBUG.md). The canonical history below records the project as a whole.
 
+## [0.0.80] - 2026-11-13
+
+- Fixed discolored berry plants by restoring their original color palettes across all growth stages and seasons.
+- Preserved native berry artwork, growth and harvest behavior, seasonal scenery, and existing saves.
+
 ## [0.0.79] - 2026-11-12
 
 - Expanded the Bag to 1,152 stacks shared across Items (including healing), Key Items, Poké Balls, TMs/HMs, and Berries, with up to 999 per stack.

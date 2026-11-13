@@ -3170,7 +3170,14 @@ static void SetBerryTreeGraphicsById(struct ObjectEvent *objectEvent, u8 berryId
     const u16 graphicsId = gBerryTreeObjectEventGraphicsIdTable[berryStage];
     const struct ObjectEventGraphicsInfo *graphicsInfo = GetObjectEventGraphicsInfo(graphicsId);
     struct Sprite *sprite = &gSprites[objectEvent->spriteId];
-    UpdateSpritePalette(&sObjectEventSpritePalettes[gBerries[berryId].berryTreePaletteSlotTable[berryStage] - 2], sprite);
+    // Berry tables name the original NPC palette slots (2-5), not indices
+    // into the palette registry. Private player palettes may precede them.
+    static const u16 berryPaletteTags[] = {
+        OBJ_EVENT_PAL_TAG_NPC_1, OBJ_EVENT_PAL_TAG_NPC_2,
+        OBJ_EVENT_PAL_TAG_NPC_3, OBJ_EVENT_PAL_TAG_NPC_4,
+    };
+    u16 paletteTag = berryPaletteTags[gBerries[berryId].berryTreePaletteSlotTable[berryStage] - 2];
+    UpdateSpritePalette(&sObjectEventSpritePalettes[FindObjectEventPaletteIndexByTag(paletteTag)], sprite);
     sprite->oam.shape = graphicsInfo->oam->shape;
     sprite->oam.size = graphicsInfo->oam->size;
     sprite->images = gBerries[berryId].berryTreePicTable;

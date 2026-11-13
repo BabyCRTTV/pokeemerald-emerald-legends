@@ -1,5 +1,11 @@
 # Development handoff
 
+## v0.0.80 approved berry palette repair (13 November 2026)
+
+**Model: GPT-6 | Reasoning: integrate the approved visual fix with the shipped Bag expansion and verify the combined release.**
+
+Owner approved publication of the native berry-plant preview. Integrated the tag-based NPC palette lookup onto v0.0.79 without altering Bag storage, saves, native sprite pixels or seasonal scenery. Added all seven growth stages across four seasons to the shared native CI run; the controlled fixture uses the reserved diagnostic mailbox adopted by the Bag release. Prior approved captures and 28 native checks are retained in [the preview receipt](designs/berry-palette-repair/README.md). Synchronized v0.0.80 titles, patcher, site, Dex version and three changelogs. Candidate/production gates, patch reconstruction and live publication are pending; do not treat this entry as release completion.
+
 ## v0.0.79 shared Bag published and live verified (12 November 2026)
 
 **Model: GPT-6 | Reasoning: verify existing battery migration and bind both public patches to the candidate and production game builds.**
