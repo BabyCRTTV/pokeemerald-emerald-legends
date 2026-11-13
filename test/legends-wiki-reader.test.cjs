@@ -30,16 +30,22 @@ function routeHtml(reader,route){
  const articles=JSON.parse(fs.readFileSync(base+'articles.json'));
  const w=boot('wiki.js',articles);await settle();
  const shortcuts=w.get('content').innerHTML;
- assert.match(shortcuts,/class="walkthrough-shortcut"[^]*?<\/a><a href="\?page=interacting-with-your-pokemon"/);
+ assert.match(shortcuts,/class="walkthrough-shortcut"/);
+ assert.match(shortcuts,/<details class="interaction-home"><summary>/);
+ assert.equal((shortcuts.match(/class="interaction-topic"/g)||[]).length,3,'home has three categories');
+ assert(!shortcuts.includes('<details class="interaction-home" open'),'main starts closed');
  const interactions=boot('wiki.js',articles,'https://example.test/wiki/?page=interacting-with-your-pokemon');await settle();
  const guide=interactions.get('content').innerHTML;
- const catalogues=[...guide.matchAll(/class="interaction-catalogue">([^]*?)<\/div>/g)];
- assert.deepEqual(catalogues.map(([,html])=>(html.match(/<details>/g)||[]).length),[5,14,68]);
- for(const name of ['Spicy Poffin','Gold Pokéblock','Cheri Berry','Maranga Berry','Enigma Berry (e-Reader)'])
-  assert.ok(guide.includes('<summary>'+name+'</summary>'),name);
-
  assert.match(guide,/<h1>Interacting with Your Pokemon<\/h1>/);
- assert.match(guide,/<h2[^>]*>Poffins<\/h2>[^]*?<h2[^>]*>Pokéblocks<\/h2>[^]*?<h2[^>]*>Berries<\/h2>/);
+ assert.equal((guide.match(/<details class="interaction-topic"/g)||[]).length,3,'one toggle per category');
+ assert.equal((guide.match(/class="interaction-item"/g)||[]).length,87,'5 Poffins, 14 Pokéblocks and 68 berries');
+ assert(!/<details class="interaction-topic"[^>]* open/.test(guide),'categories start closed');
+ for(const key of ['poffins','pokeblocks','berries'])assert(guide.includes('id="interaction-'+key+'"'),key+' button');
+ for(const name of ['Spicy Poffin','Gold Pokéblock','Cheri Berry','Maranga Berry','Enigma Berry (e-Reader)'])assert(guide.includes('<strong>'+name+'</strong>'),name);
+ for(const phrase of ['first visit to the machine','Contest receptionist','Wailmer Pail','raises Coolness','Treat flavors'])assert(guide.includes(phrase),phrase);
+ const images=[...guide.matchAll(/src="(art\/interactions\/[^"]+\.png)"/g)].map(([,src])=>src);
+ assert.equal(new Set(images).size,70,'67 distinct berries and three native treat assets');
+ for(const src of new Set(images))assert(fs.existsSync(base+src),'missing image '+src);
 
  assert.equal((w.get('cards').innerHTML.match(/data-category=/g)||[]).length,8);
  assert(!w.get('cards').innerHTML.includes('data-page='),'home must not dump every article');
