@@ -28,9 +28,9 @@ const assert=require('node:assert/strict'),fs=require('node:fs');
   assert.equal(await topics.nth(2).locator('.interaction-item').count(),68);
   await topics.nth(0).locator('summary').click();
   assert(await topics.nth(0).locator('.interaction-item').first().isVisible(),'Poffin effect visible as soon as category opens');
-  await topics.nth(0).locator('.interaction-poffin-art').first().scrollIntoViewIfNeeded();
-  assert.equal(await topics.nth(0).locator('.interaction-poffin-art').count(),25);
-  assert(await topics.nth(0).locator('.interaction-poffin-art').first().evaluate(el=>getComputedStyle(el).backgroundImage.includes('poffin-atlas.svg')),'native sprinkle atlas is used');
+  await topics.nth(0).locator('.interaction-pic .interaction-poffin-art').first().scrollIntoViewIfNeeded();
+  assert.equal(await topics.nth(0).locator('.interaction-pic .interaction-poffin-art').count(),25);
+  assert(await topics.nth(0).locator('.interaction-pic .interaction-poffin-art').first().evaluate(el=>getComputedStyle(el).backgroundImage.includes('poffin-atlas.svg')),'native sprinkle atlas is used');
   assert(await page.evaluate(async()=>{
     const sprite=new Image();sprite.src='art/interactions/poffin-atlas.svg';
     await sprite.decode();return sprite.naturalWidth===320&&sprite.naturalHeight===320;

@@ -57,29 +57,29 @@ function routeHtml(reader,route){
  assert.match(guide,/Cross-mixed flavors and sprinkles/);
  assert.match(guide,/Spicy Poffin · Dry sprinkles/);
  assert.match(guide,/Treat Case still calls this a Spicy Poffin/);
- assert.equal((guide.match(/class="interaction-poffin-art"/g)||[]).length,25,'all sprinkled recipe images');
+ assert.equal((guide.match(/class="interaction-poffin-art"/g)||[]).length,26,'twenty-five cards plus the category icon');
  const poffinAtlas=fs.readFileSync(base+'art/interactions/poffin-atlas.svg','utf8');
- const parts=[...poffinAtlas.matchAll(/<svg x="(\d+)" y="(\d+)"[^>]*><image[^>]+href="data:image\/png;base64,([^"]+)"/g)];
- assert.equal(parts.length,25,'all twenty-five sprite tiles in the atlas');
+ const poffinParts=[...poffinAtlas.matchAll(/<svg x="(\d+)" y="(\d+)"[^>]*><image[^>]+href="data:image\/png;base64,([^"]+)"/g)];
+ assert.equal(poffinParts.length,25,'all twenty-five sprite tiles in the atlas');
  const pngParts=bytes=>{
    assert.equal(bytes.subarray(0,8).toString('hex'),'89504e470d0a1a0a');
    const chunks=new Map();
    for(let i=8;i<bytes.length;){const len=bytes.readUInt32BE(i),name=bytes.toString('ascii',i+4,i+8);chunks.set(name,bytes.subarray(i+8,i+8+len));i+=12+len;if(name==='IEND')break;}
    return chunks;
  };
- const original=pngParts(fs.readFileSync(base+'../../graphics/poffin/served.png'));
+ const poffinOriginal=pngParts(fs.readFileSync(base+'../../graphics/poffin/served.png'));
  const gameColors=[
    [[26,10,11],[31,18,16]],[[12,15,23],[18,22,27]],[[27,15,20],[31,22,25]],
    [[13,21,14],[20,26,18]],[[28,23,10],[31,28,18]]
  ];
- for(let n=0;n<parts.length;n++){
-   const [,x,y,encoded]=parts[n],p=Math.floor(n/5),a=n%5;
+ for(let n=0;n<poffinParts.length;n++){
+   const [,x,y,encoded]=poffinParts[n],p=Math.floor(n/5),a=n%5;
    assert.equal(Number(x),p*64);assert.equal(Number(y),a*64);
    const png=pngParts(Buffer.from(encoded,'base64')),palette=png.get('PLTE');
    assert.equal(png.get('IHDR').readUInt32BE(0),64,'native sprite width');
    assert.equal(png.get('IHDR').readUInt32BE(4),256,'unaltered four feeding frames');
    assert.equal(png.get('tRNS')?.[0],0,'transparent palette background');
-   assert.deepEqual(png.get('IDAT'),original.get('IDAT'),'compressed native pixels untouched');
+   assert.deepEqual(png.get('IDAT'),poffinOriginal.get('IDAT'),'compressed native pixels untouched');
    for(const [index,rgb] of [[9,gameColors[p][0]],[10,gameColors[p][1]],[15,gameColors[a][1]]])
      assert.deepEqual([...palette.subarray(index*3,index*3+3)],rgb.map(v=>(v<<3)|(v>>2)),'native primary/secondary palette '+n+'/'+index);
  }
