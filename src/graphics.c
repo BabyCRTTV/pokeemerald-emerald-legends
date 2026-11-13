@@ -1546,21 +1546,21 @@ const u32 gBattleAnimBgImage_PsychicTerrain[] = INCGFX_U32("graphics/battle_anim
 const u16 gBattleAnimBgPalette_PsychicTerrain[] = INCGFX_U16("graphics/battle_anims/backgrounds/new_psychic_terrain.pal", ".gbapal");
 const u32 gBattleAnimBgTilemap_PsychicTerrain[] = INCGFX_U32("graphics/battle_anims/backgrounds/new_psychic_terrain.bin", ".smolTM");
 #else
-// Identical approved pixels; BASE_ONLY decoding avoids a 12,152-byte temporary
-// allocation while battle graphics/windows are resident.
+// Keep the approved terrain pixels and use BASE_ONLY decoding so the
+// terrain backgrounds need no temporary heap allocation during battle.
 const u32 gBattleAnimBgImage_PsychicTerrain[] = INCGFX_U32("graphics/battle_anims/backgrounds/psychic_terrain.png", ".4bpp.fastSmol");
 const u16 gBattleAnimBgPalette_PsychicTerrain[] = INCGFX_U16("graphics/battle_anims/backgrounds/psychic_terrain.pal", ".gbapal");
 const u32 gBattleAnimBgTilemap_PsychicTerrain[] = INCGFX_U32("graphics/battle_anims/backgrounds/psychic_terrain.bin", ".smolTM");
 
-const u32 gBattleAnimBgImage_ElectricTerrain[] = INCGFX_U32("graphics/battle_anims/backgrounds/electric_terrain.png", ".4bpp.smol");
+const u32 gBattleAnimBgImage_ElectricTerrain[] = INCGFX_U32("graphics/battle_anims/backgrounds/electric_terrain.png", ".4bpp.fastSmol");
 const u16 gBattleAnimBgPalette_ElectricTerrain[] = INCGFX_U16("graphics/battle_anims/backgrounds/electric_terrain.pal", ".gbapal");
 const u32 gBattleAnimBgTilemap_ElectricTerrain[] = INCGFX_U32("graphics/battle_anims/backgrounds/electric_terrain.bin", ".smolTM");
 
-const u32 gBattleAnimBgImage_GrassyTerrain[] = INCGFX_U32("graphics/battle_anims/backgrounds/grassy_terrain.png", ".4bpp.smol");
+const u32 gBattleAnimBgImage_GrassyTerrain[] = INCGFX_U32("graphics/battle_anims/backgrounds/grassy_terrain.png", ".4bpp.fastSmol");
 const u16 gBattleAnimBgPalette_GrassyTerrain[] = INCGFX_U16("graphics/battle_anims/backgrounds/grassy_terrain.pal", ".gbapal");
 const u32 gBattleAnimBgTilemap_GrassyTerrain[] = INCGFX_U32("graphics/battle_anims/backgrounds/grassy_terrain.bin", ".smolTM");
 
-const u32 gBattleAnimBgImage_MistyTerrain[] = INCGFX_U32("graphics/battle_anims/backgrounds/misty_terrain.png", ".4bpp.smol");
+const u32 gBattleAnimBgImage_MistyTerrain[] = INCGFX_U32("graphics/battle_anims/backgrounds/misty_terrain.png", ".4bpp.fastSmol");
 const u16 gBattleAnimBgPalette_MistyTerrain[] = INCGFX_U16("graphics/battle_anims/backgrounds/misty_terrain.pal", ".gbapal");
 const u32 gBattleAnimBgTilemap_MistyTerrain[] = INCGFX_U32("graphics/battle_anims/backgrounds/misty_terrain.bin", ".smolTM");
 #endif
