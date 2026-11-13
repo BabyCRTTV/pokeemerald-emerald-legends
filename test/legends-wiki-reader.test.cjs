@@ -58,8 +58,8 @@ function routeHtml(reader,route){
  assert.match(guide,/Spicy Poffin · Dry sprinkles/);
  assert.match(guide,/Treat Case still calls this a Spicy Poffin/);
  assert.equal((guide.match(/class="interaction-poffin-art"/g)||[]).length,25,'all sprinkled recipe images');
- const atlas=fs.readFileSync(base+'art/interactions/poffin-atlas.svg','utf8');
- const parts=[...atlas.matchAll(/<svg x="(\d+)" y="(\d+)"[^>]*><image[^>]+href="data:image\/png;base64,([^"]+)"/g)];
+ const poffinAtlas=fs.readFileSync(base+'art/interactions/poffin-atlas.svg','utf8');
+ const parts=[...poffinAtlas.matchAll(/<svg x="(\d+)" y="(\d+)"[^>]*><image[^>]+href="data:image\/png;base64,([^"]+)"/g)];
  assert.equal(parts.length,25,'all twenty-five sprite tiles in the atlas');
  const pngParts=bytes=>{
    assert.equal(bytes.subarray(0,8).toString('hex'),'89504e470d0a1a0a');
