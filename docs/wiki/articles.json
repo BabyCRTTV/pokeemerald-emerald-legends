@@ -1,5 +1,5 @@
 {
-  "wikiRevision": "1.9.3",
+  "wikiRevision": "1.9.4",
   "reviewedAgainstGameVersion": "0.0.77",
   "lastManualReview": "2026-11-06",
   "articles": [
@@ -29,6 +29,15 @@
       "content": "## Release — recommended\nRelease is intended for ordinary players. It contains every shipped Legends gameplay and content addition without developer-only shortcuts.\n\n## Debug — for testing\nDebug contains the same gameplay and story but keeps tools available in the expansion, such as overworld and battle debug menus, Pokémon sprite inspection, and title-screen Quickstart where supported.\n\n## Which should I use?\n- Choose **Release** for your primary adventure.\n- Choose **Debug** for checking encounters, maps, graphics, and reporting reproducible bugs.\n\nThese are two builds from one source revision. **Release is not vanilla Emerald**: vanilla Emerald means the untouched commercial original.\n\nFind both options on the [main downloads page](../index.html#downloads). Public downloads are BPS patches, not redistributed commercial ROMs.",
       "reviewedAgainstGameVersion": "0.0.40",
       "reviewedSourceCommit": "d19f13ca089dcf6ea165ce1595b04a65a637238a"
+    },
+    {
+      "id": "interacting-with-your-pokemon",
+      "title": "Interacting with Your Pokemon",
+      "category": "Core gameplay",
+      "summary": "Make treats, feed your Pokémon, and use berries on your adventure.",
+      "content": "## Poffins\nTalk to a **Poffin Maker** in a Pokémon Center to receive a **Treat Case** on your first visit to the machine. Choose one or two berries, then roll the D-pad in the direction shown. Follow the cues to reverse direction and adjust your speed as the batter thickens.\n\nOpen the **Treat Case** from **Bag → Key Items**. It holds up to **40 Poffins** and shows each treat’s flavor, level, and feel. Choose a Poffin and a Pokémon to feed it. Poffins raise Contest condition based on their flavors.\n\n## Pokéblocks\nTalk to the Contest receptionist in **Lilycove City** to get a **Pokéblock Case**. Use the Berry Blender at the Contest Hall to make Pokéblocks from berries. Open the Pokéblock Case from **Key Items** and choose a block and a Pokémon to feed it. Pokéblocks also raise Contest condition and are stored in their own case.\n\n## Berries\nPick berries from plants along routes. You can plant a berry in soft soil and water it with the **Wailmer Pail** to grow more. Use a berry from the Bag when its effect applies, or give one to a Pokémon to hold. For example, an **Oran Berry** restores HP and a **Pecha Berry** cures poison. You can also use berries as ingredients for Poffins and Pokéblocks.\n",
+      "reviewedAgainstGameVersion": "0.0.78",
+      "reviewedSourceCommit": "a717b26ce7ce3096893e834c24d8d8d64e539723"
     },
     {
       "id": "walkthrough",

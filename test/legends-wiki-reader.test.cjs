@@ -29,6 +29,13 @@ function routeHtml(reader,route){
 (async()=>{
  const articles=JSON.parse(fs.readFileSync(base+'articles.json'));
  const w=boot('wiki.js',articles);await settle();
+ const shortcuts=w.get('content').innerHTML;
+ assert.match(shortcuts,/class="walkthrough-shortcut"[^]*?<\/a><a href="\?page=interacting-with-your-pokemon"/);
+ const interactions=boot('wiki.js',articles,'https://example.test/wiki/?page=interacting-with-your-pokemon');await settle();
+ const guide=interactions.get('content').innerHTML;
+ assert.match(guide,/<h1>Interacting with Your Pokemon<\/h1>/);
+ assert.match(guide,/<h2[^>]*>Poffins<\/h2>[^]*?<h2[^>]*>Pokéblocks<\/h2>[^]*?<h2[^>]*>Berries<\/h2>/);
+
  assert.equal((w.get('cards').innerHTML.match(/data-category=/g)||[]).length,8);
  assert(!w.get('cards').innerHTML.includes('data-page='),'home must not dump every article');
  w.click('category','Customization');assert.match(w.ctx.location.search,/category=Customization/);assert.match(w.get('content').innerHTML,/Trainer Card customization/);

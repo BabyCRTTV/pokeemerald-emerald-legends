@@ -1,5 +1,11 @@
 # Development handoff
 
+## Wiki 1.9.4 Pokémon interactions (12 November 2026)
+
+**Model: GPT-6.1 Sol | Reasoning: match the existing wiki navigation and document shipped mechanics.**
+
+Added “Interacting with Your Pokemon” immediately below Walkthrough, with Poffins, Pokéblocks, and berries. The guide uses the v0.0.78 game source and is ready for future playing and washing sections. Existing reader and encounter regressions passed.
+
 ## v0.0.78 Poffins published and live verified (12 November 2026)
 
 **Model: Codex | Reasoning: preserve approved native visuals and saves, verify candidate and production artifacts, and confirm actual deployed bytes.**
