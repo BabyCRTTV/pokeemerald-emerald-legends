@@ -1,0 +1,3 @@
+# Berry plant palette regression
+
+Build the normal development ROM/ELF, then run `python3 tools/legends/native_berry_palette_qa/run.py` with ARM GCC, libmGBA and Pillow available. Reuses the Poffin harness core. The private callback prepares three Route 104 plants, each of seven growth stages, and all four seasons. Native field loading and sprite animation render each scene. The callback compares every nontransparent OBJ palette entry with its expected original NPC palette. Aspear covers the third palette; mature pictures use Oran, Cheri and Pecha. Results and nearest-neighbor emulator captures are written to `build/berry-season/`. Private injected ROM, ELF and save files must not be published.

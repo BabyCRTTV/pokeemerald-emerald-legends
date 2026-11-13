@@ -2,6 +2,11 @@
 
 This is the developer-facing history for the **Debug** build. Shared Legends changes are repeated here so this file stands on its own; Debug-only behavior is called out separately.
 
+## [0.0.80] - 2026-11-13
+
+- Fixed discolored berry plants by restoring their original color palettes across all growth stages and seasons.
+- Preserved native berry artwork, growth and harvest behavior, seasonal scenery, and existing saves.
+
 ## [0.0.79] - 2026-11-12
 
 - Expanded the Bag to 1,152 stacks shared across Items (including healing), Key Items, Poké Balls, TMs/HMs, and Berries, with up to 999 per stack.
