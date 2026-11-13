@@ -25,7 +25,7 @@ def cmd(i):
  for n in range(10):
   if c.rd(box+16):break
   c.wr(g+4,qa);step(150 if i==2 else 1,0)
- assert c.rd(box+16)
+ assert c.rd(box+16), (i, c.rd(box+4), c.rd(box+8), hex(c.rd(g+4)), [hex(c.rd(box+j*4)) for j in range(7)])
 def cap(name):
  im=Image.frombytes('RGBA',(240,160),string_at(c.screen(),240*160*4)).convert('RGB');im.resize((720,480),Image.Resampling.NEAREST).save(Q/(name+'.png'))
 def key(k,wait=36):step(3,k);step(wait,0)
@@ -34,6 +34,9 @@ import json, hashlib
 results=[]
 for season,name in enumerate(["spring","summer","autumn","winter"]):
  for stage in range(1,8):
+  # Start each scene from a fresh boot, not NewGameInitData inside a live field.
+  c.reset();step(500,0)
+  print(name,stage,flush=True)
   c.wr(box+4, stage != 5); c.wr(box+8,stage)
   c.wr(g,0);cmd(season);step(430,0)
   if stage == 5: cap("after-"+name)
