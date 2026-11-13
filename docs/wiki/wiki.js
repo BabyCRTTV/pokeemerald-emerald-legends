@@ -110,9 +110,16 @@
    s=s.replace(/\*\*([^*]+)\*\*/g,'<strong>$1</strong>').replace(/\x60([^\x60]+)\x60/g,'<code>$1</code>');
    return s;
  }
- function render(md) {
+ function render(md,catalogues={}) {
    const lines=md.trim().split(/\r?\n/),out=[],heads=[];
-   let list=null,para=[],table=[];
+   let list=null,para=[],table=[],section='';
+   const flushCatalogue=()=>{
+     const entries=catalogues[section];
+     if(!Array.isArray(entries)||!entries.length)return;
+     out.push('<div class="interaction-catalogue">'+entries.map(entry=>
+       '<details><summary>'+escape(entry.name)+'</summary><p>'+escape(entry.effect)+'</p></details>'
+     ).join('')+'</div>');
+   };
    const flushP=()=>{if(para.length){out.push('<p>'+inline(para.join(' '))+'</p>');para=[];}};
    const flushL=()=>{if(list){out.push('</'+list+'>');list=null;}};
    const flushT=()=>{if(table.length){out.push('<div class="scroll-table"><table><thead><tr>'+table[0].map(c=>'<th>'+inline(c)+'</th>').join('')+'</tr></thead><tbody>'+table.slice(1).map(r=>'<tr>'+r.map(c=>'<td>'+inline(c)+'</td>').join('')+'</tr>').join('')+'</tbody></table></div>');table=[];}};
@@ -121,12 +128,12 @@
      if(/^\|/.test(l)){flushP();flushL();if(/^\|\s*:?-{3,}/.test(l))continue;table.push(l.replace(/^\||\|$/g,'').split('|').map(c=>c.trim()));continue;}
      flushT();
      const h=l.match(/^(#{2,3})\s+(.+)$/);
-     if(h){flushP();flushL();let id="section-"+h[2].toLowerCase().replace(/[^a-z0-9 ]/g,'').trim().replace(/\s+/g,'-');heads.push({id,label:h[2]});out.push('<h'+h[1].length+' id="'+id+'">'+inline(h[2])+'</h'+h[1].length+'>');continue;}
+     if(h){flushP();flushL();flushCatalogue();let id="section-"+h[2].toLowerCase().replace(/[^a-z0-9 ]/g,'').trim().replace(/\s+/g,'-');section=h[2].normalize('NFD').replace(/\p{M}/gu,'').toLowerCase();heads.push({id,label:h[2]});out.push('<h'+h[1].length+' id="'+id+'">'+inline(h[2])+'</h'+h[1].length+'>');continue;}
      const li=l.match(/^([-*]|\d+\.)\s+(.+)$/);
      if(li){flushP();let next=/\d/.test(li[1][0])?'ol':'ul';if(list!==next){flushL();out.push('<'+next+'>');list=next;}out.push('<li>'+inline(li[2])+'</li>');continue;}
      flushL();para.push(l);
    }
-   flushP();flushL();flushT();return {html:out.join('\n'),heads};
+   flushP();flushL();flushT();flushCatalogue();return {html:out.join('\n'),heads};
  }
  function side(active){
    const current=byId.get(active)?.category||(categories.includes(active)?active:'');
@@ -135,7 +142,7 @@
  }
  function navigate(id,push=true,section=""){
    if(!byId.has(id)){home(push);return;}
-   const p=byId.get(id),r=render(p.content);
+   const p=byId.get(id),r=render(p.content,p.catalogues);
    const walkthrough=id==='walkthrough'||id.startsWith('walkthrough-')||Number.isInteger(p.chapter);readingWalkthrough(walkthrough);
    setLocation({page:id},push,section);
    side(id);

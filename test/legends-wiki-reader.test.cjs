@@ -33,6 +33,11 @@ function routeHtml(reader,route){
  assert.match(shortcuts,/class="walkthrough-shortcut"[^]*?<\/a><a href="\?page=interacting-with-your-pokemon"/);
  const interactions=boot('wiki.js',articles,'https://example.test/wiki/?page=interacting-with-your-pokemon');await settle();
  const guide=interactions.get('content').innerHTML;
+ const catalogues=[...guide.matchAll(/class="interaction-catalogue">([^]*?)<\/div>/g)];
+ assert.deepEqual(catalogues.map(([,html])=>(html.match(/<details>/g)||[]).length),[5,14,68]);
+ for(const name of ['Spicy Poffin','Gold Pokéblock','Cheri Berry','Maranga Berry','Enigma Berry (e-Reader)'])
+  assert.ok(guide.includes('<summary>'+name+'</summary>'),name);
+
  assert.match(guide,/<h1>Interacting with Your Pokemon<\/h1>/);
  assert.match(guide,/<h2[^>]*>Poffins<\/h2>[^]*?<h2[^>]*>Pokéblocks<\/h2>[^]*?<h2[^>]*>Berries<\/h2>/);
 

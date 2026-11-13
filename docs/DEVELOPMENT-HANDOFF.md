@@ -1,5 +1,11 @@
 # Development handoff
 
+## Wiki 1.9.5 treat and berry catalogues (12 November 2026)
+
+**Model: GPT-6.1 Sol | Reasoning: document the full item lists and effects from the shipped game source.**
+
+Added native expandable entries to the existing interactions guide for five Poffin types, fourteen Pokéblock colors, and 68 berry slots including the legacy e-Reader entry. Berry flavor values come from the berry table. Contest treat effects distinguish dominant flavors from fixed effects. Reader regression checks catalogue placement and counts.
+
 ## Wiki 1.9.4 Pokémon interactions (12 November 2026)
 
 **Model: GPT-6.1 Sol | Reasoning: match the existing wiki navigation and document shipped mechanics.**
