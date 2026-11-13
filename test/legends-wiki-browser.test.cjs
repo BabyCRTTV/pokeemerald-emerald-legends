@@ -22,6 +22,15 @@ const assert=require('node:assert/strict'),fs=require('node:fs');
     const a=el.getBoundingClientRect(),b=document.querySelector('.walkthrough-shortcut').getBoundingClientRect();
     return a.top>b.bottom&&Math.abs(a.left-b.left)<2&&Math.abs(a.width-b.width)<2;
   }),'guide button aligns directly beneath Walkthrough');
+  assert(await shortcut.evaluate(el=>{
+    const outer=el.getBoundingClientRect(),inner=el.querySelector('.interaction-home-inner').getBoundingClientRect();
+    const label=el.querySelector('.interaction-home-label').getBoundingClientRect(),arrow=el.querySelector('.interaction-home-arrow').getBoundingClientRect();
+    const centered=Math.abs((inner.left+inner.right)/2-(outer.left+outer.right)/2)<2;
+    const grouped=arrow.left>=label.right&&arrow.left-label.right<=18;
+    const fits=inner.width<=outer.width-20&&label.left>=outer.left+5&&arrow.right<=outer.right-5;
+    return centered&&grouped&&fits;
+  }),'short title and arrow form a centered, evenly spaced group');
+  assert.equal(await shortcut.locator('.interaction-home-label').textContent(),'Pokémon Interactions','short title fits the design');
   await shortcut.click();
   await page.getByRole('heading',{name:'Interacting with Your Pokemon',exact:true}).waitFor();
   assert(new URL(page.url()).searchParams.get('page')==='interacting-with-your-pokemon','button opens dedicated article');

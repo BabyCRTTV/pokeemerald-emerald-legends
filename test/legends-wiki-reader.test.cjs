@@ -36,6 +36,11 @@ function routeHtml(reader,route){
  assert(!shortcuts.includes('<details class="interaction-home"'),'main entry is navigation, not an accordion');
  assert(!shortcuts.includes('class="interaction-topic"'),'the nested categories only appear after opening the guide');
  assert(shortcuts.indexOf('class="walkthrough-shortcut"')<shortcuts.indexOf('class="interaction-home"'),'guide shortcut remains below Walkthrough');
+ assert.match(shortcuts,/class="interaction-home-inner"/,'centered title-and-arrow wrapper exists');
+ assert.match(shortcuts,/<span class="interaction-home-label">Pokémon Interactions<\/span>/,'concise button label');
+ assert.match(shortcuts,/<span class="interaction-home-arrow" aria-hidden="true">→<\/span>/,'arrow remains paired with label');
+ assert.match(shortcuts,/aria-label="Pokémon Interactions, open guide"/,'accessible descriptive link');
+ assert(!shortcuts.includes('<strong>Interacting with Your Pokemon</strong>'),'old wrapped home title is gone');
  const interactions=boot('wiki.js',articles,'https://example.test/wiki/?page=interacting-with-your-pokemon');await settle();
  w.click('page','interacting-with-your-pokemon');
  assert.match(w.ctx.location.search,/page=interacting-with-your-pokemon/,'home shortcut opens guide');

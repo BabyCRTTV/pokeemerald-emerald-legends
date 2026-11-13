@@ -1,5 +1,11 @@
 # Development handoff
 
+## Wiki 1.9.9 centered Pokémon Interactions home shortcut (12 November 2026)
+
+**Model: GPT-6 | Reasoning: keep the owner's approved shortcut hierarchy, minimize text width, and visually align mobile cards.**
+
+The homepage guide button now reads “Pokémon Interactions.” Its title and right arrow are one centered, responsive inline group instead of a left-stretched title and detached far-right arrow. The full guide remains titled “Interacting with Your Pokemon,” and all three nested category accordions, 25 Poffin pictures, 14 Pokéblocks, and 68 Berries are unchanged. Cache-busted the wiki script to make the new label appear promptly. Reader and five-viewport browser checks assert short text, centered arrow grouping, horizontal fit, navigation, and the pre-existing guide contents. No game/save/graphics changes.
+
 ## Wiki 1.9.8 dedicated interaction guide shortcut (12 November 2026)
 
 **Model: GPT-6 | Reasoning: follow the owner's clarified navigation hierarchy without disturbing verified game sprite art, recipes, or other wiki sections.**

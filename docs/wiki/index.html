@@ -35,9 +35,10 @@ footer{max-width:1380px;margin:auto;padding:0 22px 32px;font-size:12px;color:var
 .interaction-catalogue details p{margin:0;padding:0 12px 12px}
 
 /* The home shortcut navigates to a guide; its three category buttons expand inside that guide. */
-.interaction-home{display:flex;align-items:center;gap:10px;min-height:49px;margin:14px 0 3px;padding:11px 13px;border:1px solid #d5c4e9;border-radius:13px;background:#f3ecfc;color:#543579;text-decoration:none;font-weight:800;cursor:pointer;min-width:0}
-.interaction-home strong{flex:1;min-width:0;overflow-wrap:anywhere}
-.interaction-home span{font-size:22px;line-height:1}
+.interaction-home{display:flex;align-items:center;justify-content:center;min-height:49px;margin:14px 0 3px;padding:12px 15px;border:1px solid #d5c4e9;border-radius:13px;background:#f3ecfc;color:#543579;text-decoration:none;font-weight:800;text-align:center;cursor:pointer;min-width:0}
+.interaction-home-inner{display:inline-flex;align-items:center;justify-content:center;gap:11px;max-width:100%;min-width:0}
+.interaction-home-label{font-size:clamp(17px,4.3vw,24px);line-height:1.2;text-wrap:balance;min-width:0}
+.interaction-home-arrow{font-size:23px;line-height:1;flex:none}
 .interaction-home:hover,.interaction-home:focus-visible{background:#eae0f9;color:#543579}
 .interaction-home:focus-visible{outline:3px solid #9b80d5;outline-offset:2px}
 .interaction-topic{border:1px solid #d5c4e9;border-radius:13px;background:#fff;overflow:hidden;min-width:0}
@@ -89,5 +90,5 @@ details[open]>summary>.interaction-arrow{transform:rotate(180deg)}
 <script src="wiki-updates.js" defer></script>
 <script src="dex-sprite-atlas.js?v=1.8.0-68073255" defer></script>
 <script src="walkthrough-maps.js?v=1.8.0-68073255" defer></script>
-<script src="wiki.js?v=20261112-interaction-guide-button" defer></script>
+<script src="wiki.js?v=20261112-centered-interaction-button" defer></script>
 </body></html>
