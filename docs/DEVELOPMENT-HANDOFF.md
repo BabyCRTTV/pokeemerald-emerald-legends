@@ -1,5 +1,11 @@
 # Development handoff
 
+## Berry plant palette repair preview (12 November 2026)
+
+**Model: GPT-6 | Reasoning: reproduce the reported seasonal corruption and repair the shared palette lookup without changing native art.**
+
+Reproduced hollow/discolored berry plants in compiled mGBA scenes. Berry slot tables still describe original NPC slots 2–5, but SetBerryTreeGraphicsById indexed a registry now prefixed by four private player palettes. Resolve the corresponding NPC palette tag instead. All seven stages across four seasons passed native palette comparisons; all 45 shared slot tables validated; season-module regressions passed. No sprite/map/season/save changes. [Before/after captures and native evidence](designs/berry-palette-repair/README.md). Preview only, awaiting visual review before game publication. ROM version remains 0.0.78.
+
 ## Wiki 1.9.9 centered Pokémon Interactions home shortcut (12 November 2026)
 
 **Model: GPT-6 | Reasoning: keep the owner's approved shortcut hierarchy, minimize text width, and visually align mobile cards.**

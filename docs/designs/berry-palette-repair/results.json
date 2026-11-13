@@ -1,0 +1,173 @@
+{
+  "romSha256": "ebc946ed5a69079005a8e9d8684c2cbcc42b5e28f20f6af8c6311acec0036f14",
+  "checks": [
+    {
+      "season": "spring",
+      "stage": 1,
+      "plants": 3,
+      "mismatchedColors": 0
+    },
+    {
+      "season": "spring",
+      "stage": 2,
+      "plants": 3,
+      "mismatchedColors": 0
+    },
+    {
+      "season": "spring",
+      "stage": 3,
+      "plants": 3,
+      "mismatchedColors": 0
+    },
+    {
+      "season": "spring",
+      "stage": 4,
+      "plants": 3,
+      "mismatchedColors": 0
+    },
+    {
+      "season": "spring",
+      "stage": 5,
+      "plants": 3,
+      "mismatchedColors": 0
+    },
+    {
+      "season": "spring",
+      "stage": 6,
+      "plants": 3,
+      "mismatchedColors": 0
+    },
+    {
+      "season": "spring",
+      "stage": 7,
+      "plants": 3,
+      "mismatchedColors": 0
+    },
+    {
+      "season": "summer",
+      "stage": 1,
+      "plants": 3,
+      "mismatchedColors": 0
+    },
+    {
+      "season": "summer",
+      "stage": 2,
+      "plants": 3,
+      "mismatchedColors": 0
+    },
+    {
+      "season": "summer",
+      "stage": 3,
+      "plants": 3,
+      "mismatchedColors": 0
+    },
+    {
+      "season": "summer",
+      "stage": 4,
+      "plants": 3,
+      "mismatchedColors": 0
+    },
+    {
+      "season": "summer",
+      "stage": 5,
+      "plants": 3,
+      "mismatchedColors": 0
+    },
+    {
+      "season": "summer",
+      "stage": 6,
+      "plants": 3,
+      "mismatchedColors": 0
+    },
+    {
+      "season": "summer",
+      "stage": 7,
+      "plants": 3,
+      "mismatchedColors": 0
+    },
+    {
+      "season": "autumn",
+      "stage": 1,
+      "plants": 3,
+      "mismatchedColors": 0
+    },
+    {
+      "season": "autumn",
+      "stage": 2,
+      "plants": 3,
+      "mismatchedColors": 0
+    },
+    {
+      "season": "autumn",
+      "stage": 3,
+      "plants": 3,
+      "mismatchedColors": 0
+    },
+    {
+      "season": "autumn",
+      "stage": 4,
+      "plants": 3,
+      "mismatchedColors": 0
+    },
+    {
+      "season": "autumn",
+      "stage": 5,
+      "plants": 3,
+      "mismatchedColors": 0
+    },
+    {
+      "season": "autumn",
+      "stage": 6,
+      "plants": 3,
+      "mismatchedColors": 0
+    },
+    {
+      "season": "autumn",
+      "stage": 7,
+      "plants": 3,
+      "mismatchedColors": 0
+    },
+    {
+      "season": "winter",
+      "stage": 1,
+      "plants": 3,
+      "mismatchedColors": 0
+    },
+    {
+      "season": "winter",
+      "stage": 2,
+      "plants": 3,
+      "mismatchedColors": 0
+    },
+    {
+      "season": "winter",
+      "stage": 3,
+      "plants": 3,
+      "mismatchedColors": 0
+    },
+    {
+      "season": "winter",
+      "stage": 4,
+      "plants": 3,
+      "mismatchedColors": 0
+    },
+    {
+      "season": "winter",
+      "stage": 5,
+      "plants": 3,
+      "mismatchedColors": 0
+    },
+    {
+      "season": "winter",
+      "stage": 6,
+      "plants": 3,
+      "mismatchedColors": 0
+    },
+    {
+      "season": "winter",
+      "stage": 7,
+      "plants": 3,
+      "mismatchedColors": 0
+    }
+  ]
+}
