@@ -2,6 +2,12 @@
 
 This is the player-facing history for the recommended **Release** build. Shared Legends changes are repeated here so this file stands on its own; Release-only behavior is called out separately.
 
+## [0.0.79] - 2026-11-12
+
+- Expanded the Bag to 1,152 stacks shared across Items (including healing), Key Items, Poké Balls, TMs/HMs, and Berries, with up to 999 per stack.
+- Kept the full Bag usable in the field and in battle, and retained the separate PC Item Storage and Battle Pyramid rules.
+- Migrated older Legends saves automatically, preserving inventory, the Treat Case, and other saved progress.
+
 ## [0.0.78] - 2026-11-12
 
 - Added Poffin Makers to every Pokémon Center and the Ever Grande League lobby, with one- or two-berry recipes and D-pad stirring.

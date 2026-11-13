@@ -11,10 +11,10 @@ static struct mLogger logger={.log=quiet};
 static struct mCore *c; static color_t *video; static unsigned mainAddr, callback;
 static void frames(int n){while(n--)c->runFrame(c);}
 static void key(unsigned n){c->setKeys(c,n);frames(2);c->setKeys(c,0);frames(24);}
-static void command(unsigned n,int count){c->busWrite32(c,0x0203fc00,n);c->busWrite32(c,mainAddr+4,callback);frames(count);}
+static void command(unsigned n,int count){c->busWrite32(c,0x0203fd00,n);c->busWrite32(c,mainAddr+4,callback);frames(count);}
 static void capture(const char *folder,const char *name){char p[4096];snprintf(p,sizeof(p),"%s/%s.rgba",folder,name);FILE *f=fopen(p,"wb");assert(f);assert(fwrite(video,4,240*160,f)==240*160);fclose(f);puts(name);}
 static void battery(const char *dir,const char *name){void *data=NULL;size_t n=c->savedataClone(c,&data);assert(n==131072&&data);char path[4096];snprintf(path,sizeof(path),"%s/%s.sav",dir,name);FILE *f=fopen(path,"wb");assert(f&&fwrite(data,1,n,f)==n);fclose(f);free(data);}
-static void checkPalette(void){command(7,2);assert(c->busRead32(c,0x0203fc08)==0);}
+static void checkPalette(void){command(7,2);assert(c->busRead32(c,0x0203fd08)==0);}
 int main(int argc,char **argv){
  setbuf(stdout,NULL);mLogSetDefaultLogger(&logger);assert(argc==5);mainAddr=strtoul(argv[3],NULL,0);callback=strtoul(argv[4],NULL,0);
  c=mCoreFind(argv[1]);assert(c&&c->init(c));mCoreInitConfig(c,NULL);
@@ -30,19 +30,25 @@ int main(int argc,char **argv){
  for (int gender=0;gender<2;gender++){
   command(gender,400);capture(argv[2],gender?"female-room-initial":"male-room-initial");command(9,1200);battery(argv[2],gender?"private-female":"private-male");
   for (int repeat=0;repeat<4;repeat++)for(int state=0;state<9;state++){
-   c->busWrite32(c,0x0203fc28,state);command(8,30);command(7,2);
-   unsigned errors=c->busRead32(c,0x0203fc08);
-   printf("palette gender=%d repeat=%d state=%d slot=%u tag=%x errors=%u\n",gender,repeat,state,c->busRead32(c,0x0203fc0c),c->busRead32(c,0x0203fc10),errors);assert(errors==0);
+   c->busWrite32(c,0x0203fd28,state);command(8,30);command(7,2);
+   unsigned errors=c->busRead32(c,0x0203fd08);
+   printf("palette gender=%d repeat=%d state=%d slot=%u tag=%x errors=%u\n",gender,repeat,state,c->busRead32(c,0x0203fd0c),c->busRead32(c,0x0203fd10),errors);assert(errors==0);
   }
-  command(4,350);c->busWrite32(c,0x0203fc28,0);
+  command(4,350);c->busWrite32(c,0x0203fd28,0);
   for(int repeat=0;repeat<8;repeat++){
    command(3,140);key(16);key(64);key(64);key(1);frames(300);checkPalette();
    command(2,300);key(2);frames(300);checkPalette();
    command(3,140);key(16);key(2);frames(300);checkPalette();
   }
-  command(9,1200);assert(c->busRead32(c,0x0203fc14)==1&&c->busRead32(c,0x0203fc1c)==1&&c->busRead32(c,0x0203fc18)==c->busRead32(c,0x0203fc20)&&c->busRead32(c,0x0203fc24)==0);
+  command(9,1200);assert(c->busRead32(c,0x0203fd14)==1&&c->busRead32(c,0x0203fd1c)==1&&c->busRead32(c,0x0203fd18)==c->busRead32(c,0x0203fd20)&&c->busRead32(c,0x0203fd24)==0);
   command(4,350);checkPalette();puts("Wardrobe Apply/Cancel, Trainer Card returns and real flash roundtrip: passed");
   capture(argv[2],gender?"female-room":"male-room-return");
  }
+ command(10,1200);assert(c->busRead32(c,0x0203fd2c)==1&&c->busRead32(c,0x0203fd30)==1&&c->busRead32(c,0x0203fd34)==0);
+ battery(argv[2],"private-bag");
+ command(11,240);key(1);command(12,2);printf("Bag selection position=%u item=%u expected=%u\n",c->busRead32(c,0x0203fd4c),c->busRead32(c,0x0203fd50),c->busRead32(c,0x0203fd48));capture(argv[2],"bag-selected");assert(c->busRead32(c,0x0203fd4c)==599&&c->busRead32(c,0x0203fd50)==c->busRead32(c,0x0203fd48));key(2);key(2);frames(240);
+ command(13,1200);assert(c->busRead32(c,0x0203fd2c)==1&&c->busRead32(c,0x0203fd30)==1&&c->busRead32(c,0x0203fd34)==0);battery(argv[2],"private-bag-legacy-source");
+ {char path[4096];snprintf(path,sizeof(path),"%s/bag-layout.json",argv[2]);FILE *f=fopen(path,"w");assert(f);fprintf(f,"{\"inventoryOffset\":%u,\"bagSize\":%u,\"cursorOffset\":%u,\"scrollOffset\":%u,\"etherId\":%u,\"encryptionKeyOffset\":%u,\"slotOffset\":%u,\"poffinOffset\":%u,\"treatCaseId\":%u}\n",c->busRead32(c,0x0203fd38),c->busRead32(c,0x0203fd3c),c->busRead32(c,0x0203fd40),c->busRead32(c,0x0203fd44),c->busRead32(c,0x0203fd48),c->busRead32(c,0x0203fd54),c->busRead32(c,0x0203fd58),c->busRead32(c,0x0203fd5c),c->busRead32(c,0x0203fd60));fclose(f);}
+ puts("Shared bag native flash/load, five pockets, PC slot149 and selecting slot599: passed");
  c->deinit(c);free(video);return 0;
 }

@@ -27,6 +27,7 @@ old = old.replace('    if (b[0] == 2)', '''    if (b[0] == 3)
 def stage(legacy):
     code = prefix
     if legacy:
+        code = code.replace('mailbox = 0x0203fd00', 'mailbox = 0x0203ffc0')
         code = code.replace('number == 2', 'number in (2, 3)')
         code = code.replace('ROOT / "pokeemerald.elf"','ROOT / "build/poffin-native/legacy/pokeemerald.elf"').replace('ROOT / "pokeemerald.gba"','ROOT / "build/poffin-native/legacy/pokeemerald.gba"')
         code = code.replace('str(SOURCE / "arm.c")','str(OUTPUT / "legacy-arm.c")')

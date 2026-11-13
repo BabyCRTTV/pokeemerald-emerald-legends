@@ -1,5 +1,5 @@
 {
-  "wikiRevision": "1.9.9",
+  "wikiRevision": "1.9.10",
   "reviewedAgainstGameVersion": "0.0.77",
   "lastManualReview": "2026-11-12",
   "articles": [
@@ -981,9 +981,9 @@
       "title": "Bag, boxes and save compatibility",
       "category": "Core gameplay",
       "summary": "Current storage limits, older-save migration and the expanded-save boundary.",
-      "content": "## Current capacities\n| Storage | Capacity |\n| --- | --- |\n| Pokémon PC | 20 boxes × 30 slots = 600 Pokémon |\n| PC Item Storage | 150 item slots |\n| Bag — Items | 150 slots |\n| Bag — Key Items | 60 slots |\n| Bag — Poké Balls | 32 slots |\n| Bag — TMs/HMs | 128 slots |\n| Bag — Berries | 80 slots |\n\nNormal pocket rules and per-stack quantities remain in effect. Boxes retain their names, wallpapers and 30-slot layout. The Battle Pyramid keeps its separate native challenge Bag limits. Achievement berry rewards are claimed into PC Item Storage.\n\n## Using an earlier Legends save\nv0.0.43 and newer recognize earlier Legends saves and migrate their original boxes and inventories automatically. The six extra boxes and expanded slots begin empty. **After saving in v0.0.43 or newer, continue using v0.0.43 or newer:** older builds cannot read the expanded format. Keep a backup before changing builds.\n\nThe game still uses a normal **128 KiB flash `.sav`**. You do not need to enlarge the emulator’s save setting. Emulator save states are separate from the game’s normal SAVE function.\n\n## If a save cannot fit\nExpanded storage is saved with bounded, lossless compression. An unusually incompressible collection can exceed its fixed payload budget even below 600 Pokémon. The game checks this before writing and reports a failed save; it preserves the existing flash saves and current in-memory collection. Do not treat a failed SAVE as completed. Preserve your previous `.sav` and report the version and circumstances through [[support|Troubleshooting]].\n",
-      "reviewedAgainstGameVersion": "0.0.46",
-      "reviewedSourceCommit": "e542033cf4fcb8378c68fdd5ffbc4f5b5933fb64"
+      "content": "## Current capacities\n| Storage | Capacity |\n| --- | --- |\n| Pokémon PC | 20 boxes × 30 slots = 600 Pokémon |\n| PC Item Storage | 150 item slots |\n| Bag | 1,152 shared stacks, up to 999 items per stack |\n\nItems (including healing), Key Items, Poké Balls, TMs/HMs and Berries draw from the same pool. Any pocket can use the remaining space. Boxes retain their names, wallpapers and 30-slot layout. The Battle Pyramid keeps its separate native challenge Bag limits. Achievement berry rewards are claimed into PC Item Storage.\n\n## Using an earlier Legends save\nv0.0.79 automatically upgrades earlier Legends battery saves. Your inventory, Pokémon, Treat Case and saved progress carry over. **After saving in v0.0.79, use v0.0.79 or newer.** Keep a backup if you want to return to an older build.\n\nThe game still uses a normal **128 KiB flash `.sav`**. You do not need to enlarge the emulator’s save setting. Emulator save states are separate from the game’s normal SAVE function.\n\n## If a save cannot fit\nExpanded storage is saved with bounded, lossless compression. An unusually incompressible collection can exceed its fixed payload budget even below 600 Pokémon. The game checks this before writing and reports a failed save; it preserves the existing flash saves and current in-memory collection. Do not treat a failed SAVE as completed. Preserve your previous `.sav` and report the version and circumstances through [[support|Troubleshooting]].\n",
+      "reviewedAgainstGameVersion": "0.0.79",
+      "reviewedSourceCommit": "c44632c7b2a4a201874ba971981c81432fbed9d3"
     },
     {
       "id": "walkthrough-kanto-stillwater",

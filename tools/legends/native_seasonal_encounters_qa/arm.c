@@ -84,7 +84,7 @@ static void checkIconGeometry(struct Sprite *icon, volatile u32 *b)
 
 void qa(void)
 {
-    volatile u32 *b = (u32 *)0x0203fc00;
+    volatile u32 *b = (u32 *)0x0203fd00;
     const struct QAScenario *s = &scenarios[b[1]];
     if (b[0] == 0)
     {

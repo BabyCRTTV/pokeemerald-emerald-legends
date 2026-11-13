@@ -19,7 +19,7 @@
 #include "legends_poffin.h"
 void qa(void)
 {
-    volatile u32 *b = (u32 *)0x0203ffc0;
+    volatile u32 *b = (u32 *)0x0203fd00;
     if (b[0] == 0)
     {
         NewGameInitData();
