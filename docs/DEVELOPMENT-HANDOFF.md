@@ -1,5 +1,13 @@
 # Development handoff
 
+## v0.0.80 berry palettes published and live verified (13 November 2026)
+
+**Model: GPT-6 | Reasoning: preserve the approved native artwork, validate the integrated Bag release, and bind live downloads to verified production builds.**
+
+Published PR #100 as `b5af03f03b00fd7303abaeac1b3d062d6de00c43`; verified Release/Debug patches were committed at `b785f9c3c672427993e16716505b488acf99e95e`. Both candidate and production builds, all 28 berry growth-stage/season scenes, existing native regressions, and independent BPS decoders passed. Project/wiki/Android/Windows checks passed. Gated Pages run 43433210064 deployed the release; a fresh recheck matched all 21 critical live files including both patches. [Bound evidence](qa/berry-palettes-v0.0.80.json).
+
+The initial candidate stopped in the test setup, before any palette assertion: repeated NewGameInitData inside an active field was unsuitable for independent scenes. Fresh emulator boots isolated the fixtures; all checks passed locally and in candidate/production CI. No game logic was changed for that test repair. The shipped fix only resolves berry NPC palette tags instead of stale registry positions. Preserved native art, growth/harvest rules, seasonal scenery, shared Bag and save layouts. No further publication approval is outstanding.
+
 ## v0.0.80 approved berry palette repair (13 November 2026)
 
 **Model: GPT-6 | Reasoning: integrate the approved visual fix with the shipped Bag expansion and verify the combined release.**

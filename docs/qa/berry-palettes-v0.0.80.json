@@ -1,0 +1,460 @@
+{
+  "version": "0.0.80",
+  "published": true,
+  "pull_request": 100,
+  "integrated_baseline": "b05ed8631ec120ea8cc3db6d376d040d40682bba",
+  "candidate_head": "d5a09ab5344562b787da890ee33ee41e498d5995",
+  "candidate_tree": "45923073b5b9ed67b742666028ec593c04c29db5",
+  "runs": {
+    "candidate": {
+      "project": 43428743682,
+      "native_patches": 43428743835,
+      "wiki": 43428743740,
+      "android": 43428743623
+    },
+    "production": {
+      "project": 43430799754,
+      "native_patches": 43430799877,
+      "wiki": 43430799595,
+      "android": 43430799615,
+      "windows": 43430799658
+    },
+    "site": 43433210064
+  },
+  "scope": "Tag-based NPC palette lookup for berry plants. No save layout, Bag, map or sprite data changes.",
+  "first_candidate": {
+    "head": "88924c683d937877cd0c634909bc75a687ff4e3e",
+    "run": 43426738799,
+    "failure": "Fixture NewGameInitData called repeatedly inside active field; fourth scene failed before palette checks. Fixed with fresh emulator boot per scene, locally verified all 28 scenes."
+  },
+  "source_commit": "b5af03f03b00fd7303abaeac1b3d062d6de00c43",
+  "candidate_archive_sha256": "68aa5c330bb0ba21bc50a76ed1ea03d50bff5908f38fe5fd84fb45504775c6f9",
+  "patch_commit": "b785f9c3c672427993e16716505b488acf99e95e",
+  "artifact_sha256": {
+    "production-gameplay": "b324274d6ce42245c4fe2e94b06fd67d5916058b14db481466981ef38844ab2f",
+    "production-patches": "e270ecce66c453da0592f64f6301d7d9465404299821b3655cded52912377e70",
+    "site-evidence": "754f43d9d926803d3dffa9bfa060d5f9034a116580f1cbc69be19e7dd1b5c776"
+  },
+  "shared_build_verification": {
+    "passed": true,
+    "patches_verified": true,
+    "inputs": {
+      "version": "0.0.80",
+      "source_commit": "b5af03f03b00fd7303abaeac1b3d062d6de00c43",
+      "source_tree": "45923073b5b9ed67b742666028ec593c04c29db5",
+      "source_fingerprint": "85cbc340bd0e7ad7cd1a5cf44bf8edb901a7dba71676c98865a98ac02967c91c",
+      "nonce": "70190d43e98c46bc8be745242ffc5c5b",
+      "binaries": {
+        "pokeemerald.gba": "64861ae130de242c389062eed87c6bdc81296eaf69684ebd962b146dd26dcd4e",
+        "pokeemerald.elf": "0ecc1f3a1d5239e505e2d7fcce46ca33f7b4980c9465e1d51cf23bc589d7740f",
+        "pokeemerald-release.gba": "4e7e3ef374bbaddc84bc3563454035c24b44f535f319407a77a53798018f6793",
+        "pokeemerald-release.elf": "6de333e9db5927250878c195d5e5f21a8a1fd52b9b8c1e208ef23e60d537507f"
+      }
+    },
+    "native_receipt_sha256": {
+      "legends-mgba-preview/results.json": "a0bf21b399e6ac445844c5995d650c029323e8487936d029f6df10d7f61f629c",
+      "eon-roamers-qa/verification.json": "f7d9937364fb78c372983e5ec197e764d51f08d246668611a53067ba83786307",
+      "ember-return-qa/verification.json": "0addf11d11bce82b8e8f9447581c849fe8fe680fcef02c8992cdce4439adaf10",
+      "grotto-review/verification.json": "7d701896b714432d4cd35f69ec0e0abdd1eb3ef5ff74fff51e963605748ae63a",
+      "grotto-encounters/verification.json": "cef77309b53d88f614bc98c0f35c777a36b21caa40bd9f4432f31db1e3bdfdde",
+      "wyrmtide-native/verification.json": "b0717f03e3a959580a696c0e97c90caa67d123b747f4c67fca7fd35ed64da068",
+      "nightmare-native/verification.json": "47cf1467e60e7b02bf09bd06d963834b9ff38e2f63e6c1696ba8362468d6b526",
+      "living-hoenn-qa/verification.json": "2d7bc812ab70c346a866131263757a0d84f4a3a0aee2b86d521ba09cc0b863b5",
+      "seasonal-encounters-qa/verification.json": "093b68827fd16241de7ab000820a148e1e05962af9b061c14acb69a7f7c69522",
+      "visual-repairs-qa/verification.json": "fb08839e8172806ac0862d532c2f87aa3de61c71e504e0ca7802b44e0b7ae2a3",
+      "eon-roamers-release-qa/verification.json": "c5ec5c9179d9f9f035c6281c6ba9ee36a868d4f6cb004fa56fe877b50c7147cf",
+      "ember-return-release-qa/verification.json": "afd25428a98cd0416bd80cf8d3ad8911c2f8b94f1d8a31dee61eedf373bb5c91",
+      "grotto-encounters-release/verification.json": "6a68765d162f68ffaf807c28873f0e7f1eab97b906805a342bd2a69d7f9a9912",
+      "bedroom-release-qa/verification.json": "aa335b16be9e96b6c053a0bde40bab8b9c4feb36cdadebea26027e8685cda7fc"
+    },
+    "payload_files": {
+      "Pokemon-Emerald-Legends-v0.0.80.bps": "0b6cff07bb6700a1df1e40e90c461faa58f18090edd499e41999f03a3e1be1d0",
+      "Pokemon-Emerald-Legends-v0.0.80-debug.bps": "3934a81e21a2b38b8492d8856c845cae0efef2a33273c0973d8dcd9dc316bb7c",
+      "SHA256SUMS.txt": "ba99444b6394f922ef43834ef6cbd08b097d7def8d6a973731057b1ef170f931",
+      "browser-decoder-verification.json": "21032dd8dd493374b84de46331ae6de08140ec1c9c27697d06530e25cebdc5d0"
+    },
+    "patch_worker": {
+      "passed": true,
+      "nonce": "70190d43e98c46bc8be745242ffc5c5b",
+      "seconds": 184.443
+    },
+    "decoder": {
+      "passed": true,
+      "source_SHA1": "f3ae088181bf583e55daf962a92bb46f4f1d07b7",
+      "decoder": "Actual committed docs/patcher.js applyBps executed in Node VM; independent of Floating IPS",
+      "decoder_sha256": "8600e5420fd22149567da2c2dbbc3fb3b1e4e41f6afa541e4deccf8b58bd735a",
+      "verifier_sha256": "bbb6057cadba5a72d14e73c1f75cc57563c121eebd68e0ce97869fd18a110d8b",
+      "results": {
+        "Pokemon-Emerald-Legends-v0.0.80.bps": {
+          "patch_sha256": "0b6cff07bb6700a1df1e40e90c461faa58f18090edd499e41999f03a3e1be1d0",
+          "target_sha256": "4e7e3ef374bbaddc84bc3563454035c24b44f535f319407a77a53798018f6793",
+          "target_bytes": 33554432,
+          "exact_native_ROM_match": true
+        },
+        "Pokemon-Emerald-Legends-v0.0.80-debug.bps": {
+          "patch_sha256": "3934a81e21a2b38b8492d8856c845cae0efef2a33273c0973d8dcd9dc316bb7c",
+          "target_sha256": "64861ae130de242c389062eed87c6bdc81296eaf69684ebd962b146dd26dcd4e",
+          "target_bytes": 33554432,
+          "exact_native_ROM_match": true
+        }
+      },
+      "limits": "Byte-decoder test; physical browser file-picker/download and Pizza Boy execution are separate checks."
+    }
+  },
+  "berry_palette_checks": {
+    "romSha256": "64861ae130de242c389062eed87c6bdc81296eaf69684ebd962b146dd26dcd4e",
+    "checks": [
+      {
+        "season": "spring",
+        "stage": 1,
+        "plants": 3,
+        "mismatchedColors": 0
+      },
+      {
+        "season": "spring",
+        "stage": 2,
+        "plants": 3,
+        "mismatchedColors": 0
+      },
+      {
+        "season": "spring",
+        "stage": 3,
+        "plants": 3,
+        "mismatchedColors": 0
+      },
+      {
+        "season": "spring",
+        "stage": 4,
+        "plants": 3,
+        "mismatchedColors": 0
+      },
+      {
+        "season": "spring",
+        "stage": 5,
+        "plants": 3,
+        "mismatchedColors": 0
+      },
+      {
+        "season": "spring",
+        "stage": 6,
+        "plants": 3,
+        "mismatchedColors": 0
+      },
+      {
+        "season": "spring",
+        "stage": 7,
+        "plants": 3,
+        "mismatchedColors": 0
+      },
+      {
+        "season": "summer",
+        "stage": 1,
+        "plants": 3,
+        "mismatchedColors": 0
+      },
+      {
+        "season": "summer",
+        "stage": 2,
+        "plants": 3,
+        "mismatchedColors": 0
+      },
+      {
+        "season": "summer",
+        "stage": 3,
+        "plants": 3,
+        "mismatchedColors": 0
+      },
+      {
+        "season": "summer",
+        "stage": 4,
+        "plants": 3,
+        "mismatchedColors": 0
+      },
+      {
+        "season": "summer",
+        "stage": 5,
+        "plants": 3,
+        "mismatchedColors": 0
+      },
+      {
+        "season": "summer",
+        "stage": 6,
+        "plants": 3,
+        "mismatchedColors": 0
+      },
+      {
+        "season": "summer",
+        "stage": 7,
+        "plants": 3,
+        "mismatchedColors": 0
+      },
+      {
+        "season": "autumn",
+        "stage": 1,
+        "plants": 3,
+        "mismatchedColors": 0
+      },
+      {
+        "season": "autumn",
+        "stage": 2,
+        "plants": 3,
+        "mismatchedColors": 0
+      },
+      {
+        "season": "autumn",
+        "stage": 3,
+        "plants": 3,
+        "mismatchedColors": 0
+      },
+      {
+        "season": "autumn",
+        "stage": 4,
+        "plants": 3,
+        "mismatchedColors": 0
+      },
+      {
+        "season": "autumn",
+        "stage": 5,
+        "plants": 3,
+        "mismatchedColors": 0
+      },
+      {
+        "season": "autumn",
+        "stage": 6,
+        "plants": 3,
+        "mismatchedColors": 0
+      },
+      {
+        "season": "autumn",
+        "stage": 7,
+        "plants": 3,
+        "mismatchedColors": 0
+      },
+      {
+        "season": "winter",
+        "stage": 1,
+        "plants": 3,
+        "mismatchedColors": 0
+      },
+      {
+        "season": "winter",
+        "stage": 2,
+        "plants": 3,
+        "mismatchedColors": 0
+      },
+      {
+        "season": "winter",
+        "stage": 3,
+        "plants": 3,
+        "mismatchedColors": 0
+      },
+      {
+        "season": "winter",
+        "stage": 4,
+        "plants": 3,
+        "mismatchedColors": 0
+      },
+      {
+        "season": "winter",
+        "stage": 5,
+        "plants": 3,
+        "mismatchedColors": 0
+      },
+      {
+        "season": "winter",
+        "stage": 6,
+        "plants": 3,
+        "mismatchedColors": 0
+      },
+      {
+        "season": "winter",
+        "stage": 7,
+        "plants": 3,
+        "mismatchedColors": 0
+      }
+    ]
+  },
+  "live_verification": {
+    "version": "0.0.80",
+    "verified_at_UTC": "2026-11-13T22:37:48.188909+00:00",
+    "passed": true,
+    "files": [
+      {
+        "path": "index.html",
+        "passed": true,
+        "HTTP": 200,
+        "bytes": 3711,
+        "sha256": "de5cbfc16857878221dd3e26e4c635e0aaf36b437a9b7c83ea173e185f74b259",
+        "Git_blob_sha1": "5bbfc0b1dda36cb7015de04aa8e0bee895adf7ca"
+      },
+      {
+        "path": "patcher.html",
+        "passed": true,
+        "HTTP": 200,
+        "bytes": 2675,
+        "sha256": "0770ada10b96e1d960e993787eb78da523b7b91f70e392e19c63408d090362b8",
+        "Git_blob_sha1": "3a666d98f11e57a284dd67b227f8423259d25afa"
+      },
+      {
+        "path": "patcher.js",
+        "passed": true,
+        "HTTP": 200,
+        "bytes": 9353,
+        "sha256": "8600e5420fd22149567da2c2dbbc3fb3b1e4e41f6afa541e4deccf8b58bd735a",
+        "Git_blob_sha1": "71b8dd8f7e14c6b4acd31ea2b639b7fbae857d5e"
+      },
+      {
+        "path": "changelog.html",
+        "passed": true,
+        "HTTP": 200,
+        "bytes": 133308,
+        "sha256": "c740abf3ced817d805aca7ec78af8a214124a0bbcccf9beb7e2818fdc2edc663",
+        "Git_blob_sha1": "96974585e85510afeee7690b1ee821b02683e69b"
+      },
+      {
+        "path": "wiki/index.html",
+        "passed": true,
+        "HTTP": 200,
+        "bytes": 17201,
+        "sha256": "8b3bd7d3ed852dbb4aaff3604b9e6ee06c257f8123591d8c47bf924547b685ab",
+        "Git_blob_sha1": "1e624c4836f0dfee591f1cc59ca69d7bfde8f06b"
+      },
+      {
+        "path": "wiki/dex.html",
+        "passed": true,
+        "HTTP": 200,
+        "bytes": 10572,
+        "sha256": "6873a238568b920927720dff099c2742f7b425c55493a570c244257814b1cfd9",
+        "Git_blob_sha1": "5613fddb0ca46f306d26dbc15fe932fa3864243d"
+      },
+      {
+        "path": "wiki/dex-data.json",
+        "passed": true,
+        "HTTP": 200,
+        "bytes": 849391,
+        "sha256": "91c94fb86fd0adea79abb9575ea31b155ccb90efd4d5514c3a638d25d8a4f2bf",
+        "Git_blob_sha1": "442697eecae5f3732b8fb6627f40a97f78060167"
+      },
+      {
+        "path": "wiki/dex-profiles.js",
+        "passed": true,
+        "HTTP": 200,
+        "bytes": 178691,
+        "sha256": "0ccfee5466e5ead2d400bbdebb70ff830d58a6864d0a85b3f7bdef069e7c3557",
+        "Git_blob_sha1": "b7c3db3038bf3216a0e2a0da4c08c2a0d276ebdb"
+      },
+      {
+        "path": "wiki/dex-sprite-atlas.js",
+        "passed": true,
+        "HTTP": 200,
+        "bytes": 18786,
+        "sha256": "8b3a1d1224df211929a8079fdd621f16904600305601433afcc117c8f800b04d",
+        "Git_blob_sha1": "de0bf49a8b01f87b9fea58adaa888a3d02e7ec46"
+      },
+      {
+        "path": "wiki/dex-sprite-atlas.webp",
+        "passed": true,
+        "HTTP": 200,
+        "bytes": 153584,
+        "sha256": "55bdf244830f30f9aeb5eeddb8f628b6885eccb2e95b171dac14df9b529190df",
+        "Git_blob_sha1": "dd91aded78d44fc6aea679a678a0274edb93add1"
+      },
+      {
+        "path": "wiki/dex-portrait-sources.json",
+        "passed": true,
+        "HTTP": 200,
+        "bytes": 342,
+        "sha256": "644decdf201a0623707327e6d524178ab8e0f7e376f15bcf1f2ad4abded02b93",
+        "Git_blob_sha1": "758c4db1f73c6baaa968366d6d70c1aa628eff23"
+      },
+      {
+        "path": "wiki/map-hoenn.png",
+        "passed": true,
+        "HTTP": 200,
+        "bytes": 6757,
+        "sha256": "6abac3457dd2c588173b001c7f5ad37b58b4429ff50d3d54373f2fe868e5f625",
+        "Git_blob_sha1": "10f2d26f42c381c2af7f51a7c835b4b3b190107f"
+      },
+      {
+        "path": "wiki/map-kanto.png",
+        "passed": true,
+        "HTTP": 200,
+        "bytes": 3728,
+        "sha256": "bc89ff01cbc5dca3fe849d2c0d872c1e98b57a450663d72a7a210d3645b495f0",
+        "Git_blob_sha1": "241cf5864b38426d1cc75ebfa70b865afdcbcac3"
+      },
+      {
+        "path": "wiki/walkthrough-maps.json",
+        "passed": true,
+        "HTTP": 200,
+        "bytes": 119656,
+        "sha256": "bb6a344d516f911772685dbfaf2d19b439829aa8e387efc470e830e3879d7af1",
+        "Git_blob_sha1": "f0e8eee57a8b30cdcf6e5b1a0f365f007a3e0182"
+      },
+      {
+        "path": "wiki/android-version.json",
+        "passed": true,
+        "HTTP": 200,
+        "bytes": 399,
+        "sha256": "e34e5b41b07dc69569ca2eb266093ce5e634615cba426422edbcfc8bcf8f35d5",
+        "Git_blob_sha1": "eef161550efb41e023e6e11884b964dc01713bc2"
+      },
+      {
+        "path": "wiki/windows-version.json",
+        "passed": true,
+        "HTTP": 200,
+        "bytes": 275,
+        "sha256": "93e5a5f5b050a21097011801e15a6f96b56e3116ae90e2487eadbfbd0eab3c72",
+        "Git_blob_sha1": "2238e7dac70d85a5b1b17110bad79373ee66e9e2"
+      },
+      {
+        "path": "features/eon-roamers.md",
+        "passed": true,
+        "HTTP": 200,
+        "bytes": 2244,
+        "sha256": "5839b026abdd24d2ea62ef1359559d7ddf0d402efae50726473a2b79c56e1aad",
+        "Git_blob_sha1": "1f1bdffaf6978eba649ba9d0c521cc0bc937171c"
+      },
+      {
+        "path": "downloads/SHA256SUMS.txt",
+        "passed": true,
+        "HTTP": 200,
+        "bytes": 412,
+        "sha256": "ba99444b6394f922ef43834ef6cbd08b097d7def8d6a973731057b1ef170f931",
+        "Git_blob_sha1": "f7946ca3f819900e6a52fbb06c983c68e7b1cfa7"
+      },
+      {
+        "path": "downloads/Pokemon-Emerald-Legends-v0.0.80-debug.bps",
+        "passed": true,
+        "HTTP": 200,
+        "bytes": 17339590,
+        "sha256": "3934a81e21a2b38b8492d8856c845cae0efef2a33273c0973d8dcd9dc316bb7c",
+        "Git_blob_sha1": "5247edb10dec92038bb05b29728fef461b7941ad",
+        "source_CRC32": "1f1c08fb",
+        "target_CRC32": "76a8eb7a",
+        "patch_CRC_passed": true
+      },
+      {
+        "path": "downloads/Pokemon-Emerald-Legends-v0.0.80.bps",
+        "passed": true,
+        "HTTP": 200,
+        "bytes": 17509967,
+        "sha256": "0b6cff07bb6700a1df1e40e90c461faa58f18090edd499e41999f03a3e1be1d0",
+        "Git_blob_sha1": "0f5f0baaa21d6f982bcf819b6e939f0578d7b75b",
+        "source_CRC32": "1f1c08fb",
+        "target_CRC32": "4a2883c2",
+        "patch_CRC_passed": true
+      },
+      {
+        "path": "release-publication.json",
+        "passed": true,
+        "HTTP": 200,
+        "bytes": 249404,
+        "sha256": "97d3616fa8cac153509ba07e058eb16d86067f33c58f1e173e1ea89f884e4c4e",
+        "Git_blob_sha1": "b92ac2f03b08bad141d46a04aa5a43ef8519646b"
+      }
+    ],
+    "scope": "Fresh live HTTP bytes, reviewed SHA256/Git blobs and BPS footer CRCs only; not a gameplay, build or clean-base reconstruction test.",
+    "expected_receipt_sha256": "3490c8a798016e73965d397e48bb11a34a5bc5f8ba3e6274e8a893cbffea76c6"
+  }
+}
