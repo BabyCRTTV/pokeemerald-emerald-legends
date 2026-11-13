@@ -194,7 +194,7 @@
  function interactionHome(){
    const article=byId.get("interacting-with-your-pokemon");
    if(!article)return "";
-   return '<details class="interaction-home"><summary><strong>Interacting with Your Pokemon</strong><span class="interaction-arrow" aria-hidden="true">⌄</span></summary><div class="interaction-home-body"><p>'+escape(article.summary)+'</p>'+interactionGroups(article)+'<a class="interaction-article-link" href="?page=interacting-with-your-pokemon" data-page="interacting-with-your-pokemon">Open full guide →</a></div></details>';
+   return '<a class="interaction-home" href="?page=interacting-with-your-pokemon" data-page="interacting-with-your-pokemon" aria-label="Interacting with Your Pokemon, open guide"><strong>Interacting with Your Pokemon</strong><span aria-hidden="true">→</span></a>';
  }
 
  function side(active){

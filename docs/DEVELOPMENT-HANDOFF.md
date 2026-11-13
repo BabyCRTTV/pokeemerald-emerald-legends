@@ -1,5 +1,13 @@
 # Development handoff
 
+## Wiki 1.9.8 dedicated interaction guide shortcut (12 November 2026)
+
+**Model: GPT-6 | Reasoning: follow the owner's clarified navigation hierarchy without disturbing verified game sprite art, recipes, or other wiki sections.**
+
+Replaced the home-page “Interacting with Your Pokemon” main `<details>` accordion with one full-width, accessible navigation link styled as a button immediately beneath Walkthrough. Activating it opens the existing `?page=interacting-with-your-pokemon` article, which contains the three individually expandable Poffins, Pokéblocks, and Berries category buttons. No treatment content, recipe catalogues, sprites, visual palettes, maps, encounter data, ROM version, or saves were altered. Updated reader and mobile/fold/desktop Playwright regressions to check that only the button appears on the home page, that it navigates properly, that all nested catalogues and images remain functional, and that returning home works.
+
+Art accuracy note: the transparent 5×5 atlas embeds the original first 64×64 frame of `graphics/poffin/served.png` and applies the exact `src/legends_poffin_case.c` GBA crust/sprinkle palette indices. It accurately reproduces the game's *plated feeding-screen Poffin* at web pixel scaling, not the separate unplated cooking screen or a screenshot of each individual recipe. The real Treat Case still names only five dominant flavors.
+
 ## Wiki 1.9.7 transparent Poffin sprinkles and all cross-mixes (12 November 2026)
 
 **Model: GPT-6 | Reasoning: reuse genuine shipped game pixels and actual recipe logic; do not invent additional item types.**
