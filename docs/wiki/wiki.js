@@ -154,10 +154,10 @@
    if(!article?.catalogues)return "";
    return '<div class="interaction-groups">'+interactionTopics.map(topic=>{
      const entries=article.catalogues[topic.key]||[];
-     const marker="## "+topic.title+"\\n";
+     const marker="## "+topic.title+"\n";
      const start=article.content.indexOf(marker);
      const text=start<0?"":article.content.slice(start+marker.length);
-     const end=text.indexOf("\\n## ");
+     const end=text.indexOf("\n## ");
      const description=start<0?"":render((end<0?text:text.slice(0,end)).trim()).html;
      return '<details class="interaction-topic"><summary id="interaction-'+topic.key+'"><img src="art/interactions/'+topic.icon+'" width="32" height="32" loading="lazy" alt=""><strong>'+escape(topic.title)+'</strong><small>'+entries.length+' items</small><span class="interaction-arrow" aria-hidden="true">⌄</span></summary><div class="interaction-topic-body"><div class="interaction-description">'+description+'</div><div class="interaction-items">'+entries.map(item=>'<div class="interaction-item">'+interactionPicture(topic.key,item.name)+'<div><strong>'+escape(item.name)+'</strong><p>'+escape(item.effect)+'</p></div></div>').join("")+'</div></div></details>';
    }).join("")+'</div>';
