@@ -136,32 +136,61 @@
    flushP();flushL();flushT();flushCatalogue();return {html:out.join('\n'),heads};
  }
 
- const interactionTopics=[{"key":"poffins","title":"Poffins","icon":"poffin.png"},{"key":"pokeblocks","title":"Pokéblocks","icon":"pokeblock-case.png"},{"key":"berries","title":"Berries","icon":"berries/oran_berry.png"}];
+ const interactionTopics=[
+   {key:"poffins",title:"Poffins",icon:""},
+   {key:"pokeblocks",title:"Pokéblocks",icon:"pokeblock-case.png"},
+   {key:"berries",title:"Berries",icon:"berries/oran_berry.png"}
+ ];
+ const poffinFlavors=["spicy","dry","sweet","bitter","sour"];
  const pokeblockColors={"red":"#e6505c","blue":"#4886dc","pink":"#e9a0c6","green":"#5ab778","yellow":"#edc949","purple":"#9770cc","indigo":"#6e70b3","brown":"#ae8254","liteblue":"#83cfe3","olive":"#a0aa57","gray":"#9797a0","black":"#555361","white":"#f1eef9","gold":"#d8a83f"};
- function interactionPicture(group,name){
+ function poffinArt(primary,accent){
+   const x=poffinFlavors.indexOf(primary),y=poffinFlavors.indexOf(accent);
+   if(x<0||y<0)return "";
+   return '<span class="interaction-poffin-art" style="background-position:-'+(x*45)+'px -'+(y*45)+'px" aria-hidden="true"></span>';
+ }
+ function interactionPicture(group,item){
+   const name=item.name;
    if(group==="berries"){
      const berry=name.split(" Berry")[0].toLowerCase().replace(/[^a-z]/g,"");
      return '<span class="interaction-pic"><img src="art/interactions/berries/'+berry+'_berry.png" width="40" height="40" loading="lazy" decoding="async" alt=""></span>';
    }
    if(group==="poffins"){
-     const flavor=name.split(" ")[0].toLowerCase();
-     return '<span class="interaction-pic poffin-'+flavor+'"><img src="art/interactions/poffin.png" width="40" height="40" loading="lazy" decoding="async" alt=""></span>';
+     const primary=item.primary||name.split(" ")[0].toLowerCase();
+     const accent=item.accent||primary;
+     return '<span class="interaction-pic interaction-poffin">'+poffinArt(primary,accent)+'</span>';
    }
    const color=pokeblockColors[name.replace(/ Pokéblock$/,"").toLowerCase().replace(/[^a-z]/g,"")]||"#9677aa";
    return '<span class="interaction-pic interaction-block" style="--block-color:'+color+'"><img src="art/interactions/pokeblock.png" width="40" height="40" loading="lazy" decoding="async" alt=""></span>';
+ }
+ function interactionItems(group,entries){
+   return '<div class="interaction-items">'+entries.map(item=>
+      '<div class="interaction-item">'+interactionPicture(group,item)+'<div><strong>'+escape(item.name)+'</strong><p>'+escape(item.effect)+'</p></div></div>'
+   ).join('')+'</div>';
  }
  function interactionGroups(article){
    if(!article?.catalogues)return "";
    return '<div class="interaction-groups">'+interactionTopics.map(topic=>{
      const entries=article.catalogues[topic.key]||[];
+     const mixes=topic.key==="poffins"?(article.catalogues.poffinMixes||[]):[];
+     const count=entries.length+mixes.length;
      const marker="## "+topic.title+"\n";
      const start=article.content.indexOf(marker);
      const text=start<0?"":article.content.slice(start+marker.length);
      const end=text.indexOf("\n## ");
      const description=start<0?"":render((end<0?text:text.slice(0,end)).trim()).html;
-     return '<details class="interaction-topic"><summary id="interaction-'+topic.key+'"><img src="art/interactions/'+topic.icon+'" width="32" height="32" loading="lazy" alt=""><strong>'+escape(topic.title)+'</strong><small>'+entries.length+' items</small><span class="interaction-arrow" aria-hidden="true">⌄</span></summary><div class="interaction-topic-body"><div class="interaction-description">'+description+'</div><div class="interaction-items">'+entries.map(item=>'<div class="interaction-item">'+interactionPicture(topic.key,item.name)+'<div><strong>'+escape(item.name)+'</strong><p>'+escape(item.effect)+'</p></div></div>').join("")+'</div></div></details>';
-   }).join("")+'</div>';
+     const icon=topic.key==="poffins"
+       ?'<span class="interaction-topic-icon interaction-topic-icon-poffin"><span class="interaction-poffin-art" aria-hidden="true"></span></span>'
+       :'<span class="interaction-topic-icon"><img src="art/interactions/'+topic.icon+'" width="32" height="32" loading="lazy" alt=""></span>';
+     const body=topic.key==="poffins"
+       ?'<h3 class="interaction-subheading">Five named flavors</h3>'+interactionItems(topic.key,entries)
+         +'<h3 class="interaction-subheading">Cross-mixed flavors and sprinkles</h3>'
+         +'<p class="interaction-mix-note">These 20 appearances are labeled by the main flavor in the Treat Case. Sprinkle colors show the strongest secondary flavor, not additional inventory item types.</p>'
+         +interactionItems(topic.key,mixes)
+       :interactionItems(topic.key,entries);
+     return '<details class="interaction-topic"><summary id="interaction-'+topic.key+'">'+icon+'<strong>'+escape(topic.title)+'</strong><small>'+count+' entries</small><span class="interaction-arrow" aria-hidden="true">⌄</span></summary><div class="interaction-topic-body"><div class="interaction-description">'+description+'</div>'+body+'</div></details>';
+   }).join('')+'</div>';
  }
+
  function interactionHome(){
    const article=byId.get("interacting-with-your-pokemon");
    if(!article)return "";

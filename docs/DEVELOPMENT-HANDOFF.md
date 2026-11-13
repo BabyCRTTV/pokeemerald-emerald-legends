@@ -1,5 +1,13 @@
 # Development handoff
 
+## Wiki 1.9.7 transparent Poffin sprinkles and all cross-mixes (12 November 2026)
+
+**Model: GPT-6 | Reasoning: reuse genuine shipped game pixels and actual recipe logic; do not invent additional item types.**
+
+Switched wiki Poffin imagery from plain miniature icons to the first frame of the native sprinkled/plated feeding art. In a compact 5×5 SVG atlas, each of the 25 pictures embeds the original game's byte-identical compressed pixels, with palette index zero transparent, crust colors from game palette indices 9/10 and secondary sprinkles from index 15. The wiki lists five real dominant Poffin names plus all 20 possible dominant/secondary visual flavor combinations, with berry-order recipe examples and their Contest condition effects. Two-berry mixes retain their dominant-flavor name in the Treat Case; extra flavor values are not new inventory item types. The main collapsed section, the three category buttons, 14 Pokéblocks, 68 berries, original artwork and all ROM/save/encounter content remain unchanged.
+
+Regression tests now check 25 atlas tiles and their exact game palette values, alpha, byte-identical compressed pixel data, all 20 combinations, and responsive browser rendering. Publication status is tracked separately from the source commit.
+
 ## Wiki 1.9.6 illustrated interactions (12 November 2026)
 
 **Model: GPT-6 | Reasoning: preserve the shipped catalogues and reuse native artwork in a touch-friendly nested guide.**

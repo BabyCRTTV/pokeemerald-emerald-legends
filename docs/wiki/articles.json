@@ -1,5 +1,5 @@
 {
-  "wikiRevision": "1.9.6",
+  "wikiRevision": "1.9.7",
   "reviewedAgainstGameVersion": "0.0.77",
   "lastManualReview": "2026-11-12",
   "articles": [
@@ -35,7 +35,7 @@
       "title": "Interacting with Your Pokemon",
       "category": "Core gameplay",
       "summary": "Make treats, feed your Pokémon, and use berries on your adventure.",
-      "content": "## Poffins\nTalk to a **Poffin Maker** in a Pokémon Center to receive a **Treat Case** on your first visit to the machine. Choose one or two berries, then roll the D-pad in the direction shown. Follow the cues to reverse direction and adjust your speed as the batter thickens.\n\nOpen the **Treat Case** from **Bag → Key Items**. It holds up to **40 Poffins** and shows each treat’s flavor, level, and feel. Choose a Poffin and a Pokémon to feed it. Each flavor raises a different Contest condition. Mixed treats can raise more than one, and the amount depends on the treat’s flavor values and the Pokémon’s nature. Both kinds of treats add sheen based on feel.\n\n## Pokéblocks\nTalk to the Contest receptionist in **Lilycove City** to get a **Pokéblock Case**. Use the Berry Blender at the Contest Hall to make Pokéblocks from berries. Open the Pokéblock Case from **Key Items** and choose a block and a Pokémon to feed it. Pokéblocks also raise Contest condition and are stored in their own case.\n\n## Berries\nPick berries from plants along routes. You can plant a berry in soft soil and water it with the **Wailmer Pail** to grow more. Use a berry from the Bag when its effect applies, or give one to a Pokémon to hold. For example, an **Oran Berry** restores HP and a **Pecha Berry** cures poison. You can also use berries as ingredients for Poffins and Pokéblocks.\n",
+      "content": "## Poffins\nTalk to a **Poffin Maker** in a Pokémon Center to receive a **Treat Case** on your first visit to the machine. Choose one or two berries, then roll the D-pad in the direction shown. Follow the cues to reverse direction and adjust your speed as the batter thickens.\n\nOpen the **Treat Case** from **Bag → Key Items**. It holds up to **40 Poffins** and shows each treat’s flavor, level, and feel. Choose a Poffin and a Pokémon to feed it. Each flavor raises a different Contest condition. Mixed treats can raise more than one, and the amount depends on the treat’s flavor values and the Pokémon’s nature. Both kinds of treats add sheen based on feel.\n\nThere are **five named Poffin flavors** in Legends: Spicy, Dry, Sweet, Bitter, and Sour. A two-berry recipe can make a **mixed Poffin** with a differently colored sprinkle topping. The Treat Case still names it by its dominant flavor; the 20 possible dominant/secondary pairings below are visual and flavor combinations, not 20 extra inventory item types. Recipes can also contain weaker third, fourth, or fifth flavors. Berry order breaks ties, and mixing performance and the Pokémon's nature affect the final gains.\n\n## Pokéblocks\nTalk to the Contest receptionist in **Lilycove City** to get a **Pokéblock Case**. Use the Berry Blender at the Contest Hall to make Pokéblocks from berries. Open the Pokéblock Case from **Key Items** and choose a block and a Pokémon to feed it. Pokéblocks also raise Contest condition and are stored in their own case.\n\n## Berries\nPick berries from plants along routes. You can plant a berry in soft soil and water it with the **Wailmer Pail** to grow more. Use a berry from the Bag when its effect applies, or give one to a Pokémon to hold. For example, an **Oran Berry** restores HP and a **Pecha Berry** cures poison. You can also use berries as ingredients for Poffins and Pokéblocks.\n",
       "reviewedAgainstGameVersion": "0.0.78",
       "reviewedSourceCommit": "a717b26ce7ce3096893e834c24d8d8d64e539723",
       "catalogues": {
@@ -391,6 +391,128 @@
           {
             "name": "Enigma Berry (e-Reader)",
             "effect": "A legacy berry slot. Its effect and flavor depend on the loaded e-Reader berry data."
+          }
+        ],
+        "poffinMixes": [
+          {
+            "name": "Spicy Poffin · Dry sprinkles",
+            "primary": "spicy",
+            "accent": "dry",
+            "effect": "Spicy is the main flavor (Coolness); Dry is the strongest secondary flavor (Beauty) and colors the sprinkles. Example: Cheri Berry first + Chesto Berry second. The Treat Case still calls this a Spicy Poffin; other berry mixes can add further flavors."
+          },
+          {
+            "name": "Spicy Poffin · Sweet sprinkles",
+            "primary": "spicy",
+            "accent": "sweet",
+            "effect": "Spicy is the main flavor (Coolness); Sweet is the strongest secondary flavor (Cuteness) and colors the sprinkles. Example: Cheri Berry first + Pecha Berry second. The Treat Case still calls this a Spicy Poffin; other berry mixes can add further flavors."
+          },
+          {
+            "name": "Spicy Poffin · Bitter sprinkles",
+            "primary": "spicy",
+            "accent": "bitter",
+            "effect": "Spicy is the main flavor (Coolness); Bitter is the strongest secondary flavor (Smartness) and colors the sprinkles. Example: Cheri Berry first + Rawst Berry second. The Treat Case still calls this a Spicy Poffin; other berry mixes can add further flavors."
+          },
+          {
+            "name": "Spicy Poffin · Sour sprinkles",
+            "primary": "spicy",
+            "accent": "sour",
+            "effect": "Spicy is the main flavor (Coolness); Sour is the strongest secondary flavor (Toughness) and colors the sprinkles. Example: Cheri Berry first + Aspear Berry second. The Treat Case still calls this a Spicy Poffin; other berry mixes can add further flavors."
+          },
+          {
+            "name": "Dry Poffin · Spicy sprinkles",
+            "primary": "dry",
+            "accent": "spicy",
+            "effect": "Dry is the main flavor (Beauty); Spicy is the strongest secondary flavor (Coolness) and colors the sprinkles. Example: Chesto Berry first + Cheri Berry second. The Treat Case still calls this a Dry Poffin; other berry mixes can add further flavors."
+          },
+          {
+            "name": "Dry Poffin · Sweet sprinkles",
+            "primary": "dry",
+            "accent": "sweet",
+            "effect": "Dry is the main flavor (Beauty); Sweet is the strongest secondary flavor (Cuteness) and colors the sprinkles. Example: Chesto Berry first + Pecha Berry second. The Treat Case still calls this a Dry Poffin; other berry mixes can add further flavors."
+          },
+          {
+            "name": "Dry Poffin · Bitter sprinkles",
+            "primary": "dry",
+            "accent": "bitter",
+            "effect": "Dry is the main flavor (Beauty); Bitter is the strongest secondary flavor (Smartness) and colors the sprinkles. Example: Chesto Berry first + Rawst Berry second. The Treat Case still calls this a Dry Poffin; other berry mixes can add further flavors."
+          },
+          {
+            "name": "Dry Poffin · Sour sprinkles",
+            "primary": "dry",
+            "accent": "sour",
+            "effect": "Dry is the main flavor (Beauty); Sour is the strongest secondary flavor (Toughness) and colors the sprinkles. Example: Chesto Berry first + Aspear Berry second. The Treat Case still calls this a Dry Poffin; other berry mixes can add further flavors."
+          },
+          {
+            "name": "Sweet Poffin · Spicy sprinkles",
+            "primary": "sweet",
+            "accent": "spicy",
+            "effect": "Sweet is the main flavor (Cuteness); Spicy is the strongest secondary flavor (Coolness) and colors the sprinkles. Example: Pecha Berry first + Cheri Berry second. The Treat Case still calls this a Sweet Poffin; other berry mixes can add further flavors."
+          },
+          {
+            "name": "Sweet Poffin · Dry sprinkles",
+            "primary": "sweet",
+            "accent": "dry",
+            "effect": "Sweet is the main flavor (Cuteness); Dry is the strongest secondary flavor (Beauty) and colors the sprinkles. Example: Pecha Berry first + Chesto Berry second. The Treat Case still calls this a Sweet Poffin; other berry mixes can add further flavors."
+          },
+          {
+            "name": "Sweet Poffin · Bitter sprinkles",
+            "primary": "sweet",
+            "accent": "bitter",
+            "effect": "Sweet is the main flavor (Cuteness); Bitter is the strongest secondary flavor (Smartness) and colors the sprinkles. Example: Pecha Berry first + Rawst Berry second. The Treat Case still calls this a Sweet Poffin; other berry mixes can add further flavors."
+          },
+          {
+            "name": "Sweet Poffin · Sour sprinkles",
+            "primary": "sweet",
+            "accent": "sour",
+            "effect": "Sweet is the main flavor (Cuteness); Sour is the strongest secondary flavor (Toughness) and colors the sprinkles. Example: Pecha Berry first + Aspear Berry second. The Treat Case still calls this a Sweet Poffin; other berry mixes can add further flavors."
+          },
+          {
+            "name": "Bitter Poffin · Spicy sprinkles",
+            "primary": "bitter",
+            "accent": "spicy",
+            "effect": "Bitter is the main flavor (Smartness); Spicy is the strongest secondary flavor (Coolness) and colors the sprinkles. Example: Rawst Berry first + Cheri Berry second. The Treat Case still calls this a Bitter Poffin; other berry mixes can add further flavors."
+          },
+          {
+            "name": "Bitter Poffin · Dry sprinkles",
+            "primary": "bitter",
+            "accent": "dry",
+            "effect": "Bitter is the main flavor (Smartness); Dry is the strongest secondary flavor (Beauty) and colors the sprinkles. Example: Rawst Berry first + Chesto Berry second. The Treat Case still calls this a Bitter Poffin; other berry mixes can add further flavors."
+          },
+          {
+            "name": "Bitter Poffin · Sweet sprinkles",
+            "primary": "bitter",
+            "accent": "sweet",
+            "effect": "Bitter is the main flavor (Smartness); Sweet is the strongest secondary flavor (Cuteness) and colors the sprinkles. Example: Rawst Berry first + Pecha Berry second. The Treat Case still calls this a Bitter Poffin; other berry mixes can add further flavors."
+          },
+          {
+            "name": "Bitter Poffin · Sour sprinkles",
+            "primary": "bitter",
+            "accent": "sour",
+            "effect": "Bitter is the main flavor (Smartness); Sour is the strongest secondary flavor (Toughness) and colors the sprinkles. Example: Rawst Berry first + Aspear Berry second. The Treat Case still calls this a Bitter Poffin; other berry mixes can add further flavors."
+          },
+          {
+            "name": "Sour Poffin · Spicy sprinkles",
+            "primary": "sour",
+            "accent": "spicy",
+            "effect": "Sour is the main flavor (Toughness); Spicy is the strongest secondary flavor (Coolness) and colors the sprinkles. Example: Aspear Berry first + Cheri Berry second. The Treat Case still calls this a Sour Poffin; other berry mixes can add further flavors."
+          },
+          {
+            "name": "Sour Poffin · Dry sprinkles",
+            "primary": "sour",
+            "accent": "dry",
+            "effect": "Sour is the main flavor (Toughness); Dry is the strongest secondary flavor (Beauty) and colors the sprinkles. Example: Aspear Berry first + Chesto Berry second. The Treat Case still calls this a Sour Poffin; other berry mixes can add further flavors."
+          },
+          {
+            "name": "Sour Poffin · Sweet sprinkles",
+            "primary": "sour",
+            "accent": "sweet",
+            "effect": "Sour is the main flavor (Toughness); Sweet is the strongest secondary flavor (Cuteness) and colors the sprinkles. Example: Aspear Berry first + Pecha Berry second. The Treat Case still calls this a Sour Poffin; other berry mixes can add further flavors."
+          },
+          {
+            "name": "Sour Poffin · Bitter sprinkles",
+            "primary": "sour",
+            "accent": "bitter",
+            "effect": "Sour is the main flavor (Toughness); Bitter is the strongest secondary flavor (Smartness) and colors the sprinkles. Example: Aspear Berry first + Rawst Berry second. The Treat Case still calls this a Sour Poffin; other berry mixes can add further flavors."
           }
         ]
       }
