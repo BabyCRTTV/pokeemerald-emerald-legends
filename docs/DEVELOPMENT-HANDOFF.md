@@ -1,5 +1,13 @@
 # Development handoff
 
+## v0.0.81 A Day Off in Hoenn published and live verified (13 November 2026)
+
+**Model: GPT-6 | Reasoning: preserve approved art and native map IDs, and bind the deployed files to the verified Release and Debug builds.**
+
+Published PR #101 as `de0d5d2e7f75e1325a890dd7569c6d61c9ad99c3` with gray skipping pebbles at Route 102 and Dewford, the Petalburg Woods play sign, and the Route 113 wash pail. Candidate and production native checks and both clean-base patch decoders passed. Production project, wiki, Android, and Windows checks passed. The gated Pages deployment completed. Its immediate verifier reported mismatched patcher.js bytes. A fresh recheck matched all 21 critical deployed files and both BPS hashes and CRCs. [Release evidence](qa/day-off-v0.0.81.json).
+
+Adjusted the grotto baseline assertion to account for the one appended Woods play sign, made the Release Continue harness accept optimized symbol aliases, and made the Wyrmtide fixture select Briney and his boat by local ID. The exercises remain enabled. Normal Release Continue verified restoring the Route 102 prop on a synthetic older map object list. The historical owner-save matrix remains incomplete.
+
 ## A Day Off in Hoenn skipping-stone art (13 November 2026)
 
 **Model: GPT-6 | Reasoning: give the skipping stones distinct, flat silhouettes readable on grass and sand.**
