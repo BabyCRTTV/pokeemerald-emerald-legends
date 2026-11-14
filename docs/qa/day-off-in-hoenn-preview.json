@@ -1,0 +1,48 @@
+{
+  "version": "0.0.80",
+  "romSha256": "f8ef7560b32fc8cc614a1a4dab5131079d6f3065411a492197241f88cc3f2ad4",
+  "emulator": "mGBA native core 0.10.5",
+  "templateOffset": 3184,
+  "captureSize": [
+    720,
+    480
+  ],
+  "captureScaling": "3x nearest-neighbor",
+  "fixtures": "Private controlled map, position and party setup, then actual controller input",
+  "checks": [
+    "Route102",
+    "Dewford",
+    "Route113-Torchic",
+    "Route113-Mudkip",
+    "Woods-find",
+    "Woods-miss",
+    "Woods-cancel",
+    "prop B cancel",
+    "prop Cancel row",
+    "ordinary follower talk beside the stones",
+    "prop explains missing follower",
+    "stone pile works from a second side"
+  ],
+  "harnessSha256": {
+    "arm.c": "81fe21d7ad1391ca286a04c7ece1be3e15b5b83ba46bc33ee43fe11bd7f4bcd2",
+    "run.py": "6f8178973e86159ac6cb476d8c990a0b24264c34738b5f7b82896b190d08f277",
+    "release.py": "203ea2f143c16c9eaa0e159b9ccf9decb86cd258730d9f9aa30cbdd6a92c1027"
+  },
+  "baseCommit": "d86e886b4ff99fc3b8183d25917a9f209c2ac917",
+  "release": {
+    "romSha256": "c1e6a168ed441e24b7e1e926d3c6f1b2415a0f70c0aef427e1ae3583d6d55832",
+    "checks": [
+      "Normal Release Continue",
+      "Route 102 prop restored onto an earlier map object list",
+      "Existing NPC position retained",
+      "A-button interaction with restored stone pile"
+    ]
+  },
+  "captures": {
+    "Day-Off-Petalburg-Woods-Play-Sign.png": "0059ad4bc0a6db09dfa038aec868860c19a031001d3eb942d297692bb9e6b00c",
+    "Day-Off-Route-113-Wash-Pail.png": "fedf86460189e86a9af35fe3b80f14e364fe61f210b21f1208a8997ac0d005d7",
+    "Day-Off-Dewford-Pebbles.png": "d6d95e36c948a2b8d342dd32aebedc4de85e2d13e61cd91ac1fd839d81400d90",
+    "Day-Off-Route-102-Pebbles.png": "97b3e4ef7ed928a3e29610f8ce3c08a22af2b8b6ff31cc1f388078410ba912f2"
+  },
+  "scope": "Local review builds. Debug controller checks used controlled map and party setup. Unmodified Release used a synthetic battery with the old Route 102 object list; normal Continue and button interaction passed. Full production, patch and historical owner-save gates are outstanding."
+}

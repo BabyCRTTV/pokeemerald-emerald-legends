@@ -3228,6 +3228,15 @@ const struct ObjectEventGraphicsInfo *GetObjectEventGraphicsInfo(u16 graphicsId)
     if (graphicsId == OBJ_EVENT_GFX_LEGENDS_POFFIN_MAKER)
         return &gObjectEventGraphicsInfo_PoffinMaker;
 
+    if (graphicsId == OBJ_EVENT_GFX_LEGENDS_SKIPPING_STONES)
+        return &gObjectEventGraphicsInfo_SkippingStones;
+
+    if (graphicsId == OBJ_EVENT_GFX_LEGENDS_RINSE_PAIL)
+        return &gObjectEventGraphicsInfo_RinsePail;
+
+    if (graphicsId == OBJ_EVENT_GFX_LEGENDS_WOODS_PLAY_SIGN)
+        return &gObjectEventGraphicsInfo_WoodsPlaySign;
+
     if (graphicsId == OBJ_EVENT_GFX_LEGENDS_MIRA_ASLEEP)
         return &gObjectEventGraphicsInfo_MiraAsleep;
 

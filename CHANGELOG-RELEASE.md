@@ -2,6 +2,12 @@
 
 This is the player-facing history for the recommended **Release** build. Shared Legends changes are repeated here so this file stands on its own; Release-only behavior is called out separately.
 
+## [0.0.81] - 2026-11-13
+
+- Added A Day Off in Hoenn, with stone skipping near Oldale and on Dewford’s northeast shore, hide-and-seek in Petalburg Woods, and an ash rinse at the Route 113 Glass Workshop.
+- Added visible activity props. Face a pile of flat stones, the wooden play sign, or the wash pail and press A with a Pokémon following you.
+- Added reactions based on type and nature, including Water types splashing back, Grass types blending into the woods, and Fire types getting a damp-cloth wash.
+
 ## [0.0.80] - 2026-11-13
 
 - Fixed discolored berry plants by restoring their original color palettes across all growth stages and seasons.

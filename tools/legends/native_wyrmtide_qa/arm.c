@@ -64,9 +64,20 @@ void qa(void)
  }
  if(b[0]==4){
   // Simulate a pre-quest Dewford cache, then run the real refresh on loaded data.
-  u32 n=gMapHeader.events->objectEventCount-2;
+  // Find the original expedition pair by local ID; later props follow them.
+  u32 slots[2]={OBJECT_EVENT_TEMPLATES_COUNT,OBJECT_EVENT_TEMPLATES_COUNT};
+  for(u32 i=0;i<gMapHeader.events->objectEventCount;i++){
+   u8 id=gMapHeader.events->objectEvents[i].localId;
+   if(id==LOCALID_WYRMTIDE_BRINEY)slots[0]=i;
+   if(id==LOCALID_WYRMTIDE_BOAT)slots[1]=i;
+  }
+  if(slots[0]==OBJECT_EVENT_TEMPLATES_COUNT||slots[1]==OBJECT_EVENT_TEMPLATES_COUNT){
+   b[5]=b[6]=b[7]=b[8]=b[9]=b[10]=0;
+   b[4]=1;SetMainCallback2((MainCallback)b[3]);return;
+  }
   struct ObjectEventTemplate kept=gSaveBlock1Ptr->objectEventTemplates[0];
-  for(u32 i=n;i<n+2;i++){
+  for(u32 slot=0;slot<ARRAY_COUNT(slots);slot++){
+   u32 i=slots[slot];
    RemoveObjectEventByLocalIdAndMap(gMapHeader.events->objectEvents[i].localId,MAP_NUM(MAP_DEWFORD_TOWN),MAP_GROUP(MAP_DEWFORD_TOWN));
    memset(&gSaveBlock1Ptr->objectEventTemplates[i],0,sizeof(struct ObjectEventTemplate));
   }
@@ -75,7 +86,10 @@ void qa(void)
   LegendsWyrmtideRefreshDewford();
   b[7]=!bytesDiffer(&kept,&gSaveBlock1Ptr->objectEventTemplates[0],sizeof(kept));
   b[8]=1;
-  for(u32 i=n;i<n+2;i++)if(bytesDiffer(&gSaveBlock1Ptr->objectEventTemplates[i],&gMapHeader.events->objectEvents[i],sizeof(kept)))b[8]=0;
+  for(u32 slot=0;slot<ARRAY_COUNT(slots);slot++){
+   u32 i=slots[slot];
+   if(bytesDiffer(&gSaveBlock1Ptr->objectEventTemplates[i],&gMapHeader.events->objectEvents[i],sizeof(kept)))b[8]=0;
+  }
   u8 id;b[9]=!TryGetObjectEventIdByLocalIdAndMap(LOCALID_WYRMTIDE_BRINEY,MAP_NUM(MAP_DEWFORD_TOWN),MAP_GROUP(MAP_DEWFORD_TOWN),&id);
   b[10]=!TryGetObjectEventIdByLocalIdAndMap(LOCALID_WYRMTIDE_BOAT,MAP_NUM(MAP_DEWFORD_TOWN),MAP_GROUP(MAP_DEWFORD_TOWN),&id);
  }

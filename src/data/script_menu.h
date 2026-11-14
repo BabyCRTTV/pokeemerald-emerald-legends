@@ -1188,6 +1188,23 @@ static const struct MenuAction sLegendsDevonMain[] = {
     {COMPOUND_STRING("NOT NOW")},
 };
 
+static const struct MenuAction sLegendsDayOffPlay[] = {
+    {COMPOUND_STRING("Skip stones")},
+    {gText_Cancel2},
+};
+static const struct MenuAction sLegendsDayOffWash[] = {
+    {COMPOUND_STRING("Wash")},
+    {gText_Cancel2},
+};
+static const struct MenuAction sLegendsDayOffHide[] = {
+    {COMPOUND_STRING("Hide-and-seek")},
+    {gText_Cancel2},
+};
+static const struct MenuAction sLegendsDayOffSeek[] = {
+    {COMPOUND_STRING("Tree roots")},
+    {COMPOUND_STRING("Ferns")},
+};
+
 static const struct MultichoiceListStruct sMultichoiceLists[] =
 {
     [MULTI_BRINEY_ON_DEWFORD]          = MULTICHOICE(MultichoiceList_BrineyOnDewford),
@@ -1322,6 +1339,10 @@ static const struct MultichoiceListStruct sMultichoiceLists[] =
     [MULTI_GAME_CORNER_TMPRIZES]           = MULTICHOICE(sMultichoiceList_GameCornerTMPrizes),
     [MULTI_GAME_CORNER_BATTLE_ITEM_PRIZES] = MULTICHOICE(sMultichoiceList_GameCornerBattleItemPrizes),
     [MULTI_DEPT_STORE_ELEVATOR]            = MULTICHOICE(sMultichoiceList_DeptStoreElevator),
+    [MULTI_LEGENDS_DAY_OFF_PLAY] = MULTICHOICE(sLegendsDayOffPlay),
+    [MULTI_LEGENDS_DAY_OFF_WASH] = MULTICHOICE(sLegendsDayOffWash),
+    [MULTI_LEGENDS_DAY_OFF_SEEK] = MULTICHOICE(sLegendsDayOffSeek),
+    [MULTI_LEGENDS_DAY_OFF_HIDE] = MULTICHOICE(sLegendsDayOffHide),
     [MULTI_LEGENDS_WYRMTIDE_EXPEDITION] = MULTICHOICE(sLegendsWyrmtideExpedition),
     [MULTI_LEGENDS_WYRMTIDE] = MULTICHOICE(sLegendsWyrmtide),
     [MULTI_LEGENDS_CLOCK_MODE] = MULTICHOICE(sLegendsClockModes),

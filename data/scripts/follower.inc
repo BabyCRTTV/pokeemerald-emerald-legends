@@ -646,3 +646,5 @@ EventScript_FollowerFaceRight:
 	applymovement OBJ_EVENT_ID_FOLLOWER Common_Movement_FaceRight
 	waitmovement OBJ_EVENT_ID_FOLLOWER
 	goto EventScript_FollowerGenericSkipFace
+
+	.include "data/scripts/legends_day_off.inc"

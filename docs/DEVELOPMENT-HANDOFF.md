@@ -1,5 +1,27 @@
 # Development handoff
 
+## A Day Off in Hoenn skipping-stone art (13 November 2026)
+
+**Model: GPT-6 | Reasoning: give the skipping stones distinct, flat silhouettes readable on grass and sand.**
+
+Drew three separated gray pebbles using the native NPC 4 palette. Preserved the approved pail and sign, world positions, activity scripts and save behavior. Reviewed actual mGBA frames at Route 102 and Dewford. [Build and capture evidence](qa/day-off-in-hoenn-preview.json). Review branch only.
+
+## A Day Off in Hoenn activity props (13 November 2026)
+
+**Model: GPT-6 | Reasoning: make the interaction discoverable through scenery and preserve Continue on maps with newly appended objects.**
+
+The owner requested an object to interact with. Added flat stone piles at the Route 102 pond and on Dewford's northeast shore, a wooden play sign in the Petalburg Woods clearing, and a water pail outside the Route 113 Glass Workshop. Facing a prop and pressing A opens its activity with an active walking Pokémon, or explains how to try it if the follower is unavailable. The A interaction on the follower uses the ordinary dialogue path. Existing map objects retain their indices and the layout binaries are untouched. Continue fills only a missing Day Off template on the four maps, without changing the save format.
+
+[Build, controller and Continue evidence](qa/day-off-in-hoenn-preview.json). Review branch only. Full production verification and publication follow visual approval.
+
+## A Day Off in Hoenn preview (13 November 2026)
+
+**Model: GPT-6 | Reasoning: extend native follower interactions and use each location's existing terrain, effects, and story context.**
+
+Added Play at the Route 102 pond, on Dewford's shore, and in the Petalburg Woods clearing, plus Wash outside the Route 113 Glass Workshop. Players face the walking Pokémon and press A. Water and shy follower reactions differ, Grass followers have a camouflage reveal, and Fire followers get a damp cloth. Local dialogue and existing signs explain where to try the actions. Hide-and-seek presents two guesses and restores the follower on a hit, miss, or cancellation. The activities are repeatable and cosmetic. No serialized structures, persistent IDs, map geometry, assets or quest/encounter progression were edited.
+
+Local Debug and Release built. mGBA controller verification passed ten targeted cases including Talk and Cancel, with genuine in-game captures. The follower host regression and shared-build provenance tests passed. Added the focused mGBA suite to the existing private native workflow. [Build and capture evidence](qa/day-off-in-hoenn-preview.json). This is a v0.0.80-based review branch. Await visual approval and the full release gates before publication.
+
 ## v0.0.80 berry palettes published and live verified (13 November 2026)
 
 **Model: GPT-6 | Reasoning: preserve the approved native artwork, validate the integrated Bag release, and bind live downloads to verified production builds.**

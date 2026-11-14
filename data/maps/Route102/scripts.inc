@@ -94,7 +94,9 @@ Route102_Text_ImNotVeryTall:
 	.string "into tall grass.\p"
 	.string "The grass goes up my nose and…\n"
 	.string "Fwafwafwafwafwa…\p"
-	.string "Fwatchoo!$"
+	.string "Fwatchoo!\p"
+	.string "There are flat stones by the pond\n"
+	.string "near OLDALE. Press A to try one.$"
 
 Route102_Text_CatchWholeBunchOfPokemon:
 	.string "I'm going to catch a whole bunch of\n"
