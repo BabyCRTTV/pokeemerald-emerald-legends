@@ -10639,6 +10639,39 @@
       "border_filepath": "data/layouts/LegendsNightmare_Shore/border.bin",
       "blockdata_filepath": "data/layouts/LegendsNightmare_Shore/map.bin",
       "layout_version": "emerald"
+    },
+    {
+      "id": "LAYOUT_LILYCOVE_CITY_COVE_LILY_MOTEL_APARTMENT",
+      "name": "LilycoveCity_CoveLilyMotel_Apartment_Layout",
+      "width": 10,
+      "height": 8,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_GenericBuilding",
+      "border_filepath": "data/layouts/LilycoveCity_CoveLilyMotel_Apartment/border.bin",
+      "blockdata_filepath": "data/layouts/LilycoveCity_CoveLilyMotel_Apartment/map.bin",
+      "layout_version": "emerald"
+    },
+    {
+      "id": "LAYOUT_MAUVILLE_CITY_MAUVILLE_HILLS_LOBBY",
+      "name": "MauvilleCity_MauvilleHills_Lobby_Layout",
+      "width": 10,
+      "height": 8,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_GenericBuilding",
+      "border_filepath": "data/layouts/MauvilleCity_MauvilleHills_Lobby/border.bin",
+      "blockdata_filepath": "data/layouts/MauvilleCity_MauvilleHills_Lobby/map.bin",
+      "layout_version": "emerald"
+    },
+    {
+      "id": "LAYOUT_MAUVILLE_CITY_MAUVILLE_HILLS_APARTMENT",
+      "name": "MauvilleCity_MauvilleHills_Apartment_Layout",
+      "width": 11,
+      "height": 8,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_GenericBuilding",
+      "border_filepath": "data/layouts/MauvilleCity_MauvilleHills_Apartment/border.bin",
+      "blockdata_filepath": "data/layouts/MauvilleCity_MauvilleHills_Apartment/map.bin",
+      "layout_version": "emerald"
     }
   ]
 }

@@ -1,0 +1,32 @@
+{
+  "version": "0.0.81",
+  "romSha256": "ad372d88f1b74567b329437f7bbc3b9e5f33c4b1e93729b368436773e3eaee3d",
+  "emulator": "mGBA native core",
+  "checks": [
+    "blocked doors and independent tenancy",
+    "cancel and insufficient funds",
+    "exact debits, including a zero balance",
+    "repeat access without charge",
+    "physical Mauville entrance",
+    "party heal",
+    "storage PC",
+    "decor after reentry",
+    "normal battery Continue"
+  ],
+  "sourceBase": "e9a2de6c20585088038d4fe6ab713ba3b71f4720",
+  "harness": {
+    "tools/legends/native_apartment_qa/arm.c": "f2474bc7a79b19cc22f2178fe0aa0a9bdbc11a89ac328025827bfe2d9a9aaec5",
+    "tools/legends/native_apartment_qa/run.py": "e29a64d924243b28f4b097bbd03acbaf2b709a2e90b44164427687855d2e7a47"
+  },
+  "captures": {
+    "Cove-Lily-Locked.png": "509e7a38c63f66850b065147aeea2b45820d0f438053b7c291559eaff6ef1557",
+    "Cove-Lily-One-Time-Rent.png": "44bcb2292ef936123cd5818a532280ce31cbf85fd03a35327797ab0b90908741",
+    "Cove-Lily-Studio.png": "7d5789ffe6725cae40376a9e0b654191affdf00bac28f2a8f1f4928a48a58172",
+    "Mauville-Hills-Locked.png": "c04614a40c2002eb165277d604cc2aa630f246e58b88ff07a05d32bf3a466057",
+    "Mauville-Hills-Exterior.png": "6c5bb91a6b503843e84820ef5b605a5bed4b63834c816388668a2dca1954426b",
+    "Mauville-Hills-One-Time-Rent.png": "3c72ad5850a164b957e27501069d62e94f86fa0706ffa88cb4485fdb8ace9640",
+    "Mauville-Hills-Apartment.png": "238583977ec05aef3d8e4ee2e0cfeb19e374bf3a023dacadcfd9c1f2c1dbbd1e",
+    "Mauville-Hills-Continued.png": "56582d2bf5f038c21dbec7b1fe82fefeff74edf157a50e8a5827db008d277cad"
+  },
+  "limits": "Controlled native fixture and uninstrumented normal Continue. Historical owner saves and production gate are pending."
+}

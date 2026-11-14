@@ -1,5 +1,57 @@
 # Development handoff
 
+## Apartment rentals v0.0.82 approved for publication (14 November 2026)
+
+**Model: GPT-6.1 Sol | Reasoning: ship the approved charcoal laptop pixels and preserve the rental behavior verified in mGBA.**
+
+The owner selected option 2, Charcoal Workstation, and authorized publication. Stored the exact selected atlas in the game. Both rentals retain the approved table palette, layouts, and one-time payments. Updated the v0.0.82 game and public version displays and changelogs. Encounter tables and the existing LegendsDex source pin remain unchanged.
+
+[Native preview evidence](qa/apartment-rentals-v0.0.82.json). Await candidate checks, merge, production patch publication, and exact live verification.
+
+## Apartment laptop and matching desk preview (14 November 2026)
+
+**Model: GPT-6.1 Sol | Reasoning: make the laptop silhouette readable and use the dining table palette.**
+
+Reshaped both laptop sprites with a lower widescreen lid and a tapered keyboard. Used the existing dining table palette and furniture outline for the desktop, rim, apron, and legs. Map positions, interaction, and save data remain unchanged. The prior preview was authorized for publication, then the owner requested this art revision and a screenshot. The revised preview is available for visual review.
+
+The native build and mGBA rental and battery scenarios passed, including laptop power cycling and storage. [Evidence](qa/apartment-laptop-desk-preview.json).
+
+## Apartment laptop placement and furniture depth (14 November 2026)
+
+**Model: GPT-6 | Reasoning: align the workstation with existing furniture and animate its complete silhouette.**
+
+Moved the Cove Lily laptop from (6,2) to (7,2), directly beside its existing bookcase; updated its interaction event. Enlarged both apartment laptops into two vertically stacked metatiles with a deeper wooden desktop, recessed drawer, shaded side and feet, using existing palette colors. Mauville retains its workstation location because its approved room has no bookcase. Both screen halves follow the native PC flicker/on/off cycle. Existing IDs and saved data remain stable.
+
+Native build and mGBA rental suite passed, including a new controller check at the moved Lilycove workstation and upper-screen on/off assertions. Reviewed both rooms in actual ROM captures. [Evidence](qa/apartment-laptop-placement.json). Review branch, not published; production Release/BPS gates remain.
+
+## Apartment laptop and lobby door assembly repair (14 November 2026)
+
+**Model: GPT-6 | Reasoning: repair furniture contact and imported wall underlays, preserving room geometry.**
+
+Reassembled both laptop states into one continuous silver laptop and wooden desk with visible legs, using existing building palette colors. Replaced only the Mauville lobby door assembly with matching native ceiling/wall strips and a teal frame. Six new primary metatiles retain the original door assembly attributes; existing metatile and map IDs remain stable. No script, warp, rent, save, or room-layout changes. Native build and mGBA rental suite passed, including door gating/entry, payment, laptop storage and power states, reentry, and battery Continue. Inspected actual room and locked-door captures; recorded an updated rental walkthrough. [Evidence](qa/apartment-laptop-door-repair.json). Review branch only; production Release/BPS gates remain for publication.
+
+## Apartment attendants and laptop revision (14 November 2026)
+
+**Model: GPT-6 Astra | Reasoning: make the transaction visible and restore complete native tile assemblies.**
+
+Replaced the furniture rent triggers with visible attendants at the same interaction positions in both lobbies. Locked doors and the exterior sign direct players to the attendants. Added the new motel receptionist to older saved object templates during Continue. Restored the missing upper row of the native Mauville roof, retaining the door and facade. Both apartment terminals now depict hinged laptops with keyboard bases on the existing desks. Approved private room layouts and rent amounts remain intact.
+
+Native build and mGBA controller verification passed: locked doors, cancel, insufficient funds, exact payments, independent tenancy, reentry without charge, healing, laptop storage/on-off art, decor, and normal battery Continue. Revised rental walkthrough recorded. The legacy motel object-template migration was code-reviewed, not separately exercised with a pre-apartment battery save. Review branch only.
+
+## Hoenn apartment roof and PC polish (14 November 2026)
+
+**Model: GPT-6 | Reasoning: preserve the facade footprint and keep both desktop terminal states on the native wood floor.**
+
+Added angled end caps and a continuous ridge to the Mauville Hills roof. Both apartments now use the same desk-mounted terminal with a floor-matched tile and a working screen animation. The roof artwork is limited to the new building. Rent, room entrances, and persistent flags are untouched. The mGBA rental suite passed again, and a single 41-second MP4 captured both controller-driven rental and entry sequences. [Evidence](qa/apartment-rentals-polish.json). Review branch.
+
+## Hoenn apartments preview (14 November 2026)
+
+**Model: GPT-6 | Reasoning: gate private doors on independently saved payments and preserve existing event indices.**
+
+Added a furnished Cove Lily Motel studio for a one-time ¥2,200 and a Mauville Hills apartment for ¥3,100. The notices are at the motel's ground-floor cabinet and the Mauville Hills lobby desk. Both private doors require their own payment. Rooms support followers, party rest, the standard PC, and an optional room-specific decoration. Existing map groups, layouts, and public warp lists keep their indices. Four previously unused flag bits record rent and decoration without extending the save format.
+
+Verified purchase, doors, room features, and save/Continue in mGBA. [Preview evidence](qa/apartment-rentals-preview.json). Review branch awaiting visual approval and production release gates.
+
 ## v0.0.81 A Day Off in Hoenn published and live verified (13 November 2026)
 
 **Model: GPT-6 | Reasoning: preserve approved art and native map IDs, and bind the deployed files to the verified Release and Debug builds.**

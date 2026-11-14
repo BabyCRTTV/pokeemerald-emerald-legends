@@ -1,0 +1,24 @@
+{
+  "version": "0.0.81",
+  "romSha256": "86b8d6a21fd8056d2448d1c6d0bbe04a027e747831717f624f7ae01d3a1925e2",
+  "emulator": "mGBA native core",
+  "checks": [
+    "blocked doors and independent tenancy",
+    "cancel and insufficient funds",
+    "exact debits, including a zero balance",
+    "repeat access without charge",
+    "physical Mauville entrance",
+    "party heal",
+    "storage PC with room-specific on/off art",
+    "decor after reentry",
+    "normal battery Continue"
+  ],
+  "sourceBase": "c669443d564a08019d5c0e383af83bdab1aea389",
+  "recording": {
+    "file": "Emerald-Legends-Apartment-Rentals.mp4",
+    "durationSeconds": 40.8,
+    "sha256": "15832a3212e4f442fb3399488022017064c6adbac83289166cf7f1eb1d19be70",
+    "capture": "mGBA video frames sampled at 30 fps, cut between the two cities"
+  },
+  "harnessSha256": "2923878b57ff8bc7b1f9ac667fff34eaa2184c988092fe47bba052eee5d329de"
+}

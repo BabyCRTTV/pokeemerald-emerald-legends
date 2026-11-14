@@ -1,0 +1,20 @@
+{
+  "version": "0.0.81",
+  "romSha256": "ec2672f6f9f725bcee5f94e807360c64714cf0603933fbc38981a3d78ed9d6eb",
+  "emulator": "mGBA native core",
+  "checks": [
+    "blocked doors and independent tenancy",
+    "cancel and insufficient funds",
+    "exact debits, including a zero balance",
+    "repeat access without charge",
+    "physical Mauville entrance",
+    "party heal",
+    "storage PC with room-specific on/off art",
+    "decor after reentry",
+    "normal battery Continue"
+  ],
+  "approvedArt": "Option 2, Charcoal Workstation",
+  "assetSha256": "a069b4509ed5dbe7a3253cfe4f1df978fa505d25905ee393c116a805ff48f1ec",
+  "releaseVersion": "0.0.82",
+  "published": false
+}

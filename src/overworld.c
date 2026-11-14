@@ -2164,6 +2164,10 @@ void CB2_ContinueSavedGame(void)
     else
     {
         LegendsDayOffRestoreProp();
+        if (gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(MAP_LILYCOVE_CITY_COVE_LILY_MOTEL_1F)
+         && gSaveBlock1Ptr->location.mapNum == MAP_NUM(MAP_LILYCOVE_CITY_COVE_LILY_MOTEL_1F)
+         && gSaveBlock1Ptr->objectEventTemplates[1].localId == 0)
+            gSaveBlock1Ptr->objectEventTemplates[1] = gMapHeader.events->objectEvents[1];
         LoadSaveblockObjEventScripts();
     }
 
