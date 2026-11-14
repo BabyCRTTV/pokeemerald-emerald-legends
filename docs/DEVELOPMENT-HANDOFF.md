@@ -1,5 +1,11 @@
 # Development handoff
 
+## Apartment laptop and lobby door assembly repair (14 November 2026)
+
+**Model: GPT-6 | Reasoning: repair furniture contact and imported wall underlays, preserving room geometry.**
+
+Reassembled both laptop states into one continuous silver laptop and wooden desk with visible legs, using existing building palette colors. Replaced only the Mauville lobby door assembly with matching native ceiling/wall strips and a teal frame. Six new primary metatiles retain the original door assembly attributes; existing metatile and map IDs remain stable. No script, warp, rent, save, or room-layout changes. Native build and mGBA rental suite passed, including door gating/entry, payment, laptop storage and power states, reentry, and battery Continue. Inspected actual room and locked-door captures; recorded an updated rental walkthrough. [Evidence](qa/apartment-laptop-door-repair.json). Review branch only; production Release/BPS gates remain for publication.
+
 ## Apartment attendants and laptop revision (14 November 2026)
 
 **Model: GPT-6 Astra | Reasoning: make the transaction visible and restore complete native tile assemblies.**

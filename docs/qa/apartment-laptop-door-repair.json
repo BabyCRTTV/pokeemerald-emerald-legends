@@ -1,0 +1,32 @@
+{
+  "version": "0.0.81",
+  "romSha256": "46354ce460a6ad46cc2e9f0b689230f21f472c35f29bcd561a519536004764a5",
+  "emulator": "mGBA native core",
+  "checks": [
+    "blocked doors and independent tenancy",
+    "cancel and insufficient funds",
+    "exact debits, including a zero balance",
+    "repeat access without charge",
+    "physical Mauville entrance",
+    "party heal",
+    "storage PC with room-specific on/off art",
+    "decor after reentry",
+    "normal battery Continue"
+  ],
+  "baseCommit": "f6cd4f7137fa967b62ad16c49842d051ea65980c",
+  "changedFiles": {
+    "data/layouts/MauvilleCity_MauvilleHills_Lobby/map.bin": "a5380b471fd847fdb710f773737a9a8a5221d94b0194612cd51e15b730298797",
+    "data/tilesets/primary/building/metatiles.bin": "edabe4e96c15c588003b435a62fdf2977751559cc171de0d904436d2c54e1714",
+    "data/tilesets/primary/building/metatile_attributes.bin": "cb1da29ff11e5fe226f6ede06ebfd58e7f9a3850c1a52fe6b2192d8efc73a375",
+    "data/tilesets/primary/building/tiles.png": "37c6ed973d9c4293bd7b9db1e591ce5d3dc277600d760bd3603da3b3b8962848"
+  },
+  "visualReview": [
+    "Laptop and desk form continuous furniture with visible desktop and legs",
+    "Mauville door matches lobby ceiling, wall and teal trim"
+  ],
+  "captureSha256": {
+    "Mauville-Hills-Apartment.png": "184be6d1b1aebc57424bc32529bbf6f051bcbe6d627eef8c4586270b79da2afc",
+    "Mauville-Hills-Locked.png": "ad61f4b0b407e3f9e462bf7804bfbdd999457395bbc0415c0e7d37de8d679e78",
+    "Emerald-Legends-Apartment-Rentals.mp4": "f859972051658b3631a857e482041512e167bc8732b0c44bc0aa364f2bdad61c"
+  }
+}
