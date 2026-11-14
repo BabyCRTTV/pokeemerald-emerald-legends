@@ -2,6 +2,12 @@
 
 This is the developer-facing history for the **Debug** build. Shared Legends changes are repeated here so this file stands on its own; Debug-only behavior is called out separately.
 
+## [0.0.82] - 2026-11-14
+
+- Added a furnished studio at the Cove Lily Motel for ₽2,200 and an apartment at Mauville Hills for ₽3,100. Both rents are one-time payments.
+- Added lobby attendants who take payment and unlock the corresponding room.
+- Furnished both rentals with a bed for party rest, a charcoal laptop for PC storage, and an optional decoration.
+
 ## [0.0.81] - 2026-11-13
 
 - Added A Day Off in Hoenn, with stone skipping near Oldale and on Dewford’s northeast shore, hide-and-seek in Petalburg Woods, and an ash rinse at the Route 113 Glass Workshop.

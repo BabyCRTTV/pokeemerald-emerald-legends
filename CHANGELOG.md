@@ -4,6 +4,12 @@ All notable Pokémon Emerald: Legends project changes are documented here.
 
 For build-specific player views, see [CHANGELOG-RELEASE.md](CHANGELOG-RELEASE.md) and [CHANGELOG-DEBUG.md](CHANGELOG-DEBUG.md). The canonical history below records the project as a whole.
 
+## [0.0.82] - 2026-11-14
+
+- Added a furnished studio at the Cove Lily Motel for ₽2,200 and an apartment at Mauville Hills for ₽3,100. Both rents are one-time payments.
+- Added lobby attendants who take payment and unlock the corresponding room.
+- Furnished both rentals with a bed for party rest, a charcoal laptop for PC storage, and an optional decoration.
+
 ## [0.0.81] - 2026-11-13
 
 - Added A Day Off in Hoenn, with stone skipping near Oldale and on Dewford’s northeast shore, hide-and-seek in Petalburg Woods, and an ash rinse at the Route 113 Glass Workshop.

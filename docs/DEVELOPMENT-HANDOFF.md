@@ -1,5 +1,13 @@
 # Development handoff
 
+## Apartment rentals v0.0.82 approved for publication (14 November 2026)
+
+**Model: GPT-6.1 Sol | Reasoning: ship the approved charcoal laptop pixels and preserve the rental behavior verified in mGBA.**
+
+The owner selected option 2, Charcoal Workstation, and authorized publication. Stored the exact selected atlas in the game. Both rentals retain the approved table palette, layouts, and one-time payments. Updated the v0.0.82 game and public version displays and changelogs. Encounter tables and the existing LegendsDex source pin remain unchanged.
+
+[Native preview evidence](qa/apartment-rentals-v0.0.82.json). Await candidate checks, merge, production patch publication, and exact live verification.
+
 ## Apartment laptop and matching desk preview (14 November 2026)
 
 **Model: GPT-6.1 Sol | Reasoning: make the laptop silhouette readable and use the dining table palette.**
