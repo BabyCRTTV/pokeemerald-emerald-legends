@@ -5,7 +5,7 @@ import json
 import os
 import re
 from pathlib import Path
-from subprocess import check_output, run
+from subprocess import Popen, check_output, run
 
 from PIL import Image
 
@@ -56,6 +56,8 @@ core.wr.restype = core.step.restype = core.reset.restype = None
 assert core.init(bytes(private))
 private.unlink()
 main = sy["gMain"]
+recording = None
+record_frame = 0
 
 
 def read(index):
@@ -78,9 +80,21 @@ def command(number):
     raise AssertionError((number, hex(core.rd(main + 4)), [read(i) for i in range(16)]))
 
 
+def advance(frames, button=0):
+    global record_frame
+    if recording is None:
+        core.step(frames, button)
+        return
+    for _ in range(frames):
+        core.step(1, button)
+        record_frame += 1
+        if record_frame % 2 == 0:
+            recording.stdin.write(string_at(core.screen(), 240 * 160 * 4))
+
+
 def key(button, wait=45):
-    core.step(3, button)
-    core.step(wait, 0)
+    advance(3, button)
+    advance(wait)
 
 
 def capture(name):
@@ -140,8 +154,82 @@ def offer(label, has_intro=False):
 
 
 def step(direction):
-    core.step(12, direction)
-    core.step(18, 0)
+    advance(12, direction)
+    advance(18)
+
+
+def record_rentals():
+    global recording
+    load(0, 5300)
+    destination = OUTPUT / "Emerald-Legends-Apartment-Rentals.mp4"
+    with Popen([
+        "ffmpeg", "-hide_banner", "-loglevel", "error", "-y",
+        "-f", "rawvideo", "-pix_fmt", "rgba", "-s", "240x160",
+        "-r", "30", "-i", "-", "-vf", "scale=720:480:flags=neighbor",
+        "-c:v", "libx264", "-pix_fmt", "yuv420p", "-movflags", "+faststart",
+        str(destination),
+    ], stdin=-1) as encoder:
+        recording = encoder
+        advance(50)
+        offer("Rental_Text_LilyOffer", has_intro=True)
+        advance(70)
+        key(A, 110)
+        message("Rental_Text_LilyPaid")
+        key(A, 15)
+        for direction in (LEFT, LEFT, LEFT, LEFT, UP, UP):
+            step(direction)
+        advance(65)
+        check(LILY_FLOOR)
+        for _ in range(4):
+            step(RIGHT)
+        check(position=(6, 2))
+        advance(3, UP)
+        advance(12)
+        key(A, 110)
+        check(LILY_ROOM, 3100, 1)
+        step(RIGHT)
+        step(RIGHT)
+        step(UP)
+        advance(95)
+
+        # Cut between cities. The same player's money and lease carry through.
+        recording = None
+        load(2)
+        recording = encoder
+        advance(70)
+        step(UP)
+        advance(70)
+        check(HILLS_LOBBY)
+        step(UP)
+        step(UP)
+        check(position=(3, 6))
+        offer("Rental_Text_MauvilleOffer", has_intro=True)
+        advance(70)
+        key(A, 115)
+        message("Rental_Text_MauvillePaid")
+        key(A, 80)
+        key(A, 10)
+        for direction in (RIGHT, UP, UP, UP, UP, RIGHT, RIGHT):
+            step(direction)
+        check(position=(6, 2))
+        advance(3, UP)
+        advance(12)
+        key(A, 110)
+        check(HILLS_ROOM, 0, 3)
+        for _ in range(3):
+            step(UP)
+        key(A, 80)
+        message("Text_BootUpPC")
+        key(A, 100)
+        advance(70)
+        encoder.stdin.close()
+        assert encoder.wait() == 0
+    print(f"Recorded {destination}")
+
+
+if os.environ.get("RECORD_APARTMENT_RENTALS") == "1":
+    record_rentals()
+    raise SystemExit(0)
 
 
 try:
@@ -239,14 +327,18 @@ try:
     for _ in range(3):
         step(UP)
     check(position=(3, 3))
+    write(2, 3 + 2 * 16)
+    assert inspect()[-1] == 0x008
     key(A, 80)
     message("Text_BootUpPC")
+    assert inspect()[-1] == 0x009
     capture("Mauville-PC-Boot")
     key(A, 100)
     capture("Mauville-PC-Menu")
     key(DOWN)
     key(DOWN)
     key(A, 85)
+    assert inspect()[-1] == 0x008
     capture("Mauville-PC-Closed")
     assert core.rd(main + 4) == sy["CB2_Overworld"] | 1
     for _ in range(4):
@@ -310,7 +402,8 @@ except Exception:
     "emulator": "mGBA native core",
     "checks": ["blocked doors and independent tenancy", "cancel and insufficient funds",
                "exact debits, including a zero balance", "repeat access without charge",
-               "physical Mauville entrance", "party heal", "storage PC", "decor after reentry",
+               "physical Mauville entrance", "party heal", "storage PC with room-specific on/off art",
+               "decor after reentry",
                "normal battery Continue"],
 }, indent=2) + "\n")
 print("PASS: apartment controller and battery scenarios")

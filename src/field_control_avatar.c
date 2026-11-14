@@ -40,6 +40,7 @@
 #include "start_menu.h"
 #include "trainer_see.h"
 #include "trainer_hill.h"
+#include "tilesets.h"
 #include "vs_seeker.h"
 #include "wild_encounter.h"
 #include "wild_encounter_ow.h"
@@ -48,6 +49,7 @@
 #include "constants/field_poison.h"
 #include "constants/layouts.h"
 #include "constants/metatile_behaviors.h"
+#include "constants/metatile_labels.h"
 #include "constants/songs.h"
 #include "constants/trainer_hill.h"
 
@@ -497,7 +499,14 @@ static const u8 *GetInteractedMetatileScript(struct MapPosition *position, u8 me
             return EventScript_TV;
     }
     if (MetatileBehavior_IsPC(metatileBehavior) == TRUE)
+    {
+        u16 tile = MapGridGetMetatileIdAt(position->x, position->y);
+        if (gMapHeader.mapLayout->primaryTileset == &gTileset_Building
+         && (tile == METATILE_Building_ApartmentPC_Off || tile == METATILE_Building_ApartmentPC_On)
+         && direction != DIR_NORTH)
+            return NULL;
         return EventScript_PC;
+    }
     if (MetatileBehavior_IsClosedSootopolisDoor(metatileBehavior) == TRUE)
         return EventScript_ClosedSootopolisDoor;
     if (MetatileBehavior_IsSkyPillarClosedDoor(metatileBehavior) == TRUE)

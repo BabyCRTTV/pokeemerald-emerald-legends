@@ -1139,7 +1139,19 @@ static void PCTurnOnEffect(struct Task *task)
 
 static void PCTurnOnEffect_SetMetatile(s16 isScreenOn, s8 dx, s8 dy)
 {
+    s16 x = gSaveBlock1Ptr->pos.x + dx + MAP_OFFSET;
+    s16 y = gSaveBlock1Ptr->pos.y + dy + MAP_OFFSET;
+    u16 currentTile = MapGridGetMetatileIdAt(x, y);
     u16 metatileId = 0;
+
+    if ((gMapHeader.mapLayout->primaryTileset == &gTileset_Building)
+     && (currentTile == METATILE_Building_ApartmentPC_Off || currentTile == METATILE_Building_ApartmentPC_On))
+    {
+        metatileId = isScreenOn ? METATILE_Building_ApartmentPC_Off : METATILE_Building_ApartmentPC_On;
+        MapGridSetMetatileIdAt(x, y, metatileId | MAPGRID_IMPASSABLE);
+        return;
+    }
+
     if (isScreenOn)
     {
         // Screen is on, set it off
@@ -1164,7 +1176,7 @@ static void PCTurnOnEffect_SetMetatile(s16 isScreenOn, s8 dx, s8 dy)
         else if (gSpecialVar_0x8004 == PC_LOCATION_PLAYER_HOUSE_FRLG)
             metatileId = METATILE_GenericBuilding1_PlayersPCOn;
     }
-    MapGridSetMetatileIdAt(gSaveBlock1Ptr->pos.x + dx + MAP_OFFSET, gSaveBlock1Ptr->pos.y + dy + MAP_OFFSET, metatileId | MAPGRID_IMPASSABLE);
+    MapGridSetMetatileIdAt(x, y, metatileId | MAPGRID_IMPASSABLE);
 }
 
 // For this special, gSpecialVar_0x8004 is expected to be some PC_LOCATION_* value.
@@ -1177,7 +1189,6 @@ static void PCTurnOffEffect(void)
 {
     s8 dx = 0;
     s8 dy = 0;
-    u16 metatileId = 0;
 
     // Get where the PC should be, depending on where the player is looking.
     enum Direction playerDirection = GetPlayerFacingDirection();
@@ -1202,16 +1213,7 @@ static void PCTurnOffEffect(void)
         break;
     }
 
-    if (gSpecialVar_0x8004 == PC_LOCATION_OTHER)
-        metatileId = IS_FRLG ? METATILE_BuildingFrlg_PCOff : METATILE_Building_PC_Off;
-    else if (gSpecialVar_0x8004 == PC_LOCATION_BRENDANS_HOUSE)
-        metatileId = METATILE_BrendansMaysHouse_BrendanPC_Off;
-    else if (gSpecialVar_0x8004 == PC_LOCATION_MAYS_HOUSE)
-        metatileId = METATILE_BrendansMaysHouse_MayPC_Off;
-    else if (gSpecialVar_0x8004 == PC_LOCATION_PLAYER_HOUSE_FRLG)
-        metatileId = METATILE_GenericBuilding1_PlayersPCOff;
-
-    MapGridSetMetatileIdAt(gSaveBlock1Ptr->pos.x + dx + MAP_OFFSET, gSaveBlock1Ptr->pos.y + dy + MAP_OFFSET, metatileId | MAPGRID_IMPASSABLE);
+    PCTurnOnEffect_SetMetatile(TRUE, dx, dy);
     DrawWholeMapView();
 }
 

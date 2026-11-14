@@ -1,5 +1,11 @@
 # Development handoff
 
+## Hoenn apartment roof and PC polish (14 November 2026)
+
+**Model: GPT-6 | Reasoning: preserve the facade footprint and keep both desktop terminal states on the native wood floor.**
+
+Added angled end caps and a continuous ridge to the Mauville Hills roof. Both apartments now use the same desk-mounted terminal with a floor-matched tile and a working screen animation. The roof artwork is limited to the new building. Rent, room entrances, and persistent flags are untouched. The mGBA rental suite passed again, and a single 41-second MP4 captured both controller-driven rental and entry sequences. [Evidence](qa/apartment-rentals-polish.json). Review branch.
+
 ## Hoenn apartments preview (14 November 2026)
 
 **Model: GPT-6 | Reasoning: gate private doors on independently saved payments and preserve existing event indices.**
