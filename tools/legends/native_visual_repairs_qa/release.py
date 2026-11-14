@@ -1,9 +1,19 @@
 """Unmodified Release boot/Continue from private, Debug-produced current-save fixtures."""
 from pathlib import Path
-import argparse,hashlib,json,os,subprocess
+import argparse,hashlib,json,os,re,subprocess
 from PIL import Image
 ROOT=Path(__file__).resolve().parents[3]
 def sha(path):return hashlib.sha256(path.read_bytes()).hexdigest()
+
+def address(symbols, name):
+    if name in symbols:
+        return symbols[name]
+    pattern = re.compile(re.escape(name) + r'\.(?:lto_priv\.)?\d+$')
+    matches = {value for key, value in symbols.items() if pattern.fullmatch(key)}
+    if len(matches) != 1:
+        raise KeyError(f"Expected one optimized address for {name}, got {sorted(matches)}")
+    return matches.pop()
+
 def main():
  p=argparse.ArgumentParser();p.add_argument('--prefix',type=Path,required=True);p.add_argument('--fixtures',type=Path,required=True);p.add_argument('--output',type=Path,required=True);a=p.parse_args()
  out=a.output.resolve();out.mkdir(parents=True,exist_ok=True);prefix=a.prefix.resolve();env=os.environ.copy();env['LD_LIBRARY_PATH']=str(prefix/'lib/x86_64-linux-gnu')+':'+env.get('LD_LIBRARY_PATH','')
@@ -14,7 +24,7 @@ def main():
  layout=json.loads((a.fixtures/'bag-layout.json').read_text())
  for name in ['male','female','day','night','bag','bag-legacy']:
   scene=out/name;scene.mkdir(exist_ok=True);save=scene/'private.sav';save.write_bytes((a.fixtures/('private-'+name+'.sav')).read_bytes())
-  with (scene/'emulator.log').open('w') as log:result=subprocess.run([str(out/'host'),str(rom),str(save),str(scene),hex(symbols['gMain']),hex(symbols['CB2_Overworld']),str(1 if name=='male' else 2 if name=='female' else 3 if name=='bag' else 4 if name=='bag-legacy' else 0),hex(symbols['sCurrentStartMenuActions']),hex(symbols['sStartMenuCursorPos']),hex(symbols['CB2_TrainerCard']),hex(symbols['gSaveBlock1Ptr']),hex(symbols['gPokemonStoragePtr']),str(layout['inventoryOffset']),hex(symbols['gBagPosition']),hex(symbols['gSpecialVar_ItemId']),str(layout['etherId']),str(layout['cursorOffset']),str(layout['scrollOffset']),hex(symbols['gSaveBlock2Ptr']),str(layout['encryptionKeyOffset']),str(layout['slotOffset']),hex(symbols['gSaveBlock3Ptr']),str(layout['poffinOffset']),str(layout['treatCaseId'])],env=env,stdout=log,stderr=subprocess.STDOUT,check=False)
+  with (scene/'emulator.log').open('w') as log:result=subprocess.run([str(out/'host'),str(rom),str(save),str(scene),hex(symbols['gMain']),hex(symbols['CB2_Overworld']),str(1 if name=='male' else 2 if name=='female' else 3 if name=='bag' else 4 if name=='bag-legacy' else 0),hex(address(symbols, 'sCurrentStartMenuActions')),hex(address(symbols, 'sStartMenuCursorPos')),hex(address(symbols, 'CB2_TrainerCard')),hex(symbols['gSaveBlock1Ptr']),hex(symbols['gPokemonStoragePtr']),str(layout['inventoryOffset']),hex(symbols['gBagPosition']),hex(symbols['gSpecialVar_ItemId']),str(layout['etherId']),str(layout['cursorOffset']),str(layout['scrollOffset']),hex(symbols['gSaveBlock2Ptr']),str(layout['encryptionKeyOffset']),str(layout['slotOffset']),hex(symbols['gSaveBlock3Ptr']),str(layout['poffinOffset']),str(layout['treatCaseId'])],env=env,stdout=log,stderr=subprocess.STDOUT,check=False)
   if result.returncode:
    for raw in scene.glob('*.rgba'):Image.frombytes('RGBA',(240,160),raw.read_bytes()).convert('RGB').save(raw.with_suffix('.png'))
    raise RuntimeError((scene/'emulator.log').read_text()[-10000:])
