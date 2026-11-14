@@ -1167,6 +1167,10 @@ EventScript_SetBrineyLocation_Route109::
 	.include "data/scripts/obtain_item.inc"
 	.include "data/scripts/record_mix.inc"
 	.include "data/scripts/pc.inc"
+	.include "data/scripts/apartment_rentals.inc"
+	.include "data/maps/LilycoveCity_CoveLilyMotel_Apartment/scripts.inc"
+	.include "data/maps/MauvilleCity_MauvilleHills_Lobby/scripts.inc"
+	.include "data/maps/MauvilleCity_MauvilleHills_Apartment/scripts.inc"
 	.include "data/scripts/move_relearner.inc"
 
 @ scripts/notices.inc? signs.inc? See comment about text/notices.inc

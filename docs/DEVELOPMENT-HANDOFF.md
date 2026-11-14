@@ -1,5 +1,13 @@
 # Development handoff
 
+## Hoenn apartments preview (14 November 2026)
+
+**Model: GPT-6 | Reasoning: gate private doors on independently saved payments and preserve existing event indices.**
+
+Added a furnished Cove Lily Motel studio for a one-time ¥2,200 and a Mauville Hills apartment for ¥3,100. The notices are at the motel's ground-floor cabinet and the Mauville Hills lobby desk. Both private doors require their own payment. Rooms support followers, party rest, the standard PC, and an optional room-specific decoration. Existing map groups, layouts, and public warp lists keep their indices. Four previously unused flag bits record rent and decoration without extending the save format.
+
+Verified purchase, doors, room features, and save/Continue in mGBA. [Preview evidence](qa/apartment-rentals-preview.json). Review branch awaiting visual approval and production release gates.
+
 ## v0.0.81 A Day Off in Hoenn published and live verified (13 November 2026)
 
 **Model: GPT-6 | Reasoning: preserve approved art and native map IDs, and bind the deployed files to the verified Release and Debug builds.**
