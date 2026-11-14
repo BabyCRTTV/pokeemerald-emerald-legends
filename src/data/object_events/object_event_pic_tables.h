@@ -2577,3 +2577,7 @@ static const struct SpriteFrameImage sPicTable_MiraAsleep[] = {
 };
 
 static const struct SpriteFrameImage sPicTable_PoffinMaker[] = {obj_frame_tiles(sPoffinMakerGraphics)};
+
+static const struct SpriteFrameImage sPicTable_SkippingStones[] = {obj_frame_tiles(sSkippingStonesGraphics)};
+static const struct SpriteFrameImage sPicTable_RinsePail[] = {obj_frame_tiles(sRinsePailGraphics)};
+static const struct SpriteFrameImage sPicTable_WoodsPlaySign[] = {obj_frame_tiles(sWoodsPlaySignGraphics)};

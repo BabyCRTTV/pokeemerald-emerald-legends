@@ -419,6 +419,9 @@ enum
 // Cave-only static legendary art; preserve native/dynamic graphics IDs.
 #define OBJ_EVENT_GFX_LEGENDS_WYRMTIDE_REGIDRAGO 0x0E00
 #define OBJ_EVENT_GFX_LEGENDS_POFFIN_MAKER 0x0E02
+#define OBJ_EVENT_GFX_LEGENDS_SKIPPING_STONES 0x0E03
+#define OBJ_EVENT_GFX_LEGENDS_RINSE_PAIL 0x0E04
+#define OBJ_EVENT_GFX_LEGENDS_WOODS_PLAY_SIGN 0x0E05
 #define OBJ_EVENT_GFX_LEGENDS_MIRA_ASLEEP 0x0E01
 
 // Player-only appearance IDs live outside the native/dynamic ranges.

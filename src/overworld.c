@@ -1,5 +1,6 @@
 #include "global.h"
 #include "legends_poffin.h"
+#include "legends_day_off.h"
 #include "legends_grottos.h"
 #include "legends_nightmare.h"
 #include "legends_story.h"
@@ -2161,7 +2162,10 @@ void CB2_ContinueSavedGame(void)
     else if (trainerHillMapId != 0 && trainerHillMapId != TRAINER_HILL_ENTRANCE)
         LoadTrainerHillFloorObjectEventScripts();
     else
+    {
+        LegendsDayOffRestoreProp();
         LoadSaveblockObjEventScripts();
+    }
 
     UnfreezeObjectEvents();
     DoTimeBasedEvents();

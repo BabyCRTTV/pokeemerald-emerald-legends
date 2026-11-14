@@ -93,7 +93,9 @@ jobs:
           python3 tools/legends/native_poffin_qa/run.py
           python3 tools/legends/native_poffin_qa/release.py
       - name: Exercise Day Off in Hoenn follower interactions
-        run: python3 tools/legends/native_day_off_qa/run.py
+        run: |
+          python3 tools/legends/native_day_off_qa/run.py
+          python3 tools/legends/native_day_off_qa/release.py
       - name: Exercise research notes, bulletin and town dialogue branches
         run: python3 tools/legends/native_living_hoenn_qa/run.py
       - name: Exercise seasonal encounter trial and native DexNav silhouettes
@@ -165,6 +167,7 @@ jobs:
             build/grotto-review/*.log
             build/day-off-qa/*.png
             build/day-off-qa/verification.json
+            build/day-off-qa/release-verification.json
             build/living-hoenn-qa/*.png
             build/living-hoenn-qa/*.json
             build/living-hoenn-qa/*.log

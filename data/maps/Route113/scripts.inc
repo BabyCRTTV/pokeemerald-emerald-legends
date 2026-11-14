@@ -163,6 +163,6 @@ Route113_Text_TrainerTipsRegisterKeyItems:
 Route113_Text_GlassWorkshopSign:
 	.string "GLASS WORKSHOP\n"
 	.string "“Turning Volcanic Ash into Glass Items”\p"
-	.string "A bucket of clean water sits outside.\n"
-	.string "Talk to your POKéMON for a rinse.$"
+	.string "Use the water pail by the door\n"
+	.string "to rinse ash off your POKéMON.$"
 

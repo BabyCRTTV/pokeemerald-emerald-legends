@@ -10,6 +10,7 @@
 #include "overworld.h"
 #include "pokemon.h"
 #include "script.h"
+#include "save.h"
 #include "constants/flags.h"
 #include "constants/maps.h"
 #include "constants/species.h"
@@ -22,17 +23,20 @@ struct Scene
 {
     u16 map, species;
     s16 x, y;
-    u8 nature;
+    u8 nature, facing;
+    bool8 followersOff;
 };
 
 static const struct Scene sScenes[] =
 {
-    {MAP_ROUTE102, SPECIES_MUDKIP, 40, 7, NATURE_JOLLY},
-    {MAP_DEWFORD_TOWN, SPECIES_MUDKIP, 10, 2, NATURE_TIMID},
-    {MAP_PETALBURG_WOODS, SPECIES_SHROOMISH, 19, 33, NATURE_JOLLY},
-    {MAP_ROUTE113, SPECIES_TORCHIC, 33, 7, NATURE_JOLLY},
-    {MAP_ROUTE113, SPECIES_MUDKIP, 33, 7, NATURE_JOLLY},
-    {MAP_ROUTE102, SPECIES_TREECKO, 45, 9, NATURE_JOLLY},
+    {MAP_ROUTE102, SPECIES_MUDKIP, 40, 7, NATURE_JOLLY, DIR_EAST, FALSE},
+    {MAP_DEWFORD_TOWN, SPECIES_MUDKIP, 9, 2, NATURE_TIMID, DIR_EAST, FALSE},
+    {MAP_PETALBURG_WOODS, SPECIES_SHROOMISH, 18, 32, NATURE_JOLLY, DIR_EAST, FALSE},
+    {MAP_ROUTE113, SPECIES_TORCHIC, 31, 6, NATURE_JOLLY, DIR_EAST, FALSE},
+    {MAP_ROUTE113, SPECIES_MUDKIP, 31, 6, NATURE_JOLLY, DIR_EAST, FALSE},
+    {MAP_ROUTE102, SPECIES_TREECKO, 40, 7, NATURE_JOLLY, DIR_WEST, FALSE},
+    {MAP_ROUTE102, SPECIES_MUDKIP, 40, 7, NATURE_JOLLY, DIR_EAST, TRUE},
+    {MAP_ROUTE102, SPECIES_MUDKIP, 41, 8, NATURE_JOLLY, DIR_NORTH, FALSE},
 };
 
 void qa(void)
@@ -44,7 +48,10 @@ void qa(void)
         NewGameInitData();
         gSaveBlock2Ptr->optionsTextSpeed = OPTIONS_TEXT_SPEED_INSTANT;
         FlagSet(FLAG_HIDE_MAP_NAME_POPUP);
-        FlagClear(FLAG_LEGENDS_FOLLOWERS_DISABLED);
+        if (scene->followersOff)
+            FlagSet(FLAG_LEGENDS_FOLLOWERS_DISABLED);
+        else
+            FlagClear(FLAG_LEGENDS_FOLLOWERS_DISABLED);
         FlagSet(FLAG_RESCUED_BIRCH);
         FlagSet(FLAG_SET_WALL_CLOCK);
         FlagSet(FLAG_SYS_POKEMON_GET);
@@ -62,12 +69,30 @@ void qa(void)
 
     struct ObjectEvent *player = &gObjectEvents[gPlayerAvatar.objectEventId];
     struct ObjectEvent *follower = GetFollowerObject();
-    if (mailbox[0] == 1 && follower != NULL)
+    if (mailbox[0] == 1)
     {
-        MoveObjectEventToMapCoords(follower, player->currentCoords.x - 1, player->currentCoords.y);
-        follower->invisible = FALSE;
-        ObjectEventTurn(player, DIR_WEST);
-        ObjectEventTurn(follower, DIR_EAST);
+        if (follower != NULL)
+        {
+            MoveObjectEventToMapCoords(follower, player->currentCoords.x - 1, player->currentCoords.y);
+            follower->invisible = FALSE;
+            ObjectEventTurn(follower, DIR_EAST);
+        }
+        ObjectEventTurn(player, sScenes[mailbox[1]].facing);
+    }
+    if (mailbox[0] == 3)
+    {
+        // Model an older battery saved on the activity map. Preserve a sentinel
+        // edit to a pre-existing NPC to check that Continue only adds the prop.
+        struct ObjectEventTemplate *templates = gSaveBlock1Ptr->objectEventTemplates;
+        u32 index = gMapHeader.events->objectEventCount - 1;
+        struct ObjectEventTemplate original = templates[index];
+        s16 originalX = templates[0].x;
+        templates[0].x++;
+        templates[index] = (struct ObjectEventTemplate){0};
+        mailbox[13] = TrySavingData(SAVE_NORMAL) == SAVE_STATUS_OK;
+        mailbox[14] = offsetof(struct SaveBlock1, objectEventTemplates);
+        templates[index] = original;
+        templates[0].x = originalX;
     }
     mailbox[5] = follower != NULL && !follower->invisible;
     mailbox[6] = ScriptContext_IsEnabled();

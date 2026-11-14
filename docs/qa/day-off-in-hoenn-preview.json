@@ -1,7 +1,8 @@
 {
   "version": "0.0.80",
-  "romSha256": "dcdf5f24efd648b163ef79ab77d22012018d7f674e8290c2036c4fc36dab9a34",
+  "romSha256": "f17cd417e81c9f2573b1ee1be51e06e1e9f9ad76c4606c458b4b250a3d533814",
   "emulator": "mGBA native core 0.10.5",
+  "templateOffset": 3184,
   "captureSize": [
     720,
     480
@@ -16,23 +17,32 @@
     "Woods-find",
     "Woods-miss",
     "Woods-cancel",
-    "main-menu cancel",
-    "ordinary talk from menu",
-    "ordinary talk away from a play spot"
+    "prop B cancel",
+    "prop Cancel row",
+    "ordinary follower talk beside the stones",
+    "prop explains missing follower",
+    "stone pile works from a second side"
   ],
   "harnessSha256": {
-    "arm.c": "9499e15891dc4cd697ea5e3c1045dfaca46da03dc56cf6a5b2377ddb27904997",
-    "run.py": "b26f606a9c22b8c8b6a0635297bb245d503e19586c96ba7d378c4111c720c898"
+    "arm.c": "81fe21d7ad1391ca286a04c7ece1be3e15b5b83ba46bc33ee43fe11bd7f4bcd2",
+    "run.py": "6f8178973e86159ac6cb476d8c990a0b24264c34738b5f7b82896b190d08f277",
+    "release.py": "203ea2f143c16c9eaa0e159b9ccf9decb86cd258730d9f9aa30cbdd6a92c1027"
   },
-  "baseCommit": "1a08f8e164b36bddee2b12de1182594fb5734a98",
-  "releaseRomSha256": "8b66ec00beeb16784956948696b7f52061ac7fcc121141b802e16fd3f59f0b21",
+  "baseCommit": "79cc9b81174b26fe8a19ea25e68f0b712794d829",
+  "release": {
+    "romSha256": "e27426f64d931b9b2a7357cdec4f1473ee4c0b36812aea2c2c645a6020d6df59",
+    "checks": [
+      "Normal Release Continue",
+      "Route 102 prop restored onto an earlier map object list",
+      "Existing NPC position retained",
+      "A-button interaction with restored stone pile"
+    ]
+  },
   "captures": {
-    "Day-Off-Dewford-Mudkip.png": "49419bf62f25c0be7bf906cae0b668709b7cbba8f973d3bdff3e6b9bf694862b",
-    "Day-Off-Petalburg-Hide-and-Seek.png": "2974c0045ec60d0491fd4b6ca8f4ec185dc077078d958c9610bbe74dd21b60f4",
-    "Day-Off-Petalburg-Shroomish.png": "a81c9f77d2483b4433dcde1320510bdd3bef0ad461bdf162d545c34ceab4492c",
-    "Day-Off-Route-102-Stone-Skipping.png": "1a4f1302e6a6bd09314b26f6d19576f1330c4d8f400e1bfb1e107d910c57acc3",
-    "Day-Off-Route-113-Torchic.png": "ddb992c30832d7d6f3e842ba60c8b876bc88de796743f23b9ab03ac81dcbab8a",
-    "Day-Off-Route-113-Wash.png": "45545d20e407fbd691994ef707ecc1c0cf56bc67fca4f41f2a968e327c0b1677"
+    "Day-Off-Dewford-Stone-Pile.png": "16c5ef09a5ece637c3638544b1f0e441ec316f59c32427f32a869f72dd370bf8",
+    "Day-Off-Petalburg-Woods-Play-Sign.png": "0059ad4bc0a6db09dfa038aec868860c19a031001d3eb942d297692bb9e6b00c",
+    "Day-Off-Route-102-Stone-Pile.png": "91077cdeef6c1d8ff30c3a17836a58e0916051c72ef7f93bd8f8995654e9db5d",
+    "Day-Off-Route-113-Wash-Pail.png": "2038eccc9b52db3074dbf2b5291ef3e9c5f43dc50c0602688fdb20d12ddfe8ea"
   },
-  "scope": "Local review build. Focused controller checks used Debug with controlled map and party setup. Release compiled. Full production, BPS and historical-save gates are outstanding."
+  "scope": "Local review builds. Debug controller checks used controlled map and party setup. Unmodified Release used a synthetic battery with the old Route 102 object list; normal Continue and button interaction passed. Full production, patch and historical owner-save gates are outstanding."
 }

@@ -1189,13 +1189,15 @@ static const struct MenuAction sLegendsDevonMain[] = {
 };
 
 static const struct MenuAction sLegendsDayOffPlay[] = {
-    {COMPOUND_STRING("PLAY")},
-    {COMPOUND_STRING("TALK")},
+    {COMPOUND_STRING("Skip stones")},
     {gText_Cancel2},
 };
 static const struct MenuAction sLegendsDayOffWash[] = {
-    {COMPOUND_STRING("WASH")},
-    {COMPOUND_STRING("TALK")},
+    {COMPOUND_STRING("Wash")},
+    {gText_Cancel2},
+};
+static const struct MenuAction sLegendsDayOffHide[] = {
+    {COMPOUND_STRING("Hide-and-seek")},
     {gText_Cancel2},
 };
 static const struct MenuAction sLegendsDayOffSeek[] = {
@@ -1340,6 +1342,7 @@ static const struct MultichoiceListStruct sMultichoiceLists[] =
     [MULTI_LEGENDS_DAY_OFF_PLAY] = MULTICHOICE(sLegendsDayOffPlay),
     [MULTI_LEGENDS_DAY_OFF_WASH] = MULTICHOICE(sLegendsDayOffWash),
     [MULTI_LEGENDS_DAY_OFF_SEEK] = MULTICHOICE(sLegendsDayOffSeek),
+    [MULTI_LEGENDS_DAY_OFF_HIDE] = MULTICHOICE(sLegendsDayOffHide),
     [MULTI_LEGENDS_WYRMTIDE_EXPEDITION] = MULTICHOICE(sLegendsWyrmtideExpedition),
     [MULTI_LEGENDS_WYRMTIDE] = MULTICHOICE(sLegendsWyrmtide),
     [MULTI_LEGENDS_CLOCK_MODE] = MULTICHOICE(sLegendsClockModes),

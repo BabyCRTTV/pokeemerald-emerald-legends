@@ -1,14 +1,37 @@
-LegendsDayOff_Menu::
+LegendsDayOff_PondProp::
+	setvar VAR_0x8004, DAY_OFF_POND
+	goto LegendsDayOff_OpenProp
+
+LegendsDayOff_ShoreProp::
+	setvar VAR_0x8004, DAY_OFF_SHORE
+	goto LegendsDayOff_OpenProp
+
+LegendsDayOff_WoodsProp::
+	setvar VAR_0x8004, DAY_OFF_WOODS
+	goto LegendsDayOff_OpenProp
+
+LegendsDayOff_WorkshopProp::
+	setvar VAR_0x8004, DAY_OFF_WORKSHOP
+
+LegendsDayOff_OpenProp:
+	lock
+	specialvar VAR_RESULT, LegendsDayOffHasFollower
+	goto_if_eq VAR_RESULT, FALSE, LegendsDayOff_NeedsFollower
+	bufferlivemonnickname STR_VAR_1
 	applymovement OBJ_EVENT_ID_FOLLOWER, LegendsDayOff_FacePlayer
 	waitmovement OBJ_EVENT_ID_FOLLOWER
 	goto_if_eq VAR_0x8004, DAY_OFF_WORKSHOP, LegendsDayOff_WashMenu
+	goto_if_eq VAR_0x8004, DAY_OFF_WOODS, LegendsDayOff_HideMenu
 	multichoice 0, 0, MULTI_LEGENDS_DAY_OFF_PLAY, FALSE
+	goto LegendsDayOff_Choice
+
+LegendsDayOff_HideMenu:
+	multichoice 0, 0, MULTI_LEGENDS_DAY_OFF_HIDE, FALSE
 	goto LegendsDayOff_Choice
 
 LegendsDayOff_WashMenu:
 	multichoice 0, 0, MULTI_LEGENDS_DAY_OFF_WASH, FALSE
 LegendsDayOff_Choice:
-	goto_if_eq VAR_RESULT, 1, EventScript_FollowerChat
 	goto_if_ne VAR_RESULT, 0, LegendsDayOff_End
 	specialvar VAR_0x8005, LegendsDayOffGetReaction
 	goto_if_eq VAR_0x8004, DAY_OFF_WOODS, LegendsDayOff_Hide
@@ -124,6 +147,14 @@ LegendsDayOff_End:
 	release
 	end
 
+LegendsDayOff_NeedsFollower:
+	msgbox LegendsDayOff_Text_NeedsFollower
+	goto LegendsDayOff_End
+
+LegendsDayOff_Text_NeedsFollower::
+	.string "Bring a walking POKéMON\n"
+	.string "along to try this together.$"
+
 LegendsDayOff_FacePlayer:
 	face_player
 	step_end
@@ -142,12 +173,12 @@ LegendsDayOff_Hop:
 	step_end
 
 LegendsDayOff_Text_Pond::
-	.string "You find a flat stone in the grass\n"
+	.string "You pick a flat stone from the pile\n"
 	.string "beside ROUTE 102's pond.$"
 
 LegendsDayOff_Text_Shore::
-	.string "A wave rolls back, leaving a smooth\n"
-	.string "stone on DEWFORD's shore.$"
+	.string "You choose a smooth, flat stone\n"
+	.string "from the pile on DEWFORD's shore.$"
 
 LegendsDayOff_Text_SkipKeen::
 	.string "{STR_VAR_1} hops at each plip,\n"

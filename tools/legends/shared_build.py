@@ -24,6 +24,7 @@ NATIVE = {
     'wyrmtide-native/verification.json': ('Debug', 'ROM_sha256'),
     'nightmare-native/verification.json': ('Debug', 'ROM_sha256'),
     'day-off-qa/verification.json': ('Debug', 'romSha256'),
+    'day-off-qa/release-verification.json': ('Release', 'romSha256'),
     'living-hoenn-qa/verification.json': ('Debug', 'base_ROM_sha256'),
     'seasonal-encounters-qa/verification.json': ('Debug', 'base_ROM_sha256'),
     'visual-repairs-qa/verification.json': ('Debug', 'ROM_sha256'),

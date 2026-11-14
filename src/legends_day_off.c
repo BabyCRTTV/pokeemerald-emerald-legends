@@ -5,6 +5,7 @@
 #include "field_effect_helpers.h"
 #include "field_player_avatar.h"
 #include "fieldmap.h"
+#include "legends_day_off.h"
 #include "metatile_behavior.h"
 #include "overworld.h"
 #include "random.h"
@@ -13,57 +14,51 @@
 #include "constants/legends_day_off.h"
 #include "constants/maps.h"
 
-static enum Direction FindSkippingWater(s16 *x, s16 *y)
+extern const u8 LegendsDayOff_PondProp[];
+extern const u8 LegendsDayOff_ShoreProp[];
+extern const u8 LegendsDayOff_WoodsProp[];
+extern const u8 LegendsDayOff_WorkshopProp[];
+
+// A Continue on an earlier save already has this map's old object templates.
+// Seed only the new prop's empty slot, leaving moved objects and flags intact.
+void LegendsDayOffRestoreProp(void)
 {
-    s16 playerX, playerY;
-    PlayerGetDestCoords(&playerX, &playerY);
-
-    for (enum Direction dir = DIR_SOUTH; dir <= DIR_EAST; dir++)
-    {
-        s16 waterX = playerX + gDirectionToVectors[dir].x;
-        s16 waterY = playerY + gDirectionToVectors[dir].y;
-        if (MetatileBehavior_IsSurfableWaterOrUnderwater(MapGridGetMetatileBehaviorAt(waterX, waterY)))
-        {
-            *x = waterX;
-            *y = waterY;
-            return dir;
-        }
-    }
-    return DIR_NONE;
-}
-
-u16 LegendsDayOffGetSpot(void)
-{
-    s16 x, y;
-    struct ObjectEvent *follower = GetFollowerObject();
-    if (follower == NULL || follower->invisible || GetFirstLiveMon() == NULL
-        || !(GetPlayerAvatarFlags() & PLAYER_AVATAR_FLAG_ON_FOOT))
-        return DAY_OFF_NONE;
-
     u16 map = (gSaveBlock1Ptr->location.mapGroup << 8) | gSaveBlock1Ptr->location.mapNum;
+    const u8 *script;
     switch (map)
     {
     case MAP_ROUTE102:
+        script = LegendsDayOff_PondProp;
+        break;
     case MAP_DEWFORD_TOWN:
-        if (FindSkippingWater(&x, &y) != DIR_NONE)
-            return map == MAP_ROUTE102 ? DAY_OFF_POND : DAY_OFF_SHORE;
+        script = LegendsDayOff_ShoreProp;
         break;
     case MAP_PETALBURG_WOODS:
-        PlayerGetDestCoords(&x, &y);
-        x -= MAP_OFFSET;
-        y -= MAP_OFFSET;
-        if (x >= 14 && x <= 22 && y >= 32 && y <= 37)
-            return DAY_OFF_WOODS;
+        script = LegendsDayOff_WoodsProp;
         break;
     case MAP_ROUTE113:
-        PlayerGetDestCoords(&x, &y);
-        x -= MAP_OFFSET;
-        y -= MAP_OFFSET;
-        if (x >= 30 && x <= 35 && y >= 6 && y <= 8)
-            return DAY_OFF_WORKSHOP;
+        script = LegendsDayOff_WorkshopProp;
         break;
+    default:
+        return;
     }
-    return DAY_OFF_NONE;
+
+    for (u32 i = 0; i < gMapHeader.events->objectEventCount; i++)
+    {
+        const struct ObjectEventTemplate *prop = &gMapHeader.events->objectEvents[i];
+        if (prop->script == script && gSaveBlock1Ptr->objectEventTemplates[i].localId == 0)
+        {
+            gSaveBlock1Ptr->objectEventTemplates[i] = *prop;
+            break;
+        }
+    }
+}
+
+u16 LegendsDayOffHasFollower(void)
+{
+    const struct ObjectEvent *follower = GetFollowerObject();
+    return (GetPlayerAvatarFlags() & PLAYER_AVATAR_FLAG_ON_FOOT)
+        && follower != NULL && !follower->invisible && GetFirstLiveMon() != NULL;
 }
 
 u16 LegendsDayOffGetReaction(void)
@@ -88,21 +83,18 @@ u16 LegendsDayOffGetReaction(void)
 
 void LegendsDayOffSkipStone(void)
 {
-    s16 x, y;
-    enum Direction direction = FindSkippingWater(&x, &y);
-    if (direction == DIR_NONE)
-        return;
+    const struct ObjectEvent *stones = &gObjectEvents[gSelectedObjectEvent];
+    enum Direction direction = gSpecialVar_0x8004 == DAY_OFF_POND ? DIR_NORTH : DIR_EAST;
+    s16 dx = gDirectionToVectors[direction].x;
+    s16 dy = gDirectionToVectors[direction].y;
+    s16 x = stones->currentCoords.x + dx;
+    s16 y = stones->currentCoords.y + dy;
 
-    // The second skip stays in the first tile if the next tile is dry.
-    if (gSpecialVar_0x8007 != 0)
+    if (gSpecialVar_0x8007 != 0
+        && MetatileBehavior_IsSurfableWaterOrUnderwater(MapGridGetMetatileBehaviorAt(x + dx, y + dy)))
     {
-        s16 nextX = x + gDirectionToVectors[direction].x;
-        s16 nextY = y + gDirectionToVectors[direction].y;
-        if (MetatileBehavior_IsSurfableWaterOrUnderwater(MapGridGetMetatileBehaviorAt(nextX, nextY)))
-        {
-            x = nextX;
-            y = nextY;
-        }
+        x += dx;
+        y += dy;
     }
     gFieldEffectArguments[0] = x;
     gFieldEffectArguments[1] = y;

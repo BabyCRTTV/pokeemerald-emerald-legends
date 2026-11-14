@@ -665,3 +665,7 @@ const u16 gObjectEventPic_ClefairyOld[] = INCGFX_U16("graphics/object_events/pic
 const u16 gObjectEventPic_MiraAsleep[] = INCGFX_U16("graphics/object_events/pics/people/legends_mira_asleep.png", ".4bpp", "-mwidth 2 -mheight 2");
 
 static const u32 sPoffinMakerGraphics[] = INCGFX_U32("graphics/poffin/machine.png", ".4bpp");
+
+static const u16 sSkippingStonesGraphics[] = INCGFX_U16("graphics/day_off/skipping_stones.png", ".4bpp");
+static const u16 sRinsePailGraphics[] = INCGFX_U16("graphics/day_off/rinse_pail.png", ".4bpp");
+static const u16 sWoodsPlaySignGraphics[] = INCGFX_U16("graphics/day_off/woods_play_sign.png", ".4bpp");

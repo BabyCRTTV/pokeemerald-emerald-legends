@@ -1,5 +1,13 @@
 # Development handoff
 
+## A Day Off in Hoenn activity props (13 November 2026)
+
+**Model: GPT-6 | Reasoning: make the interaction discoverable through scenery and preserve Continue on maps with newly appended objects.**
+
+The owner requested an object to interact with. Added flat stone piles at the Route 102 pond and on Dewford's northeast shore, a wooden play sign in the Petalburg Woods clearing, and a water pail outside the Route 113 Glass Workshop. Facing a prop and pressing A opens its activity with an active walking Pokémon, or explains how to try it if the follower is unavailable. The A interaction on the follower uses the ordinary dialogue path. Existing map objects retain their indices and the layout binaries are untouched. Continue fills only a missing Day Off template on the four maps, without changing the save format.
+
+[Build, controller and Continue evidence](qa/day-off-in-hoenn-preview.json). Review branch only. Full production verification and publication follow visual approval.
+
 ## A Day Off in Hoenn preview (13 November 2026)
 
 **Model: GPT-6 | Reasoning: extend native follower interactions and use each location's existing terrain, effects, and story context.**

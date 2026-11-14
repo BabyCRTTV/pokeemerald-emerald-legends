@@ -1,5 +1,5 @@
-"""Verify Day Off in Hoenn through the actual follower A-button entry point."""
-from ctypes import CDLL, c_uint, c_void_p, string_at
+"""Verify Day Off in Hoenn through the actual activity prop A-button entry point."""
+from ctypes import CDLL, c_char_p, c_uint, c_void_p, string_at
 from hashlib import sha256
 import json
 import os
@@ -50,6 +50,7 @@ fixture = symbols(OUTPUT / "arm.elf")["qa"] | 1
 core = CDLL(str(OUTPUT / "core.so"))
 core.screen.restype = c_void_p
 core.rd.restype = c_uint
+core.battery.argtypes = [c_char_p]
 core.wr.restype = core.step.restype = core.reset.restype = None
 assert core.init(bytes(private))
 private.unlink()
@@ -70,7 +71,7 @@ def command(number):
     write(4, 0)
     for _ in range(10):
         core.wr(main + 4, fixture)
-        core.step(12 if number == 0 else 1, 0)
+        core.step({0: 12, 3: 180}.get(number, 1), 0)
         if read(4):
             return
     raise AssertionError((number, hex(core.rd(main + 4)), [read(i) for i in range(12)]))
@@ -102,7 +103,7 @@ def setup(index):
     command(1)
     core.step(12, 0)
     command(2)
-    assert (read(5), read(6), read(10), read(11)) == (1, 0, 3, 1), [read(i) for i in range(12)]
+    assert not read(6) and bool(read(5)) == (index != 6), [read(i) for i in range(12)]
 
 
 def assert_line(label):
@@ -122,6 +123,7 @@ def finish():
 
 
 def enter(name, spot):
+    capture(name.removesuffix("-Menu") + "-Prop")
     key(A, 80)
     assert in_menu(), (name, [read(i) for i in range(12)])
     command(2)
@@ -182,20 +184,40 @@ try:
     assert read(5) and not read(6) and not in_menu(), ([read(i) for i in range(12)], in_menu())
     enter("Route102-Menu", 1)
     key(DOWN)
-    key(A, 230)
-    assert not in_menu()
+    key(A, 100)
     command(2)
-    assert read(6)
-    finish()
-    checks.extend(["main-menu cancel", "ordinary talk from menu"])
+    assert read(5) and not read(6) and not in_menu()
+    checks.extend(["prop B cancel", "prop Cancel row"])
 
     setup(5)
     key(A, 230)
     assert not in_menu()
     command(2)
-    assert read(7) == 0 and read(6)
+    assert read(6)
     finish()
-    checks.append("ordinary talk away from a play spot")
+    checks.append("ordinary follower talk beside the stones")
+
+    setup(6)
+    key(A, 105)
+    assert not in_menu()
+    assert_line("LegendsDayOff_Text_NeedsFollower")
+    key(A, 105)
+    command(2)
+    assert not read(5) and not read(6)
+    checks.append("prop explains missing follower")
+
+    setup(7)
+    enter("Route102-South-Menu", 1)
+    key(B)
+    checks.append("stone pile works from a second side")
+
+    # Retain a synthetic older map battery for a normal unmodified Continue.
+    setup(0)
+    command(3)
+    assert read(13)
+    template_offset = read(14)
+    battery = OUTPUT / "private-old-route102.sav"
+    assert core.battery(bytes(battery))
 except Exception:
     capture("failure")
     raise
@@ -204,6 +226,7 @@ except Exception:
     "version": Path("VERSION").read_text().strip(),
     "romSha256": sha256(original).hexdigest(),
     "emulator": "mGBA native core",
+    "templateOffset": template_offset,
     "captureSize": [720, 480],
     "captureScaling": "3x nearest-neighbor",
     "fixtures": "Private controlled map, position and party setup, then actual controller input",
