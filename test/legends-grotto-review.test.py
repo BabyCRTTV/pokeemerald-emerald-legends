@@ -28,6 +28,17 @@ class Grottos(unittest.TestCase):
             new=[b for b in current['bg_events'] if b.get('script','').startswith('LegendsGrotto_Enter')]
             self.assertEqual(len(new),2 if route=='PetalburgWoods' else 1)
             current['bg_events']=[b for b in current['bg_events'] if b not in new]
+            if route == 'PetalburgWoods':
+                # Day Off appends one object. Keep checking every older event and index.
+                self.assertEqual(current['object_events'].pop(), {
+                    'graphics_id': 'OBJ_EVENT_GFX_LEGENDS_WOODS_PLAY_SIGN',
+                    'x': 19, 'y': 32, 'elevation': 3,
+                    'movement_type': 'MOVEMENT_TYPE_FACE_DOWN',
+                    'movement_range_x': 0, 'movement_range_y': 0,
+                    'trainer_type': 'TRAINER_TYPE_NONE',
+                    'trainer_sight_or_berry_tree_id': '0',
+                    'script': 'LegendsDayOff_WoodsProp', 'flag': '0',
+                })
             self.assertEqual(BASE['routes'][route]['map_json_sha256'],digest(current))
             # Only the bounded review entrance cells may differ.
             for f in ['data/layouts/'+route+'/map.bin','data/maps/'+route+'/scripts.inc']:
@@ -37,6 +48,12 @@ class Grottos(unittest.TestCase):
                         offset=patch['index']*2
                         self.assertEqual(struct.unpack_from('<H',data,offset)[0],patch['new'])
                         struct.pack_into('<H',data,offset,patch['old'])
+                if route == 'PetalburgWoods' and f.endswith('scripts.inc'):
+                    tip = (b'\t.string "being exposed to any harm.\\p"\n'
+                           b'\t.string "Look for the wooden sign in the\\n"\n'
+                           b'\t.string "clearing to play hide-and-seek.$"')
+                    self.assertEqual(data.count(tip), 1)
+                    data = data.replace(tip, b'\t.string "being exposed to any harm.$"')
                 self.assertEqual(BASE['routes'][route]['files'][f],hashlib.sha256(data).hexdigest())
 
     def test_approved_looks_preserved_except_cliff_opening(self):
