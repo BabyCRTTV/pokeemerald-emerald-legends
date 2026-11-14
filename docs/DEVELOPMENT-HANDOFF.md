@@ -1,5 +1,11 @@
 # Development handoff
 
+## A Day Off in Hoenn skipping-stone art (13 November 2026)
+
+**Model: GPT-6 | Reasoning: give the skipping stones distinct, flat silhouettes readable on grass and sand.**
+
+Drew three separated gray pebbles using the native NPC 4 palette. Preserved the approved pail and sign, world positions, activity scripts and save behavior. Reviewed actual mGBA frames at Route 102 and Dewford. [Build and capture evidence](qa/day-off-in-hoenn-preview.json). Review branch only.
+
 ## A Day Off in Hoenn activity props (13 November 2026)
 
 **Model: GPT-6 | Reasoning: make the interaction discoverable through scenery and preserve Continue on maps with newly appended objects.**

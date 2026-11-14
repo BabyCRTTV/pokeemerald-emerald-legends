@@ -1,6 +1,6 @@
 {
   "version": "0.0.80",
-  "romSha256": "f17cd417e81c9f2573b1ee1be51e06e1e9f9ad76c4606c458b4b250a3d533814",
+  "romSha256": "f8ef7560b32fc8cc614a1a4dab5131079d6f3065411a492197241f88cc3f2ad4",
   "emulator": "mGBA native core 0.10.5",
   "templateOffset": 3184,
   "captureSize": [
@@ -28,9 +28,9 @@
     "run.py": "6f8178973e86159ac6cb476d8c990a0b24264c34738b5f7b82896b190d08f277",
     "release.py": "203ea2f143c16c9eaa0e159b9ccf9decb86cd258730d9f9aa30cbdd6a92c1027"
   },
-  "baseCommit": "79cc9b81174b26fe8a19ea25e68f0b712794d829",
+  "baseCommit": "d86e886b4ff99fc3b8183d25917a9f209c2ac917",
   "release": {
-    "romSha256": "e27426f64d931b9b2a7357cdec4f1473ee4c0b36812aea2c2c645a6020d6df59",
+    "romSha256": "c1e6a168ed441e24b7e1e926d3c6f1b2415a0f70c0aef427e1ae3583d6d55832",
     "checks": [
       "Normal Release Continue",
       "Route 102 prop restored onto an earlier map object list",
@@ -39,10 +39,10 @@
     ]
   },
   "captures": {
-    "Day-Off-Dewford-Stone-Pile.png": "16c5ef09a5ece637c3638544b1f0e441ec316f59c32427f32a869f72dd370bf8",
     "Day-Off-Petalburg-Woods-Play-Sign.png": "0059ad4bc0a6db09dfa038aec868860c19a031001d3eb942d297692bb9e6b00c",
-    "Day-Off-Route-102-Stone-Pile.png": "91077cdeef6c1d8ff30c3a17836a58e0916051c72ef7f93bd8f8995654e9db5d",
-    "Day-Off-Route-113-Wash-Pail.png": "2038eccc9b52db3074dbf2b5291ef3e9c5f43dc50c0602688fdb20d12ddfe8ea"
+    "Day-Off-Route-113-Wash-Pail.png": "fedf86460189e86a9af35fe3b80f14e364fe61f210b21f1208a8997ac0d005d7",
+    "Day-Off-Dewford-Pebbles.png": "d6d95e36c948a2b8d342dd32aebedc4de85e2d13e61cd91ac1fd839d81400d90",
+    "Day-Off-Route-102-Pebbles.png": "97b3e4ef7ed928a3e29610f8ce3c08a22af2b8b6ff31cc1f388078410ba912f2"
   },
   "scope": "Local review builds. Debug controller checks used controlled map and party setup. Unmodified Release used a synthetic battery with the old Route 102 object list; normal Continue and button interaction passed. Full production, patch and historical owner-save gates are outstanding."
 }
