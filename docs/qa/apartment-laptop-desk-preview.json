@@ -1,0 +1,22 @@
+{
+  "version": "0.0.81",
+  "romSha256": "32716c9efaddd24574e7535eff2d7c36a8d9dff073037196eae4ca34952f9e60",
+  "emulator": "mGBA native core",
+  "checks": [
+    "blocked doors and independent tenancy",
+    "cancel and insufficient funds",
+    "exact debits, including a zero balance",
+    "repeat access without charge",
+    "physical Mauville entrance",
+    "party heal",
+    "storage PC with room-specific on/off art",
+    "decor after reentry",
+    "normal battery Continue"
+  ],
+  "baseCommit": "271706a9fc6441431fb85eb99d79c1dbffd6cf1d",
+  "visualReview": "Inspected both laptop power states in the Cove Lily studio, including the matching dining table and adjacent bookcase.",
+  "captures": {
+    "Cove-Lily-Laptop-Desk.png": "fb1058600c719b5a430fb897d3d519aa66e20efefc2090fa569428186fee6a85",
+    "Cove-Lily-Laptop-On.png": "eb238a532a63093c9a26d1f13ff41203fd848557b80aae38bfc3605c8fb4a275"
+  }
+}

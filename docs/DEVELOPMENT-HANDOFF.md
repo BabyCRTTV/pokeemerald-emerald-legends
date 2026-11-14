@@ -1,5 +1,13 @@
 # Development handoff
 
+## Apartment laptop and matching desk preview (14 November 2026)
+
+**Model: GPT-6.1 Sol | Reasoning: make the laptop silhouette readable and use the dining table palette.**
+
+Reshaped both laptop sprites with a lower widescreen lid and a tapered keyboard. Used the existing dining table palette and furniture outline for the desktop, rim, apron, and legs. Map positions, interaction, and save data remain unchanged. The prior preview was authorized for publication, then the owner requested this art revision and a screenshot. The revised preview is available for visual review.
+
+The native build and mGBA rental and battery scenarios passed, including laptop power cycling and storage. [Evidence](qa/apartment-laptop-desk-preview.json).
+
 ## Apartment laptop placement and furniture depth (14 November 2026)
 
 **Model: GPT-6 | Reasoning: align the workstation with existing furniture and animate its complete silhouette.**
