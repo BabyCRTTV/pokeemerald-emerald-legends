@@ -1149,6 +1149,8 @@ static void PCTurnOnEffect_SetMetatile(s16 isScreenOn, s8 dx, s8 dy)
     {
         metatileId = isScreenOn ? METATILE_Building_ApartmentPC_Off : METATILE_Building_ApartmentPC_On;
         MapGridSetMetatileIdAt(x, y, metatileId | MAPGRID_IMPASSABLE);
+        metatileId = isScreenOn ? METATILE_Building_ApartmentPC_TopOff : METATILE_Building_ApartmentPC_TopOn;
+        MapGridSetMetatileIdAt(x, y - 1, metatileId | MAPGRID_IMPASSABLE);
         return;
     }
 

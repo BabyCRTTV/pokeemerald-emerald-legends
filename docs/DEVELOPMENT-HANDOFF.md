@@ -1,5 +1,13 @@
 # Development handoff
 
+## Apartment laptop placement and furniture depth (14 November 2026)
+
+**Model: GPT-6 | Reasoning: align the workstation with existing furniture and animate its complete silhouette.**
+
+Moved the Cove Lily laptop from (6,2) to (7,2), directly beside its existing bookcase; updated its interaction event. Enlarged both apartment laptops into two vertically stacked metatiles with a deeper wooden desktop, recessed drawer, shaded side and feet, using existing palette colors. Mauville retains its workstation location because its approved room has no bookcase. Both screen halves follow the native PC flicker/on/off cycle. Existing IDs and saved data remain stable.
+
+Native build and mGBA rental suite passed, including a new controller check at the moved Lilycove workstation and upper-screen on/off assertions. Reviewed both rooms in actual ROM captures. [Evidence](qa/apartment-laptop-placement.json). Review branch, not published; production Release/BPS gates remain.
+
 ## Apartment laptop and lobby door assembly repair (14 November 2026)
 
 **Model: GPT-6 | Reasoning: repair furniture contact and imported wall underlays, preserving room geometry.**

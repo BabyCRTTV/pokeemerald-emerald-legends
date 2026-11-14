@@ -117,6 +117,8 @@
 #define METATILE_Building_PC_On   0x005
 #define METATILE_Building_ApartmentPC_Off 0x008
 #define METATILE_Building_ApartmentPC_On  0x009
+#define METATILE_Building_ApartmentPC_TopOff 0x010
+#define METATILE_Building_ApartmentPC_TopOn  0x011
 #define METATILE_Building_TV_Off  0x002
 #define METATILE_Building_TV_On   0x003
 

@@ -286,6 +286,22 @@ try:
     offer("Rental_Text_LilyDecor")
     key(A)
     assert inspect()[8] == 1
+    # The studio laptop moved beside the bookcase; interact at its new position.
+    step(LEFT)
+    check(position=(7, 3))
+    advance(3, UP)
+    advance(12)
+    key(A, 80)
+    message("Text_BootUpPC")
+    write(2, 7 + 1 * 16)
+    assert inspect()[-1] == 0x011
+    capture("Cove-Lily-Laptop-On")
+    key(A, 100)
+    key(DOWN)
+    key(DOWN)
+    key(A, 85)
+    assert inspect()[-1] == 0x010
+    step(RIGHT)
     for direction in (LEFT, LEFT, DOWN, DOWN, LEFT):
         step(direction)
     assert inspect()[6]
@@ -332,6 +348,9 @@ try:
     key(A, 80)
     message("Text_BootUpPC")
     assert inspect()[-1] == 0x009
+    write(2, 3 + 1 * 16)
+    assert inspect()[-1] == 0x011
+    write(2, 3 + 2 * 16)
     capture("Mauville-PC-Boot")
     key(A, 100)
     capture("Mauville-PC-Menu")

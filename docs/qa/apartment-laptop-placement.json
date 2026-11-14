@@ -1,0 +1,28 @@
+{
+  "version": "0.0.81",
+  "romSha256": "dc47ea350f120f0ef8af9b40d0e9e25ce52574a1e46059c61598c3973104bcdc",
+  "emulator": "mGBA native core",
+  "checks": [
+    "blocked doors and independent tenancy",
+    "cancel and insufficient funds",
+    "exact debits, including a zero balance",
+    "repeat access without charge",
+    "physical Mauville entrance",
+    "party heal",
+    "storage PC with room-specific on/off art",
+    "decor after reentry",
+    "normal battery Continue"
+  ],
+  "baseCommit": "f81e0dff43c1c95861c3ccfadcbdb91367a89b4d",
+  "additionalChecks": [
+    "Cove Lily PC reached at new bookcase-adjacent position",
+    "Upper screen switches on and off",
+    "Both complete furniture assemblies reviewed in mGBA captures"
+  ],
+  "harnessSha256": "9884d431c27549a6892f01c6a0492165266894cc3e46f074a8efa163eabbe0e9",
+  "captures": {
+    "Cove-Lily-Studio.png": "dc1781707bf9f8958fac1ec1fcb30f2224cf7029616552819c10e49042197472",
+    "Cove-Lily-Laptop-On.png": "524883f141ad415774cedb591e56657f0bbdbe54c2f8d29abe76925853bdd330",
+    "Mauville-Hills-Apartment.png": "b13f23ffd316991e3d6c5a776ac967e83dbb318050a9e48bc1f002c1a43ce0f5"
+  }
+}
