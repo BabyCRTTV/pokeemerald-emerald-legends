@@ -2,7 +2,8 @@
 .set RENT_MAUVILLE_HILLS, 3100
 
 Rental_Lily_Notice::
-	lockall
+	lock
+	faceplayer
 	goto_if_set FLAG_RENTAL_COVE_LILY, Rental_Lily_AlreadyRented
 	showmoneybox 0, 0
 	buffernumberstring STR_VAR_1, RENT_COVE_LILY
@@ -17,7 +18,8 @@ Rental_Lily_Notice::
 	goto Rental_CloseOffer
 
 Rental_Mauville_Notice::
-	lockall
+	lock
+	faceplayer
 	goto_if_set FLAG_RENTAL_MAUVILLE_HILLS, Rental_Mauville_AlreadyRented
 	showmoneybox 0, 0
 	buffernumberstring STR_VAR_1, RENT_MAUVILLE_HILLS
@@ -167,14 +169,14 @@ Rental_Mauville_ShowDecor:
 	return
 
 Rental_Text_LilyOffer:
-	.string "COVE LILY MOTEL\n"
-	.string "Furnished studio upstairs.\p"
+	.string "Welcome to COVE LILY!\n"
+	.string "I rent the studio upstairs.\p"
 	.string "Rent it for ¥{STR_VAR_1}?\n"
 	.string "One payment keeps the room yours.$"
 
 Rental_Text_MauvilleOffer:
-	.string "MAUVILLE HILLS\n"
-	.string "Furnished apartment with a kitchen.\p"
+	.string "Welcome to MAUVILLE HILLS!\n"
+	.string "I handle apartment rentals here.\p"
 	.string "Rent it for ¥{STR_VAR_1}?\n"
 	.string "One payment keeps the room yours.$"
 
@@ -192,17 +194,17 @@ Rental_Text_MauvillePaid:
 	.string "of the lobby.$"
 
 Rental_Text_MauvilleExteriorSign:
-	.string "MAUVILLE HILLS\n"
+	.string "Welcome to MAUVILLE HILLS!\n"
 	.string "Furnished apartment for rent.\p"
-	.string "See the notice at the front desk.$"
+	.string "Speak to the attendant inside.$"
 
 Rental_Text_LilyLocked:
 	.string "The studio is locked.\n"
-	.string "Check the rent notice downstairs.$"
+	.string "Speak to the attendant downstairs.$"
 
 Rental_Text_MauvilleLocked:
 	.string "The apartment is locked.\n"
-	.string "Check the rent notice at the desk.$"
+	.string "Speak to the lobby attendant.$"
 
 Rental_Text_Rest:
 	.string "Rest here with your POKéMON?$"

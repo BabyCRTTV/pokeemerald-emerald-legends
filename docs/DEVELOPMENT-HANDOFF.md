@@ -1,5 +1,13 @@
 # Development handoff
 
+## Apartment attendants and laptop revision (14 November 2026)
+
+**Model: GPT-6 Astra | Reasoning: make the transaction visible and restore complete native tile assemblies.**
+
+Replaced the furniture rent triggers with visible attendants at the same interaction positions in both lobbies. Locked doors and the exterior sign direct players to the attendants. Added the new motel receptionist to older saved object templates during Continue. Restored the missing upper row of the native Mauville roof, retaining the door and facade. Both apartment terminals now depict hinged laptops with keyboard bases on the existing desks. Approved private room layouts and rent amounts remain intact.
+
+Native build and mGBA controller verification passed: locked doors, cancel, insufficient funds, exact payments, independent tenancy, reentry without charge, healing, laptop storage/on-off art, decor, and normal battery Continue. Revised rental walkthrough recorded. The legacy motel object-template migration was code-reviewed, not separately exercised with a pre-apartment battery save. Review branch only.
+
 ## Hoenn apartment roof and PC polish (14 November 2026)
 
 **Model: GPT-6 | Reasoning: preserve the facade footprint and keep both desktop terminal states on the native wood floor.**
