@@ -1,5 +1,13 @@
 # Development handoff
 
+## Coffee and loose-leaf tea ingredients preview (15 November 2026)
+
+**Model: GPT-6.1 Sol | Reasoning: give the new ingredients distinct silhouettes and append their IDs to preserve existing inventory.**
+
+Added Matcha Powder, Oolong Tea, Black Tea, and Coffee to Poké Mart INGREDIENTS. Oolong and Black Tea are loose-leaf varieties. Coffee represents whole roasted beans, alongside the existing Coffee Grounds used to brew Milk Coffee. This preview adds the ingredients and their Bag icons.
+
+Verified all four purchases in Oldale Town and inspected each Bag icon and description in mGBA. The host checks passed for Bag capacity, item history, and save layouts. [Preview evidence](qa/coffee-tea-ingredients-preview.json). Review branch only.
+
 ## Portable cooking gear preview (15 November 2026)
 
 **Model: GPT-6.1 Sol | Reasoning: reuse the cooking transaction and Mom's farewell without moving save fields.**
