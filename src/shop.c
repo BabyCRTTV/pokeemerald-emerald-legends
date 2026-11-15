@@ -171,7 +171,8 @@ static const u8 sText_Ingredients[] = _("INGREDIENTS");
 static const u16 sIngredients[] =
 {
     ITEM_BUTTER, ITEM_EGG, ITEM_COOKING_WATER,
-    ITEM_SALT, ITEM_PEPPER, ITEM_FLOUR, ITEM_NONE,
+    ITEM_SALT, ITEM_PEPPER, ITEM_FLOUR,
+    ITEM_COOKING_MILK, ITEM_SUGAR, ITEM_COCOA_POWDER, ITEM_NONE,
 };
 
 static const struct MenuAction sShopMenuActions_BuySellQuit[] =

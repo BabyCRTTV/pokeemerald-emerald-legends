@@ -34,6 +34,10 @@ static const struct MealRecipe sRecipes[] =
         MEAL_EFFECT_ENCOUNTER, 15, COMPOUND_STRING("Wild encounter rate -15%")},
     {ITEM_CRACKERS, {ITEM_FLOUR, ITEM_COOKING_WATER, ITEM_SALT, ITEM_PEPPER},
         MEAL_EFFECT_FRIENDSHIP, 1, COMPOUND_STRING("Walk friendship +1")},
+    {ITEM_HOT_COCOA, {ITEM_COOKING_MILK, ITEM_SUGAR, ITEM_COCOA_POWDER},
+        MEAL_EFFECT_FRIENDSHIP, 2, COMPOUND_STRING("Walk friendship +2")},
+    {ITEM_EGG_CUSTARD, {ITEM_EGG, ITEM_COOKING_MILK, ITEM_SUGAR},
+        MEAL_EFFECT_EXPERIENCE, 15, COMPOUND_STRING("Battle Exp. +15%")},
 };
 
 static const struct MealRecipe *GetRecipeByItem(enum Item item)
@@ -116,18 +120,22 @@ enum LegendsCookResult LegendsCookMeal(u32 recipeIndex)
     bool32 freesStack = FALSE;
     u16 targetSlot = food->capacity;
     u16 targetQuantity = 0;
+    u32 ingredientCount;
 
     // Preflight every ingredient and the output slot before mutating anything.
-    for (u32 i = 0; i < RECIPE_INGREDIENTS; i++)
+    for (ingredientCount = 0; ingredientCount < RECIPE_INGREDIENTS; ingredientCount++)
     {
+        enum Item ingredient = recipe->supplies[ingredientCount];
+        if (ingredient == ITEM_NONE)
+            break;
         u32 slot;
         for (slot = 0; slot < supplies->capacity; slot++)
         {
             struct ItemSlot entry = BagPocket_GetSlotData(supplies, slot);
-            if (entry.itemId == recipe->supplies[i] && entry.quantity > 0)
+            if (entry.itemId == ingredient && entry.quantity > 0)
             {
-                supplySlots[i] = slot;
-                supplyQuantities[i] = entry.quantity;
+                supplySlots[ingredientCount] = slot;
+                supplyQuantities[ingredientCount] = entry.quantity;
                 freesStack |= entry.quantity == 1;
                 break;
             }
@@ -152,7 +160,7 @@ enum LegendsCookResult LegendsCookMeal(u32 recipeIndex)
 
     // Slot updates trim trailing empty slots only. Compact after all indexed
     // deductions, then insert the meal using the refreshed shared-pool capacity.
-    for (u32 i = 0; i < RECIPE_INGREDIENTS; i++)
+    for (u32 i = 0; i < ingredientCount; i++)
         BagPocket_SetSlotData(supplies, supplySlots[i],
             (struct ItemSlot){recipe->supplies[i], supplyQuantities[i] - 1});
     CompactItemsInBagPocket(POCKET_ITEMS);

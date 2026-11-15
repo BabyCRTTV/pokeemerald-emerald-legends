@@ -1,5 +1,13 @@
 # Development handoff
 
+## Hot Cocoa, Egg Custard, and Active Buffs preview (15 November 2026)
+
+**Model: GPT-6.1 Sol | Reasoning: add three-ingredient recipes without moving item IDs or save fields and redraw the existing Bag background under the icon frame.**
+
+Added Milk, Sugar, and Cocoa Powder to Poké Mart INGREDIENTS. Hot Cocoa gives +2 walking friendship per gain, and Egg Custard gives +15% battle experience. Both last ten minutes. The kitchen shows all seven recipes in a two-column menu. The item icon frame disappears on the Active Buffs row and panel and returns on item selection.
+
+Verified buying, cooking, consuming, and opening both new buffs through normal mGBA controls. Checked the icon frame with both Bag designs and reran the earlier cooking, timer, and battery Continue flow. Host checks covered all seven recipes and save offsets. [Preview evidence](qa/cooking-meals-preview.json). Review branch only.
+
 ## Cooking menu and Food pocket preview polish (15 November 2026)
 
 **Model: GPT-6.1 Sol | Reasoning: keep the leading Food action distinct from the actual inventory slots.**

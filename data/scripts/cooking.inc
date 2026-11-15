@@ -22,7 +22,7 @@ EventScript_PrepareMeal::
 EventScript_ChooseMeal::
 	message Text_ChooseMeal
 	waitmessage
-	multichoice 0, 0, MULTI_LEGENDS_MEALS, FALSE
+	multichoicegrid 0, 0, MULTI_LEGENDS_MEALS, 2, FALSE
 	copyvar VAR_0x8004, VAR_RESULT
 	switch VAR_RESULT
 	case 0, EventScript_MealOmelet
@@ -30,6 +30,8 @@ EventScript_ChooseMeal::
 	case 2, EventScript_MealFlatbread
 	case 3, EventScript_MealSoup
 	case 4, EventScript_MealCrackers
+	case 5, EventScript_MealHotCocoa
+	case 6, EventScript_MealEggCustard
 	goto EventScript_FinishMealInteraction
 
 EventScript_MealOmelet::
@@ -50,6 +52,14 @@ EventScript_MealSoup::
 
 EventScript_MealCrackers::
 	msgbox Text_MealCrackers
+	goto EventScript_ConfirmCookMeal
+
+EventScript_MealHotCocoa::
+	msgbox Text_MealHotCocoa
+	goto EventScript_ConfirmCookMeal
+
+EventScript_MealEggCustard::
+	msgbox Text_MealEggCustard
 	goto EventScript_ConfirmCookMeal
 
 EventScript_ConfirmCookMeal::
@@ -119,6 +129,17 @@ Text_MealCrackers::
 	.string "and Pepper (1 each).\p"
 	.string "Walking friendship gains +1\n"
 	.string "for 10 minutes.$"
+
+Text_MealHotCocoa::
+	.string "Hot Cocoa: Milk, Sugar, and\n"
+	.string "Cocoa Powder (1 each).\p"
+	.string "Walking friendship gains +2\n"
+	.string "for 10 minutes.$"
+
+Text_MealEggCustard::
+	.string "Egg Custard: Egg, Milk, and\n"
+	.string "Sugar (1 each).\p"
+	.string "Battle Exp. +15% for 10 minutes.$"
 
 Text_CookSelectedMeal::
 	.string "Cook this meal?$"

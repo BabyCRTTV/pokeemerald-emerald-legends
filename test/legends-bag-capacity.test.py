@@ -113,7 +113,7 @@ meal_source=(R/'src/legends_meals.c').read_text().split('void Script_LegendsCook
 code+='\n'.join(l for l in meal_source.splitlines() if not l.startswith('#include'))+'\n'
 code+=r'''
 static s32 cmp(enum Pocket id,struct ItemSlot a,struct ItemSlot b){(void)id;return !a.itemId?1:!b.itemId?-1:(s32)a.itemId-b.itemId;}
-static void fresh(void){memset(&data,0,sizeof(data));SetBagItemsPointers();}
+static void fresh(void){memset(&data,0,sizeof(data));memset(&save3,0,sizeof(save3));SetBagItemsPointers();}
 static void invariant(void){u32 offset=0,used=BagPoolUsed();assert(used<=1152);for(u32 p=0;p<POCKETS_COUNT;p++){assert(gBagPockets[p].itemSlots==data.inventory.slots+offset);assert(gBagPockets[p].capacity==data.inventory.pocketSizes[p]+1152-used);offset+=data.inventory.pocketSizes[p];}}
 int main(void)
 {
@@ -193,14 +193,19 @@ int main(void)
  for(unsigned r=0;r<ARRAY_COUNT(sRecipes);r++){
   fresh();
   const struct MealRecipe *recipe=&sRecipes[r];
-  for(unsigned i=0;i<RECIPE_INGREDIENTS-1;i++)assert(BagPocket_AddItem(&gBagPockets[POCKET_ITEMS],recipe->supplies[i],1));
+  unsigned ingredients=0;
+  while(ingredients<RECIPE_INGREDIENTS&&recipe->supplies[ingredients]!=ITEM_NONE)ingredients++;
+  assert(ingredients>=3);
+  for(unsigned i=0;i<ingredients-1;i++)assert(BagPocket_AddItem(&gBagPockets[POCKET_ITEMS],recipe->supplies[i],1));
   struct Bag unchanged=data.inventory;
   assert(LegendsCookMeal(r)==LEGENDS_COOK_MISSING);
   assert(!memcmp(&unchanged,&data.inventory,sizeof(unchanged)));
-  assert(BagPocket_AddItem(&gBagPockets[POCKET_ITEMS],recipe->supplies[RECIPE_INGREDIENTS-1],1));
+  assert(BagPocket_AddItem(&gBagPockets[POCKET_ITEMS],recipe->supplies[ingredients-1],1));
   assert(LegendsCookMeal(r)==LEGENDS_COOK_SUCCESS);
   assert(!IsBagPocketNonEmpty(POCKET_ITEMS));
   assert(BagPocket_CountTotalItemQuantity(&gBagPockets[POCKET_FOOD],recipe->meal)==1);
+  assert(LegendsEatMeal(recipe->meal)==LEGENDS_EAT_SUCCESS);
+  assert(LegendsMealBonus(recipe->effect)==recipe->amount);
   invariant();
  }
  fresh();
@@ -225,7 +230,7 @@ int main(void)
  for(unsigned f=0;f<LEGENDS_MEAL_DURATION-2;f++)LegendsMealTick();
  assert(LegendsMealBonus(MEAL_EFFECT_CATCH)==10);
  assert(LegendsEatMeal(ITEM_BUTTER_OMELET)==LEGENDS_EAT_SUCCESS);
- puts("PASS: five real recipes, atomic full/missing-supply refusal, three buffs, independent expiration and re-eating");
+ puts("PASS: seven recipes and buffs, atomic full/missing-supply refusal, three buffs, independent expiration and re-eating");
  puts("PASS: each pocket1152 stacks; shared reuse/full refusal; >255 indices; cross-pocket preservation; sorting/swapping; old14-box, LPC2 and LPC3 packed migration; new save/reload; malformed-size and allocation refusal");
 }
 '''

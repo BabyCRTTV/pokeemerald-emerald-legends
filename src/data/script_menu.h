@@ -1211,6 +1211,8 @@ static const struct MenuAction sLegendsMeals[] = {
     {COMPOUND_STRING("Flatbread")},
     {COMPOUND_STRING("Egg Drop Soup")},
     {COMPOUND_STRING("Crackers")},
+    {COMPOUND_STRING("Hot Cocoa")},
+    {COMPOUND_STRING("Egg Custard")},
     {gText_Cancel2},
 };
 

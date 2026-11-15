@@ -46,5 +46,51 @@
   "harnessSha256": {
     "arm.c": "0d816b5fb3a03908fe1b1446a28514ab76a39d734ca5f9d1a8776c32280a9be2",
     "run.py": "2d130542fb5a9e726ffbda44703050aee1886257bf966f6c230e70700656c388"
+  },
+  "dessertPreview": {
+    "parentCommit": "6aba515211f910f9469b818492ce0cf98f783efd",
+    "romSha256": "9ef68d18453d56995965665e77296ebc077de8e883af2332f1ccf52ebfdc6f0d",
+    "harnessSha256": {
+      "arm.c": "7f251d2cde4e76a856c2df869f86876080d9e911244d0e42102ab90b46678b03",
+      "sweets.py": "0b186b7da03126dc80a6c16ecc9ccf8c4b3235b84df6dcfd44bd7a2ecf6e483a",
+      "sweets-regression.py": "8c907f88e0b9b388c6070bb06f2395e25bacde9c592d11c915138200125d8d8d"
+    },
+    "nativeChecks": [
+      "Purchased Milk, Sugar, Cocoa Powder, and Egg at Oldale Mart",
+      "Selected and cooked Hot Cocoa and Egg Custard in the Mauville apartment",
+      "Verified exact ingredient deductions and one of each new meal in Food",
+      "Opened the field Bag from the pause menu, consumed both meals, and read the +2 friendship and +15% battle experience bonuses",
+      "Inspected the hidden item-icon frame on Active Buffs and the restored frame for Hot Cocoa. Verified the hidden frame on the alternate Bag",
+      "Earlier recipe, empty Food, sorting, fourth-meal refusal, expiration, and battery Continue regression passed on the revised ROM"
+    ],
+    "hostChecks": [
+      "All seven recipes and their bonuses",
+      "Shared inventory and exact save-sector rotations",
+      "Nightmare flag and save-width baseline"
+    ],
+    "limits": "The fixture placed the player in Oldale Mart and the Mauville kitchen, where the actual purchase and cooking inputs were recorded. Preview only. No public patches were generated.",
+    "screenshots": {
+      "Active-Buffs-No-Box.png": "f2fbb06acdd08631cc6e1934cf4f6faac461fc534e823342375c1adacedf6bc7",
+      "Cooked-Egg-Custard.png": "be59587365abea305d2011d9f8b77913a590f794a947b5f34f6afdc46553e825",
+      "Cooked-Hot-Cocoa.png": "108056d31e0efcaaaa180d9c585963f76c9bdcc3255d6b0a727efdda7c524448",
+      "Drinking-Hot-Cocoa.png": "8151278e7eef662b107516a1fad2d0a8339820a4f903670612134f2266966ada",
+      "Eating-Egg-Custard.png": "ffc69e557a057c5c93aa1db4c7227d5352a8965801f38db8afaaea4dda1f6513",
+      "Effect-Egg-Custard.png": "8637aa99ef0102cd92dca5d932b3715bc84fc9f1e5899c01e97ae4f01a2ced43",
+      "Effect-Hot-Cocoa.png": "838548abd0360287f84bbc992488ca4fef62b8d4513e99323618c74b771d673c",
+      "Emerald-Legends-Cooking-Screenshots.png": "0723fd00a58a837e9300feea2b7579c15d6fe9ca86a037c9e43bd12ca3fe7311",
+      "Food-Buffs-Row-No-Box.png": "9f288c431c205126bcef8fd808557d85b1ddca67e9ef6bd3aea71cd844934817",
+      "Food-Hot-Cocoa-Icon.png": "619d860d74fe196b664b51bbba113b12a30a9b29be4f7b1a58842da6df13726f",
+      "Ingredients-Egg-Custard.png": "86937712eeae7944f1e1fdaa0963191936787f5bb933ae05b6e124ace8f4276e",
+      "Ingredients-Hot-Cocoa.png": "5470a7057ee4a71ed8518f3746830f923ad7a75c221cd15ec88042ec5f38b5e1",
+      "New-Mart-Ingredients.png": "7df588d35b521b84515e287f5cc365ea3e1f644aaa845ae33547035e0a67a3ba",
+      "Pause-Menu.png": "41f2672b274789e58170cfcebde05456443f51dec00f722e9a8e74292c3a2297",
+      "Recipe-Menu-Egg-Custard.png": "153448167309dd0a6a9064b3affe273bef1adfe57906db0dc821bb6bd83b1856",
+      "Recipe-Menu-Hot-Cocoa.png": "3f01be44a09736c44fb9322efc5c71a952ae04891e9610d00e0f29afc5bf72d1"
+    },
+    "video": {
+      "file": "Emerald-Legends-Cooking-Gameplay.mp4",
+      "sha256": "dcc5d49a2d42e8fd7e42bc670fb38f19bb4a26d79b86e6c63e15ad3129bcaf68",
+      "durationSeconds": 43.566667
+    }
   }
 }

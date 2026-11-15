@@ -975,6 +975,30 @@ static void GetItemNameFromPocket(u8 *dest, enum Item itemId)
     }
 }
 
+static void SetBagItemIconFrameVisible(bool32 visible)
+{
+    // Restore the original tiles from graphics/bag/menu.bin.
+    static const u16 sIconFrame[5][5] = {
+        {0x0013, 0x0014, 0x0014, 0x0014, 0x0413},
+        {0x0015, 0x0016, 0x0016, 0x0016, 0x0415},
+        {0x0015, 0x0016, 0x0016, 0x0016, 0x0415},
+        {0x0015, 0x0016, 0x0016, 0x0016, 0x0415},
+        {0x0018, 0x0019, 0x001A, 0x001A, 0x001B},
+    };
+    const u16 *tilemap = GetBgTilemapBuffer(2);
+    if ((tilemap[8 * 32] == sIconFrame[0][0]) == visible)
+        return;
+
+    if (visible)
+        CopyToBgTilemapBufferRect(2, sIconFrame, 0, 8, 5, 5);
+    else
+    {
+        FillBgTilemapBufferRect_Palette0(2, 0x0002, 0, 8, 5, 4);
+        FillBgTilemapBufferRect_Palette0(2, 0x001C, 0, 12, 5, 1);
+    }
+    ScheduleBgCopyTilemapToVram(2);
+}
+
 static void BagMenu_MoveCursorCallback(s32 itemIndex, bool8 onInit, struct ListMenu *list)
 {
     if (onInit != TRUE)
@@ -984,6 +1008,7 @@ static void BagMenu_MoveCursorCallback(s32 itemIndex, bool8 onInit, struct ListM
     }
     if (gBagMenu->toSwapPos == NOT_SWAPPING)
     {
+        SetBagItemIconFrameVisible(itemIndex != LIST_ACTIVE_BUFFS);
         RemoveBagItemIconSprite(gBagMenu->itemIconSlot ^ 1);
         if (itemIndex >= 0)
             AddBagItemIconSprite(GetBagItemId(gBagPosition.pocket, itemIndex), gBagMenu->itemIconSlot);
