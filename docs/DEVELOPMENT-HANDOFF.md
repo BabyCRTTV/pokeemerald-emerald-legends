@@ -1,5 +1,13 @@
 # Development handoff
 
+## Prepared meal icons and ingredient alignment preview (15 November 2026)
+
+**Model: GPT-6.1 Sol | Reasoning: give each item room to read at 24 pixels and align features that share a physical axis.**
+
+Redrew all seven prepared item icons, removed the serving ware from the Butter pat, and centered the Cocoa Powder lid and base on the tin. Recorded the ingredient and centerline preferences in AGENTS.md.
+
+Checked the native sprite format and centered Cocoa Powder, soup bowl, and Egg Custard silhouettes. Verified both corrected ingredients and all seven prepared items in the actual Bag in mGBA. [Preview evidence](qa/cooking-meals-preview.json). Review branch only.
+
 ## Remaining cooking ingredient icons preview (15 November 2026)
 
 **Model: GPT-6.1 Sol | Reasoning: use material-specific highlights and shadows that stay legible on the native item grid.**

@@ -198,5 +198,35 @@
       "file": "Emerald-Legends-Ingredient-Icons.png",
       "sha256": "672c3a8a44a52ef9ec573f7ce0a10996a93b6f8e74f2a8630853cc258f9826aa"
     }
+  },
+  "preparedIconPreview": {
+    "parentCommit": "f485676915a8d6f3be1c2c977901959a3a354efc",
+    "romSha256": "19b8259c7be80f82d13dfd1aa4912b2a744b874df5d8b113622eb7e0eab44906",
+    "harnessSha256": {
+      "arm.c": "d94daf69d857ad0026ef831ae87e3d0428b68ef1e86be4f76e5b888bf93c95b4",
+      "prepared-qa.py": "ffe4e2127c3a201939f8208841327e0bec283e1dfe75507bf021f5f0442657c5"
+    },
+    "nativeChecks": [
+      "Verified native Bag selections for Butter, Cocoa Powder, and all seven prepared items in mGBA"
+    ],
+    "assetChecks": [
+      "Native indexed icon dimensions and palette limits; matching silhouette centerlines for Cocoa Powder, Egg Drop Soup, and Egg Custard"
+    ],
+    "screenshots": {
+      "Butter-Omelet.png": "9b20bc12b06efe29bf41a95c4db70f89fcd3dd5526d814277576b9fb5abd2013",
+      "Butter.png": "1f3867b0a11228e2057820c38b800ff5dd3e850b8a265893d6b8653ec4355e4d",
+      "Cocoa-Powder.png": "39083597ad6af6ef128279675f076c967bb9bd6a7ddd7bcc72d24a8ccd7237ef",
+      "Crackers.png": "f969b6982ad3009e1babdcd3d7c25c98bf4e9b1b9eb966061bec8ca5a237322e",
+      "Egg-Custard.png": "c910a70301da4342d589c5dfee36a22f2267824e43087997d26a1b0494a68ceb",
+      "Egg-Drop-Soup.png": "9027271e6f859bab690e227f8ba63ded848ec8198042185e39ca3dc2e26f5ac6",
+      "Flatbread.png": "b614156aab4f344dbde815da84e9e0ce5c6b16455acaae4859deb018e1607e5e",
+      "Hot-Cocoa.png": "5fc16e671aed991aefd87676658a5139e88a0e8939c2345020f20aaa01366783",
+      "Pancakes.png": "22ac8a0664133a62f526959da737e535655395ad29e9a8c70e6520aebe65e92f"
+    },
+    "previousCocoaPowderCaptureSha256": "dfe609a14948d4350cbb288d8f05b9ffb0ce0990afa33fc153dc8a14b6644fcc",
+    "gallery": {
+      "file": "Emerald-Legends-Meal-Icons.png",
+      "sha256": "a6a1a7cb5486ce23ed3ac3bc308c4b1cbfcba27a5e6969cd2e30a2ac4c6b1295"
+    }
   }
 }
