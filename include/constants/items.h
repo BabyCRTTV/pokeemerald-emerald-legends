@@ -1094,6 +1094,7 @@ enum __attribute__((packed)) Item
     ITEM_BLACK_COFFEE = 909,
     ITEM_HOJICHA_LATTE = 910,
     ITEM_HOJICHA_TEA = 911,
+    ITEM_ICE_CUBES = 912,
 
     ITEMS_COUNT,
     ITEM_FIELD_ARROW = ITEMS_COUNT,

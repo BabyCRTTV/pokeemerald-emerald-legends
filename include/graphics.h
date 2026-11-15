@@ -3513,3 +3513,5 @@ extern const u32 gItemIcon_CookingHojichaLatte[];
 extern const u16 gItemIconPalette_CookingHojichaLatte[];
 extern const u32 gItemIcon_CookingHojichaTea[];
 extern const u16 gItemIconPalette_CookingHojichaTea[];
+extern const u32 gItemIcon_CookingIceCubes[];
+extern const u16 gItemIconPalette_CookingIceCubes[];

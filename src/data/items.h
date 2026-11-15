@@ -14865,6 +14865,21 @@ const struct ItemInfo gItemsInfo[] =
         .iconPalette = gItemIconPalette_CookingHojichaTea,
     },
 
+    [ITEM_ICE_CUBES] =
+    {
+        .name = ITEM_NAME("Ice Cubes"),
+        .price = 20,
+        .description = COMPOUND_STRING(
+            "Clear cubes for\n"
+            "chilling specialty\n"
+            "drinks."),
+        .pocket = POCKET_ITEMS,
+        .type = ITEM_USE_FIELD,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .iconPic = gItemIcon_CookingIceCubes,
+        .iconPalette = gItemIconPalette_CookingIceCubes,
+    },
+
     [ITEM_TREAT_CASE] =
     {
         .name = ITEM_NAME("Treat Case"),

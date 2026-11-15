@@ -2186,3 +2186,5 @@ const u32 gItemIcon_CookingHojichaLatte[] = INCGFX_U32("graphics/items/cooking/h
 const u16 gItemIconPalette_CookingHojichaLatte[] = INCGFX_U16("graphics/items/cooking/hojicha_latte.png", ".gbapal");
 const u32 gItemIcon_CookingHojichaTea[] = INCGFX_U32("graphics/items/cooking/hojicha_tea.png", ".4bpp.smol");
 const u16 gItemIconPalette_CookingHojichaTea[] = INCGFX_U16("graphics/items/cooking/hojicha_tea.png", ".gbapal");
+const u32 gItemIcon_CookingIceCubes[] = INCGFX_U32("graphics/items/cooking/ice_cubes.png", ".4bpp.smol");
+const u16 gItemIconPalette_CookingIceCubes[] = INCGFX_U16("graphics/items/cooking/ice_cubes.png", ".gbapal");

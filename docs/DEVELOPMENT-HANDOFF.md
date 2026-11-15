@@ -1,5 +1,13 @@
 # Development handoff
 
+## Ice Cubes ingredient and iced-drink art reference (15 November 2026)
+
+**Model: GPT-6.1 Sol | Reasoning: give Ice Cubes a standard ingredient slot and retain the confirmed portable-cup silhouette for future recipe art.**
+
+Added Ice Cubes for ₽20 to Poké Mart INGREDIENTS. The owner identified the Hojicha Tea cup as the approved starting shape for future iced drinks, with the ice, fill, and highlights adapted to each drink. Recorded the exact sprite in AGENTS.md.
+
+Verified the Oldale Mart purchase, money and quantity change, and the native Bag rendering in mGBA. Bag, cooking, item history, and save layout checks passed. [Preview evidence](qa/ice-cubes-preview.json). Review branch only.
+
 ## Tea and coffee sprite outline polish (15 November 2026)
 
 **Model: GPT-6.1 Sol | Reasoning: remove unsupported outline pixels across shared icon shapes while preserving structural corners and material details.**
