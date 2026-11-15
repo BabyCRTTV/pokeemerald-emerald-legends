@@ -1,5 +1,11 @@
 # Development handoff
 
+## Ice Cubes sprite redesign (15 November 2026)
+
+**Model: GPT-6.1 Sol | Reasoning: distinguish the recipe ingredient through larger faces, pale bevels, and a clearly smaller second cube.**
+
+Redrew the Ice Cubes icon with a large cube above a smaller cube at the lower right. Used a light frosted palette and checked the shared contours at 24 pixels. [Preview evidence](qa/ice-cubes-redesign-preview.json). Review branch only.
+
 ## Ice Cubes ingredient and iced-drink art reference (15 November 2026)
 
 **Model: GPT-6.1 Sol | Reasoning: give Ice Cubes a standard ingredient slot and retain the confirmed portable-cup silhouette for future recipe art.**
