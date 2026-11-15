@@ -1,5 +1,13 @@
 # Development handoff
 
+## Tea and coffee sprite outline polish (15 November 2026)
+
+**Model: GPT-6.1 Sol | Reasoning: remove unsupported outline pixels across shared icon shapes while preserving structural corners and material details.**
+
+Cleaned the rim and base of the Black Tea and Hojicha Leaves cartons and the bases of the Milk Coffee, Matcha Latte, and Hojicha Latte mugs. The owner approved the Hojicha Powder tin's outline as the reference and asked to retain purposeful corners and folds. Recorded that preference in AGENTS.md, including checking shared shapes before recoloring them for variants.
+
+Rebuilt the ROM, checked all five revised icons in the native Bag at normal size and under nearest-neighbor enlargement, and repeated the Hojicha purchase and all eight Percolator recipes in mGBA. [Preview evidence](qa/tea-coffee-sprite-outline-preview.json). Review branch only.
+
 ## Hojicha and Percolator brews preview (15 November 2026)
 
 **Model: GPT-6.1 Sol | Reasoning: give each coffee and tea ingredient a matching brew while preserving item IDs and the established cooking transaction.**
