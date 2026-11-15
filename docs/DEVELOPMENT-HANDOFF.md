@@ -1,5 +1,13 @@
 # Development handoff
 
+## Cooking and Food pocket v0.0.83 approved for publication (14 November 2026)
+
+**Model: GPT-6.1 Sol | Reasoning: ship the approved Bag artwork and preserve the tested battery migration.**
+
+The owner approved the cooking preview and left Food pouch for publication. Both Bag designs retain their prior frame pixels and display the new left pouch for Food, with Berries on the right. No food items or recipes ship in this part. Updated the game and site version displays, patcher, and changelogs. Encounter data and the LegendsDex source pin remain unchanged.
+
+[Preview evidence](qa/cooking-food-pocket-preview.json). Await candidate, production, and live patch verification.
+
 ## Cooking prompt and Food pocket preview (14 November 2026)
 
 **Model: GPT-6.1 Sol | Reasoning: reuse the native furniture interactions and preserve the packed Bag offsets.**

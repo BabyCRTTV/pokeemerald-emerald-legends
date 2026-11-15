@@ -2,6 +2,12 @@
 
 This is the developer-facing history for the **Debug** build. Shared Legends changes are repeated here so this file stands on its own; Debug-only behavior is called out separately.
 
+## [0.0.83] - 2026-11-14
+
+- Added a “Prepare a meal?” prompt after the usual dialogue at sinks, kitchenettes, and refrigerators.
+- Added a sixth Bag pocket, Food, after Key Items. Selecting Food opened the left pouch on both Bag designs.
+- Kept Food empty for now. Choosing Yes at a kitchen explained that ingredients were not yet available.
+
 ## [0.0.82] - 2026-11-14
 
 - Added a furnished studio at the Cove Lily Motel for ₽2,200 and an apartment at Mauville Hills for ₽3,100. Both rents are one-time payments.
