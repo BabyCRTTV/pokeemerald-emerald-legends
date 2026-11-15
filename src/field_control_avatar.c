@@ -49,6 +49,7 @@
 #include "constants/field_poison.h"
 #include "constants/layouts.h"
 #include "constants/metatile_behaviors.h"
+#include "constants/metatile_behaviors_frlg.h"
 #include "constants/metatile_labels.h"
 #include "constants/songs.h"
 #include "constants/trainer_hill.h"
@@ -484,10 +485,86 @@ static const u8 *GetInteractedBackgroundEventScript(struct MapPosition *position
     return bgEvent->bgUnion.script;
 }
 
+// A kitchen may have a visible appliance on the wall and a separate cabinet
+// base in front. The paired base IDs let the player interact from one step back.
+static const u8 *GetCookingApplianceScript(struct MapPosition *position, u8 behavior, enum Direction direction)
+{
+    const struct MapLayout *layout = gMapHeader.mapLayout;
+    u16 tile = MapGridGetMetatileIdAt(position->x, position->y);
+    u16 above = direction == DIR_NORTH
+             ? MapGridGetMetatileIdAt(position->x, position->y - 1)
+             : MAPGRID_UNDEFINED;
+
+    if (layout->isFrlg && behavior == MB_FRLG_KITCHEN)
+        return EventScript_Kitchen;
+
+#if !IS_FRLG
+    if (layout->secondaryTileset == &gTileset_GenericBuilding)
+    {
+        // Native cabinet variants on wood, tatami, carpet and Pacifidlog floors.
+        switch (tile)
+        {
+        case 0x274: case 0x275: case 0x288:
+        case 0x2C0: case 0x2C3: case 0x2C4:
+        case 0x35E: case 0x35F: case 0x388:
+        case 0x3A7: case 0x3C0: case 0x3C1:
+            if (above != tile - 8)
+                return NULL;
+            tile = above;
+            break;
+        }
+        switch (tile)
+        {
+        case 0x26C: case 0x2BB: case 0x356: case 0x3B8:
+            return EventScript_KitchenSink;
+        case 0x26D: case 0x2BC: case 0x357: case 0x3B9:
+            return EventScript_Kitchen;
+        case 0x278: case 0x280: case 0x2B0: case 0x2B8:
+        case 0x378: case 0x380: case 0x397: case 0x39F:
+            return EventScript_KitchenFridge;
+        }
+    }
+    else if (layout->secondaryTileset == &gTileset_BrendansMaysHouse)
+    {
+        switch (tile)
+        {
+        case 0x230: case 0x238: return EventScript_KitchenFridge;
+        case 0x231: case 0x239: return EventScript_KitchenSink;
+        case 0x232: case 0x23A: return EventScript_Kitchen;
+        }
+    }
+
+    if (layout->primaryTileset == &gTileset_LegendsKantoBuildingFrlg)
+#else
+    if (layout->primaryTileset == &gTileset_BuildingFrlg)
+#endif
+    {
+        // Kanto and Sevii kitchens use the same appliances over different walls.
+        switch (tile)
+        {
+        case 0x039: case 0x03A: case 0x0E8: case 0x0E9: case 0x148: case 0x149:
+            // Fuchsia combines the Lavender appliance with the Sevii base.
+            if (above != tile - 8 && !(tile >= 0x148 && above == tile - 0x68))
+                return NULL;
+            tile = above;
+            break;
+        }
+        switch (tile)
+        {
+        case 0x031: case 0x0E0: case 0x140: return EventScript_KitchenSink;
+        case 0x032: case 0x0E1: case 0x141: return EventScript_Kitchen;
+        }
+    }
+    return NULL;
+}
+
 static const u8 *GetInteractedMetatileScript(struct MapPosition *position, u8 metatileBehavior, enum Direction direction)
 {
     s8 elevation;
+    const u8 *cooking = GetCookingApplianceScript(position, metatileBehavior, direction);
     extern const u8 LegendsWardrobe_EventScript_Base[];
+    if (cooking != NULL)
+        return cooking;
     if (CurMapIsSecretBase() && LegendsIsWardrobeMetatile(MapGridGetMetatileIdAt(position->x, position->y)))
         return LegendsWardrobe_EventScript_Base;
 

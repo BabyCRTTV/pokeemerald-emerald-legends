@@ -23,6 +23,11 @@ struct LegacyExpandedBag
 };
 STATIC_ASSERT(sizeof(struct PokemonStorage) < 65536, StorageHashPositionsFitU16);
 STATIC_ASSERT(LEGENDS_BAG_SLOTS >= 450, BagCanMigratePublishedInventory);
+// LPC3 aligned its five u16 counts to a 4-byte slot boundary. Food uses
+// those two padding bytes so the slots, PC items and original counts stay put.
+STATIC_ASSERT(POCKET_FOOD == 5, LegacyPocketIdsUnchanged);
+STATIC_ASSERT(offsetof(struct Bag, slots) == 12, SharedBagSlotsOffsetUnchanged);
+STATIC_ASSERT(sizeof(struct Bag) == 4620, SharedBagSizeUnchanged);
 
 static bool32 BagLayoutValid(void)
 {
@@ -195,7 +200,9 @@ bool32 LegendsStorageDecode(void)
 {
     struct LegendsPackedHeader *header = (struct LegendsPackedHeader *)sPacked;
     if (!sPacked) return FALSE;
-    if (header->magic == LEGENDS_STORAGE_MAGIC || header->magic == LEGENDS_STORAGE_LEGACY_MAGIC)
+    if (header->magic == LEGENDS_STORAGE_MAGIC
+     || header->magic == LEGENDS_STORAGE_SHARED_BAG_MAGIC
+     || header->magic == LEGENDS_STORAGE_LEGACY_MAGIC)
     {
         const u32 inventoryOffset = offsetof(struct PokemonStorage, inventory);
         const u32 oldSize = inventoryOffset + sizeof(struct LegacyExpandedBag) + PC_ITEMS_COUNT * sizeof(struct ItemSlot);
@@ -222,6 +229,10 @@ bool32 LegendsStorageDecode(void)
             ImportExpandedBag(oldBag);
             Free(oldBag);
         }
+        // Old shared bags did not store a sixth count. Ignore their padding
+        // after verifying the checksum over the original, untouched bytes.
+        if (header->magic == LEGENDS_STORAGE_SHARED_BAG_MAGIC)
+            LegendsStorageBag()->pocketSizes[POCKET_FOOD] = 0;
         if (!BagLayoutValid()) return FALSE;
         ToggleEncryption();
         if (gPokemonStoragePtr->currentBox >= TOTAL_BOXES_COUNT) return FALSE;

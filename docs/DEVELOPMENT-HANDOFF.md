@@ -1,5 +1,21 @@
 # Development handoff
 
+## Cooking and Food pocket v0.0.83 approved for publication (14 November 2026)
+
+**Model: GPT-6.1 Sol | Reasoning: ship the approved Bag artwork and preserve the tested battery migration.**
+
+The owner approved the cooking preview and left Food pouch for publication. Both Bag designs retain their prior frame pixels and display the new left pouch for Food, with Berries on the right. No food items or recipes ship in this part. Updated the game and site version displays, patcher, and changelogs. Encounter data and the LegendsDex source pin remain unchanged.
+
+[Preview evidence](qa/cooking-food-pocket-preview.json). Await candidate, production, and live patch verification.
+
+## Cooking prompt and Food pocket preview (14 November 2026)
+
+**Model: GPT-6.1 Sol | Reasoning: reuse the native furniture interactions and preserve the packed Bag offsets.**
+
+Sinks, kitchenette counters and refrigerators use their flavor dialogue before the meal prompt. Yes explains that ingredients are not available yet. No closes the prompt. The Food pocket uses the existing shared stack pool and ships empty. The LPC4 writer uses the two bytes previously reserved for alignment. The LPC3 reader validates its original checksum before clearing those bytes, while LPC2 and original native inventory migration paths remain intact.
+
+Native build and mGBA checks passed in the Mauville apartment, Littleroot, and Fuchsia. Verified the Food pocket, existing apartment interactions, old v0.0.82 Continue with existing Bag/PC items, and current native save/reload. The Food animation now opens a left pouch on both Bag designs, adapted from the right Berry pouch. Existing frame pixels and palettes are unchanged. Verified both designs cycling through all six pockets in game. [Preview evidence](qa/cooking-food-pocket-preview.json). Review branch only.
+
 ## Apartment rentals v0.0.82 published and verified (14 November 2026)
 
 **Model: GPT-6.1 Sol | Reasoning: ship the approved charcoal laptop pixels and preserve the rental behavior verified in mGBA.**

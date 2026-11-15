@@ -60,7 +60,7 @@ struct ListMenuItem {const u8 *name;s32 id;};
 struct ListTemplate {struct ListMenuItem *items;u16 totalItems,maxShowed;};
 static struct ListTemplate gMultiuseListMenuTemplate;
 static const struct ListTemplate sItemListMenu={0};
-static struct {u16 numItemStacks[5];u8 numShownItems[5];bool32 hideCloseBagText;} miniBagMenu,*gBagMenu=&miniBagMenu;
+static struct {u16 numItemStacks[POCKETS_COUNT];u8 numShownItems[POCKETS_COUNT];bool32 hideCloseBagText;} miniBagMenu,*gBagMenu=&miniBagMenu;
 static struct ListMenuItem *sListBuffer1;
 static u8 (*sListBuffer2)[35];
 #define LIST_CANCEL -2
@@ -98,19 +98,19 @@ static enum Item GetBagItemId(enum Pocket p,u32 pos){return BagPocket_GetSlotDat
 static void ApplyNewEncryptionKeyToAllEncryptedData(u32 key){ApplyNewEncryptionKeyToBagItems(key);}
 static s32 cmp(enum Pocket id,struct ItemSlot a,struct ItemSlot b){(void)id;return !a.itemId?1:!b.itemId?-1:(s32)a.itemId-b.itemId;}
 static void fresh(void){memset(&data,0,sizeof(data));SetBagItemsPointers();}
-static void invariant(void){u32 offset=0,used=BagPoolUsed();assert(used<=1152);for(u32 p=0;p<5;p++){assert(gBagPockets[p].itemSlots==data.inventory.slots+offset);assert(gBagPockets[p].capacity==data.inventory.pocketSizes[p]+1152-used);offset+=data.inventory.pocketSizes[p];}}
+static void invariant(void){u32 offset=0,used=BagPoolUsed();assert(used<=1152);for(u32 p=0;p<POCKETS_COUNT;p++){assert(gBagPockets[p].itemSlots==data.inventory.slots+offset);assert(gBagPockets[p].capacity==data.inventory.pocketSizes[p]+1152-used);offset+=data.inventory.pocketSizes[p];}}
 int main(void)
 {
- for(unsigned pocket=0;pocket<5;pocket++){
+ for(unsigned pocket=0;pocket<POCKETS_COUNT;pocket++){
   fresh();assert(!IsBagPocketNonEmpty(pocket));for(unsigned i=1;i<=1152;i++){assert(BagPocket_AddItem(&gBagPockets[pocket],i,999));invariant();}
   assert(data.inventory.pocketSizes[pocket]==1152);assert(IsBagPocketNonEmpty(pocket));
   for(unsigned i=0;i<1152;i++){struct ItemSlot v=BagPocket_GetSlotData(&gBagPockets[pocket],i);assert(v.itemId==i+1&&v.quantity==999);}
-  struct Bag before=data.inventory;assert(!BagPocket_AddItem(&gBagPockets[(pocket+1)%5],5000,1));assert(!memcmp(&before,&data.inventory,sizeof(before)));
-  assert(BagPocket_RemoveItem(&gBagPockets[pocket],600,999));invariant();assert(BagPocket_AddItem(&gBagPockets[(pocket+1)%5],5000,1));invariant();
+  struct Bag before=data.inventory;assert(!BagPocket_AddItem(&gBagPockets[(pocket+1)%POCKETS_COUNT],5000,1));assert(!memcmp(&before,&data.inventory,sizeof(before)));
+  assert(BagPocket_RemoveItem(&gBagPockets[pocket],600,999));invariant();assert(BagPocket_AddItem(&gBagPockets[(pocket+1)%POCKETS_COUNT],5000,1));invariant();
  }
  fresh();for(unsigned i=0;i<600;i++)assert(BagPocket_AddItem(&gBagPockets[0],1,999));assert(BagPocket_CountTotalItemQuantity(&gBagPockets[0],1)==599400);assert(BagPocket_RemoveItem(&gBagPockets[0],1,1500));assert(BagPocket_CountTotalItemQuantity(&gBagPockets[0],1)==597900);
- fresh();for(unsigned p=0;p<5;p++)for(unsigned i=0;i<110;i++)assert(BagPocket_AddItem(&gBagPockets[p],1000*p+110-i,7));
- for(unsigned p=0;p<5;p++){MergeSort(&gBagPockets[p],cmp);invariant();for(unsigned i=0;i<110;i++)assert(BagPocket_GetSlotData(&gBagPockets[p],i).itemId==1000*p+i+1);}
+ fresh();for(unsigned p=0;p<POCKETS_COUNT;p++)for(unsigned i=0;i<110;i++)assert(BagPocket_AddItem(&gBagPockets[p],1000*p+110-i,7));
+ for(unsigned p=0;p<POCKETS_COUNT;p++){MergeSort(&gBagPockets[p],cmp);invariant();for(unsigned i=0;i<110;i++)assert(BagPocket_GetSlotData(&gBagPockets[p],i).itemId==1000*p+i+1);}
  BagPocket_MoveItemSlot(&gBagPockets[0],0,110);assert(BagPocket_GetSlotData(&gBagPockets[0],109).itemId==1);invariant();
  struct PokemonStorage before=data;assert(LegendsStoragePrepare());memset(&data,0,sizeof(data));assert(LegendsStorageDecode());assert(!memcmp(&before,&data,sizeof(data)));LegendsStorageRelease();
  // Published compressed twenty-box inventory: all450 entries, quantities, PC,
@@ -125,18 +125,40 @@ int main(void)
  assert(LegendsStorageAllocate());struct LegendsPackedHeader *h=(void *)sPacked;h->magic=LEGENDS_STORAGE_LEGACY_MAGIC;h->rawSize=oldSize;h->checksum=Hash(raw,oldSize);u16 hash[4096];h->payloadSize=LegendsStoragePack(raw,oldSize,sPacked+sizeof(*h),LEGENDS_STORAGE_FLASH_BYTES-sizeof(*h),hash);assert(h->payloadSize);
  memset(&data,0,sizeof(data));assert(LegendsStorageDecode());invariant();assert(!memcmp(&expected,&data,prefix));assert(!memcmp(pc,data.pcItems,sizeof(pc)));
  const struct ItemSlot *sources[]={old.items,old.pokeBalls,old.TMsHMs,old.berries,old.keyItems};unsigned counts[]={150,32,128,80,60};
- for(unsigned p=0;p<5;p++)for(unsigned i=0;i<counts[p];i++){struct ItemSlot actual=BagPocket_GetSlotData(&gBagPockets[p],i);assert(actual.itemId==sources[p][i].itemId&&actual.quantity==(u16)(sources[p][i].quantity^save2.encryptionKey));}
+ for(unsigned p=0;p<ARRAY_COUNT(counts);p++)for(unsigned i=0;i<counts[p];i++){struct ItemSlot actual=BagPocket_GetSlotData(&gBagPockets[p],i);assert(actual.itemId==sources[p][i].itemId&&actual.quantity==(u16)(sources[p][i].quantity^save2.encryptionKey));}
  before=data;assert(LegendsStoragePrepare());assert(((struct LegendsPackedHeader *)sPacked)->magic==LEGENDS_STORAGE_MAGIC);memset(&data,0,sizeof(data));assert(LegendsStorageDecode());assert(!memcmp(&before,&data,sizeof(data)));
  ((struct LegendsPackedHeader *)sPacked)->rawSize--;assert(!LegendsStorageDecode());LegendsStorageRelease();free(raw);
+ // LPC3 saved five counts and ignored the two bytes that now hold Food.
+ fresh();
+ for (unsigned p = 0; p < POCKET_FOOD; p++)
+  assert(BagPocket_AddItem(&gBagPockets[p], 100 + p, p + 1));
+ data.pcItems[149] = (struct ItemSlot){729, 52};
+ before = data;
+ data.inventory.pocketSizes[POCKET_FOOD] = 0xbeef; // arbitrary legacy padding
+ assert(LegendsStorageAllocate());
+ h = (void *)sPacked;
+ h->magic = LEGENDS_STORAGE_SHARED_BAG_MAGIC;
+ h->rawSize = sizeof(data);
+ ToggleEncryption();
+ h->checksum = Hash((const u8 *)&data, sizeof(data));
+ h->payloadSize = LegendsStoragePack((const u8 *)&data, sizeof(data),
+     sPacked + sizeof(*h), LEGENDS_STORAGE_FLASH_BYTES - sizeof(*h), hash);
+ assert(h->payloadSize);
+ memset(&data, 0, sizeof(data));
+ assert(LegendsStorageDecode());
+ assert(!memcmp(&before, &data, sizeof(data)));
+ assert(!IsBagPocketNonEmpty(POCKET_FOOD));
+ invariant();
+ LegendsStorageRelease();
  // Original native fourteen-box format still imports every original pocket.
  fresh();memset(&nativeSave,0,sizeof(nativeSave));nativeSave.bag.keyItems[29]=(struct ItemSlot){875,1^save2.encryptionKey};nativeSave.bag.items[29]=(struct ItemSlot){23,77^save2.encryptionKey};nativeSave.pcItems[49]=(struct ItemSlot){88,99};
  assert(LegendsStorageAllocate());memset(sPacked,0,LEGENDS_STORAGE_FLASH_BYTES);assert(LegendsStorageDecode());invariant();assert(BagPocket_GetSlotData(&gBagPockets[4],29).itemId==875);assert(BagPocket_GetSlotData(&gBagPockets[0],29).quantity==77);assert(data.pcItems[49].quantity==99);assert(data.boxNames[19][0]=='B');LegendsStorageRelease();
  fresh();failAlloc=1;assert(!BagPocket_AddItem(&gBagPockets[0],1,1));assert(!LegendsStoragePrepare());failAlloc=0;
  // Execute the real battle/Continue save relocation, including re-encryption.
- fresh();for(unsigned p=0;p<5;p++)for(unsigned i=0;i<p+1;i++)assert(BagPocket_AddItem(&gBagPockets[p],p*100+i+1,77));
+ fresh();for(unsigned p=0;p<POCKETS_COUNT;p++)for(unsigned i=0;i<p+1;i++)assert(BagPocket_AddItem(&gBagPockets[p],p*100+i+1,77));
  for(unsigned round=0;round<6;round++){
   MoveSaveBlocks_ResetHeap();unsigned offset=0;
-  for(unsigned p=0;p<5;p++){assert(gBagPockets[p].itemSlots==gPokemonStoragePtr->inventory.slots+offset);offset+=p+1;for(unsigned i=0;i<p+1;i++){struct ItemSlot v=BagPocket_GetSlotData(&gBagPockets[p],i);assert(v.itemId==p*100+i+1&&v.quantity==77);}}
+  for(unsigned p=0;p<POCKETS_COUNT;p++){assert(gBagPockets[p].itemSlots==gPokemonStoragePtr->inventory.slots+offset);offset+=p+1;for(unsigned i=0;i<p+1;i++){struct ItemSlot v=BagPocket_GetSlotData(&gBagPockets[p],i);assert(v.itemId==p*100+i+1&&v.quantity==77);}}
  }
  // The shared menu bounds must keep positions above255 on reopen and scroll.
  for(unsigned total=257;total<=1153;total++){
@@ -151,7 +173,7 @@ int main(void)
  for(unsigned i=0;i<1153;i++){assert(sListBuffer1[i].name==sListBuffer2[0]);assert(sListBuffer1[i].id==(i==1152?LIST_CANCEL:(s32)i));}
  gBagMenu->hideCloseBagText=TRUE;gBagMenu->numItemStacks[0]=1152;LoadBagItemListBuffers(0);assert(sListBuffer1[1151].id==1151);
  Free(sListBuffer1);Free(sListBuffer2);
- puts("PASS: each pocket1152 stacks; shared reuse/full refusal; >255 indices; cross-pocket preservation; sorting/swapping; old14-box and v43-v77 packed migration; new save/reload; malformed-size and allocation refusal");
+ puts("PASS: each pocket1152 stacks; shared reuse/full refusal; >255 indices; cross-pocket preservation; sorting/swapping; old14-box, LPC2 and LPC3 packed migration; new save/reload; malformed-size and allocation refusal");
 }
 '''
 with tempfile.TemporaryDirectory() as folder:

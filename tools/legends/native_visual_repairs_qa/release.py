@@ -35,8 +35,8 @@ def main():
    packed=[off for off in offsets if battery[off+4084:off+4086]==b'\x05\x00']
    assert packed
    newest=max(packed,key=lambda off:int.from_bytes(battery[off+4092:off+4096],'little'))
-   assert int.from_bytes(battery[newest:newest+4],'little')==0x4c504333
+   assert int.from_bytes(battery[newest:newest+4],'little')==0x4c504334
  assert sha(rom)==before
- (out/'verification.json').write_text(json.dumps({'ROM_sha256':before,'ROM_unmodified':True,'bagChecks':'Current600-stack and LPC2 legacy450-stack fixture loaded by normal Release Continue; slot599/149 selected; normal in-game Save then reset/Continue retained inventory and all 40 v0.0.78 Treat Case records; newest save used LPC3', 'input':'Normal Release Continue and controller buttons; no RAM/callback writes','fixtures':'Controlled current Debug saves plus a format-identical LPC2 inventory fixture, not historical owner saves','images':{str(p.relative_to(out)):sha(p) for p in out.rglob('*.png')}},indent=2)+'\n')
+ (out/'verification.json').write_text(json.dumps({'ROM_sha256':before,'ROM_unmodified':True,'bagChecks':'Current600-stack and LPC2 legacy450-stack fixture loaded by normal Release Continue; slot599/149 selected; normal in-game Save then reset/Continue retained inventory and all 40 v0.0.78 Treat Case records; newest save used LPC4', 'input':'Normal Release Continue and controller buttons; no RAM/callback writes','fixtures':'Controlled current Debug saves plus a format-identical LPC2 inventory fixture, not historical owner saves','images':{str(p.relative_to(out)):sha(p) for p in out.rglob('*.png')}},indent=2)+'\n')
  print('Unmodified Release Continue and UI captures completed for both bedrooms and day/night Fallarbor.')
 if __name__=='__main__':main()

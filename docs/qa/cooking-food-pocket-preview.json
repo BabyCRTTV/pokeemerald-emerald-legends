@@ -1,0 +1,37 @@
+{
+  "baseVersion": "0.0.82",
+  "romSha256": "d643f1a2c4dbf5ec86e1be3ba728fb15db062b0ee30753a03e3fce8df83628a2",
+  "legacyRomSha256": "997e97fcfa0e4da962a675eb172c90805a78996e90ba1bd2a3386b3981d406ce",
+  "emulator": "mGBA native core",
+  "checks": [
+    "Mauville apartment sink, range and refrigerator flavor before Yes/No",
+    "Yes no-ingredients feedback; No exits cleanly",
+    "Littleroot refrigerator and Fuchsia sink",
+    "Apartment decor retains precedence",
+    "v0.0.82 native Continue preserves Bag and PC items, Food empty",
+    "v4 native save succeeds; Food pocket opens and wraps both ways"
+  ],
+  "baseCommit": "56120337324ddde9ef845ecdcd80b940a0946cf2",
+  "status": "review",
+  "saveScope": "Controlled v0.0.82 battery saved by the previous game code, opened using normal Continue in the current build. Private fixture code only seeds and inspects state. The native apartment suite also saved and reopened a current-format battery. Historical owner saves were not used.",
+  "hostValidation": [
+    "Bag pool and six-pocket routing",
+    "LPC3 checksum validation with nonzero legacy padding",
+    "Existing LPC2 and original native save migration",
+    "Packed storage codec bounds"
+  ],
+  "captureSha256": {
+    "Food-Pocket.png": "b770d904c2a96aeddc4359fc6ca98d3addb042b846e7068972c04b774a37a4d0",
+    "Prepare-a-Meal.png": "431193776c2962e8eceb392e4a8d82f9292de1f7bbf63cb84736135c9a4ddda2"
+  },
+  "leftFoodPouch": {
+    "romSha256": "0eaae3bab9e732df56d9faa0850470c82eaa5c4cfffc390ba4beb04df966f771",
+    "emulator": "mGBA native core",
+    "checks": [
+      "Both bags cycled across six pockets and wrapped to Items",
+      "Food opened on left, Berries on right"
+    ],
+    "assetChanges": "Added one 64x64 left pouch frame to each indexed sheet. Existing six frames and palettes are identical to the baseline.",
+    "videoSha256": "af73edef3bd989cc1961cef41713151f8f40ac1009be8b99f8d25175c8407cfa"
+  }
+}

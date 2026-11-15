@@ -40,10 +40,6 @@ EventScript_Cabinet::
 	msgbox Text_DishesPlatesNeatlyLinedUp, MSGBOX_SIGN
 	end
 
-EventScript_Kitchen::
-	msgbox Text_Kitchen, MSGBOX_SIGN
-	end
-
 EventScript_Dresser::
 	msgbox Text_Dresser, MSGBOX_SIGN
 	end
@@ -132,10 +128,6 @@ Text_PokeMartShelf::
 Text_DishesPlatesNeatlyLinedUp::
 	.string "Dishes and plates are neatly\n"
 	.string "lined up.$"
-
-Text_Kitchen::
-	.string "It smells delicious!\n"
-	.string "Somebody's been cooking here.$"
 
 Text_Dresser::
 	.string "It's a nicely made dresser.\n"
