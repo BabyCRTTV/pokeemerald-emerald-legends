@@ -1,12 +1,12 @@
 # Development handoff
 
-## Cooking and Food pocket v0.0.83 approved for publication (14 November 2026)
+## Cooking and Food pocket v0.0.83 published and verified (15 November 2026)
 
 **Model: GPT-6.1 Sol | Reasoning: ship the approved Bag artwork and preserve the tested battery migration.**
 
 The owner approved the cooking preview and left Food pouch for publication. Both Bag designs retain their prior frame pixels and display the new left pouch for Food, with Berries on the right. No food items or recipes ship in this part. Updated the game and site version displays, patcher, and changelogs. Encounter data and the LegendsDex source pin remain unchanged.
 
-[Preview evidence](qa/cooking-food-pocket-preview.json). Await candidate, production, and live patch verification.
+Published PR #103 as 191272ac87c98fe3f592be1a0c9a70109b0716df. Candidate and production builds passed normal Continue and independent BPS checks. The two decoder receipts matched. The live verifier matched all 21 site files, including both patches. [Release evidence](qa/cooking-food-pocket-v0.0.83.json).
 
 ## Cooking prompt and Food pocket preview (14 November 2026)
 

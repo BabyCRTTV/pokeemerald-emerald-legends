@@ -1,0 +1,258 @@
+{
+  "version": "0.0.83",
+  "pull_request": 103,
+  "candidate_head": "9a62c88d59be66a06a4c5149b8599beeaabf373e",
+  "candidate_patch_run": 43677877659,
+  "production_source": "191272ac87c98fe3f592be1a0c9a70109b0716df",
+  "production_patch_run": 43679046812,
+  "candidate_patch_artifact": 14147237225,
+  "status": "published",
+  "sourceTree": "dbc91b41167d20454ec7efe752b79b883d620aac",
+  "patchCommit": "4070a9f1de1be04aa5841bd26e7785a5ef40a58d",
+  "pagesRun": 43679907043,
+  "productionArtifact": 14147304887,
+  "siteEvidenceArtifact": 14148470082,
+  "archiveSha256": "7ae291aff24fd12f92b551b1c3705718a595387cb7154cebd0ca0ae38cba36c7",
+  "nativePreview": {
+    "baseVersion": "0.0.82",
+    "romSha256": "d643f1a2c4dbf5ec86e1be3ba728fb15db062b0ee30753a03e3fce8df83628a2",
+    "legacyRomSha256": "997e97fcfa0e4da962a675eb172c90805a78996e90ba1bd2a3386b3981d406ce",
+    "emulator": "mGBA native core",
+    "checks": [
+      "Mauville apartment sink, range and refrigerator flavor before Yes/No",
+      "Yes no-ingredients feedback; No exits cleanly",
+      "Littleroot refrigerator and Fuchsia sink",
+      "Apartment decor retains precedence",
+      "v0.0.82 native Continue preserves Bag and PC items, Food empty",
+      "v4 native save succeeds; Food pocket opens and wraps both ways"
+    ],
+    "baseCommit": "56120337324ddde9ef845ecdcd80b940a0946cf2",
+    "status": "review",
+    "saveScope": "Controlled v0.0.82 battery saved by the previous game code, opened using normal Continue in the current build. Private fixture code only seeds and inspects state. The native apartment suite also saved and reopened a current-format battery. Historical owner saves were not used.",
+    "hostValidation": [
+      "Bag pool and six-pocket routing",
+      "LPC3 checksum validation with nonzero legacy padding",
+      "Existing LPC2 and original native save migration",
+      "Packed storage codec bounds"
+    ],
+    "captureSha256": {
+      "Food-Pocket.png": "b770d904c2a96aeddc4359fc6ca98d3addb042b846e7068972c04b774a37a4d0",
+      "Prepare-a-Meal.png": "431193776c2962e8eceb392e4a8d82f9292de1f7bbf63cb84736135c9a4ddda2"
+    },
+    "leftFoodPouch": {
+      "romSha256": "0eaae3bab9e732df56d9faa0850470c82eaa5c4cfffc390ba4beb04df966f771",
+      "emulator": "mGBA native core",
+      "checks": [
+        "Both bags cycled across six pockets and wrapped to Items",
+        "Food opened on left, Berries on right"
+      ],
+      "assetChanges": "Added one 64x64 left pouch frame to each indexed sheet. Existing six frames and palettes are identical to the baseline.",
+      "videoSha256": "af73edef3bd989cc1961cef41713151f8f40ac1009be8b99f8d25175c8407cfa"
+    }
+  },
+  "independentPatchDecoder": {
+    "passed": true,
+    "source_SHA1": "f3ae088181bf583e55daf962a92bb46f4f1d07b7",
+    "decoder": "Actual committed docs/patcher.js applyBps executed in Node VM; independent of Floating IPS",
+    "decoder_sha256": "5dfa26e58658aa12d0e4906ea0f9d6314df133c42dc403867cc085ca05866583",
+    "verifier_sha256": "bbb6057cadba5a72d14e73c1f75cc57563c121eebd68e0ce97869fd18a110d8b",
+    "results": {
+      "Pokemon-Emerald-Legends-v0.0.83.bps": {
+        "patch_sha256": "1f9bfbc23ac63c0dc0d55f95ed870c032a90cdde5e68790a0f2fc18faccca855",
+        "target_sha256": "f05d21ba2944f81fde544ffe63b6323793dfc75034955e036e5cce5bc286cdef",
+        "target_bytes": 33554432,
+        "exact_native_ROM_match": true
+      },
+      "Pokemon-Emerald-Legends-v0.0.83-debug.bps": {
+        "patch_sha256": "bf92704c05cdc5a8b1e7e0b38b0fe27fb3763cb97e6134e0dd5f4de74a5c44fd",
+        "target_sha256": "f9bbbdfe4645e51cc51596d1564fde947ab46d842ba552cec0688ca7bb7451e7",
+        "target_bytes": 33554432,
+        "exact_native_ROM_match": true
+      }
+    },
+    "limits": "Byte-decoder test; physical browser file-picker/download and Pizza Boy execution are separate checks."
+  },
+  "live": {
+    "version": "0.0.83",
+    "verified_at_UTC": "2026-11-15T05:12:16.886726+00:00",
+    "passed": true,
+    "files": [
+      {
+        "path": "index.html",
+        "passed": true,
+        "HTTP": 200,
+        "bytes": 3704,
+        "sha256": "dda720a207b35d67cfb5f12ff4052592dba4347922c4d2ed624e80d29a86bef6",
+        "Git_blob_sha1": "02af824fdeba38eab5bcde8334152141923d2696"
+      },
+      {
+        "path": "patcher.html",
+        "passed": true,
+        "HTTP": 200,
+        "bytes": 2675,
+        "sha256": "31d6235e5c4397315b196db9d4dcd368465efb4eace5e342eb012264f46602e6",
+        "Git_blob_sha1": "914c6aeeebb6e65e910e3cfef1af01f76c46537c"
+      },
+      {
+        "path": "patcher.js",
+        "passed": true,
+        "HTTP": 200,
+        "bytes": 9353,
+        "sha256": "5dfa26e58658aa12d0e4906ea0f9d6314df133c42dc403867cc085ca05866583",
+        "Git_blob_sha1": "97bf57c15b3ffc8bf961450f0eb397e4938c0d67"
+      },
+      {
+        "path": "changelog.html",
+        "passed": true,
+        "HTTP": 200,
+        "bytes": 136398,
+        "sha256": "99b6ed8e22bb42724d0b6c6750f642a2bd463a2d7fa8dc94450523ae6c752762",
+        "Git_blob_sha1": "37a26039cfe3a3442a81e31f643a3de88b894862"
+      },
+      {
+        "path": "wiki/index.html",
+        "passed": true,
+        "HTTP": 200,
+        "bytes": 17201,
+        "sha256": "8b3bd7d3ed852dbb4aaff3604b9e6ee06c257f8123591d8c47bf924547b685ab",
+        "Git_blob_sha1": "1e624c4836f0dfee591f1cc59ca69d7bfde8f06b"
+      },
+      {
+        "path": "wiki/dex.html",
+        "passed": true,
+        "HTTP": 200,
+        "bytes": 10572,
+        "sha256": "6873a238568b920927720dff099c2742f7b425c55493a570c244257814b1cfd9",
+        "Git_blob_sha1": "5613fddb0ca46f306d26dbc15fe932fa3864243d"
+      },
+      {
+        "path": "wiki/dex-data.json",
+        "passed": true,
+        "HTTP": 200,
+        "bytes": 849391,
+        "sha256": "5e9f4d53f7954099be1cc6687eb3951a2464d92893dbb0cf643dcc8cfc8c8e3a",
+        "Git_blob_sha1": "c7b93baee45bf1d26eb387909cd1b2c10de51442"
+      },
+      {
+        "path": "wiki/dex-profiles.js",
+        "passed": true,
+        "HTTP": 200,
+        "bytes": 178691,
+        "sha256": "0ccfee5466e5ead2d400bbdebb70ff830d58a6864d0a85b3f7bdef069e7c3557",
+        "Git_blob_sha1": "b7c3db3038bf3216a0e2a0da4c08c2a0d276ebdb"
+      },
+      {
+        "path": "wiki/dex-sprite-atlas.js",
+        "passed": true,
+        "HTTP": 200,
+        "bytes": 18786,
+        "sha256": "8b3a1d1224df211929a8079fdd621f16904600305601433afcc117c8f800b04d",
+        "Git_blob_sha1": "de0bf49a8b01f87b9fea58adaa888a3d02e7ec46"
+      },
+      {
+        "path": "wiki/dex-sprite-atlas.webp",
+        "passed": true,
+        "HTTP": 200,
+        "bytes": 153584,
+        "sha256": "55bdf244830f30f9aeb5eeddb8f628b6885eccb2e95b171dac14df9b529190df",
+        "Git_blob_sha1": "dd91aded78d44fc6aea679a678a0274edb93add1"
+      },
+      {
+        "path": "wiki/dex-portrait-sources.json",
+        "passed": true,
+        "HTTP": 200,
+        "bytes": 342,
+        "sha256": "644decdf201a0623707327e6d524178ab8e0f7e376f15bcf1f2ad4abded02b93",
+        "Git_blob_sha1": "758c4db1f73c6baaa968366d6d70c1aa628eff23"
+      },
+      {
+        "path": "wiki/map-hoenn.png",
+        "passed": true,
+        "HTTP": 200,
+        "bytes": 6757,
+        "sha256": "6abac3457dd2c588173b001c7f5ad37b58b4429ff50d3d54373f2fe868e5f625",
+        "Git_blob_sha1": "10f2d26f42c381c2af7f51a7c835b4b3b190107f"
+      },
+      {
+        "path": "wiki/map-kanto.png",
+        "passed": true,
+        "HTTP": 200,
+        "bytes": 3728,
+        "sha256": "bc89ff01cbc5dca3fe849d2c0d872c1e98b57a450663d72a7a210d3645b495f0",
+        "Git_blob_sha1": "241cf5864b38426d1cc75ebfa70b865afdcbcac3"
+      },
+      {
+        "path": "wiki/walkthrough-maps.json",
+        "passed": true,
+        "HTTP": 200,
+        "bytes": 119656,
+        "sha256": "bb6a344d516f911772685dbfaf2d19b439829aa8e387efc470e830e3879d7af1",
+        "Git_blob_sha1": "f0e8eee57a8b30cdcf6e5b1a0f365f007a3e0182"
+      },
+      {
+        "path": "wiki/android-version.json",
+        "passed": true,
+        "HTTP": 200,
+        "bytes": 399,
+        "sha256": "e34e5b41b07dc69569ca2eb266093ce5e634615cba426422edbcfc8bcf8f35d5",
+        "Git_blob_sha1": "eef161550efb41e023e6e11884b964dc01713bc2"
+      },
+      {
+        "path": "wiki/windows-version.json",
+        "passed": true,
+        "HTTP": 200,
+        "bytes": 275,
+        "sha256": "077f8bac1aa2da9901af58d939b820d25b9885e0e6818f918aa89f27ba3e00e2",
+        "Git_blob_sha1": "45e27b7b009537e3c1c300b9d168ec25e6438acd"
+      },
+      {
+        "path": "features/eon-roamers.md",
+        "passed": true,
+        "HTTP": 200,
+        "bytes": 2244,
+        "sha256": "5839b026abdd24d2ea62ef1359559d7ddf0d402efae50726473a2b79c56e1aad",
+        "Git_blob_sha1": "1f1bdffaf6978eba649ba9d0c521cc0bc937171c"
+      },
+      {
+        "path": "downloads/SHA256SUMS.txt",
+        "passed": true,
+        "HTTP": 200,
+        "bytes": 412,
+        "sha256": "82a4d7e05184fd02ce824f3deed7a79addb88772b3903e512afa54021270eed5",
+        "Git_blob_sha1": "f620de4fcb7246cfb4b52fa37a8bb2f077bd0e99"
+      },
+      {
+        "path": "downloads/Pokemon-Emerald-Legends-v0.0.83-debug.bps",
+        "passed": true,
+        "HTTP": 200,
+        "bytes": 17344166,
+        "sha256": "bf92704c05cdc5a8b1e7e0b38b0fe27fb3763cb97e6134e0dd5f4de74a5c44fd",
+        "Git_blob_sha1": "33d2bde23f9bcc116b5767f45c970b196835a6bf",
+        "source_CRC32": "1f1c08fb",
+        "target_CRC32": "e70342c3",
+        "patch_CRC_passed": true
+      },
+      {
+        "path": "downloads/Pokemon-Emerald-Legends-v0.0.83.bps",
+        "passed": true,
+        "HTTP": 200,
+        "bytes": 17515525,
+        "sha256": "1f9bfbc23ac63c0dc0d55f95ed870c032a90cdde5e68790a0f2fc18faccca855",
+        "Git_blob_sha1": "315b0106c8904a418138d83be13fb575c8b1ab1d",
+        "source_CRC32": "1f1c08fb",
+        "target_CRC32": "cee21cbd",
+        "patch_CRC_passed": true
+      },
+      {
+        "path": "release-publication.json",
+        "passed": true,
+        "HTTP": 200,
+        "bytes": 251749,
+        "sha256": "48ec49ecfc1411e0c27dbd2274225157b772e9de80a99ec8bdcbe4df50bda579",
+        "Git_blob_sha1": "5509cc163cac8b337aa967679d60e34a25502809"
+      }
+    ],
+    "scope": "Fresh live HTTP bytes, reviewed SHA256/Git blobs and BPS footer CRCs only; not a gameplay, build or clean-base reconstruction test.",
+    "expected_receipt_sha256": "3b4ea599900d4628b42f6055ad061529c5714542058bf248003d8ba32f5785aa"
+  }
+}
