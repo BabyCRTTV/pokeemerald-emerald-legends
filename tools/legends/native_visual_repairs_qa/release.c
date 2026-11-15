@@ -46,6 +46,7 @@ int main(int argc,char **argv){
   for(int round=0;round<2;round++){
    unsigned storage=c->busRead32(c,storagePtr),counts[5];
    for(int p=0;p<5;p++)counts[p]=c->busRead16(c,storage+offset+p*2);
+   assert(c->busRead16(c,storage+offset+10)==0); // Food starts empty
    assert(counts[0]==(legacy?150:600));assert(counts[1]==(legacy?32:1));assert(counts[2]==(legacy?128:1));assert(counts[3]==(legacy?80:1));assert(counts[4]==(legacy?60:2));
    assert(c->busRead16(c,storage+offset+slotOffset+target*4)==ether);
    unsigned keyAddr=c->busRead32(c,strtoul(argv[18],NULL,0))+strtoul(argv[19],NULL,0),encryption=c->busRead32(c,keyAddr)&65535,at=storage+offset+slotOffset;

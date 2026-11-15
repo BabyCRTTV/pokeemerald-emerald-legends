@@ -47,9 +47,12 @@ def convert(source,target,layout):
    save[half*14*4096:(half+1)*14*4096]=b'\xff'*(14*4096);continue
   packed=b''.join(save[sectors[i]:sectors[i]+3968] for i in range(5,14))
   magic,rawSize,checksum,payload=struct.unpack_from('<4I',packed)
-  assert magic==0x4c504333
+  assert magic in (0x4c504333, 0x4c504334)
   raw=unpack(packed[16:16+payload],rawSize);assert fnv(raw)==checksum
-  offset=layout['inventoryOffset'];counts=struct.unpack_from('<5H',raw,offset);limits=[150,32,128,80,60]
+  offset=layout['inventoryOffset']
+  if magic==0x4c504334:
+   assert struct.unpack_from('<H',raw,offset+10)==(0,), 'LPC2 fixture seed must have an empty Food pocket'
+  counts=struct.unpack_from('<5H',raw,offset);limits=[150,32,128,80,60]
   if any(n>cap for n,cap in zip(counts,limits)):
    save[half*14*4096:(half+1)*14*4096]=b'\xff'*(14*4096);continue
   chunks=[];start=offset+layout['slotOffset']
