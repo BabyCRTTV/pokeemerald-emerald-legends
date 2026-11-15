@@ -14343,9 +14343,9 @@ const struct ItemInfo gItemsInfo[] =
         .name = ITEM_NAME("Butter"),
         .price = 60,
         .description = COMPOUND_STRING(
-            "A creamy cooking\n"
-            "supply. Buy it at\n"
-            "a POKé MART."),
+            "A pat of butter.\n"
+            "Adds a rich flavor\n"
+            "to cooked meals."),
         .pocket = POCKET_ITEMS,
         .type = ITEM_USE_FIELD,
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,

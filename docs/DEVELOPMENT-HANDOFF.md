@@ -1,5 +1,13 @@
 # Development handoff
 
+## Cooking menu and Food pocket preview polish (15 November 2026)
+
+**Model: GPT-6.1 Sol | Reasoning: keep the leading Food action distinct from the actual inventory slots.**
+
+Moved Active Buffs to the first Food row and gave it a gold highlight in both Bag designs. Menu actions and sorting use the underlying item IDs after the extra row. Renamed the Poké Mart option to INGREDIENTS and updated kitchen guidance. Butter now describes its use in cooking.
+
+The mGBA preview verified the revised Mart and Food menus, empty Food access, sorting, eating, expiration and battery Continue. The host Bag and item-history checks passed. [Preview evidence](qa/cooking-meals-preview.json). Review branch only.
+
 ## Five meals and timed buffs preview (15 November 2026)
 
 **Model: GPT-6.1 Sol | Reasoning: make cooking atomic and append meal state without shifting published inventory or flag offsets.**

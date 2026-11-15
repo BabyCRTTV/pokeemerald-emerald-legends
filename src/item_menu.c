@@ -922,6 +922,7 @@ static bool32 AllocateBagItemListBuffers(void)
 static void LoadBagItemListBuffers(u8 pocketId)
 {
     u16 i;
+    bool32 hasBuffRow = FoodPocketHasBuffRow(pocketId);
     // ListMenu invokes itemPrintFunc immediately before drawing each row name.
     // Every row can therefore share one scratch name without retaining a copy.
     for (i = 0; i < gBagMenu->numItemStacks[pocketId]; i++)
@@ -929,10 +930,10 @@ static void LoadBagItemListBuffers(u8 pocketId)
         sListBuffer1[i].name = sListBuffer2[0];
         if (!gBagMenu->hideCloseBagText && i == gBagMenu->numItemStacks[pocketId] - 1)
             sListBuffer1[i].id = LIST_CANCEL;
-        else if (FoodPocketHasBuffRow(pocketId) && i == gBagMenu->numItemStacks[pocketId] - 2)
+        else if (hasBuffRow && i == 0)
             sListBuffer1[i].id = LIST_ACTIVE_BUFFS;
         else
-            sListBuffer1[i].id = i;
+            sListBuffer1[i].id = i - hasBuffRow;
     }
     gMultiuseListMenuTemplate = sItemListMenu;
     gMultiuseListMenuTemplate.totalItems = gBagMenu->numItemStacks[pocketId];
@@ -999,7 +1000,13 @@ static void BagMenu_ItemPrintCallback(u8 windowId, u32 itemIndex, u8 y)
     if (itemIndex == (u32)LIST_CANCEL)
         StringCopy(sListBuffer2[0], gText_CloseBag);
     else if (itemIndex == (u32)LIST_ACTIVE_BUFFS)
+    {
+        // Both Bag palettes use color 9 for gold. Leave the cursor gutter clear.
+        u8 width = GetWindowAttribute(windowId, WINDOW_WIDTH) * 8;
+        u8 height = GetFontAttribute(FONT_NARROW, FONTATTR_MAX_LETTER_HEIGHT);
+        FillWindowPixelRect(windowId, PIXEL_FILL(9), 8, y, width - 8, height);
         StringCopy(sListBuffer2[0], COMPOUND_STRING("Active Buffs"));
+    }
     else
         GetItemNameFromPocket(sListBuffer2[0], GetBagItemId(gBagPosition.pocket, itemIndex));
 
@@ -1379,10 +1386,12 @@ static void Task_BagMenu_HandleInput(u8 taskId)
             }
             else if (JOY_NEW(START_BUTTON))
             {
-                if (FoodPocketHasBuffRow(gBagPosition.pocket)
-                 && *scrollPos + *cursorPos >= gBagMenu->numItemStacks[gBagPosition.pocket] - 2)
+                u8 pocket = gBagPosition.pocket;
+                bool32 hasBuffRow = FoodPocketHasBuffRow(pocket);
+                s32 selectedItem = sListBuffer1[GetItemListPosition(pocket)].id;
+                if (hasBuffRow && selectedItem < 0)
                     return;
-                if (gBagMenu->numItemStacks[gBagPosition.pocket] <= 2 + FoodPocketHasBuffRow(gBagPosition.pocket))
+                if (gBagMenu->numItemStacks[pocket] <= 2 + hasBuffRow)
                 {
                     static const u8 sText_NothingToSort[] = _("There's nothing to sort!");
                     PlaySE(SE_FAILURE);
@@ -1391,14 +1400,12 @@ static void Task_BagMenu_HandleInput(u8 taskId)
                 }
                 else
                 {
-                    struct ItemSlot tempItem;
-                    data[1] = GetItemListPosition(gBagPosition.pocket);
-                    tempItem = GetBagItemIdAndQuantity(gBagPosition.pocket, data[1]);
-                    data[2] = tempItem.quantity;
-                    if (gBagPosition.cursorPosition[gBagPosition.pocket] == gBagMenu->numItemStacks[gBagPosition.pocket])
+                    if (selectedItem < 0)
                         break;
-                    else
-                        gSpecialVar_ItemId = tempItem.itemId;
+                    struct ItemSlot tempItem = GetBagItemIdAndQuantity(pocket, selectedItem);
+                    data[1] = selectedItem;
+                    data[2] = tempItem.quantity;
+                    gSpecialVar_ItemId = tempItem.itemId;
 
                     PlaySE(SE_SELECT);
                     BagDestroyPocketScrollArrowPair();

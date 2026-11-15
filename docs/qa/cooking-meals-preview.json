@@ -1,15 +1,18 @@
 {
   "baseCommit": "e8aaaf0a88f9ab5e42a982c04c947120af18e0b3",
   "baseVersion": "0.0.83",
-  "romSha256": "829e85cdc94131acae6aa1401a08bfc3fea28c0a232fb279beccae875ea1239d",
+  "romSha256": "837f394063188191daa3d554886290dc3e14a1e5b8776eaf13755e642740ddcf",
   "emulator": "mGBA native core",
   "nativeChecks": [
-    "Oldale Mart displayed Cooking Supplies and sold Butter for 60",
+    "Oldale Mart displayed INGREDIENTS and sold Butter for 60",
     "Mauville sink showed recipe list, details, confirmation, and cooked Butter Omelet",
     "Actual Food menu accepted three meals and kept the refused fourth meal",
     "Food Active Buffs showed each bonus and countdown",
     "Expiration was brought forward in the fixture and the normal timer freed one slot",
-    "Normal Continue preserved the remaining buffs and Food inventory"
+    "Normal Continue preserved the remaining buffs and Food inventory",
+    "Food pocket put Active Buffs first with a gold highlight on both Bag designs",
+    "Active Buffs opened from an empty Food pocket and returned to the list",
+    "START on the first meal chose Pancakes for sorting after the leading Active Buffs row"
   ],
   "hostChecks": [
     "All five recipes and exact deductions",
@@ -21,16 +24,27 @@
   ],
   "limits": "Private fixtures set the initial position and added other example meals. The screenshots use actual game frames. No release builds or public patches were produced for this preview.",
   "screenshots": {
-    "01-Poke-Mart.png": "118a71f3503b0249ec23a0bd4c1a01030b39a2de888dd94e99a4fc5e0d2ec0ae",
-    "02-Cooking-Supplies.png": "c9866dfd9d6bd069ed3c1f78b37a619170821efdf08e0c951c3e966b512d3525",
+    "01-Poke-Mart.png": "8f78185a71ef41926848a1c048cb0b4bdae1359e3e81607e8de17e767d15f567",
+    "02-Cooking-Supplies.png": "adfc8acd1902dd875d2873ab2714627fc50a48c740b16f609e4a841833df7854",
     "03-Recipe-Menu.png": "e90a4f7f5e99642db87f33771632f62a1fb54f01c9ddb72659b9bea27525e93d",
     "04-Omelet-Recipe.png": "dde4e2a2b2d232be3099635cedc8fa0b6588af76ca3227af2b0a468ce4a2c096",
     "05-Omelet-Buff.png": "720da97fd8e4114fe1e78940bf60b51bb52526555c8bb67d72903bc759c6a469",
     "06-Meal-Cooked.png": "285de10241133c9b30555da649cffc544836212de55a53b7b16a75856308216c",
-    "07-Food-Pocket.png": "e1392fc6411733872371f6139f6780a0f5944a170bdd1d50382636cae4e8bd0c",
-    "08-Eat-Meal.png": "bd9ed5a33f7d6c04b57ebf13f6b27762b5579452a0b9ab98e3105538abac6560",
-    "09-Too-Full.png": "7d5d2d63623bf24291131c9a90354e9d72086bbd2385897e8cb41702011c46b9",
+    "07-Food-Pocket.png": "c0e5aceadf4f179e1107efe7278fd733437e3f0a031cb74df690a46c4d48cd54",
+    "08-Eat-Meal.png": "28877eab7a5723cf934b5dd213f2bafe1702ff23bd5f34861725a99a2dd3f6e7",
+    "09-Too-Full.png": "9288af578e14e273fd7c66e71dc3203ec65dbbdab261076e68d9f04c136cd476",
     "10-Active-Buffs.png": "f71ad90c61cc846471e419437f9202078bbff8fca79d99272ce6f24579189107",
-    "11-Expired-Buff.png": "965923785a743e3bdef363de38e4aeb32c733300a8803968d5ba610712a1d491"
+    "11-Expired-Buff.png": "965923785a743e3bdef363de38e4aeb32c733300a8803968d5ba610712a1d491",
+    "12-Empty-Food-Pocket.png": "c79e850b2dc6ec46bf3b1294a710ee359e0fb655842965f815cd58c298dfd898",
+    "13-No-Active-Buffs.png": "2e1c53329ee284e6012b0030e91a3dc22e8be35a75297ce0af27157efa5595fb",
+    "14-Food-Item-Selected.png": "3a9ef9e1c81cb3c37841f741b2dc00a0735e582cf547dec8bf2234c3cc2736d0",
+    "15-Food-Sort.png": "1f984724030c0792f8db81c8d3b426f92f9849f16297d00cf86b7204674221f1",
+    "16-Food-Pocket-Alternate.png": "c18dd0d9011748b5a2a2ee4ac55ef866f381f17cb572ba88a642ac8e01f95bfd",
+    "Emerald-Legends-Meals-UI-Preview.png": "56ebc1e1c7dd7b45d4fdc3f376c6ff678db4845bdba5d34683e7727133d92a0b"
+  },
+  "previousPreviewCommit": "b47a8a3fecbc1fbd762f6c824fc1950d4987c774",
+  "harnessSha256": {
+    "arm.c": "0d816b5fb3a03908fe1b1446a28514ab76a39d734ca5f9d1a8776c32280a9be2",
+    "run.py": "2d130542fb5a9e726ffbda44703050aee1886257bf966f6c230e70700656c388"
   }
 }

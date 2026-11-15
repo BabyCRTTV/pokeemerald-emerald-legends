@@ -157,7 +157,7 @@ static void Task_ReturnToItemListAfterItemPurchase(u8 taskId);
 static void Task_ReturnToItemListAfterDecorationPurchase(u8 taskId);
 static void Task_HandleShopMenuBuy(u8 taskId);
 static void Task_HandleShopMenuSell(u8 taskId);
-static void Task_HandleCookingSupplies(u8 taskId);
+static void Task_HandleIngredients(u8 taskId);
 static void BuyMenuPrintItemDescriptionAndShowItemIcon(s32 item, bool8 onInit, struct ListMenu *list);
 static void BuyMenuPrintPriceInList(u8 windowId, u32 itemId, u8 y);
 
@@ -167,8 +167,8 @@ static const struct YesNoFuncTable sShopPurchaseYesNoFuncs =
     BuyMenuReturnToItemList
 };
 
-static const u8 sText_CookingSupplies[] = _("Cooking Supplies");
-static const u16 sCookingSupplies[] =
+static const u8 sText_Ingredients[] = _("INGREDIENTS");
+static const u16 sIngredients[] =
 {
     ITEM_BUTTER, ITEM_EGG, ITEM_COOKING_WATER,
     ITEM_SALT, ITEM_PEPPER, ITEM_FLOUR, ITEM_NONE,
@@ -178,7 +178,7 @@ static const struct MenuAction sShopMenuActions_BuySellQuit[] =
 {
     { gText_ShopBuy, {.void_u8=Task_HandleShopMenuBuy} },
     { gText_ShopSell, {.void_u8=Task_HandleShopMenuSell} },
-    { sText_CookingSupplies, {.void_u8=Task_HandleCookingSupplies} },
+    { sText_Ingredients, {.void_u8=Task_HandleIngredients} },
     { gText_ShopQuit, {.void_u8=Task_HandleShopMenuQuit} }
 };
 
@@ -451,9 +451,9 @@ static void Task_HandleShopMenuBuy(u8 taskId)
     StartShopBuyMenu(taskId);
 }
 
-static void Task_HandleCookingSupplies(u8 taskId)
+static void Task_HandleIngredients(u8 taskId)
 {
-    SetShopItemsForSale(sCookingSupplies);
+    SetShopItemsForSale(sIngredients);
     StartShopBuyMenu(taskId);
 }
 

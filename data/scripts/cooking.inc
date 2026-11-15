@@ -129,7 +129,7 @@ Text_CookSuccess::
 
 Text_CookMissingSupplies::
 	.string "You're missing some ingredients.\n"
-	.string "Try a POKé MART's COOKING SUPPLIES.$"
+	.string "Try INGREDIENTS at the POKé MART.$"
 
 Text_CookBagFull::
 	.string "There's no room in your BAG.$"
