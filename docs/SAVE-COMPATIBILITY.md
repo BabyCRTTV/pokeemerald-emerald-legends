@@ -8,7 +8,7 @@ This concerns the emulator's normal in-game battery save (`.sav`). Emulator save
 
 ## Current verified baseline and limits
 
-The five-meal preview appends a signed meal timer record at SaveBlock3 offset 1356 and separate item-history bits at 1372. Prior item IDs, the original 110-byte bitmap, and all existing block offsets remain fixed. Old saves have no active buff signature. Controlled native save/Continue retained active meals, and host tests checked all sector rotations and old item-history offsets. [Preview evidence](qa/cooking-meals-preview.json).
+v0.0.84 appended a signed meal timer record at SaveBlock3 offset 1356 and separate item-history bits at 1372. Prior item IDs, the original 110-byte bitmap, and existing block offsets stayed fixed. A controlled v0.0.83 battery opened through normal Continue with its Bag and PC items, badge, money, and location intact. Its Food pocket was empty and it had no active meal buffs. A current-format preview battery retained its active meals, and host checks covered all sector rotations and item-history offsets. [Release evidence](qa/cooking-meal-buffs-v0.0.84.json).
 
 The Cooking and Food pocket preview adds an LPC4 reader and writer. The sixth count occupies the original LPC3 alignment gap. Slot, PC item and save block offsets do not move. LPC3 still loads after validating its original checksum, then resets the new Food count. The LPC2 and original native readers remain available. [Preview checks](qa/cooking-food-pocket-preview.json) cover an mGBA Continue from a controlled v0.0.82 battery and the host migration fixture with nonzero legacy padding.
 

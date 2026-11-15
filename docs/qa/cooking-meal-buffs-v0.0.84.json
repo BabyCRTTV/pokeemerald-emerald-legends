@@ -1,0 +1,288 @@
+{
+  "version": "0.0.84",
+  "status": "published",
+  "pullRequest": 104,
+  "approvedPreview": "7602bc1e35902ea9b21eb2baef0f9c0f6578d85e",
+  "candidateHead": "d8059df9ec19710f88966d16bc84f83af9871997",
+  "candidateArtifact": {
+    "id": 14174867082,
+    "sha256": "d2153f4ff560e06213e22f998174687945c01aa7baeb42252d84313bb38a9914",
+    "checkout": "1a5dfee48052934f4b481cf03dde750fa8319110"
+  },
+  "candidateRuns": {
+    "project": 43746497394,
+    "nativeAndPatches": 43746497442,
+    "wiki": 43746497339,
+    "android": 43746497377
+  },
+  "productionCommit": "cfef4bcfe626cf3b4776a204f1b21c7ffa39228e",
+  "productionTree": "9e23c2def2b8f1fb7bce09014435d7f2e14ca522",
+  "productionRuns": {
+    "patches": 43747630907,
+    "project": 43747630895,
+    "wiki": 43747630876,
+    "android": 43747630906,
+    "windows": 43747630865,
+    "initialPagesGate": 43747630842
+  },
+  "productionArtifact": {
+    "id": 14175112975,
+    "sha256": "cbc1eabc3137be6689a448fbb777f0011000620f22068c371a459c98fc7f5e93"
+  },
+  "patchCommit": "c0a985db8622ec96a1e7e72277cdc8312cf70c1c",
+  "pagesRun": 43748663695,
+  "pagesEvidenceArtifact": {
+    "id": 14174798882,
+    "sha256": "333c8a2f61a4a6fb5408e1bd915fae3c92ade3d9b3a5ad5a341950f22dc2080f"
+  },
+  "sourceFingerprint": "c83b40cabc36a760bda3776268f9f249594bdb6e6ae0f010f4cee7007dffb7e3",
+  "nativeReceiptHashes": {
+    "legends-mgba-preview/results.json": "9a586663dc40415e7554ad426b8f70a97b482381bc89c6dfaddf9406e956b444",
+    "eon-roamers-qa/verification.json": "dcc6c503225583bb17989de37fa6701f98e622eaf02cd38c69b9a3ef7a1bf38f",
+    "ember-return-qa/verification.json": "7f9bc1ed7ca3ea4ccbaeb4df33c55d82bc1490be9c6f3b0c37c3d0a3654bc3ac",
+    "grotto-review/verification.json": "237e633346d64c7b2828ffe6e4663cbc4459e990a45fe860d849a63f8cd26448",
+    "grotto-encounters/verification.json": "1fb1a5b5ee9fc1199992a82ed42fb66d4b926b9a9cb94fbe678b5f0ae10ef30b",
+    "wyrmtide-native/verification.json": "6a05727be5062a62198f3ecffd9e4ee4316541defd5d47419899639e62812b99",
+    "nightmare-native/verification.json": "2f1569f71432c8364abe1a49a018249eb3966165178b9166c4ddf37b749e3fbb",
+    "day-off-qa/verification.json": "7985cca879deb7caa099ff57ae63d96af661576fbc90c6d199fda0a00c498e5a",
+    "day-off-qa/release-verification.json": "cad8065fa159f42596b8d13dd2ad16044d02999718bdc3a0692d48c56f315414",
+    "living-hoenn-qa/verification.json": "db11464cf530905fdf8374a66ae052654b63c4e0a59717cd52d285eb981fed2e",
+    "seasonal-encounters-qa/verification.json": "a02512dfd46c1453f04e09fc641bcf8c2236b7d08151db134f82c0a863191de8",
+    "visual-repairs-qa/verification.json": "1d36726072c9930c6c79c2d1d5ace73658760a9e3a15de25b81f73f5999a9ccd",
+    "eon-roamers-release-qa/verification.json": "b73c077a6277c5f83b4f6fecd21748ef733cf80609c89018cfcf6a9bc00b66a9",
+    "ember-return-release-qa/verification.json": "b08a72516c9c7f7f2e1f59a8c64a8786ec174b0bee8eda7a58329208bb94d962",
+    "grotto-encounters-release/verification.json": "a185d27805af3cd70273eb21a4d47166b7d8974ac22aa9b69e1331b4744ef2f0",
+    "bedroom-release-qa/verification.json": "e89c2dcfd8b3f10a5d01c1a4b22c9132d38a81ecf83066597b1c88ec53c4700f"
+  },
+  "independentPatchDecoder": {
+    "passed": true,
+    "source_SHA1": "f3ae088181bf583e55daf962a92bb46f4f1d07b7",
+    "decoder": "Actual committed docs/patcher.js applyBps executed in Node VM; independent of Floating IPS",
+    "decoder_sha256": "26ee7fb9e4c91684457987b54e495deff2c63095709c6ebb3d4522ce90a0ddc8",
+    "verifier_sha256": "bbb6057cadba5a72d14e73c1f75cc57563c121eebd68e0ce97869fd18a110d8b",
+    "results": {
+      "Pokemon-Emerald-Legends-v0.0.84.bps": {
+        "patch_sha256": "8d924973c8b81c47ee4dfe41c0162c389ac86eaf67a9d8f1a80091cc28b3901e",
+        "target_sha256": "3b1f76400593e12f340e464309b0d7a622a4be4b98cc7877e8630565b7d8c3f9",
+        "target_bytes": 33554432,
+        "exact_native_ROM_match": true
+      },
+      "Pokemon-Emerald-Legends-v0.0.84-debug.bps": {
+        "patch_sha256": "6e7d764a0a0045be25dfcd7c5d376e38855019d94a24c1f3f38d6f17a42ad518",
+        "target_sha256": "2328dc902353246586fb6a30962a27299dc1cc2f4026750a173e37b3d9464f04",
+        "target_bytes": 33554432,
+        "exact_native_ROM_match": true
+      }
+    },
+    "limits": "Byte-decoder test; physical browser file-picker/download and Pizza Boy execution are separate checks."
+  },
+  "localCookingQa": {
+    "passed": true,
+    "romSha256": "32ef5b41a922eea6303242c9adb655cdd13338202248d5d4159c389c5549232d",
+    "harnessSha256": {
+      "arm.c": "d94daf69d857ad0026ef831ae87e3d0428b68ef1e86be4f76e5b888bf93c95b4",
+      "release-cooking-qa.py": "ed0b10e0a1116b6d405764b91a9bcb3238a754b5e0d643ed480ae1662c66fb18"
+    },
+    "checks": [
+      "bought ingredients, walked up to the sink, cooked and consumed Hot Cocoa and Egg Custard, read both active buffs"
+    ]
+  },
+  "legacyBatteryQa": {
+    "source": "e8aaaf0a88f9ab5e42a982c04c947120af18e0b3",
+    "legacyRomSha256": "752e477a4645f9e3c8f068d6f368dfab386ddba63071980302879d6ded2a9068",
+    "candidateRomSha256": "32ef5b41a922eea6303242c9adb655cdd13338202248d5d4159c389c5549232d",
+    "checks": [
+      "Native v0.0.83 normal battery save",
+      "v0.0.84 normal title Continue",
+      "Exact Bag and PC item amounts, badge, money, and map",
+      "Empty Food and no active meal buffs"
+    ],
+    "limits": "Controlled v0.0.83 battery. The title Continue used regular mGBA controls. Fixture code seeded and inspected state.",
+    "fixtureSha256": {
+      "check-save.py": "285fd60fcb7109ef7a4a46b607b251ec3e151d08a444a7249833130e112d57de",
+      "save-fixture.c": "89b2158c8f2507daa7fa1d8eda6071a105ef81879b887311d929bd316b937604"
+    }
+  },
+  "live": {
+    "passed": true,
+    "fileCount": 21,
+    "expectedReceiptSha256": "54b8977a2b5a0182ebfce0e36462b9c5231691193e2802f5da90abb3203d3e5f",
+    "verifiedAtUtc": "2026-11-15T18:48:56.306239+00:00",
+    "files": [
+      {
+        "path": "index.html",
+        "passed": true,
+        "HTTP": 200,
+        "bytes": 3730,
+        "sha256": "9ebffbb5d9326cf9dfb4ad919ddf24aa2068fdf52cc47d8459b6c657678fba7a",
+        "Git_blob_sha1": "52eb8a9ae613a4daea923397b2eccc9256a76837"
+      },
+      {
+        "path": "patcher.html",
+        "passed": true,
+        "HTTP": 200,
+        "bytes": 2675,
+        "sha256": "5e3a39d7762fe374e5ced5af4066b7cff2c09a801ed01ff46f2eb91a7c8e85bf",
+        "Git_blob_sha1": "074749eb510894029e9aafca5d530958cf9fede7"
+      },
+      {
+        "path": "patcher.js",
+        "passed": true,
+        "HTTP": 200,
+        "bytes": 9353,
+        "sha256": "26ee7fb9e4c91684457987b54e495deff2c63095709c6ebb3d4522ce90a0ddc8",
+        "Git_blob_sha1": "adfd7d8f79d18c17e98ddf1e96d96d50f406c2cb"
+      },
+      {
+        "path": "changelog.html",
+        "passed": true,
+        "HTTP": 200,
+        "bytes": 137614,
+        "sha256": "ffd30b9000a9b53d4812396cefa7e7bb4744e07cacc3bc7d0e15a6d9866f10b2",
+        "Git_blob_sha1": "0d73738896a12753d765f404c88bf92164ad6113"
+      },
+      {
+        "path": "wiki/index.html",
+        "passed": true,
+        "HTTP": 200,
+        "bytes": 17201,
+        "sha256": "8b3bd7d3ed852dbb4aaff3604b9e6ee06c257f8123591d8c47bf924547b685ab",
+        "Git_blob_sha1": "1e624c4836f0dfee591f1cc59ca69d7bfde8f06b"
+      },
+      {
+        "path": "wiki/dex.html",
+        "passed": true,
+        "HTTP": 200,
+        "bytes": 10572,
+        "sha256": "6873a238568b920927720dff099c2742f7b425c55493a570c244257814b1cfd9",
+        "Git_blob_sha1": "5613fddb0ca46f306d26dbc15fe932fa3864243d"
+      },
+      {
+        "path": "wiki/dex-data.json",
+        "passed": true,
+        "HTTP": 200,
+        "bytes": 849391,
+        "sha256": "fa252e904ea9b0e94b4f3752595a9a8709e3084dc9f7a4c1be75a4ba0f4b550a",
+        "Git_blob_sha1": "6db9c9848c0269873a697c11e2bc28f5db15a217"
+      },
+      {
+        "path": "wiki/dex-profiles.js",
+        "passed": true,
+        "HTTP": 200,
+        "bytes": 178691,
+        "sha256": "0ccfee5466e5ead2d400bbdebb70ff830d58a6864d0a85b3f7bdef069e7c3557",
+        "Git_blob_sha1": "b7c3db3038bf3216a0e2a0da4c08c2a0d276ebdb"
+      },
+      {
+        "path": "wiki/dex-sprite-atlas.js",
+        "passed": true,
+        "HTTP": 200,
+        "bytes": 18786,
+        "sha256": "8b3a1d1224df211929a8079fdd621f16904600305601433afcc117c8f800b04d",
+        "Git_blob_sha1": "de0bf49a8b01f87b9fea58adaa888a3d02e7ec46"
+      },
+      {
+        "path": "wiki/dex-sprite-atlas.webp",
+        "passed": true,
+        "HTTP": 200,
+        "bytes": 153584,
+        "sha256": "55bdf244830f30f9aeb5eeddb8f628b6885eccb2e95b171dac14df9b529190df",
+        "Git_blob_sha1": "dd91aded78d44fc6aea679a678a0274edb93add1"
+      },
+      {
+        "path": "wiki/dex-portrait-sources.json",
+        "passed": true,
+        "HTTP": 200,
+        "bytes": 342,
+        "sha256": "644decdf201a0623707327e6d524178ab8e0f7e376f15bcf1f2ad4abded02b93",
+        "Git_blob_sha1": "758c4db1f73c6baaa968366d6d70c1aa628eff23"
+      },
+      {
+        "path": "wiki/map-hoenn.png",
+        "passed": true,
+        "HTTP": 200,
+        "bytes": 6757,
+        "sha256": "6abac3457dd2c588173b001c7f5ad37b58b4429ff50d3d54373f2fe868e5f625",
+        "Git_blob_sha1": "10f2d26f42c381c2af7f51a7c835b4b3b190107f"
+      },
+      {
+        "path": "wiki/map-kanto.png",
+        "passed": true,
+        "HTTP": 200,
+        "bytes": 3728,
+        "sha256": "bc89ff01cbc5dca3fe849d2c0d872c1e98b57a450663d72a7a210d3645b495f0",
+        "Git_blob_sha1": "241cf5864b38426d1cc75ebfa70b865afdcbcac3"
+      },
+      {
+        "path": "wiki/walkthrough-maps.json",
+        "passed": true,
+        "HTTP": 200,
+        "bytes": 119656,
+        "sha256": "bb6a344d516f911772685dbfaf2d19b439829aa8e387efc470e830e3879d7af1",
+        "Git_blob_sha1": "f0e8eee57a8b30cdcf6e5b1a0f365f007a3e0182"
+      },
+      {
+        "path": "wiki/android-version.json",
+        "passed": true,
+        "HTTP": 200,
+        "bytes": 399,
+        "sha256": "e34e5b41b07dc69569ca2eb266093ce5e634615cba426422edbcfc8bcf8f35d5",
+        "Git_blob_sha1": "eef161550efb41e023e6e11884b964dc01713bc2"
+      },
+      {
+        "path": "wiki/windows-version.json",
+        "passed": true,
+        "HTTP": 200,
+        "bytes": 275,
+        "sha256": "c750b4bf0d407ba95e323f6d0258ef23e5edfb00b9387913624712e6c2956a6e",
+        "Git_blob_sha1": "c1b2bebb4d4efd9a56817d225d098a2729774909"
+      },
+      {
+        "path": "features/eon-roamers.md",
+        "passed": true,
+        "HTTP": 200,
+        "bytes": 2244,
+        "sha256": "5839b026abdd24d2ea62ef1359559d7ddf0d402efae50726473a2b79c56e1aad",
+        "Git_blob_sha1": "1f1bdffaf6978eba649ba9d0c521cc0bc937171c"
+      },
+      {
+        "path": "downloads/SHA256SUMS.txt",
+        "passed": true,
+        "HTTP": 200,
+        "bytes": 412,
+        "sha256": "9fa4e302842a1aa87eb3fd810f78fd321705fe3bbe94cbfa170c30110bfc9262",
+        "Git_blob_sha1": "35ca7043ac04720f693a81368321b7a80ae1a83c"
+      },
+      {
+        "path": "downloads/Pokemon-Emerald-Legends-v0.0.84.bps",
+        "passed": true,
+        "HTTP": 200,
+        "bytes": 17524544,
+        "sha256": "8d924973c8b81c47ee4dfe41c0162c389ac86eaf67a9d8f1a80091cc28b3901e",
+        "Git_blob_sha1": "ca0f3af2850fabaed80b75060da89fff64e3311a",
+        "source_CRC32": "1f1c08fb",
+        "target_CRC32": "40af1b08",
+        "patch_CRC_passed": true
+      },
+      {
+        "path": "downloads/Pokemon-Emerald-Legends-v0.0.84-debug.bps",
+        "passed": true,
+        "HTTP": 200,
+        "bytes": 17352192,
+        "sha256": "6e7d764a0a0045be25dfcd7c5d376e38855019d94a24c1f3f38d6f17a42ad518",
+        "Git_blob_sha1": "19b35606e3c322060e8212e8a4723fb1e311ec15",
+        "source_CRC32": "1f1c08fb",
+        "target_CRC32": "e325c7ac",
+        "patch_CRC_passed": true
+      },
+      {
+        "path": "release-publication.json",
+        "passed": true,
+        "HTTP": 200,
+        "bytes": 252219,
+        "sha256": "42e50b349be03bf702abf0976d6baee17d7b23d420edfaf94257625f48e9390f",
+        "Git_blob_sha1": "19804f311c8744b589277384d84982db0d3c95a5"
+      }
+    ]
+  }
+}

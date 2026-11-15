@@ -1,12 +1,12 @@
 # Development handoff
 
-## v0.0.84 Cooking and Meal Buffs approved for publication (15 November 2026)
+## v0.0.84 Cooking and Meal Buffs published and verified (15 November 2026)
 
 **Model: GPT-6.1 Sol | Reasoning: publish the approved cooking system and exact final sprites while preserving player saves and encounter data.**
 
 The owner approved the final wider Butter Omelet plate and revised Cocoa Powder tin, completing approval of the cooking preview at `7602bc1e35902ea9b21eb2baef0f9c0f6578d85e`. The release adds nine ingredients and seven recipes, distinct EAT and DRINK actions, and an Active Buffs screen for up to three ten-minute bonuses. Nearby kitchen appliances use the native one-tile interaction. Updated the game and site version labels, patcher, and changelogs. The encounter data and LegendsDex source pin are unchanged.
 
-[Cooking preview evidence](qa/cooking-meals-preview.json). Publication is pending candidate and production checks, independent patch reconstruction, and live verification.
+Published PR #104 as `cfef4bcfe626cf3b4776a204f1b21c7ffa39228e`. Candidate and production native checks and both clean-base BPS decoders passed with matching ROM hashes. A controlled v0.0.83 battery continued in v0.0.84 with its Bag and PC items, badge, money, and location intact. The staged site expectations matched all 21 live files, including both patches. [Release evidence](qa/cooking-meal-buffs-v0.0.84.json).
 
 ## Omelet plate and cocoa tin revision (15 November 2026)
 
