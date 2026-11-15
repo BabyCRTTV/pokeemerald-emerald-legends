@@ -1,5 +1,13 @@
 # Development handoff
 
+## Omelet plate and cocoa tin revision (15 November 2026)
+
+**Model: GPT-6.1 Sol | Reasoning: size the plate to the portion and keep the tin's rim and base aligned.**
+
+The owner approved the cooking work and art in the previous preview except for the Butter Omelet plate and Cocoa Powder tin. Widened the plate and lowered the existing omelet pixels by one row to expose the rim. Redrew Cocoa Powder with a centered rolled lid, curved label, and shaded base. Recorded the approved Egg Drop Soup bowl as the base for similar liquid dishes.
+
+Confirmed the two revisions in the native Bag and rechecked the approved soup bowl on the same build. [Preview evidence](qa/cooking-meals-preview.json). Review branch only.
+
 ## Prepared meal icons and ingredient alignment preview (15 November 2026)
 
 **Model: GPT-6.1 Sol | Reasoning: give each item room to read at 24 pixels and align features that share a physical axis.**

@@ -228,5 +228,28 @@
       "file": "Emerald-Legends-Meal-Icons.png",
       "sha256": "a6a1a7cb5486ce23ed3ac3bc308c4b1cbfcba27a5e6969cd2e30a2ac4c6b1295"
     }
+  },
+  "plateAndCocoaPreview": {
+    "parentCommit": "f30168a89ba5f0eaed60f050b55bf4d84be9ba78",
+    "romSha256": "8a7661cd906418ab0be42fc31ebb3936d75e4059f640417e072a7a01fd50c6ff",
+    "harnessSha256": {
+      "arm.c": "d94daf69d857ad0026ef831ae87e3d0428b68ef1e86be4f76e5b888bf93c95b4",
+      "plate-tin-qa.py": "6444b692abe237bc92dd9d1df9d072ebe5ff34b998c35f39731654f437e87e26"
+    },
+    "nativeChecks": [
+      "Verified actual Bag renders and selection IDs for Butter Omelet, Cocoa Powder, and Egg Drop Soup"
+    ],
+    "assetChecks": [
+      "Expanded the plate footprint and retained the original omelet drawing one row lower; checked symmetric cocoa tin silhouette"
+    ],
+    "screenshots": {
+      "Butter-Omelet.png": "387d8441aa5de3cd2de581c5b19882890c789089d1855ad99c64c1d241fb19f9",
+      "Cocoa-Powder.png": "814aeec7621ca412c1f695aee9711b698e251e05c9d0eba888aa5b608da7bd59",
+      "Egg-Drop-Soup.png": "9027271e6f859bab690e227f8ba63ded848ec8198042185e39ca3dc2e26f5ac6"
+    },
+    "gallery": {
+      "file": "Emerald-Legends-Omelet-and-Cocoa-Revision.png",
+      "sha256": "0d759cffa9cd6ba9aade8af7c3f1b8a68f926b9791d1eeb1216da41e3e98a850"
+    }
   }
 }
