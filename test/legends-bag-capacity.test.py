@@ -189,13 +189,16 @@ int main(void)
  for(unsigned i=0;i<1153;i++){assert(sListBuffer1[i].name==sListBuffer2[0]);assert(sListBuffer1[i].id==(i==1152?LIST_CANCEL:(s32)i));}
  gBagMenu->hideCloseBagText=TRUE;gBagMenu->numItemStacks[0]=1152;LoadBagItemListBuffers(0);assert(sListBuffer1[1151].id==1151);
  Free(sListBuffer1);Free(sListBuffer2);
+ const u16 brewBases[]={ITEM_COFFEE_GROUNDS,ITEM_TEA_LEAVES,ITEM_MATCHA_POWDER,ITEM_OOLONG_TEA,ITEM_BLACK_TEA,ITEM_COOKING_COFFEE,ITEM_HOJICHA_POWDER,ITEM_HOJICHA_LEAVES};
+ assert(ARRAY_COUNT(sRecipes)==7+ARRAY_COUNT(brewBases));
  // Use the production cooking transaction and timed-slot code, not a recipe model.
  for(unsigned r=0;r<ARRAY_COUNT(sRecipes);r++){
   fresh();
   const struct MealRecipe *recipe=&sRecipes[r];
   unsigned ingredients=0;
   while(ingredients<RECIPE_INGREDIENTS&&recipe->supplies[ingredients]!=ITEM_NONE)ingredients++;
-  assert(ingredients>=3);
+  assert(ingredients>=2);
+  if(r>=7)assert(recipe->supplies[0]==brewBases[r-7]&&recipe->supplies[1]==ITEM_COOKING_WATER);
   for(unsigned i=0;i<ingredients-1;i++)assert(BagPocket_AddItem(&gBagPockets[POCKET_ITEMS],recipe->supplies[i],1));
   struct Bag unchanged=data.inventory;
   assert(LegendsCookMeal(r)==LEGENDS_COOK_MISSING);
@@ -206,7 +209,7 @@ int main(void)
   assert(BagPocket_CountTotalItemQuantity(&gBagPockets[POCKET_FOOD],recipe->meal)==1);
   assert(LegendsEatMeal(recipe->meal)==LEGENDS_EAT_SUCCESS);
   assert(LegendsMealBonus(recipe->effect)==recipe->amount);
-  assert(LegendsMealIsDrink(recipe->meal)==(recipe->meal==ITEM_HOT_COCOA || recipe->meal==ITEM_MILK_COFFEE || recipe->meal==ITEM_SWEET_TEA));
+  assert(LegendsMealIsDrink(recipe->meal)==(recipe->meal==ITEM_HOT_COCOA || r>=7));
   invariant();
  }
  fresh();

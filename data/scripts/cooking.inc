@@ -66,7 +66,7 @@ EventScript_ChooseCanteenDrink::
 EventScript_ChooseMessKitMeal::
 	message Text_ChooseMeal
 	waitmessage
-	dynmultichoice 0, 0, FALSE, 6, 0, DYN_MULTICHOICE_CB_NONE, Text_MessKitOmelet, Text_MessKitPancakes, Text_MessKitFlatbread, Text_MessKitSoup, Text_MessKitCrackers, Text_MessKitCustard, Text_MessKitCancel
+	dynmultichoice 0, 0, FALSE, 6, 0, DYN_MULTICHOICE_CB_NONE, Text_MessKitOmelet, Text_MessKitPancakes, Text_MessKitFlatbread, Text_MessKitSoup, Text_MessKitCrackers, Text_MessKitCustard, Text_CancelCooking
 	switch VAR_RESULT
 	case 0, EventScript_MealOmelet
 	case 1, EventScript_MealPancakes
@@ -79,10 +79,16 @@ EventScript_ChooseMessKitMeal::
 EventScript_ChoosePercolatorDrink::
 	message Text_ChooseBrew
 	waitmessage
-	multichoice 0, 0, MULTI_LEGENDS_PERCOLATOR, FALSE
+	dynmultichoice 0, 0, FALSE, 6, 0, DYN_MULTICHOICE_CB_NONE, Text_BrewMenuMilkCoffee, Text_BrewMenuSweetTea, Text_BrewMenuMatchaLatte, Text_BrewMenuBrewedOolong, Text_BrewMenuBrewedBlackTea, Text_BrewMenuBlackCoffee, Text_BrewMenuHojichaLatte, Text_BrewMenuHojichaTea, Text_CancelCooking
 	switch VAR_RESULT
 	case 0, EventScript_MealMilkCoffee
 	case 1, EventScript_MealSweetTea
+	case 2, EventScript_MealMatchaLatte
+	case 3, EventScript_MealBrewedOolong
+	case 4, EventScript_MealBrewedBlackTea
+	case 5, EventScript_MealBlackCoffee
+	case 6, EventScript_MealHojichaLatte
+	case 7, EventScript_MealHojichaTea
 	goto EventScript_FinishMealInteraction
 
 EventScript_MealOmelet::
@@ -128,6 +134,36 @@ EventScript_MealMilkCoffee::
 EventScript_MealSweetTea::
 	setvar VAR_0x8004, 8
 	msgbox Text_MealSweetTea
+	goto EventScript_ConfirmPrepareDrink
+
+EventScript_MealMatchaLatte::
+	setvar VAR_0x8004, 9
+	msgbox Text_MealMatchaLatte
+	goto EventScript_ConfirmPrepareDrink
+
+EventScript_MealBrewedOolong::
+	setvar VAR_0x8004, 10
+	msgbox Text_MealBrewedOolong
+	goto EventScript_ConfirmPrepareDrink
+
+EventScript_MealBrewedBlackTea::
+	setvar VAR_0x8004, 11
+	msgbox Text_MealBrewedBlackTea
+	goto EventScript_ConfirmPrepareDrink
+
+EventScript_MealBlackCoffee::
+	setvar VAR_0x8004, 12
+	msgbox Text_MealBlackCoffee
+	goto EventScript_ConfirmPrepareDrink
+
+EventScript_MealHojichaLatte::
+	setvar VAR_0x8004, 13
+	msgbox Text_MealHojichaLatte
+	goto EventScript_ConfirmPrepareDrink
+
+EventScript_MealHojichaTea::
+	setvar VAR_0x8004, 14
+	msgbox Text_MealHojichaTea
 	goto EventScript_ConfirmPrepareDrink
 
 EventScript_ConfirmCookMeal::
@@ -223,8 +259,32 @@ Text_MessKitCrackers:
 Text_MessKitCustard:
 	.string "Egg Custard$"
 
-Text_MessKitCancel:
+Text_CancelCooking:
 	.string "CANCEL$"
+
+Text_BrewMenuMilkCoffee:
+	.string "Milk Coffee$"
+
+Text_BrewMenuSweetTea:
+	.string "Sweet Tea$"
+
+Text_BrewMenuMatchaLatte:
+	.string "Matcha Latte$"
+
+Text_BrewMenuBrewedOolong:
+	.string "Brewed Oolong$"
+
+Text_BrewMenuBrewedBlackTea:
+	.string "Brewed Black Tea$"
+
+Text_BrewMenuBlackCoffee:
+	.string "Black Coffee$"
+
+Text_BrewMenuHojichaLatte:
+	.string "Hojicha Latte$"
+
+Text_BrewMenuHojichaTea:
+	.string "Hojicha Tea$"
 
 Text_Kitchen::
 	.string "It smells delicious!\n"
@@ -296,6 +356,30 @@ Text_MealSweetTea::
 	.string "Sweet Tea: Tea Leaves, Water,\n"
 	.string "and Sugar (1 each).\p"
 	.string "Catch odds +5% for 10 minutes.$"
+
+Text_MealMatchaLatte::
+	.string "Matcha Latte: Matcha Powder,\nWater, and Milk (1 each).\p"
+	.string "Walking friendship gains +2\nfor 10 minutes.$"
+
+Text_MealBrewedOolong::
+	.string "Brewed Oolong: Oolong Tea and\nWater (1 each).\p"
+	.string "Wild encounters -10%\nfor 10 minutes.$"
+
+Text_MealBrewedBlackTea::
+	.string "Brewed Black Tea: Black Tea and\nWater (1 each).\p"
+	.string "Trainer prize money +10%\nfor 10 minutes.$"
+
+Text_MealBlackCoffee::
+	.string "Black Coffee: Coffee and\nWater (1 each).\p"
+	.string "Battle Exp. +10% for 10 minutes.$"
+
+Text_MealHojichaLatte::
+	.string "Hojicha Latte: Hojicha Powder,\nWater, and Milk (1 each).\p"
+	.string "Walking friendship gains +2\nfor 10 minutes.$"
+
+Text_MealHojichaTea::
+	.string "Hojicha Tea: Hojicha Leaves\nand Water (1 each).\p"
+	.string "Walking friendship gains +1\nfor 10 minutes.$"
 
 Text_CookSelectedMeal::
 	.string "Cook this meal?$"

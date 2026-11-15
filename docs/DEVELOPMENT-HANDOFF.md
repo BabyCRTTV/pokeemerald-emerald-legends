@@ -1,5 +1,13 @@
 # Development handoff
 
+## Hojicha and Percolator brews preview (15 November 2026)
+
+**Model: GPT-6.1 Sol | Reasoning: give each coffee and tea ingredient a matching brew while preserving item IDs and the established cooking transaction.**
+
+Added Hojicha Powder and Hojicha Leaves to Poké Mart INGREDIENTS. Expanded the Percolator with Matcha Latte, Brewed Oolong, Brewed Black Tea, Black Coffee, Hojicha Latte, and Hojicha Tea alongside Milk Coffee and Sweet Tea. The scrolling recipe menu shows the supplies and ten-minute effect before brewing. All eight drinks go in the Food pocket and use DRINK.
+
+In mGBA, purchased both Hojicha ingredients, brewed and drank all eight recipes, checked exact deductions and buffs, and verified missing-supply refusal and menu cancellation. Bag, cooking, item history, and save layout checks passed. [Preview evidence](qa/hojicha-percolator-preview.json). Review branch only.
+
 ## Oolong and Coffee icon revision (15 November 2026)
 
 **Model: GPT-6.1 Sol | Reasoning: clean up the pouch silhouette and keep the Coffee beans visible inside their packaging.**

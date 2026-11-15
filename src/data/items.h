@@ -14745,6 +14745,126 @@ const struct ItemInfo gItemsInfo[] =
         .iconPalette = gItemIconPalette_CookingCoffee,
     },
 
+    [ITEM_HOJICHA_POWDER] =
+    {
+        .name = ITEM_NAME("Hojicha Powder"),
+        .price = 75,
+        .description = COMPOUND_STRING(
+            "Roasted green tea\n"
+            "ground into a\n"
+            "fine powder."),
+        .pocket = POCKET_ITEMS,
+        .type = ITEM_USE_FIELD,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .iconPic = gItemIcon_CookingHojichaPowder,
+        .iconPalette = gItemIconPalette_CookingHojichaPowder,
+    },
+
+    [ITEM_HOJICHA_LEAVES] =
+    {
+        .name = ITEM_NAME("Hojicha Leaves"),
+        .price = 60,
+        .description = COMPOUND_STRING(
+            "Loose roasted\n"
+            "green tea leaves\n"
+            "with a nutty scent."),
+        .pocket = POCKET_ITEMS,
+        .type = ITEM_USE_FIELD,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .iconPic = gItemIcon_CookingHojichaLeaves,
+        .iconPalette = gItemIconPalette_CookingHojichaLeaves,
+    },
+
+    [ITEM_MATCHA_LATTE] =
+    {
+        .name = ITEM_NAME("Matcha Latte"),
+        .price = 80,
+        .description = COMPOUND_STRING(
+            "Creamy green tea.\n"
+            "Walk friendship +2\n"
+            "for 10 minutes."),
+        .pocket = POCKET_FOOD,
+        .type = ITEM_USE_BAG_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_LegendsMeal,
+        .iconPic = gItemIcon_CookingMatchaLatte,
+        .iconPalette = gItemIconPalette_CookingMatchaLatte,
+    },
+
+    [ITEM_BREWED_OOLONG] =
+    {
+        .name = ITEM_NAME("Brewed Oolong"),
+        .price = 60,
+        .description = COMPOUND_STRING(
+            "Mellow oolong tea.\n"
+            "Wild encounters -10%\n"
+            "for 10 minutes."),
+        .pocket = POCKET_FOOD,
+        .type = ITEM_USE_BAG_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_LegendsMeal,
+        .iconPic = gItemIcon_CookingBrewedOolong,
+        .iconPalette = gItemIconPalette_CookingBrewedOolong,
+    },
+
+    [ITEM_BREWED_BLACK_TEA] =
+    {
+        .name = ITEM_NAME("Brewed Black Tea"),
+        .price = 50,
+        .description = COMPOUND_STRING(
+            "A bold tea brew.\n"
+            "Prize money +10%\n"
+            "for 10 minutes."),
+        .pocket = POCKET_FOOD,
+        .type = ITEM_USE_BAG_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_LegendsMeal,
+        .iconPic = gItemIcon_CookingBrewedBlackTea,
+        .iconPalette = gItemIconPalette_CookingBrewedBlackTea,
+    },
+
+    [ITEM_BLACK_COFFEE] =
+    {
+        .name = ITEM_NAME("Black Coffee"),
+        .price = 60,
+        .description = COMPOUND_STRING(
+            "Rich black coffee.\n"
+            "Battle Exp. +10%\n"
+            "for 10 minutes."),
+        .pocket = POCKET_FOOD,
+        .type = ITEM_USE_BAG_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_LegendsMeal,
+        .iconPic = gItemIcon_CookingBlackCoffee,
+        .iconPalette = gItemIconPalette_CookingBlackCoffee,
+    },
+
+    [ITEM_HOJICHA_LATTE] =
+    {
+        .name = ITEM_NAME("Hojicha Latte"),
+        .price = 75,
+        .description = COMPOUND_STRING(
+            "Roasted tea latte.\n"
+            "Walk friendship +2\n"
+            "for 10 minutes."),
+        .pocket = POCKET_FOOD,
+        .type = ITEM_USE_BAG_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_LegendsMeal,
+        .iconPic = gItemIcon_CookingHojichaLatte,
+        .iconPalette = gItemIconPalette_CookingHojichaLatte,
+    },
+
+    [ITEM_HOJICHA_TEA] =
+    {
+        .name = ITEM_NAME("Hojicha Tea"),
+        .price = 55,
+        .description = COMPOUND_STRING(
+            "Toasty hojicha.\n"
+            "Walk friendship +1\n"
+            "for 10 minutes."),
+        .pocket = POCKET_FOOD,
+        .type = ITEM_USE_BAG_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_LegendsMeal,
+        .iconPic = gItemIcon_CookingHojichaTea,
+        .iconPalette = gItemIconPalette_CookingHojichaTea,
+    },
+
     [ITEM_TREAT_CASE] =
     {
         .name = ITEM_NAME("Treat Case"),

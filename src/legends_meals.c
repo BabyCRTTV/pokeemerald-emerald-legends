@@ -22,7 +22,7 @@ struct MealRecipe
     bool8 isDrink;
 };
 
-// Recipe order matches the kitchen's selection menu. Each supply costs one unit.
+// Recipe indices are referenced by the cooking scripts. Each supply costs one unit.
 static const struct MealRecipe sRecipes[] =
 {
     {ITEM_BUTTER_OMELET, {ITEM_BUTTER, ITEM_EGG, ITEM_SALT, ITEM_PEPPER},
@@ -43,6 +43,18 @@ static const struct MealRecipe sRecipes[] =
         MEAL_EFFECT_EXPERIENCE, 10, COMPOUND_STRING("Battle Exp. +10%"), TRUE},
     {ITEM_SWEET_TEA, {ITEM_TEA_LEAVES, ITEM_COOKING_WATER, ITEM_SUGAR},
         MEAL_EFFECT_CATCH, 5, COMPOUND_STRING("Catch odds +5%"), TRUE},
+    {ITEM_MATCHA_LATTE, {ITEM_MATCHA_POWDER, ITEM_COOKING_WATER, ITEM_COOKING_MILK},
+        MEAL_EFFECT_FRIENDSHIP, 2, COMPOUND_STRING("Walk friendship +2"), TRUE},
+    {ITEM_BREWED_OOLONG, {ITEM_OOLONG_TEA, ITEM_COOKING_WATER},
+        MEAL_EFFECT_ENCOUNTER, 10, COMPOUND_STRING("Wild encounter rate -10%"), TRUE},
+    {ITEM_BREWED_BLACK_TEA, {ITEM_BLACK_TEA, ITEM_COOKING_WATER},
+        MEAL_EFFECT_PRIZE, 10, COMPOUND_STRING("Trainer prize money +10%"), TRUE},
+    {ITEM_BLACK_COFFEE, {ITEM_COOKING_COFFEE, ITEM_COOKING_WATER},
+        MEAL_EFFECT_EXPERIENCE, 10, COMPOUND_STRING("Battle Exp. +10%"), TRUE},
+    {ITEM_HOJICHA_LATTE, {ITEM_HOJICHA_POWDER, ITEM_COOKING_WATER, ITEM_COOKING_MILK},
+        MEAL_EFFECT_FRIENDSHIP, 2, COMPOUND_STRING("Walk friendship +2"), TRUE},
+    {ITEM_HOJICHA_TEA, {ITEM_HOJICHA_LEAVES, ITEM_COOKING_WATER},
+        MEAL_EFFECT_FRIENDSHIP, 1, COMPOUND_STRING("Walk friendship +1"), TRUE},
 };
 
 static const struct MealRecipe *GetRecipeByItem(enum Item item)
