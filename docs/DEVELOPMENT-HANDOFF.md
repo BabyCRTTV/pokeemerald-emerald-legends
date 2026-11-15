@@ -1,5 +1,13 @@
 # Development handoff
 
+## Remaining cooking ingredient icons preview (15 November 2026)
+
+**Model: GPT-6.1 Sol | Reasoning: use material-specific highlights and shadows that stay legible on the native item grid.**
+
+The owner approved the Flour, Sugar, and Milk direction as the ongoing standard for item and food icons. Redrew Butter, Egg, Water, Salt, Pepper, and Cocoa Powder with the same native-style lighting and depth. Recorded the Fresh Water and Soda Pop reference in AGENTS.md.
+
+Verified all nine ingredients with native Bag selection in mGBA and captured them as one gallery. [Preview evidence](qa/cooking-meals-preview.json). Review branch only.
+
 ## Flour, Sugar, and Milk icon preview (15 November 2026)
 
 **Model: GPT-6.1 Sol | Reasoning: build distinct shaded packaging planes that read clearly at the native item size.**

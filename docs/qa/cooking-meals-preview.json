@@ -169,5 +169,34 @@
       "file": "Emerald-Legends-Flour-Sugar-and-Milk.png",
       "sha256": "fd7806274f556726f829342dc1de79b3525dcd8b519124b1b306be0e7e03987a"
     }
+  },
+  "ingredientArtSetPreview": {
+    "parentCommit": "96653922d9c8650e8da32568cbf676309b53f706",
+    "romSha256": "adb54f8af541af651660e2b9e514cc74fb53f806e45fda7741990a3f53ecc551",
+    "harnessSha256": {
+      "arm.c": "d94daf69d857ad0026ef831ae87e3d0428b68ef1e86be4f76e5b888bf93c95b4",
+      "ingredients-qa.py": "d673d8a63876c0f2d9345776d36afe30ccf442fba53a7ad442973340019a6619"
+    },
+    "nativeChecks": [
+      "Selected all nine ingredients through the native Bag and verified their item IDs"
+    ],
+    "assetChecks": [
+      "Verified all six revised sprites use a connected silhouette, 24 by 24 dimensions, and indexed color with a transparent background"
+    ],
+    "screenshots": {
+      "Butter.png": "180eb02836ea300f8a7fd6057b0027e1d4ad62db8f76e7d396254fab7afdeb79",
+      "Cocoa-Powder.png": "dfe609a14948d4350cbb288d8f05b9ffb0ce0990afa33fc153dc8a14b6644fcc",
+      "Egg.png": "f70f359c19d9eacec77dac790ddf4750d7f3ff239689a8098589f7b8c51a18df",
+      "Flour.png": "54b82ca10c77b221cf9f2e59336af2754e3ca16bb855c7254180f4b950746c08",
+      "Milk.png": "249ebe507eb451dc171fc6a2b441162d7597aeb50fef4f696ae00180735a122a",
+      "Pepper.png": "c9b9781f0b10eca39c70dc19637436c9e8967285d8c1c4a6eab1f081a339f157",
+      "Salt.png": "2d59c028e819d5bda9d715828fc2d9173161a5fb2444777d7695213a03dd27b2",
+      "Sugar.png": "ee0f03632371f1672e6e2c34d98f0ab90c0060345db84d03ee2046b40d3d6c1e",
+      "Water.png": "4c75cf74ade3eb4273f9760b97a790e1419b8183fa17428a4cdf63ce3ef4dd9f"
+    },
+    "gallery": {
+      "file": "Emerald-Legends-Ingredient-Icons.png",
+      "sha256": "672c3a8a44a52ef9ec573f7ce0a10996a93b6f8e74f2a8630853cc258f9826aa"
+    }
   }
 }
