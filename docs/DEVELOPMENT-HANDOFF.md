@@ -1,5 +1,11 @@
 # Development handoff
 
+## Flour, Sugar, and Milk icon preview (15 November 2026)
+
+**Model: GPT-6.1 Sol | Reasoning: build distinct shaded packaging planes that read clearly at the native item size.**
+
+The owner set Emerald's Fresh Water and Soda Pop sprites as the quality reference for cooking icons. Redrew Flour and Sugar as folded packets and Milk as a folded-top carton. Added shaded gussets, top and side planes, and small material highlights. Verified the three designs and both reference icons in the same Bag view using the compiled ROM. [Preview evidence](qa/cooking-meals-preview.json). Review branch only.
+
 ## Cooking icon, drink, and appliance interaction preview (15 November 2026)
 
 **Model: GPT-6.1 Sol | Reasoning: preserve native silhouettes and limit appliance interaction to the tile directly ahead.**

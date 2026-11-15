@@ -146,5 +146,28 @@
       "file": "Emerald-Legends-Cooking-Icon-Gallery.png",
       "sha256": "51f59824ac7528b7b3fe0e709b2fa52e342aab70777847572bd21e0d9d81e969"
     }
+  },
+  "ingredientPackagingPreview": {
+    "parentCommit": "922cfbdc162a9123a31e9cd8da93a8b4c24d2758",
+    "romSha256": "a13752d74438d1344950de78981b7fe376fc85e06b923dafed3baebde33fe12e",
+    "harnessSha256": {
+      "arm.c": "d94daf69d857ad0026ef831ae87e3d0428b68ef1e86be4f76e5b888bf93c95b4",
+      "pouch-qa.py": "8d707c5d9e27e198c1b14386f32696460a8bf888bd63d6110d7294a3edfad787"
+    },
+    "nativeChecks": [
+      "Rendered and verified native Bag selection IDs for Fresh Water, Soda Pop, Flour, Sugar, and Milk",
+      "Verified each redrawn sprite uses 24 by 24 pixels and at most 15 opaque indexed colors"
+    ],
+    "screenshots": {
+      "Fresh-Water.png": "b6bafc38e5f1169754d5a216ec1d55a1a909bdcd14cb12c45fc504715dd3e2c2",
+      "Soda-Pop.png": "7c4a30dbb28ed6e840874657cae28831cb012e87f499980ae992fa3ca2a1464e",
+      "Flour.png": "98b2fe159ffab7fb65f2a23d3faf5dd5b2768be293481b466cba2ab6f80e0fd2",
+      "Sugar.png": "598404c981d07cee4c0e40e081cfa41685095a55986ff63cab587b6467ad9c23",
+      "Milk.png": "bd0ff4cdb5c372b9284b00d1edbb7e12ef1d9ef8e0179748a8d5c0328beda2b2"
+    },
+    "gallery": {
+      "file": "Emerald-Legends-Flour-Sugar-and-Milk.png",
+      "sha256": "fd7806274f556726f829342dc1de79b3525dcd8b519124b1b306be0e7e03987a"
+    }
   }
 }
