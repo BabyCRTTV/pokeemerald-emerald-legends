@@ -4,6 +4,13 @@ All notable Pokémon Emerald: Legends project changes are documented here.
 
 For build-specific player views, see [CHANGELOG-RELEASE.md](CHANGELOG-RELEASE.md) and [CHANGELOG-DEBUG.md](CHANGELOG-DEBUG.md). The canonical history below records the project as a whole.
 
+## [0.0.84] - 2026-11-15
+
+- Added nine cooking ingredients to the INGREDIENTS menu at Poké Marts.
+- Added seven recipes, including Butter Omelet, Egg Drop Soup, and Hot Cocoa. Kitchens opened when the player faced the appliance from the adjacent tile.
+- Added ten-minute meal buffs. Up to three could stack, and the highlighted Active Buffs row in the Food pocket showed their effects and remaining time.
+- Added separate EAT and DRINK actions and original ingredient, meal, and drink icons.
+
 ## [0.0.83] - 2026-11-14
 
 - Added a “Prepare a meal?” prompt after the usual dialogue at sinks, kitchenettes, and refrigerators.
