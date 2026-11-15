@@ -91,6 +91,7 @@ enum {
     ACTION_BY_AMOUNT,
     ACTION_BY_INDEX,
     ACTION_EAT,
+    ACTION_DRINK,
     ACTION_DUMMY,
 };
 
@@ -300,6 +301,7 @@ static const struct MenuAction sItemMenuActions[] = {
     [ACTION_BY_AMOUNT]         = {COMPOUND_STRING("Amount"),    {ItemMenu_SortByAmount}},
     [ACTION_BY_INDEX]          = {COMPOUND_STRING("Index"),     {ItemMenu_SortByIndex}},
     [ACTION_EAT]               = {COMPOUND_STRING("EAT"), {ItemMenu_UseOutOfBattle}},
+    [ACTION_DRINK]             = {COMPOUND_STRING("DRINK"), {ItemMenu_UseOutOfBattle}},
     [ACTION_DUMMY]             = {gText_EmptyString2, {NULL}}
 };
 
@@ -1822,8 +1824,11 @@ static void OpenContextMenu(u8 taskId)
             switch (gBagPosition.pocket)
             {
             case POCKET_FOOD:
-                gBagMenu->contextMenuItemsPtr = sContextMenuItems_FoodPocket;
+                gBagMenu->contextMenuItemsPtr = gBagMenu->contextMenuItemsBuffer;
                 gBagMenu->contextMenuNumItems = ARRAY_COUNT(sContextMenuItems_FoodPocket);
+                memcpy(gBagMenu->contextMenuItemsBuffer, sContextMenuItems_FoodPocket, sizeof(sContextMenuItems_FoodPocket));
+                if (LegendsMealIsDrink(gSpecialVar_ItemId))
+                    gBagMenu->contextMenuItemsBuffer[0] = ACTION_DRINK;
                 break;
             case POCKET_ITEMS:
                 gBagMenu->contextMenuItemsPtr = gBagMenu->contextMenuItemsBuffer;

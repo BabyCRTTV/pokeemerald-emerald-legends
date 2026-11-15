@@ -31,6 +31,7 @@ void LegendsMealTick(void);
 u8 LegendsMealBonus(enum LegendsMealEffect effect);
 bool32 LegendsMealReadSlot(u32 slot, enum Item *item, u32 *seconds);
 const u8 *LegendsMealEffectText(enum Item item);
+bool32 LegendsMealIsDrink(enum Item item);
 enum LegendsCookResult LegendsCookMeal(u32 recipeIndex);
 enum LegendsEatResult LegendsEatMeal(enum Item item);
 void Script_LegendsCookMeal(void);

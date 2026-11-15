@@ -1,5 +1,13 @@
 # Development handoff
 
+## Cooking icon, drink, and appliance interaction preview (15 November 2026)
+
+**Model: GPT-6.1 Sol | Reasoning: preserve native silhouettes and limit appliance interaction to the tile directly ahead.**
+
+Hot Cocoa now offers DRINK with drink-specific success and fullness text. Refined highlights and shaded faces on all nine ingredient and seven prepared-item sprites using the native-format 24px icon silhouettes. Shortened the soup's Bag description to fit the text area.
+
+Walkable cabinet-base tiles no longer let the player reach across an extra tile. Solid fronts retain the standard adjacent interaction. In mGBA, confirmed the range in Mauville, Fuchsia, and Littleroot, cooked an omelet from the adjacent tile, and checked drink/food actions, fullness, and all sixteen icon renders. [Preview evidence](qa/cooking-meals-preview.json). Review branch only.
+
 ## Hot Cocoa, Egg Custard, and Active Buffs preview (15 November 2026)
 
 **Model: GPT-6.1 Sol | Reasoning: add three-ingredient recipes without moving item IDs or save fields and redraw the existing Bag background under the icon frame.**

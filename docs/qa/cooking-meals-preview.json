@@ -92,5 +92,59 @@
       "sha256": "dcc5d49a2d42e8fd7e42bc670fb38f19bb4a26d79b86e6c63e15ad3129bcaf68",
       "durationSeconds": 43.566667
     }
+  },
+  "artAndInteractionPreview": {
+    "parentCommit": "5933876b569991d617ff81fcafcddc36d1abe581",
+    "romSha256": "9df6ac2d566a31d1899222e10b86a3d0fecad74a10fc1306944bcec64665ead6",
+    "harnessSha256": {
+      "arm.c": "401dac4069c807b3ca1f3c7d96c6869334fa08f9209a969f224f623435ef1cdd",
+      "art-qa.py": "781f49d2b47ccad633ca250892893448026635ae8214570b15256a123be667c5"
+    },
+    "nativeChecks": [
+      "No sink interaction across a walkable space, with the next step and A opening the sink in Mauville, Fuchsia, and Littleroot",
+      "Cooked one Butter Omelet through the adjacent Mauville sink and verified its inventory changes",
+      "Hot Cocoa showed DRINK, drink confirmation, and full refusal that preserved the fourth serving",
+      "Egg Custard showed EAT",
+      "Captured each of the nine ingredient and seven meal icons from the actual Bag and verified selected item IDs"
+    ],
+    "hostChecks": [
+      "All seven recipes and their buffs, drink classification, shared inventory, and item flags",
+      "Native save-sector rotations and Nightmare allocation regression"
+    ],
+    "limits": "Preview fixture stocked the Bag and positioned the player away from each sink. Movement and kitchen interactions used normal field input. No public patch was generated.",
+    "screenshots": {
+      "Cooked-At-Sink.png": "98d7ed9b2b11a8c3f0a621c04c02842d1635ee921c424d5bf58e466ece246ca9",
+      "Drank-Hot-Cocoa.png": "5d680682dd127815591df9c5ebce71536d953ba36c046d4b1efee294f8bd1ada",
+      "Drink-Action.png": "8e2e9726564104a56fed016816d40e14280f79445bea2e39d37374043f6f722b",
+      "Eat-Action.png": "ef4e5c03f1566d4bd28dfe9bfc65f7c8b564aaf01bfd8832cc648635b014e0fe",
+      "Icon-Butter-Omelet.png": "700d84113454bac39fc93ad68b777f0137ce08d58b8930b4269fcdb4f32a8d81",
+      "Icon-Butter.png": "fcf4569b73f9306eeecac049adc92510097c6829268d02a4021c5d96f9c66769",
+      "Icon-Cocoa-Powder.png": "9e7b020a6b52705d740b5215769e6e3233f45822739fa64b9d00e1f18fab94de",
+      "Icon-Crackers.png": "f708d88815a296d10799a3c7a8f7355c0d9d43f5f6751a8d0491039217d396e5",
+      "Icon-Egg-Custard.png": "0cb308c906315848b7eaee9b6349ac4ff6945a46be2d757f5ce1461d93f48762",
+      "Icon-Egg-Drop-Soup.png": "668fa53817095a2734fbf483fbde5c0abfd6dd16af2ce5bb30bf52b0dc59a2d6",
+      "Icon-Egg.png": "d8f6feeec44d42c2b651533c9dd99432d50c06b96c864dc80ef4392a4663530b",
+      "Icon-Flatbread.png": "943fe0b8ed4ce64805f7be13a549e22cdc08760ea3d532755108e9c9b0554ebf",
+      "Icon-Flour.png": "3c9e405f1b053c39bb929ace8ddd861cb9fa95603ff8987e17ed81d8415ca687",
+      "Icon-Hot-Cocoa.png": "122901467c00dacf5a1a8dc1b3fe9867d1909b624bc60e39cb69eb6af885e375",
+      "Icon-Milk.png": "a70aeab6153d54e9fa47eb15b9bf83548effd5f120b75c22d26e5c7ca89bfde5",
+      "Icon-Pancakes.png": "63ab51fe057996148715493dc8cb305241073a18be146f67f2e4f07ce0543874",
+      "Icon-Pepper.png": "2084026def5a72b5161fc67f609a423ae1cb9a2a8de9ad7cb0eb01a35d0a281c",
+      "Icon-Salt.png": "f8dc48738b63b05bf875d909ce7a10ce2445bfa88993a9ff1f860d78a3886b29",
+      "Icon-Sugar.png": "975e409092ded4f0d2c2e3215bd2ebbf6c6616f166957702844ed349e0a8271f",
+      "Icon-Water.png": "388a68983e7d1f2fc42dc42224c18204d18787f12772b3c85d5913b2fd31a5bb",
+      "Range-Fuchsia-At-Sink.png": "eacd55ed048521a85eea34e0ba806ca616e0a1b7a95cc19ac121bca6ee162112",
+      "Range-Fuchsia-From-Floor.png": "2c610d29f1d07fc9df9b2b99a9125984c0aac64d469c39d1950afe383ff0ee79",
+      "Range-Littleroot-At-Sink.png": "b7610f453a68bbc1520d902eefac8031ede503743c35abefaea4a43af8732de8",
+      "Range-Littleroot-From-Floor.png": "a917e76142fc17cb3b72ee38d2604aafcb3a54d0b772bfbcae0b4a4815180e38",
+      "Range-Mauville-At-Sink.png": "e46d6ee2cb31262eab17cd669c4e16187acf175bdefce468939afe95f8395858",
+      "Range-Mauville-From-Floor.png": "680a2fae373fed1e48b3b3ac0161cb59bcbcfa3b1bc300dcdab87c30a4e3927b",
+      "Too-Full-to-Drink.png": "6102881c1049855865a77d97c592e32c61aa6f5f04ed0a60748dd540c4404094",
+      "Wait-to-Drink-Again.png": "bb3cbf22c88b0069863cb033e75ab114e75b39868a800a4c890780d8b1ef38c7"
+    },
+    "gallery": {
+      "file": "Emerald-Legends-Cooking-Icon-Gallery.png",
+      "sha256": "51f59824ac7528b7b3fe0e709b2fa52e342aab70777847572bd21e0d9d81e969"
+    }
   }
 }

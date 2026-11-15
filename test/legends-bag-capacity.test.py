@@ -17,7 +17,7 @@ code=r'''
 #include <string.h>
 #include <assert.h>
 #include <stdio.h>
-typedef uint8_t u8;typedef uint16_t u16;typedef uint32_t u32;typedef int32_t s32;typedef int8_t s8;typedef int bool32;
+typedef uint8_t u8;typedef uint16_t u16;typedef uint32_t u32;typedef int32_t s32;typedef int8_t s8;typedef uint8_t bool8;typedef int bool32;
 #define TRUE 1
 #define FALSE 0
 #define EWRAM_DATA
@@ -206,6 +206,7 @@ int main(void)
   assert(BagPocket_CountTotalItemQuantity(&gBagPockets[POCKET_FOOD],recipe->meal)==1);
   assert(LegendsEatMeal(recipe->meal)==LEGENDS_EAT_SUCCESS);
   assert(LegendsMealBonus(recipe->effect)==recipe->amount);
+  assert(LegendsMealIsDrink(recipe->meal)==(recipe->meal==ITEM_HOT_COCOA));
   invariant();
  }
  fresh();

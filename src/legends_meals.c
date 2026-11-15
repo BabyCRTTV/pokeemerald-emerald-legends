@@ -19,25 +19,26 @@ struct MealRecipe
     enum LegendsMealEffect effect;
     u8 amount;
     const u8 *effectText;
+    bool8 isDrink;
 };
 
 // Recipe order matches the kitchen's selection menu. Each supply costs one unit.
 static const struct MealRecipe sRecipes[] =
 {
     {ITEM_BUTTER_OMELET, {ITEM_BUTTER, ITEM_EGG, ITEM_SALT, ITEM_PEPPER},
-        MEAL_EFFECT_CATCH, 5, COMPOUND_STRING("Catch odds +5%")},
+        MEAL_EFFECT_CATCH, 5, COMPOUND_STRING("Catch odds +5%"), FALSE},
     {ITEM_PANCAKES, {ITEM_FLOUR, ITEM_EGG, ITEM_COOKING_WATER, ITEM_BUTTER},
-        MEAL_EFFECT_EXPERIENCE, 10, COMPOUND_STRING("Battle Exp. +10%")},
+        MEAL_EFFECT_EXPERIENCE, 10, COMPOUND_STRING("Battle Exp. +10%"), FALSE},
     {ITEM_FLATBREAD, {ITEM_FLOUR, ITEM_COOKING_WATER, ITEM_SALT, ITEM_BUTTER},
-        MEAL_EFFECT_PRIZE, 10, COMPOUND_STRING("Trainer prize money +10%")},
+        MEAL_EFFECT_PRIZE, 10, COMPOUND_STRING("Trainer prize money +10%"), FALSE},
     {ITEM_EGG_DROP_SOUP, {ITEM_EGG, ITEM_COOKING_WATER, ITEM_SALT, ITEM_PEPPER},
-        MEAL_EFFECT_ENCOUNTER, 15, COMPOUND_STRING("Wild encounter rate -15%")},
+        MEAL_EFFECT_ENCOUNTER, 15, COMPOUND_STRING("Wild encounter rate -15%"), FALSE},
     {ITEM_CRACKERS, {ITEM_FLOUR, ITEM_COOKING_WATER, ITEM_SALT, ITEM_PEPPER},
-        MEAL_EFFECT_FRIENDSHIP, 1, COMPOUND_STRING("Walk friendship +1")},
+        MEAL_EFFECT_FRIENDSHIP, 1, COMPOUND_STRING("Walk friendship +1"), FALSE},
     {ITEM_HOT_COCOA, {ITEM_COOKING_MILK, ITEM_SUGAR, ITEM_COCOA_POWDER},
-        MEAL_EFFECT_FRIENDSHIP, 2, COMPOUND_STRING("Walk friendship +2")},
+        MEAL_EFFECT_FRIENDSHIP, 2, COMPOUND_STRING("Walk friendship +2"), TRUE},
     {ITEM_EGG_CUSTARD, {ITEM_EGG, ITEM_COOKING_MILK, ITEM_SUGAR},
-        MEAL_EFFECT_EXPERIENCE, 15, COMPOUND_STRING("Battle Exp. +15%")},
+        MEAL_EFFECT_EXPERIENCE, 15, COMPOUND_STRING("Battle Exp. +15%"), FALSE},
 };
 
 static const struct MealRecipe *GetRecipeByItem(enum Item item)
@@ -105,6 +106,12 @@ const u8 *LegendsMealEffectText(enum Item item)
 {
     const struct MealRecipe *recipe = GetRecipeByItem(item);
     return recipe != NULL ? recipe->effectText : COMPOUND_STRING("");
+}
+
+bool32 LegendsMealIsDrink(enum Item item)
+{
+    const struct MealRecipe *recipe = GetRecipeByItem(item);
+    return recipe != NULL && recipe->isDrink;
 }
 
 enum LegendsCookResult LegendsCookMeal(u32 recipeIndex)
@@ -209,23 +216,26 @@ static void Task_AcknowledgeMeal(u8 taskId)
 void ItemUseOutOfBattle_LegendsMeal(u8 taskId)
 {
     const u8 *message;
+    bool32 isDrink = LegendsMealIsDrink(gSpecialVar_ItemId);
     switch (LegendsEatMeal(gSpecialVar_ItemId))
     {
     case LEGENDS_EAT_SUCCESS:
         CopyItemName(gSpecialVar_ItemId, gStringVar1);
-        StringExpandPlaceholders(gStringVar4, COMPOUND_STRING(
-            "You ate the {STR_VAR_1}!\n"
-            "Its buff lasts 10 minutes."));
+        StringExpandPlaceholders(gStringVar4, isDrink
+            ? COMPOUND_STRING("You drank the {STR_VAR_1}!\nIts buff lasts 10 minutes.")
+            : COMPOUND_STRING("You ate the {STR_VAR_1}!\nIts buff lasts 10 minutes."));
         message = gStringVar4;
         break;
     case LEGENDS_EAT_FULL:
-        message = COMPOUND_STRING(
-            "You're too full to eat more!\p"
-            "Wait a little while before\n"
-            "eating again.");
+        message = isDrink
+            ? COMPOUND_STRING("You're too full to drink more!\p"
+                "Wait a little while before\ndrinking again.")
+            : COMPOUND_STRING("You're too full to eat more!\p"
+                "Wait a little while before\neating again.");
         break;
     default:
-        message = COMPOUND_STRING("You couldn't eat that meal.");
+        message = isDrink ? COMPOUND_STRING("You couldn't drink that.")
+            : COMPOUND_STRING("You couldn't eat that meal.");
         break;
     }
     DisplayItemMessage(taskId, FONT_NORMAL, message, Task_AcknowledgeMeal);

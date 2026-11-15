@@ -14479,7 +14479,7 @@ const struct ItemInfo gItemsInfo[] =
         .price = 55,
         .description = COMPOUND_STRING(
             "A savory egg soup.\n"
-            "Wild encounters -15%\n"
+            "Encounters -15%\n"
             "for 10 minutes."),
         .pocket = POCKET_FOOD,
         .type = ITEM_USE_BAG_MENU,
