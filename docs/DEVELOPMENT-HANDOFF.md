@@ -1,5 +1,11 @@
 # Development handoff
 
+## Oolong and Coffee icon revision (15 November 2026)
+
+**Model: GPT-6.1 Sol | Reasoning: clean up the pouch silhouette and keep the Coffee beans visible inside their packaging.**
+
+Removed the isolated point beneath the Oolong Tea pouch and redrew Coffee as an open bag of whole roasted beans. Recorded the owner's preference for purposeful sprite outlines in AGENTS.md. Rebuilt the native ROM, repurchased all four coffee and tea ingredients in Oldale, and verified the revised icons in the Bag. [Preview evidence](qa/coffee-tea-icon-revision.json). Review branch only.
+
 ## Coffee and loose-leaf tea ingredients preview (15 November 2026)
 
 **Model: GPT-6.1 Sol | Reasoning: give the new ingredients distinct silhouettes and append their IDs to preserve existing inventory.**

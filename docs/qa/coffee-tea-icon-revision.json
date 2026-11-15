@@ -1,0 +1,23 @@
+{
+  "status": "review preview",
+  "baseCommit": "fcf0f8c9e9f70da9fd45f83f5990d9c5fadcbfa6",
+  "romSha256": "816b394a6146235c735e9e1216fa9084a3513b2521acfeb4199f5e022c18c0b8",
+  "sprites": {
+    "oolong_tea.png": "0c6b1e9688b1fdc41ca0d52b271c5d785f506acd72bfe3782f1af6c14c2b81b4",
+    "coffee.png": "d4312191eb7d8aebecf0e72de45fd90c5cd6bd053475cabb7becbe217c3cf718"
+  },
+  "nativeQA": {
+    "emulator": "mGBA",
+    "verified": "Purchased all four added ingredients at Oldale Pok\u00e9 Mart, checked quantity and price, and inspected the revised Oolong Tea and Coffee icons in the Mart and field Bag.",
+    "captureSha256": {
+      "bag-2.png": "ba7ed27014ff83f569ee8491069dec81953f97baaf608b1c97415b00bbf37c0c",
+      "bag-4.png": "95678e15e1a8bb75b855151ff25dc0aee16b6998abb509b41a45de83e70c4be1",
+      "shop-2.png": "240bc6b26aebc0407891658028fc4a5791c1f1df4bc3e5828e169f0010e85b1b",
+      "shop-4.png": "e0f4e6e6e684ec15f56f0b30f7dfd4c8f26609ae29bc0c2c95f008e8fa0e360e"
+    },
+    "harnessSha256": {
+      "fixture.c": "1b948084cad8ded1dc49d4b0fec681175cc9848e8256936a819fb2da53b1bbf9",
+      "verify.py": "ed653a84938350f43fbd5d24bed637da0997b532b4e1cc4c3ee162d85ed23657"
+    }
+  }
+}
