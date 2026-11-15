@@ -17,14 +17,13 @@ code=r'''
 #include <string.h>
 #include <assert.h>
 #include <stdio.h>
-typedef uint8_t u8;typedef uint16_t u16;typedef uint32_t u32;typedef int32_t s32;typedef int8_t s8;typedef int bool32;
+typedef uint8_t u8;typedef uint16_t u16;typedef uint32_t u32;typedef int32_t s32;typedef int8_t s8;typedef uint8_t bool8;typedef int bool32;
 #define TRUE 1
 #define FALSE 0
 #define EWRAM_DATA
 #define NONNULL
 #define STATIC_ASSERT(x,n) _Static_assert(x,#n)
 #define LEGENDS_BAG_SLOTS 1152
-#define MAX_BAG_ITEM_CAPACITY 999
 #define PC_ITEMS_COUNT 150
 #define TOTAL_BOXES_COUNT 20
 #define IN_BOX_COUNT 30
@@ -42,7 +41,7 @@ typedef uint8_t u8;typedef uint16_t u16;typedef uint32_t u32;typedef int32_t s32
 #define VAR_SECRET_BASE_LAST_ITEM_USED 0
 #define SECRET_BASE_USED_BAG 0
 #include "constants/item.h"
-enum Item {ITEM_NONE=0};
+#include "constants/items.h"
 struct __attribute__((aligned(4))) ItemSlot {u16 itemId,quantity;};
 struct Bag {u16 pocketSizes[POCKETS_COUNT];struct ItemSlot slots[LEGENDS_BAG_SLOTS];};
 _Static_assert(offsetof(struct Bag,slots)==12,"Native ARM APCS slot alignment");
@@ -64,6 +63,8 @@ static struct {u16 numItemStacks[POCKETS_COUNT];u8 numShownItems[POCKETS_COUNT];
 static struct ListMenuItem *sListBuffer1;
 static u8 (*sListBuffer2)[35];
 #define LIST_CANCEL -2
+#define LIST_ACTIVE_BUFFS -4
+static bool32 FoodPocketHasBuffRow(enum Pocket pocket){return pocket==POCKET_FOOD&&!gBagMenu->hideCloseBagText;}
 static u32 allocBytes;
 static int failAlloc;
 static void *Alloc(u32 n){allocBytes+=n;return failAlloc?NULL:malloc(n);}
@@ -96,8 +97,23 @@ code+=r'''
 static void BagPocket_SetSlotItemIdAndCount(struct BagPocket *p,u32 pos,enum Item id,u16 q){BagPocket_SetSlotData(p,pos,(struct ItemSlot){id,q});}
 static enum Item GetBagItemId(enum Pocket p,u32 pos){return BagPocket_GetSlotData(&gBagPockets[p],pos).itemId;}
 static void ApplyNewEncryptionKeyToAllEncryptedData(u32 key){ApplyNewEncryptionKeyToBagItems(key);}
+#define LEGENDS_MEAL_SLOTS 3
+struct LegendsMealBuff {u16 item,framesLeft;};
+struct LegendsMealSave {u32 signature;struct LegendsMealBuff buffs[LEGENDS_MEAL_SLOTS];};
+static struct {struct LegendsMealSave meals;} save3,*gSaveBlock3Ptr=&save3;
+#include "legends_meals.h"
+#define FLAG_SET_ITEM_OBTAINED 1
+static void GetSetItemObtained(enum Item item,int mode){(void)item;(void)mode;}
+static void CompactItemsInBagPocket(enum Pocket pocket){BagPocket_CompactItems(&gBagPockets[pocket]);}
+static bool32 CheckBagHasItem(enum Item item,u16 count){return BagPocket_CountTotalItemQuantity(&gBagPockets[POCKET_FOOD],item)>=count;}
+static bool32 RemoveBagItem(enum Item item,u16 count){return BagPocket_RemoveItem(&gBagPockets[POCKET_FOOD],item,count);}
+
+'''
+meal_source=(R/'src/legends_meals.c').read_text().split('void Script_LegendsCookMeal',1)[0]
+code+='\n'.join(l for l in meal_source.splitlines() if not l.startswith('#include'))+'\n'
+code+=r'''
 static s32 cmp(enum Pocket id,struct ItemSlot a,struct ItemSlot b){(void)id;return !a.itemId?1:!b.itemId?-1:(s32)a.itemId-b.itemId;}
-static void fresh(void){memset(&data,0,sizeof(data));SetBagItemsPointers();}
+static void fresh(void){memset(&data,0,sizeof(data));memset(&save3,0,sizeof(save3));SetBagItemsPointers();}
 static void invariant(void){u32 offset=0,used=BagPoolUsed();assert(used<=1152);for(u32 p=0;p<POCKETS_COUNT;p++){assert(gBagPockets[p].itemSlots==data.inventory.slots+offset);assert(gBagPockets[p].capacity==data.inventory.pocketSizes[p]+1152-used);offset+=data.inventory.pocketSizes[p];}}
 int main(void)
 {
@@ -173,6 +189,49 @@ int main(void)
  for(unsigned i=0;i<1153;i++){assert(sListBuffer1[i].name==sListBuffer2[0]);assert(sListBuffer1[i].id==(i==1152?LIST_CANCEL:(s32)i));}
  gBagMenu->hideCloseBagText=TRUE;gBagMenu->numItemStacks[0]=1152;LoadBagItemListBuffers(0);assert(sListBuffer1[1151].id==1151);
  Free(sListBuffer1);Free(sListBuffer2);
+ // Use the production cooking transaction and timed-slot code, not a recipe model.
+ for(unsigned r=0;r<ARRAY_COUNT(sRecipes);r++){
+  fresh();
+  const struct MealRecipe *recipe=&sRecipes[r];
+  unsigned ingredients=0;
+  while(ingredients<RECIPE_INGREDIENTS&&recipe->supplies[ingredients]!=ITEM_NONE)ingredients++;
+  assert(ingredients>=3);
+  for(unsigned i=0;i<ingredients-1;i++)assert(BagPocket_AddItem(&gBagPockets[POCKET_ITEMS],recipe->supplies[i],1));
+  struct Bag unchanged=data.inventory;
+  assert(LegendsCookMeal(r)==LEGENDS_COOK_MISSING);
+  assert(!memcmp(&unchanged,&data.inventory,sizeof(unchanged)));
+  assert(BagPocket_AddItem(&gBagPockets[POCKET_ITEMS],recipe->supplies[ingredients-1],1));
+  assert(LegendsCookMeal(r)==LEGENDS_COOK_SUCCESS);
+  assert(!IsBagPocketNonEmpty(POCKET_ITEMS));
+  assert(BagPocket_CountTotalItemQuantity(&gBagPockets[POCKET_FOOD],recipe->meal)==1);
+  assert(LegendsEatMeal(recipe->meal)==LEGENDS_EAT_SUCCESS);
+  assert(LegendsMealBonus(recipe->effect)==recipe->amount);
+  assert(LegendsMealIsDrink(recipe->meal)==(recipe->meal==ITEM_HOT_COCOA));
+  invariant();
+ }
+ fresh();
+ for(unsigned i=0;i<RECIPE_INGREDIENTS;i++)BagPocket_SetSlotData(&gBagPockets[POCKET_ITEMS],i,(struct ItemSlot){sRecipes[0].supplies[i],2});
+ for(unsigned i=RECIPE_INGREDIENTS;i<1152;i++)BagPocket_SetSlotData(&gBagPockets[POCKET_ITEMS],i,(struct ItemSlot){ITEM_POTION,1});
+ struct Bag full=data.inventory;
+ assert(LegendsCookMeal(0)==LEGENDS_COOK_BAG_FULL);
+ assert(!memcmp(&full,&data.inventory,sizeof(full)));
+ BagPocket_SetSlotData(&gBagPockets[POCKET_ITEMS],0,(struct ItemSlot){ITEM_BUTTER,1});
+ assert(LegendsCookMeal(0)==LEGENDS_COOK_SUCCESS);
+ assert(BagPoolUsed()==1152);
+ invariant();
+ fresh();
+ assert(BagPocket_AddItem(&gBagPockets[POCKET_FOOD],ITEM_BUTTER_OMELET,4));
+ for(unsigned i=0;i<3;i++){
+  assert(LegendsEatMeal(ITEM_BUTTER_OMELET)==LEGENDS_EAT_SUCCESS);
+  assert(LegendsMealBonus(MEAL_EFFECT_CATCH)==5*(i+1));
+  if(i<2)LegendsMealTick();
+ }
+ assert(LegendsEatMeal(ITEM_BUTTER_OMELET)==LEGENDS_EAT_FULL);
+ assert(BagPocket_CountTotalItemQuantity(&gBagPockets[POCKET_FOOD],ITEM_BUTTER_OMELET)==1);
+ for(unsigned f=0;f<LEGENDS_MEAL_DURATION-2;f++)LegendsMealTick();
+ assert(LegendsMealBonus(MEAL_EFFECT_CATCH)==10);
+ assert(LegendsEatMeal(ITEM_BUTTER_OMELET)==LEGENDS_EAT_SUCCESS);
+ puts("PASS: seven recipes and buffs, atomic full/missing-supply refusal, three buffs, independent expiration and re-eating");
  puts("PASS: each pocket1152 stacks; shared reuse/full refusal; >255 indices; cross-pocket preservation; sorting/swapping; old14-box, LPC2 and LPC3 packed migration; new save/reload; malformed-size and allocation refusal");
 }
 '''

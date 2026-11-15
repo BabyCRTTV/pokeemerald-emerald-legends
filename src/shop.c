@@ -89,6 +89,7 @@ struct MartInfo
     void (*callback)(void);
     const struct MenuAction *menuActions;
     const u16 *itemList;
+    const u16 *normalStock;
     u16 itemCount;
     u8 windowId;
     u8 martType;
@@ -156,6 +157,7 @@ static void Task_ReturnToItemListAfterItemPurchase(u8 taskId);
 static void Task_ReturnToItemListAfterDecorationPurchase(u8 taskId);
 static void Task_HandleShopMenuBuy(u8 taskId);
 static void Task_HandleShopMenuSell(u8 taskId);
+static void Task_HandleIngredients(u8 taskId);
 static void BuyMenuPrintItemDescriptionAndShowItemIcon(s32 item, bool8 onInit, struct ListMenu *list);
 static void BuyMenuPrintPriceInList(u8 windowId, u32 itemId, u8 y);
 
@@ -165,10 +167,19 @@ static const struct YesNoFuncTable sShopPurchaseYesNoFuncs =
     BuyMenuReturnToItemList
 };
 
+static const u8 sText_Ingredients[] = _("INGREDIENTS");
+static const u16 sIngredients[] =
+{
+    ITEM_BUTTER, ITEM_EGG, ITEM_COOKING_WATER,
+    ITEM_SALT, ITEM_PEPPER, ITEM_FLOUR,
+    ITEM_COOKING_MILK, ITEM_SUGAR, ITEM_COCOA_POWDER, ITEM_NONE,
+};
+
 static const struct MenuAction sShopMenuActions_BuySellQuit[] =
 {
     { gText_ShopBuy, {.void_u8=Task_HandleShopMenuBuy} },
     { gText_ShopSell, {.void_u8=Task_HandleShopMenuSell} },
+    { sText_Ingredients, {.void_u8=Task_HandleIngredients} },
     { gText_ShopQuit, {.void_u8=Task_HandleShopMenuQuit} }
 };
 
@@ -185,7 +196,7 @@ static const struct WindowTemplate sShopMenuWindowTemplates[] =
         .tilemapLeft = 2,
         .tilemapTop = 1,
         .width = 9,
-        .height = 6,
+        .height = 8,
         .paletteNum = 15,
         .baseBlock = 0x0008,
     },
@@ -425,13 +436,26 @@ static void Task_ShopMenu(u8 taskId)
 #define tCallbackHi data[8]
 #define tCallbackLo data[9]
 
-static void Task_HandleShopMenuBuy(u8 taskId)
+static void StartShopBuyMenu(u8 taskId)
 {
     s16 *data = gTasks[taskId].data;
     tCallbackHi = (u32)CB2_InitBuyMenu >> 16;
     tCallbackLo = (u32)CB2_InitBuyMenu;
     gTasks[taskId].func = Task_GoToBuyOrSellMenu;
     FadeScreen(FADE_TO_BLACK, 0);
+}
+
+static void Task_HandleShopMenuBuy(u8 taskId)
+{
+    if (sMartInfo.martType == MART_TYPE_NORMAL)
+        SetShopItemsForSale(sMartInfo.normalStock);
+    StartShopBuyMenu(taskId);
+}
+
+static void Task_HandleIngredients(u8 taskId)
+{
+    SetShopItemsForSale(sIngredients);
+    StartShopBuyMenu(taskId);
 }
 
 static void Task_HandleShopMenuSell(u8 taskId)
@@ -1314,6 +1338,7 @@ static void RecordItemPurchase(u8 taskId)
 void CreatePokemartMenu(const u16 *itemsForSale)
 {
     CreateShopMenu(MART_TYPE_NORMAL);
+    sMartInfo.normalStock = itemsForSale;
     SetShopItemsForSale(itemsForSale);
     ClearItemPurchases();
     SetShopMenuCallback(ScriptContext_Enable);

@@ -14338,6 +14338,246 @@ const struct ItemInfo gItemsInfo[] =
 
 // Story Key Items
 
+    [ITEM_BUTTER] =
+    {
+        .name = ITEM_NAME("Butter"),
+        .price = 60,
+        .description = COMPOUND_STRING(
+            "A pat of butter.\n"
+            "Adds a rich flavor\n"
+            "to cooked meals."),
+        .pocket = POCKET_ITEMS,
+        .type = ITEM_USE_FIELD,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .iconPic = gItemIcon_CookingButter,
+        .iconPalette = gItemIconPalette_CookingButter,
+    },
+
+    [ITEM_EGG] =
+    {
+        .name = ITEM_NAME("Egg"),
+        .price = 50,
+        .description = COMPOUND_STRING(
+            "A cooking egg.\n"
+            "Use it in meals at\n"
+            "a kitchenette."),
+        .pocket = POCKET_ITEMS,
+        .type = ITEM_USE_FIELD,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .iconPic = gItemIcon_CookingEgg,
+        .iconPalette = gItemIconPalette_CookingEgg,
+    },
+
+    [ITEM_COOKING_WATER] =
+    {
+        .name = ITEM_NAME("Water"),
+        .price = 20,
+        .description = COMPOUND_STRING(
+            "Water for cooking.\n"
+            "Use it in dough\n"
+            "and soup."),
+        .pocket = POCKET_ITEMS,
+        .type = ITEM_USE_FIELD,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .iconPic = gItemIcon_CookingWater,
+        .iconPalette = gItemIconPalette_CookingWater,
+    },
+
+    [ITEM_SALT] =
+    {
+        .name = ITEM_NAME("Salt"),
+        .price = 15,
+        .description = COMPOUND_STRING(
+            "A little shaker of\n"
+            "salt. Used to\n"
+            "season meals."),
+        .pocket = POCKET_ITEMS,
+        .type = ITEM_USE_FIELD,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .iconPic = gItemIcon_CookingSalt,
+        .iconPalette = gItemIconPalette_CookingSalt,
+    },
+
+    [ITEM_PEPPER] =
+    {
+        .name = ITEM_NAME("Pepper"),
+        .price = 25,
+        .description = COMPOUND_STRING(
+            "A little shaker of\n"
+            "pepper. Used to\n"
+            "season meals."),
+        .pocket = POCKET_ITEMS,
+        .type = ITEM_USE_FIELD,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .iconPic = gItemIcon_CookingPepper,
+        .iconPalette = gItemIconPalette_CookingPepper,
+    },
+
+    [ITEM_FLOUR] =
+    {
+        .name = ITEM_NAME("Flour"),
+        .price = 35,
+        .description = COMPOUND_STRING(
+            "A bag of flour.\n"
+            "Use it to make\n"
+            "bread and batter."),
+        .pocket = POCKET_ITEMS,
+        .type = ITEM_USE_FIELD,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .iconPic = gItemIcon_CookingFlour,
+        .iconPalette = gItemIconPalette_CookingFlour,
+    },
+
+    [ITEM_BUTTER_OMELET] =
+    {
+        .name = ITEM_NAME("Butter Omelet"),
+        .price = 75,
+        .description = COMPOUND_STRING(
+            "A fluffy omelet.\n"
+            "Catch odds +5%\n"
+            "for 10 minutes."),
+        .pocket = POCKET_FOOD,
+        .type = ITEM_USE_BAG_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_LegendsMeal,
+        .iconPic = gItemIcon_CookingOmelet,
+        .iconPalette = gItemIconPalette_CookingOmelet,
+    },
+
+    [ITEM_PANCAKES] =
+    {
+        .name = ITEM_NAME("Pancakes"),
+        .price = 80,
+        .description = COMPOUND_STRING(
+            "A buttery stack.\n"
+            "Battle Exp. +10%\n"
+            "for 10 minutes."),
+        .pocket = POCKET_FOOD,
+        .type = ITEM_USE_BAG_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_LegendsMeal,
+        .iconPic = gItemIcon_CookingPancakes,
+        .iconPalette = gItemIconPalette_CookingPancakes,
+    },
+
+    [ITEM_FLATBREAD] =
+    {
+        .name = ITEM_NAME("Flatbread"),
+        .price = 60,
+        .description = COMPOUND_STRING(
+            "Warm flatbread.\n"
+            "Prize money +10%\n"
+            "for 10 minutes."),
+        .pocket = POCKET_FOOD,
+        .type = ITEM_USE_BAG_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_LegendsMeal,
+        .iconPic = gItemIcon_CookingFlatbread,
+        .iconPalette = gItemIconPalette_CookingFlatbread,
+    },
+
+    [ITEM_EGG_DROP_SOUP] =
+    {
+        .name = ITEM_NAME("Egg Drop Soup"),
+        .price = 55,
+        .description = COMPOUND_STRING(
+            "A savory egg soup.\n"
+            "Encounters -15%\n"
+            "for 10 minutes."),
+        .pocket = POCKET_FOOD,
+        .type = ITEM_USE_BAG_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_LegendsMeal,
+        .iconPic = gItemIcon_CookingSoup,
+        .iconPalette = gItemIconPalette_CookingSoup,
+    },
+
+    [ITEM_CRACKERS] =
+    {
+        .name = ITEM_NAME("Crackers"),
+        .price = 48,
+        .description = COMPOUND_STRING(
+            "Crisp, salty bites.\n"
+            "Walk friendship +1\n"
+            "for 10 minutes."),
+        .pocket = POCKET_FOOD,
+        .type = ITEM_USE_BAG_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_LegendsMeal,
+        .iconPic = gItemIcon_CookingCrackers,
+        .iconPalette = gItemIconPalette_CookingCrackers,
+    },
+
+    [ITEM_COOKING_MILK] =
+    {
+        .name = ITEM_NAME("Milk"),
+        .price = 45,
+        .description = COMPOUND_STRING(
+            "A small carton of\n"
+            "milk for cooking\n"
+            "and hot drinks."),
+        .pocket = POCKET_ITEMS,
+        .type = ITEM_USE_FIELD,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .iconPic = gItemIcon_CookingMilk,
+        .iconPalette = gItemIconPalette_CookingMilk,
+    },
+
+    [ITEM_SUGAR] =
+    {
+        .name = ITEM_NAME("Sugar"),
+        .price = 30,
+        .description = COMPOUND_STRING(
+            "A bag of sugar.\n"
+            "Sweetens desserts\n"
+            "and hot drinks."),
+        .pocket = POCKET_ITEMS,
+        .type = ITEM_USE_FIELD,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .iconPic = gItemIcon_CookingSugar,
+        .iconPalette = gItemIconPalette_CookingSugar,
+    },
+
+    [ITEM_COCOA_POWDER] =
+    {
+        .name = ITEM_NAME("Cocoa Powder"),
+        .price = 55,
+        .description = COMPOUND_STRING(
+            "Ground cocoa.\n"
+            "Adds a chocolate\n"
+            "flavor to recipes."),
+        .pocket = POCKET_ITEMS,
+        .type = ITEM_USE_FIELD,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .iconPic = gItemIcon_CookingCocoaPowder,
+        .iconPalette = gItemIconPalette_CookingCocoaPowder,
+    },
+
+    [ITEM_HOT_COCOA] =
+    {
+        .name = ITEM_NAME("Hot Cocoa"),
+        .price = 65,
+        .description = COMPOUND_STRING(
+            "A warm cocoa mug.\n"
+            "Walk friendship +2\n"
+            "for 10 minutes."),
+        .pocket = POCKET_FOOD,
+        .type = ITEM_USE_BAG_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_LegendsMeal,
+        .iconPic = gItemIcon_CookingHotCocoa,
+        .iconPalette = gItemIconPalette_CookingHotCocoa,
+    },
+
+    [ITEM_EGG_CUSTARD] =
+    {
+        .name = ITEM_NAME("Egg Custard"),
+        .price = 60,
+        .description = COMPOUND_STRING(
+            "A silky egg dessert.\n"
+            "Battle Exp. +15%\n"
+            "for 10 minutes."),
+        .pocket = POCKET_FOOD,
+        .type = ITEM_USE_BAG_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_LegendsMeal,
+        .iconPic = gItemIcon_CookingEggCustard,
+        .iconPalette = gItemIconPalette_CookingEggCustard,
+    },
+
     [ITEM_TREAT_CASE] =
     {
         .name = ITEM_NAME("Treat Case"),

@@ -1,5 +1,6 @@
 #include "global.h"
 #include "legends_clock.h"
+#include "legends_meals.h"
 #include "legends_adventure.h"
 #include "play_time.h"
 #include "legends_seasons.h"
@@ -41,6 +42,7 @@ void PlayTimeCounter_Update(void)
     LegendsClockTick();
     LegendsSeasonTick();
     LegendsAdventureTick();
+    LegendsMealTick();
     if (sPlayTimeCounterState == MAXED_OUT)
         return;
 

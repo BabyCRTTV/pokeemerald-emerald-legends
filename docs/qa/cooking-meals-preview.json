@@ -1,0 +1,255 @@
+{
+  "baseCommit": "e8aaaf0a88f9ab5e42a982c04c947120af18e0b3",
+  "baseVersion": "0.0.83",
+  "romSha256": "837f394063188191daa3d554886290dc3e14a1e5b8776eaf13755e642740ddcf",
+  "emulator": "mGBA native core",
+  "nativeChecks": [
+    "Oldale Mart displayed INGREDIENTS and sold Butter for 60",
+    "Mauville sink showed recipe list, details, confirmation, and cooked Butter Omelet",
+    "Actual Food menu accepted three meals and kept the refused fourth meal",
+    "Food Active Buffs showed each bonus and countdown",
+    "Expiration was brought forward in the fixture and the normal timer freed one slot",
+    "Normal Continue preserved the remaining buffs and Food inventory",
+    "Food pocket put Active Buffs first with a gold highlight on both Bag designs",
+    "Active Buffs opened from an empty Food pocket and returned to the list",
+    "START on the first meal chose Pancakes for sorting after the leading Active Buffs row"
+  ],
+  "hostChecks": [
+    "All five recipes and exact deductions",
+    "Full or missing supply refusal without a partial transaction",
+    "Cooking into the slot freed by a consumed ingredient",
+    "Three same-meal buffs, staggered expiry and re-eating",
+    "Original item flags and positions, new item flags, all save sectors",
+    "LPC2/LPC3 and original Bag regression"
+  ],
+  "limits": "Private fixtures set the initial position and added other example meals. The screenshots use actual game frames. No release builds or public patches were produced for this preview.",
+  "screenshots": {
+    "01-Poke-Mart.png": "8f78185a71ef41926848a1c048cb0b4bdae1359e3e81607e8de17e767d15f567",
+    "02-Cooking-Supplies.png": "adfc8acd1902dd875d2873ab2714627fc50a48c740b16f609e4a841833df7854",
+    "03-Recipe-Menu.png": "e90a4f7f5e99642db87f33771632f62a1fb54f01c9ddb72659b9bea27525e93d",
+    "04-Omelet-Recipe.png": "dde4e2a2b2d232be3099635cedc8fa0b6588af76ca3227af2b0a468ce4a2c096",
+    "05-Omelet-Buff.png": "720da97fd8e4114fe1e78940bf60b51bb52526555c8bb67d72903bc759c6a469",
+    "06-Meal-Cooked.png": "285de10241133c9b30555da649cffc544836212de55a53b7b16a75856308216c",
+    "07-Food-Pocket.png": "c0e5aceadf4f179e1107efe7278fd733437e3f0a031cb74df690a46c4d48cd54",
+    "08-Eat-Meal.png": "28877eab7a5723cf934b5dd213f2bafe1702ff23bd5f34861725a99a2dd3f6e7",
+    "09-Too-Full.png": "9288af578e14e273fd7c66e71dc3203ec65dbbdab261076e68d9f04c136cd476",
+    "10-Active-Buffs.png": "f71ad90c61cc846471e419437f9202078bbff8fca79d99272ce6f24579189107",
+    "11-Expired-Buff.png": "965923785a743e3bdef363de38e4aeb32c733300a8803968d5ba610712a1d491",
+    "12-Empty-Food-Pocket.png": "c79e850b2dc6ec46bf3b1294a710ee359e0fb655842965f815cd58c298dfd898",
+    "13-No-Active-Buffs.png": "2e1c53329ee284e6012b0030e91a3dc22e8be35a75297ce0af27157efa5595fb",
+    "14-Food-Item-Selected.png": "3a9ef9e1c81cb3c37841f741b2dc00a0735e582cf547dec8bf2234c3cc2736d0",
+    "15-Food-Sort.png": "1f984724030c0792f8db81c8d3b426f92f9849f16297d00cf86b7204674221f1",
+    "16-Food-Pocket-Alternate.png": "c18dd0d9011748b5a2a2ee4ac55ef866f381f17cb572ba88a642ac8e01f95bfd",
+    "Emerald-Legends-Meals-UI-Preview.png": "56ebc1e1c7dd7b45d4fdc3f376c6ff678db4845bdba5d34683e7727133d92a0b"
+  },
+  "previousPreviewCommit": "b47a8a3fecbc1fbd762f6c824fc1950d4987c774",
+  "harnessSha256": {
+    "arm.c": "0d816b5fb3a03908fe1b1446a28514ab76a39d734ca5f9d1a8776c32280a9be2",
+    "run.py": "2d130542fb5a9e726ffbda44703050aee1886257bf966f6c230e70700656c388"
+  },
+  "dessertPreview": {
+    "parentCommit": "6aba515211f910f9469b818492ce0cf98f783efd",
+    "romSha256": "9ef68d18453d56995965665e77296ebc077de8e883af2332f1ccf52ebfdc6f0d",
+    "harnessSha256": {
+      "arm.c": "7f251d2cde4e76a856c2df869f86876080d9e911244d0e42102ab90b46678b03",
+      "sweets.py": "0b186b7da03126dc80a6c16ecc9ccf8c4b3235b84df6dcfd44bd7a2ecf6e483a",
+      "sweets-regression.py": "8c907f88e0b9b388c6070bb06f2395e25bacde9c592d11c915138200125d8d8d"
+    },
+    "nativeChecks": [
+      "Purchased Milk, Sugar, Cocoa Powder, and Egg at Oldale Mart",
+      "Selected and cooked Hot Cocoa and Egg Custard in the Mauville apartment",
+      "Verified exact ingredient deductions and one of each new meal in Food",
+      "Opened the field Bag from the pause menu, consumed both meals, and read the +2 friendship and +15% battle experience bonuses",
+      "Inspected the hidden item-icon frame on Active Buffs and the restored frame for Hot Cocoa. Verified the hidden frame on the alternate Bag",
+      "Earlier recipe, empty Food, sorting, fourth-meal refusal, expiration, and battery Continue regression passed on the revised ROM"
+    ],
+    "hostChecks": [
+      "All seven recipes and their bonuses",
+      "Shared inventory and exact save-sector rotations",
+      "Nightmare flag and save-width baseline"
+    ],
+    "limits": "The fixture placed the player in Oldale Mart and the Mauville kitchen, where the actual purchase and cooking inputs were recorded. Preview only. No public patches were generated.",
+    "screenshots": {
+      "Active-Buffs-No-Box.png": "f2fbb06acdd08631cc6e1934cf4f6faac461fc534e823342375c1adacedf6bc7",
+      "Cooked-Egg-Custard.png": "be59587365abea305d2011d9f8b77913a590f794a947b5f34f6afdc46553e825",
+      "Cooked-Hot-Cocoa.png": "108056d31e0efcaaaa180d9c585963f76c9bdcc3255d6b0a727efdda7c524448",
+      "Drinking-Hot-Cocoa.png": "8151278e7eef662b107516a1fad2d0a8339820a4f903670612134f2266966ada",
+      "Eating-Egg-Custard.png": "ffc69e557a057c5c93aa1db4c7227d5352a8965801f38db8afaaea4dda1f6513",
+      "Effect-Egg-Custard.png": "8637aa99ef0102cd92dca5d932b3715bc84fc9f1e5899c01e97ae4f01a2ced43",
+      "Effect-Hot-Cocoa.png": "838548abd0360287f84bbc992488ca4fef62b8d4513e99323618c74b771d673c",
+      "Emerald-Legends-Cooking-Screenshots.png": "0723fd00a58a837e9300feea2b7579c15d6fe9ca86a037c9e43bd12ca3fe7311",
+      "Food-Buffs-Row-No-Box.png": "9f288c431c205126bcef8fd808557d85b1ddca67e9ef6bd3aea71cd844934817",
+      "Food-Hot-Cocoa-Icon.png": "619d860d74fe196b664b51bbba113b12a30a9b29be4f7b1a58842da6df13726f",
+      "Ingredients-Egg-Custard.png": "86937712eeae7944f1e1fdaa0963191936787f5bb933ae05b6e124ace8f4276e",
+      "Ingredients-Hot-Cocoa.png": "5470a7057ee4a71ed8518f3746830f923ad7a75c221cd15ec88042ec5f38b5e1",
+      "New-Mart-Ingredients.png": "7df588d35b521b84515e287f5cc365ea3e1f644aaa845ae33547035e0a67a3ba",
+      "Pause-Menu.png": "41f2672b274789e58170cfcebde05456443f51dec00f722e9a8e74292c3a2297",
+      "Recipe-Menu-Egg-Custard.png": "153448167309dd0a6a9064b3affe273bef1adfe57906db0dc821bb6bd83b1856",
+      "Recipe-Menu-Hot-Cocoa.png": "3f01be44a09736c44fb9322efc5c71a952ae04891e9610d00e0f29afc5bf72d1"
+    },
+    "video": {
+      "file": "Emerald-Legends-Cooking-Gameplay.mp4",
+      "sha256": "dcc5d49a2d42e8fd7e42bc670fb38f19bb4a26d79b86e6c63e15ad3129bcaf68",
+      "durationSeconds": 43.566667
+    }
+  },
+  "artAndInteractionPreview": {
+    "parentCommit": "5933876b569991d617ff81fcafcddc36d1abe581",
+    "romSha256": "9df6ac2d566a31d1899222e10b86a3d0fecad74a10fc1306944bcec64665ead6",
+    "harnessSha256": {
+      "arm.c": "401dac4069c807b3ca1f3c7d96c6869334fa08f9209a969f224f623435ef1cdd",
+      "art-qa.py": "781f49d2b47ccad633ca250892893448026635ae8214570b15256a123be667c5"
+    },
+    "nativeChecks": [
+      "No sink interaction across a walkable space, with the next step and A opening the sink in Mauville, Fuchsia, and Littleroot",
+      "Cooked one Butter Omelet through the adjacent Mauville sink and verified its inventory changes",
+      "Hot Cocoa showed DRINK, drink confirmation, and full refusal that preserved the fourth serving",
+      "Egg Custard showed EAT",
+      "Captured each of the nine ingredient and seven meal icons from the actual Bag and verified selected item IDs"
+    ],
+    "hostChecks": [
+      "All seven recipes and their buffs, drink classification, shared inventory, and item flags",
+      "Native save-sector rotations and Nightmare allocation regression"
+    ],
+    "limits": "Preview fixture stocked the Bag and positioned the player away from each sink. Movement and kitchen interactions used normal field input. No public patch was generated.",
+    "screenshots": {
+      "Cooked-At-Sink.png": "98d7ed9b2b11a8c3f0a621c04c02842d1635ee921c424d5bf58e466ece246ca9",
+      "Drank-Hot-Cocoa.png": "5d680682dd127815591df9c5ebce71536d953ba36c046d4b1efee294f8bd1ada",
+      "Drink-Action.png": "8e2e9726564104a56fed016816d40e14280f79445bea2e39d37374043f6f722b",
+      "Eat-Action.png": "ef4e5c03f1566d4bd28dfe9bfc65f7c8b564aaf01bfd8832cc648635b014e0fe",
+      "Icon-Butter-Omelet.png": "700d84113454bac39fc93ad68b777f0137ce08d58b8930b4269fcdb4f32a8d81",
+      "Icon-Butter.png": "fcf4569b73f9306eeecac049adc92510097c6829268d02a4021c5d96f9c66769",
+      "Icon-Cocoa-Powder.png": "9e7b020a6b52705d740b5215769e6e3233f45822739fa64b9d00e1f18fab94de",
+      "Icon-Crackers.png": "f708d88815a296d10799a3c7a8f7355c0d9d43f5f6751a8d0491039217d396e5",
+      "Icon-Egg-Custard.png": "0cb308c906315848b7eaee9b6349ac4ff6945a46be2d757f5ce1461d93f48762",
+      "Icon-Egg-Drop-Soup.png": "668fa53817095a2734fbf483fbde5c0abfd6dd16af2ce5bb30bf52b0dc59a2d6",
+      "Icon-Egg.png": "d8f6feeec44d42c2b651533c9dd99432d50c06b96c864dc80ef4392a4663530b",
+      "Icon-Flatbread.png": "943fe0b8ed4ce64805f7be13a549e22cdc08760ea3d532755108e9c9b0554ebf",
+      "Icon-Flour.png": "3c9e405f1b053c39bb929ace8ddd861cb9fa95603ff8987e17ed81d8415ca687",
+      "Icon-Hot-Cocoa.png": "122901467c00dacf5a1a8dc1b3fe9867d1909b624bc60e39cb69eb6af885e375",
+      "Icon-Milk.png": "a70aeab6153d54e9fa47eb15b9bf83548effd5f120b75c22d26e5c7ca89bfde5",
+      "Icon-Pancakes.png": "63ab51fe057996148715493dc8cb305241073a18be146f67f2e4f07ce0543874",
+      "Icon-Pepper.png": "2084026def5a72b5161fc67f609a423ae1cb9a2a8de9ad7cb0eb01a35d0a281c",
+      "Icon-Salt.png": "f8dc48738b63b05bf875d909ce7a10ce2445bfa88993a9ff1f860d78a3886b29",
+      "Icon-Sugar.png": "975e409092ded4f0d2c2e3215bd2ebbf6c6616f166957702844ed349e0a8271f",
+      "Icon-Water.png": "388a68983e7d1f2fc42dc42224c18204d18787f12772b3c85d5913b2fd31a5bb",
+      "Range-Fuchsia-At-Sink.png": "eacd55ed048521a85eea34e0ba806ca616e0a1b7a95cc19ac121bca6ee162112",
+      "Range-Fuchsia-From-Floor.png": "2c610d29f1d07fc9df9b2b99a9125984c0aac64d469c39d1950afe383ff0ee79",
+      "Range-Littleroot-At-Sink.png": "b7610f453a68bbc1520d902eefac8031ede503743c35abefaea4a43af8732de8",
+      "Range-Littleroot-From-Floor.png": "a917e76142fc17cb3b72ee38d2604aafcb3a54d0b772bfbcae0b4a4815180e38",
+      "Range-Mauville-At-Sink.png": "e46d6ee2cb31262eab17cd669c4e16187acf175bdefce468939afe95f8395858",
+      "Range-Mauville-From-Floor.png": "680a2fae373fed1e48b3b3ac0161cb59bcbcfa3b1bc300dcdab87c30a4e3927b",
+      "Too-Full-to-Drink.png": "6102881c1049855865a77d97c592e32c61aa6f5f04ed0a60748dd540c4404094",
+      "Wait-to-Drink-Again.png": "bb3cbf22c88b0069863cb033e75ab114e75b39868a800a4c890780d8b1ef38c7"
+    },
+    "gallery": {
+      "file": "Emerald-Legends-Cooking-Icon-Gallery.png",
+      "sha256": "51f59824ac7528b7b3fe0e709b2fa52e342aab70777847572bd21e0d9d81e969"
+    }
+  },
+  "ingredientPackagingPreview": {
+    "parentCommit": "922cfbdc162a9123a31e9cd8da93a8b4c24d2758",
+    "romSha256": "a13752d74438d1344950de78981b7fe376fc85e06b923dafed3baebde33fe12e",
+    "harnessSha256": {
+      "arm.c": "d94daf69d857ad0026ef831ae87e3d0428b68ef1e86be4f76e5b888bf93c95b4",
+      "pouch-qa.py": "8d707c5d9e27e198c1b14386f32696460a8bf888bd63d6110d7294a3edfad787"
+    },
+    "nativeChecks": [
+      "Rendered and verified native Bag selection IDs for Fresh Water, Soda Pop, Flour, Sugar, and Milk",
+      "Verified each redrawn sprite uses 24 by 24 pixels and at most 15 opaque indexed colors"
+    ],
+    "screenshots": {
+      "Fresh-Water.png": "b6bafc38e5f1169754d5a216ec1d55a1a909bdcd14cb12c45fc504715dd3e2c2",
+      "Soda-Pop.png": "7c4a30dbb28ed6e840874657cae28831cb012e87f499980ae992fa3ca2a1464e",
+      "Flour.png": "98b2fe159ffab7fb65f2a23d3faf5dd5b2768be293481b466cba2ab6f80e0fd2",
+      "Sugar.png": "598404c981d07cee4c0e40e081cfa41685095a55986ff63cab587b6467ad9c23",
+      "Milk.png": "bd0ff4cdb5c372b9284b00d1edbb7e12ef1d9ef8e0179748a8d5c0328beda2b2"
+    },
+    "gallery": {
+      "file": "Emerald-Legends-Flour-Sugar-and-Milk.png",
+      "sha256": "fd7806274f556726f829342dc1de79b3525dcd8b519124b1b306be0e7e03987a"
+    }
+  },
+  "ingredientArtSetPreview": {
+    "parentCommit": "96653922d9c8650e8da32568cbf676309b53f706",
+    "romSha256": "adb54f8af541af651660e2b9e514cc74fb53f806e45fda7741990a3f53ecc551",
+    "harnessSha256": {
+      "arm.c": "d94daf69d857ad0026ef831ae87e3d0428b68ef1e86be4f76e5b888bf93c95b4",
+      "ingredients-qa.py": "d673d8a63876c0f2d9345776d36afe30ccf442fba53a7ad442973340019a6619"
+    },
+    "nativeChecks": [
+      "Selected all nine ingredients through the native Bag and verified their item IDs"
+    ],
+    "assetChecks": [
+      "Verified all six revised sprites use a connected silhouette, 24 by 24 dimensions, and indexed color with a transparent background"
+    ],
+    "screenshots": {
+      "Butter.png": "180eb02836ea300f8a7fd6057b0027e1d4ad62db8f76e7d396254fab7afdeb79",
+      "Cocoa-Powder.png": "dfe609a14948d4350cbb288d8f05b9ffb0ce0990afa33fc153dc8a14b6644fcc",
+      "Egg.png": "f70f359c19d9eacec77dac790ddf4750d7f3ff239689a8098589f7b8c51a18df",
+      "Flour.png": "54b82ca10c77b221cf9f2e59336af2754e3ca16bb855c7254180f4b950746c08",
+      "Milk.png": "249ebe507eb451dc171fc6a2b441162d7597aeb50fef4f696ae00180735a122a",
+      "Pepper.png": "c9b9781f0b10eca39c70dc19637436c9e8967285d8c1c4a6eab1f081a339f157",
+      "Salt.png": "2d59c028e819d5bda9d715828fc2d9173161a5fb2444777d7695213a03dd27b2",
+      "Sugar.png": "ee0f03632371f1672e6e2c34d98f0ab90c0060345db84d03ee2046b40d3d6c1e",
+      "Water.png": "4c75cf74ade3eb4273f9760b97a790e1419b8183fa17428a4cdf63ce3ef4dd9f"
+    },
+    "gallery": {
+      "file": "Emerald-Legends-Ingredient-Icons.png",
+      "sha256": "672c3a8a44a52ef9ec573f7ce0a10996a93b6f8e74f2a8630853cc258f9826aa"
+    }
+  },
+  "preparedIconPreview": {
+    "parentCommit": "f485676915a8d6f3be1c2c977901959a3a354efc",
+    "romSha256": "19b8259c7be80f82d13dfd1aa4912b2a744b874df5d8b113622eb7e0eab44906",
+    "harnessSha256": {
+      "arm.c": "d94daf69d857ad0026ef831ae87e3d0428b68ef1e86be4f76e5b888bf93c95b4",
+      "prepared-qa.py": "ffe4e2127c3a201939f8208841327e0bec283e1dfe75507bf021f5f0442657c5"
+    },
+    "nativeChecks": [
+      "Verified native Bag selections for Butter, Cocoa Powder, and all seven prepared items in mGBA"
+    ],
+    "assetChecks": [
+      "Native indexed icon dimensions and palette limits; matching silhouette centerlines for Cocoa Powder, Egg Drop Soup, and Egg Custard"
+    ],
+    "screenshots": {
+      "Butter-Omelet.png": "9b20bc12b06efe29bf41a95c4db70f89fcd3dd5526d814277576b9fb5abd2013",
+      "Butter.png": "1f3867b0a11228e2057820c38b800ff5dd3e850b8a265893d6b8653ec4355e4d",
+      "Cocoa-Powder.png": "39083597ad6af6ef128279675f076c967bb9bd6a7ddd7bcc72d24a8ccd7237ef",
+      "Crackers.png": "f969b6982ad3009e1babdcd3d7c25c98bf4e9b1b9eb966061bec8ca5a237322e",
+      "Egg-Custard.png": "c910a70301da4342d589c5dfee36a22f2267824e43087997d26a1b0494a68ceb",
+      "Egg-Drop-Soup.png": "9027271e6f859bab690e227f8ba63ded848ec8198042185e39ca3dc2e26f5ac6",
+      "Flatbread.png": "b614156aab4f344dbde815da84e9e0ce5c6b16455acaae4859deb018e1607e5e",
+      "Hot-Cocoa.png": "5fc16e671aed991aefd87676658a5139e88a0e8939c2345020f20aaa01366783",
+      "Pancakes.png": "22ac8a0664133a62f526959da737e535655395ad29e9a8c70e6520aebe65e92f"
+    },
+    "previousCocoaPowderCaptureSha256": "dfe609a14948d4350cbb288d8f05b9ffb0ce0990afa33fc153dc8a14b6644fcc",
+    "gallery": {
+      "file": "Emerald-Legends-Meal-Icons.png",
+      "sha256": "a6a1a7cb5486ce23ed3ac3bc308c4b1cbfcba27a5e6969cd2e30a2ac4c6b1295"
+    }
+  },
+  "plateAndCocoaPreview": {
+    "parentCommit": "f30168a89ba5f0eaed60f050b55bf4d84be9ba78",
+    "romSha256": "8a7661cd906418ab0be42fc31ebb3936d75e4059f640417e072a7a01fd50c6ff",
+    "harnessSha256": {
+      "arm.c": "d94daf69d857ad0026ef831ae87e3d0428b68ef1e86be4f76e5b888bf93c95b4",
+      "plate-tin-qa.py": "6444b692abe237bc92dd9d1df9d072ebe5ff34b998c35f39731654f437e87e26"
+    },
+    "nativeChecks": [
+      "Verified actual Bag renders and selection IDs for Butter Omelet, Cocoa Powder, and Egg Drop Soup"
+    ],
+    "assetChecks": [
+      "Expanded the plate footprint and retained the original omelet drawing one row lower; checked symmetric cocoa tin silhouette"
+    ],
+    "screenshots": {
+      "Butter-Omelet.png": "387d8441aa5de3cd2de581c5b19882890c789089d1855ad99c64c1d241fb19f9",
+      "Cocoa-Powder.png": "814aeec7621ca412c1f695aee9711b698e251e05c9d0eba888aa5b608da7bd59",
+      "Egg-Drop-Soup.png": "9027271e6f859bab690e227f8ba63ded848ec8198042185e39ca3dc2e26f5ac6"
+    },
+    "gallery": {
+      "file": "Emerald-Legends-Omelet-and-Cocoa-Revision.png",
+      "sha256": "0d759cffa9cd6ba9aade8af7c3f1b8a68f926b9791d1eeb1216da41e3e98a850"
+    }
+  }
+}

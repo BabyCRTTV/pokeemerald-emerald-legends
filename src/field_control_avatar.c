@@ -485,8 +485,8 @@ static const u8 *GetInteractedBackgroundEventScript(struct MapPosition *position
     return bgEvent->bgUnion.script;
 }
 
-// A kitchen may have a visible appliance on the wall and a separate cabinet
-// base in front. The paired base IDs let the player interact from one step back.
+// A solid cabinet base can form the front edge of an appliance. Walkable
+// flooring in front of it should never extend the normal one-tile interaction.
 static const u8 *GetCookingApplianceScript(struct MapPosition *position, u8 behavior, enum Direction direction)
 {
     const struct MapLayout *layout = gMapHeader.mapLayout;
@@ -508,7 +508,7 @@ static const u8 *GetCookingApplianceScript(struct MapPosition *position, u8 beha
         case 0x2C0: case 0x2C3: case 0x2C4:
         case 0x35E: case 0x35F: case 0x388:
         case 0x3A7: case 0x3C0: case 0x3C1:
-            if (above != tile - 8)
+            if (MapGridGetCollisionAt(position->x, position->y) == 0 || above != tile - 8)
                 return NULL;
             tile = above;
             break;
@@ -526,6 +526,8 @@ static const u8 *GetCookingApplianceScript(struct MapPosition *position, u8 beha
     }
     else if (layout->secondaryTileset == &gTileset_BrendansMaysHouse)
     {
+        if (tile >= 0x238 && tile <= 0x23A && MapGridGetCollisionAt(position->x, position->y) == 0)
+            return NULL;
         switch (tile)
         {
         case 0x230: case 0x238: return EventScript_KitchenFridge;
@@ -544,7 +546,8 @@ static const u8 *GetCookingApplianceScript(struct MapPosition *position, u8 beha
         {
         case 0x039: case 0x03A: case 0x0E8: case 0x0E9: case 0x148: case 0x149:
             // Fuchsia combines the Lavender appliance with the Sevii base.
-            if (above != tile - 8 && !(tile >= 0x148 && above == tile - 0x68))
+            if (MapGridGetCollisionAt(position->x, position->y) == 0
+             || (above != tile - 8 && !(tile >= 0x148 && above == tile - 0x68)))
                 return NULL;
             tile = above;
             break;

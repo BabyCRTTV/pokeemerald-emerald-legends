@@ -1,5 +1,75 @@
 # Development handoff
 
+## v0.0.84 Cooking and Meal Buffs approved for publication (15 November 2026)
+
+**Model: GPT-6.1 Sol | Reasoning: publish the approved cooking system and exact final sprites while preserving player saves and encounter data.**
+
+The owner approved the final wider Butter Omelet plate and revised Cocoa Powder tin, completing approval of the cooking preview at `7602bc1e35902ea9b21eb2baef0f9c0f6578d85e`. The release adds nine ingredients and seven recipes, distinct EAT and DRINK actions, and an Active Buffs screen for up to three ten-minute bonuses. Nearby kitchen appliances use the native one-tile interaction. Updated the game and site version labels, patcher, and changelogs. The encounter data and LegendsDex source pin are unchanged.
+
+[Cooking preview evidence](qa/cooking-meals-preview.json). Publication is pending candidate and production checks, independent patch reconstruction, and live verification.
+
+## Omelet plate and cocoa tin revision (15 November 2026)
+
+**Model: GPT-6.1 Sol | Reasoning: size the plate to the portion and keep the tin's rim and base aligned.**
+
+The owner approved the cooking work and art in the previous preview except for the Butter Omelet plate and Cocoa Powder tin. Widened the plate and lowered the existing omelet pixels by one row to expose the rim. Redrew Cocoa Powder with a centered rolled lid, curved label, and shaded base. Recorded the approved Egg Drop Soup bowl as the base for similar liquid dishes.
+
+Confirmed the two revisions in the native Bag and rechecked the approved soup bowl on the same build. [Preview evidence](qa/cooking-meals-preview.json). Review branch only.
+
+## Prepared meal icons and ingredient alignment preview (15 November 2026)
+
+**Model: GPT-6.1 Sol | Reasoning: give each item room to read at 24 pixels and align features that share a physical axis.**
+
+Redrew all seven prepared item icons, removed the serving ware from the Butter pat, and centered the Cocoa Powder lid and base on the tin. Recorded the ingredient and centerline preferences in AGENTS.md.
+
+Checked the native sprite format and centered Cocoa Powder, soup bowl, and Egg Custard silhouettes. Verified both corrected ingredients and all seven prepared items in the actual Bag in mGBA. [Preview evidence](qa/cooking-meals-preview.json). Review branch only.
+
+## Remaining cooking ingredient icons preview (15 November 2026)
+
+**Model: GPT-6.1 Sol | Reasoning: use material-specific highlights and shadows that stay legible on the native item grid.**
+
+The owner approved the Flour, Sugar, and Milk direction as the ongoing standard for item and food icons. Redrew Butter, Egg, Water, Salt, Pepper, and Cocoa Powder with the same native-style lighting and depth. Recorded the Fresh Water and Soda Pop reference in AGENTS.md.
+
+Verified all nine ingredients with native Bag selection in mGBA and captured them as one gallery. [Preview evidence](qa/cooking-meals-preview.json). Review branch only.
+
+## Flour, Sugar, and Milk icon preview (15 November 2026)
+
+**Model: GPT-6.1 Sol | Reasoning: build distinct shaded packaging planes that read clearly at the native item size.**
+
+The owner set Emerald's Fresh Water and Soda Pop sprites as the quality reference for cooking icons. Redrew Flour and Sugar as folded packets and Milk as a folded-top carton. Added shaded gussets, top and side planes, and small material highlights. Verified the three designs and both reference icons in the same Bag view using the compiled ROM. [Preview evidence](qa/cooking-meals-preview.json). Review branch only.
+
+## Cooking icon, drink, and appliance interaction preview (15 November 2026)
+
+**Model: GPT-6.1 Sol | Reasoning: preserve native silhouettes and limit appliance interaction to the tile directly ahead.**
+
+Hot Cocoa now offers DRINK with drink-specific success and fullness text. Refined highlights and shaded faces on all nine ingredient and seven prepared-item sprites using the native-format 24px icon silhouettes. Shortened the soup's Bag description to fit the text area.
+
+Walkable cabinet-base tiles no longer let the player reach across an extra tile. Solid fronts retain the standard adjacent interaction. In mGBA, confirmed the range in Mauville, Fuchsia, and Littleroot, cooked an omelet from the adjacent tile, and checked drink/food actions, fullness, and all sixteen icon renders. [Preview evidence](qa/cooking-meals-preview.json). Review branch only.
+
+## Hot Cocoa, Egg Custard, and Active Buffs preview (15 November 2026)
+
+**Model: GPT-6.1 Sol | Reasoning: add three-ingredient recipes without moving item IDs or save fields and redraw the existing Bag background under the icon frame.**
+
+Added Milk, Sugar, and Cocoa Powder to Poké Mart INGREDIENTS. Hot Cocoa gives +2 walking friendship per gain, and Egg Custard gives +15% battle experience. Both last ten minutes. The kitchen shows all seven recipes in a two-column menu. The item icon frame disappears on the Active Buffs row and panel and returns on item selection.
+
+Verified buying, cooking, consuming, and opening both new buffs through normal mGBA controls. Checked the icon frame with both Bag designs and reran the earlier cooking, timer, and battery Continue flow. Host checks covered all seven recipes and save offsets. [Preview evidence](qa/cooking-meals-preview.json). Review branch only.
+
+## Cooking menu and Food pocket preview polish (15 November 2026)
+
+**Model: GPT-6.1 Sol | Reasoning: keep the leading Food action distinct from the actual inventory slots.**
+
+Moved Active Buffs to the first Food row and gave it a gold highlight in both Bag designs. Menu actions and sorting use the underlying item IDs after the extra row. Renamed the Poké Mart option to INGREDIENTS and updated kitchen guidance. Butter now describes its use in cooking.
+
+The mGBA preview verified the revised Mart and Food menus, empty Food access, sorting, eating, expiration and battery Continue. The host Bag and item-history checks passed. [Preview evidence](qa/cooking-meals-preview.json). Review branch only.
+
+## Five meals and timed buffs preview (15 November 2026)
+
+**Model: GPT-6.1 Sol | Reasoning: make cooking atomic and append meal state without shifting published inventory or flag offsets.**
+
+Normal Poké Mart menus offer a separate Cooking Supplies list with Butter, Egg, Water, Salt, Pepper, and Flour. Kitchens list five recipes and show ingredients and effects before confirming. Ingredients come from Items and meals go into Food. Butter Omelet increases catch odds, Pancakes boosts battle experience, Flatbread boosts trainer winnings, Egg Drop Soup reduces ordinary wild encounters, and Crackers increases positive walking friendship gains. Each meal lasts ten minutes of game time. Three independently timed slots stack, including repeat meals. Active Buffs is a field Bag row with a live countdown.
+
+The previous item-history bitmap stays at 110 bytes. Meal timers and an extended item-history array append after the Poffin data. Native tests covered purchase, cooking, buff limit, expiration, re-eating, and battery Continue. Host checks covered all recipes, full Bag handling, reserved save offsets, and prior Bag readers. [Preview evidence](qa/cooking-meals-preview.json). Await owner review.
+
 ## Cooking and Food pocket v0.0.83 published and verified (15 November 2026)
 
 **Model: GPT-6.1 Sol | Reasoning: ship the approved Bag artwork and preserve the tested battery migration.**
