@@ -1,0 +1,61 @@
+{
+  "status": "review preview",
+  "baseCommit": "68d340193b97e79fc795ce1588537cd3f2e5196e",
+  "romSha256": "2623a0e3ffd4d7e27bc0fec87bf56d73ba7fb496004ac98a42ca348f67fdd351",
+  "selectedSprites": {
+    "steel_canteen.png": {
+      "design": "Original",
+      "sha256": "b1e0e71bac68f63fdf305ce91add6d7992eb21c8ca61ff2110e7801a676e30ac"
+    },
+    "mess_kit.png": {
+      "design": "Classic Camp B",
+      "sha256": "f8ec2a073bd4b1e0844bee0071174831f2801253b54b2271650dd3cfe89d9bf0"
+    },
+    "percolator.png": {
+      "design": "Original",
+      "sha256": "0f964ad22209dd583815675fe2a9aea7303748cc05406021954a4c4d687f0391"
+    }
+  },
+  "nativeQA": {
+    "emulator": "mGBA",
+    "checksPassed": [
+      "Mom's first-departure scene grants all three key items for Brendan and May.",
+      "Mom supplies the gear to returning players without duplicating existing key items.",
+      "All three tools open their recipe menus through ordinary Bag use.",
+      "The Mess Kit scrolls to Cancel without covering the cooking prompt.",
+      "Recipes consume the exact ingredients and the Percolator refuses insufficient supplies.",
+      "Prepared drinks use DRINK and apply the intended buffs.",
+      "Battery Continue retains the gear and prepared food.",
+      "Oldale Pok\u00e9 Mart sells Coffee Grounds and Tea Leaves under INGREDIENTS.",
+      "An adjacent kitchen prepares Hot Cocoa without portable gear."
+    ],
+    "harnessSha256": {
+      "implemented-qa.py": "036cb7e5dcc2c48d74e413d5a8b02bbb302da2dad1952e50d46ccbfd92ea220b",
+      "implemented-fixture.c": "b5998f7d098d469a0fffeda0745fef31d84749414ee38f1d2a094e3ec9b86638",
+      "brew-shop-qa.py": "7827125a154e59f008997ca8490385b18899a03b551a1d75f0d7f6b5bd4eede3",
+      "kitchen-qa.py": "a2197a51f3ed0b325f2bdb25a1259d2835c5f8ce1ac9eb47a47144f2d2956795"
+    },
+    "captureSha256": {
+      "Drink-Milk-Coffee.png": "8870e272e2f87eb1f46abb03b457245131278320ad66949abdc5988b71aa6c82",
+      "Drink-Sweet-Tea.png": "2bad63a88b0ff63b6f67578a868edce152579ede8990b4d1d52c13fa210855a4",
+      "Mess-Kit-Cooked.png": "920d44abbc149b73ffe38c5b1c18730412ea9c006ff54e800d1a00f9221e80a7",
+      "Mess-Kit-Recipes.png": "882d4a5a63c5bc1c7a1878cfce8530b3679ea58fbbea2fa3af69704642d13120",
+      "Mess-Kit-Scrolled.png": "f126a1e59088ceb2f1074f1e0c7bae0ee1609ff8a5cc3b661f77f0272c3880cd",
+      "Mom-Gifts-Brendan.png": "e2ab443b459cdf3ded78425edf5275dcecc14b790a32270f9705a36a151d8ae9",
+      "Mom-Gifts-Existing-Player.png": "f3e7b469dd27ab8fb0bd93d67f87fad864894be47eae9e1af23f396278f25756",
+      "Mom-Gifts-May.png": "4d7b9fc66ccbab56a462be0dfd8fe8db79f4ca92559f984118e0c43660df2c72",
+      "Percolator-Brews.png": "5d74f03dfe15116f1e5865c139bb37a2d77613ded886eed37c14bbcc5beb7570",
+      "Percolator-Milk-Coffee.png": "c1d87d949ae09b24169f7c7cefb9341b0be34f42997cf2be28839f844fa6e650",
+      "Percolator-Missing-Supplies.png": "5fa23107d5babcc267dfbfc384992e27fd82e429c880ef73d23e6b661c69cbac",
+      "Percolator-Sweet-Tea.png": "c4004fe5b5048a38420ce1d72ae8d44a9165d7c57279793ed2de82a81b2a2552",
+      "Steel-Canteen-Drinks.png": "c1032aac21d40934f4d6e1619612290348747d89c2332f50e91d791158f59164",
+      "Steel-Canteen-Prepared.png": "efd2c3c5a2a48bad71be4e60ab66e5685a7d525b43549cfd1c0f18af041fc46f"
+    }
+  },
+  "hostChecksPassed": [
+    "test/legends-bag-capacity.test.py",
+    "test/legends-item-descriptions.test.py",
+    "test/legends-nightmare.test.py"
+  ],
+  "limits": "The battery-save test used controlled game state. Full release and patch checks were outside the preview."
+}

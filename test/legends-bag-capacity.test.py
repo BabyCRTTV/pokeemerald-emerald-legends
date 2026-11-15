@@ -206,7 +206,7 @@ int main(void)
   assert(BagPocket_CountTotalItemQuantity(&gBagPockets[POCKET_FOOD],recipe->meal)==1);
   assert(LegendsEatMeal(recipe->meal)==LEGENDS_EAT_SUCCESS);
   assert(LegendsMealBonus(recipe->effect)==recipe->amount);
-  assert(LegendsMealIsDrink(recipe->meal)==(recipe->meal==ITEM_HOT_COCOA));
+  assert(LegendsMealIsDrink(recipe->meal)==(recipe->meal==ITEM_HOT_COCOA || recipe->meal==ITEM_MILK_COFFEE || recipe->meal==ITEM_SWEET_TEA));
   invariant();
  }
  fresh();
@@ -231,7 +231,7 @@ int main(void)
  for(unsigned f=0;f<LEGENDS_MEAL_DURATION-2;f++)LegendsMealTick();
  assert(LegendsMealBonus(MEAL_EFFECT_CATCH)==10);
  assert(LegendsEatMeal(ITEM_BUTTER_OMELET)==LEGENDS_EAT_SUCCESS);
- puts("PASS: seven recipes and buffs, atomic full/missing-supply refusal, three buffs, independent expiration and re-eating");
+ puts("PASS: recipes and buffs, atomic full/missing-supply refusal, three buffs, independent expiration and re-eating");
  puts("PASS: each pocket1152 stacks; shared reuse/full refusal; >255 indices; cross-pocket preservation; sorting/swapping; old14-box, LPC2 and LPC3 packed migration; new save/reload; malformed-size and allocation refusal");
 }
 '''

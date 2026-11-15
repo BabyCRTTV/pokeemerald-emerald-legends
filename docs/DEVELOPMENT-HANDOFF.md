@@ -1,5 +1,13 @@
 # Development handoff
 
+## Portable cooking gear preview (15 November 2026)
+
+**Model: GPT-6.1 Sol | Reasoning: reuse the cooking transaction and Mom's farewell without moving save fields.**
+
+The owner selected the original Steel Canteen, Classic Camp design B Mess Kit, and original Percolator. Mom gives all three during the first-departure Running Shoes scene. Players who already received the shoes can collect the gear from Mom at home.
+
+The Steel Canteen prepares Hot Cocoa, the Mess Kit prepares the existing meals, and the Percolator brews Milk Coffee and Sweet Tea. Poké Marts stock Coffee Grounds and Tea Leaves under INGREDIENTS. Verified the gift, all three field menus, DRINK behavior, Bag persistence, and ordinary kitchen cooking in mGBA. [Preview evidence](qa/portable-cooking-preview.json). Review branch only.
+
 ## v0.0.84 Cooking and Meal Buffs published and verified (15 November 2026)
 
 **Model: GPT-6.1 Sol | Reasoning: publish the approved cooking system and exact final sprites while preserving player saves and encounter data.**

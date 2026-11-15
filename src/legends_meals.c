@@ -39,6 +39,10 @@ static const struct MealRecipe sRecipes[] =
         MEAL_EFFECT_FRIENDSHIP, 2, COMPOUND_STRING("Walk friendship +2"), TRUE},
     {ITEM_EGG_CUSTARD, {ITEM_EGG, ITEM_COOKING_MILK, ITEM_SUGAR},
         MEAL_EFFECT_EXPERIENCE, 15, COMPOUND_STRING("Battle Exp. +15%"), FALSE},
+    {ITEM_MILK_COFFEE, {ITEM_COFFEE_GROUNDS, ITEM_COOKING_WATER, ITEM_COOKING_MILK},
+        MEAL_EFFECT_EXPERIENCE, 10, COMPOUND_STRING("Battle Exp. +10%"), TRUE},
+    {ITEM_SWEET_TEA, {ITEM_TEA_LEAVES, ITEM_COOKING_WATER, ITEM_SUGAR},
+        MEAL_EFFECT_CATCH, 5, COMPOUND_STRING("Catch odds +5%"), TRUE},
 };
 
 static const struct MealRecipe *GetRecipeByItem(enum Item item)
@@ -204,7 +208,11 @@ void Script_LegendsCookMeal(void)
 {
     gSpecialVar_Result = LegendsCookMeal(gSpecialVar_0x8004);
     if (gSpecialVar_Result == LEGENDS_COOK_SUCCESS)
-        CopyItemName(sRecipes[gSpecialVar_0x8004].meal, gStringVar1);
+    {
+        const struct MealRecipe *recipe = &sRecipes[gSpecialVar_0x8004];
+        gSpecialVar_0x8006 = recipe->isDrink;
+        CopyItemName(recipe->meal, gStringVar1);
+    }
 }
 
 static void Task_AcknowledgeMeal(u8 taskId)

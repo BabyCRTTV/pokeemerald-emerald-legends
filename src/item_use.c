@@ -747,6 +747,31 @@ static void Task_AccessPokemonBoxLink(u8 taskId)
     DestroyTask(taskId);
 }
 
+static void Task_UsePortableCooking(u8 taskId)
+{
+    switch (gSpecialVar_ItemId)
+    {
+    case ITEM_STEEL_CANTEEN:
+        ScriptContext_SetupScript(EventScript_UseSteelCanteen);
+        break;
+    case ITEM_MESS_KIT:
+        ScriptContext_SetupScript(EventScript_UseMessKit);
+        break;
+    case ITEM_PERCOLATOR:
+        ScriptContext_SetupScript(EventScript_UsePercolator);
+        break;
+    default:
+        break;
+    }
+    DestroyTask(taskId);
+}
+
+void ItemUseOutOfBattle_PortableCooking(u8 taskId)
+{
+    sItemUseOnFieldCB = Task_UsePortableCooking;
+    SetUpItemUseOnFieldCallback(taskId);
+}
+
 void ItemUseOutOfBattle_CoinCase(u8 taskId)
 {
     ConvertIntToDecimalStringN(gStringVar1, GetCoins(), STR_CONV_MODE_LEFT_ALIGN, 4);

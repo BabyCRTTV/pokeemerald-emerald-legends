@@ -1216,9 +1216,22 @@ static const struct MenuAction sLegendsMeals[] = {
     {gText_Cancel2},
 };
 
+static const struct MenuAction sLegendsCanteen[] = {
+    {COMPOUND_STRING("Hot Cocoa")},
+    {gText_Cancel2},
+};
+
+static const struct MenuAction sLegendsPercolator[] = {
+    {COMPOUND_STRING("Milk Coffee")},
+    {COMPOUND_STRING("Sweet Tea")},
+    {gText_Cancel2},
+};
+
 static const struct MultichoiceListStruct sMultichoiceLists[] =
 {
     [MULTI_LEGENDS_MEALS]             = MULTICHOICE(sLegendsMeals),
+    [MULTI_LEGENDS_CANTEEN]           = MULTICHOICE(sLegendsCanteen),
+    [MULTI_LEGENDS_PERCOLATOR]        = MULTICHOICE(sLegendsPercolator),
     [MULTI_BRINEY_ON_DEWFORD]          = MULTICHOICE(MultichoiceList_BrineyOnDewford),
     [MULTI_PC]                         = MULTICHOICE(MultichoiceList_Exit),
     [MULTI_ENTERINFO]                  = MULTICHOICE(MultichoiceList_EnterInfo),
