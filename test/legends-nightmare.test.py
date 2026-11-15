@@ -41,6 +41,9 @@ current_global=re.sub(record,'',current_global,flags=re.S)
 old_global=re.sub(record,'',old_global,flags=re.S)
 current_global=re.sub(r'#define LEGENDS_POFFIN_CAPACITY 40\n\nstruct LegendsPoffinSave\n\{.*?\n\};','',current_global,flags=re.S)
 current_global=current_global.replace('    struct LegendsPoffinSave poffins;\n','')
+current_global=re.sub(r'// Size of the published first-time item bitmap\. New IDs past it use the tail\.\n#define ITEM_FLAGS_COUNT 110\n#define LEGENDS_ITEM_FLAGS_EXTRA_COUNT 8\n#define LEGENDS_MEAL_SLOTS 3', '#define ITEM_FLAGS_COUNT ((ITEMS_COUNT / 8) + ((ITEMS_COUNT % 8) ? 1 : 0))',current_global)
+current_global=re.sub(r'struct LegendsMealBuff\n\{.*?\n\};\n\nstruct LegendsMealSave\n\{.*?\n\};\n\n','',current_global,flags=re.S)
+current_global=current_global.replace('    struct LegendsMealSave meals;\n','').replace('    u8 extraItemFlags[LEGENDS_ITEM_FLAGS_EXTRA_COUNT];\n','')
 assert 'u16 pocketSizes[POCKETS_COUNT];' in current_global
 assert 'struct ItemSlot slots[LEGENDS_BAG_SLOTS];' in current_global
 old_bag=re.search(r'struct Bag\n\{.*?\n\};',old_global,re.S)[0]

@@ -1,4 +1,5 @@
 #include "global.h"
+#include "legends_meals.h"
 #include "battle_setup.h"
 #include "battle_pike.h"
 #include "battle_pyramid.h"
@@ -685,6 +686,8 @@ static bool8 WildEncounterCheck(u32 encounterRate, bool8 ignoreAbility)
         else if (ability == ABILITY_NO_GUARD)
             encounterRate *= 2;
     }
+    if (!InBattlePike() && CurrentBattlePyramidLocation() == PYRAMID_LOCATION_NONE)
+        encounterRate -= encounterRate * LegendsMealBonus(MEAL_EFFECT_ENCOUNTER) / 100;
     if (encounterRate > MAX_ENCOUNTER_RATE)
         encounterRate = MAX_ENCOUNTER_RATE;
     return EncounterOddsCheck(encounterRate);

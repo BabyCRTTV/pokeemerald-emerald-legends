@@ -2115,3 +2115,26 @@ const u16 gItemIconPalette_TwiceSpicedRadish[] = INCGFX_U16("graphics/items/icon
 
 const u32 gItemIcon_TreatCase[] = INCGFX_U32("graphics/poffin/case_icon.png", ".4bpp.smol");
 const u16 gItemIconPalette_TreatCase[] = INCGFX_U16("graphics/poffin/case_icon.png", ".gbapal");
+
+const u32 gItemIcon_CookingButter[] = INCGFX_U32("graphics/items/cooking/butter.png", ".4bpp.smol");
+const u16 gItemIconPalette_CookingButter[] = INCGFX_U16("graphics/items/cooking/butter.png", ".gbapal");
+const u32 gItemIcon_CookingEgg[] = INCGFX_U32("graphics/items/cooking/egg.png", ".4bpp.smol");
+const u16 gItemIconPalette_CookingEgg[] = INCGFX_U16("graphics/items/cooking/egg.png", ".gbapal");
+const u32 gItemIcon_CookingWater[] = INCGFX_U32("graphics/items/cooking/water.png", ".4bpp.smol");
+const u16 gItemIconPalette_CookingWater[] = INCGFX_U16("graphics/items/cooking/water.png", ".gbapal");
+const u32 gItemIcon_CookingSalt[] = INCGFX_U32("graphics/items/cooking/salt.png", ".4bpp.smol");
+const u16 gItemIconPalette_CookingSalt[] = INCGFX_U16("graphics/items/cooking/salt.png", ".gbapal");
+const u32 gItemIcon_CookingPepper[] = INCGFX_U32("graphics/items/cooking/pepper.png", ".4bpp.smol");
+const u16 gItemIconPalette_CookingPepper[] = INCGFX_U16("graphics/items/cooking/pepper.png", ".gbapal");
+const u32 gItemIcon_CookingFlour[] = INCGFX_U32("graphics/items/cooking/flour.png", ".4bpp.smol");
+const u16 gItemIconPalette_CookingFlour[] = INCGFX_U16("graphics/items/cooking/flour.png", ".gbapal");
+const u32 gItemIcon_CookingOmelet[] = INCGFX_U32("graphics/items/cooking/omelet.png", ".4bpp.smol");
+const u16 gItemIconPalette_CookingOmelet[] = INCGFX_U16("graphics/items/cooking/omelet.png", ".gbapal");
+const u32 gItemIcon_CookingPancakes[] = INCGFX_U32("graphics/items/cooking/pancakes.png", ".4bpp.smol");
+const u16 gItemIconPalette_CookingPancakes[] = INCGFX_U16("graphics/items/cooking/pancakes.png", ".gbapal");
+const u32 gItemIcon_CookingFlatbread[] = INCGFX_U32("graphics/items/cooking/flatbread.png", ".4bpp.smol");
+const u16 gItemIconPalette_CookingFlatbread[] = INCGFX_U16("graphics/items/cooking/flatbread.png", ".gbapal");
+const u32 gItemIcon_CookingSoup[] = INCGFX_U32("graphics/items/cooking/soup.png", ".4bpp.smol");
+const u16 gItemIconPalette_CookingSoup[] = INCGFX_U16("graphics/items/cooking/soup.png", ".gbapal");
+const u32 gItemIcon_CookingCrackers[] = INCGFX_U32("graphics/items/cooking/crackers.png", ".4bpp.smol");
+const u16 gItemIconPalette_CookingCrackers[] = INCGFX_U16("graphics/items/cooking/crackers.png", ".gbapal");

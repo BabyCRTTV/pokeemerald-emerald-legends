@@ -1,5 +1,13 @@
 # Development handoff
 
+## Five meals and timed buffs preview (15 November 2026)
+
+**Model: GPT-6.1 Sol | Reasoning: make cooking atomic and append meal state without shifting published inventory or flag offsets.**
+
+Normal Poké Mart menus offer a separate Cooking Supplies list with Butter, Egg, Water, Salt, Pepper, and Flour. Kitchens list five recipes and show ingredients and effects before confirming. Ingredients come from Items and meals go into Food. Butter Omelet increases catch odds, Pancakes boosts battle experience, Flatbread boosts trainer winnings, Egg Drop Soup reduces ordinary wild encounters, and Crackers increases positive walking friendship gains. Each meal lasts ten minutes of game time. Three independently timed slots stack, including repeat meals. Active Buffs is a field Bag row with a live countdown.
+
+The previous item-history bitmap stays at 110 bytes. Meal timers and an extended item-history array append after the Poffin data. Native tests covered purchase, cooking, buff limit, expiration, re-eating, and battery Continue. Host checks covered all recipes, full Bag handling, reserved save offsets, and prior Bag readers. [Preview evidence](qa/cooking-meals-preview.json). Await owner review.
+
 ## Cooking and Food pocket v0.0.83 published and verified (15 November 2026)
 
 **Model: GPT-6.1 Sol | Reasoning: ship the approved Bag artwork and preserve the tested battery migration.**

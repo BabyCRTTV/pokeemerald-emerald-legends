@@ -3731,12 +3731,15 @@ bool8 GetSetItemObtained(enum Item item, enum ItemObtainFlags caseId)
     u16 index = item / 8;
     u8 bit = item % 8;
     u8 mask = 1 << bit;
+    u8 *flags = index < ITEM_FLAGS_COUNT
+        ? &gSaveBlock3Ptr->itemFlags[index]
+        : &gSaveBlock3Ptr->extraItemFlags[index - ITEM_FLAGS_COUNT];
     switch (caseId)
     {
     case FLAG_GET_ITEM_OBTAINED:
-        return gSaveBlock3Ptr->itemFlags[index] & mask;
+        return *flags & mask;
     case FLAG_SET_ITEM_OBTAINED:
-        gSaveBlock3Ptr->itemFlags[index] |= mask;
+        *flags |= mask;
         return TRUE;
     }
 #endif

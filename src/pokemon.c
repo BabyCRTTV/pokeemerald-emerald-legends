@@ -1,4 +1,5 @@
 #include "global.h"
+#include "legends_meals.h"
 #include "malloc.h"
 #include "apprentice.h"
 #include "battle.h"
@@ -4901,6 +4902,8 @@ void AdjustFriendship(struct Pokemon *mon, u8 event)
 
         mod = sFriendshipEventModifiers[event][friendshipLevel];
         friendship += CalculateFriendshipBonuses(mon,mod,holdEffect);
+        if (event == FRIENDSHIP_EVENT_WALKING && mod > 0)
+            friendship += LegendsMealBonus(MEAL_EFFECT_FRIENDSHIP);
 
         if (friendship < 0)
             friendship = 0;

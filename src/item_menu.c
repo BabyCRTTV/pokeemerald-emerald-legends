@@ -1,4 +1,5 @@
 #include "global.h"
+#include "legends_meals.h"
 #include "legends_storage.h"
 #include "item_menu.h"
 #include "battle.h"
@@ -89,6 +90,7 @@ enum {
     ACTION_BY_TYPE,
     ACTION_BY_AMOUNT,
     ACTION_BY_INDEX,
+    ACTION_EAT,
     ACTION_DUMMY,
 };
 
@@ -297,6 +299,7 @@ static const struct MenuAction sItemMenuActions[] = {
     [ACTION_BY_TYPE]           = {COMPOUND_STRING("Type"),      {ItemMenu_SortByType}},
     [ACTION_BY_AMOUNT]         = {COMPOUND_STRING("Amount"),    {ItemMenu_SortByAmount}},
     [ACTION_BY_INDEX]          = {COMPOUND_STRING("Index"),     {ItemMenu_SortByIndex}},
+    [ACTION_EAT]               = {COMPOUND_STRING("EAT"), {ItemMenu_UseOutOfBattle}},
     [ACTION_DUMMY]             = {gText_EmptyString2, {NULL}}
 };
 
@@ -305,6 +308,11 @@ static const struct MenuAction sItemMenuActions[] = {
 static const u8 sContextMenuItems_ItemsPocket[] = {
     ACTION_USE,         ACTION_GIVE,
     ACTION_TOSS,        ACTION_CANCEL
+};
+
+static const u8 sContextMenuItems_FoodPocket[] = {
+    ACTION_EAT, ACTION_DUMMY,
+    ACTION_TOSS, ACTION_CANCEL,
 };
 
 static const u8 sContextMenuItems_KeyItemsPocket[] = {
@@ -892,6 +900,14 @@ static u8 CreateBagInputHandlerTask(u8 location)
     return taskId;
 }
 
+#define LIST_ACTIVE_BUFFS (-4)
+
+static bool32 FoodPocketHasBuffRow(enum Pocket pocket)
+{
+    return pocket == POCKET_FOOD && gBagPosition.location == ITEMMENULOCATION_FIELD
+        && !gBagMenu->hideCloseBagText;
+}
+
 static bool32 AllocateBagItemListBuffers(void)
 {
     u32 rows = 1, pocket;
@@ -911,8 +927,12 @@ static void LoadBagItemListBuffers(u8 pocketId)
     for (i = 0; i < gBagMenu->numItemStacks[pocketId]; i++)
     {
         sListBuffer1[i].name = sListBuffer2[0];
-        sListBuffer1[i].id = !gBagMenu->hideCloseBagText
-            && i == gBagMenu->numItemStacks[pocketId] - 1 ? LIST_CANCEL : i;
+        if (!gBagMenu->hideCloseBagText && i == gBagMenu->numItemStacks[pocketId] - 1)
+            sListBuffer1[i].id = LIST_CANCEL;
+        else if (FoodPocketHasBuffRow(pocketId) && i == gBagMenu->numItemStacks[pocketId] - 2)
+            sListBuffer1[i].id = LIST_ACTIVE_BUFFS;
+        else
+            sListBuffer1[i].id = i;
     }
     gMultiuseListMenuTemplate = sItemListMenu;
     gMultiuseListMenuTemplate.totalItems = gBagMenu->numItemStacks[pocketId];
@@ -964,10 +984,10 @@ static void BagMenu_MoveCursorCallback(s32 itemIndex, bool8 onInit, struct ListM
     if (gBagMenu->toSwapPos == NOT_SWAPPING)
     {
         RemoveBagItemIconSprite(gBagMenu->itemIconSlot ^ 1);
-        if (itemIndex != LIST_CANCEL)
-           AddBagItemIconSprite(GetBagItemId(gBagPosition.pocket, itemIndex), gBagMenu->itemIconSlot);
-        else
-           AddBagItemIconSprite(ITEM_LIST_END, gBagMenu->itemIconSlot);
+        if (itemIndex >= 0)
+            AddBagItemIconSprite(GetBagItemId(gBagPosition.pocket, itemIndex), gBagMenu->itemIconSlot);
+        else if (itemIndex == LIST_CANCEL)
+            AddBagItemIconSprite(ITEM_LIST_END, gBagMenu->itemIconSlot);
         gBagMenu->itemIconSlot ^= 1;
         if (!gBagMenu->inhibitItemDescriptionPrint)
             PrintItemDescription(itemIndex);
@@ -976,12 +996,14 @@ static void BagMenu_MoveCursorCallback(s32 itemIndex, bool8 onInit, struct ListM
 
 static void BagMenu_ItemPrintCallback(u8 windowId, u32 itemIndex, u8 y)
 {
-    if (itemIndex == LIST_CANCEL)
+    if (itemIndex == (u32)LIST_CANCEL)
         StringCopy(sListBuffer2[0], gText_CloseBag);
+    else if (itemIndex == (u32)LIST_ACTIVE_BUFFS)
+        StringCopy(sListBuffer2[0], COMPOUND_STRING("Active Buffs"));
     else
         GetItemNameFromPocket(sListBuffer2[0], GetBagItemId(gBagPosition.pocket, itemIndex));
 
-    if (itemIndex != LIST_CANCEL)
+    if (itemIndex != (u32)LIST_CANCEL && itemIndex != (u32)LIST_ACTIVE_BUFFS)
     {
         s32 offset;
 
@@ -1020,7 +1042,9 @@ static void BagMenu_ItemPrintCallback(u8 windowId, u32 itemIndex, u8 y)
 static void PrintItemDescription(int itemIndex)
 {
     const u8 *str;
-    if (itemIndex != LIST_CANCEL)
+    if (itemIndex == LIST_ACTIVE_BUFFS)
+        str = COMPOUND_STRING("See meal buffs\nand time left.");
+    else if (itemIndex != LIST_CANCEL)
     {
         str = GetItemDescription(GetBagItemId(gBagPosition.pocket, itemIndex));
     }
@@ -1163,6 +1187,8 @@ void UpdatePocketItemList(enum Pocket pocketId)
     for (u32 i = 0; i < pocket->capacity && BagPocket_GetSlotData(pocket, i).itemId; i++)
         gBagMenu->numItemStacks[pocketId]++;
 
+    if (FoodPocketHasBuffRow(pocketId))
+        gBagMenu->numItemStacks[pocketId]++;
     if (!gBagMenu->hideCloseBagText)
         gBagMenu->numItemStacks[pocketId]++;
 
@@ -1249,6 +1275,77 @@ static void PrintItemSoldAmount(int windowId, int numSold, int moneyEarned)
     PrintMoneyAmount(windowId, CalculateMoneyTextHorizontalPosition(moneyEarned), 1, moneyEarned, 0);
 }
 
+static void DrawActiveMealBuffs(void)
+{
+    u8 row = 0;
+    FillWindowPixelBuffer(WIN_ITEM_LIST, PIXEL_FILL(0));
+    BagMenu_Print(WIN_ITEM_LIST, FONT_NORMAL, COMPOUND_STRING("ACTIVE BUFFS"),
+        4, 1, 0, 0, TEXT_SKIP_DRAW, COLORID_NORMAL);
+    for (u32 i = 0; i < LEGENDS_MEAL_SLOTS; i++)
+    {
+        enum Item meal;
+        u32 seconds;
+        if (!LegendsMealReadSlot(i, &meal, &seconds))
+            continue;
+
+        u8 y = 20 + row * 31;
+        CopyItemName(meal, gStringVar3);
+        BagMenu_Print(WIN_ITEM_LIST, FONT_NARROW, gStringVar3,
+            4, y, 0, 0, TEXT_SKIP_DRAW, COLORID_NORMAL);
+        BagMenu_Print(WIN_ITEM_LIST, FONT_SMALL, LegendsMealEffectText(meal),
+            4, y + 13, 0, 0, TEXT_SKIP_DRAW, COLORID_NORMAL);
+        ConvertIntToDecimalStringN(gStringVar1, seconds / 60, STR_CONV_MODE_LEFT_ALIGN, 2);
+        ConvertIntToDecimalStringN(gStringVar2, seconds % 60, STR_CONV_MODE_LEADING_ZEROS, 2);
+        StringExpandPlaceholders(gStringVar4, COMPOUND_STRING("{STR_VAR_1}:{STR_VAR_2}"));
+        BagMenu_Print(WIN_ITEM_LIST, FONT_SMALL, gStringVar4,
+            GetStringRightAlignXOffset(FONT_SMALL, gStringVar4, 115),
+            y, 0, 0, TEXT_SKIP_DRAW, COLORID_NORMAL);
+        row++;
+    }
+    if (row == 0)
+        BagMenu_Print(WIN_ITEM_LIST, FONT_SMALL, COMPOUND_STRING("No active meal buffs."),
+            4, 23, 0, 0, TEXT_SKIP_DRAW, COLORID_NORMAL);
+
+    ConvertIntToDecimalStringN(gStringVar1, row, STR_CONV_MODE_LEFT_ALIGN, 1);
+    StringExpandPlaceholders(gStringVar4, COMPOUND_STRING("{STR_VAR_1}/3 active"));
+    BagMenu_Print(WIN_ITEM_LIST, FONT_SMALL, gStringVar4, 4, 112, 0, 0, TEXT_SKIP_DRAW, COLORID_NORMAL);
+    BagMenu_Print(WIN_ITEM_LIST, FONT_SMALL, COMPOUND_STRING("A/B: Back"), 70, 112, 0, 0,
+        TEXT_SKIP_DRAW, COLORID_NORMAL);
+    CopyWindowToVram(WIN_ITEM_LIST, COPYWIN_FULL);
+}
+
+#define tBuffRedraw data[15]
+
+static void Task_ActiveMealBuffs(u8 taskId)
+{
+    s16 *data = gTasks[taskId].data;
+    if (JOY_NEW(A_BUTTON | B_BUTTON))
+    {
+        PlaySE(SE_SELECT);
+        tListTaskId = ListMenuInit(&gMultiuseListMenuTemplate,
+            gBagPosition.scrollPosition[POCKET_FOOD], gBagPosition.cursorPosition[POCKET_FOOD]);
+        ReturnToItemList(taskId);
+    }
+    else if (++tBuffRedraw >= 15)
+    {
+        tBuffRedraw = 0;
+        DrawActiveMealBuffs();
+    }
+}
+
+static void OpenActiveMealBuffs(u8 taskId)
+{
+    s16 *data = gTasks[taskId].data;
+    DestroyListMenuTask(tListTaskId, &gBagPosition.scrollPosition[POCKET_FOOD],
+        &gBagPosition.cursorPosition[POCKET_FOOD]);
+    BagDestroyPocketScrollArrowPair();
+    DrawActiveMealBuffs();
+    tBuffRedraw = 0;
+    gTasks[taskId].func = Task_ActiveMealBuffs;
+}
+
+#undef tBuffRedraw
+
 static void Task_BagMenu_HandleInput(u8 taskId)
 {
     s16 *data = gTasks[taskId].data;
@@ -1282,7 +1379,10 @@ static void Task_BagMenu_HandleInput(u8 taskId)
             }
             else if (JOY_NEW(START_BUTTON))
             {
-                if ((gBagMenu->numItemStacks[gBagPosition.pocket] - 1) <= 1) //can't sort with 0 or 1 item in bag
+                if (FoodPocketHasBuffRow(gBagPosition.pocket)
+                 && *scrollPos + *cursorPos >= gBagMenu->numItemStacks[gBagPosition.pocket] - 2)
+                    return;
+                if (gBagMenu->numItemStacks[gBagPosition.pocket] <= 2 + FoodPocketHasBuffRow(gBagPosition.pocket))
                 {
                     static const u8 sText_NothingToSort[] = _("There's nothing to sort!");
                     PlaySE(SE_FAILURE);
@@ -1316,6 +1416,10 @@ static void Task_BagMenu_HandleInput(u8 taskId)
         switch (listPosition)
         {
         case LIST_NOTHING_CHOSEN:
+            break;
+        case LIST_ACTIVE_BUFFS:
+            PlaySE(SE_SELECT);
+            OpenActiveMealBuffs(taskId);
             break;
         case LIST_CANCEL:
             if (gBagPosition.location == ITEMMENULOCATION_BERRY_BLENDER_CRUSH)
@@ -1498,7 +1602,8 @@ static bool8 CanSwapItems(void)
     {
         // TMHMs and berries are numbered, and so may not be swapped
         if (gBagPosition.pocket != POCKET_TM_HM
-         && gBagPosition.pocket != POCKET_BERRIES)
+         && gBagPosition.pocket != POCKET_BERRIES
+         && gBagPosition.pocket != POCKET_FOOD)
             return TRUE;
     }
     return FALSE;
@@ -1684,8 +1789,11 @@ static void OpenContextMenu(u8 taskId)
         {
             switch (gBagPosition.pocket)
             {
-            case POCKET_ITEMS:
             case POCKET_FOOD:
+                gBagMenu->contextMenuItemsPtr = sContextMenuItems_FoodPocket;
+                gBagMenu->contextMenuNumItems = ARRAY_COUNT(sContextMenuItems_FoodPocket);
+                break;
+            case POCKET_ITEMS:
                 gBagMenu->contextMenuItemsPtr = gBagMenu->contextMenuItemsBuffer;
                 gBagMenu->contextMenuNumItems = ARRAY_COUNT(sContextMenuItems_ItemsPocket);
                 memcpy(&gBagMenu->contextMenuItemsBuffer, &sContextMenuItems_ItemsPocket, sizeof(sContextMenuItems_ItemsPocket));

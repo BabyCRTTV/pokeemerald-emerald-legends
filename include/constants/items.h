@@ -1058,6 +1058,19 @@ enum __attribute__((packed)) Item
     ITEM_LUNAR_WING = 875,
     ITEM_TREAT_CASE = 876,
 
+    // Cooking supplies and prepared meals; preserve all older item IDs.
+    ITEM_BUTTER = 877,
+    ITEM_EGG = 878,
+    ITEM_COOKING_WATER = 879,
+    ITEM_SALT = 880,
+    ITEM_PEPPER = 881,
+    ITEM_FLOUR = 882,
+    ITEM_BUTTER_OMELET = 883,
+    ITEM_PANCAKES = 884,
+    ITEM_FLATBREAD = 885,
+    ITEM_EGG_DROP_SOUP = 886,
+    ITEM_CRACKERS = 887,
+
     ITEMS_COUNT,
     ITEM_FIELD_ARROW = ITEMS_COUNT,
 };

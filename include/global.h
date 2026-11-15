@@ -254,7 +254,10 @@ struct NPCFollower
 
 #include "constants/items.h"
 #include "constants/item.h"
-#define ITEM_FLAGS_COUNT ((ITEMS_COUNT / 8) + ((ITEMS_COUNT % 8) ? 1 : 0))
+// Size of the published first-time item bitmap. New IDs past it use the tail.
+#define ITEM_FLAGS_COUNT 110
+#define LEGENDS_ITEM_FLAGS_EXTRA_COUNT 8
+#define LEGENDS_MEAL_SLOTS 3
 
 #include "legends_adventure.h"
 #include "legends_journal.h"
@@ -277,6 +280,18 @@ struct LegendsPoffinSave
 {
     u32 signature;
     struct Pokeblock treats[LEGENDS_POFFIN_CAPACITY];
+};
+
+struct LegendsMealBuff
+{
+    u16 item;
+    u16 framesLeft;
+};
+
+struct LegendsMealSave
+{
+    u32 signature;
+    struct LegendsMealBuff buffs[LEGENDS_MEAL_SLOTS];
 };
 
 struct SaveBlock3
@@ -304,6 +319,8 @@ struct SaveBlock3
     struct LegendsGrottoSave grottos;
     struct LegendsEonSave eon;
     struct LegendsPoffinSave poffins;
+    struct LegendsMealSave meals;
+    u8 extraItemFlags[LEGENDS_ITEM_FLAGS_EXTRA_COUNT];
 }; /* max size 1624 bytes */
 
 extern struct SaveBlock3 *gSaveBlock3Ptr;
