@@ -23,5 +23,15 @@
   "captureSha256": {
     "Food-Pocket.png": "b770d904c2a96aeddc4359fc6ca98d3addb042b846e7068972c04b774a37a4d0",
     "Prepare-a-Meal.png": "431193776c2962e8eceb392e4a8d82f9292de1f7bbf63cb84736135c9a4ddda2"
+  },
+  "leftFoodPouch": {
+    "romSha256": "0eaae3bab9e732df56d9faa0850470c82eaa5c4cfffc390ba4beb04df966f771",
+    "emulator": "mGBA native core",
+    "checks": [
+      "Both bags cycled across six pockets and wrapped to Items",
+      "Food opened on left, Berries on right"
+    ],
+    "assetChanges": "Added one 64x64 left pouch frame to each indexed sheet. Existing six frames and palettes are identical to the baseline.",
+    "videoSha256": "af73edef3bd989cc1961cef41713151f8f40ac1009be8b99f8d25175c8407cfa"
   }
 }
