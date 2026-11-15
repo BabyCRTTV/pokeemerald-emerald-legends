@@ -8,6 +8,8 @@ This concerns the emulator's normal in-game battery save (`.sav`). Emulator save
 
 ## Current verified baseline and limits
 
+The Cooking and Food pocket preview adds an LPC4 reader and writer. The sixth count occupies the original LPC3 alignment gap. Slot, PC item and save block offsets do not move. LPC3 still loads after validating its original checksum, then resets the new Food count. The LPC2 and original native readers remain available. [Preview checks](qa/cooking-food-pocket-preview.json) cover an mGBA Continue from a controlled v0.0.82 battery and the host migration fixture with nonzero legacy padding.
+
 In v0.0.79, the packed inventory uses LPC3 with a shared Bag. The LPC2 reader retains support for v0.0.43–v0.0.78, and the original fourteen-box reader remains available. SaveBlock3 is 1,356 bytes: the original 1,032-byte prefix (including the dual-Eon extension) remains fixed, followed by the independently signed Poffin section. Native sector/storage readers and published IDs remain intact. [Poffin release QA](qa/poffins-v0.0.78.json) covers controlled earlier-build battery migration, repeated initialization, exact separate treat persistence and normal unmodified Release Continue. Earlier Eon, journal, research, appearance and grotto guarantees remain; their versioned sections below retain the original evidence and limits. The authentic historical-owner-save matrix remains unfinished. This summary does not extend controlled-fixture evidence to that matrix.
 
 Historical v0.0.49 changed only front-facing cheek shading and required no save migration. The approved Side Part remains ID 2. Preserve [v0.0.49 evidence and limits](qa/front-face-v0.0.49.md) and the previous [v0.0.48 evidence](qa/side-part-v0.0.48.md).

@@ -105,7 +105,7 @@ void qa(void)
             static const u16 items[] = {ITEM_POTION, ITEM_POKE_BALL, ITEM_TM_FOCUS_PUNCH, ITEM_ORAN_BERRY, ITEM_LUNAR_WING};
             static const u16 counts[] = {150,32,128,80,60};
             ClearBag();
-            for (p = 0; p < POCKETS_COUNT; p++)
+            for (p = 0; p < ARRAY_COUNT(items); p++)
                 for (i = 0; i < (legacy ? counts[p] : p == 0 ? 600 : 1); i++)
                     BagPocket_SetSlotData(&gBagPockets[p], i, (struct ItemSlot){items[p], p == 4 ? 1 : 77});
             BagPocket_SetSlotData(&gBagPockets[0], legacy ? 149 : 599, (struct ItemSlot){ITEM_ETHER,77});
@@ -122,7 +122,7 @@ void qa(void)
             box[11] = TrySavingData(SAVE_NORMAL);
             ClearBag();
             box[12] = LoadGameSave(SAVE_NORMAL);
-            for (p = 0; p < POCKETS_COUNT; p++)
+            for (p = 0; p < ARRAY_COUNT(items); p++)
             {
                 u32 expected = legacy ? counts[p] : p == 0 ? 600 : p == 4 ? 2 : 1;
                 if (LegendsStorageBag()->pocketSizes[p] != expected) errors++;

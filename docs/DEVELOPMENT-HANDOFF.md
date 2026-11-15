@@ -1,5 +1,13 @@
 # Development handoff
 
+## Cooking prompt and Food pocket preview (14 November 2026)
+
+**Model: GPT-6.1 Sol | Reasoning: reuse the native furniture interactions and preserve the packed Bag offsets.**
+
+Sinks, kitchenette counters and refrigerators use their flavor dialogue before the meal prompt. Yes explains that ingredients are not available yet. No closes the prompt. The Food pocket uses the existing shared stack pool and ships empty. The LPC4 writer uses the two bytes previously reserved for alignment. The LPC3 reader validates its original checksum before clearing those bytes, while LPC2 and original native inventory migration paths remain intact.
+
+Native build and mGBA checks passed in the Mauville apartment, Littleroot, and Fuchsia. Verified the Food pocket, existing apartment interactions, old v0.0.82 Continue with existing Bag/PC items, and current native save/reload. [Preview evidence](qa/cooking-food-pocket-preview.json). Review branch only.
+
 ## Apartment rentals v0.0.82 published and verified (14 November 2026)
 
 **Model: GPT-6.1 Sol | Reasoning: ship the approved charcoal laptop pixels and preserve the rental behavior verified in mGBA.**

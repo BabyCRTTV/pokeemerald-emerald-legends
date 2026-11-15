@@ -787,6 +787,8 @@ extern const u8 TrainerTower_EventScript_ShowTime[];
 extern const u8 EventScript_PlayerFacingTVScreen[];
 extern const u8 EventScript_Cabinet[];
 extern const u8 EventScript_Kitchen[];
+extern const u8 EventScript_KitchenSink[];
+extern const u8 EventScript_KitchenFridge[];
 extern const u8 EventScript_Dresser[];
 extern const u8 EventScript_Snacks[];
 extern const u8 EventScript_Painting[];
