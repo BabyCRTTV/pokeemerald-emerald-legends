@@ -2,6 +2,13 @@
 
 This is the developer-facing history for the **Debug** build. Shared Legends changes are repeated here so this file stands on its own; Debug-only behavior is called out separately.
 
+## [0.0.85] - 2026-11-15
+
+- Added the Steel Canteen, Mess Kit, and Percolator as gifts from Mom. Players who already had Running Shoes could collect the gear by talking to Mom at home.
+- Added Coffee Grounds, Tea Leaves, Matcha Powder, Oolong Tea, Black Tea, Coffee, Hojicha Powder, Hojicha Leaves, Ice Cubes, Tomato, Cheese, and Potato to the Poké Mart INGREDIENTS menu.
+- Added eight Percolator recipes, including Matcha Latte, Black Coffee, and Hojicha Tea.
+- Added Tomato Flatbread and Buttered Potatoes to kitchens and the Mess Kit. Their ten-minute effects increased trainer prize money by 15% and reduced the wild encounter rate by 10%, respectively.
+
 ## [0.0.84] - 2026-11-15
 
 - Added nine cooking ingredients to the INGREDIENTS menu at Poké Marts.

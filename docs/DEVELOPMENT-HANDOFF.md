@@ -1,5 +1,13 @@
 # Development handoff
 
+## v0.0.85 Portable Cooking release candidate (15 November 2026)
+
+**Model: GPT-6.1 Sol | Reasoning: release the owner-approved cumulative cooking preview, preserving its sprites, encounter source, and battery layout.**
+
+The owner approved the cooking preview at `e1a216418c26172e521c3d6d19a0eb76d7c2e0b9` for publication. The candidate includes Mom's portable gear, twelve new Mart ingredients, eight Percolator brews, Tomato Flatbread, and Buttered Potatoes. The recipe, Bag, and buff interactions are covered by the preview receipts below. Item IDs 893–917 append within the existing item-history bitmap. The packed bag, saved meal records, and map layouts did not change. Updated the game labels, patcher, download links, and all changelogs.
+
+Next step: verify the candidate, merge it, then wait for production patch and Pages verification.
+
 ## Tomato Flatbread and Buttered Potatoes preview (15 November 2026)
 
 **Model: GPT-6.1 Sol | Reasoning: use three new ingredients across two familiar meals and append the recipes without moving item or save fields.**
