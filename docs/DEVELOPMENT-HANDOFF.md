@@ -1,5 +1,11 @@
 # Development handoff
 
+## Spiced cooking icon revisions (15 November 2026)
+
+**Model: GPT-6.1 Sol | Reasoning: clean up the ingredient silhouettes and reduce the visual detail in the iced cup.**
+
+The owner approved the four meal icons, Eggnog, and Spiced Cider. Smoothed Apple's contour, simplified Carrot's shading, rounded Onion's bulb, and removed the visible ice blocks from Iced Cinnamon Brew. Retained the approved tapered cup and verified the Percolator still deducts Ice Cubes. Reviewed all four revised icons in the native Bag. [Preview evidence](qa/spiced-cooking-icon-revisions.json). Review branch only.
+
 ## Spiced cooking preview (15 November 2026)
 
 **Model: GPT-6.1 Sol | Reasoning: reuse the existing cooking transaction and fit more recipes into the scrollable menus without changing saved data.**

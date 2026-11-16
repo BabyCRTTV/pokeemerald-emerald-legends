@@ -1,0 +1,37 @@
+{
+  "status": "review preview",
+  "previousPreviewCommit": "9c2ac90ff81500bdf5175e5c474153bd8e0702b7",
+  "gameVersion": "0.0.85",
+  "previousRomSha256": "6d58b25b441573bcfdbcfaaf86fb9c3a1ef7304b5a4a06425748b8d4f59fe10b",
+  "romSha256": "6f6e90505a57e8275edca5693952154f169d5ac06494b831c055bf8585830a15",
+  "previousSpriteSha256": {
+    "apple": "ebdeb0f2dfe53406f5b7d95c7704e6ce9419778a9b0a35521506eaa12132adf5",
+    "carrot": "7aef6c30486c30975f71993bb0eb86f3aa430b504bba244e12a909e7ddab2002",
+    "onion": "2467f5eab5e234df2d6c4cb0ec3eb4599814ea6a20d4b543fbe25fa5ef4af154",
+    "iced_cinnamon_coffee": "026c25a7759adf8d137d27d79aa2d2e419cd54c2c8e5868bb826ce2ee187c113"
+  },
+  "revisedSpriteSha256": {
+    "apple": "8ca6e62affd4a610e53bff3f4201231ca157028b2bd534fe53d14b12660f8c44",
+    "carrot": "6b87645abf8e6b5cfcea4cf69ecb37c1da895d39a54903e33ec8029d91500cf6",
+    "onion": "73a88620ef8a5319e6040df2405e103ab44fbe65bb76f18b7ae80a3d89998791",
+    "iced_cinnamon_coffee": "8f60af2c20da225d83386bd4d1da822f6950801559fab49312593f0de6c62c68"
+  },
+  "previewSha256": "297fa1a0e1946300212f014e0d42e924ed199bd73207d18992d7d94df2fd3fd9",
+  "nativeQA": {
+    "emulator": "mGBA",
+    "checksPassed": [
+      "Bought the three revised ingredients in Oldale and verified each in the Items pocket.",
+      "Brewed the iced coffee with the Percolator, verified exact recipe deductions, including Ice Cubes, and checked the revised Food icon."
+    ],
+    "harnessSha256": {
+      "fixture.c": "f76fbf25cd257378af207dbde2ca70da2f0e330317cc4653ca0a7b34873fde59",
+      "verify.py": "dad60f26837df8c106fe8b223d86016a99bc1282f944e1f91fa7b2873abb7cf2"
+    },
+    "revisedCaptureSha256": {
+      "bag-3": "ace05c1cfd4bef1da7f49134830a097b534b3ba760e57b6cc5c0005881889b8f",
+      "bag-1": "2eeff01835aaf207fd305993bb5964819b2bd71a3f7d55fb0abb5a4345a3556f",
+      "bag-2": "fce2f47b4b19134ff943521374c9d23b268afee5153542b30818364034b332fe",
+      "food-7": "08f08c96e4d4415f5bcf657a7974f87cba0b4de710445d600f9b766feaf229bb"
+    }
+  }
+}
