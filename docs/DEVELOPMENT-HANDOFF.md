@@ -4,7 +4,7 @@
 
 **Model: GPT-6.1 Sol | Reasoning: draw a beveled badge inside the existing Fight panel and use the battle text palette's free entries.**
 
-Added green Super effective, blue Effective, amber Resisted, red No effect, purple Status move, and slate target prompts in Casual. Native mGBA verified the badge colors and text bounds, target changes and cancel in doubles, and returning from Move Info. The Normal panel matched the prior draft pixel for pixel. Draft only. [Preview evidence](qa/casual-matchup-badges-preview.json).
+Added green Super effective, blue Effective, amber Resisted, red No effect, purple Status move, and slate target prompts in Casual. Native mGBA verified the badge colors and text bounds, target changes and cancel in doubles, and returning from Move Info. The Normal panel matched the prior draft pixel for pixel. The owner approved the badge design after reviewing the mGBA screenshots on 16 November. The work remains in draft pending release. [Preview evidence](qa/casual-matchup-badges-preview.json).
 
 ## Casual mode assists (16 November 2026)
 
