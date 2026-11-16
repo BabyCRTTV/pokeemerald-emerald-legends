@@ -14,6 +14,7 @@
 #include "battle_gimmick.h"
 #include "bg.h"
 #include "data.h"
+#include "international_string_util.h"
 #include "item.h"
 #include "item_menu.h"
 #include "link.h"
@@ -2377,7 +2378,68 @@ enum
     EFFECTIVENESS_EXTREMELY_EFFECTIVE,
     EFFECTIVENESS_SELECT_TARGET,
     EFFECTIVENESS_VARIES,
+    EFFECTIVENESS_STATUS,
 };
+
+static void DrawCasualMatchupBadge(u32 effectiveness)
+{
+    // Entries 7–9 of the battle text palette are unused by the native menu.
+    enum { OUTLINE = 7, FILL, HIGHLIGHT, MENU_WHITE = 14 };
+    static const u8 ink[] = {0, MENU_WHITE, OUTLINE};
+    static const struct
+    {
+        const u8 *label;
+        u16 colors[3];
+    } badges[] =
+    {
+        [EFFECTIVENESS_NO_EFFECT] = {
+            COMPOUND_STRING("No effect"), {RGB(8, 2, 4), RGB(19, 6, 8), RGB(29, 14, 15)},
+        },
+        [EFFECTIVENESS_NOT_VERY_EFFECTIVE] = {
+            COMPOUND_STRING("Resisted"), {RGB(9, 4, 1), RGB(18, 10, 3), RGB(30, 21, 8)},
+        },
+        [EFFECTIVENESS_NORMAL] = {
+            COMPOUND_STRING("Effective"), {RGB(2, 6, 12), RGB(6, 13, 22), RGB(13, 22, 31)},
+        },
+        [EFFECTIVENESS_SUPER_EFFECTIVE] = {
+            COMPOUND_STRING("Super effective"), {RGB(2, 8, 4), RGB(5, 15, 8), RGB(13, 25, 14)},
+        },
+        [EFFECTIVENESS_SELECT_TARGET] = {
+            COMPOUND_STRING("Pick a target"), {RGB(4, 6, 9), RGB(9, 12, 16), RGB(18, 21, 25)},
+        },
+        [EFFECTIVENESS_VARIES] = {
+            COMPOUND_STRING("Varies by foe"), {RGB(4, 6, 9), RGB(9, 12, 16), RGB(18, 21, 25)},
+        },
+        [EFFECTIVENESS_STATUS] = {
+            COMPOUND_STRING("Status move"), {RGB(6, 3, 10), RGB(14, 8, 19), RGB(23, 15, 29)},
+        },
+    };
+    const u8 window = B_WIN_MOVE_TYPE;
+    const u32 width = WindowWidthPx(window) - 2;
+
+    if (effectiveness == EFFECTIVENESS_MOSTLY_INEFFECTIVE)
+        effectiveness = EFFECTIVENESS_NOT_VERY_EFFECTIVE;
+    if (effectiveness == EFFECTIVENESS_EXTREMELY_EFFECTIVE)
+        effectiveness = EFFECTIVENESS_SUPER_EFFECTIVE;
+
+    const u8 *label = badges[effectiveness].label;
+    FillWindowPixelBuffer(window, PIXEL_FILL(MENU_WHITE));
+    if (label != NULL)
+    {
+        LoadPalette(badges[effectiveness].colors, BG_PLTT_ID(5) + OUTLINE, sizeof(badges[effectiveness].colors));
+        // One-pixel cut corners and a light upper edge give the badge a bevel.
+        FillWindowPixelRect(window, PIXEL_FILL(OUTLINE), 2, 1, width - 2, 12);
+        FillWindowPixelRect(window, PIXEL_FILL(OUTLINE), 1, 2, width, 10);
+        FillWindowPixelRect(window, PIXEL_FILL(FILL), 2, 2, width - 2, 9);
+        FillWindowPixelRect(window, PIXEL_FILL(HIGHLIGHT), 3, 2, width - 4, 1);
+        u32 font = GetFontIdToFit(label, FONT_SMALL, 0, width - 4);
+        u32 x = GetStringCenterAlignXOffset(font, label, WindowWidthPx(window));
+        AddTextPrinterParameterized4(window, font, x, 0, 0, 0, ink, TEXT_SKIP_DRAW, label);
+    }
+
+    PutWindowTilemap(window);
+    CopyWindowToVram(window, COPYWIN_FULL);
+}
 
 static bool32 ShouldShowTypeEffectiveness(u32 targetId)
 {
@@ -2471,34 +2533,9 @@ static void MoveSelectionDisplayMoveEffectiveness(u32 foeEffectiveness, enum Bat
 
     if (CasualMoveHintsEnabled())
     {
-        const u8 *hint = COMPOUND_STRING("");
         if (IsBattleMoveStatus(moveInfo->moves[gMoveSelectionCursor[battler]]))
-            hint = COMPOUND_STRING("{FONT_SMALL}Status move");
-        else
-            switch (foeEffectiveness)
-            {
-            case EFFECTIVENESS_EXTREMELY_EFFECTIVE:
-            case EFFECTIVENESS_SUPER_EFFECTIVE:
-                hint = COMPOUND_STRING("{FONT_SMALL_NARROWER}Super effective");
-                break;
-            case EFFECTIVENESS_NOT_VERY_EFFECTIVE:
-            case EFFECTIVENESS_MOSTLY_INEFFECTIVE:
-                hint = COMPOUND_STRING("{FONT_SMALL}Resisted");
-                break;
-            case EFFECTIVENESS_NO_EFFECT:
-                hint = COMPOUND_STRING("{FONT_SMALL}No effect");
-                break;
-            case EFFECTIVENESS_NORMAL:
-                hint = COMPOUND_STRING("{FONT_SMALL}Effective");
-                break;
-            case EFFECTIVENESS_SELECT_TARGET:
-                hint = COMPOUND_STRING("{FONT_SMALL_NARROW}Pick a target");
-                break;
-            case EFFECTIVENESS_VARIES:
-                hint = COMPOUND_STRING("{FONT_SMALL_NARROW}Varies by foe");
-                break;
-            }
-        BattlePutTextOnWindow(hint, B_WIN_MOVE_TYPE);
+            foeEffectiveness = EFFECTIVENESS_STATUS;
+        DrawCasualMatchupBadge(foeEffectiveness);
         return;
     }
     txtPtr = StringCopy(gDisplayedStringBattle, gText_MoveInterfacePP);
