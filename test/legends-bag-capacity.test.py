@@ -197,7 +197,7 @@ int main(void)
   fresh();
   const struct MealRecipe *recipe=&sRecipes[r];
   unsigned ingredients=0;
-  while(ingredients<RECIPE_INGREDIENTS&&recipe->supplies[ingredients]!=ITEM_NONE)ingredients++;
+  while(ingredients<LEGENDS_RECIPE_INGREDIENTS&&recipe->supplies[ingredients]!=ITEM_NONE)ingredients++;
   assert(ingredients>=2);
   const bool32 isBrew=r>=firstBrew&&r<pastLastBrew;
   if(isBrew)assert(recipe->supplies[0]==brewBases[r-firstBrew]&&recipe->supplies[1]==ITEM_COOKING_WATER);
@@ -218,8 +218,8 @@ int main(void)
   invariant();
  }
  fresh();
- for(unsigned i=0;i<RECIPE_INGREDIENTS;i++)BagPocket_SetSlotData(&gBagPockets[POCKET_ITEMS],i,(struct ItemSlot){sRecipes[0].supplies[i],2});
- for(unsigned i=RECIPE_INGREDIENTS;i<1152;i++)BagPocket_SetSlotData(&gBagPockets[POCKET_ITEMS],i,(struct ItemSlot){ITEM_POTION,1});
+ for(unsigned i=0;i<LEGENDS_RECIPE_INGREDIENTS;i++)BagPocket_SetSlotData(&gBagPockets[POCKET_ITEMS],i,(struct ItemSlot){sRecipes[0].supplies[i],2});
+ for(unsigned i=LEGENDS_RECIPE_INGREDIENTS;i<1152;i++)BagPocket_SetSlotData(&gBagPockets[POCKET_ITEMS],i,(struct ItemSlot){ITEM_POTION,1});
  struct Bag full=data.inventory;
  assert(LegendsCookMeal(0)==LEGENDS_COOK_BAG_FULL);
  assert(!memcmp(&full,&data.inventory,sizeof(full)));

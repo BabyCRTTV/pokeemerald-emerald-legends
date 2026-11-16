@@ -41,13 +41,16 @@ def main():
      changes+=1;assert rect[0]<=x<rect[2] and rect[1]<=y<rect[3],(gender,x,y)
   assert changes>20
  # Chair colors cannot change any pixel outside the original upholstery.
- for before,after,rect in [('male-default','male-rose-chair',(51,24,64,40)),('female-with-poster','female-mint-chair',(176,24,189,40))]:
+ for before,after,rect,backrest in [
+  ('male-default','male-rose-chair',(50,24,64,40),(50,51)),
+  ('female-with-poster','female-mint-chair',(176,24,190,40),(188,189))]:
   a=Image.open(out/(before+'.png'));b=Image.open(out/(after+'.png'));changes=0
   for y in range(160):
    for x in range(240):
     if a.getpixel((x,y))!=b.getpixel((x,y)):
      changes+=1;assert rect[0]<=x<rect[2] and rect[1]<=y<rect[3],(before,x,y)
   assert changes>30
+  assert all(a.getpixel((x,26))!=b.getpixel((x,26)) for x in backrest), (before,backrest)
  groups=[('bedroom-native-room.png',['male-default','male-rose-rug-mint-bed','female-plum-rug-gold-bed']),('bedroom-native-menu.png',['bedroom-decor-menu','rug-color-menu','doll-on-wood-floor']),('bedroom-native-chair-colors.png',['chair-color-menu','male-rose-chair','female-mint-chair'])]
  for name,images in groups:
   sheet=Image.new('RGB',(480,len(images)*354),(34,29,40));draw=ImageDraw.Draw(sheet);font=ImageFont.truetype('/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf',15)

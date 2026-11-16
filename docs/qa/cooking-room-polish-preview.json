@@ -1,0 +1,37 @@
+{
+  "status": "Visual review pending",
+  "base_commit": "04ff9fb1b4eae13bfe6b4a83d347611d6b36f07d",
+  "game_version": "0.0.87",
+  "emulator": "mGBA native core 0.10.5",
+  "debug_rom_sha256": "a80d49e45da82cafc60cf883c744b43eb77ce76d6f69570ba25935b121646e29",
+  "debug_elf_sha256": "f08d462c292e64acf2e55b2b3fa8654d1f94089c105c419a7f163feb76d6da61",
+  "passed": [
+    "Kitchen sink, Mess Kit, Steel Canteen, and Percolator entered through native controls.",
+    "Six pantry recipes crafted with exact ingredient deductions and correct meal or drink effects.",
+    "A opened the Yes/No prompt directly; No and B restored the highlighted recipe without spending ingredients.",
+    "B and the Cancel row closed the list; missing ice left remaining supplies and the Food pocket intact.",
+    "Butter and Egg rendered in the Oldale ingredient shop, and Treat Case rendered in Key Items with a three-line description.",
+    "Rose and Plum recolored the native seat and both backrest columns in both bedrooms. Pixel masks confirmed changes stayed inside the chair metatile. The chosen color survived a room reload and B canceled a new choice.",
+    "Host bedroom rules and Bag/cooking transaction and migration regressions passed."
+  ],
+  "limits": [
+    "Controlled save state and warp setup; all menu choices used native controls.",
+    "The older full bedroom fixture stopped at its flash write precheck. The focused chair fixture verified room reload with the current save variables. No serialized state changed.",
+    "Release build, production publication and independent BPS verification remain release-gated."
+  ],
+  "frame_sha256": {
+    "menu-2.png": "6da315d6599afe37e4930af7af111cb298585e7748848a8d4a4fbfc50c787a5b",
+    "percolator-milk-coffee.png": "67958e09ee142496129721d7ff05230fc6e549dcd5f28969f008e02bea705598",
+    "menu-missing-ice.png": "4df09ddace1bade40bbe83c22de46830a0fcc96ff82af328c5c66a7c1afb34b6",
+    "recipe-1.png": "8edc855efb9f9b432194ccd0e2d23f1f07c679305fb12047f6986f770e07586c",
+    "recipe-6.png": "52dd9c2fa101e4b1d6cfa0d66d9faa7ef6a6fb6e4d41c45d52df8ee464421352",
+    "shop-butter.png": "c0cdb3eea2f57a19632fa0a912c9719faa1afc9dc251f93f941f0bde30ca62b0",
+    "shop-egg.png": "6f96dc90977166af525678c40e262b0f829ac27f0157c30c2c93c22486139711",
+    "bag-treat-case.png": "bbc6b670553e86e8f50d7a9dea64f88a2d0b517599208b900ce6348ab2d1b7e5",
+    "chair/male-rose.png": "20dc11a9d472fb6258b1b4c59ec621190f39d3ab7839be93aceb79688c17b86e",
+    "chair/male-plum.png": "da2af82ee4b7d36b3fdacbca1a2095317f625b78e88fdc88aa262e431549f495",
+    "chair/female-rose.png": "450a359366c5900d55bbc97b84240dd387ae5c056d8b1d0a77ff0b5d53584865",
+    "chair/female-plum.png": "117b7f5dd66dcaeb5b9a6d7e2f902030b7e902d0c6582b42d94aaa69d04f3a57"
+  },
+  "local_evidence_path": "build/cooking-polish"
+}

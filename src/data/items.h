@@ -15274,9 +15274,9 @@ const struct ItemInfo gItemsInfo[] =
     {
         .name = ITEM_NAME("Treat Case"),
         .description = COMPOUND_STRING(
-            "A pastry case for\n"
-            "40 POFFINS. Open it\n"
-            "to feed your POKéMON."),
+            "Holds 40 POFFINS.\n"
+            "Use it to feed\n"
+            "your POKéMON."),
         .importance = 1,
         .pocket = POCKET_KEY_ITEMS,
         .type = ITEM_USE_BAG_MENU,

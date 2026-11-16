@@ -1,5 +1,13 @@
 # Development handoff
 
+## Cooking preview and bedroom chair polish (16 November 2026)
+
+**Model: GPT-6.1 Sol | Reasoning: use the same recipe table for browsing and crafting, and isolate the original chair's full upholstery.**
+
+Kitchens and Mom's three portable tools now show the highlighted recipe's native icon, required quantities, and timed buff on the right. Missing ingredients are red. The cooking prompt goes directly to Yes/No and declining restores the highlighted recipe. Both bedroom layouts recolor the seat and entire backrest together. Smoothed Butter and Egg silhouettes, redrew Treat Case as a pastry tin, and fitted its description in the Bag. Item IDs, recipes, buff data, and save layouts were preserved.
+
+The Debug ROM passed focused mGBA menu, transaction, buff, art and bedroom pixel checks, plus the host Bag and bedroom regressions. The visuals await owner approval. [Preview evidence](qa/cooking-room-polish-preview.json).
+
 ## v0.0.87 Kanto seasonal encounters candidate (16 November 2026)
 
 **Model: GPT-6.1 Sol | Reasoning: diversify the remaining sparse Kanto routes using their existing grass and coastal encounter slots.**

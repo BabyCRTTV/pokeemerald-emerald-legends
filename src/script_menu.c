@@ -1,5 +1,6 @@
 #include "global.h"
 #include "legends_field_requests.h"
+#include "legends_meals.h"
 #include "main.h"
 #include "event_data.h"
 #include "field_effect.h"
@@ -72,6 +73,8 @@ static void MultichoiceDynamicEventShowSprite_OnInit(struct DynamicListMenuEvent
 static void MultichoiceDynamicEventShowItem_OnSelectionChanged(struct DynamicListMenuEventArgs *eventArgs);
 static void MultichoiceDynamicEventShowPkmn_OnSelectionChanged(struct DynamicListMenuEventArgs *eventArgs);
 static void MultichoiceDynamicEventShowSprite_OnDestroy(struct DynamicListMenuEventArgs *eventArgs);
+static void MultichoiceCooking_OnInit(struct DynamicListMenuEventArgs *eventArgs);
+static void MultichoiceCooking_OnSelectionChanged(struct DynamicListMenuEventArgs *eventArgs);
 
 static const struct DynamicListMenuEventCollection sDynamicListMenuEventCollections[] =
 {
@@ -92,8 +95,18 @@ static const struct DynamicListMenuEventCollection sDynamicListMenuEventCollecti
         .OnInit = MultichoiceDynamicEventShowSprite_OnInit,
         .OnSelectionChanged = MultichoiceDynamicEventShowPkmn_OnSelectionChanged,
         .OnDestroy = MultichoiceDynamicEventShowSprite_OnDestroy
+    },
+    [DYN_MULTICHOICE_CB_COOKING] =
+    {
+        .OnInit = MultichoiceCooking_OnInit,
+        .OnSelectionChanged = MultichoiceCooking_OnSelectionChanged,
+        .OnDestroy = MultichoiceDynamicEventShowSprite_OnDestroy
     }
 };
+
+#define COOKING_LIST_WIDTH 12
+#define COOKING_PREVIEW_WIDTH 13
+#define COOKING_PREVIEW_HEIGHT 12
 
 static const struct ListMenuTemplate sScriptableListMenuTemplate =
 {
@@ -234,6 +247,60 @@ static void MultichoiceDynamicEventShowSprite_OnDestroy(struct DynamicListMenuEv
         FreeSpritePaletteByTag(TAG_CB_SPRITE_ICON);
         DestroySprite(&gSprites[sSpriteId]);
     }
+}
+
+static void MultichoiceCooking_OnInit(struct DynamicListMenuEventArgs *eventArgs)
+{
+    const struct WindowTemplate *list = &gWindows[eventArgs->windowId].window;
+    // Keep both windows' graphics below the field dialogue's tile allocation.
+    struct WindowTemplate preview = CreateWindowTemplate(0,
+        list->tilemapLeft + list->width + 3, list->tilemapTop,
+        COOKING_PREVIEW_WIDTH, COOKING_PREVIEW_HEIGHT, 15,
+        list->baseBlock + list->width * list->height);
+    sAuxWindowId = AddWindow(&preview);
+    sSpriteId = MAX_SPRITES;
+    SetStandardWindowBorderStyle(sAuxWindowId, FALSE);
+}
+
+static void PrintRecipeText(const u8 *text, u32 x, u32 y, u32 width, bool32 missing)
+{
+    static const u8 textColors[] = {TEXT_COLOR_TRANSPARENT, TEXT_COLOR_DARK_GRAY, TEXT_COLOR_LIGHT_GRAY};
+    static const u8 missingColors[] = {TEXT_COLOR_TRANSPARENT, TEXT_COLOR_RED, TEXT_COLOR_LIGHT_RED};
+    u32 font = GetFontIdToFit(text, FONT_SMALL, 0, width);
+    AddTextPrinterParameterized4(sAuxWindowId, font, x, y, 0, 0,
+        missing ? missingColors : textColors, TEXT_SKIP_DRAW, text);
+}
+
+static void MultichoiceCooking_OnSelectionChanged(struct DynamicListMenuEventArgs *eventArgs)
+{
+    enum Item meal;
+    const enum Item *supplies = LegendsMealRecipePreview(eventArgs->selectedItem, &meal);
+    const u32 width = COOKING_PREVIEW_WIDTH * 8;
+    FreeSpriteIfUsed();
+    sSpriteId = MAX_SPRITES;
+    FillWindowPixelBuffer(sAuxWindowId, PIXEL_FILL(TEXT_COLOR_WHITE));
+    if (supplies != NULL)
+    {
+        u8 duration[24];
+        StringCopy(ConvertIntToDecimalStringN(duration, LEGENDS_MEAL_MINUTES, STR_CONV_MODE_LEFT_ALIGN, 2),
+            COMPOUND_STRING(" min. after use"));
+        sSpriteId = AddItemIconSprite(TAG_CB_SPRITE_ICON, TAG_CB_SPRITE_ICON, meal);
+        if (sSpriteId != MAX_SPRITES)
+            ChangeSpriteOnSelection(eventArgs, 41, 15);
+        PrintRecipeText(COMPOUND_STRING("Ingredients"), 36, 10, width - 40, FALSE);
+        FillWindowPixelRect(sAuxWindowId, PIXEL_FILL(TEXT_COLOR_LIGHT_GRAY), 4, 30, width - 8, 1);
+        for (u32 i = 0; i < LEGENDS_RECIPE_INGREDIENTS && supplies[i] != ITEM_NONE; i++)
+        {
+            bool32 missing = !CheckBagHasItem(supplies[i], 1);
+            PrintRecipeText(GetItemName(supplies[i]), 4, 33 + 10 * i, width - 22, missing);
+            PrintRecipeText(COMPOUND_STRING("×1"), width - 16, 33 + 10 * i, 12, missing);
+        }
+        FillWindowPixelRect(sAuxWindowId, PIXEL_FILL(TEXT_COLOR_LIGHT_GRAY), 4, 74, width - 8, 1);
+        PrintRecipeText(LegendsMealEffectText(meal), 4, 76, width - 8, FALSE);
+        PrintRecipeText(duration, 4, 85, width - 8, FALSE);
+        gSpecialVar_0x8006 = LegendsMealIsDrink(meal);
+    }
+    CopyWindowToVram(sAuxWindowId, COPYWIN_FULL);
 }
 
 #undef sAuxWindowId
@@ -386,13 +453,11 @@ static void DrawMultichoiceMenuDynamic(u8 left, u8 top, u8 argc, struct ListMenu
     u32 windowHeight;
     struct ListMenu *list;
 
-    for (i = 0; i < argc; ++i)
-    {
+    for (i = 0; i < argc && callbackSet != DYN_MULTICHOICE_CB_COOKING; ++i)
         width = DisplayTextAndGetWidth(items[i].name, width);
-    }
     LoadMessageBoxAndBorderGfx();
     windowHeight = (argc < maxBeforeScroll) ? argc * 2 : maxBeforeScroll * 2;
-    newWidth = ConvertPixelWidthToTileWidth(width);
+    newWidth = callbackSet == DYN_MULTICHOICE_CB_COOKING ? COOKING_LIST_WIDTH : ConvertPixelWidthToTileWidth(width);
     left = ScriptMenu_AdjustLeftCoordFromWidth(left, newWidth);
     windowId = CreateWindowFromRect(left, top, newWidth, windowHeight);
     SetStandardWindowBorderStyle(windowId, FALSE);
@@ -409,6 +474,11 @@ static void DrawMultichoiceMenuDynamic(u8 left, u8 top, u8 argc, struct ListMenu
     }
 
     gMultiuseListMenuTemplate = sScriptableListMenuTemplate;
+    if (callbackSet == DYN_MULTICHOICE_CB_COOKING)
+    {
+        gMultiuseListMenuTemplate.fontId = FONT_NARROW;
+        gMultiuseListMenuTemplate.lettersSpacing = 0;
+    }
     gMultiuseListMenuTemplate.windowId = windowId;
     gMultiuseListMenuTemplate.items = items;
     gMultiuseListMenuTemplate.totalItems = argc;
