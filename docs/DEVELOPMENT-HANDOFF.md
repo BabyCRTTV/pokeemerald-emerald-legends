@@ -1,5 +1,11 @@
 # Development handoff
 
+## Carrot detail pass (15 November 2026)
+
+**Model: GPT-6.1 Sol | Reasoning: restore recognizable ridges and a small shoulder highlight to the carrot, using a narrow low-contrast shadow.**
+
+The owner approved the onion and requested more carrot detail. Added short carrot ridges, a small shoulder highlight, and a leaf accent. Verified a purchase and the revised icon in the native Bag. [Preview evidence](qa/carrot-detail-preview.json). Review branch only.
+
 ## Onion and carrot finish pass (15 November 2026)
 
 **Model: GPT-6.1 Sol | Reasoning: add curved papery skin detail to the onion while simplifying the carrot to one orange fill and restrained shadow marks.**

@@ -1,0 +1,21 @@
+{
+  "status": "review preview",
+  "previousPreviewCommit": "ba7219430d6fb64759f6069a63db75b01ecccf64",
+  "gameVersion": "0.0.85",
+  "romSha256": "b5de8a7f5e242ec08d7b92b40dc5ee8a1c693b507075d813f7e8b87fb6858608",
+  "previousRomSha256": "ad5c97415d24c30903e755c436c5b4b1b71c595aff19bdfe911a186fce838900",
+  "previousCarrotSha256": "904fa2555773789d3cfcc1c24afc923fbf528ccc42e4b627efec7347f3c3efe8",
+  "revisedCarrotSha256": "00bc69d5289c7f02446a40fae88fe931cb673f09d31f5ca9649e8315b247fba0",
+  "previewSha256": "5b4fe036c64a83428f28a3debed27ddb2037795bfae085ac8f7e5966abf3bc22",
+  "nativeQA": {
+    "emulator": "mGBA",
+    "checksPassed": [
+      "Bought Carrot at the Oldale Mart, verified the exact purchase, and checked the revised icon in the native Items pocket."
+    ],
+    "harnessSha256": {
+      "fixture.c": "f76fbf25cd257378af207dbde2ca70da2f0e330317cc4653ca0a7b34873fde59",
+      "verify.py": "03e90012b5aa1e5e2ba99eaf85fac920de989f93cdf0fcf109e1e34db9e67a16"
+    },
+    "revisedCaptureSha256": "d683ab197edf5180078a67a662c2dc8c9e4202db6042a7cc3b5de38d981aa246"
+  }
+}
