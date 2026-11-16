@@ -1,5 +1,11 @@
 # Development handoff
 
+## Carrot outline correction (15 November 2026)
+
+**Model: GPT-6.1 Sol | Reasoning: make the emoji-inspired carrot contour a consistently dark single-pixel border.**
+
+The owner accepted the emoji-inspired carrot and flagged the thicker left outline. Matched the outline around the full existing silhouette and checked the revised Carrot in the native Bag after purchasing it in Oldale. [Preview evidence](qa/carrot-outline-preview.json). Review branch only.
+
 ## Emoji-inspired Carrot redraw (15 November 2026)
 
 **Model: GPT-6.1 Sol | Reasoning: use the owner's carrot emoji reference for the silhouette, then redraw it at Emerald's native item scale.**
