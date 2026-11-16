@@ -1,5 +1,5 @@
 {
-  "sourceCommit": "93fdc3d60f5c4c285337f96b67e6e6e958b20726",
+  "sourceCommit": "a023c35039bfe2de23ed3b4388bc22a9343d4690",
   "image": "map-hoenn.png",
   "places": {
     "littleroot": {
@@ -3371,7 +3371,7 @@
           "super_rod"
         ],
         "region": "Kanto",
-        "note": ""
+        "note": "Look in the existing Cycling Road grass on Route 17 for seasonal visitors."
       },
       {
         "section": "section-sabrina-and-the-teleport-pads",
@@ -4143,7 +4143,7 @@
           "super_rod"
         ],
         "region": "Kanto",
-        "note": ""
+        "note": "Look for Tangela and seasonal grass visitors on Route 21 North. Surf has a different seasonal lineup on each half of Route 21."
       },
       {
         "section": "section-compare-the-survey-with-oak",

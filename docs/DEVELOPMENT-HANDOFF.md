@@ -1,5 +1,13 @@
 # Development handoff
 
+## Kanto seasonal grass and Surf expansion (16 November 2026)
+
+**Model: GPT-6.1 Sol | Reasoning: diversify the remaining sparse Kanto routes using their existing grass and coastal encounter slots.**
+
+After the owner requested a larger batch, added 144 distinct seasonal visitors across 18 encounter methods on 17 numbered Kanto maps. Routes 6–18 and Route 21 North have two grass visitors per season at 20% and 10%. Routes 19–20 and both halves of Route 21 have two Surf visitors per season at 30% and 5%. Every original resident and the native slot levels and encounter rates are preserved. Route 17 uses the existing Cycling Road grass. Route 21 South gains coastal encounters. Existing grotto species were excluded from the selection.
+
+The review LegendsDex and Kanto walkthrough are pinned to gameplay source `a023c35039bfe2de23ed3b4388bc22a9343d4690`. The seasonal table regression validated all 224 ordinary tables and the wiki can import older snapshots without stale variants. Native terrain fixture discovery succeeded for all 468 seasonal scenarios. This branch is for review against the published v0.0.86 baseline.
+
 ## v0.0.86 Cooking and Kanto Encounters published and verified (15 November 2026)
 
 **Model: GPT-6.1 Sol | Reasoning: publish approved cooking and extend seasonal grass into the first four numbered Kanto routes using the existing game and wiki resolvers.**
