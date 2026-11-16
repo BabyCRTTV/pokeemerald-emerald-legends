@@ -11,6 +11,11 @@
 #include "constants/flags.h"
 #include "constants/vars.h"
 
+// The byte was reserved in older saves. Only the explicit Casual value enables it.
+#define LEGENDS_CASUAL_DIFFICULTY_VALUE 0xC7
+STATIC_ASSERT(offsetof(struct SaveBlock2, legendsDifficulty) == 0x90, LegendsDifficultyOffset);
+STATIC_ASSERT(offsetof(struct SaveBlock2, localTimeOffset) == 0x98, LegendsDifficultyKeepsSaveLayout);
+
 // Title-screen choices must survive the new save's flags/vars reset. Keep this
 // outside the SaveBlocks, consume it once, and clear it on a fresh title entry.
 struct LegendsTitleOptions
@@ -22,6 +27,7 @@ struct LegendsTitleOptions
     u8 starterSetting;
     u8 seasonMode;
     u8 playtimeSeason;
+    bool8 casualDifficulty;
 };
 
 EWRAM_DATA static struct LegendsTitleOptions sTitleOptions = {0};
@@ -39,11 +45,13 @@ void LegendsStageTitleOptions(void)
     sTitleOptions.shinyRate = LegendsGetShinyRateSetting();
     sTitleOptions.seasonMode = LegendsGetSeasonMode();
     sTitleOptions.playtimeSeason = LegendsGetSeasonForMode(LEGENDS_SEASONS_PLAYTIME);
+    sTitleOptions.casualDifficulty = LegendsIsCasualDifficulty();
     sTitleOptions.valid = TRUE;
 }
 
 void LegendsApplyTitleOptionsToNewGame(void)
 {
+    LegendsSetCasualDifficulty(sTitleOptions.valid && sTitleOptions.casualDifficulty);
     if (sTitleOptions.valid)
     {
         LegendsSetExpShareEnabled(sTitleOptions.expShareEnabled);
@@ -125,6 +133,16 @@ void LegendsSetFollowersEnabled(bool32 enabled)
     else
         FlagSet(FLAG_LEGENDS_FOLLOWERS_DISABLED);
     // The native field reload updates/removes the follower on leaving Options.
+}
+
+bool32 LegendsIsCasualDifficulty(void)
+{
+    return gSaveBlock2Ptr->legendsDifficulty == LEGENDS_CASUAL_DIFFICULTY_VALUE;
+}
+
+void LegendsSetCasualDifficulty(bool32 enabled)
+{
+    gSaveBlock2Ptr->legendsDifficulty = enabled ? LEGENDS_CASUAL_DIFFICULTY_VALUE : 0;
 }
 
 u8 LegendsGetShinyRateSetting(void)

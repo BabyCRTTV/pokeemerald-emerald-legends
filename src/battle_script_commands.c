@@ -1,5 +1,6 @@
 #include "global.h"
 #include "legends_meals.h"
+#include "legends_settings.h"
 #include "legends_adventure.h"
 #include "battle.h"
 #include "battle_hold_effects.h"
@@ -2298,6 +2299,8 @@ static void Cmd_getexp(void)
                     ApplyExperienceMultipliers(&gBattleStruct->battlerExpReward, *expMonId, gBattlerFainted);
                     gBattleStruct->battlerExpReward += gBattleStruct->battlerExpReward
                         * LegendsMealBonus(MEAL_EFFECT_EXPERIENCE) / 100;
+                    if (LegendsIsCasualDifficulty())
+                        gBattleStruct->battlerExpReward += gBattleStruct->battlerExpReward * 5 / 100;
 
                     if (B_EXP_CAP_TYPE == EXP_CAP_HARD && gBattleStruct->battlerExpReward != 0)
                     {
@@ -4055,6 +4058,8 @@ static void Cmd_getmoneyreward(void)
         if (gBattleTypeFlags & BATTLE_TYPE_TWO_OPPONENTS)
             money += GetTrainerMoneyToGive(TRAINER_BATTLE_PARAM.opponentB);
         money += money * LegendsMealBonus(MEAL_EFFECT_PRIZE) / 100;
+        if (LegendsIsCasualDifficulty())
+            money += money * 10 / 100;
         AddMoney(&gSaveBlock1Ptr->money, money);
     }
     else

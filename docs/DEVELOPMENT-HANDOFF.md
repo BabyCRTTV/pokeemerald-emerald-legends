@@ -1,5 +1,13 @@
 # Development handoff
 
+## Casual and Normal difficulty (16 November 2026)
+
+**Model: GPT-6.1 Sol | Reasoning: layer a saved Casual option over native move scoring and final battle rewards.**
+
+Options → Adventure now lets the player choose Normal or Casual at the title screen and in the field. Casual gives opposing trainers a 15% chance to pick a lower-scored legal move when one is available. Predictions, allied AI, link and recorded battles, and Palace move groups keep their established rules. Casual grants 5% more battle EXP and 10% more trainer prize money after existing modifiers. Normal uses the established behavior.
+
+A formerly reserved SaveBlock2 byte stores the selection. Legacy zero and unknown values read as Normal. Native mGBA verified toggling, an actual field save and Continue, matched Route 102 wins, and 1,000 controlled trainer choices in each mode. The host test checks the chance boundary and unusable moves. Draft only. [Preview evidence](qa/difficulty-preview.json).
+
 ## Oats, Ginger, and Peach cooking batch (16 November 2026)
 
 **Model: GPT-6.1 Sol | Reasoning: add three pantry ingredients and four recipes through the shared shop and recipe tables, preserving existing item IDs.**

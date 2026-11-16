@@ -1,0 +1,56 @@
+{
+  "status": "Preview in draft. Visual review and release verification pending.",
+  "base_commit": "20bee8ce54a6884115023750f34e1942ad3712f2",
+  "version": "0.0.87",
+  "emulator": "mGBA 0.10.5",
+  "rom_sha256": "14527c19bce7daa06ac685d53930dd6155b08306d65ea7060a2a2cc47701baf7",
+  "elf_sha256": "22f41f319f5f6f78f670fc01b89bd6b26adc2b5013cc59698d5bdf6c1806cdd5",
+  "harness_sha256": {
+    "verify.py": "7a7ceca1b6d7df58e164b4af68b0eec916424f4fb140447e3d4f8d71a7e87101",
+    "fixture.c": "cec50fcae6586f9813d0bed94ebf254a693a0272985beb4a57f0d5739fa3bdae"
+  },
+  "results": {
+    "options": "Normal on a fresh game, Casual selected through field Options, then switched back to Normal.",
+    "persistence": "Selected Casual in Options, saved through the field menu, cloned and reloaded the battery, reset and chose Continue. Casual was retained.",
+    "route_102_calvin": {
+      "normal": {
+        "money": 80,
+        "exp": 27
+      },
+      "casual": {
+        "money": 88,
+        "exp": 28
+      }
+    },
+    "scored_trainer_moves_in_1000_attempts": {
+      "moves": [
+        "Water Gun",
+        "Ember",
+        "Growl",
+        "Empty slot"
+      ],
+      "normal": [
+        1000,
+        0,
+        0,
+        0
+      ],
+      "casual": [
+        860,
+        73,
+        67,
+        0
+      ]
+    },
+    "host": [
+      "Options input and paging, all 100 chance rolls and legality gates, visual polish, native window frames"
+    ]
+  },
+  "save_layout": "One formerly reserved SaveBlock2 byte at 0x90. Both sizeof and surrounding offsets stay fixed. A zero or unknown stored value defaults to Normal.",
+  "scope": "Controlled map and party setup. Native Options input, field trainer battle, save menu, and Continue. The AI sample used known scores and legal slots inside an actual trainer battle. Full historical battery matrix and release checks pending.",
+  "screens_sha256": {
+    "options-normal.png": "5e99bd8e2d3d805977205a234a12c2fc56edf08820e7701f6e06f292d21fd354",
+    "options-casual.png": "d16fdcd372d57e269c40a535c2f1010e70031d833b8cbb07b1198fc9ee7c6ad7",
+    "options-return-to-normal.png": "5e99bd8e2d3d805977205a234a12c2fc56edf08820e7701f6e06f292d21fd354"
+  }
+}

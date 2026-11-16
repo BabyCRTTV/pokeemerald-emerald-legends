@@ -36,6 +36,7 @@
 #define tSeasonEdited data[12]
 #define tFollowers data[13]
 #define tStarterSetting data[14]
+#define tCasualDifficulty data[15]
 
 enum
 {
@@ -53,6 +54,7 @@ enum
     MENUITEM_FRAMETYPE,
     MENUITEM_STARTERS,
     MENUITEM_STARTERINFO,
+    MENUITEM_DIFFICULTY,
     MENUITEM_NEXTPAGE,
     MENUITEM_COUNT,
 };
@@ -86,6 +88,7 @@ static u8 BattleScene_ProcessInput(u8 selection);
 static void BattleScene_DrawChoices(u8 selection, u8 y);
 static u8 BattleStyle_ProcessInput(u8 selection);
 static void BattleStyle_DrawChoices(u8 selection, u8 y);
+static void Difficulty_DrawChoices(bool8 casual, u8 y);
 static u8 OnOff_ProcessInput(u8 selection);
 static void OnOff_DrawChoices(u8 selection, u8 y);
 static u8 ShinyRate_ProcessInput(u8 selection);
@@ -175,6 +178,7 @@ static const u8 *const sOptionMenuItemsNames[MENUITEM_COUNT] =
     [MENUITEM_FRAMETYPE]   = COMPOUND_STRING("FRAME"),
     [MENUITEM_STARTERS]    = COMPOUND_STRING("STARTERS"),
     [MENUITEM_STARTERINFO] = COMPOUND_STRING("APPLIES TO"),
+    [MENUITEM_DIFFICULTY]  = COMPOUND_STRING("DIFFICULTY"),
     [MENUITEM_NEXTPAGE]    = COMPOUND_STRING("NEXT PAGE"),
 };
 
@@ -207,14 +211,14 @@ static const u8 sOptionMenuPageItems[OPTION_PAGE_COUNT][OPTION_PAGE_MAX_ITEMS] =
         MENUITEM_SETSEASON,
         MENUITEM_NEXTPAGE,
     },
-    [OPTION_PAGE_ADVENTURE] = {MENUITEM_STARTERS, MENUITEM_STARTERINFO, MENUITEM_NEXTPAGE},
+    [OPTION_PAGE_ADVENTURE] = {MENUITEM_DIFFICULTY, MENUITEM_STARTERS, MENUITEM_STARTERINFO, MENUITEM_NEXTPAGE},
 };
 
 static const u8 sOptionMenuPageItemCounts[OPTION_PAGE_COUNT] =
 {
     [OPTION_PAGE_GENERAL] = 7,
     [OPTION_PAGE_LEGENDS] = 7,
-    [OPTION_PAGE_ADVENTURE] = 3,
+    [OPTION_PAGE_ADVENTURE] = 4,
 };
 
 static const struct WindowTemplate sOptionMenuWinTemplates[] =
@@ -371,6 +375,7 @@ void CB2_InitOptionMenu(void)
         gTasks[taskId].tSelectedSeason = LegendsGetSeasonForMode(LEGENDS_SEASONS_PLAYTIME);
         gTasks[taskId].tSeasonEdited = FALSE;
         gTasks[taskId].tStarterSetting = LegendsGetStarterSetting();
+        gTasks[taskId].tCasualDifficulty = LegendsIsCasualDifficulty();
 
         DrawOptionMenuPage(taskId);
         HighlightOptionMenuItem(gTasks[taskId].tMenuSelection);
@@ -442,6 +447,12 @@ static void Task_OptionMenuProcessInput(u8 taskId)
 
         switch (itemId)
         {
+        case MENUITEM_DIFFICULTY:
+            previousOption = gTasks[taskId].tCasualDifficulty;
+            gTasks[taskId].tCasualDifficulty = OnOff_ProcessInput(previousOption);
+            if (previousOption != gTasks[taskId].tCasualDifficulty)
+                Difficulty_DrawChoices(gTasks[taskId].tCasualDifficulty, y);
+            break;
         case MENUITEM_STARTERS:
             previousOption = gTasks[taskId].tStarterSetting;
             gTasks[taskId].tStarterSetting = StarterSetting_ProcessInput(previousOption);
@@ -555,6 +566,7 @@ static void Task_OptionMenuSave(u8 taskId)
     LegendsSetFollowersEnabled(gTasks[taskId].tFollowers == 0);
     LegendsSetShinyRateSetting(gTasks[taskId].tShinyRate);
     LegendsSetStarterSetting(gTasks[taskId].tStarterSetting);
+    LegendsSetCasualDifficulty(gTasks[taskId].tCasualDifficulty);
     LegendsSetSeasonMode(gTasks[taskId].tSeasonMode);
     if (gTasks[taskId].tSeasonEdited)
         LegendsSetPlaytimeSeason(gTasks[taskId].tSelectedSeason);
@@ -702,6 +714,13 @@ static void BattleStyle_DrawChoices(u8 selection, u8 y)
 
     DrawOptionMenuChoice(gText_BattleStyleShift, 104, y, styles[0]);
     DrawOptionMenuChoice(gText_BattleStyleSet, GetStringRightAlignXOffset(FONT_NORMAL, gText_BattleStyleSet, 198), y, styles[1]);
+}
+
+static void Difficulty_DrawChoices(bool8 casual, u8 y)
+{
+    const u8 *casualText = COMPOUND_STRING("{COLOR GREEN}{SHADOW LIGHT_GREEN}CASUAL");
+    DrawOptionMenuChoice(gText_ButtonTypeNormal, 104, y, !casual);
+    DrawOptionMenuChoice(casualText, GetStringRightAlignXOffset(FONT_NORMAL, casualText, 198), y, casual);
 }
 
 static u8 OnOff_ProcessInput(u8 selection)
@@ -1003,6 +1022,9 @@ static void DrawOptionMenuPage(u8 taskId)
 
         switch (itemId)
         {
+        case MENUITEM_DIFFICULTY:
+            Difficulty_DrawChoices(gTasks[taskId].tCasualDifficulty, row * OPTION_ROW_HEIGHT);
+            break;
         case MENUITEM_STARTERS:
             StarterSetting_DrawChoice(gTasks[taskId].tStarterSetting, row * OPTION_ROW_HEIGHT);
             break;

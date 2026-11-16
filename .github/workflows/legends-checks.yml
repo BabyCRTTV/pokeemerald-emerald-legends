@@ -45,7 +45,9 @@ jobs:
       - name: Exercise starter and rival regression tests
         run: python3 test/legends-starters.test.py
       - name: Exercise Options navigation regression tests
-        run: python3 test/legends-options-navigation.test.py
+        run: |
+          python3 test/legends-options-navigation.test.py
+          python3 test/legends-difficulty.test.py
       - name: Exercise Options text regression tests
         run: python3 test/legends-options-text.test.py
       - name: Exercise New Game Options regression tests
