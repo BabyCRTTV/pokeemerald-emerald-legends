@@ -6,7 +6,7 @@
 
 Kitchens and Mom's three portable tools now show the highlighted recipe's native icon, required quantities, and timed buff on the right. Missing ingredients are red. The cooking prompt goes directly to Yes/No and declining restores the highlighted recipe. Both bedroom layouts recolor the seat and entire backrest together. Smoothed Butter and Egg silhouettes, redrew Treat Case as a pastry tin, and fitted its description in the Bag. Item IDs, recipes, buff data, and save layouts were preserved.
 
-The Debug ROM passed focused mGBA menu, transaction, buff, art and bedroom pixel checks, plus the host Bag and bedroom regressions. The visuals await owner approval. [Preview evidence](qa/cooking-room-polish-preview.json).
+The Debug ROM passed focused mGBA menu, transaction, buff, art and bedroom pixel checks, plus the host Bag and bedroom regressions. The owner approved the chair and Butter/Egg sprites, and requested more room in the recipe panel and three new Treat Case options. The revised recipe browser uses a taller window with 14-pixel ingredient rows, a separated buff section, and room for eight recipe rows. Replayed the native cooking checks after the resize. The Berry Satchel, Mint Canister, and Blue Lunchbox concepts await selection. [Preview evidence](qa/cooking-room-polish-preview.json).
 
 ## v0.0.87 Kanto seasonal encounters candidate (16 November 2026)
 

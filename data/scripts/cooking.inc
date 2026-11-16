@@ -21,25 +21,7 @@ EventScript_OpenCooking::
 	setvar VAR_0x8004, MULTI_B_PRESSED
 
 EventScript_ChooseMeal::
-	goto_if_eq VAR_0x8005, 1, EventScript_ChooseCanteenDrink
-	goto_if_eq VAR_0x8005, 2, EventScript_ChooseMessKitMeal
-	goto_if_eq VAR_0x8005, 3, EventScript_ChoosePercolatorDrink
-	message Text_ChooseKitchenRecipe
-	goto EventScript_ShowRecipes
-
-EventScript_ChooseCanteenDrink::
-	message Text_ChooseDrink
-	goto EventScript_ShowRecipes
-
-EventScript_ChooseMessKitMeal::
-	message Text_ChooseMeal
-	goto EventScript_ShowRecipes
-
-EventScript_ChoosePercolatorDrink::
-	message Text_ChooseBrew
-
-EventScript_ShowRecipes::
-	waitmessage
+	closemessage
 	callnative Script_LegendsChooseRecipe
 	goto_if_eq VAR_RESULT, MULTI_B_PRESSED, EventScript_FinishMealInteraction
 	copyvar VAR_0x8004, VAR_RESULT
@@ -117,18 +99,6 @@ Text_MomPackedCookingGear::
 	.string "for your trip, honey.\p"
 	.string "With a meal and a warm drink,\n"
 	.string "you can make anywhere feel like home.$"
-
-Text_ChooseKitchenRecipe::
-	.string "What will you prepare?$"
-
-Text_ChooseMeal::
-	.string "What would you like to cook?$"
-
-Text_ChooseDrink::
-	.string "What would you like to prepare?$"
-
-Text_ChooseBrew::
-	.string "What would you like to brew?$"
 
 Text_CookSelectedMeal::
 	.string "Craft this meal?$"

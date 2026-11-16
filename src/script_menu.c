@@ -104,9 +104,16 @@ static const struct DynamicListMenuEventCollection sDynamicListMenuEventCollecti
     }
 };
 
+#define SCRIPT_MENU_BASE_TILE_NUM 100
 #define COOKING_LIST_WIDTH 12
 #define COOKING_PREVIEW_WIDTH 13
-#define COOKING_PREVIEW_HEIGHT 12
+#define COOKING_PREVIEW_HEIGHT 16
+
+// Cooking can borrow the hidden dialogue window's tiles while browsing.
+// Its two windows must end before the dialogue and standard frame graphics.
+STATIC_ASSERT(SCRIPT_MENU_BASE_TILE_NUM + 2 * LEGENDS_COOKING_VISIBLE_ROWS * COOKING_LIST_WIDTH
+              + COOKING_PREVIEW_WIDTH * COOKING_PREVIEW_HEIGHT <= DLG_WINDOW_BASE_TILE_NUM,
+              CookingWindowsFitBelowFrames);
 
 static const struct ListMenuTemplate sScriptableListMenuTemplate =
 {
@@ -252,7 +259,6 @@ static void MultichoiceDynamicEventShowSprite_OnDestroy(struct DynamicListMenuEv
 static void MultichoiceCooking_OnInit(struct DynamicListMenuEventArgs *eventArgs)
 {
     const struct WindowTemplate *list = &gWindows[eventArgs->windowId].window;
-    // Keep both windows' graphics below the field dialogue's tile allocation.
     struct WindowTemplate preview = CreateWindowTemplate(0,
         list->tilemapLeft + list->width + 3, list->tilemapTop,
         COOKING_PREVIEW_WIDTH, COOKING_PREVIEW_HEIGHT, 15,
@@ -288,16 +294,16 @@ static void MultichoiceCooking_OnSelectionChanged(struct DynamicListMenuEventArg
         if (sSpriteId != MAX_SPRITES)
             ChangeSpriteOnSelection(eventArgs, 41, 15);
         PrintRecipeText(COMPOUND_STRING("Ingredients"), 36, 10, width - 40, FALSE);
-        FillWindowPixelRect(sAuxWindowId, PIXEL_FILL(TEXT_COLOR_LIGHT_GRAY), 4, 30, width - 8, 1);
+        FillWindowPixelRect(sAuxWindowId, PIXEL_FILL(TEXT_COLOR_LIGHT_GRAY), 6, 30, width - 12, 1);
         for (u32 i = 0; i < LEGENDS_RECIPE_INGREDIENTS && supplies[i] != ITEM_NONE; i++)
         {
             bool32 missing = !CheckBagHasItem(supplies[i], 1);
-            PrintRecipeText(GetItemName(supplies[i]), 4, 33 + 10 * i, width - 22, missing);
-            PrintRecipeText(COMPOUND_STRING("×1"), width - 16, 33 + 10 * i, 12, missing);
+            PrintRecipeText(GetItemName(supplies[i]), 6, 34 + 14 * i, width - 24, missing);
+            PrintRecipeText(COMPOUND_STRING("×1"), width - 18, 34 + 14 * i, 12, missing);
         }
-        FillWindowPixelRect(sAuxWindowId, PIXEL_FILL(TEXT_COLOR_LIGHT_GRAY), 4, 74, width - 8, 1);
-        PrintRecipeText(LegendsMealEffectText(meal), 4, 76, width - 8, FALSE);
-        PrintRecipeText(duration, 4, 85, width - 8, FALSE);
+        FillWindowPixelRect(sAuxWindowId, PIXEL_FILL(TEXT_COLOR_LIGHT_GRAY), 6, 93, width - 12, 1);
+        PrintRecipeText(LegendsMealEffectText(meal), 4, 98, width - 8, FALSE);
+        PrintRecipeText(duration, 6, 111, width - 12, FALSE);
         gSpecialVar_0x8006 = LegendsMealIsDrink(meal);
     }
     CopyWindowToVram(sAuxWindowId, COPYWIN_FULL);
@@ -1111,7 +1117,7 @@ static bool8 IsPicboxClosed(void)
 
 u8 CreateWindowFromRect(u8 x, u8 y, u8 width, u8 height)
 {
-    struct WindowTemplate template = CreateWindowTemplate(0, x + 1, y + 1, width, height, 15, 100);
+    struct WindowTemplate template = CreateWindowTemplate(0, x + 1, y + 1, width, height, 15, SCRIPT_MENU_BASE_TILE_NUM);
     u8 windowId = AddWindow(&template);
     PutWindowTilemap(windowId);
     return windowId;

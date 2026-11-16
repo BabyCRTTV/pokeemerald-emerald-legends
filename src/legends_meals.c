@@ -331,7 +331,8 @@ void Script_LegendsChooseRecipe(struct ScriptContext *ctx)
     u8 *cancel = Alloc(sizeof("CANCEL"));
     StringCopy(cancel, gText_Cancel2);
     items[count] = (struct ListMenuItem){cancel, MULTI_B_PRESSED};
-    if (ScriptMenu_MultichoiceDynamic(0, 0, count + 1, items, FALSE, 6, initialRow, DYN_MULTICHOICE_CB_COOKING))
+    if (ScriptMenu_MultichoiceDynamic(0, 0, count + 1, items, FALSE, LEGENDS_COOKING_VISIBLE_ROWS,
+                                     initialRow, DYN_MULTICHOICE_CB_COOKING))
     {
         ScriptContext_Stop();
         ctx->waitAfterCallNative = TRUE;

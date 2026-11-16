@@ -1,5 +1,5 @@
 {
-  "status": "Visual review pending",
+  "status": "Chair and ingredient sprites approved. Updated cooking spacing and Treat Case concepts in review.",
   "base_commit": "04ff9fb1b4eae13bfe6b4a83d347611d6b36f07d",
   "game_version": "0.0.87",
   "emulator": "mGBA native core 0.10.5",
@@ -33,5 +33,19 @@
     "chair/female-rose.png": "450a359366c5900d55bbc97b84240dd387ae5c056d8b1d0a77ff0b5d53584865",
     "chair/female-plum.png": "117b7f5dd66dcaeb5b9a6d7e2f902030b7e902d0c6582b42d94aaa69d04f3a57"
   },
-  "local_evidence_path": "build/cooking-polish"
+  "local_evidence_path": "build/cooking-polish",
+  "cooking_spacing_revision": {
+    "base_commit": "95024446fa8cf4a4daa0a079b6a3035555331e09",
+    "debug_rom_sha256": "81f040236f17043254c22de951e96e6cafa9b5450718cbcd8a086eea14f062bd",
+    "debug_elf_sha256": "7ff9f168dad8371ec267962d5a286043b85a73b2e4c821a0995be2439bb4906f",
+    "changes": "Increased the details panel from 96 to 128 pixels and the ingredient row pitch from 10 to 14 pixels. Moved the browse dialogue out of the layout and fit eight recipe rows. The standard Yes/No prompt resumes after clearing the two browse windows.",
+    "verification": "Replayed the mGBA cooking path for all four stations, No and B, the Cancel row, six craft-and-consume transactions, and the missing-ice refusal. Checked the rendered panels for item icon, text, ingredient quantities and buff duration.",
+    "frame_sha256": {
+      "menu-2.png": "a0fc7f2fbf681bbb0ff325131836cf0c2d69fd1afa6ad33b23aa52bd5c524bf5",
+      "percolator-milk-coffee.png": "2fca6f93658532ab2fb90d2c02c515b59d3da58a921573d7392ff9915f757420",
+      "menu-missing-ice.png": "9504652c258b68da1ea06c0e780192ae3a888089c552efafd5337a90826a0fd8",
+      "recipe-6.png": "ec274e4836cdf2a2579e8512677bdc7753afa0b52a376f1fc498d6d6bc9170d6"
+    },
+    "local_evidence_path": "build/cooking-spacing"
+  }
 }
