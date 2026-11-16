@@ -179,10 +179,23 @@ void qa(void)
         if (b[3] && !b[4])
         {
             b[23] = gSpecialVar_0x8000; // actual search request remains unset for unseen A
+            enum Species expectedSpecies[NUM_LAND_MONS_ENCOUNTER_SLOTS] = {SPECIES_NONE};
+            u32 expectedCount = 0;
+            for (u32 i = 0; i < slots; i++)
+            {
+                enum Species species = s->expected[i];
+                enum NationalDexOrder dexNum = SpeciesToNationalPokedexNum(species);
+                bool32 duplicate = FALSE;
+                for (u32 j = 0; j < expectedCount; j++)
+                    if (SpeciesToNationalPokedexNum(expectedSpecies[j]) == dexNum)
+                        duplicate = TRUE;
+                if (species != SPECIES_NONE && !duplicate)
+                    expectedSpecies[expectedCount++] = species;
+            }
             for (u32 i = 0; i < slots; i++)
             {
                 enum Species species = s->area == WILD_AREA_WATER ? ui->waterSpecies[i] : ui->landSpecies[i];
-                check(species == s->expected[i] || s->area != WILD_AREA_WATER, 33, b);
+                check(species == expectedSpecies[i], 33, b);
                 if (species == SPECIES_NONE) continue;
                 b[5]++;
                 x = s->area == WILD_AREA_WATER ? ROW_WATER_ICON_X + 24 * i : ROW_LAND_ICON_X + 24 * (i % COL_LAND_COUNT);
@@ -214,13 +227,6 @@ void qa(void)
                     check(icon->oam.paletteNum != IndexOfSpritePaletteTag(0x4011), 14, b);
                     check(equal(&gPlttBufferUnfaded[pal], GetValidMonIconPalettePtr(species), PLTT_SIZE_4BPP), 15, b);
                 }
-            }
-            u32 expectedCount = 0;
-            for (u32 i = 0; i < slots; i++)
-            {
-                bool32 duplicate = FALSE;
-                for (u32 j = 0; j < i; j++) if (s->expected[i] == s->expected[j]) duplicate = TRUE;
-                if (!duplicate) expectedCount++;
             }
             check(b[5] == expectedCount, 16, b);
             // Inspect all three grid sections, including existing water residents.
