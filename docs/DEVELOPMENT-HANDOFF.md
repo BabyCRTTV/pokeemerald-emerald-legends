@@ -1,5 +1,13 @@
 # Development handoff
 
+## Rice, garlic, lemon, and vanilla recipes (15 November 2026)
+
+**Model: GPT-6.1 Sol | Reasoning: put the approved ingredients into varied meals and drinks, using the existing recipe transaction and timed effects.**
+
+Added Garlic Rice Pilaf, Tomato Rice, Lemon Shortbread, and Vanilla Pudding to kitchens and the Mess Kit. Kitchens also make Iced Lemonade and Vanilla Latte, which can be prepared in the Steel Canteen and Percolator respectively. The lemonade requires Ice Cubes and uses the approved tapered cup. IDs 933–938 append within the existing item-history bitmap. The Bag and save layouts remain compatible.
+
+Bought the four ingredients, verified all six cooking transactions and effects in mGBA, and confirmed that missing ice leaves other supplies intact. Bag, item-history, and save-sector tests passed. [Preview evidence](qa/pantry-recipes-preview.json). Review branch only.
+
 ## Lemon outline and Poké Mart coverage (15 November 2026)
 
 **Model: GPT-6.1 Sol | Reasoning: remove the lone lemon outline pixel and activate the two reachable Kanto marts without changing the shared shop stock or warp data.**

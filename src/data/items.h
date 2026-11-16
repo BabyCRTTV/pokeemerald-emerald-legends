@@ -15180,6 +15180,96 @@ const struct ItemInfo gItemsInfo[] =
         .iconPalette = gItemIconPalette_CookingVanilla,
     },
 
+    [ITEM_GARLIC_RICE_PILAF] =
+    {
+        .name = ITEM_NAME("Garlic Rice Pilaf"),
+        .price = 105,
+        .description = COMPOUND_STRING(
+            "Fluffy rice with\n"
+            "garlic and onion.\n"
+            "Encounters -15%."),
+        .pocket = POCKET_FOOD,
+        .type = ITEM_USE_BAG_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_LegendsMeal,
+        .iconPic = gItemIcon_CookingGarlicRicePilaf,
+        .iconPalette = gItemIconPalette_CookingGarlicRicePilaf,
+    },
+
+    [ITEM_TOMATO_RICE] =
+    {
+        .name = ITEM_NAME("Tomato Rice"),
+        .price = 95,
+        .description = COMPOUND_STRING(
+            "Rice simmered with\n"
+            "tomato and onion.\n"
+            "Prize money +10%."),
+        .pocket = POCKET_FOOD,
+        .type = ITEM_USE_BAG_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_LegendsMeal,
+        .iconPic = gItemIcon_CookingTomatoRice,
+        .iconPalette = gItemIconPalette_CookingTomatoRice,
+    },
+
+    [ITEM_LEMON_SHORTBREAD] =
+    {
+        .name = ITEM_NAME("Lemon Shortbread"),
+        .price = 105,
+        .description = COMPOUND_STRING(
+            "Buttery cookies\n"
+            "with lemon zest.\n"
+            "Catch odds +5%."),
+        .pocket = POCKET_FOOD,
+        .type = ITEM_USE_BAG_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_LegendsMeal,
+        .iconPic = gItemIcon_CookingLemonShortbread,
+        .iconPalette = gItemIconPalette_CookingLemonShortbread,
+    },
+
+    [ITEM_VANILLA_PUDDING] =
+    {
+        .name = ITEM_NAME("Vanilla Pudding"),
+        .price = 110,
+        .description = COMPOUND_STRING(
+            "Creamy rice pudding\n"
+            "with vanilla seeds.\n"
+            "Walk friendship +2."),
+        .pocket = POCKET_FOOD,
+        .type = ITEM_USE_BAG_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_LegendsMeal,
+        .iconPic = gItemIcon_CookingVanillaPudding,
+        .iconPalette = gItemIconPalette_CookingVanillaPudding,
+    },
+
+    [ITEM_ICED_LEMONADE] =
+    {
+        .name = ITEM_NAME("Iced Lemonade"),
+        .price = 85,
+        .description = COMPOUND_STRING(
+            "Tart lemon juice\n"
+            "served over ice.\n"
+            "Walk friendship +1."),
+        .pocket = POCKET_FOOD,
+        .type = ITEM_USE_BAG_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_LegendsMeal,
+        .iconPic = gItemIcon_CookingIcedLemonade,
+        .iconPalette = gItemIconPalette_CookingIcedLemonade,
+    },
+
+    [ITEM_VANILLA_LATTE] =
+    {
+        .name = ITEM_NAME("Vanilla Latte"),
+        .price = 110,
+        .description = COMPOUND_STRING(
+            "Milky coffee with\n"
+            "vanilla and foam.\n"
+            "Battle Exp. +15%."),
+        .pocket = POCKET_FOOD,
+        .type = ITEM_USE_BAG_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_LegendsMeal,
+        .iconPic = gItemIcon_CookingVanillaLatte,
+        .iconPalette = gItemIconPalette_CookingVanillaLatte,
+    },
+
     [ITEM_TREAT_CASE] =
     {
         .name = ITEM_NAME("Treat Case"),

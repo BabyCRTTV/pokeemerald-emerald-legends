@@ -45,7 +45,7 @@ EventScript_ChooseMeal::
 	goto_if_eq VAR_0x8005, 3, EventScript_ChoosePercolatorDrink
 	message Text_ChooseKitchenRecipe
 	waitmessage
-	dynmultichoice 0, 0, FALSE, 6, 0, DYN_MULTICHOICE_CB_NONE, Text_CookingMenuOmelet, Text_CookingMenuPancakes, Text_CookingMenuFlatbread, Text_CookingMenuSoup, Text_CookingMenuCrackers, Text_CookingMenuHotCocoa, Text_CookingMenuCustard, Text_CookingMenuTomatoFlatbread, Text_CookingMenuButteredPotatoes, Text_CookingMenuCarrotSoup, Text_CookingMenuOnionTart, Text_CookingMenuApplePancakes, Text_CookingMenuPotatoHash, Text_CookingMenuEggnog, Text_CookingMenuSpicedCider, Text_CookingMenuIcedCinnamonCoffee, Text_CancelCooking
+	dynmultichoice 0, 0, FALSE, 6, 0, DYN_MULTICHOICE_CB_NONE, Text_CookingMenuOmelet, Text_CookingMenuPancakes, Text_CookingMenuFlatbread, Text_CookingMenuSoup, Text_CookingMenuCrackers, Text_CookingMenuHotCocoa, Text_CookingMenuCustard, Text_CookingMenuTomatoFlatbread, Text_CookingMenuButteredPotatoes, Text_CookingMenuCarrotSoup, Text_CookingMenuOnionTart, Text_CookingMenuApplePancakes, Text_CookingMenuPotatoHash, Text_CookingMenuEggnog, Text_CookingMenuSpicedCider, Text_CookingMenuIcedCinnamonCoffee, Text_CookingMenuGarlicRicePilaf, Text_CookingMenuTomatoRice, Text_CookingMenuLemonShortbread, Text_CookingMenuVanillaPudding, Text_CookingMenuIcedLemonade, Text_CookingMenuVanillaLatte, Text_CancelCooking
 	switch VAR_RESULT
 	case 0, EventScript_MealOmelet
 	case 1, EventScript_MealPancakes
@@ -63,6 +63,12 @@ EventScript_ChooseMeal::
 	case 13, EventScript_MealEggnog
 	case 14, EventScript_MealSpicedCider
 	case 15, EventScript_MealIcedCinnamonCoffee
+	case 16, EventScript_MealGarlicRicePilaf
+	case 17, EventScript_MealTomatoRice
+	case 18, EventScript_MealLemonShortbread
+	case 19, EventScript_MealVanillaPudding
+	case 20, EventScript_MealIcedLemonade
+	case 21, EventScript_MealVanillaLatte
 	goto EventScript_FinishMealInteraction
 
 EventScript_ChooseCanteenDrink::
@@ -73,12 +79,13 @@ EventScript_ChooseCanteenDrink::
 	case 0, EventScript_MealHotCocoa
 	case 1, EventScript_MealEggnog
 	case 2, EventScript_MealSpicedCider
+	case 3, EventScript_MealIcedLemonade
 	goto EventScript_FinishMealInteraction
 
 EventScript_ChooseMessKitMeal::
 	message Text_ChooseMeal
 	waitmessage
-	dynmultichoice 0, 0, FALSE, 6, 0, DYN_MULTICHOICE_CB_NONE, Text_CookingMenuOmelet, Text_CookingMenuPancakes, Text_CookingMenuFlatbread, Text_CookingMenuSoup, Text_CookingMenuCrackers, Text_CookingMenuCustard, Text_CookingMenuTomatoFlatbread, Text_CookingMenuButteredPotatoes, Text_CookingMenuCarrotSoup, Text_CookingMenuOnionTart, Text_CookingMenuApplePancakes, Text_CookingMenuPotatoHash, Text_CancelCooking
+	dynmultichoice 0, 0, FALSE, 6, 0, DYN_MULTICHOICE_CB_NONE, Text_CookingMenuOmelet, Text_CookingMenuPancakes, Text_CookingMenuFlatbread, Text_CookingMenuSoup, Text_CookingMenuCrackers, Text_CookingMenuCustard, Text_CookingMenuTomatoFlatbread, Text_CookingMenuButteredPotatoes, Text_CookingMenuCarrotSoup, Text_CookingMenuOnionTart, Text_CookingMenuApplePancakes, Text_CookingMenuPotatoHash, Text_CookingMenuGarlicRicePilaf, Text_CookingMenuTomatoRice, Text_CookingMenuLemonShortbread, Text_CookingMenuVanillaPudding, Text_CancelCooking
 	switch VAR_RESULT
 	case 0, EventScript_MealOmelet
 	case 1, EventScript_MealPancakes
@@ -92,12 +99,16 @@ EventScript_ChooseMessKitMeal::
 	case 9, EventScript_MealOnionTart
 	case 10, EventScript_MealApplePancakes
 	case 11, EventScript_MealPotatoHash
+	case 12, EventScript_MealGarlicRicePilaf
+	case 13, EventScript_MealTomatoRice
+	case 14, EventScript_MealLemonShortbread
+	case 15, EventScript_MealVanillaPudding
 	goto EventScript_FinishMealInteraction
 
 EventScript_ChoosePercolatorDrink::
 	message Text_ChooseBrew
 	waitmessage
-	dynmultichoice 0, 0, FALSE, 6, 0, DYN_MULTICHOICE_CB_NONE, Text_BrewMenuMilkCoffee, Text_BrewMenuSweetTea, Text_BrewMenuMatchaLatte, Text_BrewMenuBrewedOolong, Text_BrewMenuBrewedBlackTea, Text_BrewMenuBlackCoffee, Text_BrewMenuHojichaLatte, Text_BrewMenuHojichaTea, Text_CookingMenuIcedCinnamonCoffee, Text_CancelCooking
+	dynmultichoice 0, 0, FALSE, 6, 0, DYN_MULTICHOICE_CB_NONE, Text_BrewMenuMilkCoffee, Text_BrewMenuSweetTea, Text_BrewMenuMatchaLatte, Text_BrewMenuBrewedOolong, Text_BrewMenuBrewedBlackTea, Text_BrewMenuBlackCoffee, Text_BrewMenuHojichaLatte, Text_BrewMenuHojichaTea, Text_CookingMenuIcedCinnamonCoffee, Text_CookingMenuVanillaLatte, Text_CancelCooking
 	switch VAR_RESULT
 	case 0, EventScript_MealMilkCoffee
 	case 1, EventScript_MealSweetTea
@@ -108,6 +119,7 @@ EventScript_ChoosePercolatorDrink::
 	case 6, EventScript_MealHojichaLatte
 	case 7, EventScript_MealHojichaTea
 	case 8, EventScript_MealIcedCinnamonCoffee
+	case 9, EventScript_MealVanillaLatte
 	goto EventScript_FinishMealInteraction
 
 EventScript_MealOmelet::
@@ -228,6 +240,36 @@ EventScript_MealSpicedCider::
 EventScript_MealIcedCinnamonCoffee::
 	setvar VAR_0x8004, 23
 	msgbox Text_MealIcedCinnamonCoffee
+	goto EventScript_ConfirmPrepareDrink
+
+EventScript_MealGarlicRicePilaf::
+	setvar VAR_0x8004, 24
+	msgbox Text_MealGarlicRicePilaf
+	goto EventScript_ConfirmCookMeal
+
+EventScript_MealTomatoRice::
+	setvar VAR_0x8004, 25
+	msgbox Text_MealTomatoRice
+	goto EventScript_ConfirmCookMeal
+
+EventScript_MealLemonShortbread::
+	setvar VAR_0x8004, 26
+	msgbox Text_MealLemonShortbread
+	goto EventScript_ConfirmCookMeal
+
+EventScript_MealVanillaPudding::
+	setvar VAR_0x8004, 27
+	msgbox Text_MealVanillaPudding
+	goto EventScript_ConfirmCookMeal
+
+EventScript_MealIcedLemonade::
+	setvar VAR_0x8004, 28
+	msgbox Text_MealIcedLemonade
+	goto EventScript_ConfirmPrepareDrink
+
+EventScript_MealVanillaLatte::
+	setvar VAR_0x8004, 29
+	msgbox Text_MealVanillaLatte
 	goto EventScript_ConfirmPrepareDrink
 
 EventScript_ConfirmCookMeal::
@@ -352,6 +394,24 @@ Text_CookingMenuSpicedCider:
 
 Text_CookingMenuIcedCinnamonCoffee:
 	.string "Iced Cinnamon Brew$"
+
+Text_CookingMenuGarlicRicePilaf:
+	.string "Garlic Rice Pilaf$"
+
+Text_CookingMenuTomatoRice:
+	.string "Tomato Rice$"
+
+Text_CookingMenuLemonShortbread:
+	.string "Lemon Shortbread$"
+
+Text_CookingMenuVanillaPudding:
+	.string "Vanilla Pudding$"
+
+Text_CookingMenuIcedLemonade:
+	.string "Iced Lemonade$"
+
+Text_CookingMenuVanillaLatte:
+	.string "Vanilla Latte$"
 
 Text_CancelCooking:
 	.string "CANCEL$"
@@ -537,6 +597,48 @@ Text_MealIcedCinnamonCoffee::
 	.string "Coffee Grounds, Water,\n"
 	.string "Cinnamon, and Ice Cubes (1 each).\p"
 	.string "Battle Exp. +10%\n"
+	.string "for 10 minutes.$"
+
+Text_MealGarlicRicePilaf::
+	.string "Garlic Rice Pilaf\p"
+	.string "Rice, Garlic, Butter,\n"
+	.string "and Onion (1 each).\p"
+	.string "Wild encounters -15%\n"
+	.string "for 10 minutes.$"
+
+Text_MealTomatoRice::
+	.string "Tomato Rice\p"
+	.string "Rice, Tomato, Onion,\n"
+	.string "and Salt (1 each).\p"
+	.string "Trainer prize money +10%\n"
+	.string "for 10 minutes.$"
+
+Text_MealLemonShortbread::
+	.string "Lemon Shortbread\p"
+	.string "Lemon, Flour, Butter,\n"
+	.string "and Sugar (1 each).\p"
+	.string "Catch odds +5%\n"
+	.string "for 10 minutes.$"
+
+Text_MealVanillaPudding::
+	.string "Vanilla Pudding\p"
+	.string "Rice, Milk, Vanilla,\n"
+	.string "and Sugar (1 each).\p"
+	.string "Walking friendship gains +2\n"
+	.string "for 10 minutes.$"
+
+Text_MealIcedLemonade::
+	.string "Iced Lemonade\p"
+	.string "Lemon, Water, Sugar,\n"
+	.string "and Ice Cubes (1 each).\p"
+	.string "Walking friendship gains +1\n"
+	.string "for 10 minutes.$"
+
+Text_MealVanillaLatte::
+	.string "Vanilla Latte\p"
+	.string "Coffee Grounds, Water,\n"
+	.string "Milk, and Vanilla (1 each).\p"
+	.string "Battle Exp. +15%\n"
 	.string "for 10 minutes.$"
 
 Text_CookSelectedMeal::

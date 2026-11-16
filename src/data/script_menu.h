@@ -1209,6 +1209,7 @@ static const struct MenuAction sLegendsCanteen[] = {
     {COMPOUND_STRING("Hot Cocoa")},
     {COMPOUND_STRING("Eggnog")},
     {COMPOUND_STRING("Spiced Cider")},
+    {COMPOUND_STRING("Iced Lemonade")},
     {gText_Cancel2},
 };
 
