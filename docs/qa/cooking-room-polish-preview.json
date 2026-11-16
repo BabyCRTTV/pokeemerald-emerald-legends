@@ -1,5 +1,5 @@
 {
-  "status": "Chair, recipe browser, and symmetrical Tan Satchel approved. Oats, Ginger, Peach, and four recipes in visual review.",
+  "status": "Chair, recipe browser, symmetrical Tan Satchel, and all three new ingredients and four recipes approved. Held in draft for additional development.",
   "base_commit": "04ff9fb1b4eae13bfe6b4a83d347611d6b36f07d",
   "game_version": "0.0.87",
   "emulator": "mGBA native core 0.10.5",
@@ -53,7 +53,7 @@
     "source_png_sha256": "ecc8fad79a5ac24e0af676e00eb90bc5a3d01c83bb2bbb27fd1e920a8e9390e9",
     "checks": [
       "Matched the selected Berry Satchel silhouette and kept the brass clasp.",
-      "Converted 24 \u00d7 24 indexed sprite to 288 bytes of 4bpp graphics, a 32-byte RGB555 palette, and compressed graphics.",
+      "Converted 24 × 24 indexed sprite to 288 bytes of 4bpp graphics, a 32-byte RGB555 palette, and compressed graphics.",
       "Inspected a Bag mockup of the converted colors."
     ],
     "scope": "Graphics-only change. Fresh gameplay capture pending.",
@@ -94,6 +94,8 @@
       "menu-3.png": "6eb06751d12fcf94371b2fd4a548496732745754a7664df712397a9427f2ca07",
       "menu-4.png": "a7e635145fa62e390dcb1ef4a1a84b066caf629fdae52402acf09d7f4da451be",
       "approved-treat-case.png": "203b5d3d8d8908f4b619591a665941aae4f80e1dd4bdbce6cafddb2aa46e8966"
-    }
+    },
+    "owner_approved": true,
+    "approved_review_commit": "87217c637e994115db8b7496bf7a1f1692529965"
   }
 }

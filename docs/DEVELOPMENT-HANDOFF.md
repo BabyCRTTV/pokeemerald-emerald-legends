@@ -6,7 +6,7 @@
 
 Poké Marts stock Oats (₽35), Ginger (₽45), and Peach (₽60). Kitchens offer Peach Oatmeal, Ginger Fried Rice, Iced Peach Tea, and Ginger Tea. The Mess Kit makes both meals, the Steel Canteen makes Iced Peach Tea, and the Percolator makes both teas. Each recipe uses one unit of four ingredients and grants a ten-minute buff.
 
-Native mGBA verified the three purchases, one recipe at each cooking station, all four food buffs, and the approved Treat Case in the Bag. IDs 939–945 extend the item-history tail by one byte and preserve all earlier offsets. The legacy sector's cleared tail and the item-history, save-sector, Bag, and Nightmare host checks passed. Draft visual review. [Preview evidence](qa/cooking-room-polish-preview.json).
+Native mGBA verified the three purchases, one recipe at each cooking station, all four food buffs, and the approved Treat Case in the Bag. IDs 939–945 extend the item-history tail by one byte and preserve all earlier offsets. The legacy sector's cleared tail and the item-history, save-sector, Bag, and Nightmare host checks passed. The owner approved all three ingredients and four recipes after visual review. Held in draft for additional development. [Preview evidence](qa/cooking-room-polish-preview.json).
 
 ## Cooking preview and bedroom chair polish (16 November 2026)
 
