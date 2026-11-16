@@ -1205,27 +1205,15 @@ static const struct MenuAction sLegendsDayOffSeek[] = {
     {COMPOUND_STRING("Ferns")},
 };
 
-static const struct MenuAction sLegendsMeals[] = {
-    {COMPOUND_STRING("Butter Omelet")},
-    {COMPOUND_STRING("Pancakes")},
-    {COMPOUND_STRING("Flatbread")},
-    {COMPOUND_STRING("Egg Drop Soup")},
-    {COMPOUND_STRING("Crackers")},
-    {COMPOUND_STRING("Hot Cocoa")},
-    {COMPOUND_STRING("Egg Custard")},
-    {COMPOUND_STRING("Tomato Flatbread")},
-    {COMPOUND_STRING("Buttered Potatoes")},
-    {gText_Cancel2},
-};
-
 static const struct MenuAction sLegendsCanteen[] = {
     {COMPOUND_STRING("Hot Cocoa")},
+    {COMPOUND_STRING("Eggnog")},
+    {COMPOUND_STRING("Spiced Cider")},
     {gText_Cancel2},
 };
 
 static const struct MultichoiceListStruct sMultichoiceLists[] =
 {
-    [MULTI_LEGENDS_MEALS]             = MULTICHOICE(sLegendsMeals),
     [MULTI_LEGENDS_CANTEEN]           = MULTICHOICE(sLegendsCanteen),
     [MULTI_BRINEY_ON_DEWFORD]          = MULTICHOICE(MultichoiceList_BrineyOnDewford),
     [MULTI_PC]                         = MULTICHOICE(MultichoiceList_Exit),

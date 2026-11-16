@@ -191,7 +191,7 @@ int main(void)
  Free(sListBuffer1);Free(sListBuffer2);
  const u16 brewBases[]={ITEM_COFFEE_GROUNDS,ITEM_TEA_LEAVES,ITEM_MATCHA_POWDER,ITEM_OOLONG_TEA,ITEM_BLACK_TEA,ITEM_COOKING_COFFEE,ITEM_HOJICHA_POWDER,ITEM_HOJICHA_LEAVES};
  const unsigned firstBrew=7, pastLastBrew=firstBrew+ARRAY_COUNT(brewBases);
- assert(ARRAY_COUNT(sRecipes)==pastLastBrew+2);
+ assert(ARRAY_COUNT(sRecipes)==pastLastBrew+9);
  // Use the production cooking transaction and timed-slot code, not a recipe model.
  for(unsigned r=0;r<ARRAY_COUNT(sRecipes);r++){
   fresh();
@@ -211,7 +211,9 @@ int main(void)
   assert(BagPocket_CountTotalItemQuantity(&gBagPockets[POCKET_FOOD],recipe->meal)==1);
   assert(LegendsEatMeal(recipe->meal)==LEGENDS_EAT_SUCCESS);
   assert(LegendsMealBonus(recipe->effect)==recipe->amount);
-  assert(LegendsMealIsDrink(recipe->meal)==(recipe->meal==ITEM_HOT_COCOA || isBrew));
+  const bool32 isNewDrink=recipe->meal==ITEM_EGGNOG || recipe->meal==ITEM_SPICED_CIDER
+                        || recipe->meal==ITEM_ICED_CINNAMON_COFFEE;
+  assert(LegendsMealIsDrink(recipe->meal)==(recipe->meal==ITEM_HOT_COCOA || isBrew || isNewDrink));
   invariant();
  }
  fresh();

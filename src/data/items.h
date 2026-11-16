@@ -14955,6 +14955,171 @@ const struct ItemInfo gItemsInfo[] =
         .iconPalette = gItemIconPalette_CookingButteredPotatoes,
     },
 
+    [ITEM_COOKING_CARROT] =
+    {
+        .name = ITEM_NAME("Carrot"),
+        .price = 35,
+        .description = COMPOUND_STRING(
+            "A crisp carrot.\n"
+            "Sweetens soups\n"
+            "as it cooks."),
+        .pocket = POCKET_ITEMS,
+        .type = ITEM_USE_FIELD,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .iconPic = gItemIcon_CookingCarrot,
+        .iconPalette = gItemIconPalette_CookingCarrot,
+    },
+
+    [ITEM_COOKING_ONION] =
+    {
+        .name = ITEM_NAME("Onion"),
+        .price = 30,
+        .description = COMPOUND_STRING(
+            "A golden onion.\n"
+            "Tastes sweeter\n"
+            "when cooked."),
+        .pocket = POCKET_ITEMS,
+        .type = ITEM_USE_FIELD,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .iconPic = gItemIcon_CookingOnion,
+        .iconPalette = gItemIconPalette_CookingOnion,
+    },
+
+    [ITEM_COOKING_APPLE] =
+    {
+        .name = ITEM_NAME("Apple"),
+        .price = 45,
+        .description = COMPOUND_STRING(
+            "A crisp red apple.\n"
+            "Use it in batter\n"
+            "or simmer it."),
+        .pocket = POCKET_ITEMS,
+        .type = ITEM_USE_FIELD,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .iconPic = gItemIcon_CookingApple,
+        .iconPalette = gItemIconPalette_CookingApple,
+    },
+
+    [ITEM_CINNAMON] =
+    {
+        .name = ITEM_NAME("Cinnamon"),
+        .price = 55,
+        .description = COMPOUND_STRING(
+            "Fragrant cinnamon\n"
+            "bark. Adds warmth\n"
+            "to food or drinks."),
+        .pocket = POCKET_ITEMS,
+        .type = ITEM_USE_FIELD,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .iconPic = gItemIcon_CookingCinnamon,
+        .iconPalette = gItemIconPalette_CookingCinnamon,
+    },
+
+    [ITEM_CARROT_SOUP] =
+    {
+        .name = ITEM_NAME("Carrot Soup"),
+        .price = 95,
+        .description = COMPOUND_STRING(
+            "Carrot and onion\n"
+            "simmered slowly.\n"
+            "Encounters -15%."),
+        .pocket = POCKET_FOOD,
+        .type = ITEM_USE_BAG_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_LegendsMeal,
+        .iconPic = gItemIcon_CookingCarrotSoup,
+        .iconPalette = gItemIconPalette_CookingCarrotSoup,
+    },
+
+    [ITEM_ONION_TART] =
+    {
+        .name = ITEM_NAME("Onion Tart"),
+        .price = 105,
+        .description = COMPOUND_STRING(
+            "A golden tart with\n"
+            "onion and cheese.\n"
+            "Prize money +15%."),
+        .pocket = POCKET_FOOD,
+        .type = ITEM_USE_BAG_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_LegendsMeal,
+        .iconPic = gItemIcon_CookingOnionTart,
+        .iconPalette = gItemIconPalette_CookingOnionTart,
+    },
+
+    [ITEM_APPLE_PANCAKES] =
+    {
+        .name = ITEM_NAME("Apple Pancakes"),
+        .price = 100,
+        .description = COMPOUND_STRING(
+            "Fluffy pancakes\n"
+            "with apple slices.\n"
+            "Battle Exp. +15%."),
+        .pocket = POCKET_FOOD,
+        .type = ITEM_USE_BAG_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_LegendsMeal,
+        .iconPic = gItemIcon_CookingApplePancakes,
+        .iconPalette = gItemIconPalette_CookingApplePancakes,
+    },
+
+    [ITEM_POTATO_HASH] =
+    {
+        .name = ITEM_NAME("Potato Hash"),
+        .price = 80,
+        .description = COMPOUND_STRING(
+            "Crisp potatoes\n"
+            "fried with onion.\n"
+            "Catch odds +5%."),
+        .pocket = POCKET_FOOD,
+        .type = ITEM_USE_BAG_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_LegendsMeal,
+        .iconPic = gItemIcon_CookingPotatoHash,
+        .iconPalette = gItemIconPalette_CookingPotatoHash,
+    },
+
+    [ITEM_EGGNOG] =
+    {
+        .name = ITEM_NAME("Eggnog"),
+        .price = 100,
+        .description = COMPOUND_STRING(
+            "Warm spiced milk\n"
+            "whisked with egg.\n"
+            "Walk friendship +2."),
+        .pocket = POCKET_FOOD,
+        .type = ITEM_USE_BAG_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_LegendsMeal,
+        .iconPic = gItemIcon_CookingEggnog,
+        .iconPalette = gItemIconPalette_CookingEggnog,
+    },
+
+    [ITEM_SPICED_CIDER] =
+    {
+        .name = ITEM_NAME("Spiced Cider"),
+        .price = 95,
+        .description = COMPOUND_STRING(
+            "A warm apple drink\n"
+            "with cinnamon.\n"
+            "Prize money +10%."),
+        .pocket = POCKET_FOOD,
+        .type = ITEM_USE_BAG_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_LegendsMeal,
+        .iconPic = gItemIcon_CookingSpicedCider,
+        .iconPalette = gItemIconPalette_CookingSpicedCider,
+    },
+
+    [ITEM_ICED_CINNAMON_COFFEE] =
+    {
+        .name = ITEM_NAME("Iced Cinnamon Brew"),
+        .price = 95,
+        .description = COMPOUND_STRING(
+            "Cold coffee with\n"
+            "ice and cinnamon.\n"
+            "Battle Exp. +10%."),
+        .pocket = POCKET_FOOD,
+        .type = ITEM_USE_BAG_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_LegendsMeal,
+        .iconPic = gItemIcon_CookingIcedCinnamonCoffee,
+        .iconPalette = gItemIconPalette_CookingIcedCinnamonCoffee,
+    },
+
     [ITEM_TREAT_CASE] =
     {
         .name = ITEM_NAME("Treat Case"),

@@ -43,9 +43,9 @@ EventScript_ChooseMeal::
 	goto_if_eq VAR_0x8005, 1, EventScript_ChooseCanteenDrink
 	goto_if_eq VAR_0x8005, 2, EventScript_ChooseMessKitMeal
 	goto_if_eq VAR_0x8005, 3, EventScript_ChoosePercolatorDrink
-	message Text_ChooseMeal
+	message Text_ChooseKitchenRecipe
 	waitmessage
-	multichoicegrid 0, 0, MULTI_LEGENDS_MEALS, 2, FALSE
+	dynmultichoice 0, 0, FALSE, 6, 0, DYN_MULTICHOICE_CB_NONE, Text_CookingMenuOmelet, Text_CookingMenuPancakes, Text_CookingMenuFlatbread, Text_CookingMenuSoup, Text_CookingMenuCrackers, Text_CookingMenuHotCocoa, Text_CookingMenuCustard, Text_CookingMenuTomatoFlatbread, Text_CookingMenuButteredPotatoes, Text_CookingMenuCarrotSoup, Text_CookingMenuOnionTart, Text_CookingMenuApplePancakes, Text_CookingMenuPotatoHash, Text_CookingMenuEggnog, Text_CookingMenuSpicedCider, Text_CookingMenuIcedCinnamonCoffee, Text_CancelCooking
 	switch VAR_RESULT
 	case 0, EventScript_MealOmelet
 	case 1, EventScript_MealPancakes
@@ -56,19 +56,29 @@ EventScript_ChooseMeal::
 	case 6, EventScript_MealEggCustard
 	case 7, EventScript_MealTomatoFlatbread
 	case 8, EventScript_MealButteredPotatoes
+	case 9, EventScript_MealCarrotSoup
+	case 10, EventScript_MealOnionTart
+	case 11, EventScript_MealApplePancakes
+	case 12, EventScript_MealPotatoHash
+	case 13, EventScript_MealEggnog
+	case 14, EventScript_MealSpicedCider
+	case 15, EventScript_MealIcedCinnamonCoffee
 	goto EventScript_FinishMealInteraction
 
 EventScript_ChooseCanteenDrink::
 	message Text_ChooseDrink
 	waitmessage
 	multichoice 0, 0, MULTI_LEGENDS_CANTEEN, FALSE
-	goto_if_eq VAR_RESULT, 0, EventScript_MealHotCocoa
+	switch VAR_RESULT
+	case 0, EventScript_MealHotCocoa
+	case 1, EventScript_MealEggnog
+	case 2, EventScript_MealSpicedCider
 	goto EventScript_FinishMealInteraction
 
 EventScript_ChooseMessKitMeal::
 	message Text_ChooseMeal
 	waitmessage
-	dynmultichoice 0, 0, FALSE, 6, 0, DYN_MULTICHOICE_CB_NONE, Text_MessKitOmelet, Text_MessKitPancakes, Text_MessKitFlatbread, Text_MessKitSoup, Text_MessKitCrackers, Text_MessKitCustard, Text_MessKitTomatoFlatbread, Text_MessKitButteredPotatoes, Text_CancelCooking
+	dynmultichoice 0, 0, FALSE, 6, 0, DYN_MULTICHOICE_CB_NONE, Text_CookingMenuOmelet, Text_CookingMenuPancakes, Text_CookingMenuFlatbread, Text_CookingMenuSoup, Text_CookingMenuCrackers, Text_CookingMenuCustard, Text_CookingMenuTomatoFlatbread, Text_CookingMenuButteredPotatoes, Text_CookingMenuCarrotSoup, Text_CookingMenuOnionTart, Text_CookingMenuApplePancakes, Text_CookingMenuPotatoHash, Text_CancelCooking
 	switch VAR_RESULT
 	case 0, EventScript_MealOmelet
 	case 1, EventScript_MealPancakes
@@ -78,12 +88,16 @@ EventScript_ChooseMessKitMeal::
 	case 5, EventScript_MealEggCustard
 	case 6, EventScript_MealTomatoFlatbread
 	case 7, EventScript_MealButteredPotatoes
+	case 8, EventScript_MealCarrotSoup
+	case 9, EventScript_MealOnionTart
+	case 10, EventScript_MealApplePancakes
+	case 11, EventScript_MealPotatoHash
 	goto EventScript_FinishMealInteraction
 
 EventScript_ChoosePercolatorDrink::
 	message Text_ChooseBrew
 	waitmessage
-	dynmultichoice 0, 0, FALSE, 6, 0, DYN_MULTICHOICE_CB_NONE, Text_BrewMenuMilkCoffee, Text_BrewMenuSweetTea, Text_BrewMenuMatchaLatte, Text_BrewMenuBrewedOolong, Text_BrewMenuBrewedBlackTea, Text_BrewMenuBlackCoffee, Text_BrewMenuHojichaLatte, Text_BrewMenuHojichaTea, Text_CancelCooking
+	dynmultichoice 0, 0, FALSE, 6, 0, DYN_MULTICHOICE_CB_NONE, Text_BrewMenuMilkCoffee, Text_BrewMenuSweetTea, Text_BrewMenuMatchaLatte, Text_BrewMenuBrewedOolong, Text_BrewMenuBrewedBlackTea, Text_BrewMenuBlackCoffee, Text_BrewMenuHojichaLatte, Text_BrewMenuHojichaTea, Text_CookingMenuIcedCinnamonCoffee, Text_CancelCooking
 	switch VAR_RESULT
 	case 0, EventScript_MealMilkCoffee
 	case 1, EventScript_MealSweetTea
@@ -93,6 +107,7 @@ EventScript_ChoosePercolatorDrink::
 	case 5, EventScript_MealBlackCoffee
 	case 6, EventScript_MealHojichaLatte
 	case 7, EventScript_MealHojichaTea
+	case 8, EventScript_MealIcedCinnamonCoffee
 	goto EventScript_FinishMealInteraction
 
 EventScript_MealOmelet::
@@ -180,6 +195,41 @@ EventScript_MealButteredPotatoes::
 	msgbox Text_MealButteredPotatoes
 	goto EventScript_ConfirmCookMeal
 
+EventScript_MealCarrotSoup::
+	setvar VAR_0x8004, 17
+	msgbox Text_MealCarrotSoup
+	goto EventScript_ConfirmCookMeal
+
+EventScript_MealOnionTart::
+	setvar VAR_0x8004, 18
+	msgbox Text_MealOnionTart
+	goto EventScript_ConfirmCookMeal
+
+EventScript_MealApplePancakes::
+	setvar VAR_0x8004, 19
+	msgbox Text_MealApplePancakes
+	goto EventScript_ConfirmCookMeal
+
+EventScript_MealPotatoHash::
+	setvar VAR_0x8004, 20
+	msgbox Text_MealPotatoHash
+	goto EventScript_ConfirmCookMeal
+
+EventScript_MealEggnog::
+	setvar VAR_0x8004, 21
+	msgbox Text_MealEggnog
+	goto EventScript_ConfirmPrepareDrink
+
+EventScript_MealSpicedCider::
+	setvar VAR_0x8004, 22
+	msgbox Text_MealSpicedCider
+	goto EventScript_ConfirmPrepareDrink
+
+EventScript_MealIcedCinnamonCoffee::
+	setvar VAR_0x8004, 23
+	msgbox Text_MealIcedCinnamonCoffee
+	goto EventScript_ConfirmPrepareDrink
+
 EventScript_ConfirmCookMeal::
 	msgbox Text_CookSelectedMeal, MSGBOX_YESNO
 	goto EventScript_TryCookSelectedRecipe
@@ -255,29 +305,53 @@ Text_MomPackedCookingGear::
 	.string "With a meal and a warm drink,\n"
 	.string "you can make anywhere feel like home.$"
 
-Text_MessKitOmelet:
+Text_CookingMenuOmelet:
 	.string "Butter Omelet$"
 
-Text_MessKitPancakes:
+Text_CookingMenuPancakes:
 	.string "Pancakes$"
 
-Text_MessKitFlatbread:
+Text_CookingMenuFlatbread:
 	.string "Flatbread$"
 
-Text_MessKitSoup:
+Text_CookingMenuSoup:
 	.string "Egg Drop Soup$"
 
-Text_MessKitCrackers:
+Text_CookingMenuCrackers:
 	.string "Crackers$"
 
-Text_MessKitCustard:
+Text_CookingMenuCustard:
 	.string "Egg Custard$"
 
-Text_MessKitTomatoFlatbread:
+Text_CookingMenuTomatoFlatbread:
 	.string "Tomato Flatbread$"
 
-Text_MessKitButteredPotatoes:
+Text_CookingMenuButteredPotatoes:
 	.string "Buttered Potatoes$"
+
+Text_CookingMenuHotCocoa:
+	.string "Hot Cocoa$"
+
+Text_CookingMenuCarrotSoup:
+	.string "Carrot Soup$"
+
+Text_CookingMenuOnionTart:
+	.string "Onion Tart$"
+
+Text_CookingMenuApplePancakes:
+	.string "Apple Pancakes$"
+
+Text_CookingMenuPotatoHash:
+	.string "Potato Hash$"
+
+Text_CookingMenuEggnog:
+	.string "Eggnog$"
+
+Text_CookingMenuSpicedCider:
+	.string "Spiced Cider$"
+
+Text_CookingMenuIcedCinnamonCoffee:
+	.string "Iced Cinnamon Brew$"
 
 Text_CancelCooking:
 	.string "CANCEL$"
@@ -318,6 +392,9 @@ Text_KitchenFridge::
 
 Text_PrepareMeal::
 	.string "Prepare a meal?$"
+
+Text_ChooseKitchenRecipe::
+	.string "What will you prepare?$"
 
 Text_ChooseMeal::
 	.string "What would you like to cook?$"
@@ -411,6 +488,55 @@ Text_MealButteredPotatoes::
 	.string "Buttered Potatoes: Potato,\n"
 	.string "Butter, and Salt (1 each).\p"
 	.string "Wild encounters -10%\n"
+	.string "for 10 minutes.$"
+
+Text_MealCarrotSoup::
+	.string "Carrot Soup\p"
+	.string "Carrot, Onion,\n"
+	.string "Water, and Salt (1 each).\p"
+	.string "Wild encounters -15%\n"
+	.string "for 10 minutes.$"
+
+Text_MealOnionTart::
+	.string "Onion Tart\p"
+	.string "Onion, Cheese,\n"
+	.string "Flour, and Butter (1 each).\p"
+	.string "Trainer prize money +15%\n"
+	.string "for 10 minutes.$"
+
+Text_MealApplePancakes::
+	.string "Apple Pancakes\p"
+	.string "Apple, Flour,\n"
+	.string "Egg, and Butter (1 each).\p"
+	.string "Battle Exp. +15%\n"
+	.string "for 10 minutes.$"
+
+Text_MealPotatoHash::
+	.string "Potato Hash\p"
+	.string "Potato, Onion,\n"
+	.string "Butter, and Pepper (1 each).\p"
+	.string "Catch odds +5%\n"
+	.string "for 10 minutes.$"
+
+Text_MealEggnog::
+	.string "Eggnog\p"
+	.string "Egg, Milk, Sugar,\n"
+	.string "and Cinnamon (1 each).\p"
+	.string "Walking friendship gains +2\n"
+	.string "for 10 minutes.$"
+
+Text_MealSpicedCider::
+	.string "Spiced Cider\p"
+	.string "Apple, Water,\n"
+	.string "Cinnamon, and Sugar (1 each).\p"
+	.string "Trainer prize money +10%\n"
+	.string "for 10 minutes.$"
+
+Text_MealIcedCinnamonCoffee::
+	.string "Iced Cinnamon Brew\p"
+	.string "Coffee Grounds, Water,\n"
+	.string "Cinnamon, and Ice Cubes (1 each).\p"
+	.string "Battle Exp. +10%\n"
 	.string "for 10 minutes.$"
 
 Text_CookSelectedMeal::

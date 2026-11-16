@@ -1,0 +1,79 @@
+{
+  "status": "review preview",
+  "baseCommit": "9b30470bdfc23c1748838455940a44785464ad54",
+  "gameVersion": "0.0.85",
+  "romSha256": "6d58b25b441573bcfdbcfaaf86fb9c3a1ef7304b5a4a06425748b8d4f59fe10b",
+  "spriteSha256": {
+    "carrot": "7aef6c30486c30975f71993bb0eb86f3aa430b504bba244e12a909e7ddab2002",
+    "onion": "2467f5eab5e234df2d6c4cb0ec3eb4599814ea6a20d4b543fbe25fa5ef4af154",
+    "apple": "ebdeb0f2dfe53406f5b7d95c7704e6ce9419778a9b0a35521506eaa12132adf5",
+    "cinnamon": "403c3c59c1390a1ac7e719468cb3943860af7d5adbca18493a783e266287dddd",
+    "carrot_soup": "5092ac0d30d64c922d28e783e6bcd083a7b686f8ac2bd3a0cc16dfb7915f883a",
+    "onion_tart": "ce3ec9fdc223f04ad7e73b1f651d4c1907d9b65605093b99588776f604ab7f74",
+    "apple_pancakes": "f02b645ecb9d85850353ca0fb4d71f9bdd9d81e1d606c5c259fbb8aad45fb5e4",
+    "potato_hash": "4018053929d85a7817c940300a46279fd88907027aca331893fae2b847e31319",
+    "eggnog": "6700ec99b8ef4e1407d2586ea3b1e52d608c2d2d07f32cbe96f91ef4cbd6e4fe",
+    "spiced_cider": "0d25ded72f13a6b694260f4f79de76bc449c2d9d18acbd5c331bfcc686c30ecd",
+    "iced_cinnamon_coffee": "026c25a7759adf8d137d27d79aa2d2e419cd54c2c8e5868bb826ce2ee187c113"
+  },
+  "previewSha256": "fd6b6da4189bcb7136e7efc1ae1b80449d619d2fae969e686cf8531f421663ab",
+  "nativeQA": {
+    "emulator": "mGBA",
+    "harness": "Controlled map and inventory fixture with actual D-pad, A, B and Start input for all shop, kitchen, gear and Bag interactions.",
+    "harnessSha256": {
+      "fixture.c": "f76fbf25cd257378af207dbde2ca70da2f0e330317cc4653ca0a7b34873fde59",
+      "verify.py": "9cd04578168ce58445ab2d69f0c0c71e4e015961f6e92a0b2b870d690de4e941"
+    },
+    "checksPassed": [
+      "Bought Carrot, Onion, Apple and Cinnamon in Oldale and verified the exact cost and native Bag icons.",
+      "Opened the scrolling kitchen list from the tile beside the Littleroot sink and made Carrot Soup and Onion Tart.",
+      "Prepared Apple Pancakes and Potato Hash from the Mess Kit, Eggnog and Spiced Cider from the Steel Canteen, and Iced Cinnamon Brew from the Percolator.",
+      "Verified exact ingredients spent on each recipe, missing-ice refusal on retry with no mutation, menu cancellation, Food pocket sprites, EAT and DRINK prompts, and all seven buff amounts."
+    ],
+    "captureSha256": {
+      "bag-1": "87dd52f34f9798aa405972e0895294d4dbab2b4854ea29d207e74ce683d61733",
+      "bag-2": "c7a875f423706e2d48496d605636621f3df2c241313f8c4aa1c812f0edcff31a",
+      "bag-3": "3c778aa2a781b725a64a01a3663fccf78eb4a046c18821c807016926ef8ee582",
+      "bag-4": "dc8e357ab915792aa7a63edf565bd3760eab2009624ea24d6cf87e50b3bfbd57",
+      "menu-1": "b46bdbe30638f15c094ec47d53fdf8cf2323bd62e25c502814f5bc28d563ece6",
+      "menu-2": "a919d07f3e91bdf887b446b6d95b51aab82ccf47c38b6528bd7b08724435262d",
+      "menu-3": "869ddbb866af5c44f065056ee97d004084bc9bda0c4f6d0c79f7de139ac66af3",
+      "menu-4": "fe3fd52e402da26cbea984f0fd6ce4a6f814382b3b42814a2cc2b81be78fd86e",
+      "menu-5": "ace0ae5b339b49806d1d1de2c108fe393da31ad337d2d7499ba4539425c1c10f",
+      "menu-6": "df75afede537dc505fddc0339da6ebeef82aa2aebfc3b0e8601fa2077e53b76d",
+      "menu-7": "b85bf414db073b0d54296f118b0f6bcf2baba07e3c6038a5e68542499f4c48a0",
+      "recipe-1": "edb9edafc2ca78ef4a92b3bade5058d3f56f4b12b934914ab9246770fc5ad0a9",
+      "recipe-2": "fe473bc13800338471dbafaceaf58448abe985a4c87b72a28dc1f5b7dd6ea5f8",
+      "recipe-3": "ee8811e21680d6bc97e07aef061053d427d41efd2a90d14df19fa79ca3c15b40",
+      "recipe-4": "c5930156eb5afca4b6dff0b30a1681254547a87f807737de794fd540e101680b",
+      "recipe-5": "a0d28d3d6a2d46e81cb441b51d15c99facfaf1cbab5e62d29a9c1c13a0d56b46",
+      "recipe-6": "247d0891bd48557d0452229179343576d916d396de90a4803e09cdd32d774b40",
+      "recipe-7": "44a8a8710afbaf2729dcd5499185bfc22f7243e22733d20553fd82494fb1ba90",
+      "food-1": "803e8fd6e043dec3e2f01308c957c22f51891908001795b8d16db4f007948036",
+      "food-2": "fe7d00120b389e5180a92e41de473cc14ab0c9286c48ea85eecdb2078ec5fc75",
+      "food-3": "9e8a8bebad0772849e2d7dc22d23c8caee7c802c9bffde99477d2660df3ac7b1",
+      "food-4": "9e9249372ee0e3ccc5157167cd10cc0a8d26e4591054df181dffcec588937cef",
+      "food-5": "50fb27b3c0c7708d6b594d9b5c1030cbfc7d8fb1463d6d0ac8ebd42a32853179",
+      "food-6": "04d948b6c3d8906655154e6fa3ef375914018c87207621bc36d2c2ddbef91ed7",
+      "food-7": "d5c03d26b8e57d4050f46d53b80427a3328482632e10158bb75576dab9a04f79",
+      "action-1": "aad69f7920b196525bf215fbe6b229ac3a15f0500f283e04e9d29aa0f8524846",
+      "action-2": "5b0b1846897f64a21614560ac4c8956ebf5c862c60470c1753c11277904036c8",
+      "action-3": "cce43fd1ba91d810490b146e80a7963dbb3194cc26050ef48745cc0eee07fae2",
+      "action-4": "02d812aa7a698fddc80ffa254c380a24c4cc895503185bc501a5e065c2184f85",
+      "action-5": "3256f6b7f4e8c30ff9feaabda1e1fe4a0aa5f753ab8efc4cd24cb1d7f9c78b64",
+      "action-6": "f226a55caa33eaec435f01af6b529ec6f3e92809b9c2ae724eb15be85e7451df",
+      "action-7": "de7189f2aec416db2b8831fc7ec346a6fc6dc73fcab99bfd71cff355fe2e2e87",
+      "buff-1": "c7baf71bc7c6dcfb56b5f100b9e1b32ca9a20803c9f46038fd24021420ed4322",
+      "buff-2": "cc8bb7033b14c34f5a81849bbb120946b07d4f7dd2343d13dc365e51dc5385b8",
+      "buff-3": "03453093e762115d0950b34a46937551dd27c76dfffbe01ee3e95ea2b951f4d8",
+      "buff-4": "f6d86d51e655fe451a36a434a2e8bd1d0b239446e427a29c31e226d68a63ee4c",
+      "buff-5": "dfa8dadffb5d630ce590affd5538d5543ecaaac173c0b4fab4b45c83b8231f81",
+      "buff-6": "66b703f1beea31dff228e164366cc11b1ccda384a888395687a2c02074bed045",
+      "buff-7": "17bb3bd0b938b76abd2598f4a5efa4a0f8ae9a1ab634080a2241bb167578a641"
+    }
+  },
+  "hostChecksPassed": [
+    "test/legends-bag-capacity.test.py",
+    "test/legends-item-descriptions.test.py"
+  ]
+}

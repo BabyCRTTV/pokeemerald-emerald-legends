@@ -1,5 +1,13 @@
 # Development handoff
 
+## Spiced cooking preview (15 November 2026)
+
+**Model: GPT-6.1 Sol | Reasoning: reuse the existing cooking transaction and fit more recipes into the scrollable menus without changing saved data.**
+
+Added Carrot, Onion, Apple, and Cinnamon to Poké Mart INGREDIENTS. Kitchens and the Mess Kit make Carrot Soup, Onion Tart, Apple Pancakes, and Potato Hash. Kitchens and the Steel Canteen also make warm Eggnog and Spiced Cider. Kitchens and the Percolator make Iced Cinnamon Brew using Ice Cubes and the approved tapered cup shape. All seven effects last ten minutes. Item IDs 918–928 fit the existing item-history bitmap. The kitchen recipe list now scrolls.
+
+Bought the four ingredients and verified all seven recipes, their exact deductions, Food icons, EAT or DRINK actions, and buff amounts in mGBA. Verified that a second iced brew without Ice Cubes left inventory intact. Host Bag, item history, and sector-layout tests passed. [Preview evidence](qa/spiced-cooking-preview.json). Review branch only. Full publication gates remain pending approval.
+
 ## v0.0.85 Portable Cooking published and verified (15 November 2026)
 
 **Model: GPT-6.1 Sol | Reasoning: release the owner-approved cumulative cooking preview, preserving its sprites, encounter source, and battery layout.**
