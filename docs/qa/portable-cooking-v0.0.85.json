@@ -1,0 +1,284 @@
+{
+  "version": "0.0.85",
+  "status": "published",
+  "approvedPreview": "e1a216418c26172e521c3d6d19a0eb76d7c2e0b9",
+  "candidate": "3431513e0d1c033d6e00a954f6e560846f243daa",
+  "candidateTree": "b80e99b74ed611154968c298f9015d07ab3523a1",
+  "pullRequest": 105,
+  "candidateRuns": {
+    "nativeAndPatches": 43780905868,
+    "project": 43780905761,
+    "wiki": 43780905746,
+    "android": 43780905721
+  },
+  "production": "03efbd4498c5dd6c67e5ec0a319ab646dc6e35e2",
+  "candidateArtifact": {
+    "id": 14188463768,
+    "sha256": "09e1bd4ea7442dd007b31103a0a995d26e779bdafed17228da8a1f3e007800b5",
+    "manifestSha256": "dda00d56dfa7284de7fb4c239615725c3fcfc96403d4d663ab4a5536f27c451d"
+  },
+  "productionRuns": {
+    "nativeAndPatches": 43782204683,
+    "project": 43782204749,
+    "wiki": 43782204721,
+    "android": 43782204697,
+    "windows": 43782204740
+  },
+  "productionTree": "b80e99b74ed611154968c298f9015d07ab3523a1",
+  "patchCommit": "d9fb1f69efcc74a2fca39814f7f7f00f3469448b",
+  "pagesRun": 43783812868,
+  "productionArtifact": {
+    "id": 14189038569,
+    "sha256": "110753c5b0ff27206ffb832b743fd60694b8ed46a5b2b9517063a318fde4c6d4",
+    "manifestSha256": "8c9c15882b8b79de1c25e18531993690fc93e8fa68e4224a695557b299689870"
+  },
+  "pagesEvidenceArtifact": {
+    "id": 14189985615,
+    "sha256": "07db64e58ab64a9acf1dc48ef11bb6a982f40694d2ffb2a4c910f47f42ad8823"
+  },
+  "pagesLiveArtifact": {
+    "id": 14189098686,
+    "sha256": "25d1cb58a7da60e6d0b24c6b4a6067294769feb8b21f311788e07de15e11f61f"
+  },
+  "sourceFingerprint": "a67387d1f1128e0cd81223379e9ac44b5baf61c14946354fd4f2eed481b31a00",
+  "nativeReceiptHashes": {
+    "legends-mgba-preview/results.json": "d0577b093a3a9edc05e55a8b6fef3ac012bb6b780b25e970b64e75bc9268a724",
+    "eon-roamers-qa/verification.json": "bfd05246408074069f16f0a24de5fac5166535242bce7671896fa5fb5bfa3826",
+    "ember-return-qa/verification.json": "30f774b175bfaf4d7ce37fd697c47f2e739a7592715ce83e9e460b70f67d2879",
+    "grotto-review/verification.json": "ceda5af37e04e44f977763d621aaf82ef593f8c3afbdc92a077da00490a73c50",
+    "grotto-encounters/verification.json": "e291778690881fb4e6e7e7bc2c06253d529a95a6f92ebb5809b475eaf59b6607",
+    "wyrmtide-native/verification.json": "cc7ad345e05e0a191847c60c7c38dd5a586f9ee1e7943bca6fcce7efa6a63055",
+    "nightmare-native/verification.json": "63997005288016b5debeca6cf6cc3f2e53f273ddc0150eb12045992cfd8ac049",
+    "day-off-qa/verification.json": "6ef66afcc9d5ff8506c6d98221ecdab91a3c48e78eb380d11fbb58a766db8705",
+    "day-off-qa/release-verification.json": "eca4f847618a230efca68ecd962039714d8cee192eb396f30ea734afa0b016c0",
+    "living-hoenn-qa/verification.json": "9eda0271683358e12e58b20c25cb0d1c7c0df072ba7def68bf6efd7e5773a790",
+    "seasonal-encounters-qa/verification.json": "195b1273b799ba61562e9829628d21c2731424dd2daacc72b8f2d6c8977d2201",
+    "visual-repairs-qa/verification.json": "293c89a03a408d6a95cf32824a930cdc3bb348788858c4aa5bda0da9bedea420",
+    "eon-roamers-release-qa/verification.json": "696b02f67fd0d1f51ed356aaf02fc98d50cec6972f2314598c74e29da43e3910",
+    "ember-return-release-qa/verification.json": "785fc579d5b03048ef5552f2c59fed5afb38da65b16ec965fed56319c54db45b",
+    "grotto-encounters-release/verification.json": "26e2b5a677d0da4468b647e81c9bf56b094aa95c819cc994453330a315b37343",
+    "bedroom-release-qa/verification.json": "81dd04fbdb4667927b25df2750c23b25f78a81a13d10bf2c8a999bf2c58d86fc"
+  },
+  "independentPatchDecoder": {
+    "passed": true,
+    "source_SHA1": "f3ae088181bf583e55daf962a92bb46f4f1d07b7",
+    "decoder": "Actual committed docs/patcher.js applyBps executed in Node VM; independent of Floating IPS",
+    "decoder_sha256": "06f7142896fc858018e1d00fb89c12d2b454c36c23bdafdf7b5fe85c4f8df2e5",
+    "verifier_sha256": "bbb6057cadba5a72d14e73c1f75cc57563c121eebd68e0ce97869fd18a110d8b",
+    "results": {
+      "Pokemon-Emerald-Legends-v0.0.85.bps": {
+        "patch_sha256": "5087498a0c8a31be2a10caa7386fcee539a158dc29aef9e60f56c3732b935771",
+        "target_sha256": "3b9838a55f2df84a9f81ae9d8eefcca5453f63a5c43c8ccca9df15683f4aa148",
+        "target_bytes": 33554432,
+        "exact_native_ROM_match": true
+      },
+      "Pokemon-Emerald-Legends-v0.0.85-debug.bps": {
+        "patch_sha256": "d64fdd84ddef2f08359750760692dbe323aa1311c1b2cce0c00f32f80d2c11d5",
+        "target_sha256": "f4e9439e781a537a8f76ad25883f3ac6cf85cecd838f2ebcb7347281874b90a6",
+        "target_bytes": 33554432,
+        "exact_native_ROM_match": true
+      }
+    },
+    "limits": "Byte-decoder test; physical browser file-picker/download and Pizza Boy execution are separate checks."
+  },
+  "focusedCookingPreview": {
+    "romSha256": "77d208d23331dcbd29b3ba41635a91fa8e389f83dc07d618b8baa638357815dc",
+    "receipts": [
+      "portable-cooking-preview.json",
+      "hojicha-percolator-preview.json",
+      "ice-cubes-preview.json",
+      "ice-cubes-redesign-preview.json",
+      "tomato-flatbread-potatoes-preview.json"
+    ],
+    "limits": "Focused meal and gear tests ran on the approved mGBA preview. Production CI exercised its native release suite on the shipped Debug and Release builds."
+  },
+  "saveCompatibility": {
+    "itemIds": "893 through 917 appended within the existing item-history bitmap",
+    "layouts": "Bag and PC data, SaveBlock3 meal timers, and packed inventory codec retained their layouts",
+    "checks": "Host item-history, save-slot and sector-rotation, packed-inventory migration, and storage codec checks passed. Production native Release Continue fixtures passed.",
+    "limits": "The release did not replay every historical owner save."
+  },
+  "live": {
+    "version": "0.0.85",
+    "verified_at_UTC": "2026-11-16T01:03:34.828491+00:00",
+    "passed": true,
+    "files": [
+      {
+        "path": "index.html",
+        "passed": true,
+        "HTTP": 200,
+        "bytes": 3736,
+        "sha256": "bd918ab0558d5f28f2370281a6bb77d155bad301f27fac79b4fac27a351d7958",
+        "Git_blob_sha1": "80de2a5aaa4c035e2ec01a4f250b689c30d2f7cc"
+      },
+      {
+        "path": "patcher.html",
+        "passed": true,
+        "HTTP": 200,
+        "bytes": 2675,
+        "sha256": "d1a08c517080d24b3cd00bda9859e42cc33a966af5c213a72833f0049b5106cf",
+        "Git_blob_sha1": "9821f74b4bc7f218661392f0bf1afa2929bb93f7"
+      },
+      {
+        "path": "patcher.js",
+        "passed": true,
+        "HTTP": 200,
+        "bytes": 9353,
+        "sha256": "06f7142896fc858018e1d00fb89c12d2b454c36c23bdafdf7b5fe85c4f8df2e5",
+        "Git_blob_sha1": "bdb8bbef0c3ec3520f35b8d0535fd11ff7eb743c"
+      },
+      {
+        "path": "changelog.html",
+        "passed": true,
+        "HTTP": 200,
+        "bytes": 139162,
+        "sha256": "61beab2316493f8439bd42589ba088ce0f7cc2a48db091085de9669eae959745",
+        "Git_blob_sha1": "2cf4e8fda9b5511bcf647d952bd479ea41011b6b"
+      },
+      {
+        "path": "wiki/index.html",
+        "passed": true,
+        "HTTP": 200,
+        "bytes": 17201,
+        "sha256": "8b3bd7d3ed852dbb4aaff3604b9e6ee06c257f8123591d8c47bf924547b685ab",
+        "Git_blob_sha1": "1e624c4836f0dfee591f1cc59ca69d7bfde8f06b"
+      },
+      {
+        "path": "wiki/dex.html",
+        "passed": true,
+        "HTTP": 200,
+        "bytes": 10572,
+        "sha256": "6873a238568b920927720dff099c2742f7b425c55493a570c244257814b1cfd9",
+        "Git_blob_sha1": "5613fddb0ca46f306d26dbc15fe932fa3864243d"
+      },
+      {
+        "path": "wiki/dex-data.json",
+        "passed": true,
+        "HTTP": 200,
+        "bytes": 849391,
+        "sha256": "46084f219ad41f707c9e6268b08b52e0b80cdb85effeb91e27dff310f51a5635",
+        "Git_blob_sha1": "0abd6091f5fe6db871ba8a20edbcdd6f72118c39"
+      },
+      {
+        "path": "wiki/dex-profiles.js",
+        "passed": true,
+        "HTTP": 200,
+        "bytes": 178691,
+        "sha256": "0ccfee5466e5ead2d400bbdebb70ff830d58a6864d0a85b3f7bdef069e7c3557",
+        "Git_blob_sha1": "b7c3db3038bf3216a0e2a0da4c08c2a0d276ebdb"
+      },
+      {
+        "path": "wiki/dex-sprite-atlas.js",
+        "passed": true,
+        "HTTP": 200,
+        "bytes": 18786,
+        "sha256": "8b3a1d1224df211929a8079fdd621f16904600305601433afcc117c8f800b04d",
+        "Git_blob_sha1": "de0bf49a8b01f87b9fea58adaa888a3d02e7ec46"
+      },
+      {
+        "path": "wiki/dex-sprite-atlas.webp",
+        "passed": true,
+        "HTTP": 200,
+        "bytes": 153584,
+        "sha256": "55bdf244830f30f9aeb5eeddb8f628b6885eccb2e95b171dac14df9b529190df",
+        "Git_blob_sha1": "dd91aded78d44fc6aea679a678a0274edb93add1"
+      },
+      {
+        "path": "wiki/dex-portrait-sources.json",
+        "passed": true,
+        "HTTP": 200,
+        "bytes": 342,
+        "sha256": "644decdf201a0623707327e6d524178ab8e0f7e376f15bcf1f2ad4abded02b93",
+        "Git_blob_sha1": "758c4db1f73c6baaa968366d6d70c1aa628eff23"
+      },
+      {
+        "path": "wiki/map-hoenn.png",
+        "passed": true,
+        "HTTP": 200,
+        "bytes": 6757,
+        "sha256": "6abac3457dd2c588173b001c7f5ad37b58b4429ff50d3d54373f2fe868e5f625",
+        "Git_blob_sha1": "10f2d26f42c381c2af7f51a7c835b4b3b190107f"
+      },
+      {
+        "path": "wiki/map-kanto.png",
+        "passed": true,
+        "HTTP": 200,
+        "bytes": 3728,
+        "sha256": "bc89ff01cbc5dca3fe849d2c0d872c1e98b57a450663d72a7a210d3645b495f0",
+        "Git_blob_sha1": "241cf5864b38426d1cc75ebfa70b865afdcbcac3"
+      },
+      {
+        "path": "wiki/walkthrough-maps.json",
+        "passed": true,
+        "HTTP": 200,
+        "bytes": 119656,
+        "sha256": "bb6a344d516f911772685dbfaf2d19b439829aa8e387efc470e830e3879d7af1",
+        "Git_blob_sha1": "f0e8eee57a8b30cdcf6e5b1a0f365f007a3e0182"
+      },
+      {
+        "path": "wiki/android-version.json",
+        "passed": true,
+        "HTTP": 200,
+        "bytes": 399,
+        "sha256": "e34e5b41b07dc69569ca2eb266093ce5e634615cba426422edbcfc8bcf8f35d5",
+        "Git_blob_sha1": "eef161550efb41e023e6e11884b964dc01713bc2"
+      },
+      {
+        "path": "wiki/windows-version.json",
+        "passed": true,
+        "HTTP": 200,
+        "bytes": 275,
+        "sha256": "1b366b6ddaa3608a288334e81bc55135f2caacc8d4fd1186e6406bff78199b82",
+        "Git_blob_sha1": "fe57f34bc0803c502cd017dd5a55e6f1bba4adc4"
+      },
+      {
+        "path": "features/eon-roamers.md",
+        "passed": true,
+        "HTTP": 200,
+        "bytes": 2244,
+        "sha256": "5839b026abdd24d2ea62ef1359559d7ddf0d402efae50726473a2b79c56e1aad",
+        "Git_blob_sha1": "1f1bdffaf6978eba649ba9d0c521cc0bc937171c"
+      },
+      {
+        "path": "downloads/SHA256SUMS.txt",
+        "passed": true,
+        "HTTP": 200,
+        "bytes": 412,
+        "sha256": "21abb7cccdc335e6f321fc1a6539406dd702d27cf74b48842593c5f5f2174c01",
+        "Git_blob_sha1": "4c8acf500466a68a41bcc890fb405034de32a547"
+      },
+      {
+        "path": "downloads/Pokemon-Emerald-Legends-v0.0.85-debug.bps",
+        "passed": true,
+        "HTTP": 200,
+        "bytes": 17357990,
+        "sha256": "d64fdd84ddef2f08359750760692dbe323aa1311c1b2cce0c00f32f80d2c11d5",
+        "Git_blob_sha1": "c05ba16fa6c036eabf510184ea81e7512955282a",
+        "source_CRC32": "1f1c08fb",
+        "target_CRC32": "86d488c0",
+        "patch_CRC_passed": true
+      },
+      {
+        "path": "downloads/Pokemon-Emerald-Legends-v0.0.85.bps",
+        "passed": true,
+        "HTTP": 200,
+        "bytes": 17530696,
+        "sha256": "5087498a0c8a31be2a10caa7386fcee539a158dc29aef9e60f56c3732b935771",
+        "Git_blob_sha1": "c7af84da5293ef8b7cbe28f231fe810533696abd",
+        "source_CRC32": "1f1c08fb",
+        "target_CRC32": "a0ddd8a4",
+        "patch_CRC_passed": true
+      },
+      {
+        "path": "release-publication.json",
+        "passed": true,
+        "HTTP": 200,
+        "bytes": 254349,
+        "sha256": "69628f88dec0f5f3113b5f21dcdb70daa421c3d75ba05822e055db6eab6e8b8c",
+        "Git_blob_sha1": "1f1b9f2848fdbe7beca5ef5cac1d663b098294b2"
+      }
+    ],
+    "scope": "Fresh live HTTP bytes, reviewed SHA256/Git blobs and BPS footer CRCs only; not a gameplay, build or clean-base reconstruction test.",
+    "expected_receipt_sha256": "6a31fd65b4c30064bba9fa4e06850d5a0bdc55965c3214d59fd18ffee052e264"
+  }
+}
