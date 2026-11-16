@@ -256,7 +256,7 @@ struct NPCFollower
 #include "constants/item.h"
 // Size of the published first-time item bitmap. New IDs past it use the tail.
 #define ITEM_FLAGS_COUNT 110
-#define LEGENDS_ITEM_FLAGS_EXTRA_COUNT 8
+#define LEGENDS_ITEM_FLAGS_EXTRA_COUNT 9
 #define LEGENDS_MEAL_SLOTS 3
 
 #include "legends_adventure.h"

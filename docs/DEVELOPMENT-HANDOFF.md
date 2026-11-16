@@ -1,12 +1,20 @@
 # Development handoff
 
+## Oats, Ginger, and Peach cooking batch (16 November 2026)
+
+**Model: GPT-6.1 Sol | Reasoning: add three pantry ingredients and four recipes through the shared shop and recipe tables, preserving existing item IDs.**
+
+Poké Marts stock Oats (₽35), Ginger (₽45), and Peach (₽60). Kitchens offer Peach Oatmeal, Ginger Fried Rice, Iced Peach Tea, and Ginger Tea. The Mess Kit makes both meals, the Steel Canteen makes Iced Peach Tea, and the Percolator makes both teas. Each recipe uses one unit of four ingredients and grants a ten-minute buff.
+
+Native mGBA verified the three purchases, one recipe at each cooking station, all four food buffs, and the approved Treat Case in the Bag. IDs 939–945 extend the item-history tail by one byte and preserve all earlier offsets. The legacy sector's cleared tail and the item-history, save-sector, Bag, and Nightmare host checks passed. Draft visual review. [Preview evidence](qa/cooking-room-polish-preview.json).
+
 ## Cooking preview and bedroom chair polish (16 November 2026)
 
 **Model: GPT-6.1 Sol | Reasoning: use the same recipe table for browsing and crafting, and isolate the original chair's full upholstery.**
 
 Kitchens and Mom's three portable tools now show the highlighted recipe's native icon, required quantities, and timed buff on the right. Missing ingredients are red. The cooking prompt goes directly to Yes/No and declining restores the highlighted recipe. Both bedroom layouts recolor the seat and entire backrest together. Smoothed Butter and Egg silhouettes, updated Treat Case art, and fitted its description in the Bag. Item IDs, recipes, buff data, and save layouts were preserved.
 
-The Debug ROM passed focused mGBA menu, transaction, buff, art and bedroom pixel checks, plus the host Bag and bedroom regressions. The owner approved the chair and Butter/Egg sprites, and requested more room in the recipe panel and three new Treat Case options. The revised recipe browser uses a taller window with 14-pixel ingredient rows, a separated buff section, and room for eight recipe rows. Replayed the native cooking checks after the resize. The owner approved the updated cooking menu, selected the Berry Satchel shape, and requested a tan palette. At the owner's request, mirrored the Tan Satchel's outline, flap, carry loop, clasp, and shading around its centerline. Every pixel matched its left-right counterpart. The 24 × 24 sprite and original tan palette passed the native graphics converters. The owner approved the symmetrical Tan Satchel after reviewing the Bag mockup and asked to continue development before publishing. Future sprite work should favor symmetry where it fits the object. The branch remains in draft. A fresh emulator capture of the final icon remains pending. [Preview evidence](qa/cooking-room-polish-preview.json).
+The Debug ROM passed focused mGBA menu, transaction, buff, art and bedroom pixel checks, plus the host Bag and bedroom regressions. The owner approved the chair and Butter/Egg sprites, and requested more room in the recipe panel and three new Treat Case options. The revised recipe browser uses a taller window with 14-pixel ingredient rows, a separated buff section, and room for eight recipe rows. Replayed the native cooking checks after the resize. The owner approved the updated cooking menu, selected the Berry Satchel shape, and requested a tan palette. At the owner's request, mirrored the Tan Satchel's outline, flap, carry loop, clasp, and shading around its centerline. Every pixel matched its left-right counterpart. The 24 × 24 sprite and original tan palette passed the native graphics converters. The owner approved the symmetrical Tan Satchel after reviewing the Bag mockup and asked to continue development before publishing. Future sprite work should favor symmetry where it fits the object. The branch remains in draft. Captured the final icon in the native Bag during the Oats, Ginger, and Peach review. [Preview evidence](qa/cooking-room-polish-preview.json).
 
 ## v0.0.87 Kanto seasonal encounters candidate (16 November 2026)
 
