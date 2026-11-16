@@ -173,6 +173,33 @@ for route in range(1,5):
   assert sorted(odds[x] for x in visitors)==[10,20] and not(visitors&(prior_visitors|kanto_visitors))
   kanto_visitors|=visitors
 assert len(kanto_visitors)==32
+new_kanto=set()
+kanto_land=[*(str(r) for r in range(6,19)),'21_NORTH']
+kanto_water=['19','20','21_NORTH','21_SOUTH']
+for routes,method,suffix,slot_weights,resident_share,visitor_weights in (
+    (kanto_land,'land_mons','',weights,70,[10,20]),
+    (kanto_water,'water_mons','Water',water_weights,65,[5,30]),
+):
+ for route in routes:
+  original=next(e[method] for e in g['encounters'] if e['map']==f'MAP_LEGENDS_KANTO_ROUTE{route}')
+  native_rate=2 if suffix else 14 if route.startswith('21_') else 21
+  assert original['encounter_rate']==native_rate
+  residents={m['species'] for m in original['mons']}
+  for season in ('Spring','Summer','Autumn','Winter'):
+   label=f'sKantoRoute{route}{season}{suffix}Mons'
+   body=re.search(rf'{label}.*?=\s*\{{(.*?)\}};',data,re.S)[1]
+   rows=re.findall(r'\{(\d+), (\d+), (SPECIES_\w+)\}',body)
+   assert len(rows)==len(slot_weights)
+   assert [(int(lo),int(hi)) for lo,hi,_ in rows]==[(m['min_level'],m['max_level']) for m in original['mons']]
+   odds={}
+   for row,weight in zip(rows,slot_weights):
+    odds[row[2]]=odds.get(row[2],0)+weight
+   visitors=set(odds)-residents
+   assert residents<=odds.keys() and sum(odds[x] for x in residents)==resident_share
+   assert sorted(odds[x] for x in visitors)==visitor_weights
+   assert not visitors&(kanto_visitors|new_kanto|{'SPECIES_'+name for name in grotto_species}|{'SPECIES_DA_BUG'})
+   new_kanto|=visitors
+assert len(new_kanto)==144
 pre=r'''
 #include <stdint.h>
 #include <stddef.h>
@@ -221,6 +248,23 @@ typedef uint8_t u8;typedef uint16_t u16;typedef uint32_t u32;
 #define MAP_LEGENDS_KANTO_ROUTE2 0x4B02
 #define MAP_LEGENDS_KANTO_ROUTE3 0x4B03
 #define MAP_LEGENDS_KANTO_ROUTE4 0x4B04
+#define MAP_LEGENDS_KANTO_ROUTE6 0x4B05
+#define MAP_LEGENDS_KANTO_ROUTE7 0x4B06
+#define MAP_LEGENDS_KANTO_ROUTE8 0x4B07
+#define MAP_LEGENDS_KANTO_ROUTE9 0x4B08
+#define MAP_LEGENDS_KANTO_ROUTE10 0x4B09
+#define MAP_LEGENDS_KANTO_ROUTE11 0x4B0A
+#define MAP_LEGENDS_KANTO_ROUTE12 0x4B0B
+#define MAP_LEGENDS_KANTO_ROUTE13 0x4B0C
+#define MAP_LEGENDS_KANTO_ROUTE14 0x4B0D
+#define MAP_LEGENDS_KANTO_ROUTE15 0x4B0E
+#define MAP_LEGENDS_KANTO_ROUTE16 0x4B0F
+#define MAP_LEGENDS_KANTO_ROUTE17 0x4B10
+#define MAP_LEGENDS_KANTO_ROUTE18 0x4B11
+#define MAP_LEGENDS_KANTO_ROUTE19 0x4B12
+#define MAP_LEGENDS_KANTO_ROUTE20 0x4B13
+#define MAP_LEGENDS_KANTO_ROUTE21_NORTH 0x4B14
+#define MAP_LEGENDS_KANTO_ROUTE21_SOUTH 0x4B15
 #define NUM_LAND_MONS_ENCOUNTER_SLOTS 12
 #define NUM_WATER_MONS_ENCOUNTER_SLOTS 5
 #define HEADER_NONE 65535
@@ -231,7 +275,7 @@ struct WildPokemonInfo {u8 encounterRate;const struct WildPokemon *wildPokemon;}
 struct WildEncounterTypes {const struct WildPokemonInfo *landMonsInfo,*waterMonsInfo,*hiddenMonsInfo;};
 struct WildPokemonHeader {u8 mapGroup,mapNum;struct WildEncounterTypes encounterTypes[TIMES_OF_DAY_COUNT];};
 static struct WildPokemonInfo fallback[4],waterFallback[4];
-static struct WildPokemonHeader gWildMonHeaders[40];
+static struct WildPokemonHeader gWildMonHeaders[57];
 static unsigned active,reads,pending,currentHeader;
 #define MAX_LEVEL 100
 #define MON_LEVEL_NONEXISTENT 255
@@ -250,17 +294,18 @@ u8 LegendsGetActiveSeason(void){reads++;return active;}
 '''
 main=r'''
 int main(void){
- for(unsigned h=0;h<39;h++){gWildMonHeaders[h].mapGroup=h<35?0:0x4B;gWildMonHeaders[h].mapNum=h<35?101+h:h-34;for(unsigned t=0;t<4;t++){gWildMonHeaders[h].encounterTypes[t].landMonsInfo=&fallback[t];gWildMonHeaders[h].encounterTypes[t].waterMonsInfo=&waterFallback[t];}}
+ static const unsigned kantoMaps[]={MAP_LEGENDS_KANTO_ROUTE1,MAP_LEGENDS_KANTO_ROUTE2,MAP_LEGENDS_KANTO_ROUTE3,MAP_LEGENDS_KANTO_ROUTE4,MAP_LEGENDS_KANTO_ROUTE6,MAP_LEGENDS_KANTO_ROUTE7,MAP_LEGENDS_KANTO_ROUTE8,MAP_LEGENDS_KANTO_ROUTE9,MAP_LEGENDS_KANTO_ROUTE10,MAP_LEGENDS_KANTO_ROUTE11,MAP_LEGENDS_KANTO_ROUTE12,MAP_LEGENDS_KANTO_ROUTE13,MAP_LEGENDS_KANTO_ROUTE14,MAP_LEGENDS_KANTO_ROUTE15,MAP_LEGENDS_KANTO_ROUTE16,MAP_LEGENDS_KANTO_ROUTE17,MAP_LEGENDS_KANTO_ROUTE18,MAP_LEGENDS_KANTO_ROUTE19,MAP_LEGENDS_KANTO_ROUTE20,MAP_LEGENDS_KANTO_ROUTE21_NORTH,MAP_LEGENDS_KANTO_ROUTE21_SOUTH};
+ for(unsigned h=0;h<56;h++){gWildMonHeaders[h].mapGroup=h<35?0:0x4B;gWildMonHeaders[h].mapNum=h<35?101+h:(kantoMaps[h-35]&255);for(unsigned t=0;t<4;t++){gWildMonHeaders[h].encounterTypes[t].landMonsInfo=&fallback[t];gWildMonHeaders[h].encounterTypes[t].waterMonsInfo=&waterFallback[t];}}
  for(unsigned season=0;season<4;season++)for(unsigned t=0;t<4;t++){
   active=season;pending=(season+1)%4;
-  for(unsigned h=0;h<39;h++){
+  for(unsigned h=0;h<56;h++){
    currentHeader=h;
    unsigned map=(gWildMonHeaders[h].mapGroup<<8)|gWildMonHeaders[h].mapNum;
    for(unsigned area=0;area<2;area++){
     const struct WildPokemonInfo *expected=area?&waterFallback[t]:&fallback[t],*previous=NULL;
     unsigned rate=0,slots=area?5:12;
-    if(area){for(unsigned i=0;i<ARRAY_COUNT(sLegendsSeasonalWater);i++)if(sLegendsSeasonalWater[i].map==map){expected=&sLegendsSeasonalWater[i].seasons[season];previous=&sLegendsSeasonalWater[i].seasons[(season+3)%4];rate=4;}}
-    else {for(unsigned i=0;i<ARRAY_COUNT(sLegendsSeasonalLand);i++)if(sLegendsSeasonalLand[i].map==map){expected=&sLegendsSeasonalLand[i].seasons[season];previous=&sLegendsSeasonalLand[i].seasons[(season+3)%4];rate=(h>=35?21:h==10?10:h==18?15:20);}}
+    if(area){for(unsigned i=0;i<ARRAY_COUNT(sLegendsSeasonalWater);i++)if(sLegendsSeasonalWater[i].map==map){expected=&sLegendsSeasonalWater[i].seasons[season];previous=&sLegendsSeasonalWater[i].seasons[(season+3)%4];rate=h>=35?2:4;}}
+    else {for(unsigned i=0;i<ARRAY_COUNT(sLegendsSeasonalLand);i++)if(sLegendsSeasonalLand[i].map==map){expected=&sLegendsSeasonalLand[i].seasons[season];previous=&sLegendsSeasonalLand[i].seasons[(season+3)%4];rate=(h>=35?(map==MAP_LEGENDS_KANTO_ROUTE21_NORTH||map==MAP_LEGENDS_KANTO_ROUTE21_SOUTH?14:21):h==10?10:h==18?15:20);}}
     unsigned before=reads;const struct WildPokemonInfo *p=area?GetWaterMonsInfo(h,t):GetLandMonsInfo(h,t);
     assert(p==expected);assert(active==season&&pending==(season+1)%4);
     if(!previous){assert(reads==before);continue;}assert(p->encounterRate==rate);
@@ -274,11 +319,11 @@ int main(void){
    }
   }
  }
- assert(!GetLandMonsInfo(HEADER_NONE,0)&&!GetLandMonsInfo(39,0)&&!GetLandMonsInfo(0,4)&&!GetLandMonsInfo(0,(enum TimeOfDay)-1));
- assert(!GetWaterMonsInfo(HEADER_NONE,0)&&!GetWaterMonsInfo(39,0)&&!GetWaterMonsInfo(0,4)&&!GetWaterMonsInfo(0,(enum TimeOfDay)-1));
- active=255;for(unsigned h=0;h<39;h++){assert(GetLandMonsInfo(h,0)==&fallback[0]);assert(GetWaterMonsInfo(h,0)==&waterFallback[0]);}
+ assert(!GetLandMonsInfo(HEADER_NONE,0)&&!GetLandMonsInfo(56,0)&&!GetLandMonsInfo(0,4)&&!GetLandMonsInfo(0,(enum TimeOfDay)-1));
+ assert(!GetWaterMonsInfo(HEADER_NONE,0)&&!GetWaterMonsInfo(56,0)&&!GetWaterMonsInfo(0,4)&&!GetWaterMonsInfo(0,(enum TimeOfDay)-1));
+ active=255;for(unsigned h=0;h<56;h++){assert(GetLandMonsInfo(h,0)==&fallback[0]);assert(GetWaterMonsInfo(h,0)==&waterFallback[0]);}
  currentHeader=HEADER_NONE;assert(GetEncounterLevelFromMapData(SPECIES_WURMPLE,ENCOUNTER_TYPE_LAND)==255);
- puts("PASS: all 152 seasonal tables, exact rates including desert, all TODs, committed vs pending, unrelated map/method parity, bounds/fallback and absent prior-season DexNav targets");
+ puts("PASS: all 224 seasonal tables, exact rates including desert, all TODs, committed vs pending, unrelated map/method parity, bounds/fallback and absent prior-season DexNav targets");
 }
 '''
 with tempfile.TemporaryDirectory() as d:
@@ -293,4 +338,4 @@ assert 'encounters.landMonsInfo = GetLandMonsInfo(i, gAreaTimeOfDay);' in (R/'sr
 assert s.count('gWildMonHeaders[headerId].encounterTypes[timeOfDay].waterMonsInfo')==1
 assert 'encounters.waterMonsInfo = GetWaterMonsInfo(i, gAreaTimeOfDay);' in (R/'src/pokedex_area_screen.c').read_text()
 assert 'LegendsGetSeason()' not in function and 'VarSet(' not in function
-print('PASS: original residents/levels/rates, 70/20/10 base distribution, 300 visitor selections, native 65/30/5 Surf odds and all dependent land/Surf readers')
+print('PASS: original residents/levels/rates, 70/20/10 base distribution, 444 visitor selections, native 65/30/5 Surf odds and all dependent land/Surf readers')
