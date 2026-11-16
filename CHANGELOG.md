@@ -4,6 +4,13 @@ All notable Pokémon Emerald: Legends project changes are documented here.
 
 For build-specific player views, see [CHANGELOG-RELEASE.md](CHANGELOG-RELEASE.md) and [CHANGELOG-DEBUG.md](CHANGELOG-DEBUG.md). The canonical history below records the project as a whole.
 
+## [0.0.86] - 2026-11-15
+
+- Added Carrot, Onion, Apple, Cinnamon, Lemon, Garlic, Rice, and Vanilla to the shared Ingredients stock at Poké Marts.
+- Added eight meals and five drinks, including Garlic Rice Pilaf, Lemon Shortbread, Eggnog, Iced Lemonade, and Vanilla Latte. All thirteen recipes gave ten-minute buffs.
+- Opened the Poké Mart counters in Lavender Town and Fuchsia City.
+- Added 32 seasonal grass encounters across Kanto Routes 1–4 and updated their LegendsDex and walkthrough listings.
+
 ## [0.0.85] - 2026-11-15
 
 - Added the Steel Canteen, Mess Kit, and Percolator as gifts from Mom. Players who already had Running Shoes could collect the gear by talking to Mom at home.

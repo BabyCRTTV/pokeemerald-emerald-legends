@@ -1,0 +1,20 @@
+{
+  "status": "review preview",
+  "previousPreviewCommit": "c858452855a2d8258a603b6a00b5998a89d73801",
+  "gameVersion": "0.0.85",
+  "romSha256": "ce35bafda93452590572f219c4b116dc0d6c456e75d534164f93503419d87f46",
+  "previousCarrotSha256": "d04311592f1f4c31c8e198b2b778b56c979450b22f2dd0e1cfc410b6ed0df852",
+  "revisedCarrotSha256": "2d9e99843bfaf3ecbb1c7edf4e06d618b78143e1d731a90ae3285060f1d6f949",
+  "previewSha256": "ffaa028f5464dbce42c5ba311c8a0510a8214cc698b5a87cc93dfd28ee5aea84",
+  "nativeQA": {
+    "emulator": "mGBA",
+    "revisedCaptureSha256": "f2728ac4184025cc0ca03aa7ba548c1062d6bfd552edc89c8978ef624bbc8378",
+    "harnessSha256": {
+      "fixture.c": "f76fbf25cd257378af207dbde2ca70da2f0e330317cc4653ca0a7b34873fde59",
+      "verify.py": "03e90012b5aa1e5e2ba99eaf85fac920de989f93cdf0fcf109e1e34db9e67a16"
+    },
+    "checksPassed": [
+      "Verified the one-pixel contour against the original silhouette and bought and inspected Carrot in the native Items pocket."
+    ]
+  }
+}

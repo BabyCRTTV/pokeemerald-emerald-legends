@@ -1094,6 +1094,262 @@ static const struct WildPokemon sRoute123WinterMons[NUM_LAND_MONS_ENCOUNTER_SLOT
     {25, 25, SPECIES_KECLEON},
 };
 
+static const struct WildPokemon sKantoRoute1SpringMons[NUM_LAND_MONS_ENCOUNTER_SLOTS] =
+{
+    {3, 3, SPECIES_PAWMI},
+    {3, 3, SPECIES_RATTATA},
+    {3, 3, SPECIES_PIDGEY},
+    {3, 3, SPECIES_HOOTHOOT},
+    {2, 2, SPECIES_PIDGEY},
+    {2, 2, SPECIES_RATTATA},
+    {3, 3, SPECIES_PIDGEY},
+    {3, 3, SPECIES_RATTATA},
+    {4, 4, SPECIES_PIDGEY},
+    {4, 4, SPECIES_RATTATA},
+    {5, 5, SPECIES_PIDGEY},
+    {4, 4, SPECIES_RATTATA},
+};
+
+static const struct WildPokemon sKantoRoute1SummerMons[NUM_LAND_MONS_ENCOUNTER_SLOTS] =
+{
+    {3, 3, SPECIES_PIKIPEK},
+    {3, 3, SPECIES_RATTATA},
+    {3, 3, SPECIES_PIDGEY},
+    {3, 3, SPECIES_YUNGOOS},
+    {2, 2, SPECIES_PIDGEY},
+    {2, 2, SPECIES_RATTATA},
+    {3, 3, SPECIES_PIDGEY},
+    {3, 3, SPECIES_RATTATA},
+    {4, 4, SPECIES_PIDGEY},
+    {4, 4, SPECIES_RATTATA},
+    {5, 5, SPECIES_PIDGEY},
+    {4, 4, SPECIES_RATTATA},
+};
+
+static const struct WildPokemon sKantoRoute1AutumnMons[NUM_LAND_MONS_ENCOUNTER_SLOTS] =
+{
+    {3, 3, SPECIES_PURRLOIN},
+    {3, 3, SPECIES_RATTATA},
+    {3, 3, SPECIES_PIDGEY},
+    {3, 3, SPECIES_GLAMEOW},
+    {2, 2, SPECIES_PIDGEY},
+    {2, 2, SPECIES_RATTATA},
+    {3, 3, SPECIES_PIDGEY},
+    {3, 3, SPECIES_RATTATA},
+    {4, 4, SPECIES_PIDGEY},
+    {4, 4, SPECIES_RATTATA},
+    {5, 5, SPECIES_PIDGEY},
+    {4, 4, SPECIES_RATTATA},
+};
+
+static const struct WildPokemon sKantoRoute1WinterMons[NUM_LAND_MONS_ENCOUNTER_SLOTS] =
+{
+    {3, 3, SPECIES_CUBCHOO},
+    {3, 3, SPECIES_RATTATA},
+    {3, 3, SPECIES_PIDGEY},
+    {3, 3, SPECIES_MUNCHLAX},
+    {2, 2, SPECIES_PIDGEY},
+    {2, 2, SPECIES_RATTATA},
+    {3, 3, SPECIES_PIDGEY},
+    {3, 3, SPECIES_RATTATA},
+    {4, 4, SPECIES_PIDGEY},
+    {4, 4, SPECIES_RATTATA},
+    {5, 5, SPECIES_PIDGEY},
+    {4, 4, SPECIES_RATTATA},
+};
+
+static const struct WildPokemon sKantoRoute2SpringMons[NUM_LAND_MONS_ENCOUNTER_SLOTS] =
+{
+    {3, 3, SPECIES_SPINARAK},
+    {3, 3, SPECIES_PIDGEY},
+    {4, 4, SPECIES_RATTATA},
+    {4, 4, SPECIES_COTTONEE},
+    {2, 2, SPECIES_RATTATA},
+    {2, 2, SPECIES_PIDGEY},
+    {5, 5, SPECIES_RATTATA},
+    {5, 5, SPECIES_PIDGEY},
+    {4, 4, SPECIES_CATERPIE},
+    {4, 4, SPECIES_WEEDLE},
+    {5, 5, SPECIES_CATERPIE},
+    {5, 5, SPECIES_WEEDLE},
+};
+
+static const struct WildPokemon sKantoRoute2SummerMons[NUM_LAND_MONS_ENCOUNTER_SLOTS] =
+{
+    {3, 3, SPECIES_GRUBBIN},
+    {3, 3, SPECIES_PIDGEY},
+    {4, 4, SPECIES_RATTATA},
+    {4, 4, SPECIES_BURMY},
+    {2, 2, SPECIES_RATTATA},
+    {2, 2, SPECIES_PIDGEY},
+    {5, 5, SPECIES_RATTATA},
+    {5, 5, SPECIES_PIDGEY},
+    {4, 4, SPECIES_CATERPIE},
+    {4, 4, SPECIES_WEEDLE},
+    {5, 5, SPECIES_CATERPIE},
+    {5, 5, SPECIES_WEEDLE},
+};
+
+static const struct WildPokemon sKantoRoute2AutumnMons[NUM_LAND_MONS_ENCOUNTER_SLOTS] =
+{
+    {3, 3, SPECIES_KARRABLAST},
+    {3, 3, SPECIES_PIDGEY},
+    {4, 4, SPECIES_RATTATA},
+    {4, 4, SPECIES_SHELMET},
+    {2, 2, SPECIES_RATTATA},
+    {2, 2, SPECIES_PIDGEY},
+    {5, 5, SPECIES_RATTATA},
+    {5, 5, SPECIES_PIDGEY},
+    {4, 4, SPECIES_CATERPIE},
+    {4, 4, SPECIES_WEEDLE},
+    {5, 5, SPECIES_CATERPIE},
+    {5, 5, SPECIES_WEEDLE},
+};
+
+static const struct WildPokemon sKantoRoute2WinterMons[NUM_LAND_MONS_ENCOUNTER_SLOTS] =
+{
+    {3, 3, SPECIES_SILCOON},
+    {3, 3, SPECIES_PIDGEY},
+    {4, 4, SPECIES_RATTATA},
+    {4, 4, SPECIES_JOLTIK},
+    {2, 2, SPECIES_RATTATA},
+    {2, 2, SPECIES_PIDGEY},
+    {5, 5, SPECIES_RATTATA},
+    {5, 5, SPECIES_PIDGEY},
+    {4, 4, SPECIES_CATERPIE},
+    {4, 4, SPECIES_WEEDLE},
+    {5, 5, SPECIES_CATERPIE},
+    {5, 5, SPECIES_WEEDLE},
+};
+
+static const struct WildPokemon sKantoRoute3SpringMons[NUM_LAND_MONS_ENCOUNTER_SLOTS] =
+{
+    {6, 6, SPECIES_MAREEP},
+    {6, 6, SPECIES_PIDGEY},
+    {7, 7, SPECIES_SPEAROW},
+    {7, 7, SPECIES_MANKEY},
+    {6, 6, SPECIES_NIDORAN_M},
+    {7, 7, SPECIES_TANDEMAUS},
+    {8, 8, SPECIES_SPEAROW},
+    {3, 3, SPECIES_JIGGLYPUFF},
+    {7, 7, SPECIES_NIDORAN_M},
+    {5, 5, SPECIES_JIGGLYPUFF},
+    {6, 6, SPECIES_NIDORAN_F},
+    {7, 7, SPECIES_JIGGLYPUFF},
+};
+
+static const struct WildPokemon sKantoRoute3SummerMons[NUM_LAND_MONS_ENCOUNTER_SLOTS] =
+{
+    {6, 6, SPECIES_STUFFUL},
+    {6, 6, SPECIES_PIDGEY},
+    {7, 7, SPECIES_SPEAROW},
+    {7, 7, SPECIES_MANKEY},
+    {6, 6, SPECIES_NIDORAN_M},
+    {7, 7, SPECIES_CUBONE},
+    {8, 8, SPECIES_SPEAROW},
+    {3, 3, SPECIES_JIGGLYPUFF},
+    {7, 7, SPECIES_NIDORAN_M},
+    {5, 5, SPECIES_JIGGLYPUFF},
+    {6, 6, SPECIES_NIDORAN_F},
+    {7, 7, SPECIES_JIGGLYPUFF},
+};
+
+static const struct WildPokemon sKantoRoute3AutumnMons[NUM_LAND_MONS_ENCOUNTER_SLOTS] =
+{
+    {6, 6, SPECIES_SPOINK},
+    {6, 6, SPECIES_PIDGEY},
+    {7, 7, SPECIES_SPEAROW},
+    {7, 7, SPECIES_MANKEY},
+    {6, 6, SPECIES_NIDORAN_M},
+    {7, 7, SPECIES_MUNNA},
+    {8, 8, SPECIES_SPEAROW},
+    {3, 3, SPECIES_JIGGLYPUFF},
+    {7, 7, SPECIES_NIDORAN_M},
+    {5, 5, SPECIES_JIGGLYPUFF},
+    {6, 6, SPECIES_NIDORAN_F},
+    {7, 7, SPECIES_JIGGLYPUFF},
+};
+
+static const struct WildPokemon sKantoRoute3WinterMons[NUM_LAND_MONS_ENCOUNTER_SLOTS] =
+{
+    {6, 6, SPECIES_SWINUB},
+    {6, 6, SPECIES_PIDGEY},
+    {7, 7, SPECIES_SPEAROW},
+    {7, 7, SPECIES_MANKEY},
+    {6, 6, SPECIES_NIDORAN_M},
+    {7, 7, SPECIES_VANILLITE},
+    {8, 8, SPECIES_SPEAROW},
+    {3, 3, SPECIES_JIGGLYPUFF},
+    {7, 7, SPECIES_NIDORAN_M},
+    {5, 5, SPECIES_JIGGLYPUFF},
+    {6, 6, SPECIES_NIDORAN_F},
+    {7, 7, SPECIES_JIGGLYPUFF},
+};
+
+static const struct WildPokemon sKantoRoute4SpringMons[NUM_LAND_MONS_ENCOUNTER_SLOTS] =
+{
+    {10, 10, SPECIES_DIGLETT},
+    {10, 10, SPECIES_RATTATA},
+    {6, 6, SPECIES_ROGGENROLA},
+    {10, 10, SPECIES_EKANS},
+    {8, 8, SPECIES_SPEAROW},
+    {8, 8, SPECIES_RATTATA},
+    {12, 12, SPECIES_SPEAROW},
+    {12, 12, SPECIES_RATTATA},
+    {10, 10, SPECIES_MANKEY},
+    {8, 8, SPECIES_EKANS},
+    {12, 12, SPECIES_MANKEY},
+    {12, 12, SPECIES_EKANS},
+};
+
+static const struct WildPokemon sKantoRoute4SummerMons[NUM_LAND_MONS_ENCOUNTER_SLOTS] =
+{
+    {10, 10, SPECIES_NACLI},
+    {10, 10, SPECIES_RATTATA},
+    {6, 6, SPECIES_NOSEPASS},
+    {10, 10, SPECIES_EKANS},
+    {8, 8, SPECIES_SPEAROW},
+    {8, 8, SPECIES_RATTATA},
+    {12, 12, SPECIES_SPEAROW},
+    {12, 12, SPECIES_RATTATA},
+    {10, 10, SPECIES_MANKEY},
+    {8, 8, SPECIES_EKANS},
+    {12, 12, SPECIES_MANKEY},
+    {12, 12, SPECIES_EKANS},
+};
+
+static const struct WildPokemon sKantoRoute4AutumnMons[NUM_LAND_MONS_ENCOUNTER_SLOTS] =
+{
+    {10, 10, SPECIES_MUDBRAY},
+    {10, 10, SPECIES_RATTATA},
+    {6, 6, SPECIES_DRILBUR},
+    {10, 10, SPECIES_EKANS},
+    {8, 8, SPECIES_SPEAROW},
+    {8, 8, SPECIES_RATTATA},
+    {12, 12, SPECIES_SPEAROW},
+    {12, 12, SPECIES_RATTATA},
+    {10, 10, SPECIES_MANKEY},
+    {8, 8, SPECIES_EKANS},
+    {12, 12, SPECIES_MANKEY},
+    {12, 12, SPECIES_EKANS},
+};
+
+static const struct WildPokemon sKantoRoute4WinterMons[NUM_LAND_MONS_ENCOUNTER_SLOTS] =
+{
+    {10, 10, SPECIES_GEODUDE},
+    {10, 10, SPECIES_RATTATA},
+    {6, 6, SPECIES_ONIX},
+    {10, 10, SPECIES_EKANS},
+    {8, 8, SPECIES_SPEAROW},
+    {8, 8, SPECIES_RATTATA},
+    {12, 12, SPECIES_SPEAROW},
+    {12, 12, SPECIES_RATTATA},
+    {10, 10, SPECIES_MANKEY},
+    {8, 8, SPECIES_EKANS},
+    {12, 12, SPECIES_MANKEY},
+    {12, 12, SPECIES_EKANS},
+};
+
 static const struct LegendsSeasonalLandTable sLegendsSeasonalLand[] =
 {
     {MAP_ROUTE101, {
@@ -1197,6 +1453,30 @@ static const struct LegendsSeasonalLandTable sLegendsSeasonalLand[] =
         [LEGENDS_SUMMER] = {20, sRoute123SummerMons},
         [LEGENDS_AUTUMN] = {20, sRoute123AutumnMons},
         [LEGENDS_WINTER] = {20, sRoute123WinterMons},
+    }},
+    {MAP_LEGENDS_KANTO_ROUTE1, {
+        [LEGENDS_SPRING] = {21, sKantoRoute1SpringMons},
+        [LEGENDS_SUMMER] = {21, sKantoRoute1SummerMons},
+        [LEGENDS_AUTUMN] = {21, sKantoRoute1AutumnMons},
+        [LEGENDS_WINTER] = {21, sKantoRoute1WinterMons},
+    }},
+    {MAP_LEGENDS_KANTO_ROUTE2, {
+        [LEGENDS_SPRING] = {21, sKantoRoute2SpringMons},
+        [LEGENDS_SUMMER] = {21, sKantoRoute2SummerMons},
+        [LEGENDS_AUTUMN] = {21, sKantoRoute2AutumnMons},
+        [LEGENDS_WINTER] = {21, sKantoRoute2WinterMons},
+    }},
+    {MAP_LEGENDS_KANTO_ROUTE3, {
+        [LEGENDS_SPRING] = {21, sKantoRoute3SpringMons},
+        [LEGENDS_SUMMER] = {21, sKantoRoute3SummerMons},
+        [LEGENDS_AUTUMN] = {21, sKantoRoute3AutumnMons},
+        [LEGENDS_WINTER] = {21, sKantoRoute3WinterMons},
+    }},
+    {MAP_LEGENDS_KANTO_ROUTE4, {
+        [LEGENDS_SPRING] = {21, sKantoRoute4SpringMons},
+        [LEGENDS_SUMMER] = {21, sKantoRoute4SummerMons},
+        [LEGENDS_AUTUMN] = {21, sKantoRoute4AutumnMons},
+        [LEGENDS_WINTER] = {21, sKantoRoute4WinterMons},
     }},
 };
 

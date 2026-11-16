@@ -7,6 +7,7 @@ MAPS={d['id']:d for p in (R/'data/maps').glob('*/map.json') if (d:=json.loads(p.
 LAYOUTS={d['id']:d for d in json.loads((R/'data/layouts/layouts.json').read_text())['layouts']}
 CHAPTER=json.loads((R/'data/legends_kanto_chapter1.json').read_text())['maps']
 ACTIVATED={'LegendsKanto_FuchsiaCity_Gym','LegendsKanto_FuchsiaCity_PokemonCenter_1F','LegendsKanto_LavenderTown_PokemonCenter_1F'}
+STAFFED_MARTS={'LegendsKanto_FuchsiaCity_Mart','LegendsKanto_LavenderTown_Mart'}
 MANIFEST=json.loads((R/'data/legends_kanto_foundation.json').read_text())['maps']
 class FoundationTests(unittest.TestCase):
  def test_population_and_native_fidelity(self):
@@ -14,7 +15,9 @@ class FoundationTests(unittest.TestCase):
   encounters={e.get('map') for g in json.loads((R/'src/data/wild_encounters.json').read_text())['wild_encounter_groups'] for e in g['encounters']}
   for item in MANIFEST:
    d=MAPS[item['id']];l=LAYOUTS[d['layout']];s=json.loads((R/('data/maps/'+item['source']+'/map.json')).read_text());sl=LAYOUTS[s['layout']]
-   if item['name'] not in ACTIVATED:self.assertEqual(d['object_events'],[])
+   if item['name'] in STAFFED_MARTS:
+    self.assertEqual(d['object_events'],MAPS['MAP_LEGENDS_KANTO_CERULEAN_CITY_MART']['object_events'])
+   elif item['name'] not in ACTIVATED:self.assertEqual(d['object_events'],[])
    if 'Route' not in item['name'] or '_' in item['name'].removeprefix('LegendsKanto_'):self.assertNotIn(item['id'],encounters)
    self.assertIn('data/maps/'+item['name']+'/scripts.inc',(R/'data/event_scripts.s').read_text())
    self.assertEqual((l['width'],l['height']),(sl['width'],sl['height']))

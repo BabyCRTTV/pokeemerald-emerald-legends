@@ -1,0 +1,115 @@
+{
+  "status": "review preview",
+  "previousPreviewCommit": "254c4bcfd1a8f4e24f0fb3fdb41d54e3ae214dda",
+  "gameVersion": "0.0.85",
+  "romSha256": "96359af5f472b8d74ec628e0cb856dbcf0a81bde681c686d95b43aedaa64ea7e",
+  "previewSha256": "f48313a38168cac9f803f7f1c70bdb58e8302a50dcd909717c620f8cfac09768",
+  "recipes": {
+    "Garlic Rice Pilaf": {
+      "itemId": 933,
+      "testedStation": "Kitchen",
+      "ingredients": [
+        "Rice",
+        "Garlic",
+        "Butter",
+        "Onion"
+      ],
+      "buff": "Wild encounter rate -15%",
+      "spriteSha256": "f0946cc66a967b278878e50b2d34f40bd41e3a4b4b0d381b7393befa442c1aba",
+      "foodCaptureSha256": "31324bdeb7cff5d57ddb2661a94e35a3fb6415f6810f529d06ea6504ae76f8a0",
+      "actionCaptureSha256": "a0fea481a2bec10c2eef57cd52c21c74140b5b9da400cd800cafd0e0bc8c6077",
+      "buffCaptureSha256": "1efb2fdd1e325a8cfa222ac7d0d073d3e023923576899865ea73e64da2a6bbe3"
+    },
+    "Tomato Rice": {
+      "itemId": 934,
+      "testedStation": "Kitchen",
+      "ingredients": [
+        "Rice",
+        "Tomato",
+        "Onion",
+        "Salt"
+      ],
+      "buff": "Trainer prize money +10%",
+      "spriteSha256": "e91ca272223ce3dc9d48a522ac11835ff5e1b2ac2019138b95ce6fc0f5b95b57",
+      "foodCaptureSha256": "acecf1a5b889c419f04d800d2047246ef08430ec2ae92e0525bd2768536c4b9b",
+      "actionCaptureSha256": "aeaa6a9640ddc0bcc8be8b31f0939593dcf6149da7896b44a14a34305ee0139c",
+      "buffCaptureSha256": "6d9c19e720d33be2e180cb55a1745514cd6320d5402e76cbbcbef4db3a2d8920"
+    },
+    "Lemon Shortbread": {
+      "itemId": 935,
+      "testedStation": "Mess Kit",
+      "ingredients": [
+        "Lemon",
+        "Flour",
+        "Butter",
+        "Sugar"
+      ],
+      "buff": "Catch odds +5%",
+      "spriteSha256": "b4929fd27971315281a57be6e693f028e00b02aafe1d425426f2768d13efc078",
+      "foodCaptureSha256": "1b7af6164b469646adc41d9596651c575e61530c83f7059165866ba68553d3aa",
+      "actionCaptureSha256": "e68e94b4b8f556e91c4b6a4a6cdbb3c10228969aa14eeec37da09022f31d4948",
+      "buffCaptureSha256": "60290085ef7a488f2d0acd9ee23d62ffb876e0c8da598b78ac48d89e2bb7aa94"
+    },
+    "Vanilla Pudding": {
+      "itemId": 936,
+      "testedStation": "Mess Kit",
+      "ingredients": [
+        "Rice",
+        "Milk",
+        "Vanilla",
+        "Sugar"
+      ],
+      "buff": "Walking friendship +2",
+      "spriteSha256": "6cb9dc1b91431ff31c4cdc1c9718a8002143bb4c86b16df989bf6797294734ca",
+      "foodCaptureSha256": "4019c5e4ef80e6aa57bc11d693c56747ca9d99a7e3044ed2ca006dfacd411b00",
+      "actionCaptureSha256": "d604903c340c4be6782db89e5b1de804901c16b4ea4e3090834974744e4a3f5a",
+      "buffCaptureSha256": "25c81d4e1df4fa9e7e72ca123358a06ad1c5d27ddb1b7d5c259968082126929c"
+    },
+    "Iced Lemonade": {
+      "itemId": 937,
+      "testedStation": "Steel Canteen",
+      "ingredients": [
+        "Lemon",
+        "Water",
+        "Sugar",
+        "Ice Cubes"
+      ],
+      "buff": "Walking friendship +1",
+      "spriteSha256": "4a5d05dc541b11a47f2ccb495ee427835988eac2a46576eca9c20e35e6bb15f1",
+      "foodCaptureSha256": "3d5bed9c308d3a5873df528ee47701a27326a6b45ce54701df4bd0fc882efc2d",
+      "actionCaptureSha256": "3e8c3a6b59e4583ecb52876e525b076a92531b59e6fc8becd7410502e525462d",
+      "buffCaptureSha256": "7b6616d998d71e0fbaba814f95b2296801fc538814f21796c21a341f9a863276"
+    },
+    "Vanilla Latte": {
+      "itemId": 938,
+      "testedStation": "Percolator",
+      "ingredients": [
+        "Coffee Grounds",
+        "Water",
+        "Milk",
+        "Vanilla"
+      ],
+      "buff": "Battle Exp. +15%",
+      "spriteSha256": "4e2c1b01f076ab1a37408230db1e483e67784e22650c174db86ef0d57518bded",
+      "foodCaptureSha256": "0948f5332053d8ea7aed757415d5186b08b27783c5a09b80df4cb62f6b850128",
+      "actionCaptureSha256": "26f8421c09ac43501bbc4cb4091baa54c363dac5006b4c6f1f76af0d63c6325e",
+      "buffCaptureSha256": "646addac3df67f50fba7c7215a1c065a55724a851f6c283dfb895b52f02d0e8f"
+    }
+  },
+  "nativeQA": {
+    "emulator": "mGBA",
+    "harnessSha256": {
+      "fixture.c": "d2a97e2f72fed3500241a45cdfd5a779271010cbc599c7ed6440d46d3ba5a37a",
+      "verify.py": "bfaf05a638a44c4a3d0561461001c8c57d51e6214d69490f565a9abd21b3558f"
+    },
+    "checksPassed": [
+      "Bought Lemon, Garlic, Rice, and Vanilla at Oldale. Used normal controls to cook the six new recipes; checked every ingredient deduction.",
+      "Verified Iced Lemonade refuses a second attempt specifically without Ice Cubes and keeps other supplies intact.",
+      "Used EAT or DRINK from Food and verified the exact buff for each item."
+    ]
+  },
+  "hostChecksPassed": [
+    "test/legends-bag-capacity.test.py",
+    "test/legends-item-descriptions.test.py"
+  ]
+}

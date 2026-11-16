@@ -22,7 +22,8 @@ function boot(file,data,url='https://example.test/wiki/'){
 }
 const settle=()=>new Promise(r=>setImmediate(r));
 function routeHtml(reader,route){
- const marker='<section class="route-card" id="route-MAP_ROUTE'+route+'"';
+ const id=String(route).startsWith('MAP_')?route:'MAP_ROUTE'+route;
+ const marker='<section class="route-card" id="route-'+id+'"';
  const parts=reader.get('results').innerHTML.split(marker);assert.equal(parts.length,2,'exact route card '+route);
  return parts[1].split('</section>')[0];
 }
@@ -146,11 +147,11 @@ function routeHtml(reader,route){
  for(const p of data.species)assert(profiles.window.LegendsProfiles.entries[p.id],p.id+' missing entry');
  for(const m of data.maps){const loc=profiles.window.LegendsProfiles.locations[m.id];assert.equal(loc.region,m.region);if(m.region==='Sevii'){assert.equal(loc.cells.length,0,'Sevii must not use mainland coordinates');assert.match(loc.note,/expedition/);}else if(m.region==='Grotto'){assert.equal(loc.cells.length,0);assert.match(loc.note,/4,500/);}else assert(loc.cells.length,m.id+' missing map marker');for(const [x,y] of loc.cells)assert(x>=0&&x<224&&y>=0&&y<120);}
  assert.deepEqual(JSON.parse(JSON.stringify(profiles.window.LegendsProfiles.locations.MAP_ROUTE101.cells)),[[32,80]]);
- const seasonalMethods=data.maps.flatMap(m=>m.methods.filter(x=>x.seasonalVariants?.length&&m.region!=='Grotto').map(x=>[m.id.replace('MAP_ROUTE',''),x.id]));
- for(const [route,method] of seasonalMethods){
-  const u=boot('dex.js',data);await settle();u.get('method').listeners.change({target:{value:method}});u.get('search').value='Route '+route;u.get('search').listeners.input();
+ const seasonalMethods=data.maps.flatMap(m=>m.methods.filter(x=>x.seasonalVariants?.length&&m.region!=='Grotto').map(x=>[m.id,m.name,x.id]));
+ for(const [route,name,method] of seasonalMethods){
+  const u=boot('dex.js',data);await settle();u.get('method').listeners.change({target:{value:method}});u.get('search').value=name;u.get('search').listeners.input();
   assert.equal(u.get('seasonal-preview-note').hidden,data.seasonalStatus!=='preview');
-  const m=data.maps.find(m=>m.id==='MAP_ROUTE'+route).methods.find(m=>m.id===method);
+  const m=data.maps.find(m=>m.id===route).methods.find(m=>m.id===method);
   const resident=m.seasonalVariants[0].entries.filter(e=>m.seasonalVariants.every(v=>v.entries.some(x=>x.id===e.id)));
   for(const season of ['spring','summer','autumn','winter']){
    u.get('season').listeners.change({target:{value:season}});
@@ -164,10 +165,10 @@ function routeHtml(reader,route){
   }
  }
  // All Seasons is a union, preserving each tuple's own rate and availability.
- for(const [route,method] of seasonalMethods){
+ for(const [route,name,method] of seasonalMethods){
   const u=boot('dex.js',data,'https://example.test/wiki/dex.html?season=all');await settle();
-  assert.equal(u.get('season').value,'all');u.get('method').listeners.change({target:{value:method}});u.get('search').value='Route '+route;u.get('search').listeners.input();
-  const m=data.maps.find(m=>m.id==='MAP_ROUTE'+route).methods.find(m=>m.id===method),expected=new Map();
+  assert.equal(u.get('season').value,'all');u.get('method').listeners.change({target:{value:method}});u.get('search').value=name;u.get('search').listeners.input();
+  const m=data.maps.find(m=>m.id===route).methods.find(m=>m.id===method),expected=new Map();
   for(const v of m.seasonalVariants)for(const e of v.entries)expected.set([e.id,e.min,e.max,e.rate,e.time||'all-day'].join(':'),e);
   const card=routeHtml(u,route),rows=card.split('<div class="encounter">').slice(1);
   assert.equal(rows.length,expected.size,route+' union count');assert.match(card,/Shares apply in the seasons shown/);

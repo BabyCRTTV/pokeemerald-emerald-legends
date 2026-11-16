@@ -1,0 +1,21 @@
+{
+  "status": "review preview",
+  "previousPreviewCommit": "953523ad6a06a621cfe7af5a62a6ed6952c21ee3",
+  "gameVersion": "0.0.85",
+  "romSha256": "8b6c9ad23bcc0abbe4bff9f8ced40b54a6601e1a33ee30e412e1aa3e63b99d5f",
+  "previousCarrotSha256": "00bc69d5289c7f02446a40fae88fe931cb673f09d31f5ca9649e8315b247fba0",
+  "revisedCarrotSha256": "d04311592f1f4c31c8e198b2b778b56c979450b22f2dd0e1cfc410b6ed0df852",
+  "previewSha256": "ab04c6d5db0d5cc933cb59a64e094c0237650db2182d45f5eb43ab244d673b75",
+  "artReference": "Carrot emoji rendered using Noto Color Emoji, then redrawn by hand as a 24-by-24 Emerald item sprite.",
+  "nativeQA": {
+    "emulator": "mGBA",
+    "checksPassed": [
+      "Bought Carrot at the Oldale Mart, verified the exact purchase, and checked the redrawn icon in the native Items pocket."
+    ],
+    "harnessSha256": {
+      "fixture.c": "f76fbf25cd257378af207dbde2ca70da2f0e330317cc4653ca0a7b34873fde59",
+      "verify.py": "03e90012b5aa1e5e2ba99eaf85fac920de989f93cdf0fcf109e1e34db9e67a16"
+    },
+    "revisedCaptureSha256": "d530a17d3851d4e01d8c3f92540775c639fe66ec7c15f49a6b603b879927b633"
+  }
+}

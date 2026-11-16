@@ -1,5 +1,71 @@
 # Development handoff
 
+## v0.0.86 Cooking and Kanto Encounters candidate (15 November 2026)
+
+**Model: GPT-6.1 Sol | Reasoning: publish approved cooking and extend seasonal grass into the first four numbered Kanto routes using the existing game and wiki resolvers.**
+
+The owner approved cooking preview `de70e2bd` for publication and requested more route encounters before release. Added 32 all-day seasonal visitors across Routes 1–4 in Kanto. Each grass table retains all original residents, their native slot levels, rate 21, and a combined 70% resident share. No change to fishing, Surf, grotto data, artwork, or save layouts. LegendsDex and the existing Kanto walkthrough now cover the visitors. The atlas and both portrait sheets match the previous deployed bytes.
+
+Local Debug mGBA passed 322 native encounter and DexNav scenarios, including 34 new Kanto cases and all six pantry recipes with their buff and missing-ice checks. [Release evidence](qa/cooking-kanto-v0.0.86.json). Candidate and production release gates remain pending.
+
+## Rice, garlic, lemon, and vanilla recipes (15 November 2026)
+
+**Model: GPT-6.1 Sol | Reasoning: put the approved ingredients into varied meals and drinks, using the existing recipe transaction and timed effects.**
+
+Added Garlic Rice Pilaf, Tomato Rice, Lemon Shortbread, and Vanilla Pudding to kitchens and the Mess Kit. Kitchens also make Iced Lemonade and Vanilla Latte, which can be prepared in the Steel Canteen and Percolator respectively. The lemonade requires Ice Cubes and uses the approved tapered cup. IDs 933–938 append within the existing item-history bitmap. The Bag and save layouts remain compatible.
+
+Bought the four ingredients, verified all six cooking transactions and effects in mGBA, and confirmed that missing ice leaves other supplies intact. Bag, item-history, and save-sector tests passed. [Preview evidence](qa/pantry-recipes-preview.json). Review branch only.
+
+## Lemon outline and Poké Mart coverage (15 November 2026)
+
+**Model: GPT-6.1 Sol | Reasoning: remove the lone lemon outline pixel and activate the two reachable Kanto marts without changing the shared shop stock or warp data.**
+
+The owner approved Lemon, Garlic, Rice, and Vanilla, flagged one protruding lemon pixel, and asked whether the ingredients are stocked at every Poké Mart. Removed the bottom pixel. All standard counters use one INGREDIENTS list. Lavender Town and Fuchsia City were reachable but had empty counters, so both now use the existing Kanto clerk at the standard counter. Verified all four purchases in Oldale, Lavender, and Fuchsia in mGBA. The Kanto foundation test checks the two new clerks and passed the existing map and progression checks. [Preview evidence](qa/lemon-and-mart-stock-preview.json). Review branch only.
+
+## Lemon, Garlic, Rice, and Vanilla ingredients (15 November 2026)
+
+**Model: GPT-6.1 Sol | Reasoning: extend the shared Poké Mart ingredients list and append IDs within the existing item-history layout.**
+
+The owner approved the corrected carrot and requested more ingredients. Added Lemon (₽40), Garlic (₽35), Rice (₽45), and Vanilla (₽70) to INGREDIENTS, using a lemon fruit, garlic bulb, open sack of rice, and vanilla pods for the native icons. These are ingredient items for future recipes. Purchased all four at Oldale and checked prices and the Bag in mGBA. The Bag, item-history, and save-sector tests passed. [Preview evidence](qa/additional-cooking-ingredients-preview.json). Review branch only.
+
+## Carrot outline correction (15 November 2026)
+
+**Model: GPT-6.1 Sol | Reasoning: make the emoji-inspired carrot contour a consistently dark single-pixel border.**
+
+The owner accepted the emoji-inspired carrot and flagged the thicker left outline. Matched the outline around the full existing silhouette and checked the revised Carrot in the native Bag after purchasing it in Oldale. [Preview evidence](qa/carrot-outline-preview.json). Review branch only.
+
+## Emoji-inspired Carrot redraw (15 November 2026)
+
+**Model: GPT-6.1 Sol | Reasoning: use the owner's carrot emoji reference for the silhouette, then redraw it at Emerald's native item scale.**
+
+Redrew Carrot with the emoji's rounded leaf cluster, broad shoulder, and long tapered root. Used warm outline and highlight colors and kept the short root marks. Bought Carrot in Oldale and checked the redrawn icon in the native Bag. [Preview evidence](qa/emoji-carrot-preview.json). Review branch only.
+
+## Carrot detail pass (15 November 2026)
+
+**Model: GPT-6.1 Sol | Reasoning: restore recognizable ridges and a small shoulder highlight to the carrot, using a narrow low-contrast shadow.**
+
+The owner approved the onion and requested more carrot detail. Added short carrot ridges, a small shoulder highlight, and a leaf accent. Verified a purchase and the revised icon in the native Bag. [Preview evidence](qa/carrot-detail-preview.json). Review branch only.
+
+## Onion and carrot finish pass (15 November 2026)
+
+**Model: GPT-6.1 Sol | Reasoning: add curved papery skin detail to the onion while simplifying the carrot to one orange fill and restrained shadow marks.**
+
+The owner asked for more onion dimension and texture and less shading on the carrot. Retained both outlines. Added fine skin lines and a warmer highlight to Onion. Removed Carrot's bright rim and split shading, leaving a narrow shaded edge and two small marks. Purchased both in Oldale and checked the revised icons in the native Bag. [Preview evidence](qa/onion-carrot-icon-preview.json). Review branch only.
+
+## Spiced cooking icon revisions (15 November 2026)
+
+**Model: GPT-6.1 Sol | Reasoning: clean up the ingredient silhouettes and reduce the visual detail in the iced cup.**
+
+The owner approved the four meal icons, Eggnog, and Spiced Cider. Smoothed Apple's contour, simplified Carrot's shading, rounded Onion's bulb, and removed the visible ice blocks from Iced Cinnamon Brew. Retained the approved tapered cup and verified the Percolator still deducts Ice Cubes. Reviewed all four revised icons in the native Bag. [Preview evidence](qa/spiced-cooking-icon-revisions.json). Review branch only.
+
+## Spiced cooking preview (15 November 2026)
+
+**Model: GPT-6.1 Sol | Reasoning: reuse the existing cooking transaction and fit more recipes into the scrollable menus without changing saved data.**
+
+Added Carrot, Onion, Apple, and Cinnamon to Poké Mart INGREDIENTS. Kitchens and the Mess Kit make Carrot Soup, Onion Tart, Apple Pancakes, and Potato Hash. Kitchens and the Steel Canteen also make warm Eggnog and Spiced Cider. Kitchens and the Percolator make Iced Cinnamon Brew using Ice Cubes and the approved tapered cup shape. All seven effects last ten minutes. Item IDs 918–928 fit the existing item-history bitmap. The kitchen recipe list now scrolls.
+
+Bought the four ingredients and verified all seven recipes, their exact deductions, Food icons, EAT or DRINK actions, and buff amounts in mGBA. Verified that a second iced brew without Ice Cubes left inventory intact. Host Bag, item history, and sector-layout tests passed. [Preview evidence](qa/spiced-cooking-preview.json). Review branch only. Full publication gates remain pending approval.
+
 ## v0.0.85 Portable Cooking published and verified (15 November 2026)
 
 **Model: GPT-6.1 Sol | Reasoning: release the owner-approved cumulative cooking preview, preserving its sprites, encounter source, and battery layout.**

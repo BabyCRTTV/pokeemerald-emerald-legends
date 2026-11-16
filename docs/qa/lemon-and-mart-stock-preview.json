@@ -1,0 +1,173 @@
+{
+  "status": "review preview",
+  "previousPreviewCommit": "45f8f31f737502d9ed2771b53644d0ff20b2d0d1",
+  "gameVersion": "0.0.85",
+  "romSha256": "a90fb9614b975fcfbd7ce85467c37adc687f0a6501abfc2af2894d0cf6e37288",
+  "previousLemonSha256": "199bf41cd1dfcad1ac6f647b3e85461a5e05871b8d0ab0a9247286a9c2f89835",
+  "revisedLemonSha256": "c9d8af93cb42d06cae15be86fcf36e4216af547cefb6ff3cc8db556779332115",
+  "revisedPixel": [
+    10,
+    20
+  ],
+  "previewSha256": "20e0747fe7e6cc89d3446eb26ab0c5469ecd7e2e260aecb63f21d8e76c627899",
+  "sourceAudit": {
+    "scope": "Named Mart map definitions. All route to the standard shop command and its one shared Ingredients stock list.",
+    "maps": [
+      {
+        "map": "MAP_BATTLE_FRONTIER_MART",
+        "clerk": "BattleFrontier_Mart_EventScript_Clerk"
+      },
+      {
+        "map": "MAP_CERULEAN_CITY_MART",
+        "clerk": "CeruleanCity_Mart_EventScript_Clerk"
+      },
+      {
+        "map": "MAP_CINNABAR_ISLAND_MART",
+        "clerk": "CinnabarIsland_Mart_EventScript_Clerk"
+      },
+      {
+        "map": "MAP_FALLARBOR_TOWN_MART",
+        "clerk": "FallarborTown_Mart_EventScript_Clerk"
+      },
+      {
+        "map": "MAP_FORTREE_CITY_MART",
+        "clerk": "FortreeCity_Mart_EventScript_Clerk"
+      },
+      {
+        "map": "MAP_FOUR_ISLAND_MART",
+        "clerk": "FourIsland_Mart_EventScript_Clerk"
+      },
+      {
+        "map": "MAP_FUCHSIA_CITY_MART",
+        "clerk": "FuchsiaCity_Mart_EventScript_Clerk"
+      },
+      {
+        "map": "MAP_LAVARIDGE_TOWN_MART",
+        "clerk": "LavaridgeTown_Mart_EventScript_Clerk"
+      },
+      {
+        "map": "MAP_LAVENDER_TOWN_MART",
+        "clerk": "LavenderTown_Mart_EventScript_Clerk"
+      },
+      {
+        "map": "MAP_LEGENDS_KANTO_CERULEAN_CITY_MART",
+        "clerk": "LegendsKanto_EventScript_Clerk"
+      },
+      {
+        "map": "MAP_LEGENDS_KANTO_CINNABAR_ISLAND_MART",
+        "clerk": "LegendsKanto_EventScript_Clerk"
+      },
+      {
+        "map": "MAP_LEGENDS_KANTO_FUCHSIA_CITY_MART",
+        "clerk": "LegendsKanto_EventScript_Clerk"
+      },
+      {
+        "map": "MAP_LEGENDS_KANTO_LAVENDER_TOWN_MART",
+        "clerk": "LegendsKanto_EventScript_Clerk"
+      },
+      {
+        "map": "MAP_LEGENDS_KANTO_MART",
+        "clerk": "LegendsKanto_EventScript_Clerk"
+      },
+      {
+        "map": "MAP_LEGENDS_KANTO_PEWTER_CITY_MART",
+        "clerk": "LegendsKanto_EventScript_Clerk"
+      },
+      {
+        "map": "MAP_LEGENDS_KANTO_VIRIDIAN_CITY_MART",
+        "clerk": "LegendsKanto_EventScript_Clerk"
+      },
+      {
+        "map": "MAP_MAUVILLE_CITY_MART",
+        "clerk": "MauvilleCity_Mart_EventScript_Clerk"
+      },
+      {
+        "map": "MAP_MOSSDEEP_CITY_MART",
+        "clerk": "MossdeepCity_Mart_EventScript_Clerk"
+      },
+      {
+        "map": "MAP_OLDALE_TOWN_MART",
+        "clerk": "OldaleTown_Mart_EventScript_Clerk"
+      },
+      {
+        "map": "MAP_PETALBURG_CITY_MART",
+        "clerk": "PetalburgCity_Mart_EventScript_Clerk"
+      },
+      {
+        "map": "MAP_PEWTER_CITY_MART",
+        "clerk": "PewterCity_Mart_EventScript_Clerk"
+      },
+      {
+        "map": "MAP_RUSTBORO_CITY_MART",
+        "clerk": "RustboroCity_Mart_EventScript_Clerk"
+      },
+      {
+        "map": "MAP_SAFFRON_CITY_MART",
+        "clerk": "SaffronCity_Mart_EventScript_Clerk"
+      },
+      {
+        "map": "MAP_SEVEN_ISLAND_MART",
+        "clerk": "SevenIsland_Mart_EventScript_Clerk"
+      },
+      {
+        "map": "MAP_SIX_ISLAND_MART",
+        "clerk": "SixIsland_Mart_EventScript_Clerk"
+      },
+      {
+        "map": "MAP_SLATEPORT_CITY_MART",
+        "clerk": "SlateportCity_Mart_EventScript_Clerk"
+      },
+      {
+        "map": "MAP_SOOTOPOLIS_CITY_MART",
+        "clerk": "SootopolisCity_Mart_EventScript_Clerk"
+      },
+      {
+        "map": "MAP_THREE_ISLAND_MART",
+        "clerk": "ThreeIsland_Mart_EventScript_Clerk"
+      },
+      {
+        "map": "MAP_VERDANTURF_TOWN_MART",
+        "clerk": "VerdanturfTown_Mart_EventScript_Clerk"
+      },
+      {
+        "map": "MAP_VERMILION_CITY_MART",
+        "clerk": "VermilionCity_Mart_EventScript_Clerk"
+      },
+      {
+        "map": "MAP_VIRIDIAN_CITY_MART",
+        "clerk": "ViridianCity_Mart_EventScript_Clerk"
+      }
+    ]
+  },
+  "nativeQA": {
+    "emulator": "mGBA",
+    "fixture": "Placed the player adjacent to each shop counter and used normal controls.",
+    "checksPassed": [
+      "Purchased one each of Lemon, Garlic, Rice and Vanilla at all three marts, matched the shared prices, verified the four item IDs and viewed the Bag icons."
+    ],
+    "locations": {
+      "Oldale Town": {
+        "stockCaptureSha256": "40ef55f306df4e160380fd15c6a091d945e39f272e075d91eeb5327fc3d1bbc6",
+        "ingredientMenuSha256": "d8aeb2d83653f1b33b4afdac0815c97d9f53545f595b8fb257af9f84b3df48ce",
+        "lemonCaptureSha256": "7bc6251470b6cb14831cf5665f7f0dd24038bb6335aeae6a33352e7a5e806ad1"
+      },
+      "Lavender Town": {
+        "stockCaptureSha256": "f16d6217bc80ba899b53261c235f3d775bb2aba84d0b9bb30a378800b7332f9b",
+        "ingredientMenuSha256": "01d409d346bfd675cd19516c784bceabcc021bc3aa2a1f4c13a89d8be29854bd",
+        "lemonCaptureSha256": "7bc6251470b6cb14831cf5665f7f0dd24038bb6335aeae6a33352e7a5e806ad1"
+      },
+      "Fuchsia City": {
+        "stockCaptureSha256": "f16d6217bc80ba899b53261c235f3d775bb2aba84d0b9bb30a378800b7332f9b",
+        "ingredientMenuSha256": "01d409d346bfd675cd19516c784bceabcc021bc3aa2a1f4c13a89d8be29854bd",
+        "lemonCaptureSha256": "7bc6251470b6cb14831cf5665f7f0dd24038bb6335aeae6a33352e7a5e806ad1"
+      }
+    },
+    "harnessSha256": {
+      "fixture.c": "f1bb7de9da6c25fb8e7ccf5c4d9de6c89475b459d73a55445184ff850e093eea",
+      "verify.py": "226dd3ddd3afc01bdbe07d154f9c46c9782dd3eeffc8cd190319cd7b08094e80"
+    }
+  },
+  "hostChecksPassed": [
+    "test/legends-kanto-foundation.test.py"
+  ]
+}

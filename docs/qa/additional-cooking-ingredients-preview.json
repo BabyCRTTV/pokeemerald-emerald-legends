@@ -1,0 +1,51 @@
+{
+  "status": "review preview",
+  "previousPreviewCommit": "69e21f2ae95eeaecfd8102609a3f7c5aaebd28b1",
+  "gameVersion": "0.0.85",
+  "romSha256": "e50bc5f3f612d5e6b6679662f56d2ec06b1a46a37f2123ea26b3c7f63a069f57",
+  "previewSha256": "a570319bd86665a0eead388d68dc272f8c6df190d7b1789c21ed4f4c2e0c07bc",
+  "ingredients": {
+    "Lemon": {
+      "id": 929,
+      "price": 40,
+      "spriteSha256": "199bf41cd1dfcad1ac6f647b3e85461a5e05871b8d0ab0a9247286a9c2f89835",
+      "shopCaptureSha256": "60f756a0ee0d39f2e1a0105b67f3ce8b58a5ca0d5655f938b5180d0e6720a7a9",
+      "bagCaptureSha256": "7c1f5d42066c714f41bd748afd4db4551e7159929518fc231c2f919f01b6a391"
+    },
+    "Garlic": {
+      "id": 930,
+      "price": 35,
+      "spriteSha256": "67ab0abf20ff8ee68190ab1609ce42386b25f85db29b0b6248e1b01a35999458",
+      "shopCaptureSha256": "4b004534a216c3084af6735bbb3077013770ad3f8c18c73236c5ec516415282b",
+      "bagCaptureSha256": "a68607b4aa812896a8268036803a47c554ce4fdd8c59b44f4424addc33d3e166"
+    },
+    "Rice": {
+      "id": 931,
+      "price": 45,
+      "spriteSha256": "9c7715551b5deeb934647ac9fe97a7c0d011ef58876b130a13a69c0e24d079d9",
+      "shopCaptureSha256": "dfbecda64d7ac64f8a2d6010d4d026c6562acaa175949643f06b48b9911e59a2",
+      "bagCaptureSha256": "ed85f9408e74a84da12822075582eed336a323ac5258b00c00ff76d79bffc602"
+    },
+    "Vanilla": {
+      "id": 932,
+      "price": 70,
+      "spriteSha256": "531f7460606f34845593f73efc95264120e0ea9648496eeeec554d4b96029b9c",
+      "shopCaptureSha256": "40ef55f306df4e160380fd15c6a091d945e39f272e075d91eeb5327fc3d1bbc6",
+      "bagCaptureSha256": "ea87781288619011b0a2055284bdbda43c79527410642c26eebf005637eb194b"
+    }
+  },
+  "nativeQA": {
+    "emulator": "mGBA",
+    "harnessSha256": {
+      "fixture.c": "d91072e8d89b3a263056741387a35e37cbdc7bb76bfdcbee22bc2cd308bd5f5d",
+      "verify.py": "1c71d6b6dfe79e5cf89c9b21534fa099cfac757a0893ccaec25db2f808b8b340"
+    },
+    "checksPassed": [
+      "Purchased all four ingredients in Oldale and checked exact prices, quantities, item IDs, and native shop and Bag icon renders."
+    ]
+  },
+  "hostChecksPassed": [
+    "test/legends-bag-capacity.test.py",
+    "test/legends-item-descriptions.test.py"
+  ]
+}
