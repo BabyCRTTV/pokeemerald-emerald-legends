@@ -1,12 +1,12 @@
 # Development handoff
 
-## v0.0.86 Cooking and Kanto Encounters candidate (15 November 2026)
+## v0.0.86 Cooking and Kanto Encounters published and verified (15 November 2026)
 
 **Model: GPT-6.1 Sol | Reasoning: publish approved cooking and extend seasonal grass into the first four numbered Kanto routes using the existing game and wiki resolvers.**
 
 The owner approved cooking preview `de70e2bd` for publication and requested more route encounters before release. Added 32 all-day seasonal visitors across Routes 1–4 in Kanto. Each grass table retains all original residents, their native slot levels, rate 21, and a combined 70% resident share. No change to fishing, Surf, grotto data, artwork, or save layouts. LegendsDex and the existing Kanto walkthrough now cover the visitors. The atlas and both portrait sheets match the previous deployed bytes.
 
-Local Debug mGBA passed 322 native encounter and DexNav scenarios, including 34 new Kanto cases and all six pantry recipes with their buff and missing-ice checks. [Release evidence](qa/cooking-kanto-v0.0.86.json). Candidate and production release gates remain pending.
+Local Debug mGBA passed 322 native encounter and DexNav scenarios, including 34 new Kanto cases and all six pantry recipes with their buff and missing-ice checks. [Release evidence](qa/cooking-kanto-v0.0.86.json). PR #106 merged as `281652d520178ec3ac9a640c5f52f721139c6bf7`. Candidate and production builds and both patch decoders matched byte for byte. Pages run `43806600850` deployed the release. All 21 public assets, including both BPS patches and the wiki data, matched their expected hashes.
 
 ## Rice, garlic, lemon, and vanilla recipes (15 November 2026)
 
