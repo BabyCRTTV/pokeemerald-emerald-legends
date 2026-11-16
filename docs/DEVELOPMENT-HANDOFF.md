@@ -1,6 +1,6 @@
 # Development handoff
 
-## v0.0.87 Kanto seasonal encounters candidate (16 November 2026)
+## v0.0.87 Kanto seasonal encounters published and verified (16 November 2026)
 
 **Model: GPT-6.1 Sol | Reasoning: diversify the remaining sparse Kanto routes using their existing grass and coastal encounter slots.**
 
@@ -8,7 +8,7 @@
 
 After the owner requested a larger batch, added 144 distinct seasonal visitors across 18 encounter methods on 17 numbered Kanto maps. Routes 6–18 and Route 21 North have two grass visitors per season at 20% and 10%. Routes 19–20 and both halves of Route 21 have two Surf visitors per season at 30% and 5%. Every original resident and the native slot levels and encounter rates are preserved. Route 17 uses the existing Cycling Road grass. Route 21 South gains coastal encounters. Existing grotto species were excluded from the selection.
 
-The review LegendsDex and Kanto walkthrough are pinned to gameplay source `a023c35039bfe2de23ed3b4388bc22a9343d4690`. The seasonal table regression validated all 224 ordinary tables and the wiki can import older snapshots without stale variants. Native terrain fixture discovery succeeded for all 468 seasonal scenarios. PR #107 passed the 468-case mGBA encounter and DexNav suite, exercising 119,808 native wild generations. The owner approved publication on 16 November. The v0.0.87 release candidate retains the reviewed encounter and save inputs. [Release record](qa/kanto-encounters-v0.0.87.json).
+The review LegendsDex and Kanto walkthrough are pinned to gameplay source `a023c35039bfe2de23ed3b4388bc22a9343d4690`. The seasonal table regression validated all 224 ordinary tables and the wiki can import older snapshots without stale variants. Native terrain fixture discovery succeeded for all 468 seasonal scenarios. PR #107 passed the 468-case mGBA encounter and DexNav suite, exercising 119,808 native wild generations. The owner approved publication on 16 November. PR #107 merged as `d652a4c05a58149072a290e456dc38f1bb5d6d4f`. Candidate and production ROM hashes matched, both independent decoders reconstructed both patches, and production Release Continue and all 468 native seasonal encounter and DexNav cases passed. Pages run `43820394715` deployed v0.0.87. The direct live check matched all 21 expected files, including both BPS patches, LegendsDex, and Kanto walkthrough data. [Release record](qa/kanto-encounters-v0.0.87.json).
 
 ## v0.0.86 Cooking and Kanto Encounters published and verified (15 November 2026)
 
