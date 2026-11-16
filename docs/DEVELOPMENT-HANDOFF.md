@@ -1,5 +1,11 @@
 # Development handoff
 
+## Lemon outline and Poké Mart coverage (15 November 2026)
+
+**Model: GPT-6.1 Sol | Reasoning: remove the lone lemon outline pixel and activate the two reachable Kanto marts without changing the shared shop stock or warp data.**
+
+The owner approved Lemon, Garlic, Rice, and Vanilla, flagged one protruding lemon pixel, and asked whether the ingredients are stocked at every Poké Mart. Removed the bottom pixel. All standard counters use one INGREDIENTS list. Lavender Town and Fuchsia City were reachable but had empty counters, so both now use the existing Kanto clerk at the standard counter. Verified all four purchases in Oldale, Lavender, and Fuchsia in mGBA. The Kanto foundation test checks the two new clerks and passed the existing map and progression checks. [Preview evidence](qa/lemon-and-mart-stock-preview.json). Review branch only.
+
 ## Lemon, Garlic, Rice, and Vanilla ingredients (15 November 2026)
 
 **Model: GPT-6.1 Sol | Reasoning: extend the shared Poké Mart ingredients list and append IDs within the existing item-history layout.**
