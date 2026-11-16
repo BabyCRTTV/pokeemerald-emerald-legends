@@ -1,5 +1,11 @@
 # Development handoff
 
+## Onion and carrot finish pass (15 November 2026)
+
+**Model: GPT-6.1 Sol | Reasoning: add curved papery skin detail to the onion while simplifying the carrot to one orange fill and restrained shadow marks.**
+
+The owner asked for more onion dimension and texture and less shading on the carrot. Retained both outlines. Added fine skin lines and a warmer highlight to Onion. Removed Carrot's bright rim and split shading, leaving a narrow shaded edge and two small marks. Purchased both in Oldale and checked the revised icons in the native Bag. [Preview evidence](qa/onion-carrot-icon-preview.json). Review branch only.
+
 ## Spiced cooking icon revisions (15 November 2026)
 
 **Model: GPT-6.1 Sol | Reasoning: clean up the ingredient silhouettes and reduce the visual detail in the iced cup.**

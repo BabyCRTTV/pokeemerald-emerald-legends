@@ -1,0 +1,31 @@
+{
+  "status": "review preview",
+  "previousPreviewCommit": "2648c70630a61b8fc0c1433c07d2ee49f38b355a",
+  "gameVersion": "0.0.85",
+  "romSha256": "ad5c97415d24c30903e755c436c5b4b1b71c595aff19bdfe911a186fce838900",
+  "previousRomSha256": "6f6e90505a57e8275edca5693952154f169d5ac06494b831c055bf8585830a15",
+  "previewSha256": "e81fd76094857df12f743b8dce951b096674878410e8563f07a0e3162e8c94e9",
+  "sprites": {
+    "onion": {
+      "previous": "73a88620ef8a5319e6040df2405e103ab44fbe65bb76f18b7ae80a3d89998791",
+      "revised": "a8de0e65fc50b28565f7ed250ea4dcfa5f02b4b38b9de793291ecdde4d8f631b",
+      "capture": "32632120ae0bdd276350a7556c54e12a74a80994d4d2c3c380c9068e19f155d3"
+    },
+    "carrot": {
+      "previous": "6b87645abf8e6b5cfcea4cf69ecb37c1da895d39a54903e33ec8029d91500cf6",
+      "revised": "904fa2555773789d3cfcc1c24afc923fbf528ccc42e4b627efec7347f3c3efe8",
+      "capture": "f4fe76281ef3e25a1e8e2e9549205a16451d976dd70298021358f3c73fae20f2"
+    }
+  },
+  "nativeQA": {
+    "emulator": "mGBA",
+    "checksPassed": [
+      "Bought Carrot and Onion at the Oldale Mart and checked exact prices and quantities.",
+      "Verified both revised icons in the native Items pocket."
+    ],
+    "harnessSha256": {
+      "fixture.c": "f76fbf25cd257378af207dbde2ca70da2f0e330317cc4653ca0a7b34873fde59",
+      "verify.py": "42e7bce14b529371f7856b188c665e0c6af874e0075fe7e1f2c89dda8dcb40b4"
+    }
+  }
+}
