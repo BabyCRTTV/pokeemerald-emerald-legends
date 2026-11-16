@@ -15120,6 +15120,66 @@ const struct ItemInfo gItemsInfo[] =
         .iconPalette = gItemIconPalette_CookingIcedCinnamonCoffee,
     },
 
+    [ITEM_COOKING_LEMON] =
+    {
+        .name = ITEM_NAME("Lemon"),
+        .price = 40,
+        .description = COMPOUND_STRING(
+            "A bright, tart\n"
+            "citrus fruit.\n"
+            "Use juice or zest."),
+        .pocket = POCKET_ITEMS,
+        .type = ITEM_USE_FIELD,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .iconPic = gItemIcon_CookingLemon,
+        .iconPalette = gItemIconPalette_CookingLemon,
+    },
+
+    [ITEM_COOKING_GARLIC] =
+    {
+        .name = ITEM_NAME("Garlic"),
+        .price = 35,
+        .description = COMPOUND_STRING(
+            "A firm garlic bulb.\n"
+            "Its cloves mellow\n"
+            "when cooked."),
+        .pocket = POCKET_ITEMS,
+        .type = ITEM_USE_FIELD,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .iconPic = gItemIcon_CookingGarlic,
+        .iconPalette = gItemIconPalette_CookingGarlic,
+    },
+
+    [ITEM_COOKING_RICE] =
+    {
+        .name = ITEM_NAME("Rice"),
+        .price = 45,
+        .description = COMPOUND_STRING(
+            "A pouch of dry\n"
+            "white rice. The\n"
+            "grains puff up."),
+        .pocket = POCKET_ITEMS,
+        .type = ITEM_USE_FIELD,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .iconPic = gItemIcon_CookingRice,
+        .iconPalette = gItemIconPalette_CookingRice,
+    },
+
+    [ITEM_COOKING_VANILLA] =
+    {
+        .name = ITEM_NAME("Vanilla"),
+        .price = 70,
+        .description = COMPOUND_STRING(
+            "Two vanilla pods.\n"
+            "The seeds add a\n"
+            "sweet fragrance."),
+        .pocket = POCKET_ITEMS,
+        .type = ITEM_USE_FIELD,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .iconPic = gItemIcon_CookingVanilla,
+        .iconPalette = gItemIconPalette_CookingVanilla,
+    },
+
     [ITEM_TREAT_CASE] =
     {
         .name = ITEM_NAME("Treat Case"),

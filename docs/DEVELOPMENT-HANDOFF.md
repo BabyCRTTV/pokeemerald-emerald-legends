@@ -1,5 +1,11 @@
 # Development handoff
 
+## Lemon, Garlic, Rice, and Vanilla ingredients (15 November 2026)
+
+**Model: GPT-6.1 Sol | Reasoning: extend the shared Poké Mart ingredients list and append IDs within the existing item-history layout.**
+
+The owner approved the corrected carrot and requested more ingredients. Added Lemon (₽40), Garlic (₽35), Rice (₽45), and Vanilla (₽70) to INGREDIENTS, using a lemon fruit, garlic bulb, open sack of rice, and vanilla pods for the native icons. These are ingredient items for future recipes. Purchased all four at Oldale and checked prices and the Bag in mGBA. The Bag, item-history, and save-sector tests passed. [Preview evidence](qa/additional-cooking-ingredients-preview.json). Review branch only.
+
 ## Carrot outline correction (15 November 2026)
 
 **Model: GPT-6.1 Sol | Reasoning: make the emoji-inspired carrot contour a consistently dark single-pixel border.**
