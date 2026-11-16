@@ -1,5 +1,11 @@
 # Development handoff
 
+## Emoji-inspired Carrot redraw (15 November 2026)
+
+**Model: GPT-6.1 Sol | Reasoning: use the owner's carrot emoji reference for the silhouette, then redraw it at Emerald's native item scale.**
+
+Redrew Carrot with the emoji's rounded leaf cluster, broad shoulder, and long tapered root. Used warm outline and highlight colors and kept the short root marks. Bought Carrot in Oldale and checked the redrawn icon in the native Bag. [Preview evidence](qa/emoji-carrot-preview.json). Review branch only.
+
 ## Carrot detail pass (15 November 2026)
 
 **Model: GPT-6.1 Sol | Reasoning: restore recognizable ridges and a small shoulder highlight to the carrot, using a narrow low-contrast shadow.**
