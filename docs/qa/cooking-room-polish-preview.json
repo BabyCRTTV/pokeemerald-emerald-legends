@@ -1,5 +1,5 @@
 {
-  "status": "Chair and ingredient sprites approved. Updated cooking spacing and Treat Case concepts in review.",
+  "status": "Chair, ingredient sprites and updated cooking layout approved. Tan Satchel visual review pending.",
   "base_commit": "04ff9fb1b4eae13bfe6b4a83d347611d6b36f07d",
   "game_version": "0.0.87",
   "emulator": "mGBA native core 0.10.5",
@@ -47,5 +47,15 @@
       "recipe-6.png": "ec274e4836cdf2a2579e8512677bdc7753afa0b52a376f1fc498d6d6bc9170d6"
     },
     "local_evidence_path": "build/cooking-spacing"
+  },
+  "tan_satchel_revision": {
+    "base_commit": "2acc82c8ea54a19f1cfb5539ab11b3a069ac0cfc",
+    "source_png_sha256": "ecc8fad79a5ac24e0af676e00eb90bc5a3d01c83bb2bbb27fd1e920a8e9390e9",
+    "checks": [
+      "Matched the selected Berry Satchel silhouette and kept the brass clasp.",
+      "Converted 24 × 24 indexed sprite to 288 bytes of 4bpp graphics, a 32-byte RGB555 palette, and compressed graphics.",
+      "Inspected a Bag mockup of the converted colors."
+    ],
+    "scope": "Graphics-only change. Fresh gameplay capture pending."
   }
 }
