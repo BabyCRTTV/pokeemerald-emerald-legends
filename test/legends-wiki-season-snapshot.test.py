@@ -4,9 +4,10 @@ import copy, json, re, subprocess, tempfile
 R=Path(__file__).resolve().parents[1]
 base=json.loads((R/'docs/wiki/dex-data.json').read_text())
 base['sourceCommit']=subprocess.check_output(['git','rev-parse','HEAD'],cwd=R,text=True).strip()
+kanto={f'MAP_LEGENDS_KANTO_ROUTE{r}' for r in range(1,5)}
 # Start from the protected sixteen-table grass snapshot, even after Surf ships.
 for m in base['maps']:
- if m['id'] in [f'MAP_ROUTE{r}' for r in range(105,135)]:
+ if m['id'] in {f'MAP_ROUTE{r}' for r in range(105,135)}|kanto:
   for method in m['methods']:
    if method['id'] in ['surf','land']:method.pop('seasonalVariants',None)
 with tempfile.TemporaryDirectory() as d:
@@ -19,19 +20,28 @@ with tempfile.TemporaryDirectory() as d:
  changed=[]
  for a,b in zip(base['maps'],new['maps']):
   if a!=b:
-   assert a['id'] in [f'MAP_ROUTE{r}' for r in range(105,135)]
+   assert a['id'] in {f'MAP_ROUTE{r}' for r in range(105,135)}|kanto
    for x,y in zip(a['methods'],b['methods']):
     if x!=y:
      assert x['id'] in ['surf','land'] and x['entries']==y['entries'] and len(y['seasonalVariants'])==4
      assert all(sum(e['rate'] for e in v['entries'])==100 for v in y['seasonalVariants'])
    changed.append(a['id'])
- assert len(changed)==30
+ assert len(changed)==34
+ # An older pin removes the four Kanto variants and preserves all Hoenn variants.
+ current=(R/'src/data/legends_seasonal_encounters.h').read_text()
+ header=re.sub(r'static const struct WildPokemon sKantoRoute[1-4](?:Spring|Summer|Autumn|Winter)Mons.*?=\s*\{.*?\};', '',current,flags=re.S)
+ previous136=Path(d)/'previous136.h';previous136.write_text(header)
+ prior136=build(previous136)
+ for m,n in zip(new['maps'],prior136['maps']):
+  for x,y in zip(m['methods'],n['methods']):
+   if m['id'] in kanto and x['id']=='land':assert 'seasonalVariants' not in y
+   else:assert x==y
  # Import the preceding 124-table generation, removing only Routes132–134 Surf.
- header=(R/'src/data/legends_seasonal_encounters.h').read_text()
+ header=previous136.read_text()
  header=re.sub(r'static const struct WildPokemon sRoute(?:132|133|134)(?:Spring|Summer|Autumn|Winter)WaterMons.*?=\s*\{.*?\};', '',header,flags=re.S)
  previous124=Path(d)/'previous124.h';previous124.write_text(header)
  prior124=build(previous124)
- for m,n in zip(new['maps'],prior124['maps']):
+ for m,n in zip(prior136['maps'],prior124['maps']):
   for x,y in zip(m['methods'],n['methods']):
    if m['id'] in [f'MAP_ROUTE{r}' for r in range(132,135)] and x['id']=='surf':assert 'seasonalVariants' not in y
    else:assert x==y
@@ -85,4 +95,4 @@ with tempfile.TemporaryDirectory() as d:
  assert prior['maps']==expected,'previous headers must remove only the newer route batch'
  old=build('preview-inputs/seasonal-encounters.h')
  assert old['maps']==base['maps'], 'old pinned headers must not retain stale future Surf tables'
-print('PASS: pinned land/Surf import, only thirty intended methods changed, original data retained, 136/124/104/84/64/48/32/16-table imports removed stale future variants')
+print('PASS: pinned land/Surf import, only thirty-four intended methods changed, original data retained, 152/136/124/104/84/64/48/32/16-table imports removed stale future variants')

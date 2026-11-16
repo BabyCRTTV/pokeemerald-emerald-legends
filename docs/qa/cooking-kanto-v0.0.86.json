@@ -1,0 +1,132 @@
+{
+  "version": "0.0.86",
+  "status": "candidate",
+  "gameSource": "93fdc3d60f5c4c285337f96b67e6e6e958b20726",
+  "approvedCookingPreview": "de70e2bd8a0b3d38742b2d5af85a1eb07c8f49bd",
+  "encounters": {
+    "routes": {
+      "1": {
+        "slots": [
+          0,
+          3
+        ],
+        "visitors": {
+          "spring": [
+            "PAWMI",
+            "HOOTHOOT"
+          ],
+          "summer": [
+            "PIKIPEK",
+            "YUNGOOS"
+          ],
+          "autumn": [
+            "PURRLOIN",
+            "GLAMEOW"
+          ],
+          "winter": [
+            "CUBCHOO",
+            "MUNCHLAX"
+          ]
+        }
+      },
+      "2": {
+        "slots": [
+          0,
+          3
+        ],
+        "visitors": {
+          "spring": [
+            "SPINARAK",
+            "COTTONEE"
+          ],
+          "summer": [
+            "GRUBBIN",
+            "BURMY"
+          ],
+          "autumn": [
+            "KARRABLAST",
+            "SHELMET"
+          ],
+          "winter": [
+            "SILCOON",
+            "JOLTIK"
+          ]
+        }
+      },
+      "3": {
+        "slots": [
+          0,
+          5
+        ],
+        "visitors": {
+          "spring": [
+            "MAREEP",
+            "TANDEMAUS"
+          ],
+          "summer": [
+            "STUFFUL",
+            "CUBONE"
+          ],
+          "autumn": [
+            "SPOINK",
+            "MUNNA"
+          ],
+          "winter": [
+            "SWINUB",
+            "VANILLITE"
+          ]
+        }
+      },
+      "4": {
+        "slots": [
+          0,
+          2
+        ],
+        "visitors": {
+          "spring": [
+            "DIGLETT",
+            "ROGGENROLA"
+          ],
+          "summer": [
+            "NACLI",
+            "NOSEPASS"
+          ],
+          "autumn": [
+            "MUDBRAY",
+            "DRILBUR"
+          ],
+          "winter": [
+            "GEODUDE",
+            "ONIX"
+          ]
+        }
+      }
+    },
+    "headerSha256": "b1bdeee5f60ed09b35322dc277c7d7f00f628db1fdbe32dd0f8b572c3e32d3ab"
+  },
+  "localNativeQa": {
+    "scenarios": 322,
+    "addedKantoCases": 34,
+    "wildCreations": 82432,
+    "romSha256": "e00aa808c9224173ac5d59362e07bb9915041fbdddbd6c8b212c1a263494e1f4",
+    "harnessSha256": {
+      "arm.c": "bdda83bb754a46b2e6cdd947dcae9d0cb78439746d95921b57c321410e2b2c84",
+      "host.c": "4daa0f09b95b5f25f18bed5c11c8774270990776b009fe11c27a1fede76e3e59",
+      "run.py": "dc5f1814c1332f87ca61e328c0987e2214a6960ccad80933995002931df8cd3d",
+      "workers.py": "492c44980cb2a45bc4729fa7d324f5fd31c138d8800aa47cbc662a6cd792ec6e"
+    },
+    "seasonalReceiptSha256": "07c76bf03e26c80a2c340cfa0d634fea0179636f1dd6296bc30b9ef036664ab0",
+    "pantryRecipeChecks": "Retested all six pantry recipes, EAT/DRINK buffs, and missing Ice Cubes on the v0.0.86 compiled preview."
+  },
+  "wiki": {
+    "pin": "93fdc3d60f5c4c285337f96b67e6e6e958b20726",
+    "seasonalTables": 152,
+    "encounterMethodsChanged": 4,
+    "unchangedArtwork": {
+      "dex-sprite-atlas.webp": "55bdf244830f30f9aeb5eeddb8f628b6885eccb2e95b171dac14df9b529190df",
+      "dex-portraits.webp": "6354da3a10fbd6e816236179a9ea53b64d1f9245acde6d8801d9903d820a60ef",
+      "dex-portraits-shiny.webp": "307df389aa898b68c2fa530b216eaaaa4c44b62e80f83501d2b5ec3a5e27623e"
+    }
+  },
+  "next": "Verify the normal candidate build, merge, and verify production patches and live Pages."
+}

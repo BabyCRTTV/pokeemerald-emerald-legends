@@ -21,7 +21,7 @@ else:
 source=json.loads(read('src/data/wild_encounters.json'))['wild_encounter_groups'][0]
 weights={f['type']:f['encounter_rates'] for f in source['fields']}
 tables={}
-for route,season,water,body in re.findall(r'static const struct WildPokemon sRoute((?:10[1-9]|11[0-9]|12[0-9]|13[0-4]))(Spring|Summer|Autumn|Winter)(Water)?Mons.*?=\s*\{(.*?)\};',header.decode(),re.S):
+for kanto,route,season,water,body in re.findall(r'static const struct WildPokemon s(Kanto)?Route([0-9]+)(Spring|Summer|Autumn|Winter)(Water)?Mons.*?=\s*\{(.*?)\};',header.decode(),re.S):
  method='surf' if water else 'land';native=weights['water_mons' if water else 'land_mons']
  slots=re.findall(r'\{(\d+),\s*(\d+),\s*SPECIES_(\w+)\}',body);assert len(slots)==len(native)
  entries={}
@@ -29,8 +29,11 @@ for route,season,water,body in re.findall(r'static const struct WildPokemon sRou
   e=entries.setdefault(species,dict(id=species,min=101,max=0,rate=0,time='all-day',seasons=[]))
   e.update(min=min(e['min'],int(lo)),max=max(e['max'],int(hi)),rate=e['rate']+rate)
  assert sum(e['rate'] for e in entries.values())==100
+ route=('Kanto' if kanto else '')+route
  tables[(route,method,season.lower())]=list(entries.values())
-land={key for key in tables if key[1]=='land'}
+kanto_land={key for key in tables if key[0].startswith('Kanto')}
+assert not kanto_land or kanto_land=={(f'Kanto{r}','land',s) for r in range(1,5) for s in SEASONS}
+land={key for key in tables if key[1]=='land' and key not in kanto_land}
 assert land in [{(str(r),'land',s) for r in routes for s in SEASONS} for routes in [range(101,105),[*range(101,105),110,111,112],[*range(101,105),*range(110,117)],[*range(101,105),*range(110,122)],[*range(101,105),*range(110,122),123]]]
 water={key for key in tables if key[1]=='surf'}
 assert not water or water in [{(str(r),'surf',s) for r in routes for s in SEASONS} for routes in [range(105,109),range(105,110),[*range(105,110),122,124,125,126],[*range(105,110),122,*range(124,132)],[*range(105,110),122,*range(124,135)]]]
@@ -40,11 +43,11 @@ for form in forms:
  if not any(p['id']==form['id'] for p in data['species']):data['species'].append(form)
 known={p['id'] for p in data['species']}
 for m in data['maps']:
- route=m['id'].removeprefix('MAP_ROUTE')
+ route=m['id'].replace('MAP_LEGENDS_KANTO_ROUTE','Kanto',1) if m['id'].startswith('MAP_LEGENDS_KANTO_ROUTE') else m['id'].removeprefix('MAP_ROUTE')
  for method in m['methods']:
   key=method['id']
   if (route,key,'spring') not in tables:
-   if (key=='surf' and route in [str(r) for r in [*range(105,110),122,*range(124,135)]]) or (key=='land' and route in [str(r) for r in [*range(101,105),*range(110,122),123]]):method.pop('seasonalVariants',None)
+   if (key=='surf' and route in [str(r) for r in [*range(105,110),122,*range(124,135)]]) or (key=='land' and route in [*[str(r) for r in [*range(101,105),*range(110,122),123]],*[f'Kanto{r}' for r in range(1,5)]]):method.pop('seasonalVariants',None)
    continue
   method['seasonalVariants']=[]
   for season in SEASONS:
