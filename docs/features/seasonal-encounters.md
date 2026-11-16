@@ -2,7 +2,7 @@
 
 **Model: GPT-6 | Approach: preserve native residents/levels and resolve every dependent land-table consumer through the committed season.**
 
-Hoenn Routes 101–134 shipped across v0.0.63–v0.0.74. Version 0.0.86 adds seasonal grass encounters to Kanto Routes 1–4.
+Hoenn Routes 101–134 shipped across v0.0.63–v0.0.74. Version 0.0.86 adds seasonal grass encounters to Kanto Routes 1–4. Version 0.0.87 expands Kanto seasonal grass and Surf encounters across 17 additional maps.
 
 ## Grass pilot — Routes 101–104 (v0.0.63)
 
@@ -447,3 +447,91 @@ The first Kanto batch uses grass encounter tables on Routes 1–4. Every origina
 | 4 | Summer | Nacli | Nosepass |
 | 4 | Autumn | Mudbray | Drilbur |
 | 4 | Winter | Geodude | Onix |
+
+## Kanto grass and coastal expansion (v0.0.87)
+
+Grass on Routes 6–18 and Route 21 North gains two visitors per season, for 112 distinct additions. Every original grass resident stays available at its native slot levels and encounter rate. The residents occupy 70% of each seasonal table, with visitors at 20% and 10%. Route 21 North retains Tangela at 70%. Route 17 uses the Cycling Road’s existing encounter grass. Route 21 South has Surf encounters.
+
+Surf on Routes 19–20 and both halves of Route 21 gains 32 distinct visitors. Tentacool stays available at 65%, and the visitors occupy 30% and 5%. Native levels and encounter rate 2 remain in place. The grass and Surf encounter lists use the committed season and apply all day.
+
+### Grass
+
+| Route | Season | 20% visitor | 10% visitor |
+|---|---|---|---|
+| 6 | Spring | Starly | Happiny |
+| 6 | Summer | Bidoof | Dedenne |
+| 6 | Autumn | Furret | Purugly |
+| 6 | Winter | Dubwool | Smoochum |
+| 7 | Spring | Fidough | Spritzee |
+| 7 | Summer | Skitty | Komala |
+| 7 | Autumn | Perrserker | Thievul |
+| 7 | Winter | Cinccino | Slurpuff |
+| 8 | Spring | Maschiff | Mime Jr. |
+| 8 | Summer | Litleo | Chatot |
+| 8 | Autumn | Liepard | Murkrow |
+| 8 | Winter | Persian | Jynx |
+| 9 | Spring | Rhyhorn | Gligar |
+| 9 | Summer | Aron | Klawf |
+| 9 | Autumn | Tinkatink | Durant |
+| 9 | Winter | Boldore | Glalie |
+| 10 | Spring | Magnemite | Charjabug |
+| 10 | Summer | Luxio | Togedemaru |
+| 10 | Autumn | Klink | Klang |
+| 10 | Winter | Elekid | Magneton |
+| 11 | Spring | Makuhita | Nidorino |
+| 11 | Summer | Grafaiai | Zebstrika |
+| 11 | Autumn | Hypno | Stunky |
+| 11 | Winter | Delibird | Granbull |
+| 12 | Spring | Gossifleur | Flabebe |
+| 12 | Summer | Tadbulb | Masquerain |
+| 12 | Autumn | Amoonguss | Toedscruel |
+| 12 | Winter | Skiploom | Piloswine |
+| 13 | Spring | Dolliv | Butterfree |
+| 13 | Summer | Leavanny | Ribombee |
+| 13 | Autumn | Weepinbell | Ariados |
+| 13 | Winter | Eldegoss | Frosmoth |
+| 14 | Spring | Breloom | Ledian |
+| 14 | Summer | Venomoth | Galvantula |
+| 14 | Autumn | Shiinotic | Hattrem |
+| 14 | Winter | Forretress | Ferroseed |
+| 15 | Spring | Swadloon | Comfey |
+| 15 | Summer | Sunflora | Vileplume |
+| 15 | Autumn | Scyther | Pinsir |
+| 15 | Winter | Lilligant | Whimsicott |
+| 16 | Spring | Tranquill | Heliolisk |
+| 16 | Summer | Cyclizar | Fletchinder |
+| 16 | Autumn | Corvisquire | Pawniard |
+| 16 | Winter | Linoone | Weavile |
+| 17 | Spring | Herdier | Gogoat |
+| 17 | Summer | Krokorok | Scrafty |
+| 17 | Autumn | Sandaconda | Varoom |
+| 17 | Winter | Dodrio | Orthworm |
+| 18 | Spring | Swablu | Audino |
+| 18 | Summer | Staravia | Talonflame |
+| 18 | Autumn | Slakoth | Bewear |
+| 18 | Winter | Greedent | Noctowl |
+| 21 North | Spring | Budew | Roselia |
+| 21 North | Summer | Bellossom | Lurantis |
+| 21 North | Autumn | Tangrowth | Maractus |
+| 21 North | Winter | Abomasnow | Glaceon |
+
+### Surf
+
+| Route | Season | 30% visitor | 5% visitor |
+|---|---|---|---|
+| 19 | Spring | Mantyke | Staryu |
+| 19 | Summer | Alomomola | Corsola |
+| 19 | Autumn | Clamperl | Remoraid |
+| 19 | Winter | Seel | Chinchou |
+| 20 | Spring | Shellder | Horsea |
+| 20 | Summer | Clauncher | Binacle |
+| 20 | Autumn | Inkay | Frillish |
+| 20 | Winter | Spheal | Pincurchin |
+| 21 North | Spring | Wingull | Finneon |
+| 21 North | Summer | Buizel | Chewtle |
+| 21 North | Autumn | Shellos | Cramorant |
+| 21 North | Winter | Slowpoke | Qwilfish |
+| 21 South | Spring | Wailmer | Dewpider |
+| 21 South | Summer | Mantine | Bruxish |
+| 21 South | Autumn | Corphish | Mareanie |
+| 21 South | Winter | Relicanth | Dewgong |

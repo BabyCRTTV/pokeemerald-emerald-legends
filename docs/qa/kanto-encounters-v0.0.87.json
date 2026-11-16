@@ -1,0 +1,28 @@
+{
+  "version": "0.0.87",
+  "status": "candidate",
+  "ownerApproved": "2026-11-16",
+  "pullRequest": 107,
+  "gameplaySource": "a023c35039bfe2de23ed3b4388bc22a9343d4690",
+  "reviewCommit": "a7f49ae4f3f359ae53e476f3dc20c4784f65e423",
+  "reviewRuns": {
+    "project": 43810115267,
+    "wiki": 43810115250,
+    "native": 43810115305
+  },
+  "reviewVerification": {
+    "project": "success",
+    "wiki": "success",
+    "native": "success",
+    "mGBAScenarios": 468,
+    "wildGenerations": 119808,
+    "independentPatchDecoders": 2
+  },
+  "encounters": {
+    "addedVisitors": 144,
+    "methods": 18,
+    "maps": 17,
+    "ordinarySeasonalTables": 224
+  },
+  "saveCompatibility": "Encounter tables and version labels use existing persistent IDs and serialization. Release Continue is covered by the native workflow."
+}

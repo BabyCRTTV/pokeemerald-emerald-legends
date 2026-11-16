@@ -2,6 +2,12 @@
 
 This is the player-facing history for the recommended **Release** build. Shared Legends changes are repeated here so this file stands on its own; Release-only behavior is called out separately.
 
+## [0.0.87] - 2026-11-16
+
+- Added 144 seasonal wild Pokémon across 17 Kanto maps.
+- Expanded grass encounters on Routes 6–18 and Route 21 North and Surf encounters on Routes 19–20 and both halves of Route 21.
+- Preserved original wild Pokémon, native encounter rates, and level brackets. Updated LegendsDex and the Kanto walkthrough with the new rosters and odds.
+
 ## [0.0.86] - 2026-11-15
 
 - Added Carrot, Onion, Apple, Cinnamon, Lemon, Garlic, Rice, and Vanilla to the shared Ingredients stock at Poké Marts.

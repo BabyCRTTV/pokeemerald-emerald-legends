@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Explicitly import pinned seasonal grass tables during an owner-requested review.
+"""Explicitly import pinned seasonal encounter tables during an owner-requested review.
 
 An external header is allowed only for an UNPUBLISHED preview, with a recorded hash.
 No date/time restrictions are inferred from species lore.
@@ -21,7 +21,7 @@ else:
 source=json.loads(read('src/data/wild_encounters.json'))['wild_encounter_groups'][0]
 weights={f['type']:f['encounter_rates'] for f in source['fields']}
 tables={}
-for kanto,route,season,water,body in re.findall(r'static const struct WildPokemon s(Kanto)?Route([0-9]+)(Spring|Summer|Autumn|Winter)(Water)?Mons.*?=\s*\{(.*?)\};',header.decode(),re.S):
+for kanto,route,season,water,body in re.findall(r'static const struct WildPokemon s(Kanto)?Route([0-9]+(?:_NORTH|_SOUTH)?)(Spring|Summer|Autumn|Winter)(Water)?Mons.*?=\s*\{(.*?)\};',header.decode(),re.S):
  method='surf' if water else 'land';native=weights['water_mons' if water else 'land_mons']
  slots=re.findall(r'\{(\d+),\s*(\d+),\s*SPECIES_(\w+)\}',body);assert len(slots)==len(native)
  entries={}
@@ -31,13 +31,26 @@ for kanto,route,season,water,body in re.findall(r'static const struct WildPokemo
  assert sum(e['rate'] for e in entries.values())==100
  route=('Kanto' if kanto else '')+route
  tables[(route,method,season.lower())]=list(entries.values())
-kanto_land={key for key in tables if key[0].startswith('Kanto')}
-assert not kanto_land or kanto_land=={(f'Kanto{r}','land',s) for r in range(1,5) for s in SEASONS}
-land={key for key in tables if key[1]=='land' and key not in kanto_land}
+kanto_initial={(f'Kanto{r}','land') for r in range(1,5)}
+kanto_expansion=(
+ {(f'Kanto{r}','land') for r in [*range(6,19),'21_NORTH']}
+ | {(f'Kanto{r}','surf') for r in [19,20,'21_NORTH','21_SOUTH']}
+)
+kanto={key for key in tables if key[0].startswith('Kanto')}
+assert kanto in [set(),*[
+ {(route,method,season) for route,method in batch for season in SEASONS}
+ for batch in [kanto_initial,kanto_initial|kanto_expansion]
+]]
+land={key for key in tables if key[1]=='land' and key not in kanto}
 assert land in [{(str(r),'land',s) for r in routes for s in SEASONS} for routes in [range(101,105),[*range(101,105),110,111,112],[*range(101,105),*range(110,117)],[*range(101,105),*range(110,122)],[*range(101,105),*range(110,122),123]]]
-water={key for key in tables if key[1]=='surf'}
+water={key for key in tables if key[1]=='surf' and key not in kanto}
 assert not water or water in [{(str(r),'surf',s) for r in routes for s in SEASONS} for routes in [range(105,109),range(105,110),[*range(105,110),122,124,125,126],[*range(105,110),122,*range(124,132)],[*range(105,110),122,*range(124,135)]]]
 assert (len(land),len(water)) in [(16,0),(16,16),(28,20),(44,20),(64,20),(68,36),(68,56),(68,68)]
+managed=(
+ {(str(r),'land') for r in [*range(101,105),*range(110,122),123]}
+ | {(str(r),'surf') for r in [*range(105,110),122,*range(124,135)]}
+ | kanto_initial | kanto_expansion
+)
 forms=[dict(id='SANDSHREW_ALOLA',formOf='SANDSHREW',num=None,name='Alolan Sandshrew',types=['ICE','STEEL'],category='Mouse',stats=[50,75,90,10,35,40],sprite='sandshrew/alola',crySpecies='SANDSHREW'),dict(id='DEERLING_AUTUMN',formOf='DEERLING',num=None,name='Autumn Deerling',types=['NORMAL','GRASS'],category='Season',stats=[60,60,50,40,50,75],sprite='deerling/autumn',crySpecies='DEERLING')]
 for form in forms:
  if not any(p['id']==form['id'] for p in data['species']):data['species'].append(form)
@@ -47,7 +60,7 @@ for m in data['maps']:
  for method in m['methods']:
   key=method['id']
   if (route,key,'spring') not in tables:
-   if (key=='surf' and route in [str(r) for r in [*range(105,110),122,*range(124,135)]]) or (key=='land' and route in [*[str(r) for r in [*range(101,105),*range(110,122),123]],*[f'Kanto{r}' for r in range(1,5)]]):method.pop('seasonalVariants',None)
+   if (route,key) in managed:method.pop('seasonalVariants',None)
    continue
   method['seasonalVariants']=[]
   for season in SEASONS:
