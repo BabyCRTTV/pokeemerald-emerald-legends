@@ -1213,6 +1213,8 @@ static const struct MenuAction sLegendsMeals[] = {
     {COMPOUND_STRING("Crackers")},
     {COMPOUND_STRING("Hot Cocoa")},
     {COMPOUND_STRING("Egg Custard")},
+    {COMPOUND_STRING("Tomato Flatbread")},
+    {COMPOUND_STRING("Buttered Potatoes")},
     {gText_Cancel2},
 };
 

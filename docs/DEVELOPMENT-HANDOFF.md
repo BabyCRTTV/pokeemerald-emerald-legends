@@ -1,5 +1,13 @@
 # Development handoff
 
+## Tomato Flatbread and Buttered Potatoes preview (15 November 2026)
+
+**Model: GPT-6.1 Sol | Reasoning: use three new ingredients across two familiar meals and append the recipes without moving item or save fields.**
+
+Added Tomato, Cheese, and Potato to Poké Mart INGREDIENTS. Kitchens and the Mess Kit offer Tomato Flatbread from Flour, Water, Tomato, and Cheese for +15% trainer prize money, and Buttered Potatoes from Potato, Butter, and Salt for −10% wild encounters. Both effects last ten minutes. The new plate sprites leave a visible rim around each serving.
+
+Bought all three ingredients in Oldale, cooked the flatbread from the adjacent kitchen tile and the potatoes with the Mess Kit, and verified ingredient deductions, EAT, and both buffs in mGBA. [Preview evidence](qa/tomato-flatbread-potatoes-preview.json). Review branch only.
+
 ## Ice Cubes sprite redesign (15 November 2026)
 
 **Model: GPT-6.1 Sol | Reasoning: distinguish the recipe ingredient through larger faces, pale bevels, and a clearly smaller second cube.**

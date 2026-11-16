@@ -54,6 +54,8 @@ EventScript_ChooseMeal::
 	case 4, EventScript_MealCrackers
 	case 5, EventScript_MealHotCocoa
 	case 6, EventScript_MealEggCustard
+	case 7, EventScript_MealTomatoFlatbread
+	case 8, EventScript_MealButteredPotatoes
 	goto EventScript_FinishMealInteraction
 
 EventScript_ChooseCanteenDrink::
@@ -66,7 +68,7 @@ EventScript_ChooseCanteenDrink::
 EventScript_ChooseMessKitMeal::
 	message Text_ChooseMeal
 	waitmessage
-	dynmultichoice 0, 0, FALSE, 6, 0, DYN_MULTICHOICE_CB_NONE, Text_MessKitOmelet, Text_MessKitPancakes, Text_MessKitFlatbread, Text_MessKitSoup, Text_MessKitCrackers, Text_MessKitCustard, Text_CancelCooking
+	dynmultichoice 0, 0, FALSE, 6, 0, DYN_MULTICHOICE_CB_NONE, Text_MessKitOmelet, Text_MessKitPancakes, Text_MessKitFlatbread, Text_MessKitSoup, Text_MessKitCrackers, Text_MessKitCustard, Text_MessKitTomatoFlatbread, Text_MessKitButteredPotatoes, Text_CancelCooking
 	switch VAR_RESULT
 	case 0, EventScript_MealOmelet
 	case 1, EventScript_MealPancakes
@@ -74,6 +76,8 @@ EventScript_ChooseMessKitMeal::
 	case 3, EventScript_MealSoup
 	case 4, EventScript_MealCrackers
 	case 5, EventScript_MealEggCustard
+	case 6, EventScript_MealTomatoFlatbread
+	case 7, EventScript_MealButteredPotatoes
 	goto EventScript_FinishMealInteraction
 
 EventScript_ChoosePercolatorDrink::
@@ -165,6 +169,16 @@ EventScript_MealHojichaTea::
 	setvar VAR_0x8004, 14
 	msgbox Text_MealHojichaTea
 	goto EventScript_ConfirmPrepareDrink
+
+EventScript_MealTomatoFlatbread::
+	setvar VAR_0x8004, 15
+	msgbox Text_MealTomatoFlatbread
+	goto EventScript_ConfirmCookMeal
+
+EventScript_MealButteredPotatoes::
+	setvar VAR_0x8004, 16
+	msgbox Text_MealButteredPotatoes
+	goto EventScript_ConfirmCookMeal
 
 EventScript_ConfirmCookMeal::
 	msgbox Text_CookSelectedMeal, MSGBOX_YESNO
@@ -258,6 +272,12 @@ Text_MessKitCrackers:
 
 Text_MessKitCustard:
 	.string "Egg Custard$"
+
+Text_MessKitTomatoFlatbread:
+	.string "Tomato Flatbread$"
+
+Text_MessKitButteredPotatoes:
+	.string "Buttered Potatoes$"
 
 Text_CancelCooking:
 	.string "CANCEL$"
@@ -380,6 +400,18 @@ Text_MealHojichaLatte::
 Text_MealHojichaTea::
 	.string "Hojicha Tea: Hojicha Leaves\nand Water (1 each).\p"
 	.string "Walking friendship gains +1\nfor 10 minutes.$"
+
+Text_MealTomatoFlatbread::
+	.string "Tomato Flatbread: Flour, Water,\n"
+	.string "Tomato, and Cheese (1 each).\p"
+	.string "Trainer prize money +15%\n"
+	.string "for 10 minutes.$"
+
+Text_MealButteredPotatoes::
+	.string "Buttered Potatoes: Potato,\n"
+	.string "Butter, and Salt (1 each).\p"
+	.string "Wild encounters -10%\n"
+	.string "for 10 minutes.$"
 
 Text_CookSelectedMeal::
 	.string "Cook this meal?$"

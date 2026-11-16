@@ -14880,6 +14880,81 @@ const struct ItemInfo gItemsInfo[] =
         .iconPalette = gItemIconPalette_CookingIceCubes,
     },
 
+    [ITEM_COOKING_TOMATO] =
+    {
+        .name = ITEM_NAME("Tomato"),
+        .price = 35,
+        .description = COMPOUND_STRING(
+            "A ripe tomato.\n"
+            "Adds a tang to\n"
+            "savory meals."),
+        .pocket = POCKET_ITEMS,
+        .type = ITEM_USE_FIELD,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .iconPic = gItemIcon_CookingTomato,
+        .iconPalette = gItemIconPalette_CookingTomato,
+    },
+
+    [ITEM_COOKING_CHEESE] =
+    {
+        .name = ITEM_NAME("Cheese"),
+        .price = 50,
+        .description = COMPOUND_STRING(
+            "A wedge of cheese.\n"
+            "Melts nicely on\n"
+            "warm flatbread."),
+        .pocket = POCKET_ITEMS,
+        .type = ITEM_USE_FIELD,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .iconPic = gItemIcon_CookingCheese,
+        .iconPalette = gItemIconPalette_CookingCheese,
+    },
+
+    [ITEM_COOKING_POTATO] =
+    {
+        .name = ITEM_NAME("Potato"),
+        .price = 30,
+        .description = COMPOUND_STRING(
+            "A firm potato.\n"
+            "Fluffy when\n"
+            "cooked."),
+        .pocket = POCKET_ITEMS,
+        .type = ITEM_USE_FIELD,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .iconPic = gItemIcon_CookingPotato,
+        .iconPalette = gItemIconPalette_CookingPotato,
+    },
+
+    [ITEM_TOMATO_FLATBREAD] =
+    {
+        .name = ITEM_NAME("Tomato Flatbread"),
+        .price = 95,
+        .description = COMPOUND_STRING(
+            "Tomato and cheese\n"
+            "on warm flatbread.\n"
+            "Prize money +15%."),
+        .pocket = POCKET_FOOD,
+        .type = ITEM_USE_BAG_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_LegendsMeal,
+        .iconPic = gItemIcon_CookingTomatoFlatbread,
+        .iconPalette = gItemIconPalette_CookingTomatoFlatbread,
+    },
+
+    [ITEM_BUTTERED_POTATOES] =
+    {
+        .name = ITEM_NAME("Buttered Potatoes"),
+        .price = 75,
+        .description = COMPOUND_STRING(
+            "Potatoes tossed\n"
+            "in melted butter.\n"
+            "Encounters -10%."),
+        .pocket = POCKET_FOOD,
+        .type = ITEM_USE_BAG_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_LegendsMeal,
+        .iconPic = gItemIcon_CookingButteredPotatoes,
+        .iconPalette = gItemIconPalette_CookingButteredPotatoes,
+    },
+
     [ITEM_TREAT_CASE] =
     {
         .name = ITEM_NAME("Treat Case"),
