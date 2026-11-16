@@ -2901,6 +2901,17 @@ BattleScript_LocalBattleLost::
 	jumpifnowhiteout BattleScript_LocalBattleLostEnd_
 	jumpifbattletype BATTLE_TYPE_INGAME_PARTNER, BattleScript_LocalBattleLostPrintWhiteOut
 BattleScript_LocalBattleLostPrintWhiteOut::
+	callnative BS_JumpIfGymRetryUnavailable
+	.4byte BattleScript_LocalBattleLostCharge
+	printstring STRINGID_LEGENDS_RETRY_GYM
+	waitmessage B_WAIT_TIME_LONG
+	setbyte gBattleCommunication, 0
+BattleScript_LocalBattleLostGymRetryPrompt::
+	yesnobox
+	jumpifbyte CMP_NOT_EQUAL, gBattleCommunication + 1, 0, BattleScript_LocalBattleLostCharge
+	callnative BS_RequestGymRetry
+	end
+BattleScript_LocalBattleLostCharge::
 	getmoneyreward
 	printstring STRINGID_PLAYERWHITEOUT
 	waitmessage B_WAIT_TIME_LONG

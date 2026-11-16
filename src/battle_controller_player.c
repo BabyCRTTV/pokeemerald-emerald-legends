@@ -1,4 +1,5 @@
 #include "global.h"
+#include "legends_settings.h"
 #include "legends_appearance.h"
 #include "battle.h"
 #include "battle_anim.h"
@@ -96,6 +97,10 @@ static void ReloadMoveNames(enum BattlerId battler);
 static u32 CheckTypeEffectiveness(enum BattlerId battlerAtk, enum BattlerId battlerDef);
 static u32 CheckTargetTypeEffectiveness(enum BattlerId battler);
 static void MoveSelectionDisplayMoveEffectiveness(u32 foeEffectiveness, enum BattlerId battler);
+static bool32 CasualMoveHintsEnabled(void)
+{
+    return LegendsIsCasualDifficulty() && !(gBattleTypeFlags & (BATTLE_TYPE_LINK | BATTLE_TYPE_RECORDED));
+}
 
 static void (*const sPlayerBufferCommands[CONTROLLER_CMDS_COUNT])(enum BattlerId battler) =
 {
@@ -461,6 +466,8 @@ void HandleInputChooseTarget(enum BattlerId battler)
             ReloadMoveNames(battler);
         }
         TryToAddMoveInfoWindow();
+        if (CasualMoveHintsEnabled())
+            MoveSelectionDisplayMoveEffectiveness(CheckTargetTypeEffectiveness(battler), battler);
         DoBounceEffect(battler, BOUNCE_HEALTHBOX, 7, 1);
         DoBounceEffect(battler, BOUNCE_MON, 7, 1);
         EndBounceEffect(gMultiUsePlayerCursor, BOUNCE_HEALTHBOX);
@@ -611,6 +618,8 @@ void HandleInputShowEntireFieldTargets(enum BattlerId battler)
         PlaySE(SE_SELECT);
         HideAllTargets();
         gBattlerControllerFuncs[battler] = HandleInputChooseMove;
+        if (CasualMoveHintsEnabled())
+            MoveSelectionDisplayMoveEffectiveness(CheckTargetTypeEffectiveness(battler), battler);
         DoBounceEffect(battler, BOUNCE_HEALTHBOX, 7, 1);
         DoBounceEffect(battler, BOUNCE_MON, 7, 1);
     }
@@ -1733,6 +1742,13 @@ static void MoveSelectionDisplayMoveType(enum BattlerId battler)
         struct Pokemon *mon = GetBattlerMon(battler);
         type = CheckDynamicMoveType(mon, move, battler, MON_IN_BATTLE);
     }
+    if (CasualMoveHintsEnabled())
+    {
+        txtPtr = StringCopy(gDisplayedStringBattle, COMPOUND_STRING("{FONT_SMALL_NARROWER}"));
+        StringCopy(txtPtr, gTypesInfo[type].name);
+        BattlePutTextOnWindow(gDisplayedStringBattle, B_WIN_PP);
+        return;
+    }
     end = StringCopy(txtPtr, gTypesInfo[type].name);
 
     PrependFontIdToFit(txtPtr, end, FONT_NORMAL, WindowWidthPx(B_WIN_MOVE_TYPE) - 25);
@@ -2359,6 +2375,8 @@ enum
     EFFECTIVENESS_NORMAL,
     EFFECTIVENESS_SUPER_EFFECTIVE,
     EFFECTIVENESS_EXTREMELY_EFFECTIVE,
+    EFFECTIVENESS_SELECT_TARGET,
+    EFFECTIVENESS_VARIES,
 };
 
 static bool32 ShouldShowTypeEffectiveness(u32 targetId)
@@ -2379,6 +2397,10 @@ static u32 CheckTypeEffectiveness(enum BattlerId battlerAtk, enum BattlerId batt
 {
     struct ChooseMoveStruct *moveInfo = (struct ChooseMoveStruct *)(&gBattleResources->bufferA[battlerAtk][4]);
     struct DamageContext ctx = {0};
+    if (!ShouldShowTypeEffectiveness(battlerDef)
+     || (CasualMoveHintsEnabled() && GetIllusionMonSpecies(battlerDef) != SPECIES_NONE))
+        return EFFECTIVENESS_CANNOT_VIEW;
+
     ctx.battlerAtk = battlerAtk;
     ctx.battlerDef = battlerDef;
     ctx.move = moveInfo->moves[gMoveSelectionCursor[battlerAtk]];
@@ -2387,14 +2409,14 @@ static u32 CheckTypeEffectiveness(enum BattlerId battlerAtk, enum BattlerId batt
     ctx.weather = GetWeather();
     ctx.terrain = gFieldTimers.terrain;
     ctx.abilities[ctx.battlerAtk] = GetBattlerAbility(battlerAtk);
-    ctx.abilities[ctx.battlerDef] = GetBattlerAbility(battlerDef);
     ctx.holdEffects[ctx.battlerAtk] = GetBattlerHoldEffect(battlerAtk);
-    ctx.holdEffects[ctx.battlerDef] = GetBattlerHoldEffect(battlerDef);
+    if (!CasualMoveHintsEnabled())
+    {
+        ctx.abilities[ctx.battlerDef] = GetBattlerAbility(battlerDef);
+        ctx.holdEffects[ctx.battlerDef] = GetBattlerHoldEffect(battlerDef);
+    }
 
     uq4_12_t modifier = CalcTypeEffectivenessMultiplier(&ctx);
-
-    if (!ShouldShowTypeEffectiveness(battlerDef))
-        return EFFECTIVENESS_CANNOT_VIEW;
 
     if (modifier == UQ_4_12(0.0))
         return EFFECTIVENESS_NO_EFFECT; // No effect
@@ -2420,6 +2442,14 @@ static u32 CheckTargetTypeEffectiveness(enum BattlerId battler)
         u32 partnerFoeEffectiveness = CheckTypeEffectiveness(battler, partnerFoe);
         if (!IsBattlerAlive(battlerFoe))
             return partnerFoeEffectiveness;
+        if (CasualMoveHintsEnabled() && IsBattlerAlive(partnerFoe))
+        {
+            struct ChooseMoveStruct *moveInfo = (void *)&gBattleResources->bufferA[battler][4];
+            enum Move move = moveInfo->moves[gMoveSelectionCursor[battler]];
+            if (!IsSpreadMove(GetBattlerMoveSelectionTargetType(battler, move)))
+                return EFFECTIVENESS_SELECT_TARGET;
+            return foeEffectiveness == partnerFoeEffectiveness ? foeEffectiveness : EFFECTIVENESS_VARIES;
+        }
         if (IsBattlerAlive(battlerFoe) && IsBattlerAlive(partnerFoe)
          && partnerFoeEffectiveness > foeEffectiveness)
             return partnerFoeEffectiveness;
@@ -2439,6 +2469,38 @@ static void MoveSelectionDisplayMoveEffectiveness(u32 foeEffectiveness, enum Bat
     struct ChooseMoveStruct *moveInfo = (struct ChooseMoveStruct *)(&gBattleResources->bufferA[battler][4]);
     u8 *txtPtr;
 
+    if (CasualMoveHintsEnabled())
+    {
+        const u8 *hint = COMPOUND_STRING("");
+        if (IsBattleMoveStatus(moveInfo->moves[gMoveSelectionCursor[battler]]))
+            hint = COMPOUND_STRING("{FONT_SMALL}Status move");
+        else
+            switch (foeEffectiveness)
+            {
+            case EFFECTIVENESS_EXTREMELY_EFFECTIVE:
+            case EFFECTIVENESS_SUPER_EFFECTIVE:
+                hint = COMPOUND_STRING("{FONT_SMALL_NARROWER}Super effective");
+                break;
+            case EFFECTIVENESS_NOT_VERY_EFFECTIVE:
+            case EFFECTIVENESS_MOSTLY_INEFFECTIVE:
+                hint = COMPOUND_STRING("{FONT_SMALL}Resisted");
+                break;
+            case EFFECTIVENESS_NO_EFFECT:
+                hint = COMPOUND_STRING("{FONT_SMALL}No effect");
+                break;
+            case EFFECTIVENESS_NORMAL:
+                hint = COMPOUND_STRING("{FONT_SMALL}Effective");
+                break;
+            case EFFECTIVENESS_SELECT_TARGET:
+                hint = COMPOUND_STRING("{FONT_SMALL_NARROW}Pick a target");
+                break;
+            case EFFECTIVENESS_VARIES:
+                hint = COMPOUND_STRING("{FONT_SMALL_NARROW}Varies by foe");
+                break;
+            }
+        BattlePutTextOnWindow(hint, B_WIN_MOVE_TYPE);
+        return;
+    }
     txtPtr = StringCopy(gDisplayedStringBattle, gText_MoveInterfacePP);
 
     if (!IsBattleMoveStatus(moveInfo->moves[gMoveSelectionCursor[battler]]))

@@ -4089,10 +4089,25 @@ static void Cmd_getmoneyreward(void)
         }
         if (!IsEnoughMoney(&gSaveBlock1Ptr->money, money))
             money = GetMoney(&gSaveBlock1Ptr->money);
+        if (LegendsIsCasualDifficulty() && gBattleOutcome != B_OUTCOME_FORFEITED)
+            money /= 2;
         RemoveMoney(&gSaveBlock1Ptr->money, money);
     }
 
     PREPARE_WORD_NUMBER_BUFFER(gBattleTextBuff1, 5, money);
+    gBattlescriptCurrInstr = cmd->nextInstr;
+}
+
+void BS_JumpIfGymRetryUnavailable(void)
+{
+    NATIVE_ARGS(const u8 *jumpInstr);
+    gBattlescriptCurrInstr = BattleSetup_CanRetryGymBattle() ? cmd->nextInstr : cmd->jumpInstr;
+}
+
+void BS_RequestGymRetry(void)
+{
+    NATIVE_ARGS();
+    BattleSetup_RequestGymRetry();
     gBattlescriptCurrInstr = cmd->nextInstr;
 }
 

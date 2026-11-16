@@ -129,6 +129,53 @@ u8 LegendsQuestNextStep(u16 id)
             if (!LegendsQuestStepComplete(id, step)) return step;
     return 0xFF;
 }
+
+const u8 *LegendsQuestHint(u16 id)
+{
+    static const struct LegendsQuestStep hints[] =
+    {
+        {COMPOUND_STRING("Visit BIRCH at his lab on the west side of LITTLEROOT TOWN."), FLAG_SYS_POKEDEX_GET},
+        {COMPOUND_STRING("Enter RUSTBORO GYM and speak to ROXANNE at the back."), FLAG_BADGE01_GET},
+        {COMPOUND_STRING("Find BRAWLY at DEWFORD GYM. The lights brighten as you defeat its trainers."), FLAG_BADGE02_GET},
+        {COMPOUND_STRING("Head into MAUVILLE GYM and use the floor switches to reach WATTSON."), FLAG_BADGE03_GET},
+        {COMPOUND_STRING("Find FLANNERY inside LAVARIDGE GYM. Use the hot spring openings to move between floors."), FLAG_BADGE04_GET},
+        {COMPOUND_STRING("Challenge NORMAN in PETALBURG GYM after earning four badges."), FLAG_BADGE05_GET},
+        {COMPOUND_STRING("Use the turnstiles inside FORTREE GYM to reach WINONA."), FLAG_BADGE06_GET},
+        {COMPOUND_STRING("Bring at least two Pokémon that can fight to MOSSDEEP GYM for TATE and LIZA."), FLAG_BADGE07_GET},
+        {COMPOUND_STRING("Enter SOOTOPOLIS GYM and break each ice tile on your way to JUAN."), FLAG_BADGE08_GET},
+        {COMPOUND_STRING("Head into RUSTURF TUNNEL from ROUTE 116 to find the thief and PEEKO."), FLAG_RECOVERED_DEVON_GOODS},
+        {COMPOUND_STRING("Bring the recovered goods to MR. STONE at DEVON CORP. in RUSTBORO."), FLAG_RETURNED_DEVON_GOODS},
+        {COMPOUND_STRING("From DEWFORD, enter GRANITE CAVE on ROUTE 106 and find STEVEN inside."), FLAG_DELIVERED_STEVEN_LETTER},
+        {COMPOUND_STRING("Ask for CAPTAIN STERN at the OCEANIC MUSEUM in SLATEPORT."), FLAG_DELIVERED_DEVON_GOODS},
+        {COMPOUND_STRING("Take the cable car from ROUTE 112 to MT. CHIMNEY and check the machine at the summit."), FLAG_RECEIVED_METEORITE},
+        {COMPOUND_STRING("Cross ROUTE 119 and enter the WEATHER INSTITUTE before reaching FORTREE."), FLAG_RECEIVED_CASTFORM},
+        {COMPOUND_STRING("Find STEVEN on the bridge east of FORTREE on ROUTE 120."), FLAG_RECEIVED_DEVON_SCOPE},
+        {COMPOUND_STRING("Take JAGGED PASS down from MT. CHIMNEY. Check the MAGMA HIDEOUT along the way."), FLAG_GROUDON_AWAKENED_MAGMA_HIDEOUT},
+        {COMPOUND_STRING("Check the harbor in SLATEPORT, then follow TEAM AQUA to its hideout east of LILYCOVE."), FLAG_TEAM_AQUA_ESCAPED_IN_SUBMARINE},
+        {COMPOUND_STRING("Talk to STEVEN upstairs in the MOSSDEEP SPACE CENTER."), FLAG_DEFEATED_MAGMA_SPACE_CENTER},
+        {COMPOUND_STRING("Take VICTORY ROAD from EVER GRANDE CITY to the POKEMON LEAGUE."), FLAG_SYS_GAME_CLEAR},
+        {COMPOUND_STRING("Look for the survey marker on ROUTE 16, just west of CELADON."), FLAG_LEGENDS_KANTO_SURVEY_LEAVES},
+        {COMPOUND_STRING("Look for the survey marker on ROUTE 8 between SAFFRON and LAVENDER."), FLAG_LEGENDS_KANTO_SURVEY_ECHO},
+        {COMPOUND_STRING("Look for the rain-reading station on ROUTE 119."), FLAG_LEGENDS_STORY_WEATHER_RAIN_READING},
+        {COMPOUND_STRING("Look for the heat-reading station in the ROUTE 111 desert."), FLAG_LEGENDS_STORY_WEATHER_HEAT_READING},
+        {COMPOUND_STRING("Look for the water survey marker in CERULEAN CITY."), FLAG_LEGENDS_STORY_NORTH_WATER},
+        {COMPOUND_STRING("Look for the stone survey marker on ROUTE 4, west of CERULEAN."), FLAG_LEGENDS_STORY_NORTH_STONE},
+        {COMPOUND_STRING("Talk to OAK in his PALLET TOWN lab once your visiting records are complete."), FLAG_LEGENDS_FINAL_VOYAGE_READY},
+        {COMPOUND_STRING("Visit RYDEL's bike shop in MAUVILLE CITY."), FLAG_RECEIVED_BIKE},
+        {COMPOUND_STRING("Talk to the person by the tree on ROUTE 111, north of MAUVILLE."), FLAG_RECEIVED_SECRET_POWER},
+        {COMPOUND_STRING("Find CAPTAIN STERN at SLATEPORT HARBOR after recovering the SCANNER."), FLAG_EXCHANGED_SCANNER},
+        {COMPOUND_STRING("Dive on ROUTE 134 and explore the SEALED CHAMBER."), FLAG_REGI_DOORS_OPENED},
+    };
+    u8 step = LegendsQuestNextStep(id);
+    if (step == 0xFF)
+        return NULL;
+
+    const struct LegendsQuestStep *next = &LegendsQuestGet(id)->steps[step];
+    for (u32 i = 0; i < ARRAY_COUNT(hints); i++)
+        if (hints[i].flag == next->flag)
+            return hints[i].text;
+    return next->text;
+}
 u16 LegendsQuestTracked(void)
 {
     u16 word = DATA->reserved;

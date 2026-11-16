@@ -1,5 +1,13 @@
 # Development handoff
 
+## Casual mode assists (16 November 2026)
+
+**Model: GPT-6.1 Sol | Reasoning: reuse the native type, Quest Log, and battle recovery paths so the assists follow the existing Casual option.**
+
+Casual adds plain-language matchups to the Fight panel, updating when the player changes targets in doubles. Blackouts take half the usual money. SELECT opens the next-step hint from the tracked quest's detail page. A Gym Leader loss offers an immediate retry with the original party and Bag. Declining continues through the ordinary blackout. No save layout changes.
+
+Debug mGBA verified Claydol and Xatu targeting, the Stone Badge hint, a Route 102 blackout at 40 versus 20, Roxanne retry restoration after actual Potion use, decline, a victory after retry with the Stone Badge and prize, and the Normal Gym loss flow. Difficulty, Options, and Quest Log host regressions passed. Draft only. [Preview evidence](qa/casual-assists-preview.json).
+
 ## Casual and Normal difficulty (16 November 2026)
 
 **Model: GPT-6.1 Sol | Reasoning: layer a saved Casual option over native move scoring and final battle rewards.**
