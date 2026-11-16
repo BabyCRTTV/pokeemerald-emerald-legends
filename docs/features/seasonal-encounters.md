@@ -1,8 +1,8 @@
-# Seasonal encounters — Routes 101–134
+# Seasonal encounters in Hoenn and Kanto
 
 **Model: GPT-6 | Approach: preserve native residents/levels and resolve every dependent land-table consumer through the committed season.**
 
-Status: Routes 101–134 shipped across v0.0.63–v0.0.74. The latest batch added 24 seasonal Surf visitors on Routes 132–134, preserving native residents, current navigation and Sealed Chamber requirements. Approved DexNav silhouettes, centering, artwork and all earlier tables remain protected.
+Hoenn Routes 101–134 shipped across v0.0.63–v0.0.74. Version 0.0.86 adds seasonal grass encounters to Kanto Routes 1–4.
 
 ## Grass pilot — Routes 101–104 (v0.0.63)
 
@@ -424,3 +424,26 @@ Unseen route entries use the actual native animated party icon with all nontrans
 The owner approved the roster and silhouette approach, with a request to correct DexNav sizing/centering. Final source `4660dc53` passed project checks, 4,096 geometry cases, a shipped-C audit of all 1,809 native icon sheets and 35 controlled native mGBA cases (8,960 wild creations). All 54 captures were visually reviewed and panel containment was asserted. [Final correction evidence and release gate](../qa/dexnav-layout-v0.0.63.md) · [Native receipt](../qa/dexnav-layout-v0.0.63-native.json) · [Corrected preview](../qa/dexnav-layout-v0.0.63-preview.png).
 
 PR and production Debug/Release builds, project checks, both BPS validations and native mGBA checks passed. [Live publication receipt](../qa/dexnav-layout-v0.0.63-public.json). Controlled Debug fixtures do not establish natural progression, a full DexNav hunt, historical-save migration, native Release interaction or Pizza Boy coverage. Original pre-correction evidence remains in the [first trial QA record](../qa/seasonal-encounters-v0.0.63.md).
+
+## Kanto Routes 1–4 (v0.0.86)
+
+The first Kanto batch uses grass encounter tables on Routes 1–4. Every original resident stays available in all seasons and retains at least one original slot. Native slot levels and the encounter rate of 21 remain in place. Original residents account for 70% of ordinary grass encounters, with two all-day visitors at 20% and 10%. Fishing, Surf, and neighboring areas retain their existing tables.
+
+| Route | Season | 20% visitor | 10% visitor |
+|---|---|---|---|
+| 1 | Spring | Pawmi | Hoothoot |
+| 1 | Summer | Pikipek | Yungoos |
+| 1 | Autumn | Purrloin | Glameow |
+| 1 | Winter | Cubchoo | Munchlax |
+| 2 | Spring | Spinarak | Cottonee |
+| 2 | Summer | Grubbin | Burmy |
+| 2 | Autumn | Karrablast | Shelmet |
+| 2 | Winter | Silcoon | Joltik |
+| 3 | Spring | Mareep | Tandemaus |
+| 3 | Summer | Stufful | Cubone |
+| 3 | Autumn | Spoink | Munna |
+| 3 | Winter | Swinub | Vanillite |
+| 4 | Spring | Diglett | Roggenrola |
+| 4 | Summer | Nacli | Nosepass |
+| 4 | Autumn | Mudbray | Drilbur |
+| 4 | Winter | Geodude | Onix |
