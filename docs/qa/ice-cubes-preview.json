@@ -1,0 +1,35 @@
+{
+  "status": "review preview",
+  "baseCommit": "311fbbf469af6d6be6674fea5442bb3f33e9da91",
+  "romSha256": "ded3a29336664306034c76872cabe5a505653e0a8d8beb384602c9819784b4ed",
+  "ingredient": {
+    "name": "Ice Cubes",
+    "itemId": 912,
+    "price": 20,
+    "spriteSha256": "d853eeaa63c2872abc55e55b20fbf7d78ea39866880935f254e2df7c0e518540"
+  },
+  "icedDrinkCupReference": {
+    "path": "graphics/items/cooking/hojicha_tea.png",
+    "sha256": "bd0a60dd14f76a59bdd39a4248e713d622cbc07f2cda4381d303487e7f2978a6"
+  },
+  "nativeQA": {
+    "emulator": "mGBA",
+    "checksPassed": [
+      "Purchased one Ice Cubes at Oldale Town Pok\u00e9 Mart through INGREDIENTS and verified a 20-unit decrease in money and a quantity of one.",
+      "Selected Ice Cubes in the Items pocket and checked its native icon and description."
+    ],
+    "harnessSha256": {
+      "fixture.c": "8dc445ea3bd16135b7939ca5b0516c1fd28ff89443fa7ae39e7d7a2f7e0ece5b",
+      "verify.py": "b2ac0132f19b793cbd37e322848e01fedb119cd142b511c648b573a3fe94abc6"
+    },
+    "captureSha256": {
+      "ingredients-menu": "8c840f2637ea4f4b02d9b86a6bf25de85579ab28ae33ebd57528b1c446868d7d",
+      "shop-1": "532dc5384b2935f000b3d29b7627088ec1ad512f5cdcd1ddf75912ee5881303d",
+      "bag-1": "a05fbde6e991235a91777556cfd0b5f8f3ff7b30519633cd82345a3f49e4dbad"
+    }
+  },
+  "hostChecksPassed": [
+    "test/legends-bag-capacity.test.py",
+    "test/legends-item-descriptions.test.py"
+  ]
+}

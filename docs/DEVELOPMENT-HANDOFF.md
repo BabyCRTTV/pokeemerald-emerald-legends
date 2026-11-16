@@ -1,5 +1,73 @@
 # Development handoff
 
+## v0.0.85 Portable Cooking release candidate (15 November 2026)
+
+**Model: GPT-6.1 Sol | Reasoning: release the owner-approved cumulative cooking preview, preserving its sprites, encounter source, and battery layout.**
+
+The owner approved the cooking preview at `e1a216418c26172e521c3d6d19a0eb76d7c2e0b9` for publication. The candidate includes Mom's portable gear, twelve new Mart ingredients, eight Percolator brews, Tomato Flatbread, and Buttered Potatoes. The recipe, Bag, and buff interactions are covered by the preview receipts below. Item IDs 893–917 append within the existing item-history bitmap. The packed bag, saved meal records, and map layouts did not change. Updated the game labels, patcher, download links, and all changelogs.
+
+Next step: verify the candidate, merge it, then wait for production patch and Pages verification.
+
+## Tomato Flatbread and Buttered Potatoes preview (15 November 2026)
+
+**Model: GPT-6.1 Sol | Reasoning: use three new ingredients across two familiar meals and append the recipes without moving item or save fields.**
+
+Added Tomato, Cheese, and Potato to Poké Mart INGREDIENTS. Kitchens and the Mess Kit offer Tomato Flatbread from Flour, Water, Tomato, and Cheese for +15% trainer prize money, and Buttered Potatoes from Potato, Butter, and Salt for −10% wild encounters. Both effects last ten minutes. The new plate sprites leave a visible rim around each serving.
+
+Bought all three ingredients in Oldale, cooked the flatbread from the adjacent kitchen tile and the potatoes with the Mess Kit, and verified ingredient deductions, EAT, and both buffs in mGBA. [Preview evidence](qa/tomato-flatbread-potatoes-preview.json). Review branch only.
+
+## Ice Cubes sprite redesign (15 November 2026)
+
+**Model: GPT-6.1 Sol | Reasoning: distinguish the recipe ingredient through larger faces, pale bevels, and a clearly smaller second cube.**
+
+Redrew the Ice Cubes icon with a large cube above a smaller cube at the lower right. Used a light frosted palette and checked the shared contours at 24 pixels. [Preview evidence](qa/ice-cubes-redesign-preview.json). Review branch only.
+
+## Ice Cubes ingredient and iced-drink art reference (15 November 2026)
+
+**Model: GPT-6.1 Sol | Reasoning: give Ice Cubes a standard ingredient slot and retain the confirmed portable-cup silhouette for future recipe art.**
+
+Added Ice Cubes for ₽20 to Poké Mart INGREDIENTS. The owner identified the Hojicha Tea cup as the approved starting shape for future iced drinks, with the ice, fill, and highlights adapted to each drink. Recorded the exact sprite in AGENTS.md.
+
+Verified the Oldale Mart purchase, money and quantity change, and the native Bag rendering in mGBA. Bag, cooking, item history, and save layout checks passed. [Preview evidence](qa/ice-cubes-preview.json). Review branch only.
+
+## Tea and coffee sprite outline polish (15 November 2026)
+
+**Model: GPT-6.1 Sol | Reasoning: remove unsupported outline pixels across shared icon shapes while preserving structural corners and material details.**
+
+Cleaned the rim and base of the Black Tea and Hojicha Leaves cartons and the bases of the Milk Coffee, Matcha Latte, and Hojicha Latte mugs. The owner approved the Hojicha Powder tin's outline as the reference and asked to retain purposeful corners and folds. Recorded that preference in AGENTS.md, including checking shared shapes before recoloring them for variants.
+
+Rebuilt the ROM, checked all five revised icons in the native Bag at normal size and under nearest-neighbor enlargement, and repeated the Hojicha purchase and all eight Percolator recipes in mGBA. [Preview evidence](qa/tea-coffee-sprite-outline-preview.json). Review branch only.
+
+## Hojicha and Percolator brews preview (15 November 2026)
+
+**Model: GPT-6.1 Sol | Reasoning: give each coffee and tea ingredient a matching brew while preserving item IDs and the established cooking transaction.**
+
+Added Hojicha Powder and Hojicha Leaves to Poké Mart INGREDIENTS. Expanded the Percolator with Matcha Latte, Brewed Oolong, Brewed Black Tea, Black Coffee, Hojicha Latte, and Hojicha Tea alongside Milk Coffee and Sweet Tea. The scrolling recipe menu shows the supplies and ten-minute effect before brewing. All eight drinks go in the Food pocket and use DRINK.
+
+In mGBA, purchased both Hojicha ingredients, brewed and drank all eight recipes, checked exact deductions and buffs, and verified missing-supply refusal and menu cancellation. Bag, cooking, item history, and save layout checks passed. [Preview evidence](qa/hojicha-percolator-preview.json). Review branch only.
+
+## Oolong and Coffee icon revision (15 November 2026)
+
+**Model: GPT-6.1 Sol | Reasoning: clean up the pouch silhouette and keep the Coffee beans visible inside their packaging.**
+
+Removed the isolated point beneath the Oolong Tea pouch and redrew Coffee as an open bag of whole roasted beans. Recorded the owner's preference for purposeful sprite outlines in AGENTS.md. Rebuilt the native ROM, repurchased all four coffee and tea ingredients in Oldale, and verified the revised icons in the Bag. [Preview evidence](qa/coffee-tea-icon-revision.json). Review branch only.
+
+## Coffee and loose-leaf tea ingredients preview (15 November 2026)
+
+**Model: GPT-6.1 Sol | Reasoning: give the new ingredients distinct silhouettes and append their IDs to preserve existing inventory.**
+
+Added Matcha Powder, Oolong Tea, Black Tea, and Coffee to Poké Mart INGREDIENTS. Oolong and Black Tea are loose-leaf varieties. Coffee represents whole roasted beans, alongside the existing Coffee Grounds used to brew Milk Coffee. This preview adds the ingredients and their Bag icons.
+
+Verified all four purchases in Oldale Town and inspected each Bag icon and description in mGBA. The host checks passed for Bag capacity, item history, and save layouts. [Preview evidence](qa/coffee-tea-ingredients-preview.json). Review branch only.
+
+## Portable cooking gear preview (15 November 2026)
+
+**Model: GPT-6.1 Sol | Reasoning: reuse the cooking transaction and Mom's farewell without moving save fields.**
+
+The owner selected the original Steel Canteen, Classic Camp design B Mess Kit, and original Percolator. Mom gives all three during the first-departure Running Shoes scene. Players who already received the shoes can collect the gear from Mom at home.
+
+The Steel Canteen prepares Hot Cocoa, the Mess Kit prepares the existing meals, and the Percolator brews Milk Coffee and Sweet Tea. Poké Marts stock Coffee Grounds and Tea Leaves under INGREDIENTS. Verified the gift, all three field menus, DRINK behavior, Bag persistence, and ordinary kitchen cooking in mGBA. [Preview evidence](qa/portable-cooking-preview.json). Review branch only.
+
 ## v0.0.84 Cooking and Meal Buffs published and verified (15 November 2026)
 
 **Model: GPT-6.1 Sol | Reasoning: publish the approved cooking system and exact final sprites while preserving player saves and encounter data.**

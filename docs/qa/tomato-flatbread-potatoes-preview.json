@@ -1,0 +1,48 @@
+{
+  "status": "review preview",
+  "baseCommit": "466df3b59cae6f471060b266684ea4074e106faf",
+  "romSha256": "77d208d23331dcbd29b3ba41635a91fa8e389f83dc07d618b8baa638357815dc",
+  "spriteSha256": {
+    "tomato": "a65c33bd4aca6fd2839072aba9d0a9307d23f1fd216b5093375e57202625fd7a",
+    "cheese": "a90ffc46b2dcc0b77b14a286261b4eba4d80caf8631c01f6fcf6c837f580ea44",
+    "potato": "2ade37d71debaf89a8f5124fcc8abc44d480d0a99d752bfdcb83794c6464f7f4",
+    "tomato_flatbread": "e631e7f482a028d7a97e60a876cea6263196098b638aebdf844cfcc9188f9157",
+    "buttered_potatoes": "c78f350db5f285752e6e310e1b5eca9d6d36271946868c8df2aca4b21473f5db"
+  },
+  "nativeQA": {
+    "emulator": "mGBA",
+    "checksPassed": [
+      "Bought Tomato, Cheese, and Potato with the exact deductions and checked their Items pocket icons.",
+      "Opened the Littleroot kitchen from the tile next to the sink and prepared Tomato Flatbread.",
+      "Opened the Mess Kit through Key Items and prepared Buttered Potatoes.",
+      "Checked exact recipe ingredient deductions, Food pocket storage, EAT, and both buffs."
+    ],
+    "harnessSha256": {
+      "fixture.c": "040e0b195c61e517fc0ab4cb48683731f6f565b61d711ea38e18e5a012af0044",
+      "verify.py": "3fd2a23946dbda04b72236f39b2bb407654cf2f314702e33b010f82343b845ac"
+    },
+    "captureSha256": {
+      "ingredients-menu": "8c840f2637ea4f4b02d9b86a6bf25de85579ab28ae33ebd57528b1c446868d7d",
+      "shop-1": "f3316d2ccb2d2addcd7bf7c39a159b86c3d870d8b7971a302f1cffc529cc3033",
+      "shop-2": "5228a5fa005e7e4755b840b7c7847b0868d422b4c60c64aad7f9306900ed461c",
+      "shop-3": "3f80ff754052ee5303beba29efe80c3fc6eb95c8703e5c4df382c4b0c23a9aaa",
+      "bag-1": "096649b36aec8a61242a48745a64b3c27becc47ffb3d1073a4cd6df4e07d28d4",
+      "bag-2": "10303bc5a32640a57e5b7c7390ef355e32f0baefccd09957577b2063d7f6b468",
+      "bag-3": "a8be3f2855708544598a166a79dc78200ca7144b199861872dc2d3010d25c8e9",
+      "kitchen-menu": "12a3093cb1e735d5d9fe27e4af1f1987acce6bed36055c76b543c539609f1365",
+      "kitchen-flatbread-recipe": "be1b208252eb57251b0aeebc0cb6ccb77727df825555de2276a7524e73f944ac",
+      "mess-kit-menu": "16909d7ed843392d0bb5220c3dc7c2681bda6ca1f0efb8eeb80e8ec638eb34ee",
+      "mess-kit-potato-recipe": "b4d98d8cfd031568406ce97f3435c35b4c09f1a66c667129411b310e7403220c",
+      "food-1": "7d3bc0a24438ad23af549fd29998978e72516f0e7154cfb75754ad2adc29aed5",
+      "food-2": "b43cd818a0f4f9b681a6340ffe5345ad6bef4e32333c694a2572cc20ee74e121",
+      "eat-action-1": "023f2fd21398ec24e2038c8bf67b7930bed9119edf4307f92b5190aaef1cf4a8",
+      "eat-action-2": "3060059de463b7ebcff101b802eb03db5140aecadc6545aebfb02542d5afeca1",
+      "ate-1": "ed9aa8c5c895328869f842eefb9299356232c46b1397816cd23b4705d9cafc60",
+      "ate-2": "9f14880e089fe4b60c05712bd8325a6d78893b0d9ea1d12a0042a981c6b1e5ee"
+    }
+  },
+  "hostChecksPassed": [
+    "test/legends-bag-capacity.test.py",
+    "test/legends-item-descriptions.test.py"
+  ]
+}

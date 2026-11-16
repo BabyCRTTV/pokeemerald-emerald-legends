@@ -1,0 +1,30 @@
+{
+  "status": "review preview",
+  "baseCommit": "a8e600ab73fca3a029691e8e4a46d369260df862",
+  "romSha256": "49949527028c4298d6a55d0396d6a78a43279b8f59d79a390af6605f2cd1d7e6",
+  "sprites": {
+    "black_tea": "f289d940038c849828107ec12d3bceaf2f11348c2fc2df105c1413fe82fd0992",
+    "hojicha_leaves": "37ae6c4c3ec222e0a2e9df620b92e63256d5e3d16a08899aab69317864f235f0",
+    "milk_coffee": "1db434d843786a6df45f1e9bc2bc1dfca1f4beaa114e3662298ee9dd2729a6df",
+    "matcha_latte": "59ee2632817ae2a5c35457311e23ac94a5fc9274cbae1b9e5205b6267bc03da8",
+    "hojicha_latte": "437826374b39b1d50032b140106b2ac679a0a7e600a2b2f9dd0331bd3ee17040"
+  },
+  "nativeQA": {
+    "emulator": "mGBA",
+    "checksPassed": [
+      "Checked both corrected tea cartons and all three corrected mugs in the native Bag, both at native size and under nearest-neighbor zoom.",
+      "Purchased both Hojicha ingredients and brewed and drank all eight drinks with the expected inventory deductions and buffs."
+    ],
+    "capturesSha256": {
+      "black_tea": "8752e69fcc5b0cd49aca36433de8a5b90f06ef76f0df41d9544c527f50702c45",
+      "hojicha_leaves": "7019df90008795c461ef3e181591787761dd18a814b7e3d1ed07bd4a00316d6d",
+      "milk_coffee": "6a80a8747bbf6cbaec1f9ec486b2131011a3c98147a3c210d17f01363e1f781e",
+      "matcha_latte": "807664db63cec7a9e3da590ae3d5a6396823493cb15d50108512e79cc45e98b1",
+      "hojicha_latte": "b5a3127f04ec250771606b8064d2047e381d9006d67d3ac48a334f42c0ee7be1"
+    },
+    "harnessSha256": {
+      "fixture.c": "0fb148e9c75a62333ff4479aea7241337312d239eeb97bc99145d6b59c8609cd",
+      "verify.py": "64c025e702c18332250313c62ff272fbe85d3779f968f8b301387a614f706f05"
+    }
+  }
+}

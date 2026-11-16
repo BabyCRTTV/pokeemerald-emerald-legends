@@ -1213,12 +1213,20 @@ static const struct MenuAction sLegendsMeals[] = {
     {COMPOUND_STRING("Crackers")},
     {COMPOUND_STRING("Hot Cocoa")},
     {COMPOUND_STRING("Egg Custard")},
+    {COMPOUND_STRING("Tomato Flatbread")},
+    {COMPOUND_STRING("Buttered Potatoes")},
+    {gText_Cancel2},
+};
+
+static const struct MenuAction sLegendsCanteen[] = {
+    {COMPOUND_STRING("Hot Cocoa")},
     {gText_Cancel2},
 };
 
 static const struct MultichoiceListStruct sMultichoiceLists[] =
 {
     [MULTI_LEGENDS_MEALS]             = MULTICHOICE(sLegendsMeals),
+    [MULTI_LEGENDS_CANTEEN]           = MULTICHOICE(sLegendsCanteen),
     [MULTI_BRINEY_ON_DEWFORD]          = MULTICHOICE(MultichoiceList_BrineyOnDewford),
     [MULTI_PC]                         = MULTICHOICE(MultichoiceList_Exit),
     [MULTI_ENTERINFO]                  = MULTICHOICE(MultichoiceList_EnterInfo),

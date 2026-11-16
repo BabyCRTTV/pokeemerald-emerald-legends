@@ -14578,6 +14578,383 @@ const struct ItemInfo gItemsInfo[] =
         .iconPalette = gItemIconPalette_CookingEggCustard,
     },
 
+    [ITEM_STEEL_CANTEEN] =
+    {
+        .name = ITEM_NAME("Steel Canteen"),
+        .price = 0,
+        .description = COMPOUND_STRING(
+            "A steel canteen.\n"
+            "Preps drinks on\n"
+            "the go."),
+        .importance = 1,
+        .pocket = POCKET_KEY_ITEMS,
+        .type = ITEM_USE_FIELD,
+        .fieldUseFunc = ItemUseOutOfBattle_PortableCooking,
+        .iconPic = gItemIcon_CookingSteelCanteen,
+        .iconPalette = gItemIconPalette_CookingSteelCanteen,
+    },
+
+    [ITEM_MESS_KIT] =
+    {
+        .name = ITEM_NAME("Mess Kit"),
+        .price = 0,
+        .description = COMPOUND_STRING(
+            "Compact cookware.\n"
+            "Preps meals on\n"
+            "the go."),
+        .importance = 1,
+        .pocket = POCKET_KEY_ITEMS,
+        .type = ITEM_USE_FIELD,
+        .fieldUseFunc = ItemUseOutOfBattle_PortableCooking,
+        .iconPic = gItemIcon_CookingMessKit,
+        .iconPalette = gItemIconPalette_CookingMessKit,
+    },
+
+    [ITEM_PERCOLATOR] =
+    {
+        .name = ITEM_NAME("Percolator"),
+        .price = 0,
+        .description = COMPOUND_STRING(
+            "Brews specialty\n"
+            "coffee and tea."),
+        .importance = 1,
+        .pocket = POCKET_KEY_ITEMS,
+        .type = ITEM_USE_FIELD,
+        .fieldUseFunc = ItemUseOutOfBattle_PortableCooking,
+        .iconPic = gItemIcon_CookingPercolator,
+        .iconPalette = gItemIconPalette_CookingPercolator,
+    },
+
+    [ITEM_COFFEE_GROUNDS] =
+    {
+        .name = ITEM_NAME("Coffee Grounds"),
+        .price = 65,
+        .description = COMPOUND_STRING(
+            "Roasted grounds.\n"
+            "Brew them in a\n"
+            "PERCOLATOR."),
+        .pocket = POCKET_ITEMS,
+        .type = ITEM_USE_FIELD,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .iconPic = gItemIcon_CookingCoffeeGrounds,
+        .iconPalette = gItemIconPalette_CookingCoffeeGrounds,
+    },
+
+    [ITEM_TEA_LEAVES] =
+    {
+        .name = ITEM_NAME("Tea Leaves"),
+        .price = 35,
+        .description = COMPOUND_STRING(
+            "Dried tea leaves.\n"
+            "Brew them in a\n"
+            "PERCOLATOR."),
+        .pocket = POCKET_ITEMS,
+        .type = ITEM_USE_FIELD,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .iconPic = gItemIcon_CookingTeaLeaves,
+        .iconPalette = gItemIconPalette_CookingTeaLeaves,
+    },
+
+    [ITEM_MILK_COFFEE] =
+    {
+        .name = ITEM_NAME("Milk Coffee"),
+        .price = 70,
+        .description = COMPOUND_STRING(
+            "Coffee with milk.\n"
+            "Battle Exp. +10%\n"
+            "for 10 minutes."),
+        .pocket = POCKET_FOOD,
+        .type = ITEM_USE_BAG_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_LegendsMeal,
+        .iconPic = gItemIcon_CookingMilkCoffee,
+        .iconPalette = gItemIconPalette_CookingMilkCoffee,
+    },
+
+    [ITEM_SWEET_TEA] =
+    {
+        .name = ITEM_NAME("Sweet Tea"),
+        .price = 55,
+        .description = COMPOUND_STRING(
+            "Sweetened tea.\n"
+            "Catch odds +5%\n"
+            "for 10 minutes."),
+        .pocket = POCKET_FOOD,
+        .type = ITEM_USE_BAG_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_LegendsMeal,
+        .iconPic = gItemIcon_CookingSweetTea,
+        .iconPalette = gItemIconPalette_CookingSweetTea,
+    },
+
+    [ITEM_MATCHA_POWDER] =
+    {
+        .name = ITEM_NAME("Matcha Powder"),
+        .price = 80,
+        .description = COMPOUND_STRING(
+            "Bright green tea\n"
+            "ground into a\n"
+            "fine powder."),
+        .pocket = POCKET_ITEMS,
+        .type = ITEM_USE_FIELD,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .iconPic = gItemIcon_CookingMatchaPowder,
+        .iconPalette = gItemIconPalette_CookingMatchaPowder,
+    },
+
+    [ITEM_OOLONG_TEA] =
+    {
+        .name = ITEM_NAME("Oolong Tea"),
+        .price = 60,
+        .description = COMPOUND_STRING(
+            "Rolled tea leaves\n"
+            "with a light,\n"
+            "toasty scent."),
+        .pocket = POCKET_ITEMS,
+        .type = ITEM_USE_FIELD,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .iconPic = gItemIcon_CookingOolongTea,
+        .iconPalette = gItemIconPalette_CookingOolongTea,
+    },
+
+    [ITEM_BLACK_TEA] =
+    {
+        .name = ITEM_NAME("Black Tea"),
+        .price = 45,
+        .description = COMPOUND_STRING(
+            "Loose dark tea\n"
+            "leaves with a\n"
+            "full, bold scent."),
+        .pocket = POCKET_ITEMS,
+        .type = ITEM_USE_FIELD,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .iconPic = gItemIcon_CookingBlackTea,
+        .iconPalette = gItemIconPalette_CookingBlackTea,
+    },
+
+    [ITEM_COOKING_COFFEE] =
+    {
+        .name = ITEM_NAME("Coffee"),
+        .price = 55,
+        .description = COMPOUND_STRING(
+            "Whole roasted\n"
+            "coffee beans with\n"
+            "a rich aroma."),
+        .pocket = POCKET_ITEMS,
+        .type = ITEM_USE_FIELD,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .iconPic = gItemIcon_CookingCoffee,
+        .iconPalette = gItemIconPalette_CookingCoffee,
+    },
+
+    [ITEM_HOJICHA_POWDER] =
+    {
+        .name = ITEM_NAME("Hojicha Powder"),
+        .price = 75,
+        .description = COMPOUND_STRING(
+            "Roasted green tea\n"
+            "ground into a\n"
+            "fine powder."),
+        .pocket = POCKET_ITEMS,
+        .type = ITEM_USE_FIELD,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .iconPic = gItemIcon_CookingHojichaPowder,
+        .iconPalette = gItemIconPalette_CookingHojichaPowder,
+    },
+
+    [ITEM_HOJICHA_LEAVES] =
+    {
+        .name = ITEM_NAME("Hojicha Leaves"),
+        .price = 60,
+        .description = COMPOUND_STRING(
+            "Loose roasted\n"
+            "green tea leaves\n"
+            "with a nutty scent."),
+        .pocket = POCKET_ITEMS,
+        .type = ITEM_USE_FIELD,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .iconPic = gItemIcon_CookingHojichaLeaves,
+        .iconPalette = gItemIconPalette_CookingHojichaLeaves,
+    },
+
+    [ITEM_MATCHA_LATTE] =
+    {
+        .name = ITEM_NAME("Matcha Latte"),
+        .price = 80,
+        .description = COMPOUND_STRING(
+            "Creamy green tea.\n"
+            "Walk friendship +2\n"
+            "for 10 minutes."),
+        .pocket = POCKET_FOOD,
+        .type = ITEM_USE_BAG_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_LegendsMeal,
+        .iconPic = gItemIcon_CookingMatchaLatte,
+        .iconPalette = gItemIconPalette_CookingMatchaLatte,
+    },
+
+    [ITEM_BREWED_OOLONG] =
+    {
+        .name = ITEM_NAME("Brewed Oolong"),
+        .price = 60,
+        .description = COMPOUND_STRING(
+            "Mellow oolong tea.\n"
+            "Wild encounters -10%\n"
+            "for 10 minutes."),
+        .pocket = POCKET_FOOD,
+        .type = ITEM_USE_BAG_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_LegendsMeal,
+        .iconPic = gItemIcon_CookingBrewedOolong,
+        .iconPalette = gItemIconPalette_CookingBrewedOolong,
+    },
+
+    [ITEM_BREWED_BLACK_TEA] =
+    {
+        .name = ITEM_NAME("Brewed Black Tea"),
+        .price = 50,
+        .description = COMPOUND_STRING(
+            "A bold tea brew.\n"
+            "Prize money +10%\n"
+            "for 10 minutes."),
+        .pocket = POCKET_FOOD,
+        .type = ITEM_USE_BAG_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_LegendsMeal,
+        .iconPic = gItemIcon_CookingBrewedBlackTea,
+        .iconPalette = gItemIconPalette_CookingBrewedBlackTea,
+    },
+
+    [ITEM_BLACK_COFFEE] =
+    {
+        .name = ITEM_NAME("Black Coffee"),
+        .price = 60,
+        .description = COMPOUND_STRING(
+            "Rich black coffee.\n"
+            "Battle Exp. +10%\n"
+            "for 10 minutes."),
+        .pocket = POCKET_FOOD,
+        .type = ITEM_USE_BAG_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_LegendsMeal,
+        .iconPic = gItemIcon_CookingBlackCoffee,
+        .iconPalette = gItemIconPalette_CookingBlackCoffee,
+    },
+
+    [ITEM_HOJICHA_LATTE] =
+    {
+        .name = ITEM_NAME("Hojicha Latte"),
+        .price = 75,
+        .description = COMPOUND_STRING(
+            "Roasted tea latte.\n"
+            "Walk friendship +2\n"
+            "for 10 minutes."),
+        .pocket = POCKET_FOOD,
+        .type = ITEM_USE_BAG_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_LegendsMeal,
+        .iconPic = gItemIcon_CookingHojichaLatte,
+        .iconPalette = gItemIconPalette_CookingHojichaLatte,
+    },
+
+    [ITEM_HOJICHA_TEA] =
+    {
+        .name = ITEM_NAME("Hojicha Tea"),
+        .price = 55,
+        .description = COMPOUND_STRING(
+            "Toasty hojicha.\n"
+            "Walk friendship +1\n"
+            "for 10 minutes."),
+        .pocket = POCKET_FOOD,
+        .type = ITEM_USE_BAG_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_LegendsMeal,
+        .iconPic = gItemIcon_CookingHojichaTea,
+        .iconPalette = gItemIconPalette_CookingHojichaTea,
+    },
+
+    [ITEM_ICE_CUBES] =
+    {
+        .name = ITEM_NAME("Ice Cubes"),
+        .price = 20,
+        .description = COMPOUND_STRING(
+            "Clear cubes for\n"
+            "chilling specialty\n"
+            "drinks."),
+        .pocket = POCKET_ITEMS,
+        .type = ITEM_USE_FIELD,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .iconPic = gItemIcon_CookingIceCubes,
+        .iconPalette = gItemIconPalette_CookingIceCubes,
+    },
+
+    [ITEM_COOKING_TOMATO] =
+    {
+        .name = ITEM_NAME("Tomato"),
+        .price = 35,
+        .description = COMPOUND_STRING(
+            "A ripe tomato.\n"
+            "Adds a tang to\n"
+            "savory meals."),
+        .pocket = POCKET_ITEMS,
+        .type = ITEM_USE_FIELD,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .iconPic = gItemIcon_CookingTomato,
+        .iconPalette = gItemIconPalette_CookingTomato,
+    },
+
+    [ITEM_COOKING_CHEESE] =
+    {
+        .name = ITEM_NAME("Cheese"),
+        .price = 50,
+        .description = COMPOUND_STRING(
+            "A wedge of cheese.\n"
+            "Melts nicely on\n"
+            "warm flatbread."),
+        .pocket = POCKET_ITEMS,
+        .type = ITEM_USE_FIELD,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .iconPic = gItemIcon_CookingCheese,
+        .iconPalette = gItemIconPalette_CookingCheese,
+    },
+
+    [ITEM_COOKING_POTATO] =
+    {
+        .name = ITEM_NAME("Potato"),
+        .price = 30,
+        .description = COMPOUND_STRING(
+            "A firm potato.\n"
+            "Fluffy when\n"
+            "cooked."),
+        .pocket = POCKET_ITEMS,
+        .type = ITEM_USE_FIELD,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .iconPic = gItemIcon_CookingPotato,
+        .iconPalette = gItemIconPalette_CookingPotato,
+    },
+
+    [ITEM_TOMATO_FLATBREAD] =
+    {
+        .name = ITEM_NAME("Tomato Flatbread"),
+        .price = 95,
+        .description = COMPOUND_STRING(
+            "Tomato and cheese\n"
+            "on warm flatbread.\n"
+            "Prize money +15%."),
+        .pocket = POCKET_FOOD,
+        .type = ITEM_USE_BAG_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_LegendsMeal,
+        .iconPic = gItemIcon_CookingTomatoFlatbread,
+        .iconPalette = gItemIconPalette_CookingTomatoFlatbread,
+    },
+
+    [ITEM_BUTTERED_POTATOES] =
+    {
+        .name = ITEM_NAME("Buttered Potatoes"),
+        .price = 75,
+        .description = COMPOUND_STRING(
+            "Potatoes tossed\n"
+            "in melted butter.\n"
+            "Encounters -10%."),
+        .pocket = POCKET_FOOD,
+        .type = ITEM_USE_BAG_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_LegendsMeal,
+        .iconPic = gItemIcon_CookingButteredPotatoes,
+        .iconPalette = gItemIconPalette_CookingButteredPotatoes,
+    },
+
     [ITEM_TREAT_CASE] =
     {
         .name = ITEM_NAME("Treat Case"),

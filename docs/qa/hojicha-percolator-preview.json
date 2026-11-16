@@ -1,0 +1,61 @@
+{
+  "status": "review preview",
+  "baseCommit": "40a6b42b3dd26d4ca0b1a5018a43708dc56a2c76",
+  "version": "0.0.84",
+  "romSha256": "6ef093436bbfac089c9ae31f59470730f81f5a8565c4e0bc486cfdc72f96f297",
+  "sprites": {
+    "hojicha_powder": "8901f4a74fe6d09923e886f0164dffa94533d7e3a5bf2d05f72fc48ecce30078",
+    "hojicha_leaves": "75ccadfff545e9d34ac6ade2bd51e48a5ad5015c5005ec9c7488f100d523224b",
+    "matcha_latte": "d5f829c1d60bfdf6ff5798d8299b0bfcb3d46c223239675718c42b9ade9728a6",
+    "brewed_oolong": "e5623bb91f204bfcd23305c071ac4ee705593cdb8e31c874bde4f34d6e341c6b",
+    "brewed_black_tea": "82c818682abdbe6a75da44541176a8181309d283758839ae2e1f3246111718ad",
+    "black_coffee": "3a22da495f27061c6271397189b0499802f18cd267c03b232afd399e7cc617ea",
+    "hojicha_latte": "0a6e1a7e335dfd66e5866f8389116fc0bb14d5f58e30bd1c7c62cbab34ff5ed5",
+    "hojicha_tea": "bd0a60dd14f76a59bdd39a4248e713d622cbc07f2cda4381d303487e7f2978a6"
+  },
+  "nativeQA": {
+    "emulator": "mGBA",
+    "checksPassed": [
+      "Bought Hojicha Powder and Hojicha Leaves through Oldale Pok\u00e9 Mart INGREDIENTS and checked quantity and price.",
+      "Opened the Percolator through the Key Items pocket and brewed all eight drinks, verifying exact ingredient deductions.",
+      "Verified that insufficient supplies leave the Bag unchanged and scrolling to Cancel returns to the overworld.",
+      "Drank all eight recipes through the Food pocket and checked the drink text, item deduction, and exact buff."
+    ],
+    "harnessSha256": {
+      "fixture.c": "0fb148e9c75a62333ff4479aea7241337312d239eeb97bc99145d6b59c8609cd",
+      "verify.py": "b58faad96fc39d29772f704ab7950cc57fbeab6432280a7d9b4eb262ffd7c5ce"
+    },
+    "captureSha256": {
+      "ingredients-menu": "062913acd5bc2a5c56f6e6073c2ce027484764236e7f4052a041d3ed0a38fe47",
+      "shop-1": "69ce23b89304e212b7c77adaa3ce8b7c6899c41152e530138cacfda7a1385d98",
+      "shop-2": "df8b6a50a3ee5f421f9b9ad727842038e7c220cc36269b55d69e6c0c74d7ee12",
+      "ingredient-1": "c8699c396b356edd8739443fb5188fc1b1994b75e9bc969e402199f10cde16da",
+      "ingredient-2": "8aac065da73994819228a2f2b56b30fb7202a31d9a444eb8337461eb61838075",
+      "brew-menu": "b5d217becb47d297f559a983dd2f45192af2f5298625759351bbc7f6f6115c30",
+      "brew-menu-scrolled": "a45784adc2ad78a4c4aac710b4f2619776c9306dc5f562f6816dea76c44c236c",
+      "recipe-6": "8fe4c9c174a765d993bc8e51c00a293e25044da16a079a990c339f83be28d62f",
+      "recipe-7": "db22c3e9fb13093c1cb4c8400ce002d2d7d6bdba6df6e946ee1fc0d1565c829f",
+      "missing-supplies": "80595401490d9a9baa6875f34f13268f222711b924b488eef202a5e789210699",
+      "drink-action-1": "d55414631fdeea3cbde29697e556d81b17328b9fbee854b67e80888b582ace46",
+      "drink-action-2": "02a30258b0f5e67c7ee2575713d5fac9dc3ed5b966cb7e4c102b90b9ead3c237",
+      "drink-action-3": "f1cf726ebd69a54e4cf7793a17ae4c0da8b9c9c0884d8ce048ab191d8ada3630",
+      "drink-action-4": "054e474e4ff6df44c88dcb3a5bd7f7b4876272a9d6682a00b4197a35e7fab620",
+      "drink-action-5": "47f824cf9c61ace2b94015a912b1709f3f826412bfd073116a09d4b1834ad97a",
+      "drink-action-6": "1ada9bde84d55997301673f9a4eac80a32e2cf48ef8d554747692cc584950874",
+      "drink-action-7": "1cd25150f73cd5ae0039033cc2b9249616f3c73eaa0904f6e53481211cb2ae23",
+      "drink-action-8": "488e1cf05125d983c2dc3f0a13c409d159f44c7c5ab8d9b883ec18101f5a70db",
+      "drank-1": "91749e43d94f7b908c0a1d0071edcaf322c9fbfd93c3002788b947f03262d9c2",
+      "drank-2": "7c45bba530f2ef691486c38913b0341bef1c18d6712388fe6e267240e35337f5",
+      "drank-3": "ab73be9a0d5f649a89218843e39132567667430aef818f65371f2c5597dc2caa",
+      "drank-4": "20915f24a06bf4ba4410651278e60b12e7378350ee717c59af7ef92f708c8b89",
+      "drank-5": "573544dc814c1dbca3cf6eefbd813318832268fb7705e29e26da34ca4dc5c141",
+      "drank-6": "3fe6ae63cc50336a44cae50aada7b4338e29a3d684b737dd1acdd6f7a62a577f",
+      "drank-7": "8f8db3ad4df3200ca95e7ab2c9435b938e3cf0027fe95126c9264741fd6569e0",
+      "drank-8": "0a5b00a8d479608d0f966e60b28728f38a16789e5cdff5af2ac434773258cd30"
+    }
+  },
+  "hostChecksPassed": [
+    "test/legends-bag-capacity.test.py",
+    "test/legends-item-descriptions.test.py"
+  ]
+}

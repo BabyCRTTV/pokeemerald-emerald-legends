@@ -189,13 +189,18 @@ int main(void)
  for(unsigned i=0;i<1153;i++){assert(sListBuffer1[i].name==sListBuffer2[0]);assert(sListBuffer1[i].id==(i==1152?LIST_CANCEL:(s32)i));}
  gBagMenu->hideCloseBagText=TRUE;gBagMenu->numItemStacks[0]=1152;LoadBagItemListBuffers(0);assert(sListBuffer1[1151].id==1151);
  Free(sListBuffer1);Free(sListBuffer2);
+ const u16 brewBases[]={ITEM_COFFEE_GROUNDS,ITEM_TEA_LEAVES,ITEM_MATCHA_POWDER,ITEM_OOLONG_TEA,ITEM_BLACK_TEA,ITEM_COOKING_COFFEE,ITEM_HOJICHA_POWDER,ITEM_HOJICHA_LEAVES};
+ const unsigned firstBrew=7, pastLastBrew=firstBrew+ARRAY_COUNT(brewBases);
+ assert(ARRAY_COUNT(sRecipes)==pastLastBrew+2);
  // Use the production cooking transaction and timed-slot code, not a recipe model.
  for(unsigned r=0;r<ARRAY_COUNT(sRecipes);r++){
   fresh();
   const struct MealRecipe *recipe=&sRecipes[r];
   unsigned ingredients=0;
   while(ingredients<RECIPE_INGREDIENTS&&recipe->supplies[ingredients]!=ITEM_NONE)ingredients++;
-  assert(ingredients>=3);
+  assert(ingredients>=2);
+  const bool32 isBrew=r>=firstBrew&&r<pastLastBrew;
+  if(isBrew)assert(recipe->supplies[0]==brewBases[r-firstBrew]&&recipe->supplies[1]==ITEM_COOKING_WATER);
   for(unsigned i=0;i<ingredients-1;i++)assert(BagPocket_AddItem(&gBagPockets[POCKET_ITEMS],recipe->supplies[i],1));
   struct Bag unchanged=data.inventory;
   assert(LegendsCookMeal(r)==LEGENDS_COOK_MISSING);
@@ -206,7 +211,7 @@ int main(void)
   assert(BagPocket_CountTotalItemQuantity(&gBagPockets[POCKET_FOOD],recipe->meal)==1);
   assert(LegendsEatMeal(recipe->meal)==LEGENDS_EAT_SUCCESS);
   assert(LegendsMealBonus(recipe->effect)==recipe->amount);
-  assert(LegendsMealIsDrink(recipe->meal)==(recipe->meal==ITEM_HOT_COCOA));
+  assert(LegendsMealIsDrink(recipe->meal)==(recipe->meal==ITEM_HOT_COCOA || isBrew));
   invariant();
  }
  fresh();
@@ -231,7 +236,7 @@ int main(void)
  for(unsigned f=0;f<LEGENDS_MEAL_DURATION-2;f++)LegendsMealTick();
  assert(LegendsMealBonus(MEAL_EFFECT_CATCH)==10);
  assert(LegendsEatMeal(ITEM_BUTTER_OMELET)==LEGENDS_EAT_SUCCESS);
- puts("PASS: seven recipes and buffs, atomic full/missing-supply refusal, three buffs, independent expiration and re-eating");
+ puts("PASS: recipes and buffs, atomic full/missing-supply refusal, three buffs, independent expiration and re-eating");
  puts("PASS: each pocket1152 stacks; shared reuse/full refusal; >255 indices; cross-pocket preservation; sorting/swapping; old14-box, LPC2 and LPC3 packed migration; new save/reload; malformed-size and allocation refusal");
 }
 '''

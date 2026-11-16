@@ -1,0 +1,25 @@
+{
+  "status": "review preview",
+  "baseCommit": "0f2f1308294ce72556698ae9ecaca83b84758481",
+  "romSha256": "454930c4aa682a2bbe075a4686e73cd6793a6254f9535a197d870dbbfc3d382d",
+  "sprite": {
+    "path": "graphics/items/cooking/ice_cubes.png",
+    "beforeSha256": "d853eeaa63c2872abc55e55b20fbf7d78ea39866880935f254e2df7c0e518540",
+    "afterSha256": "cd7ab4b825de2fee92484081fcfed36da12461c8ea15a0e86691f5a8402f496d"
+  },
+  "nativeQA": {
+    "emulator": "mGBA",
+    "checksPassed": [
+      "Bought Ice Cubes at Oldale Town Pok\u00e9 Mart for 20 and verified a quantity of one in the Bag.",
+      "Checked the revised native icon in the Pok\u00e9 Mart ingredient menu and Items pocket."
+    ],
+    "captureSha256": {
+      "shop-1": "e19d75277a9cc87fd875717cf627b95d995c1a157593a19551be45cf58fcf1f2",
+      "bag-1": "31978a0c8e0e2322fd2c40af8a9cdf65daeacad814ae467cd7aa6cd479e61ef7"
+    },
+    "harnessSha256": {
+      "fixture.c": "8dc445ea3bd16135b7939ca5b0516c1fd28ff89443fa7ae39e7d7a2f7e0ece5b",
+      "verify.py": "b2ac0132f19b793cbd37e322848e01fedb119cd142b511c648b573a3fe94abc6"
+    }
+  }
+}

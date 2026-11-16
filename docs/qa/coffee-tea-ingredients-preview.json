@@ -1,0 +1,58 @@
+{
+  "status": "review preview",
+  "baseCommit": "e8ff6409e2e3ec16ab8dedcf4ee988ba3113047b",
+  "romSha256": "324adaf2349688b763bdb49f47095dcafb364b50ebf70125b132ccd87afa845a",
+  "ingredients": [
+    {
+      "name": "Matcha Powder",
+      "itemId": 900,
+      "price": 80,
+      "spriteSha256": "5859796eb80fd8d3d8028f0d030db2d27789d8d540d2ed9716cb5a2958239a85"
+    },
+    {
+      "name": "Oolong Tea",
+      "itemId": 901,
+      "price": 60,
+      "spriteSha256": "dfb490679d42f0340f6440377b9bb78bd1e6d8751178f3826fe6f13d87e62aa7"
+    },
+    {
+      "name": "Black Tea",
+      "itemId": 902,
+      "price": 45,
+      "spriteSha256": "bb84924f14d818eb6424179aaaa54c59d2cd3eea4731561f95e332d6b250d226"
+    },
+    {
+      "name": "Coffee",
+      "itemId": 903,
+      "price": 55,
+      "spriteSha256": "d627f98e791e0aaccc09ea1b1a376f37eb64d12c3de40574bcf49a35a594c9ea"
+    }
+  ],
+  "nativeQA": {
+    "emulator": "mGBA",
+    "checksPassed": [
+      "Opened INGREDIENTS by talking to the Oldale Town Pok\u00e9 Mart clerk.",
+      "Bought one of each new item and verified exact money and quantity changes.",
+      "Opened the field Bag and checked each purchased item's name, description and sprite."
+    ],
+    "harnessSha256": {
+      "fixture.c": "1b948084cad8ded1dc49d4b0fec681175cc9848e8256936a819fb2da53b1bbf9",
+      "verify.py": "ed653a84938350f43fbd5d24bed637da0997b532b4e1cc4c3ee162d85ed23657"
+    },
+    "captureSha256": {
+      "ingredients-menu.png": "062913acd5bc2a5c56f6e6073c2ce027484764236e7f4052a041d3ed0a38fe47",
+      "shop-1.png": "6f97f5ef995c1468c54b3bef52b823a3b9546726c92229e00d94bbbd2d5edc25",
+      "shop-2.png": "4c1e22aab68a580d3a775bbb40d14a3d0ff4a3051da26f274cb45e77df6651f8",
+      "shop-3.png": "1e3dffdd43f9b6041b6d0b2682c549342e315e0e7dc184b2f049c60f3810f5ee",
+      "shop-4.png": "ad911bd33a945d918d7d4036b1c0f6d69f283dd956b4d5dbd6c02c6ba2988ad7",
+      "bag-1.png": "55256fd632957d42ea5c07882959c61122a579f28b2eee2f158b0ce0986b96d7",
+      "bag-2.png": "bf679551fa1476bf0a0327c0b6dd89d1be6120510b44de27c70c9bb40622f339",
+      "bag-3.png": "12601390ece3083cc82eb2fb011d318b83536c05cb3efd692315fd6998fd6b30",
+      "bag-4.png": "6940a63b20afce0fd435a2f8e1f9a02fc09cfbb265e4f128fc58c66338ebbd6a"
+    }
+  },
+  "hostChecksPassed": [
+    "test/legends-bag-capacity.test.py",
+    "test/legends-item-descriptions.test.py"
+  ]
+}
