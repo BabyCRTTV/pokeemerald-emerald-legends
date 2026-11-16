@@ -2,7 +2,7 @@
 
 **Model: GPT-6 | Approach: preserve native residents/levels and resolve every dependent land-table consumer through the committed season.**
 
-Hoenn Routes 101–134 shipped across v0.0.63–v0.0.74. Version 0.0.86 adds seasonal grass encounters to Kanto Routes 1–4.
+Hoenn Routes 101–134 shipped across v0.0.63–v0.0.74. Version 0.0.86 adds seasonal grass encounters to Kanto Routes 1–4. Version 0.0.87 expands Kanto seasonal grass and Surf encounters across 17 additional maps.
 
 ## Grass pilot — Routes 101–104 (v0.0.63)
 
@@ -448,7 +448,7 @@ The first Kanto batch uses grass encounter tables on Routes 1–4. Every origina
 | 4 | Autumn | Mudbray | Drilbur |
 | 4 | Winter | Geodude | Onix |
 
-## Kanto grass and coastal expansion
+## Kanto grass and coastal expansion (v0.0.87)
 
 Grass on Routes 6–18 and Route 21 North gains two visitors per season, for 112 distinct additions. Every original grass resident stays available at its native slot levels and encounter rate. The residents occupy 70% of each seasonal table, with visitors at 20% and 10%. Route 21 North retains Tangela at 70%. Route 17 uses the Cycling Road’s existing encounter grass. Route 21 South has Surf encounters.
 
