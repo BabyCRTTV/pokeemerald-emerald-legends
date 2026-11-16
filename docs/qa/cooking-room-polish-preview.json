@@ -1,5 +1,5 @@
 {
-  "status": "Chair, ingredient sprites and updated cooking layout approved. Tan Satchel visual review pending.",
+  "status": "Chair, ingredient sprites and updated cooking layout approved. Symmetrical Tan Satchel visual review pending.",
   "base_commit": "04ff9fb1b4eae13bfe6b4a83d347611d6b36f07d",
   "game_version": "0.0.87",
   "emulator": "mGBA native core 0.10.5",
@@ -56,6 +56,14 @@
       "Converted 24 × 24 indexed sprite to 288 bytes of 4bpp graphics, a 32-byte RGB555 palette, and compressed graphics.",
       "Inspected a Bag mockup of the converted colors."
     ],
-    "scope": "Graphics-only change. Fresh gameplay capture pending."
+    "scope": "Graphics-only change. Fresh gameplay capture pending.",
+    "symmetry": {
+      "base_commit": "f07d4582ef51aefc49e73e6ca8b731908a989c0c",
+      "source_png_sha256": "f4d1c5a4912c3736d646a0f29697c7f02a15b89da8dbd2808674a35b4aa2bcac",
+      "checks": [
+        "Verified exact horizontal pixel symmetry and checked the centered loop, flap, and clasp in the Bag mockup.",
+        "Verified that the native palette bytes match the first tan revision. Generated 4bpp and compressed sprite data."
+      ]
+    }
   }
 }
