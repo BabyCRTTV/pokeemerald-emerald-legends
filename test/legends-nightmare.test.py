@@ -49,6 +49,11 @@ assert 'struct ItemSlot slots[LEGENDS_BAG_SLOTS];' in current_global
 old_bag=re.search(r'struct Bag\n\{.*?\n\};',old_global,re.S)[0]
 current_global=re.sub(r'struct Bag\n\{.*?\n\};',lambda _:old_bag,current_global,count=1,flags=re.S)
 current_global=current_global.replace('#include "constants/item.h"\n','')
+# Difficulty uses one byte of the existing SaveBlock2 padding. Require the
+# exact split so the comparison still detects every other native layout change.
+difficulty_padding = '    /*0x90*/ u8 legendsDifficulty;\n    /*0x91*/ u8 filler_91[0x7];\n'
+assert current_global.count(difficulty_padding) == 1
+current_global = current_global.replace(difficulty_padding, '    /*0x90*/ u8 filler_90[0x8];\n')
 assert [l for l in current_global.splitlines() if l.strip()]==[l for l in old_global.splitlines() if l.strip()]
 assert items[:items.index('    ITEM_INVITE_TICKET = 874,')]==old('include/constants/items.h').decode().split('    ITEM_INVITE_TICKET = 874,')[0]
 # Bound the only old-map terrain patch to a complete house; retain old objects,
