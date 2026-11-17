@@ -1,10 +1,10 @@
 # Development handoff
 
-## v0.0.88 cooking and Casual difficulty release candidate (16 November 2026)
+## v0.0.88 cooking and Casual difficulty published and verified (16 November 2026)
 
 **Model: GPT-6 | Reasoning: assemble the owner-approved draft with the current production tree and synchronize the release labels.**
 
-The owner approved publication of PR #108. The release candidate includes the approved cooking preview, Oats, Ginger, Peach and four recipes, chair and item-art polish, Normal and Casual difficulty, four Casual assists, and the color-coded matchup badges. The milestone entries below describe the preview verification. Candidate and production checks and public BPS verification are pending.
+PR #108 shipped the approved cooking preview, Oats, Ginger, Peach and four recipes, chair and item-art polish, Normal and Casual difficulty, four Casual assists, and the color-coded matchup badges. Release preparation updated the version and synchronized the project, in-game and site labels. The title-options fixture and native save-layout regression were updated to exercise the approved difficulty byte. Candidate and production matched tree `ade52f3b319a6705c393f64a0b468bc36b6a6615`, passed their native gates and independently reconstructed both patch targets. Production merged as `acfb2c69c117c5aa0ffaf87a420a2d0926644d04`. Pages run `43993120366` deployed v0.0.88 and checked all 21 expected public files, including both BPS patches. [Release record](qa/cooking-casual-v0.0.88.json).
 
 ## Casual move matchup badges (16 November 2026)
 

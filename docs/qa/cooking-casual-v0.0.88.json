@@ -1,0 +1,74 @@
+{
+  "version": "0.0.88",
+  "status": "published",
+  "pullRequest": 108,
+  "approvedPreview": "a246554e613bf87e3a871b30f481fd68bd10ce73",
+  "candidate": "41f1ca2ec390ca068b1f8d4991a0140732bfd5c0",
+  "production": "acfb2c69c117c5aa0ffaf87a420a2d0926644d04",
+  "matchingTree": "ade52f3b319a6705c393f64a0b468bc36b6a6615",
+  "candidateRuns": {
+    "Build Legends Wiki Android APK": 43989599320,
+    "Legends project checks": 43989599404,
+    "Check Legends Wiki": 43989599407,
+    "Build release patches": 43989599457
+  },
+  "productionRuns": {
+    "Build Legends Wiki Android APK": 43991407736,
+    "Build Legends Wiki Windows Installer": 43991407759,
+    "Legends project checks": 43991407886,
+    "Check Legends Wiki": 43991407735,
+    "Build release patches": 43991407747
+  },
+  "candidatePatchArtifact": {
+    "id": 14286764627,
+    "digest": "sha256:c0a56c12fca66e0c03fcf6cd4b1deebdfe50e6a0b7d7f56fe17e8da0bab68c9c"
+  },
+  "productionPatchArtifact": {
+    "id": 14288119060,
+    "digest": "sha256:b6fcf52de34389a5881809376f9edfbc08040788aca0e778b72f65266f3f8cd1"
+  },
+  "patchCommit": "a1cebe4f7b0ce2c2d5380970da9d3280d844e97b",
+  "hashesSHA256": {
+    "docs/downloads/Pokemon-Emerald-Legends-v0.0.88.bps": "8e009c7195b3ccc613bcfb8a55bbf181e1cb53c314f10f3f98943c32c6c26489",
+    "docs/downloads/Pokemon-Emerald-Legends-v0.0.88-debug.bps": "0a263138d7eb853cb16713ca746c342da27ce57fd4d74738ffe17c88dc0d0f6d",
+    "pokeemerald-release.gba": "d0c41de3ba41f7ded0e5fd60c8278f660d4e0a6a88217681e838dab578e7311c",
+    "pokeemerald.gba": "c09a6bf10e7b6a0e84275041930942bbd877d176f5257c66dc33ab0219943a5e"
+  },
+  "independentPatchDecoders": [
+    "Floating IPS",
+    "Browser patcher"
+  ],
+  "pagesRun": 43993120366,
+  "pagesEvidence": {
+    "id": 14287789961,
+    "digest": "sha256:700a170d53895cefefc5e3d9d8891e729209880daaa3c532b056d0202d2c52e2"
+  },
+  "pagesLiveResult": {
+    "id": 14287933831,
+    "digest": "sha256:ceeed2830364f6ed9b72539a6658a692380ee00271a1d1c32616ed4005a77234"
+  },
+  "liveChecks": [
+    "index.html",
+    "patcher.html",
+    "patcher.js",
+    "changelog.html",
+    "wiki/index.html",
+    "wiki/dex.html",
+    "wiki/dex-data.json",
+    "wiki/dex-profiles.js",
+    "wiki/dex-sprite-atlas.js",
+    "wiki/dex-sprite-atlas.webp",
+    "wiki/dex-portrait-sources.json",
+    "wiki/map-hoenn.png",
+    "wiki/map-kanto.png",
+    "wiki/walkthrough-maps.json",
+    "wiki/android-version.json",
+    "wiki/windows-version.json",
+    "features/eon-roamers.md",
+    "downloads/SHA256SUMS.txt",
+    "downloads/Pokemon-Emerald-Legends-v0.0.88-debug.bps",
+    "downloads/Pokemon-Emerald-Legends-v0.0.88.bps",
+    "release-publication.json"
+  ],
+  "scope": "Candidate and production passed the existing native mGBA gates, including unmodified Release Continue. Published verification downloaded the actual site assets and checked both BPS patches. New cookery and Casual interactions were covered by the linked approved preview receipts and the existing host regressions."
+}
