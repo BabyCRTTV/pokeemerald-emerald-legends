@@ -1,4 +1,4 @@
-"""Exercise the production Casual option and move-choice gate with controlled turns."""
+"""Exercise the production Casual option, move choices, and matchup visibility."""
 from pathlib import Path
 import subprocess
 import tempfile
@@ -15,9 +15,15 @@ def function(path, signature):
 settings = root / "src/legends_settings.c"
 config = next(line for line in settings.read_text().splitlines()
               if line.startswith("#define LEGENDS_CASUAL_DIFFICULTY_VALUE"))
+battle_config = (root / "include/config/battle.h").read_text().splitlines()
+effectiveness_config = [line for line in battle_config
+                        if line.startswith(("#define SHOW_EFFECTIVENESS_", "#define B_SHOW_EFFECTIVENESS "))]
+controller = "src/battle_controller_player.c"
 sources = [
     function("src/legends_settings.c", "bool32 LegendsIsCasualDifficulty(void)"),
     function("src/legends_settings.c", "void LegendsSetCasualDifficulty(bool32 enabled)"),
+    function(controller, "static bool32 CasualMoveHintsEnabled(void)"),
+    function(controller, "static bool32 ShouldShowTypeEffectiveness(u32 targetId)"),
     function("src/battle_ai_main.c", "static u8 ChooseCasualAlternative(enum BattlerId battler, struct ChosenAction chosen)"),
 ]
 stubs = r"""
@@ -29,19 +35,29 @@ typedef uint8_t u8;
 typedef uint32_t u32;
 typedef int32_t s32;
 typedef int bool32;
+#define FALSE false
+#define TRUE true
 enum BattlerId { PLAYER, TRAINER, PARTNER, ALLIED_TRAINER, MAX_BATTLERS_COUNT };
 enum Move { MOVE_NONE, CORRECT_ATTACK, RESISTED_ATTACK, STATUS_MOVE, BAD_TARGET };
 enum {
     BATTLE_TYPE_TRAINER = 1, BATTLE_TYPE_LINK = 2, BATTLE_TYPE_RECORDED = 4, BATTLE_TYPE_PALACE = 8,
     MOVE_LIMITATIONS_ALL = 0xFFFF, RNG_LEGENDS_CASUAL_MISTAKE, RNG_LEGENDS_CASUAL_MOVE,
-    MAX_MON_MOVES = 4,
+    MAX_MON_MOVES = 4, FLAG_GET_SEEN, FLAG_GET_CAUGHT,
 };
 struct ChosenAction { u8 moveIndex; enum BattlerId target; };
 static struct { u8 legendsDifficulty; } save, *gSaveBlock2Ptr = &save;
-static struct { enum Move moves[4]; } gBattleMons[4];
+static struct { enum Move moves[4]; u32 species; } gBattleMons[4];
 static struct { unsigned aiCalcInProgress, aiPredictionInProgress; } logic, *gAiLogicData = &logic;
 static struct { s32 finalScore[4][4][4]; } battle, *gAiBattleData = &battle;
 static u32 gBattleTypeFlags, chanceRoll, choiceRoll, chanceCalls, limitedMoves, deadBattlers;
+static bool32 seen, ghostWithoutScope;
+static bool32 IsGhostBattleWithoutScope(void) { return ghostWithoutScope; }
+static u32 SpeciesToNationalPokedexNum(u32 species) { return species; }
+static bool32 GetSetPokedexFlag(u32 dexNumber, u8 flag)
+{
+    assert(dexNumber == gBattleMons[TRAINER].species);
+    return flag == FLAG_GET_SEEN && seen;
+}
 static bool32 IsOnPlayerSide(enum BattlerId battler) { return battler % 2 == 0; }
 static bool32 IsBattlerAlive(enum BattlerId battler) { return !(deadBattlers & (1u << battler)); }
 static u32 CheckMoveLimitations(enum BattlerId battler, u32 prior, u32 scope)
@@ -136,12 +152,31 @@ int main(void)
     assert(ChooseCasualAlternative(TRAINER, best) == 0 && chanceCalls == 0);
     LegendsSetCasualDifficulty(false);
     assert(save.legendsDifficulty == 0 && !LegendsIsCasualDifficulty());
+    gBattleTypeFlags = 0;
+    gBattleMons[TRAINER].species = 161; // Sentret
+    assert(!ShouldShowTypeEffectiveness(TRAINER));
+    seen = true;
+    assert(ShouldShowTypeEffectiveness(TRAINER));
+
+    seen = false;
+    LegendsSetCasualDifficulty(true);
+    assert(CasualMoveHintsEnabled());
+    assert(ShouldShowTypeEffectiveness(TRAINER));
+    ghostWithoutScope = true;
+    assert(!ShouldShowTypeEffectiveness(TRAINER));
+    ghostWithoutScope = false;
+
+    gBattleTypeFlags = BATTLE_TYPE_LINK;
+    assert(!ShouldShowTypeEffectiveness(TRAINER));
+    gBattleTypeFlags = BATTLE_TYPE_RECORDED;
+    assert(!ShouldShowTypeEffectiveness(TRAINER));
+    puts("First-encounter matchup visibility, Normal seen checks, and battle exceptions passed.");
     puts("Difficulty default, all 100 AI rolls, both alternatives, legality and exempt decisions passed.");
 }
 """
 with tempfile.TemporaryDirectory() as tmp:
     folder = Path(tmp)
-    (folder / "difficulty.c").write_text("\n".join([stubs, config, *sources, checks]))
+    (folder / "difficulty.c").write_text("\n".join([stubs, config, *effectiveness_config, *sources, checks]))
     subprocess.run(["cc", "-std=c99", "-Wall", "-Wextra", "-Werror", str(folder / "difficulty.c"),
                     "-o", str(folder / "check")], check=True)
     subprocess.run([str(folder / "check")], check=True)

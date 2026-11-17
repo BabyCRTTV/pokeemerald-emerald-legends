@@ -1,5 +1,11 @@
 # Development handoff
 
+## Casual matchup badges on first encounters (16 November 2026)
+
+**Model: GPT-6 | Reasoning: allow the Casual badge to use the battle's target typing before the Pokédex records a sighting.**
+
+In Casual, the matchup badge appears on a species' first encounter, including before Birch gives out the Pokédex. The battle menu retains its rules for concealed opponents, and Normal uses the existing sighting requirement. Host checks passed for an unseen Sentret in Casual, seen and unseen targets in Normal, and link, recorded, and unidentified ghost battles. The new regression failed on the published controller and passed with the fix. Draft pending review.
+
 ## v0.0.88 cooking and Casual difficulty published and verified (16 November 2026)
 
 **Model: GPT-6 | Reasoning: assemble the owner-approved draft with the current production tree and synchronize the release labels.**
