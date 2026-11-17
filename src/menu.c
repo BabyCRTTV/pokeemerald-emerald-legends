@@ -273,13 +273,18 @@ void RedrawDialogueFrame(void)
         CallWindowFunction(0, WindowFunc_RedrawDialogueFrame);
 }
 
-void DrawStdWindowFrame(u8 windowId, bool8 copyToVram)
+void PutStdWindowFrameTilemap(u8 windowId)
 {
     sTileNum = STD_WINDOW_BASE_TILE_NUM;
     sPaletteNum = STD_WINDOW_PALETTE_NUM;
     CallWindowFunction(windowId, WindowFunc_DrawStandardFrame);
-    FillWindowPixelBuffer(windowId, PIXEL_FILL(1));
     PutWindowTilemap(windowId);
+}
+
+void DrawStdWindowFrame(u8 windowId, bool8 copyToVram)
+{
+    FillWindowPixelBuffer(windowId, PIXEL_FILL(1));
+    PutStdWindowFrameTilemap(windowId);
     if (copyToVram == TRUE)
         CopyWindowToVram(windowId, COPYWIN_FULL);
 }

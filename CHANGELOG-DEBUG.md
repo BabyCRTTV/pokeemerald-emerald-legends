@@ -2,6 +2,11 @@
 
 This is the developer-facing history for the **Debug** build. Shared Legends changes are repeated here so this file stands on its own; Debug-only behavior is called out separately.
 
+## [0.0.88.2] - 2026-11-17
+
+- Fixed stray pixels that flashed at the bottom of the pause menu while it opened.
+- Both Release and Debug received the same fix.
+
 ## [0.0.88.1] - 2026-11-16
 
 - Showed Casual move matchup badges on the first encounter with a species, including before receiving the Pokédex.
