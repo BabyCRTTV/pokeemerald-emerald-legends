@@ -438,10 +438,9 @@ void LegendsShowStartMenuPanel(void)
     sHasSnapshot = FALSE;
     sAnimationFrames = 0;
     sAnimationPhase = 0;
-    PutWindowTilemap(windowId);
     DrawStdWindowFrame(windowId, FALSE);
     LegendsUpdateStartMenuPanel();
-    CopyWindowToVram(windowId, COPYWIN_FULL);
+    // The pause menu uploads the shared tilemap after its windows are ready.
 }
 
 void LegendsHideStartMenuPanel(void)

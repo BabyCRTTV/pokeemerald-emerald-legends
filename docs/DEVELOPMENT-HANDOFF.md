@@ -1,5 +1,11 @@
 # Development handoff
 
+## v0.0.88.2 pause menu opening fix approved for release (17 November 2026)
+
+**Model: GPT-6 | Reasoning: stage the pause menu bitmap and its panels before exposing their tilemap.**
+
+The owner approved the focused opening-flash fix and its measured latency. The menu and clock panel now appear fully drawn together. Local mGBA 0.10.5 comparisons against the verified published v0.0.88.1 ROMs found zero partial menu frames in Release and Debug on opening and reopening the seven- and eight-entry menus and with the tracked quest card. The first complete frame was 8, or 11 with a tracked quest. Both previews passed Journal page switching and Save cancel. Publication uses v0.0.88.2 in both variants.
+
 ## v0.0.88.1 Casual first-encounter matchup badges published and verified (16 November 2026)
 
 **Model: GPT-6 | Reasoning: verify the first-encounter badge in both variants and bind published patches to the approved release tree.**

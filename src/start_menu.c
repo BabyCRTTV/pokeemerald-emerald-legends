@@ -593,26 +593,25 @@ static bool32 InitStartMenuStep(void)
         if (sStartMenuCursorPos >= sNumStartMenuActions)
             sStartMenuCursorPos = 0;
         sStartMenuTop = sStartMenuCursorPos < START_MENU_VISIBLE_ROWS ? 0 : sStartMenuCursorPos - START_MENU_VISIBLE_ROWS + 1;
-        DrawStdWindowFrame(AddStartMenuWindow(min(sNumStartMenuActions, START_MENU_VISIBLE_ROWS)), FALSE);
+        FillWindowPixelBuffer(AddStartMenuWindow(min(sNumStartMenuActions, START_MENU_VISIBLE_ROWS)), PIXEL_FILL(1));
         sInitStartMenuData[1] = sStartMenuTop;
         sInitStartMenuData[0]++;
         break;
     case 3:
+        if (PrintStartMenuActions(&sInitStartMenuData[1], 2))
+            sInitStartMenuData[0]++;
+        break;
+    case 4:
+        DrawStartMenuScrollHints();
+        // The cursor draw queues the finished menu tiles before BG0 is uploaded.
+        InitMenuNormal(GetStartMenuWindowId(), FONT_NORMAL, 0, 9, 16, min(START_MENU_VISIBLE_ROWS, sNumStartMenuActions), sStartMenuCursorPos - sStartMenuTop);
+        PutStdWindowFrameTilemap(GetStartMenuWindowId());
         LegendsShowStartMenuPanel();
-        ShowTrackedQuestReminder();
         if (GetSafariZoneFlag())
             ShowSafariBallsWindow();
         if (CurrentBattlePyramidLocation() != PYRAMID_LOCATION_NONE)
             ShowPyramidFloorWindow();
-        sInitStartMenuData[0]++;
-        break;
-    case 4:
-        if (PrintStartMenuActions(&sInitStartMenuData[1], 2))
-            sInitStartMenuData[0]++;
-        break;
-    case 5:
-        DrawStartMenuScrollHints();
-        InitMenuNormal(GetStartMenuWindowId(), FONT_NORMAL, 0, 9, 16, min(START_MENU_VISIBLE_ROWS, sNumStartMenuActions), sStartMenuCursorPos - sStartMenuTop);
+        ShowTrackedQuestReminder();
         CopyWindowToVram(GetStartMenuWindowId(), COPYWIN_MAP);
         return TRUE;
     }

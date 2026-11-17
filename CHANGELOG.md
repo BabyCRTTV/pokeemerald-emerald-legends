@@ -4,6 +4,11 @@ All notable Pokémon Emerald: Legends project changes are documented here.
 
 For build-specific player views, see [CHANGELOG-RELEASE.md](CHANGELOG-RELEASE.md) and [CHANGELOG-DEBUG.md](CHANGELOG-DEBUG.md). The canonical history below records the project as a whole.
 
+## [0.0.88.2] - 2026-11-17
+
+- Fixed stray pixels that flashed at the bottom of the pause menu while it opened.
+- Both Release and Debug received the same fix.
+
 ## [0.0.88.1] - 2026-11-16
 
 - Showed Casual move matchup badges on the first encounter with a species, including before receiving the Pokédex.
