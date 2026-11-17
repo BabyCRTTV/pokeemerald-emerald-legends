@@ -12,6 +12,8 @@ bool32 LegendsIsExpShareEnabled(void);
 void LegendsSetExpShareEnabled(bool32 enabled);
 bool32 LegendsAreFollowersEnabled(void);
 void LegendsSetFollowersEnabled(bool32 enabled);
+bool32 LegendsIsCasualDifficulty(void);
+void LegendsSetCasualDifficulty(bool32 enabled);
 
 // A saved wild encounter base rate. New and existing saves default to 1/8192.
 enum

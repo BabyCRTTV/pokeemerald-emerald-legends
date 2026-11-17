@@ -1,5 +1,6 @@
 #include "global.h"
 #include "legends_journal.h"
+#include "legends_settings.h"
 #include "item.h"
 #include "main.h"
 #include "menu.h"
@@ -49,6 +50,7 @@ static const u8 sClaimInk[] = {7, 8, 3};
 
 EWRAM_DATA static bool8 sAchievements = FALSE;
 EWRAM_DATA static bool8 sDetail = FALSE;
+EWRAM_DATA static bool8 sHint = FALSE;
 EWRAM_DATA static u8 sFilter = 0, sMessage = 0;
 EWRAM_DATA static u16 sSelected = 0, sTop = 0, sClaimFrames = 0;
 static void Print(const u8 *text, u8 x, u8 y)
@@ -151,16 +153,26 @@ static void Draw(void)
         FillWindowPixelRect(0, PIXEL_FILL(1), 9, 24, 226, 111);
         if (!sAchievements)
         {
+            bool32 tracked = LegendsQuestTracked() == id;
             q = LegendsQuestGet(id); Print(q->title, 13, 24);
+            if (sHint && tracked)
+            {
+                Print(COMPOUND_STRING("NEXT STEP"), 13, 49);
+                Wrapped(LegendsQuestHint(id), 13, 66, 5);
+                Print(COMPOUND_STRING("B: Back"), 13, 147);
+                CopyWindowToVram(0, COPYWIN_FULL);
+                return;
+            }
             Print(q->side ? COMPOUND_STRING("SIDE QUEST") : COMPOUND_STRING("MAIN STORY"), 13, 36);
-            if (LegendsQuestTracked() == id) Print(COMPOUND_STRING("TRACKED"), 165, 36);
+            if (tracked) Print(COMPOUND_STRING("TRACKED"), 165, 36);
             for (i = 0; i < q->count; i++)
             {
                 Check(13, 54 + i * 20, LegendsQuestStepComplete(id, i));
                 Wrapped(q->steps[i].text, 26, 50 + i * 20, 2);
             }
             Print(LegendsQuestComplete(id) ? COMPOUND_STRING("Quest complete.  B: Back") :
-                LegendsQuestTracked() == id ? COMPOUND_STRING("A: Stop tracking   B: Back") :
+                tracked && LegendsIsCasualDifficulty() ? COMPOUND_STRING("A: Untrack   SELECT: Hint   B: Back") :
+                tracked ? COMPOUND_STRING("A: Stop tracking   B: Back") :
                 COMPOUND_STRING("A: Track quest   B: Back"), 13, 147);
         }
         else
@@ -258,6 +270,16 @@ static void Task_Read(u8 taskId)
 {
     u16 count, id;
     if (gPaletteFade.active) return;
+    if (sHint && !JOY_NEW(START_BUTTON))
+    {
+        if (JOY_NEW(B_BUTTON | SELECT_BUTTON))
+        {
+            sHint = FALSE;
+            PlaySE(SE_SELECT);
+            Draw();
+        }
+        return;
+    }
     if (sClaimFrames && --sClaimFrames == 0) Draw();
     if (JOY_NEW(B_BUTTON | START_BUTTON))
     {
@@ -269,7 +291,10 @@ static void Task_Read(u8 taskId)
     count = Count(); id = Entry(sSelected);
     if (sDetail)
     {
-        if (!sAchievements && JOY_NEW(A_BUTTON) && id != 0xFFFF && !LegendsQuestComplete(id))
+        if (!sAchievements && JOY_NEW(SELECT_BUTTON) && id != 0xFFFF
+         && LegendsIsCasualDifficulty() && LegendsQuestTracked() == id)
+            sHint = TRUE;
+        else if (!sAchievements && JOY_NEW(A_BUTTON) && id != 0xFFFF && !LegendsQuestComplete(id))
             LegendsQuestTrack(LegendsQuestTracked() == id ? 0xFFFF : id);
         if (sAchievements && JOY_NEW(A_BUTTON) && id != 0xFFFF && !LegendsAchievementClaimed(id) && LegendsAchievementEarned(id))
             {
@@ -324,7 +349,7 @@ static void OpenJournal(void)
         }
         DeactivateAllTextPrinters();
         LoadPalette(sPaperPalette, 240, sizeof(sPaperPalette));
-        sFilter = 0; sSelected = 0; sTop = 0; sDetail = FALSE; sMessage = 0; sClaimFrames = 0;
+        sFilter = 0; sSelected = 0; sTop = 0; sDetail = FALSE; sHint = FALSE; sMessage = 0; sClaimFrames = 0;
         LegendsJournalRefresh();
         // Populate the complete map before Draw queues its DMA transfer.
         PutWindowTilemap(0);

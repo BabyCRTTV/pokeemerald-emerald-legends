@@ -4,25 +4,30 @@
 #include "main.h"
 #include "item_menu.h"
 #include "legends_meals.h"
+#include "list_menu.h"
+#include "malloc.h"
 #include "overworld.h"
+#include "script.h"
+#include "script_menu.h"
 #include "string_util.h"
+#include "strings.h"
 #include "text.h"
 #include "constants/items.h"
+#include "constants/script_menu.h"
 
 #define MEAL_SAVE_SIGNATURE 0x314C414D // MAL1
-#define RECIPE_INGREDIENTS 4
 
 struct MealRecipe
 {
     enum Item meal;
-    enum Item supplies[RECIPE_INGREDIENTS];
+    enum Item supplies[LEGENDS_RECIPE_INGREDIENTS];
     enum LegendsMealEffect effect;
     u8 amount;
     const u8 *effectText;
     bool8 isDrink;
 };
 
-// Recipe indices are referenced by the cooking scripts. Each supply costs one unit.
+// Each supply costs one unit.
 static const struct MealRecipe sRecipes[] =
 {
     {ITEM_BUTTER_OMELET, {ITEM_BUTTER, ITEM_EGG, ITEM_SALT, ITEM_PEPPER},
@@ -85,6 +90,14 @@ static const struct MealRecipe sRecipes[] =
         MEAL_EFFECT_FRIENDSHIP, 1, COMPOUND_STRING("Walk friendship +1"), TRUE},
     {ITEM_VANILLA_LATTE, {ITEM_COFFEE_GROUNDS, ITEM_COOKING_WATER, ITEM_COOKING_MILK, ITEM_COOKING_VANILLA},
         MEAL_EFFECT_EXPERIENCE, 15, COMPOUND_STRING("Battle Exp. +15%"), TRUE},
+    {ITEM_PEACH_OATMEAL, {ITEM_COOKING_OATS, ITEM_COOKING_MILK, ITEM_COOKING_PEACH, ITEM_SUGAR},
+        MEAL_EFFECT_EXPERIENCE, 15, COMPOUND_STRING("Battle Exp. +15%"), FALSE},
+    {ITEM_GINGER_FRIED_RICE, {ITEM_COOKING_RICE, ITEM_EGG, ITEM_COOKING_GINGER, ITEM_SALT},
+        MEAL_EFFECT_ENCOUNTER, 15, COMPOUND_STRING("Wild encounter rate -15%"), FALSE},
+    {ITEM_ICED_PEACH_TEA, {ITEM_COOKING_PEACH, ITEM_TEA_LEAVES, ITEM_COOKING_WATER, ITEM_ICE_CUBES},
+        MEAL_EFFECT_CATCH, 5, COMPOUND_STRING("Catch odds +5%"), TRUE},
+    {ITEM_GINGER_TEA, {ITEM_COOKING_GINGER, ITEM_TEA_LEAVES, ITEM_COOKING_WATER, ITEM_SUGAR},
+        MEAL_EFFECT_FRIENDSHIP, 2, COMPOUND_STRING("Walk friendship +2"), TRUE},
 };
 
 static const struct MealRecipe *GetRecipeByItem(enum Item item)
@@ -168,15 +181,15 @@ enum LegendsCookResult LegendsCookMeal(u32 recipeIndex)
     const struct MealRecipe *recipe = &sRecipes[recipeIndex];
     struct BagPocket *supplies = &gBagPockets[POCKET_ITEMS];
     struct BagPocket *food = &gBagPockets[POCKET_FOOD];
-    u16 supplySlots[RECIPE_INGREDIENTS];
-    u16 supplyQuantities[RECIPE_INGREDIENTS];
+    u16 supplySlots[LEGENDS_RECIPE_INGREDIENTS];
+    u16 supplyQuantities[LEGENDS_RECIPE_INGREDIENTS];
     bool32 freesStack = FALSE;
     u16 targetSlot = food->capacity;
     u16 targetQuantity = 0;
     u32 ingredientCount;
 
     // Preflight every ingredient and the output slot before mutating anything.
-    for (ingredientCount = 0; ingredientCount < RECIPE_INGREDIENTS; ingredientCount++)
+    for (ingredientCount = 0; ingredientCount < LEGENDS_RECIPE_INGREDIENTS; ingredientCount++)
     {
         enum Item ingredient = recipe->supplies[ingredientCount];
         if (ingredient == ITEM_NONE)
@@ -254,6 +267,87 @@ void Script_LegendsCookMeal(void)
         const struct MealRecipe *recipe = &sRecipes[gSpecialVar_0x8004];
         gSpecialVar_0x8006 = recipe->isDrink;
         CopyItemName(recipe->meal, gStringVar1);
+    }
+}
+
+const enum Item *LegendsMealRecipePreview(u32 recipeIndex, enum Item *meal)
+{
+    if (recipeIndex >= ARRAY_COUNT(sRecipes))
+        return NULL;
+
+    *meal = sRecipes[recipeIndex].meal;
+    return sRecipes[recipeIndex].supplies;
+}
+
+// The stations share the recipes and their requirements, but have different menus.
+static const enum Item sKitchenRecipes[] = {
+    ITEM_BUTTER_OMELET, ITEM_PANCAKES, ITEM_FLATBREAD, ITEM_EGG_DROP_SOUP,
+    ITEM_CRACKERS, ITEM_HOT_COCOA, ITEM_EGG_CUSTARD, ITEM_TOMATO_FLATBREAD,
+    ITEM_BUTTERED_POTATOES, ITEM_CARROT_SOUP, ITEM_ONION_TART, ITEM_APPLE_PANCAKES,
+    ITEM_POTATO_HASH, ITEM_EGGNOG, ITEM_SPICED_CIDER, ITEM_ICED_CINNAMON_COFFEE,
+    ITEM_GARLIC_RICE_PILAF, ITEM_TOMATO_RICE, ITEM_LEMON_SHORTBREAD,
+    ITEM_VANILLA_PUDDING, ITEM_ICED_LEMONADE, ITEM_VANILLA_LATTE,
+    ITEM_PEACH_OATMEAL, ITEM_GINGER_FRIED_RICE, ITEM_ICED_PEACH_TEA, ITEM_GINGER_TEA,
+};
+static const enum Item sCanteenRecipes[] = {
+    ITEM_HOT_COCOA, ITEM_EGGNOG, ITEM_SPICED_CIDER, ITEM_ICED_LEMONADE,
+    ITEM_ICED_PEACH_TEA,
+};
+static const enum Item sMessKitRecipes[] = {
+    ITEM_BUTTER_OMELET, ITEM_PANCAKES, ITEM_FLATBREAD, ITEM_EGG_DROP_SOUP,
+    ITEM_CRACKERS, ITEM_EGG_CUSTARD, ITEM_TOMATO_FLATBREAD, ITEM_BUTTERED_POTATOES,
+    ITEM_CARROT_SOUP, ITEM_ONION_TART, ITEM_APPLE_PANCAKES, ITEM_POTATO_HASH,
+    ITEM_GARLIC_RICE_PILAF, ITEM_TOMATO_RICE, ITEM_LEMON_SHORTBREAD, ITEM_VANILLA_PUDDING,
+    ITEM_PEACH_OATMEAL, ITEM_GINGER_FRIED_RICE,
+};
+static const enum Item sPercolatorRecipes[] = {
+    ITEM_MILK_COFFEE, ITEM_SWEET_TEA, ITEM_MATCHA_LATTE, ITEM_BREWED_OOLONG,
+    ITEM_BREWED_BLACK_TEA, ITEM_BLACK_COFFEE, ITEM_HOJICHA_LATTE, ITEM_HOJICHA_TEA,
+    ITEM_ICED_CINNAMON_COFFEE, ITEM_VANILLA_LATTE,
+    ITEM_ICED_PEACH_TEA, ITEM_GINGER_TEA,
+};
+static const struct {
+    const enum Item *items;
+    u8 count;
+} sRecipeMenus[] = {
+    {sKitchenRecipes, ARRAY_COUNT(sKitchenRecipes)},
+    {sCanteenRecipes, ARRAY_COUNT(sCanteenRecipes)},
+    {sMessKitRecipes, ARRAY_COUNT(sMessKitRecipes)},
+    {sPercolatorRecipes, ARRAY_COUNT(sPercolatorRecipes)},
+};
+
+void Script_LegendsChooseRecipe(struct ScriptContext *ctx)
+{
+    u32 station = gSpecialVar_0x8005;
+    u32 initialRow = 0;
+    u32 count;
+    struct ListMenuItem *items;
+
+    Script_RequestEffects(SCREFF_V1 | SCREFF_HARDWARE);
+    gSpecialVar_Result = MULTI_B_PRESSED;
+    if (station >= ARRAY_COUNT(sRecipeMenus))
+        return;
+
+    count = sRecipeMenus[station].count;
+    items = Alloc(sizeof(*items) * (count + 1));
+    for (u32 i = 0; i < count; i++)
+    {
+        const struct MealRecipe *recipe = GetRecipeByItem(sRecipeMenus[station].items[i]);
+        u8 *name = Alloc(ITEM_NAME_LENGTH + 1);
+        CopyItemName(recipe->meal, name);
+        items[i] = (struct ListMenuItem){name, recipe - sRecipes};
+        if (items[i].id == gSpecialVar_0x8004)
+            initialRow = i;
+    }
+
+    u8 *cancel = Alloc(sizeof("CANCEL"));
+    StringCopy(cancel, gText_Cancel2);
+    items[count] = (struct ListMenuItem){cancel, MULTI_B_PRESSED};
+    if (ScriptMenu_MultichoiceDynamic(0, 0, count + 1, items, FALSE, LEGENDS_COOKING_VISIBLE_ROWS,
+                                     initialRow, DYN_MULTICHOICE_CB_COOKING))
+    {
+        ScriptContext_Stop();
+        ctx->waitAfterCallNative = TRUE;
     }
 }
 

@@ -51,6 +51,8 @@ struct {bool8 active;} gPaletteFade;
 struct Task {void (*func)(u8);} gTasks[1];
 static void (*currentCallback)(void);
 static int freed,failedInit,tilemapReady;
+static bool32 casual;
+bool32 LegendsIsCasualDifficulty(void){return casual;}
 static u8 paper[160][240];
 struct Op {u8 font,x,y;char text[256];u8 colors[3];};
 static struct Op ops[64];static int opCount;
@@ -134,7 +136,13 @@ int main(void){
  assert(Count()>6);u16 count=Count();
  // Real detail-page A toggles tracking without changing selection/filter or rewards.
  memset(flags,0,sizeof(flags));LegendsJournalInit(TRUE);Draw();
- key(A_BUTTON);assert(sDetail);key(A_BUTTON);assert(LegendsQuestTracked()==0);
+ key(A_BUTTON);assert(sDetail);
+ casual=TRUE;key(SELECT_BUTTON);assert(!sHint); // Untracked.
+ key(A_BUTTON);assert(LegendsQuestTracked()==0);
+ casual=FALSE;key(SELECT_BUTTON);assert(!sHint); // Normal.
+ casual=TRUE;key(SELECT_BUTTON | A_BUTTON);assert(sHint&&LegendsQuestTracked()==0);
+ key(B_BUTTON);assert(!sHint&&sDetail&&LegendsQuestTracked()==0);
+ casual=FALSE;
  key(B_BUTTON);selection();key(A_BUTTON);key(A_BUTTON);assert(LegendsQuestTracked()==0xFFFF);
  key(B_BUTTON);
  for(unsigned q=0;q<LegendsQuestCount();q++){

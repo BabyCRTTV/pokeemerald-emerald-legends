@@ -18,6 +18,7 @@
 #include "debug.h"
 #include "event_data.h"
 #include "item.h"
+#include "legends_settings.h"
 #include "math_util.h"
 #include "pokemon.h"
 #include "random.h"
@@ -54,6 +55,7 @@ static inline void BattleAI_DoAIProcessing_PredictedSwitchin(struct AiThinkingSt
 static bool32 IsPinchBerryItemEffect(enum HoldEffect holdEffect);
 static bool32 DoesAbilityBenefitFromSunOrRain(enum BattlerId battler, enum Ability ability, u32 weather);
 static void AI_CompareDamagingMoves(enum BattlerId battlerAtk, enum BattlerId battlerDef);
+static inline bool32 ShouldConsiderMoveForBattler(enum BattlerId battlerAi, enum BattlerId battlerDef, enum Move move);
 static u32 GetWindAbilityScore(enum BattlerId battlerAtk, enum BattlerId battlerDef, struct AiLogicData *aiData);
 
 // ewram
@@ -576,6 +578,40 @@ void AI_TrySwitchOrUseItem(enum BattlerId battler)
     BtlController_EmitTwoReturnValues(battler, B_COMM_TO_ENGINE, B_ACTION_USE_MOVE, GetOppositeBattler(battler) << 8);
 }
 
+static u8 ChooseCasualAlternative(enum BattlerId battler, struct ChosenAction chosen)
+{
+    if (!LegendsIsCasualDifficulty()
+     || !(gBattleTypeFlags & BATTLE_TYPE_TRAINER)
+     || (gBattleTypeFlags & (BATTLE_TYPE_LINK | BATTLE_TYPE_RECORDED | BATTLE_TYPE_PALACE))
+     || !gAiLogicData->aiCalcInProgress
+     || gAiLogicData->aiPredictionInProgress
+     || IsOnPlayerSide(battler)
+     || chosen.moveIndex >= MAX_MON_MOVES
+     || chosen.target >= MAX_BATTLERS_COUNT
+     || !IsOnPlayerSide(chosen.target)
+     || !IsBattlerAlive(chosen.target))
+        return chosen.moveIndex;
+
+    const s32 *scores = gAiBattleData->finalScore[battler][chosen.target];
+    u32 limitations = CheckMoveLimitations(battler, 0, MOVE_LIMITATIONS_ALL);
+    u8 alternatives[MAX_MON_MOVES];
+    u32 count = 0;
+    for (u32 slot = 0; slot < MAX_MON_MOVES; slot++)
+    {
+        enum Move move = gBattleMons[battler].moves[slot];
+        // Keep the intended foe. Prefer a usable, lower-scored move over an
+        // equal choice, an invalid action, or a new target on the ally's side.
+        if (scores[slot] > 0 && scores[slot] < scores[chosen.moveIndex]
+         && !IsMoveUnusable(slot, move, limitations)
+         && ShouldConsiderMoveForBattler(battler, chosen.target, move)
+         && CanTargetBattler(battler, chosen.target, move))
+            alternatives[count++] = slot;
+    }
+    if (count == 0 || !RandomPercentage(RNG_LEGENDS_CASUAL_MISTAKE, 15))
+        return chosen.moveIndex;
+    return alternatives[RandomUniform(RNG_LEGENDS_CASUAL_MOVE, 0, count - 1)];
+}
+
 u32 BattleAI_ChooseMoveIndex(enum BattlerId battler)
 {
     SetAIUsingGimmick(battler, USE_GIMMICK);
@@ -585,6 +621,7 @@ u32 BattleAI_ChooseMoveIndex(enum BattlerId battler)
         DecideTerastal(battler);
 
     struct ChosenAction chosen = ChooseMoveOrAction(battler);
+    chosen.moveIndex = ChooseCasualAlternative(battler, chosen);
     gAiBattleData->chosenTarget[battler] = chosen.target;
 
     if (gBattleStruct->gimmick.usableGimmick[battler] != GIMMICK_NONE)

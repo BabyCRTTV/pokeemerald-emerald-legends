@@ -4,6 +4,16 @@ All notable Pokémon Emerald: Legends project changes are documented here.
 
 For build-specific player views, see [CHANGELOG-RELEASE.md](CHANGELOG-RELEASE.md) and [CHANGELOG-DEBUG.md](CHANGELOG-DEBUG.md). The canonical history below records the project as a whole.
 
+## [0.0.88] - 2026-11-16
+
+- Added Normal and Casual difficulty in Adventure Options, available at the title screen and during play. Normal kept the existing battle and reward rules.
+- Casual gave opposing trainers a 15% chance to pick a lower-scored legal move when available, awarded 5% more battle EXP and paid 10% more trainer prize money.
+- Added color-coded move matchup badges, half the usual blackout money loss, tracked-quest hints and immediate Gym Leader retries that restored the pre-battle party and Bag in Casual.
+- Redesigned recipe browsing at kitchens and with the Mess Kit, Steel Canteen and Percolator. Previews showed the item, required quantities, missing ingredients and timed buff.
+- Added Oats, Ginger and Peach to the Poké Mart ingredient stock, and added Peach Oatmeal, Ginger Fried Rice, Iced Peach Tea and Ginger Tea.
+- Fixed chair recoloring in both bedrooms, cleaned up the Butter and Egg sprites and gave the Treat Case its symmetrical tan satchel icon.
+- Both Release and Debug received the same gameplay and content changes.
+
 ## [0.0.87] - 2026-11-16
 
 - Added 144 seasonal wild Pokémon across 17 Kanto maps.

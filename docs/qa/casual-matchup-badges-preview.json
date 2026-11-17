@@ -1,0 +1,45 @@
+{
+  "status": "The owner approved the badge design on 16 November 2026. Release checks are pending.",
+  "base_commit": "a75e950754d95da278d93882540ce5769f28d98f",
+  "source_tree_excluding_receipt_and_handoff": "d9e006bbf3e9e44c3c4921a9df4645a633e3a7b2",
+  "version": "0.0.87",
+  "build": "MODERN=1 DEBUG=1",
+  "emulator": "mGBA 0.10.5",
+  "rom_sha256": "277ad7cc283a1eda3bce9ac1d924a08966e0eba3e728a555eb427b5ab1bcf998",
+  "elf_sha256": "4fdf2a034780da8a57b43079bdd02149e108bd910e9504d271ad4e636d0a05a0",
+  "harness_sha256": {
+    "verify.py": "7000d133bf9c40abf8915d55b15b5aecf85856c36330885045025b1517866ad7",
+    "fixture.c": "57e3e8c10dd3020115953fe0aba3de1ad99485f8bc510bf24bdd4e04ffc01d74",
+    "check_pixels.py": "9a817dd55374e13fec5c194f85482276ab6fd77f03f8d2b0799c03a0ef2183ec"
+  },
+  "results": {
+    "native": "Checked badge changes using native input in Roxanne singles and Tate & Liza doubles, including individual targets, a spread move, and returning from Fight and Move Info.",
+    "pixels": "Verified all six palettes, symmetric one-pixel clipped corners, label containment, redraw on cancel, and PP color isolation. The right panel in Normal matched the preceding draft pixel for pixel.",
+    "host": [
+      "legends-difficulty",
+      "legends-options-navigation",
+      "git diff --check"
+    ]
+  },
+  "scope": "Gameplay fixtures used controlled parties. Release build and BPS verification were outside the preview.",
+  "screens_sha256": {
+    "super-effective.png": "80c8dd79e43a4f58873a2e6b22739950aaf11cf1e53846e0c7c712104994b77b",
+    "effective.png": "88993e3c3842cb5fe2ccb4bb672192efe6778ae9d92a5887abed1672758a9408",
+    "resisted.png": "c5211f90d2e0c84135231b1f76cc5a86541ee94cd764e0fdcc8764cc98072274",
+    "no-effect.png": "9e4f9a902c88890cf7ac063d3882ef89328f6ae33adb3aa7d19e57970a5a77f9",
+    "status.png": "8c81de53d686ac3254eb63bc93366349ffd3f6d3d94118ca743a34a2e55ee903",
+    "pick-target.png": "b1d46b959207d88667a7b09495310bf5f5ee35558ee5008d9dfd5cd71e49d32c",
+    "claydol.png": "6140ec30635aabe64c322a6bfb21368b5f4e99e0f1b8097b1ab6dfc02f2ede7c",
+    "xatu.png": "e25cf61bd06abd35ec49a6a1ca8e7bce81d2a1e34cf0623a258924e0160c5468",
+    "target-cancel.png": "2a8b00ae5a768959247619cd65bfacc2758daa07f544236aca06725e91c5fbd4",
+    "spread.png": "f3148103fa055c0ec41d1a7f7c07f46eaaaa779a86cc2a43f8506280f9f6ed14",
+    "spread-select.png": "9c7d40e633ee341ed62e684fb71153a4440f087a1178ae58c814dbfba65c769d",
+    "spread-cancel.png": "3280f447679cb9837d3e7c2611b1730bce4c62d62e53953e8390f790a3fc42ee",
+    "normal.png": "791d54997ab7c55c2a4d3de4c7caa967a0fb35b8c3d0e85cd496162c8529c987",
+    "battle-actions.png": "d373b6d7f1b20071eef7e1744bf008907d755cc65a07d7325e0a086fa79610bd",
+    "return-to-moves.png": "5f0dda57ec5124b3091962d6271ed97b2aed825889cb3e3d17a6ccbbf8939e7f",
+    "move-details.png": "dcf6becb4e7302bd5962a298a2aa3b8f227a1780017924ddcfc74c826ddfbd90",
+    "return-from-details.png": "19bce6b7f137e22dd96c4704de3cfb426657c9232033327435446e24511348ff"
+  },
+  "preview_sha256": "d6986843e3e606dc997fe336308b2301e1c6f905407e3694f03c477fc6753e35"
+}

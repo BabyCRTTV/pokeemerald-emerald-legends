@@ -41,7 +41,7 @@ current_global=re.sub(record,'',current_global,flags=re.S)
 old_global=re.sub(record,'',old_global,flags=re.S)
 current_global=re.sub(r'#define LEGENDS_POFFIN_CAPACITY 40\n\nstruct LegendsPoffinSave\n\{.*?\n\};','',current_global,flags=re.S)
 current_global=current_global.replace('    struct LegendsPoffinSave poffins;\n','')
-current_global=re.sub(r'// Size of the published first-time item bitmap\. New IDs past it use the tail\.\n#define ITEM_FLAGS_COUNT 110\n#define LEGENDS_ITEM_FLAGS_EXTRA_COUNT 8\n#define LEGENDS_MEAL_SLOTS 3', '#define ITEM_FLAGS_COUNT ((ITEMS_COUNT / 8) + ((ITEMS_COUNT % 8) ? 1 : 0))',current_global)
+current_global=re.sub(r'// Size of the published first-time item bitmap\. New IDs past it use the tail\.\n#define ITEM_FLAGS_COUNT 110\n#define LEGENDS_ITEM_FLAGS_EXTRA_COUNT \d+\n#define LEGENDS_MEAL_SLOTS 3', '#define ITEM_FLAGS_COUNT ((ITEMS_COUNT / 8) + ((ITEMS_COUNT % 8) ? 1 : 0))',current_global)
 current_global=re.sub(r'struct LegendsMealBuff\n\{.*?\n\};\n\nstruct LegendsMealSave\n\{.*?\n\};\n\n','',current_global,flags=re.S)
 current_global=current_global.replace('    struct LegendsMealSave meals;\n','').replace('    u8 extraItemFlags[LEGENDS_ITEM_FLAGS_EXTRA_COUNT];\n','')
 assert 'u16 pocketSizes[POCKETS_COUNT];' in current_global
@@ -49,6 +49,11 @@ assert 'struct ItemSlot slots[LEGENDS_BAG_SLOTS];' in current_global
 old_bag=re.search(r'struct Bag\n\{.*?\n\};',old_global,re.S)[0]
 current_global=re.sub(r'struct Bag\n\{.*?\n\};',lambda _:old_bag,current_global,count=1,flags=re.S)
 current_global=current_global.replace('#include "constants/item.h"\n','')
+# Difficulty uses one byte of the existing SaveBlock2 padding. Require the
+# exact split so the comparison still detects every other native layout change.
+difficulty_padding = '    /*0x90*/ u8 legendsDifficulty;\n    /*0x91*/ u8 filler_91[0x7];\n'
+assert current_global.count(difficulty_padding) == 1
+current_global = current_global.replace(difficulty_padding, '    /*0x90*/ u8 filler_90[0x8];\n')
 assert [l for l in current_global.splitlines() if l.strip()]==[l for l in old_global.splitlines() if l.strip()]
 assert items[:items.index('    ITEM_INVITE_TICKET = 874,')]==old('include/constants/items.h').decode().split('    ITEM_INVITE_TICKET = 874,')[0]
 # Bound the only old-map terrain patch to a complete house; retain old objects,

@@ -3,6 +3,7 @@
 #include "main.h"
 #include "legends_starters.h"
 #include "legends_nightmare.h"
+#include "legends_settings.h"
 #include "battle.h"
 #include "battle_frontier.h"
 #include "battle_pike.h"
@@ -103,6 +104,8 @@ EWRAM_DATA u16 gPartnerTrainerId = 0;
 EWRAM_DATA static u8 *sTrainerBattleEndScript = NULL;
 EWRAM_DATA static bool8 sShouldCheckTrainerBScript = FALSE;
 EWRAM_DATA static u8 sNoOfPossibleTrainerRetScripts = 0;
+EWRAM_DATA static bool8 sGymRetryAvailable = FALSE;
+EWRAM_DATA static bool8 sGymRetryRequested = FALSE;
 
 // The first transition is used if the enemy Pokémon are lower level than our Pokémon.
 // Otherwise, the second transition is used.
@@ -1454,6 +1457,61 @@ void ClearTrainerFlag(u16 trainerId)
         FlagClear(LegendsTrainerFlag(trainerId));
 }
 
+static void PrepareGymRetry(void)
+{
+    sGymRetryRequested = FALSE;
+    sGymRetryAvailable = LegendsIsCasualDifficulty()
+        && !(gBattleTypeFlags & (BATTLE_TYPE_LINK | BATTLE_TYPE_RECORDED | BATTLE_TYPE_FRONTIER
+                               | BATTLE_TYPE_TRAINER_HILL | BATTLE_TYPE_TWO_OPPONENTS
+                               | BATTLE_TYPE_INGAME_PARTNER | BATTLE_TYPE_EREADER_TRAINER))
+        && !TRAINER_BATTLE_PARAM.earlyRival
+        && TRAINER_BATTLE_PARAM.opponentA != TRAINER_SECRET_BASE
+        && !(B_FLAG_SKY_BATTLE && FlagGet(B_FLAG_SKY_BATTLE))
+        && GetTrainerClassFromId(TRAINER_BATTLE_PARAM.opponentA) == TRAINER_CLASS_LEADER;
+
+    if (sGymRetryAvailable)
+    {
+        // Native party and Bag/mail backups survive battle's heap reset.
+        // Link, facilities and special party formats have their own backups.
+        SavePlayerParty();
+        LoadPlayerBag();
+    }
+}
+
+bool32 BattleSetup_CanRetryGymBattle(void)
+{
+    return sGymRetryAvailable && (gBattleOutcome == B_OUTCOME_LOST || gBattleOutcome == B_OUTCOME_DREW);
+}
+
+void BattleSetup_RequestGymRetry(void)
+{
+    sGymRetryRequested = BattleSetup_CanRetryGymBattle();
+}
+
+static void FieldCB_RetryGymBattle(void)
+{
+    LockPlayerFieldControls();
+    CreateNPCTrainerParty(gParties[B_TRAINER_OPPONENT_A], TRAINER_BATTLE_PARAM.opponentA);
+    CreateBattleStartTask(GetTrainerBattleTransition(), 0);
+}
+
+static bool32 TryRetryGymBattle(void)
+{
+    if (sGymRetryRequested && BattleSetup_CanRetryGymBattle())
+    {
+        sGymRetryRequested = FALSE;
+        LoadPlayerParty();
+        SavePlayerBag();
+        // Leave the original Gym script suspended until a final win or loss.
+        gFieldCallback = FieldCB_RetryGymBattle;
+        SetMainCallback2(CB2_ReturnToField);
+        return TRUE;
+    }
+    sGymRetryAvailable = FALSE;
+    sGymRetryRequested = FALSE;
+    return FALSE;
+}
+
 void BattleSetup_StartTrainerBattle(void)
 {
     if (gNoOfApproachingTrainers == 2)
@@ -1522,6 +1580,7 @@ void BattleSetup_StartTrainerBattle(void)
     sShouldCheckTrainerBScript = FALSE;
     gWhichTrainerToFaceAfterBattle = 0;
     gMain.savedCallback = CB2_EndTrainerBattle;
+    PrepareGymRetry();
 
     if (CurrentBattlePyramidLocation() != PYRAMID_LOCATION_NONE || InTrainerHillChallenge())
         DoBattlePyramidTrainerHillBattle();
@@ -1548,6 +1607,8 @@ static void CB2_EndDebugBattle(void)
 
 void BattleSetup_StartTrainerBattle_Debug(void)
 {
+    sGymRetryAvailable = FALSE;
+    sGymRetryRequested = FALSE;
     sNoOfPossibleTrainerRetScripts = gNoOfApproachingTrainers;
     gNoOfApproachingTrainers = 0;
     sShouldCheckTrainerBScript = FALSE;
@@ -1584,6 +1645,8 @@ static void HandleBattleVariantEndParty(void)
 
 static void CB2_EndTrainerBattle(void)
 {
+    if (TryRetryGymBattle())
+        return;
     HandleBattleVariantEndParty();
 
     gIsDebugBattle = FALSE;
@@ -1645,6 +1708,8 @@ static void CB2_EndTrainerBattle(void)
 
 static void CB2_EndRematchBattle(void)
 {
+    if (TryRetryGymBattle())
+        return;
     if (TRAINER_BATTLE_PARAM.opponentA == TRAINER_SECRET_BASE)
     {
         DowngradeBadPoison();
@@ -1671,6 +1736,7 @@ void BattleSetup_StartRematchBattle(void)
         gBattleTypeFlags |= BATTLE_TYPE_DOUBLE;
     
     gMain.savedCallback = CB2_EndRematchBattle;
+    PrepareGymRetry();
     DoTrainerBattle();
     ScriptContext_Stop();
 }

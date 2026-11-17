@@ -2,7 +2,12 @@
 #define GUARD_LEGENDS_MEALS_H
 
 #define LEGENDS_MEAL_FRAMES_PER_SECOND 60
-#define LEGENDS_MEAL_DURATION (10 * 60 * LEGENDS_MEAL_FRAMES_PER_SECOND)
+#define LEGENDS_MEAL_MINUTES 10
+#define LEGENDS_MEAL_DURATION (LEGENDS_MEAL_MINUTES * 60 * LEGENDS_MEAL_FRAMES_PER_SECOND)
+#define LEGENDS_RECIPE_INGREDIENTS 4
+#define LEGENDS_COOKING_VISIBLE_ROWS 8
+
+struct ScriptContext;
 
 enum LegendsMealEffect
 {
@@ -34,6 +39,8 @@ const u8 *LegendsMealEffectText(enum Item item);
 bool32 LegendsMealIsDrink(enum Item item);
 enum LegendsCookResult LegendsCookMeal(u32 recipeIndex);
 enum LegendsEatResult LegendsEatMeal(enum Item item);
+const enum Item *LegendsMealRecipePreview(u32 recipeIndex, enum Item *meal);
+void Script_LegendsChooseRecipe(struct ScriptContext *ctx);
 void Script_LegendsCookMeal(void);
 void ItemUseOutOfBattle_LegendsMeal(u8 taskId);
 

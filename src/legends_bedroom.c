@@ -106,7 +106,6 @@ void LegendsBedroomLoadPalette(bool8 skipFaded)
     RoomPalette(sDecorPalettes[0], 5, skipFaded);
     RoomPalette(sDecorPalettes[1], 11, skipFaded);
     CpuCopy16(MaleRoom() ? sMaleBedPalette : sFemaleBedPalette, colors, sizeof(colors));
-    colors[4] = colors[10]; colors[5] = colors[8]; colors[6] = colors[11];
     selected = LegendsBedroomIsHome() ? LegendsBedroomColor(BEDROOM_MATERIAL_CHAIR) : 0;
     if (selected)
     {

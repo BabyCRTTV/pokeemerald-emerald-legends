@@ -15270,13 +15270,118 @@ const struct ItemInfo gItemsInfo[] =
         .iconPalette = gItemIconPalette_CookingVanillaLatte,
     },
 
+    [ITEM_COOKING_OATS] =
+    {
+        .name = ITEM_NAME("Oats"),
+        .price = 35,
+        .description = COMPOUND_STRING(
+            "A sack of dry oats.\n"
+            "They soften into\n"
+            "a warm porridge."),
+        .pocket = POCKET_ITEMS,
+        .type = ITEM_USE_FIELD,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .iconPic = gItemIcon_CookingOats,
+        .iconPalette = gItemIconPalette_CookingOats,
+    },
+
+    [ITEM_COOKING_GINGER] =
+    {
+        .name = ITEM_NAME("Ginger"),
+        .price = 45,
+        .description = COMPOUND_STRING(
+            "A knobby root with\n"
+            "a warm, spicy bite.\n"
+            "Use it in cooking."),
+        .pocket = POCKET_ITEMS,
+        .type = ITEM_USE_FIELD,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .iconPic = gItemIcon_CookingGinger,
+        .iconPalette = gItemIconPalette_CookingGinger,
+    },
+
+    [ITEM_COOKING_PEACH] =
+    {
+        .name = ITEM_NAME("Peach"),
+        .price = 60,
+        .description = COMPOUND_STRING(
+            "A sweet, ripe peach.\n"
+            "Use it in meals\n"
+            "and iced drinks."),
+        .pocket = POCKET_ITEMS,
+        .type = ITEM_USE_FIELD,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .iconPic = gItemIcon_CookingPeach,
+        .iconPalette = gItemIconPalette_CookingPeach,
+    },
+
+    [ITEM_PEACH_OATMEAL] =
+    {
+        .name = ITEM_NAME("Peach Oatmeal"),
+        .price = 105,
+        .description = COMPOUND_STRING(
+            "Creamy oats with\n"
+            "ripe peach slices.\n"
+            "Battle Exp. +15%."),
+        .pocket = POCKET_FOOD,
+        .type = ITEM_USE_BAG_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_LegendsMeal,
+        .iconPic = gItemIcon_CookingPeachOatmeal,
+        .iconPalette = gItemIconPalette_CookingPeachOatmeal,
+    },
+
+    [ITEM_GINGER_FRIED_RICE] =
+    {
+        .name = ITEM_NAME("Ginger Fried Rice"),
+        .price = 105,
+        .description = COMPOUND_STRING(
+            "Egg fried rice\n"
+            "seasoned with ginger.\n"
+            "Encounters -15%."),
+        .pocket = POCKET_FOOD,
+        .type = ITEM_USE_BAG_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_LegendsMeal,
+        .iconPic = gItemIcon_CookingGingerFriedRice,
+        .iconPalette = gItemIconPalette_CookingGingerFriedRice,
+    },
+
+    [ITEM_ICED_PEACH_TEA] =
+    {
+        .name = ITEM_NAME("Iced Peach Tea"),
+        .price = 100,
+        .description = COMPOUND_STRING(
+            "Black tea with\n"
+            "peach over ice.\n"
+            "Catch odds +5%."),
+        .pocket = POCKET_FOOD,
+        .type = ITEM_USE_BAG_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_LegendsMeal,
+        .iconPic = gItemIcon_CookingIcedPeachTea,
+        .iconPalette = gItemIconPalette_CookingIcedPeachTea,
+    },
+
+    [ITEM_GINGER_TEA] =
+    {
+        .name = ITEM_NAME("Ginger Tea"),
+        .price = 90,
+        .description = COMPOUND_STRING(
+            "Sweet tea brewed\n"
+            "with fresh ginger.\n"
+            "Walk friendship +2."),
+        .pocket = POCKET_FOOD,
+        .type = ITEM_USE_BAG_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_LegendsMeal,
+        .iconPic = gItemIcon_CookingGingerTea,
+        .iconPalette = gItemIconPalette_CookingGingerTea,
+    },
+
     [ITEM_TREAT_CASE] =
     {
         .name = ITEM_NAME("Treat Case"),
         .description = COMPOUND_STRING(
-            "A pastry case for\n"
-            "40 POFFINS. Open it\n"
-            "to feed your POKéMON."),
+            "Holds 40 POFFINS.\n"
+            "Use it to feed\n"
+            "your POKéMON."),
         .importance = 1,
         .pocket = POCKET_KEY_ITEMS,
         .type = ITEM_USE_BAG_MENU,

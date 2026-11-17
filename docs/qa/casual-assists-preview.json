@@ -1,0 +1,49 @@
+{
+  "status": "Draft preview. Publication and candidate release checks pending.",
+  "base_commit": "325590b82db59c36e7559240761ebbd9aa6a0c91",
+  "source_tree_excluding_receipt_and_handoff": "b80db0988c080523a7324add80090a98642c110e",
+  "version": "0.0.87",
+  "build": "MODERN=1 DEBUG=1",
+  "emulator": "mGBA 0.10.5",
+  "rom_sha256": "eea79ebb5fbf778fcf53845ee46eb23acbe8bd9038142bed1a298f809abffc41",
+  "elf_sha256": "83ad1a05738d024d45fbaf6bbc6224d0a6fff04397cbd3dfb5b19a6554e26ec3",
+  "harness_sha256": {
+    "verify.py": "d0af1ccbc92362e26814212484b88f0f3a508edbf005a3541b6c8b2cc6ff6ef3",
+    "fixture.c": "057b8347a1105e95442fac0573e4d028c2eb3479fa8b45e438db344f5d75d9f9",
+    "core.so": "e4cd161b6f6b5ac7d6514f7d0e736094d78ab02b658674e2d0e16da32a254815"
+  },
+  "results": {
+    "move_menu": "Native Fight, cursor, target and cancel inputs for Roxanne and Tate & Liza. Thunderbolt displayed No effect for Claydol and Super effective for Xatu. Normal used the existing PP and type display.",
+    "blackout": "Native Route 102 Trainer Calvin loss at level 5 with zero badges. Normal lost 40, Casual lost 20. Neither mode offered a retry against Calvin.",
+    "quest_hint": "Second Start page, Quest Log, tracked Stone Badge details, SELECT and B. Host regression also checks absent hints on Normal and untracked entries.",
+    "gym_retry": "Actual Potion use followed by a loss to Roxanne. Yes restored prebattle HP, Bag count and money. No on the next loss returned to the field through the blackout path. Normal Roxanne loss applied the full penalty. A separate win after an accepted retry awarded the Stone Badge and trainer prize.",
+    "host": [
+      "legends-difficulty",
+      "legends-options-navigation",
+      "legends-options-text",
+      "legends-journal",
+      "legends-journal-ui",
+      "git diff --check"
+    ]
+  },
+  "save_layout": "Unchanged. Gym retry uses the native in-memory party and Bag backups and writes no save sectors.",
+  "scope": "Controlled map and party initialization followed by native controller input. Full Gym and rematch roster, wild blackout, link and facility battle suites, Release build, and BPS verification were outside the preview.",
+  "screens_sha256": {
+    "super-effective.png": "7f075b6e7ef13483a96cee3013c78c2bbc8104071870ee5fe0aaa4dbaaccf986",
+    "resisted.png": "3d575ae0318996bfca347cb6c19a8ea697d33524c837c9b4852a9667620cbe5c",
+    "no-effect.png": "977c0b068c12d6ee9cd40555364a08f003e9f20085a89b7cf9b76fedf1b3fd0f",
+    "normal-matchup.png": "700452e6c9fffe141ba24cc33da677cbf171b698f1ad8361c6dd9f827044ca4d",
+    "double-select-move.png": "0a677b0138622792fcd883080510d5f0b62ecc473741d28b921743915f70e4eb",
+    "double-target-1.png": "f0a0f70249e463cb21492bacb8cc661bc0f05e7909dc70d3d3a902767e3fa685",
+    "double-target-2.png": "15793103d2ad4103d43be4dd2f635c9830b373f0b1d00761c7d72f1e0c6bf2b2",
+    "double-return.png": "35b3531902969e1c0b471c73868f599b3d5b3d8de142fbe1d79c8c4f1b15e7e7",
+    "normal-blackout.png": "92483c2fd5e769a6c366b796a7dde9914c1348908b0a41c4bbcdd31ef1a10a5f",
+    "casual-blackout.png": "383a4a29de2cbbbdb48f6d5742a00daeaf2dbf67a9cff201432b085aac83e2f6",
+    "tracked-quest.png": "7f220a794574235e77da0481e8c6e34ace7e2fd610620a19e6fc0d73e413657d",
+    "quest-hint.png": "e86fafa6cb98db0fc737de65b2d6b2204935f85c5ab26ca6c373c5fb8bb62eb1",
+    "gym-retry.png": "6d68b8855829b23fc4ca578b633d3611a680baec4178a7025124f360b0120c75",
+    "retry-restored.png": "47c0363f72d185578b75e2a373e51e31f835090b07adb352dd71a8825bf64472",
+    "badge-after-retry.png": "e9f02ee5d5a350a98d5829f824c8a29fbaf70cc9669e7ab69588af69f6cb49e4"
+  },
+  "preview_sha256": "b11dc85c0ed45cce699d7cc17831308f7c2188e9e30362e261f39202b617f74b"
+}

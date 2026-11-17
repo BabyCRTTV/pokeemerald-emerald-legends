@@ -39,7 +39,7 @@ typedef void (*MainCallback)(void);
 #include "save.h"
 #define ITEM_FLAGS_COUNT 110
 #define LEGENDS_MEAL_SLOTS 3
-#define LEGENDS_ITEM_FLAGS_EXTRA_COUNT 8
+#define LEGENDS_ITEM_FLAGS_EXTRA_COUNT 9
 '''
 # Match the ARM APCS structure-size boundary (native Pokeblock stride is 8).
 pre+=g[g.index('struct Pokeblock\n{'):g.index('struct SaveBlock3\n{')].replace('struct Pokeblock\n{', 'struct __attribute__((aligned(4))) Pokeblock\n{')
@@ -69,12 +69,22 @@ int main(void)
  assert(sizeof(struct LegacySaveBlock3)==0x21C);
  assert(offsetof(struct SaveBlock3,itemFlags)==0x21C);
  assert(offsetof(struct SaveBlock3,journal)==652);
- assert(offsetof(struct SaveBlock3,achievementExtra)==688 && offsetof(struct SaveBlock3,grottos)==716 && offsetof(struct SaveBlock3,eon)==992 && offsetof(struct SaveBlock3,poffins)==1032 && sizeof(struct Pokeblock)==8 && offsetof(struct SaveBlock3,meals)==1356 && offsetof(struct SaveBlock3,extraItemFlags)==1372 && sizeof(struct SaveBlock3)==1380);
+ assert(offsetof(struct SaveBlock3,achievementExtra)==688 && offsetof(struct SaveBlock3,grottos)==716 && offsetof(struct SaveBlock3,eon)==992 && offsetof(struct SaveBlock3,poffins)==1032 && sizeof(struct Pokeblock)==8 && offsetof(struct SaveBlock3,meals)==1356 && offsetof(struct SaveBlock3,extraItemFlags)==1372 && sizeof(struct SaveBlock3)==1384);
  for(unsigned item=1;item<ITEMS_COUNT;item++){
   memset(&gSaveblock3,0,sizeof(gSaveblock3));assert(!GetSetItemObtained(item,FLAG_GET_ITEM_OBTAINED));
   assert(GetSetItemObtained(item,FLAG_SET_ITEM_OBTAINED));assert(GetSetItemObtained(item,FLAG_GET_ITEM_OBTAINED));
   for(unsigned other=1;other<ITEMS_COUNT;other++)assert(!!GetSetItemObtained(other,FLAG_GET_ITEM_OBTAINED)==(other==item));
  }
+ // Older writers zero-filled the sector buffer and copied only the first eight extra bytes.
+ const unsigned legacyEnd=1372+8;
+ const unsigned sectorId=legacyEnd/SAVE_BLOCK_3_CHUNK_SIZE;
+ struct SaveSector v087={0};
+ memset(v087.saveBlock3Chunk,0xFF,legacyEnd%SAVE_BLOCK_3_CHUNK_SIZE);
+ memset(&gSaveblock3,0xFF,sizeof(gSaveblock3));
+ CopyToSaveBlock3(sectorId,&v087);
+ assert(GetSetItemObtained(ITEM_VANILLA_LATTE,FLAG_GET_ITEM_OBTAINED));
+ assert(!GetSetItemObtained(ITEM_ICED_PEACH_TEA,FLAG_GET_ITEM_OBTAINED));
+ assert(!GetSetItemObtained(ITEM_GINGER_TEA,FLAG_GET_ITEM_OBTAINED));
  assert(!GetSetItemObtained(ITEM_NONE,FLAG_SET_ITEM_OBTAINED));assert(!GetSetItemObtained(ITEMS_COUNT,FLAG_SET_ITEM_OBTAINED));
  for(unsigned slot=0;slot<2;slot++)for(unsigned rotation=0;rotation<14;rotation++){
   gSaveCounter=slot;gLastWrittenSector=rotation;memset(&gSaveblock3,0x45,sizeof(gSaveblock3));

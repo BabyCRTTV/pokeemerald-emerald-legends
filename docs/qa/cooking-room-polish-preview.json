@@ -1,0 +1,101 @@
+{
+  "status": "Chair, recipe browser, symmetrical Tan Satchel, and all three new ingredients and four recipes approved. Held in draft for additional development.",
+  "base_commit": "04ff9fb1b4eae13bfe6b4a83d347611d6b36f07d",
+  "game_version": "0.0.87",
+  "emulator": "mGBA native core 0.10.5",
+  "debug_rom_sha256": "a80d49e45da82cafc60cf883c744b43eb77ce76d6f69570ba25935b121646e29",
+  "debug_elf_sha256": "f08d462c292e64acf2e55b2b3fa8654d1f94089c105c419a7f163feb76d6da61",
+  "passed": [
+    "Kitchen sink, Mess Kit, Steel Canteen, and Percolator entered through native controls.",
+    "Six pantry recipes crafted with exact ingredient deductions and correct meal or drink effects.",
+    "A opened the Yes/No prompt directly; No and B restored the highlighted recipe without spending ingredients.",
+    "B and the Cancel row closed the list; missing ice left remaining supplies and the Food pocket intact.",
+    "Butter and Egg rendered in the Oldale ingredient shop, and Treat Case rendered in Key Items with a three-line description.",
+    "Rose and Plum recolored the native seat and both backrest columns in both bedrooms. Pixel masks confirmed changes stayed inside the chair metatile. The chosen color survived a room reload and B canceled a new choice.",
+    "Host bedroom rules and Bag/cooking transaction and migration regressions passed."
+  ],
+  "limits": [
+    "Controlled save state and warp setup; all menu choices used native controls.",
+    "The older full bedroom fixture stopped at its flash write precheck. The focused chair fixture verified room reload with the current save variables. No serialized state changed.",
+    "Release build, production publication and independent BPS verification remain release-gated."
+  ],
+  "frame_sha256": {
+    "menu-2.png": "6da315d6599afe37e4930af7af111cb298585e7748848a8d4a4fbfc50c787a5b",
+    "percolator-milk-coffee.png": "67958e09ee142496129721d7ff05230fc6e549dcd5f28969f008e02bea705598",
+    "menu-missing-ice.png": "4df09ddace1bade40bbe83c22de46830a0fcc96ff82af328c5c66a7c1afb34b6",
+    "recipe-1.png": "8edc855efb9f9b432194ccd0e2d23f1f07c679305fb12047f6986f770e07586c",
+    "recipe-6.png": "52dd9c2fa101e4b1d6cfa0d66d9faa7ef6a6fb6e4d41c45d52df8ee464421352",
+    "shop-butter.png": "c0cdb3eea2f57a19632fa0a912c9719faa1afc9dc251f93f941f0bde30ca62b0",
+    "shop-egg.png": "6f96dc90977166af525678c40e262b0f829ac27f0157c30c2c93c22486139711",
+    "bag-treat-case.png": "bbc6b670553e86e8f50d7a9dea64f88a2d0b517599208b900ce6348ab2d1b7e5",
+    "chair/male-rose.png": "20dc11a9d472fb6258b1b4c59ec621190f39d3ab7839be93aceb79688c17b86e",
+    "chair/male-plum.png": "da2af82ee4b7d36b3fdacbca1a2095317f625b78e88fdc88aa262e431549f495",
+    "chair/female-rose.png": "450a359366c5900d55bbc97b84240dd387ae5c056d8b1d0a77ff0b5d53584865",
+    "chair/female-plum.png": "117b7f5dd66dcaeb5b9a6d7e2f902030b7e902d0c6582b42d94aaa69d04f3a57"
+  },
+  "local_evidence_path": "build/cooking-polish",
+  "cooking_spacing_revision": {
+    "base_commit": "95024446fa8cf4a4daa0a079b6a3035555331e09",
+    "debug_rom_sha256": "81f040236f17043254c22de951e96e6cafa9b5450718cbcd8a086eea14f062bd",
+    "debug_elf_sha256": "7ff9f168dad8371ec267962d5a286043b85a73b2e4c821a0995be2439bb4906f",
+    "changes": "Increased the details panel from 96 to 128 pixels and the ingredient row pitch from 10 to 14 pixels. Moved the browse dialogue out of the layout and fit eight recipe rows. The standard Yes/No prompt resumes after clearing the two browse windows.",
+    "verification": "Replayed the mGBA cooking path for all four stations, No and B, the Cancel row, six craft-and-consume transactions, and the missing-ice refusal. Checked the rendered panels for item icon, text, ingredient quantities and buff duration.",
+    "frame_sha256": {
+      "menu-2.png": "a0fc7f2fbf681bbb0ff325131836cf0c2d69fd1afa6ad33b23aa52bd5c524bf5",
+      "percolator-milk-coffee.png": "2fca6f93658532ab2fb90d2c02c515b59d3da58a921573d7392ff9915f757420",
+      "menu-missing-ice.png": "9504652c258b68da1ea06c0e780192ae3a888089c552efafd5337a90826a0fd8",
+      "recipe-6.png": "ec274e4836cdf2a2579e8512677bdc7753afa0b52a376f1fc498d6d6bc9170d6"
+    },
+    "local_evidence_path": "build/cooking-spacing"
+  },
+  "tan_satchel_revision": {
+    "base_commit": "2acc82c8ea54a19f1cfb5539ab11b3a069ac0cfc",
+    "source_png_sha256": "ecc8fad79a5ac24e0af676e00eb90bc5a3d01c83bb2bbb27fd1e920a8e9390e9",
+    "checks": [
+      "Matched the selected Berry Satchel silhouette and kept the brass clasp.",
+      "Converted 24 × 24 indexed sprite to 288 bytes of 4bpp graphics, a 32-byte RGB555 palette, and compressed graphics.",
+      "Inspected a Bag mockup of the converted colors."
+    ],
+    "scope": "Graphics-only change. Fresh gameplay capture pending.",
+    "symmetry": {
+      "base_commit": "f07d4582ef51aefc49e73e6ca8b731908a989c0c",
+      "source_png_sha256": "f4d1c5a4912c3736d646a0f29697c7f02a15b89da8dbd2808674a35b4aa2bcac",
+      "checks": [
+        "Verified exact horizontal pixel symmetry and checked the centered loop, flap, and clasp in the Bag mockup.",
+        "Verified that the native palette bytes match the first tan revision. Generated 4bpp and compressed sprite data."
+      ],
+      "owner_approved": true,
+      "approved_review_commit": "8fcce6299a503c6cc530199a6ffd87f3179eaf96",
+      "emulator_capture_sha256": "203b5d3d8d8908f4b619591a665941aae4f80e1dd4bdbce6cafddb2aa46e8966"
+    }
+  },
+  "ingredient_and_recipe_batch": {
+    "base_commit": "8776c675093defb90e84d52ad06682c093a9cca8",
+    "debug_rom_sha256": "17f1947397567259dc02c16cf589edc3feb02e09345e2c2bfe01f6ab112873e2",
+    "debug_elf_sha256": "27889a25c9ab1d1b99e7de2e744b0d18f0b701d05e68d6aea5596bcbd51d8d01",
+    "shop_prices": {
+      "Oats": 35,
+      "Ginger": 45,
+      "Peach": 60
+    },
+    "verified": [
+      "Purchased the three new ingredients from the shared Ingredients stock at Oldale. Checked the charged prices and Bag icons.",
+      "Crafted Peach Oatmeal, Ginger Fried Rice, Iced Peach Tea, and Ginger Tea through the kitchen, Mess Kit, Steel Canteen, and Percolator respectively. Each took exactly its displayed supplies.",
+      "Used all four in the Food pocket and checked the native buff and magnitude. Captured the approved symmetrical Treat Case in the Bag.",
+      "Production C Bag, item history, append-only old-sector tail, full sector round trip, and Nightmare layout regressions passed."
+    ],
+    "save_scope": "Append one item-history byte at offset 1380. Old writers zero-filled its flash byte. Original item IDs and all existing field offsets stay fixed. Host legacy-sector fixture verified. A full historical battery playthrough and release verification remain pending.",
+    "frame_sha256": {
+      "shop-1.png": "9fd8c848b758abc8ea805460116bb672e99fa66276975aff7b51a7d8de470249",
+      "shop-2.png": "4a8d60772556735c6edd7bacd5147b0e55d4f62b06a8560037d70baa09dfc7bc",
+      "shop-3.png": "f5dd11e2c14973aac1e238f817602444328f4edb1f4b4037c892054988776823",
+      "menu-1.png": "31ea0b47a566e63bbd3f8e1110b9321b3878f34adc3527bbde6d60e419e4a101",
+      "menu-2.png": "9ace293d7c12a457c1de54e980f90c82be78c25afd42adb4e343c56b4d87f6bf",
+      "menu-3.png": "6eb06751d12fcf94371b2fd4a548496732745754a7664df712397a9427f2ca07",
+      "menu-4.png": "a7e635145fa62e390dcb1ef4a1a84b066caf629fdae52402acf09d7f4da451be",
+      "approved-treat-case.png": "203b5d3d8d8908f4b619591a665941aae4f80e1dd4bdbce6cafddb2aa46e8966"
+    },
+    "owner_approved": true,
+    "approved_review_commit": "87217c637e994115db8b7496bf7a1f1692529965"
+  }
+}

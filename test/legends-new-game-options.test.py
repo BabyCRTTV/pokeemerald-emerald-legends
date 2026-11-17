@@ -12,7 +12,19 @@ values = {node.targets[0].id: ast.literal_eval(node.value)
           and isinstance(node.targets[0], ast.Name)
           and node.targets[0].id in ('COMMON', 'HARNESS')}
 common = values['COMMON'].replace('typedef uint8_t u8;', 'typedef uint8_t u8;\ntypedef uint8_t bool8;\n#define EWRAM_DATA')
-common = common.replace('#endif', '''bool32 FlagGet(u16);
+# Model the two SaveBlock2 offsets checked by the real settings module.
+common = common.replace(
+    'struct SaveBlock2 {u16 playTimeHours; u8 playTimeMinutes, playTimeSeconds, playTimeVBlanks;};',
+    '''struct SaveBlock2 {
+    u16 playTimeHours;
+    u8 playTimeMinutes, playTimeSeconds, playTimeVBlanks;
+    u8 clockPadding[0x90 - 5];
+    u8 legendsDifficulty;
+    u8 reservedOptions[0x98 - 0x91];
+    u8 localTimeOffset;
+};''')
+common = common.replace('#endif', '''#define STATIC_ASSERT(condition, name) typedef char name[(condition) ? 1 : -1]
+bool32 FlagGet(u16);
 void FlagSet(u16);
 void FlagClear(u16);
 bool32 CheckBagHasItem(u16, u16);
@@ -48,6 +60,7 @@ int main(void)
     month = 10;
     LegendsClearTitleOptions();
     LegendsSetStarterSetting(LEGENDS_STARTERS_SPECIAL);
+    LegendsSetCasualDifficulty(TRUE);
     LegendsSetExpShareEnabled(FALSE);
     LegendsSetFollowersEnabled(FALSE);
     LegendsSetShinyRateSetting(LEGENDS_SHINY_RATE_1226);
@@ -56,6 +69,7 @@ int main(void)
     LegendsStageTitleOptions();
     newSave();
     assert(LegendsGetStarterSetting() == LEGENDS_STARTERS_SPECIAL);
+    assert(LegendsIsCasualDifficulty());
     assert(!LegendsIsExpShareEnabled());
     assert(!LegendsAreFollowersEnabled());
     assert(LegendsGetWildShinyRateDenominator() == 1226);
@@ -69,6 +83,7 @@ int main(void)
     assert(VarGet(VAR_DAYS) == 0);
     // Selection is consumed once; subsequent new saves use normal defaults.
     newSave();
+    assert(!LegendsIsCasualDifficulty());
     assert(LegendsIsExpShareEnabled());
     assert(LegendsAreFollowersEnabled());
     assert(LegendsGetWildShinyRateDenominator() == 8192);
@@ -92,12 +107,14 @@ int main(void)
     assert(LegendsGetActiveSeason() == LEGENDS_AUTUMN);
     assert(LegendsGetWildShinyRateDenominator() == 5680);
     // Fresh title entry invalidates staging; do not inherit a previous save.
+    LegendsSetCasualDifficulty(TRUE);
     LegendsSetExpShareEnabled(FALSE);
     LegendsSetSeasonMode(LEGENDS_SEASONS_PLAYTIME);
     LegendsSetPlaytimeSeason(LEGENDS_SUMMER);
     LegendsStageTitleOptions();
     LegendsClearTitleOptions();
     newSave();
+    assert(!LegendsIsCasualDifficulty());
     assert(LegendsIsExpShareEnabled());
     assert(LegendsAreFollowersEnabled());
     assert(LegendsGetWildShinyRateDenominator() == 8192);

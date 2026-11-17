@@ -1,5 +1,6 @@
 #include "global.h"
 #include "legends_meals.h"
+#include "legends_settings.h"
 #include "legends_adventure.h"
 #include "battle.h"
 #include "battle_hold_effects.h"
@@ -2298,6 +2299,8 @@ static void Cmd_getexp(void)
                     ApplyExperienceMultipliers(&gBattleStruct->battlerExpReward, *expMonId, gBattlerFainted);
                     gBattleStruct->battlerExpReward += gBattleStruct->battlerExpReward
                         * LegendsMealBonus(MEAL_EFFECT_EXPERIENCE) / 100;
+                    if (LegendsIsCasualDifficulty())
+                        gBattleStruct->battlerExpReward += gBattleStruct->battlerExpReward * 5 / 100;
 
                     if (B_EXP_CAP_TYPE == EXP_CAP_HARD && gBattleStruct->battlerExpReward != 0)
                     {
@@ -4055,6 +4058,8 @@ static void Cmd_getmoneyreward(void)
         if (gBattleTypeFlags & BATTLE_TYPE_TWO_OPPONENTS)
             money += GetTrainerMoneyToGive(TRAINER_BATTLE_PARAM.opponentB);
         money += money * LegendsMealBonus(MEAL_EFFECT_PRIZE) / 100;
+        if (LegendsIsCasualDifficulty())
+            money += money * 10 / 100;
         AddMoney(&gSaveBlock1Ptr->money, money);
     }
     else
@@ -4084,10 +4089,25 @@ static void Cmd_getmoneyreward(void)
         }
         if (!IsEnoughMoney(&gSaveBlock1Ptr->money, money))
             money = GetMoney(&gSaveBlock1Ptr->money);
+        if (LegendsIsCasualDifficulty() && gBattleOutcome != B_OUTCOME_FORFEITED)
+            money /= 2;
         RemoveMoney(&gSaveBlock1Ptr->money, money);
     }
 
     PREPARE_WORD_NUMBER_BUFFER(gBattleTextBuff1, 5, money);
+    gBattlescriptCurrInstr = cmd->nextInstr;
+}
+
+void BS_JumpIfGymRetryUnavailable(void)
+{
+    NATIVE_ARGS(const u8 *jumpInstr);
+    gBattlescriptCurrInstr = BattleSetup_CanRetryGymBattle() ? cmd->nextInstr : cmd->jumpInstr;
+}
+
+void BS_RequestGymRetry(void)
+{
+    NATIVE_ARGS();
+    BattleSetup_RequestGymRetry();
     gBattlescriptCurrInstr = cmd->nextInstr;
 }
 

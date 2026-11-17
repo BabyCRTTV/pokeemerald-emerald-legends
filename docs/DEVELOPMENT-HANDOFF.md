@@ -1,5 +1,49 @@
 # Development handoff
 
+## v0.0.88 cooking and Casual difficulty release candidate (16 November 2026)
+
+**Model: GPT-6 | Reasoning: assemble the owner-approved draft with the current production tree and synchronize the release labels.**
+
+The owner approved publication of PR #108. The release candidate includes the approved cooking preview, Oats, Ginger, Peach and four recipes, chair and item-art polish, Normal and Casual difficulty, four Casual assists, and the color-coded matchup badges. The milestone entries below describe the preview verification. Candidate and production checks and public BPS verification are pending.
+
+## Casual move matchup badges (16 November 2026)
+
+**Model: GPT-6.1 Sol | Reasoning: draw a beveled badge inside the existing Fight panel and use the battle text palette's free entries.**
+
+Added green Super effective, blue Effective, amber Resisted, red No effect, purple Status move, and slate target prompts in Casual. Native mGBA verified the badge colors and text bounds, target changes and cancel in doubles, and returning from Move Info. The Normal panel matched the prior draft pixel for pixel. The owner approved the badge design after reviewing the mGBA screenshots on 16 November. The work remains in draft pending release. [Preview evidence](qa/casual-matchup-badges-preview.json).
+
+## Casual mode assists (16 November 2026)
+
+**Model: GPT-6.1 Sol | Reasoning: reuse the native type, Quest Log, and battle recovery paths so the assists follow the existing Casual option.**
+
+Casual adds plain-language matchups to the Fight panel, updating when the player changes targets in doubles. Blackouts take half the usual money. SELECT opens the next-step hint from the tracked quest's detail page. A Gym Leader loss offers an immediate retry with the original party and Bag. Declining continues through the ordinary blackout. No save layout changes.
+
+Debug mGBA verified Claydol and Xatu targeting, the Stone Badge hint, a Route 102 blackout at 40 versus 20, Roxanne retry restoration after actual Potion use, decline, a victory after retry with the Stone Badge and prize, and the Normal Gym loss flow. Difficulty, Options, and Quest Log host regressions passed. Draft only. [Preview evidence](qa/casual-assists-preview.json).
+
+## Casual and Normal difficulty (16 November 2026)
+
+**Model: GPT-6.1 Sol | Reasoning: layer a saved Casual option over native move scoring and final battle rewards.**
+
+Options → Adventure now lets the player choose Normal or Casual at the title screen and in the field. Casual gives opposing trainers a 15% chance to pick a lower-scored legal move when one is available. Predictions, allied AI, link and recorded battles, and Palace move groups keep their established rules. Casual grants 5% more battle EXP and 10% more trainer prize money after existing modifiers. Normal uses the established behavior.
+
+A formerly reserved SaveBlock2 byte stores the selection. Legacy zero and unknown values read as Normal. Native mGBA verified toggling, an actual field save and Continue, matched Route 102 wins, and 1,000 controlled trainer choices in each mode. The host test checks the chance boundary and unusable moves. Draft only. [Preview evidence](qa/difficulty-preview.json).
+
+## Oats, Ginger, and Peach cooking batch (16 November 2026)
+
+**Model: GPT-6.1 Sol | Reasoning: add three pantry ingredients and four recipes through the shared shop and recipe tables, preserving existing item IDs.**
+
+Poké Marts stock Oats (₽35), Ginger (₽45), and Peach (₽60). Kitchens offer Peach Oatmeal, Ginger Fried Rice, Iced Peach Tea, and Ginger Tea. The Mess Kit makes both meals, the Steel Canteen makes Iced Peach Tea, and the Percolator makes both teas. Each recipe uses one unit of four ingredients and grants a ten-minute buff.
+
+Native mGBA verified the three purchases, one recipe at each cooking station, all four food buffs, and the approved Treat Case in the Bag. IDs 939–945 extend the item-history tail by one byte and preserve all earlier offsets. The legacy sector's cleared tail and the item-history, save-sector, Bag, and Nightmare host checks passed. The owner approved all three ingredients and four recipes after visual review. Held in draft for additional development. [Preview evidence](qa/cooking-room-polish-preview.json).
+
+## Cooking preview and bedroom chair polish (16 November 2026)
+
+**Model: GPT-6.1 Sol | Reasoning: use the same recipe table for browsing and crafting, and isolate the original chair's full upholstery.**
+
+Kitchens and Mom's three portable tools now show the highlighted recipe's native icon, required quantities, and timed buff on the right. Missing ingredients are red. The cooking prompt goes directly to Yes/No and declining restores the highlighted recipe. Both bedroom layouts recolor the seat and entire backrest together. Smoothed Butter and Egg silhouettes, updated Treat Case art, and fitted its description in the Bag. Item IDs, recipes, buff data, and save layouts were preserved.
+
+The Debug ROM passed focused mGBA menu, transaction, buff, art and bedroom pixel checks, plus the host Bag and bedroom regressions. The owner approved the chair and Butter/Egg sprites, and requested more room in the recipe panel and three new Treat Case options. The revised recipe browser uses a taller window with 14-pixel ingredient rows, a separated buff section, and room for eight recipe rows. Replayed the native cooking checks after the resize. The owner approved the updated cooking menu, selected the Berry Satchel shape, and requested a tan palette. At the owner's request, mirrored the Tan Satchel's outline, flap, carry loop, clasp, and shading around its centerline. Every pixel matched its left-right counterpart. The 24 × 24 sprite and original tan palette passed the native graphics converters. The owner approved the symmetrical Tan Satchel after reviewing the Bag mockup and asked to continue development before publishing. Future sprite work should favor symmetry where it fits the object. The branch remains in draft. Captured the final icon in the native Bag during the Oats, Ginger, and Peach review. [Preview evidence](qa/cooking-room-polish-preview.json).
+
 ## v0.0.87 Kanto seasonal encounters published and verified (16 November 2026)
 
 **Model: GPT-6.1 Sol | Reasoning: diversify the remaining sparse Kanto routes using their existing grass and coastal encounter slots.**

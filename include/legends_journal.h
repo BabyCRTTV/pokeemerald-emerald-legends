@@ -36,6 +36,7 @@ bool32 LegendsQuestComplete(u16 id);
 bool32 LegendsQuestStepComplete(u16 id, u8 step);
 u16 LegendsQuestTracked(void); // 0xFFFF means no active reminder.
 u8 LegendsQuestNextStep(u16 id);
+const u8 *LegendsQuestHint(u16 id);
 bool32 LegendsQuestTrack(u16 id); // 0xFFFF explicitly stops tracking.
 u16 LegendsAchievementCount(void);
 const struct LegendsAchievement *LegendsAchievementGet(u16 id);
