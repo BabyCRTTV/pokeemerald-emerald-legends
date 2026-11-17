@@ -1,5 +1,11 @@
 # Development handoff
 
+## v0.0.88 cooking and Casual difficulty release candidate (16 November 2026)
+
+**Model: GPT-6 | Reasoning: assemble the owner-approved draft with the current production tree and synchronize the release labels.**
+
+The owner approved publication of PR #108. The release candidate includes the approved cooking preview, Oats, Ginger, Peach and four recipes, chair and item-art polish, Normal and Casual difficulty, four Casual assists, and the color-coded matchup badges. The milestone entries below describe the preview verification. Candidate and production checks and public BPS verification are pending.
+
 ## Casual move matchup badges (16 November 2026)
 
 **Model: GPT-6.1 Sol | Reasoning: draw a beveled badge inside the existing Fight panel and use the battle text palette's free entries.**
@@ -38,7 +44,7 @@ Kitchens and Mom's three portable tools now show the highlighted recipe's native
 
 The Debug ROM passed focused mGBA menu, transaction, buff, art and bedroom pixel checks, plus the host Bag and bedroom regressions. The owner approved the chair and Butter/Egg sprites, and requested more room in the recipe panel and three new Treat Case options. The revised recipe browser uses a taller window with 14-pixel ingredient rows, a separated buff section, and room for eight recipe rows. Replayed the native cooking checks after the resize. The owner approved the updated cooking menu, selected the Berry Satchel shape, and requested a tan palette. At the owner's request, mirrored the Tan Satchel's outline, flap, carry loop, clasp, and shading around its centerline. Every pixel matched its left-right counterpart. The 24 × 24 sprite and original tan palette passed the native graphics converters. The owner approved the symmetrical Tan Satchel after reviewing the Bag mockup and asked to continue development before publishing. Future sprite work should favor symmetry where it fits the object. The branch remains in draft. Captured the final icon in the native Bag during the Oats, Ginger, and Peach review. [Preview evidence](qa/cooking-room-polish-preview.json).
 
-## v0.0.87 Kanto seasonal encounters candidate (16 November 2026)
+## v0.0.87 Kanto seasonal encounters published and verified (16 November 2026)
 
 **Model: GPT-6.1 Sol | Reasoning: diversify the remaining sparse Kanto routes using their existing grass and coastal encounter slots.**
 
@@ -46,7 +52,7 @@ The Debug ROM passed focused mGBA menu, transaction, buff, art and bedroom pixel
 
 After the owner requested a larger batch, added 144 distinct seasonal visitors across 18 encounter methods on 17 numbered Kanto maps. Routes 6–18 and Route 21 North have two grass visitors per season at 20% and 10%. Routes 19–20 and both halves of Route 21 have two Surf visitors per season at 30% and 5%. Every original resident and the native slot levels and encounter rates are preserved. Route 17 uses the existing Cycling Road grass. Route 21 South gains coastal encounters. Existing grotto species were excluded from the selection.
 
-The review LegendsDex and Kanto walkthrough are pinned to gameplay source `a023c35039bfe2de23ed3b4388bc22a9343d4690`. The seasonal table regression validated all 224 ordinary tables and the wiki can import older snapshots without stale variants. Native terrain fixture discovery succeeded for all 468 seasonal scenarios. PR #107 passed the 468-case mGBA encounter and DexNav suite, exercising 119,808 native wild generations. The owner approved publication on 16 November. The v0.0.87 release candidate retains the reviewed encounter and save inputs. [Release record](qa/kanto-encounters-v0.0.87.json).
+The review LegendsDex and Kanto walkthrough are pinned to gameplay source `a023c35039bfe2de23ed3b4388bc22a9343d4690`. The seasonal table regression validated all 224 ordinary tables and the wiki can import older snapshots without stale variants. Native terrain fixture discovery succeeded for all 468 seasonal scenarios. PR #107 passed the 468-case mGBA encounter and DexNav suite, exercising 119,808 native wild generations. The owner approved publication on 16 November. PR #107 merged as `d652a4c05a58149072a290e456dc38f1bb5d6d4f`. Candidate and production ROM hashes matched, both independent decoders reconstructed both patches, and production Release Continue and all 468 native seasonal encounter and DexNav cases passed. Pages run `43820394715` deployed v0.0.87. The direct live check matched all 21 expected files, including both BPS patches, LegendsDex, and Kanto walkthrough data. [Release record](qa/kanto-encounters-v0.0.87.json).
 
 ## v0.0.86 Cooking and Kanto Encounters published and verified (15 November 2026)
 
