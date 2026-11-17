@@ -1,0 +1,356 @@
+{
+  "version": "0.0.88.2",
+  "status": "published",
+  "pullRequest": 110,
+  "candidate": "14b82961b810d63c101ac47d9593201da143ef08",
+  "candidateBuildRevision": "1dfd0f92b4cecb1b6553dfc7abb3d115b31c5579",
+  "production": "8c2cb1e145f16c5cfcfa2bebd84cf97c7532df89",
+  "matchingTree": "abfa713c57def6bafd1c6ff2607c38a31cd3c05b",
+  "candidateRuns": {
+    "Build release patches": 44122641464,
+    "Legends project checks": 44122641507,
+    "Check Legends Wiki": 44122641915,
+    "Build Legends Wiki Android APK": 44122641445
+  },
+  "productionGates": {
+    "build-release-patch.yml": 44125097830,
+    "legends-checks.yml": 44125097832,
+    "wiki-apk.yml": 44125097690,
+    "wiki-checks.yml": 44125097753,
+    "wiki-windows.yml": 44125097718
+  },
+  "candidatePatchArtifact": {
+    "id": 14347855251,
+    "digest": "sha256:ad21bae2a9fd7464baa3edcc3d485af56a02598123806c75fe6987c906504052",
+    "runId": 44122641464
+  },
+  "productionPatchArtifact": {
+    "id": 14348092036,
+    "digest": "sha256:09bb9761a9ddb3473384543fdae5b9470e0a48ed7de4e008891f80833dc34ae2",
+    "runId": 44125097830
+  },
+  "patchCommit": "a4087f90936330737c265ee21fcc80be9af8a2c9",
+  "hashesSHA256": {
+    "docs/downloads/Pokemon-Emerald-Legends-v0.0.88.2.bps": "9f2e7edb39b9517a5e097ab713788bd1f6612a7c992c4272c486fe1b13ef8ee1",
+    "docs/downloads/Pokemon-Emerald-Legends-v0.0.88.2-debug.bps": "4015283d5bd2ff79dd4180fdce8a3239628e1763a205dac7d495802b31a301ad",
+    "pokeemerald-release.gba": "47bca156b1d03ce2e51f336cda56fb3dffed2836b468cbd39358351044ddace8",
+    "pokeemerald.gba": "7e17f9ba21c3884473cbb8b12bbcac34e0ed56013b69df80d98843e036e02d16"
+  },
+  "independentPatchDecoders": [
+    "Floating IPS",
+    "Browser patcher"
+  ],
+  "nativeReceiptsPerBuildPair": 16,
+  "pagesRun": 44127972570,
+  "pagesEvidence": {
+    "id": 14349345704,
+    "digest": "sha256:34dd7f01bfbde2f71845642dbb4293c62b03c57460dd920eb9bba8d3e5528864",
+    "runId": 44127972570
+  },
+  "pagesLiveResult": {
+    "id": 14348262130,
+    "digest": "sha256:e55ebb32d3e4781c3895d189717d4a2c69aaec073965c98867e2aabb80ce0399",
+    "runId": 44127972570
+  },
+  "liveVerifiedAtUTC": "2026-11-17T16:40:25.971833+00:00",
+  "liveChecks": [
+    "index.html",
+    "patcher.html",
+    "patcher.js",
+    "changelog.html",
+    "wiki/index.html",
+    "wiki/dex.html",
+    "wiki/dex-data.json",
+    "wiki/dex-profiles.js",
+    "wiki/dex-sprite-atlas.js",
+    "wiki/dex-sprite-atlas.webp",
+    "wiki/dex-portrait-sources.json",
+    "wiki/map-hoenn.png",
+    "wiki/map-kanto.png",
+    "wiki/walkthrough-maps.json",
+    "wiki/android-version.json",
+    "wiki/windows-version.json",
+    "features/eon-roamers.md",
+    "downloads/SHA256SUMS.txt",
+    "downloads/Pokemon-Emerald-Legends-v0.0.88.2.bps",
+    "downloads/Pokemon-Emerald-Legends-v0.0.88.2-debug.bps",
+    "release-publication.json"
+  ],
+  "focusedNative": {
+    "emulator": "mGBA 0.10.5",
+    "scope": "Published v0.0.88.1 ROMs compared with locally built v0.0.88.2 ROMs using native synthetic battery saves, physical Start, B and directional inputs, video memory, and rendered frames. Seven- and eight-entry menus and the tracked quest card were exercised.",
+    "harnessSHA256": {
+      "check_pause_frames.py": "fac6efaebf06f0892288e76b86c1128225f884a81bba894cdc0e7646190dd368",
+      "fixture.c": "c2394218d58e4d5611bb2e64deaba180bac6410c9d2d224c51f2bd2aa1adb432",
+      "make_fixtures.py": "bb93285d19b65f21d93ca10c0ad4d293bf2a41301d57789972e7ad6eaae42b23"
+    },
+    "cases": {
+      "debug": {
+        "seven": {
+          "published": {
+            "open": {
+              "first_visible": 4,
+              "first_complete": 9,
+              "partial_frames": [
+                4,
+                5,
+                6,
+                7,
+                8
+              ]
+            },
+            "reopen": {
+              "first_visible": 4,
+              "first_complete": 9,
+              "partial_frames": [
+                4,
+                5,
+                6,
+                7,
+                8
+              ]
+            },
+            "sha256": "36f5f75935911d21660c1e94bd1c04117e83f8d9e2fd373370bed8f4624fec0d"
+          },
+          "fixed": {
+            "open": {
+              "first_visible": 8,
+              "first_complete": 8,
+              "partial_frames": []
+            },
+            "reopen": {
+              "first_visible": 8,
+              "first_complete": 8,
+              "partial_frames": []
+            },
+            "sha256": "ad5a23ee62fe0da1700bfda0915be513b6c28cb67d80b8393c1f9d7d6d69d20a"
+          }
+        },
+        "eight": {
+          "published": {
+            "open": {
+              "first_visible": 4,
+              "first_complete": 9,
+              "partial_frames": [
+                4,
+                5,
+                6,
+                7,
+                8
+              ]
+            },
+            "reopen": {
+              "first_visible": 4,
+              "first_complete": 9,
+              "partial_frames": [
+                4,
+                5,
+                6,
+                7,
+                8
+              ]
+            },
+            "journal_and_save_cancel": true,
+            "sha256": "36f5f75935911d21660c1e94bd1c04117e83f8d9e2fd373370bed8f4624fec0d"
+          },
+          "fixed": {
+            "open": {
+              "first_visible": 8,
+              "first_complete": 8,
+              "partial_frames": []
+            },
+            "reopen": {
+              "first_visible": 8,
+              "first_complete": 8,
+              "partial_frames": []
+            },
+            "journal_and_save_cancel": true,
+            "sha256": "ad5a23ee62fe0da1700bfda0915be513b6c28cb67d80b8393c1f9d7d6d69d20a"
+          }
+        },
+        "tracked": {
+          "published": {
+            "open": {
+              "first_visible": 4,
+              "first_complete": 12,
+              "partial_frames": [
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11
+              ]
+            },
+            "reopen": {
+              "first_visible": 4,
+              "first_complete": 12,
+              "partial_frames": [
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11
+              ]
+            },
+            "journal_and_save_cancel": true,
+            "sha256": "36f5f75935911d21660c1e94bd1c04117e83f8d9e2fd373370bed8f4624fec0d"
+          },
+          "fixed": {
+            "open": {
+              "first_visible": 11,
+              "first_complete": 11,
+              "partial_frames": []
+            },
+            "reopen": {
+              "first_visible": 11,
+              "first_complete": 11,
+              "partial_frames": []
+            },
+            "journal_and_save_cancel": true,
+            "sha256": "ad5a23ee62fe0da1700bfda0915be513b6c28cb67d80b8393c1f9d7d6d69d20a"
+          }
+        }
+      },
+      "release": {
+        "seven": {
+          "published": {
+            "open": {
+              "first_visible": 4,
+              "first_complete": 10,
+              "partial_frames": [
+                4,
+                5,
+                6,
+                7,
+                8,
+                9
+              ]
+            },
+            "reopen": {
+              "first_visible": 4,
+              "first_complete": 9,
+              "partial_frames": [
+                4,
+                5,
+                6,
+                7,
+                8
+              ]
+            },
+            "sha256": "06c16a9ba6b93f508c540e8c294d9badc6956ea48af5a888cc34f17c218c3d2f"
+          },
+          "fixed": {
+            "open": {
+              "first_visible": 8,
+              "first_complete": 8,
+              "partial_frames": []
+            },
+            "reopen": {
+              "first_visible": 8,
+              "first_complete": 8,
+              "partial_frames": []
+            },
+            "sha256": "a57632fded315e8879dc025e470bc7d4e9660e5619a62fa80345504f68308d1f"
+          }
+        },
+        "eight": {
+          "published": {
+            "open": {
+              "first_visible": 4,
+              "first_complete": 10,
+              "partial_frames": [
+                4,
+                5,
+                6,
+                7,
+                8,
+                9
+              ]
+            },
+            "reopen": {
+              "first_visible": 4,
+              "first_complete": 9,
+              "partial_frames": [
+                4,
+                5,
+                6,
+                7,
+                8
+              ]
+            },
+            "journal_and_save_cancel": true,
+            "sha256": "06c16a9ba6b93f508c540e8c294d9badc6956ea48af5a888cc34f17c218c3d2f"
+          },
+          "fixed": {
+            "open": {
+              "first_visible": 8,
+              "first_complete": 8,
+              "partial_frames": []
+            },
+            "reopen": {
+              "first_visible": 8,
+              "first_complete": 8,
+              "partial_frames": []
+            },
+            "journal_and_save_cancel": true,
+            "sha256": "a57632fded315e8879dc025e470bc7d4e9660e5619a62fa80345504f68308d1f"
+          }
+        },
+        "tracked": {
+          "published": {
+            "open": {
+              "first_visible": 4,
+              "first_complete": 12,
+              "partial_frames": [
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11
+              ]
+            },
+            "reopen": {
+              "first_visible": 4,
+              "first_complete": 12,
+              "partial_frames": [
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11
+              ]
+            },
+            "journal_and_save_cancel": true,
+            "sha256": "06c16a9ba6b93f508c540e8c294d9badc6956ea48af5a888cc34f17c218c3d2f"
+          },
+          "fixed": {
+            "open": {
+              "first_visible": 11,
+              "first_complete": 11,
+              "partial_frames": []
+            },
+            "reopen": {
+              "first_visible": 11,
+              "first_complete": 11,
+              "partial_frames": []
+            },
+            "journal_and_save_cancel": true,
+            "sha256": "a57632fded315e8879dc025e470bc7d4e9660e5619a62fa80345504f68308d1f"
+          }
+        }
+      }
+    }
+  }
+}
