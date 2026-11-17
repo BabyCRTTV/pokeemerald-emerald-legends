@@ -1,0 +1,170 @@
+{
+  "version": "0.0.88.1",
+  "status": "published",
+  "pullRequest": 109,
+  "approvedPreview": "218eff793e74fb37c0e861208fcd9746de1965af",
+  "candidate": "ba027235d51e090a903b2f34e75af8061c05e6be",
+  "candidateBuildRevision": "828e89126f1d17014403cd554098925690ee92cd",
+  "production": "a1f45beccf9093fc0c09ee99fe5ab49071fdb0fc",
+  "matchingTree": "87b1357b9f7d009b34d0ae6328352ec36c0df3d7",
+  "candidateRuns": {
+    "Build release patches": 44016885164,
+    "Legends project checks": 44016885099,
+    "Check Legends Wiki": 44016884965,
+    "Build Legends Wiki Android APK": 44016885138
+  },
+  "productionGates": {
+    "build-release-patch.yml": 44018447001,
+    "legends-checks.yml": 44018446982,
+    "wiki-apk.yml": 44018446868,
+    "wiki-checks.yml": 44018446889,
+    "wiki-windows.yml": 44018447116
+  },
+  "candidatePatchArtifact": {
+    "id": 14300120739,
+    "digest": "sha256:566cf9cef5dfa760edfcc6e897fc1bb6bebcf430529730d4b246c8b992ab8696"
+  },
+  "productionPatchArtifact": {
+    "id": 14301330097,
+    "digest": "sha256:3bba9f085e876f5c0134d9015bef51d2fa2d490ed38fb53251cb8a3b5b56ad40"
+  },
+  "patchCommit": "9d9ba169e7458b5ae10fea60d63eea9c15b1e8d2",
+  "hashesSHA256": {
+    "docs/downloads/Pokemon-Emerald-Legends-v0.0.88.1.bps": "47b8479de248bbebcad8ed3721dbedd163de7882e5cf8fbae2b40cdb288233d0",
+    "docs/downloads/Pokemon-Emerald-Legends-v0.0.88.1-debug.bps": "aa3bec946ce4e8e37b0fecb68708c3b193b80e2e4c8579e4455a5769b3bee6e5",
+    "pokeemerald-release.gba": "06c16a9ba6b93f508c540e8c294d9badc6956ea48af5a888cc34f17c218c3d2f",
+    "pokeemerald.gba": "36f5f75935911d21660c1e94bd1c04117e83f8d9e2fd373370bed8f4624fec0d"
+  },
+  "independentPatchDecoders": [
+    "Floating IPS",
+    "Browser patcher"
+  ],
+  "nativeReceiptsPerBuildPair": 16,
+  "pagesRun": 44020309954,
+  "pagesEvidence": {
+    "id": 14301130660,
+    "digest": "sha256:1e55413b19e8e0540cd0505dda27ad693fbb6ede94175f1a31dea9d9b546bc98"
+  },
+  "pagesLiveResult": {
+    "id": 14300996025,
+    "digest": "sha256:98ea91a2a9a164aa6fa7c937e3951b6eb08fcbefeb4280fe27813010ac691330"
+  },
+  "liveVerifiedAtUTC": "2026-11-17T04:56:09.530582+00:00",
+  "liveChecks": [
+    "index.html",
+    "patcher.html",
+    "patcher.js",
+    "changelog.html",
+    "wiki/index.html",
+    "wiki/dex.html",
+    "wiki/dex-data.json",
+    "wiki/dex-profiles.js",
+    "wiki/dex-sprite-atlas.js",
+    "wiki/dex-sprite-atlas.webp",
+    "wiki/dex-portrait-sources.json",
+    "wiki/map-hoenn.png",
+    "wiki/map-kanto.png",
+    "wiki/walkthrough-maps.json",
+    "wiki/android-version.json",
+    "wiki/windows-version.json",
+    "features/eon-roamers.md",
+    "downloads/SHA256SUMS.txt",
+    "downloads/Pokemon-Emerald-Legends-v0.0.88.1.bps",
+    "downloads/Pokemon-Emerald-Legends-v0.0.88.1-debug.bps",
+    "release-publication.json"
+  ],
+  "focusedNative": {
+    "emulator": "mGBA 0.10.5",
+    "scope": "Controlled Lileep versus Sentret with both Pok\u00e9dex ownership and Sentret's seen flag clear; Release loaded synthetic native battery fixtures through Continue. Local toolchain builds were used for the focused visual checks.",
+    "harnessSHA256": {
+      "fixture.c": "7cb29d7f1f2bbd350180c4723508d7f38b8336af1196e10bfa7f6b810c1418c9",
+      "verify.py": "a697440dfac613506fa446e0cebbb717e59aef806f159fb07ca584145e6e2432"
+    },
+    "cases": [
+      {
+        "variant": "debug",
+        "mode": "casual",
+        "pokedex": 0,
+        "sentretSeen": 0,
+        "ROM_sha256": "7bdda0c1f840259f185714b4a33d80f3dbfd98226f185c1ae88552c238f077cd",
+        "rendered_pixels": {
+          "wrap": {
+            "blue": 300,
+            "red": 0
+          },
+          "astonish": {
+            "blue": 0,
+            "red": 307
+          },
+          "acid": {
+            "blue": 300,
+            "red": 0
+          }
+        }
+      },
+      {
+        "variant": "release",
+        "mode": "casual",
+        "pokedex": 0,
+        "sentretSeen": 0,
+        "ROM_sha256": "0c88e861c11e3b151679db74aa64bdae51ae5ffe777765cfc913230fa3faa934",
+        "rendered_pixels": {
+          "wrap": {
+            "blue": 300,
+            "red": 0
+          },
+          "astonish": {
+            "blue": 0,
+            "red": 307
+          },
+          "acid": {
+            "blue": 300,
+            "red": 0
+          }
+        }
+      },
+      {
+        "variant": "debug",
+        "mode": "normal",
+        "pokedex": 0,
+        "sentretSeen": 0,
+        "ROM_sha256": "7bdda0c1f840259f185714b4a33d80f3dbfd98226f185c1ae88552c238f077cd",
+        "rendered_pixels": {
+          "wrap": {
+            "blue": 0,
+            "red": 0
+          },
+          "astonish": {
+            "blue": 0,
+            "red": 0
+          },
+          "acid": {
+            "blue": 0,
+            "red": 0
+          }
+        }
+      },
+      {
+        "variant": "release",
+        "mode": "normal",
+        "pokedex": 0,
+        "sentretSeen": 0,
+        "ROM_sha256": "0c88e861c11e3b151679db74aa64bdae51ae5ffe777765cfc913230fa3faa934",
+        "rendered_pixels": {
+          "wrap": {
+            "blue": 0,
+            "red": 0
+          },
+          "astonish": {
+            "blue": 0,
+            "red": 0
+          },
+          "acid": {
+            "blue": 0,
+            "red": 0
+          }
+        }
+      }
+    ]
+  }
+}

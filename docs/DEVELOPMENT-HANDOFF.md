@@ -1,10 +1,10 @@
 # Development handoff
 
-## Casual matchup badges on first encounters (16 November 2026)
+## v0.0.88.1 Casual first-encounter matchup badges published and verified (16 November 2026)
 
-**Model: GPT-6 | Reasoning: allow the Casual badge to use the battle's target typing before the Pokédex records a sighting.**
+**Model: GPT-6 | Reasoning: verify the first-encounter badge in both variants and bind published patches to the approved release tree.**
 
-In Casual, the matchup badge appears on a species' first encounter, including before Birch gives out the Pokédex. The battle menu retains its rules for concealed opponents, and Normal uses the existing sighting requirement. Host checks passed for an unseen Sentret in Casual, seen and unseen targets in Normal, and link, recorded, and unidentified ghost battles. The new regression failed on the published controller and passed with the fix. A controlled mGBA battle verified Wrap, Acid and Astonish with both Pokédex ownership and Sentret's seen flag clear. The owner approved publication on 16 November. The release candidate uses v0.0.88.1 in both game variants and the website. [PR #109](https://github.com/BabyCRTTV/pokeemerald-emerald-legends/pull/109).
+Casual shows move matchup badges on a species' first encounter, including before receiving the Pokédex. Focused mGBA fixtures verified Wrap, Acid and Astonish against unseen Sentret in both variants, with a Normal comparison and native Release Continue. The owner approved publication. PR #109 merged as `a1f45beccf9093fc0c09ee99fe5ab49071fdb0fc`. Candidate and production shared tree `87b1357b9f7d009b34d0ae6328352ec36c0df3d7`, passed the native gates and reconstructed both patches with two independent decoders. Pages run `44020309954` deployed v0.0.88.1 and live verification matched all 21 expected files, including both patches. [Release record](qa/casual-first-encounter-v0.0.88.1.json).
 
 ## v0.0.88 cooking and Casual difficulty published and verified (16 November 2026)
 
