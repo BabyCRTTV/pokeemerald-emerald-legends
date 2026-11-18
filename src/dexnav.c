@@ -185,6 +185,7 @@ static const u8 sText_DexNav_NoInfo[] = _("--------");
 static const u8 sText_DexNav_CaptureToSee[] = _("Capture first!");
 static const u8 sText_DexNav_PressRToRegister[] = _("R TO REGISTER!");
 static const u8 sText_DexNav_SearchForRegisteredSpecies[] = _("Search {STR_VAR_1}");
+static const u8 sText_DexNav_SearchInField[] = _("R to search in the field");
 static const u8 sText_DexNav_NotFoundHere[] = _("This Pokémon cannot be found here!");
 static const u8 sText_ThreeQmarks[] = _("???");
 static const u8 sText_SearchLevel[] = _("SEARCH {LV}. {STR_VAR_1}");
@@ -218,7 +219,7 @@ static const struct WindowTemplate sDexNavGuiWindowTemplates[] =
         .tilemapLeft = 4,
         .tilemapTop = 0,
         .width = 26,
-        .height = 2,
+        .height = 3,
         .paletteNum = 15,
         .baseBlock = 200,
     },
@@ -2353,6 +2354,10 @@ static void PrintSearchableSpecies(enum Species species)
         StringCopy(gStringVar1, GetSpeciesName(species));
         StringExpandPlaceholders(gStringVar4, sText_DexNav_SearchForRegisteredSpecies);
         AddTextPrinterParameterized3(WINDOW_REGISTERED, FONT_NORMAL, 0, 0, sFontColor_White, TEXT_SKIP_DRAW, gStringVar4);
+        // Keep the field cue visually distinct from the adjacent Water label.
+        u32 cueWidth = GetStringWidth(FONT_SMALL_NARROWER, sText_DexNav_SearchInField, 0);
+        FillWindowPixelRect(WINDOW_REGISTERED, PIXEL_FILL(TEXT_COLOR_DARK_GRAY), 8, 13, cueWidth + 8, 10);
+        AddTextPrinterParameterized3(WINDOW_REGISTERED, FONT_SMALL_NARROWER, 12, 10, sFontColor_White, TEXT_SKIP_DRAW, sText_DexNav_SearchInField);
     }
 
     PrintMapName();
