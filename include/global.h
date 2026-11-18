@@ -321,6 +321,7 @@ struct SaveBlock3
     struct LegendsPoffinSave poffins;
     struct LegendsMealSave meals;
     u8 extraItemFlags[LEGENDS_ITEM_FLAGS_EXTRA_COUNT];
+    u32 pinnedRecipe;
 }; /* max size 1624 bytes */
 
 extern struct SaveBlock3 *gSaveBlock3Ptr;

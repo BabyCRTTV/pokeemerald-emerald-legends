@@ -301,9 +301,11 @@ static void MultichoiceCooking_OnSelectionChanged(struct DynamicListMenuEventArg
             PrintRecipeText(GetItemName(supplies[i]), 6, 34 + 14 * i, width - 24, missing);
             PrintRecipeText(COMPOUND_STRING("×1"), width - 18, 34 + 14 * i, 12, missing);
         }
-        FillWindowPixelRect(sAuxWindowId, PIXEL_FILL(TEXT_COLOR_LIGHT_GRAY), 6, 93, width - 12, 1);
-        PrintRecipeText(LegendsMealEffectText(meal), 4, 98, width - 8, FALSE);
-        PrintRecipeText(duration, 6, 111, width - 12, FALSE);
+        FillWindowPixelRect(sAuxWindowId, PIXEL_FILL(TEXT_COLOR_LIGHT_GRAY), 6, 90, width - 12, 1);
+        PrintRecipeText(LegendsMealEffectText(meal), 4, 91, width - 8, FALSE);
+        PrintRecipeText(duration, 6, 102, width - 12, FALSE);
+        PrintRecipeText(LegendsGetPinnedRecipe() == meal
+            ? COMPOUND_STRING("SELECT to unpin") : COMPOUND_STRING("SELECT to pin"), 6, 115, width - 12, FALSE);
         gSpecialVar_0x8006 = LegendsMealIsDrink(meal);
     }
     CopyWindowToVram(sAuxWindowId, COPYWIN_FULL);
@@ -595,7 +597,24 @@ static void InitMultichoiceCheckWrap(bool8 ignoreBPress, u8 count, u8 windowId, 
 static void Task_HandleScrollingMultichoiceInput(u8 taskId)
 {
     bool32 done = FALSE;
-    s32 input = ListMenu_ProcessInput(gTasks[taskId].data[0]);
+    u8 listTaskId = gTasks[taskId].data[0];
+    if (sDynamicMenuEventId == DYN_MULTICHOICE_CB_COOKING && JOY_NEW(SELECT_BUTTON))
+    {
+        u16 row;
+        struct ListMenu *list = (void *)gTasks[listTaskId].data;
+        enum Item meal;
+        ListMenuGetCurrentItemArrayId(listTaskId, &row);
+        s32 selected = list->template.items[row].id;
+        if (LegendsMealRecipePreview(selected, &meal) != NULL)
+        {
+            LegendsTogglePinnedRecipe(meal);
+            PlaySE(SE_SELECT);
+            struct DynamicListMenuEventArgs eventArgs = {.selectedItem = selected, .windowId = list->template.windowId, .list = &list->template};
+            MultichoiceCooking_OnSelectionChanged(&eventArgs);
+        }
+        return;
+    }
+    s32 input = ListMenu_ProcessInput(listTaskId);
 
     switch (input)
     {

@@ -16,6 +16,7 @@
 #include "constants/script_menu.h"
 
 #define MEAL_SAVE_SIGNATURE 0x314C414D // MAL1
+#define PINNED_RECIPE_TAG 0x52430000
 
 struct MealRecipe
 {
@@ -106,6 +107,36 @@ static const struct MealRecipe *GetRecipeByItem(enum Item item)
         if (sRecipes[i].meal == item)
             return &sRecipes[i];
     return NULL;
+}
+
+enum Item LegendsGetPinnedRecipe(void)
+{
+    u32 pin = gSaveBlock3Ptr->pinnedRecipe;
+    enum Item meal = (u16)pin;
+
+    if ((pin & 0xFFFF0000) != PINNED_RECIPE_TAG || GetRecipeByItem(meal) == NULL)
+        return ITEM_NONE;
+    return meal;
+}
+
+void LegendsTogglePinnedRecipe(enum Item meal)
+{
+    if (GetRecipeByItem(meal) != NULL)
+        gSaveBlock3Ptr->pinnedRecipe = LegendsGetPinnedRecipe() == meal ? 0 : PINNED_RECIPE_TAG | meal;
+}
+
+u8 LegendsGetMissingRecipeIngredients(enum Item meal, enum Item missing[LEGENDS_RECIPE_INGREDIENTS])
+{
+    const struct MealRecipe *recipe = GetRecipeByItem(meal);
+    u8 count = 0;
+
+    if (recipe != NULL)
+    {
+        for (u32 i = 0; i < LEGENDS_RECIPE_INGREDIENTS && recipe->supplies[i] != ITEM_NONE; i++)
+            if (!CheckBagHasItem(recipe->supplies[i], 1))
+                missing[count++] = recipe->supplies[i];
+    }
+    return count;
 }
 
 static bool32 MealSaveValid(void)

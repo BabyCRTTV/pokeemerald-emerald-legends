@@ -1140,4 +1140,5 @@ STATIC_ASSERT(offsetof(struct SaveBlock3, poffins) == 1032, PoffinAppendOnly);
 STATIC_ASSERT(sizeof(struct Pokeblock) == 8, PoffinNativeRecordStride);
 STATIC_ASSERT(offsetof(struct SaveBlock3, meals) == 1356, MealsAppendOnly);
 STATIC_ASSERT(offsetof(struct SaveBlock3, extraItemFlags) == 1372, ExtraItemHistoryAppendOnly);
+STATIC_ASSERT(offsetof(struct SaveBlock3, pinnedRecipe) == 1384, PinnedRecipeAppendOnly);
 STATIC_ASSERT(ITEMS_COUNT <= (ITEM_FLAGS_COUNT + LEGENDS_ITEM_FLAGS_EXTRA_COUNT) * 8, ExtraItemHistoryFits);
