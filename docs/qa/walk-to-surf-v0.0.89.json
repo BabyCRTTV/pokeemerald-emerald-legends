@@ -1,0 +1,113 @@
+{
+  "version": "0.0.89",
+  "status": "published",
+  "pullRequest": 113,
+  "approvedGameplay": "051609b18d99efe34c9c4696cb889d7152426f7a",
+  "candidate": "a22c0280ec9659bbaf35e9e8c9025a780b806469",
+  "candidateBuildRevision": "4eb4eaaec489f81e6d33dc0122c22c81aa48fd79",
+  "production": "dd82f8a121a7e0cae6f0682938fa194fca6e4e99",
+  "matchingTree": "4271367c060163d73228c79e39d277499ff56d45",
+  "patchCommit": "5aa4249ee7a10a0d5fd8ce798abe26afd204b692",
+  "wikiGuideCommit": "161ec2e37edce093ccb620b22dc8f13d2c92fd51",
+  "siteSourceCommit": "6bdcf06ac79e1b2c6248117df384e3eb96f5596d",
+  "candidateRuns": {
+    "Build Legends Wiki Android APK": 44242957919,
+    "Legends project checks": 44242957965,
+    "Check Legends Wiki": 44242957943,
+    "Build release patches": 44242957928
+  },
+  "productionBuildRun": 44245228123,
+  "productionGates": {
+    "build-release-patch.yml": {
+      "id": 44245228123,
+      "input_sha256": "03acdf373152b6bbb9d09222b2f83f3edbce53a06c2c1d2d7845c54d1b9d7146",
+      "run_attempt": 1,
+      "source_commit": "dd82f8a121a7e0cae6f0682938fa194fca6e4e99",
+      "workflow": "build-release-patch.yml"
+    },
+    "legends-checks.yml": {
+      "id": 44247122617,
+      "input_sha256": "5e4537027ca0f724dbcb251615ae3b1af82bc4efa6dfd5da9b777af560657189",
+      "run_attempt": 1,
+      "source_commit": "161ec2e37edce093ccb620b22dc8f13d2c92fd51",
+      "workflow": "legends-checks.yml"
+    },
+    "wiki-apk.yml": {
+      "id": 44247122537,
+      "input_sha256": "408dd41fd198079d2e29fcdb0529f3b24dd216ecdc96db57e2e248b1008aa127",
+      "run_attempt": 1,
+      "source_commit": "161ec2e37edce093ccb620b22dc8f13d2c92fd51",
+      "workflow": "wiki-apk.yml"
+    },
+    "wiki-checks.yml": {
+      "id": 44247122523,
+      "input_sha256": "41d837f93b6748c7332d632745972819c99ef719739840e64a0856ffe187ac4a",
+      "run_attempt": 1,
+      "source_commit": "161ec2e37edce093ccb620b22dc8f13d2c92fd51",
+      "workflow": "wiki-checks.yml"
+    },
+    "wiki-windows.yml": {
+      "id": 44247122550,
+      "input_sha256": "03a9da583de74542be6be2a2fe8804d9000e93262ab790985bf91b7e83abcd15",
+      "run_attempt": 1,
+      "source_commit": "161ec2e37edce093ccb620b22dc8f13d2c92fd51",
+      "workflow": "wiki-windows.yml"
+    }
+  },
+  "candidatePatchArtifact": {
+    "id": 14401750832,
+    "runId": 44242957928,
+    "digest": "sha256:19d1084cec6dcde2e7f621a732d91100a2301503d544419ae28c16a04e81907f"
+  },
+  "productionPatchArtifact": {
+    "id": 14401978094,
+    "runId": 44245228123,
+    "digest": "sha256:d8d4d2b15bf8518256eaf7d8d1c17f0db6b97eb401ffeb6c1fcd72da4fde3550"
+  },
+  "hashesSHA256": {
+    "docs/downloads/Pokemon-Emerald-Legends-v0.0.89.bps": "56d4c6c721286a7ef629dd1d2bab73c72d5201439002a9d14e3cb56b255e1805",
+    "docs/downloads/Pokemon-Emerald-Legends-v0.0.89-debug.bps": "212511e1436b4d1ecabef8ac0ee51cdc1648dc5a7d96d5994c040039b5650041",
+    "pokeemerald.gba": "4244897e62ff770041e9b4e36d476e5eed825770dd0581cfd38fb3286595f890",
+    "pokeemerald-release.gba": "cb38b9236a1aabfa1eee55788e01405d91a8ea56b5d7b82e22c2c9b741613843"
+  },
+  "independentPatchDecoders": [
+    "Floating IPS",
+    "Browser patcher"
+  ],
+  "nativeReceiptsPerBuildPair": 16,
+  "focusedPreview": "walk-to-surf-preview.json",
+  "pagesRun": 44247575805,
+  "pagesEvidence": {
+    "id": 14402012912,
+    "digest": "sha256:5451e03373a0dd10398cdb66d074e960f3b022c2e863394078a34d1faa282c6f"
+  },
+  "pagesLiveResult": {
+    "id": 14402571574,
+    "digest": "sha256:129c996e58f3276ebfc075439b43d759650786dc2d2e4e2eba55da756c8bf748"
+  },
+  "liveVerifiedAtUTC": "2026-11-18T05:58:37.531158+00:00",
+  "liveChecks": [
+    "index.html",
+    "patcher.html",
+    "patcher.js",
+    "changelog.html",
+    "wiki/index.html",
+    "wiki/dex.html",
+    "wiki/dex-data.json",
+    "wiki/dex-profiles.js",
+    "wiki/dex-sprite-atlas.js",
+    "wiki/dex-sprite-atlas.webp",
+    "wiki/dex-portrait-sources.json",
+    "wiki/map-hoenn.png",
+    "wiki/map-kanto.png",
+    "wiki/walkthrough-maps.json",
+    "wiki/android-version.json",
+    "wiki/windows-version.json",
+    "features/eon-roamers.md",
+    "downloads/SHA256SUMS.txt",
+    "downloads/Pokemon-Emerald-Legends-v0.0.89-debug.bps",
+    "downloads/Pokemon-Emerald-Legends-v0.0.89.bps",
+    "release-publication.json",
+    "wiki/articles.json"
+  ]
+}

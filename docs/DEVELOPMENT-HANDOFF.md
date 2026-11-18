@@ -1,10 +1,10 @@
 # Development handoff
 
-## v0.0.89 Surf release preparation (18 November 2026)
+## v0.0.89 walk-to-Surf and coastal encounters published and verified (18 November 2026)
 
-**Model: GPT-6.2 Sol | Reasoning: publish the approved Surf commit with matching game and wiki version labels.**
+**Model: GPT-6.2 Sol | Reasoning: bind the approved Surf behavior and wiki to the verified public patch pair and exact site bytes.**
 
-The owner approved publication of PR #113. This candidate advances the game and site to v0.0.89 and matches the LegendsDex roster to the approved coastal tables. The sprite atlas and base encounter data retain their existing pin. The [native preview evidence](qa/walk-to-surf-preview.json) records the Route 115 mount and footprint checks and all four seasonal Surf routes. Candidate and production patch checks and Pages promotion are pending.
+PR #113 released the automatic Surf hop after the Balance Badge, the shoreline footprint cleanup, and seasonal Surf rosters on Hoenn Routes 115 and 118 and Kanto Routes 12 and 13. The written wiki, walkthrough and LegendsDex reflect the new behavior and encounter tables. Candidate and production shared tree `4271367c060163d73228c79e39d277499ff56d45` and produced identical Debug and Release targets and patches. Floating IPS and the browser decoder each verified both targets. Pages run `44247575805` deployed the release alongside the wiki changes. Live verification matched 22 files, including the published patches, article text, walkthrough and LegendsDex data. [Release record](qa/walk-to-surf-v0.0.89.json) · [Preview evidence](qa/walk-to-surf-preview.json).
 
 ## Walk-to-Surf and four coastal seasonal tables (17 November 2026)
 
