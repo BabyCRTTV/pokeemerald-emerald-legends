@@ -41,12 +41,14 @@ Progression actions are primarily contextual:
 - interact with a cuttable tree to use Cut
 - interact with a breakable rock to use Rock Smash
 - interact with a Strength boulder to activate Strength
-- interact with surfable water to use Surf
+- hold the D-pad toward a passable shoreline to start Surf once you earn the Balance Badge
 - use Dive and Waterfall at their existing map/terrain triggers
 
 The party action menu also exposes one compact **FIELD** entry once the first utility is unlocked. FIELD lists the currently unlocked badge utilities and provides manual access to actions such as Flash and Fly without requiring a learned HM.
 
 Individual HM names are no longer injected into each Pokémon's normal action list.
+
+At a shoreline, the player hops onto the Surf creature waiting on the first water tile. Holding the same direction continues across the water. Approaching land uses the usual dismount.
 
 ## Presentation
 

@@ -2,6 +2,13 @@
 
 This is the player-facing history for the recommended **Release** build. Shared Legends changes are repeated here so this file stands on its own; Release-only behavior is called out separately.
 
+## [0.0.89] - 2026-11-18
+
+- Added walk-to-Surf after the Balance Badge. Holding the D-pad toward passable water made the trainer hop aboard and continue surfing.
+- Removed the water splash over the rider and the last footprint at the wet edge during the automatic hop.
+- Added two rotating Surf visitors per season to Hoenn Routes 115 and 118 and Kanto Routes 12 and 13. Updated LegendsDex and the walkthrough.
+- Both Release and Debug received the same gameplay and encounter changes.
+
 ## [0.0.88.2] - 2026-11-17
 
 - Fixed stray pixels that flashed at the bottom of the pause menu while it opened.

@@ -85,28 +85,39 @@ void LegendsPrepareFootwearPalette(u16 *palette, u8 gender, u8 kind)
 
 static void Compose(u8 *dest, const u8 *src, const u8 *mask, u32 size, u8 gender, u8 kind, bool8 footwear)
 {
-    u32 i, shift;
-    for (i = 0; i < size; i++)
+    static const u8 overlayColors[16] = {[1] = 6, [2] = 11, [3] = 15, [4 ... 15] = 11};
+    bool8 hasMaleHair = gender == MALE && LegendsGetHair();
+    bool8 remapHighlight = hasMaleHair || (gender == MALE && LegendsGetHairColor());
+    u8 colors[16];
+
+    if (!mask && !footwear && !remapHighlight)
     {
-        u8 output = 0;
-        for (shift = 0; shift < 8; shift += 4)
-        {
-            u8 pixel = (src[i] >> shift) & 15;
-            u8 overlay = mask == NULL ? 0 : (mask[i] >> shift) & 15;
-            // Slot 7 is a warm custom-hair highlight for Brendan. Move the
-            // old shirt/trouser shade before shoes and hair are painted so
-            // footwear masks cannot be overwritten by the palette reservation.
-            if (gender == MALE && (LegendsGetHair() || LegendsGetHairColor()) && pixel == 7)
-                pixel = 5;
-            if (kind == 0 && gender == MALE && LegendsGetHair() && pixel == 8)
-                pixel = 5; // Stable original navy, independent of hair shadow 8.
-            if (footwear && (pixel == 6 || pixel == 11))
-                pixel = sRemap[gender][kind][pixel == 6 ? 0 : 1];
-            if (overlay)
-                pixel = overlay == 3 ? 15 : overlay == 1 ? 6 : 11;
-            output |= pixel << shift;
-        }
-        dest[i] = output;
+        if (dest != src)
+            memcpy(dest, src, size);
+        return;
+    }
+
+    // Resolve palette reservations once per pose before applying shoe pixels.
+    for (u32 i = 0; i < ARRAY_COUNT(colors); i++)
+        colors[i] = i;
+    if (remapHighlight)
+        colors[7] = 5;
+    if (kind == 0 && hasMaleHair)
+        colors[8] = 5;
+    if (footwear)
+    {
+        colors[6] = sRemap[gender][kind][0];
+        colors[11] = sRemap[gender][kind][1];
+    }
+    for (u32 i = 0; i < size; i++)
+    {
+        u8 pixels = src[i];
+        u8 overlays = mask ? mask[i] : 0;
+        u8 low = overlays & 15;
+        u8 high = overlays >> 4;
+        low = low ? overlayColors[low] : colors[pixels & 15];
+        high = high ? overlayColors[high] : colors[pixels >> 4];
+        dest[i] = low | (high << 4);
     }
 }
 

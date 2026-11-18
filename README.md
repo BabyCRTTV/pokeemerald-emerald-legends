@@ -1,6 +1,6 @@
 # Pokémon Emerald: Legends
 
-**Version:** 0.0.88.2<br>
+**Version:** 0.0.89<br>
 **Base:** [pokeemerald-expansion](https://github.com/rh-hideout/pokeemerald-expansion)
 
 Pokémon Emerald: Legends is an unofficial, non-commercial Pokémon Emerald ROM-hack project built on the open-source `pokeemerald-expansion` decompilation/expansion base.
@@ -8,6 +8,8 @@ Pokémon Emerald: Legends is an unofficial, non-commercial Pokémon Emerald ROM-
 The project is intended to preserve the feel and structure of Pokémon Emerald while layering in modern quality-of-life improvements, configurable mechanics, expanded systems, and new features developed incrementally.
 
 The New Game / Continue / Options menu uses a soft lavender backdrop as of v0.0.13.1. v0.0.54 displays the current version at the right edge of its OPTION card, matching the native text; Debug includes the -D suffix.
+
+v0.0.89 added **walk-to-Surf** after the Balance Badge and seasonal Surf encounters on Hoenn Routes 115 and 118 and Kanto Routes 12 and 13. [Seasonal encounter tables](docs/features/seasonal-encounters.md#hoenn-and-kanto-surf-additions).
 
 v0.0.88.2 fixed the brief flash of stray pixels when opening the pause menu.
 
@@ -65,8 +67,8 @@ The project site provides two builds from the same source:
 
 - **Release (recommended):** https://babycrttv.github.io/pokeemerald-emerald-legends/patcher.html
 - **Debug / developer:** https://babycrttv.github.io/pokeemerald-emerald-legends/patcher.html?build=debug
-- **Release BPS:** https://babycrttv.github.io/pokeemerald-emerald-legends/downloads/Pokemon-Emerald-Legends-v0.0.88.2.bps
-- **Debug BPS:** https://babycrttv.github.io/pokeemerald-emerald-legends/downloads/Pokemon-Emerald-Legends-v0.0.88.2-debug.bps
+- **Release BPS:** https://babycrttv.github.io/pokeemerald-emerald-legends/downloads/Pokemon-Emerald-Legends-v0.0.89.bps
+- **Debug BPS:** https://babycrttv.github.io/pokeemerald-emerald-legends/downloads/Pokemon-Emerald-Legends-v0.0.89-debug.bps
 
 The Release and Debug builds contain the same Legends gameplay/content changes. Release disables developer entry points for a cleaner casual-player build. Debug retains the expansion's overworld/battle/sprite debug tools and title-screen Quickstart.
 

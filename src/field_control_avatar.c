@@ -67,6 +67,7 @@ static const u8 *GetInteractedObjectEventScript(struct MapPosition *, u8, enum D
 static const u8 *GetInteractedBackgroundEventScript(struct MapPosition *, u8, enum Direction);
 static const u8 *GetInteractedMetatileScript(struct MapPosition *, u8, enum Direction);
 static const u8 *GetInteractedWaterScript(struct MapPosition *, u8, enum Direction);
+static bool32 TryStartSeamlessSurf(const struct MapPosition *, u8, enum Direction);
 static bool32 TrySetupDiveDownScript(void);
 static bool32 TrySetupDiveEmergeScript(void);
 static bool8 CheckStandardWildEncounter(u16);
@@ -264,6 +265,10 @@ int ProcessPlayerFieldInput(struct FieldInput *input)
         TrySpecialOverworldEvo(); // Special vars set in CanTriggerSpinEvolution.
         return TRUE;
     }
+
+    if (input->heldDirection && input->dpadDirection == playerDirection
+     && TryStartSeamlessSurf(&position, metatileBehavior, playerDirection))
+        return TRUE;
 
     return FALSE;
 }
@@ -734,6 +739,27 @@ static const u8 *GetInteractedMetatileScript(struct MapPosition *position, u8 me
     }
 
     return NULL;
+}
+
+static bool32 TryStartSeamlessSurf(const struct MapPosition *position, u8 metatileBehavior, enum Direction direction)
+{
+    if (!TestPlayerAvatarFlags(PLAYER_AVATAR_FLAG_ON_FOOT | PLAYER_AVATAR_FLAG_DASH)
+     || GetPlayerMovementDirection() != direction
+     || !MetatileBehavior_IsSurfableFishableWater(metatileBehavior)
+     || MetatileBehavior_IsFastWater(metatileBehavior)
+     || !IsFieldMoveUnlocked(FIELD_MOVE_SURF)
+     || !CheckFollowerNPCFlag(FOLLOWER_NPC_FLAG_CAN_SURF)
+     || !IsPlayerFacingSurfableFishableWater())
+        return FALSE;
+
+    struct ObjectEvent *player = &gObjectEvents[gPlayerAvatar.objectEventId];
+    // The shoreline elevation is the only collision the mount may cross.
+    if (GetCollisionFlagsAtCoords(player, position->x, position->y, direction) != (1 << (COLLISION_ELEVATION_MISMATCH - 1))
+     || GetObjectEventIdByXY(position->x, position->y) != OBJECT_EVENTS_COUNT)
+        return FALSE;
+
+    StartSeamlessSurf();
+    return TRUE;
 }
 
 static const u8 *GetInteractedWaterScript(struct MapPosition *unused1, u8 metatileBehavior, enum Direction direction)

@@ -1,6 +1,6 @@
 {
   "wikiDexRevision": "1.6.6",
-  "gameVersion": "0.0.88.2",
+  "gameVersion": "0.0.89",
   "sourceCommit": "a023c35039bfe2de23ed3b4388bc22a9343d4690",
   "source": "src/data/wild_encounters.json, src/data/legends_seasonal_encounters.h and src/data/pokemon/species_info/gen_*_families.h",
   "methodNote": "Percentages are conditional encounter shares for the selected method and season, not chances per step. Native lure/ability modifiers, scripted encounters and gifts are separate.",
@@ -24304,6 +24304,264 @@
               "max": 30,
               "rate": 5
             }
+          ],
+          "seasonalVariants": [
+            {
+              "season": "spring",
+              "entries": [
+                {
+                  "id": "TENTACOOL",
+                  "min": 5,
+                  "max": 35,
+                  "rate": 60,
+                  "time": "all-day",
+                  "seasons": [
+                    "spring",
+                    "summer",
+                    "autumn",
+                    "winter"
+                  ]
+                },
+                {
+                  "id": "ALOMOMOLA",
+                  "min": 10,
+                  "max": 30,
+                  "rate": 30,
+                  "time": "all-day",
+                  "seasons": [
+                    "spring"
+                  ]
+                },
+                {
+                  "id": "LUVDISC",
+                  "min": 15,
+                  "max": 25,
+                  "rate": 5,
+                  "time": "all-day",
+                  "seasons": [
+                    "spring"
+                  ]
+                },
+                {
+                  "id": "WINGULL",
+                  "min": 25,
+                  "max": 30,
+                  "rate": 4,
+                  "time": "all-day",
+                  "seasons": [
+                    "spring",
+                    "summer",
+                    "autumn",
+                    "winter"
+                  ]
+                },
+                {
+                  "id": "PELIPPER",
+                  "min": 25,
+                  "max": 30,
+                  "rate": 1,
+                  "time": "all-day",
+                  "seasons": [
+                    "spring",
+                    "summer",
+                    "autumn",
+                    "winter"
+                  ]
+                }
+              ]
+            },
+            {
+              "season": "summer",
+              "entries": [
+                {
+                  "id": "TENTACOOL",
+                  "min": 5,
+                  "max": 35,
+                  "rate": 60,
+                  "time": "all-day",
+                  "seasons": [
+                    "spring",
+                    "summer",
+                    "autumn",
+                    "winter"
+                  ]
+                },
+                {
+                  "id": "FINIZEN",
+                  "min": 10,
+                  "max": 30,
+                  "rate": 30,
+                  "time": "all-day",
+                  "seasons": [
+                    "summer"
+                  ]
+                },
+                {
+                  "id": "VELUZA",
+                  "min": 15,
+                  "max": 25,
+                  "rate": 5,
+                  "time": "all-day",
+                  "seasons": [
+                    "summer"
+                  ]
+                },
+                {
+                  "id": "WINGULL",
+                  "min": 25,
+                  "max": 30,
+                  "rate": 4,
+                  "time": "all-day",
+                  "seasons": [
+                    "spring",
+                    "summer",
+                    "autumn",
+                    "winter"
+                  ]
+                },
+                {
+                  "id": "PELIPPER",
+                  "min": 25,
+                  "max": 30,
+                  "rate": 1,
+                  "time": "all-day",
+                  "seasons": [
+                    "spring",
+                    "summer",
+                    "autumn",
+                    "winter"
+                  ]
+                }
+              ]
+            },
+            {
+              "season": "autumn",
+              "entries": [
+                {
+                  "id": "TENTACOOL",
+                  "min": 5,
+                  "max": 35,
+                  "rate": 60,
+                  "time": "all-day",
+                  "seasons": [
+                    "spring",
+                    "summer",
+                    "autumn",
+                    "winter"
+                  ]
+                },
+                {
+                  "id": "CLAUNCHER",
+                  "min": 10,
+                  "max": 30,
+                  "rate": 30,
+                  "time": "all-day",
+                  "seasons": [
+                    "autumn"
+                  ]
+                },
+                {
+                  "id": "CRABRAWLER",
+                  "min": 15,
+                  "max": 25,
+                  "rate": 5,
+                  "time": "all-day",
+                  "seasons": [
+                    "autumn"
+                  ]
+                },
+                {
+                  "id": "WINGULL",
+                  "min": 25,
+                  "max": 30,
+                  "rate": 4,
+                  "time": "all-day",
+                  "seasons": [
+                    "spring",
+                    "summer",
+                    "autumn",
+                    "winter"
+                  ]
+                },
+                {
+                  "id": "PELIPPER",
+                  "min": 25,
+                  "max": 30,
+                  "rate": 1,
+                  "time": "all-day",
+                  "seasons": [
+                    "spring",
+                    "summer",
+                    "autumn",
+                    "winter"
+                  ]
+                }
+              ]
+            },
+            {
+              "season": "winter",
+              "entries": [
+                {
+                  "id": "TENTACOOL",
+                  "min": 5,
+                  "max": 35,
+                  "rate": 60,
+                  "time": "all-day",
+                  "seasons": [
+                    "spring",
+                    "summer",
+                    "autumn",
+                    "winter"
+                  ]
+                },
+                {
+                  "id": "WALREIN",
+                  "min": 10,
+                  "max": 30,
+                  "rate": 30,
+                  "time": "all-day",
+                  "seasons": [
+                    "winter"
+                  ]
+                },
+                {
+                  "id": "CHINCHOU",
+                  "min": 15,
+                  "max": 25,
+                  "rate": 5,
+                  "time": "all-day",
+                  "seasons": [
+                    "winter"
+                  ]
+                },
+                {
+                  "id": "WINGULL",
+                  "min": 25,
+                  "max": 30,
+                  "rate": 4,
+                  "time": "all-day",
+                  "seasons": [
+                    "spring",
+                    "summer",
+                    "autumn",
+                    "winter"
+                  ]
+                },
+                {
+                  "id": "PELIPPER",
+                  "min": 25,
+                  "max": 30,
+                  "rate": 1,
+                  "time": "all-day",
+                  "seasons": [
+                    "spring",
+                    "summer",
+                    "autumn",
+                    "winter"
+                  ]
+                }
+              ]
+            }
           ]
         },
         {
@@ -25853,6 +26111,264 @@
               "min": 25,
               "max": 30,
               "rate": 5
+            }
+          ],
+          "seasonalVariants": [
+            {
+              "season": "spring",
+              "entries": [
+                {
+                  "id": "TENTACOOL",
+                  "min": 5,
+                  "max": 35,
+                  "rate": 60,
+                  "time": "all-day",
+                  "seasons": [
+                    "spring",
+                    "summer",
+                    "autumn",
+                    "winter"
+                  ]
+                },
+                {
+                  "id": "DUCKLETT",
+                  "min": 10,
+                  "max": 30,
+                  "rate": 30,
+                  "time": "all-day",
+                  "seasons": [
+                    "spring"
+                  ]
+                },
+                {
+                  "id": "AZURILL",
+                  "min": 15,
+                  "max": 25,
+                  "rate": 5,
+                  "time": "all-day",
+                  "seasons": [
+                    "spring"
+                  ]
+                },
+                {
+                  "id": "WINGULL",
+                  "min": 25,
+                  "max": 30,
+                  "rate": 4,
+                  "time": "all-day",
+                  "seasons": [
+                    "spring",
+                    "summer",
+                    "autumn",
+                    "winter"
+                  ]
+                },
+                {
+                  "id": "PELIPPER",
+                  "min": 25,
+                  "max": 30,
+                  "rate": 1,
+                  "time": "all-day",
+                  "seasons": [
+                    "spring",
+                    "summer",
+                    "autumn",
+                    "winter"
+                  ]
+                }
+              ]
+            },
+            {
+              "season": "summer",
+              "entries": [
+                {
+                  "id": "TENTACOOL",
+                  "min": 5,
+                  "max": 35,
+                  "rate": 60,
+                  "time": "all-day",
+                  "seasons": [
+                    "spring",
+                    "summer",
+                    "autumn",
+                    "winter"
+                  ]
+                },
+                {
+                  "id": "TYMPOLE",
+                  "min": 10,
+                  "max": 30,
+                  "rate": 30,
+                  "time": "all-day",
+                  "seasons": [
+                    "summer"
+                  ]
+                },
+                {
+                  "id": "BASCULIN",
+                  "min": 15,
+                  "max": 25,
+                  "rate": 5,
+                  "time": "all-day",
+                  "seasons": [
+                    "summer"
+                  ]
+                },
+                {
+                  "id": "WINGULL",
+                  "min": 25,
+                  "max": 30,
+                  "rate": 4,
+                  "time": "all-day",
+                  "seasons": [
+                    "spring",
+                    "summer",
+                    "autumn",
+                    "winter"
+                  ]
+                },
+                {
+                  "id": "PELIPPER",
+                  "min": 25,
+                  "max": 30,
+                  "rate": 1,
+                  "time": "all-day",
+                  "seasons": [
+                    "spring",
+                    "summer",
+                    "autumn",
+                    "winter"
+                  ]
+                }
+              ]
+            },
+            {
+              "season": "autumn",
+              "entries": [
+                {
+                  "id": "TENTACOOL",
+                  "min": 5,
+                  "max": 35,
+                  "rate": 60,
+                  "time": "all-day",
+                  "seasons": [
+                    "spring",
+                    "summer",
+                    "autumn",
+                    "winter"
+                  ]
+                },
+                {
+                  "id": "CORPHISH",
+                  "min": 10,
+                  "max": 30,
+                  "rate": 30,
+                  "time": "all-day",
+                  "seasons": [
+                    "autumn"
+                  ]
+                },
+                {
+                  "id": "CHEWTLE",
+                  "min": 15,
+                  "max": 25,
+                  "rate": 5,
+                  "time": "all-day",
+                  "seasons": [
+                    "autumn"
+                  ]
+                },
+                {
+                  "id": "WINGULL",
+                  "min": 25,
+                  "max": 30,
+                  "rate": 4,
+                  "time": "all-day",
+                  "seasons": [
+                    "spring",
+                    "summer",
+                    "autumn",
+                    "winter"
+                  ]
+                },
+                {
+                  "id": "PELIPPER",
+                  "min": 25,
+                  "max": 30,
+                  "rate": 1,
+                  "time": "all-day",
+                  "seasons": [
+                    "spring",
+                    "summer",
+                    "autumn",
+                    "winter"
+                  ]
+                }
+              ]
+            },
+            {
+              "season": "winter",
+              "entries": [
+                {
+                  "id": "TENTACOOL",
+                  "min": 5,
+                  "max": 35,
+                  "rate": 60,
+                  "time": "all-day",
+                  "seasons": [
+                    "spring",
+                    "summer",
+                    "autumn",
+                    "winter"
+                  ]
+                },
+                {
+                  "id": "WOOPER",
+                  "min": 10,
+                  "max": 30,
+                  "rate": 30,
+                  "time": "all-day",
+                  "seasons": [
+                    "winter"
+                  ]
+                },
+                {
+                  "id": "GOLDUCK",
+                  "min": 15,
+                  "max": 25,
+                  "rate": 5,
+                  "time": "all-day",
+                  "seasons": [
+                    "winter"
+                  ]
+                },
+                {
+                  "id": "WINGULL",
+                  "min": 25,
+                  "max": 30,
+                  "rate": 4,
+                  "time": "all-day",
+                  "seasons": [
+                    "spring",
+                    "summer",
+                    "autumn",
+                    "winter"
+                  ]
+                },
+                {
+                  "id": "PELIPPER",
+                  "min": 25,
+                  "max": 30,
+                  "rate": 1,
+                  "time": "all-day",
+                  "seasons": [
+                    "spring",
+                    "summer",
+                    "autumn",
+                    "winter"
+                  ]
+                }
+              ]
             }
           ]
         },
@@ -38650,6 +39166,160 @@
               "max": 40,
               "rate": 100
             }
+          ],
+          "seasonalVariants": [
+            {
+              "season": "spring",
+              "entries": [
+                {
+                  "id": "TENTACOOL",
+                  "min": 5,
+                  "max": 40,
+                  "rate": 65,
+                  "time": "all-day",
+                  "seasons": [
+                    "spring",
+                    "summer",
+                    "autumn",
+                    "winter"
+                  ]
+                },
+                {
+                  "id": "HUNTAIL",
+                  "min": 10,
+                  "max": 20,
+                  "rate": 30,
+                  "time": "all-day",
+                  "seasons": [
+                    "spring"
+                  ]
+                },
+                {
+                  "id": "GOREBYSS",
+                  "min": 20,
+                  "max": 30,
+                  "rate": 5,
+                  "time": "all-day",
+                  "seasons": [
+                    "spring"
+                  ]
+                }
+              ]
+            },
+            {
+              "season": "summer",
+              "entries": [
+                {
+                  "id": "TENTACOOL",
+                  "min": 5,
+                  "max": 40,
+                  "rate": 65,
+                  "time": "all-day",
+                  "seasons": [
+                    "spring",
+                    "summer",
+                    "autumn",
+                    "winter"
+                  ]
+                },
+                {
+                  "id": "OCTILLERY",
+                  "min": 10,
+                  "max": 20,
+                  "rate": 30,
+                  "time": "all-day",
+                  "seasons": [
+                    "summer"
+                  ]
+                },
+                {
+                  "id": "PYUKUMUKU",
+                  "min": 20,
+                  "max": 30,
+                  "rate": 5,
+                  "time": "all-day",
+                  "seasons": [
+                    "summer"
+                  ]
+                }
+              ]
+            },
+            {
+              "season": "autumn",
+              "entries": [
+                {
+                  "id": "TENTACOOL",
+                  "min": 5,
+                  "max": 40,
+                  "rate": 65,
+                  "time": "all-day",
+                  "seasons": [
+                    "spring",
+                    "summer",
+                    "autumn",
+                    "winter"
+                  ]
+                },
+                {
+                  "id": "DRAGALGE",
+                  "min": 10,
+                  "max": 20,
+                  "rate": 30,
+                  "time": "all-day",
+                  "seasons": [
+                    "autumn"
+                  ]
+                },
+                {
+                  "id": "TOXAPEX",
+                  "min": 20,
+                  "max": 30,
+                  "rate": 5,
+                  "time": "all-day",
+                  "seasons": [
+                    "autumn"
+                  ]
+                }
+              ]
+            },
+            {
+              "season": "winter",
+              "entries": [
+                {
+                  "id": "TENTACOOL",
+                  "min": 5,
+                  "max": 40,
+                  "rate": 65,
+                  "time": "all-day",
+                  "seasons": [
+                    "spring",
+                    "summer",
+                    "autumn",
+                    "winter"
+                  ]
+                },
+                {
+                  "id": "SEALEO",
+                  "min": 10,
+                  "max": 20,
+                  "rate": 30,
+                  "time": "all-day",
+                  "seasons": [
+                    "winter"
+                  ]
+                },
+                {
+                  "id": "VAPOREON",
+                  "min": 20,
+                  "max": 30,
+                  "rate": 5,
+                  "time": "all-day",
+                  "seasons": [
+                    "winter"
+                  ]
+                }
+              ]
+            }
           ]
         },
         {
@@ -39189,6 +39859,160 @@
               "min": 5,
               "max": 40,
               "rate": 100
+            }
+          ],
+          "seasonalVariants": [
+            {
+              "season": "spring",
+              "entries": [
+                {
+                  "id": "TENTACOOL",
+                  "min": 5,
+                  "max": 40,
+                  "rate": 65,
+                  "time": "all-day",
+                  "seasons": [
+                    "spring",
+                    "summer",
+                    "autumn",
+                    "winter"
+                  ]
+                },
+                {
+                  "id": "STARMIE",
+                  "min": 10,
+                  "max": 20,
+                  "rate": 30,
+                  "time": "all-day",
+                  "seasons": [
+                    "spring"
+                  ]
+                },
+                {
+                  "id": "WIMPOD",
+                  "min": 20,
+                  "max": 30,
+                  "rate": 5,
+                  "time": "all-day",
+                  "seasons": [
+                    "spring"
+                  ]
+                }
+              ]
+            },
+            {
+              "season": "summer",
+              "entries": [
+                {
+                  "id": "TENTACOOL",
+                  "min": 5,
+                  "max": 40,
+                  "rate": 65,
+                  "time": "all-day",
+                  "seasons": [
+                    "spring",
+                    "summer",
+                    "autumn",
+                    "winter"
+                  ]
+                },
+                {
+                  "id": "BARRASKEWDA",
+                  "min": 10,
+                  "max": 20,
+                  "rate": 30,
+                  "time": "all-day",
+                  "seasons": [
+                    "summer"
+                  ]
+                },
+                {
+                  "id": "WUGTRIO",
+                  "min": 20,
+                  "max": 30,
+                  "rate": 5,
+                  "time": "all-day",
+                  "seasons": [
+                    "summer"
+                  ]
+                }
+              ]
+            },
+            {
+              "season": "autumn",
+              "entries": [
+                {
+                  "id": "TENTACOOL",
+                  "min": 5,
+                  "max": 40,
+                  "rate": 65,
+                  "time": "all-day",
+                  "seasons": [
+                    "spring",
+                    "summer",
+                    "autumn",
+                    "winter"
+                  ]
+                },
+                {
+                  "id": "CRAWDAUNT",
+                  "min": 10,
+                  "max": 20,
+                  "rate": 30,
+                  "time": "all-day",
+                  "seasons": [
+                    "autumn"
+                  ]
+                },
+                {
+                  "id": "GOLISOPOD",
+                  "min": 20,
+                  "max": 30,
+                  "rate": 5,
+                  "time": "all-day",
+                  "seasons": [
+                    "autumn"
+                  ]
+                }
+              ]
+            },
+            {
+              "season": "winter",
+              "entries": [
+                {
+                  "id": "TENTACOOL",
+                  "min": 5,
+                  "max": 40,
+                  "rate": 65,
+                  "time": "all-day",
+                  "seasons": [
+                    "spring",
+                    "summer",
+                    "autumn",
+                    "winter"
+                  ]
+                },
+                {
+                  "id": "LANTURN",
+                  "min": 10,
+                  "max": 20,
+                  "rate": 30,
+                  "time": "all-day",
+                  "seasons": [
+                    "winter"
+                  ]
+                },
+                {
+                  "id": "CLOYSTER",
+                  "min": 20,
+                  "max": 30,
+                  "rate": 5,
+                  "time": "all-day",
+                  "seasons": [
+                    "winter"
+                  ]
+                }
+              ]
             }
           ]
         },
@@ -47451,10 +48275,10 @@
   "lastManualReview": "2026-11-05",
   "seasonalStatus": "published",
   "seasonalSource": {
-    "baseGameVersion": "0.0.87",
-    "baseCommit": "a023c35039bfe2de23ed3b4388bc22a9343d4690",
-    "headerSha256": "24432061f7982e4d045da8599a7c18ccb0aacd4abba58c516d8a85e3e2c065e0",
-    "note": "Read from pinned game source."
+    "baseGameVersion": "0.0.89",
+    "baseCommit": "051609b18d99efe34c9c4696cb889d7152426f7a",
+    "headerSha256": "105ba257f0e41731ed6b9ea362f043425eb0be73825eda06a568304e06da781a",
+    "note": "Seasonal table source from the approved gameplay commit used in v0.0.89. The artwork and base data retain their existing source pin."
   },
   "grottoSource": {
     "path": "src/data/legends/grotto_encounters.json",

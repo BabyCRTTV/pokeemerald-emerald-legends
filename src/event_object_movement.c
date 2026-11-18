@@ -9721,6 +9721,12 @@ static void GetGroundEffectFlags_Tracks(struct ObjectEvent *objEvent, u32 *flags
     if (objEvent->directionOverwrite)
         return;
 
+    // A Surf takeoff can start on a beach edge whose sand tile includes water pixels.
+    if (objEvent->isPlayer
+     && TestPlayerAvatarFlags(PLAYER_AVATAR_FLAG_SURFING)
+     && MetatileBehavior_IsSurfableFishableWater(objEvent->currentMetatileBehavior))
+        return;
+
     if (MetatileBehavior_IsDeepSand(objEvent->previousMetatileBehavior))
         *flags |= GROUND_EFFECT_FLAG_DEEP_SAND;
     else if (MetatileBehavior_IsSandOrDeepSand(objEvent->previousMetatileBehavior)

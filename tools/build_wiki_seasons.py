@@ -36,20 +36,22 @@ kanto_expansion=(
  {(f'Kanto{r}','land') for r in [*range(6,19),'21_NORTH']}
  | {(f'Kanto{r}','surf') for r in [19,20,'21_NORTH','21_SOUTH']}
 )
+hoenn_surf_expansion={('115','surf'),('118','surf')}
+kanto_surf_expansion={('Kanto12','surf'),('Kanto13','surf')}
 kanto={key for key in tables if key[0].startswith('Kanto')}
 assert kanto in [set(),*[
  {(route,method,season) for route,method in batch for season in SEASONS}
- for batch in [kanto_initial,kanto_initial|kanto_expansion]
+ for batch in [kanto_initial,kanto_initial|kanto_expansion,kanto_initial|kanto_expansion|kanto_surf_expansion]
 ]]
 land={key for key in tables if key[1]=='land' and key not in kanto}
 assert land in [{(str(r),'land',s) for r in routes for s in SEASONS} for routes in [range(101,105),[*range(101,105),110,111,112],[*range(101,105),*range(110,117)],[*range(101,105),*range(110,122)],[*range(101,105),*range(110,122),123]]]
 water={key for key in tables if key[1]=='surf' and key not in kanto}
-assert not water or water in [{(str(r),'surf',s) for r in routes for s in SEASONS} for routes in [range(105,109),range(105,110),[*range(105,110),122,124,125,126],[*range(105,110),122,*range(124,132)],[*range(105,110),122,*range(124,135)]]]
-assert (len(land),len(water)) in [(16,0),(16,16),(28,20),(44,20),(64,20),(68,36),(68,56),(68,68)]
+assert not water or water in [{(str(r),'surf',s) for r in routes for s in SEASONS} for routes in [range(105,109),range(105,110),[*range(105,110),122,124,125,126],[*range(105,110),122,*range(124,132)],[*range(105,110),122,*range(124,135)],[*range(105,110),115,118,122,*range(124,135)]]]
+assert (len(land),len(water)) in [(16,0),(16,16),(28,20),(44,20),(64,20),(68,36),(68,56),(68,68),(68,76)]
 managed=(
  {(str(r),'land') for r in [*range(101,105),*range(110,122),123]}
  | {(str(r),'surf') for r in [*range(105,110),122,*range(124,135)]}
- | kanto_initial | kanto_expansion
+ | kanto_initial | kanto_expansion | hoenn_surf_expansion | kanto_surf_expansion
 )
 forms=[dict(id='SANDSHREW_ALOLA',formOf='SANDSHREW',num=None,name='Alolan Sandshrew',types=['ICE','STEEL'],category='Mouse',stats=[50,75,90,10,35,40],sprite='sandshrew/alola',crySpecies='SANDSHREW'),dict(id='DEERLING_AUTUMN',formOf='DEERLING',num=None,name='Autumn Deerling',types=['NORMAL','GRASS'],category='Season',stats=[60,60,50,40,50,75],sprite='deerling/autumn',crySpecies='DEERLING')]
 for form in forms:

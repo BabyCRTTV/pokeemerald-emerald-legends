@@ -1,5 +1,19 @@
 # Development handoff
 
+## v0.0.89 Surf release preparation (18 November 2026)
+
+**Model: GPT-6.2 Sol | Reasoning: publish the approved Surf commit with matching game and wiki version labels.**
+
+The owner approved publication of PR #113. This candidate advances the game and site to v0.0.89 and matches the LegendsDex roster to the approved coastal tables. The sprite atlas and base encounter data retain their existing pin. The [native preview evidence](qa/walk-to-surf-preview.json) records the Route 115 mount and footprint checks and all four seasonal Surf routes. Candidate and production patch checks and Pages promotion are pending.
+
+## Walk-to-Surf and four coastal seasonal tables (17 November 2026)
+
+**Model: GPT-6.2 Sol | Reasoning: keep shoreline collision and progression gates, then enter the existing Surf effect directly from D-pad movement.**
+
+Walking onto passable water now starts Surf after the Balance Badge. The player takes a short hop onto the Surf creature and continues with the held D-pad direction. The manual field action and dismount still use their existing inputs. The wardrobe renderer resolves palette substitutions per pose to reduce stalls during the sprite switch. Hoenn Routes 115/118 and Kanto Routes 12/13 have seasonal Surf tables with their original slot levels and rates. The draft LegendsDex data includes all four rosters and retains the current sprite atlas source pin.
+
+The local Debug and Release builds passed focused mGBA 0.10.5 gameplay checks. The Route 115 release capture used a normal Continue and held D-pad input. Both baseline gates, return to land, the manual prompt, custom hair and boots, and 32 compiled seasonal/DexNav cases passed. The hop revision starts on the shoreline frame in the default outfit and releases controls 16 frames later. The custom hair and boots fixture adds 11 frames before launch. A capture review traced the white flash to the deep-water landing splash drawn over the rider. The automatic mount now suppresses that splash and restores the prior landing-effect setting when the hop ends. The owner identified a second artifact from the final footprint on the mixed sand-and-water tile. Surf takeoff now skips that print. mGBA verified the approach prints and prints after dismount, and Release hop timing matched the earlier capture. Draft only. Candidate patch checks and wiki promotion belong to the release step. [Preview evidence](qa/walk-to-surf-preview.json).
+
 ## v0.0.88.2 pause menu opening fix published and verified (17 November 2026)
 
 **Model: GPT-6 | Reasoning: keep the pause menu tilemap hidden while the corresponding graphics are prepared and verify the release bytes.**

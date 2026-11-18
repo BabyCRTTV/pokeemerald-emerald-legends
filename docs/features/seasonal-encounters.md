@@ -535,3 +535,16 @@ Surf on Routes 19–20 and both halves of Route 21 gains 32 distinct visitors. T
 | 21 South | Summer | Mantine | Bruxish |
 | 21 South | Autumn | Corphish | Mareanie |
 | 21 South | Winter | Relicanth | Dewgong |
+
+## Hoenn and Kanto Surf additions
+
+Hoenn Routes 115 and 118 and Kanto Routes 12 and 13 gain two rotating Surf visitors per season. Each pair below lists the 30% visitor first and the 5% visitor second. Native per-slot levels and encounter rates carry forward.
+
+| Route | Spring | Summer | Autumn | Winter |
+|---|---|---|---|---|
+| Hoenn 115 | Alomomola, Luvdisc | Finizen, Veluza | Clauncher, Crabrawler | Walrein, Chinchou |
+| Hoenn 118 | Ducklett, Azurill | Tympole, Basculin | Corphish, Chewtle | Wooper, Golduck |
+| Kanto 12 | Huntail, Gorebyss | Octillery, Pyukumuku | Dragalge, Toxapex | Sealeo, Vaporeon |
+| Kanto 13 | Starmie, Wimpod | Barraskewda, Wugtrio | Crawdaunt, Golisopod | Lanturn, Cloyster |
+
+Tentacool, Wingull, and Pelipper account for 65% of Surf encounters on these Hoenn routes. Tentacool accounts for 65% on these Kanto routes. The LegendsDex and walkthrough use the same seasonal tables.

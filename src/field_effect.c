@@ -203,7 +203,7 @@ static void Task_SurfFieldEffect(u8);
 static void SurfFieldEffect_Init(struct Task *);
 static void SurfFieldEffect_FieldMovePose(struct Task *);
 static void SurfFieldEffect_ShowMon(struct Task *);
-static void SurfFieldEffect_JumpOnSurfBlob(struct Task *);
+static void SurfFieldEffect_Mount(struct Task *);
 static void SurfFieldEffect_End(struct Task *);
 
 static void SpriteCB_NPCFlyOut(struct Sprite *);
@@ -3342,7 +3342,24 @@ static void SpriteCB_FieldMoveMonSlideOffscreen(struct Sprite *sprite)
 #define tState data[0]
 #define tDestX data[1]
 #define tDestY data[2]
+#define tPreviousLandingEffectDisable data[3]
 #define tMonId data[15]
+
+enum
+{
+    SURF_EFFECT_INIT,
+    SURF_EFFECT_POSE,
+    SURF_EFFECT_SHOW_MON,
+    SURF_EFFECT_MOUNT,
+    SURF_EFFECT_END,
+};
+
+void StartSeamlessSurf(void)
+{
+    // PARTY_SIZE cannot be a party index. This entry uses the mount directly.
+    gFieldEffectArguments[0] = PARTY_SIZE;
+    FieldEffectStart(FLDEFF_USE_SURF);
+}
 
 u8 FldEff_UseSurf(void)
 {
@@ -3354,11 +3371,11 @@ u8 FldEff_UseSurf(void)
 }
 
 static void (*const sSurfFieldEffectFuncs[])(struct Task *) = {
-    SurfFieldEffect_Init,
-    SurfFieldEffect_FieldMovePose,
-    SurfFieldEffect_ShowMon,
-    SurfFieldEffect_JumpOnSurfBlob,
-    SurfFieldEffect_End,
+    [SURF_EFFECT_INIT] = SurfFieldEffect_Init,
+    [SURF_EFFECT_POSE] = SurfFieldEffect_FieldMovePose,
+    [SURF_EFFECT_SHOW_MON] = SurfFieldEffect_ShowMon,
+    [SURF_EFFECT_MOUNT] = SurfFieldEffect_Mount,
+    [SURF_EFFECT_END] = SurfFieldEffect_End,
 };
 
 static void Task_SurfFieldEffect(u8 taskId)
@@ -3376,7 +3393,15 @@ static void SurfFieldEffect_Init(struct Task *task)
     SetPlayerAvatarStateMask(PLAYER_AVATAR_FLAG_SURFING);
     PlayerGetDestCoords(&task->tDestX, &task->tDestY);
     MoveCoords(gObjectEvents[gPlayerAvatar.objectEventId].movementDirection, &task->tDestX, &task->tDestY);
-    task->tState++;
+    if (task->tMonId == PARTY_SIZE)
+    {
+        task->tState = SURF_EFFECT_MOUNT;
+        SurfFieldEffect_Mount(task);
+    }
+    else
+    {
+        task->tState = SURF_EFFECT_POSE;
+    }
 }
 
 static void SurfFieldEffect_FieldMovePose(struct Task *task)
@@ -3404,23 +3429,36 @@ static void SurfFieldEffect_ShowMon(struct Task *task)
     }
 }
 
-static void SurfFieldEffect_JumpOnSurfBlob(struct Task *task)
+static void SurfFieldEffect_Mount(struct Task *task)
 {
-    struct ObjectEvent *objectEvent;
-    if (!FieldEffectActiveListContains(FLDEFF_FIELD_MOVE_SHOW_MON))
-    {
-        objectEvent = &gObjectEvents[gPlayerAvatar.objectEventId];
-        ObjectEventSetGraphicsId(objectEvent, GetPlayerAvatarGraphicsIdByStateId(PLAYER_AVATAR_STATE_SURFING));
-        ObjectEventClearHeldMovementIfFinished(objectEvent);
-        ObjectEventSetHeldMovement(objectEvent, GetJumpSpecialMovementAction(objectEvent->movementDirection));
-        FollowerNPC_FollowerToWater();
+    bool32 seamless = task->tMonId == PARTY_SIZE;
+    struct ObjectEvent *objectEvent = &gObjectEvents[gPlayerAvatar.objectEventId];
 
-        gFieldEffectArguments[0] = task->tDestX;
-        gFieldEffectArguments[1] = task->tDestY;
-        gFieldEffectArguments[2] = gPlayerAvatar.objectEventId;
-        objectEvent->fieldEffectSpriteId = FieldEffectStart(FLDEFF_SURF_BLOB);
-        task->tState++;
+    if (!seamless && FieldEffectActiveListContains(FLDEFF_FIELD_MOVE_SHOW_MON))
+        return;
+
+    ObjectEventClearHeldMovementIfFinished(objectEvent);
+    if (seamless && ObjectEventIsMovementOverridden(objectEvent))
+        return;
+
+    ObjectEventSetGraphicsId(objectEvent, GetPlayerAvatarGraphicsIdByStateId(PLAYER_AVATAR_STATE_SURFING));
+    if (seamless)
+    {
+        // The rider lands on the Surf creature. A water splash would cover it.
+        task->tPreviousLandingEffectDisable = objectEvent->disableJumpLandingGroundEffect;
+        objectEvent->disableJumpLandingGroundEffect = TRUE;
     }
+    // The automatic mount takes one normal jump instead of the slower field-move jump.
+    ObjectEventSetHeldMovement(objectEvent, seamless
+        ? GetJumpMovementAction(objectEvent->movementDirection)
+        : GetJumpSpecialMovementAction(objectEvent->movementDirection));
+    FollowerNPC_FollowerToWater();
+
+    gFieldEffectArguments[0] = task->tDestX;
+    gFieldEffectArguments[1] = task->tDestY;
+    gFieldEffectArguments[2] = gPlayerAvatar.objectEventId;
+    objectEvent->fieldEffectSpriteId = FieldEffectStart(FLDEFF_SURF_BLOB);
+    task->tState = SURF_EFFECT_END;
 }
 
 static void SurfFieldEffect_End(struct Task *task)
@@ -3429,6 +3467,8 @@ static void SurfFieldEffect_End(struct Task *task)
     struct ObjectEvent *followerObject = GetFollowerObject();
     if (ObjectEventClearHeldMovementIfFinished(objectEvent))
     {
+        if (task->tMonId == PARTY_SIZE)
+            objectEvent->disableJumpLandingGroundEffect = task->tPreviousLandingEffectDisable;
         gPlayerAvatar.preventStep = FALSE;
         gPlayerAvatar.flags &= ~PLAYER_AVATAR_FLAG_CONTROLLABLE;
         ObjectEventSetHeldMovement(objectEvent, GetFaceDirectionMovementAction(objectEvent->movementDirection));
@@ -3446,6 +3486,7 @@ static void SurfFieldEffect_End(struct Task *task)
 #undef tState
 #undef tDestX
 #undef tDestY
+#undef tPreviousLandingEffectDisable
 #undef tMonId
 
 u8 FldEff_RayquazaSpotlight(void)
