@@ -13,148 +13,160 @@
 #include "task.h"
 #include "trainer_pokemon_sprites.h"
 #include "window.h"
+#include "trig.h"
 #include "constants/rgb.h"
 #include "constants/songs.h"
 
 enum BathStage { LATHER, RINSE, DRY, CLEAN };
+enum BathGraphic { BRUSH, PAIL, TOWEL, SUDS, DROP, GLINT };
+enum { TOOL_TAG = 0x4B17, EFFECT_COUNT = 6, BATH_WATERLINE = 80 };
+
 static EWRAM_DATA struct {
-    u8 slot;
-    u16 sprite;
-    u8 stage, progress, rinseFrames, bounce;
+    u8 slot, stage, progress, rinseFrames, bounce;
+    u16 sprite, clock;
+    u8 tool, effects[EFFECT_COUNT];
     u8 name[POKEMON_NAME_LENGTH + 1];
 } sBath = {0};
 
-static const struct BgTemplate sBg[] = {{.bg = 0, .mapBaseIndex = 31}};
-static const struct WindowTemplate sWindow[] = {
-    {.width = 30, .height = 20, .paletteNum = 15, .baseBlock = 1}, DUMMY_WIN_TEMPLATE
+static const u32 sRoom[] = INCGFX_U32("graphics/legends/grooming/bathroom.png", ".8bpp.lz");
+static const u16 sRoomPalette[] = INCGFX_U16("graphics/legends/grooming/bathroom.png", ".gbapal");
+static const u32 sTools[] = INCGFX_U32("graphics/legends/grooming/tools.png", ".4bpp");
+static const u16 sToolPalette[] = INCGFX_U16("graphics/legends/grooming/tools.png", ".gbapal");
+static const struct SpriteSheet sToolSheet = {sTools, sizeof(sTools), TOOL_TAG};
+static const struct SpritePalette sToolColors = {sToolPalette, TOOL_TAG};
+static const struct OamData sObj = {.size = SPRITE_SIZE(32x32)};
+static const struct SpriteTemplate sToolTemplate = {
+    .tileTag = TOOL_TAG, .paletteTag = TOOL_TAG, .oam = &sObj,
+    .anims = gDummySpriteAnimTable, .affineAnims = gDummySpriteAffineAnimTable,
+    .callback = SpriteCallbackDummy,
 };
-enum { INK = 1, TILE, GROUT, WHITE, ICE, WATER, TEAL, NAVY, CREAM, GOLD, CORAL, DEEP, SHADE, MINT, BLUE };
-static const u16 sColors[] = {
-    RGB(0,0,0), RGB(4,9,12), RGB(23,29,28), RGB(18,25,25), RGB(31,31,29),
-    RGB(25,31,31), RGB(11,25,28), RGB(5,17,19), RGB(4,12,15), RGB(31,29,22),
-    RGB(29,22,11), RGB(28,15,12), RGB(6,20,24), RGB(14,22,22), RGB(15,27,24), RGB(12,19,25)
+static const struct BgTemplate sBg[] = {
+    {.bg = 0, .mapBaseIndex = 31},
+    {.bg = 1, .charBaseIndex = 1, .mapBaseIndex = 30, .paletteMode = 1, .priority = 2},
+};
+enum { HEADER, CONTROLS };
+static const struct WindowTemplate sWindow[] = {
+    {.width = 30, .height = 2, .paletteNum = 15, .baseBlock = 1},
+    {.tilemapTop = 15, .width = 30, .height = 5, .paletteNum = 15, .baseBlock = 61},
+    DUMMY_WIN_TEMPLATE
+};
+// Preserve standard keypad glyph indices 1-3 and the system button outlines.
+enum { PAPER = 1, INK, SILVER, SEA, FOAM, TRACK, COMPLETED, ACTIVE };
+static const u16 sUiColors[16] = {
+    0, RGB_WHITE, RGB(6,10,13), RGB(23,25,24), RGB(7,14,15), RGB(29,31,27),
+    RGB(24,26,24), RGB(9,19,17), RGB(6,17,17), RGB(20,24,27),
+    RGB_WHITE, RGB(25,25,27), RGB(25,25,27), RGB(28,30,31), RGB(25,25,27), RGB(13,14,15)
 };
 static const u8 *const sStageNames[] = {
-    COMPOUND_STRING("Lather"), COMPOUND_STRING("Rinse"), COMPOUND_STRING("Towel dry"), COMPOUND_STRING("All clean!")
+    COMPOUND_STRING("Lather"), COMPOUND_STRING("Rinse"), COMPOUND_STRING("Dry")
 };
 
-static void Rect(u8 color, u8 x, u8 y, u8 w, u8 h)
-{
-    FillWindowPixelRect(0, color, x, y, w, h);
-}
-
-static void Label(const u8 *text, u8 font, u8 x, u8 y, u8 color)
+static void Label(u8 window, const u8 *text, u8 font, u8 x, u8 y, u8 color)
 {
     const u8 colors[] = {0, color, 0};
-    AddTextPrinterParameterized3(0, font, x, y, colors, TEXT_SKIP_DRAW, text);
+    AddTextPrinterParameterized3(window, font, x, y, colors, TEXT_SKIP_DRAW, text);
 }
 
-static void Bubble(u8 x, u8 y)
+static void DrawHeader(void)
 {
-    Rect(TEAL, x+1, y, 4, 6);
-    Rect(TEAL, x, y+1, 6, 4);
-    Rect(ICE, x+1, y+1, 4, 4);
-    Rect(WATER, x+2, y+3, 3, 2);
-    Rect(WHITE, x+1, y+1, 2, 1);
+    FillWindowPixelBuffer(HEADER, 0);
+    Label(HEADER, COMPOUND_STRING("GROOMING KIT"), FONT_SMALL, 23, 1, PAPER);
+    Label(HEADER, sBath.name, FONT_SMALL, 230 - GetStringWidth(FONT_SMALL, sBath.name, 0), 1, FOAM);
+    PutWindowTilemap(HEADER);
+    CopyWindowToVram(HEADER, COPYWIN_FULL);
 }
 
-static void DrawBath(void)
+static void DrawControls(void)
 {
-    u8 i;
-    FillWindowPixelBuffer(0, PIXEL_FILL(TILE));
-    for (i = 0; i < 5; i++)
+    const u8 *hint;
+    FillWindowPixelBuffer(CONTROLS, 0);
+    for (u8 i = 0; i < CLEAN; i++)
     {
-        u16 x;
-        u8 y = 19 + i * 18;
-        Rect(GROUT, 0, y, 240, 1);
-        for (x = (i & 1) * 16; x < 232; x += 32)
-            Rect(GROUT, x, y+1, 1, 17);
+        u8 x = 12 + i * 46;
+        bool32 active = i == sBath.stage;
+        u8 fill = active ? ACTIVE : TRACK;
+        FillWindowPixelRect(CONTROLS, fill, x + 2, 0, 37, 13);
+        FillWindowPixelRect(CONTROLS, fill, x, 2, 41, 9);
+        Label(CONTROLS, sStageNames[i], FONT_SMALL,
+              x + (41 - GetStringWidth(FONT_SMALL, sStageNames[i], 0)) / 2, 0, active ? PAPER : INK);
     }
-    Rect(NAVY, 0, 0, 240, 19);
-    Label(COMPOUND_STRING("GROOMING KIT"), FONT_SMALL, 8, 2, ICE);
-    Label(sBath.name, FONT_SMALL, 157, 2, WHITE);
+    for (u8 i = 0; i < 6; i++)
+    {
+        u8 fill = (i < sBath.progress || sBath.stage == CLEAN) ? COMPLETED : TRACK;
+        FillWindowPixelRect(CONTROLS, fill, 168 + 10 * i, 5, 8, 4);
+    }
+    switch (sBath.stage)
+    {
+    case LATHER:
+        hint = (sBath.progress & 1) ? COMPOUND_STRING("{DPAD_RIGHT} Brush right") : COMPOUND_STRING("{DPAD_LEFT} Brush left");
+        break;
+    case RINSE: hint = COMPOUND_STRING("Hold {A_BUTTON} to rinse"); break;
+    case DRY:   hint = COMPOUND_STRING("Tap {A_BUTTON} to pat dry"); break;
+    default:    hint = COMPOUND_STRING("All clean!"); break;
+    }
+    Label(CONTROLS, hint, FONT_NORMAL, 13, 16, INK);
+    Label(CONTROLS, sBath.stage == CLEAN ? COMPOUND_STRING("{A_BUTTON} Done") : COMPOUND_STRING("{B_BUTTON} Leave"),
+          FONT_SMALL, 183, 18, SEA);
+    PutWindowTilemap(CONTROLS);
+    CopyWindowToVram(CONTROLS, COPYWIN_FULL);
+}
 
-    // Enamel basin, rolled rim, water reflections and two brass feet.
-    Rect(SHADE, 43, 106, 151, 3);
-    Rect(GOLD, 58, 101, 10, 7);
-    Rect(GOLD, 171, 101, 10, 7);
-    Rect(TEAL, 42, 81, 156, 8);
-    Rect(TEAL, 44, 89, 152, 5);
-    Rect(TEAL, 47, 94, 146, 4);
-    Rect(TEAL, 50, 98, 140, 5);
-    Rect(WHITE, 44, 82, 152, 7);
-    Rect(WHITE, 46, 89, 148, 5);
-    Rect(ICE, 49, 94, 142, 3);
-    Rect(ICE, 50, 95, 140, 4);
-    Rect(MINT, 53, 99, 134, 2);
-    Rect(TEAL, 37, 76, 166, 6);
-    Rect(TEAL, 39, 82, 162, 2);
-    Rect(WHITE, 39, 75, 162, 6);
-    Rect(WATER, 43, 76, 154, 3);
-    Rect(ICE, 51, 77, 15, 1);
-    Rect(ICE, 167, 77, 20, 1);
-    // Faucet and folded towels on the two sides of the bath.
-    Rect(TEAL, 182, 49, 7, 26);
-    Rect(TEAL, 169, 46, 17, 6);
-    Rect(TEAL, 167, 49, 6, 7);
-    Rect(ICE, 171, 47, 13, 2);
-    Rect(ICE, 183, 51, 2, 21);
-    Rect(CORAL, 181, 43, 10, 3);
-    Rect(TEAL, 14, 86, 27, 4);
-    Rect(GOLD, 16, 81, 23, 5);
-    Rect(CREAM, 18, 81, 20, 3);
-    Rect(CORAL, 19, 76, 19, 5);
-    Rect(CREAM, 22, 77, 2, 3);
+// All six 32x32 frames share one sheet. The tool and foam sit in front of
+// the party sprite, so a brush stroke actually crosses the Pokémon's coat.
+static void PlaceGraphic(u8 id, u8 frame, s16 x, s16 y, bool32 visible)
+{
+    if (id >= MAX_SPRITES)
+        return;
+    struct Sprite *sprite = &gSprites[id];
+    sprite->invisible = !visible;
+    sprite->oam.tileNum = sprite->sheetTileStart + frame * 16;
+    sprite->x = x;
+    sprite->y = y;
+}
 
-    for (i = 0; i < (sBath.stage == LATHER ? sBath.progress : sBath.stage == RINSE ? 6 - sBath.progress : 0); i++)
-        Bubble(i & 1 ? 150 + i : 79 - i, 74 - i * 5);
+static void AnimateBath(void)
+{
+    u8 phase = sBath.clock++;
+    s16 bodyY = gSprites[sBath.sprite].y;
+    s16 side = (sBath.progress & 1) ? -1 : 1;
+    s16 glide = 20 - (sBath.bounce * 5 / 2);
+    u8 visible = sBath.progress;
+    u8 effect = SUDS;
     if (sBath.stage == LATHER)
-    {
-        u8 x = sBath.progress & 1 ? 140 : 86;
-        Rect(GOLD, x, 58, 14, 7);
-        Rect(GOLD, x+2, 56, 11, 11);
-        Rect(CREAM, x+1, 58, 12, 6);
-        Rect(GOLD, x+3, 61, 2, 2);
-        Rect(GOLD, x+8, 59, 2, 2);
-        if (sBath.progress)
-            Bubble(x+9, 53);
-    }
-    if (sBath.stage == DRY)
-    {
-        u8 x = sBath.progress & 1 ? 137 : 88;
-        Rect(TEAL, x, 50, 17, 15);
-        Rect(CORAL, x+1, 49, 15, 14);
-        Rect(CREAM, x+3, 50, 2, 13);
-        Rect(WHITE, x+1, 61, 15, 1);
-    }
-    if (sBath.stage == RINSE)
-        for (i = 0; i < 4; i++)
-            Rect(WATER, 167 - i * 3, 57 + i * 4 + (sBath.progress & 1), 2, 3);
-    if (sBath.stage == CLEAN || sBath.stage == DRY)
-        for (i = 0; i < (sBath.stage == CLEAN ? 6 : sBath.progress); i++)
-        {
-            u8 x = i & 1 ? 146+i*2 : 92-i*3;
-            u8 y = 66-i*6;
-            Rect(GOLD, x, y+2, 5, 1);
-            Rect(WHITE, x+2, y, 1, 5);
-        }
-    Rect(NAVY, 0, 111, 240, 49);
-    Rect(TEAL, 0, 111, 240, 2);
-    Label(sStageNames[sBath.stage], FONT_NORMAL, 9, 115, WHITE);
-    for (i = 0; i < 6; i++)
-        Rect(i < sBath.progress || sBath.stage == CLEAN ? MINT : TEAL, 153 + 13*i, 123, 10, 4);
-    const u8 *hint = COMPOUND_STRING("A  Finish");
-    if (sBath.stage == LATHER)
-        hint = sBath.progress & 1 ? COMPOUND_STRING("{RIGHT_ARROW} Scrub right") : COMPOUND_STRING("{LEFT_ARROW} Scrub left");
+        PlaceGraphic(sBath.tool, BRUSH, 120 + side * glide, bodyY + 4 + Sin((u8)(phase * 3), 1), TRUE);
     else if (sBath.stage == RINSE)
-        hint = COMPOUND_STRING("Hold A to rinse");
+    {
+        PlaceGraphic(sBath.tool, PAIL, 144, bodyY - 16 + Sin((u8)(phase * 2), 1), TRUE);
+        effect = DROP;
+        visible = JOY_HELD(A_BUTTON) ? EFFECT_COUNT : 0;
+    }
     else if (sBath.stage == DRY)
-        hint = COMPOUND_STRING("Tap A to pat dry");
-    Label(hint, FONT_SMALL, 9, 140, CREAM);
-    if (sBath.stage != CLEAN)
-        Label(COMPOUND_STRING("B  Leave"), FONT_SMALL, 183, 140, ICE);
-    PutWindowTilemap(0);
-    CopyWindowToVram(0, COPYWIN_FULL);
+    {
+        PlaceGraphic(sBath.tool, TOWEL, 120 + side * glide, bodyY - 7 + sBath.bounce / 3, TRUE);
+        effect = GLINT;
+    }
+    else
+    {
+        PlaceGraphic(sBath.tool, TOWEL, 0, 0, FALSE);
+        effect = GLINT;
+        visible = EFFECT_COUNT;
+    }
+    for (u8 i = 0; i < EFFECT_COUNT; i++)
+    {
+        u8 cycle = (phase + i * 9) & 31;
+        s16 x, y;
+        if (effect == DROP)
+        {
+            x = 133 - cycle / 3 + (i & 1) * 4;
+            y = bodyY - 11 + cycle * 2 / 3;
+        }
+        else
+        {
+            x = 120 + (i & 1 ? 1 : -1) * (16 + i * 2) + Sin((u8)(phase * 2 + i * 38), 2);
+            y = bodyY + 7 - (i / 2) * 9 - cycle / 4;
+        }
+        PlaceGraphic(sBath.effects[i], effect, x, y, i < visible && (effect == DROP || cycle < 25));
+    }
 }
 
 static void BathVBlank(void)
@@ -167,6 +179,13 @@ static void BathVBlank(void)
 static void ExitBath(void)
 {
     SetVBlankCallback(NULL);
+    for (u8 i = 0; i < EFFECT_COUNT; i++)
+        if (sBath.effects[i] < MAX_SPRITES)
+            DestroySprite(&gSprites[sBath.effects[i]]);
+    if (sBath.tool < MAX_SPRITES)
+        DestroySprite(&gSprites[sBath.tool]);
+    FreeSpriteTilesByTag(TOOL_TAG);
+    FreeSpritePaletteByTag(TOOL_TAG);
     if (sBath.sprite < MAX_SPRITES)
         FreeAndDestroyMonPicSprite(sBath.sprite);
     FreeAllWindowBuffers();
@@ -200,7 +219,7 @@ static void BathMain(void)
     if (stroke)
     {
         PlaySE(sBath.stage == DRY ? SE_SELECT : SE_M_BUBBLE);
-        sBath.bounce = 7;
+        sBath.bounce = 16;
         if (++sBath.progress == 6)
         {
             sBath.progress = 0;
@@ -216,11 +235,12 @@ static void BathMain(void)
                 PlayCry_Normal(GetMonData(mon, MON_DATA_SPECIES), 0);
             }
         }
-        DrawBath();
+        DrawControls();
     }
     if (sBath.bounce)
         sBath.bounce--;
-    gSprites[sBath.sprite].y2 = -(sBath.bounce / 2);
+    gSprites[sBath.sprite].y2 = -(sBath.bounce / 6);
+    AnimateBath();
     AnimateSprites();
     BuildOamBuffer();
 }
@@ -237,6 +257,8 @@ static void InitBath(void)
     InitBgsFromTemplates(0, sBg, ARRAY_COUNT(sBg));
     ChangeBgX(0, 0, BG_COORD_SET);
     ChangeBgY(0, 0, BG_COORD_SET);
+    ChangeBgX(1, 0, BG_COORD_SET);
+    ChangeBgY(1, 0, BG_COORD_SET);
     ResetPaletteFade();
     ResetTasks();
     ResetSpriteData();
@@ -247,18 +269,41 @@ static void InitBath(void)
         return;
     }
     DeactivateAllTextPrinters();
-    LoadPalette(sColors, BG_PLTT_ID(15), sizeof(sColors));
-    sBath.sprite = CreateMonPicSprite(GetMonData(mon, MON_DATA_SPECIES), IsMonShiny(mon),
-        GetMonData(mon, MON_DATA_PERSONALITY), TRUE, 119, 56, 6, TAG_NONE);
+    LZ77UnCompVram(sRoom, (void *)BG_CHAR_ADDR(1));
+    u16 *map = (u16 *)BG_SCREEN_ADDR(30);
+    for (u8 y = 0; y < 20; y++)
+        for (u8 x = 0; x < 30; x++)
+            map[y * 32 + x] = y * 30 + x;
+    LoadPalette(sRoomPalette, 0, min(sizeof(sRoomPalette), BG_PLTT_ID(15) * sizeof(u16)));
+    LoadPalette(sUiColors, BG_PLTT_ID(15), sizeof(sUiColors));
+    enum Species species = GetMonData(mon, MON_DATA_SPECIES);
+    sBath.sprite = CreateMonPicSprite(species, IsMonShiny(mon),
+        GetMonData(mon, MON_DATA_PERSONALITY), TRUE, 120, BATH_WATERLINE - 28 + gSpeciesInfo[species].frontPicYOffset, 6, TAG_NONE);
     if (sBath.sprite >= MAX_SPRITES)
     {
         ExitBath();
         return;
     }
-    DrawBath();
+    gSprites[sBath.sprite].oam.priority = 1;
+    if (LoadSpriteSheet(&sToolSheet) == TAG_NONE || LoadSpritePalette(&sToolColors) == 0xFF)
+    {
+        ExitBath();
+        return;
+    }
+    sBath.tool = CreateSprite(&sToolTemplate, 0, 0, 0);
+    for (u8 i = 0; i < EFFECT_COUNT; i++)
+        sBath.effects[i] = CreateSprite(&sToolTemplate, 0, 0, 1);
+    AnimateBath();
+    DrawHeader();
+    DrawControls();
     SetGpuReg(REG_OFFSET_BLDCNT, 0);
-    SetGpuReg(REG_OFFSET_DISPCNT, DISPCNT_OBJ_ON | DISPCNT_OBJ_1D_MAP);
+    SetGpuReg(REG_OFFSET_DISPCNT, DISPCNT_OBJ_ON | DISPCNT_OBJ_1D_MAP | DISPCNT_WIN0_ON);
+    SetGpuReg(REG_OFFSET_WIN0H, 240);
+    SetGpuReg(REG_OFFSET_WIN0V, BATH_WATERLINE);
+    SetGpuReg(REG_OFFSET_WININ, WININ_WIN0_ALL);
+    SetGpuReg(REG_OFFSET_WINOUT, WINOUT_WIN01_BG_ALL);
     ShowBg(0);
+    ShowBg(1);
     SetVBlankCallback(BathVBlank);
     SetMainCallback2(BathMain);
 }
@@ -274,6 +319,8 @@ void GroomingStart(void)
     memset(&sBath, 0, sizeof(sBath));
     sBath.slot = gSpecialVar_0x8004;
     sBath.sprite = MAX_SPRITES;
+    sBath.tool = MAX_SPRITES;
+    memset(sBath.effects, MAX_SPRITES, sizeof(sBath.effects));
     GetMonData(&gParties[B_TRAINER_PLAYER][sBath.slot], MON_DATA_NICKNAME, sBath.name);
     StringGet_Nickname(sBath.name);
     CleanupOverworldWindowsAndTilemaps();

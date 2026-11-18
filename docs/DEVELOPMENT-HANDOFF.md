@@ -1,5 +1,9 @@
 # Development handoff
 
+## Grooming Kit interface revision · draft PR 117
+
+Model: GPT-6.2 | Rebuilt the bath with layered room artwork, a species-aligned waterline, animated wash tools, native button glyphs and Emerald's dialogue frame. Debug mGBA exercised Mudkip, Wailord and Joltik through every stage, cancel, completion reward and Center revisit. Release mGBA loaded the saved kit through Continue and completed the Mudkip bath. Awaiting visual review.
+
 ## Grooming Kit gameplay preview
 
 Model: GPT-6.2 | The first visit to a Pokémon Center lobby offers a reusable kit after existing map events. Bag and PC ownership prevent repeat gifts and a full bag can retry on re-entry. Appended item 948 fits the existing item history bitmap. The selected party member gains one friendship point on completing the three interactive stages. Debug mGBA verified the Oldale gift, registered kit, party selection, all bath stages, completion reward, early exit and revisit. Release mGBA reopened the battery through Continue and completed the bath with the registered kit. Item history and legacy save layout regressions passed. Preview awaiting owner review.
