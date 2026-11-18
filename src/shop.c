@@ -15,6 +15,7 @@
 #include "item.h"
 #include "item_icon.h"
 #include "item_menu.h"
+#include "legends_meals.h"
 #include "list_menu.h"
 #include "main.h"
 #include "malloc.h"
@@ -103,6 +104,9 @@ struct ShopData
     u16 selectedRow;
     u16 scrollOffset;
     u16 maxQuantity;
+    enum Item pinnedMeal;
+    enum Item missingIngredients[LEGENDS_RECIPE_INGREDIENTS];
+    u8 missingCount;
     u8 scrollIndicatorsTaskId;
     u8 iconSlot;
     u8 itemSpriteIds[2];
@@ -168,6 +172,8 @@ static const struct YesNoFuncTable sShopPurchaseYesNoFuncs =
 };
 
 static const u8 sText_Ingredients[] = _("INGREDIENTS");
+static const u8 sText_RecipeNeedMarker[] = _("×1");
+static const u8 sRecipeNeedColors[] = {TEXT_COLOR_TRANSPARENT, TEXT_COLOR_RED, TEXT_COLOR_LIGHT_RED};
 static const u16 sIngredients[] =
 {
     ITEM_BUTTER, ITEM_EGG, ITEM_COOKING_WATER,
@@ -563,6 +569,10 @@ static void CB2_InitBuyMenu(void)
         sShopData->scrollIndicatorsTaskId = TASK_NONE;
         sShopData->itemSpriteIds[0] = SPRITE_NONE;
         sShopData->itemSpriteIds[1] = SPRITE_NONE;
+        if (sMartInfo.itemList == sIngredients)
+            sShopData->pinnedMeal = LegendsGetPinnedRecipe();
+        if (sShopData->pinnedMeal != ITEM_NONE)
+            sShopData->missingCount = LegendsGetMissingRecipeIngredients(sShopData->pinnedMeal, sShopData->missingIngredients);
         if (sMartInfo.martType == MART_TYPE_NORMAL)
             TryBuildDynamicShopItemList(&sMartInfo.itemList, &sMartInfo.itemCount);
         BuyMenuBuildListMenuTemplate();
@@ -603,20 +613,40 @@ static void BuyMenuFreeMemory(void)
     FreeAllWindowBuffers();
 }
 
+static bool32 BuyMenuIsMissingIngredient(enum Item item)
+{
+    for (u32 i = 0; i < sShopData->missingCount; i++)
+        if (sShopData->missingIngredients[i] == item)
+            return TRUE;
+    return FALSE;
+}
+
 static void BuyMenuBuildListMenuTemplate(void)
 {
     u16 i;
+    u16 neededRow = 0;
 
     sListMenuItems = Alloc((sMartInfo.itemCount + 1) * sizeof(*sListMenuItems));
     sItemNames = Alloc((sMartInfo.itemCount + 1) * sizeof(*sItemNames));
     for (i = 0; i < sMartInfo.itemCount; i++)
-        BuyMenuSetListEntry(&sListMenuItems[i], sMartInfo.itemList[i], sItemNames[i]);
+    {
+        enum Item item = sMartInfo.itemList[i];
+        u16 row = i;
+        if (BuyMenuIsMissingIngredient(item))
+        {
+            row = neededRow++;
+            memmove(&sListMenuItems[row + 1], &sListMenuItems[row], (i - row) * sizeof(*sListMenuItems));
+        }
+        BuyMenuSetListEntry(&sListMenuItems[row], item, sItemNames[i]);
+    }
 
     StringCopy(sItemNames[i], gText_Cancel2);
     sListMenuItems[i].name = sItemNames[i];
     sListMenuItems[i].id = LIST_CANCEL;
 
     gMultiuseListMenuTemplate = sShopBuyMenuListTemplate;
+    if (sShopData->pinnedMeal != ITEM_NONE)
+        gMultiuseListMenuTemplate.textNarrowWidth = 68;
     gMultiuseListMenuTemplate.items = sListMenuItems;
     gMultiuseListMenuTemplate.totalItems = sMartInfo.itemCount + 1;
     if (gMultiuseListMenuTemplate.totalItems > MAX_ITEMS_SHOWN)
@@ -651,6 +681,34 @@ static void BuyMenuPrintItemDescriptionAndShowItemIcon(s32 item, bool8 onInit, s
 
     BuyMenuRemoveItemIcon(item, sShopData->iconSlot ^ 1);
     sShopData->iconSlot ^= 1;
+    if (sShopData->pinnedMeal != ITEM_NONE && item != LIST_CANCEL)
+    {
+        const u8 *status = COMPOUND_STRING("Ready to cook!");
+        const u8 *name = GetItemName(sShopData->pinnedMeal);
+        const u8 *ink = sShopBuyMenuTextColors[COLORID_NORMAL];
+
+        if (BuyMenuIsMissingIngredient(item))
+        {
+            status = COMPOUND_STRING("×1 needed");
+            ink = sRecipeNeedColors;
+        }
+        else if (sShopData->missingCount != 0)
+        {
+            ConvertIntToDecimalStringN(gStringVar1, sShopData->missingCount, STR_CONV_MODE_LEFT_ALIGN, 1);
+            StringExpandPlaceholders(gStringVar4, COMPOUND_STRING("Still needed: {STR_VAR_1}"));
+            status = gStringVar4;
+        }
+
+        FillWindowPixelBuffer(WIN_ITEM_DESCRIPTION, PIXEL_FILL(TEXT_COLOR_WHITE));
+        AddTextPrinterParameterized4(WIN_ITEM_DESCRIPTION, FONT_SMALL, 4, 1, 0, 0,
+            sShopBuyMenuTextColors[COLORID_NORMAL], TEXT_SKIP_DRAW, COMPOUND_STRING("Shopping list"));
+        AddTextPrinterParameterized4(WIN_ITEM_DESCRIPTION, GetFontIdToFit(name, FONT_NARROW, 0, 104), 4, 13, 0, 0,
+            sShopBuyMenuTextColors[COLORID_NORMAL], TEXT_SKIP_DRAW, name);
+        AddTextPrinterParameterized4(WIN_ITEM_DESCRIPTION, FONT_SMALL, 4, 32, 0, 0,
+            ink, TEXT_SKIP_DRAW, status);
+        CopyWindowToVram(WIN_ITEM_DESCRIPTION, COPYWIN_GFX);
+        return;
+    }
     if (item != LIST_CANCEL)
     {
         if (sMartInfo.martType == MART_TYPE_NORMAL)
@@ -696,6 +754,8 @@ static void BuyMenuPrintPriceInList(u8 windowId, u32 itemId, u8 y)
             StringExpandPlaceholders(gStringVar4, gText_PokedollarVar1);
         x = GetStringRightAlignXOffset(FONT_NARROW, gStringVar4, 120);
         AddTextPrinterParameterized4(windowId, FONT_NARROW, x, y, 0, 0, sShopBuyMenuTextColors[COLORID_ITEM_LIST], TEXT_SKIP_DRAW, gStringVar4);
+        if (BuyMenuIsMissingIngredient(itemId))
+            AddTextPrinterParameterized4(windowId, FONT_SMALL_NARROW, 79, y + 2, 0, 0, sRecipeNeedColors, TEXT_SKIP_DRAW, sText_RecipeNeedMarker);
     }
 }
 
@@ -1268,6 +1328,8 @@ static void BuyMenuReturnToItemList(u8 taskId)
     s16 *data = gTasks[taskId].data;
 
     ClearDialogWindowAndFrameToTransparent(WIN_MESSAGE, FALSE);
+    if (sShopData->pinnedMeal != ITEM_NONE)
+        sShopData->missingCount = LegendsGetMissingRecipeIngredients(sShopData->pinnedMeal, sShopData->missingIngredients);
     RedrawListMenu(tListTaskId);
     BuyMenuPrintCursor(tListTaskId, COLORID_ITEM_LIST);
     PutWindowTilemap(WIN_ITEM_LIST);

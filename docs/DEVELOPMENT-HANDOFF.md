@@ -1,5 +1,13 @@
 # Development handoff
 
+## Recipe shopping list preview (17 November 2026)
+
+**Model: GPT-6.2 | Reasoning: use the cooking requirements and current Bag to drive a single saved shopping list.**
+
+SELECT in a recipe preview pins that meal, switches the pin to another meal, or clears the current pin. Poké Mart INGREDIENTS opens with missing items first and shows one unit needed per marked ingredient. After a purchase the marker clears and the cursor stays put. The panel shows when the Bag contains the full recipe. SaveBlock3 appends one tagged item ID at offset 1384, bringing the size to 1388. Earlier fields keep their offsets and legacy saves open with an empty list.
+
+Both native builds compiled. mGBA 0.10.5 Debug verified the Mess Kit pin, unpin and replacement, held Peach Oatmeal at the Mart, and canceled then bought Oats for ₽35. The live list changed to Ready to cook. An unmodified Release run used normal Continue with controlled pre-feature, pinned-missing, and pinned-ready batteries. It verified both pinned statuses and the ordinary BUY stock. Host tests covered the recipe catalog, save sectors, Bag limits, and storage codec. Draft for review.
+
 ## v0.0.88.2 pause menu opening fix published and verified (17 November 2026)
 
 **Model: GPT-6 | Reasoning: keep the pause menu tilemap hidden while the corresponding graphics are prepared and verify the release bytes.**

@@ -100,7 +100,7 @@ static void ApplyNewEncryptionKeyToAllEncryptedData(u32 key){ApplyNewEncryptionK
 #define LEGENDS_MEAL_SLOTS 3
 struct LegendsMealBuff {u16 item,framesLeft;};
 struct LegendsMealSave {u32 signature;struct LegendsMealBuff buffs[LEGENDS_MEAL_SLOTS];};
-static struct {struct LegendsMealSave meals;} save3,*gSaveBlock3Ptr=&save3;
+static struct {struct LegendsMealSave meals; u32 pinnedRecipe;} save3,*gSaveBlock3Ptr=&save3;
 #include "legends_meals.h"
 #define FLAG_SET_ITEM_OBTAINED 1
 static void GetSetItemObtained(enum Item item,int mode){(void)item;(void)mode;}
