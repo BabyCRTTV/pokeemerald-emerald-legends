@@ -1,8 +1,8 @@
 # Development handoff
 
-## v0.0.90 Hoenn Postcards release approval
+## v0.0.90 Hoenn Postcards published and verified
 
-Model: GPT-6.2 Astra. The owner approved the revised full-screen prints. Prepared both build versions, download paths, changelogs and the walkthrough for publication from PR 116. The encounter tables and Dex assets are identical to v0.0.89.
+Model: GPT-6.2 Astra. PR #116 shipped the Oldale photographer, 16 scenic signs and the approved full-screen Postcard Case in Release and Debug. The walkthrough lists every sign and LegendsDex displays v0.0.90. Candidate and production built the same tree and produced identical patches and ROM hashes. Both decoders reconstructed the tested builds. Verified 22 public files, including both patches, the browser patcher and the player guides. [Release evidence](qa/hoenn-postcards-v0.0.90.json).
 
 ## Hoenn Postcards photo revision · draft PR 116
 

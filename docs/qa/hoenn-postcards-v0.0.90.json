@@ -1,0 +1,285 @@
+{
+  "version": "0.0.90",
+  "status": "published",
+  "pullRequest": 116,
+  "approvedGameplay": "1291f5e7cae621b35f9601f80410347f021d02f3",
+  "candidate": {
+    "version": "0.0.90",
+    "workflow_head": "ef59c7d7116b754e45ecfb3f183a5d2e83fb4ab4",
+    "checkout": "44ad2474658fca31a09c34cf5fc237e16f653456",
+    "tree": "d8f0c3684a05d978653638cf6776c7462fcc7cc4",
+    "artifact_id": 14448350045,
+    "run_id": 44346249678,
+    "artifact_digest": "sha256:98a8a7db11a3b0205ff0bde9463c632f075c7afc08bf34bea05ce9c5c972ba30",
+    "payload_sha256": {
+      "Pokemon-Emerald-Legends-v0.0.90.bps": "e6f8557d55610b89fa6b8fdb0ea8aed0b39e6a779191cd5ebd35c01d68f25471",
+      "Pokemon-Emerald-Legends-v0.0.90-debug.bps": "a46595314ec9b80aa889166ed20b7301211756fd30d521f3f6d9504c8478a04d",
+      "SHA256SUMS.txt": "97bb100bb88f8c8bf09f50fdfbef1e5481e15ac960e1f6b080fcd3419d83865d",
+      "browser-decoder-verification.json": "d057911729683d19dc773ca3b1ebd7c1997c9f91477724d34e5c809d6147d372"
+    },
+    "native_ROM_sha256": {
+      "pokeemerald.gba": "097ea1abb184af9d6a66f05087a4454ed83b2635f634631087c09e926cc0f03c",
+      "pokeemerald-release.gba": "395fde11ef839e530bc1aa14293e7f610bc8c8a9768f35ec01b6a8ae5acf3019"
+    },
+    "native_receipts": 16,
+    "decoders": [
+      "Floating IPS",
+      "Browser patcher"
+    ]
+  },
+  "production": {
+    "version": "0.0.90",
+    "workflow_head": "fbc77d8a1e657526a34c48d09b92698c73cc03a2",
+    "checkout": "fbc77d8a1e657526a34c48d09b92698c73cc03a2",
+    "tree": "d8f0c3684a05d978653638cf6776c7462fcc7cc4",
+    "artifact_id": 14448083845,
+    "run_id": 44348912413,
+    "artifact_digest": "sha256:1f8d09430835b4fa27dbe800c7e0cebbf908617bea2d9782bf4b215456c77748",
+    "payload_sha256": {
+      "Pokemon-Emerald-Legends-v0.0.90.bps": "e6f8557d55610b89fa6b8fdb0ea8aed0b39e6a779191cd5ebd35c01d68f25471",
+      "Pokemon-Emerald-Legends-v0.0.90-debug.bps": "a46595314ec9b80aa889166ed20b7301211756fd30d521f3f6d9504c8478a04d",
+      "SHA256SUMS.txt": "97bb100bb88f8c8bf09f50fdfbef1e5481e15ac960e1f6b080fcd3419d83865d",
+      "browser-decoder-verification.json": "d057911729683d19dc773ca3b1ebd7c1997c9f91477724d34e5c809d6147d372"
+    },
+    "native_ROM_sha256": {
+      "pokeemerald.gba": "097ea1abb184af9d6a66f05087a4454ed83b2635f634631087c09e926cc0f03c",
+      "pokeemerald-release.gba": "395fde11ef839e530bc1aa14293e7f610bc8c8a9768f35ec01b6a8ae5acf3019"
+    },
+    "native_receipts": 16,
+    "decoders": [
+      "Floating IPS",
+      "Browser patcher"
+    ]
+  },
+  "gates": {
+    "build-release-patch.yml": {
+      "id": 44348912413,
+      "input_sha256": "b86bb29df5cf9e8ea8705cbce5650a3d161859df4b166d67346b799bb3636d26",
+      "run_attempt": 1,
+      "source_commit": "fbc77d8a1e657526a34c48d09b92698c73cc03a2",
+      "workflow": "build-release-patch.yml"
+    },
+    "legends-checks.yml": {
+      "id": 44348911686,
+      "input_sha256": "8a04baf81463666a778d06c12874046623286bc9d7d230b39ee0764ee5095749",
+      "run_attempt": 1,
+      "source_commit": "fbc77d8a1e657526a34c48d09b92698c73cc03a2",
+      "workflow": "legends-checks.yml"
+    },
+    "wiki-apk.yml": {
+      "id": 44348911578,
+      "input_sha256": "c2a4bfed184b4a08e701f5734691b496c821251a7c713e1522fd5df0507e4d31",
+      "run_attempt": 1,
+      "source_commit": "fbc77d8a1e657526a34c48d09b92698c73cc03a2",
+      "workflow": "wiki-apk.yml"
+    },
+    "wiki-checks.yml": {
+      "id": 44348911374,
+      "input_sha256": "5529c40e4cf5348eb3d014cf7e638f269d8dd3756cf888165463840d8fc4372a",
+      "run_attempt": 1,
+      "source_commit": "fbc77d8a1e657526a34c48d09b92698c73cc03a2",
+      "workflow": "wiki-checks.yml"
+    },
+    "wiki-windows.yml": {
+      "id": 44348911580,
+      "input_sha256": "cdfb0e86bde674f576f88dce369903fe0b4a1f5a06d1058471ac8cbeacca3d60",
+      "run_attempt": 1,
+      "source_commit": "fbc77d8a1e657526a34c48d09b92698c73cc03a2",
+      "workflow": "wiki-windows.yml"
+    }
+  },
+  "siteSource": "408aa9186060c5f54c215e239101983b38375aa3",
+  "pagesRun": 44352558627,
+  "pagesEvidenceArtifact": 14449750784,
+  "liveVerification": {
+    "version": "0.0.90",
+    "verified_at_UTC": "2026-11-18T16:56:49.584906+00:00",
+    "passed": true,
+    "files": [
+      {
+        "path": "index.html",
+        "passed": true,
+        "HTTP": 200,
+        "bytes": 3686,
+        "sha256": "cb6e549f36fe325446eac80979afb5e02f48848442eafe732b43b7774f26191c",
+        "Git_blob_sha1": "c4fd13de0837527950de78456bee6f5ffe1f7085"
+      },
+      {
+        "path": "patcher.html",
+        "passed": true,
+        "HTTP": 200,
+        "bytes": 2675,
+        "sha256": "741d39541443f98ce91150f05d42ce49846ea6a2f9fb7ddb6cedaae2822f05d4",
+        "Git_blob_sha1": "27a5a2a73f1793907be98b1e9da9cee76d3f739e"
+      },
+      {
+        "path": "patcher.js",
+        "passed": true,
+        "HTTP": 200,
+        "bytes": 9353,
+        "sha256": "7a99bee2017d6832bc5c851c93ca58c3fc146089e46f6dd197897acfb9acff51",
+        "Git_blob_sha1": "8debacae87365a09e884c6eb0a2c34f96fcac396"
+      },
+      {
+        "path": "changelog.html",
+        "passed": true,
+        "HTTP": 200,
+        "bytes": 146922,
+        "sha256": "695b0a423c004c1ed27a2bb438731796aac62f6bdaaa4d98c5bdbcd1ddc92282",
+        "Git_blob_sha1": "32c3de505143f0a99811c546b5aa1e9da3df45b5"
+      },
+      {
+        "path": "wiki/index.html",
+        "passed": true,
+        "HTTP": 200,
+        "bytes": 16533,
+        "sha256": "24f00921efa34a46bbe29e95c4c5ff789ce797b32ab970a92d2217342b8955ef",
+        "Git_blob_sha1": "db11ba413facfd9784123ab1df6f7f335d05baec"
+      },
+      {
+        "path": "wiki/dex.html",
+        "passed": true,
+        "HTTP": 200,
+        "bytes": 10502,
+        "sha256": "c478bbf6fadfe51f9fb6e31bdf4ffc8c6c37cdf40a69c84dfdc1d75db6771c7b",
+        "Git_blob_sha1": "db657932d26c33af1e86a1d75fba5dcde62ee8a7"
+      },
+      {
+        "path": "wiki/dex-data.json",
+        "passed": true,
+        "HTTP": 200,
+        "bytes": 1043678,
+        "sha256": "b7b3fa2baeae1e3af3193fe9b081a7907cd3d3b51cc8e02a41104655773d4871",
+        "Git_blob_sha1": "ed1e6e97efce410845548f38f897434ba88c2189"
+      },
+      {
+        "path": "wiki/dex-profiles.js",
+        "passed": true,
+        "HTTP": 200,
+        "bytes": 178691,
+        "sha256": "94a33eecaa4db890e1d83ae2d72178f4b5da0e09f540722fc11f960337e21f46",
+        "Git_blob_sha1": "525d50af9190d5f021e0ee7f64368d67349ac2df"
+      },
+      {
+        "path": "wiki/dex-sprite-atlas.js",
+        "passed": true,
+        "HTTP": 200,
+        "bytes": 18786,
+        "sha256": "26a18b0129c9466e23cc1776e31fcdba43c9a37d4096eb58fb4b9e65a9dd67be",
+        "Git_blob_sha1": "851ee125d32ea1b5a70b41c7e1e844dd4bb2c2e5"
+      },
+      {
+        "path": "wiki/dex-sprite-atlas.webp",
+        "passed": true,
+        "HTTP": 200,
+        "bytes": 153584,
+        "sha256": "55bdf244830f30f9aeb5eeddb8f628b6885eccb2e95b171dac14df9b529190df",
+        "Git_blob_sha1": "dd91aded78d44fc6aea679a678a0274edb93add1"
+      },
+      {
+        "path": "wiki/dex-portrait-sources.json",
+        "passed": true,
+        "HTTP": 200,
+        "bytes": 342,
+        "sha256": "2c17e0a52652ce35256de95b9cdb50c556f79c4d1b053b03d5c4fbaa3c87e972",
+        "Git_blob_sha1": "ef218050da398c16997008e2f8b7ff8946a777d1"
+      },
+      {
+        "path": "wiki/map-hoenn.png",
+        "passed": true,
+        "HTTP": 200,
+        "bytes": 6757,
+        "sha256": "6abac3457dd2c588173b001c7f5ad37b58b4429ff50d3d54373f2fe868e5f625",
+        "Git_blob_sha1": "10f2d26f42c381c2af7f51a7c835b4b3b190107f"
+      },
+      {
+        "path": "wiki/map-kanto.png",
+        "passed": true,
+        "HTTP": 200,
+        "bytes": 3728,
+        "sha256": "bc89ff01cbc5dca3fe849d2c0d872c1e98b57a450663d72a7a210d3645b495f0",
+        "Git_blob_sha1": "241cf5864b38426d1cc75ebfa70b865afdcbcac3"
+      },
+      {
+        "path": "wiki/walkthrough-maps.json",
+        "passed": true,
+        "HTTP": 200,
+        "bytes": 119879,
+        "sha256": "06f6fbb943b78c6dae376c3f8af98be66f3b960e4dee322dd33eb872cff3a1a3",
+        "Git_blob_sha1": "dc8fe0e355da37982294e644e6de48e9c9fa5c2a"
+      },
+      {
+        "path": "wiki/android-version.json",
+        "passed": true,
+        "HTTP": 200,
+        "bytes": 399,
+        "sha256": "e34e5b41b07dc69569ca2eb266093ce5e634615cba426422edbcfc8bcf8f35d5",
+        "Git_blob_sha1": "eef161550efb41e023e6e11884b964dc01713bc2"
+      },
+      {
+        "path": "wiki/windows-version.json",
+        "passed": true,
+        "HTTP": 200,
+        "bytes": 275,
+        "sha256": "d3f23fad770094fc5e07443506fb1d8326d861ecf0bd856a1ea0159b7c7b3444",
+        "Git_blob_sha1": "400f9131cb6393e1bb6efb823c92411258e77896"
+      },
+      {
+        "path": "features/eon-roamers.md",
+        "passed": true,
+        "HTTP": 200,
+        "bytes": 2244,
+        "sha256": "5839b026abdd24d2ea62ef1359559d7ddf0d402efae50726473a2b79c56e1aad",
+        "Git_blob_sha1": "1f1bdffaf6978eba649ba9d0c521cc0bc937171c"
+      },
+      {
+        "path": "downloads/SHA256SUMS.txt",
+        "passed": true,
+        "HTTP": 200,
+        "bytes": 412,
+        "sha256": "97bb100bb88f8c8bf09f50fdfbef1e5481e15ac960e1f6b080fcd3419d83865d",
+        "Git_blob_sha1": "152ea51f33433de3f0d9567e84f23a359d5c061e"
+      },
+      {
+        "path": "downloads/Pokemon-Emerald-Legends-v0.0.90-debug.bps",
+        "passed": true,
+        "HTTP": 200,
+        "bytes": 17535172,
+        "sha256": "a46595314ec9b80aa889166ed20b7301211756fd30d521f3f6d9504c8478a04d",
+        "Git_blob_sha1": "e5182bb6c459ec0a616a756772d8c54521a5c2bd",
+        "source_CRC32": "1f1c08fb",
+        "target_CRC32": "3d757da2",
+        "patch_CRC_passed": true
+      },
+      {
+        "path": "downloads/Pokemon-Emerald-Legends-v0.0.90.bps",
+        "passed": true,
+        "HTTP": 200,
+        "bytes": 17709270,
+        "sha256": "e6f8557d55610b89fa6b8fdb0ea8aed0b39e6a779191cd5ebd35c01d68f25471",
+        "Git_blob_sha1": "8b4996572a881335e3d97ff02985f1bdc95e3c28",
+        "source_CRC32": "1f1c08fb",
+        "target_CRC32": "52378979",
+        "patch_CRC_passed": true
+      },
+      {
+        "path": "release-publication.json",
+        "passed": true,
+        "HTTP": 200,
+        "bytes": 259507,
+        "sha256": "3f3874e179a47fa892494622912ac2d2973438210e64ce8dfe9ba5691bc21a0e",
+        "Git_blob_sha1": "e0a9b4f5293461a7a976bddc95e95f59a5f0686a"
+      },
+      {
+        "path": "wiki/articles.json",
+        "passed": true,
+        "HTTP": 200,
+        "bytes": 220725,
+        "sha256": "27ea0d8032bf41313f4cf40c601fbe1140a275ffd4c8d07ac0a2e373f2c3f9b2",
+        "Git_blob_sha1": "e30c956960e768e8c058c6eaf56909cd35f5baab"
+      }
+    ],
+    "scope": "Fresh live HTTP bytes, reviewed SHA256/Git blobs and BPS footer CRCs only; not a gameplay, build or clean-base reconstruction test.",
+    "expected_receipt_sha256": "ea6f05133c3458a9748db6e753b7649b5516aeb19e79da2c9ad5652545e860e0"
+  }
+}
