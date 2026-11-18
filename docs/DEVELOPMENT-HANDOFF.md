@@ -1,5 +1,9 @@
 # Development handoff
 
+## Very slow storefront sign pulse · draft PR 118 (18 November 2026)
+
+Model: GPT-6.2 Astra | The owner liked the static lettering and requested a very slow pulse. The night glow now eases down by at most one eighth and back over 1,024 frames (17.1 seconds). The field renderer uses the composited sign colors so weather still applies. Debug and Release built. In Debug mGBA, a full cycle at six storefronts in Oldale, Viridian and Vermilion returned to its starting colors. Palette comparisons every 16 frames confined the pulse to the sign ink at night. The midday frames matched the preceding revision. The regenerated palette regression passed. [Real-time mGBA loop](qa/storefront-signs/slow-pulse.gif). Awaiting approval of the animation.
+
 ## Storefront sign lighting preview (18 November 2026)
 
 Model: GPT-6.2 Astra | Restricted the night glow to the original painted letters on Hoenn and Kanto Pokémon Center and Poké Mart signs. Added the missing Kanto Mart light cells and preserved the shared palette used by custom Kanto cities. The asset regeneration and native color-mixer regression passed. Debug and Release compiled. In Debug mGBA, all six midday storefront frames matched the v0.0.91 baseline pixel for pixel in Oldale, Viridian and Vermilion. At 23:00 every changed pixel fell within the corresponding 16×8 sign. [Day and night comparison](qa/storefront-signs/preview.png). Awaiting visual approval before publication.

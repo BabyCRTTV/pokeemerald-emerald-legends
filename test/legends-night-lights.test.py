@@ -56,6 +56,13 @@ for name,f in m['families'].items():
     # Custom Kanto cities load the shared day bank, with different window slots.
     assert legacy_palette[value] == newpal[value]
     assert (value in legacy_flags) == (value in flags)
+ # The field pulse selects the RGB555 rose ink from each actual night bank.
+ expected_ink = {i+1 for i,c in enumerate(f['colors']) if c['light'] and c['rgb'][0] > c['rgb'][1]+30}
+ for secondary in (s for s in m['secondary'] if s['family'] == name):
+  night = R/secondary['night']
+  enabled = {int(v) for v in night.with_suffix('.pla').read_text().splitlines() if v.isdigit()}
+  pulse = {i for i,(r,g,b) in enumerate(art.palette(night)) if i in enabled and r>>3 == 31 and b>>3 > g>>3}
+  assert pulse == expected_ink, (name, secondary['symbol'], pulse)
  # Walls and sign borders remain ordinary tinted colors in the same palette.
  assert len(flags - {0}) <= len(f['colors'])
 for g in m['glass_palettes']:

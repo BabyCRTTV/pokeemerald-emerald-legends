@@ -76,6 +76,8 @@
 #include "string_util.h"
 #include "task.h"
 #include "tileset_anims.h"
+#include "tilesets.h"
+#include "trig.h"
 #include "time_events.h"
 #include "trainer_hill.h"
 #include "trainer_pokemon_sprites.h"
@@ -2231,6 +2233,54 @@ static void SetFieldVBlankCallback(void)
     SetVBlankCallback(VBlankCB_Field);
 }
 
+// Dim the composited sign ink by up to 1/8 over 1,024 frames (~17 seconds).
+// Apply only to the hardware copy so weather and fades retain their own colors.
+static void PulseStorefrontSigns(void)
+{
+    const struct MapLayout *layout = gMapHeader.mapLayout;
+    const u16 *nightPalette;
+    u32 bank, amount, i;
+
+    if (gTimeOfDay != TIME_NIGHT || gMain.callback2 != CB2_Overworld
+     || gPaletteFade.active || gPaletteFade.bufferTransferDisabled
+     || !layout || !MapHasNaturalLight(gMapHeader.mapType))
+        return;
+
+#if IS_FRLG
+    if (layout->primaryTileset != &gTileset_General_Frlg)
+        return;
+    bank = 7;
+#else
+    if (layout->primaryTileset == &gTileset_General)
+        bank = 12;
+    else if (layout->primaryTileset == &gTileset_LegendsKantoGeneral_Frlg)
+        bank = 7;
+    else
+        return;
+#endif
+
+    if (!(layout->secondaryTileset->swapPalettes & (1 << (bank - GetNumPalsInPrimary(layout)))))
+        return;
+
+    nightPalette = layout->secondaryTileset->palettes[(bank + 9) % 16];
+    amount = 256 - gSineTable[((gMain.vblankCounter1 >> 2) + 64) & 255];
+    for (i = 1; i < 16; i++)
+    {
+        u16 ink = nightPalette[i];
+        // Authored sign lights are rose. Window lights are amber.
+        if (IS_ALPHA(ink) && GET_R(ink) == 31 && GET_B(ink) > GET_G(ink))
+        {
+            u32 index = BG_PLTT_ID(bank) + i;
+            u16 color = gPlttBufferFaded[index];
+            u32 r = GET_R(color), g = GET_G(color), b = GET_B(color);
+            r -= (r * amount + 2048) >> 12;
+            g -= (g * amount + 2048) >> 12;
+            b -= (b * amount + 2048) >> 12;
+            ((volatile u16 *)BG_PLTT)[index] = RGB(r, g, b);
+        }
+    }
+}
+
 static void VBlankCB_Field(void)
 {
     LoadOam();
@@ -2238,6 +2288,7 @@ static void VBlankCB_Field(void)
     ScanlineEffect_InitHBlankDmaTransfer();
     FieldUpdateBgTilemapScroll();
     TransferPlttBuffer();
+    PulseStorefrontSigns();
     TransferTilesetAnimsBuffer();
 }
 
