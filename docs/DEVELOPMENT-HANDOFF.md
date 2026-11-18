@@ -1,5 +1,9 @@
 # Development handoff
 
+## Grooming Kit button cues · draft PR 117
+
+Model: GPT-6.2 | The owner approved the basin and requested darker input cues before publication. Localized the button art to the bath prompt row, with mirrored gold D-pad arrows and separately colored A and B buttons. Wailord completed the bath in Debug and Release mGBA. The control panel matched between builds in both brush directions, rinse, dry and completion. Publication awaits owner approval.
+
 ## Grooming Kit basin correction · draft PR 117
 
 Model: GPT-6.2 | The owner approved the interface conditional on correcting the bottom of the tub. Closed the porcelain underbody, inset the feet and shortened the floor shadow. The Wailord completion-frame pixel diff is confined to the lower basin and shadow. Wailord completed lather, rinse and towel dry in both native builds. Debug checked the friendship gain and early exit. Release reopened the saved kit through Continue and returned to the field after completion.

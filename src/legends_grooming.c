@@ -50,13 +50,11 @@ static const struct WindowTemplate sWindow[] = {
     {.tilemapTop = 15, .width = 30, .height = 5, .paletteNum = 15, .baseBlock = 61},
     DUMMY_WIN_TEMPLATE
 };
-// Preserve standard keypad glyph indices 1-3 and the system button outlines.
 enum { PAPER = 1, INK, SILVER, SEA, FOAM, TRACK, COMPLETED, ACTIVE };
-static const u16 sUiColors[16] = {
-    0, RGB_WHITE, RGB(6,10,13), RGB(23,25,24), RGB(7,14,15), RGB(29,31,27),
-    RGB(24,26,24), RGB(9,19,17), RGB(6,17,17), RGB(20,24,27),
-    RGB_WHITE, RGB(25,25,27), RGB(25,25,27), RGB(28,30,31), RGB(25,25,27), RGB(13,14,15)
-};
+enum BathButton { BUTTON_A, BUTTON_B, BUTTON_LEFT, BUTTON_RIGHT };
+enum { BUTTON_SIZE = 16, BUTTON_BYTES = BUTTON_SIZE * BUTTON_SIZE / 2 };
+static const u8 sButtons[] = INCGFX_U8("graphics/legends/grooming/buttons.png", ".4bpp");
+static const u16 sUiColors[] = INCGFX_U16("graphics/legends/grooming/buttons.png", ".gbapal");
 static const u8 *const sStageNames[] = {
     COMPOUND_STRING("Lather"), COMPOUND_STRING("Rinse"), COMPOUND_STRING("Dry")
 };
@@ -76,9 +74,14 @@ static void DrawHeader(void)
     CopyWindowToVram(HEADER, COPYWIN_FULL);
 }
 
+static void ButtonHint(enum BathButton button, const u8 *text, u8 font, u8 x, u8 color)
+{
+    BlitBitmapToWindow(CONTROLS, sButtons + button * BUTTON_BYTES, x, 16, BUTTON_SIZE, BUTTON_SIZE);
+    Label(CONTROLS, text, font, x + BUTTON_SIZE + 3, font == FONT_SMALL ? 18 : 16, color);
+}
+
 static void DrawControls(void)
 {
-    const u8 *hint;
     FillWindowPixelBuffer(CONTROLS, 0);
     for (u8 i = 0; i < CLEAN; i++)
     {
@@ -98,15 +101,29 @@ static void DrawControls(void)
     switch (sBath.stage)
     {
     case LATHER:
-        hint = (sBath.progress & 1) ? COMPOUND_STRING("{DPAD_RIGHT} Brush right") : COMPOUND_STRING("{DPAD_LEFT} Brush left");
+        if (sBath.progress & 1)
+            ButtonHint(BUTTON_RIGHT, COMPOUND_STRING("Brush right"), FONT_NORMAL, 13, INK);
+        else
+            ButtonHint(BUTTON_LEFT, COMPOUND_STRING("Brush left"), FONT_NORMAL, 13, INK);
         break;
-    case RINSE: hint = COMPOUND_STRING("Hold {A_BUTTON} to rinse"); break;
-    case DRY:   hint = COMPOUND_STRING("Tap {A_BUTTON} to pat dry"); break;
-    default:    hint = COMPOUND_STRING("All clean!"); break;
+    case RINSE:
+        Label(CONTROLS, COMPOUND_STRING("Hold"), FONT_NORMAL, 13, 16, INK);
+        ButtonHint(BUTTON_A, COMPOUND_STRING("to rinse"), FONT_NORMAL,
+                   16 + GetStringWidth(FONT_NORMAL, COMPOUND_STRING("Hold"), 0), INK);
+        break;
+    case DRY:
+        Label(CONTROLS, COMPOUND_STRING("Tap"), FONT_NORMAL, 13, 16, INK);
+        ButtonHint(BUTTON_A, COMPOUND_STRING("to pat dry"), FONT_NORMAL,
+                   16 + GetStringWidth(FONT_NORMAL, COMPOUND_STRING("Tap"), 0), INK);
+        break;
+    default:
+        Label(CONTROLS, COMPOUND_STRING("All clean!"), FONT_NORMAL, 13, 16, INK);
+        break;
     }
-    Label(CONTROLS, hint, FONT_NORMAL, 13, 16, INK);
-    Label(CONTROLS, sBath.stage == CLEAN ? COMPOUND_STRING("{A_BUTTON} Done") : COMPOUND_STRING("{B_BUTTON} Leave"),
-          FONT_SMALL, 183, 18, SEA);
+    if (sBath.stage == CLEAN)
+        ButtonHint(BUTTON_A, COMPOUND_STRING("Done"), FONT_SMALL, 183, SEA);
+    else
+        ButtonHint(BUTTON_B, COMPOUND_STRING("Leave"), FONT_SMALL, 183, SEA);
     PutWindowTilemap(CONTROLS);
     CopyWindowToVram(CONTROLS, COPYWIN_FULL);
 }
