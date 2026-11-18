@@ -45,7 +45,7 @@ FallarborTown_EventScript_BattleTentSign::
 
 FallarborTown_EventScript_TownSign::
 	msgbox FallarborTown_Text_TownSign, MSGBOX_SIGN
-	end
+	goto EventScript_PostcardSign
 
 FallarborTown_EventScript_MoveTutorSign::
 	msgbox FallarborTown_Text_MoveTutorSign, MSGBOX_SIGN

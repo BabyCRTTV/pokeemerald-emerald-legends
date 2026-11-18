@@ -2,6 +2,12 @@
 
 This is the player-facing history for the recommended **Release** build. Shared Legends changes are repeated here so this file stands on its own; Release-only behavior is called out separately.
 
+## [0.0.90] - 2026-11-18
+
+- Added the Field Camera and Postcard Case, given by the photographer in Oldale Town.
+- Added 16 scenic signs across Hoenn. Each postcard recorded the lead Pokémon, season and time of day.
+- Added a full-screen album with individually framed views. Revisiting a sign let players replace its print.
+
 ## [0.0.89] - 2026-11-18
 
 - Added walk-to-Surf after the Balance Badge. Holding the D-pad toward passable water made the trainer hop aboard and continue surfing.

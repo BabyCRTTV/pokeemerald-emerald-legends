@@ -315,7 +315,7 @@ Route119_EventScript_RouteSignFortree::
 
 Route119_EventScript_WeatherInstituteSign::
 	msgbox Route119_Text_WeatherInstitute, MSGBOX_SIGN
-	end
+	goto EventScript_PostcardSign
 
 Route119_EventScript_Brent::
 	trainerbattle_single TRAINER_BRENT, Route119_Text_BrentIntro, Route119_Text_BrentDefeat

@@ -4,6 +4,8 @@ OldaleTown_MapScripts::
 
 OldaleTown_OnTransition:
 	call Common_EventScript_SetupRivalGfxId
+	checkitem ITEM_POSTCARD_CASE
+	copyvar VAR_TEMP_F, VAR_RESULT
 	setflag FLAG_VISITED_OLDALE_TOWN
 	call_if_unset FLAG_ADVENTURE_STARTED, OldaleTown_EventScript_BlockWestEntrance
 	call_if_unset FLAG_RECEIVED_POTION_OLDALE, OldaleTown_EventScript_MoveMartEmployee
@@ -27,7 +29,7 @@ OldaleTown_EventScript_MoveMartEmployee::
 
 OldaleTown_EventScript_TownSign::
 	msgbox OldaleTown_Text_TownSign, MSGBOX_SIGN
-	end
+	goto EventScript_PostcardSign
 
 OldaleTown_EventScript_Girl::
 	msgbox OldaleTown_Text_SavingMyProgress, MSGBOX_NPC
@@ -395,3 +397,107 @@ OldaleTown_Text_TownSign:
 	.string "OLDALE TOWN\n"
 	.string "“Where things start off scarce.”$"
 
+
+OldaleTown_PostcardApproach::
+	lockall
+	getplayerxy VAR_0x8004, VAR_0x8005
+	goto_if_eq VAR_0x8004, 10, OldaleTown_MoveOne
+	goto_if_eq VAR_0x8004, 9, OldaleTown_MoveTwo
+	applymovement LOCALID_POSTCARD_GUIDE, OldaleTown_ThreeLeft
+	goto OldaleTown_WaitPhotographer
+OldaleTown_MoveTwo:
+	applymovement LOCALID_POSTCARD_GUIDE, OldaleTown_TwoLeft
+	goto OldaleTown_WaitPhotographer
+OldaleTown_MoveOne:
+	applymovement LOCALID_POSTCARD_GUIDE, OldaleTown_OneLeft
+OldaleTown_WaitPhotographer:
+	waitmovement 0
+OldaleTown_GreetPhotographer:
+	turnobject LOCALID_PLAYER, DIR_EAST
+	turnobject LOCALID_POSTCARD_GUIDE, DIR_WEST
+	goto OldaleTown_GivePostcards
+
+OldaleTown_ThreeLeft:
+	walk_left
+OldaleTown_TwoLeft:
+	walk_left
+OldaleTown_OneLeft:
+	walk_left
+	step_end
+
+OldaleTown_PostcardGift::
+	lock
+	faceplayer
+OldaleTown_GivePostcards:
+	setvar VAR_TEMP_F, 1
+	checkitem ITEM_POSTCARD_CASE
+	goto_if_eq VAR_RESULT, TRUE, OldaleTown_PhotoTip
+	msgbox OldaleTown_PhotoHello, MSGBOX_DEFAULT
+	checkitem ITEM_FIELD_CAMERA
+	goto_if_eq VAR_RESULT, TRUE, OldaleTown_GiveCase
+	giveitem ITEM_FIELD_CAMERA
+	goto_if_eq VAR_RESULT, FALSE, OldaleTown_PhotoFull
+OldaleTown_GiveCase:
+	giveitem ITEM_POSTCARD_CASE
+	goto_if_eq VAR_RESULT, FALSE, OldaleTown_PhotoFull
+OldaleTown_PhotoTip:
+	msgbox OldaleTown_PhotoHelp, MSGBOX_DEFAULT
+	releaseall
+	end
+OldaleTown_PhotoFull:
+	msgbox gText_TooBadBagIsFull, MSGBOX_DEFAULT
+	releaseall
+	end
+OldaleTown_PhotoHello:
+	.string "Hold that pose! You two look like\nyou're just starting an adventure.\pHere, take my spare camera. I've got\na little case for your prints, too.$"
+OldaleTown_PhotoHelp:
+	.string "Try the town sign just north of me.\nRead its photo plate and press A.\pThere are 16 views to find. Open\nyour Postcard Case to see them.$"
+EventScript_PostcardSign::
+	lockall
+	checkitem ITEM_FIELD_CAMERA
+	goto_if_eq VAR_RESULT, FALSE, Postcard_NoCamera
+	goto Postcard_Ask
+Postcard_NoCamera:
+	msgbox Postcard_Plate, MSGBOX_DEFAULT
+	releaseall
+	end
+EventScript_PostcardCamera::
+	lockall
+	special PostcardFindSite
+	goto_if_eq VAR_RESULT, FALSE, Postcard_Away
+Postcard_Ask:
+	msgbox Postcard_Question, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, NO, Postcard_Done
+	closemessage
+	special PostcardCapture
+	goto_if_eq VAR_RESULT, FALSE, Postcard_Done
+	playse SE_CLICK
+	special PostcardView
+	waitstate
+Postcard_Done:
+	releaseall
+	end
+Postcard_Away:
+	msgbox Postcard_Hint, MSGBOX_DEFAULT
+	releaseall
+	end
+EventScript_PostcardCase::
+	lockall
+	special PostcardOpen
+	goto_if_eq VAR_RESULT, FALSE, Postcard_Empty
+	special PostcardView
+	waitstate
+	releaseall
+	end
+Postcard_Empty:
+	msgbox Postcard_EmptyText, MSGBOX_DEFAULT
+	releaseall
+	end
+Postcard_Question:
+	.string "Photo spot! Take a new postcard\nfor this view?$"
+Postcard_Plate:
+	.string "A little brass plate reads:\nHoenn Scenic Photo Spot.$"
+Postcard_Hint:
+	.string "Face a scenic sign to take a photo.\nOldale's town sign has a photo plate.$"
+Postcard_EmptyText:
+	.string "The case has 16 empty sleeves.\nTake a picture at a scenic sign!$"

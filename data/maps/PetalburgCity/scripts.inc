@@ -223,7 +223,7 @@ PetalburgCity_EventScript_GymSign::
 
 PetalburgCity_EventScript_CitySign::
 	msgbox PetalburgCity_Text_CitySign, MSGBOX_SIGN
-	end
+	goto EventScript_PostcardSign
 
 PetalburgCity_EventScript_Gentleman::
 	msgbox PetalburgCity_Text_FullPartyExplanation, MSGBOX_NPC

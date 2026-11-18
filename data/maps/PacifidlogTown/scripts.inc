@@ -25,7 +25,7 @@ PacifidlogTown_EventScript_Fisherman::
 
 PacifidlogTown_EventScript_TownSign::
 	msgbox PacifidlogTown_Text_TownSign, MSGBOX_SIGN
-	end
+	goto EventScript_PostcardSign
 
 PacifidlogTown_Text_FastRunningCurrent:
 	.string "The sea between PACIFIDLOG and\n"

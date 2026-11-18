@@ -263,7 +263,7 @@ LavaridgeTown_EventScript_DeclineEgg::
 
 LavaridgeTown_EventScript_TownSign::
 	msgbox LavaridgeTown_Text_TownSign, MSGBOX_SIGN
-	end
+	goto EventScript_PostcardSign
 
 LavaridgeTown_EventScript_GymSign::
 	msgbox LavaridgeTown_Text_GymSign, MSGBOX_SIGN

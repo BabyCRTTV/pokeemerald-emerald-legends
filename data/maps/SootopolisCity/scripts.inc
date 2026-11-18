@@ -861,7 +861,7 @@ SootopolisCity_EventScript_GymSign::
 
 SootopolisCity_EventScript_CitySign::
 	msgbox SootopolisCity_Text_CitySign, MSGBOX_SIGN
-	end
+	goto EventScript_PostcardSign
 
 EventScript_ClosedSootopolisDoor::
 	msgbox SootopolisCity_Text_DoorIsClosed, MSGBOX_SIGN

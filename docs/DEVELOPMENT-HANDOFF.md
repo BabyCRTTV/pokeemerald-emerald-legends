@@ -1,5 +1,17 @@
 # Development handoff
 
+## v0.0.90 Hoenn Postcards release approval
+
+Model: GPT-6.2 Astra. The owner approved the revised full-screen prints. Prepared both build versions, download paths, changelogs and the walkthrough for publication from PR 116. The encounter tables and Dex assets are identical to v0.0.89.
+
+## Hoenn Postcards photo revision · draft PR 116
+
+Model: GPT-6.2 Astra. All sixteen postcard prints now use 224 × 112 scenery from the compiled game’s field compositor, with viewpoints chosen per landmark. The case dedicates an indexed background to the print and a separate layer to its caption. Printed scenery is LZ77-compressed in ROM and uploaded on page changes. The photographer, sign scripts, item IDs and 52-byte album layout are unchanged. Debug mGBA exercised all sixteen sign captures and saved the album. The Release build reopened and paged through the collection with normal Continue and registered-item input. Visual review pending.
+
+## Hoenn Postcards gameplay preview
+
+Model: GPT-6.2 Astra | Reasoning: reuse scenic signs and store each fixed view with its partner, season, and time in the former 52-byte Dex padding. Existing save offsets and item IDs are preserved. Oldale gives the Field Camera and Postcard Case, with retryable item grants. Sixteen signs keep their original messages and offer a photo. Debug mGBA verified the approach, gifts, all 16 captures and saving. An unmodified local Release build reopened the complete collection through Continue and the registered Case. Draft for visual review.
+
 ## Wiki 1.9.12 Crafting pictures (18 November 2026)
 
 **Model: GPT-6.2 Sol | Reasoning: use the shipped item sprites as visual labels in the existing Crafting tables.**

@@ -747,6 +747,21 @@ static void Task_AccessPokemonBoxLink(u8 taskId)
     DestroyTask(taskId);
 }
 
+extern const u8 EventScript_PostcardCamera[], EventScript_PostcardCase[];
+
+static void Task_UsePostcards(u8 taskId)
+{
+    ScriptContext_SetupScript(gSpecialVar_ItemId == ITEM_FIELD_CAMERA
+        ? EventScript_PostcardCamera : EventScript_PostcardCase);
+    DestroyTask(taskId);
+}
+
+void ItemUseOutOfBattle_Postcards(u8 taskId)
+{
+    sItemUseOnFieldCB = Task_UsePostcards;
+    SetUpItemUseOnFieldCallback(taskId);
+}
+
 static void Task_UsePortableCooking(u8 taskId)
 {
     switch (gSpecialVar_ItemId)
