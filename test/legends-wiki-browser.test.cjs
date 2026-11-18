@@ -12,25 +12,34 @@ const assert=require('node:assert/strict'),fs=require('node:fs');
   await page.goto('http://127.0.0.1:8765/wiki/');await page.locator('.topic-cards').waitFor();
   assert(await page.locator('.dex-shortcuts').evaluate(group=>{
    const links=[...group.querySelectorAll('a')],last=group.querySelector(".walkthrough-shortcut"),r=last.getBoundingClientRect(),above=links[1].getBoundingClientRect(),bounds=group.getBoundingClientRect();
-   return links.length===3&&Math.abs(r.left-bounds.left)<1&&Math.abs(r.width-bounds.width)<1&&Math.abs(r.height-above.height)<1&&Math.abs(r.top-above.bottom-10)<1&&getComputedStyle(last).backgroundColor==='rgb(105, 71, 149)';
+   return links.length===5&&Math.abs(r.left-bounds.left)<1&&Math.abs(r.width-bounds.width)<1&&Math.abs(r.height-above.height)<1&&Math.abs(r.top-above.bottom-10)<1&&getComputedStyle(last).backgroundColor==='rgb(105, 71, 149)';
   }),'Walkthrough remains the full-width dark purple shortcut');
-  const shortcut=page.locator('a.interaction-home[data-page="interacting-with-your-pokemon"]');
-  assert(await shortcut.isVisible(),'guide button appears below Walkthrough');
-  assert.equal(await page.locator('details.interaction-home').count(),0,'main entry is not an accordion');
+  const shortcut=page.getByRole('link',{name:'Pokémon Interactions',exact:true});
+  const crafting=page.getByRole('link',{name:'Crafting',exact:true});
+  assert(await shortcut.isVisible()&&await crafting.isVisible(),'both guide shortcuts are present');
   assert.equal(await page.locator('.welcome .interaction-topic').count(),0,'categories belong inside the guide');
   assert(await shortcut.evaluate(el=>{
     const a=el.getBoundingClientRect(),b=document.querySelector('.walkthrough-shortcut').getBoundingClientRect();
-    return a.top>b.bottom&&Math.abs(a.left-b.left)<2&&Math.abs(a.width-b.width)<2;
-  }),'guide button aligns directly beneath Walkthrough');
-  assert(await shortcut.evaluate(el=>{
-    const outer=el.getBoundingClientRect(),inner=el.querySelector('.interaction-home-inner').getBoundingClientRect();
-    const label=el.querySelector('.interaction-home-label').getBoundingClientRect(),arrow=el.querySelector('.interaction-home-arrow').getBoundingClientRect();
-    const centered=Math.abs((inner.left+inner.right)/2-(outer.left+outer.right)/2)<2;
-    const grouped=arrow.left>=label.right&&arrow.left-label.right<=18;
-    const fits=inner.width<=outer.width-20&&label.left>=outer.left+5&&arrow.right<=outer.right-5;
-    return centered&&grouped&&fits;
-  }),'short title and arrow form a centered, evenly spaced group');
-  assert.equal(await shortcut.locator('.interaction-home-label').textContent(),'Pokémon Interactions','short title fits the design');
+    const c=document.querySelector('.guide-shortcut[data-page="crafting"]').getBoundingClientRect();
+    const art=getComputedStyle(el),route=getComputedStyle(document.querySelector('.dex-shortcuts a'));
+    return Math.abs(a.top-b.bottom-10)<1&&Math.abs(c.top-a.bottom-10)<1
+      &&Math.abs(a.left-b.left)<1&&Math.abs(a.width-b.width)<1&&Math.abs(c.width-a.width)<1
+      &&Math.abs(a.height-b.height)<1&&Math.abs(c.height-a.height)<1
+      &&art.fontSize===route.fontSize&&art.borderRadius===route.borderRadius&&art.backgroundColor===route.backgroundColor;
+  }),'the full-width guide shortcuts share the wiki sizing, type, and secondary colors');
+  if(width===412){
+    await page.locator('.wiki-game-logo img').evaluate(img=>img.decode());
+    await page.locator('.welcome').screenshot({path:'wiki-preview/crafting-shortcuts.png'});
+  }
+  await crafting.click();
+  await page.getByRole('heading',{name:'Crafting',exact:true}).waitFor();
+  assert.equal(new URL(page.url()).searchParams.get('page'),'crafting');
+  assert(await page.getByRole('heading',{name:'Meal recipes',exact:true}).isVisible());
+  assert(await page.getByRole('cell',{name:'Ginger Tea',exact:true}).isVisible());
+  assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),'recipe tables stay inside the viewport');
+  if(width===412)await page.screenshot({path:'wiki-preview/crafting-guide.png'});
+  await page.locator('#home').click();
+  await page.locator('.topic-cards').waitFor();
   await shortcut.click();
   await page.getByRole('heading',{name:'Interacting with Your Pokemon',exact:true}).waitFor();
   assert(new URL(page.url()).searchParams.get('page')==='interacting-with-your-pokemon','button opens dedicated article');
@@ -54,7 +63,7 @@ const assert=require('node:assert/strict'),fs=require('node:fs');
   assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),'no horizontal overflow with berry cards open');
   await page.locator('#home').click();
   await page.locator('.topic-cards').waitFor();
-  assert(await page.locator('a.interaction-home').isVisible(),'wiki home displays the guide button again');
+  assert(await page.getByRole('link',{name:'Pokémon Interactions',exact:true}).isVisible(),'wiki home displays the guide button again');
   assert.equal(await page.getByText('Eighteen chapters from New Game to Kanto’s Wing Survey',{exact:true}).count(),0);
   assert.equal(await page.locator('.topic-cards .card').count(),7);
   await page.waitForFunction(()=>{const img=document.querySelector('.wiki-game-logo img');return img?.complete&&img.naturalWidth>0;});

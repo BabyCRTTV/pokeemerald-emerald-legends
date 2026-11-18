@@ -28,19 +28,11 @@ footer{max-width:1380px;margin:auto;padding:0 22px 32px;font-size:12px;color:var
 @media(max-width:1100px){.navlinks .secondary-nav{display:none}}
 @media(max-width:750px){.top-inner{flex-wrap:nowrap;gap:6px;min-height:60px;padding:8px 10px}.brand{min-width:0;font-size:12px;white-space:nowrap}.mark{display:none}.navlinks{margin-left:auto;width:auto;gap:3px;flex-wrap:nowrap}.navlinks .update-wiki,.navlinks .dex-link{font-size:11px;padding:6px 7px;min-height:40px}.navlinks .header-search{width:39px;min-height:40px}.navlinks #menu{display:none}.layout{padding-top:14px}.sidebar{display:none}.navlinks .update-wiki span{display:none}}
 @media(max-width:390px){.brand{font-size:10px}.navlinks .update-wiki,.navlinks .dex-link{font-size:10px;padding:5px}.navlinks .header-search{width:36px}}
-.dex-shortcuts .pokemon-interactions-shortcut{flex-basis:100%}
 .interaction-catalogue{display:grid;gap:6px;margin:12px 0 20px}
 .interaction-catalogue details{border:1px solid #dfcdf3;border-radius:10px;background:#faf6ff}
 .interaction-catalogue summary{padding:10px 12px;cursor:pointer;font-weight:700;color:#543579}
 .interaction-catalogue details p{margin:0;padding:0 12px 12px}
 
-/* The home shortcut navigates to a guide; its three category buttons expand inside that guide. */
-.interaction-home{display:flex;align-items:center;justify-content:center;min-height:49px;margin:14px 0 3px;padding:12px 15px;border:1px solid #d5c4e9;border-radius:13px;background:#f3ecfc;color:#543579;text-decoration:none;font-weight:800;text-align:center;cursor:pointer;min-width:0}
-.interaction-home-inner{display:inline-flex;align-items:center;justify-content:center;gap:11px;max-width:100%;min-width:0}
-.interaction-home-label{font-size:clamp(17px,4.3vw,24px);line-height:1.2;text-wrap:balance;min-width:0}
-.interaction-home-arrow{font-size:23px;line-height:1;flex:none}
-.interaction-home:hover,.interaction-home:focus-visible{background:#eae0f9;color:#543579}
-.interaction-home:focus-visible{outline:3px solid #9b80d5;outline-offset:2px}
 .interaction-topic{border:1px solid #d5c4e9;border-radius:13px;background:#fff;overflow:hidden;min-width:0}
 .interaction-topic>summary{display:flex;align-items:center;gap:10px;cursor:pointer;list-style:none;min-height:49px;padding:11px 13px;color:#543579;background:#f3ecfc}
 .interaction-topic>summary::-webkit-details-marker{display:none}
@@ -73,7 +65,7 @@ details[open]>summary>.interaction-arrow{transform:rotate(180deg)}
 .interaction-mix-note{font-size:13px;color:#655873;margin:0 0 12px;line-height:1.6}
 .interaction-topic summary:focus-visible{outline:3px solid #9b80d5;outline-offset:-3px}
 @media(max-width:650px){.interaction-topic-body{padding:10px}.interaction-items{grid-template-columns:1fr}}
-</style><link rel="stylesheet" href="fold-layout.css?v=20261016-1"></head><body>
+</style><link rel="stylesheet" href="fold-layout.css?v=20261118-wiki-shortcuts"></head><body>
 <header class="top"><div class="top-inner">
 <a class="brand" href="./" aria-label="Emerald Legends Wiki home"><span class="mark" aria-hidden="true">◉</span><span class="wiki-brand-full">EMERALD: LEGENDS <span style="color:#9d84c3">/ WIKI</span></span><span class="wiki-brand-compact">LEGENDS WIKI</span></a>
 <div class="navlinks"><button type="button" id="menu" aria-expanded="false" aria-controls="sidebar">☰ Articles</button><a class="secondary-nav" href="../index.html">Game site</a><a class="secondary-nav" href="../changelog.html">Changelog</a><a class="secondary-nav" href="https://github.com/BabyCRTTV/pokeemerald-emerald-legends">GitHub</a><a class="dex-link app-switch" href="dex.html" aria-label="Open LegendsDex">◈ LegendsDex</a><button type="button" id="update-wiki" class="update-wiki" aria-haspopup="dialog" title="Install the Android or Windows Wiki app, or check for updates"><span aria-hidden="true">↓</span> <span class="install-full">Install / Update</span><span class="install-short">Install</span></button><button type="button" id="header-search" class="header-search" aria-label="Search wiki articles" title="Search"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/></svg></button></div>
@@ -90,5 +82,5 @@ details[open]>summary>.interaction-arrow{transform:rotate(180deg)}
 <script src="wiki-updates.js" defer></script>
 <script src="dex-sprite-atlas.js?v=1.8.0-a023c350" defer></script>
 <script src="walkthrough-maps.js?v=1.8.0-a023c350" defer></script>
-<script src="wiki.js?v=20261112-centered-interaction-button" defer></script>
+<script src="wiki.js?v=20261118-crafting" defer></script>
 </body></html>

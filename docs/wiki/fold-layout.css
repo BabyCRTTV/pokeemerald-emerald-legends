@@ -144,7 +144,8 @@
 @keyframes rotom-depart{0%,25%{transform:translate(0,0)}40%{transform:translate(-8px,-12px) rotate(-8deg)}70%{opacity:1;transform:translate(72px,-80px) rotate(12deg)}100%{opacity:0;transform:translate(200px,-210px) rotate(22deg) scale(.65)}}
 @media(prefers-reduced-motion:reduce){.return-to-search.is-flying,.is-flying .rotom-arrow,.is-flying .rotom-companion{animation:none}}
 
-.dex-shortcuts .walkthrough-shortcut{flex-basis:100%;color:#fff;background:#694795;border-color:#694795}
+.dex-shortcuts .guide-shortcut,.dex-shortcuts .walkthrough-shortcut{flex-basis:100%}
+.dex-shortcuts .walkthrough-shortcut{color:#fff;background:#694795;border-color:#694795}
 .dex-shortcuts .walkthrough-shortcut:hover{background:#543579}
 
 /* Walkthrough reading and location shortcuts across browser and native wrappers. */
