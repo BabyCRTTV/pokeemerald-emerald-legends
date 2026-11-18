@@ -59,7 +59,7 @@ VerdanturfTown_EventScript_BattleTentSign::
 
 VerdanturfTown_EventScript_RusturfTunnelSign::
 	msgbox VerdanturfTown_Text_RusturfTunnelSign, MSGBOX_SIGN
-	end
+	goto EventScript_PostcardSign
 
 VerdanturfTown_Text_ManTryingToDigTunnel:
 	.string "My papa told me.\p"

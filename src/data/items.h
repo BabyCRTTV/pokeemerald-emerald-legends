@@ -14610,6 +14610,30 @@ const struct ItemInfo gItemsInfo[] =
         .iconPalette = gItemIconPalette_CookingMessKit,
     },
 
+    [ITEM_FIELD_CAMERA] =
+    {
+        .name = ITEM_NAME("Field Camera"),
+        .description = COMPOUND_STRING("Take a picture at a\nscenic sign."),
+        .importance = 1,
+        .pocket = POCKET_KEY_ITEMS,
+        .type = ITEM_USE_FIELD,
+        .fieldUseFunc = ItemUseOutOfBattle_Postcards,
+        .iconPic = gItemIcon_DevonScope,
+        .iconPalette = gItemIconPalette_DevonScope,
+    },
+
+    [ITEM_POSTCARD_CASE] =
+    {
+        .name = ITEM_NAME("Postcard Case"),
+        .description = COMPOUND_STRING("Keeps the postcards\nfrom your travels."),
+        .importance = 1,
+        .pocket = POCKET_KEY_ITEMS,
+        .type = ITEM_USE_FIELD,
+        .fieldUseFunc = ItemUseOutOfBattle_Postcards,
+        .iconPic = gItemIcon_TMCase,
+        .iconPalette = gItemIconPalette_TMCase,
+    },
+
     [ITEM_PERCOLATOR] =
     {
         .name = ITEM_NAME("Percolator"),

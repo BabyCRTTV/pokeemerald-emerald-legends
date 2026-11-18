@@ -164,12 +164,12 @@ LilycoveCity_EventScript_MuseumSign::
 	case 0, LilycoveCity_EventScript_MuseumSignNoPaintings
 	msgbox LilycoveCity_Text_MuseumSignPlayersExhibit, MSGBOX_DEFAULT
 	releaseall
-	end
+	goto EventScript_PostcardSign
 
 LilycoveCity_EventScript_MuseumSignNoPaintings::
 	msgbox LilycoveCity_Text_MuseumSign, MSGBOX_DEFAULT
 	releaseall
-	end
+	goto EventScript_PostcardSign
 
 LilycoveCity_EventScript_HarborSign::
 	lockall

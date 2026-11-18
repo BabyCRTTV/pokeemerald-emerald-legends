@@ -44,7 +44,7 @@ MauvilleCity_EventScript_GymSign::
 
 MauvilleCity_EventScript_BikeShopSign::
 	msgbox MauvilleCity_Text_BikeShopSign, MSGBOX_SIGN
-	end
+	goto EventScript_PostcardSign
 
 MauvilleCity_EventScript_GameCornerSign::
 	msgbox MauvilleCity_Text_GameCornerSign, MSGBOX_SIGN

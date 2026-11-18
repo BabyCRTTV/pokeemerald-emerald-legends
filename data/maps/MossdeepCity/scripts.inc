@@ -66,7 +66,7 @@ MossdeepCity_EventScript_CitySign::
 
 MossdeepCity_EventScript_SpaceCenterSign::
 	msgbox MossdeepCity_Text_SpaceCenterSign, MSGBOX_SIGN
-	end
+	goto EventScript_PostcardSign
 
 MossdeepCity_EventScript_VisitedMossdeep::
 	setflag FLAG_VISITED_MOSSDEEP_CITY

@@ -692,3 +692,8 @@ gSpecials::
 	def_special LegendsDayOffWashEffect
 	def_special LegendsDayOffHeart
 	def_special LegendsDayOffSplashBack
+
+	def_special PostcardFindSite
+	def_special PostcardCapture
+	def_special PostcardOpen
+	def_special PostcardView

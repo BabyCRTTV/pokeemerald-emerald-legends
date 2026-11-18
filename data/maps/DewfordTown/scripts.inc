@@ -63,7 +63,7 @@ DewfordTown_EventScript_Woman::
 
 DewfordTown_EventScript_TownSign::
 	msgbox DewfordTown_Text_TownSign, MSGBOX_SIGN
-	end
+	goto EventScript_PostcardSign
 
 DewfordTown_EventScript_GymSign::
 	msgbox DewfordTown_Text_GymSign, MSGBOX_SIGN

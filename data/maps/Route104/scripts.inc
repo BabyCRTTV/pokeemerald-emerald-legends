@@ -308,7 +308,7 @@ Route104_EventScript_RouteSignRustboro::
 
 Route104_EventScript_FlowerShopSign::
 	msgbox Route104_Text_PrettyPetalFlowShop, MSGBOX_SIGN
-	end
+	goto EventScript_PostcardSign
 
 Route104_EventScript_TrainerTipsDoubleBattles::
 	msgbox Route104_Text_TrainerTipsDoubleBattles, MSGBOX_SIGN

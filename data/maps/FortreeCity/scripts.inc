@@ -51,7 +51,7 @@ FortreeCity_EventScript_GameboyKid::
 
 FortreeCity_EventScript_CitySign::
 	msgbox FortreeCity_Text_CitySign, MSGBOX_SIGN
-	end
+	goto EventScript_PostcardSign
 
 FortreeCity_EventScript_GymSign::
 	msgbox FortreeCity_Text_GymSign, MSGBOX_SIGN

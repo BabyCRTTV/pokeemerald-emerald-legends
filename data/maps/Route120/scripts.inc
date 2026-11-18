@@ -256,7 +256,7 @@ Route120_EventScript_BridgeKecleon::
 
 Route120_EventScript_RouteSignFortree::
 	msgbox Route120_Text_RouteSignFortree, MSGBOX_SIGN
-	end
+	goto EventScript_PostcardSign
 
 Route120_EventScript_RouteSign121::
 	msgbox Route120_Text_RouteSign121, MSGBOX_SIGN

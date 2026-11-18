@@ -297,7 +297,7 @@ SlateportCity_EventScript_HarborSign::
 	goto_if_set FLAG_SYS_GAME_CLEAR, SlateportCity_EventScript_HarborSignFerryComplete
 	msgbox SlateportCity_Text_HarborFerryUnderConstruction, MSGBOX_DEFAULT
 	releaseall
-	end
+	goto EventScript_PostcardSign
 
 SlateportCity_EventScript_HarborSignFerryComplete::
 	msgbox SlateportCity_Text_HarborSign, MSGBOX_DEFAULT

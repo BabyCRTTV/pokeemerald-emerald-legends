@@ -1129,6 +1129,9 @@ enum __attribute__((packed)) Item
     ITEM_ICED_PEACH_TEA = 944,
     ITEM_GINGER_TEA = 945,
 
+    ITEM_FIELD_CAMERA = 946,
+    ITEM_POSTCARD_CASE = 947,
+
     ITEMS_COUNT,
     ITEM_FIELD_ARROW = ITEMS_COUNT,
 };
