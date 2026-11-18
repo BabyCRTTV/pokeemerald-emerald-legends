@@ -1,5 +1,13 @@
 # Development handoff
 
+## DexNav registered search seasonal hints (17 November 2026)
+
+**Model: GPT-6.2 | Reasoning: use the encounter roster for the committed field season and look forward through the same route and encounter method.**
+
+Press R in the field to search for a registered Pokémon. An off-season visitor on the current route gets a message with its next season, using the land or Surf roster. The normal feedback covers a target from another route or method, lack of suitable terrain, and darkness. Both native builds compiled. The seasonal source regression checked next visits against the shipped tables. Focused mGBA 0.10.5 Debug checks confirmed Rookidee on Route 101, Finneon on Route 105, the committed season while a change was pending, a successful in-season search, fallback messages, and dialogue dismissal with the registration retained. Draft for review.
+
+DexNav now displays “R to search in the field” below the registered target. The cue has its own background beside the Water label and uses the existing lettering and palette. In mGBA, pressing R to register Rookidee drew the cue, reopening DexNav displayed it for Rookidee, and registering Wurmple updated the target with the cue still visible.
+
 ## v0.0.88.2 pause menu opening fix published and verified (17 November 2026)
 
 **Model: GPT-6 | Reasoning: keep the pause menu tilemap hidden while the corresponding graphics are prepared and verify the release bytes.**

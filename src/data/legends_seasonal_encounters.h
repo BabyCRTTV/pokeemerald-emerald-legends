@@ -1,6 +1,6 @@
 // Seasonal land (101-104, 110-121, 123) and Surf (105-109, 122, 124-134).
 // See docs/features/seasonal-encounters.md for the full distribution and approval state.
-struct LegendsSeasonalLandTable
+struct LegendsSeasonalTable
 {
     u16 map;
     struct WildPokemonInfo seasons[LEGENDS_SEASON_COUNT];
@@ -2246,7 +2246,7 @@ static const struct WildPokemon sKantoRoute21_NORTHWinterMons[NUM_LAND_MONS_ENCO
     {28, 28, SPECIES_TANGELA},
 };
 
-static const struct LegendsSeasonalLandTable sLegendsSeasonalLand[] =
+static const struct LegendsSeasonalTable sLegendsSeasonalLand[] =
 {
     {MAP_ROUTE101, {
         [LEGENDS_SPRING] = {20, sRoute101SpringMons},
@@ -2461,12 +2461,6 @@ static const struct LegendsSeasonalLandTable sLegendsSeasonalLand[] =
 };
 
 // Native Surf weights: 60/30/5/4/1. Residents retain 65%; visitors 30%/5%.
-struct LegendsSeasonalWaterTable
-{
-    u16 map;
-    struct WildPokemonInfo seasons[LEGENDS_SEASON_COUNT];
-};
-
 static const struct WildPokemon sRoute105SpringWaterMons[NUM_WATER_MONS_ENCOUNTER_SLOTS] =
 {
     {5, 35, SPECIES_TENTACOOL},
@@ -3223,7 +3217,7 @@ static const struct WildPokemon sKantoRoute21_SOUTHWinterWaterMons[NUM_WATER_MON
     {35, 40, SPECIES_TENTACOOL},
 };
 
-static const struct LegendsSeasonalWaterTable sLegendsSeasonalWater[] =
+static const struct LegendsSeasonalTable sLegendsSeasonalWater[] =
 {
     {MAP_ROUTE105, {
         [LEGENDS_SPRING] = {4, sRoute105SpringWaterMons},

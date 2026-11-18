@@ -78,6 +78,8 @@ bool32 MapHasNoEncounterData(void);
 enum TimeOfDay GetTimeOfDayForEncounters(u32 headerId, enum WildPokemonArea area);
 const struct WildPokemonInfo *GetLandMonsInfo(u32 headerId, enum TimeOfDay timeOfDay);
 const struct WildPokemonInfo *GetWaterMonsInfo(u32 headerId, enum TimeOfDay timeOfDay);
+// Find the next season after the current one, or return LEGENDS_SEASON_COUNT.
+u8 GetNextWildEncounterSeason(u32 headerId, enum WildPokemonArea area, enum Species species);
 
 u8 GetLandEncounterSlotForMatchCall(void);
 u8 GetWaterEncounterSlotForMatchCall(void);

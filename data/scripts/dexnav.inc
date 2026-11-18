@@ -12,6 +12,10 @@ EventScript_NotFoundNearby::
 	msgbox sText_NotFoundNearby, MSGBOX_SIGN
 	end
 
+EventScript_DexNavSeasonalHint::
+	msgbox sText_DexNavSeasonalHint, MSGBOX_SIGN
+	end
+
 EventScript_MovedTooFast::
 	msgbox sText_TryMovingSlower, MSGBOX_SIGN
 	end
@@ -31,6 +35,10 @@ EventScript_TooDark::
 sText_NotFoundNearby:
 	.string "It couldn't be found nearby.\n"
 	.string "Try looking in a different area!$"
+
+sText_DexNavSeasonalHint:
+	.string "{STR_VAR_1} visits\n"
+	.string "{STR_VAR_2} in {STR_VAR_3}.$"
 
 sText_TryMovingSlower:
 	.string "The Pokémon got away!\n"
