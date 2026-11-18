@@ -1,5 +1,11 @@
 # Development handoff
 
+## Wiki 1.9.12 Crafting pictures (18 November 2026)
+
+**Model: GPT-6.2 Sol | Reasoning: use the shipped item sprites as visual labels in the existing Crafting tables.**
+
+The Crafting guide shows the native item icons for all 34 recipes and three portable cooking tools. The source sprites come from the shipped cooking graphics, with palette index zero made transparent for the wiki. The reader and browser checks cover the picture count, source dimensions and compact layout.
+
 ## Wiki 1.9.11 Crafting and home shortcuts (18 November 2026)
 
 **Model: GPT-6.2 Sol | Reasoning: reuse the home shortcut style and document the cooking menus from the shipped recipe table.**
