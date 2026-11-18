@@ -1131,6 +1131,7 @@ enum __attribute__((packed)) Item
 
     ITEM_FIELD_CAMERA = 946,
     ITEM_POSTCARD_CASE = 947,
+    ITEM_GROOMING_KIT = 948,
 
     ITEMS_COUNT,
     ITEM_FIELD_ARROW = ITEMS_COUNT,

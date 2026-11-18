@@ -14610,6 +14610,18 @@ const struct ItemInfo gItemsInfo[] =
         .iconPalette = gItemIconPalette_CookingMessKit,
     },
 
+    [ITEM_GROOMING_KIT] =
+    {
+        .name = ITEM_NAME("Grooming Kit"),
+        .description = COMPOUND_STRING("A bath set for washing\nyour party POKéMON."),
+        .importance = 1,
+        .pocket = POCKET_KEY_ITEMS,
+        .type = ITEM_USE_FIELD,
+        .fieldUseFunc = ItemUseOutOfBattle_GroomingKit,
+        .iconPic = gItemIcon_WailmerPail,
+        .iconPalette = gItemIconPalette_WailmerPail,
+    },
+
     [ITEM_FIELD_CAMERA] =
     {
         .name = ITEM_NAME("Field Camera"),

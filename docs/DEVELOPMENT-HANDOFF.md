@@ -1,5 +1,33 @@
 # Development handoff
 
+## v0.0.91 Grooming Kit approved for publication
+
+Model: GPT-6.2 | Owner approved the eight-pixel input cues after the Wailord preview. Prepared both build versions, patcher, changelogs, Chapter 1, Pokémon interactions and the LegendsDex version for PR 117. The grooming change has no encounter or species-data edits.
+
+## Eight-pixel Grooming Kit cues · draft PR 117
+
+Model: GPT-6.2 | Redrew both action buttons and the mirrored brush arrows on one 8×8 tile each. Wailord completed the bath in Debug and Release mGBA. Comparing the five Release prompt states against the previous build confined the visual changes to the input row. Publication awaits owner approval.
+
+## Compact Grooming Kit cues · draft PR 117
+
+Model: GPT-6.2 | Reduced the visible A and B caps from 16 to 12 pixels, tightened their label spacing and drew mirrored standalone direction arrows. Wailord passed the bath in Debug and Release mGBA. Pixel comparisons against the preceding Release captures for brush left, brush right, rinse, dry and completion showed differences only within the bottom prompt row. Awaiting publication approval.
+
+## Grooming Kit button cues · draft PR 117
+
+Model: GPT-6.2 | The owner approved the basin and requested darker input cues before publication. Localized the button art to the bath prompt row, with mirrored gold D-pad arrows and separately colored A and B buttons. Wailord completed the bath in Debug and Release mGBA. The control panel matched between builds in both brush directions, rinse, dry and completion. Publication awaits owner approval.
+
+## Grooming Kit basin correction · draft PR 117
+
+Model: GPT-6.2 | The owner approved the interface conditional on correcting the bottom of the tub. Closed the porcelain underbody, inset the feet and shortened the floor shadow. The Wailord completion-frame pixel diff is confined to the lower basin and shadow. Wailord completed lather, rinse and towel dry in both native builds. Debug checked the friendship gain and early exit. Release reopened the saved kit through Continue and returned to the field after completion.
+
+## Grooming Kit interface revision · draft PR 117
+
+Model: GPT-6.2 | Rebuilt the bath with layered room artwork, a species-aligned waterline, animated wash tools, native button glyphs and Emerald's dialogue frame. Debug mGBA exercised Mudkip, Wailord and Joltik through every stage, cancel, completion reward and Center revisit. Release mGBA loaded the saved kit through Continue and completed the Mudkip bath. Awaiting visual review.
+
+## Grooming Kit gameplay preview
+
+Model: GPT-6.2 | The first visit to a Pokémon Center lobby offers a reusable kit after existing map events. Bag and PC ownership prevent repeat gifts and a full bag can retry on re-entry. Appended item 948 fits the existing item history bitmap. The selected party member gains one friendship point on completing the three interactive stages. Debug mGBA verified the Oldale gift, registered kit, party selection, all bath stages, completion reward, early exit and revisit. Release mGBA reopened the battery through Continue and completed the bath with the registered kit. Item history and legacy save layout regressions passed. Preview awaiting owner review.
+
 ## v0.0.90 Hoenn Postcards published and verified
 
 Model: GPT-6.2 Astra. PR #116 shipped the Oldale photographer, 16 scenic signs and the approved full-screen Postcard Case in Release and Debug. The walkthrough lists every sign and LegendsDex displays v0.0.90. Candidate and production built the same tree and produced identical patches and ROM hashes. Both decoders reconstructed the tested builds. Verified 22 public files, including both patches, the browser patcher and the player guides. [Release evidence](qa/hoenn-postcards-v0.0.90.json).
