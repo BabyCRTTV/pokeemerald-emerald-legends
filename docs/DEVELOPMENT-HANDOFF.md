@@ -1,5 +1,9 @@
 # Development handoff
 
+## Grooming Kit gameplay preview
+
+Model: GPT-6.2 | The first visit to a Pokémon Center lobby offers a reusable kit after existing map events. Bag and PC ownership prevent repeat gifts and a full bag can retry on re-entry. Appended item 948 fits the existing item history bitmap. The selected party member gains one friendship point on completing the three interactive stages. Debug mGBA verified the Oldale gift, registered kit, party selection, all bath stages, completion reward, early exit and revisit. Release mGBA reopened the battery through Continue and completed the bath with the registered kit. Item history and legacy save layout regressions passed. Preview awaiting owner review.
+
 ## v0.0.90 Hoenn Postcards published and verified
 
 Model: GPT-6.2 Astra. PR #116 shipped the Oldale photographer, 16 scenic signs and the approved full-screen Postcard Case in Release and Debug. The walkthrough lists every sign and LegendsDex displays v0.0.90. Candidate and production built the same tree and produced identical patches and ROM hashes. Both decoders reconstructed the tested builds. Verified 22 public files, including both patches, the browser patcher and the player guides. [Release evidence](qa/hoenn-postcards-v0.0.90.json).

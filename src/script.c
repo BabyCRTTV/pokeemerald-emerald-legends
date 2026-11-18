@@ -14,6 +14,11 @@
 #include "field_message_box.h"
 
 #include "dexnav.h"
+#include "constants/layouts.h"
+#include "item.h"
+
+extern const u8 EventScript_GroomingGift[];
+static EWRAM_DATA bool8 sGroomingGiftPending = FALSE;
 
 #define RAM_SCRIPT_MAGIC 51
 
@@ -434,6 +439,22 @@ void RunOnLoadMapScript(void)
 
 void RunOnTransitionMapScript(void)
 {
+    switch (gMapHeader.mapLayoutId)
+    {
+    case LAYOUT_POKEMON_CENTER_1F:
+    case LAYOUT_LAVARIDGE_TOWN_POKEMON_CENTER_1F:
+    case LAYOUT_POKEMON_CENTER_1F_FRLG:
+    case LAYOUT_ONE_ISLAND_POKEMON_CENTER_1F:
+    case LAYOUT_INDIGO_PLATEAU_POKEMON_CENTER_1F:
+    case LAYOUT_LEGENDS_KANTO_POKEMON_CENTER_1F_FRLG:
+    case LAYOUT_LEGENDS_KANTO_CELADON_CITY_POKEMON_CENTER_1F:
+    case LAYOUT_LEGENDS_KANTO_SAFFRON_CITY_POKEMON_CENTER_1F:
+        sGroomingGiftPending = !CheckBagHasItem(ITEM_GROOMING_KIT, 1) && !CheckPCHasItem(ITEM_GROOMING_KIT, 1);
+        break;
+    default:
+        sGroomingGiftPending = FALSE;
+        break;
+    }
     MapHeaderRunScriptType(MAP_SCRIPT_ON_TRANSITION);
 }
 
@@ -456,6 +477,11 @@ bool8 TryRunOnFrameMapScript(void)
 {
     const u8 *ptr = MapHeaderCheckScriptTable(MAP_SCRIPT_ON_FRAME_TABLE);
 
+    if (!ptr && sGroomingGiftPending)
+    {
+        sGroomingGiftPending = FALSE;
+        ptr = EventScript_GroomingGift;
+    }
     if (!ptr)
         return FALSE;
 

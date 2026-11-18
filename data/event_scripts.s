@@ -1896,3 +1896,5 @@ EventScript_PalletTown_PlayersHouse_2F_TurnOnPC::
 	.include "data/maps/LegendsGrotto_Leafshade/scripts.inc"
 	.include "data/maps/LegendsGrotto_Stillwater/scripts.inc"
 	.include "data/maps/LegendsGrotto_Rainroot/scripts.inc"
+
+	.include "data/scripts/legends_grooming.inc"

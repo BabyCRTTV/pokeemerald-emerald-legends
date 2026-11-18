@@ -747,6 +747,20 @@ static void Task_AccessPokemonBoxLink(u8 taskId)
     DestroyTask(taskId);
 }
 
+extern const u8 EventScript_GroomingKit[];
+
+static void Task_UseGroomingKit(u8 taskId)
+{
+    ScriptContext_SetupScript(EventScript_GroomingKit);
+    DestroyTask(taskId);
+}
+
+void ItemUseOutOfBattle_GroomingKit(u8 taskId)
+{
+    sItemUseOnFieldCB = Task_UseGroomingKit;
+    SetUpItemUseOnFieldCallback(taskId);
+}
+
 extern const u8 EventScript_PostcardCamera[], EventScript_PostcardCase[];
 
 static void Task_UsePostcards(u8 taskId)

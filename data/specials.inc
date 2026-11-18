@@ -697,3 +697,5 @@ gSpecials::
 	def_special PostcardCapture
 	def_special PostcardOpen
 	def_special PostcardView
+	def_special GroomingValidateMon
+	def_special GroomingStart
