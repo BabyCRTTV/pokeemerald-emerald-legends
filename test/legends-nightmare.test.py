@@ -54,6 +54,12 @@ current_global=current_global.replace('#include "constants/item.h"\n','')
 difficulty_padding = '    /*0x90*/ u8 legendsDifficulty;\n    /*0x91*/ u8 filler_91[0x7];\n'
 assert current_global.count(difficulty_padding) == 1
 current_global = current_global.replace(difficulty_padding, '    /*0x90*/ u8 filler_90[0x8];\n')
+# Each postcard is three bytes. The signature and 16 records exactly occupy
+# the 52-byte unused Dex field in the published SaveBlock1.
+postcard_fields = ('u8 postcardMagic[4];\n'
+                  '    u8 postcardRecords[16][3]; // Species (little endian), season and time.')
+assert 4 + 16 * 3 == 0x34 and current_global.count(postcard_fields) == 1
+current_global = current_global.replace(postcard_fields, 'u8 filler1[0x34]; // Previously Dex Flags, feel free to remove.')
 assert [l for l in current_global.splitlines() if l.strip()]==[l for l in old_global.splitlines() if l.strip()]
 assert items[:items.index('    ITEM_INVITE_TICKET = 874,')]==old('include/constants/items.h').decode().split('    ITEM_INVITE_TICKET = 874,')[0]
 # Bound the only old-map terrain patch to a complete house; retain old objects,
