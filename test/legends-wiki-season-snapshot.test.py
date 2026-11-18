@@ -7,6 +7,7 @@ base['sourceCommit']=subprocess.check_output(['git','rev-parse','HEAD'],cwd=R,te
 kanto_initial={f'MAP_LEGENDS_KANTO_ROUTE{r}' for r in range(1,5)}
 new_land={f'MAP_LEGENDS_KANTO_ROUTE{r}' for r in [*range(6,19),'21_NORTH']}
 new_surf={f'MAP_LEGENDS_KANTO_ROUTE{r}' for r in [19,20,'21_NORTH','21_SOUTH']}
+coastal_surf={'MAP_ROUTE115','MAP_ROUTE118','MAP_LEGENDS_KANTO_ROUTE12','MAP_LEGENDS_KANTO_ROUTE13'}
 kanto=kanto_initial|new_land|new_surf
 # Start from the protected sixteen-table grass snapshot, even after Surf ships.
 for m in base['maps']:
@@ -30,12 +31,23 @@ with tempfile.TemporaryDirectory() as d:
      assert all(sum(e['rate'] for e in v['entries'])==100 for v in y['seasonalVariants'])
    changed.append(a['id'])
  assert len(changed)==51
- # The preceding 152-table snapshot removes the new Kanto grass and Surf methods.
+ for m in new['maps']:
+  if m['id'] in coastal_surf:
+   assert len(next(x for x in m['methods'] if x['id']=='surf')['seasonalVariants'])==4
+ # The previous published header lacks only this batch's four Surf methods.
  current=(R/'src/data/legends_seasonal_encounters.h').read_text()
+ current=re.sub(r'static const struct WildPokemon s(?:Route(?:115|118)|KantoRoute(?:12|13))(?:Spring|Summer|Autumn|Winter)WaterMons.*?=\s*\{.*?\};', '',current,flags=re.S)
+ previous224=Path(d)/'previous224.h';previous224.write_text(current)
+ prior224=build(previous224)
+ for m,n in zip(new['maps'],prior224['maps']):
+  for x,y in zip(m['methods'],n['methods']):
+   if m['id'] in coastal_surf and x['id']=='surf':assert 'seasonalVariants' not in y
+   else:assert x==y
+ # The preceding 152-table snapshot removes the new Kanto grass and Surf methods.
  header=re.sub(r'static const struct WildPokemon sKantoRoute(?:[6-9]|1[0-9]|20|21_(?:NORTH|SOUTH))(?:Spring|Summer|Autumn|Winter)(?:Water)?Mons.*?=\s*\{.*?\};', '',current,flags=re.S)
  previous152=Path(d)/'previous152.h';previous152.write_text(header)
  prior152=build(previous152)
- for m,n in zip(new['maps'],prior152['maps']):
+ for m,n in zip(prior224['maps'],prior152['maps']):
   for x,y in zip(m['methods'],n['methods']):
    if (m['id'] in new_land and x['id']=='land') or (m['id'] in new_surf and x['id']=='surf'):
     assert 'seasonalVariants' not in y
@@ -107,4 +119,4 @@ with tempfile.TemporaryDirectory() as d:
  assert prior['maps']==expected,'previous headers must remove only the newer route batch'
  old=build('preview-inputs/seasonal-encounters.h')
  assert old['maps']==base['maps'], 'old pinned headers must not retain stale future Surf tables'
-print('PASS: pinned land/Surf import, only 51 intended maps changed, original data retained, 224/152/136/124/104/84/64/48/32/16-table imports removed stale future variants')
+print('PASS: pinned land/Surf import, only 51 intended maps changed, original data retained, 240/224/152/136/124/104/84/64/48/32/16-table imports removed stale future variants')

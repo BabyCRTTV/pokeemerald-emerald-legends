@@ -1,5 +1,13 @@
 # Development handoff
 
+## Walk-to-Surf and four coastal seasonal tables (17 November 2026)
+
+**Model: GPT-6.2 Sol | Reasoning: keep shoreline collision and progression gates, then enter the existing Surf effect directly from D-pad movement.**
+
+Walking onto passable water now starts Surf after the Balance Badge. The player takes one continuous shoreline step with the Surf sprite. The manual field action and dismount still use their existing inputs. The wardrobe renderer resolves palette substitutions per pose to reduce stalls during the sprite switch. Hoenn Routes 115/118 and Kanto Routes 12/13 have seasonal Surf tables with their original slot levels and rates. The draft LegendsDex data includes all four rosters and retains the current sprite atlas source pin.
+
+The local Debug and Release builds passed focused mGBA 0.10.5 gameplay checks. The Route 115 release capture used a normal Continue and held D-pad input. Both baseline gates, return to land, the manual prompt, custom hair and boots, and 32 compiled seasonal/DexNav cases passed. Draft only. Candidate patch checks and wiki promotion belong to the release step. [Preview evidence](qa/walk-to-surf-preview.json).
+
 ## v0.0.88.2 pause menu opening fix published and verified (17 November 2026)
 
 **Model: GPT-6 | Reasoning: keep the pause menu tilemap hidden while the corresponding graphics are prepared and verify the release bytes.**

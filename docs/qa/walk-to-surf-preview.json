@@ -1,0 +1,50 @@
+{
+  "status": "Draft preview",
+  "version_base": "0.0.88.2",
+  "parent_commit": "d1416883dbeb307413d6e047923bdf8a033b8970",
+  "emulator": "mGBA 0.10.5",
+  "rom_sha256": {
+    "debug": "98199ecb04e253e07a83f07e92f84267d48ea0d0fc5e74528256d5198c84d4bd",
+    "release": "603d08407cb102a9c23d206e7685adbbcbf751df5293227a15bd0bc4fd0170dd"
+  },
+  "local_native_cases": {
+    "location": "Hoenn Route 115",
+    "release_playback": "Continue from a normal native battery save and hold only D-pad Up at the shoreline",
+    "unmodified_release_frames_to_mount_after_reaching_shore": 0,
+    "custom_hair_and_boots_release_frames_to_mount_after_reaching_shore": 11,
+    "native_surf_pose_bytes_match_before_and_after_remap_optimization": "39993b207ca28a7ad7f783669de75c0cccad4a357330ea6a669b8b6736fd37e1",
+    "no_prompt_during_movement": true,
+    "dismount_and_continue_walking": true,
+    "before_balance_badge_stops_at_shore": true,
+    "blocked_water_tile_stops_at_shore": true,
+    "manual_a_button_prompt_and_confirm": true
+  },
+  "native_seasonal_encounters": {
+    "routes": [
+      "Hoenn 115",
+      "Hoenn 118",
+      "Kanto 12",
+      "Kanto 13"
+    ],
+    "source_sha256": "105ba257f0e41731ed6b9ea362f043425eb0be73825eda06a568304e06da781a",
+    "seasonal_native_cases": 32,
+    "generated_pokemon": 8192,
+    "verified": "Native encounter tables, levels and DexNav icons, seen and mixed rosters in four seasons"
+  },
+  "clip": {
+    "filename": "Emerald-Legends-Walk-to-Surf.mp4",
+    "sha256": "8cb7171d093d877d376b2b45bfd9aa820d5d2d3f84b5643a2bc6d71d32cb88f9",
+    "seconds": 2.85,
+    "frames": 171,
+    "output_dimensions": [
+      720,
+      480
+    ],
+    "source": "Consecutive mGBA frames from the release build at native speed, scaled 3x with nearest-neighbor"
+  },
+  "limits": [
+    "Focused native fixtures rather than a full playthrough",
+    "Current and NPC-follower restrictions traced in source",
+    "CI candidate patches and publication gates remain pending"
+  ]
+}

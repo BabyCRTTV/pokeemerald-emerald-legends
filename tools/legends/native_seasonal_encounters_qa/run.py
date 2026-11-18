@@ -27,14 +27,14 @@ cycling_road_attributes=(R/'data/tilesets/secondary/celadon_city_frlg/metatile_a
 cycling_grass_tiles={0x280+i for i,(value,) in enumerate(struct.iter_unpack('<I',cycling_road_attributes)) if value&0x1ff==0xc9}
 ocean_tiles={i for i,(value,) in enumerate(struct.iter_unpack('<I',kanto_attributes)) if value&0x1ff==0x15}
 def add(route,season,mode=0,south=False,kanto=False,surf=False):
- water=surf if kanto else route in [*range(105,110),122,*range(124,135)];terrain=0x170 if water else 0x251 if route==111 else 0x20a if route==113 else 0x15 if route in (119,120) else 13
+ water=surf or (not kanto and route in [*range(105,110),122,*range(124,135)]);terrain=0x170 if water else 0x251 if route==111 else 0x20a if route==113 else 0x15 if route in (119,120) else 13
  map_name=f'LegendsKanto_Route{str(route).title()}' if kanto else f'Route{route}'
  map_id=f'MAP_LEGENDS_KANTO_ROUTE{route}' if kanto else f'MAP_ROUTE{route}'
  d=json.loads((R/f'data/maps/{map_name}/map.json').read_text());l=next(l for l in layouts if l['id']==d['layout']);raw=(R/l['blockdata_filepath']).read_bytes();blocks=struct.unpack('<'+'H'*(len(raw)//2),raw)
  occupied={(o['x'],o['y']) for field in (('object_events','warp_events','coord_events') if kanto else ('object_events',)) for o in d[field]};tiles=ocean_tiles if kanto and water else cycling_grass_tiles if kanto and route==17 else {terrain};coords=[(i%l['width'],i//l['width']) for i,v in enumerate(blocks) if v&0xfff in tiles and 3<i%l['width']<l['width']-3 and 3<i//l['width']<l['height']-3 and (i%l['width'],i//l['width']) not in occupied and (not south or i//l['width']>40)]
  assert coords,(route,'no passable native terrain fixture');x,y=coords[0];name=['spring','summer','autumn','winter'][season];expected=tables[kanto,str(route),name,water]
  rows=re.findall(r'\{(\d+), (\d+), SPECIES_\w+\}',re.search(('sKantoRoute' if kanto else 'sRoute')+str(route)+name.title()+('Water' if water else '')+r'Mons.*?=\s*\{(.*?)\};',data,re.S)[1]);minimum=min(int(a) for a,b in rows);maximum=max(int(b) for a,b in rows)
- scenes.append(dict(map_id=map_id,name=('kanto-' if kanto else '')+f'route{route}-{name}'+('-surf' if kanto and water else '')+('-all-unseen' if mode==1 else '-all-seen' if mode==2 else '-south' if south else ''),route=route,season=season,mode=mode,area=1 if water else 0,x=x,y=y,min=minimum,max=maximum,rate=(2 if water else 14 if route in ('21_NORTH','21_SOUTH') else 21) if kanto else 10 if route==111 else 4 if water else 15 if route==119 else 20,expected=expected))
+ scenes.append(dict(map_id=map_id,name=('kanto-' if kanto else '')+f'route{route}-{name}'+('-surf' if surf else '')+('-all-unseen' if mode==1 else '-all-seen' if mode==2 else '-south' if south else ''),route=route,season=season,mode=mode,area=1 if water else 0,x=x,y=y,min=minimum,max=maximum,rate=(2 if water else 14 if route in ('21_NORTH','21_SOUTH') else 21) if kanto else 10 if route==111 else 4 if water else 15 if route==119 else 20,expected=expected))
 for route in range(101,105):
  for season in range(4):add(route,season)
 add(101,0,1);add(104,3,2);add(104,3,south=True)
@@ -82,6 +82,11 @@ for mode in (0,2):
   for season in range(4):add(route,season,mode,kanto=True,surf=True)
 add('21_NORTH',0,1,kanto=True);add('21_SOUTH',3,1,kanto=True,surf=True)
 assert len(scenes)==468
+for kanto,routes in ((False,(115,118)),(True,(12,13))):
+ for route in routes:
+  for season in range(4):
+   for mode in (0,2):add(route,season,mode,kanto=kanto,surf=True)
+assert len(scenes)==500
 header=[ui,'struct QAScenario {u16 map; s16 x,y; u8 season,mode,area,min,max,rate; enum Species expected[12];};','static const struct QAScenario scenarios[] = {']
 for s in scenes:header.append('{%s,%d,%d,%d,%d,%d,%d,%d,%d,{%s}},'%(s['map_id'],s['x'],s['y'],s['season'],s['mode'],s['area'],s['min'],s['max'],s['rate'],','.join(s['expected'])))
 header.append('};');(O/'qa_scenarios.h').write_text('\n'.join(header)+'\n')
@@ -109,7 +114,7 @@ finally:
  if (O/'parallel/emulator.log').exists():shutil.copyfile(O/'parallel/emulator.log',O/'emulator.log')
  private.unlink(missing_ok=True)
 assert sha(rom)==before
-proof={'version':(R/'VERSION').read_text().strip(),'base_ROM_sha256':before,'emulator':'mGBA native core 0.10.2','private_instrumentation':True,'public_ROM_unchanged':True,'scenarios':scenes,'wild_creations_per_scenario':256,'passed':True,'scope':'Actual compiled land and Surf tables, wild creation and DexNav GUI; hardware-sampled two-pose bounds/centering and uniform shrink-only scale for every grid icon; controlled route/season/seen state, original icons and VRAM frames, isolated palettes, unseen selection lock, closure and protected state. Both Route104 halves, native Surf fixtures on Routes105-109/122/124-134 and Route111 desert, Route113 native ash-grass and Routes114-118/121/123 grass and Routes119-120 native long-grass fixtures (Route119 rate15) and Kanto Routes1–4,6–18 and Route21 North in grass, plus Routes19–20 and both Route21 halves in Surf checked. Not a natural progression playthrough, historical-save migration, full DexNav hunt or Pizza Boy test.','harness_sha256':{n:sha(S/n) for n in ['arm.c','host.c','run.py','workers.py']}}
+proof={'version':(R/'VERSION').read_text().strip(),'base_ROM_sha256':before,'emulator':'mGBA native core 0.10.2','private_instrumentation':True,'public_ROM_unchanged':True,'scenarios':scenes,'wild_creations_per_scenario':256,'passed':True,'scope':'Actual compiled land and Surf tables, wild creation and DexNav GUI; hardware-sampled two-pose bounds/centering and uniform shrink-only scale for every grid icon; controlled route/season/seen state, original icons and VRAM frames, isolated palettes, unseen selection lock, closure and protected state. Both Route104 halves, native Surf fixtures on Routes105-109/122/124-134 and Route111 desert, Route113 native ash-grass and Routes114-118/121/123 grass and Routes119-120 native long-grass fixtures (Route119 rate15) and Kanto Routes1–4,6–18 and Route21 North in grass, plus Surf on Hoenn Routes115/118, Kanto Routes12/13/19/20 and both Kanto Route21 halves. Not a natural progression playthrough, historical-save migration, full DexNav hunt or Pizza Boy test.','harness_sha256':{n:sha(S/n) for n in ['arm.c','host.c','run.py','workers.py']}}
 proof['execution']=execution
 if parity is not None:proof['serial_parallel_comparison']=parity
-(O/'verification.json').write_text(json.dumps(proof,indent=2)+'\n');print('PASS: 468 targeted native seasonal/DexNav scenarios and 119808 real generated Pokémon; grass and Surf, original/seen/unseen states.')
+(O/'verification.json').write_text(json.dumps(proof,indent=2)+'\n');print(f'PASS: {len(scenes)} targeted native seasonal/DexNav scenarios and {len(scenes)*256} real generated Pokémon.')
