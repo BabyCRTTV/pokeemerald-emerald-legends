@@ -3441,8 +3441,9 @@ static void SurfFieldEffect_Mount(struct Task *task)
         return;
 
     ObjectEventSetGraphicsId(objectEvent, GetPlayerAvatarGraphicsIdByStateId(PLAYER_AVATAR_STATE_SURFING));
+    // The automatic mount takes one normal jump instead of the slower field-move jump.
     ObjectEventSetHeldMovement(objectEvent, seamless
-        ? GetWalkNormalMovementAction(objectEvent->movementDirection)
+        ? GetJumpMovementAction(objectEvent->movementDirection)
         : GetJumpSpecialMovementAction(objectEvent->movementDirection));
     FollowerNPC_FollowerToWater();
 
@@ -3450,8 +3451,6 @@ static void SurfFieldEffect_Mount(struct Task *task)
     gFieldEffectArguments[1] = task->tDestY;
     gFieldEffectArguments[2] = gPlayerAvatar.objectEventId;
     objectEvent->fieldEffectSpriteId = FieldEffectStart(FLDEFF_SURF_BLOB);
-    if (seamless)
-        SetSurfBlob_BobState(objectEvent->fieldEffectSpriteId, BOB_PLAYER_AND_MON);
     task->tState = SURF_EFFECT_END;
 }
 

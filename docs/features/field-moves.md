@@ -48,7 +48,7 @@ The party action menu also exposes one compact **FIELD** entry once the first ut
 
 Individual HM names are no longer injected into each Pokémon's normal action list.
 
-At a shoreline, the player moves directly onto the first water tile in the surfing animation. Holding the same direction continues across the water. Approaching land uses the usual dismount.
+At a shoreline, the player hops onto the Surf creature waiting on the first water tile. Holding the same direction continues across the water. Approaching land uses the usual dismount.
 
 ## Presentation
 

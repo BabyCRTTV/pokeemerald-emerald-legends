@@ -46,5 +46,46 @@
     "Focused native fixtures rather than a full playthrough",
     "Current and NPC-follower restrictions traced in source",
     "CI candidate patches and publication gates remain pending"
-  ]
+  ],
+  "hop_revision": {
+    "parent_commit": "d15ba231053ca38a8b1a436bff2fa1445344a727",
+    "rom_sha256": {
+      "debug": "24f2ff25efbb85b780a9b6913ca5b05aab16a5282ba7fe592f84396bbc6e0445",
+      "release": "8374ffe23d9d9dea1b118203f590daac64012ada2ae15a29500781404baba36a"
+    },
+    "route": "Hoenn Route 115",
+    "controls": "Hold Up from dry land through launch, landing, and continuing onto deeper water",
+    "release_default": {
+      "launch_frame": 54,
+      "settle_frame": 68,
+      "unlocked_frame": 70,
+      "peak_height_px": 10,
+      "mount_start_delay_frames": 0
+    },
+    "release_custom_hair_and_boots": {
+      "launch_frame": 65,
+      "settle_frame": 79,
+      "unlocked_frame": 81,
+      "peak_height_px": 10,
+      "mount_start_delay_frames": 11
+    },
+    "focused_native_checks": [
+      "Zero prompt frames with default and custom player sprites",
+      "One-tile hop with controls released after landing and held direction continuing into deeper water",
+      "Walk-to-Surf blocked before the Balance Badge or at a blocked water tile",
+      "Manual A-button prompt and confirmation",
+      "Dismount and resume walking"
+    ],
+    "clip": {
+      "filename": "Emerald-Legends-Shoreline-Surf-Hop.gif",
+      "sha256": "ffcf3e54e90237d7ba368966fa16a11cb41f51c13bdbcadb9d8e2a1383c5f816",
+      "frames": 86,
+      "frame_size": [
+        480,
+        320
+      ],
+      "fully_opaque_frames": 86,
+      "source": "Release mGBA 0.10.5, 2x nearest-neighbor"
+    }
+  }
 }
