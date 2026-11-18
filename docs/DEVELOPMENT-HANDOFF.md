@@ -1,8 +1,10 @@
 # Development handoff
 
-## v0.0.91 Grooming Kit approved for publication
+## v0.0.91 Grooming Kit published and verified (18 November 2026)
 
-Model: GPT-6.2 | Owner approved the eight-pixel input cues after the Wailord preview. Prepared both build versions, patcher, changelogs, Chapter 1, Pokémon interactions and the LegendsDex version for PR 117. The grooming change has no encounter or species-data edits.
+**Model: GPT-6 | Reasoning: match the candidate and production builds to the approved eight-pixel controls and verify the live download bytes.**
+
+PR #117 shipped the first-visit Pokémon Center gift and three-stage bath. The walkthrough and Pokémon interactions guide cover the kit. Native checks included the Center welcome followed by the Poffin Maker. Candidate and production matched source trees, ROM hashes and BPS hashes. Floating IPS and the browser decoder each reconstructed both targets. Pages run `44397735221` deployed the release. Live verification matched all 22 files, including both patch downloads and the wiki updates. [Release evidence](qa/grooming-kit-v0.0.91.json).
 
 ## Eight-pixel Grooming Kit cues · draft PR 117
 
