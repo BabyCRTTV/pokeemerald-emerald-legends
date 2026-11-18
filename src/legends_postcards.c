@@ -1,4 +1,8 @@
 #include "global.h"
+#include "bg.h"
+#include "gpu_regs.h"
+#include "overworld.h"
+#include "scanline_effect.h"
 #include "main.h"
 #include "constants/rgb.h"
 #include "event_data.h"
@@ -7,6 +11,7 @@
 #include "fieldmap.h"
 #include "legends_seasons.h"
 #include "menu.h"
+#include "malloc.h"
 #include "palette.h"
 #include "pokemon.h"
 #include "pokemon_icon.h"
@@ -61,9 +66,26 @@ static const struct PhotoSpot
 
 static const u8 sSignature[] = {'P','C','1','6'};
 static const u8 *const sLight[] = {COMPOUND_STRING("Morning"), COMPOUND_STRING("Day"), COMPOUND_STRING("Evening"), COMPOUND_STRING("Night")};
-static const struct WindowTemplate sPhoto = {0, 5, 3, 20, 10, 13, 1};
-static const struct WindowTemplate sLabel = {0, 5, 13, 20, 5, 15, 201};
-static EWRAM_DATA u16 sOldPalette[16] = {};
+// The print uses 8bpp tiles in character block 2. The paper and lettering
+// use a separate 4bpp layer and palette 15, so browsing cannot recolor them.
+static const struct BgTemplate sLayers[] = {
+    {.bg = 0, .mapBaseIndex = 31},
+    {.bg = 1, .charBaseIndex = 2, .mapBaseIndex = 30, .paletteMode = 1, .priority = 1},
+};
+static const struct WindowTemplate sPaper[] = {
+    {.width = 30, .height = 20, .paletteNum = 15, .baseBlock = 1}, DUMMY_WIN_TEMPLATE
+};
+static const u16 sPaperColors[16] = {
+    RGB(5,8,9), RGB(31,30,26), RGB(5,10,11), RGB(15,16,14),
+    RGB(10,14,14), RGB(23,23,19), RGB(27,26,22), RGB(18,8,6), RGB(29,28,24),
+};
+static const u8 sPartnerPosition[][2] = {
+    {140,99}, {96,91}, {103,96}, {124,94}, {105,100}, {151,101},
+    {153,95}, {79,93}, {109,103}, {137,102}, {143,72}, {129,78},
+    {101,105}, {112,105}, {66,98}, {81,85},
+};
+static EWRAM_DATA u8 sPartner = 0;
+static EWRAM_DATA u32 *sPhotoTiles = NULL;
 static EWRAM_DATA u8 sCurrent = 0;
 
 static bool32 HasAlbum(void)
@@ -130,28 +152,52 @@ void PostcardOpen(void)
             }
 }
 
-static void RemovePartner(struct Task *task)
+enum { PRINT_WIDTH = 28, PRINT_HEIGHT = 14, PRINT_PALETTE = 224, PRINT_BYTES = PRINT_WIDTH * PRINT_HEIGHT * 64 };
+
+static void Text(const u8 *text, u8 font, u8 x, u8 y, u8 ink)
 {
-    if (task->data[2] < MAX_SPRITES)
-    {
-        FreeAndDestroyMonIconSprite(&gSprites[task->data[2]]);
-        SafeFreeMonIconPalette(task->data[3]);
-        task->data[2] = MAX_SPRITES;
-    }
+    const u8 colors[] = {0, ink, 0};
+    AddTextPrinterParameterized3(0, font, x, y, colors, TEXT_SKIP_DRAW, text);
 }
 
-static void DrawPrint(struct Task *task)
+static void DrawPaper(void)
 {
-    const struct PhotoSpot *spot = &sSpots[sCurrent];
-    u8 stamp = gSaveBlock1Ptr->postcardRecords[sCurrent][2];
-    u8 picture = task->data[0], label = task->data[1];
-    u16 species = PhotoSpecies(sCurrent), colors[16];
-    u8 i, *end;
-    RemovePartner(task);
-    memcpy(colors, spot->print, sizeof(colors));
-    for (i = 1; i < ARRAY_COUNT(colors); i++)
+    FillWindowPixelBuffer(0, PIXEL_FILL(4));
+    FillWindowPixelRect(0, 1, 4, 3, 232, 151);
+    FillWindowPixelRect(0, 5, 7, 7, 226, 114);
+    FillWindowPixelRect(0, 0, 8, 8, 224, 112);
+    FillWindowPixelRect(0, 5, 9, 139, 222, 1);
+    // Perforated stamp edge around the postcard number.
+    FillWindowPixelRect(0, 6, 196, 122, 33, 16);
+    for (u8 x = 198; x < 228; x += 4)
     {
-        u16 color = LegendsSeasonVegetationColor(colors[i], stamp & 3);
+        FillWindowPixelRect(0, 1, x, 122, 2, 1);
+        FillWindowPixelRect(0, 1, x, 137, 2, 1);
+    }
+    ConvertIntToDecimalStringN(gStringVar1, sCurrent + 1, STR_CONV_MODE_LEADING_ZEROS, 2);
+    StringAppend(gStringVar1, COMPOUND_STRING("/16"));
+    Text(gStringVar1, FONT_SMALL, 199, 123, 7);
+    Text(sSpots[sCurrent].caption, FONT_NORMAL, 10, 121, 2);
+    u8 stamp = gSaveBlock1Ptr->postcardRecords[sCurrent][2];
+    u8 *end = StringCopy(gStringVar4, LegendsGetSeasonName(stamp & 3));
+    end = StringCopy(end, COMPOUND_STRING(" / "));
+    StringCopy(end, sLight[(stamp >> 2) & 3]);
+    Text(gStringVar4, FONT_SMALL, 10, 140, 2);
+    Text(COMPOUND_STRING("{LEFT_ARROW}{RIGHT_ARROW} Browse    B Close"), FONT_SMALL, 141, 140, 4);
+    PutWindowTilemap(0);
+    CopyWindowToVram(0, COPYWIN_FULL);
+}
+
+static void DrawPrint(void)
+{
+    const u8 *print = sSpots[sCurrent].print;
+    const u16 *source = (const u16 *)print;
+    u8 stamp = gSaveBlock1Ptr->postcardRecords[sCurrent][2];
+    u16 colors[PRINT_PALETTE];
+    u16 species = PhotoSpecies(sCurrent);
+    for (u16 i = 0; i < PRINT_PALETTE; i++)
+    {
+        u16 color = LegendsSeasonVegetationColor(source[i], stamp & 3);
         u8 r = color & 31, g = (color >> 5) & 31, b = color >> 10;
         if ((stamp >> 2) == TIME_NIGHT)
             color = RGB(r / 2, g / 2, (b + 8) * 2 / 3);
@@ -159,75 +205,109 @@ static void DrawPrint(struct Task *task)
             color = RGB((r * 3 + 31) / 4, g * 7 / 8, b * 3 / 4);
         colors[i] = color;
     }
-    LoadPalette(colors, BG_PLTT_ID(13), sizeof(colors));
-    BlitBitmapRectToWindow(picture, spot->print + sizeof(colors), 0, 0, 160, 80, 0, 0, 160, 80);
-    FillWindowPixelBuffer(label, PIXEL_FILL(1));
-    AddTextPrinterParameterized(label, FONT_NORMAL, spot->caption, 3, 0, TEXT_SKIP_DRAW, NULL);
-    end = StringCopy(gStringVar4, LegendsGetSeasonName(stamp & 3));
-    end = StringCopy(end, COMPOUND_STRING("  "));
-    StringCopy(end, sLight[(stamp >> 2) & 3]);
-    AddTextPrinterParameterized(label, FONT_SMALL, gStringVar4, 3, 15, TEXT_SKIP_DRAW, NULL);
-    AddTextPrinterParameterized(label, FONT_SMALL, COMPOUND_STRING("{LEFT_ARROW}{RIGHT_ARROW} Browse    B Close"), 3, 27, TEXT_SKIP_DRAW, NULL);
-    PutWindowTilemap(picture);
-    PutWindowTilemap(label);
-    CopyWindowToVram(picture, COPYWIN_FULL);
-    CopyWindowToVram(label, COPYWIN_FULL);
+    LoadPalette(colors, 0, sizeof(colors));
+    LZ77UnCompWram((const u32 *)(print + sizeof(colors)), sPhotoTiles);
+    LoadBgTiles(1, sPhotoTiles, PRINT_BYTES, 1);
+    DrawPaper();
     LoadMonIconPalette(species);
-    task->data[2] = CreateMonIconNoPersonality(species, SpriteCB_MonIcon, 135, 86, 0);
-    task->data[3] = species;
-    if (task->data[2] < MAX_SPRITES)
-        gSprites[task->data[2]].oam.priority = 0;
+    sPartner = CreateMonIconNoPersonality(species, SpriteCallbackDummy,
+        sPartnerPosition[sCurrent][0], sPartnerPosition[sCurrent][1], 0);
+    if (sPartner < MAX_SPRITES)
+    {
+        UpdateMonIconFrame(&gSprites[sPartner]);
+        gSprites[sPartner].oam.priority = 0;
+    }
 }
 
-static void Task_BrowsePrints(u8 taskId)
+static void RemovePartner(void)
 {
-    struct Task *task = &gTasks[taskId];
+    if (sPartner < MAX_SPRITES)
+        FreeAndDestroyMonIconSprite(&gSprites[sPartner]);
+    SafeFreeMonIconPalette(PhotoSpecies(sCurrent));
+    sPartner = MAX_SPRITES;
+}
+
+static void VBlank(void)
+{
+    LoadOam();
+    ProcessSpriteCopyRequests();
+    TransferPlttBuffer();
+}
+
+static void TurnPage(void)
+{
+    u8 delta = JOY_NEW(DPAD_RIGHT) ? 1 : ARRAY_COUNT(sSpots) - 1;
+    RemovePartner();
+    do
+        sCurrent = (sCurrent + delta) % ARRAY_COUNT(sSpots);
+    while (!PhotoSpecies(sCurrent));
+    PlaySE(SE_SELECT);
+    DrawPrint();
+}
+
+static void CaseMain(void)
+{
     if (JOY_NEW(B_BUTTON | A_BUTTON))
     {
-        RemovePartner(task);
-        LoadPalette(sOldPalette, BG_PLTT_ID(13), sizeof(sOldPalette));
-        ClearStdWindowAndFrameToTransparent(task->data[0], TRUE);
-        ClearStdWindowAndFrameToTransparent(task->data[1], TRUE);
-        RemoveWindow(task->data[0]);
-        RemoveWindow(task->data[1]);
-        DestroyTask(taskId);
-        ScriptContext_Enable();
+        RemovePartner();
+        Free(sPhotoTiles);
+        sPhotoTiles = NULL;
+        SetVBlankCallback(NULL);
+        FreeAllWindowBuffers();
+        SetMainCallback2(CB2_ReturnToFieldContinueScriptPlayMapMusic);
+        return;
     }
-    else if (JOY_NEW(DPAD_LEFT | DPAD_RIGHT))
-    {
-        u8 delta = JOY_NEW(DPAD_RIGHT) ? 1 : ARRAY_COUNT(sSpots) - 1;
-        do
-            sCurrent = (sCurrent + delta) % ARRAY_COUNT(sSpots);
-        while (!PhotoSpecies(sCurrent));
-        PlaySE(SE_SELECT);
-        DrawPrint(task);
-    }
+    if (JOY_NEW(DPAD_LEFT | DPAD_RIGHT))
+        TurnPage();
+    AnimateSprites();
+    BuildOamBuffer();
 }
 
-static void ResumeField(u8 taskId)
+static void InitCase(void)
 {
-    DestroyTask(taskId);
-    ScriptContext_Enable();
+    SetVBlankCallback(NULL);
+    SetGpuReg(REG_OFFSET_DISPCNT, DISPCNT_FORCED_BLANK);
+    ScanlineEffect_Stop();
+    DmaClearLarge16(3, (void *)VRAM, VRAM_SIZE, 0x1000);
+    DmaClear32(3, OAM, OAM_SIZE);
+    ResetBgsAndClearDma3BusyFlags(0);
+    InitBgsFromTemplates(0, sLayers, ARRAY_COUNT(sLayers));
+    for (u8 bg = 0; bg < 2; bg++)
+    {
+        ChangeBgX(bg, 0, BG_COORD_SET);
+        ChangeBgY(bg, 0, BG_COORD_SET);
+    }
+    ResetPaletteFade();
+    ResetTasks();
+    ResetSpriteData();
+    FreeAllSpritePalettes();
+    sPhotoTiles = AllocZeroedUnchecked(PRINT_BYTES);
+    if (!InitWindowsUnchecked(sPaper) || sPhotoTiles == NULL)
+    {
+        if (sPhotoTiles != NULL)
+            Free(sPhotoTiles);
+        sPhotoTiles = NULL;
+        FreeAllWindowBuffers();
+        SetMainCallback2(CB2_ReturnToFieldContinueScriptPlayMapMusic);
+        return;
+    }
+    DeactivateAllTextPrinters();
+    u16 *map = (u16 *)BG_SCREEN_ADDR(30);
+    for (u8 y = 0; y < PRINT_HEIGHT; y++)
+        for (u8 x = 0; x < PRINT_WIDTH; x++)
+            map[(y + 1) * 32 + x + 1] = y * PRINT_WIDTH + x + 1;
+    LoadPalette(sPaperColors, BG_PLTT_ID(15), sizeof(sPaperColors));
+    DrawPrint();
+    SetGpuReg(REG_OFFSET_BLDCNT, 0);
+    SetGpuReg(REG_OFFSET_DISPCNT, DISPCNT_OBJ_ON | DISPCNT_OBJ_1D_MAP);
+    ShowBg(0);
+    ShowBg(1);
+    SetVBlankCallback(VBlank);
+    SetMainCallback2(CaseMain);
 }
 
 void PostcardView(void)
 {
-    u8 taskId = CreateTask(Task_BrowsePrints, 0x50);
-    struct Task *task = &gTasks[taskId];
-    task->data[0] = AddWindow(&sPhoto);
-    task->data[1] = AddWindow(&sLabel);
-    task->data[2] = MAX_SPRITES;
-    if (task->data[0] == WINDOW_NONE || task->data[1] == WINDOW_NONE)
-    {
-        if (task->data[0] != WINDOW_NONE)
-            RemoveWindow(task->data[0]);
-        if (task->data[1] != WINDOW_NONE)
-            RemoveWindow(task->data[1]);
-        task->func = ResumeField;
-        return;
-    }
-    memcpy(sOldPalette, &gPlttBufferUnfaded[BG_PLTT_ID(13)], sizeof(sOldPalette));
-    DrawStdWindowFrame(task->data[0], FALSE);
-    DrawStdWindowFrame(task->data[1], FALSE);
-    DrawPrint(task);
+    CleanupOverworldWindowsAndTilemaps();
+    SetMainCallback2(InitCase);
 }
