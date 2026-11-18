@@ -123,6 +123,15 @@ frames(500)
 core.wr(main, 0)
 command(0)
 frames(430)
+# Finish the automatic Center welcome before turning to the Poffin Maker.
+for _ in range(16):
+    command(1)
+    if value(20) == 1 and not value(21):
+        break
+    key(1, 100)
+else:
+    screenshot("failure-center-welcome")
+    raise AssertionError("First Center visit did not award the Grooming Kit and release controls")
 key(64)
 key(1, 140)
 screenshot("07-First-Visit")
@@ -200,7 +209,15 @@ key(128)
 key(128)
 key(1, 180)
 key(16, 120)
-key(128)
+# Select the actual Treat Case even when other Key Items precede it.
+for _ in range(8):
+    command(5)
+    if value(22):
+        break
+    key(128)
+else:
+    screenshot("failure-treat-case-slot")
+    raise AssertionError("Treat Case missing from Key Items")
 screenshot("16-Treat-Case-In-Bag")
 key(1, 80)
 key(1, 180)

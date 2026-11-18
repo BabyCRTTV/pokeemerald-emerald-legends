@@ -9,6 +9,8 @@
 #include "save.h"
 #include "battle.h"
 #include "item.h"
+#include "item_menu.h"
+#include "script.h"
 #include "constants/maps.h"
 #include "constants/flags.h"
 #include "constants/species.h"
@@ -62,6 +64,14 @@ void qa(void)
         for (u8 i = 0; i < LEGENDS_POFFIN_CAPACITY; i++)
             gSaveBlock3Ptr->poffins.treats[i] = (struct Pokeblock){POFFIN_SPICY + i % 5, 15, 9, 7, 5, 3, 20};
     }
+    if (b[0] == 5)
+    {
+        u8 pocket = gBagPosition.pocket;
+        u16 slot = gBagPosition.scrollPosition[pocket] + gBagPosition.cursorPosition[pocket];
+        b[22] = pocket == POCKET_KEY_ITEMS && GetBagItemId(pocket, slot) == ITEM_TREAT_CASE;
+    }
+    b[20] = CountTotalItemQuantityInBag(ITEM_GROOMING_KIT);
+    b[21] = ArePlayerFieldControlsLocked();
     b[16] = gSaveBlock1Ptr->pokeblocks[1].color;
     b[17] = VarGet(VAR_LEGENDS_HAIR);
     b[18] = VarGet(VAR_LEGENDS_SEASON_MODE);
