@@ -19,6 +19,7 @@
 #include "graphics.h"
 #include "item.h"
 #include "international_string_util.h"
+#include "legends_seasons.h"
 #include "m4a.h"
 #include "map_name_popup.h"
 #include "main.h"
@@ -857,7 +858,27 @@ static void DexNavSearchBail(const u8 *script)
     ScriptContext_SetupScript(script);
 }
 
-static bool8 InitDexNavSearch(enum Species species, u32 environment)
+static bool8 BufferDexNavSeasonalHint(enum Species species, enum EncounterType environment)
+{
+    enum WildPokemonArea area;
+    if (environment == ENCOUNTER_TYPE_LAND)
+        area = WILD_AREA_LAND;
+    else if (environment == ENCOUNTER_TYPE_WATER)
+        area = WILD_AREA_WATER;
+    else
+        return FALSE;
+
+    u8 season = GetNextWildEncounterSeason(GetCurrentMapWildMonHeaderId(), area, species);
+    if (season == LEGENDS_SEASON_COUNT)
+        return FALSE;
+
+    StringCopy(gStringVar1, GetSpeciesName(species));
+    GetMapName(gStringVar2, GetCurrentRegionMapSectionId(), 0);
+    StringCopy(gStringVar3, LegendsGetSeasonName(season));
+    return TRUE;
+}
+
+static bool8 InitDexNavSearch(enum Species species, enum EncounterType environment, bool8 registeredSearch)
 {
     sDexNavSearchDataPtr = AllocZeroed(sizeof(struct DexNavSearch));
     if (sDexNavSearchDataPtr == NULL)
@@ -879,7 +900,16 @@ static bool8 InitDexNavSearch(enum Species species, u32 environment)
         return TRUE;
     }
 
-    if (sDexNavSearchDataPtr->monLevel == MON_LEVEL_NONEXISTENT || !TryStartHiddenMonFieldEffect(sDexNavSearchDataPtr->environment, 12, 12, FALSE))
+    if (sDexNavSearchDataPtr->monLevel == MON_LEVEL_NONEXISTENT)
+    {
+        const u8 *script = EventScript_NotFoundNearby;
+        if (registeredSearch && BufferDexNavSeasonalHint(species, environment))
+            script = EventScript_DexNavSeasonalHint;
+        DexNavSearchBail(script);
+        return TRUE;
+    }
+
+    if (!TryStartHiddenMonFieldEffect(sDexNavSearchDataPtr->environment, 12, 12, FALSE))
     {
         DexNavSearchBail(EventScript_NotFoundNearby);
         return TRUE;
@@ -983,7 +1013,7 @@ bool32 TryStartDexNavSearch(void)
     HideMapNamePopUpWindow();
     ChangeBgY_ScreenOff(0, 0, 0);
     PlaySE(SE_DEX_SEARCH);
-    return InitDexNavSearch(val & DEXNAV_MASK_SPECIES, val >> 14);
+    return InitDexNavSearch(val & DEXNAV_MASK_SPECIES, val >> 14, TRUE);
 }
 
 void EndDexNavSearch(void)
@@ -1835,7 +1865,7 @@ static void CB1_InitDexNavSearch(void)
     if (!gPaletteFade.active && !ArePlayerFieldControlsLocked() && gMain.callback2 == CB2_Overworld)
     {
         SetMainCallback1(CB1_Overworld);
-        InitDexNavSearch(gSpecialVar_0x8000, gSpecialVar_0x8001);
+        InitDexNavSearch(gSpecialVar_0x8000, gSpecialVar_0x8001, FALSE);
     }
 }
 

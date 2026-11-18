@@ -705,6 +705,7 @@ extern const u8 Common_EventScript_ShowPokemartSign[];
 // DexNav
 extern const u8 EventScript_StartDexNavBattle[];
 extern const u8 EventScript_NotFoundNearby[];
+extern const u8 EventScript_DexNavSeasonalHint[];
 extern const u8 EventScript_PokemonGotAway[];
 extern const u8 EventScript_LostSignal[];
 extern const u8 EventScript_TooDark[];

@@ -2,7 +2,9 @@
 from pathlib import Path
 import re,json,subprocess,tempfile
 R=Path(__file__).resolve().parents[1]
-s=(R/'src/wild_encounter.c').read_text();a=s.index('const struct WildPokemonInfo *GetLandMonsInfo(');b=s.index('\nenum TimeOfDay GetTimeOfDayForEncounters(',a);function=s[a:b]
+s=(R/'src/wild_encounter.c').read_text();a=s.index('static const struct WildPokemonInfo *GetSeasonalMonsInfo(');b=s.index('\nenum TimeOfDay GetTimeOfDayForEncounters(',a);function=s[a:b]
+a=s.index('static u8 GetMaxLevelOfSpeciesInWildTable(',s.index('#include "data.h"'));b=s.index('\n#ifdef BUGFIX',a);max_level_function=s[a:b]
+wild_header=(R/'include/wild_encounter.h').read_text();a=wild_header.index('enum WildPokemonArea {');b=wild_header.index('};',a)+2;wild_area=wild_header[a:b]
 data=(R/'src/data/legends_seasonal_encounters.h').read_text()
 dexnav=(R/'src/dexnav.c').read_text();a=dexnav.index('static u8 GetEncounterLevelFromMapData(enum Species species, enum EncounterType environment)\n{');b=dexnav.index('\n///////////',a);level_function=dexnav[a:b]
 g=json.loads((R/'src/data/wild_encounters.json').read_text())['wild_encounter_groups'][0]
@@ -281,9 +283,7 @@ static unsigned active,reads,pending,currentHeader;
 #define MON_LEVEL_NONEXISTENT 255
 #define NUM_WATER_MONS_ENCOUNTER_SLOTS 5
 #define NUM_HIDDEN_MONS_ENCOUNTER_SLOTS 3
-#define WILD_AREA_LAND 0
-#define WILD_AREA_WATER 1
-#define WILD_AREA_HIDDEN 2
+#define NUM_ROCK_SMASH_MONS_ENCOUNTER_SLOTS 5
 #define RNG_DEXNAV_ENCOUNTER_LEVEL 0
 enum EncounterType {ENCOUNTER_TYPE_LAND,ENCOUNTER_TYPE_WATER,ENCOUNTER_TYPE_HIDDEN};
 static struct {enum EncounterType environment;}searchData,*sDexNavSearchDataPtr=&searchData;
@@ -314,20 +314,43 @@ int main(void){
      assert(GetEncounterLevelFromMapData(p->wildPokemon[i].species,area?ENCOUNTER_TYPE_WATER:ENCOUNTER_TYPE_LAND)!=255);
      enum Species species=previous->wildPokemon[i].species;unsigned present=0;
      for(unsigned j=0;j<slots;j++)if(p->wildPokemon[j].species==species)present=1;
-     if(!present){assert(GetEncounterLevelFromMapData(species,area?ENCOUNTER_TYPE_WATER:ENCOUNTER_TYPE_LAND)==255);absent++;}
+     if(!present){
+      assert(GetEncounterLevelFromMapData(species,area?ENCOUNTER_TYPE_WATER:ENCOUNTER_TYPE_LAND)==255);
+      unsigned next=GetNextWildEncounterSeason(h,area?WILD_AREA_WATER:WILD_AREA_LAND,species);
+      // A visitor from last season must return within the next three seasons.
+      assert(next<LEGENDS_SEASON_COUNT);
+      const struct WildPokemonInfo *seasons=expected-season;
+      for(unsigned offset=1;offset<LEGENDS_SEASON_COUNT;offset++){
+       unsigned candidate=(season+offset)%LEGENDS_SEASON_COUNT, found=0;
+       for(unsigned j=0;j<slots;j++)if(seasons[candidate].wildPokemon[j].species==species)found=1;
+       if(found){assert(next==candidate);break;}
+      }
+      absent++;
+     }
     }assert(absent);
    }
   }
  }
  assert(!GetLandMonsInfo(HEADER_NONE,0)&&!GetLandMonsInfo(56,0)&&!GetLandMonsInfo(0,4)&&!GetLandMonsInfo(0,(enum TimeOfDay)-1));
  assert(!GetWaterMonsInfo(HEADER_NONE,0)&&!GetWaterMonsInfo(56,0)&&!GetWaterMonsInfo(0,4)&&!GetWaterMonsInfo(0,(enum TimeOfDay)-1));
- active=255;for(unsigned h=0;h<56;h++){assert(GetLandMonsInfo(h,0)==&fallback[0]);assert(GetWaterMonsInfo(h,0)==&waterFallback[0]);}
+ active=LEGENDS_SPRING;
+ assert(GetNextWildEncounterSeason(0,WILD_AREA_LAND,SPECIES_ROOKIDEE)==LEGENDS_WINTER);
+ assert(GetNextWildEncounterSeason(0,WILD_AREA_WATER,SPECIES_ROOKIDEE)==LEGENDS_SEASON_COUNT);
+ assert(GetNextWildEncounterSeason(0,WILD_AREA_HIDDEN,SPECIES_ROOKIDEE)==LEGENDS_SEASON_COUNT);
+ assert(GetNextWildEncounterSeason(1,WILD_AREA_LAND,SPECIES_ROOKIDEE)==LEGENDS_SEASON_COUNT);
+ assert(GetNextWildEncounterSeason(HEADER_NONE,WILD_AREA_LAND,SPECIES_ROOKIDEE)==LEGENDS_SEASON_COUNT);
+ active=LEGENDS_WINTER;
+ assert(GetNextWildEncounterSeason(0,WILD_AREA_LAND,SPECIES_ROOKIDEE)==LEGENDS_SEASON_COUNT);
+ assert(GetNextWildEncounterSeason(4,WILD_AREA_WATER,SPECIES_FINNEON)==LEGENDS_SPRING);
+ active=255;
+ assert(GetNextWildEncounterSeason(0,WILD_AREA_LAND,SPECIES_ROOKIDEE)==LEGENDS_SEASON_COUNT);
+ for(unsigned h=0;h<56;h++){assert(GetLandMonsInfo(h,0)==&fallback[0]);assert(GetWaterMonsInfo(h,0)==&waterFallback[0]);}
  currentHeader=HEADER_NONE;assert(GetEncounterLevelFromMapData(SPECIES_WURMPLE,ENCOUNTER_TYPE_LAND)==255);
- puts("PASS: all 224 seasonal tables, exact rates including desert, all TODs, committed vs pending, unrelated map/method parity, bounds/fallback and absent prior-season DexNav targets");
+ puts("PASS: all 224 seasonal tables, rates, committed season, native fallbacks and next-season DexNav visits");
 }
 '''
 with tempfile.TemporaryDirectory() as d:
- p=Path(d)/'test.c';p.write_text(pre+data+function+level_function+main)
+ p=Path(d)/'test.c';p.write_text(wild_area+pre+data+max_level_function+function+level_function+main)
  subprocess.run(['cc','-std=gnu17','-Wall','-Werror','-I'+str(R/'include'),str(p),'-o',d+'/test'],check=True);subprocess.run([d+'/test'],check=True)
 for f in ['dexnav.c','wild_encounter_ow.c','match_call.c']:
  text=(R/'src'/f).read_text();assert not re.search(r'gWildMonHeaders\[[^\]]+\]\.encounterTypes\[[^\]]+\]\.landMonsInfo',text),f

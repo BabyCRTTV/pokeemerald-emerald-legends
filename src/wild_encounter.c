@@ -451,49 +451,85 @@ u16 GetCurrentMapWildMonHeaderId(void)
     return HEADER_NONE;
 }
 
-// One source for walking, Sweet Scent, DexNav, area maps and encounter hints.
-// Read the committed visual season, never a pending clock/playtime transition.
+static const struct WildPokemonInfo *GetSeasonalMonsInfo(u32 headerId, enum WildPokemonArea area)
+{
+    const struct LegendsSeasonalTable *tables;
+    u32 count;
+
+    if (headerId >= ARRAY_COUNT(gWildMonHeaders) - 1)
+        return NULL;
+
+    switch (area)
+    {
+    case WILD_AREA_LAND:
+        tables = sLegendsSeasonalLand;
+        count = ARRAY_COUNT(sLegendsSeasonalLand);
+        break;
+    case WILD_AREA_WATER:
+        tables = sLegendsSeasonalWater;
+        count = ARRAY_COUNT(sLegendsSeasonalWater);
+        break;
+    default:
+        return NULL;
+    }
+
+    for (u32 i = 0; i < count; i++)
+        if (gWildMonHeaders[headerId].mapGroup == MAP_GROUP(tables[i].map)
+         && gWildMonHeaders[headerId].mapNum == MAP_NUM(tables[i].map))
+            return tables[i].seasons;
+
+    return NULL;
+}
+
+// Walking, Sweet Scent, DexNav and area maps use the committed field season.
 const struct WildPokemonInfo *GetLandMonsInfo(u32 headerId, enum TimeOfDay timeOfDay)
 {
-    u32 i;
-
     if (headerId >= ARRAY_COUNT(gWildMonHeaders) - 1 || (u32)timeOfDay >= TIMES_OF_DAY_COUNT)
         return NULL;
 
-    for (i = 0; i < ARRAY_COUNT(sLegendsSeasonalLand); i++)
+    const struct WildPokemonInfo *seasons = GetSeasonalMonsInfo(headerId, WILD_AREA_LAND);
+    if (seasons != NULL)
     {
-        if (gWildMonHeaders[headerId].mapGroup == MAP_GROUP(sLegendsSeasonalLand[i].map)
-         && gWildMonHeaders[headerId].mapNum == MAP_NUM(sLegendsSeasonalLand[i].map))
-        {
-            u8 season = LegendsGetActiveSeason();
-            if (season < LEGENDS_SEASON_COUNT)
-                return &sLegendsSeasonalLand[i].seasons[season];
-        }
+        u8 season = LegendsGetActiveSeason();
+        if (season < LEGENDS_SEASON_COUNT)
+            return &seasons[season];
     }
-
     return gWildMonHeaders[headerId].encounterTypes[timeOfDay].landMonsInfo;
 }
 
-// Seasonal Surf uses the same committed world season as land encounters.
 const struct WildPokemonInfo *GetWaterMonsInfo(u32 headerId, enum TimeOfDay timeOfDay)
 {
-    u32 i;
-
     if (headerId >= ARRAY_COUNT(gWildMonHeaders) - 1 || (u32)timeOfDay >= TIMES_OF_DAY_COUNT)
         return NULL;
 
-    for (i = 0; i < ARRAY_COUNT(sLegendsSeasonalWater); i++)
+    const struct WildPokemonInfo *seasons = GetSeasonalMonsInfo(headerId, WILD_AREA_WATER);
+    if (seasons != NULL)
     {
-        if (gWildMonHeaders[headerId].mapGroup == MAP_GROUP(sLegendsSeasonalWater[i].map)
-         && gWildMonHeaders[headerId].mapNum == MAP_NUM(sLegendsSeasonalWater[i].map))
-        {
-            u8 season = LegendsGetActiveSeason();
-            if (season < LEGENDS_SEASON_COUNT)
-                return &sLegendsSeasonalWater[i].seasons[season];
-        }
+        u8 season = LegendsGetActiveSeason();
+        if (season < LEGENDS_SEASON_COUNT)
+            return &seasons[season];
     }
-
     return gWildMonHeaders[headerId].encounterTypes[timeOfDay].waterMonsInfo;
+}
+
+u8 GetNextWildEncounterSeason(u32 headerId, enum WildPokemonArea area, enum Species species)
+{
+    const struct WildPokemonInfo *seasons = GetSeasonalMonsInfo(headerId, area);
+    if (seasons == NULL)
+        return LEGENDS_SEASON_COUNT;
+
+    u8 active = LegendsGetActiveSeason();
+    if (active >= LEGENDS_SEASON_COUNT)
+        return LEGENDS_SEASON_COUNT;
+
+    for (u32 offset = 1; offset < LEGENDS_SEASON_COUNT; offset++)
+    {
+        u8 season = (active + offset) % LEGENDS_SEASON_COUNT;
+        const struct WildPokemon *wildMons = seasons[season].wildPokemon;
+        if (wildMons != NULL && GetMaxLevelOfSpeciesInWildTable(wildMons, species, area) != 0)
+            return season;
+    }
+    return LEGENDS_SEASON_COUNT;
 }
 
 enum TimeOfDay GetTimeOfDayForEncounters(u32 headerId, enum WildPokemonArea area)
