@@ -2,6 +2,11 @@
 
 This is the developer-facing history for the **Debug** build. Shared Legends changes are repeated here so this file stands on its own; Debug-only behavior is called out separately.
 
+## [0.0.91] - 2026-11-18
+
+- Added a reusable Grooming Kit as a gift on the first visit to a Pokémon Center. Existing saves received it on their next visit.
+- Added a three-stage bath for party Pokémon. Finishing the brush, rinse and towel-dry steps awarded one friendship point, up to the friendship cap.
+
 ## [0.0.90] - 2026-11-18
 
 - Added the Field Camera and Postcard Case, given by the photographer in Oldale Town.

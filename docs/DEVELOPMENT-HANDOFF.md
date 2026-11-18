@@ -1,5 +1,9 @@
 # Development handoff
 
+## v0.0.91 Grooming Kit approved for publication
+
+Model: GPT-6.2 | Owner approved the eight-pixel input cues after the Wailord preview. Prepared both build versions, patcher, changelogs, Chapter 1, Pokémon interactions and the LegendsDex version for PR 117. The grooming change has no encounter or species-data edits.
+
 ## Eight-pixel Grooming Kit cues · draft PR 117
 
 Model: GPT-6.2 | Redrew both action buttons and the mirrored brush arrows on one 8×8 tile each. Wailord completed the bath in Debug and Release mGBA. Comparing the five Release prompt states against the previous build confined the visual changes to the input row. Publication awaits owner approval.
