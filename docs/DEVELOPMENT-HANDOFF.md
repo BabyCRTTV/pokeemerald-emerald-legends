@@ -1,5 +1,11 @@
 # Development handoff
 
+## Wiki 1.9.11 Crafting and home shortcuts (18 November 2026)
+
+**Model: GPT-6.2 Sol | Reasoning: reuse the home shortcut style and document the cooking menus from the shipped recipe table.**
+
+Pokémon Interactions uses the existing home shortcut dimensions and lavender treatment. Crafting follows it and opens a searchable, shareable guide covering kitchens, all three portable stations, the Food pocket, and the shipped 18 meals and 16 drinks. Recipe ingredients, station availability and buff values were checked against v0.0.89 source. The existing reader test passed and the browser suite checks the redesigned shortcuts and guide across five viewport widths.
+
 ## v0.0.89 walk-to-Surf and coastal encounters published and verified (18 November 2026)
 
 **Model: GPT-6.2 Sol | Reasoning: bind the approved Surf behavior and wiki to the verified public patch pair and exact site bytes.**

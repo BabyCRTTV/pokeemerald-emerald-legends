@@ -191,10 +191,9 @@
    }).join('')+'</div>';
  }
 
- function interactionHome(){
-   const article=byId.get("interacting-with-your-pokemon");
-   if(!article)return "";
-   return '<a class="interaction-home" href="?page=interacting-with-your-pokemon" data-page="interacting-with-your-pokemon" aria-label="Pokémon Interactions, open guide"><span class="interaction-home-inner"><span class="interaction-home-label">Pokémon Interactions</span><span class="interaction-home-arrow" aria-hidden="true">→</span></span></a>';
+ function guideShortcut(id,label){
+   if(!byId.has(id))return "";
+   return '<a class="guide-shortcut" href="?page='+id+'" data-page="'+id+'">'+escape(label)+'<span aria-hidden="true">→</span></a>';
  }
 
  function side(active){
@@ -219,7 +218,7 @@
  function home(push=true){
    readingWalkthrough(false);setLocation({},push);side('');
    outline.innerHTML='<strong>Wiki guide</strong><p>Choose an article or search for a feature. Everything is open to read.</p>';
-   root.innerHTML='<section class="welcome"><h1 class="wiki-game-logo"><img src="legends-logo.svg" width="166" height="93" alt="Pokémon Emerald: Legends"></h1><p>Choose a topic below, or jump straight to Pokémon and wild encounters.</p><div class="dex-shortcuts" aria-label="Wiki shortcuts"><a href="dex.html?view=routes">⌁ Routes <small>Wild encounter guide</small></a><a href="dex.html?view=species">◈ Pokédex <small>Browse Pokémon</small></a><a href="?page=walkthrough" data-page="walkthrough" class="walkthrough-shortcut">Walkthrough <span aria-hidden="true">→</span></a></div>'+interactionHome()+'<label class="searchrow"><span aria-hidden="true">⌕</span><input id="search" type="search" placeholder="Search articles, features, and places…" aria-label="Search wiki" autocomplete="off"><span class="small">/</span></label><p class="results-note" id="resultsnote">Browse '+pages.length+' articles across seven sections.</p></section><div id="cards"></div>';
+   root.innerHTML='<section class="welcome"><h1 class="wiki-game-logo"><img src="legends-logo.svg" width="166" height="93" alt="Pokémon Emerald: Legends"></h1><p>Choose a topic below, or jump straight to Pokémon and wild encounters.</p><div class="dex-shortcuts" aria-label="Wiki shortcuts"><a href="dex.html?view=routes">⌁ Routes <small>Wild encounter guide</small></a><a href="dex.html?view=species">◈ Pokédex <small>Browse Pokémon</small></a><a href="?page=walkthrough" data-page="walkthrough" class="walkthrough-shortcut">Walkthrough <span aria-hidden="true">→</span></a>'+guideShortcut('interacting-with-your-pokemon','Pokémon Interactions')+guideShortcut('crafting','Crafting')+'</div><label class="searchrow"><span aria-hidden="true">⌕</span><input id="search" type="search" placeholder="Search articles, features, and places…" aria-label="Search wiki" autocomplete="off"><span class="small">/</span></label><p class="results-note" id="resultsnote">Browse '+pages.length+' articles across seven sections.</p></section><div id="cards"></div>';
    const input=document.getElementById('search');input.addEventListener('input',()=>cards(input.value));cards('');document.title='Emerald: Legends Wiki';menuClose();focusContent();
  }
  function cards(q){
