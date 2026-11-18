@@ -48,6 +48,11 @@ class Grottos(unittest.TestCase):
                         offset=patch['index']*2
                         self.assertEqual(struct.unpack_from('<H',data,offset)[0],patch['new'])
                         struct.pack_into('<H',data,offset,patch['old'])
+                if route == 'Route119' and f.endswith('scripts.inc'):
+                    # Only the Weather Institute sign continues into the photo prompt.
+                    sign = b'Route119_EventScript_WeatherInstituteSign::\n\tmsgbox Route119_Text_WeatherInstitute, MSGBOX_SIGN\n\t'
+                    self.assertEqual(data.count(sign + b'goto EventScript_PostcardSign\n'), 1)
+                    data = data.replace(sign + b'goto EventScript_PostcardSign\n', sign + b'end\n')
                 if route == 'PetalburgWoods' and f.endswith('scripts.inc'):
                     tip = (b'\t.string "being exposed to any harm.\\p"\n'
                            b'\t.string "Look for the wooden sign in the\\n"\n'

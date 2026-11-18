@@ -245,7 +245,7 @@ static void TurnPage(void)
     DrawPrint();
 }
 
-static void CaseMain(void)
+static void PostcardCaseMain(void)
 {
     if (JOY_NEW(B_BUTTON | A_BUTTON))
     {
@@ -263,7 +263,7 @@ static void CaseMain(void)
     BuildOamBuffer();
 }
 
-static void InitCase(void)
+static void InitPostcardCase(void)
 {
     SetVBlankCallback(NULL);
     SetGpuReg(REG_OFFSET_DISPCNT, DISPCNT_FORCED_BLANK);
@@ -303,11 +303,11 @@ static void InitCase(void)
     ShowBg(0);
     ShowBg(1);
     SetVBlankCallback(VBlank);
-    SetMainCallback2(CaseMain);
+    SetMainCallback2(PostcardCaseMain);
 }
 
 void PostcardView(void)
 {
     CleanupOverworldWindowsAndTilemaps();
-    SetMainCallback2(InitCase);
+    SetMainCallback2(InitPostcardCase);
 }
