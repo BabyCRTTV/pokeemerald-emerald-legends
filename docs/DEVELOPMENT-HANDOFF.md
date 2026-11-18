@@ -1,5 +1,11 @@
 # Development handoff
 
+## v0.0.89 Surf release preparation (18 November 2026)
+
+**Model: GPT-6.2 Sol | Reasoning: publish the approved Surf commit with matching game and wiki version labels.**
+
+The owner approved publication of PR #113. This candidate advances the game and site to v0.0.89 and matches the LegendsDex roster to the approved coastal tables. The sprite atlas and base encounter data retain their existing pin. The [native preview evidence](qa/walk-to-surf-preview.json) records the Route 115 mount and footprint checks and all four seasonal Surf routes. Candidate and production patch checks and Pages promotion are pending.
+
 ## Walk-to-Surf and four coastal seasonal tables (17 November 2026)
 
 **Model: GPT-6.2 Sol | Reasoning: keep shoreline collision and progression gates, then enter the existing Surf effect directly from D-pad movement.**
