@@ -113,5 +113,27 @@
       "opaque_frames": 86,
       "pixel_exact_at_native_size": true
     }
+  },
+  "shoreline_footprint_fix": {
+    "parent_commit": "247008965f0c92d5af4c6e4ee0107472f7889136",
+    "rom_sha256": {
+      "debug": "e6a689ee5b0a058dd101268084f4755c48aadd9407f382b4a0c06e963b1ec419",
+      "release": "47998b4579ce4f829417f29205f47685deb41e79c5527f5f16820cc5cb8308c3"
+    },
+    "finding": "A new footprint on the last tile of sand overlaid the wet shoreline during takeoff.",
+    "prior_and_corrected_beach_approach_footprints": 2,
+    "new_footprints_on_mount": {
+      "prior": 1,
+      "corrected": 0,
+      "corrected_with_custom_hair_and_boots": 0
+    },
+    "debug_verified_prints_after_dismount": true,
+    "release_hop_timing_matches_previous": true,
+    "clip": {
+      "filename": "Emerald-Legends-Shoreline-Surf-Hop.gif",
+      "sha256": "07685c28f859669663586b79798e8f6b2b7855054a51ab01c92db3fa2368a43f",
+      "opaque_frames": 86,
+      "pixel_exact_at_native_size": true
+    }
   }
 }
