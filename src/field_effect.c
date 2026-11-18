@@ -3342,6 +3342,7 @@ static void SpriteCB_FieldMoveMonSlideOffscreen(struct Sprite *sprite)
 #define tState data[0]
 #define tDestX data[1]
 #define tDestY data[2]
+#define tPreviousLandingEffectDisable data[3]
 #define tMonId data[15]
 
 enum
@@ -3441,6 +3442,12 @@ static void SurfFieldEffect_Mount(struct Task *task)
         return;
 
     ObjectEventSetGraphicsId(objectEvent, GetPlayerAvatarGraphicsIdByStateId(PLAYER_AVATAR_STATE_SURFING));
+    if (seamless)
+    {
+        // The rider lands on the Surf creature. A water splash would cover it.
+        task->tPreviousLandingEffectDisable = objectEvent->disableJumpLandingGroundEffect;
+        objectEvent->disableJumpLandingGroundEffect = TRUE;
+    }
     // The automatic mount takes one normal jump instead of the slower field-move jump.
     ObjectEventSetHeldMovement(objectEvent, seamless
         ? GetJumpMovementAction(objectEvent->movementDirection)
@@ -3460,6 +3467,8 @@ static void SurfFieldEffect_End(struct Task *task)
     struct ObjectEvent *followerObject = GetFollowerObject();
     if (ObjectEventClearHeldMovementIfFinished(objectEvent))
     {
+        if (task->tMonId == PARTY_SIZE)
+            objectEvent->disableJumpLandingGroundEffect = task->tPreviousLandingEffectDisable;
         gPlayerAvatar.preventStep = FALSE;
         gPlayerAvatar.flags &= ~PLAYER_AVATAR_FLAG_CONTROLLABLE;
         ObjectEventSetHeldMovement(objectEvent, GetFaceDirectionMovementAction(objectEvent->movementDirection));
@@ -3477,6 +3486,7 @@ static void SurfFieldEffect_End(struct Task *task)
 #undef tState
 #undef tDestX
 #undef tDestY
+#undef tPreviousLandingEffectDisable
 #undef tMonId
 
 u8 FldEff_RayquazaSpotlight(void)

@@ -87,5 +87,31 @@
       "fully_opaque_frames": 86,
       "source": "Release mGBA 0.10.5, 2x nearest-neighbor"
     }
+  },
+  "mount_splash_fix": {
+    "parent_commit": "60477c42b674dfbffb74c6b908ba8b4ff5e96f24",
+    "rom_sha256": {
+      "debug": "4b8c5a8f5981179a0e9849b7fea69117f904d45c9bf59c6754ccaed8c75af2fc",
+      "release": "f0b777d39f94a87020fd975cfab25ae8d7085ed19a14efeb0adf90bfa78c2a91"
+    },
+    "finding": "Raw mGBA RGB and decoded GIF pixels matched around the original flash. The ordinary hop triggered the deep-water jump landing effect over the Surf creature.",
+    "release_hop_timing_matches_previous_default_and_custom": true,
+    "splash_frames_during_mount": {
+      "release_default": 0,
+      "release_custom": 0
+    },
+    "debug_cases": [
+      "D-pad entry and return to land",
+      "Custom hair and boots",
+      "Existing landing-effect suppression restored",
+      "Badge and blocked tile guards",
+      "Manual Surf prompt and confirmation"
+    ],
+    "clip": {
+      "filename": "Emerald-Legends-Shoreline-Surf-Hop.gif",
+      "sha256": "a0616ca3fc0ecfba1eff5877b7558f0b190d55cc107ddc58329514a7abaa5b05",
+      "opaque_frames": 86,
+      "pixel_exact_at_native_size": true
+    }
   }
 }
