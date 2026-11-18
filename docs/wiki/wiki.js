@@ -110,7 +110,12 @@
    s=s.replace(/\*\*([^*]+)\*\*/g,'<strong>$1</strong>').replace(/\x60([^\x60]+)\x60/g,'<code>$1</code>');
    return s;
  }
- function render(md,catalogues={}) {
+ function tableItem(label,icon){
+   if(!Number.isInteger(icon)||icon<0||icon>=40)return inline(label);
+   const x=(icon%8)*48,y=Math.floor(icon/8)*48;
+   return '<span class="crafting-table-item"><span class="crafting-table-icon" aria-hidden="true" style="background-position:-'+x+'px -'+y+'px"></span>'+inline(label)+'</span>';
+ }
+ function render(md,catalogues={},tableIcons={}) {
    const lines=md.trim().split(/\r?\n/),out=[],heads=[];
    let list=null,para=[],table=[],section='';
    const flushCatalogue=()=>{
@@ -122,7 +127,7 @@
    };
    const flushP=()=>{if(para.length){out.push('<p>'+inline(para.join(' '))+'</p>');para=[];}};
    const flushL=()=>{if(list){out.push('</'+list+'>');list=null;}};
-   const flushT=()=>{if(table.length){out.push('<div class="scroll-table"><table><thead><tr>'+table[0].map(c=>'<th>'+inline(c)+'</th>').join('')+'</tr></thead><tbody>'+table.slice(1).map(r=>'<tr>'+r.map(c=>'<td>'+inline(c)+'</td>').join('')+'</tr>').join('')+'</tbody></table></div>');table=[];}};
+   const flushT=()=>{if(table.length){out.push('<div class="scroll-table"><table><thead><tr>'+table[0].map(c=>'<th>'+inline(c)+'</th>').join('')+'</tr></thead><tbody>'+table.slice(1).map(r=>'<tr>'+r.map((c,i)=>'<td>'+(i===0?tableItem(c,tableIcons[c]):inline(c))+'</td>').join('')+'</tr>').join('')+'</tbody></table></div>');table=[];}};
    for(let i=0;i<lines.length;i++){
      let l=lines[i].trim();if(!l){flushP();flushL();flushT();continue;}
      if(/^\|/.test(l)){flushP();flushL();if(/^\|\s*:?-{3,}/.test(l))continue;table.push(l.replace(/^\||\|$/g,'').split('|').map(c=>c.trim()));continue;}
@@ -203,7 +208,7 @@
  }
  function navigate(id,push=true,section=""){
    if(!byId.has(id)){home(push);return;}
-   const p=byId.get(id),r=id==='interacting-with-your-pokemon'?{html:interactionGroups(p),heads:interactionTopics.map(t=>({id:'interaction-'+t.key,label:t.title}))}:render(p.content,p.catalogues);
+   const p=byId.get(id),r=id==='interacting-with-your-pokemon'?{html:interactionGroups(p),heads:interactionTopics.map(t=>({id:'interaction-'+t.key,label:t.title}))}:render(p.content,p.catalogues,p.tableIcons);
    const walkthrough=id==='walkthrough'||id.startsWith('walkthrough-')||Number.isInteger(p.chapter);readingWalkthrough(walkthrough);
    setLocation({page:id},push,section);
    side(id);

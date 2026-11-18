@@ -50,6 +50,8 @@ function routeHtml(reader,route){
  for(const name of ['Peach Oatmeal','Iced Peach Tea','Active Buffs','Steel Canteen','Percolator'])assert(crafting.includes(name),name);
  const tables=[...crafting.matchAll(/<tbody>(.*?)<\/tbody>/g)];
  assert.deepEqual(tables.map(([,rows])=>(rows.match(/<tr>/g)||[]).length),[4,18,16],'stations and all shipped recipes');
+ assert.equal((crafting.match(/class="crafting-table-icon"/g)||[]).length,37,'native art for all recipes and portable tools');
+ assert(fs.existsSync(base+'art/crafting-items.png'),'Crafting sprite sheet is packaged');
  w.back();
  const guide=interactions.get('content').innerHTML;
  assert.match(guide,/<h1>Interacting with Your Pokemon<\/h1>/);

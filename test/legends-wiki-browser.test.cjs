@@ -37,7 +37,20 @@ const assert=require('node:assert/strict'),fs=require('node:fs');
   assert(await page.getByRole('heading',{name:'Meal recipes',exact:true}).isVisible());
   assert(await page.getByRole('cell',{name:'Ginger Tea',exact:true}).isVisible());
   assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),'recipe tables stay inside the viewport');
-  if(width===412)await page.screenshot({path:'wiki-preview/crafting-guide.png'});
+  const icons=page.locator('.crafting-table-icon');
+  assert.equal(await icons.count(),37);
+  assert(await page.getByRole('cell',{name:'Peach Oatmeal',exact:true}).locator('.crafting-table-icon').evaluate(icon=>{
+    const style=getComputedStyle(icon);
+    return style.backgroundImage.includes('crafting-items.png')&&style.width==='48px';
+  }),'game sprites render at twice their native size');
+  if(width===412){
+    assert(await page.evaluate(async()=>{
+      const atlas=new Image();atlas.src='art/crafting-items.png?v=1.9.12';
+      await atlas.decode();return atlas.naturalWidth===192&&atlas.naturalHeight===120;
+    }),'native Crafting sprite atlas is loaded');
+    await page.locator('#section-meal-recipes').evaluate(el=>el.scrollIntoView({block:'start',behavior:'instant'}));
+    await page.screenshot({path:'wiki-preview/crafting-recipes.png'});
+  }
   await page.locator('#home').click();
   await page.locator('.topic-cards').waitFor();
   await shortcut.click();
