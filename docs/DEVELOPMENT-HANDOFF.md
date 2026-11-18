@@ -1,5 +1,9 @@
 # Development handoff
 
+## v0.0.90 Hoenn Postcards release approval
+
+Model: GPT-6.2 Astra. The owner approved the revised full-screen prints. Prepared both build versions, download paths, changelogs and the walkthrough for publication from PR 116. The encounter tables and Dex assets are identical to v0.0.89.
+
 ## Hoenn Postcards photo revision · draft PR 116
 
 Model: GPT-6.2 Astra. All sixteen postcard prints now use 224 × 112 scenery from the compiled game’s field compositor, with viewpoints chosen per landmark. The case dedicates an indexed background to the print and a separate layer to its caption. Printed scenery is LZ77-compressed in ROM and uploaded on page changes. The photographer, sign scripts, item IDs and 52-byte album layout are unchanged. Debug mGBA exercised all sixteen sign captures and saved the album. The Release build reopened and paged through the collection with normal Continue and registered-item input. Visual review pending.

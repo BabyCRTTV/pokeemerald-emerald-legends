@@ -4,6 +4,12 @@ All notable Pokémon Emerald: Legends project changes are documented here.
 
 For build-specific player views, see [CHANGELOG-RELEASE.md](CHANGELOG-RELEASE.md) and [CHANGELOG-DEBUG.md](CHANGELOG-DEBUG.md). The canonical history below records the project as a whole.
 
+## [0.0.90] - 2026-11-18
+
+- Added the Field Camera and Postcard Case, given by the photographer in Oldale Town.
+- Added 16 scenic signs across Hoenn. Each postcard recorded the lead Pokémon, season and time of day.
+- Added a full-screen album with individually framed views. Revisiting a sign let players replace its print.
+
 ## [0.0.89] - 2026-11-18
 
 - Added walk-to-Surf after the Balance Badge. Holding the D-pad toward passable water made the trainer hop aboard and continue surfing.
