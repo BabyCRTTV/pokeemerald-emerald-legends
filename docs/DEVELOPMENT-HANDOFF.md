@@ -1,5 +1,9 @@
 # Development handoff
 
+## Compact Grooming Kit cues · draft PR 117
+
+Model: GPT-6.2 | Reduced the visible A and B caps from 16 to 12 pixels, tightened their label spacing and drew mirrored standalone direction arrows. Wailord passed the bath in Debug and Release mGBA. Pixel comparisons against the preceding Release captures for brush left, brush right, rinse, dry and completion showed differences only within the bottom prompt row. Awaiting publication approval.
+
 ## Grooming Kit button cues · draft PR 117
 
 Model: GPT-6.2 | The owner approved the basin and requested darker input cues before publication. Localized the button art to the bath prompt row, with mirrored gold D-pad arrows and separately colored A and B buttons. Wailord completed the bath in Debug and Release mGBA. The control panel matched between builds in both brush directions, rinse, dry and completion. Publication awaits owner approval.

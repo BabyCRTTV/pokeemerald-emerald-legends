@@ -52,7 +52,7 @@ static const struct WindowTemplate sWindow[] = {
 };
 enum { PAPER = 1, INK, SILVER, SEA, FOAM, TRACK, COMPLETED, ACTIVE };
 enum BathButton { BUTTON_A, BUTTON_B, BUTTON_LEFT, BUTTON_RIGHT };
-enum { BUTTON_SIZE = 16, BUTTON_BYTES = BUTTON_SIZE * BUTTON_SIZE / 2 };
+enum { BUTTON_SIZE = 16, BUTTON_BYTES = BUTTON_SIZE * BUTTON_SIZE / 2, BUTTON_LABEL_OFFSET = 14 };
 static const u8 sButtons[] = INCGFX_U8("graphics/legends/grooming/buttons.png", ".4bpp");
 static const u16 sUiColors[] = INCGFX_U16("graphics/legends/grooming/buttons.png", ".gbapal");
 static const u8 *const sStageNames[] = {
@@ -77,7 +77,7 @@ static void DrawHeader(void)
 static void ButtonHint(enum BathButton button, const u8 *text, u8 font, u8 x, u8 color)
 {
     BlitBitmapToWindow(CONTROLS, sButtons + button * BUTTON_BYTES, x, 16, BUTTON_SIZE, BUTTON_SIZE);
-    Label(CONTROLS, text, font, x + BUTTON_SIZE + 3, font == FONT_SMALL ? 18 : 16, color);
+    Label(CONTROLS, text, font, x + BUTTON_LABEL_OFFSET, font == FONT_SMALL ? 18 : 16, color);
 }
 
 static void DrawControls(void)
