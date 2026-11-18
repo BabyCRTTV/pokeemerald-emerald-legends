@@ -31,7 +31,7 @@ SECONDARY_WINDOWS = {
  'fortree': [0x2b8,0x2b9,0x2ba],
 }
 # FRLG pane variants, including the normal house's four-part window.
-SELECTION['general_frlg'].update({0x6:[0,1],0x7:[0],0x43:[0,1,2,3],0x55:[0,1,2,3],0x56:[0,1,2,3],0x150:[0,1],0x154:[0,1]})
+SELECTION['general_frlg'].update({0x6:[0,1],0x7:[0],0x43:[0,1,2,3],0x55:[0,1,2,3],0x56:[0,1,2,3],0x150:[0,1],0x154:[0,1],0x40:[5],0x41:[4]})
 
 def blue_glass(rgb):
  r,g,b=rgb
@@ -41,7 +41,7 @@ def window_color(rgb):return (255,232,152)
 
 def sign_color(rgb):
  r,g,b=rgb
- if max(rgb)-min(rgb)<35:return (255,146,172)
+ # The neutral sign face and border follow the exterior night tint.
  if r>g+30:return (255,80+(g*56//255),106+(g*48//255))
  return None
 
@@ -105,7 +105,7 @@ def main():
    assert len(keys)<=15,(family,'palette full',keys)
    return keys.index(key)+1
   for mid,entries in selected.items():
-   sign=mid in ((0x42,0x43,0x62,0x63) if family=='general' else (0x60,0x61))
+   sign=mid in ((0x42,0x43,0x62,0x63) if family=='general' else (0x40,0x41,0x60,0x61))
    for ei in entries:
     entry=mt[mid*8+ei];tid=entry&1023;pid=entry>>12;native=tile(im,tid)
     def light(v):
@@ -126,7 +126,7 @@ def main():
      for y in range(8):
       for x in range(8):
        v=native.getpixel((x,y));night=light(v)
-       if v and (night or not overlay):painted.putpixel((x,y),index(pals[pid][v],night))
+       if v and (night or sign or not overlay):painted.putpixel((x,y),index(pals[pid][v],night))
      im.paste(painted,(target%(im.width//8)*8,target//(im.width//8)*8))
     mt[mid*8+target_ei]=(entry&0xc00)|(slot<<12)|duplicates[key]
     cells.append({'metatile':mid,'source_cell':ei,'cell':target_ei,'source_tile':tid,'source_palette':pid,'tile':duplicates[key],'overlay':overlay,'kind':'sign' if sign else 'window'})

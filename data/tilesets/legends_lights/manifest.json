@@ -158,12 +158,8 @@
           ]
         },
         {
-          "light": true,
-          "night": [
-            255,
-            146,
-            172
-          ],
+          "light": false,
+          "night": null,
           "rgb": [
             255,
             255,
@@ -197,12 +193,8 @@
           ]
         },
         {
-          "light": true,
-          "night": [
-            255,
-            146,
-            172
-          ],
+          "light": false,
+          "night": null,
           "rgb": [
             222,
             230,
@@ -437,16 +429,32 @@
           "source_palette": 3,
           "source_tile": 248,
           "tile": 61
+        },
+        {
+          "cell": 5,
+          "kind": "sign",
+          "metatile": 64,
+          "overlay": false,
+          "source_cell": 5,
+          "source_palette": 2,
+          "source_tile": 225,
+          "tile": 392
+        },
+        {
+          "cell": 4,
+          "kind": "sign",
+          "metatile": 65,
+          "overlay": false,
+          "source_cell": 4,
+          "source_palette": 2,
+          "source_tile": 226,
+          "tile": 399
         }
       ],
       "colors": [
         {
-          "light": true,
-          "night": [
-            255,
-            146,
-            172
-          ],
+          "light": false,
+          "night": null,
           "rgb": [
             172,
             189,
@@ -454,12 +462,8 @@
           ]
         },
         {
-          "light": true,
-          "night": [
-            255,
-            146,
-            172
-          ],
+          "light": false,
+          "night": null,
           "rgb": [
             246,
             246,
@@ -493,12 +497,8 @@
           ]
         },
         {
-          "light": true,
-          "night": [
-            255,
-            146,
-            172
-          ],
+          "light": false,
+          "night": null,
           "rgb": [
             205,
             222,
@@ -585,12 +585,16 @@
           ]
         },
         {
-          "light": false,
-          "night": null,
+          "light": true,
+          "night": [
+            255,
+            125,
+            144
+          ],
           "rgb": [
-            246,
-            246,
-            255
+            255,
+            205,
+            139
           ]
         }
       ],

@@ -1,5 +1,9 @@
 # Development handoff
 
+## Storefront sign lighting preview (18 November 2026)
+
+Model: GPT-6.2 Astra | Restricted the night glow to the original painted letters on Hoenn and Kanto Pokémon Center and Poké Mart signs. Added the missing Kanto Mart light cells and preserved the shared palette used by custom Kanto cities. The asset regeneration and native color-mixer regression passed. Debug and Release compiled. In Debug mGBA, all six midday storefront frames matched the v0.0.91 baseline pixel for pixel in Oldale, Viridian and Vermilion. At 23:00 every changed pixel fell within the corresponding 16×8 sign. [Day and night comparison](qa/storefront-signs/preview.png). Awaiting visual approval before publication.
+
 ## v0.0.91 Grooming Kit published and verified (18 November 2026)
 
 **Model: GPT-6 | Reasoning: match the candidate and production builds to the approved eight-pixel controls and verify the live download bytes.**
