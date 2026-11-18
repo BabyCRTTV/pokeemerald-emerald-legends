@@ -1,5 +1,9 @@
 # Development handoff
 
+## Eight-pixel Grooming Kit cues · draft PR 117
+
+Model: GPT-6.2 | Redrew both action buttons and the mirrored brush arrows on one 8×8 tile each. Wailord completed the bath in Debug and Release mGBA. Comparing the five Release prompt states against the previous build confined the visual changes to the input row. Publication awaits owner approval.
+
 ## Compact Grooming Kit cues · draft PR 117
 
 Model: GPT-6.2 | Reduced the visible A and B caps from 16 to 12 pixels, tightened their label spacing and drew mirrored standalone direction arrows. Wailord passed the bath in Debug and Release mGBA. Pixel comparisons against the preceding Release captures for brush left, brush right, rinse, dry and completion showed differences only within the bottom prompt row. Awaiting publication approval.
