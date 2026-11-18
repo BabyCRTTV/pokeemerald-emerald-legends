@@ -1,5 +1,9 @@
 # Development handoff
 
+## Grooming Kit basin correction · draft PR 117
+
+Model: GPT-6.2 | The owner approved the interface conditional on correcting the bottom of the tub. Closed the porcelain underbody, inset the feet and shortened the floor shadow. The Wailord completion-frame pixel diff is confined to the lower basin and shadow. Wailord completed lather, rinse and towel dry in both native builds. Debug checked the friendship gain and early exit. Release reopened the saved kit through Continue and returned to the field after completion.
+
 ## Grooming Kit interface revision · draft PR 117
 
 Model: GPT-6.2 | Rebuilt the bath with layered room artwork, a species-aligned waterline, animated wash tools, native button glyphs and Emerald's dialogue frame. Debug mGBA exercised Mudkip, Wailord and Joltik through every stage, cancel, completion reward and Center revisit. Release mGBA loaded the saved kit through Continue and completed the Mudkip bath. Awaiting visual review.
