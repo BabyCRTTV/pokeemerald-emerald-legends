@@ -1,5 +1,9 @@
 # Development handoff
 
+## Hoenn town notice boards · gameplay preview (18 November 2026)
+
+Model: GPT-6.2 Astra | Added six local jobs at three Poké Marts on top of the stronger sign pulse. Each board has two signed notices and a sighting from its neighboring route's active encounter table. The Quest Log uses appended IDs 65–70 and separate native flags. Returning a notice makes it available again. The named NPC validates the delivery and sends the one-time reward to PC item storage. Existing clerk and story scripts keep their normal roles. [Gameplay preview and verification](qa/missive-boards/README.md). Draft for review.
+
 ## Stronger storefront sign pulse · draft PR 118 (18 November 2026)
 
 Model: GPT-6.2 Astra | Increased peak dimming from 12.5% to 25% at the owner's request. The full cycle takes 1,024 frames (17.1 seconds). Debug and Release built. Compared 65 synchronized Debug mGBA frames per storefront per time of day in Oldale, Viridian and Vermilion. Every daytime frame matched the prior pulse. All nighttime differences fell within the sign, and each cycle returned to its starting color. [Revised real-time preview](qa/storefront-signs/slow-pulse.gif). Awaiting visual approval.

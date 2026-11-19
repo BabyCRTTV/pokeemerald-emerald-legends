@@ -32,6 +32,12 @@ OldaleTown_EventScript_TownSign::
 	goto EventScript_PostcardSign
 
 OldaleTown_EventScript_Girl::
+	goto_if_unset FLAG_MISSIVE_TRACKS_TAKEN, OldaleTown_EventScript_Girl_Usual
+	goto_if_set FLAG_MISSIVE_TRACKS_DONE, OldaleTown_EventScript_Girl_Usual
+	setvar VAR_0x8004, MISSIVE_TRACKS
+	goto Missive_Recipient
+
+OldaleTown_EventScript_Girl_Usual:
 	msgbox OldaleTown_Text_SavingMyProgress, MSGBOX_NPC
 	end
 

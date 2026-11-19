@@ -3,6 +3,7 @@
 #include "config/item.h"
 #include "constants/global.h"
 #include "constants/legends_day_off.h"
+#include "constants/legends_missives.h"
 #include "constants/legends_field_requests.h"
 #include "constants/apprentice.h"
 #include "constants/apricorn_tree.h"
@@ -1892,6 +1893,7 @@ EventScript_PalletTown_PlayersHouse_2F_TurnOnPC::
 
 	.include "data/scripts/legends_homecoming.inc"
 	.include "data/scripts/legends_field_requests.inc"
+	.include "data/scripts/legends_missives.inc"
 	.include "data/scripts/legends_grotto_review.inc"
 	.include "data/maps/LegendsGrotto_Leafshade/scripts.inc"
 	.include "data/maps/LegendsGrotto_Stillwater/scripts.inc"

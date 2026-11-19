@@ -1149,6 +1149,13 @@ static const struct MenuAction sLegendsClockModes[] = {
     {COMPOUND_STRING("CANCEL")},
 };
 
+static const struct MenuAction sLegendsMissives[] = {
+    {gStringVar1},
+    {gStringVar2},
+    {COMPOUND_STRING("Local sighting")},
+    {gText_Cancel2},
+};
+
 static const struct MenuAction sLegendsBirchMain[] = {
     {COMPOUND_STRING("FIELD REQUESTS")},
     {COMPOUND_STRING("POKéDEX RATING")},
@@ -1342,6 +1349,7 @@ static const struct MultichoiceListStruct sMultichoiceLists[] =
     [MULTI_LEGENDS_DAY_OFF_PLAY] = MULTICHOICE(sLegendsDayOffPlay),
     [MULTI_LEGENDS_DAY_OFF_WASH] = MULTICHOICE(sLegendsDayOffWash),
     [MULTI_LEGENDS_DAY_OFF_SEEK] = MULTICHOICE(sLegendsDayOffSeek),
+    [MULTI_LEGENDS_MISSIVES] = MULTICHOICE(sLegendsMissives),
     [MULTI_LEGENDS_DAY_OFF_HIDE] = MULTICHOICE(sLegendsDayOffHide),
     [MULTI_LEGENDS_WYRMTIDE_EXPEDITION] = MULTICHOICE(sLegendsWyrmtideExpedition),
     [MULTI_LEGENDS_WYRMTIDE] = MULTICHOICE(sLegendsWyrmtide),

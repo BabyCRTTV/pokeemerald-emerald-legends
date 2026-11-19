@@ -67,6 +67,12 @@ RustboroCity_PokemonSchool_EventScript_Lass::
 	end
 
 RustboroCity_PokemonSchool_EventScript_SchoolKidM::
+	goto_if_unset FLAG_MISSIVE_ECHO_TAKEN, RustboroCity_PokemonSchool_EventScript_SchoolKidM_Usual
+	goto_if_set FLAG_MISSIVE_ECHO_DONE, RustboroCity_PokemonSchool_EventScript_SchoolKidM_Usual
+	setvar VAR_0x8004, MISSIVE_ECHO
+	goto Missive_Recipient
+
+RustboroCity_PokemonSchool_EventScript_SchoolKidM_Usual:
 	msgbox RustboroCity_PokemonSchool_Text_PokemonHealItselfWithBerry, MSGBOX_NPC
 	end
 

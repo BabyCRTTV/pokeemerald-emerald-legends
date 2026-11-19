@@ -80,6 +80,12 @@ PetalburgCity_EventScript_WalkToWallyHouse::
 	end
 
 PetalburgCity_EventScript_Boy::
+	goto_if_unset FLAG_MISSIVE_POND_TAKEN, PetalburgCity_EventScript_Boy_Usual
+	goto_if_set FLAG_MISSIVE_POND_DONE, PetalburgCity_EventScript_Boy_Usual
+	setvar VAR_0x8004, MISSIVE_POND
+	goto Missive_Recipient
+
+PetalburgCity_EventScript_Boy_Usual:
 	lock
 	faceplayer
 	msgbox PetalburgCity_Text_WaterReflection, MSGBOX_DEFAULT

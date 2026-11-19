@@ -1,3 +1,5 @@
+#include "constants/legends_missives.h"
+
 // Authored journal catalogue. Saved quest and achievement IDs follow array order; append new entries.
 static const struct LegendsQuest sQuests[] =
 {
@@ -72,6 +74,13 @@ static const struct LegendsQuest sQuests[] =
 
     // ID64: optional Nightmare quest after either Regidrago outcome.
     {COMPOUND_STRING("When Morning Never Comes"), FLAG_LEGENDS_NIGHTMARE_CALL, 1, 4, {{COMPOUND_STRING("Visit MIRA in LILYCOVE"), FLAG_LEGENDS_NIGHTMARE_VISITED}, {COMPOUND_STRING("Seek a LUNAR WING at MT. PYRE"), FLAG_LEGENDS_NIGHTMARE_WING}, {COMPOUND_STRING("Free MIRA from the nightmare"), FLAG_LEGENDS_NIGHTMARE_RESOLVED}, {COMPOUND_STRING("Speak to her father again"), FLAG_LEGENDS_NIGHTMARE_REPORTED}}},
+
+    {COMPOUND_STRING("First-Aid Tin"), FLAG_MISSIVE_TRAIL_KIT_TAKEN, 1, 1, {{COMPOUND_STRING("Take 1 POTION to the boy in OLDALE MART"), FLAG_MISSIVE_TRAIL_KIT_DONE}}},
+    {COMPOUND_STRING("Crooked Tracks"), FLAG_MISSIVE_TRACKS_TAKEN, 1, 1, {{COMPOUND_STRING("Show ZIGZAGOON to the girl in OLDALE"), FLAG_MISSIVE_TRACKS_DONE}}},
+    {COMPOUND_STRING("Woods Medicine"), FLAG_MISSIVE_WOODS_TAKEN, 1, 1, {{COMPOUND_STRING("Take 2 ANTIDOTES to the man in PETALBURG MART"), FLAG_MISSIVE_WOODS_DONE}}},
+    {COMPOUND_STRING("Pond Portrait"), FLAG_MISSIVE_POND_TAKEN, 1, 1, {{COMPOUND_STRING("Show WINGULL to the boy by PETALBURG pond"), FLAG_MISSIVE_POND_DONE}}},
+    {COMPOUND_STRING("Tunnel Lifeline"), FLAG_MISSIVE_ROPE_TAKEN, 1, 1, {{COMPOUND_STRING("Take 1 ESCAPE ROPE to the Bug Catcher in RUSTBORO MART"), FLAG_MISSIVE_ROPE_DONE}}},
+    {COMPOUND_STRING("Echo Lesson"), FLAG_MISSIVE_ECHO_TAKEN, 1, 1, {{COMPOUND_STRING("Show WHISMUR to the boy at the left desk in RUSTBORO school"), FLAG_MISSIVE_ECHO_DONE}}},
 };
 static const struct LegendsAchievement sAchievements[] =
 {
