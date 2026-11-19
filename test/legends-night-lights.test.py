@@ -39,6 +39,41 @@ for name,f in m['families'].items():
  flags={int(l) for l in Path(str(R/next(x['day'] for x in m['secondary'] if x['family']==name)).replace('.pal','.pla')).read_text().splitlines() if l and not l.startswith('#')}
  assert flags=={0}|{i+1 for i,c in enumerate(f['colors']) if c['light']}
  assert 0 in flags
+ # Each storefront sign spans two cells. Its red lettering emits light while
+ # the gray face, border and drop shadow receive the ordinary outdoor tint.
+ sign_ids = {0x42, 0x43, 0x62, 0x63} if name == 'general' else {0x40, 0x41, 0x60, 0x61}
+ signs = [cell for cell in f['cells'] if cell['kind'] == 'sign']
+ assert {cell['metatile'] for cell in signs} == sign_ids
+ if name == 'general_frlg':
+  legacy_palette = art.palette(out/'general_frlg.pal')
+  legacy_flags = {int(v) for v in (out/'general_frlg.pla').read_text().splitlines() if v.isdigit()}
+ for cell in signs:
+  pixels = art.tile(lit, cell['tile'])
+  for value in set(pixels.getdata()) - {0}:
+   red, green, blue = newpal[value]
+   assert (value in flags) == (red > green + 30), (name, cell['metatile'], value)
+   if name == 'general_frlg':
+    # Custom Kanto cities load the shared day bank, with different window slots.
+    assert legacy_palette[value] == newpal[value]
+    assert (value in legacy_flags) == (value in flags)
+ # Local facade variants can carry either half of the original painted sign.
+ # Audit the metatiles actually compiled, including Fallarbor's cliff atlas.
+ sign_entries = {c['source_palette'] << 12 | c['source_tile']: f['palette'] << 12 | c['tile']
+                 for c in signs}
+ for secondary in (s for s in m['secondary'] if s['family'] == name):
+  path = secondary['metatiles']
+  original = art.words(R/path)
+  runtime = art.words(R/m['redirects'].get(path, path))
+  for i, entry in enumerate(original):
+   if entry & 0xf3ff in sign_entries:
+    assert runtime[i] == sign_entries[entry & 0xf3ff] | (entry & 0xc00), (path, i)
+ # The field pulse selects the RGB555 rose ink from each actual night bank.
+ expected_ink = {i+1 for i,c in enumerate(f['colors']) if c['light'] and c['rgb'][0] > c['rgb'][1]+30}
+ for secondary in (s for s in m['secondary'] if s['family'] == name):
+  night = R/secondary['night']
+  enabled = {int(v) for v in night.with_suffix('.pla').read_text().splitlines() if v.isdigit()}
+  pulse = {i for i,(r,g,b) in enumerate(art.palette(night)) if i in enabled and r>>3 == 31 and b>>3 > g>>3}
+  assert pulse == expected_ink, (name, secondary['symbol'], pulse)
  # Walls and sign borders remain ordinary tinted colors in the same palette.
  assert len(flags - {0}) <= len(f['colors'])
 for g in m['glass_palettes']:
@@ -59,7 +94,7 @@ with tempfile.TemporaryDirectory() as d:
  p=Path(d);(p/'mix.c').write_text(pre+source);subprocess.run(['cc','-Wall','-Werror','-shared','-fPIC',str(p/'mix.c'),'-o',str(p/'mix.so')],check=True)
  fn=ctypes.CDLL(str(p/'mix.so')).TimeMixPalettes;day=Blend(0,0,0);night=Blend(116|(116<<8)|(157<<16),10,1)
  for name,f in m['families'].items():
-  rgb=art.palette(out/(name+'.pal'));flags={int(l) for l in Path(str(R/next(x['day'] for x in m['secondary'] if x['family']==name)).replace('.pal','.pla')).read_text().splitlines() if l and not l.startswith('#')}
+  rgb=art.palette(R/next(x['day'] for x in m['secondary'] if x['family']==name));flags={int(l) for l in Path(str(R/next(x['day'] for x in m['secondary'] if x['family']==name)).replace('.pal','.pla')).read_text().splitlines() if l and not l.startswith('#')}
   colors=[(r>>3)|((g>>3)<<5)|((b>>3)<<10)|(0x8000 if i in flags else 0) for i,(r,g,b) in enumerate(rgb)]
   src=(ctypes.c_uint16*16)(*colors);dst=(ctypes.c_uint16*16)(*colors)
   fn(1,src,dst,ctypes.byref(day),ctypes.byref(day),256)

@@ -19,7 +19,7 @@
     541
   ],
   "base_atlas_sha256": "ae821cefe381992d3bceab3004d2868b87519ae848945c3719f74c5daad75d0b",
-  "base_metatiles_sha256": "85fa85286cee4a85ade21a83ff83c359b5c1c197fcacad4b557443bae76b9508",
+  "base_metatiles_sha256": "c546f4cd11686a040ac39bf0ec159286f55a185019b539f1b0d4ec4ab2af28c1",
   "base_attributes_sha256": "7e3e07ed64409c02eefe65b18f06ac2dfcedfde07fa745836ee08d7569baeb40",
   "style": "Smooth two-tone rock cheek, compact cap, recessed cavity, continuous inner face, clean tapered threshold",
   "authoring": "Indexed native tile overlay; existing palette and every pixel outside the eight free tile cells are unchanged."

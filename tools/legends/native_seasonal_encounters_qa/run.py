@@ -26,15 +26,19 @@ kanto_attributes=(R/'data/tilesets/primary/general_frlg/metatile_attributes.bin'
 cycling_road_attributes=(R/'data/tilesets/secondary/celadon_city_frlg/metatile_attributes.bin').read_bytes()
 cycling_grass_tiles={0x280+i for i,(value,) in enumerate(struct.iter_unpack('<I',cycling_road_attributes)) if value&0x1ff==0xc9}
 ocean_tiles={i for i,(value,) in enumerate(struct.iter_unpack('<I',kanto_attributes)) if value&0x1ff==0x15}
-def add(route,season,mode=0,south=False,kanto=False,surf=False):
- water=surf or (not kanto and route in [*range(105,110),122,*range(124,135)]);terrain=0x170 if water else 0x251 if route==111 else 0x20a if route==113 else 0x15 if route in (119,120) else 13
+extra_surf={False:(102,103,104,110,111,114,117,119,120,121,123),True:(4,6,10,11)}
+hoenn_attributes=(R/'data/tilesets/primary/general/metatile_attributes.bin').read_bytes()
+water_tiles={is_kanto:{i for i,(v,) in enumerate(struct.iter_unpack(fmt,raw)) if v&0x1ff in (0x10,0x15)}
+             for is_kanto,fmt,raw in [(False,'<H',hoenn_attributes),(True,'<I',kanto_attributes)]}
+def add(route,season,mode=0,south=False,kanto=False,surf=False,mirage=False):
+ water=surf or (not kanto and not mirage and route in [*range(105,110),122,*range(124,135)]);terrain=0x170 if water else 0x251 if route==111 else 0x20a if route==113 else 0x15 if route in (119,120) else 13
  map_name=f'LegendsKanto_Route{str(route).title()}' if kanto else f'Route{route}'
  map_id=f'MAP_LEGENDS_KANTO_ROUTE{route}' if kanto else f'MAP_ROUTE{route}'
- d=json.loads((R/f'data/maps/{map_name}/map.json').read_text());l=next(l for l in layouts if l['id']==d['layout']);raw=(R/l['blockdata_filepath']).read_bytes();blocks=struct.unpack('<'+'H'*(len(raw)//2),raw)
- occupied={(o['x'],o['y']) for field in (('object_events','warp_events','coord_events') if kanto else ('object_events',)) for o in d[field]};tiles=ocean_tiles if kanto and water else cycling_grass_tiles if kanto and route==17 else {terrain};coords=[(i%l['width'],i//l['width']) for i,v in enumerate(blocks) if v&0xfff in tiles and 3<i%l['width']<l['width']-3 and 3<i//l['width']<l['height']-3 and (i%l['width'],i//l['width']) not in occupied and (not south or i//l['width']>40)]
+ d=json.loads((R/f'data/maps/{map_name}/map.json').read_text());l=next(l for l in layouts if l['id']==('LAYOUT_ROUTE130_MIRAGE_ISLAND' if mirage else d['layout']));raw=(R/l['blockdata_filepath']).read_bytes();blocks=struct.unpack('<'+'H'*(len(raw)//2),raw)
+ occupied={(o['x'],o['y']) for field in (('object_events','warp_events','coord_events') if kanto else ('object_events',)) for o in d[field]};tiles=water_tiles[kanto] if surf and (route in extra_surf[kanto]) else ocean_tiles if kanto and water else cycling_grass_tiles if kanto and route==17 else {terrain};coords=[(i%l['width'],i//l['width']) for i,v in enumerate(blocks) if v&0xfff in tiles and 3<i%l['width']<l['width']-3 and 3<i//l['width']<l['height']-3 and (i%l['width'],i//l['width']) not in occupied and (not south or i//l['width']>40)]
  assert coords,(route,'no passable native terrain fixture');x,y=coords[0];name=['spring','summer','autumn','winter'][season];expected=tables[kanto,str(route),name,water]
  rows=re.findall(r'\{(\d+), (\d+), SPECIES_\w+\}',re.search(('sKantoRoute' if kanto else 'sRoute')+str(route)+name.title()+('Water' if water else '')+r'Mons.*?=\s*\{(.*?)\};',data,re.S)[1]);minimum=min(int(a) for a,b in rows);maximum=max(int(b) for a,b in rows)
- scenes.append(dict(map_id=map_id,name=('kanto-' if kanto else '')+f'route{route}-{name}'+('-surf' if surf else '')+('-all-unseen' if mode==1 else '-all-seen' if mode==2 else '-south' if south else ''),route=route,season=season,mode=mode,area=1 if water else 0,x=x,y=y,min=minimum,max=maximum,rate=(2 if water else 14 if route in ('21_NORTH','21_SOUTH') else 21) if kanto else 10 if route==111 else 4 if water else 15 if route==119 else 20,expected=expected))
+ scenes.append(dict(map_id=map_id,name=('kanto-' if kanto else '')+f'route{route}-{name}'+('-surf' if surf else '-island' if mirage else '')+('-all-unseen' if mode==1 else '-all-seen' if mode==2 else '-south' if south else ''),route=route,season=season,mode=mode,area=1 if water else 0,x=x,y=y,min=minimum,max=maximum,rate=(2 if water else 14 if route in ('21_NORTH','21_SOUTH') else 21) if kanto else 4 if water else 10 if route==111 else 15 if route==119 else 20,expected=expected))
 for route in range(101,105):
  for season in range(4):add(route,season)
 add(101,0,1);add(104,3,2);add(104,3,south=True)
@@ -87,6 +91,11 @@ for kanto,routes in ((False,(115,118)),(True,(12,13))):
   for season in range(4):
    for mode in (0,2):add(route,season,mode,kanto=kanto,surf=True)
 assert len(scenes)==500
+for kanto,routes in extra_surf.items():
+ for route in routes:
+  for season in range(4):add(route,season,kanto=kanto,surf=True)
+for season in range(4):add(130,season,mirage=True)
+assert len(scenes)==564
 header=[ui,'struct QAScenario {u16 map; s16 x,y; u8 season,mode,area,min,max,rate; enum Species expected[12];};','static const struct QAScenario scenarios[] = {']
 for s in scenes:header.append('{%s,%d,%d,%d,%d,%d,%d,%d,%d,{%s}},'%(s['map_id'],s['x'],s['y'],s['season'],s['mode'],s['area'],s['min'],s['max'],s['rate'],','.join(s['expected'])))
 header.append('};');(O/'qa_scenarios.h').write_text('\n'.join(header)+'\n')

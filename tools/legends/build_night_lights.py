@@ -31,7 +31,7 @@ SECONDARY_WINDOWS = {
  'fortree': [0x2b8,0x2b9,0x2ba],
 }
 # FRLG pane variants, including the normal house's four-part window.
-SELECTION['general_frlg'].update({0x6:[0,1],0x7:[0],0x43:[0,1,2,3],0x55:[0,1,2,3],0x56:[0,1,2,3],0x150:[0,1],0x154:[0,1]})
+SELECTION['general_frlg'].update({0x6:[0,1],0x7:[0],0x43:[0,1,2,3],0x55:[0,1,2,3],0x56:[0,1,2,3],0x150:[0,1],0x154:[0,1],0x40:[5],0x41:[4]})
 
 def blue_glass(rgb):
  r,g,b=rgb
@@ -41,7 +41,7 @@ def window_color(rgb):return (255,232,152)
 
 def sign_color(rgb):
  r,g,b=rgb
- if max(rgb)-min(rgb)<35:return (255,146,172)
+ # The neutral sign face and border follow the exterior night tint.
  if r>g+30:return (255,80+(g*56//255),106+(g*48//255))
  return None
 
@@ -105,7 +105,7 @@ def main():
    assert len(keys)<=15,(family,'palette full',keys)
    return keys.index(key)+1
   for mid,entries in selected.items():
-   sign=mid in ((0x42,0x43,0x62,0x63) if family=='general' else (0x60,0x61))
+   sign=mid in ((0x42,0x43,0x62,0x63) if family=='general' else (0x40,0x41,0x60,0x61))
    for ei in entries:
     entry=mt[mid*8+ei];tid=entry&1023;pid=entry>>12;native=tile(im,tid)
     def light(v):
@@ -126,7 +126,7 @@ def main():
      for y in range(8):
       for x in range(8):
        v=native.getpixel((x,y));night=light(v)
-       if v and (night or not overlay):painted.putpixel((x,y),index(pals[pid][v],night))
+       if v and (night or sign or not overlay):painted.putpixel((x,y),index(pals[pid][v],night))
      im.paste(painted,(target%(im.width//8)*8,target//(im.width//8)*8))
     mt[mid*8+target_ei]=(entry&0xc00)|(slot<<12)|duplicates[key]
     cells.append({'metatile':mid,'source_cell':ei,'cell':target_ei,'source_tile':tid,'source_palette':pid,'tile':duplicates[key],'overlay':overlay,'kind':'sign' if sign else 'window'})
@@ -134,10 +134,19 @@ def main():
   manifest['families'][family]={'palette':slot,'alternate':alt,'cells':cells,'colors':[{'rgb':rgb,'night':night,'light':night is not None} for rgb,night in keys]}
   redirects[f'data/tilesets/primary/{family}/tiles.png']=f'data/tilesets/legends_lights/{family}_tiles.png'
   redirects[f'data/tilesets/primary/{family}/metatiles.bin']=f'data/tilesets/legends_lights/{family}_metatiles.bin'
+  # Town-specific facades reuse the primary sign glyphs on different layers.
+  # Each generated sign tile contains the entire native cell, including its
+  # backing, so it can replace the matching cell in place on either layer.
+  sign_tiles = {
+   (cell['source_palette'] << 12) | cell['source_tile']: (slot << 12) | cell['tile']
+   for cell in cells if cell['kind'] == 'sign'
+  }
   base_keys=keys[:]
   for f,symbol,meta,path,gfx in sorted(pairs):
    if f!=family:continue
    base=ROOT/path;folder=base.parent;name=folder.name;entries=words(base);keys[:]=base_keys
+   sign_cells = {i: sign_tiles[e & 0xf3ff] | (e & 0xc00)
+                 for i, e in enumerate(entries) if (e & 0xf3ff) in sign_tiles}
    usedp={e>>12 for e in entries};relocated=None
    if slot in usedp:
     spare=set(range(7 if family.endswith('frlg') else 6,13))-usedp;assert spare,(path,'No safe palette slot')
@@ -191,7 +200,9 @@ def main():
    redirects[str(folder.relative_to(ROOT)/'palettes'/f'{alt:02}.pal')]=nightpath
    swaps[symbol]=1<<(slot-(7 if family.endswith('frlg') else 6))
    if extra:swaps[symbol]|=1<<(extra_slot-(7 if family.endswith('frlg') else 6))
-   if extra or relocated is not None:
+   for i, lit_entry in sign_cells.items():
+    entries[i] = lit_entry
+   if extra or relocated is not None or sign_cells:
     dest=f'data/tilesets/legends_lights/{name}_metatiles.bin';(ROOT/dest).write_bytes(struct.pack('<'+'H'*len(entries),*entries));redirects[path]=dest
    manifest['secondary'].append({'family':family,'symbol':symbol,'metatiles':path,'tiles':gfx,'day':daypath,'night':nightpath,'palette':slot,'alternate':alt,'relocated_palette':relocated,'extra_palette':extra_slot,'extra_alternate':extra_alt,'cells':extra})
  # Pallet's separate round lab/house panes already own unique glass colors.

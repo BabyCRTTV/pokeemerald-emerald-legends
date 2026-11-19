@@ -49,6 +49,12 @@ OldaleTown_Mart_EventScript_PokeBallsInStock::
 	end
 
 OldaleTown_Mart_EventScript_Boy::
+	goto_if_unset FLAG_MISSIVE_TRAIL_KIT_TAKEN, OldaleTown_Mart_EventScript_Boy_Usual
+	goto_if_set FLAG_MISSIVE_TRAIL_KIT_DONE, OldaleTown_Mart_EventScript_Boy_Usual
+	setvar VAR_0x8004, MISSIVE_TRAIL_KIT
+	goto Missive_Recipient
+
+OldaleTown_Mart_EventScript_Boy_Usual:
 	msgbox OldaleTown_Mart_Text_RestoreHPWithPotion, MSGBOX_NPC
 	end
 

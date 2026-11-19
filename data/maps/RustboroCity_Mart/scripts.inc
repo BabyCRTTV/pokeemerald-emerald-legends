@@ -61,6 +61,12 @@ RustboroCity_Mart_EventScript_Boy::
 	end
 
 RustboroCity_Mart_EventScript_BugCatcher::
+	goto_if_unset FLAG_MISSIVE_ROPE_TAKEN, RustboroCity_Mart_EventScript_BugCatcher_Usual
+	goto_if_set FLAG_MISSIVE_ROPE_DONE, RustboroCity_Mart_EventScript_BugCatcher_Usual
+	setvar VAR_0x8004, MISSIVE_ROPE
+	goto Missive_Recipient
+
+RustboroCity_Mart_EventScript_BugCatcher_Usual:
 	msgbox RustboroCity_Mart_Text_GettingEscapeRopeJustInCase, MSGBOX_NPC
 	end
 
