@@ -699,3 +699,10 @@ gSpecials::
 	def_special PostcardView
 	def_special GroomingValidateMon
 	def_special GroomingStart
+	def_special MissiveList
+	def_special MissiveRead
+	def_special MissiveAccept
+	def_special MissiveReturn
+	def_special MissivePrepareDelivery
+	def_special MissiveSettle
+	def_special MissiveRumor

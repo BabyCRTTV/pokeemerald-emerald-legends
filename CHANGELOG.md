@@ -4,6 +4,12 @@ All notable Pokémon Emerald: Legends project changes are documented here.
 
 For build-specific player views, see [CHANGELOG-RELEASE.md](CHANGELOG-RELEASE.md) and [CHANGELOG-DEBUG.md](CHANGELOG-DEBUG.md). The canonical history below records the project as a whole.
 
+## [0.0.92] - 2026-11-19
+
+- Added six optional notice-board jobs in Oldale, Petalburg and Rustboro, with local recipients and rewards sent to PC storage.
+- Lit the painted lettering on Pokémon Center and Poké Mart signs at night with a slow pulse, including town-specific storefronts.
+- Added seasonal visitors to fifteen Surf routes and Mirage Island grass. Wynaut retained a 70% share on Mirage Island. The normal-play total reached 573 directly catchable species.
+
 ## [0.0.91] - 2026-11-18
 
 - Added a reusable Grooming Kit as a gift on the first visit to a Pokémon Center. Existing saves received it on their next visit.

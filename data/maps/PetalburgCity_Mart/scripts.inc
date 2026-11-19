@@ -59,6 +59,12 @@ PetalburgCity_Mart_EventScript_Boy::
 	end
 
 PetalburgCity_Mart_EventScript_Man::
+	goto_if_unset FLAG_MISSIVE_WOODS_TAKEN, PetalburgCity_Mart_EventScript_Man_Usual
+	goto_if_set FLAG_MISSIVE_WOODS_DONE, PetalburgCity_Mart_EventScript_Man_Usual
+	setvar VAR_0x8004, MISSIVE_WOODS
+	goto Missive_Recipient
+
+PetalburgCity_Mart_EventScript_Man_Usual:
 	msgbox PetalburgCity_Mart_Text_TakeSomeAntidotesWithYou, MSGBOX_NPC
 	end
 

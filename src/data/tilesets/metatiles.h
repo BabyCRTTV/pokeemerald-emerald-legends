@@ -15,7 +15,7 @@ const u16 gMetatileAttributes_Petalburg[] = INCBIN_U16("data/tilesets/secondary/
 const u16 gMetatiles_Rustboro[] = INCBIN_U16("data/tilesets/legends_lights/rustboro_metatiles.bin");
 const u16 gMetatileAttributes_Rustboro[] = INCBIN_U16("data/tilesets/secondary/rustboro/metatile_attributes.bin");
 
-const u16 gMetatiles_Dewford[] = INCBIN_U16("data/tilesets/secondary/dewford/metatiles.bin");
+const u16 gMetatiles_Dewford[] = INCBIN_U16("data/tilesets/legends_lights/dewford_metatiles.bin");
 const u16 gMetatileAttributes_Dewford[] = INCBIN_U16("data/tilesets/secondary/dewford/metatile_attributes.bin");
 
 const u16 gMetatiles_Slateport[] = INCBIN_U16("data/tilesets/secondary/slateport/metatiles.bin");
@@ -42,10 +42,10 @@ const u16 gMetatileAttributes_Mossdeep[] = INCBIN_U16("data/tilesets/secondary/m
 const u16 gMetatiles_EverGrande[] = INCBIN_U16("data/tilesets/legends_lights/ever_grande_metatiles.bin");
 const u16 gMetatileAttributes_EverGrande[] = INCBIN_U16("data/tilesets/secondary/ever_grande/metatile_attributes.bin");
 
-const u16 gMetatiles_Pacifidlog[] = INCBIN_U16("data/tilesets/secondary/pacifidlog/metatiles.bin");
+const u16 gMetatiles_Pacifidlog[] = INCBIN_U16("data/tilesets/legends_lights/pacifidlog_metatiles.bin");
 const u16 gMetatileAttributes_Pacifidlog[] = INCBIN_U16("data/tilesets/secondary/pacifidlog/metatile_attributes.bin");
 
-const u16 gMetatiles_Sootopolis[] = INCBIN_U16("data/tilesets/secondary/sootopolis/metatiles.bin");
+const u16 gMetatiles_Sootopolis[] = INCBIN_U16("data/tilesets/legends_lights/sootopolis_metatiles.bin");
 const u16 gMetatileAttributes_Sootopolis[] = INCBIN_U16("data/tilesets/secondary/sootopolis/metatile_attributes.bin");
 
 const u16 gMetatiles_BattleFrontierOutsideWest[] = INCBIN_U16("data/tilesets/legends_lights/battle_frontier_outside_west_metatiles.bin");
@@ -251,7 +251,7 @@ const u16 gMetatileAttributes_CinnabarIsland[] = INCBIN_U16("data/tilesets/secon
 const u16 gMetatiles_IndigoPlateau[] = INCBIN_U16("data/tilesets/secondary/indigo_plateau_frlg/metatiles.bin");
 const u16 gMetatileAttributes_IndigoPlateau[] = INCBIN_U16("data/tilesets/secondary/indigo_plateau_frlg/metatile_attributes.bin");
 
-const u16 gMetatiles_SaffronCity[] = INCBIN_U16("data/tilesets/secondary/saffron_city_frlg/metatiles.bin");
+const u16 gMetatiles_SaffronCity[] = INCBIN_U16("data/tilesets/legends_lights/saffron_city_frlg_metatiles.bin");
 const u16 gMetatileAttributes_SaffronCity[] = INCBIN_U16("data/tilesets/secondary/saffron_city_frlg/metatile_attributes.bin");
 
 const u16 gMetatiles_PewterGym[] = INCBIN_U16("data/tilesets/secondary/pewter_gym_frlg/metatiles.bin");

@@ -1,6 +1,6 @@
 {
-  "wikiDexRevision": "1.6.6",
-  "gameVersion": "0.0.91",
+  "wikiDexRevision": "1.6.7",
+  "gameVersion": "0.0.92",
   "sourceCommit": "a023c35039bfe2de23ed3b4388bc22a9343d4690",
   "source": "src/data/wild_encounters.json, src/data/legends_seasonal_encounters.h and src/data/pokemon/species_info/gen_*_families.h",
   "methodNote": "Percentages are conditional encounter shares for the selected method and season, not chances per step. Native lure/ability modifiers, scripted encounters and gifts are separate.",
@@ -51568,13 +51568,13 @@
     }
   ],
   "typeResolutionNote": "Source family-type macros resolved with P_UPDATED_TYPES=GEN_LATEST (Magnemite Steel, Togepi/Ralts/Cottonee Fairy).",
-  "lastManualReview": "2026-11-05",
-  "seasonalStatus": "preview",
+  "lastManualReview": "2026-11-19",
+  "seasonalStatus": "published",
   "seasonalSource": {
-    "baseGameVersion": "0.0.91",
-    "baseCommit": "a023c35039bfe2de23ed3b4388bc22a9343d4690",
+    "baseGameVersion": "0.0.92",
+    "baseCommit": "9db7d1b4440a838d39ae8d4c3f917f46342b3a47",
     "headerSha256": "214fdbdb9afdc34f26c93b0032c23acedc15cb5bbf966d37503add326c0a81cf",
-    "note": "Proposed seasonal tables; not a claim they shipped in the pinned published snapshot."
+    "note": "Approved seasonal encounter source for v0.0.92. Base encounter and artwork pins are retained."
   },
   "grottoSource": {
     "path": "src/data/legends/grotto_encounters.json",

@@ -1,8 +1,35 @@
 # Development handoff
 
+## v0.0.92 publication
+
+Model: GPT-6 | Owner approved the storefront lights, six board quests and seasonal route encounters together. Combined PRs 118–120, reviewed Chapters 1–3 and the encounter guide, and updated LegendsDex. Release and Debug publication uses the shared native and patch workflow.
+
 ## Remaining numbered-route encounters (18 November 2026)
 
 Model: GPT-6 | Added four-season Surf rosters to the eleven remaining Hoenn and four remaining Kanto route water tables. Route 130 gained Mirage Island grass visitors with Wynaut at 70%. Kanto Route 21 South has no grass on the map. Across sixteen methods, the original residents, levels, map layouts and rates are preserved. The source census is 573 unique directly catchable species during normal play (565 before), or 576 with external island events. Run `python3 tools/legends/count_catchable.py` to reproduce it. The production resolver/DexNav host regression, 304-table wiki reader, snapshot rollback tests and terrain discovery for 564 scenarios passed. The LegendsDex snapshot is marked as a preview.
+## Town-specific storefront lettering · PR 118
+
+Model: GPT-6 | Reviewed outdoor tilesets for copies of the standard sign glyphs. Dewford, Fallarbor, Pacifidlog, Rustboro, Sootopolis and Saffron used local facade cells with ordinary nighttime colors. The lighting generator now gives those glyphs the approved pulse on their original layers. The palette and regeneration test checks local copies in the compiled asset paths. The Fallarbor baseline changed only at the two sign cells. No map or save edits. This revision has asset-level verification; earlier emulator captures cover the preceding revision.
+
+## Wooden quest boards · draft PR 119 (18 November 2026)
+
+Model: GPT-6.2 Astra | Replaced the three quest board signs with a wooden frame, two pinned notices and two feet over the original grass or paving. Verified all three boards by day and night in mGBA. The Oldale acceptance and payment, all six reward checks, asset regeneration and both native builds passed. [Visual comparison](qa/missive-boards/wooden-notice-boards.png). Awaiting visual approval.
+
+## Hoenn town notice boards · gameplay preview (18 November 2026)
+
+Model: GPT-6.2 Astra | Added six local jobs at three Poké Marts on top of the stronger sign pulse. Each board has two signed notices and a sighting from its neighboring route's active encounter table. The Quest Log uses appended IDs 65–70 and separate native flags. Returning a notice makes it available again. The named NPC validates the delivery and sends the one-time reward to PC item storage. Existing clerk and story scripts keep their normal roles. [Gameplay preview and verification](qa/missive-boards/README.md). Draft for review.
+
+## Stronger storefront sign pulse · draft PR 118 (18 November 2026)
+
+Model: GPT-6.2 Astra | Increased peak dimming from 12.5% to 25% at the owner's request. The full cycle takes 1,024 frames (17.1 seconds). Debug and Release built. Compared 65 synchronized Debug mGBA frames per storefront per time of day in Oldale, Viridian and Vermilion. Every daytime frame matched the prior pulse. All nighttime differences fell within the sign, and each cycle returned to its starting color. [Revised real-time preview](qa/storefront-signs/slow-pulse.gif). Awaiting visual approval.
+
+## Very slow storefront sign pulse · draft PR 118 (18 November 2026)
+
+Model: GPT-6.2 Astra | The owner liked the static lettering and requested a very slow pulse. The night glow now eases down by at most one eighth and back over 1,024 frames (17.1 seconds). The field renderer uses the composited sign colors so weather still applies. Debug and Release built. In Debug mGBA, a full cycle at six storefronts in Oldale, Viridian and Vermilion returned to its starting colors. Palette comparisons every 16 frames confined the pulse to the sign ink at night. The midday frames matched the preceding revision. The regenerated palette regression passed. [Original real-time mGBA loop](https://github.com/BabyCRTTV/pokeemerald-emerald-legends/blob/df6d032b8ddd433ab21a11cbf7c79f7e2bb745f7/docs/qa/storefront-signs/slow-pulse.gif). Awaiting approval of the animation.
+
+## Storefront sign lighting preview (18 November 2026)
+
+Model: GPT-6.2 Astra | Restricted the night glow to the original painted letters on Hoenn and Kanto Pokémon Center and Poké Mart signs. Added the missing Kanto Mart light cells and preserved the shared palette used by custom Kanto cities. The asset regeneration and native color-mixer regression passed. Debug and Release compiled. In Debug mGBA, all six midday storefront frames matched the v0.0.91 baseline pixel for pixel in Oldale, Viridian and Vermilion. At 23:00 every changed pixel fell within the corresponding 16×8 sign. [Day and night comparison](qa/storefront-signs/preview.png). Awaiting visual approval before publication.
 
 ## v0.0.91 Grooming Kit published and verified (18 November 2026)
 
