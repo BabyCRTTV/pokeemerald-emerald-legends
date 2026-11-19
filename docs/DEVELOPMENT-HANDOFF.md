@@ -1,5 +1,9 @@
 # Development handoff
 
+## Wooden quest boards · draft PR 119 (18 November 2026)
+
+Model: GPT-6.2 Astra | Replaced the three quest board signs with a wooden frame, two pinned notices and two feet over the original grass or paving. Verified all three boards by day and night in mGBA. The Oldale acceptance and payment, all six reward checks, asset regeneration and both native builds passed. [Visual comparison](qa/missive-boards/wooden-notice-boards.png). Awaiting visual approval.
+
 ## Hoenn town notice boards · gameplay preview (18 November 2026)
 
 Model: GPT-6.2 Astra | Added six local jobs at three Poké Marts on top of the stronger sign pulse. Each board has two signed notices and a sighting from its neighboring route's active encounter table. The Quest Log uses appended IDs 65–70 and separate native flags. Returning a notice makes it available again. The named NPC validates the delivery and sends the one-time reward to PC item storage. Existing clerk and story scripts keep their normal roles. [Gameplay preview and verification](qa/missive-boards/README.md). Draft for review.

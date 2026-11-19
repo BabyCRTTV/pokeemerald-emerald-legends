@@ -13,9 +13,12 @@ The first three boards stand outside the Poké Marts in Oldale, Petalburg and Ru
 
 ![First-Aid Tin in Debug mGBA](first-aid-tin.png)
 
+![Wooden notice boards in Debug mGBA at noon and 23:00](wooden-notice-boards.png)
+
 ## Verification
 
 - Debug mGBA used ordinary directional input and A to interact with all three placed boards. At Oldale the player browsed a sighting, read Finn's notice, accepted it, spoke directly to him at the Mart, declined once and then delivered the Potion. Native flash save, clear and reload preserved the pending and completed states.
 - Controlled Debug fixtures exercised all six transactions, including missing items, Eggs presented as proof, full PC storage, retry, one-time payment and returning a notice. The other five NPC interactions were checked for script and map wiring.
 - The journal, field request and missive regression checks passed. The feature appends journal IDs 65–70 and uses twelve audited native flag bits. The save layout stays compatible.
-- Built both ROM variants on the v0.0.91 feature branch. The Debug SHA-256 was `f977e2e25d8f3c9f5b74cd7535c15753dbb459a594d52019264256bdbc1aed38`. The Release SHA-256 was `39a66f7b999581498249f23a199ecc49fd534b844974e642ed06391f8c7afc00`. Gameplay captures are from the Debug build.
+- Built both ROM variants on the v0.0.91 feature branch. The Debug SHA-256 was `29b3815fe327ae6fb24c7adbb05a48d1b03761a1ebbcec542cbe01ed8b27f6a0`. The Release SHA-256 was `c629c6f9362769f3b50359bb2de7081d50eea2ba3a61d96f8aa61b1878288332`. Gameplay captures are from the Debug build.
+- The visual revision appends one board metatile to each of the Petalburg and Rustboro tilesets. All three map edits retain their original collision and elevation bits. Frame differences at the previous camera positions fell entirely within each 16×16 sign.
