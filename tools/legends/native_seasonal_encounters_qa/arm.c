@@ -97,6 +97,8 @@ void qa(void)
         VarSet(VAR_LITTLEROOT_INTRO_STATE, 9); VarSet(VAR_LITTLEROOT_RIVAL_STATE, 4);
         CreateMon(&gParties[B_TRAINER_PLAYER][0], SPECIES_TREECKO, 5, 32, OTID_STRUCT_PLAYER_ID);
         gPartiesCount[B_TRAINER_PLAYER] = 1;
+        if (s->map == MAP_ROUTE130 && s->area == WILD_AREA_LAND)
+            VarSet(VAR_MIRAGE_RND_H, GetMonData(&gParties[B_TRAINER_PLAYER][0], MON_DATA_PERSONALITY));
         LegendsSetSeasonMode(LEGENDS_SEASONS_PLAYTIME); LegendsSetPlaytimeSeason(s->season);
         LegendsJournalInit(FALSE);
         SetWarpDestination(MAP_GROUP(s->map), MAP_NUM(s->map), -1, s->x, s->y);

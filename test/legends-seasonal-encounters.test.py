@@ -221,6 +221,27 @@ for route,prefix in [(115,''),(118,''),(12,'Kanto'),(13,'Kanto')]:
   if prefix:assert not visitors&(new_kanto|kanto_visitors|grotto_ids)
   coastal|=visitors
 assert len(coastal)==32 and 'SPECIES_DA_BUG' not in coastal
+# Compare every new slot to the map's native level range and encounter rate.
+for prefix,routes in [('',[102,103,104,110,111,114,117,119,120,121,123,130]),('Kanto',[4,6,10,11])]:
+ for route in routes:
+  water=route!=130
+  map_id='MAP_'+('LEGENDS_KANTO_' if prefix else '')+f'ROUTE{route}'
+  original=next(e for e in g['encounters'] if e['map']==map_id)['water_mons' if water else 'land_mons']
+  residents={m['species'] for m in original['mons']}
+  visitors=set()
+  for season in ('Spring','Summer','Autumn','Winter'):
+   label=f"s{prefix}Route{route}{season}{'Water' if water else ''}Mons"
+   assert f"{{{original['encounter_rate']}, {label}}}" in data
+   body=re.search(label+r'.*?=\s*\{(.*?)\};',data,re.S)[1]
+   rows=re.findall(r'\{(\d+), (\d+), (SPECIES_\w+)\}',body)
+   assert [(int(lo),int(hi)) for lo,hi,_ in rows]==[(m['min_level'],m['max_level']) for m in original['mons']]
+   odds={}
+   for (_,_,species),weight in zip(rows,water_weights if water else weights):
+    odds[species]=odds.get(species,0)+weight
+   new=set(odds)-residents
+   assert residents<=set(odds) and not new&(visitors|grotto_ids)
+   assert sorted(odds[v] for v in new)==([5,30] if water else [10,20])
+   visitors.update(new)
 pre=r'''
 #include <stdint.h>
 #include <stddef.h>
@@ -344,7 +365,7 @@ int main(void){
  assert(!GetWaterMonsInfo(HEADER_NONE,0)&&!GetWaterMonsInfo(56,0)&&!GetWaterMonsInfo(0,4)&&!GetWaterMonsInfo(0,(enum TimeOfDay)-1));
  active=255;for(unsigned h=0;h<56;h++){assert(GetLandMonsInfo(h,0)==&fallback[0]);assert(GetWaterMonsInfo(h,0)==&waterFallback[0]);}
  currentHeader=HEADER_NONE;assert(GetEncounterLevelFromMapData(SPECIES_WURMPLE,ENCOUNTER_TYPE_LAND)==255);
- puts("PASS: all 240 seasonal tables, exact rates including desert, all TODs, committed vs pending, unrelated map/method parity, bounds/fallback and absent prior-season DexNav targets");
+ puts("PASS: all 304 seasonal tables, exact rates including desert, all TODs, committed vs pending, unrelated map/method parity, bounds/fallback and absent prior-season DexNav targets");
 }
 '''
 with tempfile.TemporaryDirectory() as d:
@@ -359,4 +380,4 @@ assert 'encounters.landMonsInfo = GetLandMonsInfo(i, gAreaTimeOfDay);' in (R/'sr
 assert s.count('gWildMonHeaders[headerId].encounterTypes[timeOfDay].waterMonsInfo')==1
 assert 'encounters.waterMonsInfo = GetWaterMonsInfo(i, gAreaTimeOfDay);' in (R/'src/pokedex_area_screen.c').read_text()
 assert 'LegendsGetSeason()' not in function and 'VarSet(' not in function
-print('PASS: original residents/levels/rates, 70/20/10 base distribution, 476 visitor selections, native 65/30/5 Surf odds and all dependent land/Surf readers')
+print('PASS: original residents/levels/rates, 70/20/10 base distribution, seasonal visitor selections, native 65/30/5 Surf odds and all dependent land/Surf readers')

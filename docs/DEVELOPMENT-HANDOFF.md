@@ -1,5 +1,9 @@
 # Development handoff
 
+## Remaining numbered-route encounters (18 November 2026)
+
+Model: GPT-6 | Added four-season Surf rosters to the eleven remaining Hoenn and four remaining Kanto route water tables. Route 130 gained Mirage Island grass visitors with Wynaut at 70%. Kanto Route 21 South has no grass on the map. Across sixteen methods, the original residents, levels, map layouts and rates are preserved. The source census is 573 unique directly catchable species during normal play (565 before), or 576 with external island events. Run `python3 tools/legends/count_catchable.py` to reproduce it. The production resolver/DexNav host regression, 304-table wiki reader, snapshot rollback tests and terrain discovery for 564 scenarios passed. The LegendsDex snapshot is marked as a preview.
+
 ## v0.0.91 Grooming Kit published and verified (18 November 2026)
 
 **Model: GPT-6 | Reasoning: match the candidate and production builds to the approved eight-pixel controls and verify the live download bytes.**
