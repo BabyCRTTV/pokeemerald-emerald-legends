@@ -1,8 +1,8 @@
 # Development handoff
 
-## v0.0.92 publication
+## v0.0.92 published and verified (19 November 2026)
 
-Model: GPT-6 | Owner approved the storefront lights, six board quests and seasonal route encounters together. Combined PRs 118–120, reviewed Chapters 1–3 and the encounter guide, and updated LegendsDex. Release and Debug publication uses the shared native and patch workflow.
+Model: GPT-6 | Owner approved the storefront lights, six board quests and seasonal route encounters together. Combined PRs 118–120, reviewed Chapters 1–3 and the encounter guide, and updated LegendsDex. Candidate and production native and patch checks passed with identical targets. Pages run 44479140182 deployed the combined release. All 22 critical live files matched, including the walkthrough, LegendsDex and both patch downloads. [Release evidence](qa/town-notices-and-routes-v0.0.92.json).
 
 ## Remaining numbered-route encounters (18 November 2026)
 
