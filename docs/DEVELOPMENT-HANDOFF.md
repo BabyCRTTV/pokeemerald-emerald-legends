@@ -1,5 +1,9 @@
 # Development handoff
 
+## Town-specific storefront lettering · PR 118
+
+Model: GPT-6 | Reviewed outdoor tilesets for copies of the standard sign glyphs. Dewford, Fallarbor, Pacifidlog, Rustboro, Sootopolis and Saffron used local facade cells with ordinary nighttime colors. The lighting generator now gives those glyphs the approved pulse on their original layers. The palette and regeneration test checks local copies in the compiled asset paths. The Fallarbor baseline changed only at the two sign cells. No map or save edits. This revision has asset-level verification; earlier emulator captures cover the preceding revision.
+
 ## Stronger storefront sign pulse · draft PR 118 (18 November 2026)
 
 Model: GPT-6.2 Astra | Increased peak dimming from 12.5% to 25% at the owner's request. The full cycle takes 1,024 frames (17.1 seconds). Debug and Release built. Compared 65 synchronized Debug mGBA frames per storefront per time of day in Oldale, Viridian and Vermilion. Every daytime frame matched the prior pulse. All nighttime differences fell within the sign, and each cycle returned to its starting color. [Revised real-time preview](qa/storefront-signs/slow-pulse.gif). Awaiting visual approval.

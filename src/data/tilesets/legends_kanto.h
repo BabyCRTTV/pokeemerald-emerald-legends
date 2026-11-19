@@ -507,7 +507,7 @@ const u16 gTilesetPalettes_LegendsKantoSaffronCity[][16] =
     INCGFX_U16("data/tilesets/secondary/saffron_city_frlg/palettes/15.pal", ".gbapal"),
 };
 
-const u16 gMetatiles_LegendsKantoSaffronCity[] = INCBIN_U16("data/tilesets/secondary/saffron_city_frlg/metatiles.bin");
+const u16 gMetatiles_LegendsKantoSaffronCity[] = INCBIN_U16("data/tilesets/legends_lights/saffron_city_frlg_metatiles.bin");
 
 const u16 gMetatileAttributes_LegendsKantoSaffronCity[] = INCBIN_U16("data/tilesets/secondary/saffron_city_frlg/metatile_attributes.bin");
 
