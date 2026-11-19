@@ -1,8 +1,12 @@
 # Development handoff
 
+## Stronger storefront sign pulse · draft PR 118 (18 November 2026)
+
+Model: GPT-6.2 Astra | Increased peak dimming from 12.5% to 25% at the owner's request. The full cycle takes 1,024 frames (17.1 seconds). Debug and Release built. Compared 65 synchronized Debug mGBA frames per storefront per time of day in Oldale, Viridian and Vermilion. Every daytime frame matched the prior pulse. All nighttime differences fell within the sign, and each cycle returned to its starting color. [Revised real-time preview](qa/storefront-signs/slow-pulse.gif). Awaiting visual approval.
+
 ## Very slow storefront sign pulse · draft PR 118 (18 November 2026)
 
-Model: GPT-6.2 Astra | The owner liked the static lettering and requested a very slow pulse. The night glow now eases down by at most one eighth and back over 1,024 frames (17.1 seconds). The field renderer uses the composited sign colors so weather still applies. Debug and Release built. In Debug mGBA, a full cycle at six storefronts in Oldale, Viridian and Vermilion returned to its starting colors. Palette comparisons every 16 frames confined the pulse to the sign ink at night. The midday frames matched the preceding revision. The regenerated palette regression passed. [Real-time mGBA loop](qa/storefront-signs/slow-pulse.gif). Awaiting approval of the animation.
+Model: GPT-6.2 Astra | The owner liked the static lettering and requested a very slow pulse. The night glow now eases down by at most one eighth and back over 1,024 frames (17.1 seconds). The field renderer uses the composited sign colors so weather still applies. Debug and Release built. In Debug mGBA, a full cycle at six storefronts in Oldale, Viridian and Vermilion returned to its starting colors. Palette comparisons every 16 frames confined the pulse to the sign ink at night. The midday frames matched the preceding revision. The regenerated palette regression passed. [Original real-time mGBA loop](https://github.com/BabyCRTTV/pokeemerald-emerald-legends/blob/df6d032b8ddd433ab21a11cbf7c79f7e2bb745f7/docs/qa/storefront-signs/slow-pulse.gif). Awaiting approval of the animation.
 
 ## Storefront sign lighting preview (18 November 2026)
 

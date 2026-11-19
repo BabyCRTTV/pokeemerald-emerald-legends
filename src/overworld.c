@@ -2233,7 +2233,7 @@ static void SetFieldVBlankCallback(void)
     SetVBlankCallback(VBlankCB_Field);
 }
 
-// Dim the composited sign ink by up to 1/8 over 1,024 frames (~17 seconds).
+// Dim the composited sign ink by up to 1/4 over 1,024 frames (~17 seconds).
 // Apply only to the hardware copy so weather and fades retain their own colors.
 static void PulseStorefrontSigns(void)
 {
@@ -2273,9 +2273,9 @@ static void PulseStorefrontSigns(void)
             u32 index = BG_PLTT_ID(bank) + i;
             u16 color = gPlttBufferFaded[index];
             u32 r = GET_R(color), g = GET_G(color), b = GET_B(color);
-            r -= (r * amount + 2048) >> 12;
-            g -= (g * amount + 2048) >> 12;
-            b -= (b * amount + 2048) >> 12;
+            r -= (r * amount + 1024) >> 11;
+            g -= (g * amount + 1024) >> 11;
+            b -= (b * amount + 1024) >> 11;
             ((volatile u16 *)BG_PLTT)[index] = RGB(r, g, b);
         }
     }
