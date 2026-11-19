@@ -134,10 +134,19 @@ def main():
   manifest['families'][family]={'palette':slot,'alternate':alt,'cells':cells,'colors':[{'rgb':rgb,'night':night,'light':night is not None} for rgb,night in keys]}
   redirects[f'data/tilesets/primary/{family}/tiles.png']=f'data/tilesets/legends_lights/{family}_tiles.png'
   redirects[f'data/tilesets/primary/{family}/metatiles.bin']=f'data/tilesets/legends_lights/{family}_metatiles.bin'
+  # Town-specific facades reuse the primary sign glyphs on different layers.
+  # Each generated sign tile contains the entire native cell, including its
+  # backing, so it can replace the matching cell in place on either layer.
+  sign_tiles = {
+   (cell['source_palette'] << 12) | cell['source_tile']: (slot << 12) | cell['tile']
+   for cell in cells if cell['kind'] == 'sign'
+  }
   base_keys=keys[:]
   for f,symbol,meta,path,gfx in sorted(pairs):
    if f!=family:continue
    base=ROOT/path;folder=base.parent;name=folder.name;entries=words(base);keys[:]=base_keys
+   sign_cells = {i: sign_tiles[e & 0xf3ff] | (e & 0xc00)
+                 for i, e in enumerate(entries) if (e & 0xf3ff) in sign_tiles}
    usedp={e>>12 for e in entries};relocated=None
    if slot in usedp:
     spare=set(range(7 if family.endswith('frlg') else 6,13))-usedp;assert spare,(path,'No safe palette slot')
@@ -191,7 +200,9 @@ def main():
    redirects[str(folder.relative_to(ROOT)/'palettes'/f'{alt:02}.pal')]=nightpath
    swaps[symbol]=1<<(slot-(7 if family.endswith('frlg') else 6))
    if extra:swaps[symbol]|=1<<(extra_slot-(7 if family.endswith('frlg') else 6))
-   if extra or relocated is not None:
+   for i, lit_entry in sign_cells.items():
+    entries[i] = lit_entry
+   if extra or relocated is not None or sign_cells:
     dest=f'data/tilesets/legends_lights/{name}_metatiles.bin';(ROOT/dest).write_bytes(struct.pack('<'+'H'*len(entries),*entries));redirects[path]=dest
    manifest['secondary'].append({'family':family,'symbol':symbol,'metatiles':path,'tiles':gfx,'day':daypath,'night':nightpath,'palette':slot,'alternate':alt,'relocated_palette':relocated,'extra_palette':extra_slot,'extra_alternate':extra_alt,'cells':extra})
  # Pallet's separate round lab/house panes already own unique glass colors.

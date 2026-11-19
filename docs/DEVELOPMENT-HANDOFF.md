@@ -1,5 +1,9 @@
 # Development handoff
 
+## Town-specific storefront lettering · PR 118
+
+Model: GPT-6 | Reviewed outdoor tilesets for copies of the standard sign glyphs. Dewford, Fallarbor, Pacifidlog, Rustboro, Sootopolis and Saffron used local facade cells with ordinary nighttime colors. The lighting generator now gives those glyphs the approved pulse on their original layers. The palette and regeneration test checks local copies in the compiled asset paths. The Fallarbor baseline changed only at the two sign cells. No map or save edits. This revision has asset-level verification; earlier emulator captures cover the preceding revision.
+
 ## Wooden quest boards · draft PR 119 (18 November 2026)
 
 Model: GPT-6.2 Astra | Replaced the three quest board signs with a wooden frame, two pinned notices and two feet over the original grass or paving. Verified all three boards by day and night in mGBA. The Oldale acceptance and payment, all six reward checks, asset regeneration and both native builds passed. [Visual comparison](qa/missive-boards/wooden-notice-boards.png). Awaiting visual approval.

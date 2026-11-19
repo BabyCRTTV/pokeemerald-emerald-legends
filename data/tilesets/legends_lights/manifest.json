@@ -1000,6 +1000,10 @@
         "native": "data/tilesets/secondary/saffron_city_frlg/palettes/00.pal"
       },
       {
+        "literal": 502,
+        "native": "data/tilesets/secondary/saffron_city_frlg/metatiles.bin"
+      },
+      {
         "literal": 542,
         "native": "data/tilesets/secondary/celadon_city_frlg/palettes/00.pal"
       }
@@ -1092,6 +1096,10 @@
         "native": "data/tilesets/secondary/rustboro/metatiles.bin"
       },
       {
+        "literal": 10,
+        "native": "data/tilesets/secondary/dewford/metatiles.bin"
+      },
+      {
         "literal": 18,
         "native": "data/tilesets/secondary/fallarbor/metatiles.bin"
       },
@@ -1112,6 +1120,14 @@
         "native": "data/tilesets/secondary/ever_grande/metatiles.bin"
       },
       {
+        "literal": 28,
+        "native": "data/tilesets/secondary/pacifidlog/metatiles.bin"
+      },
+      {
+        "literal": 30,
+        "native": "data/tilesets/secondary/sootopolis/metatiles.bin"
+      },
+      {
         "literal": 32,
         "native": "data/tilesets/secondary/battle_frontier_outside_west/metatiles.bin"
       },
@@ -1122,6 +1138,10 @@
       {
         "literal": 144,
         "native": "data/tilesets/primary/general_frlg/metatiles.bin"
+      },
+      {
+        "literal": 166,
+        "native": "data/tilesets/secondary/saffron_city_frlg/metatiles.bin"
       }
     ],
     "src/graphics.c": [
@@ -1201,6 +1221,7 @@
     "data/tilesets/secondary/cerulean_city_frlg/palettes/07.pal": "data/tilesets/legends_lights/cerulean_city_frlg_day.pal",
     "data/tilesets/secondary/cinnabar_island_frlg/palettes/00.pal": "data/tilesets/legends_lights/cinnabar_island_frlg_night.pal",
     "data/tilesets/secondary/cinnabar_island_frlg/palettes/07.pal": "data/tilesets/legends_lights/cinnabar_island_frlg_day.pal",
+    "data/tilesets/secondary/dewford/metatiles.bin": "data/tilesets/legends_lights/dewford_metatiles.bin",
     "data/tilesets/secondary/dewford/palettes/05.pal": "data/tilesets/legends_lights/dewford_night.pal",
     "data/tilesets/secondary/dewford/palettes/12.pal": "data/tilesets/legends_lights/dewford_day.pal",
     "data/tilesets/secondary/ever_grande/metatiles.bin": "data/tilesets/legends_lights/ever_grande_metatiles.bin",
@@ -1240,6 +1261,7 @@
     "data/tilesets/secondary/mauville/palettes/12.pal": "data/tilesets/legends_lights/mauville_day.pal",
     "data/tilesets/secondary/mossdeep/palettes/05.pal": "data/tilesets/legends_lights/mossdeep_night.pal",
     "data/tilesets/secondary/mossdeep/palettes/12.pal": "data/tilesets/legends_lights/mossdeep_day.pal",
+    "data/tilesets/secondary/pacifidlog/metatiles.bin": "data/tilesets/legends_lights/pacifidlog_metatiles.bin",
     "data/tilesets/secondary/pacifidlog/palettes/05.pal": "data/tilesets/legends_lights/pacifidlog_night.pal",
     "data/tilesets/secondary/pacifidlog/palettes/12.pal": "data/tilesets/legends_lights/pacifidlog_day.pal",
     "data/tilesets/secondary/pallet_town_frlg/palettes/00.pal": "data/tilesets/legends_lights/pallet_town_frlg_night.pal",
@@ -1262,6 +1284,7 @@
     "data/tilesets/secondary/rustboro/palettes/12.pal": "data/tilesets/legends_lights/rustboro_day.pal",
     "data/tilesets/secondary/rustboro/palettes/15.pal": "data/tilesets/legends_lights/rustboro_windows_night.pal",
     "data/tilesets/secondary/rustboro/tiles.png": "data/tilesets/legends_lights/rustboro_tiles.png",
+    "data/tilesets/secondary/saffron_city_frlg/metatiles.bin": "data/tilesets/legends_lights/saffron_city_frlg_metatiles.bin",
     "data/tilesets/secondary/saffron_city_frlg/palettes/00.pal": "data/tilesets/legends_lights/saffron_city_frlg_night.pal",
     "data/tilesets/secondary/saffron_city_frlg/palettes/07.pal": "data/tilesets/legends_lights/saffron_city_frlg_day.pal",
     "data/tilesets/secondary/sevii_islands_123_frlg/palettes/00.pal": "data/tilesets/legends_lights/sevii_islands_123_frlg_night.pal",
@@ -1272,6 +1295,7 @@
     "data/tilesets/secondary/sevii_islands_67_frlg/palettes/07.pal": "data/tilesets/legends_lights/sevii_islands_67_frlg_day.pal",
     "data/tilesets/secondary/slateport/palettes/05.pal": "data/tilesets/legends_lights/slateport_night.pal",
     "data/tilesets/secondary/slateport/palettes/12.pal": "data/tilesets/legends_lights/slateport_day.pal",
+    "data/tilesets/secondary/sootopolis/metatiles.bin": "data/tilesets/legends_lights/sootopolis_metatiles.bin",
     "data/tilesets/secondary/sootopolis/palettes/05.pal": "data/tilesets/legends_lights/sootopolis_night.pal",
     "data/tilesets/secondary/sootopolis/palettes/12.pal": "data/tilesets/legends_lights/sootopolis_day.pal",
     "data/tilesets/secondary/vermilion_city_frlg/palettes/00.pal": "data/tilesets/legends_lights/vermilion_city_frlg_night.pal",

@@ -56,6 +56,17 @@ for name,f in m['families'].items():
     # Custom Kanto cities load the shared day bank, with different window slots.
     assert legacy_palette[value] == newpal[value]
     assert (value in legacy_flags) == (value in flags)
+ # Local facade variants can carry either half of the original painted sign.
+ # Audit the metatiles actually compiled, including Fallarbor's cliff atlas.
+ sign_entries = {c['source_palette'] << 12 | c['source_tile']: f['palette'] << 12 | c['tile']
+                 for c in signs}
+ for secondary in (s for s in m['secondary'] if s['family'] == name):
+  path = secondary['metatiles']
+  original = art.words(R/path)
+  runtime = art.words(R/m['redirects'].get(path, path))
+  for i, entry in enumerate(original):
+   if entry & 0xf3ff in sign_entries:
+    assert runtime[i] == sign_entries[entry & 0xf3ff] | (entry & 0xc00), (path, i)
  # The field pulse selects the RGB555 rose ink from each actual night bank.
  expected_ink = {i+1 for i,c in enumerate(f['colors']) if c['light'] and c['rgb'][0] > c['rgb'][1]+30}
  for secondary in (s for s in m['secondary'] if s['family'] == name):
