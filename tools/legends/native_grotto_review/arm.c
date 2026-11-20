@@ -78,6 +78,8 @@ void qa(void)
     {
         // The map remains unchanged in production. Compare the compiled native
         // metatile alternatives through the real field compositor in QA only.
+        // Historical art options used the retired grassy landing.
+        MapGridSetMetatileIdAt(14 + 7, 40 + 7, 0x001);
         MapGridSetMetatileIdAt(13 + 7, 39 + 7, 0x400 | (0x36F + b[1] * 2));
         MapGridSetMetatileIdAt(13 + 7, 40 + 7, 0x400 | (0x370 + b[1] * 2));
         DrawWholeMapView();

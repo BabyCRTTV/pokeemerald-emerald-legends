@@ -135,7 +135,7 @@ class Grottos(unittest.TestCase):
 
     def test_entrances_have_safe_returns_and_no_event_collisions(self):
         layouts = {l['id']:l for l in read('data/layouts/layouts.json')['layouts']}
-        for route,approach in [('PetalburgWoods',(13,32)),('Route114',(14,40)),('Route119',(27,106))]:
+        for route,approach in [('PetalburgWoods',(13,32)),('Route114',(7,47)),('Route119',(27,106))]:
             m=read(f'data/maps/{route}/map.json');l=layouts[m['layout']];a=cells(l)
             entries=[e for e in m['bg_events'] if e.get('script','').startswith('LegendsGrotto_Enter')]
             entry=min(entries,key=lambda e:abs(e['x']-approach[0])+abs(e['y']-approach[1]))
@@ -147,20 +147,19 @@ class Grottos(unittest.TestCase):
     def test_cliff_mouth_has_a_real_walkable_approach(self):
         l=next(l for l in read('data/layouts/layouts.json')['layouts'] if l['name']=='Route114_Layout')
         a=cells(l);w=l['width']
-        # Ordinary route -> landing -> adjacent visible cave mouth, with no
-        # intervening cliff/ledge or remote background interaction.
-        for x in [15,14]:
-            self.assertEqual(a[40*w+x]&0xC00,0)
-            self.assertEqual(a[40*w+x]&1023,0x001)
-        # Match Meteor Falls' original two-piece mouth on this same route.
-        for new_y, meteor_y in [(38, 62), (39, 63)]:
-            self.assertEqual(a[new_y*w+14] & 1023, a[meteor_y*w+8] & 1023)
-        self.assertTrue(a[39*w+14] & 0xC00)
-        self.assertEqual((a[39*w+12], a[40*w+12]), (0x4241, 0x4241))
+        for x, y in [(6, 50), (6, 49), (6, 48), (6, 47), (7, 47)]:
+            self.assertEqual(a[y*w+x] & 0xC00, 0)
+        # Each cliff coordinate, including collision, retains its original
+        # route word except for the two native Meteor Falls entrance tiles.
+        self.assertEqual({(p['x'], p['y']) for p in BASE['entrance_patches']['Route114']},
+                         {(7, 45), (7, 46)})
+        for new_y, meteor_y in [(45, 62), (46, 63)]:
+            self.assertEqual(a[new_y*w+7] & 1023, a[meteor_y*w+8] & 1023)
+            self.assertTrue(a[new_y*w+7] & 0xC00)
         m=read('data/maps/Route114/map.json')
         e=next(e for e in m['bg_events'] if e.get('script')=='LegendsGrotto_EnterStillwater')
-        self.assertEqual((e['x'],e['y']),(14,39))
-        self.assertIn('warp MAP_ROUTE114, 14, 40',(R/'data/scripts/legends_grotto_review.inc').read_text())
+        self.assertEqual((e['x'],e['y']),(7,46))
+        self.assertIn('warp MAP_ROUTE114, 7, 47',(R/'data/scripts/legends_grotto_review.inc').read_text())
 
     def test_every_tree_is_complete(self):
         for key in ['Leafshade','Rainroot']:

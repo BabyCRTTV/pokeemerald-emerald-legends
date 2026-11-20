@@ -1,5 +1,9 @@
 # Development handoff
 
+## Stillwater on the Route 114 rock terrace
+
+Model: GPT-6 | The open grotto now sits in the original south-facing cliff above the short stone stairs. The former grass bank is restored. Only the two native Meteor Falls mouth tiles at (7, 45) and (7, 46) differ from the original route layout. From the stair crest, step right onto (7, 47), face north and press A. In mGBA the player walked from the old approach to the new one, declined, entered, returned to the landing and descended the stairs. The twelve seasonal grotto scenes and the field and encounter regressions passed. Both BPS patches reproduced the compiled builds byte for byte. Preview pending visual approval.
+
 ## Stillwater native Route 114 artwork
 
 Model: GPT-6 | The owner requested a closer match to Emerald. Stillwater now uses the same native brow and threshold as Meteor Falls, with Fallarbor cliff corners on a small south-facing outcrop. From the existing landing at (14, 40), face north to examine (14, 39). The interaction guard follows the visible mouth. The west ridge uses its original terrain. In mGBA the player walked up, declined, entered, returned to the landing and crossed the raised trail in both directions. Old player positions on the three newly solid grass cells can step directly east. The field, grotto review and grotto encounter regressions passed. Preview pending visual approval.

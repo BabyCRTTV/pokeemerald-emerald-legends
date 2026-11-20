@@ -43,7 +43,7 @@ LegendsGrotto_ExitLeafshade::
 	end
 LegendsGrotto_ExitStillwater::
 	lockall
-	warp MAP_ROUTE114, 14, 40
+	warp MAP_ROUTE114, 7, 47
 	waitstate
 	releaseall
 	end

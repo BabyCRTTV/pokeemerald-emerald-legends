@@ -10,13 +10,13 @@ Three small, optional shelters reward inspecting the edges of familiar routes. A
 | Stillwater Nook | Route 114, southwest of Lanette's house | Compact rocky chamber and clear spring | A stone worn smooth on only one side |
 | Rainroot Hollow | Lower Route 119, northwest of the small house | Wet foliage, small reflective pool and long grass | Curled leaves shelter a dry sleeping place |
 
-The compact revision reduces each map from **22×20 to 18×16 tiles** (35% less map area), draws the canopy/walls closer around the visitor and keeps a clear central approach. Stillwater uses a simpler continuous chamber wall and a narrower spring; the outdoor shelters use smaller, grouped planting and complete native trees. Route entrances and return points are unchanged. [Current native preview](../designs/hidden-grottos/Emerald-Legends-Grottos-Compact-Preview.png).
+The compact revision reduces each map from **22×20 to 18×16 tiles** (35% less map area), draws the canopy/walls closer around the visitor and keeps a clear central approach. Stillwater uses a simpler continuous chamber wall and a narrower spring; the outdoor shelters use smaller, grouped planting and complete native trees. [Current native preview](../designs/hidden-grottos/Emerald-Legends-Grottos-Compact-Preview.png).
 
 ## Finding and entering
 
 These use the existing area's access conditions. Leafshade is an early discovery in the southern woods; Stillwater and Rainroot become reachable as the player reaches their routes. Once at an opening, no special move or item is required.
 
-Walk up to the visible opening and press **A**. A short description mentions the draft, trail or footprints, followed by an **Explore [name]?** Yes/No choice. Yes fades into the separate grotto map. No leaves the player outside. Walking back through the mouth returns to a passable tile beside the same opening. Both halves of Leafshade's vine-framed trunk accept examination. Stillwater has a walkable landing at `(14,40)`, reached from ordinary Route 114 ground at `(15,40)`; face north and examine the cave mouth at `(14,39)`. Walking out returns to the landing.
+Walk up to the visible opening and press **A**. A short description mentions the draft, trail or footprints, followed by an **Explore [name]?** Yes/No choice. Yes fades into the separate grotto map. No leaves the player outside. Walking back through the mouth returns to a passable tile beside the same opening. Both halves of Leafshade's vine-framed trunk accept examination. On Route 114, climb the short western stone stair to the recessed terrace. At the top, step right onto the landing at `(7,47)`, face north and press **A**. The mouth at `(7,46)` returns you to the same landing.
 
 The vine and undergrowth entrance graphics carry native Secret Base behavior; Stillwater uses the original Meteor Falls entrance tiles in a solid rock face. A coordinate-specific door-warp guard isolates exactly these four interaction cells from the native auto-warp; all other Secret Base positions retain the original path. The route 119 return is now `(27,106)`, directly below its complete undergrowth opening.
 

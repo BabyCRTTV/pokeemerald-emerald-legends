@@ -48,7 +48,7 @@ int main(int argc,char **argv) {
     mCoreConfigSetDefaultIntValue(&c->config,"skipBios",1); c->loadConfig(c,&c->config);
     video=calloc(240*160,sizeof(color_t)); c->setVideoBuffer(c,video,240);
     struct VFile *f=VFileOpen(argv[1],O_RDONLY); assert(f&&c->loadROM(c,f));
-    unsigned leafGroup=0, leafMap=0, stillGroup=0, stillMap=0;
+    unsigned leafGroup=0, leafMap=0;
     for(int room=0;room<3;room++) for(int season=0;season<4;season++) {
         c->reset(c); frames(500); c->busWrite32(c,mainAddr,0);
         c->busWrite32(c,0x0203ffc4,room); c->busWrite32(c,0x0203ffc8,season);
@@ -58,7 +58,6 @@ int main(int argc,char **argv) {
         assert(box(7)==season&&box(9)==0&&box(10)==9&&box(11)==9&&box(8)==box(13));
         unsigned group=box(5), map=box(6);
         if(room==0){leafGroup=group;leafMap=map;}
-        if(room==1){stillGroup=group;stillMap=map;}
         capture(argv[2],room,season,"overview");
         if(season==0) {
             for(int i=0;i<5&&box(11)>7;i++){key(64);command(1,2);}
@@ -68,20 +67,20 @@ int main(int argc,char **argv) {
             for(int i=0;i<12;i++) {key(128);command(1,2);if(box(5)!=group||box(6)!=map) break;}
             frames(250);command(1,2);assert(box(5)!=group||box(6)!=map);
             if(room==1) {
-                assert(box(10)==14&&box(11)==40&&box(9)==0);
-                // Walk out to ordinary route ground, then film the real approach.
-                for(int i=0;i<3&&box(10)<15;i++){key(16);command(1,2);}
-                assert(box(10)==15&&box(11)==40);
+                assert(box(10)==7&&box(11)==47&&box(9)==0);
+                // Walk back to the top of the stone stairs, then film the real approach.
+                for(int i=0;i<3&&box(10)>6;i++){key(32);command(1,2);}
+                assert(box(10)==6&&box(11)==47);
                 recordName="cliff";recorded=0;recordFrames=0;recording=1;frames(45);
-                for(int i=0;i<3&&box(10)>14;i++){key(32);command(1,2);}
-                assert(box(10)==14&&box(11)==40&&box(9)==0&&!box(12));
+                for(int i=0;i<3&&box(10)<7;i++){key(16);command(1,2);}
+                assert(box(10)==7&&box(11)==47&&box(9)==0&&!box(12));
                 frames(45);
             }
             capture(argv[2],room,season,"exit");
             // Entry approaches face the inspected tree/cliff/bush.
             unsigned outsideGroup=box(5), outsideMap=box(6);
             key(64);
-            if(room==1){command(1,2);assert(box(10)==14&&box(11)==40&&!box(12)&&box(5)==outsideGroup&&box(6)==outsideMap);}
+            if(room==1){command(1,2);assert(box(10)==7&&box(11)==47&&!box(12)&&box(5)==outsideGroup&&box(6)==outsideMap);}
             key(1);frames(90);capture(argv[2],room,season,"entrance");command(1,2);
             for(int i=0;i<8&&box(12);i++){key(2);command(1,2);}
             assert(!box(12)&&box(5)==outsideGroup&&box(6)==outsideMap);
@@ -89,7 +88,7 @@ int main(int argc,char **argv) {
             printf("reentry room=%d map=%u,%u xy=%u,%u script=%u\n",room,box(5),box(6),box(10),box(11),box(12));
             assert(box(5)==group&&box(6)==map&&!box(12));
             capture(argv[2],room,season,"reentry");
-            if(room==1){frames(90);recording=0;cliffFrames=recorded;recordName="discovery";recorded=0;recordFrames=0;printf("PASS: walked from Route 114 (15,40) onto landing (14,40), faced the cave mouth (14,39), declined and reentered; %d film frames.\n",cliffFrames);}
+            if(room==1){frames(90);recording=0;cliffFrames=recorded;recordName="discovery";recorded=0;recordFrames=0;printf("PASS: walked from Route 114 (6,47) onto landing (7,47), faced the cave mouth (7,46), declined and reentered; %d film frames.\n",cliffFrames);}
         }
     }
     command(2,500);command(1,2);
@@ -116,12 +115,10 @@ int main(int argc,char **argv) {
         char p[4096];snprintf(p,sizeof(p),"%s/entrance-option-%d.rgba",output,variant);
         FILE *f=fopen(p,"wb");assert(f&&fwrite(video,4,240*160,f)==240*160);fclose(f);
         unsigned outsideGroup=box(5),outsideMap=box(6);
-        key(1);command(1,2);assert(box(12));
-        for(int i=0;i<8&&box(12);i++){key(2);command(1,2);}
+        // These archived artwork fixtures sit on the retired approach.
+        key(1);command(1,2);
         assert(!box(12)&&box(5)==outsideGroup&&box(6)==outsideMap);
-        key(1);key(1);key(1);key(1);frames(300);command(1,2);
-        assert(box(5)==stillGroup&&box(6)==stillMap&&!box(12));
-        printf("PASS: entrance option %d, real landing approach, inspect, decline and enter.\n",variant);
+        printf("PASS: historical entrance option %d rendered without a stale interaction.\n",variant);
     }
     c->deinit(c);free(video);puts("PASS: twelve seasonal scenes, native movement and visitor dialogue.");
 }

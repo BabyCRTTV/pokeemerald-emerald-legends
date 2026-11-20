@@ -10,44 +10,16 @@
   "Route114_sha256": "976691430855081d3bcce04b398a9c986ed720de847ec74c24eb0d7a07315bae",
   "Route114_restore_words": [
     {
-      "index": 1493,
-      "old": 1578
-    },
-    {
-      "index": 1494,
-      "old": 1852
-    },
-    {
-      "index": 1495,
-      "old": 12289
-    },
-    {
-      "index": 1533,
-      "old": 1578
-    },
-    {
-      "index": 1534,
-      "old": 1852
-    },
-    {
-      "index": 1535,
-      "old": 12289
-    },
-    {
-      "index": 1573,
-      "old": 1578
-    },
-    {
-      "index": 1574,
-      "old": 1852
-    },
-    {
-      "index": 1575,
-      "old": 12289
-    },
-    {
       "index": 1614,
       "old": 1552
+    },
+    {
+      "index": 1807,
+      "old": 1637
+    },
+    {
+      "index": 1847,
+      "old": 1637
     }
   ],
   "map_exceptions": {
