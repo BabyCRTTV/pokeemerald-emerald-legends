@@ -91,8 +91,10 @@ def build():
     anim = (ROOT / 'src/tileset_anims.c').read_text()
     for offset in re.findall(r'NUM_TILES_IN_PRIMARY\s*\+\s*(\d+)', anim):
         used.update(range(512 + int(offset), 528 + int(offset)))
-    free = [i for i in range(512, 1024) if i not in used][:17]
-    assert len(free) == 17
+    available = [i for i in range(512, 1024) if i not in used]
+    free = available[:17]  # The previously shipped cliff cells keep their tile IDs.
+    plank_tiles = available[17:21]
+    assert len(plank_tiles) == 4
 
     def store(index, pixels):
         atlas.paste(pixels, (index % 16 * 8, index % 512 // 16 * 8))
@@ -114,16 +116,32 @@ def build():
             store(tid, pixels)
             words[quadrant + 4] = 0xB000 | tid
         extra.extend(words)
-    atlas.save(OUT / 'fallarbor_cliff_tiles.png')
-    (OUT / 'fallarbor_cliff_metatiles.bin').write_bytes(metas + struct.pack('<32H', *extra))
+    # Add the crossbar on the upper layer of a copy of the native threshold.
+    # Palette six is already loaded on Route 114. Zero is transparent.
+    plank = Image.new('P', (16, 16), 0)
+    ink = {'.': 0, 'h': 5, 'm': 6, 'b': 7, 'd': 13, 'n': 15}
+    rows = ('.hhhmmmmhhhmhmh.', '.mndmmbmmmmmbmm.',
+            '.dmmmbbbmmmmbbd.', '..ddddd.ddddddd.')
+    for y, row in enumerate(rows, start=6):
+        for x, shade in enumerate(row):
+            plank.putpixel((x, y), ink[shade])
+    threshold = list(struct.unpack_from('<8H', metas, (0x261 - 0x200) * 16))
+    for quadrant, tile_id in enumerate(plank_tiles):
+        x, y = quadrant % 2 * 8, quadrant // 2 * 8
+        store(tile_id, plank.crop((x, y, x + 8, y + 8)))
+        threshold[quadrant + 4] = 0x6000 | tile_id
+    extra.extend(threshold)
+    atlas.save(OUT / 'fallarbor_cliff_tiles.png', bits=4)
+    (OUT / 'fallarbor_cliff_metatiles.bin').write_bytes(metas + struct.pack('<40H', *extra))
     attrs = (native / 'metatile_attributes.bin').read_bytes()
-    (OUT / 'fallarbor_cliff_attributes.bin').write_bytes(attrs + struct.pack('<4H', *([0x1000]*4)))
+    threshold_attr = attrs[(0x261 - 0x200)*2:(0x262 - 0x200)*2]
+    (OUT / 'fallarbor_cliff_attributes.bin').write_bytes(attrs + struct.pack('<4H', *([0x1000]*4)) + threshold_attr)
     colors = [int(v) for line in (native / 'palettes/11.pal').read_text().splitlines()[3:19]
               for v in line.split()]
     rock.putpalette(colors + [0, 0, 0])
     rock.save(OUT / 'cliff_recess_overlay.png', transparency=0)
     spec = dict(resolution=[32,32], palette=11, shadow_palette=10,
-                metatiles=list(range(FIRST, FIRST+4)), tile_ids=free,
+                metatiles=list(range(FIRST, FIRST+4)), tile_ids=free, crossbar_tile_ids=plank_tiles,
                 base_atlas_sha256=hashlib.sha256(base.read_bytes()).hexdigest(),
                 base_metatiles_sha256=hashlib.sha256(metas).hexdigest(),
                 base_attributes_sha256=hashlib.sha256(attrs).hexdigest(),

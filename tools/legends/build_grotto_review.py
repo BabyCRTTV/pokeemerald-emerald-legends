@@ -17,11 +17,11 @@ ROOMS = [
      'gTileset_Fortree', 'MUS_ROUTE119', 'WEATHER_RAIN', (27, 105), (27, 106)),
 ]
 
-# Every cell is existing Hoenn art; no tileset, palette or persistent ID changes.
+# Native Hoenn entrances, including the local Stillwater crossbar overlay.
 ENTRANCE_TILES = {
     'PetalburgWoods': [(12, 31, 0x036), (13, 31, 0x037)],
-    # The brow and threshold come from Route 114's Meteor Falls entrance.
-    'Route114': [(7, 45, 0x259), (7, 46, 0x261)],
+    # The local threshold adds the liftable plank to the native Meteor Falls mouth.
+    'Route114': [(7, 45, 0x259), (7, 46, 0x379)],
     'Route119': [(26, 103, 0x079), (27, 103, 0x079), (26, 104, 0x279), (27, 104, 0x27A), (28, 104, 0x27B),
                  (26, 105, 0x281), (27, 105, 0x278), (28, 105, 0x283),
                  (26, 106, 0x001)],

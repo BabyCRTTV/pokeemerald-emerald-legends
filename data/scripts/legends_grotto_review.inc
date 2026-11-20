@@ -17,6 +17,10 @@ LegendsGrotto_EnterStillwater::
 	msgbox LegendsGrotto_Text_StillwaterEntry, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, NO, LegendsGrotto_Decline
 	closemessage
+	playse SE_BRIDGE_WALK
+	setmetatile 7, 46, 0x261, 1
+	special DrawWholeMapView
+	delay 32
 	warp MAP_LEGENDS_GROTTO_STILLWATER, 9, 11
 	waitstate
 	releaseall
@@ -94,9 +98,8 @@ LegendsGrotto_Text_LeafshadeEntry:
 	.string "A narrow trail leads out of sight.\p"
 	.string "Explore LEAFSHADE HOLLOW?$"
 LegendsGrotto_Text_StillwaterEntry:
-	.string "A cool draft slips under the ledge.\n"
-	.string "You can hear water dripping inside.\p"
-	.string "Explore STILLWATER NOOK?$"
+	.string "A faded plank rests in two notches.\n"
+	.string "Lift it and enter the grotto?$"
 LegendsGrotto_Text_RainrootEntry:
 	.string "The rain has parted the undergrowth.\n"
 	.string "Small footprints lead beneath it.\p"

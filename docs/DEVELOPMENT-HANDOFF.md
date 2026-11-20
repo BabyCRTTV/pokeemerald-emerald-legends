@@ -1,5 +1,9 @@
 # Development handoff
 
+## Stillwater’s approved low crossbar
+
+Model: GPT-6 | The owner chose option A for Route 114. The sun-faded crossbar sits in two notches at (7, 46). Facing it from (7, 47) and accepting lifts it before entry. Both compiled builds matched option A byte for byte. In mGBA, walking north stopped at the plank, declining left it in place, and entering and returning restored it. Regeneration reproduced the approved art exactly. The grotto and field-environment regressions passed. Integrated on the field-environment development branch. [Gameplay capture](qa/stillwater-approved-crossbar.png).
+
 ## Stillwater on the Route 114 rock terrace
 
 Model: GPT-6 | The open grotto now sits in the original south-facing cliff above the short stone stairs. The former grass bank is restored. Only the two native Meteor Falls mouth tiles at (7, 45) and (7, 46) differ from the original route layout. From the stair crest, step right onto (7, 47), face north and press A. In mGBA the player walked from the old approach to the new one, declined, entered, returned to the landing and descended the stairs. The twelve seasonal grotto scenes and the field and encounter regressions passed. Both BPS patches reproduced the compiled builds byte for byte. Preview pending visual approval.
