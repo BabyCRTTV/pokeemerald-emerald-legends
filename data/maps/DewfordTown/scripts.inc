@@ -4,6 +4,7 @@ DewfordTown_MapScripts::
 	.byte 0
 
 DewfordTown_OnTransition:
+	special BottleSetVisibility
 	call Wyrmtide_PrepareDewford
 	setflag FLAG_VISITED_DEWFORD_TOWN
 	end
@@ -795,3 +796,26 @@ DewfordTown_Text_YeahDefinitionOfInRightNow:
 	.string "Yeah, absolutely right!\p"
 	.string "“{STR_VAR_1}” is the\n"
 	.string "definition of “in” right now.$"
+
+Bottle_Discover::
+	lockall
+	special BottleSetVisibility
+	goto_if_set FLAG_TEMP_A, Bottle_Gone
+	msgbox Bottle_Cork, MSGBOX_DEFAULT
+	closemessage
+	special BottleViewDrawing
+	waitstate
+	setflag FLAG_BOTTLE_DRAWING_FOUND
+	setflag FLAG_TEMP_A
+	removeobject LOCALID_DEWFORD_BOTTLE
+	msgbox Bottle_Pocket, MSGBOX_DEFAULT
+	releaseall
+	end
+Bottle_Gone:
+	removeobject LOCALID_DEWFORD_BOTTLE
+	releaseall
+	end
+Bottle_Cork:
+	.string "A corked bottle! There's a roll of\npaper tucked inside.$"
+Bottle_Pocket:
+	.string "On the back, in blue crayon:\n“Do you have a sea like ours?”\pYou fold the paper along its\nold creases and tuck it away.$"

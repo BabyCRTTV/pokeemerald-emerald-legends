@@ -2,7 +2,15 @@
 @  These are labeled in DewfordTown/scripts.inc
 
 Route109_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, Bottle_SetBeach
 	.byte 0
+
+Bottle_SetBeach:
+	setflag FLAG_TEMP_A
+	goto_if_unset FLAG_BOTTLE_POSTCARD_KEPT, Bottle_BeachReady
+	clearflag FLAG_TEMP_A
+Bottle_BeachReady:
+	end
 
 Route109_EventScript_StartDepartForDewford::
 	call EventScript_BackupMrBrineyLocation
@@ -562,3 +570,14 @@ Route109_Text_TrainerTipsSign:
 	.string "always have identical stats.\p"
 	.string "POKéMON raised by TRAINERS are said\n"
 	.string "to grow stronger than wild POKéMON.$"
+
+Bottle_BeachArtist::
+	msgbox Bottle_NewMap, MSGBOX_NPC
+	end
+Bottle_Grandpa::
+	msgbox Bottle_GrandpaText, MSGBOX_NPC
+	end
+Bottle_NewMap:
+	.string "This shell is Dewford. This one's us.\nGrandpa, hold the sea still!$"
+Bottle_GrandpaText:
+	.string "She drew my arm even longer today.\nSays it has to reach Dewford.$"

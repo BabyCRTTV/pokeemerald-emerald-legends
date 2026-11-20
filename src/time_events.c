@@ -54,7 +54,7 @@ bool8 IsMirageIslandPresent(void)
     return FALSE;
 }
 
-void UpdateShoalTideFlag(void)
+bool8 IsHoennHighTide(void)
 {
     static const u8 tide[] =
     {
@@ -84,10 +84,15 @@ void UpdateShoalTideFlag(void)
         1, // 23
     };
 
+    RtcCalcLocalTime();
+    return tide[gLocalTime.hours];
+}
+
+void UpdateShoalTideFlag(void)
+{
     if (IsMapTypeOutdoors(GetLastUsedWarpMapType()))
     {
-        RtcCalcLocalTime();
-        if (tide[gLocalTime.hours])
+        if (IsHoennHighTide())
             FlagSet(FLAG_SYS_SHOAL_TIDE);
         else
             FlagClear(FLAG_SYS_SHOAL_TIDE);

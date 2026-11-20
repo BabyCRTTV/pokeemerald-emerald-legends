@@ -489,6 +489,11 @@ Postcard_Away:
 	end
 EventScript_PostcardCase::
 	lockall
+	goto_if_unset FLAG_BOTTLE_POSTCARD_KEPT, Postcard_ScenicAlbum
+	msgbox Bottle_AlbumPrompt, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, YES, Bottle_ViewFromCase
+	closemessage
+Postcard_ScenicAlbum:
 	special PostcardOpen
 	goto_if_eq VAR_RESULT, FALSE, Postcard_Empty
 	special PostcardView
