@@ -1,5 +1,9 @@
 # Development handoff
 
+## Stillwater entrance revision
+
+Model: GPT-6 | The owner approved the field preview apart from Stillwater. A slatted timber gate now marks the east-facing cleft on Route 114. The prompt describes the gate. Its hardware uses the existing Fallarbor palette. mGBA verified entry from (14, 40) and a walking exit back to the same tile. The new gate is pending visual approval.
+
 ## Field environments · gameplay preview
 
 Model: GPT-6 | Rebuilt Mira’s Lilycove terrace in both story states, fitted the Stillwater opening to the Route 114 cliff, and turned Regigigas toward the approach. Corrected five misplaced Kanto nurses, the Lavender upper floor and both Route 10 signs. Reviewed all 124 added maps and confirmed the changed interactions and Wyrmtide seal in mGBA. Visual approval is pending. [Coverage and reproduction](qa/field-environment-review.md).

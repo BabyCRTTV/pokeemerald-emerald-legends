@@ -94,7 +94,7 @@ LegendsGrotto_Text_LeafshadeEntry:
 	.string "A narrow trail leads out of sight.\p"
 	.string "Explore LEAFSHADE HOLLOW?$"
 LegendsGrotto_Text_StillwaterEntry:
-	.string "A cool draft rises from the crack.\n"
+	.string "A timber gate creaks in the cleft.\n"
 	.string "You can hear water dripping inside.\p"
 	.string "Explore STILLWATER NOOK?$"
 LegendsGrotto_Text_RainrootEntry:
