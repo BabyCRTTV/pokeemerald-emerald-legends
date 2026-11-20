@@ -1,0 +1,327 @@
+{
+  "version": "0.0.93",
+  "pull_request": 122,
+  "approved_preview": "24abcd2ce280f976f82e79a396cf9edeb4bf7b5f",
+  "candidate": {
+    "commit": "3a1c60c65a85f3f9f70187ba645972355d681579",
+    "run": 44757151500,
+    "artifact": 14640912027,
+    "digest": "sha256:434eb8a231b3625bfc012ca82f2b35f266e4bfd5d9af85816634f398156a6f75",
+    "decoder": {
+      "Pokemon-Emerald-Legends-v0.0.93.bps": {
+        "patch_sha256": "b4afcd892774116e259a65efd7e33fbb7975d0c06602b9e6a053643f886e7a98",
+        "target_sha256": "90af43b3f62d246bd0e4b3a6ed879d02c538c976819ccba74d00c4720aeacb61",
+        "target_bytes": 33554432,
+        "exact_native_ROM_match": true
+      },
+      "Pokemon-Emerald-Legends-v0.0.93-debug.bps": {
+        "patch_sha256": "57db49d3703d47c8abb4025946e59f106ecce598c0c140cd1eace74afaf9947c",
+        "target_sha256": "62fc62b62e3ae8f0e60cda1582a6776d9072ce609ab3367ff698eaaa72183918",
+        "target_bytes": 33554432,
+        "exact_native_ROM_match": true
+      }
+    },
+    "native_receipts": {
+      "legends-mgba-preview/results.json": "60073d01702113b8282ef8c0295a9d2ba89119af019fac59fad91ef12f5c13ea",
+      "eon-roamers-qa/verification.json": "c52e25ed6fdcbe76e639d38d3b58985602f84e829554fac39c52d7289643b143",
+      "ember-return-qa/verification.json": "70335014aaebb0f4049b89cdb9a27eaaa85f200153a44696cd1cee648c7e2fc4",
+      "grotto-review/verification.json": "c762100f98be3537203e9b53cb61944316f3204758c97ed7e0ede01885ce95f6",
+      "grotto-encounters/verification.json": "47df5a897fa579888148cc49f497b08e4348d36cb167a9300b8702954ad83968",
+      "wyrmtide-native/verification.json": "cc3e4bb5797b3a944c60fc8bc2b11c80beb022dc33e983c939b0545cb39873ba",
+      "nightmare-native/verification.json": "20e025710930cbd36067d8c9f728bd710ecd604f279fc874d4114a32c0c8ccea",
+      "day-off-qa/verification.json": "d2287c68b7702e52703f43c30bcf0d6cb8360a07d127928657e07982d316628f",
+      "day-off-qa/release-verification.json": "f2c8026c9dc7830332cb74ac0ec69cd4cb81465b1e45726161959dea32581e06",
+      "living-hoenn-qa/verification.json": "619892c45419cd18b0fa1a8dee329ee48eaefb8aa6bc1895f95f4f199fa0f009",
+      "seasonal-encounters-qa/verification.json": "4a61f512c8c9e7e70fffe0a0da73c148dfa4e5aadb1cdeff48174ca98c13683d",
+      "visual-repairs-qa/verification.json": "bb5be628aeaae577c8b435ef3949c4a185a8f261703bdf9427f2e8905f483be4",
+      "eon-roamers-release-qa/verification.json": "198e6039b868163463353a698961e12ac931cda5438bb1ab373f3dcad6d4c4ea",
+      "ember-return-release-qa/verification.json": "27d8aefcd25603d096c016a2c87e73d83f297f1c60e9df03872ff71536be779d",
+      "grotto-encounters-release/verification.json": "d9272315daebfd44a760f919aea4b99ef62f4eab778745dac59383b78ae5fa72",
+      "bedroom-release-qa/verification.json": "7dc639b7232c311a0b0ea0d2149b0c4e7df4ff8311cac95b93e4c6dd5bce6c99"
+    }
+  },
+  "production": {
+    "commit": "fa4eedcd6c18e236fdfc8753d38282afa67445ba",
+    "run": 44759338718,
+    "artifact": 14642316474,
+    "digest": "sha256:73178ca0ffb10d9ca071e5c79ae39402e68f120000636c32640f9602f12b53dd",
+    "decoder": {
+      "Pokemon-Emerald-Legends-v0.0.93.bps": {
+        "patch_sha256": "b4afcd892774116e259a65efd7e33fbb7975d0c06602b9e6a053643f886e7a98",
+        "target_sha256": "90af43b3f62d246bd0e4b3a6ed879d02c538c976819ccba74d00c4720aeacb61",
+        "target_bytes": 33554432,
+        "exact_native_ROM_match": true
+      },
+      "Pokemon-Emerald-Legends-v0.0.93-debug.bps": {
+        "patch_sha256": "57db49d3703d47c8abb4025946e59f106ecce598c0c140cd1eace74afaf9947c",
+        "target_sha256": "62fc62b62e3ae8f0e60cda1582a6776d9072ce609ab3367ff698eaaa72183918",
+        "target_bytes": 33554432,
+        "exact_native_ROM_match": true
+      }
+    },
+    "native_receipts": {
+      "legends-mgba-preview/results.json": "4115cc019999bfe09e8439d96eb51f766a9ab99ed2443cb1e02f68acf78fb3a5",
+      "eon-roamers-qa/verification.json": "fefb61f25481269bec19fed1b6e67f35903da7fc36472fbe604ea8d74c7e9353",
+      "ember-return-qa/verification.json": "0fe112aa8e9808d0a6e344e94332bfdf750edfade13e0fb9124fb9f7400ebb97",
+      "grotto-review/verification.json": "d258dbce1795a5f34065767fe5ccafc8e175d314256512ac598bde39f0ca5f7d",
+      "grotto-encounters/verification.json": "7f38b7c21d36c6743af7c1b31f20b18b2bc3893e5a86fc9a132c943093a8e91f",
+      "wyrmtide-native/verification.json": "c1c10ebe4c6247827738f75ef653466eb72b2a3fceb23e62c1c04751d45357e7",
+      "nightmare-native/verification.json": "a051e0e7afc65c496ec0535a30e32cf897deddbd6dd0834561e145a831ef59c2",
+      "day-off-qa/verification.json": "d2287c68b7702e52703f43c30bcf0d6cb8360a07d127928657e07982d316628f",
+      "day-off-qa/release-verification.json": "f2c8026c9dc7830332cb74ac0ec69cd4cb81465b1e45726161959dea32581e06",
+      "living-hoenn-qa/verification.json": "619892c45419cd18b0fa1a8dee329ee48eaefb8aa6bc1895f95f4f199fa0f009",
+      "seasonal-encounters-qa/verification.json": "defd1161d11218e278c57c0602990d4393e6c874bd137aeae362e26c03e23bb0",
+      "visual-repairs-qa/verification.json": "384ed2d1407226a09bfd9e31cc553ba285e4c5cc75e629b897289845e3afe135",
+      "eon-roamers-release-qa/verification.json": "06fd0a8f1e2ef9772fe602282c3974719ac091c2c42de0e73c006f7cbedfbdf6",
+      "ember-return-release-qa/verification.json": "13f2f7cd5d79bc4e44c9f981c6a550b05ea96645974fcf102732b4ad94cd7b6f",
+      "grotto-encounters-release/verification.json": "25745d1f78261441d5cd480a102afa344320e457612688c2b3c0bb590094165a",
+      "bedroom-release-qa/verification.json": "1e0636d05e558daa77862d0173f8e85126992ef1c163b8b649e479a6b16d0943"
+    }
+  },
+  "deployment_run": 44762542006,
+  "published_source": "e3b476e2ac1f0bef3cb03d0d9a95e151af06ff2e",
+  "gates": {
+    "build-release-patch.yml": {
+      "id": 44759338718,
+      "input_sha256": "3b09be0ec1a21ce3327c446c853d704d4d9dc46808ba4e7f1c1d418fe4734813",
+      "run_attempt": 1,
+      "source_commit": "fa4eedcd6c18e236fdfc8753d38282afa67445ba",
+      "workflow": "build-release-patch.yml"
+    },
+    "legends-checks.yml": {
+      "id": 44759338066,
+      "input_sha256": "92b1d3ee1a377f946e7916c059c26a33edc0f619b7ec176d98f63591a310a190",
+      "run_attempt": 1,
+      "source_commit": "fa4eedcd6c18e236fdfc8753d38282afa67445ba",
+      "workflow": "legends-checks.yml"
+    },
+    "wiki-apk.yml": {
+      "id": 44759338034,
+      "input_sha256": "b2d51e6560b7c24cfe77b5f7228cd0eb91540286d3c0526cee521e5bd7597d0e",
+      "run_attempt": 1,
+      "source_commit": "fa4eedcd6c18e236fdfc8753d38282afa67445ba",
+      "workflow": "wiki-apk.yml"
+    },
+    "wiki-checks.yml": {
+      "id": 44759338219,
+      "input_sha256": "fc398b8bf24466e63b37bac586ae20ad7cf2a7e685eb500ab5187f87e3a6cc3c",
+      "run_attempt": 1,
+      "source_commit": "fa4eedcd6c18e236fdfc8753d38282afa67445ba",
+      "workflow": "wiki-checks.yml"
+    },
+    "wiki-windows.yml": {
+      "id": 44759338160,
+      "input_sha256": "fdda20a34125d89dd1cbc18b767a97a8df4b606bd2836bfd56dd5cc54763222f",
+      "run_attempt": 1,
+      "source_commit": "fa4eedcd6c18e236fdfc8753d38282afa67445ba",
+      "workflow": "wiki-windows.yml"
+    }
+  },
+  "walkthrough_live": {
+    "version": "0.0.93",
+    "verified_at_UTC": "2026-11-20T15:24:26.276899+00:00",
+    "passed": true,
+    "files": [
+      {
+        "path": "wiki/articles.json",
+        "passed": true,
+        "HTTP": 200,
+        "bytes": 224322,
+        "sha256": "7b3739c49e93153c59a88b0afe33cc42d834aa3124a885b935e27664aa3fc907",
+        "Git_blob_sha1": "a8e192315337974241ac9d48cdaffc51c3ccc452"
+      }
+    ],
+    "scope": "Fresh live HTTP bytes, reviewed SHA256/Git blobs and BPS footer CRCs only; not a gameplay, build or clean-base reconstruction test.",
+    "expected_receipt_sha256": "e205bd521afddc684177d2e0be24eb20d38d264b40f9e31cd5a82c5e350d517f"
+  },
+  "local_gameplay": [
+    "Lift, decline, step collision and return at Stillwater",
+    "Five Kanto nurse heals from the public side of the counters",
+    "Both stair lanes in waking and dreaming Lilycove",
+    "Two Route 10 signs",
+    "Wyrmtide seal and cave entrance"
+  ],
+  "live": {
+    "version": "0.0.93",
+    "verified_at_UTC": "2026-11-20T15:23:59.137820+00:00",
+    "passed": true,
+    "files": [
+      {
+        "path": "index.html",
+        "passed": true,
+        "HTTP": 200,
+        "bytes": 3677,
+        "sha256": "4ffb8ed714d03053292b9b84ed7da0a42c37297d50b4d443029fcf01a3fc6d9a",
+        "Git_blob_sha1": "60618f634b670926d85d3aa2618ad714c6116378"
+      },
+      {
+        "path": "patcher.html",
+        "passed": true,
+        "HTTP": 200,
+        "bytes": 2675,
+        "sha256": "751a519b77626d17561d393fe79ef674450b3f623668ad8c0a067ac946f79ca4",
+        "Git_blob_sha1": "547afc9e5bea542ed33ea53a2407a83a4e2f52e1"
+      },
+      {
+        "path": "patcher.js",
+        "passed": true,
+        "HTTP": 200,
+        "bytes": 9353,
+        "sha256": "09ff3d5c6a838c5b4c31243c4e6feaf82cb0d175c8715591c632d16e92a3c54c",
+        "Git_blob_sha1": "8985e2d9e394ae536541913bb6241823045eafe9"
+      },
+      {
+        "path": "changelog.html",
+        "passed": true,
+        "HTTP": 200,
+        "bytes": 150080,
+        "sha256": "0bc8584142298a3b45d48975c5892d3698f9a335464234f986ac5b7f062deada",
+        "Git_blob_sha1": "98ee8daf950d823270845d50210dff7a24aefbbf"
+      },
+      {
+        "path": "wiki/index.html",
+        "passed": true,
+        "HTTP": 200,
+        "bytes": 16533,
+        "sha256": "24f00921efa34a46bbe29e95c4c5ff789ce797b32ab970a92d2217342b8955ef",
+        "Git_blob_sha1": "db11ba413facfd9784123ab1df6f7f335d05baec"
+      },
+      {
+        "path": "wiki/dex.html",
+        "passed": true,
+        "HTTP": 200,
+        "bytes": 10502,
+        "sha256": "dad1e9be4c69d2c3d07496f08945a0aa1e7704342755d285cc7a278d0e5d713a",
+        "Git_blob_sha1": "d5aa6432af94e791058475bcda1c51116a3fc9c2"
+      },
+      {
+        "path": "wiki/dex-data.json",
+        "passed": true,
+        "HTTP": 200,
+        "bytes": 1133452,
+        "sha256": "9b73e04f0a83cbee6faa816f64a6d0991808bbd095e83a1ed28faa0c6054301a",
+        "Git_blob_sha1": "0f6ec8dbc1885b426ad9960600879ad097323f11"
+      },
+      {
+        "path": "wiki/dex-profiles.js",
+        "passed": true,
+        "HTTP": 200,
+        "bytes": 178691,
+        "sha256": "94a33eecaa4db890e1d83ae2d72178f4b5da0e09f540722fc11f960337e21f46",
+        "Git_blob_sha1": "525d50af9190d5f021e0ee7f64368d67349ac2df"
+      },
+      {
+        "path": "wiki/dex-sprite-atlas.js",
+        "passed": true,
+        "HTTP": 200,
+        "bytes": 18786,
+        "sha256": "26a18b0129c9466e23cc1776e31fcdba43c9a37d4096eb58fb4b9e65a9dd67be",
+        "Git_blob_sha1": "851ee125d32ea1b5a70b41c7e1e844dd4bb2c2e5"
+      },
+      {
+        "path": "wiki/dex-sprite-atlas.webp",
+        "passed": true,
+        "HTTP": 200,
+        "bytes": 153584,
+        "sha256": "55bdf244830f30f9aeb5eeddb8f628b6885eccb2e95b171dac14df9b529190df",
+        "Git_blob_sha1": "dd91aded78d44fc6aea679a678a0274edb93add1"
+      },
+      {
+        "path": "wiki/dex-portrait-sources.json",
+        "passed": true,
+        "HTTP": 200,
+        "bytes": 342,
+        "sha256": "2c17e0a52652ce35256de95b9cdb50c556f79c4d1b053b03d5c4fbaa3c87e972",
+        "Git_blob_sha1": "ef218050da398c16997008e2f8b7ff8946a777d1"
+      },
+      {
+        "path": "wiki/map-hoenn.png",
+        "passed": true,
+        "HTTP": 200,
+        "bytes": 6757,
+        "sha256": "6abac3457dd2c588173b001c7f5ad37b58b4429ff50d3d54373f2fe868e5f625",
+        "Git_blob_sha1": "10f2d26f42c381c2af7f51a7c835b4b3b190107f"
+      },
+      {
+        "path": "wiki/map-kanto.png",
+        "passed": true,
+        "HTTP": 200,
+        "bytes": 3728,
+        "sha256": "bc89ff01cbc5dca3fe849d2c0d872c1e98b57a450663d72a7a210d3645b495f0",
+        "Git_blob_sha1": "241cf5864b38426d1cc75ebfa70b865afdcbcac3"
+      },
+      {
+        "path": "wiki/walkthrough-maps.json",
+        "passed": true,
+        "HTTP": 200,
+        "bytes": 119879,
+        "sha256": "06f6fbb943b78c6dae376c3f8af98be66f3b960e4dee322dd33eb872cff3a1a3",
+        "Git_blob_sha1": "dc8fe0e355da37982294e644e6de48e9c9fa5c2a"
+      },
+      {
+        "path": "wiki/android-version.json",
+        "passed": true,
+        "HTTP": 200,
+        "bytes": 399,
+        "sha256": "e34e5b41b07dc69569ca2eb266093ce5e634615cba426422edbcfc8bcf8f35d5",
+        "Git_blob_sha1": "eef161550efb41e023e6e11884b964dc01713bc2"
+      },
+      {
+        "path": "wiki/windows-version.json",
+        "passed": true,
+        "HTTP": 200,
+        "bytes": 275,
+        "sha256": "eaddf96f70838d9172ae3e482d6dd791a9e478ea8e4f9442ca237e700245e7a1",
+        "Git_blob_sha1": "f99f319bea35ed850bbde30bbb117adff57fbecb"
+      },
+      {
+        "path": "features/eon-roamers.md",
+        "passed": true,
+        "HTTP": 200,
+        "bytes": 2244,
+        "sha256": "5839b026abdd24d2ea62ef1359559d7ddf0d402efae50726473a2b79c56e1aad",
+        "Git_blob_sha1": "1f1bdffaf6978eba649ba9d0c521cc0bc937171c"
+      },
+      {
+        "path": "downloads/SHA256SUMS.txt",
+        "passed": true,
+        "HTTP": 200,
+        "bytes": 412,
+        "sha256": "99409b7a2afe44583a91aa3edddbf62d9f4cb6dd74cf808e5b184116cb6c4c6c",
+        "Git_blob_sha1": "1a6e697cada571a8cf7ffafd45ea7931f8c6ae9e"
+      },
+      {
+        "path": "downloads/Pokemon-Emerald-Legends-v0.0.93-debug.bps",
+        "passed": true,
+        "HTTP": 200,
+        "bytes": 17550366,
+        "sha256": "57db49d3703d47c8abb4025946e59f106ecce598c0c140cd1eace74afaf9947c",
+        "Git_blob_sha1": "0fa22787abbb0fc463db7d092abd9eda3858a322",
+        "source_CRC32": "1f1c08fb",
+        "target_CRC32": "beb11581",
+        "patch_CRC_passed": true
+      },
+      {
+        "path": "downloads/Pokemon-Emerald-Legends-v0.0.93.bps",
+        "passed": true,
+        "HTTP": 200,
+        "bytes": 17723914,
+        "sha256": "b4afcd892774116e259a65efd7e33fbb7975d0c06602b9e6a053643f886e7a98",
+        "Git_blob_sha1": "2973c5441809b11c2d00af9e3c07187439f58c9d",
+        "source_CRC32": "1f1c08fb",
+        "target_CRC32": "d113d031",
+        "patch_CRC_passed": true
+      },
+      {
+        "path": "release-publication.json",
+        "passed": true,
+        "HTTP": 200,
+        "bytes": 261867,
+        "sha256": "44533efebd88fb4e1a695ec907907bbc2af7730bc410fd65c1b74d510f23fa47",
+        "Git_blob_sha1": "79708eb94eff67782b81dbc5d3765b8954bb591c"
+      }
+    ],
+    "scope": "Fresh live HTTP bytes, reviewed SHA256/Git blobs and BPS footer CRCs only; not a gameplay, build or clean-base reconstruction test.",
+    "expected_receipt_sha256": "d261b862dbb3bf027a33012de933efd3502616a7f537fba08a7952f91bd65299"
+  }
+}
