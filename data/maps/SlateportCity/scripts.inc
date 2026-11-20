@@ -1350,3 +1350,51 @@ SlateportCity_Text_TakingBattleTentChallenge:
 	.string "After all, a tough TRAINER is\n"
 	.string "the perfect fit for the BATTLE TENT!\p"
 	.string "Give it your best effort!$"
+
+Bottle_Artist::
+	lock
+	faceplayer
+	goto_if_set FLAG_BOTTLE_POSTCARD_KEPT, Bottle_Tomorrow
+	goto_if_unset FLAG_BOTTLE_DRAWING_FOUND, Bottle_Watching
+	msgbox Bottle_Recognize, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, NO, Bottle_Later
+	msgbox Bottle_Dewford, MSGBOX_DEFAULT
+	closemessage
+	special BottleViewDrawing
+	waitstate
+	setflag FLAG_BOTTLE_POSTCARD_KEPT
+	msgbox Bottle_Reward, MSGBOX_DEFAULT
+	release
+	end
+Bottle_Watching:
+	msgbox Bottle_LampText, MSGBOX_DEFAULT
+	release
+	end
+Bottle_Later:
+	msgbox Bottle_LaterText, MSGBOX_DEFAULT
+	release
+	end
+Bottle_Tomorrow:
+	msgbox Bottle_SandText, MSGBOX_DEFAULT
+	release
+	end
+Bottle_Recognize:
+	.string "My Wingull! I know that crooked wing!\nCan I see the other side?$"
+Bottle_Dewford:
+	.string "Did it really make it all the way\nto Dewford?\pThat's me holding Mum's hand. And\nthat's Grandpa, next to me.\pI made his arm too long. He says\nit's just right for catching me.$"
+Bottle_Reward:
+	.string "Keep it! It's a postcard now.\nWait till I tell Grandpa!\pReceived the Bottle Postcard!$"
+Bottle_LampText:
+	.string "I like it when the light comes round.\nIt's like the sea blinking at you.$"
+Bottle_LaterText:
+	.string "Okay. I'll be here counting flashes.$"
+Bottle_SandText:
+	.string "Next time I'll draw a whole map!\nThere's more room in the sand.$"
+Bottle_ViewFromCase::
+	closemessage
+	special BottleViewDrawing
+	waitstate
+	releaseall
+	end
+Bottle_AlbumPrompt:
+	.string "Open the Bottle Postcard?\nChoose NO for your scenic prints.$"

@@ -666,6 +666,7 @@ const u16 gObjectEventPic_MiraAsleep[] = INCGFX_U16("graphics/object_events/pics
 
 static const u32 sPoffinMakerGraphics[] = INCGFX_U32("graphics/poffin/machine.png", ".4bpp");
 
+static const u16 sShoreBottle[] = INCGFX_U16("graphics/legends/postcards/ShoreBottle.png", ".4bpp");
 static const u16 sSkippingStonesGraphics[] = INCGFX_U16("graphics/day_off/skipping_stones.png", ".4bpp");
 static const u16 sRinsePailGraphics[] = INCGFX_U16("graphics/day_off/rinse_pail.png", ".4bpp");
 static const u16 sWoodsPlaySignGraphics[] = INCGFX_U16("graphics/day_off/woods_play_sign.png", ".4bpp");

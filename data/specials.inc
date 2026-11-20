@@ -706,3 +706,5 @@ gSpecials::
 	def_special MissivePrepareDelivery
 	def_special MissiveSettle
 	def_special MissiveRumor
+	def_special BottleSetVisibility
+	def_special BottleViewDrawing

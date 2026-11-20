@@ -1,5 +1,9 @@
 # Development handoff
 
+## Dewford’s Message in a Bottle · gameplay preview
+
+Model: GPT-6 | An unmarked bottle washes up on Dewford’s beach at low tide. Its drawing leads to a girl by Slateport Lighthouse, a keepsake in the Postcard Case and a family scene on Route 109. The two progress bits use existing flag storage. A controlled mGBA playthrough verified discovery on foot, the reward, the beach scene, reopening the identical drawing and retention of both bits after a native battery save/load. Tide visibility is evaluated on town entry and rechecked on interaction. Visual approval is pending. [Gameplay frames](qa/dewford-bottle/dewford-bottle-preview.png) · [34-second playthrough](qa/dewford-bottle/dewford-bottle-gameplay.mp4).
+
 ## v0.0.92 published and verified (19 November 2026)
 
 Model: GPT-6 | Owner approved the storefront lights, six board quests and seasonal route encounters together. Combined PRs 118–120, reviewed Chapters 1–3 and the encounter guide, and updated LegendsDex. Candidate and production native and patch checks passed with identical targets. Pages run 44479140182 deployed the combined release. All 22 critical live files matched, including the walkthrough, LegendsDex and both patch downloads. [Release evidence](qa/town-notices-and-routes-v0.0.92.json).

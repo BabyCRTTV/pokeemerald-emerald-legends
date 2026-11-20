@@ -339,6 +339,34 @@
       "trainer_sight_or_berry_tree_id": "3",
       "script": "Route109_EventScript_Elijah",
       "flag": "0"
+    },
+    {
+      "local_id": "LOCALID_BOTTLE_BEACH_ARTIST",
+      "graphics_id": "OBJ_EVENT_GFX_LITTLE_GIRL",
+      "x": 27,
+      "y": 9,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "Bottle_BeachArtist",
+      "flag": "FLAG_TEMP_A"
+    },
+    {
+      "local_id": "LOCALID_BOTTLE_GRANDPA",
+      "graphics_id": "OBJ_EVENT_GFX_OLD_MAN",
+      "x": 28,
+      "y": 9,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "Bottle_Grandpa",
+      "flag": "FLAG_TEMP_A"
     }
   ],
   "warp_events": [

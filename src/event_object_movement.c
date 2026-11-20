@@ -3228,6 +3228,9 @@ const struct ObjectEventGraphicsInfo *GetObjectEventGraphicsInfo(u16 graphicsId)
     if (graphicsId == OBJ_EVENT_GFX_LEGENDS_POFFIN_MAKER)
         return &gObjectEventGraphicsInfo_PoffinMaker;
 
+    if (graphicsId == OBJ_EVENT_GFX_SHORE_BOTTLE)
+        return &gObjectEventGraphicsInfo_ShoreBottle;
+
     if (graphicsId == OBJ_EVENT_GFX_LEGENDS_SKIPPING_STONES)
         return &gObjectEventGraphicsInfo_SkippingStones;
 

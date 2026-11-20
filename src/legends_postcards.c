@@ -1,5 +1,7 @@
 #include "global.h"
 #include "bg.h"
+#include "time_events.h"
+#include "constants/flags.h"
 #include "gpu_regs.h"
 #include "overworld.h"
 #include "scanline_effect.h"
@@ -23,6 +25,9 @@
 #include "window.h"
 #include "constants/maps.h"
 #include "constants/songs.h"
+
+static const u8 sBottleDrawing[] ALIGNED(4) = INCBIN_U8("graphics/legends/postcards/BottleDrawing.bin");
+static EWRAM_DATA bool8 sReadingBottle = FALSE;
 
 static const u8 sPrintOldaleTown[] ALIGNED(4) = INCBIN_U8("graphics/legends/postcards/OldaleTown.bin");
 static const u8 sPrintPetalburgCity[] ALIGNED(4) = INCBIN_U8("graphics/legends/postcards/PetalburgCity.bin");
@@ -174,6 +179,16 @@ static void DrawPaper(void)
         FillWindowPixelRect(0, 1, x, 122, 2, 1);
         FillWindowPixelRect(0, 1, x, 137, 2, 1);
     }
+    if (sReadingBottle)
+    {
+        Text(COMPOUND_STRING("SEA"), FONT_SMALL, 201, 123, 7);
+        Text(COMPOUND_STRING("Bottle Postcard"), FONT_NORMAL, 10, 121, 2);
+        Text(COMPOUND_STRING("Wax crayon on folded paper"), FONT_SMALL, 10, 140, 2);
+        Text(COMPOUND_STRING("B Close"), FONT_SMALL, 195, 140, 4);
+        PutWindowTilemap(0);
+        CopyWindowToVram(0, COPYWIN_FULL);
+        return;
+    }
     ConvertIntToDecimalStringN(gStringVar1, sCurrent + 1, STR_CONV_MODE_LEADING_ZEROS, 2);
     StringAppend(gStringVar1, COMPOUND_STRING("/16"));
     Text(gStringVar1, FONT_SMALL, 199, 123, 7);
@@ -190,6 +205,14 @@ static void DrawPaper(void)
 
 static void DrawPrint(void)
 {
+    if (sReadingBottle)
+    {
+        LoadPalette(sBottleDrawing, 0, PRINT_PALETTE * sizeof(u16));
+        LZ77UnCompWram((const u32 *)(sBottleDrawing + PRINT_PALETTE * sizeof(u16)), sPhotoTiles);
+        LoadBgTiles(1, sPhotoTiles, PRINT_BYTES, 1);
+        DrawPaper();
+        return;
+    }
     const u8 *print = sSpots[sCurrent].print;
     const u16 *source = (const u16 *)print;
     u8 stamp = gSaveBlock1Ptr->postcardRecords[sCurrent][2];
@@ -249,7 +272,8 @@ static void PostcardCaseMain(void)
 {
     if (JOY_NEW(B_BUTTON | A_BUTTON))
     {
-        RemovePartner();
+        if (!sReadingBottle)
+            RemovePartner();
         Free(sPhotoTiles);
         sPhotoTiles = NULL;
         SetVBlankCallback(NULL);
@@ -257,7 +281,7 @@ static void PostcardCaseMain(void)
         SetMainCallback2(CB2_ReturnToFieldContinueScriptPlayMapMusic);
         return;
     }
-    if (JOY_NEW(DPAD_LEFT | DPAD_RIGHT))
+    if (!sReadingBottle && JOY_NEW(DPAD_LEFT | DPAD_RIGHT))
         TurnPage();
     AnimateSprites();
     BuildOamBuffer();
@@ -308,6 +332,22 @@ static void InitPostcardCase(void)
 
 void PostcardView(void)
 {
+    sReadingBottle = FALSE;
     CleanupOverworldWindowsAndTilemaps();
     SetMainCallback2(InitPostcardCase);
+}
+
+void BottleViewDrawing(void)
+{
+    sReadingBottle = TRUE;
+    CleanupOverworldWindowsAndTilemaps();
+    SetMainCallback2(InitPostcardCase);
+}
+
+void BottleSetVisibility(void)
+{
+    if (FlagGet(FLAG_BOTTLE_DRAWING_FOUND) || IsHoennHighTide())
+        FlagSet(FLAG_TEMP_A);
+    else
+        FlagClear(FLAG_TEMP_A);
 }
