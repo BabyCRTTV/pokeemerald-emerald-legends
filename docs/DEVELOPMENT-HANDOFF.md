@@ -1,5 +1,9 @@
 # Development handoff
 
+## Stillwater plank options for visual review
+
+Model: GPT-6 | Three playable options fit a small sun-faded plank across the approved cave at Route 114 (7, 46). A lifts out, B pivots on one nail, and C leaves a gap beside its broken end. Inspecting the board offers the action, and declining leaves it in place. Exiting restores the plank. Each preview changes only its local threshold and interaction. On this review branch, build a candidate with `python3 tools/legends/stillwater_planks/build_preview.py A /tmp/stillwater-A`, substituting B or C as needed. The builder restores the checkout after compiling. Awaiting the owner's selection. [Gameplay comparison](qa/stillwater-plank-options/comparison.png) · [Verification](qa/stillwater-plank-options/verification.json).
+
 ## Stillwater on the Route 114 rock terrace
 
 Model: GPT-6 | The open grotto now sits in the original south-facing cliff above the short stone stairs. The former grass bank is restored. Only the two native Meteor Falls mouth tiles at (7, 45) and (7, 46) differ from the original route layout. From the stair crest, step right onto (7, 47), face north and press A. In mGBA the player walked from the old approach to the new one, declined, entered, returned to the landing and descended the stairs. The twelve seasonal grotto scenes and the field and encounter regressions passed. Both BPS patches reproduced the compiled builds byte for byte. Preview pending visual approval.

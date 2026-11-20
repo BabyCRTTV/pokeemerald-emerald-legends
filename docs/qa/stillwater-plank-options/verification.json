@@ -1,0 +1,50 @@
+{
+  "base_commit": "248a9af94f83f2bd15c0a259d8b4ebe11f646129",
+  "bps_base_sha1": "f3ae088181bf583e55daf962a92bb46f4f1d07b7",
+  "emulator": "mGBA native core, compiled Debug build with scene setup",
+  "checks": [
+    "The approach blocks forward movement.",
+    "B dismisses the native choice.",
+    "A and B reveal the original opening or the swung plank before warping.",
+    "Each option enters Stillwater and the walking exit returns to (7,47) with its plank in place.",
+    "Both Floating IPS and the browser decoder reconstruct the compiled builds byte for byte."
+  ],
+  "options": {
+    "A": {
+      "release_bps_sha256": "84f6a3e819be387269f1e970f462c33b89f14f3b7d8649c3954eda99d3c9c2ec",
+      "release_rom_sha256": "685dac9607f7310907a83ecfd82daf2ab34e3db08b2ddadf92813ff0838bdacd",
+      "debug_rom_sha256": "97ac3d74073f340025981e2d767aef766f89fecb3b8820257b6ce690ee9b3d92",
+      "emulator_capture_sha256": "30ef1e8061b1f7ff466b903ef7e30c96357d2e8d7cb481b57bcebb0735398828",
+      "changed_pixel_bounds": [
+        129,
+        46,
+        143,
+        50
+      ]
+    },
+    "B": {
+      "release_bps_sha256": "fc0f0611392d23c01ff9bbc0baf7c271420903ef2e5b2a6da3884254de57ca12",
+      "release_rom_sha256": "29d7f9e1a17b8f6856abc3d315c091b9e8b15f1be0fb5b8c22b915c2e5b4aeb2",
+      "debug_rom_sha256": "ba8c9dda6ff885d4aa5758c0a39f7feb5198f119cc42a8705dba23d4d537a833",
+      "emulator_capture_sha256": "2978f0b2df9259cacf4d61c30270e7aaa0a43719709c7243bf35985a4acff95c",
+      "changed_pixel_bounds": [
+        129,
+        41,
+        144,
+        51
+      ]
+    },
+    "C": {
+      "release_bps_sha256": "50202df068ea68785bfead0d46318c816eaae674b9960c4ae574abcfb2d37502",
+      "release_rom_sha256": "4e3625c1d7a854a5f1fd1f7dac5b4c2faa161245e36efa9fbe362d4263a3132e",
+      "debug_rom_sha256": "8a59c31b2d2ca432ebef4e0ae99e5fb4c5012415c8a1b38133d5cc9cc9639e82",
+      "emulator_capture_sha256": "ea8533d325a266c3769d515da983a87d7b2c98860c623f8691db07adef9bb7b8",
+      "changed_pixel_bounds": [
+        128,
+        46,
+        139,
+        52
+      ]
+    }
+  }
+}
