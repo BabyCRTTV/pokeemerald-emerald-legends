@@ -1,5 +1,9 @@
 # Development handoff
 
+## v0.0.93 field environments
+
+Model: GPT-6 | The owner approved the low crossbar and field-environment changes for release. Integrated the approved Route 114, Lilycove, Continental Vault and Kanto changes onto v0.0.92. The separately reviewed Dewford bottle quest stays in its draft PR. Updated the relevant walkthrough chapters and the game version in LegendsDex. [Field verification](qa/field-environment-review.md) · [Stillwater gameplay capture](qa/stillwater-approved-crossbar.png).
+
 ## v0.0.92 published and verified (19 November 2026)
 
 Model: GPT-6 | Owner approved the storefront lights, six board quests and seasonal route encounters together. Combined PRs 118–120, reviewed Chapters 1–3 and the encounter guide, and updated LegendsDex. Candidate and production native and patch checks passed with identical targets. Pages run 44479140182 deployed the combined release. All 22 critical live files matched, including the walkthrough, LegendsDex and both patch downloads. [Release evidence](qa/town-notices-and-routes-v0.0.92.json).

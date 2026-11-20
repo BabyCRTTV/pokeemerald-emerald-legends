@@ -2,6 +2,12 @@
 
 This is the player-facing history for the recommended **Release** build. Shared Legends changes are repeated here so this file stands on its own; Release-only behavior is called out separately.
 
+## [0.0.93] - 2026-11-20
+
+- Stillwater Grotto now opens from the stone terrace southwest of Lanette’s house on Route 114. Face the sun-faded crossbar and lift it to enter.
+- Rebuilt the approach to Mira’s Lilycove home in both the waking and dream streets. Regigigas now faces the player’s approach in the Continental Vault.
+- Moved five Kanto Pokémon Center nurses behind their counters, corrected Lavender’s upstairs layout, and restored both Route 10 sign interactions.
+
 ## [0.0.92] - 2026-11-19
 
 - Added six optional notice-board jobs in Oldale, Petalburg and Rustboro, with local recipients and rewards sent to PC storage.

@@ -12,6 +12,32 @@ def obj(g,x,y,s,f='0'):
  return dict(graphics_id=g,x=x,y=y,elevation=3,movement_type='MOVEMENT_TYPE_FACE_DOWN',movement_range_x=0,movement_range_y=0,trainer_type='TRAINER_TYPE_NONE',trainer_sight_or_berry_tree_id='0',script=s,flag=f)
 def warp(x,y,m,i):return dict(x=x,y=y,elevation=0,dest_map=m,dest_warp_id=str(i))
 def sign(x,y,s):return dict(type='sign',x=x,y=y,elevation=0,player_facing_dir='BG_EVENT_PLAYER_FACING_ANY',script=s)
+def fit_mira_terrace(cells, before):
+    """Fit the western terrace to the two existing house doors and beach stairs."""
+    def put(x, y, tile):
+        index = 80 * y + x
+        if cells[index] != tile:
+            before.setdefault(str(index), cells[index])
+            cells[index] = tile
+
+    for y in range(14, 20):
+        for x in range(42, 53):
+            if y >= 16 or x < 49:
+                put(x, y, 0x0470 if x == 42 else 0x3001)
+    for x in range(42, 50):
+        put(x, 20, 0x0478 if x == 42 else 0x0479)
+    put(50, 20, 0x30AF)
+    put(51, 20, 0x30CF)
+    for x, y in [(46, 16), (47, 16), (46, 17), (47, 17), (52, 16), (53, 16)]:
+        put(x, y, 0x3004)
+    for x in (50, 55):
+        for y in (16, 17):
+            put(x, y, 0x3024)
+    for x in range(50, 56):
+        put(x, 18, 0x3024)
+    for x in (50, 51):
+        put(x, 19, 0x3024)
+
 def main():
  p=argparse.ArgumentParser();p.add_argument('--apply',action='store_true');p.add_argument('--refresh-review',action='store_true');a=p.parse_args()
  if not a.apply:raise SystemExit('Explicit authoring only: --apply required')
@@ -22,6 +48,7 @@ def main():
  for y in range(4):
   for x in range(4):
    at=(y+12)*80+x+49;before[str(at)]=cells[at];cells[at]=source[y][x]
+ fit_mira_terrace(cells, before)
  exitid=next((i for i,w in enumerate(lily['warp_events']) if w['dest_map']=='MAP_LEGENDS_NIGHTMARE_HOME'),len(lily['warp_events']))
  if exitid==len(lily['warp_events']):lily['warp_events'].append(warp(50,15,'MAP_LEGENDS_NIGHTMARE_HOME',0))
  save('data/maps/LilycoveCity/map.json',lily);save('data/layouts/LilycoveCity/map.bin',struct.pack('<3200H',*cells))
@@ -75,7 +102,7 @@ def main():
  source=Image.open(R/'graphics/object_events/pics/people/little_girl.png');head=Image.new('P',(144,16),0);head.putpalette(source.getpalette())
  for i in range(9):head.paste(source.crop((0,0,16,10)),(i*16,2))
  head.save(R/'graphics/object_events/pics/people/legends_mira_asleep.png')
- path=R/'data/tilesets/legends_nightmare/source.json';old=json.loads(path.read_text()) if path.exists() else {};save('data/tilesets/legends_nightmare/source.json',dict(baseline='2b99c6555954d6284a8d4ebee488e349a8e05a61',exteriorBefore=old.get('exteriorBefore',before),exteriorFootprint=[49,12,52,15],nativeHouseSource=[35,3,38,6],shore='SouthernIsland_Exterior exact block and border bytes',sleepingPortrait='Exact native Little Girl head pixels tucked into native bed',paletteScope='Private primary0..5 and secondary6..12'))
+ path=R/'data/tilesets/legends_nightmare/source.json';old=json.loads(path.read_text()) if path.exists() else {};save('data/tilesets/legends_nightmare/source.json',dict(baseline='2b99c6555954d6284a8d4ebee488e349a8e05a61',exteriorBefore={**before, **old.get('exteriorBefore', {})},exteriorFootprint=[49,12,52,15],nativeHouseSource=[35,3,38,6],shore='SouthernIsland_Exterior exact block and border bytes',sleepingPortrait='Exact native Little Girl head pixels tucked into native bed',paletteScope='Private primary0..5 and secondary6..12',terraceFootprint=[42,14,55,20]))
  from build_nightmare_room_floor import apply as fit_room_floor
  fit_room_floor()
  print('Authored four Nightmare maps and a complete native Lilycove house; shared art preserved.')
