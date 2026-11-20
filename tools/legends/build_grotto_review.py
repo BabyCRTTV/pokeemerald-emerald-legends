@@ -20,7 +20,7 @@ ROOMS = [
 # Every cell is existing Hoenn art; no tileset, palette or persistent ID changes.
 ENTRANCE_TILES = {
     'PetalburgWoods': [(12, 31, 0x036), (13, 31, 0x037)],
-    'Route114': [(13, 39, 0x375), (13, 40, 0x376), (14, 40, 0x001)],
+    'Route114': [(12, 39, 0x377), (12, 40, 0x378), (13, 39, 0x375), (13, 40, 0x376), (14, 40, 0x001)],
     'Route119': [(26, 103, 0x079), (27, 103, 0x079), (26, 104, 0x279), (27, 104, 0x27A), (28, 104, 0x27B),
                  (26, 105, 0x281), (27, 105, 0x278), (28, 105, 0x283),
                  (26, 106, 0x001)],
@@ -151,7 +151,10 @@ def main():
         words = list(struct.unpack('<%dH' % (route_path.stat().st_size // 2), route_path.read_bytes()))
         for x, y, tile in ENTRANCE_TILES[route]:
             index = y * route_layout['width'] + x
-            words[index] = (words[index] & 0xF000) | (0 if tile == 0x001 else 0x400) | tile
+            if route == 'Route114' and (x, y) in [(12, 39), (12, 40)]:
+                words[index] = (words[index] & 0xFC00) | tile  # raised trail west of the opening
+            else:
+                words[index] = (words[index] & 0xF000) | (0 if tile == 0x001 else 0x400) | tile
         save(route_path, struct.pack('<%dH' % len(words), *words))
         save(rp, json.dumps(r, indent=2) + '\n')
     save(groups_path, json.dumps(groups, indent=2) + '\n')

@@ -1,5 +1,9 @@
 # Development handoff
 
+## Stillwater open cave mouth
+
+Model: GPT-6 | The owner clarified that Stillwater should be an open natural hole in the rock. Replaced the timber gate and its prompt with a broader shaded recess under a broken ledge, using Route 114’s Meteor Falls entrance and the local cliff as references. Only the two cells immediately west of the previous artwork were added. Their raised-trail elevation and collision remain intact. In mGBA the player entered and exited via (14, 40) and walked the ridge from (12, 38) to (12, 41) and back. Grotto and field-environment regressions passed. Preview pending visual approval.
+
 ## Stillwater entrance revision
 
 Model: GPT-6 | The owner approved the field preview apart from Stillwater. A slatted timber gate now marks the east-facing cleft on Route 114. The prompt describes the gate. Its hardware uses the existing Fallarbor palette. mGBA verified entry from (14, 40) and a walking exit back to the same tile. The new gate is pending visual approval.
