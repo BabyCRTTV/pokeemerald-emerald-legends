@@ -85,7 +85,10 @@ class Grottos(unittest.TestCase):
         self.assertEqual(hashlib.sha256(active[:prefix]).hexdigest(),proof['compiled_metatiles_prefix_sha256'])
         self.assertEqual(active[prefix:],native[prefix:])
         route=bytearray((R/'data/layouts/Route114/map.bin').read_bytes())
-        for y,word in [(39,0x659),(40,0x661)]:struct.pack_into('<H',route,(y*40+13)*2,word)
+        for cell in BASE['entrance_patches']['Route114']:
+            struct.pack_into('<H', route, cell['index']*2, cell['old'])
+        for x, y, word in [(13, 39, 0x659), (13, 40, 0x661), (14, 40, 0x001)]:
+            struct.pack_into('<H', route, (y*40+x)*2, word)
         self.assertEqual(hashlib.sha256(route).hexdigest(),proof['route114_sha256'])
 
     def test_custom_cliff_only_uses_free_tiles_and_preserves_existing_art(self):
@@ -95,7 +98,11 @@ class Grottos(unittest.TestCase):
         self.assertEqual(hashlib.sha256(base.read_bytes()).hexdigest(),spec['base_atlas_sha256'])
         original=Image.open(base);custom=Image.open(root/'fallarbor_cliff_tiles.png')
         self.assertEqual(original.size,custom.size);self.assertEqual(original.getpalette(),custom.getpalette())
-        used=set(spec['tile_ids']);self.assertEqual(len(used),8)
+        used=set(spec['tile_ids']);self.assertEqual(len(used),17)
+        plank=set(spec['crossbar_tile_ids'])
+        self.assertEqual(len(plank),4)
+        self.assertFalse(used & plank)
+        used.update(plank)
         native=(R/'data/tilesets/legends_lights/fallarbor_metatiles.bin').read_bytes()
         words=struct.unpack('<%dH'%(len(native)//2),native)
         self.assertFalse(used&{v&1023 for v in words})
@@ -103,10 +110,16 @@ class Grottos(unittest.TestCase):
             for x in range(original.width):
                 if 512+(y//8)*16+x//8 not in used:self.assertEqual(original.getpixel((x,y)),custom.getpixel((x,y)))
         meta=(root/'fallarbor_cliff_metatiles.bin').read_bytes()
-        self.assertEqual(meta[:-32],native)
+        self.assertEqual(meta[:-80],native)
+        plank_words=struct.unpack('<8H',meta[-16:])
+        mouth_words=struct.unpack_from('<8H',native,(0x261-512)*16)
+        self.assertEqual(plank_words[:4],mouth_words[:4])
+        self.assertEqual(tuple(v & 1023 for v in plank_words[4:]),tuple(spec['crossbar_tile_ids']))
+        self.assertTrue(all(v >> 12 == 6 for v in plank_words[4:]))
         attrs=(root/'fallarbor_cliff_attributes.bin').read_bytes()
-        self.assertEqual(attrs[:-4],(R/'data/tilesets/secondary/fallarbor/metatile_attributes.bin').read_bytes())
-        self.assertEqual(len(meta)//16,375)
+        self.assertEqual(attrs[-2:],attrs[(0x261-512)*2:(0x262-512)*2])
+        self.assertEqual(attrs[:-10],(R/'data/tilesets/secondary/fallarbor/metatile_attributes.bin').read_bytes())
+        self.assertEqual(len(meta)//16,378)
         self.assertIn('legends_grotto/fallarbor_cliff_tiles.png',(R/'src/data/tilesets/graphics.h').read_text())
         self.assertIn('legends_grotto/fallarbor_cliff_metatiles.bin',(R/'src/data/tilesets/metatiles.h').read_text())
 
@@ -132,7 +145,7 @@ class Grottos(unittest.TestCase):
 
     def test_entrances_have_safe_returns_and_no_event_collisions(self):
         layouts = {l['id']:l for l in read('data/layouts/layouts.json')['layouts']}
-        for route,approach in [('PetalburgWoods',(13,32)),('Route114',(14,40)),('Route119',(27,106))]:
+        for route,approach in [('PetalburgWoods',(13,32)),('Route114',(7,47)),('Route119',(27,106))]:
             m=read(f'data/maps/{route}/map.json');l=layouts[m['layout']];a=cells(l)
             entries=[e for e in m['bg_events'] if e.get('script','').startswith('LegendsGrotto_Enter')]
             entry=min(entries,key=lambda e:abs(e['x']-approach[0])+abs(e['y']-approach[1]))
@@ -144,16 +157,21 @@ class Grottos(unittest.TestCase):
     def test_cliff_mouth_has_a_real_walkable_approach(self):
         l=next(l for l in read('data/layouts/layouts.json')['layouts'] if l['name']=='Route114_Layout')
         a=cells(l);w=l['width']
-        # Ordinary route -> landing -> adjacent visible cave mouth, with no
-        # intervening cliff/ledge or remote background interaction.
-        for x in [15,14]:
-            self.assertEqual(a[40*w+x]&0xC00,0)
-            self.assertEqual(a[40*w+x]&1023,0x001)
-        self.assertEqual(a[40*w+13]&1023,0x376)
+        for x, y in [(6, 50), (6, 49), (6, 48), (6, 47), (7, 47)]:
+            self.assertEqual(a[y*w+x] & 0xC00, 0)
+        # Each cliff coordinate, including collision, retains its original
+        # route word except for the brow and the planked threshold.
+        self.assertEqual({(p['x'], p['y']) for p in BASE['entrance_patches']['Route114']},
+                         {(7, 45), (7, 46)})
+        self.assertEqual(a[45*w+7] & 1023, a[62*w+8] & 1023)
+        self.assertEqual(a[46*w+7] & 1023, 0x379)
+        self.assertEqual(a[63*w+8] & 1023, 0x261)
+        for y in (45, 46):
+            self.assertTrue(a[y*w+7] & 0xC00)
         m=read('data/maps/Route114/map.json')
         e=next(e for e in m['bg_events'] if e.get('script')=='LegendsGrotto_EnterStillwater')
-        self.assertEqual((e['x'],e['y']),(13,40))
-        self.assertIn('warp MAP_ROUTE114, 14, 40',(R/'data/scripts/legends_grotto_review.inc').read_text())
+        self.assertEqual((e['x'],e['y']),(7,46))
+        self.assertIn('warp MAP_ROUTE114, 7, 47',(R/'data/scripts/legends_grotto_review.inc').read_text())
 
     def test_every_tree_is_complete(self):
         for key in ['Leafshade','Rainroot']:
