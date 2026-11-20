@@ -1,5 +1,9 @@
 # Development handoff
 
+## Stillwater native Route 114 artwork
+
+Model: GPT-6 | The owner requested a closer match to Emerald. Stillwater now uses the same native brow and threshold as Meteor Falls, with Fallarbor cliff corners on a small south-facing outcrop. From the existing landing at (14, 40), face north to examine (14, 39). The interaction guard follows the visible mouth. The west ridge uses its original terrain. In mGBA the player walked up, declined, entered, returned to the landing and crossed the raised trail in both directions. Old player positions on the three newly solid grass cells can step directly east. The field, grotto review and grotto encounter regressions passed. Preview pending visual approval.
+
 ## Stillwater open cave mouth
 
 Model: GPT-6 | The owner clarified that Stillwater should be an open natural hole in the rock. Replaced the timber gate and its prompt with a broader shaded recess under a broken ledge, using Route 114’s Meteor Falls entrance and the local cliff as references. Only the two cells immediately west of the previous artwork were added. Their raised-trail elevation and collision remain intact. In mGBA the player entered and exited via (14, 40) and walked the ridge from (12, 38) to (12, 41) and back. Grotto and field-environment regressions passed. Preview pending visual approval.

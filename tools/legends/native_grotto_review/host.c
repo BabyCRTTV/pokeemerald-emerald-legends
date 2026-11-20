@@ -80,7 +80,7 @@ int main(int argc,char **argv) {
             capture(argv[2],room,season,"exit");
             // Entry approaches face the inspected tree/cliff/bush.
             unsigned outsideGroup=box(5), outsideMap=box(6);
-            key(room==1?32:64);
+            key(64);
             if(room==1){command(1,2);assert(box(10)==14&&box(11)==40&&!box(12)&&box(5)==outsideGroup&&box(6)==outsideMap);}
             key(1);frames(90);capture(argv[2],room,season,"entrance");command(1,2);
             for(int i=0;i<8&&box(12);i++){key(2);command(1,2);}
@@ -89,7 +89,7 @@ int main(int argc,char **argv) {
             printf("reentry room=%d map=%u,%u xy=%u,%u script=%u\n",room,box(5),box(6),box(10),box(11),box(12));
             assert(box(5)==group&&box(6)==map&&!box(12));
             capture(argv[2],room,season,"reentry");
-            if(room==1){frames(90);recording=0;cliffFrames=recorded;recordName="discovery";recorded=0;recordFrames=0;printf("PASS: walked from Route 114 (15,40) onto landing (14,40), faced actual mouth (13,40), declined and reentered; %d film frames.\n",cliffFrames);}
+            if(room==1){frames(90);recording=0;cliffFrames=recorded;recordName="discovery";recorded=0;recordFrames=0;printf("PASS: walked from Route 114 (15,40) onto landing (14,40), faced the cave mouth (14,39), declined and reentered; %d film frames.\n",cliffFrames);}
         }
     }
     command(2,500);command(1,2);

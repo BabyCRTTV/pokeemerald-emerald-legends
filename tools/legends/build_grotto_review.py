@@ -12,7 +12,7 @@ ROOMS = [
     ('Leafshade', 'Leafshade Hollow', 'PetalburgWoods', 'MAPSEC_PETALBURG_WOODS',
      'gTileset_Rustboro', 'MUS_PETALBURG_WOODS', 'WEATHER_SHADE', (13, 31), (13, 32)),
     ('Stillwater', 'Stillwater Nook', 'Route114', 'MAPSEC_ROUTE_114',
-     'gTileset_Cave', 'MUS_PETALBURG_WOODS', 'WEATHER_NONE', (13, 40), (14, 40)),
+     'gTileset_Cave', 'MUS_PETALBURG_WOODS', 'WEATHER_NONE', (14, 39), (14, 40)),
     ('Rainroot', 'Rainroot Hollow', 'Route119', 'MAPSEC_ROUTE_119',
      'gTileset_Fortree', 'MUS_ROUTE119', 'WEATHER_RAIN', (27, 105), (27, 106)),
 ]
@@ -20,7 +20,11 @@ ROOMS = [
 # Every cell is existing Hoenn art; no tileset, palette or persistent ID changes.
 ENTRANCE_TILES = {
     'PetalburgWoods': [(12, 31, 0x036), (13, 31, 0x037)],
-    'Route114': [(12, 39, 0x377), (12, 40, 0x378), (13, 39, 0x375), (13, 40, 0x376), (14, 40, 0x001)],
+    # The brow and threshold come from Route 114's Meteor Falls entrance.
+    'Route114': [(13, 37, 0x234), (14, 37, 0x239), (15, 37, 0x23A),
+                 (13, 38, 0x23C), (14, 38, 0x259), (15, 38, 0x23F),
+                 (13, 39, 0x265), (14, 39, 0x261), (15, 39, 0x24A),
+                 (14, 40, 0x001)],
     'Route119': [(26, 103, 0x079), (27, 103, 0x079), (26, 104, 0x279), (27, 104, 0x27A), (28, 104, 0x27B),
                  (26, 105, 0x281), (27, 105, 0x278), (28, 105, 0x283),
                  (26, 106, 0x001)],
@@ -149,12 +153,17 @@ def main():
         route_layout = next(l for l in layouts['layouts'] if l['id'] == r['layout'])
         route_path = ROOT / route_layout['blockdata_filepath']
         words = list(struct.unpack('<%dH' % (route_path.stat().st_size // 2), route_path.read_bytes()))
+        if route == 'Route114':
+            # Restore only the cells painted by the former side entrance.
+            for x, y, retired, native in [(12, 39, 0x377, 0x241), (12, 40, 0x378, 0x241),
+                                           (13, 40, 0x376, 0x22A)]:
+                index = y * route_layout['width'] + x
+                if words[index] & 0x3FF == retired:
+                    words[index] = (words[index] & 0xFC00) | native
         for x, y, tile in ENTRANCE_TILES[route]:
             index = y * route_layout['width'] + x
-            if route == 'Route114' and (x, y) in [(12, 39), (12, 40)]:
-                words[index] = (words[index] & 0xFC00) | tile  # raised trail west of the opening
-            else:
-                words[index] = (words[index] & 0xF000) | (0 if tile == 0x001 else 0x400) | tile
+            elevation = 0 if route == 'Route114' else words[index] & 0xF000
+            words[index] = elevation | (0 if tile == 0x001 else 0x400) | tile
         save(route_path, struct.pack('<%dH' % len(words), *words))
         save(rp, json.dumps(r, indent=2) + '\n')
     save(groups_path, json.dumps(groups, indent=2) + '\n')

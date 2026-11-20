@@ -85,9 +85,10 @@ class Grottos(unittest.TestCase):
         self.assertEqual(hashlib.sha256(active[:prefix]).hexdigest(),proof['compiled_metatiles_prefix_sha256'])
         self.assertEqual(active[prefix:],native[prefix:])
         route=bytearray((R/'data/layouts/Route114/map.bin').read_bytes())
-        for y,word in [(39,0x659),(40,0x661)]:struct.pack_into('<H',route,(y*40+13)*2,word)
-        for y in [39, 40]:
-            struct.pack_into('<H', route, (y*40+12)*2, 0x4241)
+        for cell in BASE['entrance_patches']['Route114']:
+            struct.pack_into('<H', route, cell['index']*2, cell['old'])
+        for x, y, word in [(13, 39, 0x659), (13, 40, 0x661), (14, 40, 0x001)]:
+            struct.pack_into('<H', route, (y*40+x)*2, word)
         self.assertEqual(hashlib.sha256(route).hexdigest(),proof['route114_sha256'])
 
     def test_custom_cliff_only_uses_free_tiles_and_preserves_existing_art(self):
@@ -151,12 +152,14 @@ class Grottos(unittest.TestCase):
         for x in [15,14]:
             self.assertEqual(a[40*w+x]&0xC00,0)
             self.assertEqual(a[40*w+x]&1023,0x001)
-        self.assertEqual(a[40*w+13]&1023,0x376)
-        # The same raised path passes behind the west side of the roof.
-        self.assertEqual((a[39*w+12], a[40*w+12]), (0x4377, 0x4378))
+        # Match Meteor Falls' original two-piece mouth on this same route.
+        for new_y, meteor_y in [(38, 62), (39, 63)]:
+            self.assertEqual(a[new_y*w+14] & 1023, a[meteor_y*w+8] & 1023)
+        self.assertTrue(a[39*w+14] & 0xC00)
+        self.assertEqual((a[39*w+12], a[40*w+12]), (0x4241, 0x4241))
         m=read('data/maps/Route114/map.json')
         e=next(e for e in m['bg_events'] if e.get('script')=='LegendsGrotto_EnterStillwater')
-        self.assertEqual((e['x'],e['y']),(13,40))
+        self.assertEqual((e['x'],e['y']),(14,39))
         self.assertIn('warp MAP_ROUTE114, 14, 40',(R/'data/scripts/legends_grotto_review.inc').read_text())
 
     def test_every_tree_is_complete(self):
