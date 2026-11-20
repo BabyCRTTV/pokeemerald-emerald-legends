@@ -31,26 +31,36 @@ def build():
     for row in range(4):
         for col in range(2):overlay.paste(tile(wall[4+(row%2)*2+col]&1023),(col*8,row*8))
     p=overlay.load()
-    # Oblique aperture: its near edge is hidden behind an irregular projecting
-    # rock cheek. The upper lip is offset, rather than a symmetrical front arch.
-    edges={9:(12,14),10:(11,14),11:(11,15),12:(10,15),13:(10,15),
-           14:(9,15),15:(9,15),16:(9,15),17:(8,15),18:(8,15),
-           19:(8,15),20:(8,15),21:(8,15),22:(8,15),23:(9,15),
-           24:(9,15),25:(10,15),26:(10,14),27:(11,14)}
-    for y,(left,right) in edges.items():
-        for x in range(left,right+1):p[x,y]=8  # native deep cave shade
-        p[left-1,y]=14                       # near rock's occluding edge
-        # A continuous two-tone cheek gives the bend a clean pixel cadence.
-        if 11<=y<=25:p[left-2,y]=13
-        # A dim angled inner face on the far side, fading into the cavity.
-        if 12<=y<=24:p[right,y]=7
-        if y in [11,25]:p[right,y]=13
-        if 17<=y<=22:p[right-1,y]=7
-    # Compact cap without isolated highlight pixels along the bend.
-    for x,y,v in [(12,8,13),(13,8,14),(14,8,13)]:p[x,y]=v
-    # A small receding threshold: narrow at the rear, opening toward the landing.
-    for x,y,v in [(11,28,14),(12,28,13),(13,28,13),(14,28,13),(15,28,14),
-                  (14,29,13),(15,29,13)]:p[x,y]=v
+    # A short stone arch follows the east face. Dots retain the source cliff
+    # texture. The near jamb overlaps the void and flares into a broken sill.
+    arch = (
+        ".......lhhl.....",
+        ".....llhhhtll...",
+        "....lhhttrrhtl..",
+        "...lhttrrbbrhtl.",
+        "..lhtrbbdddbrrt.",
+        "..htrbdddddbbrh.",
+        ".lhtrbddddddbtr.",
+        ".htrbdddddddbth.",
+        ".htrbddddddddbr.",
+        ".ltrbddddddddbr.",
+        ".lhrbddddddddbr.",
+        ".lhtrbdddddddbt.",
+        ".lhtbdddddddbbr.",
+        ".lhtbdddddddbbt.",
+        "..ltrbdddddbbrh.",
+        "..httrbbdddbrrh.",
+        "...httrbbbrstth.",
+        "...lhhttrxssthl.",
+        "....lthhhsxhhhl.",
+        ".....lhhhtttll..",
+        ".......ltttl....",
+    )
+    shades = dict(l=11, h=12, t=13, r=14, b=7, d=8, s=5, x=6)
+    for y, row in enumerate(arch, 7):
+        for x, mark in enumerate(row):
+            if mark != ".":
+                p[x, y] = shades[mark]
     anim=(ROOT/'src/tileset_anims.c').read_text()
     reserved={v for k in map(int,re.findall(r'NUM_TILES_IN_PRIMARY\s*\+\s*(\d+)',anim)) for v in range(512+k,512+k+16)}
     used={v&1023 for v in words}
@@ -76,7 +86,7 @@ def build():
           'base_atlas_sha256':hashlib.sha256(base.read_bytes()).hexdigest(),
           'base_metatiles_sha256':hashlib.sha256(metas).hexdigest(),
           'base_attributes_sha256':hashlib.sha256(attrs).hexdigest(),
-          'style':'Smooth two-tone rock cheek, compact cap, recessed cavity, continuous inner face, clean tapered threshold',
+          'style':'Broad recessed east-facing opening with a shaded rock lip and sill',
           'authoring':'Indexed native tile overlay; existing palette and every pixel outside the eight free tile cells are unchanged.'}
     (OUT/'custom_cliff.json').write_text(json.dumps(spec,indent=2)+'\n')
     return spec

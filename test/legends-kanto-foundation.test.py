@@ -15,6 +15,10 @@ class FoundationTests(unittest.TestCase):
   encounters={e.get('map') for g in json.loads((R/'src/data/wild_encounters.json').read_text())['wild_encounter_groups'] for e in g['encounters']}
   for item in MANIFEST:
    d=MAPS[item['id']];l=LAYOUTS[d['layout']];s=json.loads((R/('data/maps/'+item['source']+'/map.json')).read_text());sl=LAYOUTS[s['layout']]
+   if item['name']=='LegendsKanto_LavenderTown_PokemonCenter_2F':
+    # The source header points upstairs events at a downstairs room.
+    sl=LAYOUTS[MAPS['MAP_FUCHSIA_CITY_POKEMON_CENTER_2F']['layout']]
+    self.assertEqual(d['layout'], MAPS['MAP_LEGENDS_KANTO_FUCHSIA_CITY_POKEMON_CENTER_2F']['layout'])
    if item['name'] in STAFFED_MARTS:
     self.assertEqual(d['object_events'],MAPS['MAP_LEGENDS_KANTO_CERULEAN_CITY_MART']['object_events'])
    elif item['name'] not in ACTIVATED:self.assertEqual(d['object_events'],[])

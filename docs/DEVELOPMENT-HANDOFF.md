@@ -1,5 +1,9 @@
 # Development handoff
 
+## Field environments · gameplay preview
+
+Model: GPT-6 | Rebuilt Mira’s Lilycove terrace in both story states, fitted the Stillwater opening to the Route 114 cliff, and turned Regigigas toward the approach. Corrected five misplaced Kanto nurses, the Lavender upper floor and both Route 10 signs. Reviewed all 124 added maps and confirmed the changed interactions and Wyrmtide seal in mGBA. Visual approval is pending. [Coverage and reproduction](qa/field-environment-review.md).
+
 ## Dewford’s Message in a Bottle · gameplay preview
 
 Model: GPT-6 | An unmarked bottle washes up on Dewford’s beach at low tide. Its drawing leads to a girl by Slateport Lighthouse, a keepsake in the Postcard Case and a family scene on Route 109. The two progress bits use existing flag storage. A controlled mGBA playthrough verified discovery on foot, the reward, the beach scene, reopening the identical drawing and retention of both bits after a native battery save/load. Tide visibility is evaluated on town entry and rechecked on interaction. Visual approval is pending. [Gameplay frames](qa/dewford-bottle/dewford-bottle-preview.png) · [34-second playthrough](qa/dewford-bottle/dewford-bottle-gameplay.mp4).
