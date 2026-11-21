@@ -1,5 +1,11 @@
 # Development handoff
 
+## Occupied grotto entrances · development build
+
+Model: GPT-6 | The owner approved the Stillwater crossbar rattle, Leafshade vine sway and Rainroot frond movement. All three now animate near a discovered entrance when a visitor is available. The render path reads the existing encounter state and keeps the native palettes, collision, entry prompts and visitor generation. A discovery bit in the reserved grotto save word persists through renewal. Older active visitors and cooldowns carry forward. A legacy room already back in its undifferentiated ready state establishes discovery on its next visit.
+
+Debug and Release builds passed. Native mGBA 0.10.5 verified visible motion in each exterior, quiet undiscovered and consumed rooms, flee preservation, and renewed activity on the 4,500th step using controlled battle outcomes and step advancement. The encounter state and exterior regressions passed. The published version is still v0.0.93.
+
 ## v0.0.93 field environments published
 
 Model: GPT-6 | The owner approved the low crossbar and field-environment changes for release. Integrated the approved Route 114, Lilycove, Continental Vault and Kanto changes onto v0.0.92. Published through PR #122 and Pages run 44762542006. Verified both public patches against matching candidate and production builds, and checked all 22 live files. Updated walkthrough Chapters 7, 20 and 27 and the LegendsDex game version. [Release verification](qa/field-environment-release-v0.0.93.json). [Field verification](qa/field-environment-review.md) · [Stillwater gameplay capture](qa/stillwater-approved-crossbar.png).
