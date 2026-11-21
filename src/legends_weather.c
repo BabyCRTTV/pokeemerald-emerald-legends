@@ -156,6 +156,27 @@ u8 LegendsChooseAmbientWeather(u8 weather)
         else if (climate >= CLIMATE_KANTO_INLAND)
             fog += 5;
     }
+    // Wintry weather is confined to the existing snow belt. Added outcomes
+    // take their share from clear skies; native rain, fog and storms keep their odds.
+    if (climate == CLIMATE_UPLAND || climate == CLIMATE_KANTO_INLAND || climate == CLIMATE_KANTO_UPLAND)
+    {
+        if (season == LEGENDS_AUTUMN)
+        {
+            if (roll < 30) return WEATHER_FLURRIES;
+            roll -= 30;
+            snow = 10;
+        }
+        else if (season == LEGENDS_SPRING)
+        {
+            if (roll < 20) return WEATHER_HAIL;
+            roll -= 20;
+        }
+        else if (season == LEGENDS_WINTER)
+        {
+            if (roll < 15) return WEATHER_BLIZZARD;
+            roll -= 15;
+        }
+    }
     if (roll < snow) return WEATHER_SNOW;
     roll -= snow;
     if (roll < fog) return WEATHER_FOG_HORIZONTAL;
@@ -187,7 +208,7 @@ void LegendsWeatherTick(void)
      || GetClimate() == CLIMATE_PROTECTED)
         return;
     current = GetCurrentWeather();
-    if (!IsOrdinaryRequest(current) && current != WEATHER_SNOW && current != WEATHER_FOG_HORIZONTAL)
+    if (!IsOrdinaryRequest(current) && !IS_ICY_FIELD_WEATHER(current) && current != WEATHER_FOG_HORIZONTAL)
         return;
     original = VarGet(VAR_LEGENDS_BASE_WEATHER);
     if (original < 0x100 || original >= 0x100 + WEATHER_COUNT)

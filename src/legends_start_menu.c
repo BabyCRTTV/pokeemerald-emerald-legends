@@ -235,7 +235,7 @@ static const struct WindowTemplate sPanelTemplate =
 enum PanelIcon
 {
     ICON_CLOCK, ICON_SUN, ICON_CLOUD, ICON_RAIN, ICON_THUNDER,
-    ICON_SNOW, ICON_FOG, ICON_ASH, ICON_SAND, ICON_WATER, ICON_INDOOR, ICON_MOON,
+    ICON_FLURRIES, ICON_HAIL, ICON_BLIZZARD, ICON_SNOW, ICON_FOG, ICON_ASH, ICON_SAND, ICON_WATER, ICON_INDOOR, ICON_MOON,
 };
 
 // Twelve-pixel icons reuse native text colors; no sprite/palette slots.
@@ -247,6 +247,9 @@ static const u16 sIcons[][12] =
     [ICON_CLOUD]   = {0,0,0x0F0,0x108,0x3CC,0x402,0x801,0x801,0x7FE,0,0,0},
     [ICON_RAIN]    = {0x0F0,0x108,0x3CC,0x402,0x801,0x7FE,0,0x222,0x444,0,0x222,0x444},
     [ICON_THUNDER]= {0x0F0,0x108,0x3CC,0x402,0x801,0x7FE,0x060,0x0C0,0x1E0,0x060,0x0C0,0x180},
+    [ICON_FLURRIES] = {0,0x070,0x0F8,0x39C,0x702,0x7FE,0,0x040,0x002,0,0x100,0},
+    [ICON_HAIL] = {0,0x070,0x0F8,0x39C,0x702,0x7FE,0,0x104,0x38E,0x104,0x020,0},
+    [ICON_BLIZZARD] = {0x008,0x091,0x126,0x204,0x048,0x092,0x124,0x248,0x410,0x084,0x108,0},
     [ICON_SNOW]   = {0x090,0x492,0x294,0x198,0x090,0xFFF,0x090,0x198,0x294,0x492,0x090,0},
     [ICON_FOG]    = {0,0x7FE,0,0x1F8,0,0xFFF,0,0x3FC,0,0x7FE,0,0},
     [ICON_ASH]    = {0x040,0x000,0x208,0,0x092,0,0x400,0x021,0,0x104,0,0x040},
@@ -283,6 +286,9 @@ static u8 GetWeatherIcon(void)
     case WEATHER_RAIN:
     case WEATHER_DOWNPOUR: return ICON_RAIN;
     case WEATHER_RAIN_THUNDERSTORM: return ICON_THUNDER;
+    case WEATHER_FLURRIES: return ICON_FLURRIES;
+    case WEATHER_HAIL: return ICON_HAIL;
+    case WEATHER_BLIZZARD: return ICON_BLIZZARD;
     case WEATHER_SNOW: return ICON_SNOW;
     case WEATHER_FOG_HORIZONTAL:
     case WEATHER_FOG_DIAGONAL:
@@ -307,6 +313,9 @@ static u8 GetIconColor(u8 icon, u8 row)
     case ICON_MOON: return 9;
     case ICON_RAIN: return row < 6 ? 3 : 8;
     case ICON_THUNDER: return row < 6 ? 3 : 5;
+    case ICON_FLURRIES:
+    case ICON_HAIL: return row < 6 ? 3 : 9;
+    case ICON_BLIZZARD:
     case ICON_SNOW: return 9;
     case ICON_FOG: return 3;
     case ICON_SAND: return 5;
@@ -325,12 +334,12 @@ static void DrawIcon(u8 windowId, u8 icon, u8 y)
     {
         sourceRow = row;
         // Rain/ash descend, fog/sand drift, and the sun's rays shimmer.
-        if (sAnimationPhase && icon == ICON_RAIN && row >= 7)
+        if (sAnimationPhase && (icon == ICON_RAIN || icon == ICON_FLURRIES || icon == ICON_HAIL) && row >= 7)
             sourceRow = row == 7 ? 11 : row - 1;
         if (sAnimationPhase && icon == ICON_ASH)
             sourceRow = row == 0 ? 11 : row - 1;
         bits = sIcons[icon][sourceRow];
-        if (sAnimationPhase && (icon == ICON_FOG || icon == ICON_SAND || icon == ICON_SNOW))
+        if (sAnimationPhase && (icon == ICON_FOG || icon == ICON_SAND || icon == ICON_SNOW || icon == ICON_BLIZZARD))
             bits = ((bits << 1) | (bits >> 11)) & 0xFFF;
         if (sAnimationPhase && icon == ICON_SUN && (row < 3 || row > 8))
             bits = ((bits << 1) | (bits >> 11)) & 0xFFF;

@@ -1,5 +1,9 @@
 # Development handoff
 
+## Seasonal ice weather · development preview
+
+Model: GPT-6 | Added autumn flurries (30%) and snow (10%), spring hail (20%) and winter blizzards (15%) to the existing Hoenn upland and Kanto inland/upland snow climates. The added weights come from clear skies. Ordinary winter snow keeps its existing odds. Flurries use overcast lighting and sparse grains, hailstones bounce, and blizzards draw banks of windblown flakes. Added field and pause-menu graphics, and connected the icy conditions to the existing battle and Pokémon systems. Existing saved weather IDs and save layouts are preserved. Both builds and all three focused regressions passed. mGBA verified each forecast, indoor cleanup and the resulting wild-battle weather. [Verification](qa/seasonal-ice-weather.json). Pending visual review.
+
 ## v0.0.93 field environments published
 
 Model: GPT-6 | The owner approved the low crossbar and field-environment changes for release. Integrated the approved Route 114, Lilycove, Continental Vault and Kanto changes onto v0.0.92. Published through PR #122 and Pages run 44762542006. Verified both public patches against matching candidate and production builds, and checked all 22 live files. Updated walkthrough Chapters 7, 20 and 27 and the LegendsDex game version. [Release verification](qa/field-environment-release-v0.0.93.json). [Field verification](qa/field-environment-review.md) · [Stillwater gameplay capture](qa/stillwater-approved-crossbar.png).

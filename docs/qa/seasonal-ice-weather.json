@@ -1,0 +1,55 @@
+{
+  "base_commit": "0c7257881263f3413e347b7c800b17a4d6ce3d64",
+  "base_version": "0.0.93",
+  "status": "development build",
+  "builds": {
+    "debug": "6fa9c387ac1ce4c2ca59771ef6b2beed785b3f56a5ce816684a793a913c47251",
+    "release": "4cbec9bb788a6bdc005babbb34128f00b3d5775cac8f07ac15df88a35859c89c"
+  },
+  "forecast_tests": [
+    "test/legends-weather.test.py",
+    "test/legends-seasons.test.py",
+    "test/legends-start-menu.test.py"
+  ],
+  "native": {
+    "emulator": "mGBA 0.10.5",
+    "build": "Debug",
+    "scene": "Route 116, noon. A private fixture selected the playtime season and a daily seed whose ordinary forecast rolled the requested weather. Map entry, graphics, movement, forecast polling, battle startup and fading indoors used the game routines.",
+    "validation": [
+      {
+        "season": "autumn",
+        "weather": "flurries",
+        "chance_percent": 30,
+        "objects": 7,
+        "color_map": 3,
+        "battle_weather": "snow"
+      },
+      {
+        "season": "autumn",
+        "weather": "snow",
+        "chance_percent": 10,
+        "objects": 16,
+        "color_map": 0,
+        "battle_weather": "snow"
+      },
+      {
+        "season": "spring",
+        "weather": "hail",
+        "chance_percent": 20,
+        "objects": 18,
+        "color_map": 3,
+        "battle_weather": "hail"
+      },
+      {
+        "season": "winter",
+        "weather": "blizzard",
+        "chance_percent": 15,
+        "objects": 24,
+        "color_map": 3,
+        "battle_weather": "snow"
+      }
+    ],
+    "transitions": "Each effect cleared to a sunny forecast while standing outside, reactivated, and released all ice objects and their graphics on going indoors.",
+    "capture_sha256": "528d7c7081c2e16c60fc941f9daa748f9d3c7a4d49d137176e25a867ec89214c"
+  }
+}

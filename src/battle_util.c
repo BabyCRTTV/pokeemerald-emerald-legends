@@ -2940,10 +2940,13 @@ bool32 TryFieldEffects(enum FieldEffectCases caseId)
                     effect = TRUE;
                 }
                 break;
+            case WEATHER_FLURRIES:
+            case WEATHER_HAIL:
+            case WEATHER_BLIZZARD:
             case WEATHER_SNOW:
                 if (!(gBattleWeather & B_WEATHER_ICY_ANY))
                 {
-                    if (B_OVERWORLD_SNOW >= GEN_9)
+                    if (B_OVERWORLD_SNOW >= GEN_9 && GetCurrentWeather() != WEATHER_HAIL)
                     {
                         gBattleWeather = B_WEATHER_SNOW;
                         gBattleScripting.animArg1 = B_ANIM_SNOW_CONTINUES;
