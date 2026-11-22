@@ -1,6 +1,7 @@
 #include "global.h"
 #include "constants/metatile_labels.h"
 #include "legends_grass.h"
+#include "legends_grotto_review.h"
 #include "berry.h"
 #include "bike.h"
 #include "field_camera.h"
@@ -229,6 +230,7 @@ static void DrawMetatileAt(const struct MapLayout *mapLayout, u16 offset, int x,
 {
     u16 metatileId = MapGridGetMetatileIdAt(x, y);
     const u16 *metatiles;
+    u16 mapId = metatileId;
 
     if (metatileId > NUM_METATILES_TOTAL)
         metatileId = 0;
@@ -245,7 +247,7 @@ static void DrawMetatileAt(const struct MapLayout *mapLayout, u16 offset, int x,
     if (LegendsSnowGrassCleared(x, y))
         DrawMetatile(MapGridGetMetatileLayerTypeAt(x, y), mapLayout->primaryTileset->metatiles + METATILE_General_Grass * NUM_TILES_PER_METATILE, offset);
     else
-        DrawMetatile(MapGridGetMetatileLayerTypeAt(x, y), metatiles + metatileId * NUM_TILES_PER_METATILE, offset);
+        DrawMetatile(MapGridGetMetatileLayerTypeAt(x, y), LegendsGrottoMotionTiles(x, y, mapId, metatiles + metatileId * NUM_TILES_PER_METATILE), offset);
 }
 
 static void DrawMetatile(s32 metatileLayerType, const u16 *tiles, u16 offset)

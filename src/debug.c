@@ -1936,6 +1936,9 @@ static void DebugSelectionStep_UpdateWeather(u8 taskId, u8 digits, u32 min, u32 
         else
             gTasks[taskId].tInput++;
     }
+    // Aggregate fog and the dynamic selector are not field effects.
+    if (gTasks[taskId].tInput == WEATHER_FOG || gTasks[taskId].tInput == WEATHER_DYNAMIC)
+        gTasks[taskId].tInput = JOY_NEW(DPAD_DOWN) ? WEATHER_ROUTE123_CYCLE : WEATHER_FLURRIES;
     ConvertIntToDecimalStringN(gStringVar3, gTasks[taskId].tInput, STR_CONV_MODE_LEADING_ZEROS, digits);
     StringExpandPlaceholders(gStringVar1, COMPOUND_STRING("Weather ID: {STR_VAR_3}"));
     StringCopy(gStringVar2, GetWeatherName(gTasks[taskId].tInput));
@@ -1954,7 +1957,7 @@ static const struct DebugSelectionStep sWeatherSelectionStep = {
     .stepUpdate = DebugSelectionStep_UpdateWeather,
     .stepConfirm = DebugSelectionStep_GenericInputConfirm,
     .minValue = WEATHER_NONE,
-    .maxValue = WEATHER_DYNAMIC - 1,
+    .maxValue = WEATHER_COUNT - 1,
     .digits = 2
 };
 

@@ -70,6 +70,8 @@ int main(void) {
  memset(&sb3,0xA5,sizeof(sb3));LegendsGrottoInit(FALSE);assert(Valid());
  for(int i=0;i<716;i++)assert(sb3.legacy[i]==0xA5);
  assert(sizeof(sb3.grottos)==276);
+ for(int i=0;i<3;i++)assert(!LegendsGrottoVisitorAvailable(i));
+ assert(!LegendsGrottoVisitorAvailable(3));
  for(int room=0;room<3;room++)for(int s=0;s<4;s++) {
   int counts[LEGENDS_GROTTO_POOL_SIZE]={0};
   for(int value=0;value<100;value++) {
@@ -111,12 +113,19 @@ int main(void) {
   for(int i=0;i<716;i++)assert(sb3.legacy[i]==0xA5);
  }
  LegendsGrottoInit(TRUE);enter(1,2,0);
+ DATA->discoveredRooms=0; // Prior versions left the discovery word zero.
  DATA->rooms[1].species=SPECIES_DREEPY;Sign();
  struct LegendsGrottoSave oldVisitor=*DATA;int oldGenerated=generated;
  LegendsGrottoInit(FALSE);LegendsGrottoPrepareVisitor();
+ assert(LegendsGrottoVisitorAvailable(1)&&!LegendsGrottoVisitorAvailable(0));
  assert(!memcmp(DATA,&oldVisitor,sizeof(oldVisitor))&&generated==oldGenerated);
  assert(LegendsGrottoStartBattle());LegendsGrottoFinishBattle(7);
- assert(LegendsGrottoRemainingSteps(1)==4500);
+ assert(LegendsGrottoRemainingSteps(1)==4500&&!LegendsGrottoVisitorAvailable(1));
+ sb1.location.mapGroup=0;
+ for(int i=0;i<4499;i++)LegendsGrottoStep();
+ assert(!LegendsGrottoVisitorAvailable(1));
+ LegendsGrottoStep();LegendsGrottoInit(FALSE);
+ assert(LegendsGrottoVisitorAvailable(1)&&!LegendsGrottoVisitorAvailable(0)&&generated==oldGenerated);
  LegendsGrottoInit(TRUE);DATA->magic^=1;LegendsGrottoInit(FALSE);assert(Valid());
  DATA->version++;Sign();LegendsGrottoInit(FALSE);assert(Valid()&&DATA->version==1);
  DATA->rooms[0].state=9;Sign();assert(!Valid());LegendsGrottoInit(FALSE);assert(Valid());

@@ -4301,7 +4301,7 @@ bool32 DoesMonMeetAdditionalConditions(struct Pokemon *mon, const struct Evoluti
                 if (weather == WEATHER_FOG_DIAGONAL || weather == WEATHER_FOG_HORIZONTAL)
                     currentCondition = TRUE;
             }
-            else if (weather == params[i].arg1)
+            else if (weather == params[i].arg1 || (params[i].arg1 == WEATHER_SNOW && IS_ICY_FIELD_WEATHER(weather)))
             {
                 currentCondition = TRUE;
             }
