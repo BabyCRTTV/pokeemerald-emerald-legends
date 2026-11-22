@@ -1,10 +1,10 @@
 # Development handoff
 
-## v0.0.94 seasonal weather and grotto entrances
+## v0.0.94 seasonal weather and grotto entrances published
 
-Model: GPT-6 | The owner approved both gameplay previews for publication. The existing regional forecast draws autumn snow and flurries, spring hail and winter blizzards from clear-weather slots. Native mGBA checks covered all four forecasts, the transition indoors and wild-battle weather. [Weather verification](qa/seasonal-ice-weather.json).
+Model: GPT-6 | Published the approved seasonal ice weather and occupied grotto animations through PR #125. Updated the weather guide and walkthrough Chapters 2, 7 and 10. The combined mGBA build exercised all four forecasts, indoor cleanup, wild battle weather and each grotto’s discovery, flee, cooldown and renewal behavior. Legacy active visitors and cooldowns carry forward. A legacy ready room records discovery on its next visit.
 
-The three discovered grotto entrances animate while a visitor is available. Native mGBA checks covered all three entrances, fleeing, consuming the encounter and renewal after 4,500 steps. Existing visitors and cooldowns carry forward. A legacy room already back in its undifferentiated ready state records discovery on its next visit. Release candidate includes the versioned downloads, player weather guide and walkthrough Chapters 2, 7 and 10.
+Candidate and production Debug and Release patches recreated matching native targets. Pages run 44971363877 deployed v0.0.94. All 21 checked public files and the updated wiki articles matched the reviewed bytes. [Publication verification](qa/seasonal-weather-grotto-release-v0.0.94.json) · [Weather feature verification](qa/seasonal-ice-weather.json).
 
 ## v0.0.93 field environments published
 
