@@ -6,6 +6,7 @@
 #include "task.h"
 #include "battle_transition.h"
 #include "fieldmap.h"
+#include "legends_grotto_review.h"
 
 static EWRAM_DATA struct {
     const u16 *src;
@@ -550,7 +551,7 @@ static void ResetTilesetAnimBuffer(void)
     CpuFill32(0, sTilesetDMA3TransferBuffer, sizeof sTilesetDMA3TransferBuffer);
 }
 
-static void AppendTilesetAnimToBuffer(const u16 *src, u16 *dest, u16 size)
+void AppendTilesetAnimToBuffer(const u16 *src, u16 *dest, u16 size)
 {
     if (sTilesetDMA3TransferBufferSize < 20)
     {
@@ -595,6 +596,7 @@ void UpdateTilesetAnimations(void)
         sPrimaryTilesetAnimCallback(sPrimaryTilesetAnimCounter);
     if (sSecondaryTilesetAnimCallback)
         sSecondaryTilesetAnimCallback(sSecondaryTilesetAnimCounter);
+    LegendsGrottoTickMotion();
 }
 
 static void _InitPrimaryTilesetAnimation(void)
@@ -608,6 +610,7 @@ static void _InitPrimaryTilesetAnimation(void)
 
 static void _InitSecondaryTilesetAnimation(void)
 {
+    LegendsGrottoResetMotion();
     sSecondaryTilesetAnimCounter = 0;
     sSecondaryTilesetAnimCounterMax = 0;
     sSecondaryTilesetAnimCallback = NULL;

@@ -133,6 +133,9 @@ static const struct WeatherCallbacks sWeatherFuncs[] =
     [WEATHER_SUNNY]              = {Sunny_InitVars,         Sunny_Main,         Sunny_InitAll,         Sunny_Finish},
     [WEATHER_RAIN]               = {Rain_InitVars,          Rain_Main,          Rain_InitAll,          Rain_Finish},
     [WEATHER_SNOW]               = {Snow_InitVars,          Snow_Main,          Snow_InitAll,          Snow_Finish},
+    [WEATHER_FLURRIES]           = {Flurries_Init,          None_Main,          Flurries_Init,         IceParticles_Finish},
+    [WEATHER_HAIL]               = {Hail_Init,              None_Main,          Hail_Init,             IceParticles_Finish},
+    [WEATHER_BLIZZARD]           = {Blizzard_Init,          None_Main,          Blizzard_Init,         IceParticles_Finish},
     [WEATHER_RAIN_THUNDERSTORM]  = {Thunderstorm_InitVars,  Thunderstorm_Main,  Thunderstorm_InitAll,  Thunderstorm_Finish},
     [WEATHER_FOG_HORIZONTAL]     = {FogHorizontal_InitVars, FogHorizontal_Main, FogHorizontal_InitAll, FogHorizontal_Finish},
     [WEATHER_VOLCANIC_ASH]       = {Ash_InitVars,           Ash_Main,           Ash_InitAll,           Ash_Finish},
@@ -367,6 +370,9 @@ static void FadeInScreenWithWeather(void)
     case WEATHER_RAIN:
     case WEATHER_RAIN_THUNDERSTORM:
     case WEATHER_DOWNPOUR:
+    case WEATHER_FLURRIES:
+    case WEATHER_HAIL:
+    case WEATHER_BLIZZARD:
     case WEATHER_SHADE:
         if (FadeInScreen_RainShowShade() == FALSE)
         {
@@ -774,6 +780,9 @@ void FadeSelectedPals(u8 mode, s8 delay, u32 selectedPalettes)
     case WEATHER_RAIN_THUNDERSTORM:
     case WEATHER_DOWNPOUR:
     case WEATHER_FOG_HORIZONTAL:
+    case WEATHER_FLURRIES:
+    case WEATHER_HAIL:
+    case WEATHER_BLIZZARD:
     case WEATHER_SHADE:
     case WEATHER_DROUGHT:
         useWeatherPal = TRUE;
@@ -1206,6 +1215,9 @@ static const u8 sWeatherNames[WEATHER_COUNT][24] = {
     [WEATHER_SUNNY]              = _("SUNNY"),
     [WEATHER_RAIN]               = _("RAIN"),
     [WEATHER_SNOW]               = _("SNOW"),
+    [WEATHER_FLURRIES]           = _("FLURRIES"),
+    [WEATHER_HAIL]               = _("HAIL"),
+    [WEATHER_BLIZZARD]           = _("BLIZZARD"),
     [WEATHER_RAIN_THUNDERSTORM]  = _("RAIN THUNDERSTORM"),
     [WEATHER_FOG_HORIZONTAL]     = _("FOG HORIZONTAL"),
     [WEATHER_VOLCANIC_ASH]       = _("VOLCANIC ASH"),

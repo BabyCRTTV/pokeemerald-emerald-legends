@@ -14,6 +14,7 @@ enum {
     GFXTAG_SANDSTORM,
     GFXTAG_BUBBLE,
     GFXTAG_RAIN,
+    GFXTAG_ICE_PARTICLES,
 };
 enum {
     PALTAG_WEATHER = TAG_WEATHER_START,
@@ -190,6 +191,10 @@ bool8 Rain_Finish(void);
 void Snow_InitVars(void);
 void Snow_Main(void);
 void Snow_InitAll(void);
+void Flurries_Init(void);
+void Hail_Init(void);
+void Blizzard_Init(void);
+bool8 IceParticles_Finish(void);
 bool8 Snow_Finish(void);
 void Thunderstorm_InitVars(void);
 void Thunderstorm_Main(void);

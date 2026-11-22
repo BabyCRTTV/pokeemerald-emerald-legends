@@ -97,6 +97,7 @@ static void Generate(u8 room)
     SetWildShinyGenerationContext(FALSE);
     memcpy(r->mon, &gParties[B_TRAINER_OPPONENT_A][0].box, sizeof(r->mon));
     r->state = LEGENDS_GROTTO_ACTIVE;
+    DATA->discoveredRooms |= 1u << room;
     Sign();
 }
 void LegendsGrottoPrepareVisitor(void)
@@ -164,7 +165,12 @@ void LegendsGrottoStep(void)
         if (r->state == LEGENDS_GROTTO_COOLDOWN)
         {
             changed = TRUE;
-            if (--r->remainingSteps == 0) r->state = LEGENDS_GROTTO_READY;
+            if (--r->remainingSteps == 0)
+            {
+                r->state = LEGENDS_GROTTO_READY;
+                // A cooldown in an older save also proves the room was visited.
+                DATA->discoveredRooms |= 1u << i;
+            }
         }
     }
     if (changed) Sign();
@@ -181,6 +187,17 @@ void LegendsGrottoStep(void)
         TrySpawnObjectEvent(VISITOR_LOCAL_ID, gSaveBlock1Ptr->location.mapNum, gSaveBlock1Ptr->location.mapGroup);
     }
 }
+// Active visitors in older saves already imply discovery. A renewed visitor
+// rolls its identity only on entry, as before; observing the cue consumes no RNG.
+bool32 LegendsGrottoVisitorAvailable(u8 room)
+{
+    if (room >= LEGENDS_GROTTO_COUNT || DATA->magic != GROTTO_MAGIC)
+        return FALSE;
+    u8 state = DATA->rooms[room].state;
+    return state == LEGENDS_GROTTO_ACTIVE
+        || (state == LEGENDS_GROTTO_READY && (DATA->discoveredRooms & (1u << room)));
+}
+
 u16 LegendsGrottoRemainingSteps(u8 room)
 {
     return room < LEGENDS_GROTTO_COUNT && Valid() ? DATA->rooms[room].remainingSteps : 0;

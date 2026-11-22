@@ -836,7 +836,12 @@ static bool8 UpdateVisibleSnowflakeSprites(void)
     {
         gWeatherPtr->snowflakeVisibleCounter = 0;
         if (gWeatherPtr->snowflakeSpriteCount < gWeatherPtr->targetSnowflakeSpriteCount)
-            CreateSnowflakeSprite();
+        {
+            // An outdoor map can exhaust the object pool. InitAll also runs
+            // synchronously on Continue, so never wait for a slot that frame.
+            if (!CreateSnowflakeSprite())
+                gWeatherPtr->targetSnowflakeSpriteCount = gWeatherPtr->snowflakeSpriteCount;
+        }
         else
             DestroySnowflakeSprite();
     }
@@ -2672,7 +2677,10 @@ static enum OverworldWeather TranslateWeatherNum(enum OverworldWeather weather)
     case WEATHER_SUNNY_CLOUDS:       return WEATHER_SUNNY_CLOUDS;
     case WEATHER_SUNNY:              return WEATHER_SUNNY;
     case WEATHER_RAIN:               return WEATHER_RAIN;
-    case WEATHER_SNOW:               return WEATHER_SNOW;
+    case WEATHER_FLURRIES:
+    case WEATHER_HAIL:
+    case WEATHER_BLIZZARD:
+    case WEATHER_SNOW:               return weather;
     case WEATHER_RAIN_THUNDERSTORM:  return WEATHER_RAIN_THUNDERSTORM;
     case WEATHER_FOG:                return WEATHER_FOG;
     case WEATHER_FOG_HORIZONTAL:     return WEATHER_FOG_HORIZONTAL;

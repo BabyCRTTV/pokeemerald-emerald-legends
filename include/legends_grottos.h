@@ -25,7 +25,7 @@ struct LegendsGrottoSave
     u32 magic;
     u32 checksum;
     u16 version;
-    u16 reserved;
+    u16 discoveredRooms;
     struct LegendsGrottoRoomSave rooms[LEGENDS_GROTTO_COUNT];
 };
 
@@ -34,5 +34,6 @@ void LegendsGrottoStep(void);
 void LegendsGrottoPrepareVisitor(void);
 bool32 LegendsGrottoStartBattle(void);
 void LegendsGrottoFinishBattle(u8 outcome);
+bool32 LegendsGrottoVisitorAvailable(u8 room);
 u16 LegendsGrottoRemainingSteps(u8 room);
 #endif

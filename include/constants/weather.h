@@ -23,8 +23,13 @@ enum OverworldWeather
     WEATHER_ROUTE123_CYCLE,
     WEATHER_FOG, // Aggregate of WEATHER_FOG_HORIZONTAL and WEATHER_FOG_DIAGONAL
     WEATHER_DYNAMIC,
+    WEATHER_FLURRIES,
+    WEATHER_HAIL,
+    WEATHER_BLIZZARD,
     WEATHER_COUNT,
 };
+
+#define IS_ICY_FIELD_WEATHER(w) ((w) == WEATHER_SNOW || (w) == WEATHER_FLURRIES || (w) == WEATHER_HAIL || (w) == WEATHER_BLIZZARD)
 
 // These are used in maps' coord_weather_event entries.
 // They are not a one-to-one mapping with the engine's

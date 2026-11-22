@@ -1,5 +1,11 @@
 # Development handoff
 
+## v0.0.94 seasonal weather and grotto entrances
+
+Model: GPT-6 | The owner approved both gameplay previews for publication. The existing regional forecast draws autumn snow and flurries, spring hail and winter blizzards from clear-weather slots. Native mGBA checks covered all four forecasts, the transition indoors and wild-battle weather. [Weather verification](qa/seasonal-ice-weather.json).
+
+The three discovered grotto entrances animate while a visitor is available. Native mGBA checks covered all three entrances, fleeing, consuming the encounter and renewal after 4,500 steps. Existing visitors and cooldowns carry forward. A legacy room already back in its undifferentiated ready state records discovery on its next visit. Release candidate includes the versioned downloads, player weather guide and walkthrough Chapters 2, 7 and 10.
+
 ## v0.0.93 field environments published
 
 Model: GPT-6 | The owner approved the low crossbar and field-environment changes for release. Integrated the approved Route 114, Lilycove, Continental Vault and Kanto changes onto v0.0.92. Published through PR #122 and Pages run 44762542006. Verified both public patches against matching candidate and production builds, and checked all 22 live files. Updated walkthrough Chapters 7, 20 and 27 and the LegendsDex game version. [Release verification](qa/field-environment-release-v0.0.93.json). [Field verification](qa/field-environment-review.md) · [Stillwater gameplay capture](qa/stillwater-approved-crossbar.png).

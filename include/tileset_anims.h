@@ -5,6 +5,7 @@ void InitTilesetAnimations(void);
 void InitSecondaryTilesetAnimation(void);
 void UpdateTilesetAnimations(void);
 void TransferTilesetAnimsBuffer(void);
+void AppendTilesetAnimToBuffer(const u16 *src, u16 *dest, u16 size);
 
 void InitTilesetAnim_General(void);
 void InitTilesetAnim_Petalburg(void);

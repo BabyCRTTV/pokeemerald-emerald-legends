@@ -2,6 +2,11 @@
 
 This is the player-facing history for the recommended **Release** build. Shared Legends changes are repeated here so this file stands on its own; Release-only behavior is called out separately.
 
+## [0.0.94] - 2026-11-21
+
+- Snow-prone routes in Hoenn and Kanto can now roll autumn snow (10%) or light flurries under overcast skies (30%), spring hail (20%) and heavy winter blizzards (15%).
+- Once you discover a grotto, its entrance moves when a visitor is inside. Watch for swaying vines at Leafshade, a rattling crossbar at Stillwater and parting fronds at Rainroot. After a catch or defeat, the entrance stays still for 4,500 steps.
+
 ## [0.0.93] - 2026-11-20
 
 - Stillwater Grotto now opens from the stone terrace southwest of Lanette’s house on Route 114. Face the sun-faded crossbar and lift it to enter.

@@ -57,6 +57,7 @@ int main(void){
  for(season=0;season<4;season++){
   gMapHeader.regionMapSectionId=MAPSEC_ROUTE_101;
   assert(countWeather(WEATHER_SNOW)==0);assert(countWeather(WEATHER_FOG_HORIZONTAL)==0);
+  assert(!countWeather(WEATHER_FLURRIES)&&!countWeather(WEATHER_HAIL)&&!countWeather(WEATHER_BLIZZARD));
   int dryRain=countWeather(WEATHER_RAIN);
   assert(dryRain==(season==LEGENDS_SPRING?30:season==LEGENDS_SUMMER?18:25));
   gMapHeader.regionMapSectionId=MAPSEC_ROUTE_119;
@@ -65,7 +66,10 @@ int main(void){
   assert(countWeather(WEATHER_FOG_HORIZONTAL)==dayFog+8);tod=TIME_MORNING;
   assert(countWeather(WEATHER_FOG_HORIZONTAL)==dayFog+8);tod=TIME_DAY;
   gMapHeader.regionMapSectionId=MAPSEC_ROUTE_114;
-  assert(countWeather(WEATHER_SNOW)==(season==LEGENDS_WINTER?25:0));
+  assert(countWeather(WEATHER_SNOW)==(season==LEGENDS_WINTER?25:season==LEGENDS_AUTUMN?10:0));
+  assert(countWeather(WEATHER_FLURRIES)==(season==LEGENDS_AUTUMN?30:0));
+  assert(countWeather(WEATHER_HAIL)==(season==LEGENDS_SPRING?20:0));
+  assert(countWeather(WEATHER_BLIZZARD)==(season==LEGENDS_WINTER?15:0));
   gMapHeader.regionMapSectionId=MAPSEC_ROUTE_124;gMapHeader.mapType=MAP_TYPE_OCEAN_ROUTE;
   assert(countWeather(WEATHER_SNOW)==0);gMapHeader.mapType=MAP_TYPE_ROUTE;
  }
@@ -81,7 +85,10 @@ int main(void){
   assert(countWeather(WEATHER_RAIN)==weights[a][season][0]);
   assert(countWeather(WEATHER_RAIN_THUNDERSTORM)==weights[a][season][1]);
   assert(countWeather(WEATHER_FOG_HORIZONTAL)==weights[a][season][2]);
-  assert(countWeather(WEATHER_SNOW)==weights[a][season][3]);
+  assert(countWeather(WEATHER_SNOW)==(a!=1 && season==LEGENDS_AUTUMN?10:weights[a][season][3]));
+  assert(countWeather(WEATHER_FLURRIES)==(a!=1 && season==LEGENDS_AUTUMN?30:0));
+  assert(countWeather(WEATHER_HAIL)==(a!=1 && season==LEGENDS_SPRING?20:0));
+  assert(countWeather(WEATHER_BLIZZARD)==(a!=1 && season==LEGENDS_WINTER?15:0));
   for(tod=TIME_MORNING;tod<=TIME_NIGHT;tod++)
    assert(countWeather(WEATHER_FOG_HORIZONTAL)==weights[a][season][2]+((tod==TIME_MORNING||tod==TIME_NIGHT)?5:0));
   tod=TIME_DAY;gMapHeader.mapType=MAP_TYPE_INDOOR;outcome=0;
