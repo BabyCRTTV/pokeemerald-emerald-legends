@@ -262,6 +262,9 @@ u8 FlagClear(u16 id)
 
 bool8 FlagGet(u16 id)
 {
+    if (id == FLAG_HIDE_FLUTE_MONK)
+        return !FlagGet(FLAG_ALL_MONK_PLATES);
+
     u8 *ptr = GetFlagPointer(id);
 
     if (!ptr)

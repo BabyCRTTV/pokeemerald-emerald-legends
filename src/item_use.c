@@ -747,6 +747,20 @@ static void Task_AccessPokemonBoxLink(u8 taskId)
     DestroyTask(taskId);
 }
 
+extern const u8 EventScript_AzureFlute[];
+
+static void Task_UseAzureFlute(u8 taskId)
+{
+    ScriptContext_SetupScript(EventScript_AzureFlute);
+    DestroyTask(taskId);
+}
+
+void ItemUseOutOfBattle_AzureFlute(u8 taskId)
+{
+    sItemUseOnFieldCB = Task_UseAzureFlute;
+    SetUpItemUseOnFieldCallback(taskId);
+}
+
 extern const u8 EventScript_GroomingKit[];
 
 static void Task_UseGroomingKit(u8 taskId)

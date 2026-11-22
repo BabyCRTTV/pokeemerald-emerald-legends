@@ -5625,6 +5625,9 @@ enum Type GetDynamicMoveType(struct Pokemon *mon, enum Move move, enum BattlerId
         }
         break;
     case EFFECT_CHANGE_TYPE_ON_ITEM:
+        if (move == MOVE_JUDGMENT && heldItem == ITEM_LEGEND_PLATE && holdEffect == HOLD_EFFECT_PLATE
+         && ability == ABILITY_MULTITYPE && GET_BASE_SPECIES_ID(species) == SPECIES_ARCEUS)
+            return GetSpeciesType(species, 0);
         if (holdEffect == GetMoveEffectArg_HoldEffect(move))
             return GetItemSecondaryId(heldItem);
         break;

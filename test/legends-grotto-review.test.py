@@ -29,6 +29,9 @@ class Grottos(unittest.TestCase):
             self.assertEqual(len(new),2 if route=='PetalburgWoods' else 1)
             current['bg_events']=[b for b in current['bg_events'] if b not in new]
             if route == 'PetalburgWoods':
+                monk = current['object_events'].pop()
+                self.assertEqual(monk['script'], 'PlateMonk_Insect')
+                self.assertEqual((monk['x'], monk['y']), (8, 34))
                 # Day Off appends one object. Keep checking every older event and index.
                 self.assertEqual(current['object_events'].pop(), {
                     'graphics_id': 'OBJ_EVENT_GFX_LEGENDS_WOODS_PLAY_SIGN',

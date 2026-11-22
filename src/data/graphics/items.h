@@ -641,6 +641,10 @@ const u16 gItemIconPalette_PurpleNectar[] = INCGFX_U16("graphics/items/icon_pale
 
 // Plates
 
+const u32 gItemIcon_AzureFlute[] = INCGFX_U32("graphics/items/icons/azure_flute.png", ".4bpp.smol");
+const u16 gItemIconPalette_AzureFlute[] = INCGFX_U16("graphics/items/icons/azure_flute.png", ".gbapal");
+const u16 gItemIconPalette_BlankPlate[] = INCGFX_U16("graphics/items/icon_palettes/blank_plate.pal", ".gbapal");
+const u16 gItemIconPalette_LegendPlate[] = INCGFX_U16("graphics/items/icon_palettes/legend_plate.pal", ".gbapal");
 const u32 gItemIcon_Plate[] = INCGFX_U32("graphics/items/icons/plate.png", ".4bpp.smol");
 const u16 gItemIconPalette_FlamePlate[] = INCGFX_U16("graphics/items/icon_palettes/flame_plate.pal", ".gbapal");
 const u16 gItemIconPalette_SplashPlate[] = INCGFX_U16("graphics/items/icon_palettes/splash_plate.pal", ".gbapal");

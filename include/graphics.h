@@ -782,6 +782,10 @@ extern const u16 gItemIconPalette_YellowNectar[];
 extern const u16 gItemIconPalette_PinkNectar[];
 extern const u16 gItemIconPalette_PurpleNectar[];
 // Plates
+extern const u32 gItemIcon_AzureFlute[];
+extern const u16 gItemIconPalette_AzureFlute[];
+extern const u16 gItemIconPalette_BlankPlate[];
+extern const u16 gItemIconPalette_LegendPlate[];
 extern const u32 gItemIcon_Plate[];
 extern const u16 gItemIconPalette_FlamePlate[];
 extern const u16 gItemIconPalette_SplashPlate[];

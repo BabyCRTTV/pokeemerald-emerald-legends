@@ -8768,16 +8768,66 @@ bool32 TryRevertPartyMonFormChange(u32 partyIndex)
     return changedForm;
 }
 
+// Choose a Judgment form using the target's current types. Among equally
+// effective attacks, prefer a form that resists the target's own types.
+static enum Species GetLegendPlateForm(enum BattlerId battler, enum BattlerId target)
+{
+    enum Type types[3];
+    enum Species current = gBattleMons[battler].species;
+    enum Species best = current;
+    uq4_12_t bestAttack = 0, bestDefense = 0;
+    GetBattlerTypes(target, FALSE, types);
+    const u16 *forms = GetSpeciesFormTable(SPECIES_ARCEUS);
+    for (u32 form = 0; forms[form] != FORM_SPECIES_END; form++)
+    {
+        enum Species species = forms[form];
+        enum Type type = GetSpeciesType(species, 0);
+        uq4_12_t attack = UQ_4_12(1.0);
+        uq4_12_t defense = 0;
+        for (u32 i = 0; i < ARRAY_COUNT(types); i++)
+        {
+            enum Type other = types[i];
+            if (other == TYPE_NONE || other == TYPE_MYSTERY
+             || (i > 0 && other == types[0]) || (i == 2 && other == types[1]))
+                continue;
+            attack = uq4_12_multiply(attack, GetTypeModifier(type, other));
+            defense += GetTypeModifier(other, type);
+        }
+        if (attack > bestAttack || (attack == bestAttack && (defense < bestDefense
+         || (defense == bestDefense && species == current))))
+        {
+            best = species;
+            bestAttack = attack;
+            bestDefense = defense;
+        }
+    }
+    return best;
+}
+
 bool32 TryBattleFormChange(enum BattlerId battler, enum FormChanges method, enum Ability ability)
 {
     struct Pokemon *mon = GetBattlerMon(battler);
 
-    if (!CanBattlerFormChange(battler, method))
-        return FALSE;
+    enum Species currentSpecies = gBattleMons[battler].species;
+    enum Species targetSpecies;
+    if (method == FORM_CHANGE_BATTLE_BEFORE_MOVE && gCurrentMove == MOVE_JUDGMENT
+     && gBattleMons[battler].item == ITEM_LEGEND_PLATE && ability == ABILITY_MULTITYPE
+     && GetBattlerHoldEffect(battler) == HOLD_EFFECT_PLATE
+     && GET_BASE_SPECIES_ID(currentSpecies) == SPECIES_ARCEUS
+     && !gBattleMons[battler].volatiles.transformed && GetActiveGimmick(battler) == GIMMICK_NONE
+     && gBattlerTarget < gBattlersCount && IsBattlerAlive(gBattlerTarget))
+    {
+        targetSpecies = GetLegendPlateForm(battler, gBattlerTarget);
+        gBattleStruct->dynamicMoveType = GetSpeciesType(targetSpecies, 0);
+    }
+    else
+    {
+        if (!CanBattlerFormChange(battler, method))
+            return FALSE;
+        targetSpecies = GetBattleFormChangeTargetSpecies(battler, method, ability);
+    }
 
-    enum Species currentSpecies = GetMonData(mon, MON_DATA_SPECIES);
-    enum Species targetSpecies = GetBattleFormChangeTargetSpecies(battler, method, ability);
-
+    currentSpecies = GetMonData(mon, MON_DATA_SPECIES);
     struct PartyState *battlePartyState = GetBattlerPartyState(battler);
     // If the battle ends, and there's not a specified species to change back to,
     // use the species at the start of the battle.
