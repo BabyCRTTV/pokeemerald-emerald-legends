@@ -902,7 +902,7 @@ struct DaycareMon
 struct DayCare
 {
     struct DaycareMon mons[DAYCARE_MON_COUNT];
-    u32 offspringPersonality; // Unused in Expansion
+    u32 offspringPersonality;
     u32 stepCounter;
 };
 

@@ -9341,20 +9341,16 @@ void TryRestoreHeldItems(void)
 void RestoreCaughtWildMonHeldItem(struct Pokemon *mon, enum BattlerId battler)
 {
     struct LostItem *lostItem = GetLostItemState(GetBattlerTrainer(battler), gBattlerPartyIndexes[battler]);
-    enum Item itemToRestore = lostItem->originalItem;
 
-    if (GetMonData(mon, MON_DATA_HELD_ITEM) != itemToRestore)
+    if (GetMonData(mon, MON_DATA_HELD_ITEM) != lostItem->originalItem)
     {
-        enum Item item = ITEM_NONE;
-        SetMonData(mon, MON_DATA_HELD_ITEM, &item);
+        enum Item itemToRestore = ITEM_NONE;
+        SetMonData(mon, MON_DATA_HELD_ITEM, &itemToRestore);
     }
 
-    bool32 shouldRestoreBattleItem = B_RESTORE_HELD_BATTLE_ITEMS >= GEN_9
-                                  && itemToRestore != ITEM_NONE
-                                  && GetItemPocket(itemToRestore) != POCKET_BERRIES;
-
-    if (lostItem->wildItemPending || shouldRestoreBattleItem)
+    if (lostItem->wildItemPending)
     {
+        enum Item itemToRestore = lostItem->originalItem;
         SetMonData(mon, MON_DATA_HELD_ITEM, &itemToRestore);
         lostItem->wildItemPending = FALSE;
     }
