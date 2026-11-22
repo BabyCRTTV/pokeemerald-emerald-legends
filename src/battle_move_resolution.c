@@ -953,7 +953,7 @@ static enum CancelerResult CancelerSetTargets(struct BattleCalcValues *cv)
         {
             cv->battlerDef = cv->battlerAtk;
         }
-        else if (isDoubleBattle && moveTarget == TARGET_USER_OR_ALLY && !IsBattlerAlive(cv->battlerDef))
+        else if (isDoubleBattle && moveTarget == TARGET_USER_OR_ALLY && (!IsBattlerAlive(cv->battlerDef) || !IsBattlerAlly(cv->battlerAtk, cv->battlerDef)))
         {
             cv->battlerDef = cv->battlerAtk;
         }
@@ -1019,13 +1019,15 @@ static enum CancelerResult CancelerPPDeduction(struct BattleCalcValues *cv)
         for (u32 i = 0; i < gBattlersCount; i++)
         {
             if (!IsBattlerAlly(i, cv->battlerAtk))
-                ppToDeduct += (GetBattlerAbility(i) == ABILITY_PRESSURE);
+                ppToDeduct += (cv->abilities[i] == ABILITY_PRESSURE);
         }
     }
     else if (moveTarget != TARGET_OPPONENTS_FIELD)
     {
-        if (cv->battlerAtk != cv->battlerDef && GetBattlerAbility(cv->battlerDef) == ABILITY_PRESSURE)
-             ppToDeduct++;
+        if (cv->battlerAtk != cv->battlerDef
+         && (GetConfig(B_PRESSURE_ALLIES) < GEN_5 || !IsBattlerAlly(cv->battlerAtk, cv->battlerDef))
+         && cv->abilities[cv->battlerDef] == ABILITY_PRESSURE)
+            ppToDeduct++;
     }
 
     // For item Metronome, echoed voice
@@ -1639,8 +1641,12 @@ static bool32 CanPledgeComboAttackHappen(struct BattleCalcValues *cv)
 
         gBattlerByTurnOrder[currPledgeUser++] = partner;
 
-        for (u32 i = 0; newTurnOrder[i] != 0xFF && i < 2; i++)
+        for (u32 i = 0; i < ARRAY_COUNT(newTurnOrder); i++)
+        {
+            if (newTurnOrder[i] == 0xFF)
+                continue;
             gBattlerByTurnOrder[currPledgeUser++] = newTurnOrder[i];
+        }
 
         gBattleStruct->pledgeState = PLEDGE_COMBO_WAITING;
         return TRUE;
@@ -2696,8 +2702,13 @@ static enum CancelerResult CancelerPreAnimActivations(struct BattleCalcValues *c
                 if (ShouldSkipBattlerForDamage(cv->battlerAtk, battlerDef))
                     continue;
 
-                if (gBattleStruct->moveResultFlags[battlerDef] & MOVE_RESULT_HIGH_EFFECTIVENESS
-                 && IS_BATTLER_OF_TYPE(battlerDef, TYPE_FLYING))
+                enum Type types[3];
+                GetBattlerTypes(battlerDef, FALSE, types);
+
+                if (types[0] != TYPE_FLYING && types[1] != TYPE_FLYING && types[2] != TYPE_FLYING)
+                    continue;
+
+                if (GetTypeModifier(GetBattleMoveType(cv->move), TYPE_FLYING) > UQ_4_12(1.0))
                 {
                     BattleScriptCall(BattleScript_AttackWeakenedByStrongWinds);
                     gBattleStruct->eventState.moveEndBlock++;
@@ -3789,7 +3800,7 @@ static enum MoveEndResult MoveEndUpdateLastMoves(struct BattleCalcValues *cv)
 
         if (!gBattleStruct->unableToUseMove
          && !IsBattlerUnaffectedByMove(cv->battlerDef)
-         && gChosenMove != MOVE_UNAVAILABLE
+         && IsMoveValid(gChosenMove)
          && !gSpecialStatuses[cv->battlerAtk].dancerUsedMove)
         {
             gLastUsedMove = cv->move;
@@ -4321,7 +4332,9 @@ static enum MoveEndResult MoveEndMoveBlock(struct BattleCalcValues *cv)
             }
             else
             {
-                bool32 addStolenWildItemToBag = GetConfig(B_STEAL_WILD_ITEMS) >= GEN_9 && !(gBattleTypeFlags & (BATTLE_TYPE_TRAINER | BATTLE_TYPE_PALACE));
+                bool32 addStolenWildItemToBag = GetConfig(B_STEAL_WILD_ITEMS) >= GEN_9
+                                             && !(gBattleTypeFlags & (BATTLE_TYPE_TRAINER | BATTLE_TYPE_PALACE));
+
                 StealTargetItem(cv->battlerAtk, battlerDef, ITEM_NONE, addStolenWildItemToBag);  // Attacker steals target item
 
                 struct LostItem *lostItem = GetLostItemState(GetBattlerTrainer(battlerDef), gBattlerPartyIndexes[battlerDef]);
@@ -4975,7 +4988,9 @@ static enum MoveEndResult MoveEndThirdMoveBlock(struct BattleCalcValues *cv)
         }
         break;
     case EFFECT_NATURAL_GIFT:
-        if (!gBattleStruct->unableToUseMove && GetItemPocket(gBattleMons[cv->battlerAtk].item) == POCKET_BERRIES)
+        if (gBattleStruct->battlerState[cv->battlerAtk].originalBattlerPartyId == PARTY_SIZE
+         && !gBattleStruct->unableToUseMove
+         && GetItemPocket(gBattleMons[cv->battlerAtk].item) == POCKET_BERRIES)
         {
             enum Item item = gBattleMons[cv->battlerAtk].item;
             gBattleMons[gBattlerAttacker].item = ITEM_NONE;
@@ -5457,6 +5472,11 @@ static void TryAcupressureStatChange(struct BattleCalcValues *cv)
             bits |= 1u << stat;
     }
 
+    struct StatChange st = {
+        .onlyChecking = TRUE,
+        .ignoreCertainFailure = TRUE,
+    };
+
     if (bits)
     {
         enum Stat statId;
@@ -5465,7 +5485,12 @@ static void TryAcupressureStatChange(struct BattleCalcValues *cv)
             statId = (Random() % (NUM_BATTLE_STATS - 1)) + 1;
         } while (!(bits & (1u << statId)));
 
-        SetStatChange(cv->battlerDef, statId, 2);
+        st.certain = cv->battlerAtk == cv->battlerDef;
+        st.stat = statId;
+        st.stage = 2;
+
+        AdjustStatStage(cv, &st);
+        SetStatChange(cv->battlerDef, st.stat, st.stage);
         gBattleStruct->moveResultFlags[cv->battlerDef] = MOVE_RESULT_ATTEMPT_STAT_CHANGE;
     }
     else
@@ -5933,7 +5958,7 @@ static enum Move GetMirrorMoveMove(void)
         if (i != gBattlerAttacker)
         {
             move = gBattleStruct->lastTakenMoveFrom[gBattlerAttacker][i];
-            if (move != MOVE_NONE && move != MOVE_UNAVAILABLE)
+            if (IsMoveValid(move))
             {
                 validMoves[validMovesCount] = move;
                 validMovesCount++;
