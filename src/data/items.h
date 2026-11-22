@@ -4804,6 +4804,57 @@ const struct ItemInfo gItemsInfo[] =
 
 // Plates
 
+    [ITEM_BLANK_PLATE] =
+    {
+        .name = ITEM_NAME("Blank Plate"),
+        .price = 1000,
+        .holdEffect = HOLD_EFFECT_PLATE,
+        .holdEffectParam = 20,
+        .description = COMPOUND_STRING(
+            "A held item that\n"
+            "raises the power of\n"
+            "Normal-type moves."),
+        .pocket = POCKET_ITEMS,
+        .sortType = ITEM_TYPE_PLATE,
+        .type = ITEM_USE_BAG_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .secondaryId = TYPE_NORMAL,
+        .flingPower = 90,
+        .iconPic = gItemIcon_Plate,
+        .iconPalette = gItemIconPalette_BlankPlate,
+    },
+
+    [ITEM_LEGEND_PLATE] =
+    {
+        .name = ITEM_NAME("Legend Plate"),
+        .price = 1000,
+        .holdEffect = HOLD_EFFECT_PLATE,
+        .description = COMPOUND_STRING(
+            "Arceus changes type\n"
+            "to suit its target\n"
+            "when using Judgment."),
+        .pocket = POCKET_ITEMS,
+        .sortType = ITEM_TYPE_PLATE,
+        .type = ITEM_USE_BAG_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .secondaryId = TYPE_NORMAL,
+        .flingPower = 90,
+        .iconPic = gItemIcon_Plate,
+        .iconPalette = gItemIconPalette_LegendPlate,
+    },
+
+    [ITEM_AZURE_FLUTE] =
+    {
+        .name = ITEM_NAME("Azure Flute"),
+        .description = COMPOUND_STRING("A sky-blue flute. Its\nvoice is said to reach\nbeyond this world."),
+        .importance = 1,
+        .pocket = POCKET_KEY_ITEMS,
+        .type = ITEM_USE_FIELD,
+        .fieldUseFunc = ItemUseOutOfBattle_AzureFlute,
+        .iconPic = gItemIcon_AzureFlute,
+        .iconPalette = gItemIconPalette_AzureFlute,
+    },
+
     [ITEM_FLAME_PLATE] =
     {
         .name = ITEM_NAME("Flame Plate"),

@@ -282,3 +282,12 @@ bool32 LegendsAchievementClaim(u16 id)
     UpdateChecksums();
     return TRUE;
 }
+
+u16 CountMonkPlates(void)
+{
+    u16 count = 0;
+    for (u16 flag = FLAG_MONK_BLANK_PLATE; flag <= FLAG_MONK_LEGEND_PLATE; flag++)
+        if (FlagGet(flag))
+            count++;
+    return count;
+}

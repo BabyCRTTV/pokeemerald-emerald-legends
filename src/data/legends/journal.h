@@ -81,6 +81,7 @@ static const struct LegendsQuest sQuests[] =
     {COMPOUND_STRING("Pond Portrait"), FLAG_MISSIVE_POND_TAKEN, 1, 1, {{COMPOUND_STRING("Show WINGULL to the boy by PETALBURG pond"), FLAG_MISSIVE_POND_DONE}}},
     {COMPOUND_STRING("Tunnel Lifeline"), FLAG_MISSIVE_ROPE_TAKEN, 1, 1, {{COMPOUND_STRING("Take 1 ESCAPE ROPE to the Bug Catcher in RUSTBORO MART"), FLAG_MISSIVE_ROPE_DONE}}},
     {COMPOUND_STRING("Echo Lesson"), FLAG_MISSIVE_ECHO_TAKEN, 1, 1, {{COMPOUND_STRING("Show WHISMUR to the boy at the left desk in RUSTBORO school"), FLAG_MISSIVE_ECHO_DONE}}},
+    {COMPOUND_STRING("The Chosen One"), FLAG_PLATE_PILGRIMAGE_STARTED, 1, 2, {{COMPOUND_STRING("Receive the 19 monks' plates across HOENN"), FLAG_ALL_MONK_PLATES}, {COMPOUND_STRING("Find the elder by the LITTLEROOT lab"), FLAG_RECEIVED_AZURE_FLUTE}}},
 };
 static const struct LegendsAchievement sAchievements[] =
 {

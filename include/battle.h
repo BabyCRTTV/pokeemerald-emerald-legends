@@ -200,7 +200,7 @@ struct AiPartyMon
 {
     enum Species species;
     enum Item item;
-    enum HoldEffect heldEffect;
+    enum HoldEffect holdEffect;
     enum Ability ability;
     u16 level;
     enum Move moves[MAX_MON_MOVES];
@@ -652,7 +652,7 @@ struct BattleStruct
     } multiBuffer;
     u8 battlerKOAnimsRunning:3;
     u8 fickleBeamBoosted:1;
-    u8 unused2:1;
+    u8 ignoreOrbFailure:1; // Toxic / Flame orb aren't prevented by Safeguard / Flower Veil
     u8 toxicChainPriority:1; // If Toxic Chain will trigger on target, all other non volatiles will be blocked
     u8 battlersSorted:1; // To avoid unnessasery computation
     u8 unused1:1;
@@ -1181,6 +1181,11 @@ static inline bool32 IsBattlerAlly(enum BattlerId battlerAtk, enum BattlerId bat
 static inline bool32 IsDoubleBattle(void)
 {
     return !!(gBattleTypeFlags & BATTLE_TYPE_MORE_THAN_TWO_BATTLERS);
+}
+
+static inline bool32 IsMoveValid(enum Move move)
+{
+    return move != MOVE_NONE && move != MOVE_UNAVAILABLE;
 }
 
 static inline bool32 IsSpreadMove(enum MoveTarget moveTarget)

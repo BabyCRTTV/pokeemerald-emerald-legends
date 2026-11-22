@@ -92,3 +92,36 @@ SINGLE_BATTLE_TEST("Multi-Attack changes type depending on the Memory the user h
         HP_BAR(opponent);
     }
 }
+
+SINGLE_BATTLE_TEST("Legend Plate changes Arceus and Judgment to exploit a fourfold weakness")
+{
+    enum Species foe, form;
+    PARAMETRIZE { foe = SPECIES_SWAMPERT; form = SPECIES_ARCEUS_GRASS; }
+    PARAMETRIZE { foe = SPECIES_GYARADOS; form = SPECIES_ARCEUS_ELECTRIC; }
+    GIVEN {
+        PLAYER(SPECIES_ARCEUS) { Ability(ABILITY_MULTITYPE); Item(ITEM_LEGEND_PLATE); }
+        OPPONENT(foe);
+    } WHEN {
+        TURN { MOVE(player, MOVE_JUDGMENT); }
+    } SCENE {
+        ANIMATION(ANIM_TYPE_MOVE, MOVE_JUDGMENT, player);
+        EFFECTIVENESS_SE(opponent, SE_SUPER_EFFECTIVE);
+        HP_BAR(opponent);
+    } THEN {
+        EXPECT_EQ(player->species, form);
+    }
+}
+
+SINGLE_BATTLE_TEST("Blank Plate Judgment stays Normal against Ghost")
+{
+    GIVEN {
+        PLAYER(SPECIES_ARCEUS) { Ability(ABILITY_MULTITYPE); Item(ITEM_BLANK_PLATE); }
+        OPPONENT(SPECIES_GENGAR);
+    } WHEN {
+        TURN { MOVE(player, MOVE_JUDGMENT); }
+    } SCENE {
+        NOT HP_BAR(opponent);
+    } THEN {
+        EXPECT_EQ(player->species, SPECIES_ARCEUS);
+    }
+}

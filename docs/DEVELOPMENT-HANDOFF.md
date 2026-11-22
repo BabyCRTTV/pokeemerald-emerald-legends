@@ -1,5 +1,9 @@
 # Development handoff
 
+## The Chosen One preview (22 November 2026)
+
+Nineteen monks give one plate each across Hoenn. Once all nineteen gifts have been accepted, a twentieth monk appears near Birch’s lab in Littleroot and offers the Azure Flute. The combined candidate includes the November expansion update. It preserves Legends’ Casual move hints and captured-item handling. The owner is reviewing the gameplay preview. The current public game is v0.0.94. [Placements and verification](qa/chosen-one-preview.md).
+
 ## v0.0.94 seasonal weather and grotto entrances published
 
 Model: GPT-6 | Published the approved seasonal ice weather and occupied grotto animations through PR #125. Updated the weather guide and walkthrough Chapters 2, 7 and 10. The combined mGBA build exercised all four forecasts, indoor cleanup, wild battle weather and each grotto’s discovery, flee, cooldown and renewal behavior. Legacy active visitors and cooldowns carry forward. A legacy ready room records discovery on its next visit.

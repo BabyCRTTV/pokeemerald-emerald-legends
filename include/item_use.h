@@ -9,6 +9,7 @@ void ItemUseOutOfBattle_PokeblockCase(u8 taskId);
 void ItemUseOutOfBattle_CoinCase(u8 taskId);
 void ItemUseOutOfBattle_PokemonBoxLink(u8 taskId);
 void ItemUseOutOfBattle_GroomingKit(u8 taskId);
+void ItemUseOutOfBattle_AzureFlute(u8 taskId);
 void ItemUseOutOfBattle_Postcards(u8 taskId);
 void ItemUseOutOfBattle_PortableCooking(u8 taskId);
 void ItemUseOutOfBattle_PowderJar(u8 taskId);
