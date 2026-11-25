@@ -1,5 +1,9 @@
 # Development handoff
 
+## Johto trainer visibility · November 25, 2026
+
+Model GPT-6 · Fixed terrain drawing above the player on bridge decks, cobblestones and lower scenery edges. A matched controller replay showed the trainer crossing all four reported surface types. All 23 sampled ground and frontage positions displayed the entire reference sprite, and Elm’s overhanging roof retained its depth. Both native patches and the old-save lab entrance passed. [Native captures and patch hashes](qa/johto-opening/README.md#trainer-visibility-on-johto-terrain). Draft PR #128 is ready for review.
+
 ## Johto paths and borders · November 25, 2026
 
 Model GPT-6 · The owner approved the four towns’ art direction. Aligned doorsteps and crossings to the approved facades, connected the Route 32 trail to Union Cave and corrected the shoreline collision and scenery beyond the map edge. All 20 road lanes passed in both directions. A save from the previous preview resumed one tile south of the new cave sign and could walk out. Both BPS decoders reproduced Debug and Release. Draft PR #128 carries the playable touch-up for review. [Matched gameplay and verification](qa/johto-opening/README.md#paths-entrances-and-map-borders).

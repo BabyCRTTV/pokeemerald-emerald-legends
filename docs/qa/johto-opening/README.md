@@ -16,6 +16,23 @@ The Zephyr and Hive badges appear in the **Johto League** journal entry. Five lo
 
 The Heart & Soul team provided a visual reference for eastern Johto in Gen III. The layouts, landmark art, trainer teams and story here were made for Emerald: Legends. [Heart & Soul project and credits](https://github.com/PokemonHnS-Development/pokehns-expansion/tree/167aa6d)
 
+## Trainer visibility on Johto terrain
+
+Opaque wooden planks and paving were drawing in front of the trainer. Changed the layer attributes for walking surfaces, the bottom edges of local scenery and indoor props. The graphics, collision, map coordinates and save data retain the approved preview values.
+
+![Matched native captures while crossing Sprout Tower’s bridge](sprout-bridge-layers.png)
+
+- Used matched mGBA captures and a 214-pixel standing trainer reference. All 214 pixels appeared in 23 ground and frontage samples. At Cherrygrove pier, Sprout Tower bridge, Violet’s paving and the Route 32 boardwalk, the previous build showed zero reference pixels. A separate walk-behind sample at Elm’s roof showed the same 54 visible pixels in each build.
+- Replayed the same controller steps in both builds on four stretches. The comparison runs 12.6 seconds. Checked 84 movements at road joins, bridge boards, shorelines and other collision boundaries. All 19 exterior entrances and returns, the belfry stairs, four nurses and four Fly arrivals passed.
+- Built Debug and Release. Floating IPS and the browser patch decoder independently reproduced both ROMs from clean US Emerald. Loaded an older battery save on the reapplied Release, checked the wall beside Elm’s lab and walked through its door in both directions.
+
+| Artifact | SHA-256 |
+| --- | --- |
+| Release BPS | `5d8662d5ff38c5edd4648c8cf727138c9c2345b9705a33abd8abed19cab39c43` |
+| Release ROM | `5e2c50ff5b910033bd9af8137e38131dce6821e5540479189641235c4f3c2d85` |
+| Debug BPS | `98ea223d2b4b5d1604c6ffcac863643c7fcf25378beb72807f3434a6695666fe` |
+| Debug ROM | `c868ffa04ce8b87b06f3e99a02bb1289180e84397517e81b0caa364471ed3689` |
+
 ## Paths, entrances and map borders
 
 The owner approved the town artwork in `bc2f6638`. This pass centered the cottage and civic doorsteps, the three-board bridge to Sprout Tower and the narrower entrance to Slowpoke Well. Route 32 has a continuous path from its Pokémon Center to Union Cave and a readable sign beside the cave mouth. Five coastal layouts have authored map borders that carry the shore out to sea. The beach corners share Slateport’s Surf elevation.

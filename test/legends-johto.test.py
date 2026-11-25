@@ -292,6 +292,24 @@ def check_roads_and_borders():
     assert all(row[x - 1:x + 2] == deck for row in tower[y + 2:y + 5])
     assert all(tower[y + 3][col] >> 12 == 1 for col in (x - 2, x + 2))
 
+    # Walking can succeed even when an opaque BG1 deck hides the trainer.
+    # Probe the board ends, inner paving corners, town gates and their approaches.
+    tileset = ROOT / "data/tilesets/secondary/legends_johto"
+    attributes = [v for v, in struct.iter_unpack("<H", (tileset / "metatile_attributes.bin").read_bytes())]
+    ground = {
+        "CherrygroveCity": [(8, 21), (9, 22)],
+        "Route32": [(19, 25), (21, 26), (14, 0)],
+        "VioletCity": [(x + dx, row) for dx in (-1, 0, 1) for row in range(y + 1, y + 6)]
+                      + [(20, 19), (20, 32), (41, 15)],
+        "AzaleaTown": [(4, 8)],
+    }
+    for name, samples in ground.items():
+        for col, row in samples:
+            block = exteriors[name][row][col]
+            tile = block & 0x3FF
+            assert block >> 10 == 12 and tile >= 0x200, (name, col, row)
+            assert attributes[tile - 0x200] >> 12 == 1, (name, col, row, hex(tile))
+
 
 if __name__ == "__main__":
     check_maps()
