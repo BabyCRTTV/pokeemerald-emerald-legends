@@ -819,7 +819,19 @@ string generate_layout_headers_text(Json layouts_data) {
         else
             text << "\t.byte FALSE\n";
 
-        if (is_frlg)
+        // Emerald's default border is 2x2. An authored scenic border can use
+        // the same dimension fields as FRLG without changing tileset format.
+        bool has_border_size = !layout["border_width"].is_null() || !layout["border_height"].is_null();
+        if (!is_frlg && has_border_size)
+        {
+            int width = layout["border_width"].int_value();
+            int height = layout["border_height"].int_value();
+            if (width < 1 || height < 1 || width > 255 || height > 255
+             || layout["border_width"].number_value() != width || layout["border_height"].number_value() != height
+             || std::filesystem::file_size(json_to_string(layout, "border_filepath")) != static_cast<unsigned>(2 * width * height))
+                FATAL_ERROR("Invalid border dimensions or byte count for layout '%s'\n", layoutName.c_str());
+        }
+        if (is_frlg || has_border_size)
         {
             text << "\t.byte " << json_to_string(layout, "border_width") << "\n"
                  << "\t.byte " << json_to_string(layout, "border_height") << "\n"

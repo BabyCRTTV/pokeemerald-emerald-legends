@@ -223,9 +223,80 @@ def check_coast_and_woodland():
                     assert x > 0 and blocks[offset - 1] & 0x3FF in left, (area, offset)
 
 
+def check_roads_and_borders():
+    layouts = {entry["id"]: entry for entry in read_json("data/layouts/layouts.json")["layouts"]}
+    exteriors = {}
+    for name in EXPECTED_ORDER:
+        area = map_data("LegendsJohto_" + name)
+        layout = layouts[area["layout"]]
+        if layout["secondary_tileset"] != "gTileset_LegendsJohto":
+            continue
+        width = layout["width"]
+        blocks = [v for v, in struct.iter_unpack("<H", (ROOT / layout["blockdata_filepath"]).read_bytes())]
+        rows = [blocks[i:i + width] for i in range(0, len(blocks), width)]
+        exteriors[name] = rows
+        for sign in area["bg_events"]:
+            if sign["type"] == "sign":
+                assert rows[sign["y"]][sign["x"]] == 0x0403, (name, sign["script"])
+
+        if name in ("CherrygroveCity", "NewBarkTown", "Route27East", "Route27West", "Route29"):
+            # All parts of the surf line, including a little inward hook, use
+            # the same elevation as their native counterparts in Slateport.
+            for row in rows:
+                for block in row:
+                    if block & 0x3FF in (0x12B, 0x12C, 0x12D, 0x145, 0x146):
+                        assert block >> 12 == 1, (name, hex(block))
+            border = [v for v, in struct.iter_unpack("<H", (ROOT / layout["border_filepath"]).read_bytes())]
+            bw, bh = layout["border_width"], layout["border_height"]
+            assert len(border) == bw * bh
+            for x, block in enumerate(rows[-1]):
+                if block >> 12 == 1:
+                    beyond = border[(len(rows) % bh) * bw + x % bw]
+                    assert beyond in (0x170, 0x12B, 0x12C, 0x12D), (name, x)
+            assert border[(-2 % bh) * bw] in (0x1D4, 0x1D6), name
+
+    # Both maps draw each marked lane from the same material at the exact
+    # join. A straight step out of either map lands on walkable ground.
+    gates = [
+        ("Route26", "down", "Route27East", (16, 17)),
+        ("Route27West", "left", "NewBarkTown", (14, 15)),
+        ("NewBarkTown", "left", "Route29", (14, 15)),
+        ("CherrygroveCity", "right", "Route29", (14, 15)),
+        ("Route30", "down", "CherrygroveCity", (14, 15)),
+        ("Route31", "down", "Route30", (17, 18)),
+        ("VioletCity", "right", "Route31", (14, 15, 16)),
+        ("VioletCity", "down", "Route32", (19, 20, 21)),
+        ("AzaleaTown", "right", "Route33", (14, 15)),
+    ]
+    for source, direction, dest, lanes in gates:
+        a, b = exteriors[source], exteriors[dest]
+        link = next(c for c in map_data("LegendsJohto_" + source)["connections"] if c["direction"] == direction)
+        assert link["map"] == map_data("LegendsJohto_" + dest)["id"]
+        for lane in lanes:
+            other = lane - link["offset"]
+            if direction == "down":
+                first, second = a[-1][lane], b[0][other]
+            elif direction == "right":
+                first, second = a[lane][-1], b[other][0]
+            else:
+                first, second = a[lane][0], b[other][-1]
+            assert first == second and first >> 10 == 12, (source, dest, lane, hex(first), hex(second))
+
+    tower = exteriors["VioletCity"]
+    warp = next(w for w in map_data("LegendsJohto_VioletCity")["warp_events"] if w["dest_map"].endswith("_SPROUT_TOWER"))
+    x, y = warp["x"], warp["y"]
+    landing = tower[y + 1][x - 1:x + 2]
+    deck = tower[y + 2][x - 1:x + 2]
+    assert all(block >> 10 == 12 for block in landing) and landing != deck
+    assert len(set(deck)) == 3 and all(block >> 10 == 12 for block in deck)
+    assert all(row[x - 1:x + 2] == deck for row in tower[y + 2:y + 5])
+    assert all(tower[y + 3][col] >> 12 == 1 for col in (x - 2, x + 2))
+
+
 if __name__ == "__main__":
     check_maps()
     check_progress()
     check_building_footprints()
     check_coast_and_woodland()
-    print("Johto map identifiers, walkable landmarks, coasts, woodland, building collision, animated doors, trainers and survey checkpoints passed.")
+    check_roads_and_borders()
+    print("Johto map identifiers, paths, borders, signs, coasts, woodland, building collision, doors, trainers and survey checkpoints passed.")

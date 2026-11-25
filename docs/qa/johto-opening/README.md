@@ -16,6 +16,27 @@ The Zephyr and Hive badges appear in the **Johto League** journal entry. Five lo
 
 The Heart & Soul team provided a visual reference for eastern Johto in Gen III. The layouts, landmark art, trainer teams and story here were made for Emerald: Legends. [Heart & Soul project and credits](https://github.com/PokemonHnS-Development/pokehns-expansion/tree/167aa6d)
 
+## Paths, entrances and map borders
+
+The owner approved the town artwork in `bc2f6638`. This pass centered the cottage and civic doorsteps, the three-board bridge to Sprout Tower and the narrower entrance to Slowpoke Well. Route 32 has a continuous path from its Pokémon Center to Union Cave and a readable sign beside the cave mouth. Five coastal layouts have authored map borders that carry the shore out to sea. The beach corners share Slateport’s Surf elevation.
+
+![Matched mGBA views of Sprout Tower, Union Cave, the Cherrygrove shore and New Bark](paths-and-borders.png)
+
+- Walked Viridian to Azalea and back through all 32 transitions. Tested all 19 field entrances and returns, the belfry stairs, all four nurses and all four Fly destinations. Exercised all 20 marked lanes in both directions at the nine outdoor connections.
+- Ran 84 controller movement checks covering those lanes, all three bridge boards, the lantern and lab roof collision, the sign and the inside beach curves. Read the cave sign from the approach and checked its former spot on the roof. Separately tested 148 building and pier contacts and 37 garden, lantern and shoreline contacts. Surf mounted and dismounted normally at Cherrygrove’s pier. The west and south limits stopped the surfer in open water.
+- Loaded a 128 KiB battery save from the approved town preview on the independently reapplied Release. Its 210-cell scenery cache carried marker `4A01`. Continue moved the player one tile south of the new cave sign. The post stopped movement and the player could walk east along the path. Separate older saves retained their positions at Elm’s lab and in Cherrygrove’s water. The current cache marker is `4A02`.
+- All 288 previously defined Johto exterior metatiles and all 486 referenced secondary art tiles retain their bytes. Both existing Emerald and FireRed layout definitions produced identical headers, tables and constants under the old and new map compiler. Five invalid scenic-border definitions were rejected. The Johto, Kanto foundation, region-map and shared lighting checks passed.
+- Built Debug and Release natively. Floating IPS and the project’s browser decoder independently reproduced both game images from clean US Emerald. The matched pictures and the 22-second walking clip came from the revised build running in mGBA 0.10.5. Scene starts used fixed locations and a summer daytime clock. Movement, the tower door and the Route 32 text came from controller input.
+
+| Reviewed artifact | SHA-256 |
+| --- | --- |
+| Release BPS | `3cbd92decda67c1da018ad462d48967dcc38c05fa337d9a27e1b280eb8cc19c8` |
+| Release ROM | `6edb60d8ca440ca6ac6c415eb03efeddeab2e1ee858ee7fb55d0d85c2e93e023` |
+| Debug BPS | `472ef54c26aa30d8522c137c2c8d89809a3937b122a23ac84757f572570d91db` |
+| Debug ROM | `4bce6696ad391ecdf0f0983a3bb9b6f1c956e0e936000bffb7648effac893adc` |
+| Gameplay comparison image | `9ea62439da8af1319342fa53ed1ab5a9234e19c0e13bf818e53047f855776c55` |
+| Gameplay clip | `9a2b4a8e6b2df79d146b0dcccf4e8ebd91567d53201d6b6da3772692909c66bb` |
+
 ## Towns, shorelines and woods
 
 ![Matched views of the windkeeper’s cottage, Elm’s lab, the Cherrygrove pier, Sprout Tower, the Apricorn workshop and Slowpoke Well](towns-before-after.png)

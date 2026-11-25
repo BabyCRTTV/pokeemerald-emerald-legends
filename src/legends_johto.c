@@ -9,7 +9,7 @@
 // SaveMapView writes a 15x14 rectangle into a 256-word buffer. A marker
 // just past that rectangle distinguishes the revised map collision on Continue.
 #define JOHTO_VIEW_MARKER_INDEX (MAP_OFFSET_W * MAP_OFFSET_H)
-#define JOHTO_VIEW_REVISION 0x4A01
+#define JOHTO_VIEW_REVISION 0x4A02
 STATIC_ASSERT(JOHTO_VIEW_MARKER_INDEX < ARRAY_COUNT(gSaveBlock1Ptr->mapView), JohtoViewMarkerFits);
 
 // Each point belongs to the connected footpath on that specific map.

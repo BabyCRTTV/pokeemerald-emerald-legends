@@ -10719,9 +10719,11 @@
       "height": 24,
       "primary_tileset": "gTileset_General",
       "secondary_tileset": "gTileset_LegendsJohto",
-      "border_filepath": "data/layouts/LittlerootTown/border.bin",
+      "border_filepath": "data/layouts/LegendsJohto_Route27East/border.bin",
       "blockdata_filepath": "data/layouts/LegendsJohto_Route27East/map.bin",
-      "layout_version": "emerald"
+      "layout_version": "emerald",
+      "border_width": 48,
+      "border_height": 40
     },
     {
       "id": "LAYOUT_LEGENDS_JOHTO_ROUTE27_WEST",
@@ -10730,9 +10732,11 @@
       "height": 24,
       "primary_tileset": "gTileset_General",
       "secondary_tileset": "gTileset_LegendsJohto",
-      "border_filepath": "data/layouts/LittlerootTown/border.bin",
+      "border_filepath": "data/layouts/LegendsJohto_Route27West/border.bin",
       "blockdata_filepath": "data/layouts/LegendsJohto_Route27West/map.bin",
-      "layout_version": "emerald"
+      "layout_version": "emerald",
+      "border_width": 48,
+      "border_height": 40
     },
     {
       "id": "LAYOUT_LEGENDS_JOHTO_NEW_BARK_TOWN",
@@ -10741,9 +10745,11 @@
       "height": 26,
       "primary_tileset": "gTileset_General",
       "secondary_tileset": "gTileset_LegendsJohto",
-      "border_filepath": "data/layouts/LittlerootTown/border.bin",
+      "border_filepath": "data/layouts/LegendsJohto_NewBarkTown/border.bin",
       "blockdata_filepath": "data/layouts/LegendsJohto_NewBarkTown/map.bin",
-      "layout_version": "emerald"
+      "layout_version": "emerald",
+      "border_width": 49,
+      "border_height": 42
     },
     {
       "id": "LAYOUT_LEGENDS_JOHTO_ROUTE29",
@@ -10752,9 +10758,11 @@
       "height": 24,
       "primary_tileset": "gTileset_General",
       "secondary_tileset": "gTileset_LegendsJohto",
-      "border_filepath": "data/layouts/LittlerootTown/border.bin",
+      "border_filepath": "data/layouts/LegendsJohto_Route29/border.bin",
       "blockdata_filepath": "data/layouts/LegendsJohto_Route29/map.bin",
-      "layout_version": "emerald"
+      "layout_version": "emerald",
+      "border_width": 54,
+      "border_height": 40
     },
     {
       "id": "LAYOUT_LEGENDS_JOHTO_CHERRYGROVE_CITY",
@@ -10763,9 +10771,11 @@
       "height": 28,
       "primary_tileset": "gTileset_General",
       "secondary_tileset": "gTileset_LegendsJohto",
-      "border_filepath": "data/layouts/LittlerootTown/border.bin",
+      "border_filepath": "data/layouts/LegendsJohto_CherrygroveCity/border.bin",
       "blockdata_filepath": "data/layouts/LegendsJohto_CherrygroveCity/map.bin",
-      "layout_version": "emerald"
+      "layout_version": "emerald",
+      "border_width": 54,
+      "border_height": 44
     },
     {
       "id": "LAYOUT_LEGENDS_JOHTO_ROUTE30",

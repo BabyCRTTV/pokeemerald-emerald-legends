@@ -59,7 +59,7 @@ static inline u16 GetBorderBlockAt(int x, int y)
 {
     const struct MapLayout *mapLayout = gMapHeader.mapLayout;
 
-    if (mapLayout->isFrlg)
+    if (mapLayout->borderWidth && mapLayout->borderHeight)
     {
         s32 xprime;
         s32 yprime;

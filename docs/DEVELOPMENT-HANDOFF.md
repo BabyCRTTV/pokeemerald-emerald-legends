@@ -1,5 +1,9 @@
 # Development handoff
 
+## Johto paths and borders · November 25, 2026
+
+Model GPT-6 · The owner approved the four towns’ art direction. Aligned doorsteps and crossings to the approved facades, connected the Route 32 trail to Union Cave and corrected the shoreline collision and scenery beyond the map edge. All 20 road lanes passed in both directions. A save from the previous preview resumed one tile south of the new cave sign and could walk out. Both BPS decoders reproduced Debug and Release. Draft PR #128 carries the playable touch-up for review. [Matched gameplay and verification](qa/johto-opening/README.md#paths-entrances-and-map-borders).
+
 ## Johto town art review · November 25, 2026
 
 Model: GPT-6 | Draft PR #128 has new town and route art for owner review. New Bark mixes an original gabled cottage with Elm’s stepped lab wing. Cherrygrove has a continuous beach, Violet has a lantern-lined tower crossing, and Azalea has planted orchard rows. The round trip, 19 entrances, 185 controller contact checks, matched indoor captures and three battery saves from the previous preview passed. Continue repairs positions covered by new scenery. [The six comparisons and native build evidence](qa/johto-opening/README.md#towns-shorelines-and-woods).
