@@ -18102,3 +18102,98 @@ Level: 54
 - X-Scissor
 - Agility
 - Slash
+
+=== TRAINER_LEGENDS_JOHTO_PIP ===
+Name: PIP
+Class: Bird Keeper
+Pic: Bird Keeper
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Check Bad Move / Try To Faint
+
+Hoothoot
+Level: 45
+- Confusion
+- Reflect
+
+Fearow
+Level: 47
+- Drill Peck
+- Agility
+
+=== TRAINER_LEGENDS_JOHTO_LEN ===
+Name: LEN
+Class: Camper
+Pic: Camper
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Check Bad Move / Try To Faint
+
+Sentret
+Level: 34
+- Slam
+- Quick Attack
+
+Hoppip
+Level: 35
+- Mega Drain
+- Leech Seed
+
+=== TRAINER_LEGENDS_JOHTO_KIT ===
+Name: KIT
+Class: Fisherman
+Pic: Fisherman
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Check Bad Move / Try To Faint
+
+Poliwag
+Level: 39
+- Bubble Beam
+- Hypnosis
+
+Quagsire
+Level: 41
+- Mud Shot
+- Slam
+
+=== TRAINER_LEGENDS_JOHTO_MOSS ===
+Name: MOSS
+Class: Hiker
+Pic: Hiker
+Gender: Male
+Music: Hiker
+Double Battle: No
+AI: Check Bad Move / Try To Faint
+
+Geodude
+Level: 41
+- Rock Throw
+- Rock Polish
+
+Onix
+Level: 42
+- Rock Slide
+- Bind
+
+=== TRAINER_LEGENDS_JOHTO_FERN ===
+Name: FERN
+Class: Bug Catcher
+Pic: Bug Catcher
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Check Bad Move / Try To Faint
+
+Spinarak
+Level: 48
+- Night Shade
+- Poison Jab
+
+Scyther
+Level: 50
+- Wing Attack
+- Slash

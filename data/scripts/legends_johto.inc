@@ -705,7 +705,87 @@ Johto_Text_RueWin:
 	.string "Log!$"
 
 Johto_Text_RueAfter:
-	.string "RUE: My Scyther taps the hive\n"
+	.string "RUE: My Scizor taps the hive\n"
 	.string "mark with one claw when he\l"
 	.string "approves of a trainer. He tapped\l"
 	.string "yours.$"
+
+Johto_Pip::
+	trainerbattle_single TRAINER_LEGENDS_JOHTO_PIP, Johto_Text_PipIntro, Johto_Text_PipDefeat
+	msgbox Johto_Text_PipAfter, MSGBOX_AUTOCLOSE
+	end
+
+Johto_Text_PipIntro:
+	.string "Watch my Fearow coast from\n"
+	.string "perch to perch!$"
+
+Johto_Text_PipDefeat:
+	.string "You caught the updraft.$"
+
+Johto_Text_PipAfter:
+	.string "Wren can tell a bird by the\n"
+	.string "sound of its wings.$"
+
+Johto_Len::
+	trainerbattle_single TRAINER_LEGENDS_JOHTO_LEN, Johto_Text_LenIntro, Johto_Text_LenDefeat
+	msgbox Johto_Text_LenAfter, MSGBOX_AUTOCLOSE
+	end
+
+Johto_Text_LenIntro:
+	.string "We pitched our tents on this\n"
+	.string "ridge. Got time for a battle?$"
+
+Johto_Text_LenDefeat:
+	.string "You're quick on this trail!$"
+
+Johto_Text_LenAfter:
+	.string "There's shade by the Apricorn\n"
+	.string "tree on the west stretch.$"
+
+Johto_Kit::
+	trainerbattle_single TRAINER_LEGENDS_JOHTO_KIT, Johto_Text_KitIntro, Johto_Text_KitDefeat
+	msgbox Johto_Text_KitAfter, MSGBOX_AUTOCLOSE
+	end
+
+Johto_Text_KitIntro:
+	.string "A tug on my line! Oh, it's my\n"
+	.string "Quagsire. Fancy a match?$"
+
+Johto_Text_KitDefeat:
+	.string "I should have reeled that in.$"
+
+Johto_Text_KitAfter:
+	.string "Wooper nose around under the\n"
+	.string "boards at dusk.$"
+
+Johto_Moss::
+	trainerbattle_single TRAINER_LEGENDS_JOHTO_MOSS, Johto_Text_MossIntro, Johto_Text_MossDefeat
+	msgbox Johto_Text_MossAfter, MSGBOX_AUTOCLOSE
+	end
+
+Johto_Text_MossIntro:
+	.string "My Onix knows these tunnels by\n"
+	.string "touch. Want to meet him?$"
+
+Johto_Text_MossDefeat:
+	.string "That's some sure footing!$"
+
+Johto_Text_MossAfter:
+	.string "Keep the last pool on your left\n"
+	.string "for the south exit.$"
+
+Johto_Fern::
+	trainerbattle_single TRAINER_LEGENDS_JOHTO_FERN, Johto_Text_FernIntro, Johto_Text_FernDefeat
+	msgbox Johto_Text_FernAfter, MSGBOX_AUTOCLOSE
+	end
+
+Johto_Text_FernIntro:
+	.string "I raised this team in the grove\n"
+	.string "out back. Shall we?$"
+
+Johto_Text_FernDefeat:
+	.string "Even my Scyther stood still.$"
+
+Johto_Text_FernAfter:
+	.string "Rue can tell when a cocoon will\n"
+	.string "hatch just by its weight.$"

@@ -2,7 +2,7 @@
 
 ## Johto first quarter · gameplay preview
 
-Viridian’s west road reaches New Bark, Cherrygrove, Violet and Azalea. The draft carries the monk and compatible expansion work forward. The owner is reviewing the first two Johto badges and the handmade environments. [Chapter route and gameplay verification](qa/johto-opening/README.md).
+The first two Johto badges are in draft PR #128, based on the Chosen One candidate. Viridian’s west road reaches New Bark, Cherrygrove, Violet and Azalea. The full return walk, seven trainer battles, Elm’s survey, a v0.0.94 battery save and the reapplied Release patch passed local checks. The gameplay tour and patch are ready for owner review. [Chapter route and verification](qa/johto-opening/README.md) · [Draft PR #128](https://github.com/BabyCRTTV/pokeemerald-emerald-legends/pull/128).
 
 ## The Chosen One preview (22 November 2026)
 

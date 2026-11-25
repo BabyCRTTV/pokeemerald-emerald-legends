@@ -21,6 +21,16 @@ static inline u16 LegendsTrainerFlag(u16 trainerId)
     case TRAINER_LEGENDS_KANTO_BLAINE_CHAMPION:
         return FLAG_LEGENDS_KANTO_BLAINE_WON;
 
+    case TRAINER_LEGENDS_JOHTO_PIP:
+        return FLAG_JOHTO_PIP_WON;
+    case TRAINER_LEGENDS_JOHTO_LEN:
+        return FLAG_JOHTO_LEN_WON;
+    case TRAINER_LEGENDS_JOHTO_KIT:
+        return FLAG_JOHTO_KIT_WON;
+    case TRAINER_LEGENDS_JOHTO_MOSS:
+        return FLAG_JOHTO_MOSS_WON;
+    case TRAINER_LEGENDS_JOHTO_FERN:
+        return FLAG_JOHTO_FERN_WON;
     case TRAINER_LEGENDS_JOHTO_WREN:
         return FLAG_JOHTO_ZEPHYR_BADGE;
     case TRAINER_LEGENDS_JOHTO_RUE:
