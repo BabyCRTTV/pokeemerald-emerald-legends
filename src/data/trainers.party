@@ -18197,3 +18197,33 @@ Scyther
 Level: 50
 - Wing Attack
 - Slash
+
+=== TRAINER_LEGENDS_JOHTO_CASS ===
+Name: CASS
+Class: Leader
+Pic: Beauty
+Gender: Female
+Music: Intense
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Girafarig
+Level: 55
+- Psychic
+- Baton Pass
+- Agility
+- Hyper Voice
+
+Ursaring
+Level: 55
+- Slash
+- Brick Break
+- Shadow Claw
+- Protect
+
+Miltank @ Sitrus Berry
+Level: 57
+- Body Slam
+- Rollout
+- Defense Curl
+- Milk Drink

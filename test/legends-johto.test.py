@@ -31,7 +31,10 @@ AzaleaCenter AzaleaMart Route32Center SproutTowerBelfry
 STOPS = {
     "IlexForest": [(43, 30), (43, 31), (9, 26), (18, 0), (19, 0)],
     "Route34": [(18, 39), (19, 39), (24, 14), (12, 0), (13, 0), (14, 0)],
-    "GoldenrodCity": [(12, 29), (14, 29), (9, 13), (25, 8), (30, 10), (5, 19)],
+    "GoldenrodRadioSquare": [(18, 25), (19, 25), (20, 25), (7, 8), (27, 8)],
+    "GoldenrodStudio": [(6, 7), (7, 7), (8, 5)],
+    "GoldenrodGym": [(7, 12), (8, 12), (7, 5)],
+    "GoldenrodCity": [(18, 0), (19, 0), (20, 0), (12, 29), (14, 29), (9, 13), (25, 8), (30, 10), (5, 19)],
     "Route22": [(47, 7), (8, 6)],
     "IndigoGate": [(7, 9), (7, 2)],
     "Route26": [(16, 9), (16, 28)],
@@ -107,7 +110,7 @@ def check_maps():
 def check_progress():
     trainer_flags = (ROOT / "include/legends_trainer_flags.h").read_text()
     events = (ROOT / "data/scripts/legends_johto.inc").read_text()
-    outcomes = {"WREN": "ZEPHYR_BADGE", "RUE": "HIVE_BADGE", **{n: n + "_WON" for n in ("PIP", "LEN", "KIT", "MOSS", "FERN")}}
+    outcomes = {"WREN": "ZEPHYR_BADGE", "RUE": "HIVE_BADGE", "CASS": "PLAIN_BADGE", **{n: n + "_WON" for n in ("PIP", "LEN", "KIT", "MOSS", "FERN")}}
     for name, flag in outcomes.items():
         assert re.search(rf"case TRAINER_LEGENDS_JOHTO_{name}:\s*return FLAG_JOHTO_{flag};", trainer_flags)
         assert f"trainerbattle_single TRAINER_LEGENDS_JOHTO_{name}," in events

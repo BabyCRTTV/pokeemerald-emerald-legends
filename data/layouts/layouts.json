@@ -10963,6 +10963,39 @@
       "border_filepath": "data/layouts/LittlerootTown/border.bin",
       "blockdata_filepath": "data/layouts/LegendsJohto_GoldenrodCity/map.bin",
       "layout_version": "emerald"
+    },
+    {
+      "id": "LAYOUT_LEGENDS_JOHTO_GOLDENROD_RADIO_SQUARE",
+      "name": "LegendsJohto_GoldenrodRadioSquare_Layout",
+      "width": 38,
+      "height": 26,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_LegendsJohto",
+      "border_filepath": "data/layouts/LittlerootTown/border.bin",
+      "blockdata_filepath": "data/layouts/LegendsJohto_GoldenrodRadioSquare/map.bin",
+      "layout_version": "emerald"
+    },
+    {
+      "id": "LAYOUT_LEGENDS_JOHTO_GOLDENROD_GYM",
+      "name": "LegendsJohto_GoldenrodGym_Layout",
+      "width": 15,
+      "height": 13,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_PetalburgGym",
+      "border_filepath": "data/layouts/PetalburgCity_Gym/border.bin",
+      "blockdata_filepath": "data/layouts/LegendsJohto_GoldenrodGym/map.bin",
+      "layout_version": "emerald"
+    },
+    {
+      "id": "LAYOUT_LEGENDS_JOHTO_GOLDENROD_STUDIO",
+      "name": "LegendsJohto_GoldenrodStudio_Layout",
+      "width": 13,
+      "height": 8,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_Facility",
+      "border_filepath": "data/layouts/RustboroCity_DevonCorp_1F/border.bin",
+      "blockdata_filepath": "data/layouts/LegendsJohto_GoldenrodStudio/map.bin",
+      "layout_version": "emerald"
     }
   ]
 }

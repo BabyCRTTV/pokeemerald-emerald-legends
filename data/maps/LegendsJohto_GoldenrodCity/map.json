@@ -19,6 +19,11 @@
       "map": "MAP_LEGENDS_JOHTO_ROUTE34",
       "offset": 0,
       "direction": "down"
+    },
+    {
+      "map": "MAP_LEGENDS_JOHTO_GOLDENROD_RADIO_SQUARE",
+      "offset": 0,
+      "direction": "up"
     }
   ],
   "object_events": [

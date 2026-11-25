@@ -11,6 +11,7 @@
 #define JOHTO_VIEW_MARKER_INDEX (MAP_OFFSET_W * MAP_OFFSET_H)
 #define JOHTO_VIEW_REVISION 0x4A02
 #define AZALEA_WEST_GATE_REVISION 0x4A03
+#define GOLDENROD_NORTH_GATE_REVISION 0x4A04
 STATIC_ASSERT(JOHTO_VIEW_MARKER_INDEX < ARRAY_COUNT(gSaveBlock1Ptr->mapView), JohtoViewMarkerFits);
 
 // Each point belongs to the connected footpath on that specific map.
@@ -28,6 +29,7 @@ static const struct UCoords8 sTrailAnchors[] =
     [MAP_NUM(MAP_LEGENDS_JOHTO_ROUTE32)] = {14, 50},
     [MAP_NUM(MAP_LEGENDS_JOHTO_ROUTE33)] = {19, 10},
     [MAP_NUM(MAP_LEGENDS_JOHTO_AZALEA_TOWN)] = {10, 10},
+    [MAP_NUM(MAP_LEGENDS_JOHTO_GOLDENROD_CITY)] = {19, 10},
 };
 
 static u16 GetSavedSceneryRevision(void)
@@ -35,6 +37,9 @@ static u16 GetSavedSceneryRevision(void)
     if (gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(MAP_LEGENDS_JOHTO_AZALEA_TOWN)
      && gSaveBlock1Ptr->location.mapNum == MAP_NUM(MAP_LEGENDS_JOHTO_AZALEA_TOWN))
         return AZALEA_WEST_GATE_REVISION;
+    if (gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(MAP_LEGENDS_JOHTO_GOLDENROD_CITY)
+     && gSaveBlock1Ptr->location.mapNum == MAP_NUM(MAP_LEGENDS_JOHTO_GOLDENROD_CITY))
+        return GOLDENROD_NORTH_GATE_REVISION;
     return JOHTO_VIEW_REVISION;
 }
 

@@ -33,6 +33,8 @@ static inline u16 LegendsTrainerFlag(u16 trainerId)
         return FLAG_JOHTO_FERN_WON;
     case TRAINER_LEGENDS_JOHTO_WREN:
         return FLAG_JOHTO_ZEPHYR_BADGE;
+    case TRAINER_LEGENDS_JOHTO_CASS:
+        return FLAG_JOHTO_PLAIN_BADGE;
     case TRAINER_LEGENDS_JOHTO_RUE:
         return FLAG_JOHTO_HIVE_BADGE;
     case TRAINER_LEGENDS_KANTO_ERIKA_STANDARD:

@@ -175,3 +175,18 @@ Matched mGBA captures used the same player positions and noon lighting on both b
 | --- | --- | --- |
 | Release | `adac66c34e50fc619514384645d15d5a6abc8e60cc9324093a2afbd201ed8776` | `7d548212fd990fe529349532782b1302b80c4983811539d5eebda54f379111fc` |
 | Debug | `973869448e285471f4da740478ae1f7e09d1e8c520414cfccc75a6d8a4be2272` | `6f6324b0a2b9c12be7a8d05c229fa5fc1e3a558be5d0af01360e8dbb281382e8` |
+
+## Goldenrod Radio Square and the Plain Badge
+
+Head north on the three-wide avenue in Goldenrod’s South Market. Across the square, the radio studio is on the west side and the Gym is on the east. The host plays a field recording of Mareep. On the Gym floor, Cass fields Girafarig, Ursaring and Miltank at levels 55, 55 and 57. The Hive Badge opens her challenge. Victory earns the Plain Badge and completes the new Goldenrod journal entry.
+
+![Goldenrod Radio, the studio sound check, the Gym floor and Cass’s battle](radio-square.png)
+
+All three entrance lanes worked in both directions in mGBA. Both interior exit tiles in each building returned to its own doorstep. The Gym gate, loss without a badge, victory, battery reload and repeat conversation were checked. A save made on the previous Apricorn Release beside the old tree line continued on the reapplied Release, crossed north into the square, and walked back. The new maps and journal entry append to the existing order. Cass uses a dedicated permanent flag and the native trainer save range retains its size.
+
+Floating IPS and the browser patch decoder produced byte-identical native builds from clean US Emerald. The preview uses native gameplay and audio, with staged scene starts and cuts.
+
+| Build | BPS SHA-256 | ROM SHA-256 |
+| --- | --- | --- |
+| Release | `06fad72f6a79015d5f0a8858296b99fc3ab95ca065a0e0fc68f449b09dcbc359` | `63ec025bc885e7d39646ce0297c448574a5024637e3844ab27ca8fc00a014abc` |
+| Debug | `8c7b2ce43fa78069bef8503bb45ce667d2697f7bb83115ee439d2430e72da24a` | `0930c5c6d15f33e8a46b7587c4eae4ee5e81865f63751746ad06bb49d6f6b26f` |

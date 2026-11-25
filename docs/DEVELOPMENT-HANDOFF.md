@@ -1,5 +1,9 @@
 # Development handoff
 
+## Goldenrod Radio Square and the Plain Badge · November 25, 2026
+
+Model GPT-6 · Opened the north avenue from South Market into Radio Square. The studio plays a field recording, and Gym Leader Cass awards Johto’s third badge. Both entrances, the badge sequence, persistence and an older Goldenrod save passed native checks. The three new maps are on draft PR #128 for owner review. Route 35 and National Park are the next unopened stretch. [Native views and patch checks](qa/johto-opening/README.md#goldenrod-radio-square-and-the-plain-badge).
+
 ## Johto Apricorn trees · November 25, 2026
 
 Model GPT-6 · Redrew the shared Apricorn tree with grouped leaves, three hanging fruits and a forked trunk. All 24 placements use the new artwork. Native collision checks covered Azalea, Goldenrod and Route 30. The revised preview is on draft PR #128 for owner review. [In-game comparison and patch checks](qa/johto-opening/README.md#johto-apricorn-trees).

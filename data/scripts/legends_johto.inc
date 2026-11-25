@@ -927,3 +927,115 @@ JohtoWest_Text_Bike:
 	.string "I do exchanges for Rydel. Pick\n"
 	.string "out your first bike in Mauville,\l"
 	.string "then bring it here for a swap.$"
+
+LegendsJohto_GoldenrodRadioSquare_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, JohtoWest_GoldenrodArrival
+	.byte 0
+LegendsJohto_GoldenrodGym_MapScripts::
+LegendsJohto_GoldenrodStudio_MapScripts::
+	.byte 0
+
+Goldenrod_Cass::
+	lockall
+	faceplayer
+	goto_if_set FLAG_JOHTO_PLAIN_BADGE, Goldenrod_CassAfter
+	goto_if_unset FLAG_JOHTO_HIVE_BADGE, Goldenrod_CassGate
+	trainerbattle_single TRAINER_LEGENDS_JOHTO_CASS, Goldenrod_Text_Intro, Goldenrod_Text_Defeat
+	setflag FLAG_JOHTO_PLAIN_BADGE
+	playfanfare MUS_OBTAIN_BADGE
+	msgbox Goldenrod_Text_Win, MSGBOX_DEFAULT
+	waitfanfare
+	releaseall
+	end
+Goldenrod_CassAfter:
+	msgbox Goldenrod_Text_After, MSGBOX_DEFAULT
+	releaseall
+	end
+Goldenrod_CassGate:
+	msgbox Goldenrod_Text_Gate, MSGBOX_DEFAULT
+	releaseall
+	end
+Goldenrod_Text_Intro:
+	.string "CASS: Hear that little scuff?\n"
+	.string "That's Miltank lining up a run.\p"
+	.string "Let's see how you handle it!$"
+Goldenrod_Text_Defeat:
+	.string "You caught her on the turn!$"
+Goldenrod_Text_Win:
+	.string "CASS: The PLAIN BADGE is yours.\n"
+	.string "Come cool down with us anytime.$"
+Goldenrod_Text_After:
+	.string "CASS: We do our slow laps in\n"
+	.string "the square. Miltank knows every\l"
+	.string "flower box on the route.$"
+Goldenrod_Text_Gate:
+	.string "CASS: Rue runs the Gym in Azalea.\n"
+	.string "Bring me her HIVE BADGE and I'll\l"
+	.string "clear the floor for our match.$"
+Goldenrod_Guide::
+	msgbox Goldenrod_Text_Guide, MSGBOX_NPC
+	end
+Goldenrod_Text_Guide:
+	.string "Cass leads with Girafarig. Save\n"
+	.string "a sturdy partner for Miltank.\l"
+	.string "Rollout gets stronger each turn!$"
+Goldenrod_Listener::
+	msgbox Goldenrod_Text_Listener, MSGBOX_NPC
+	end
+Goldenrod_Text_Listener:
+	.string "I heard a Mareep on the radio\n"
+	.string "and checked my kitchen. Sounded\l"
+	.string "like it was right beside me!$"
+Goldenrod_StudioSign::
+	msgbox Goldenrod_Text_StudioSign, MSGBOX_SIGN
+	end
+Goldenrod_Text_StudioSign:
+	.string "GOLDENROD RADIO\n"
+	.string "field recordings - Visitors welcome.$"
+Goldenrod_GymSign::
+	msgbox Goldenrod_Text_GymSign, MSGBOX_SIGN
+	end
+Goldenrod_Text_GymSign:
+	.string "GOLDENROD GYM - LEADER CASS\n"
+	.string "Home of the PLAIN BADGE.$"
+Goldenrod_Host::
+	lock
+	faceplayer
+	msgbox Goldenrod_Text_TuneIn, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, NO, Goldenrod_HostEnd
+	playmoncry SPECIES_MAREEP, CRY_MODE_NORMAL
+	waitmoncry
+	msgbox Goldenrod_Text_Question, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, YES, Goldenrod_HostRight
+	msgbox Goldenrod_Text_Reveal, MSGBOX_DEFAULT
+	goto Goldenrod_HostEnd
+Goldenrod_HostRight:
+	msgbox Goldenrod_Text_Right, MSGBOX_DEFAULT
+Goldenrod_HostEnd:
+	release
+	end
+Goldenrod_Text_TuneIn:
+	.string "You're just in time for our sound\n"
+	.string "check. Want to hear today's tape?$"
+Goldenrod_Text_Question:
+	.string "That call came from Route 32.\n"
+	.string "Do you think it was a Mareep?$"
+Goldenrod_Text_Right:
+	.string "Right! That was our first take.\n"
+	.string "She tried chewing the microphone\l"
+	.string "on the second.$"
+Goldenrod_Text_Reveal:
+	.string "A Mareep! She put her nose right\n"
+	.string "up to the microphone.$"
+
+Goldenrod_Practice::
+	lock
+	faceplayer
+	playmoncry SPECIES_MILTANK, CRY_MODE_NORMAL
+	waitmoncry
+	msgbox Goldenrod_Text_Practice, MSGBOX_DEFAULT
+	release
+	end
+Goldenrod_Text_Practice:
+	.string "Miltank traces a tight circle\n"
+	.string "with the tip of her hoof.$"

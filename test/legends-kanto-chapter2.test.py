@@ -77,6 +77,7 @@ typedef uint16_t u16;
 #define FLAG_JOHTO_KIT_WON 0x907
 #define FLAG_JOHTO_MOSS_WON 0x908
 #define FLAG_JOHTO_FERN_WON 0x909
+#define FLAG_JOHTO_PLAIN_BADGE 0x90C
 #include "legends_trainer_flags.h"
 int main(void) {
 assert(MAX_TRAINERS_COUNT == 864);
@@ -84,7 +85,8 @@ assert(TRAINER_FLAGS_START + MAX_TRAINERS_COUNT == 0x860);
 for (int i=0;i<864;i++) assert(LegendsTrainerFlag(i)==0x500+i);
 assert(LegendsTrainerFlag(864)==0x272 && LegendsTrainerFlag(865)==0x272);
 assert(LegendsTrainerFlag(866)==0x273 && LegendsTrainerFlag(867)==0x273);
-assert(TRAINERS_COUNT == 883 && TRAINER_PARTNER(PARTNER_STEVEN)==884);
+assert(LegendsTrainerFlag(883)==FLAG_JOHTO_PLAIN_BADGE);
+assert(TRAINERS_COUNT == 884 && TRAINER_PARTNER(PARTNER_STEVEN)==885);
 assert(LegendsTrainerFlag(TRAINER_PARTNER(PARTNER_STEVEN))==0);
 assert(LegendsTrainerFlag(TRAINER_LEGENDS_KANTO_BLUE_STANDARD)==0x275);
 assert(LegendsTrainerFlag(TRAINER_LEGENDS_KANTO_BLUE_CHAMPION)==0x275);
