@@ -389,6 +389,14 @@
       "y": 13,
       "respawn_map": "MAP_LEGENDS_JOHTO_AZALEA_CENTER",
       "respawn_npc": "LOCALID_JOHTO_AZALEA_CENTER_NURSE"
+    },
+    {
+      "id": "HEAL_LOCATION_LEGENDS_GOLDENROD_CITY",
+      "map": "MAP_LEGENDS_JOHTO_GOLDENROD_CITY",
+      "x": 9,
+      "y": 13,
+      "respawn_map": "MAP_LEGENDS_JOHTO_GOLDENROD_CENTER",
+      "respawn_npc": "LOCALID_JOHTO_GOLDENROD_CENTER_NURSE"
     }
   ]
 }

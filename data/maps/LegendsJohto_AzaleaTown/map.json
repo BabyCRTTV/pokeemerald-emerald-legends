@@ -19,6 +19,11 @@
       "map": "MAP_LEGENDS_JOHTO_ROUTE33",
       "offset": 0,
       "direction": "right"
+    },
+    {
+      "map": "MAP_LEGENDS_JOHTO_ILEX_FOREST",
+      "offset": -14,
+      "direction": "left"
     }
   ],
   "object_events": [
@@ -38,7 +43,7 @@
     {
       "graphics_id": "OBJ_EVENT_GFX_BOY_1",
       "x": 5,
-      "y": 16,
+      "y": 18,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
       "movement_range_x": 0,

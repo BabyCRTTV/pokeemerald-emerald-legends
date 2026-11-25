@@ -16,6 +16,25 @@ The Zephyr and Hive badges appear in the **Johto League** journal entry. Five lo
 
 The Heart & Soul team provided a visual reference for eastern Johto in Gen III. The layouts, landmark art, trainer teams and story here were made for Emerald: Legends. [Heart & Soul project and credits](https://github.com/PokemonHnS-Development/pokehns-expansion/tree/167aa6d)
 
+## West from Azalea to Goldenrod
+
+Azalea’s west road opens into Ilex Forest. The woodland boardwalk leads north to Route 34 and its Day Care, then into Goldenrod’s South Market. The shrine occupies a side clearing. Its Miracle Seed is available once and can be claimed later if the Bag is full. The new streets contain a Pokémon Center, florist, herbalist and bicycle exchange. The Goldenrod Gym and northern districts are future work.
+
+![Four gameplay views from the forest shrine to Goldenrod’s flower shop](goldenrod-market.png)
+
+- Added eight maps after the original 36, and appended the new map sections, heal location and two flags. All earlier map and save IDs keep their positions. The Goldenrod PokéNav marker and Fly arrival use the Pokémon Center doorstep.
+- Walked the entire route from Azalea and back in mGBA. Checked all seven outbound road lanes and walked through all five exterior doors in both directions. Encountered Hoothoot in Ilex Forest and Rattata on Route 34. The Goldenrod nurse restored HP and Fly landed outside the Center.
+- Collected the Miracle Seed, revisited the shrine and saved and reloaded with exactly one seed. Verified the shared Day Care with a seeded Mareep and Psyduck. Both appeared in the paddock, could be withdrawn for 100 each, and the empty paddock and party persisted on reload. Purchased Energy Powder at the herbalist, opened the decoration catalog at the florist, and exchanged Mach and Acro Bikes in both directions.
+- Saved on the previous timber preview in Azalea at (2, 17), recording the original west tree line in the battery save. Continued on the reapplied Release and walked into Ilex Forest and back. Only Azalea uses the new scenery-cache marker.
+- The Johto and region-map regressions passed. Floating IPS and the browser patch decoder independently reconstructed both native builds from clean US Emerald. The tour uses native game frames and sound. Scene starts are staged, including the two Pokémon shown in the paddock.
+
+| Artifact | SHA-256 |
+| --- | --- |
+| Release BPS | `5ae8ef8bcb1721143de9ddea54d862db0aea594b9195938906e28a50ff6447ea` |
+| Release ROM | `9bb67a042a596160c933f7dc663bb196418ef0c643dbf7ec9b5bfcdc07fb4cd3` |
+| Debug BPS | `8234cae04d0a6d3473da538474b8696e2e0faba8e7b63525364629a65c1d7b1c` |
+| Debug ROM | `bff690471cc0011fa4ae0983ccbc601cd36af48d3488080cc3acd88f06a5c0eb` |
+
 ## Timber shading on Johto crossings
 
 The Cherrygrove pier, the bridge to Sprout Tower and the Route 32 boardwalk use a narrow highlight on the sunlit edge of each plank. Short, offset grain marks and a darker exposed end follow the scale of Dewford’s pier. The seven deck metatiles use the existing outdoor timber palette.

@@ -29,6 +29,9 @@ AzaleaCenter AzaleaMart Route32Center SproutTowerBelfry
 
 # Each list starts at an entrance and includes the connected exit or landmark.
 STOPS = {
+    "IlexForest": [(43, 30), (43, 31), (9, 26), (18, 0), (19, 0)],
+    "Route34": [(18, 39), (19, 39), (24, 14), (12, 0), (13, 0), (14, 0)],
+    "GoldenrodCity": [(12, 29), (14, 29), (9, 13), (25, 8), (30, 10), (5, 19)],
     "Route22": [(47, 7), (8, 6)],
     "IndigoGate": [(7, 9), (7, 2)],
     "Route26": [(16, 9), (16, 28)],
@@ -79,6 +82,9 @@ def check_maps():
     groups = read_json("data/maps/map_groups.json")
     assert groups["group_order"][77] == "gMapGroup_LegendsJohto"
     names = groups["gMapGroup_LegendsJohto"]
+    west = ["IlexForest", "Route34", "GoldenrodCity", "Route34DayCare", "GoldenrodCenter",
+            "GoldenrodFlorist", "GoldenrodHerbalist", "GoldenrodBikeShop"]
+    assert names[len(EXPECTED_ORDER):len(EXPECTED_ORDER) + len(west)] == ["LegendsJohto_" + n for n in west]
     assert names[:len(EXPECTED_ORDER)] == ["LegendsJohto_" + name for name in EXPECTED_ORDER]
     areas = {area["id"]: area for area in map(map_data, names + ["LegendsKanto_ViridianCity"])}
     layouts = {item["id"]: item for item in read_json("data/layouts/layouts.json")["layouts"]}
@@ -311,10 +317,36 @@ def check_roads_and_borders():
             assert attributes[tile - 0x200] >> 12 == 1, (name, col, row, hex(tile))
 
 
+def check_western_shores():
+    layouts = {entry["id"]: entry for entry in read_json("data/layouts/layouts.json")["layouts"]}
+    def words(path):
+        return [word for word, in struct.iter_unpack("<H", (ROOT / path).read_bytes())]
+
+    stock = words("data/tilesets/primary/general/metatiles.bin")
+    johto = words("data/tilesets/secondary/legends_johto/metatiles.bin")
+    for area, y, left, right, bridge in (("IlexForest", 21, 17, 27, {22, 23}),
+                                         ("Route34", 25, 3, 9, {7, 8})):
+        layout = layouts[map_data("LegendsJohto_" + area)["layout"]]
+        blocks = words(layout["blockdata_filepath"])
+        for x in range(left, right + 1):
+            if x in bridge:
+                continue
+            block = blocks[y * layout["width"] + x]
+            assert block >> 12 == 1
+            # Match all eight graphics words to the reflected stock north bank.
+            # Repeating the corner in a straight run leaves a notch every 16 pixels.
+            north = 0x188 if x == left else 0x18A if x == right else 0x189
+            source = stock[north * 8:(north + 1) * 8]
+            expected = [source[j ^ 2] ^ 0x800 if source[j ^ 2] else 0 for j in range(8)]
+            offset = ((block & 0x3FF) - 0x200) * 8
+            assert johto[offset:offset + 8] == expected, (area, x, y)
+
+
 if __name__ == "__main__":
     check_maps()
     check_progress()
     check_building_footprints()
     check_coast_and_woodland()
     check_roads_and_borders()
+    check_western_shores()
     print("Johto map identifiers, paths, borders, signs, coasts, woodland, building collision, doors, trainers and survey checkpoints passed.")

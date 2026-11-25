@@ -569,9 +569,9 @@ Johto_Text_Orchard:
 	.string "invite the birds back.$"
 
 Johto_Text_Forest:
-	.string "Ilex Forest is beyond this grove.\n"
-	.string "I walk the orchard rows to watch\l"
-	.string "the cocoons open.$"
+	.string "The west trail leads to Ilex.\n"
+	.string "Follow the old boardwalk to find\l"
+	.string "the little shrine.$"
 
 Johto_Text_Apricorn:
 	.string "My grandfather cured green\n"
@@ -789,3 +789,141 @@ Johto_Text_FernDefeat:
 Johto_Text_FernAfter:
 	.string "Rue can tell when a cocoon will\n"
 	.string "hatch just by its weight.$"
+
+LegendsJohto_GoldenrodBikeShop_MapScripts::
+LegendsJohto_IlexForest_MapScripts::
+LegendsJohto_Route34DayCare_MapScripts::
+LegendsJohto_GoldenrodFlorist_MapScripts::
+LegendsJohto_GoldenrodHerbalist_MapScripts::
+	.byte 0
+
+LegendsJohto_GoldenrodCity_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, JohtoWest_GoldenrodArrival
+	.byte 0
+JohtoWest_GoldenrodArrival:
+	setflag FLAG_VISITED_LEGENDS_GOLDENROD_CITY
+	end
+
+LegendsJohto_GoldenrodCenter_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, JohtoWest_CenterArrival
+	.byte 0
+JohtoWest_CenterArrival:
+	setrespawn HEAL_LOCATION_LEGENDS_GOLDENROD_CITY
+	end
+
+JohtoWest_Shrine::
+	lockall
+	goto_if_set FLAG_JOHTO_ILEX_SHRINE_SEED, JohtoWest_ShrineQuiet
+	msgbox JohtoWest_Text_Shrine, MSGBOX_DEFAULT
+	giveitem ITEM_MIRACLE_SEED
+	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_ShowBagIsFull
+	setflag FLAG_JOHTO_ILEX_SHRINE_SEED
+	releaseall
+	end
+JohtoWest_ShrineQuiet:
+	msgbox JohtoWest_Text_Quiet, MSGBOX_DEFAULT
+	releaseall
+	end
+
+JohtoWest_FlowerShop::
+	lock
+	faceplayer
+	goto Route104_PrettyPetalFlowerShop_EventScript_SellDecorations
+
+JohtoWest_Herbs::
+	goto LavaridgeTown_HerbShop_EventScript_Clerk
+
+JohtoWest_Text_Shrine:
+	.string "A seed has taken root between the\n"
+	.string "steps. Its husk comes away in\l"
+	.string "your hand.$"
+JohtoWest_Text_Quiet:
+	.string "A green shoot curls up between\n"
+	.string "the boards. The leaves above it\l"
+	.string "are perfectly still.$"
+
+JohtoWest_Trail::
+	msgbox JohtoWest_Text_Trail, MSGBOX_SIGN
+	end
+JohtoWest_Text_Trail:
+	.string "ILEX FOREST\p"
+	.string "Shrine west of the boardwalk.\n"
+	.string "Route 34 by the north trail.$"
+
+JohtoWest_Naturalist::
+	msgbox JohtoWest_Text_Naturalist, MSGBOX_NPC
+	end
+JohtoWest_Text_Naturalist:
+	.string "See those little bites around\n"
+	.string "the leaf edges? A Venonat did\l"
+	.string "that. It was still eating when\l"
+	.string "I got here.$"
+
+JohtoWest_DayCareSign::
+	msgbox JohtoWest_Text_DayCareSign, MSGBOX_SIGN
+	end
+JohtoWest_Text_DayCareSign:
+	.string "ROUTE 34 DAY CARE\p"
+	.string "We share our register with\n"
+	.string "Route 117 in Hoenn. Ask inside\l"
+	.string "about a Pokémon in our care.$"
+
+JohtoWest_Fisher::
+	msgbox JohtoWest_Text_Fisher, MSGBOX_NPC
+	end
+JohtoWest_Text_Fisher:
+	.string "Abra blink away the moment I\n"
+	.string "lift my rod. Ditto just watch\l"
+	.string "me until I start to feel silly.$"
+
+JohtoWest_Market::
+	msgbox JohtoWest_Text_Market, MSGBOX_NPC
+	end
+JohtoWest_Text_Market:
+	.string "My sister dries the roots. I\n"
+	.string "grow the flowers. Guess which\l"
+	.string "shop gets more first dates!$"
+
+JohtoWest_Porter::
+	msgbox JohtoWest_Text_Porter, MSGBOX_NPC
+	end
+JohtoWest_Text_Porter:
+	.string "I carry crates between the herb\n"
+	.string "shop and the southern road. The\l"
+	.string "ones marked Revival Herb weigh\l"
+	.string "a ton.$"
+
+JohtoWest_GoldenrodSign::
+	msgbox JohtoWest_Text_GoldenrodSign, MSGBOX_SIGN
+	end
+JohtoWest_Text_GoldenrodSign:
+	.string "GOLDENROD CITY\p"
+	.string "South Market. Flowers on the\n"
+	.string "east side of the square. Herb\l"
+	.string "shop up the steps.$"
+
+LegendsJohto_Route34_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, JohtoWest_ShowPaddock
+	.byte 0
+JohtoWest_ShowPaddock:
+	setflag FLAG_TEMP_1
+	setflag FLAG_TEMP_2
+	getdaycaregfx VAR_OBJ_GFX_ID_0, VAR_OBJ_GFX_ID_1, VAR_TEMP_0, VAR_TEMP_1
+	goto_if_eq VAR_RESULT, 0, JohtoWest_PaddockDone
+	clearflag FLAG_TEMP_1
+	goto_if_eq VAR_RESULT, 1, JohtoWest_PaddockDone
+	clearflag FLAG_TEMP_2
+JohtoWest_PaddockDone:
+	end
+
+JohtoWest_Bike::
+	lock
+	faceplayer
+	goto_if_set FLAG_RECEIVED_BIKE, MauvilleCity_BikeShop_EventScript_AskSwitchBikes
+	msgbox JohtoWest_Text_Bike, MSGBOX_DEFAULT
+	release
+	end
+JohtoWest_Text_Bike:
+	.string "I do exchanges for Rydel. Pick\n"
+	.string "out your first bike in Mauville,\l"
+	.string "then bring it here for a swap.$"

@@ -10930,6 +10930,39 @@
       "border_filepath": "data/layouts/PokemonCenter_1F/border.bin",
       "blockdata_filepath": "data/layouts/LegendsJohto_CherrygroveCenter/map.bin",
       "layout_version": "emerald"
+    },
+    {
+      "id": "LAYOUT_LEGENDS_JOHTO_ILEX_FOREST",
+      "name": "LegendsJohto_IlexForest_Layout",
+      "width": 44,
+      "height": 40,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_LegendsJohto",
+      "border_filepath": "data/layouts/LittlerootTown/border.bin",
+      "blockdata_filepath": "data/layouts/LegendsJohto_IlexForest/map.bin",
+      "layout_version": "emerald"
+    },
+    {
+      "id": "LAYOUT_LEGENDS_JOHTO_ROUTE34",
+      "name": "LegendsJohto_Route34_Layout",
+      "width": 34,
+      "height": 40,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_LegendsJohto",
+      "border_filepath": "data/layouts/LittlerootTown/border.bin",
+      "blockdata_filepath": "data/layouts/LegendsJohto_Route34/map.bin",
+      "layout_version": "emerald"
+    },
+    {
+      "id": "LAYOUT_LEGENDS_JOHTO_GOLDENROD_CITY",
+      "name": "LegendsJohto_GoldenrodCity_Layout",
+      "width": 38,
+      "height": 30,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_LegendsJohto",
+      "border_filepath": "data/layouts/LittlerootTown/border.bin",
+      "blockdata_filepath": "data/layouts/LegendsJohto_GoldenrodCity/map.bin",
+      "layout_version": "emerald"
     }
   ]
 }

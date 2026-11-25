@@ -1,5 +1,9 @@
 # Development handoff
 
+## Ilex Forest, Route 34 and southern Goldenrod · November 25, 2026
+
+Model GPT-6 · Extended the approved Azalea trail through Ilex Forest to Route 34 and Goldenrod’s South Market. The shrine, shared Day Care, two shops, bike exchange, nurse and Fly landing are playable in draft PR #128. A battery save made beside the old Azalea tree line crossed the new exit on the reapplied Release. Goldenrod Gym and the northern districts are the next unfinished part of the journey. [Native gameplay and verification](qa/johto-opening/README.md#west-from-azalea-to-goldenrod).
+
 ## Johto timber shading · November 25, 2026
 
 Model GPT-6 · Reshaded the pier and bridge planks using Dewford’s board spacing and the existing Johto timber tones. Matched walking footage and noon and night captures cover Cherrygrove, Violet and Route 32. Both patch decoders and the older save check passed. The artwork is on draft PR #128 for review. [Comparison and patch hashes](qa/johto-opening/README.md#timber-shading-on-johto-crossings).

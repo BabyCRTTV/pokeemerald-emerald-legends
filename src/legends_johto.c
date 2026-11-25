@@ -10,6 +10,7 @@
 // just past that rectangle distinguishes the revised map collision on Continue.
 #define JOHTO_VIEW_MARKER_INDEX (MAP_OFFSET_W * MAP_OFFSET_H)
 #define JOHTO_VIEW_REVISION 0x4A02
+#define AZALEA_WEST_GATE_REVISION 0x4A03
 STATIC_ASSERT(JOHTO_VIEW_MARKER_INDEX < ARRAY_COUNT(gSaveBlock1Ptr->mapView), JohtoViewMarkerFits);
 
 // Each point belongs to the connected footpath on that specific map.
@@ -28,6 +29,14 @@ static const struct UCoords8 sTrailAnchors[] =
     [MAP_NUM(MAP_LEGENDS_JOHTO_ROUTE33)] = {19, 10},
     [MAP_NUM(MAP_LEGENDS_JOHTO_AZALEA_TOWN)] = {10, 10},
 };
+
+static u16 GetSavedSceneryRevision(void)
+{
+    if (gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(MAP_LEGENDS_JOHTO_AZALEA_TOWN)
+     && gSaveBlock1Ptr->location.mapNum == MAP_NUM(MAP_LEGENDS_JOHTO_AZALEA_TOWN))
+        return AZALEA_WEST_GATE_REVISION;
+    return JOHTO_VIEW_REVISION;
+}
 
 static s32 DistanceToSavedPlayer(s32 x, s32 y)
 {
@@ -121,7 +130,7 @@ void LegendsJohtoMarkSavedScenery(void)
 {
 #if !IS_FRLG
     if (gMapHeader.mapLayout->secondaryTileset == &gTileset_LegendsJohto)
-        gSaveBlock1Ptr->mapView[JOHTO_VIEW_MARKER_INDEX] = JOHTO_VIEW_REVISION;
+        gSaveBlock1Ptr->mapView[JOHTO_VIEW_MARKER_INDEX] = GetSavedSceneryRevision();
 #endif
 }
 
@@ -134,7 +143,7 @@ bool32 LegendsJohtoRestoreLegacyScenery(void)
      || gSaveBlock1Ptr->location.mapGroup != MAP_GROUP(MAP_LEGENDS_JOHTO_NEW_BARK_TOWN)
      || mapNum >= ARRAY_COUNT(sTrailAnchors)
      || (sTrailAnchors[mapNum].x == 0 && sTrailAnchors[mapNum].y == 0)
-     || gSaveBlock1Ptr->mapView[JOHTO_VIEW_MARKER_INDEX] == JOHTO_VIEW_REVISION)
+     || gSaveBlock1Ptr->mapView[JOHTO_VIEW_MARKER_INDEX] == GetSavedSceneryRevision())
         return FALSE;
     bool32 surfing = FALSE;
     for (u32 i = 0; i < OBJECT_EVENTS_COUNT; i++)

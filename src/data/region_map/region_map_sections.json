@@ -1752,6 +1752,30 @@
       "y": 12,
       "width": 1,
       "height": 1
+    },
+    {
+      "id": "MAPSEC_LEGENDS_ILEX_FOREST",
+      "name": "ILEX FOREST",
+      "x": 2,
+      "y": 12,
+      "width": 1,
+      "height": 1
+    },
+    {
+      "id": "MAPSEC_LEGENDS_ROUTE34",
+      "name": "ROUTE 34",
+      "x": 2,
+      "y": 10,
+      "width": 1,
+      "height": 1
+    },
+    {
+      "id": "MAPSEC_LEGENDS_GOLDENROD_CITY",
+      "name": "GOLDENROD CITY",
+      "x": 2,
+      "y": 8,
+      "width": 1,
+      "height": 1
     }
   ]
 }
