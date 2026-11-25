@@ -1,5 +1,9 @@
 # Development handoff
 
+## Johto timber shading · November 25, 2026
+
+Model GPT-6 · Reshaded the pier and bridge planks using Dewford’s board spacing and the existing Johto timber tones. Matched walking footage and noon and night captures cover Cherrygrove, Violet and Route 32. Both patch decoders and the older save check passed. The artwork is on draft PR #128 for review. [Comparison and patch hashes](qa/johto-opening/README.md#timber-shading-on-johto-crossings).
+
 ## Johto trainer visibility · November 25, 2026
 
 Model GPT-6 · Fixed terrain drawing above the player on bridge decks, cobblestones and lower scenery edges. A matched controller replay showed the trainer crossing all four reported surface types. All 23 sampled ground and frontage positions displayed the entire reference sprite, and Elm’s overhanging roof retained its depth. Both native patches and the old-save lab entrance passed. [Native captures and patch hashes](qa/johto-opening/README.md#trainer-visibility-on-johto-terrain). Draft PR #128 is ready for review.

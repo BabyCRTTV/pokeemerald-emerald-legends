@@ -16,6 +16,21 @@ The Zephyr and Hive badges appear in the **Johto League** journal entry. Five lo
 
 The Heart & Soul team provided a visual reference for eastern Johto in Gen III. The layouts, landmark art, trainer teams and story here were made for Emerald: Legends. [Heart & Soul project and credits](https://github.com/PokemonHnS-Development/pokehns-expansion/tree/167aa6d)
 
+## Timber shading on Johto crossings
+
+The Cherrygrove pier, the bridge to Sprout Tower and the Route 32 boardwalk use a narrow highlight on the sunlit edge of each plank. Short, offset grain marks and a darker exposed end follow the scale of Dewford’s pier. The seven deck metatiles use the existing outdoor timber palette.
+
+![Cherrygrove pier in the previous and revised previews, captured in mGBA](johto-timber.png)
+
+Walked all three crossings in mGBA with matched controller input and inspected each at noon and at night. All 84 movement checks passed. Surf mounted and dismounted at the pier. Verified the other metatiles’ graphics, sprite layers and palettes against the previous preview. Floating IPS and the browser decoder both reproduced the native Release and Debug ROMs. An older battery save resumed in the reapplied Release and passed the lab entrance and exit.
+
+| Artifact | SHA-256 |
+| --- | --- |
+| Release BPS | `fe2a0b424d9d1a8fcfb4a2a0f738bbdaa4b96a2e8f1ca3cea2b285b8545ae613` |
+| Release ROM | `2f685080266d0c19d5eb024e3108eae8e81cefd221517ea7c349d9a92258f3ec` |
+| Debug BPS | `d28cb28e473eb3b7c1186b78ef1267d146182f24326855b5958ef9cbbacfea2f` |
+| Debug ROM | `2e5d99839cbb716cff8ac68b13ffb9ac1c4129e7c9e7200daa7ab5c4d5d86459` |
+
 ## Trainer visibility on Johto terrain
 
 Opaque wooden planks and paving were drawing in front of the trainer. Changed the layer attributes for walking surfaces, the bottom edges of local scenery and indoor props. The graphics, collision, map coordinates and save data retain the approved preview values.
