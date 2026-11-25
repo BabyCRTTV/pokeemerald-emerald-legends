@@ -82,6 +82,8 @@ static const struct LegendsQuest sQuests[] =
     {COMPOUND_STRING("Tunnel Lifeline"), FLAG_MISSIVE_ROPE_TAKEN, 1, 1, {{COMPOUND_STRING("Take 1 ESCAPE ROPE to the Bug Catcher in RUSTBORO MART"), FLAG_MISSIVE_ROPE_DONE}}},
     {COMPOUND_STRING("Echo Lesson"), FLAG_MISSIVE_ECHO_TAKEN, 1, 1, {{COMPOUND_STRING("Show WHISMUR to the boy at the left desk in RUSTBORO school"), FLAG_MISSIVE_ECHO_DONE}}},
     {COMPOUND_STRING("The Chosen One"), FLAG_PLATE_PILGRIMAGE_STARTED, 1, 2, {{COMPOUND_STRING("Receive the 19 monks' plates across HOENN"), FLAG_ALL_MONK_PLATES}, {COMPOUND_STRING("Find the elder by the LITTLEROOT lab"), FLAG_RECEIVED_AZURE_FLUTE}}},
+    {COMPOUND_STRING("A Wind from Johto"), FLAG_JOHTO_ELM_SURVEY, 1, 3, {{COMPOUND_STRING("Read the tide post at CHERRYGROVE"), FLAG_JOHTO_TIDE_READING}, {COMPOUND_STRING("Speak to the keeper in SPROUT TOWER"), FLAG_JOHTO_BELL_READING}, {COMPOUND_STRING("Bring both readings to ELM"), FLAG_JOHTO_SURVEY_RETURNED}}},
+    {COMPOUND_STRING("The Johto League"), FLAG_VISITED_LEGENDS_VIOLET_CITY, 1, 2, {{COMPOUND_STRING("Earn the ZEPHYR BADGE in VIOLET"), FLAG_JOHTO_ZEPHYR_BADGE}, {COMPOUND_STRING("Earn the HIVE BADGE in AZALEA"), FLAG_JOHTO_HIVE_BADGE}}},
 };
 static const struct LegendsAchievement sAchievements[] =
 {

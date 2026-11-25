@@ -833,7 +833,12 @@ static u32 LoopedTask_SwitchRegion(s32 taskState)
         if (menu->switchingFromZoom && (UpdateRegionMapZoom() || IsChangeBgYForZoomActive()))
             return LT_PAUSE;
         FreeRegionMapIconResources();
-        menu->displayRegion = menu->displayRegion == REGION_MAP_HOENN ? REGION_MAP_KANTO : REGION_MAP_HOENN;
+        switch (menu->displayRegion)
+        {
+        case REGION_MAP_HOENN: menu->displayRegion = REGION_MAP_KANTO; break;
+        case REGION_MAP_KANTO: menu->displayRegion = REGION_MAP_JOHTO; break;
+        default: menu->displayRegion = REGION_MAP_HOENN; break;
+        }
         InitRegionMapData(map, &sRegionMapBgTemplates[1], FALSE);
         RegionMap_SetDisplayRegion(menu->displayRegion);
         return LT_INC_AND_PAUSE;

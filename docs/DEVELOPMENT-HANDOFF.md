@@ -1,5 +1,9 @@
 # Development handoff
 
+## Johto first quarter · gameplay preview
+
+Viridian’s west road reaches New Bark, Cherrygrove, Violet and Azalea. The draft carries the monk and compatible expansion work forward. The owner is reviewing the first two Johto badges and the handmade environments. [Chapter route and gameplay verification](qa/johto-opening/README.md).
+
 ## The Chosen One preview (22 November 2026)
 
 Nineteen monks give one plate each across Hoenn. Once all nineteen gifts have been accepted, a twentieth monk appears near Birch’s lab in Littleroot and offers the Azure Flute. The combined candidate includes the November expansion update. It preserves Legends’ Casual move hints and captured-item handling. The owner is reviewing the gameplay preview. The current public game is v0.0.94. [Placements and verification](qa/chosen-one-preview.md).

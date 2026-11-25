@@ -18,7 +18,9 @@ def cells(layout):
 class Grottos(unittest.TestCase):
     def test_append_only_ids_and_unchanged_routes(self):
         after = read('data/maps/map_groups.json')
-        self.assertEqual(list(BASE['groups']),list(after))
+        published = list(BASE['groups'])
+        self.assertEqual(published, list(after)[:len(published)])
+        self.assertEqual(list(after), ['group_order', *after['group_order']])
         for group, before in BASE['groups'].items():
             self.assertEqual(before['sha256'], digest(after[group][:before['count']]))
         layouts = read('data/layouts/layouts.json')['layouts']

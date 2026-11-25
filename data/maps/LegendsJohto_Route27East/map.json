@@ -1,0 +1,45 @@
+{
+  "id": "MAP_LEGENDS_JOHTO_ROUTE27_EAST",
+  "name": "LegendsJohto_Route27East",
+  "layout": "LAYOUT_LEGENDS_JOHTO_ROUTE27_EAST",
+  "music": "MUS_ROUTE119",
+  "region": "REGION_HOENN",
+  "region_map_section": "MAPSEC_LEGENDS_ROUTE27",
+  "requires_flash": false,
+  "weather": "WEATHER_SUNNY",
+  "map_type": "MAP_TYPE_ROUTE",
+  "allow_cycling": true,
+  "allow_escaping": false,
+  "allow_running": true,
+  "show_map_name": true,
+  "floor_number": 0,
+  "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+  "connections": [
+    {
+      "map": "MAP_LEGENDS_JOHTO_ROUTE26",
+      "offset": 0,
+      "direction": "up"
+    }
+  ],
+  "object_events": [],
+  "warp_events": [
+    {
+      "x": 8,
+      "y": 10,
+      "elevation": 0,
+      "dest_map": "MAP_LEGENDS_JOHTO_TOHJO_FALLS",
+      "dest_warp_id": "0"
+    }
+  ],
+  "coord_events": [],
+  "bg_events": [
+    {
+      "type": "sign",
+      "x": 10,
+      "y": 11,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "Johto_EastMouth"
+    }
+  ]
+}

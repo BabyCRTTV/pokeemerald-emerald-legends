@@ -18042,3 +18042,63 @@ EVs: 128 HP / 128 Atk / 128 SpA / 128 Spe
 - Ice Beam
 - Dark Pulse
 - Protect
+
+=== TRAINER_LEGENDS_JOHTO_WREN ===
+Name: WREN
+Class: Leader
+Pic: Bird Keeper
+Gender: Male
+Music: Intense
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Noctowl
+Level: 48
+- Air Slash
+- Reflect
+- Roost
+- Psychic
+
+Murkrow
+Level: 48
+- Wing Attack
+- Haze
+- Taunt
+- Night Shade
+
+Pidgeot
+Level: 50
+- Air Slash
+- Quick Attack
+- Roost
+- Feather Dance
+
+=== TRAINER_LEGENDS_JOHTO_RUE ===
+Name: RUE
+Class: Leader
+Pic: Bug Catcher
+Gender: Male
+Music: Intense
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Ariados
+Level: 51
+- Sticky Web
+- Poison Jab
+- Sucker Punch
+- Bug Bite
+
+Heracross
+Level: 52
+- Brick Break
+- Aerial Ace
+- Megahorn
+- Rock Tomb
+
+Scizor
+Level: 54
+- Bullet Punch
+- X-Scissor
+- Agility
+- Slash

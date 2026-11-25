@@ -3234,6 +3234,9 @@ const struct ObjectEventGraphicsInfo *GetObjectEventGraphicsInfo(u16 graphicsId)
     if (graphicsId == OBJ_EVENT_GFX_LEGENDS_RINSE_PAIL)
         return &gObjectEventGraphicsInfo_RinsePail;
 
+    if (graphicsId == OBJ_EVENT_GFX_LEGENDS_ELM)
+        return &gObjectEventGraphicsInfo_Elm;
+
     if (graphicsId == OBJ_EVENT_GFX_LEGENDS_WOODS_PLAY_SIGN)
         return &gObjectEventGraphicsInfo_WoodsPlaySign;
 

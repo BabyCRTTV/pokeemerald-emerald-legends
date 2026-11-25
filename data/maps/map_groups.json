@@ -76,7 +76,8 @@
     "gMapGroup_IndoorSixIslandRoute_Frlg",
     "gMapGroup_IndoorSevenIslandRoute_Frlg",
     "gMapGroup_LegendsKanto",
-    "gMapGroup_LegendsHoenn"
+    "gMapGroup_LegendsHoenn",
+    "gMapGroup_LegendsJohto"
   ],
   "gMapGroup_TownsAndRoutes": [
     "PetalburgCity",
@@ -1290,5 +1291,43 @@
     "LegendsNightmare_Bedroom",
     "LegendsNightmare_Street",
     "LegendsNightmare_Shore"
+  ],
+  "gMapGroup_LegendsJohto": [
+    "LegendsJohto_Route22",
+    "LegendsJohto_IndigoGate",
+    "LegendsJohto_Route26",
+    "LegendsJohto_Route27East",
+    "LegendsJohto_TohjoFalls",
+    "LegendsJohto_Route27West",
+    "LegendsJohto_NewBarkTown",
+    "LegendsJohto_Route29",
+    "LegendsJohto_CherrygroveCity",
+    "LegendsJohto_Route30",
+    "LegendsJohto_Route31",
+    "LegendsJohto_VioletCity",
+    "LegendsJohto_ElmsLab",
+    "LegendsJohto_WindkeepersHouse",
+    "LegendsJohto_GardenHouse",
+    "LegendsJohto_GuidesHouse",
+    "LegendsJohto_HarborHouse",
+    "LegendsJohto_Academy",
+    "LegendsJohto_KilnHouse",
+    "LegendsJohto_SproutTower",
+    "LegendsJohto_CherrygroveCenter",
+    "LegendsJohto_VioletCenter",
+    "LegendsJohto_CherrygroveMart",
+    "LegendsJohto_VioletMart",
+    "LegendsJohto_VioletGym",
+    "LegendsJohto_Route32",
+    "LegendsJohto_UnionCave",
+    "LegendsJohto_Route33",
+    "LegendsJohto_AzaleaTown",
+    "LegendsJohto_SlowpokeWell",
+    "LegendsJohto_AzaleaGym",
+    "LegendsJohto_ApricornWorkshop",
+    "LegendsJohto_AzaleaCenter",
+    "LegendsJohto_AzaleaMart",
+    "LegendsJohto_Route32Center",
+    "LegendsJohto_SproutTowerBelfry"
   ]
 }
