@@ -1,5 +1,9 @@
 # Development handoff
 
+## Johto Apricorn trees · November 25, 2026
+
+Model GPT-6 · Redrew the shared Apricorn tree with grouped leaves, three hanging fruits and a forked trunk. All 24 placements use the new artwork. Native collision checks covered Azalea, Goldenrod and Route 30. The revised preview is on draft PR #128 for owner review. [In-game comparison and patch checks](qa/johto-opening/README.md#johto-apricorn-trees).
+
 ## Ilex Forest, Route 34 and southern Goldenrod · November 25, 2026
 
 Model GPT-6 · Extended the approved Azalea trail through Ilex Forest to Route 34 and Goldenrod’s South Market. The shrine, shared Day Care, two shops, bike exchange, nurse and Fly landing are playable in draft PR #128. A battery save made beside the old Azalea tree line crossed the new exit on the reapplied Release. Goldenrod Gym and the northern districts are the next unfinished part of the journey. [Native gameplay and verification](qa/johto-opening/README.md#west-from-azalea-to-goldenrod).

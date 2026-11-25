@@ -162,3 +162,16 @@ The preview film contains native game footage and sound. Scene starts use a stag
 | Gameplay film, SHA-256 | `c30f26aacbde6e780f9a9183afaac0329f6b7facfb6fe6ad7a11bfb0b4887743` |
 
 Built with Codex (GPT-6). The draft builds on the Chosen One candidate at `8f2a5e5`. The public release during this preview is v0.0.94.
+
+## Johto Apricorn trees
+
+![Matched in-game views in Azalea and Goldenrod](apricorn-orchard.png)
+
+The same sixteen 8×8 foreground cells supply all 24 trees in Azalea, Goldenrod and Routes 29, 30 and 33. Both grass and cultivated soil use the redrawn canopy and trunk. Source checks confirmed that only the six Apricorn metatiles reference the edited cells. The palette, metatile definitions and terrain attributes match the Goldenrod preview.
+
+Matched mGBA captures used the same player positions and noon lighting on both builds. Controller checks from the south stopped at the same trunks in Azalea, Goldenrod and on Route 30. The Johto map regression passed. Floating IPS and the browser decoder both reproduced the native builds from the clean Emerald base.
+
+| Build | BPS SHA-256 | ROM SHA-256 |
+| --- | --- | --- |
+| Release | `adac66c34e50fc619514384645d15d5a6abc8e60cc9324093a2afbd201ed8776` | `7d548212fd990fe529349532782b1302b80c4983811539d5eebda54f379111fc` |
+| Debug | `973869448e285471f4da740478ae1f7e09d1e8c520414cfccc75a6d8a4be2272` | `6f6324b0a2b9c12be7a8d05c229fa5fc1e3a558be5d0af01360e8dbb281382e8` |
