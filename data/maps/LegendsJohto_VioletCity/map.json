@@ -1,0 +1,107 @@
+{
+  "id": "MAP_LEGENDS_JOHTO_VIOLET_CITY",
+  "name": "LegendsJohto_VioletCity",
+  "layout": "LAYOUT_LEGENDS_JOHTO_VIOLET_CITY",
+  "music": "MUS_FALLARBOR",
+  "region": "REGION_HOENN",
+  "region_map_section": "MAPSEC_LEGENDS_VIOLET_CITY",
+  "requires_flash": false,
+  "weather": "WEATHER_SUNNY",
+  "map_type": "MAP_TYPE_CITY",
+  "allow_cycling": true,
+  "allow_escaping": false,
+  "allow_running": true,
+  "show_map_name": true,
+  "floor_number": 0,
+  "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+  "connections": [
+    {
+      "map": "MAP_LEGENDS_JOHTO_ROUTE31",
+      "offset": 3,
+      "direction": "right"
+    },
+    {
+      "map": "MAP_LEGENDS_JOHTO_ROUTE32",
+      "offset": 6,
+      "direction": "down"
+    }
+  ],
+  "object_events": [
+    {
+      "graphics_id": "OBJ_EVENT_GFX_GIRL_3",
+      "x": 21,
+      "y": 16,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "Johto_Violet",
+      "flag": "0"
+    }
+  ],
+  "warp_events": [
+    {
+      "x": 20,
+      "y": 9,
+      "elevation": 0,
+      "dest_map": "MAP_LEGENDS_JOHTO_SPROUT_TOWER",
+      "dest_warp_id": "0"
+    },
+    {
+      "x": 7,
+      "y": 13,
+      "elevation": 0,
+      "dest_map": "MAP_LEGENDS_JOHTO_VIOLET_GYM",
+      "dest_warp_id": "0"
+    },
+    {
+      "x": 9,
+      "y": 23,
+      "elevation": 0,
+      "dest_map": "MAP_LEGENDS_JOHTO_VIOLET_MART",
+      "dest_warp_id": "0"
+    },
+    {
+      "x": 29,
+      "y": 24,
+      "elevation": 0,
+      "dest_map": "MAP_LEGENDS_JOHTO_VIOLET_CENTER",
+      "dest_warp_id": "0"
+    },
+    {
+      "x": 27,
+      "y": 12,
+      "elevation": 0,
+      "dest_map": "MAP_LEGENDS_JOHTO_ACADEMY",
+      "dest_warp_id": "0"
+    },
+    {
+      "x": 35,
+      "y": 23,
+      "elevation": 0,
+      "dest_map": "MAP_LEGENDS_JOHTO_KILN_HOUSE",
+      "dest_warp_id": "0"
+    }
+  ],
+  "coord_events": [],
+  "bg_events": [
+    {
+      "type": "sign",
+      "x": 18,
+      "y": 14,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "Johto_TowerSign"
+    },
+    {
+      "type": "sign",
+      "x": 24,
+      "y": 19,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "Johto_VioletSign"
+    }
+  ]
+}

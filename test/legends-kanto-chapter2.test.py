@@ -70,6 +70,14 @@ typedef uint16_t u16;
 #define FLAG_LEGENDS_KANTO_VIRIDIAN_WON 0x275
 #define FLAG_LEGENDS_KANTO_ERIKA_WON 0x272
 #define FLAG_LEGENDS_KANTO_SABRINA_WON 0x273
+#define FLAG_JOHTO_ZEPHYR_BADGE 0x903
+#define FLAG_JOHTO_HIVE_BADGE 0x904
+#define FLAG_JOHTO_PIP_WON 0x905
+#define FLAG_JOHTO_LEN_WON 0x906
+#define FLAG_JOHTO_KIT_WON 0x907
+#define FLAG_JOHTO_MOSS_WON 0x908
+#define FLAG_JOHTO_FERN_WON 0x909
+#define FLAG_JOHTO_PLAIN_BADGE 0x90C
 #include "legends_trainer_flags.h"
 int main(void) {
 assert(MAX_TRAINERS_COUNT == 864);
@@ -77,21 +85,24 @@ assert(TRAINER_FLAGS_START + MAX_TRAINERS_COUNT == 0x860);
 for (int i=0;i<864;i++) assert(LegendsTrainerFlag(i)==0x500+i);
 assert(LegendsTrainerFlag(864)==0x272 && LegendsTrainerFlag(865)==0x272);
 assert(LegendsTrainerFlag(866)==0x273 && LegendsTrainerFlag(867)==0x273);
-assert(TRAINERS_COUNT == 876 && TRAINER_PARTNER(PARTNER_STEVEN)==877);
+assert(LegendsTrainerFlag(883)==FLAG_JOHTO_PLAIN_BADGE);
+assert(TRAINERS_COUNT == 884 && TRAINER_PARTNER(PARTNER_STEVEN)==885);
 assert(LegendsTrainerFlag(TRAINER_PARTNER(PARTNER_STEVEN))==0);
 assert(LegendsTrainerFlag(TRAINER_LEGENDS_KANTO_BLUE_STANDARD)==0x275);
 assert(LegendsTrainerFlag(TRAINER_LEGENDS_KANTO_BLUE_CHAMPION)==0x275);
+assert(LegendsTrainerFlag(876)==FLAG_JOHTO_ZEPHYR_BADGE);
+assert(LegendsTrainerFlag(877)==FLAG_JOHTO_HIVE_BADGE);
 assert(LegendsTrainerFlag(65535)==0);
 }'''
   debug=(R/'src/debug.c').read_text()
   toggle='static void DebugToggleTrainerFlag'+debug.split('static void DebugToggleTrainerFlag',1)[1].split('\n}\n',1)[0]+'\n}\n'
-  stubs="""static int bits[0x900];
+  stubs="""static int bits[0x910];
 static int HasTrainerBeenFought(u16 id) {return bits[LegendsTrainerFlag(id)];}
 static void SetTrainerFlag(u16 id) {u16 f=LegendsTrainerFlag(id);if(f)bits[f]=1;}
 static void ClearTrainerFlag(u16 id) {u16 f=LegendsTrainerFlag(id);if(f)bits[f]=0;}
 """
   program=program.replace('int main(void) {',stubs+toggle+'int main(void) {')
-  program=program.replace('assert(MAX_TRAINERS_COUNT',"""for(int id=0;id<876;id++) {
+  program=program.replace('assert(MAX_TRAINERS_COUNT',"""for(int id=0;id<TRAINERS_COUNT;id++) {
  DebugToggleTrainerFlag(id);assert(bits[LegendsTrainerFlag(id)]==1);
  for(int f=0x860;f<0x900;f++)assert(bits[f]==0);
  DebugToggleTrainerFlag(id);assert(bits[LegendsTrainerFlag(id)]==0);

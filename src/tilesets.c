@@ -14,3 +14,5 @@
 #include "data/tilesets/legends_wyrmtide.h"
 #include "data/tilesets/legends_nightmare_room.h"
 #include "data/tilesets/legends_nightmare.h"
+
+#include "data/tilesets/legends_johto.h"

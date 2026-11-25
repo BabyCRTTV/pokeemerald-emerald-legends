@@ -1,0 +1,1041 @@
+LegendsJohto_Route22_MapScripts::
+LegendsJohto_IndigoGate_MapScripts::
+LegendsJohto_Route26_MapScripts::
+LegendsJohto_Route27East_MapScripts::
+LegendsJohto_TohjoFalls_MapScripts::
+LegendsJohto_Route27West_MapScripts::
+LegendsJohto_Route29_MapScripts::
+LegendsJohto_Route30_MapScripts::
+LegendsJohto_Route31_MapScripts::
+LegendsJohto_ElmsLab_MapScripts::
+LegendsJohto_WindkeepersHouse_MapScripts::
+LegendsJohto_GardenHouse_MapScripts::
+LegendsJohto_GuidesHouse_MapScripts::
+LegendsJohto_HarborHouse_MapScripts::
+LegendsJohto_Academy_MapScripts::
+LegendsJohto_KilnHouse_MapScripts::
+LegendsJohto_SproutTower_MapScripts::
+LegendsJohto_CherrygroveMart_MapScripts::
+LegendsJohto_VioletMart_MapScripts::
+LegendsJohto_VioletGym_MapScripts::
+LegendsJohto_Route32_MapScripts::
+LegendsJohto_UnionCave_MapScripts::
+LegendsJohto_Route33_MapScripts::
+LegendsJohto_SlowpokeWell_MapScripts::
+LegendsJohto_AzaleaGym_MapScripts::
+LegendsJohto_ApricornWorkshop_MapScripts::
+LegendsJohto_AzaleaMart_MapScripts::
+LegendsJohto_SproutTowerBelfry_MapScripts::
+	.byte 0
+
+LegendsJohto_NewBarkTown_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, LegendsJohto_NewBarkTown_Arrival
+	.byte 0
+LegendsJohto_NewBarkTown_Arrival:
+	setflag FLAG_VISITED_LEGENDS_NEW_BARK_TOWN
+	end
+
+LegendsJohto_CherrygroveCity_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, LegendsJohto_CherrygroveCity_Arrival
+	.byte 0
+LegendsJohto_CherrygroveCity_Arrival:
+	setflag FLAG_VISITED_LEGENDS_CHERRYGROVE_CITY
+	end
+
+LegendsJohto_VioletCity_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, LegendsJohto_VioletCity_Arrival
+	.byte 0
+LegendsJohto_VioletCity_Arrival:
+	setflag FLAG_VISITED_LEGENDS_VIOLET_CITY
+	end
+
+LegendsJohto_CherrygroveCenter_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, LegendsJohto_CherrygroveCenter_Arrival
+	.byte 0
+LegendsJohto_CherrygroveCenter_Arrival:
+	setrespawn HEAL_LOCATION_LEGENDS_CHERRYGROVE_CITY
+	end
+
+LegendsJohto_VioletCenter_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, LegendsJohto_VioletCenter_Arrival
+	.byte 0
+LegendsJohto_VioletCenter_Arrival:
+	setrespawn HEAL_LOCATION_LEGENDS_VIOLET_CITY
+	end
+
+LegendsJohto_AzaleaTown_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, LegendsJohto_AzaleaTown_Arrival
+	.byte 0
+LegendsJohto_AzaleaTown_Arrival:
+	setflag FLAG_VISITED_LEGENDS_AZALEA_TOWN
+	end
+
+LegendsJohto_AzaleaCenter_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, LegendsJohto_AzaleaCenter_Arrival
+	.byte 0
+LegendsJohto_AzaleaCenter_Arrival:
+	setrespawn HEAL_LOCATION_LEGENDS_AZALEA_TOWN
+	end
+
+LegendsJohto_Route32Center_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, LegendsJohto_Route32Center_Arrival
+	.byte 0
+LegendsJohto_Route32Center_Arrival:
+	setrespawn HEAL_LOCATION_LEGENDS_ROUTE32
+	end
+
+Johto_Apricorn::
+	msgbox Johto_Text_Apricorn, MSGBOX_NPC
+	end
+
+Johto_AzaleaSign::
+	msgbox Johto_Text_AzaleaSign, MSGBOX_SIGN
+	end
+
+Johto_Belfry::
+	msgbox Johto_Text_Belfry, MSGBOX_NPC
+	end
+
+Johto_Bells::
+	msgbox Johto_Text_Bells, MSGBOX_NPC
+	end
+
+Johto_CaveSign::
+	msgbox Johto_Text_CaveSign, MSGBOX_SIGN
+	end
+
+Johto_CherrySign::
+	msgbox Johto_Text_CherrySign, MSGBOX_SIGN
+	end
+
+Johto_EastMouth::
+	msgbox Johto_Text_EastMouth, MSGBOX_SIGN
+	end
+
+Johto_Fisher::
+	msgbox Johto_Text_Fisher, MSGBOX_NPC
+	end
+
+Johto_Forest::
+	msgbox Johto_Text_Forest, MSGBOX_NPC
+	end
+
+Johto_Gardener::
+	msgbox Johto_Text_Gardener, MSGBOX_NPC
+	end
+
+Johto_Gate::
+	msgbox Johto_Text_Gate, MSGBOX_NPC
+	end
+
+Johto_Guide::
+	msgbox Johto_Text_Guide, MSGBOX_NPC
+	end
+
+Johto_GuideHouse::
+	msgbox Johto_Text_GuideHouse, MSGBOX_NPC
+	end
+
+Johto_GymGuide::
+	msgbox Johto_Text_GymGuide, MSGBOX_NPC
+	end
+
+Johto_Harbor::
+	msgbox Johto_Text_Harbor, MSGBOX_NPC
+	end
+
+Johto_HiveSign::
+	msgbox Johto_Text_HiveSign, MSGBOX_SIGN
+	end
+
+Johto_Kiln::
+	msgbox Johto_Text_Kiln, MSGBOX_NPC
+	end
+
+Johto_LabSign::
+	msgbox Johto_Text_LabSign, MSGBOX_SIGN
+	end
+
+Johto_Meadow::
+	msgbox Johto_Text_Meadow, MSGBOX_NPC
+	end
+
+Johto_NewSign::
+	msgbox Johto_Text_NewSign, MSGBOX_SIGN
+	end
+
+Johto_Orchard::
+	msgbox Johto_Text_Orchard, MSGBOX_NPC
+	end
+
+Johto_Pond::
+	msgbox Johto_Text_Pond, MSGBOX_NPC
+	end
+
+Johto_Rain::
+	msgbox Johto_Text_Rain, MSGBOX_NPC
+	end
+
+Johto_River::
+	msgbox Johto_Text_River, MSGBOX_NPC
+	end
+
+Johto_Sign29::
+	msgbox Johto_Text_Sign29, MSGBOX_SIGN
+	end
+
+Johto_Sign30::
+	msgbox Johto_Text_Sign30, MSGBOX_SIGN
+	end
+
+Johto_Sign31::
+	msgbox Johto_Text_Sign31, MSGBOX_SIGN
+	end
+
+Johto_Sign32::
+	msgbox Johto_Text_Sign32, MSGBOX_SIGN
+	end
+
+Johto_Sign33::
+	msgbox Johto_Text_Sign33, MSGBOX_SIGN
+	end
+
+Johto_Teacher::
+	msgbox Johto_Text_Teacher, MSGBOX_NPC
+	end
+
+Johto_TowerSign::
+	msgbox Johto_Text_TowerSign, MSGBOX_SIGN
+	end
+
+Johto_Trail::
+	msgbox Johto_Text_Trail, MSGBOX_SIGN
+	end
+
+Johto_Violet::
+	msgbox Johto_Text_Violet, MSGBOX_NPC
+	end
+
+Johto_VioletSign::
+	msgbox Johto_Text_VioletSign, MSGBOX_SIGN
+	end
+
+Johto_ViridianGuide::
+	msgbox Johto_Text_ViridianGuide, MSGBOX_NPC
+	end
+
+Johto_Warden::
+	msgbox Johto_Text_Warden, MSGBOX_NPC
+	end
+
+Johto_WellKeeper::
+	msgbox Johto_Text_WellKeeper, MSGBOX_NPC
+	end
+
+Johto_WellSign::
+	msgbox Johto_Text_WellSign, MSGBOX_SIGN
+	end
+
+Johto_WestMouth::
+	msgbox Johto_Text_WestMouth, MSGBOX_SIGN
+	end
+
+Johto_Wind::
+	msgbox Johto_Text_Wind, MSGBOX_NPC
+	end
+
+Johto_Windkeeper::
+	msgbox Johto_Text_Windkeeper, MSGBOX_NPC
+	end
+
+Johto_Elm::
+    lock
+    faceplayer
+    goto_if_set FLAG_JOHTO_SURVEY_RETURNED, Johto_ElmAfter
+    goto_if_unset FLAG_JOHTO_ELM_SURVEY, Johto_Offer
+    goto_if_unset FLAG_JOHTO_TIDE_READING, Johto_TideHint
+    goto_if_unset FLAG_JOHTO_BELL_READING, Johto_BellHint
+    msgbox Johto_Text_ElmDone, MSGBOX_DEFAULT
+    setflag FLAG_JOHTO_SURVEY_RETURNED
+    release
+    end
+Johto_Offer:
+    msgbox Johto_Text_ElmIntro, MSGBOX_YESNO
+    goto_if_eq VAR_RESULT, NO, Johto_ElmNo
+    setflag FLAG_JOHTO_ELM_SURVEY
+    msgbox Johto_Text_ElmYes, MSGBOX_DEFAULT
+    release
+    end
+Johto_ElmAfter:
+	msgbox Johto_Text_ElmAfter, MSGBOX_DEFAULT
+	release
+	end
+Johto_ElmNo:
+	msgbox Johto_Text_ElmNo, MSGBOX_DEFAULT
+	release
+	end
+Johto_TideHint:
+	msgbox Johto_Text_TideHint, MSGBOX_DEFAULT
+	release
+	end
+Johto_BellHint:
+	msgbox Johto_Text_BellHint, MSGBOX_DEFAULT
+	release
+	end
+Johto_TidePost::
+	lockall
+	goto_if_unset FLAG_JOHTO_ELM_SURVEY, Johto_TidePlain
+	goto_if_set FLAG_JOHTO_TIDE_READING, Johto_TideAgain
+	msgbox Johto_Text_TideRead, MSGBOX_DEFAULT
+	setflag FLAG_JOHTO_TIDE_READING
+	releaseall
+	end
+Johto_TidePlain:
+	msgbox Johto_Text_TidePlain, MSGBOX_DEFAULT
+	releaseall
+	end
+Johto_TideAgain:
+	msgbox Johto_Text_TideAgain, MSGBOX_DEFAULT
+	releaseall
+	end
+Johto_Keeper::
+	lockall
+	faceplayer
+	goto_if_unset FLAG_JOHTO_ELM_SURVEY, Johto_BellPlain
+	goto_if_set FLAG_JOHTO_BELL_READING, Johto_BellAgain
+	msgbox Johto_Text_BellRead, MSGBOX_DEFAULT
+	setflag FLAG_JOHTO_BELL_READING
+	releaseall
+	end
+Johto_BellPlain:
+	msgbox Johto_Text_BellPlain, MSGBOX_DEFAULT
+	releaseall
+	end
+Johto_BellAgain:
+	msgbox Johto_Text_BellAgain, MSGBOX_DEFAULT
+	releaseall
+	end
+Johto_Wren::
+	lockall
+	faceplayer
+	goto_if_set FLAG_JOHTO_ZEPHYR_BADGE, Johto_WrenAfter
+	trainerbattle_single TRAINER_LEGENDS_JOHTO_WREN, Johto_Text_WrenIntro, Johto_Text_WrenDefeat
+	setflag FLAG_JOHTO_ZEPHYR_BADGE
+	playfanfare MUS_OBTAIN_BADGE
+	msgbox Johto_Text_WrenWin, MSGBOX_DEFAULT
+	waitfanfare
+	releaseall
+	end
+Johto_WrenAfter:
+	msgbox Johto_Text_WrenAfter, MSGBOX_DEFAULT
+	releaseall
+	end
+Johto_Rue::
+	lockall
+	faceplayer
+	goto_if_set FLAG_JOHTO_HIVE_BADGE, Johto_RueAfter
+	goto_if_unset FLAG_JOHTO_ZEPHYR_BADGE, Johto_RueGate
+	trainerbattle_single TRAINER_LEGENDS_JOHTO_RUE, Johto_Text_RueIntro, Johto_Text_RueDefeat
+	setflag FLAG_JOHTO_HIVE_BADGE
+	playfanfare MUS_OBTAIN_BADGE
+	msgbox Johto_Text_RueWin, MSGBOX_DEFAULT
+	waitfanfare
+	releaseall
+	end
+Johto_RueAfter:
+	msgbox Johto_Text_RueAfter, MSGBOX_DEFAULT
+	releaseall
+	end
+Johto_RueGate:
+	msgbox Johto_Text_RueGate, MSGBOX_DEFAULT
+	releaseall
+	end
+Johto_Pidgeot::
+	lock
+	faceplayer
+	playmoncry SPECIES_PIDGEOT, CRY_MODE_NORMAL
+	waitmoncry
+	msgbox Johto_Text_Pidgeot, MSGBOX_DEFAULT
+	release
+	end
+Johto_Slowpoke::
+	lock
+	faceplayer
+	playmoncry SPECIES_SLOWPOKE, CRY_MODE_NORMAL
+	waitmoncry
+	msgbox Johto_Text_Slowpoke, MSGBOX_DEFAULT
+	release
+	end
+Johto_Nurse::
+	setvar VAR_0x800B, 1
+	call Common_EventScript_PkmnCenterNurse
+	waitmessage
+	waitbuttonpress
+	release
+	end
+
+Johto_Text_ViridianGuide:
+	.string "The west road leads to Route 22.\n"
+	.string "Take the passage through the gate\l"
+	.string "for Johto.$"
+
+Johto_Text_Gate:
+	.string "For Johto, follow Route 26 south\n"
+	.string "after the gate. The lower path\l"
+	.string "through Tohjo Falls is open in\l"
+	.string "both directions.$"
+
+Johto_Text_Trail:
+	.string "BORDER FOOTPATH\p"
+	.string "South to Tohjo Falls. North to\n"
+	.string "Route 22 and Viridian.$"
+
+Johto_Text_Warden:
+	.string "I measure the river against that\n"
+	.string "fence post after every storm. The\l"
+	.string "footpath is dry today.$"
+
+Johto_Text_EastMouth:
+	.string "TOHJO FALLS\p"
+	.string "Walk west along the lower shelf\n"
+	.string "to reach New Bark Town.$"
+
+Johto_Text_WestMouth:
+	.string "ROUTE 27\p"
+	.string "New Bark lies west. The caves\n"
+	.string "lead back to Kanto.$"
+
+Johto_Text_Fisher:
+	.string "Some mornings my float drifts\n"
+	.string "clear across the border. Nobody\l"
+	.string "has asked it for papers yet.$"
+
+Johto_Text_LabSign:
+	.string "ELM POKéMON LAB\p"
+	.string "Field observations and breeding\n"
+	.string "records. Visitors welcome.$"
+
+Johto_Text_NewSign:
+	.string "NEW BARK TOWN\p"
+	.string "East to Kanto. West to\n"
+	.string "Cherrygrove.$"
+
+Johto_Text_Wind:
+	.string "Listen between the clicks of the\n"
+	.string "wind vane. You can hear the sea\l"
+	.string "from here.$"
+
+Johto_Text_Windkeeper:
+	.string "I keep a tin of spare washers for\n"
+	.string "those vanes. Elm borrows one and\l"
+	.string "brings back three.$"
+
+Johto_Text_Gardener:
+	.string "The gentlest afternoon wind is on\n"
+	.string "this side of the lab. My flowers\l"
+	.string "know it too.$"
+
+Johto_Text_Sign29:
+	.string "ROUTE 29\p"
+	.string "Cherrygrove to the west. New Bark\n"
+	.string "to the east.$"
+
+Johto_Text_Meadow:
+	.string "Ledyba bunch together at the edge\n"
+	.string "of the trees before they take\l"
+	.string "off.$"
+
+Johto_Text_CherrySign:
+	.string "CHERRYGROVE CITY\p"
+	.string "The tide pier is southwest. Route\n"
+	.string "30 leaves town to the north.$"
+
+Johto_Text_Guide:
+	.string "My knees retired from giving\n"
+	.string "tours. My finger still works! The\l"
+	.string "tide post is at the head of the\l"
+	.string "pier.$"
+
+Johto_Text_GuideHouse:
+	.string "Our first town map was drawn on a\n"
+	.string "napkin. I framed it before anyone\l"
+	.string "could wipe jam on it.$"
+
+Johto_Text_Harbor:
+	.string "The pier piles each knock at a\n"
+	.string "different pitch. Listen the next\l"
+	.string "time the tide comes in.$"
+
+Johto_Text_Sign30:
+	.string "ROUTE 30\p"
+	.string "North toward Violet. South to\n"
+	.string "Cherrygrove.$"
+
+Johto_Text_Pond:
+	.string "You can tell a Poliwag from a\n"
+	.string "raindrop. A Poliwag makes a\l"
+	.string "second ring.$"
+
+Johto_Text_Sign31:
+	.string "ROUTE 31\p"
+	.string "Violet City is west. Follow Route\n"
+	.string "30 south for Cherrygrove.$"
+
+Johto_Text_Bells:
+	.string "On cold mornings, the low bell\n"
+	.string "carries all the way to this pond.$"
+
+Johto_Text_VioletSign:
+	.string "VIOLET CITY\p"
+	.string "Sprout Tower across the north\n"
+	.string "bridge. Route 32 leaves town to\l"
+	.string "the south.$"
+
+Johto_Text_TowerSign:
+	.string "SPROUT TOWER\p"
+	.string "Cross quietly. The pillar carries\n"
+	.string "every footfall.$"
+
+Johto_Text_Violet:
+	.string "I used to think somebody pulled\n"
+	.string "the bells. The tower leans enough\l"
+	.string "to ring them by itself.$"
+
+Johto_Text_Teacher:
+	.string "Draw the tower two days in a row\n"
+	.string "and the roof will lean a\l"
+	.string "different way on your page.$"
+
+Johto_Text_Kiln:
+	.string "Tap this clay bowl and it sings.\n"
+	.string "Tap it twice and my neighbor\l"
+	.string "comes over for lunch.$"
+
+Johto_Text_Belfry:
+	.string "The old bell has a thin spot\n"
+	.string "where a thousand windy mornings\l"
+	.string "struck it.$"
+
+Johto_Text_GymGuide:
+	.string "Rue lets her bugs hang their\n"
+	.string "cocoons wherever they please.\l"
+	.string "They like the far end of the\l"
+	.string "hall.$"
+
+Johto_Text_Sign32:
+	.string "ROUTE 32\p"
+	.string "Follow the river south. Union\n"
+	.string "Cave is beyond the field station.$"
+
+Johto_Text_CaveSign:
+	.string "UNION CAVE\p"
+	.string "Follow the dry ledges to the\n"
+	.string "south mouth for Azalea. A Pokémon\l"
+	.string "Center stands east of the trail.$"
+
+Johto_Text_River:
+	.string "The river planks are warm in the\n"
+	.string "sun. Wooper like to hide in the\l"
+	.string "shade beneath them.$"
+
+Johto_Text_Sign33:
+	.string "ROUTE 33\p"
+	.string "West to Azalea Town. Union Cave\n"
+	.string "leads north.$"
+
+Johto_Text_Rain:
+	.string "You can smell the wet bark a long\n"
+	.string "way before you see the first\l"
+	.string "house in Azalea.$"
+
+Johto_Text_AzaleaSign:
+	.string "AZALEA TOWN\p"
+	.string "Apricorn workshop to the north.\n"
+	.string "The Gym overlooks the southern\l"
+	.string "orchard.$"
+
+Johto_Text_WellSign:
+	.string "SLOWPOKE WELL\p"
+	.string "Walk down the well steps to the\n"
+	.string "water table.$"
+
+Johto_Text_HiveSign:
+	.string "AZALEA GYM\p"
+	.string "RUE, keeper of the Hive Badge.$"
+
+Johto_Text_Orchard:
+	.string "Leaving a few Apricorns on the\n"
+	.string "high branches is a good way to\l"
+	.string "invite the birds back.$"
+
+Johto_Text_Forest:
+	.string "The west trail leads to Ilex.\n"
+	.string "Follow the old boardwalk to find\l"
+	.string "the little shrine.$"
+
+Johto_Text_Apricorn:
+	.string "My grandfather cured green\n"
+	.string "Apricorn shells over this kiln.\l"
+	.string "If you rush the firing, the two\l"
+	.string "halves never fit.$"
+
+Johto_Text_WellKeeper:
+	.string "The spring feeds the whole town.\n"
+	.string "I scrub the steps while the\l"
+	.string "Slowpoke supervise.$"
+
+Johto_Text_Slowpoke:
+	.string "SLOWPOKE blinks. A drop of water\n"
+	.string "hangs from its nose.$"
+
+Johto_Text_Pidgeot:
+	.string "PIDGEOT stretches one wing. A\n"
+	.string "loose feather skims across the\l"
+	.string "floor.$"
+
+Johto_Text_ElmIntro:
+	.string "ELM: Come in! Mind the stacks. I\n"
+	.string "set my glasses on a notebook and\l"
+	.string "lost a whole afternoon.\p"
+	.string "I used to chase the wind myself.\n"
+	.string "Nowadays I send a second pair of\l"
+	.string "eyes.\p"
+	.string "Will you read the tide post at\n"
+	.string "Cherrygrove pier and ask the\l"
+	.string "Sprout Tower keeper about his\l"
+	.string "bell?$"
+
+Johto_Text_ElmYes:
+	.string "ELM: Both readings, in any order.\n"
+	.string "My notebooks can wait. The\l"
+	.string "weather seldom does!$"
+
+Johto_Text_ElmNo:
+	.string "ELM: Another day, then. I should\n"
+	.string "label that notebook before it\l"
+	.string "vanishes again.$"
+
+Johto_Text_TideHint:
+	.string "ELM: Look beside the pier at\n"
+	.string "Cherrygrove. Someone cut a notch\l"
+	.string "in the post at the highest tide.$"
+
+Johto_Text_BellHint:
+	.string "ELM: The keeper is on the ground\n"
+	.string "floor of Sprout Tower. The north\l"
+	.string "bridge in Violet leads to him.$"
+
+Johto_Text_ElmDone:
+	.string "ELM: A rising tide, then a bell\n"
+	.string "from the east. The wind arrived\l"
+	.string "here just after your reading.\p"
+	.string "Three towns and one gust! Your\n"
+	.string "name belongs beside mine in this\l"
+	.string "notebook.$"
+
+Johto_Text_ElmAfter:
+	.string "ELM: I found my glasses. They\n"
+	.string "were marking the page with your\l"
+	.string "readings.$"
+
+Johto_Text_TidePlain:
+	.string "Old notches climb the tide post.\n"
+	.string "The newest is still wet.$"
+
+Johto_Text_TideRead:
+	.string "The tide is rising toward the\n"
+	.string "third notch. You record the\l"
+	.string "waterline for Elm.$"
+
+Johto_Text_TideAgain:
+	.string "Your mark is here, just below the\n"
+	.string "third notch.$"
+
+Johto_Text_BellPlain:
+	.string "We never straighten the pillar.\n"
+	.string "The give in the timber keeps our\l"
+	.string "tower standing.$"
+
+Johto_Text_BellRead:
+	.string "The bell swung east at first\n"
+	.string "light. Here, feel the rope. It\l"
+	.string "still hums.\p"
+	.string "You record the direction for Elm.$"
+
+Johto_Text_BellAgain:
+	.string "East at first light. That was a\n"
+	.string "wind worth writing down.$"
+
+Johto_Text_WrenIntro:
+	.string "WREN: A good wing can read the\n"
+	.string "current. Let me see how your team\l"
+	.string "handles a change in the wind.$"
+
+Johto_Text_WrenDefeat:
+	.string "You waited for the wind to turn.\n"
+	.string "Well flown!$"
+
+Johto_Text_WrenWin:
+	.string "WREN: The ZEPHYR BADGE is yours.\n"
+	.string "Your Adventure Log carries the\l"
+	.string "mark of Violet Gym.$"
+
+Johto_Text_WrenAfter:
+	.string "WREN: Follow Route 32 south.\n"
+	.string "Azalea grows quiet when Rue takes\l"
+	.string "her team out.$"
+
+Johto_Text_RueGate:
+	.string "RUE: Wren in Violet certifies\n"
+	.string "visiting trainers first. Bring\l"
+	.string "the Zephyr Badge for our official\l"
+	.string "match.$"
+
+Johto_Text_RueIntro:
+	.string "RUE: The whole grove is\n"
+	.string "listening. Let us give them a\l"
+	.string "good match!$"
+
+Johto_Text_RueDefeat:
+	.string "You read my swarm perfectly.$"
+
+Johto_Text_RueWin:
+	.string "RUE: The HIVE BADGE is yours. Two\n"
+	.string "Johto badges in your Adventure\l"
+	.string "Log!$"
+
+Johto_Text_RueAfter:
+	.string "RUE: My Scizor taps the hive\n"
+	.string "mark with one claw when he\l"
+	.string "approves of a trainer. He tapped\l"
+	.string "yours.$"
+
+Johto_Pip::
+	trainerbattle_single TRAINER_LEGENDS_JOHTO_PIP, Johto_Text_PipIntro, Johto_Text_PipDefeat
+	msgbox Johto_Text_PipAfter, MSGBOX_AUTOCLOSE
+	end
+
+Johto_Text_PipIntro:
+	.string "Watch my Fearow coast from\n"
+	.string "perch to perch!$"
+
+Johto_Text_PipDefeat:
+	.string "You caught the updraft.$"
+
+Johto_Text_PipAfter:
+	.string "Wren can tell a bird by the\n"
+	.string "sound of its wings.$"
+
+Johto_Len::
+	trainerbattle_single TRAINER_LEGENDS_JOHTO_LEN, Johto_Text_LenIntro, Johto_Text_LenDefeat
+	msgbox Johto_Text_LenAfter, MSGBOX_AUTOCLOSE
+	end
+
+Johto_Text_LenIntro:
+	.string "We pitched our tents on this\n"
+	.string "ridge. Got time for a battle?$"
+
+Johto_Text_LenDefeat:
+	.string "You're quick on this trail!$"
+
+Johto_Text_LenAfter:
+	.string "There's shade by the Apricorn\n"
+	.string "tree on the west stretch.$"
+
+Johto_Kit::
+	trainerbattle_single TRAINER_LEGENDS_JOHTO_KIT, Johto_Text_KitIntro, Johto_Text_KitDefeat
+	msgbox Johto_Text_KitAfter, MSGBOX_AUTOCLOSE
+	end
+
+Johto_Text_KitIntro:
+	.string "A tug on my line! Oh, it's my\n"
+	.string "Quagsire. Fancy a match?$"
+
+Johto_Text_KitDefeat:
+	.string "I should have reeled that in.$"
+
+Johto_Text_KitAfter:
+	.string "Wooper nose around under the\n"
+	.string "boards at dusk.$"
+
+Johto_Moss::
+	trainerbattle_single TRAINER_LEGENDS_JOHTO_MOSS, Johto_Text_MossIntro, Johto_Text_MossDefeat
+	msgbox Johto_Text_MossAfter, MSGBOX_AUTOCLOSE
+	end
+
+Johto_Text_MossIntro:
+	.string "My Onix knows these tunnels by\n"
+	.string "touch. Want to meet him?$"
+
+Johto_Text_MossDefeat:
+	.string "That's some sure footing!$"
+
+Johto_Text_MossAfter:
+	.string "Keep the last pool on your left\n"
+	.string "for the south exit.$"
+
+Johto_Fern::
+	trainerbattle_single TRAINER_LEGENDS_JOHTO_FERN, Johto_Text_FernIntro, Johto_Text_FernDefeat
+	msgbox Johto_Text_FernAfter, MSGBOX_AUTOCLOSE
+	end
+
+Johto_Text_FernIntro:
+	.string "I raised this team in the grove\n"
+	.string "out back. Shall we?$"
+
+Johto_Text_FernDefeat:
+	.string "Even my Scyther stood still.$"
+
+Johto_Text_FernAfter:
+	.string "Rue can tell when a cocoon will\n"
+	.string "hatch just by its weight.$"
+
+LegendsJohto_GoldenrodBikeShop_MapScripts::
+LegendsJohto_IlexForest_MapScripts::
+LegendsJohto_Route34DayCare_MapScripts::
+LegendsJohto_GoldenrodFlorist_MapScripts::
+LegendsJohto_GoldenrodHerbalist_MapScripts::
+	.byte 0
+
+LegendsJohto_GoldenrodCity_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, JohtoWest_GoldenrodArrival
+	.byte 0
+JohtoWest_GoldenrodArrival:
+	setflag FLAG_VISITED_LEGENDS_GOLDENROD_CITY
+	end
+
+LegendsJohto_GoldenrodCenter_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, JohtoWest_CenterArrival
+	.byte 0
+JohtoWest_CenterArrival:
+	setrespawn HEAL_LOCATION_LEGENDS_GOLDENROD_CITY
+	end
+
+JohtoWest_Shrine::
+	lockall
+	goto_if_set FLAG_JOHTO_ILEX_SHRINE_SEED, JohtoWest_ShrineQuiet
+	msgbox JohtoWest_Text_Shrine, MSGBOX_DEFAULT
+	giveitem ITEM_MIRACLE_SEED
+	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_ShowBagIsFull
+	setflag FLAG_JOHTO_ILEX_SHRINE_SEED
+	releaseall
+	end
+JohtoWest_ShrineQuiet:
+	msgbox JohtoWest_Text_Quiet, MSGBOX_DEFAULT
+	releaseall
+	end
+
+JohtoWest_FlowerShop::
+	lock
+	faceplayer
+	goto Route104_PrettyPetalFlowerShop_EventScript_SellDecorations
+
+JohtoWest_Herbs::
+	goto LavaridgeTown_HerbShop_EventScript_Clerk
+
+JohtoWest_Text_Shrine:
+	.string "A seed has taken root between the\n"
+	.string "steps. Its husk comes away in\l"
+	.string "your hand.$"
+JohtoWest_Text_Quiet:
+	.string "A green shoot curls up between\n"
+	.string "the boards. The leaves above it\l"
+	.string "are perfectly still.$"
+
+JohtoWest_Trail::
+	msgbox JohtoWest_Text_Trail, MSGBOX_SIGN
+	end
+JohtoWest_Text_Trail:
+	.string "ILEX FOREST\p"
+	.string "Shrine west of the boardwalk.\n"
+	.string "Route 34 by the north trail.$"
+
+JohtoWest_Naturalist::
+	msgbox JohtoWest_Text_Naturalist, MSGBOX_NPC
+	end
+JohtoWest_Text_Naturalist:
+	.string "See those little bites around\n"
+	.string "the leaf edges? A Venonat did\l"
+	.string "that. It was still eating when\l"
+	.string "I got here.$"
+
+JohtoWest_DayCareSign::
+	msgbox JohtoWest_Text_DayCareSign, MSGBOX_SIGN
+	end
+JohtoWest_Text_DayCareSign:
+	.string "ROUTE 34 DAY CARE\p"
+	.string "We share our register with\n"
+	.string "Route 117 in Hoenn. Ask inside\l"
+	.string "about a Pokémon in our care.$"
+
+JohtoWest_Fisher::
+	msgbox JohtoWest_Text_Fisher, MSGBOX_NPC
+	end
+JohtoWest_Text_Fisher:
+	.string "Abra blink away the moment I\n"
+	.string "lift my rod. Ditto just watch\l"
+	.string "me until I start to feel silly.$"
+
+JohtoWest_Market::
+	msgbox JohtoWest_Text_Market, MSGBOX_NPC
+	end
+JohtoWest_Text_Market:
+	.string "My sister dries the roots. I\n"
+	.string "grow the flowers. Guess which\l"
+	.string "shop gets more first dates!$"
+
+JohtoWest_Porter::
+	msgbox JohtoWest_Text_Porter, MSGBOX_NPC
+	end
+JohtoWest_Text_Porter:
+	.string "I carry crates between the herb\n"
+	.string "shop and the southern road. The\l"
+	.string "ones marked Revival Herb weigh\l"
+	.string "a ton.$"
+
+JohtoWest_GoldenrodSign::
+	msgbox JohtoWest_Text_GoldenrodSign, MSGBOX_SIGN
+	end
+JohtoWest_Text_GoldenrodSign:
+	.string "GOLDENROD CITY\p"
+	.string "South Market. Flowers on the\n"
+	.string "east side of the square. Herb\l"
+	.string "shop up the steps.$"
+
+LegendsJohto_Route34_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, JohtoWest_ShowPaddock
+	.byte 0
+JohtoWest_ShowPaddock:
+	setflag FLAG_TEMP_1
+	setflag FLAG_TEMP_2
+	getdaycaregfx VAR_OBJ_GFX_ID_0, VAR_OBJ_GFX_ID_1, VAR_TEMP_0, VAR_TEMP_1
+	goto_if_eq VAR_RESULT, 0, JohtoWest_PaddockDone
+	clearflag FLAG_TEMP_1
+	goto_if_eq VAR_RESULT, 1, JohtoWest_PaddockDone
+	clearflag FLAG_TEMP_2
+JohtoWest_PaddockDone:
+	end
+
+JohtoWest_Bike::
+	lock
+	faceplayer
+	goto_if_set FLAG_RECEIVED_BIKE, MauvilleCity_BikeShop_EventScript_AskSwitchBikes
+	msgbox JohtoWest_Text_Bike, MSGBOX_DEFAULT
+	release
+	end
+JohtoWest_Text_Bike:
+	.string "I do exchanges for Rydel. Pick\n"
+	.string "out your first bike in Mauville,\l"
+	.string "then bring it here for a swap.$"
+
+LegendsJohto_GoldenrodRadioSquare_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, JohtoWest_GoldenrodArrival
+	.byte 0
+LegendsJohto_GoldenrodGym_MapScripts::
+LegendsJohto_GoldenrodStudio_MapScripts::
+	.byte 0
+
+Goldenrod_Cass::
+	lockall
+	faceplayer
+	goto_if_set FLAG_JOHTO_PLAIN_BADGE, Goldenrod_CassAfter
+	goto_if_unset FLAG_JOHTO_HIVE_BADGE, Goldenrod_CassGate
+	trainerbattle_single TRAINER_LEGENDS_JOHTO_CASS, Goldenrod_Text_Intro, Goldenrod_Text_Defeat
+	setflag FLAG_JOHTO_PLAIN_BADGE
+	playfanfare MUS_OBTAIN_BADGE
+	msgbox Goldenrod_Text_Win, MSGBOX_DEFAULT
+	waitfanfare
+	releaseall
+	end
+Goldenrod_CassAfter:
+	msgbox Goldenrod_Text_After, MSGBOX_DEFAULT
+	releaseall
+	end
+Goldenrod_CassGate:
+	msgbox Goldenrod_Text_Gate, MSGBOX_DEFAULT
+	releaseall
+	end
+Goldenrod_Text_Intro:
+	.string "CASS: Hear that little scuff?\n"
+	.string "That's Miltank lining up a run.\p"
+	.string "Let's see how you handle it!$"
+Goldenrod_Text_Defeat:
+	.string "You caught her on the turn!$"
+Goldenrod_Text_Win:
+	.string "CASS: The PLAIN BADGE is yours.\n"
+	.string "Come cool down with us anytime.$"
+Goldenrod_Text_After:
+	.string "CASS: We do our slow laps in\n"
+	.string "the square. Miltank knows every\l"
+	.string "flower box on the route.$"
+Goldenrod_Text_Gate:
+	.string "CASS: Rue runs the Gym in Azalea.\n"
+	.string "Bring me her HIVE BADGE and I'll\l"
+	.string "clear the floor for our match.$"
+Goldenrod_Guide::
+	msgbox Goldenrod_Text_Guide, MSGBOX_NPC
+	end
+Goldenrod_Text_Guide:
+	.string "Cass leads with Girafarig. Save\n"
+	.string "a sturdy partner for Miltank.\l"
+	.string "Rollout gets stronger each turn!$"
+Goldenrod_Listener::
+	msgbox Goldenrod_Text_Listener, MSGBOX_NPC
+	end
+Goldenrod_Text_Listener:
+	.string "I heard a Mareep on the radio\n"
+	.string "and checked my kitchen. Sounded\l"
+	.string "like it was right beside me!$"
+Goldenrod_StudioSign::
+	msgbox Goldenrod_Text_StudioSign, MSGBOX_SIGN
+	end
+Goldenrod_Text_StudioSign:
+	.string "GOLDENROD RADIO\n"
+	.string "field recordings - Visitors welcome.$"
+Goldenrod_GymSign::
+	msgbox Goldenrod_Text_GymSign, MSGBOX_SIGN
+	end
+Goldenrod_Text_GymSign:
+	.string "GOLDENROD GYM - LEADER CASS\n"
+	.string "Home of the PLAIN BADGE.$"
+Goldenrod_Host::
+	lock
+	faceplayer
+	msgbox Goldenrod_Text_TuneIn, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, NO, Goldenrod_HostEnd
+	playmoncry SPECIES_MAREEP, CRY_MODE_NORMAL
+	waitmoncry
+	msgbox Goldenrod_Text_Question, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, YES, Goldenrod_HostRight
+	msgbox Goldenrod_Text_Reveal, MSGBOX_DEFAULT
+	goto Goldenrod_HostEnd
+Goldenrod_HostRight:
+	msgbox Goldenrod_Text_Right, MSGBOX_DEFAULT
+Goldenrod_HostEnd:
+	release
+	end
+Goldenrod_Text_TuneIn:
+	.string "You're just in time for our sound\n"
+	.string "check. Want to hear today's tape?$"
+Goldenrod_Text_Question:
+	.string "That call came from Route 32.\n"
+	.string "Do you think it was a Mareep?$"
+Goldenrod_Text_Right:
+	.string "Right! That was our first take.\n"
+	.string "She tried chewing the microphone\l"
+	.string "on the second.$"
+Goldenrod_Text_Reveal:
+	.string "A Mareep! She put her nose right\n"
+	.string "up to the microphone.$"
+
+Goldenrod_Practice::
+	lock
+	faceplayer
+	playmoncry SPECIES_MILTANK, CRY_MODE_NORMAL
+	waitmoncry
+	msgbox Goldenrod_Text_Practice, MSGBOX_DEFAULT
+	release
+	end
+Goldenrod_Text_Practice:
+	.string "Miltank traces a tight circle\n"
+	.string "with the tip of her hoof.$"

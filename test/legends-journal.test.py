@@ -47,6 +47,11 @@ int main(void)
 {
     // Appended quest64 is driven by its own native flags and retains the
     // prior journal layout, rewards and IDs.
+    assert(!LegendsQuestVisible(74));
+    flags[FLAG_VISITED_LEGENDS_GOLDENROD_CITY]=1;
+    assert(LegendsQuestVisible(74) && !LegendsQuestComplete(74));
+    flags[FLAG_JOHTO_PLAIN_BADGE]=1;assert(LegendsQuestComplete(74));
+    flags[FLAG_VISITED_LEGENDS_GOLDENROD_CITY]=flags[FLAG_JOHTO_PLAIN_BADGE]=0;
     assert(!LegendsQuestVisible(64));
     flags[FLAG_LEGENDS_NIGHTMARE_CALL]=1;assert(LegendsQuestVisible(64));assert(!LegendsQuestComplete(64));
     flags[FLAG_LEGENDS_NIGHTMARE_VISITED]=1;assert(LegendsQuestStepComplete(64,0));
@@ -66,7 +71,7 @@ int main(void)
     memset(&data,0xA5,sizeof(data)); flags[FLAG_BADGE01_GET]=1;
     stats[GAME_STAT_POKEMON_CAPTURES]=100; dex=200;
     LegendsJournalInit(FALSE);
-    assert(LegendsAchievementCount()==130 && LegendsQuestCount()==72);
+    assert(LegendsAchievementCount()==130 && LegendsQuestCount()==75);
     assert(LegendsAchievementEarned(0));
     assert(!LegendsAchievementEarned(1));
     for(unsigned i=0;i<LegendsAchievementCount();i++)
@@ -185,7 +190,7 @@ int main(void)
     assert(LegendsAchievementNotice()==0xFFFF);
     // Legacy checksum and tracked-quest word remain independent of the appended tail.
     assert(sizeof(data.journal)==36&&sizeof(data.achievementExtra)==28);
-    puts("72 quests; 130 achievements; legacy tracking words, progression, persistence, claims and link guards passed.");
+    puts("75 quests; 130 achievements; legacy tracking words, progression, persistence, claims and link guards passed.");
 }
 '''
 with tempfile.TemporaryDirectory() as d:

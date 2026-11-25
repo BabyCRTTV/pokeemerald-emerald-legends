@@ -35,6 +35,8 @@ class FoundationTests(unittest.TestCase):
   group=json.loads((R/'data/maps/map_groups.json').read_text())['gMapGroup_LegendsKanto'];self.assertEqual(group[:2],['LegendsKanto_VermilionCity','LegendsKanto_Harbor'])
   opposite={'left':'right','right':'left','up':'down','down':'up'}
   allowed={i['id'] for i in MANIFEST+CHAPTER+json.loads((R/'data/legends_kanto_chapter3.json').read_text())['maps']+json.loads((R/'data/legends_kanto_chapters4-6.json').read_text())['maps']+json.loads((R/'data/legends_kanto_finale.json').read_text())['maps']}|{'MAP_LEGENDS_KANTO_VERMILION_CITY'}
+  opening = json.loads((R/'data/maps/map_groups.json').read_text())['gMapGroup_LegendsJohto']
+  allowed.update(json.loads((R/f'data/maps/{name}/map.json').read_text())['id'] for name in opening)
   visited=set();queue=['MAP_LEGENDS_KANTO_VERMILION_CITY']
   while queue:
    id=queue.pop()

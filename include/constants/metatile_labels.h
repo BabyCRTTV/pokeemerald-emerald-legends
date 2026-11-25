@@ -326,6 +326,14 @@
 #define METATILE_InsideShip_IntactDoor_Bottom_Locked    0x233
 #define METATILE_InsideShip_IntactDoor_Bottom_Unlocked  0x22B
 
+// gTileset_LegendsJohto
+#define METATILE_LegendsJohto_BlueHouseDoor         0x211
+#define METATILE_LegendsJohto_PlumHouseDoor         0x225
+#define METATILE_LegendsJohto_RedHouseDoor          0x239
+#define METATILE_LegendsJohto_ElmsLabDoor           0x25B
+#define METATILE_LegendsJohto_WorkshopDoor          0x270
+#define METATILE_LegendsJohto_SproutTowerDoor       0x2A0
+
 // gTileset_Lavaridge
 #define METATILE_Lavaridge_AshGrass             0x207
 #define METATILE_Lavaridge_CaveEntrance_Bottom  0x25E

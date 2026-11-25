@@ -1,5 +1,45 @@
 # Development handoff
 
+## Inland Johto shorelines · November 25, 2026
+
+Model GPT-6 · Repaired bank joins on eight Johto maps, rejoined the water beneath Sprout Tower’s bridge and restored a tree canopy on Route 34. The three prior battery saves continued and walked on the reapplied Release. Surf, dismounting and the bridge approaches passed on controller input. Draft PR #128 carries the changes for owner review. [Matched in-game views and build hashes](qa/johto-opening/README.md#inland-johto-shorelines).
+
+## Goldenrod Radio Square and the Plain Badge · November 25, 2026
+
+Model GPT-6 · Opened the north avenue from South Market into Radio Square. The studio plays a field recording, and Gym Leader Cass awards Johto’s third badge. Both entrances, the badge sequence, persistence and an older Goldenrod save passed native checks. The three new maps are on draft PR #128 for owner review. Route 35 and National Park are the next unopened stretch. [Native views and patch checks](qa/johto-opening/README.md#goldenrod-radio-square-and-the-plain-badge).
+
+## Johto Apricorn trees · November 25, 2026
+
+Model GPT-6 · Redrew the shared Apricorn tree with grouped leaves, three hanging fruits and a forked trunk. All 24 placements use the new artwork. Native collision checks covered Azalea, Goldenrod and Route 30. The revised preview is on draft PR #128 for owner review. [In-game comparison and patch checks](qa/johto-opening/README.md#johto-apricorn-trees).
+
+## Ilex Forest, Route 34 and southern Goldenrod · November 25, 2026
+
+Model GPT-6 · Extended the approved Azalea trail through Ilex Forest to Route 34 and Goldenrod’s South Market. The shrine, shared Day Care, two shops, bike exchange, nurse and Fly landing are playable in draft PR #128. A battery save made beside the old Azalea tree line crossed the new exit on the reapplied Release. Goldenrod Gym and the northern districts are the next unfinished part of the journey. [Native gameplay and verification](qa/johto-opening/README.md#west-from-azalea-to-goldenrod).
+
+## Johto timber shading · November 25, 2026
+
+Model GPT-6 · Reshaded the pier and bridge planks using Dewford’s board spacing and the existing Johto timber tones. Matched walking footage and noon and night captures cover Cherrygrove, Violet and Route 32. Both patch decoders and the older save check passed. The artwork is on draft PR #128 for review. [Comparison and patch hashes](qa/johto-opening/README.md#timber-shading-on-johto-crossings).
+
+## Johto trainer visibility · November 25, 2026
+
+Model GPT-6 · Fixed terrain drawing above the player on bridge decks, cobblestones and lower scenery edges. A matched controller replay showed the trainer crossing all four reported surface types. All 23 sampled ground and frontage positions displayed the entire reference sprite, and Elm’s overhanging roof retained its depth. Both native patches and the old-save lab entrance passed. [Native captures and patch hashes](qa/johto-opening/README.md#trainer-visibility-on-johto-terrain). Draft PR #128 is ready for review.
+
+## Johto paths and borders · November 25, 2026
+
+Model GPT-6 · The owner approved the four towns’ art direction. Aligned doorsteps and crossings to the approved facades, connected the Route 32 trail to Union Cave and corrected the shoreline collision and scenery beyond the map edge. All 20 road lanes passed in both directions. A save from the previous preview resumed one tile south of the new cave sign and could walk out. Both BPS decoders reproduced Debug and Release. Draft PR #128 carries the playable touch-up for review. [Matched gameplay and verification](qa/johto-opening/README.md#paths-entrances-and-map-borders).
+
+## Johto town art review · November 25, 2026
+
+Model: GPT-6 | Draft PR #128 has new town and route art for owner review. New Bark mixes an original gabled cottage with Elm’s stepped lab wing. Cherrygrove has a continuous beach, Violet has a lantern-lined tower crossing, and Azalea has planted orchard rows. The round trip, 19 entrances, 185 controller contact checks, matched indoor captures and three battery saves from the previous preview passed. Continue repairs positions covered by new scenery. [The six comparisons and native build evidence](qa/johto-opening/README.md#towns-shorelines-and-woods).
+
+## Johto building and collision revision · November 25, 2026
+
+Model: GPT-6 | Rebuilt the foundations, shadows and door animations of the opening Johto towns. The wall footprints now follow the buildings, with room to walk beneath the projecting eaves. The controller checks covered 150 individual approaches, 19 entrances in both directions and the full 32-transition return journey. An original Johto preview save continued into the revised Release and passed the lab entrance and exit. Day and night checks confirmed that Cherrygrove’s storefront signs use the shared lighting palette. The revised build and visual comparison are in draft PR #128 for owner review. [Matched screenshots and verification](qa/johto-opening/README.md#revised-buildings-and-collision).
+
+## Johto first quarter · gameplay preview
+
+The first two Johto badges are in draft PR #128, based on the Chosen One candidate. Viridian’s west road reaches New Bark, Cherrygrove, Violet and Azalea. The full return walk, seven trainer battles, Elm’s survey, a v0.0.94 battery save and the reapplied Release patch passed local checks. The gameplay tour and patch are ready for owner review. [Chapter route and verification](qa/johto-opening/README.md) · [Draft PR #128](https://github.com/BabyCRTTV/pokeemerald-emerald-legends/pull/128).
+
 ## The Chosen One preview (22 November 2026)
 
 Nineteen monks give one plate each across Hoenn. Once all nineteen gifts have been accepted, a twentieth monk appears near Birch’s lab in Littleroot and offers the Azure Flute. The combined candidate includes the November expansion update. It preserves Legends’ Casual move hints and captured-item handling. The owner is reviewing the gameplay preview. The current public game is v0.0.94. [Placements and verification](qa/chosen-one-preview.md).

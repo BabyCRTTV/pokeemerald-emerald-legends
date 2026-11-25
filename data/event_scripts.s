@@ -1894,6 +1894,7 @@ EventScript_PalletTown_PlayersHouse_2F_TurnOnPC::
 	.include "data/scripts/legends_homecoming.inc"
 	.include "data/scripts/legends_field_requests.inc"
 	.include "data/scripts/legends_plate_monks.inc"
+	.include "data/scripts/legends_johto.inc"
 	.include "data/scripts/legends_missives.inc"
 	.include "data/scripts/legends_grotto_review.inc"
 	.include "data/maps/LegendsGrotto_Leafshade/scripts.inc"

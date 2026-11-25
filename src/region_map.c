@@ -134,6 +134,7 @@ static const u8 sRegionMapPlayerIcon_LeafGfx[] = INCGFX_U8("graphics/pokenav/reg
 
 #include "data/region_map/region_map_layout.h"
 #include "data/region_map/region_map_layout_kanto.h"
+#include "data/region_map/region_map_layout_johto.h"
 #include "data/region_map/region_map_layout_sevii123.h"
 #include "data/region_map/region_map_layout_sevii45.h"
 #include "data/region_map/region_map_layout_sevii67.h"
@@ -325,6 +326,11 @@ static const u16 ALIGNED(4) sRegionMapSevii67_Pal[] = INCGFX_U16("graphics/poken
 static const u32 sRegionMapSevii67_Gfx[] = INCGFX_U32("graphics/pokenav/region_map/map_sevii_67.png", ".8bpp.smol");
 static const u32 sRegionMapSevii67_Tilemap[] = INCGFX_U32("graphics/pokenav/region_map/map_sevii_67.bin", ".smolTM");
 
+static const u16 ALIGNED(4) sJohtoMapPalette[] = INCGFX_U16("graphics/pokenav/region_map/map_johto.pal", ".gbapal");
+static const u32 sJohtoMapGfx[] = INCGFX_U32("graphics/pokenav/region_map/map_johto.png", ".8bpp.smol");
+static const u32 sJohtoNavTilemap[] = INCGFX_U32("graphics/pokenav/region_map/map_johto.bin", ".smolTM");
+static const u32 sJohtoDexTilemap[] = INCGFX_U32("graphics/pokedex/region_map_johto.bin", ".smolTM");
+
 const struct RegionMapInfo gRegionMapInfos[] =
 {
     [REGION_MAP_HOENN]    =
@@ -366,6 +372,16 @@ const struct RegionMapInfo gRegionMapInfos[] =
         .regionMapPalette = sRegionMapSevii45_Pal,
         .regionMapGfx = sRegionMapSevii45_Gfx,
         .regionMapTilemap = sRegionMapSevii45_Tilemap,
+    },
+    [REGION_MAP_JOHTO] =
+    {
+        .dexMapPalette = sJohtoMapPalette,
+        .dexMapGfx = sJohtoMapGfx,
+        .dexMapTilemap = sJohtoDexTilemap,
+        .dexMapPaletteSize = sizeof(sJohtoMapPalette),
+        .regionMapPalette = sJohtoMapPalette,
+        .regionMapGfx = sJohtoMapGfx,
+        .regionMapTilemap = sJohtoNavTilemap,
     },
     [REGION_MAP_SEVII67]  =
     {
@@ -431,6 +447,11 @@ static const u8 sMapHealLocations[][3] =
     [MAPSEC_ROUTE_132] = {MAP_GROUP(MAP_ROUTE132), MAP_NUM(MAP_ROUTE132), HEAL_LOCATION_NONE},
     [MAPSEC_ROUTE_133] = {MAP_GROUP(MAP_ROUTE133), MAP_NUM(MAP_ROUTE133), HEAL_LOCATION_NONE},
     [MAPSEC_ROUTE_134] = {MAP_GROUP(MAP_ROUTE134), MAP_NUM(MAP_ROUTE134), HEAL_LOCATION_NONE},
+    [MAPSEC_LEGENDS_NEW_BARK_TOWN] = {MAP_GROUP(MAP_LEGENDS_JOHTO_NEW_BARK_TOWN), MAP_NUM(MAP_LEGENDS_JOHTO_NEW_BARK_TOWN), HEAL_LOCATION_NONE},
+    [MAPSEC_LEGENDS_CHERRYGROVE_CITY] = {MAP_GROUP(MAP_LEGENDS_JOHTO_CHERRYGROVE_CITY), MAP_NUM(MAP_LEGENDS_JOHTO_CHERRYGROVE_CITY), HEAL_LOCATION_LEGENDS_CHERRYGROVE_CITY},
+    [MAPSEC_LEGENDS_VIOLET_CITY] = {MAP_GROUP(MAP_LEGENDS_JOHTO_VIOLET_CITY), MAP_NUM(MAP_LEGENDS_JOHTO_VIOLET_CITY), HEAL_LOCATION_LEGENDS_VIOLET_CITY},
+    [MAPSEC_LEGENDS_AZALEA_TOWN] = {MAP_GROUP(MAP_LEGENDS_JOHTO_AZALEA_TOWN), MAP_NUM(MAP_LEGENDS_JOHTO_AZALEA_TOWN), HEAL_LOCATION_LEGENDS_AZALEA_TOWN},
+    [MAPSEC_LEGENDS_GOLDENROD_CITY] = {MAP_GROUP(MAP_LEGENDS_JOHTO_GOLDENROD_CITY), MAP_NUM(MAP_LEGENDS_JOHTO_GOLDENROD_CITY), HEAL_LOCATION_LEGENDS_GOLDENROD_CITY},
     [MAPSEC_PALLET_TOWN] = {MAP_GROUP(MAP_PALLET_TOWN), MAP_NUM(MAP_PALLET_TOWN), HEAL_LOCATION_PALLET_TOWN},
     [MAPSEC_VIRIDIAN_CITY] = {MAP_GROUP(MAP_VIRIDIAN_CITY), MAP_NUM(MAP_VIRIDIAN_CITY), HEAL_LOCATION_VIRIDIAN_CITY},
     [MAPSEC_PEWTER_CITY] = {MAP_GROUP(MAP_PEWTER_CITY), MAP_NUM(MAP_PEWTER_CITY), HEAL_LOCATION_PEWTER_CITY},
@@ -776,7 +797,12 @@ bool8 LoadRegionMapGfx(void)
         InitMapBasedOnPlayerLocation();
         if (!RegionMap_IsViewingCurrentRegion())
         {
-            sRegionMap->mapSecId = sRegionMap->displayRegion == REGION_MAP_KANTO ? MAPSEC_VERMILION_CITY : MAPSEC_LITTLEROOT_TOWN;
+            if (sRegionMap->displayRegion == REGION_MAP_JOHTO)
+                sRegionMap->mapSecId = MAPSEC_LEGENDS_NEW_BARK_TOWN;
+            else if (sRegionMap->displayRegion == REGION_MAP_KANTO)
+                sRegionMap->mapSecId = MAPSEC_VERMILION_CITY;
+            else
+                sRegionMap->mapSecId = MAPSEC_LITTLEROOT_TOWN;
             sRegionMap->cursorPosX = gRegionMapEntries[sRegionMap->mapSecId].x + MAPCURSOR_X_MIN;
             sRegionMap->cursorPosY = gRegionMapEntries[sRegionMap->mapSecId].y + MAPCURSOR_Y_MIN;
         }
@@ -1178,6 +1204,8 @@ void PokedexAreaScreen_UpdateRegionMapVariablesAndVideoRegs(s16 x, s16 y)
 
 enum RegionMapType GetRegionMapType(u32 mapSecId)
 {
+    if (mapSecId >= MAPSEC_LEGENDS_ROUTE26 && mapSecId <= MAPSEC_LEGENDS_TOHJO_FALLS)
+        return REGION_MAP_JOHTO;
     switch (GetRegionForSectionId(mapSecId))
     {
     case REGION_KANTO:
@@ -1193,6 +1221,8 @@ enum RegionMapType GetRegionMapType(u32 mapSecId)
         default:
             return REGION_MAP_KANTO;
         }
+    case REGION_JOHTO:
+        return REGION_MAP_JOHTO;
     case REGION_HOENN:
     default:
         return REGION_MAP_HOENN;
@@ -1210,6 +1240,7 @@ static mapsec_u16_t GetMapSecIdAt(u16 x, u16 y)
 
     switch (sRegionMap->displayRegion)
     {
+    case REGION_MAP_JOHTO: return sRegionMapSections_Johto[y][x];
     case REGION_MAP_KANTO: return sRegionMapSections_Kanto[y][x];
     case REGION_MAP_SEVII123: return sRegionMapSections_Sevii123[y][x];
     case REGION_MAP_SEVII45: return sRegionMapSections_Sevii45[y][x];
@@ -1431,6 +1462,16 @@ static u8 GetMapsecType(mapsec_u16_t mapSecId)
     {
     case MAPSEC_NONE:
         return MAPSECTYPE_NONE;
+    case MAPSEC_LEGENDS_NEW_BARK_TOWN:
+        return FlagGet(FLAG_VISITED_LEGENDS_NEW_BARK_TOWN) ? MAPSECTYPE_CITY_CANFLY : MAPSECTYPE_CITY_CANTFLY;
+    case MAPSEC_LEGENDS_CHERRYGROVE_CITY:
+        return FlagGet(FLAG_VISITED_LEGENDS_CHERRYGROVE_CITY) ? MAPSECTYPE_CITY_CANFLY : MAPSECTYPE_CITY_CANTFLY;
+    case MAPSEC_LEGENDS_VIOLET_CITY:
+        return FlagGet(FLAG_VISITED_LEGENDS_VIOLET_CITY) ? MAPSECTYPE_CITY_CANFLY : MAPSECTYPE_CITY_CANTFLY;
+    case MAPSEC_LEGENDS_AZALEA_TOWN:
+        return FlagGet(FLAG_VISITED_LEGENDS_AZALEA_TOWN) ? MAPSECTYPE_CITY_CANFLY : MAPSECTYPE_CITY_CANTFLY;
+    case MAPSEC_LEGENDS_GOLDENROD_CITY:
+        return FlagGet(FLAG_VISITED_LEGENDS_GOLDENROD_CITY) ? MAPSECTYPE_CITY_CANFLY : MAPSECTYPE_CITY_CANTFLY;
     case MAPSEC_LITTLEROOT_TOWN:
         return FlagGet(FLAG_VISITED_LITTLEROOT_TOWN) ? MAPSECTYPE_CITY_CANFLY : MAPSECTYPE_CITY_CANTFLY;
     case MAPSEC_OLDALE_TOWN:
@@ -2225,6 +2266,31 @@ static const struct FlyLocation sFlyLocations[] =
         .flag = FLAG_VISITED_EVER_GRANDE_CITY,
     },
     {
+        .regionMapType = REGION_MAP_JOHTO,
+        .mapsec = MAPSEC_LEGENDS_NEW_BARK_TOWN,
+        .flag = FLAG_VISITED_LEGENDS_NEW_BARK_TOWN,
+    },
+    {
+        .regionMapType = REGION_MAP_JOHTO,
+        .mapsec = MAPSEC_LEGENDS_CHERRYGROVE_CITY,
+        .flag = FLAG_VISITED_LEGENDS_CHERRYGROVE_CITY,
+    },
+    {
+        .regionMapType = REGION_MAP_JOHTO,
+        .mapsec = MAPSEC_LEGENDS_VIOLET_CITY,
+        .flag = FLAG_VISITED_LEGENDS_VIOLET_CITY,
+    },
+    {
+        .regionMapType = REGION_MAP_JOHTO,
+        .mapsec = MAPSEC_LEGENDS_AZALEA_TOWN,
+        .flag = FLAG_VISITED_LEGENDS_AZALEA_TOWN,
+    },
+    {
+        .regionMapType = REGION_MAP_JOHTO,
+        .mapsec = MAPSEC_LEGENDS_GOLDENROD_CITY,
+        .flag = FLAG_VISITED_LEGENDS_GOLDENROD_CITY,
+    },
+    {
         .regionMapType = REGION_MAP_KANTO,
         .mapsec = MAPSEC_PALLET_TOWN,
         .flag = FLAG_WORLD_MAP_PALLET_TOWN,
@@ -2527,6 +2593,12 @@ u32 FilterFlyDestination(struct RegionMap* regionMap)
 void SetFlyDestination(struct RegionMap* regionMap)
 {
     u32 flyDestination = FilterFlyDestination(regionMap);
+
+    if (regionMap->mapSecId == MAPSEC_LEGENDS_NEW_BARK_TOWN)
+    {
+        SetWarpDestination(MAP_GROUP(MAP_LEGENDS_JOHTO_NEW_BARK_TOWN), MAP_NUM(MAP_LEGENDS_JOHTO_NEW_BARK_TOWN), WARP_ID_NONE, 11, 12);
+        return;
+    }
 
     if (flyDestination != WARP_ID_NONE)
         SetWarpDestinationToHealLocation(flyDestination);

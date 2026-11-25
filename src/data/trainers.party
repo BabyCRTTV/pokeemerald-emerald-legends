@@ -18042,3 +18042,188 @@ EVs: 128 HP / 128 Atk / 128 SpA / 128 Spe
 - Ice Beam
 - Dark Pulse
 - Protect
+
+=== TRAINER_LEGENDS_JOHTO_WREN ===
+Name: WREN
+Class: Leader
+Pic: Bird Keeper
+Gender: Male
+Music: Intense
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Noctowl
+Level: 48
+- Air Slash
+- Reflect
+- Roost
+- Psychic
+
+Murkrow
+Level: 48
+- Wing Attack
+- Haze
+- Taunt
+- Night Shade
+
+Pidgeot
+Level: 50
+- Air Slash
+- Quick Attack
+- Roost
+- Feather Dance
+
+=== TRAINER_LEGENDS_JOHTO_RUE ===
+Name: RUE
+Class: Leader
+Pic: Bug Catcher
+Gender: Male
+Music: Intense
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Ariados
+Level: 51
+- Sticky Web
+- Poison Jab
+- Sucker Punch
+- Bug Bite
+
+Heracross
+Level: 52
+- Brick Break
+- Aerial Ace
+- Megahorn
+- Rock Tomb
+
+Scizor
+Level: 54
+- Bullet Punch
+- X-Scissor
+- Agility
+- Slash
+
+=== TRAINER_LEGENDS_JOHTO_PIP ===
+Name: PIP
+Class: Bird Keeper
+Pic: Bird Keeper
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Check Bad Move / Try To Faint
+
+Hoothoot
+Level: 45
+- Confusion
+- Reflect
+
+Fearow
+Level: 47
+- Drill Peck
+- Agility
+
+=== TRAINER_LEGENDS_JOHTO_LEN ===
+Name: LEN
+Class: Camper
+Pic: Camper
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Check Bad Move / Try To Faint
+
+Sentret
+Level: 34
+- Slam
+- Quick Attack
+
+Hoppip
+Level: 35
+- Mega Drain
+- Leech Seed
+
+=== TRAINER_LEGENDS_JOHTO_KIT ===
+Name: KIT
+Class: Fisherman
+Pic: Fisherman
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Check Bad Move / Try To Faint
+
+Poliwag
+Level: 39
+- Bubble Beam
+- Hypnosis
+
+Quagsire
+Level: 41
+- Mud Shot
+- Slam
+
+=== TRAINER_LEGENDS_JOHTO_MOSS ===
+Name: MOSS
+Class: Hiker
+Pic: Hiker
+Gender: Male
+Music: Hiker
+Double Battle: No
+AI: Check Bad Move / Try To Faint
+
+Geodude
+Level: 41
+- Rock Throw
+- Rock Polish
+
+Onix
+Level: 42
+- Rock Slide
+- Bind
+
+=== TRAINER_LEGENDS_JOHTO_FERN ===
+Name: FERN
+Class: Bug Catcher
+Pic: Bug Catcher
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Check Bad Move / Try To Faint
+
+Spinarak
+Level: 48
+- Night Shade
+- Poison Jab
+
+Scyther
+Level: 50
+- Wing Attack
+- Slash
+
+=== TRAINER_LEGENDS_JOHTO_CASS ===
+Name: CASS
+Class: Leader
+Pic: Beauty
+Gender: Female
+Music: Intense
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Girafarig
+Level: 55
+- Psychic
+- Baton Pass
+- Agility
+- Hyper Voice
+
+Ursaring
+Level: 55
+- Slash
+- Brick Break
+- Shadow Claw
+- Protect
+
+Miltank @ Sitrus Berry
+Level: 57
+- Body Slam
+- Rollout
+- Defense Curl
+- Milk Drink

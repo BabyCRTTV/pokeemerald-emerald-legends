@@ -1,0 +1,37 @@
+{
+  "id": "MAP_LEGENDS_JOHTO_TOHJO_FALLS",
+  "name": "LegendsJohto_TohjoFalls",
+  "layout": "LAYOUT_LEGENDS_JOHTO_TOHJO_FALLS",
+  "music": "MUS_CAVE_OF_ORIGIN",
+  "region": "REGION_HOENN",
+  "region_map_section": "MAPSEC_LEGENDS_TOHJO_FALLS",
+  "requires_flash": false,
+  "weather": "WEATHER_NONE",
+  "map_type": "MAP_TYPE_UNDERGROUND",
+  "allow_cycling": false,
+  "allow_escaping": false,
+  "allow_running": true,
+  "show_map_name": true,
+  "floor_number": 0,
+  "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+  "connections": [],
+  "object_events": [],
+  "warp_events": [
+    {
+      "x": 29,
+      "y": 19,
+      "elevation": 0,
+      "dest_map": "MAP_LEGENDS_JOHTO_ROUTE27_EAST",
+      "dest_warp_id": "0"
+    },
+    {
+      "x": 5,
+      "y": 19,
+      "elevation": 0,
+      "dest_map": "MAP_LEGENDS_JOHTO_ROUTE27_WEST",
+      "dest_warp_id": "0"
+    }
+  ],
+  "coord_events": [],
+  "bg_events": []
+}

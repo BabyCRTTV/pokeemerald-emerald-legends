@@ -20,6 +20,7 @@ typedef int s32;typedef unsigned int u32;typedef unsigned short u16;typedef unsi
 #define REGION_MAP_SEVII123 2
 #define REGION_MAP_SEVII45 3
 #define REGION_MAP_SEVII67 4
+#define REGION_MAP_JOHTO 5
 #define MAPSEC_NONE 99
 #define MAPCURSOR_X_MIN 1
 #define MAPCURSOR_Y_MIN 2
@@ -43,6 +44,7 @@ static struct Pokenav_RegionMapGfx gfx;
 static struct RegionMap map,*sRegionMap=&map;
 static const int sRegionMapBgTemplates[2]={0};
 static int actualRegion,zoomed,zoomCalls,fadeBusy,bgBusy,freed,playerIcons,cursors,loads,changed;
+static const mapsec_u16_t sRegionMapSections_Johto[15][28]={{16}};
 static const mapsec_u16_t sRegionMapSections_Kanto[15][28]={{12}};
 static const mapsec_u16_t sRegionMapSections_Sevii123[15][28]={{13}};
 static const mapsec_u16_t sRegionMapSections_Sevii45[15][28]={{14}};
@@ -74,17 +76,20 @@ static bool WaitForHelpBar(void){return false;}
 '''
 main=r'''
 int main(void){
- for(int origin=0;origin<=1;origin++)for(int z=0;z<=1;z++){
+ int regions[]={REGION_MAP_HOENN,REGION_MAP_KANTO,REGION_MAP_JOHTO};
+ for(int idx=0;idx<3;idx++)for(int z=0;z<=1;z++){
+  int origin=regions[idx],next=regions[(idx+1)%3];
   actualRegion=origin;menu.displayRegion=origin;map.displayRegion=origin;zoomed=z;zoomCalls=freed=playerIcons=cursors=changed=loads=0;
   assert(LoopedTask_SwitchRegion(0)==LT_INC_AND_PAUSE);
   fadeBusy=1;assert(LoopedTask_SwitchRegion(1)==LT_PAUSE);assert(freed==0);
   fadeBusy=0;assert(LoopedTask_SwitchRegion(1)==LT_INC_AND_PAUSE);
   assert(LoopedTask_SwitchRegion(2)==LT_INC_AND_PAUSE);assert(zoomCalls==z);assert(changed==z);assert(freed==1);
-  assert(actualRegion==origin);assert(map.displayRegion==1-origin);assert(!zoomed);
+  assert(actualRegion==origin);assert(map.displayRegion==next);assert(!zoomed);
   assert(LoopedTask_SwitchRegion(3)==LT_INC_AND_PAUSE);assert(playerIcons==0);assert(cursors==1);
-  assert(GetMapSecIdAt(1,2)==(origin==0?12:11));assert(GetMapSecIdAt(0,2)==MAPSEC_NONE);assert(GetMapSecIdAt(1,17)==MAPSEC_NONE);
+  assert(GetMapSecIdAt(1,2)==(next==REGION_MAP_KANTO?12:next==REGION_MAP_JOHTO?16:11));assert(GetMapSecIdAt(0,2)==MAPSEC_NONE);assert(GetMapSecIdAt(1,17)==MAPSEC_NONE);
   bgBusy=1;assert(LoopedTask_SwitchRegion(4)==LT_PAUSE);bgBusy=0;assert(LoopedTask_SwitchRegion(4)==LT_INC_AND_PAUSE);
   assert(LoopedTask_SwitchRegion(5)==LT_FINISH);
+  LoopedTask_SwitchRegion(0);LoopedTask_SwitchRegion(1);LoopedTask_SwitchRegion(2);LoopedTask_SwitchRegion(3);
   LoopedTask_SwitchRegion(0);LoopedTask_SwitchRegion(1);LoopedTask_SwitchRegion(2);LoopedTask_SwitchRegion(3);
   assert(map.displayRegion==origin);assert(playerIcons==1);assert(zoomCalls==z);
  }

@@ -982,6 +982,16 @@
         "native": "data/tilesets/primary/general_frlg/tiles.png"
       }
     ],
+    "src/data/tilesets/legends_johto.h": [
+      {
+        "literal": 10,
+        "native": "data/tilesets/secondary/legends_johto/palettes/05.pal"
+      },
+      {
+        "literal": 24,
+        "native": "data/tilesets/secondary/legends_johto/palettes/12.pal"
+      }
+    ],
     "src/data/tilesets/legends_kanto.h": [
       {
         "literal": 38,
@@ -1196,7 +1206,8 @@
     "gMetatiles_Sootopolis": "data/tilesets/secondary/sootopolis/metatiles.bin",
     "gMetatiles_VermilionCity": "data/tilesets/secondary/vermilion_city_frlg/metatiles.bin",
     "gMetatiles_ViridianCity": "data/tilesets/secondary/viridian_city_frlg/metatiles.bin",
-    "gMetatiles_ViridianForest": "data/tilesets/secondary/viridian_forest_frlg/metatiles.bin"
+    "gMetatiles_ViridianForest": "data/tilesets/secondary/viridian_forest_frlg/metatiles.bin",
+    "sJohtoMetatiles": "data/tilesets/secondary/legends_johto/metatiles.bin"
   },
   "redirects": {
     "data/tilesets/primary/general/metatiles.bin": "data/tilesets/legends_lights/general_metatiles.bin",
@@ -1251,6 +1262,8 @@
     "data/tilesets/secondary/lavaridge/palettes/12.pal": "data/tilesets/legends_lights/lavaridge_day.pal",
     "data/tilesets/secondary/lavender_town_frlg/palettes/00.pal": "data/tilesets/legends_lights/lavender_town_frlg_night.pal",
     "data/tilesets/secondary/lavender_town_frlg/palettes/07.pal": "data/tilesets/legends_lights/lavender_town_frlg_day.pal",
+    "data/tilesets/secondary/legends_johto/palettes/05.pal": "data/tilesets/legends_lights/legends_johto_night.pal",
+    "data/tilesets/secondary/legends_johto/palettes/12.pal": "data/tilesets/legends_lights/legends_johto_day.pal",
     "data/tilesets/secondary/lilycove/metatiles.bin": "data/tilesets/legends_lights/lilycove_metatiles.bin",
     "data/tilesets/secondary/lilycove/palettes/05.pal": "data/tilesets/legends_lights/lilycove_night.pal",
     "data/tilesets/secondary/lilycove/palettes/06.pal": "data/tilesets/legends_lights/lilycove_windows_day.pal",
@@ -1578,6 +1591,20 @@
       "relocated_palette": null,
       "symbol": "gTileset_Lavaridge",
       "tiles": "data/tilesets/secondary/lavaridge/tiles.png"
+    },
+    {
+      "alternate": 5,
+      "cells": [],
+      "day": "data/tilesets/legends_lights/legends_johto_day.pal",
+      "extra_alternate": 5,
+      "extra_palette": 12,
+      "family": "general",
+      "metatiles": "data/tilesets/secondary/legends_johto/metatiles.bin",
+      "night": "data/tilesets/legends_lights/legends_johto_night.pal",
+      "palette": 12,
+      "relocated_palette": null,
+      "symbol": "gTileset_LegendsJohto",
+      "tiles": "data/tilesets/secondary/legends_johto/tiles.png"
     },
     {
       "alternate": 5,
@@ -2626,6 +2653,9 @@
       "gTileset_VermilionCity": "\n    .isCompressed = TRUE,\n    .isSecondary = TRUE,\n    .tiles = gTilesetTiles_VermilionCity,\n    .palettes = gTilesetPalettes_VermilionCity,\n    .metatiles = gMetatiles_VermilionCity,\n    .metatileAttributes = gMetatileAttributes_VermilionCity,\n    .callback = NULL,\n",
       "gTileset_ViridianCity": "\n    .isCompressed = TRUE,\n    .isSecondary = TRUE,\n    .tiles = gTilesetTiles_ViridianCity,\n    .palettes = gTilesetPalettes_ViridianCity,\n    .metatiles = gMetatiles_ViridianCity,\n    .metatileAttributes = gMetatileAttributes_ViridianCity,\n    .callback = NULL,\n",
       "gTileset_ViridianForest": "\n    .isCompressed = TRUE,\n    .isSecondary = TRUE,\n    .tiles = gTilesetTiles_ViridianForest,\n    .palettes = gTilesetPalettes_ViridianForest,\n    .metatiles = gMetatiles_ViridianForest,\n    .metatileAttributes = gMetatileAttributes_ViridianForest,\n    .callback = NULL,\n"
+    },
+    "src/data/tilesets/legends_johto.h": {
+      "gTileset_LegendsJohto": "\n    .isCompressed = TRUE,\n    .isSecondary = TRUE,\n    .tiles = sJohtoTiles,\n    .palettes = sJohtoPalettes,\n    .metatiles = sJohtoMetatiles,\n    .metatileAttributes = sJohtoAttributes,\n"
     },
     "src/data/tilesets/legends_kanto.h": {
       "gTileset_LegendsKantoCeladonCity": "\n    .isCompressed = TRUE,\n    .isSecondary = TRUE,\n    .tiles = gTilesetTiles_LegendsKantoCeladonCity,\n    .palettes = gTilesetPalettes_LegendsKantoCeladonCity,\n    .metatiles = gMetatiles_LegendsKantoCeladonCity,\n    .metatileAttributes = gMetatileAttributes_LegendsKantoCeladonCity,\n    .callback = InitTilesetAnim_CeladonCity,\n",

@@ -110,6 +110,7 @@ const u32 gObjectEventPic_SwimmerM[] = INCGFX_U32("graphics/object_events/pics/p
 const u32 gObjectEventPic_SwimmerF[] = INCGFX_U32("graphics/object_events/pics/people/swimmer_f.png", ".4bpp", "-mwidth 2 -mheight 4");
 const u32 gObjectEventPic_BlackBelt[] = INCGFX_U32("graphics/object_events/pics/people/black_belt.png", ".4bpp", "-mwidth 2 -mheight 4");
 const u32 gObjectEventPic_Beauty[] = INCGFX_U32("graphics/object_events/pics/people/beauty.png", ".4bpp", "-mwidth 2 -mheight 4");
+const u32 gObjectEventPic_Elm[] = INCGFX_U32("graphics/object_events/pics/people/legends_elm.png", ".4bpp", "-mwidth 2 -mheight 4");
 const u32 gObjectEventPic_Scientist1[] = INCGFX_U32("graphics/object_events/pics/people/scientist_1.png", ".4bpp", "-mwidth 2 -mheight 4");
 const u32 gObjectEventPic_Lass[] = INCGFX_U32("graphics/object_events/pics/people/lass.png", ".4bpp", "-mwidth 2 -mheight 4");
 const u32 gObjectEventPic_Gentleman[] = INCGFX_U32("graphics/object_events/pics/people/gentleman.png", ".4bpp", "-mwidth 2 -mheight 4");
