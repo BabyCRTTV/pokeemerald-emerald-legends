@@ -1,5 +1,9 @@
 # Development handoff
 
+## Johto building and collision revision · November 25, 2026
+
+Model: GPT-6 | Rebuilt the foundations, shadows and door animations of the opening Johto towns. The wall footprints now follow the buildings, with room to walk beneath the projecting eaves. The controller checks covered 150 individual approaches, 19 entrances in both directions and the full 32-transition return journey. An original Johto preview save continued into the revised Release and passed the lab entrance and exit. Day and night checks confirmed that Cherrygrove’s storefront signs use the shared lighting palette. The revised build and visual comparison are in draft PR #128 for owner review. [Matched screenshots and verification](qa/johto-opening/README.md#revised-buildings-and-collision).
+
 ## Johto first quarter · gameplay preview
 
 The first two Johto badges are in draft PR #128, based on the Chosen One candidate. Viridian’s west road reaches New Bark, Cherrygrove, Violet and Azalea. The full return walk, seven trainer battles, Elm’s survey, a v0.0.94 battery save and the reapplied Release patch passed local checks. The gameplay tour and patch are ready for owner review. [Chapter route and verification](qa/johto-opening/README.md) · [Draft PR #128](https://github.com/BabyCRTTV/pokeemerald-emerald-legends/pull/128).

@@ -46,6 +46,11 @@ struct DoorSizeInfo
 
 static bool8 ShouldUseMultiCorridorDoor(void);
 
+static const u8 sDoorAnimTiles_JohtoHouse[] = INCGFX_U8("graphics/door_anims/legends_johto_house.png", ".4bpp");
+static const u8 sDoorAnimTiles_JohtoElmsLab[] = INCGFX_U8("graphics/door_anims/legends_johto_lab.png", ".4bpp");
+static const u8 sDoorAnimTiles_JohtoWorkshop[] = INCGFX_U8("graphics/door_anims/legends_johto_kiln.png", ".4bpp");
+static const u8 sDoorAnimTiles_JohtoSproutTower[] = INCGFX_U8("graphics/door_anims/legends_johto_pagoda.png", ".4bpp");
+
 static const u8 sDoorAnimTiles_Littleroot[] = INCGFX_U8("graphics/door_anims/littleroot.png", ".4bpp");
 static const u16 sDoorNullPalette1[16] = {};
 static const u8 sDoorAnimTiles_BirchsLab[] = INCGFX_U8("graphics/door_anims/birchs_lab.png", ".4bpp");
@@ -260,6 +265,10 @@ static const struct DoorSizeInfo sDoorSizeInfo[DOOR_SIZE_COUNT] =
     },
 };
 
+// Two 4-tile door halves plus the empty overlay read when drawing the lower half.
+static const u8 sDoorAnimPalettes_JohtoSlate[12] = {6, 6, 6, 6, 6, 6, 6, 6};
+static const u8 sDoorAnimPalettes_JohtoClay[12] = {7, 7, 7, 7, 7, 7, 7, 7};
+static const u8 sDoorAnimPalettes_JohtoViolet[12] = {8, 8, 8, 8, 8, 8, 8, 8};
 static const u8 sDoorAnimPalettes_General[] = {1, 1, 1, 1, 1, 1, 1, 1};
 static const u8 sDoorAnimPalettes_PokeCenter[] = {1, 1, 1, 1, 1, 1, 1, 1};
 static const u8 sDoorAnimPalettes_Gym[] = {5, 5, 5, 5, 5, 5, 5, 5};
@@ -375,6 +384,54 @@ static const u8 sDoorAnimPalettes_DeptStore_LegendsKanto[] = {3, 3, 3, 3, 3, 3, 
 
 static const struct DoorGraphics sDoorAnimGraphicsTable[] =
 {
+    {
+        .metatileNum = METATILE_LegendsJohto_BlueHouseDoor,
+        .tileset = &gTileset_LegendsJohto,
+        .sound = DOOR_SOUND_NORMAL,
+        .size = DOOR_SIZE_1x2,
+        .tiles = sDoorAnimTiles_JohtoHouse,
+        .palettes = sDoorAnimPalettes_JohtoSlate,
+    },
+    {
+        .metatileNum = METATILE_LegendsJohto_PlumHouseDoor,
+        .tileset = &gTileset_LegendsJohto,
+        .sound = DOOR_SOUND_NORMAL,
+        .size = DOOR_SIZE_1x2,
+        .tiles = sDoorAnimTiles_JohtoHouse,
+        .palettes = sDoorAnimPalettes_JohtoViolet,
+    },
+    {
+        .metatileNum = METATILE_LegendsJohto_RedHouseDoor,
+        .tileset = &gTileset_LegendsJohto,
+        .sound = DOOR_SOUND_NORMAL,
+        .size = DOOR_SIZE_1x2,
+        .tiles = sDoorAnimTiles_JohtoHouse,
+        .palettes = sDoorAnimPalettes_JohtoClay,
+    },
+    {
+        .metatileNum = METATILE_LegendsJohto_ElmsLabDoor,
+        .tileset = &gTileset_LegendsJohto,
+        .sound = DOOR_SOUND_NORMAL,
+        .size = DOOR_SIZE_1x2,
+        .tiles = sDoorAnimTiles_JohtoElmsLab,
+        .palettes = sDoorAnimPalettes_JohtoSlate,
+    },
+    {
+        .metatileNum = METATILE_LegendsJohto_WorkshopDoor,
+        .tileset = &gTileset_LegendsJohto,
+        .sound = DOOR_SOUND_NORMAL,
+        .size = DOOR_SIZE_1x2,
+        .tiles = sDoorAnimTiles_JohtoWorkshop,
+        .palettes = sDoorAnimPalettes_JohtoClay,
+    },
+    {
+        .metatileNum = METATILE_LegendsJohto_SproutTowerDoor,
+        .tileset = &gTileset_LegendsJohto,
+        .sound = DOOR_SOUND_NORMAL,
+        .size = DOOR_SIZE_1x2,
+        .tiles = sDoorAnimTiles_JohtoSproutTower,
+        .palettes = sDoorAnimPalettes_JohtoViolet,
+    },
 #if !IS_FRLG
     {
         .metatileNum = METATILE_CeladonCity_DeptStoreDoor,

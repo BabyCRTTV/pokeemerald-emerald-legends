@@ -110,7 +110,74 @@ def check_progress():
     assert "goto_if_unset FLAG_JOHTO_ZEPHYR_BADGE, Johto_RueGate" in events
 
 
+def check_building_footprints():
+    layouts = {entry["id"]: entry for entry in read_json("data/layouts/layouts.json")["layouts"]}
+    tileset = ROOT / "data/tilesets/secondary/legends_johto"
+    attributes = [value for value, in struct.iter_unpack("<H", (tileset / "metatile_attributes.bin").read_bytes())]
+    graphics = [word for word, in struct.iter_unpack("<H", (tileset / "metatiles.bin").read_bytes())]
+    # A 1x2 animated door temporarily borrows the last eight graphics tiles.
+    assert all((word & 0x3FF) < 0x3F8 for word in graphics)
+    # Johto shares the primary storefront lights in palette 12.
+    assert all(word >> 12 != 12 for word in graphics)
+
+    labels = (ROOT / "include/constants/metatile_labels.h").read_text()
+    doors = (ROOT / "src/field_door.c").read_text()
+    # The rear roof is walkable. The wall immediately below it and the front
+    # wall on either side of an animated door must stop the player.
+    entrances = {
+        "ElmsLab": ("ElmsLabDoor", 4, 1),
+        "WindkeepersHouse": ("BlueHouseDoor", 3, 1),
+        "GardenHouse": ("RedHouseDoor", 3, 1),
+        "GuidesHouse": ("PlumHouseDoor", 3, 1),
+        "HarborHouse": ("RedHouseDoor", 3, 1),
+        "Academy": ("PlumHouseDoor", 3, 1),
+        "KilnHouse": ("BlueHouseDoor", 3, 1),
+        "ApricornWorkshop": ("WorkshopDoor", 3, 1),
+        "SproutTower": ("SproutTowerDoor", 6, 3),
+    }
+    by_destination = {map_data("LegendsJohto_" + name)["id"]: name for name in entrances}
+    checked = set()
+    for name in ("NewBarkTown", "CherrygroveCity", "VioletCity", "AzaleaTown"):
+        area = map_data("LegendsJohto_" + name)
+        layout = layouts[area["layout"]]
+        width = layout["width"]
+        blocks = struct.unpack(f"<{width * layout['height']}H", (ROOT / layout["blockdata_filepath"]).read_bytes())
+
+        def block(x, y):
+            return blocks[y * width + x]
+
+        def walkable_ground(x, y):
+            tile = block(x, y)
+            return tile >> 12 == 3 and not (tile & 0xC00)
+
+        for warp in area["warp_events"]:
+            destination = warp["dest_map"]
+            x, y = warp["x"], warp["y"]
+            if destination.endswith("_MART"):
+                # The cap uses both corner pieces and walkable center pieces.
+                assert [block(col, y - 3) for col in range(x - 1, x + 3)] == [0x3028, 0x3029, 0x3029, 0x302B]
+            interior = by_destination.get(warp["dest_map"])
+            if interior is None:
+                continue
+            label, depth, roof_rows = entrances[interior]
+            symbol = "METATILE_LegendsJohto_" + label
+            metatile = int(re.search(rf"#define {symbol}\s+(0x[0-9A-Fa-f]+)", labels).group(1), 16)
+            assert block(x, y) & 0x3FF == metatile
+            assert attributes[metatile - 0x200] & 0xFF == 0x69  # MB_ANIMATED_DOOR
+            assert re.search(rf"\.metatileNum = {symbol},\s+\.tileset = &gTileset_LegendsJohto,", doors)
+            assert all(block(col, y) & 0xC00 for col in (x - 1, x, x + 1))
+            assert walkable_ground(x, y + 1)
+            assert walkable_ground(x, y - depth)
+            assert block(x, y - depth + roof_rows) & 0xC00
+            if interior == "SproutTower":
+                assert walkable_ground(x - 3, y - 2)
+                assert block(x - 2, y - 2) & 0xC00
+            checked.add(interior)
+    assert checked == set(entrances)
+
+
 if __name__ == "__main__":
     check_maps()
     check_progress()
-    print("Johto map identifiers, walkable landmarks, return warps, trainers and survey checkpoints passed.")
+    check_building_footprints()
+    print("Johto map identifiers, walkable landmarks, building collision, animated doors, trainers and survey checkpoints passed.")

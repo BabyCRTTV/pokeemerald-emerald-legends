@@ -16,7 +16,31 @@ The Zephyr and Hive badges appear in the **Johto League** journal entry. Five lo
 
 The Heart & Soul team provided a visual reference for eastern Johto in Gen III. The layouts, landmark art, trainer teams and story here were made for Emerald: Legends. [Heart & Soul project and credits](https://github.com/PokemonHnS-Development/pokehns-expansion/tree/167aa6d)
 
-## Verification on November 25, 2026
+## Revised buildings and collision
+
+New Bark’s lab has a sliding entrance and observation windows. Cherrygrove’s waterfront cottages have timber porches and footpaths to their doors. Sprout Tower stands on a stone plinth with three tiled roofs. In Azalea, a chimney and firewood mark the Apricorn workshop, and two posts support the canopy over Slowpoke Well. Short shadows follow the foundations, tree trunks and wind vane feet. The four entrances to Tohjo Falls and Union Cave use rock outcrops from Emerald’s primary tiles.
+
+![Matching in-game views of the previous preview and the revised buildings](buildings-before-after.png)
+
+Each pair shows the same camera position and summer daylight in mGBA. The 44-second comparison film also shows walking behind Elm’s roof, testing the lab wall, turning the corner under Sprout Tower’s eave, entering the workshop, descending into the well, and visiting the Cherrygrove storefronts at night. The edited film stages the start of each scene.
+
+### Verification of the revised preview
+
+- In mGBA, checked 150 individual movements around walls, rear and side eaves, tree and wind vane bases, cave faces, bridges and piers. The player stopped at 122 solid approaches and walked through the other 28. At Cherrygrove’s pier, the water stopped the player before Surf unlocked. With Surf unlocked, the same approach mounted and dismounted normally.
+- Walked all 32 map transitions from Viridian to Azalea and back. Entered and exited all 19 buildings and field facilities, including Slowpoke Well, and climbed Sprout Tower’s stairs in both directions. Tested each of the four local nurses and Fly arrivals. Completed and reloaded Elm’s survey in both possible orders.
+- Started the patched Release from its normal Continue menu with a battery save made by the previous Johto preview. Ordinary controller input stopped the player against the lab wall, opened the adjacent sliding door, entered Elm’s lab and returned outside.
+- Checked Cherrygrove at noon and 10 p.m. The Mart and Pokémon Center lettering lit up while their surrounding walls dimmed. The same nighttime build passed the wall, entrance and return at Elm’s lab. The project’s nighttime lighting, Kanto foundation and region-map checks also passed.
+- Built the development and Release ROMs. Floating IPS and the browser patcher’s decoder independently reproduced both compiled targets from clean US Emerald. The Johto map and event regression now includes building walls, walkable roof edges, native door behavior, Mart roof corners and tile space reserved for door animations.
+
+| Revised artifact | SHA-256 |
+| --- | --- |
+| Release BPS | `8a544081acfd8770a835fd467c8643ba2ae0f1d89f51ada49947c35f990dc7f1` |
+| Reapplied Release ROM | `3b80f40b49a47c9630a1d1977cfcc98e0f87883a9f974f554e56b9479c232968` |
+| Development BPS | `0efba6590e9e98820479238825ec6360935a1f5d6a0ed08f5f7a067d5b43cced` |
+| Reapplied development ROM | `8dc15c139105e6d6b5732acee00bdebd4948d47f9366230ae6e7ec55aca895d2` |
+| Comparison film | `da2db170561eb0fd1140338c4c45e1831b7f3b160385dfb66cfe811eaa94168b` |
+
+## Initial chapter verification on November 25, 2026
 
 - Walked the full trip from Viridian to Azalea and back in mGBA 0.10.5, including all 32 directional transitions. Drove the doors of all 19 town and route buildings or caves in both directions, plus the stairs between the two Sprout Tower floors.
 - Completed Elm’s survey in both orders and reloaded battery saves between readings and after returning to the lab.
