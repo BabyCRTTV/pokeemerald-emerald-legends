@@ -1,6 +1,7 @@
 #include "global.h"
 #include "legends_bedroom.h"
 #include "legends_grass.h"
+#include "legends_johto.h"
 #include "legends_seasons.h"
 #include "battle_pyramid.h"
 #include "bg.h"
@@ -48,6 +49,7 @@ static void FillWestConnection(struct MapHeader const *mapHeader, struct MapHead
 static void FillEastConnection(struct MapHeader const *mapHeader, struct MapHeader const *connectedMapHeader, s32 offset);
 static void InitBackupMapLayoutConnections(const struct MapHeader *mapHeader);
 static void LoadSavedMapView(void);
+static void ClearSavedMapView(void);
 static bool8 SkipCopyingMetatileFromSavedMap(u16 *mapBlock, u16 mapWidth, u8 yMode);
 static const struct MapConnection *GetIncomingConnection(enum Connection direction, s32 x, s32 y);
 static bool8 IsPosInIncomingConnectingMap(enum Connection direction, s32 x, s32 y, const struct MapConnection *connection);
@@ -147,7 +149,10 @@ void InitMapFromSavedGame(void)
     InitMapLayoutData(&gMapHeader);
     InitSecretBaseAppearance(FALSE);
     SetOccupiedSecretBaseEntranceMetatiles(gMapHeader.events);
-    LoadSavedMapView();
+    if (LegendsJohtoRestoreLegacyScenery())
+        ClearSavedMapView();
+    else
+        LoadSavedMapView();
     RunOnLoadMapScript();
     UpdateTVScreensOnMap(gBackupMapLayout.width, gBackupMapLayout.height);
 }
@@ -544,6 +549,7 @@ void SaveMapView(void)
         for (j = x; j < x + MAP_OFFSET_W; j++)
             *mapView++ = sBackupMapData[width * i + j];
     }
+    LegendsJohtoMarkSavedScenery();
 }
 
 static bool32 SavedMapViewIsEmpty(void)

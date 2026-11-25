@@ -1,5 +1,9 @@
 # Development handoff
 
+## Johto town art review · November 25, 2026
+
+Model: GPT-6 | Draft PR #128 has new town and route art for owner review. New Bark mixes an original gabled cottage with Elm’s stepped lab wing. Cherrygrove has a continuous beach, Violet has a lantern-lined tower crossing, and Azalea has planted orchard rows. The round trip, 19 entrances, 185 controller contact checks, matched indoor captures and three battery saves from the previous preview passed. Continue repairs positions covered by new scenery. [The six comparisons and native build evidence](qa/johto-opening/README.md#towns-shorelines-and-woods).
+
 ## Johto building and collision revision · November 25, 2026
 
 Model: GPT-6 | Rebuilt the foundations, shadows and door animations of the opening Johto towns. The wall footprints now follow the buildings, with room to walk beneath the projecting eaves. The controller checks covered 150 individual approaches, 19 entrances in both directions and the full 32-transition return journey. An original Johto preview save continued into the revised Release and passed the lab entrance and exit. Day and night checks confirmed that Cherrygrove’s storefront signs use the shared lighting palette. The revised build and visual comparison are in draft PR #128 for owner review. [Matched screenshots and verification](qa/johto-opening/README.md#revised-buildings-and-collision).

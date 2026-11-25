@@ -16,6 +16,36 @@ The Zephyr and Hive badges appear in the **Johto League** journal entry. Five lo
 
 The Heart & Soul team provided a visual reference for eastern Johto in Gen III. The layouts, landmark art, trainer teams and story here were made for Emerald: Legends. [Heart & Soul project and credits](https://github.com/PokemonHnS-Development/pokehns-expansion/tree/167aa6d)
 
+## Towns, shorelines and woods
+
+![Matched views of the windkeeper’s cottage, Elm’s lab, the Cherrygrove pier, Sprout Tower, the Apricorn workshop and Slowpoke Well](towns-before-after.png)
+
+Six pairs show the same player positions in the previous draft (`eb4b6e7`) and the revised game. The accompanying 55-second film includes the walk from the windkeeper’s cottage to Elm’s lab, the waterfront, the crossing to Sprout Tower, the orchard and the descent into Slowpoke Well. The scenes start from staged locations. Movement, door animations, water, music and effects are captured in mGBA. The owner’s Heart & Soul references informed the house proportions and doorstep planting.
+
+| Place | Map and artwork |
+| --- | --- |
+| New Bark | A handmade gabled cottage has an off-center chimney, window boxes and a green roof. Elm’s lab takes its vent and windows from Birch’s lab, with a recessed service wing. Shrubs flank the mown lane. |
+| Cherrygrove | The guide’s house opens onto sand above a curved, south-facing shoreline. The pier uses Route 104’s plank pattern. The blossom trees use the native Emerald canopy, with a separate trunk. |
+| Violet | Three tiled roofs shelter plaster and timber storeys at Sprout Tower. Stone lanterns mark the island and its approach. The street uses Rustboro’s diagonal paving. |
+| Azalea | The workshop uses the Fallarbor furnace roof. Planting beds and logs mark the orchard. A stone drum, hand crank and ladder mark the entrance to Slowpoke Well. |
+| Connecting routes | Emerald’s joined canopy and trunk tiles finish all twelve Johto outdoor layouts. The southern shore changes continue through both Route 27 approaches. |
+
+The four Johto interiors with custom graphics now have their own tileset. Their map block numbers stay in place. Matched capture frames of both Sprout Tower floors and both Gyms were pixel-identical to the previous draft.
+
+- Walked from Viridian to Azalea and back across all 32 directional transitions. Entered and exited all 19 buildings and caves, took the belfry stairs both ways, healed at all four Centers and used Fly to all four towns. Completed Elm’s readings in both orders, earned both badges in battle and reloaded each victory.
+- Tested 148 building, eave, tree and pier contacts with directional input, plus 37 approaches to the lanterns, orchard rows, lumber stacks, cherry tree and south-facing beaches. Also entered and left Elm’s lab after dark.
+- Checked the Johto map graph and graphics banks, north-to-south shore orientation, complete tree pairs, Kanto foundation, regional map and the shared night lighting.
+- Continued a 128 KiB save from the immediately preceding Johto preview on the patched Release. With ordinary controller input the adjacent wall stopped the player, the lab door opened and the exit returned to New Bark. A second battery save from the former clearing at (6, 3) resumed at the nearest connected ground, (6, 5), and walked east. A third save preserved the player’s open-water position in Cherrygrove. Older Johto exterior saves discard their cached scenery. Newly saved views carry a revision marker in the unused tail of the existing buffer.
+- Applied both BPS patches to clean US Emerald with Floating IPS and the project’s browser decoder. The reconstructed ROMs matched their respective compiled builds byte for byte.
+
+| Artifact | SHA-256 |
+| --- | --- |
+| Release BPS | `66d2291c6e612fb64a2a3f03d85a1dce2c68fdc539ad588aec12350b81892fe7` |
+| Release ROM | `2007e6674a4d469ec83bddeafad0e1496202497aa5f47f2aa304ca7cf0089222` |
+| Development BPS | `d265d3af57cae413d6997d26b2057f025d2321f7b4ee78784897f69cdd0028ae` |
+| Development ROM | `fb1361c57d8b1060e8dc74f77e37f3bc172ec52cc2630326cdf0dfab1f9c4ddb` |
+| Comparison film | `6c0d371a53bf01b00c09c67d4bb6bf8c8d5da462a46c2f745007260b9e938e1b` |
+
 ## Revised buildings and collision
 
 New Bark’s lab has a sliding entrance and observation windows. Cherrygrove’s waterfront cottages have timber porches and footpaths to their doors. Sprout Tower stands on a stone plinth with three tiled roofs. In Azalea, a chimney and firewood mark the Apricorn workshop, and two posts support the canopy over Slowpoke Well. Short shadows follow the foundations, tree trunks and wind vane feet. The four entrances to Tohjo Falls and Union Cave use rock outcrops from Emerald’s primary tiles.

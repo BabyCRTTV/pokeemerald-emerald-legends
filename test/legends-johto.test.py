@@ -176,8 +176,56 @@ def check_building_footprints():
     assert checked == set(entrances)
 
 
+def check_coast_and_woodland():
+    layouts = {entry["id"]: entry for entry in read_json("data/layouts/layouts.json")["layouts"]}
+    coast = {"Route27East": (14, 17), "Route27West": (16, 17),
+             "NewBarkTown": (31, 18), "CherrygroveCity": (23, 24)}
+    # Exterior and interior use different graphics banks but keep their map
+    # block numbers. An unassigned interior block displays an empty square.
+    for bank, directory in (("gTileset_LegendsJohto", "legends_johto"),
+                            ("gTileset_LegendsJohtoInterior", "legends_johto_interior")):
+        metatiles = (ROOT / "data/tilesets/secondary" / directory / "metatiles.bin").read_bytes()
+        for layout in layouts.values():
+            if layout["secondary_tileset"] != bank:
+                continue
+            blocks = (ROOT / layout["blockdata_filepath"]).read_bytes()
+            for tile in {word & 0x3FF for word, in struct.iter_unpack("<H", blocks)}:
+                if tile >= 0x200:
+                    offset = (tile - 0x200) * 16
+                    assert any(metatiles[offset:offset + 16]), (layout["name"], tile)
+
+    # The ocean is south of these shores. A north-facing sand tile leaves
+    # disconnected patches of water on the beach despite identical collision.
+    for area, (x, y) in coast.items():
+        layout = layouts[map_data("LegendsJohto_" + area)["layout"]]
+        blocks = [v for v, in struct.iter_unpack("<H", (ROOT / layout["blockdata_filepath"]).read_bytes())]
+        width = layout["width"]
+        assert blocks[(y - 1) * width + x] >> 12 == 3, area
+        assert blocks[y * width + x] == 0x112C, area
+        assert blocks[(y + 1) * width + x] == 0x1170, area
+
+    # Emerald joins the two halves of each trunk horizontally. Dense stands
+    # use a different bottom pair where the next row meets the canopy.
+    tree_rows = [({0x1D4, 0x1D6}, {0x1D5, 0x1D7}),
+                 ({0x1DC}, {0x1DD}), ({0x1E4, 0x1E6}, {0x1E5, 0x1E7})]
+    for area in EXPECTED_ORDER:
+        layout = layouts[map_data("LegendsJohto_" + area)["layout"]]
+        if layout["secondary_tileset"] != "gTileset_LegendsJohto" or layout["primary_tileset"] != "gTileset_General":
+            continue
+        width = layout["width"]
+        blocks = [v for v, in struct.iter_unpack("<H", (ROOT / layout["blockdata_filepath"]).read_bytes())]
+        for offset, block in enumerate(blocks):
+            x = offset % width
+            for left, right in tree_rows:
+                if block & 0x3FF in left:
+                    assert x + 1 < width and blocks[offset + 1] & 0x3FF in right, (area, offset)
+                if block & 0x3FF in right:
+                    assert x > 0 and blocks[offset - 1] & 0x3FF in left, (area, offset)
+
+
 if __name__ == "__main__":
     check_maps()
     check_progress()
     check_building_footprints()
-    print("Johto map identifiers, walkable landmarks, building collision, animated doors, trainers and survey checkpoints passed.")
+    check_coast_and_woodland()
+    print("Johto map identifiers, walkable landmarks, coasts, woodland, building collision, animated doors, trainers and survey checkpoints passed.")

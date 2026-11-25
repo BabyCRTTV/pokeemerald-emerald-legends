@@ -30,3 +30,19 @@ const struct Tileset gTileset_LegendsJohto =
     .metatileAttributes = sJohtoAttributes,
     .swapPalettes = 0x40,
 };
+
+// The tower and gyms share their original object IDs and palettes. Loading
+// their timber and planting graphics separately frees outdoor VRAM for roofs.
+static const u32 sJohtoInteriorTiles[] = INCGFX_U32("data/tilesets/secondary/legends_johto_interior/tiles.png", ".4bpp.fastSmol");
+static const u16 sJohtoInteriorMetatiles[] = INCBIN_U16("data/tilesets/secondary/legends_johto_interior/metatiles.bin");
+static const u16 sJohtoInteriorAttributes[] = INCBIN_U16("data/tilesets/secondary/legends_johto_interior/metatile_attributes.bin");
+const struct Tileset gTileset_LegendsJohtoInterior =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = sJohtoInteriorTiles,
+    .palettes = sJohtoPalettes,
+    .metatiles = sJohtoInteriorMetatiles,
+    .metatileAttributes = sJohtoInteriorAttributes,
+    .swapPalettes = 0x40,
+};

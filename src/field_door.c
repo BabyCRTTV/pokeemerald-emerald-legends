@@ -46,9 +46,6 @@ struct DoorSizeInfo
 
 static bool8 ShouldUseMultiCorridorDoor(void);
 
-static const u8 sDoorAnimTiles_JohtoHouse[] = INCGFX_U8("graphics/door_anims/legends_johto_house.png", ".4bpp");
-static const u8 sDoorAnimTiles_JohtoElmsLab[] = INCGFX_U8("graphics/door_anims/legends_johto_lab.png", ".4bpp");
-static const u8 sDoorAnimTiles_JohtoWorkshop[] = INCGFX_U8("graphics/door_anims/legends_johto_kiln.png", ".4bpp");
 static const u8 sDoorAnimTiles_JohtoSproutTower[] = INCGFX_U8("graphics/door_anims/legends_johto_pagoda.png", ".4bpp");
 
 static const u8 sDoorAnimTiles_Littleroot[] = INCGFX_U8("graphics/door_anims/littleroot.png", ".4bpp");
@@ -266,9 +263,12 @@ static const struct DoorSizeInfo sDoorSizeInfo[DOOR_SIZE_COUNT] =
 };
 
 // Two 4-tile door halves plus the empty overlay read when drawing the lower half.
-static const u8 sDoorAnimPalettes_JohtoSlate[12] = {6, 6, 6, 6, 6, 6, 6, 6};
-static const u8 sDoorAnimPalettes_JohtoClay[12] = {7, 7, 7, 7, 7, 7, 7, 7};
-static const u8 sDoorAnimPalettes_JohtoViolet[12] = {8, 8, 8, 8, 8, 8, 8, 8};
+static const u8 sDoorAnimPalettes_JohtoCoastal[12] = {0, 0, 5, 5, 5, 5, 5, 5};
+static const u8 sDoorAnimPalettes_JohtoIris[12] = {8, 8, 5, 5, 5, 5, 5, 5};
+static const u8 sDoorAnimPalettes_JohtoRedRoof[12] = {1, 1, 1, 1, 1, 1, 1, 1};
+static const u8 sDoorAnimPalettes_JohtoLab[12] = {6, 6, 6, 6, 6, 6, 6, 6};
+static const u8 sDoorAnimPalettes_JohtoWorkshop[12] = {7, 7, 7, 7, 7, 7, 7, 7};
+static const u8 sDoorAnimPalettes_JohtoTower[12] = {11, 11, 11, 11, 11, 11, 11, 11};
 static const u8 sDoorAnimPalettes_General[] = {1, 1, 1, 1, 1, 1, 1, 1};
 static const u8 sDoorAnimPalettes_PokeCenter[] = {1, 1, 1, 1, 1, 1, 1, 1};
 static const u8 sDoorAnimPalettes_Gym[] = {5, 5, 5, 5, 5, 5, 5, 5};
@@ -389,40 +389,40 @@ static const struct DoorGraphics sDoorAnimGraphicsTable[] =
         .tileset = &gTileset_LegendsJohto,
         .sound = DOOR_SOUND_NORMAL,
         .size = DOOR_SIZE_1x2,
-        .tiles = sDoorAnimTiles_JohtoHouse,
-        .palettes = sDoorAnimPalettes_JohtoSlate,
+        .tiles = sDoorAnimTiles_Dewford,
+        .palettes = sDoorAnimPalettes_JohtoCoastal,
     },
     {
         .metatileNum = METATILE_LegendsJohto_PlumHouseDoor,
         .tileset = &gTileset_LegendsJohto,
         .sound = DOOR_SOUND_NORMAL,
         .size = DOOR_SIZE_1x2,
-        .tiles = sDoorAnimTiles_JohtoHouse,
-        .palettes = sDoorAnimPalettes_JohtoViolet,
+        .tiles = sDoorAnimTiles_Verdanturf,
+        .palettes = sDoorAnimPalettes_JohtoIris,
     },
     {
         .metatileNum = METATILE_LegendsJohto_RedHouseDoor,
         .tileset = &gTileset_LegendsJohto,
         .sound = DOOR_SOUND_NORMAL,
         .size = DOOR_SIZE_1x2,
-        .tiles = sDoorAnimTiles_JohtoHouse,
-        .palettes = sDoorAnimPalettes_JohtoClay,
+        .tiles = sDoorAnimTiles_General,
+        .palettes = sDoorAnimPalettes_JohtoRedRoof,
     },
     {
         .metatileNum = METATILE_LegendsJohto_ElmsLabDoor,
         .tileset = &gTileset_LegendsJohto,
-        .sound = DOOR_SOUND_NORMAL,
+        .sound = DOOR_SOUND_SLIDING,
         .size = DOOR_SIZE_1x2,
-        .tiles = sDoorAnimTiles_JohtoElmsLab,
-        .palettes = sDoorAnimPalettes_JohtoSlate,
+        .tiles = sDoorAnimTiles_BirchsLab,
+        .palettes = sDoorAnimPalettes_JohtoLab,
     },
     {
         .metatileNum = METATILE_LegendsJohto_WorkshopDoor,
         .tileset = &gTileset_LegendsJohto,
         .sound = DOOR_SOUND_NORMAL,
         .size = DOOR_SIZE_1x2,
-        .tiles = sDoorAnimTiles_JohtoWorkshop,
-        .palettes = sDoorAnimPalettes_JohtoClay,
+        .tiles = sDoorAnimTiles_FallarborLightRoof,
+        .palettes = sDoorAnimPalettes_JohtoWorkshop,
     },
     {
         .metatileNum = METATILE_LegendsJohto_SproutTowerDoor,
@@ -430,7 +430,7 @@ static const struct DoorGraphics sDoorAnimGraphicsTable[] =
         .sound = DOOR_SOUND_NORMAL,
         .size = DOOR_SIZE_1x2,
         .tiles = sDoorAnimTiles_JohtoSproutTower,
-        .palettes = sDoorAnimPalettes_JohtoViolet,
+        .palettes = sDoorAnimPalettes_JohtoTower,
     },
 #if !IS_FRLG
     {
