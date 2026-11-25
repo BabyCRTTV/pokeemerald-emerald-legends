@@ -325,24 +325,31 @@ def check_western_shores():
     def words(path):
         return [word for word, in struct.iter_unpack("<H", (ROOT / path).read_bytes())]
 
-    stock = words("data/tilesets/primary/general/metatiles.bin")
+    primary = words("data/tilesets/primary/general/metatiles.bin")
     johto = words("data/tilesets/secondary/legends_johto/metatiles.bin")
-    for area, y, left, right, bridge in (("IlexForest", 21, 17, 27, {22, 23}),
+    for area, y, left, right, bridge in (("GoldenrodRadioSquare", 6, 16, 22, set()),
+                                         ("IlexForest", 21, 17, 27, {22, 23}),
                                          ("Route34", 25, 3, 9, {7, 8})):
         layout = layouts[map_data("LegendsJohto_" + area)["layout"]]
-        blocks = words(layout["blockdata_filepath"])
+        cells = words(layout["blockdata_filepath"])
         for x in range(left, right + 1):
             if x in bridge:
                 continue
-            block = blocks[y * layout["width"] + x]
+            block = cells[y * layout["width"] + x]
             assert block >> 12 == 1
-            # Match all eight graphics words to the reflected stock north bank.
-            # Repeating the corner in a straight run leaves a notch every 16 pixels.
-            north = 0x188 if x == left else 0x18A if x == right else 0x189
-            source = stock[north * 8:(north + 1) * 8]
-            expected = [source[j ^ 2] ^ 0x800 if source[j ^ 2] else 0 for j in range(8)]
-            offset = ((block & 0x3FF) - 0x200) * 8
-            assert johto[offset:offset + 8] == expected, (area, x, y)
+            tile = block & 0x3FF
+            sheet = johto if tile >= 512 else primary
+            offset = (tile % 512) * 8
+            # Compare the two lower bank quadrants with the stock pond.
+            # A repeated corner leaves a notch every sixteen pixels.
+            stock = 0xB0 if x == left else 0xB2 if x == right else 0xB1
+            for side in range(2):
+                raw = primary[stock * 8 + 4 + side]
+                assert sheet[offset + 6 + side] == (raw ^ 0x800), (area, x, y)
+
+    layout = layouts[map_data("LegendsJohto_Route34")["layout"]]
+    blocks = words(layout["blockdata_filepath"])
+    assert [blocks[18 * layout["width"] + x] & 0x3FF for x in (28, 29)] == [470, 471]
 
 
 if __name__ == "__main__":

@@ -190,3 +190,16 @@ Floating IPS and the browser patch decoder produced byte-identical native builds
 | --- | --- | --- |
 | Release | `06fad72f6a79015d5f0a8858296b99fc3ab95ca065a0e0fc68f449b09dcbc359` | `63ec025bc885e7d39646ce0297c448574a5024637e3844ab27ca8fc00a014abc` |
 | Debug | `8c7b2ce43fa78069bef8503bb45ce667d2697f7bb83115ee439d2430e72da24a` | `0930c5c6d15f33e8a46b7587c4eae4ee5e81865f63751746ad06bb49d6f6b26f` |
+
+## Inland Johto shorelines
+
+![Before and after at the Radio Square pond, Sprout Tower and Route 34](shoreline-comparison.png)
+
+Route 26, Routes 30 and 31, Ilex Forest, Route 34 and Radio Square use gentler blue ripples from the stock wave animation and complete pond banks. Route 32 and Violet retain the deeper water. Individual banks follow the water and land around each quadrant, including narrow channels, inside bends, exposed ends and covered bridge decks. In Violet, water now reaches under both sides of the Sprout Tower bridge. On Route 34 the flower beside the grove has its own tile and both halves of the canopy meet.
+
+Matched daylight mGBA footage covers five locations. Controller checks covered the Surf badge requirement, boarding and dismounting at the Radio Square pond, the restored tree collision, and return walks over the Violet, Ilex and Route 34 crossings. A previous Release save at the Radio Square pond retained its original position. Two previous saves on altered ground in Violet and on Route 34 resumed on reachable dry tiles and took an ordinary step. The Johto map regression passed. Floating IPS and the browser patcher independently reproduced both native builds.
+
+| Build | BPS SHA-256 | ROM SHA-256 |
+| --- | --- | --- |
+| Release | `94f1de38ed4ce236ef3cd7251ff68367cfc18c7d3b3eba66093fa4a7a6cd1d86` | `e1f0c2f3a241888fff3b84a3bfd56af19f7701928307ffefd4544ce7cb437668` |
+| Debug | `3c63bbcc66724c29c57939d77be5811f7571091a2f159cc1aeb8c6f8096967a9` | `8a020ddd55feb08d8492f6a379bc1e0d9b6c6f06c9108226d851ef93eaf2aa6e` |

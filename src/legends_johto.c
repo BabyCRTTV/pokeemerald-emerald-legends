@@ -12,6 +12,7 @@
 #define JOHTO_VIEW_REVISION 0x4A02
 #define AZALEA_WEST_GATE_REVISION 0x4A03
 #define GOLDENROD_NORTH_GATE_REVISION 0x4A04
+#define JOHTO_BANK_REVISION 0x4A05
 STATIC_ASSERT(JOHTO_VIEW_MARKER_INDEX < ARRAY_COUNT(gSaveBlock1Ptr->mapView), JohtoViewMarkerFits);
 
 // Each point belongs to the connected footpath on that specific map.
@@ -29,18 +30,32 @@ static const struct UCoords8 sTrailAnchors[] =
     [MAP_NUM(MAP_LEGENDS_JOHTO_ROUTE32)] = {14, 50},
     [MAP_NUM(MAP_LEGENDS_JOHTO_ROUTE33)] = {19, 10},
     [MAP_NUM(MAP_LEGENDS_JOHTO_AZALEA_TOWN)] = {10, 10},
+    [MAP_NUM(MAP_LEGENDS_JOHTO_ROUTE34)] = {16, 17},
     [MAP_NUM(MAP_LEGENDS_JOHTO_GOLDENROD_CITY)] = {19, 10},
 };
 
 static u16 GetSavedSceneryRevision(void)
 {
-    if (gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(MAP_LEGENDS_JOHTO_AZALEA_TOWN)
-     && gSaveBlock1Ptr->location.mapNum == MAP_NUM(MAP_LEGENDS_JOHTO_AZALEA_TOWN))
+    if (gSaveBlock1Ptr->location.mapGroup != MAP_GROUP(MAP_LEGENDS_JOHTO_NEW_BARK_TOWN))
+        return JOHTO_VIEW_REVISION;
+    switch (gSaveBlock1Ptr->location.mapNum)
+    {
+    case MAP_NUM(MAP_LEGENDS_JOHTO_AZALEA_TOWN):
         return AZALEA_WEST_GATE_REVISION;
-    if (gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(MAP_LEGENDS_JOHTO_GOLDENROD_CITY)
-     && gSaveBlock1Ptr->location.mapNum == MAP_NUM(MAP_LEGENDS_JOHTO_GOLDENROD_CITY))
+    case MAP_NUM(MAP_LEGENDS_JOHTO_GOLDENROD_CITY):
         return GOLDENROD_NORTH_GATE_REVISION;
-    return JOHTO_VIEW_REVISION;
+    case MAP_NUM(MAP_LEGENDS_JOHTO_ROUTE26):
+    case MAP_NUM(MAP_LEGENDS_JOHTO_ROUTE30):
+    case MAP_NUM(MAP_LEGENDS_JOHTO_ROUTE31):
+    case MAP_NUM(MAP_LEGENDS_JOHTO_ROUTE32):
+    case MAP_NUM(MAP_LEGENDS_JOHTO_VIOLET_CITY):
+    case MAP_NUM(MAP_LEGENDS_JOHTO_ILEX_FOREST):
+    case MAP_NUM(MAP_LEGENDS_JOHTO_ROUTE34):
+    case MAP_NUM(MAP_LEGENDS_JOHTO_GOLDENROD_RADIO_SQUARE):
+        return JOHTO_BANK_REVISION;
+    default:
+        return JOHTO_VIEW_REVISION;
+    }
 }
 
 static s32 DistanceToSavedPlayer(s32 x, s32 y)
@@ -146,10 +161,24 @@ bool32 LegendsJohtoRestoreLegacyScenery(void)
     u8 mapNum = gSaveBlock1Ptr->location.mapNum;
     if (layout->secondaryTileset != &gTileset_LegendsJohto
      || gSaveBlock1Ptr->location.mapGroup != MAP_GROUP(MAP_LEGENDS_JOHTO_NEW_BARK_TOWN)
-     || mapNum >= ARRAY_COUNT(sTrailAnchors)
-     || (sTrailAnchors[mapNum].x == 0 && sTrailAnchors[mapNum].y == 0)
      || gSaveBlock1Ptr->mapView[JOHTO_VIEW_MARKER_INDEX] == GetSavedSceneryRevision())
         return FALSE;
+
+    // These two newer maps changed only graphics. Reload their cached tiles
+    // without looking for a new player or follower position.
+    if (mapNum == MAP_NUM(MAP_LEGENDS_JOHTO_ILEX_FOREST)
+     || mapNum == MAP_NUM(MAP_LEGENDS_JOHTO_GOLDENROD_RADIO_SQUARE))
+        return TRUE;
+    if (mapNum >= ARRAY_COUNT(sTrailAnchors)
+     || (sTrailAnchors[mapNum].x == 0 && sTrailAnchors[mapNum].y == 0))
+        return FALSE;
+
+    // Preserve positions on a current-layout save when only tile art changed.
+    if (gSaveBlock1Ptr->mapView[JOHTO_VIEW_MARKER_INDEX] == JOHTO_VIEW_REVISION
+     && GetSavedSceneryRevision() == JOHTO_BANK_REVISION
+     && mapNum != MAP_NUM(MAP_LEGENDS_JOHTO_VIOLET_CITY)
+     && mapNum != MAP_NUM(MAP_LEGENDS_JOHTO_ROUTE34))
+        return TRUE;
     bool32 surfing = FALSE;
     for (u32 i = 0; i < OBJECT_EVENTS_COUNT; i++)
         if (gSaveBlock1Ptr->objectEvents[i].isPlayer)
